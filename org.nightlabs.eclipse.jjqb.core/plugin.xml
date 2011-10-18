@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.datatools.connectivity.connectionProfile">
+      <connectionProfile
+            category="org.nightlabs.birt.jdo.oda.jdoql.JDOQLDriver"
+            icon="icons/jdo.gif"
+            id="org.nightlabs.eclipse.jjqb.core.oda.JDODriver"
+            name="JDO Connection Profile"
+            pingFactory="org.eclipse.datatools.connectivity.oda.profile.OdaConnectionFactory"/>
+      <connectionFactory
+            id="org.eclipse.datatools.connectivity.oda.IConnection"
+            name="JDOQL Connection Factory"
+            class="org.eclipse.datatools.connectivity.oda.profile.OdaConnectionFactory"
+            profile="org.nightlabs.eclipse.jjqb.core.oda.JDODriver"/>
+   </extension>
+</plugin>
