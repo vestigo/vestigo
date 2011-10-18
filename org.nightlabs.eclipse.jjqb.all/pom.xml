@@ -16,6 +16,8 @@
 		<module>../org.nightlabs.eclipse.jjqb.core</module>
 		<module>../org.nightlabs.eclipse.jjqb.parent</module>
 		<module>../org.nightlabs.eclipse.jjqb.ui</module>
+		<module>../org.nightlabs.eclipse.jjqb.assembly.parent</module>
+		<module>../org.nightlabs.eclipse.jjqb.assembly.linux-gtk-x86_64</module>
 	</modules>
 
 <!-- Automatically generate P2 repository (i.e. Eclipse update site).
