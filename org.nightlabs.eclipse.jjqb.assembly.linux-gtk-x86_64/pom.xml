@@ -13,14 +13,15 @@
 	</parent>
 	
 	<properties>
-		<eclipse.platform.artifactId>org.eclipse.platform.linux-gtk-x86_64</eclipse.platform.artifactId>
+		<!-- <eclipse.platform.artifactId>org.eclipse.platform.linux-gtk-x86_64</eclipse.platform.artifactId> -->
+		<eclipse.platform.artifactId>org.eclipse.jee.linux-gtk-x86_64</eclipse.platform.artifactId>
 	</properties>
 
 	<dependencies>
 		<dependency>
 			<groupId>org.eclipse</groupId>
-			<artifactId>org.eclipse.platform.linux-gtk-x86_64</artifactId>
-			<version>3.6</version>
+			<artifactId>${eclipse.platform.artifactId}</artifactId>
+			<version>3.7</version>
 			<!-- FIXME: Using manually created zip-bundle because tar.gz bundles can't be filtered with excludes. See: http://jira.codehaus.org/browse/MDEP-242 -->
 			<type>zip</type>
 		</dependency>
