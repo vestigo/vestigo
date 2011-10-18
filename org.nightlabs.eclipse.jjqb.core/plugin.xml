@@ -1,10 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
+    <extension
+         point="org.eclipse.datatools.connectivity.oda.dataSource">
+      <dataSource
+            defaultDisplayName="JDO Driver"
+            driverClass="org.nightlabs.eclipse.jjqb.core.oda.JDODriver"
+            id="org.nightlabs.eclipse.jjqb.core.oda.JDODriver"
+            odaVersion="3.0"
+            setThreadContextClassLoader="true">
+         <properties>
+            <property
+                  canInherit="true"
+                  defaultDisplayName="jdoConnectionType"
+                  isEncryptable="false"
+                  name="jdoConnectionType"
+                  type="string"/>
+         </properties>
+      </dataSource>
+<!--
+      <dataSet
+            defaultDisplayName="JDOQL Data Set"            
+            id="org.nightlabs.birt.jdo.oda.jdoql.JDOQLDataSet">
+         <dataTypeMapping
+               nativeDataType="String"
+               nativeDataTypeCode="1"
+               odaScalarDataType="String"/>
+         <dataTypeMapping
+               nativeDataType="Integer"
+               nativeDataTypeCode="2"
+               odaScalarDataType="Integer"/>
+         <dataTypeMapping
+               nativeDataType="Double"
+               nativeDataTypeCode="3"
+               odaScalarDataType="Double"/>
+         <dataTypeMapping
+               nativeDataType="Boolean"
+               nativeDataTypeCode="4"
+               odaScalarDataType="Integer"/>
+         <dataTypeMapping
+               nativeDataType="Date"
+               nativeDataTypeCode="5"
+               odaScalarDataType="Date"/>
+         <dataTypeMapping
+               nativeDataType="BigDecimal(Long)"
+               nativeDataTypeCode="6"
+               odaScalarDataType="Decimal"/>
+      </dataSet>
+-->
+   </extension>
+
    <extension
          point="org.eclipse.datatools.connectivity.connectionProfile">
+      <category
+            id="org.nightlabs.eclipse.jjqb.core.oda.JDODriver"
+            name="JDO Driver"
+            parentCategory="%oda.parent.category.id"/>
       <connectionProfile
-            category="org.nightlabs.birt.jdo.oda.jdoql.JDOQLDriver"
+            category="org.nightlabs.eclipse.jjqb.core.oda.JDODriver"
             icon="icons/jdo.gif"
             id="org.nightlabs.eclipse.jjqb.core.oda.JDODriver"
             name="JDO Connection Profile"
