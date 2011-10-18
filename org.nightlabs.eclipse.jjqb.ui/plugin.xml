@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+	<extension point="org.eclipse.ui.views">
+		<category
+			id="org.nightlabs.eclipse.jjqb.ui"
+			name="%org.nightlabs.eclipse.jjqb.ui.viewCategory.name">
+		</category>
+		<view
+			category="org.nightlabs.eclipse.jjqb.ui"
+			class="org.nightlabs.eclipse.jjqb.ui.datasource.DataSourceView"
+			icon="icons/importstatus/ImportStatusView16x16.png"
+			id="org.nightlabs.eclipse.jjqb.ui.datasource.DataSourceView"
+			name="%org.nightlabs.eclipse.jjqb.ui.datasource.DataSourceView.name">
+		</view>
+	</extension>
+
+</plugin>
