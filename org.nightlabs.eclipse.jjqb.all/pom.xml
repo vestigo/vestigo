@@ -1,0 +1,67 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>org.nightlabs.eclipse.jjqb.all</artifactId>
+	<packaging>pom</packaging>
+
+	<parent>
+		<groupId>org.nightlabs.eclipse.jjqb</groupId>
+		<artifactId>org.nightlabs.eclipse.jjqb.parent</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+		<relativePath>../org.nightlabs.eclipse.jjqb.parent</relativePath>
+	</parent>
+
+	<modules>
+		<module>../org.nightlabs.eclipse.jjqb.core</module>
+		<module>../org.nightlabs.eclipse.jjqb.parent</module>
+		<module>../org.nightlabs.eclipse.jjqb.ui</module>
+	</modules>
+
+<!-- Automatically generate P2 repository (i.e. Eclipse update site).
+
+Quick try with tycho - didn't work this way, yet, though :-( Need more research... Marco :-)
+
+	<properties>
+		<tycho-version>0.12.0</tycho-version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.nightlabs.eclipse.jjqb</groupId>
+			<artifactId>org.nightlabs.eclipse.jjqb.core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.nightlabs.eclipse.jjqb</groupId>
+			<artifactId>org.nightlabs.eclipse.jjqb.ui</artifactId>
+		</dependency>
+	</dependencies>
+
+	<repositories>
+		<repository>
+			<id>helios</id>
+			<layout>p2</layout>
+			<url>http://download.eclipse.org/releases/helios</url>
+		</repository>
+	</repositories>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-maven-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<extensions>true</extensions>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>target-platform-configuration</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+					<pomDependencies>consider</pomDependencies>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+-->
+</project>
