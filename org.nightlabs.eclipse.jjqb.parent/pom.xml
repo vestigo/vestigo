@@ -64,17 +64,37 @@
 				<version>${jjqb.version}</version>
 			</dependency>
 			<!-- END org.nightlabs.eclipse.jjqb -->
-			
+
 			<!-- BEGIN org.eclipse -->
-			<dependency>
-				<groupId>org.eclipse.birt.rcp-report-designer.v2-6-0-mvnzd</groupId>
-				<artifactId>org.eclipse.datatools.connectivity.oda</artifactId>
-				<version>3.3.0</version>
+			<dependency> <!-- Belongs to Eclipse, though it uses a different groupId. -->
+				<groupId>com.ibm.icu</groupId>
+				<artifactId>com.ibm.icu</artifactId>
+				<version>4.2.1</version>
 			</dependency>
 			<dependency>
-				<groupId>org.eclipse.birt.rcp-report-designer.v2-6-0-mvnzd</groupId>
+				<groupId>org.eclipse.datatools</groupId>
+				<artifactId>org.eclipse.datatools.connectivity.oda</artifactId>
+				<version>3.3.1</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.datatools</groupId>
+				<artifactId>org.eclipse.datatools.connectivity.oda.design</artifactId>
+				<version>3.3.2</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.datatools</groupId>
 				<artifactId>org.eclipse.datatools.connectivity.oda.design.ui</artifactId>
-				<version>3.2.3</version>
+				<version>3.2.4</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.datatools</groupId>
+				<artifactId>org.eclipse.datatools.connectivity</artifactId>
+				<version>1.2.2</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.datatools</groupId>
+				<artifactId>org.eclipse.datatools.connectivity.ui</artifactId>
+				<version>1.2.1</version>
 			</dependency>
 			<!-- END org.eclipse -->
 

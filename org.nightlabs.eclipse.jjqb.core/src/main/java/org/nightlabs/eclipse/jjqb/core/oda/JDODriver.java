@@ -7,8 +7,7 @@ public class JDODriver extends AbstractDriver {
 
 	@Override
 	public IConnection getConnection(String connectionClassName) throws OdaException {
-		// TODO Auto-generated method stub
-		return null;
+		return new JDOConnection();
 	}
 
 }

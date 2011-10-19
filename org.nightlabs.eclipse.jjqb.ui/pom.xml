@@ -30,8 +30,20 @@
 			<artifactId>org.eclipse.jface</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.eclipse.birt.rcp-report-designer.v2-6-0-mvnzd</groupId>
+			<groupId>org.eclipse.datatools</groupId>
 			<artifactId>org.eclipse.datatools.connectivity.oda.design.ui</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.datatools</groupId>
+			<artifactId>org.eclipse.datatools.connectivity.oda.design</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.datatools</groupId>
+			<artifactId>org.eclipse.datatools.connectivity</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.datatools</groupId>
+			<artifactId>org.eclipse.datatools.connectivity.ui</artifactId>
 		</dependency>
 		<!-- END org.eclipse -->
 

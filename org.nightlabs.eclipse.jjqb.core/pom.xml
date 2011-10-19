@@ -19,7 +19,15 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.eclipse.birt.rcp-report-designer.v2-6-0-mvnzd</groupId>
+		<!--
+		Force correct version of com.ibm.icu, as transitive dependency through org.eclipse.datatools.connectivity.oda
+		points to non-existent version.
+		-->
+			<groupId>com.ibm.icu</groupId>
+			<artifactId>com.ibm.icu</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.datatools</groupId>
 			<artifactId>org.eclipse.datatools.connectivity.oda</artifactId>
 		</dependency>
 	</dependencies>

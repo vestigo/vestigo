@@ -14,13 +14,13 @@ public interface DataSource
 
 	/**
 	 * <p>
-	 * Create an open {@link Connection}.
+	 * Create an open {@link AbstractConnection}.
 	 * </p><p>
-	 * The resulting connection can be used until {@link Connection#close()} is called.
+	 * The resulting connection can be used until {@link AbstractConnection#close()} is called.
 	 * </p><p>
-	 * Implementors of this method must call {@link Connection#open()} prior to returning the result.
+	 * Implementors of this method must call {@link AbstractConnection#open()} prior to returning the result.
 	 * </p>
-	 * @return an open {@link Connection}.
+	 * @return an open {@link AbstractConnection}.
 	 */
 	Connection createOpenConnection();
 

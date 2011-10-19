@@ -34,6 +34,54 @@
             name="JDOQL Connection Factory"
             class="org.eclipse.datatools.connectivity.oda.profile.OdaConnectionFactory"
             profile="org.nightlabs.eclipse.jjqb.core.oda.JDODriver"/>
+      <newWizard
+            id="org.nightlabs.eclipse.jjqb.core.oda.JDODriver"
+            name="New JDO Driver"
+            class="org.eclipse.datatools.connectivity.oda.design.ui.wizards.NewDataSourceWizard"
+            description="Create a new JDO driver"
+            icon="icons/jdo.gif"
+            profile="org.nightlabs.eclipse.jjqb.core.oda.JDODriver"/>
+   </extension>
+
+
+   <extension
+         point="org.eclipse.ui.propertyPages">
+      <page
+            id="org.nightlabs.eclipse.jjqb.core.oda.JDODriver"
+            name="JDO Properties"
+            class="org.nightlabs.eclipse.jjqb.ui.JDODriverPropertyPage"
+            objectClass="org.eclipse.datatools.connectivity.IConnectionProfile">
+         <filter
+               name="org.eclipse.datatools.profile.property.id"
+               value="org.nightlabs.eclipse.jjqb.core.oda.JDODriver"/>
+      </page>
+   </extension>
+
+
+   <extension
+            point="org.eclipse.datatools.connectivity.oda.design.ui.dataSource">
+      <dataSourceUI id="org.nightlabs.eclipse.jjqb.core.oda.JDODriver">
+        <newDataSourceWizard
+              includesProgressMonitor="false"
+              pageClass="org.nightlabs.eclipse.jjqb.ui.JDODriverWizardPage"
+              pageTitle="JDO DataSource"
+              windowTitle="JDO DataSource"/>
+      </dataSourceUI> 
+      <dataSetUI
+              id="org.nightlabs.birt.jdo.oda.jdoql.JDOQLDataSet"
+              initialPageId="org.nightlabs.birt.jdo.jdoql.ui.JDOQLQueryWizardPage"
+              supportsInParameters="true"
+              supportsOutParameters="false">
+        <dataSetWizard
+              class="org.eclipse.datatools.connectivity.oda.design.ui.wizards.DataSetWizard"
+              windowTitle="JDO Query"/>
+        <dataSetPage
+              displayName="JDO Query"
+              icon="icons/jdo.gif"
+              id="org.nightlabs.birt.jdo.jdoql.ui.JDOQLQueryWizardPage"
+              path="/"
+              wizardPageClass="org.nightlabs.birt.jdo.jdoql.ui.JDOQLQueryWizardPage"/>
+      </dataSetUI> 
    </extension>
 
 </plugin>

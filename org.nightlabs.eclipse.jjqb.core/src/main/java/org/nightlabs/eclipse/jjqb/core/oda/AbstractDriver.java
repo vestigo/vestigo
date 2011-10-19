@@ -6,7 +6,7 @@ import org.eclipse.datatools.connectivity.oda.OdaException;
 
 public abstract class AbstractDriver implements IDriver {
 
-	public static final String DRIVER_NAME = "JDO-JPA-Datasource";
+	public static final String DRIVER_NAME = "JDO-JPA-DataSource";
 	public static final String DRIVER_VERSION = "0.0.1";
 
 	private Object appContext;
