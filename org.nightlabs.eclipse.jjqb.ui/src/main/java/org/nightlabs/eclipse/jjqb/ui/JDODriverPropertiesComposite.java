@@ -13,12 +13,14 @@
 
 package org.nightlabs.eclipse.jjqb.ui;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
+import org.nightlabs.eclipse.jjqb.core.oda.PropertiesUtil;
 
 /**
  * Composite to edit JDOConnection attributes like the
@@ -27,25 +29,32 @@ import org.eclipse.swt.widgets.Composite;
  * @author Alexander Bieber <!-- alex [AT] nightlabs [DOT] de -->
  *
  */
-public class EditJDOConnectionAdapterComposite extends Composite
+public class JDODriverPropertiesComposite extends Composite
 {
-	private Properties currProperties;
+	private EditClasspathComposite editClasspathComposite;
+
+	private Properties connectionProperties;
 	private EditPropertiesComposite editPropertiesComposite;
 
-	/**
-	 * @param parent
-	 * @param style
-	 */
-	public EditJDOConnectionAdapterComposite(Composite parent, int style) {
+	public JDODriverPropertiesComposite(Composite parent, int style) {
 		super(parent, style);
 		this.setLayout(new GridLayout());
+
+		editClasspathComposite = new EditClasspathComposite(this, SWT.NONE);
 
 		editPropertiesComposite = new EditPropertiesComposite(this, SWT.NONE);
 		updatePropertiesEditor();
 	}
 
 	private void updatePropertiesEditor() {
-		editPropertiesComposite.setInput(currProperties);
+		if (connectionProperties != null) {
+//			Properties metaProperties = PropertiesUtil.getProperties(connectionProperties, PropertiesUtil.PREFIX_META);
+			Properties persistenceProperties = PropertiesUtil.getProperties(connectionProperties, PropertiesUtil.PREFIX_PERSISTENCE);
+			editPropertiesComposite.setInput(persistenceProperties);
+
+			List<String> persistenceEngineClasspath = PropertiesUtil.getList(connectionProperties, PropertiesUtil.PREFIX_META_PERSISTENCE_ENGINE_CLASSPATH);
+			editClasspathComposite.setInput(persistenceEngineClasspath);
+		}
 		this.layout(true, true);
 	}
 
@@ -55,7 +64,7 @@ public class EditJDOConnectionAdapterComposite extends Composite
 	 * @param connectionProperties The properties for the selected connectionType.
 	 */
 	public void init(Map<?, ?> connectionProperties) {
-		this.currProperties = propsFromMap(connectionProperties);
+		this.connectionProperties = propsFromMap(connectionProperties);
 		updatePropertiesEditor();
 	}
 
@@ -77,7 +86,7 @@ public class EditJDOConnectionAdapterComposite extends Composite
 	 * @param props The new properties to set.
 	 */
 	public void setConnectionPrivateProps(Properties props) {
-		currProperties = props;
+		connectionProperties = props;
 		updatePropertiesEditor();
 	}
 
@@ -86,6 +95,10 @@ public class EditJDOConnectionAdapterComposite extends Composite
 	 * @return The current custom connection properties
 	 */
 	public Properties getConnectionPrivateProps() {
-		return propsFromMap(editPropertiesComposite.getProperties());
+		Properties persistenceProperties = propsFromMap(editPropertiesComposite.getProperties());
+		Properties result = new Properties();
+		PropertiesUtil.putAll(persistenceProperties, result, PropertiesUtil.PREFIX_PERSISTENCE);
+		PropertiesUtil.putList(editClasspathComposite.getClasspathElements(), result, PropertiesUtil.PREFIX_META_PERSISTENCE_ENGINE_CLASSPATH);
+		return result;
 	}
 }

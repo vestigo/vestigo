@@ -9,7 +9,7 @@ import org.eclipse.swt.widgets.Composite;
 public class JDODriverWizardPage extends DataSourceWizardPage
 {
 
-	private EditJDOConnectionAdapterComposite adapterComposite;
+	private JDODriverPropertiesComposite adapterComposite;
 	private Properties props;
 
 	public JDODriverWizardPage(String pageName) {
@@ -28,7 +28,7 @@ public class JDODriverWizardPage extends DataSourceWizardPage
 
 	@Override
 	public void createPageCustomControl(Composite parent) {
-		adapterComposite = new EditJDOConnectionAdapterComposite(parent, SWT.NONE);
+		adapterComposite = new JDODriverPropertiesComposite(parent, SWT.NONE);
 	}
 
 	@Override

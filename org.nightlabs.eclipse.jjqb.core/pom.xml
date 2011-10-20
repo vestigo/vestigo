@@ -30,6 +30,11 @@
 			<groupId>org.eclipse.datatools</groupId>
 			<artifactId>org.eclipse.datatools.connectivity.oda</artifactId>
 		</dependency>
+
+		<dependency>
+			<groupId>org.nightlabs</groupId>
+			<artifactId>org.nightlabs.util</artifactId>
+		</dependency>
 	</dependencies>
 
 </project>

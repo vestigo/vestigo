@@ -29,7 +29,9 @@ public class JDOConnection extends AbstractConnection
 
 	@Override
 	public void open(Properties connProperties) throws OdaException {
-		persistenceManagerFactory = JDOHelper.getPersistenceManagerFactory(connProperties);
+		Properties metaProperties = PropertiesUtil.getProperties(connProperties, PropertiesUtil.PREFIX_META);
+		Properties persistenceProperties = PropertiesUtil.getProperties(connProperties, PropertiesUtil.PREFIX_PERSISTENCE);
+		persistenceManagerFactory = JDOHelper.getPersistenceManagerFactory(persistenceProperties);
 		super.open(connProperties);
 	}
 

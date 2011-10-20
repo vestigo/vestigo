@@ -23,15 +23,15 @@ import org.eclipse.swt.widgets.Composite;
 
 public class JDODriverPropertyPage extends DataSourceEditorPage {
 
-	private EditJDOConnectionAdapterComposite adapterComposite;
+	private JDODriverPropertiesComposite propertiesComposite;
 
 	public JDODriverPropertyPage() { }
 
 	@Override
 	public Properties collectCustomProperties(Properties oldProperties) {
 //		Properties props = new Properties();
-		Properties props = adapterComposite.getConnectionPrivateProps();
-//		String connectionType = adapterComposite.getSelectedConnectionType();
+		Properties props = propertiesComposite.getConnectionPrivateProps();
+//		String connectionType = propertiesComposite.getSelectedConnectionType();
 //		if (connectionType != null)
 //			props.setProperty(IJDOConnectionAdapter.PROPERTY_NAME_JDO_CONNECTION_TYPE, connectionType);
 		return props;
@@ -39,15 +39,15 @@ public class JDODriverPropertyPage extends DataSourceEditorPage {
 
 	@Override
 	protected void createAndInitCustomControl(Composite parent, Properties properties) {
-		adapterComposite = new EditJDOConnectionAdapterComposite(parent, SWT.NONE);
+		propertiesComposite = new JDODriverPropertiesComposite(parent, SWT.NONE);
 //		Properties privateProps = JDOQLDriverUtil.prepareForPrivatePropEdit(properties);
-//		adapterComposite.setConnectionPrivateProps(privateProps);
-		adapterComposite.setConnectionPrivateProps(properties);
+//		propertiesComposite.setConnectionPrivateProps(privateProps);
+		propertiesComposite.setConnectionPrivateProps(properties);
 	}
 
 	@Override
 	protected DataSourceDesign collectDataSourceDesign(DataSourceDesign design) {
-		Properties props = adapterComposite.getConnectionPrivateProps();
+		Properties props = propertiesComposite.getConnectionPrivateProps();
 		design.setPrivateProperties(
 				DesignUtil.convertToDesignProperties(
 						props

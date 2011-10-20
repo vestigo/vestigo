@@ -29,6 +29,14 @@
 			<groupId>org.nightlabs.eclipse.jjqb</groupId>
 			<artifactId>org.nightlabs.eclipse.jjqb.ui</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.nightlabs</groupId>
+			<artifactId>org.nightlabs.util</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.nightlabs</groupId>
+			<artifactId>org.nightlabs.progress</artifactId>
+		</dependency>
 <!--
 We use the Eclipse JEE IDE as platform, hence we don't need to add the ODA stuff - it's already included.
 Adding it again causes a conflict (can have only one singleton-marked plugin).
