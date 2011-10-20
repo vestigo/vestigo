@@ -13,6 +13,7 @@
 
 package org.nightlabs.eclipse.jjqb.core.oda;
 
+import java.net.URLClassLoader;
 import java.util.Properties;
 
 import javax.jdo.JDOHelper;
@@ -20,19 +21,44 @@ import javax.jdo.PersistenceManagerFactory;
 
 import org.eclipse.datatools.connectivity.oda.IQuery;
 import org.eclipse.datatools.connectivity.oda.OdaException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class JDOConnection extends AbstractConnection
 {
+	private static final Logger logger = LoggerFactory.getLogger(JDOConnection.class);
 	private PersistenceManagerFactory persistenceManagerFactory;
 
 	public JDOConnection() { }
 
 	@Override
-	public void open(Properties connProperties) throws OdaException {
-		Properties metaProperties = PropertiesUtil.getProperties(connProperties, PropertiesUtil.PREFIX_META);
-		Properties persistenceProperties = PropertiesUtil.getProperties(connProperties, PropertiesUtil.PREFIX_PERSISTENCE);
-		persistenceManagerFactory = JDOHelper.getPersistenceManagerFactory(persistenceProperties);
-		super.open(connProperties);
+	public void open(Properties connProperties) throws OdaException
+	{
+		boolean error = true;
+		try {
+			super.open(connProperties);
+
+			URLClassLoader persistenceEngineClassLoader = getPersistenceEngineClassLoader();
+
+			Properties persistenceProperties = PropertiesUtil.getProperties(connProperties, PropertiesUtil.PREFIX_PERSISTENCE);
+			persistenceManagerFactory = JDOHelper.getPersistenceManagerFactory(persistenceProperties, persistenceEngineClassLoader);
+
+			error = false;
+		} finally {
+			if (error)
+				close();
+		}
+	}
+
+	@Override
+	public void close() throws OdaException
+	{
+		if (persistenceManagerFactory != null) {
+			persistenceManagerFactory.close();
+			persistenceManagerFactory = null;
+		}
+
+		super.close();
 	}
 
 	@Override
@@ -40,5 +66,4 @@ public class JDOConnection extends AbstractConnection
 		throw new UnsupportedOperationException("NYI");
 //		return new JDOQuery(this);
 	}
-
 }

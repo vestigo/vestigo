@@ -83,5 +83,8 @@
               wizardPageClass="org.nightlabs.birt.jdo.jdoql.ui.JDOQLQueryWizardPage"/>
       </dataSetUI> 
    </extension>
+   <extension
+         point="org.eclipse.ui.viewActions">
+   </extension>
 
 </plugin>
