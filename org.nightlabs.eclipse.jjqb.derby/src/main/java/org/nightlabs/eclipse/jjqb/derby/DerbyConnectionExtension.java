@@ -20,6 +20,8 @@ public class DerbyConnectionExtension extends AbstractConnectionExtension {
 		String connectionURL = null;
 		connectionURL = properties.getProperty(PropertiesUtil.PREFIX_PERSISTENCE + "javax.jdo.option.ConnectionURL");
 		// TODO it seems there is no standard property defined in JPA :-( => Need yet another extension-point
+		// hmmm... with my new IConnectionExtensions, I should be able to solve this without yet another extension-point - probably only need another interface
+		// and search for extensions implementing it.
 
 		if (connectionURL != null && connectionURL.startsWith("jdbc:derby:")) {
 			URLClassLoader peClassLoader = getConnection().getPersistenceEngineClassLoader();
@@ -33,8 +35,6 @@ public class DerbyConnectionExtension extends AbstractConnectionExtension {
 			}
 		}
 	}
-
-	private static final void doNothing() { }
 
 	private static Connection driverManager_getConnection(String connectionURL, Properties info, ClassLoader classLoader) throws SQLException
 	{
@@ -60,4 +60,6 @@ public class DerbyConnectionExtension extends AbstractConnectionExtension {
 				throw new RuntimeException(e);
 		}
 	}
+
+	private static final void doNothing() { }
 }

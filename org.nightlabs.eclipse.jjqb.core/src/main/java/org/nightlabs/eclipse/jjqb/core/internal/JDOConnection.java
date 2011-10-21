@@ -19,6 +19,7 @@ import java.util.Properties;
 import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManagerFactory;
 
+import org.eclipse.datatools.connectivity.oda.IDataSetMetaData;
 import org.eclipse.datatools.connectivity.oda.IQuery;
 import org.eclipse.datatools.connectivity.oda.OdaException;
 import org.nightlabs.eclipse.jjqb.core.util.PropertiesUtil;
@@ -56,6 +57,11 @@ public class JDOConnection extends AbstractConnection
 			persistenceManagerFactory.close();
 			persistenceManagerFactory = null;
 		}
+	}
+
+	@Override
+	public IDataSetMetaData getMetaData(String dataSetType) throws OdaException {
+		return super.getMetaData(dataSetType);
 	}
 
 	@Override

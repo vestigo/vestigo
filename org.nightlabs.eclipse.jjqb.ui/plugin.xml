@@ -53,7 +53,7 @@
               windowTitle="JDO DataSource"/>
       </dataSourceUI> 
       <dataSetUI
-              id="org.nightlabs.birt.jdo.oda.jdoql.JDOQLDataSet"
+              id="org.nightlabs.eclipse.jjqb.core.JDODataSet"
               initialPageId="org.nightlabs.birt.jdo.jdoql.ui.JDOQLQueryWizardPage"
               supportsInParameters="true"
               supportsOutParameters="false">

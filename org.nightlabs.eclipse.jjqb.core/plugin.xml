@@ -19,10 +19,11 @@
                   type="string"/>
          </properties>
       </dataSource>
-<!--
+
+<!-- TODO what's this dataSet good for? do we need it? copied from org.nightlabs.birt.jdo... -->
       <dataSet
-            defaultDisplayName="JDOQL Data Set"            
-            id="org.nightlabs.birt.jdo.oda.jdoql.JDOQLDataSet">
+            defaultDisplayName="JDO Data Set"            
+            id="org.nightlabs.eclipse.jjqb.core.JDODataSet">
          <dataTypeMapping
                nativeDataType="String"
                nativeDataTypeCode="1"
@@ -44,10 +45,10 @@
                nativeDataTypeCode="5"
                odaScalarDataType="Date"/>
          <dataTypeMapping
-               nativeDataType="BigDecimal(Long)"
+               nativeDataType="BigDecimal"
                nativeDataTypeCode="6"
                odaScalarDataType="Decimal"/>
       </dataSet>
--->
+
    </extension>
 </plugin>
