@@ -17,9 +17,60 @@
 		<module>../org.nightlabs.eclipse.jjqb.parent</module>
 		<module>../org.nightlabs.eclipse.jjqb.ui</module>
 		<module>../org.nightlabs.eclipse.jjqb.assembly.parent</module>
-		<module>../org.nightlabs.eclipse.jjqb.assembly.linux-gtk-x86_64</module>
-		<module>../org.nightlabs.eclipse.jjqb.assembly.win32</module>
 	</modules>
+	
+	<properties>
+		<platform.linux-gtk-x86_64.enabled>false</platform.linux-gtk-x86_64.enabled>
+		<platform.win32.enabled>false</platform.win32.enabled>
+	</properties>
+
+	<profiles>
+		<profile>
+			<id>all-platforms</id>
+			<activation>
+				<property>
+					<name>platform.all.enabled</name>
+					<value>true</value>
+				</property>
+			</activation>
+			<modules>
+				<module>../org.nightlabs.eclipse.jjqb.assembly.linux-gtk-x86_64</module>
+				<module>../org.nightlabs.eclipse.jjqb.assembly.win32</module>
+			</modules>
+		</profile>
+		<profile>
+			<id>platform-linux-gtk-x86_64</id>
+			<activation>
+				<property>
+					<name>platform.linux-gtk-x86_64.enabled</name>
+					<value>true</value>
+				</property>
+				<os>
+					<family>unix</family>
+					<arch>amd64</arch>
+				</os>
+			</activation>
+			<modules>
+				<module>../org.nightlabs.eclipse.jjqb.assembly.linux-gtk-x86_64</module>
+			</modules>
+		</profile>
+		<profile>
+			<id>platform-win32</id>
+			<activation>
+				<property>
+					<name>platform.win32.enabled</name>
+					<value>true</value>
+				</property>
+				<os>
+					<family>windows</family>
+					<arch>x86</arch>
+				</os>
+			</activation>
+			<modules>
+				<module>../org.nightlabs.eclipse.jjqb.assembly.win32</module>
+			</modules>
+		</profile>
+	</profiles>
 
 <!-- Automatically generate P2 repository (i.e. Eclipse update site).
 
