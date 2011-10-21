@@ -6,7 +6,7 @@
       <dataSource
             defaultDisplayName="JDO Driver"
             driverClass="org.nightlabs.eclipse.jjqb.core.internal.JDODriver"
-            id="org.nightlabs.eclipse.jjqb.core.oda.JDODriver"
+            id="org.nightlabs.eclipse.jjqb.core.IJDODriver"
             odaVersion="3.0"
             setThreadContextClassLoader="true">
          <properties>

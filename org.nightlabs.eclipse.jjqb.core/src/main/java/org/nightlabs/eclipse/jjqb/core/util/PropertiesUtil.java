@@ -1,4 +1,4 @@
-package org.nightlabs.eclipse.jjqb.core.internal;
+package org.nightlabs.eclipse.jjqb.core.util;
 
 import java.util.ArrayList;
 import java.util.Collection;

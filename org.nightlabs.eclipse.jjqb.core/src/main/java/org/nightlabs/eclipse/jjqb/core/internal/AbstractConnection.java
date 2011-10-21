@@ -29,6 +29,7 @@ import java.util.Properties;
 import org.eclipse.datatools.connectivity.oda.IDataSetMetaData;
 import org.eclipse.datatools.connectivity.oda.OdaException;
 import org.nightlabs.eclipse.jjqb.core.IConnection;
+import org.nightlabs.eclipse.jjqb.core.util.PropertiesUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

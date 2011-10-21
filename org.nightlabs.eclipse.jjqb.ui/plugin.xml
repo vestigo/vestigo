@@ -5,47 +5,47 @@
 	<extension
          point="org.eclipse.datatools.connectivity.connectionProfile">
       <category
-            id="org.nightlabs.eclipse.jjqb.core.internal.JDODriver"
+            id="org.nightlabs.eclipse.jjqb.core.IJDODriver"
             name="JDO Driver"
             parentCategory="%oda.parent.category.id"/>
       <connectionProfile
-            category="org.nightlabs.eclipse.jjqb.core.internal.JDODriver"
+            category="org.nightlabs.eclipse.jjqb.core.IJDODriver"
             icon="icons/jdo.gif"
-            id="org.nightlabs.eclipse.jjqb.core.internal.JDODriver"
+            id="org.nightlabs.eclipse.jjqb.core.IJDODriver"
             name="JDO Connection Profile"
             pingFactory="org.eclipse.datatools.connectivity.oda.profile.OdaConnectionFactory"/>
       <connectionFactory
             id="org.eclipse.datatools.connectivity.oda.IConnection"
             name="JDOQL Connection Factory"
             class="org.eclipse.datatools.connectivity.oda.profile.OdaConnectionFactory"
-            profile="org.nightlabs.eclipse.jjqb.core.internal.JDODriver"/>
+            profile="org.nightlabs.eclipse.jjqb.core.IJDODriver"/>
       <newWizard
-            id="org.nightlabs.eclipse.jjqb.core.internal.JDODriver"
+            id="org.nightlabs.eclipse.jjqb.core.IJDODriver"
             name="New JDO Driver"
             class="org.eclipse.datatools.connectivity.oda.design.ui.wizards.NewDataSourceWizard"
             description="Create a new JDO driver"
             icon="icons/jdo.gif"
-            profile="org.nightlabs.eclipse.jjqb.core.internal.JDODriver"/>
+            profile="org.nightlabs.eclipse.jjqb.core.IJDODriver"/>
    </extension>
 
 
    <extension
          point="org.eclipse.ui.propertyPages">
       <page
-            id="org.nightlabs.eclipse.jjqb.core.internal.JDODriver"
+            id="org.nightlabs.eclipse.jjqb.core.IJDODriver"
             name="JDO Properties"
             class="org.nightlabs.eclipse.jjqb.ui.JDODriverPropertyPage"
             objectClass="org.eclipse.datatools.connectivity.IConnectionProfile">
          <filter
                name="org.eclipse.datatools.profile.property.id"
-               value="org.nightlabs.eclipse.jjqb.core.internal.JDODriver"/>
+               value="org.nightlabs.eclipse.jjqb.core.IJDODriver"/>
       </page>
    </extension>
 
 
    <extension
             point="org.eclipse.datatools.connectivity.oda.design.ui.dataSource">
-      <dataSourceUI id="org.nightlabs.eclipse.jjqb.core.internal.JDODriver">
+      <dataSourceUI id="org.nightlabs.eclipse.jjqb.core.IJDODriver">
         <newDataSourceWizard
               includesProgressMonitor="false"
               pageClass="org.nightlabs.eclipse.jjqb.ui.JDODriverWizardPage"

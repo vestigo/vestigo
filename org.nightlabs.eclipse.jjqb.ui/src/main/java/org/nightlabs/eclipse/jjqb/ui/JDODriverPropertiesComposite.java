@@ -20,7 +20,7 @@ import java.util.Properties;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
-import org.nightlabs.eclipse.jjqb.core.internal.PropertiesUtil;
+import org.nightlabs.eclipse.jjqb.core.util.PropertiesUtil;
 
 /**
  * Composite to edit JDOConnection attributes like the
