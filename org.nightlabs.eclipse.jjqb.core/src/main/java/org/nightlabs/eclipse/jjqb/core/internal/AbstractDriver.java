@@ -1,4 +1,4 @@
-package org.nightlabs.eclipse.jjqb.core.oda;
+package org.nightlabs.eclipse.jjqb.core.internal;
 
 import org.eclipse.datatools.connectivity.oda.IDriver;
 import org.eclipse.datatools.connectivity.oda.LogConfiguration;

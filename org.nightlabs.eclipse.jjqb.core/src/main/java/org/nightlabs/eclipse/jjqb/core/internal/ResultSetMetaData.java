@@ -11,7 +11,7 @@
  *   Alexander Bieber, NightLabs - initial API and implementation              *
  ******************************************************************************/
 
-package org.nightlabs.eclipse.jjqb.core.oda;
+package org.nightlabs.eclipse.jjqb.core.internal;
 
 import java.util.HashMap;
 import java.util.Map;

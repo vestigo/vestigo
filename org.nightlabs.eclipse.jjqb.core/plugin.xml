@@ -5,7 +5,7 @@
          point="org.eclipse.datatools.connectivity.oda.dataSource">
       <dataSource
             defaultDisplayName="JDO Driver"
-            driverClass="org.nightlabs.eclipse.jjqb.core.oda.JDODriver"
+            driverClass="org.nightlabs.eclipse.jjqb.core.internal.JDODriver"
             id="org.nightlabs.eclipse.jjqb.core.oda.JDODriver"
             odaVersion="3.0"
             setThreadContextClassLoader="true">
