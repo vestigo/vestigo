@@ -2,21 +2,6 @@
 <?eclipse version="3.4"?>
 <plugin>
 
-	<extension point="org.eclipse.ui.views">
-		<category
-			id="org.nightlabs.eclipse.jjqb.ui"
-			name="%org.nightlabs.eclipse.jjqb.ui.viewCategory.name">
-		</category>
-		<view
-			category="org.nightlabs.eclipse.jjqb.ui"
-			class="org.nightlabs.eclipse.jjqb.ui.datasource.DataSourceView"
-			icon="icons/importstatus/ImportStatusView16x16.png"
-			id="org.nightlabs.eclipse.jjqb.ui.datasource.DataSourceView"
-			name="%org.nightlabs.eclipse.jjqb.ui.datasource.DataSourceView.name">
-		</view>
-	</extension>
-
-
 	<extension
          point="org.eclipse.datatools.connectivity.connectionProfile">
       <category
@@ -83,8 +68,35 @@
               wizardPageClass="org.nightlabs.birt.jdo.jdoql.ui.JDOQLQueryWizardPage"/>
       </dataSetUI> 
    </extension>
+
+
    <extension
          point="org.eclipse.ui.viewActions">
+      <viewContribution
+            id="org.nightlabs.eclipse.jjqb.ui.viewContribution_DataSourceExplorerNavigator"
+            targetID="org.eclipse.datatools.connectivity.DataSourceExplorerNavigator">
+         <action
+               class="org.nightlabs.eclipse.jjqb.ui.OpenQueryBrowserAction"
+               enablesFor="+"
+               id="org.nightlabs.eclipse.jjqb.ui.OpenQueryBrowserAction"
+               label="Open query browser"
+               style="push"
+               toolbarPath="additions">
+         </action>
+      </viewContribution>
    </extension>
-
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="false"
+            id="org.nightlabs.eclipse.jjqb.ui.objectContribution_AbstractDriver"
+            objectClass="org.eclipse.datatools.connectivity.IConnectionProfile">
+         <action
+               class="org.nightlabs.eclipse.jjqb.ui.OpenQueryBrowserAction"
+               enablesFor="+"
+               id="org.nightlabs.eclipse.jjqb.ui.OpenQueryBrowserAction"
+               label="Open query browser">
+         </action>
+      </objectContribution>
+   </extension>
 </plugin>
