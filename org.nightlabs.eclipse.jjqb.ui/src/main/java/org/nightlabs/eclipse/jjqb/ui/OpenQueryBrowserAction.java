@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IWorkspace;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.datatools.connectivity.IConnectionProfile;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -15,8 +20,10 @@ import org.eclipse.ui.IViewActionDelegate;
 import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchPartSite;
+import org.eclipse.ui.part.FileEditorInput;
 import org.nightlabs.eclipse.jjqb.core.IJDODriver;
 import org.nightlabs.eclipse.jjqb.core.IJPADriver;
+import org.nightlabs.eclipse.jjqb.ui.browser.JDOQueryBrowserEditor;
 
 public class OpenQueryBrowserAction
 implements IObjectActionDelegate, IViewActionDelegate
@@ -41,7 +48,27 @@ implements IObjectActionDelegate, IViewActionDelegate
 			action.setEnabled(false);
 		}
 		else {
-			MessageDialog.openInformation(getShell(), "Test", "selectedConnectionProfiles: " + selectedConnectionProfiles);
+//			MessageDialog.openInformation(getShell(), "Test", "selectedConnectionProfiles: " + selectedConnectionProfiles);
+			for (IConnectionProfile connectionProfile : selectedConnectionProfiles) {
+				try {
+//					File jfile = new File("/home/mschulze/workspaces/jjqe.1/org.nightlabs.eclipse.compatibility.rcp/pom.xml");
+					IWorkspace workspace = ResourcesPlugin.getWorkspace();
+//					IPath location = Path.fromOSString(jfile.getAbsolutePath());
+					IPath location = new Path("/adfsdaf/src/test.jdoql");
+//					IFile efile = workspace.getRoot().getFileForLocation(location);
+					IFile efile = workspace.getRoot().getFile(location);
+
+					getSite().getWorkbenchWindow().getActivePage().openEditor(
+							new FileEditorInput(efile),
+//							org.nightlabs.eclipse.jjqb.ui.exampleeditor.XMLEditor.class.getName()
+							JDOQueryBrowserEditor.class.getName()
+					);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					MessageDialog.openError(getShell(), "Opening editor failed", "Could not open the editor: " + e);
+				}
+			}
 		}
 	}
 

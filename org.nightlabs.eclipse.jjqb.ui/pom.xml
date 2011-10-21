@@ -45,12 +45,32 @@
 			<groupId>org.eclipse.datatools</groupId>
 			<artifactId>org.eclipse.datatools.connectivity.ui</artifactId>
 		</dependency>
+
+		<dependency>
+			<groupId>org.eclipse.ui</groupId>
+			<artifactId>org.eclipse.ui.ide</artifactId>
+			<version>3.6.2</version> <!-- TODO either remove this dependency again (currently only needed for using the example editor) or move to parent -->
+			<exclusions>
+				<exclusion>
+					<groupId>org.eclipse.equinox</groupId>
+					<artifactId>org.eclipse.equinox.p2.engine</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.eclipse.equinox</groupId>
+					<artifactId>org.eclipse.equinox.p2.metadata</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
 		<!-- END org.eclipse -->
 
 		<!-- BEGIN org.nightlabs.eclipse -->
 		<dependency>
 			<groupId>org.nightlabs.eclipse</groupId>
+<!--
+temporarily... because of exampleeditor - we should switch back to the property, i.e. RAP (which is more restricted)
 			<artifactId>${org.nightlabs.eclipse.compatibility.artifactId}</artifactId>
+-->
+			<artifactId>org.nightlabs.eclipse.compatibility.rcp</artifactId>
 			<scope>provided</scope>
 		</dependency>
 		<!-- END org.nightlabs.eclipse -->
