@@ -33,15 +33,13 @@ public class JDOConnection extends AbstractConnection
 	public JDOConnection() { }
 
 	@Override
-	public void open(Properties connProperties) throws OdaException
+	protected void _open() throws OdaException
 	{
 		boolean error = true;
 		try {
-			super.open(connProperties);
-
 			URLClassLoader persistenceEngineClassLoader = getPersistenceEngineClassLoader();
 
-			Properties persistenceProperties = PropertiesUtil.getProperties(connProperties, PropertiesUtil.PREFIX_PERSISTENCE);
+			Properties persistenceProperties = PropertiesUtil.getProperties(getConnectionProperties(), PropertiesUtil.PREFIX_PERSISTENCE);
 			persistenceManagerFactory = JDOHelper.getPersistenceManagerFactory(persistenceProperties, persistenceEngineClassLoader);
 
 			error = false;
@@ -52,14 +50,12 @@ public class JDOConnection extends AbstractConnection
 	}
 
 	@Override
-	public void close() throws OdaException
+	protected void _close() throws OdaException
 	{
 		if (persistenceManagerFactory != null) {
 			persistenceManagerFactory.close();
 			persistenceManagerFactory = null;
 		}
-
-		super.close();
 	}
 
 	@Override

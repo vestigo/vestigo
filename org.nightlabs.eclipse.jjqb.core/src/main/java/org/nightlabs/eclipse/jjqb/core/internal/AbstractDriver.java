@@ -1,7 +1,9 @@
 package org.nightlabs.eclipse.jjqb.core.internal;
 
+import org.eclipse.datatools.connectivity.oda.IConnection;
 import org.eclipse.datatools.connectivity.oda.LogConfiguration;
 import org.eclipse.datatools.connectivity.oda.OdaException;
+import org.nightlabs.eclipse.jjqb.core.ConnectionExtensionRegistry;
 import org.nightlabs.eclipse.jjqb.core.IDriver;
 
 public abstract class AbstractDriver implements IDriver {
@@ -43,4 +45,12 @@ public abstract class AbstractDriver implements IDriver {
 		return logConfiguration;
 	}
 
+	@Override
+	public final IConnection getConnection(String connectionClassName) throws OdaException {
+		org.nightlabs.eclipse.jjqb.core.IConnection connection = _getConnection(connectionClassName);
+		ConnectionExtensionRegistry.sharedInstance().bind(connection);
+		return connection;
+	}
+
+	protected abstract org.nightlabs.eclipse.jjqb.core.IConnection _getConnection(String connectionClassName) throws OdaException;
 }

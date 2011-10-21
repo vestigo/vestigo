@@ -15,6 +15,7 @@
 	<properties>
 		<!-- <eclipse.platform.artifactId>org.eclipse.platform.linux-gtk-x86_64</eclipse.platform.artifactId> -->
 		<eclipse.platform.artifactId>org.eclipse.jee.linux-gtk-x86_64</eclipse.platform.artifactId>
+		<org.nightlabs.eclipse.compatibility.artifactId>org.nightlabs.eclipse.compatibility.rcp</org.nightlabs.eclipse.compatibility.artifactId>
 	</properties>
 
 	<dependencies>

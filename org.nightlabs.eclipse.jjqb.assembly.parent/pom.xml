@@ -22,12 +22,20 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>org.nightlabs.eclipse</groupId>
+			<artifactId>${org.nightlabs.eclipse.compatibility.artifactId}</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.nightlabs.eclipse.jjqb</groupId>
 			<artifactId>org.nightlabs.eclipse.jjqb.core</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.nightlabs.eclipse.jjqb</groupId>
 			<artifactId>org.nightlabs.eclipse.jjqb.ui</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.nightlabs.eclipse</groupId>
+			<artifactId>org.nightlabs.eclipse.extension</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.nightlabs</groupId>
