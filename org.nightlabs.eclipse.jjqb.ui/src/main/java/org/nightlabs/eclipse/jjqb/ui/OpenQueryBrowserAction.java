@@ -55,10 +55,16 @@ implements IObjectActionDelegate, IViewActionDelegate
 					IWorkspace workspace = ResourcesPlugin.getWorkspace();
 //					IPath location = Path.fromOSString(jfile.getAbsolutePath());
 					IPath location = new Path("/adfsdaf/src/test.jdoql");
-//					IFile efile = workspace.getRoot().getFileForLocation(location);
-					IFile efile = workspace.getRoot().getFile(location);
+					IFile efile = workspace.getRoot().getFileForLocation(location);
+//					IFile efile = workspace.getRoot().getFile(location);
 
+//					IPath stateLocation= EditorsPlugin.getDefault().getStateLocation();
+//					IPath path= stateLocation.append("/_" + new Object().hashCode()); //$NON-NLS-1$
+//					IFileStore fileStore = EFS.getLocalFileSystem().getStore(path);
+
+					// TODO how the hell can I open the editor without knowing an existing file name?!
 					getSite().getWorkbenchWindow().getActivePage().openEditor(
+//							new NonExistingFileEditorInput(fileStore, "new-"),
 							new FileEditorInput(efile),
 //							org.nightlabs.eclipse.jjqb.ui.exampleeditor.XMLEditor.class.getName()
 							JDOQueryBrowserEditor.class.getName()
