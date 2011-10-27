@@ -188,6 +188,11 @@ public abstract class AbstractConnection implements IConnection
 
 	private URLClassLoader persistenceEngineClassLoader;
 
+//	public URLClassLoader getQueryExecClassLoader() throws OdaException
+//	{
+//		return getPersistenceEngineClassLoader();
+//	}
+
 	@Override
 	public URLClassLoader getPersistenceEngineClassLoader() throws OdaException
 	{

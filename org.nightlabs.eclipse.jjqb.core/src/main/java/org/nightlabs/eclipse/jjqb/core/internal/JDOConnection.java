@@ -17,6 +17,7 @@ import java.net.URLClassLoader;
 import java.util.Properties;
 
 import javax.jdo.JDOHelper;
+import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 
 import org.eclipse.datatools.connectivity.oda.IDataSetMetaData;
@@ -31,6 +32,8 @@ public class JDOConnection extends AbstractConnection
 	private static final Logger logger = LoggerFactory.getLogger(JDOConnection.class);
 	private PersistenceManagerFactory persistenceManagerFactory;
 
+	private PersistenceManager persistenceManager;
+
 	public JDOConnection() { }
 
 	@Override
@@ -41,7 +44,18 @@ public class JDOConnection extends AbstractConnection
 			URLClassLoader persistenceEngineClassLoader = getPersistenceEngineClassLoader();
 
 			Properties persistenceProperties = PropertiesUtil.getProperties(getConnectionProperties(), PropertiesUtil.PREFIX_PERSISTENCE);
-			persistenceManagerFactory = JDOHelper.getPersistenceManagerFactory(persistenceProperties, persistenceEngineClassLoader);
+
+			ClassLoader backupContextClassLoader = Thread.currentThread().getContextClassLoader();
+			try {
+				Thread.currentThread().setContextClassLoader(persistenceEngineClassLoader);
+
+				persistenceManagerFactory = JDOHelper.getPersistenceManagerFactory(persistenceProperties, persistenceEngineClassLoader);
+				persistenceManager = persistenceManagerFactory.getPersistenceManager();
+			} finally {
+				Thread.currentThread().setContextClassLoader(backupContextClassLoader);
+			}
+
+			persistenceManager.currentTransaction().begin();
 
 			error = false;
 		} finally {
@@ -53,10 +67,20 @@ public class JDOConnection extends AbstractConnection
 	@Override
 	protected void _close() throws OdaException
 	{
+		if (persistenceManager != null) {
+			persistenceManager.currentTransaction().rollback();
+			persistenceManager.close();
+			persistenceManager = null;
+		}
+
 		if (persistenceManagerFactory != null) {
 			persistenceManagerFactory.close();
 			persistenceManagerFactory = null;
 		}
+	}
+
+	public PersistenceManager getPersistenceManager() {
+		return persistenceManager;
 	}
 
 	@Override
@@ -66,7 +90,31 @@ public class JDOConnection extends AbstractConnection
 
 	@Override
 	public IQuery newQuery(String dataSetType) throws OdaException {
-		throw new UnsupportedOperationException("NYI");
-//		return new JDOQuery(this);
+		// We ignore the dataSetType, because our driver supports only one type.
+		return new JDOQuery(this);
+	}
+
+	@Override
+	public void commit() throws OdaException
+	{
+		if (persistenceManager == null)
+			throw new IllegalStateException("persistenceManager == null");
+
+		persistenceManager.currentTransaction().commit();
+		persistenceManager.currentTransaction().begin();
+
+		super.commit();
+	}
+
+	@Override
+	public void rollback() throws OdaException
+	{
+		if (persistenceManager == null)
+			throw new IllegalStateException("persistenceManager == null");
+
+		persistenceManager.currentTransaction().rollback();
+		persistenceManager.currentTransaction().begin();
+
+		super.rollback();
 	}
 }

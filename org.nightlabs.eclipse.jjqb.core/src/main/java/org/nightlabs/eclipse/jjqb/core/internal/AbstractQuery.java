@@ -4,18 +4,16 @@ import java.math.BigDecimal;
 import java.sql.Date;
 import java.sql.Time;
 import java.sql.Timestamp;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
 import org.eclipse.datatools.connectivity.oda.IParameterMetaData;
-import org.eclipse.datatools.connectivity.oda.IQuery;
-import org.eclipse.datatools.connectivity.oda.IResultSet;
 import org.eclipse.datatools.connectivity.oda.IResultSetMetaData;
 import org.eclipse.datatools.connectivity.oda.OdaException;
 import org.eclipse.datatools.connectivity.oda.SortSpec;
 import org.eclipse.datatools.connectivity.oda.spec.QuerySpecification;
+import org.nightlabs.eclipse.jjqb.core.IConnection;
+import org.nightlabs.eclipse.jjqb.core.IQuery;
 
 public abstract class AbstractQuery implements IQuery
 {
@@ -31,8 +29,28 @@ public abstract class AbstractQuery implements IQuery
 
 	private String queryText;
 
-	public AbstractQuery(AbstractConnection connection) {
+	public AbstractQuery(AbstractConnection connection)
+	{
+		if (connection == null)
+			throw new IllegalArgumentException("connection == null");
+
 		this.connection = connection;
+	}
+
+	protected IConnection getConnection() {
+		return connection;
+	}
+
+	protected SortedMap<Integer, String> getParameterID2parameterName() {
+		return parameterID2parameterName;
+	}
+
+	protected SortedMap<Integer, Object> getParameterID2parameterValue() {
+		return parameterID2parameterValue;
+	}
+
+	protected SortedMap<String, Integer> getParameterName2parameterID() {
+		return parameterName2parameterID;
 	}
 
 	protected void setParameter(int parameterID, Object value)
@@ -113,19 +131,6 @@ public abstract class AbstractQuery implements IQuery
 	public IResultSetMetaData getMetaData() throws OdaException {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	public IResultSet executeQuery() throws OdaException {
-		if (queryText == null)
-			throw new IllegalStateException("prepare(...) was not yet called!");
-
-		// TODO execute query via PM!
-
-		ResultSetMetaData resultSetMetaData = new ResultSetMetaData(new ResultSetMetaData.Column("default")); // TODO correct meta data!
-		Collection<?> resultElements = Collections.emptyList(); // TODO correct result elements!
-		ResultSet resultSet = new ResultSet(resultSetMetaData, resultElements);
-		return resultSet;
 	}
 
 	@Override

@@ -14,6 +14,7 @@ import org.eclipse.datatools.connectivity.IConnectionProfile;
 import org.eclipse.datatools.connectivity.IManagedConnection;
 import org.eclipse.datatools.connectivity.ProfileManager;
 import org.eclipse.datatools.connectivity.oda.IQuery;
+import org.eclipse.datatools.connectivity.oda.IResultSet;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.SashForm;
@@ -144,6 +145,11 @@ public class JDOQueryBrowserEditor extends JDOQLEditor
 
 		IQuery query = rawConnection.newQuery("");
 		query.prepare(queryContext.getQueryText());
+		IResultSet resultSet = query.executeQuery();
+		while (resultSet.next()) {
+			System.out.println(resultSet.getObject(1));
+		}
+
 		// This works so far (though 'NYI', as the query stuff is not yet implemented).
 		// However, I think we need to use a separate connection per editor, because it seems commit/rollback is only manageable per
 		// connection. If we do this, though, we need a different life-cycle for the persistenceEngineClassLoader (we have to share the

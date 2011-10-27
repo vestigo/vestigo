@@ -88,7 +88,7 @@ public class ResultSet implements IResultSet
 		}
 
 		++rowIndex;
-		if (elementsIterator.hasNext() && rowIndex <= maxRows) {
+		if (elementsIterator.hasNext() && (maxRows == 0 || rowIndex <= maxRows)) {
 			element = elementsIterator.next();
 			return true;
 		}
