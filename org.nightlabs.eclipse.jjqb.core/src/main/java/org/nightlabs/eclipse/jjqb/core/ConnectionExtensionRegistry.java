@@ -51,17 +51,17 @@ extends AbstractEPProcessor
 			}
 		}
 
-		IConnectionExtensionFactory factory;
+		ConnectionExtensionFactory factory;
 		Object executableExtension = element.createExecutableExtension("class");
 		if ("connectionExtensionFactory".equals(element.getName())) {
-			if (!(executableExtension instanceof IConnectionExtensionFactory))
-				throw new IllegalStateException("Element name '" + element.getName() + "' is 'connectionExtensionFactory', but class " + element.getAttribute("class") + " does not implement IConnectionExtensionFactory!");
+			if (!(executableExtension instanceof ConnectionExtensionFactory))
+				throw new IllegalStateException("Element name '" + element.getName() + "' is 'connectionExtensionFactory', but class " + element.getAttribute("class") + " does not implement ConnectionExtensionFactory!");
 
-			factory = (IConnectionExtensionFactory) executableExtension;
+			factory = (ConnectionExtensionFactory) executableExtension;
 		}
 		else if ("connectionExtension".equals(element.getName())) {
-			if (!(executableExtension instanceof IConnectionExtension))
-				throw new IllegalStateException("Element name '" + element.getName() + "' is 'connectionExtension', but class " + element.getAttribute("class") + " does not implement IConnectionExtension!");
+			if (!(executableExtension instanceof ConnectionExtension))
+				throw new IllegalStateException("Element name '" + element.getName() + "' is 'connectionExtension', but class " + element.getAttribute("class") + " does not implement ConnectionExtension!");
 
 			factory = new DefaultConnectionExtensionFactory(element);
 		}
@@ -74,11 +74,11 @@ extends AbstractEPProcessor
 		factories.add(factory);
 	}
 
-	private Map<String, IConnectionExtensionFactory> id2factory = new HashMap<String, IConnectionExtensionFactory>();
-	private SortedSet<IConnectionExtensionFactory> factories = new TreeSet<IConnectionExtensionFactory>(
-			new Comparator<IConnectionExtensionFactory>() {
+	private Map<String, ConnectionExtensionFactory> id2factory = new HashMap<String, ConnectionExtensionFactory>();
+	private SortedSet<ConnectionExtensionFactory> factories = new TreeSet<ConnectionExtensionFactory>(
+			new Comparator<ConnectionExtensionFactory>() {
 				@Override
-				public int compare(IConnectionExtensionFactory o1, IConnectionExtensionFactory o2) {
+				public int compare(ConnectionExtensionFactory o1, ConnectionExtensionFactory o2) {
 					int result = o1.getOrderHint() < o2.getOrderHint() ? -1 : (o1.getOrderHint() > o2.getOrderHint() ? 1 : 0);
 					if (result != 0)
 						return result;
@@ -89,17 +89,17 @@ extends AbstractEPProcessor
 			}
 	);
 
-	private Map<IConnection, List<IConnectionExtension>> connection2connectionExtensionList = new HashMap<IConnection, List<IConnectionExtension>>();
+	private Map<Connection, List<ConnectionExtension>> connection2connectionExtensionList = new HashMap<Connection, List<ConnectionExtension>>();
 
-	public synchronized void bind(IConnection connection) {
-		List<IConnectionExtension> list = connection2connectionExtensionList.get(connection);
+	public synchronized void bind(Connection connection) {
+		List<ConnectionExtension> list = connection2connectionExtensionList.get(connection);
 		if (list != null)
 			throw new IllegalStateException("connection already bound!");
 
-		list = new ArrayList<IConnectionExtension>();
+		list = new ArrayList<ConnectionExtension>();
 
-		for (IConnectionExtensionFactory factory : factories) {
-			IConnectionExtension extension = factory.createConnectionExtension(connection);
+		for (ConnectionExtensionFactory factory : factories) {
+			ConnectionExtension extension = factory.createConnectionExtension(connection);
 			if (extension != null) {
 				if (extension.getConnectionExtensionFactory() == null)
 					extension.setConnectionExtensionFactory(factory);
@@ -114,13 +114,13 @@ extends AbstractEPProcessor
 		list = Collections.unmodifiableList(list);
 		connection2connectionExtensionList.put(connection, list);
 
-		for (IConnectionExtension extension : list)
+		for (ConnectionExtension extension : list)
 			extension.postBind();
 	}
 
-	public synchronized List<? extends IConnectionExtension> getConnectionExtensions(IConnection connection)
+	public synchronized List<? extends ConnectionExtension> getConnectionExtensions(Connection connection)
 	{
-		List<IConnectionExtension> list = connection2connectionExtensionList.get(connection);
+		List<ConnectionExtension> list = connection2connectionExtensionList.get(connection);
 		if (list == null)
 			return Collections.emptyList();
 		else

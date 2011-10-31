@@ -13,20 +13,17 @@
 
 package org.nightlabs.eclipse.jjqb.core.internal;
 
-import java.io.File;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLClassLoader;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
+import java.util.UUID;
 
 import org.eclipse.datatools.connectivity.oda.IDataSetMetaData;
 import org.eclipse.datatools.connectivity.oda.OdaException;
+import org.nightlabs.eclipse.jjqb.core.Connection;
+import org.nightlabs.eclipse.jjqb.core.ConnectionExtension;
 import org.nightlabs.eclipse.jjqb.core.ConnectionExtensionRegistry;
-import org.nightlabs.eclipse.jjqb.core.IConnection;
-import org.nightlabs.eclipse.jjqb.core.IConnectionExtension;
+import org.nightlabs.eclipse.jjqb.core.ConnectionProfile;
+import org.nightlabs.eclipse.jjqb.core.ConnectionProfileRegistry;
 import org.nightlabs.eclipse.jjqb.core.util.PropertiesUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,16 +31,24 @@ import org.slf4j.LoggerFactory;
 import com.ibm.icu.util.ULocale;
 
 /**
- * Base implementation for a {@link IConnection} used in the JDO/JPA data source.
+ * Base implementation for a {@link Connection} used in the JDO/JPA data source.
  *
  * @author Alexander Bieber <!-- alex [AT] nightlabs [DOT] de -->
  */
-public abstract class AbstractConnection implements IConnection
+public abstract class AbstractConnection implements Connection
 {
 	private static final Logger logger = LoggerFactory.getLogger(AbstractConnection.class);
 
+	private ConnectionProfile connectionProfile;
 	private Properties connectionProperties;
 	private Object appContext;
+
+	public AbstractConnection() { }
+
+	@Override
+	public ConnectionProfile getConnectionProfile() {
+		return connectionProfile;
+	}
 
 	@Override
 	public Properties getConnectionProperties() {
@@ -58,9 +63,17 @@ public abstract class AbstractConnection implements IConnection
 
 		this.connectionProperties = connProperties;
 
+		UUID profileID = PropertiesUtil.getProfileID(connProperties);
+		if (profileID == null)
+			throw new IllegalStateException("connProperties do not contain entry for key=\"" + PropertiesUtil.PROFILE_ID + "\"!");
+
+		this.connectionProfile = ConnectionProfileRegistry.sharedInstance().getConnectionProfile(this.getClass(), profileID);
+
+		connectionProfile.preConnectionOpen(this);
 		preOpen();
 		_open();
 		postOpen();
+		connectionProfile.postConnectionOpen(this);
 	}
 
 	@Override
@@ -70,7 +83,7 @@ public abstract class AbstractConnection implements IConnection
 
 	protected void preOpen() throws OdaException
 	{
-		for (IConnectionExtension extension : getConnectionExtensions())
+		for (ConnectionExtension extension : getConnectionExtensions())
 			extension.preOpen();
 	}
 
@@ -78,7 +91,7 @@ public abstract class AbstractConnection implements IConnection
 
 	protected void postOpen() throws OdaException
 	{
-		for (IConnectionExtension extension : getConnectionExtensions())
+		for (ConnectionExtension extension : getConnectionExtensions())
 			extension.postOpen();
 	}
 
@@ -92,29 +105,34 @@ public abstract class AbstractConnection implements IConnection
 	@Override
 	public final void close() throws OdaException
 	{
+		if (connectionProfile != null)
+			connectionProfile.preConnectionClose(this);
+
 		preClose();
 		_close();
 		postClose();
 
-		persistenceEngineClassLoader = null;
-		persistenceEngineClasspathURLList = null;
+		if (connectionProfile != null)
+			connectionProfile.postConnectionClose(this);
+
+		connectionProfile = null;
 		connectionProperties = null;
 	}
 
-	public List<? extends IConnectionExtension> getConnectionExtensions()
+	public List<? extends ConnectionExtension> getConnectionExtensions()
 	{
 		return ConnectionExtensionRegistry.sharedInstance().getConnectionExtensions(this);
 	}
 
 	protected void preClose() throws OdaException {
-		for (IConnectionExtension extension : getConnectionExtensions())
+		for (ConnectionExtension extension : getConnectionExtensions())
 			extension.preClose();
 	}
 
 	protected abstract void _close() throws OdaException;
 
 	protected void postClose() throws OdaException {
-		for (IConnectionExtension extension : getConnectionExtensions())
+		for (ConnectionExtension extension : getConnectionExtensions())
 			extension.postClose();
 	}
 
@@ -151,64 +169,6 @@ public abstract class AbstractConnection implements IConnection
 	@Override
 	public void setLocale(ULocale locale) throws OdaException {
 
-	}
-
-	private List<URL> persistenceEngineClasspathURLList;
-
-	@Override
-	public List<URL> getPersistenceEngineClasspathURLList() throws OdaException
-	{
-		assertOpen();
-
-		if (this.persistenceEngineClasspathURLList == null) {
-			Properties connProperties = getConnectionProperties();
-			List<String> persistenceEngineClasspathStringList = PropertiesUtil.getList(connProperties, PropertiesUtil.PREFIX_META_PERSISTENCE_ENGINE_CLASSPATH);
-			List<URL> persistenceEngineClasspathURLList = new ArrayList<URL>(persistenceEngineClasspathStringList.size());
-			for (String persistenceEngineClasspathElement : persistenceEngineClasspathStringList) {
-				logger.debug("open: adding persistenceEngineClasspathElement: " + persistenceEngineClasspathElement);
-
-				File f = new File(persistenceEngineClasspathElement);
-				if (!f.exists())
-					throw new OdaException(new IOException("persistenceEngineClasspathElement points to a non-existing file: " + f.getAbsolutePath()));
-
-				if (!f.canRead())
-					throw new OdaException(new IOException("persistenceEngineClasspathElement points to an existing but non-readable file: " + f.getAbsolutePath()));
-
-				try {
-					persistenceEngineClasspathURLList.add(f.toURI().toURL());
-				} catch (MalformedURLException e) {
-					throw new OdaException(e);
-				}
-			}
-			this.persistenceEngineClasspathURLList = persistenceEngineClasspathURLList;
-		}
-
-		return this.persistenceEngineClasspathURLList;
-	}
-
-	private URLClassLoader persistenceEngineClassLoader;
-
-//	public URLClassLoader getQueryExecClassLoader() throws OdaException
-//	{
-//		return getPersistenceEngineClassLoader();
-//	}
-
-	@Override
-	public URLClassLoader getPersistenceEngineClassLoader() throws OdaException
-	{
-		assertOpen();
-
-		if (this.persistenceEngineClassLoader == null) {
-			List<URL> persistenceEngineClasspathURLList = getPersistenceEngineClasspathURLList();
-
-			URLClassLoader persistenceEngineClassLoader = new URLClassLoader(
-					persistenceEngineClasspathURLList.toArray(new URL[persistenceEngineClasspathURLList.size()]),
-					this.getClass().getClassLoader()
-			);
-
-			this.persistenceEngineClassLoader = persistenceEngineClassLoader;
-		}
-		return this.persistenceEngineClassLoader;
 	}
 
 	protected static final void doNothing() { }

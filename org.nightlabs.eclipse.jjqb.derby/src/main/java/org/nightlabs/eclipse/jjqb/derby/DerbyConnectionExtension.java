@@ -24,7 +24,7 @@ public class DerbyConnectionExtension extends AbstractConnectionExtension {
 		// and search for extensions implementing it.
 
 		if (connectionURL != null && connectionURL.startsWith("jdbc:derby:")) {
-			URLClassLoader peClassLoader = getConnection().getPersistenceEngineClassLoader();
+			URLClassLoader peClassLoader = getConnection().getConnectionProfile().getClassLoaderManager().getPersistenceEngineClassLoader();
 			try {
 				String shutdownConnURL = connectionURL + (connectionURL.endsWith(";") ? "" : ";") + "shutdown=true";
 				driverManager_getConnection(shutdownConnURL, null, peClassLoader); // close our DB only

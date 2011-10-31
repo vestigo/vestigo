@@ -16,6 +16,7 @@ package org.nightlabs.eclipse.jjqb.ui;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import java.util.UUID;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridLayout;
@@ -23,7 +24,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.nightlabs.eclipse.jjqb.core.util.PropertiesUtil;
 
 /**
- * Composite to edit JDOConnection attributes like the
+ * Composite to edit JDOConnectionImpl attributes like the
  * connectionType and the custom properties for the connection.
  *
  * @author Alexander Bieber <!-- alex [AT] nightlabs [DOT] de -->
@@ -94,11 +95,30 @@ public class JDODriverPropertiesComposite extends Composite
 	 * Get the current custom connection properties set.
 	 * @return The current custom connection properties
 	 */
-	public Properties getConnectionPrivateProps() {
-		Properties persistenceProperties = propsFromMap(editPropertiesComposite.getProperties());
+	public Properties getConnectionPrivateProps()
+	{
 		Properties result = new Properties();
+
+		UUID profileID = connectionProperties == null ? null : PropertiesUtil.getProfileID(connectionProperties);
+		if (profileID == null)
+			profileID = UUID.randomUUID();
+
+		result.setProperty(PropertiesUtil.PROFILE_ID, profileID.toString());
+
+		Properties persistenceProperties = propsFromMap(editPropertiesComposite.getProperties());
 		PropertiesUtil.putAll(persistenceProperties, result, PropertiesUtil.PREFIX_PERSISTENCE);
 		PropertiesUtil.putList(editClasspathComposite.getClasspathElements(), result, PropertiesUtil.PREFIX_META_PERSISTENCE_ENGINE_CLASSPATH);
+
+		// TODO Report bug and put URL to report here!!! When bug is fixed, remove this workaround!
+		// BEGIN WORKAROUND
+		// There is a bug in org.eclipse.datatools.connectivity.ui.wizards.ProfilePropertyPage#performOk()
+		// which causes it not to recognize changes when only a property was removed. It only iterates all new
+		// properties in order to find out, if their value changed. Thus a missing entry in the new properties doesn't
+		// cause the 'changed' flag to be set to true. As long as this bug exists, we store the current timestamp
+		// to force the changed data to be written. Marco :-)
+		result.setProperty(PropertiesUtil.PREFIX_META + "workaround.timestamp", Long.toString(System.currentTimeMillis(), 36));
+		// END WORKAROUND
+
 		return result;
 	}
 }

@@ -23,25 +23,26 @@ import javax.jdo.PersistenceManagerFactory;
 import org.eclipse.datatools.connectivity.oda.IDataSetMetaData;
 import org.eclipse.datatools.connectivity.oda.IQuery;
 import org.eclipse.datatools.connectivity.oda.OdaException;
+import org.nightlabs.eclipse.jjqb.core.JDOConnection;
 import org.nightlabs.eclipse.jjqb.core.util.PropertiesUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class JDOConnection extends AbstractConnection
+public class JDOConnectionImpl extends AbstractConnection implements JDOConnection
 {
-	private static final Logger logger = LoggerFactory.getLogger(JDOConnection.class);
+	private static final Logger logger = LoggerFactory.getLogger(JDOConnectionImpl.class);
 	private PersistenceManagerFactory persistenceManagerFactory;
 
 	private PersistenceManager persistenceManager;
 
-	public JDOConnection() { }
+	public JDOConnectionImpl() { }
 
 	@Override
 	protected void _open() throws OdaException
 	{
 		boolean error = true;
 		try {
-			URLClassLoader persistenceEngineClassLoader = getPersistenceEngineClassLoader();
+			URLClassLoader persistenceEngineClassLoader = getConnectionProfile().getClassLoaderManager().getPersistenceEngineClassLoader();
 
 			Properties persistenceProperties = PropertiesUtil.getProperties(getConnectionProperties(), PropertiesUtil.PREFIX_PERSISTENCE);
 

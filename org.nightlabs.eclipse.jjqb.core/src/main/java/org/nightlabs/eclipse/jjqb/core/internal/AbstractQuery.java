@@ -12,10 +12,10 @@ import org.eclipse.datatools.connectivity.oda.IResultSetMetaData;
 import org.eclipse.datatools.connectivity.oda.OdaException;
 import org.eclipse.datatools.connectivity.oda.SortSpec;
 import org.eclipse.datatools.connectivity.oda.spec.QuerySpecification;
-import org.nightlabs.eclipse.jjqb.core.IConnection;
-import org.nightlabs.eclipse.jjqb.core.IQuery;
+import org.nightlabs.eclipse.jjqb.core.Connection;
+import org.nightlabs.eclipse.jjqb.core.Query;
 
-public abstract class AbstractQuery implements IQuery
+public abstract class AbstractQuery implements Query
 {
 	private AbstractConnection connection;
 
@@ -37,7 +37,7 @@ public abstract class AbstractQuery implements IQuery
 		this.connection = connection;
 	}
 
-	protected IConnection getConnection() {
+	protected Connection getConnection() {
 		return connection;
 	}
 

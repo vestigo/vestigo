@@ -1,12 +1,12 @@
 package org.nightlabs.eclipse.jjqb.core.internal;
 
-import org.eclipse.datatools.connectivity.oda.IConnection;
 import org.eclipse.datatools.connectivity.oda.LogConfiguration;
 import org.eclipse.datatools.connectivity.oda.OdaException;
+import org.nightlabs.eclipse.jjqb.core.Connection;
 import org.nightlabs.eclipse.jjqb.core.ConnectionExtensionRegistry;
-import org.nightlabs.eclipse.jjqb.core.IDriver;
+import org.nightlabs.eclipse.jjqb.core.Driver;
 
-public abstract class AbstractDriver implements IDriver {
+public abstract class AbstractDriver implements Driver {
 
 	public static final String DRIVER_NAME = "JDO-JPA-DataSource";
 	public static final String DRIVER_VERSION = "0.0.1";
@@ -46,11 +46,11 @@ public abstract class AbstractDriver implements IDriver {
 	}
 
 	@Override
-	public final IConnection getConnection(String connectionClassName) throws OdaException {
-		org.nightlabs.eclipse.jjqb.core.IConnection connection = _getConnection(connectionClassName);
+	public final Connection getConnection(String connectionClassName) throws OdaException {
+		org.nightlabs.eclipse.jjqb.core.Connection connection = _getConnection(connectionClassName);
 		ConnectionExtensionRegistry.sharedInstance().bind(connection);
 		return connection;
 	}
 
-	protected abstract org.nightlabs.eclipse.jjqb.core.IConnection _getConnection(String connectionClassName) throws OdaException;
+	protected abstract Connection _getConnection(String connectionClassName) throws OdaException;
 }

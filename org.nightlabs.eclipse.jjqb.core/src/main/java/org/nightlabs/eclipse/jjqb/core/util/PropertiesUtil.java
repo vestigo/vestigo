@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.TreeMap;
+import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -19,11 +20,17 @@ public class PropertiesUtil extends Properties
 	 * for the JDO/JPA implementation) and not passed to the persistence implementation itself.
 	 */
 	public static final String PREFIX_META = "meta.";
+
 	/**
 	 * Prefix for actual persistence properties. They are passed to the persistence implementation
 	 * (without the prefix).
 	 */
 	public static final String PREFIX_PERSISTENCE = "persistence.";
+
+	/**
+	 * The unique ID of the profile.
+	 */
+	public static final String PROFILE_ID = PREFIX_META + "profile.id";
 
 	/**
 	 * Prefix for the classpath elements that make up the classpath of the JDO/JPA persistence implementation.
@@ -59,5 +66,14 @@ public class PropertiesUtil extends Properties
 
 		List<String> resultList = new ArrayList<String>(resultMap.values());
 		return resultList;
+	}
+
+	public static UUID getProfileID(java.util.Properties properties)
+	{
+		String profileIDStr = properties.getProperty(PROFILE_ID);
+		if (profileIDStr == null)
+			return null;
+
+		return UUID.fromString(profileIDStr);
 	}
 }

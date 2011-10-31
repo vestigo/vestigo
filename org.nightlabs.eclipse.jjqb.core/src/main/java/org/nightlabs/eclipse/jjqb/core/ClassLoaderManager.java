@@ -7,13 +7,21 @@ import java.util.Properties;
 
 import org.eclipse.datatools.connectivity.oda.OdaException;
 
+public interface ClassLoaderManager
+{
+	void setConnectionProfile(ConnectionProfile connectionProfile);
 
-public interface IConnection extends org.eclipse.datatools.connectivity.oda.IConnection {
-
-	Properties getConnectionProperties();
+	ConnectionProfile getConnectionProfile();
 
 	List<URL> getPersistenceEngineClasspathURLList() throws OdaException;
 
 	URLClassLoader getPersistenceEngineClassLoader() throws OdaException;
 
+	boolean isOpen();
+
+	void open(Properties connProperties) throws OdaException;
+
+	void close() throws OdaException;
+
+	Properties getConnectionProperties();
 }

@@ -3,7 +3,9 @@ package org.nightlabs.eclipse.jjqb.ui.browser;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
@@ -13,6 +15,7 @@ import org.eclipse.datatools.connectivity.IConnection;
 import org.eclipse.datatools.connectivity.IConnectionProfile;
 import org.eclipse.datatools.connectivity.IManagedConnection;
 import org.eclipse.datatools.connectivity.ProfileManager;
+import org.eclipse.datatools.connectivity.internal.ConnectionProfile;
 import org.eclipse.datatools.connectivity.oda.IQuery;
 import org.eclipse.datatools.connectivity.oda.IResultSet;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -31,7 +34,8 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.PartInitException;
-import org.nightlabs.eclipse.jjqb.core.IJDODriver;
+import org.nightlabs.eclipse.jjqb.core.Connection;
+import org.nightlabs.eclipse.jjqb.core.JDODriver;
 import org.nightlabs.jdo.jdoqleditor.editor.JDOQLEditor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -117,24 +121,43 @@ public class JDOQueryBrowserEditor extends JDOQLEditor
 //		}
 //	};
 
+//	private static final boolean NEW_CONNECTION = true;
+
+	/**
+	 * Every editor uses its own connection (due to commit/rollback). This is the connection of this editor.
+	 */
+	private Map<ConnectionProfile, Connection> connectionProfile2connection = new HashMap<ConnectionProfile, Connection>();
+
 	private void executeQuery(QueryContext queryContext, IProgressMonitor monitor)
 	throws Exception
 	{
-//		ProfileConnectionManager profileConnectionManager = ProfileConnectionManager.getProfileConnectionManagerInstance();
-//		IConnection connection = profileConnectionManager.getConnection(connectionProfile, connectionFactoryID);
+		IConnectionProfile connectionProfile = queryContext.getConnectionProfile();
+		IConnection connection;
+//		if (NEW_CONNECTION) {
+			IManagedConnection managedConnection = connectionProfile.getManagedConnection(connectionFactoryID);
+			if (managedConnection.getConnection() == null)
+				connectionProfile.connectWithoutJob();
 
-		IManagedConnection managedConnection = queryContext.getConnectionProfile().getManagedConnection(connectionFactoryID);
-		IConnection connection = managedConnection.getConnection();
+			connection = connectionProfile.createConnection(connectionFactoryID);
+//		}
+//		else {
+//			IManagedConnection managedConnection = connectionProfile.getManagedConnection(connectionFactoryID);
+//			connection = managedConnection.getConnection();
+//			if (connection == null) {
+//				connectionProfile.connectWithoutJob();
+//				connection = managedConnection.getConnection();
+//			}
+//		}
 
-//		IConnection connection = profileConnectionManager.getConnection(connectionProfile, "org.eclipse.datatools.connectivity.oda.IConnection");
+//		Connection connection = profileConnectionManager.getConnection(connectionProfile, "org.eclipse.datatools.connectivity.oda.IConnection");
 //		if (connection == null) {
 //
 //		}
 //
-//		IConnection connection = connectionProfile.createConnection(connectionFactoryID);
+//		Connection connection = connectionProfile.createConnection(connectionFactoryID);
 //		try {
 //			org.eclipse.datatools.connectivity.oda.IConnection odaConnection = (org.eclipse.datatools.connectivity.oda.IConnection) connection.getRawConnection();
-//			IQuery query = odaConnection.newQuery("");
+//			Query query = odaConnection.newQuery("");
 //		} finally {
 //			connection.close();
 //		}
@@ -206,7 +229,7 @@ public class JDOQueryBrowserEditor extends JDOQLEditor
 	protected boolean isConnectionProfileCompatible(IConnectionProfile connectionProfile)
 	{
 		String providerId = connectionProfile.getProviderId();
-		return IJDODriver.PROVIDER_ID.equals(providerId);
+		return JDODriver.PROVIDER_ID.equals(providerId);
 	}
 
 	private void populateConnectionProfileCombo()

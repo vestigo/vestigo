@@ -8,7 +8,7 @@ import javax.jdo.Query;
 
 import org.eclipse.datatools.connectivity.oda.IResultSet;
 import org.eclipse.datatools.connectivity.oda.OdaException;
-import org.nightlabs.eclipse.jjqb.core.IConnection;
+import org.nightlabs.eclipse.jjqb.core.Connection;
 
 public class JDOQuery extends AbstractQuery {
 
@@ -22,15 +22,15 @@ public class JDOQuery extends AbstractQuery {
 		if (queryText == null)
 			throw new IllegalStateException("prepare(...) was not yet called!");
 
-		IConnection connection = getConnection();
-		JDOConnection jdoConnection = (JDOConnection) connection;
+		Connection connection = getConnection();
+		JDOConnectionImpl jdoConnection = (JDOConnectionImpl) connection;
 		jdoConnection.rollback(); // clean start => new tx
 		PersistenceManager persistenceManager = jdoConnection.getPersistenceManager();
 
 		Object jdoQueryResult;
 		ClassLoader backupContextClassLoader = Thread.currentThread().getContextClassLoader();
 		try {
-			Thread.currentThread().setContextClassLoader(jdoConnection.getPersistenceEngineClassLoader());
+			Thread.currentThread().setContextClassLoader(jdoConnection.getConnectionProfile().getClassLoaderManager().getPersistenceEngineClassLoader());
 			Query jdoQuery = persistenceManager.newQuery(queryText);
 
 			Object[] jdoQueryParameters = getParameterID2parameterValue().values().toArray();

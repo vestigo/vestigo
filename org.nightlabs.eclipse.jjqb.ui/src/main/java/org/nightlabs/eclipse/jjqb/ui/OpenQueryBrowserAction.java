@@ -21,8 +21,8 @@ import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchPartSite;
 import org.eclipse.ui.part.FileEditorInput;
-import org.nightlabs.eclipse.jjqb.core.IJDODriver;
-import org.nightlabs.eclipse.jjqb.core.IJPADriver;
+import org.nightlabs.eclipse.jjqb.core.JDODriver;
+import org.nightlabs.eclipse.jjqb.core.JPADriver;
 import org.nightlabs.eclipse.jjqb.ui.browser.JDOQueryBrowserEditor;
 
 public class OpenQueryBrowserAction
@@ -90,7 +90,7 @@ implements IObjectActionDelegate, IViewActionDelegate
 				if (element instanceof IConnectionProfile) {
 					IConnectionProfile connectionProfile = (IConnectionProfile) element;
 					String providerId = connectionProfile.getProviderId();
-					if (IJDODriver.PROVIDER_ID.equals(providerId) || IJPADriver.PROVIDER_ID.equals(providerId))
+					if (JDODriver.PROVIDER_ID.equals(providerId) || JPADriver.PROVIDER_ID.equals(providerId))
 						selectedConnectionProfiles.add(connectionProfile);
 				}
 			}

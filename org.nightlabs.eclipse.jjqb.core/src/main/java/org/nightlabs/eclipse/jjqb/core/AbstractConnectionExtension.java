@@ -2,26 +2,26 @@ package org.nightlabs.eclipse.jjqb.core;
 
 import org.eclipse.datatools.connectivity.oda.OdaException;
 
-public abstract class AbstractConnectionExtension implements IConnectionExtension {
+public abstract class AbstractConnectionExtension implements ConnectionExtension {
 
-	private IConnectionExtensionFactory connectionExtensionFactory;
-	private IConnection connection;
+	private ConnectionExtensionFactory connectionExtensionFactory;
+	private Connection connection;
 
 	@Override
-	public IConnection getConnection() {
+	public Connection getConnection() {
 		return connection;
 	}
 	@Override
-	public void setConnection(IConnection connection) {
+	public void setConnection(Connection connection) {
 		this.connection = connection;
 	}
 
 	@Override
-	public IConnectionExtensionFactory getConnectionExtensionFactory() {
+	public ConnectionExtensionFactory getConnectionExtensionFactory() {
 		return connectionExtensionFactory;
 	}
 	@Override
-	public void setConnectionExtensionFactory(IConnectionExtensionFactory connectionExtensionFactory) {
+	public void setConnectionExtensionFactory(ConnectionExtensionFactory connectionExtensionFactory) {
 		this.connectionExtensionFactory = connectionExtensionFactory;
 	}
 

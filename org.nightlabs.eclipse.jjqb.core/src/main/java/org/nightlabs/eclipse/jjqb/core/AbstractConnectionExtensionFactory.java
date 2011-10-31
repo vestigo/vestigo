@@ -1,7 +1,7 @@
 package org.nightlabs.eclipse.jjqb.core;
 
 public abstract class AbstractConnectionExtensionFactory
-implements IConnectionExtensionFactory
+implements ConnectionExtensionFactory
 {
 	private String id;
 	private int orderHint;

@@ -1,6 +1,6 @@
 package org.nightlabs.eclipse.jjqb.core;
 
-public interface IQuery
+public interface Query
 extends org.eclipse.datatools.connectivity.oda.IQuery
 {
 //	/**

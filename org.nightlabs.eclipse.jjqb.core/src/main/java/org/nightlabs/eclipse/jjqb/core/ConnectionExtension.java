@@ -2,13 +2,13 @@ package org.nightlabs.eclipse.jjqb.core;
 
 import org.eclipse.datatools.connectivity.oda.OdaException;
 
-public interface IConnectionExtension
+public interface ConnectionExtension
 {
-	void setConnectionExtensionFactory(IConnectionExtensionFactory factory);
-	IConnectionExtensionFactory getConnectionExtensionFactory();
+	void setConnectionExtensionFactory(ConnectionExtensionFactory factory);
+	ConnectionExtensionFactory getConnectionExtensionFactory();
 
-	void setConnection(IConnection connection);
-	IConnection getConnection();
+	void setConnection(Connection connection);
+	Connection getConnection();
 
 	void postBind();
 	void preOpen() throws OdaException;
