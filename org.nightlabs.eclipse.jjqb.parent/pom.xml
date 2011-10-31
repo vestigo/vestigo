@@ -106,6 +106,14 @@
 				<scope>test</scope>
 			</dependency>
 			<!-- END third party -->
+	
+			<!-- BEGIN org.nightlabs.**.* -->
+			<dependency>
+				<groupId>org.nightlabs.jdo</groupId>
+				<artifactId>org.nightlabs.jdo.jdoqleditor</artifactId>
+				<version>1.0.1-SNAPSHOT</version>
+			</dependency>
+			<!-- END org.nightlabs.**.* -->
 		</dependencies>
 	</dependencyManagement>
 

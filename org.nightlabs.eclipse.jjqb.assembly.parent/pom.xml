@@ -21,6 +21,7 @@
 	</properties>
 
 	<dependencies>
+		<!-- BEGIN org.nightlabs.eclipse.* -->
 		<dependency>
 			<groupId>org.nightlabs.eclipse</groupId>
 			<artifactId>${org.nightlabs.eclipse.compatibility.artifactId}</artifactId>
@@ -37,6 +38,9 @@
 			<groupId>org.nightlabs.eclipse</groupId>
 			<artifactId>org.nightlabs.eclipse.extension</artifactId>
 		</dependency>
+		<!-- END org.nightlabs.eclipse.* -->
+		
+		<!-- BEGIN org.nightlabs.**.* -->
 		<dependency>
 			<groupId>org.nightlabs</groupId>
 			<artifactId>org.nightlabs.util</artifactId>
@@ -45,6 +49,12 @@
 			<groupId>org.nightlabs</groupId>
 			<artifactId>org.nightlabs.progress</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.nightlabs.jdo</groupId>
+			<artifactId>org.nightlabs.jdo.jdoqleditor</artifactId>
+		</dependency>
+		<!-- END org.nightlabs.**.* -->
+		
 <!--
 We use the Eclipse JEE IDE as platform, hence we don't need to add the ODA stuff - it's already included.
 Adding it again causes a conflict (can have only one singleton-marked plugin).

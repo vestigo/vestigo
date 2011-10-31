@@ -79,7 +79,6 @@ temporarily... because of exampleeditor - we should switch back to the property,
 		<dependency>
 			<groupId>org.nightlabs.jdo</groupId>
 			<artifactId>org.nightlabs.jdo.jdoqleditor</artifactId>
-			<version>1.0.1-SNAPSHOT</version> <!-- TODO move to parent! -->
 		</dependency>
 		<!-- END org.nightlabs.**.* -->
 	</dependencies>
