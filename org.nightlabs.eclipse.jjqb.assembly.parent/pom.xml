@@ -32,6 +32,10 @@
 		</dependency>
 		<dependency>
 			<groupId>org.nightlabs.eclipse.jjqb</groupId>
+			<artifactId>org.nightlabs.eclipse.jjqb.derby</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.nightlabs.eclipse.jjqb</groupId>
 			<artifactId>org.nightlabs.eclipse.jjqb.ui</artifactId>
 		</dependency>
 		<dependency>

@@ -118,6 +118,11 @@ public class ClassLoaderManagerImpl implements ClassLoaderManager
 //		return getPersistenceEngineClassLoader();
 //	}
 
+// TODO need a separate class loader for JDBC!!!
+// see: http://www.szegedi.org/articles/memleak2.html
+// "Never, ever, load a JDBC driver through a class loader that is meant to be eventually thrown away.
+// Move the JDBC driver classes into a location where a permanent class loader (system or application
+// class loader) will pick it up."
 	@Override
 	public URLClassLoader getPersistenceEngineClassLoader() throws OdaException
 	{
