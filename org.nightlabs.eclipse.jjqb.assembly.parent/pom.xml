@@ -16,6 +16,7 @@
 		<assembly.directory>${project.build.directory}/assembly</assembly.directory>
 		<assembly.eclipse.directory>${assembly.directory}/eclipse</assembly.eclipse.directory>
 		<assembly.plugins.directory>${assembly.eclipse.directory}/plugins</assembly.plugins.directory>
+		<assembly.dropins.directory>${assembly.eclipse.directory}/dropins</assembly.dropins.directory>
 		<skipPluginExecution>true</skipPluginExecution>
 		<eclipse.babel.artifactIds>org.eclipse.babel.eclipse-de</eclipse.babel.artifactIds>
 	</properties>
@@ -210,7 +211,7 @@ Marco :-)
 							</goals>
 							<configuration>
 								<skip>${skipPluginExecution}</skip>
-								<outputDirectory>${assembly.plugins.directory}</outputDirectory>
+								<outputDirectory>${assembly.dropins.directory}</outputDirectory>
 								<includeTypes>jar</includeTypes>
 								<excludeTransitive>true</excludeTransitive>
 							</configuration>
@@ -244,6 +245,25 @@ Marco :-)
 								</resources>
 								<outputDirectory>${assembly.directory}</outputDirectory>
 								<overwrite>true</overwrite>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<artifactId>maven-antrun-plugin</artifactId>
+					<version>1.7</version>
+					<executions>
+						<execution>
+							<id>make-eclipse-executable</id>
+							<phase>package</phase> <!-- append to the packaging phase. -->
+							<goals>
+								<goal>run</goal>
+							</goals>
+							<inherited>false</inherited>
+							<configuration>
+								<target>
+									<chmod file="${assembly.eclipse.directory}/eclipse" perm="ugo+x"/>
+								</target>
 							</configuration>
 						</execution>
 					</executions>
