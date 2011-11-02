@@ -45,7 +45,7 @@
 
 	<properties>
 		<jjqb.version>${project.version}</jjqb.version>
-		<jersey.version>1.6</jersey.version>
+		<jersey.version>1.9</jersey.version>
 
 		<!-- Always aggregate. -->
 		<aggregate>true</aggregate>

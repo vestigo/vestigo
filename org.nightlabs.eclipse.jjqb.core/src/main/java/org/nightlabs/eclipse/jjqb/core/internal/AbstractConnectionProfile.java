@@ -1,5 +1,6 @@
 package org.nightlabs.eclipse.jjqb.core.internal;
 
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
@@ -8,9 +9,12 @@ import org.eclipse.datatools.connectivity.oda.OdaException;
 import org.nightlabs.eclipse.jjqb.core.ClassLoaderManager;
 import org.nightlabs.eclipse.jjqb.core.Connection;
 import org.nightlabs.eclipse.jjqb.core.ConnectionProfile;
+import org.nightlabs.eclipse.jjqb.core.internal.childvm.ChildVMServer;
 
 public abstract class AbstractConnectionProfile implements ConnectionProfile
 {
+	private ChildVMServer childVMServer = new ChildVMServer();
+
 	public AbstractConnectionProfile()
 	{
 		classLoaderManager = new ClassLoaderManagerImpl();
@@ -42,6 +46,11 @@ public abstract class AbstractConnectionProfile implements ConnectionProfile
 	@Override
 	public synchronized void preConnectionOpen(Connection connection) throws OdaException {
 		if (connectionsOpening.isEmpty() && connectionsOpened.isEmpty() && connectionsClosing.isEmpty()) {
+			try {
+				childVMServer.start();
+			} catch (IOException e) {
+				throw new OdaException(e);
+			}
 			classLoaderManager.open(connection.getConnectionProperties());
 		}
 		connectionsOpening.add(connection);
@@ -63,6 +72,11 @@ public abstract class AbstractConnectionProfile implements ConnectionProfile
 	public synchronized void postConnectionClose(Connection connection) throws OdaException {
 		connectionsClosing.remove(connection);
 		if (connectionsOpening.isEmpty() && connectionsOpened.isEmpty() && connectionsClosing.isEmpty()) {
+			try {
+				childVMServer.stop();
+			} catch (IOException e) {
+				throw new OdaException(e);
+			}
 			classLoaderManager.close();
 		}
 	}

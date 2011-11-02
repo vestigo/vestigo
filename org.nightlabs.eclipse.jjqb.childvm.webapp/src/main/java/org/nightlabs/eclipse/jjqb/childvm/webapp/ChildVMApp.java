@@ -12,7 +12,7 @@ public class ChildVMApp
 extends Application
 {
 	private static final Class<?>[] serviceClassesArray = {
-//		TestService.class
+		IsOnlineService.class
 	};
 
 	private static final Set<Class<?>> serviceClassesSet;
