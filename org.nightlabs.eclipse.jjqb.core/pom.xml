@@ -32,17 +32,68 @@
 		</dependency>
 
 		<dependency>
+			<groupId>org.nightlabs</groupId>
+			<artifactId>org.nightlabs.util</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.nightlabs.eclipse</groupId>
 			<artifactId>org.nightlabs.eclipse.extension</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.nightlabs</groupId>
-			<artifactId>org.nightlabs.util</artifactId>
+			<groupId>org.nightlabs.eclipse.jjqb</groupId>
+			<artifactId>org.nightlabs.eclipse.jjqb.childvm.shared</artifactId>
+		</dependency>
+
+		<dependency>
+			<!-- force this to already be compiled before => make sure we copy the up-to-date-dependency. -->
+			<groupId>org.nightlabs.eclipse.jjqb</groupId>
+			<artifactId>org.nightlabs.eclipse.jjqb.childvm.webapp</artifactId>
+			<type>war</type>
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 
 	<build>
 		<plugins>
+			<plugin>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-dependencies-to-resources</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>copy</goal>
+						</goals>
+						<configuration>
+							<artifactItems>
+								<artifactItem>
+									<!--
+									TODO slim this down. Don't use the jetty-distribution, but maybe a custom assembly of only those
+									jetty-artifacts that we really need! Marco :-)
+									-->
+									<groupId>org.eclipse.jetty</groupId>
+									<artifactId>jetty-distribution</artifactId>
+									<type>zip</type>
+									<version>8.0.4.v20111024</version>
+									<overWrite>false</overWrite>
+									<outputDirectory>src/main/resources/org/nightlabs/eclipse/jjqb/core/internal/childvm/resource</outputDirectory>
+<!--									<destFileName>jetty.zip</destFileName> -->
+								</artifactItem>
+								<artifactItem>
+									<groupId>org.nightlabs.eclipse.jjqb</groupId>
+									<artifactId>org.nightlabs.eclipse.jjqb.childvm.webapp</artifactId>
+									<type>war</type>
+									<version>${project.version}</version>
+									<overWrite>true</overWrite>
+									<outputDirectory>src/main/resources/org/nightlabs/eclipse/jjqb/core/internal/childvm/resource</outputDirectory>
+								</artifactItem>
+							</artifactItems>
+							<stripVersion>true</stripVersion>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
 			<plugin>
 				<groupId>org.apache.felix</groupId>
 				<artifactId>maven-bundle-plugin</artifactId>

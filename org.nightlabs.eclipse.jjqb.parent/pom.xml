@@ -45,6 +45,7 @@
 
 	<properties>
 		<jjqb.version>${project.version}</jjqb.version>
+		<jersey.version>1.6</jersey.version>
 
 		<!-- Always aggregate. -->
 		<aggregate>true</aggregate>
@@ -53,6 +54,17 @@
 	<dependencyManagement>
 		<dependencies>
 			<!-- BEGIN org.nightlabs.eclipse.jjqb -->
+			<dependency>
+				<groupId>org.nightlabs.eclipse.jjqb</groupId>
+				<artifactId>org.nightlabs.eclipse.jjqb.childvm.shared</artifactId>
+				<version>${jjqb.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.nightlabs.eclipse.jjqb</groupId>
+				<artifactId>org.nightlabs.eclipse.jjqb.childvm.webapp</artifactId>
+				<type>war</type>
+				<version>${jjqb.version}</version>
+			</dependency>
 			<dependency>
 				<groupId>org.nightlabs.eclipse.jjqb</groupId>
 				<artifactId>org.nightlabs.eclipse.jjqb.core</artifactId>
@@ -104,6 +116,29 @@
 			<!-- END org.eclipse -->
 
 			<!-- BEGIN third party -->
+			<dependency>
+				<groupId>com.sun.jersey</groupId>
+				<artifactId>jersey-client</artifactId>
+				<version>${jersey.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.sun.jersey</groupId>
+				<artifactId>jersey-core</artifactId>
+				<version>${jersey.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.sun.jersey</groupId>
+				<artifactId>jersey-server</artifactId>
+				<version>${jersey.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>servlet-api</artifactId>
+				<version>2.5</version>
+				<scope>provided</scope>
+			</dependency>
+
 			<dependency>
 				<groupId>junit</groupId>
 				<artifactId>junit</artifactId>
