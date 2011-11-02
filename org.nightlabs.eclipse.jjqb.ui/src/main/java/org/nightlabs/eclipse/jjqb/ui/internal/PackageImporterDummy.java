@@ -2,9 +2,15 @@ package org.nightlabs.eclipse.jjqb.ui.internal;
 
 public class PackageImporterDummy
 {
+	org.eclipse.core.runtime.jobs.IJobChangeListener jobChangeListener;
+
 	org.eclipse.datatools.connectivity.oda.IConnection connection;
 	org.eclipse.datatools.connectivity.oda.design.ui.wizards.DataSetWizard dataSetWizard;
 	org.eclipse.datatools.connectivity.oda.profile.OdaConnectionFactory odaConnectionFactory;
 
-	org.eclipse.core.runtime.jobs.IJobChangeListener jobChangeListener;
+//	org.eclipse.ui.editors.text.TextEditor textEditor;
+//	org.eclipse.ui.part.EditorPart editorPart;
+//	org.eclipse.ui.texteditor.AbstractDecoratedTextEditor abstractDecoratedTextEditor;
+//
+//	org.nightlabs.jdo.jdoqleditor.JDOQLEditorPlugin jdoqlEditorPlugin;
 }
