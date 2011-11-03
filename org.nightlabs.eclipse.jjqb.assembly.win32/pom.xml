@@ -43,9 +43,32 @@
 			<plugin>
 				<artifactId>maven-antrun-plugin</artifactId>
 			</plugin>
+<!--
+  now in extra profile to be able to suppress it.
 			<plugin>
 				<artifactId>maven-assembly-plugin</artifactId>
 			</plugin>
+-->
 		</plugins>
 	</build>
+	
+	<profiles>
+		<profile>
+			<id>assembly-packaging</id>
+			<activation>
+				<property>
+					<name>assembly.skip</name>
+					<value>!true</value>
+				</property>
+			</activation>
+
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-assembly-plugin</artifactId>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 </project>
