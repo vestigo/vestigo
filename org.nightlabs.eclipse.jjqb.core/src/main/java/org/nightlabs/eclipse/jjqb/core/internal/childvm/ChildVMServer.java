@@ -432,7 +432,7 @@ implements ChildVM
 	}
 
 	@Override
-	public void putConnectionProfileDTO(ConnectionProfileDTO connectionProfileDTO)
+	public void putConnectionProfileDTO(ConnectionProfileDTO connectionProfileDTO) throws ChildVMException
 	{
 		try {
 			if (connectionProfileDTO == null)
@@ -446,7 +446,7 @@ implements ChildVM
 	}
 
 	@Override
-	public Collection<ConnectionProfileDTO> getConnectionProfileDTOs()
+	public Collection<ConnectionProfileDTO> getConnectionProfileDTOs() throws ChildVMException
 	{
 		try {
 			ConnectionProfileDTOList list = getChildVMAppJaxbBuilder(ConnectionProfileDTO.class).get(ConnectionProfileDTOList.class);
@@ -458,7 +458,7 @@ implements ChildVM
 	}
 
 	@Override
-	public ConnectionProfileDTO getConnectionProfileDTO(String profileID)
+	public ConnectionProfileDTO getConnectionProfileDTO(String profileID) throws ChildVMException
 	{
 		try {
 			if (profileID == null)
@@ -473,7 +473,7 @@ implements ChildVM
 	}
 
 	@Override
-	public Collection<ConnectionDTO> getConnectionDTOs(String profileID)
+	public Collection<ConnectionDTO> getConnectionDTOs(String profileID) throws ChildVMException
 	{
 		try {
 			ConnectionDTOList list = getChildVMAppJaxbBuilder(ConnectionDTO.class, profileID == null ? null : new PathSegment(profileID)).get(ConnectionDTOList.class);
@@ -485,7 +485,7 @@ implements ChildVM
 	}
 
 	@Override
-	public void putConnectionDTO(ConnectionDTO connectionDTO)
+	public void putConnectionDTO(ConnectionDTO connectionDTO) throws ChildVMException
 	{
 		try {
 			if (connectionDTO == null)
@@ -530,7 +530,7 @@ implements ChildVM
 	}
 
 	@Override
-	public void deleteConnectionDTO(UUID connectionID)
+	public void deleteConnectionDTO(UUID connectionID) throws ChildVMException
 	{
 		try {
 			if (connectionID == null)

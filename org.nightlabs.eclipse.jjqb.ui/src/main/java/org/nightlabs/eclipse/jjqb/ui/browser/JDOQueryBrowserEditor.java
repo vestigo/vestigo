@@ -4,23 +4,29 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.core.runtime.jobs.Job;
-import org.eclipse.datatools.connectivity.IConnection;
+import org.eclipse.datatools.connectivity.ConnectEvent;
 import org.eclipse.datatools.connectivity.IConnectionProfile;
 import org.eclipse.datatools.connectivity.IManagedConnection;
+import org.eclipse.datatools.connectivity.IManagedConnectionOfflineListener;
+import org.eclipse.datatools.connectivity.ManagedConnectionAdapter;
 import org.eclipse.datatools.connectivity.ProfileManager;
 import org.eclipse.datatools.connectivity.oda.IQuery;
 import org.eclipse.datatools.connectivity.oda.IResultSet;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.SashForm;
+import org.eclipse.swt.events.DisposeEvent;
+import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
@@ -56,6 +62,13 @@ public class JDOQueryBrowserEditor extends JDOQLEditor
 	@Override
 	public void createPartControl(Composite parent)
 	{
+		parent.addDisposeListener(new DisposeListener() {
+			@Override
+			public void widgetDisposed(DisposeEvent event) {
+				onClose();
+			}
+		});
+
 		partControl = new SashForm(parent, SWT.VERTICAL);
 		queryEditorComposite = new Composite(partControl, SWT.BORDER);
 		queryEditorComposite.setLayout(new GridLayout());
@@ -125,7 +138,33 @@ public class JDOQueryBrowserEditor extends JDOQLEditor
 	/**
 	 * Every editor uses its own connection (due to commit/rollback). This is the connection of this editor.
 	 */
-	private Map<IConnectionProfile, org.eclipse.datatools.connectivity.oda.IConnection> connectionProfile2connection = new HashMap<IConnectionProfile, org.eclipse.datatools.connectivity.oda.IConnection>();
+	private Map<IConnectionProfile, org.eclipse.datatools.connectivity.IConnection> connectionProfile2connection = new HashMap<IConnectionProfile, org.eclipse.datatools.connectivity.IConnection>();
+
+	private Set<IManagedConnection> managedConnectionsWithRegisteredListener = new HashSet<IManagedConnection>();
+
+	private IManagedConnectionOfflineListener managedConnectionListener = new ManagedConnectionAdapter()
+	{
+		@Override
+		public void aboutToClose(ConnectEvent event) {
+			IManagedConnection managedConnection = event.getConnection();
+			IConnectionProfile connectionProfile = event.getConnectionProfile();
+
+			org.eclipse.datatools.connectivity.IConnection connection;
+			synchronized (JDOQueryBrowserEditor.this) {
+				connection = connectionProfile2connection.remove(connectionProfile);
+				managedConnection.removeConnectionListener(this);
+				managedConnectionsWithRegisteredListener.remove(managedConnection);
+			}
+
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (Exception e) {
+					logger.error("connection.close() failed: " + e, e);
+				}
+			}
+		}
+	};
 
 	private synchronized org.eclipse.datatools.connectivity.oda.IConnection getConnection(IConnectionProfile connectionProfile, IProgressMonitor monitor)
 	{
@@ -133,16 +172,18 @@ public class JDOQueryBrowserEditor extends JDOQLEditor
 		if (managedConnection.getConnection() == null)
 			connectionProfile.connectWithoutJob();
 
-		org.eclipse.datatools.connectivity.oda.IConnection connection = connectionProfile2connection.get(connectionProfile);
+		if (managedConnectionsWithRegisteredListener.add(managedConnection))
+			managedConnection.addConnectionListener(managedConnectionListener);
+
+		org.eclipse.datatools.connectivity.IConnection connection = connectionProfile2connection.get(connectionProfile);
 		if (connection == null) {
-			IConnection dtConnection = connectionProfile.createConnection(connectionFactoryID);
-			if (dtConnection == null)
+			connection = connectionProfile.createConnection(connectionFactoryID);
+			if (connection == null)
 				throw new IllegalStateException("connectionProfile.createConnection(...) returned null");
 
-			connection = (org.eclipse.datatools.connectivity.oda.IConnection) dtConnection.getRawConnection();
 			connectionProfile2connection.put(connectionProfile, connection);
 		}
-		return connection;
+		return (org.eclipse.datatools.connectivity.oda.IConnection) connection.getRawConnection();
 	}
 
 	private void executeQuery(QueryContext queryContext, IProgressMonitor monitor)
@@ -205,6 +246,21 @@ public class JDOQueryBrowserEditor extends JDOQLEditor
 	}
 
 	private Display display;
+
+	protected synchronized void onClose()
+	{
+		logger.info("onClose: entered");
+
+		for (org.eclipse.datatools.connectivity.IConnection connection : connectionProfile2connection.values()) {
+			connection.close();
+		}
+		connectionProfile2connection.clear();
+
+		for (IManagedConnection managedConnection : managedConnectionsWithRegisteredListener) {
+			managedConnection.removeConnectionListener(managedConnectionListener);
+		}
+		managedConnectionsWithRegisteredListener.clear();
+	}
 
 	private void executeQuery()
 	{

@@ -6,17 +6,17 @@ import java.util.UUID;
 import org.nightlabs.eclipse.jjqb.childvm.shared.ConnectionDTO;
 import org.nightlabs.eclipse.jjqb.childvm.shared.ConnectionProfileDTO;
 
-public interface ChildVM {
+public interface ChildVM
+{
+	void putConnectionProfileDTO(ConnectionProfileDTO connectionProfileDTO) throws ChildVMException;
 
-	void putConnectionProfileDTO(ConnectionProfileDTO connectionProfileDTO);
+	Collection<ConnectionProfileDTO> getConnectionProfileDTOs() throws ChildVMException;
 
-	Collection<ConnectionProfileDTO> getConnectionProfileDTOs();
+	ConnectionProfileDTO getConnectionProfileDTO(String profileID) throws ChildVMException;
 
-	ConnectionProfileDTO getConnectionProfileDTO(String profileID);
+	void putConnectionDTO(ConnectionDTO connectionDTO) throws ChildVMException;
 
-	void putConnectionDTO(ConnectionDTO connectionDTO);
+	void deleteConnectionDTO(UUID connectionID) throws ChildVMException;
 
-	void deleteConnectionDTO(UUID connectionID);
-
-	Collection<ConnectionDTO> getConnectionDTOs(String profileID);
+	Collection<ConnectionDTO> getConnectionDTOs(String profileID) throws ChildVMException;
 }

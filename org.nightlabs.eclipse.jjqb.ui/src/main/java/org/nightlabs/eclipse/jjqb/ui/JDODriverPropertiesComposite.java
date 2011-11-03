@@ -71,9 +71,11 @@ public class JDODriverPropertiesComposite extends Composite
 	private static Properties propsFromMap(Map<?, ?> map)
 	{
 		Properties properties = new Properties();
-		for (Map.Entry<?, ?> me : map.entrySet()) {
-			if (me.getKey() != null)
-				properties.setProperty(me.getKey().toString(), me.getValue() == null ? "" : me.getValue().toString());
+		if (map != null) {
+			for (Map.Entry<?, ?> me : map.entrySet()) {
+				if (me.getKey() != null)
+					properties.setProperty(me.getKey().toString(), me.getValue() == null ? "" : me.getValue().toString());
+			}
 		}
 		return properties;
 	}
