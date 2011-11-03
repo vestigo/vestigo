@@ -131,7 +131,7 @@ implements ChildVM
 		logger.debug("deployLog4jProperties: serverDirectory='{}'", webServerDirectory.getAbsolutePath());
 
 		String fileName = "log4j.properties";
-		String resourceName = "resource/" + fileName;
+		String resourceName = "resource/jetty/resources/" + fileName;
 		File deploymentDir = new File(webServerDirectory, "resources");
 		File destinationFile = new File(deploymentDir, fileName);
 		IOUtil.copyResource(ChildVMServer.class, resourceName, destinationFile);
