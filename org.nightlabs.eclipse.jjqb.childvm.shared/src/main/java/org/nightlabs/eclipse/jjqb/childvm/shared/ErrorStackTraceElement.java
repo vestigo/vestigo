@@ -1,7 +1,12 @@
 package org.nightlabs.eclipse.jjqb.childvm.shared;
 
+import java.io.Serializable;
+
 public class ErrorStackTraceElement
+implements Serializable
 {
+	private static final long serialVersionUID = 1L;
+
 	private String className;
 	private String fileName;
 	private int lineNumber;

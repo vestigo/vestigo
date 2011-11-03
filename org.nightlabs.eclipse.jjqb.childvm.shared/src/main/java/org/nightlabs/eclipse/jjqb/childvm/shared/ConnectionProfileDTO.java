@@ -1,5 +1,6 @@
 package org.nightlabs.eclipse.jjqb.childvm.shared;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -7,7 +8,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public abstract class ConnectionProfileDTO
+implements Serializable
 {
+	private static final long serialVersionUID = 1L;
+
 	private String profileID;
 	private Map<String, String> connectionProperties = new HashMap<String, String>();
 

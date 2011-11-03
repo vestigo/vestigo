@@ -19,7 +19,8 @@ import org.slf4j.LoggerFactory;
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
  */
 @Provider
-public final class JAXBContextResolver implements ContextResolver<JAXBContext>
+public final class JAXBContextResolver
+implements ContextResolver<JAXBContext>
 {
 	private static final Logger logger = LoggerFactory.getLogger(JAXBContextResolver.class);
 
