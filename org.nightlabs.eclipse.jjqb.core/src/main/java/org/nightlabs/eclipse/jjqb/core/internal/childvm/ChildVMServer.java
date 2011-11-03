@@ -1,9 +1,11 @@
 package org.nightlabs.eclipse.jjqb.core.internal.childvm;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.URL;
@@ -21,11 +23,14 @@ import org.nightlabs.eclipse.jjqb.childvm.shared.ConnectionProfileDTO;
 import org.nightlabs.eclipse.jjqb.childvm.shared.ConnectionProfileDTOList;
 import org.nightlabs.eclipse.jjqb.childvm.shared.JAXBContextResolver;
 import org.nightlabs.eclipse.jjqb.core.childvm.ChildVM;
+import org.nightlabs.eclipse.jjqb.core.childvm.ChildVMException;
 import org.nightlabs.util.IOUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.sun.jersey.api.client.Client;
+import com.sun.jersey.api.client.ClientResponse;
+import com.sun.jersey.api.client.UniformInterfaceException;
 import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.api.client.config.ClientConfig;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
@@ -429,51 +434,112 @@ implements ChildVM
 	@Override
 	public void putConnectionProfileDTO(ConnectionProfileDTO connectionProfileDTO)
 	{
-		if (connectionProfileDTO == null)
-			throw new IllegalArgumentException("connectionProfileDTO == null");
+		try {
+			if (connectionProfileDTO == null)
+				throw new IllegalArgumentException("connectionProfileDTO == null");
 
-		getChildVMAppResource(ConnectionProfileDTO.class).put(connectionProfileDTO);
+			getChildVMAppResource(ConnectionProfileDTO.class).put(connectionProfileDTO);
+		} catch (UniformInterfaceException x) {
+			handleUniformInterfaceException(x);
+			throw x;
+		}
 	}
 
 	@Override
 	public Collection<ConnectionProfileDTO> getConnectionProfileDTOs()
 	{
-		ConnectionProfileDTOList list = getChildVMAppJaxbBuilder(ConnectionProfileDTO.class).get(ConnectionProfileDTOList.class);
-		return list.getElements();
+		try {
+			ConnectionProfileDTOList list = getChildVMAppJaxbBuilder(ConnectionProfileDTO.class).get(ConnectionProfileDTOList.class);
+			return list.getElements();
+		} catch (UniformInterfaceException x) {
+			handleUniformInterfaceException(x);
+			throw x;
+		}
 	}
 
 	@Override
 	public ConnectionProfileDTO getConnectionProfileDTO(String profileID)
 	{
-		if (profileID == null)
-			throw new IllegalArgumentException("profileID == null");
+		try {
+			if (profileID == null)
+				throw new IllegalArgumentException("profileID == null");
 
-		ConnectionProfileDTO dto = getChildVMAppJaxbBuilder(ConnectionProfileDTO.class, new PathSegment(profileID)).get(ConnectionProfileDTO.class);
-		return dto;
+			ConnectionProfileDTO dto = getChildVMAppJaxbBuilder(ConnectionProfileDTO.class, new PathSegment(profileID)).get(ConnectionProfileDTO.class);
+			return dto;
+		} catch (UniformInterfaceException x) {
+			handleUniformInterfaceException(x);
+			throw x;
+		}
 	}
 
 	@Override
 	public Collection<ConnectionDTO> getConnectionDTOs(String profileID)
 	{
-		ConnectionDTOList list = getChildVMAppJaxbBuilder(ConnectionDTO.class, profileID == null ? null : new PathSegment(profileID)).get(ConnectionDTOList.class);
-		return list.getElements();
+		try {
+			ConnectionDTOList list = getChildVMAppJaxbBuilder(ConnectionDTO.class, profileID == null ? null : new PathSegment(profileID)).get(ConnectionDTOList.class);
+			return list.getElements();
+		} catch (UniformInterfaceException x) {
+			handleUniformInterfaceException(x);
+			throw x;
+		}
 	}
 
 	@Override
 	public void putConnectionDTO(ConnectionDTO connectionDTO)
 	{
-		if (connectionDTO == null)
-			throw new IllegalArgumentException("connectionDTO == null");
+		try {
+			if (connectionDTO == null)
+				throw new IllegalArgumentException("connectionDTO == null");
 
-		getChildVMAppResource(ConnectionDTO.class).put(connectionDTO);
+			getChildVMAppResource(ConnectionDTO.class).put(connectionDTO);
+		} catch (UniformInterfaceException x) {
+			handleUniformInterfaceException(x);
+			throw x;
+		}
+	}
+
+	private void handleUniformInterfaceException(UniformInterfaceException x)
+	{
+		logger.error("handleException: " + x);
+		org.nightlabs.eclipse.jjqb.childvm.shared.Error error = null;
+		try {
+			ClientResponse clientResponse = x.getResponse();
+
+			clientResponse.bufferEntity();
+			if (clientResponse.hasEntity()) {
+				// Log the data as is to the error log.
+				InputStream inputStream = clientResponse.getEntityInputStream();
+				inputStream.mark(Integer.MAX_VALUE);
+				BufferedReader r = new BufferedReader(new InputStreamReader(inputStream, IOUtil.CHARSET_UTF_8));
+				String line;
+				while (null != (line = r.readLine())) {
+					logger.error(line);
+				}
+				inputStream.reset();
+
+				// create an error instance from the entity.
+				error = clientResponse.getEntity(org.nightlabs.eclipse.jjqb.childvm.shared.Error.class);
+			}
+
+		} catch (Exception y) {
+			logger.error("handleException: " + y, y);
+		}
+
+		if (error != null)
+			throw new ChildVMException(error);
 	}
 
 	@Override
 	public void deleteConnectionDTO(UUID connectionID)
 	{
-		if (connectionID == null)
-			throw new IllegalArgumentException("connectionID == null");
+		try {
+			if (connectionID == null)
+				throw new IllegalArgumentException("connectionID == null");
 
-		getChildVMAppResource(ConnectionDTO.class, new PathSegment(connectionID)).delete();
+			getChildVMAppResource(ConnectionDTO.class, new PathSegment(connectionID)).delete();
+		} catch (UniformInterfaceException x) {
+			handleUniformInterfaceException(x);
+			throw x;
+		}
 	}
 }

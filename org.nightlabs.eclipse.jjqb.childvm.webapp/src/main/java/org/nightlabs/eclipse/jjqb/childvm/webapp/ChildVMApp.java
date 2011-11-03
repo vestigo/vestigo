@@ -14,11 +14,17 @@ public class ChildVMApp
 extends Application
 {
 	private static final Class<?>[] serviceClassesArray = {
-		JAXBContextResolver.class, // not a service, but registered the same way.
-
+		// BEGIN services
 		ConnectionDTOService.class,
 		ConnectionProfileDTOService.class,
-		IsOnlineService.class
+		IsOnlineService.class,
+		// END services
+
+		// BEGIN providers
+		// providers are not a services (they are infrastructure), but they are registered the same way.
+		JAXBContextResolver.class,
+		DefaultExceptionMapper.class
+		// END providers
 	};
 
 	private static final Set<Class<?>> serviceClassesSet;

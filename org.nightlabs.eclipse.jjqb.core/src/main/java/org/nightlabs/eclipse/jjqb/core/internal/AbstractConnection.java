@@ -89,11 +89,23 @@ public abstract class AbstractConnection implements Connection
 
 		this.connectionProfile = ConnectionProfileRegistry.sharedInstance().getConnectionProfile(this.getClass(), profileID);
 
-		connectionProfile.preConnectionOpen(this);
-		preOpen();
-		doOpen();
-		postOpen();
-		connectionProfile.postConnectionOpen(this);
+		boolean error = true;
+		try {
+			connectionProfile.preConnectionOpen(this);
+			preOpen();
+			doOpen();
+			postOpen();
+			connectionProfile.postConnectionOpen(this);
+			error = false;
+		} finally {
+			if (error) {
+				try {
+					close();
+				} catch (Throwable t) {
+					logger.error("open: Closing connection due to error while opening resulted in another error: " + t, t);
+				}
+			}
+		}
 	}
 
 	@Override

@@ -120,6 +120,7 @@ public abstract class AbstractConnectionProfile implements ConnectionProfile
 	public synchronized void preConnectionClose(Connection connection) throws OdaException {
 		connectionsClosing.add(connection);
 		connectionsOpened.remove(connection);
+		connectionsOpening.remove(connection); // in case, the opening process was interrupted.
 	}
 
 	public synchronized void postLastConnectionClose(Connection connection) throws OdaException
