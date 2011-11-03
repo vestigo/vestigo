@@ -15,6 +15,8 @@ package org.nightlabs.eclipse.jjqb.core.internal;
 
 import org.eclipse.datatools.connectivity.oda.IDataSetMetaData;
 import org.eclipse.datatools.connectivity.oda.OdaException;
+import org.nightlabs.eclipse.jjqb.childvm.shared.ConnectionDTO;
+import org.nightlabs.eclipse.jjqb.childvm.shared.JDOConnectionDTO;
 import org.nightlabs.eclipse.jjqb.core.JDOConnection;
 import org.nightlabs.eclipse.jjqb.core.Query;
 import org.slf4j.Logger;
@@ -29,48 +31,48 @@ public class JDOConnectionImpl extends AbstractConnection implements JDOConnecti
 
 	public JDOConnectionImpl() { }
 
-	@Override
-	protected void _open() throws OdaException
-	{
-//		boolean error = true;
-//		try {
-//			URLClassLoader persistenceEngineClassLoader = getConnectionProfile().getClassLoaderManager().getPersistenceEngineClassLoader();
+//	@Override
+//	protected void _open() throws OdaException
+//	{
+////		boolean error = true;
+////		try {
+////			URLClassLoader persistenceEngineClassLoader = getConnectionProfile().getClassLoaderManager().getPersistenceEngineClassLoader();
+////
+////			Properties persistenceProperties = PropertiesUtil.getProperties(getConnectionProperties(), PropertiesUtil.PREFIX_PERSISTENCE);
+////
+////			ClassLoader backupContextClassLoader = Thread.currentThread().getContextClassLoader();
+////			try {
+////				Thread.currentThread().setContextClassLoader(persistenceEngineClassLoader);
+////
+////				persistenceManagerFactory = JDOHelper.getPersistenceManagerFactory(persistenceProperties, persistenceEngineClassLoader);
+////				persistenceManager = persistenceManagerFactory.getPersistenceManager();
+////			} finally {
+////				Thread.currentThread().setContextClassLoader(backupContextClassLoader);
+////			}
+////
+////			persistenceManager.currentTransaction().begin();
+////
+////			error = false;
+////		} finally {
+////			if (error)
+////				close();
+////		}
+//	}
 //
-//			Properties persistenceProperties = PropertiesUtil.getProperties(getConnectionProperties(), PropertiesUtil.PREFIX_PERSISTENCE);
-//
-//			ClassLoader backupContextClassLoader = Thread.currentThread().getContextClassLoader();
-//			try {
-//				Thread.currentThread().setContextClassLoader(persistenceEngineClassLoader);
-//
-//				persistenceManagerFactory = JDOHelper.getPersistenceManagerFactory(persistenceProperties, persistenceEngineClassLoader);
-//				persistenceManager = persistenceManagerFactory.getPersistenceManager();
-//			} finally {
-//				Thread.currentThread().setContextClassLoader(backupContextClassLoader);
-//			}
-//
-//			persistenceManager.currentTransaction().begin();
-//
-//			error = false;
-//		} finally {
-//			if (error)
-//				close();
-//		}
-	}
-
-	@Override
-	protected void _close() throws OdaException
-	{
-//		if (persistenceManager != null) {
-//			persistenceManager.currentTransaction().rollback();
-//			persistenceManager.close();
-//			persistenceManager = null;
-//		}
-//
-//		if (persistenceManagerFactory != null) {
-//			persistenceManagerFactory.close();
-//			persistenceManagerFactory = null;
-//		}
-	}
+//	@Override
+//	protected void _close() throws OdaException
+//	{
+////		if (persistenceManager != null) {
+////			persistenceManager.currentTransaction().rollback();
+////			persistenceManager.close();
+////			persistenceManager = null;
+////		}
+////
+////		if (persistenceManagerFactory != null) {
+////			persistenceManagerFactory.close();
+////			persistenceManagerFactory = null;
+////		}
+//	}
 
 //	public PersistenceManager getPersistenceManager() {
 //		return persistenceManager;
@@ -109,5 +111,10 @@ public class JDOConnectionImpl extends AbstractConnection implements JDOConnecti
 //		persistenceManager.currentTransaction().begin();
 //
 //		super.rollback();
+	}
+
+	@Override
+	protected ConnectionDTO newConnectionDTO() {
+		return new JDOConnectionDTO();
 	}
 }

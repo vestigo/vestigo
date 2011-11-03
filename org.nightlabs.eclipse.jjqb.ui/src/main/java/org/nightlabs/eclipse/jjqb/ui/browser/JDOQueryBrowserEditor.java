@@ -16,6 +16,7 @@ import org.eclipse.datatools.connectivity.IConnection;
 import org.eclipse.datatools.connectivity.IConnectionProfile;
 import org.eclipse.datatools.connectivity.IManagedConnection;
 import org.eclipse.datatools.connectivity.ProfileManager;
+import org.eclipse.datatools.connectivity.oda.IQuery;
 import org.eclipse.datatools.connectivity.oda.IResultSet;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.SWT;
@@ -33,9 +34,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.PartInitException;
-import org.nightlabs.eclipse.jjqb.core.Connection;
 import org.nightlabs.eclipse.jjqb.core.JDODriver;
-import org.nightlabs.eclipse.jjqb.core.Query;
 import org.nightlabs.jdo.jdoqleditor.editor.JDOQLEditor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -126,21 +125,21 @@ public class JDOQueryBrowserEditor extends JDOQLEditor
 	/**
 	 * Every editor uses its own connection (due to commit/rollback). This is the connection of this editor.
 	 */
-	private Map<IConnectionProfile, Connection> connectionProfile2connection = new HashMap<IConnectionProfile, Connection>();
+	private Map<IConnectionProfile, org.eclipse.datatools.connectivity.oda.IConnection> connectionProfile2connection = new HashMap<IConnectionProfile, org.eclipse.datatools.connectivity.oda.IConnection>();
 
-	private synchronized Connection getConnection(IConnectionProfile connectionProfile, IProgressMonitor monitor)
+	private synchronized org.eclipse.datatools.connectivity.oda.IConnection getConnection(IConnectionProfile connectionProfile, IProgressMonitor monitor)
 	{
 		IManagedConnection managedConnection = connectionProfile.getManagedConnection(connectionFactoryID);
 		if (managedConnection.getConnection() == null)
 			connectionProfile.connectWithoutJob();
 
-		Connection connection = connectionProfile2connection.get(connectionProfile);
+		org.eclipse.datatools.connectivity.oda.IConnection connection = connectionProfile2connection.get(connectionProfile);
 		if (connection == null) {
 			IConnection dtConnection = connectionProfile.createConnection(connectionFactoryID);
 			if (dtConnection == null)
 				throw new IllegalStateException("connectionProfile.createConnection(...) returned null");
 
-			connection = (Connection) dtConnection.getRawConnection();
+			connection = (org.eclipse.datatools.connectivity.oda.IConnection) dtConnection.getRawConnection();
 			connectionProfile2connection.put(connectionProfile, connection);
 		}
 		return connection;
@@ -186,8 +185,8 @@ public class JDOQueryBrowserEditor extends JDOQLEditor
 //
 //		IQuery query = rawConnection.newQuery("");
 
-		Connection connection = getConnection(connectionProfile, new SubProgressMonitor(monitor, 30)); // TODO proper management!
-		Query query = connection.newQuery("");
+		org.eclipse.datatools.connectivity.oda.IConnection connection = getConnection(connectionProfile, new SubProgressMonitor(monitor, 30)); // TODO proper management!
+		IQuery query = connection.newQuery("");
 
 		query.prepare(queryContext.getQueryText());
 		IResultSet resultSet = query.executeQuery();

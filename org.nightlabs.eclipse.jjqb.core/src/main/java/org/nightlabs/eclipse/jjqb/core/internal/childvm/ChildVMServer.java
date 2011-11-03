@@ -10,10 +10,13 @@ import java.net.URL;
 import java.security.SecureRandom;
 import java.util.Collection;
 import java.util.Locale;
+import java.util.UUID;
 import java.util.concurrent.TimeoutException;
 
 import javax.ws.rs.core.MediaType;
 
+import org.nightlabs.eclipse.jjqb.childvm.shared.ConnectionDTO;
+import org.nightlabs.eclipse.jjqb.childvm.shared.ConnectionDTOList;
 import org.nightlabs.eclipse.jjqb.childvm.shared.ConnectionProfileDTO;
 import org.nightlabs.eclipse.jjqb.childvm.shared.ConnectionProfileDTOList;
 import org.nightlabs.eclipse.jjqb.childvm.shared.JAXBContextResolver;
@@ -318,13 +321,14 @@ implements ChildVM
 	{
 		StringBuilder relativePath = new StringBuilder();
 		relativePath.append(dtoClass.getSimpleName());
-		relativePath.append('/'); // TODO clean up
 		if (relativePathParts != null && relativePathParts.length > 0) {
 			boolean isFirstQueryParam = true;
 			for (RelativePathPart relativePathPart : relativePathParts) {
+				if (relativePathPart == null)
+					continue;
+
 				if (relativePathPart instanceof PathSegment) {
-					if (!relativePath.toString().endsWith("/")) // TODO clean up
-						relativePath.append('/');
+					relativePath.append('/');
 				}
 				else if (relativePathPart instanceof QueryParameter) {
 					if (isFirstQueryParam) {
@@ -335,8 +339,7 @@ implements ChildVM
 						relativePath.append('&');
 				}
 
-				if (relativePathPart != null)
-					relativePath.append(relativePathPart.toString());
+				relativePath.append(relativePathPart.toString());
 			}
 		}
 		return getChildVMAppResource(relativePath.toString());
@@ -429,7 +432,7 @@ implements ChildVM
 		if (connectionProfileDTO == null)
 			throw new IllegalArgumentException("connectionProfileDTO == null");
 
-		getChildVMAppJaxbBuilder(ConnectionProfileDTO.class).put(connectionProfileDTO);
+		getChildVMAppResource(ConnectionProfileDTO.class).put(connectionProfileDTO);
 	}
 
 	@Override
@@ -447,5 +450,30 @@ implements ChildVM
 
 		ConnectionProfileDTO dto = getChildVMAppJaxbBuilder(ConnectionProfileDTO.class, new PathSegment(profileID)).get(ConnectionProfileDTO.class);
 		return dto;
+	}
+
+	@Override
+	public Collection<ConnectionDTO> getConnectionDTOs(String profileID)
+	{
+		ConnectionDTOList list = getChildVMAppJaxbBuilder(ConnectionDTO.class, profileID == null ? null : new PathSegment(profileID)).get(ConnectionDTOList.class);
+		return list.getElements();
+	}
+
+	@Override
+	public void putConnectionDTO(ConnectionDTO connectionDTO)
+	{
+		if (connectionDTO == null)
+			throw new IllegalArgumentException("connectionDTO == null");
+
+		getChildVMAppResource(ConnectionDTO.class).put(connectionDTO);
+	}
+
+	@Override
+	public void deleteConnectionDTO(UUID connectionID)
+	{
+		if (connectionID == null)
+			throw new IllegalArgumentException("connectionID == null");
+
+		getChildVMAppResource(ConnectionDTO.class, new PathSegment(connectionID)).delete();
 	}
 }

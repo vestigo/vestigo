@@ -74,6 +74,15 @@ public class ConnectionProfileManager
 		throw new IllegalArgumentException("Unsupported dtoClass: " + dtoClass.getName());
 	}
 
+	public ConnectionProfile getConnectionProfile(String profileID, boolean throwExceptionIfNotFound)
+	{
+		ConnectionProfile result = getConnectionProfile(profileID);
+		if (result == null && throwExceptionIfNotFound)
+			throw new IllegalArgumentException("There is no ConnectionProfile with profileID=\"" + profileID + "\"!");
+
+		return result;
+	}
+
 	public synchronized ConnectionProfile getConnectionProfile(String profileID)
 	{
 		return profileID2connectionProfile.get(profileID);

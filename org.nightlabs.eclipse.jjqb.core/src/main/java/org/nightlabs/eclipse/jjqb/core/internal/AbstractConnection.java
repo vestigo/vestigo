@@ -13,17 +13,21 @@
 
 package org.nightlabs.eclipse.jjqb.core.internal;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Properties;
+import java.util.UUID;
 
 import org.eclipse.datatools.connectivity.oda.IDataSetMetaData;
 import org.eclipse.datatools.connectivity.oda.OdaException;
+import org.nightlabs.eclipse.jjqb.childvm.shared.ConnectionDTO;
+import org.nightlabs.eclipse.jjqb.childvm.shared.PropertiesUtil;
 import org.nightlabs.eclipse.jjqb.core.Connection;
 import org.nightlabs.eclipse.jjqb.core.ConnectionExtension;
 import org.nightlabs.eclipse.jjqb.core.ConnectionExtensionRegistry;
 import org.nightlabs.eclipse.jjqb.core.ConnectionProfile;
 import org.nightlabs.eclipse.jjqb.core.ConnectionProfileRegistry;
-import org.nightlabs.eclipse.jjqb.core.util.PropertiesUtil;
+import org.nightlabs.eclipse.jjqb.core.childvm.ChildVM;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -38,6 +42,7 @@ public abstract class AbstractConnection implements Connection
 {
 	private static final Logger logger = LoggerFactory.getLogger(AbstractConnection.class);
 
+	private UUID connectionID = UUID.randomUUID();
 	private ConnectionProfile connectionProfile;
 	private Properties connectionProperties;
 	private Object appContext;
@@ -45,8 +50,22 @@ public abstract class AbstractConnection implements Connection
 	public AbstractConnection() { }
 
 	@Override
+	public UUID getConnectionID() {
+		return connectionID;
+	}
+
+	@Override
 	public ConnectionProfile getConnectionProfile() {
 		return connectionProfile;
+	}
+
+	protected ChildVM getChildVM()
+	{
+		ConnectionProfile connectionProfile = getConnectionProfile();
+		if (connectionProfile == null)
+			return null;
+		else
+			return connectionProfile.getChildVM();
 	}
 
 	@Override
@@ -72,7 +91,7 @@ public abstract class AbstractConnection implements Connection
 
 		connectionProfile.preConnectionOpen(this);
 		preOpen();
-		_open();
+		doOpen();
 		postOpen();
 		connectionProfile.postConnectionOpen(this);
 	}
@@ -88,7 +107,17 @@ public abstract class AbstractConnection implements Connection
 			extension.preOpen();
 	}
 
-	protected abstract void _open() throws OdaException;
+	protected void doOpen() throws OdaException
+	{
+		getChildVM().putConnectionDTO(toConnectionDTO());
+
+		// TODO BEGIN remove this debug stuff
+		Collection<ConnectionDTO> connectionDTOs = getChildVM().getConnectionDTOs(null);
+		for (ConnectionDTO connectionDTO : connectionDTOs) {
+			System.out.println("connectionDTO.connectionID=" + connectionDTO.getConnectionID());
+		}
+		// TODO END remove this debug stuff
+	}
 
 	protected void postOpen() throws OdaException
 	{
@@ -112,7 +141,7 @@ public abstract class AbstractConnection implements Connection
 			connectionProfile.preConnectionClose(this);
 
 		preClose();
-		_close();
+		doClose();
 		postClose();
 
 		if (connectionProfile != null)
@@ -132,7 +161,10 @@ public abstract class AbstractConnection implements Connection
 			extension.preClose();
 	}
 
-	protected abstract void _close() throws OdaException;
+	protected void doClose() throws OdaException
+	{
+		getChildVM().deleteConnectionDTO(getConnectionID());
+	}
 
 	protected void postClose() throws OdaException {
 		for (ConnectionExtension extension : getConnectionExtensions())
@@ -173,6 +205,19 @@ public abstract class AbstractConnection implements Connection
 	public void setLocale(ULocale locale) throws OdaException {
 
 	}
+
+	public ConnectionDTO toConnectionDTO()
+	{
+		ConnectionDTO result = newConnectionDTO();
+		ConnectionProfile connectionProfile = getConnectionProfile();
+
+		result.setConnectionID(getConnectionID());
+		result.setProfileID(connectionProfile == null ? null : connectionProfile.getProfileID());
+
+		return result;
+	}
+
+	protected abstract ConnectionDTO newConnectionDTO();
 
 	protected static final void doNothing() { }
 }

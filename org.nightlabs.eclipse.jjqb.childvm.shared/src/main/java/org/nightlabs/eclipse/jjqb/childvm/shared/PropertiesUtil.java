@@ -1,4 +1,4 @@
-package org.nightlabs.eclipse.jjqb.core.util;
+package org.nightlabs.eclipse.jjqb.childvm.shared;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

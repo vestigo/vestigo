@@ -26,10 +26,15 @@ public final class JAXBContextResolver implements ContextResolver<JAXBContext>
 	private final JAXBContext context;
 
 	private static final Class<?>[] cTypes = {
+		ConnectionDTO.class,
+		ConnectionDTOList.class,
+		ConnectionDTOPutResult.class,
 		ConnectionProfileDTO.class,
 		ConnectionProfileDTOList.class,
 		ConnectionProfileDTOPutResult.class,
+		JDOConnectionDTO.class,
 		JDOConnectionProfileDTO.class,
+		JPAConnectionDTO.class,
 		JPAConnectionProfileDTO.class
 	};
 

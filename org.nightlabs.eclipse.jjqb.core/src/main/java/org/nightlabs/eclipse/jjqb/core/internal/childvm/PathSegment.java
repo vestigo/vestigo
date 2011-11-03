@@ -2,6 +2,7 @@ package org.nightlabs.eclipse.jjqb.core.internal.childvm;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.UUID;
 
 import org.nightlabs.util.IOUtil;
 
@@ -13,6 +14,10 @@ public class PathSegment extends RelativePathPart
 
 	public PathSegment(String pathSegment) {
 		this.pathSegment = pathSegment;
+	}
+
+	public PathSegment(UUID pathSegment) {
+		this.pathSegment = pathSegment.toString();
 	}
 
 	public String getPathSegment() {

@@ -15,6 +15,8 @@ extends Application
 {
 	private static final Class<?>[] serviceClassesArray = {
 		JAXBContextResolver.class, // not a service, but registered the same way.
+
+		ConnectionDTOService.class,
 		ConnectionProfileDTOService.class,
 		IsOnlineService.class
 	};
