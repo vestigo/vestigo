@@ -16,7 +16,9 @@
 		<module>../org.nightlabs.eclipse.jjqb.childvm.shared</module>
 		<module>../org.nightlabs.eclipse.jjqb.childvm.webapp</module>
 		<module>../org.nightlabs.eclipse.jjqb.core</module>
+<!--
 		<module>../org.nightlabs.eclipse.jjqb.derby</module>
+-->
 		<module>../org.nightlabs.eclipse.jjqb.parent</module>
 		<module>../org.nightlabs.eclipse.jjqb.ui</module>
 		<module>../org.nightlabs.eclipse.jjqb.assembly.parent</module>

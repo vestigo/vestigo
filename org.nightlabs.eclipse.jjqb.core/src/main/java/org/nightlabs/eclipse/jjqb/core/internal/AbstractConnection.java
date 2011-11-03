@@ -15,7 +15,6 @@ package org.nightlabs.eclipse.jjqb.core.internal;
 
 import java.util.List;
 import java.util.Properties;
-import java.util.UUID;
 
 import org.eclipse.datatools.connectivity.oda.IDataSetMetaData;
 import org.eclipse.datatools.connectivity.oda.OdaException;
@@ -63,9 +62,11 @@ public abstract class AbstractConnection implements Connection
 
 		this.connectionProperties = connProperties;
 
-		UUID profileID = PropertiesUtil.getProfileID(connProperties);
+		String profileID = PropertiesUtil.getProfileID(connProperties);
 		if (profileID == null)
-			throw new IllegalStateException("connProperties do not contain entry for key=\"" + PropertiesUtil.PROFILE_ID + "\"!");
+			throw new IllegalStateException("PropertiesUtil.getProfileID(connProperties) returned null!");
+
+		logger.info("open: profileID={}", profileID);
 
 		this.connectionProfile = ConnectionProfileRegistry.sharedInstance().getConnectionProfile(this.getClass(), profileID);
 
@@ -105,6 +106,8 @@ public abstract class AbstractConnection implements Connection
 	@Override
 	public final void close() throws OdaException
 	{
+		logger.info("close: profileID={}", connectionProfile == null ? null : connectionProfile.getProfileID());
+
 		if (connectionProfile != null)
 			connectionProfile.preConnectionClose(this);
 

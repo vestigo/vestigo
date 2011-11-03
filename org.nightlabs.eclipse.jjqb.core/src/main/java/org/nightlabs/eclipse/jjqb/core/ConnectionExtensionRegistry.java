@@ -14,6 +14,11 @@ import org.eclipse.core.runtime.IExtension;
 import org.nightlabs.eclipse.extension.AbstractEPProcessor;
 import org.nightlabs.eclipse.jjqb.core.internal.DefaultConnectionExtensionFactory;
 
+/**
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ * @deprecated Probably not needed - was introduced for derby DB start/stop + classloading problems. Not needed due to new child-VM.
+ */
+@Deprecated
 public class ConnectionExtensionRegistry
 extends AbstractEPProcessor
 {

@@ -10,13 +10,12 @@ import java.util.Map;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.datatools.connectivity.IConnection;
 import org.eclipse.datatools.connectivity.IConnectionProfile;
 import org.eclipse.datatools.connectivity.IManagedConnection;
 import org.eclipse.datatools.connectivity.ProfileManager;
-import org.eclipse.datatools.connectivity.internal.ConnectionProfile;
-import org.eclipse.datatools.connectivity.oda.IQuery;
 import org.eclipse.datatools.connectivity.oda.IResultSet;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.SWT;
@@ -36,6 +35,7 @@ import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.PartInitException;
 import org.nightlabs.eclipse.jjqb.core.Connection;
 import org.nightlabs.eclipse.jjqb.core.JDODriver;
+import org.nightlabs.eclipse.jjqb.core.Query;
 import org.nightlabs.jdo.jdoqleditor.editor.JDOQLEditor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -126,47 +126,69 @@ public class JDOQueryBrowserEditor extends JDOQLEditor
 	/**
 	 * Every editor uses its own connection (due to commit/rollback). This is the connection of this editor.
 	 */
-	private Map<ConnectionProfile, Connection> connectionProfile2connection = new HashMap<ConnectionProfile, Connection>();
+	private Map<IConnectionProfile, Connection> connectionProfile2connection = new HashMap<IConnectionProfile, Connection>();
+
+	private synchronized Connection getConnection(IConnectionProfile connectionProfile, IProgressMonitor monitor)
+	{
+		IManagedConnection managedConnection = connectionProfile.getManagedConnection(connectionFactoryID);
+		if (managedConnection.getConnection() == null)
+			connectionProfile.connectWithoutJob();
+
+		Connection connection = connectionProfile2connection.get(connectionProfile);
+		if (connection == null) {
+			IConnection dtConnection = connectionProfile.createConnection(connectionFactoryID);
+			if (dtConnection == null)
+				throw new IllegalStateException("connectionProfile.createConnection(...) returned null");
+
+			connection = (Connection) dtConnection.getRawConnection();
+			connectionProfile2connection.put(connectionProfile, connection);
+		}
+		return connection;
+	}
 
 	private void executeQuery(QueryContext queryContext, IProgressMonitor monitor)
 	throws Exception
 	{
 		IConnectionProfile connectionProfile = queryContext.getConnectionProfile();
-		IConnection connection;
-//		if (NEW_CONNECTION) {
-			IManagedConnection managedConnection = connectionProfile.getManagedConnection(connectionFactoryID);
-			if (managedConnection.getConnection() == null)
-				connectionProfile.connectWithoutJob();
-
-			connection = connectionProfile.createConnection(connectionFactoryID);
-//		}
-//		else {
+//		IConnection connection;
+////		if (NEW_CONNECTION) {
 //			IManagedConnection managedConnection = connectionProfile.getManagedConnection(connectionFactoryID);
-//			connection = managedConnection.getConnection();
-//			if (connection == null) {
+//			if (managedConnection.getConnection() == null)
 //				connectionProfile.connectWithoutJob();
-//				connection = managedConnection.getConnection();
-//			}
-//		}
-
-//		Connection connection = profileConnectionManager.getConnection(connectionProfile, "org.eclipse.datatools.connectivity.oda.IConnection");
-//		if (connection == null) {
 //
-//		}
+//			connection = connectionProfile.createConnection(connectionFactoryID);
+////		}
+////		else {
+////			IManagedConnection managedConnection = connectionProfile.getManagedConnection(connectionFactoryID);
+////			connection = managedConnection.getConnection();
+////			if (connection == null) {
+////				connectionProfile.connectWithoutJob();
+////				connection = managedConnection.getConnection();
+////			}
+////		}
 //
-//		Connection connection = connectionProfile.createConnection(connectionFactoryID);
-//		try {
-//			org.eclipse.datatools.connectivity.oda.IConnection odaConnection = (org.eclipse.datatools.connectivity.oda.IConnection) connection.getRawConnection();
-//			Query query = odaConnection.newQuery("");
-//		} finally {
-//			connection.close();
-//		}
-		if (connection == null)
-			throw new IllegalStateException("No connection!");
+////		Connection connection = profileConnectionManager.getConnection(connectionProfile, "org.eclipse.datatools.connectivity.oda.IConnection");
+////		if (connection == null) {
+////
+////		}
+////
+////		Connection connection = connectionProfile.createConnection(connectionFactoryID);
+////		try {
+////			org.eclipse.datatools.connectivity.oda.IConnection odaConnection = (org.eclipse.datatools.connectivity.oda.IConnection) connection.getRawConnection();
+////			Query query = odaConnection.newQuery("");
+////		} finally {
+////			connection.close();
+////		}
+//		if (connection == null)
+//			throw new IllegalStateException("No connection!");
+//
+//		org.eclipse.datatools.connectivity.oda.IConnection rawConnection = (org.eclipse.datatools.connectivity.oda.IConnection) connection.getRawConnection();
+//
+//		IQuery query = rawConnection.newQuery("");
 
-		org.eclipse.datatools.connectivity.oda.IConnection rawConnection = (org.eclipse.datatools.connectivity.oda.IConnection) connection.getRawConnection();
+		Connection connection = getConnection(connectionProfile, new SubProgressMonitor(monitor, 30)); // TODO proper management!
+		Query query = connection.newQuery("");
 
-		IQuery query = rawConnection.newQuery("");
 		query.prepare(queryContext.getQueryText());
 		IResultSet resultSet = query.executeQuery();
 		while (resultSet.next()) {

@@ -8,19 +8,27 @@ import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.URL;
 import java.security.SecureRandom;
+import java.util.Collection;
 import java.util.Locale;
 import java.util.concurrent.TimeoutException;
 
 import javax.ws.rs.core.MediaType;
 
+import org.nightlabs.eclipse.jjqb.childvm.shared.ConnectionProfileDTO;
+import org.nightlabs.eclipse.jjqb.childvm.shared.ConnectionProfileDTOList;
+import org.nightlabs.eclipse.jjqb.childvm.shared.JAXBContextResolver;
+import org.nightlabs.eclipse.jjqb.core.childvm.ChildVM;
 import org.nightlabs.util.IOUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.WebResource;
+import com.sun.jersey.api.client.config.ClientConfig;
+import com.sun.jersey.api.client.config.DefaultClientConfig;
 
 public class ChildVMServer
+implements ChildVM
 {
 	private static final Logger logger = LoggerFactory.getLogger(ChildVMServer.class);
 
@@ -44,6 +52,7 @@ public class ChildVMServer
 			File serverDirectory = IOUtil.createUniqueIncrementalFolder(jettyTempDir, "instance-");
 			createServerPlatform(serverDirectory);
 			deployRESTApplication(serverDirectory);
+			deployLog4jProperties(serverDirectory);
 			this.serverDirectory = serverDirectory;
 		}
 		return this.serverDirectory;
@@ -59,7 +68,7 @@ public class ChildVMServer
 			logger.debug("run: entered for {}", ChildVMServer.this);
 
 			try {
-				ChildVMServer.this.stop(true);
+				ChildVMServer.this.close(true);
 			} catch (Exception e) {
 				logger.warn("run: Failed to stop web server: " + e, e);
 			}
@@ -104,14 +113,25 @@ public class ChildVMServer
 	{
 		logger.debug("deployRESTApplication: serverDirectory='{}'", webServerDirectory.getAbsolutePath());
 
-		String warFileName = "org.nightlabs.eclipse.jjqb.childvm.webapp.war";
-		String resourceName = "resource/" + warFileName;
+		String fileName = "org.nightlabs.eclipse.jjqb.childvm.webapp.war";
+		String resourceName = "resource/" + fileName;
 		File deploymentDir = new File(webServerDirectory, "webapps");
-		File destinationFile = new File(deploymentDir, warFileName);
+		File destinationFile = new File(deploymentDir, fileName);
 		IOUtil.copyResource(ChildVMServer.class, resourceName, destinationFile);
 
 		// Delete the unnecessary 'test.war' which comes with the jetty distro.
 		new File(deploymentDir, "test.war").delete();
+	}
+
+	private void deployLog4jProperties(File webServerDirectory) throws IOException
+	{
+		logger.debug("deployLog4jProperties: serverDirectory='{}'", webServerDirectory.getAbsolutePath());
+
+		String fileName = "log4j.properties";
+		String resourceName = "resource/" + fileName;
+		File deploymentDir = new File(webServerDirectory, "resources");
+		File destinationFile = new File(deploymentDir, fileName);
+		IOUtil.copyResource(ChildVMServer.class, resourceName, destinationFile);
 	}
 
 	private static final class DumpStreamToFileThread extends Thread
@@ -161,6 +181,8 @@ public class ChildVMServer
 				} catch (Throwable e) {
 					if (!ignoreErrors)
 						logger.error("run: " + e, e);
+					else
+						logger.info("run: " + e);
 
 					return;
 				}
@@ -168,7 +190,7 @@ public class ChildVMServer
 		}
 	}
 
-	public synchronized void start() throws IOException
+	public synchronized void open() throws IOException
 	{
 		if (serverProcess != null)
 			return;
@@ -182,7 +204,7 @@ public class ChildVMServer
 
 			port = determineAvailableRandomPortAndConfigureServer();
 
-			logger.info("start: Starting server: serverDirectory=\"" + serverDirectory + "\" port={}", port);
+			logger.info("open: Starting server: serverDirectory=\"{}\" port={}", serverDirectory, port);
 
 			serverProcess = new ProcessBuilder()
 			.directory(serverDirectory)
@@ -204,7 +226,7 @@ public class ChildVMServer
 			successful = true;
 		} finally {
 			if (!successful)
-				stop(true); // In case of an error, we delete everything to get a clean start the next time we try.
+				close(true); // In case of an error, we delete everything to get a clean start the next time we try.
 		}
 	}
 
@@ -287,11 +309,45 @@ public class ChildVMServer
 			throw new IllegalStateException("The child VM REST server was not yet started! Call start() first!");
 	}
 
-	public WebResource getChildVMAppResource(String relativePath)
+	protected WebResource.Builder getChildVMAppJaxbBuilder(Class<?> dtoClass, RelativePathPart ... relativePathParts)
+	{
+		return getChildVMAppResource(dtoClass, relativePathParts).accept(MediaType.APPLICATION_XML_TYPE);
+	}
+
+	protected WebResource getChildVMAppResource(Class<?> dtoClass, RelativePathPart ... relativePathParts)
+	{
+		StringBuilder relativePath = new StringBuilder();
+		relativePath.append(dtoClass.getSimpleName());
+		relativePath.append('/'); // TODO clean up
+		if (relativePathParts != null && relativePathParts.length > 0) {
+			boolean isFirstQueryParam = true;
+			for (RelativePathPart relativePathPart : relativePathParts) {
+				if (relativePathPart instanceof PathSegment) {
+					if (!relativePath.toString().endsWith("/")) // TODO clean up
+						relativePath.append('/');
+				}
+				else if (relativePathPart instanceof QueryParameter) {
+					if (isFirstQueryParam) {
+						isFirstQueryParam = false;
+						relativePath.append('?');
+					}
+					else
+						relativePath.append('&');
+				}
+
+				if (relativePathPart != null)
+					relativePath.append(relativePathPart.toString());
+			}
+		}
+		return getChildVMAppResource(relativePath.toString());
+	}
+
+	protected WebResource getChildVMAppResource(String relativePath)
 	{
 		assertServerStarted();
 
-		Client client = new Client();
+		ClientConfig clientConfig = new DefaultClientConfig(JAXBContextResolver.class);
+		Client client = Client.create(clientConfig);
 		return client.resource("http://localhost:" + port + "/org.nightlabs.eclipse.jjqb.childvm.webapp/ChildVMApp/" + relativePath);
 	}
 
@@ -308,12 +364,12 @@ public class ChildVMServer
 		}
 	}
 
-	public synchronized void stop() throws IOException
+	public synchronized void close() throws IOException
 	{
-		stop(false);
+		close(false);
 	}
 
-	protected synchronized void stop(boolean delete) throws IOException
+	protected synchronized void close(boolean delete) throws IOException
 	{
 		// Indicate that we're going to shut down the server. This will prevent the log from being polluted.
 		if (dumpInputStreamToFileThread != null)
@@ -324,6 +380,8 @@ public class ChildVMServer
 
 		// Do the actual shutdown.
 		if (serverProcess != null) {
+			logger.info("close: Stopping server: serverDirectory=\"{}\" port={}", serverDirectory, port);
+
 			serverProcess.destroy(); // TODO maybe shut it down more nicely?!
 
 			serverProcess = null;
@@ -363,5 +421,31 @@ public class ChildVMServer
 			}
 			serverDirectory = null;
 		}
+	}
+
+	@Override
+	public void putConnectionProfileDTO(ConnectionProfileDTO connectionProfileDTO)
+	{
+		if (connectionProfileDTO == null)
+			throw new IllegalArgumentException("connectionProfileDTO == null");
+
+		getChildVMAppJaxbBuilder(ConnectionProfileDTO.class).put(connectionProfileDTO);
+	}
+
+	@Override
+	public Collection<ConnectionProfileDTO> getConnectionProfileDTOs()
+	{
+		ConnectionProfileDTOList list = getChildVMAppJaxbBuilder(ConnectionProfileDTO.class).get(ConnectionProfileDTOList.class);
+		return list.getElements();
+	}
+
+	@Override
+	public ConnectionProfileDTO getConnectionProfileDTO(String profileID)
+	{
+		if (profileID == null)
+			throw new IllegalArgumentException("profileID == null");
+
+		ConnectionProfileDTO dto = getChildVMAppJaxbBuilder(ConnectionProfileDTO.class, new PathSegment(profileID)).get(ConnectionProfileDTO.class);
+		return dto;
 	}
 }

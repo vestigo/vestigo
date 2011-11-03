@@ -2,7 +2,6 @@ package org.nightlabs.eclipse.jjqb.core;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
 import org.nightlabs.eclipse.jjqb.core.internal.JDOConnectionProfileImpl;
 import org.nightlabs.eclipse.jjqb.core.internal.JPAConnectionProfileImpl;
@@ -15,9 +14,9 @@ public class ConnectionProfileRegistry
 		return sharedInstance;
 	}
 
-	private Map<UUID, ConnectionProfile> profileID2connectionProfile = new HashMap<UUID, ConnectionProfile>();
+	private Map<String, ConnectionProfile> profileID2connectionProfile = new HashMap<String, ConnectionProfile>();
 
-	public synchronized ConnectionProfile getConnectionProfile(Class<? extends Connection> connectionClass, UUID profileID)
+	public synchronized ConnectionProfile getConnectionProfile(Class<? extends Connection> connectionClass, String profileID)
 	{
 		if (profileID == null)
 			throw new IllegalArgumentException("profileID == null");

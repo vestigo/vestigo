@@ -28,6 +28,12 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
 		<!--
 		Force correct version of com.ibm.icu, as transitive dependency through org.eclipse.datatools.connectivity.oda
 		points to non-existent version.

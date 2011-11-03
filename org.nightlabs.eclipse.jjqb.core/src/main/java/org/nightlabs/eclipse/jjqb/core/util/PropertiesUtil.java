@@ -1,17 +1,25 @@
 package org.nightlabs.eclipse.jjqb.core.util;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 import java.util.TreeMap;
-import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.nightlabs.util.IOUtil;
 import org.nightlabs.util.Properties;
+import org.nightlabs.util.Util;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class PropertiesUtil extends Properties
 {
+	private static final Logger logger = LoggerFactory.getLogger(PropertiesUtil.class);
+
 	private PropertiesUtil() { }
 
 	/**
@@ -27,10 +35,10 @@ public class PropertiesUtil extends Properties
 	 */
 	public static final String PREFIX_PERSISTENCE = "persistence.";
 
-	/**
-	 * The unique ID of the profile.
-	 */
-	public static final String PROFILE_ID = PREFIX_META + "profile.id";
+//	/**
+//	 * The unique ID of the profile.
+//	 */
+//	public static final String PROFILE_ID = PREFIX_META + "profile.id";
 
 	/**
 	 * Prefix for the classpath elements that make up the classpath of the JDO/JPA persistence implementation.
@@ -40,6 +48,8 @@ public class PropertiesUtil extends Properties
 	 * {@value #PREFIX_META_PERSISTENCE_ENGINE_CLASSPATH} + ".0", {@value #PREFIX_META_PERSISTENCE_ENGINE_CLASSPATH} + ".1" and so on.
 	 */
 	public static final String PREFIX_META_PERSISTENCE_ENGINE_CLASSPATH = PREFIX_META + "persistenceEngineClasspath.";
+
+	public static final String WORKAROUND_TIMESTAMP = PREFIX_META + "workaround.timestamp";
 
 	public static void putAll(java.util.Properties source, java.util.Properties target, String keyPrefix)
 	{
@@ -68,12 +78,52 @@ public class PropertiesUtil extends Properties
 		return resultList;
 	}
 
-	public static UUID getProfileID(java.util.Properties properties)
+//	public static String getProfileID(java.util.Properties properties)
+//	{
+//		String profileID1 = _getProfileID(properties);
+//		String profileID2 = _getProfileID(properties);
+//		if (!profileID1.equals(profileID2))
+//			throw new IllegalStateException("profileID1 != profileID2 :: " + profileID1 + " != " + profileID2);
+//
+//		return profileID1;
+//	}
+	public static String getProfileID(java.util.Properties properties)
 	{
-		String profileIDStr = properties.getProperty(PROFILE_ID);
-		if (profileIDStr == null)
-			return null;
+		TreeMap<String, String> m = new TreeMap<String, String>();
+		for (Map.Entry<?, ?> me : properties.entrySet()) {
+			Object key = me.getKey();
+			Object value = me.getValue();
+			m.put(key == null ? null : key.toString(), value == null ? null : value.toString());
+		}
 
-		return UUID.fromString(profileIDStr);
+		MessageDigest md;
+		try {
+			md = MessageDigest.getInstance("SHA-1");
+		} catch (NoSuchAlgorithmException e) {
+			throw new RuntimeException(e);
+		}
+		for (Map.Entry<String, String> me : m.entrySet()) {
+			logger.debug("getProfileID: {} => {}", me.getKey(), me.getValue());
+			if (me.getKey() != null)
+				md.update(
+						me.getKey().getBytes(IOUtil.CHARSET_UTF_8)
+				);
+			md.update((byte)0);
+
+			if (me.getValue() != null)
+				md.update(
+						me.getValue().getBytes(IOUtil.CHARSET_UTF_8)
+				);
+			md.update((byte)0);
+		}
+		byte[] hash = md.digest();
+		String result = Util.encodeHexStr(hash);
+		return result;
+
+//		String profileIDStr = properties.getProperty(PROFILE_ID);
+//		if (profileIDStr == null)
+//			return null;
+//
+//		return UUID.fromString(profileIDStr);
 	}
 }

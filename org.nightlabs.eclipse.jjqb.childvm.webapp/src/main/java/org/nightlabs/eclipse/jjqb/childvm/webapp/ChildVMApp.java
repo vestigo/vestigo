@@ -7,11 +7,15 @@ import java.util.Set;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
-@ApplicationPath("/ChildVMApp")
+import org.nightlabs.eclipse.jjqb.childvm.shared.JAXBContextResolver;
+
+@ApplicationPath("ChildVMApp")
 public class ChildVMApp
 extends Application
 {
 	private static final Class<?>[] serviceClassesArray = {
+		JAXBContextResolver.class, // not a service, but registered the same way.
+		ConnectionProfileDTOService.class,
 		IsOnlineService.class
 	};
 

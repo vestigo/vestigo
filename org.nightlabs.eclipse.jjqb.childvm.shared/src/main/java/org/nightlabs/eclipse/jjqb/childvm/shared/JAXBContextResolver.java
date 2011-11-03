@@ -26,7 +26,11 @@ public final class JAXBContextResolver implements ContextResolver<JAXBContext>
 	private final JAXBContext context;
 
 	private static final Class<?>[] cTypes = {
-		ConnectionProfile.class
+		ConnectionProfileDTO.class,
+		ConnectionProfileDTOList.class,
+		ConnectionProfileDTOPutResult.class,
+		JDOConnectionProfileDTO.class,
+		JPAConnectionProfileDTO.class
 	};
 
 	private static final Set<Class<?>> types = Collections.unmodifiableSet(new HashSet<Class<?>>(Arrays.asList(cTypes)));

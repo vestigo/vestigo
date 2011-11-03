@@ -2,6 +2,11 @@ package org.nightlabs.eclipse.jjqb.core;
 
 import org.eclipse.datatools.connectivity.oda.OdaException;
 
+/**
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ * @deprecated Probably not needed - was introduced for derby DB start/stop + classloading problems. Not needed due to new child-VM.
+ */
+@Deprecated
 public abstract class AbstractConnectionExtension implements ConnectionExtension {
 
 	private ConnectionExtensionFactory connectionExtensionFactory;

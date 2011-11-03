@@ -70,11 +70,13 @@
 				<artifactId>org.nightlabs.eclipse.jjqb.core</artifactId>
 				<version>${jjqb.version}</version>
 			</dependency>
+<!--
 			<dependency>
 				<groupId>org.nightlabs.eclipse.jjqb</groupId>
 				<artifactId>org.nightlabs.eclipse.jjqb.derby</artifactId>
 				<version>${jjqb.version}</version>
 			</dependency>
+-->
 			<dependency>
 				<groupId>org.nightlabs.eclipse.jjqb</groupId>
 				<artifactId>org.nightlabs.eclipse.jjqb.ui</artifactId>
@@ -138,7 +140,7 @@
 				<version>2.5</version>
 				<scope>provided</scope>
 			</dependency>
-
+			
 			<dependency>
 				<groupId>junit</groupId>
 				<artifactId>junit</artifactId>
