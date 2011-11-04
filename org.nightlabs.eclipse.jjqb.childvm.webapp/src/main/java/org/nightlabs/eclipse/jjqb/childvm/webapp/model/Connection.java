@@ -1,8 +1,14 @@
 package org.nightlabs.eclipse.jjqb.childvm.webapp.model;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.UUID;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import org.nightlabs.eclipse.jjqb.childvm.shared.ConnectionDTO;
+import org.nightlabs.eclipse.jjqb.childvm.shared.ResultCellDTO;
+import org.nightlabs.eclipse.jjqb.childvm.shared.ResultSetID;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -12,6 +18,10 @@ public abstract class Connection
 
 	private UUID connectionID;
 	private ConnectionProfile connectionProfile;
+
+	private Map<Integer, ResultSet> resultSetID2resultSetMap = new HashMap<Integer, ResultSet>();
+
+	private AtomicInteger nextResultSetID = new AtomicInteger();
 
 	public Connection() {
 		logger.debug("[{}].<init>: created new instance.", Long.toHexString(System.identityHashCode(this)));
@@ -63,6 +73,12 @@ public abstract class Connection
 		return open;
 	}
 
+	protected void assertOpen()
+	{
+		if (!isOpen())
+			throw new IllegalStateException("This connection is not open! The requested operation cannot be executed!");
+	}
+
 	public synchronized void open() {
 		logger.debug("[{}].open: connectionID={}", Long.toHexString(System.identityHashCode(this)), connectionID);
 
@@ -82,9 +98,50 @@ public abstract class Connection
 		if (!isOpen())
 			return;
 
+		resultSetID2resultSetMap.clear();
+
 		if (this.connectionProfile != null)
 			connectionProfile.onConnectionClose(this);
 
 		open = false;
 	}
+
+	public final ResultSet executeQuery(String queryText, List<Object> parameters)
+	{
+		ResultSet resultSet = doExecuteQuery(queryText, parameters);
+		ResultSetID resultSetID = new ResultSetID(getConnectionID(), nextResultSetID.getAndIncrement());
+		resultSet.setResultSetID(resultSetID);
+		synchronized (this) {
+			resultSetID2resultSetMap.put(resultSet.getResultSetID().getResultSetID(), resultSet);
+		}
+		return resultSet;
+	}
+
+	public abstract ResultSet doExecuteQuery(String queryText, List<Object> parameters);
+
+	public ResultSet getResultSet(ResultSetID resultSetID, boolean throwExceptionIfNotFound)
+	{
+		if (resultSetID == null)
+			throw new IllegalArgumentException("resultSetID == null");
+
+		if (!this.connectionID.equals(resultSetID.getConnectionID())) {
+			if (throwExceptionIfNotFound)
+				throw new IllegalArgumentException("this.connectionID != resultSetID.connectionID :: " + this.connectionID + " != " + resultSetID.getConnectionID());
+			else
+				return null;
+		}
+
+		return getResultSet(resultSetID, throwExceptionIfNotFound);
+	}
+
+	public synchronized ResultSet getResultSet(int resultSetID, boolean throwExceptionIfNotFound)
+	{
+		ResultSet resultSet = resultSetID2resultSetMap.get(resultSetID);
+		if (resultSet == null && throwExceptionIfNotFound)
+			throw new IllegalArgumentException("No ResultSet with resultSetID=" + resultSetID + " in connection with connectionID=" + connectionID);
+
+		return resultSet;
+	}
+
+	public abstract ResultCellDTO newResultCellDTO(Object object);
 }

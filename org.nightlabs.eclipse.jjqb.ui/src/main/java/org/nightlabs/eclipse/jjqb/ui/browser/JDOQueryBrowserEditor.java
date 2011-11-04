@@ -40,6 +40,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.PartInitException;
+import org.nightlabs.eclipse.jjqb.childvm.shared.ResultCellObjectRefDTO;
 import org.nightlabs.eclipse.jjqb.core.JDODriver;
 import org.nightlabs.jdo.jdoqleditor.editor.JDOQLEditor;
 import org.slf4j.Logger;
@@ -169,11 +170,11 @@ public class JDOQueryBrowserEditor extends JDOQLEditor
 	private synchronized org.eclipse.datatools.connectivity.oda.IConnection getConnection(IConnectionProfile connectionProfile, IProgressMonitor monitor)
 	{
 		IManagedConnection managedConnection = connectionProfile.getManagedConnection(connectionFactoryID);
-		if (managedConnection.getConnection() == null)
-			connectionProfile.connectWithoutJob();
-
 		if (managedConnectionsWithRegisteredListener.add(managedConnection))
 			managedConnection.addConnectionListener(managedConnectionListener);
+
+		if (managedConnection.getConnection() == null)
+			connectionProfile.connectWithoutJob();
 
 		org.eclipse.datatools.connectivity.IConnection connection = connectionProfile2connection.get(connectionProfile);
 		if (connection == null) {
@@ -232,7 +233,13 @@ public class JDOQueryBrowserEditor extends JDOQLEditor
 		query.prepare(queryContext.getQueryText());
 		IResultSet resultSet = query.executeQuery();
 		while (resultSet.next()) {
-			System.out.println(resultSet.getObject(1));
+			Object object = resultSet.getObject(1);
+			if (object instanceof ResultCellObjectRefDTO) {
+				ResultCellObjectRefDTO ref = (ResultCellObjectRefDTO)object;
+				System.out.println(ref.getObjectClassName() + ' ' + ref.getObjectID());
+			}
+			else
+				System.out.println(object);
 		}
 
 		// This works so far (though 'NYI', as the query stuff is not yet implemented).

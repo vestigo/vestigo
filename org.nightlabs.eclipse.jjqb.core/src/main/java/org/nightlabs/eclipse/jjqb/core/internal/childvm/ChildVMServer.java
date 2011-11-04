@@ -11,6 +11,7 @@ import java.net.ServerSocket;
 import java.net.URL;
 import java.security.SecureRandom;
 import java.util.Collection;
+import java.util.List;
 import java.util.Locale;
 import java.util.UUID;
 import java.util.concurrent.TimeoutException;
@@ -22,6 +23,10 @@ import org.nightlabs.eclipse.jjqb.childvm.shared.ConnectionDTOList;
 import org.nightlabs.eclipse.jjqb.childvm.shared.ConnectionProfileDTO;
 import org.nightlabs.eclipse.jjqb.childvm.shared.ConnectionProfileDTOList;
 import org.nightlabs.eclipse.jjqb.childvm.shared.JAXBContextResolver;
+import org.nightlabs.eclipse.jjqb.childvm.shared.QueryDTO;
+import org.nightlabs.eclipse.jjqb.childvm.shared.ResultRowDTO;
+import org.nightlabs.eclipse.jjqb.childvm.shared.ResultRowDTOList;
+import org.nightlabs.eclipse.jjqb.childvm.shared.ResultSetID;
 import org.nightlabs.eclipse.jjqb.core.childvm.ChildVM;
 import org.nightlabs.eclipse.jjqb.core.childvm.ChildVMException;
 import org.nightlabs.util.IOUtil;
@@ -441,7 +446,6 @@ implements ChildVM
 			getChildVMAppResource(ConnectionProfileDTO.class).put(connectionProfileDTO);
 		} catch (UniformInterfaceException x) {
 			handleUniformInterfaceException(x);
-			throw x;
 		}
 	}
 
@@ -453,7 +457,7 @@ implements ChildVM
 			return list.getElements();
 		} catch (UniformInterfaceException x) {
 			handleUniformInterfaceException(x);
-			throw x;
+			throw x; // we do not expect null
 		}
 	}
 
@@ -468,7 +472,7 @@ implements ChildVM
 			return dto;
 		} catch (UniformInterfaceException x) {
 			handleUniformInterfaceException(x);
-			throw x;
+			throw x; // we do not expect null
 		}
 	}
 
@@ -480,7 +484,7 @@ implements ChildVM
 			return list.getElements();
 		} catch (UniformInterfaceException x) {
 			handleUniformInterfaceException(x);
-			throw x;
+			throw x; // we do not expect null
 		}
 	}
 
@@ -494,13 +498,17 @@ implements ChildVM
 			getChildVMAppResource(ConnectionDTO.class).put(connectionDTO);
 		} catch (UniformInterfaceException x) {
 			handleUniformInterfaceException(x);
-			throw x;
 		}
 	}
 
 	private void handleUniformInterfaceException(UniformInterfaceException x)
 	{
-		logger.error("handleException: " + x);
+		// Instead of returning null, jersey throws a com.sun.jersey.api.client.UniformInterfaceException
+		// when the server does not send a result. We therefore check for the result code 204 here.
+		if (ClientResponse.Status.NO_CONTENT == x.getResponse().getClientResponseStatus())
+			return;
+
+		logger.error("handleUniformInterfaceException: " + x, x);
 		org.nightlabs.eclipse.jjqb.childvm.shared.Error error = null;
 		try {
 			ClientResponse clientResponse = x.getResponse();
@@ -522,24 +530,87 @@ implements ChildVM
 			}
 
 		} catch (Exception y) {
-			logger.error("handleException: " + y, y);
+			logger.error("handleUniformInterfaceException: " + y, y);
 		}
 
 		if (error != null)
 			throw new ChildVMException(error);
+
+		throw x;
 	}
 
 	@Override
 	public void deleteConnectionDTO(UUID connectionID) throws ChildVMException
 	{
-		try {
-			if (connectionID == null)
-				throw new IllegalArgumentException("connectionID == null");
+		if (connectionID == null)
+			throw new IllegalArgumentException("connectionID == null");
 
+		try {
 			getChildVMAppResource(ConnectionDTO.class, new PathSegment(connectionID)).delete();
 		} catch (UniformInterfaceException x) {
 			handleUniformInterfaceException(x);
-			throw x;
+		}
+	}
+
+	@Override
+	public ResultSetID executeQuery(UUID connectionID, String queryText, List<Object> parameters)
+	{
+		if (connectionID == null)
+			throw new IllegalArgumentException("connectionID == null");
+
+		if (queryText == null)
+			throw new IllegalArgumentException("queryText == null");
+
+		if (parameters == null)
+			throw new IllegalArgumentException("parameters == null");
+
+		try {
+			QueryDTO queryDTO = new QueryDTO();
+			queryDTO.setConnectionID(connectionID);
+			queryDTO.setQueryText(queryText);
+			queryDTO.setParameters(parameters);
+
+			ResultSetID resultSetID = getChildVMAppJaxbBuilder(ResultRowDTO.class, new PathSegment("executeQuery"))
+					.post(ResultSetID.class, queryDTO);
+
+			return resultSetID;
+		} catch (UniformInterfaceException x) {
+			handleUniformInterfaceException(x);
+			return null;
+		}
+	}
+
+	@Override
+	public ResultRowDTO nextResultRowDTO(ResultSetID resultSetID)
+	{
+		if (resultSetID == null)
+			throw new IllegalArgumentException("resultSetID == null");
+
+		try {
+			ResultRowDTO resultRowDTO = getChildVMAppJaxbBuilder(ResultRowDTO.class, new PathSegment(resultSetID), new PathSegment("next"))
+			.post(ResultRowDTO.class);
+
+			return resultRowDTO;
+		} catch (UniformInterfaceException x) {
+			handleUniformInterfaceException(x);
+			return null;
+		}
+	}
+
+	@Override
+	public List<ResultRowDTO> nextResultRowDTOList(ResultSetID resultSetID, int count)
+	{
+		if (resultSetID == null)
+			throw new IllegalArgumentException("resultSetID == null");
+
+		try {
+			ResultRowDTOList resultRowDTOList = getChildVMAppJaxbBuilder(ResultRowDTO.class, new PathSegment(resultSetID), new PathSegment("nextList"), new QueryParameter("count", Integer.toString(count)))
+			.post(ResultRowDTOList.class);
+
+			return resultRowDTOList.getElements();
+		} catch (UniformInterfaceException x) {
+			handleUniformInterfaceException(x);
+			throw x; // we do not expect null
 		}
 	}
 }

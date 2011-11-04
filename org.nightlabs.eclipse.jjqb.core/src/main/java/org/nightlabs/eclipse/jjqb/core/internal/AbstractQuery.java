@@ -4,20 +4,28 @@ import java.math.BigDecimal;
 import java.sql.Date;
 import java.sql.Time;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
 import org.eclipse.datatools.connectivity.oda.IParameterMetaData;
+import org.eclipse.datatools.connectivity.oda.IResultSet;
 import org.eclipse.datatools.connectivity.oda.IResultSetMetaData;
 import org.eclipse.datatools.connectivity.oda.OdaException;
 import org.eclipse.datatools.connectivity.oda.SortSpec;
 import org.eclipse.datatools.connectivity.oda.spec.QuerySpecification;
+import org.nightlabs.eclipse.jjqb.childvm.shared.ResultRowDTO;
+import org.nightlabs.eclipse.jjqb.childvm.shared.ResultSetID;
 import org.nightlabs.eclipse.jjqb.core.Connection;
 import org.nightlabs.eclipse.jjqb.core.Query;
+import org.nightlabs.eclipse.jjqb.core.QueryID;
+import org.nightlabs.eclipse.jjqb.core.childvm.ChildVM;
 
 public abstract class AbstractQuery implements Query
 {
 	private AbstractConnection connection;
+	private QueryID queryID;
 
 	private SortedMap<Integer, Object> parameterID2parameterValue = new TreeMap<Integer, Object>();
 	private SortedMap<String, Integer> parameterName2parameterID  = new TreeMap<String, Integer>();
@@ -35,10 +43,17 @@ public abstract class AbstractQuery implements Query
 			throw new IllegalArgumentException("connection == null");
 
 		this.connection = connection;
+		this.queryID = new QueryID(connection.getConnectionID(), connection.nextQueryID());
 	}
 
-	protected Connection getConnection() {
+	@Override
+	public Connection getConnection() {
 		return connection;
+	}
+
+	@Override
+	public QueryID getQueryID() {
+		return queryID;
 	}
 
 	protected SortedMap<Integer, String> getParameterID2parameterName() {
@@ -225,5 +240,58 @@ public abstract class AbstractQuery implements Query
 	@Override
 	public String getEffectiveQueryText() {
 		return queryText;
+	}
+
+	@Override
+	public IResultSet executeQuery() throws OdaException {
+		List<Object> parameters = new ArrayList<Object>(parameterID2parameterValue.values());
+		ResultSetID resultSetID = getChildVM().executeQuery(connection.getConnectionID(), queryText, parameters);
+
+		// TODO do NOT pass the entire result set at once, but use the resultSetID inside the ODA-resultset-impl!
+		// BEGIN only for a first shot, now
+		List<Object> resultElements = new ArrayList<Object>();
+//		ResultRowDTO resultRowDTO = null;
+//		do {
+//			resultRowDTO = getChildVM().nextResultRowDTO(resultSetID);
+//			if (resultRowDTO != null) {
+//				if (resultRowDTO.getCells().size() > 1) {
+////					Object[] row = new Object[resultRowDTO.getCells().size()];
+////					int idx = -1;
+////					for (ResultCellDTO cellDTO : resultRowDTO.getCells())
+////						row[++idx] = cellDTO;
+//					Object[] row = resultRowDTO.getCells().toArray();
+//
+//					resultElements.add(row);
+//				}
+//				else if (resultRowDTO.getCells().size() == 1)
+//					resultElements.add(resultRowDTO.getCells().get(0));
+//			}
+//		} while (resultRowDTO != null);
+		List<ResultRowDTO> resultRowDTOList = null;
+		do {
+			resultRowDTOList = getChildVM().nextResultRowDTOList(resultSetID, 100);
+			for (ResultRowDTO resultRowDTO : resultRowDTOList) {
+				if (resultRowDTO.getCells().size() > 1) {
+//					Object[] row = new Object[resultRowDTO.getCells().size()];
+//					int idx = -1;
+//					for (ResultCellDTO cellDTO : resultRowDTO.getCells())
+//						row[++idx] = cellDTO;
+					Object[] row = resultRowDTO.getCells().toArray();
+
+					resultElements.add(row);
+				}
+				else if (resultRowDTO.getCells().size() == 1)
+					resultElements.add(resultRowDTO.getCells().get(0));
+			}
+		} while (!resultRowDTOList.isEmpty());
+		// END only for a first shot, now
+
+		ResultSetMetaData resultSetMetaData = new ResultSetMetaData(new ResultSetMetaData.Column("default")); // TODO correct meta data!
+		ResultSet resultSet = new ResultSet(resultSetMetaData, resultElements);
+		return resultSet;
+	}
+
+	private ChildVM getChildVM() {
+		return getConnection().getConnectionProfile().getChildVM();
 	}
 }

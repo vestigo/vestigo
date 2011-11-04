@@ -30,13 +30,26 @@ implements ContextResolver<JAXBContext>
 		ConnectionDTO.class,
 		ConnectionDTOList.class,
 		ConnectionDTOPutResult.class,
+
 		ConnectionProfileDTO.class,
 		ConnectionProfileDTOList.class,
 		ConnectionProfileDTOPutResult.class,
+
 		JDOConnectionDTO.class,
 		JDOConnectionProfileDTO.class,
+
 		JPAConnectionDTO.class,
-		JPAConnectionProfileDTO.class
+		JPAConnectionProfileDTO.class,
+
+		QueryDTO.class,
+
+		ResultCellDTO.class,
+		ResultCellObjectRefDTO.class,
+		ResultCellSimpleDTO.class,
+
+		ResultRowDTO.class,
+		ResultRowDTOList.class,
+		ResultSetID.class
 	};
 
 	private static final Set<Class<?>> types = Collections.unmodifiableSet(new HashSet<Class<?>>(Arrays.asList(cTypes)));

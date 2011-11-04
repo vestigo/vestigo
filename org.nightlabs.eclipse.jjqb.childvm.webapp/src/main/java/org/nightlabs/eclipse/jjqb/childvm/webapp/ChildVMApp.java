@@ -18,6 +18,7 @@ extends Application
 		ConnectionDTOService.class,
 		ConnectionProfileDTOService.class,
 		IsOnlineService.class,
+		ResultRowDTOService.class,
 		// END services
 
 		// BEGIN providers

@@ -17,6 +17,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Properties;
 import java.util.UUID;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import org.eclipse.datatools.connectivity.oda.IDataSetMetaData;
 import org.eclipse.datatools.connectivity.oda.OdaException;
@@ -46,6 +47,7 @@ public abstract class AbstractConnection implements Connection
 	private ConnectionProfile connectionProfile;
 	private Properties connectionProperties;
 	private Object appContext;
+	private AtomicInteger nextQueryID = new AtomicInteger();
 
 	public AbstractConnection() { }
 
@@ -57,6 +59,10 @@ public abstract class AbstractConnection implements Connection
 	@Override
 	public ConnectionProfile getConnectionProfile() {
 		return connectionProfile;
+	}
+
+	protected int nextQueryID() {
+		return nextQueryID.getAndIncrement();
 	}
 
 	protected ChildVM getChildVM()

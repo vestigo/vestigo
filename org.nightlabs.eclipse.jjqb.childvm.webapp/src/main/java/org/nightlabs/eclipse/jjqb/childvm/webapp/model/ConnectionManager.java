@@ -102,6 +102,15 @@ public class ConnectionManager
 		return connectionID2connection.get(connectionID);
 	}
 
+	public synchronized Connection getConnection(UUID connectionID, boolean throwExceptionIfNotFound)
+	{
+		Connection result = connectionID2connection.get(connectionID);
+		if (result == null && throwExceptionIfNotFound)
+			throw new IllegalArgumentException("There is no connection with connectionID=" + connectionID + "!");
+
+		return result;
+	}
+
 	public Collection<Connection> getConnections()
 	{
 		Collection<Connection> result = cache_allConnections;
