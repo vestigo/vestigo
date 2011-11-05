@@ -64,7 +64,7 @@ public class ResultSetMetaData implements IResultSetMetaData {
 		if (index > columns.length)
 			throw new IllegalArgumentException("index > columns.length :: " + index + " > " + columns.length);
 
-		return columns[index];
+		return columns[index - 1];
 	}
 
 	@Override

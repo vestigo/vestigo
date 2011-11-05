@@ -50,7 +50,7 @@ public class ObjectReferenceImpl implements ObjectReference
 
 	@Override
 	public String toString() {
-		return this.getClass().getSimpleName() + '[' + resultSet.getResultSetID() + ',' + resultCellObjectRefDTO + ']';
+		return this.getClass().getSimpleName() + '[' + resultSet.getResultSetID() + ',' + getObjectClassName() + ',' + getObjectID() + ']';
 	}
 
 	@Override

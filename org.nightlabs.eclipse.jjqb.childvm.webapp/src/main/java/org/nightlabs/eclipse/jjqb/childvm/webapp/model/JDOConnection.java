@@ -6,6 +6,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
+import javax.jdo.FetchPlan;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
@@ -91,6 +92,9 @@ extends Connection
 		PersistenceManager pm = getPersistenceManager();
 		if (pm == null)
 			throw new IllegalStateException("getPersistenceManager() returned null!");
+
+		pm.getFetchPlan().setMaxFetchDepth(1);
+		pm.getFetchPlan().setGroup(FetchPlan.ALL);
 
 		Query query = pm.newQuery(queryText);
 		Object queryResult = query.executeWithArray(parameters.toArray());

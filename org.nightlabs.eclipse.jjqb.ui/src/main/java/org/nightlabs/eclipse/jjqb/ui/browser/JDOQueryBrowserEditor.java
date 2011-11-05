@@ -1,5 +1,7 @@
 package org.nightlabs.eclipse.jjqb.ui.browser;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -55,9 +57,12 @@ public class JDOQueryBrowserEditor extends JDOQLEditor
 	private List<IConnectionProfile> connectionProfiles = new ArrayList<IConnectionProfile>();
 	private Combo connectionProfileCombo;
 	private Button executeQueryButton;
+	private Button loadNextBunchButton;
 
 	private Composite queryEditorComposite;
-	private Composite queryResultComposite;
+	private ResultSetTableComposite resultSetTableComposite;
+	private volatile IResultSet resultSet;
+	private volatile ResultSetTableModel resultSetTableModel;
 
 	@Override
 	public void createPartControl(Composite parent)
@@ -82,8 +87,9 @@ public class JDOQueryBrowserEditor extends JDOQLEditor
 				c.setLayoutData(new GridData(GridData.FILL_BOTH));
 		}
 
-		queryResultComposite = new Composite(partControl, SWT.BORDER);
-		queryResultComposite.setLayout(new GridLayout());
+//		queryResultComposite = new Composite(partControl, SWT.BORDER);
+//		queryResultComposite.setLayout(new GridLayout());
+		resultSetTableComposite = new ResultSetTableComposite(partControl, SWT.BORDER);
 	}
 
 	private void configureHeaderComposite()
@@ -91,7 +97,7 @@ public class JDOQueryBrowserEditor extends JDOQLEditor
 		headerComposite.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 		GridLayout layout = new GridLayout();
 		headerComposite.setLayout(layout);
-		layout.numColumns = 3;
+		layout.numColumns = 4;
 		new Label(headerComposite, SWT.NONE).setText("Connection: ");
 		connectionProfileCombo = new Combo(headerComposite, SWT.DROP_DOWN | SWT.READ_ONLY);
 		connectionProfileCombo.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
@@ -109,6 +115,19 @@ public class JDOQueryBrowserEditor extends JDOQLEditor
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				executeQuery();
+			}
+		});
+
+		loadNextBunchButton = new Button(headerComposite, SWT.PUSH);
+		loadNextBunchButton.setEnabled(false);
+		loadNextBunchButton.setText("Next");
+		loadNextBunchButton.setToolTipText("Load next 100 records");
+		loadNextBunchButton.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				ResultSetTableModel model = resultSetTableModel;
+				if (model != null)
+					model.loadNextBunch();
 			}
 		});
 
@@ -189,6 +208,12 @@ public class JDOQueryBrowserEditor extends JDOQLEditor
 	private void executeQuery(QueryContext queryContext, IProgressMonitor monitor)
 	throws Exception
 	{
+		{
+			IResultSet rs = resultSet;
+			if (rs != null)
+				rs.close();
+		}
+
 		IConnectionProfile connectionProfile = queryContext.getConnectionProfile();
 //		IConnection connection;
 ////		if (NEW_CONNECTION) {
@@ -226,37 +251,34 @@ public class JDOQueryBrowserEditor extends JDOQLEditor
 //
 //		IQuery query = rawConnection.newQuery("");
 
-		org.eclipse.datatools.connectivity.oda.IConnection connection = getConnection(connectionProfile, new SubProgressMonitor(monitor, 30)); // TODO proper management!
+		org.eclipse.datatools.connectivity.oda.IConnection connection = getConnection(connectionProfile, new SubProgressMonitor(monitor, 30)); // TODO proper management of ProgressMonitor!
 		IQuery query = connection.newQuery("");
 
 		query.prepare(queryContext.getQueryText());
-		IResultSet resultSet = query.executeQuery();
-		while (resultSet.next()) {
-			int columnCount = resultSet.getMetaData().getColumnCount();
-			for (int columnIndex = 1; columnIndex <= columnCount; ++columnIndex) {
-				Object object = resultSet.getObject(columnIndex);
-				System.out.print(object);
-				System.out.print("\t");
+		final IResultSet rs = query.executeQuery();
+		display.asyncExec(new Runnable() {
+			@Override
+			public void run() {
+				resultSet = rs;
+				resultSetTableModel = new ResultSetTableModel(rs);
+				resultSetTableModel.addPropertyChangeListener(ResultSetTableModel.PROPERTY_CHANGE_COMPLETELY_LOADED, new PropertyChangeListener() {
+					@Override
+					public void propertyChange(PropertyChangeEvent evt) {
+						loadNextBunchButton.setEnabled((Boolean)evt.getNewValue() == false);
+					}
+				});
+				resultSetTableComposite.setInput(resultSetTableModel);
 			}
-			System.out.println();
-
-//			Object object = resultSet.getObject(1);
-//			if (object instanceof ResultCellObjectRefDTO) {
-//				ResultCellObjectRefDTO ref = (ResultCellObjectRefDTO)object;
-//				System.out.println(ref.getObjectClassName() + ' ' + ref.getObjectID());
+		});
+//		while (resultSet.next()) {
+//			int columnCount = resultSet.getMetaData().getColumnCount();
+//			for (int columnIndex = 1; columnIndex <= columnCount; ++columnIndex) {
+//				Object object = resultSet.getObject(columnIndex);
+//				System.out.print(object);
+//				System.out.print("\t");
 //			}
-//			else
-//				System.out.println(object);
-		}
-
-		// This works so far (though 'NYI', as the query stuff is not yet implemented).
-		// However, I think we need to use a separate connection per editor, because it seems commit/rollback is only manageable per
-		// connection. If we do this, though, we need a different life-cycle for the persistenceEngineClassLoader (we have to share the
-		// same CL for all connections of one connection-profile). This is essential for Derby, as we only can open multiple connections
-		// if we use the same CL. But even if we refactor it this way, we should keep only one PMF per connection-profile, too (with one PM
-		// per editor, maybe). It would still be nice though, if closing the connection in the DataSourceExplorer-view causes ALL connections
-		// to be closed (in order to be able to modify the PMF settings).
-		// Marco :-)
+//			System.out.println();
+//		}
 	}
 
 	private Display display;
@@ -278,6 +300,9 @@ public class JDOQueryBrowserEditor extends JDOQLEditor
 
 	private void executeQuery()
 	{
+		resultSetTableComposite.setInput(null);
+		loadNextBunchButton.setEnabled(true);
+
 		final QueryContext queryContext = new QueryContext();
 
 		final IConnectionProfile connectionProfile = getConnectionProfile();

@@ -137,12 +137,9 @@ public abstract class AbstractResultSet implements ResultSet
 			rowIndex = 0;
 		}
 
-		// The ODA spec doesn't say (or I didn't find it) when the row-index has to be incremented (see getRow() method).
-		// Hence, we increment it here, i.e. it will only be 0, if next() was never called.
-		++rowIndex;
-
-		if (elementsIterator.hasNext() && (maxRows == 0 || rowIndex <= maxRows)) {
+		if (elementsIterator.hasNext() && (maxRows == 0 || rowIndex < maxRows)) {
 			row = elementsIterator.next();
+			++rowIndex;
 			elementsIteratorNextNotYetCalled = false;
 			return true;
 		}
@@ -154,8 +151,9 @@ public abstract class AbstractResultSet implements ResultSet
 			elementsIteratorNextNotYetCalled = true;
 		}
 
-		if (elementsIterator.hasNext() && (maxRows == 0 || rowIndex <= maxRows)) {
+		if (elementsIterator.hasNext() && (maxRows == 0 || rowIndex < maxRows)) {
 			row = elementsIterator.next();
+			++rowIndex;
 			elementsIteratorNextNotYetCalled = false;
 			return true;
 		}
