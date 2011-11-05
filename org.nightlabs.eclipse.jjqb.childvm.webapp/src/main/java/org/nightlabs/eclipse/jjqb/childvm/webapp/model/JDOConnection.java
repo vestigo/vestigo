@@ -6,15 +6,11 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
 import org.nightlabs.eclipse.jjqb.childvm.shared.ConnectionDTO;
 import org.nightlabs.eclipse.jjqb.childvm.shared.JDOConnectionDTO;
-import org.nightlabs.eclipse.jjqb.childvm.shared.ResultCellDTO;
-import org.nightlabs.eclipse.jjqb.childvm.shared.ResultCellObjectRefDTO;
-import org.nightlabs.eclipse.jjqb.childvm.shared.ResultCellSimpleDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -101,25 +97,10 @@ extends Connection
 
 		ResultSet resultSet;
 		if (queryResult instanceof Collection<?>)
-			resultSet = new ResultSet(this, (Collection<?>)queryResult);
+			resultSet = new JDOResultSet(this, (Collection<?>)queryResult);
 		else
-			resultSet = new ResultSet(this, Collections.singletonList(queryResult));
+			resultSet = new JDOResultSet(this, Collections.singletonList(queryResult));
 
 		return resultSet;
-	}
-
-	@Override
-	public ResultCellDTO newResultCellDTO(Object object)
-	{
-		if (object == null)
-			return new ResultCellSimpleDTO();
-
-		Object objectID = JDOHelper.getObjectId(object);
-		if (objectID != null)
-			return new ResultCellObjectRefDTO(object.getClass(), objectID.toString());
-
-		// TODO DataNucleus supports custom types - we should somehow support custom types (need some extension possibility), too - later.
-
-		return new ResultCellSimpleDTO(object);
 	}
 }

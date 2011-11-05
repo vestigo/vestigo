@@ -3,9 +3,6 @@ package org.nightlabs.eclipse.jjqb.childvm.shared;
 import java.io.Serializable;
 import java.util.UUID;
 
-import javax.xml.bind.annotation.XmlRootElement;
-
-@XmlRootElement
 public class ConnectionDTOPutResult
 implements Serializable
 {

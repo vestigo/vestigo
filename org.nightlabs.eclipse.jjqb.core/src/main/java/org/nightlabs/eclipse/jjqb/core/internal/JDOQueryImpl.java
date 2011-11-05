@@ -1,10 +1,18 @@
 package org.nightlabs.eclipse.jjqb.core.internal;
 
+import org.nightlabs.eclipse.jjqb.core.JDOQuery;
+import org.nightlabs.eclipse.jjqb.core.ResultSet;
 
-public class JDOQuery extends AbstractQuery {
 
-	public JDOQuery(AbstractConnection connection) {
+public class JDOQueryImpl extends AbstractQuery implements JDOQuery {
+
+	public JDOQueryImpl(AbstractConnection connection) {
 		super(connection);
+	}
+
+	@Override
+	protected ResultSet newResultSet() {
+		return new JDOResultSetImpl(this);
 	}
 
 //	@Override
@@ -40,7 +48,7 @@ public class JDOQuery extends AbstractQuery {
 ////			resultElements = Collections.singleton(jdoQueryResult);
 //
 //		ResultSetMetaData resultSetMetaData = new ResultSetMetaData(new ResultSetMetaData.Column("default")); // TODO correct meta data!
-//		ResultSet resultSet = new ResultSet(resultSetMetaData, resultElements);
+//		CollectionResultSet resultSet = new CollectionResultSet(resultSetMetaData, resultElements);
 //		return resultSet;
 //	}
 }

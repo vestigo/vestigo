@@ -7,7 +7,8 @@ import java.util.Set;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
-import org.nightlabs.eclipse.jjqb.childvm.shared.JAXBContextResolver;
+import org.nightlabs.eclipse.jjqb.childvm.shared.provider.JavaNativeMessageBodyReader;
+import org.nightlabs.eclipse.jjqb.childvm.shared.provider.JavaNativeMessageBodyWriter;
 
 @ApplicationPath("ChildVMApp")
 public class ChildVMApp
@@ -23,7 +24,9 @@ extends Application
 
 		// BEGIN providers
 		// providers are not a services (they are infrastructure), but they are registered the same way.
-		JAXBContextResolver.class,
+//		JAXBContextResolver.class,
+		JavaNativeMessageBodyReader.class,
+		JavaNativeMessageBodyWriter.class,
 		DefaultExceptionMapper.class
 		// END providers
 	};

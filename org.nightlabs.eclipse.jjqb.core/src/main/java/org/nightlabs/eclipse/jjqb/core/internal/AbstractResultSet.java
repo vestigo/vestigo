@@ -1,65 +1,123 @@
 package org.nightlabs.eclipse.jjqb.core.internal;
 
-import java.lang.reflect.Array;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.sql.Date;
 import java.sql.Time;
 import java.sql.Timestamp;
-import java.util.Collection;
 import java.util.Iterator;
+import java.util.List;
 
 import org.eclipse.datatools.connectivity.oda.IBlob;
 import org.eclipse.datatools.connectivity.oda.IClob;
-import org.eclipse.datatools.connectivity.oda.IResultSet;
 import org.eclipse.datatools.connectivity.oda.IResultSetMetaData;
 import org.eclipse.datatools.connectivity.oda.OdaException;
+import org.nightlabs.eclipse.jjqb.childvm.shared.ResultCellDTO;
+import org.nightlabs.eclipse.jjqb.childvm.shared.ResultCellNullDTO;
+import org.nightlabs.eclipse.jjqb.childvm.shared.ResultCellObjectRefDTO;
+import org.nightlabs.eclipse.jjqb.childvm.shared.ResultCellSimpleDTO;
+import org.nightlabs.eclipse.jjqb.childvm.shared.ResultRowDTO;
+import org.nightlabs.eclipse.jjqb.childvm.shared.ResultSetID;
+import org.nightlabs.eclipse.jjqb.core.Query;
+import org.nightlabs.eclipse.jjqb.core.ResultSet;
+import org.nightlabs.eclipse.jjqb.core.childvm.ChildVM;
 
-public class ResultSet implements IResultSet
+public abstract class AbstractResultSet implements ResultSet
 {
+	private Query query;
 	private ResultSetMetaData resultSetMetaData;
+	private ResultSetID resultSetID;
+
 	private int maxRows;
-	private Collection<?> elements;
-	private Iterator<?> elementsIterator;
+	private List<ResultRowDTO> preFetchedRows;
+	private Iterator<ResultRowDTO> elementsIterator;
 	private boolean elementsIteratorEnded = false;
-	private Object element;
+	private ResultRowDTO row;
 	private int rowIndex = 0;
 	private boolean wasNull;
 
-	public ResultSet(ResultSetMetaData resultSetMetaData, Collection<?> elements)
+	public AbstractResultSet(Query query)
 	{
-		if (resultSetMetaData == null)
-			throw new IllegalArgumentException("resultSetMetaData == null");
+		if (query == null)
+			throw new IllegalArgumentException("query == null");
 
-		if (elements == null)
-			throw new IllegalArgumentException("resultSetMetaData == elements");
+		this.query = query;
+	}
 
-		this.resultSetMetaData = resultSetMetaData;
-		this.elements = elements;
+	@Override
+	public ResultSetID getResultSetID() {
+		return resultSetID;
+	}
+
+	@Override
+	public void setResultSetID(ResultSetID resultSetID)
+	{
+		if (this.resultSetID != null && this.resultSetID.equals(resultSetID))
+			return;
+
+		if (this.resultSetID != null)
+			throw new IllegalStateException("this.resultSetID already assigned! Cannot modify!");
+
+		this.resultSetID = resultSetID;
+	}
+
+	protected ChildVM getChildVM()
+	{
+		return query.getConnection().getConnectionProfile().getChildVM();
 	}
 
 	@Override
 	public IResultSetMetaData getMetaData() throws OdaException {
 		assertNotClosed();
+		if (resultSetMetaData == null) {
+			preFetchedRows = fetchNextRows();
+			initResultSetMetaDataFromResultRowDTOList(preFetchedRows);
+		}
+
 		return resultSetMetaData;
+	}
+
+	private void initResultSetMetaDataFromResultRowDTOList(List<ResultRowDTO> resultRowDTOs)
+	{
+		if (resultSetMetaData != null)
+			return;
+
+		if (resultRowDTOs.isEmpty())
+			resultSetMetaData = new ResultSetMetaData(new ResultSetMetaData.Column("empty"));
+		else {
+			ResultRowDTO firstRow = resultRowDTOs.get(0);
+
+			ResultSetMetaData.Column[] columns = new ResultSetMetaData.Column[firstRow.getCells().size()];
+			for (int i = 0; i < columns.length; i++) {
+				columns[i] = new ResultSetMetaData.Column("col_" + (i + 1));
+			}
+
+			resultSetMetaData = new ResultSetMetaData(columns);
+		}
 	}
 
 	@Override
 	public void close() throws OdaException {
+		query = null;
 		resultSetMetaData = null;
-		elements = null;
+		preFetchedRows = null;
 		elementsIterator = null;
-		element = null;
+		row = null;
 	}
 
 	private void assertNotClosed() {
-		if (resultSetMetaData == null)
+		if (query == null)
 			throw new IllegalStateException("This ResultSet is already closed!");
 	}
 
 	@Override
 	public void setMaxRows(int max) throws OdaException {
 		this.maxRows = max;
+	}
+
+	private List<ResultRowDTO> fetchNextRows()
+	{
+		return getChildVM().nextResultRowDTOList(resultSetID, 100);
 	}
 
 	@Override
@@ -69,19 +127,41 @@ public class ResultSet implements IResultSet
 		if (elementsIteratorEnded)
 			return false;
 
+		boolean elementsIteratorNextNotYetCalled = false;
 		if (elementsIterator == null) {
-			elementsIterator = elements.iterator();
+			List<ResultRowDTO> nextList = preFetchedRows != null ? preFetchedRows : fetchNextRows();
+			preFetchedRows = null;
+			initResultSetMetaDataFromResultRowDTOList(nextList);
+			elementsIterator = nextList.iterator();
+			elementsIteratorNextNotYetCalled = true;
 			rowIndex = 0;
 		}
 
+		// The ODA spec doesn't say (or I didn't find it) when the row-index has to be incremented (see getRow() method).
+		// Hence, we increment it here, i.e. it will only be 0, if next() was never called.
 		++rowIndex;
+
 		if (elementsIterator.hasNext() && (maxRows == 0 || rowIndex <= maxRows)) {
-			element = elementsIterator.next();
+			row = elementsIterator.next();
+			elementsIteratorNextNotYetCalled = false;
+			return true;
+		}
+
+		if (!elementsIteratorNextNotYetCalled) {
+			// If we just queried it and it was empty and Iterator.next() was never called, we don't need to query it again.
+			List<ResultRowDTO> nextList = fetchNextRows();
+			elementsIterator = nextList.iterator();
+			elementsIteratorNextNotYetCalled = true;
+		}
+
+		if (elementsIterator.hasNext() && (maxRows == 0 || rowIndex <= maxRows)) {
+			row = elementsIterator.next();
+			elementsIteratorNextNotYetCalled = false;
 			return true;
 		}
 		else {
 			elementsIteratorEnded = true;
-			element = null;
+			row = null;
 			elementsIterator = null;
 			return false;
 		}
@@ -290,17 +370,37 @@ public class ResultSet implements IResultSet
 		if (elementsIterator == null)
 			throw new IllegalStateException("Cursor is located BEFORE the beginning of the result set! Call next() first!");
 
-		if (element == null)
+		if (row == null)
 			return null;
 
-		if (element.getClass().isArray()) {
-			Object object = Array.get(element, index - 1); // the 'index' argument is 1-based, but arrays are 0-based.
-			wasNull = object == null;
-			return object;
+		if (row.getCells().isEmpty())
+			return null;
+
+		ResultCellDTO resultCellDTO = row.getCells().get(index - 1);
+
+		if (resultCellDTO == null)
+			throw new IllegalStateException("row.getCells().get(index - 1) returned null! index=" + index);
+
+		// Unmask null, which is transferred as ResultCellNullDTO
+		if (resultCellDTO instanceof ResultCellNullDTO) {
+			return null;
 		}
 
+		// Now, the result cannot be null anymore (the resultCellDTO impls must contain or reference a value).
 		wasNull = false;
-		return element;
+
+		// Unmask simple data types, which don't need remote-referencing.
+		if (resultCellDTO instanceof ResultCellSimpleDTO) {
+			ResultCellSimpleDTO resultCellSimpleDTO = (ResultCellSimpleDTO) resultCellDTO;
+			return resultCellSimpleDTO.getObject();
+		}
+
+		if (resultCellDTO instanceof ResultCellObjectRefDTO) {
+			ResultCellObjectRefDTO resultCellObjectRefDTO = (ResultCellObjectRefDTO) resultCellDTO;
+			return new ObjectReferenceImpl(this, resultCellObjectRefDTO);
+		}
+
+		throw new IllegalStateException("Unknown ResultCellDTO subclass: " + resultCellDTO);
 	}
 
 	@Override
@@ -322,5 +422,4 @@ public class ResultSet implements IResultSet
 		assertNotClosed();
 		return resultSetMetaData.getColumnIndex(columnName); // throws an IllegalArgumentException, if the columnName is unknown.
 	}
-
 }

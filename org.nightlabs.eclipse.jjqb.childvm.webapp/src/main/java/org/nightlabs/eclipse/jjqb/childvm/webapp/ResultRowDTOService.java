@@ -102,17 +102,17 @@ public class ResultRowDTOService extends AbstractService
 			resultRowDTO.setRowIndex(resultSet.getRowIndex());
 			Object row = resultSet.getRow();
 			if (row == null)
-				resultRowDTO.getCells().add(connection.newResultCellDTO(null));
+				resultRowDTO.getCells().add(resultSet.newResultCellDTO(null));
 			else {
 				if (row.getClass().isArray()) {
 					int arrayLength = Array.getLength(row);
 					for (int i = 0; i < arrayLength; ++i) {
 						Object arrayElement = Array.get(row, i);
-						resultRowDTO.getCells().add(connection.newResultCellDTO(arrayElement));
+						resultRowDTO.getCells().add(resultSet.newResultCellDTO(arrayElement));
 					}
 				}
 				else
-					resultRowDTO.getCells().add(connection.newResultCellDTO(row));
+					resultRowDTO.getCells().add(resultSet.newResultCellDTO(row));
 			}
 			return resultRowDTO;
 		}

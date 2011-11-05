@@ -7,7 +7,6 @@ import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import org.nightlabs.eclipse.jjqb.childvm.shared.ConnectionDTO;
-import org.nightlabs.eclipse.jjqb.childvm.shared.ResultCellDTO;
 import org.nightlabs.eclipse.jjqb.childvm.shared.ResultSetID;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -142,6 +141,4 @@ public abstract class Connection
 
 		return resultSet;
 	}
-
-	public abstract ResultCellDTO newResultCellDTO(Object object);
 }

@@ -40,7 +40,6 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.PartInitException;
-import org.nightlabs.eclipse.jjqb.childvm.shared.ResultCellObjectRefDTO;
 import org.nightlabs.eclipse.jjqb.core.JDODriver;
 import org.nightlabs.jdo.jdoqleditor.editor.JDOQLEditor;
 import org.slf4j.Logger;
@@ -233,13 +232,21 @@ public class JDOQueryBrowserEditor extends JDOQLEditor
 		query.prepare(queryContext.getQueryText());
 		IResultSet resultSet = query.executeQuery();
 		while (resultSet.next()) {
-			Object object = resultSet.getObject(1);
-			if (object instanceof ResultCellObjectRefDTO) {
-				ResultCellObjectRefDTO ref = (ResultCellObjectRefDTO)object;
-				System.out.println(ref.getObjectClassName() + ' ' + ref.getObjectID());
+			int columnCount = resultSet.getMetaData().getColumnCount();
+			for (int columnIndex = 1; columnIndex <= columnCount; ++columnIndex) {
+				Object object = resultSet.getObject(columnIndex);
+				System.out.print(object);
+				System.out.print("\t");
 			}
-			else
-				System.out.println(object);
+			System.out.println();
+
+//			Object object = resultSet.getObject(1);
+//			if (object instanceof ResultCellObjectRefDTO) {
+//				ResultCellObjectRefDTO ref = (ResultCellObjectRefDTO)object;
+//				System.out.println(ref.getObjectClassName() + ' ' + ref.getObjectID());
+//			}
+//			else
+//				System.out.println(object);
 		}
 
 		// This works so far (though 'NYI', as the query stuff is not yet implemented).

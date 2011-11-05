@@ -1,11 +1,9 @@
 package org.nightlabs.eclipse.jjqb.core.internal.childvm;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.URL;
@@ -22,11 +20,13 @@ import org.nightlabs.eclipse.jjqb.childvm.shared.ConnectionDTO;
 import org.nightlabs.eclipse.jjqb.childvm.shared.ConnectionDTOList;
 import org.nightlabs.eclipse.jjqb.childvm.shared.ConnectionProfileDTO;
 import org.nightlabs.eclipse.jjqb.childvm.shared.ConnectionProfileDTOList;
-import org.nightlabs.eclipse.jjqb.childvm.shared.JAXBContextResolver;
 import org.nightlabs.eclipse.jjqb.childvm.shared.QueryDTO;
 import org.nightlabs.eclipse.jjqb.childvm.shared.ResultRowDTO;
 import org.nightlabs.eclipse.jjqb.childvm.shared.ResultRowDTOList;
 import org.nightlabs.eclipse.jjqb.childvm.shared.ResultSetID;
+import org.nightlabs.eclipse.jjqb.childvm.shared.provider.JavaNativeMessageBodyReader;
+import org.nightlabs.eclipse.jjqb.childvm.shared.provider.JavaNativeMessageBodyWriter;
+import org.nightlabs.eclipse.jjqb.childvm.shared.provider.MediaTypeConst;
 import org.nightlabs.eclipse.jjqb.core.childvm.ChildVM;
 import org.nightlabs.eclipse.jjqb.core.childvm.ChildVMException;
 import org.nightlabs.util.IOUtil;
@@ -44,6 +44,9 @@ public class ChildVMServer
 implements ChildVM
 {
 	private static final Logger logger = LoggerFactory.getLogger(ChildVMServer.class);
+	static {
+		JavaNativeMessageBodyReader.setClassLoader(ChildVMServer.class.getClassLoader());
+	}
 
 	private static SecureRandom random = new SecureRandom();
 
@@ -324,7 +327,7 @@ implements ChildVM
 
 	protected WebResource.Builder getChildVMAppJaxbBuilder(Class<?> dtoClass, RelativePathPart ... relativePathParts)
 	{
-		return getChildVMAppResource(dtoClass, relativePathParts).accept(MediaType.APPLICATION_XML_TYPE);
+		return getChildVMAppResource(dtoClass, relativePathParts).accept(MediaTypeConst.APPLICATION_JAVA_NATIVE_TYPE);
 	}
 
 	protected WebResource getChildVMAppResource(Class<?> dtoClass, RelativePathPart ... relativePathParts)
@@ -359,7 +362,7 @@ implements ChildVM
 	{
 		assertServerStarted();
 
-		ClientConfig clientConfig = new DefaultClientConfig(JAXBContextResolver.class);
+		ClientConfig clientConfig = new DefaultClientConfig(JavaNativeMessageBodyReader.class, JavaNativeMessageBodyWriter.class);
 		Client client = Client.create(clientConfig);
 		return client.resource("http://localhost:" + port + "/org.nightlabs.eclipse.jjqb.childvm.webapp/ChildVMApp/" + relativePath);
 	}
@@ -515,15 +518,15 @@ implements ChildVM
 
 			clientResponse.bufferEntity();
 			if (clientResponse.hasEntity()) {
-				// Log the data as is to the error log.
-				InputStream inputStream = clientResponse.getEntityInputStream();
-				inputStream.mark(Integer.MAX_VALUE);
-				BufferedReader r = new BufferedReader(new InputStreamReader(inputStream, IOUtil.CHARSET_UTF_8));
-				String line;
-				while (null != (line = r.readLine())) {
-					logger.error(line);
-				}
-				inputStream.reset();
+//				// Log the data as is to the error log. Not possible anymore - we don't use XML anymore - it's binary now.
+//				InputStream inputStream = clientResponse.getEntityInputStream();
+//				inputStream.mark(Integer.MAX_VALUE);
+//				BufferedReader r = new BufferedReader(new InputStreamReader(inputStream, IOUtil.CHARSET_UTF_8));
+//				String line;
+//				while (null != (line = r.readLine())) {
+//					logger.error(line);
+//				}
+//				inputStream.reset();
 
 				// create an error instance from the entity.
 				error = clientResponse.getEntity(org.nightlabs.eclipse.jjqb.childvm.shared.Error.class);
@@ -603,9 +606,18 @@ implements ChildVM
 		if (resultSetID == null)
 			throw new IllegalArgumentException("resultSetID == null");
 
+
 		try {
 			ResultRowDTOList resultRowDTOList = getChildVMAppJaxbBuilder(ResultRowDTO.class, new PathSegment(resultSetID), new PathSegment("nextList"), new QueryParameter("count", Integer.toString(count)))
 			.post(ResultRowDTOList.class);
+
+			if (resultRowDTOList.getElements() == null)
+				throw new IllegalStateException("resultRowDTOList.elements == null");
+
+			logger.info(
+					"nextResultRowDTOList: resultSetID={} count={} resultRowDTOList.size={}",
+					new Object[] { resultSetID, count, resultRowDTOList.getElements().size() }
+			);
 
 			return resultRowDTOList.getElements();
 		} catch (UniformInterfaceException x) {

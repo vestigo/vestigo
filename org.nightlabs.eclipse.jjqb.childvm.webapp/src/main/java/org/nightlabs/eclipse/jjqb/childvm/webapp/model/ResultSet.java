@@ -1,11 +1,20 @@
 package org.nightlabs.eclipse.jjqb.childvm.webapp.model;
 
 import java.util.Collection;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.IdentityHashMap;
 import java.util.Iterator;
+import java.util.Map;
+import java.util.UUID;
 
+import org.nightlabs.eclipse.jjqb.childvm.shared.ResultCellDTO;
+import org.nightlabs.eclipse.jjqb.childvm.shared.ResultCellNullDTO;
+import org.nightlabs.eclipse.jjqb.childvm.shared.ResultCellSimpleDTO;
+import org.nightlabs.eclipse.jjqb.childvm.shared.ResultCellTransientObjectRefDTO;
 import org.nightlabs.eclipse.jjqb.childvm.shared.ResultSetID;
 
-public class ResultSet
+public abstract class ResultSet
 {
 	private Connection connection;
 	private ResultSetID resultSetID;
@@ -13,6 +22,10 @@ public class ResultSet
 	private Iterator<?> iterator;
 	private int rowIndex = 0; // 1-based like ODA; 0 means before first call of next()
 	private Object row;
+
+	private long nextObjectID = 0;
+	private Map<Long, TransientObjectContainer> objectID2transientObjectContainer = new HashMap<Long, TransientObjectContainer>();
+	private Map<Object, Long> transientObject2objectID = new IdentityHashMap<Object, Long>();
 
 	public ResultSet(Connection connection, Collection<?> rows)
 	{
@@ -80,5 +93,101 @@ public class ResultSet
 
 	public Object getRow() {
 		return row;
+	}
+
+	public synchronized TransientObjectContainer getTransientObjectContainerForObjectID(Long objectID, boolean throwExceptionIfNotFound)
+	{
+		if (objectID == null)
+			throw new IllegalArgumentException("objectID == null");
+
+		TransientObjectContainer container = objectID2transientObjectContainer.get(objectID);
+		if (container == null && throwExceptionIfNotFound)
+			throw new IllegalArgumentException("The given objectID is unknown: " + objectID);
+
+		return container;
+	}
+
+	public synchronized TransientObjectContainer createTransientObjectContainerForTransientObject(Object transientObject)
+	{
+		TransientObjectContainer container = getTransientObjectContainerForTransientObject(transientObject, false);
+		if (container == null) {
+			container = new TransientObjectContainer(nextObjectID++, transientObject);
+			objectID2transientObjectContainer.put(container.getObjectID(), container);
+			transientObject2objectID.put(transientObject, container.getObjectID());
+		}
+		return container;
+	}
+
+	public synchronized TransientObjectContainer getTransientObjectContainerForTransientObject(Object transientObject, boolean throwExceptionIfNotFound)
+	{
+		if (transientObject == null)
+			throw new IllegalArgumentException("transientObject == null");
+
+		Long objectID = getObjectIDForTransientObject(transientObject, throwExceptionIfNotFound);
+		if (objectID == null)
+			return null;
+
+		return getTransientObjectContainerForObjectID(objectID, true); // If there is an objectID, it always must be found.
+	}
+
+	public synchronized Long getObjectIDForTransientObject(Object transientObject, boolean throwExceptionIfNotFound)
+	{
+		if (transientObject == null)
+			throw new IllegalArgumentException("transientObject == null");
+
+		Long objectID = transientObject2objectID.get(transientObject);
+
+		if (objectID == null && throwExceptionIfNotFound)
+			throw new IllegalArgumentException("The given transientObject is unknown and has no objectID assigned: " + transientObject);
+
+		return objectID;
+	}
+
+	protected ResultCellSimpleDTO nullOrNewResultCellSimpleDTO(Object object)
+	{
+		if (object == null)
+			return null;
+
+		// We keep arrays (just like Collection or Map instances) in the ChildVM and navigate through them.
+		if (object.getClass().isArray())
+			return null;
+
+		if (
+				object instanceof Date ||
+				object instanceof Number ||
+				object instanceof String ||
+				object instanceof UUID
+		)
+			return new ResultCellSimpleDTO(object);
+
+		// Nothing matching => return null.
+		return null;
+	}
+
+	protected abstract ResultCellDTO nullOrNewImplementationSpecificResultCellDTO(Object object);
+
+	/**
+	 * Get the {@link ResultCellDTO} for the given object. Never <code>null</code>.
+	 * @param object
+	 * @return
+	 */
+	public final ResultCellDTO newResultCellDTO(Object object)
+	{
+		if (object == null)
+			return new ResultCellNullDTO();
+
+		ResultCellDTO resultCellDTO = nullOrNewResultCellSimpleDTO(object);
+		if (resultCellDTO != null)
+			return resultCellDTO;
+
+		resultCellDTO = nullOrNewImplementationSpecificResultCellDTO(object);
+		if (resultCellDTO != null)
+			return resultCellDTO;
+
+		// TODO DataNucleus supports custom types - we should somehow support custom types (need some extension possibility), too - later.
+		// hmmm... maybe this is already sufficient, because all we have is java types anyway and we break such unknown objects down into
+		// this transientObjectManagement stuff.
+		TransientObjectContainer transientObjectContainer = createTransientObjectContainerForTransientObject(object);
+		return new ResultCellTransientObjectRefDTO(object.getClass(), transientObjectContainer.getObjectID().toString());
 	}
 }

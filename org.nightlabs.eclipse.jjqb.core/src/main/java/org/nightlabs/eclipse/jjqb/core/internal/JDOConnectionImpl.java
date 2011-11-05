@@ -86,7 +86,7 @@ public class JDOConnectionImpl extends AbstractConnection implements JDOConnecti
 	@Override
 	public Query newQuery(String dataSetType) throws OdaException {
 		// We ignore the dataSetType, because our driver supports only one type.
-		return new JDOQuery(this);
+		return new JDOQueryImpl(this);
 	}
 
 	@Override

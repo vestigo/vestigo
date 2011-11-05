@@ -1,8 +1,7 @@
 package org.nightlabs.eclipse.jjqb.childvm.shared;
 
-import javax.xml.bind.annotation.XmlRootElement;
+import org.nightlabs.util.Util;
 
-@XmlRootElement
 public class ResultCellSimpleDTO extends ResultCellDTO
 {
 	private static final long serialVersionUID = 1L;
@@ -10,6 +9,9 @@ public class ResultCellSimpleDTO extends ResultCellDTO
 	public ResultCellSimpleDTO() { }
 
 	public ResultCellSimpleDTO(Object object) {
+		if (object == null)
+			throw new IllegalArgumentException("object == null");
+
 		this.object = object;
 	}
 
@@ -18,7 +20,30 @@ public class ResultCellSimpleDTO extends ResultCellDTO
 	public Object getObject() {
 		return object;
 	}
-	public void setObject(Object object) {
-		this.object = object;
+//	public void setObject(Object object) {
+//		if (object == null)
+//			throw new IllegalArgumentException("object == null");
+//
+//		this.object = object;
+//	}
+
+	@Override
+	public int hashCode() {
+		return 31 + ((object == null) ? 0 : object.hashCode());
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) return true;
+		if (obj == null) return false;
+		if (getClass() != obj.getClass()) return false;
+
+		ResultCellSimpleDTO other = (ResultCellSimpleDTO) obj;
+		return Util.equals(this.object, other.object);
+	}
+
+	@Override
+	public String toString() {
+		return this.getClass().getSimpleName() + '[' + object + ']';
 	}
 }

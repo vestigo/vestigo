@@ -3,11 +3,8 @@ package org.nightlabs.eclipse.jjqb.childvm.shared;
 import java.io.Serializable;
 import java.util.UUID;
 
-import javax.xml.bind.annotation.XmlRootElement;
-
 import org.nightlabs.util.Util;
 
-@XmlRootElement
 public class ResultSetID
 implements Serializable
 {

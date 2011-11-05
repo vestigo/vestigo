@@ -15,11 +15,11 @@ import org.eclipse.datatools.connectivity.oda.IResultSetMetaData;
 import org.eclipse.datatools.connectivity.oda.OdaException;
 import org.eclipse.datatools.connectivity.oda.SortSpec;
 import org.eclipse.datatools.connectivity.oda.spec.QuerySpecification;
-import org.nightlabs.eclipse.jjqb.childvm.shared.ResultRowDTO;
 import org.nightlabs.eclipse.jjqb.childvm.shared.ResultSetID;
 import org.nightlabs.eclipse.jjqb.core.Connection;
 import org.nightlabs.eclipse.jjqb.core.Query;
 import org.nightlabs.eclipse.jjqb.core.QueryID;
+import org.nightlabs.eclipse.jjqb.core.ResultSet;
 import org.nightlabs.eclipse.jjqb.core.childvm.ChildVM;
 
 public abstract class AbstractQuery implements Query
@@ -242,18 +242,23 @@ public abstract class AbstractQuery implements Query
 		return queryText;
 	}
 
+	protected abstract ResultSet newResultSet();
+
 	@Override
 	public IResultSet executeQuery() throws OdaException {
 		List<Object> parameters = new ArrayList<Object>(parameterID2parameterValue.values());
 		ResultSetID resultSetID = getChildVM().executeQuery(connection.getConnectionID(), queryText, parameters);
+		ResultSet resultSet = newResultSet();
+		resultSet.setResultSetID(resultSetID);
+		return resultSet;
 
-		// TODO do NOT pass the entire result set at once, but use the resultSetID inside the ODA-resultset-impl!
-		// BEGIN only for a first shot, now
-		List<Object> resultElements = new ArrayList<Object>();
-//		ResultRowDTO resultRowDTO = null;
+//		// TODO do NOT pass the entire result set at once, but use the resultSetID inside the ODA-resultset-impl!
+//		// BEGIN only for a first shot, now
+//		List<Object> resultElements = new ArrayList<Object>();
+//		List<ResultRowDTO> resultRowDTOList = null;
 //		do {
-//			resultRowDTO = getChildVM().nextResultRowDTO(resultSetID);
-//			if (resultRowDTO != null) {
+//			resultRowDTOList = getChildVM().nextResultRowDTOList(resultSetID, 100);
+//			for (ResultRowDTO resultRowDTO : resultRowDTOList) {
 //				if (resultRowDTO.getCells().size() > 1) {
 ////					Object[] row = new Object[resultRowDTO.getCells().size()];
 ////					int idx = -1;
@@ -266,32 +271,15 @@ public abstract class AbstractQuery implements Query
 //				else if (resultRowDTO.getCells().size() == 1)
 //					resultElements.add(resultRowDTO.getCells().get(0));
 //			}
-//		} while (resultRowDTO != null);
-		List<ResultRowDTO> resultRowDTOList = null;
-		do {
-			resultRowDTOList = getChildVM().nextResultRowDTOList(resultSetID, 100);
-			for (ResultRowDTO resultRowDTO : resultRowDTOList) {
-				if (resultRowDTO.getCells().size() > 1) {
-//					Object[] row = new Object[resultRowDTO.getCells().size()];
-//					int idx = -1;
-//					for (ResultCellDTO cellDTO : resultRowDTO.getCells())
-//						row[++idx] = cellDTO;
-					Object[] row = resultRowDTO.getCells().toArray();
-
-					resultElements.add(row);
-				}
-				else if (resultRowDTO.getCells().size() == 1)
-					resultElements.add(resultRowDTO.getCells().get(0));
-			}
-		} while (!resultRowDTOList.isEmpty());
-		// END only for a first shot, now
-
-		ResultSetMetaData resultSetMetaData = new ResultSetMetaData(new ResultSetMetaData.Column("default")); // TODO correct meta data!
-		ResultSet resultSet = new ResultSet(resultSetMetaData, resultElements);
-		return resultSet;
+//		} while (!resultRowDTOList.isEmpty());
+//		// END only for a first shot, now
+//
+//		ResultSetMetaData resultSetMetaData = new ResultSetMetaData(new ResultSetMetaData.Column("default")); // TODO correct meta data!
+//		IResultSet resultSet = new CollectionResultSet(resultSetMetaData, resultElements);
+//		return resultSet;
 	}
 
-	private ChildVM getChildVM() {
+	protected ChildVM getChildVM() {
 		return getConnection().getConnectionProfile().getChildVM();
 	}
 }

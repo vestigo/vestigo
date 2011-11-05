@@ -84,8 +84,8 @@ public class ChildVMException extends RuntimeException
 
 	@Override
 	public String toString() {
-	  String s = getClass().getName() + (errorClassName == null ? "" : ("[" + errorClassName + "]"));
-    String message = getLocalizedMessage();
-    return (message != null) ? (s + ": " + message) : s;
+		String s = getClass().getName() + (errorClassName == null ? "" : ('<' + errorClassName + '>'));
+		String message = getLocalizedMessage();
+		return (message != null) ? (s + ": " + message) : s;
 	}
 }

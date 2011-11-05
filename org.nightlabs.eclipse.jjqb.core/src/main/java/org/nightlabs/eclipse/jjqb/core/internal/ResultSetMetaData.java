@@ -32,6 +32,8 @@ public class ResultSetMetaData implements IResultSetMetaData {
 		int index = 0; // 1-based index!!!
 		for (Column column : columns)
 			columnName2index.put(column.getColumnName(), ++index);
+
+		columnCount = columns.length;
 	}
 
 	private int columnCount;

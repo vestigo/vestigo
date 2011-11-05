@@ -1,12 +1,12 @@
 package org.nightlabs.eclipse.jjqb.childvm.webapp;
 
-import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
 
 import org.nightlabs.eclipse.jjqb.childvm.shared.Error;
 import org.nightlabs.eclipse.jjqb.childvm.shared.ErrorStackTraceElement;
+import org.nightlabs.eclipse.jjqb.childvm.shared.provider.MediaTypeConst;
 
 @Provider
 public class DefaultExceptionMapper implements ExceptionMapper<Throwable>
@@ -33,7 +33,7 @@ public class DefaultExceptionMapper implements ExceptionMapper<Throwable>
 
 		return Response
 				.status(Response.Status.INTERNAL_SERVER_ERROR)
-				.type(MediaType.APPLICATION_XML_TYPE)
+				.type(MediaTypeConst.APPLICATION_JAVA_NATIVE)
 				.entity(error)
 				.build();
 	}
