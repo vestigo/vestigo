@@ -43,6 +43,8 @@ import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.PartInitException;
 import org.nightlabs.eclipse.jjqb.core.JDODriver;
+import org.nightlabs.eclipse.jjqb.ui.resultsettable.ResultSetTableComposite;
+import org.nightlabs.eclipse.jjqb.ui.resultsettable.ResultSetTableModel;
 import org.nightlabs.jdo.jdoqleditor.editor.JDOQLEditor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

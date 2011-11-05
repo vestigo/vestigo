@@ -1,4 +1,4 @@
-package org.nightlabs.eclipse.jjqb.ui.browser;
+package org.nightlabs.eclipse.jjqb.ui.resultsettable;
 
 import java.util.Comparator;
 
@@ -19,6 +19,7 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 
 public class ResultSetTableComposite extends Composite
+//implements ISelectionProvider, IPostSelectionProvider
 {
 	private TableViewer tableViewer;
 
@@ -35,17 +36,16 @@ public class ResultSetTableComposite extends Composite
 		setLayout(new FillLayout(SWT.HORIZONTAL | SWT.VERTICAL));
 		tableViewer = new TableViewer(this, SWT.VIRTUAL | SWT.FULL_SELECTION);
 		tableViewer.setContentProvider(new DeferredContentProvider(new ComparableComparator<ResultSetTableRow>()));
-//		tableViewer.setLabelProvider(new TableLabelProvider());
 		tableViewer.getTable().setHeaderVisible(true);
 		tableViewer.setUseHashlookup(true);
 	}
 
-	private static class RowIDLabelProvider extends CellLabelProvider
+	private static class RowIndexLabelProvider extends CellLabelProvider
 	{
 		@Override
 		public void update(ViewerCell viewerCell) {
 			ResultSetTableRow row = (ResultSetTableRow) viewerCell.getElement();
-			viewerCell.setText(String.valueOf(row.getResultSetTableRowID()));
+			viewerCell.setText(String.valueOf(row.getResultSetTableRowIndex()));
 		}
 	}
 
@@ -68,33 +68,6 @@ public class ResultSetTableComposite extends Composite
 		}
 	}
 
-//	private static class TableLabelProvider implements ITableLabelProvider
-//	{
-//		private ListenerList listenerList = new ListenerList();
-//		@Override
-//		public void addListener(ILabelProviderListener listener) { listenerList.add(listener); }
-//		@Override
-//		public void removeListener(ILabelProviderListener listener) { listenerList.remove(listener); }
-//		@Override
-//		public boolean isLabelProperty(Object element, String property) {
-//			return true; // TODO optimize later
-//		}
-//		@Override
-//		public void dispose() { }
-//
-//		@Override
-//		public String getColumnText(Object element, int columnIndex) {
-//			ResultSetTableRow row = (ResultSetTableRow) element;
-//			ResultSetTableCell cell = row.getCells()[columnIndex];
-//			return String.valueOf(cell.getCellContent());
-//		}
-//
-//		@Override
-//		public Image getColumnImage(Object element, int columnIndex) {
-//			return null;
-//		}
-//	};
-
 	public ResultSetTableModel getInput() {
 		return (ResultSetTableModel) tableViewer.getInput();
 	}
@@ -109,7 +82,7 @@ public class ResultSetTableComposite extends Composite
 		if (input != null) {
 
 			TableViewerColumn tableViewerColumn = new TableViewerColumn(tableViewer, SWT.RIGHT);
-			tableViewerColumn.setLabelProvider(new RowIDLabelProvider());
+			tableViewerColumn.setLabelProvider(new RowIndexLabelProvider());
 			tableViewerColumn.getColumn().setText("Row #");
 			layout.addColumnData(new ColumnPixelData(50));
 
@@ -123,9 +96,6 @@ public class ResultSetTableComposite extends Composite
 					tableViewerColumn.setLabelProvider(new ResultSetTableCellLabelProvider(odaColumnIndex - 1));
 					tableViewerColumn.getColumn().setText(columnName);
 
-//					TableColumn tableColumn = new TableColumn(table, SWT.LEFT); // TODO use SWT.RIGHT for numbers! Need determine column type correctly.
-//					tableColumn.setText(columnName);
-
 					layout.addColumnData(new ColumnWeightData(10));
 				}
 
@@ -136,6 +106,44 @@ public class ResultSetTableComposite extends Composite
 		table.setLayout(layout);
 		table.layout(true);
 		tableViewer.setInput(input);
-//		tableViewer.setLabelProvider(new TableLabelProvider());
 	}
+
+//	private postSelection
+//
+//	@Override
+//	public void addPostSelectionChangedListener(ISelectionChangedListener listener) {
+//		// TODO Auto-generated method stub
+//
+//	}
+//
+//	@Override
+//	public void removePostSelectionChangedListener(
+//			ISelectionChangedListener listener) {
+//		// TODO Auto-generated method stub
+//
+//	}
+//
+//	@Override
+//	public void addSelectionChangedListener(ISelectionChangedListener listener) {
+//		// TODO Auto-generated method stub
+//
+//	}
+//
+//	@Override
+//	public ISelection getSelection() {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+//
+//	@Override
+//	public void removeSelectionChangedListener(ISelectionChangedListener listener) {
+//		// TODO Auto-generated method stub
+//
+//	}
+//
+//	@Override
+//	public void setSelection(ISelection selection) {
+//		// TODO Auto-generated method stub
+//
+//	}
 }

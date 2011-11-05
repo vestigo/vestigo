@@ -1,4 +1,4 @@
-package org.nightlabs.eclipse.jjqb.ui.browser;
+package org.nightlabs.eclipse.jjqb.ui.resultsettable;
 
 
 public class ResultSetTableCell

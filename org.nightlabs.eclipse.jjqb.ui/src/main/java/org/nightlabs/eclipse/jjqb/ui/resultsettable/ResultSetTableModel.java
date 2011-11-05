@@ -1,4 +1,4 @@
-package org.nightlabs.eclipse.jjqb.ui.browser;
+package org.nightlabs.eclipse.jjqb.ui.resultsettable;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
