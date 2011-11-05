@@ -1,10 +1,7 @@
 package org.nightlabs.eclipse.jjqb.core.internal.childvm;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.URL;
 import java.security.SecureRandom;
@@ -23,6 +20,7 @@ import org.nightlabs.eclipse.jjqb.childvm.shared.ConnectionProfileDTOList;
 import org.nightlabs.eclipse.jjqb.childvm.shared.QueryDTO;
 import org.nightlabs.eclipse.jjqb.childvm.shared.ResultRowDTO;
 import org.nightlabs.eclipse.jjqb.childvm.shared.ResultRowDTOList;
+import org.nightlabs.eclipse.jjqb.childvm.shared.ResultSetDTO;
 import org.nightlabs.eclipse.jjqb.childvm.shared.ResultSetID;
 import org.nightlabs.eclipse.jjqb.childvm.shared.provider.JavaNativeMessageBodyReader;
 import org.nightlabs.eclipse.jjqb.childvm.shared.provider.JavaNativeMessageBodyWriter;
@@ -148,62 +146,6 @@ implements ChildVM
 		File deploymentDir = new File(webServerDirectory, "resources");
 		File destinationFile = new File(deploymentDir, fileName);
 		IOUtil.copyResource(ChildVMServer.class, resourceName, destinationFile);
-	}
-
-	private static final class DumpStreamToFileThread extends Thread
-	{
-		private final Logger logger = LoggerFactory.getLogger(DumpStreamToFileThread.class);
-		private InputStream inputStream;
-		private File outputFile;
-		private OutputStream outputStream;
-		private volatile boolean ignoreErrors = false;
-		private volatile boolean forceInterrupt = false;
-
-		public void setIgnoreErrors(boolean ignoreErrors) {
-			this.ignoreErrors = ignoreErrors;
-		}
-
-		@Override
-		public void interrupt() {
-			forceInterrupt = true;
-			super.interrupt();
-		}
-
-		@Override
-		public boolean isInterrupted() {
-			return forceInterrupt || super.isInterrupted();
-		}
-
-		public DumpStreamToFileThread(InputStream inputStream, File outputFile) throws IOException
-		{
-			if (inputStream == null)
-				throw new IllegalArgumentException("inputStream == null");
-			if (outputFile == null)
-				throw new IllegalArgumentException("outputFile == null");
-
-			this.inputStream = inputStream;
-			this.outputFile = outputFile;
-			this.outputStream = new FileOutputStream(this.outputFile);
-		}
-
-		@Override
-		public void run() {
-			final byte[] buffer = new byte[10240];
-			while (!isInterrupted()) {
-				try {
-					int bytesRead = inputStream.read(buffer);
-					if (bytesRead > 0)
-						outputStream.write(buffer, 0, bytesRead);
-				} catch (Throwable e) {
-					if (!ignoreErrors)
-						logger.error("run: " + e, e);
-					else
-						logger.info("run: " + e);
-
-					return;
-				}
-			}
-		}
 	}
 
 	public synchronized void open() throws IOException
@@ -517,21 +459,8 @@ implements ChildVM
 			ClientResponse clientResponse = x.getResponse();
 
 			clientResponse.bufferEntity();
-			if (clientResponse.hasEntity()) {
-//				// Log the data as is to the error log. Not possible anymore - we don't use XML anymore - it's binary now.
-//				InputStream inputStream = clientResponse.getEntityInputStream();
-//				inputStream.mark(Integer.MAX_VALUE);
-//				BufferedReader r = new BufferedReader(new InputStreamReader(inputStream, IOUtil.CHARSET_UTF_8));
-//				String line;
-//				while (null != (line = r.readLine())) {
-//					logger.error(line);
-//				}
-//				inputStream.reset();
-
-				// create an error instance from the entity.
+			if (clientResponse.hasEntity())
 				error = clientResponse.getEntity(org.nightlabs.eclipse.jjqb.childvm.shared.Error.class);
-			}
-
 		} catch (Exception y) {
 			logger.error("handleUniformInterfaceException: " + y, y);
 		}
@@ -557,6 +486,7 @@ implements ChildVM
 
 	@Override
 	public ResultSetID executeQuery(UUID connectionID, String queryText, List<Object> parameters)
+	throws ChildVMException
 	{
 		if (connectionID == null)
 			throw new IllegalArgumentException("connectionID == null");
@@ -573,18 +503,19 @@ implements ChildVM
 			queryDTO.setQueryText(queryText);
 			queryDTO.setParameters(parameters);
 
-			ResultSetID resultSetID = getChildVMAppJaxbBuilder(ResultRowDTO.class, new PathSegment("executeQuery"))
-					.post(ResultSetID.class, queryDTO);
+			ResultSetDTO resultSetDTO = getChildVMAppJaxbBuilder(ResultSetDTO.class, new PathSegment("executeQuery"))
+					.post(ResultSetDTO.class, queryDTO);
 
-			return resultSetID;
+			return resultSetDTO.getResultSetID();
 		} catch (UniformInterfaceException x) {
 			handleUniformInterfaceException(x);
-			return null;
+			throw x;
 		}
 	}
 
 	@Override
 	public ResultRowDTO nextResultRowDTO(ResultSetID resultSetID)
+	throws ChildVMException
 	{
 		if (resultSetID == null)
 			throw new IllegalArgumentException("resultSetID == null");
@@ -602,6 +533,7 @@ implements ChildVM
 
 	@Override
 	public List<ResultRowDTO> nextResultRowDTOList(ResultSetID resultSetID, int count)
+	throws ChildVMException
 	{
 		if (resultSetID == null)
 			throw new IllegalArgumentException("resultSetID == null");
@@ -623,6 +555,19 @@ implements ChildVM
 		} catch (UniformInterfaceException x) {
 			handleUniformInterfaceException(x);
 			throw x; // we do not expect null
+		}
+	}
+
+	@Override
+	public void deleteResultSetDTO(ResultSetID resultSetID) throws ChildVMException
+	{
+		if (resultSetID == null)
+			throw new IllegalArgumentException("resultSetID == null");
+
+		try {
+			getChildVMAppResource(ResultSetDTO.class, new PathSegment(resultSetID)).delete();
+		} catch (UniformInterfaceException x) {
+			handleUniformInterfaceException(x);
 		}
 	}
 }

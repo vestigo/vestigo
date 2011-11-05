@@ -20,11 +20,12 @@ extends Application
 		ConnectionProfileDTOService.class,
 		IsOnlineService.class,
 		ResultRowDTOService.class,
+		ResultSetDTOService.class,
 		// END services
 
 		// BEGIN providers
-		// providers are not a services (they are infrastructure), but they are registered the same way.
-//		JAXBContextResolver.class,
+		// providers are not services (they are infrastructure), but they are registered the same way.
+//		JAXBContextResolver.class, // not used anymore - we use only java native serialisation.
 		JavaNativeMessageBodyReader.class,
 		JavaNativeMessageBodyWriter.class,
 		DefaultExceptionMapper.class

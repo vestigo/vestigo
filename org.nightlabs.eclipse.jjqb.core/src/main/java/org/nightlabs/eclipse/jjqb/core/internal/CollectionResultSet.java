@@ -15,6 +15,12 @@ import org.eclipse.datatools.connectivity.oda.IResultSet;
 import org.eclipse.datatools.connectivity.oda.IResultSetMetaData;
 import org.eclipse.datatools.connectivity.oda.OdaException;
 
+/**
+ *
+ * @deprecated Not used anymore - will be deleted.
+ *
+ */
+@Deprecated
 public class CollectionResultSet implements IResultSet
 {
 	private ResultSetMetaData resultSetMetaData;

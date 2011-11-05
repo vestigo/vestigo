@@ -26,7 +26,7 @@ public abstract class AbstractResultSet implements ResultSet
 {
 	private Query query;
 	private ResultSetMetaData resultSetMetaData;
-	private ResultSetID resultSetID;
+	private volatile ResultSetID resultSetID;
 
 	private int maxRows;
 	private List<ResultRowDTO> preFetchedRows;
@@ -45,12 +45,12 @@ public abstract class AbstractResultSet implements ResultSet
 	}
 
 	@Override
-	public ResultSetID getResultSetID() {
+	public synchronized ResultSetID getResultSetID() {
 		return resultSetID;
 	}
 
 	@Override
-	public void setResultSetID(ResultSetID resultSetID)
+	public synchronized void setResultSetID(ResultSetID resultSetID)
 	{
 		if (this.resultSetID != null && this.resultSetID.equals(resultSetID))
 			return;
@@ -67,7 +67,7 @@ public abstract class AbstractResultSet implements ResultSet
 	}
 
 	@Override
-	public IResultSetMetaData getMetaData() throws OdaException {
+	public synchronized IResultSetMetaData getMetaData() throws OdaException {
 		assertNotClosed();
 		if (resultSetMetaData == null) {
 			preFetchedRows = fetchNextRows();
@@ -97,7 +97,11 @@ public abstract class AbstractResultSet implements ResultSet
 	}
 
 	@Override
-	public void close() throws OdaException {
+	public synchronized void close() throws OdaException
+	{
+		if (resultSetID != null && query != null)
+			getChildVM().deleteResultSetDTO(resultSetID);
+
 		query = null;
 		resultSetMetaData = null;
 		preFetchedRows = null;
@@ -121,7 +125,7 @@ public abstract class AbstractResultSet implements ResultSet
 	}
 
 	@Override
-	public boolean next() throws OdaException
+	public synchronized boolean next() throws OdaException
 	{
 		assertNotClosed();
 		if (elementsIteratorEnded)

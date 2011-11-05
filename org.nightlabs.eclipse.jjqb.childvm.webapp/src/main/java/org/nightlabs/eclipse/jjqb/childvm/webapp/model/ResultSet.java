@@ -13,11 +13,15 @@ import org.nightlabs.eclipse.jjqb.childvm.shared.ResultCellNullDTO;
 import org.nightlabs.eclipse.jjqb.childvm.shared.ResultCellSimpleDTO;
 import org.nightlabs.eclipse.jjqb.childvm.shared.ResultCellTransientObjectRefDTO;
 import org.nightlabs.eclipse.jjqb.childvm.shared.ResultSetID;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public abstract class ResultSet
 {
-	private Connection connection;
-	private ResultSetID resultSetID;
+	private static final Logger logger = LoggerFactory.getLogger(ResultSet.class);
+
+	private volatile Connection connection;
+	private volatile ResultSetID resultSetID;
 	private Collection<?> rows;
 	private Iterator<?> iterator;
 	private int rowIndex = 0; // 1-based like ODA; 0 means before first call of next()
@@ -69,6 +73,7 @@ public abstract class ResultSet
 
 	public synchronized boolean next()
 	{
+		assertOpen();
 		row = null;
 
 		if (rowIndex < 0) // -1 means we already finished iterating it.
@@ -88,15 +93,18 @@ public abstract class ResultSet
 	}
 
 	public int getRowIndex() {
+		assertOpen();
 		return rowIndex;
 	}
 
 	public Object getRow() {
+		assertOpen();
 		return row;
 	}
 
 	public synchronized TransientObjectContainer getTransientObjectContainerForObjectID(Long objectID, boolean throwExceptionIfNotFound)
 	{
+		assertOpen();
 		if (objectID == null)
 			throw new IllegalArgumentException("objectID == null");
 
@@ -109,6 +117,7 @@ public abstract class ResultSet
 
 	public synchronized TransientObjectContainer createTransientObjectContainerForTransientObject(Object transientObject)
 	{
+		assertOpen();
 		TransientObjectContainer container = getTransientObjectContainerForTransientObject(transientObject, false);
 		if (container == null) {
 			container = new TransientObjectContainer(nextObjectID++, transientObject);
@@ -120,6 +129,7 @@ public abstract class ResultSet
 
 	public synchronized TransientObjectContainer getTransientObjectContainerForTransientObject(Object transientObject, boolean throwExceptionIfNotFound)
 	{
+		assertOpen();
 		if (transientObject == null)
 			throw new IllegalArgumentException("transientObject == null");
 
@@ -132,6 +142,7 @@ public abstract class ResultSet
 
 	public synchronized Long getObjectIDForTransientObject(Object transientObject, boolean throwExceptionIfNotFound)
 	{
+		assertOpen();
 		if (transientObject == null)
 			throw new IllegalArgumentException("transientObject == null");
 
@@ -173,6 +184,8 @@ public abstract class ResultSet
 	 */
 	public final ResultCellDTO newResultCellDTO(Object object)
 	{
+		assertOpen();
+
 		if (object == null)
 			return new ResultCellNullDTO();
 
@@ -189,5 +202,32 @@ public abstract class ResultSet
 		// this transientObjectManagement stuff.
 		TransientObjectContainer transientObjectContainer = createTransientObjectContainerForTransientObject(object);
 		return new ResultCellTransientObjectRefDTO(object.getClass(), transientObjectContainer.getObjectID().toString());
+	}
+
+	public boolean isOpen()
+	{
+		return connection != null;
+	}
+
+	protected void assertOpen()
+	{
+		if (!isOpen())
+			throw new IllegalStateException("This ResultSet is already closed: " + resultSetID);
+	}
+
+	public void close()
+	{
+		logger.debug("close: resultSetID={}", resultSetID);
+
+		Connection c = connection;
+		if (c != null)
+			c.onCloseResultSet(this);
+
+		connection = null;
+		rows = null;
+		iterator = null;
+		row = null;
+		objectID2transientObjectContainer = null;
+		transientObject2objectID = null;
 	}
 }

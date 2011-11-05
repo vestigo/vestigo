@@ -8,7 +8,6 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.QueryParam;
 
-import org.nightlabs.eclipse.jjqb.childvm.shared.QueryDTO;
 import org.nightlabs.eclipse.jjqb.childvm.shared.ResultRowDTO;
 import org.nightlabs.eclipse.jjqb.childvm.shared.ResultRowDTOList;
 import org.nightlabs.eclipse.jjqb.childvm.shared.ResultSetID;
@@ -25,26 +24,6 @@ public class ResultRowDTOService extends AbstractService
 
 	{
 		logger.debug("<init>: created new instance");
-	}
-
-	@POST
-	@Path("executeQuery")
-	public ResultSetID executeQuery(QueryDTO queryDTO)
-	{
-		logger.debug("executeQuery: entered");
-
-		if (queryDTO == null)
-			throw new IllegalArgumentException("queryDTO == null");
-
-		if (queryDTO.getConnectionID() == null)
-			throw new IllegalArgumentException("queryDTO.connectionID == null");
-
-		Connection connection = ConnectionManager.sharedInstance().getConnection(queryDTO.getConnectionID(), true);
-		ResultSet resultSet = connection.executeQuery(queryDTO.getQueryText(), queryDTO.getParameters());
-
-		logger.debug("executeQuery: leaving");
-
-		return resultSet.getResultSetID();
 	}
 
 	@POST
@@ -117,78 +96,4 @@ public class ResultRowDTOService extends AbstractService
 			return resultRowDTO;
 		}
 	}
-
-//	@GET
-//	@Path("{connectionID}")
-//	public ConnectionDTO getConnectionDTO(@PathParam("connectionID") UUID connectionID)
-//	{
-//		logger.debug("getConnectionDTO: entered: connectionID={}", connectionID);
-//
-//		if (connectionID == null)
-//			throw new IllegalArgumentException("connectionID == null");
-//
-//		Connection connection = ConnectionManager.sharedInstance().getConnection(connectionID);
-//		if (connection == null)
-//			return null;
-//
-//		return connection.toConnectionDTO();
-//	}
-//
-//	@PUT
-//	public ConnectionDTOPutResult putConnectionDTO(ConnectionDTO connectionDTO)
-//	{
-//		logger.debug(
-//				"putConnectionDTO: entered: connectionID={} profileID={}",
-//				(connectionDTO == null ? null : connectionDTO.getConnectionID()),
-//				(connectionDTO == null ? null : connectionDTO.getProfileID())
-//		);
-//
-//		if (connectionDTO == null)
-//			throw new IllegalArgumentException("connectionDTO == null");
-//
-//		if (connectionDTO.getConnectionID() == null)
-//			throw new IllegalArgumentException("connectionDTO.connectionID == null");
-//
-//		if (connectionDTO.getProfileID() == null)
-//			throw new IllegalArgumentException("connectionDTO.profileID == null");
-//
-//		ConnectionProfile connectionProfile = ConnectionProfileManager.sharedInstance().getConnectionProfile(connectionDTO.getProfileID());
-//		if (connectionProfile == null)
-//			throw new IllegalArgumentException("No connectionProfile existing with profileID=\"" + connectionDTO.getProfileID() + "\"!");
-//
-//		boolean error = true;
-//		Connection connection = null;
-//		try {
-//			connection = ConnectionManager.sharedInstance().putConnectionDTO(connectionDTO);
-//			connection.open();
-//			error = false;
-//		} finally {
-//			if (error) {
-//				if (connection != null) {
-//					try {
-//						connection.close();
-//					} catch (Exception x) {
-//						logger.warn("putConnectionDTO: connection.close() failed: " + x, x);
-//					}
-//				}
-//				ConnectionManager.sharedInstance().deleteConnection(connectionDTO.getConnectionID());
-//			}
-//		}
-//
-//		ConnectionDTOPutResult result = new ConnectionDTOPutResult();
-//		result.setConnectionID(connectionDTO.getConnectionID());
-//		return result;
-//	}
-//
-//	@DELETE
-//	@Path("{connectionID}")
-//	public void deleteConnectionDTO(@PathParam("connectionID") UUID connectionID)
-//	{
-//		logger.debug("deleteConnectionDTO: entered: connectionID={}", connectionID);
-//		Connection connection = ConnectionManager.sharedInstance().getConnection(connectionID);
-//		if (connection != null)
-//			connection.close();
-//
-//		ConnectionManager.sharedInstance().deleteConnection(connectionID);
-//	}
 }

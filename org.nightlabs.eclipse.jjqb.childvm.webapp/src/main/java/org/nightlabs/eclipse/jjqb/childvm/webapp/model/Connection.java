@@ -1,5 +1,6 @@
 package org.nightlabs.eclipse.jjqb.childvm.webapp.model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -97,7 +98,8 @@ public abstract class Connection
 		if (!isOpen())
 			return;
 
-		resultSetID2resultSetMap.clear();
+		for (ResultSet resultSet : new ArrayList<ResultSet>(resultSetID2resultSetMap.values()))
+			resultSet.close();
 
 		if (this.connectionProfile != null)
 			connectionProfile.onConnectionClose(this);
@@ -140,5 +142,20 @@ public abstract class Connection
 			throw new IllegalArgumentException("No ResultSet with resultSetID=" + resultSetID + " in connection with connectionID=" + connectionID);
 
 		return resultSet;
+	}
+
+	public synchronized void onCloseResultSet(ResultSet resultSet)
+	{
+		ResultSetID resultSetID = resultSet.getResultSetID();
+		if (resultSetID != null)
+			resultSetID2resultSetMap.remove(resultSetID.getResultSetID());
+
+		logger.debug(
+				"[{}].onCloseResultSet: connectionID={} resultSetID={} resultSetCountAfterClose={}",
+				new Object[] {
+						Long.toHexString(System.identityHashCode(this)),
+						connectionID, resultSetID, resultSetID2resultSetMap.size()
+				}
+		);
 	}
 }

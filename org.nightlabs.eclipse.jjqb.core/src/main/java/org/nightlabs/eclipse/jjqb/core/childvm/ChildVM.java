@@ -23,9 +23,18 @@ public interface ChildVM
 
 	Collection<ConnectionDTO> getConnectionDTOs(String profileID) throws ChildVMException;
 
-	ResultSetID executeQuery(UUID connectionID, String queryText, List<Object> parameters);
+	/**
+	 * Execute a query and return the reference to its result-set.
+	 * @param connectionID the identifier of the connection to be used. Must not be <code>null</code>.
+	 * @param queryText the actual query text. Must not be <code>null</code>.
+	 * @param parameters the parameters to be used in the query. Must not be <code>null</code> (but may be empty).
+	 * @return the identifier of the result-set; never <code>null</code>.
+	 */
+	ResultSetID executeQuery(UUID connectionID, String queryText, List<Object> parameters) throws ChildVMException;
 
-	ResultRowDTO nextResultRowDTO(ResultSetID resultSetID);
+	ResultRowDTO nextResultRowDTO(ResultSetID resultSetID) throws ChildVMException;
 
-	List<ResultRowDTO> nextResultRowDTOList(ResultSetID resultSetID, int count);
+	List<ResultRowDTO> nextResultRowDTOList(ResultSetID resultSetID, int count) throws ChildVMException;
+
+	void deleteResultSetDTO(ResultSetID resultSetID) throws ChildVMException;
 }
