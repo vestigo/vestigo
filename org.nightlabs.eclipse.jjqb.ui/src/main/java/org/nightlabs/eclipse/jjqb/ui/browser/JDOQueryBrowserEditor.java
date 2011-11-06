@@ -65,7 +65,6 @@ public class JDOQueryBrowserEditor extends JDOQLEditor
 	private Composite queryEditorComposite;
 	private ResultSetTableComposite resultSetTableComposite;
 	private volatile IQuery query;
-	private volatile IResultSet resultSet;
 	private volatile ResultSetTableModel resultSetTableModel;
 
 	@Override
@@ -222,7 +221,6 @@ public class JDOQueryBrowserEditor extends JDOQLEditor
 			@Override
 			public void run() {
 				query = q;
-				resultSet = rs;
 				resultSetTableModel = new ResultSetTableModel(rs);
 				resultSetTableModel.addPropertyChangeListener(ResultSetTableModel.PROPERTY_CHANGE_COMPLETELY_LOADED, new PropertyChangeListener() {
 					@Override
@@ -234,22 +232,23 @@ public class JDOQueryBrowserEditor extends JDOQLEditor
 			}
 		});
 
-
-		stopwatch.start("20.query.executeQuery");
-		final IResultSet rs2 = q.executeQuery();
-		stopwatch.stop("20.query.executeQuery");
-
-		stopwatch.start("30.iterateResultSet");
-		while (rs2.next()) {
-			int columnCount = rs2.getMetaData().getColumnCount();
-			for (int columnIndex = 1; columnIndex <= columnCount; ++columnIndex) {
-				Object object = rs2.getObject(columnIndex);
-				System.out.print(object);
-				System.out.print("\t");
-			}
-			System.out.println();
-		}
-		stopwatch.stop("30.iterateResultSet");
+//		// BEGIN performance test: iterate entire result set
+//		stopwatch.start("20.query.executeQuery");
+//		final IResultSet rs2 = q.executeQuery();
+//		stopwatch.stop("20.query.executeQuery");
+//
+//		stopwatch.start("30.iterateResultSet");
+//		while (rs2.next()) {
+//			int columnCount = rs2.getMetaData().getColumnCount();
+//			for (int columnIndex = 1; columnIndex <= columnCount; ++columnIndex) {
+//				Object object = rs2.getObject(columnIndex);
+//				System.out.print(object);
+//				System.out.print("\t");
+//			}
+//			System.out.println();
+//		}
+//		stopwatch.stop("30.iterateResultSet");
+//		// END performance test: iterate entire result set
 
 		logger.info("executeQuery: {}", stopwatch.createHumanReport(true));
 	}
