@@ -90,6 +90,7 @@ public class JDOQueryBrowserEditor extends JDOQLEditor
 		}
 
 		resultSetTableComposite = new ResultSetTableComposite(partControl, SWT.BORDER);
+		getSite().setSelectionProvider(resultSetTableComposite); // TODO do I need a proxy to support query-text-selections and result-set-selections at the same time?
 	}
 
 	private void configureHeaderComposite()

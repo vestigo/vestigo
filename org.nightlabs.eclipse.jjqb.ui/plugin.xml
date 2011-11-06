@@ -119,5 +119,17 @@
             name="Query Browser">
       </editor>
    </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <category 
+            id="org.nightlabs.eclipse.jjqb.ui"
+            name="JDO/JPA Query Browser">
+      </category>
+      <view id="org.nightlabs.eclipse.jjqb.ui.detailtree.ResultSetTableCellDetailTreeView"
+            name="Object graph detail tree"
+            icon="icons/view.png"
+            category="org.nightlabs.eclipse.jjqb.ui"
+            class="org.nightlabs.eclipse.jjqb.ui.detailtree.ResultSetTableCellDetailTreeView"/>
+   </extension>
 
 </plugin>

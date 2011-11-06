@@ -13,6 +13,7 @@ import org.eclipse.jface.viewers.ColumnWeightData;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.ISelectionProvider;
+import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TableLayout;
@@ -119,7 +120,6 @@ implements ISelectionProvider
 
 					fireSelectionChangedEvent();
 				}
-
 		});
 	}
 
@@ -130,8 +130,8 @@ implements ISelectionProvider
 
 	private void fireSelectionChangedEvent()
 	{
-		if (logger.isInfoEnabled()) // TODO switch to debug!
-			logger.info("fireSelectionChangedEvent: selection={}", getSelection());
+		if (logger.isDebugEnabled())
+			logger.debug("fireSelectionChangedEvent: selection={}", getSelection());
 
 		SelectionChangedEvent event = null;
 		for (Object listener : selectionListenerList.getListeners()) {
@@ -228,18 +228,79 @@ implements ISelectionProvider
 		return tableViewerColumn;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * <p>
+	 * The implementation of this method in <code>ResultSetTableComposite</code> will always return an instance
+	 * of {@link IStructuredSelection}, which either is empty or contains instances of {@link ResultSetTableRow}
+	 * or {@link ResultSetTableCell}.
+	 * </p>
+	 */
 	@Override
-	public ISelection getSelection() {
+	public ISelection getSelection()
+	{
 		if (!selectedCells.isEmpty())
 			return new StructuredSelection(selectedCells);
 		else
 			return new StructuredSelection(selectedRows);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * <p>
+	 * The implementation of this method in <code>ResultSetTableComposite</code> accepts only an instance
+	 * of {@link IStructuredSelection}, which either is empty or contains instances of {@link ResultSetTableRow}
+	 * or {@link ResultSetTableCell}. Everything else is silently ignored.
+	 * </p>
+	 */
 	@Override
-	public void setSelection(ISelection selection) {
-		// TODO Auto-generated method stub
+	public void setSelection(ISelection selection)
+	{
+		clearSelection();
 
+		if (selection.isEmpty()) {
+			tableViewer.setSelection(StructuredSelection.EMPTY);
+			// TODO do sth. with the tableCursor (don't know what I can do, because tableCursor.setSelection(row, column)
+			// does not accept invalid values (like row being null).
+			return;
+		}
+
+		if (!(selection instanceof IStructuredSelection)) {
+			logger.warn("setSelection: selection is not an IStructuredSelection! Ignoring it: {}", selection);
+			return;
+		}
+
+		IStructuredSelection structuredSelection = (IStructuredSelection) selection;
+		// We'll probably support MULTI-selection later, but so far, we don't => hence, we pick the first entry.
+		Object element = structuredSelection.getFirstElement();
+		if (element instanceof ResultSetTableRow) {
+			ResultSetTableRow row = (ResultSetTableRow) element;
+			tableViewer.setSelection(new StructuredSelection(row));
+			tableCursor.setSelection(getTableItem(row, true), 0);
+			selectedRows = Collections.singletonList(row);
+		}
+		else if (element instanceof ResultSetTableCell) {
+			ResultSetTableCell cell = (ResultSetTableCell) element;
+			tableViewer.setSelection(new StructuredSelection(cell.getRow()));
+			tableCursor.setSelection(getTableItem(cell.getRow(), true), 0);
+			selectedCells = Collections.singletonList(cell);
+		}
+	}
+
+	private TableItem getTableItem(ResultSetTableRow resultSetTableRow, boolean throwExceptionIfNotFound)
+	{
+		if (resultSetTableRow == null)
+			throw new IllegalArgumentException("resultSetTableRow == null");
+
+		for (TableItem tableItem : tableViewer.getTable().getItems()) {
+			if (resultSetTableRow.equals(tableItem.getData()))
+				return tableItem;
+		}
+
+		if (throwExceptionIfNotFound)
+			throw new IllegalArgumentException("There is no TableItem for this ResultSetTableRow: " + resultSetTableRow);
+
+		return null;
 	}
 
 	private ListenerList selectionListenerList = new ListenerList();
