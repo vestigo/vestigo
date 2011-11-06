@@ -89,8 +89,6 @@ public class JDOQueryBrowserEditor extends JDOQLEditor
 				c.setLayoutData(new GridData(GridData.FILL_BOTH));
 		}
 
-//		queryResultComposite = new Composite(partControl, SWT.BORDER);
-//		queryResultComposite.setLayout(new GridLayout());
 		resultSetTableComposite = new ResultSetTableComposite(partControl, SWT.BORDER);
 	}
 
@@ -136,28 +134,10 @@ public class JDOQueryBrowserEditor extends JDOQLEditor
 		populateConnectionProfileCombo();
 	}
 
-//	private IConnectListener connectListener = new ConnectAdapter() {
-//		@Override
-//		public boolean okToClose(ConnectEvent event) {
-//			logger.info("okToClose: " + event);
-//			return super.okToClose(event);
-//		}
-//
-//		@Override
-//		public void openConnection(ConnectEvent event) throws CoreException {
-//			logger.info("openConnection: " + event);
-//		}
-//
-//		@Override
-//		public void closeConnection(ConnectEvent event) throws CoreException {
-//			logger.info("closeConnection: " + event);
-//		}
-//	};
-
-//	private static final boolean NEW_CONNECTION = true;
-
 	/**
-	 * Every editor uses its own connection (due to commit/rollback). This is the connection of this editor.
+	 * Every editor uses its own connection (due to commit/rollback). These are the connections of this editor.
+	 * There are multiple, because an editor might be used with multiple connection-profiles (and there's
+	 * one connection for each combination of editor and connection-profile).
 	 */
 	private Map<IConnectionProfile, org.eclipse.datatools.connectivity.IConnection> connectionProfile2connection = new HashMap<IConnectionProfile, org.eclipse.datatools.connectivity.IConnection>();
 
@@ -370,6 +350,13 @@ public class JDOQueryBrowserEditor extends JDOQLEditor
 
 		for (IConnectionProfile connectionProfile : connectionProfiles) {
 			connectionProfileCombo.add(connectionProfile.getName());
+		}
+
+		if (selection == null) {
+			// TODO store the last selected profile in the preferences and select it again!
+			// for now, we simply select the first one.
+			if (!connectionProfiles.isEmpty())
+				selection = connectionProfiles.get(0);
 		}
 
 		setConnectionProfile(selection);

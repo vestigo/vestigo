@@ -119,9 +119,9 @@ implements IConcurrentModel // not necessary - just convenient to see the javado
 						ResultSetTableCell[] cells = new ResultSetTableCell[columnCount];
 						for (int columnIndex = 1; columnIndex <= columnCount; ++columnIndex) {
 							Object cellContent = resultSet.getObject(columnIndex);
-							cells[columnIndex - 1] = new ResultSetTableCell(ResultSetTableModel.this, columnIndex, cellContent);
+							cells[columnIndex - 1] = new ResultSetTableCell(columnIndex, cellContent);
 						}
-						rows.add(new ResultSetTableRow(resultSet.getRow(), cells));
+						rows.add(new ResultSetTableRow(ResultSetTableModel.this, resultSet.getRow(), cells));
 					}
 					synchronized (mutex) {
 						completelyLoaded = lastResultSetNextResult == false;

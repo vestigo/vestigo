@@ -4,16 +4,40 @@ package org.nightlabs.eclipse.jjqb.ui.resultsettable;
 public class ResultSetTableRow
 implements Comparable<ResultSetTableRow>
 {
+	private ResultSetTableModel model;
 	private int resultSetTableRowIndex;
 	private ResultSetTableCell[] cells;
 
-	public ResultSetTableRow(int resultSetTableRowID, ResultSetTableCell[] cells)
+	/**
+	 * Create a new <code>ResultSetTableRow</code>.
+	 *
+	 * @param model the model from which this row was created and to which it belongs. Must not be <code>null</code>.
+	 * @param resultSetTableRowIndex the 1-based row-index from the ODA result set.
+	 * @param cells the cells belonging to this row. Must not be <code>null</code>.
+	 * Their {@link ResultSetTableCell#setRow(ResultSetTableRow) setRow(...)} method will be called.
+	 */
+	public ResultSetTableRow(ResultSetTableModel model, int resultSetTableRowIndex, ResultSetTableCell[] cells)
 	{
+		if (model == null)
+			throw new IllegalArgumentException("model == null");
+
 		if (cells == null)
 			throw new IllegalArgumentException("cells == null");
 
-		this.resultSetTableRowIndex = resultSetTableRowID;
+		this.model = model;
+		this.resultSetTableRowIndex = resultSetTableRowIndex;
 		this.cells = cells;
+
+		for (ResultSetTableCell cell : cells)
+			cell.setRow(this);
+	}
+
+	/**
+	 * Get the model to which this row belongs.
+	 * @return the model. Never <code>null</code>.
+	 */
+	public ResultSetTableModel getModel() {
+		return model;
 	}
 
 	@Override
@@ -30,6 +54,10 @@ implements Comparable<ResultSetTableRow>
 		return resultSetTableRowIndex;
 	}
 
+	/**
+	 * Get the cells belonging to this row.
+	 * @return the cells of this row. Never <code>null</code>.
+	 */
 	public ResultSetTableCell[] getCells() {
 		return cells;
 	}
