@@ -5,7 +5,9 @@ import java.sql.Date;
 import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
@@ -30,6 +32,8 @@ public abstract class AbstractQuery implements Query
 	private SortedMap<Integer, Object> parameterID2parameterValue = new TreeMap<Integer, Object>();
 	private SortedMap<String, Integer> parameterName2parameterID  = new TreeMap<String, Integer>();
 	private SortedMap<Integer, String> parameterID2parameterName  = new TreeMap<Integer, String>();
+
+	private Map<Integer, ResultSet> resultSetID2resultSet = new HashMap<Integer, ResultSet>();
 
 	private SortSpec sortBy;
 
@@ -128,8 +132,8 @@ public abstract class AbstractQuery implements Query
 
 	@Override
 	public void close() throws OdaException {
-		// TODO Auto-generated method stub
-
+		for (ResultSet resultSet : new ArrayList<ResultSet>(resultSetID2resultSet.values()))
+			resultSet.close();
 	}
 
 	@Override
@@ -250,33 +254,18 @@ public abstract class AbstractQuery implements Query
 		ResultSetID resultSetID = getChildVM().executeQuery(connection.getConnectionID(), queryText, parameters);
 		ResultSet resultSet = newResultSet();
 		resultSet.setResultSetID(resultSetID);
+		resultSetID2resultSet.put(resultSet.getResultSetID().getResultSetID(), resultSet);
 		return resultSet;
+	}
 
-//		// TODO do NOT pass the entire result set at once, but use the resultSetID inside the ODA-resultset-impl!
-//		// BEGIN only for a first shot, now
-//		List<Object> resultElements = new ArrayList<Object>();
-//		List<ResultRowDTO> resultRowDTOList = null;
-//		do {
-//			resultRowDTOList = getChildVM().nextResultRowDTOList(resultSetID, 100);
-//			for (ResultRowDTO resultRowDTO : resultRowDTOList) {
-//				if (resultRowDTO.getCells().size() > 1) {
-////					Object[] row = new Object[resultRowDTO.getCells().size()];
-////					int idx = -1;
-////					for (ResultCellDTO cellDTO : resultRowDTO.getCells())
-////						row[++idx] = cellDTO;
-//					Object[] row = resultRowDTO.getCells().toArray();
-//
-//					resultElements.add(row);
-//				}
-//				else if (resultRowDTO.getCells().size() == 1)
-//					resultElements.add(resultRowDTO.getCells().get(0));
-//			}
-//		} while (!resultRowDTOList.isEmpty());
-//		// END only for a first shot, now
-//
-//		ResultSetMetaData resultSetMetaData = new ResultSetMetaData(new ResultSetMetaData.Column("default")); // TODO correct meta data!
-//		IResultSet resultSet = new CollectionResultSet(resultSetMetaData, resultElements);
-//		return resultSet;
+	protected void onCloseResultSet(ResultSet resultSet)
+	{
+		if (resultSet == null)
+			throw new IllegalArgumentException("resultSet == null");
+
+		ResultSetID resultSetID = resultSet.getResultSetID();
+		if (resultSetID != null)
+			resultSetID2resultSet.remove(resultSetID.getResultSetID());
 	}
 
 	protected ChildVM getChildVM() {

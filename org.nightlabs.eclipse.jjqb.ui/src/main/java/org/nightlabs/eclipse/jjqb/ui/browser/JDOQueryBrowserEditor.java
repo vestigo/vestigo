@@ -46,6 +46,7 @@ import org.nightlabs.eclipse.jjqb.core.JDODriver;
 import org.nightlabs.eclipse.jjqb.ui.resultsettable.ResultSetTableComposite;
 import org.nightlabs.eclipse.jjqb.ui.resultsettable.ResultSetTableModel;
 import org.nightlabs.jdo.jdoqleditor.editor.JDOQLEditor;
+import org.nightlabs.util.Stopwatch;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -63,6 +64,7 @@ public class JDOQueryBrowserEditor extends JDOQLEditor
 
 	private Composite queryEditorComposite;
 	private ResultSetTableComposite resultSetTableComposite;
+	private volatile IQuery query;
 	private volatile IResultSet resultSet;
 	private volatile ResultSetTableModel resultSetTableModel;
 
@@ -192,56 +194,34 @@ public class JDOQueryBrowserEditor extends JDOQLEditor
 	throws Exception
 	{
 		{
-			IResultSet rs = resultSet;
-			if (rs != null)
-				rs.close();
+			IQuery q = query;
+			if (q != null)
+				q.close(); // this closes all result sets!
+
+//			IResultSet rs = resultSet;
+//			if (rs != null)
+//				rs.close();
 		}
 
+		Stopwatch stopwatch = new Stopwatch();
+
 		IConnectionProfile connectionProfile = queryContext.getConnectionProfile();
-//		IConnection connection;
-////		if (NEW_CONNECTION) {
-//			IManagedConnection managedConnection = connectionProfile.getManagedConnection(connectionFactoryID);
-//			if (managedConnection.getConnection() == null)
-//				connectionProfile.connectWithoutJob();
-//
-//			connection = connectionProfile.createConnection(connectionFactoryID);
-////		}
-////		else {
-////			IManagedConnection managedConnection = connectionProfile.getManagedConnection(connectionFactoryID);
-////			connection = managedConnection.getConnection();
-////			if (connection == null) {
-////				connectionProfile.connectWithoutJob();
-////				connection = managedConnection.getConnection();
-////			}
-////		}
-//
-////		Connection connection = profileConnectionManager.getConnection(connectionProfile, "org.eclipse.datatools.connectivity.oda.IConnection");
-////		if (connection == null) {
-////
-////		}
-////
-////		Connection connection = connectionProfile.createConnection(connectionFactoryID);
-////		try {
-////			org.eclipse.datatools.connectivity.oda.IConnection odaConnection = (org.eclipse.datatools.connectivity.oda.IConnection) connection.getRawConnection();
-////			Query query = odaConnection.newQuery("");
-////		} finally {
-////			connection.close();
-////		}
-//		if (connection == null)
-//			throw new IllegalStateException("No connection!");
-//
-//		org.eclipse.datatools.connectivity.oda.IConnection rawConnection = (org.eclipse.datatools.connectivity.oda.IConnection) connection.getRawConnection();
-//
-//		IQuery query = rawConnection.newQuery("");
 
 		org.eclipse.datatools.connectivity.oda.IConnection connection = getConnection(connectionProfile, new SubProgressMonitor(monitor, 30)); // TODO proper management of ProgressMonitor!
-		IQuery query = connection.newQuery("");
+		final IQuery q = connection.newQuery("");
 
-		query.prepare(queryContext.getQueryText());
-		final IResultSet rs = query.executeQuery();
+		stopwatch.start("00.query.prepare");
+		q.prepare(queryContext.getQueryText());
+		stopwatch.stop("00.query.prepare");
+
+		stopwatch.start("10.query.executeQuery");
+		final IResultSet rs = q.executeQuery();
+		stopwatch.stop("10.query.executeQuery");
+
 		display.asyncExec(new Runnable() {
 			@Override
 			public void run() {
+				query = q;
 				resultSet = rs;
 				resultSetTableModel = new ResultSetTableModel(rs);
 				resultSetTableModel.addPropertyChangeListener(ResultSetTableModel.PROPERTY_CHANGE_COMPLETELY_LOADED, new PropertyChangeListener() {
@@ -253,15 +233,25 @@ public class JDOQueryBrowserEditor extends JDOQLEditor
 				resultSetTableComposite.setInput(resultSetTableModel);
 			}
 		});
-//		while (resultSet.next()) {
-//			int columnCount = resultSet.getMetaData().getColumnCount();
-//			for (int columnIndex = 1; columnIndex <= columnCount; ++columnIndex) {
-//				Object object = resultSet.getObject(columnIndex);
-//				System.out.print(object);
-//				System.out.print("\t");
-//			}
-//			System.out.println();
-//		}
+
+
+		stopwatch.start("20.query.executeQuery");
+		final IResultSet rs2 = q.executeQuery();
+		stopwatch.stop("20.query.executeQuery");
+
+		stopwatch.start("30.iterateResultSet");
+		while (rs2.next()) {
+			int columnCount = rs2.getMetaData().getColumnCount();
+			for (int columnIndex = 1; columnIndex <= columnCount; ++columnIndex) {
+				Object object = rs2.getObject(columnIndex);
+				System.out.print(object);
+				System.out.print("\t");
+			}
+			System.out.println();
+		}
+		stopwatch.stop("30.iterateResultSet");
+
+		logger.info("executeQuery: {}", stopwatch.createHumanReport(true));
 	}
 
 	private Display display;

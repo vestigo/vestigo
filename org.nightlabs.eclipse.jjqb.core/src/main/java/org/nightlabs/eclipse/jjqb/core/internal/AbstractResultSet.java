@@ -99,8 +99,10 @@ public abstract class AbstractResultSet implements ResultSet
 	@Override
 	public synchronized void close() throws OdaException
 	{
-		if (resultSetID != null && query != null)
+		if (resultSetID != null && query != null) {
+			((AbstractQuery)query).onCloseResultSet(this); // TODO put this method into interface?!
 			getChildVM().deleteResultSetDTO(resultSetID);
+		}
 
 		query = null;
 		resultSetMetaData = null;
