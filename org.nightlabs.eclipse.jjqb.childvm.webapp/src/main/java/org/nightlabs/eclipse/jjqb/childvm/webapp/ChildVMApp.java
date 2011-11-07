@@ -19,6 +19,7 @@ extends Application
 		ConnectionDTOService.class,
 		ConnectionProfileDTOService.class,
 		IsOnlineService.class,
+		ResultCellDTOService.class,
 		ResultRowDTOService.class,
 		ResultSetDTOService.class,
 		// END services

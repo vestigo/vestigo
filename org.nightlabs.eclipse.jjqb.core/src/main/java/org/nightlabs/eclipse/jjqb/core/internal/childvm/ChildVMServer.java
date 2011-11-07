@@ -19,6 +19,8 @@ import org.nightlabs.eclipse.jjqb.childvm.shared.ConnectionDTOList;
 import org.nightlabs.eclipse.jjqb.childvm.shared.ConnectionProfileDTO;
 import org.nightlabs.eclipse.jjqb.childvm.shared.ConnectionProfileDTOList;
 import org.nightlabs.eclipse.jjqb.childvm.shared.QueryDTO;
+import org.nightlabs.eclipse.jjqb.childvm.shared.ResultCellDTO;
+import org.nightlabs.eclipse.jjqb.childvm.shared.ResultCellDTOList;
 import org.nightlabs.eclipse.jjqb.childvm.shared.ResultRowDTO;
 import org.nightlabs.eclipse.jjqb.childvm.shared.ResultRowDTOList;
 import org.nightlabs.eclipse.jjqb.childvm.shared.ResultSetDTO;
@@ -26,6 +28,7 @@ import org.nightlabs.eclipse.jjqb.childvm.shared.ResultSetID;
 import org.nightlabs.eclipse.jjqb.childvm.shared.provider.JavaNativeMessageBodyReader;
 import org.nightlabs.eclipse.jjqb.childvm.shared.provider.JavaNativeMessageBodyWriter;
 import org.nightlabs.eclipse.jjqb.childvm.shared.provider.MediaTypeConst;
+import org.nightlabs.eclipse.jjqb.core.ObjectReference;
 import org.nightlabs.eclipse.jjqb.core.childvm.ChildVM;
 import org.nightlabs.eclipse.jjqb.core.childvm.ChildVMException;
 import org.nightlabs.util.IOUtil;
@@ -46,6 +49,11 @@ implements ChildVM
 	static {
 		JavaNativeMessageBodyReader.setClassLoader(ChildVMServer.class.getClassLoader());
 	}
+
+	/**
+	 * Launch the child JVM in debug mode, so that connecting from the IDE (to port 8000) &amp; remote-debugging is possible.
+	 */
+	private static final boolean DEBUG_MODE = false;
 
 	private static SecureRandom random = new SecureRandom();
 
@@ -167,9 +175,18 @@ implements ChildVM
 
 			logger.info("open: Starting server: serverDirectory=\"{}\" port={}", serverDirectory, port);
 
+			List<String> commandWithArguments = new LinkedList<String>();
+			commandWithArguments.add("java");
+
+			if (DEBUG_MODE)
+				commandWithArguments.add("-Xrunjdwp:transport=dt_socket,address=8000,server=y,suspend=n");
+
+			commandWithArguments.add("-jar");
+			commandWithArguments.add("start.jar");
+
 			serverProcess = new ProcessBuilder()
 			.directory(serverDirectory)
-			.command("java", "-jar", "start.jar")
+			.command(commandWithArguments)
 			.start();
 
 			dumpInputStreamToFileThread = new DumpStreamToFileThread(serverProcess.getInputStream(), stdOutFile);
@@ -616,6 +633,34 @@ implements ChildVM
 			getChildVMAppResource(client, ResultSetDTO.class, new PathSegment(resultSetID)).delete();
 		} catch (UniformInterfaceException x) {
 			handleUniformInterfaceException(x);
+		} finally {
+			releaseClient(client);
+		}
+	}
+
+	@Override
+	public List<ResultCellDTO> getChildren(ObjectReference objectReference) throws ChildVMException
+	{
+		if (objectReference == null)
+			throw new IllegalArgumentException("objectReference == null");
+
+		ResultSetID resultSetID = objectReference.getResultSet().getResultSetID();
+
+		Client client = acquireClient();
+		try {
+			WebResource.Builder builder = getChildVMAppResourceBuilder(
+					client,
+					ResultCellDTO.class,
+					new PathSegment(resultSetID),
+					new PathSegment(objectReference.getObjectClassName()),
+					new PathSegment(objectReference.getObjectID()),
+					new PathSegment("children")
+			);
+			ResultCellDTOList resultCellDTOList = builder.get(ResultCellDTOList.class);
+			return resultCellDTOList.getElements();
+		} catch (UniformInterfaceException x) {
+			handleUniformInterfaceException(x);
+			throw x; // we do not expect null
 		} finally {
 			releaseClient(client);
 		}

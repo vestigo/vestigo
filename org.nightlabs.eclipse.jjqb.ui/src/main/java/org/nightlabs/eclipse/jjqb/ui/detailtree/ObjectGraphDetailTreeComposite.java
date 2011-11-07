@@ -1,21 +1,45 @@
 package org.nightlabs.eclipse.jjqb.ui.detailtree;
 
+import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.TreeViewer;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
 
 public class ObjectGraphDetailTreeComposite
 extends Composite
 {
 	private TreeViewer treeViewer;
+	private ObjectGraphDetailTreeModel model;
 
 	public ObjectGraphDetailTreeComposite(Composite parent, int style) {
 		super(parent, style);
-//		setLayout(new FillLayout(SWT.HORIZONTAL | SWT.VERTICAL));
-//		treeViewer = new TreeViewer(this, SWT.VIRTUAL | SWT.FULL_SELECTION);
-//		org.eclipse.jface.viewers.deferred.
-//		treeViewer.setContentProvider(new DeferredContentProvider(new ComparableComparator<ResultSetTableRow>()));
-////		treeViewer.getTree().setHeaderVisible(true);
-//		treeViewer.setUseHashlookup(true);
+		setLayout(new FillLayout(SWT.HORIZONTAL | SWT.VERTICAL));
+		createTreeViewer();
+	}
+
+	private void createTreeViewer() {
+		treeViewer = new TreeViewer(this, SWT.FULL_SELECTION);
+		treeViewer.setUseHashlookup(true);
+		treeViewer.setContentProvider(new ObjectGraphDetailTreeContentProvider());
+		treeViewer.setLabelProvider(new LabelProvider() {
+			@Override
+			public String getText(Object element) {
+				if (element instanceof ObjectGraphDetailTreeNode)
+					return ((ObjectGraphDetailTreeNode)element).getLabelText();
+				else
+					return super.getText(element);
+			}
+		});
+	}
+
+	public ObjectGraphDetailTreeModel getInput() {
+		return model;
+	}
+
+	public final void setInput(ObjectGraphDetailTreeModel model) {
+		this.model = model;
+		treeViewer.setInput(model == null ? null : model.getTopLevelNodes());
 	}
 
 }

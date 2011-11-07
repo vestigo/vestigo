@@ -64,7 +64,7 @@ implements ISelectionProvider
 		tableViewer.getTable().setHeaderVisible(true);
 		tableViewer.getTable().setLinesVisible(true);
 		tableViewer.setUseHashlookup(true);
-		hookRepairPaintListener();
+//		hookRepairPaintListener(); // I don't have these paint bugs here in the office - only at home - strange (and it makes things really slow, here).
 	}
 
 	private boolean repairPaintEventTriggered = false;

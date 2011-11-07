@@ -380,32 +380,12 @@ public class JDOQueryBrowserEditor extends JDOQLEditor
 
 	private static final String connectionFactoryID = "org.eclipse.datatools.connectivity.oda.IConnection";
 
-//	private static String getConnectionFactoryID(IConnectionProfile profile)
-//	{
-//		profile.getCo
-//	}
-
 	private void onSelectConnectionProfile()
 	{
 		int connectionProfileIndex = connectionProfileCombo.getSelectionIndex();
-		executeQueryButton.setEnabled(connectionProfileIndex >= 0);
-		IConnectionProfile oldConnectionProfile = this.connectionProfile;
 		IConnectionProfile newConnectionProfile = connectionProfileIndex >= 0 ? connectionProfiles.get(connectionProfileIndex) : null;
-
-//		ProfileConnectionManager profileConnectionManager = ProfileConnectionManager.getProfileConnectionManagerInstance();
-
-		// unregister management of old connection profile
-		if (oldConnectionProfile != null) {
-//			profileConnectionManager.unmanageProfileConnection(oldConnectionProfile, connectionFactoryID, connectListener);
-		}
-		this.connectionProfile = null;
-
-
-
-		if (newConnectionProfile != null) {
-//			profileConnectionManager.manageProfileConnection(newConnectionProfile, connectionFactoryID, connectListener);
-			this.connectionProfile = newConnectionProfile;
-		}
+		this.connectionProfile = newConnectionProfile;
+		executeQueryButton.setEnabled(this.connectionProfile != null);
 	}
 
 	@Override

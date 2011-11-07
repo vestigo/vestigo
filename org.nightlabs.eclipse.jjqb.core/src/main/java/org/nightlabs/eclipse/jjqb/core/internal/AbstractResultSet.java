@@ -45,6 +45,11 @@ public abstract class AbstractResultSet implements ResultSet
 	}
 
 	@Override
+	public Query getQuery() {
+		return query;
+	}
+
+	@Override
 	public synchronized ResultSetID getResultSetID() {
 		return resultSetID;
 	}
@@ -385,13 +390,19 @@ public abstract class AbstractResultSet implements ResultSet
 		if (resultCellDTO == null)
 			throw new IllegalStateException("row.getCells().get(index - 1) returned null! index=" + index);
 
+		Object result = unmaskResultCellDTO(this, resultCellDTO);
+
+		wasNull = result == null;
+
+		return result;
+	}
+
+	public static Object unmaskResultCellDTO(ResultSet resultSet, ResultCellDTO resultCellDTO)
+	{
 		// Unmask null, which is transferred as ResultCellNullDTO
 		if (resultCellDTO instanceof ResultCellNullDTO) {
 			return null;
 		}
-
-		// Now, the result cannot be null anymore (the resultCellDTO impls must contain or reference a value).
-		wasNull = false;
 
 		// Unmask simple data types, which don't need remote-referencing.
 		if (resultCellDTO instanceof ResultCellSimpleDTO) {
@@ -401,7 +412,7 @@ public abstract class AbstractResultSet implements ResultSet
 
 		if (resultCellDTO instanceof ResultCellObjectRefDTO) {
 			ResultCellObjectRefDTO resultCellObjectRefDTO = (ResultCellObjectRefDTO) resultCellDTO;
-			return new ObjectReferenceImpl(this, resultCellObjectRefDTO);
+			return new ObjectReferenceImpl(resultSet, resultCellObjectRefDTO);
 		}
 
 		throw new IllegalStateException("Unknown ResultCellDTO subclass: " + resultCellDTO);

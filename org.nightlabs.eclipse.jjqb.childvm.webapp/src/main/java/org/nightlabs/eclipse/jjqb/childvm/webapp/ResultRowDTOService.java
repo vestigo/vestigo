@@ -77,21 +77,22 @@ public class ResultRowDTOService extends AbstractService
 			if (!resultSet.next())
 				return null;
 
+			Object owner = null; // In the initial result-set, there is no owner - everything is top-level.
 			ResultRowDTO resultRowDTO = new ResultRowDTO();
 			resultRowDTO.setRowIndex(resultSet.getRowIndex());
 			Object row = resultSet.getRow();
 			if (row == null)
-				resultRowDTO.getCells().add(resultSet.newResultCellDTO(null));
+				resultRowDTO.getCells().add(resultSet.newResultCellDTO(owner, null));
 			else {
 				if (row.getClass().isArray()) {
 					int arrayLength = Array.getLength(row);
 					for (int i = 0; i < arrayLength; ++i) {
 						Object arrayElement = Array.get(row, i);
-						resultRowDTO.getCells().add(resultSet.newResultCellDTO(arrayElement));
+						resultRowDTO.getCells().add(resultSet.newResultCellDTO(owner, arrayElement));
 					}
 				}
 				else
-					resultRowDTO.getCells().add(resultSet.newResultCellDTO(row));
+					resultRowDTO.getCells().add(resultSet.newResultCellDTO(owner, row));
 			}
 			return resultRowDTO;
 		}

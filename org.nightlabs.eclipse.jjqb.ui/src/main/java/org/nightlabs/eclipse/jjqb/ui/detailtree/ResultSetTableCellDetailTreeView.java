@@ -11,7 +11,6 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.ISelectionListener;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.part.ViewPart;
@@ -20,14 +19,18 @@ import org.nightlabs.eclipse.jjqb.ui.resultsettable.ResultSetTableRow;
 
 public class ResultSetTableCellDetailTreeView extends ViewPart
 {
-	private Text dummy;
+//	private Text dummy;
+	private ObjectGraphDetailTreeComposite objectGraphDetailTreeComposite;
 
 	@Override
-	public void createPartControl(Composite parent) {
-		dummy = new Text(parent, SWT.BORDER);
-		dummy.setText("{empty}");
+	public void createPartControl(Composite parent)
+	{
+		objectGraphDetailTreeComposite = new ObjectGraphDetailTreeComposite(parent, SWT.NONE);
+		objectGraphDetailTreeComposite.addDisposeListener(disposeListener);
 
-		dummy.addDisposeListener(disposeListener);
+//		dummy = new Text(parent, SWT.BORDER);
+//		dummy.setText("{empty}");
+//
 		getSite().getPage().addSelectionListener(selectionListener);
 	}
 
@@ -49,15 +52,19 @@ public class ResultSetTableCellDetailTreeView extends ViewPart
 					selectedCells.add((ResultSetTableCell)selectionElement);
 			}
 
-			List<Object> selectedObjects = new ArrayList<Object>();
-			for (ResultSetTableCell resultSetTableCell : selectedCells)
-				selectedObjects.add(resultSetTableCell.getCellContent());
-
-			if (selectedObjects.isEmpty())
+			if (selectedCells.isEmpty())
 				return;
 
-			// TODO put selectedObjects into ObjectGraphDetailTreeComposite
-			dummy.setText(selectedObjects.toString());
+			List<Object> selectedObjectGraphRoots = new ArrayList<Object>();
+			for (ResultSetTableCell resultSetTableCell : selectedCells)
+				selectedObjectGraphRoots.add(resultSetTableCell.getCellContent());
+
+			if (selectedObjectGraphRoots.isEmpty())
+				return;
+
+//			// TODO put selectedObjects into ObjectGraphDetailTreeComposite
+//			dummy.setText(selectedObjectGraphRoots.toString());
+			objectGraphDetailTreeComposite.setInput(new ObjectGraphDetailTreeModel(selectedObjectGraphRoots));
 		}
 	};
 

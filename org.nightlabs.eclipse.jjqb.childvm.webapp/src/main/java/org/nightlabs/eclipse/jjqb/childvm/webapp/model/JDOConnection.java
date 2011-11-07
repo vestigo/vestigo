@@ -75,12 +75,22 @@ extends Connection
 		super.close();
 	}
 
+	/**
+	 * <p>
+	 * Get the {@link PersistenceManager} of this connection.
+	 * </p><p>
+	 * <b>You must synchronize on this connection while using the <code>PersistenceManager</code>!</b>
+	 * Otherwise the fetch-plan or other properties
+	 * might be modified by multiple threads causing race conditions (Heisenbugs).
+	 * </p>
+	 * @return the <code>PersistenceManager</code>.
+	 */
 	public PersistenceManager getPersistenceManager() {
 		return persistenceManager;
 	}
 
 	@Override
-	public ResultSet doExecuteQuery(String queryText, List<Object> parameters)
+	public synchronized ResultSet doExecuteQuery(String queryText, List<Object> parameters) // We synchronize on this connection because we use the PersistenceManager.
 	{
 		if (queryText == null)
 			throw new IllegalArgumentException("queryText == null");
@@ -93,8 +103,7 @@ extends Connection
 		if (pm == null)
 			throw new IllegalStateException("getPersistenceManager() returned null!");
 
-		pm.getFetchPlan().setMaxFetchDepth(1);
-		pm.getFetchPlan().setGroup(FetchPlan.ALL);
+		configureFetchPlanForOneLevelAndAllFields(pm.getFetchPlan());
 
 		Query query = pm.newQuery(queryText);
 		Object queryResult = query.executeWithArray(parameters.toArray());
@@ -106,5 +115,11 @@ extends Connection
 			resultSet = new JDOResultSet(this, Collections.singletonList(queryResult));
 
 		return resultSet;
+	}
+
+	public void configureFetchPlanForOneLevelAndAllFields(FetchPlan fetchPlan)
+	{
+		fetchPlan.setMaxFetchDepth(1);
+		fetchPlan.setGroup(FetchPlan.ALL);
 	}
 }

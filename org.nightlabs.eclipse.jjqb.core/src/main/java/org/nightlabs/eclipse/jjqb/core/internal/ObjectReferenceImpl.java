@@ -1,14 +1,22 @@
 package org.nightlabs.eclipse.jjqb.core.internal;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+import org.nightlabs.eclipse.jjqb.childvm.shared.ResultCellDTO;
 import org.nightlabs.eclipse.jjqb.childvm.shared.ResultCellObjectRefDTO;
 import org.nightlabs.eclipse.jjqb.core.ObjectReference;
 import org.nightlabs.eclipse.jjqb.core.ResultSet;
+import org.nightlabs.eclipse.jjqb.core.childvm.ChildVM;
 import org.nightlabs.util.Util;
 
 public class ObjectReferenceImpl implements ObjectReference
 {
 	private ResultSet resultSet;
 	private ResultCellObjectRefDTO resultCellObjectRefDTO;
+
+	private List<Object> children;
 
 	public ObjectReferenceImpl(ResultSet resultSet, ResultCellObjectRefDTO resultCellObjectRefDTO)
 	{
@@ -25,6 +33,11 @@ public class ObjectReferenceImpl implements ObjectReference
 	@Override
 	public ResultSet getResultSet() {
 		return resultSet;
+	}
+
+	protected ChildVM getChildVM()
+	{
+		return resultSet.getQuery().getConnection().getConnectionProfile().getChildVM();
 	}
 
 	@Override
@@ -61,5 +74,21 @@ public class ObjectReferenceImpl implements ObjectReference
 	@Override
 	public String getObjectID() {
 		return resultCellObjectRefDTO.getObjectID();
+	}
+
+	@Override
+	public synchronized Collection<?> getChildren()
+	{
+		List<Object> children = this.children;
+		if (children == null) {
+			List<ResultCellDTO> childDTOs = getChildVM().getChildren(this);
+			children = new ArrayList<Object>(childDTOs.size());
+			for (ResultCellDTO childDTO : childDTOs) {
+				Object child = AbstractResultSet.unmaskResultCellDTO(resultSet, childDTO);
+				children.add(child);
+			}
+			this.children = children;
+		}
+		return children;
 	}
 }

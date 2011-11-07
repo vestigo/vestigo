@@ -6,8 +6,10 @@ import java.util.UUID;
 
 import org.nightlabs.eclipse.jjqb.childvm.shared.ConnectionDTO;
 import org.nightlabs.eclipse.jjqb.childvm.shared.ConnectionProfileDTO;
+import org.nightlabs.eclipse.jjqb.childvm.shared.ResultCellDTO;
 import org.nightlabs.eclipse.jjqb.childvm.shared.ResultRowDTO;
 import org.nightlabs.eclipse.jjqb.childvm.shared.ResultSetID;
+import org.nightlabs.eclipse.jjqb.core.ObjectReference;
 
 public interface ChildVM
 {
@@ -37,4 +39,6 @@ public interface ChildVM
 	List<ResultRowDTO> nextResultRowDTOList(ResultSetID resultSetID, int count) throws ChildVMException;
 
 	void deleteResultSetDTO(ResultSetID resultSetID) throws ChildVMException;
+
+	List<ResultCellDTO> getChildren(ObjectReference objectReference) throws ChildVMException;
 }

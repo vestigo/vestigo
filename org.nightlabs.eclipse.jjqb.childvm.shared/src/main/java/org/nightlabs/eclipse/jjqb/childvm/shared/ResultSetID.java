@@ -10,7 +10,7 @@ implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 
-	public ResultSetID() { }
+//	public ResultSetID() { } // not needed anymore - we don't use JAXB anymore
 
 	public ResultSetID(String resultSetIDString)
 	{
@@ -45,27 +45,27 @@ implements Serializable
 	public UUID getConnectionID() {
 		return connectionID;
 	}
-	public void setConnectionID(UUID connectionID) {
-		if (this.connectionID != null && this.connectionID.equals(connectionID))
-			return;
-
-		if (this.connectionID != null)
-			throw new IllegalStateException("this.connectionID already assigned! Cannot modify!");
-
-		this.connectionID = connectionID;
-	}
+//	public void setConnectionID(UUID connectionID) { // not needed anymore - we don't use JAXB anymore
+//		if (this.connectionID != null && this.connectionID.equals(connectionID))
+//			return;
+//
+//		if (this.connectionID != null)
+//			throw new IllegalStateException("this.connectionID already assigned! Cannot modify!");
+//
+//		this.connectionID = connectionID;
+//	}
 	public int getResultSetID() {
 		return resultSetID;
 	}
-	public void setResultSetID(int resultSetID) {
-		if (this.resultSetID == resultSetID)
-			return;
-
-		if (this.resultSetID >= 0)
-			throw new IllegalStateException("this.resultSetID already assigned! Cannot modify!");
-
-		this.resultSetID = resultSetID;
-	}
+//	public void setResultSetID(int resultSetID) { // not needed anymore - we don't use JAXB anymore
+//		if (this.resultSetID == resultSetID)
+//			return;
+//
+//		if (this.resultSetID >= 0)
+//			throw new IllegalStateException("this.resultSetID already assigned! Cannot modify!");
+//
+//		this.resultSetID = resultSetID;
+//	}
 
 	@Override
 	public int hashCode() {
