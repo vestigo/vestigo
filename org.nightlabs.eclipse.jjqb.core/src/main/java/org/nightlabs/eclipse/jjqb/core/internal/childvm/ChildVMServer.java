@@ -9,6 +9,8 @@ import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.UUID;
 import java.util.concurrent.TimeoutException;
 
@@ -64,6 +66,20 @@ implements ChildVM
 	private int port;
 
 	private LinkedList<Client> clientCache = new LinkedList<Client>();
+
+	private Timer heartBeatTimer = new Timer(true);
+
+	private TimerTask heartBeatTimerTask = new TimerTask() {
+		@Override
+		public void run() {
+			logger.debug("heartBeatTimerTask.run: entered");
+			if (!isOpen()) {
+				logger.debug("heartBeatTimerTask.run: This ChildVMServer is not open => cancelling heartBeatTimerTask.");
+				cancel();
+			}
+			isOnline();
+		}
+	};
 
 	public ChildVMServer()
 	{
@@ -159,6 +175,11 @@ implements ChildVM
 		IOUtil.copyResource(ChildVMServer.class, resourceName, destinationFile);
 	}
 
+	public synchronized boolean isOpen()
+	{
+		return serverProcess != null;
+	}
+
 	public synchronized void open() throws IOException
 	{
 		if (serverProcess != null)
@@ -200,6 +221,8 @@ implements ChildVM
 			} catch (TimeoutException e) {
 				throw new IOException(e);
 			}
+
+			heartBeatTimer.schedule(heartBeatTimerTask, 10L * 1000L, 10L * 1000L);
 
 			successful = true;
 		} finally {
@@ -365,6 +388,8 @@ implements ChildVM
 
 	protected synchronized void close(boolean delete) throws IOException
 	{
+		heartBeatTimerTask.cancel();
+
 		clientCache.clear();
 
 		// Indicate that we're going to shut down the server. This will prevent the log from being polluted.

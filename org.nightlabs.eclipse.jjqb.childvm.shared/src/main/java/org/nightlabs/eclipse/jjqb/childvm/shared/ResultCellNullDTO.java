@@ -1,12 +1,14 @@
 package org.nightlabs.eclipse.jjqb.childvm.shared;
 
+import java.lang.reflect.Field;
+
 
 public class ResultCellNullDTO extends ResultCellDTO
 {
 	private static final long serialVersionUID = 1L;
 
-	public ResultCellNullDTO(String fieldName) {
-		super(fieldName);
+	public ResultCellNullDTO(Field field) {
+		super(field);
 	}
 
 	@Override

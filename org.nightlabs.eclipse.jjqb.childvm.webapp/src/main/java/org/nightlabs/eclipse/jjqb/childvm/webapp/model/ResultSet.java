@@ -178,21 +178,23 @@ public abstract class ResultSet
 				object instanceof String ||
 				object instanceof UUID
 		)
-			return new ResultCellSimpleDTO(getFieldName(field), object);
+			return new ResultCellSimpleDTO(field, object);
 
 		// Nothing matching => return null.
 		return null;
 	}
 
+	/**
+	 * Create a new instance of a subclass of {@link ResultCellDTO} or return <code>null</code>.
+	 * This method gives a subclass of {@link ResultSet} the ability to handle the <code>object</code> specifically.
+	 * @param owner the owner of <code>object</code>, if <code>object</code> is a value of an owner's field.
+	 * <code>null</code> otherwise (e.g. if there is no owner like in the top-level-contents of the <code>ResultSet</code>
+	 * or if it is a member in a collection or a key in a map).
+	 * @param field the field of which <code>object</code> is a value. <code>null</code>, if there is no owner and thus no field.
+	 * @param object the object; never <code>null</code>.
+	 * @return a {@link ResultCellDTO} or return <code>null</code>.
+	 */
 	protected abstract ResultCellDTO nullOrNewImplementationSpecificResultCellDTO(Object owner, Field field, Object object);
-
-	protected String getFieldName(Field field)
-	{
-		if (field == null)
-			return null;
-		else
-			return field.getDeclaringClass().getName() + '.' + field.getName();
-	}
 
 	/**
 	 * Get the {@link ResultCellDTO} for the given object. Never <code>null</code>.
@@ -207,6 +209,7 @@ public abstract class ResultSet
 		assertOpen();
 
 		Field field = null;
+
 		if (object instanceof FieldValue) {
 			FieldValue fv = (FieldValue) object;
 			field = fv.getField();
@@ -214,7 +217,7 @@ public abstract class ResultSet
 		}
 
 		if (object == null)
-			return new ResultCellNullDTO(getFieldName(field));
+			return new ResultCellNullDTO(field);
 
 		ResultCellDTO resultCellDTO = nullOrNewResultCellSimpleDTO(owner, field, object);
 		if (resultCellDTO != null)
@@ -228,7 +231,72 @@ public abstract class ResultSet
 		// hmmm... maybe this is already sufficient, because all we have is java types anyway and we break such unknown objects down into
 		// this transientObjectManagement stuff.
 		TransientObjectContainer transientObjectContainer = createTransientObjectContainerForTransientObject(object);
-		return new ResultCellTransientObjectRefDTO(getFieldName(field), object.getClass(), transientObjectContainer.getObjectID());
+		return new ResultCellTransientObjectRefDTO(
+				field, object.getClass(), transientObjectContainer.getObjectID(), getObjectToString(object)
+		);
+	}
+
+	protected String getObjectToString(Object object)
+	{
+		// We shorten the result (in the middle), if it is longer than maxLength.
+		final int maxLength = 500;
+		// We put this marker in the middle of the result, if we had to shorten.
+		final String omissionMark = "....";
+
+		if (object == null)
+			return null;
+
+		if ((object instanceof Collection<?>) || (object instanceof Map<?, ?>))
+			return null;
+
+		String string = object.toString();
+		string = shortenStringInTheMiddleIfNecessary(string, maxLength, omissionMark);
+		return string;
+	}
+
+	/**
+	 * Shorten the given <code>string</code>, if it is longer than <code>maxLength</code>.
+	 * If it needs to be shortened, the middle part will be removed and replaced by the
+	 * <code>omissionMark</code>.
+	 * <p>
+	 * For example, string="Hello world", maxLength=10 and omissionMark="..." would result in
+	 * "Hell...rld".
+	 * </p>
+	 * @param string the string to be shortened; may be <code>null</code> (in this case, the result will be <code>null</code>).
+	 * @param maxLength the maximum length of the <code>String</code> that is to be returned by this method. Must be &gt;=1.
+	 * @param omissionMark the mark that will be placed instead of the omitted part; must not be longer than <code>maxLength</code> (same length is allowed).
+	 * @return a <code>String</code> with a length that is shorter or equal to <code>maxLength</code>.
+	 */
+	protected static String shortenStringInTheMiddleIfNecessary(String string, int maxLength, String omissionMark)
+	{
+		if (maxLength < 1)
+			throw new IllegalArgumentException("maxLength < 1");
+		if (maxLength < omissionMark.length())
+			throw new IllegalArgumentException("maxLength < omissionMark.length() :: " + maxLength + " < " + omissionMark.length());
+
+		if (string == null)
+			return null;
+
+		if (string.length() > maxLength) {
+			final int omissionMarkPart1Length = omissionMark.length()/2;
+			int omissionMarkPart2Length = omissionMark.length()/2;
+			if (omissionMarkPart1Length + omissionMarkPart2Length < omissionMark.length()) // correcting the 2-times-round-down
+				++omissionMarkPart2Length;
+
+			int part1Length = maxLength/2 - omissionMarkPart1Length;
+			int part2Length = maxLength/2 - omissionMarkPart2Length;
+			if (part1Length + part2Length + omissionMark.length() < maxLength)
+				++part2Length;
+
+			String s1 = string.substring(0, part1Length);
+			String s2 = string = string.substring(string.length() - part2Length);
+			string = s1 + omissionMark + s2;
+
+			if (string.length() != maxLength)
+				throw new IllegalStateException("string.length() != maxLength after shortening! This is a bug in this method!");
+		}
+
+		return string;
 	}
 
 	/**

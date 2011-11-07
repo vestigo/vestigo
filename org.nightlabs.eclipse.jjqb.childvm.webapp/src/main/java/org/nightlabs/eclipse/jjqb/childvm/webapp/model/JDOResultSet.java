@@ -42,13 +42,13 @@ public class JDOResultSet extends ResultSet
 	{
 		// SingleFieldIdentity instances can be loaded in the Eclipse-plugin and displayed directly in the editor.
 		if (object instanceof SingleFieldIdentity)
-			return new ResultCellSimpleDTO(getFieldName(field), object);
+			return new ResultCellSimpleDTO(field, object);
 
 		// Check, if it's a JDO object, and if so, return a reference to it.
 		Object objectID = JDOHelper.getObjectId(object);
 		if (objectID != null) {
 			String objectIDString = getPersistentObjectIDString(object.getClass().getName(), objectID);
-			return new ResultCellPersistentObjectRefDTO(getFieldName(field), object.getClass(), objectIDString);
+			return new ResultCellPersistentObjectRefDTO(field, object.getClass(), objectIDString, getObjectToString(object));
 		}
 
 		// Nothing JDO-specific => don't handle it => return null.

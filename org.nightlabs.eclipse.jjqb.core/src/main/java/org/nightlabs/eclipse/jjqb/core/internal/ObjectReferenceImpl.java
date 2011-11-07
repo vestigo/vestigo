@@ -77,6 +77,11 @@ public class ObjectReferenceImpl implements ObjectReference
 	}
 
 	@Override
+	public String getObjectToString() {
+		return resultCellObjectRefDTO.getObjectToString();
+	}
+
+	@Override
 	public synchronized List<ObjectReferenceChild> getChildren()
 	{
 		List<ObjectReferenceChild> children = this.children;
@@ -85,7 +90,7 @@ public class ObjectReferenceImpl implements ObjectReference
 			children = new ArrayList<ObjectReferenceChild>(childDTOs.size());
 			for (ResultCellDTO childDTO : childDTOs) {
 				Object child = AbstractResultSet.unmaskResultCellDTO(resultSet, childDTO);
-				children.add(new ObjectReferenceChildImpl(this, childDTO.getFieldName(), child));
+				children.add(new ObjectReferenceChildImpl(this, childDTO, child));
 			}
 			this.children = children;
 		}

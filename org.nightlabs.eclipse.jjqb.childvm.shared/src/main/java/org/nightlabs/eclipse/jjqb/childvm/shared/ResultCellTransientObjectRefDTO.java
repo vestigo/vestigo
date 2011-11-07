@@ -1,5 +1,7 @@
 package org.nightlabs.eclipse.jjqb.childvm.shared;
 
+import java.lang.reflect.Field;
+
 
 public class ResultCellTransientObjectRefDTO extends ResultCellObjectRefDTO
 {
@@ -7,8 +9,8 @@ public class ResultCellTransientObjectRefDTO extends ResultCellObjectRefDTO
 
 	public static final String OBJECT_ID_PREFIX = "transient.";
 
-	public ResultCellTransientObjectRefDTO(String fieldName, Class<?> objectClass, Long objectID) {
-		super(fieldName, objectClass, OBJECT_ID_PREFIX + objectID.toString());
+	public ResultCellTransientObjectRefDTO(Field field, Class<?> objectClass, Long objectID, String objectToString) {
+		super(field, objectClass, OBJECT_ID_PREFIX + objectID.toString(), objectToString);
 	}
 
 	public static boolean isTransientObjectID(String objectIDString)

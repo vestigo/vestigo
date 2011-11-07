@@ -1,14 +1,16 @@
 package org.nightlabs.eclipse.jjqb.childvm.shared;
 
+import java.lang.reflect.Field;
+
 import org.nightlabs.util.Util;
 
 public class ResultCellSimpleDTO extends ResultCellDTO
 {
 	private static final long serialVersionUID = 1L;
 
-	public ResultCellSimpleDTO(String fieldName, Object object)
+	public ResultCellSimpleDTO(Field field, Object object)
 	{
-		super(fieldName);
+		super(field);
 
 		if (object == null)
 			throw new IllegalArgumentException("object == null");

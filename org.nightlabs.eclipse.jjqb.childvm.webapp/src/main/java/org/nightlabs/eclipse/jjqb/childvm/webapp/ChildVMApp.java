@@ -14,6 +14,11 @@ import org.nightlabs.eclipse.jjqb.childvm.shared.provider.JavaNativeMessageBodyW
 public class ChildVMApp
 extends Application
 {
+	static {
+		// Start the surveillance of the ParentVM: Only need to instantiate the shared instance.
+		ParentVMHeartBeat.sharedInstance();
+	}
+
 	private static final Class<?>[] serviceClassesArray = {
 		// BEGIN services
 		ConnectionDTOService.class,

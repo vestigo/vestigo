@@ -1,5 +1,7 @@
 package org.nightlabs.eclipse.jjqb.childvm.shared;
 
+import java.lang.reflect.Field;
+
 import org.nightlabs.util.Util;
 
 public abstract class ResultCellObjectRefDTO extends ResultCellDTO
@@ -10,25 +12,39 @@ public abstract class ResultCellObjectRefDTO extends ResultCellDTO
 
 	private String objectID;
 
-	public ResultCellObjectRefDTO(String fieldName, Class<?> objectClass, String objectID)
+	private String objectToString;
+
+	public ResultCellObjectRefDTO(Field field, Class<?> objectClass, String objectID, String objectToString)
 	{
-		super(fieldName);
-		this.objectClassName = objectClass == null ? null : objectClass.getName();
+		super(field);
+
+		if (objectClass == null)
+			throw new IllegalArgumentException("objectClass == null");
+
+		if (objectID == null)
+			throw new IllegalArgumentException("objectID == null");
+
+		this.objectClassName = objectClass.getName();
 		this.objectID = objectID;
+		this.objectToString = objectToString; // allowed to be null (shouldn't break if someone really implements it this way)
 	}
 
 	public String getObjectClassName() {
 		return objectClassName;
 	}
-	public void setObjectClassName(String objectClassName) {
-		this.objectClassName = objectClassName;
-	}
+//	public void setObjectClassName(String objectClassName) {
+//		this.objectClassName = objectClassName;
+//	}
 
 	public String getObjectID() {
 		return objectID;
 	}
-	public void setObjectID(String objectID) {
-		this.objectID = objectID;
+//	public void setObjectID(String objectID) {
+//		this.objectID = objectID;
+//	}
+
+	public String getObjectToString() {
+		return objectToString;
 	}
 
 	@Override

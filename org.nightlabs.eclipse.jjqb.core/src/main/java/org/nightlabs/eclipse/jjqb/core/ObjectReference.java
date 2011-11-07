@@ -11,6 +11,8 @@ public interface ObjectReference {
 
 	String getObjectID();
 
+	String getObjectToString();
+
 	/**
 	 * Get the children of the object referenced by this <code>ObjectReference</code>. The children may be
 	 * elements of a <code>Collection</code>, entries of a <code>Map</code> or the {@link Field fields}' values

@@ -132,12 +132,6 @@ implements ITreeContentProvider
 			throw new IllegalArgumentException("element is not an instance of ObjectGraphDetailTreeNode: " + element);
 
 		ObjectGraphDetailTreeNode node = (ObjectGraphDetailTreeNode) element;
-		ObjectGraphDetailTreeNode[] childNodes = node.getChildNodes();
-		if (childNodes == null)
-			return true;
-		else if (childNodes.length == 0)
-			return false;
-		else
-			return true;
+		return node.hasChildren();
 	}
 }
