@@ -247,7 +247,7 @@ public abstract class ResultSet
 			return container == null ? null : container.getObject();
 		}
 		else {
-			Object persistentObjectID = getPersistentObjectID(objectID);
+			Object persistentObjectID = getPersistentObjectID(objectClassName, objectID);
 			if (persistentObjectID == null)
 				throw new IllegalStateException("ObjectIDString was not registered previously: " + objectID);
 
@@ -350,22 +350,31 @@ public abstract class ResultSet
 		return resultList;
 	}
 
-	protected synchronized Object getPersistentObjectID(String objectIDString)
+	protected synchronized Object getPersistentObjectID(String objectClassName, String objectIDString)
 	{
 		if (objectIDString == null)
 			return null;
 
-		return persistentObjectIDString2objectID.get(objectIDString);
+		return persistentObjectIDString2objectID.get(objectClassName + "::" + objectIDString);
 	}
 
-	protected synchronized String getPersistentObjectIDString(Object objectID)
+	protected synchronized String getPersistentObjectIDString(Class<?> objectClass, Object objectID)
 	{
+		return getPersistentObjectIDString(objectClass.getName(), objectID);
+	}
+
+	protected synchronized String getPersistentObjectIDString(String objectClassName, Object objectID)
+	{
+		if (objectClassName == null)
+			throw new IllegalArgumentException("objectClassName == null");
+
 		if (objectID == null)
 			return null;
 
 		String objectIDString = objectID.toString();
-		if (!persistentObjectIDString2objectID.containsKey(objectIDString))
-			persistentObjectIDString2objectID.put(objectIDString, objectID);
+		String internalObjectIDString = objectClassName + "::" + objectIDString;
+		if (!persistentObjectIDString2objectID.containsKey(internalObjectIDString))
+			persistentObjectIDString2objectID.put(internalObjectIDString, objectID);
 
 		return objectIDString;
 	}

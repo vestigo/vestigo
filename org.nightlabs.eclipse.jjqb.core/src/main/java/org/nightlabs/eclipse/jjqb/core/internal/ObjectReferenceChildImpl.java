@@ -3,7 +3,8 @@ package org.nightlabs.eclipse.jjqb.core.internal;
 import org.nightlabs.eclipse.jjqb.core.ObjectReference;
 import org.nightlabs.eclipse.jjqb.core.ObjectReferenceChild;
 
-public class ObjectReferenceChildImpl implements ObjectReferenceChild
+public class ObjectReferenceChildImpl
+implements ObjectReferenceChild
 {
 	private ObjectReference owner;
 	private String fieldName;
@@ -32,5 +33,10 @@ public class ObjectReferenceChildImpl implements ObjectReferenceChild
 	@Override
 	public Object getValue() {
 		return value;
+	}
+
+	@Override
+	public String toString() {
+		return this.getClass().getSimpleName() + '[' + getFieldName() + ',' + getValue() + ']';
 	}
 }

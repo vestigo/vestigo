@@ -46,8 +46,10 @@ public class JDOResultSet extends ResultSet
 
 		// Check, if it's a JDO object, and if so, return a reference to it.
 		Object objectID = JDOHelper.getObjectId(object);
-		if (objectID != null)
-			return new ResultCellPersistentObjectRefDTO(getFieldName(field), object.getClass(), getPersistentObjectIDString(objectID));
+		if (objectID != null) {
+			String objectIDString = getPersistentObjectIDString(object.getClass().getName(), objectID);
+			return new ResultCellPersistentObjectRefDTO(getFieldName(field), object.getClass(), objectIDString);
+		}
 
 		// Nothing JDO-specific => don't handle it => return null.
 		return null;
