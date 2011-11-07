@@ -4,14 +4,14 @@ import org.nightlabs.eclipse.jjqb.core.JDOQuery;
 import org.nightlabs.eclipse.jjqb.core.ResultSet;
 
 
-public class JDOQueryImpl extends AbstractQuery implements JDOQuery
+public class JPAQueryImpl extends AbstractQuery implements JDOQuery
 {
-	public JDOQueryImpl(AbstractConnection connection) {
+	public JPAQueryImpl(AbstractConnection connection) {
 		super(connection);
 	}
 
 	@Override
 	protected ResultSet newResultSet() {
-		return new JDOResultSetImpl(this);
+		return new JPAResultSetImpl(this);
 	}
 }

@@ -6,7 +6,7 @@
          point="org.eclipse.datatools.connectivity.connectionProfile">
       <category
             id="org.nightlabs.eclipse.jjqb.core.JDODriver"
-            name="JDO Driver"
+            name="JDO Connections"
             parentCategory="%oda.parent.category.id"/>
       <connectionProfile
             category="org.nightlabs.eclipse.jjqb.core.JDODriver"
@@ -16,16 +16,43 @@
             pingFactory="org.eclipse.datatools.connectivity.oda.profile.OdaConnectionFactory"/>
       <connectionFactory
             id="org.eclipse.datatools.connectivity.oda.IConnection"
-            name="JDOQL Connection Factory"
+            name="JDO Connection Factory"
             class="org.eclipse.datatools.connectivity.oda.profile.OdaConnectionFactory"
             profile="org.nightlabs.eclipse.jjqb.core.JDODriver"/>
       <newWizard
             id="org.nightlabs.eclipse.jjqb.core.JDODriver"
-            name="New JDO Driver"
+            name="New JDO connection"
             class="org.eclipse.datatools.connectivity.oda.design.ui.wizards.NewDataSourceWizard"
             description="Create a new JDO driver"
             icon="icons/jdo.gif"
             profile="org.nightlabs.eclipse.jjqb.core.JDODriver"/>
+   </extension>
+
+
+   <extension
+         point="org.eclipse.datatools.connectivity.connectionProfile">
+      <category
+            id="org.nightlabs.eclipse.jjqb.core.JPADriver"
+            name="JPA Connections"
+            parentCategory="%oda.parent.category.id"/>
+      <connectionProfile
+            category="org.nightlabs.eclipse.jjqb.core.JPADriver"
+            icon="icons/jdo.gif"
+            id="org.nightlabs.eclipse.jjqb.core.JPADriver"
+            name="JPA Connection Profile"
+            pingFactory="org.eclipse.datatools.connectivity.oda.profile.OdaConnectionFactory"/>
+      <connectionFactory
+            id="org.eclipse.datatools.connectivity.oda.IConnection"
+            name="JPA Connection Factory"
+            class="org.eclipse.datatools.connectivity.oda.profile.OdaConnectionFactory"
+            profile="org.nightlabs.eclipse.jjqb.core.JPADriver"/>
+      <newWizard
+            id="org.nightlabs.eclipse.jjqb.core.JPADriver"
+            name="New JPA connection"
+            class="org.eclipse.datatools.connectivity.oda.design.ui.wizards.NewDataSourceWizard"
+            description="Create a new JPA driver"
+            icon="icons/jpa.gif"
+            profile="org.nightlabs.eclipse.jjqb.core.JPADriver"/>
    </extension>
 
 
@@ -42,6 +69,19 @@
       </page>
    </extension>
 
+
+   <extension
+         point="org.eclipse.ui.propertyPages">
+      <page
+            id="org.nightlabs.eclipse.jjqb.core.JPADriver"
+            name="JPA Properties"
+            class="org.nightlabs.eclipse.jjqb.ui.JPADriverPropertyPage"
+            objectClass="org.eclipse.datatools.connectivity.IConnectionProfile">
+         <filter
+               name="org.eclipse.datatools.profile.property.id"
+               value="org.nightlabs.eclipse.jjqb.core.JPADriver"/>
+      </page>
+   </extension>
 
    <extension
             point="org.eclipse.datatools.connectivity.oda.design.ui.dataSource">
@@ -63,9 +103,36 @@
         <dataSetPage
               displayName="JDO Query"
               icon="icons/jdo.gif"
-              id="org.nightlabs.birt.jdo.jdoql.ui.JDOQLQueryWizardPage"
+              id="org.nightlabs.eclipse.jjqb.ui.JDOQueryWizardPage"
               path="/"
-              wizardPageClass="org.nightlabs.birt.jdo.jdoql.ui.JDOQLQueryWizardPage"/>
+              wizardPageClass="org.nightlabs.eclipse.jjqb.ui.JDOQueryWizardPage"/>
+      </dataSetUI>
+   </extension>
+
+
+   <extension
+            point="org.eclipse.datatools.connectivity.oda.design.ui.dataSource">
+      <dataSourceUI id="org.nightlabs.eclipse.jjqb.core.JPADriver">
+        <newDataSourceWizard
+              includesProgressMonitor="false"
+              pageClass="org.nightlabs.eclipse.jjqb.ui.JPADriverWizardPage"
+              pageTitle="JPA DataSource"
+              windowTitle="JPA DataSource"/>
+      </dataSourceUI> 
+      <dataSetUI
+              id="org.nightlabs.eclipse.jjqb.core.JPADataSet"
+              initialPageId="org.nightlabs.birt.jpa.jpaql.ui.JPAQLQueryWizardPage"
+              supportsInParameters="true"
+              supportsOutParameters="false">
+        <dataSetWizard
+              class="org.eclipse.datatools.connectivity.oda.design.ui.wizards.DataSetWizard"
+              windowTitle="JPA Query"/>
+        <dataSetPage
+              displayName="JPA Query"
+              icon="icons/jpa.gif"
+              id="org.nightlabs.eclipse.jjqb.ui.JPAQueryWizardPage"
+              path="/"
+              wizardPageClass="org.nightlabs.eclipse.jjqb.ui.JPAQueryWizardPage"/>
       </dataSetUI> 
    </extension>
 

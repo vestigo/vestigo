@@ -20,6 +20,22 @@
          </properties>
       </dataSource>
 
+      <dataSource
+            defaultDisplayName="JPA Driver"
+            driverClass="org.nightlabs.eclipse.jjqb.core.internal.JPADriverImpl"
+            id="org.nightlabs.eclipse.jjqb.core.JPADriver"
+            odaVersion="3.0"
+            setThreadContextClassLoader="true">
+         <properties>
+            <property
+                  canInherit="true"
+                  defaultDisplayName="jpaConnectionType"
+                  isEncryptable="false"
+                  name="jpaConnectionType"
+                  type="string"/>
+         </properties>
+      </dataSource>
+
 <!-- TODO what's this dataSet good for? do we need it? copied from org.nightlabs.birt.jdo... -->
       <dataSet
             defaultDisplayName="JDO Data Set"            

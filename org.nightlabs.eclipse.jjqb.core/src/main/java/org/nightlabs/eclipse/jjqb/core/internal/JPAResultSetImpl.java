@@ -3,9 +3,9 @@ package org.nightlabs.eclipse.jjqb.core.internal;
 import org.nightlabs.eclipse.jjqb.core.JDOResultSet;
 import org.nightlabs.eclipse.jjqb.core.Query;
 
-public class JDOResultSetImpl extends AbstractResultSet implements JDOResultSet
+public class JPAResultSetImpl extends AbstractResultSet implements JDOResultSet
 {
-	public JDOResultSetImpl(Query query) {
+	public JPAResultSetImpl(Query query) {
 		super(query);
 	}
 }

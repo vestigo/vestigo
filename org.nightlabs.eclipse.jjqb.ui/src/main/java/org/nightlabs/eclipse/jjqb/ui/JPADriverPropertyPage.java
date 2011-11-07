@@ -16,12 +16,12 @@ package org.nightlabs.eclipse.jjqb.ui;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 
-public class JDODriverPropertyPage extends AbstractDriverPropertyPage
+public class JPADriverPropertyPage extends AbstractDriverPropertyPage
 {
-	public JDODriverPropertyPage() { }
+	public JPADriverPropertyPage() { }
 
 	@Override
 	protected AbstractDriverPropertiesComposite createDriverPropertiesComposite(Composite parent) {
-		return new JDODriverPropertiesComposite(parent, SWT.NONE);
+		return new JPADriverPropertiesComposite(parent, SWT.NONE);
 	}
 }

@@ -16,6 +16,7 @@ package org.nightlabs.eclipse.jjqb.ui;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.Iterator;
@@ -35,8 +36,8 @@ import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TextCellEditor;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -57,6 +58,7 @@ import org.eclipse.swt.widgets.TableItem;
 public class EditPropertiesComposite extends Composite implements ICellModifier {
 
 	private Button loadFromFile;
+	private Button saveToFile;
 
 	private static final String COL_KEY = "Col-Key";
 	private static final String COL_VAL = "Col-Val";
@@ -143,46 +145,33 @@ public class EditPropertiesComposite extends Composite implements ICellModifier 
 	public EditPropertiesComposite(Composite parent, int style) {
 		super(parent, style);
 		setLayoutData(new GridData(GridData.FILL_BOTH));
-		setLayout(new GridLayout());
+		GridLayout layout = new GridLayout();
+		layout.numColumns = 2;
+		setLayout(layout);
 
 		loadFromFile = new Button(this, SWT.PUSH);
-		loadFromFile.setText("Load JDO Properties From File");
-		loadFromFile.addSelectionListener(new SelectionListener() {
-			@Override
-			public void widgetDefaultSelected(SelectionEvent event) { }
-
+		loadFromFile.setText("Load...");
+		loadFromFile.setToolTipText("Load the properties from a java properties file.");
+		loadFromFile.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent event) {
-				FileDialog dialog = new FileDialog(getShell(), SWT.OPEN);
-				String fileName = dialog.open();
-				if (fileName != null && !"".equals(fileName)) {
-					File propsFile = new File(fileName);
-					if (!propsFile.exists())
-						return;
-					FileInputStream in;
-					try {
-						in = new FileInputStream(propsFile);
-					} catch (FileNotFoundException e) {
-						throw new IllegalStateException("File exists, but was not found??");
-					}
-					Properties props = new Properties();
-					try {
-						try {
-							props.load(in);
-						} finally {
-							in.close();
-						}
-					} catch (IOException e) {
-						// TODO: ErrorHandling
-						throw new RuntimeException(e);
-					}
-					setInput(props);
-				}
+				loadFromFile();
+			}
+		});
+
+		saveToFile = new Button(this, SWT.PUSH);
+		saveToFile.setText("Save...");
+		saveToFile.setToolTipText("Save the properties to a java properties file.");
+		saveToFile.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent event) {
+				saveToFile();
 			}
 		});
 
 		tableViewer = new TableViewer(this, SWT.BORDER | SWT.FULL_SELECTION | SWT.SINGLE);
 		GridData tgd = new GridData(GridData.FILL_BOTH);
+		tgd.horizontalSpan = layout.numColumns;
 		table = tableViewer.getTable();
 		table.setHeaderVisible(true);
 		table.setLinesVisible(true);
@@ -211,6 +200,67 @@ public class EditPropertiesComposite extends Composite implements ICellModifier 
 				}
 			}
 		});
+	}
+
+	private void loadFromFile()
+	{
+		FileDialog dialog = new FileDialog(getShell(), SWT.OPEN);
+		String fileName = dialog.open();
+		if (fileName != null && !"".equals(fileName)) {
+			File propsFile = new File(fileName);
+			if (!propsFile.exists())
+				return;
+			FileInputStream in;
+			try {
+				in = new FileInputStream(propsFile);
+			} catch (FileNotFoundException e) {
+				throw new IllegalStateException("File exists, but could not be read! " + propsFile.getAbsolutePath(), e);
+			}
+			Properties props = new Properties();
+			try {
+				try {
+					props.load(in);
+				} finally {
+					in.close();
+				}
+			} catch (IOException e) {
+				// TODO: ErrorHandling
+				throw new RuntimeException(e);
+			}
+			setInput(props);
+		}
+	}
+
+	private void saveToFile()
+	{
+		FileDialog dialog = new FileDialog(getShell(), SWT.SAVE);
+
+		String fileName = dialog.open();
+		if (fileName != null && !"".equals(fileName)) {
+
+			Properties props = new Properties();
+			for (Map.Entry<?, ?> me : getContentProvider().getProperties().entrySet()) {
+				props.setProperty(String.valueOf(me.getKey()), String.valueOf(me.getValue()));
+			}
+			File propsFile = new File(fileName);
+
+			FileOutputStream out;
+			try {
+				out = new FileOutputStream(propsFile);
+			} catch (FileNotFoundException e) {
+				throw new IllegalStateException("Could not create file! " + propsFile.getAbsolutePath(), e);
+			}
+			try {
+				try {
+					props.store(out, "File written by JDO/JPA Query Browser.");
+				} finally {
+					out.close();
+				}
+			} catch (IOException e) {
+				// TODO: ErrorHandling
+				throw new RuntimeException(e);
+			}
+		}
 	}
 
 	private void configureTableLayout()

@@ -11,17 +11,32 @@
  *   Alexander Bieber, NightLabs - initial API and implementation              *
  ******************************************************************************/
 
-package org.nightlabs.eclipse.jjqb.ui;
+package org.nightlabs.eclipse.jjqb.core.internal;
 
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.widgets.Composite;
+import org.eclipse.datatools.connectivity.oda.IDataSetMetaData;
+import org.eclipse.datatools.connectivity.oda.OdaException;
+import org.nightlabs.eclipse.jjqb.childvm.shared.ConnectionDTO;
+import org.nightlabs.eclipse.jjqb.childvm.shared.JPAConnectionDTO;
+import org.nightlabs.eclipse.jjqb.core.JDOConnection;
+import org.nightlabs.eclipse.jjqb.core.Query;
 
-public class JDODriverPropertyPage extends AbstractDriverPropertyPage
+public class JPAConnectionImpl extends AbstractConnection implements JDOConnection
 {
-	public JDODriverPropertyPage() { }
+	public JPAConnectionImpl() { }
 
 	@Override
-	protected AbstractDriverPropertiesComposite createDriverPropertiesComposite(Composite parent) {
-		return new JDODriverPropertiesComposite(parent, SWT.NONE);
+	public IDataSetMetaData getMetaData(String dataSetType) throws OdaException {
+		return super.getMetaData(dataSetType);
+	}
+
+	@Override
+	public Query newQuery(String dataSetType) throws OdaException {
+		// We ignore the dataSetType, because our driver supports only one type.
+		return new JPAQueryImpl(this);
+	}
+
+	@Override
+	protected ConnectionDTO newConnectionDTO() {
+		return new JPAConnectionDTO();
 	}
 }

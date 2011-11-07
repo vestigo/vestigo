@@ -13,15 +13,18 @@
 
 package org.nightlabs.eclipse.jjqb.ui;
 
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 
-public class JDODriverPropertyPage extends AbstractDriverPropertyPage
+/**
+ * Composite to edit JPAConnectionImpl attributes like the
+ * connectionType and the custom properties for the connection.
+ *
+ * @author Alexander Bieber <!-- alex [AT] nightlabs [DOT] de -->
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ */
+public class JPADriverPropertiesComposite extends AbstractDriverPropertiesComposite
 {
-	public JDODriverPropertyPage() { }
-
-	@Override
-	protected AbstractDriverPropertiesComposite createDriverPropertiesComposite(Composite parent) {
-		return new JDODriverPropertiesComposite(parent, SWT.NONE);
+	public JPADriverPropertiesComposite(Composite parent, int style) {
+		super(parent, style);
 	}
 }
