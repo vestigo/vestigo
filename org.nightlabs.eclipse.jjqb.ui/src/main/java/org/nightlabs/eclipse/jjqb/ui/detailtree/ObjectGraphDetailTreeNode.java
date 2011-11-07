@@ -1,5 +1,7 @@
 package org.nightlabs.eclipse.jjqb.ui.detailtree;
 
+import org.nightlabs.eclipse.jjqb.core.ObjectReferenceChild;
+
 
 public class ObjectGraphDetailTreeNode
 {
@@ -35,6 +37,14 @@ public class ObjectGraphDetailTreeNode
 	}
 
 	public String getLabelText() {
+		if (object instanceof ObjectReferenceChild) {
+			ObjectReferenceChild child = (ObjectReferenceChild) object;
+			if (child.getFieldName() != null)
+				return child.getFieldName() + ": " + child.getValue();
+			else
+				String.valueOf(child.getValue());
+		}
+
 		return String.valueOf(object);
 	}
 }

@@ -163,7 +163,7 @@ public abstract class ResultSet
 		return objectID;
 	}
 
-	protected ResultCellSimpleDTO nullOrNewResultCellSimpleDTO(Object object)
+	protected ResultCellSimpleDTO nullOrNewResultCellSimpleDTO(Object owner, Field field, Object object)
 	{
 		if (object == null)
 			return null;
@@ -178,13 +178,21 @@ public abstract class ResultSet
 				object instanceof String ||
 				object instanceof UUID
 		)
-			return new ResultCellSimpleDTO(object);
+			return new ResultCellSimpleDTO(getFieldName(field), object);
 
 		// Nothing matching => return null.
 		return null;
 	}
 
-	protected abstract ResultCellDTO nullOrNewImplementationSpecificResultCellDTO(Object owner, Object object);
+	protected abstract ResultCellDTO nullOrNewImplementationSpecificResultCellDTO(Object owner, Field field, Object object);
+
+	protected String getFieldName(Field field)
+	{
+		if (field == null)
+			return null;
+		else
+			return field.getDeclaringClass().getName() + '.' + field.getName();
+	}
 
 	/**
 	 * Get the {@link ResultCellDTO} for the given object. Never <code>null</code>.
@@ -198,14 +206,21 @@ public abstract class ResultSet
 	{
 		assertOpen();
 
-		if (object == null)
-			return new ResultCellNullDTO();
+		Field field = null;
+		if (object instanceof FieldValue) {
+			FieldValue fv = (FieldValue) object;
+			field = fv.getField();
+			object = fv.getValue();
+		}
 
-		ResultCellDTO resultCellDTO = nullOrNewResultCellSimpleDTO(object);
+		if (object == null)
+			return new ResultCellNullDTO(getFieldName(field));
+
+		ResultCellDTO resultCellDTO = nullOrNewResultCellSimpleDTO(owner, field, object);
 		if (resultCellDTO != null)
 			return resultCellDTO;
 
-		resultCellDTO = nullOrNewImplementationSpecificResultCellDTO(owner, object);
+		resultCellDTO = nullOrNewImplementationSpecificResultCellDTO(owner, field, object);
 		if (resultCellDTO != null)
 			return resultCellDTO;
 
@@ -213,7 +228,7 @@ public abstract class ResultSet
 		// hmmm... maybe this is already sufficient, because all we have is java types anyway and we break such unknown objects down into
 		// this transientObjectManagement stuff.
 		TransientObjectContainer transientObjectContainer = createTransientObjectContainerForTransientObject(object);
-		return new ResultCellTransientObjectRefDTO(object.getClass(), transientObjectContainer.getObjectID());
+		return new ResultCellTransientObjectRefDTO(getFieldName(field), object.getClass(), transientObjectContainer.getObjectID());
 	}
 
 	/**
@@ -280,7 +295,7 @@ public abstract class ResultSet
 
 	public synchronized List<?> getChildren(Object parent)
 	{
-		List<Object> resultList = null;
+		List<?> resultList = null;
 
 		if (parent instanceof Collection<?>)
 			resultList = new ArrayList<Object>((Collection<?>)parent);
@@ -318,14 +333,14 @@ public abstract class ResultSet
 	 * @return the field values; never <code>null</code>; the order must match the one in the given fields; the
 	 * resulting list may contain <code>null</code> values.
 	 */
-	protected List<Object> getFieldValues(Object object, List<Field> fields)
+	protected List<FieldValue> getFieldValues(Object object, List<Field> fields)
 	{
-		List<Object> resultList;
-		resultList = new ArrayList<Object>(fields.size());
+		List<FieldValue> resultList;
+		resultList = new ArrayList<FieldValue>(fields.size());
 		for (Field field : fields) {
 			try {
 				Object fieldValue = field.get(object);
-				resultList.add(fieldValue);
+				resultList.add(new FieldValue(field, fieldValue));
 			} catch (IllegalArgumentException e) {
 				throw new RuntimeException(e);
 			} catch (IllegalAccessException e) {

@@ -5,7 +5,9 @@ public class ResultCellNullDTO extends ResultCellDTO
 {
 	private static final long serialVersionUID = 1L;
 
-	public ResultCellNullDTO() { }
+	public ResultCellNullDTO(String fieldName) {
+		super(fieldName);
+	}
 
 	@Override
 	public int hashCode() {

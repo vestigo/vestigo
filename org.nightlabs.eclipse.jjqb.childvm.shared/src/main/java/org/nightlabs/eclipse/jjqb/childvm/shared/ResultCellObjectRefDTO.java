@@ -10,9 +10,9 @@ public abstract class ResultCellObjectRefDTO extends ResultCellDTO
 
 	private String objectID;
 
-	public ResultCellObjectRefDTO() { }
-
-	public ResultCellObjectRefDTO(Class<?> objectClass, String objectID) {
+	public ResultCellObjectRefDTO(String fieldName, Class<?> objectClass, String objectID)
+	{
+		super(fieldName);
 		this.objectClassName = objectClass == null ? null : objectClass.getName();
 		this.objectID = objectID;
 	}

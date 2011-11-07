@@ -6,9 +6,10 @@ public class ResultCellSimpleDTO extends ResultCellDTO
 {
 	private static final long serialVersionUID = 1L;
 
-	public ResultCellSimpleDTO() { }
+	public ResultCellSimpleDTO(String fieldName, Object object)
+	{
+		super(fieldName);
 
-	public ResultCellSimpleDTO(Object object) {
 		if (object == null)
 			throw new IllegalArgumentException("object == null");
 

@@ -38,16 +38,16 @@ public class JDOResultSet extends ResultSet
 	}
 
 	@Override
-	protected ResultCellDTO nullOrNewImplementationSpecificResultCellDTO(Object owner, Object object)
+	protected ResultCellDTO nullOrNewImplementationSpecificResultCellDTO(Object owner, Field field, Object object)
 	{
 		// SingleFieldIdentity instances can be loaded in the Eclipse-plugin and displayed directly in the editor.
 		if (object instanceof SingleFieldIdentity)
-			return new ResultCellSimpleDTO(object);
+			return new ResultCellSimpleDTO(getFieldName(field), object);
 
 		// Check, if it's a JDO object, and if so, return a reference to it.
 		Object objectID = JDOHelper.getObjectId(object);
 		if (objectID != null)
-			return new ResultCellPersistentObjectRefDTO(object.getClass(), getPersistentObjectIDString(objectID));
+			return new ResultCellPersistentObjectRefDTO(getFieldName(field), object.getClass(), getPersistentObjectIDString(objectID));
 
 		// Nothing JDO-specific => don't handle it => return null.
 		return null;
@@ -102,7 +102,7 @@ public class JDOResultSet extends ResultSet
 	}
 
 	@Override
-	protected List<Object> getFieldValues(Object object, List<Field> fields)
+	protected List<FieldValue> getFieldValues(Object object, List<Field> fields)
 	{
 		// We synchronize on the connection, because we don't want the PersistenceManager to be used at the same time
 		// (maybe with a modified fetch-plan).

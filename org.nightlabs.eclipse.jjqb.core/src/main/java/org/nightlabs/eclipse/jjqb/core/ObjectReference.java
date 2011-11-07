@@ -1,7 +1,7 @@
 package org.nightlabs.eclipse.jjqb.core;
 
 import java.lang.reflect.Field;
-import java.util.Collection;
+import java.util.List;
 
 public interface ObjectReference {
 
@@ -16,5 +16,5 @@ public interface ObjectReference {
 	 * elements of a <code>Collection</code>, entries of a <code>Map</code> or the {@link Field fields}' values
 	 * of an ordinary java object.
 	 */
-	Collection<?> getChildren();
+	List<ObjectReferenceChild> getChildren();
 }

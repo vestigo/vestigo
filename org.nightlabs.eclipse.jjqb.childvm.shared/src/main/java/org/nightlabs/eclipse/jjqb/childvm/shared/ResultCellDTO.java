@@ -7,5 +7,13 @@ implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 
-	public ResultCellDTO() { }
+	private String fieldName;
+
+	public ResultCellDTO(String fieldName) {
+		this.fieldName = fieldName;
+	}
+
+	public String getFieldName() {
+		return fieldName;
+	};
 }

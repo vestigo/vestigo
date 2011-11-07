@@ -15,6 +15,7 @@ import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.widgets.Display;
 import org.nightlabs.eclipse.jjqb.core.ObjectReference;
+import org.nightlabs.eclipse.jjqb.core.ObjectReferenceChild;
 
 public class ObjectGraphDetailTreeContentProvider
 implements ITreeContentProvider
@@ -97,6 +98,9 @@ implements ITreeContentProvider
 	protected ObjectGraphDetailTreeNode[] loadChildNodes(ObjectGraphDetailTreeNode parentNode, IProgressMonitor monitor)
 	{
 		Object object = parentNode.getObject();
+		if (object instanceof ObjectReferenceChild)
+			object = ((ObjectReferenceChild)object).getValue();
+
 		if (object instanceof ObjectReference) {
 			ObjectReference objectReference = (ObjectReference) object;
 			Collection<?> children = objectReference.getChildren();
