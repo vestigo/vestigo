@@ -60,7 +60,11 @@ extends AbstractService
 	@PUT
 	public ConnectionProfileDTOPutResult putConnectionProfile(ConnectionProfileDTO connectionProfileDTO)
 	{
-		logger.debug("putConnectionProfile: entered: profileID={}", connectionProfileDTO == null ? null : connectionProfileDTO.getProfileID());
+		logger.debug(
+				"putConnectionProfile: entered: profileID={} connectionProfileDTO={}",
+				(connectionProfileDTO == null ? null : connectionProfileDTO.getProfileID()),
+				connectionProfileDTO
+		);
 
 		if (connectionProfileDTO == null)
 			throw new IllegalArgumentException("connectionProfileDTO == null");

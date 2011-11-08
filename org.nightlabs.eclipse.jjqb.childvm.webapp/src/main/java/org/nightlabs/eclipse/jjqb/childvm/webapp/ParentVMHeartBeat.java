@@ -35,30 +35,32 @@ public class ParentVMHeartBeat
 	}
 
 	private ParentVMHeartBeat() {
-		checkLastHeartBeatTimer.schedule(checkLastHeartBeatTimerTask, checkLastHeartBeatTimerPeriod, checkLastHeartBeatTimerPeriod);
+		checkLastHeartBeatTimer.schedule(createCheckLastHeartBeatTimerTask(), checkLastHeartBeatTimerPeriod, checkLastHeartBeatTimerPeriod);
 		logger.info("Starting surveillance of parent VM.");
 	}
 
 	private Timer checkLastHeartBeatTimer = new Timer(true);
 
-	private TimerTask checkLastHeartBeatTimerTask = new TimerTask() {
-		@Override
-		public void run() {
-			logger.trace("checkLastHeartBeatTimerTask.run: entered");
+	private TimerTask createCheckLastHeartBeatTimerTask() {
+		return new TimerTask() {
+			@Override
+			public void run() {
+				logger.trace("checkLastHeartBeatTimerTask.run: entered");
 
-			Date lastHeartBeat = getLastHeartBeat();
-			long lastHeartBeatAge = System.currentTimeMillis() - lastHeartBeat.getTime();
-			if (lastHeartBeat.before(new Date(System.currentTimeMillis() - lastHeartBeatAgeAssumedDeadMS))) {
-				logger.warn(
-						"checkLastHeartBeatTimerTask.run: Parent VM seems to be dead. Shutting down child VM now! " +
-						"now={} lastHeartBeat={} lastHeartBeatAge={} lastHeartBeatAgeAssumedDeadMS={}",
-						new Object[] { new Date(), lastHeartBeat, lastHeartBeatAge, lastHeartBeatAgeAssumedDeadMS }
-				);
+				Date lastHeartBeat = getLastHeartBeat();
+				long lastHeartBeatAge = System.currentTimeMillis() - lastHeartBeat.getTime();
+				if (lastHeartBeat.before(new Date(System.currentTimeMillis() - lastHeartBeatAgeAssumedDeadMS))) {
+					logger.warn(
+							"checkLastHeartBeatTimerTask.run: Parent VM seems to be dead. Shutting down child VM now! " +
+									"now={} lastHeartBeat={} lastHeartBeatAge={} lastHeartBeatAgeAssumedDeadMS={}",
+									new Object[] { new Date(), lastHeartBeat, lastHeartBeatAge, lastHeartBeatAgeAssumedDeadMS }
+							);
 
-				System.exit(0);
+					System.exit(0);
+				}
 			}
-		}
-	};
+		};
+	}
 
 	public void notifyHeartBeat()
 	{

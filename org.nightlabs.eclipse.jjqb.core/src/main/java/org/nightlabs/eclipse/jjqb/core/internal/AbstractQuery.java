@@ -18,7 +18,6 @@ import org.eclipse.datatools.connectivity.oda.OdaException;
 import org.eclipse.datatools.connectivity.oda.SortSpec;
 import org.eclipse.datatools.connectivity.oda.spec.QuerySpecification;
 import org.nightlabs.eclipse.jjqb.childvm.shared.ResultSetID;
-import org.nightlabs.eclipse.jjqb.core.Connection;
 import org.nightlabs.eclipse.jjqb.core.Query;
 import org.nightlabs.eclipse.jjqb.core.QueryID;
 import org.nightlabs.eclipse.jjqb.core.ResultSet;
@@ -51,7 +50,7 @@ public abstract class AbstractQuery implements Query
 	}
 
 	@Override
-	public Connection getConnection() {
+	public AbstractConnection getConnection() {
 		return connection;
 	}
 
@@ -134,6 +133,8 @@ public abstract class AbstractQuery implements Query
 	public void close() throws OdaException {
 		for (ResultSet resultSet : new ArrayList<ResultSet>(resultSetID2resultSet.values()))
 			resultSet.close();
+
+		getConnection().onCloseQuery(this);
 	}
 
 	@Override

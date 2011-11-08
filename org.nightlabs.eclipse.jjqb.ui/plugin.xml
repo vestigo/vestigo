@@ -37,7 +37,7 @@
             parentCategory="%oda.parent.category.id"/>
       <connectionProfile
             category="org.nightlabs.eclipse.jjqb.core.JPADriver"
-            icon="icons/jdo.gif"
+            icon="icons/jpa.gif"
             id="org.nightlabs.eclipse.jjqb.core.JPADriver"
             name="JPA Connection Profile"
             pingFactory="org.eclipse.datatools.connectivity.oda.profile.OdaConnectionFactory"/>
@@ -152,6 +152,8 @@
          </action>
       </viewContribution>
    </extension>
+
+
    <extension
          point="org.eclipse.ui.popupMenus">
       <objectContribution
@@ -166,6 +168,8 @@
          </action>
       </objectContribution>
    </extension>
+
+
    <extension
          point="org.eclipse.ui.editors">
       <editor
@@ -186,6 +190,8 @@
             name="Query Browser">
       </editor>
    </extension>
+
+
    <extension
          point="org.eclipse.ui.views">
       <category 

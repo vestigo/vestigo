@@ -13,9 +13,12 @@
 
 package org.nightlabs.eclipse.jjqb.core.internal;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Properties;
+import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -28,6 +31,7 @@ import org.nightlabs.eclipse.jjqb.core.ConnectionExtension;
 import org.nightlabs.eclipse.jjqb.core.ConnectionExtensionRegistry;
 import org.nightlabs.eclipse.jjqb.core.ConnectionProfile;
 import org.nightlabs.eclipse.jjqb.core.ConnectionProfileRegistry;
+import org.nightlabs.eclipse.jjqb.core.Query;
 import org.nightlabs.eclipse.jjqb.core.childvm.ChildVM;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -48,6 +52,7 @@ public abstract class AbstractConnection implements Connection
 	private Properties connectionProperties;
 	private Object appContext;
 	private AtomicInteger nextQueryID = new AtomicInteger();
+	private Set<Query> queries = new HashSet<Query>();
 
 	public AbstractConnection() { }
 
@@ -80,7 +85,7 @@ public abstract class AbstractConnection implements Connection
 	}
 
 	@Override
-	public final void open(Properties connProperties) throws OdaException
+	public synchronized final void open(Properties connProperties) throws OdaException
 	{
 		if (connProperties == null)
 			throw new IllegalArgumentException("connProperties == null");
@@ -151,7 +156,7 @@ public abstract class AbstractConnection implements Connection
 	}
 
 	@Override
-	public final void close() throws OdaException
+	public synchronized final void close() throws OdaException
 	{
 		logger.info("close: profileID={}", connectionProfile == null ? null : connectionProfile.getProfileID());
 
@@ -177,6 +182,9 @@ public abstract class AbstractConnection implements Connection
 	protected void preClose() throws OdaException {
 		for (ConnectionExtension extension : getConnectionExtensions())
 			extension.preClose();
+
+		for (Query query : new ArrayList<Query>(queries))
+			query.close();
 	}
 
 	protected void doClose() throws OdaException
@@ -238,4 +246,18 @@ public abstract class AbstractConnection implements Connection
 	protected abstract ConnectionDTO newConnectionDTO();
 
 	protected static final void doNothing() { }
+
+	@Override
+	public synchronized final Query newQuery(String dataSetType) throws OdaException {
+		assertOpen();
+		Query query = _newQuery(dataSetType);
+		queries.add(query);
+		return query;
+	}
+
+	public synchronized void onCloseQuery(Query query) {
+		queries.remove(query);
+	}
+
+	protected abstract Query _newQuery(String dataSetType) throws OdaException;
 }

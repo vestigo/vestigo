@@ -55,7 +55,8 @@ implements ChildVM
 	/**
 	 * Launch the child JVM in debug mode, so that connecting from the IDE (to port 8000) &amp; remote-debugging is possible.
 	 */
-	private static final boolean DEBUG_MODE = false;
+	private static final boolean DEBUG_MODE_ENABLED = false;
+	private static final boolean DEBUG_MODE_WAIT_FOR_DEBUGGER = false;
 
 	private static SecureRandom random = new SecureRandom();
 
@@ -68,18 +69,21 @@ implements ChildVM
 	private LinkedList<Client> clientCache = new LinkedList<Client>();
 
 	private Timer heartBeatTimer = new Timer(true);
+	private TimerTask heartBeatTimerTask;
 
-	private TimerTask heartBeatTimerTask = new TimerTask() {
-		@Override
-		public void run() {
-			logger.debug("heartBeatTimerTask.run: entered");
-			if (!isOpen()) {
-				logger.debug("heartBeatTimerTask.run: This ChildVMServer is not open => cancelling heartBeatTimerTask.");
-				cancel();
+	private TimerTask createHeartBeatTimerTask() {
+		return new TimerTask() {
+			@Override
+			public void run() {
+				logger.debug("heartBeatTimerTask.run: entered");
+				if (!isOpen()) {
+					logger.debug("heartBeatTimerTask.run: This ChildVMServer is not open => cancelling heartBeatTimerTask.");
+					cancel();
+				}
+				isOnline();
 			}
-			isOnline();
-		}
-	};
+		};
+	}
 
 	public ChildVMServer()
 	{
@@ -199,8 +203,8 @@ implements ChildVM
 			List<String> commandWithArguments = new LinkedList<String>();
 			commandWithArguments.add("java");
 
-			if (DEBUG_MODE)
-				commandWithArguments.add("-Xrunjdwp:transport=dt_socket,address=8000,server=y,suspend=n");
+			if (DEBUG_MODE_ENABLED)
+				commandWithArguments.add("-Xrunjdwp:transport=dt_socket,address=8000,server=y,suspend=" + (DEBUG_MODE_WAIT_FOR_DEBUGGER ? 'y' : 'n'));
 
 			commandWithArguments.add("-jar");
 			commandWithArguments.add("start.jar");
@@ -222,6 +226,7 @@ implements ChildVM
 				throw new IOException(e);
 			}
 
+			heartBeatTimerTask = createHeartBeatTimerTask();
 			heartBeatTimer.schedule(heartBeatTimerTask, 10L * 1000L, 10L * 1000L);
 
 			successful = true;
@@ -388,7 +393,10 @@ implements ChildVM
 
 	protected synchronized void close(boolean delete) throws IOException
 	{
-		heartBeatTimerTask.cancel();
+		if (heartBeatTimerTask != null) {
+			heartBeatTimerTask.cancel();
+			heartBeatTimerTask = null;
+		}
 
 		clientCache.clear();
 
@@ -511,6 +519,8 @@ implements ChildVM
 	@Override
 	public void putConnectionDTO(ConnectionDTO connectionDTO) throws ChildVMException
 	{
+		logger.info("putConnectionDTO: {}", connectionDTO);
+
 		Client client = acquireClient();
 		try {
 			if (connectionDTO == null)

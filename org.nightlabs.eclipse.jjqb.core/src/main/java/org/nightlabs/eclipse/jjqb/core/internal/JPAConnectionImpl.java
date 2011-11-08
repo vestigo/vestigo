@@ -17,10 +17,10 @@ import org.eclipse.datatools.connectivity.oda.IDataSetMetaData;
 import org.eclipse.datatools.connectivity.oda.OdaException;
 import org.nightlabs.eclipse.jjqb.childvm.shared.ConnectionDTO;
 import org.nightlabs.eclipse.jjqb.childvm.shared.JPAConnectionDTO;
-import org.nightlabs.eclipse.jjqb.core.JDOConnection;
+import org.nightlabs.eclipse.jjqb.core.JPAConnection;
 import org.nightlabs.eclipse.jjqb.core.Query;
 
-public class JPAConnectionImpl extends AbstractConnection implements JDOConnection
+public class JPAConnectionImpl extends AbstractConnection implements JPAConnection
 {
 	public JPAConnectionImpl() { }
 
@@ -30,7 +30,7 @@ public class JPAConnectionImpl extends AbstractConnection implements JDOConnecti
 	}
 
 	@Override
-	public Query newQuery(String dataSetType) throws OdaException {
+	protected Query _newQuery(String dataSetType) throws OdaException {
 		// We ignore the dataSetType, because our driver supports only one type.
 		return new JPAQueryImpl(this);
 	}

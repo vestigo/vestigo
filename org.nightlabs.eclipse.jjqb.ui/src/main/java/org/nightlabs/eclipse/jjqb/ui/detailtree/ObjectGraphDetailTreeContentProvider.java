@@ -95,22 +95,41 @@ implements ITreeContentProvider
 		return childNodes;
 	}
 
-	protected ObjectGraphDetailTreeNode[] loadChildNodes(ObjectGraphDetailTreeNode parentNode, IProgressMonitor monitor)
+	protected ObjectGraphDetailTreeNode[] loadChildNodes(final ObjectGraphDetailTreeNode parentNode, IProgressMonitor monitor)
 	{
-		Object object = parentNode.getObject();
-		if (object instanceof ObjectReferenceChild)
-			object = ((ObjectReferenceChild)object).getValue();
+		try {
+			Object object = parentNode.getObject();
+			if (object instanceof ObjectReferenceChild)
+				object = ((ObjectReferenceChild)object).getValue();
 
-		if (object instanceof ObjectReference) {
-			ObjectReference objectReference = (ObjectReference) object;
-			Collection<?> children = objectReference.getChildren();
-			List<ObjectGraphDetailTreeNode> childNodes = new ArrayList<ObjectGraphDetailTreeNode>(children.size());
-			for (Object child : children)
-				childNodes.add(new ObjectGraphDetailTreeNode(parentNode, child));
+			if (object instanceof ObjectReference) {
+				ObjectReference objectReference = (ObjectReference) object;
+				Collection<?> children = objectReference.getChildren();
+				List<ObjectGraphDetailTreeNode> childNodes = new ArrayList<ObjectGraphDetailTreeNode>(children.size());
+				for (Object child : children)
+					childNodes.add(new ObjectGraphDetailTreeNode(parentNode, child));
 
-			return childNodes.toArray(new ObjectGraphDetailTreeNode[childNodes.size()]);
+				return childNodes.toArray(new ObjectGraphDetailTreeNode[childNodes.size()]);
+			}
+			return null;
+		} catch (final Exception x) {
+			display.asyncExec(new Runnable() {
+				@Override
+				public void run() {
+					parentNodesLoadingChildren.remove(parentNode);
+					ObjectGraphDetailTreeNode[] children = new ObjectGraphDetailTreeNode[1];
+					children[0] = new ErrorObjectGraphDetailTreeNode(parentNode, "Error: " + x);
+					parentNode.setChildNodes(children);
+
+					viewer.refresh(parentNode);
+				}
+			});
+
+			if (x instanceof RuntimeException)
+				throw (RuntimeException)x;
+
+			throw new RuntimeException(x);
 		}
-		return null;
 	}
 
 	@Override

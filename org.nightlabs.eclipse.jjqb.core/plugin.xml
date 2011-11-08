@@ -4,6 +4,7 @@
    <extension-point id="connectionExtension" name="ConnectionExtension" schema="schema/connectionExtension.exsd"/>
     <extension
          point="org.eclipse.datatools.connectivity.oda.dataSource">
+
       <dataSource
             defaultDisplayName="JDO Driver"
             driverClass="org.nightlabs.eclipse.jjqb.core.internal.JDODriverImpl"
@@ -19,6 +20,42 @@
                   type="string"/>
          </properties>
       </dataSource>
+
+<!-- TODO what's this dataSet good for? do we need it? copied from org.nightlabs.birt.jdo... -->
+      <dataSet
+            defaultDisplayName="JDO Data Set"            
+            id="org.nightlabs.eclipse.jjqb.core.JDODataSet">
+         <dataTypeMapping
+               nativeDataType="String"
+               nativeDataTypeCode="1"
+               odaScalarDataType="String"/>
+         <dataTypeMapping
+               nativeDataType="Integer"
+               nativeDataTypeCode="2"
+               odaScalarDataType="Integer"/>
+         <dataTypeMapping
+               nativeDataType="Double"
+               nativeDataTypeCode="3"
+               odaScalarDataType="Double"/>
+         <dataTypeMapping
+               nativeDataType="Boolean"
+               nativeDataTypeCode="4"
+               odaScalarDataType="Integer"/>
+         <dataTypeMapping
+               nativeDataType="Date"
+               nativeDataTypeCode="5"
+               odaScalarDataType="Date"/>
+         <dataTypeMapping
+               nativeDataType="BigDecimal"
+               nativeDataTypeCode="6"
+               odaScalarDataType="Decimal"/>
+      </dataSet>
+
+   </extension>
+   
+   
+   <extension
+         point="org.eclipse.datatools.connectivity.oda.dataSource">
 
       <dataSource
             defaultDisplayName="JPA Driver"
@@ -67,4 +104,5 @@
       </dataSet>
 
    </extension>
+   
 </plugin>

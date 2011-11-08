@@ -24,7 +24,7 @@ public abstract class Connection
 	private AtomicInteger nextResultSetID = new AtomicInteger();
 
 	public Connection() {
-		logger.debug("[{}].<init>: created new instance.", Long.toHexString(System.identityHashCode(this)));
+		logger.debug("[{}].<init>: created new instance of {}", Long.toHexString(System.identityHashCode(this)), this.getClass().getName());
 	}
 
 	public UUID getConnectionID() {

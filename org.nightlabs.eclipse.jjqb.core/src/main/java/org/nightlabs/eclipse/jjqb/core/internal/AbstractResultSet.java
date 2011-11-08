@@ -46,6 +46,7 @@ public abstract class AbstractResultSet implements ResultSet
 
 	@Override
 	public Query getQuery() {
+		assertOpen();
 		return query;
 	}
 
@@ -73,7 +74,7 @@ public abstract class AbstractResultSet implements ResultSet
 
 	@Override
 	public synchronized IResultSetMetaData getMetaData() throws OdaException {
-		assertNotClosed();
+		assertOpen();
 		if (resultSetMetaData == null) {
 			preFetchedRows = fetchNextRows();
 			initResultSetMetaDataFromResultRowDTOList(preFetchedRows);
@@ -116,7 +117,7 @@ public abstract class AbstractResultSet implements ResultSet
 		row = null;
 	}
 
-	private void assertNotClosed() {
+	private void assertOpen() {
 		if (query == null)
 			throw new IllegalStateException("This ResultSet is already closed!");
 	}
@@ -134,7 +135,7 @@ public abstract class AbstractResultSet implements ResultSet
 	@Override
 	public synchronized boolean next() throws OdaException
 	{
-		assertNotClosed();
+		assertOpen();
 		if (elementsIteratorEnded)
 			return false;
 
@@ -370,7 +371,7 @@ public abstract class AbstractResultSet implements ResultSet
 	@Override
 	public Object getObject(int index) throws OdaException
 	{
-		assertNotClosed();
+		assertOpen();
 		wasNull = true;
 
 		if (elementsIteratorEnded)
@@ -428,13 +429,13 @@ public abstract class AbstractResultSet implements ResultSet
 
 	@Override
 	public boolean wasNull() throws OdaException {
-		assertNotClosed();
+		assertOpen();
 		return wasNull;
 	}
 
 	@Override
 	public int findColumn(String columnName) throws OdaException {
-		assertNotClosed();
+		assertOpen();
 		return resultSetMetaData.getColumnIndex(columnName); // throws an IllegalArgumentException, if the columnName is unknown.
 	}
 }

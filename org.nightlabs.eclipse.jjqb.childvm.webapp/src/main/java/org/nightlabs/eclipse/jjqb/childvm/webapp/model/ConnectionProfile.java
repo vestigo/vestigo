@@ -19,7 +19,7 @@ public abstract class ConnectionProfile
 	private ClassLoaderManager classLoaderManager = new ClassLoaderManager();
 
 	public ConnectionProfile() {
-		logger.debug("[{}].<init>: created new instance.", Long.toHexString(System.identityHashCode(this)));
+		logger.debug("[{}].<init>: created new instance of {}", Long.toHexString(System.identityHashCode(this)), this.getClass().getName());
 		classLoaderManager.setConnectionProfile(this);
 	}
 
