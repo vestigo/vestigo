@@ -37,7 +37,11 @@ public class JDOConnectionProfile extends ConnectionProfile
 		try {
 			Thread.currentThread().setContextClassLoader(persistenceEngineClassLoader);
 
-			persistenceManagerFactory = JDOHelper.getPersistenceManagerFactory(persistenceProperties, persistenceEngineClassLoader);
+			String persistenceUnitName = getPersistenceUnitName();
+			if (persistenceUnitName == null || persistenceUnitName.isEmpty())
+				persistenceManagerFactory = JDOHelper.getPersistenceManagerFactory(persistenceProperties, persistenceEngineClassLoader);
+			else
+				persistenceManagerFactory = JDOHelper.getPersistenceManagerFactory(persistenceProperties, persistenceUnitName, persistenceEngineClassLoader);
 		} finally {
 			Thread.currentThread().setContextClassLoader(backupContextClassLoader);
 		}

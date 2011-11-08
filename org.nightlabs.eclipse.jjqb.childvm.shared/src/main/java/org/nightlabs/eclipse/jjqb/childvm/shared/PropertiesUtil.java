@@ -51,6 +51,8 @@ public class PropertiesUtil extends Properties
 
 	public static final String WORKAROUND_TIMESTAMP = PREFIX_META + "workaround.timestamp";
 
+	public static final String PERSISTENCE_UNIT_NAME = PREFIX_META + "persistenceUnitName";
+
 	public static void putAll(java.util.Properties source, java.util.Properties target, String keyPrefix)
 	{
 		for (Object element : source.keySet()) {

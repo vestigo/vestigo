@@ -111,13 +111,12 @@ public class ConnectionManager
 		return result;
 	}
 
-	public Collection<Connection> getConnections()
+	private void getConnections_debugLog(String messagePrefix, Collection<Connection> result)
 	{
-		Collection<Connection> result = cache_allConnections;
 		if (logger.isDebugEnabled()) {
 			synchronized (this) {
 				logger.debug(
-						"getConnections: entered: result.size={} this.connectionsReadOnly.size={} this.connectionID2connection.size={}",
+						messagePrefix + "result.size={} this.cache_allConnections.size={} this.connectionID2connection.size={}",
 						new Object[] {
 								(result == null ? null : result.size()),
 								(cache_allConnections == null ? null : cache_allConnections.size()),
@@ -126,6 +125,14 @@ public class ConnectionManager
 				);
 			}
 		}
+	}
+
+	public Collection<Connection> getConnections()
+	{
+		Collection<Connection> result = cache_allConnections;
+
+		getConnections_debugLog("getConnections: entered: ", result);
+
 		if (result == null) {
 			synchronized (this) {
 				result = new ArrayList<Connection>(connectionID2connection.values());
@@ -133,6 +140,9 @@ public class ConnectionManager
 			result = Collections.unmodifiableCollection(result);
 			cache_allConnections = result;
 		}
+
+		getConnections_debugLog("getConnections: leaving: ", result);
+
 		return result;
 	}
 

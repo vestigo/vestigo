@@ -58,7 +58,7 @@ public class JDOResultSet extends ResultSet
 	@Override
 	protected Object getPersistentObjectForObjectID(String objectClassName, Object objectID)
 	{
-		Class<?> objectClass = null;
+//		Class<?> objectClass = null;
 //		try { // Should not be necessary.
 //			objectClass = Class.forName(
 //					objectClassName, false,
@@ -75,8 +75,8 @@ public class JDOResultSet extends ResultSet
 			// (maybe with a modified fetch-plan).
 			PersistenceManager pm = getPersistenceManager();
 
-			if (objectClass != null)
-				pm.getExtent(objectClass);
+//			if (objectClass != null)
+//				pm.getExtent(objectClass);
 
 			getConnection().configureFetchPlanForOneLevelAndAllFields(pm.getFetchPlan());
 

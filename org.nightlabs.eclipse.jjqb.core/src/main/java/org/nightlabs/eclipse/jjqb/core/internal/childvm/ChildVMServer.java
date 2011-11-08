@@ -47,6 +47,10 @@ import com.sun.jersey.api.client.config.DefaultClientConfig;
 public class ChildVMServer
 implements ChildVM
 {
+	private static final long TIMEOUT_SERVER_START_MS = 90L * 1000L; // TODO make timeout configurable
+	private static final int TIMEOUT_SOCKET_CONNECT_MS = 10 * 1000; // TODO make timeout configurable
+	private static final int TIMEOUT_SOCKET_READ_MS = 90 * 1000; // TODO make timeout configurable
+
 	private static final Logger logger = LoggerFactory.getLogger(ChildVMServer.class);
 	static {
 		JavaNativeMessageBodyReader.setClassLoader(ChildVMServer.class.getClassLoader());
@@ -221,7 +225,7 @@ implements ChildVM
 			dumpErrorStreamToFileThread.start();
 
 			try {
-				waitForStartingServerToComeOnline(90000L); // TODO make timeout configurable
+				waitForStartingServerToComeOnline();
 			} catch (TimeoutException e) {
 				throw new IOException(e);
 			}
@@ -236,8 +240,10 @@ implements ChildVM
 		}
 	}
 
-	private void waitForStartingServerToComeOnline(long timeout) throws TimeoutException
+	private void waitForStartingServerToComeOnline() throws TimeoutException
 	{
+		long timeout = TIMEOUT_SERVER_START_MS;
+
 		long start = System.currentTimeMillis();
 		while (!isOnline()) {
 			if (System.currentTimeMillis() - start > timeout)
@@ -360,6 +366,8 @@ implements ChildVM
 		Client client = clientCache.poll();
 		if (client == null) {
 			ClientConfig clientConfig = new DefaultClientConfig(JavaNativeMessageBodyReader.class, JavaNativeMessageBodyWriter.class);
+			clientConfig.getProperties().put(ClientConfig.PROPERTY_CONNECT_TIMEOUT, Integer.valueOf(TIMEOUT_SOCKET_CONNECT_MS)); // must be a java.lang.Integer
+			clientConfig.getProperties().put(ClientConfig.PROPERTY_READ_TIMEOUT, Integer.valueOf(TIMEOUT_SOCKET_READ_MS)); // must be a java.lang.Integer
 			client = Client.create(clientConfig);
 		}
 		return client;

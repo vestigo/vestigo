@@ -5,8 +5,12 @@ import java.util.Map;
 import java.util.Properties;
 
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Text;
 import org.nightlabs.eclipse.jjqb.childvm.shared.PropertiesUtil;
 
 /**
@@ -18,6 +22,7 @@ import org.nightlabs.eclipse.jjqb.childvm.shared.PropertiesUtil;
  */
 public class AbstractDriverPropertiesComposite extends Composite {
 
+	private Text persistenceUnitNameText;
 	private EditClasspathComposite editClasspathComposite;
 
 	private Properties connectionProperties;
@@ -25,17 +30,35 @@ public class AbstractDriverPropertiesComposite extends Composite {
 
 	public AbstractDriverPropertiesComposite(Composite parent, int style) {
 		super(parent, style);
-		this.setLayout(new GridLayout());
+		GridLayout layout = new GridLayout();
+		layout.numColumns = 2;
+		this.setLayout(layout);
+
+		new Label(this, SWT.NONE).setText("Persistence unit name:");
+		persistenceUnitNameText = new Text(this, SWT.BORDER);
+		assignGridDataSpanning(persistenceUnitNameText, GridData.FILL_HORIZONTAL, 1, 1);
 
 		editClasspathComposite = new EditClasspathComposite(this, SWT.NONE);
+		assignGridDataSpanning(editClasspathComposite, GridData.FILL_BOTH, 2, 1);
 
 		editPropertiesComposite = new EditPropertiesComposite(this, SWT.NONE);
+		assignGridDataSpanning(editPropertiesComposite, GridData.FILL_BOTH, 2, 1);
+
 		updatePropertiesEditor();
+	}
+
+	private void assignGridDataSpanning(Control control, int style, int horizontalSpan, int verticalSpan)
+	{
+		GridData gd = new GridData(style);
+		gd.horizontalSpan = horizontalSpan;
+		gd.verticalSpan = verticalSpan;
+		control.setLayoutData(gd);
 	}
 
 	private void updatePropertiesEditor() {
 		if (connectionProperties != null) {
-//			Properties metaProperties = PropertiesUtil.getProperties(connectionProperties, PropertiesUtil.PREFIX_META);
+			persistenceUnitNameText.setText(connectionProperties.getProperty(PropertiesUtil.PERSISTENCE_UNIT_NAME, ""));
+
 			Properties persistenceProperties = PropertiesUtil.getProperties(connectionProperties, PropertiesUtil.PREFIX_PERSISTENCE);
 			editPropertiesComposite.setInput(persistenceProperties);
 
@@ -92,6 +115,10 @@ public class AbstractDriverPropertiesComposite extends Composite {
 //			profileID = UUID.randomUUID();
 //
 //		result.setProperty(PropertiesUtil.PROFILE_ID, profileID.toString());
+
+		String persistenceUnitName = persistenceUnitNameText.getText();
+		if (persistenceUnitName != null && !persistenceUnitName.trim().isEmpty())
+			result.setProperty(PropertiesUtil.PERSISTENCE_UNIT_NAME, persistenceUnitName);
 
 		Properties persistenceProperties = propsFromMap(editPropertiesComposite.getProperties());
 		PropertiesUtil.putAll(persistenceProperties, result, PropertiesUtil.PREFIX_PERSISTENCE);
