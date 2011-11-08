@@ -6,10 +6,11 @@ import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.SortedMap;
+import java.util.SortedSet;
 import java.util.TreeMap;
+import java.util.TreeSet;
 
 import org.eclipse.datatools.connectivity.oda.IParameterMetaData;
 import org.eclipse.datatools.connectivity.oda.IResultSet;
@@ -17,6 +18,7 @@ import org.eclipse.datatools.connectivity.oda.IResultSetMetaData;
 import org.eclipse.datatools.connectivity.oda.OdaException;
 import org.eclipse.datatools.connectivity.oda.SortSpec;
 import org.eclipse.datatools.connectivity.oda.spec.QuerySpecification;
+import org.nightlabs.eclipse.jjqb.childvm.shared.QueryParameterDTO;
 import org.nightlabs.eclipse.jjqb.childvm.shared.ResultSetID;
 import org.nightlabs.eclipse.jjqb.core.Query;
 import org.nightlabs.eclipse.jjqb.core.QueryID;
@@ -71,7 +73,7 @@ public abstract class AbstractQuery implements Query
 		return parameterName2parameterID;
 	}
 
-	protected void setParameter(int parameterID, Object value)
+	protected synchronized void setParameter(int parameterID, Object value)
 	{
 		if (parameterID < 1)
 			throw new IllegalArgumentException("parameterID < 1");
@@ -83,7 +85,7 @@ public abstract class AbstractQuery implements Query
 		parameterID2parameterName.remove(parameterID);
 	}
 
-	protected void setParameter(String parameterName, Object value)
+	protected synchronized void setParameter(String parameterName, Object value)
 	{
 		if (parameterName == null)
 			throw new IllegalArgumentException("parameterName == null");
@@ -250,8 +252,20 @@ public abstract class AbstractQuery implements Query
 	protected abstract ResultSet newResultSet();
 
 	@Override
-	public IResultSet executeQuery() throws OdaException {
-		List<Object> parameters = new ArrayList<Object>(parameterID2parameterValue.values());
+	public synchronized IResultSet executeQuery() throws OdaException
+	{
+		SortedSet<QueryParameterDTO> parameters = new TreeSet<QueryParameterDTO>();
+		for (Map.Entry<Integer, Object> me : parameterID2parameterValue.entrySet())
+		{
+			Integer index = me.getKey();
+			if (index == null)
+				throw new IllegalStateException("me.getKey() returned null! this.parameterID2parameterValue should not contain null keys!");
+
+			String name = parameterID2parameterName.get(index); // name might be null, though
+
+			parameters.add(new QueryParameterDTO(index, name, me.getValue()));
+		}
+
 		ResultSetID resultSetID = getChildVM().executeQuery(connection.getConnectionID(), queryText, parameters);
 		ResultSet resultSet = newResultSet();
 		resultSet.setResultSetID(resultSetID);

@@ -1,8 +1,8 @@
 package org.nightlabs.eclipse.jjqb.childvm.shared;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.SortedSet;
+import java.util.TreeSet;
 import java.util.UUID;
 
 public class QueryDTO
@@ -12,7 +12,7 @@ implements Serializable
 
 	private UUID connectionID;
 	private String queryText;
-	private List<Object> parameters = new ArrayList<Object>();
+	private SortedSet<QueryParameterDTO> parameters = new TreeSet<QueryParameterDTO>();
 
 	public UUID getConnectionID() {
 		return connectionID;
@@ -28,10 +28,10 @@ implements Serializable
 		this.queryText = queryText;
 	}
 
-	public List<Object> getParameters() {
+	public SortedSet<QueryParameterDTO> getParameters() {
 		return parameters;
 	}
-	public void setParameters(List<Object> parameters) {
+	public void setParameters(SortedSet<QueryParameterDTO> parameters) {
 		this.parameters = parameters;
 	}
 }

@@ -2,12 +2,16 @@ package org.nightlabs.eclipse.jjqb.childvm.webapp.model;
 
 import java.io.IOException;
 import java.net.URLClassLoader;
-import java.util.List;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.SortedSet;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 import org.nightlabs.eclipse.jjqb.childvm.shared.ConnectionDTO;
 import org.nightlabs.eclipse.jjqb.childvm.shared.JPAConnectionDTO;
+import org.nightlabs.eclipse.jjqb.childvm.shared.QueryParameterDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,11 +24,6 @@ extends Connection
 	@Override
 	protected ConnectionDTO newConnectionDTO() {
 		return new JPAConnectionDTO();
-	}
-
-	@Override
-	public ResultSet doExecuteQuery(String queryText, List<Object> parameters) {
-		throw new UnsupportedOperationException("NYI");
 	}
 
 	@Override
@@ -87,5 +86,36 @@ extends Connection
 	 */
 	public EntityManager getEntityManager() {
 		return entityManager;
+	}
+
+	@Override
+	public ResultSet doExecuteQuery(String queryText, SortedSet<QueryParameterDTO> parameters) {
+		if (queryText == null)
+			throw new IllegalArgumentException("queryText == null");
+
+		if (parameters == null)
+			parameters = EMPTY_QUERY_PARAMETER_SET;
+
+		assertOpen();
+		EntityManager em = getEntityManager();
+		if (em == null)
+			throw new IllegalStateException("getEntityManager() returned null!");
+
+//		configureFetchPlanForOneLevelAndAllFields(em.getFetchPlan()); // there is no fetch-plan in JPA :-(
+
+		Query query = em.createQuery(queryText);
+
+		for (QueryParameterDTO parameter : parameters) {
+			query.setParameter(parameter.getIndex(), parameter.getValue());
+		}
+		Object queryResult = query.getResultList();
+
+		ResultSet resultSet;
+		if (queryResult instanceof Collection<?>)
+			resultSet = new JPAResultSet(this, (Collection<?>)queryResult);
+		else
+			resultSet = new JPAResultSet(this, Collections.singletonList(queryResult));
+
+		return resultSet;
 	}
 }

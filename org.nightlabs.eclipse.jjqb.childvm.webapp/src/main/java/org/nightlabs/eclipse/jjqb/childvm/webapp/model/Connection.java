@@ -1,13 +1,16 @@
 package org.nightlabs.eclipse.jjqb.childvm.webapp.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+import java.util.SortedSet;
+import java.util.TreeSet;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import org.nightlabs.eclipse.jjqb.childvm.shared.ConnectionDTO;
+import org.nightlabs.eclipse.jjqb.childvm.shared.QueryParameterDTO;
 import org.nightlabs.eclipse.jjqb.childvm.shared.ResultSetID;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,6 +18,8 @@ import org.slf4j.LoggerFactory;
 public abstract class Connection
 {
 	private static final Logger logger = LoggerFactory.getLogger(Connection.class);
+
+	protected static final SortedSet<QueryParameterDTO> EMPTY_QUERY_PARAMETER_SET = Collections.unmodifiableSortedSet(new TreeSet<QueryParameterDTO>());
 
 	private UUID connectionID;
 	private ConnectionProfile connectionProfile;
@@ -107,7 +112,7 @@ public abstract class Connection
 		open = false;
 	}
 
-	public final ResultSet executeQuery(String queryText, List<Object> parameters)
+	public final ResultSet executeQuery(String queryText, SortedSet<QueryParameterDTO> parameters)
 	{
 		ResultSet resultSet = doExecuteQuery(queryText, parameters);
 		ResultSetID resultSetID = new ResultSetID(getConnectionID(), nextResultSetID.getAndIncrement());
@@ -118,7 +123,7 @@ public abstract class Connection
 		return resultSet;
 	}
 
-	public abstract ResultSet doExecuteQuery(String queryText, List<Object> parameters);
+	public abstract ResultSet doExecuteQuery(String queryText, SortedSet<QueryParameterDTO> parameters);
 
 	public ResultSet getResultSet(ResultSetID resultSetID, boolean throwExceptionIfNotFound)
 	{

@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.net.URLClassLoader;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.List;
+import java.util.SortedSet;
 
 import javax.jdo.FetchPlan;
 import javax.jdo.PersistenceManager;
@@ -12,6 +12,7 @@ import javax.jdo.Query;
 
 import org.nightlabs.eclipse.jjqb.childvm.shared.ConnectionDTO;
 import org.nightlabs.eclipse.jjqb.childvm.shared.JDOConnectionDTO;
+import org.nightlabs.eclipse.jjqb.childvm.shared.QueryParameterDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -90,13 +91,13 @@ extends Connection
 	}
 
 	@Override
-	public synchronized ResultSet doExecuteQuery(String queryText, List<Object> parameters) // We synchronize on this connection because we use the PersistenceManager.
+	public synchronized ResultSet doExecuteQuery(String queryText, SortedSet<QueryParameterDTO> parameters) // We synchronize on this connection because we use the PersistenceManager.
 	{
 		if (queryText == null)
 			throw new IllegalArgumentException("queryText == null");
 
 		if (parameters == null)
-			parameters = Collections.emptyList();
+			parameters = EMPTY_QUERY_PARAMETER_SET;
 
 		assertOpen();
 		PersistenceManager pm = getPersistenceManager();

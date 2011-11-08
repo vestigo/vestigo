@@ -9,6 +9,7 @@ import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
+import java.util.SortedSet;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.UUID;
@@ -21,6 +22,7 @@ import org.nightlabs.eclipse.jjqb.childvm.shared.ConnectionDTOList;
 import org.nightlabs.eclipse.jjqb.childvm.shared.ConnectionProfileDTO;
 import org.nightlabs.eclipse.jjqb.childvm.shared.ConnectionProfileDTOList;
 import org.nightlabs.eclipse.jjqb.childvm.shared.QueryDTO;
+import org.nightlabs.eclipse.jjqb.childvm.shared.QueryParameterDTO;
 import org.nightlabs.eclipse.jjqb.childvm.shared.ResultCellDTO;
 import org.nightlabs.eclipse.jjqb.childvm.shared.ResultCellDTOList;
 import org.nightlabs.eclipse.jjqb.childvm.shared.ResultRowDTO;
@@ -481,7 +483,8 @@ implements ChildVM
 	{
 		Client client = acquireClient();
 		try {
-			ConnectionProfileDTOList list = getChildVMAppResourceBuilder(client, ConnectionProfileDTO.class).get(ConnectionProfileDTOList.class);
+			WebResource.Builder resourceBuilder = getChildVMAppResourceBuilder(client, ConnectionProfileDTO.class);
+			ConnectionProfileDTOList list = resourceBuilder.get(ConnectionProfileDTOList.class);
 			return list.getElements();
 		} catch (UniformInterfaceException x) {
 			handleUniformInterfaceException(x);
@@ -499,7 +502,10 @@ implements ChildVM
 			if (profileID == null)
 				throw new IllegalArgumentException("profileID == null");
 
-			ConnectionProfileDTO dto = getChildVMAppResourceBuilder(client, ConnectionProfileDTO.class, new PathSegment(profileID)).get(ConnectionProfileDTO.class);
+			WebResource.Builder resourceBuilder = getChildVMAppResourceBuilder(
+					client, ConnectionProfileDTO.class, new PathSegment(profileID)
+			);
+			ConnectionProfileDTO dto = resourceBuilder.get(ConnectionProfileDTO.class);
 			return dto;
 		} catch (UniformInterfaceException x) {
 			handleUniformInterfaceException(x);
@@ -514,7 +520,10 @@ implements ChildVM
 	{
 		Client client = acquireClient();
 		try {
-			ConnectionDTOList list = getChildVMAppResourceBuilder(client, ConnectionDTO.class, profileID == null ? null : new PathSegment(profileID)).get(ConnectionDTOList.class);
+			WebResource.Builder resourceBuilder = getChildVMAppResourceBuilder(
+					client, ConnectionDTO.class, profileID == null ? null : new PathSegment(profileID)
+			);
+			ConnectionDTOList list = resourceBuilder.get(ConnectionDTOList.class);
 			return list.getElements();
 		} catch (UniformInterfaceException x) {
 			handleUniformInterfaceException(x);
@@ -584,7 +593,7 @@ implements ChildVM
 	}
 
 	@Override
-	public ResultSetID executeQuery(UUID connectionID, String queryText, List<Object> parameters)
+	public ResultSetID executeQuery(UUID connectionID, String queryText, SortedSet<QueryParameterDTO> parameters)
 	throws ChildVMException
 	{
 		if (connectionID == null)
@@ -603,8 +612,10 @@ implements ChildVM
 			queryDTO.setQueryText(queryText);
 			queryDTO.setParameters(parameters);
 
-			ResultSetDTO resultSetDTO = getChildVMAppResourceBuilder(client, ResultSetDTO.class, new PathSegment("executeQuery"))
-					.post(ResultSetDTO.class, queryDTO);
+			WebResource.Builder resourceBuilder = getChildVMAppResourceBuilder(
+					client, ResultSetDTO.class, new PathSegment("executeQuery")
+			);
+			ResultSetDTO resultSetDTO = resourceBuilder.post(ResultSetDTO.class, queryDTO);
 
 			return resultSetDTO.getResultSetID();
 		} catch (UniformInterfaceException x) {
@@ -624,8 +635,11 @@ implements ChildVM
 
 		Client client = acquireClient();
 		try {
-			ResultRowDTO resultRowDTO = getChildVMAppResourceBuilder(client, ResultRowDTO.class, new PathSegment(resultSetID), new PathSegment("next"))
-			.post(ResultRowDTO.class);
+			WebResource.Builder resourceBuilder = getChildVMAppResourceBuilder(
+					client, ResultRowDTO.class,
+					new PathSegment(resultSetID), new PathSegment("next")
+			);
+			ResultRowDTO resultRowDTO = resourceBuilder.post(ResultRowDTO.class);
 
 			return resultRowDTO;
 		} catch (UniformInterfaceException x) {
@@ -645,8 +659,12 @@ implements ChildVM
 
 		Client client = acquireClient();
 		try {
-			ResultRowDTOList resultRowDTOList = getChildVMAppResourceBuilder(client, ResultRowDTO.class, new PathSegment(resultSetID), new PathSegment("nextList"), new QueryParameter("count", Integer.toString(count)))
-			.post(ResultRowDTOList.class);
+			WebResource.Builder resourceBuilder = getChildVMAppResourceBuilder(
+					client, ResultRowDTO.class,
+					new PathSegment(resultSetID), new PathSegment("nextList"),
+					new QueryParameter("count", Integer.toString(count))
+			);
+			ResultRowDTOList resultRowDTOList = resourceBuilder.post(ResultRowDTOList.class);
 
 			if (resultRowDTOList.getElements() == null)
 				throw new IllegalStateException("resultRowDTOList.elements == null");
@@ -691,7 +709,7 @@ implements ChildVM
 
 		Client client = acquireClient();
 		try {
-			WebResource.Builder builder = getChildVMAppResourceBuilder(
+			WebResource.Builder resourceBuilder = getChildVMAppResourceBuilder(
 					client,
 					ResultCellDTO.class,
 					new PathSegment(resultSetID),
@@ -699,7 +717,7 @@ implements ChildVM
 					new PathSegment(objectReference.getObjectID()),
 					new PathSegment("children")
 			);
-			ResultCellDTOList resultCellDTOList = builder.get(ResultCellDTOList.class);
+			ResultCellDTOList resultCellDTOList = resourceBuilder.get(ResultCellDTOList.class);
 			return resultCellDTOList.getElements();
 		} catch (UniformInterfaceException x) {
 			handleUniformInterfaceException(x);
