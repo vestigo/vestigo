@@ -13,6 +13,24 @@ public interface Connection extends org.eclipse.datatools.connectivity.oda.IConn
 
 	Properties getConnectionProperties();
 
+	/**
+	 * {@inheritDoc}
+	 * <p>
+	 * Important: This is a potentially long-running operation which should be executed asynchronously (in a job).
+	 * </p>
+	 */
 	@Override
-	public Query newQuery(String dataSetType) throws OdaException;
+	void open(Properties connProperties) throws OdaException;
+
+	@Override
+	Query newQuery(String dataSetType) throws OdaException;
+
+	/**
+	 * {@inheritDoc}
+	 * <p>
+	 * Important: This is a potentially long-running operation which should be executed asynchronously (in a job).
+	 * </p>
+	 */
+	@Override
+	void close() throws OdaException;
 }

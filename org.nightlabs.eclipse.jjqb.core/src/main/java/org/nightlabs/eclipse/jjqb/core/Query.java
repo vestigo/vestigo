@@ -1,5 +1,8 @@
 package org.nightlabs.eclipse.jjqb.core;
 
+import org.eclipse.datatools.connectivity.oda.IResultSet;
+import org.eclipse.datatools.connectivity.oda.OdaException;
+
 public interface Query
 extends org.eclipse.datatools.connectivity.oda.IQuery
 {
@@ -15,10 +18,12 @@ extends org.eclipse.datatools.connectivity.oda.IQuery
 	 */
 	QueryID getQueryID();
 
-//	/**
-//	 * Get the actual query text (or <code>null</code>, if there's none, yet).
-//	 * @return the query text that was set via {@link #prepare(String)} before;
-//	 * or <code>null</code>, if <code>prepare(...)</code> was not called, yet.
-//	 */
-//	String getQueryText();
+	/**
+	 * {@inheritDoc}
+	 * <p>
+	 * Important: This is a potentially long-running operation which should be executed asynchronously (in a job).
+	 * </p>
+	 */
+	@Override
+	IResultSet executeQuery() throws OdaException;
 }

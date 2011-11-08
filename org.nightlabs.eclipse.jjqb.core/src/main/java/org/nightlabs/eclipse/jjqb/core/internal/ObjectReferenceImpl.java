@@ -16,6 +16,8 @@ public class ObjectReferenceImpl implements ObjectReference
 	private ResultSet resultSet;
 	private ResultCellObjectRefDTO resultCellObjectRefDTO;
 
+	private ObjectReferenceChild associatedObjectReferenceChild;
+
 	private List<ObjectReferenceChild> children;
 
 	public ObjectReferenceImpl(ResultSet resultSet, ResultCellObjectRefDTO resultCellObjectRefDTO)
@@ -89,11 +91,35 @@ public class ObjectReferenceImpl implements ObjectReference
 			List<ResultCellDTO> childDTOs = getChildVM().getChildren(this);
 			children = new ArrayList<ObjectReferenceChild>(childDTOs.size());
 			for (ResultCellDTO childDTO : childDTOs) {
-				Object child = AbstractResultSet.unmaskResultCellDTO(resultSet, childDTO);
-				children.add(new ObjectReferenceChildImpl(this, childDTO, child));
+				Object childRawObject = AbstractResultSet.unmaskResultCellDTO(resultSet, childDTO);
+
+				ObjectReferenceChild childObjectReferenceChild = new ObjectReferenceChildImpl(this, childDTO, childRawObject);
+
+				if (childRawObject instanceof ObjectReference) {
+					ObjectReference childObjectReference = (ObjectReference) childRawObject;
+					childObjectReference.setAssociatedObjectReferenceChild(childObjectReferenceChild);
+				}
+
+				children.add(childObjectReferenceChild);
 			}
 			this.children = children;
 		}
 		return children;
+	}
+
+	@Override
+	public ObjectReferenceChild getAssociatedObjectReferenceChild() {
+		return associatedObjectReferenceChild;
+	}
+	@Override
+	public void setAssociatedObjectReferenceChild(ObjectReferenceChild associatedObjectReferenceChild)
+	{
+		if (this.associatedObjectReferenceChild == associatedObjectReferenceChild)
+			return;
+
+		if (this.associatedObjectReferenceChild != null)
+			throw new IllegalStateException("this.associatedObjectReferenceChild already assigned! Cannot replace!");
+
+		this.associatedObjectReferenceChild = associatedObjectReferenceChild;
 	}
 }

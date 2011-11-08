@@ -43,11 +43,11 @@ public class ObjectGraphDetailTreeNode
 			StringBuilder label = new StringBuilder();
 			Object childValue = child.getValue();
 
-//			if (child.getFieldDeclaringClassName() != null)
-//				label.append(child.getFieldDeclaringClassName()).append('.');
+//			if (child.getOwner().getAssociatedObjectReferenceChild() != null)
+//				label.append(child.getOwner().getAssociatedObjectReferenceChild());
 
-			if (child.getFieldName() != null)
-				label.append(child.getFieldName()).append(": ");
+			if (child.getFieldDesc() != null && child.getFieldDesc().getFieldName() != null)
+				label.append(child.getFieldDesc().getFieldName()).append(": ");
 
 			if (childValue instanceof ObjectReference)
 				label.append(getObjectReferenceLabelText((ObjectReference) childValue));

@@ -4,13 +4,22 @@ package org.nightlabs.eclipse.jjqb.core.internal;
 public class PackageImporterDummy
 {
 	// BEGIN javax.jdo.* - should contain all sub-packages!
-	javax.jdo.annotations.Cacheable cacheable;
-	javax.jdo.datastore.JDOConnection jdoConnection;
-	javax.jdo.identity.IntIdentity intIdentity;
-	javax.jdo.listener.AttachCallback attachCallback;
-	javax.jdo.metadata.ArrayMetadata arrayMetadata;
-	javax.jdo.spi.JDOPermission permission;
+	// Though we use a ChildVM, we need to be able to load at least some javax.jdo.* classes here, too,
+	// in order to deserialize e.g. javax.jdo.identity.LongIdentity and other identifiers.
+	javax.jdo.annotations.Cacheable jdo_Cacheable;
+	javax.jdo.datastore.JDOConnection jdo_JDOConnection;
+	javax.jdo.identity.IntIdentity jdo_IntIdentity;
+	javax.jdo.listener.AttachCallback jdo_AttachCallback;
+	javax.jdo.metadata.ArrayMetadata jdo_ArrayMetadata;
+	javax.jdo.spi.JDOPermission jdo_JDOPermission;
 	// END javax.jdo.* - should contain all sub-packages!
+
+	// BEGIN javax.persistence.* - should contain all sub-packages!
+	javax.persistence.EntityManager jpa_EntityManager;
+	javax.persistence.criteria.AbstractQuery<Object> jpa_AbstractQuery;
+	javax.persistence.metamodel.Attribute<Object, Object> jpa_Attribute;
+	javax.persistence.spi.ClassTransformer jpa_ClassTransformer;
+	// END javax.persistence.* - should contain all sub-packages!
 
 	// BEGIN org.osgi.* - some sub-packages
 	org.osgi.framework.Bundle bundle;
