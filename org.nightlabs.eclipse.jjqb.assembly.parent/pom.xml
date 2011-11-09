@@ -31,6 +31,10 @@
 			<groupId>org.nightlabs.eclipse.jjqb</groupId>
 			<artifactId>org.nightlabs.eclipse.jjqb.core</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.nightlabs.eclipse.jjqb</groupId>
+			<artifactId>org.nightlabs.eclipse.jjqb.childvm.shared</artifactId>
+		</dependency>
 <!--
 		<dependency>
 			<groupId>org.nightlabs.eclipse.jjqb</groupId>
@@ -227,6 +231,7 @@ Marco :-)
 								<outputDirectory>${assembly.dropins.directory}</outputDirectory>
 								<includeTypes>jar</includeTypes>
 								<excludeTransitive>true</excludeTransitive>
+								<includeScope>compile</includeScope>
 							</configuration>
 						</execution>
 					</executions>
