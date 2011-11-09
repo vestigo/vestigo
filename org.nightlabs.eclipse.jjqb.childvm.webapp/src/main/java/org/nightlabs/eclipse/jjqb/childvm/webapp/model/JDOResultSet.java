@@ -13,9 +13,13 @@ import javax.jdo.identity.SingleFieldIdentity;
 import org.nightlabs.eclipse.jjqb.childvm.shared.ResultCellDTO;
 import org.nightlabs.eclipse.jjqb.childvm.shared.ResultCellPersistentObjectRefDTO;
 import org.nightlabs.eclipse.jjqb.childvm.shared.ResultCellSimpleDTO;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class JDOResultSet extends ResultSet
 {
+	private static final Logger logger = LoggerFactory.getLogger(JDOResultSet.class);
+
 	public JDOResultSet(JDOConnection connection, Collection<?> rows) {
 		super(connection, rows);
 	}
@@ -118,5 +122,23 @@ public class JDOResultSet extends ResultSet
 			}
 			return super.getFieldValues(object, fields);
 		}
+	}
+
+	@Override
+	protected FieldValue getFieldValue(Object object, Field field)
+	{
+		FieldValue fieldValue = super.getFieldValue(object, field);
+
+		if (fieldValue.getValue() != null)
+			return fieldValue; // it's not null => it was definitely already loaded. No need to call a getter.
+
+		tryToLoadFieldByCallingGetter(object, field);
+
+		fieldValue = super.getFieldValue(object, field);
+
+		if (fieldValue.getValue() != null)
+			logger.warn("getFieldValue: value was not yet loaded, before, but could be loaded by tryToLoadFieldByCallingGetter(...). Seems, the JDO implementation doesn't properly support PersistenceManager.retrieve(Object, boolean).");
+
+		return fieldValue;
 	}
 }

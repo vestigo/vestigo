@@ -2,6 +2,7 @@ package org.nightlabs.eclipse.jjqb.childvm.webapp.model;
 
 import java.io.IOException;
 import java.net.URLClassLoader;
+import java.util.Map;
 import java.util.Properties;
 
 import javax.persistence.EntityManagerFactory;
@@ -31,13 +32,14 @@ public class JPAConnectionProfile extends ConnectionProfile
 			throw new RuntimeException(e);
 		}
 
-		Properties persistenceProperties = PropertiesUtil.getProperties(getConnectionProperties(), PropertiesUtil.PREFIX_PERSISTENCE);
+		Properties rawPersistenceProperties = PropertiesUtil.getProperties(getConnectionProperties(), PropertiesUtil.PREFIX_PERSISTENCE);
+		Map<String, String> filteredPersistenceProperties = filterPersistenceProperties(rawPersistenceProperties);
 
 		ClassLoader backupContextClassLoader = Thread.currentThread().getContextClassLoader();
 		try {
 			Thread.currentThread().setContextClassLoader(persistenceEngineClassLoader);
 
-			entityManagerFactory = Persistence.createEntityManagerFactory(getPersistenceUnitName(), persistenceProperties);
+			entityManagerFactory = Persistence.createEntityManagerFactory(getPersistenceUnitName(), filteredPersistenceProperties);
 		} finally {
 			Thread.currentThread().setContextClassLoader(backupContextClassLoader);
 		}

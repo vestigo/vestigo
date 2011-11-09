@@ -6,15 +6,17 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-import javax.jdo.identity.SingleFieldIdentity;
 import javax.persistence.EntityManager;
 
 import org.nightlabs.eclipse.jjqb.childvm.shared.ResultCellDTO;
 import org.nightlabs.eclipse.jjqb.childvm.shared.ResultCellPersistentObjectRefDTO;
-import org.nightlabs.eclipse.jjqb.childvm.shared.ResultCellSimpleDTO;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class JPAResultSet extends ResultSet
 {
+	private static final Logger logger = LoggerFactory.getLogger(JPAResultSet.class);
+
 	public JPAResultSet(Connection connection, Collection<?> rows) {
 		super(connection, rows);
 	}
@@ -39,12 +41,32 @@ public class JPAResultSet extends ResultSet
 	@Override
 	protected ResultCellDTO nullOrNewImplementationSpecificResultCellDTO(Object owner, Field field, Object object)
 	{
-		// SingleFieldIdentity instances can be loaded in the Eclipse-plugin and displayed directly in the editor.
-		if (object instanceof SingleFieldIdentity)
-			return new ResultCellSimpleDTO(field, object);
+//		// SingleFieldIdentity instances can be loaded in the Eclipse-plugin and displayed directly in the editor.
+//		if (object instanceof SingleFieldIdentity) // this is JDO - but should we still do it for all (in the superclass)?
+//			return new ResultCellSimpleDTO(field, object);
 
 		// Check, if it's a JPA object, and if so, return a reference to it.
-		Object objectID = getEntityManager().getEntityManagerFactory().getPersistenceUnitUtil().getIdentifier(object);
+		Object objectID;
+		try {
+			objectID = getEntityManager().getEntityManagerFactory().getPersistenceUnitUtil().getIdentifier(object);
+		} catch (IllegalArgumentException x) {
+			if (logger.isDebugEnabled()) {
+				logger.debug(
+						"nullOrNewImplementationSpecificResultCellDTO:" +
+						" object.class=" + object.getClass().getName() + " object=" + object + ": " + x,
+						x
+				);
+			}
+			return null;
+		} catch (Exception x) {
+			logger.warn(
+					"nullOrNewImplementationSpecificResultCellDTO:" +
+							" object.class=" + object.getClass().getName() + " object=" + object + ": " + x,
+							x
+					);
+			return null;
+		}
+
 		if (objectID != null) {
 			String objectIDString = getPersistentObjectIDString(object.getClass().getName(), objectID);
 			return new ResultCellPersistentObjectRefDTO(field, object.getClass(), objectIDString, getObjectToString(object));
@@ -99,6 +121,8 @@ public class JPAResultSet extends ResultSet
 	@Override
 	protected List<FieldValue> getFieldValues(Object object, List<Field> fields)
 	{
+		tryToLoadFieldsByCallingGetters(object, fields);
+
 		// We synchronize on the connection, because we don't want the EntityManager to be used at the same time
 		// (maybe with a modified fetch-plan).
 		synchronized (getConnection()) {

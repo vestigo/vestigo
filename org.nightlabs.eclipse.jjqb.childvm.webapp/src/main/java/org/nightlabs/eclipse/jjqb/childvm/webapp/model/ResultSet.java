@@ -1,17 +1,22 @@
 package org.nightlabs.eclipse.jjqb.childvm.webapp.model;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.IdentityHashMap;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 
+import org.nightlabs.eclipse.jjqb.childvm.shared.MapEntry;
 import org.nightlabs.eclipse.jjqb.childvm.shared.ResultCellDTO;
 import org.nightlabs.eclipse.jjqb.childvm.shared.ResultCellNullDTO;
 import org.nightlabs.eclipse.jjqb.childvm.shared.ResultCellObjectRefDTO;
@@ -173,6 +178,7 @@ public abstract class ResultSet
 			return null;
 
 		if (
+				object instanceof Boolean ||
 				object instanceof Date ||
 				object instanceof Number ||
 				object instanceof String ||
@@ -368,7 +374,7 @@ public abstract class ResultSet
 		if (parent instanceof Collection<?>)
 			resultList = new ArrayList<Object>((Collection<?>)parent);
 		else if (parent instanceof Map<?, ?>)
-			resultList = new ArrayList<Object>(((Map<?, ?>)parent).entrySet());
+			resultList = getChildrenFromMap(((Map<?, ?>)parent));
 		else if (parent != null) {
 			List<Field> fields = class2fields.get(parent.getClass());
 			if (fields == null) {
@@ -389,6 +395,17 @@ public abstract class ResultSet
 		return resultList == null ? Collections.emptyList() : resultList;
 	}
 
+	private List<?> getChildrenFromMap(Map<?, ?> parent)
+	{
+		ArrayList<Object> result = new ArrayList<Object>(parent.size());
+
+		for (Map.Entry<?, ?> me : parent.entrySet())
+			result.add(new MapEntry(me));
+
+		return result;
+	}
+
+
 	protected List<Field> getFields(Class<?> clazz)
 	{
 		return ReflectUtil.collectAllFields(clazz, true);
@@ -406,16 +423,22 @@ public abstract class ResultSet
 		List<FieldValue> resultList;
 		resultList = new ArrayList<FieldValue>(fields.size());
 		for (Field field : fields) {
-			try {
-				Object fieldValue = field.get(object);
-				resultList.add(new FieldValue(field, fieldValue));
-			} catch (IllegalArgumentException e) {
-				throw new RuntimeException(e);
-			} catch (IllegalAccessException e) {
-				throw new RuntimeException(e);
-			}
+			FieldValue fieldValue = getFieldValue(object, field);
+			resultList.add(fieldValue);
 		}
 		return resultList;
+	}
+
+	protected FieldValue getFieldValue(Object object, Field field)
+	{
+		try {
+			Object fieldValue = field.get(object);
+			return new FieldValue(field, fieldValue);
+		} catch (IllegalArgumentException e) {
+			throw new RuntimeException(e);
+		} catch (IllegalAccessException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	private String getQualifiedObjectID(String objectClassName, String objectIDString)
@@ -450,5 +473,52 @@ public abstract class ResultSet
 			qualifiedObjectID2objectID.put(qualifiedObjectID, objectID);
 
 		return objectIDString;
+	}
+
+	protected void tryToLoadFieldsByCallingGetters(Object object, List<Field> fields) {
+		for (Field field : fields) {
+			tryToLoadFieldByCallingGetter(object, field);
+		}
+	}
+
+	protected void tryToLoadFieldByCallingGetter(Object object, Field field)
+	{
+		Collection<Method> methods = findGetMethodsForField(object.getClass(), field);
+		for (Method method : methods) {
+			method.setAccessible(true);
+			try {
+				method.invoke(object, (Object[])null);
+			} catch (Exception e) {
+				logger.warn("loadField: object.class=" + object.getClass().getName() + " field=" + field + " method=" + method + ": " + e, e);
+			}
+		}
+	}
+
+	private Collection<Method> findGetMethodsForField(Class<?> clazz, Field field)
+	{
+		Collection<Method> result = new LinkedList<Method>();
+		String fieldNameLower = field.getName().toLowerCase(); // use the default Locale, because that might match the user's data model best.
+		Set<String> potentialMethodNamesLower = new HashSet<String>(2);
+		potentialMethodNamesLower.add("get" + fieldNameLower);
+		potentialMethodNamesLower.add("is" + fieldNameLower);
+
+		Class<?> c = clazz;
+		while (c != null) {
+			Method[] methods = c.getDeclaredMethods();
+			for (Method method : methods) {
+				if (method.getParameterTypes().length > 0)
+					continue;
+
+				String methodName = method.getName();
+				String methodNameLower = methodName.toLowerCase(); // use the default Locale again - same as before
+
+				if (potentialMethodNamesLower.contains(methodNameLower))
+					result.add(method);
+			}
+
+			c = c.getSuperclass();
+		}
+
+		return result;
 	}
 }

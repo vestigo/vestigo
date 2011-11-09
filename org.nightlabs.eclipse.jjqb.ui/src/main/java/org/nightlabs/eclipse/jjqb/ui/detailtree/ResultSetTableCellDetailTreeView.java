@@ -14,12 +14,12 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.ISelectionListener;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.part.ViewPart;
+import org.nightlabs.eclipse.jjqb.ui.browser.QueryBrowser;
 import org.nightlabs.eclipse.jjqb.ui.resultsettable.ResultSetTableCell;
 import org.nightlabs.eclipse.jjqb.ui.resultsettable.ResultSetTableRow;
 
 public class ResultSetTableCellDetailTreeView extends ViewPart
 {
-//	private Text dummy;
 	private ObjectGraphDetailTreeComposite objectGraphDetailTreeComposite;
 
 	@Override
@@ -28,9 +28,6 @@ public class ResultSetTableCellDetailTreeView extends ViewPart
 		objectGraphDetailTreeComposite = new ObjectGraphDetailTreeComposite(parent, SWT.NONE);
 		objectGraphDetailTreeComposite.addDisposeListener(disposeListener);
 
-//		dummy = new Text(parent, SWT.BORDER);
-//		dummy.setText("{empty}");
-//
 		getSite().getPage().addSelectionListener(selectionListener);
 	}
 
@@ -38,6 +35,9 @@ public class ResultSetTableCellDetailTreeView extends ViewPart
 		@Override
 		public void selectionChanged(IWorkbenchPart part, ISelection selection)
 		{
+			if (part instanceof QueryBrowser)
+				objectGraphDetailTreeComposite.setInput(null); // Clear the selection.
+
 			if (!(selection instanceof IStructuredSelection))
 				return;
 

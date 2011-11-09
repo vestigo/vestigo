@@ -1,5 +1,6 @@
 package org.nightlabs.eclipse.jjqb.childvm.webapp.model;
 
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Properties;
@@ -113,5 +114,18 @@ public abstract class ConnectionProfile
 			return null;
 
 		return connectionProperties.getProperty(PropertiesUtil.PERSISTENCE_UNIT_NAME);
+	}
+
+	protected Map<String, String> filterPersistenceProperties(Map<?, ?> rawPersistenceProperties) {
+		Map<String, String> filteredPersistenceProperties = new HashMap<String, String>();
+		for (Map.Entry<?, ?> me : rawPersistenceProperties.entrySet()) {
+			String key = String.valueOf(me.getKey());
+			String value = String.valueOf(me.getValue());
+			if ("_NULL_".equals(value))
+				value = null;
+	
+			filteredPersistenceProperties.put(key, value);
+		}
+		return filteredPersistenceProperties;
 	}
 }
