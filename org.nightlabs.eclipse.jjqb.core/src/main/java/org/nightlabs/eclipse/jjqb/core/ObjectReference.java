@@ -12,6 +12,9 @@ import org.nightlabs.eclipse.jjqb.core.childvm.ChildVM;
  * It is possible to navigate through the object tree by following the
  * {@link #getChildren() children} of this object.
  * </p><p>
+ * Within one {@link ResultSet}, there is exactly one instance of <code>ObjectReference</code> for every
+ * {@link #getObjectID() objectID}.
+ * </p><p>
  * It is planned to be able to modify the object through this reference, later,
  * but right now, it is read-only.
  * </p>
@@ -67,28 +70,6 @@ public interface ObjectReference {
 	 * @return the referenced object's {@link Object#toString() toString()}-representation. Might be <code>null</code>.
 	 */
 	String getObjectToString();
-
-	/**
-	 * <p>
-	 * Get the {@link ObjectReferenceChild} instance that represents this {@link ObjectReference}.
-	 * </p><p>
-	 * This <code>ObjectReferenceChild</code>'s {@link ObjectReferenceChild#getValue()} will point
-	 * to this instance (bidirectional 1-1-reference).
-	 * </p><p>
-	 * In other words, every {@link #getChildren() child} of an object-reference will be represented
-	 * by exactly one instance of <code>ObjectReferenceChild</code> and one <code>ObjectReference</code>,
-	 * where the <code>ObjectReference</code> points back to this child-instance via this method. This method
-	 * returns <code>null</code>, if this object-reference is not a child of any other object-reference.
-	 * </p>
-	 * @return the associated {@link ObjectReferenceChild} representing the same backend object (indirectly
-	 * through this <code>ObjectReference</code> instance). Might be <code>null</code>.
-	 */
-	ObjectReferenceChild getAssociatedObjectReferenceChild();
-
-	/**
-	 * @see #getAssociatedObjectReferenceChild()
-	 */
-	void setAssociatedObjectReferenceChild(ObjectReferenceChild child);
 
 	/**
 	 * <p>

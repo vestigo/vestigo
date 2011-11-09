@@ -13,17 +13,17 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.editors.text.TextEditor;
 import org.nightlabs.eclipse.jjqb.ui.resultsettable.ResultSetTableComposite;
 import org.nightlabs.eclipse.jjqb.ui.resultsettable.ResultSetTableModel;
-import org.nightlabs.jdo.jdoqleditor.editor.JDOQLEditor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class JDOQueryBrowserEditor
-extends JDOQLEditor
-implements JDOQueryBrowser
+public class JPAQueryBrowserEditor
+extends TextEditor
+implements JPAQueryBrowser
 {
-	private static final Logger logger = LoggerFactory.getLogger(JDOQueryBrowserEditor.class);
+	private static final Logger logger = LoggerFactory.getLogger(JPAQueryBrowserEditor.class);
 
 	private SashForm partControl;
 
@@ -42,7 +42,7 @@ implements JDOQueryBrowser
 
 		super.createPartControl(queryEditorComposite);
 
-		managementComposite = new JDOQueryBrowserManagementComposite(queryEditorComposite, SWT.BORDER);
+		managementComposite = new JPAQueryBrowserManagementComposite(queryEditorComposite, SWT.BORDER);
 		managementComposite.setQueryBrowser(this);
 
 		for (Control c : queryEditorComposite.getChildren()) {

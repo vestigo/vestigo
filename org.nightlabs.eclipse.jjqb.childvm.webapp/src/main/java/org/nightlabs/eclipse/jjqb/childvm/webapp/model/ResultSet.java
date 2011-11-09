@@ -36,7 +36,7 @@ public abstract class ResultSet
 	private long nextObjectID = 0;
 	private Map<Long, TransientObjectContainer> objectID2transientObjectContainer = new HashMap<Long, TransientObjectContainer>();
 	private Map<Object, Long> transientObject2objectID = new IdentityHashMap<Object, Long>();
-	private Map<String, Object> persistentObjectIDString2objectID = new HashMap<String, Object>();
+	private Map<String, Object> qualifiedObjectID2objectID = new HashMap<String, Object>();
 
 	private Map<Class<?>, List<Field>> class2fields = new HashMap<Class<?>, List<Field>>();
 
@@ -357,7 +357,7 @@ public abstract class ResultSet
 		row = null;
 		objectID2transientObjectContainer = null;
 		transientObject2objectID = null;
-		persistentObjectIDString2objectID = null;
+		qualifiedObjectID2objectID = null;
 		class2fields = null;
 	}
 
@@ -418,12 +418,17 @@ public abstract class ResultSet
 		return resultList;
 	}
 
+	private String getQualifiedObjectID(String objectClassName, String objectIDString)
+	{
+		return objectClassName + '|' + objectIDString;
+	}
+
 	protected synchronized Object getPersistentObjectID(String objectClassName, String objectIDString)
 	{
 		if (objectIDString == null)
 			return null;
 
-		return persistentObjectIDString2objectID.get(objectClassName + "::" + objectIDString);
+		return qualifiedObjectID2objectID.get(getQualifiedObjectID(objectClassName, objectIDString));
 	}
 
 	protected synchronized String getPersistentObjectIDString(Class<?> objectClass, Object objectID)
@@ -440,9 +445,9 @@ public abstract class ResultSet
 			return null;
 
 		String objectIDString = objectID.toString();
-		String internalObjectIDString = objectClassName + "::" + objectIDString;
-		if (!persistentObjectIDString2objectID.containsKey(internalObjectIDString))
-			persistentObjectIDString2objectID.put(internalObjectIDString, objectID);
+		String qualifiedObjectID = getQualifiedObjectID(objectClassName, objectIDString);
+		if (!qualifiedObjectID2objectID.containsKey(qualifiedObjectID))
+			qualifiedObjectID2objectID.put(qualifiedObjectID, objectID);
 
 		return objectIDString;
 	}

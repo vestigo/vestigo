@@ -2,6 +2,8 @@ package org.nightlabs.eclipse.jjqb.core;
 
 import java.lang.reflect.Field;
 
+import org.nightlabs.util.Util;
+
 public class FieldDesc
 {
 	private String fieldDeclaringClassName;
@@ -45,5 +47,26 @@ public class FieldDesc
 	@Override
 	public String toString() {
 		return this.getClass().getSimpleName() + '[' + fieldDeclaringClassName + ',' + fieldName + ']';
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + Util.hashCode(fieldDeclaringClassName);
+		result = prime * result + Util.hashCode(fieldName == null);
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) return true;
+		if (obj == null) return false;
+		if (getClass() != obj.getClass()) return false;
+		FieldDesc other = (FieldDesc) obj;
+		return (
+				Util.equals(this.fieldDeclaringClassName, other.fieldDeclaringClassName) &&
+				Util.equals(this.fieldName, other.fieldName)
+		);
 	}
 }

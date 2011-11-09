@@ -5,8 +5,10 @@ import java.math.BigInteger;
 import java.sql.Date;
 import java.sql.Time;
 import java.sql.Timestamp;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.datatools.connectivity.oda.IBlob;
 import org.eclipse.datatools.connectivity.oda.IClob;
@@ -18,6 +20,7 @@ import org.nightlabs.eclipse.jjqb.childvm.shared.ResultCellObjectRefDTO;
 import org.nightlabs.eclipse.jjqb.childvm.shared.ResultCellSimpleDTO;
 import org.nightlabs.eclipse.jjqb.childvm.shared.ResultRowDTO;
 import org.nightlabs.eclipse.jjqb.childvm.shared.ResultSetID;
+import org.nightlabs.eclipse.jjqb.core.ObjectReference;
 import org.nightlabs.eclipse.jjqb.core.Query;
 import org.nightlabs.eclipse.jjqb.core.ResultSet;
 import org.nightlabs.eclipse.jjqb.core.childvm.ChildVM;
@@ -35,6 +38,8 @@ public abstract class AbstractResultSet implements ResultSet
 	private ResultRowDTO row;
 	private int rowIndex = 0;
 	private boolean wasNull;
+
+	private Map<String, ObjectReference> qualifiedObjectID2objectReference = new HashMap<String, ObjectReference>();
 
 	public AbstractResultSet(Query query)
 	{
@@ -115,6 +120,7 @@ public abstract class AbstractResultSet implements ResultSet
 		preFetchedRows = null;
 		elementsIterator = null;
 		row = null;
+		qualifiedObjectID2objectReference = null;
 	}
 
 	private void assertOpen() {
@@ -391,14 +397,15 @@ public abstract class AbstractResultSet implements ResultSet
 		if (resultCellDTO == null)
 			throw new IllegalStateException("row.getCells().get(index - 1) returned null! index=" + index);
 
-		Object result = unmaskResultCellDTO(this, resultCellDTO);
+		Object result = unmaskResultCellDTO(resultCellDTO);
 
 		wasNull = result == null;
 
 		return result;
 	}
 
-	public static Object unmaskResultCellDTO(ResultSet resultSet, ResultCellDTO resultCellDTO)
+	@Override
+	public synchronized Object unmaskResultCellDTO(ResultCellDTO resultCellDTO)
 	{
 		// Unmask null, which is transferred as ResultCellNullDTO
 		if (resultCellDTO instanceof ResultCellNullDTO) {
@@ -413,10 +420,24 @@ public abstract class AbstractResultSet implements ResultSet
 
 		if (resultCellDTO instanceof ResultCellObjectRefDTO) {
 			ResultCellObjectRefDTO resultCellObjectRefDTO = (ResultCellObjectRefDTO) resultCellDTO;
-			return new ObjectReferenceImpl(resultSet, resultCellObjectRefDTO);
+
+			String qualifiedObjectID = getQualifiedObjectID(
+					resultCellObjectRefDTO.getObjectClassName(), resultCellObjectRefDTO.getObjectID()
+			);
+			ObjectReference objectReference = qualifiedObjectID2objectReference.get(qualifiedObjectID);
+			if (objectReference == null) {
+				objectReference = new ObjectReferenceImpl(this, resultCellObjectRefDTO);
+				qualifiedObjectID2objectReference.put(qualifiedObjectID, objectReference);
+			}
+			return objectReference;
 		}
 
 		throw new IllegalStateException("Unknown ResultCellDTO subclass: " + resultCellDTO);
+	}
+
+	private String getQualifiedObjectID(String objectClassName, String objectIDString)
+	{
+		return objectClassName + '|' + objectIDString;
 	}
 
 	@Override
