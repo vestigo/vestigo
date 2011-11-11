@@ -143,9 +143,9 @@
             id="org.nightlabs.eclipse.jjqb.ui.viewContribution_DataSourceExplorerNavigator"
             targetID="org.eclipse.datatools.connectivity.DataSourceExplorerNavigator">
          <action
-               class="org.nightlabs.eclipse.jjqb.ui.OpenQueryBrowserAction"
+               class="org.nightlabs.eclipse.jjqb.ui.oda.OpenQueryBrowserAction"
                enablesFor="+"
-               id="org.nightlabs.eclipse.jjqb.ui.OpenQueryBrowserAction"
+               id="org.nightlabs.eclipse.jjqb.ui.oda.OpenQueryBrowserAction"
                label="Open query browser"
                style="push"
                toolbarPath="additions">
