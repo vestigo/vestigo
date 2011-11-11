@@ -2,7 +2,6 @@ package org.nightlabs.eclipse.jjqb.ui.browser;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.util.UUID;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.datatools.connectivity.oda.IResultSet;
@@ -27,6 +26,7 @@ implements JPAQueryBrowser
 {
 	private static final Logger logger = LoggerFactory.getLogger(JPAQueryBrowserEditor.class);
 
+	private Helper helper = new Helper(this);
 	private SashForm partControl;
 
 	private QueryBrowserManagementComposite managementComposite;
@@ -36,8 +36,8 @@ implements JPAQueryBrowser
 	private ResultSetTableModel resultSetTableModel;
 
 	@Override
-	public UUID getQueryID() {
-		return managementComposite.getQueryID();
+	public String getQueryID() {
+		return helper.getQueryIDFromEditorInput();
 	}
 
 	@Override

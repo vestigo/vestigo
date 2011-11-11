@@ -6,8 +6,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class PropertiesWithChangeSupport extends Properties
 {
+	private static final Logger logger = LoggerFactory.getLogger(PropertiesWithChangeSupport.class);
 	private static final long serialVersionUID = 1L;
 
 	private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
@@ -34,16 +38,29 @@ public class PropertiesWithChangeSupport extends Properties
 		propertyChangeSupport.removePropertyChangeListener(propertyName, listener);
 	}
 
+	private String getInstanceID() {
+		return Integer.toHexString(System.identityHashCode(this));
+	}
+
 	@Override
 	public synchronized Object setProperty(String key, String value) {
 		Object previous = super.setProperty(key, value);
+		logger.info("[{}]setProperty: key={} value={} previous={}", new Object[] { getInstanceID(), key, value, previous });
 		propertyChangeSupport.firePropertyChange(key, previous, value);
 		return previous;
 	}
 
 	@Override
+	public String getProperty(String key) {
+		String value = super.getProperty(key);
+		logger.info("[{}]getProperty: key={} value={}", new Object[] { getInstanceID(), key, value });
+		return value;
+	}
+
+	@Override
 	public synchronized Object put(Object key, Object value) {
 		Object previous = super.put(key, value);
+		logger.info("[{}]put: key={} value={} previous={}", new Object[] { getInstanceID(), key, value, previous });
 		propertyChangeSupport.firePropertyChange(String.valueOf(key), previous, value);
 		return previous;
 	}

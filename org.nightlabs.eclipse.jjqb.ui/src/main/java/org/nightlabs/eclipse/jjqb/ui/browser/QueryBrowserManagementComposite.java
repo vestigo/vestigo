@@ -4,9 +4,7 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.Reader;
 import java.io.StringReader;
-import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -15,7 +13,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.UUID;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
@@ -26,13 +23,13 @@ import org.eclipse.datatools.connectivity.ConnectEvent;
 import org.eclipse.datatools.connectivity.IConnectionProfile;
 import org.eclipse.datatools.connectivity.IManagedConnection;
 import org.eclipse.datatools.connectivity.IManagedConnectionOfflineListener;
+import org.eclipse.datatools.connectivity.IProfileListener;
 import org.eclipse.datatools.connectivity.ManagedConnectionAdapter;
 import org.eclipse.datatools.connectivity.ProfileManager;
 import org.eclipse.datatools.connectivity.oda.IConnection;
 import org.eclipse.datatools.connectivity.oda.IQuery;
 import org.eclipse.datatools.connectivity.oda.IResultSet;
 import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
@@ -57,11 +54,7 @@ public abstract class QueryBrowserManagementComposite extends Composite
 
 	private static final String connectionFactoryID = "org.eclipse.datatools.connectivity.oda.IConnection";
 
-	private static final String PREFERENCE_STORE_PREFIX = "queryBrowser.";
-
 	private static final String PROPERTY_LAST_CONNECTION_PROFILE_INSTANCE_ID = "lastConnectionProfile.instanceID";
-
-	private static final String PROPERTY_QUERY_ID = "queryID";
 
 	private static final String QUERY_TEXT_PROPERTIES_BEGIN_MARKER = "------PROPERTIES_BEGIN------";
 	private static final String QUERY_TEXT_PROPERTIES_END_MARKER = "------PROPERTIES_END------";
@@ -74,8 +67,6 @@ public abstract class QueryBrowserManagementComposite extends Composite
 	private Combo connectionProfileCombo;
 	private Button executeQueryButton;
 	private Button loadNextBunchButton;
-
-	private UUID queryID;
 
 	private volatile IQuery query;
 
@@ -97,8 +88,27 @@ public abstract class QueryBrowserManagementComposite extends Composite
 			}
 		});
 
+		ProfileManager.getInstance().addProfileListener(profileListener);
+
 		createControls();
 	}
+
+	private IProfileListener profileListener = new IProfileListener() {
+		@Override
+		public void profileDeleted(IConnectionProfile profile) {
+			populateConnectionProfileCombo();
+		}
+
+		@Override
+		public void profileChanged(IConnectionProfile profile) {
+			populateConnectionProfileCombo();
+		}
+
+		@Override
+		public void profileAdded(IConnectionProfile profile) {
+			populateConnectionProfileCombo();
+		}
+	};
 
 	private void createControls()
 	{
@@ -138,26 +148,22 @@ public abstract class QueryBrowserManagementComposite extends Composite
 		setLoadNextActionEnabled(false);
 	}
 
-	public UUID getQueryID() {
-		return queryID;
+	private boolean isConnectionProfileExisting(IConnectionProfile connectionProfile)
+	{
+		for (IConnectionProfile cp : connectionProfiles) {
+			if (cp.equals(connectionProfile))
+				return true;
+		}
+		return false;
 	}
 
 	private void populateConnectionProfileCombo()
 	{
+//		logger.info("populateConnectionProfileCombo: queryID={}: entered.", queryBrowser.getQueryID());
 		String lastConnProfInstanceID = null;
 		String lastGlobalConnProfInstanceID = null;
 
 		IConnectionProfile selection = getConnectionProfile();
-		IConnectionProfile globalSelection = null;
-
-		if (selection == null) {
-			lastConnProfInstanceID = getProperties(PropertiesType.editor_preferenceStore).getProperty(
-					PROPERTY_LAST_CONNECTION_PROFILE_INSTANCE_ID
-			);
-			lastGlobalConnProfInstanceID = getProperties(PropertiesType.global).getProperty(
-					getImplementationSpecificGlobalPropertyKey(PROPERTY_LAST_CONNECTION_PROFILE_INSTANCE_ID)
-			);
-		}
 
 		connectionProfiles.clear();
 		connectionProfileCombo.removeAll();
@@ -172,6 +178,31 @@ public abstract class QueryBrowserManagementComposite extends Composite
 				return o1.getName().compareTo(o2.getName());
 			}
 		});
+		if (!isConnectionProfileExisting(selection)) // maybe already deleted => check, if still existing.
+			selection = null;
+
+		IConnectionProfile globalSelection = null;
+
+		if (selection == null) {
+			lastConnProfInstanceID = getProperties(PropertiesType.editor_preferenceStore).getProperty(
+					PROPERTY_LAST_CONNECTION_PROFILE_INSTANCE_ID
+			);
+			lastGlobalConnProfInstanceID = getProperties(PropertiesType.global).getProperty(
+					getImplementationSpecificGlobalPropertyKey(PROPERTY_LAST_CONNECTION_PROFILE_INSTANCE_ID)
+			);
+		}
+
+		logger.info(
+				"populateConnectionProfileCombo: queryID={}" +
+				" selection.instanceID={} selection.name={}" +
+				" lastConnProfInstanceID={} lastGlobalConnProfInstanceID={}",
+				new Object[] {
+						queryBrowser.getQueryID(),
+						(selection == null ? null : selection.getInstanceID()),
+						(selection == null ? null : selection.getName()),
+						lastConnProfInstanceID, lastGlobalConnProfInstanceID
+				}
+		);
 
 		for (IConnectionProfile connectionProfile : connectionProfiles) {
 			connectionProfileCombo.add(connectionProfile.getName());
@@ -183,12 +214,41 @@ public abstract class QueryBrowserManagementComposite extends Composite
 			}
 		}
 
-		if (selection == null)
+		if (selection == null) {
+			logger.info(
+					"populateConnectionProfileCombo: queryID={}:" +
+					" No selection! Falling back to globalSelection:" +
+					" globalSelection.instanceID={} globalSelection.name={}",
+					new Object[] {
+							queryBrowser.getQueryID(), (globalSelection == null ? null : globalSelection.getInstanceID()),
+							(globalSelection == null ? null : globalSelection.getName())
+					}
+			);
+
 			selection = globalSelection;
+		}
 
 		if (selection == null) {
-			if (!connectionProfiles.isEmpty())
+			if (!connectionProfiles.isEmpty()) {
 				selection = connectionProfiles.get(0);
+				logger.info(
+						"populateConnectionProfileCombo: queryID={}:" +
+						" No global selection either! Falling back to first existing profile:" +
+						" selection.instanceID={} selection.name={}",
+						new Object[] {
+								(selection == null ? null : selection.getInstanceID()),
+								(selection == null ? null : selection.getName()),
+								queryBrowser.getQueryID()
+						}
+				);
+			}
+			else {
+				logger.info(
+						"populateConnectionProfileCombo: queryID={}:" +
+						" No global selection either! But cannot fall back to first existing profile, because there are no profiles.",
+						queryBrowser.getQueryID()
+				);
+			}
 		}
 
 		setConnectionProfile(selection);
@@ -276,18 +336,38 @@ public abstract class QueryBrowserManagementComposite extends Composite
 
 	private void onSelectConnectionProfile()
 	{
+		logger.info("onSelectConnectionProfile: queryID={}: entered", queryBrowser.getQueryID());
+
 		int connectionProfileIndex = connectionProfileCombo.getSelectionIndex();
 		IConnectionProfile newConnectionProfile = connectionProfileIndex >= 0 ? connectionProfiles.get(connectionProfileIndex) : null;
 		this.connectionProfile = newConnectionProfile;
 		executeQueryButton.setEnabled(this.connectionProfile != null);
-		String connectionProfileInstanceID = newConnectionProfile.getInstanceID();
-		getProperties(PropertiesType.editor_preferenceStore).setProperty(
-				PROPERTY_LAST_CONNECTION_PROFILE_INSTANCE_ID, connectionProfileInstanceID
+		String connectionProfileInstanceID = newConnectionProfile == null ? null : newConnectionProfile.getInstanceID();
+
+		logger.info(
+				"onSelectConnectionProfile: queryID={} connectionProfileInstanceID={} connectionProfileName={}",
+				new Object[] {
+						queryBrowser.getQueryID(), connectionProfileInstanceID,
+						newConnectionProfile == null ? null : newConnectionProfile.getName()
+				}
 		);
-		getProperties(PropertiesType.global).setProperty(
-				getImplementationSpecificGlobalPropertyKey(PROPERTY_LAST_CONNECTION_PROFILE_INSTANCE_ID),
-				connectionProfileInstanceID
-		);
+
+		if (connectionProfileInstanceID != null) {
+			Object oldValue = getProperties(PropertiesType.editor_preferenceStore).setProperty(
+					PROPERTY_LAST_CONNECTION_PROFILE_INSTANCE_ID, connectionProfileInstanceID
+			);
+
+			if (oldValue == null || !oldValue.equals(connectionProfileInstanceID)) {
+				logger.info(
+						"onSelectConnectionProfile: queryID={}: Setting global connection profile: connectionProfileInstanceID={}",
+						queryBrowser.getQueryID(), connectionProfileInstanceID
+				);
+				getProperties(PropertiesType.global).setProperty(
+						getImplementationSpecificGlobalPropertyKey(PROPERTY_LAST_CONNECTION_PROFILE_INSTANCE_ID),
+						connectionProfileInstanceID
+				);
+			}
+		}
 	}
 
 	protected String getImplementationSpecificGlobalPropertyKey(String propertyKey)
@@ -300,6 +380,8 @@ public abstract class QueryBrowserManagementComposite extends Composite
 	protected synchronized void onDispose()
 	{
 		logger.info("onDispose: entered");
+
+		ProfileManager.getInstance().removeProfileListener(profileListener);
 
 		for (org.eclipse.datatools.connectivity.IConnection connection : connectionProfile2connection.values()) {
 			connection.close();
@@ -446,10 +528,6 @@ public abstract class QueryBrowserManagementComposite extends Composite
 		return queryBrowser;
 	}
 
-//	public void setQueryBrowser(QueryBrowser queryBrowser) {
-//		this.queryBrowser = queryBrowser;
-//	}
-
 	public PropertiesWithChangeSupport getProperties(PropertiesType propertiesType)
 	{
 		PropertiesWithChangeSupport properties = propertiesType2Properties.get(propertiesType);
@@ -459,16 +537,18 @@ public abstract class QueryBrowserManagementComposite extends Composite
 		switch (propertiesType) {
 			case global:
 			{
-				String preferenceKey = PREFERENCE_STORE_PREFIX + propertiesType;
-				properties = readPropertiesFromPreferenceStore(preferenceKey);
+				properties = JJQBUIPlugin.getDefault().getProperties(this.getClass().getName() + '.' + propertiesType);
 				break;
 			}
 			case editor_file:
 				throw new IllegalStateException("Cannot lazy-load! Properties for this type should have already been created: " + propertiesType);
 			case editor_preferenceStore:
 			{
-				String preferenceKey = PREFERENCE_STORE_PREFIX + propertiesType + '.' + queryBrowser.getQueryID();
-				properties = readPropertiesFromPreferenceStore(preferenceKey);
+				String queryID = queryBrowser.getQueryID();
+				if (queryID == null)
+					throw new IllegalStateException("queryBrowser.getQueryID() returned null!");
+
+				properties = JJQBUIPlugin.getDefault().getProperties(this.getClass().getName() + '.' + propertiesType + '.' + queryID);
 				break;
 			}
 			default:
@@ -478,52 +558,6 @@ public abstract class QueryBrowserManagementComposite extends Composite
 		propertiesType2Properties.put(propertiesType, properties);
 
 		return properties;
-	}
-
-	private PropertiesWithChangeSupport readPropertiesFromPreferenceStore(final String preferenceKey)
-	{
-		JJQBUIPlugin plugin = JJQBUIPlugin.getDefault();
-		final IPreferenceStore preferenceStore = plugin.getPreferenceStore();
-
-		final PropertiesWithChangeSupport properties = readPropertiesFromString(
-				preferenceStore.getString(preferenceKey)
-		);
-
-		PropertyChangeListener propertyChangeListener = new PropertyChangeListener() {
-			@Override
-			public void propertyChange(PropertyChangeEvent evt) {
-				preferenceStore.setValue(
-						preferenceKey,
-						writePropertiesToString(properties)
-				);
-//				markEditorDirty(); // we do not mark the editor dirty, here, because we save the preference store stuff immediately on change (and we don't need to store the editor).
-			}
-		};
-		properties.addPropertyChangeListener(propertyChangeListener);
-
-		return properties;
-	}
-
-	private PropertiesWithChangeSupport readPropertiesFromString(String data)
-	{
-		PropertiesWithChangeSupport properties = new PropertiesWithChangeSupport();
-		Reader reader = new StringReader(data);
-		try {
-			properties.load(reader);
-		} catch (IOException e) {
-			throw new RuntimeException(e);
-		}
-		return properties;
-	}
-	private String writePropertiesToString(PropertiesWithChangeSupport properties)
-	{
-		StringWriter writer = new StringWriter();
-		try {
-			properties.store(writer, "JDO/JPA Query Browser");
-		} catch (IOException e) {
-			throw new RuntimeException(e);
-		}
-		return writer.toString();
 	}
 
 	public void inputChanged()
@@ -591,13 +625,13 @@ public abstract class QueryBrowserManagementComposite extends Composite
 
 		propertiesType2Properties.put(PropertiesType.editor_file, properties);
 
-		String queryIDString = properties.getProperty(PROPERTY_QUERY_ID);
-		if (queryIDString == null) {
-			queryID = UUID.randomUUID();
-			properties.setProperty(PROPERTY_QUERY_ID, queryID.toString());
-		}
-		else
-			queryID = UUID.fromString(queryIDString);
+//		String queryIDString = properties.getProperty(PROPERTY_QUERY_ID);
+//		if (queryIDString == null) {
+//			queryID = UUID.randomUUID();
+//			properties.setProperty(PROPERTY_QUERY_ID, queryID.toString());
+//		}
+//		else
+//			queryID = UUID.fromString(queryIDString);
 	}
 
 	public void appendPropertiesToQueryText()
