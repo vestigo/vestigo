@@ -1,14 +1,12 @@
 package org.nightlabs.eclipse.jjqb.ui.browser;
 
 import org.eclipse.datatools.connectivity.IConnectionProfile;
-import org.eclipse.swt.widgets.Composite;
 import org.nightlabs.eclipse.jjqb.core.oda.JPADriver;
 
-public class JPAQueryBrowserManagementComposite
-extends QueryBrowserManagementComposite
+public class JPAQueryBrowserManager extends QueryBrowserManager
 {
-	public JPAQueryBrowserManagementComposite(Composite parent, int style, JPAQueryBrowser queryBrowser) {
-		super(parent, style, queryBrowser);
+	public JPAQueryBrowserManager(QueryBrowser queryBrowser) {
+		super(queryBrowser);
 	}
 
 	@Override

@@ -2,6 +2,7 @@ package org.nightlabs.eclipse.jjqb.ui.browser;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.StringReader;
@@ -18,6 +19,7 @@ import java.util.TreeMap;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.ListenerList;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.core.runtime.jobs.Job;
@@ -31,67 +33,81 @@ import org.eclipse.datatools.connectivity.ProfileManager;
 import org.eclipse.datatools.connectivity.oda.IConnection;
 import org.eclipse.datatools.connectivity.oda.IQuery;
 import org.eclipse.datatools.connectivity.oda.IResultSet;
-import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
-import org.eclipse.swt.events.SelectionAdapter;
-import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.layout.FillLayout;
-import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.widgets.Button;
-import org.eclipse.swt.widgets.Combo;
-import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Label;
-import org.eclipse.ui.forms.events.ExpansionAdapter;
-import org.eclipse.ui.forms.events.ExpansionEvent;
-import org.eclipse.ui.forms.widgets.ExpandableComposite;
 import org.nightlabs.eclipse.jjqb.core.PropertiesWithChangeSupport;
 import org.nightlabs.eclipse.jjqb.ui.JJQBUIPlugin;
-import org.nightlabs.eclipse.jjqb.ui.paramtable.QueryParameterComposite;
+import org.nightlabs.eclipse.jjqb.ui.resultsettable.ResultSetTableModel;
 import org.nightlabs.util.Stopwatch;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public abstract class QueryBrowserManagementComposite extends Composite
+public abstract class QueryBrowserManager
 {
-	private static final Logger logger = LoggerFactory.getLogger(QueryBrowserManagementComposite.class);
+	private static final Logger logger = LoggerFactory.getLogger(QueryBrowserManager.class);
+
+	public static enum PropertyName {
+		connectionProfiles,
+		connectionProfile // TODO rename to selectedConnectionProfile - or not?
+	}
 
 	private static final String connectionFactoryID = "org.eclipse.datatools.connectivity.oda.IConnection";
 
 	private static final String PROPERTY_LAST_CONNECTION_PROFILE_INSTANCE_ID = "lastConnectionProfile.instanceID";
-
 	private static final String QUERY_TEXT_PROPERTIES_BEGIN_MARKER = "------PROPERTIES_BEGIN------";
 	private static final String QUERY_TEXT_PROPERTIES_END_MARKER = "------PROPERTIES_END------";
-
 	private static final String QUERY_TEXT_LINE_COMMENT_MARKER = "--";
 
+	private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
+	private QueryBrowser queryBrowser;
 	private Display display;
 
-	private List<IConnectionProfile> connectionProfiles = new ArrayList<IConnectionProfile>();
-	private Combo connectionProfileCombo;
-	private Button executeQueryButton;
-	private Button loadNextBunchButton;
+	private List<IConnectionProfile> connectionProfiles = Collections.unmodifiableList(new ArrayList<IConnectionProfile>());
+	private IConnectionProfile connectionProfile; // TODO rename to selectedConnectionProfile - or not?
 
 	private volatile IQuery query;
-
-	private ExpandableComposite queryParameterExpandableComposite;
-	private QueryParameterComposite queryParameterComposite;
+	private volatile ResultSetTableModel resultSetTableModel;
 
 	private Map<PropertiesType, PropertiesWithChangeSupport> propertiesType2Properties = new HashMap<PropertiesType, PropertiesWithChangeSupport>();
 
-	public QueryBrowserManagementComposite(Composite parent, int style, QueryBrowser queryBrowser) {
-		super(parent, style);
+	private ListenerList executeQueryListeners = new ListenerList();
 
+	private IProfileListener profileListener;
+
+	public QueryBrowserManager(QueryBrowser queryBrowser)
+	{
 		if (queryBrowser == null)
 			throw new IllegalArgumentException("queryBrowser == null");
 
 		this.queryBrowser = queryBrowser;
-		this.display = getShell().getDisplay();
+		this.display = Display.getCurrent();
+		if (this.display == null)
+			throw new IllegalStateException("Thread mismatch! This method must be called on the SWT UI thread!");
+	}
 
-		this.addDisposeListener(new DisposeListener() {
+	private void hookProfileListenerAndDisposeListenerIfNotYetDone()
+	{
+		assertUIThread();
+		if (profileListener != null)
+			return;
+
+		profileListener = new IProfileListener() {
+			@Override
+			public void profileDeleted(IConnectionProfile profile) {
+				populateConnectionProfilesAsync();
+			}
+			@Override
+			public void profileChanged(IConnectionProfile profile) {
+				populateConnectionProfilesAsync();
+			}
+			@Override
+			public void profileAdded(IConnectionProfile profile) {
+				populateConnectionProfilesAsync();
+			}
+		};
+
+		queryBrowser.addDisposeListener(new DisposeListener() {
 			@Override
 			public void widgetDisposed(DisposeEvent event) {
 				onDispose();
@@ -99,99 +115,19 @@ public abstract class QueryBrowserManagementComposite extends Composite
 		});
 
 		ProfileManager.getInstance().addProfileListener(profileListener);
-
-		createControls();
 	}
 
-	private IProfileListener profileListener = new IProfileListener() {
-		@Override
-		public void profileDeleted(IConnectionProfile profile) {
-			populateConnectionProfileComboAsync();
-		}
-		@Override
-		public void profileChanged(IConnectionProfile profile) {
-			populateConnectionProfileComboAsync();
-		}
-		@Override
-		public void profileAdded(IConnectionProfile profile) {
-			populateConnectionProfileComboAsync();
-		}
-	};
-
-	private void createControls()
+	protected void assertUIThread()
 	{
-		this.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-		GridLayout layout = new GridLayout();
-		this.setLayout(layout);
-		layout.numColumns = 4;
-
-		// first row
-		new Label(this, SWT.NONE).setText("Connection: ");
-		createConnectionProfileCombo();
-		createExecuteQueryButton();
-		createLoadNextButton();
-
-		// second row
-		createQueryParameterComposite();
+		Display currentDisplay = Display.getCurrent();
+		if (currentDisplay != display)
+			throw new IllegalStateException("Thread mismatch! This method must be called on the same SWT UI thread as the instance was created!");
 	}
 
-	private void createConnectionProfileCombo()
+	public QueryBrowser getQueryBrowser()
 	{
-		connectionProfileCombo = new Combo(this, SWT.DROP_DOWN | SWT.READ_ONLY);
-		connectionProfileCombo.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-		connectionProfileCombo.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				onSelectConnectionProfile();
-			}
-		});
-	}
-
-	private void createExecuteQueryButton()
-	{
-		executeQueryButton = new Button(this, SWT.PUSH);
-		executeQueryButton.setText("Execute");
-		executeQueryButton.setToolTipText("Execute query");
-		executeQueryButton.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				executeQuery();
-			}
-		});
-	}
-
-	private void createLoadNextButton()
-	{
-		loadNextBunchButton = new Button(this, SWT.PUSH);
-		loadNextBunchButton.setText("Next");
-		loadNextBunchButton.setToolTipText("Load next 100 records");
-		loadNextBunchButton.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				queryBrowser.loadNextActionTriggered(new LoadNextActionEvent());
-			}
-		});
-		setLoadNextActionEnabled(false);
-	}
-
-	private void createQueryParameterComposite()
-	{
-		queryParameterExpandableComposite = new ExpandableComposite(this, SWT.NONE, ExpandableComposite.TWISTIE);
-		queryParameterExpandableComposite.setText("Parameters");
-		GridData gd = new GridData(GridData.FILL_HORIZONTAL);
-		gd.horizontalSpan = ((GridLayout)this.getLayout()).numColumns;
-		queryParameterExpandableComposite.setLayoutData(gd);
-
-		queryParameterExpandableComposite.setLayout(new FillLayout());
-
-		queryParameterComposite = new QueryParameterComposite(queryParameterExpandableComposite, SWT.NONE);
-		queryParameterExpandableComposite.setClient(queryParameterComposite);
-		queryParameterExpandableComposite.addExpansionListener(new ExpansionAdapter() {
-			@Override
-			public void expansionStateChanged(ExpansionEvent e) {
-				getParent().layout(true, true);
-			}
-		});
+		assertUIThread();
+		return queryBrowser;
 	}
 
 	private boolean isConnectionProfileExisting(IConnectionProfile connectionProfile)
@@ -203,25 +139,26 @@ public abstract class QueryBrowserManagementComposite extends Composite
 		return false;
 	}
 
-	private void populateConnectionProfileComboAsync()
+	private void populateConnectionProfilesAsync()
 	{
 		display.asyncExec(new Runnable() {
 			@Override
 			public void run() {
-				populateConnectionProfileCombo();
+				populateConnectionProfiles();
 			}
 		});
 	}
 
-	private void populateConnectionProfileCombo()
+	private void populateConnectionProfiles()
 	{
+		assertUIThread();
+
 		String lastConnProfInstanceID = null;
 		String lastGlobalConnProfInstanceID = null;
 
 		IConnectionProfile selection = getConnectionProfile();
 
-		connectionProfiles.clear();
-		connectionProfileCombo.removeAll();
+		List<IConnectionProfile> connectionProfiles = new ArrayList<IConnectionProfile>();
 		for (IConnectionProfile connectionProfile : ProfileManager.getInstance().getProfiles()) {
 			if (isConnectionProfileCompatible(connectionProfile))
 				connectionProfiles.add(connectionProfile);
@@ -248,7 +185,7 @@ public abstract class QueryBrowserManagementComposite extends Composite
 		}
 
 		logger.info(
-				"populateConnectionProfileCombo: queryID={}" +
+				"populateConnectionProfiles: queryID={}" +
 				" selection.instanceID={} selection.name={}" +
 				" lastConnProfInstanceID={} lastGlobalConnProfInstanceID={}",
 				new Object[] {
@@ -260,7 +197,6 @@ public abstract class QueryBrowserManagementComposite extends Composite
 		);
 
 		for (IConnectionProfile connectionProfile : connectionProfiles) {
-			connectionProfileCombo.add(connectionProfile.getName());
 			if (lastConnProfInstanceID != null && lastConnProfInstanceID.equals(connectionProfile.getInstanceID())) {
 				selection = connectionProfile;
 			}
@@ -271,7 +207,7 @@ public abstract class QueryBrowserManagementComposite extends Composite
 
 		if (selection == null) {
 			logger.info(
-					"populateConnectionProfileCombo: queryID={}:" +
+					"populateConnectionProfiles: queryID={}:" +
 					" No selection! Falling back to globalSelection:" +
 					" globalSelection.instanceID={} globalSelection.name={}",
 					new Object[] {
@@ -287,7 +223,7 @@ public abstract class QueryBrowserManagementComposite extends Composite
 			if (!connectionProfiles.isEmpty()) {
 				selection = connectionProfiles.get(0);
 				logger.info(
-						"populateConnectionProfileCombo: queryID={}:" +
+						"populateConnectionProfiles: queryID={}:" +
 						" No global selection either! Falling back to first existing profile:" +
 						" selection.instanceID={} selection.name={}",
 						new Object[] {
@@ -299,12 +235,18 @@ public abstract class QueryBrowserManagementComposite extends Composite
 			}
 			else {
 				logger.info(
-						"populateConnectionProfileCombo: queryID={}:" +
+						"populateConnectionProfiles: queryID={}:" +
 						" No global selection either! But cannot fall back to first existing profile, because there are no profiles.",
 						queryBrowser.getQueryID()
 				);
 			}
 		}
+
+		List<IConnectionProfile> oldConnectionProfiles = this.connectionProfiles;
+		this.connectionProfiles = Collections.unmodifiableList(connectionProfiles);
+		propertyChangeSupport.firePropertyChange(
+				PropertyName.connectionProfiles.name(), oldConnectionProfiles, this.connectionProfiles
+		);
 
 		setConnectionProfile(selection);
 	}
@@ -327,7 +269,7 @@ public abstract class QueryBrowserManagementComposite extends Composite
 			IConnectionProfile connectionProfile = event.getConnectionProfile();
 
 			org.eclipse.datatools.connectivity.IConnection connection;
-			synchronized (QueryBrowserManagementComposite.this) {
+			synchronized (QueryBrowserManager.this) {
 				connection = connectionProfile2connection.remove(connectionProfile);
 				managedConnection.removeConnectionListener(this);
 				managedConnectionsWithRegisteredListener.remove(managedConnection);
@@ -363,40 +305,30 @@ public abstract class QueryBrowserManagementComposite extends Composite
 		return (IConnection) connection.getRawConnection();
 	}
 
+	public List<IConnectionProfile> getConnectionProfiles() {
+		assertUIThread();
+		return connectionProfiles;
+	}
+
 	/**
 	 * Get the current connection profile. If there is none currently selected, returns <code>null</code>.
 	 * @return the current connection profile or <code>null</code>.
 	 */
 	public IConnectionProfile getConnectionProfile()
 	{
-//		if (connectionProfileCombo == null)
-//			return null;
-//
-//		int selectionIndex = connectionProfileCombo.getSelectionIndex();
-//		if (selectionIndex < 0)
-//			return null;
-//
-//		return connectionProfiles.get(selectionIndex);
+		assertUIThread();
 		return connectionProfile;
 	}
 
 	public void setConnectionProfile(IConnectionProfile connectionProfile)
 	{
-		int idx = connectionProfiles.indexOf(connectionProfile);
-		connectionProfileCombo.select(idx);
-		onSelectConnectionProfile();
-	}
+		logger.info("setConnectionProfile: queryID={}: entered", queryBrowser.getQueryID());
 
-	private IConnectionProfile connectionProfile;
-
-	private void onSelectConnectionProfile()
-	{
-		logger.info("onSelectConnectionProfile: queryID={}: entered", queryBrowser.getQueryID());
-
-		int connectionProfileIndex = connectionProfileCombo.getSelectionIndex();
+		int connectionProfileIndex = connectionProfiles.indexOf(connectionProfile);
 		IConnectionProfile newConnectionProfile = connectionProfileIndex >= 0 ? connectionProfiles.get(connectionProfileIndex) : null;
+		IConnectionProfile oldConnectionProfile = this.connectionProfile;
 		this.connectionProfile = newConnectionProfile;
-		executeQueryButton.setEnabled(this.connectionProfile != null);
+
 		String connectionProfileInstanceID = newConnectionProfile == null ? null : newConnectionProfile.getInstanceID();
 
 		logger.info(
@@ -423,6 +355,10 @@ public abstract class QueryBrowserManagementComposite extends Composite
 				);
 			}
 		}
+
+		propertyChangeSupport.firePropertyChange(
+				PropertyName.connectionProfile.name(), oldConnectionProfile, newConnectionProfile
+		);
 	}
 
 	protected String getImplementationSpecificGlobalPropertyKey(String propertyKey)
@@ -449,20 +385,9 @@ public abstract class QueryBrowserManagementComposite extends Composite
 		managedConnectionsWithRegisteredListener.clear();
 	}
 
-	private ExecuteQueryCallback getExecuteQueryCallback()
+	public void executeQuery()
 	{
-		QueryBrowser qb = queryBrowser;
-		return qb == null ? null : qb.getExecuteQueryCallback();
-	}
-
-	private void executeQuery()
-	{
-		final ExecuteQueryCallback executeQueryCallback = getExecuteQueryCallback();
-		if (executeQueryCallback == null)
-			throw new IllegalStateException("No ExecuteQueryCallback set!");
-
-		setLoadNextActionEnabled(false);
-		executeQueryCallback.preExecuteQuery();
+		assertUIThread();
 
 		final QueryContext queryContext = new QueryContext();
 
@@ -474,29 +399,34 @@ public abstract class QueryBrowserManagementComposite extends Composite
 
 		queryContext.setQueryText(queryBrowser.getQueryText());
 
+		ExecuteQueryEvent executeQueryEvent = new ExecuteQueryEvent(queryContext);
+		for (Object l : executeQueryListeners.getListeners())
+			((ExecuteQueryListener)l).preExecuteQuery(executeQueryEvent);
+
+		final ResultSetTableModel[] resultSetTableModel = new ResultSetTableModel[1];
+
 		Job job = new Job("Executing query...") {
 			@Override
 			protected IStatus run(IProgressMonitor monitor) {
 				try {
-					executeQuery(executeQueryCallback, queryContext, monitor);
-				} catch (final Exception x) {
+					resultSetTableModel[0] = executeQuery(queryContext, monitor);
+				} catch (final Throwable x) {
 					logger.error("Executing query failed: " + x, x);
 					display.asyncExec(new Runnable() {
 						@Override
 						public void run() {
-							if (!executeQueryCallback.handleExecuteQueryException(x)) {
-								MessageDialog.openError(
-										getShell(), "Error executing query",
-										"Executing query failed: " + x // Util.getStackTraceAsString(x)
-								);
-							};
+							ExecuteQueryEvent executeQueryEvent = new ExecuteQueryEvent(queryContext, x);
+							for (Object l : executeQueryListeners.getListeners())
+								((ExecuteQueryListener)l).onExecuteQueryError(executeQueryEvent);
 						}
 					});
 				} finally {
 					display.asyncExec(new Runnable() {
 						@Override
 						public void run() {
-							QueryBrowserManagementComposite.this.setEnabled(true);
+							ExecuteQueryEvent executeQueryEvent = new ExecuteQueryEvent(queryContext, resultSetTableModel[0]);
+							for (Object l : executeQueryListeners.getListeners())
+								((ExecuteQueryListener)l).postExecuteQuery(executeQueryEvent);
 						}
 					});
 				}
@@ -505,11 +435,12 @@ public abstract class QueryBrowserManagementComposite extends Composite
 
 		};
 		job.setUser(true);
-		this.setEnabled(false);
+		// TODO file event
+//		this.setEnabled(false);
 		job.schedule();
 	}
 
-	private synchronized void executeQuery(final ExecuteQueryCallback executeQueryCallback, final QueryContext queryContext, IProgressMonitor monitor)
+	private synchronized ResultSetTableModel executeQuery(final QueryContext queryContext, IProgressMonitor monitor)
 	throws Exception
 	{
 		IQuery oldQuery = this.query;
@@ -517,8 +448,11 @@ public abstract class QueryBrowserManagementComposite extends Composite
 			this.query = null;
 			oldQuery.close();
 		}
+		this.resultSetTableModel = null;
 
-		executeQueryCallback.preExecuteQuery(queryContext, new SubProgressMonitor(monitor, 50)); // TODO progressmonitor
+		ExecuteQueryEvent executeQueryEvent = new ExecuteQueryEvent(queryContext);
+		for (Object l : executeQueryListeners.getListeners())
+			((ExecuteQueryListener)l).preExecuteQuery(executeQueryEvent, new SubProgressMonitor(monitor, 50)); // TODO progressmonitor
 
 		Stopwatch stopwatch = new Stopwatch();
 
@@ -532,19 +466,19 @@ public abstract class QueryBrowserManagementComposite extends Composite
 		q.prepare(queryContext.getQueryText());
 		stopwatch.stop("00.query.prepare");
 
-		stopwatch.start("10.query.executeQuery");
-		final IResultSet rs = q.executeQuery();
-		stopwatch.stop("10.query.executeQuery");
-
-		executeQueryCallback.postExecuteQuery(queryContext, rs, new SubProgressMonitor(monitor, 50)); // TODO progressmonitor
-
-		display.asyncExec(new Runnable() {
-			@Override
-			public void run() {
-				setLoadNextActionEnabled(true);
-				executeQueryCallback.postExecuteQuery(queryContext, rs);
-			}
-		});
+		IResultSet resultSet = null;
+		ResultSetTableModel resultSetTableModel = null;
+		try {
+			stopwatch.start("10.query.executeQuery");
+			resultSet = q.executeQuery();
+			resultSetTableModel = new ResultSetTableModel(resultSet);
+			this.resultSetTableModel = resultSetTableModel;
+			stopwatch.stop("10.query.executeQuery");
+		} finally {
+			executeQueryEvent = new ExecuteQueryEvent(queryContext, resultSetTableModel);
+			for (Object l : executeQueryListeners.getListeners())
+				((ExecuteQueryListener)l).postExecuteQuery(executeQueryEvent, new SubProgressMonitor(monitor, 50)); // TODO progressmonitor
+		}
 
 //		// BEGIN performance test: iterate entire result set
 //		stopwatch.start("20.query.executeQuery");
@@ -565,26 +499,12 @@ public abstract class QueryBrowserManagementComposite extends Composite
 //		// END performance test: iterate entire result set
 
 		logger.info("executeQuery: {}", stopwatch.createHumanReport(true));
-	}
-
-	public void setLoadNextActionEnabled(boolean enabled)
-	{
-		loadNextBunchButton.setEnabled(enabled);
-	}
-
-	public boolean isLoadNextActionEnabled()
-	{
-		return loadNextBunchButton.getEnabled();
-	}
-
-	private QueryBrowser queryBrowser;
-
-	public QueryBrowser getQueryBrowser() {
-		return queryBrowser;
+		return resultSetTableModel;
 	}
 
 	public PropertiesWithChangeSupport getProperties(PropertiesType propertiesType)
 	{
+		assertUIThread();
 		PropertiesWithChangeSupport properties = propertiesType2Properties.get(propertiesType);
 		if (properties != null)
 			return properties;
@@ -615,17 +535,24 @@ public abstract class QueryBrowserManagementComposite extends Composite
 		return properties;
 	}
 
-	public void inputChanged()
+	public void editorInputChanged()
 	{
+		assertUIThread();
 		propertiesType2Properties.remove(PropertiesType.editor_file);
 		propertiesType2Properties.remove(PropertiesType.editor_preferenceStore);
 
+		hookProfileListenerAndDisposeListenerIfNotYetDone();
 		extractAndRemovePropertiesFromQueryText();
-		populateConnectionProfileCombo();
+		populateConnectionProfiles();
+	}
+
+	public ResultSetTableModel getResultSetTableModel() {
+		return resultSetTableModel;
 	}
 
 	public void extractAndRemovePropertiesFromQueryText()
 	{
+		assertUIThread();
 		String queryText = queryBrowser.getQueryText();
 		int indexOfBegin = queryText.indexOf(QUERY_TEXT_PROPERTIES_BEGIN_MARKER);
 		int indexOfEnd = queryText.indexOf(QUERY_TEXT_PROPERTIES_END_MARKER);
@@ -683,6 +610,7 @@ public abstract class QueryBrowserManagementComposite extends Composite
 
 	public void appendPropertiesToQueryText()
 	{
+		assertUIThread();
 		String queryText = queryBrowser.getQueryText();
 
 		StringBuilder sb = new StringBuilder();
@@ -725,5 +653,35 @@ public abstract class QueryBrowserManagementComposite extends Composite
 	private void markEditorDirty()
 	{
 		// TODO mark editor dirty
+	}
+
+	public void addPropertyChangeListener(PropertyChangeListener listener) {
+		assertUIThread();
+		propertyChangeSupport.addPropertyChangeListener(listener);
+	}
+
+	public void removePropertyChangeListener(PropertyChangeListener listener) {
+		assertUIThread();
+		propertyChangeSupport.removePropertyChangeListener(listener);
+	}
+
+	public void addPropertyChangeListener(PropertyName propertyName, PropertyChangeListener listener) {
+		assertUIThread();
+		propertyChangeSupport.addPropertyChangeListener(propertyName.name(), listener);
+	}
+
+	public void removePropertyChangeListener(PropertyName propertyName, PropertyChangeListener listener) {
+		assertUIThread();
+		propertyChangeSupport.removePropertyChangeListener(propertyName.name(), listener);
+	}
+
+	public void addExecuteQueryListener(ExecuteQueryListener listener) {
+		assertUIThread();
+		executeQueryListeners.add(listener);
+	}
+
+	public void removeExecuteQueryListener(ExecuteQueryListener listener) {
+		assertUIThread();
+		executeQueryListeners.remove(listener);
 	}
 }

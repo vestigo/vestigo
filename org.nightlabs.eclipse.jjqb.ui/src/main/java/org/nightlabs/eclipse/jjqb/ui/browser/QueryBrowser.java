@@ -5,6 +5,9 @@ import java.io.IOException;
 import java.net.URLEncoder;
 
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.ListenerList;
+import org.eclipse.swt.events.DisposeEvent;
+import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IPathEditorInput;
 import org.nightlabs.util.IOUtil;
@@ -15,6 +18,7 @@ public interface QueryBrowser
 	static final class Helper
 	{
 		private QueryBrowser queryBrowser;
+		private ListenerList disposeListenerList = new ListenerList();
 
 		public Helper(final QueryBrowser queryBrowser) {
 			this.queryBrowser = queryBrowser;
@@ -35,6 +39,20 @@ public interface QueryBrowser
 			}
 			throw new IllegalArgumentException("Unknown implementation of IEditorInput: " + editorInput);
 		}
+
+		public void addDisposeListener(DisposeListener listener)
+		{
+			disposeListenerList.add(listener);
+		}
+		public void removeDisposeListener(DisposeListener listener)
+		{
+			disposeListenerList.add(listener);
+		}
+		public void fireDisposeListeners(DisposeEvent disposeEvent)
+		{
+			for (Object l : disposeListenerList.getListeners())
+				((DisposeListener)l).widgetDisposed(disposeEvent);
+		}
 	}
 
 	IEditorInput getEditorInput();
@@ -50,7 +68,6 @@ public interface QueryBrowser
 
 	void setQueryText(String queryText);
 
-	ExecuteQueryCallback getExecuteQueryCallback();
-
-	void loadNextActionTriggered(LoadNextActionEvent loadNextActionEvent);
+	void addDisposeListener(DisposeListener disposeListener);
+	void removeDisposeListener(DisposeListener disposeListener);
 }

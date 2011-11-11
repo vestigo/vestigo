@@ -1,12 +1,11 @@
 package org.nightlabs.eclipse.jjqb.ui.browser;
 
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.datatools.connectivity.oda.IResultSet;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.SashForm;
+import org.eclipse.swt.events.DisposeEvent;
+import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -29,7 +28,8 @@ implements JPAQueryBrowser
 	private Helper helper = new Helper(this);
 	private SashForm partControl;
 
-	private QueryBrowserManagementComposite managementComposite;
+	private QueryBrowserManager queryBrowserManager = new JPAQueryBrowserManager(this);
+	private QueryBrowserManagerComposite queryBrowserManagerComposite;
 
 	private Composite queryEditorComposite;
 	private ResultSetTableComposite resultSetTableComposite;
@@ -43,20 +43,27 @@ implements JPAQueryBrowser
 	@Override
 	public void createPartControl(Composite parent)
 	{
+		parent.addDisposeListener(new DisposeListener() {
+			@Override
+			public void widgetDisposed(DisposeEvent e) {
+				helper.fireDisposeListeners(e);
+			}
+		});
+		queryBrowserManager.addExecuteQueryListener(executeQueryListener);
+
 		partControl = new SashForm(parent, SWT.VERTICAL);
 		queryEditorComposite = new Composite(partControl, SWT.BORDER);
 		queryEditorComposite.setLayout(new GridLayout());
 
 		super.createPartControl(queryEditorComposite);
 
-		managementComposite = new JPAQueryBrowserManagementComposite(
-				queryEditorComposite, SWT.BORDER, this
+		queryBrowserManagerComposite = new QueryBrowserManagerComposite(
+				queryEditorComposite, SWT.BORDER
 		);
-		if (getEditorInput() != null)
-			managementComposite.inputChanged();
+		queryBrowserManagerComposite.setQueryBrowserManager(queryBrowserManager);
 
 		for (Control c : queryEditorComposite.getChildren()) {
-			if (c != managementComposite)
+			if (c != queryBrowserManagerComposite)
 				c.setLayoutData(new GridData(GridData.FILL_BOTH));
 		}
 
@@ -65,8 +72,12 @@ implements JPAQueryBrowser
 	}
 
 	@Override
-	public ExecuteQueryCallback getExecuteQueryCallback() {
-		return executeQueryCallback;
+	public void addDisposeListener(DisposeListener disposeListener) {
+		helper.addDisposeListener(disposeListener);
+	}
+	@Override
+	public void removeDisposeListener(DisposeListener disposeListener) {
+		helper.addDisposeListener(disposeListener);
 	}
 
 	@Override
@@ -79,47 +90,40 @@ implements JPAQueryBrowser
 		getDocumentProvider().getDocument(getEditorInput()).set(queryText);
 	}
 
-	private ExecuteQueryCallback executeQueryCallback = new AbstractExecuteQueryCallback() {
-
+	private ExecuteQueryListener executeQueryListener = new ExecuteQueryAdapter()
+	{
 		@Override
-		public void preExecuteQuery() {
+		public void preExecuteQuery(ExecuteQueryEvent executeQueryEvent) {
 			resultSetTableComposite.setInput(null);
 		}
 
 		@Override
-		public void postExecuteQuery(QueryContext queryContext, IResultSet rs) {
-			resultSetTableModel = new ResultSetTableModel(rs);
-			resultSetTableModel.addPropertyChangeListener(ResultSetTableModel.PROPERTY_CHANGE_COMPLETELY_LOADED, new PropertyChangeListener() {
-				@Override
-				public void propertyChange(PropertyChangeEvent evt) {
-					managementComposite.setLoadNextActionEnabled((Boolean)evt.getNewValue() == false);
-				}
-			});
+		public void postExecuteQuery(ExecuteQueryEvent executeQueryEvent) {
+			resultSetTableModel = executeQueryEvent.getResultSetTableModel();
 			resultSetTableComposite.setInput(resultSetTableModel);
+		}
+
+		@Override
+		public void onExecuteQueryError(ExecuteQueryEvent executeQueryEvent) {
+			MessageDialog.openError(
+					getEditorSite().getShell(), "Error executing query",
+					"Executing query failed: " + executeQueryEvent.getError() // Util.getStackTraceAsString(x)
+			);
 		}
 	};
 
 	@Override
 	public void init(IEditorSite site, IEditorInput input) throws PartInitException
 	{
-//		this.display = site.getShell().getDisplay();
 		super.init(site, input);
-		if (managementComposite != null)
-			managementComposite.inputChanged();
+		queryBrowserManager.editorInputChanged();
 	}
 
 	@Override
 	public void doSave(IProgressMonitor progressMonitor) {
-		managementComposite.appendPropertiesToQueryText();
+		queryBrowserManager.appendPropertiesToQueryText();
 		super.doSave(progressMonitor);
-		managementComposite.extractAndRemovePropertiesFromQueryText();
+		queryBrowserManager.extractAndRemovePropertiesFromQueryText();
 //		firePropertyChange(IEditorPart.PROP_DIRTY);
-	}
-
-	@Override
-	public void loadNextActionTriggered(LoadNextActionEvent loadNextActionEvent) {
-		ResultSetTableModel model = resultSetTableModel;
-		if (model != null)
-			model.loadNextBunch();
 	}
 }

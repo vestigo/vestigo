@@ -19,16 +19,20 @@ public class ResultSetTableModel
 extends AbstractConcurrentModel
 implements IConcurrentModel // not necessary - just convenient to see the javadoc when hovering/selecting it
 {
+	public static enum PropertyName {
+		/**
+		 * @see #isCompletelyLoaded()
+		 */
+		completelyLoaded
+	}
+
 	private volatile Object[] rowsLoadedArray;
 	private List<ResultSetTableRow> rowsLoaded = new ArrayList<ResultSetTableRow>();
 	private IResultSet resultSet;
 	private Object mutex = this;
 	private boolean initialLoadDone = false;
 
-	/**
-	 * @see #isCompletelyLoaded()
-	 */
-	public static final String PROPERTY_CHANGE_COMPLETELY_LOADED = "completelyLoaded";
+	private boolean completelyLoaded;
 
 	private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
@@ -58,16 +62,16 @@ implements IConcurrentModel // not necessary - just convenient to see the javado
 	 * Add a listener that is triggered on the SWT UI thread when a property changes.
 	 * @param propertyName
 	 * @param listener
-	 * @see #PROPERTY_CHANGE_COMPLETELY_LOADED
+	 * @see PropertyName
 	 */
-	public void addPropertyChangeListener(String propertyName, PropertyChangeListener listener) {
+	public void addPropertyChangeListener(PropertyName propertyName, PropertyChangeListener listener) {
 		determineDisplay();
-		propertyChangeSupport.addPropertyChangeListener(propertyName, listener);
+		propertyChangeSupport.addPropertyChangeListener(propertyName.name(), listener);
 	}
 
-	public void removePropertyChangeListener(String propertyName, PropertyChangeListener listener) {
+	public void removePropertyChangeListener(PropertyName propertyName, PropertyChangeListener listener) {
 		determineDisplay();
-		propertyChangeSupport.removePropertyChangeListener(propertyName, listener);
+		propertyChangeSupport.removePropertyChangeListener(propertyName.name(), listener);
 	}
 
 	public IResultSet getResultSet() {
@@ -137,7 +141,7 @@ implements IConcurrentModel // not necessary - just convenient to see the javado
 							display.asyncExec(new Runnable() {
 								@Override
 								public void run() {
-									propertyChangeSupport.firePropertyChange(PROPERTY_CHANGE_COMPLETELY_LOADED, !completelyLoaded, completelyLoaded);
+									propertyChangeSupport.firePropertyChange(PropertyName.completelyLoaded.name(), !completelyLoaded, completelyLoaded);
 								}
 							});
 						}
@@ -154,8 +158,6 @@ implements IConcurrentModel // not necessary - just convenient to see the javado
 		loadNextBunchJob = job;
 		job.schedule();
 	}
-
-	private boolean completelyLoaded;
 
 	public boolean isCompletelyLoaded() {
 		return completelyLoaded;
