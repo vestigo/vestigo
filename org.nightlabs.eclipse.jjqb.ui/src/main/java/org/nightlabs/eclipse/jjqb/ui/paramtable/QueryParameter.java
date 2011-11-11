@@ -1,4 +1,4 @@
-package org.nightlabs.eclipse.jjqb.ui.param;
+package org.nightlabs.eclipse.jjqb.ui.paramtable;
 
 import java.io.Serializable;
 
@@ -9,22 +9,37 @@ implements Serializable, Comparable<QueryParameter>
 
 	private int index;
 	private String name;
+	private Class<?> type;
 	private Object value;
 
-	public QueryParameter(int index, String name, Object value) {
+	public QueryParameter(int index, String name) {
 		this.index = index;
 		this.name = name;
-		this.value = value;
 	}
 
 	public int getIndex() {
 		return index;
 	}
+	public void setIndex(int index) {
+		this.index = index;
+	}
 	public String getName() {
 		return name;
 	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public Class<?> getType() {
+		return type;
+	}
+	public void setType(Class<?> type) {
+		this.type = type;
+	}
 	public Object getValue() {
 		return value;
+	}
+	public void setValue(Object value) {
+		this.value = value;
 	}
 
 	@Override

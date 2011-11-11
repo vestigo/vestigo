@@ -6,7 +6,6 @@ import java.util.Map;
 
 import org.nightlabs.eclipse.jjqb.core.childvm.ChildVM;
 
-
 /**
  * <p>
  * Reference to a field of an object that is located in the {@link ChildVM}.

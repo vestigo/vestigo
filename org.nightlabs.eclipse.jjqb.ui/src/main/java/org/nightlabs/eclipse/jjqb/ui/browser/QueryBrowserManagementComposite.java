@@ -13,6 +13,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.SortedMap;
+import java.util.TreeMap;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
@@ -35,6 +37,7 @@ import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
@@ -42,8 +45,12 @@ import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.ui.forms.events.ExpansionAdapter;
+import org.eclipse.ui.forms.events.ExpansionEvent;
+import org.eclipse.ui.forms.widgets.ExpandableComposite;
 import org.nightlabs.eclipse.jjqb.core.PropertiesWithChangeSupport;
 import org.nightlabs.eclipse.jjqb.ui.JJQBUIPlugin;
+import org.nightlabs.eclipse.jjqb.ui.paramtable.QueryParameterTableComposite;
 import org.nightlabs.util.Stopwatch;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -69,6 +76,12 @@ public abstract class QueryBrowserManagementComposite extends Composite
 	private Button loadNextBunchButton;
 
 	private volatile IQuery query;
+
+	private ExpandableComposite parameterExpandableComposite;
+	private Composite parameterClientComposite;
+	private QueryParameterTableComposite parameterTableComposite;
+	private Button addParameterButton;
+	private Button removeParameterButton;
 
 	private Map<PropertiesType, PropertiesWithChangeSupport> propertiesType2Properties = new HashMap<PropertiesType, PropertiesWithChangeSupport>();
 
@@ -114,7 +127,19 @@ public abstract class QueryBrowserManagementComposite extends Composite
 		GridLayout layout = new GridLayout();
 		this.setLayout(layout);
 		layout.numColumns = 4;
+
+		// first row
 		new Label(this, SWT.NONE).setText("Connection: ");
+		createConnectionProfileCombo();
+		createExecuteQueryButton();
+		createLoadNextButton();
+
+		// second row
+		createParameterComposite();
+	}
+
+	private void createConnectionProfileCombo()
+	{
 		connectionProfileCombo = new Combo(this, SWT.DROP_DOWN | SWT.READ_ONLY);
 		connectionProfileCombo.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 		connectionProfileCombo.addSelectionListener(new SelectionAdapter() {
@@ -123,7 +148,10 @@ public abstract class QueryBrowserManagementComposite extends Composite
 				onSelectConnectionProfile();
 			}
 		});
+	}
 
+	private void createExecuteQueryButton()
+	{
 		executeQueryButton = new Button(this, SWT.PUSH);
 		executeQueryButton.setText("Execute");
 		executeQueryButton.setToolTipText("Execute query");
@@ -133,7 +161,10 @@ public abstract class QueryBrowserManagementComposite extends Composite
 				executeQuery();
 			}
 		});
+	}
 
+	private void createLoadNextButton()
+	{
 		loadNextBunchButton = new Button(this, SWT.PUSH);
 		loadNextBunchButton.setText("Next");
 		loadNextBunchButton.setToolTipText("Load next 100 records");
@@ -144,6 +175,43 @@ public abstract class QueryBrowserManagementComposite extends Composite
 			}
 		});
 		setLoadNextActionEnabled(false);
+	}
+
+	private void createParameterComposite()
+	{
+		parameterExpandableComposite = new ExpandableComposite(this, SWT.NONE, ExpandableComposite.TWISTIE);
+		parameterExpandableComposite.setText("Parameters");
+		GridData gd = new GridData(GridData.FILL_HORIZONTAL);
+		gd.horizontalSpan = ((GridLayout)this.getLayout()).numColumns;
+		parameterExpandableComposite.setLayoutData(gd);
+
+		parameterExpandableComposite.setLayout(new FillLayout());
+
+		parameterClientComposite = new Composite(parameterExpandableComposite, SWT.NONE);
+		GridLayout layout = new GridLayout();
+		layout.numColumns = 2;
+		parameterClientComposite.setLayout(layout);
+
+		parameterTableComposite = new QueryParameterTableComposite(parameterClientComposite, SWT.BORDER);
+		gd = new GridData(GridData.FILL_BOTH);
+		gd.verticalSpan = 2;
+		parameterTableComposite.setLayoutData(gd);
+
+		parameterExpandableComposite.setClient(parameterClientComposite);
+		parameterExpandableComposite.addExpansionListener(new ExpansionAdapter() {
+			@Override
+			public void expansionStateChanged(ExpansionEvent e) {
+				getParent().layout(true, true);
+			}
+		});
+
+		addParameterButton = new Button(parameterClientComposite, SWT.PUSH);
+		addParameterButton.setText("+");
+		addParameterButton.setToolTipText("Add a new parameter.");
+
+		removeParameterButton = new Button(parameterClientComposite, SWT.PUSH);
+		removeParameterButton.setText("-");
+		removeParameterButton.setToolTipText("Remove the selected parameter(s).");
 	}
 
 	private boolean isConnectionProfileExisting(IConnectionProfile connectionProfile)
@@ -631,14 +699,6 @@ public abstract class QueryBrowserManagementComposite extends Composite
 		}
 
 		propertiesType2Properties.put(PropertiesType.editor_file, properties);
-
-//		String queryIDString = properties.getProperty(PROPERTY_QUERY_ID);
-//		if (queryIDString == null) {
-//			queryID = UUID.randomUUID();
-//			properties.setProperty(PROPERTY_QUERY_ID, queryID.toString());
-//		}
-//		else
-//			queryID = UUID.fromString(queryIDString);
 	}
 
 	public void appendPropertiesToQueryText()
@@ -649,7 +709,8 @@ public abstract class QueryBrowserManagementComposite extends Composite
 		sb.append(queryText).append('\n').append(QUERY_TEXT_PROPERTIES_BEGIN_MARKER);
 
 		PropertiesWithChangeSupport properties = getProperties(PropertiesType.editor_file);
-		for (Map.Entry<?, ?> me : properties.entrySet())
+		SortedMap<?, ?> propertiesSorted = new TreeMap<Object, Object>(properties);
+		for (Map.Entry<?, ?> me : propertiesSorted.entrySet())
 			sb.append('\n').append(me.getKey()).append('=').append(me.getValue());
 
 		sb.append('\n').append(QUERY_TEXT_PROPERTIES_END_MARKER).append('\n');
