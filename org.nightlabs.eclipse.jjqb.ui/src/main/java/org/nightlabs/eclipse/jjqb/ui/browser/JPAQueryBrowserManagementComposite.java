@@ -2,7 +2,7 @@ package org.nightlabs.eclipse.jjqb.ui.browser;
 
 import org.eclipse.datatools.connectivity.IConnectionProfile;
 import org.eclipse.swt.widgets.Composite;
-import org.nightlabs.eclipse.jjqb.core.JPADriver;
+import org.nightlabs.eclipse.jjqb.core.oda.JPADriver;
 
 public class JPAQueryBrowserManagementComposite
 extends QueryBrowserManagementComposite

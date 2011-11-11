@@ -96,17 +96,15 @@ public abstract class QueryBrowserManagementComposite extends Composite
 	private IProfileListener profileListener = new IProfileListener() {
 		@Override
 		public void profileDeleted(IConnectionProfile profile) {
-			populateConnectionProfileCombo();
+			populateConnectionProfileComboAsync();
 		}
-
 		@Override
 		public void profileChanged(IConnectionProfile profile) {
-			populateConnectionProfileCombo();
+			populateConnectionProfileComboAsync();
 		}
-
 		@Override
 		public void profileAdded(IConnectionProfile profile) {
-			populateConnectionProfileCombo();
+			populateConnectionProfileComboAsync();
 		}
 	};
 
@@ -157,9 +155,18 @@ public abstract class QueryBrowserManagementComposite extends Composite
 		return false;
 	}
 
+	private void populateConnectionProfileComboAsync()
+	{
+		display.asyncExec(new Runnable() {
+			@Override
+			public void run() {
+				populateConnectionProfileCombo();
+			}
+		});
+	}
+
 	private void populateConnectionProfileCombo()
 	{
-//		logger.info("populateConnectionProfileCombo: queryID={}: entered.", queryBrowser.getQueryID());
 		String lastConnProfInstanceID = null;
 		String lastGlobalConnProfInstanceID = null;
 

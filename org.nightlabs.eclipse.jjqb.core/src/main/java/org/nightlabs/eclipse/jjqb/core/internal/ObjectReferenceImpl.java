@@ -7,8 +7,8 @@ import org.nightlabs.eclipse.jjqb.childvm.shared.ResultCellDTO;
 import org.nightlabs.eclipse.jjqb.childvm.shared.ResultCellObjectRefDTO;
 import org.nightlabs.eclipse.jjqb.core.ObjectReference;
 import org.nightlabs.eclipse.jjqb.core.ObjectReferenceChild;
-import org.nightlabs.eclipse.jjqb.core.ResultSet;
 import org.nightlabs.eclipse.jjqb.core.childvm.ChildVM;
+import org.nightlabs.eclipse.jjqb.core.oda.ResultSet;
 import org.nightlabs.util.Util;
 
 public class ObjectReferenceImpl implements ObjectReference

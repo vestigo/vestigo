@@ -52,6 +52,8 @@ implements JPAQueryBrowser
 		managementComposite = new JPAQueryBrowserManagementComposite(
 				queryEditorComposite, SWT.BORDER, this
 		);
+		if (getEditorInput() != null)
+			managementComposite.inputChanged();
 
 		for (Control c : queryEditorComposite.getChildren()) {
 			if (c != managementComposite)
@@ -102,7 +104,8 @@ implements JPAQueryBrowser
 	{
 //		this.display = site.getShell().getDisplay();
 		super.init(site, input);
-		managementComposite.inputChanged();
+		if (managementComposite != null)
+			managementComposite.inputChanged();
 	}
 
 	@Override

@@ -4,6 +4,7 @@ import java.lang.reflect.Field;
 import java.util.List;
 
 import org.nightlabs.eclipse.jjqb.core.childvm.ChildVM;
+import org.nightlabs.eclipse.jjqb.core.oda.ResultSet;
 
 /**
  * <p>
