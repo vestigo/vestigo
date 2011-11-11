@@ -38,41 +38,12 @@ public class ObjectGraphDetailTreeNode
 	}
 
 	public String getLabelText() {
-		if (object instanceof ObjectReferenceChild) {
-			ObjectReferenceChild child = (ObjectReferenceChild) object;
-			StringBuilder label = new StringBuilder();
-			Object childValue = child.getValue();
-
-//			if (child.getOwner().getAssociatedObjectReferenceChild() != null)
-//				label.append(child.getOwner().getAssociatedObjectReferenceChild());
-
-			if (child.getFieldDesc() != null && child.getFieldDesc().getFieldName() != null)
-				label.append(child.getFieldDesc().getFieldName()).append(": ");
-
-			if (childValue instanceof ObjectReference)
-				label.append(getObjectReferenceLabelText((ObjectReference) childValue));
-			else
-				label.append(String.valueOf(childValue));
-
-			return label.toString();
-		}
-		else if (object instanceof ObjectReference) {
-			return getObjectReferenceLabelText((ObjectReference) object);
-		}
-
-		return String.valueOf(object);
-	}
-
-	protected String getObjectReferenceLabelText(ObjectReference objectReference)
-	{
-		StringBuilder label = new StringBuilder();
-		label.append(objectReference.getObjectClassName()).append('[').append(objectReference.getObjectID()).append(']');
-
-		String objectToString = objectReference.getObjectToString();
-		if (objectToString != null && !objectToString.isEmpty())
-			label.append(": ").append(objectToString);
-
-		return label.toString();
+		if (object instanceof ObjectReferenceChild)
+			return ((ObjectReferenceChild)object).toLabelString();
+		else if (object instanceof ObjectReference)
+			return ((ObjectReference)object).toLabelString();
+		else
+			return String.valueOf(object);
 	}
 
 	public boolean hasChildren()

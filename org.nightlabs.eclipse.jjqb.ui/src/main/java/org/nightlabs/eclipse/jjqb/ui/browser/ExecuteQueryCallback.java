@@ -6,11 +6,6 @@ import org.eclipse.datatools.connectivity.oda.IResultSet;
 public interface ExecuteQueryCallback
 {
 	/**
-	 * Called on UI thread to get the query text.
-	 */
-	String getQueryText();
-
-	/**
 	 * Called on UI thread before query execution.
 	 */
 	void preExecuteQuery();

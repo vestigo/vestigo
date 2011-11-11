@@ -2,7 +2,9 @@ package org.nightlabs.eclipse.jjqb.ui.browser;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.util.UUID;
 
+import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.datatools.connectivity.oda.IResultSet;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.SashForm;
@@ -34,6 +36,11 @@ implements JDOQueryBrowser
 	private ResultSetTableModel resultSetTableModel;
 
 	@Override
+	public UUID getQueryID() {
+		return managementComposite.getQueryID();
+	}
+
+	@Override
 	public void createPartControl(Composite parent)
 	{
 		partControl = new SashForm(parent, SWT.VERTICAL);
@@ -42,8 +49,11 @@ implements JDOQueryBrowser
 
 		super.createPartControl(queryEditorComposite);
 
-		managementComposite = new JDOQueryBrowserManagementComposite(queryEditorComposite, SWT.BORDER);
-		managementComposite.setQueryBrowser(this);
+		managementComposite = new JDOQueryBrowserManagementComposite(
+				queryEditorComposite, SWT.BORDER, this
+		);
+		if (getEditorInput() != null)
+			managementComposite.inputChanged();
 
 		for (Control c : queryEditorComposite.getChildren()) {
 			if (c != managementComposite)
@@ -59,11 +69,17 @@ implements JDOQueryBrowser
 		return executeQueryCallback;
 	}
 
+	@Override
+	public String getQueryText() {
+		return getDocumentProvider().getDocument(getEditorInput()).get();
+	}
+
+	@Override
+	public void setQueryText(String queryText) {
+		getDocumentProvider().getDocument(getEditorInput()).set(queryText);
+	}
+
 	private ExecuteQueryCallback executeQueryCallback = new AbstractExecuteQueryCallback() {
-		@Override
-		public String getQueryText() {
-			return getDocumentProvider().getDocument(getEditorInput()).get();
-		}
 
 		@Override
 		public void preExecuteQuery() {
@@ -88,6 +104,21 @@ implements JDOQueryBrowser
 	{
 //		this.display = site.getShell().getDisplay();
 		super.init(site, input);
+		if (managementComposite != null)
+			managementComposite.inputChanged();
+	}
+
+	@Override
+	public void doSave(IProgressMonitor progressMonitor) {
+		managementComposite.appendPropertiesToQueryText();
+		super.doSave(progressMonitor);
+		managementComposite.extractAndRemovePropertiesFromQueryText();
+//		firePropertyChange(IEditorPart.PROP_DIRTY);
+	}
+
+	@Override
+	public boolean isDirty() {
+		return super.isDirty();
 	}
 
 	@Override

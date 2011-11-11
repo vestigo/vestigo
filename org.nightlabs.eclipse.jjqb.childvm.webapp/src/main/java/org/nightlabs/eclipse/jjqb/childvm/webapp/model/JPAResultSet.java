@@ -69,7 +69,9 @@ public class JPAResultSet extends ResultSet
 
 		if (objectID != null) {
 			String objectIDString = getPersistentObjectIDString(object.getClass().getName(), objectID);
-			return new ResultCellPersistentObjectRefDTO(field, object.getClass(), objectIDString, getObjectToString(object));
+			return new ResultCellPersistentObjectRefDTO(
+					field, object.getClass(), objectIDString, objectID.getClass(), getObjectToString(object)
+			);
 		}
 
 		// Nothing JPA-specific => don't handle it => return null.

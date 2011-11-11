@@ -67,6 +67,19 @@ public class ObjectReferenceImpl implements ObjectReference
 	}
 
 	@Override
+	public String toLabelString() {
+		StringBuilder sb = new StringBuilder();
+
+		sb.append(this.getObjectClassName());
+		sb.append('[').append(this.getObjectID()).append(']');
+
+		if (this.getObjectToString() != null)
+			sb.append(": ").append(this.getObjectToString());
+
+		return sb.toString();
+	}
+
+	@Override
 	public String getObjectClassName() {
 		return resultCellObjectRefDTO.getObjectClassName();
 	}
@@ -74,6 +87,11 @@ public class ObjectReferenceImpl implements ObjectReference
 	@Override
 	public String getObjectID() {
 		return resultCellObjectRefDTO.getObjectID();
+	}
+
+	@Override
+	public String getObjectIDClassName() {
+		return resultCellObjectRefDTO.getObjectIDClassName();
 	}
 
 	@Override

@@ -10,7 +10,13 @@ public class ResultCellTransientObjectRefDTO extends ResultCellObjectRefDTO
 	public static final String OBJECT_ID_PREFIX = "transient.";
 
 	public ResultCellTransientObjectRefDTO(Field field, Class<?> objectClass, Long objectID, String objectToString) {
-		super(field, objectClass, OBJECT_ID_PREFIX + objectID.toString(), objectToString);
+		super(
+				field,
+				objectClass,
+				OBJECT_ID_PREFIX + objectID.toString(),
+				objectID.getClass(),
+				objectToString
+		);
 	}
 
 	public static boolean isTransientObjectID(String objectIDString)

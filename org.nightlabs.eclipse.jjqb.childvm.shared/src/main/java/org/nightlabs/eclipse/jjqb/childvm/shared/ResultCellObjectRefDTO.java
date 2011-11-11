@@ -12,9 +12,16 @@ public abstract class ResultCellObjectRefDTO extends ResultCellDTO
 
 	private String objectID;
 
+	private String objectIDClassName;
+
 	private String objectToString;
 
-	public ResultCellObjectRefDTO(Field field, Class<?> objectClass, String objectID, String objectToString)
+	public ResultCellObjectRefDTO(
+			Field field,
+			Class<?> objectClass,
+			String objectID, Class<?> objectIDClass,
+			String objectToString
+	)
 	{
 		super(field);
 
@@ -24,24 +31,26 @@ public abstract class ResultCellObjectRefDTO extends ResultCellDTO
 		if (objectID == null)
 			throw new IllegalArgumentException("objectID == null");
 
+		if (objectIDClass == null)
+			throw new IllegalArgumentException("objectIDClass == null");
+
 		this.objectClassName = objectClass.getName();
 		this.objectID = objectID;
+		this.objectIDClassName = objectIDClass.getName();
 		this.objectToString = objectToString; // allowed to be null (shouldn't break if someone really implements it this way)
 	}
 
 	public String getObjectClassName() {
 		return objectClassName;
 	}
-//	public void setObjectClassName(String objectClassName) {
-//		this.objectClassName = objectClassName;
-//	}
 
 	public String getObjectID() {
 		return objectID;
 	}
-//	public void setObjectID(String objectID) {
-//		this.objectID = objectID;
-//	}
+
+	public String getObjectIDClassName() {
+		return objectIDClassName;
+	}
 
 	public String getObjectToString() {
 		return objectToString;
@@ -51,8 +60,9 @@ public abstract class ResultCellObjectRefDTO extends ResultCellDTO
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((objectClassName == null) ? 0 : objectClassName.hashCode());
-		result = prime * result + ((objectID == null) ? 0 : objectID.hashCode());
+		result = prime * result + Util.hashCode(objectClassName == null);
+//		result = prime * result + Util.hashCode(objectIDClassName == null); // not needed
+		result = prime * result + Util.hashCode(objectID == null);
 		return result;
 	}
 
@@ -64,6 +74,7 @@ public abstract class ResultCellObjectRefDTO extends ResultCellDTO
 		ResultCellObjectRefDTO other = (ResultCellObjectRefDTO) obj;
 		return (
 				Util.equals(this.objectID, other.objectID) &&
+//				Util.equals(this.objectIDClassName, other.objectIDClassName) && // not needed
 				Util.equals(this.objectClassName, other.objectClassName)
 		);
 	}

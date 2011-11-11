@@ -7,8 +7,8 @@ import org.nightlabs.eclipse.jjqb.core.JDODriver;
 public class JDOQueryBrowserManagementComposite
 extends QueryBrowserManagementComposite
 {
-	public JDOQueryBrowserManagementComposite(Composite parent, int style) {
-		super(parent, style);
+	public JDOQueryBrowserManagementComposite(Composite parent, int style, JDOQueryBrowser queryBrowser) {
+		super(parent, style, queryBrowser);
 	}
 
 	@Override

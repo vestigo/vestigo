@@ -7,8 +7,8 @@ import org.nightlabs.eclipse.jjqb.core.JPADriver;
 public class JPAQueryBrowserManagementComposite
 extends QueryBrowserManagementComposite
 {
-	public JPAQueryBrowserManagementComposite(Composite parent, int style) {
-		super(parent, style);
+	public JPAQueryBrowserManagementComposite(Composite parent, int style, JPAQueryBrowser queryBrowser) {
+		super(parent, style, queryBrowser);
 	}
 
 	@Override

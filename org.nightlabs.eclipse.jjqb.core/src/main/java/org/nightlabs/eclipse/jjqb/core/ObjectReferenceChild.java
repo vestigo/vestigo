@@ -42,4 +42,27 @@ public interface ObjectReferenceChild
 	 * @return the field in the owner. May be <code>null</code>.
 	 */
 	FieldDesc getFieldDesc();
+
+	/**
+	 * {@inheritDoc}
+	 * <p>
+	 * In contrast to {@link #toLabelString()}, this method returns additional information
+	 * which is useful in log files or debug sessions.
+	 * </p>
+	 * @return a String-representation of this object.
+	 */
+	@Override
+	String toString();
+
+	/**
+	 * <p>
+	 * Get a String-representation of the referenced field meant to be displayed in UI.
+	 * </p><p>
+	 * In contrast to {@link #toString()}, this method returns less information and
+	 * is focused on the user of the application.
+	 * </p>
+	 * @return a String-representation of this object references' real object and field
+	 * for displaying in UI.
+	 */
+	String toLabelString();
 }

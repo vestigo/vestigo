@@ -32,6 +32,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
+import org.nightlabs.eclipse.jjqb.core.ObjectReference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -169,7 +170,12 @@ implements ISelectionProvider
 		public void update(ViewerCell viewerCell) {
 			ResultSetTableRow row = (ResultSetTableRow) viewerCell.getElement();
 			ResultSetTableCell cell = row.getCells()[columnIndex];
-			viewerCell.setText(String.valueOf(cell.getCellContent()));
+			Object cellContent = cell.getCellContent();
+
+			if (cellContent instanceof ObjectReference)
+				cellContent = ((ObjectReference)cellContent).toLabelString();
+
+			viewerCell.setText(String.valueOf(cellContent));
 		}
 	}
 

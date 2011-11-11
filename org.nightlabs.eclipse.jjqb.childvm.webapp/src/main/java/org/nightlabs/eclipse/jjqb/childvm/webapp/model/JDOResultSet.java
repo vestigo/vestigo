@@ -52,7 +52,9 @@ public class JDOResultSet extends ResultSet
 		Object objectID = JDOHelper.getObjectId(object);
 		if (objectID != null) {
 			String objectIDString = getPersistentObjectIDString(object.getClass().getName(), objectID);
-			return new ResultCellPersistentObjectRefDTO(field, object.getClass(), objectIDString, getObjectToString(object));
+			return new ResultCellPersistentObjectRefDTO(
+					field, object.getClass(), objectIDString, objectID.getClass(), getObjectToString(object)
+			);
 		}
 
 		// Nothing JDO-specific => don't handle it => return null.

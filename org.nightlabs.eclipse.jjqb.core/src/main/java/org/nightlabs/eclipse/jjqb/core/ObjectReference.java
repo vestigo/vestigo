@@ -56,6 +56,8 @@ public interface ObjectReference {
 	 */
 	String getObjectID();
 
+	String getObjectIDClassName();
+
 	/**
 	 * <p>
 	 * Get the result of the {@link Object#toString() toString()} method called on the referenced object.
@@ -83,4 +85,27 @@ public interface ObjectReference {
 	 * </p>
 	 */
 	List<ObjectReferenceChild> getChildren();
+
+	/**
+	 * {@inheritDoc}
+	 * <p>
+	 * In contrast to {@link #toLabelString()}, this method returns additional information
+	 * which is useful in log files or debug sessions.
+	 * </p>
+	 * @return a String-representation of this object.
+	 */
+	@Override
+	String toString();
+
+	/**
+	 * <p>
+	 * Get a String-representation of the referenced object meant to be displayed in UI.
+	 * </p><p>
+	 * In contrast to {@link #toString()}, this method returns less information and
+	 * is focused on the user of the application.
+	 * </p>
+	 * @return a String-representation of this object references' real object for displaying
+	 * in UI.
+	 */
+	String toLabelString();
 }

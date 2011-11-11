@@ -1,5 +1,12 @@
 package org.nightlabs.eclipse.jjqb.ui.browser;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.Reader;
+import java.io.StringReader;
+import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -8,6 +15,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.UUID;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
@@ -24,6 +32,7 @@ import org.eclipse.datatools.connectivity.oda.IConnection;
 import org.eclipse.datatools.connectivity.oda.IQuery;
 import org.eclipse.datatools.connectivity.oda.IResultSet;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
@@ -36,6 +45,8 @@ import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
+import org.nightlabs.eclipse.jjqb.core.PropertiesWithChangeSupport;
+import org.nightlabs.eclipse.jjqb.ui.JJQBUIPlugin;
 import org.nightlabs.util.Stopwatch;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -44,6 +55,19 @@ public abstract class QueryBrowserManagementComposite extends Composite
 {
 	private static final Logger logger = LoggerFactory.getLogger(QueryBrowserManagementComposite.class);
 
+	private static final String connectionFactoryID = "org.eclipse.datatools.connectivity.oda.IConnection";
+
+	private static final String PREFERENCE_STORE_PREFIX = "queryBrowser.";
+
+	private static final String PROPERTY_LAST_CONNECTION_PROFILE_INSTANCE_ID = "lastConnectionProfile.instanceID";
+
+	private static final String PROPERTY_QUERY_ID = "queryID";
+
+	private static final String QUERY_TEXT_PROPERTIES_BEGIN_MARKER = "------PROPERTIES_BEGIN------";
+	private static final String QUERY_TEXT_PROPERTIES_END_MARKER = "------PROPERTIES_END------";
+
+	private static final String QUERY_TEXT_LINE_COMMENT_MARKER = "--";
+
 	private Display display;
 
 	private List<IConnectionProfile> connectionProfiles = new ArrayList<IConnectionProfile>();
@@ -51,11 +75,19 @@ public abstract class QueryBrowserManagementComposite extends Composite
 	private Button executeQueryButton;
 	private Button loadNextBunchButton;
 
+	private UUID queryID;
+
 	private volatile IQuery query;
 
-	public QueryBrowserManagementComposite(Composite parent, int style) {
+	private Map<PropertiesType, PropertiesWithChangeSupport> propertiesType2Properties = new HashMap<PropertiesType, PropertiesWithChangeSupport>();
+
+	public QueryBrowserManagementComposite(Composite parent, int style, QueryBrowser queryBrowser) {
 		super(parent, style);
 
+		if (queryBrowser == null)
+			throw new IllegalArgumentException("queryBrowser == null");
+
+		this.queryBrowser = queryBrowser;
 		this.display = getShell().getDisplay();
 
 		this.addDisposeListener(new DisposeListener() {
@@ -104,13 +136,28 @@ public abstract class QueryBrowserManagementComposite extends Composite
 			}
 		});
 		setLoadNextActionEnabled(false);
+	}
 
-		populateConnectionProfileCombo();
+	public UUID getQueryID() {
+		return queryID;
 	}
 
 	private void populateConnectionProfileCombo()
 	{
+		String lastConnProfInstanceID = null;
+		String lastGlobalConnProfInstanceID = null;
+
 		IConnectionProfile selection = getConnectionProfile();
+		IConnectionProfile globalSelection = null;
+
+		if (selection == null) {
+			lastConnProfInstanceID = getProperties(PropertiesType.editor_preferenceStore).getProperty(
+					PROPERTY_LAST_CONNECTION_PROFILE_INSTANCE_ID
+			);
+			lastGlobalConnProfInstanceID = getProperties(PropertiesType.global).getProperty(
+					getImplementationSpecificGlobalPropertyKey(PROPERTY_LAST_CONNECTION_PROFILE_INSTANCE_ID)
+			);
+		}
 
 		connectionProfiles.clear();
 		connectionProfileCombo.removeAll();
@@ -128,11 +175,18 @@ public abstract class QueryBrowserManagementComposite extends Composite
 
 		for (IConnectionProfile connectionProfile : connectionProfiles) {
 			connectionProfileCombo.add(connectionProfile.getName());
+			if (lastConnProfInstanceID != null && lastConnProfInstanceID.equals(connectionProfile.getInstanceID())) {
+				selection = connectionProfile;
+			}
+			if (lastGlobalConnProfInstanceID != null && lastGlobalConnProfInstanceID.equals(connectionProfile.getInstanceID())) {
+				globalSelection = connectionProfile;
+			}
 		}
 
+		if (selection == null)
+			selection = globalSelection;
+
 		if (selection == null) {
-			// TODO store the last selected profile in the preferences and select it again!
-			// for now, we simply select the first one.
 			if (!connectionProfiles.isEmpty())
 				selection = connectionProfiles.get(0);
 		}
@@ -220,14 +274,25 @@ public abstract class QueryBrowserManagementComposite extends Composite
 
 	private IConnectionProfile connectionProfile;
 
-	private static final String connectionFactoryID = "org.eclipse.datatools.connectivity.oda.IConnection";
-
 	private void onSelectConnectionProfile()
 	{
 		int connectionProfileIndex = connectionProfileCombo.getSelectionIndex();
 		IConnectionProfile newConnectionProfile = connectionProfileIndex >= 0 ? connectionProfiles.get(connectionProfileIndex) : null;
 		this.connectionProfile = newConnectionProfile;
 		executeQueryButton.setEnabled(this.connectionProfile != null);
+		String connectionProfileInstanceID = newConnectionProfile.getInstanceID();
+		getProperties(PropertiesType.editor_preferenceStore).setProperty(
+				PROPERTY_LAST_CONNECTION_PROFILE_INSTANCE_ID, connectionProfileInstanceID
+		);
+		getProperties(PropertiesType.global).setProperty(
+				getImplementationSpecificGlobalPropertyKey(PROPERTY_LAST_CONNECTION_PROFILE_INSTANCE_ID),
+				connectionProfileInstanceID
+		);
+	}
+
+	protected String getImplementationSpecificGlobalPropertyKey(String propertyKey)
+	{
+		return this.getClass().getName() + '.' + propertyKey;
 	}
 
 	protected abstract boolean isConnectionProfileCompatible(IConnectionProfile connectionProfile);
@@ -270,7 +335,7 @@ public abstract class QueryBrowserManagementComposite extends Composite
 
 		queryContext.setConnectionProfile(connectionProfile);
 
-		queryContext.setQueryText(executeQueryCallback.getQueryText());
+		queryContext.setQueryText(queryBrowser.getQueryText());
 
 		Job job = new Job("Executing query...") {
 			@Override
@@ -381,7 +446,202 @@ public abstract class QueryBrowserManagementComposite extends Composite
 		return queryBrowser;
 	}
 
-	public void setQueryBrowser(QueryBrowser queryBrowser) {
-		this.queryBrowser = queryBrowser;
+//	public void setQueryBrowser(QueryBrowser queryBrowser) {
+//		this.queryBrowser = queryBrowser;
+//	}
+
+	public PropertiesWithChangeSupport getProperties(PropertiesType propertiesType)
+	{
+		PropertiesWithChangeSupport properties = propertiesType2Properties.get(propertiesType);
+		if (properties != null)
+			return properties;
+
+		switch (propertiesType) {
+			case global:
+			{
+				String preferenceKey = PREFERENCE_STORE_PREFIX + propertiesType;
+				properties = readPropertiesFromPreferenceStore(preferenceKey);
+				break;
+			}
+			case editor_file:
+				throw new IllegalStateException("Cannot lazy-load! Properties for this type should have already been created: " + propertiesType);
+			case editor_preferenceStore:
+			{
+				String preferenceKey = PREFERENCE_STORE_PREFIX + propertiesType + '.' + queryBrowser.getQueryID();
+				properties = readPropertiesFromPreferenceStore(preferenceKey);
+				break;
+			}
+			default:
+				throw new IllegalArgumentException("Unknown PropertiesType: " + propertiesType);
+		}
+
+		propertiesType2Properties.put(propertiesType, properties);
+
+		return properties;
+	}
+
+	private PropertiesWithChangeSupport readPropertiesFromPreferenceStore(final String preferenceKey)
+	{
+		JJQBUIPlugin plugin = JJQBUIPlugin.getDefault();
+		final IPreferenceStore preferenceStore = plugin.getPreferenceStore();
+
+		final PropertiesWithChangeSupport properties = readPropertiesFromString(
+				preferenceStore.getString(preferenceKey)
+		);
+
+		PropertyChangeListener propertyChangeListener = new PropertyChangeListener() {
+			@Override
+			public void propertyChange(PropertyChangeEvent evt) {
+				preferenceStore.setValue(
+						preferenceKey,
+						writePropertiesToString(properties)
+				);
+//				markEditorDirty(); // we do not mark the editor dirty, here, because we save the preference store stuff immediately on change (and we don't need to store the editor).
+			}
+		};
+		properties.addPropertyChangeListener(propertyChangeListener);
+
+		return properties;
+	}
+
+	private PropertiesWithChangeSupport readPropertiesFromString(String data)
+	{
+		PropertiesWithChangeSupport properties = new PropertiesWithChangeSupport();
+		Reader reader = new StringReader(data);
+		try {
+			properties.load(reader);
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+		return properties;
+	}
+	private String writePropertiesToString(PropertiesWithChangeSupport properties)
+	{
+		StringWriter writer = new StringWriter();
+		try {
+			properties.store(writer, "JDO/JPA Query Browser");
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+		return writer.toString();
+	}
+
+	public void inputChanged()
+	{
+		propertiesType2Properties.remove(PropertiesType.editor_file);
+		propertiesType2Properties.remove(PropertiesType.editor_preferenceStore);
+
+		extractAndRemovePropertiesFromQueryText();
+		populateConnectionProfileCombo();
+	}
+
+	public void extractAndRemovePropertiesFromQueryText()
+	{
+		String queryText = queryBrowser.getQueryText();
+		int indexOfBegin = queryText.indexOf(QUERY_TEXT_PROPERTIES_BEGIN_MARKER);
+		int indexOfEnd = queryText.indexOf(QUERY_TEXT_PROPERTIES_END_MARKER);
+		if (indexOfEnd >= 0)
+			indexOfEnd += QUERY_TEXT_PROPERTIES_END_MARKER.length();
+
+		PropertiesWithChangeSupport properties = new PropertiesWithChangeSupport();
+
+		PropertyChangeListener propertyChangeListener = new PropertyChangeListener() {
+			@Override
+			public void propertyChange(PropertyChangeEvent evt) {
+				markEditorDirty();
+			}
+		};
+		properties.addPropertyChangeListener(propertyChangeListener);
+
+		if (indexOfBegin >= 0) {
+			String propertiesString = queryText.substring(
+					indexOfBegin + QUERY_TEXT_PROPERTIES_BEGIN_MARKER.length(),
+					indexOfEnd - QUERY_TEXT_PROPERTIES_END_MARKER.length()
+			);
+
+			String stringBeforeProperties = queryText.substring(0, indexOfBegin);
+			String stringAfterProperties = queryText.substring(indexOfEnd);
+
+			stringBeforeProperties = removeTrailingLineDelimiter(stringBeforeProperties);
+			stringAfterProperties = removeLeadingLineDelimiter(stringAfterProperties);
+
+			queryBrowser.setQueryText(stringBeforeProperties + stringAfterProperties);
+
+			try {
+				BufferedReader reader = new BufferedReader(new StringReader(propertiesString));
+				String line;
+				while (null != (line = reader.readLine())) {
+					if (line.startsWith(QUERY_TEXT_LINE_COMMENT_MARKER))
+						line = line.substring(QUERY_TEXT_LINE_COMMENT_MARKER.length());
+
+					if (line.trim().isEmpty())
+						continue;
+
+					int equalsIndex = line.indexOf('=');
+					if (equalsIndex >= 0) {
+						String key = line.substring(0, equalsIndex).trim();
+						String value = line.substring(equalsIndex + 1).trim();
+						properties.setProperty(key, value);
+					}
+				}
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+		}
+
+		propertiesType2Properties.put(PropertiesType.editor_file, properties);
+
+		String queryIDString = properties.getProperty(PROPERTY_QUERY_ID);
+		if (queryIDString == null) {
+			queryID = UUID.randomUUID();
+			properties.setProperty(PROPERTY_QUERY_ID, queryID.toString());
+		}
+		else
+			queryID = UUID.fromString(queryIDString);
+	}
+
+	public void appendPropertiesToQueryText()
+	{
+		String queryText = queryBrowser.getQueryText();
+
+		StringBuilder sb = new StringBuilder();
+		sb.append(queryText).append('\n').append(QUERY_TEXT_PROPERTIES_BEGIN_MARKER);
+
+		PropertiesWithChangeSupport properties = getProperties(PropertiesType.editor_file);
+		for (Map.Entry<?, ?> me : properties.entrySet())
+			sb.append('\n').append(me.getKey()).append('=').append(me.getValue());
+
+		sb.append('\n').append(QUERY_TEXT_PROPERTIES_END_MARKER).append('\n');
+
+		queryBrowser.setQueryText(sb.toString());
+	}
+
+	private String removeTrailingLineDelimiter(String s)
+	{
+		if (s.endsWith("\r\n"))
+			s = s.substring(0, s.length() - 2);
+		else if (s.endsWith("\r"))
+			s = s.substring(0, s.length() - 1);
+		else if (s.endsWith("\n"))
+			s = s.substring(0, s.length() - 1);
+
+		return s;
+	}
+
+	private String removeLeadingLineDelimiter(String s)
+	{
+		if (s.startsWith("\r\n"))
+			s = s.substring(2, s.length());
+		else if (s.startsWith("\r"))
+			s = s.substring(1, s.length());
+		else if (s.startsWith("\n"))
+			s = s.substring(1, s.length());
+
+		return s;
+	}
+
+	private void markEditorDirty()
+	{
+		// TODO mark editor dirty
 	}
 }

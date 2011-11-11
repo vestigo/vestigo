@@ -56,4 +56,21 @@ implements ObjectReferenceChild
 	public String toString() {
 		return this.getClass().getSimpleName() + '[' + getFieldDesc() + ',' + getValue() + ']';
 	}
+
+	@Override
+	public String toLabelString()
+	{
+		Object value = this.getValue();
+		StringBuilder sb = new StringBuilder();
+
+		if (this.getFieldDesc() != null && this.getFieldDesc().getFieldName() != null)
+			sb.append(this.getFieldDesc().getFieldName()).append(": ");
+
+		if (value instanceof ObjectReference)
+			sb.append(((ObjectReference)value).toLabelString());
+		else
+			sb.append(String.valueOf(value));
+
+		return sb.toString();
+	}
 }
