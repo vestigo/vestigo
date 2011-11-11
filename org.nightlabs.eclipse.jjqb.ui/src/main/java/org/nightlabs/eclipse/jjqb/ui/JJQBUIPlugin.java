@@ -10,6 +10,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.jface.preference.IPreferenceStore;
+import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.nightlabs.eclipse.jjqb.core.PropertiesWithChangeSupport;
 import org.osgi.framework.BundleContext;
@@ -18,6 +20,9 @@ public class JJQBUIPlugin extends AbstractUIPlugin {
 
 	// The plug-in ID
 	public static final String PLUGIN_ID = "TestProject"; //$NON-NLS-1$
+
+	public static final String IMAGE_SIZE_16x16 = "16x16";
+	public static final String IMAGE_SIZE_24x24 = "24x24";
 
 	// The shared instance
 	private static JJQBUIPlugin plugin;
@@ -100,5 +105,47 @@ public class JJQBUIPlugin extends AbstractUIPlugin {
 			throw new RuntimeException(e);
 		}
 		return writer.toString();
+	}
+
+
+
+	public ImageDescriptor getImageDescriptor(Class<?> clazz, String identifier, String size)
+	{
+		String imageKey = clazz.getName() + '-' + identifier;
+		ImageDescriptor imageDescriptor = getImageRegistry().getDescriptor(imageKey);
+		if (imageDescriptor != null)
+			return imageDescriptor;
+
+		StringBuilder resource = new StringBuilder();
+		resource.append("icons/").append(clazz.getPackage().getName()).append('/').append(clazz.getSimpleName());
+
+		if (identifier != null && !identifier.isEmpty())
+			resource.append('-').append(identifier);
+
+		if (size == null)
+			size = IMAGE_SIZE_16x16;
+
+		resource.append('.').append(size).append(".png");
+
+		imageDescriptor = ImageDescriptor.createFromURL(
+				JJQBUIPlugin.getDefault().getBundle().getResource(resource.toString())
+		);
+
+		getImageRegistry().put(imageKey, imageDescriptor);
+
+		return imageDescriptor;
+	}
+
+	public Image getImage(Class<?> clazz, String identifier, String size)
+	{
+		String imageKey = clazz.getName() + '-' + identifier;
+		Image image = JJQBUIPlugin.getDefault().getImageRegistry().get(imageKey);
+		if (image != null)
+			return image;
+
+		getImageDescriptor(clazz, identifier, size);
+
+		image = JJQBUIPlugin.getDefault().getImageRegistry().get(imageKey);
+		return image;
 	}
 }

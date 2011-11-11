@@ -41,15 +41,15 @@ import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
+import org.nightlabs.eclipse.jjqb.ui.JJQBUIPlugin;
 import org.nightlabs.util.Util;
 
 public class EditClasspathComposite extends Composite implements ICellModifier
 {
-
-	private Button addClasspathElement;
-	private Button removeClasspathElement;
-	private Button upClasspathElement;
-	private Button downClasspathElement;
+	private Button addFileButton;
+	private Button removeClasspathElementButton;
+	private Button moveClasspathElementUpButton;
+	private Button moveClasspathElementDownButton;
 
 	private static final String COL_ELEMENT = "Col-Element";
 
@@ -134,18 +134,21 @@ public class EditClasspathComposite extends Composite implements ICellModifier
 		gridLayout.numColumns = 4;
 		setLayout(gridLayout);
 
-		addClasspathElement = new Button(this, SWT.PUSH);
-		addClasspathElement.setText("Add JAR...");
-		addClasspathElement.addSelectionListener(new SelectionAdapter() {
+		JJQBUIPlugin plugin = JJQBUIPlugin.getDefault();
+		addFileButton = new Button(this, SWT.PUSH);
+		addFileButton.setImage(plugin.getImage(EditClasspathComposite.class, "addFileButton", null));
+		addFileButton.setToolTipText("Add JAR or EAR files.");
+		addFileButton.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent event) {
 				addClasspathElement();
 			}
 		});
 
-		removeClasspathElement = new Button(this, SWT.PUSH);
-		removeClasspathElement.setText("Remove");
-		removeClasspathElement.addSelectionListener(new SelectionAdapter() {
+		removeClasspathElementButton = new Button(this, SWT.PUSH);
+		removeClasspathElementButton.setImage(plugin.getImage(EditClasspathComposite.class, "removeClasspathElementButton", null));
+		removeClasspathElementButton.setToolTipText("Remove the selected entries.");
+		removeClasspathElementButton.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent event) {
 				IStructuredSelection sel = (IStructuredSelection) tableViewer.getSelection();
@@ -155,9 +158,10 @@ public class EditClasspathComposite extends Composite implements ICellModifier
 			}
 		});
 
-		upClasspathElement = new Button(this, SWT.PUSH);
-		upClasspathElement.setText("Up");
-		upClasspathElement.addSelectionListener(new SelectionAdapter() {
+		moveClasspathElementUpButton = new Button(this, SWT.PUSH);
+		moveClasspathElementUpButton.setImage(plugin.getImage(EditClasspathComposite.class, "moveClasspathElementUpButton", null));
+		moveClasspathElementUpButton.setToolTipText("Move the selected element(s) up.");
+		moveClasspathElementUpButton.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent event) {
 				IStructuredSelection sel = (IStructuredSelection) tableViewer.getSelection();
@@ -175,9 +179,10 @@ public class EditClasspathComposite extends Composite implements ICellModifier
 			}
 		});
 
-		downClasspathElement = new Button(this, SWT.PUSH);
-		downClasspathElement.setText("Down");
-		downClasspathElement.addSelectionListener(new SelectionAdapter() {
+		moveClasspathElementDownButton = new Button(this, SWT.PUSH);
+		moveClasspathElementDownButton.setImage(plugin.getImage(EditClasspathComposite.class, "moveClasspathElementDownButton", null));
+		moveClasspathElementDownButton.setToolTipText("Move the selected element(s) down.");
+		moveClasspathElementDownButton.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent event) {
 				IStructuredSelection sel = (IStructuredSelection) tableViewer.getSelection();

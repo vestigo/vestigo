@@ -50,7 +50,7 @@ import org.eclipse.ui.forms.events.ExpansionEvent;
 import org.eclipse.ui.forms.widgets.ExpandableComposite;
 import org.nightlabs.eclipse.jjqb.core.PropertiesWithChangeSupport;
 import org.nightlabs.eclipse.jjqb.ui.JJQBUIPlugin;
-import org.nightlabs.eclipse.jjqb.ui.paramtable.QueryParameterTableComposite;
+import org.nightlabs.eclipse.jjqb.ui.paramtable.QueryParameterComposite;
 import org.nightlabs.util.Stopwatch;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -77,11 +77,8 @@ public abstract class QueryBrowserManagementComposite extends Composite
 
 	private volatile IQuery query;
 
-	private ExpandableComposite parameterExpandableComposite;
-	private Composite parameterClientComposite;
-	private QueryParameterTableComposite parameterTableComposite;
-	private Button addParameterButton;
-	private Button removeParameterButton;
+	private ExpandableComposite queryParameterExpandableComposite;
+	private QueryParameterComposite queryParameterComposite;
 
 	private Map<PropertiesType, PropertiesWithChangeSupport> propertiesType2Properties = new HashMap<PropertiesType, PropertiesWithChangeSupport>();
 
@@ -135,7 +132,7 @@ public abstract class QueryBrowserManagementComposite extends Composite
 		createLoadNextButton();
 
 		// second row
-		createParameterComposite();
+		createQueryParameterComposite();
 	}
 
 	private void createConnectionProfileCombo()
@@ -177,41 +174,24 @@ public abstract class QueryBrowserManagementComposite extends Composite
 		setLoadNextActionEnabled(false);
 	}
 
-	private void createParameterComposite()
+	private void createQueryParameterComposite()
 	{
-		parameterExpandableComposite = new ExpandableComposite(this, SWT.NONE, ExpandableComposite.TWISTIE);
-		parameterExpandableComposite.setText("Parameters");
+		queryParameterExpandableComposite = new ExpandableComposite(this, SWT.NONE, ExpandableComposite.TWISTIE);
+		queryParameterExpandableComposite.setText("Parameters");
 		GridData gd = new GridData(GridData.FILL_HORIZONTAL);
 		gd.horizontalSpan = ((GridLayout)this.getLayout()).numColumns;
-		parameterExpandableComposite.setLayoutData(gd);
+		queryParameterExpandableComposite.setLayoutData(gd);
 
-		parameterExpandableComposite.setLayout(new FillLayout());
+		queryParameterExpandableComposite.setLayout(new FillLayout());
 
-		parameterClientComposite = new Composite(parameterExpandableComposite, SWT.NONE);
-		GridLayout layout = new GridLayout();
-		layout.numColumns = 2;
-		parameterClientComposite.setLayout(layout);
-
-		parameterTableComposite = new QueryParameterTableComposite(parameterClientComposite, SWT.BORDER);
-		gd = new GridData(GridData.FILL_BOTH);
-		gd.verticalSpan = 2;
-		parameterTableComposite.setLayoutData(gd);
-
-		parameterExpandableComposite.setClient(parameterClientComposite);
-		parameterExpandableComposite.addExpansionListener(new ExpansionAdapter() {
+		queryParameterComposite = new QueryParameterComposite(queryParameterExpandableComposite, SWT.NONE);
+		queryParameterExpandableComposite.setClient(queryParameterComposite);
+		queryParameterExpandableComposite.addExpansionListener(new ExpansionAdapter() {
 			@Override
 			public void expansionStateChanged(ExpansionEvent e) {
 				getParent().layout(true, true);
 			}
 		});
-
-		addParameterButton = new Button(parameterClientComposite, SWT.PUSH);
-		addParameterButton.setText("+");
-		addParameterButton.setToolTipText("Add a new parameter.");
-
-		removeParameterButton = new Button(parameterClientComposite, SWT.PUSH);
-		removeParameterButton.setText("-");
-		removeParameterButton.setToolTipText("Remove the selected parameter(s).");
 	}
 
 	private boolean isConnectionProfileExisting(IConnectionProfile connectionProfile)
