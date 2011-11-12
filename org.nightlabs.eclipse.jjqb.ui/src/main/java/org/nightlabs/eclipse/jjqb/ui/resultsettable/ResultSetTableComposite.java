@@ -189,8 +189,20 @@ implements ISelectionProvider
 		return (ResultSetTableModel) tableViewer.getInput();
 	}
 
+	private void manuallyEmptyTable() {
+		// The virtual tableviewer shows strange artifacts (empty, but selectable lines), if we have a null
+		// or empty input, AFTER we already had another input with quite some lines of real data.
+		// Maybe this bug occurs even in more situations (e.g. in general when a new input has less rows
+		// than an old input). Thus we simply manually delete all table items. This seems to solve the problem.
+		// Marco :-)
+		for (TableItem item : tableViewer.getTable().getItems())
+			item.dispose();
+	}
+
 	public final void setInput(ResultSetTableModel input)
 	{
+		manuallyEmptyTable();
+
 		Table table = tableViewer.getTable();
 		for (TableColumn column : table.getColumns())
 			column.dispose();
@@ -218,10 +230,6 @@ implements ISelectionProvider
 
 		clearSelection();
 		fireSelectionChangedEvent();
-
-		// the tableviewer shows strange artefacts (empty, but selectable lines), if we have a null input
-		// thus we hide it in this case. marco
-		table.setVisible(input != null);
 	}
 
 	private TableViewerColumn createRowIndexTableViewerColumn(TableLayout layout)
