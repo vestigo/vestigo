@@ -38,6 +38,7 @@ import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.widgets.Display;
 import org.nightlabs.eclipse.jjqb.core.PropertiesWithChangeSupport;
 import org.nightlabs.eclipse.jjqb.ui.JJQBUIPlugin;
+import org.nightlabs.eclipse.jjqb.ui.paramtable.QueryParameterManager;
 import org.nightlabs.eclipse.jjqb.ui.resultsettable.ResultSetTableModel;
 import org.nightlabs.util.Stopwatch;
 import org.slf4j.Logger;
@@ -75,6 +76,8 @@ public abstract class QueryBrowserManager
 
 	private IProfileListener profileListener;
 
+	private QueryParameterManager queryParameterManager = new QueryParameterManager(this);
+
 	public QueryBrowserManager(QueryBrowser queryBrowser)
 	{
 		if (queryBrowser == null)
@@ -84,9 +87,15 @@ public abstract class QueryBrowserManager
 		this.display = Display.getCurrent();
 		if (this.display == null)
 			throw new IllegalStateException("Thread mismatch! This method must be called on the SWT UI thread!");
+
+		hookProfileListenerAndDisposeListener();
 	}
 
-	private void hookProfileListenerAndDisposeListenerIfNotYetDone()
+	public QueryParameterManager getQueryParameterManager() {
+		return queryParameterManager;
+	}
+
+	private void hookProfileListenerAndDisposeListener()
 	{
 		assertUIThread();
 		if (profileListener != null)
@@ -443,6 +452,7 @@ public abstract class QueryBrowserManager
 	private synchronized ResultSetTableModel executeQuery(final QueryContext queryContext, IProgressMonitor monitor)
 	throws Exception
 	{
+		// close the current query - we keep only one single query + one single result set, right now - might change later.
 		IQuery oldQuery = this.query;
 		if (oldQuery != null) {
 			this.query = null;
@@ -459,8 +469,11 @@ public abstract class QueryBrowserManager
 		IConnectionProfile connectionProfile = queryContext.getConnectionProfile();
 
 		IConnection connection = getConnection(connectionProfile, new SubProgressMonitor(monitor, 30)); // TODO proper management of ProgressMonitor!
-		final IQuery q = connection.newQuery("");
-		this.query = q;
+		IQuery q = query;
+		if (q == null) {
+			q = connection.newQuery("");
+			this.query = q;
+		}
 
 		stopwatch.start("00.query.prepare");
 		q.prepare(queryContext.getQueryText());
@@ -541,7 +554,6 @@ public abstract class QueryBrowserManager
 		propertiesType2Properties.remove(PropertiesType.editor_file);
 		propertiesType2Properties.remove(PropertiesType.editor_preferenceStore);
 
-		hookProfileListenerAndDisposeListenerIfNotYetDone();
 		extractAndRemovePropertiesFromQueryText();
 		populateConnectionProfiles();
 	}

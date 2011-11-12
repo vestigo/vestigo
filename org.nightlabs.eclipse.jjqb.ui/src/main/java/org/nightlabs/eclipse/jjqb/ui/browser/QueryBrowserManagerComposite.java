@@ -8,7 +8,6 @@ import org.eclipse.datatools.connectivity.IConnectionProfile;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
@@ -16,10 +15,6 @@ import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
-import org.eclipse.ui.forms.events.ExpansionAdapter;
-import org.eclipse.ui.forms.events.ExpansionEvent;
-import org.eclipse.ui.forms.widgets.ExpandableComposite;
-import org.nightlabs.eclipse.jjqb.ui.paramtable.QueryParameterComposite;
 import org.nightlabs.eclipse.jjqb.ui.resultsettable.ResultSetTableModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,8 +30,8 @@ public class QueryBrowserManagerComposite extends Composite
 	private Button executeQueryButton;
 	private Button loadNextBunchButton;
 
-	private ExpandableComposite queryParameterExpandableComposite;
-	private QueryParameterComposite queryParameterComposite;
+//	private ExpandableComposite queryParameterExpandableComposite;
+//	private QueryParameterManagerComposite queryParameterManagerComposite;
 
 	public QueryBrowserManagerComposite(Composite parent, int style) {
 		super(parent, style);
@@ -54,7 +49,7 @@ public class QueryBrowserManagerComposite extends Composite
 		createLoadNextButton();
 
 		// second row
-		createQueryParameterComposite();
+//		createQueryParameterComposite();
 	}
 
 	public void setQueryBrowserManager(QueryBrowserManager queryBrowserManager)
@@ -62,6 +57,8 @@ public class QueryBrowserManagerComposite extends Composite
 		assertUIThread();
 		if (this.queryBrowserManager == queryBrowserManager)
 			return;
+
+//		queryParameterManagerComposite.setQueryParameterManager(null);
 
 		if (this.queryBrowserManager != null) {
 			this.queryBrowserManager.removePropertyChangeListener(
@@ -84,6 +81,8 @@ public class QueryBrowserManagerComposite extends Composite
 					QueryBrowserManager.PropertyName.connectionProfile, propertyChangeListener_connectionProfile
 			);
 			this.queryBrowserManager.addExecuteQueryListener(executeQueryListener);
+
+//			queryParameterManagerComposite.setQueryParameterManager(this.queryBrowserManager.getQueryParameterManager());
 		}
 	}
 
@@ -207,25 +206,25 @@ public class QueryBrowserManagerComposite extends Composite
 		setLoadNextActionEnabled(false);
 	}
 
-	private void createQueryParameterComposite()
-	{
-		queryParameterExpandableComposite = new ExpandableComposite(this, SWT.NONE, ExpandableComposite.TWISTIE);
-		queryParameterExpandableComposite.setText("Parameters");
-		GridData gd = new GridData(GridData.FILL_HORIZONTAL);
-		gd.horizontalSpan = ((GridLayout)this.getLayout()).numColumns;
-		queryParameterExpandableComposite.setLayoutData(gd);
-
-		queryParameterExpandableComposite.setLayout(new FillLayout());
-
-		queryParameterComposite = new QueryParameterComposite(queryParameterExpandableComposite, SWT.NONE);
-		queryParameterExpandableComposite.setClient(queryParameterComposite);
-		queryParameterExpandableComposite.addExpansionListener(new ExpansionAdapter() {
-			@Override
-			public void expansionStateChanged(ExpansionEvent e) {
-				getParent().layout(true, true);
-			}
-		});
-	}
+//	private void createQueryParameterComposite()
+//	{
+//		queryParameterExpandableComposite = new ExpandableComposite(this, SWT.NONE, ExpandableComposite.TWISTIE);
+//		queryParameterExpandableComposite.setText("Parameters");
+//		GridData gd = new GridData(GridData.FILL_HORIZONTAL);
+//		gd.horizontalSpan = ((GridLayout)this.getLayout()).numColumns;
+//		queryParameterExpandableComposite.setLayoutData(gd);
+//
+//		queryParameterExpandableComposite.setLayout(new FillLayout());
+//
+//		queryParameterManagerComposite = new QueryParameterManagerComposite(queryParameterExpandableComposite, SWT.NONE);
+//		queryParameterExpandableComposite.setClient(queryParameterManagerComposite);
+//		queryParameterExpandableComposite.addExpansionListener(new ExpansionAdapter() {
+//			@Override
+//			public void expansionStateChanged(ExpansionEvent e) {
+//				getParent().layout(true, true);
+//			}
+//		});
+//	}
 
 	private void populateConnectionProfileCombo()
 	{

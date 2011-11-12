@@ -169,7 +169,13 @@ implements ISelectionProvider
 		@Override
 		public void update(ViewerCell viewerCell) {
 			ResultSetTableRow row = (ResultSetTableRow) viewerCell.getElement();
-			ResultSetTableCell cell = row.getCells()[columnIndex];
+			ResultSetTableCell[] cells = row.getCells();
+			if (columnIndex >= cells.length) {
+				logger.warn("ResultSetTableCellLabelProvider.update: columnIndex={} out of range! cells.length={}", columnIndex, cells.length);
+				return;
+			}
+
+			ResultSetTableCell cell = cells[columnIndex];
 			Object cellContent = cell.getCellContent();
 
 			if (cellContent instanceof ObjectReference)
@@ -204,12 +210,18 @@ implements ISelectionProvider
 				throw new RuntimeException(e);
 			}
 		}
+
 		table.setLayout(layout);
 		table.layout(true);
+
 		tableViewer.setInput(input);
 
 		clearSelection();
 		fireSelectionChangedEvent();
+
+		// the tableviewer shows strange artefacts (empty, but selectable lines), if we have a null input
+		// thus we hide it in this case. marco
+		table.setVisible(input != null);
 	}
 
 	private TableViewerColumn createRowIndexTableViewerColumn(TableLayout layout)

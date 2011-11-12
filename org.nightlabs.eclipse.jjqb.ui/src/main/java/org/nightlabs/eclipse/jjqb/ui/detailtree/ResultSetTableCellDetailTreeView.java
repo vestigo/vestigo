@@ -27,7 +27,6 @@ public class ResultSetTableCellDetailTreeView extends ViewPart
 	{
 		objectGraphDetailTreeComposite = new ObjectGraphDetailTreeComposite(parent, SWT.NONE);
 		objectGraphDetailTreeComposite.addDisposeListener(disposeListener);
-
 		getSite().getPage().addSelectionListener(selectionListener);
 	}
 
@@ -62,8 +61,6 @@ public class ResultSetTableCellDetailTreeView extends ViewPart
 			if (selectedObjectGraphRoots.isEmpty())
 				return;
 
-//			// TODO put selectedObjects into ObjectGraphDetailTreeComposite
-//			dummy.setText(selectedObjectGraphRoots.toString());
 			objectGraphDetailTreeComposite.setInput(new ObjectGraphDetailTreeModel(selectedObjectGraphRoots));
 		}
 	};
@@ -77,8 +74,8 @@ public class ResultSetTableCellDetailTreeView extends ViewPart
 
 	@Override
 	public void setFocus() {
-		// TODO Auto-generated method stub
-
+		if (objectGraphDetailTreeComposite != null)
+			objectGraphDetailTreeComposite.setFocus();
 	}
 
 }

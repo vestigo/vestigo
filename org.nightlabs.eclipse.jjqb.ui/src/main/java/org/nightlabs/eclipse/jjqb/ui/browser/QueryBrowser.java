@@ -70,4 +70,6 @@ public interface QueryBrowser
 
 	void addDisposeListener(DisposeListener disposeListener);
 	void removeDisposeListener(DisposeListener disposeListener);
+
+	QueryBrowserManager getQueryBrowserManager();
 }

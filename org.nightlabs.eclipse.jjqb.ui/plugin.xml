@@ -161,9 +161,9 @@
             id="org.nightlabs.eclipse.jjqb.ui.objectContribution_AbstractDriver"
             objectClass="org.eclipse.datatools.connectivity.IConnectionProfile">
          <action
-               class="org.nightlabs.eclipse.jjqb.ui.OpenQueryBrowserAction"
+               class="org.nightlabs.eclipse.jjqb.ui.oda.OpenQueryBrowserAction"
                enablesFor="+"
-               id="org.nightlabs.eclipse.jjqb.ui.OpenQueryBrowserAction"
+               id="org.nightlabs.eclipse.jjqb.ui.oda.OpenQueryBrowserAction"
                label="Open query browser">
          </action>
       </objectContribution>
@@ -214,11 +214,31 @@
             id="org.nightlabs.eclipse.jjqb.ui"
             name="JDO/JPA Query Browser">
       </category>
+      <view id="org.nightlabs.eclipse.jjqb.ui.resultsettable.ResultSetTableView"
+            name="Result set view"
+            icon="icons/view.png"
+            category="org.nightlabs.eclipse.jjqb.ui"
+            class="org.nightlabs.eclipse.jjqb.ui.resultsettable.ResultSetTableView"/>
       <view id="org.nightlabs.eclipse.jjqb.ui.detailtree.ResultSetTableCellDetailTreeView"
             name="Object graph detail tree"
             icon="icons/view.png"
             category="org.nightlabs.eclipse.jjqb.ui"
             class="org.nightlabs.eclipse.jjqb.ui.detailtree.ResultSetTableCellDetailTreeView"/>
+      <view id="org.nightlabs.eclipse.jjqb.ui.paramtable.QueryParameterManagerView"
+            name="Query parameters"
+            icon="icons/view.png"
+            category="org.nightlabs.eclipse.jjqb.ui"
+            class="org.nightlabs.eclipse.jjqb.ui.paramtable.QueryParameterManagerView"/>
    </extension>
+
+
+   <extension point="org.eclipse.ui.perspectives">
+        <perspective
+            class="org.nightlabs.eclipse.jjqb.ui.JJQBPerspective"
+            fixed="false"
+            icon="icons/org.nightlabs.eclipse.jjqb.ui/JJQBPerspective.16x16.png"
+            id="org.nightlabs.eclipse.jjqb.ui.JJQBPerspective"
+            name="JDO/JPA Query Browser"/>
+    </extension>
 
 </plugin>

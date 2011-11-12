@@ -3,7 +3,6 @@ package org.nightlabs.eclipse.jjqb.ui.browser;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.custom.SashForm;
 import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.layout.GridData;
@@ -14,8 +13,6 @@ import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.editors.text.TextEditor;
-import org.nightlabs.eclipse.jjqb.ui.resultsettable.ResultSetTableComposite;
-import org.nightlabs.eclipse.jjqb.ui.resultsettable.ResultSetTableModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -26,14 +23,14 @@ implements JPAQueryBrowser
 	private static final Logger logger = LoggerFactory.getLogger(JPAQueryBrowserEditor.class);
 
 	private Helper helper = new Helper(this);
-	private SashForm partControl;
+//	private SashForm partControl;
 
 	private QueryBrowserManager queryBrowserManager = new JPAQueryBrowserManager(this);
 	private QueryBrowserManagerComposite queryBrowserManagerComposite;
 
 	private Composite queryEditorComposite;
-	private ResultSetTableComposite resultSetTableComposite;
-	private ResultSetTableModel resultSetTableModel;
+//	private ResultSetTableComposite resultSetTableComposite;
+//	private ResultSetTableModel resultSetTableModel;
 
 	@Override
 	public String getQueryID() {
@@ -51,24 +48,24 @@ implements JPAQueryBrowser
 		});
 		queryBrowserManager.addExecuteQueryListener(executeQueryListener);
 
-		partControl = new SashForm(parent, SWT.VERTICAL);
-		queryEditorComposite = new Composite(partControl, SWT.BORDER);
+//		partControl = new SashForm(parent, SWT.VERTICAL);
+		queryEditorComposite = new Composite(parent, SWT.BORDER);
 		queryEditorComposite.setLayout(new GridLayout());
-
-		super.createPartControl(queryEditorComposite);
 
 		queryBrowserManagerComposite = new QueryBrowserManagerComposite(
 				queryEditorComposite, SWT.BORDER
-		);
+				);
 		queryBrowserManagerComposite.setQueryBrowserManager(queryBrowserManager);
+
+		super.createPartControl(queryEditorComposite);
 
 		for (Control c : queryEditorComposite.getChildren()) {
 			if (c != queryBrowserManagerComposite)
 				c.setLayoutData(new GridData(GridData.FILL_BOTH));
 		}
 
-		resultSetTableComposite = new ResultSetTableComposite(partControl, SWT.BORDER);
-		getSite().setSelectionProvider(resultSetTableComposite); // TODO do I need a proxy to support query-text-selections and result-set-selections at the same time?
+//		resultSetTableComposite = new ResultSetTableComposite(partControl, SWT.BORDER);
+//		getSite().setSelectionProvider(resultSetTableComposite); // TODO do I need a proxy to support query-text-selections and result-set-selections at the same time?
 	}
 
 	@Override
@@ -92,16 +89,16 @@ implements JPAQueryBrowser
 
 	private ExecuteQueryListener executeQueryListener = new ExecuteQueryAdapter()
 	{
-		@Override
-		public void preExecuteQuery(ExecuteQueryEvent executeQueryEvent) {
-			resultSetTableComposite.setInput(null);
-		}
-
-		@Override
-		public void postExecuteQuery(ExecuteQueryEvent executeQueryEvent) {
-			resultSetTableModel = executeQueryEvent.getResultSetTableModel();
-			resultSetTableComposite.setInput(resultSetTableModel);
-		}
+//		@Override
+//		public void preExecuteQuery(ExecuteQueryEvent executeQueryEvent) {
+//			resultSetTableComposite.setInput(null);
+//		}
+//
+//		@Override
+//		public void postExecuteQuery(ExecuteQueryEvent executeQueryEvent) {
+//			resultSetTableModel = executeQueryEvent.getResultSetTableModel();
+//			resultSetTableComposite.setInput(resultSetTableModel);
+//		}
 
 		@Override
 		public void onExecuteQueryError(ExecuteQueryEvent executeQueryEvent) {
@@ -117,6 +114,11 @@ implements JPAQueryBrowser
 	{
 		super.init(site, input);
 		queryBrowserManager.editorInputChanged();
+	}
+
+	@Override
+	public QueryBrowserManager getQueryBrowserManager() {
+		return queryBrowserManager;
 	}
 
 	@Override
