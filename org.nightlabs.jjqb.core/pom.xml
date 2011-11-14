@@ -126,7 +126,7 @@
 									<type>zip</type>
 									<version>8.0.4.v20111024</version>
 									<overWrite>false</overWrite>
-									<outputDirectory>src/main/resources/org/nightlabs/eclipse/jjqb/core/internal/childvm/resource</outputDirectory>
+									<outputDirectory>src/main/resources/org/nightlabs/jjqb/core/internal/childvm/resource</outputDirectory>
 <!--									<destFileName>jetty.zip</destFileName> -->
 								</artifactItem>
 								<artifactItem>
@@ -135,7 +135,7 @@
 									<type>war</type>
 									<version>${project.version}</version>
 									<overWrite>true</overWrite>
-									<outputDirectory>src/main/resources/org/nightlabs/eclipse/jjqb/core/internal/childvm/resource</outputDirectory>
+									<outputDirectory>src/main/resources/org/nightlabs/jjqb/core/internal/childvm/resource</outputDirectory>
 								</artifactItem>
 							</artifactItems>
 							<stripVersion>true</stripVersion>
