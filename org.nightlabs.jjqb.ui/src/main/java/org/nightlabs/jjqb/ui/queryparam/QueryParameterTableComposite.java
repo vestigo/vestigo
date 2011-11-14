@@ -1,11 +1,16 @@
 package org.nightlabs.jjqb.ui.queryparam;
 
-import java.util.SortedSet;
+import java.util.Collection;
 
+import org.eclipse.core.runtime.ListenerList;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.CellLabelProvider;
 import org.eclipse.jface.viewers.ColumnPixelData;
 import org.eclipse.jface.viewers.ColumnWeightData;
+import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.ISelectionChangedListener;
+import org.eclipse.jface.viewers.ISelectionProvider;
+import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.TableLayout;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TableViewerColumn;
@@ -17,11 +22,12 @@ import org.eclipse.swt.widgets.Table;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class QueryParameterTableComposite extends Composite
+public class QueryParameterTableComposite extends Composite implements ISelectionProvider
 {
 	private static final Logger logger = LoggerFactory.getLogger(QueryParameterTableComposite.class);
 
 	private TableViewer tableViewer;
+	private ListenerList selectionChangedListeners = new ListenerList();
 
 	public QueryParameterTableComposite(Composite parent, int style) {
 		super(parent, style);
@@ -100,7 +106,7 @@ public class QueryParameterTableComposite extends Composite
 		@Override
 		public void update(ViewerCell viewerCell) {
 			QueryParameter parameter = (QueryParameter) viewerCell.getElement();
-			viewerCell.setText(parameter.getType() == null ? "" : parameter.getType().toString());
+			viewerCell.setText(parameter.getType() == null ? "" : parameter.getType().getName());
 		}
 	}
 
@@ -114,11 +120,35 @@ public class QueryParameterTableComposite extends Composite
 	}
 
 	@SuppressWarnings("unchecked")
-	public SortedSet<QueryParameter> getInput() {
-		return (SortedSet<QueryParameter>) tableViewer.getInput();
+	public Collection<QueryParameter> getInput() {
+		return (Collection<QueryParameter>) tableViewer.getInput();
 	}
 
-	public final void setInput(SortedSet<QueryParameter> input) {
+	public final void setInput(Collection<QueryParameter> input) {
 		tableViewer.setInput(input);
+	}
+
+	public void refresh() {
+		tableViewer.refresh();
+	}
+
+	@Override
+	public IStructuredSelection getSelection() {
+		return (IStructuredSelection) tableViewer.getSelection();
+	}
+
+	@Override
+	public void addSelectionChangedListener(ISelectionChangedListener listener) {
+		selectionChangedListeners.add(listener);
+	}
+
+	@Override
+	public void removeSelectionChangedListener(ISelectionChangedListener listener) {
+		selectionChangedListeners.remove(listener);
+	}
+
+	@Override
+	public void setSelection(ISelection selection) {
+		tableViewer.setSelection(selection);
 	}
 }

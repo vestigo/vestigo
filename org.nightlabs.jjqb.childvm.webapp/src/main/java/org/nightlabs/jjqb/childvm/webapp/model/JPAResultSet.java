@@ -7,6 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 import org.nightlabs.jjqb.childvm.shared.ResultCellDTO;
 import org.nightlabs.jjqb.childvm.shared.ResultCellPersistentObjectRefDTO;
@@ -17,8 +18,15 @@ public class JPAResultSet extends ResultSet
 {
 	private static final Logger logger = LoggerFactory.getLogger(JPAResultSet.class);
 
-	public JPAResultSet(Connection connection, Collection<?> rows) {
+	private Query query;
+
+	public JPAResultSet(Connection connection, Query query, Collection<?> rows) {
 		super(connection, rows);
+
+		if (query == null)
+			throw new IllegalArgumentException("query == null");
+
+		this.query = query;
 	}
 
 	@Override
@@ -138,5 +146,15 @@ public class JPAResultSet extends ResultSet
 //			}
 			return super.getFieldValues(object, fields);
 		}
+	}
+
+	@Override
+	public void close() {
+		Query q = query;
+		if (q != null) {
+			query = null;
+//			q.closeAll(); // Does not exist in JPA :-(
+		}
+		super.close();
 	}
 }

@@ -34,6 +34,9 @@ public class QueryParameterManagerView extends ViewPart
 
 	private void registerQueryBrowser(QueryBrowser queryBrowser)
 	{
+		if (queryBrowser == null)
+			throw new IllegalArgumentException("queryBrowser == null");
+
 		if (this.queryBrowser == queryBrowser)
 			return;
 

@@ -12,9 +12,8 @@ implements Serializable, Comparable<QueryParameter>
 	private Class<?> type;
 	private Object value;
 
-	public QueryParameter(int index, String name) {
+	public QueryParameter(int index) {
 		this.index = index;
-		this.name = name;
 	}
 
 	public int getIndex() {

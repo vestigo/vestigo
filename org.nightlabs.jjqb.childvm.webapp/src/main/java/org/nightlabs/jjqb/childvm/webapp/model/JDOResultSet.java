@@ -8,6 +8,7 @@ import java.util.List;
 import javax.jdo.JDOHelper;
 import javax.jdo.JDOObjectNotFoundException;
 import javax.jdo.PersistenceManager;
+import javax.jdo.Query;
 import javax.jdo.identity.SingleFieldIdentity;
 
 import org.nightlabs.jjqb.childvm.shared.ResultCellDTO;
@@ -20,8 +21,15 @@ public class JDOResultSet extends ResultSet
 {
 	private static final Logger logger = LoggerFactory.getLogger(JDOResultSet.class);
 
-	public JDOResultSet(JDOConnection connection, Collection<?> rows) {
+	private Query query;
+
+	public JDOResultSet(JDOConnection connection, Query query, Collection<?> rows) {
 		super(connection, rows);
+
+		if (query == null)
+			throw new IllegalArgumentException("query == null");
+
+		this.query = query;
 	}
 
 	@Override
@@ -142,5 +150,16 @@ public class JDOResultSet extends ResultSet
 			logger.warn("getFieldValue: value was not yet loaded, before, but could be loaded by tryToLoadFieldByCallingGetter(...). Seems, the JDO implementation doesn't properly support PersistenceManager.retrieve(Object, boolean).");
 
 		return fieldValue;
+	}
+
+	@Override
+	public void close() {
+		Query q = query;
+		if (q != null) {
+			query = null;
+			// We use a separate query instance for every result-set => close it completely when the result-set is closed.
+			q.closeAll();
+		}
+		super.close();
 	}
 }

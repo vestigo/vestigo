@@ -105,16 +105,28 @@ extends Connection
 
 		Query query = em.createQuery(queryText);
 
+		boolean allParamsHaveName = true;
 		for (QueryParameterDTO parameter : parameters) {
-			query.setParameter(parameter.getIndex(), parameter.getValue());
+			if (parameter.getName() == null || parameter.getName().trim().isEmpty()) {
+				allParamsHaveName = false;
+				break;
+			}
 		}
+
+		for (QueryParameterDTO parameter : parameters) {
+			if (allParamsHaveName)
+				query.setParameter(parameter.getName(), parameter.getValue());
+			else
+				query.setParameter(parameter.getIndex(), parameter.getValue());
+		}
+
 		Object queryResult = query.getResultList();
 
 		ResultSet resultSet;
 		if (queryResult instanceof Collection<?>)
-			resultSet = new JPAResultSet(this, (Collection<?>)queryResult);
+			resultSet = new JPAResultSet(this, query, (Collection<?>)queryResult);
 		else
-			resultSet = new JPAResultSet(this, Collections.singletonList(queryResult));
+			resultSet = new JPAResultSet(this, query, Collections.singletonList(queryResult));
 
 		return resultSet;
 	}

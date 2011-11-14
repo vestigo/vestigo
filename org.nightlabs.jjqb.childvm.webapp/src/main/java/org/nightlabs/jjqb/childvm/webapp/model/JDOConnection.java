@@ -2,8 +2,12 @@ package org.nightlabs.jjqb.childvm.webapp.model;
 
 import java.io.IOException;
 import java.net.URLClassLoader;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.SortedSet;
 
 import javax.jdo.FetchPlan;
@@ -106,14 +110,30 @@ extends Connection
 
 		configureFetchPlanForOneLevelAndAllFields(pm.getFetchPlan());
 
+		List<Object> paramList = new ArrayList<Object>(parameters.size());
+		Map<String, Object> paramMap = new HashMap<String, Object>(parameters.size());
+		for (QueryParameterDTO parameter : parameters) {
+			if (parameter.getName() == null || parameter.getName().trim().isEmpty())
+				paramMap = null;
+
+			if (paramMap != null)
+				paramMap.put(parameter.getName(), parameter.getValue());
+
+			paramList.add(parameter.getValue());
+		}
+
 		Query query = pm.newQuery(queryText);
-		Object queryResult = query.executeWithArray(parameters.toArray());
+		Object queryResult;
+		if (paramMap != null)
+			queryResult = query.executeWithMap(paramMap);
+		else
+			queryResult = query.executeWithArray(paramList.toArray());
 
 		ResultSet resultSet;
 		if (queryResult instanceof Collection<?>)
-			resultSet = new JDOResultSet(this, (Collection<?>)queryResult);
+			resultSet = new JDOResultSet(this, query, (Collection<?>)queryResult);
 		else
-			resultSet = new JDOResultSet(this, Collections.singletonList(queryResult));
+			resultSet = new JDOResultSet(this, query, Collections.singletonList(queryResult));
 
 		return resultSet;
 	}

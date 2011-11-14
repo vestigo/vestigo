@@ -1,5 +1,6 @@
 package org.nightlabs.jjqb.ui.queryparam;
 
+import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -16,7 +17,7 @@ public class QueryParameterManagerComposite extends Composite
 
 	private QueryParameterManager queryParameterManager;
 
-	private QueryParameterTableComposite parameterTableComposite;
+	private QueryParameterTableComposite queryParameterTableComposite;
 
 	private Button addParameterButton;
 	private Button removeParameterButton;
@@ -30,10 +31,10 @@ public class QueryParameterManagerComposite extends Composite
 		layout.numColumns = 2;
 		this.setLayout(layout);
 
-		parameterTableComposite = new QueryParameterTableComposite(this, SWT.BORDER);
+		queryParameterTableComposite = new QueryParameterTableComposite(this, SWT.BORDER);
 		GridData gd = new GridData(GridData.FILL_BOTH);
 		gd.verticalSpan = 5;
-		parameterTableComposite.setLayoutData(gd);
+		queryParameterTableComposite.setLayoutData(gd);
 
 		createAddParameterButton();
 		createRemoveParameterButton();
@@ -51,6 +52,8 @@ public class QueryParameterManagerComposite extends Composite
 		removeParameterButton.setEnabled(queryParameterManager != null);
 		moveParameterUpButton.setEnabled(queryParameterManager != null);
 		moveParameterDownButton.setEnabled(queryParameterManager != null);
+
+		queryParameterTableComposite.setInput(queryParameterManager == null ? null : queryParameterManager.getQueryParameters());
 	}
 
 	public QueryParameterManager getQueryParameterManager() {
@@ -69,8 +72,8 @@ public class QueryParameterManagerComposite extends Composite
 		});
 	}
 	private void addParameterButtonPressed() {
-		// TODO Auto-generated method stub
-
+		queryParameterManager.addQueryParameter();
+		queryParameterTableComposite.refresh();
 	}
 
 	private void createRemoveParameterButton() {
@@ -85,8 +88,14 @@ public class QueryParameterManagerComposite extends Composite
 		});
 	}
 	private void removeParameterButtonPressed() {
-		// TODO Auto-generated method stub
+		IStructuredSelection selection = queryParameterTableComposite.getSelection();
+		if (selection.isEmpty())
+			return;
 
+		for (Object param : selection.toArray())
+			queryParameterManager.removeQueryParameter((QueryParameter)param);
+
+		queryParameterTableComposite.refresh();
 	}
 
 	private void createMoveParameterUpButton() {
@@ -101,8 +110,14 @@ public class QueryParameterManagerComposite extends Composite
 		});
 	}
 	private void moveParameterUpButtonPressed() {
-		// TODO Auto-generated method stub
+		IStructuredSelection selection = queryParameterTableComposite.getSelection();
+		if (selection.isEmpty())
+			return;
 
+		for (Object param : selection.toArray())
+			queryParameterManager.moveQueryParameterUp((QueryParameter)param);
+
+		queryParameterTableComposite.refresh();
 	}
 
 	private void createMoveParameterDownButton() {
@@ -117,7 +132,14 @@ public class QueryParameterManagerComposite extends Composite
 		});
 	}
 	private void moveParameterDownButtonPressed() {
-		// TODO Auto-generated method stub
+		IStructuredSelection selection = queryParameterTableComposite.getSelection();
+		if (selection.isEmpty())
+			return;
 
+		Object[] paramArray = selection.toArray();
+		for (int i = paramArray.length - 1; i >= 0; --i)
+			queryParameterManager.moveQueryParameterDown((QueryParameter)paramArray[i]);
+
+		queryParameterTableComposite.refresh();
 	}
 }
