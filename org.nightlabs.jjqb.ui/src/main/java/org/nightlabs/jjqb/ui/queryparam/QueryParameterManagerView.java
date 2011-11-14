@@ -1,9 +1,10 @@
-package org.nightlabs.jjqb.ui.paramtable;
+package org.nightlabs.jjqb.ui.queryparam;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IPartListener2;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchPartReference;
@@ -17,24 +18,49 @@ public class QueryParameterManagerView extends ViewPart
 	private static final Logger logger = LoggerFactory.getLogger(QueryParameterManagerView.class);
 
 	private QueryParameterManagerComposite queryParameterManagerComposite;
+	private QueryBrowser queryBrowser;
 
 	@Override
 	public void createPartControl(Composite parent) {
 		queryParameterManagerComposite = new QueryParameterManagerComposite(parent, SWT.NONE);
 		queryParameterManagerComposite.addDisposeListener(disposeListener);
 		getSite().getPage().addPartListener(partListener);
+
+		// in case, this view is opened AFTER the query browser editor, we register the currently active editor
+		IEditorPart activeEditor = getSite().getPage().getActiveEditor();
+		if (activeEditor instanceof QueryBrowser)
+			registerQueryBrowser((QueryBrowser) activeEditor);
 	}
 
-	private IPartListener2 partListener = new IPartListener2() {
+	private void registerQueryBrowser(QueryBrowser queryBrowser)
+	{
+		if (this.queryBrowser == queryBrowser)
+			return;
 
+		unregisterQueryBrowser(); // just in case, we have another one assigned.
+
+		this.queryBrowser = queryBrowser;
+		queryParameterManagerComposite.setQueryParameterManager(queryBrowser.getQueryBrowserManager().getQueryParameterManager());
+	}
+
+	private void unregisterQueryBrowser()
+	{
+		if (queryBrowser != null) {
+			queryBrowser = null;
+		}
+
+		if (queryParameterManagerComposite != null)
+			queryParameterManagerComposite.setQueryParameterManager(null);
+	}
+
+	private IPartListener2 partListener = new IPartListener2()
+	{
 		@Override
 		public void partVisible(IWorkbenchPartReference partRef) {
 			logger.info("partVisible: partRef={}", partRef);
 			IWorkbenchPart part = partRef.getPart(true);
-			if (part instanceof QueryBrowser) {
-				QueryBrowser queryBrowser = (QueryBrowser) part;
-				queryParameterManagerComposite.setQueryParameterManager(queryBrowser.getQueryBrowserManager().getQueryParameterManager());
-			}
+			if (part instanceof QueryBrowser)
+				registerQueryBrowser((QueryBrowser) part);
 		}
 
 		@Override
@@ -51,9 +77,8 @@ public class QueryParameterManagerView extends ViewPart
 		public void partHidden(IWorkbenchPartReference partRef) {
 			logger.info("partHidden: partRef={}", partRef);
 			IWorkbenchPart part = partRef.getPart(true);
-			if (part instanceof QueryBrowser) {
-				queryParameterManagerComposite.setQueryParameterManager(null);
-			}
+			if (queryBrowser == part)
+				unregisterQueryBrowser();
 		}
 
 		@Override
@@ -74,6 +99,9 @@ public class QueryParameterManagerView extends ViewPart
 		@Override
 		public void partActivated(IWorkbenchPartReference partRef) {
 			logger.info("partActivated: partRef={}", partRef);
+			IWorkbenchPart part = partRef.getPart(true);
+			if (part instanceof QueryBrowser)
+				registerQueryBrowser((QueryBrowser) part);
 		}
 	};
 

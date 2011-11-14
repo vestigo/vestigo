@@ -4,6 +4,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IPartListener2;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchPartReference;
@@ -27,6 +28,11 @@ public class ResultSetTableView extends ViewPart {
 		resultSetTableComposite.addDisposeListener(disposeListener);
 		getSite().getPage().addPartListener(partListener);
 		getSite().setSelectionProvider(resultSetTableComposite);
+
+		// in case, this view is opened AFTER the query browser editor, we register the currently active editor
+		IEditorPart activeEditor = getSite().getPage().getActiveEditor();
+		if (activeEditor instanceof QueryBrowser)
+			registerQueryBrowser((QueryBrowser) activeEditor);
 	}
 
 	private ExecuteQueryListener executeQueryListener = new ExecuteQueryAdapter() {
@@ -36,17 +42,37 @@ public class ResultSetTableView extends ViewPart {
 		}
 	};
 
-	private IPartListener2 partListener = new IPartListener2() {
+	private void registerQueryBrowser(QueryBrowser queryBrowser)
+	{
+		if (this.queryBrowser == queryBrowser)
+			return;
 
+		unregisterQueryBrowser(); // just in case, we have another one assigned.
+
+		this.queryBrowser = queryBrowser;
+		resultSetTableComposite.setInput(queryBrowser.getQueryBrowserManager().getResultSetTableModel());
+		queryBrowser.getQueryBrowserManager().addExecuteQueryListener(executeQueryListener);
+	}
+
+	private void unregisterQueryBrowser()
+	{
+		if (queryBrowser != null) {
+			queryBrowser.getQueryBrowserManager().removeExecuteQueryListener(executeQueryListener);
+			queryBrowser = null;
+		}
+
+		if (resultSetTableComposite != null)
+			resultSetTableComposite.setInput(null);
+	}
+
+	private IPartListener2 partListener = new IPartListener2()
+	{
 		@Override
 		public void partVisible(IWorkbenchPartReference partRef) {
 			logger.info("partVisible: partRef={}", partRef);
 			IWorkbenchPart part = partRef.getPart(true);
-			if (part instanceof QueryBrowser) {
-				queryBrowser = (QueryBrowser) part;
-				resultSetTableComposite.setInput(queryBrowser.getQueryBrowserManager().getResultSetTableModel());
-				queryBrowser.getQueryBrowserManager().addExecuteQueryListener(executeQueryListener);
-			}
+			if (part instanceof QueryBrowser)
+				registerQueryBrowser((QueryBrowser) part);
 		}
 
 		@Override
@@ -63,11 +89,8 @@ public class ResultSetTableView extends ViewPart {
 		public void partHidden(IWorkbenchPartReference partRef) {
 			logger.info("partHidden: partRef={}", partRef);
 			IWorkbenchPart part = partRef.getPart(true);
-			if (queryBrowser == part) {
-				queryBrowser.getQueryBrowserManager().removeExecuteQueryListener(executeQueryListener);
-				resultSetTableComposite.setInput(null);
-				queryBrowser = null;
-			}
+			if (queryBrowser == part)
+				unregisterQueryBrowser();
 		}
 
 		@Override
@@ -88,6 +111,10 @@ public class ResultSetTableView extends ViewPart {
 		@Override
 		public void partActivated(IWorkbenchPartReference partRef) {
 			logger.info("partActivated: partRef={}", partRef);
+
+			IWorkbenchPart part = partRef.getPart(true);
+			if (part instanceof QueryBrowser)
+				registerQueryBrowser((QueryBrowser) part);
 		}
 	};
 

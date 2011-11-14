@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.ui.paramtable;
+package org.nightlabs.jjqb.ui.queryparam;
 
 import org.eclipse.swt.widgets.Display;
 import org.nightlabs.jjqb.ui.browser.QueryBrowserManager;

@@ -10,7 +10,7 @@
             parentCategory="%oda.parent.category.id"/>
       <connectionProfile
             category="org.nightlabs.jjqb.core.oda.JDODriver"
-            icon="icons/jdo.gif"
+            icon="icons/jdo.png"
             id="org.nightlabs.jjqb.core.oda.JDODriver"
             name="JDO Connection Profile"
             pingFactory="org.eclipse.datatools.connectivity.oda.profile.OdaConnectionFactory"/>
@@ -24,7 +24,7 @@
             name="New JDO connection"
             class="org.eclipse.datatools.connectivity.oda.design.ui.wizards.NewDataSourceWizard"
             description="Create a new JDO driver"
-            icon="icons/jdo.gif"
+            icon="icons/jdo.png"
             profile="org.nightlabs.jjqb.core.oda.JDODriver"/>
    </extension>
 
@@ -37,7 +37,7 @@
             parentCategory="%oda.parent.category.id"/>
       <connectionProfile
             category="org.nightlabs.jjqb.core.oda.JPADriver"
-            icon="icons/jpa.gif"
+            icon="icons/jpa.png"
             id="org.nightlabs.jjqb.core.oda.JPADriver"
             name="JPA Connection Profile"
             pingFactory="org.eclipse.datatools.connectivity.oda.profile.OdaConnectionFactory"/>
@@ -51,7 +51,7 @@
             name="New JPA connection"
             class="org.eclipse.datatools.connectivity.oda.design.ui.wizards.NewDataSourceWizard"
             description="Create a new JPA driver"
-            icon="icons/jpa.gif"
+            icon="icons/jpa.png"
             profile="org.nightlabs.jjqb.core.oda.JPADriver"/>
    </extension>
 
@@ -102,7 +102,7 @@
               windowTitle="JDO Query"/>
         <dataSetPage
               displayName="JDO Query"
-              icon="icons/jdo.gif"
+              icon="icons/jdo.png"
               id="org.nightlabs.jjqb.ui.JDOQueryWizardPage"
               path="/"
               wizardPageClass="org.nightlabs.jjqb.ui.oda.JDOQueryWizardPage"/>
@@ -129,7 +129,7 @@
               windowTitle="JPA Query"/>
         <dataSetPage
               displayName="JPA Query"
-              icon="icons/jpa.gif"
+              icon="icons/jpa.png"
               id="org.nightlabs.jjqb.ui.JPAQueryWizardPage"
               path="/"
               wizardPageClass="org.nightlabs.jjqb.ui.JPAQueryWizardPage"/>
@@ -187,7 +187,7 @@
             contributorClass="org.eclipse.ui.texteditor.BasicTextEditorActionContributor"
             default="true"
             extensions="jdoql"
-            icon="icons/jdo.gif"
+            icon="icons/jdo.png"
             id="org.nightlabs.jjqb.ui.browser.JDOQueryBrowserEditor"
             name="JDO Query Browser">
       </editor>
@@ -201,7 +201,7 @@
             contributorClass="org.eclipse.ui.texteditor.BasicTextEditorActionContributor"
             default="true"
             extensions="jpql"
-            icon="icons/jpa.gif"
+            icon="icons/jpa.png"
             id="org.nightlabs.jjqb.ui.browser.JPAQueryBrowserEditor"
             name="JPA Query Browser">
       </editor>
@@ -214,21 +214,24 @@
             id="org.nightlabs.jjqb.ui"
             name="JDO/JPA Query Browser">
       </category>
+
       <view id="org.nightlabs.jjqb.ui.resultsettable.ResultSetTableView"
             name="Result set view"
-            icon="icons/view.png"
+            icon="icons/org.nightlabs.jjqb.ui.resultsettable/ResultSetTableView.16x16.png"
             category="org.nightlabs.jjqb.ui"
             class="org.nightlabs.jjqb.ui.resultsettable.ResultSetTableView"/>
-      <view id="org.nightlabs.jjqb.ui.detailtree.ResultSetTableCellDetailTreeView"
+
+      <view id="org.nightlabs.jjqb.ui.detailtree.ObjectGraphDetailTreeView"
             name="Object graph detail tree"
-            icon="icons/view.png"
+            icon="icons/org.nightlabs.jjqb.ui.detailtree/ObjectGraphDetailTreeView.16x16.png"
             category="org.nightlabs.jjqb.ui"
-            class="org.nightlabs.jjqb.ui.detailtree.ResultSetTableCellDetailTreeView"/>
-      <view id="org.nightlabs.jjqb.ui.paramtable.QueryParameterManagerView"
+            class="org.nightlabs.jjqb.ui.detailtree.ObjectGraphDetailTreeView"/>
+
+      <view id="org.nightlabs.jjqb.ui.queryparam.QueryParameterManagerView"
             name="Query parameters"
-            icon="icons/view.png"
+            icon="icons/org.nightlabs.jjqb.ui.queryparam/QueryParameterManagerView.16x16.png"
             category="org.nightlabs.jjqb.ui"
-            class="org.nightlabs.jjqb.ui.paramtable.QueryParameterManagerView"/>
+            class="org.nightlabs.jjqb.ui.queryparam.QueryParameterManagerView"/>
    </extension>
 
 

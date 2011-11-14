@@ -38,7 +38,7 @@ import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.widgets.Display;
 import org.nightlabs.jjqb.core.PropertiesWithChangeSupport;
 import org.nightlabs.jjqb.ui.JJQBUIPlugin;
-import org.nightlabs.jjqb.ui.paramtable.QueryParameterManager;
+import org.nightlabs.jjqb.ui.queryparam.QueryParameterManager;
 import org.nightlabs.jjqb.ui.resultsettable.ResultSetTableModel;
 import org.nightlabs.util.Stopwatch;
 import org.slf4j.Logger;

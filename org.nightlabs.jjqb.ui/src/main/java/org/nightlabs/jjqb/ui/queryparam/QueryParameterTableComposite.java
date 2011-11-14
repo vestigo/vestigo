@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.ui.paramtable;
+package org.nightlabs.jjqb.ui.queryparam;
 
 import java.util.SortedSet;
 

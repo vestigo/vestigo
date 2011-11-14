@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.ui.paramtable;
+package org.nightlabs.jjqb.ui.queryparam;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;

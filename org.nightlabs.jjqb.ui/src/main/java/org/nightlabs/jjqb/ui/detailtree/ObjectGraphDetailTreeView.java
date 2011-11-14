@@ -12,13 +12,15 @@ import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.ISelectionListener;
+import org.eclipse.ui.IViewReference;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.part.ViewPart;
 import org.nightlabs.jjqb.ui.browser.QueryBrowser;
 import org.nightlabs.jjqb.ui.resultsettable.ResultSetTableCell;
 import org.nightlabs.jjqb.ui.resultsettable.ResultSetTableRow;
+import org.nightlabs.jjqb.ui.resultsettable.ResultSetTableView;
 
-public class ResultSetTableCellDetailTreeView extends ViewPart
+public class ObjectGraphDetailTreeView extends ViewPart
 {
 	private ObjectGraphDetailTreeComposite objectGraphDetailTreeComposite;
 
@@ -28,6 +30,15 @@ public class ResultSetTableCellDetailTreeView extends ViewPart
 		objectGraphDetailTreeComposite = new ObjectGraphDetailTreeComposite(parent, SWT.NONE);
 		objectGraphDetailTreeComposite.addDisposeListener(disposeListener);
 		getSite().getPage().addSelectionListener(selectionListener);
+
+		// in case, this view is opened AFTER the ResultSetTableView, we look for it
+		for (IViewReference viewReference : getSite().getPage().getViewReferences()) {
+			if (ResultSetTableView.class.getName().equals(viewReference.getId())) {
+				IWorkbenchPart resultSetTableView = viewReference.getPart(true);
+				ISelection selection = resultSetTableView.getSite().getSelectionProvider().getSelection();
+				selectionListener.selectionChanged(resultSetTableView, selection);
+			}
+		}
 	}
 
 	private ISelectionListener selectionListener = new ISelectionListener() {
