@@ -1,4 +1,4 @@
-package org.nightlabs.eclipse.jjqb.ui.exampleeditor;
+package org.nightlabs.jjqb.ui.exampleeditor;
 
 import org.eclipse.jface.text.BadLocationException;
 import org.eclipse.jface.text.DocumentEvent;

@@ -11,7 +11,7 @@
  *   Alexander Bieber, NightLabs - initial API and implementation              *
  ******************************************************************************/
 
-package org.nightlabs.eclipse.jjqb.ui.oda;
+package org.nightlabs.jjqb.ui.oda;
 
 import java.io.File;
 import java.io.FileInputStream;

@@ -2,23 +2,23 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<artifactId>org.nightlabs.eclipse.jjqb.ui</artifactId>
+	<artifactId>org.nightlabs.jjqb.ui</artifactId>
 	<packaging>bundle</packaging>
 
 	<parent>
-		<groupId>org.nightlabs.eclipse.jjqb</groupId>
-		<artifactId>org.nightlabs.eclipse.jjqb.parent</artifactId>
+		<groupId>org.nightlabs.jjqb</groupId>
+		<artifactId>org.nightlabs.jjqb.parent</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
-		<relativePath>../org.nightlabs.eclipse.jjqb.parent</relativePath>
+		<relativePath>../org.nightlabs.jjqb.parent</relativePath>
 	</parent>
 
 	<dependencies>
-		<!-- BEGIN org.nightlabs.eclipse.jjqb -->
+		<!-- BEGIN org.nightlabs.jjqb -->
 		<dependency>
-			<groupId>org.nightlabs.eclipse.jjqb</groupId>
-			<artifactId>org.nightlabs.eclipse.jjqb.core</artifactId>
+			<groupId>org.nightlabs.jjqb</groupId>
+			<artifactId>org.nightlabs.jjqb.core</artifactId>
 		</dependency>
-		<!-- END org.nightlabs.eclipse.jjqb -->
+		<!-- END org.nightlabs.jjqb -->
 
 		<!-- BEGIN org.eclipse -->
 		<dependency>
@@ -93,7 +93,7 @@ temporarily... because of exampleeditor - we should switch back to the property,
 					<manifestLocation>META-INF</manifestLocation>
 				-->
 					<instructions>
-						<Bundle-Activator>org.nightlabs.eclipse.jjqb.ui.JJQBUIPlugin</Bundle-Activator>
+						<Bundle-Activator>org.nightlabs.jjqb.ui.JJQBUIPlugin</Bundle-Activator>
 						<Bundle-ActivationPolicy>lazy</Bundle-ActivationPolicy>
 					</instructions>
 				</configuration>

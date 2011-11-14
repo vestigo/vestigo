@@ -1,7 +1,7 @@
-package org.nightlabs.eclipse.jjqb.core.internal.oda;
+package org.nightlabs.jjqb.core.internal.oda;
 
-import org.nightlabs.eclipse.jjqb.core.oda.JDOResultSet;
-import org.nightlabs.eclipse.jjqb.core.oda.Query;
+import org.nightlabs.jjqb.core.oda.JDOResultSet;
+import org.nightlabs.jjqb.core.oda.Query;
 
 public class JPAResultSetImpl extends AbstractResultSet implements JDOResultSet
 {

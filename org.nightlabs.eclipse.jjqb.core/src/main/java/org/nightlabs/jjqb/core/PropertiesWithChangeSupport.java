@@ -1,4 +1,4 @@
-package org.nightlabs.eclipse.jjqb.core;
+package org.nightlabs.jjqb.core;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;

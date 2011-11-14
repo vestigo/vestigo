@@ -1,4 +1,4 @@
-package org.nightlabs.eclipse.jjqb.childvm.webapp.model;
+package org.nightlabs.jjqb.childvm.webapp.model;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -6,8 +6,8 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 
-import org.nightlabs.eclipse.jjqb.childvm.shared.ConnectionProfileDTO;
-import org.nightlabs.eclipse.jjqb.childvm.shared.PropertiesUtil;
+import org.nightlabs.jjqb.childvm.shared.ConnectionProfileDTO;
+import org.nightlabs.jjqb.childvm.shared.PropertiesUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

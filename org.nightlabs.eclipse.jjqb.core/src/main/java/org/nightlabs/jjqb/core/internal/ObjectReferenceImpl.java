@@ -1,14 +1,14 @@
-package org.nightlabs.eclipse.jjqb.core.internal;
+package org.nightlabs.jjqb.core.internal;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.nightlabs.eclipse.jjqb.childvm.shared.ResultCellDTO;
-import org.nightlabs.eclipse.jjqb.childvm.shared.ResultCellObjectRefDTO;
-import org.nightlabs.eclipse.jjqb.core.ObjectReference;
-import org.nightlabs.eclipse.jjqb.core.ObjectReferenceChild;
-import org.nightlabs.eclipse.jjqb.core.childvm.ChildVM;
-import org.nightlabs.eclipse.jjqb.core.oda.ResultSet;
+import org.nightlabs.jjqb.childvm.shared.ResultCellDTO;
+import org.nightlabs.jjqb.childvm.shared.ResultCellObjectRefDTO;
+import org.nightlabs.jjqb.core.ObjectReference;
+import org.nightlabs.jjqb.core.ObjectReferenceChild;
+import org.nightlabs.jjqb.core.childvm.ChildVM;
+import org.nightlabs.jjqb.core.oda.ResultSet;
 import org.nightlabs.util.Util;
 
 public class ObjectReferenceImpl implements ObjectReference

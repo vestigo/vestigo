@@ -1,4 +1,4 @@
-package org.nightlabs.eclipse.jjqb.core.internal.osgi;
+package org.nightlabs.jjqb.core.internal.osgi;
 
 import java.util.LinkedList;
 import java.util.List;

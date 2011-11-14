@@ -1,4 +1,4 @@
-package org.nightlabs.eclipse.jjqb.core.oda;
+package org.nightlabs.jjqb.core.oda;
 
 import java.io.Serializable;
 import java.util.UUID;

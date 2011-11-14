@@ -1,4 +1,4 @@
-package org.nightlabs.eclipse.jjqb.ui;
+package org.nightlabs.jjqb.ui;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -13,7 +13,7 @@ import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
-import org.nightlabs.eclipse.jjqb.core.PropertiesWithChangeSupport;
+import org.nightlabs.jjqb.core.PropertiesWithChangeSupport;
 import org.osgi.framework.BundleContext;
 
 public class JJQBUIPlugin extends AbstractUIPlugin {

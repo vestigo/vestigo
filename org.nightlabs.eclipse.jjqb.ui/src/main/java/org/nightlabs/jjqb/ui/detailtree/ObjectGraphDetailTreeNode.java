@@ -1,7 +1,7 @@
-package org.nightlabs.eclipse.jjqb.ui.detailtree;
+package org.nightlabs.jjqb.ui.detailtree;
 
-import org.nightlabs.eclipse.jjqb.core.ObjectReference;
-import org.nightlabs.eclipse.jjqb.core.ObjectReferenceChild;
+import org.nightlabs.jjqb.core.ObjectReference;
+import org.nightlabs.jjqb.core.ObjectReferenceChild;
 
 
 public class ObjectGraphDetailTreeNode

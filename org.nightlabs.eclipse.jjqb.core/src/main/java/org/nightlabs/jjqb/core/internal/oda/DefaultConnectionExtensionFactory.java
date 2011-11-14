@@ -1,10 +1,10 @@
-package org.nightlabs.eclipse.jjqb.core.internal.oda;
+package org.nightlabs.jjqb.core.internal.oda;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
-import org.nightlabs.eclipse.jjqb.core.oda.AbstractConnectionExtensionFactory;
-import org.nightlabs.eclipse.jjqb.core.oda.Connection;
-import org.nightlabs.eclipse.jjqb.core.oda.ConnectionExtension;
+import org.nightlabs.jjqb.core.oda.AbstractConnectionExtensionFactory;
+import org.nightlabs.jjqb.core.oda.Connection;
+import org.nightlabs.jjqb.core.oda.ConnectionExtension;
 
 public class DefaultConnectionExtensionFactory extends AbstractConnectionExtensionFactory {
 

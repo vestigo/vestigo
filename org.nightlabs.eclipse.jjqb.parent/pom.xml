@@ -2,8 +2,8 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>org.nightlabs.eclipse.jjqb</groupId>
-	<artifactId>org.nightlabs.eclipse.jjqb.parent</artifactId>
+	<groupId>org.nightlabs.jjqb</groupId>
+	<artifactId>org.nightlabs.jjqb.parent</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
@@ -53,36 +53,36 @@
 
 	<dependencyManagement>
 		<dependencies>
-			<!-- BEGIN org.nightlabs.eclipse.jjqb -->
+			<!-- BEGIN org.nightlabs.jjqb -->
 			<dependency>
-				<groupId>org.nightlabs.eclipse.jjqb</groupId>
-				<artifactId>org.nightlabs.eclipse.jjqb.childvm.shared</artifactId>
+				<groupId>org.nightlabs.jjqb</groupId>
+				<artifactId>org.nightlabs.jjqb.childvm.shared</artifactId>
 				<version>${jjqb.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.nightlabs.eclipse.jjqb</groupId>
-				<artifactId>org.nightlabs.eclipse.jjqb.childvm.webapp</artifactId>
+				<groupId>org.nightlabs.jjqb</groupId>
+				<artifactId>org.nightlabs.jjqb.childvm.webapp</artifactId>
 				<type>war</type>
 				<version>${jjqb.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.nightlabs.eclipse.jjqb</groupId>
-				<artifactId>org.nightlabs.eclipse.jjqb.core</artifactId>
+				<groupId>org.nightlabs.jjqb</groupId>
+				<artifactId>org.nightlabs.jjqb.core</artifactId>
 				<version>${jjqb.version}</version>
 			</dependency>
 <!--
 			<dependency>
-				<groupId>org.nightlabs.eclipse.jjqb</groupId>
-				<artifactId>org.nightlabs.eclipse.jjqb.derby</artifactId>
+				<groupId>org.nightlabs.jjqb</groupId>
+				<artifactId>org.nightlabs.jjqb.derby</artifactId>
 				<version>${jjqb.version}</version>
 			</dependency>
 -->
 			<dependency>
-				<groupId>org.nightlabs.eclipse.jjqb</groupId>
-				<artifactId>org.nightlabs.eclipse.jjqb.ui</artifactId>
+				<groupId>org.nightlabs.jjqb</groupId>
+				<artifactId>org.nightlabs.jjqb.ui</artifactId>
 				<version>${jjqb.version}</version>
 			</dependency>
-			<!-- END org.nightlabs.eclipse.jjqb -->
+			<!-- END org.nightlabs.jjqb -->
 
 			<!-- BEGIN org.eclipse -->
 			<dependency> <!-- Belongs to Eclipse, though it uses a different groupId. -->

@@ -1,4 +1,4 @@
-package org.nightlabs.eclipse.jjqb.core.internal.childvm;
+package org.nightlabs.jjqb.core.internal.childvm;
 
 public abstract class RelativePathPart {
 }

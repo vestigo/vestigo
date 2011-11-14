@@ -1,4 +1,4 @@
-package org.nightlabs.eclipse.jjqb.childvm.webapp.model;
+package org.nightlabs.jjqb.childvm.webapp.model;
 
 import java.io.IOException;
 import java.lang.reflect.Field;
@@ -8,8 +8,8 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
-import org.nightlabs.eclipse.jjqb.childvm.shared.ResultCellDTO;
-import org.nightlabs.eclipse.jjqb.childvm.shared.ResultCellPersistentObjectRefDTO;
+import org.nightlabs.jjqb.childvm.shared.ResultCellDTO;
+import org.nightlabs.jjqb.childvm.shared.ResultCellPersistentObjectRefDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

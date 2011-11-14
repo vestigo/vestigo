@@ -11,14 +11,14 @@
  *   Alexander Bieber, NightLabs - initial API and implementation              *
  ******************************************************************************/
 
-package org.nightlabs.eclipse.jjqb.core.internal.oda;
+package org.nightlabs.jjqb.core.internal.oda;
 
 import org.eclipse.datatools.connectivity.oda.IDataSetMetaData;
 import org.eclipse.datatools.connectivity.oda.OdaException;
-import org.nightlabs.eclipse.jjqb.childvm.shared.ConnectionDTO;
-import org.nightlabs.eclipse.jjqb.childvm.shared.JPAConnectionDTO;
-import org.nightlabs.eclipse.jjqb.core.oda.JPAConnection;
-import org.nightlabs.eclipse.jjqb.core.oda.Query;
+import org.nightlabs.jjqb.childvm.shared.ConnectionDTO;
+import org.nightlabs.jjqb.childvm.shared.JPAConnectionDTO;
+import org.nightlabs.jjqb.core.oda.JPAConnection;
+import org.nightlabs.jjqb.core.oda.Query;
 
 public class JPAConnectionImpl extends AbstractConnection implements JPAConnection
 {

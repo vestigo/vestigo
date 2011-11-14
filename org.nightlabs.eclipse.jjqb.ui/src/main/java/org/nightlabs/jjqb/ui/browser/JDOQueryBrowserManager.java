@@ -1,7 +1,7 @@
-package org.nightlabs.eclipse.jjqb.ui.browser;
+package org.nightlabs.jjqb.ui.browser;
 
 import org.eclipse.datatools.connectivity.IConnectionProfile;
-import org.nightlabs.eclipse.jjqb.core.oda.JDODriver;
+import org.nightlabs.jjqb.core.oda.JDODriver;
 
 public class JDOQueryBrowserManager extends QueryBrowserManager
 {

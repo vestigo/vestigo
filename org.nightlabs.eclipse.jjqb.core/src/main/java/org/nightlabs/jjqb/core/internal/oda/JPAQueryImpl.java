@@ -1,7 +1,7 @@
-package org.nightlabs.eclipse.jjqb.core.internal.oda;
+package org.nightlabs.jjqb.core.internal.oda;
 
-import org.nightlabs.eclipse.jjqb.core.oda.JDOQuery;
-import org.nightlabs.eclipse.jjqb.core.oda.ResultSet;
+import org.nightlabs.jjqb.core.oda.JDOQuery;
+import org.nightlabs.jjqb.core.oda.ResultSet;
 
 
 public class JPAQueryImpl extends AbstractQuery implements JDOQuery

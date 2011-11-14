@@ -1,4 +1,4 @@
-package org.nightlabs.eclipse.jjqb.ui.paramtable;
+package org.nightlabs.jjqb.ui.paramtable;
 
 import java.io.Serializable;
 

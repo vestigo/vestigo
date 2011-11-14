@@ -2,14 +2,14 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<artifactId>org.nightlabs.eclipse.jjqb.assembly.parent</artifactId>
+	<artifactId>org.nightlabs.jjqb.assembly.parent</artifactId>
 	<packaging>pom</packaging>
 
 	<parent>
-		<groupId>org.nightlabs.eclipse.jjqb</groupId>
-		<artifactId>org.nightlabs.eclipse.jjqb.parent</artifactId>
+		<groupId>org.nightlabs.jjqb</groupId>
+		<artifactId>org.nightlabs.jjqb.parent</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
-		<relativePath>../org.nightlabs.eclipse.jjqb.parent</relativePath>
+		<relativePath>../org.nightlabs.jjqb.parent</relativePath>
 	</parent>
 
 	<properties>
@@ -28,22 +28,22 @@
 			<artifactId>${org.nightlabs.eclipse.compatibility.artifactId}</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.nightlabs.eclipse.jjqb</groupId>
-			<artifactId>org.nightlabs.eclipse.jjqb.core</artifactId>
+			<groupId>org.nightlabs.jjqb</groupId>
+			<artifactId>org.nightlabs.jjqb.core</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.nightlabs.eclipse.jjqb</groupId>
-			<artifactId>org.nightlabs.eclipse.jjqb.childvm.shared</artifactId>
+			<groupId>org.nightlabs.jjqb</groupId>
+			<artifactId>org.nightlabs.jjqb.childvm.shared</artifactId>
 		</dependency>
 <!--
 		<dependency>
-			<groupId>org.nightlabs.eclipse.jjqb</groupId>
-			<artifactId>org.nightlabs.eclipse.jjqb.derby</artifactId>
+			<groupId>org.nightlabs.jjqb</groupId>
+			<artifactId>org.nightlabs.jjqb.derby</artifactId>
 		</dependency>
 -->
 		<dependency>
-			<groupId>org.nightlabs.eclipse.jjqb</groupId>
-			<artifactId>org.nightlabs.eclipse.jjqb.ui</artifactId>
+			<groupId>org.nightlabs.jjqb</groupId>
+			<artifactId>org.nightlabs.jjqb.ui</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.nightlabs.eclipse</groupId>

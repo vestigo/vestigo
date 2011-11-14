@@ -1,4 +1,4 @@
-package org.nightlabs.eclipse.jjqb.childvm.webapp.model;
+package org.nightlabs.jjqb.childvm.webapp.model;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -7,9 +7,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-import org.nightlabs.eclipse.jjqb.childvm.shared.ConnectionDTO;
-import org.nightlabs.eclipse.jjqb.childvm.shared.JDOConnectionDTO;
-import org.nightlabs.eclipse.jjqb.childvm.shared.JPAConnectionDTO;
+import org.nightlabs.jjqb.childvm.shared.ConnectionDTO;
+import org.nightlabs.jjqb.childvm.shared.JDOConnectionDTO;
+import org.nightlabs.jjqb.childvm.shared.JPAConnectionDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

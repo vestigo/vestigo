@@ -1,4 +1,4 @@
-package org.nightlabs.eclipse.jjqb.ui.detailtree;
+package org.nightlabs.jjqb.ui.detailtree;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -14,8 +14,8 @@ import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.widgets.Display;
-import org.nightlabs.eclipse.jjqb.core.ObjectReference;
-import org.nightlabs.eclipse.jjqb.core.ObjectReferenceChild;
+import org.nightlabs.jjqb.core.ObjectReference;
+import org.nightlabs.jjqb.core.ObjectReferenceChild;
 
 public class ObjectGraphDetailTreeContentProvider
 implements ITreeContentProvider

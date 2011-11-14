@@ -1,4 +1,4 @@
-package org.nightlabs.eclipse.jjqb.childvm.webapp.model;
+package org.nightlabs.jjqb.childvm.webapp.model;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -9,9 +9,9 @@ import java.util.TreeSet;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import org.nightlabs.eclipse.jjqb.childvm.shared.ConnectionDTO;
-import org.nightlabs.eclipse.jjqb.childvm.shared.QueryParameterDTO;
-import org.nightlabs.eclipse.jjqb.childvm.shared.ResultSetID;
+import org.nightlabs.jjqb.childvm.shared.ConnectionDTO;
+import org.nightlabs.jjqb.childvm.shared.QueryParameterDTO;
+import org.nightlabs.jjqb.childvm.shared.ResultSetID;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

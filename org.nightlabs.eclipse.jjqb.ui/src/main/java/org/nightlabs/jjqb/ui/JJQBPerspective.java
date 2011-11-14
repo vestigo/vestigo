@@ -1,11 +1,11 @@
-package org.nightlabs.eclipse.jjqb.ui;
+package org.nightlabs.jjqb.ui;
 
 import org.eclipse.ui.IFolderLayout;
 import org.eclipse.ui.IPageLayout;
 import org.eclipse.ui.IPerspectiveFactory;
-import org.nightlabs.eclipse.jjqb.ui.detailtree.ResultSetTableCellDetailTreeView;
-import org.nightlabs.eclipse.jjqb.ui.paramtable.QueryParameterManagerView;
-import org.nightlabs.eclipse.jjqb.ui.resultsettable.ResultSetTableView;
+import org.nightlabs.jjqb.ui.detailtree.ResultSetTableCellDetailTreeView;
+import org.nightlabs.jjqb.ui.paramtable.QueryParameterManagerView;
+import org.nightlabs.jjqb.ui.resultsettable.ResultSetTableView;
 
 public class JJQBPerspective implements IPerspectiveFactory
 {

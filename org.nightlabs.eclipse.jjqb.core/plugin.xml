@@ -7,8 +7,8 @@
 
       <dataSource
             defaultDisplayName="JDO Driver"
-            driverClass="org.nightlabs.eclipse.jjqb.core.internal.oda.JDODriverImpl"
-            id="org.nightlabs.eclipse.jjqb.core.oda.JDODriver"
+            driverClass="org.nightlabs.jjqb.core.internal.oda.JDODriverImpl"
+            id="org.nightlabs.jjqb.core.oda.JDODriver"
             odaVersion="3.0"
             setThreadContextClassLoader="true">
          <properties>
@@ -24,7 +24,7 @@
 <!-- TODO what's this dataSet good for? do we need it? copied from org.nightlabs.birt.jdo... -->
       <dataSet
             defaultDisplayName="JDO Data Set"            
-            id="org.nightlabs.eclipse.jjqb.core.oda.JDODataSet">
+            id="org.nightlabs.jjqb.core.oda.JDODataSet">
          <dataTypeMapping
                nativeDataType="String"
                nativeDataTypeCode="1"
@@ -59,8 +59,8 @@
 
       <dataSource
             defaultDisplayName="JPA Driver"
-            driverClass="org.nightlabs.eclipse.jjqb.core.internal.oda.JPADriverImpl"
-            id="org.nightlabs.eclipse.jjqb.core.oda.JPADriver"
+            driverClass="org.nightlabs.jjqb.core.internal.oda.JPADriverImpl"
+            id="org.nightlabs.jjqb.core.oda.JPADriver"
             odaVersion="3.0"
             setThreadContextClassLoader="true">
          <properties>
@@ -76,7 +76,7 @@
 <!-- TODO what's this dataSet good for? do we need it? copied from org.nightlabs.birt.jdo... -->
       <dataSet
             defaultDisplayName="JDO Data Set"            
-            id="org.nightlabs.eclipse.jjqb.core.oda.JDODataSet">
+            id="org.nightlabs.jjqb.core.oda.JDODataSet">
          <dataTypeMapping
                nativeDataType="String"
                nativeDataTypeCode="1"

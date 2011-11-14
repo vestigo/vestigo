@@ -1,4 +1,4 @@
-package org.nightlabs.eclipse.jjqb.core.internal.childvm;
+package org.nightlabs.jjqb.core.internal.childvm;
 
 import java.io.File;
 import java.io.IOException;
@@ -17,24 +17,24 @@ import java.util.concurrent.TimeoutException;
 
 import javax.ws.rs.core.MediaType;
 
-import org.nightlabs.eclipse.jjqb.childvm.shared.ConnectionDTO;
-import org.nightlabs.eclipse.jjqb.childvm.shared.ConnectionDTOList;
-import org.nightlabs.eclipse.jjqb.childvm.shared.ConnectionProfileDTO;
-import org.nightlabs.eclipse.jjqb.childvm.shared.ConnectionProfileDTOList;
-import org.nightlabs.eclipse.jjqb.childvm.shared.QueryDTO;
-import org.nightlabs.eclipse.jjqb.childvm.shared.QueryParameterDTO;
-import org.nightlabs.eclipse.jjqb.childvm.shared.ResultCellDTO;
-import org.nightlabs.eclipse.jjqb.childvm.shared.ResultCellDTOList;
-import org.nightlabs.eclipse.jjqb.childvm.shared.ResultRowDTO;
-import org.nightlabs.eclipse.jjqb.childvm.shared.ResultRowDTOList;
-import org.nightlabs.eclipse.jjqb.childvm.shared.ResultSetDTO;
-import org.nightlabs.eclipse.jjqb.childvm.shared.ResultSetID;
-import org.nightlabs.eclipse.jjqb.childvm.shared.provider.JavaNativeMessageBodyReader;
-import org.nightlabs.eclipse.jjqb.childvm.shared.provider.JavaNativeMessageBodyWriter;
-import org.nightlabs.eclipse.jjqb.childvm.shared.provider.MediaTypeConst;
-import org.nightlabs.eclipse.jjqb.core.ObjectReference;
-import org.nightlabs.eclipse.jjqb.core.childvm.ChildVM;
-import org.nightlabs.eclipse.jjqb.core.childvm.ChildVMException;
+import org.nightlabs.jjqb.childvm.shared.ConnectionDTO;
+import org.nightlabs.jjqb.childvm.shared.ConnectionDTOList;
+import org.nightlabs.jjqb.childvm.shared.ConnectionProfileDTO;
+import org.nightlabs.jjqb.childvm.shared.ConnectionProfileDTOList;
+import org.nightlabs.jjqb.childvm.shared.QueryDTO;
+import org.nightlabs.jjqb.childvm.shared.QueryParameterDTO;
+import org.nightlabs.jjqb.childvm.shared.ResultCellDTO;
+import org.nightlabs.jjqb.childvm.shared.ResultCellDTOList;
+import org.nightlabs.jjqb.childvm.shared.ResultRowDTO;
+import org.nightlabs.jjqb.childvm.shared.ResultRowDTOList;
+import org.nightlabs.jjqb.childvm.shared.ResultSetDTO;
+import org.nightlabs.jjqb.childvm.shared.ResultSetID;
+import org.nightlabs.jjqb.childvm.shared.provider.JavaNativeMessageBodyReader;
+import org.nightlabs.jjqb.childvm.shared.provider.JavaNativeMessageBodyWriter;
+import org.nightlabs.jjqb.childvm.shared.provider.MediaTypeConst;
+import org.nightlabs.jjqb.core.ObjectReference;
+import org.nightlabs.jjqb.core.childvm.ChildVM;
+import org.nightlabs.jjqb.core.childvm.ChildVMException;
 import org.nightlabs.util.IOUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -164,7 +164,7 @@ implements ChildVM
 	{
 		logger.debug("deployRESTApplication: serverDirectory='{}'", webServerDirectory.getAbsolutePath());
 
-		String fileName = "org.nightlabs.eclipse.jjqb.childvm.webapp.war";
+		String fileName = "org.nightlabs.jjqb.childvm.webapp.war";
 		String resourceName = "resource/" + fileName;
 		File deploymentDir = new File(webServerDirectory, "webapps");
 		File destinationFile = new File(deploymentDir, fileName);
@@ -360,7 +360,7 @@ implements ChildVM
 	{
 		assertServerStarted();
 
-		return client.resource("http://localhost:" + port + "/org.nightlabs.eclipse.jjqb.childvm.webapp/ChildVMApp/" + relativePath);
+		return client.resource("http://localhost:" + port + "/org.nightlabs.jjqb.childvm.webapp/ChildVMApp/" + relativePath);
 	}
 
 	private synchronized Client acquireClient()
@@ -559,13 +559,13 @@ implements ChildVM
 			return;
 
 		logger.error("handleUniformInterfaceException: " + x, x);
-		org.nightlabs.eclipse.jjqb.childvm.shared.Error error = null;
+		org.nightlabs.jjqb.childvm.shared.Error error = null;
 		try {
 			ClientResponse clientResponse = x.getResponse();
 
 			clientResponse.bufferEntity();
 			if (clientResponse.hasEntity())
-				error = clientResponse.getEntity(org.nightlabs.eclipse.jjqb.childvm.shared.Error.class);
+				error = clientResponse.getEntity(org.nightlabs.jjqb.childvm.shared.Error.class);
 		} catch (Exception y) {
 			logger.error("handleUniformInterfaceException: " + y, y);
 		}

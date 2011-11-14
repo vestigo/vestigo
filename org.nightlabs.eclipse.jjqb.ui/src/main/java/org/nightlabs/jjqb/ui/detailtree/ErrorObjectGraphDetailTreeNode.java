@@ -1,4 +1,4 @@
-package org.nightlabs.eclipse.jjqb.ui.detailtree;
+package org.nightlabs.jjqb.ui.detailtree;
 
 
 public class ErrorObjectGraphDetailTreeNode extends ObjectGraphDetailTreeNode

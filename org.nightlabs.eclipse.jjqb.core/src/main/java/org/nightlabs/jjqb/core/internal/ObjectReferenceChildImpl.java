@@ -1,9 +1,9 @@
-package org.nightlabs.eclipse.jjqb.core.internal;
+package org.nightlabs.jjqb.core.internal;
 
-import org.nightlabs.eclipse.jjqb.childvm.shared.ResultCellDTO;
-import org.nightlabs.eclipse.jjqb.core.FieldDesc;
-import org.nightlabs.eclipse.jjqb.core.ObjectReference;
-import org.nightlabs.eclipse.jjqb.core.ObjectReferenceChild;
+import org.nightlabs.jjqb.childvm.shared.ResultCellDTO;
+import org.nightlabs.jjqb.core.FieldDesc;
+import org.nightlabs.jjqb.core.ObjectReference;
+import org.nightlabs.jjqb.core.ObjectReferenceChild;
 
 public class ObjectReferenceChildImpl
 implements ObjectReferenceChild

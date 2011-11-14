@@ -1,4 +1,4 @@
-package org.nightlabs.eclipse.jjqb.childvm.webapp;
+package org.nightlabs.jjqb.childvm.webapp;
 
 import java.util.Collection;
 import java.util.UUID;
@@ -10,13 +10,13 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.QueryParam;
 
-import org.nightlabs.eclipse.jjqb.childvm.shared.ConnectionDTO;
-import org.nightlabs.eclipse.jjqb.childvm.shared.ConnectionDTOList;
-import org.nightlabs.eclipse.jjqb.childvm.shared.ConnectionDTOPutResult;
-import org.nightlabs.eclipse.jjqb.childvm.webapp.model.Connection;
-import org.nightlabs.eclipse.jjqb.childvm.webapp.model.ConnectionManager;
-import org.nightlabs.eclipse.jjqb.childvm.webapp.model.ConnectionProfile;
-import org.nightlabs.eclipse.jjqb.childvm.webapp.model.ConnectionProfileManager;
+import org.nightlabs.jjqb.childvm.shared.ConnectionDTO;
+import org.nightlabs.jjqb.childvm.shared.ConnectionDTOList;
+import org.nightlabs.jjqb.childvm.shared.ConnectionDTOPutResult;
+import org.nightlabs.jjqb.childvm.webapp.model.Connection;
+import org.nightlabs.jjqb.childvm.webapp.model.ConnectionManager;
+import org.nightlabs.jjqb.childvm.webapp.model.ConnectionProfile;
+import org.nightlabs.jjqb.childvm.webapp.model.ConnectionProfileManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

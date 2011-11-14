@@ -1,4 +1,4 @@
-package org.nightlabs.eclipse.jjqb.core.internal;
+package org.nightlabs.jjqb.core.internal;
 
 
 public class PackageImporterDummy

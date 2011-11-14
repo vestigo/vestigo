@@ -1,10 +1,10 @@
-package org.nightlabs.eclipse.jjqb.core.internal.oda;
+package org.nightlabs.jjqb.core.internal.oda;
 
 import org.eclipse.datatools.connectivity.oda.LogConfiguration;
 import org.eclipse.datatools.connectivity.oda.OdaException;
-import org.nightlabs.eclipse.jjqb.core.oda.Connection;
-import org.nightlabs.eclipse.jjqb.core.oda.ConnectionExtensionRegistry;
-import org.nightlabs.eclipse.jjqb.core.oda.Driver;
+import org.nightlabs.jjqb.core.oda.Connection;
+import org.nightlabs.jjqb.core.oda.ConnectionExtensionRegistry;
+import org.nightlabs.jjqb.core.oda.Driver;
 
 public abstract class AbstractDriver implements Driver {
 
@@ -47,7 +47,7 @@ public abstract class AbstractDriver implements Driver {
 
 	@Override
 	public final Connection getConnection(String connectionClassName) throws OdaException {
-		org.nightlabs.eclipse.jjqb.core.oda.Connection connection = _getConnection(connectionClassName);
+		org.nightlabs.jjqb.core.oda.Connection connection = _getConnection(connectionClassName);
 		ConnectionExtensionRegistry.sharedInstance().bind(connection);
 		return connection;
 	}

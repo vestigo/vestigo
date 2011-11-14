@@ -1,4 +1,4 @@
-package org.nightlabs.eclipse.jjqb.childvm.webapp;
+package org.nightlabs.jjqb.childvm.webapp;
 
 import java.lang.reflect.Array;
 
@@ -8,12 +8,12 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.QueryParam;
 
-import org.nightlabs.eclipse.jjqb.childvm.shared.ResultRowDTO;
-import org.nightlabs.eclipse.jjqb.childvm.shared.ResultRowDTOList;
-import org.nightlabs.eclipse.jjqb.childvm.shared.ResultSetID;
-import org.nightlabs.eclipse.jjqb.childvm.webapp.model.Connection;
-import org.nightlabs.eclipse.jjqb.childvm.webapp.model.ConnectionManager;
-import org.nightlabs.eclipse.jjqb.childvm.webapp.model.ResultSet;
+import org.nightlabs.jjqb.childvm.shared.ResultRowDTO;
+import org.nightlabs.jjqb.childvm.shared.ResultRowDTOList;
+import org.nightlabs.jjqb.childvm.shared.ResultSetID;
+import org.nightlabs.jjqb.childvm.webapp.model.Connection;
+import org.nightlabs.jjqb.childvm.webapp.model.ConnectionManager;
+import org.nightlabs.jjqb.childvm.webapp.model.ResultSet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

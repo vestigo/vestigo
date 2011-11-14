@@ -1,4 +1,4 @@
-package org.nightlabs.eclipse.jjqb.ui.browser;
+package org.nightlabs.jjqb.ui.browser;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -15,7 +15,7 @@ import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
-import org.nightlabs.eclipse.jjqb.ui.resultsettable.ResultSetTableModel;
+import org.nightlabs.jjqb.ui.resultsettable.ResultSetTableModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

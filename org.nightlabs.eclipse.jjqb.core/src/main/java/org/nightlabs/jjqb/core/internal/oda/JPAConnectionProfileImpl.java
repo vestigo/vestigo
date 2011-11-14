@@ -1,7 +1,7 @@
-package org.nightlabs.eclipse.jjqb.core.internal.oda;
+package org.nightlabs.jjqb.core.internal.oda;
 
-import org.nightlabs.eclipse.jjqb.childvm.shared.ConnectionProfileDTO;
-import org.nightlabs.eclipse.jjqb.childvm.shared.JPAConnectionProfileDTO;
+import org.nightlabs.jjqb.childvm.shared.ConnectionProfileDTO;
+import org.nightlabs.jjqb.childvm.shared.JPAConnectionProfileDTO;
 
 public class JPAConnectionProfileImpl
 extends AbstractConnectionProfile

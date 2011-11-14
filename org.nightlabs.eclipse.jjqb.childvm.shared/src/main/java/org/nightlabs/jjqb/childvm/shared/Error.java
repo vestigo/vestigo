@@ -1,4 +1,4 @@
-package org.nightlabs.eclipse.jjqb.childvm.shared;
+package org.nightlabs.jjqb.childvm.shared;
 
 import java.io.Serializable;
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package org.nightlabs.eclipse.jjqb.ui.oda;
+package org.nightlabs.jjqb.ui.oda;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -21,9 +21,9 @@ import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchPartSite;
 import org.eclipse.ui.part.FileEditorInput;
-import org.nightlabs.eclipse.jjqb.core.oda.JDODriver;
-import org.nightlabs.eclipse.jjqb.core.oda.JPADriver;
-import org.nightlabs.eclipse.jjqb.ui.browser.JDOQueryBrowserEditor;
+import org.nightlabs.jjqb.core.oda.JDODriver;
+import org.nightlabs.jjqb.core.oda.JPADriver;
+import org.nightlabs.jjqb.ui.browser.JDOQueryBrowserEditor;
 
 public class OpenQueryBrowserAction
 implements IObjectActionDelegate, IViewActionDelegate
@@ -66,7 +66,7 @@ implements IObjectActionDelegate, IViewActionDelegate
 					getSite().getWorkbenchWindow().getActivePage().openEditor(
 //							new NonExistingFileEditorInput(fileStore, "new-"),
 							new FileEditorInput(efile),
-//							org.nightlabs.eclipse.jjqb.ui.exampleeditor.XMLEditor.class.getName()
+//							org.nightlabs.jjqb.ui.exampleeditor.XMLEditor.class.getName()
 							JDOQueryBrowserEditor.class.getName()
 					);
 				} catch (Exception e) {

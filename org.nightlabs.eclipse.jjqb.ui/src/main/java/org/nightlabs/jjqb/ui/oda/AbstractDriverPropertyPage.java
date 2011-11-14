@@ -11,7 +11,7 @@
  *   Alexander Bieber, NightLabs - initial API and implementation              *
  ******************************************************************************/
 
-package org.nightlabs.eclipse.jjqb.ui.oda;
+package org.nightlabs.jjqb.ui.oda;
 
 import java.util.Properties;
 

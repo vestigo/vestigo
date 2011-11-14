@@ -1,4 +1,4 @@
-package org.nightlabs.eclipse.jjqb.ui.paramtable;
+package org.nightlabs.jjqb.ui.paramtable;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -8,7 +8,7 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
-import org.nightlabs.eclipse.jjqb.ui.JJQBUIPlugin;
+import org.nightlabs.jjqb.ui.JJQBUIPlugin;
 
 public class QueryParameterManagerComposite extends Composite
 {

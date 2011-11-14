@@ -1,4 +1,4 @@
-package org.nightlabs.eclipse.jjqb.childvm.webapp.model;
+package org.nightlabs.jjqb.childvm.webapp.model;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -16,13 +16,13 @@ import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
-import org.nightlabs.eclipse.jjqb.childvm.shared.MapEntry;
-import org.nightlabs.eclipse.jjqb.childvm.shared.ResultCellDTO;
-import org.nightlabs.eclipse.jjqb.childvm.shared.ResultCellNullDTO;
-import org.nightlabs.eclipse.jjqb.childvm.shared.ResultCellObjectRefDTO;
-import org.nightlabs.eclipse.jjqb.childvm.shared.ResultCellSimpleDTO;
-import org.nightlabs.eclipse.jjqb.childvm.shared.ResultCellTransientObjectRefDTO;
-import org.nightlabs.eclipse.jjqb.childvm.shared.ResultSetID;
+import org.nightlabs.jjqb.childvm.shared.MapEntry;
+import org.nightlabs.jjqb.childvm.shared.ResultCellDTO;
+import org.nightlabs.jjqb.childvm.shared.ResultCellNullDTO;
+import org.nightlabs.jjqb.childvm.shared.ResultCellObjectRefDTO;
+import org.nightlabs.jjqb.childvm.shared.ResultCellSimpleDTO;
+import org.nightlabs.jjqb.childvm.shared.ResultCellTransientObjectRefDTO;
+import org.nightlabs.jjqb.childvm.shared.ResultSetID;
 import org.nightlabs.util.reflect.ReflectUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

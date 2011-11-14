@@ -1,4 +1,4 @@
-package org.nightlabs.eclipse.jjqb.ui.internal;
+package org.nightlabs.jjqb.ui.internal;
 
 public class PackageImporterDummy
 {

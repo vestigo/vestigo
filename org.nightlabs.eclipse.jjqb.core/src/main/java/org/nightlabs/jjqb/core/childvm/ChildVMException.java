@@ -1,7 +1,7 @@
-package org.nightlabs.eclipse.jjqb.core.childvm;
+package org.nightlabs.jjqb.core.childvm;
 
-import org.nightlabs.eclipse.jjqb.childvm.shared.Error;
-import org.nightlabs.eclipse.jjqb.childvm.shared.ErrorStackTraceElement;
+import org.nightlabs.jjqb.childvm.shared.Error;
+import org.nightlabs.jjqb.childvm.shared.ErrorStackTraceElement;
 
 public class ChildVMException extends RuntimeException
 {

@@ -5,67 +5,67 @@
 	<extension
          point="org.eclipse.datatools.connectivity.connectionProfile">
       <category
-            id="org.nightlabs.eclipse.jjqb.core.oda.JDODriver"
+            id="org.nightlabs.jjqb.core.oda.JDODriver"
             name="JDO Connections"
             parentCategory="%oda.parent.category.id"/>
       <connectionProfile
-            category="org.nightlabs.eclipse.jjqb.core.oda.JDODriver"
+            category="org.nightlabs.jjqb.core.oda.JDODriver"
             icon="icons/jdo.gif"
-            id="org.nightlabs.eclipse.jjqb.core.oda.JDODriver"
+            id="org.nightlabs.jjqb.core.oda.JDODriver"
             name="JDO Connection Profile"
             pingFactory="org.eclipse.datatools.connectivity.oda.profile.OdaConnectionFactory"/>
       <connectionFactory
             id="org.eclipse.datatools.connectivity.oda.IConnection"
             name="JDO Connection Factory"
             class="org.eclipse.datatools.connectivity.oda.profile.OdaConnectionFactory"
-            profile="org.nightlabs.eclipse.jjqb.core.oda.JDODriver"/>
+            profile="org.nightlabs.jjqb.core.oda.JDODriver"/>
       <newWizard
-            id="org.nightlabs.eclipse.jjqb.core.oda.JDODriver"
+            id="org.nightlabs.jjqb.core.oda.JDODriver"
             name="New JDO connection"
             class="org.eclipse.datatools.connectivity.oda.design.ui.wizards.NewDataSourceWizard"
             description="Create a new JDO driver"
             icon="icons/jdo.gif"
-            profile="org.nightlabs.eclipse.jjqb.core.oda.JDODriver"/>
+            profile="org.nightlabs.jjqb.core.oda.JDODriver"/>
    </extension>
 
 
    <extension
          point="org.eclipse.datatools.connectivity.connectionProfile">
       <category
-            id="org.nightlabs.eclipse.jjqb.core.oda.JPADriver"
+            id="org.nightlabs.jjqb.core.oda.JPADriver"
             name="JPA Connections"
             parentCategory="%oda.parent.category.id"/>
       <connectionProfile
-            category="org.nightlabs.eclipse.jjqb.core.oda.JPADriver"
+            category="org.nightlabs.jjqb.core.oda.JPADriver"
             icon="icons/jpa.gif"
-            id="org.nightlabs.eclipse.jjqb.core.oda.JPADriver"
+            id="org.nightlabs.jjqb.core.oda.JPADriver"
             name="JPA Connection Profile"
             pingFactory="org.eclipse.datatools.connectivity.oda.profile.OdaConnectionFactory"/>
       <connectionFactory
             id="org.eclipse.datatools.connectivity.oda.IConnection"
             name="JPA Connection Factory"
             class="org.eclipse.datatools.connectivity.oda.profile.OdaConnectionFactory"
-            profile="org.nightlabs.eclipse.jjqb.core.oda.JPADriver"/>
+            profile="org.nightlabs.jjqb.core.oda.JPADriver"/>
       <newWizard
-            id="org.nightlabs.eclipse.jjqb.core.oda.JPADriver"
+            id="org.nightlabs.jjqb.core.oda.JPADriver"
             name="New JPA connection"
             class="org.eclipse.datatools.connectivity.oda.design.ui.wizards.NewDataSourceWizard"
             description="Create a new JPA driver"
             icon="icons/jpa.gif"
-            profile="org.nightlabs.eclipse.jjqb.core.oda.JPADriver"/>
+            profile="org.nightlabs.jjqb.core.oda.JPADriver"/>
    </extension>
 
 
    <extension
          point="org.eclipse.ui.propertyPages">
       <page
-            id="org.nightlabs.eclipse.jjqb.core.oda.JDODriver"
+            id="org.nightlabs.jjqb.core.oda.JDODriver"
             name="JDO Properties"
-            class="org.nightlabs.eclipse.jjqb.ui.oda.JDODriverPropertyPage"
+            class="org.nightlabs.jjqb.ui.oda.JDODriverPropertyPage"
             objectClass="org.eclipse.datatools.connectivity.IConnectionProfile">
          <filter
                name="org.eclipse.datatools.profile.property.id"
-               value="org.nightlabs.eclipse.jjqb.core.oda.JDODriver"/>
+               value="org.nightlabs.jjqb.core.oda.JDODriver"/>
       </page>
    </extension>
 
@@ -73,28 +73,28 @@
    <extension
          point="org.eclipse.ui.propertyPages">
       <page
-            id="org.nightlabs.eclipse.jjqb.core.oda.JPADriver"
+            id="org.nightlabs.jjqb.core.oda.JPADriver"
             name="JPA Properties"
-            class="org.nightlabs.eclipse.jjqb.ui.oda.JPADriverPropertyPage"
+            class="org.nightlabs.jjqb.ui.oda.JPADriverPropertyPage"
             objectClass="org.eclipse.datatools.connectivity.IConnectionProfile">
          <filter
                name="org.eclipse.datatools.profile.property.id"
-               value="org.nightlabs.eclipse.jjqb.core.oda.JPADriver"/>
+               value="org.nightlabs.jjqb.core.oda.JPADriver"/>
       </page>
    </extension>
 
    <extension
             point="org.eclipse.datatools.connectivity.oda.design.ui.dataSource">
-      <dataSourceUI id="org.nightlabs.eclipse.jjqb.core.oda.JDODriver">
+      <dataSourceUI id="org.nightlabs.jjqb.core.oda.JDODriver">
         <newDataSourceWizard
               includesProgressMonitor="false"
-              pageClass="org.nightlabs.eclipse.jjqb.ui.oda.JDODriverWizardPage"
+              pageClass="org.nightlabs.jjqb.ui.oda.JDODriverWizardPage"
               pageTitle="JDO DataSource"
               windowTitle="JDO DataSource"/>
       </dataSourceUI> 
       <dataSetUI
-              id="org.nightlabs.eclipse.jjqb.core.JDODataSet"
-              initialPageId="org.nightlabs.eclipse.jjqb.ui.oda.JDOQueryWizardPage"
+              id="org.nightlabs.jjqb.core.JDODataSet"
+              initialPageId="org.nightlabs.jjqb.ui.oda.JDOQueryWizardPage"
               supportsInParameters="true"
               supportsOutParameters="false">
         <dataSetWizard
@@ -103,25 +103,25 @@
         <dataSetPage
               displayName="JDO Query"
               icon="icons/jdo.gif"
-              id="org.nightlabs.eclipse.jjqb.ui.JDOQueryWizardPage"
+              id="org.nightlabs.jjqb.ui.JDOQueryWizardPage"
               path="/"
-              wizardPageClass="org.nightlabs.eclipse.jjqb.ui.oda.JDOQueryWizardPage"/>
+              wizardPageClass="org.nightlabs.jjqb.ui.oda.JDOQueryWizardPage"/>
       </dataSetUI>
    </extension>
 
 
    <extension
             point="org.eclipse.datatools.connectivity.oda.design.ui.dataSource">
-      <dataSourceUI id="org.nightlabs.eclipse.jjqb.core.oda.JPADriver">
+      <dataSourceUI id="org.nightlabs.jjqb.core.oda.JPADriver">
         <newDataSourceWizard
               includesProgressMonitor="false"
-              pageClass="org.nightlabs.eclipse.jjqb.ui.oda.JPADriverWizardPage"
+              pageClass="org.nightlabs.jjqb.ui.oda.JPADriverWizardPage"
               pageTitle="JPA DataSource"
               windowTitle="JPA DataSource"/>
       </dataSourceUI> 
       <dataSetUI
-              id="org.nightlabs.eclipse.jjqb.core.JPADataSet"
-              initialPageId="org.nightlabs.eclipse.jjqb.ui.oda.JPAQueryWizardPage"
+              id="org.nightlabs.jjqb.core.JPADataSet"
+              initialPageId="org.nightlabs.jjqb.ui.oda.JPAQueryWizardPage"
               supportsInParameters="true"
               supportsOutParameters="false">
         <dataSetWizard
@@ -130,9 +130,9 @@
         <dataSetPage
               displayName="JPA Query"
               icon="icons/jpa.gif"
-              id="org.nightlabs.eclipse.jjqb.ui.JPAQueryWizardPage"
+              id="org.nightlabs.jjqb.ui.JPAQueryWizardPage"
               path="/"
-              wizardPageClass="org.nightlabs.eclipse.jjqb.ui.JPAQueryWizardPage"/>
+              wizardPageClass="org.nightlabs.jjqb.ui.JPAQueryWizardPage"/>
       </dataSetUI> 
    </extension>
 
@@ -140,12 +140,12 @@
    <extension
          point="org.eclipse.ui.viewActions">
       <viewContribution
-            id="org.nightlabs.eclipse.jjqb.ui.viewContribution_DataSourceExplorerNavigator"
+            id="org.nightlabs.jjqb.ui.viewContribution_DataSourceExplorerNavigator"
             targetID="org.eclipse.datatools.connectivity.DataSourceExplorerNavigator">
          <action
-               class="org.nightlabs.eclipse.jjqb.ui.oda.OpenQueryBrowserAction"
+               class="org.nightlabs.jjqb.ui.oda.OpenQueryBrowserAction"
                enablesFor="+"
-               id="org.nightlabs.eclipse.jjqb.ui.oda.OpenQueryBrowserAction"
+               id="org.nightlabs.jjqb.ui.oda.OpenQueryBrowserAction"
                label="Open query browser"
                style="push"
                toolbarPath="additions">
@@ -158,12 +158,12 @@
          point="org.eclipse.ui.popupMenus">
       <objectContribution
             adaptable="false"
-            id="org.nightlabs.eclipse.jjqb.ui.objectContribution_AbstractDriver"
+            id="org.nightlabs.jjqb.ui.objectContribution_AbstractDriver"
             objectClass="org.eclipse.datatools.connectivity.IConnectionProfile">
          <action
-               class="org.nightlabs.eclipse.jjqb.ui.oda.OpenQueryBrowserAction"
+               class="org.nightlabs.jjqb.ui.oda.OpenQueryBrowserAction"
                enablesFor="+"
-               id="org.nightlabs.eclipse.jjqb.ui.oda.OpenQueryBrowserAction"
+               id="org.nightlabs.jjqb.ui.oda.OpenQueryBrowserAction"
                label="Open query browser">
          </action>
       </objectContribution>
@@ -174,21 +174,21 @@
          point="org.eclipse.ui.editors">
 <!--
       <editor
-            class="org.nightlabs.eclipse.jjqb.ui.exampleeditor.XMLEditor"
+            class="org.nightlabs.jjqb.ui.exampleeditor.XMLEditor"
             contributorClass="org.eclipse.ui.texteditor.BasicTextEditorActionContributor"
             extensions="xml"
             icon="icons/sample.gif"
-            id="org.nightlabs.eclipse.jjqb.ui.exampleeditor.XMLEditor"
+            id="org.nightlabs.jjqb.ui.exampleeditor.XMLEditor"
             name="Sample XML Editor">
       </editor>
 -->
       <editor
-            class="org.nightlabs.eclipse.jjqb.ui.browser.JDOQueryBrowserEditor"
+            class="org.nightlabs.jjqb.ui.browser.JDOQueryBrowserEditor"
             contributorClass="org.eclipse.ui.texteditor.BasicTextEditorActionContributor"
             default="true"
             extensions="jdoql"
             icon="icons/jdo.gif"
-            id="org.nightlabs.eclipse.jjqb.ui.browser.JDOQueryBrowserEditor"
+            id="org.nightlabs.jjqb.ui.browser.JDOQueryBrowserEditor"
             name="JDO Query Browser">
       </editor>
    </extension>
@@ -197,12 +197,12 @@
    <extension
          point="org.eclipse.ui.editors">
       <editor
-            class="org.nightlabs.eclipse.jjqb.ui.browser.JPAQueryBrowserEditor"
+            class="org.nightlabs.jjqb.ui.browser.JPAQueryBrowserEditor"
             contributorClass="org.eclipse.ui.texteditor.BasicTextEditorActionContributor"
             default="true"
             extensions="jpql"
             icon="icons/jpa.gif"
-            id="org.nightlabs.eclipse.jjqb.ui.browser.JPAQueryBrowserEditor"
+            id="org.nightlabs.jjqb.ui.browser.JPAQueryBrowserEditor"
             name="JPA Query Browser">
       </editor>
    </extension>
@@ -211,33 +211,33 @@
    <extension
          point="org.eclipse.ui.views">
       <category 
-            id="org.nightlabs.eclipse.jjqb.ui"
+            id="org.nightlabs.jjqb.ui"
             name="JDO/JPA Query Browser">
       </category>
-      <view id="org.nightlabs.eclipse.jjqb.ui.resultsettable.ResultSetTableView"
+      <view id="org.nightlabs.jjqb.ui.resultsettable.ResultSetTableView"
             name="Result set view"
             icon="icons/view.png"
-            category="org.nightlabs.eclipse.jjqb.ui"
-            class="org.nightlabs.eclipse.jjqb.ui.resultsettable.ResultSetTableView"/>
-      <view id="org.nightlabs.eclipse.jjqb.ui.detailtree.ResultSetTableCellDetailTreeView"
+            category="org.nightlabs.jjqb.ui"
+            class="org.nightlabs.jjqb.ui.resultsettable.ResultSetTableView"/>
+      <view id="org.nightlabs.jjqb.ui.detailtree.ResultSetTableCellDetailTreeView"
             name="Object graph detail tree"
             icon="icons/view.png"
-            category="org.nightlabs.eclipse.jjqb.ui"
-            class="org.nightlabs.eclipse.jjqb.ui.detailtree.ResultSetTableCellDetailTreeView"/>
-      <view id="org.nightlabs.eclipse.jjqb.ui.paramtable.QueryParameterManagerView"
+            category="org.nightlabs.jjqb.ui"
+            class="org.nightlabs.jjqb.ui.detailtree.ResultSetTableCellDetailTreeView"/>
+      <view id="org.nightlabs.jjqb.ui.paramtable.QueryParameterManagerView"
             name="Query parameters"
             icon="icons/view.png"
-            category="org.nightlabs.eclipse.jjqb.ui"
-            class="org.nightlabs.eclipse.jjqb.ui.paramtable.QueryParameterManagerView"/>
+            category="org.nightlabs.jjqb.ui"
+            class="org.nightlabs.jjqb.ui.paramtable.QueryParameterManagerView"/>
    </extension>
 
 
    <extension point="org.eclipse.ui.perspectives">
         <perspective
-            class="org.nightlabs.eclipse.jjqb.ui.JJQBPerspective"
+            class="org.nightlabs.jjqb.ui.JJQBPerspective"
             fixed="false"
-            icon="icons/org.nightlabs.eclipse.jjqb.ui/JJQBPerspective.16x16.png"
-            id="org.nightlabs.eclipse.jjqb.ui.JJQBPerspective"
+            icon="icons/org.nightlabs.jjqb.ui/JJQBPerspective.16x16.png"
+            id="org.nightlabs.jjqb.ui.JJQBPerspective"
             name="JDO/JPA Query Browser"/>
     </extension>
 

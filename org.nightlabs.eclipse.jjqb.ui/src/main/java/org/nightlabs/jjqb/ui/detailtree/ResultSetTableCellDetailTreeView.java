@@ -1,4 +1,4 @@
-package org.nightlabs.eclipse.jjqb.ui.detailtree;
+package org.nightlabs.jjqb.ui.detailtree;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,9 +14,9 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.ISelectionListener;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.part.ViewPart;
-import org.nightlabs.eclipse.jjqb.ui.browser.QueryBrowser;
-import org.nightlabs.eclipse.jjqb.ui.resultsettable.ResultSetTableCell;
-import org.nightlabs.eclipse.jjqb.ui.resultsettable.ResultSetTableRow;
+import org.nightlabs.jjqb.ui.browser.QueryBrowser;
+import org.nightlabs.jjqb.ui.resultsettable.ResultSetTableCell;
+import org.nightlabs.jjqb.ui.resultsettable.ResultSetTableRow;
 
 public class ResultSetTableCellDetailTreeView extends ViewPart
 {

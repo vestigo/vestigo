@@ -1,4 +1,4 @@
-package org.nightlabs.eclipse.jjqb.childvm.webapp;
+package org.nightlabs.jjqb.childvm.webapp;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -7,8 +7,8 @@ import java.util.Set;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
-import org.nightlabs.eclipse.jjqb.childvm.shared.provider.JavaNativeMessageBodyReader;
-import org.nightlabs.eclipse.jjqb.childvm.shared.provider.JavaNativeMessageBodyWriter;
+import org.nightlabs.jjqb.childvm.shared.provider.JavaNativeMessageBodyReader;
+import org.nightlabs.jjqb.childvm.shared.provider.JavaNativeMessageBodyWriter;
 
 @ApplicationPath("ChildVMApp")
 public class ChildVMApp

@@ -2,14 +2,14 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<artifactId>org.nightlabs.eclipse.jjqb.core</artifactId>
+	<artifactId>org.nightlabs.jjqb.core</artifactId>
 	<packaging>bundle</packaging>
 
 	<parent>
-		<groupId>org.nightlabs.eclipse.jjqb</groupId>
-		<artifactId>org.nightlabs.eclipse.jjqb.parent</artifactId>
+		<groupId>org.nightlabs.jjqb</groupId>
+		<artifactId>org.nightlabs.jjqb.parent</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
-		<relativePath>../org.nightlabs.eclipse.jjqb.parent</relativePath>
+		<relativePath>../org.nightlabs.jjqb.parent</relativePath>
 	</parent>
 
 	<dependencies>
@@ -60,14 +60,14 @@
 			<artifactId>org.nightlabs.eclipse.extension</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.nightlabs.eclipse.jjqb</groupId>
-			<artifactId>org.nightlabs.eclipse.jjqb.childvm.shared</artifactId>
+			<groupId>org.nightlabs.jjqb</groupId>
+			<artifactId>org.nightlabs.jjqb.childvm.shared</artifactId>
 		</dependency>
 
 		<dependency>
 			<!-- force this to already be compiled before => make sure we copy the up-to-date-dependency. -->
-			<groupId>org.nightlabs.eclipse.jjqb</groupId>
-			<artifactId>org.nightlabs.eclipse.jjqb.childvm.webapp</artifactId>
+			<groupId>org.nightlabs.jjqb</groupId>
+			<artifactId>org.nightlabs.jjqb.childvm.webapp</artifactId>
 			<type>war</type>
 			<scope>provided</scope>
 		</dependency>
@@ -130,8 +130,8 @@
 <!--									<destFileName>jetty.zip</destFileName> -->
 								</artifactItem>
 								<artifactItem>
-									<groupId>org.nightlabs.eclipse.jjqb</groupId>
-									<artifactId>org.nightlabs.eclipse.jjqb.childvm.webapp</artifactId>
+									<groupId>org.nightlabs.jjqb</groupId>
+									<artifactId>org.nightlabs.jjqb.childvm.webapp</artifactId>
 									<type>war</type>
 									<version>${project.version}</version>
 									<overWrite>true</overWrite>
@@ -152,7 +152,7 @@
 					<manifestLocation>META-INF</manifestLocation>
 				-->
 					<instructions>
-						<Bundle-Activator>org.nightlabs.eclipse.jjqb.core.internal.osgi.Activator</Bundle-Activator>
+						<Bundle-Activator>org.nightlabs.jjqb.core.internal.osgi.Activator</Bundle-Activator>
 						<Bundle-ActivationPolicy>lazy</Bundle-ActivationPolicy>
 					</instructions>
 				</configuration>

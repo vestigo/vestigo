@@ -1,4 +1,4 @@
-package org.nightlabs.eclipse.jjqb.ui.oda;
+package org.nightlabs.jjqb.ui.oda;
 
 import java.util.List;
 import java.util.Map;
@@ -11,7 +11,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
-import org.nightlabs.eclipse.jjqb.childvm.shared.PropertiesUtil;
+import org.nightlabs.jjqb.childvm.shared.PropertiesUtil;
 
 /**
  * Composite to edit JDOConnection or JPAConnection attributes like the

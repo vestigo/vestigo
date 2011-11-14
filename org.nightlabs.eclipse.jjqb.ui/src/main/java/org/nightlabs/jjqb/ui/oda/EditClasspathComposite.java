@@ -11,7 +11,7 @@
  *   Alexander Bieber, NightLabs - initial API and implementation              *
  ******************************************************************************/
 
-package org.nightlabs.eclipse.jjqb.ui.oda;
+package org.nightlabs.jjqb.ui.oda;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -41,7 +41,7 @@ import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
-import org.nightlabs.eclipse.jjqb.ui.JJQBUIPlugin;
+import org.nightlabs.jjqb.ui.JJQBUIPlugin;
 import org.nightlabs.util.Util;
 
 public class EditClasspathComposite extends Composite implements ICellModifier

@@ -1,4 +1,4 @@
-package org.nightlabs.eclipse.jjqb.childvm.webapp.model;
+package org.nightlabs.jjqb.childvm.webapp.model;
 
 import java.io.IOException;
 import java.net.URLClassLoader;
@@ -10,9 +10,9 @@ import javax.jdo.FetchPlan;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
-import org.nightlabs.eclipse.jjqb.childvm.shared.ConnectionDTO;
-import org.nightlabs.eclipse.jjqb.childvm.shared.JDOConnectionDTO;
-import org.nightlabs.eclipse.jjqb.childvm.shared.QueryParameterDTO;
+import org.nightlabs.jjqb.childvm.shared.ConnectionDTO;
+import org.nightlabs.jjqb.childvm.shared.JDOConnectionDTO;
+import org.nightlabs.jjqb.childvm.shared.QueryParameterDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

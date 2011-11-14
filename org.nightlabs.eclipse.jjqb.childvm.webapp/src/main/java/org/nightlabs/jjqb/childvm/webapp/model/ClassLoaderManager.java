@@ -1,4 +1,4 @@
-package org.nightlabs.eclipse.jjqb.childvm.webapp.model;
+package org.nightlabs.jjqb.childvm.webapp.model;
 
 import java.io.File;
 import java.io.IOException;
@@ -11,7 +11,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Properties;
 
-import org.nightlabs.eclipse.jjqb.childvm.shared.PropertiesUtil;
+import org.nightlabs.jjqb.childvm.shared.PropertiesUtil;
 import org.nightlabs.util.IOUtil;
 import org.nightlabs.util.Util;
 import org.slf4j.Logger;

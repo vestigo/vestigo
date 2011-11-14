@@ -1,10 +1,10 @@
-package org.nightlabs.eclipse.jjqb.core;
+package org.nightlabs.jjqb.core;
 
 import java.lang.reflect.Field;
 import java.util.Collection;
 import java.util.Map;
 
-import org.nightlabs.eclipse.jjqb.core.childvm.ChildVM;
+import org.nightlabs.jjqb.core.childvm.ChildVM;
 
 /**
  * <p>

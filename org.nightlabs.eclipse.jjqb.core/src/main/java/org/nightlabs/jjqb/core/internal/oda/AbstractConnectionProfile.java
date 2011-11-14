@@ -1,4 +1,4 @@
-package org.nightlabs.eclipse.jjqb.core.internal.oda;
+package org.nightlabs.jjqb.core.internal.oda;
 
 import java.io.IOException;
 import java.util.Collection;
@@ -8,11 +8,11 @@ import java.util.Properties;
 import java.util.Set;
 
 import org.eclipse.datatools.connectivity.oda.OdaException;
-import org.nightlabs.eclipse.jjqb.childvm.shared.ConnectionProfileDTO;
-import org.nightlabs.eclipse.jjqb.core.childvm.ChildVM;
-import org.nightlabs.eclipse.jjqb.core.internal.childvm.ChildVMServer;
-import org.nightlabs.eclipse.jjqb.core.oda.Connection;
-import org.nightlabs.eclipse.jjqb.core.oda.ConnectionProfile;
+import org.nightlabs.jjqb.childvm.shared.ConnectionProfileDTO;
+import org.nightlabs.jjqb.core.childvm.ChildVM;
+import org.nightlabs.jjqb.core.internal.childvm.ChildVMServer;
+import org.nightlabs.jjqb.core.oda.Connection;
+import org.nightlabs.jjqb.core.oda.ConnectionProfile;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

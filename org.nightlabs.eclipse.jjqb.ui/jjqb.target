@@ -3,8 +3,8 @@
 
 <target name="JJQB" sequenceNumber="5">
 <locations>
-<location path="${workspace_loc}/org.nightlabs.eclipse.jjqb.assembly.linux-gtk-x86_64/target/assembly/eclipse" type="Directory"/>
-<location path="${workspace_loc}/org.nightlabs.eclipse.jjqb.assembly.linux-gtk-x86_64/target/assembly/eclipse/dropins" type="Directory"/>
+<location path="${workspace_loc}/org.nightlabs.jjqb.assembly.linux-gtk-x86_64/target/assembly/eclipse" type="Directory"/>
+<location path="${workspace_loc}/org.nightlabs.jjqb.assembly.linux-gtk-x86_64/target/assembly/eclipse/dropins" type="Directory"/>
 </locations>
 <environment>
 <os>linux</os>

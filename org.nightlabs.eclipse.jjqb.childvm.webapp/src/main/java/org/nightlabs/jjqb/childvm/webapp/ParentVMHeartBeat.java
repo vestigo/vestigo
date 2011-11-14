@@ -1,4 +1,4 @@
-package org.nightlabs.eclipse.jjqb.childvm.webapp;
+package org.nightlabs.jjqb.childvm.webapp;
 
 import java.util.Date;
 import java.util.Timer;

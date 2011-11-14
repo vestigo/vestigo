@@ -1,4 +1,4 @@
-package org.nightlabs.eclipse.jjqb.ui.detailtree;
+package org.nightlabs.jjqb.ui.detailtree;
 
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.TreeViewer;

@@ -2,26 +2,26 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<artifactId>org.nightlabs.eclipse.jjqb.all</artifactId>
+	<artifactId>org.nightlabs.jjqb.all</artifactId>
 	<packaging>pom</packaging>
 
 	<parent>
-		<groupId>org.nightlabs.eclipse.jjqb</groupId>
-		<artifactId>org.nightlabs.eclipse.jjqb.parent</artifactId>
+		<groupId>org.nightlabs.jjqb</groupId>
+		<artifactId>org.nightlabs.jjqb.parent</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
-		<relativePath>../org.nightlabs.eclipse.jjqb.parent</relativePath>
+		<relativePath>../org.nightlabs.jjqb.parent</relativePath>
 	</parent>
 
 	<modules>
-		<module>../org.nightlabs.eclipse.jjqb.childvm.shared</module>
-		<module>../org.nightlabs.eclipse.jjqb.childvm.webapp</module>
-		<module>../org.nightlabs.eclipse.jjqb.core</module>
+		<module>../org.nightlabs.jjqb.childvm.shared</module>
+		<module>../org.nightlabs.jjqb.childvm.webapp</module>
+		<module>../org.nightlabs.jjqb.core</module>
 <!--
-		<module>../org.nightlabs.eclipse.jjqb.derby</module>
+		<module>../org.nightlabs.jjqb.derby</module>
 -->
-		<module>../org.nightlabs.eclipse.jjqb.parent</module>
-		<module>../org.nightlabs.eclipse.jjqb.ui</module>
-		<module>../org.nightlabs.eclipse.jjqb.assembly.parent</module>
+		<module>../org.nightlabs.jjqb.parent</module>
+		<module>../org.nightlabs.jjqb.ui</module>
+		<module>../org.nightlabs.jjqb.assembly.parent</module>
 	</modules>
 	
 	<properties>
@@ -39,8 +39,8 @@
 				</property>
 			</activation>
 			<modules>
-				<module>../org.nightlabs.eclipse.jjqb.assembly.linux-gtk-x86_64</module>
-				<module>../org.nightlabs.eclipse.jjqb.assembly.win32</module>
+				<module>../org.nightlabs.jjqb.assembly.linux-gtk-x86_64</module>
+				<module>../org.nightlabs.jjqb.assembly.win32</module>
 			</modules>
 		</profile>
 		<profile>
@@ -56,7 +56,7 @@
 				</os>
 			</activation>
 			<modules>
-				<module>../org.nightlabs.eclipse.jjqb.assembly.linux-gtk-x86_64</module>
+				<module>../org.nightlabs.jjqb.assembly.linux-gtk-x86_64</module>
 			</modules>
 		</profile>
 		<profile>
@@ -72,7 +72,7 @@
 				</os>
 			</activation>
 			<modules>
-				<module>../org.nightlabs.eclipse.jjqb.assembly.win32</module>
+				<module>../org.nightlabs.jjqb.assembly.win32</module>
 			</modules>
 		</profile>
 	</profiles>
@@ -87,12 +87,12 @@ Quick try with tycho - didn't work this way, yet, though :-( Need more research.
 
 	<dependencies>
 		<dependency>
-			<groupId>org.nightlabs.eclipse.jjqb</groupId>
-			<artifactId>org.nightlabs.eclipse.jjqb.core</artifactId>
+			<groupId>org.nightlabs.jjqb</groupId>
+			<artifactId>org.nightlabs.jjqb.core</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.nightlabs.eclipse.jjqb</groupId>
-			<artifactId>org.nightlabs.eclipse.jjqb.ui</artifactId>
+			<groupId>org.nightlabs.jjqb</groupId>
+			<artifactId>org.nightlabs.jjqb.ui</artifactId>
 		</dependency>
 	</dependencies>
 

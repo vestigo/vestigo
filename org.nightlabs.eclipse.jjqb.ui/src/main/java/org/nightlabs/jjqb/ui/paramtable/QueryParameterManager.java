@@ -1,7 +1,7 @@
-package org.nightlabs.eclipse.jjqb.ui.paramtable;
+package org.nightlabs.jjqb.ui.paramtable;
 
 import org.eclipse.swt.widgets.Display;
-import org.nightlabs.eclipse.jjqb.ui.browser.QueryBrowserManager;
+import org.nightlabs.jjqb.ui.browser.QueryBrowserManager;
 
 public class QueryParameterManager
 {

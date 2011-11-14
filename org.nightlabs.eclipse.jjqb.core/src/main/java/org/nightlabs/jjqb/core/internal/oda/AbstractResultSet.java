@@ -1,4 +1,4 @@
-package org.nightlabs.eclipse.jjqb.core.internal.oda;
+package org.nightlabs.jjqb.core.internal.oda;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -14,17 +14,17 @@ import org.eclipse.datatools.connectivity.oda.IBlob;
 import org.eclipse.datatools.connectivity.oda.IClob;
 import org.eclipse.datatools.connectivity.oda.IResultSetMetaData;
 import org.eclipse.datatools.connectivity.oda.OdaException;
-import org.nightlabs.eclipse.jjqb.childvm.shared.ResultCellDTO;
-import org.nightlabs.eclipse.jjqb.childvm.shared.ResultCellNullDTO;
-import org.nightlabs.eclipse.jjqb.childvm.shared.ResultCellObjectRefDTO;
-import org.nightlabs.eclipse.jjqb.childvm.shared.ResultCellSimpleDTO;
-import org.nightlabs.eclipse.jjqb.childvm.shared.ResultRowDTO;
-import org.nightlabs.eclipse.jjqb.childvm.shared.ResultSetID;
-import org.nightlabs.eclipse.jjqb.core.ObjectReference;
-import org.nightlabs.eclipse.jjqb.core.childvm.ChildVM;
-import org.nightlabs.eclipse.jjqb.core.internal.ObjectReferenceImpl;
-import org.nightlabs.eclipse.jjqb.core.oda.Query;
-import org.nightlabs.eclipse.jjqb.core.oda.ResultSet;
+import org.nightlabs.jjqb.childvm.shared.ResultCellDTO;
+import org.nightlabs.jjqb.childvm.shared.ResultCellNullDTO;
+import org.nightlabs.jjqb.childvm.shared.ResultCellObjectRefDTO;
+import org.nightlabs.jjqb.childvm.shared.ResultCellSimpleDTO;
+import org.nightlabs.jjqb.childvm.shared.ResultRowDTO;
+import org.nightlabs.jjqb.childvm.shared.ResultSetID;
+import org.nightlabs.jjqb.core.ObjectReference;
+import org.nightlabs.jjqb.core.childvm.ChildVM;
+import org.nightlabs.jjqb.core.internal.ObjectReferenceImpl;
+import org.nightlabs.jjqb.core.oda.Query;
+import org.nightlabs.jjqb.core.oda.ResultSet;
 
 public abstract class AbstractResultSet implements ResultSet
 {

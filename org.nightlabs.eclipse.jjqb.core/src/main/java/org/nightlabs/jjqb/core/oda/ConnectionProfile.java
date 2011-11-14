@@ -1,8 +1,8 @@
-package org.nightlabs.eclipse.jjqb.core.oda;
+package org.nightlabs.jjqb.core.oda;
 
 
 import org.eclipse.datatools.connectivity.oda.OdaException;
-import org.nightlabs.eclipse.jjqb.core.childvm.ChildVM;
+import org.nightlabs.jjqb.core.childvm.ChildVM;
 
 public interface ConnectionProfile {
 

@@ -11,7 +11,7 @@
  *   Alexander Bieber, NightLabs - initial API and implementation              *
  ******************************************************************************/
 
-package org.nightlabs.eclipse.jjqb.core.internal.oda;
+package org.nightlabs.jjqb.core.internal.oda;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -24,15 +24,15 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import org.eclipse.datatools.connectivity.oda.IDataSetMetaData;
 import org.eclipse.datatools.connectivity.oda.OdaException;
-import org.nightlabs.eclipse.jjqb.childvm.shared.ConnectionDTO;
-import org.nightlabs.eclipse.jjqb.childvm.shared.PropertiesUtil;
-import org.nightlabs.eclipse.jjqb.core.childvm.ChildVM;
-import org.nightlabs.eclipse.jjqb.core.oda.Connection;
-import org.nightlabs.eclipse.jjqb.core.oda.ConnectionExtension;
-import org.nightlabs.eclipse.jjqb.core.oda.ConnectionExtensionRegistry;
-import org.nightlabs.eclipse.jjqb.core.oda.ConnectionProfile;
-import org.nightlabs.eclipse.jjqb.core.oda.ConnectionProfileRegistry;
-import org.nightlabs.eclipse.jjqb.core.oda.Query;
+import org.nightlabs.jjqb.childvm.shared.ConnectionDTO;
+import org.nightlabs.jjqb.childvm.shared.PropertiesUtil;
+import org.nightlabs.jjqb.core.childvm.ChildVM;
+import org.nightlabs.jjqb.core.oda.Connection;
+import org.nightlabs.jjqb.core.oda.ConnectionExtension;
+import org.nightlabs.jjqb.core.oda.ConnectionExtensionRegistry;
+import org.nightlabs.jjqb.core.oda.ConnectionProfile;
+import org.nightlabs.jjqb.core.oda.ConnectionProfileRegistry;
+import org.nightlabs.jjqb.core.oda.Query;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

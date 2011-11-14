@@ -1,4 +1,4 @@
-package org.nightlabs.eclipse.jjqb.childvm.webapp.model;
+package org.nightlabs.jjqb.childvm.webapp.model;
 
 import java.io.IOException;
 import java.net.URLClassLoader;
@@ -8,9 +8,9 @@ import java.util.Properties;
 import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManagerFactory;
 
-import org.nightlabs.eclipse.jjqb.childvm.shared.ConnectionProfileDTO;
-import org.nightlabs.eclipse.jjqb.childvm.shared.JDOConnectionProfileDTO;
-import org.nightlabs.eclipse.jjqb.childvm.shared.PropertiesUtil;
+import org.nightlabs.jjqb.childvm.shared.ConnectionProfileDTO;
+import org.nightlabs.jjqb.childvm.shared.JDOConnectionProfileDTO;
+import org.nightlabs.jjqb.childvm.shared.PropertiesUtil;
 
 public class JDOConnectionProfile extends ConnectionProfile
 {

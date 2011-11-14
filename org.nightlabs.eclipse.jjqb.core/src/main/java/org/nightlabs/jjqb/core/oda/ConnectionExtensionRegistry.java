@@ -1,4 +1,4 @@
-package org.nightlabs.eclipse.jjqb.core.oda;
+package org.nightlabs.jjqb.core.oda;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -12,7 +12,7 @@ import java.util.TreeSet;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtension;
 import org.nightlabs.eclipse.extension.AbstractEPProcessor;
-import org.nightlabs.eclipse.jjqb.core.internal.oda.DefaultConnectionExtensionFactory;
+import org.nightlabs.jjqb.core.internal.oda.DefaultConnectionExtensionFactory;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
@@ -35,7 +35,7 @@ extends AbstractEPProcessor
 
 	@Override
 	public String getExtensionPointID() {
-		return "org.nightlabs.eclipse.jjqb.core.connectionExtension";
+		return "org.nightlabs.jjqb.core.connectionExtension";
 	}
 
 	@Override

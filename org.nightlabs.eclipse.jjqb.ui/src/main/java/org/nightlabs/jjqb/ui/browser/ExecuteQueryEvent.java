@@ -1,7 +1,7 @@
-package org.nightlabs.eclipse.jjqb.ui.browser;
+package org.nightlabs.jjqb.ui.browser;
 
 import org.eclipse.datatools.connectivity.oda.IResultSet;
-import org.nightlabs.eclipse.jjqb.ui.resultsettable.ResultSetTableModel;
+import org.nightlabs.jjqb.ui.resultsettable.ResultSetTableModel;
 
 public class ExecuteQueryEvent
 {

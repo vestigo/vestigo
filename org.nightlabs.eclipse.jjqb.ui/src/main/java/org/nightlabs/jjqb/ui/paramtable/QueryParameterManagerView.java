@@ -1,4 +1,4 @@
-package org.nightlabs.eclipse.jjqb.ui.paramtable;
+package org.nightlabs.jjqb.ui.paramtable;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.DisposeEvent;
@@ -8,7 +8,7 @@ import org.eclipse.ui.IPartListener2;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchPartReference;
 import org.eclipse.ui.part.ViewPart;
-import org.nightlabs.eclipse.jjqb.ui.browser.QueryBrowser;
+import org.nightlabs.jjqb.ui.browser.QueryBrowser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

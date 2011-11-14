@@ -1,4 +1,4 @@
-package org.nightlabs.eclipse.jjqb.ui.resultsettable;
+package org.nightlabs.jjqb.ui.resultsettable;
 
 import java.util.Collections;
 import java.util.Comparator;
@@ -32,7 +32,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
-import org.nightlabs.eclipse.jjqb.core.ObjectReference;
+import org.nightlabs.jjqb.core.ObjectReference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

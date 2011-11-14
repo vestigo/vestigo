@@ -1,4 +1,4 @@
-package org.nightlabs.eclipse.jjqb.childvm.webapp.model;
+package org.nightlabs.jjqb.childvm.webapp.model;
 
 import java.io.IOException;
 import java.net.URLClassLoader;
@@ -8,9 +8,9 @@ import java.util.Properties;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import org.nightlabs.eclipse.jjqb.childvm.shared.ConnectionProfileDTO;
-import org.nightlabs.eclipse.jjqb.childvm.shared.JPAConnectionProfileDTO;
-import org.nightlabs.eclipse.jjqb.childvm.shared.PropertiesUtil;
+import org.nightlabs.jjqb.childvm.shared.ConnectionProfileDTO;
+import org.nightlabs.jjqb.childvm.shared.JPAConnectionProfileDTO;
+import org.nightlabs.jjqb.childvm.shared.PropertiesUtil;
 
 public class JPAConnectionProfile extends ConnectionProfile
 {

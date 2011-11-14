@@ -1,4 +1,4 @@
-package org.nightlabs.eclipse.jjqb.ui.exampleeditor;
+package org.nightlabs.jjqb.ui.exampleeditor;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jface.text.IDocument;

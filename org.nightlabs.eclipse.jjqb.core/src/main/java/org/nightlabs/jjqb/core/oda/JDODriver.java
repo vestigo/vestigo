@@ -1,7 +1,7 @@
-package org.nightlabs.eclipse.jjqb.core.oda;
+package org.nightlabs.jjqb.core.oda;
 
 public interface JDODriver extends Driver {
 
-	public static final String PROVIDER_ID = "org.nightlabs.eclipse.jjqb.core.oda.JDODriver";
+	public static final String PROVIDER_ID = "org.nightlabs.jjqb.core.oda.JDODriver";
 
 }

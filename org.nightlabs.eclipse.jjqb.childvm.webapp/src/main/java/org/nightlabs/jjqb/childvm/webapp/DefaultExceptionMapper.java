@@ -1,12 +1,12 @@
-package org.nightlabs.eclipse.jjqb.childvm.webapp;
+package org.nightlabs.jjqb.childvm.webapp;
 
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
 
-import org.nightlabs.eclipse.jjqb.childvm.shared.Error;
-import org.nightlabs.eclipse.jjqb.childvm.shared.ErrorStackTraceElement;
-import org.nightlabs.eclipse.jjqb.childvm.shared.provider.MediaTypeConst;
+import org.nightlabs.jjqb.childvm.shared.Error;
+import org.nightlabs.jjqb.childvm.shared.ErrorStackTraceElement;
+import org.nightlabs.jjqb.childvm.shared.provider.MediaTypeConst;
 
 @Provider
 public class DefaultExceptionMapper implements ExceptionMapper<Throwable>

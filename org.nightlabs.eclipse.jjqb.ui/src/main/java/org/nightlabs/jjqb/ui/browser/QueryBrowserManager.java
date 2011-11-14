@@ -1,4 +1,4 @@
-package org.nightlabs.eclipse.jjqb.ui.browser;
+package org.nightlabs.jjqb.ui.browser;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -36,10 +36,10 @@ import org.eclipse.datatools.connectivity.oda.IResultSet;
 import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.widgets.Display;
-import org.nightlabs.eclipse.jjqb.core.PropertiesWithChangeSupport;
-import org.nightlabs.eclipse.jjqb.ui.JJQBUIPlugin;
-import org.nightlabs.eclipse.jjqb.ui.paramtable.QueryParameterManager;
-import org.nightlabs.eclipse.jjqb.ui.resultsettable.ResultSetTableModel;
+import org.nightlabs.jjqb.core.PropertiesWithChangeSupport;
+import org.nightlabs.jjqb.ui.JJQBUIPlugin;
+import org.nightlabs.jjqb.ui.paramtable.QueryParameterManager;
+import org.nightlabs.jjqb.ui.resultsettable.ResultSetTableModel;
 import org.nightlabs.util.Stopwatch;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

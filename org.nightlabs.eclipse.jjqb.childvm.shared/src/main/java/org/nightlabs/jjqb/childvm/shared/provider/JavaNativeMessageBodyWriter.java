@@ -1,4 +1,4 @@
-package org.nightlabs.eclipse.jjqb.childvm.shared.provider;
+package org.nightlabs.jjqb.childvm.shared.provider;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;

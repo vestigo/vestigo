@@ -1,4 +1,4 @@
-package org.nightlabs.eclipse.jjqb.core.internal.oda;
+package org.nightlabs.jjqb.core.internal.oda;
 
 import java.math.BigDecimal;
 import java.sql.Date;
@@ -18,12 +18,12 @@ import org.eclipse.datatools.connectivity.oda.IResultSetMetaData;
 import org.eclipse.datatools.connectivity.oda.OdaException;
 import org.eclipse.datatools.connectivity.oda.SortSpec;
 import org.eclipse.datatools.connectivity.oda.spec.QuerySpecification;
-import org.nightlabs.eclipse.jjqb.childvm.shared.QueryParameterDTO;
-import org.nightlabs.eclipse.jjqb.childvm.shared.ResultSetID;
-import org.nightlabs.eclipse.jjqb.core.childvm.ChildVM;
-import org.nightlabs.eclipse.jjqb.core.oda.Query;
-import org.nightlabs.eclipse.jjqb.core.oda.QueryID;
-import org.nightlabs.eclipse.jjqb.core.oda.ResultSet;
+import org.nightlabs.jjqb.childvm.shared.QueryParameterDTO;
+import org.nightlabs.jjqb.childvm.shared.ResultSetID;
+import org.nightlabs.jjqb.core.childvm.ChildVM;
+import org.nightlabs.jjqb.core.oda.Query;
+import org.nightlabs.jjqb.core.oda.QueryID;
+import org.nightlabs.jjqb.core.oda.ResultSet;
 
 public abstract class AbstractQuery implements Query
 {
