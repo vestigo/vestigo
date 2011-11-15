@@ -5,7 +5,15 @@ import java.beans.PropertyChangeSupport;
 import java.io.Serializable;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.TimeZone;
 import java.util.UUID;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class QueryParameter
 implements Serializable, Comparable<QueryParameter>
@@ -104,7 +112,36 @@ implements Serializable, Comparable<QueryParameter>
 
 	public static final String parameterValueObjectToString(Object value)
 	{
-		return value == null ? "_NULL_" : value.toString();
+		if (value == null)
+			return "_NULL_";
+
+		if (value instanceof Calendar) {
+			Calendar calendar = (Calendar) value;
+			DateFormat dateFormat = getDateFormatWithTimeZone(calendar.getTimeZone());
+			synchronized (dateFormat) {
+				return dateFormat.format(calendar.getTime()) + ' ' + calendar.getTimeZone().getID();
+			}
+		}
+
+		if (value instanceof Date) {
+			synchronized (DATE_FORMAT_UTC) {
+				return DATE_FORMAT_UTC.format((Date)value);
+			}
+		}
+
+		return value.toString();
+	}
+
+	protected static DateFormat getDateFormatWithTimeZone(TimeZone timeZone)
+	{
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+		dateFormat.setTimeZone(timeZone);
+		return dateFormat;
+	}
+
+	private static final DateFormat DATE_FORMAT_UTC = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+	static {
+		DATE_FORMAT_UTC.setTimeZone(TimeZone.getTimeZone("UTC"));
 	}
 
 	public static final Object parameterValueStringToObject(Class<?> parameterType, String valueString)
@@ -117,6 +154,31 @@ implements Serializable, Comparable<QueryParameter>
 
 		if ("_NULL_".equals(valueString))
 			return null;
+
+		if (parameterType == Calendar.class) {
+			TimeZone timeZone = parseTimeZone(valueString);
+			DateFormat dateFormat = getDateFormatWithTimeZone(timeZone);
+			try {
+				synchronized (dateFormat) {
+					Date date = dateFormat.parse(parseDateAndTimeWithoutTimeZone(valueString));
+					Calendar calendar = Calendar.getInstance(timeZone);
+					calendar.setTime(date);
+					return calendar;
+				}
+			} catch (ParseException e) {
+				throw new RuntimeException(e);
+			}
+		}
+
+		if (parameterType == Date.class) {
+			try {
+				synchronized (DATE_FORMAT_UTC) {
+					return DATE_FORMAT_UTC.parse(valueString);
+				}
+			} catch (ParseException e) {
+				throw new RuntimeException(e);
+			}
+		}
 
 		Object valueObject = null;
 
@@ -133,6 +195,25 @@ implements Serializable, Comparable<QueryParameter>
 			return valueObject;
 
 		throw new IllegalStateException("This class provides no known way to create an instance from a string: " + parameterType.getName());
+	}
+
+	private static String parseDateAndTimeWithoutTimeZone(String valueString) {
+		Matcher matcher = Pattern.compile("([^ ]* [^ ]*) [^ ]*").matcher(valueString);
+		if (!matcher.matches())
+			throw new IllegalArgumentException("valueString \"" + valueString + "\" does not match format pattern.");
+
+		String result = matcher.group(1);
+		return result;
+	}
+
+	private static TimeZone parseTimeZone(String valueString) {
+		Matcher matcher = Pattern.compile("[^ ]* [^ ]* ([^ ]*)").matcher(valueString);
+		if (!matcher.matches())
+			throw new IllegalArgumentException("valueString \"" + valueString + "\" does not match format pattern.");
+
+		String timeZoneID = matcher.group(1);
+		TimeZone timeZone = TimeZone.getTimeZone(timeZoneID);
+		return timeZone;
 	}
 
 	private static final Object parameterValueStringToObject_constructor(Class<?> parameterType, String valueString)

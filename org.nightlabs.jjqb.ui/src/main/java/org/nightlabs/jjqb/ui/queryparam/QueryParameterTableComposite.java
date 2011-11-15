@@ -1,7 +1,11 @@
 package org.nightlabs.jjqb.ui.queryparam;
 
+import java.text.DateFormat;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 import org.eclipse.core.runtime.ListenerList;
@@ -29,8 +33,9 @@ import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Table;
-import org.nightlabs.jjqb.childvm.shared.Formula;
 import org.nightlabs.jjqb.childvm.shared.JavaScriptFormula;
+import org.nightlabs.jjqb.ui.jface.CalendarCellEditor;
+import org.nightlabs.jjqb.ui.jface.DateCellEditor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -41,15 +46,17 @@ public class QueryParameterTableComposite extends Composite implements ISelectio
 	private TableViewer tableViewer;
 	private ListenerList selectionChangedListeners = new ListenerList();
 
-	private TextCellEditor textCellEditor;
+	private Map<Class<?>, CellEditor> queryParameterType2CellEditor = new HashMap<Class<?>, CellEditor>();
+	private Map<Class<?>, ParameterValueEditingSupportDelegate> queryParameterType2ParameterValueEditingSupportDelegate = new HashMap<Class<?>, ParameterValueEditingSupportDelegate>();
+
 	private ComboBoxCellEditor comboBoxCellEditorParameterType;
-	private ComboBoxCellEditor comboBoxCellEditorParameterValueBoolean;
-	private DialogCellEditor dialogCellEditorParameterValueFormula;
+	private TextCellEditor textCellEditor;
 
 	private static final Class<?>[] PARAM_TYPES = {
 		// BEGIN simple types
 		Boolean.class,
 		Byte.class,
+		Calendar.class,
 		Date.class,
 		Double.class,
 		Float.class,
@@ -113,16 +120,8 @@ public class QueryParameterTableComposite extends Composite implements ISelectio
 		tableViewer.getTable().setLinesVisible(true);
 		tableViewer.setUseHashlookup(true);
 
-		textCellEditor = new TextCellEditor(table);
-		comboBoxCellEditorParameterType = new ComboBoxCellEditor(table, PARAM_TYPE_NAMES, SWT.READ_ONLY);
-		comboBoxCellEditorParameterValueBoolean = new ComboBoxCellEditor(table, PARAM_VALUE_BOOLEAN_NAMES, SWT.READ_ONLY);
-		dialogCellEditorParameterValueFormula = new DialogCellEditor(table) {
-			@Override
-			protected Object openDialogBox(Control cellEditorWindow) {
-				// TODO Auto-generated method stub
-				return null;
-			}
-		};
+		createCellEditors();
+		createParameterValueEditingSupportDelegates();
 
 		TableLayout layout = new TableLayout();
 		createParameterIndexColumn(layout);
@@ -130,6 +129,73 @@ public class QueryParameterTableComposite extends Composite implements ISelectio
 		createParameterTypeColumn(layout);
 		createParameterValueColumn(layout);
 		table.setLayout(layout);
+	}
+
+	private void createCellEditors()
+	{
+		Table table = tableViewer.getTable();
+
+		comboBoxCellEditorParameterType = new ComboBoxCellEditor(table, PARAM_TYPE_NAMES, SWT.READ_ONLY);
+		textCellEditor = new TextCellEditor(table);
+
+		queryParameterType2CellEditor.put(Object.class, textCellEditor);
+		queryParameterType2CellEditor.put(Boolean.class, new ComboBoxCellEditor(table, PARAM_VALUE_BOOLEAN_NAMES, SWT.READ_ONLY));
+		queryParameterType2CellEditor.put(Calendar.class, new CalendarCellEditor(table));
+		queryParameterType2CellEditor.put(Date.class, new DateCellEditor(table));
+
+		CellEditor dialogCellEditorParameterValueJavaScriptFormula = new DialogCellEditor(table) {
+			@Override
+			protected Object openDialogBox(Control cellEditorWindow) {
+
+				return null;
+			}
+		};
+		queryParameterType2CellEditor.put(JavaScriptFormula.class, dialogCellEditorParameterValueJavaScriptFormula);
+	}
+
+	private void createParameterValueEditingSupportDelegates()
+	{
+		queryParameterType2ParameterValueEditingSupportDelegate.put(Object.class, new ParameterValueEditingSupportDelegateForObject());
+		queryParameterType2ParameterValueEditingSupportDelegate.put(Boolean.class, new ParameterValueEditingSupportDelegateForBoolean());
+		queryParameterType2ParameterValueEditingSupportDelegate.put(Calendar.class, new ParameterValueEditingSupportDelegateForCalendar());
+		queryParameterType2ParameterValueEditingSupportDelegate.put(Date.class, new ParameterValueEditingSupportDelegateForDate());
+	}
+
+	private CellEditor getParameterValueCellEditor(Class<?> queryParameterType)
+	{
+		Class<?> clazz = queryParameterType;
+		while (clazz != null) {
+			CellEditor cellEditor = queryParameterType2CellEditor.get(clazz);
+			if (cellEditor != null)
+				return cellEditor;
+
+			for (Class<?> iface : clazz.getInterfaces()) {
+				cellEditor = queryParameterType2CellEditor.get(iface);
+				if (cellEditor != null)
+					return cellEditor;
+			}
+
+			clazz = clazz.getSuperclass();
+		}
+		throw new IllegalArgumentException("There is no CellEditor registered for queryParameterType=" + (queryParameterType == null ? null : queryParameterType.getName()) + " or one of its super-classes or interfaces!");
+	}
+
+	public ParameterValueEditingSupportDelegate getParameterValueEditingSupportDelegate(Class<?> queryParameterType) {
+		Class<?> clazz = queryParameterType;
+		while (clazz != null) {
+			ParameterValueEditingSupportDelegate delegate = queryParameterType2ParameterValueEditingSupportDelegate.get(clazz);
+			if (delegate != null)
+				return delegate;
+
+			for (Class<?> iface : clazz.getInterfaces()) {
+				delegate = queryParameterType2ParameterValueEditingSupportDelegate.get(iface);
+				if (delegate != null)
+					return delegate;
+			}
+
+			clazz = clazz.getSuperclass();
+		}
+		throw new IllegalArgumentException("There is no ParameterValueEditingSupportDelegate registered for queryParameterType=" + (queryParameterType == null ? null : queryParameterType.getName()) + " or one of its super-classes or interfaces!");
 	}
 
 	private void createParameterIndexColumn(TableLayout layout)
@@ -146,7 +212,7 @@ public class QueryParameterTableComposite extends Composite implements ISelectio
 		tableViewerColumn.setLabelProvider(new ParameterNameLabelProvider());
 		tableViewerColumn.getColumn().setText("Name");
 		tableViewerColumn.setEditingSupport(new ParameterNameEditingSupport(tableViewer));
-		layout.addColumnData(new ColumnWeightData(33));
+		layout.addColumnData(new ColumnPixelData(150));
 	}
 
 	private final class ParameterNameEditingSupport extends EditingSupport
@@ -190,7 +256,7 @@ public class QueryParameterTableComposite extends Composite implements ISelectio
 		tableViewerColumn.setLabelProvider(new ParameterTypeLabelProvider());
 		tableViewerColumn.getColumn().setText("Type");
 		tableViewerColumn.setEditingSupport(new ParameterTypeEditingSupport(tableViewer));
-		layout.addColumnData(new ColumnWeightData(33));
+		layout.addColumnData(new ColumnPixelData(200));
 	}
 
 	private final class ParameterTypeEditingSupport extends EditingSupport
@@ -282,10 +348,16 @@ public class QueryParameterTableComposite extends Composite implements ISelectio
 		protected Object getValue(Object element) {
 			QueryParameter queryParameter = (QueryParameter) element;
 
-			if (Boolean.class.equals(queryParameter.getType()))
-				return parameterValueBooleanObjectToIndex((Boolean)queryParameter.getValue());
+			ParameterValueEditingSupportDelegate delegate = getParameterValueEditingSupportDelegate(queryParameter.getType());
+			return delegate.getValue(queryParameter);
 
-			return QueryParameter.parameterValueObjectToString(queryParameter.getValue());
+//			if (Boolean.class == queryParameter.getType())
+//				return parameterValueBooleanObjectToIndex((Boolean)queryParameter.getValue());
+//
+//			if (Date.class == queryParameter.getType())
+//				return Date.class.cast(queryParameter.getValue());
+//
+//			return QueryParameter.parameterValueObjectToString(queryParameter.getValue());
 		}
 
 		@Override
@@ -295,14 +367,20 @@ public class QueryParameterTableComposite extends Composite implements ISelectio
 				if (queryParameter.getType() == null)
 					throw new IllegalStateException("queryParameter.type == null");
 
-				if (value == null || queryParameter.getType().isInstance(value))
-					queryParameter.setValue(value);
-				else if (Boolean.class.equals(queryParameter.getType()))
-					queryParameter.setValue(parameterValueBooleanIndexToObject((Integer)value));
-				else if (value instanceof String)
-					queryParameter.setValue(QueryParameter.parameterValueStringToObject(queryParameter.getType(), (String)value));
-				else
-					throw new IllegalStateException("value is an instance of an unexpected type: " + value.getClass().getName());
+				ParameterValueEditingSupportDelegate delegate = getParameterValueEditingSupportDelegate(queryParameter.getType());
+				delegate.setValue(queryParameter, value);
+
+//				if (value == null || queryParameter.getType().isInstance(value)) {
+//					queryParameter.setValue(value);
+//				}
+//				else if (Boolean.class == queryParameter.getType()) {
+//					queryParameter.setValue(parameterValueBooleanIndexToObject((Integer)value));
+//				}
+//				else if (value instanceof String) {
+//					queryParameter.setValue(QueryParameter.parameterValueStringToObject(queryParameter.getType(), (String)value));
+//				}
+//				else
+//					throw new IllegalStateException("value is an instance of an unexpected type: " + value.getClass().getName());
 
 				tableViewer.refresh(queryParameter);
 			} catch (Exception x) {
@@ -312,19 +390,52 @@ public class QueryParameterTableComposite extends Composite implements ISelectio
 		}
 
 		@Override
-		protected CellEditor getCellEditor(Object element) {
+		protected CellEditor getCellEditor(Object element)
+		{
 			QueryParameter queryParameter = (QueryParameter) element;
-			if (Boolean.class.equals(queryParameter.getType()))
-				return comboBoxCellEditorParameterValueBoolean;
+			ParameterValueEditingSupportDelegate delegate = getParameterValueEditingSupportDelegate(queryParameter.getType());
+			CellEditor cellEditor = delegate.getCellEditor(queryParameter);
 
-			if (Formula.class.isAssignableFrom(queryParameter.getType()))
-				return dialogCellEditorParameterValueFormula;
+			if (cellEditor == null)
+				cellEditor = getParameterValueCellEditor(queryParameter.getType());
 
-			return textCellEditor;
+			return cellEditor;
 		}
 
 		@Override
-		protected boolean canEdit(Object element) { return true; }
+		protected boolean canEdit(Object element) {
+			QueryParameter queryParameter = (QueryParameter) element;
+			ParameterValueEditingSupportDelegate delegate = getParameterValueEditingSupportDelegate(queryParameter.getType());
+			return delegate.canEdit(queryParameter);
+		}
+	}
+
+	private final class ParameterValueEditingSupportDelegateForBoolean extends AbstractParameterValueEditingSupportDelegate
+	{
+		@Override
+		public Object getValue(QueryParameter queryParameter) {
+			return parameterValueBooleanObjectToIndex((Boolean)queryParameter.getValue());
+		}
+		@Override
+		public void setValue(QueryParameter queryParameter, Object value) {
+			queryParameter.setValue(parameterValueBooleanIndexToObject((Integer)value));
+		}
+	}
+
+	private final class ParameterValueEditingSupportDelegateForDate extends AbstractParameterValueEditingSupportDelegate
+	{
+	}
+
+	private final class ParameterValueEditingSupportDelegateForCalendar extends AbstractParameterValueEditingSupportDelegate
+	{
+	}
+
+	private final class ParameterValueEditingSupportDelegateForObject extends AbstractParameterValueEditingSupportDelegate
+	{
+		@Override
+		public Object getValue(QueryParameter queryParameter) {
+			return QueryParameter.parameterValueObjectToString(queryParameter.getValue());
+		}
 	}
 
 	private static class ParameterIndexLabelProvider extends CellLabelProvider
@@ -359,7 +470,22 @@ public class QueryParameterTableComposite extends Composite implements ISelectio
 		@Override
 		public void update(ViewerCell viewerCell) {
 			QueryParameter parameter = (QueryParameter) viewerCell.getElement();
-			viewerCell.setText(QueryParameter.parameterValueObjectToString(parameter.getValue()));
+
+			if (parameter.getValue() instanceof Date) {
+				Date date = (Date) parameter.getValue();
+				DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG);
+//				dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+				viewerCell.setText(dateFormat.format(date));
+			}
+			else if (parameter.getValue() instanceof Calendar) {
+				Calendar calendar = (Calendar) parameter.getValue();
+				DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG);
+				dateFormat.setTimeZone(calendar.getTimeZone());
+				viewerCell.setText(dateFormat.format(calendar.getTime()));
+			}
+			else {
+				viewerCell.setText(QueryParameter.parameterValueObjectToString(parameter.getValue()));
+			}
 		}
 	}
 
