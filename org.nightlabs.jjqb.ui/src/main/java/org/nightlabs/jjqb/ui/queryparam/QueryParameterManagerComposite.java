@@ -1,5 +1,8 @@
 package org.nightlabs.jjqb.ui.queryparam;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -45,7 +48,11 @@ public class QueryParameterManagerComposite extends Composite
 		setQueryParameterManager(null);
 	}
 
-	public void setQueryParameterManager(QueryParameterManager queryParameterManager) {
+	public void setQueryParameterManager(QueryParameterManager queryParameterManager)
+	{
+		if (this.queryParameterManager != null)
+			this.queryParameterManager.removePropertyChangeListener(QueryParameterManager.PropertyName.editorInputChanged, editorInputChangedListener);
+
 		this.queryParameterManager = queryParameterManager;
 
 		addParameterButton.setEnabled(queryParameterManager != null);
@@ -54,7 +61,17 @@ public class QueryParameterManagerComposite extends Composite
 		moveParameterDownButton.setEnabled(queryParameterManager != null);
 
 		queryParameterTableComposite.setInput(queryParameterManager == null ? null : queryParameterManager.getQueryParameters());
+
+		if (queryParameterManager != null)
+			queryParameterManager.addPropertyChangeListener(QueryParameterManager.PropertyName.editorInputChanged, editorInputChangedListener);
 	}
+
+	private PropertyChangeListener editorInputChangedListener = new PropertyChangeListener() {
+		@Override
+		public void propertyChange(PropertyChangeEvent evt) {
+			queryParameterTableComposite.setInput(queryParameterManager == null ? null : queryParameterManager.getQueryParameters());
+		}
+	};
 
 	public QueryParameterManager getQueryParameterManager() {
 		return queryParameterManager;

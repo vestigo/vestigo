@@ -6,6 +6,8 @@ import java.net.URLEncoder;
 
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.ListenerList;
+import org.eclipse.jface.text.DocumentEvent;
+import org.eclipse.jface.text.IDocumentListener;
 import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.ui.IEditorInput;
@@ -19,6 +21,16 @@ public interface QueryBrowser
 	{
 		private QueryBrowser queryBrowser;
 		private ListenerList disposeListenerList = new ListenerList();
+
+		private IDocumentListener documentListener = new IDocumentListener() {
+			@Override
+			public void documentAboutToBeChanged(DocumentEvent event) { }
+
+			@Override
+			public void documentChanged(DocumentEvent event) {
+				queryBrowser.markDirty();
+			}
+		};
 
 		public Helper(final QueryBrowser queryBrowser) {
 			this.queryBrowser = queryBrowser;
@@ -53,6 +65,10 @@ public interface QueryBrowser
 			for (Object l : disposeListenerList.getListeners())
 				((DisposeListener)l).widgetDisposed(disposeEvent);
 		}
+
+		public IDocumentListener getDocumentListener() {
+			return documentListener;
+		}
 	}
 
 	IEditorInput getEditorInput();
@@ -72,4 +88,10 @@ public interface QueryBrowser
 	void removeDisposeListener(DisposeListener disposeListener);
 
 	QueryBrowserManager getQueryBrowserManager();
+
+	boolean isDirty();
+
+	void markDirty();
+
+	void markNotDirty();
 }

@@ -90,10 +90,21 @@ public abstract class QueryBrowserManager
 			throw new IllegalStateException("Thread mismatch! This method must be called on the SWT UI thread!");
 
 		hookProfileListenerAndDisposeListener();
+		hookQueryParameterManagerPropertyChangeListener();
 	}
 
 	public QueryParameterManager getQueryParameterManager() {
 		return queryParameterManager;
+	}
+
+	private void hookQueryParameterManagerPropertyChangeListener()
+	{
+		queryParameterManager.addPropertyChangeListener(new PropertyChangeListener() {
+			@Override
+			public void propertyChange(PropertyChangeEvent evt) {
+				queryBrowser.markDirty();
+			}
+		});
 	}
 
 	private void hookProfileListenerAndDisposeListener()

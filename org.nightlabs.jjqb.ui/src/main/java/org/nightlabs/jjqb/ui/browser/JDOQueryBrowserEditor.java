@@ -10,6 +10,7 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.ui.IEditorInput;
+import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.PartInitException;
 import org.nightlabs.jdo.jdoqleditor.editor.JDOQLEditor;
@@ -23,14 +24,10 @@ implements JDOQueryBrowser
 	private static final Logger logger = LoggerFactory.getLogger(JDOQueryBrowserEditor.class);
 
 	private Helper helper = new Helper(this);
-//	private SashForm partControl;
-
+	private boolean dirty;
 	private QueryBrowserManager queryBrowserManager = new JDOQueryBrowserManager(this);
 	private QueryBrowserManagerComposite queryBrowserManagerComposite;
-
 	private Composite queryEditorComposite;
-//	private ResultSetTableComposite resultSetTableComposite;
-//	private ResultSetTableModel resultSetTableModel;
 
 	@Override
 	public String getQueryID() {
@@ -48,7 +45,6 @@ implements JDOQueryBrowser
 		});
 		queryBrowserManager.addExecuteQueryListener(executeQueryListener);
 
-//		partControl = new SashForm(parent, SWT.VERTICAL);
 		queryEditorComposite = new Composite(parent, SWT.BORDER);
 		queryEditorComposite.setLayout(new GridLayout());
 
@@ -64,8 +60,7 @@ implements JDOQueryBrowser
 				c.setLayoutData(new GridData(GridData.FILL_BOTH));
 		}
 
-//		resultSetTableComposite = new ResultSetTableComposite(partControl, SWT.BORDER);
-//		getSite().setSelectionProvider(resultSetTableComposite); // TODO do I need a proxy to support query-text-selections and result-set-selections at the same time?
+		getDocumentProvider().getDocument(getEditorInput()).addDocumentListener(helper.getDocumentListener());
 	}
 
 	@Override
@@ -88,18 +83,6 @@ implements JDOQueryBrowser
 	}
 
 	private ExecuteQueryListener executeQueryListener = new ExecuteQueryAdapter() {
-
-//		@Override
-//		public void preExecuteQuery(ExecuteQueryEvent executeQueryEvent) {
-//			resultSetTableComposite.setInput(null);
-//		}
-//
-//		@Override
-//		public void postExecuteQuery(ExecuteQueryEvent executeQueryEvent) {
-//			resultSetTableModel = executeQueryEvent.getResultSetTableModel();
-//			resultSetTableComposite.setInput(resultSetTableModel);
-//		}
-
 		@Override
 		public void onExecuteQueryError(ExecuteQueryEvent executeQueryEvent) {
 			MessageDialog.openError(
@@ -114,6 +97,14 @@ implements JDOQueryBrowser
 	{
 		super.init(site, input);
 		queryBrowserManager.editorInputChanged();
+		markNotDirty();
+	}
+
+	@Override
+	public void doRevertToSaved() {
+		super.doRevertToSaved();
+		queryBrowserManager.editorInputChanged();
+		markNotDirty();
 	}
 
 	@Override
@@ -121,7 +112,7 @@ implements JDOQueryBrowser
 		queryBrowserManager.appendPropertiesToQueryText();
 		super.doSave(progressMonitor);
 		queryBrowserManager.extractAndRemovePropertiesFromQueryText();
-//		firePropertyChange(IEditorPart.PROP_DIRTY);
+		markNotDirty();
 	}
 
 	@Override
@@ -131,6 +122,22 @@ implements JDOQueryBrowser
 
 	@Override
 	public boolean isDirty() {
-		return super.isDirty();
+		return dirty;
+	}
+
+	@Override
+	public void markDirty() {
+		if (!dirty) {
+			dirty = true;
+			firePropertyChange(IEditorPart.PROP_DIRTY);
+		}
+	}
+
+	@Override
+	public void markNotDirty() {
+		if (dirty) {
+			dirty = false;
+			firePropertyChange(IEditorPart.PROP_DIRTY);
+		}
 	}
 }

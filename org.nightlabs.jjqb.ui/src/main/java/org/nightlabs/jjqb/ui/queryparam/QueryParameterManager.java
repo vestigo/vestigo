@@ -30,6 +30,13 @@ public class QueryParameterManager
 
 	public enum PropertyName {
 		/**
+		 * Fired by {@link QueryParameterManager#editorInputChanged()} with
+		 * {@link PropertyChangeEvent#getOldValue()} being <code>null</code> and
+		 * {@link PropertyChangeEvent#getNewValue()} being <code>null</code>.
+		 */
+		editorInputChanged,
+
+		/**
 		 * Fired by {@link QueryParameterManager#addQueryParameter()}
 		 * with {@link PropertyChangeEvent#getOldValue()} being <code>null</code> and {@link PropertyChangeEvent#getNewValue()}
 		 * being the newly created {@link QueryParameter} instance.
@@ -360,5 +367,6 @@ public class QueryParameterManager
 	public void editorInputChanged() {
 		properties = queryBrowserManager.getProperties(PropertiesType.editor_file);
 		readFromProperties();
+		propertyChangeSupport.firePropertyChange(PropertyName.editorInputChanged.name(), null, null);
 	}
 }
