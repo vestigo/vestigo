@@ -21,4 +21,9 @@ implements Serializable
 	public void setFormulaText(String javaScriptText) {
 		this.formulaText = javaScriptText;
 	}
+
+	@Override
+	public String toString() {
+		return formulaText;
+	}
 }

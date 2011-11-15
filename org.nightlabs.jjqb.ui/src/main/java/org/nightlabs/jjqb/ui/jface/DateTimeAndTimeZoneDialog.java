@@ -16,6 +16,7 @@ import org.eclipse.jface.window.IShellProvider;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
+import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -51,10 +52,24 @@ public class DateTimeAndTimeZoneDialog extends Dialog
 	}
 
 	@Override
+	protected Point getInitialSize() {
+		Point initialSize = super.getInitialSize();
+
+		// MINimum size
+		initialSize.x = Math.max(initialSize.x, 400);
+		initialSize.y = Math.max(initialSize.y, 600);
+
+		// MAXnimum size
+		initialSize.x = Math.min(initialSize.x, 600);
+		initialSize.y = Math.min(initialSize.y, 800);
+
+		return initialSize;
+	}
+
+	@Override
 	protected void configureShell(Shell newShell) {
 		super.configureShell(newShell);
 		newShell.setText("Select date, time and time zone");
-		newShell.setSize(400, 600);
 	}
 
 	@Override

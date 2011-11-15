@@ -1,0 +1,5 @@
+package org.nightlabs.jjqb.ui.queryparam;
+
+class ParameterValueEditingSupportDelegateForJavaScriptFormula extends AbstractParameterValueEditingSupportDelegate
+{
+}

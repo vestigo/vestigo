@@ -3,22 +3,26 @@ package org.nightlabs.jjqb.ui.queryparam;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.Serializable;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Method;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
-import java.util.TimeZone;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class QueryParameter
 implements Serializable, Comparable<QueryParameter>
 {
 	private static final long serialVersionUID = 1L;
+
+	private static Map<Class<?>, ParameterValueStringConverter> queryParameterType2ParameterValueStringConverter;
+	static {
+		Map<Class<?>, ParameterValueStringConverter> m = new HashMap<Class<?>, ParameterValueStringConverter>();
+		m.put(Object.class, new ParameterValueStringConverterForObject());
+		m.put(Calendar.class, new ParameterValueStringConverterForCalendar());
+		m.put(Date.class, new ParameterValueStringConverterForDate());
+		queryParameterType2ParameterValueStringConverter = Collections.unmodifiableMap(m);
+	}
 
 	public enum PropertyName {
 		index,
@@ -53,6 +57,9 @@ implements Serializable, Comparable<QueryParameter>
 	}
 	public void setIndex(int index) {
 		int oldIndex = this.index;
+		if (oldIndex == index)
+			return;
+
 		this.index = index;
 		propertyChangeSupport.firePropertyChange(PropertyName.index.name(), oldIndex, index);
 	}
@@ -61,6 +68,9 @@ implements Serializable, Comparable<QueryParameter>
 	}
 	public void setName(String name) {
 		String oldName = this.name;
+		if (oldName == name)
+			return;
+
 		this.name = name;
 		propertyChangeSupport.firePropertyChange(PropertyName.name.name(), oldName, name);
 	}
@@ -69,6 +79,9 @@ implements Serializable, Comparable<QueryParameter>
 	}
 	public void setType(Class<?> type) {
 		Class<?> oldType = this.type;
+		if (oldType == type)
+			return;
+
 		this.type = type;
 		propertyChangeSupport.firePropertyChange(PropertyName.type.name(), oldType, type);
 	}
@@ -77,6 +90,9 @@ implements Serializable, Comparable<QueryParameter>
 	}
 	public void setValue(Object value) {
 		Object oldValue = this.value;
+		if (oldValue == value)
+			return;
+
 		this.value = value;
 		propertyChangeSupport.firePropertyChange(PropertyName.value.name(), oldValue, value);
 	}
@@ -115,33 +131,8 @@ implements Serializable, Comparable<QueryParameter>
 		if (value == null)
 			return "_NULL_";
 
-		if (value instanceof Calendar) {
-			Calendar calendar = (Calendar) value;
-			DateFormat dateFormat = getDateFormatWithTimeZone(calendar.getTimeZone());
-			synchronized (dateFormat) {
-				return dateFormat.format(calendar.getTime()) + ' ' + calendar.getTimeZone().getID();
-			}
-		}
-
-		if (value instanceof Date) {
-			synchronized (DATE_FORMAT_UTC) {
-				return DATE_FORMAT_UTC.format((Date)value);
-			}
-		}
-
-		return value.toString();
-	}
-
-	protected static DateFormat getDateFormatWithTimeZone(TimeZone timeZone)
-	{
-		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
-		dateFormat.setTimeZone(timeZone);
-		return dateFormat;
-	}
-
-	private static final DateFormat DATE_FORMAT_UTC = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
-	static {
-		DATE_FORMAT_UTC.setTimeZone(TimeZone.getTimeZone("UTC"));
+		ParameterValueStringConverter converter = getParameterValueStringConverter(value.getClass());
+		return converter.parameterValueObjectToString(value);
 	}
 
 	public static final Object parameterValueStringToObject(Class<?> parameterType, String valueString)
@@ -155,115 +146,26 @@ implements Serializable, Comparable<QueryParameter>
 		if ("_NULL_".equals(valueString))
 			return null;
 
-		if (parameterType == Calendar.class) {
-			TimeZone timeZone = parseTimeZone(valueString);
-			DateFormat dateFormat = getDateFormatWithTimeZone(timeZone);
-			try {
-				synchronized (dateFormat) {
-					Date date = dateFormat.parse(parseDateAndTimeWithoutTimeZone(valueString));
-					Calendar calendar = Calendar.getInstance(timeZone);
-					calendar.setTime(date);
-					return calendar;
-				}
-			} catch (ParseException e) {
-				throw new RuntimeException(e);
+		ParameterValueStringConverter converter = getParameterValueStringConverter(parameterType);
+		return converter.parameterValueStringToObject(parameterType, valueString);
+	}
+
+	private static ParameterValueStringConverter getParameterValueStringConverter(Class<?> queryParameterType)
+	{
+		Class<?> clazz = queryParameterType;
+		while (clazz != null) {
+			ParameterValueStringConverter converter = queryParameterType2ParameterValueStringConverter.get(clazz);
+			if (converter != null)
+				return converter;
+
+			for (Class<?> iface : clazz.getInterfaces()) {
+				converter = queryParameterType2ParameterValueStringConverter.get(iface);
+				if (converter != null)
+					return converter;
 			}
+
+			clazz = clazz.getSuperclass();
 		}
-
-		if (parameterType == Date.class) {
-			try {
-				synchronized (DATE_FORMAT_UTC) {
-					return DATE_FORMAT_UTC.parse(valueString);
-				}
-			} catch (ParseException e) {
-				throw new RuntimeException(e);
-			}
-		}
-
-		Object valueObject = null;
-
-		valueObject = parameterValueStringToObject_valueOf(parameterType, valueString);
-		if (valueObject != null)
-			return valueObject;
-
-		valueObject = parameterValueStringToObject_fromString(parameterType, valueString);
-		if (valueObject != null)
-			return valueObject;
-
-		valueObject = parameterValueStringToObject_constructor(parameterType, valueString);
-		if (valueObject != null)
-			return valueObject;
-
-		throw new IllegalStateException("This class provides no known way to create an instance from a string: " + parameterType.getName());
-	}
-
-	private static String parseDateAndTimeWithoutTimeZone(String valueString) {
-		Matcher matcher = Pattern.compile("([^ ]* [^ ]*) [^ ]*").matcher(valueString);
-		if (!matcher.matches())
-			throw new IllegalArgumentException("valueString \"" + valueString + "\" does not match format pattern.");
-
-		String result = matcher.group(1);
-		return result;
-	}
-
-	private static TimeZone parseTimeZone(String valueString) {
-		Matcher matcher = Pattern.compile("[^ ]* [^ ]* ([^ ]*)").matcher(valueString);
-		if (!matcher.matches())
-			throw new IllegalArgumentException("valueString \"" + valueString + "\" does not match format pattern.");
-
-		String timeZoneID = matcher.group(1);
-		TimeZone timeZone = TimeZone.getTimeZone(timeZoneID);
-		return timeZone;
-	}
-
-	private static final Object parameterValueStringToObject_constructor(Class<?> parameterType, String valueString)
-	{
-		Constructor<?> constructor;
-		try {
-			constructor = parameterType.getConstructor(String.class);
-		} catch (NoSuchMethodException e) {
-			return null;
-		}
-
-		try {
-			Object valueObject = constructor.newInstance(valueString);
-			return valueObject;
-		} catch (Exception e) {
-			throw new RuntimeException(e);
-		}
-	}
-
-	private static final Object parameterValueStringToObject_fromString(Class<?> parameterType, String valueString)
-	{
-		Method method;
-		try {
-			method = parameterType.getMethod("fromString", String.class);
-		} catch (NoSuchMethodException e) {
-			return null;
-		}
-
-		try {
-			Object valueObject = method.invoke(null, valueString);
-			return valueObject;
-		} catch (Exception e) {
-			throw new RuntimeException(e);
-		}
-	}
-
-	private static final Object parameterValueStringToObject_valueOf(Class<?> parameterType, String valueString)
-	{
-		Method method;
-		try {
-			method = parameterType.getMethod("valueOf", String.class);
-		} catch (NoSuchMethodException e) {
-			return null;
-		}
-
-		try {
-			Object valueObject = method.invoke(null, valueString);
-			return valueObject;
-		} catch (Exception e) {
-			throw new RuntimeException(e);
-		}
+		throw new IllegalArgumentException("There is no CellEditor registered for queryParameterType=" + (queryParameterType == null ? null : queryParameterType.getName()) + " or one of its super-classes or interfaces!");
 	}
 }
