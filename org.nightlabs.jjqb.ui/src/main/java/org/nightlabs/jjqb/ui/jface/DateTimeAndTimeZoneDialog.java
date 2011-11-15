@@ -46,9 +46,14 @@ public class DateTimeAndTimeZoneDialog extends Dialog
 	}
 
 	@Override
+	protected int getShellStyle() {
+		return super.getShellStyle() | SWT.RESIZE;
+	}
+
+	@Override
 	protected void configureShell(Shell newShell) {
 		super.configureShell(newShell);
-		newShell.setText("Select date and time");
+		newShell.setText("Select date, time and time zone");
 		newShell.setSize(400, 600);
 	}
 

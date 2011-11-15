@@ -198,6 +198,8 @@ public class DateCellEditor extends CellEditor
 				nullCheckBox.setSelection(true);
 			else
 				deferredNull = true;
+
+			setCalendarValue(Calendar.getInstance());
 		}
 		else {
 			if (nullCheckBox != null) {
