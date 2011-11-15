@@ -1,7 +1,5 @@
 package org.nightlabs.jjqb.ui.queryparam;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Method;
 import java.util.Collection;
 import java.util.Date;
 import java.util.UUID;
@@ -230,10 +228,10 @@ public class QueryParameterTableComposite extends Composite implements ISelectio
 							}
 					);
 
-					String valueString = parameterValueObjectToString(queryParameter.getValue());
+					String valueString = QueryParameter.parameterValueObjectToString(queryParameter.getValue());
 					try {
 						queryParameter.setValue(
-								parameterValueStringToObject(newType, valueString)
+								QueryParameter.parameterValueStringToObject(newType, valueString)
 						);
 					} catch (Exception x) {
 						logger.warn(
@@ -287,7 +285,7 @@ public class QueryParameterTableComposite extends Composite implements ISelectio
 			if (Boolean.class.equals(queryParameter.getType()))
 				return parameterValueBooleanObjectToIndex((Boolean)queryParameter.getValue());
 
-			return parameterValueObjectToString(queryParameter.getValue());
+			return QueryParameter.parameterValueObjectToString(queryParameter.getValue());
 		}
 
 		@Override
@@ -302,7 +300,7 @@ public class QueryParameterTableComposite extends Composite implements ISelectio
 				else if (Boolean.class.equals(queryParameter.getType()))
 					queryParameter.setValue(parameterValueBooleanIndexToObject((Integer)value));
 				else if (value instanceof String)
-					queryParameter.setValue(parameterValueStringToObject(queryParameter.getType(), (String)value));
+					queryParameter.setValue(QueryParameter.parameterValueStringToObject(queryParameter.getType(), (String)value));
 				else
 					throw new IllegalStateException("value is an instance of an unexpected type: " + value.getClass().getName());
 
@@ -361,13 +359,8 @@ public class QueryParameterTableComposite extends Composite implements ISelectio
 		@Override
 		public void update(ViewerCell viewerCell) {
 			QueryParameter parameter = (QueryParameter) viewerCell.getElement();
-			viewerCell.setText(parameterValueObjectToString(parameter.getValue()));
+			viewerCell.setText(QueryParameter.parameterValueObjectToString(parameter.getValue()));
 		}
-	}
-
-	private static final String parameterValueObjectToString(Object value)
-	{
-		return value == null ? "_NULL_" : value.toString();
 	}
 
 	private static final int parameterValueBooleanObjectToIndex(Boolean value)
@@ -388,85 +381,6 @@ public class QueryParameterTableComposite extends Composite implements ISelectio
 			return null;
 
 		return Boolean.valueOf(PARAM_VALUE_BOOLEAN_NAMES[index]);
-	}
-
-	private static final Object parameterValueStringToObject(Class<?> parameterType, String valueString)
-	{
-		if (parameterType == null)
-			throw new IllegalArgumentException("parameterType == null");
-
-		if (valueString == null)
-			return null;
-
-		if ("_NULL_".equals(valueString))
-			return null;
-
-		Object valueObject = null;
-
-		valueObject = parameterValueStringToObject_valueOf(parameterType, valueString);
-		if (valueObject != null)
-			return valueObject;
-
-		valueObject = parameterValueStringToObject_fromString(parameterType, valueString);
-		if (valueObject != null)
-			return valueObject;
-
-		valueObject = parameterValueStringToObject_constructor(parameterType, valueString);
-		if (valueObject != null)
-			return valueObject;
-
-		throw new IllegalStateException("This class provides no known way to create an instance from a string: " + parameterType.getName());
-	}
-
-	private static final Object parameterValueStringToObject_constructor(Class<?> parameterType, String valueString)
-	{
-		Constructor<?> constructor;
-		try {
-			constructor = parameterType.getConstructor(String.class);
-		} catch (NoSuchMethodException e) {
-			return null;
-		}
-
-		try {
-			Object valueObject = constructor.newInstance(valueString);
-			return valueObject;
-		} catch (Exception e) {
-			throw new RuntimeException(e);
-		}
-	}
-
-	private static final Object parameterValueStringToObject_fromString(Class<?> parameterType, String valueString)
-	{
-		Method method;
-		try {
-			method = parameterType.getMethod("fromString", String.class);
-		} catch (NoSuchMethodException e) {
-			return null;
-		}
-
-		try {
-			Object valueObject = method.invoke(null, valueString);
-			return valueObject;
-		} catch (Exception e) {
-			throw new RuntimeException(e);
-		}
-	}
-
-	private static final Object parameterValueStringToObject_valueOf(Class<?> parameterType, String valueString)
-	{
-		Method method;
-		try {
-			method = parameterType.getMethod("valueOf", String.class);
-		} catch (NoSuchMethodException e) {
-			return null;
-		}
-
-		try {
-			Object valueObject = method.invoke(null, valueString);
-			return valueObject;
-		} catch (Exception e) {
-			throw new RuntimeException(e);
-		}
 	}
 
 	@SuppressWarnings("unchecked")

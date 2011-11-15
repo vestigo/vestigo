@@ -81,7 +81,10 @@ public abstract class AbstractQuery implements Query
 		String parameterName = parameterID2parameterName.get(parameterID);
 
 		parameterID2parameterValue.put(parameterID, value);
-		parameterName2parameterID.remove(parameterName);
+
+		if (parameterName != null) // a TreeMap seems not to support null keys and throws an exception without this check.
+			parameterName2parameterID.remove(parameterName);
+
 		parameterID2parameterName.remove(parameterID);
 	}
 

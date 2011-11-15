@@ -38,6 +38,7 @@ import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.widgets.Display;
 import org.nightlabs.jjqb.core.PropertiesWithChangeSupport;
 import org.nightlabs.jjqb.ui.JJQBUIPlugin;
+import org.nightlabs.jjqb.ui.queryparam.QueryParameter;
 import org.nightlabs.jjqb.ui.queryparam.QueryParameterManager;
 import org.nightlabs.jjqb.ui.resultsettable.ResultSetTableModel;
 import org.nightlabs.util.Stopwatch;
@@ -405,8 +406,8 @@ public abstract class QueryBrowserManager
 			throw new IllegalStateException("No ConnectionProfile selected!");
 
 		queryContext.setConnectionProfile(connectionProfile);
-
 		queryContext.setQueryText(queryBrowser.getQueryText());
+		queryContext.setQueryParameters(queryParameterManager);
 
 		ExecuteQueryEvent executeQueryEvent = new ExecuteQueryEvent(queryContext);
 		for (Object l : executeQueryListeners.getListeners())
@@ -444,8 +445,6 @@ public abstract class QueryBrowserManager
 
 		};
 		job.setUser(true);
-		// TODO file event
-//		this.setEnabled(false);
 		job.schedule();
 	}
 
@@ -478,6 +477,17 @@ public abstract class QueryBrowserManager
 		stopwatch.start("00.query.prepare");
 		q.prepare(queryContext.getQueryText());
 		stopwatch.stop("00.query.prepare");
+
+		stopwatch.start("01.query.setParameters");
+		for (QueryParameter queryParameter : queryContext.getQueryParameters()) {
+			if (queryParameter.getName() == null || queryParameter.getName().trim().isEmpty())
+				q.setObject(queryParameter.getIndex(), queryParameter.getValue());
+		}
+		for (QueryParameter queryParameter : queryContext.getQueryParameters()) {
+			if (queryParameter.getName() != null && !queryParameter.getName().trim().isEmpty())
+				q.setObject(queryParameter.getName(), queryParameter.getValue());
+		}
+		stopwatch.stop("01.query.setParameters");
 
 		IResultSet resultSet = null;
 		ResultSetTableModel resultSetTableModel = null;
@@ -556,6 +566,7 @@ public abstract class QueryBrowserManager
 
 		extractAndRemovePropertiesFromQueryText();
 		populateConnectionProfiles();
+		queryParameterManager.editorInputChanged();
 	}
 
 	public ResultSetTableModel getResultSetTableModel() {
@@ -631,7 +642,7 @@ public abstract class QueryBrowserManager
 		PropertiesWithChangeSupport properties = getProperties(PropertiesType.editor_file);
 		SortedMap<?, ?> propertiesSorted = new TreeMap<Object, Object>(properties);
 		for (Map.Entry<?, ?> me : propertiesSorted.entrySet())
-			sb.append('\n').append(me.getKey()).append('=').append(me.getValue());
+			sb.append('\n').append(QUERY_TEXT_LINE_COMMENT_MARKER).append(me.getKey()).append('=').append(me.getValue());
 
 		sb.append('\n').append(QUERY_TEXT_PROPERTIES_END_MARKER).append('\n');
 
