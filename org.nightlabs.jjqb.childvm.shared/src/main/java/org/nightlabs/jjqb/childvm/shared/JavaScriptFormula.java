@@ -12,4 +12,9 @@ public class JavaScriptFormula extends Formula
 	public JavaScriptFormula(String formulaText) {
 		super(formulaText);
 	}
+
+	@Override
+	public String getMimeType() {
+		return "text/javascript";
+	}
 }

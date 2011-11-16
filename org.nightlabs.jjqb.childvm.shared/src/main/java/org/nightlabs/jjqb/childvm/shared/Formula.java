@@ -14,6 +14,8 @@ implements Serializable
 
 	public Formula() { }
 
+	public abstract String getMimeType();
+
 	public Formula(String formulaText) {
 		this.formulaText = formulaText;
 	}

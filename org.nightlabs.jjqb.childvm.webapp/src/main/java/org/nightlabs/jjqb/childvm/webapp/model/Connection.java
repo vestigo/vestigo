@@ -11,10 +11,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
-import javax.script.ScriptException;
 
 import org.nightlabs.jjqb.childvm.shared.ConnectionDTO;
-import org.nightlabs.jjqb.childvm.shared.JavaScriptFormula;
+import org.nightlabs.jjqb.childvm.shared.Formula;
 import org.nightlabs.jjqb.childvm.shared.QueryParameterDTO;
 import org.nightlabs.jjqb.childvm.shared.ResultSetID;
 import org.slf4j.Logger;
@@ -181,23 +180,35 @@ public abstract class Connection
 
 	protected Object getQueryParameterValue(QueryParameterDTO queryParameterDTO)
 	{
-		if (queryParameterDTO.getValue() instanceof JavaScriptFormula)
-			return evaluateQueryParameterValueJavaScriptFormula(queryParameterDTO, (JavaScriptFormula)queryParameterDTO.getValue());
+		if (queryParameterDTO.getValue() instanceof Formula)
+			return evaluateQueryParameterValueFormula(queryParameterDTO, (Formula)queryParameterDTO.getValue());
 
 		return queryParameterDTO.getValue();
 	}
 
 	protected abstract void prepareScriptEngine(ScriptEngine scriptEngine);
 
-	private Object evaluateQueryParameterValueJavaScriptFormula(QueryParameterDTO queryParameterDTO, JavaScriptFormula formula)
+	protected Object evaluateQueryParameterValueFormula(QueryParameterDTO queryParameterDTO, Formula formula)
 	{
-		ScriptEngineManager factory = new ScriptEngineManager();
-        ScriptEngine scriptEngine = factory.getEngineByName("JavaScript");
-        prepareScriptEngine(scriptEngine);
-        try {
+		int paramIndex = queryParameterDTO.getIndex();
+		String paramName = queryParameterDTO.getName();
+		try {
+			ScriptEngineManager factory = new ScriptEngineManager();
+			ScriptEngine scriptEngine = factory.getEngineByMimeType(formula.getMimeType());
+
+			// Set the FILENAME for better error messages.
+			scriptEngine.put(
+					ScriptEngine.FILENAME,
+					"queryParameter_" + paramIndex + (paramName == null ? "" : "_" + paramName)
+			);
+
+			// Give the subclasses the possibility to set variables for accessing the PersistenceManager/EntityManager and the like.
+			prepareScriptEngine(scriptEngine);
+
+			// Do the actual script execution.
 			return scriptEngine.eval(formula.getFormulaText());
-		} catch (ScriptException e) {
-			throw new RuntimeException(e);
+		} catch (Exception e) {
+			throw new RuntimeException("Formula for query parameter with index=" + paramIndex + " and name=\"" + paramName + "\" could not be evaluated: " + e.getMessage(), e);
 		}
 	}
 }
