@@ -25,6 +25,9 @@ import org.nightlabs.jjqb.core.oda.Query;
 import org.nightlabs.jjqb.core.oda.QueryID;
 import org.nightlabs.jjqb.core.oda.ResultSet;
 
+/**
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ */
 public abstract class AbstractQuery implements Query
 {
 	private AbstractConnection connection;

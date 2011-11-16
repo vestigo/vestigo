@@ -6,6 +6,9 @@ import org.nightlabs.jjqb.core.oda.Connection;
 import org.nightlabs.jjqb.core.oda.ConnectionExtensionRegistry;
 import org.nightlabs.jjqb.core.oda.Driver;
 
+/**
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ */
 public abstract class AbstractDriver implements Driver {
 
 	public static final String DRIVER_NAME = "JDO-JPA-DataSource";

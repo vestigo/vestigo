@@ -3,6 +3,9 @@ package org.nightlabs.jjqb.core.oda;
 import org.eclipse.datatools.connectivity.oda.IResultSet;
 import org.eclipse.datatools.connectivity.oda.OdaException;
 
+/**
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ */
 public interface Query
 extends org.eclipse.datatools.connectivity.oda.IQuery
 {

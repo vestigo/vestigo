@@ -1,6 +1,8 @@
 package org.nightlabs.jjqb.core.internal;
 
-
+/**
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ */
 public class PackageImporterDummy
 {
 	// BEGIN javax.jdo.* - should contain all sub-packages!

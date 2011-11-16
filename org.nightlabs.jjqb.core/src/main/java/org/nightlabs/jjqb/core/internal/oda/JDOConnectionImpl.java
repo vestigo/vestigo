@@ -20,6 +20,9 @@ import org.nightlabs.jjqb.childvm.shared.JDOConnectionDTO;
 import org.nightlabs.jjqb.core.oda.JDOConnection;
 import org.nightlabs.jjqb.core.oda.Query;
 
+/**
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ */
 public class JDOConnectionImpl extends AbstractConnection implements JDOConnection
 {
 	public JDOConnectionImpl() { }

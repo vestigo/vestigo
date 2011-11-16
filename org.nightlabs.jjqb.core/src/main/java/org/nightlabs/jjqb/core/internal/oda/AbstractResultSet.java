@@ -26,6 +26,9 @@ import org.nightlabs.jjqb.core.internal.ObjectReferenceImpl;
 import org.nightlabs.jjqb.core.oda.Query;
 import org.nightlabs.jjqb.core.oda.ResultSet;
 
+/**
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ */
 public abstract class AbstractResultSet implements ResultSet
 {
 	private Query query;

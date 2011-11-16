@@ -6,6 +6,9 @@ import org.nightlabs.jjqb.core.oda.AbstractConnectionExtensionFactory;
 import org.nightlabs.jjqb.core.oda.Connection;
 import org.nightlabs.jjqb.core.oda.ConnectionExtension;
 
+/**
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ */
 public class DefaultConnectionExtensionFactory extends AbstractConnectionExtensionFactory {
 
 	private IConfigurationElement configurationElement;

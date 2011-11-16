@@ -16,6 +16,9 @@ import org.nightlabs.jjqb.core.oda.ConnectionProfile;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ */
 public abstract class AbstractConnectionProfile implements ConnectionProfile
 {
 	private static final Logger logger = LoggerFactory.getLogger(AbstractConnectionProfile.class);

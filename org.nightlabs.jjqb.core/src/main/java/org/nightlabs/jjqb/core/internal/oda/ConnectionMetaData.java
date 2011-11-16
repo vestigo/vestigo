@@ -22,6 +22,7 @@ import org.eclipse.datatools.connectivity.oda.OdaException;
  * Base implementation for a {@link IDataSetMetaData} used in the JDO/JPA data source.
  *
  * @author Alexander Bieber <!-- alex [AT] nightlabs [DOT] de -->
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
  */
 public class ConnectionMetaData implements IDataSetMetaData
 {

@@ -42,6 +42,7 @@ import com.ibm.icu.util.ULocale;
  * Base implementation for a {@link Connection} used in the JDO/JPA data source.
  *
  * @author Alexander Bieber <!-- alex [AT] nightlabs [DOT] de -->
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
  */
 public abstract class AbstractConnection implements Connection
 {

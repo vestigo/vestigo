@@ -1,16 +1,17 @@
 package org.nightlabs.jjqb.core.oda;
 
-
 import org.eclipse.datatools.connectivity.oda.OdaException;
 import org.nightlabs.jjqb.core.childvm.ChildVM;
 
+/**
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ */
 public interface ConnectionProfile {
 
 	String getProfileID();
 	void setProfileID(String profileID);
 
 	ChildVM getChildVM();
-//	ClassLoaderManager getClassLoaderManager();
 
 	void preConnectionOpen(Connection connection) throws OdaException;
 	void postConnectionOpen(Connection connection) throws OdaException;

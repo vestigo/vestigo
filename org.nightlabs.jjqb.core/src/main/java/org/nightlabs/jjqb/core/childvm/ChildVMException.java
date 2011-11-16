@@ -3,6 +3,9 @@ package org.nightlabs.jjqb.core.childvm;
 import org.nightlabs.jjqb.childvm.shared.Error;
 import org.nightlabs.jjqb.childvm.shared.ErrorStackTraceElement;
 
+/**
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ */
 public class ChildVMException extends RuntimeException
 {
 	private static final long serialVersionUID = 1L;

@@ -11,6 +11,9 @@ import org.nightlabs.jjqb.core.childvm.ChildVM;
 import org.nightlabs.jjqb.core.oda.ResultSet;
 import org.nightlabs.util.Util;
 
+/**
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ */
 public class ObjectReferenceImpl implements ObjectReference
 {
 	private ResultSet resultSet;

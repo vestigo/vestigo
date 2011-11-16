@@ -20,6 +20,9 @@ import org.nightlabs.jjqb.childvm.shared.JPAConnectionDTO;
 import org.nightlabs.jjqb.core.oda.JPAConnection;
 import org.nightlabs.jjqb.core.oda.Query;
 
+/**
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ */
 public class JPAConnectionImpl extends AbstractConnection implements JPAConnection
 {
 	public JPAConnectionImpl() { }

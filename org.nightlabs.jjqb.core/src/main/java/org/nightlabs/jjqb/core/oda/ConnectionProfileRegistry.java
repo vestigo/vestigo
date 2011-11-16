@@ -6,6 +6,9 @@ import java.util.Map;
 import org.nightlabs.jjqb.core.internal.oda.JDOConnectionProfileImpl;
 import org.nightlabs.jjqb.core.internal.oda.JPAConnectionProfileImpl;
 
+/**
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ */
 public class ConnectionProfileRegistry
 {
 	private static ConnectionProfileRegistry sharedInstance = new ConnectionProfileRegistry();

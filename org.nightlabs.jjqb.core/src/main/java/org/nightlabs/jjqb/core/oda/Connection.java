@@ -5,6 +5,9 @@ import java.util.UUID;
 
 import org.eclipse.datatools.connectivity.oda.OdaException;
 
+/**
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ */
 public interface Connection extends org.eclipse.datatools.connectivity.oda.IConnection
 {
 	UUID getConnectionID();

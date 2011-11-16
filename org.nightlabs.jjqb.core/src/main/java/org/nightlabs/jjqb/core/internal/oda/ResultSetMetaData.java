@@ -19,6 +19,9 @@ import java.util.Map;
 import org.eclipse.datatools.connectivity.oda.IResultSetMetaData;
 import org.eclipse.datatools.connectivity.oda.OdaException;
 
+/**
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ */
 public class ResultSetMetaData implements IResultSetMetaData {
 
 	private Column[] columns;
