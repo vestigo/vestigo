@@ -5,6 +5,9 @@ import junit.framework.Assert;
 import org.junit.Test;
 import org.nightlabs.jjqb.childvm.webapp.model.StringUtil;
 
+/**
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ */
 public class StringUtilTest
 {
 	@Test

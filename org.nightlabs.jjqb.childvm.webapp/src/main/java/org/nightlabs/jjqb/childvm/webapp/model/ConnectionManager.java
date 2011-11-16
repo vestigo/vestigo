@@ -13,6 +13,9 @@ import org.nightlabs.jjqb.childvm.shared.JPAConnectionDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ */
 public class ConnectionManager
 {
 	private static final Logger logger = LoggerFactory.getLogger(ConnectionManager.class);

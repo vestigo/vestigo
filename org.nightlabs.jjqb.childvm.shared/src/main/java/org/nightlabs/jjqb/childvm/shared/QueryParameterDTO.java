@@ -2,6 +2,9 @@ package org.nightlabs.jjqb.childvm.shared;
 
 import java.io.Serializable;
 
+/**
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ */
 public class QueryParameterDTO
 implements Serializable, Comparable<QueryParameterDTO>
 {

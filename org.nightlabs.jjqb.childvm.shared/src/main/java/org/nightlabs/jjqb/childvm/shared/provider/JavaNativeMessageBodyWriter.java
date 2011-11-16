@@ -13,6 +13,9 @@ import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.ext.MessageBodyWriter;
 import javax.ws.rs.ext.Provider;
 
+/**
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ */
 @Provider
 @Produces(MediaTypeConst.APPLICATION_JAVA_NATIVE)
 public class JavaNativeMessageBodyWriter

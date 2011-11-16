@@ -17,6 +17,9 @@ import org.nightlabs.jjqb.childvm.webapp.model.ResultSet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ */
 @Path("ResultRowDTO")
 public class ResultRowDTOService extends AbstractService
 {

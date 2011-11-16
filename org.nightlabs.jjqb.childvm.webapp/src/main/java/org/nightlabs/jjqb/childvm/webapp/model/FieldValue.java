@@ -2,6 +2,9 @@ package org.nightlabs.jjqb.childvm.webapp.model;
 
 import java.lang.reflect.Field;
 
+/**
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ */
 public class FieldValue
 {
 	private Field field;

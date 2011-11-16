@@ -2,6 +2,9 @@ package org.nightlabs.jjqb.childvm.shared;
 
 import java.util.Map;
 
+/**
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ */
 public class MapEntry
 {
 	private Object key;

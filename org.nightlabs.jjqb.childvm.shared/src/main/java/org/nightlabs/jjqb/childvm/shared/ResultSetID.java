@@ -5,6 +5,9 @@ import java.util.UUID;
 
 import org.nightlabs.util.Util;
 
+/**
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ */
 public class ResultSetID
 implements Serializable
 {

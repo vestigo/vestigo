@@ -12,6 +12,9 @@ import org.nightlabs.jjqb.childvm.shared.ConnectionProfileDTO;
 import org.nightlabs.jjqb.childvm.shared.JPAConnectionProfileDTO;
 import org.nightlabs.jjqb.childvm.shared.PropertiesUtil;
 
+/**
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ */
 public class JPAConnectionProfile extends ConnectionProfile
 {
 	private EntityManagerFactory entityManagerFactory;

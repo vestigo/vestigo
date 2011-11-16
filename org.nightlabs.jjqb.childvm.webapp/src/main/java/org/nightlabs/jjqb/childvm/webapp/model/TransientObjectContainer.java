@@ -2,6 +2,9 @@ package org.nightlabs.jjqb.childvm.webapp.model;
 
 import org.nightlabs.util.Util;
 
+/**
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ */
 public class TransientObjectContainer
 {
 	public TransientObjectContainer(Long objectID, Object object)

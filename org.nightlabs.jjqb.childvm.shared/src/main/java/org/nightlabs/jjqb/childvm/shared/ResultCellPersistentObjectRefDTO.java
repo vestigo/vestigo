@@ -2,7 +2,9 @@ package org.nightlabs.jjqb.childvm.shared;
 
 import java.lang.reflect.Field;
 
-
+/**
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ */
 public class ResultCellPersistentObjectRefDTO extends ResultCellObjectRefDTO
 {
 	private static final long serialVersionUID = 1L;

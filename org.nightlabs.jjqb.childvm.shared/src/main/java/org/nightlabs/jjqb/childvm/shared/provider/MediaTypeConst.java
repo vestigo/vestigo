@@ -2,6 +2,9 @@ package org.nightlabs.jjqb.childvm.shared.provider;
 
 import javax.ws.rs.core.MediaType;
 
+/**
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ */
 public class MediaTypeConst
 {
 	public final static String APPLICATION_JAVA_NATIVE = "application/java-native";

@@ -27,6 +27,9 @@ import org.nightlabs.util.reflect.ReflectUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ */
 public abstract class ResultSet
 {
 	private static final Logger logger = LoggerFactory.getLogger(ResultSet.class);

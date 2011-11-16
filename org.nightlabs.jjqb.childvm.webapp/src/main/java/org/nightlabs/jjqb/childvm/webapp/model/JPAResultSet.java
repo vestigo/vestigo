@@ -14,6 +14,9 @@ import org.nightlabs.jjqb.childvm.shared.ResultCellPersistentObjectRefDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ */
 public class JPAResultSet extends ResultSet
 {
 	private static final Logger logger = LoggerFactory.getLogger(JPAResultSet.class);

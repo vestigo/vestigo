@@ -10,6 +10,9 @@ import javax.ws.rs.core.Application;
 import org.nightlabs.jjqb.childvm.shared.provider.JavaNativeMessageBodyReader;
 import org.nightlabs.jjqb.childvm.shared.provider.JavaNativeMessageBodyWriter;
 
+/**
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ */
 @ApplicationPath("ChildVMApp")
 public class ChildVMApp
 extends Application

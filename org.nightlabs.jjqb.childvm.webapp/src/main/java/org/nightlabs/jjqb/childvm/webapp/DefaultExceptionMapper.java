@@ -8,6 +8,9 @@ import org.nightlabs.jjqb.childvm.shared.Error;
 import org.nightlabs.jjqb.childvm.shared.ErrorStackTraceElement;
 import org.nightlabs.jjqb.childvm.shared.provider.MediaTypeConst;
 
+/**
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ */
 @Provider
 public class DefaultExceptionMapper implements ExceptionMapper<Throwable>
 {

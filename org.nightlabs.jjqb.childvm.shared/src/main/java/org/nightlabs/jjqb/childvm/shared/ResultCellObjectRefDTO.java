@@ -4,6 +4,9 @@ import java.lang.reflect.Field;
 
 import org.nightlabs.util.Util;
 
+/**
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ */
 public abstract class ResultCellObjectRefDTO extends ResultCellDTO
 {
 	private static final long serialVersionUID = 1L;
