@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URLClassLoader;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 import java.util.SortedSet;
 
 import javax.persistence.EntityManager;
@@ -105,8 +106,6 @@ extends Connection
 		if (em == null)
 			throw new IllegalStateException("getEntityManager() returned null!");
 
-//		configureFetchPlanForOneLevelAndAllFields(em.getFetchPlan()); // there is no fetch-plan in JPA :-(
-
 		Query query = em.createQuery(queryText);
 
 		boolean allParamsHaveName = true;
@@ -126,21 +125,21 @@ extends Connection
 			else
 				query.setParameter(parameter.getIndex(), parameterValue);
 		}
+		
+//		configureFetchPlanForOneLevelAndAllFields(em.getFetchPlan()); // there is no fetch-plan in JPA :-(
 
-		Object queryResult = query.getResultList();
+		List<?> queryResult = query.getResultList();
 
-		ResultSet resultSet;
-		if (queryResult instanceof Collection<?>)
-			resultSet = new JPAResultSet(this, query, (Collection<?>)queryResult);
-		else
-			resultSet = new JPAResultSet(this, query, Collections.singletonList(queryResult));
-
+		ResultSet resultSet = new JPAResultSet(this, query, queryResult);
 		return resultSet;
 	}
 
 	@Override
-	protected void prepareScriptEngine(ScriptEngine scriptEngine) {
-		scriptEngine.put("entityManager", getEntityManager());
-		scriptEngine.put("em", getEntityManager());
+	protected void prepareScriptEngine(ScriptEngine scriptEngine)
+	{
+		EntityManager em = getEntityManager();
+	
+		scriptEngine.put("entityManager", em);
+		scriptEngine.put("em", em);
 	}
 }

@@ -200,8 +200,8 @@ public class QueryParameterTableComposite extends Composite implements ISelectio
 	{
 		TableViewerColumn tableViewerColumn = new TableViewerColumn(tableViewer, SWT.RIGHT);
 		tableViewerColumn.setLabelProvider(new ParameterIndexLabelProvider());
-		tableViewerColumn.getColumn().setText("Index");
-		layout.addColumnData(new ColumnPixelData(50));
+		tableViewerColumn.getColumn().setText("#");
+		layout.addColumnData(new ColumnPixelData(30));
 	}
 
 	private void createParameterNameColumn(TableLayout layout)
@@ -210,7 +210,9 @@ public class QueryParameterTableComposite extends Composite implements ISelectio
 		tableViewerColumn.setLabelProvider(new ParameterNameLabelProvider());
 		tableViewerColumn.getColumn().setText("Name");
 		tableViewerColumn.setEditingSupport(new ParameterNameEditingSupport(tableViewer));
-		layout.addColumnData(new ColumnPixelData(150));
+		ColumnWeightData columnWeightData = new ColumnWeightData(20);
+		columnWeightData.minimumWidth = 100;
+		layout.addColumnData(columnWeightData);
 	}
 
 	private final class ParameterNameEditingSupport extends EditingSupport
@@ -254,7 +256,9 @@ public class QueryParameterTableComposite extends Composite implements ISelectio
 		tableViewerColumn.setLabelProvider(new ParameterTypeLabelProvider());
 		tableViewerColumn.getColumn().setText("Type");
 		tableViewerColumn.setEditingSupport(new ParameterTypeEditingSupport(tableViewer));
-		layout.addColumnData(new ColumnPixelData(200));
+		ColumnWeightData columnWeightData = new ColumnWeightData(30);
+		columnWeightData.minimumWidth = 120;
+		layout.addColumnData(columnWeightData);
 	}
 
 	private final class ParameterTypeEditingSupport extends EditingSupport
@@ -331,7 +335,10 @@ public class QueryParameterTableComposite extends Composite implements ISelectio
 		tableViewerColumn.setLabelProvider(new ParameterValueLabelProvider());
 		tableViewerColumn.getColumn().setText("Value");
 		tableViewerColumn.setEditingSupport(new ParameterValueEditingSupport(tableViewer));
-		layout.addColumnData(new ColumnWeightData(33));
+		ColumnWeightData columnWeightData = new ColumnWeightData(50);
+		columnWeightData.minimumWidth = 330;
+		layout.addColumnData(columnWeightData);
+//		layout.addColumnData(new ColumnPixelData(300));
 	}
 
 	private final class ParameterValueEditingSupport extends EditingSupport

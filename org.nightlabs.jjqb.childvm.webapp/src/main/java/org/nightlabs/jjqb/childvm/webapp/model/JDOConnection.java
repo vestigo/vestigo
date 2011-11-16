@@ -112,8 +112,6 @@ extends Connection
 		if (pm == null)
 			throw new IllegalStateException("getPersistenceManager() returned null!");
 
-		configureFetchPlanForOneLevelAndAllFields(pm.getFetchPlan());
-
 		List<Object> paramList = new ArrayList<Object>(parameters.size());
 		Map<String, Object> paramMap = new HashMap<String, Object>(parameters.size());
 		for (QueryParameterDTO parameter : parameters) {
@@ -127,6 +125,10 @@ extends Connection
 
 			paramList.add(parameterValue);
 		}
+
+		// It is important to set the fetch plan *after* all calls to getQueryParameterValue(...),
+		// because the formulas might modify the fetch plan.
+		configureFetchPlanForOneLevelAndAllFields(pm.getFetchPlan());
 
 		Query query = pm.newQuery(queryText);
 		Object queryResult;
@@ -145,14 +147,25 @@ extends Connection
 	}
 
 	@Override
-	protected void prepareScriptEngine(ScriptEngine scriptEngine) {
-		scriptEngine.put("persistenceManager", getPersistenceManager());
-		scriptEngine.put("pm", getPersistenceManager());
+	protected void prepareScriptEngine(ScriptEngine scriptEngine)
+	{
+		PersistenceManager pm = getPersistenceManager();
+
+		resetFetchPlanToDefault(pm.getFetchPlan());
+		
+		scriptEngine.put("persistenceManager", pm);
+		scriptEngine.put("pm", pm);
 	}
 
 	public void configureFetchPlanForOneLevelAndAllFields(FetchPlan fetchPlan)
 	{
 		fetchPlan.setMaxFetchDepth(1);
 		fetchPlan.setGroup(FetchPlan.ALL);
+	}
+	
+	public void resetFetchPlanToDefault(FetchPlan fetchPlan)
+	{
+		fetchPlan.setMaxFetchDepth(1);
+		fetchPlan.setGroup(FetchPlan.DEFAULT);
 	}
 }
