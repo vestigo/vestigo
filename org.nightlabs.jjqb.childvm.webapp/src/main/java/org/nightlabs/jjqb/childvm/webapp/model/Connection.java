@@ -9,7 +9,12 @@ import java.util.TreeSet;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;
+
 import org.nightlabs.jjqb.childvm.shared.ConnectionDTO;
+import org.nightlabs.jjqb.childvm.shared.JavaScriptFormula;
 import org.nightlabs.jjqb.childvm.shared.QueryParameterDTO;
 import org.nightlabs.jjqb.childvm.shared.ResultSetID;
 import org.slf4j.Logger;
@@ -112,9 +117,16 @@ public abstract class Connection
 		open = false;
 	}
 
+	protected String stripQueryText(String queryText)
+	{
+		String result = StringUtil.removeCommentsAndConvertEOLsToUnixEOLs(queryText).trim();
+		return result.toString().trim();
+	}
+
 	public final ResultSet executeQuery(String queryText, SortedSet<QueryParameterDTO> parameters)
 	{
-		ResultSet resultSet = doExecuteQuery(queryText, parameters);
+		String queryTextWithoutComments = stripQueryText(queryText);
+		ResultSet resultSet = doExecuteQuery(queryTextWithoutComments, parameters);
 		ResultSetID resultSetID = new ResultSetID(getConnectionID(), nextResultSetID.getAndIncrement());
 		resultSet.setResultSetID(resultSetID);
 		synchronized (this) {
@@ -162,5 +174,27 @@ public abstract class Connection
 						connectionID, resultSetID, resultSetID2resultSetMap.size()
 				}
 		);
+	}
+
+	protected Object getQueryParameterValue(QueryParameterDTO queryParameterDTO)
+	{
+		if (queryParameterDTO.getValue() instanceof JavaScriptFormula)
+			return evaluateQueryParameterValueJavaScriptFormula(queryParameterDTO, (JavaScriptFormula)queryParameterDTO.getValue());
+
+		return queryParameterDTO.getValue();
+	}
+
+	protected abstract void prepareScriptEngine(ScriptEngine scriptEngine);
+
+	private Object evaluateQueryParameterValueJavaScriptFormula(QueryParameterDTO queryParameterDTO, JavaScriptFormula formula)
+	{
+		ScriptEngineManager factory = new ScriptEngineManager();
+        ScriptEngine scriptEngine = factory.getEngineByName("JavaScript");
+        prepareScriptEngine(scriptEngine);
+        try {
+			return scriptEngine.eval(formula.getFormulaText());
+		} catch (ScriptException e) {
+			throw new RuntimeException(e);
+		}
 	}
 }

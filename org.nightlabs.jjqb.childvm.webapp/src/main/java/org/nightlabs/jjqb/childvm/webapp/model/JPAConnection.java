@@ -8,6 +8,7 @@ import java.util.SortedSet;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import javax.script.ScriptEngine;
 
 import org.nightlabs.jjqb.childvm.shared.ConnectionDTO;
 import org.nightlabs.jjqb.childvm.shared.JPAConnectionDTO;
@@ -113,11 +114,14 @@ extends Connection
 			}
 		}
 
-		for (QueryParameterDTO parameter : parameters) {
+		for (QueryParameterDTO parameter : parameters)
+		{
+			Object parameterValue = getQueryParameterValue(parameter);
+
 			if (allParamsHaveName)
-				query.setParameter(parameter.getName(), parameter.getValue());
+				query.setParameter(parameter.getName(), parameterValue);
 			else
-				query.setParameter(parameter.getIndex(), parameter.getValue());
+				query.setParameter(parameter.getIndex(), parameterValue);
 		}
 
 		Object queryResult = query.getResultList();
@@ -129,5 +133,11 @@ extends Connection
 			resultSet = new JPAResultSet(this, query, Collections.singletonList(queryResult));
 
 		return resultSet;
+	}
+
+	@Override
+	protected void prepareScriptEngine(ScriptEngine scriptEngine) {
+		scriptEngine.put("entityManager", getEntityManager());
+		scriptEngine.put("em", getEntityManager());
 	}
 }

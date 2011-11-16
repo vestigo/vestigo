@@ -13,6 +13,7 @@ import java.util.SortedSet;
 import javax.jdo.FetchPlan;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
+import javax.script.ScriptEngine;
 
 import org.nightlabs.jjqb.childvm.shared.ConnectionDTO;
 import org.nightlabs.jjqb.childvm.shared.JDOConnectionDTO;
@@ -116,10 +117,12 @@ extends Connection
 			if (parameter.getName() == null || parameter.getName().trim().isEmpty())
 				paramMap = null;
 
-			if (paramMap != null)
-				paramMap.put(parameter.getName(), parameter.getValue());
+			Object parameterValue = getQueryParameterValue(parameter);
 
-			paramList.add(parameter.getValue());
+			if (paramMap != null)
+				paramMap.put(parameter.getName(), parameterValue);
+
+			paramList.add(parameterValue);
 		}
 
 		Query query = pm.newQuery(queryText);
@@ -136,6 +139,12 @@ extends Connection
 			resultSet = new JDOResultSet(this, query, Collections.singletonList(queryResult));
 
 		return resultSet;
+	}
+
+	@Override
+	protected void prepareScriptEngine(ScriptEngine scriptEngine) {
+		scriptEngine.put("persistenceManager", getPersistenceManager());
+		scriptEngine.put("pm", getPersistenceManager());
 	}
 
 	public void configureFetchPlanForOneLevelAndAllFields(FetchPlan fetchPlan)
