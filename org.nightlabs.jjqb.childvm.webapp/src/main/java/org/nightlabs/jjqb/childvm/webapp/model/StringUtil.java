@@ -1,5 +1,6 @@
 package org.nightlabs.jjqb.childvm.webapp.model;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.StreamTokenizer;
 import java.io.StringReader;
@@ -7,6 +8,33 @@ import java.io.StringReader;
 public class StringUtil
 {
 	protected StringUtil() { }
+
+	public static final String toJavaSourceCode(String original)
+	{
+		StringBuilder result = new StringBuilder();
+		BufferedReader br = new BufferedReader(new StringReader(escapeForJavaSourceCode(original)));
+		String line;
+		try {
+			while (null != (line = br.readLine())) {
+				if (result.length() > 0)
+					result.append(" +\n");
+
+				result.append('"').append(line).append('"');
+			}
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+		return result.toString();
+	}
+
+	public static final String escapeForJavaSourceCode(String original)
+	{
+		String result = original.replaceAll("\r", "\\\\r");
+		result = result.replaceAll("\n", "\\\\n\n");
+		result = result.replaceAll("\"", "\\\\\"");
+		result = result.replaceAll("\t", "\\\\t");
+		return result;
+	}
 
 	public static final String removeCommentsAndConvertEOLsToUnixEOLs(String queryText)
 	{

@@ -19,7 +19,7 @@ public class StringUtilTest
 		);
 
 		System.out.println("*************************");
-		System.out.println(queryText.replaceAll("\r", "\\\\r").replaceAll("\n", "\\\\n\n"));
+		System.out.println(StringUtil.escapeForJavaSourceCode(queryText));
 		System.out.println("*************************");
 
 		String queryTextStripped = StringUtil.removeCommentsAndConvertEOLsToUnixEOLs(queryText);
@@ -27,13 +27,18 @@ public class StringUtilTest
 		System.out.println("*************************");
 		System.out.println(queryTextStripped);
 		System.out.println("*************************");
-		System.out.println(queryTextStripped.replaceAll("\r", "\\\\r").replaceAll("\n", "\\\\n\n"));
+		System.out.println(StringUtil.escapeForJavaSourceCode(queryTextStripped));
+		System.out.println("*************************");
+
+		System.out.println("*************************");
+		System.out.println(StringUtil.toJavaSourceCode(queryTextStripped));
 		System.out.println("*************************");
 
 		String expected = (
 				"\n" +
 				"SELECT FROM org.bla.Bla \"-- NOT comment\"\n" +
-				"\n\n" +
+				"\n" +
+				"\n" +
 				"WHERE this.bla - this.blubb > :arg \n" +
 				"\t\t&& this.ooo < :arg2\n"
 		);

@@ -6,6 +6,9 @@ import java.beans.PropertyChangeSupport;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.StringReader;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -41,6 +44,7 @@ import org.nightlabs.jjqb.ui.JJQBUIPlugin;
 import org.nightlabs.jjqb.ui.queryparam.QueryParameter;
 import org.nightlabs.jjqb.ui.queryparam.QueryParameterManager;
 import org.nightlabs.jjqb.ui.resultsettable.ResultSetTableModel;
+import org.nightlabs.util.IOUtil;
 import org.nightlabs.util.Stopwatch;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -629,8 +633,8 @@ public abstract class QueryBrowserManager
 
 					int equalsIndex = line.indexOf('=');
 					if (equalsIndex >= 0) {
-						String key = line.substring(0, equalsIndex).trim();
-						String value = line.substring(equalsIndex + 1).trim();
+						String key = URLDecoder.decode(line.substring(0, equalsIndex).trim(), IOUtil.CHARSET_NAME_UTF_8);
+						String value = URLDecoder.decode(line.substring(equalsIndex + 1).trim(), IOUtil.CHARSET_NAME_UTF_8);
 						properties.setProperty(key, value);
 					}
 				}
@@ -652,8 +656,15 @@ public abstract class QueryBrowserManager
 
 		PropertiesWithChangeSupport properties = getProperties(PropertiesType.editor_file);
 		SortedMap<?, ?> propertiesSorted = new TreeMap<Object, Object>(properties);
-		for (Map.Entry<?, ?> me : propertiesSorted.entrySet())
-			sb.append('\n').append(QUERY_TEXT_LINE_COMMENT_MARKER).append(me.getKey()).append('=').append(me.getValue());
+		for (Map.Entry<?, ?> me : propertiesSorted.entrySet()) {
+			try {
+				Object keyEncoded = URLEncoder.encode(String.valueOf(me.getKey()), IOUtil.CHARSET_NAME_UTF_8);
+				Object valueEncoded = URLEncoder.encode(String.valueOf(me.getValue()), IOUtil.CHARSET_NAME_UTF_8);
+				sb.append('\n').append(QUERY_TEXT_LINE_COMMENT_MARKER).append(keyEncoded).append('=').append(valueEncoded);
+			} catch (UnsupportedEncodingException e) {
+				throw new RuntimeException(e);
+			}
+		}
 
 		sb.append('\n').append(QUERY_TEXT_PROPERTIES_END_MARKER).append('\n');
 
