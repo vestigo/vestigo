@@ -1,6 +1,8 @@
 package org.nightlabs.jjqb.ui.resultsettable;
 
-
+/**
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ */
 public class ResultSetTableRow
 implements Comparable<ResultSetTableRow>
 {

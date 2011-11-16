@@ -20,6 +20,9 @@ import org.eclipse.datatools.connectivity.oda.design.ui.wizards.DataSourceEditor
 import org.eclipse.datatools.connectivity.oda.design.util.DesignUtil;
 import org.eclipse.swt.widgets.Composite;
 
+/**
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ */
 public abstract class AbstractDriverPropertyPage extends DataSourceEditorPage {
 
 	private AbstractDriverPropertiesComposite propertiesComposite;

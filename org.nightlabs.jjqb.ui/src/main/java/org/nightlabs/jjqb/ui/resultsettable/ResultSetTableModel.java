@@ -15,6 +15,9 @@ import org.eclipse.jface.viewers.deferred.IConcurrentModel;
 import org.eclipse.jface.viewers.deferred.IConcurrentModelListener;
 import org.eclipse.swt.widgets.Display;
 
+/**
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ */
 public class ResultSetTableModel
 extends AbstractConcurrentModel
 implements IConcurrentModel // not necessary - just convenient to see the javadoc when hovering/selecting it

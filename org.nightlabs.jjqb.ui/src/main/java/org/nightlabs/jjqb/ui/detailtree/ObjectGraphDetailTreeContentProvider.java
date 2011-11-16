@@ -17,6 +17,9 @@ import org.eclipse.swt.widgets.Display;
 import org.nightlabs.jjqb.core.ObjectReference;
 import org.nightlabs.jjqb.core.ObjectReferenceChild;
 
+/**
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ */
 public class ObjectGraphDetailTreeContentProvider
 implements ITreeContentProvider
 {

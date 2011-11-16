@@ -17,6 +17,9 @@ import org.eclipse.ui.editors.text.TextEditor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ */
 public class JPAQueryBrowserEditor
 extends TextEditor
 implements JPAQueryBrowser

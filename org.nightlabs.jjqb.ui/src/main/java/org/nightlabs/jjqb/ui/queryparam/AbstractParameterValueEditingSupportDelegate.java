@@ -2,6 +2,9 @@ package org.nightlabs.jjqb.ui.queryparam;
 
 import org.eclipse.jface.viewers.CellEditor;
 
+/**
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ */
 public abstract class AbstractParameterValueEditingSupportDelegate
 implements ParameterValueEditingSupportDelegate
 {

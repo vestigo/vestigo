@@ -1,5 +1,8 @@
 package org.nightlabs.jjqb.ui.internal;
 
+/**
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ */
 public class PackageImporterDummy
 {
 	org.eclipse.core.runtime.jobs.IJobChangeListener jobChangeListener;

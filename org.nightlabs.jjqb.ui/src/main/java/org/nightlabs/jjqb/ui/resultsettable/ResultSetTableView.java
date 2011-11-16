@@ -16,6 +16,9 @@ import org.nightlabs.jjqb.ui.browser.QueryBrowser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ */
 public class ResultSetTableView extends ViewPart {
 	private static final Logger logger = LoggerFactory.getLogger(ResultSetTableView.class);
 

@@ -13,6 +13,9 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.nightlabs.jjqb.childvm.shared.JavaScriptFormula;
 
+/**
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ */
 public class JavaScriptFormulaDialog extends Dialog
 {
 	private JavaScriptFormula value;

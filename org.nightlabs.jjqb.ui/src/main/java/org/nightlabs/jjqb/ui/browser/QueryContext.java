@@ -8,6 +8,9 @@ import org.nightlabs.jjqb.ui.queryparam.QueryParameter;
 import org.nightlabs.jjqb.ui.queryparam.QueryParameterManager;
 import org.nightlabs.util.Util;
 
+/**
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ */
 public class QueryContext
 {
 	private IConnectionProfile connectionProfile;

@@ -44,6 +44,9 @@ import org.eclipse.swt.widgets.TableItem;
 import org.nightlabs.jjqb.ui.JJQBUIPlugin;
 import org.nightlabs.util.Util;
 
+/**
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ */
 public class EditClasspathComposite extends Composite implements ICellModifier
 {
 	private Button addFileButton;

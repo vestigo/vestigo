@@ -8,6 +8,9 @@ import org.eclipse.datatools.connectivity.oda.design.util.DesignUtil;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.widgets.Composite;
 
+/**
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ */
 public abstract class AbstractDriverWizardPage extends DataSourceWizardPage
 {
 	private AbstractDriverPropertiesComposite propertiesComposite;

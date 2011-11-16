@@ -7,6 +7,9 @@ import org.nightlabs.jjqb.ui.detailtree.ObjectGraphDetailTreeView;
 import org.nightlabs.jjqb.ui.queryparam.QueryParameterManagerView;
 import org.nightlabs.jjqb.ui.resultsettable.ResultSetTableView;
 
+/**
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ */
 public class JJQBPerspective implements IPerspectiveFactory
 {
 	@Override

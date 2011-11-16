@@ -14,7 +14,9 @@ import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IPathEditorInput;
 import org.nightlabs.util.IOUtil;
 
-
+/**
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ */
 public interface QueryBrowser
 {
 	static final class Helper

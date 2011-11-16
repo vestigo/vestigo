@@ -53,7 +53,7 @@ import org.eclipse.swt.widgets.TableItem;
  * Generic Composite to edit properties in a table.
  *
  * @author Alexander Bieber <!-- alex [AT] nightlabs [DOT] de -->
- *
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
  */
 public class EditPropertiesComposite extends Composite implements ICellModifier {
 

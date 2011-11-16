@@ -17,6 +17,9 @@ import org.nightlabs.jjqb.ui.browser.QueryBrowserManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ */
 public class QueryParameterManager
 {
 	private static final Logger logger = LoggerFactory.getLogger(QueryParameterManager.class);

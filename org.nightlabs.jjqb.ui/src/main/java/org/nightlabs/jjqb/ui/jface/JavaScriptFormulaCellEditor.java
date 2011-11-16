@@ -6,6 +6,9 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.nightlabs.jjqb.childvm.shared.JavaScriptFormula;
 
+/**
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ */
 public class JavaScriptFormulaCellEditor extends DialogCellEditor
 {
 	private static final Object NULL_MASK = new Object();

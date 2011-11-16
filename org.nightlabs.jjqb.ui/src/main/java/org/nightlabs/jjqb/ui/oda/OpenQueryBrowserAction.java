@@ -25,6 +25,9 @@ import org.nightlabs.jjqb.core.oda.JDODriver;
 import org.nightlabs.jjqb.core.oda.JPADriver;
 import org.nightlabs.jjqb.ui.browser.JDOQueryBrowserEditor;
 
+/**
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ */
 public class OpenQueryBrowserAction
 implements IObjectActionDelegate, IViewActionDelegate
 {

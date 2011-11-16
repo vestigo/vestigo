@@ -3,6 +3,9 @@ package org.nightlabs.jjqb.ui.browser;
 import org.eclipse.datatools.connectivity.oda.IResultSet;
 import org.nightlabs.jjqb.ui.resultsettable.ResultSetTableModel;
 
+/**
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ */
 public class ExecuteQueryEvent
 {
 	private QueryContext queryContext;

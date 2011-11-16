@@ -11,6 +11,8 @@ import org.eclipse.ui.IURIEditorInput;
 /**
  * Editor input wrapping a {@link #getFileEditorInput() another editor input} and passing
  * additionally a {@link #getConnectionProfile() selected connection profile}.
+ *
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
  */
 public class QueryBrowserEditorInput implements IEditorInput
 {

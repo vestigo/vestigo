@@ -36,6 +36,9 @@ import org.nightlabs.jjqb.core.ObjectReference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ */
 public class ResultSetTableComposite extends Composite
 implements ISelectionProvider
 {

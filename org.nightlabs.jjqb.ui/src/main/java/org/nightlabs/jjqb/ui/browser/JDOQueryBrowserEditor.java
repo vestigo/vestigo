@@ -17,6 +17,9 @@ import org.nightlabs.jdo.jdoqleditor.editor.JDOQLEditor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ */
 public class JDOQueryBrowserEditor
 extends JDOQLEditor
 implements JDOQueryBrowser

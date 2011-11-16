@@ -49,6 +49,9 @@ import org.nightlabs.util.Stopwatch;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ */
 public abstract class QueryBrowserManager
 {
 	private static final Logger logger = LoggerFactory.getLogger(QueryBrowserManager.class);

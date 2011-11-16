@@ -20,6 +20,9 @@ import org.nightlabs.jjqb.ui.resultsettable.ResultSetTableCell;
 import org.nightlabs.jjqb.ui.resultsettable.ResultSetTableRow;
 import org.nightlabs.jjqb.ui.resultsettable.ResultSetTableView;
 
+/**
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ */
 public class ObjectGraphDetailTreeView extends ViewPart
 {
 	private ObjectGraphDetailTreeComposite objectGraphDetailTreeComposite;

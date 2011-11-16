@@ -9,6 +9,9 @@ import java.util.TimeZone;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ */
 class ParameterValueStringConverterForCalendar extends AbstractParameterValueStringConverter
 {
 	@Override

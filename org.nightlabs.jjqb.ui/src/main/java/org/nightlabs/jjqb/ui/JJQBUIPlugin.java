@@ -16,6 +16,9 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.nightlabs.jjqb.core.PropertiesWithChangeSupport;
 import org.osgi.framework.BundleContext;
 
+/**
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ */
 public class JJQBUIPlugin extends AbstractUIPlugin {
 
 	// The plug-in ID

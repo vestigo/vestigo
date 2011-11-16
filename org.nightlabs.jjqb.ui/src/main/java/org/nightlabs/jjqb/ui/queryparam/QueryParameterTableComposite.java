@@ -38,6 +38,9 @@ import org.nightlabs.jjqb.ui.jface.JavaScriptFormulaCellEditor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ */
 public class QueryParameterTableComposite extends Composite implements ISelectionProvider
 {
 	private static final Logger logger = LoggerFactory.getLogger(QueryParameterTableComposite.class);

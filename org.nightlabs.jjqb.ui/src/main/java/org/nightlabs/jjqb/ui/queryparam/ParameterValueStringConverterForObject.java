@@ -3,6 +3,9 @@ package org.nightlabs.jjqb.ui.queryparam;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 
+/**
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ */
 class ParameterValueStringConverterForObject extends AbstractParameterValueStringConverter
 {
 	@Override

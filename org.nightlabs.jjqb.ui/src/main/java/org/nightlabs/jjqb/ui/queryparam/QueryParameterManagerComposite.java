@@ -14,6 +14,9 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.nightlabs.jjqb.ui.JJQBUIPlugin;
 
+/**
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ */
 public class QueryParameterManagerComposite extends Composite
 {
 	private JJQBUIPlugin plugin = JJQBUIPlugin.getDefault();

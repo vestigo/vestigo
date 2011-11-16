@@ -10,6 +10,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+/**
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ */
 public class QueryParameter
 implements Serializable, Comparable<QueryParameter>
 {

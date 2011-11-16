@@ -19,6 +19,9 @@ import org.nightlabs.jjqb.ui.resultsettable.ResultSetTableModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ */
 public class QueryBrowserManagerComposite extends Composite
 {
 	private static final Logger logger = LoggerFactory.getLogger(QueryBrowserManagerComposite.class);

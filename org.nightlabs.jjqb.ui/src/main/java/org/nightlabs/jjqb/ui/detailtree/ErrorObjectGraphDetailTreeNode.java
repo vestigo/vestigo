@@ -1,6 +1,8 @@
 package org.nightlabs.jjqb.ui.detailtree;
 
-
+/**
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ */
 public class ErrorObjectGraphDetailTreeNode extends ObjectGraphDetailTreeNode
 {
 	public ErrorObjectGraphDetailTreeNode(Object object) {

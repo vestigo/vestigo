@@ -18,6 +18,9 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.DateTime;
 
+/**
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ */
 public class DateCellEditor extends CellEditor
 {
 	private static final boolean USE_GRID_LAYOUT = true;
