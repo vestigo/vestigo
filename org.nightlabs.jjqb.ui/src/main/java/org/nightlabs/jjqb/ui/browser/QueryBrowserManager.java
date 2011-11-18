@@ -13,10 +13,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
@@ -29,17 +27,18 @@ import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.datatools.connectivity.ConnectEvent;
 import org.eclipse.datatools.connectivity.IConnectionProfile;
 import org.eclipse.datatools.connectivity.IManagedConnection;
-import org.eclipse.datatools.connectivity.IManagedConnectionOfflineListener;
 import org.eclipse.datatools.connectivity.IProfileListener;
 import org.eclipse.datatools.connectivity.ManagedConnectionAdapter;
 import org.eclipse.datatools.connectivity.ProfileManager;
 import org.eclipse.datatools.connectivity.oda.IConnection;
 import org.eclipse.datatools.connectivity.oda.IQuery;
 import org.eclipse.datatools.connectivity.oda.IResultSet;
+import org.eclipse.datatools.connectivity.oda.OdaException;
 import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.widgets.Display;
 import org.nightlabs.jjqb.core.PropertiesWithChangeSupport;
+import org.nightlabs.jjqb.core.oda.DelegatingConnection;
 import org.nightlabs.jjqb.ui.JJQBUIPlugin;
 import org.nightlabs.jjqb.ui.queryparam.QueryParameter;
 import org.nightlabs.jjqb.ui.queryparam.QueryParameterManager;
@@ -58,7 +57,7 @@ public abstract class QueryBrowserManager
 
 	public static enum PropertyName {
 		connectionProfiles,
-		connectionProfile // TODO rename to selectedConnectionProfile - or not?
+		connectionProfile
 	}
 
 	private static final String connectionFactoryID = "org.eclipse.datatools.connectivity.oda.IConnection";
@@ -73,9 +72,10 @@ public abstract class QueryBrowserManager
 	private Display display;
 
 	private List<IConnectionProfile> connectionProfiles = Collections.unmodifiableList(new ArrayList<IConnectionProfile>());
-	private IConnectionProfile connectionProfile; // TODO rename to selectedConnectionProfile - or not?
+	private IConnectionProfile connectionProfile;
 
-	private volatile IQuery query;
+	private volatile IConnection connection;
+//	private volatile IQuery query;
 	private volatile ResultSetTableModel resultSetTableModel;
 
 	private Map<PropertiesType, PropertiesWithChangeSupport> propertiesType2Properties = new HashMap<PropertiesType, PropertiesWithChangeSupport>();
@@ -280,58 +280,107 @@ public abstract class QueryBrowserManager
 	}
 
 
-	/**
-	 * Every editor uses its own connection (due to commit/rollback). These are the connections of this editor.
-	 * There are multiple, because an editor might be used with multiple connection-profiles (and there's
-	 * one connection for each combination of editor and connection-profile).
-	 */
-	private Map<IConnectionProfile, org.eclipse.datatools.connectivity.IConnection> connectionProfile2connection = new HashMap<IConnectionProfile, org.eclipse.datatools.connectivity.IConnection>();
+//	/**
+//	 * Every editor uses its own connection (due to commit/rollback). These are the connections of this editor.
+//	 * There are multiple, because an editor might be used with multiple connection-profiles (and there's
+//	 * one connection for each combination of editor and connection-profile).
+//	 */
+//	private Map<IConnectionProfile, org.eclipse.datatools.connectivity.IConnection> connectionProfile2connection = new HashMap<IConnectionProfile, org.eclipse.datatools.connectivity.IConnection>();
+//
+//	private Set<IManagedConnection> managedConnectionsWithRegisteredListener = new HashSet<IManagedConnection>();
+//
+//	private IManagedConnectionOfflineListener managedConnectionListener = new ManagedConnectionAdapter()
+//	{
+//		@Override
+//		public void aboutToClose(ConnectEvent event) {
+//			IManagedConnection managedConnection = event.getConnection();
+//			IConnectionProfile connectionProfile = event.getConnectionProfile();
+//
+//			org.eclipse.datatools.connectivity.IConnection connection;
+//			synchronized (QueryBrowserManager.this) {
+//				connection = connectionProfile2connection.remove(connectionProfile);
+//				managedConnection.removeConnectionListener(this);
+//				managedConnectionsWithRegisteredListener.remove(managedConnection);
+//			}
+//
+//			if (connection != null) {
+//				try {
+//					connection.close();
+//				} catch (Exception e) {
+//					logger.error("connection.close() failed: " + e, e);
+//				}
+//			}
+//		}
+//	};
 
-	private Set<IManagedConnection> managedConnectionsWithRegisteredListener = new HashSet<IManagedConnection>();
-
-	private IManagedConnectionOfflineListener managedConnectionListener = new ManagedConnectionAdapter()
+	private static class CloseConnectionManagedConnectionListener extends ManagedConnectionAdapter
 	{
+		private org.eclipse.datatools.connectivity.IConnection connection;
+
+		public CloseConnectionManagedConnectionListener(org.eclipse.datatools.connectivity.IConnection connection)
+		{
+			if (connection == null)
+				throw new IllegalArgumentException("connection == null");
+
+			this.connection = connection;
+		}
+
 		@Override
-		public void aboutToClose(ConnectEvent event) {
-			IManagedConnection managedConnection = event.getConnection();
-			IConnectionProfile connectionProfile = event.getConnectionProfile();
-
-			org.eclipse.datatools.connectivity.IConnection connection;
-			synchronized (QueryBrowserManager.this) {
-				connection = connectionProfile2connection.remove(connectionProfile);
-				managedConnection.removeConnectionListener(this);
-				managedConnectionsWithRegisteredListener.remove(managedConnection);
-			}
-
-			if (connection != null) {
-				try {
-					connection.close();
-				} catch (Exception e) {
-					logger.error("connection.close() failed: " + e, e);
-				}
+		public void aboutToClose(ConnectEvent event)
+		{
+			event.getConnection().removeConnectionListener(this);
+			try {
+				connection.close();
+			} catch (Exception e) {
+				logger.error("connection.close() failed: " + e, e);
 			}
 		}
 	};
 
-	public synchronized IConnection getConnection(IConnectionProfile connectionProfile, IProgressMonitor monitor)
+	public synchronized IConnection createConnection(IConnectionProfile connectionProfile, IProgressMonitor monitor)
 	{
-		IManagedConnection managedConnection = connectionProfile.getManagedConnection(connectionFactoryID);
-		if (managedConnectionsWithRegisteredListener.add(managedConnection))
-			managedConnection.addConnectionListener(managedConnectionListener);
+		final IManagedConnection managedConnection = connectionProfile.getManagedConnection(connectionFactoryID);
 
 		if (managedConnection.getConnection() == null)
 			connectionProfile.connectWithoutJob();
 
-		org.eclipse.datatools.connectivity.IConnection connection = connectionProfile2connection.get(connectionProfile);
-		if (connection == null) {
-			connection = connectionProfile.createConnection(connectionFactoryID);
-			if (connection == null)
-				throw new IllegalStateException("connectionProfile.createConnection(...) returned null");
+		final org.eclipse.datatools.connectivity.IConnection connection = connectionProfile.createConnection(connectionFactoryID);
+		if (connection == null)
+			throw new IllegalStateException("connectionProfile.createConnection(...) returned null");
 
-			connectionProfile2connection.put(connectionProfile, connection);
-		}
-		return (IConnection) connection.getRawConnection();
+		final CloseConnectionManagedConnectionListener closeConnectionManagedConnectionListener = new CloseConnectionManagedConnectionListener(connection);
+		managedConnection.addConnectionListener(closeConnectionManagedConnectionListener);
+
+		IConnection odaConnection = (IConnection) connection.getRawConnection();
+		return new DelegatingConnection(odaConnection) {
+			@Override
+			public void close() throws OdaException {
+				managedConnection.removeConnectionListener(closeConnectionManagedConnectionListener);
+				connection.close();
+				super.close();
+			}
+		};
 	}
+
+//	public synchronized IConnection getConnection(IConnectionProfile connectionProfile, IProgressMonitor monitor)
+//	{
+//		IManagedConnection managedConnection = connectionProfile.getManagedConnection(connectionFactoryID);
+//		if (managedConnectionsWithRegisteredListener.add(managedConnection))
+//			managedConnection.addConnectionListener(managedConnectionListener);
+//
+//		if (managedConnection.getConnection() == null)
+//			connectionProfile.connectWithoutJob();
+//
+//		org.eclipse.datatools.connectivity.IConnection connection = connectionProfile2connection.get(connectionProfile);
+//		if (connection == null) {
+//			connection = connectionProfile.createConnection(connectionFactoryID);
+//			if (connection == null)
+//				throw new IllegalStateException("connectionProfile.createConnection(...) returned null");
+//
+//			connectionProfile2connection.put(connectionProfile, connection);
+//		}
+//		return (IConnection) connection.getRawConnection();
+//	}
 
 	public List<IConnectionProfile> getConnectionProfiles() {
 		assertUIThread();
@@ -402,15 +451,24 @@ public abstract class QueryBrowserManager
 
 		ProfileManager.getInstance().removeProfileListener(profileListener);
 
-		for (org.eclipse.datatools.connectivity.IConnection connection : connectionProfile2connection.values()) {
-			connection.close();
-		}
-		connectionProfile2connection.clear();
+//		for (org.eclipse.datatools.connectivity.IConnection connection : connectionProfile2connection.values()) {
+//			connection.close();
+//		}
+//		connectionProfile2connection.clear();
+//
+//		for (IManagedConnection managedConnection : managedConnectionsWithRegisteredListener) {
+//			managedConnection.removeConnectionListener(managedConnectionListener);
+//		}
+//		managedConnectionsWithRegisteredListener.clear();
 
-		for (IManagedConnection managedConnection : managedConnectionsWithRegisteredListener) {
-			managedConnection.removeConnectionListener(managedConnectionListener);
+		IConnection c = connection;
+		if (c != null) {
+			try {
+				c.close();
+			} catch (OdaException e) {
+				logger.error("onDispose: Closing connection failed: " + e, e);
+			}
 		}
-		managedConnectionsWithRegisteredListener.clear();
 	}
 
 	public void executeQuery()
@@ -469,41 +527,39 @@ public abstract class QueryBrowserManager
 	private synchronized ResultSetTableModel executeQuery(final QueryContext queryContext, IProgressMonitor monitor)
 	throws Exception
 	{
-		// close the current query - we keep only one single query + one single result set, right now - might change later.
-		IQuery oldQuery = this.query;
-		if (oldQuery != null) {
-			this.query = null;
-			oldQuery.close();
+		Stopwatch stopwatch = new Stopwatch();
+
+		// close the current connection - we keep only one single connection + query + result set, right now - might change later.
+		IConnection oldConnection = this.connection;
+		if (oldConnection != null) {
+			this.connection = null;
+			oldConnection.close();
 		}
 		this.resultSetTableModel = null;
+
+		IConnectionProfile connectionProfile = queryContext.getConnectionProfile();
+		IConnection connection = createConnection(connectionProfile, new SubProgressMonitor(monitor, 30)); // TODO proper management of ProgressMonitor!
+		this.connection = connection;
+		queryContext.setConnection(connection);
 
 		ExecuteQueryEvent executeQueryEvent = new ExecuteQueryEvent(queryContext);
 		for (Object l : executeQueryListeners.getListeners())
 			((ExecuteQueryListener)l).preExecuteQuery(executeQueryEvent, new SubProgressMonitor(monitor, 50)); // TODO progressmonitor
 
-		Stopwatch stopwatch = new Stopwatch();
-
-		IConnectionProfile connectionProfile = queryContext.getConnectionProfile();
-
-		IConnection connection = getConnection(connectionProfile, new SubProgressMonitor(monitor, 30)); // TODO proper management of ProgressMonitor!
-		IQuery q = query;
-		if (q == null) {
-			q = connection.newQuery("");
-			this.query = q;
-		}
+		IQuery query = connection.newQuery("");
 
 		stopwatch.start("00.query.prepare");
-		q.prepare(queryContext.getQueryText());
+		query.prepare(queryContext.getQueryText());
 		stopwatch.stop("00.query.prepare");
 
 		stopwatch.start("01.query.setParameters");
 		for (QueryParameter queryParameter : queryContext.getQueryParameters()) {
 			if (queryParameter.getName() == null || queryParameter.getName().trim().isEmpty())
-				q.setObject(queryParameter.getIndex(), queryParameter.getValue());
+				query.setObject(queryParameter.getIndex(), queryParameter.getValue());
 		}
 		for (QueryParameter queryParameter : queryContext.getQueryParameters()) {
 			if (queryParameter.getName() != null && !queryParameter.getName().trim().isEmpty())
-				q.setObject(queryParameter.getName(), queryParameter.getValue());
+				query.setObject(queryParameter.getName(), queryParameter.getValue());
 		}
 		stopwatch.stop("01.query.setParameters");
 
@@ -511,7 +567,7 @@ public abstract class QueryBrowserManager
 		ResultSetTableModel resultSetTableModel = null;
 		try {
 			stopwatch.start("10.query.executeQuery");
-			resultSet = q.executeQuery();
+			resultSet = query.executeQuery();
 			resultSetTableModel = new ResultSetTableModel(resultSet);
 			this.resultSetTableModel = resultSetTableModel;
 			stopwatch.stop("10.query.executeQuery");
@@ -523,7 +579,7 @@ public abstract class QueryBrowserManager
 
 //		// BEGIN performance test: iterate entire result set
 //		stopwatch.start("20.query.executeQuery");
-//		final IResultSet rs2 = q.executeQuery();
+//		final IResultSet rs2 = query.executeQuery();
 //		stopwatch.stop("20.query.executeQuery");
 //
 //		stopwatch.start("30.iterateResultSet");

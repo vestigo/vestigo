@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.datatools.connectivity.IConnectionProfile;
+import org.eclipse.datatools.connectivity.oda.IConnection;
 import org.nightlabs.jjqb.ui.queryparam.QueryParameter;
 import org.nightlabs.jjqb.ui.queryparam.QueryParameterManager;
 import org.nightlabs.util.Util;
@@ -16,6 +17,7 @@ public class QueryContext
 	private IConnectionProfile connectionProfile;
 	private String queryText;
 	private List<QueryParameter> queryParameters = new ArrayList<QueryParameter>();
+	private IConnection connection;
 
 	public IConnectionProfile getConnectionProfile() {
 		return connectionProfile;
@@ -45,5 +47,12 @@ public class QueryContext
 		this.queryParameters.clear();
 		for (QueryParameter queryParameter : queryParameterManager.getQueryParameters())
 			this.queryParameters.add(Util.cloneSerializable(queryParameter));
+	}
+
+	public IConnection getConnection() {
+		return connection;
+	}
+	public void setConnection(IConnection connection) {
+		this.connection = connection;
 	}
 }
