@@ -588,7 +588,7 @@ public abstract class QueryBrowserManager
 				}
 			};
 
-			resultSetTableModel = new ResultSetTableModel(resultSet);
+			resultSetTableModel = new ResultSetTableModel(connection, resultSet);
 			connection2ResultSetTableModel.put(connection, resultSetTableModel);
 			stopwatch.stop("10.query.executeQuery");
 		} finally {

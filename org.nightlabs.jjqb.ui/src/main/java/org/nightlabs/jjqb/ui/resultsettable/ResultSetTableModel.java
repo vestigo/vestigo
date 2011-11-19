@@ -9,6 +9,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
+import org.eclipse.datatools.connectivity.oda.IConnection;
 import org.eclipse.datatools.connectivity.oda.IResultSet;
 import org.eclipse.datatools.connectivity.oda.OdaException;
 import org.eclipse.jface.viewers.deferred.AbstractConcurrentModel;
@@ -33,11 +34,12 @@ implements IConcurrentModel // not necessary - just convenient to see the javado
 		 */
 		completelyLoaded,
 
-		closing,
+		aboutToClose,
 
 		closed
 	}
 
+	private IConnection connection;
 	private volatile Object[] rowsLoadedArray;
 	private List<ResultSetTableRow> rowsLoaded = new ArrayList<ResultSetTableRow>();
 	private IResultSet resultSet;
@@ -48,11 +50,15 @@ implements IConcurrentModel // not necessary - just convenient to see the javado
 
 	private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
-	public ResultSetTableModel(IResultSet resultSet)
+	public ResultSetTableModel(IConnection connection, IResultSet resultSet)
 	{
+		if (connection == null)
+			throw new IllegalArgumentException("connection == null");
+
 		if (resultSet == null)
 			throw new IllegalArgumentException("resultSet == null");
 
+		this.connection = connection;
 		this.resultSet = resultSet;
 	}
 
@@ -84,6 +90,10 @@ implements IConcurrentModel // not necessary - just convenient to see the javado
 	public void removePropertyChangeListener(PropertyName propertyName, PropertyChangeListener listener) {
 		determineDisplay();
 		propertyChangeSupport.removePropertyChangeListener(propertyName.name(), listener);
+	}
+
+	public IConnection getConnection() {
+		return connection;
 	}
 
 	public IResultSet getResultSet() {
@@ -150,7 +160,7 @@ implements IConcurrentModel // not necessary - just convenient to see the javado
 					if (lastResultSetNextResult == false) {
 						Display d = display;
 						if (d != null) {
-							display.asyncExec(new Runnable() {
+							d.asyncExec(new Runnable() {
 								@Override
 								public void run() {
 									propertyChangeSupport.firePropertyChange(PropertyName.completelyLoaded.name(), !completelyLoaded, completelyLoaded);
@@ -183,7 +193,15 @@ implements IConcurrentModel // not necessary - just convenient to see the javado
 			return;
 		closed = true;
 
-		propertyChangeSupport.firePropertyChange(PropertyName.closing.name(), null, null);
+		Display d = display;
+		if (d != null) {
+			d.syncExec(new Runnable() {
+				@Override
+				public void run() {
+					propertyChangeSupport.firePropertyChange(PropertyName.aboutToClose.name(), null, null);
+				}
+			});
+		}
 
 		try {
 			resultSet.close();
@@ -191,6 +209,13 @@ implements IConcurrentModel // not necessary - just convenient to see the javado
 			logger.error("close: " + e, e);
 		}
 
-		propertyChangeSupport.firePropertyChange(PropertyName.closed.name(), null, null);
+		if (d != null) {
+			d.asyncExec(new Runnable() {
+				@Override
+				public void run() {
+					propertyChangeSupport.firePropertyChange(PropertyName.closed.name(), null, null);
+				}
+			});
+		}
 	}
 }
