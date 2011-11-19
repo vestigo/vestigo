@@ -10,10 +10,13 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.datatools.connectivity.oda.IResultSet;
+import org.eclipse.datatools.connectivity.oda.OdaException;
 import org.eclipse.jface.viewers.deferred.AbstractConcurrentModel;
 import org.eclipse.jface.viewers.deferred.IConcurrentModel;
 import org.eclipse.jface.viewers.deferred.IConcurrentModelListener;
 import org.eclipse.swt.widgets.Display;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
@@ -22,11 +25,17 @@ public class ResultSetTableModel
 extends AbstractConcurrentModel
 implements IConcurrentModel // not necessary - just convenient to see the javadoc when hovering/selecting it
 {
+	private static final Logger logger = LoggerFactory.getLogger(ResultSetTableModel.class);
+
 	public static enum PropertyName {
 		/**
 		 * @see #isCompletelyLoaded()
 		 */
-		completelyLoaded
+		completelyLoaded,
+
+		closing,
+
+		closed
 	}
 
 	private volatile Object[] rowsLoadedArray;
@@ -164,5 +173,24 @@ implements IConcurrentModel // not necessary - just convenient to see the javado
 
 	public boolean isCompletelyLoaded() {
 		return completelyLoaded;
+	}
+
+	private volatile boolean closed;
+
+	public void close()
+	{
+		if (closed)
+			return;
+		closed = true;
+
+		propertyChangeSupport.firePropertyChange(PropertyName.closing.name(), null, null);
+
+		try {
+			resultSet.close();
+		} catch (OdaException e) {
+			logger.error("close: " + e, e);
+		}
+
+		propertyChangeSupport.firePropertyChange(PropertyName.closed.name(), null, null);
 	}
 }

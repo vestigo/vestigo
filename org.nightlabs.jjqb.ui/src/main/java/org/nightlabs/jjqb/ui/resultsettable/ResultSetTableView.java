@@ -1,5 +1,7 @@
 package org.nightlabs.jjqb.ui.resultsettable;
 
+import java.util.Collection;
+
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
@@ -56,7 +58,9 @@ public class ResultSetTableView extends ViewPart {
 		unregisterQueryBrowser(); // just in case, we have another one assigned.
 
 		this.queryBrowser = queryBrowser;
-		resultSetTableComposite.setInput(queryBrowser.getQueryBrowserManager().getResultSetTableModel());
+		// TODO this must be refactored when we support multiple resultSets per query browser!
+		Collection<ResultSetTableModel> resultSetTableModels = queryBrowser.getQueryBrowserManager().getResultSetTableModels();
+		resultSetTableComposite.setInput(resultSetTableModels.isEmpty() ? null : resultSetTableModels.iterator().next());
 		queryBrowser.getQueryBrowserManager().addExecuteQueryListener(executeQueryListener);
 	}
 

@@ -201,9 +201,11 @@ public class QueryBrowserManagerComposite extends Composite
 				if (queryBrowserManager == null)
 					return;
 
-				ResultSetTableModel model = queryBrowserManager.getResultSetTableModel();
-				if (model != null)
-					model.loadNextBunch();
+				// TODO this must be in the result set view!
+				for (ResultSetTableModel model : queryBrowserManager.getResultSetTableModels()) {
+					if (model != null)
+						model.loadNextBunch();
+				}
 			}
 		});
 		setLoadNextActionEnabled(false);

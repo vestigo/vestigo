@@ -10,6 +10,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -39,6 +40,7 @@ import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.widgets.Display;
 import org.nightlabs.jjqb.core.PropertiesWithChangeSupport;
 import org.nightlabs.jjqb.core.oda.DelegatingConnection;
+import org.nightlabs.jjqb.core.oda.DelegatingResultSet;
 import org.nightlabs.jjqb.ui.JJQBUIPlugin;
 import org.nightlabs.jjqb.ui.queryparam.QueryParameter;
 import org.nightlabs.jjqb.ui.queryparam.QueryParameterManager;
@@ -74,9 +76,11 @@ public abstract class QueryBrowserManager
 	private List<IConnectionProfile> connectionProfiles = Collections.unmodifiableList(new ArrayList<IConnectionProfile>());
 	private IConnectionProfile connectionProfile;
 
-	private volatile IConnection connection;
+//	private volatile IConnection connection;
 //	private volatile IQuery query;
-	private volatile ResultSetTableModel resultSetTableModel;
+//	private volatile ResultSetTableModel resultSetTableModel;
+
+	private Map<IConnection, ResultSetTableModel> connection2ResultSetTableModel = new HashMap<IConnection, ResultSetTableModel>();
 
 	private Map<PropertiesType, PropertiesWithChangeSupport> propertiesType2Properties = new HashMap<PropertiesType, PropertiesWithChangeSupport>();
 
@@ -316,13 +320,17 @@ public abstract class QueryBrowserManager
 	private static class CloseConnectionManagedConnectionListener extends ManagedConnectionAdapter
 	{
 		private org.eclipse.datatools.connectivity.IConnection connection;
+		private IConnection odaConnection;
 
-		public CloseConnectionManagedConnectionListener(org.eclipse.datatools.connectivity.IConnection connection)
+		public CloseConnectionManagedConnectionListener(org.eclipse.datatools.connectivity.IConnection connection, IConnection odaConnection)
 		{
 			if (connection == null)
 				throw new IllegalArgumentException("connection == null");
+			if (odaConnection == null)
+				throw new IllegalArgumentException("odaConnection == null");
 
 			this.connection = connection;
+			this.odaConnection = odaConnection;
 		}
 
 		@Override
@@ -330,6 +338,7 @@ public abstract class QueryBrowserManager
 		{
 			event.getConnection().removeConnectionListener(this);
 			try {
+				odaConnection.close(); // make sure all listeners are triggered via the ResultSetTableModel.close() method.
 				connection.close();
 			} catch (Exception e) {
 				logger.error("connection.close() failed: " + e, e);
@@ -348,18 +357,31 @@ public abstract class QueryBrowserManager
 		if (connection == null)
 			throw new IllegalStateException("connectionProfile.createConnection(...) returned null");
 
-		final CloseConnectionManagedConnectionListener closeConnectionManagedConnectionListener = new CloseConnectionManagedConnectionListener(connection);
-		managedConnection.addConnectionListener(closeConnectionManagedConnectionListener);
+		final CloseConnectionManagedConnectionListener[] ccmcl = new CloseConnectionManagedConnectionListener[1];
 
-		IConnection odaConnection = (IConnection) connection.getRawConnection();
-		return new DelegatingConnection(odaConnection) {
+		IConnection rawConnection = (IConnection) connection.getRawConnection();
+		IConnection delegatingConnection = new DelegatingConnection(rawConnection) {
 			@Override
-			public void close() throws OdaException {
-				managedConnection.removeConnectionListener(closeConnectionManagedConnectionListener);
+			public void close() throws OdaException
+			{
+				ResultSetTableModel model;
+				synchronized(QueryBrowserManager.this) {
+					model = connection2ResultSetTableModel.get(this);
+				}
+				if (model != null)
+					model.close();
+
+				if (ccmcl[0] != null)
+					managedConnection.removeConnectionListener(ccmcl[0]);
+
 				connection.close();
 				super.close();
 			}
 		};
+		CloseConnectionManagedConnectionListener closeConnectionManagedConnectionListener = new CloseConnectionManagedConnectionListener(connection, delegatingConnection);
+		ccmcl[0] = closeConnectionManagedConnectionListener;
+		managedConnection.addConnectionListener(closeConnectionManagedConnectionListener);
+		return delegatingConnection;
 	}
 
 //	public synchronized IConnection getConnection(IConnectionProfile connectionProfile, IProgressMonitor monitor)
@@ -451,24 +473,10 @@ public abstract class QueryBrowserManager
 
 		ProfileManager.getInstance().removeProfileListener(profileListener);
 
-//		for (org.eclipse.datatools.connectivity.IConnection connection : connectionProfile2connection.values()) {
-//			connection.close();
-//		}
-//		connectionProfile2connection.clear();
-//
-//		for (IManagedConnection managedConnection : managedConnectionsWithRegisteredListener) {
-//			managedConnection.removeConnectionListener(managedConnectionListener);
-//		}
-//		managedConnectionsWithRegisteredListener.clear();
-
-		IConnection c = connection;
-		if (c != null) {
-			try {
-				c.close();
-			} catch (OdaException e) {
-				logger.error("onDispose: Closing connection failed: " + e, e);
-			}
+		for (ResultSetTableModel resultSetTableModel : connection2ResultSetTableModel.values()) {
+			resultSetTableModel.close();
 		}
+//		connection2ResultSetTableModel.clear(); // no need to clear - it should be empty by now
 	}
 
 	public void executeQuery()
@@ -530,16 +538,12 @@ public abstract class QueryBrowserManager
 		Stopwatch stopwatch = new Stopwatch();
 
 		// close the current connection - we keep only one single connection + query + result set, right now - might change later.
-		IConnection oldConnection = this.connection;
-		if (oldConnection != null) {
-			this.connection = null;
-			oldConnection.close();
+		for (ResultSetTableModel oldResultSetTableModel : connection2ResultSetTableModel.values()) {
+			oldResultSetTableModel.close();
 		}
-		this.resultSetTableModel = null;
 
 		IConnectionProfile connectionProfile = queryContext.getConnectionProfile();
-		IConnection connection = createConnection(connectionProfile, new SubProgressMonitor(monitor, 30)); // TODO proper management of ProgressMonitor!
-		this.connection = connection;
+		final IConnection connection = createConnection(connectionProfile, new SubProgressMonitor(monitor, 30)); // TODO proper management of ProgressMonitor!
 		queryContext.setConnection(connection);
 
 		ExecuteQueryEvent executeQueryEvent = new ExecuteQueryEvent(queryContext);
@@ -568,8 +572,24 @@ public abstract class QueryBrowserManager
 		try {
 			stopwatch.start("10.query.executeQuery");
 			resultSet = query.executeQuery();
+
+			resultSet = new DelegatingResultSet(resultSet) {
+				@Override
+				public void close() throws OdaException {
+					ResultSetTableModel model;
+					synchronized(QueryBrowserManager.this) {
+						model = connection2ResultSetTableModel.remove(connection);
+					}
+					if (model != null)
+						model.close();
+
+					super.close();
+					connection.close();
+				}
+			};
+
 			resultSetTableModel = new ResultSetTableModel(resultSet);
-			this.resultSetTableModel = resultSetTableModel;
+			connection2ResultSetTableModel.put(connection, resultSetTableModel);
 			stopwatch.stop("10.query.executeQuery");
 		} finally {
 			executeQueryEvent = new ExecuteQueryEvent(queryContext, resultSetTableModel);
@@ -643,8 +663,8 @@ public abstract class QueryBrowserManager
 		queryParameterManager.editorInputChanged();
 	}
 
-	public ResultSetTableModel getResultSetTableModel() {
-		return resultSetTableModel;
+	public synchronized Collection<ResultSetTableModel> getResultSetTableModels() {
+		return new ArrayList<ResultSetTableModel>(connection2ResultSetTableModel.values());
 	}
 
 	public void extractAndRemovePropertiesFromQueryText()
