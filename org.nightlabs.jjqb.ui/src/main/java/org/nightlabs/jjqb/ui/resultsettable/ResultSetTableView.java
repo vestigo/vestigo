@@ -140,4 +140,12 @@ public class ResultSetTableView extends ViewPart {
 			getSite().getPage().removePartListener(partListener);
 		}
 	};
+
+	public ResultSetTableModel getResultSetTableModel()
+	{
+		if (resultSetTableComposite == null)
+			return null;
+		
+		return resultSetTableComposite.getInput();
+	}
 }

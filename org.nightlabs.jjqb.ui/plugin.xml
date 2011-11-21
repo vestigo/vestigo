@@ -151,8 +151,19 @@
                toolbarPath="additions">
          </action>
       </viewContribution>
-   </extension>
 
+      <viewContribution
+            id="org.nightlabs.jjqb.ui.viewContribution_ResultSetTableView"
+            targetID="org.nightlabs.jjqb.ui.resultsettable.ResultSetTableView">
+         <action
+               class="org.nightlabs.jjqb.ui.resultsettable.NextAction"
+               id="org.nightlabs.jjqb.ui.resultsettable.NextAction"
+               label="Next"
+               style="push"
+               toolbarPath="additions">
+         </action>
+      </viewContribution>
+   </extension>
 
    <extension
          point="org.eclipse.ui.popupMenus">
