@@ -76,7 +76,7 @@
 									<type>war</type>
 									<version>${project.version}</version>
 									<overWrite>true</overWrite>
-									<outputDirectory>src/main/resources/org/nightlabs/jjqb/cumulus4j/core/internal/childvm/resource</outputDirectory>
+									<outputDirectory>src/main/resources/org/nightlabs/jjqb/cumulus4j/core/childvm/internal/resource</outputDirectory>
 								</artifactItem>
 							</artifactItems>
 							<stripVersion>true</stripVersion>
