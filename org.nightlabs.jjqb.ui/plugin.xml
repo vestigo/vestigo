@@ -5,7 +5,7 @@
          point="org.eclipse.datatools.connectivity.connectionProfile">
       <category
             id="org.nightlabs.jjqb.core.oda"
-            name="JJQB - Profiles">
+            name="JDO/JPA Query Browser">
       </category>
    </extension>
 
@@ -30,7 +30,7 @@
             id="org.nightlabs.jjqb.core.oda.JDODriver"
             name="New JDO connection"
             class="org.eclipse.datatools.connectivity.oda.design.ui.wizards.NewDataSourceWizard"
-            description="Create a new JDO driver"
+            description="Create a new JDO connection"
             icon="icons/jdo.png"
             profile="org.nightlabs.jjqb.core.oda.JDODriver"/>
    </extension>
@@ -57,7 +57,7 @@
             id="org.nightlabs.jjqb.core.oda.JPADriver"
             name="New JPA connection"
             class="org.eclipse.datatools.connectivity.oda.design.ui.wizards.NewDataSourceWizard"
-            description="Create a new JPA driver"
+            description="Create a new JPA connection"
             icon="icons/jpa.png"
             profile="org.nightlabs.jjqb.core.oda.JPADriver"/>
    </extension>

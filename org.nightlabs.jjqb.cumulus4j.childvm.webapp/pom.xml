@@ -25,12 +25,13 @@
 		<dependency>
 			<groupId>org.nightlabs.jjqb</groupId>
 			<artifactId>org.nightlabs.jjqb.childvm.webapp</artifactId>
-			<classifier>tests</classifier>
+			<classifier>jar</classifier>
+			<scope>provided</scope> <!-- Not 'compile', because the 'war' above is already merged via the 'overlay' mechanism. -->
 		</dependency>
 		<dependency>
 			<groupId>org.nightlabs.jjqb</groupId>
 			<artifactId>org.nightlabs.jjqb.childvm.webapp</artifactId>
-			<classifier>jar</classifier>
+			<classifier>tests</classifier>
 		</dependency>
 		<dependency>
 			<groupId>org.nightlabs.jjqb</groupId>

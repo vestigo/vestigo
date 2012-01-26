@@ -58,14 +58,14 @@ implements ChildVM
 
 	private LinkedList<Client> clientCache = new LinkedList<Client>();
 
-	public ChildVMWebappClient(String host, int port)
+//	public ChildVMWebappClient(String host, int port)
+//	{
+//		this(host, "org.nightlabs.jjqb.childvm.webapp", port);
+//	}
+
+	public ChildVMWebappClient(String host, String webAppName, int port)
 	{
-		this(host, "/org.nightlabs.jjqb.childvm.webapp/", port);
-	}
-	
-	public ChildVMWebappClient(String host, String context, int port)
-	{
-		this.baseURL = "http://" + host + ":" + port +  context + "ChildVMApp/";
+		this.baseURL = "http://" + host + ":" + port + '/' + webAppName + '/' + "ChildVMApp/";
 	}
 
 	protected WebResource.Builder getChildVMAppResourceBuilder(Client client, Class<?> dtoClass, RelativePathPart ... relativePathParts)
@@ -123,6 +123,7 @@ implements ChildVM
 		clientCache.add(client);
 	}
 
+	@Override
 	public boolean isOnline()
 	{
 		Client client = acquireClient();
@@ -377,11 +378,11 @@ implements ChildVM
 	}
 
 	@Override
-	public List<ResultCellDTO> getChildren(ResultSetID resultSetID, ResultCellObjectRefDTO resultCellObjectRefDTO) throws ChildVMException 
+	public List<ResultCellDTO> getChildren(ResultSetID resultSetID, ResultCellObjectRefDTO resultCellObjectRefDTO) throws ChildVMException
 	{
 		if (resultSetID == null)
 			throw new IllegalArgumentException("resultSetID == null");
-		
+
 		if (resultCellObjectRefDTO == null)
 			throw new IllegalArgumentException("resultCellObjectRefDTO == null");
 

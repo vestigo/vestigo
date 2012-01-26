@@ -29,6 +29,7 @@
 		<!-- BEGIN Cumulus4j -->
 		<module>../org.nightlabs.jjqb.cumulus4j.childvm.shared</module>
 		<module>../org.nightlabs.jjqb.cumulus4j.childvm.webapp</module>
+		<module>../org.nightlabs.jjqb.cumulus4j.core</module>
 		<module>../org.nightlabs.jjqb.cumulus4j.ui</module>
 		<!-- END Cumulus4j -->
 	</modules>

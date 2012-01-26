@@ -10,20 +10,20 @@ import org.nightlabs.jjqb.ui.oda.AbstractPropertyHopWizardNewWizard;
  * @author Alexander Bieber <!-- alex [AT] nightlabs [DOT] de -->
  *
  */
-public class NewCumulus4JConnectionProfileWizard extends
+public class NewJDOCumulus4jConnectionProfileWizard extends
 		AbstractPropertyHopWizardNewWizard {
 
 	/**
 	 * 
 	 */
-	public NewCumulus4JConnectionProfileWizard() {
+	public NewJDOCumulus4jConnectionProfileWizard() {
 	}
 
 	/**
 	 * @param odaDataSourceId
 	 * @throws OdaException
 	 */
-	public NewCumulus4JConnectionProfileWizard(String odaDataSourceId) throws OdaException {
+	public NewJDOCumulus4jConnectionProfileWizard(String odaDataSourceId) throws OdaException {
 		super(odaDataSourceId);
 	}
 
@@ -32,7 +32,7 @@ public class NewCumulus4JConnectionProfileWizard extends
 	 */
 	@Override
 	protected void addHopPages() {
-		addPropertyHopPage(new Cumulus4JPropertyPage1());
+		addPropertyHopPage(new JDOCumulus4jPropertyPage1());
 	}
 
 }

@@ -20,21 +20,21 @@ import org.nightlabs.jjqb.ui.oda.IPropertyHopPage.PropertyHopPage;
  * @author Alexander Bieber <!-- alex [AT] nightlabs [DOT] de -->
  *
  */
-public class Cumulus4JPropertyPage1 extends AbstractPropertyHopPage implements PropertyHopPage {
+public class JDOCumulus4jPropertyPage2 extends AbstractPropertyHopPage implements PropertyHopPage {
 
 	private Composite control;
 	private Text text; 
 	
 	
 	public void setInitialProperties(Properties properties) {
-		String prop = properties.getProperty("prop1");
+		String prop = properties.getProperty("prop2");
 		text.setText(prop != null ? prop : "");
 	}
 
 	@Override
 	public Properties collectCustomProperties(Properties dataSourceProps) {
 		Properties props = new Properties();
-		props.put("prop1", text.getText());
+		props.put("prop2", text.getText());
 		return props;
 	}
 
@@ -46,7 +46,7 @@ public class Cumulus4JPropertyPage1 extends AbstractPropertyHopPage implements P
 		GridLayoutFactory.swtDefaults().applyTo(control);
 		GridDataFactory gdf = GridDataFactory.swtDefaults().grab(true, false).align(SWT.FILL, SWT.CENTER);
 		Label l = new Label(control, SWT.WRAP);
-		l.setText("Property 1");
+		l.setText("Property 2");
 		gdf.applyTo(l);
 		text = new Text(control, SWT.BORDER);
 		gdf.applyTo(text);

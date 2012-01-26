@@ -130,6 +130,11 @@
 			</dependency>
 			<dependency>
 				<groupId>org.nightlabs.jjqb</groupId>
+				<artifactId>org.nightlabs.jjqb.cumulus4j.core</artifactId>
+				<version>${jjqb.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.nightlabs.jjqb</groupId>
 				<artifactId>org.nightlabs.jjqb.cumulus4j.ui</artifactId>
 				<version>${jjqb.version}</version>
 			</dependency>
