@@ -3,8 +3,8 @@ package org.nightlabs.jjqb.core.oda;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.nightlabs.jjqb.core.internal.oda.JDOConnectionProfileImpl;
-import org.nightlabs.jjqb.core.internal.oda.JPAConnectionProfileImpl;
+import org.nightlabs.jjqb.core.oda.internal.JDOConnectionProfileImpl;
+import org.nightlabs.jjqb.core.oda.internal.JPAConnectionProfileImpl;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
