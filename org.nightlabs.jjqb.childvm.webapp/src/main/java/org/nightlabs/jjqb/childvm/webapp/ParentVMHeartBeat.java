@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
  * Heart beat controller to automatically shut down the child-VM, if the parent-VM died.
  * </p><p>
  * Eclipse crashes sometimes (and a user might explicitely kill it, too). This leaves the child VMs (our jetty servers) running.
- * This not only consumes resources unnecessarily, but Jetty and other
+ * This not only consumes resources unnecessarily, but Derby and other
  * file-based databases keep a lock preventing any other process from accessing the database. Hence, after a certain timeout
  * (1 minute) of missing heart beat, we shut down the child VM.
  * </p>
