@@ -16,18 +16,18 @@ import org.nightlabs.jjqb.childvm.webapp.client.ChildVMWebappClient;
 import org.nightlabs.jjqb.childvm.webapp.client.testresources.sql.AbstractSetup;
 
 public class AbstractJJQBIT {
-	
+
 	protected ChildVM client;
 	protected Map<AbstractSetup, String> setups = new HashMap<AbstractSetup, String>();
-	
+
 	@Before
 	public void acquireClient()
 	{
-		client = new ChildVMWebappClient("localhost", "/", 8080);
+		client = new ChildVMWebappClient("localhost", null, 8080);
 		Assert.assertTrue(client.isOnline());
 	}
-	
-	
+
+
 	@After
 	public void closeAllConnectionsAndDeleteProfiles() {
 		Collection<ConnectionDTO> connectionDTOs = client.getConnectionDTOs(null);
@@ -37,7 +37,7 @@ public class AbstractJJQBIT {
 		Collection<ConnectionProfileDTO> connectionProfileDTOs = client.getConnectionProfileDTOs();
 		for (ConnectionProfileDTO connectionProfileDTO : connectionProfileDTOs) {
 		}
-		
+
 		for (Map.Entry<AbstractSetup, String> setupEntry : setups.entrySet()) {
 			try {
 				setupEntry.getKey().teardown(setupEntry.getValue());
@@ -47,7 +47,7 @@ public class AbstractJJQBIT {
 		}
 		setups.clear();
 	}
-	
+
 	protected void setup(AbstractSetup setup, String name) {
 		try {
 			setup.setup(name);
@@ -57,5 +57,5 @@ public class AbstractJJQBIT {
 		setups.put(setup, name);
 	}
 
-	
+
 }

@@ -65,7 +65,12 @@ implements ChildVM
 
 	public ChildVMWebappClient(String host, String webAppName, int port)
 	{
-		this.baseURL = "http://" + host + ":" + port + '/' + webAppName + '/' + "ChildVMApp/";
+		this.baseURL = "http://" + host + ":" + port + '/';
+
+		if (webAppName != null && !webAppName.isEmpty())
+			this.baseURL += webAppName + '/';
+
+		this.baseURL += "ChildVMApp/";
 	}
 
 	protected WebResource.Builder getChildVMAppResourceBuilder(Client client, Class<?> dtoClass, RelativePathPart ... relativePathParts)
