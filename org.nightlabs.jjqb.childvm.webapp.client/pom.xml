@@ -1,0 +1,169 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>org.nightlabs.jjqb.childvm.webapp.client</artifactId>
+	<packaging>bundle</packaging>
+
+	<parent>
+		<groupId>org.nightlabs.jjqb</groupId>
+		<artifactId>org.nightlabs.jjqb.parent</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+		<relativePath>../org.nightlabs.jjqb.parent</relativePath>
+	</parent>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.nightlabs.jjqb</groupId>
+			<artifactId>org.nightlabs.jjqb.childvm.shared</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.nightlabs.jjqb</groupId>
+			<artifactId>org.nightlabs.jjqb.childvm.webapp</artifactId>
+			<type>war</type>
+		</dependency>
+
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-client</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-client</artifactId>
+		</dependency>
+
+
+		<dependency>
+			<groupId>javax.jdo</groupId>
+			<artifactId>jdo-api</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.eclipse.persistence</groupId>
+			<artifactId>javax.persistence</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.nightlabs.jjqb</groupId>
+			<artifactId>org.nightlabs.jjqb.childvm.webapp.client.testresources</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.hsqldb</groupId>
+			<artifactId>hsqldb</artifactId>
+			<version>2.2.6</version>
+			<scope>test</scope>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.mortbay.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>8.1.0.RC2</version>
+				<configuration>
+					<war>${project.build.directory}/../../org.nightlabs.jjqb.childvm.webapp/target/org.nightlabs.jjqb.childvm.webapp-1.0.0-SNAPSHOT.war</war>
+					<contextPath>org.nightlabs.jjqb.childvm.webapp</contextPath>
+					<scanIntervalSeconds>10</scanIntervalSeconds>
+					<stopKey>foo</stopKey>
+					<stopPort>9999</stopPort>
+					<deamon>true</deamon>
+					<systemProperties>
+						<systemProperty>
+							<name>log4j.configuration</name>
+							<value>file:${project.basedir}/src/test/resources/log4j.properties</value>
+						</systemProperty>
+						<systemProperty>
+							<name>org.nightlabs.jjqb.childvm.webapp.ParentVMHeartBeat.checkHeartbeat</name>
+							<value>false</value>
+						</systemProperty>
+					</systemProperties>
+				</configuration>
+				<executions>
+					<execution>
+						<id>start-jetty</id>
+						<phase>pre-integration-test</phase>
+						<goals>
+							<goal>deploy-war</goal>
+						</goals>
+						<configuration>
+							<scanIntervalSeconds>0</scanIntervalSeconds>
+							<daemon>true</daemon>
+						</configuration>
+					</execution>
+					<!--
+					<execution>
+						<id>stop-jetty</id>
+						<phase>post-integration-test</phase>
+						<goals>
+							<goal>stop</goal>
+						</goals>
+					</execution>
+					-->
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<configuration>
+					<systemPropertyVariables>
+						<jjqb-test-connection-libs>${project.build.directory}/dependency/jjqb-test-connection-libs</jjqb-test-connection-libs>
+					</systemPropertyVariables>
+				</configuration>
+				<executions>
+					<execution>
+						<id>integration-test</id>
+						<goals>
+							<goal>integration-test</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>verify</id>
+						<goals>
+							<goal>verify</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>2.4</version>
+				<executions>
+					<execution>
+						<id>copy-testresources</id>
+						<phase>process-test-resources</phase>
+						<goals>
+							<goal>unpack-dependencies</goal>
+						</goals>
+						<configuration>
+							<includeArtifactIds>org.nightlabs.jjqb.childvm.webapp.client.testresources</includeArtifactIds>
+							<outputDirectory>${project.build.directory}/dependency</outputDirectory>
+							<includes>jjqb-test-connection-libs/**/*.*</includes>
+							<overWriteReleases>false</overWriteReleases>
+							<overWriteSnapshots>true</overWriteSnapshots>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+		</plugins>
+	</build>
+
+</project>
