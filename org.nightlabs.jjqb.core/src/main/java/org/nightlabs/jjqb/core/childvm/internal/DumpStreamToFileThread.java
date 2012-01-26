@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.core.internal.childvm;
+package org.nightlabs.jjqb.core.childvm.internal;
 
 import java.io.File;
 import java.io.FileOutputStream;

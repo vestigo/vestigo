@@ -1,7 +1,10 @@
-package org.nightlabs.jjqb.core.internal.childvm;
+package org.nightlabs.jjqb.core.childvm.internal;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.URL;
 import java.security.SecureRandom;
@@ -11,8 +14,15 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.TimeoutException;
 
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IConfigurationElement;
+import org.eclipse.core.runtime.IExtension;
+import org.eclipse.core.runtime.IExtensionPoint;
+import org.eclipse.core.runtime.IExtensionRegistry;
+import org.eclipse.core.runtime.Platform;
 import org.nightlabs.jjqb.childvm.shared.api.ChildVM;
 import org.nightlabs.jjqb.childvm.webapp.client.ChildVMWebappClient;
+import org.nightlabs.jjqb.core.childvm.WebApp;
 import org.nightlabs.util.IOUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,7 +35,7 @@ public class ChildVMServer
 	private static final long TIMEOUT_SERVER_START_MS = 90L * 1000L; // TODO make timeout configurable
 
 	private static final org.slf4j.Logger logger = LoggerFactory.getLogger(ChildVMServer.class);
-	
+
 	/**
 	 * Launch the child JVM in debug mode, so that connecting from the IDE (to port 8000) &amp; remote-debugging is possible.
 	 */
@@ -34,12 +44,13 @@ public class ChildVMServer
 
 	private static SecureRandom random = new SecureRandom();
 
+	private String webAppName;
 	private File serverDirectory;
 	private Process serverProcess;
 	private DumpStreamToFileThread dumpInputStreamToFileThread;
 	private DumpStreamToFileThread dumpErrorStreamToFileThread;
 	private int port;
-	
+
 	private ChildVM childVMClient;
 
 	private Timer heartBeatTimer = new Timer(true);
@@ -59,18 +70,22 @@ public class ChildVMServer
 		};
 	}
 
-	public ChildVMServer()
+	public ChildVMServer(String webAppName)
 	{
+		if (webAppName == null)
+			throw new IllegalArgumentException("webAppName == null");
+
+		this.webAppName = webAppName;
 		Runtime.getRuntime().addShutdownHook(new StopServerAndDeleteServerDirectoryRecursivelyShutdownHook());
 	}
 
 	public ChildVM getChildVM() {
 		if (childVMClient == null) {
-			childVMClient = new ChildVMWebappClient("localhost", port);
+			childVMClient = new ChildVMWebappClient("localhost", webAppName, port);
 		}
 		return childVMClient;
 	}
-	
+
 	protected synchronized File getServerDirectory() throws IOException
 	{
 		if (this.serverDirectory == null) {
@@ -138,12 +153,64 @@ public class ChildVMServer
 	private void deployRESTApplication(File webServerDirectory) throws IOException
 	{
 		logger.debug("deployRESTApplication: serverDirectory='{}'", webServerDirectory.getAbsolutePath());
-
-		String fileName = "org.nightlabs.jjqb.childvm.webapp.war";
-		String resourceName = "resource/" + fileName;
 		File deploymentDir = new File(webServerDirectory, "webapps");
-		File destinationFile = new File(deploymentDir, fileName);
-		IOUtil.copyResource(ChildVMServer.class, resourceName, destinationFile);
+
+		final IExtensionRegistry registry = Platform.getExtensionRegistry();
+		if (registry == null)
+			throw new IllegalStateException("Platform.getExtensionRegistry() returned null!");
+
+		final String extensionPointId = "org.nightlabs.jjqb.core.childVMWebApp";
+		final IExtensionPoint extensionPoint = registry.getExtensionPoint(extensionPointId);
+		if (extensionPoint == null)
+			throw new IllegalStateException("Unable to resolve extension-point: " + extensionPointId); //$NON-NLS-1$
+
+		IExtension deployedExtension = null;
+
+		final IExtension[] extensions = extensionPoint.getExtensions();
+		for (final IExtension extension : extensions) {
+			final IConfigurationElement[] elements = extension.getConfigurationElements();
+			for (final IConfigurationElement element : elements) {
+				String extWebAppName = element.getAttribute("webAppName");
+				if (!this.webAppName.equals(extWebAppName))
+					continue;
+
+				// Check that there is only one single web app with our 'webAppName'.
+				if (deployedExtension == null)
+					deployedExtension = extension;
+				else
+					throw new IllegalStateException("There are multiple plug-ins deploying the web-app \"" + extWebAppName + "\"!!! Affected plugins: " + extension.getContributor().getName() + " and " + deployedExtension.getContributor().getName());
+
+				Object executableExtension;
+				try {
+					executableExtension = element.createExecutableExtension("class");
+				} catch (CoreException e) {
+					throw new IOException("Could not create executable extension for class \"" + element.getAttribute("class") + "\"!!! Extension registered in bundle \"" + extension.getContributor().getName() + "\". Cause: " + e, e);
+				}
+
+				if (!(executableExtension instanceof WebApp))
+					throw new ClassCastException("Class \"" + element.getAttribute("class") + "\" does not implement interface \"" + WebApp.class.getName() + "\"!!! Extension registered in bundle \"" + extension.getContributor().getName() + "\".");
+
+				WebApp webApp = (WebApp) executableExtension;
+
+				webApp.setWebAppName(extWebAppName);
+
+				String fileName = extWebAppName + ".war";
+				File destinationFile = new File(deploymentDir, fileName);
+				InputStream in = webApp.createInputStream();
+				OutputStream out = new FileOutputStream(destinationFile);
+				IOUtil.transferStreamData(in, out);
+				in.close();
+				out.close();
+			}
+		}
+
+		if (deployedExtension == null)
+			throw new IllegalStateException("There is no plug-in contributing the web-app named \"" + this.webAppName + "\" (extension-point \"" + extensionPointId + "\")!!!");
+
+//		String fileName = "org.nightlabs.jjqb.childvm.webapp.war";
+//		String resourceName = "resource/" + fileName;
+//		File destinationFile = new File(deploymentDir, fileName);
+//		IOUtil.copyResource(ChildVMServer.class, resourceName, destinationFile);
 
 		// Delete the unnecessary 'test.war' which comes with the jetty distro.
 		new File(deploymentDir, "test.war").delete();

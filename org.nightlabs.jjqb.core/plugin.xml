@@ -2,12 +2,13 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension-point id="connectionExtension" name="ConnectionExtension" schema="schema/connectionExtension.exsd"/>
+   <extension-point id="childVMWebApp" name="ChildVM WebApp" schema="schema/childVMWebApp.exsd"/>
     <extension
          point="org.eclipse.datatools.connectivity.oda.dataSource">
 
       <dataSource
             defaultDisplayName="JDO Driver"
-            driverClass="org.nightlabs.jjqb.core.internal.oda.JDODriverImpl"
+            driverClass="org.nightlabs.jjqb.core.oda.internal.JDODriverImpl"
             id="org.nightlabs.jjqb.core.oda.JDODriver"
             odaVersion="3.0"
             setThreadContextClassLoader="true">
@@ -59,7 +60,7 @@
 
       <dataSource
             defaultDisplayName="JPA Driver"
-            driverClass="org.nightlabs.jjqb.core.internal.oda.JPADriverImpl"
+            driverClass="org.nightlabs.jjqb.core.oda.internal.JPADriverImpl"
             id="org.nightlabs.jjqb.core.oda.JPADriver"
             odaVersion="3.0"
             setThreadContextClassLoader="true">
@@ -103,6 +104,13 @@
                odaScalarDataType="Decimal"/>
       </dataSet>
 
+   </extension>
+   <extension
+         point="org.nightlabs.jjqb.core.childVMWebApp">
+      <webApp
+            class="org.nightlabs.jjqb.core.childvm.internal.DefaultWebApp"
+            webAppName="org.nightlabs.jjqb.childvm.webapp">
+      </webApp>
    </extension>
    
 </plugin>

@@ -74,7 +74,6 @@
 		<dependency>
 			<groupId>org.nightlabs.jjqb</groupId>
 			<artifactId>org.nightlabs.jjqb.childvm.webapp.client</artifactId>
-			<version>1.0.0-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 
@@ -131,7 +130,7 @@
 									<type>zip</type>
 									<version>8.0.4.v20111024</version>
 									<overWrite>false</overWrite>
-									<outputDirectory>src/main/resources/org/nightlabs/jjqb/core/internal/childvm/resource</outputDirectory>
+									<outputDirectory>src/main/resources/org/nightlabs/jjqb/core/childvm/internal/resource</outputDirectory>
 <!--									<destFileName>jetty.zip</destFileName> -->
 								</artifactItem>
 								<artifactItem>
@@ -140,7 +139,7 @@
 									<type>war</type>
 									<version>${project.version}</version>
 									<overWrite>true</overWrite>
-									<outputDirectory>src/main/resources/org/nightlabs/jjqb/core/internal/childvm/resource</outputDirectory>
+									<outputDirectory>src/main/resources/org/nightlabs/jjqb/core/childvm/internal/resource</outputDirectory>
 								</artifactItem>
 							</artifactItems>
 							<stripVersion>true</stripVersion>
@@ -159,6 +158,8 @@
 					<instructions>
 						<Bundle-Activator>org.nightlabs.jjqb.core.internal.osgi.Activator</Bundle-Activator>
 						<Bundle-ActivationPolicy>lazy</Bundle-ActivationPolicy>
+						<Require-Bundle>org.eclipse.core.runtime</Require-Bundle>
+						<Import-Package>!org.eclipse.core.runtime,*</Import-Package>
 					</instructions>
 				</configuration>
 			</plugin>
