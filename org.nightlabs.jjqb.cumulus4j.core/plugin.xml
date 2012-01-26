@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin
+>
+   <extension
+         point="org.nightlabs.jjqb.core.childVMWebApp">
+      <webApp
+            class="org.nightlabs.jjqb.cumulus4j.core.childvm.internal.Cumulus4jWebApp"
+            webAppName="org.nightlabs.jjqb.cumulus4j.childvm.webapp">
+      </webApp>
+   </extension>
+</plugin>

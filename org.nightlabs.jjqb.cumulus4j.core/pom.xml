@@ -1,0 +1,105 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>org.nightlabs.jjqb.cumulus4j.core</artifactId>
+	<packaging>bundle</packaging>
+
+	<parent>
+		<groupId>org.nightlabs.jjqb</groupId>
+		<artifactId>org.nightlabs.jjqb.parent</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+		<relativePath>../org.nightlabs.jjqb.parent</relativePath>
+	</parent>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.nightlabs.jjqb</groupId>
+			<artifactId>org.nightlabs.jjqb.core</artifactId>
+		</dependency>
+
+		<dependency>
+			<!-- force this to already be compiled before => make sure we copy the up-to-date-dependency. -->
+			<groupId>org.nightlabs.jjqb</groupId>
+			<artifactId>org.nightlabs.jjqb.cumulus4j.childvm.webapp</artifactId>
+			<type>war</type>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<!-- Suppressing M2E error marker at maven-dependency-plugin (see below). -->
+									<pluginExecutionFilter>
+										<groupId>org.apache.maven.plugins</groupId>
+										<artifactId>maven-dependency-plugin</artifactId>
+										<versionRange>[2.3,)</versionRange>
+										<goals>
+											<goal>copy</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+		<plugins>
+			<plugin>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-dependencies-to-resources</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>copy</goal>
+						</goals>
+						<configuration>
+							<artifactItems>
+								<artifactItem>
+									<groupId>org.nightlabs.jjqb</groupId>
+									<artifactId>org.nightlabs.jjqb.cumulus4j.childvm.webapp</artifactId>
+									<type>war</type>
+									<version>${project.version}</version>
+									<overWrite>true</overWrite>
+									<outputDirectory>src/main/resources/org/nightlabs/jjqb/cumulus4j/core/internal/childvm/resource</outputDirectory>
+								</artifactItem>
+							</artifactItems>
+							<stripVersion>true</stripVersion>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<configuration>
+				<!--
+					<manifestLocation>META-INF</manifestLocation>
+				-->
+				<!--
+					<instructions>
+						<Bundle-Activator>org.nightlabs.jjqb.core.internal.osgi.Activator</Bundle-Activator>
+						<Bundle-ActivationPolicy>lazy</Bundle-ActivationPolicy>
+					</instructions>
+				-->
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
