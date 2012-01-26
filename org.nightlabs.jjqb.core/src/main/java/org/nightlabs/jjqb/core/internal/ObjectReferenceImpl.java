@@ -5,9 +5,9 @@ import java.util.List;
 
 import org.nightlabs.jjqb.childvm.shared.ResultCellDTO;
 import org.nightlabs.jjqb.childvm.shared.ResultCellObjectRefDTO;
+import org.nightlabs.jjqb.childvm.shared.api.ChildVM;
 import org.nightlabs.jjqb.core.ObjectReference;
 import org.nightlabs.jjqb.core.ObjectReferenceChild;
-import org.nightlabs.jjqb.core.childvm.ChildVM;
 import org.nightlabs.jjqb.core.oda.ResultSet;
 import org.nightlabs.util.Util;
 
@@ -107,7 +107,7 @@ public class ObjectReferenceImpl implements ObjectReference
 	{
 		List<ObjectReferenceChild> children = this.children;
 		if (children == null) {
-			List<ResultCellDTO> childDTOs = getChildVM().getChildren(this);
+			List<ResultCellDTO> childDTOs = getChildVM().getChildren(getResultSet().getResultSetID(), resultCellObjectRefDTO);
 			children = new ArrayList<ObjectReferenceChild>(childDTOs.size());
 			for (ResultCellDTO childDTO : childDTOs) {
 				Object childRawObject = resultSet.unmaskResultCellDTO(childDTO);

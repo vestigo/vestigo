@@ -29,6 +29,7 @@ public abstract class Connection
 	protected static final SortedSet<QueryParameterDTO> EMPTY_QUERY_PARAMETER_SET = Collections.unmodifiableSortedSet(new TreeSet<QueryParameterDTO>());
 
 	private UUID connectionID;
+	private ConnectionProfileManager connectionProfileManager;
 	private ConnectionProfile connectionProfile;
 
 	private Map<Integer, ResultSet> resultSetID2resultSetMap = new HashMap<Integer, ResultSet>();
@@ -57,13 +58,19 @@ public abstract class Connection
 		this.connectionProfile = connectionProfile;
 	}
 
+	public void setConnectionProfileManager(ConnectionProfileManager connectionProfileManager) {
+		this.connectionProfileManager = connectionProfileManager;
+	}
+	
 	public final synchronized void fromConnectionDTO(ConnectionDTO connectionDTO)
 	{
 		if (connectionDTO == null)
 			throw new IllegalArgumentException("connectionDTO == null");
-
+		if (connectionProfileManager == null)
+			throw new IllegalStateException("The connectionProfileManager has not been set for this Connection");
+		
 		setConnectionID(connectionDTO.getConnectionID());
-		setConnectionProfile(ConnectionProfileManager.sharedInstance().getConnectionProfile(connectionDTO.getProfileID(), true));
+		setConnectionProfile(connectionProfileManager.getConnectionProfile(connectionDTO.getProfileID(), true));
 		_fromConnectionDTO(connectionDTO);
 	}
 

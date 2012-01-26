@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
+   <extension
+         point="org.eclipse.datatools.connectivity.connectionProfile">
+      <category
+            id="org.nightlabs.jjqb.core.oda"
+            name="JJQB - Profiles">
+      </category>
+   </extension>
 
 	<extension
          point="org.eclipse.datatools.connectivity.connectionProfile">

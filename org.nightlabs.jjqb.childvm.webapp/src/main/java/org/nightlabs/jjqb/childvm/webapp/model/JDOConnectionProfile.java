@@ -11,12 +11,17 @@ import javax.jdo.PersistenceManagerFactory;
 import org.nightlabs.jjqb.childvm.shared.ConnectionProfileDTO;
 import org.nightlabs.jjqb.childvm.shared.JDOConnectionProfileDTO;
 import org.nightlabs.jjqb.childvm.shared.PropertiesUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
  */
 public class JDOConnectionProfile extends ConnectionProfile
 {
+	
+	private Logger logger = LoggerFactory.getLogger(JDOConnectionProfile.class);
+	
 	private PersistenceManagerFactory persistenceManagerFactory;
 
 	@Override
@@ -27,10 +32,20 @@ public class JDOConnectionProfile extends ConnectionProfile
 	@Override
 	protected void onFirstConnectionOpen(Connection connection) {
 		super.onFirstConnectionOpen(connection);
+		
+		if (logger.isDebugEnabled()) {
+			logger.debug(
+				"[{}].onFirstConnectionOpen: profileID={} connectionID={}.",
+				new Object[] { Long.toHexString(System.identityHashCode(this)), getProfileID(), connection.getConnectionID() });
+		}
+		
 
 		URLClassLoader persistenceEngineClassLoader;
 		try {
 			persistenceEngineClassLoader = getClassLoaderManager().getPersistenceEngineClassLoader();
+			if (logger.isDebugEnabled()) {
+				logger.debug("[{}].onFirstConnectionOpen: created persistenceEngineClassLoader.", Long.toHexString(System.identityHashCode(this)));
+			}
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
@@ -43,10 +58,18 @@ public class JDOConnectionProfile extends ConnectionProfile
 			Thread.currentThread().setContextClassLoader(persistenceEngineClassLoader);
 
 			String persistenceUnitName = getPersistenceUnitName();
-			if (persistenceUnitName == null || persistenceUnitName.isEmpty())
+			if (logger.isDebugEnabled()) {
+				logger.debug("[{}].onFirstConnectionOpen: creating persistenceManagerFactory with persistenceUnitName {}.", Long.toHexString(System.identityHashCode(this)), persistenceUnitName);
+			}
+			if (persistenceUnitName == null || persistenceUnitName.isEmpty()) {
 				persistenceManagerFactory = JDOHelper.getPersistenceManagerFactory(filteredPersistenceProperties, persistenceEngineClassLoader);
-			else
+			}
+			else {
 				persistenceManagerFactory = JDOHelper.getPersistenceManagerFactory(filteredPersistenceProperties, persistenceUnitName, persistenceEngineClassLoader);
+			}
+			if (logger.isDebugEnabled()) {
+				logger.debug("[{}].onFirstConnectionOpen: created persistenceManagerFactory.", Long.toHexString(System.identityHashCode(this)));
+			}
 		} finally {
 			Thread.currentThread().setContextClassLoader(backupContextClassLoader);
 		}
@@ -56,7 +79,15 @@ public class JDOConnectionProfile extends ConnectionProfile
 	protected void onLastConnectionClose(Connection connection) {
 		if (persistenceManagerFactory != null) {
 			persistenceManagerFactory.close();
+			if (logger.isDebugEnabled()) {
+				logger.debug("[{}].onLastConnectionClose: closed persistenceManagerFactory.", Long.toHexString(System.identityHashCode(this)));
+			}
 			persistenceManagerFactory = null;
+		} 
+		else {
+			if (logger.isDebugEnabled()) {
+				logger.debug("[{}].onLastConnectionClose: persistenceManagerFactory was null, nothing to close.", Long.toHexString(System.identityHashCode(this)));
+			}
 		}
 		super.onLastConnectionClose(connection);
 	}

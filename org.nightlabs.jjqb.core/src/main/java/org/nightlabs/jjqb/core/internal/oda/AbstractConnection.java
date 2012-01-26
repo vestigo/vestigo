@@ -26,7 +26,7 @@ import org.eclipse.datatools.connectivity.oda.IDataSetMetaData;
 import org.eclipse.datatools.connectivity.oda.OdaException;
 import org.nightlabs.jjqb.childvm.shared.ConnectionDTO;
 import org.nightlabs.jjqb.childvm.shared.PropertiesUtil;
-import org.nightlabs.jjqb.core.childvm.ChildVM;
+import org.nightlabs.jjqb.childvm.shared.api.ChildVM;
 import org.nightlabs.jjqb.core.oda.Connection;
 import org.nightlabs.jjqb.core.oda.ConnectionExtension;
 import org.nightlabs.jjqb.core.oda.ConnectionExtensionRegistry;

@@ -61,8 +61,40 @@
 			</dependency>
 			<dependency>
 				<groupId>org.nightlabs.jjqb</groupId>
+				<artifactId>org.nightlabs.jjqb.childvm.client</artifactId>
+				<version>${jjqb.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.nightlabs.jjqb</groupId>
 				<artifactId>org.nightlabs.jjqb.childvm.webapp</artifactId>
 				<type>war</type>
+				<version>${jjqb.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.nightlabs.jjqb</groupId>
+				<artifactId>org.nightlabs.jjqb.childvm.webapp</artifactId>
+				<classifier>tests</classifier>
+				<version>${jjqb.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.nightlabs.jjqb</groupId>
+				<artifactId>org.nightlabs.jjqb.childvm.webapp</artifactId>
+				<version>${jjqb.version}</version>
+				<classifier>jar</classifier>
+			</dependency>
+			<dependency>
+				<groupId>org.nightlabs.jjqb</groupId>
+				<artifactId>org.nightlabs.jjqb.childvm.webapp.client</artifactId>
+				<version>${jjqb.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.nightlabs.jjqb</groupId>
+				<artifactId>org.nightlabs.jjqb.childvm.webapp.client.testmodel</artifactId>
+				<version>${jjqb.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.nightlabs.jjqb</groupId>
+				<artifactId>org.nightlabs.jjqb.childvm.webapp.client.testresources</artifactId>
 				<version>${jjqb.version}</version>
 			</dependency>
 			<dependency>
@@ -83,6 +115,25 @@
 				<version>${jjqb.version}</version>
 			</dependency>
 			<!-- END org.nightlabs.jjqb -->
+			
+			<!-- BEGIN org.nightlabs.jjqb.cumulus4j -->
+			<dependency>
+				<groupId>org.nightlabs.jjqb</groupId>
+				<artifactId>org.nightlabs.jjqb.cumulus4j.childvm.shared</artifactId>
+				<version>${jjqb.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.nightlabs.jjqb</groupId>
+				<artifactId>org.nightlabs.jjqb.cumulus4j.childvm.webapp</artifactId>
+				<type>war</type>
+				<version>${jjqb.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.nightlabs.jjqb</groupId>
+				<artifactId>org.nightlabs.jjqb.cumulus4j.ui</artifactId>
+				<version>${jjqb.version}</version>
+			</dependency>
+			<!-- END org.nightlabs.jjqb.cumulus4j -->
 
 			<!-- BEGIN org.eclipse -->
 			<dependency> <!-- Belongs to Eclipse, though it uses a different groupId. -->

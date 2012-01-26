@@ -26,7 +26,7 @@ public class ConnectionProfileManager
 	private Map<String, ConnectionProfile> profileID2connectionProfile = new HashMap<String, ConnectionProfile>();
 	private Collection<ConnectionProfile> connectionProfilesReadOnly = null;
 
-	private ConnectionProfileManager() { }
+	public ConnectionProfileManager() { }
 
 	public synchronized ConnectionProfile putConnectionProfileDTO(ConnectionProfileDTO connectionProfileDTO)
 	{

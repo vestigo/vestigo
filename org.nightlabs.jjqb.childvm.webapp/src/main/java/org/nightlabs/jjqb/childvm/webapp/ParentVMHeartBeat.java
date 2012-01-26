@@ -35,8 +35,12 @@ public class ParentVMHeartBeat
 	}
 
 	private ParentVMHeartBeat() {
-		checkLastHeartBeatTimer.schedule(createCheckLastHeartBeatTimerTask(), checkLastHeartBeatTimerPeriod, checkLastHeartBeatTimerPeriod);
-		logger.info("Starting surveillance of parent VM.");
+		String property = System.getProperty(ParentVMHeartBeat.class.getName() + ".checkHeartbeat");
+		boolean check = property == null || property.isEmpty() || Boolean.parseBoolean(property);
+		if (check) {
+			checkLastHeartBeatTimer.schedule(createCheckLastHeartBeatTimerTask(), checkLastHeartBeatTimerPeriod, checkLastHeartBeatTimerPeriod);
+			logger.info("Starting surveillance of parent VM.");
+		}
 	}
 
 	private Timer checkLastHeartBeatTimer = new Timer(true);

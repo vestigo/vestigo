@@ -6,7 +6,7 @@ import org.eclipse.swt.widgets.Composite;
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
  */
-public class JDODriverWizardPage extends AbstractDriverWizardPage
+public class JDODriverWizardPage extends AbstractDriverPropertiesCompositeWizardPage
 {
 	public JDODriverWizardPage(String pageName) {
 		super(pageName);

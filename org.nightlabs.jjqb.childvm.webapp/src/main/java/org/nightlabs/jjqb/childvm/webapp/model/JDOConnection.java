@@ -30,6 +30,17 @@ extends Connection
 	private static final Logger logger = LoggerFactory.getLogger(JDOConnection.class);
 	private PersistenceManager persistenceManager;
 
+	public static class Factory implements ConnectionFactory {
+		@Override
+		public boolean canHandle(ConnectionDTO connectionDTO) {
+			return connectionDTO != null && JDOConnectionDTO.class == connectionDTO.getClass();
+		}
+		@Override
+		public Connection createConnection() {
+			return new JDOConnection();
+		}
+	}
+	
 	@Override
 	protected ConnectionDTO newConnectionDTO() {
 		return new JDOConnectionDTO();

@@ -4,7 +4,7 @@ import java.lang.reflect.Field;
 import java.util.Collection;
 import java.util.Map;
 
-import org.nightlabs.jjqb.core.childvm.ChildVM;
+import org.nightlabs.jjqb.childvm.shared.api.ChildVM;
 
 /**
  * <p>

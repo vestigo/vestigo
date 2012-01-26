@@ -5,11 +5,10 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.ServiceLoader;
 import java.util.UUID;
 
 import org.nightlabs.jjqb.childvm.shared.ConnectionDTO;
-import org.nightlabs.jjqb.childvm.shared.JDOConnectionDTO;
-import org.nightlabs.jjqb.childvm.shared.JPAConnectionDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,12 +22,22 @@ public class ConnectionManager
 	private static final ConnectionManager sharedInstance = new ConnectionManager();
 
 	public static ConnectionManager sharedInstance() { return sharedInstance; }
-
+	
+	
 	private Map<UUID, Connection> connectionID2connection = new HashMap<UUID, Connection>();
 	private Collection<Connection> cache_allConnections = null;
 	private Map<String, Collection<Connection>> cache_profileID2connections = new HashMap<String, Collection<Connection>>();
 
-	private ConnectionManager() { }
+	private ConnectionProfileManager connectionProfileManager;
+	private ServiceLoader<ConnectionFactory> connectionFactories = ServiceLoader.load(ConnectionFactory.class);
+	
+	private ConnectionManager() {
+		this(ConnectionProfileManager.sharedInstance());
+	}
+	
+	public ConnectionManager(ConnectionProfileManager connectionProfileManager) { 
+		this.connectionProfileManager = connectionProfileManager;
+	}
 
 	public synchronized Connection putConnectionDTO(ConnectionDTO connectionDTO)
 	{
@@ -50,7 +59,7 @@ public class ConnectionManager
 
 		Connection connection = connectionID2connection.get(connectionDTO.getConnectionID());
 		if (connection == null) {
-			connection = newConnection(connectionDTO.getClass());
+			connection = newConnection(connectionDTO);
 			connectionID2connection.put(connectionDTO.getConnectionID(), connection);
 		}
 		else if (connection.getConnectionProfile() != null)
@@ -81,23 +90,25 @@ public class ConnectionManager
 		cache_allConnections = null;
 	}
 
-	private Connection newConnection(Class<? extends ConnectionDTO> dtoClass)
+	private Connection newConnection(ConnectionDTO connectionDTO)
 	{
 		logger.debug(
 				"newConnection: entered: dtoClass={}",
-				(dtoClass == null ? null : dtoClass.getName())
+				(connectionDTO == null ? null : connectionDTO.getClass().getName())
 		);
 
-		if (dtoClass == null)
-			throw new IllegalArgumentException("dtoClass == null");
+		if (connectionDTO == null)
+			throw new IllegalArgumentException("connectionDTO == null");
 
-		if (JDOConnectionDTO.class.isAssignableFrom(dtoClass))
-			return new JDOConnection();
-
-		if (JPAConnectionDTO.class.isAssignableFrom(dtoClass))
-			return new JPAConnection();
-
-		throw new IllegalArgumentException("Unsupported dtoClass: " + dtoClass.getName());
+		for (ConnectionFactory connectionFactory : connectionFactories) {
+			if (connectionFactory.canHandle(connectionDTO)) {
+				Connection connection = connectionFactory.createConnection();
+				connection.setConnectionProfileManager(connectionProfileManager);
+				return connection;
+			}
+		}
+		
+		throw new IllegalArgumentException("Unsupported connectionDTO: " + connectionDTO);
 	}
 
 	public synchronized Connection getConnection(UUID connectionID)

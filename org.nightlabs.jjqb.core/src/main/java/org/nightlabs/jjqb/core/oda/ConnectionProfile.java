@@ -1,7 +1,7 @@
 package org.nightlabs.jjqb.core.oda;
 
 import org.eclipse.datatools.connectivity.oda.OdaException;
-import org.nightlabs.jjqb.core.childvm.ChildVM;
+import org.nightlabs.jjqb.childvm.shared.api.ChildVM;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de

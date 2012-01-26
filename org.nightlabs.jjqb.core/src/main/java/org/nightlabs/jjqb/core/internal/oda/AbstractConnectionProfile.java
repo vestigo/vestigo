@@ -9,7 +9,7 @@ import java.util.Set;
 
 import org.eclipse.datatools.connectivity.oda.OdaException;
 import org.nightlabs.jjqb.childvm.shared.ConnectionProfileDTO;
-import org.nightlabs.jjqb.core.childvm.ChildVM;
+import org.nightlabs.jjqb.childvm.shared.api.ChildVM;
 import org.nightlabs.jjqb.core.internal.childvm.ChildVMServer;
 import org.nightlabs.jjqb.core.oda.Connection;
 import org.nightlabs.jjqb.core.oda.ConnectionProfile;
@@ -51,7 +51,7 @@ public abstract class AbstractConnectionProfile implements ConnectionProfile
 
 	@Override
 	public ChildVM getChildVM() {
-		return childVMServer;
+		return childVMServer.getChildVM();
 	}
 
 	private Properties connectionProperties;
@@ -73,18 +73,18 @@ public abstract class AbstractConnectionProfile implements ConnectionProfile
 
 		// BEGIN debug test - TODO remove again!
 		{
-			Collection<ConnectionProfileDTO> connectionProfileDTOs = childVMServer.getConnectionProfileDTOs();
+			Collection<ConnectionProfileDTO> connectionProfileDTOs = childVMServer.getChildVM().getConnectionProfileDTOs();
 			for (ConnectionProfileDTO connectionProfileDTO : connectionProfileDTOs) {
 				System.out.println(connectionProfileDTO.getProfileID());
 			}
 		}
 		// END debug test
 
-		childVMServer.putConnectionProfileDTO(toConnectionProfileDTO());
+		childVMServer.getChildVM().putConnectionProfileDTO(toConnectionProfileDTO());
 
 		// BEGIN debug test - TODO remove again!
 		{
-			Collection<ConnectionProfileDTO> connectionProfileDTOs = childVMServer.getConnectionProfileDTOs();
+			Collection<ConnectionProfileDTO> connectionProfileDTOs = childVMServer.getChildVM().getConnectionProfileDTOs();
 			for (ConnectionProfileDTO connectionProfileDTO : connectionProfileDTOs) {
 				System.out.println(connectionProfileDTO.getProfileID());
 			}

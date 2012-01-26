@@ -5,62 +5,27 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.URL;
 import java.security.SecureRandom;
-import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Locale;
-import java.util.SortedSet;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.UUID;
 import java.util.concurrent.TimeoutException;
 
-import javax.ws.rs.core.MediaType;
-
-import org.nightlabs.jjqb.childvm.shared.ConnectionDTO;
-import org.nightlabs.jjqb.childvm.shared.ConnectionDTOList;
-import org.nightlabs.jjqb.childvm.shared.ConnectionProfileDTO;
-import org.nightlabs.jjqb.childvm.shared.ConnectionProfileDTOList;
-import org.nightlabs.jjqb.childvm.shared.QueryDTO;
-import org.nightlabs.jjqb.childvm.shared.QueryParameterDTO;
-import org.nightlabs.jjqb.childvm.shared.ResultCellDTO;
-import org.nightlabs.jjqb.childvm.shared.ResultCellDTOList;
-import org.nightlabs.jjqb.childvm.shared.ResultRowDTO;
-import org.nightlabs.jjqb.childvm.shared.ResultRowDTOList;
-import org.nightlabs.jjqb.childvm.shared.ResultSetDTO;
-import org.nightlabs.jjqb.childvm.shared.ResultSetID;
-import org.nightlabs.jjqb.childvm.shared.provider.JavaNativeMessageBodyReader;
-import org.nightlabs.jjqb.childvm.shared.provider.JavaNativeMessageBodyWriter;
-import org.nightlabs.jjqb.childvm.shared.provider.MediaTypeConst;
-import org.nightlabs.jjqb.core.ObjectReference;
-import org.nightlabs.jjqb.core.childvm.ChildVM;
-import org.nightlabs.jjqb.core.childvm.ChildVMException;
+import org.nightlabs.jjqb.childvm.shared.api.ChildVM;
+import org.nightlabs.jjqb.childvm.webapp.client.ChildVMWebappClient;
 import org.nightlabs.util.IOUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.sun.jersey.api.client.Client;
-import com.sun.jersey.api.client.ClientResponse;
-import com.sun.jersey.api.client.UniformInterfaceException;
-import com.sun.jersey.api.client.WebResource;
-import com.sun.jersey.api.client.config.ClientConfig;
-import com.sun.jersey.api.client.config.DefaultClientConfig;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
  */
 public class ChildVMServer
-implements ChildVM
 {
 	private static final long TIMEOUT_SERVER_START_MS = 90L * 1000L; // TODO make timeout configurable
-	private static final int TIMEOUT_SOCKET_CONNECT_MS = 10 * 1000; // TODO make timeout configurable
-	private static final int TIMEOUT_SOCKET_READ_MS = 90 * 1000; // TODO make timeout configurable
 
-	private static final Logger logger = LoggerFactory.getLogger(ChildVMServer.class);
-	static {
-		JavaNativeMessageBodyReader.setClassLoader(ChildVMServer.class.getClassLoader());
-	}
-
+	private static final org.slf4j.Logger logger = LoggerFactory.getLogger(ChildVMServer.class);
+	
 	/**
 	 * Launch the child JVM in debug mode, so that connecting from the IDE (to port 8000) &amp; remote-debugging is possible.
 	 */
@@ -74,8 +39,8 @@ implements ChildVM
 	private DumpStreamToFileThread dumpInputStreamToFileThread;
 	private DumpStreamToFileThread dumpErrorStreamToFileThread;
 	private int port;
-
-	private LinkedList<Client> clientCache = new LinkedList<Client>();
+	
+	private ChildVM childVMClient;
 
 	private Timer heartBeatTimer = new Timer(true);
 	private TimerTask heartBeatTimerTask;
@@ -89,7 +54,7 @@ implements ChildVM
 					logger.debug("heartBeatTimerTask.run: This ChildVMServer is not open => cancelling heartBeatTimerTask.");
 					cancel();
 				}
-				isOnline();
+				getChildVM().isOnline();
 			}
 		};
 	}
@@ -99,6 +64,13 @@ implements ChildVM
 		Runtime.getRuntime().addShutdownHook(new StopServerAndDeleteServerDirectoryRecursivelyShutdownHook());
 	}
 
+	public ChildVM getChildVM() {
+		if (childVMClient == null) {
+			childVMClient = new ChildVMWebappClient("localhost", port);
+		}
+		return childVMClient;
+	}
+	
 	protected synchronized File getServerDirectory() throws IOException
 	{
 		if (this.serverDirectory == null) {
@@ -250,7 +222,7 @@ implements ChildVM
 		long timeout = TIMEOUT_SERVER_START_MS;
 
 		long start = System.currentTimeMillis();
-		while (!isOnline()) {
+		while (!getChildVM().isOnline()) {
 			if (System.currentTimeMillis() - start > timeout)
 				throw new TimeoutException("Server did not come online within timeout!");
 
@@ -326,79 +298,6 @@ implements ChildVM
 			throw new IllegalStateException("The child VM REST server was not yet started! Call start() first!");
 	}
 
-	protected WebResource.Builder getChildVMAppResourceBuilder(Client client, Class<?> dtoClass, RelativePathPart ... relativePathParts)
-	{
-		return getChildVMAppResource(client, dtoClass, relativePathParts).accept(MediaTypeConst.APPLICATION_JAVA_NATIVE_TYPE);
-	}
-
-	protected WebResource getChildVMAppResource(Client client, Class<?> dtoClass, RelativePathPart ... relativePathParts)
-	{
-		StringBuilder relativePath = new StringBuilder();
-		relativePath.append(dtoClass.getSimpleName());
-		if (relativePathParts != null && relativePathParts.length > 0) {
-			boolean isFirstQueryParam = true;
-			for (RelativePathPart relativePathPart : relativePathParts) {
-				if (relativePathPart == null)
-					continue;
-
-				if (relativePathPart instanceof PathSegment) {
-					relativePath.append('/');
-				}
-				else if (relativePathPart instanceof QueryParameter) {
-					if (isFirstQueryParam) {
-						isFirstQueryParam = false;
-						relativePath.append('?');
-					}
-					else
-						relativePath.append('&');
-				}
-
-				relativePath.append(relativePathPart.toString());
-			}
-		}
-		return getChildVMAppResource(client, relativePath.toString());
-	}
-
-	protected WebResource getChildVMAppResource(Client client, String relativePath)
-	{
-		assertServerStarted();
-
-		return client.resource("http://localhost:" + port + "/org.nightlabs.jjqb.childvm.webapp/ChildVMApp/" + relativePath);
-	}
-
-	private synchronized Client acquireClient()
-	{
-		Client client = clientCache.poll();
-		if (client == null) {
-			ClientConfig clientConfig = new DefaultClientConfig(JavaNativeMessageBodyReader.class, JavaNativeMessageBodyWriter.class);
-			clientConfig.getProperties().put(ClientConfig.PROPERTY_CONNECT_TIMEOUT, Integer.valueOf(TIMEOUT_SOCKET_CONNECT_MS)); // must be a java.lang.Integer
-			clientConfig.getProperties().put(ClientConfig.PROPERTY_READ_TIMEOUT, Integer.valueOf(TIMEOUT_SOCKET_READ_MS)); // must be a java.lang.Integer
-			client = Client.create(clientConfig);
-		}
-		return client;
-	}
-
-	private synchronized void releaseClient(Client client)
-	{
-		clientCache.add(client);
-	}
-
-	private boolean isOnline()
-	{
-		Client client = acquireClient();
-		try {
-			String result = getChildVMAppResource(client, "IsOnline").accept(MediaType.TEXT_PLAIN_TYPE).get(String.class);
-			return result != null && result.toLowerCase(Locale.ENGLISH).equals(Boolean.TRUE.toString().toLowerCase(Locale.ENGLISH));
-		} catch (Exception x) {
-			if (logger.isDebugEnabled())
-				logger.debug("isOnline: " + x, x);
-
-			return false;
-		} finally {
-			releaseClient(client);
-		}
-	}
-
 	public synchronized void close() throws IOException
 	{
 		close(false);
@@ -411,7 +310,7 @@ implements ChildVM
 			heartBeatTimerTask = null;
 		}
 
-		clientCache.clear();
+		childVMClient = null;
 
 		// Indicate that we're going to shut down the server. This will prevent the log from being polluted.
 		if (dumpInputStreamToFileThread != null)
@@ -462,271 +361,6 @@ implements ChildVM
 				logger.warn("run: Deleting the web server directory \"" + serverDirectory.getAbsolutePath() + "\" failed: " + e, e);
 			}
 			serverDirectory = null;
-		}
-	}
-
-	@Override
-	public void putConnectionProfileDTO(ConnectionProfileDTO connectionProfileDTO) throws ChildVMException
-	{
-		Client client = acquireClient();
-		try {
-			if (connectionProfileDTO == null)
-				throw new IllegalArgumentException("connectionProfileDTO == null");
-
-			getChildVMAppResource(client, ConnectionProfileDTO.class).put(connectionProfileDTO);
-		} catch (UniformInterfaceException x) {
-			handleUniformInterfaceException(x);
-		} finally {
-			releaseClient(client);
-		}
-	}
-
-	@Override
-	public Collection<ConnectionProfileDTO> getConnectionProfileDTOs() throws ChildVMException
-	{
-		Client client = acquireClient();
-		try {
-			WebResource.Builder resourceBuilder = getChildVMAppResourceBuilder(client, ConnectionProfileDTO.class);
-			ConnectionProfileDTOList list = resourceBuilder.get(ConnectionProfileDTOList.class);
-			return list.getElements();
-		} catch (UniformInterfaceException x) {
-			handleUniformInterfaceException(x);
-			throw x; // we do not expect null
-		} finally {
-			releaseClient(client);
-		}
-	}
-
-	@Override
-	public ConnectionProfileDTO getConnectionProfileDTO(String profileID) throws ChildVMException
-	{
-		Client client = acquireClient();
-		try {
-			if (profileID == null)
-				throw new IllegalArgumentException("profileID == null");
-
-			WebResource.Builder resourceBuilder = getChildVMAppResourceBuilder(
-					client, ConnectionProfileDTO.class, new PathSegment(profileID)
-			);
-			ConnectionProfileDTO dto = resourceBuilder.get(ConnectionProfileDTO.class);
-			return dto;
-		} catch (UniformInterfaceException x) {
-			handleUniformInterfaceException(x);
-			throw x; // we do not expect null
-		} finally {
-			releaseClient(client);
-		}
-	}
-
-	@Override
-	public Collection<ConnectionDTO> getConnectionDTOs(String profileID) throws ChildVMException
-	{
-		Client client = acquireClient();
-		try {
-			WebResource.Builder resourceBuilder = getChildVMAppResourceBuilder(
-					client, ConnectionDTO.class, profileID == null ? null : new PathSegment(profileID)
-			);
-			ConnectionDTOList list = resourceBuilder.get(ConnectionDTOList.class);
-			return list.getElements();
-		} catch (UniformInterfaceException x) {
-			handleUniformInterfaceException(x);
-			throw x; // we do not expect null
-		} finally {
-			releaseClient(client);
-		}
-	}
-
-	@Override
-	public void putConnectionDTO(ConnectionDTO connectionDTO) throws ChildVMException
-	{
-		logger.info("putConnectionDTO: {}", connectionDTO);
-
-		Client client = acquireClient();
-		try {
-			if (connectionDTO == null)
-				throw new IllegalArgumentException("connectionDTO == null");
-
-			getChildVMAppResource(client, ConnectionDTO.class).put(connectionDTO);
-		} catch (UniformInterfaceException x) {
-			handleUniformInterfaceException(x);
-		} finally {
-			releaseClient(client);
-		}
-	}
-
-	private void handleUniformInterfaceException(UniformInterfaceException x)
-	{
-		// Instead of returning null, jersey throws a com.sun.jersey.api.client.UniformInterfaceException
-		// when the server does not send a result. We therefore check for the result code 204 here.
-		if (ClientResponse.Status.NO_CONTENT == x.getResponse().getClientResponseStatus())
-			return;
-
-		logger.error("handleUniformInterfaceException: " + x, x);
-		org.nightlabs.jjqb.childvm.shared.Error error = null;
-		try {
-			ClientResponse clientResponse = x.getResponse();
-
-			clientResponse.bufferEntity();
-			if (clientResponse.hasEntity())
-				error = clientResponse.getEntity(org.nightlabs.jjqb.childvm.shared.Error.class);
-		} catch (Exception y) {
-			logger.error("handleUniformInterfaceException: " + y, y);
-		}
-
-		if (error != null)
-			throw new ChildVMException(error);
-
-		throw x;
-	}
-
-	@Override
-	public void deleteConnectionDTO(UUID connectionID) throws ChildVMException
-	{
-		if (connectionID == null)
-			throw new IllegalArgumentException("connectionID == null");
-
-		Client client = acquireClient();
-		try {
-			getChildVMAppResource(client, ConnectionDTO.class, new PathSegment(connectionID)).delete();
-		} catch (UniformInterfaceException x) {
-			handleUniformInterfaceException(x);
-		} finally {
-			releaseClient(client);
-		}
-	}
-
-	@Override
-	public ResultSetID executeQuery(UUID connectionID, String queryText, SortedSet<QueryParameterDTO> parameters)
-	throws ChildVMException
-	{
-		if (connectionID == null)
-			throw new IllegalArgumentException("connectionID == null");
-
-		if (queryText == null)
-			throw new IllegalArgumentException("queryText == null");
-
-		if (parameters == null)
-			throw new IllegalArgumentException("parameters == null");
-
-		Client client = acquireClient();
-		try {
-			QueryDTO queryDTO = new QueryDTO();
-			queryDTO.setConnectionID(connectionID);
-			queryDTO.setQueryText(queryText);
-			queryDTO.setParameters(parameters);
-
-			WebResource.Builder resourceBuilder = getChildVMAppResourceBuilder(
-					client, ResultSetDTO.class, new PathSegment("executeQuery")
-			);
-			ResultSetDTO resultSetDTO = resourceBuilder.post(ResultSetDTO.class, queryDTO);
-
-			return resultSetDTO.getResultSetID();
-		} catch (UniformInterfaceException x) {
-			handleUniformInterfaceException(x);
-			throw x;
-		} finally {
-			releaseClient(client);
-		}
-	}
-
-	@Override
-	public ResultRowDTO nextResultRowDTO(ResultSetID resultSetID)
-	throws ChildVMException
-	{
-		if (resultSetID == null)
-			throw new IllegalArgumentException("resultSetID == null");
-
-		Client client = acquireClient();
-		try {
-			WebResource.Builder resourceBuilder = getChildVMAppResourceBuilder(
-					client, ResultRowDTO.class,
-					new PathSegment(resultSetID), new PathSegment("next")
-			);
-			ResultRowDTO resultRowDTO = resourceBuilder.post(ResultRowDTO.class);
-
-			return resultRowDTO;
-		} catch (UniformInterfaceException x) {
-			handleUniformInterfaceException(x);
-			return null;
-		} finally {
-			releaseClient(client);
-		}
-	}
-
-	@Override
-	public List<ResultRowDTO> nextResultRowDTOList(ResultSetID resultSetID, int count)
-	throws ChildVMException
-	{
-		if (resultSetID == null)
-			throw new IllegalArgumentException("resultSetID == null");
-
-		Client client = acquireClient();
-		try {
-			WebResource.Builder resourceBuilder = getChildVMAppResourceBuilder(
-					client, ResultRowDTO.class,
-					new PathSegment(resultSetID), new PathSegment("nextList"),
-					new QueryParameter("count", Integer.toString(count))
-			);
-			ResultRowDTOList resultRowDTOList = resourceBuilder.post(ResultRowDTOList.class);
-
-			if (resultRowDTOList.getElements() == null)
-				throw new IllegalStateException("resultRowDTOList.elements == null");
-
-			logger.info(
-					"nextResultRowDTOList: resultSetID={} count={} resultRowDTOList.size={}",
-					new Object[] { resultSetID, count, resultRowDTOList.getElements().size() }
-			);
-
-			return resultRowDTOList.getElements();
-		} catch (UniformInterfaceException x) {
-			handleUniformInterfaceException(x);
-			throw x; // we do not expect null
-		} finally {
-			releaseClient(client);
-		}
-	}
-
-	@Override
-	public void deleteResultSetDTO(ResultSetID resultSetID) throws ChildVMException
-	{
-		if (resultSetID == null)
-			throw new IllegalArgumentException("resultSetID == null");
-
-		Client client = acquireClient();
-		try {
-			getChildVMAppResource(client, ResultSetDTO.class, new PathSegment(resultSetID)).delete();
-		} catch (UniformInterfaceException x) {
-			handleUniformInterfaceException(x);
-		} finally {
-			releaseClient(client);
-		}
-	}
-
-	@Override
-	public List<ResultCellDTO> getChildren(ObjectReference objectReference) throws ChildVMException
-	{
-		if (objectReference == null)
-			throw new IllegalArgumentException("objectReference == null");
-
-		ResultSetID resultSetID = objectReference.getResultSet().getResultSetID();
-
-		Client client = acquireClient();
-		try {
-			WebResource.Builder resourceBuilder = getChildVMAppResourceBuilder(
-					client,
-					ResultCellDTO.class,
-					new PathSegment(resultSetID),
-					new PathSegment(objectReference.getObjectClassName()),
-					new PathSegment(objectReference.getObjectID()),
-					new PathSegment("children")
-			);
-			ResultCellDTOList resultCellDTOList = resourceBuilder.get(ResultCellDTOList.class);
-			return resultCellDTOList.getElements();
-		} catch (UniformInterfaceException x) {
-			handleUniformInterfaceException(x);
-			throw x; // we do not expect null
-		} finally {
-			releaseClient(client);
 		}
 	}
 }

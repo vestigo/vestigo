@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.core.childvm;
+package org.nightlabs.jjqb.childvm.shared.api;
 
 import org.nightlabs.jjqb.childvm.shared.Error;
 import org.nightlabs.jjqb.childvm.shared.ErrorStackTraceElement;

@@ -2,8 +2,6 @@ package org.nightlabs.jjqb.childvm.webapp.model;
 
 import java.io.IOException;
 import java.net.URLClassLoader;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 import java.util.SortedSet;
 
@@ -23,6 +21,20 @@ import org.slf4j.LoggerFactory;
 public class JPAConnection
 extends Connection
 {
+	
+	public static class Factory implements ConnectionFactory {
+		@Override
+		public boolean canHandle(ConnectionDTO connectionDTO) {
+			return connectionDTO != null && JPAConnectionDTO.class == connectionDTO.getClass();
+		}
+		
+		@Override
+		public Connection createConnection() {
+			return new JPAConnection();
+		}
+		
+	}
+	
 	private static final Logger logger = LoggerFactory.getLogger(JPAConnection.class);
 	private EntityManager entityManager;
 

@@ -20,7 +20,7 @@ import org.eclipse.datatools.connectivity.oda.SortSpec;
 import org.eclipse.datatools.connectivity.oda.spec.QuerySpecification;
 import org.nightlabs.jjqb.childvm.shared.QueryParameterDTO;
 import org.nightlabs.jjqb.childvm.shared.ResultSetID;
-import org.nightlabs.jjqb.core.childvm.ChildVM;
+import org.nightlabs.jjqb.childvm.shared.api.ChildVM;
 import org.nightlabs.jjqb.core.oda.Query;
 import org.nightlabs.jjqb.core.oda.QueryID;
 import org.nightlabs.jjqb.core.oda.ResultSet;

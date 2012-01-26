@@ -3,7 +3,7 @@ package org.nightlabs.jjqb.core;
 import java.lang.reflect.Field;
 import java.util.List;
 
-import org.nightlabs.jjqb.core.childvm.ChildVM;
+import org.nightlabs.jjqb.childvm.shared.api.ChildVM;
 import org.nightlabs.jjqb.core.oda.ResultSet;
 
 /**
@@ -11,7 +11,7 @@ import org.nightlabs.jjqb.core.oda.ResultSet;
  * Reference to an object that is located in the {@link ChildVM}.
  * </p><p>
  * It is possible to navigate through the object tree by following the
- * {@link #getChildren() children} of this object.
+ * {@link #getChildren()} children of this object.
  * </p><p>
  * Within one {@link ResultSet}, there is exactly one instance of <code>ObjectReference</code> for every
  * {@link #getObjectID() objectID}.

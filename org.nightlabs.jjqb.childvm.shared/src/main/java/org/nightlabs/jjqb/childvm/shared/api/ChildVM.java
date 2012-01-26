@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.core.childvm;
+package org.nightlabs.jjqb.childvm.shared.api;
 
 import java.util.Collection;
 import java.util.List;
@@ -9,15 +9,18 @@ import org.nightlabs.jjqb.childvm.shared.ConnectionDTO;
 import org.nightlabs.jjqb.childvm.shared.ConnectionProfileDTO;
 import org.nightlabs.jjqb.childvm.shared.QueryParameterDTO;
 import org.nightlabs.jjqb.childvm.shared.ResultCellDTO;
+import org.nightlabs.jjqb.childvm.shared.ResultCellObjectRefDTO;
 import org.nightlabs.jjqb.childvm.shared.ResultRowDTO;
 import org.nightlabs.jjqb.childvm.shared.ResultSetID;
-import org.nightlabs.jjqb.core.ObjectReference;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
  */
 public interface ChildVM
 {
+	
+	boolean isOnline();
+	
 	void putConnectionProfileDTO(ConnectionProfileDTO connectionProfileDTO) throws ChildVMException;
 
 	Collection<ConnectionProfileDTO> getConnectionProfileDTOs() throws ChildVMException;
@@ -45,5 +48,5 @@ public interface ChildVM
 
 	void deleteResultSetDTO(ResultSetID resultSetID) throws ChildVMException;
 
-	List<ResultCellDTO> getChildren(ObjectReference objectReference) throws ChildVMException;
+	List<ResultCellDTO> getChildren(ResultSetID resultSetID, ResultCellObjectRefDTO resultCellObjectRefDTO) throws ChildVMException;
 }
