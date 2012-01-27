@@ -18,6 +18,10 @@
 			<groupId>org.nightlabs.jjqb</groupId>
 			<artifactId>org.nightlabs.jjqb.core</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.nightlabs.jjqb</groupId>
+			<artifactId>org.nightlabs.jjqb.ui</artifactId>
+		</dependency>
 		<!-- END org.nightlabs.jjqb -->
 
 		<!-- BEGIN org.eclipse -->

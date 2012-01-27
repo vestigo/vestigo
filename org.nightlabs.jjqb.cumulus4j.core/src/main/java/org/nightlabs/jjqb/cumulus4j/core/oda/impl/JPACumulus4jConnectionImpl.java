@@ -13,7 +13,6 @@
 
 package org.nightlabs.jjqb.cumulus4j.core.oda.impl;
 
-import org.eclipse.datatools.connectivity.oda.IDataSetMetaData;
 import org.eclipse.datatools.connectivity.oda.OdaException;
 import org.nightlabs.jjqb.childvm.shared.ConnectionDTO;
 import org.nightlabs.jjqb.core.oda.JPAConnection;
@@ -27,11 +26,6 @@ import org.nightlabs.jjqb.cumulus4j.childvm.shared.JPACumulus4jConnectionDTO;
 public class JPACumulus4jConnectionImpl extends AbstractConnection implements JPAConnection
 {
 	public JPACumulus4jConnectionImpl() { }
-
-	@Override
-	public IDataSetMetaData getMetaData(String dataSetType) throws OdaException {
-		return super.getMetaData(dataSetType);
-	}
 
 	@Override
 	protected Query _newQuery(String dataSetType) throws OdaException {

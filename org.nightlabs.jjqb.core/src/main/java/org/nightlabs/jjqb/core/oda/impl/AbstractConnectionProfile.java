@@ -55,12 +55,14 @@ public abstract class AbstractConnectionProfile implements ConnectionProfile
 	}
 
 	/**
-	 * Get the name of the web-app (without file name suffix).
+	 * Get the name of the web-app (without file name suffix). The basic web-app is
+	 * <code>"org.nightlabs.jjqb.childvm.webapp"</code>, but depending on the connection
+	 * additional libraries might be necessary and thus a different web-app might need to
+	 * be used.
+	 *
 	 * @return the name of the web-app (without the ".war"-suffix).
 	 */
-	protected String getWebAppName() {
-		return "org.nightlabs.jjqb.childvm.webapp";
-	}
+	protected abstract String getWebAppName();
 
 	private Properties connectionProperties;
 

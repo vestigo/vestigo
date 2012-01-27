@@ -1,14 +1,23 @@
 package org.nightlabs.jjqb.ui.oda;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.nightlabs.jjqb.childvm.shared.PropertiesUtil;
@@ -22,6 +31,9 @@ import org.nightlabs.jjqb.childvm.shared.PropertiesUtil;
  */
 public class AbstractDriverPropertiesComposite extends Composite {
 
+	private Button loadFromFile;
+	private Button saveToFile;
+
 	private Text persistenceUnitNameText;
 	private EditClasspathComposite editClasspathComposite;
 
@@ -31,18 +43,38 @@ public class AbstractDriverPropertiesComposite extends Composite {
 	public AbstractDriverPropertiesComposite(Composite parent, int style) {
 		super(parent, style);
 		GridLayout layout = new GridLayout();
-		layout.numColumns = 2;
+		layout.numColumns = 4;
 		this.setLayout(layout);
 
 		new Label(this, SWT.NONE).setText("Persistence unit name:");
 		persistenceUnitNameText = new Text(this, SWT.BORDER);
 		assignGridDataSpanning(persistenceUnitNameText, GridData.FILL_HORIZONTAL, 1, 1);
 
+		loadFromFile = new Button(this, SWT.PUSH);
+		loadFromFile.setText("Load...");
+		loadFromFile.setToolTipText("Load the properties from a java properties file.");
+		loadFromFile.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent event) {
+				loadFromFile();
+			}
+		});
+
+		saveToFile = new Button(this, SWT.PUSH);
+		saveToFile.setText("Save...");
+		saveToFile.setToolTipText("Save the properties to a java properties file.");
+		saveToFile.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent event) {
+				saveToFile();
+			}
+		});
+
 		editClasspathComposite = new EditClasspathComposite(this, SWT.NONE);
-		assignGridDataSpanning(editClasspathComposite, GridData.FILL_BOTH, 2, 1);
+		assignGridDataSpanning(editClasspathComposite, GridData.FILL_BOTH, 4, 1);
 
 		editPropertiesComposite = new EditPropertiesComposite(this, SWT.NONE);
-		assignGridDataSpanning(editPropertiesComposite, GridData.FILL_BOTH, 2, 1);
+		assignGridDataSpanning(editPropertiesComposite, GridData.FILL_BOTH, 4, 1);
 
 		updatePropertiesEditor();
 	}
@@ -125,7 +157,8 @@ public class AbstractDriverPropertiesComposite extends Composite {
 		PropertiesUtil.putList(editClasspathComposite.getClasspathElements(), result, PropertiesUtil.PREFIX_META_PERSISTENCE_ENGINE_CLASSPATH);
 		if (connectionProperties != null) {
 			String oldTimestamp = connectionProperties.getProperty(PropertiesUtil.WORKAROUND_TIMESTAMP);
-			result.setProperty(PropertiesUtil.WORKAROUND_TIMESTAMP, oldTimestamp);
+			if (oldTimestamp != null)
+				result.setProperty(PropertiesUtil.WORKAROUND_TIMESTAMP, oldTimestamp);
 
 			if (connectionProperties.equals(result))
 				return result;
@@ -144,4 +177,67 @@ public class AbstractDriverPropertiesComposite extends Composite {
 		return result;
 	}
 
+	private void loadFromFile()
+	{
+		FileDialog dialog = new FileDialog(getShell(), SWT.OPEN);
+		String fileName = dialog.open();
+		if (fileName != null && !"".equals(fileName)) {
+			File propsFile = new File(fileName);
+			if (!propsFile.exists())
+				return;
+			FileInputStream in;
+			try {
+				in = new FileInputStream(propsFile);
+			} catch (FileNotFoundException e) {
+				throw new IllegalStateException("File exists, but could not be read! " + propsFile.getAbsolutePath(), e);
+			}
+			Properties props = new Properties();
+			try {
+				try {
+					props.load(in);
+				} finally {
+					in.close();
+				}
+			} catch (IOException e) {
+				// TODO: ErrorHandling
+				throw new RuntimeException(e);
+			}
+			setConnectionPrivateProps(props);
+		}
+	}
+
+	private void saveToFile()
+	{
+		FileDialog dialog = new FileDialog(getShell(), SWT.SAVE);
+
+		String fileName = dialog.open();
+		if (fileName != null && !"".equals(fileName)) {
+
+			Properties props = new Properties();
+			for (Map.Entry<?, ?> me : getConnectionPrivateProps().entrySet()) {
+				if (PropertiesUtil.WORKAROUND_TIMESTAMP.equals(me.getKey()))
+					continue;
+
+				props.setProperty(String.valueOf(me.getKey()), String.valueOf(me.getValue()));
+			}
+			File propsFile = new File(fileName);
+
+			FileOutputStream out;
+			try {
+				out = new FileOutputStream(propsFile);
+			} catch (FileNotFoundException e) {
+				throw new IllegalStateException("Could not create file! " + propsFile.getAbsolutePath(), e);
+			}
+			try {
+				try {
+					props.store(out, "File written by JDO/JPA Query Browser.");
+				} finally {
+					out.close();
+				}
+			} catch (IOException e) {
+				// TODO: ErrorHandling
+				throw new RuntimeException(e);
+			}
+		}
+	}
 }

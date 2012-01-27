@@ -13,6 +13,11 @@ extends AbstractConnectionProfile
 implements JDOConnectionProfile
 {
 	@Override
+	protected String getWebAppName() {
+		return "org.nightlabs.jjqb.cumulus4j.childvm.webapp";
+	}
+
+	@Override
 	protected ConnectionProfileDTO newConnectionProfileDTO() {
 		return new JDOCumulus4jConnectionProfileDTO();
 	}

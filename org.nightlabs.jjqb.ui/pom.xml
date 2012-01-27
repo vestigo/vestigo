@@ -95,6 +95,8 @@ temporarily... because of exampleeditor - we should switch back to the property,
 					<instructions>
 						<Bundle-Activator>org.nightlabs.jjqb.ui.JJQBUIPlugin</Bundle-Activator>
 						<Bundle-ActivationPolicy>lazy</Bundle-ActivationPolicy>
+						<Require-Bundle>org.eclipse.core.runtime</Require-Bundle>
+						<Import-Package>!org.eclipse.core.runtime,*</Import-Package>
 					</instructions>
 				</configuration>
 			</plugin>

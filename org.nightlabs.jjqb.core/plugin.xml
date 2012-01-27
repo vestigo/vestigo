@@ -3,6 +3,7 @@
 <plugin>
    <extension-point id="connectionExtension" name="ConnectionExtension" schema="schema/connectionExtension.exsd"/>
    <extension-point id="childVMWebApp" name="ChildVM WebApp" schema="schema/childVMWebApp.exsd"/>
+   <extension-point id="connectionProfile" name="connectionProfile" schema="schema/connectionProfile.exsd"/>
 
 
     <extension
@@ -115,6 +116,19 @@
             class="org.nightlabs.jjqb.core.childvm.internal.DefaultWebApp"
             webAppName="org.nightlabs.jjqb.childvm.webapp">
       </webApp>
+   </extension>
+   <extension
+         point="org.nightlabs.jjqb.core.connectionProfile">
+      <connectionProfile
+            class="org.nightlabs.jjqb.core.oda.impl.JDOConnectionProfileImpl"
+            connectionType="org.nightlabs.jjqb.core.oda.JDOConnection"
+            priority="100">
+      </connectionProfile>
+      <connectionProfile
+            class="org.nightlabs.jjqb.core.oda.impl.JPAConnectionProfileImpl"
+            connectionType="org.nightlabs.jjqb.core.oda.JPAConnection"
+            priority="100">
+      </connectionProfile>
    </extension>
    
 </plugin>

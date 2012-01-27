@@ -466,6 +466,63 @@ public abstract class QueryBrowserManager
 	}
 
 	protected abstract boolean isConnectionProfileCompatible(IConnectionProfile connectionProfile);
+//	{
+//		final IExtensionRegistry registry = Platform.getExtensionRegistry();
+//		if (registry == null)
+//			throw new IllegalStateException("Platform.getExtensionRegistry() returned null!");
+//
+//		final String extensionPointId = "org.nightlabs.jjqb.ui.connectionProfileProviderID2queryBrowserManagerMapping";
+//		final IExtensionPoint extensionPoint = registry.getExtensionPoint(extensionPointId);
+//		if (extensionPoint == null)
+//			throw new IllegalStateException("Unable to resolve extension-point: " + extensionPointId); //$NON-NLS-1$
+//
+//		final IExtension[] extensions = extensionPoint.getExtensions();
+//		for (final IExtension extension : extensions) {
+//			final IConfigurationElement[] elements = extension.getConfigurationElements();
+//			for (final IConfigurationElement element : elements) {
+//				String extProviderID = element.getAttribute("providerID");
+//				if (!providerID.equals(extProviderID))
+//					continue;
+//
+//				if (matchesQueryBrowserClass(element.getAttribute("queryBrowserManagerType")))
+//					return true;
+//			}
+//		}
+//
+//		return false;
+//	}
+
+	private boolean matchesQueryBrowserClass(String classOrInterfaceToMatch)
+	{
+		Class<?> c = this.getClass();
+		while (c != null)
+		{
+			if (classOrInterfaceToMatch.equals(c.getName()))
+				return true;
+
+			for (Class<?> interfaze: c.getInterfaces()) {
+				if (matchesInterface(interfaze, classOrInterfaceToMatch))
+					return true;
+			}
+
+			c = c.getSuperclass();
+		}
+
+		return false;
+	}
+
+	private boolean matchesInterface(Class<?> interfaze, String classOrInterfaceToMatch)
+	{
+		if (classOrInterfaceToMatch.equals(interfaze.getName()))
+			return true;
+
+		for (Class<?> i: interfaze.getInterfaces()) {
+			if (matchesInterface(i, classOrInterfaceToMatch))
+				return true;
+		}
+
+		return false;
+	}
 
 	protected synchronized void onDispose()
 	{

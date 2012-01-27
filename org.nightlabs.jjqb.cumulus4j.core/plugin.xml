@@ -8,15 +8,15 @@
       <dataSource
             defaultDisplayName="JDO Driver"
             driverClass="org.nightlabs.jjqb.cumulus4j.core.oda.impl.JDOCumulus4jDriverImpl"
-            id="org.nightlabs.jjqb.core.oda.JDODriver"
+            id="org.nightlabs.jjqb.cumulus4j.core.oda.JDOCumulus4jDriver"
             odaVersion="3.0"
             setThreadContextClassLoader="true">
          <properties>
             <property
                   canInherit="true"
-                  defaultDisplayName="jdoConnectionType"
+                  defaultDisplayName="jdoCumulus4jConnectionType"
                   isEncryptable="false"
-                  name="jdoConnectionType"
+                  name="jdoCumulus4jConnectionType"
                   type="string"/>
          </properties>
       </dataSource>
@@ -60,15 +60,15 @@
       <dataSource
             defaultDisplayName="JPA Driver"
             driverClass="org.nightlabs.jjqb.cumulus4j.core.oda.impl.JPACumulus4jDriverImpl"
-            id="org.nightlabs.jjqb.core.oda.JPADriver"
+            id="org.nightlabs.jjqb.cumulus4j.core.oda.JPACumulus4jDriver"
             odaVersion="3.0"
             setThreadContextClassLoader="true">
          <properties>
             <property
                   canInherit="true"
-                  defaultDisplayName="jpaConnectionType"
+                  defaultDisplayName="jpaCumulus4jConnectionType"
                   isEncryptable="false"
-                  name="jpaConnectionType"
+                  name="jpaCumulus4jConnectionType"
                   type="string"/>
          </properties>
       </dataSource>
@@ -112,5 +112,16 @@
             class="org.nightlabs.jjqb.cumulus4j.core.childvm.internal.Cumulus4jWebApp"
             webAppName="org.nightlabs.jjqb.cumulus4j.childvm.webapp">
       </webApp>
+   </extension>
+   <extension
+         point="org.nightlabs.jjqb.core.connectionProfile">
+      <connectionProfile
+            class="org.nightlabs.jjqb.cumulus4j.core.oda.impl.JDOCumulus4jConnectionProfileImpl"
+            connectionType="org.nightlabs.jjqb.cumulus4j.core.oda.impl.JDOCumulus4jConnectionImpl">
+      </connectionProfile>
+      <connectionProfile
+            class="org.nightlabs.jjqb.cumulus4j.core.oda.impl.JPACumulus4jConnectionProfileImpl"
+            connectionType="org.nightlabs.jjqb.cumulus4j.core.oda.impl.JPACumulus4jConnectionImpl">
+      </connectionProfile>
    </extension>
 </plugin>

@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package org.nightlabs.jjqb.cumulus4j.ui;
 
@@ -18,14 +18,16 @@ import org.nightlabs.jjqb.ui.oda.IPropertyHopPage.PropertyHopPage;
 
 /**
  * @author Alexander Bieber <!-- alex [AT] nightlabs [DOT] de -->
- *
+ * @deprecated Currently unused. Experimental. Don't delete! We'll need this for splitting the settings UI into several pages. Marco :-)
  */
+@Deprecated
 public class JDOCumulus4jPropertyPage2 extends AbstractPropertyHopPage implements PropertyHopPage {
 
 	private Composite control;
-	private Text text; 
-	
-	
+	private Text text;
+
+
+	@Override
 	public void setInitialProperties(Properties properties) {
 		String prop = properties.getProperty("prop2");
 		text.setText(prop != null ? prop : "");
@@ -53,6 +55,7 @@ public class JDOCumulus4jPropertyPage2 extends AbstractPropertyHopPage implement
 		return control;
 	}
 
+	@Override
 	public String getName() {
 		return getTitle();
 	}

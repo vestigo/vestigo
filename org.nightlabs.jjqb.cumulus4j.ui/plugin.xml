@@ -2,29 +2,165 @@
 <?eclipse version="3.4"?>
 <plugin>
 
+	<extension
+         point="org.eclipse.datatools.connectivity.connectionProfile">
+      <category
+            id="org.nightlabs.jjqb.cumulus4j.core.oda.JDOCumulus4jDriver"
+            name="JDO+Cumulus4j Connections"
+            parentCategory="org.nightlabs.jjqb.core.oda"/>
+      <connectionProfile
+            category="org.nightlabs.jjqb.cumulus4j.core.oda.JDOCumulus4jDriver"
+            icon="icons/jdo.png"
+            id="org.nightlabs.jjqb.cumulus4j.core.oda.JDOCumulus4jDriver"
+            name="JDO+Cumulus4j Connection Profile"
+            pingFactory="org.eclipse.datatools.connectivity.oda.profile.OdaConnectionFactory"/>
+      <connectionFactory
+            id="org.eclipse.datatools.connectivity.oda.IConnection"
+            name="JDO Connection Factory"
+            class="org.eclipse.datatools.connectivity.oda.profile.OdaConnectionFactory"
+            profile="org.nightlabs.jjqb.cumulus4j.core.oda.JDOCumulus4jDriver"/>
+      <newWizard
+            id="org.nightlabs.jjqb.cumulus4j.core.oda.JDOCumulus4jDriver"
+            name="New JDO+Cumulus4j connection"
+            class="org.eclipse.datatools.connectivity.oda.design.ui.wizards.NewDataSourceWizard"
+            description="Create a new JDO+Cumulus4j connection"
+            icon="icons/jdo.png"
+            profile="org.nightlabs.jjqb.cumulus4j.core.oda.JDOCumulus4jDriver"/>
+   </extension>
 
 
+   <extension
+         point="org.eclipse.datatools.connectivity.connectionProfile">
+      <category
+            id="org.nightlabs.jjqb.cumulus4j.core.oda.JPACumulus4jDriver"
+            name="JPA+Cumulus4j Connections"
+            parentCategory="org.nightlabs.jjqb.core.oda"/>
+      <connectionProfile
+            category="org.nightlabs.jjqb.cumulus4j.core.oda.JPACumulus4jDriver"
+            icon="icons/jpa.png"
+            id="org.nightlabs.jjqb.cumulus4j.core.oda.JPACumulus4jDriver"
+            name="JPA+Cumulus4j Connection Profile"
+            pingFactory="org.eclipse.datatools.connectivity.oda.profile.OdaConnectionFactory"/>
+      <connectionFactory
+            id="org.eclipse.datatools.connectivity.oda.IConnection"
+            name="JPA+Cumulus4j Connection Factory"
+            class="org.eclipse.datatools.connectivity.oda.profile.OdaConnectionFactory"
+            profile="org.nightlabs.jjqb.cumulus4j.core.oda.JPACumulus4jDriver"/>
+      <newWizard
+            id="org.nightlabs.jjqb.cumulus4j.core.oda.JPACumulus4jDriver"
+            name="New JPA+Cumulus4j connection"
+            class="org.eclipse.datatools.connectivity.oda.design.ui.wizards.NewDataSourceWizard"
+            description="Create a new JPA+Cumulus4j connection"
+            icon="icons/jpa.png"
+            profile="org.nightlabs.jjqb.cumulus4j.core.oda.JPACumulus4jDriver"/>
+   </extension>
 
 
    <extension
          point="org.eclipse.ui.propertyPages">
       <page
+            id="org.nightlabs.jjqb.cumulus4j.core.oda.JDOCumulus4jDriver"
+            name="JDO+Cumulus4j Properties"
+            class="org.nightlabs.jjqb.ui.oda.JDODriverPropertyPage"
+            objectClass="org.eclipse.datatools.connectivity.IConnectionProfile">
+         <filter
+               name="org.eclipse.datatools.profile.property.id"
+               value="org.nightlabs.jjqb.cumulus4j.core.oda.JDOCumulus4jDriver"/>
+      </page>
+   </extension>
+
+
+   <extension
+         point="org.eclipse.ui.propertyPages">
+      <page
+            id="org.nightlabs.jjqb.cumulus4j.core.oda.JPACumulus4jDriver"
+            name="JPA+Cumulus4j Properties"
+            class="org.nightlabs.jjqb.ui.oda.JPADriverPropertyPage"
+            objectClass="org.eclipse.datatools.connectivity.IConnectionProfile">
+         <filter
+               name="org.eclipse.datatools.profile.property.id"
+               value="org.nightlabs.jjqb.cumulus4j.core.oda.JPACumulus4jDriver"/>
+      </page>
+   </extension>
+
+   <extension
+            point="org.eclipse.datatools.connectivity.oda.design.ui.dataSource">
+      <dataSourceUI id="org.nightlabs.jjqb.cumulus4j.core.oda.JDOCumulus4jDriver">
+        <newDataSourceWizard
+              includesProgressMonitor="false"
+              pageClass="org.nightlabs.jjqb.ui.oda.JDODriverWizardPage"
+              pageTitle="JDO+Cumulus4j DataSource"
+              windowTitle="JDO+Cumulus4j DataSource"/>
+      </dataSourceUI> 
+      <dataSetUI
+              id="org.nightlabs.jjqb.core.JDODataSet"
+              initialPageId="org.nightlabs.jjqb.ui.oda.JDOQueryWizardPage"
+              supportsInParameters="true"
+              supportsOutParameters="false">
+        <dataSetWizard
+              class="org.eclipse.datatools.connectivity.oda.design.ui.wizards.DataSetWizard"
+              windowTitle="JDO+Cumulus4j Query"/>
+        <dataSetPage
+              displayName="JDO+Cumulus4j Query"
+              icon="icons/jdo.png"
+              id="org.nightlabs.jjqb.ui.JDOQueryWizardPage"
+              path="/"
+              wizardPageClass="org.nightlabs.jjqb.ui.oda.JDOQueryWizardPage"/>
+      </dataSetUI>
+   </extension>
+
+
+   <extension
+            point="org.eclipse.datatools.connectivity.oda.design.ui.dataSource">
+      <dataSourceUI id="org.nightlabs.jjqb.cumulus4j.core.oda.JPACumulus4jDriver">
+        <newDataSourceWizard
+              includesProgressMonitor="false"
+              pageClass="org.nightlabs.jjqb.ui.oda.JPADriverWizardPage"
+              pageTitle="JPA+Cumulus4j DataSource"
+              windowTitle="JPA+Cumulus4j DataSource"/>
+      </dataSourceUI> 
+      <dataSetUI
+              id="org.nightlabs.jjqb.core.JPADataSet"
+              initialPageId="org.nightlabs.jjqb.ui.oda.JPAQueryWizardPage"
+              supportsInParameters="true"
+              supportsOutParameters="false">
+        <dataSetWizard
+              class="org.eclipse.datatools.connectivity.oda.design.ui.wizards.DataSetWizard"
+              windowTitle="JPA+Cumulus4j Query"/>
+        <dataSetPage
+              displayName="JPA+Cumulus4j Query"
+              icon="icons/jpa.png"
+              id="org.nightlabs.jjqb.ui.JPAQueryWizardPage"
+              path="/"
+              wizardPageClass="org.nightlabs.jjqb.ui.JPAQueryWizardPage"/>
+      </dataSetUI> 
+   </extension>
+
+
+<!--
+*** BEGIN BIEBER EXPERIMENTALS ***
+
+Don't delete! We'll need this for splitting the settings UI into several pages. Marco :-)
+
+   <extension
+         point="org.eclipse.ui.propertyPages">
+      <page
             id="org.nightlabs.jjqb.cumulus4j.ui.JDOCumulus4jPropertyPage1"
-            name="Cumulus4J PropertyPage 1"
+            name="Cumulus4j PropertyPage 1"
             class="org.nightlabs.jjqb.cumulus4j.ui.JDOCumulus4jPropertyPage1"
             objectClass="org.eclipse.datatools.connectivity.IConnectionProfile">
          <filter
                name="org.eclipse.datatools.profile.property.id"
-               value="org.nightlabs.jjqb.core.oda.Cumulus4JJDODriver"/>
+               value="org.nightlabs.jjqb.cumulus4j.core.oda.JDOCumulus4jDriver"/>
       </page>
       <page
             class="org.nightlabs.jjqb.cumulus4j.ui.JDOCumulus4jPropertyPage2"
             id="org.nightlabs.jjqb.cumulus4j.ui.JDOCumulus4jPropertyPage2"
-            name="Cumulus4J PropertyPage 2"
+            name="Cumulus4j PropertyPage 2"
             objectClass="org.eclipse.datatools.connectivity.IConnectionProfile">
          <filter
                name="org.eclipse.datatools.profile.property.id"
-               value="org.nightlabs.jjqb.core.oda.Cumulus4JJDODriver">
+               value="org.nightlabs.jjqb.cumulus4j.core.oda.JDOCumulus4jDriver">
          </filter>
       </page>
    </extension>
@@ -35,26 +171,17 @@
 
 
 
-
-
-
-
-
-
-
-
-
    <extension
          point="org.eclipse.datatools.connectivity.connectionProfile">
       <category
-            id="org.nightlabs.jjqb.core.oda.Cumulus4JJDODriver"
+            id="org.nightlabs.jjqb.cumulus4j.core.oda.JDOCumulus4jDriver"
             name="JDO+Cumulus4j Connections"
             parentCategory="%oda.parent.category.id">
       </category>
       <connectionProfile
-            category="org.nightlabs.jjqb.core.oda.Cumulus4JJDODriver"
+            category="org.nightlabs.jjqb.cumulus4j.core.oda.JDOCumulus4jDriver"
             icon="icons/jdo.png"
-            id="org.nightlabs.jjqb.core.oda.Cumulus4JJDODriver"
+            id="org.nightlabs.jjqb.cumulus4j.core.oda.JDOCumulus4jDriver"
             name="JDO+Cumulus4j connection profile"
             pingFactory="org.eclipse.datatools.connectivity.oda.profile.OdaConnectionFactory">
       </connectionProfile>
@@ -62,21 +189,21 @@
             class="org.eclipse.datatools.connectivity.oda.profile.OdaConnectionFactory"
             id="org.eclipse.datatools.connectivity.oda.IConnection"
             name="JDO+Cumulus4j Connection Factory"
-            profile="org.nightlabs.jjqb.core.oda.Cumulus4JJDODriver">
+            profile="org.nightlabs.jjqb.cumulus4j.core.oda.JDOCumulus4jDriver">
       </connectionFactory>
       <newWizard
             class="org.nightlabs.jjqb.cumulus4j.ui.NewJDOCumulus4jConnectionProfileWizard"
             description="Create a new JDO+Cumulus4j connection"
             icon="icons/jdo.png"
-            id="org.nightlabs.jjqb.core.oda.Cumulus4JJDODriver"
+            id="org.nightlabs.jjqb.cumulus4j.core.oda.JDOCumulus4jDriver"
             name="New JDO+Cumulus4j connection"
-            profile="org.nightlabs.jjqb.core.oda.Cumulus4JJDODriver">
+            profile="org.nightlabs.jjqb.cumulus4j.core.oda.JDOCumulus4jDriver">
       </newWizard>
    </extension>
    <extension
          point="org.eclipse.datatools.connectivity.oda.design.ui.dataSource">
       <dataSourceUI
-            id="org.nightlabs.jjqb.core.oda.Cumulus4JJDODriver">
+            id="org.nightlabs.jjqb.cumulus4j.core.oda.JDOCumulus4jDriver">
          <newDataSourceWizard
                includesProgressMonitor="false"
                pageClass="org.nightlabs.jjqb.cumulus4j.ui.JDOCumulus4jDriverWizardPage"
@@ -102,5 +229,8 @@
          </dataSetPage>
       </dataSetUI>
    </extension>
+
+*** END BIEBER EXPERIMENTALS ***
+--> 
 
 </plugin>

@@ -14,7 +14,7 @@
       <category
             id="org.nightlabs.jjqb.core.oda.JDODriver"
             name="JDO Connections"
-            parentCategory="%oda.parent.category.id"/>
+            parentCategory="org.nightlabs.jjqb.core.oda"/>
       <connectionProfile
             category="org.nightlabs.jjqb.core.oda.JDODriver"
             icon="icons/jdo.png"
@@ -41,7 +41,7 @@
       <category
             id="org.nightlabs.jjqb.core.oda.JPADriver"
             name="JPA Connections"
-            parentCategory="%oda.parent.category.id"/>
+            parentCategory="org.nightlabs.jjqb.core.oda"/>
       <connectionProfile
             category="org.nightlabs.jjqb.core.oda.JPADriver"
             icon="icons/jpa.png"

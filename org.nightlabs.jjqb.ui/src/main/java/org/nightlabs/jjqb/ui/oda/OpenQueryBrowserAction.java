@@ -10,6 +10,7 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.datatools.connectivity.IConnectionProfile;
+import org.eclipse.datatools.connectivity.oda.IDriver;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
@@ -21,6 +22,7 @@ import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchPartSite;
 import org.eclipse.ui.part.FileEditorInput;
+import org.nightlabs.jjqb.core.oda.DataSourceDriverRegistry;
 import org.nightlabs.jjqb.core.oda.JDODriver;
 import org.nightlabs.jjqb.core.oda.JPADriver;
 import org.nightlabs.jjqb.ui.browser.JDOQueryBrowserEditor;
@@ -93,7 +95,11 @@ implements IObjectActionDelegate, IViewActionDelegate
 				if (element instanceof IConnectionProfile) {
 					IConnectionProfile connectionProfile = (IConnectionProfile) element;
 					String providerId = connectionProfile.getProviderId();
-					if (JDODriver.PROVIDER_ID.equals(providerId) || JPADriver.PROVIDER_ID.equals(providerId))
+//					if (JDODriver.PROVIDER_ID.equals(providerId) || JPADriver.PROVIDER_ID.equals(providerId))
+//						selectedConnectionProfiles.add(connectionProfile);
+
+					Class<? extends IDriver> driverClass = DataSourceDriverRegistry.sharedInstance().getDriverClassForProviderID(providerId);
+					if (driverClass != null && (JDODriver.class.isAssignableFrom(driverClass) || JPADriver.class.isAssignableFrom(driverClass)))
 						selectedConnectionProfiles.add(connectionProfile);
 				}
 			}
