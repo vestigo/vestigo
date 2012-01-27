@@ -58,11 +58,6 @@ implements ChildVM
 
 	private LinkedList<Client> clientCache = new LinkedList<Client>();
 
-//	public ChildVMWebappClient(String host, int port)
-//	{
-//		this(host, "org.nightlabs.jjqb.childvm.webapp", port);
-//	}
-
 	public ChildVMWebappClient(String host, String webAppName, int port)
 	{
 		this.baseURL = "http://" + host + ":" + port + '/';

@@ -17,7 +17,10 @@
 			<groupId>org.nightlabs.jjqb</groupId>
 			<artifactId>org.nightlabs.jjqb.core</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>org.nightlabs.jjqb</groupId>
+			<artifactId>org.nightlabs.jjqb.cumulus4j.childvm.shared</artifactId>
+		</dependency>
 		<dependency>
 			<!-- force this to already be compiled before => make sure we copy the up-to-date-dependency. -->
 			<groupId>org.nightlabs.jjqb</groupId>

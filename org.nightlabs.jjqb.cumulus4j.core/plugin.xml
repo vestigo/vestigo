@@ -1,7 +1,111 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.0"?>
-<plugin
->
+<plugin>
+
+    <extension
+         point="org.eclipse.datatools.connectivity.oda.dataSource">
+
+      <dataSource
+            defaultDisplayName="JDO Driver"
+            driverClass="org.nightlabs.jjqb.cumulus4j.core.oda.impl.JDOCumulus4jDriverImpl"
+            id="org.nightlabs.jjqb.core.oda.JDODriver"
+            odaVersion="3.0"
+            setThreadContextClassLoader="true">
+         <properties>
+            <property
+                  canInherit="true"
+                  defaultDisplayName="jdoConnectionType"
+                  isEncryptable="false"
+                  name="jdoConnectionType"
+                  type="string"/>
+         </properties>
+      </dataSource>
+
+<!-- TODO what's this dataSet good for? do we need it? copied from org.nightlabs.birt.jdo... -->
+      <dataSet
+            defaultDisplayName="JDO Data Set"            
+            id="org.nightlabs.jjqb.core.oda.JDODataSet">
+         <dataTypeMapping
+               nativeDataType="String"
+               nativeDataTypeCode="1"
+               odaScalarDataType="String"/>
+         <dataTypeMapping
+               nativeDataType="Integer"
+               nativeDataTypeCode="2"
+               odaScalarDataType="Integer"/>
+         <dataTypeMapping
+               nativeDataType="Double"
+               nativeDataTypeCode="3"
+               odaScalarDataType="Double"/>
+         <dataTypeMapping
+               nativeDataType="Boolean"
+               nativeDataTypeCode="4"
+               odaScalarDataType="Integer"/>
+         <dataTypeMapping
+               nativeDataType="Date"
+               nativeDataTypeCode="5"
+               odaScalarDataType="Date"/>
+         <dataTypeMapping
+               nativeDataType="BigDecimal"
+               nativeDataTypeCode="6"
+               odaScalarDataType="Decimal"/>
+      </dataSet>
+
+   </extension>
+
+
+   <extension
+         point="org.eclipse.datatools.connectivity.oda.dataSource">
+
+      <dataSource
+            defaultDisplayName="JPA Driver"
+            driverClass="org.nightlabs.jjqb.cumulus4j.core.oda.impl.JPACumulus4jDriverImpl"
+            id="org.nightlabs.jjqb.core.oda.JPADriver"
+            odaVersion="3.0"
+            setThreadContextClassLoader="true">
+         <properties>
+            <property
+                  canInherit="true"
+                  defaultDisplayName="jpaConnectionType"
+                  isEncryptable="false"
+                  name="jpaConnectionType"
+                  type="string"/>
+         </properties>
+      </dataSource>
+
+<!-- TODO what's this dataSet good for? do we need it? copied from org.nightlabs.birt.jdo... -->
+      <dataSet
+            defaultDisplayName="JDO Data Set"            
+            id="org.nightlabs.jjqb.core.oda.JDODataSet">
+         <dataTypeMapping
+               nativeDataType="String"
+               nativeDataTypeCode="1"
+               odaScalarDataType="String"/>
+         <dataTypeMapping
+               nativeDataType="Integer"
+               nativeDataTypeCode="2"
+               odaScalarDataType="Integer"/>
+         <dataTypeMapping
+               nativeDataType="Double"
+               nativeDataTypeCode="3"
+               odaScalarDataType="Double"/>
+         <dataTypeMapping
+               nativeDataType="Boolean"
+               nativeDataTypeCode="4"
+               odaScalarDataType="Integer"/>
+         <dataTypeMapping
+               nativeDataType="Date"
+               nativeDataTypeCode="5"
+               odaScalarDataType="Date"/>
+         <dataTypeMapping
+               nativeDataType="BigDecimal"
+               nativeDataTypeCode="6"
+               odaScalarDataType="Decimal"/>
+      </dataSet>
+
+   </extension>
+
+
    <extension
          point="org.nightlabs.jjqb.core.childVMWebApp">
       <webApp

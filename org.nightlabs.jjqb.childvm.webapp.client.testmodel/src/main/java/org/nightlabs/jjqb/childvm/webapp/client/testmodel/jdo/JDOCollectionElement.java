@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package org.nightlabs.jjqb.childvm.webapp.client.testmodel.jdo;
 
@@ -8,6 +8,7 @@ import java.util.Date;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.PrimaryKey;
+import javax.jdo.annotations.Serialized;
 
 @PersistenceCapable(
 		identityType = IdentityType.DATASTORE,
@@ -17,17 +18,19 @@ public class JDOCollectionElement {
 
 	@PrimaryKey
 	private long id;
-	
+
 	private String sringProperty;
-	
+
 	private int intProperty;
-	
+
 	private Date dateProperty;
-	
+
+	@Serialized
 	private String[] stringArrProperty;
-	
+
+	@Serialized
 	private byte[] byteArrProperty;
-	
+
 	public JDOCollectionElement(long id) {
 		this.id = id;
 	}

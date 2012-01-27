@@ -8,7 +8,7 @@
       <documentation>
          It is possible to bind a connection-extension to a connection. One instance of the connection-extension is bound to exactly one instance of the connection.
 
-The declaration can either be done via a factory that will exist as singleton and provide connection-extensions when needed. Or the extension-class itself can be registered (in this case, an instance of org.nightlabs.jjqb.core.oda.internal.DefaultConnectionExtensionFactory will be used as factory).
+The declaration can either be done via a factory that will exist as singleton and provide connection-extensions when needed. Or the extension-class itself can be registered (in this case, an instance of org.nightlabs.jjqb.core.oda.impl.DefaultConnectionExtensionFactory will be used as factory).
       </documentation>
    </annotation>
 

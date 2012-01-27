@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.core.oda.internal;
+package org.nightlabs.jjqb.core.oda.impl;
 
 import org.nightlabs.jjqb.childvm.shared.ConnectionProfileDTO;
 import org.nightlabs.jjqb.childvm.shared.JPAConnectionProfileDTO;

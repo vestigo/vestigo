@@ -1,1 +1,2 @@
-org.nightlabs.jjqb.cumulus4j.childvm.webapp.model.JDOCumulus4JConnection$Factory
+org.nightlabs.jjqb.cumulus4j.childvm.webapp.model.JDOCumulus4jConnection$Factory
+org.nightlabs.jjqb.cumulus4j.childvm.webapp.model.JPACumulus4jConnection$Factory

@@ -28,6 +28,13 @@
 			<artifactId>${org.nightlabs.eclipse.compatibility.artifactId}</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>org.nightlabs.eclipse</groupId>
+			<artifactId>org.nightlabs.eclipse.extension</artifactId>
+		</dependency>
+		<!-- END org.nightlabs.eclipse.* -->
+		
+		<!-- BEGIN org.nightlabs.jjqb.* -->
+		<dependency>
 			<groupId>org.nightlabs.jjqb</groupId>
 			<artifactId>org.nightlabs.jjqb.core</artifactId>
 		</dependency>
@@ -49,12 +56,23 @@
 			<groupId>org.nightlabs.jjqb</groupId>
 			<artifactId>org.nightlabs.jjqb.ui</artifactId>
 		</dependency>
+		<!-- END org.nightlabs.jjqb.* -->
+
+		<!-- BEGIN org.nightlabs.jjqb.cumulus4j.* -->
 		<dependency>
-			<groupId>org.nightlabs.eclipse</groupId>
-			<artifactId>org.nightlabs.eclipse.extension</artifactId>
+			<groupId>org.nightlabs.jjqb</groupId>
+			<artifactId>org.nightlabs.jjqb.cumulus4j.core</artifactId>
 		</dependency>
-		<!-- END org.nightlabs.eclipse.* -->
-		
+		<dependency>
+			<groupId>org.nightlabs.jjqb</groupId>
+			<artifactId>org.nightlabs.jjqb.cumulus4j.childvm.shared</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.nightlabs.jjqb</groupId>
+			<artifactId>org.nightlabs.jjqb.cumulus4j.ui</artifactId>
+		</dependency>
+		<!-- END org.nightlabs.jjqb.cumulus4j.* -->
+
 		<!-- BEGIN org.nightlabs.**.* -->
 		<dependency>
 			<groupId>org.nightlabs</groupId>

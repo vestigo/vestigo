@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.core.oda.internal;
+package org.nightlabs.jjqb.core.oda.impl;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;

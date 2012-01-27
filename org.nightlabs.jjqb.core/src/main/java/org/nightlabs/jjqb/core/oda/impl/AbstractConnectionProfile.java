@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.core.oda.internal;
+package org.nightlabs.jjqb.core.oda.impl;
 
 import java.io.IOException;
 import java.util.Collection;

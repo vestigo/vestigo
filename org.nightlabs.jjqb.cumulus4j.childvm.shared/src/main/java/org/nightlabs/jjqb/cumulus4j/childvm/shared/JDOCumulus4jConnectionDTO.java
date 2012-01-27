@@ -9,7 +9,7 @@ import org.nightlabs.jjqb.childvm.shared.JDOConnectionDTO;
  * @author Alexander Bieber <!-- alex [AT] nightlabs [DOT] de -->
  *
  */
-public class JDOCumulus4JConnectionDTO extends JDOConnectionDTO {
+public class JDOCumulus4jConnectionDTO extends JDOConnectionDTO {
 
 	private static final long serialVersionUID = 20111229L;
 

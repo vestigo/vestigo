@@ -12,7 +12,7 @@ import java.util.TreeSet;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtension;
 import org.nightlabs.eclipse.extension.AbstractEPProcessor;
-import org.nightlabs.jjqb.core.oda.internal.DefaultConnectionExtensionFactory;
+import org.nightlabs.jjqb.core.oda.impl.DefaultConnectionExtensionFactory;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de

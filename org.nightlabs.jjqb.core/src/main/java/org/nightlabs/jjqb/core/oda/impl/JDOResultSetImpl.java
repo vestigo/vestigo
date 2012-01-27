@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.core.oda.internal;
+package org.nightlabs.jjqb.core.oda.impl;
 
 import org.nightlabs.jjqb.core.oda.JDOResultSet;
 import org.nightlabs.jjqb.core.oda.Query;
