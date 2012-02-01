@@ -92,6 +92,7 @@ public class ChildVMServer
 			File jettyTempDir = IOUtil.createUserTempDir("jetty.", null);
 			File serverDirectory = IOUtil.createUniqueIncrementalFolder(jettyTempDir, "instance-");
 			createServerPlatform(serverDirectory);
+			undeployUnnecessaryExamples(serverDirectory);
 			deployRESTApplication(serverDirectory);
 			deployLog4jProperties(serverDirectory);
 			this.serverDirectory = serverDirectory;
@@ -153,7 +154,6 @@ public class ChildVMServer
 	private void deployRESTApplication(File webServerDirectory) throws IOException
 	{
 		logger.debug("deployRESTApplication: serverDirectory='{}'", webServerDirectory.getAbsolutePath());
-		File deploymentDir = new File(webServerDirectory, "webapps");
 
 		final IExtensionRegistry registry = Platform.getExtensionRegistry();
 		if (registry == null)
@@ -195,7 +195,7 @@ public class ChildVMServer
 				webApp.setWebAppName(extWebAppName);
 
 				String fileName = extWebAppName + ".war";
-				File destinationFile = new File(deploymentDir, fileName);
+				File destinationFile = new File(new File(webServerDirectory, "webapps"), fileName);
 				InputStream in = webApp.createInputStream();
 				OutputStream out = new FileOutputStream(destinationFile);
 				IOUtil.transferStreamData(in, out);
@@ -206,14 +206,22 @@ public class ChildVMServer
 
 		if (deployedExtension == null)
 			throw new IllegalStateException("There is no plug-in contributing the web-app named \"" + this.webAppName + "\" (extension-point \"" + extensionPointId + "\")!!!");
+	}
 
-//		String fileName = "org.nightlabs.jjqb.childvm.webapp.war";
-//		String resourceName = "resource/" + fileName;
-//		File destinationFile = new File(deploymentDir, fileName);
-//		IOUtil.copyResource(ChildVMServer.class, resourceName, destinationFile);
-
+	private void undeployUnnecessaryExamples(File webServerDirectory) throws IOException
+	{
 		// Delete the unnecessary 'test.war' which comes with the jetty distro.
-		new File(deploymentDir, "test.war").delete();
+		new File(new File(webServerDirectory, "webapps"), "test.war").delete();
+
+		// Delete the context-xml file for the 'test.war' as well as all other stuff in this directory, because we occasionally get this error:
+		// 2012-02-01 12:30:07.980:WARN:oejw.WebAppContext:Failed startup of context o.e.j.w.WebAppContext{/,null},/tmp/jetty.mschulze/instance-1/webapps/test.war
+		// java.io.FileNotFoundException: /tmp/jetty.mschulze/instance-1/webapps/test.war
+		// at org.eclipse.jetty.webapp.WebInfConfiguration.unpack(WebInfConfiguration.java:479)
+		// at org.eclipse.jetty.webapp.WebInfConfiguration.preConfigure(WebInfConfiguration.java:52)
+//		for (File context : new File(webServerDirectory, "contexts").listFiles()) {
+//			IOUtil.deleteDirectoryRecursively(context);
+//		}
+		new File(new File(webServerDirectory, "contexts"), "test.xml").delete();
 	}
 
 	private void deployLog4jProperties(File webServerDirectory) throws IOException

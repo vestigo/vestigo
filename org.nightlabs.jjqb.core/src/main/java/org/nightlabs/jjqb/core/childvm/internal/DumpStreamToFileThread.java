@@ -21,6 +21,8 @@ final class DumpStreamToFileThread extends Thread
 	private volatile boolean ignoreErrors = false;
 	private volatile boolean forceInterrupt = false;
 
+	private LogDumpedStreamThread logDumpedStreamThread = new LogDumpedStreamThread();
+
 	public void setIgnoreErrors(boolean ignoreErrors) {
 		this.ignoreErrors = ignoreErrors;
 	}
@@ -49,21 +51,33 @@ final class DumpStreamToFileThread extends Thread
 	}
 
 	@Override
-	public void run() {
-		final byte[] buffer = new byte[10240];
-		while (!isInterrupted()) {
-			try {
-				int bytesRead = inputStream.read(buffer);
-				if (bytesRead > 0)
-					outputStream.write(buffer, 0, bytesRead);
-			} catch (Throwable e) {
-				if (!ignoreErrors)
-					logger.error("run: " + e, e);
-				else
-					logger.info("run: " + e);
+	public synchronized void start() {
+		logDumpedStreamThread.start();
+		super.start();
+	}
 
-				return;
+	@Override
+	public void run() {
+		try {
+			final byte[] buffer = new byte[10240];
+			while (!isInterrupted()) {
+				try {
+					int bytesRead = inputStream.read(buffer);
+					if (bytesRead > 0) {
+						outputStream.write(buffer, 0, bytesRead);
+						logDumpedStreamThread.write(buffer, bytesRead);
+					}
+				} catch (Throwable e) {
+					if (!ignoreErrors)
+						logger.error("run: " + e, e);
+					else
+						logger.info("run: " + e);
+
+					return;
+				}
 			}
+		} finally {
+			logDumpedStreamThread.interrupt();
 		}
 	}
 }

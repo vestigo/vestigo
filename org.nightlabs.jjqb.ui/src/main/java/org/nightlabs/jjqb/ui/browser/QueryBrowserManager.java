@@ -14,8 +14,10 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
@@ -346,12 +348,46 @@ public abstract class QueryBrowserManager
 		}
 	};
 
+	private Throwable findSingleException(IStatus status)
+	{
+		Collection<Throwable> exceptions = collectExceptions(status);
+		if (exceptions.size() == 1)
+			return exceptions.iterator().next();
+		else
+			return null;
+	}
+
+	private Collection<Throwable> collectExceptions(IStatus status)
+	{
+		Set<Throwable> exceptions = new HashSet<Throwable>();
+
+		if (status.getException() != null)
+			exceptions.add(status.getException());
+
+		if (status.getChildren() != null) {
+			for (IStatus child : status.getChildren()) {
+				Collection<Throwable> childExceptions = collectExceptions(child);
+				exceptions.addAll(childExceptions);
+			}
+		}
+
+		return exceptions;
+	}
+
 	public synchronized IConnection createConnection(IConnectionProfile connectionProfile, IProgressMonitor monitor)
 	{
 		final IManagedConnection managedConnection = connectionProfile.getManagedConnection(connectionFactoryID);
 
-		if (managedConnection.getConnection() == null)
-			connectionProfile.connectWithoutJob();
+		if (managedConnection.getConnection() == null || !managedConnection.isConnected()) {
+			IStatus status = connectionProfile.connectWithoutJob();
+			if (IStatus.OK != status.getCode()) {
+				Throwable exception = findSingleException(status);
+				if (exception != null)
+					throw new RuntimeException(exception);
+				else
+					throw new RuntimeException("Opening connection failed: " + status);
+			}
+		}
 
 		final org.eclipse.datatools.connectivity.IConnection connection = connectionProfile.createConnection(connectionFactoryID);
 		if (connection == null)
