@@ -1,7 +1,6 @@
 package org.nightlabs.jjqb.childvm.webapp.model;
 
 import java.io.IOException;
-import java.net.URLClassLoader;
 import java.util.Map;
 import java.util.Properties;
 
@@ -28,7 +27,7 @@ public class JPAConnectionProfile extends ConnectionProfile
 	protected void onFirstConnectionOpen(Connection connection) {
 		super.onFirstConnectionOpen(connection);
 
-		URLClassLoader persistenceEngineClassLoader;
+		ClassLoader persistenceEngineClassLoader;
 		try {
 			persistenceEngineClassLoader = getClassLoaderManager().getPersistenceEngineClassLoader();
 		} catch (IOException e) {

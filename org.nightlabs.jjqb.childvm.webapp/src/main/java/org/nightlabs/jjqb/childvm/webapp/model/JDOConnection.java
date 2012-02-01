@@ -1,7 +1,6 @@
 package org.nightlabs.jjqb.childvm.webapp.model;
 
 import java.io.IOException;
-import java.net.URLClassLoader;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -40,7 +39,7 @@ extends Connection
 			return new JDOConnection();
 		}
 	}
-	
+
 	@Override
 	protected ConnectionDTO newConnectionDTO() {
 		return new JDOConnectionDTO();
@@ -55,7 +54,7 @@ extends Connection
 		if (persistenceManager == null) {
 			JDOConnectionProfile connectionProfile = (JDOConnectionProfile) getConnectionProfile();
 
-			URLClassLoader persistenceEngineClassLoader;
+			ClassLoader persistenceEngineClassLoader;
 			try {
 				persistenceEngineClassLoader = connectionProfile.getClassLoaderManager().getPersistenceEngineClassLoader();
 			} catch (IOException e) {
@@ -163,7 +162,7 @@ extends Connection
 		PersistenceManager pm = getPersistenceManager();
 
 		resetFetchPlanToDefault(pm.getFetchPlan());
-		
+
 		scriptEngine.put("persistenceManager", pm);
 		scriptEngine.put("pm", pm);
 	}
@@ -173,7 +172,7 @@ extends Connection
 		fetchPlan.setMaxFetchDepth(1);
 		fetchPlan.setGroup(FetchPlan.ALL);
 	}
-	
+
 	public void resetFetchPlanToDefault(FetchPlan fetchPlan)
 	{
 		fetchPlan.setMaxFetchDepth(1);

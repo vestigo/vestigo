@@ -3,7 +3,6 @@ package org.nightlabs.jjqb.childvm.webapp.model;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.net.URLClassLoader;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -326,7 +325,7 @@ public abstract class ResultSet
 			return container == null ? null : container.getObject();
 		}
 		else {
-			URLClassLoader persistenceEngineClassLoader;
+			ClassLoader persistenceEngineClassLoader;
 			try {
 				persistenceEngineClassLoader = connection.getConnectionProfile().getClassLoaderManager().getPersistenceEngineClassLoader();
 			} catch (IOException e) {

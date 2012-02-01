@@ -1,7 +1,6 @@
 package org.nightlabs.jjqb.childvm.webapp.model;
 
 import java.io.IOException;
-import java.net.URLClassLoader;
 import java.util.Map;
 import java.util.Properties;
 
@@ -19,9 +18,9 @@ import org.slf4j.LoggerFactory;
  */
 public class JDOConnectionProfile extends ConnectionProfile
 {
-	
+
 	private Logger logger = LoggerFactory.getLogger(JDOConnectionProfile.class);
-	
+
 	private PersistenceManagerFactory persistenceManagerFactory;
 
 	@Override
@@ -32,15 +31,15 @@ public class JDOConnectionProfile extends ConnectionProfile
 	@Override
 	protected void onFirstConnectionOpen(Connection connection) {
 		super.onFirstConnectionOpen(connection);
-		
+
 		if (logger.isDebugEnabled()) {
 			logger.debug(
 				"[{}].onFirstConnectionOpen: profileID={} connectionID={}.",
 				new Object[] { Long.toHexString(System.identityHashCode(this)), getProfileID(), connection.getConnectionID() });
 		}
-		
 
-		URLClassLoader persistenceEngineClassLoader;
+
+		ClassLoader persistenceEngineClassLoader;
 		try {
 			persistenceEngineClassLoader = getClassLoaderManager().getPersistenceEngineClassLoader();
 			if (logger.isDebugEnabled()) {
@@ -83,7 +82,7 @@ public class JDOConnectionProfile extends ConnectionProfile
 				logger.debug("[{}].onLastConnectionClose: closed persistenceManagerFactory.", Long.toHexString(System.identityHashCode(this)));
 			}
 			persistenceManagerFactory = null;
-		} 
+		}
 		else {
 			if (logger.isDebugEnabled()) {
 				logger.debug("[{}].onLastConnectionClose: persistenceManagerFactory was null, nothing to close.", Long.toHexString(System.identityHashCode(this)));

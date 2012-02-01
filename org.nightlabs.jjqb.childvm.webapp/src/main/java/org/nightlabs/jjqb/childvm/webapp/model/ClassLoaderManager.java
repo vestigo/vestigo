@@ -3,7 +3,6 @@ package org.nightlabs.jjqb.childvm.webapp.model;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.net.URLClassLoader;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -83,7 +82,7 @@ public class ClassLoaderManager
 		this.connectionProperties = connProperties;
 
 		try {
-			File userTempDir = IOUtil.getUserTempDir(ClassLoaderManager.class.getName() + '.', null);
+			File userTempDir = IOUtil.getUserTempDir("jjqb." + ClassLoaderManager.class.getSimpleName() + '.', null);
 			tempDir = IOUtil.createUniqueIncrementalFolder(userTempDir, "instance-");
 		} catch (IOException e) {
 			throw new RuntimeException(e);
@@ -136,7 +135,7 @@ public class ClassLoaderManager
 		return this.persistenceEngineClasspathURLList;
 	}
 
-	private URLClassLoader persistenceEngineClassLoader;
+	private ClassLoader persistenceEngineClassLoader;
 
 	private static Comparator<URL> urlComparator = new Comparator<URL>() {
 		@Override
@@ -176,6 +175,11 @@ public class ClassLoaderManager
 	throws IOException
 	{
 		if (file.isDirectory()) {
+			if (file.getName().endsWith(".war")) {
+				File webInfClasses = new File(new File(file, "WEB-INF"), "classes");
+				persistenceEngineClasspathURLList.add(webInfClasses.toURI().toURL());
+			}
+
 			File[] children = file.listFiles();
 			if (children != null) {
 				for (File child : children)
@@ -186,11 +190,6 @@ public class ClassLoaderManager
 			persistenceEngineClasspathURLList.add(file.toURI().toURL());
 	}
 
-//	public URLClassLoader getQueryExecClassLoader() throws OdaException
-//	{
-//		return getPersistenceEngineClassLoader();
-//	}
-
 // We need a separate class loader for JDBC. Due to that, we decided for this parent-VM-child-VM-architecture.
 // see: http://www.szegedi.org/articles/memleak2.html
 // "Never, ever, load a JDBC driver through a class loader that is meant to be eventually thrown away.
@@ -199,14 +198,14 @@ public class ClassLoaderManager
 //
 // For optimization reasons, we should later introduce a separate class-loader for the data model, so that
 // we don't need to restart the whole jetty server VM when the data model changes.
-	public URLClassLoader getPersistenceEngineClassLoader() throws IOException
+	public ClassLoader getPersistenceEngineClassLoader() throws IOException
 	{
 		assertOpen();
 
 		if (this.persistenceEngineClassLoader == null) {
 			List<URL> persistenceEngineClasspathURLList = getPersistenceEngineClasspathURLList();
 
-			URLClassLoader persistenceEngineClassLoader = new URLClassLoader(
+			PersistenceEngineClassLoader persistenceEngineClassLoader = new PersistenceEngineClassLoader(
 					persistenceEngineClasspathURLList.toArray(new URL[persistenceEngineClasspathURLList.size()]),
 					this.getClass().getClassLoader()
 			);

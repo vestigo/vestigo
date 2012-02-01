@@ -1,7 +1,6 @@
 package org.nightlabs.jjqb.childvm.webapp.model;
 
 import java.io.IOException;
-import java.net.URLClassLoader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -139,7 +138,7 @@ public abstract class Connection
 		String queryTextWithoutComments = stripQueryText(queryText);
 		ResultSet resultSet;
 
-		URLClassLoader persistenceEngineClassLoader;
+		ClassLoader persistenceEngineClassLoader;
 		try {
 			persistenceEngineClassLoader = connectionProfile.getClassLoaderManager().getPersistenceEngineClassLoader();
 		} catch (IOException e) {

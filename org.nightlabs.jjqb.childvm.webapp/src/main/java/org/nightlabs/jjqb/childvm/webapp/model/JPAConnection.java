@@ -1,7 +1,6 @@
 package org.nightlabs.jjqb.childvm.webapp.model;
 
 import java.io.IOException;
-import java.net.URLClassLoader;
 import java.util.List;
 import java.util.SortedSet;
 
@@ -21,20 +20,20 @@ import org.slf4j.LoggerFactory;
 public class JPAConnection
 extends Connection
 {
-	
+
 	public static class Factory implements ConnectionFactory {
 		@Override
 		public boolean canHandle(ConnectionDTO connectionDTO) {
 			return connectionDTO != null && JPAConnectionDTO.class == connectionDTO.getClass();
 		}
-		
+
 		@Override
 		public Connection createConnection() {
 			return new JPAConnection();
 		}
-		
+
 	}
-	
+
 	private static final Logger logger = LoggerFactory.getLogger(JPAConnection.class);
 	private EntityManager entityManager;
 
@@ -52,7 +51,7 @@ extends Connection
 		if (entityManager == null) {
 			JPAConnectionProfile connectionProfile = (JPAConnectionProfile) getConnectionProfile();
 
-			URLClassLoader persistenceEngineClassLoader;
+			ClassLoader persistenceEngineClassLoader;
 			try {
 				persistenceEngineClassLoader = connectionProfile.getClassLoaderManager().getPersistenceEngineClassLoader();
 			} catch (IOException e) {
@@ -137,7 +136,7 @@ extends Connection
 			else
 				query.setParameter(parameter.getIndex(), parameterValue);
 		}
-		
+
 //		configureFetchPlanForOneLevelAndAllFields(em.getFetchPlan()); // there is no fetch-plan in JPA :-(
 
 		List<?> queryResult = query.getResultList();
@@ -150,7 +149,7 @@ extends Connection
 	protected void prepareScriptEngine(ScriptEngine scriptEngine)
 	{
 		EntityManager em = getEntityManager();
-	
+
 		scriptEngine.put("entityManager", em);
 		scriptEngine.put("em", em);
 	}
