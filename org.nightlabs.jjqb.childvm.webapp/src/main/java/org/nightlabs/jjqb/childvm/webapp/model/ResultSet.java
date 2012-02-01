@@ -1,7 +1,9 @@
 package org.nightlabs.jjqb.childvm.webapp.model;
 
+import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.net.URLClassLoader;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -324,11 +326,25 @@ public abstract class ResultSet
 			return container == null ? null : container.getObject();
 		}
 		else {
-			Object persistentObjectID = getPersistentObjectID(objectClassName, objectID);
-			if (persistentObjectID == null)
-				throw new IllegalStateException("ObjectIDString was not registered previously: " + objectID);
+			URLClassLoader persistenceEngineClassLoader;
+			try {
+				persistenceEngineClassLoader = connection.getConnectionProfile().getClassLoaderManager().getPersistenceEngineClassLoader();
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
 
-			return getPersistentObjectForObjectID(objectClassName, persistentObjectID);
+			ClassLoader backupContextClassLoader = Thread.currentThread().getContextClassLoader();
+			try {
+				Thread.currentThread().setContextClassLoader(persistenceEngineClassLoader);
+
+				Object persistentObjectID = getPersistentObjectID(objectClassName, objectID);
+				if (persistentObjectID == null)
+					throw new IllegalStateException("ObjectIDString was not registered previously: " + objectID);
+
+				return getPersistentObjectForObjectID(objectClassName, persistentObjectID);
+			} finally {
+				Thread.currentThread().setContextClassLoader(backupContextClassLoader);
+			}
 		}
 	}
 

@@ -15,8 +15,8 @@ import org.nightlabs.jjqb.cumulus4j.childvm.shared.JPACumulus4jConnectionDTO;
  */
 public class JPACumulus4jConnection extends JPAConnection
 {
-	public static class Factory implements ConnectionFactory {
-
+	public static class Factory implements ConnectionFactory
+	{
 		@Override
 		public boolean canHandle(ConnectionDTO connectionDTO) {
 			return connectionDTO != null && connectionDTO.getClass() == JPACumulus4jConnectionDTO.class;
@@ -26,6 +26,5 @@ public class JPACumulus4jConnection extends JPAConnection
 		public Connection createConnection() {
 			return new JPACumulus4jConnection();
 		}
-
 	}
 }

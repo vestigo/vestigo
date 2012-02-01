@@ -15,8 +15,8 @@ import org.nightlabs.jjqb.cumulus4j.childvm.shared.JDOCumulus4jConnectionDTO;
  */
 public class JDOCumulus4jConnection extends JDOConnection
 {
-	public static class Factory implements ConnectionFactory {
-
+	public static class Factory implements ConnectionFactory
+	{
 		@Override
 		public boolean canHandle(ConnectionDTO connectionDTO) {
 			return connectionDTO != null && connectionDTO.getClass() == JDOCumulus4jConnectionDTO.class;
@@ -26,6 +26,5 @@ public class JDOCumulus4jConnection extends JDOConnection
 		public Connection createConnection() {
 			return new JDOCumulus4jConnection();
 		}
-
 	}
 }

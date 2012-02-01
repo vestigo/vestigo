@@ -40,6 +40,16 @@ public class ChildVMServer
 	 * Launch the child JVM in debug mode, so that connecting from the IDE (to port 8000) &amp; remote-debugging is possible.
 	 */
 	private static final boolean DEBUG_MODE_ENABLED = false;
+
+	/**
+	 * <p>
+	 * Start the child JVM with "suspend=y" which will make the JVM wait for the remote-debugger-connection
+	 * before executing the application. This is useful, if you want to debug sth. that's happening directly during
+	 * the startup of the child VM.
+	 * </p><p>
+	 * This flag is <b>ignored</b>, if {@link #DEBUG_MODE_ENABLED}<code> == false</code>.
+	 * </p>
+	 */
 	private static final boolean DEBUG_MODE_WAIT_FOR_DEBUGGER = false;
 
 	private static SecureRandom random = new SecureRandom();
@@ -213,15 +223,15 @@ public class ChildVMServer
 		// Delete the unnecessary 'test.war' which comes with the jetty distro.
 		new File(new File(webServerDirectory, "webapps"), "test.war").delete();
 
-		// Delete the context-xml file for the 'test.war' as well as all other stuff in this directory, because we occasionally get this error:
-		// 2012-02-01 12:30:07.980:WARN:oejw.WebAppContext:Failed startup of context o.e.j.w.WebAppContext{/,null},/tmp/jetty.mschulze/instance-1/webapps/test.war
-		// java.io.FileNotFoundException: /tmp/jetty.mschulze/instance-1/webapps/test.war
-		// at org.eclipse.jetty.webapp.WebInfConfiguration.unpack(WebInfConfiguration.java:479)
-		// at org.eclipse.jetty.webapp.WebInfConfiguration.preConfigure(WebInfConfiguration.java:52)
-//		for (File context : new File(webServerDirectory, "contexts").listFiles()) {
-//			IOUtil.deleteDirectoryRecursively(context);
-//		}
-		new File(new File(webServerDirectory, "contexts"), "test.xml").delete();
+		// Delete the stuff in the 'contexts' directory that is related to the 'test.war',
+		// because we occasionally get this error:
+		//   2012-02-01 12:30:07.980:WARN:oejw.WebAppContext:Failed startup of context o.e.j.w.WebAppContext{/,null},/tmp/jetty.mschulze/instance-1/webapps/test.war
+		//   java.io.FileNotFoundException: /tmp/jetty.mschulze/instance-1/webapps/test.war
+		//   at org.eclipse.jetty.webapp.WebInfConfiguration.unpack(WebInfConfiguration.java:479)
+		//   at org.eclipse.jetty.webapp.WebInfConfiguration.preConfigure(WebInfConfiguration.java:52)
+		File contextsDir = new File(webServerDirectory, "contexts");
+		new File(contextsDir, "test.xml").delete();
+		IOUtil.deleteDirectoryRecursively(new File(contextsDir, "test.d"));
 	}
 
 	private void deployLog4jProperties(File webServerDirectory) throws IOException

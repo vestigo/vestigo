@@ -1,5 +1,7 @@
 package org.nightlabs.jjqb.childvm.webapp.model;
 
+import java.io.IOException;
+import java.net.URLClassLoader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -61,14 +63,14 @@ public abstract class Connection
 	public void setConnectionProfileManager(ConnectionProfileManager connectionProfileManager) {
 		this.connectionProfileManager = connectionProfileManager;
 	}
-	
+
 	public final synchronized void fromConnectionDTO(ConnectionDTO connectionDTO)
 	{
 		if (connectionDTO == null)
 			throw new IllegalArgumentException("connectionDTO == null");
 		if (connectionProfileManager == null)
 			throw new IllegalStateException("The connectionProfileManager has not been set for this Connection");
-		
+
 		setConnectionID(connectionDTO.getConnectionID());
 		setConnectionProfile(connectionProfileManager.getConnectionProfile(connectionDTO.getProfileID(), true));
 		_fromConnectionDTO(connectionDTO);
@@ -135,7 +137,23 @@ public abstract class Connection
 	public final ResultSet executeQuery(String queryText, SortedSet<QueryParameterDTO> parameters)
 	{
 		String queryTextWithoutComments = stripQueryText(queryText);
-		ResultSet resultSet = doExecuteQuery(queryTextWithoutComments, parameters);
+		ResultSet resultSet;
+
+		URLClassLoader persistenceEngineClassLoader;
+		try {
+			persistenceEngineClassLoader = connectionProfile.getClassLoaderManager().getPersistenceEngineClassLoader();
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+
+		ClassLoader backupContextClassLoader = Thread.currentThread().getContextClassLoader();
+		try {
+			Thread.currentThread().setContextClassLoader(persistenceEngineClassLoader);
+			resultSet = doExecuteQuery(queryTextWithoutComments, parameters);
+		} finally {
+			Thread.currentThread().setContextClassLoader(backupContextClassLoader);
+		}
+
 		ResultSetID resultSetID = new ResultSetID(getConnectionID(), nextResultSetID.getAndIncrement());
 		resultSet.setResultSetID(resultSetID);
 		synchronized (this) {
@@ -158,7 +176,7 @@ public abstract class Connection
 				return null;
 		}
 
-		return getResultSet(resultSetID, throwExceptionIfNotFound);
+		return getResultSet(resultSetID.getResultSetID(), throwExceptionIfNotFound);
 	}
 
 	public synchronized ResultSet getResultSet(int resultSetID, boolean throwExceptionIfNotFound)
