@@ -23,7 +23,7 @@ public class JPAResultSet extends ResultSet
 
 	private Query query;
 
-	public JPAResultSet(Connection connection, Query query, Collection<?> rows) {
+	public JPAResultSet(JPAConnection connection, Query query, Collection<?> rows) {
 		super(connection, rows);
 
 		if (query == null)

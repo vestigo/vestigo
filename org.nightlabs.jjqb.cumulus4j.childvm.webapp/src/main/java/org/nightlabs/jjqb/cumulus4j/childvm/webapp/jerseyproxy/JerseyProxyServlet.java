@@ -1,10 +1,9 @@
 package org.nightlabs.jjqb.cumulus4j.childvm.webapp.jerseyproxy;
 
 import java.io.IOException;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -22,6 +21,16 @@ public class JerseyProxyServlet extends HttpServlet
 
 	private volatile ConnectionProfile connectionProfile;
 	private volatile HttpServlet jerseyServlet;
+
+	@Override
+	public void init() throws ServletException {
+		super.init();
+	}
+
+	@Override
+	public void init(ServletConfig config) throws ServletException {
+		super.init(config);
+	}
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
@@ -46,10 +55,20 @@ public class JerseyProxyServlet extends HttpServlet
 			}
 		}
 
-		HttpServlet js = jerseyServlet;
+		ConnectionProfile connectionProfile = this.connectionProfile;
+		HttpServlet jerseyServlet = this.jerseyServlet;
 
-		if (js != null)
-			js.service(req, resp);
+		if (connectionProfile != null && jerseyServlet != null) {
+			ClassLoader persistenceEngineClassLoader = connectionProfile.getClassLoaderManager().getPersistenceEngineClassLoader();
+			ClassLoader backupContextClassLoader = Thread.currentThread().getContextClassLoader();
+			try {
+				Thread.currentThread().setContextClassLoader(persistenceEngineClassLoader);
+
+				jerseyServlet.service(req, resp);
+			} finally {
+				Thread.currentThread().setContextClassLoader(backupContextClassLoader);
+			}
+		}
 	}
 
 	private HttpServlet createJerseyServlet() throws ServletException, IOException
@@ -60,28 +79,26 @@ public class JerseyProxyServlet extends HttpServlet
 			throw new IllegalStateException("connectionProfile not yet assigned!");
 
 		ClassLoader persistenceEngineClassLoader = connectionProfile.getClassLoaderManager().getPersistenceEngineClassLoader();
+		ClassLoader backupContextClassLoader = Thread.currentThread().getContextClassLoader();
 		try {
+			Thread.currentThread().setContextClassLoader(persistenceEngineClassLoader);
 
 			Class<?> jerseyServletClass = persistenceEngineClassLoader.loadClass("com.sun.jersey.spi.container.servlet.ServletContainer");
-			Class<?> keyManagerBackWebAppClass = persistenceEngineClassLoader.loadClass("org.cumulus4j.store.crypto.keymanager.rest.KeyManagerBackWebApp");
-			Constructor<?> constructor = jerseyServletClass.getConstructor(Class.class);
-			HttpServlet servlet = (HttpServlet) constructor.newInstance(keyManagerBackWebAppClass);
+//			Class<?> keyManagerBackWebAppClass = persistenceEngineClassLoader.loadClass("org.cumulus4j.store.crypto.keymanager.rest.KeyManagerBackWebApp");
+//			Constructor<?> constructor = jerseyServletClass.getConstructor(Class.class);
+//			HttpServlet servlet = (HttpServlet) constructor.newInstance(keyManagerBackWebAppClass);
+			HttpServlet servlet = (HttpServlet) jerseyServletClass.newInstance();
+			servlet.init(this);
 			return servlet;
 
-		} catch (ClassNotFoundException e) {
+		} catch (Exception e) {
+			if (e instanceof RuntimeException) throw (RuntimeException) e;
+			if (e instanceof ServletException) throw (ServletException) e;
+			if (e instanceof IOException) throw (IOException) e;
+
 			throw new ServletException(e);
-		} catch (SecurityException e) {
-			throw new ServletException(e);
-		} catch (NoSuchMethodException e) {
-			throw new ServletException(e);
-		} catch (IllegalArgumentException e) {
-			throw new ServletException(e);
-		} catch (InstantiationException e) {
-			throw new ServletException(e);
-		} catch (IllegalAccessException e) {
-			throw new ServletException(e);
-		} catch (InvocationTargetException e) {
-			throw new ServletException(e);
+		} finally {
+			Thread.currentThread().setContextClassLoader(backupContextClassLoader);
 		}
 	}
 }

@@ -1,11 +1,14 @@
 package org.nightlabs.jjqb.childvm.webapp;
 
+import java.net.MalformedURLException;
 import java.util.Collection;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.UriInfo;
 
 import org.nightlabs.jjqb.childvm.shared.ConnectionProfileDTO;
 import org.nightlabs.jjqb.childvm.shared.ConnectionProfileDTOList;
@@ -61,7 +64,7 @@ extends AbstractService
 	}
 
 	@PUT
-	public ConnectionProfileDTOPutResult putConnectionProfile(ConnectionProfileDTO connectionProfileDTO)
+	public ConnectionProfileDTOPutResult putConnectionProfile(@Context UriInfo uriInfo, ConnectionProfileDTO connectionProfileDTO)
 	{
 		logger.debug(
 				"putConnectionProfile: entered: profileID={} connectionProfileDTO={}",
@@ -69,15 +72,36 @@ extends AbstractService
 				connectionProfileDTO
 		);
 
+//		logger.debug(
+//				"putConnectionProfile: uriInfo.absolutePath={} uriInfo.baseUri={} uriInfo.path={} uriInfo.requestUri={}",
+//				new Object[] { uriInfo.getAbsolutePath(), uriInfo.getBaseUri(), uriInfo.getPath(), uriInfo.getRequestUri() }
+//		);
+
 		if (connectionProfileDTO == null)
 			throw new IllegalArgumentException("connectionProfileDTO == null");
 
 		if (connectionProfileDTO.getProfileID() == null)
 			throw new IllegalArgumentException("connectionProfileDTO.profileID == null");
 
-		ConnectionProfileManager.sharedInstance().putConnectionProfileDTO(connectionProfileDTO);
+		ConnectionProfileManager connectionProfileManager = ConnectionProfileManager.sharedInstance();
+
+		// uriInfo.baseUri=http://localhost:59324/org.nightlabs.jjqb.cumulus4j.childvm.webapp/ChildVMApp/
+		// => cut the final "ChildVMApp/" from it.
+		try {
+			String baseURL = uriInfo.getBaseUri().toURL().toString();
+			final String restAppPath = "ChildVMApp/";
+			if (!baseURL.endsWith(restAppPath))
+				throw new IllegalStateException("baseURL does not end on \"" + restAppPath + "\"!");
+
+			baseURL = baseURL.substring(0, baseURL.length() - restAppPath.length());
+			connectionProfileManager.setBaseURL(baseURL);
+		} catch (MalformedURLException e) {
+			throw new RuntimeException(e);
+		}
+
+		ConnectionProfile connectionProfile = connectionProfileManager.putConnectionProfileDTO(connectionProfileDTO);
 		ConnectionProfileDTOPutResult result = new ConnectionProfileDTOPutResult();
-		result.setProfileID(connectionProfileDTO.getProfileID());
+		result.setProfileID(connectionProfile.getProfileID());
 		return result;
 	}
 }

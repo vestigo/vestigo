@@ -149,11 +149,16 @@ extends Connection
 
 		ResultSet resultSet;
 		if (queryResult instanceof Collection<?>)
-			resultSet = new JDOResultSet(this, query, (Collection<?>)queryResult);
+			resultSet = newResultSet(query, (Collection<?>)queryResult);
 		else
-			resultSet = new JDOResultSet(this, query, Collections.singletonList(queryResult));
+			resultSet = newResultSet(query, Collections.singletonList(queryResult));
 
 		return resultSet;
+	}
+
+	protected ResultSet newResultSet(Query query, Collection<?> queryResult)
+	{
+		return new JDOResultSet(this, query, queryResult);
 	}
 
 	@Override

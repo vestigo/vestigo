@@ -26,6 +26,8 @@ public class ConnectionProfileManager
 	private Map<String, ConnectionProfile> profileID2connectionProfile = new HashMap<String, ConnectionProfile>();
 	private Collection<ConnectionProfile> connectionProfilesReadOnly = null;
 
+	private String baseURL;
+
 	public ConnectionProfileManager() { }
 
 	public synchronized ConnectionProfile putConnectionProfileDTO(ConnectionProfileDTO connectionProfileDTO)
@@ -114,5 +116,13 @@ public class ConnectionProfileManager
 			connectionProfilesReadOnly = result;
 		}
 		return result;
+	}
+
+	public String getBaseURL() {
+		return baseURL;
+	}
+
+	public void setBaseURL(String baseURL) {
+		this.baseURL = baseURL;
 	}
 }

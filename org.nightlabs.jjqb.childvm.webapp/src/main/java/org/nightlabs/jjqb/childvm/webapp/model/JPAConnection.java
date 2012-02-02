@@ -1,6 +1,7 @@
 package org.nightlabs.jjqb.childvm.webapp.model;
 
 import java.io.IOException;
+import java.util.Collection;
 import java.util.List;
 import java.util.SortedSet;
 
@@ -141,8 +142,13 @@ extends Connection
 
 		List<?> queryResult = query.getResultList();
 
-		ResultSet resultSet = new JPAResultSet(this, query, queryResult);
+		ResultSet resultSet = newResultSet(query, queryResult);
 		return resultSet;
+	}
+
+	protected ResultSet newResultSet(Query query, Collection<?> queryResult)
+	{
+		return new JPAResultSet(this, query, queryResult);
 	}
 
 	@Override
