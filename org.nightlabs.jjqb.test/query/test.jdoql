@@ -1,0 +1,3 @@
+SELECT FROM org.cumulus4j.store.model.DataEntry
+------PROPERTIES_BEGIN------
+------PROPERTIES_END------

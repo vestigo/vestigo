@@ -1,0 +1,5 @@
+SELECT JDOHelper.getObjectId(this), this, this.movieID, this.name 
+FROM org.cumulus4j.store.test.movie.Movie -- some more line end comment
+
+------PROPERTIES_BEGIN------
+------PROPERTIES_END------
