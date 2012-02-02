@@ -55,7 +55,8 @@ public class JPACumulus4jConnection extends JPAConnection
 
 		String cryptoSessionID = cumulus4jConnectionHelper.cryptoSession_acquire();
 		try {
-			getEntityManager().setProperty("cumulus4j.cryptoSessionID", cryptoSessionID);
+			getEntityManager().setProperty(Cumulus4jConnectionHelper.PROPERTY_KEY_CRYPTO_SESSION_ID, cryptoSessionID);
+
 			return super.doExecuteQuery(queryText, parameters);
 		} finally {
 			cumulus4jConnectionHelper.cryptoSession_release();

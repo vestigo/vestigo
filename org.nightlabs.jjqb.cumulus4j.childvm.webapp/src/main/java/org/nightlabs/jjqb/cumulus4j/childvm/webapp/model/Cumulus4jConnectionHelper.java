@@ -11,6 +11,8 @@ import org.nightlabs.jjqb.childvm.webapp.model.ConnectionProfileManager;
 
 public class Cumulus4jConnectionHelper
 {
+	public static final String PROPERTY_KEY_CRYPTO_SESSION_ID = "cumulus4j.cryptoSessionID";
+
 	private Connection connection;
 
 	private Object cryptoSession;

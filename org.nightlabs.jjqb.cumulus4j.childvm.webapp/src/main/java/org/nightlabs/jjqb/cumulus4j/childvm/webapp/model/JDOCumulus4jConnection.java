@@ -55,7 +55,8 @@ public class JDOCumulus4jConnection extends JDOConnection
 
 		String cryptoSessionID = cumulus4jConnectionHelper.cryptoSession_acquire();
 		try {
-			getPersistenceManager().setProperty("cumulus4j.cryptoSessionID", cryptoSessionID);
+			getPersistenceManager().setProperty(Cumulus4jConnectionHelper.PROPERTY_KEY_CRYPTO_SESSION_ID, cryptoSessionID);
+
 			return super.doExecuteQuery(queryText, parameters);
 		} finally {
 			cumulus4jConnectionHelper.cryptoSession_release();
