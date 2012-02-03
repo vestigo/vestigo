@@ -18,6 +18,17 @@ public class JPAConnectionProfile extends ConnectionProfile
 {
 	private EntityManagerFactory entityManagerFactory;
 
+	public static class Factory implements ConnectionProfileFactory {
+		@Override
+		public boolean canHandle(ConnectionProfileDTO connectionDTO) {
+			return connectionDTO != null && JPAConnectionProfileDTO.class == connectionDTO.getClass();
+		}
+		@Override
+		public ConnectionProfile createConnectionProfile() {
+			return new JPAConnectionProfile();
+		}
+	}
+
 	@Override
 	protected ConnectionProfileDTO newConnectionProfileDTO() {
 		return new JPAConnectionProfileDTO();

@@ -5,10 +5,9 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.ServiceLoader;
 
 import org.nightlabs.jjqb.childvm.shared.ConnectionProfileDTO;
-import org.nightlabs.jjqb.childvm.shared.JDOConnectionProfileDTO;
-import org.nightlabs.jjqb.childvm.shared.JPAConnectionProfileDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,6 +27,8 @@ public class ConnectionProfileManager
 
 	private String baseURL;
 
+	private ServiceLoader<ConnectionProfileFactory> connectionProfileFactories = ServiceLoader.load(ConnectionProfileFactory.class);
+
 	public ConnectionProfileManager() { }
 
 	public synchronized ConnectionProfile putConnectionProfileDTO(ConnectionProfileDTO connectionProfileDTO)
@@ -44,7 +45,7 @@ public class ConnectionProfileManager
 
 		ConnectionProfile connectionProfile = profileID2connectionProfile.get(connectionProfileDTO.getProfileID());
 		if (connectionProfile == null) {
-			connectionProfile = newConnectionProfile(connectionProfileDTO.getClass());
+			connectionProfile = newConnectionProfile(connectionProfileDTO);
 			profileID2connectionProfile.put(connectionProfileDTO.getProfileID(), connectionProfile);
 		}
 
@@ -60,23 +61,32 @@ public class ConnectionProfileManager
 		return connectionProfile;
 	}
 
-	private ConnectionProfile newConnectionProfile(Class<? extends ConnectionProfileDTO> dtoClass)
+	private ConnectionProfile newConnectionProfile(ConnectionProfileDTO connectionProfileDTO)
 	{
 		logger.debug(
-				"newConnectionProfile: entered: dtoClass={}",
-				(dtoClass == null ? null : dtoClass.getName())
+				"newConnectionProfile: entered: connectionProfileDTO.class={}",
+				(connectionProfileDTO == null ? null : connectionProfileDTO.getClass().getName())
 		);
 
-		if (dtoClass == null)
-			throw new IllegalArgumentException("dtoClass == null");
+		if (connectionProfileDTO == null)
+			throw new IllegalArgumentException("connectionProfileDTO == null");
 
-		if (JDOConnectionProfileDTO.class.isAssignableFrom(dtoClass))
-			return new JDOConnectionProfile();
+		for (ConnectionProfileFactory connectionProfileFactory : connectionProfileFactories) {
+			if (connectionProfileFactory.canHandle(connectionProfileDTO)) {
+				ConnectionProfile connectionProfile = connectionProfileFactory.createConnectionProfile();
+				if (connectionProfile == null)
+					throw new IllegalStateException("connectionProfileFactory.createConnectionProfile() returned null! connectionProfileFactory.class=" + connectionProfileFactory.getClass());
 
-		if (JPAConnectionProfileDTO.class.isAssignableFrom(dtoClass))
-			return new JPAConnectionProfile();
+				logger.debug(
+						"newConnectionProfile: created connectionProfile of type {}",
+						connectionProfile.getClass()
+				);
 
-		throw new IllegalArgumentException("Unsupported dtoClass: " + dtoClass.getName());
+				return connectionProfile;
+			}
+		}
+
+		throw new IllegalArgumentException("Unsupported connectionProfileDTO: " + connectionProfileDTO);
 	}
 
 	public ConnectionProfile getConnectionProfile(String profileID, boolean throwExceptionIfNotFound)

@@ -18,8 +18,18 @@ import org.slf4j.LoggerFactory;
  */
 public class JDOConnectionProfile extends ConnectionProfile
 {
-
 	private Logger logger = LoggerFactory.getLogger(JDOConnectionProfile.class);
+
+	public static class Factory implements ConnectionProfileFactory {
+		@Override
+		public boolean canHandle(ConnectionProfileDTO connectionDTO) {
+			return connectionDTO != null && JDOConnectionProfileDTO.class == connectionDTO.getClass();
+		}
+		@Override
+		public ConnectionProfile createConnectionProfile() {
+			return new JDOConnectionProfile();
+		}
+	}
 
 	private PersistenceManagerFactory persistenceManagerFactory;
 

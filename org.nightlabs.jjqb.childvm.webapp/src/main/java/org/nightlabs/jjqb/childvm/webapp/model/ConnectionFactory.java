@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package org.nightlabs.jjqb.childvm.webapp.model;
 
@@ -12,6 +12,7 @@ import org.nightlabs.jjqb.childvm.shared.ConnectionDTO;
 public interface ConnectionFactory {
 
 	boolean canHandle(ConnectionDTO connectionDTO);
+
 	Connection createConnection();
-	
+
 }

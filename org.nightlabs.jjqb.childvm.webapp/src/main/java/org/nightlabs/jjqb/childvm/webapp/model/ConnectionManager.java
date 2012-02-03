@@ -22,20 +22,20 @@ public class ConnectionManager
 	private static final ConnectionManager sharedInstance = new ConnectionManager();
 
 	public static ConnectionManager sharedInstance() { return sharedInstance; }
-	
-	
+
+
 	private Map<UUID, Connection> connectionID2connection = new HashMap<UUID, Connection>();
 	private Collection<Connection> cache_allConnections = null;
 	private Map<String, Collection<Connection>> cache_profileID2connections = new HashMap<String, Collection<Connection>>();
 
 	private ConnectionProfileManager connectionProfileManager;
 	private ServiceLoader<ConnectionFactory> connectionFactories = ServiceLoader.load(ConnectionFactory.class);
-	
+
 	private ConnectionManager() {
 		this(ConnectionProfileManager.sharedInstance());
 	}
-	
-	public ConnectionManager(ConnectionProfileManager connectionProfileManager) { 
+
+	public ConnectionManager(ConnectionProfileManager connectionProfileManager) {
 		this.connectionProfileManager = connectionProfileManager;
 	}
 
@@ -93,7 +93,7 @@ public class ConnectionManager
 	private Connection newConnection(ConnectionDTO connectionDTO)
 	{
 		logger.debug(
-				"newConnection: entered: dtoClass={}",
+				"newConnection: entered: connectionDTO.class={}",
 				(connectionDTO == null ? null : connectionDTO.getClass().getName())
 		);
 
@@ -103,11 +103,20 @@ public class ConnectionManager
 		for (ConnectionFactory connectionFactory : connectionFactories) {
 			if (connectionFactory.canHandle(connectionDTO)) {
 				Connection connection = connectionFactory.createConnection();
+				if (connection == null)
+					throw new IllegalStateException("connectionFactory.createConnection() returned null! connectionFactory.class=" + connectionFactory.getClass());
+
 				connection.setConnectionProfileManager(connectionProfileManager);
+
+				logger.debug(
+						"newConnection: created connection of type {}",
+						connection.getClass()
+				);
+
 				return connection;
 			}
 		}
-		
+
 		throw new IllegalArgumentException("Unsupported connectionDTO: " + connectionDTO);
 	}
 
