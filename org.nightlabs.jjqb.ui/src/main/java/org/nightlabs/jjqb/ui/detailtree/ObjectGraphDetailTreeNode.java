@@ -23,6 +23,15 @@ public class ObjectGraphDetailTreeNode
 		this.object = object;
 	}
 
+	public ObjectGraphDetailTreeNode getRootNode()
+	{
+		ObjectGraphDetailTreeNode rootNode = this;
+		while (rootNode.getParentNode() != null)
+			rootNode = rootNode.getParentNode();
+
+		return rootNode;
+	}
+
 	public ObjectGraphDetailTreeNode getParentNode() {
 		return parentNode;
 	}
@@ -46,6 +55,22 @@ public class ObjectGraphDetailTreeNode
 			return ((ObjectReference)object).toLabelString();
 		else
 			return String.valueOf(object);
+	}
+
+	public String getReferencedObjectClassName()
+	{
+		Object object = this.getObject();
+
+		if (object instanceof ObjectReferenceChild)
+			object = ((ObjectReferenceChild)object).getValue();
+
+		if (object instanceof ObjectReference)
+			return ((ObjectReference)object).getObjectClassName();
+
+		if (object == null)
+			return String.valueOf(null);
+
+		return object.getClass().getName();
 	}
 
 	public boolean hasChildren()

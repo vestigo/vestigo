@@ -11,19 +11,19 @@ public class ExpandedNode
 
 	private String fieldName;
 
+	private int index;
+
 	private List<ExpandedNode> expandedNodes = new ArrayList<ExpandedNode>();
 
-	public ExpandedNode(ExpansionState expansionState, ExpandedNode parent, String fieldName)
+	public ExpandedNode(ExpansionState expansionState, ExpandedNode parent, String fieldName, int index)
 	{
 		if (expansionState == null)
 			throw new IllegalArgumentException("expansionState == null");
 
-		if (fieldName == null)
-			throw new IllegalArgumentException("fieldName == null");
-
 		this.expansionState = expansionState;
-		this.parent = parent; // null allowed (of course, the first has no parent)
-		this.fieldName = fieldName;
+		this.parent = parent; // null allowed (of course, the first has none)
+		this.fieldName = fieldName; // null allowed (of course, the first has none)
+		this.index = index;
 	}
 
 	public ExpansionState getExpansionState() {
@@ -38,7 +38,28 @@ public class ExpandedNode
 		return fieldName;
 	}
 
+	public int getIndex() {
+		return index;
+	}
+
 	public List<ExpandedNode> getExpandedChildNodes() {
 		return expandedNodes;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+
+		ExpandedNode n = this;
+		while (n != null) {
+			if (n.getFieldName() != null && n.getParent() != null)
+				sb.insert(0, '/' + n.getFieldName());
+
+			n = n.getParent();
+		}
+
+		sb.insert(0, expansionState.getObjectGraphRootClassName());
+
+		return super.toString() + '[' + sb + ']';
 	}
 }

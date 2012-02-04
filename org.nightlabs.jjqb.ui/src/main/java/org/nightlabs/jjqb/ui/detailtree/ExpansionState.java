@@ -1,8 +1,5 @@
 package org.nightlabs.jjqb.ui.detailtree;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class ExpansionState
 {
 	public ExpansionState(String objectGraphRootClassName)
@@ -15,13 +12,26 @@ public class ExpansionState
 
 	private String objectGraphRootClassName;
 
-	private List<ExpandedNode> expandedChildNodes = new ArrayList<ExpandedNode>();
+//	private List<ExpandedNode> expandedChildNodes = new ArrayList<ExpandedNode>();
+//
+//	public List<ExpandedNode> getExpandedChildNodes() {
+//		return expandedChildNodes;
+//	}
+
+	private ExpandedNode expandedNode;
 
 	public String getObjectGraphRootClassName() {
 		return objectGraphRootClassName;
 	}
+	public ExpandedNode getExpandedNode() {
+		return expandedNode;
+	}
+	public void setExpandedNode(ExpandedNode expandedNode) {
+		this.expandedNode = expandedNode;
+	}
 
-	public List<ExpandedNode> getExpandedChildNodes() {
-		return expandedChildNodes;
+	@Override
+	public String toString() {
+		return super.toString() + '[' + objectGraphRootClassName + ']';
 	}
 }

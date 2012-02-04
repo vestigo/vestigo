@@ -8,6 +8,7 @@ import java.util.Set;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.ListenerList;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.jface.viewers.ITreeContentProvider;
@@ -23,9 +24,11 @@ import org.nightlabs.jjqb.core.ObjectReferenceChild;
 public class ObjectGraphDetailTreeContentProvider
 implements ITreeContentProvider
 {
-	private TreeViewer viewer;
+	private TreeViewer treeViewer;
 	private Display display;
 	private String loadingMessage = "Loading...";
+
+	private ListenerList childrenLoadedListenerList = new ListenerList();
 
 	@Override
 	public void dispose() { }
@@ -40,7 +43,7 @@ implements ITreeContentProvider
 		if (viewer.getControl() == null || viewer.getControl().getDisplay() == null)
 			throw new IllegalArgumentException("WTF?!???! viewer.control == null || viewer.control.display == null");
 
-		this.viewer = (TreeViewer) viewer;
+		this.treeViewer = (TreeViewer) viewer;
 		this.display = viewer.getControl().getDisplay();
 	}
 
@@ -61,8 +64,8 @@ implements ITreeContentProvider
 		if (!(parentElement instanceof ObjectGraphDetailTreeNode))
 			throw new IllegalArgumentException("parentElement is neither a List nor an instance of ObjectGraphDetailTreeNode: " + parentElement);
 
-		if (viewer == null)
-			throw new IllegalStateException("viewer == null :: inputChanged(...) must be called first!");
+		if (treeViewer == null)
+			throw new IllegalStateException("treeViewer == null :: inputChanged(...) must be called first!");
 
 		final ObjectGraphDetailTreeNode parentNode = (ObjectGraphDetailTreeNode) parentElement;
 		ObjectGraphDetailTreeNode[] childNodes = parentNode.getChildNodes();
@@ -84,7 +87,11 @@ implements ITreeContentProvider
 
 								parentNodesLoadingChildren.remove(parentNode);
 
-								viewer.refresh(parentNode);
+								treeViewer.refresh(parentNode);
+
+								ChildrenLoadedEvent event = new ChildrenLoadedEvent(ObjectGraphDetailTreeContentProvider.this, parentNode);
+								for (Object l : childrenLoadedListenerList.getListeners())
+									((ChildrenLoadedListener)l).childrenLoaded(event);
 							}
 						});
 						return Status.OK_STATUS;
@@ -124,7 +131,11 @@ implements ITreeContentProvider
 					children[0] = new ErrorObjectGraphDetailTreeNode(parentNode, "Error: " + x);
 					parentNode.setChildNodes(children);
 
-					viewer.refresh(parentNode);
+					treeViewer.refresh(parentNode);
+
+					ChildrenLoadedEvent event = new ChildrenLoadedEvent(ObjectGraphDetailTreeContentProvider.this, parentNode);
+					for (Object l : childrenLoadedListenerList.getListeners())
+						((ChildrenLoadedListener)l).childrenLoaded(event);
 				}
 			});
 
@@ -155,5 +166,16 @@ implements ITreeContentProvider
 
 		ObjectGraphDetailTreeNode node = (ObjectGraphDetailTreeNode) element;
 		return node.hasChildren();
+	}
+
+	public TreeViewer getTreeViewer() {
+		return treeViewer;
+	}
+
+	public void addChildrenLoadedListener(ChildrenLoadedListener listener) {
+		childrenLoadedListenerList.add(listener);
+	}
+	public void removeChildrenLoadedListener(ChildrenLoadedListener listener) {
+		childrenLoadedListenerList.add(listener);
 	}
 }
