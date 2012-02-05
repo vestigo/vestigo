@@ -1,6 +1,5 @@
 package org.nightlabs.jjqb.ui.detailtree;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,7 +11,6 @@ import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
-import org.nightlabs.jjqb.core.ObjectReference;
 import org.nightlabs.jjqb.core.ObjectReferenceChild;
 import org.nightlabs.util.Util;
 import org.slf4j.Logger;
@@ -29,7 +27,7 @@ extends Composite
 	private TreeViewer treeViewer;
 	private ObjectGraphDetailTreeModel model;
 
-	private Map<String, ExpansionState> objectGraphRootClassName2ExpansionState = new HashMap<String, ExpansionState>();
+	private Map<String, ExpandedNode> objectGraphRootClassName2ExpansionState = new HashMap<String, ExpandedNode>();
 
 	public ObjectGraphDetailTreeComposite(Composite parent, int style) {
 		super(parent, style);
@@ -63,33 +61,13 @@ extends Composite
 			if (event.getParentNode().getChildNodes() == null)
 				return;
 
-			ExpansionState expansionState = objectGraphRootClassName2ExpansionState.get(
+			ExpandedNode rootExpandedNode = objectGraphRootClassName2ExpansionState.get(
 					event.getParentNode().getRootNode().getReferencedObjectClassName()
 			);
 
-			if (expansionState != null && expansionState.getExpandedNode() != null) {
+			if (rootExpandedNode != null && rootExpandedNode.isExpanded()) {
 				for (ObjectGraphDetailTreeNode node : event.getParentNode().getChildNodes()) {
-					List<ObjectGraphDetailTreeNode> nodeParentChildPath = new ArrayList<ObjectGraphDetailTreeNode>();
-					ObjectGraphDetailTreeNode n = node;
-					while (n != null) {
-						nodeParentChildPath.add(0, n);
-						n = n.getParentNode();
-					}
-
-					ExpandedNode expandedNode = expansionState.getExpandedNode();
-					for (ObjectGraphDetailTreeNode treeNode : nodeParentChildPath) {
-						if (treeNode.getParentNode() == null)
-							continue; // already checked root node => ignore and thus shift the relation from treeNode to expandedNode by one level
-
-						expandedNode = findCorrespondingExpandedChildNode(expandedNode, treeNode);
-						if (expandedNode == null)
-							break;
-					}
-
-					if (expandedNode != null) {
-						for (ObjectGraphDetailTreeNode treeNode : nodeParentChildPath)
-							treeViewer.setExpandedState(treeNode, true);
-					}
+					restoreExpansionState(node);
 				}
 			}
 		}
@@ -150,77 +128,117 @@ extends Composite
 			}
 
 			ObjectGraphDetailTreeNode node = (ObjectGraphDetailTreeNode) element;
-//			if (ignoreExpansionEventNodes.remove(node))
-//				return;
+			registerExpansionState(node);
 
-			ObjectGraphDetailTreeNode rootNode = node.getRootNode();
-			registerExpansionState(rootNode);
+			ObjectGraphDetailTreeNode[] childNodes = node.getChildNodes();
+			if (childNodes != null) {
+				for (ObjectGraphDetailTreeNode childNode : childNodes)
+					restoreExpansionState(childNode);
+			}
 		}
 	};
 
-//	private Set<ObjectGraphDetailTreeNode> ignoreExpansionEventNodes = new HashSet<ObjectGraphDetailTreeNode>();
-
-	private void registerExpansionState(ObjectGraphDetailTreeNode rootNode)
+	private void registerExpansionState(ObjectGraphDetailTreeNode node)
 	{
-		String className = rootNode.getReferencedObjectClassName();
-		ExpansionState expansionState = new ExpansionState(className);
-		collectExpandedChildNodesRecursively(expansionState, null, rootNode);
-		objectGraphRootClassName2ExpansionState.put(className, expansionState);
-	}
-
-	private void collectExpandedChildNodesRecursively(ExpansionState expansionState, ExpandedNode parent, ObjectGraphDetailTreeNode node)
-	{
-		if (expansionState == null)
-			throw new IllegalArgumentException("expansionState == null");
-
-		if (node == null)
-			throw new IllegalArgumentException("node == null");
-
-		boolean isExpanded = treeViewer.getExpandedState(node);
-		if (!isExpanded)
-			return;
-
-		Object object = node.getObject();
-		ExpandedNode expandedNode = null;
-
-		if (object instanceof ObjectReference) {
-			if (parent != null)
-				throw new IllegalStateException("parent != null");
-
-			expandedNode = new ExpandedNode(expansionState, parent, null, -1);
-			if (expansionState.getExpandedNode() != null)
-				throw new IllegalStateException("Why is this already assigned? expansionState.getExpandedNode() != null");
-
-			expansionState.setExpandedNode(expandedNode);
+		String className = node.getRootNode().getReferencedObjectClassName();
+		ExpandedNode expandedNode = objectGraphRootClassName2ExpansionState.get(className);
+		if (expandedNode == null) {
+			expandedNode = new ExpandedNode(null, null, -1);
+			objectGraphRootClassName2ExpansionState.put(className, expandedNode);
 		}
-		else if (object instanceof ObjectReferenceChild) {
-			if (parent == null)
-				throw new IllegalStateException("parent == null");
+//		collectExpandedChildNodesRecursively(expansionState, null, rootNode);
 
-			ObjectReferenceChild objectReferenceChild = (ObjectReferenceChild) object;
-			String fieldName = objectReferenceChild.getFieldDesc() == null ? null : objectReferenceChild.getFieldDesc().getFieldName();
-			int index = -1;
-			if (fieldName == null) {
-				index = objectReferenceChild.getOwner().getChildren().indexOf(objectReferenceChild);
+		List<ObjectGraphDetailTreeNode> nodeParentChildPath = node.getParentChildPath();
+
+		boolean isExpanded = treeViewer.getExpandedState(nodeParentChildPath.get(0)); // root node
+		expandedNode.setExpanded(isExpanded);
+
+		for (ObjectGraphDetailTreeNode treeNode : nodeParentChildPath) {
+			if (treeNode.getParentNode() == null)
+				continue; // already checked root node => ignore and thus shift the relation from treeNode to expandedNode by one level
+
+
+			ExpandedNode parent = expandedNode;
+			expandedNode = findCorrespondingExpandedChildNode(parent, treeNode);
+			if (expandedNode == null) {
+				Object object = treeNode.getObject();
+				if (object instanceof ObjectReferenceChild) {
+					ObjectReferenceChild objectReferenceChild = (ObjectReferenceChild) object;
+					String fieldName = objectReferenceChild.getFieldDesc() == null ? null : objectReferenceChild.getFieldDesc().getFieldName();
+					int index = -1;
+					if (fieldName == null) {
+						index = objectReferenceChild.getOwner().getChildren().indexOf(objectReferenceChild);
+					}
+					expandedNode = new ExpandedNode(parent, fieldName, index);
+					parent.getExpandedChildNodes().add(expandedNode);
+				}
+				else {
+					logger.warn(
+							"registerExpansionState: treeNode.getObject() returned an object of unknown type: class={} instance={}",
+							(object == null ? null : object.getClass().getName()),
+							object
+					);
+					return;
+				}
 			}
-			expandedNode = new ExpandedNode(expansionState, parent, fieldName, index);
-			parent.getExpandedChildNodes().add(expandedNode);
-		}
-		else {
-			logger.warn(
-					"collectExpandedChildNodesRecursively: node.getObject() returned an object of unknown type: class={} instance={}",
-					(object == null ? null : object.getClass().getName()),
-					object
-			);
-			return;
-		}
-
-		ObjectGraphDetailTreeNode[] childNodes = node.getChildNodes();
-		if (childNodes != null) {
-			for (ObjectGraphDetailTreeNode childNode : childNodes)
-				collectExpandedChildNodesRecursively(expansionState, expandedNode, childNode);
+			isExpanded = treeViewer.getExpandedState(treeNode);
+			expandedNode.setExpanded(isExpanded);
 		}
 	}
+
+//	private void collectExpandedChildNodesRecursively(ExpansionState expansionState, ExpandedNode parent, ObjectGraphDetailTreeNode node)
+//	{
+//		if (expansionState == null)
+//			throw new IllegalArgumentException("expansionState == null");
+//
+//		if (node == null)
+//			throw new IllegalArgumentException("node == null");
+//
+//		boolean isExpanded = treeViewer.getExpandedState(node);
+//		if (!isExpanded)
+//			return;
+//
+//		Object object = node.getObject();
+//		ExpandedNode expandedNode = null;
+//
+//		if (object instanceof ObjectReference) {
+//			if (parent != null)
+//				throw new IllegalStateException("parent != null");
+//
+//			expandedNode = new ExpandedNode(expansionState, parent, null, -1);
+//			if (expansionState.getExpandedNode() != null)
+//				throw new IllegalStateException("Why is this already assigned? expansionState.getExpandedNode() != null");
+//
+//			expansionState.setExpandedNode(expandedNode);
+//		}
+//		else if (object instanceof ObjectReferenceChild) {
+//			if (parent == null)
+//				throw new IllegalStateException("parent == null");
+//
+//			ObjectReferenceChild objectReferenceChild = (ObjectReferenceChild) object;
+//			String fieldName = objectReferenceChild.getFieldDesc() == null ? null : objectReferenceChild.getFieldDesc().getFieldName();
+//			int index = -1;
+//			if (fieldName == null) {
+//				index = objectReferenceChild.getOwner().getChildren().indexOf(objectReferenceChild);
+//			}
+//			expandedNode = new ExpandedNode(expansionState, parent, fieldName, index);
+//			parent.getExpandedChildNodes().add(expandedNode);
+//		}
+//		else {
+//			logger.warn(
+//					"collectExpandedChildNodesRecursively: node.getObject() returned an object of unknown type: class={} instance={}",
+//					(object == null ? null : object.getClass().getName()),
+//					object
+//			);
+//			return;
+//		}
+//
+//		ObjectGraphDetailTreeNode[] childNodes = node.getChildNodes();
+//		if (childNodes != null) {
+//			for (ObjectGraphDetailTreeNode childNode : childNodes)
+//				collectExpandedChildNodesRecursively(expansionState, expandedNode, childNode);
+//		}
+//	}
 
 	public ObjectGraphDetailTreeModel getInput() {
 		return model;
@@ -237,13 +255,46 @@ extends Composite
 			return;
 
 		for (ObjectGraphDetailTreeNode rootNode : model.getTopLevelNodes()) {
-			String className = rootNode.getReferencedObjectClassName();
-			ExpansionState expansionState = objectGraphRootClassName2ExpansionState.get(className);
-			if (expansionState != null && expansionState.getExpandedNode() != null) {
-//				ignoreExpansionEventNodes.add(rootNode);
-				treeViewer.setExpandedState(rootNode, true);
-			}
+			restoreExpansionState(rootNode);
+//			String className = rootNode.getReferencedObjectClassName();
+//			ExpandedNode expandedNode = objectGraphRootClassName2ExpansionState.get(className);
+//			if (expandedNode != null && expandedNode.isExpanded()) {
+//				treeViewer.setExpandedState(rootNode, true);
+//			}
 		}
 	}
 
+	private void restoreExpansionState(ObjectGraphDetailTreeNode node)
+	{
+		ExpandedNode rootExpandedNode = objectGraphRootClassName2ExpansionState.get(
+				node.getRootNode().getReferencedObjectClassName()
+		);
+		ExpandedNode expandedNode = rootExpandedNode;
+
+		List<ObjectGraphDetailTreeNode> nodeParentChildPath = node.getParentChildPath();
+
+		for (ObjectGraphDetailTreeNode treeNode : nodeParentChildPath) {
+			if (treeNode.getParentNode() == null)
+				continue; // already checked root node => ignore and thus shift the relation from treeNode to expandedNode by one level
+
+			expandedNode = findCorrespondingExpandedChildNode(expandedNode, treeNode);
+			if (expandedNode == null || !expandedNode.isExpanded()) {
+				expandedNode = null;
+				break;
+			}
+		}
+
+		if (expandedNode != null && expandedNode.isExpanded()) {
+//			for (ObjectGraphDetailTreeNode treeNode : nodeParentChildPath)
+//				treeViewer.setExpandedState(treeNode, true);
+			treeViewer.setExpandedState(node, true);
+
+			ObjectGraphDetailTreeNode[] childNodes = node.getChildNodes();
+			if (childNodes != null) {
+				for (ObjectGraphDetailTreeNode childNode : childNodes) {
+					restoreExpansionState(childNode);
+				}
+			}
+		}
+	}
 }

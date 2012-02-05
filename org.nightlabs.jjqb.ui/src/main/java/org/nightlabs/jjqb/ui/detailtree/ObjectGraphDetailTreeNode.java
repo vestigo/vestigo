@@ -1,5 +1,8 @@
 package org.nightlabs.jjqb.ui.detailtree;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.nightlabs.jjqb.core.ObjectReference;
 import org.nightlabs.jjqb.core.ObjectReferenceChild;
 
@@ -21,15 +24,6 @@ public class ObjectGraphDetailTreeNode
 	public ObjectGraphDetailTreeNode(Object object)
 	{
 		this.object = object;
-	}
-
-	public ObjectGraphDetailTreeNode getRootNode()
-	{
-		ObjectGraphDetailTreeNode rootNode = this;
-		while (rootNode.getParentNode() != null)
-			rootNode = rootNode.getParentNode();
-
-		return rootNode;
 	}
 
 	public ObjectGraphDetailTreeNode getParentNode() {
@@ -92,5 +86,25 @@ public class ObjectGraphDetailTreeNode
 		}
 
 		return false;
+	}
+
+	public ObjectGraphDetailTreeNode getRootNode()
+	{
+		ObjectGraphDetailTreeNode rootNode = this;
+		while (rootNode.getParentNode() != null)
+			rootNode = rootNode.getParentNode();
+
+		return rootNode;
+	}
+
+	public List<ObjectGraphDetailTreeNode> getParentChildPath()
+	{
+		List<ObjectGraphDetailTreeNode> nodeParentChildPath = new ArrayList<ObjectGraphDetailTreeNode>();
+		ObjectGraphDetailTreeNode n = this;
+		while (n != null) {
+			nodeParentChildPath.add(0, n);
+			n = n.getParentNode();
+		}
+		return nodeParentChildPath;
 	}
 }

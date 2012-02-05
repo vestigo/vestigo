@@ -5,29 +5,21 @@ import java.util.List;
 
 public class ExpandedNode
 {
-	private ExpansionState expansionState;
-
 	private ExpandedNode parent;
 
 	private String fieldName;
 
 	private int index;
 
+	private boolean expanded;
+
 	private List<ExpandedNode> expandedNodes = new ArrayList<ExpandedNode>();
 
-	public ExpandedNode(ExpansionState expansionState, ExpandedNode parent, String fieldName, int index)
+	public ExpandedNode(ExpandedNode parent, String fieldName, int index)
 	{
-		if (expansionState == null)
-			throw new IllegalArgumentException("expansionState == null");
-
-		this.expansionState = expansionState;
 		this.parent = parent; // null allowed (of course, the first has none)
 		this.fieldName = fieldName; // null allowed (of course, the first has none)
 		this.index = index;
-	}
-
-	public ExpansionState getExpansionState() {
-		return expansionState;
 	}
 
 	public ExpandedNode getParent() {
@@ -55,11 +47,21 @@ public class ExpandedNode
 			if (n.getFieldName() != null && n.getParent() != null)
 				sb.insert(0, '/' + n.getFieldName());
 
+			if (n.getIndex() >= 0 && n.getParent() != null)
+				sb.insert(0, '/' + n.getIndex());
+
 			n = n.getParent();
 		}
 
-		sb.insert(0, expansionState.getObjectGraphRootClassName());
+//		sb.insert(0, expansionState.getObjectGraphRootClassName());
 
 		return super.toString() + '[' + sb + ']';
+	}
+
+	public boolean isExpanded() {
+		return expanded;
+	}
+	public void setExpanded(boolean expanded) {
+		this.expanded = expanded;
 	}
 }
