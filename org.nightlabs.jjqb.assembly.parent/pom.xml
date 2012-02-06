@@ -116,7 +116,7 @@ Marco :-)
 			<artifactId>log4j</artifactId>
 			<!-- FIXME Have a custom bundled log4j here, because the official release 
 				has two identical packages in Import-Package => OSGI won't resolve that bundle -->
-			<version>1.2.17-NL</version>
+			<version>1.2.16-NL</version>
 		</dependency>
 		<!-- jmdns needed by log4j -->
 		<dependency>
