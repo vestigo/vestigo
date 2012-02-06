@@ -25,6 +25,10 @@ public class ObjectGraphDetailTreeModel
 		}
 	}
 
+	/**
+	 * Get the root-nodes (aka top-level-nodes).
+	 * @return the root-nodes; never <code>null</code>.
+	 */
 	public List<ObjectGraphDetailTreeNode> getTopLevelNodes() {
 		return topLevelNodes;
 	}
