@@ -9,15 +9,32 @@ import org.nightlabs.jjqb.core.test.licence.xml.LicenseInfoIOTest;
 
 public class PassportTest
 {
+	private Passport passport = new Passport();
+	private PassportSoap passportSoap = passport.getPassportSoap();
+
 	@Test
 	public void validateValidKey()
 	throws Exception
 	{
-		Passport passport = new Passport();
-    	PassportSoap passportSoap = passport.getPassportSoap();
     	String licenceValidationResult = passportSoap.validateLicense(87920, "b6038024@nwldx.com", "PDFO-RPGR-BONE-AKFM");
     	LicenseInfo licenseInfo = new LicenseInfoIO().read(licenceValidationResult);
-
     	LicenseInfoIOTest.assertLicenseInfoEqualsExpected(licenseInfo);
+	}
+
+	@Test
+	public void activateValidKey()
+	throws Exception
+	{
+		String customerEmail = "test@payproglobal.com";
+		String key = "DKWT-DMRE-FXHX-BKEM";
+
+		String licenceValidationResult = passportSoap.validateLicense(87920, customerEmail, key);
+    	LicenseInfo licenseInfo = new LicenseInfoIO().read(licenceValidationResult);
+
+    	boolean activeLicenseResult = passportSoap.activeLicense(87920, customerEmail, key);
+    	System.out.println(activeLicenseResult);
+
+    	String licenceValidationResult2 = passportSoap.validateLicense(87920, customerEmail, key);
+    	LicenseInfo licenseInfo2 = new LicenseInfoIO().read(licenceValidationResult2);
 	}
 }
