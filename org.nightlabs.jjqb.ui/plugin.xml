@@ -90,6 +90,7 @@
       </page>
    </extension>
 
+
    <extension
             point="org.eclipse.datatools.connectivity.oda.design.ui.dataSource">
       <dataSourceUI id="org.nightlabs.jjqb.core.oda.JDODriver">
@@ -261,5 +262,13 @@
             id="org.nightlabs.jjqb.ui.JJQBPerspective"
             name="JDO/JPA Query Browser"/>
     </extension>
+
+
+	<extension point="org.eclipse.ui.preferencePages">
+		<page class="org.nightlabs.jjqb.ui.licence.LicencePreferencePage"
+			id="org.nightlabs.jjqb.ui.licence.LicencePreferencePage"
+			name="JJQB Licence">
+		</page>
+	</extension>
 
 </plugin>

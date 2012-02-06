@@ -111,9 +111,9 @@
 				<!--
 					<manifestLocation>META-INF</manifestLocation>
 				-->
-				<!--
+				<!-- We currently do not need any bundle-activator/eclipse-plugin-class. Marco :-)
 					<instructions>
-						<Bundle-Activator>org.nightlabs.jjqb.core.internal.osgi.Activator</Bundle-Activator>
+						<Bundle-Activator>org.nightlabs.jjqb.cumulus4j.core.JJQBCumulus4jCorePlugin</Bundle-Activator>
 						<Bundle-ActivationPolicy>lazy</Bundle-ActivationPolicy>
 					</instructions>
 				-->

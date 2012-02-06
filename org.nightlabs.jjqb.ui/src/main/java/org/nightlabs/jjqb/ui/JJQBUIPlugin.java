@@ -19,10 +19,9 @@ import org.osgi.framework.BundleContext;
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
  */
-public class JJQBUIPlugin extends AbstractUIPlugin {
-
-	// The plug-in ID
-	public static final String PLUGIN_ID = "TestProject"; //$NON-NLS-1$
+public class JJQBUIPlugin extends AbstractUIPlugin
+{
+	public static final String BUNDLE_SYMBOLIC_NAME = "org.nightlabs.jjqb.ui";
 
 	public static final String IMAGE_SIZE_16x16 = "16x16";
 	public static final String IMAGE_SIZE_24x24 = "24x24";
@@ -66,6 +65,7 @@ public class JJQBUIPlugin extends AbstractUIPlugin {
 
 	private PropertiesWithChangeSupport readPropertiesFromPreferenceStore(final String preferenceKey)
 	{
+		getStateLocation();
 		JJQBUIPlugin plugin = JJQBUIPlugin.getDefault();
 		final IPreferenceStore preferenceStore = plugin.getPreferenceStore();
 

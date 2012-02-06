@@ -156,7 +156,7 @@
 					<manifestLocation>META-INF</manifestLocation>
 				-->
 					<instructions>
-						<Bundle-Activator>org.nightlabs.jjqb.core.internal.osgi.Activator</Bundle-Activator>
+						<Bundle-Activator>org.nightlabs.jjqb.core.JJQBCorePlugin</Bundle-Activator>
 						<Bundle-ActivationPolicy>lazy</Bundle-ActivationPolicy>
 						<Require-Bundle>org.eclipse.core.runtime</Require-Bundle>
 						<Import-Package>!org.eclipse.core.runtime,*</Import-Package>

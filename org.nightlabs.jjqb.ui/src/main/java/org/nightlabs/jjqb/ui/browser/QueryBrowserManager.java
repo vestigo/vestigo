@@ -527,38 +527,38 @@ public abstract class QueryBrowserManager
 //
 //		return false;
 //	}
-
-	private boolean matchesQueryBrowserClass(String classOrInterfaceToMatch)
-	{
-		Class<?> c = this.getClass();
-		while (c != null)
-		{
-			if (classOrInterfaceToMatch.equals(c.getName()))
-				return true;
-
-			for (Class<?> interfaze: c.getInterfaces()) {
-				if (matchesInterface(interfaze, classOrInterfaceToMatch))
-					return true;
-			}
-
-			c = c.getSuperclass();
-		}
-
-		return false;
-	}
-
-	private boolean matchesInterface(Class<?> interfaze, String classOrInterfaceToMatch)
-	{
-		if (classOrInterfaceToMatch.equals(interfaze.getName()))
-			return true;
-
-		for (Class<?> i: interfaze.getInterfaces()) {
-			if (matchesInterface(i, classOrInterfaceToMatch))
-				return true;
-		}
-
-		return false;
-	}
+//
+//	private boolean matchesQueryBrowserClass(String classOrInterfaceToMatch)
+//	{
+//		Class<?> c = this.getClass();
+//		while (c != null)
+//		{
+//			if (classOrInterfaceToMatch.equals(c.getName()))
+//				return true;
+//
+//			for (Class<?> interfaze: c.getInterfaces()) {
+//				if (matchesInterface(interfaze, classOrInterfaceToMatch))
+//					return true;
+//			}
+//
+//			c = c.getSuperclass();
+//		}
+//
+//		return false;
+//	}
+//
+//	private boolean matchesInterface(Class<?> interfaze, String classOrInterfaceToMatch)
+//	{
+//		if (classOrInterfaceToMatch.equals(interfaze.getName()))
+//			return true;
+//
+//		for (Class<?> i: interfaze.getInterfaces()) {
+//			if (matchesInterface(i, classOrInterfaceToMatch))
+//				return true;
+//		}
+//
+//		return false;
+//	}
 
 	protected synchronized void onDispose()
 	{

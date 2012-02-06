@@ -1,0 +1,27 @@
+<project default="build">
+	<target name="build">
+		<delete verbose="true" failonerror="false">
+			<fileset dir="src/main/java/org/nightlabs/jjqb/core/licence/ws">
+				<include name="**/*"/>
+			</fileset>
+		</delete>
+
+		<exec executable="wsimport">
+			<arg value="-b"/>
+			<arg value="jaxb-bindings.xml"/>
+
+			<arg value="-s" />
+			<arg value="src/main/java"/>
+
+			<arg value="-d"/>
+			<arg value="target/classes"/>
+
+			<arg value="-p"/>
+			<arg value="org.nightlabs.jjqb.core.licence.ws"/>
+			
+			<arg value="-extension"/>
+
+			<arg value="https://www.payproglobal.com/passport/Service.asmx?WSDL" />
+		</exec>
+	</target>
+</project>
