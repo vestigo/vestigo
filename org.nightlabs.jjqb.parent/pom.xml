@@ -10,7 +10,7 @@
 	<parent>
 		<groupId>org.nightlabs.eclipse</groupId>
 		<artifactId>org.nightlabs.eclipse.parent</artifactId>
-		<version>1.2.0-SNAPSHOT</version>
+		<version>1.2.0</version>
 	</parent>
 
 	<repositories>
@@ -216,7 +216,7 @@
 			<dependency>
 				<groupId>org.nightlabs.jdo</groupId>
 				<artifactId>org.nightlabs.jdo.jdoqleditor</artifactId>
-				<version>1.0.1-SNAPSHOT</version>
+				<version>1.0.1</version>
 			</dependency>
 			<!-- END org.nightlabs.**.* -->
 		</dependencies>
