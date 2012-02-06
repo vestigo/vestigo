@@ -35,10 +35,10 @@
 	
 	
 	<scm>
-		<connection>scm:svn:https://dev.nightlabs.org/svn/private/main/jjqb/trunk</connection>
-		<developerConnection>scm:svn:https://dev.nightlabs.org/svn/private/main/jjqb/trunk</developerConnection>
-	  <url>https://svn.nightlabs.org/svn/eclipse/trunk/org.nightlabs.eclipse.parent/org.nightlabs.jjqb.parent/org.nightlabs.jjqb</url>
-  </scm>
+		<url>https://dev.nightlabs.org/svn/private/main/jjqb/trunk/</url>
+		<connection>scm:svn:https://dev.nightlabs.org/svn/private/main/jjqb/trunk/</connection>
+		<developerConnection>scm:svn:https://dev.nightlabs.org/svn/private/main/jjqb/trunk/</developerConnection>
+	</scm>
 
 	<distributionManagement>
 		<repository>
