@@ -125,6 +125,7 @@
 				<configuration>
 					<systemPropertyVariables>
 						<jjqb-test-connection-libs>${project.build.directory}/dependency/jjqb-test-connection-libs</jjqb-test-connection-libs>
+						<jjqb.version>${jjqb.version}</jjqb.version>
 					</systemPropertyVariables>
 				</configuration>
 				<executions>
