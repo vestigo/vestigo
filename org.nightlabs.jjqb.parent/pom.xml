@@ -44,7 +44,7 @@
 	</repositories>
 
 	<properties>
-		<jjqb.version>1.0.0-SNAPSHOT</jjqb.version>
+		<jjqb.version>${project.version}</jjqb.version>
 		<jersey.version>1.9</jersey.version>
 
 		<!-- Always aggregate. -->
