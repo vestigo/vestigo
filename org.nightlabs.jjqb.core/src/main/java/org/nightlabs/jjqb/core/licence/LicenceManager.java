@@ -1,5 +1,7 @@
 package org.nightlabs.jjqb.core.licence;
 
+import java.io.IOException;
+
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.preferences.ConfigurationScope;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
@@ -11,39 +13,22 @@ import org.eclipse.core.runtime.preferences.IPreferencesService;
 import org.nightlabs.jjqb.core.JJQBCorePlugin;
 import org.nightlabs.jjqb.core.licence.ws.Passport;
 import org.nightlabs.jjqb.core.licence.ws.PassportSoap;
+import org.nightlabs.jjqb.core.licence.xml.LicenseInfo;
+import org.nightlabs.jjqb.core.licence.xml.LicenseInfoIO;
 import org.osgi.service.prefs.Preferences;
 
 public class LicenceManager
 {
-	public static final String PREFERENCES_KEY_EMAIL = "email";
-	public static final String PREFERENCES_KEY_LICENCE_KEY = "licenceKey";
+	public static final String PREFERENCES_KEY_EMAIL = "licence.email";
+	public static final String PREFERENCES_KEY_LICENCE_KEY = "licence.licenceKey";
+	public static final String PREFERENCES_KEY_LAST_CHECK_TIMESTAMP = "licence.lastCheck.timestamp";
+	public static final String PREFERENCES_KEY_LAST_CHECK_RESULT = "licence.lastCheck.result";
+	public static final String PREFERENCES_KEY_ACTIVATED = "licence.activated";
 
 	private IEclipsePreferences preferencesRootNode;
 	private Preferences preferences;
 
 	private PassportSoap passportSoap;
-
-//	private PropertiesWithChangeSupport licenceProperties;
-//	private static final SecureRandom random = new SecureRandom();
-//
-//	private static final String[] KEY = {
-//		"uvN:JSA\";[`\"M3U\"}<%w7AV3*b\"wVXC1PuDb)sG~e_NQgsTo4DIL~vj,YDi)I<Ut_JxyQzK2nDT68pcHZAe^/!W*bzixgFW\"xnIS",
-//		"\"BdOd8|iSUe:cpvio+GY\"c6+uVJ$9P~iN3GHid)jzrDZoedHh*Cwe0tdJ(skU)0QVRDHyB6|YfIrJW+sD?*YiqqPduso|)~pr\"~",
-//		"K#t~W8,|*\\YXD_HOVH&@`$S?^-RV)ax`yq;sy>QQ2+*M1:/VO]r\\fG)IVpwx`QT=6yJ[Dy*lPfcIWx)K.$H$+$!:MH@5dPhlkH"
-//	};
-//
-//	private static final byte[][] KEY_B = new byte[KEY.length][];
-//
-//	static {
-//		Set<Integer> lengths = new HashSet<Integer>();
-//		for (int i = 0; i < KEY.length; i++) {
-//			byte[] byteArray = KEY[i].getBytes(IOUtil.CHARSET_UTF_8);
-//			if (!lengths.add(byteArray.length))
-//				throw new IllegalStateException("Multiple key parts have the same length: " + byteArray.length);
-//
-//			KEY_B[i] = byteArray;
-//		}
-//	}
 
 	public LicenceManager()
 	{
@@ -72,10 +57,65 @@ public class LicenceManager
 					clearCache();
 			}
 		});
-
-//		loadLicenceProperties();
 	}
 
+    protected synchronized PassportSoap getPassportSoap() {
+    	if (passportSoap == null) {
+	    	Passport passport = new Passport();
+	    	passportSoap = passport.getPassportSoap();
+    	}
+    	return passportSoap;
+    }
+
+    protected int getProductID()
+    {
+    	return 87920;
+    }
+
+	public boolean isLicenceValid() // TODO make these checks asynchronously (and keep a result locally for offline usage - but limited for 1 month and try to prevent copying files (use MAC address and user name))
+	{
+		String email = preferences.get(PREFERENCES_KEY_EMAIL, null);
+		String licenceKey = preferences.get(PREFERENCES_KEY_LICENCE_KEY, null);
+
+		if (email == null || licenceKey == null)
+			return false;
+
+		LicenseInfo licenseInfo;
+		String licenceValidationResult = getPassportSoap().validateLicense(getProductID(), email, licenceKey);
+		try {
+			licenseInfo = new LicenseInfoIO().read(licenceValidationResult);
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+
+		if (licenseInfo.getValid() == null)
+			throw new IllegalStateException("licenseInfo.getValid() == null");
+
+		return licenseInfo.getValid().booleanValue();
+	}
+
+	public void clearCache() {
+	}
+
+//	private static final String[] KEY = {
+//		"uvN:JSA\";[`\"M3U\"}<%w7AV3*b\"wVXC1PuDb)sG~e_NQgsTo4DIL~vj,YDi)I<Ut_JxyQzK2nDT68pcHZAe^/!W*bzixgFW\"xnIS",
+//		"\"BdOd8|iSUe:cpvio+GY\"c6+uVJ$9P~iN3GHid)jzrDZoedHh*Cwe0tdJ(skU)0QVRDHyB6|YfIrJW+sD?*YiqqPduso|)~pr\"~",
+//		"K#t~W8,|*\\YXD_HOVH&@`$S?^-RV)ax`yq;sy>QQ2+*M1:/VO]r\\fG)IVpwx`QT=6yJ[Dy*lPfcIWx)K.$H$+$!:MH@5dPhlkH"
+//	};
+//
+//	private static final byte[][] KEY_B = new byte[KEY.length][];
+//
+//	static {
+//		Set<Integer> lengths = new HashSet<Integer>();
+//		for (int i = 0; i < KEY.length; i++) {
+//			byte[] byteArray = KEY[i].getBytes(IOUtil.CHARSET_UTF_8);
+//			if (!lengths.add(byteArray.length))
+//				throw new IllegalStateException("Multiple key parts have the same length: " + byteArray.length);
+//
+//			KEY_B[i] = byteArray;
+//		}
+//	}
+//
 //	public static void main(String[] args) throws Exception {
 //		String s0 = "Neben dem Workspace für Benutzerdateien existiert für Plug-ins der Laufzeitumgebung und Eclipse Runtime noch die Configuration Area. Diese ist als interner Ordner der Eclipse Plattform zu betrachten. Hier werden vor allem Metadaten, Caches sowie interne Konfigurationsdateien (z.B. die Startkonfiguration config.ini) abgelegt. Der Ordner wird über osgi.configuration.area bzw. -configuration konfiguriert und liegt standardmäßig im Anwendungsordner unter configuration. Beim Start aus der IDE können Sie den Ordner in der Run Configuration konfigurieren und beim Start der Anwendung zurücksetzen lassen:";
 //		System.out.println(s0);
@@ -88,7 +128,7 @@ public class LicenceManager
 //		System.out.println(s1);
 //		System.out.println(s0.equals(s1));
 //	}
-
+//
 //	private void loadLicenceProperties()
 //	{
 //		try {
@@ -204,49 +244,4 @@ public class LicenceManager
 //		}
 //		return out;
 //	}
-
-
-    protected synchronized PassportSoap getPassportSoap() {
-    	if (passportSoap == null) {
-	    	Passport passport = new Passport();
-	    	passportSoap = passport.getPassportSoap();
-    	}
-    	return passportSoap;
-    }
-
-    protected int getProductID()
-    {
-    	return 87920;
-    }
-
-	public boolean isLicenceValid()
-	{
-		String email = preferences.get(PREFERENCES_KEY_EMAIL, null);
-		String licenceKey = preferences.get(PREFERENCES_KEY_LICENCE_KEY, null);
-
-		if (email == null || licenceKey == null)
-			return false;
-
-		String licenceValidationResult = getPassportSoap().validateLicense(getProductID(), email, licenceKey);
-
-//		<LicenseInfo Valid="False" />
-
-//		<LicenseInfo Valid="true">
-//		  <CustomerEmail>b6038024@nwldx.com</CustomerEmail>
-//		  <CustomerName>Adam Müller</CustomerName>
-//		  <ProductName>Test product 1</ProductName>
-//		  <Key>PDFO-RPGR-BONE-AKFM</Key>
-//		  <TotalUsages>1</TotalUsages>
-//		  <UsagesLeft>1</UsagesLeft>
-//		  <PurchaseDate>2/3/2012</PurchaseDate>
-//		  <OrderReferenceNumber>686514-001-1UT</OrderReferenceNumber>
-//		  <CanBeActivated>True</CanBeActivated>
-//		</LicenseInfo>
-
-		return true;
-	}
-
-	public void clearCache() {
-
-	}
 }
