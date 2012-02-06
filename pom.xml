@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>org.nightlabs.jjqb</groupId>
 		<artifactId>org.nightlabs.jjqb.parent</artifactId>
-		<version>0.2.0-SNAPSHOT</version>
+		<version>0.2.0</version>
 		<relativePath>org.nightlabs.jjqb.parent</relativePath>
 	</parent>
 
@@ -35,9 +35,9 @@
 	
 	
 	<scm>
-		<url>https://dev.nightlabs.org/svn/private/main/jjqb/trunk/</url>
-		<connection>scm:svn:https://dev.nightlabs.org/svn/private/main/jjqb/trunk/</connection>
-		<developerConnection>scm:svn:https://dev.nightlabs.org/svn/private/main/jjqb/trunk/</developerConnection>
+		<url>https://dev.nightlabs.org/svn/private/main/jjqb/tags/org.nightlabs.jjqb-0.2.0/trunk</url>
+		<connection>scm:svn:https://dev.nightlabs.org/svn/private/main/jjqb/tags/org.nightlabs.jjqb-0.2.0/trunk</connection>
+		<developerConnection>scm:svn:https://dev.nightlabs.org/svn/private/main/jjqb/tags/org.nightlabs.jjqb-0.2.0/trunk</developerConnection>
 	</scm>
 
 	<distributionManagement>
