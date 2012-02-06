@@ -100,7 +100,7 @@
 									<groupId>org.nightlabs.jjqb</groupId>
 									<artifactId>org.nightlabs.jjqb.childvm.webapp.client.testmodel</artifactId>
 									<overWrite>true</overWrite>
-									<version>1.0.0-SNAPSHOT</version>
+									<version>${jjqb.version}</version>
 								</artifactItem>
 								<artifactItem>
 									<groupId>javax.jdo</groupId>
