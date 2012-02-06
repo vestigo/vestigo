@@ -49,20 +49,20 @@ public class ExpansionState
 
 	@Override
 	public String toString() {
-		StringBuilder sb = new StringBuilder();
+		StringBuilder path = new StringBuilder();
 
 		ExpansionState n = this;
 		while (n != null) {
 			if (n.getFieldName() != null)
-				sb.insert(0, '/' + n.getFieldName());
+				path.insert(0, "/" + n.getFieldName());
 
 			if (n.getIndex() >= 0)
-				sb.insert(0, '/' + n.getIndex());
+				path.insert(0, "/" + n.getIndex());
 
 			n = n.getParent();
 		}
 
-		return super.toString() + '[' + sb + ']';
+		return super.toString() + "[path=" + path + ",expanded=" + expanded + ']';
 	}
 
 	public boolean isExpanded() {

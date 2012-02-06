@@ -55,13 +55,13 @@ extends Composite
 	private ChildrenLoadedListener childrenLoadedListener = new ChildrenLoadedListener() {
 		@Override
 		public void childrenLoaded(ChildrenLoadedEvent event) {
-			logger.debug("childrenLoadedListener.childrenLoaded: entered: {}", event.getParentNode().getLabelText());
+			logger.debug("childrenLoadedListener.childrenLoaded: event.parentNode={}", event.getParentNode());
 
-			if (event.getParentNode().getChildNodes() == null)
-				return;
-
-			for (ObjectGraphDetailTreeNode node : event.getParentNode().getChildNodes())
-				restoreExpansionState(node);
+			ObjectGraphDetailTreeNode[] childNodes = event.getParentNode().getChildNodes();
+			if (childNodes != null) {
+				for (ObjectGraphDetailTreeNode node : childNodes)
+					restoreExpansionState(node);
+			}
 		}
 	};
 
@@ -85,7 +85,7 @@ extends Composite
 			logger.debug(
 					"getCorrespondingChildExpansionState: parentExpansionState={} childTreeNode={} childExpansionState={}",
 					new Object[] { parentExpansionState, childTreeNode, childExpansionState }
-					);
+			);
 		}
 
 		return childExpansionState;
@@ -134,6 +134,8 @@ extends Composite
 
 	private void registerExpansionState(ObjectGraphDetailTreeNode node)
 	{
+		logger.debug("registerExpansionState: node={}", node);
+
 		String className = node.getRootNode().getReferencedObjectClassName();
 		ExpansionState expansionState = objectGraphRootClassName2ExpansionState.get(className);
 		if (expansionState == null) {
@@ -175,6 +177,7 @@ extends Composite
 			}
 			isExpanded = treeViewer.getExpandedState(treeNode);
 			expansionState.setExpanded(isExpanded);
+			logger.trace("registerExpansionState: expansionState={}", expansionState);
 		}
 	}
 
@@ -193,6 +196,8 @@ extends Composite
 
 	private void restoreExpansionState(ObjectGraphDetailTreeNode node)
 	{
+		logger.debug("restoreExpansionState: node={}", node);
+
 		ExpansionState rootExpansionState = objectGraphRootClassName2ExpansionState.get(
 				node.getRootNode().getReferencedObjectClassName()
 		);

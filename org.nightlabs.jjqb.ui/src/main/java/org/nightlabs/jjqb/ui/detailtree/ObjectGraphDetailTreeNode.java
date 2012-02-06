@@ -107,4 +107,9 @@ public class ObjectGraphDetailTreeNode
 		}
 		return nodeParentChildPath;
 	}
+
+	@Override
+	public String toString() {
+		return super.toString() + '[' + getReferencedObjectClassName() + ',' + getLabelText() + ']';
+	}
 }
