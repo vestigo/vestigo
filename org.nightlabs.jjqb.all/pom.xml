@@ -34,25 +34,6 @@
 		<!-- END Cumulus4j -->
 	</modules>
 	
-	<scm>
-		<url>https://dev.nightlabs.org/svn/private/main/jjqb/trunk/org.nightlabs.jjqb.all</url>
-		<connection>scm:svn:https://dev.nightlabs.org/svn/private/main/jjqb/trunk/org.nightlabs.jjqb.all</connection>
-		<developerConnection>scm:svn:https://dev.nightlabs.org/svn/private/main/jjqb/trunk/org.nightlabs.jjqb.all</developerConnection>
-	</scm>
-
-	<distributionManagement>
-		<repository>
-			<id>dev.nightlabs.org-private-libs-release-local</id>
-			<name>dev.nightlabs.org-private-libs-release-local</name>
-			<url>https://dev.nightlabs.org/maven-repository-private/libs-release-local</url>
-		</repository>
-		<snapshotRepository>
-			<id>dev.nightlabs.org-private-libs-snapshot-local</id>
-			<name>dev.nightlabs.org-private-libs-snapshot-local</name>
-			<url>https://dev.nightlabs.org/maven-repository-private/libs-snapshot-local</url>
-		</snapshotRepository>
-	</distributionManagement>
-	
 	<properties>
 		<platform.linux-gtk-x86_64.enabled>false</platform.linux-gtk-x86_64.enabled>
 		<platform.win32.enabled>false</platform.win32.enabled>
