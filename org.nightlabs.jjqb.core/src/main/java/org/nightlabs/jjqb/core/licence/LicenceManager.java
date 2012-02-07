@@ -1,14 +1,18 @@
 package org.nightlabs.jjqb.core.licence;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.ListenerList;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.core.runtime.preferences.ConfigurationScope;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
-import org.eclipse.core.runtime.preferences.IEclipsePreferences.INodeChangeListener;
-import org.eclipse.core.runtime.preferences.IEclipsePreferences.IPreferenceChangeListener;
-import org.eclipse.core.runtime.preferences.IEclipsePreferences.NodeChangeEvent;
-import org.eclipse.core.runtime.preferences.IEclipsePreferences.PreferenceChangeEvent;
 import org.eclipse.core.runtime.preferences.IPreferencesService;
 import org.nightlabs.jjqb.core.JJQBCorePlugin;
 import org.nightlabs.jjqb.core.licence.ws.Passport;
@@ -16,9 +20,13 @@ import org.nightlabs.jjqb.core.licence.ws.PassportSoap;
 import org.nightlabs.jjqb.core.licence.xml.LicenseInfo;
 import org.nightlabs.jjqb.core.licence.xml.LicenseInfoIO;
 import org.osgi.service.prefs.Preferences;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class LicenceManager
 {
+	private static final Logger logger = LoggerFactory.getLogger(LicenceManager.class);
+
 	public static final String PREFERENCES_KEY_EMAIL = "licence.email";
 	public static final String PREFERENCES_KEY_LICENCE_KEY = "licence.licenceKey";
 	public static final String PREFERENCES_KEY_LAST_CHECK_TIMESTAMP = "licence.lastCheck.timestamp";
@@ -30,33 +38,63 @@ public class LicenceManager
 
 	private PassportSoap passportSoap;
 
+	private volatile List<Message> lastCheckLicenceMessages = Collections.emptyList();
+	private volatile boolean licenceValid = false;
+
+	private ListenerList checkLicenceListeners = new ListenerList();
+
+	private class LicenceCheckJob extends Job
+	{
+		public LicenceCheckJob() {
+			super("Licence check");
+		}
+
+		@Override
+		protected IStatus run(IProgressMonitor monitor)
+		{
+			try {
+				checkLicence(null, monitor);
+
+				// In case of success, check again after 30 days (the licence might expire).
+				new LicenceCheckJob().schedule(30L * 24L * 3600L * 1000L);
+			} catch (CheckLicenceException e) {
+				// In case of error, try again in 5 minutes.
+				new LicenceCheckJob().schedule(5L * 60L * 1000L);
+			}
+			return Status.OK_STATUS;
+		}
+	}
+
 	public LicenceManager()
 	{
 		IPreferencesService preferencesService = Platform.getPreferencesService();
 		preferencesRootNode = preferencesService.getRootNode();
 		preferences = preferencesRootNode.node(ConfigurationScope.SCOPE).node(JJQBCorePlugin.BUNDLE_SYMBOLIC_NAME);
 
-		preferencesRootNode.addNodeChangeListener(new INodeChangeListener() {
-			@Override
-			public void removed(NodeChangeEvent event) {
-				if (JJQBCorePlugin.BUNDLE_SYMBOLIC_NAME.equals(event.getChild().name()))
-					clearCache();
-			}
+//		preferencesRootNode.addNodeChangeListener(new INodeChangeListener() {
+//			@Override
+//			public void removed(NodeChangeEvent event) {
+//				if (JJQBCorePlugin.BUNDLE_SYMBOLIC_NAME.equals(event.getChild().name()))
+//					clearCache();
+//			}
+//
+//			@Override
+//			public void added(NodeChangeEvent event) {
+//				if (JJQBCorePlugin.BUNDLE_SYMBOLIC_NAME.equals(event.getChild().name()))
+//					clearCache();
+//			}
+//		});
+//
+//		preferencesRootNode.addPreferenceChangeListener(new IPreferenceChangeListener() {
+//			@Override
+//			public void preferenceChange(PreferenceChangeEvent event) {
+//				if (JJQBCorePlugin.BUNDLE_SYMBOLIC_NAME.equals(event.getNode().name()))
+//					clearCache();
+//			}
+//		});
 
-			@Override
-			public void added(NodeChangeEvent event) {
-				if (JJQBCorePlugin.BUNDLE_SYMBOLIC_NAME.equals(event.getChild().name()))
-					clearCache();
-			}
-		});
-
-		preferencesRootNode.addPreferenceChangeListener(new IPreferenceChangeListener() {
-			@Override
-			public void preferenceChange(PreferenceChangeEvent event) {
-				if (JJQBCorePlugin.BUNDLE_SYMBOLIC_NAME.equals(event.getNode().name()))
-					clearCache();
-			}
-		});
+//		licenceCheckTimer.schedule(licenceCheckTimerTask, 0L); // start immediately in the background
+		new LicenceCheckJob().schedule();
 	}
 
     protected synchronized PassportSoap getPassportSoap() {
@@ -72,29 +110,144 @@ public class LicenceManager
     	return 87920;
     }
 
-	public boolean isLicenceValid() // TODO make these checks asynchronously (and keep a result locally for offline usage - but limited for 1 month and try to prevent copying files (use MAC address and user name))
+    /**
+     * Get the result of the last licence check. If there was no licence check, yet, it will return <code>false</code>.
+     * This method returns immediately without performing any IO operation.
+     * @return <code>true</code>, if the licence is valid; <code>false</code> otherwise.
+     */
+	public boolean isLicenceValid()
 	{
-		String email = preferences.get(PREFERENCES_KEY_EMAIL, null);
-		String licenceKey = preferences.get(PREFERENCES_KEY_LICENCE_KEY, null);
-
-		if (email == null || licenceKey == null)
-			return false;
-
-		LicenseInfo licenseInfo;
-		String licenceValidationResult = getPassportSoap().validateLicense(getProductID(), email, licenceKey);
-		try {
-			licenseInfo = new LicenseInfoIO().read(licenceValidationResult);
-		} catch (IOException e) {
-			throw new RuntimeException(e);
-		}
-
-		if (licenseInfo.getValid() == null)
-			throw new IllegalStateException("licenseInfo.getValid() == null");
-
-		return licenseInfo.getValid().booleanValue();
+		return licenceValid;
 	}
 
-	public void clearCache() {
+	/**
+	 * Get the messages that where collected during the last {@link #checkLicence(List, IProgressMonitor)} invocation.
+	 * @return
+	 */
+	public List<Message> getLastCheckLicenceMessages() {
+		return lastCheckLicenceMessages;
+	}
+
+	/**
+	 * Do a licence check now (synchronously).
+	 *
+	 * @param messages a list to be populated with the messages that happen during this method. Can be <code>null</code>,
+	 * if the caller is not interested in getting the messages (they can still be queried later by {@link #getLastCheckLicenceMessages()}).
+	 * @param monitor monitor for progress feedback; must not be <code>null</code>.
+	 * @return whether the licence is valid.
+	 * @throws CheckLicenceException if an error occurs. In this case, <code>messages</code> should also contain at least one
+	 * {@link ErrorMessage} (which is added before throwing the exception).
+	 * @see #isLicenceValid()
+	 */
+	public boolean checkLicence(List<Message> messages, IProgressMonitor monitor)
+	throws CheckLicenceException
+	{
+		if (messages == null)
+			messages = new ArrayList<Message>();
+
+		if (monitor == null)
+			throw new IllegalArgumentException("monitor == null");
+
+		boolean licenceValid = this.licenceValid;
+		firePreCheckLicenceEvent(this.lastCheckLicenceMessages, licenceValid); // fire with OLD values (before check)
+
+		monitor.beginTask("Check licence", 100);
+		try {
+			messages.add(new InfoMessage("Beginning licence check."));
+
+			String email = preferences.get(PREFERENCES_KEY_EMAIL, null);
+			if (email != null) {
+				email = email.trim();
+
+				if (email.isEmpty())
+						email = null;
+			}
+
+			String licenceKey = preferences.get(PREFERENCES_KEY_LICENCE_KEY, null);
+			if (licenceKey != null) {
+				licenceKey = licenceKey.trim();
+
+				if (licenceKey.isEmpty())
+					licenceKey = null;
+			}
+
+			if (email == null || licenceKey == null) {
+				messages.add(new WarningMessage("There is no email address or no licence key. Cannot check licence."));
+				licenceValid = false;
+			}
+			else {
+				LicenseInfo licenseInfo;
+				String licenceValidationResult = getPassportSoap().validateLicense(getProductID(), email, licenceKey);
+				try {
+					licenseInfo = new LicenseInfoIO().read(licenceValidationResult);
+				} catch (IOException e) {
+					throw new CheckLicenceException(e);
+				}
+
+				if (licenseInfo.getValid() == null)
+					throw new CheckLicenceException("PassportSoap.validateLicense(...) returned illegal result: licenseInfo.getValid() == null");
+
+				licenceValid = licenseInfo.getValid().booleanValue();
+
+				if (licenceValid)
+					messages.add(new InfoMessage("Licence is valid."));
+				else
+					messages.add(new WarningMessage("Licence is NOT valid."));
+			}
+		} catch (Throwable x) {
+			messages.add(new ErrorMessage(x));
+			if (x instanceof CheckLicenceException)
+				throw (CheckLicenceException)x;
+			else
+				throw new CheckLicenceException(x);
+		} finally {
+			messages.add(new InfoMessage("Finished licence check."));
+
+			messages = Collections.unmodifiableList(new ArrayList<Message>(messages));
+			this.licenceValid = licenceValid;
+			this.lastCheckLicenceMessages = messages;
+
+			monitor.done();
+			firePostCheckLicenceEvent(messages, licenceValid); // fire with NEW values (after current check)
+		}
+		return licenceValid;
+	}
+
+	protected void firePreCheckLicenceEvent(List<Message> lastCheckLicenceMessages, boolean licenceValid)
+	{
+		CheckLicenceEvent event = new CheckLicenceEvent(this, lastCheckLicenceMessages, licenceValid);
+		for (Object l : checkLicenceListeners.getListeners()) {
+			try {
+				((CheckLicenceListener)l).preCheckLicence(event);
+			} catch (Exception x) {
+				logger.error("firePreCheckLicenceEvent: " + x, x);
+			}
+		}
+	}
+
+	protected void firePostCheckLicenceEvent(List<Message> lastCheckLicenceMessages, boolean licenceValid)
+	{
+		CheckLicenceEvent event = new CheckLicenceEvent(this, lastCheckLicenceMessages, licenceValid);
+		for (Object l : checkLicenceListeners.getListeners()) {
+			try {
+				((CheckLicenceListener)l).postCheckLicence(event);
+			} catch (Exception x) {
+				logger.error("firePostCheckLicenceEvent: " + x, x);
+			}
+		}
+	}
+
+	public void addCheckLicenceListener(CheckLicenceListener listener)
+	{
+		if (listener == null)
+			throw new IllegalArgumentException("listener == null");
+
+		checkLicenceListeners.add(listener);
+	}
+
+	public void removeCheckLicenceListener(CheckLicenceListener listener)
+	{
+		checkLicenceListeners.remove(listener);
 	}
 
 //	private static final String[] KEY = {

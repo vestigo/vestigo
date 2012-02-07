@@ -21,8 +21,10 @@ import org.nightlabs.jjqb.childvm.shared.ResultCellSimpleDTO;
 import org.nightlabs.jjqb.childvm.shared.ResultRowDTO;
 import org.nightlabs.jjqb.childvm.shared.ResultSetID;
 import org.nightlabs.jjqb.childvm.shared.api.ChildVM;
+import org.nightlabs.jjqb.core.JJQBCorePlugin;
 import org.nightlabs.jjqb.core.ObjectReference;
 import org.nightlabs.jjqb.core.internal.ObjectReferenceImpl;
+import org.nightlabs.jjqb.core.licence.LicenceManager;
 import org.nightlabs.jjqb.core.oda.Query;
 import org.nightlabs.jjqb.core.oda.ResultSet;
 
@@ -45,12 +47,26 @@ public abstract class AbstractResultSet implements ResultSet
 
 	private Map<String, ObjectReference> qualifiedObjectID2objectReference = new HashMap<String, ObjectReference>();
 
+	private LicenceManager licenceManager;
+
 	public AbstractResultSet(Query query)
 	{
 		if (query == null)
 			throw new IllegalArgumentException("query == null");
 
 		this.query = query;
+
+		licenceManager = JJQBCorePlugin.getDefault().getLicenceManager();
+		constrainMaxRowsIfLicenceIsNotValid();
+	}
+
+	private void constrainMaxRowsIfLicenceIsNotValid()
+	{
+		if (maxRows > 0 && maxRows <= 10)
+			return;
+
+		if (!licenceManager.isLicenceValid())
+			maxRows = 10;
 	}
 
 	@Override
@@ -135,6 +151,7 @@ public abstract class AbstractResultSet implements ResultSet
 	@Override
 	public void setMaxRows(int max) throws OdaException {
 		this.maxRows = max;
+		constrainMaxRowsIfLicenceIsNotValid();
 	}
 
 	private List<ResultRowDTO> fetchNextRows()
