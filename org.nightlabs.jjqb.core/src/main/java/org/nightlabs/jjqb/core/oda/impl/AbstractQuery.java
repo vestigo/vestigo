@@ -21,6 +21,7 @@ import org.eclipse.datatools.connectivity.oda.spec.QuerySpecification;
 import org.nightlabs.jjqb.childvm.shared.QueryParameterDTO;
 import org.nightlabs.jjqb.childvm.shared.ResultSetID;
 import org.nightlabs.jjqb.childvm.shared.api.ChildVM;
+import org.nightlabs.jjqb.core.JJQBCorePlugin;
 import org.nightlabs.jjqb.core.oda.Query;
 import org.nightlabs.jjqb.core.oda.QueryID;
 import org.nightlabs.jjqb.core.oda.ResultSet;
@@ -52,6 +53,20 @@ public abstract class AbstractQuery implements Query
 
 		this.connection = connection;
 		this.queryID = new QueryID(connection.getConnectionID(), connection.nextQueryID());
+
+		// TODO The query's maxRow property is not yet taken into account at all. It should for performance improvement!
+		constrainMaxRowsIfLicenceIsNotValid();
+	}
+
+	public static final int MAX_ROWS_WITHOUT_VALID_LICENCE = 15; // the last of these rows is replaced by a marker (so there is actually one real row less)
+
+	private void constrainMaxRowsIfLicenceIsNotValid()
+	{
+		if (maxRows > 0 && maxRows <= MAX_ROWS_WITHOUT_VALID_LICENCE)
+			return;
+
+		if (!JJQBCorePlugin.getDefault().getLicenceManager().isLicenceValid())
+			maxRows = MAX_ROWS_WITHOUT_VALID_LICENCE;
 	}
 
 	@Override
@@ -148,6 +163,7 @@ public abstract class AbstractQuery implements Query
 	@Override
 	public void setMaxRows(int max) throws OdaException {
 		this.maxRows = max;
+		constrainMaxRowsIfLicenceIsNotValid();
 	}
 
 	@Override
@@ -275,6 +291,7 @@ public abstract class AbstractQuery implements Query
 		ResultSetID resultSetID = getChildVM().executeQuery(connection.getConnectionID(), queryText, parameters);
 		ResultSet resultSet = newResultSet();
 		resultSet.setResultSetID(resultSetID);
+		resultSet.setMaxRows(maxRows);
 		resultSetID2resultSet.put(resultSet.getResultSetID().getResultSetID(), resultSet);
 		return resultSet;
 	}

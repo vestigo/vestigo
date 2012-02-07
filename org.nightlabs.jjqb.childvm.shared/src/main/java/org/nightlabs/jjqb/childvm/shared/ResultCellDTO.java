@@ -14,6 +14,11 @@ implements Serializable
 	private String fieldDeclaringClassName;
 	private String fieldName;
 
+	public ResultCellDTO(String fieldDeclaringClassName, String fieldName) {
+		this.fieldDeclaringClassName = fieldDeclaringClassName;
+		this.fieldName = fieldName;
+	}
+
 	/**
 	 * Create a new instance of <code>ResultCellDTO</code>.
 	 * @param field the field whose value is represented by this instance; might be <code>null</code> for top-level objects

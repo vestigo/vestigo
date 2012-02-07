@@ -5,6 +5,7 @@ import java.math.BigInteger;
 import java.sql.Date;
 import java.sql.Time;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -24,7 +25,6 @@ import org.nightlabs.jjqb.childvm.shared.api.ChildVM;
 import org.nightlabs.jjqb.core.JJQBCorePlugin;
 import org.nightlabs.jjqb.core.ObjectReference;
 import org.nightlabs.jjqb.core.internal.ObjectReferenceImpl;
-import org.nightlabs.jjqb.core.licence.LicenceManager;
 import org.nightlabs.jjqb.core.oda.Query;
 import org.nightlabs.jjqb.core.oda.ResultSet;
 
@@ -47,26 +47,12 @@ public abstract class AbstractResultSet implements ResultSet
 
 	private Map<String, ObjectReference> qualifiedObjectID2objectReference = new HashMap<String, ObjectReference>();
 
-	private LicenceManager licenceManager;
-
 	public AbstractResultSet(Query query)
 	{
 		if (query == null)
 			throw new IllegalArgumentException("query == null");
 
 		this.query = query;
-
-		licenceManager = JJQBCorePlugin.getDefault().getLicenceManager();
-		constrainMaxRowsIfLicenceIsNotValid();
-	}
-
-	private void constrainMaxRowsIfLicenceIsNotValid()
-	{
-		if (maxRows > 0 && maxRows <= 10)
-			return;
-
-		if (!licenceManager.isLicenceValid())
-			maxRows = 10;
 	}
 
 	@Override
@@ -148,6 +134,17 @@ public abstract class AbstractResultSet implements ResultSet
 			throw new IllegalStateException("This ResultSet is already closed!");
 	}
 
+	private void constrainMaxRowsIfLicenceIsNotValid()
+	{
+		if (!JJQBCorePlugin.getDefault().getLicenceManager().isLicenceValid()) {
+			licenceIsNotValid = true;
+			if (maxRows < 1 || maxRows > AbstractQuery.MAX_ROWS_WITHOUT_VALID_LICENCE)
+				maxRows = AbstractQuery.MAX_ROWS_WITHOUT_VALID_LICENCE;
+		}
+	}
+
+	private boolean licenceIsNotValid = false;
+
 	@Override
 	public void setMaxRows(int max) throws OdaException {
 		this.maxRows = max;
@@ -156,7 +153,25 @@ public abstract class AbstractResultSet implements ResultSet
 
 	private List<ResultRowDTO> fetchNextRows()
 	{
-		return getChildVM().nextResultRowDTOList(resultSetID, 100);
+		List<ResultRowDTO> rows = getChildVM().nextResultRowDTOList(resultSetID, 100);
+		if (licenceIsNotValid && !rows.isEmpty()) {
+			rows = new ArrayList<ResultRowDTO>(rows);
+
+			ResultRowDTO firstRow = rows.get(0);
+
+			while (rows.size() >= maxRows)
+				rows.remove(rows.size() - 1);
+
+			ResultRowDTO row = new ResultRowDTO();
+			row.setRowIndex(rows.size());
+			rows.add(row);
+
+			for (int i = 0; i < firstRow.getCells().size(); ++i) {
+				ResultCellDTO firstRowCell = firstRow.getCells().get(i);
+				row.getCells().add(new ResultCellSimpleDTO(firstRowCell.getFieldDeclaringClassName(), firstRowCell.getFieldName(), LICENCE_NOT_VALID));
+			}
+		}
+		return rows;
 	}
 
 	@Override

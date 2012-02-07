@@ -25,6 +25,7 @@ public class JJQBUIPlugin extends AbstractUIPlugin
 
 	public static final String IMAGE_SIZE_16x16 = "16x16";
 	public static final String IMAGE_SIZE_24x24 = "24x24";
+	public static final String IMAGE_SIZE_75x70 = "75x70";
 
 	// The shared instance
 	private static JJQBUIPlugin plugin;

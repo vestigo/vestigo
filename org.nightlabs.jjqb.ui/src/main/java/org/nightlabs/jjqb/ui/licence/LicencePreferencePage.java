@@ -2,10 +2,6 @@ package org.nightlabs.jjqb.ui.licence;
 
 import java.util.ArrayList;
 
-import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Status;
-import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.core.runtime.preferences.ConfigurationScope;
 import org.eclipse.jface.preference.FieldEditorPreferencePage;
 import org.eclipse.jface.preference.IPreferenceStore;
@@ -18,17 +14,14 @@ import org.eclipse.ui.preferences.ScopedPreferenceStore;
 import org.nightlabs.jjqb.core.JJQBCorePlugin;
 import org.nightlabs.jjqb.core.licence.CheckLicenceAdapter;
 import org.nightlabs.jjqb.core.licence.CheckLicenceEvent;
-import org.nightlabs.jjqb.core.licence.CheckLicenceException;
 import org.nightlabs.jjqb.core.licence.LicenceManager;
 import org.nightlabs.jjqb.core.licence.Message;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class LicencePreferencePage
 extends FieldEditorPreferencePage
 implements IWorkbenchPreferencePage
 {
-	private static final Logger logger = LoggerFactory.getLogger(LicencePreferencePage.class);
+//	private static final Logger logger = LoggerFactory.getLogger(LicencePreferencePage.class);
 
 	private Display display;
 	private LicenceManager licenceManager = JJQBCorePlugin.getDefault().getLicenceManager();
@@ -113,20 +106,7 @@ implements IWorkbenchPreferencePage
 		if (!super.performOk())
 			return false;
 
-		Job job = new Job("Licence check") {
-			@Override
-			protected IStatus run(IProgressMonitor monitor) {
-				try {
-					licenceManager.checkLicence(null, monitor);
-				} catch (CheckLicenceException e) {
-					// ignore (only log), because we have the messages table anyway
-					logger.error("checkLicenceButtonPressed: " + e, e);
-				}
-				return Status.OK_STATUS;
-			}
-		};
-		job.setUser(true);
-		job.schedule();
+		licenceManager.checkLicence(true);
 
 		return true;
 	}

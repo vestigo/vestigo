@@ -10,6 +10,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.ListenerList;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.jobs.IJobChangeListener;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.core.runtime.preferences.ConfigurationScope;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
@@ -128,8 +129,44 @@ public class LicenceManager
 		return lastCheckLicenceMessages;
 	}
 
+	public Preferences getPreferences() {
+		return preferences;
+	}
+
 	/**
-	 * Do a licence check now (synchronously).
+	 * Do a licence check in a background {@link Job}. This method returns immediately after
+	 * {@link Job#schedule() scheduling} a <code>Job</code>.
+	 * @param userJob flag indicating whether or not this job has been directly initiated by
+	 * a UI end user; passed to {@link Job#setUser(boolean)}.
+	 * @param listeners listeners to be notified about job changes;
+	 * passed to {@link Job#addJobChangeListener(IJobChangeListener)}. Can be <code>null</code>.
+	 */
+	public void checkLicence(boolean userJob, IJobChangeListener ... listeners)
+	{
+		Job job = new Job("Licence check") {
+			@Override
+			protected IStatus run(IProgressMonitor monitor) {
+				try {
+					checkLicence(null, monitor);
+				} catch (CheckLicenceException e) {
+					// ignore (only log), because we have the messages table anyway
+					logger.error("checkLicence: " + e, e);
+				}
+				return Status.OK_STATUS;
+			}
+		};
+
+		if (listeners != null) {
+			for (IJobChangeListener listener : listeners)
+				job.addJobChangeListener(listener);
+		}
+
+		job.setUser(userJob);
+		job.schedule();
+	}
+
+	/**
+	 * Do a licence check synchronously on the current thread. This method blocks until the licence check is completed.
 	 *
 	 * @param messages a list to be populated with the messages that happen during this method. Can be <code>null</code>,
 	 * if the caller is not interested in getting the messages (they can still be queried later by {@link #getLastCheckLicenceMessages()}).
@@ -155,23 +192,10 @@ public class LicenceManager
 		try {
 			messages.add(new InfoMessage("Beginning licence check."));
 
-			String email = preferences.get(PREFERENCES_KEY_EMAIL, null);
-			if (email != null) {
-				email = email.trim();
+			String email = preferences.get(PREFERENCES_KEY_EMAIL, "").trim();
+			String licenceKey = preferences.get(PREFERENCES_KEY_LICENCE_KEY, "").trim();
 
-				if (email.isEmpty())
-						email = null;
-			}
-
-			String licenceKey = preferences.get(PREFERENCES_KEY_LICENCE_KEY, null);
-			if (licenceKey != null) {
-				licenceKey = licenceKey.trim();
-
-				if (licenceKey.isEmpty())
-					licenceKey = null;
-			}
-
-			if (email == null || licenceKey == null) {
+			if (email.isEmpty() || licenceKey.isEmpty()) {
 				messages.add(new WarningMessage("There is no email address or no licence key. Cannot check licence."));
 				licenceValid = false;
 			}

@@ -11,6 +11,15 @@ public class ResultCellSimpleDTO extends ResultCellDTO
 {
 	private static final long serialVersionUID = 1L;
 
+	public ResultCellSimpleDTO(String fieldDeclaringClassName, String fieldName, Object object) {
+		super(fieldDeclaringClassName, fieldName);
+
+		if (object == null)
+			throw new IllegalArgumentException("object == null");
+
+		this.object = object;
+	}
+
 	public ResultCellSimpleDTO(Field field, Object object)
 	{
 		super(field);
@@ -26,12 +35,12 @@ public class ResultCellSimpleDTO extends ResultCellDTO
 	public Object getObject() {
 		return object;
 	}
-//	public void setObject(Object object) {
-//		if (object == null)
-//			throw new IllegalArgumentException("object == null");
-//
-//		this.object = object;
-//	}
+	public void setObject(Object object) {
+		if (object == null)
+			throw new IllegalArgumentException("object == null");
+
+		this.object = object;
+	}
 
 	@Override
 	public int hashCode() {

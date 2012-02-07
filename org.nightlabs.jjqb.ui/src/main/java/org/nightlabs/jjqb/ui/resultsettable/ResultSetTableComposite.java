@@ -1,8 +1,11 @@
 package org.nightlabs.jjqb.ui.resultsettable;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.eclipse.core.runtime.ListenerList;
 import org.eclipse.datatools.connectivity.oda.IResultSet;
@@ -23,6 +26,10 @@ import org.eclipse.jface.viewers.ViewerCell;
 import org.eclipse.jface.viewers.deferred.DeferredContentProvider;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.TableCursor;
+import org.eclipse.swt.events.KeyAdapter;
+import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.MouseAdapter;
+import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.PaintEvent;
 import org.eclipse.swt.events.PaintListener;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -33,6 +40,8 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 import org.nightlabs.jjqb.core.ObjectReference;
+import org.nightlabs.jjqb.core.oda.ResultSet;
+import org.nightlabs.jjqb.ui.licence.LicenceNotValidDialog;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -69,6 +78,38 @@ implements ISelectionProvider
 		tableViewer.getTable().setLinesVisible(true);
 		tableViewer.setUseHashlookup(true);
 //		hookRepairPaintListener(); // I don't have these paint bugs here in the office - only at home - strange (and it makes things really slow, here).
+
+		tableViewer.getTable().addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseUp(MouseEvent e) {
+				openLicenceNotValidDialogIfLicenceNotValidRowSelected();
+			}
+		});
+
+		tableViewer.getTable().addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if (e.character == '\r' || e.character == '\n')
+					openLicenceNotValidDialogIfLicenceNotValidRowSelected();
+			}
+		});
+	}
+
+	private void openLicenceNotValidDialogIfLicenceNotValidRowSelected()
+	{
+		Set<ResultSetTableCell> cells = new HashSet<ResultSetTableCell>();
+		for (ResultSetTableRow row : selectedRows) {
+			cells.addAll(Arrays.asList(row.getCells()));
+		}
+
+		cells.addAll(selectedCells);
+
+		for (ResultSetTableCell cell : cells) {
+			if (cell.getCellContent() == ResultSet.LICENCE_NOT_VALID) {
+				new LicenceNotValidDialog(getShell()).open();
+				return;
+			}
+		}
 	}
 
 	private boolean repairPaintEventTriggered = false;
