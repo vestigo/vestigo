@@ -8,13 +8,14 @@ import org.nightlabs.jjqb.childvm.shared.ResultCellNullDTO;
 import org.nightlabs.jjqb.childvm.shared.ResultCellSimpleDTO;
 import org.nightlabs.jjqb.childvm.shared.ResultSetID;
 import org.nightlabs.jjqb.core.ObjectReference;
+import org.nightlabs.jjqb.core.resource.Messages;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
  */
 public interface ResultSet extends IResultSet
 {
-	public static final String LICENCE_NOT_VALID = "Please purchase JJQB!";
+	public static final String LICENCE_NOT_VALID = Messages.getString("ResultSet.licenceNotValid"); //$NON-NLS-1$
 
 	Query getQuery();
 

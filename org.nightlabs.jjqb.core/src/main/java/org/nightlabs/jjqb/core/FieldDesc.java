@@ -16,10 +16,10 @@ public class FieldDesc
 	public FieldDesc(String fieldDeclaringClassName, String fieldName)
 	{
 		if (fieldDeclaringClassName == null)
-			throw new IllegalArgumentException("fieldDeclaringClassName == null");
+			throw new IllegalArgumentException("fieldDeclaringClassName == null"); //$NON-NLS-1$
 
 		if (fieldName == null)
-			throw new IllegalArgumentException("fieldName == null");
+			throw new IllegalArgumentException("fieldName == null"); //$NON-NLS-1$
 
 		this.fieldDeclaringClassName = fieldDeclaringClassName;
 		this.fieldName = fieldName;

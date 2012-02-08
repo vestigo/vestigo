@@ -28,6 +28,7 @@ import org.nightlabs.jjqb.core.licence.CheckLicenceAdapter;
 import org.nightlabs.jjqb.core.licence.CheckLicenceEvent;
 import org.nightlabs.jjqb.core.licence.LicenceManager;
 import org.nightlabs.jjqb.core.licence.Message;
+import org.nightlabs.jjqb.ui.resource.Messages;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -58,7 +59,7 @@ implements IWorkbenchPreferencePage
 		display = workbench.getDisplay();
 		IPreferenceStore preferenceStore = new ScopedPreferenceStore(new ConfigurationScope(), JJQBCorePlugin.BUNDLE_SYMBOLIC_NAME);
 		setPreferenceStore(preferenceStore);
-		setTitle("JJQB Licence");
+		setTitle(Messages.getString("LicencePreferencePage.title")); //$NON-NLS-1$
 		updateDescription();
 	}
 
@@ -66,7 +67,7 @@ implements IWorkbenchPreferencePage
 	{
 		String licenceKey = getPreferenceStore().getString(LicenceManager.PREFERENCES_KEY_LICENCE_KEY);
 		if (licenceKey == null)
-			licenceKey = "";
+			licenceKey = ""; //$NON-NLS-1$
 
 		licenceKey = licenceKey.trim();
 
@@ -96,27 +97,25 @@ implements IWorkbenchPreferencePage
 		addHorizontalSeparator(getFieldEditorParent());
 
 		purchaseHyperlink = new Hyperlink(getFieldEditorParent(), SWT.WRAP);
-		purchaseHyperlink.setText("Please click here to purchase a licence.");
-		String purchaseURL = "https://secure.payproglobal.com/orderpage.aspx?products=87920"; // TODO need a nice URL (forwarding to this one)
-		purchaseHyperlink.setHref(purchaseURL);
-		purchaseHyperlink.setToolTipText(purchaseURL);
+		purchaseHyperlink.setText(LicenceNotValidDialog.PURCHASE_HYPERLINK_TEXT);
+		purchaseHyperlink.setHref(LicenceNotValidDialog.PURCHASE_URL);
+		purchaseHyperlink.setToolTipText(LicenceNotValidDialog.PURCHASE_URL);
 		configureHyperlink(purchaseHyperlink);
 
 		homeHyperlink = new Hyperlink(getFieldEditorParent(), SWT.WRAP);
-		homeHyperlink.setText("Click here to visit the web site of JDO/JPA Query Browser.");
-		String homeURL = "http://www.nightlabs.com"; // TODO need product web site!
-		homeHyperlink.setHref(homeURL);
-		homeHyperlink.setToolTipText(homeURL);
+		homeHyperlink.setText(LicenceNotValidDialog.HOME_HYPERLINK_TEXT);
+		homeHyperlink.setHref(LicenceNotValidDialog.HOME_URL);
+		homeHyperlink.setToolTipText(LicenceNotValidDialog.HOME_URL);
 		configureHyperlink(homeHyperlink);
 
 		addHorizontalSeparator(getFieldEditorParent());
 
-		addField(new StringFieldEditor(LicenceManager.PREFERENCES_KEY_EMAIL, "E-mail address:", getFieldEditorParent()));
-		addField(new StringFieldEditor(LicenceManager.PREFERENCES_KEY_LICENCE_KEY, "Licence key:", getFieldEditorParent()));
+		addField(new StringFieldEditor(LicenceManager.PREFERENCES_KEY_EMAIL, Messages.getString("LicencePreferencePage.emailAddressLabel.text"), getFieldEditorParent())); //$NON-NLS-1$
+		addField(new StringFieldEditor(LicenceManager.PREFERENCES_KEY_LICENCE_KEY, Messages.getString("LicencePreferencePage.licenceKeyLabel.text"), getFieldEditorParent())); //$NON-NLS-1$
 
 		addHorizontalSeparator(getFieldEditorParent());
 
-		lastLicenceCheckMessagesTableFieldEditor = new LicenceCheckMessagesTableFieldEditor("Status of last licence check:", getFieldEditorParent());
+		lastLicenceCheckMessagesTableFieldEditor = new LicenceCheckMessagesTableFieldEditor(Messages.getString("LicencePreferencePage.licenceCheckMessagesLabel.text"), getFieldEditorParent()); //$NON-NLS-1$
 		addField(lastLicenceCheckMessagesTableFieldEditor);
 
 		lastLicenceCheckMessagesTable = lastLicenceCheckMessagesTableFieldEditor.getLicenceCheckMessagesTable();
@@ -161,11 +160,11 @@ implements IWorkbenchPreferencePage
 				try {
 					PlatformUI.getWorkbench().getBrowserSupport().getExternalBrowser().openURL(new URL(href));
 				} catch (Exception x) {
-					logger.error("linkActivated: ", x);
+					logger.error("linkActivated: ", x); //$NON-NLS-1$
 					MessageDialog.openError(
 							getShell(),
-							"Error opening browser",
-							String.format("It was not possible to open your browser. Please open the following URL manually: %s", href)
+							Messages.getString("LicencePreferencePage.openBrowserErrorDialog.title"), //$NON-NLS-1$
+							String.format(Messages.getString("LicencePreferencePage.openBrowserErrorDialog.text"), href) //$NON-NLS-1$
 					);
 				}
 			}

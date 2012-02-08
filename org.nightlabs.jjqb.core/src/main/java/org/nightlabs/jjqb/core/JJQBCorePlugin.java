@@ -14,7 +14,7 @@ import org.osgi.framework.BundleContext;
 public class JJQBCorePlugin
 implements BundleActivator
 {
-	public static final String BUNDLE_SYMBOLIC_NAME = "org.nightlabs.jjqb.core";
+	public static final String BUNDLE_SYMBOLIC_NAME = "org.nightlabs.jjqb.core"; //$NON-NLS-1$
 
 	private LicenceManager licenceManager;
 
@@ -33,10 +33,10 @@ implements BundleActivator
 		List<Bundle> jerseyClientBundles = new LinkedList<Bundle>();
 		List<Bundle> jerseyOtherBundles = new LinkedList<Bundle>();
 		for (Bundle bundle : context.getBundles()) {
-			if (bundle.getSymbolicName().startsWith("com.sun.jersey")) {
-				if ("com.sun.jersey.jersey-core".equals(bundle.getSymbolicName()))
+			if (bundle.getSymbolicName().startsWith("com.sun.jersey")) { //$NON-NLS-1$
+				if ("com.sun.jersey.jersey-core".equals(bundle.getSymbolicName())) //$NON-NLS-1$
 					jerseyCoreBundles.add(bundle);
-				else if ("com.sun.jersey.jersey-client".equals(bundle.getSymbolicName()))
+				else if ("com.sun.jersey.jersey-client".equals(bundle.getSymbolicName())) //$NON-NLS-1$
 					jerseyClientBundles.add(bundle);
 				else
 					jerseyOtherBundles.add(bundle);
@@ -44,10 +44,10 @@ implements BundleActivator
 		}
 
 		if (jerseyCoreBundles.isEmpty())
-			throw new IllegalStateException("No Jersey core bundle found!");
+			throw new IllegalStateException("No Jersey core bundle found!"); //$NON-NLS-1$
 
 		if (jerseyClientBundles.isEmpty())
-			throw new IllegalStateException("No Jersey client bundle found!");
+			throw new IllegalStateException("No Jersey client bundle found!"); //$NON-NLS-1$
 
 		// There is a very strange bug: If we do not pass the parameter "-clean" to eclipse, the 2nd
 		// (and every following) start of eclipse causes the Jersey bundle to be activated already very

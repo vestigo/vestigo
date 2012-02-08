@@ -23,6 +23,7 @@ import org.eclipse.ui.forms.widgets.Hyperlink;
 import org.nightlabs.jjqb.core.JJQBCorePlugin;
 import org.nightlabs.jjqb.core.licence.LicenceManager;
 import org.nightlabs.jjqb.ui.JJQBUIPlugin;
+import org.nightlabs.jjqb.ui.resource.Messages;
 import org.osgi.service.prefs.BackingStoreException;
 import org.osgi.service.prefs.Preferences;
 import org.slf4j.Logger;
@@ -32,9 +33,18 @@ public class LicenceNotValidDialog extends TitleAreaDialog
 {
 	private static final Logger logger = LoggerFactory.getLogger(LicenceNotValidDialog.class);
 
-	public static final String MESSAGE_LICENCE_VALID = "Thank you for purchasing JJQB! Your licence is valid!";
-	public static final String MESSAGE_LICENCE_NOT_YET_PURCHASED = "Thank you very much for trying out JJQB. If you liked the trial version, please purchase a licence and enter its data below.";
-	public static final String MESSAGE_LICENCE_NOT_VALID = "Your JJQB licence key is not correct or the licence validation failed for other reasons. Please check the data and the status below. If the data is correct and you have a functional internet connection, please contact our customer support.";
+	public static final String MESSAGE_LICENCE_VALID = Messages.getString("LicenceNotValidDialog.licenceValid"); //$NON-NLS-1$
+	public static final String MESSAGE_LICENCE_NOT_YET_PURCHASED = Messages.getString("LicenceNotValidDialog.licenceNotYetPurchased"); //$NON-NLS-1$
+	public static final String MESSAGE_LICENCE_NOT_VALID = Messages.getString("LicenceNotValidDialog.licenceNotValid"); //$NON-NLS-1$
+
+	// TODO need a nice URL (forwarding to this one)
+	public static final String PURCHASE_URL = "https://secure.payproglobal.com/orderpage.aspx?products=87920"; //$NON-NLS-1$
+
+	// TODO need product web site!
+	public static final String HOME_URL = "http://www.nightlabs.com"; //$NON-NLS-1$
+
+	public static final String PURCHASE_HYPERLINK_TEXT = Messages.getString("LicenceNotValidDialog.purchaseHyperlink.text"); //$NON-NLS-1$
+	public static final String HOME_HYPERLINK_TEXT = Messages.getString("LicenceNotValidDialog.homeHyperlink.text"); //$NON-NLS-1$
 
 	private Display display;
 	private LicenceManager licenceManager = JJQBCorePlugin.getDefault().getLicenceManager();
@@ -56,16 +66,16 @@ public class LicenceNotValidDialog extends TitleAreaDialog
 		display = parentShell.getDisplay();
 
 		licenceValid = licenceManager.isLicenceValid();
-		email = preferences.get(LicenceManager.PREFERENCES_KEY_EMAIL, "").trim();
-		licenceKey = preferences.get(LicenceManager.PREFERENCES_KEY_LICENCE_KEY, "").trim();
+		email = preferences.get(LicenceManager.PREFERENCES_KEY_EMAIL, "").trim(); //$NON-NLS-1$
+		licenceKey = preferences.get(LicenceManager.PREFERENCES_KEY_LICENCE_KEY, "").trim(); //$NON-NLS-1$
 	}
 
 	@Override
 	protected Control createContents(Composite parent) {
 		Control contents = super.createContents(parent);
 
-		setTitleImage(JJQBUIPlugin.getDefault().getImage(LicenceNotValidDialog.class, "title", JJQBUIPlugin.IMAGE_SIZE_75x70));
-		setTitle("JJQB Licence");
+		setTitleImage(JJQBUIPlugin.getDefault().getImage(LicenceNotValidDialog.class, "title", JJQBUIPlugin.IMAGE_SIZE_75x70)); //$NON-NLS-1$
+		setTitle(Messages.getString("LicenceNotValidDialog.title")); //$NON-NLS-1$
 
 		if (licenceValid)
 			setMessage(MESSAGE_LICENCE_VALID);
@@ -91,8 +101,8 @@ public class LicenceNotValidDialog extends TitleAreaDialog
 	protected void configureShell(Shell newShell)
 	{
 		super.configureShell(newShell);
-		newShell.setText("JJQB Licence");
-		newShell.setImage(JJQBUIPlugin.getDefault().getImage(LicenceNotValidDialog.class, "shell", JJQBUIPlugin.IMAGE_SIZE_16x16));
+		newShell.setText(Messages.getString("LicenceNotValidDialog.title")); //$NON-NLS-1$
+		newShell.setImage(JJQBUIPlugin.getDefault().getImage(LicenceNotValidDialog.class, "shell", JJQBUIPlugin.IMAGE_SIZE_16x16)); //$NON-NLS-1$
 	}
 
 	@Override
@@ -107,27 +117,25 @@ public class LicenceNotValidDialog extends TitleAreaDialog
 		parent.setLayout(gridLayout);
 
 		purchaseHyperlink = new Hyperlink(parent, SWT.WRAP);
-		purchaseHyperlink.setText("Please click here to purchase a licence.");
-		String purchaseURL = "https://secure.payproglobal.com/orderpage.aspx?products=87920"; // TODO need a nice URL (forwarding to this one)
-		purchaseHyperlink.setHref(purchaseURL);
-		purchaseHyperlink.setToolTipText(purchaseURL);
+		purchaseHyperlink.setText(PURCHASE_HYPERLINK_TEXT);
+		purchaseHyperlink.setHref(PURCHASE_URL);
+		purchaseHyperlink.setToolTipText(PURCHASE_URL);
 		configureHyperlink(purchaseHyperlink);
 
 		homeHyperlink = new Hyperlink(parent, SWT.WRAP);
-		homeHyperlink.setText("Click here to visit the web site of JDO/JPA Query Browser.");
-		String homeURL = "http://www.nightlabs.com"; // TODO need product web site!
-		homeHyperlink.setHref(homeURL);
-		homeHyperlink.setToolTipText(homeURL);
+		homeHyperlink.setText(HOME_HYPERLINK_TEXT);
+		homeHyperlink.setHref(HOME_URL);
+		homeHyperlink.setToolTipText(HOME_URL);
 		configureHyperlink(homeHyperlink);
 
 		addHorizontalSeparator(parent);
 
-		new Label(parent, SWT.NONE).setText("E-mail address:");
+		new Label(parent, SWT.NONE).setText(Messages.getString("LicenceNotValidDialog.emailAddressLabel.text")); //$NON-NLS-1$
 		emailText = new Text(parent, SWT.BORDER);
 		emailText.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 		emailText.setText(email);
 
-		new Label(parent, SWT.NONE).setText("Licence key:");
+		new Label(parent, SWT.NONE).setText(Messages.getString("LicenceNotValidDialog.licenceKeyLabel.text")); //$NON-NLS-1$
 		licenceKeyText = new Text(parent, SWT.BORDER);
 		licenceKeyText.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 		licenceKeyText.setText(licenceKey);
@@ -137,7 +145,7 @@ public class LicenceNotValidDialog extends TitleAreaDialog
 
 			{
 				Label label = new Label(parent, SWT.NONE);
-				label.setText("Status of last licence check:");
+				label.setText(Messages.getString("LicenceNotValidDialog.licenceCheckMessagesLabel.text")); //$NON-NLS-1$
 				GridData gd = new GridData();
 				gd.horizontalSpan = 2;
 				label.setLayoutData(gd);
@@ -178,11 +186,11 @@ public class LicenceNotValidDialog extends TitleAreaDialog
 				try {
 					PlatformUI.getWorkbench().getBrowserSupport().getExternalBrowser().openURL(new URL(href));
 				} catch (Exception x) {
-					logger.error("linkActivated: ", x);
+					logger.error("linkActivated: ", x); //$NON-NLS-1$
 					MessageDialog.openError(
 							getShell(),
-							"Error opening browser",
-							String.format("It was not possible to open your browser. Please open the following URL manually: %s", href)
+							Messages.getString("LicenceNotValidDialog.openBrowserErrorDialog.title"), //$NON-NLS-1$
+							String.format(Messages.getString("LicenceNotValidDialog.openBrowserErrorDialog.text"), href) //$NON-NLS-1$
 					);
 				}
 			}
@@ -216,8 +224,8 @@ public class LicenceNotValidDialog extends TitleAreaDialog
 						if (licenceManager.isLicenceValid()) {
 							MessageDialog.openInformation(
 									getParentShell(),
-									"Thanks!",
-									"Thank you very much for purchasing JJQB! We hope it will serve you well and you'll enjoy working with it."
+									Messages.getString("LicenceNotValidDialog.purchaseThanksDialog.title"), //$NON-NLS-1$
+									Messages.getString("LicenceNotValidDialog.purchaseThanksDialog.text") //$NON-NLS-1$
 							);
 						}
 						else
