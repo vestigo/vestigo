@@ -26,8 +26,6 @@ import org.eclipse.jface.viewers.ViewerCell;
 import org.eclipse.jface.viewers.deferred.DeferredContentProvider;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.TableCursor;
-import org.eclipse.swt.events.KeyAdapter;
-import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.MouseAdapter;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.PaintEvent;
@@ -36,6 +34,8 @@ import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
@@ -83,14 +83,6 @@ implements ISelectionProvider
 			@Override
 			public void mouseUp(MouseEvent e) {
 				openLicenceNotValidDialogIfLicenceNotValidRowSelected();
-			}
-		});
-
-		tableViewer.getTable().addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyReleased(KeyEvent e) {
-				if (e.character == '\r' || e.character == '\n')
-					openLicenceNotValidDialogIfLicenceNotValidRowSelected();
 			}
 		});
 	}
@@ -165,6 +157,13 @@ implements ISelectionProvider
 
 					fireSelectionChangedEvent();
 				}
+		});
+		tableCursor.addListener(SWT.KeyUp, new Listener() {
+			@Override
+			public void handleEvent(Event e) {
+				if (e.character == '\r' || e.character == '\n' || e.character == ' ')
+					openLicenceNotValidDialogIfLicenceNotValidRowSelected();
+			}
 		});
 	}
 

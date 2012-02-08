@@ -10,6 +10,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.ListenerList;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.core.runtime.jobs.IJobChangeListener;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.core.runtime.preferences.ConfigurationScope;
@@ -20,6 +21,7 @@ import org.nightlabs.jjqb.core.licence.ws.Passport;
 import org.nightlabs.jjqb.core.licence.ws.PassportSoap;
 import org.nightlabs.jjqb.core.licence.xml.LicenseInfo;
 import org.nightlabs.jjqb.core.licence.xml.LicenseInfoIO;
+import org.osgi.service.prefs.BackingStoreException;
 import org.osgi.service.prefs.Preferences;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,11 +30,74 @@ public class LicenceManager
 {
 	private static final Logger logger = LoggerFactory.getLogger(LicenceManager.class);
 
+	/**
+	 * Key referencing the (<code>String</code>) customer's email address
+	 * in the {@link #getPreferences() preferences}.
+	 * This must be the email address that was used to purchase the licence.
+	 */
 	public static final String PREFERENCES_KEY_EMAIL = "licence.email";
+
+	/**
+	 * Key referencing the (<code>String</code>) licence key in the {@link #getPreferences() preferences}.
+	 */
 	public static final String PREFERENCES_KEY_LICENCE_KEY = "licence.licenceKey";
-	public static final String PREFERENCES_KEY_LAST_CHECK_TIMESTAMP = "licence.lastCheck.timestamp";
-	public static final String PREFERENCES_KEY_LAST_CHECK_RESULT = "licence.lastCheck.result";
+
+	/**
+	 * Key referencing the (<code>long</code>) timestamp of the last check at the licence server
+	 * in the {@link #getPreferences() preferences}.
+	 * The licence server's response is cached locally in the preferences for a maximum of
+	 * {@link #CHECK_LICENCE_SERVER_STATUS_EXPIRY}.
+	 */
+	public static final String PREFERENCES_KEY_LAST_SERVER_STATUS_TIMESTAMP = "licence.lastServerStatus.timestamp";
+
+	/**
+	 * Key referencing the (<code>boolean</code>) flag in the {@link #getPreferences() preferences}
+	 * indicating whether the licence is valid or not.
+	 * @see #PREFERENCES_KEY_LAST_SERVER_STATUS_TIMESTAMP
+	 */
+	public static final String PREFERENCES_KEY_LAST_SERVER_STATUS_LICENCE_VALID = "licence.lastServerStatus.licenceValid";
+
+	/**
+	 * Key referencing the (<code>String</code>) customer's email address that was used when asking the server
+	 * for the licence status the last time.
+	 * @see #PREFERENCES_KEY_EMAIL
+	 * @see #PREFERENCES_KEY_LAST_SERVER_STATUS_TIMESTAMP
+	 */
+	public static final String PREFERENCES_KEY_LAST_SERVER_STATUS_EMAIL = "licence.lastServerStatus.email";
+
+	/**
+	 * Key referencing the (<code>String</code>) licence key that was used when asking the server
+	 * for the licence status the last time.
+	 * @see #PREFERENCES_KEY_LICENCE_KEY
+	 * @see #PREFERENCES_KEY_LAST_SERVER_STATUS_TIMESTAMP
+	 */
+	public static final String PREFERENCES_KEY_LAST_SERVER_STATUS_LICENCE_KEY = "licence.lastServerStatus.licenceKey";
+
+	/**
+	 * Key referencing the (<code>boolean</code>) flag in the {@link #getPreferences() preferences}
+	 * indicating whether the licence was activated (i.e. consumed) for this computer/user.
+	 */
 	public static final String PREFERENCES_KEY_ACTIVATED = "licence.activated";
+
+	/**
+	 * Time (in milliseconds) after which a cached server response expires. This time is relative
+	 * to {@link #PREFERENCES_KEY_LAST_SERVER_STATUS_TIMESTAMP}. After this expiry, the licence
+	 * is considered invalid, if it cannot be reconfirmed by the server.
+	 * <p>
+	 * The server is queried more often
+	 * (every {@value #CHECK_LICENCE_SERVER_STATUS_REQUEST_PERIOD} milliseconds), but failed requests (e.g.
+	 * because of the client being offline) do not have any consequence until the the response-expiry.
+	 * </p>
+	 */
+	public static long CHECK_LICENCE_SERVER_STATUS_EXPIRY = 30L * 24L * 3600L * 1000L;
+
+	/**
+	 * Time (in milliseconds) after which a new request is sent to the server. This new request will
+	 * be done even if there still is a last status cached locally. If the new request is successful,
+	 * the locally cached status is updated. If the new request fails, it has no consequence until
+	 * the locally cached status {@link #CHECK_LICENCE_SERVER_STATUS_EXPIRY expires}.
+	 */
+	public static long CHECK_LICENCE_SERVER_STATUS_REQUEST_PERIOD = 24L * 3600L * 1000L;
 
 	private IEclipsePreferences preferencesRootNode;
 	private Preferences preferences;
@@ -53,14 +118,19 @@ public class LicenceManager
 		@Override
 		protected IStatus run(IProgressMonitor monitor)
 		{
+			if (this != licenceCheckJob)
+				return Status.CANCEL_STATUS;
+
 			try {
 				checkLicence(null, monitor);
 
-				// In case of success, check again after 30 days (the licence might expire).
-				new LicenceCheckJob().schedule(30L * 24L * 3600L * 1000L);
+				// In case of success, check again after 1 day (the licence might expire).
+				// Note, that a non-valid licence is a success (no exception) and therefore it is not hammered
+				// onto the licence server.
+				scheduleLicenceCheckJob(CHECK_LICENCE_SERVER_STATUS_REQUEST_PERIOD);
 			} catch (CheckLicenceException e) {
-				// In case of error, try again in 5 minutes.
-				new LicenceCheckJob().schedule(5L * 60L * 1000L);
+				// In case of error (e.g. network down), try again in 5 minutes.
+				scheduleLicenceCheckJob(5L * 60L * 1000L);
 			}
 			return Status.OK_STATUS;
 		}
@@ -72,54 +142,57 @@ public class LicenceManager
 		preferencesRootNode = preferencesService.getRootNode();
 		preferences = preferencesRootNode.node(ConfigurationScope.SCOPE).node(JJQBCorePlugin.BUNDLE_SYMBOLIC_NAME);
 
-//		preferencesRootNode.addNodeChangeListener(new INodeChangeListener() {
-//			@Override
-//			public void removed(NodeChangeEvent event) {
-//				if (JJQBCorePlugin.BUNDLE_SYMBOLIC_NAME.equals(event.getChild().name()))
-//					clearCache();
-//			}
-//
-//			@Override
-//			public void added(NodeChangeEvent event) {
-//				if (JJQBCorePlugin.BUNDLE_SYMBOLIC_NAME.equals(event.getChild().name()))
-//					clearCache();
-//			}
-//		});
-//
-//		preferencesRootNode.addPreferenceChangeListener(new IPreferenceChangeListener() {
-//			@Override
-//			public void preferenceChange(PreferenceChangeEvent event) {
-//				if (JJQBCorePlugin.BUNDLE_SYMBOLIC_NAME.equals(event.getNode().name()))
-//					clearCache();
-//			}
-//		});
+		if (!isLastServerStatusExpired() && isLastServerStatusMatchingCurrentEmailAndKey())
+			licenceValid = isLastServerStatusLicenceValid();
 
-//		licenceCheckTimer.schedule(licenceCheckTimerTask, 0L); // start immediately in the background
-		new LicenceCheckJob().schedule();
+		scheduleLicenceCheckJob(0L);
 	}
 
-    protected synchronized PassportSoap getPassportSoap() {
-    	if (passportSoap == null) {
-	    	Passport passport = new Passport();
-	    	passportSoap = passport.getPassportSoap();
-    	}
-    	return passportSoap;
-    }
+	private volatile LicenceCheckJob licenceCheckJob;
 
-    protected int getProductID()
-    {
-    	return 87920;
-    }
+	protected synchronized void scheduleLicenceCheckJob(long delay)
+	{
+		if (licenceCheckJob != null) {
+			licenceCheckJob.cancel();
+			licenceCheckJob = null;
+		}
 
-    /**
-     * Get the result of the last licence check. If there was no licence check, yet, it will return <code>false</code>.
-     * This method returns immediately without performing any IO operation.
-     * @return <code>true</code>, if the licence is valid; <code>false</code> otherwise.
-     */
+		licenceCheckJob = new LicenceCheckJob();
+		licenceCheckJob.schedule(delay);
+	}
+
+	protected synchronized PassportSoap getPassportSoap() {
+		if (passportSoap == null) {
+			Passport passport = new Passport();
+			passportSoap = passport.getPassportSoap();
+		}
+		return passportSoap;
+	}
+
+	protected int getProductID()
+	{
+		return 87920;
+	}
+
+	/**
+	 * Get the result of the last licence check. If there was no licence check, yet, it will return <code>false</code>.
+	 * This method returns immediately without performing any IO operation.
+	 * @return <code>true</code>, if the licence is valid; <code>false</code> otherwise.
+	 */
 	public boolean isLicenceValid()
 	{
 		return licenceValid;
 	}
+
+//	/**
+//	 * Was the licence data (email + key) ever valid? If <code>true</code>, it means that the current licence information
+//	 * could probably not be re-validated because the server was not reachable.
+//	 * @return <code>true</code>, if the licence was ever valid; <code>false</code> otherwise.
+//	 */
+//	public boolean wasLicenceValid()
+//	{
+//		isLa
+//	}
 
 	/**
 	 * Get the messages that where collected during the last {@link #checkLicence(List, IProgressMonitor)} invocation.
@@ -165,6 +238,80 @@ public class LicenceManager
 		job.schedule();
 	}
 
+	private boolean checkLicence_queryServer(String email, String licenceKey, IProgressMonitor monitor)
+	throws IOException
+	{
+		logger.debug("checkLicence_queryServer: entered");
+
+		LicenseInfo licenseInfo;
+		String licenceValidationResult = getPassportSoap().validateLicense(getProductID(), email, licenceKey);
+
+		logger.trace("checkLicence_queryServer: PassportSoap.validateLicense() returned: {}", licenceValidationResult);
+
+		licenseInfo = new LicenseInfoIO().read(licenceValidationResult);
+
+		if (licenseInfo.getValid() == null)
+			throw new CheckLicenceException("PassportSoap.validateLicense(...) returned illegal result: licenseInfo.getValid() == null");
+
+		boolean licenceValid = licenseInfo.getValid().booleanValue();
+
+		logger.info("checkLicence_queryServer: returning licenceValid={}", licenceValid);
+
+		return licenceValid;
+	}
+
+	private long getLastServerStatusTimestamp()
+	{
+		String timestampString = preferences.get(PREFERENCES_KEY_LAST_SERVER_STATUS_TIMESTAMP, null);
+		try {
+			return Long.valueOf(timestampString);
+		} catch (NumberFormatException x) {
+			return 0;
+		}
+	}
+
+	private boolean isLastServerStatusMatchingCurrentEmailAndKey() {
+		String email = preferences.get(PREFERENCES_KEY_EMAIL, "").trim();
+		String licenceKey = preferences.get(PREFERENCES_KEY_LICENCE_KEY, "").trim();
+		return isLastServerStatusMatching(email, licenceKey);
+	}
+
+	private boolean isLastServerStatusMatching(String email, String licenceKey)
+	{
+		String last_email = preferences.get(PREFERENCES_KEY_LAST_SERVER_STATUS_EMAIL, "").trim();
+		String last_licenceKey = preferences.get(PREFERENCES_KEY_LAST_SERVER_STATUS_LICENCE_KEY, "").trim();
+		return last_email.equals(email) && last_licenceKey.equals(licenceKey);
+	}
+
+	private boolean isLastServerStatusOlderThanRequestPeriod()
+	{
+		long lastServerStatusTimestamp = getLastServerStatusTimestamp();
+		return CHECK_LICENCE_SERVER_STATUS_REQUEST_PERIOD < System.currentTimeMillis() - lastServerStatusTimestamp;
+	}
+
+	private boolean isLastServerStatusExpired()
+	{
+		long lastServerStatusTimestamp = getLastServerStatusTimestamp();
+		return CHECK_LICENCE_SERVER_STATUS_EXPIRY < System.currentTimeMillis() - lastServerStatusTimestamp;
+	}
+
+	private boolean isLastServerStatusLicenceValid()
+	{
+		String licenceValidString = preferences.get(PREFERENCES_KEY_LAST_SERVER_STATUS_LICENCE_VALID, null);
+		return Boolean.valueOf(licenceValidString);
+	}
+
+	private void putLastServerStatus(String email, String licenceKey, boolean licenceValid) throws BackingStoreException
+	{
+		preferences.put(PREFERENCES_KEY_LAST_SERVER_STATUS_TIMESTAMP, Long.toString(System.currentTimeMillis()));
+		preferences.put(PREFERENCES_KEY_LAST_SERVER_STATUS_EMAIL, email);
+		preferences.put(PREFERENCES_KEY_LAST_SERVER_STATUS_LICENCE_KEY, licenceKey);
+		preferences.put(PREFERENCES_KEY_LAST_SERVER_STATUS_LICENCE_VALID, Boolean.toString(licenceValid));
+
+		// flush() is essentially necessary!!!
+		preferences.flush();
+	}
+
 	/**
 	 * Do a licence check synchronously on the current thread. This method blocks until the licence check is completed.
 	 *
@@ -176,7 +323,7 @@ public class LicenceManager
 	 * {@link ErrorMessage} (which is added before throwing the exception).
 	 * @see #isLicenceValid()
 	 */
-	public boolean checkLicence(List<Message> messages, IProgressMonitor monitor)
+	public synchronized boolean checkLicence(List<Message> messages, IProgressMonitor monitor)
 	throws CheckLicenceException
 	{
 		if (messages == null)
@@ -185,9 +332,9 @@ public class LicenceManager
 		if (monitor == null)
 			throw new IllegalArgumentException("monitor == null");
 
-		boolean licenceValid = this.licenceValid;
-		firePreCheckLicenceEvent(this.lastCheckLicenceMessages, licenceValid); // fire with OLD values (before check)
+		firePreCheckLicenceEvent(this.lastCheckLicenceMessages, this.licenceValid); // fire with OLD values (before check)
 
+		boolean licenceValid = false;
 		monitor.beginTask("Check licence", 100);
 		try {
 			messages.add(new InfoMessage("Beginning licence check."));
@@ -200,23 +347,29 @@ public class LicenceManager
 				licenceValid = false;
 			}
 			else {
-				LicenseInfo licenseInfo;
-				String licenceValidationResult = getPassportSoap().validateLicense(getProductID(), email, licenceKey);
-				try {
-					licenseInfo = new LicenseInfoIO().read(licenceValidationResult);
-				} catch (IOException e) {
-					throw new CheckLicenceException(e);
+				if (isLastServerStatusOlderThanRequestPeriod() || !isLastServerStatusMatching(email, licenceKey)) {
+					boolean queryingServerSuccessful = false;
+					try {
+						licenceValid = checkLicence_queryServer(email, licenceKey, new SubProgressMonitor(monitor, 50));
+						queryingServerSuccessful = true;
+					} catch (Exception x) {
+						if (isLastServerStatusExpired() || !isLastServerStatusMatching(email, licenceKey))
+							throw x;
+
+						messages.add(new WarningMessage("Querying server failed: " + x));
+						messages.add(new InfoMessage("Using cached licence status (because asking server failed)."));
+						licenceValid = isLastServerStatusLicenceValid();
+					}
+
+					if (queryingServerSuccessful) {
+						putLastServerStatus(email, licenceKey, licenceValid);
+						messages.add(new InfoMessage("Querying server was successful."));
+					}
 				}
-
-				if (licenseInfo.getValid() == null)
-					throw new CheckLicenceException("PassportSoap.validateLicense(...) returned illegal result: licenseInfo.getValid() == null");
-
-				licenceValid = licenseInfo.getValid().booleanValue();
-
-				if (licenceValid)
-					messages.add(new InfoMessage("Licence is valid."));
-				else
-					messages.add(new WarningMessage("Licence is NOT valid."));
+				else {
+					messages.add(new InfoMessage("Using cached licence status (because server was asked only recently)."));
+					licenceValid = isLastServerStatusLicenceValid();
+				}
 			}
 		} catch (Throwable x) {
 			messages.add(new ErrorMessage(x));
@@ -225,7 +378,10 @@ public class LicenceManager
 			else
 				throw new CheckLicenceException(x);
 		} finally {
-			messages.add(new InfoMessage("Finished licence check."));
+			if (licenceValid)
+				messages.add(new InfoMessage("Finished licence check. Licence is valid."));
+			else
+				messages.add(new WarningMessage("Finished licence check. Licence is NOT valid."));
 
 			messages = Collections.unmodifiableList(new ArrayList<Message>(messages));
 			this.licenceValid = licenceValid;

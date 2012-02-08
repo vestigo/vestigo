@@ -36,6 +36,7 @@ public class LicenceNotValidDialog extends TitleAreaDialog
 	private LicenceManager licenceManager = JJQBCorePlugin.getDefault().getLicenceManager();
 	private Preferences preferences = licenceManager.getPreferences();
 
+	private boolean licenceValid;
 	private String email;
 	private String licenceKey;
 
@@ -44,10 +45,13 @@ public class LicenceNotValidDialog extends TitleAreaDialog
 	private Text emailText;
 	private Text licenceKeyText;
 
+	private LicenceCheckMessagesTable licenceCheckMessagesTable;
+
 	public LicenceNotValidDialog(Shell parentShell) {
 		super(parentShell);
 		display = parentShell.getDisplay();
 
+		licenceValid = licenceManager.isLicenceValid();
 		email = preferences.get(LicenceManager.PREFERENCES_KEY_EMAIL, "").trim();
 		licenceKey = preferences.get(LicenceManager.PREFERENCES_KEY_LICENCE_KEY, "").trim();
 	}
@@ -59,13 +63,13 @@ public class LicenceNotValidDialog extends TitleAreaDialog
 		setTitleImage(JJQBUIPlugin.getDefault().getImage(LicenceNotValidDialog.class, "title", JJQBUIPlugin.IMAGE_SIZE_75x70));
 		setTitle("JJQB Licence");
 
-		if (licenceManager.isLicenceValid())
+		if (licenceValid)
 			setMessage("Thank you for purchasing JJQB! Your licence is valid!");
 		else {
 			if (licenceKey.isEmpty())
-				setMessage("Thank you very much for trying out JJQB. If you liked the trial version, please purchase a licence and enter the licence key below.");
+				setMessage("Thank you very much for trying out JJQB. If you liked the trial version, please purchase a licence and enter its data below.");
 			else
-				setErrorMessage("Your JJQB licence key is not correct or the licence is not valid for other reasons. Please check the data below. If it is correct, please contact our customer support.");
+				setErrorMessage("Your JJQB licence key is not correct or the licence validation failed for other reasons. Please check the data and the status below. If the data is correct and you have a functional internet connection, please contact our customer support.");
 		}
 
 		return contents;
@@ -73,7 +77,10 @@ public class LicenceNotValidDialog extends TitleAreaDialog
 
 	@Override
 	protected Point getInitialSize() {
-		return new Point(800, 400);
+		if (!licenceValid && !licenceKey.isEmpty())
+			return new Point(800, 600);
+		else
+			return new Point(800, 300);
 	}
 
 	@Override
@@ -89,7 +96,7 @@ public class LicenceNotValidDialog extends TitleAreaDialog
 	{
 		Composite dialogArea = (Composite) super.createDialogArea(dialogAreaParent);
 
-		Composite parent = new Composite(dialogArea, SWT.BORDER);
+		Composite parent = new Composite(dialogArea, SWT.NONE);
 		parent.setLayoutData(new GridData(GridData.FILL_BOTH));
 		GridLayout gridLayout = new GridLayout();
 		gridLayout.numColumns = 2;
@@ -98,15 +105,18 @@ public class LicenceNotValidDialog extends TitleAreaDialog
 		purchaseHyperlink = new Hyperlink(parent, SWT.WRAP);
 		purchaseHyperlink.setText("Please click here to purchase a licence.");
 		String purchaseURL = "https://secure.payproglobal.com/orderpage.aspx?products=87920"; // TODO need a nice URL (forwarding to this one)
-		purchaseHyperlink.setToolTipText(purchaseURL);
 		purchaseHyperlink.setHref(purchaseURL);
+		purchaseHyperlink.setToolTipText(purchaseURL);
 		configureHyperlink(purchaseHyperlink);
 
 		homeHyperlink = new Hyperlink(parent, SWT.WRAP);
-		String homeURL = "http://www.nightlabs.com"; // TODO need product web site!
 		homeHyperlink.setText("Click here to visit the web site of JDO/JPA Query Browser.");
+		String homeURL = "http://www.nightlabs.com"; // TODO need product web site!
 		homeHyperlink.setHref(homeURL);
+		homeHyperlink.setToolTipText(homeURL);
 		configureHyperlink(homeHyperlink);
+
+		addHorizontalSeparator(parent);
 
 		new Label(parent, SWT.NONE).setText("E-mail address:");
 		emailText = new Text(parent, SWT.BORDER);
@@ -118,7 +128,37 @@ public class LicenceNotValidDialog extends TitleAreaDialog
 		licenceKeyText.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 		licenceKeyText.setText(licenceKey);
 
+		if (!licenceValid && !licenceKey.isEmpty()) {
+			addHorizontalSeparator(parent);
+
+			{
+				Label label = new Label(parent, SWT.NONE);
+				label.setText("Status of last licence check:");
+				GridData gd = new GridData();
+				gd.horizontalSpan = 2;
+				label.setLayoutData(gd);
+			}
+
+			{
+				licenceCheckMessagesTable = new LicenceCheckMessagesTable(parent);
+				GridData gd = new GridData(GridData.FILL_BOTH);
+				gd.horizontalSpan = 2;
+				licenceCheckMessagesTable.setLayoutData(gd);
+				licenceCheckMessagesTable.setInput(licenceManager.getLastCheckLicenceMessages());
+			}
+		}
+
+		emailText.setFocus();
+
 		return dialogArea;
+	}
+
+	private void addHorizontalSeparator(Composite parent)
+	{
+		Label label = new Label(parent, SWT.HORIZONTAL | SWT.SEPARATOR);
+		GridData gd = new GridData(GridData.FILL_HORIZONTAL);
+		gd.horizontalSpan = 2;
+		label.setLayoutData(gd);
 	}
 
 	private void configureHyperlink(Hyperlink hyperlink)
@@ -161,17 +201,23 @@ public class LicenceNotValidDialog extends TitleAreaDialog
 
 		licenceManager.checkLicence(true, new JobChangeAdapter() {
 			@Override
-			public void done(IJobChangeEvent event) {
-				if (licenceManager.isLicenceValid())
-					return;
-
+			public void done(IJobChangeEvent event)
+			{
 				if (licenceKey.isEmpty())
 					return;
 
 				display.asyncExec(new Runnable() {
 					@Override
 					public void run() {
-						new LicenceNotValidDialog(getParentShell()).open();
+						if (licenceManager.isLicenceValid()) {
+							MessageDialog.openInformation(
+									getParentShell(),
+									"Thanks!",
+									"Thank you very much for purchasing JJQB! We hope it will serve you well and you'll enjoy working with it."
+							);
+						}
+						else
+							new LicenceNotValidDialog(getParentShell()).open();
 					}
 				});
 			}
