@@ -32,6 +32,10 @@ public class LicenceNotValidDialog extends TitleAreaDialog
 {
 	private static final Logger logger = LoggerFactory.getLogger(LicenceNotValidDialog.class);
 
+	public static final String MESSAGE_LICENCE_VALID = "Thank you for purchasing JJQB! Your licence is valid!";
+	public static final String MESSAGE_LICENCE_NOT_YET_PURCHASED = "Thank you very much for trying out JJQB. If you liked the trial version, please purchase a licence and enter its data below.";
+	public static final String MESSAGE_LICENCE_NOT_VALID = "Your JJQB licence key is not correct or the licence validation failed for other reasons. Please check the data and the status below. If the data is correct and you have a functional internet connection, please contact our customer support.";
+
 	private Display display;
 	private LicenceManager licenceManager = JJQBCorePlugin.getDefault().getLicenceManager();
 	private Preferences preferences = licenceManager.getPreferences();
@@ -64,12 +68,12 @@ public class LicenceNotValidDialog extends TitleAreaDialog
 		setTitle("JJQB Licence");
 
 		if (licenceValid)
-			setMessage("Thank you for purchasing JJQB! Your licence is valid!");
+			setMessage(MESSAGE_LICENCE_VALID);
 		else {
 			if (licenceKey.isEmpty())
-				setMessage("Thank you very much for trying out JJQB. If you liked the trial version, please purchase a licence and enter its data below.");
+				setMessage(MESSAGE_LICENCE_NOT_YET_PURCHASED);
 			else
-				setErrorMessage("Your JJQB licence key is not correct or the licence validation failed for other reasons. Please check the data and the status below. If the data is correct and you have a functional internet connection, please contact our customer support.");
+				setErrorMessage(MESSAGE_LICENCE_NOT_VALID);
 		}
 
 		return contents;

@@ -71,12 +71,12 @@ implements IWorkbenchPreferencePage
 		licenceKey = licenceKey.trim();
 
 		if (licenceManager.isLicenceValid())
-			setDescription("Thank you for purchasing JJQB! Your licence is valid!");
+			setDescription(LicenceNotValidDialog.MESSAGE_LICENCE_VALID);
 		else {
 			if (licenceKey.isEmpty())
-				setDescription("Thank you very much for trying out JJQB. If you liked the trial version, please purchase a licence and enter its data below.");
+				setDescription(LicenceNotValidDialog.MESSAGE_LICENCE_NOT_YET_PURCHASED);
 			else
-				setDescription("Your JJQB licence key is not correct or the licence validation failed for other reasons. Please check the data and the status below. If the data is correct and you have a functional internet connection, please contact our customer support.");
+				setDescription(LicenceNotValidDialog.MESSAGE_LICENCE_NOT_VALID);
 		}
 
 		if (descriptionLabel != null) {

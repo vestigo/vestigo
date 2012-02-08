@@ -14,7 +14,7 @@ import org.nightlabs.jjqb.core.ObjectReference;
  */
 public interface ResultSet extends IResultSet
 {
-	public static final String LICENCE_NOT_VALID = "Licence not valid!";
+	public static final String LICENCE_NOT_VALID = "Please purchase JJQB!";
 
 	Query getQuery();
 
