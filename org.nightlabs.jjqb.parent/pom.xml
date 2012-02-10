@@ -3,7 +3,7 @@
 
 	<groupId>org.nightlabs.jjqb</groupId>
 	<artifactId>org.nightlabs.jjqb.parent</artifactId>
-	<version>0.1.0</version>
+	<version>0.1.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<parent>
@@ -51,9 +51,9 @@
 	</properties>
 
 	<scm>
-		<url>https://dev.nightlabs.org/svn/private/main/jjqb/tags/org.nightlabs.jjqb-0.1.0/jjqb/trunk</url>
-		<connection>scm:svn:https://dev.nightlabs.org/svn/private/main/jjqb/tags/org.nightlabs.jjqb-0.1.0/jjqb/trunk</connection>
-		<developerConnection>scm:svn:https://dev.nightlabs.org/svn/private/main/jjqb/tags/org.nightlabs.jjqb-0.1.0/jjqb/trunk</developerConnection>
+		<url>https://dev.nightlabs.org/svn/private/main/jjqb/trunk/</url>
+		<connection>scm:svn:https://dev.nightlabs.org/svn/private/main/jjqb/trunk/</connection>
+		<developerConnection>scm:svn:https://dev.nightlabs.org/svn/private/main/jjqb/trunk/</developerConnection>
 	</scm>
 
 	<distributionManagement>
