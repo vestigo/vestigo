@@ -44,17 +44,17 @@
 	</repositories>
 
 	<properties>
-		<jjqb.version>${project.version}</jjqb.version>
+		<jjqb.version>1.0.0-SNAPSHOT</jjqb.version>
 		<jersey.version>1.9</jersey.version>
 
 		<!-- Always aggregate. -->
 		<aggregate>true</aggregate>
 	</properties>
-	
+
 	<scm>
-		<url>https://dev.nightlabs.org/svn/private/main/jjqb/trunk/org.nightlabs.jjqb.all</url>
-		<connection>scm:svn:https://dev.nightlabs.org/svn/private/main/jjqb/trunk/org.nightlabs.jjqb.all</connection>
-		<developerConnection>scm:svn:https://dev.nightlabs.org/svn/private/main/jjqb/trunk/org.nightlabs.jjqb.all</developerConnection>
+		<url>https://dev.nightlabs.org/svn/private/main/jjqb/trunk/</url>
+		<connection>scm:svn:https://dev.nightlabs.org/svn/private/main/jjqb/trunk/</connection>
+		<developerConnection>scm:svn:https://dev.nightlabs.org/svn/private/main/jjqb/trunk/</developerConnection>
 	</scm>
 
 	<distributionManagement>
