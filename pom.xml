@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<artifactId>org.nightlabs.jjqb</artifactId>
+	<artifactId>org.nightlabs.jjqb.all</artifactId>
 	<packaging>pom</packaging>
 
 	<parent>
@@ -19,13 +19,10 @@
 		<module>org.nightlabs.jjqb.childvm.webapp.client.testmodel</module>
 		<module>org.nightlabs.jjqb.childvm.webapp.client.testresources</module>
 		<module>org.nightlabs.jjqb.core</module>
-<!--
-		<module>org.nightlabs.jjqb.derby</module>
--->
 		<module>org.nightlabs.jjqb.parent</module>
 		<module>org.nightlabs.jjqb.ui</module>
 		<module>org.nightlabs.jjqb.assembly.parent</module>
-		
+
 		<!-- BEGIN Cumulus4j -->
 		<module>org.nightlabs.jjqb.cumulus4j.childvm.shared</module>
 		<module>org.nightlabs.jjqb.cumulus4j.childvm.webapp</module>
@@ -33,26 +30,7 @@
 		<module>org.nightlabs.jjqb.cumulus4j.ui</module>
 		<!-- END Cumulus4j -->
 	</modules>
-	
-	<scm>
-		<url>https://dev.nightlabs.org/svn/private/main/jjqb/trunk/</url>
-		<connection>scm:svn:https://dev.nightlabs.org/svn/private/main/jjqb/trunk/</connection>
-		<developerConnection>scm:svn:https://dev.nightlabs.org/svn/private/main/jjqb/trunk/</developerConnection>
-	</scm>
 
-	<distributionManagement>
-		<repository>
-			<id>dev.nightlabs.org-private-libs-release-local</id>
-			<name>dev.nightlabs.org-private-libs-release-local</name>
-			<url>https://dev.nightlabs.org/maven-repository-private/libs-release-local</url>
-		</repository>
-		<snapshotRepository>
-			<id>dev.nightlabs.org-private-libs-snapshot-local</id>
-			<name>dev.nightlabs.org-private-libs-snapshot-local</name>
-			<url>https://dev.nightlabs.org/maven-repository-private/libs-snapshot-local</url>
-		</snapshotRepository>
-	</distributionManagement>
-	
 	<properties>
 		<platform.linux-gtk-x86_64.enabled>false</platform.linux-gtk-x86_64.enabled>
 		<platform.win32.enabled>false</platform.win32.enabled>
@@ -68,8 +46,8 @@
 				</property>
 			</activation>
 			<modules>
-				<module>org.nightlabs.jjqb.assembly.linux-gtk-x86_64</module>
-				<module>org.nightlabs.jjqb.assembly.win32</module>
+				<module>../org.nightlabs.jjqb.assembly.linux-gtk-x86_64</module>
+				<module>../org.nightlabs.jjqb.assembly.win32</module>
 			</modules>
 		</profile>
 		<profile>
@@ -85,7 +63,7 @@
 				</os>
 			</activation>
 			<modules>
-				<module>org.nightlabs.jjqb.assembly.linux-gtk-x86_64</module>
+				<module>../org.nightlabs.jjqb.assembly.linux-gtk-x86_64</module>
 			</modules>
 		</profile>
 		<profile>
@@ -101,8 +79,55 @@
 				</os>
 			</activation>
 			<modules>
-				<module>org.nightlabs.jjqb.assembly.win32</module>
+				<module>../org.nightlabs.jjqb.assembly.win32</module>
 			</modules>
 		</profile>
 	</profiles>
+
+<!-- Automatically generate P2 repository (i.e. Eclipse update site).
+
+Quick try with tycho - didn't work this way, yet, though :-( Need more research... Marco :-)
+
+	<properties>
+		<tycho-version>0.12.0</tycho-version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.nightlabs.jjqb</groupId>
+			<artifactId>org.nightlabs.jjqb.core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.nightlabs.jjqb</groupId>
+			<artifactId>org.nightlabs.jjqb.ui</artifactId>
+		</dependency>
+	</dependencies>
+
+	<repositories>
+		<repository>
+			<id>helios</id>
+			<layout>p2</layout>
+			<url>http://download.eclipse.org/releases/helios</url>
+		</repository>
+	</repositories>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-maven-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<extensions>true</extensions>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>target-platform-configuration</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+					<pomDependencies>consider</pomDependencies>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+-->
 </project>
