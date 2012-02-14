@@ -7,6 +7,8 @@ import org.nightlabs.licence.manager.LicenceManager;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
@@ -14,6 +16,8 @@ import org.osgi.framework.BundleContext;
 public class JJQBCorePlugin
 implements BundleActivator
 {
+	private static final Logger logger = LoggerFactory.getLogger(JJQBCorePlugin.class);
+
 	public static final String BUNDLE_SYMBOLIC_NAME = "org.nightlabs.jjqb.core"; //$NON-NLS-1$
 
 	private LicenceManager licenceManager;
@@ -24,6 +28,11 @@ implements BundleActivator
 	@Override
 	public void start(BundleContext context) throws Exception
 	{
+		logger.info("start: Starting context.bundle.symbolicName={}", context.getBundle().getSymbolicName());
+
+		if (!BUNDLE_SYMBOLIC_NAME.equals(context.getBundle().getSymbolicName()))
+			throw new IllegalStateException("BUNDLE_SYMBOLIC_NAME != context.bundle.symbolicName :: " + BUNDLE_SYMBOLIC_NAME + " != " + context.getBundle().getSymbolicName());
+
 //		super.start(context);
 		plugin = this;
 
@@ -80,10 +89,13 @@ implements BundleActivator
 		// END START all jersey bundles
 
 		licenceManager = new LicenceManager(Long.toString(87920));
+
+		logger.info("start: Started context.bundle.symbolicName={}", context.getBundle().getSymbolicName());
 	}
 
 	@Override
 	public void stop(BundleContext context) throws Exception {
+		logger.info("stop: context.bundle.symbolicName={}", context.getBundle().getSymbolicName());
 //		super.stop(context);
 	}
 

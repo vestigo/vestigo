@@ -28,6 +28,7 @@ import org.nightlabs.jjqb.ui.resource.Messages;
 import org.nightlabs.licence.manager.CheckLicenceAdapter;
 import org.nightlabs.licence.manager.CheckLicenceEvent;
 import org.nightlabs.licence.manager.LicenceManager;
+import org.nightlabs.licence.manager.LicenceManagerPlugin;
 import org.nightlabs.licence.manager.Message;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -57,7 +58,7 @@ implements IWorkbenchPreferencePage
 	public void init(IWorkbench workbench)
 	{
 		display = workbench.getDisplay();
-		IPreferenceStore preferenceStore = new ScopedPreferenceStore(new ConfigurationScope(), JJQBCorePlugin.BUNDLE_SYMBOLIC_NAME);
+		IPreferenceStore preferenceStore = new ScopedPreferenceStore(new ConfigurationScope(), LicenceManagerPlugin.BUNDLE_SYMBOLIC_NAME);
 		setPreferenceStore(preferenceStore);
 		setTitle(Messages.getString("LicencePreferencePage.title")); //$NON-NLS-1$
 		updateDescription();
@@ -65,6 +66,9 @@ implements IWorkbenchPreferencePage
 
 	private void updateDescription()
 	{
+		if (descriptionLabel != null && descriptionLabel.isDisposed())
+			return;
+
 		String licenceKey = getPreferenceStore().getString(LicenceManager.PREFERENCES_KEY_LICENCE_KEY);
 		if (licenceKey == null)
 			licenceKey = ""; //$NON-NLS-1$
