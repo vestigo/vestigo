@@ -99,6 +99,14 @@
 			<groupId>org.nightlabs.licence</groupId>
 			<artifactId>org.nightlabs.licence.manager</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.nightlabs.licence</groupId>
+			<artifactId>org.nightlabs.licence.shared</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.nightlabs.licence</groupId>
+			<artifactId>org.nightlabs.licence.signature</artifactId>
+		</dependency>
 		<!-- END org.nightlabs.**.* -->
 		
 <!--
