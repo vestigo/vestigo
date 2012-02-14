@@ -24,11 +24,11 @@ import org.eclipse.ui.forms.events.HyperlinkEvent;
 import org.eclipse.ui.forms.widgets.Hyperlink;
 import org.eclipse.ui.preferences.ScopedPreferenceStore;
 import org.nightlabs.jjqb.core.JJQBCorePlugin;
-import org.nightlabs.jjqb.core.licence.CheckLicenceAdapter;
-import org.nightlabs.jjqb.core.licence.CheckLicenceEvent;
-import org.nightlabs.jjqb.core.licence.LicenceManager;
-import org.nightlabs.jjqb.core.licence.Message;
 import org.nightlabs.jjqb.ui.resource.Messages;
+import org.nightlabs.licence.manager.CheckLicenceAdapter;
+import org.nightlabs.licence.manager.CheckLicenceEvent;
+import org.nightlabs.licence.manager.LicenceManager;
+import org.nightlabs.licence.manager.Message;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

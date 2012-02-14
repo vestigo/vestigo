@@ -16,11 +16,11 @@ import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
-import org.nightlabs.jjqb.core.licence.ErrorMessage;
-import org.nightlabs.jjqb.core.licence.InfoMessage;
-import org.nightlabs.jjqb.core.licence.Message;
-import org.nightlabs.jjqb.core.licence.WarningMessage;
 import org.nightlabs.jjqb.ui.JJQBUIPlugin;
+import org.nightlabs.licence.manager.ErrorMessage;
+import org.nightlabs.licence.manager.InfoMessage;
+import org.nightlabs.licence.manager.Message;
+import org.nightlabs.licence.manager.WarningMessage;
 
 public class LicenceCheckMessagesTable extends Composite
 {

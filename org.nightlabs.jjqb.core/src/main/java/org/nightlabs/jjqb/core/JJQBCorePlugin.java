@@ -3,7 +3,7 @@ package org.nightlabs.jjqb.core;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.nightlabs.jjqb.core.licence.LicenceManager;
+import org.nightlabs.licence.manager.LicenceManager;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
@@ -79,7 +79,7 @@ implements BundleActivator
 		}
 		// END START all jersey bundles
 
-		licenceManager = new LicenceManager();
+		licenceManager = new LicenceManager(Long.toString(87920));
 	}
 
 	@Override

@@ -49,6 +49,11 @@
 			<groupId>org.eclipse.datatools</groupId>
 			<artifactId>org.eclipse.datatools.connectivity.oda</artifactId>
 		</dependency>
+		
+		<dependency>
+			<groupId>org.nightlabs.licence</groupId>
+			<artifactId>org.nightlabs.licence.manager</artifactId>
+		</dependency>
 
 		<dependency>
 			<groupId>org.nightlabs</groupId>

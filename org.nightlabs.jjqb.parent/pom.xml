@@ -45,6 +45,7 @@
 	<properties>
 		<jjqb.version>${project.version}</jjqb.version>
 		<jersey.version>1.9</jersey.version>
+		<licence.version>1.0.0-SNAPSHOT</licence.version>
 
 		<!-- Always aggregate. -->
 		<aggregate>true</aggregate>
@@ -235,6 +236,13 @@
 				<groupId>org.nightlabs.jdo</groupId>
 				<artifactId>org.nightlabs.jdo.jdoqleditor</artifactId>
 				<version>1.0.1</version>
+			</dependency>
+			<dependency>
+				<groupId>org.nightlabs.licence</groupId>
+				<artifactId>org.nightlabs.licence.parent</artifactId>
+				<type>pom</type>
+				<version>${licence.version}</version>
+				<scope>import</scope>
 			</dependency>
 			<!-- END org.nightlabs.**.* -->
 		</dependencies>
