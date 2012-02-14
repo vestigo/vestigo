@@ -131,7 +131,7 @@ implements IWorkbenchPreferencePage
 							LicenceManagerOfflineImpl.PREFERENCES_KEY_LICENCE_BASE64_BLOCK,
 							Messages.getString("LicencePreferencePage.licenceKeyLabel.text"), //$NON-NLS-1$
 							MultiLineStringFieldEditor.UNLIMITED,
-							15,
+							13,
 							getFieldEditorParent()
 					)
 			);

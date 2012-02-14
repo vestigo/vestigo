@@ -8,6 +8,7 @@ import org.nightlabs.licence.manager.LicenceManagerOfflineImpl;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
+import org.osgi.framework.Version;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -90,7 +91,8 @@ implements BundleActivator
 		// END START all jersey bundles
 
 //		licenceManager = new LicenceManagerOnlineImpl(Long.toString(87920));
-		licenceManager = new LicenceManagerOfflineImpl();
+		Version version = context.getBundle().getVersion();
+		licenceManager = new LicenceManagerOfflineImpl("org.nightlabs.jjqb", version);
 
 		logger.info("start: Started context.bundle.symbolicName={}", context.getBundle().getSymbolicName());
 	}

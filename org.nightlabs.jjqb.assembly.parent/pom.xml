@@ -75,12 +75,18 @@
 		<!-- BEGIN org.nightlabs.**.* -->
 		<dependency>
 			<groupId>org.nightlabs</groupId>
-			<artifactId>org.nightlabs.util</artifactId>
+			<artifactId>org.nightlabs.progress</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.nightlabs</groupId>
-			<artifactId>org.nightlabs.progress</artifactId>
+			<artifactId>org.nightlabs.util</artifactId>
 		</dependency>
+		<!--
+		<dependency>
+			<groupId>org.nightlabs</groupId>
+			<artifactId>org.nightlabs.version</artifactId>
+		</dependency>
+		-->
 		<dependency>
 			<groupId>org.nightlabs.jdo</groupId>
 			<artifactId>org.nightlabs.jdo.jdoqleditor</artifactId>
@@ -118,19 +124,22 @@ Marco :-)
 			<artifactId>jersey-core</artifactId>
 		</dependency>
 
+		<!--
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
-			<!-- FIXME Have a custom bundled log4j here, because the official release 
-				has two identical packages in Import-Package => OSGI won't resolve that bundle -->
+			<!- FIXME Have a custom bundled log4j here, because the official release 
+				has two identical packages in Import-Package => OSGI won't resolve that bundle ->
 			<version>1.2.16-NL</version>
 		</dependency>
-		<!-- jmdns needed by log4j -->
+
+		<!- jmdns needed by log4j ->
 		<dependency>
 			<groupId>javax.jmdns</groupId>
 			<artifactId>jmdns</artifactId>
 			<version>3.4.0</version>
 		</dependency>
+		-->
 
 		<dependency>
 			<groupId>org.slf4j</groupId>

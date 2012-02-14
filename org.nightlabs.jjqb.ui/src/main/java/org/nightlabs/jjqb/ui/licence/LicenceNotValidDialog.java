@@ -89,7 +89,7 @@ public class LicenceNotValidDialog extends TitleAreaDialog
 		if (licenceValid)
 			setMessage(MESSAGE_LICENCE_VALID);
 		else {
-			if (licenceKey.isEmpty())
+			if (licenceKey.isEmpty() && licenceBase64Block.isEmpty())
 				setMessage(MESSAGE_LICENCE_NOT_YET_PURCHASED);
 			else
 				setErrorMessage(MESSAGE_LICENCE_NOT_VALID);
