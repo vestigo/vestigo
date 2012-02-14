@@ -3,7 +3,8 @@ package org.nightlabs.jjqb.core;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.nightlabs.licence.manager.LicenceManager;
+import org.nightlabs.licence.manager.ILicenceManager;
+import org.nightlabs.licence.manager.LicenceManagerOnlineImpl;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
@@ -20,7 +21,7 @@ implements BundleActivator
 
 	public static final String BUNDLE_SYMBOLIC_NAME = "org.nightlabs.jjqb.core"; //$NON-NLS-1$
 
-	private LicenceManager licenceManager;
+	private ILicenceManager licenceManager;
 
 	// The shared instance
 	private static JJQBCorePlugin plugin;
@@ -88,7 +89,7 @@ implements BundleActivator
 		}
 		// END START all jersey bundles
 
-		licenceManager = new LicenceManager(Long.toString(87920));
+		licenceManager = new LicenceManagerOnlineImpl(Long.toString(87920));
 
 		logger.info("start: Started context.bundle.symbolicName={}", context.getBundle().getSymbolicName());
 	}
@@ -108,7 +109,7 @@ implements BundleActivator
 		return plugin;
 	}
 
-	public LicenceManager getLicenceManager() {
+	public ILicenceManager getLicenceManager() {
 		return licenceManager;
 	}
 }

@@ -27,7 +27,8 @@ import org.nightlabs.jjqb.core.JJQBCorePlugin;
 import org.nightlabs.jjqb.ui.resource.Messages;
 import org.nightlabs.licence.manager.CheckLicenceAdapter;
 import org.nightlabs.licence.manager.CheckLicenceEvent;
-import org.nightlabs.licence.manager.LicenceManager;
+import org.nightlabs.licence.manager.ILicenceManager;
+import org.nightlabs.licence.manager.LicenceManagerOnlineImpl;
 import org.nightlabs.licence.manager.LicenceManagerPlugin;
 import org.nightlabs.licence.manager.Message;
 import org.slf4j.Logger;
@@ -40,7 +41,7 @@ implements IWorkbenchPreferencePage
 	private static final Logger logger = LoggerFactory.getLogger(LicencePreferencePage.class);
 
 	private Display display;
-	private LicenceManager licenceManager = JJQBCorePlugin.getDefault().getLicenceManager();
+	private ILicenceManager licenceManager = JJQBCorePlugin.getDefault().getLicenceManager();
 
 	private Label descriptionLabel;
 	private Hyperlink purchaseHyperlink;
@@ -69,7 +70,7 @@ implements IWorkbenchPreferencePage
 		if (descriptionLabel != null && descriptionLabel.isDisposed())
 			return;
 
-		String licenceKey = getPreferenceStore().getString(LicenceManager.PREFERENCES_KEY_LICENCE_KEY);
+		String licenceKey = getPreferenceStore().getString(LicenceManagerOnlineImpl.PREFERENCES_KEY_LICENCE_KEY);
 		if (licenceKey == null)
 			licenceKey = ""; //$NON-NLS-1$
 
@@ -114,8 +115,8 @@ implements IWorkbenchPreferencePage
 
 		addHorizontalSeparator(getFieldEditorParent());
 
-		addField(new StringFieldEditor(LicenceManager.PREFERENCES_KEY_EMAIL, Messages.getString("LicencePreferencePage.emailAddressLabel.text"), getFieldEditorParent())); //$NON-NLS-1$
-		addField(new StringFieldEditor(LicenceManager.PREFERENCES_KEY_LICENCE_KEY, Messages.getString("LicencePreferencePage.licenceKeyLabel.text"), getFieldEditorParent())); //$NON-NLS-1$
+		addField(new StringFieldEditor(LicenceManagerOnlineImpl.PREFERENCES_KEY_EMAIL, Messages.getString("LicencePreferencePage.emailAddressLabel.text"), getFieldEditorParent())); //$NON-NLS-1$
+		addField(new StringFieldEditor(LicenceManagerOnlineImpl.PREFERENCES_KEY_LICENCE_KEY, Messages.getString("LicencePreferencePage.licenceKeyLabel.text"), getFieldEditorParent())); //$NON-NLS-1$
 
 		addHorizontalSeparator(getFieldEditorParent());
 

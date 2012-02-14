@@ -23,7 +23,8 @@ import org.eclipse.ui.forms.widgets.Hyperlink;
 import org.nightlabs.jjqb.core.JJQBCorePlugin;
 import org.nightlabs.jjqb.ui.JJQBUIPlugin;
 import org.nightlabs.jjqb.ui.resource.Messages;
-import org.nightlabs.licence.manager.LicenceManager;
+import org.nightlabs.licence.manager.ILicenceManager;
+import org.nightlabs.licence.manager.LicenceManagerOnlineImpl;
 import org.osgi.service.prefs.BackingStoreException;
 import org.osgi.service.prefs.Preferences;
 import org.slf4j.Logger;
@@ -47,7 +48,7 @@ public class LicenceNotValidDialog extends TitleAreaDialog
 	public static final String HOME_HYPERLINK_TEXT = Messages.getString("LicenceNotValidDialog.homeHyperlink.text"); //$NON-NLS-1$
 
 	private Display display;
-	private LicenceManager licenceManager = JJQBCorePlugin.getDefault().getLicenceManager();
+	private ILicenceManager licenceManager = JJQBCorePlugin.getDefault().getLicenceManager();
 	private Preferences preferences = licenceManager.getPreferences();
 
 	private boolean licenceValid;
@@ -66,8 +67,8 @@ public class LicenceNotValidDialog extends TitleAreaDialog
 		display = parentShell.getDisplay();
 
 		licenceValid = licenceManager.isLicenceValid();
-		email = preferences.get(LicenceManager.PREFERENCES_KEY_EMAIL, "").trim(); //$NON-NLS-1$
-		licenceKey = preferences.get(LicenceManager.PREFERENCES_KEY_LICENCE_KEY, "").trim(); //$NON-NLS-1$
+		email = preferences.get(LicenceManagerOnlineImpl.PREFERENCES_KEY_EMAIL, "").trim(); //$NON-NLS-1$
+		licenceKey = preferences.get(LicenceManagerOnlineImpl.PREFERENCES_KEY_LICENCE_KEY, "").trim(); //$NON-NLS-1$
 	}
 
 	@Override
@@ -203,8 +204,8 @@ public class LicenceNotValidDialog extends TitleAreaDialog
 		email = emailText.getText().trim();
 		licenceKey = licenceKeyText.getText().trim();
 
-		preferences.put(LicenceManager.PREFERENCES_KEY_EMAIL, email);
-		preferences.put(LicenceManager.PREFERENCES_KEY_LICENCE_KEY, licenceKey);
+		preferences.put(LicenceManagerOnlineImpl.PREFERENCES_KEY_EMAIL, email);
+		preferences.put(LicenceManagerOnlineImpl.PREFERENCES_KEY_LICENCE_KEY, licenceKey);
 		try {
 			preferences.flush();
 		} catch (BackingStoreException e) {
