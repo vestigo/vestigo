@@ -23,7 +23,8 @@ import org.eclipse.ui.forms.widgets.Hyperlink;
 import org.nightlabs.jjqb.core.JJQBCorePlugin;
 import org.nightlabs.jjqb.ui.JJQBUIPlugin;
 import org.nightlabs.jjqb.ui.resource.Messages;
-import org.nightlabs.licence.manager.ILicenceManager;
+import org.nightlabs.licence.manager.LicenceManager;
+import org.nightlabs.licence.manager.LicenceManagerOfflineImpl;
 import org.nightlabs.licence.manager.LicenceManagerOnlineImpl;
 import org.osgi.service.prefs.BackingStoreException;
 import org.osgi.service.prefs.Preferences;
@@ -48,17 +49,19 @@ public class LicenceNotValidDialog extends TitleAreaDialog
 	public static final String HOME_HYPERLINK_TEXT = Messages.getString("LicenceNotValidDialog.homeHyperlink.text"); //$NON-NLS-1$
 
 	private Display display;
-	private ILicenceManager licenceManager = JJQBCorePlugin.getDefault().getLicenceManager();
+	private LicenceManager licenceManager = JJQBCorePlugin.getDefault().getLicenceManager();
 	private Preferences preferences = licenceManager.getPreferences();
 
 	private boolean licenceValid;
-	private String email;
-	private String licenceKey;
+	private String email = "";
+	private String licenceKey = "";
+	private String licenceBase64Block = "";
 
 	private Hyperlink purchaseHyperlink;
 	private Hyperlink homeHyperlink;
 	private Text emailText;
 	private Text licenceKeyText;
+	private Text licenceBase64BlockText;
 
 	private LicenceCheckMessagesTable licenceCheckMessagesTable;
 
@@ -67,8 +70,13 @@ public class LicenceNotValidDialog extends TitleAreaDialog
 		display = parentShell.getDisplay();
 
 		licenceValid = licenceManager.isLicenceValid();
-		email = preferences.get(LicenceManagerOnlineImpl.PREFERENCES_KEY_EMAIL, "").trim(); //$NON-NLS-1$
-		licenceKey = preferences.get(LicenceManagerOnlineImpl.PREFERENCES_KEY_LICENCE_KEY, "").trim(); //$NON-NLS-1$
+		if (licenceManager instanceof LicenceManagerOnlineImpl) {
+			email = preferences.get(LicenceManagerOnlineImpl.PREFERENCES_KEY_EMAIL, "").trim(); //$NON-NLS-1$
+			licenceKey = preferences.get(LicenceManagerOnlineImpl.PREFERENCES_KEY_LICENCE_KEY, "").trim(); //$NON-NLS-1$
+		}
+		else {
+			licenceBase64Block = preferences.get(LicenceManagerOfflineImpl.PREFERENCES_KEY_LICENCE_BASE64_BLOCK, "").trim(); //$NON-NLS-1$
+		}
 	}
 
 	@Override
@@ -92,10 +100,18 @@ public class LicenceNotValidDialog extends TitleAreaDialog
 
 	@Override
 	protected Point getInitialSize() {
-		if (!licenceValid && !licenceKey.isEmpty())
-			return new Point(800, 600);
-		else
-			return new Point(800, 300);
+		if (licenceManager instanceof LicenceManagerOnlineImpl) {
+			if (!licenceValid && (!licenceKey.isEmpty() || !licenceBase64Block.isEmpty()))
+				return new Point(800, 600);
+			else
+				return new Point(800, 300);
+		}
+		else {
+			if (!licenceValid && (!licenceKey.isEmpty() || !licenceBase64Block.isEmpty()))
+				return new Point(800, 800);
+			else
+				return new Point(800, 500);
+		}
 	}
 
 	@Override
@@ -131,17 +147,27 @@ public class LicenceNotValidDialog extends TitleAreaDialog
 
 		addHorizontalSeparator(parent);
 
-		new Label(parent, SWT.NONE).setText(Messages.getString("LicenceNotValidDialog.emailAddressLabel.text")); //$NON-NLS-1$
-		emailText = new Text(parent, SWT.BORDER);
-		emailText.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-		emailText.setText(email);
+		if (licenceManager instanceof LicenceManagerOnlineImpl) {
+			new Label(parent, SWT.NONE).setText(Messages.getString("LicenceNotValidDialog.emailAddressLabel.text")); //$NON-NLS-1$
+			emailText = new Text(parent, SWT.BORDER);
+			emailText.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+			emailText.setText(email);
 
-		new Label(parent, SWT.NONE).setText(Messages.getString("LicenceNotValidDialog.licenceKeyLabel.text")); //$NON-NLS-1$
-		licenceKeyText = new Text(parent, SWT.BORDER);
-		licenceKeyText.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-		licenceKeyText.setText(licenceKey);
+			new Label(parent, SWT.NONE).setText(Messages.getString("LicenceNotValidDialog.licenceKeyLabel.text")); //$NON-NLS-1$
+			licenceKeyText = new Text(parent, SWT.BORDER);
+			licenceKeyText.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+			licenceKeyText.setText(licenceKey);
+		}
+		else {
+			new Label(parent, SWT.NONE).setText(Messages.getString("LicenceNotValidDialog.licenceKeyLabel.text")); //$NON-NLS-1$
+			licenceBase64BlockText = new Text(parent, SWT.BORDER | SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
+			GridData gd = new GridData(GridData.FILL_BOTH);
+//			gd.heightHint = 120;
+			licenceBase64BlockText.setLayoutData(gd);
+			licenceBase64BlockText.setText(licenceBase64Block);
+		}
 
-		if (!licenceValid && !licenceKey.isEmpty()) {
+		if (!licenceValid && (!licenceKey.isEmpty() || !licenceBase64Block.isEmpty())) {
 			addHorizontalSeparator(parent);
 
 			{
@@ -161,7 +187,10 @@ public class LicenceNotValidDialog extends TitleAreaDialog
 			}
 		}
 
-		emailText.setFocus();
+		if (emailText != null)
+			emailText.setFocus();
+		else if (licenceBase64BlockText != null)
+			licenceBase64BlockText.setFocus();
 
 		return dialogArea;
 	}
@@ -201,11 +230,19 @@ public class LicenceNotValidDialog extends TitleAreaDialog
 	@Override
 	protected void okPressed()
 	{
-		email = emailText.getText().trim();
-		licenceKey = licenceKeyText.getText().trim();
+		if (emailText != null) {
+			email = emailText.getText().trim();
+			licenceKey = licenceKeyText.getText().trim();
 
-		preferences.put(LicenceManagerOnlineImpl.PREFERENCES_KEY_EMAIL, email);
-		preferences.put(LicenceManagerOnlineImpl.PREFERENCES_KEY_LICENCE_KEY, licenceKey);
+			preferences.put(LicenceManagerOnlineImpl.PREFERENCES_KEY_EMAIL, email);
+			preferences.put(LicenceManagerOnlineImpl.PREFERENCES_KEY_LICENCE_KEY, licenceKey);
+		}
+
+		if (licenceBase64BlockText != null) {
+			licenceBase64Block = licenceBase64BlockText.getText().trim();
+			preferences.put(LicenceManagerOfflineImpl.PREFERENCES_KEY_LICENCE_BASE64_BLOCK, licenceBase64Block);
+		}
+
 		try {
 			preferences.flush();
 		} catch (BackingStoreException e) {
@@ -216,7 +253,7 @@ public class LicenceNotValidDialog extends TitleAreaDialog
 			@Override
 			public void done(IJobChangeEvent event)
 			{
-				if (licenceKey.isEmpty())
+				if (licenceKey.isEmpty() && licenceBase64Block.isEmpty())
 					return;
 
 				display.asyncExec(new Runnable() {
