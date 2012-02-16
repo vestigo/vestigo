@@ -73,9 +73,9 @@ implements IWorkbenchPreferencePage
 
 		String licenceKey;
 		if (licenceManager instanceof LicenceManagerOnlineImpl)
-			licenceKey = getPreferenceStore().getString(LicenceManagerOnlineImpl.PREFERENCES_KEY_LICENCE_KEY);
+			licenceKey = getPreferenceStore().getString(licenceManager.getPrefixedPreferenceKey(LicenceManagerOnlineImpl.PREFERENCES_KEY_LICENCE_KEY));
 		else
-			licenceKey = getPreferenceStore().getString(LicenceManagerOfflineImpl.PREFERENCES_KEY_LICENCE_BASE64_BLOCK);
+			licenceKey = getPreferenceStore().getString(licenceManager.getPrefixedPreferenceKey(LicenceManagerOfflineImpl.PREFERENCES_KEY_LICENCE_BASE64_BLOCK));
 
 		if (licenceKey == null)
 			licenceKey = ""; //$NON-NLS-1$
@@ -122,13 +122,25 @@ implements IWorkbenchPreferencePage
 		addHorizontalSeparator(getFieldEditorParent());
 
 		if (licenceManager instanceof LicenceManagerOnlineImpl) {
-			addField(new StringFieldEditor(LicenceManagerOnlineImpl.PREFERENCES_KEY_EMAIL, Messages.getString("LicencePreferencePage.emailAddressLabel.text"), getFieldEditorParent())); //$NON-NLS-1$
-			addField(new StringFieldEditor(LicenceManagerOnlineImpl.PREFERENCES_KEY_LICENCE_KEY, Messages.getString("LicencePreferencePage.licenceKeyLabel.text"), getFieldEditorParent())); //$NON-NLS-1$
+			addField(
+					new StringFieldEditor(
+							licenceManager.getPrefixedPreferenceKey(LicenceManagerOnlineImpl.PREFERENCES_KEY_EMAIL),
+							Messages.getString("LicencePreferencePage.emailAddressLabel.text"), //$NON-NLS-1$
+							getFieldEditorParent()
+					)
+			);
+			addField(
+					new StringFieldEditor(
+							licenceManager.getPrefixedPreferenceKey(LicenceManagerOnlineImpl.PREFERENCES_KEY_LICENCE_KEY),
+							Messages.getString("LicencePreferencePage.licenceKeyLabel.text"), //$NON-NLS-1$
+							getFieldEditorParent()
+					)
+			);
 		}
 		else {
 			addField(
 					new MultiLineStringFieldEditor(
-							LicenceManagerOfflineImpl.PREFERENCES_KEY_LICENCE_BASE64_BLOCK,
+							licenceManager.getPrefixedPreferenceKey(LicenceManagerOfflineImpl.PREFERENCES_KEY_LICENCE_BASE64_BLOCK),
 							Messages.getString("LicencePreferencePage.licenceKeyLabel.text"), //$NON-NLS-1$
 							MultiLineStringFieldEditor.UNLIMITED,
 							13,

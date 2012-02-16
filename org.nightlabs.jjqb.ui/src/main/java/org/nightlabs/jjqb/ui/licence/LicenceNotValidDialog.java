@@ -71,11 +71,11 @@ public class LicenceNotValidDialog extends TitleAreaDialog
 
 		licenceValid = licenceManager.isLicenceValid();
 		if (licenceManager instanceof LicenceManagerOnlineImpl) {
-			email = preferences.get(LicenceManagerOnlineImpl.PREFERENCES_KEY_EMAIL, "").trim(); //$NON-NLS-1$
-			licenceKey = preferences.get(LicenceManagerOnlineImpl.PREFERENCES_KEY_LICENCE_KEY, "").trim(); //$NON-NLS-1$
+			email = getPreference(LicenceManagerOnlineImpl.PREFERENCES_KEY_EMAIL, "").trim(); //$NON-NLS-1$
+			licenceKey = getPreference(LicenceManagerOnlineImpl.PREFERENCES_KEY_LICENCE_KEY, "").trim(); //$NON-NLS-1$
 		}
 		else {
-			licenceBase64Block = preferences.get(LicenceManagerOfflineImpl.PREFERENCES_KEY_LICENCE_BASE64_BLOCK, "").trim(); //$NON-NLS-1$
+			licenceBase64Block = getPreference(LicenceManagerOfflineImpl.PREFERENCES_KEY_LICENCE_BASE64_BLOCK, "").trim(); //$NON-NLS-1$
 		}
 	}
 
@@ -234,13 +234,13 @@ public class LicenceNotValidDialog extends TitleAreaDialog
 			email = emailText.getText().trim();
 			licenceKey = licenceKeyText.getText().trim();
 
-			preferences.put(LicenceManagerOnlineImpl.PREFERENCES_KEY_EMAIL, email);
-			preferences.put(LicenceManagerOnlineImpl.PREFERENCES_KEY_LICENCE_KEY, licenceKey);
+			setPreference(LicenceManagerOnlineImpl.PREFERENCES_KEY_EMAIL, email);
+			setPreference(LicenceManagerOnlineImpl.PREFERENCES_KEY_LICENCE_KEY, licenceKey);
 		}
 
 		if (licenceBase64BlockText != null) {
 			licenceBase64Block = licenceBase64BlockText.getText().trim();
-			preferences.put(LicenceManagerOfflineImpl.PREFERENCES_KEY_LICENCE_BASE64_BLOCK, licenceBase64Block);
+			setPreference(LicenceManagerOfflineImpl.PREFERENCES_KEY_LICENCE_BASE64_BLOCK, licenceBase64Block);
 		}
 
 		try {
@@ -274,5 +274,14 @@ public class LicenceNotValidDialog extends TitleAreaDialog
 		});
 
 		super.okPressed();
+	}
+
+	private String getPreference(String key, String def)
+	{
+		return preferences.get(licenceManager.getPrefixedPreferenceKey(key), def);
+	}
+	private void setPreference(String key, String value)
+	{
+		preferences.put(licenceManager.getPrefixedPreferenceKey(key), value);
 	}
 }
