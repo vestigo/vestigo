@@ -332,6 +332,7 @@
 					<version>2.5.1</version>
 					<configuration>
 						<!-- <skip>true</skip> -->
+						<aggregate>true</aggregate>
 						<formats>
 				            <format>xml</format>
 				        </formats>
