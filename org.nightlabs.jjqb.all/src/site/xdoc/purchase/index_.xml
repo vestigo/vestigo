@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://maven.apache.org/XDOC/2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 http://maven.apache.org/xsd/xdoc-2.0.xsd">
+
+	<properties>
+		<title>Purchase JJQB</title>
+		<author>Marco หงุ่ยตระกูล-Schulze</author>
+	</properties>
+	
+	<!--
+	Unfortunately, there is a bug in our site-skin: It totally ignores the following <head> element and
+	therefore, the redirect via the refresh-meta-element does not occur in the generated HTML.
+	I thus renamed this file (suffix '_') and use a php-page instead (see resources). Marco :-)
+	-->
+	<head>
+		<title>Purchase JJQB</title>
+		<meta http-equiv="refresh" content="0; URL=https://secure.payproglobal.com/orderpage.aspx?products=87920" />
+	</head>
+
+	<body>
+
+		<section name="Purchase JJQB">
+			<p>
+				You should be forwarded to the shop automatically. If you are not, please
+				<a href="https://secure.payproglobal.com/orderpage.aspx?products=87920">click here</a>. 
+			</p>
+		</section>
+
+	</body>
+
+</document>

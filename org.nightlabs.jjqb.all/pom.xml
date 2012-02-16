@@ -133,4 +133,64 @@ Quick try with tycho - didn't work this way, yet, though :-( Need more research.
 		</plugins>
 	</build>
 -->
+
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-site-plugin</artifactId>
+				<dependencies>
+				<!--
+				Unfortunately, neither twiki nor confluence are usable (at least the newest versions currently available [1.2]).
+				With twiki anchors cannot be used (and it has quite a few other annoying bugs, too). And confluence doesn't
+				support images :-( Marco.
+				
+					<dependency>
+						<groupId>org.apache.maven.doxia</groupId>
+						<artifactId>doxia-module-twiki</artifactId>
+						<version>1.2</version>
+					</dependency>
+					<dependency> 
+						<groupId>org.apache.maven.doxia</groupId>
+						<artifactId>doxia-module-confluence</artifactId>
+						<version>1.2</version>
+					</dependency>
+				-->
+				</dependencies>
+				<!-- Configuration is in parent-POM! -->
+			</plugin>
+		</plugins>
+	</build>
+
+
+	<distributionManagement>
+		<!--
+		We configure the site only here (and not in the parent), because it otherwise uploads all
+		modules individually, which we don't want. We want it to upload only the one from
+		org.nightlabs.jjqb.all.
+
+		The property "distributionManagement.site.prefix" must be declared in the settings.xml
+		like this:
+
+		<profiles>
+			<profile>
+				<id>default</id>
+				<activation>
+					<activeByDefault>true</activeByDefault>
+				</activation>
+				<properties>
+					<distributionManagement.site.prefix>scp://webserver.domain.tld/srv/www</distributionManagement.site.prefix>
+				</properties>
+			</profile>
+        </profiles>
+		-->
+		<site>
+			<id>jjqb.nightlabs.com</id>
+			<!--
+			<url>${distributionManagement.site.prefix}/jjqb.nightlabs.com/htdocs/${project.version}/</url>
+			-->
+			<url>${distributionManagement.site.prefix}/jjqb.nightlabs.com/htdocs/</url>
+		</site>
+	</distributionManagement>
 </project>

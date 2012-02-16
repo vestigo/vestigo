@@ -58,6 +58,15 @@
 	</scm>
 
 	<distributionManagement>
+		<!--
+		We configure this "junk" directory here in order to make Maven upload everyting but the
+		'org.nightlabs.jjqb.all' to a directory which doesn't disturb us. I did not yet find out how to prevent
+		Maven from uploading the other modules completely. Marco.
+		-->
+		<site>
+			<id>jjqb.nightlabs.com</id>
+			<url>file:${java.io.tmpdir}/jjqb-junk</url>
+		</site>
 		<repository>
 			<id>dev.nightlabs.org-private-libs-release-local</id>
 			<name>dev.nightlabs.org-private-libs-release-local</name>
@@ -298,6 +307,18 @@
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>cobertura-maven-plugin</artifactId>
 					<version>2.5.1</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-site-plugin</artifactId>
+					<version>3.0-beta-3</version>
+					<configuration>
+						<locales>en,de</locales>
+						<inputencoding>UTF-8</inputencoding>
+						<outputencoding>UTF-8</outputencoding>
+						<reportPlugins>
+							<!-- Suppress reports by this empty 'reportPlugins'-element. -->
+						</reportPlugins>
+					</configuration>
 				</plugin>
 			</plugins>
 		</pluginManagement>
