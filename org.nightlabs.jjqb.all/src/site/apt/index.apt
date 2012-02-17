@@ -9,8 +9,8 @@ JDO/JPA Query Browser (JJQB)
 
 * Query your object-database!
 
-	Are you sick of searching through your *SQL* tables even though you have an *object*-data-model?
-	Use JJQB to comfortably query your database *on the object-level*!
+	Are you sick of searching through your <<SQL>> tables even though you have an <<object>>-data-model?
+	Use JJQB to comfortably query your database <<on the object-level>>!
 
 * Try out your JDO/JPA queries!
 
