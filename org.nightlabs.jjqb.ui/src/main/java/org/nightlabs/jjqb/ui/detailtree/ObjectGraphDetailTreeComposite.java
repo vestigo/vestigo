@@ -1,17 +1,27 @@
 package org.nightlabs.jjqb.ui.detailtree;
 
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.ITreeViewerListener;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.TreeExpansionEvent;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.KeyAdapter;
+import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.MouseAdapter;
+import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.nightlabs.jjqb.core.ObjectReferenceChild;
+import org.nightlabs.jjqb.core.oda.ResultSet;
+import org.nightlabs.jjqb.ui.licence.LicenceNotValidDialog;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -50,6 +60,109 @@ extends Composite
 		});
 		treeViewer.addTreeListener(treeViewerListener);
 		treeContentProvider.addChildrenLoadedListener(childrenLoadedListener);
+		registerOpenLicenceNotValidDialogListeners();
+		registerExpandCollapseKeyAndMouseListeners();
+	}
+
+	private void registerExpandCollapseKeyAndMouseListeners() {
+		treeViewer.getTree().addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if (e.character == '\r' || e.character == '\n' || e.character == ' ')
+					userToggleExpansionState(true, true);
+				else if (e.keyCode == 16777220) // cursor RIGHT
+					userToggleExpansionState(true, false);
+				else if (e.keyCode == 16777219) // cursor LEFT
+					userToggleExpansionState(false, true);
+			}
+		});
+
+		treeViewer.getTree().addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseDoubleClick(MouseEvent e) {
+				userToggleExpansionState(true, true);
+			}
+		});
+	}
+
+	private void userToggleExpansionState(boolean expand, boolean collapse)
+	{
+		ISelection _selection = treeViewer.getSelection();
+		if (!(_selection instanceof IStructuredSelection))
+			return;
+
+		IStructuredSelection selection = (IStructuredSelection) _selection;
+
+		final List<ObjectGraphDetailTreeNode> expandedOrCollapsedNodes = new LinkedList<ObjectGraphDetailTreeNode>();
+
+		for (Iterator<?> it = selection.iterator(); it.hasNext(); ) {
+			Object o = it.next();
+			boolean isExpanded = treeViewer.getExpandedState(o);
+			if (isExpanded) {
+				if (!collapse)
+					continue;
+
+				treeViewer.collapseToLevel(o, TreeViewer.ALL_LEVELS);
+			}
+			else {
+				if (!expand)
+					continue;
+
+				treeViewer.expandToLevel(o, 1);
+			}
+
+			if (o instanceof ObjectGraphDetailTreeNode)
+				expandedOrCollapsedNodes.add((ObjectGraphDetailTreeNode) o);
+		}
+
+		if (!expandedOrCollapsedNodes.isEmpty()) {
+			getDisplay().asyncExec(new Runnable() {
+				@Override
+				public void run() {
+					for (ObjectGraphDetailTreeNode node : expandedOrCollapsedNodes) {
+						userExpandedOrCollapsed(node);
+					}
+				}
+			});
+		}
+	}
+
+	private void registerOpenLicenceNotValidDialogListeners() {
+		// We want the dialog to open, if the 'Enter' or the 'Space' key was pressed (while an appropriate item is selected).
+		treeViewer.getTree().addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if (e.character == '\r' || e.character == '\n' || e.character == ' ')
+					openLicenceNotValidDialogIfLicenceNotValidItemSelected();
+			}
+		});
+
+		// We want the dialog to open, if the user clicks on an appropriate item.
+		treeViewer.getTree().addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseUp(MouseEvent e) {
+				openLicenceNotValidDialogIfLicenceNotValidItemSelected();
+			}
+		});
+	}
+
+	private void openLicenceNotValidDialogIfLicenceNotValidItemSelected()
+	{
+		ISelection _selection = treeViewer.getSelection();
+		if (!(_selection instanceof IStructuredSelection))
+			return;
+
+		IStructuredSelection selection = (IStructuredSelection) _selection;
+		for (Iterator<?> it = selection.iterator(); it.hasNext(); ) {
+			Object o = it.next();
+			if (o instanceof ObjectGraphDetailTreeNode) {
+				ObjectGraphDetailTreeNode n = (ObjectGraphDetailTreeNode) o;
+				if (n.getObject() == ResultSet.LICENCE_NOT_VALID) {
+					new LicenceNotValidDialog(getShell()).open();
+					return;
+				}
+			}
+		}
 	}
 
 	private ChildrenLoadedListener childrenLoadedListener = new ChildrenLoadedListener() {
@@ -67,6 +180,12 @@ extends Composite
 
 	private ExpansionState getCorrespondingChildExpansionState(ExpansionState parentExpansionState, ObjectGraphDetailTreeNode childTreeNode)
 	{
+		if (parentExpansionState == null)
+			throw new IllegalArgumentException("parentExpansionState == null");
+
+		if (childTreeNode == null)
+			throw new IllegalArgumentException("childTreeNode == null");
+
 		String childTreeNode_fieldName = null;
 		int childTreeNode_index = -1;
 
@@ -122,15 +241,20 @@ extends Composite
 			}
 
 			ObjectGraphDetailTreeNode node = (ObjectGraphDetailTreeNode) element;
-			registerExpansionState(node);
-
-			ObjectGraphDetailTreeNode[] childNodes = node.getChildNodes();
-			if (childNodes != null) {
-				for (ObjectGraphDetailTreeNode childNode : childNodes)
-					restoreExpansionState(childNode);
-			}
+			userExpandedOrCollapsed(node);
 		}
 	};
+
+	private void userExpandedOrCollapsed(ObjectGraphDetailTreeNode node)
+	{
+		registerExpansionState(node);
+
+		ObjectGraphDetailTreeNode[] childNodes = node.getChildNodes();
+		if (childNodes != null) {
+			for (ObjectGraphDetailTreeNode childNode : childNodes)
+				restoreExpansionState(childNode);
+		}
+	}
 
 	private void registerExpansionState(ObjectGraphDetailTreeNode node)
 	{

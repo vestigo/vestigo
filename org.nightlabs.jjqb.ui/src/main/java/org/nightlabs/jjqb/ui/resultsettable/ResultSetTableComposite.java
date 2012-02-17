@@ -64,6 +64,7 @@ implements ISelectionProvider
 		setLayout(new FillLayout(SWT.HORIZONTAL | SWT.VERTICAL));
 		createTableViewer();
 		createTableCursor();
+		registerOpenLicenceNotValidDialogListeners();
 	}
 
 	private void createTableViewer() {
@@ -78,13 +79,6 @@ implements ISelectionProvider
 		tableViewer.getTable().setLinesVisible(true);
 		tableViewer.setUseHashlookup(true);
 //		hookRepairPaintListener(); // I don't have these paint bugs here in the office - only at home - strange (and it makes things really slow, here).
-
-		tableViewer.getTable().addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseUp(MouseEvent e) {
-				openLicenceNotValidDialogIfLicenceNotValidRowSelected();
-			}
-		});
 	}
 
 	private void openLicenceNotValidDialogIfLicenceNotValidRowSelected()
@@ -158,11 +152,31 @@ implements ISelectionProvider
 					fireSelectionChangedEvent();
 				}
 		});
+	}
+
+	private void registerOpenLicenceNotValidDialogListeners() {
+		// We want the dialog to open, if the 'Enter' or the 'Space' key was pressed (while an appropriate line is selected).
 		tableCursor.addListener(SWT.KeyUp, new Listener() {
 			@Override
 			public void handleEvent(Event e) {
 				if (e.character == '\r' || e.character == '\n' || e.character == ' ')
 					openLicenceNotValidDialogIfLicenceNotValidRowSelected();
+			}
+		});
+
+		// We need both, the MouseListener in the TableViewer and the Listener in the TableCursor, because the first click
+		// only triggers the first listener while all following clicks (on the same cell while it stays selected) solely
+		// trigger the second listener. Marco :-)
+		tableViewer.getTable().addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseUp(MouseEvent e) {
+				openLicenceNotValidDialogIfLicenceNotValidRowSelected();
+			}
+		});
+		tableCursor.addListener(SWT.MouseUp, new Listener() {
+			@Override
+			public void handleEvent(Event e) {
+				openLicenceNotValidDialogIfLicenceNotValidRowSelected();
 			}
 		});
 	}

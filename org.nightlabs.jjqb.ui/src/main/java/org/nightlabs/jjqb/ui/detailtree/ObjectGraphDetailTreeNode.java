@@ -3,8 +3,10 @@ package org.nightlabs.jjqb.ui.detailtree;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.nightlabs.jjqb.core.JJQBCorePlugin;
 import org.nightlabs.jjqb.core.ObjectReference;
 import org.nightlabs.jjqb.core.ObjectReferenceChild;
+import org.nightlabs.jjqb.core.oda.ResultSet;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
@@ -19,6 +21,17 @@ public class ObjectGraphDetailTreeNode
 	{
 		this(object);
 		this.parentNode = parentNode;
+
+		if (!JJQBCorePlugin.getDefault().getLicenceManager().isLicenceValid()) {
+			int level = 0;
+			ObjectGraphDetailTreeNode n = parentNode;
+			while (n != null) {
+				++level;
+				n = n.getParentNode();
+			}
+			if (level >= 2)
+				childNodes = new ObjectGraphDetailTreeNode[] { new ObjectGraphDetailTreeNode(ResultSet.LICENCE_NOT_VALID) };
+		}
 	}
 
 	public ObjectGraphDetailTreeNode(Object object)

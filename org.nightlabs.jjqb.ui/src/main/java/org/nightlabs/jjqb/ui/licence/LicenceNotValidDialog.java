@@ -39,11 +39,9 @@ public class LicenceNotValidDialog extends TitleAreaDialog
 	public static final String MESSAGE_LICENCE_NOT_YET_PURCHASED = Messages.getString("LicenceNotValidDialog.licenceNotYetPurchased"); //$NON-NLS-1$
 	public static final String MESSAGE_LICENCE_NOT_VALID = Messages.getString("LicenceNotValidDialog.licenceNotValid"); //$NON-NLS-1$
 
-	// TODO need a nice URL (forwarding to this one)
-	public static final String PURCHASE_URL = "https://secure.payproglobal.com/orderpage.aspx?products=87920"; //$NON-NLS-1$
+	public static final String PURCHASE_URL = "http://jjqb.nightlabs.com/purchase"; //$NON-NLS-1$
 
-	// TODO need product web site!
-	public static final String HOME_URL = "http://www.nightlabs.com"; //$NON-NLS-1$
+	public static final String HOME_URL = "http://jjqb.nightlabs.com"; //$NON-NLS-1$
 
 	public static final String PURCHASE_HYPERLINK_TEXT = Messages.getString("LicenceNotValidDialog.purchaseHyperlink.text"); //$NON-NLS-1$
 	public static final String HOME_HYPERLINK_TEXT = Messages.getString("LicenceNotValidDialog.homeHyperlink.text"); //$NON-NLS-1$
