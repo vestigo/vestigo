@@ -270,5 +270,13 @@
 			name="JJQB Licence">
 		</page>
 	</extension>
+ <extension
+       point="org.nightlabs.jjqb.core.transientConnectionPropertiesProvider">
+    <provider
+          class="org.nightlabs.jjqb.ui.transientconnectionproperties.DefaultTransientConnectionPropertiesProvider"
+          connectionProfileClass="org.nightlabs.jjqb.core.oda.ConnectionProfile"
+          id="org.nightlabs.jjqb.ui.transientconnectionproperties.DefaultTransientConnectionPropertiesProvider">
+    </provider>
+ </extension>
 
 </plugin>

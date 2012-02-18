@@ -5,9 +5,9 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Properties;
 
-import org.nightlabs.jjqb.childvm.shared.PropertiesUtil;
 import org.nightlabs.jjqb.childvm.webapp.model.Connection;
 import org.nightlabs.jjqb.childvm.webapp.model.ConnectionProfileManager;
+import org.nightlabs.jjqb.cumulus4j.childvm.shared.Cumulus4jConnectionProperties;
 
 public class Cumulus4jConnectionHelper
 {
@@ -53,11 +53,18 @@ public class Cumulus4jConnectionHelper
 
 		try {
 			return (String) method_cryptoSession_acquire.invoke(cryptoSession);
-		} catch (IllegalArgumentException e) {
-			throw new RuntimeException(e);
 		} catch (IllegalAccessException e) {
 			throw new RuntimeException(e);
 		} catch (InvocationTargetException e) {
+			if (e.getMessage() == null) {
+				Throwable cause = e.getCause();
+				while (cause != null) {
+					if (cause.getMessage() != null)
+						throw new RuntimeException(cause.getMessage(), e);
+
+					cause = cause.getCause();
+				}
+			}
 			throw new RuntimeException(e);
 		}
 	}
@@ -70,11 +77,18 @@ public class Cumulus4jConnectionHelper
 
 		try {
 			method_cryptoSession_release.invoke(cryptoSession);
-		} catch (IllegalArgumentException e) {
-			throw new RuntimeException(e);
 		} catch (IllegalAccessException e) {
 			throw new RuntimeException(e);
 		} catch (InvocationTargetException e) {
+			if (e.getMessage() == null) {
+				Throwable cause = e.getCause();
+				while (cause != null) {
+					if (cause.getMessage() != null)
+						throw new RuntimeException(cause.getMessage(), e);
+
+					cause = cause.getCause();
+				}
+			}
 			throw new RuntimeException(e);
 		}
 	}
@@ -106,11 +120,10 @@ public class Cumulus4jConnectionHelper
 
 		Properties connectionProperties = connection.getConnectionProfile().getConnectionProperties();
 
-		// TODO use the CORRECT keys to load the following properties from the connectionProperties!!!
-		String keyStoreUserName = connectionProperties.getProperty(PropertiesUtil.PREFIX_PERSISTENCE + "___keyStoreUserName");
-		char[] keyStorePassword = connectionProperties.getProperty(PropertiesUtil.PREFIX_PERSISTENCE + "___keyStorePassword").toCharArray();
-		String keyStoreID = connectionProperties.getProperty(PropertiesUtil.PREFIX_PERSISTENCE + "___keyStoreID");
-		String keyStoreDir = connectionProperties.getProperty(PropertiesUtil.PREFIX_PERSISTENCE + "___keyStoreDir");
+		String keyStoreUserName = connectionProperties.getProperty(Cumulus4jConnectionProperties.KEY_STORE_USER_NAME);
+		char[] keyStorePassword = connectionProperties.getProperty(Cumulus4jConnectionProperties.KEY_STORE_PASSWORD).toCharArray();
+		String keyStoreID = connectionProperties.getProperty(Cumulus4jConnectionProperties.KEY_STORE_ID);
+		String keyStoreDir = connectionProperties.getProperty(Cumulus4jConnectionProperties.KEY_STORE_DIR);
 
 		ClassLoader backupContextClassLoader = Thread.currentThread().getContextClassLoader();
 		try {

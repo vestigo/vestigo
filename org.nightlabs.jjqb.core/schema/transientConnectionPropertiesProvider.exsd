@@ -3,7 +3,7 @@
 <schema targetNamespace="org.nightlabs.jjqb.core" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
       <appinfo>
-         <meta.schema plugin="org.nightlabs.jjqb.core" id="connectionProfile" name="ConnectionProfile"/>
+         <meta.schema plugin="org.nightlabs.jjqb.core" id="transientConnectionPropertiesProvider" name="TransientConnectionPropertiesProvider"/>
       </appinfo>
       <documentation>
          [Enter description of this extension point.]
@@ -18,7 +18,7 @@
       </annotation>
       <complexType>
          <sequence minOccurs="0" maxOccurs="unbounded">
-            <element ref="connectionProfile"/>
+            <element ref="provider"/>
          </sequence>
          <attribute name="point" type="string" use="required">
             <annotation>
@@ -47,33 +47,33 @@
       </complexType>
    </element>
 
-   <element name="connectionProfile">
+   <element name="provider">
       <complexType>
+         <attribute name="id" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
          <attribute name="class" type="string" use="required">
             <annotation>
                <documentation>
                   
                </documentation>
                <appinfo>
-                  <meta.attribute kind="java" basedOn=":org.nightlabs.jjqb.core.oda.ConnectionProfile"/>
+                  <meta.attribute kind="java" basedOn=":org.nightlabs.jjqb.core.transientconnectionproperties.TransientConnectionPropertiesProvider"/>
                </appinfo>
             </annotation>
          </attribute>
-         <attribute name="connectionType" type="string" use="required">
+         <attribute name="connectionProfileClass" type="string" use="required">
             <annotation>
                <documentation>
-                  Class or interface of a connection to which the given connectionProfile should be assigned. A concrete.
+                  This can either be a concrete class of a ConnectionProfile implementation or one of its super-classes or any implemented interface.
                </documentation>
                <appinfo>
-                  <meta.attribute kind="java" basedOn=":org.nightlabs.jjqb.core.oda.Connection"/>
+                  <meta.attribute kind="java" basedOn=":org.nightlabs.jjqb.core.oda.ConnectionProfile"/>
                </appinfo>
-            </annotation>
-         </attribute>
-         <attribute name="priority" type="string">
-            <annotation>
-               <documentation>
-                  A priority from 0 to 999 which is used to decide for a certain connectionProfile. If there are multiple extensions matching a certain connection instance, the one with the HIGHEST priority is chosen. If no priority is given, it defaults to 500.
-               </documentation>
             </annotation>
          </attribute>
       </complexType>

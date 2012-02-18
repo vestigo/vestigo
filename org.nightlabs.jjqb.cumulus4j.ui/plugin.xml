@@ -61,7 +61,7 @@
       <page
             id="org.nightlabs.jjqb.cumulus4j.core.oda.JDOCumulus4jDriver"
             name="JDO+Cumulus4j Properties"
-            class="org.nightlabs.jjqb.ui.oda.JDODriverPropertyPage"
+            class="org.nightlabs.jjqb.cumulus4j.ui.oda.JDOCumulus4jDriverPropertyPage"
             objectClass="org.eclipse.datatools.connectivity.IConnectionProfile">
          <filter
                name="org.eclipse.datatools.profile.property.id"
@@ -75,7 +75,7 @@
       <page
             id="org.nightlabs.jjqb.cumulus4j.core.oda.JPACumulus4jDriver"
             name="JPA+Cumulus4j Properties"
-            class="org.nightlabs.jjqb.ui.oda.JPADriverPropertyPage"
+            class="org.nightlabs.jjqb.cumulus4j.ui.oda.JPACumulus4jDriverPropertyPage"
             objectClass="org.eclipse.datatools.connectivity.IConnectionProfile">
          <filter
                name="org.eclipse.datatools.profile.property.id"
@@ -88,7 +88,7 @@
       <dataSourceUI id="org.nightlabs.jjqb.cumulus4j.core.oda.JDOCumulus4jDriver">
         <newDataSourceWizard
               includesProgressMonitor="false"
-              pageClass="org.nightlabs.jjqb.ui.oda.JDODriverWizardPage"
+              pageClass="org.nightlabs.jjqb.cumulus4j.ui.oda.JDOCumulus4jDriverWizardPage"
               pageTitle="JDO+Cumulus4j DataSource"
               windowTitle="JDO+Cumulus4j DataSource"/>
       </dataSourceUI> 
@@ -115,7 +115,7 @@
       <dataSourceUI id="org.nightlabs.jjqb.cumulus4j.core.oda.JPACumulus4jDriver">
         <newDataSourceWizard
               includesProgressMonitor="false"
-              pageClass="org.nightlabs.jjqb.ui.oda.JPADriverWizardPage"
+              pageClass="org.nightlabs.jjqb.cumulus4j.ui.oda.JPACumulus4jDriverWizardPage"
               pageTitle="JPA+Cumulus4j DataSource"
               windowTitle="JPA+Cumulus4j DataSource"/>
       </dataSourceUI> 

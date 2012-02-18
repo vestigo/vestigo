@@ -3,7 +3,8 @@
 <plugin>
    <extension-point id="connectionExtension" name="ConnectionExtension" schema="schema/connectionExtension.exsd"/>
    <extension-point id="childVMWebApp" name="ChildVM WebApp" schema="schema/childVMWebApp.exsd"/>
-   <extension-point id="connectionProfile" name="connectionProfile" schema="schema/connectionProfile.exsd"/>
+   <extension-point id="connectionProfile" name="ConnectionProfile" schema="schema/connectionProfile.exsd"/>
+   <extension-point id="transientConnectionPropertiesProvider" name="TransientConnectionPropertiesProvider" schema="schema/transientConnectionPropertiesProvider.exsd"/>
 
 
     <extension

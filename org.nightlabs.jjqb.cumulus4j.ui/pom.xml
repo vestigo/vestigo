@@ -22,6 +22,14 @@
 			<artifactId>org.nightlabs.jjqb.ui</artifactId>
 		</dependency>
 		<!-- END org.nightlabs.jjqb -->
+		
+		<!-- BEGIN org.nightlabs.jjqb.cumulus4j -->
+		<dependency>
+			<groupId>org.nightlabs.jjqb</groupId>
+			<artifactId>org.nightlabs.jjqb.cumulus4j.childvm.shared</artifactId>
+		</dependency>
+		<!-- END org.nightlabs.jjqb.cumulus4j -->
+		
 
 		<!-- BEGIN org.eclipse -->
 		<dependency>

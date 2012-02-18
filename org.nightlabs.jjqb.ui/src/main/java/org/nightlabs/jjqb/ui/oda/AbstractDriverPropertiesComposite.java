@@ -29,7 +29,7 @@ import org.nightlabs.jjqb.childvm.shared.PropertiesUtil;
  * @author Alexander Bieber <!-- alex [AT] nightlabs [DOT] de -->
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
  */
-public class AbstractDriverPropertiesComposite extends Composite {
+public abstract class AbstractDriverPropertiesComposite extends Composite {
 
 	private Button loadFromFile;
 	private Button saveToFile;
@@ -46,11 +46,18 @@ public class AbstractDriverPropertiesComposite extends Composite {
 		layout.numColumns = 4;
 		this.setLayout(layout);
 
-		new Label(this, SWT.NONE).setText("Persistence unit name:");
-		persistenceUnitNameText = new Text(this, SWT.BORDER);
+		createControls(this);
+
+		updateUI(connectionProperties); // is null before init(...)
+	}
+
+	protected void createControls(Composite parent)
+	{
+		new Label(parent, SWT.NONE).setText("Persistence unit name:");
+		persistenceUnitNameText = new Text(parent, SWT.BORDER);
 		assignGridDataSpanning(persistenceUnitNameText, GridData.FILL_HORIZONTAL, 1, 1);
 
-		loadFromFile = new Button(this, SWT.PUSH);
+		loadFromFile = new Button(parent, SWT.PUSH);
 		loadFromFile.setText("Load...");
 		loadFromFile.setToolTipText("Load the properties from a java properties file.");
 		loadFromFile.addSelectionListener(new SelectionAdapter() {
@@ -60,7 +67,7 @@ public class AbstractDriverPropertiesComposite extends Composite {
 			}
 		});
 
-		saveToFile = new Button(this, SWT.PUSH);
+		saveToFile = new Button(parent, SWT.PUSH);
 		saveToFile.setText("Save...");
 		saveToFile.setToolTipText("Save the properties to a java properties file.");
 		saveToFile.addSelectionListener(new SelectionAdapter() {
@@ -70,16 +77,14 @@ public class AbstractDriverPropertiesComposite extends Composite {
 			}
 		});
 
-		editClasspathComposite = new EditClasspathComposite(this, SWT.NONE);
+		editClasspathComposite = new EditClasspathComposite(parent, SWT.NONE);
 		assignGridDataSpanning(editClasspathComposite, GridData.FILL_BOTH, 4, 1);
 
-		editPropertiesComposite = new EditPropertiesComposite(this, SWT.NONE);
+		editPropertiesComposite = new EditPropertiesComposite(parent, SWT.NONE);
 		assignGridDataSpanning(editPropertiesComposite, GridData.FILL_BOTH, 4, 1);
-
-		updatePropertiesEditor();
 	}
 
-	private void assignGridDataSpanning(Control control, int style, int horizontalSpan, int verticalSpan)
+	protected void assignGridDataSpanning(Control control, int style, int horizontalSpan, int verticalSpan)
 	{
 		GridData gd = new GridData(style);
 		gd.horizontalSpan = horizontalSpan;
@@ -87,7 +92,7 @@ public class AbstractDriverPropertiesComposite extends Composite {
 		control.setLayoutData(gd);
 	}
 
-	private void updatePropertiesEditor() {
+	protected void updateUI(Properties connectionProperties) {
 		if (connectionProperties != null) {
 			persistenceUnitNameText.setText(connectionProperties.getProperty(PropertiesUtil.PERSISTENCE_UNIT_NAME, ""));
 
@@ -107,7 +112,7 @@ public class AbstractDriverPropertiesComposite extends Composite {
 	 */
 	public void init(Map<?, ?> connectionProperties) {
 		this.connectionProperties = propsFromMap(connectionProperties);
-		updatePropertiesEditor();
+		updateUI(this.connectionProperties);
 	}
 
 	private static Properties propsFromMap(Map<?, ?> map)
@@ -131,7 +136,7 @@ public class AbstractDriverPropertiesComposite extends Composite {
 	 */
 	public void setConnectionPrivateProps(Properties props) {
 		connectionProperties = props;
-		updatePropertiesEditor();
+		updateUI(connectionProperties);
 	}
 
 	/**

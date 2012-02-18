@@ -45,6 +45,10 @@ public class JPACumulus4jConnection extends JPAConnection
 	public synchronized void open() {
 		super.open();
 		cumulus4jConnectionHelper = new Cumulus4jConnectionHelper(this);
+		// To detect a wrong password to the key store and similar quickly, we already try
+		// to acquire a crypto-session while opening the connection.
+		cumulus4jConnectionHelper.cryptoSession_acquire();
+		cumulus4jConnectionHelper.cryptoSession_release();
 	}
 
 	@Override

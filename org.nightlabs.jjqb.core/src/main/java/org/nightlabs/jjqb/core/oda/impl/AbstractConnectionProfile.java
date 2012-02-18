@@ -2,17 +2,29 @@ package org.nightlabs.jjqb.core.oda.impl;
 
 import java.io.IOException;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IConfigurationElement;
+import org.eclipse.core.runtime.IExtension;
+import org.eclipse.core.runtime.IExtensionPoint;
+import org.eclipse.core.runtime.IExtensionRegistry;
+import org.eclipse.core.runtime.OperationCanceledException;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.datatools.connectivity.oda.OdaException;
 import org.nightlabs.jjqb.childvm.shared.ConnectionProfileDTO;
 import org.nightlabs.jjqb.childvm.shared.api.ChildVM;
 import org.nightlabs.jjqb.core.childvm.internal.ChildVMServer;
 import org.nightlabs.jjqb.core.oda.Connection;
 import org.nightlabs.jjqb.core.oda.ConnectionProfile;
+import org.nightlabs.jjqb.core.oda.ConnectionPropertyMeta;
+import org.nightlabs.jjqb.core.transientconnectionproperties.TransientConnectionPropertiesProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,12 +34,6 @@ import org.slf4j.LoggerFactory;
 public abstract class AbstractConnectionProfile implements ConnectionProfile
 {
 	private static final Logger logger = LoggerFactory.getLogger(AbstractConnectionProfile.class);
-
-//	public AbstractConnectionProfile()
-//	{
-//		classLoaderManager = new ClassLoaderManagerImpl();
-//		classLoaderManager.setConnectionProfile(this);
-//	}
 
 	private ChildVMServer childVMServer;
 	private String profileID;
@@ -41,13 +47,6 @@ public abstract class AbstractConnectionProfile implements ConnectionProfile
 		logger.info("setProfileID: profileID={}", profileID);
 		this.profileID = profileID;
 	}
-
-//	private ClassLoaderManager classLoaderManager;
-//
-//	@Override
-//	public ClassLoaderManager getClassLoaderManager() {
-//		return classLoaderManager;
-//	}
 
 	@Override
 	public ChildVM getChildVM() {
@@ -64,7 +63,27 @@ public abstract class AbstractConnectionProfile implements ConnectionProfile
 	 */
 	protected abstract String getWebAppName();
 
-	private Properties connectionProperties;
+	/**
+	 * <p>
+	 * The properties which are stored in the ODA connection properties.
+	 * They are obtained from {@link Connection#getConnectionProperties()}.
+	 * </p><p>
+	 * These properties are merged with the {@link #transientConnectionProperties}
+	 * when passed to the {@link ConnectionProfileDTO} (in {@link #toConnectionProfileDTO()}).
+	 * </p>
+	 */
+	private Properties persistentConnectionProperties;
+
+	/**
+	 * <p>
+	 * Properties which are not stored in the ODA connection properties. For example passwords
+	 * and other things that should not be stored in a persistent way.
+	 * </p><p>
+	 * These properties are merged with the {@link #persistentConnectionProperties}
+	 * when passed to the {@link ConnectionProfileDTO} (in {@link #toConnectionProfileDTO()}).
+	 * </p>
+	 */
+	private Properties transientConnectionProperties = new Properties();
 
 	private Set<Connection> connectionsOpening = new HashSet<Connection>();
 	private Set<Connection> connectionsOpened = new HashSet<Connection>();
@@ -79,9 +98,11 @@ public abstract class AbstractConnectionProfile implements ConnectionProfile
 		return childVMServer;
 	}
 
-	protected void preFirstConnectionOpen(Connection connection) throws OdaException {
+	protected void preFirstConnectionOpen(Connection connection) throws OdaException
+	{
 		logger.info("preFirstConnectionOpen: profileID={} connection={}", profileID, connection);
-		this.connectionProperties = connection.getConnectionProperties();
+		this.persistentConnectionProperties = connection.getConnectionProperties();
+		this.transientConnectionProperties = obtainTransientConnectionProperties();
 		try {
 			getChildVMServer().open();
 		} catch (IOException e) {
@@ -109,6 +130,143 @@ public abstract class AbstractConnectionProfile implements ConnectionProfile
 		// END debug test
 
 //			classLoaderManager.open(connection.getConnectionProperties());
+	}
+
+	private static Map<String, IConfigurationElement> connectionProfileClassName2ConfigurationElementMap = null;
+
+	protected Properties obtainTransientConnectionProperties() throws OperationCanceledException
+	{
+		IConfigurationElement element = getConfigurationElementForConnectionProfileClass(this.getClass());
+		if (element == null) {
+			logger.warn(
+					"obtainTransientConnectionProperties: There is no extension to point '{}' matching the connectionProfileClass '{}'!",
+					extensionPointId_transientConnectionPropertiesProvider, this.getClass().getName()
+			);
+			return null;
+		}
+
+		Object executableExtension;
+		try {
+			executableExtension = element.createExecutableExtension("class");
+		} catch (CoreException e) {
+			throw new RuntimeException("Could not create executable extension for class \"" + element.getAttribute("class") + "\"!!! Extension registered in bundle \"" + element.getContributor().getName() + "\". Cause: " + e, e);
+		}
+
+		if (!(executableExtension instanceof TransientConnectionPropertiesProvider))
+			throw new ClassCastException("Class \"" + element.getAttribute("class") + "\" does not implement interface \"" + TransientConnectionPropertiesProvider.class.getName() + "\"!!! Extension registered in bundle \"" + element.getContributor().getName() + "\".");
+
+		TransientConnectionPropertiesProvider provider = (TransientConnectionPropertiesProvider) executableExtension;
+		Collection<String> transientConnectionPropertyKeys = getTransientConnectionPropertyKeys();
+		provider.setConnectionProfile(this);
+		provider.setConnectionPropertyKeys(
+				Collections.unmodifiableCollection(transientConnectionPropertyKeys == null ? new LinkedList<String>() : transientConnectionPropertyKeys)
+		);
+		Properties properties = provider.obtainConnectionProperties();
+		return properties;
+	}
+
+	@Override
+	public Collection<String> getTransientConnectionPropertyKeys() {
+		return null;
+	}
+
+	@Override
+	public ConnectionPropertyMeta getConnectionPropertyMeta(String key) {
+		return null;
+	}
+
+	protected static IConfigurationElement getConfigurationElementForConnectionProfileClass(Class<?> clazz)
+	{
+		Map<String, IConfigurationElement> connectionProfileClassName2ConfigurationElementMap = getConnectionProfileClassName2ConfigurationElementMap();
+		Class<?> c = clazz;
+		IConfigurationElement element = null;
+		while (c != null) {
+			element = connectionProfileClassName2ConfigurationElementMap.get(c.getName());
+			if (element != null)
+				return element;
+
+			for (Class<?> iface : c.getInterfaces()) {
+				element = getConfigurationElementForConnectionProfileClass(iface);
+				if (element != null)
+					return element;
+			}
+
+			c = c.getSuperclass();
+		}
+		return element;
+	}
+
+	private static final String extensionPointId_transientConnectionPropertiesProvider = "org.nightlabs.jjqb.core.transientConnectionPropertiesProvider";
+
+	protected static synchronized Map<String, IConfigurationElement> getConnectionProfileClassName2ConfigurationElementMap()
+	{
+		Map<String, IConfigurationElement> map = connectionProfileClassName2ConfigurationElementMap;
+		if (map == null) {
+			map = new HashMap<String, IConfigurationElement>();
+
+			final IExtensionRegistry registry = Platform.getExtensionRegistry();
+			if (registry == null)
+				throw new IllegalStateException("Platform.getExtensionRegistry() returned null!");
+
+			final String extensionPointId = extensionPointId_transientConnectionPropertiesProvider;
+			final IExtensionPoint extensionPoint = registry.getExtensionPoint(extensionPointId);
+			if (extensionPoint == null)
+				throw new IllegalStateException("Unable to resolve extension-point: " + extensionPointId); //$NON-NLS-1$
+
+			final IExtension[] extensions = extensionPoint.getExtensions();
+			for (final IExtension extension : extensions) {
+				final IConfigurationElement[] elements = extension.getConfigurationElements();
+				for (final IConfigurationElement element : elements) {
+					String connectionProfileClassName = element.getAttribute("connectionProfileClass"); // class or interface
+					if (connectionProfileClassName == null) {
+						logger.warn(
+								"getConnectionProfileClassName2ConfigurationElementMap: Extension-element to point '{}' misses attribute 'connectionProfileClass'! Affected plugin: {}",
+								extensionPointId, extension.getContributor().getName()
+						);
+						continue;
+					}
+
+					IConfigurationElement oldElement = map.put(connectionProfileClassName, element);
+					if (oldElement != null) {
+						logger.warn(
+								"There are multiple plug-ins contributing extensions for extensionPointId='{}' and connectionProfileClass='{}'! Affected plugins: {} and {}",
+								new Object[] { extensionPointId, connectionProfileClassName, oldElement.getContributor().getName(), element.getContributor().getName()}
+						);
+					}
+
+//					// Check that there is only one single web app with our 'webAppName'.
+//					if (deployedExtension == null)
+//						deployedExtension = extension;
+//					else
+//						throw new IllegalStateException("There are multiple plug-ins deploying the web-app \"" + extWebAppName + "\"!!! Affected plugins: " + extension.getContributor().getName() + " and " + deployedExtension.getContributor().getName());
+//
+//					Object executableExtension;
+//					try {
+//						executableExtension = element.createExecutableExtension("class");
+//					} catch (CoreException e) {
+//						throw new IOException("Could not create executable extension for class \"" + element.getAttribute("class") + "\"!!! Extension registered in bundle \"" + extension.getContributor().getName() + "\". Cause: " + e, e);
+//					}
+//
+//					if (!(executableExtension instanceof WebApp))
+//						throw new ClassCastException("Class \"" + element.getAttribute("class") + "\" does not implement interface \"" + WebApp.class.getName() + "\"!!! Extension registered in bundle \"" + extension.getContributor().getName() + "\".");
+//
+//					WebApp webApp = (WebApp) executableExtension;
+//
+//					webApp.setWebAppName(extWebAppName);
+//
+//					String fileName = extWebAppName + ".war";
+//					File destinationFile = new File(new File(webServerDirectory, "webapps"), fileName);
+//					InputStream in = webApp.createInputStream();
+//					OutputStream out = new FileOutputStream(destinationFile);
+//					IOUtil.transferStreamData(in, out);
+//					in.close();
+//					out.close();
+				}
+			}
+
+			connectionProfileClassName2ConfigurationElementMap = map;
+		}
+		return map;
 	}
 
 	protected void postFirstConnectionOpen(Connection connection) throws OdaException {
@@ -162,6 +320,15 @@ public abstract class AbstractConnectionProfile implements ConnectionProfile
 		}
 	}
 
+	@Override
+	public Properties getPersistentConnectionProperties() {
+		return persistentConnectionProperties;
+	}
+	@Override
+	public Properties getTransientConnectionProperties() {
+		return transientConnectionProperties;
+	}
+
 	public ConnectionProfileDTO toConnectionProfileDTO()
 	{
 		ConnectionProfileDTO result = newConnectionProfileDTO();
@@ -169,8 +336,13 @@ public abstract class AbstractConnectionProfile implements ConnectionProfile
 		result.setProfileID(getProfileID());
 
 		Map<String, String> dto_connectionProperties = result.getConnectionProperties();
-		if (connectionProperties != null) {
-			for (Map.Entry<?, ?> me : connectionProperties.entrySet())
+		if (persistentConnectionProperties != null) {
+			for (Map.Entry<?, ?> me : persistentConnectionProperties.entrySet())
+				dto_connectionProperties.put(me.getKey() == null ? null : me.getKey().toString(), me.getValue() == null ? null : me.getValue().toString());
+		}
+
+		if (transientConnectionProperties != null) {
+			for (Map.Entry<?, ?> me : transientConnectionProperties.entrySet())
 				dto_connectionProperties.put(me.getKey() == null ? null : me.getKey().toString(), me.getValue() == null ? null : me.getValue().toString());
 		}
 
