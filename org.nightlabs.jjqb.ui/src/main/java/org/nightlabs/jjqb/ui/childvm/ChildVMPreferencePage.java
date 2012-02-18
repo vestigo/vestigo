@@ -5,6 +5,7 @@ import org.eclipse.jface.preference.BooleanFieldEditor;
 import org.eclipse.jface.preference.ComboFieldEditor;
 import org.eclipse.jface.preference.FieldEditorPreferencePage;
 import org.eclipse.jface.preference.IntegerFieldEditor;
+import org.eclipse.jface.preference.StringFieldEditor;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
@@ -27,12 +28,25 @@ public class ChildVMPreferencePage extends FieldEditorPreferencePage implements 
 		setPreferenceStore(new ScopedPreferenceStore(new InstanceScope(), JJQBCorePlugin.BUNDLE_SYMBOLIC_NAME));
 		setTitle("Child VM settings");
 		setDescription("Settings to control the behaviour of the child VM.");
+
+		getPreferenceStore().setDefault(ChildVMServer.PREFERENCE_KEY_JAVA_COMMAND, ChildVMServer.PREFERENCE_DEFAULT_JAVA_COMMAND);
+		getPreferenceStore().setDefault(ChildVMServer.PREFERENCE_KEY_JAVA_HEAP_MAX_MB, ChildVMServer.PREFERENCE_DEFAULT_JAVA_HEAP_MAX_MB);
+		getPreferenceStore().setDefault(ChildVMServer.PREFERENCE_KEY_JAVA_HEAP_MIN_MB, ChildVMServer.PREFERENCE_DEFAULT_JAVA_HEAP_MIN_MB);
+		getPreferenceStore().setDefault(ChildVMServer.PREFERENCE_KEY_JAVA_PERM_GEN_MAX_MB, ChildVMServer.PREFERENCE_DEFAULT_JAVA_PERM_GEN_MAX_MB);
+		getPreferenceStore().setDefault(ChildVMServer.PREFERENCE_KEY_JAVA_PERM_GEN_GC_ENABLED, ChildVMServer.PREFERENCE_DEFAULT_JAVA_PERM_GEN_GC_ENABLED);
+
 		getPreferenceStore().setDefault(ChildVMServer.PREFERENCE_KEY_LOG_LEVEL, ChildVMServer.PREFERENCE_DEFAULT_LOG_LEVEL);
 		getPreferenceStore().setDefault(ChildVMServer.PREFERENCE_KEY_DEBUG_MODE_PORT, ChildVMServer.PREFERENCE_DEFAULT_DEBUG_MODE_PORT);
 	}
 
 	@Override
 	protected void createFieldEditors() {
+		addField(new StringFieldEditor(ChildVMServer.PREFERENCE_KEY_JAVA_COMMAND, "Java: Command:", getFieldEditorParent()));
+		addField(new IntegerFieldEditor(ChildVMServer.PREFERENCE_KEY_JAVA_HEAP_MAX_MB, "Java: Max heap size (MB):", getFieldEditorParent()));
+		addField(new IntegerFieldEditor(ChildVMServer.PREFERENCE_KEY_JAVA_HEAP_MIN_MB, "Java: Min heap size (MB):", getFieldEditorParent()));
+		addField(new IntegerFieldEditor(ChildVMServer.PREFERENCE_KEY_JAVA_PERM_GEN_MAX_MB, "Java: Max PermGen size (MB):", getFieldEditorParent()));
+		addField(new BooleanFieldEditor(ChildVMServer.PREFERENCE_KEY_JAVA_PERM_GEN_GC_ENABLED, "Java: PermGen garbage collection:", BooleanFieldEditor.SEPARATE_LABEL, getFieldEditorParent()));
+
 		final String[][] logLevelNamesAndValues = new String[][] {
 				{ "ERROR (log only errors)", "ERROR" },
 				{ "WARN (log only warnings and errors)", "WARN" },

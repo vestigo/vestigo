@@ -44,8 +44,23 @@ public class ChildVMServer
 
 	private static final org.slf4j.Logger logger = LoggerFactory.getLogger(ChildVMServer.class);
 
+	public static final String PREFERENCE_KEY_JAVA_COMMAND = "childVM.java.command";
+	public static final String PREFERENCE_DEFAULT_JAVA_COMMAND = "java";
+
+	public static final String PREFERENCE_KEY_JAVA_HEAP_MAX_MB = "childVM.java.heap.maxMB";
+	public static final int PREFERENCE_DEFAULT_JAVA_HEAP_MAX_MB = 0;
+
+	public static final String PREFERENCE_KEY_JAVA_HEAP_MIN_MB = "childVM.java.heap.minMB";
+	public static final int PREFERENCE_DEFAULT_JAVA_HEAP_MIN_MB = 0;
+
+	public static final String PREFERENCE_KEY_JAVA_PERM_GEN_MAX_MB = "childVM.java.permGen.maxMB";
+	public static final int PREFERENCE_DEFAULT_JAVA_PERM_GEN_MAX_MB = 0;
+
+	public static final String PREFERENCE_KEY_JAVA_PERM_GEN_GC_ENABLED = "childVM.java.permGen.gcEnabled";
+	public static final boolean PREFERENCE_DEFAULT_JAVA_PERM_GEN_GC_ENABLED = true;
+
 	public static final String PREFERENCE_KEY_LOG_LEVEL = "childVM.logLevel";
-	public static final String PREFERENCE_DEFAULT_LOG_LEVEL = "WARN";
+	public static final String PREFERENCE_DEFAULT_LOG_LEVEL = "ERROR";
 
 	/**
 	 * Launch the child JVM in debug mode, so that connecting from the IDE
@@ -306,7 +321,24 @@ public class ChildVMServer
 			logger.info("open: Starting server: serverDirectory=\"{}\" port={}", serverDirectory, port);
 
 			List<String> commandWithArguments = new LinkedList<String>();
-			commandWithArguments.add("java");
+			commandWithArguments.add(getChildVMJavaCommand());
+
+			int xms = getChildVMJavaHeapMinMB();
+			if (xms > 0)
+				commandWithArguments.add("-Xms" + xms + "M");
+
+			int xmx = getChildVMJavaHeapMaxMB();
+			if (xmx > 0)
+				commandWithArguments.add("-Xmx" + xmx + "M");
+
+			int maxPerm = getChildVMJavaPermGenMaxMB();
+			if (maxPerm > 0)
+				commandWithArguments.add("-XX:MaxPermSize=" + maxPerm + "M");
+
+			if (isChildVMJavaPermGenGCEnabled()) {
+				commandWithArguments.add("-XX:+UseConcMarkSweepGC");
+				commandWithArguments.add("-XX:+CMSClassUnloadingEnabled");
+			}
 
 			if (isChildVMDebugModeEnabled())
 				commandWithArguments.add("-Xrunjdwp:transport=dt_socket,address=" + getChildVMDebugModePort() + ",server=y,suspend=" + (isChildVMDebugModeWaitForDebugger() ? 'y' : 'n'));
@@ -488,10 +520,34 @@ public class ChildVMServer
 		}
 	}
 
+	private String getChildVMJavaCommand()
+	{
+		return JJQBCorePlugin.getDefault().getPreferences().get(PREFERENCE_KEY_JAVA_COMMAND, PREFERENCE_DEFAULT_JAVA_COMMAND);
+	}
+
+	private int getChildVMJavaHeapMaxMB()
+	{
+		return (int)JJQBCorePlugin.getDefault().getPreferences().getLong(PREFERENCE_KEY_JAVA_HEAP_MAX_MB, PREFERENCE_DEFAULT_JAVA_HEAP_MAX_MB);
+	}
+
+	private int getChildVMJavaHeapMinMB()
+	{
+		return (int)JJQBCorePlugin.getDefault().getPreferences().getLong(PREFERENCE_KEY_JAVA_HEAP_MIN_MB, PREFERENCE_DEFAULT_JAVA_HEAP_MIN_MB);
+	}
+
+	private int getChildVMJavaPermGenMaxMB()
+	{
+		return (int)JJQBCorePlugin.getDefault().getPreferences().getLong(PREFERENCE_KEY_JAVA_PERM_GEN_MAX_MB, PREFERENCE_DEFAULT_JAVA_PERM_GEN_MAX_MB);
+	}
+
+	private boolean isChildVMJavaPermGenGCEnabled()
+	{
+		return JJQBCorePlugin.getDefault().getPreferences().getBoolean(PREFERENCE_KEY_JAVA_PERM_GEN_GC_ENABLED, PREFERENCE_DEFAULT_JAVA_PERM_GEN_GC_ENABLED);
+	}
+
 	private String getChildVMLogLevel()
 	{
-		String logLevel = JJQBCorePlugin.getDefault().getPreferences().get(PREFERENCE_KEY_LOG_LEVEL, PREFERENCE_DEFAULT_LOG_LEVEL);
-		return logLevel;
+		return JJQBCorePlugin.getDefault().getPreferences().get(PREFERENCE_KEY_LOG_LEVEL, PREFERENCE_DEFAULT_LOG_LEVEL);
 	}
 
 	private boolean isChildVMDebugModeEnabled()
