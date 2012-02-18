@@ -270,6 +270,12 @@
 			name="JJQB Licence">
 		</page>
 	</extension>
+	<extension point="org.eclipse.ui.preferencePages">
+		<page class="org.nightlabs.jjqb.ui.childvm.ChildVMPreferencePage"
+			id="org.nightlabs.jjqb.ui.childvm.ChildVMPreferencePage"
+			name="JJQB ChildVM">
+		</page>
+	</extension>
  <extension
        point="org.nightlabs.jjqb.core.transientConnectionPropertiesProvider">
     <provider

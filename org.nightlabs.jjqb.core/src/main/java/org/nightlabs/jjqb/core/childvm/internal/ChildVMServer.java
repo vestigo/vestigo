@@ -4,12 +4,18 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.Reader;
+import java.io.Writer;
 import java.net.ServerSocket;
 import java.net.URL;
 import java.security.SecureRandom;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.TimeoutException;
@@ -22,6 +28,7 @@ import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.Platform;
 import org.nightlabs.jjqb.childvm.shared.api.ChildVM;
 import org.nightlabs.jjqb.childvm.webapp.client.ChildVMWebappClient;
+import org.nightlabs.jjqb.core.JJQBCorePlugin;
 import org.nightlabs.jjqb.core.childvm.WebApp;
 import org.nightlabs.util.IOUtil;
 import org.slf4j.Logger;
@@ -32,14 +39,22 @@ import org.slf4j.LoggerFactory;
  */
 public class ChildVMServer
 {
+
 	private static final long TIMEOUT_SERVER_START_MS = 90L * 1000L; // TODO make timeout configurable
 
 	private static final org.slf4j.Logger logger = LoggerFactory.getLogger(ChildVMServer.class);
 
+	public static final String PREFERENCE_KEY_LOG_LEVEL = "childVM.logLevel";
+	public static final String PREFERENCE_DEFAULT_LOG_LEVEL = "WARN";
+
 	/**
-	 * Launch the child JVM in debug mode, so that connecting from the IDE (to port 8000) &amp; remote-debugging is possible.
+	 * Launch the child JVM in debug mode, so that connecting from the IDE
+	 * (to port {@value #PREFERENCE_DEFAULT_DEBUG_MODE_PORT}) &amp; remote-debugging is possible.
 	 */
-	private static final boolean DEBUG_MODE_ENABLED = false;
+	public static final String PREFERENCE_KEY_DEBUG_MODE_ENABLED = "childVM.debugMode.enabled";
+
+	public static final String PREFERENCE_KEY_DEBUG_MODE_PORT = "childVM.debugMode.port";
+	public static final int PREFERENCE_DEFAULT_DEBUG_MODE_PORT = 8000;
 
 	/**
 	 * <p>
@@ -50,7 +65,11 @@ public class ChildVMServer
 	 * This flag is <b>ignored</b>, if {@link #DEBUG_MODE_ENABLED}<code> == false</code>.
 	 * </p>
 	 */
-	private static final boolean DEBUG_MODE_WAIT_FOR_DEBUGGER = false;
+	public static final String PREFERENCE_KEY_DEBUG_MODE_WAIT_FOR_DEBUGGER = "childVM.debugMode.waitForDebugger";
+
+//	private static final boolean DEBUG_MODE_ENABLED = false;
+
+//	private static final boolean DEBUG_MODE_WAIT_FOR_DEBUGGER = false;
 
 	private static SecureRandom random = new SecureRandom();
 
@@ -104,7 +123,7 @@ public class ChildVMServer
 			createServerPlatform(serverDirectory);
 			undeployUnnecessaryExamples(serverDirectory);
 			deployRESTApplication(serverDirectory);
-			deployLog4jProperties(serverDirectory);
+//			deployLog4jProperties(serverDirectory); // Is now done at every startup (below). No need to do it twice at first startup.
 			this.serverDirectory = serverDirectory;
 		}
 		return this.serverDirectory;
@@ -238,11 +257,29 @@ public class ChildVMServer
 	{
 		logger.debug("deployLog4jProperties: serverDirectory='{}'", webServerDirectory.getAbsolutePath());
 
+		Map<String, String> variables = new HashMap<String, String>();
+		variables.put("logLevel", getChildVMLogLevel());
+
 		String fileName = "log4j.properties";
 		String resourceName = "resource/jetty/resources/" + fileName;
 		File deploymentDir = new File(webServerDirectory, "resources");
 		File destinationFile = new File(deploymentDir, fileName);
-		IOUtil.copyResource(ChildVMServer.class, resourceName, destinationFile);
+//		IOUtil.copyResource(ChildVMServer.class, resourceName, destinationFile);
+		InputStream in = ChildVMServer.class.getResourceAsStream(resourceName);
+		try {
+			OutputStream out = new FileOutputStream(destinationFile);
+			try {
+				Reader reader = new InputStreamReader(in, IOUtil.CHARSET_UTF_8);
+				Writer writer = new OutputStreamWriter(out, IOUtil.CHARSET_UTF_8);
+				IOUtil.replaceTemplateVariables(writer, reader, variables);
+				writer.close();
+				reader.close();
+			} finally {
+				out.close();
+			}
+		} finally {
+			in.close();
+		}
 	}
 
 	public synchronized boolean isOpen()
@@ -262,6 +299,8 @@ public class ChildVMServer
 			File stdOutFile = new File(logDir, "out.log");
 			File stdErrFile = new File(logDir, "err.log");
 
+			deployLog4jProperties(serverDirectory);
+
 			port = determineAvailableRandomPortAndConfigureServer();
 
 			logger.info("open: Starting server: serverDirectory=\"{}\" port={}", serverDirectory, port);
@@ -269,8 +308,8 @@ public class ChildVMServer
 			List<String> commandWithArguments = new LinkedList<String>();
 			commandWithArguments.add("java");
 
-			if (DEBUG_MODE_ENABLED)
-				commandWithArguments.add("-Xrunjdwp:transport=dt_socket,address=8000,server=y,suspend=" + (DEBUG_MODE_WAIT_FOR_DEBUGGER ? 'y' : 'n'));
+			if (isChildVMDebugModeEnabled())
+				commandWithArguments.add("-Xrunjdwp:transport=dt_socket,address=" + getChildVMDebugModePort() + ",server=y,suspend=" + (isChildVMDebugModeWaitForDebugger() ? 'y' : 'n'));
 
 			commandWithArguments.add("-jar");
 			commandWithArguments.add("start.jar");
@@ -447,5 +486,26 @@ public class ChildVMServer
 			}
 			serverDirectory = null;
 		}
+	}
+
+	private String getChildVMLogLevel()
+	{
+		String logLevel = JJQBCorePlugin.getDefault().getPreferences().get(PREFERENCE_KEY_LOG_LEVEL, PREFERENCE_DEFAULT_LOG_LEVEL);
+		return logLevel;
+	}
+
+	private boolean isChildVMDebugModeEnabled()
+	{
+		return JJQBCorePlugin.getDefault().getPreferences().getBoolean(PREFERENCE_KEY_DEBUG_MODE_ENABLED, false);
+	}
+
+	private int getChildVMDebugModePort()
+	{
+		return (int) JJQBCorePlugin.getDefault().getPreferences().getLong(PREFERENCE_KEY_DEBUG_MODE_PORT, PREFERENCE_DEFAULT_DEBUG_MODE_PORT);
+	}
+
+	private boolean isChildVMDebugModeWaitForDebugger()
+	{
+		return JJQBCorePlugin.getDefault().getPreferences().getBoolean(PREFERENCE_KEY_DEBUG_MODE_WAIT_FOR_DEBUGGER, false);
 	}
 }

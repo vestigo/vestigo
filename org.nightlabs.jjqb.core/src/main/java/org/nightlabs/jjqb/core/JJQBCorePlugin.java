@@ -3,12 +3,17 @@ package org.nightlabs.jjqb.core;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.preferences.IEclipsePreferences;
+import org.eclipse.core.runtime.preferences.IPreferencesService;
+import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.nightlabs.licence.manager.LicenceManager;
 import org.nightlabs.licence.manager.LicenceManagerOfflineImpl;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.Version;
+import org.osgi.service.prefs.Preferences;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -95,6 +100,20 @@ implements BundleActivator
 		licenceManager = new LicenceManagerOfflineImpl("org.nightlabs.jjqb", version);
 
 		logger.info("start: Started context.bundle.symbolicName={}", context.getBundle().getSymbolicName());
+	}
+
+	private Preferences preferences;
+
+	public synchronized Preferences getPreferences()
+	{
+		Preferences preferences = this.preferences;
+		if (preferences == null) {
+			IPreferencesService preferencesService = Platform.getPreferencesService();
+			IEclipsePreferences preferencesRootNode = preferencesService.getRootNode();
+			preferences = preferencesRootNode.node(InstanceScope.SCOPE).node(BUNDLE_SYMBOLIC_NAME);
+			this.preferences = preferences;
+		}
+		return preferences;
 	}
 
 	@Override
