@@ -135,6 +135,14 @@
               wizardPageClass="org.nightlabs.jjqb.ui.JPAQueryWizardPage"/>
       </dataSetUI> 
    </extension>
+   <extension
+         point="org.nightlabs.jjqb.core.transientConnectionPropertiesProvider">
+      <provider
+            class="org.nightlabs.jjqb.cumulus4j.ui.transientconnectionproperties.Cumulus4jTransientConnectionPropertiesProvider"
+            connectionProfileClass="org.nightlabs.jjqb.cumulus4j.core.oda.Cumulus4jConnectionProfile"
+            id="org.nightlabs.jjqb.cumulus4j.ui.transientconnectionproperties.Cumulus4jTransientConnectionPropertiesProvider">
+      </provider>
+   </extension>
 
 
 <!--

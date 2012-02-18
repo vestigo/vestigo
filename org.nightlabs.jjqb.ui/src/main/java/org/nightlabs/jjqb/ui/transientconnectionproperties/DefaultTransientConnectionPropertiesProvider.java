@@ -4,6 +4,7 @@ import java.util.Properties;
 
 import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.jface.dialogs.Dialog;
+import org.eclipse.jface.preference.PreferencePage;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
@@ -25,7 +26,7 @@ public class DefaultTransientConnectionPropertiesProvider extends AbstractTransi
 				if (PlatformUI.getWorkbench() != null && PlatformUI.getWorkbench().getActiveWorkbenchWindow() != null)
 					shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
 
-				PropertiesProviderDialog dialog = new PropertiesProviderDialog(shell, DefaultTransientConnectionPropertiesProvider.this);
+				PropertiesProviderDialog dialog = createPropertiesProviderDialog(shell);
 				if (Dialog.OK == dialog.open()) {
 					result[0] = dialog.getProperties();
 				}
@@ -36,5 +37,15 @@ public class DefaultTransientConnectionPropertiesProvider extends AbstractTransi
 			throw new OperationCanceledException("User cancelled.");
 
 		return result[0];
+	}
+
+	protected PropertiesProviderDialog createPropertiesProviderDialog(Shell shell)
+	{
+		return new PropertiesProviderDialog(shell, DefaultTransientConnectionPropertiesProvider.this, createPreferencePage());
+	}
+
+	protected PreferencePage createPreferencePage()
+	{
+		return new DefaultPropertiesProviderPreferencePage(this);
 	}
 }

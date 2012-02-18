@@ -56,16 +56,8 @@ public class Cumulus4jConnectionHelper
 		} catch (IllegalAccessException e) {
 			throw new RuntimeException(e);
 		} catch (InvocationTargetException e) {
-			if (e.getMessage() == null) {
-				Throwable cause = e.getCause();
-				while (cause != null) {
-					if (cause.getMessage() != null)
-						throw new RuntimeException(cause.getMessage(), e);
-
-					cause = cause.getCause();
-				}
-			}
-			throw new RuntimeException(e);
+			wrapInRuntimeException(e);
+			throw new IllegalStateException("WTF! wrapInRuntimeException(...) should have thrown an exception!!!");
 		}
 	}
 
@@ -80,17 +72,21 @@ public class Cumulus4jConnectionHelper
 		} catch (IllegalAccessException e) {
 			throw new RuntimeException(e);
 		} catch (InvocationTargetException e) {
-			if (e.getMessage() == null) {
-				Throwable cause = e.getCause();
-				while (cause != null) {
-					if (cause.getMessage() != null)
-						throw new RuntimeException(cause.getMessage(), e);
-
-					cause = cause.getCause();
-				}
-			}
-			throw new RuntimeException(e);
+			wrapInRuntimeException(e);
 		}
+	}
+
+	private void wrapInRuntimeException(InvocationTargetException e) {
+		if (e.getMessage() == null) {
+			Throwable cause = e.getCause();
+			while (cause != null) {
+				if (cause.getMessage() != null)
+					throw new RuntimeException(cause.getMessage(), e);
+
+				cause = cause.getCause();
+			}
+		}
+		throw new RuntimeException(e);
 	}
 
 	public Cumulus4jConnectionHelper(Connection connection)

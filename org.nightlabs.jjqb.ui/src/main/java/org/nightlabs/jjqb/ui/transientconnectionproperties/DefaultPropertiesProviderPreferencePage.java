@@ -2,6 +2,7 @@ package org.nightlabs.jjqb.ui.transientconnectionproperties;
 
 import java.util.Collection;
 
+import org.eclipse.jface.preference.FieldEditor;
 import org.eclipse.jface.preference.FieldEditorPreferencePage;
 import org.eclipse.jface.preference.StringFieldEditor;
 import org.nightlabs.jjqb.core.oda.ConnectionProfile;
@@ -11,8 +12,8 @@ import org.nightlabs.jjqb.ui.JJQBUIPlugin;
 
 public class DefaultPropertiesProviderPreferencePage extends FieldEditorPreferencePage
 {
-	private TransientConnectionPropertiesProvider transientConnectionPropertiesProvider;
-	private ConnectionProfile connectionProfile;
+	protected TransientConnectionPropertiesProvider transientConnectionPropertiesProvider;
+	protected ConnectionProfile connectionProfile;
 
 	public DefaultPropertiesProviderPreferencePage(TransientConnectionPropertiesProvider transientConnectionPropertiesProvider) {
 		super(
@@ -23,7 +24,7 @@ public class DefaultPropertiesProviderPreferencePage extends FieldEditorPreferen
 		this.transientConnectionPropertiesProvider = transientConnectionPropertiesProvider;
 		this.connectionProfile = this.transientConnectionPropertiesProvider.getConnectionProfile();
 
-		setMessage("For establishing a connection, the following additional properties are required. What you enter here, will not be saved anywhere.");
+		setMessage("For establishing a connection, the following additional properties are required. The data entered here will not be saved in persistent storage (only kept in memory).");
 
 		noDefaultAndApplyButton();
 	}
@@ -34,12 +35,17 @@ public class DefaultPropertiesProviderPreferencePage extends FieldEditorPreferen
 		for (String propertyKey : propertyKeys) {
 			ConnectionPropertyMeta propertyMeta = connectionProfile.getConnectionPropertyMeta(propertyKey);
 			addField(
-					new StringFieldEditor(
-							propertyKey,
-							String.format("%s:", propertyMeta == null ? propertyKey : (propertyMeta.getDisplayName() == null ? propertyKey : propertyMeta.getDisplayName())),
-							getFieldEditorParent()
-					)
+					createFieldEditor(propertyKey, propertyMeta)
 			);
 		}
+	}
+
+	protected FieldEditor createFieldEditor(String propertyKey, ConnectionPropertyMeta propertyMeta)
+	{
+		return new StringFieldEditor(
+				propertyKey,
+				String.format("%s:", propertyMeta == null ? propertyKey : (propertyMeta.getDisplayName() == null ? propertyKey : propertyMeta.getDisplayName())),
+				getFieldEditorParent()
+		);
 	}
 }
