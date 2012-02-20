@@ -6,16 +6,18 @@ import org.eclipse.jface.preference.ComboFieldEditor;
 import org.eclipse.jface.preference.FieldEditorPreferencePage;
 import org.eclipse.jface.preference.IntegerFieldEditor;
 import org.eclipse.jface.preference.StringFieldEditor;
-import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 import org.eclipse.ui.preferences.ScopedPreferenceStore;
 import org.nightlabs.jjqb.core.JJQBCorePlugin;
 import org.nightlabs.jjqb.core.childvm.internal.ChildVMServer;
+import org.nightlabs.jjqb.ui.preference.MultiLineStringFieldEditor;
 
 public class ChildVMPreferencePage extends FieldEditorPreferencePage implements IWorkbenchPreferencePage {
-
-	private Display display;
 
 	public ChildVMPreferencePage() {
 		super(GRID);
@@ -24,7 +26,6 @@ public class ChildVMPreferencePage extends FieldEditorPreferencePage implements 
 	@Override
 	public void init(IWorkbench workbench)
 	{
-		display = workbench.getDisplay();
 		setPreferenceStore(new ScopedPreferenceStore(new InstanceScope(), JJQBCorePlugin.BUNDLE_SYMBOLIC_NAME));
 		setTitle("Child VM settings");
 		setDescription("Settings to control the behaviour of the child VM.");
@@ -35,17 +36,27 @@ public class ChildVMPreferencePage extends FieldEditorPreferencePage implements 
 		getPreferenceStore().setDefault(ChildVMServer.PREFERENCE_KEY_JAVA_PERM_GEN_MAX_MB, ChildVMServer.PREFERENCE_DEFAULT_JAVA_PERM_GEN_MAX_MB);
 		getPreferenceStore().setDefault(ChildVMServer.PREFERENCE_KEY_JAVA_PERM_GEN_GC_ENABLED, ChildVMServer.PREFERENCE_DEFAULT_JAVA_PERM_GEN_GC_ENABLED);
 
-		getPreferenceStore().setDefault(ChildVMServer.PREFERENCE_KEY_LOG_LEVEL, ChildVMServer.PREFERENCE_DEFAULT_LOG_LEVEL);
+		getPreferenceStore().setDefault(ChildVMServer.PREFERENCE_KEY_SERVER_START_TIMEOUT_MS, ChildVMServer.PREFERENCE_DEFAULT_SERVER_START_TIMEOUT_MS);
+
+		getPreferenceStore().setDefault(ChildVMServer.PREFERENCE_KEY_LOG4J_ROOT_LOG_LEVEL, ChildVMServer.PREFERENCE_DEFAULT_LOG4J_ROOT_LOG_LEVEL);
 		getPreferenceStore().setDefault(ChildVMServer.PREFERENCE_KEY_DEBUG_MODE_PORT, ChildVMServer.PREFERENCE_DEFAULT_DEBUG_MODE_PORT);
 	}
 
 	@Override
-	protected void createFieldEditors() {
+	protected void createFieldEditors()
+	{
+		addHorizontalSeparator(getFieldEditorParent());
 		addField(new StringFieldEditor(ChildVMServer.PREFERENCE_KEY_JAVA_COMMAND, "Java: Command:", getFieldEditorParent()));
 		addField(new IntegerFieldEditor(ChildVMServer.PREFERENCE_KEY_JAVA_HEAP_MAX_MB, "Java: Max heap size (MB):", getFieldEditorParent()));
 		addField(new IntegerFieldEditor(ChildVMServer.PREFERENCE_KEY_JAVA_HEAP_MIN_MB, "Java: Min heap size (MB):", getFieldEditorParent()));
 		addField(new IntegerFieldEditor(ChildVMServer.PREFERENCE_KEY_JAVA_PERM_GEN_MAX_MB, "Java: Max PermGen size (MB):", getFieldEditorParent()));
 		addField(new BooleanFieldEditor(ChildVMServer.PREFERENCE_KEY_JAVA_PERM_GEN_GC_ENABLED, "Java: PermGen garbage collection:", BooleanFieldEditor.SEPARATE_LABEL, getFieldEditorParent()));
+
+		addHorizontalSeparator(getFieldEditorParent());
+
+		addField(new IntegerFieldEditor(ChildVMServer.PREFERENCE_KEY_SERVER_START_TIMEOUT_MS, "Server start timeout (ms):", getFieldEditorParent()));
+
+		addHorizontalSeparator(getFieldEditorParent());
 
 		final String[][] logLevelNamesAndValues = new String[][] {
 				{ "ERROR (log only errors)", "ERROR" },
@@ -54,11 +65,23 @@ public class ChildVMPreferencePage extends FieldEditorPreferencePage implements 
 				{ "DEBUG (log a lot)", "DEBUG" },
 				{ "TRACE (log everything)", "TRACE" }
 		};
-		addField(new ComboFieldEditor(ChildVMServer.PREFERENCE_KEY_LOG_LEVEL, "Log level:", logLevelNamesAndValues, getFieldEditorParent()));
+		addField(new ComboFieldEditor(ChildVMServer.PREFERENCE_KEY_LOG4J_ROOT_LOG_LEVEL, "Log4j: Root log level:", logLevelNamesAndValues, getFieldEditorParent()));
+		addField(new MultiLineStringFieldEditor(ChildVMServer.PREFERENCE_KEY_LOG4J_ADDITIONS, "Log4j: Additional properties:", getFieldEditorParent()));
+
+		addHorizontalSeparator(getFieldEditorParent());
 
 		addField(new BooleanFieldEditor(ChildVMServer.PREFERENCE_KEY_DEBUG_MODE_ENABLED, "Debugging: Enabled:", BooleanFieldEditor.SEPARATE_LABEL, getFieldEditorParent()));
 		addField(new IntegerFieldEditor(ChildVMServer.PREFERENCE_KEY_DEBUG_MODE_PORT, "Debugging: Port:", getFieldEditorParent()));
 		addField(new BooleanFieldEditor(ChildVMServer.PREFERENCE_KEY_DEBUG_MODE_WAIT_FOR_DEBUGGER, "Debugging: Wait for debugger:", BooleanFieldEditor.SEPARATE_LABEL, getFieldEditorParent()));
 	}
+
+	private void addHorizontalSeparator(Composite parent)
+	{
+		Label label = new Label(parent, SWT.HORIZONTAL | SWT.SEPARATOR);
+		GridData gd = new GridData(GridData.FILL_HORIZONTAL);
+		gd.horizontalSpan = 2;
+		label.setLayoutData(gd);
+	}
+
 
 }

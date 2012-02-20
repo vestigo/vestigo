@@ -74,12 +74,6 @@
 			<artifactId>org.nightlabs.jdo.jdoqleditor</artifactId>
 		</dependency>
 		<!-- END org.nightlabs.**.* -->
-
-
-		<dependency>
-			<groupId>org.nightlabs.jjqb</groupId>
-			<artifactId>org.nightlabs.jjqb.ui</artifactId>
-		</dependency>
 	</dependencies>
 
 	<build>

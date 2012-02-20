@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.ui.licence;
+package org.nightlabs.jjqb.ui.preference;
 
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.jface.preference.FieldEditor;

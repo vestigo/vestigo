@@ -24,6 +24,7 @@ import org.eclipse.ui.forms.events.HyperlinkEvent;
 import org.eclipse.ui.forms.widgets.Hyperlink;
 import org.eclipse.ui.preferences.ScopedPreferenceStore;
 import org.nightlabs.jjqb.core.JJQBCorePlugin;
+import org.nightlabs.jjqb.ui.preference.MultiLineStringFieldEditor;
 import org.nightlabs.jjqb.ui.resource.Messages;
 import org.nightlabs.licence.manager.CheckLicenceAdapter;
 import org.nightlabs.licence.manager.CheckLicenceEvent;

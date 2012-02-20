@@ -263,17 +263,27 @@
             name="JDO/JPA Query Browser"/>
     </extension>
 
-
 	<extension point="org.eclipse.ui.preferencePages">
-		<page class="org.nightlabs.jjqb.ui.licence.LicencePreferencePage"
-			id="org.nightlabs.jjqb.ui.licence.LicencePreferencePage"
-			name="JJQB Licence">
+		<page
+        class="org.nightlabs.jjqb.ui.preference.JJQBCategoryPreferencePage"
+        id="org.nightlabs.jjqb.ui.preference.JJQBCategoryPreferencePage"
+        name="JJQB">
 		</page>
 	</extension>
 	<extension point="org.eclipse.ui.preferencePages">
-		<page class="org.nightlabs.jjqb.ui.childvm.ChildVMPreferencePage"
-			id="org.nightlabs.jjqb.ui.childvm.ChildVMPreferencePage"
-			name="JJQB ChildVM">
+		<page
+        category="org.nightlabs.jjqb.ui.preference.JJQBCategoryPreferencePage"
+        class="org.nightlabs.jjqb.ui.licence.LicencePreferencePage"
+        id="org.nightlabs.jjqb.ui.licence.LicencePreferencePage"
+        name="JJQB Licence">
+		</page>
+	</extension>
+	<extension point="org.eclipse.ui.preferencePages">
+		<page
+		category="org.nightlabs.jjqb.ui.preference.JJQBCategoryPreferencePage"
+		class="org.nightlabs.jjqb.ui.childvm.ChildVMPreferencePage"
+		id="org.nightlabs.jjqb.ui.childvm.ChildVMPreferencePage"
+		name="JJQB ChildVM">
 		</page>
 	</extension>
  <extension

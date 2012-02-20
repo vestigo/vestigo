@@ -39,9 +39,6 @@ import org.slf4j.LoggerFactory;
  */
 public class ChildVMServer
 {
-
-	private static final long TIMEOUT_SERVER_START_MS = 90L * 1000L; // TODO make timeout configurable
-
 	private static final org.slf4j.Logger logger = LoggerFactory.getLogger(ChildVMServer.class);
 
 	public static final String PREFERENCE_KEY_JAVA_COMMAND = "childVM.java.command";
@@ -59,8 +56,13 @@ public class ChildVMServer
 	public static final String PREFERENCE_KEY_JAVA_PERM_GEN_GC_ENABLED = "childVM.java.permGen.gcEnabled";
 	public static final boolean PREFERENCE_DEFAULT_JAVA_PERM_GEN_GC_ENABLED = true;
 
-	public static final String PREFERENCE_KEY_LOG_LEVEL = "childVM.logLevel";
-	public static final String PREFERENCE_DEFAULT_LOG_LEVEL = "ERROR";
+	public static final String PREFERENCE_KEY_LOG4J_ROOT_LOG_LEVEL = "childVM.log4j.rootLogLevel";
+	public static final String PREFERENCE_DEFAULT_LOG4J_ROOT_LOG_LEVEL = "ERROR";
+
+	public static final String PREFERENCE_KEY_LOG4J_ADDITIONS = "childVM.log4j.additions";
+
+	public static final String PREFERENCE_KEY_SERVER_START_TIMEOUT_MS = "childVM.server.startTimeoutMS";
+	public static final long PREFERENCE_DEFAULT_SERVER_START_TIMEOUT_MS = 60L * 1000L;
 
 	/**
 	 * Launch the child JVM in debug mode, so that connecting from the IDE
@@ -273,7 +275,8 @@ public class ChildVMServer
 		logger.debug("deployLog4jProperties: serverDirectory='{}'", webServerDirectory.getAbsolutePath());
 
 		Map<String, String> variables = new HashMap<String, String>();
-		variables.put("logLevel", getChildVMLogLevel());
+		variables.put("rootLogLevel", getChildVMLog4jRootLogLevel());
+		variables.put("additions", getChildVMLog4jAdditions());
 
 		String fileName = "log4j.properties";
 		String resourceName = "resource/jetty/resources/" + fileName;
@@ -375,7 +378,7 @@ public class ChildVMServer
 
 	private void waitForStartingServerToComeOnline() throws TimeoutException
 	{
-		long timeout = TIMEOUT_SERVER_START_MS;
+		long timeout = getChildVMServerStartTimeoutMS();
 
 		long start = System.currentTimeMillis();
 		while (!getChildVM().isOnline()) {
@@ -520,6 +523,11 @@ public class ChildVMServer
 		}
 	}
 
+	private long getChildVMServerStartTimeoutMS()
+	{
+		return JJQBCorePlugin.getDefault().getPreferences().getLong(PREFERENCE_KEY_SERVER_START_TIMEOUT_MS, PREFERENCE_DEFAULT_SERVER_START_TIMEOUT_MS);
+	}
+
 	private String getChildVMJavaCommand()
 	{
 		return JJQBCorePlugin.getDefault().getPreferences().get(PREFERENCE_KEY_JAVA_COMMAND, PREFERENCE_DEFAULT_JAVA_COMMAND);
@@ -545,9 +553,14 @@ public class ChildVMServer
 		return JJQBCorePlugin.getDefault().getPreferences().getBoolean(PREFERENCE_KEY_JAVA_PERM_GEN_GC_ENABLED, PREFERENCE_DEFAULT_JAVA_PERM_GEN_GC_ENABLED);
 	}
 
-	private String getChildVMLogLevel()
+	private String getChildVMLog4jRootLogLevel()
 	{
-		return JJQBCorePlugin.getDefault().getPreferences().get(PREFERENCE_KEY_LOG_LEVEL, PREFERENCE_DEFAULT_LOG_LEVEL);
+		return JJQBCorePlugin.getDefault().getPreferences().get(PREFERENCE_KEY_LOG4J_ROOT_LOG_LEVEL, PREFERENCE_DEFAULT_LOG4J_ROOT_LOG_LEVEL);
+	}
+
+	private String getChildVMLog4jAdditions()
+	{
+		return JJQBCorePlugin.getDefault().getPreferences().get(PREFERENCE_KEY_LOG4J_ADDITIONS, "");
 	}
 
 	private boolean isChildVMDebugModeEnabled()

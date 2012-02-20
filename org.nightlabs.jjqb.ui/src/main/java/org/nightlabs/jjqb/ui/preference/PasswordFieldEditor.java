@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.cumulus4j.ui.transientconnectionproperties;
+package org.nightlabs.jjqb.ui.preference;
 
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.jface.preference.FieldEditor;

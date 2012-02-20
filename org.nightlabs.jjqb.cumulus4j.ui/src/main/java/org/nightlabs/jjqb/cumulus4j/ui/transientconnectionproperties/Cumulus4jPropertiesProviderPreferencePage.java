@@ -4,6 +4,7 @@ import org.eclipse.jface.preference.FieldEditor;
 import org.nightlabs.jjqb.core.oda.ConnectionPropertyMeta;
 import org.nightlabs.jjqb.core.transientconnectionproperties.TransientConnectionPropertiesProvider;
 import org.nightlabs.jjqb.cumulus4j.childvm.shared.Cumulus4jConnectionProperties;
+import org.nightlabs.jjqb.ui.preference.PasswordFieldEditor;
 import org.nightlabs.jjqb.ui.transientconnectionproperties.DefaultPropertiesProviderPreferencePage;
 
 public class Cumulus4jPropertiesProviderPreferencePage extends DefaultPropertiesProviderPreferencePage {
