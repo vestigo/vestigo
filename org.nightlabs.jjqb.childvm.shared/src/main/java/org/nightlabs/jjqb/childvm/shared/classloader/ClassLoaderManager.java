@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.childvm.webapp.model;
+package org.nightlabs.jjqb.childvm.shared.classloader;
 
 import java.io.File;
 import java.io.IOException;
@@ -26,7 +26,7 @@ public class ClassLoaderManager
 	private List<URL> persistenceEngineClasspathURLList;
 
 	private File tempDir;
-	private ConnectionProfile connectionProfile;
+//	private ConnectionProfile connectionProfile;
 	private Properties connectionProperties;
 
 	public ClassLoaderManager() {
@@ -40,23 +40,23 @@ public class ClassLoaderManager
 		});
 	}
 
-	public void setConnectionProfile(ConnectionProfile connectionProfile)
-	{
-		if (connectionProfile == null)
-			throw new IllegalArgumentException("connectionProfile == null");
-
-		if (this.connectionProfile == connectionProfile)
-			return;
-
-		if (this.connectionProfile != null)
-			throw new IllegalStateException("this.connectionProfile already assigned! Cannot change!");
-
-		this.connectionProfile =  connectionProfile;
-	}
-
-	public ConnectionProfile getConnectionProfile() {
-		return connectionProfile;
-	}
+//	public void setConnectionProfile(ConnectionProfile connectionProfile)
+//	{
+//		if (connectionProfile == null)
+//			throw new IllegalArgumentException("connectionProfile == null");
+//
+//		if (this.connectionProfile == connectionProfile)
+//			return;
+//
+//		if (this.connectionProfile != null)
+//			throw new IllegalStateException("this.connectionProfile already assigned! Cannot change!");
+//
+//		this.connectionProfile =  connectionProfile;
+//	}
+//
+//	public ConnectionProfile getConnectionProfile() {
+//		return connectionProfile;
+//	}
 
 	public boolean isOpen(){
 		return connectionProperties != null;
@@ -73,8 +73,8 @@ public class ClassLoaderManager
 
 	public synchronized final void open(Properties connProperties)
 	{
-		if (connectionProfile == null)
-			throw new IllegalStateException("this.connectionProfile == null !!! Call setConnectionProfile(...) first!");
+//		if (connectionProfile == null)
+//			throw new IllegalStateException("this.connectionProfile == null !!! Call setConnectionProfile(...) first!");
 
 		if (connProperties == null)
 			throw new IllegalArgumentException("connProperties == null");
@@ -213,5 +213,11 @@ public class ClassLoaderManager
 			this.persistenceEngineClassLoader = persistenceEngineClassLoader;
 		}
 		return this.persistenceEngineClassLoader;
+	}
+
+	@Override
+	protected void finalize() throws Throwable {
+		close();
+		super.finalize();
 	}
 }

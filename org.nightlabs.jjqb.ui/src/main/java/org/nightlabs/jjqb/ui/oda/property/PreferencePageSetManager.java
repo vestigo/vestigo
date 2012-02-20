@@ -1,5 +1,6 @@
 package org.nightlabs.jjqb.ui.oda.property;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
@@ -86,5 +87,16 @@ class PreferencePageSetManager
 			throw new IllegalArgumentException("page is not registered!");
 
 		return pages;
+	}
+
+	public synchronized <P extends PreferencePage> Collection<P> getPreferencePages(PreferencePage page, Class<P> preferencePageClass)
+	{
+		Collection<P> result = new ArrayList<P>();
+		Collection<PreferencePage> preferencePages = getPreferencePages(page);
+		for (PreferencePage preferencePage : preferencePages) {
+			if (preferencePageClass.isInstance(preferencePage))
+				result.add(preferencePageClass.cast(preferencePage));
+		}
+		return Collections.unmodifiableCollection(result);
 	}
 }

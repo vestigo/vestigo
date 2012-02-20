@@ -1,0 +1,23 @@
+<project default="build">
+	<target name="build">
+		<delete verbose="true" failonerror="false">
+			<fileset dir="src/main/java/org/nightlabs/jjqb/core/persistencexml/jaxb">
+				<include name="**/*"/>
+			</fileset>
+		</delete>
+
+		<exec executable="xjc">
+<!--
+			<arg value="-b"/>
+			<arg value="jaxb-bindings.xml"/>
+-->
+			<arg value="-d" />
+			<arg value="src/main/java"/>
+
+			<arg value="-p"/>
+			<arg value="org.nightlabs.jjqb.core.persistencexml.jaxb"/>
+			
+			<arg value="http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd" />
+		</exec>
+	</target>
+</project>

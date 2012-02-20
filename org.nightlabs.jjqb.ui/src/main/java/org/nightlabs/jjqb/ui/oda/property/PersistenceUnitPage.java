@@ -1,8 +1,18 @@
 package org.nightlabs.jjqb.ui.oda.property;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.jobs.Job;
+import org.eclipse.jface.dialogs.Dialog;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -10,8 +20,12 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Text;
 import org.nightlabs.jjqb.childvm.shared.PropertiesUtil;
+import org.nightlabs.jjqb.core.persistencexml.PersistenceXml;
+import org.nightlabs.jjqb.core.persistencexml.PersistenceXmlScanner;
+import org.nightlabs.jjqb.core.persistencexml.jaxb.Persistence.PersistenceUnit;
 import org.nightlabs.jjqb.ui.JJQBUIPlugin;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,6 +34,7 @@ public abstract class PersistenceUnitPage extends AbstractDataSourceEditorPage
 {
 	private static final Logger logger = LoggerFactory.getLogger(PersistenceUnitPage.class);
 
+	private Display display;
 	private Text persistenceUnitNameText;
 	private Button persistenceUnitSearchButton;
 
@@ -54,6 +69,8 @@ public abstract class PersistenceUnitPage extends AbstractDataSourceEditorPage
 	protected void createAndInitCustomControl(final Composite p, Properties properties)
 	{
 		logger.info("createAndInitCustomControl: entered.");
+
+		display = p.getDisplay();
 
 		final Composite parent = new Composite(p, SWT.NONE);
 		GridLayout gridLayout = new GridLayout();
@@ -97,9 +114,72 @@ public abstract class PersistenceUnitPage extends AbstractDataSourceEditorPage
 	}
 
 	private void persistenceUnitSearchButtonPressed() {
-		Properties properties = collectDraftProperties();
-		for (Map.Entry<?, ?> me : properties.entrySet()) {
-			System.out.println(me.getKey() + " = " + me.getValue());
+		final Properties properties = collectProperties();
+
+		if (logger.isDebugEnabled()) {
+			logger.debug("persistenceUnitSearchButtonPressed: Properties:");
+			for (Map.Entry<?, ?> me : properties.entrySet())
+				logger.debug("persistenceUnitSearchButtonPressed:  * {} = {}", me.getKey(), me.getValue());
+		}
+
+		Job job = new Job("Searching persistence units") {
+			@Override
+			protected IStatus run(IProgressMonitor monitor) {
+				PersistenceXmlScanner persistenceXmlScanner = new PersistenceXmlScanner();
+				try {
+					persistenceXmlScanner.open(properties);
+					Collection<PersistenceXml> persistenceXmls = persistenceXmlScanner.searchPersistenceXmls();
+
+					final List<String> persistenceUnitNames = new ArrayList<String>();
+					for (PersistenceXml persistenceXml : persistenceXmls) {
+						List<PersistenceUnit> persistenceUnits = persistenceXml.getPersistence().getPersistenceUnit();
+						for (PersistenceUnit persistenceUnit : persistenceUnits) {
+							System.out.println(persistenceUnit.getName());
+							persistenceUnitNames.add(persistenceUnit.getName());
+						}
+					}
+
+					Collections.sort(persistenceUnitNames);
+
+					display.asyncExec(new Runnable() {
+						@Override
+						public void run() {
+							if (persistenceUnitNameText.isDisposed())
+								return;
+
+							openSelectPersistenceUnitNameDialog(persistenceUnitNames);
+						}
+					});
+
+				} catch (RuntimeException e) {
+					logger.error("persistenceUnitSearchButtonPressed.job.run: " + e, e);
+					throw e;
+				} catch (Exception e) {
+					logger.error("persistenceUnitSearchButtonPressed.job.run: " + e, e);
+					throw new RuntimeException(e);
+				} finally {
+					persistenceXmlScanner.close();
+				}
+
+				return Status.OK_STATUS;
+			}
+		};
+		job.setUser(true);
+		job.schedule();
+	}
+
+	private void openSelectPersistenceUnitNameDialog(List<String> persistenceUnitNames)
+	{
+		if (persistenceUnitNames.isEmpty()) {
+			MessageDialog.openWarning(getShell(), "No persistence unit found", "There is no persistence unit in your classpath. Please switch to the 'Classpath' page and check your settings there.");
+			return;
+		}
+
+		SelectPersistenceUnitDialog dialog = new SelectPersistenceUnitDialog(getShell(), persistenceUnitNames, persistenceUnitNameText.getText().trim());
+		if (Dialog.OK == dialog.open()) {
+			String selectedPersistenceUnitName = dialog.getSelectedPersistenceUnitName();
+			if (selectedPersistenceUnitName != null)
+				persistenceUnitNameText.setText(selectedPersistenceUnitName);
 		}
 	}
 

@@ -18,6 +18,12 @@ public abstract class AbstractDataSourceEditorPage extends DataSourceEditorPage
 		PreferencePageSetManager.sharedInstance().register(this);
 	}
 
+	@Override
+	protected Properties collectProperties() {
+//		return super.collectProperties();
+		return collectDraftProperties();
+	}
+
 	/**
 	 * Get the properties as they are currently shown in the UI of all pages editing them.
 	 * <p>
@@ -25,11 +31,11 @@ public abstract class AbstractDataSourceEditorPage extends DataSourceEditorPage
 	 * (additionally with older data that might not yet be edited by any page at all [pages are instantiated lazily]).
 	 * <p>
 	 * Only classes subclassing {@link AbstractDataSourceEditorPage} or manually {@link PreferencePageSetManager#register(PreferencePage) registering}
-	 * in the {@link PreferencePageSetManager} are taken into account (all others have only their already applied data in
+	 * in the {@link PreferencePageSetManager} are taken into account (all others have only their last stored data in
 	 * the returned <code>Properties</code>).
 	 * @return the draft-properties, which means the properties as they are visible in the UI.
 	 */
-	protected Properties collectDraftProperties() {
+	private Properties collectDraftProperties() {
 		Properties properties = getDataSourceProperties();
 
 		// Don't know, if this is necessary, but I better copy the map so that this method never interferes with the other methods of DataSourceEditorPage.
@@ -57,5 +63,10 @@ public abstract class AbstractDataSourceEditorPage extends DataSourceEditorPage
 		Label label = new Label(parent, SWT.HORIZONTAL | SWT.SEPARATOR);
 		GridData gd = new GridData(GridData.FILL_HORIZONTAL);
 		label.setLayoutData(gd);
+	}
+
+	protected <P extends PreferencePage> Collection<P> getPreferencePages(Class<P> preferencePageClass)
+	{
+		return PreferencePageSetManager.sharedInstance().getPreferencePages(this, preferencePageClass);
 	}
 }

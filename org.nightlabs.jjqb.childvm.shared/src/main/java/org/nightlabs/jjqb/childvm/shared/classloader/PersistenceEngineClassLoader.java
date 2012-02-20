@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.childvm.webapp.model;
+package org.nightlabs.jjqb.childvm.shared.classloader;
 
 import java.io.IOException;
 import java.net.URL;

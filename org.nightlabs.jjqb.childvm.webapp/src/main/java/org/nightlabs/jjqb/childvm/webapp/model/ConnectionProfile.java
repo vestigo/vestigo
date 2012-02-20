@@ -8,6 +8,7 @@ import java.util.Set;
 
 import org.nightlabs.jjqb.childvm.shared.ConnectionProfileDTO;
 import org.nightlabs.jjqb.childvm.shared.PropertiesUtil;
+import org.nightlabs.jjqb.childvm.shared.classloader.ClassLoaderManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,7 +26,7 @@ public abstract class ConnectionProfile
 
 	public ConnectionProfile() {
 		logger.debug("[{}].<init>: created new instance of {}", Long.toHexString(System.identityHashCode(this)), this.getClass().getName());
-		classLoaderManager.setConnectionProfile(this);
+//		classLoaderManager.setConnectionProfile(this);
 	}
 
 	public final synchronized void fromConnectionProfileDTO(ConnectionProfileDTO dto)
