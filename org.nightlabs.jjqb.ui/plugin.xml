@@ -275,7 +275,7 @@
         category="org.nightlabs.jjqb.ui.preference.JJQBCategoryPreferencePage"
         class="org.nightlabs.jjqb.ui.licence.LicencePreferencePage"
         id="org.nightlabs.jjqb.ui.licence.LicencePreferencePage"
-        name="JJQB Licence">
+        name="Licence">
 		</page>
 	</extension>
 	<extension point="org.eclipse.ui.preferencePages">
@@ -283,7 +283,7 @@
 		category="org.nightlabs.jjqb.ui.preference.JJQBCategoryPreferencePage"
 		class="org.nightlabs.jjqb.ui.childvm.ChildVMPreferencePage"
 		id="org.nightlabs.jjqb.ui.childvm.ChildVMPreferencePage"
-		name="JJQB ChildVM">
+		name="ChildVM">
 		</page>
 	</extension>
  <extension

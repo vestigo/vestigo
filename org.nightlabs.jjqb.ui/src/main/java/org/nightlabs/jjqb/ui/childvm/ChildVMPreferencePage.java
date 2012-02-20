@@ -14,10 +14,12 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 import org.eclipse.ui.preferences.ScopedPreferenceStore;
 import org.nightlabs.jjqb.core.JJQBCorePlugin;
+import org.nightlabs.jjqb.core.childvm.LogLevel;
 import org.nightlabs.jjqb.core.childvm.internal.ChildVMServer;
 import org.nightlabs.jjqb.ui.preference.MultiLineStringFieldEditor;
 
-public class ChildVMPreferencePage extends FieldEditorPreferencePage implements IWorkbenchPreferencePage {
+public class ChildVMPreferencePage extends FieldEditorPreferencePage implements IWorkbenchPreferencePage
+{
 
 	public ChildVMPreferencePage() {
 		super(GRID);
@@ -27,7 +29,6 @@ public class ChildVMPreferencePage extends FieldEditorPreferencePage implements 
 	public void init(IWorkbench workbench)
 	{
 		setPreferenceStore(new ScopedPreferenceStore(new InstanceScope(), JJQBCorePlugin.BUNDLE_SYMBOLIC_NAME));
-		setTitle("Child VM settings");
 		setDescription("Settings to control the behaviour of the child VM.");
 
 		getPreferenceStore().setDefault(ChildVMServer.PREFERENCE_KEY_JAVA_COMMAND, ChildVMServer.PREFERENCE_DEFAULT_JAVA_COMMAND);
@@ -43,9 +44,16 @@ public class ChildVMPreferencePage extends FieldEditorPreferencePage implements 
 	}
 
 	@Override
+	public void createControl(Composite parent) {
+		setTitle("JJQB Child VM");
+		super.createControl(parent);
+	}
+
+	@Override
 	protected void createFieldEditors()
 	{
 		addHorizontalSeparator(getFieldEditorParent());
+
 		addField(new StringFieldEditor(ChildVMServer.PREFERENCE_KEY_JAVA_COMMAND, "Java: Command:", getFieldEditorParent()));
 		addField(new IntegerFieldEditor(ChildVMServer.PREFERENCE_KEY_JAVA_HEAP_MAX_MB, "Java: Max heap size (MB):", getFieldEditorParent()));
 		addField(new IntegerFieldEditor(ChildVMServer.PREFERENCE_KEY_JAVA_HEAP_MIN_MB, "Java: Min heap size (MB):", getFieldEditorParent()));
@@ -59,14 +67,15 @@ public class ChildVMPreferencePage extends FieldEditorPreferencePage implements 
 		addHorizontalSeparator(getFieldEditorParent());
 
 		final String[][] logLevelNamesAndValues = new String[][] {
-				{ "ERROR (log only errors)", "ERROR" },
-				{ "WARN (log only warnings and errors)", "WARN" },
-				{ "INFO (log normally)", "INFO" },
-				{ "DEBUG (log a lot)", "DEBUG" },
-				{ "TRACE (log everything)", "TRACE" }
+				{ "TRACE (log everything)", LogLevel.TRACE.name() },
+				{ "DEBUG (log a lot)", LogLevel.DEBUG.name() },
+				{ "INFO (log normally)", LogLevel.INFO.name() },
+				{ "WARN (log only warnings and errors)", LogLevel.WARN.name() },
+				{ "ERROR (log only errors)", LogLevel.ERROR.name() },
+				{ "FATAL (log only severe errors)", LogLevel.FATAL.name() }
 		};
 		addField(new ComboFieldEditor(ChildVMServer.PREFERENCE_KEY_LOG4J_ROOT_LOG_LEVEL, "Log4j: Root log level:", logLevelNamesAndValues, getFieldEditorParent()));
-		addField(new MultiLineStringFieldEditor(ChildVMServer.PREFERENCE_KEY_LOG4J_ADDITIONS, "Log4j: Additional properties:", getFieldEditorParent()));
+		addField(new MultiLineStringFieldEditor(ChildVMServer.PREFERENCE_KEY_LOG4J_ADDITIONAL_PROPERTIES, "Log4j: Additional properties:", getFieldEditorParent()));
 
 		addHorizontalSeparator(getFieldEditorParent());
 
@@ -82,6 +91,5 @@ public class ChildVMPreferencePage extends FieldEditorPreferencePage implements 
 		gd.horizontalSpan = 2;
 		label.setLayoutData(gd);
 	}
-
 
 }

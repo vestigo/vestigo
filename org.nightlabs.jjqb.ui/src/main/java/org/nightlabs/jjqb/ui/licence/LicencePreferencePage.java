@@ -46,8 +46,6 @@ implements IWorkbenchPreferencePage
 	private LicenceManager licenceManager = JJQBCorePlugin.getDefault().getLicenceManager();
 
 	private Label descriptionLabel;
-	private Hyperlink purchaseHyperlink;
-	private Hyperlink homeHyperlink;
 
 	private LicenceCheckMessagesTableFieldEditor lastLicenceCheckMessagesTableFieldEditor;
 	private LicenceCheckMessagesTable lastLicenceCheckMessagesTable;
@@ -63,7 +61,6 @@ implements IWorkbenchPreferencePage
 		display = workbench.getDisplay();
 		IPreferenceStore preferenceStore = new ScopedPreferenceStore(new ConfigurationScope(), LicenceManagerPlugin.BUNDLE_SYMBOLIC_NAME);
 		setPreferenceStore(preferenceStore);
-		setTitle(Messages.getString("LicencePreferencePage.title")); //$NON-NLS-1$
 		updateDescription();
 	}
 
@@ -103,18 +100,24 @@ implements IWorkbenchPreferencePage
 		descriptionLabel = super.createDescriptionLabel(parent);
 		return descriptionLabel;
 	}
+	
+	@Override
+	public void createControl(Composite parent) {
+		setTitle(Messages.getString("LicencePreferencePage.title")); //$NON-NLS-1$
+		super.createControl(parent);
+	}
 
 	@Override
 	protected void createFieldEditors() {
 		addHorizontalSeparator(getFieldEditorParent());
 
-		purchaseHyperlink = new Hyperlink(getFieldEditorParent(), SWT.WRAP);
+		Hyperlink purchaseHyperlink = new Hyperlink(getFieldEditorParent(), SWT.WRAP);
 		purchaseHyperlink.setText(LicenceNotValidDialog.PURCHASE_HYPERLINK_TEXT);
 		purchaseHyperlink.setHref(LicenceNotValidDialog.PURCHASE_URL);
 		purchaseHyperlink.setToolTipText(LicenceNotValidDialog.PURCHASE_URL);
 		configureHyperlink(purchaseHyperlink);
 
-		homeHyperlink = new Hyperlink(getFieldEditorParent(), SWT.WRAP);
+		Hyperlink homeHyperlink = new Hyperlink(getFieldEditorParent(), SWT.WRAP);
 		homeHyperlink.setText(LicenceNotValidDialog.HOME_HYPERLINK_TEXT);
 		homeHyperlink.setHref(LicenceNotValidDialog.HOME_URL);
 		homeHyperlink.setToolTipText(LicenceNotValidDialog.HOME_URL);

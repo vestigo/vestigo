@@ -29,6 +29,7 @@ import org.eclipse.core.runtime.Platform;
 import org.nightlabs.jjqb.childvm.shared.api.ChildVM;
 import org.nightlabs.jjqb.childvm.webapp.client.ChildVMWebappClient;
 import org.nightlabs.jjqb.core.JJQBCorePlugin;
+import org.nightlabs.jjqb.core.childvm.LogLevel;
 import org.nightlabs.jjqb.core.childvm.WebApp;
 import org.nightlabs.util.IOUtil;
 import org.slf4j.Logger;
@@ -54,12 +55,12 @@ public class ChildVMServer
 	public static final int PREFERENCE_DEFAULT_JAVA_PERM_GEN_MAX_MB = 0;
 
 	public static final String PREFERENCE_KEY_JAVA_PERM_GEN_GC_ENABLED = "childVM.java.permGen.gcEnabled";
-	public static final boolean PREFERENCE_DEFAULT_JAVA_PERM_GEN_GC_ENABLED = true;
+	public static final boolean PREFERENCE_DEFAULT_JAVA_PERM_GEN_GC_ENABLED = false;
 
 	public static final String PREFERENCE_KEY_LOG4J_ROOT_LOG_LEVEL = "childVM.log4j.rootLogLevel";
-	public static final String PREFERENCE_DEFAULT_LOG4J_ROOT_LOG_LEVEL = "ERROR";
+	public static final String PREFERENCE_DEFAULT_LOG4J_ROOT_LOG_LEVEL = LogLevel.FATAL.name();
 
-	public static final String PREFERENCE_KEY_LOG4J_ADDITIONS = "childVM.log4j.additions";
+	public static final String PREFERENCE_KEY_LOG4J_ADDITIONAL_PROPERTIES = "childVM.log4j.additionalProperties";
 
 	public static final String PREFERENCE_KEY_SERVER_START_TIMEOUT_MS = "childVM.server.startTimeoutMS";
 	public static final long PREFERENCE_DEFAULT_SERVER_START_TIMEOUT_MS = 60L * 1000L;
@@ -276,7 +277,7 @@ public class ChildVMServer
 
 		Map<String, String> variables = new HashMap<String, String>();
 		variables.put("rootLogLevel", getChildVMLog4jRootLogLevel());
-		variables.put("additions", getChildVMLog4jAdditions());
+		variables.put("additionalProperties", getChildVMLog4jAdditionalProperties());
 
 		String fileName = "log4j.properties";
 		String resourceName = "resource/jetty/resources/" + fileName;
@@ -558,9 +559,9 @@ public class ChildVMServer
 		return JJQBCorePlugin.getDefault().getPreferences().get(PREFERENCE_KEY_LOG4J_ROOT_LOG_LEVEL, PREFERENCE_DEFAULT_LOG4J_ROOT_LOG_LEVEL);
 	}
 
-	private String getChildVMLog4jAdditions()
+	private String getChildVMLog4jAdditionalProperties()
 	{
-		return JJQBCorePlugin.getDefault().getPreferences().get(PREFERENCE_KEY_LOG4J_ADDITIONS, "");
+		return JJQBCorePlugin.getDefault().getPreferences().get(PREFERENCE_KEY_LOG4J_ADDITIONAL_PROPERTIES, "");
 	}
 
 	private boolean isChildVMDebugModeEnabled()
