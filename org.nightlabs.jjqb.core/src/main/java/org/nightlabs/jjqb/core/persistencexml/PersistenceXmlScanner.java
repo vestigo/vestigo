@@ -82,6 +82,12 @@ public class PersistenceXmlScanner {
 				logger.debug("populatePersistenceXmls: {} not found at location: {}", PERSISTENCE_XML, persistenceXmlFile.getAbsolutePath());
 		}
 
+		String fnLower = file.getName().toLowerCase();
+		if (!(fnLower.endsWith(".ear") || fnLower.endsWith(".war") || fnLower.endsWith(".jar"))) {
+			logger.debug("populatePersistenceXmls: Ignoring non-archive file: {}", file.getAbsolutePath());
+			return;
+		}
+
 		ZipFile zipFile = new ZipFile(file);
 		try {
 			ZipEntry zipEntry = zipFile.getEntry(META_INF + '/' + PERSISTENCE_XML);

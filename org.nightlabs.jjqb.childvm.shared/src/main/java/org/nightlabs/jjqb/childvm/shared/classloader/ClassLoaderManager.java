@@ -148,7 +148,8 @@ public class ClassLoaderManager
 	throws IOException
 	{
 		String fn = file.getName();
-		if (fn.endsWith(".ear") || fn.endsWith(".war") || fn.endsWith(".zip")) {
+		String fnLower = fn.toLowerCase();
+		if (fnLower.endsWith(".ear") || fnLower.endsWith(".war") || fnLower.endsWith(".zip")) {
 			byte[] hash;
 			try {
 				hash = Util.hash(IOUtil.simplifyPath(file).getBytes(IOUtil.CHARSET_UTF_8), Util.HASH_ALGORITHM_SHA);
