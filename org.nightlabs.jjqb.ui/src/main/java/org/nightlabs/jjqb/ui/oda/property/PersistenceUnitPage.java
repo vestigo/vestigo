@@ -3,40 +3,60 @@ package org.nightlabs.jjqb.ui.oda.property;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import java.util.Set;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
-import org.eclipse.jface.dialogs.Dialog;
-import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.viewers.ArrayContentProvider;
+import org.eclipse.jface.viewers.ISelectionChangedListener;
+import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.ListViewer;
+import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.SelectionAdapter;
-import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.ControlAdapter;
+import org.eclipse.swt.events.ControlEvent;
+import org.eclipse.swt.events.DisposeEvent;
+import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
+import org.eclipse.ui.forms.widgets.Hyperlink;
 import org.nightlabs.jjqb.childvm.shared.PropertiesUtil;
 import org.nightlabs.jjqb.core.persistencexml.PersistenceXml;
 import org.nightlabs.jjqb.core.persistencexml.PersistenceXmlScanner;
 import org.nightlabs.jjqb.core.persistencexml.jaxb.Persistence.PersistenceUnit;
-import org.nightlabs.jjqb.ui.JJQBUIPlugin;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public abstract class PersistenceUnitPage extends AbstractDataSourceEditorPage
 {
+	private static final String PUN_LIST_ELEMENT_NO_PERSISTENCE_UNIT_FOUND = ">>> There is no persistence unit in your classpath. Please switch to the 'Classpath' page and check your settings there. <<<";
+	private static final String PUN_LIST_ELEMENT_NOT_YET_SEARCHED = ">>> Not yet searched (search job not yet started). <<<";
+	private static final String PUN_LIST_ELEMENT_SEARCHING = ">>> Searching... <<<";
+	private static final Set<String> PUN_LIST_ELEMENT_CONSTANTS;
+	static {
+		Set<String> s = new HashSet<String>();
+		s.add(PUN_LIST_ELEMENT_NO_PERSISTENCE_UNIT_FOUND);
+		s.add(PUN_LIST_ELEMENT_NOT_YET_SEARCHED);
+		s.add(PUN_LIST_ELEMENT_SEARCHING);
+		PUN_LIST_ELEMENT_CONSTANTS = Collections.unmodifiableSet(s);
+	}
+
 	private static final Logger logger = LoggerFactory.getLogger(PersistenceUnitPage.class);
 
 	private Display display;
 	private Text persistenceUnitNameText;
-	private Button persistenceUnitSearchButton;
+//	private Button persistenceUnitSearchButton;
+	private ListViewer persistenceUnitNamesList;
 
 	@Override
 	public Properties collectCustomProperties(Properties properties)
@@ -91,29 +111,86 @@ public abstract class PersistenceUnitPage extends AbstractDataSourceEditorPage
 		puGridLayout.marginWidth = 0;
 		puParent.setLayout(puGridLayout);
 
+		Hyperlink persistenceUnitNameHyperlink = new Hyperlink(puParent, SWT.WRAP);
+		persistenceUnitNameHyperlink.setText("Persistence unit name:");
+		persistenceUnitNameHyperlink.setHref(getPersistenceUnitDocumentationURL());
+		persistenceUnitNameHyperlink.setToolTipText(getPersistenceUnitDocumentationURL());
+		configureHyperlink(persistenceUnitNameHyperlink);
+
 		persistenceUnitNameText = new Text(puParent, SWT.BORDER);
 		persistenceUnitNameText.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 		persistenceUnitNameText.setText(properties.getProperty(PropertiesUtil.PERSISTENCE_UNIT_NAME, ""));
 
-		persistenceUnitSearchButton = new Button(puParent, SWT.PUSH);
-		persistenceUnitSearchButton.setImage(JJQBUIPlugin.getDefault().getImage(PersistenceUnitPage.class, "persistenceUnitSearchButton", JJQBUIPlugin.IMAGE_SIZE_16x16));
-		persistenceUnitSearchButton.setToolTipText("Search the classpath for persistence.xml files and select a persistence unit from all files found.");
-		persistenceUnitSearchButton.addSelectionListener(new SelectionAdapter() {
+//		persistenceUnitSearchButton = new Button(puParent, SWT.PUSH);
+//		persistenceUnitSearchButton.setImage(JJQBUIPlugin.getDefault().getImage(PersistenceUnitPage.class, "persistenceUnitSearchButton", JJQBUIPlugin.IMAGE_SIZE_16x16));
+//		persistenceUnitSearchButton.setToolTipText("Search the classpath for persistence.xml files and select a persistence unit from all files found.");
+//		persistenceUnitSearchButton.addSelectionListener(new SelectionAdapter() {
+//			@Override
+//			public void widgetSelected(SelectionEvent e) {
+//				searchPersistenceUnitsAsyncInJob();
+//			}
+//		});
+
+		addHorizontalSeparator(parent);
+
+		final Label persistenceUnitsFoundLabel = new Label(parent, SWT.WRAP);
+		persistenceUnitsFoundLabel.setText("The following persistence units have been found in your classpath:");
+		persistenceUnitsFoundLabel.setLayoutData(createDescriptionLabelGridData(parent));
+
+		persistenceUnitNamesList = new ListViewer(parent);
+		persistenceUnitNamesList.getList().setLayoutData(new GridData(GridData.FILL_BOTH));
+		persistenceUnitNamesList.setContentProvider(new ArrayContentProvider());
+		persistenceUnitNamesList.setInput(Collections.singletonList(PUN_LIST_ELEMENT_NOT_YET_SEARCHED));
+		persistenceUnitNamesList.addSelectionChangedListener(new ISelectionChangedListener() {
 			@Override
-			public void widgetSelected(SelectionEvent e) {
-				persistenceUnitSearchButtonPressed();
+			public void selectionChanged(SelectionChangedEvent event) {
+				IStructuredSelection selection = (IStructuredSelection) event.getSelection();
+				String unitName = (String) selection.getFirstElement();
+
+				if (unitName == null || unitName.isEmpty())
+					return;
+
+				if (PUN_LIST_ELEMENT_CONSTANTS.contains(unitName))
+					return;
+
+				persistenceUnitNameText.setText(unitName);
 			}
 		});
 
-//		parent.addControlListener(new ControlAdapter() {
-//			@Override
-//			public void controlResized(ControlEvent e) {
-//				persistenceUnitDescriptionLabel.setLayoutData(createDescriptionLabelGridData(parent));
-//			}
-//		});
+		parent.addControlListener(new ControlAdapter() {
+			@Override
+			public void controlResized(ControlEvent e) {
+				persistenceUnitsFoundLabel.setLayoutData(createDescriptionLabelGridData(parent));
+			}
+		});
+
+		PreferencePageSetManager.sharedInstance().addPreferencePageDirtyListener(preferencePageDirtyListener);
+		persistenceUnitNamesList.getList().addDisposeListener(new DisposeListener() {
+			@Override
+			public void widgetDisposed(DisposeEvent e) {
+				PreferencePageSetManager.sharedInstance().removePreferencePageDirtyListener(preferencePageDirtyListener);
+			}
+		});
 	}
 
-	private void persistenceUnitSearchButtonPressed() {
+	private PreferencePageDirtyListener preferencePageDirtyListener = new PreferencePageDirtyListener() {
+		@Override
+		public void onMarkDirty(PreferencePageDirtyEvent event) {
+			if (event.getSource() instanceof ClasspathPage)
+				searchPersistenceUnitsAsyncInJob();
+		}
+	};
+
+	@Override
+	public void createControl(Composite parent) {
+		super.createControl(parent);
+		searchPersistenceUnitsAsyncInJob();
+	}
+
+	private void searchPersistenceUnitsAsyncInJob()
+	{
+		logger.info("persistenceUnitSearchButtonPressed: entered.");
+
 		final Properties properties = collectProperties();
 
 		if (logger.isDebugEnabled()) {
@@ -121,6 +198,8 @@ public abstract class PersistenceUnitPage extends AbstractDataSourceEditorPage
 			for (Map.Entry<?, ?> me : properties.entrySet())
 				logger.debug("persistenceUnitSearchButtonPressed:  * {} = {}", me.getKey(), me.getValue());
 		}
+
+		persistenceUnitNamesList.setInput(Collections.singletonList(PUN_LIST_ELEMENT_SEARCHING));
 
 		Job job = new Job("Searching persistence units") {
 			@Override
@@ -147,7 +226,11 @@ public abstract class PersistenceUnitPage extends AbstractDataSourceEditorPage
 							if (persistenceUnitNameText.isDisposed())
 								return;
 
-							openSelectPersistenceUnitNameDialog(persistenceUnitNames);
+//							openSelectPersistenceUnitNameDialog(persistenceUnitNames);
+							if (persistenceUnitNames.isEmpty())
+								persistenceUnitNamesList.setInput(Collections.singletonList(PUN_LIST_ELEMENT_NO_PERSISTENCE_UNIT_FOUND));
+							else
+								persistenceUnitNamesList.setInput(persistenceUnitNames);
 						}
 					});
 
@@ -168,20 +251,22 @@ public abstract class PersistenceUnitPage extends AbstractDataSourceEditorPage
 		job.schedule();
 	}
 
-	private void openSelectPersistenceUnitNameDialog(List<String> persistenceUnitNames)
-	{
-		if (persistenceUnitNames.isEmpty()) {
-			MessageDialog.openWarning(getShell(), "No persistence unit found", "There is no persistence unit in your classpath. Please switch to the 'Classpath' page and check your settings there.");
-			return;
-		}
+	protected abstract String getPersistenceUnitDocumentationURL();
 
-		SelectPersistenceUnitDialog dialog = new SelectPersistenceUnitDialog(getShell(), persistenceUnitNames, persistenceUnitNameText.getText().trim());
-		if (Dialog.OK == dialog.open()) {
-			String selectedPersistenceUnitName = dialog.getSelectedPersistenceUnitName();
-			if (selectedPersistenceUnitName != null)
-				persistenceUnitNameText.setText(selectedPersistenceUnitName);
-		}
-	}
+//	private void openSelectPersistenceUnitNameDialog(List<String> persistenceUnitNames)
+//	{
+//		if (persistenceUnitNames.isEmpty()) {
+//			MessageDialog.openWarning(getShell(), "No persistence unit found", "There is no persistence unit in your classpath. Please switch to the 'Classpath' page and check your settings there.");
+//			return;
+//		}
+//
+//		SelectPersistenceUnitDialog dialog = new SelectPersistenceUnitDialog(getShell(), persistenceUnitNames, persistenceUnitNameText.getText().trim());
+//		if (Dialog.OK == dialog.open()) {
+//			String selectedPersistenceUnitName = dialog.getSelectedPersistenceUnitName();
+//			if (selectedPersistenceUnitName != null)
+//				persistenceUnitNameText.setText(selectedPersistenceUnitName);
+//		}
+//	}
 
 //	protected abstract String getPersistenceUnitDescription();
 }

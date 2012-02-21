@@ -11,4 +11,9 @@ public class JDOPersistenceUnitPage extends PersistenceUnitPage {
 //		return "Please specify the persistence unit name. This is optional for JDO. Leave it empty, if there is none.";
 //	}
 
+	@Override
+	protected String getPersistenceUnitDocumentationURL()
+	{
+		return "http://www.datanucleus.org/products/accessplatform_3_0/jdo/persistence_unit.html";
+	}
 }

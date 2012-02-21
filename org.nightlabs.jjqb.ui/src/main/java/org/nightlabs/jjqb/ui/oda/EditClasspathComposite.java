@@ -13,6 +13,8 @@
 
 package org.nightlabs.jjqb.ui.oda;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -49,12 +51,43 @@ import org.nightlabs.util.Util;
  */
 public class EditClasspathComposite extends Composite implements ICellModifier
 {
+	private static final Object DUMMY_ELEMENT_ADD = new Object();
+
+	public static final String CP_ELEMENT_ADDED = "added";
+	public static final String CP_ELEMENT_REMOVED = "removed";
+	public static final String CP_ELEMENT_MOVED = "moved";
+	public static final String CP_ELEMENT_MODIFIED = "modified";
+
 	private Button addFileButton;
 	private Button removeClasspathElementButton;
 	private Button moveClasspathElementUpButton;
 	private Button moveClasspathElementDownButton;
 
 	private static final String COL_ELEMENT = "Col-Element";
+
+	private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
+
+	public void addPropertyChangeListener(PropertyChangeListener listener) {
+		propertyChangeSupport.addPropertyChangeListener(listener);
+	}
+
+	public void removePropertyChangeListener(PropertyChangeListener listener) {
+		propertyChangeSupport.removePropertyChangeListener(listener);
+	}
+
+	/**
+	 * @param propertyName one of {@link #CP_ELEMENT_ADDED}, {@link #CP_ELEMENT_MODIFIED}, {@link #CP_ELEMENT_MOVED}, {@link #CP_ELEMENT_REMOVED}.
+	 * @param listener
+	 */
+	public void addPropertyChangeListener(String propertyName, PropertyChangeListener listener) {
+		propertyChangeSupport.addPropertyChangeListener(propertyName, listener);
+	}
+
+	public void removePropertyChangeListener(String propertyName, PropertyChangeListener listener) {
+		propertyChangeSupport.removePropertyChangeListener(propertyName, listener);
+	}
+
+
 
 	public static class LabelProvider implements ITableLabelProvider {
 		@Override
@@ -86,8 +119,6 @@ public class EditClasspathComposite extends Composite implements ICellModifier
 		@Override
 		public void removeListener(ILabelProviderListener listener) { }
 	}
-
-	private static final Object DUMMY_ELEMENT_ADD = new Object();
 
 	public static class ContentProvider implements IStructuredContentProvider {
 
@@ -158,6 +189,7 @@ public class EditClasspathComposite extends Composite implements ICellModifier
 				ArrayList<String> newInput = new ArrayList<String>(getClasspathElements());
 				newInput.removeAll(sel.toList());
 				setInput(newInput);
+				propertyChangeSupport.firePropertyChange(CP_ELEMENT_REMOVED, sel.toArray(), null);
 			}
 		});
 
@@ -179,6 +211,7 @@ public class EditClasspathComposite extends Composite implements ICellModifier
 						return;
 				}
 				setInput(newInput);
+				propertyChangeSupport.firePropertyChange(CP_ELEMENT_MOVED, null, newInput.toArray(new String[newInput.size()]));
 			}
 		});
 
@@ -201,6 +234,7 @@ public class EditClasspathComposite extends Composite implements ICellModifier
 						return;
 				}
 				setInput(newInput);
+				propertyChangeSupport.firePropertyChange(CP_ELEMENT_MOVED, null, newInput.toArray(new String[newInput.size()]));
 			}
 		});
 
@@ -236,7 +270,9 @@ public class EditClasspathComposite extends Composite implements ICellModifier
 		if (lastAddClasspathElementDirectory != null)
 			dialog.setFilterPath(lastAddClasspathElementDirectory.getAbsolutePath());
 
-		dialog.open();
+		if (dialog.open() == null)
+			return;
+
 		String[] fileNames = dialog.getFileNames();
 		if (fileNames != null && fileNames.length != 0) {
 			File directory = new File(dialog.getFilterPath());
@@ -253,6 +289,8 @@ public class EditClasspathComposite extends Composite implements ICellModifier
 				setInput(newInput);
 			}
 		}
+
+		propertyChangeSupport.firePropertyChange(CP_ELEMENT_ADDED, null, fileNames);
 	}
 
 	public File getLastAddClasspathElementDirectory() {
@@ -314,8 +352,10 @@ public class EditClasspathComposite extends Composite implements ICellModifier
 
 		int tableItemIndex = table.indexOf(tableItem);
 		String newVal = (String)value;
+		String oldVal = getContentProvider().getClasspathElements().get(tableItemIndex);
 		getContentProvider().setElement(tableItemIndex, newVal);
 		tableViewer.refresh();
+		propertyChangeSupport.firePropertyChange(CP_ELEMENT_MODIFIED, oldVal, newVal);
 //		Display.getDefault().asyncExec(new Runnable() {
 //			@Override
 //			public void run() {

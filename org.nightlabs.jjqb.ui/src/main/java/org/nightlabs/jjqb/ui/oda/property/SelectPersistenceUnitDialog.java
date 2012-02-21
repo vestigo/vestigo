@@ -18,6 +18,11 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Shell;
 import org.nightlabs.jjqb.ui.JJQBUIPlugin;
 
+/**
+ * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ * @deprecated unused; is now integrated in {@link PersistenceUnitPage}. But still keeping it, in case re-organize the UI.
+ */
+@Deprecated
 public class SelectPersistenceUnitDialog extends TitleAreaDialog {
 
 	private List<String> persistenceUnitNames;

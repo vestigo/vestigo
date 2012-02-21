@@ -1,5 +1,6 @@
 package org.nightlabs.jjqb.ui.oda.property;
 
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -8,6 +9,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import org.eclipse.core.runtime.ListenerList;
 import org.eclipse.jface.preference.PreferencePage;
 import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
@@ -21,6 +23,7 @@ class PreferencePageSetManager
 	private static final Logger logger = LoggerFactory.getLogger(PreferencePageSetManager.class);
 
 	private Map<Shell, Set<PreferencePage>> shell2PreferencePageMap = new HashMap<Shell, Set<PreferencePage>>();
+	private ListenerList dirtyListeners = new ListenerList();
 
 	private static PreferencePageSetManager sharedInstance = new PreferencePageSetManager();
 
@@ -76,7 +79,7 @@ class PreferencePageSetManager
 
 	public synchronized Collection<PreferencePage> getPreferencePages(PreferencePage page)
 	{
-		logger.debug("getPreferencePages: page={}", page);
+		logger.info("getPreferencePages: page={}", page);
 
 		Shell shell = page.getShell();
 		if (shell == null)
@@ -98,5 +101,33 @@ class PreferencePageSetManager
 				result.add(preferencePageClass.cast(preferencePage));
 		}
 		return Collections.unmodifiableCollection(result);
+	}
+
+	public void firePreferencePageDirtyEvent(PreferencePageDirtyEvent event)
+	{
+		for (Object lrefo : dirtyListeners.getListeners()) {
+			@SuppressWarnings("unchecked")
+			WeakReference<PreferencePageDirtyListener> lref = (WeakReference<PreferencePageDirtyListener>) lrefo;
+			PreferencePageDirtyListener l = lref.get();
+			if (l != null)
+				l.onMarkDirty(event);
+		}
+	}
+
+	public void addPreferencePageDirtyListener(PreferencePageDirtyListener listener)
+	{
+		removePreferencePageDirtyListener(null); // sweep null-WeakRefs
+		dirtyListeners.add(new WeakReference<PreferencePageDirtyListener>(listener));
+	}
+
+	public void removePreferencePageDirtyListener(PreferencePageDirtyListener listener)
+	{
+		for (Object lrefo : dirtyListeners.getListeners()) {
+			@SuppressWarnings("unchecked")
+			WeakReference<PreferencePageDirtyListener> lref = (WeakReference<PreferencePageDirtyListener>) lrefo;
+			PreferencePageDirtyListener l = lref.get();
+			if (l == null || l == listener)
+				dirtyListeners.remove(lref);
+		}
 	}
 }

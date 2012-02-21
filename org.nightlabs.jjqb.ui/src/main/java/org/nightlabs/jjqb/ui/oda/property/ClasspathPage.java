@@ -1,5 +1,7 @@
 package org.nightlabs.jjqb.ui.oda.property;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -79,6 +81,13 @@ public abstract class ClasspathPage extends AbstractDataSourceEditorPage
 		editClasspathComposite = new EditClasspathComposite(parent, SWT.NONE);
 		List<String> persistenceEngineClasspath = PropertiesUtil.getList(properties, PropertiesUtil.PREFIX_META_PERSISTENCE_ENGINE_CLASSPATH);
 		editClasspathComposite.setInput(persistenceEngineClasspath);
+
+		editClasspathComposite.addPropertyChangeListener(new PropertyChangeListener() {
+			@Override
+			public void propertyChange(PropertyChangeEvent evt) {
+				markDirty();
+			}
+		});
 
 //		parent.addControlListener(new ControlAdapter() {
 //			@Override
