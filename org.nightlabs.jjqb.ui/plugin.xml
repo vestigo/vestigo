@@ -171,7 +171,7 @@
       <dataSourceUI id="org.nightlabs.jjqb.core.oda.JPADriver">
         <newDataSourceWizard
               includesProgressMonitor="false"
-              pageClass="org.nightlabs.jjqb.ui.oda.JPADriverWizardPage"
+              pageClass="org.nightlabs.jjqb.ui.oda.wizard.JPAWizardPage"
               pageTitle="JPA DataSource"
               windowTitle="JPA DataSource"/>
       </dataSourceUI> 

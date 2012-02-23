@@ -168,7 +168,7 @@
       <dataSourceUI id="org.nightlabs.jjqb.cumulus4j.core.oda.JDOCumulus4jDriver">
         <newDataSourceWizard
               includesProgressMonitor="false"
-              pageClass="org.nightlabs.jjqb.cumulus4j.ui.oda.JDOCumulus4jDriverWizardPage"
+              pageClass="org.nightlabs.jjqb.cumulus4j.ui.oda.wizard.JDOCumulus4jWizardPage"
               pageTitle="JDO+Cumulus4j DataSource"
               windowTitle="JDO+Cumulus4j DataSource"/>
       </dataSourceUI> 
@@ -195,7 +195,7 @@
       <dataSourceUI id="org.nightlabs.jjqb.cumulus4j.core.oda.JPACumulus4jDriver">
         <newDataSourceWizard
               includesProgressMonitor="false"
-              pageClass="org.nightlabs.jjqb.cumulus4j.ui.oda.JPACumulus4jDriverWizardPage"
+              pageClass="org.nightlabs.jjqb.cumulus4j.ui.oda.wizard.JPACumulus4jWizardPage"
               pageTitle="JPA+Cumulus4j DataSource"
               windowTitle="JPA+Cumulus4j DataSource"/>
       </dataSourceUI> 
