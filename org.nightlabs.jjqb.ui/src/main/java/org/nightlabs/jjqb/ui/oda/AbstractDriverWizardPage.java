@@ -17,8 +17,10 @@ import org.nightlabs.jjqb.ui.wizard.WizardHopPageSupport;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ * @deprecated replaced by stuff in wizard sub-package.
  */
-public abstract class AbstractDriverWizardPage 
+@Deprecated
+public abstract class AbstractDriverWizardPage
 	extends DataSourceWizardPage
 	implements IPropertyHopEntryPage, IPropertyEditor
 {
@@ -37,7 +39,7 @@ public abstract class AbstractDriverWizardPage
 			propertyHopPage.createControl(parent);
 			setControl(propertyHopPage.getControl());
 		}
-		
+
 		@Override
 		public boolean isPageComplete() {
 			return propertyHopPage.isPageComplete();
@@ -124,6 +126,7 @@ public abstract class AbstractDriverWizardPage
 		return wizardHopPageSupport.getWizardHop();
 	}
 
+	@Override
 	public void addPropertyHopPage(PropertyHopPage propertyHopPage) {
 		getWizardHop().addHopPage(new PropertyHopWizardPage(propertyHopPage));
 		addPropertyEditor(propertyHopPage);

@@ -34,10 +34,15 @@ import org.eclipse.jface.wizard.WizardPage;
  * A support that can be used for WizardPages that can not directly sub-class
  * {@link WizardHopPage}.
  * <p>
- * Instantiate this support and delegate {@link #getNextPage()} and
- * {@link #setWizard(IWizard)} to that instance.
+ * Instantiate this support and delegate the following methods to that instance:
  * </p>
- * 
+ * <ul>
+ * <li>{@link #getNextPage()}: Do not call <code>super.getNextPage()</code>.
+ * <li>{@link #setWizard(IWizard)}: Call <code>super.setWizard(IWizard)</code> first! Then delegate.
+ * <li>{@link #getWizardHop()}
+ * <li>{@link #setWizardHop(IWizardHop)}
+ * </ul>
+ *
  * @see IWizardHop
  * @author Alexander Bieber <!-- alex [AT] nightlabs [DOT] de -->
  */
@@ -45,7 +50,7 @@ public class WizardHopPageSupport
 {
 	private IWizardHop wizardHop;
 	private WizardPage wizardPage;
-	
+
 	/**
 	 * Create a new WizardHopPage.
 	 * @param pageName The identifier used for the page
@@ -64,7 +69,7 @@ public class WizardHopPageSupport
 		this.wizardPage = wizardPage;
 		this.wizardHop = wizardHop;
 	}
-	
+
 	public void setWizardHop(IWizardHop wizardHop)
 	{
 		this.wizardHop = wizardHop;
@@ -78,7 +83,7 @@ public class WizardHopPageSupport
 	/**
 	 * If this WizardHopPage has a wizardHop set, the hop will be asked for the next
 	 * page, otherwise the wizard of this page (if set) will be asked.
-	 * 
+	 *
 	 * @see org.eclipse.jface.wizard.WizardPage#getNextPage()
 	 */
 	public IWizardPage getNextPage()
@@ -96,7 +101,9 @@ public class WizardHopPageSupport
 	}
 
 	public void setWizard(IWizard newWizard) {
-		wizardPage.setWizard(newWizard);
+		if (wizardPage.getWizard() != newWizard)
+			wizardPage.setWizard(newWizard);
+
 		if (wizardHop == null)
 			return;
 		for (IWizardHopPage hopPage : wizardHop.getHopPages()) {

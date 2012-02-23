@@ -86,7 +86,7 @@ public abstract class PersistenceUnitPage extends AbstractDataSourceEditorPage
 	}
 
 	@Override
-	protected void createAndInitCustomControl(final Composite p, Properties properties)
+	protected void createCustomControl(final Composite p)
 	{
 		logger.info("createAndInitCustomControl: entered.");
 
@@ -119,7 +119,6 @@ public abstract class PersistenceUnitPage extends AbstractDataSourceEditorPage
 
 		persistenceUnitNameText = new Text(puParent, SWT.BORDER);
 		persistenceUnitNameText.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-		persistenceUnitNameText.setText(properties.getProperty(PropertiesUtil.PERSISTENCE_UNIT_NAME, ""));
 
 //		persistenceUnitSearchButton = new Button(puParent, SWT.PUSH);
 //		persistenceUnitSearchButton.setImage(JJQBUIPlugin.getDefault().getImage(PersistenceUnitPage.class, "persistenceUnitSearchButton", JJQBUIPlugin.IMAGE_SIZE_16x16));
@@ -171,6 +170,11 @@ public abstract class PersistenceUnitPage extends AbstractDataSourceEditorPage
 				PreferencePageSetManager.sharedInstance().removePreferencePageDirtyListener(preferencePageDirtyListener);
 			}
 		});
+	}
+
+	@Override
+	public void setCustomProperties(Properties properties) {
+		persistenceUnitNameText.setText(properties.getProperty(PropertiesUtil.PERSISTENCE_UNIT_NAME, ""));
 	}
 
 	private PreferencePageDirtyListener preferencePageDirtyListener = new PreferencePageDirtyListener() {

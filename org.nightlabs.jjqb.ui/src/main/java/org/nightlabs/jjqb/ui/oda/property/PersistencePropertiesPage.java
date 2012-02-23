@@ -60,12 +60,16 @@ public abstract class PersistencePropertiesPage extends AbstractDataSourceEditor
 	}
 
 	@Override
-	protected void createAndInitCustomControl(Composite parent, Properties properties)
+	protected void createCustomControl(Composite parent)
 	{
 		logger.info("createAndInitCustomControl: entered.");
 
 		editPropertiesComposite = new EditPropertiesComposite(parent, SWT.NONE);
 		editPropertiesComposite.setLayoutData(null);
+	}
+
+	@Override
+	public void setCustomProperties(Properties properties) {
 		Properties persistenceProperties = PropertiesUtil.getProperties(properties, PropertiesUtil.PREFIX_PERSISTENCE);
 		editPropertiesComposite.setInput(persistenceProperties);
 	}

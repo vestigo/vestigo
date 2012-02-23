@@ -62,7 +62,7 @@ public abstract class ClasspathPage extends AbstractDataSourceEditorPage
 	}
 
 	@Override
-	protected void createAndInitCustomControl(final Composite p, Properties properties)
+	protected void createCustomControl(final Composite p)
 	{
 		logger.info("createAndInitCustomControl: entered.");
 
@@ -79,8 +79,6 @@ public abstract class ClasspathPage extends AbstractDataSourceEditorPage
 		addHorizontalSeparator(parent);
 
 		editClasspathComposite = new EditClasspathComposite(parent, SWT.NONE);
-		List<String> persistenceEngineClasspath = PropertiesUtil.getList(properties, PropertiesUtil.PREFIX_META_PERSISTENCE_ENGINE_CLASSPATH);
-		editClasspathComposite.setInput(persistenceEngineClasspath);
 
 		editClasspathComposite.addPropertyChangeListener(new PropertyChangeListener() {
 			@Override
@@ -95,6 +93,12 @@ public abstract class ClasspathPage extends AbstractDataSourceEditorPage
 //				classpathDescriptionLabel.setLayoutData(createDescriptionLabelGridData(parent));
 //			}
 //		});
+	}
+
+	@Override
+	public void setCustomProperties(Properties properties) {
+		List<String> persistenceEngineClasspath = PropertiesUtil.getList(properties, PropertiesUtil.PREFIX_META_PERSISTENCE_ENGINE_CLASSPATH);
+		editClasspathComposite.setInput(persistenceEngineClasspath);
 	}
 
 //	protected abstract String getClasspathDescription();

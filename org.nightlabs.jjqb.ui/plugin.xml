@@ -144,7 +144,7 @@
       <dataSourceUI id="org.nightlabs.jjqb.core.oda.JDODriver">
         <newDataSourceWizard
               includesProgressMonitor="false"
-              pageClass="org.nightlabs.jjqb.ui.oda.JDODriverWizardPage"
+              pageClass="org.nightlabs.jjqb.ui.oda.wizard.JDOWizardPage"
               pageTitle="JDO DataSource"
               windowTitle="JDO DataSource"/>
       </dataSourceUI> 

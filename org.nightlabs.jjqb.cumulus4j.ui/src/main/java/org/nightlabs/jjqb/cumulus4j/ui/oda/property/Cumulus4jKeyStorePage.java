@@ -72,7 +72,7 @@ public class Cumulus4jKeyStorePage extends AbstractDataSourceEditorPage
 	}
 
 	@Override
-	protected void createAndInitCustomControl(Composite p, Properties properties)
+	protected void createCustomControl(Composite p)
 	{
 		final Composite parent = new Composite(p, SWT.NONE);
 		GridLayout gridLayout = new GridLayout(2, false);
@@ -112,14 +112,14 @@ public class Cumulus4jKeyStorePage extends AbstractDataSourceEditorPage
 		new Label(parent, SWT.NONE).setText("Password:");
 		keyStorePassword = new Text(parent, SWT.BORDER | SWT.PASSWORD);
 		keyStorePassword.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+	}
 
-
-
-
+	@Override
+	public void setCustomProperties(Properties properties)
+	{
 		keyStoreDir.setText(properties.getProperty(Cumulus4jConnectionProperties.KEY_STORE_DIR, ""));
 		keyStoreID.setText(properties.getProperty(Cumulus4jConnectionProperties.KEY_STORE_ID, ""));
 		keyStorePassword.setText(properties.getProperty(Cumulus4jConnectionProperties.KEY_STORE_PASSWORD, ""));
 		keyStoreUserName.setText(properties.getProperty(Cumulus4jConnectionProperties.KEY_STORE_USER_NAME, ""));
 	}
-
 }

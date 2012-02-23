@@ -1,38 +1,227 @@
 package org.nightlabs.jjqb.ui.oda.property;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.net.URL;
 import java.util.Collection;
+import java.util.Map;
 import java.util.Properties;
 
 import org.eclipse.datatools.connectivity.oda.design.ui.wizards.DataSourceEditorPage;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.preference.PreferencePage;
+import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.forms.events.HyperlinkAdapter;
 import org.eclipse.ui.forms.events.HyperlinkEvent;
 import org.eclipse.ui.forms.widgets.Hyperlink;
+import org.nightlabs.jjqb.childvm.shared.PropertiesUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public abstract class AbstractDataSourceEditorPage extends DataSourceEditorPage
+public abstract class AbstractDataSourceEditorPage
+extends DataSourceEditorPage
 {
 	private static final Logger logger = LoggerFactory.getLogger(AbstractDataSourceEditorPage.class);
+
+	private IDataSourceEditorPageContainer dataSourceEditorPageContainer;
+	private ImageDescriptor imageDescriptor;
+	private Properties initialProperties;
+
+	private boolean showImportCurrentPage = true;
+	private boolean showExportAllPages = true;
+
+	private Button importCurrentPageButton;
+	private Button exportAllPagesButton;
+
+	protected void setShowImportCurrentPage(boolean showImportCurrentPage) {
+		this.showImportCurrentPage = showImportCurrentPage;
+	}
+	protected void setShowExportAllPages(boolean showExportAllPages) {
+		this.showExportAllPages = showExportAllPages;
+	}
+
+	public Properties getInitialProperties() {
+		return initialProperties;
+	}
+	public void setInitialProperties(Properties initialProperties) {
+		this.initialProperties = initialProperties;
+	}
+
+	public void setDataSourceEditorPageContainer(IDataSourceEditorPageContainer dataSourceEditorPageContainer) {
+		this.dataSourceEditorPageContainer = dataSourceEditorPageContainer;
+		this.setContainer(dataSourceEditorPageContainer);
+	}
+
+	public IDataSourceEditorPageContainer getDataSourceEditorPageContainer() {
+		return dataSourceEditorPageContainer;
+	}
+
+	@Override
+	protected void testConnection() {
+		if (dataSourceEditorPageContainer != null)
+			dataSourceEditorPageContainer.testConnection();
+		else
+			super.testConnection();
+	}
 
 	@Override
 	public void createControl(Composite parent) {
 		super.createControl(parent);
 		PreferencePageSetManager.sharedInstance().register(this);
+
+		if (showImportCurrentPage || showExportAllPages) {
+			final Composite btnPingParent = btnPing.getParent();
+
+	//		if (dataSourceEditorPageContainer != null) {
+	//			// The container already has this button, hence we remove the inner (duplicate).
+	//			// There is unfortunately no way to prevent its creation. Marco :-)
+	//			// ...later: Now, we need it for the btnPingParent, anyway ;-)
+	//			btnPing.dispose();
+	//			btnPing = null;
+	//		}
+
+			final Composite buttonParent = new Composite(btnPingParent, SWT.NONE);
+			buttonParent.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+			{
+				GridLayout gridLayout = new GridLayout(1, false);
+
+				if (showImportCurrentPage)
+					gridLayout.numColumns++;
+
+				if (showExportAllPages)
+					gridLayout.numColumns++;
+
+				gridLayout.marginHeight = 0;
+				gridLayout.marginWidth = 0;
+				buttonParent.setLayout(gridLayout);
+			}
+			Label l = new Label(buttonParent, SWT.NONE);
+			l.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+
+			if (showImportCurrentPage) {
+				importCurrentPageButton = new Button(buttonParent, SWT.PUSH);
+				importCurrentPageButton.setText("Import (this page only)");
+				importCurrentPageButton.addSelectionListener(new SelectionAdapter() {
+					@Override
+					public void widgetSelected(SelectionEvent e) {
+						importCurrentPageFromFile();
+					}
+				});
+			}
+
+			if (showExportAllPages) {
+				exportAllPagesButton = new Button(buttonParent, SWT.PUSH);
+				exportAllPagesButton.setText("Export (all pages)");
+				exportAllPagesButton.addSelectionListener(new SelectionAdapter() {
+					@Override
+					public void widgetSelected(SelectionEvent e) {
+						exportAllPagesToFile();
+					}
+				});
+			}
+		}
 	}
 
 	@Override
-	protected Properties collectProperties() {
+	protected void createAndInitCustomControl(Composite p, Properties properties)
+	{
+//		final Composite parent = new Composite(p, SWT.NONE);
+//		{
+//			GridLayout gridLayout = new GridLayout();
+//			gridLayout.marginHeight = 0;
+//			gridLayout.marginWidth = 0;
+//			parent.setLayout(gridLayout);
+//		}
+//
+//		final Composite customControlParent = new Composite(parent, SWT.NONE);
+//		customControlParent.setLayoutData(new GridData(GridData.FILL_BOTH));
+//		{
+//			GridLayout gridLayout = new GridLayout();
+//			gridLayout.marginHeight = 0;
+//			gridLayout.marginWidth = 0;
+//			customControlParent.setLayout(gridLayout);
+//		}
+
+		final Composite customControlParent = p;
+		createCustomControl(customControlParent);
+		setCustomProperties(properties);
+	}
+
+	protected abstract void createCustomControl(Composite parent);
+
+	public abstract void setCustomProperties(Properties properties);
+
+	@Override
+	public void setImageDescriptor(ImageDescriptor imageDescriptor) {
+		this.imageDescriptor = imageDescriptor;
+		super.setImageDescriptor(imageDescriptor);
+
+//		if (dataSourceEditorPageContainer != null)
+//			dataSourceEditorPageContainer.setImageDescriptor(imageDescriptor);
+	}
+
+	public ImageDescriptor getImageDescriptor() {
+		return imageDescriptor;
+	}
+
+//	@Override
+//	public void setTitle(String title) {
+//		super.setTitle(title);
+//
+//		if (dataSourceEditorPageContainer != null)
+//			dataSourceEditorPageContainer.setTitle(title);
+//	}
+//
+//	@Override
+//	public void setDescription(String description) {
+//		super.setDescription(description);
+//
+//		if (dataSourceEditorPageContainer != null)
+//			dataSourceEditorPageContainer.setDescription(description);
+//	}
+//
+//	@Override
+//	public void setMessage(String newMessage, int newType) {
+//		super.setMessage(newMessage, newType);
+//
+//		if (dataSourceEditorPageContainer != null)
+//			dataSourceEditorPageContainer.setMessage(newMessage, newType);
+//	}
+//
+//	@Override
+//	public void setErrorMessage(String newMessage) {
+//		super.setErrorMessage(newMessage);
+//
+//		if (dataSourceEditorPageContainer != null)
+//			dataSourceEditorPageContainer.setErrorMessage(newMessage);
+//	}
+
+	@Override
+	public Properties collectProperties() {
 //		return super.collectProperties();
-		return collectDraftProperties();
+		return doCollectProperties();
+	}
+
+	@Override
+	public Properties getDataSourceProperties() {
+		Properties ip = getInitialProperties();
+		if (ip != null)
+			return ip;
+		else
+			return super.getDataSourceProperties();
 	}
 
 	/**
@@ -46,10 +235,9 @@ public abstract class AbstractDataSourceEditorPage extends DataSourceEditorPage
 	 * the returned <code>Properties</code>).
 	 * @return the draft-properties, which means the properties as they are visible in the UI.
 	 */
-	private Properties collectDraftProperties() {
+	private Properties doCollectProperties() {
 		Properties properties = getDataSourceProperties();
 
-		// Don't know, if this is necessary, but I better copy the map so that this method never interferes with the other methods of DataSourceEditorPage.
 		properties = (Properties) properties.clone();
 
 		Collection<PreferencePage> preferencePages = PreferencePageSetManager.sharedInstance().getPreferencePages(this);
@@ -120,5 +308,73 @@ public abstract class AbstractDataSourceEditorPage extends DataSourceEditorPage
 				}
 			}
 		});
+	}
+
+	protected void importCurrentPageFromFile()
+	{
+		FileDialog dialog = new FileDialog(getShell(), SWT.OPEN);
+		String fileName = dialog.open();
+		if (fileName != null && !"".equals(fileName)) {
+			File propsFile = new File(fileName);
+			if (!propsFile.exists())
+				return;
+			FileInputStream in;
+			try {
+				in = new FileInputStream(propsFile);
+			} catch (FileNotFoundException e) {
+				throw new IllegalStateException("File exists, but could not be read! " + propsFile.getAbsolutePath(), e);
+			}
+			Properties props = new Properties();
+			try {
+				try {
+					props.load(in);
+				} finally {
+					in.close();
+				}
+			} catch (IOException e) {
+				// TODO: ErrorHandling
+				throw new RuntimeException(e);
+			}
+			setCustomProperties(props);
+		}
+	}
+
+	protected void exportAllPagesToFile()
+	{
+		FileDialog dialog = new FileDialog(getShell(), SWT.SAVE);
+
+		String fileName = dialog.open();
+		if (fileName != null && !"".equals(fileName)) {
+
+			final String suffix = ".jjqbconnection";
+			if (!fileName.toLowerCase().endsWith(suffix))
+				fileName += suffix;
+
+			Properties props = new Properties();
+			for (Map.Entry<?, ?> me : collectProperties().entrySet()) {
+				if (PropertiesUtil.WORKAROUND_TIMESTAMP.equals(me.getKey()))
+					continue;
+
+				props.setProperty(String.valueOf(me.getKey()), String.valueOf(me.getValue()));
+			}
+			File propsFile = new File(fileName);
+
+			FileOutputStream out;
+			try {
+				out = new FileOutputStream(propsFile);
+			} catch (FileNotFoundException e) {
+				throw new IllegalStateException("Could not create file! " + propsFile.getAbsolutePath(), e);
+			}
+			try {
+				try {
+					props.store(out, "File written by JDO/JPA Query Browser.");
+				} finally {
+					out.close();
+				}
+			} catch (IOException e) {
+				// TODO: ErrorHandling
+				throw new RuntimeException(e);
+			}
+		}
 	}
 }
