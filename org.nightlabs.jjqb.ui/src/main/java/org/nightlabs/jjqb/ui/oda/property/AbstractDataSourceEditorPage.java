@@ -9,6 +9,7 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.preference.PreferencePage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.ui.PlatformUI;
@@ -62,16 +63,28 @@ public abstract class AbstractDataSourceEditorPage extends DataSourceEditorPage
 
 	protected GridData createDescriptionLabelGridData(Composite parent)
 	{
+		GridLayout gridLayout = (GridLayout) parent.getLayout();
+
 		GridData gd = new GridData();
-		gd.minimumWidth = 200;
+		gd.minimumWidth = 150;
 		gd.widthHint = Math.max(gd.minimumWidth, parent.getClientArea().width);
+
+		if (gridLayout != null)
+			gd.horizontalSpan = gridLayout.numColumns;
+
 		return gd;
 	}
 
 	protected void addHorizontalSeparator(Composite parent)
 	{
+		GridLayout gridLayout = (GridLayout) parent.getLayout();
+
 		Label label = new Label(parent, SWT.HORIZONTAL | SWT.SEPARATOR);
 		GridData gd = new GridData(GridData.FILL_HORIZONTAL);
+
+		if (gridLayout != null)
+			gd.horizontalSpan = gridLayout.numColumns;
+
 		label.setLayoutData(gd);
 	}
 

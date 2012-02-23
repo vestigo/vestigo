@@ -3,6 +3,8 @@ package org.nightlabs.jjqb.cumulus4j.ui.oda.property;
 import java.util.Properties;
 
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.ControlAdapter;
+import org.eclipse.swt.events.ControlEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -79,6 +81,30 @@ public class Cumulus4jKeyStorePage extends AbstractDataSourceEditorPage
 		parent.setLayout(gridLayout);
 
 
+		new Label(parent, SWT.NONE).setText("Key store ID:");
+		keyStoreID = new Text(parent, SWT.BORDER);
+		keyStoreID.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+
+		new Label(parent, SWT.NONE).setText("Key store directory:");
+		keyStoreDir = new Text(parent, SWT.BORDER);
+		keyStoreDir.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+
+		addHorizontalSeparator(parent);
+
+		final Label transientPropertiesDescriptionLabel = new Label(parent, SWT.WRAP);
+		transientPropertiesDescriptionLabel.setText(
+				"User name and password do not need to be specified here. They are asked for when opening a connection. You can, however, store them here, if you don't care about your password being written to your hard-disk. We only recommend this for test key stores.\n\n" +
+				"NEVER enter the password of a productive key store here!"
+		);
+		transientPropertiesDescriptionLabel.setLayoutData(createDescriptionLabelGridData(parent));
+
+		parent.addControlListener(new ControlAdapter() {
+			@Override
+			public void controlResized(ControlEvent e) {
+				transientPropertiesDescriptionLabel.setLayoutData(createDescriptionLabelGridData(parent));
+			}
+		});
+
 		new Label(parent, SWT.NONE).setText("User name:");
 		keyStoreUserName = new Text(parent, SWT.BORDER);
 		keyStoreUserName.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
@@ -87,13 +113,7 @@ public class Cumulus4jKeyStorePage extends AbstractDataSourceEditorPage
 		keyStorePassword = new Text(parent, SWT.BORDER | SWT.PASSWORD);
 		keyStorePassword.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 
-		new Label(parent, SWT.NONE).setText("Key store ID:");
-		keyStoreID = new Text(parent, SWT.BORDER);
-		keyStoreID.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 
-		new Label(parent, SWT.NONE).setText("Key store directory:");
-		keyStoreDir = new Text(parent, SWT.BORDER);
-		keyStoreDir.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 
 
 		keyStoreDir.setText(properties.getProperty(Cumulus4jConnectionProperties.KEY_STORE_DIR, ""));
