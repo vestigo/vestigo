@@ -104,9 +104,33 @@
    <extension
          point="org.eclipse.ui.propertyPages">
       <page
-            id="org.nightlabs.jjqb.core.oda.JPADriver"
-            name="JPA Properties"
-            class="org.nightlabs.jjqb.ui.oda.JPADriverPropertyPage"
+            id="org.nightlabs.jjqb.ui.oda.property.JPAClasspathPage"
+            name="Classpath"
+            class="org.nightlabs.jjqb.ui.oda.property.JPAClasspathPage"
+            objectClass="org.eclipse.datatools.connectivity.IConnectionProfile">
+         <filter
+               name="org.eclipse.datatools.profile.property.id"
+               value="org.nightlabs.jjqb.core.oda.JPADriver"/>
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.ui.propertyPages">
+      <page
+            id="org.nightlabs.jjqb.ui.oda.property.JPAPersistenceUnitPage"
+            name="Persistence unit"
+            class="org.nightlabs.jjqb.ui.oda.property.JPAPersistenceUnitPage"
+            objectClass="org.eclipse.datatools.connectivity.IConnectionProfile">
+         <filter
+               name="org.eclipse.datatools.profile.property.id"
+               value="org.nightlabs.jjqb.core.oda.JPADriver"/>
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.ui.propertyPages">
+      <page
+            id="org.nightlabs.jjqb.ui.oda.property.JPAPersistencePropertiesPage"
+            name="Persistence properties"
+            class="org.nightlabs.jjqb.ui.oda.property.JPAPersistencePropertiesPage"
             objectClass="org.eclipse.datatools.connectivity.IConnectionProfile">
          <filter
                name="org.eclipse.datatools.profile.property.id"

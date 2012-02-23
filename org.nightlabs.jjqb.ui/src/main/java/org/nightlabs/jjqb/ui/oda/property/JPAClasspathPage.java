@@ -1,10 +1,10 @@
 package org.nightlabs.jjqb.ui.oda.property;
 
-public class JDOClasspathPage extends ClasspathPage {
+public class JPAClasspathPage extends ClasspathPage {
 
-	public JDOClasspathPage() {
+	public JPAClasspathPage() {
 		setDescription(
-				"Please specify the classpath containing your data model, your JDO implementation " +
+				"Please specify the classpath containing your data model, your JPA implementation " +
 				"and your database drivers (e.g. JDBC).\n\n" +
 				"" +
 				"Note, that you can add WAR, EAR and ZIP files. These archives are scanned recursively " +

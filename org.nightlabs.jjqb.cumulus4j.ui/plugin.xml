@@ -56,12 +56,37 @@
    </extension>
 
 
+<!-- BEGIN default pages (copied from org.nightlabs.jjqb.ui and JDODriver/JPADriver replaced by Cumulus4j-specific driver) -->
    <extension
          point="org.eclipse.ui.propertyPages">
       <page
-            id="org.nightlabs.jjqb.cumulus4j.core.oda.JDOCumulus4jDriver"
-            name="JDO+Cumulus4j Properties"
-            class="org.nightlabs.jjqb.cumulus4j.ui.oda.JDOCumulus4jDriverPropertyPage"
+            id="org.nightlabs.jjqb.cumulus4j.ui.oda.property.JDOCumulus4jClasspathPage"
+            name="Classpath"
+            class="org.nightlabs.jjqb.ui.oda.property.JDOClasspathPage"
+            objectClass="org.eclipse.datatools.connectivity.IConnectionProfile">
+         <filter
+               name="org.eclipse.datatools.profile.property.id"
+               value="org.nightlabs.jjqb.cumulus4j.core.oda.JDOCumulus4jDriver"/>
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.ui.propertyPages">
+      <page
+            id="org.nightlabs.jjqb.cumulus4j.ui.oda.property.JDOCumulus4jPersistenceUnitPage"
+            name="Persistence unit"
+            class="org.nightlabs.jjqb.ui.oda.property.JDOPersistenceUnitPage"
+            objectClass="org.eclipse.datatools.connectivity.IConnectionProfile">
+         <filter
+               name="org.eclipse.datatools.profile.property.id"
+               value="org.nightlabs.jjqb.cumulus4j.core.oda.JDOCumulus4jDriver"/>
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.ui.propertyPages">
+      <page
+            id="org.nightlabs.jjqb.cumulus4j.ui.oda.property.JDOCumulus4jPersistencePropertiesPage"
+            name="Persistence properties"
+            class="org.nightlabs.jjqb.ui.oda.property.JDOPersistencePropertiesPage"
             objectClass="org.eclipse.datatools.connectivity.IConnectionProfile">
          <filter
                name="org.eclipse.datatools.profile.property.id"
@@ -73,15 +98,70 @@
    <extension
          point="org.eclipse.ui.propertyPages">
       <page
-            id="org.nightlabs.jjqb.cumulus4j.core.oda.JPACumulus4jDriver"
-            name="JPA+Cumulus4j Properties"
-            class="org.nightlabs.jjqb.cumulus4j.ui.oda.JPACumulus4jDriverPropertyPage"
+            id="org.nightlabs.jjqb.cumulus4j.ui.oda.property.JPACumulus4jClasspathPage"
+            name="Classpath"
+            class="org.nightlabs.jjqb.ui.oda.property.JPAClasspathPage"
             objectClass="org.eclipse.datatools.connectivity.IConnectionProfile">
          <filter
                name="org.eclipse.datatools.profile.property.id"
                value="org.nightlabs.jjqb.cumulus4j.core.oda.JPACumulus4jDriver"/>
       </page>
    </extension>
+   <extension
+         point="org.eclipse.ui.propertyPages">
+      <page
+            id="org.nightlabs.jjqb.cumulus4j.ui.oda.property.JPACumulus4jPersistenceUnitPage"
+            name="Persistence unit"
+            class="org.nightlabs.jjqb.ui.oda.property.JPAPersistenceUnitPage"
+            objectClass="org.eclipse.datatools.connectivity.IConnectionProfile">
+         <filter
+               name="org.eclipse.datatools.profile.property.id"
+               value="org.nightlabs.jjqb.cumulus4j.core.oda.JPACumulus4jDriver"/>
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.ui.propertyPages">
+      <page
+            id="org.nightlabs.jjqb.cumulus4j.ui.oda.property.JPACumulus4jPersistencePropertiesPage"
+            name="Persistence properties"
+            class="org.nightlabs.jjqb.ui.oda.property.JPAPersistencePropertiesPage"
+            objectClass="org.eclipse.datatools.connectivity.IConnectionProfile">
+         <filter
+               name="org.eclipse.datatools.profile.property.id"
+               value="org.nightlabs.jjqb.cumulus4j.core.oda.JPACumulus4jDriver"/>
+      </page>
+   </extension>
+<!-- END default pages (copied from org.nightlabs.jjqb.ui and JDODriver/JPADriver replaced by Cumulus4j-specific driver) -->
+
+
+   <extension
+         point="org.eclipse.ui.propertyPages">
+      <page
+            id="org.nightlabs.jjqb.cumulus4j.ui.oda.property.JDOCumulus4jKeyStorePage"
+            name="Cumulus4j"
+            class="org.nightlabs.jjqb.cumulus4j.ui.oda.property.Cumulus4jKeyStorePage"
+            objectClass="org.eclipse.datatools.connectivity.IConnectionProfile">
+         <filter
+               name="org.eclipse.datatools.profile.property.id"
+               value="org.nightlabs.jjqb.cumulus4j.core.oda.JDOCumulus4jDriver"/>
+      </page>
+   </extension>
+
+
+   <extension
+         point="org.eclipse.ui.propertyPages">
+      <page
+            id="org.nightlabs.jjqb.cumulus4j.ui.oda.property.JPACumulus4jKeyStorePage"
+            name="Cumulus4j"
+            class="org.nightlabs.jjqb.cumulus4j.ui.oda.property.Cumulus4jKeyStorePage"
+            objectClass="org.eclipse.datatools.connectivity.IConnectionProfile">
+         <filter
+               name="org.eclipse.datatools.profile.property.id"
+               value="org.nightlabs.jjqb.cumulus4j.core.oda.JPACumulus4jDriver"/>
+      </page>
+   </extension>
+
+
 
    <extension
             point="org.eclipse.datatools.connectivity.oda.design.ui.dataSource">
