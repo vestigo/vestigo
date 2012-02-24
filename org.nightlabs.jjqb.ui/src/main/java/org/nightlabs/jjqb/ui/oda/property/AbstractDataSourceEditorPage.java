@@ -313,6 +313,12 @@ extends DataSourceEditorPage
 	protected void importCurrentPageFromFile()
 	{
 		FileDialog dialog = new FileDialog(getShell(), SWT.OPEN);
+
+		String ext_jjqb = "*.jjqbconnection";
+		String ext_all = "*.*";
+		dialog.setFilterNames(new String[] { String.format("JJQB connection files (%s)", ext_jjqb), String.format("All filed (%s)", ext_all) });
+		dialog.setFilterExtensions(new String[] { ext_jjqb, ext_all });
+
 		String fileName = dialog.open();
 		if (fileName != null && !"".equals(fileName)) {
 			File propsFile = new File(fileName);

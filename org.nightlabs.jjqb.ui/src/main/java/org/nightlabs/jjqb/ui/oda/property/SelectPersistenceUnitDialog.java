@@ -1,5 +1,6 @@
 package org.nightlabs.jjqb.ui.oda.property;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.jface.dialogs.TitleAreaDialog;
@@ -16,25 +17,37 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Shell;
+import org.nightlabs.jjqb.core.persistencexml.jaxb.Persistence.PersistenceUnit;
 import org.nightlabs.jjqb.ui.JJQBUIPlugin;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
- * @deprecated unused; is now integrated in {@link PersistenceUnitPage}. But still keeping it, in case re-organize the UI.
  */
-@Deprecated
 public class SelectPersistenceUnitDialog extends TitleAreaDialog {
 
+	private String title;
+	private String message;
 	private List<String> persistenceUnitNames;
 	private String selectedPersistenceUnitName;
 	private ListViewer listViewer;
 
-	public SelectPersistenceUnitDialog(Shell parentShell, List<String> persistenceUnitNames, String selectedPersistenceUnitName) {
+	public static List<String> getPersistenceUnitNames(List<PersistenceUnit> persistenceUnits)
+	{
+		List<String> persistenceUnitNames = new ArrayList<String>(persistenceUnits.size());
+		for (PersistenceUnit persistenceUnit : persistenceUnits) {
+			persistenceUnitNames.add(persistenceUnit.getName());
+		}
+		return persistenceUnitNames;
+	}
+
+	public SelectPersistenceUnitDialog(Shell parentShell, String title, String message, List<String> persistenceUnitNames, String selectedPersistenceUnitName) {
 		super(parentShell);
 
 		if (persistenceUnitNames == null)
 			throw new IllegalArgumentException("persistenceUnitNames == null");
 
+		this.title = title; // we cannot call this.setTitle(...) here - defer!
+		this.message = message; // we cannot call this.setMessage(...) here - defer!
 		this.persistenceUnitNames = persistenceUnitNames;
 		this.selectedPersistenceUnitName = selectedPersistenceUnitName;
 
@@ -48,8 +61,8 @@ public class SelectPersistenceUnitDialog extends TitleAreaDialog {
 		Control contents = super.createContents(parent);
 
 		setTitleImage(JJQBUIPlugin.getDefault().getImage(SelectPersistenceUnitDialog.class, "title", JJQBUIPlugin.IMAGE_SIZE_75x70));
-		setTitle("Select persistence unit");
-		setMessage("The following persistence units have been found in your classpath. Please select the one you wish to use.");
+		setTitle(title);
+		setMessage(message);
 
 		return contents;
 	}

@@ -18,8 +18,13 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Properties;
@@ -48,6 +53,9 @@ import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
+import org.nightlabs.jjqb.core.oda.OdaMultiCauseException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Generic Composite to edit properties in a table.
@@ -55,10 +63,14 @@ import org.eclipse.swt.widgets.TableItem;
  * @author Alexander Bieber <!-- alex [AT] nightlabs [DOT] de -->
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
  */
-public class EditPropertiesComposite extends Composite implements ICellModifier {
+public class EditPropertiesComposite extends Composite implements ICellModifier
+{
+	private static final Logger logger = LoggerFactory.getLogger(EditPropertiesComposite.class);
 
 	private Button loadFromFile;
 	private Button saveToFile;
+
+	private List<LoadPropertiesHandler> loadPropertiesHandlers = new ArrayList<LoadPropertiesHandler>();
 
 	private static final String COL_KEY = "Col-Key";
 	private static final String COL_VAL = "Col-Val";
@@ -98,13 +110,12 @@ public class EditPropertiesComposite extends Composite implements ICellModifier 
 		private TreeMap<Object, Object> properties;
 
 		@Override
-		@SuppressWarnings("unchecked")
 		public Object[] getElements(Object inputElement) {
 			if (inputElement instanceof Map) {
-				this.properties = new TreeMap((Map)inputElement);
-				Object[] result = new Object[((Map)inputElement).entrySet().size() + 1];
+				this.properties = new TreeMap<Object, Object>((Map<?, ?>)inputElement);
+				Object[] result = new Object[((Map<?, ?>)inputElement).entrySet().size() + 1];
 				int i = 0;
-				for (Iterator iter = properties.entrySet().iterator(); iter.hasNext();) {
+				for (Iterator<Map.Entry<Object, Object>> iter = properties.entrySet().iterator(); iter.hasNext();) {
 					result[i++] = iter.next();
 				}
 				// we put a dummy object as last element for the add new key cell editor
@@ -151,7 +162,7 @@ public class EditPropertiesComposite extends Composite implements ICellModifier 
 
 		loadFromFile = new Button(this, SWT.PUSH);
 		loadFromFile.setText("Load...");
-		loadFromFile.setToolTipText("Load the properties from a java properties file.");
+		loadFromFile.setToolTipText("Load the properties from a file.");
 		loadFromFile.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent event) {
@@ -161,7 +172,7 @@ public class EditPropertiesComposite extends Composite implements ICellModifier 
 
 		saveToFile = new Button(this, SWT.PUSH);
 		saveToFile.setText("Save...");
-		saveToFile.setToolTipText("Save the properties to a java properties file.");
+		saveToFile.setToolTipText("Save the properties to a Java properties file.");
 		saveToFile.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent event) {
@@ -200,35 +211,132 @@ public class EditPropertiesComposite extends Composite implements ICellModifier 
 				}
 			}
 		});
+
+		addLoadPropertiesHandler(new LoadPropertiesHandler() {
+			@Override
+			public Map<String, String> getFileNameFilters() {
+				Map<String, String> m = new HashMap<String, String>();
+				m.put("Java properties files", "*.properties");
+				return m;
+			}
+			@Override
+			public Properties load(URL url, InputStream in) {
+				if (!url.getPath().endsWith(".properties"))
+					return null;
+
+				Properties props = new Properties();
+				try {
+					props.load(in);
+				} catch (IOException e) {
+					throw new RuntimeException(e);
+				}
+				return props;
+			}
+		});
 	}
 
 	private void loadFromFile()
 	{
 		FileDialog dialog = new FileDialog(getShell(), SWT.OPEN);
+
+		Map<String, String> fileNameFilters = new TreeMap<String, String>();
+		for (LoadPropertiesHandler handler : loadPropertiesHandlers) {
+			Map<String, String> handlerFileNameFilters = handler.getFileNameFilters();
+			if (handlerFileNameFilters == null)
+				throw new IllegalStateException("handler.getFileNameFilters() returned null! Implementation error in class " + handler.getClass().getName() + "!");
+
+			fileNameFilters.putAll(handlerFileNameFilters);
+		}
+
+		String[] filterNames = new String[fileNameFilters.size() + 2];
+		String[] filterExts = new String[filterNames.length];
+		int idx = -1;
+
+		filterExts[++idx] = createFilterExtForAllSupportedFiles(fileNameFilters);
+		filterNames[idx] = String.format("All supported files (%s)", filterExts[idx]);
+
+		filterExts[++idx] = "*.*";
+		filterNames[idx] = String.format("All files (%s)", filterExts[idx]);
+
+		for (Map.Entry<String, String> me : fileNameFilters.entrySet()) {
+			filterExts[++idx] = me.getValue();
+			filterNames[idx] = String.format("%s (%s)", me.getKey(), filterExts[idx]);
+		}
+		dialog.setFilterNames(filterNames);
+		dialog.setFilterExtensions(filterExts);
+
 		String fileName = dialog.open();
 		if (fileName != null && !"".equals(fileName)) {
 			File propsFile = new File(fileName);
 			if (!propsFile.exists())
 				return;
-			FileInputStream in;
+
 			try {
-				in = new FileInputStream(propsFile);
-			} catch (FileNotFoundException e) {
-				throw new IllegalStateException("File exists, but could not be read! " + propsFile.getAbsolutePath(), e);
-			}
-			Properties props = new Properties();
-			try {
+				FileInputStream in;
 				try {
-					props.load(in);
+					in = new FileInputStream(propsFile);
+				} catch (FileNotFoundException e) {
+					throw new IllegalStateException("File exists, but could not be read! " + propsFile.getAbsolutePath(), e);
+				}
+				try {
+					List<Throwable> handlerExceptions = new ArrayList<Throwable>();
+					for (LoadPropertiesHandler handler : loadPropertiesHandlers) {
+						try {
+							Properties properties = handler.load(propsFile.toURI().toURL(), in);
+							if (properties != null) {
+								setInput(properties);
+								return;
+							}
+						} catch (Throwable x) {
+							handlerExceptions.add(x);
+							logger.error("loadFromFile: handler.class=" + handler.getClass().getName() + ":" + x, x);
+						}
+					}
+
+					if (handlerExceptions.size() > 0)
+						throw new OdaMultiCauseException(handlerExceptions);
 				} finally {
 					in.close();
 				}
-			} catch (IOException e) {
+			} catch (RuntimeException e) {
+				// TODO: ErrorHandling
+				throw e;
+			} catch (Exception e) {
 				// TODO: ErrorHandling
 				throw new RuntimeException(e);
 			}
-			setInput(props);
 		}
+	}
+
+	private String createFilterExtForAllSupportedFiles(Map<String, String> fileNameFilters)
+	{
+		StringBuilder sb = new StringBuilder();
+		for (Map.Entry<String, String> me : fileNameFilters.entrySet()) {
+			if (sb.length() > 0)
+				sb.append(';'); // Always this - no matter, if linux or windoof. Marco :-)
+
+			sb.append(me.getValue());
+		}
+		return sb.toString();
+	}
+
+	public void addLoadPropertiesHandler(LoadPropertiesHandler handler) {
+		if (handler == null)
+			throw new IllegalArgumentException("handler == null");
+
+		loadPropertiesHandlers.add(handler);
+	}
+	public void addLoadPropertiesHandler(int index, LoadPropertiesHandler handler) {
+		if (handler == null)
+			throw new IllegalArgumentException("handler == null");
+
+		loadPropertiesHandlers.add(index, handler);
+	}
+	public void removeLoadPropertiesHandler(LoadPropertiesHandler handler) {
+		if (handler == null)
+			throw new IllegalArgumentException("handler == null");
+
+		loadPropertiesHandlers.remove(handler);
 	}
 
 	private void saveToFile()

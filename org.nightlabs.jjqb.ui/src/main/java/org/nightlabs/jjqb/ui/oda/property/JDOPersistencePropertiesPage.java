@@ -1,5 +1,9 @@
 package org.nightlabs.jjqb.ui.oda.property;
 
+import java.util.Properties;
+
+import org.nightlabs.jjqb.core.persistencexml.jaxb.Persistence.PersistenceUnit;
+
 public class JDOPersistencePropertiesPage extends PersistencePropertiesPage {
 
 	public JDOPersistencePropertiesPage() {
@@ -16,4 +20,17 @@ public class JDOPersistencePropertiesPage extends PersistencePropertiesPage {
 		);
 	}
 
+	@Override
+	protected void populatePropertiesFromPersistenceUnit(Properties properties, PersistenceUnit persistenceUnit)
+	{
+		setPropertyIfNotNullAndNotEmpty(properties, "javax.jdo.option.ConnectionFactoryName", persistenceUnit.getJtaDataSource());
+		setPropertyIfNotNullAndNotEmpty(properties, "javax.jdo.option.ConnectionFactory2Name", persistenceUnit.getNonJtaDataSource());
+		setPropertyIfNotNullAndNotEmpty(properties, "javax.jdo.PersistenceManagerFactoryClass", persistenceUnit.getProvider());
+
+//		setPropertyIfNotNullAndNotEmpty(properties, "javax.persistence.sharedCache.mode", persistenceUnit.getSharedCacheMode()); // Not in JDO.
+
+		setPropertyIfNotNullAndNotEmpty(properties, "javax.jdo.option.TransactionType", persistenceUnit.getTransactionType());
+
+//		setPropertyIfNotNullAndNotEmpty(properties, "javax.persistence.validation.mode ", persistenceUnit.getValidationMode()); // Not in JDO.
+	}
 }
