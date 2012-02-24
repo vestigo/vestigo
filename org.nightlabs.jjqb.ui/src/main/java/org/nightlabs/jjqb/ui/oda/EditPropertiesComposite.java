@@ -162,7 +162,6 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 
 		loadFromFile = new Button(this, SWT.PUSH);
 		loadFromFile.setText("Load...");
-		loadFromFile.setToolTipText("Load the properties from a file.");
 		loadFromFile.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent event) {
@@ -235,10 +234,8 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 		});
 	}
 
-	private void loadFromFile()
+	private Map<String, String> collectFileNameFilters()
 	{
-		FileDialog dialog = new FileDialog(getShell(), SWT.OPEN);
-
 		Map<String, String> fileNameFilters = new TreeMap<String, String>();
 		for (LoadPropertiesHandler handler : loadPropertiesHandlers) {
 			Map<String, String> handlerFileNameFilters = handler.getFileNameFilters();
@@ -247,6 +244,14 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 
 			fileNameFilters.putAll(handlerFileNameFilters);
 		}
+		return fileNameFilters;
+	}
+
+	private void loadFromFile()
+	{
+		FileDialog dialog = new FileDialog(getShell(), SWT.OPEN);
+
+		Map<String, String> fileNameFilters = collectFileNameFilters();
 
 		String[] filterNames = new String[fileNameFilters.size() + 2];
 		String[] filterExts = new String[filterNames.length];
@@ -325,13 +330,24 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 			throw new IllegalArgumentException("handler == null");
 
 		loadPropertiesHandlers.add(handler);
+		updateLoadFromFileButton();
 	}
 	public void addLoadPropertiesHandler(int index, LoadPropertiesHandler handler) {
 		if (handler == null)
 			throw new IllegalArgumentException("handler == null");
 
 		loadPropertiesHandlers.add(index, handler);
+		updateLoadFromFileButton();
 	}
+	private void updateLoadFromFileButton() {
+		StringBuilder sb = new StringBuilder();
+		Map<String, String> fileNameFilters = collectFileNameFilters();
+		for (Map.Entry<String, String> me : fileNameFilters.entrySet()) {
+			sb.append(String.format("\n  * %s (%s)", me.getKey(), me.getValue()));
+		}
+		loadFromFile.setToolTipText("Load the properties from a file. The following file types are supported:" + sb);
+	}
+
 	public void removeLoadPropertiesHandler(LoadPropertiesHandler handler) {
 		if (handler == null)
 			throw new IllegalArgumentException("handler == null");
