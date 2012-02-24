@@ -34,7 +34,9 @@
 		<!-- END Cumulus4j -->
 		
 		<!-- All tycho build projects -->
+		<!-- 
 		<module>../org.nightlabs.jjqb.tycho</module>
+		 -->
 	</modules>
 	
 	<properties>
