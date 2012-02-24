@@ -40,13 +40,19 @@ import org.eclipse.datatools.connectivity.oda.OdaException;
 import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.PlatformUI;
 import org.nightlabs.jjqb.core.PropertiesWithChangeSupport;
 import org.nightlabs.jjqb.core.oda.DelegatingConnection;
 import org.nightlabs.jjqb.core.oda.DelegatingResultSet;
 import org.nightlabs.jjqb.ui.JJQBUIPlugin;
+import org.nightlabs.jjqb.ui.detailtree.ObjectGraphDetailTreeView;
 import org.nightlabs.jjqb.ui.queryparam.QueryParameter;
 import org.nightlabs.jjqb.ui.queryparam.QueryParameterManager;
 import org.nightlabs.jjqb.ui.resultsettable.ResultSetTableModel;
+import org.nightlabs.jjqb.ui.resultsettable.ResultSetTableView;
 import org.nightlabs.util.IOUtil;
 import org.nightlabs.util.Stopwatch;
 import org.slf4j.Logger;
@@ -598,7 +604,7 @@ public abstract class QueryBrowserManager
 				try {
 					resultSetTableModel[0] = executeQuery(queryContext, monitor);
 				} catch (final Throwable x) {
-					logger.error("Executing query failed: " + x, x);
+					logger.error("executeQuery.job.run: " + x, x);
 					display.asyncExec(new Runnable() {
 						@Override
 						public void run() {
@@ -614,6 +620,19 @@ public abstract class QueryBrowserManager
 							ExecuteQueryEvent executeQueryEvent = new ExecuteQueryEvent(queryContext, resultSetTableModel[0]);
 							for (Object l : executeQueryListeners.getListeners())
 								((ExecuteQueryListener)l).postExecuteQuery(executeQueryEvent);
+
+							try {
+								IWorkbenchWindow activeWorkbenchWindow = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+								if (activeWorkbenchWindow != null) {
+									IWorkbenchPage activePage = activeWorkbenchWindow.getActivePage();
+									if (activePage != null) {
+										activePage.showView(ObjectGraphDetailTreeView.class.getName());
+										activePage.showView(ResultSetTableView.class.getName());
+									}
+								}
+							} catch (PartInitException e) {
+								logger.warn("executeQuery.job.display_asyncExec: " + e, e);
+							}
 						}
 					});
 				}

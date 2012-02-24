@@ -34,6 +34,23 @@ public class ResultSetTableView extends ViewPart {
 		getSite().getPage().addPartListener(partListener);
 		getSite().setSelectionProvider(resultSetTableComposite);
 
+// Handling not nice - the focus switches whenever the selection changes. We better show this view only once when executing the query.
+//		resultSetTableComposite.addSelectionChangedListener(new ISelectionChangedListener() {
+//			@Override
+//			public void selectionChanged(SelectionChangedEvent event) {
+//				try {
+//					IWorkbenchWindow activeWorkbenchWindow = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+//					if (activeWorkbenchWindow != null) {
+//						IWorkbenchPage activePage = activeWorkbenchWindow.getActivePage();
+//						if (activePage != null)
+//							activePage.showView(ObjectGraphDetailTreeView.class.getName());
+//					}
+//				} catch (PartInitException e) {
+//					logger.warn("selectionChanged: " + e, e);
+//				}
+//			}
+//		});
+
 		// in case, this view is opened AFTER the query browser editor, we register the currently active editor
 		IEditorPart activeEditor = getSite().getPage().getActiveEditor();
 		if (activeEditor instanceof QueryBrowser)
@@ -137,6 +154,7 @@ public class ResultSetTableView extends ViewPart {
 	private DisposeListener disposeListener = new DisposeListener() {
 		@Override
 		public void widgetDisposed(DisposeEvent e) {
+			unregisterQueryBrowser();
 			getSite().getPage().removePartListener(partListener);
 		}
 	};
@@ -145,7 +163,7 @@ public class ResultSetTableView extends ViewPart {
 	{
 		if (resultSetTableComposite == null)
 			return null;
-		
+
 		return resultSetTableComposite.getInput();
 	}
 }

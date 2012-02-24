@@ -2,6 +2,7 @@ package org.nightlabs.jjqb.ui.detailtree;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -33,6 +34,7 @@ public class ObjectGraphDetailTreeView extends ViewPart
 		objectGraphDetailTreeComposite = new ObjectGraphDetailTreeComposite(parent, SWT.NONE);
 		objectGraphDetailTreeComposite.addDisposeListener(disposeListener);
 		getSite().getPage().addSelectionListener(selectionListener);
+		clearInput();
 
 		// in case, this view is opened AFTER the ResultSetTableView, we look for it
 		for (IViewReference viewReference : getSite().getPage().getViewReferences()) {
@@ -44,12 +46,26 @@ public class ObjectGraphDetailTreeView extends ViewPart
 		}
 	}
 
+	private void clearInput()
+	{
+		ObjectGraphDetailTreeModel model = new ObjectGraphDetailTreeModel(Collections.singletonList(">>> Nothing selected. Please select a cell in the result set. <<<"));
+		objectGraphDetailTreeComposite.setInput(model);
+//				objectGraphDetailTreeComposite.setInput(null);
+	}
+
 	private ISelectionListener selectionListener = new ISelectionListener() {
 		@Override
 		public void selectionChanged(IWorkbenchPart part, ISelection selection)
 		{
-			if (part instanceof QueryBrowser)
-				objectGraphDetailTreeComposite.setInput(null); // Clear the selection.
+			if (part instanceof QueryBrowser) {
+				// Clear the selection.
+//				clearInput();
+			}
+
+			if (part instanceof ResultSetTableView) {
+				// Clear the selection.
+				clearInput();
+			}
 
 			if (!(selection instanceof IStructuredSelection))
 				return;
