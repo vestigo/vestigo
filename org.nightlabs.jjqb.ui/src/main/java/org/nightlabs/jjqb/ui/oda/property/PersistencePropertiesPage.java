@@ -17,6 +17,10 @@ public abstract class PersistencePropertiesPage extends AbstractDataSourceEditor
 
 	private EditPropertiesComposite editPropertiesComposite;
 
+	{
+		setTitle("Persistence properties");
+	}
+
 	@Override
 	public Properties collectCustomProperties(Properties properties)
 	{

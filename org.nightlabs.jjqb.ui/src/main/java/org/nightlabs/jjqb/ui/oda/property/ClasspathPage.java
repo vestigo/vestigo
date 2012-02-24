@@ -21,6 +21,10 @@ public abstract class ClasspathPage extends AbstractDataSourceEditorPage
 
 	private EditClasspathComposite editClasspathComposite;
 
+	{
+		setTitle("Classpath");
+	}
+
 	@Override
 	public Properties collectCustomProperties(Properties properties) {
 		logger.info("collectManagedProperties: entered.");
@@ -76,7 +80,7 @@ public abstract class ClasspathPage extends AbstractDataSourceEditorPage
 //		classpathDescriptionLabel.setText(getClasspathDescription());
 //		classpathDescriptionLabel.setLayoutData(createDescriptionLabelGridData(parent));
 
-		addHorizontalSeparator(parent);
+//		addHorizontalSeparator(parent);
 
 		editClasspathComposite = new EditClasspathComposite(parent, SWT.NONE);
 

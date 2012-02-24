@@ -14,11 +14,16 @@ import org.nightlabs.jjqb.ui.oda.property.IDataSourceEditorPageContainer;
 import org.nightlabs.jjqb.ui.wizard.IWizardHop;
 import org.nightlabs.jjqb.ui.wizard.IWizardHopPage;
 import org.nightlabs.jjqb.ui.wizard.WizardHopPageSupport;
+import org.nightlabs.util.Util;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class GenericDataSourceEditorWizardPage
 extends DataSourceWizardPage
 implements IWizardHopPage, IDataSourceEditorPageContainer
 {
+	private static final Logger logger = LoggerFactory.getLogger(GenericDataSourceEditorWizardPage.class);
+
 	private WizardHopPageSupport wizardHopPageSupport = new WizardHopPageSupport(this);
 	private AbstractDataSourceEditorPage dataSourceEditorPage;
 
@@ -26,6 +31,12 @@ implements IWizardHopPage, IDataSourceEditorPageContainer
 		super(pageName, dataSourceEditorPage.getTitle(), dataSourceEditorPage.getImageDescriptor());
 		this.dataSourceEditorPage = dataSourceEditorPage;
 		dataSourceEditorPage.setDataSourceEditorPageContainer(this);
+
+		logger.info("<init>: this.name={} title={}", this.getName(), super.getTitle());
+
+		setDescription(dataSourceEditorPage.getDescription());
+		setMessage(dataSourceEditorPage.getMessage(), dataSourceEditorPage.getMessageType());
+		setErrorMessage(dataSourceEditorPage.getErrorMessage());
 	}
 
 	@Override
@@ -52,6 +63,17 @@ implements IWizardHopPage, IDataSourceEditorPageContainer
 
 		if (shellSize != newShellSize)
 			parent.getShell().setSize(newShellSize);
+	}
+
+	@Override
+	public void createControl(Composite parent) {
+		super.createControl(parent);
+
+		// The ODA framework sets the title, but we want to override it. Hence, we set the title here again.
+		if (!Util.equals(this.getTitle(), dataSourceEditorPage.getTitle())) {
+			setTitle(dataSourceEditorPage.getTitle());
+			updateTitle();
+		}
 	}
 
 //	@Override
@@ -97,6 +119,21 @@ implements IWizardHopPage, IDataSourceEditorPageContainer
 	}
 
 	@Override
+	public void setDescription(String description) {
+		String part1 = description;
+		String part2 = null;
+
+		int lineBreakIdx = description.indexOf('\n');
+		if (lineBreakIdx >= 0) {
+			part1 = description.substring(0, lineBreakIdx).trim();
+			part2 = description.substring(lineBreakIdx + 1).trim();
+		}
+
+		super.setDescription(part1);
+		dataSourceEditorPage.setDescription(part2);
+	}
+
+	@Override
 	public void updateButtons() {
 		getContainer().updateButtons();
 	}
@@ -107,7 +144,21 @@ implements IWizardHopPage, IDataSourceEditorPageContainer
 	}
 
 	@Override
+	public void setTitle(String title) {
+		logger.info("setTitle: this.name={} title={}", this.getName(), title);
+		super.setTitle(title);
+	}
+
+	@Override
+	public String getTitle() {
+		String title = super.getTitle();
+		logger.info("getTitle: this.name={} title={}", this.getName(), title);
+		return title;
+	}
+
+	@Override
 	public void updateTitle() {
+		logger.info("updateTitle: this.name={} title={}", this.getName(), super.getTitle());
 		getContainer().updateTitleBar();
 		getContainer().updateWindowTitle();
 	}

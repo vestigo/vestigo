@@ -51,6 +51,10 @@ public abstract class PersistenceUnitPage extends AbstractDataSourceEditorPage
 		PUN_LIST_ELEMENT_CONSTANTS = Collections.unmodifiableSet(s);
 	}
 
+	{
+		setTitle("Persistence unit");
+	}
+
 	private static final Logger logger = LoggerFactory.getLogger(PersistenceUnitPage.class);
 
 	private Display display;
@@ -98,7 +102,7 @@ public abstract class PersistenceUnitPage extends AbstractDataSourceEditorPage
 		gridLayout.marginWidth = 0;
 		parent.setLayout(gridLayout);
 
-		addHorizontalSeparator(parent);
+//		addHorizontalSeparator(parent);
 
 //		final Label persistenceUnitDescriptionLabel = new Label(parent, SWT.WRAP);
 //		persistenceUnitDescriptionLabel.setText(getPersistenceUnitDescription());

@@ -21,8 +21,10 @@ public class Cumulus4jKeyStorePage extends AbstractDataSourceEditorPage
 	private Text keyStoreID;
 	private Text keyStoreDir;
 
-	public Cumulus4jKeyStorePage() {
-		setDescription("Please specify the coordinates for your Cumulus4j key store. Currently, only local key stores are supported (it must be located on your computer in your local file system).");
+	public Cumulus4jKeyStorePage()
+	{
+		setTitle("Cumulus4j");
+		setDescription("Please specify the coordinates for your Cumulus4j key store. Currently, only local key stores are supported (they must be located on your computer in your local file system).");
 	}
 
 	@Override
