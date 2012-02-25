@@ -169,8 +169,8 @@ public abstract class PersistencePropertiesPage extends AbstractDataSourceEditor
 					persistence.getPersistenceUnit().add(persistenceUnit);
 				}
 
-				if (persistenceUnit.getProperties() == null)
-					persistenceUnit.setProperties(new Persistence.PersistenceUnit.Properties());
+				// We always overwrite all properties.
+				persistenceUnit.setProperties(new Persistence.PersistenceUnit.Properties());
 
 				properties = (Properties) properties.clone();
 				populatePersistenceUnitFromProperties(persistenceUnit, properties);
