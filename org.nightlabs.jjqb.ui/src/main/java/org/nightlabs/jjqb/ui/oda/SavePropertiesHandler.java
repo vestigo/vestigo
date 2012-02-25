@@ -1,16 +1,17 @@
 package org.nightlabs.jjqb.ui.oda;
 
 import java.io.File;
-import java.io.InputStream;
 import java.util.Map;
 import java.util.Properties;
 
 import org.eclipse.core.runtime.OperationCanceledException;
 
-public interface LoadPropertiesHandler {
+public interface SavePropertiesHandler {
 
 	Map<String, String> getFileNameFilters();
 
-	Properties load(File file, InputStream in) throws OperationCanceledException;
+	boolean canHandle(File file, Properties properties);
+
+	void save(File file, Properties properties) throws OperationCanceledException;
 
 }

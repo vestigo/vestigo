@@ -1,15 +1,15 @@
-package org.nightlabs.jjqb.ui.oda.property;
+package org.nightlabs.jjqb.ui.oda;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.jface.dialogs.TitleAreaDialog;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.ListViewer;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
-import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.GridData;
@@ -17,39 +17,28 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Shell;
-import org.nightlabs.jjqb.core.persistencexml.jaxb.Persistence.PersistenceUnit;
 import org.nightlabs.jjqb.ui.JJQBUIPlugin;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
  */
-public class SelectPersistenceUnitDialog extends TitleAreaDialog {
+public class SelectSavePropertiesHandlerDialog extends TitleAreaDialog {
 
 	private String title;
 	private String message;
-	private List<String> persistenceUnitNames;
-	private String selectedPersistenceUnitName;
+	private List<SavePropertiesHandler> savePropertiesHandlers;
+	private SavePropertiesHandler selectedSavePropertiesHandler;
 	private ListViewer listViewer;
 
-	public static List<String> getPersistenceUnitNames(List<PersistenceUnit> persistenceUnits)
-	{
-		List<String> persistenceUnitNames = new ArrayList<String>(persistenceUnits.size());
-		for (PersistenceUnit persistenceUnit : persistenceUnits) {
-			persistenceUnitNames.add(persistenceUnit.getName());
-		}
-		return persistenceUnitNames;
-	}
-
-	public SelectPersistenceUnitDialog(Shell parentShell, String title, String message, List<String> persistenceUnitNames, String selectedPersistenceUnitName) {
+	public SelectSavePropertiesHandlerDialog(Shell parentShell, String title, String message, List<SavePropertiesHandler> savePropertiesHandlers) {
 		super(parentShell);
 
-		if (persistenceUnitNames == null)
-			throw new IllegalArgumentException("persistenceUnitNames == null");
+		if (savePropertiesHandlers == null)
+			throw new IllegalArgumentException("savePropertiesHandlers == null");
 
 		this.title = title; // we cannot call this.setTitle(...) here - defer!
 		this.message = message; // we cannot call this.setMessage(...) here - defer!
-		this.persistenceUnitNames = persistenceUnitNames;
-		this.selectedPersistenceUnitName = selectedPersistenceUnitName;
+		this.savePropertiesHandlers = savePropertiesHandlers;
 
 //		for (int i = 0; i < 50; i++) {
 //			persistenceUnitNames.add("Test " + i);
@@ -60,7 +49,7 @@ public class SelectPersistenceUnitDialog extends TitleAreaDialog {
 	protected Control createContents(Composite parent) {
 		Control contents = super.createContents(parent);
 
-		setTitleImage(JJQBUIPlugin.getDefault().getImage(SelectPersistenceUnitDialog.class, "title", JJQBUIPlugin.IMAGE_SIZE_75x70));
+		setTitleImage(JJQBUIPlugin.getDefault().getImage(SelectSavePropertiesHandlerDialog.class, "title", JJQBUIPlugin.IMAGE_SIZE_75x70)); //$NON-NLS-1$
 		setTitle(title);
 		setMessage(message);
 
@@ -85,7 +74,7 @@ public class SelectPersistenceUnitDialog extends TitleAreaDialog {
 	{
 		super.configureShell(newShell);
 		newShell.setText(title);
-		newShell.setImage(JJQBUIPlugin.getDefault().getImage(SelectPersistenceUnitDialog.class, "shell", JJQBUIPlugin.IMAGE_SIZE_16x16)); //$NON-NLS-1$
+		newShell.setImage(JJQBUIPlugin.getDefault().getImage(SelectSavePropertiesHandlerDialog.class, "shell", JJQBUIPlugin.IMAGE_SIZE_16x16)); //$NON-NLS-1$
 	}
 
 	@Override
@@ -96,17 +85,28 @@ public class SelectPersistenceUnitDialog extends TitleAreaDialog {
 		listViewer = new ListViewer(dialogArea);
 		listViewer.getList().setLayoutData(new GridData(GridData.FILL_BOTH));
 		listViewer.setContentProvider(new ArrayContentProvider());
-		listViewer.setInput(persistenceUnitNames);
+		listViewer.setLabelProvider(new LabelProvider() {
+			@Override
+			public String getText(Object element) {
+				Map<String, String> fileNameFilters = ((SavePropertiesHandler)element).getFileNameFilters();
+				StringBuilder sb = new StringBuilder();
+				for (Map.Entry<String, String> me : fileNameFilters.entrySet()) {
+					if (sb.length() > 0)
+						sb.append("; "); //$NON-NLS-1$
 
-		if (selectedPersistenceUnitName != null)
-			listViewer.setSelection(new StructuredSelection(selectedPersistenceUnitName));
+					sb.append(me.getKey()).append(" (").append(me.getValue()).append(')'); //$NON-NLS-1$
+				}
+				return sb.toString();
+			}
+		});
+		listViewer.setInput(savePropertiesHandlers);
 
 		listViewer.addSelectionChangedListener(new ISelectionChangedListener() {
 			@Override
 			public void selectionChanged(SelectionChangedEvent event) {
 				IStructuredSelection sel = (IStructuredSelection) event.getSelection();
-				selectedPersistenceUnitName = (String) sel.getFirstElement();
-				getButton(OK).setEnabled(selectedPersistenceUnitName != null && !selectedPersistenceUnitName.isEmpty());
+				selectedSavePropertiesHandler = (SavePropertiesHandler) sel.getFirstElement();
+				getButton(OK).setEnabled(selectedSavePropertiesHandler != null);
 			}
 		});
 
@@ -118,13 +118,12 @@ public class SelectPersistenceUnitDialog extends TitleAreaDialog {
 		Button button = super.createButton(parent, id, label, defaultButton);
 
 		if (id == OK)
-			button.setEnabled(selectedPersistenceUnitName != null && !selectedPersistenceUnitName.isEmpty());
+			button.setEnabled(selectedSavePropertiesHandler != null);
 
 		return button;
 	}
 
-	public String getSelectedPersistenceUnitName() {
-		return selectedPersistenceUnitName;
+	public SavePropertiesHandler getSelectedSavePropertiesHandler() {
+		return selectedSavePropertiesHandler;
 	}
-
 }

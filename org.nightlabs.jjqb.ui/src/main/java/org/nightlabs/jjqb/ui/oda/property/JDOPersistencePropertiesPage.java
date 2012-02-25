@@ -3,6 +3,7 @@ package org.nightlabs.jjqb.ui.oda.property;
 import java.util.Properties;
 
 import org.nightlabs.jjqb.core.persistencexml.jaxb.Persistence.PersistenceUnit;
+import org.nightlabs.jjqb.core.persistencexml.jaxb.PersistenceUnitTransactionType;
 
 public class JDOPersistencePropertiesPage extends PersistencePropertiesPage {
 
@@ -31,6 +32,14 @@ public class JDOPersistencePropertiesPage extends PersistencePropertiesPage {
 
 		setPropertyIfNotNullAndNotEmpty(properties, "javax.jdo.option.TransactionType", persistenceUnit.getTransactionType());
 
-//		setPropertyIfNotNullAndNotEmpty(properties, "javax.persistence.validation.mode ", persistenceUnit.getValidationMode()); // Not in JDO.
+//		setPropertyIfNotNullAndNotEmpty(properties, "javax.persistence.validation.mode", persistenceUnit.getValidationMode()); // Not in JDO.
+	}
+
+	@Override
+	protected void populatePersistenceUnitFromProperties(PersistenceUnit persistenceUnit, Properties properties) {
+		persistenceUnit.setJtaDataSource(removeProperty(properties, "javax.jdo.option.ConnectionFactoryName"));
+		persistenceUnit.setNonJtaDataSource(removeProperty(properties, "javax.jdo.option.ConnectionFactory2Name"));
+		persistenceUnit.setProvider(removeProperty(properties, "javax.jdo.PersistenceManagerFactoryClass"));
+		persistenceUnit.setTransactionType(removeProperty(properties, "javax.jdo.option.TransactionType", PersistenceUnitTransactionType.class));
 	}
 }

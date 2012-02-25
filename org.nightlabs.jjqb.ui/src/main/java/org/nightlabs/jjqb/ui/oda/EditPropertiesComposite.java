@@ -19,7 +19,6 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -30,6 +29,8 @@ import java.util.Map.Entry;
 import java.util.Properties;
 import java.util.TreeMap;
 
+import org.eclipse.core.runtime.OperationCanceledException;
+import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.viewers.CellEditor;
 import org.eclipse.jface.viewers.ColumnWeightData;
 import org.eclipse.jface.viewers.ICellModifier;
@@ -71,6 +72,7 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 	private Button saveToFile;
 
 	private List<LoadPropertiesHandler> loadPropertiesHandlers = new ArrayList<LoadPropertiesHandler>();
+	private List<SavePropertiesHandler> savePropertiesHandlers = new ArrayList<SavePropertiesHandler>();
 
 	private static final String COL_KEY = "Col-Key";
 	private static final String COL_VAL = "Col-Val";
@@ -171,7 +173,6 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 
 		saveToFile = new Button(this, SWT.PUSH);
 		saveToFile.setText("Save...");
-		saveToFile.setToolTipText("Save the properties to a Java properties file.");
 		saveToFile.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent event) {
@@ -211,28 +212,65 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 			}
 		});
 
-		addLoadPropertiesHandler(new LoadPropertiesHandler() {
-			@Override
-			public Map<String, String> getFileNameFilters() {
-				Map<String, String> m = new HashMap<String, String>();
-				m.put("Java properties files", "*.properties");
-				return m;
-			}
-			@Override
-			public Properties load(URL url, InputStream in) {
-				if (!url.getPath().endsWith(".properties"))
-					return null;
-
-				Properties props = new Properties();
-				try {
-					props.load(in);
-				} catch (IOException e) {
-					throw new RuntimeException(e);
-				}
-				return props;
-			}
-		});
+		addLoadPropertiesHandler(loadPropertiesHandler);
+		addSavePropertiesHandler(savePropertiesHandler);
 	}
+
+	private LoadPropertiesHandler loadPropertiesHandler = new LoadPropertiesHandler() {
+		@Override
+		public Map<String, String> getFileNameFilters() {
+			Map<String, String> m = new HashMap<String, String>();
+			m.put("Java properties files", "*.properties");
+			return m;
+		}
+		@Override
+		public Properties load(File file, InputStream in) {
+			if (!file.getName().endsWith(".properties"))
+				return null;
+
+			Properties props = new Properties();
+			try {
+				props.load(in);
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+			return props;
+		}
+	};
+
+	private SavePropertiesHandler savePropertiesHandler = new SavePropertiesHandler() {
+		@Override
+		public void save(File file, Properties properties) throws OperationCanceledException {
+			FileOutputStream out;
+			try {
+				out = new FileOutputStream(file);
+			} catch (FileNotFoundException e) {
+				throw new IllegalStateException("Could not create file! " + file.getAbsolutePath(), e);
+			}
+			try {
+				try {
+					properties.store(out, "File written by JDO/JPA Query Browser.");
+				} finally {
+					out.close();
+				}
+			} catch (IOException e) {
+				// TODO: ErrorHandling
+				throw new RuntimeException(e);
+			}
+		}
+
+		@Override
+		public Map<String, String> getFileNameFilters() {
+			Map<String, String> m = new HashMap<String, String>();
+			m.put("Java properties files", "*.properties");
+			return m;
+		}
+
+		@Override
+		public boolean canHandle(File file, Properties properties) {
+			return file.getName().toLowerCase().endsWith(".properties");
+		}
+	};
 
 	private Map<String, String> collectFileNameFilters()
 	{
@@ -247,10 +285,8 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 		return fileNameFilters;
 	}
 
-	private void loadFromFile()
+	private String[][] collectFileNameFiltersAsArray()
 	{
-		FileDialog dialog = new FileDialog(getShell(), SWT.OPEN);
-
 		Map<String, String> fileNameFilters = collectFileNameFilters();
 
 		String[] filterNames = new String[fileNameFilters.size() + 2];
@@ -267,8 +303,17 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 			filterExts[++idx] = me.getValue();
 			filterNames[idx] = String.format("%s (%s)", me.getKey(), filterExts[idx]);
 		}
-		dialog.setFilterNames(filterNames);
-		dialog.setFilterExtensions(filterExts);
+
+		return new String[][] { filterNames, filterExts };
+	}
+
+	private void loadFromFile()
+	{
+		FileDialog dialog = new FileDialog(getShell(), SWT.OPEN);
+
+		String[][] fileNameFiltersAsArray = collectFileNameFiltersAsArray();
+		dialog.setFilterNames(fileNameFiltersAsArray[0]);
+		dialog.setFilterExtensions(fileNameFiltersAsArray[1]);
 
 		String fileName = dialog.open();
 		if (fileName != null && !"".equals(fileName)) {
@@ -287,11 +332,14 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 					List<Throwable> handlerExceptions = new ArrayList<Throwable>();
 					for (LoadPropertiesHandler handler : loadPropertiesHandlers) {
 						try {
-							Properties properties = handler.load(propsFile.toURI().toURL(), in);
+							Properties properties = handler.load(propsFile, in);
 							if (properties != null) {
 								setInput(properties);
 								return;
 							}
+						} catch (OperationCanceledException x) {
+							// The *USER* cancelled the operation, hence the handler felt responsible => return without setting input (don't continue with next handler)
+							return;
 						} catch (Throwable x) {
 							handlerExceptions.add(x);
 							logger.error("loadFromFile: handler.class=" + handler.getClass().getName() + ":" + x, x);
@@ -355,35 +403,78 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 		loadPropertiesHandlers.remove(handler);
 	}
 
+	public void addSavePropertiesHandler(SavePropertiesHandler handler) {
+		if (handler == null)
+			throw new IllegalArgumentException("handler == null");
+
+		savePropertiesHandlers.add(handler);
+		updateSaveFromFileButton();
+	}
+	public void addSavePropertiesHandler(int index, SavePropertiesHandler handler) {
+		if (handler == null)
+			throw new IllegalArgumentException("handler == null");
+
+		savePropertiesHandlers.add(index, handler);
+		updateSaveFromFileButton();
+	}
+	private void updateSaveFromFileButton() {
+		StringBuilder sb = new StringBuilder();
+		Map<String, String> fileNameFilters = collectFileNameFilters();
+		for (Map.Entry<String, String> me : fileNameFilters.entrySet()) {
+			sb.append(String.format("\n  * %s (%s)", me.getKey(), me.getValue()));
+		}
+		saveToFile.setToolTipText("Save the properties to a file. The following file types are supported:" + sb);
+	}
+
+	public void removeSavePropertiesHandler(SavePropertiesHandler handler) {
+		if (handler == null)
+			throw new IllegalArgumentException("handler == null");
+
+		savePropertiesHandlers.remove(handler);
+	}
+
 	private void saveToFile()
 	{
 		FileDialog dialog = new FileDialog(getShell(), SWT.SAVE);
 
+		String[][] fileNameFiltersAsArray = collectFileNameFiltersAsArray();
+		dialog.setFilterNames(fileNameFiltersAsArray[0]);
+		dialog.setFilterExtensions(fileNameFiltersAsArray[1]);
+
+		dialog.setOverwrite(true);
+
 		String fileName = dialog.open();
 		if (fileName != null && !"".equals(fileName)) {
-
-			Properties props = new Properties();
-			for (Map.Entry<?, ?> me : getContentProvider().getProperties().entrySet()) {
-				props.setProperty(String.valueOf(me.getKey()), String.valueOf(me.getValue()));
-			}
 			File propsFile = new File(fileName);
 
-			FileOutputStream out;
-			try {
-				out = new FileOutputStream(propsFile);
-			} catch (FileNotFoundException e) {
-				throw new IllegalStateException("Could not create file! " + propsFile.getAbsolutePath(), e);
+			Properties properties = new Properties();
+			for (Map.Entry<?, ?> me : getContentProvider().getProperties().entrySet()) {
+				properties.setProperty(String.valueOf(me.getKey()), String.valueOf(me.getValue()));
 			}
-			try {
-				try {
-					props.store(out, "File written by JDO/JPA Query Browser.");
-				} finally {
-					out.close();
+
+			SavePropertiesHandler savePropertiesHandler = null;
+			for (SavePropertiesHandler handler : savePropertiesHandlers) {
+				if (handler.canHandle(propsFile, properties)) {
+					savePropertiesHandler = handler;
+					break;
 				}
-			} catch (IOException e) {
-				// TODO: ErrorHandling
-				throw new RuntimeException(e);
 			}
+
+			if (savePropertiesHandler == null) {
+				SelectSavePropertiesHandlerDialog selectHandlerDialog = new SelectSavePropertiesHandlerDialog(
+						getShell(),
+						"Select file format",
+						"You did not specify a known file extension. Please select the file format, now.",
+						savePropertiesHandlers
+				);
+				if (Dialog.OK == selectHandlerDialog.open())
+					savePropertiesHandler = selectHandlerDialog.getSelectedSavePropertiesHandler();
+			}
+
+			if (savePropertiesHandler == null)
+				return;
+
+			savePropertiesHandler.save(propsFile, properties);
 		}
 	}
 

@@ -1,7 +1,8 @@
 package org.nightlabs.jjqb.ui.oda.property;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.InputStream;
-import java.net.URL;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -10,17 +11,19 @@ import java.util.Properties;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
 
+import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.nightlabs.jjqb.childvm.shared.PropertiesUtil;
-import org.nightlabs.jjqb.core.persistencexml.PersistenceXmlScanner;
 import org.nightlabs.jjqb.core.persistencexml.jaxb.Persistence;
 import org.nightlabs.jjqb.core.persistencexml.jaxb.Persistence.PersistenceUnit;
 import org.nightlabs.jjqb.core.persistencexml.jaxb.Persistence.PersistenceUnit.Properties.Property;
 import org.nightlabs.jjqb.ui.oda.EditPropertiesComposite;
 import org.nightlabs.jjqb.ui.oda.LoadPropertiesHandler;
+import org.nightlabs.jjqb.ui.oda.SavePropertiesHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -84,55 +87,143 @@ public abstract class PersistencePropertiesPage extends AbstractDataSourceEditor
 		editPropertiesComposite = new EditPropertiesComposite(parent, SWT.NONE);
 		editPropertiesComposite.setLayoutData(null);
 
-		editPropertiesComposite.addLoadPropertiesHandler(0, new LoadPropertiesHandler() {
-			@Override
-			public Map<String, String> getFileNameFilters() {
-				Map<String, String> m = new HashMap<String, String>();
-				m.put("persistence.xml files", "*persistence*.xml");
-				return m;
+		editPropertiesComposite.addLoadPropertiesHandler(0, loadPropertiesHandler);
+		editPropertiesComposite.addSavePropertiesHandler(0, savePropertiesHandler);
+	}
+
+	private LoadPropertiesHandler loadPropertiesHandler = new LoadPropertiesHandler() {
+		@Override
+		public Map<String, String> getFileNameFilters() {
+			Map<String, String> m = new HashMap<String, String>();
+			m.put("persistence.xml files", "*persistence*.xml");
+			return m;
+		}
+		@Override
+		public Properties load(File file, InputStream in) {
+			try {
+				JAXBContext context = JAXBContext.newInstance(Persistence.class);
+				Persistence persistence = loadPersistenceXml(context, file, in);
+				List<PersistenceUnit> persistenceUnits = persistence.getPersistenceUnit();
+				List<String> persistenceUnitNames = SelectPersistenceUnitDialog.getPersistenceUnitNames(persistenceUnits);
+				SelectPersistenceUnitDialog puDialog = new SelectPersistenceUnitDialog(
+						getShell(),
+						"Select persistence unit",
+						"The following persistence units have been found in the selected file. Please select the unit you wish to use.",
+						persistenceUnitNames,
+						collectProperties().getProperty(PropertiesUtil.PERSISTENCE_UNIT_NAME)
+				);
+				if (Dialog.OK == puDialog.open()) {
+					int puIdx = persistenceUnitNames.indexOf(puDialog.getSelectedPersistenceUnitName());
+					if (puIdx >= 0) {
+						PersistenceUnit persistenceUnit = persistenceUnits.get(puIdx);
+						Properties properties = new Properties();
+						for (Property p : persistenceUnit.getProperties().getProperty()) {
+							if (p != null && p.getName() != null && p.getValue() != null)
+								properties.setProperty(p.getName(), p.getValue());
+						}
+						populatePropertiesFromPersistenceUnit(properties, persistenceUnit);
+						return properties;
+					}
+				}
+				return null;
+			} catch (JAXBException e) {
+				throw new RuntimeException(e);
 			}
-			@Override
-			public Properties load(URL url, InputStream in) {
-				try {
-					JAXBContext context = JAXBContext.newInstance(Persistence.class);
-					Persistence persistence = loadPersistenceXml(context, url, in);
+		}
+	};
+
+	private SavePropertiesHandler savePropertiesHandler = new SavePropertiesHandler() {
+		@Override
+		public void save(File file, Properties properties) throws OperationCanceledException
+		{
+			String persistenceUnitName = collectProperties().getProperty(PropertiesUtil.PERSISTENCE_UNIT_NAME);
+			if (persistenceUnitName == null || persistenceUnitName.trim().isEmpty())
+				persistenceUnitName = "jjqb_" + Long.toHexString(System.currentTimeMillis());
+
+			try {
+				JAXBContext context = JAXBContext.newInstance(Persistence.class);
+				Persistence persistence = null;
+				PersistenceUnit persistenceUnit = null;
+				if (file.exists()) {
+					InputStream in = new FileInputStream(file);
+					try {
+						persistence = loadPersistenceXml(context, file, in);
+					} finally {
+						in.close();
+					}
 					List<PersistenceUnit> persistenceUnits = persistence.getPersistenceUnit();
-					List<String> persistenceUnitNames = SelectPersistenceUnitDialog.getPersistenceUnitNames(persistenceUnits);
-					SelectPersistenceUnitDialog puDialog = new SelectPersistenceUnitDialog(
-							getShell(),
-							"Select persistence unit",
-							"The following persistence units have been found in the selected file. Please select the unit you wish to use.",
-							persistenceUnitNames,
-							null // TODO get currently set persistenceunit on other page? not so easy here in this context... Marco :-)
-					);
-					if (Dialog.OK == puDialog.open()) {
-						int puIdx = persistenceUnitNames.indexOf(puDialog.getSelectedPersistenceUnitName());
-						if (puIdx >= 0) {
-							PersistenceUnit persistenceUnit = persistenceUnits.get(puIdx);
-							Properties properties = new Properties();
-							for (Property p : persistenceUnit.getProperties().getProperty()) {
-								if (p != null && p.getName() != null && p.getValue() != null)
-									properties.setProperty(p.getName(), p.getValue());
-							}
-							populatePropertiesFromPersistenceUnit(properties, persistenceUnit);
-							return properties;
+					for (PersistenceUnit pu : persistenceUnits) {
+						if (persistenceUnitName.equals(pu.getName())) {
+							persistenceUnit = pu;
+							break;
 						}
 					}
-					return null;
-				} catch (JAXBException e) {
-					throw new RuntimeException(e);
 				}
+
+				if (persistence == null)
+					persistence = new Persistence();
+
+				if (persistenceUnit == null) {
+					persistenceUnit = new PersistenceUnit();
+					persistenceUnit.setName(persistenceUnitName);
+					persistence.getPersistenceUnit().add(persistenceUnit);
+				}
+
+				if (persistenceUnit.getProperties() == null)
+					persistenceUnit.setProperties(new Persistence.PersistenceUnit.Properties());
+
+				properties = (Properties) properties.clone();
+				populatePersistenceUnitFromProperties(persistenceUnit, properties);
+				for (Map.Entry<?, ?> me : properties.entrySet()) {
+					Property property = findProperty(persistenceUnit.getProperties(), me.getKey().toString());
+					if (property == null) {
+						property = new Property();
+						property.setName(me.getKey().toString());
+						persistenceUnit.getProperties().getProperty().add(property);
+					}
+					property.setValue(me.getValue().toString());
+				}
+
+				Marshaller marshaller = context.createMarshaller();
+				marshaller.setProperty("jaxb.formatted.output", Boolean.TRUE);
+				marshaller.marshal(persistence, file);
+			} catch (RuntimeException x) {
+				throw x;
+			} catch (Exception x) {
+				throw new RuntimeException(x);
 			}
-		});
+		}
+
+		@Override
+		public Map<String, String> getFileNameFilters() {
+			Map<String, String> m = new HashMap<String, String>();
+			m.put("persistence.xml files", "*persistence*.xml");
+			return m;
+		}
+
+		@Override
+		public boolean canHandle(File file, Properties properties) {
+			String fileName = file.getName();
+			return fileName.toLowerCase().endsWith(".xml") && fileName.toLowerCase().contains("persistence");
+		}
+	};
+
+	private Property findProperty(Persistence.PersistenceUnit.Properties persistenceUnitProperties, String key) {
+		for (Property property : persistenceUnitProperties.getProperty()) {
+			if (key.equals(property.getName()))
+				return property;
+		}
+		return null;
 	}
 
 	protected abstract void populatePropertiesFromPersistenceUnit(Properties properties, PersistenceUnit persistenceUnit);
+	protected abstract void populatePersistenceUnitFromProperties(PersistenceUnit persistenceUnit, Properties properties);
 
-	private Persistence loadPersistenceXml(JAXBContext context, URL url, InputStream persistenceXmlIn) throws JAXBException
+	private Persistence loadPersistenceXml(JAXBContext context, File file, InputStream persistenceXmlIn) throws JAXBException
 	{
 		Object o = context.createUnmarshaller().unmarshal(persistenceXmlIn);
 		if (!(o instanceof Persistence))
-			throw new IllegalStateException(PersistenceXmlScanner.PERSISTENCE_XML + " with URL '" + url + "' contains an object of type " + o.getClass().getName() + " instead of " + Persistence.class.getName() + "!");
+			throw new IllegalStateException("File '" + file.getAbsolutePath() + "' contains an object of type " + o.getClass().getName() + " instead of " + Persistence.class.getName() + "!");
 
 		return (Persistence)o;
 	}
@@ -163,5 +254,20 @@ public abstract class PersistencePropertiesPage extends AbstractDataSourceEditor
 	protected static void setPropertyIfNotNullAndNotEmpty(Properties properties, String key, Enum<?> value) {
 		if (value != null)
 			setPropertyIfNotNullAndNotEmpty(properties, key, value.name());
+	}
+
+	protected static String removeProperty(Properties properties, String key)
+	{
+		String result = (String) properties.remove(key);
+		return result;
+	}
+
+	protected static <E extends Enum<E>> E removeProperty(Properties properties, String key, Class<E> e)
+	{
+		String sval = removeProperty(properties, key);
+		if (sval == null)
+			return null;
+
+		return Enum.valueOf(e, sval);
 	}
 }
