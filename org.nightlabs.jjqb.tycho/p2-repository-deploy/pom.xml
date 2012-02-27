@@ -20,6 +20,13 @@
 		</dependency>
 	</dependencies>
 
+	<distributionManagement>
+		<site>
+			<id>jjqb.nightlabs.com</id>
+			<url>${distributionManagement.site.prefix}/jjqb.nightlabs.com/htdocs/${project.version}/</url>
+		</site>
+	</distributionManagement>
+	
 	<build>
 		<plugins>
 			<plugin>
