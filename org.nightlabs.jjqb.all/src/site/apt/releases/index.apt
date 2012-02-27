@@ -1,0 +1,25 @@
+	---
+	Releases
+	---
+	Marco หงุ่ยตระกูล-Schulze
+	---
+	2012-02-27
+
+Releases
+
+	Development does not stop and JJQB is permanently improved. Therefore, not only the program but also the documentation changes.
+	Hence, we provide the corresponding web-site-version for each release.
+
+	Please make sure that you're reading the correct documentation for the version of JJQB you're using. You find the version
+	of the web-site in the right bottom corner.
+
+	In the following you find a list of all releases:
+
+~~ Please link all non-SNAPSHOT releases here with the LATEST FIRST:
+~~ And don't forget to update the German version of this file!!!
+
+	* {{{../../latest-dev/}Latest development snapshot}} (Not stable & not yet released!)
+
+	* {{{../../latest-stable/}Latest stable version}}
+
+	* {{{../../1.0.0/}1.0.0}} (released 2012-03-??)
