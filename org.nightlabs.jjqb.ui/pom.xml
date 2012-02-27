@@ -71,6 +71,14 @@ temporarily... because of exampleeditor - we should switch back to the property,
 -->
 			<artifactId>org.nightlabs.eclipse.compatibility.rcp</artifactId>
 			<scope>provided</scope>
+			<exclusions>
+				<exclusion>
+					<artifactId>
+						org.eclipse.update.configurator
+					</artifactId>
+					<groupId>org.eclipse.update</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<!-- END org.nightlabs.eclipse -->
 		
@@ -83,6 +91,19 @@ temporarily... because of exampleeditor - we should switch back to the property,
 	</dependencies>
 
 	<build>
+		<resources>
+			<resource>
+				<directory>/home/abieber/workspaces/jjqb2/jjqb/org.nightlabs.jjqb.ui</directory>
+				<excludes>
+					<exclude>.settings/**/*</exclude>
+					<exclude>src/**/*</exclude>
+					<exclude>target/**/*</exclude>
+					<exclude>.project</exclude>
+					<exclude>.classpath</exclude>
+				</excludes>
+			</resource>
+		</resources>
+	
 		<plugins>
 			<plugin>
 				<groupId>org.apache.felix</groupId>

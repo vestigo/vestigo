@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>                                                                                                             
+<cheatsheet title="Create a Vestigo connection profile and query">                                                                                          
+   <intro>                                                                                                                                         
+      <description>
+      	This cheat sheet shows you how to create a JPA connection profile and how to create and execute a simple JPA query<br/>                                                              
+      </description>                                                                                                                               
+   </intro>                                                                                                                                        
+   <item title="Open the Vestigo perspective" dialog="true" skip="false">                                                                               
+      <description>                                                                                                                                
+         If the perspective is not already open open the perspective. Select in the main menu <b>Window &gt; Show Perspective &gt; Other... &gt; Vestigo</b> or click on the link below.
+      </description>
+      <command
+            required="false"
+            serialization="org.eclipse.ui.perspectives.showPerspective(org.eclipse.ui.perspectives.showPerspective.perspectiveId=org.nightlabs.jjqb.ui.JJQBPerspective)"/>                                                                                                                               
+   </item>                                                                                                                                         
+</cheatsheet>           

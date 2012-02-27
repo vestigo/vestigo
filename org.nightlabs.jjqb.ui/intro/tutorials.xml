@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<introContent>
+	<extensionContent id="org.eclipse.mylyn" name="Mylyn"
+		style="css/tutorials.css" path="tutorials/@">
+		<group label="Vestigo (JPA &amp; JDO queries)" id="vestigo" style-id="content-group">
+			<link
+				url="http://org.eclipse.ui.intro/showStandby?partId=org.eclipse.platform.cheatsheet&amp;input=org.nightlabs.jjqb.ui.cheatsheets.gettingStarted"
+				label="Getting Started with Vestigo" 
+				id="jjqb-ui-tutorial-gettingStarted" 
+				style-id="content-link">
+				<text>Learn how to create a JPA connection profile and a simple JPA query</text>
+			</link>
+		</group>
+	</extensionContent>
+</introContent>

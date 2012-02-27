@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde version="3.6"?>
 
-<target name="JJQB" sequenceNumber="5">
+<target name="JJQB" sequenceNumber="7">
 <locations>
-<location path="${workspace_loc}/org.nightlabs.jjqb.assembly.linux-gtk-x86_64/target/assembly/eclipse" type="Directory"/>
-<location path="${workspace_loc}/org.nightlabs.jjqb.assembly.linux-gtk-x86_64/target/assembly/eclipse/dropins" type="Directory"/>
+<location path="${workspace_loc}/jjqb/org.nightlabs.jjqb.assembly.linux-gtk-x86_64/target/assembly/eclipse" type="Directory"/>
+<location path="${workspace_loc}/jjqb/org.nightlabs.jjqb.assembly.linux-gtk-x86_64/target/assembly/eclipse/dropins" type="Directory"/>
 </locations>
 <environment>
 <os>linux</os>
