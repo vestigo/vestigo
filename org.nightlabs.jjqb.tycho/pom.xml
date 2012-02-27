@@ -14,6 +14,7 @@
 		<module>feature-jjqb</module>
 		<module>feature-cumulus4j</module>
 		<module>p2-repository</module>
+		<module>p2-repository-deploy</module>
 	</modules>
 
 	<dependencyManagement>
@@ -26,6 +27,12 @@
 			<dependency>
 				<groupId>org.nightlabs.jjqb</groupId>
 				<artifactId>org.nightlabs.jjqb.cumulus4j.ui.feature</artifactId>
+				<version>${jjqb.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.nightlabs.jjqb</groupId>
+				<artifactId>org.nightlabs.jjqb.tycho.p2.repository</artifactId>
+				<type>zip</type>
 				<version>${jjqb.version}</version>
 			</dependency>
 		</dependencies>
@@ -118,6 +125,29 @@
 			<!-- <plugin> <groupId>${tychoGroupId}</groupId> <artifactId>maven-osgi-source-plugin</artifactId> 
 				<version>${tychoVersion}</version> <executions> <execution> <id>attach-source</id> 
 				<goals> <goal>plugin-source</goal> </goals> </execution> </executions> </plugin> -->
+				
+			<plugin>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>2.4.1</version>
+				<!-- 
+				<configuration>
+					<excludeDefaultDirectories>true</excludeDefaultDirectories>
+				</configuration>
+				 -->
+ 				<executions>
+					<execution>
+						<id>default-clean-1</id>
+						<phase>initialize</phase>
+						<goals>
+							<goal>clean</goal>
+						</goals>
+						<configuration>
+							<excludeDefaultDirectories>true</excludeDefaultDirectories>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+				
 		</plugins>
 	</build>
 

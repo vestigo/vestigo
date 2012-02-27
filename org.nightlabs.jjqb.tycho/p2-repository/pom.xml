@@ -54,30 +54,6 @@
 					<compress>true</compress>
 				</configuration>
 			</plugin>
-			
-			
-			<plugin>
-				<artifactId>maven-clean-plugin</artifactId>
-				<!-- 
-				<configuration>
-					<excludeDefaultDirectories>true</excludeDefaultDirectories>
-				</configuration>
-				 -->
- 				<executions>
-					<execution>
-						<id>default-clean-1</id>
-						<phase>initialize</phase>
-						<goals>
-							<goal>clean</goal>
-						</goals>
-						<configuration>
-							<excludeDefaultDirectories>true</excludeDefaultDirectories>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			
-			
 		</plugins>
 	</build>
 </project>
