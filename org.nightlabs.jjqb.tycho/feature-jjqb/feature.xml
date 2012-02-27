@@ -3,7 +3,8 @@
       id="org.nightlabs.jjqb.ui.feature"
       label="JJQB Feature"
       version="0.1.1.qualifier"
-      provider-name="NightLabs Consulting GmbH">
+      provider-name="NightLabs Consulting GmbH"
+      plugin="org.nightlabs.jjqb.ui">
 
    <description url="http://www.example.com/description">
       [Enter Feature Description here.]
@@ -93,51 +94,49 @@
          install-size="0"
          version="0.0.0"
          unpack="false"/>
-         
-         
+
    <plugin
          id="javax.jdo"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
-         
+
    <plugin
          id="javax.persistence"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
-         
+
    <plugin
          id="org.nightlabs.licence.client"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
-     
-     
+
    <plugin
          id="bcprov"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
-           
+
    <plugin
          id="org.nightlabs.licence.manager"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
-         
+
    <plugin
          id="org.nightlabs.licence.shared"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
-         
+
    <plugin
          id="org.nightlabs.licence.signature"
          download-size="0"
@@ -145,28 +144,11 @@
          version="0.0.0"
          unpack="false"/>
 
-<!--         
-   <plugin
-         id="slf4j.api"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-         
-   <plugin
-         id="slf4j.simple"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-    -->     
-         
    <plugin
          id="org.eclipse.datatools.connectivity.ui.dse"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
-         
-         
+
 </feature>
