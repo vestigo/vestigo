@@ -93,7 +93,7 @@ temporarily... because of exampleeditor - we should switch back to the property,
 	<build>
 		<resources>
 			<resource>
-				<directory>/home/abieber/workspaces/jjqb2/jjqb/org.nightlabs.jjqb.ui</directory>
+				<directory>.</directory>
 				<excludes>
 					<exclude>.settings/**/*</exclude>
 					<exclude>src/**/*</exclude>
@@ -101,6 +101,15 @@ temporarily... because of exampleeditor - we should switch back to the property,
 					<exclude>.project</exclude>
 					<exclude>.classpath</exclude>
 				</excludes>
+			</resource>
+			<resource>
+				<directory>src/main/java</directory>
+				<excludes>
+					<exclude>**/*.java</exclude>
+				</excludes>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
 			</resource>
 		</resources>
 	
