@@ -327,9 +327,9 @@ implements ISelectionProvider, LabelTextOptionsContainer
 			Object cellContent = cell.getCellContent();
 
 			if (cellContent instanceof ObjectReference)
-				cellContent = ((ObjectReference)cellContent).getLabelText(labelTextOptions);
-
-			viewerCell.setText(LabelTextUtil.toStringOfSimpleObject(cellContent, labelTextOptions));
+				viewerCell.setText(((ObjectReference)cellContent).getLabelText(labelTextOptions));
+			else
+				viewerCell.setText(LabelTextUtil.toStringOfSimpleObject(null, cellContent, labelTextOptions));
 		}
 	}
 

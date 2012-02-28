@@ -1,5 +1,8 @@
 package org.nightlabs.jjqb.core;
 
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
 import org.nightlabs.jjqb.core.oda.ResultSet;
@@ -16,7 +19,7 @@ public final class LabelTextUtil {
 		return qualifiedClassName.substring(lastDotIndex + 1);
 	}
 
-	public static String toStringOfSimpleObject(Object object, Set<LabelTextOption> labelTextOptions)
+	public static String toStringOfSimpleObject(FieldDesc fieldDesc, Object object, Set<LabelTextOption> labelTextOptions)
 	{
 		if (object == ResultSet.LICENCE_NOT_VALID)
 			return String.valueOf(object);
@@ -28,9 +31,9 @@ public final class LabelTextUtil {
 				sb.append(String.valueOf((String)null));
 			else {
 				if (labelTextOptions.contains(LabelTextOption.showPackageName))
-					sb.append(object.getClass().getName());
+					sb.append(getPrimitiveIfApplicable(fieldDesc, object.getClass()).getName());
 				else
-					sb.append(object.getClass().getSimpleName());
+					sb.append(getPrimitiveIfApplicable(fieldDesc, object.getClass()).getSimpleName());
 			}
 			sb.append(") ");
 		}
@@ -38,5 +41,36 @@ public final class LabelTextUtil {
 		sb.append(String.valueOf(object));
 
 		return sb.toString();
+	}
+
+	private static final Class<?>[] primitiveClasses = {
+		boolean.class,
+		char.class,
+		byte.class,
+		double.class,
+		int.class,
+		float.class,
+		long.class,
+		short.class
+	};
+	private static final Map<String, Class<?>> primitiveClassNames;
+	static {
+		Map<String, Class<?>> m = new HashMap<String, Class<?>>(primitiveClasses.length);
+		for (Class<?> c : primitiveClasses) {
+			m.put(c.getName(), c);
+		}
+		primitiveClassNames = Collections.unmodifiableMap(m);
+	}
+
+	private static Class<?> getPrimitiveIfApplicable(FieldDesc fieldDesc, Class<?> clazz)
+	{
+		if (fieldDesc == null)
+			return clazz;
+
+		Class<?> c = primitiveClassNames.get(fieldDesc.getFieldTypeName());
+		if (c != null)
+			return c;
+		else
+			return clazz;
 	}
 }

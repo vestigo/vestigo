@@ -64,7 +64,7 @@ public class ObjectGraphDetailTreeNode
 		else if (object instanceof ObjectReference)
 			return ((ObjectReference)object).getLabelText(labelTextOptions);
 		else
-			return LabelTextUtil.toStringOfSimpleObject(object, labelTextOptions);
+			return LabelTextUtil.toStringOfSimpleObject(null, object, labelTextOptions);
 	}
 
 	public String getReferencedObjectClassName()

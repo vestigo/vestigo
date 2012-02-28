@@ -98,7 +98,7 @@ implements ObjectReferenceChild
 		if (value instanceof ObjectReference)
 			sb.append(((ObjectReference)value).getLabelText(labelTextOptions));
 		else
-			sb.append(LabelTextUtil.toStringOfSimpleObject(value, labelTextOptions));
+			sb.append(LabelTextUtil.toStringOfSimpleObject(this.getFieldDesc(), value, labelTextOptions));
 
 		return sb.toString();
 	}
