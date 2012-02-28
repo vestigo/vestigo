@@ -56,6 +56,15 @@ public class PropertiesUtil extends Properties
 
 	public static final String PERSISTENCE_UNIT_NAME = PREFIX_META + "persistenceUnitName";
 
+	/**
+	 * Boolean flag controlling whether to generate a synthetic <code>persistence.xml</code> file
+	 * and use this instead of the original. This is necessary to work around a
+	 * <a href="https://dev.nightlabs.org/jira/browse/JJQB-36">bug in Hibernate (or maybe JPA in general)</a>.
+	 * This bug prevents to override properties declared in the <code>persistence.xml</code> with a <code>null</code>
+	 * value (equivalent to removing them from the file).
+	 */
+	public static final String PERSISTENCE_UNIT_SYNTHETIC_OVERRIDE = PREFIX_META + "persistenceUnitSyntheticOverride";
+
 	public static void putAll(java.util.Properties source, java.util.Properties target, String keyPrefix)
 	{
 		for (Object element : source.keySet()) {

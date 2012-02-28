@@ -69,7 +69,7 @@ public abstract class ConnectionProfile
 	public synchronized void onConnectionOpen(Connection connection)
 	{
 		logger.debug(
-				"[{}].preConnectionOpen: profileID={} connectionID={}",
+				"[{}].onConnectionOpen: profileID={} connectionID={}",
 				new Object[] { Long.toHexString(System.identityHashCode(this)), profileID, connection.getConnectionID() }
 		);
 
@@ -81,16 +81,22 @@ public abstract class ConnectionProfile
 
 	protected void onFirstConnectionOpen(Connection connection) {
 		logger.debug(
-				"[{}].preFirstConnectionOpen: profileID={} connectionID={}",
+				"[{}].onFirstConnectionOpen: profileID={} connectionID={}",
 				new Object[] { Long.toHexString(System.identityHashCode(this)), profileID, connection.getConnectionID() }
 		);
+
+		if (isPersistenceUnitSyntheticOverride()) {
+			// TODO use the PersistenceXmlScanner (which still needs to be moved into the shared project) to read the original
+			// persistence unit, apply the properties, store the new persistence unit and make sure it is used (either use a new name
+			// or hide all other persistence.xml files from the classpath).
+		}
 
 		classLoaderManager.open(connectionProperties);
 	}
 
 	public synchronized void onConnectionClose(Connection connection) {
 		logger.debug(
-				"[{}].postConnectionClose: profileID={} connectionID={}",
+				"[{}].onConnectionClose: profileID={} connectionID={}",
 				new Object[] { Long.toHexString(System.identityHashCode(this)), profileID, connection.getConnectionID() }
 		);
 
@@ -102,7 +108,7 @@ public abstract class ConnectionProfile
 
 	protected void onLastConnectionClose(Connection connection) {
 		logger.debug(
-				"[{}].postLastConnectionClose: profileID={} connectionID={}",
+				"[{}].onLastConnectionClose: profileID={} connectionID={}",
 				new Object[] { Long.toHexString(System.identityHashCode(this)), profileID, connection.getConnectionID() }
 		);
 
@@ -111,6 +117,13 @@ public abstract class ConnectionProfile
 
 	public ClassLoaderManager getClassLoaderManager() {
 		return classLoaderManager;
+	}
+
+	protected boolean isPersistenceUnitSyntheticOverride() {
+		if (connectionProperties == null)
+			return false;
+
+		return Boolean.parseBoolean(connectionProperties.getProperty(PropertiesUtil.PERSISTENCE_UNIT_SYNTHETIC_OVERRIDE));
 	}
 
 	protected String getPersistenceUnitName() {
