@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -16,7 +17,9 @@ import org.eclipse.ui.ISelectionListener;
 import org.eclipse.ui.IViewReference;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.part.ViewPart;
+import org.nightlabs.jjqb.core.LabelTextOption;
 import org.nightlabs.jjqb.ui.browser.QueryBrowser;
+import org.nightlabs.jjqb.ui.labeltextoptionaction.LabelTextOptionsContainer;
 import org.nightlabs.jjqb.ui.resultsettable.ResultSetTableCell;
 import org.nightlabs.jjqb.ui.resultsettable.ResultSetTableRow;
 import org.nightlabs.jjqb.ui.resultsettable.ResultSetTableView;
@@ -24,7 +27,7 @@ import org.nightlabs.jjqb.ui.resultsettable.ResultSetTableView;
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
  */
-public class ObjectGraphDetailTreeView extends ViewPart
+public class ObjectGraphDetailTreeView extends ViewPart implements LabelTextOptionsContainer
 {
 	private ObjectGraphDetailTreeComposite objectGraphDetailTreeComposite;
 
@@ -48,7 +51,9 @@ public class ObjectGraphDetailTreeView extends ViewPart
 
 	private void clearInput()
 	{
-		ObjectGraphDetailTreeModel model = new ObjectGraphDetailTreeModel(Collections.singletonList(">>> Nothing selected. Please select a cell in the result set. <<<"));
+		ObjectGraphDetailTreeModel model = new ObjectGraphDetailTreeModel(
+				Collections.singletonList(new MessageObjectGraphDetailTreeNode(">>> Nothing selected. Please select a cell in the result set. <<<"))
+		);
 		objectGraphDetailTreeComposite.setInput(model);
 //				objectGraphDetailTreeComposite.setInput(null);
 	}
@@ -106,6 +111,15 @@ public class ObjectGraphDetailTreeView extends ViewPart
 	public void setFocus() {
 		if (objectGraphDetailTreeComposite != null)
 			objectGraphDetailTreeComposite.setFocus();
+	}
+
+	@Override
+	public Set<LabelTextOption> getLabelTextOptions() {
+		return objectGraphDetailTreeComposite.getLabelTextOptions();
+	}
+	@Override
+	public void setLabelTextOptions(Set<LabelTextOption> labelTextOptions) {
+		objectGraphDetailTreeComposite.setLabelTextOptions(labelTextOptions);
 	}
 
 }

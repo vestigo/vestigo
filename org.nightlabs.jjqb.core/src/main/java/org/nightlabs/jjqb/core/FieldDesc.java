@@ -10,18 +10,22 @@ import org.nightlabs.util.Util;
 public class FieldDesc
 {
 	private String fieldDeclaringClassName;
-
+	private String fieldTypeName;
 	private String fieldName;
 
-	public FieldDesc(String fieldDeclaringClassName, String fieldName)
+	public FieldDesc(String fieldDeclaringClassName, String fieldTypeName, String fieldName)
 	{
 		if (fieldDeclaringClassName == null)
 			throw new IllegalArgumentException("fieldDeclaringClassName == null"); //$NON-NLS-1$
+
+		if (fieldTypeName == null)
+			throw new IllegalArgumentException("fieldTypeName == null"); //$NON-NLS-1$
 
 		if (fieldName == null)
 			throw new IllegalArgumentException("fieldName == null"); //$NON-NLS-1$
 
 		this.fieldDeclaringClassName = fieldDeclaringClassName;
+		this.fieldTypeName = fieldTypeName;
 		this.fieldName = fieldName;
 	}
 
@@ -36,6 +40,10 @@ public class FieldDesc
 	 */
 	public String getFieldDeclaringClassName() {
 		return fieldDeclaringClassName;
+	}
+
+	public String getFieldTypeName() {
+		return fieldTypeName;
 	}
 
 	/**
@@ -57,7 +65,8 @@ public class FieldDesc
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + Util.hashCode(fieldDeclaringClassName);
-		result = prime * result + Util.hashCode(fieldName == null);
+		result = prime * result + Util.hashCode(fieldTypeName);
+		result = prime * result + Util.hashCode(fieldName);
 		return result;
 	}
 
@@ -69,7 +78,8 @@ public class FieldDesc
 		FieldDesc other = (FieldDesc) obj;
 		return (
 				Util.equals(this.fieldDeclaringClassName, other.fieldDeclaringClassName) &&
-				Util.equals(this.fieldName, other.fieldName)
+				Util.equals(this.fieldName, other.fieldName) &&
+				Util.equals(this.fieldTypeName, other.fieldTypeName)
 		);
 	}
 }

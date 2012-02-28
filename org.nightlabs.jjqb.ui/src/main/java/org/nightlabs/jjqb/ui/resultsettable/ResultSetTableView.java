@@ -1,6 +1,7 @@
 package org.nightlabs.jjqb.ui.resultsettable;
 
 import java.util.Collection;
+import java.util.Set;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.DisposeEvent;
@@ -11,17 +12,20 @@ import org.eclipse.ui.IPartListener2;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchPartReference;
 import org.eclipse.ui.part.ViewPart;
+import org.nightlabs.jjqb.core.LabelTextOption;
 import org.nightlabs.jjqb.ui.browser.ExecuteQueryAdapter;
 import org.nightlabs.jjqb.ui.browser.ExecuteQueryEvent;
 import org.nightlabs.jjqb.ui.browser.ExecuteQueryListener;
 import org.nightlabs.jjqb.ui.browser.QueryBrowser;
+import org.nightlabs.jjqb.ui.labeltextoptionaction.LabelTextOptionsContainer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
  */
-public class ResultSetTableView extends ViewPart {
+public class ResultSetTableView extends ViewPart implements LabelTextOptionsContainer
+{
 	private static final Logger logger = LoggerFactory.getLogger(ResultSetTableView.class);
 
 	private ResultSetTableComposite resultSetTableComposite;
@@ -165,5 +169,15 @@ public class ResultSetTableView extends ViewPart {
 			return null;
 
 		return resultSetTableComposite.getInput();
+	}
+
+	@Override
+	public Set<LabelTextOption> getLabelTextOptions() {
+		return resultSetTableComposite.getLabelTextOptions();
+	}
+
+	@Override
+	public void setLabelTextOptions(Set<LabelTextOption> labelTextOptions) {
+		resultSetTableComposite.setLabelTextOptions(labelTextOptions);
 	}
 }

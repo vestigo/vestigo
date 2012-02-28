@@ -247,11 +247,138 @@
             id="org.nightlabs.jjqb.ui.viewContribution_ResultSetTableView"
             targetID="org.nightlabs.jjqb.ui.resultsettable.ResultSetTableView">
          <action
+               class="org.nightlabs.jjqb.ui.labeltextoptionaction.ToggleShowObjectToStringAction"
+               id="org.nightlabs.jjqb.ui.labeltextoptionaction.ToggleShowObjectToStringAction"
+               icon="icons/org.nightlabs.jjqb.ui.labeltextoptionaction/ToggleShowObjectToStringAction.16x16.png"
+               state="true"
+               style="toggle"
+               label="Show 'toString()' of complex objects"
+               tooltip="Show 'toString()' of complex objects?"
+               toolbarPath="additions"
+               menubarPath="additions">
+         </action>
+         <action
+               class="org.nightlabs.jjqb.ui.labeltextoptionaction.ToggleShowPackageNameAction"
+               id="org.nightlabs.jjqb.ui.labeltextoptionaction.ToggleShowPackageNameAction"
+               icon="icons/org.nightlabs.jjqb.ui.labeltextoptionaction/ToggleShowPackageNameAction.16x16.png"
+               state="false"
+               style="toggle"
+               label="Show package names"
+               tooltip="Show package names?"
+               toolbarPath="additions"
+               menubarPath="additions">
+         </action>
+         <action
+               class="org.nightlabs.jjqb.ui.labeltextoptionaction.ToggleShowPersistentIDAction"
+               id="org.nightlabs.jjqb.ui.labeltextoptionaction.ToggleShowPersistentIDAction"
+               icon="icons/org.nightlabs.jjqb.ui.labeltextoptionaction/ToggleShowPersistentIDAction.16x16.png"
+               state="true"
+               style="toggle"
+               label="Show persistent IDs"
+               tooltip="Show persistent identifiers?"
+               toolbarPath="additions"
+               menubarPath="additions">
+         </action>
+         <action
+               class="org.nightlabs.jjqb.ui.labeltextoptionaction.ToggleShowTransientIDAction"
+               id="org.nightlabs.jjqb.ui.labeltextoptionaction.ToggleShowTransientIDAction"
+               icon="icons/org.nightlabs.jjqb.ui.labeltextoptionaction/ToggleShowTransientIDAction.16x16.png"
+               state="false"
+               style="toggle"
+               label="Show transient IDs"
+               tooltip="Show transient identifiers?"
+               toolbarPath="additions"
+               menubarPath="additions">
+         </action>
+         <action
+               class="org.nightlabs.jjqb.ui.labeltextoptionaction.ToggleShowInstanceTypeAction"
+               id="org.nightlabs.jjqb.ui.labeltextoptionaction.ToggleShowInstanceTypeAction"
+               icon="icons/org.nightlabs.jjqb.ui.labeltextoptionaction/ToggleShowInstanceTypeAction.16x16.png"
+               state="false"
+               style="toggle"
+               label="Show instance types (always)"
+               tooltip="Show instance types (always)?"
+               toolbarPath="additions"
+               menubarPath="additions">
+         </action>
+            
+         <action
                class="org.nightlabs.jjqb.ui.resultsettable.NextAction"
                id="org.nightlabs.jjqb.ui.resultsettable.NextAction"
                label="Next"
                style="push"
                toolbarPath="additions">
+         </action>
+      </viewContribution>
+
+      <viewContribution
+            id="org.nightlabs.jjqb.ui.viewContribution_ObjectGraphDetailTreeView"
+            targetID="org.nightlabs.jjqb.ui.detailtree.ObjectGraphDetailTreeView">
+         <action
+               class="org.nightlabs.jjqb.ui.labeltextoptionaction.ToggleShowObjectToStringAction"
+               id="org.nightlabs.jjqb.ui.labeltextoptionaction.ToggleShowObjectToStringAction"
+               icon="icons/org.nightlabs.jjqb.ui.labeltextoptionaction/ToggleShowObjectToStringAction.16x16.png"
+               state="false"
+               style="toggle"
+               label="Show 'toString()' of complex objects"
+               tooltip="Show 'toString()' of complex objects?"
+               toolbarPath="additions"
+               menubarPath="additions">
+         </action>
+         <action
+               class="org.nightlabs.jjqb.ui.labeltextoptionaction.ToggleShowPackageNameAction"
+               id="org.nightlabs.jjqb.ui.labeltextoptionaction.ToggleShowPackageNameAction"
+               icon="icons/org.nightlabs.jjqb.ui.labeltextoptionaction/ToggleShowPackageNameAction.16x16.png"
+               state="false"
+               style="toggle"
+               label="Show package names"
+               tooltip="Show package names?"
+               toolbarPath="additions"
+               menubarPath="additions">
+         </action>
+         <action
+               class="org.nightlabs.jjqb.ui.labeltextoptionaction.ToggleShowPersistentIDAction"
+               id="org.nightlabs.jjqb.ui.labeltextoptionaction.ToggleShowPersistentIDAction"
+               icon="icons/org.nightlabs.jjqb.ui.labeltextoptionaction/ToggleShowPersistentIDAction.16x16.png"
+               state="true"
+               style="toggle"
+               label="Show persistent IDs"
+               tooltip="Show persistent identifiers?"
+               toolbarPath="additions"
+               menubarPath="additions">
+         </action>
+         <action
+               class="org.nightlabs.jjqb.ui.labeltextoptionaction.ToggleShowTransientIDAction"
+               id="org.nightlabs.jjqb.ui.labeltextoptionaction.ToggleShowTransientIDAction"
+               icon="icons/org.nightlabs.jjqb.ui.labeltextoptionaction/ToggleShowTransientIDAction.16x16.png"
+               state="false"
+               style="toggle"
+               label="Show transient IDs"
+               tooltip="Show transient identifiers?"
+               toolbarPath="additions"
+               menubarPath="additions">
+         </action>
+         <action
+               class="org.nightlabs.jjqb.ui.labeltextoptionaction.ToggleShowFieldTypeAction"
+               id="org.nightlabs.jjqb.ui.labeltextoptionaction.ToggleShowFieldTypeAction"
+               icon="icons/org.nightlabs.jjqb.ui.labeltextoptionaction/ToggleShowFieldTypeAction.16x16.png"
+               state="false"
+               style="toggle"
+               label="Show field types"
+               tooltip="Show field types?"
+               toolbarPath="additions"
+               menubarPath="additions">
+         </action>
+         <action
+               class="org.nightlabs.jjqb.ui.labeltextoptionaction.ToggleShowInstanceTypeAction"
+               id="org.nightlabs.jjqb.ui.labeltextoptionaction.ToggleShowInstanceTypeAction"
+               icon="icons/org.nightlabs.jjqb.ui.labeltextoptionaction/ToggleShowInstanceTypeAction.16x16.png"
+               state="false"
+               style="toggle"
+               label="Show instance types (always)"
+               tooltip="Show instance types (always)?"
+               toolbarPath="additions"
+               menubarPath="additions">
          </action>
       </viewContribution>
    </extension>

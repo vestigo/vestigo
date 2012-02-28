@@ -11,8 +11,8 @@ public class ResultCellSimpleDTO extends ResultCellDTO
 {
 	private static final long serialVersionUID = 1L;
 
-	public ResultCellSimpleDTO(String fieldDeclaringClassName, String fieldName, Object object) {
-		super(fieldDeclaringClassName, fieldName);
+	public ResultCellSimpleDTO(String fieldDeclaringClassName, String fieldTypeName, String fieldName, Object object) {
+		super(fieldDeclaringClassName, fieldTypeName, fieldName);
 
 		if (object == null)
 			throw new IllegalArgumentException("object == null");

@@ -1,10 +1,13 @@
 package org.nightlabs.jjqb.ui.detailtree;
 
+import java.util.Collections;
+import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -19,8 +22,10 @@ import org.eclipse.swt.events.MouseAdapter;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
+import org.nightlabs.jjqb.core.LabelTextOption;
 import org.nightlabs.jjqb.core.ObjectReferenceChild;
 import org.nightlabs.jjqb.core.oda.ResultSet;
+import org.nightlabs.jjqb.ui.labeltextoptionaction.LabelTextOptionsContainer;
 import org.nightlabs.jjqb.ui.licence.LicenceNotValidDialog;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,11 +35,13 @@ import org.slf4j.LoggerFactory;
  */
 public class ObjectGraphDetailTreeComposite
 extends Composite
+implements LabelTextOptionsContainer
 {
 	private static final Logger logger = LoggerFactory.getLogger(ObjectGraphDetailTreeComposite.class);
 
 	private TreeViewer treeViewer;
 	private ObjectGraphDetailTreeModel model;
+	private EnumSet<LabelTextOption> labelTextOptions = EnumSet.of(LabelTextOption.showPersistentID);
 
 	private Map<String, ExpansionState> objectGraphRootClassName2ExpansionState = new HashMap<String, ExpansionState>();
 
@@ -42,6 +49,26 @@ extends Composite
 		super(parent, style);
 		setLayout(new FillLayout(SWT.HORIZONTAL | SWT.VERTICAL));
 		createTreeViewer();
+	}
+
+	@Override
+	public Set<LabelTextOption> getLabelTextOptions() {
+		if (labelTextOptions == null)
+			return null;
+		else
+			return Collections.unmodifiableSet(labelTextOptions);
+	}
+
+	@Override
+	public void setLabelTextOptions(Set<LabelTextOption> labelTextOptions) {
+		if (labelTextOptions == null)
+			this.labelTextOptions = null;
+		else {
+			EnumSet<LabelTextOption> s = EnumSet.noneOf(LabelTextOption.class);
+			s.addAll(labelTextOptions);
+			this.labelTextOptions = s;
+		}
+		treeViewer.refresh(true);
 	}
 
 	private void createTreeViewer() {
@@ -53,7 +80,7 @@ extends Composite
 			@Override
 			public String getText(Object element) {
 				if (element instanceof ObjectGraphDetailTreeNode)
-					return ((ObjectGraphDetailTreeNode)element).getLabelText();
+					return ((ObjectGraphDetailTreeNode)element).getLabelText(labelTextOptions);
 				else
 					return super.getText(element);
 			}

@@ -3,6 +3,7 @@ package org.nightlabs.jjqb.core;
 import java.lang.reflect.Field;
 import java.util.Collection;
 import java.util.Map;
+import java.util.Set;
 
 import org.nightlabs.jjqb.childvm.shared.api.ChildVM;
 
@@ -45,7 +46,7 @@ public interface ObjectReferenceChild
 	/**
 	 * {@inheritDoc}
 	 * <p>
-	 * In contrast to {@link #toLabelString()}, this method returns additional information
+	 * In contrast to {@link #getLabelText(Set)}, this method returns additional information
 	 * which is useful in log files or debug sessions.
 	 * </p>
 	 * @return a String-representation of this object.
@@ -60,8 +61,9 @@ public interface ObjectReferenceChild
 	 * In contrast to {@link #toString()}, this method returns less information and
 	 * is focused on the user of the application.
 	 * </p>
+	 * @param labelTextOptions options controlling how exactly the label-text should be created. Must not be <code>null</code>.
 	 * @return a String-representation of this object references' real object and field
 	 * for displaying in UI.
 	 */
-	String toLabelString();
+	String getLabelText(Set<LabelTextOption> labelTextOptions);
 }

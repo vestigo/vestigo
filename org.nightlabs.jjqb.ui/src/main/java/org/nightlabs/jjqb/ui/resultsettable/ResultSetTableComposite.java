@@ -3,11 +3,16 @@ package org.nightlabs.jjqb.ui.resultsettable;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.EnumSet;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.ListenerList;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.datatools.connectivity.oda.IResultSet;
 import org.eclipse.datatools.connectivity.oda.OdaException;
 import org.eclipse.jface.viewers.CellLabelProvider;
@@ -32,15 +37,20 @@ import org.eclipse.swt.events.PaintEvent;
 import org.eclipse.swt.events.PaintListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
+import org.nightlabs.jjqb.core.LabelTextOption;
+import org.nightlabs.jjqb.core.LabelTextUtil;
 import org.nightlabs.jjqb.core.ObjectReference;
 import org.nightlabs.jjqb.core.oda.ResultSet;
+import org.nightlabs.jjqb.ui.labeltextoptionaction.LabelTextOptionsContainer;
 import org.nightlabs.jjqb.ui.licence.LicenceNotValidDialog;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -49,12 +59,15 @@ import org.slf4j.LoggerFactory;
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
  */
 public class ResultSetTableComposite extends Composite
-implements ISelectionProvider
+implements ISelectionProvider, LabelTextOptionsContainer
 {
 	private static final Logger logger = LoggerFactory.getLogger(ResultSetTableComposite.class);
 
+	private Display display;
 	private TableViewer tableViewer;
+	private Table table;
 	private TableCursor tableCursor;
+	private Set<LabelTextOption> labelTextOptions = EnumSet.of(LabelTextOption.showObjectToString, LabelTextOption.showPersistentID);
 
 	private List<ResultSetTableRow> selectedRows = Collections.emptyList();
 	private List<ResultSetTableCell> selectedCells = Collections.emptyList();
@@ -62,9 +75,54 @@ implements ISelectionProvider
 	public ResultSetTableComposite(Composite parent, int style) {
 		super(parent, style);
 		setLayout(new FillLayout(SWT.HORIZONTAL | SWT.VERTICAL));
+		display = parent.getDisplay();
 		createTableViewer();
 		createTableCursor();
 		registerOpenLicenceNotValidDialogListeners();
+	}
+
+	@Override
+	public Set<LabelTextOption> getLabelTextOptions() {
+		if (labelTextOptions == null)
+			return null;
+		else
+			return Collections.unmodifiableSet(labelTextOptions);
+	}
+
+	@Override
+	public void setLabelTextOptions(Set<LabelTextOption> labelTextOptions) {
+		if (labelTextOptions == null)
+			throw new IllegalArgumentException("labelTextOptions == null");
+
+		EnumSet<LabelTextOption> s = EnumSet.noneOf(LabelTextOption.class);
+		s.addAll(labelTextOptions);
+		this.labelTextOptions = s;
+
+		refresh();
+	}
+
+	protected void refresh()
+	{
+		// tableViewer.refresh();
+		// Unfortunately, 'tableViewer.refresh()' causes the table to turn completely blank (until scrolled or clicked)
+		// and I have no idea how to prevent this (tried quite a lot already) :-( Probably a bug related to SWT.VIRTUAL :-(
+		//
+		// But finally this workaround came to my mind and proved functional: Collect visible TableItems and call
+		// tableViewer.update(...) on them.
+		// Marco :-)
+		Set<TableItem> tableItems = new HashSet<TableItem>();
+		for (int y = 0; y < table.getBounds().height; ++y) {
+			TableItem item = table.getItem(new Point(1, y));
+			if (item == null)
+				logger.warn("setLabelTextOptions: item is null!");
+			else
+				tableItems.add(item);
+		}
+
+		for (TableItem item : tableItems) {
+			if (item.getData() != null)
+				tableViewer.update(item.getData(), null);
+		}
 	}
 
 	private void createTableViewer() {
@@ -78,7 +136,9 @@ implements ISelectionProvider
 		tableViewer.getTable().setHeaderVisible(true);
 		tableViewer.getTable().setLinesVisible(true);
 		tableViewer.setUseHashlookup(true);
+		table = tableViewer.getTable();
 //		hookRepairPaintListener(); // I don't have these paint bugs here in the office - only at home - strange (and it makes things really slow, here).
+		hookRepairPaintListener(); // I have them in the office, too (but not that often) - trying a better implementation to avoid slowliness.
 	}
 
 	private void openLicenceNotValidDialogIfLicenceNotValidRowSelected()
@@ -98,22 +158,53 @@ implements ISelectionProvider
 		}
 	}
 
-	private boolean repairPaintEventTriggered = false;
+	private boolean repairPaintEventRedrawTriggered = false;
+	private boolean repairPaintEventRunnableQueued = false;
+
 	/**
 	 * There is an SWT bug causing missing (white) areas when scrolling through
 	 * the LAZY table line by line. This listener fixes them by causing a redraw of the entire table.
+	 * As it is deferring the redraw operation, it causes nearly no performance impact (it collects many ordinary
+	 * paint events and executes only one additional Table.redraw() for many of them).
 	 */
 	private void hookRepairPaintListener() {
 		tableViewer.getTable().addPaintListener(new PaintListener() {
 			@Override
-			public void paintControl(PaintEvent e) {
-				if (repairPaintEventTriggered) {
-					repairPaintEventTriggered = false;
+			public void paintControl(final PaintEvent e) {
+				logger.debug("paintControl: entered with repairPaintEventRedrawTriggered={} repairPaintEventRunnableQueued={}", repairPaintEventRedrawTriggered, repairPaintEventRunnableQueued);
+				if (repairPaintEventRedrawTriggered || repairPaintEventRunnableQueued) {
+					repairPaintEventRedrawTriggered = false;
+					logger.info("paintControl: aborting");
 					return;
 				}
 
-				repairPaintEventTriggered = true;
-				((Table)e.widget).redraw();
+				repairPaintEventRunnableQueued = true;
+
+				logger.debug("paintControl: new Runnable");
+
+				Job job = new Job("Redraw") {
+					@Override
+					protected IStatus run(IProgressMonitor monitor)
+					{
+						display.asyncExec(new Runnable() {
+							@Override
+							public void run() {
+								if (table.isDisposed())
+									return;
+
+								logger.info("paintControl.asyncExecRunnable: entered");
+								repairPaintEventRunnableQueued = false;
+								repairPaintEventRedrawTriggered = true;
+								((Table)e.widget).redraw();
+							}
+						});
+						return Status.OK_STATUS;
+					}
+				};
+				job.setPriority(Job.INTERACTIVE);
+				job.setSystem(true);
+				job.schedule(300);
+				logger.debug("paintControl: leaving");
 			}
 		});
 	}
@@ -212,7 +303,7 @@ implements ISelectionProvider
 		}
 	}
 
-	private static class ResultSetTableCellLabelProvider extends CellLabelProvider
+	private class ResultSetTableCellLabelProvider extends CellLabelProvider
 	{
 		/**
 		 * 0-based index of column.
@@ -236,9 +327,9 @@ implements ISelectionProvider
 			Object cellContent = cell.getCellContent();
 
 			if (cellContent instanceof ObjectReference)
-				cellContent = ((ObjectReference)cellContent).toLabelString();
+				cellContent = ((ObjectReference)cellContent).getLabelText(labelTextOptions);
 
-			viewerCell.setText(String.valueOf(cellContent));
+			viewerCell.setText(LabelTextUtil.toStringOfSimpleObject(cellContent, labelTextOptions));
 		}
 	}
 

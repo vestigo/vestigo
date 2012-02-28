@@ -168,7 +168,11 @@ public abstract class AbstractResultSet implements ResultSet
 
 			for (int i = 0; i < firstRow.getCells().size(); ++i) {
 				ResultCellDTO firstRowCell = firstRow.getCells().get(i);
-				row.getCells().add(new ResultCellSimpleDTO(firstRowCell.getFieldDeclaringClassName(), firstRowCell.getFieldName(), LICENCE_NOT_VALID));
+				row.getCells().add(
+						new ResultCellSimpleDTO(
+								firstRowCell.getFieldDeclaringClassName(), firstRowCell.getFieldTypeName(), firstRowCell.getFieldName(), LICENCE_NOT_VALID
+						)
+				);
 			}
 		}
 		return rows;

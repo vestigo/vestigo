@@ -1,9 +1,12 @@
 package org.nightlabs.jjqb.ui.detailtree;
 
 import java.util.ArrayList;
+import java.util.EnumSet;
 import java.util.List;
 
 import org.nightlabs.jjqb.core.JJQBCorePlugin;
+import org.nightlabs.jjqb.core.LabelTextOption;
+import org.nightlabs.jjqb.core.LabelTextUtil;
 import org.nightlabs.jjqb.core.ObjectReference;
 import org.nightlabs.jjqb.core.ObjectReferenceChild;
 import org.nightlabs.jjqb.core.oda.ResultSet;
@@ -55,13 +58,13 @@ public class ObjectGraphDetailTreeNode
 		this.childNodes = childNodes;
 	}
 
-	public String getLabelText() {
+	public String getLabelText(EnumSet<LabelTextOption> labelTextOptions) {
 		if (object instanceof ObjectReferenceChild)
-			return ((ObjectReferenceChild)object).toLabelString();
+			return ((ObjectReferenceChild)object).getLabelText(labelTextOptions);
 		else if (object instanceof ObjectReference)
-			return ((ObjectReference)object).toLabelString();
+			return ((ObjectReference)object).getLabelText(labelTextOptions);
 		else
-			return String.valueOf(object);
+			return LabelTextUtil.toStringOfSimpleObject(object, labelTextOptions);
 	}
 
 	public String getReferencedObjectClassName()
@@ -123,6 +126,6 @@ public class ObjectGraphDetailTreeNode
 
 	@Override
 	public String toString() {
-		return super.toString() + '[' + getReferencedObjectClassName() + ',' + getLabelText() + ']';
+		return super.toString() + '[' + getReferencedObjectClassName() + ',' + getLabelText(EnumSet.allOf(LabelTextOption.class)) + ']';
 	}
 }

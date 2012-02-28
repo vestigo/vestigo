@@ -2,10 +2,15 @@ package org.nightlabs.jjqb.core.internal;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import org.nightlabs.jjqb.childvm.shared.ResultCellDTO;
 import org.nightlabs.jjqb.childvm.shared.ResultCellObjectRefDTO;
+import org.nightlabs.jjqb.childvm.shared.ResultCellPersistentObjectRefDTO;
+import org.nightlabs.jjqb.childvm.shared.ResultCellTransientObjectRefDTO;
 import org.nightlabs.jjqb.childvm.shared.api.ChildVM;
+import org.nightlabs.jjqb.core.LabelTextOption;
+import org.nightlabs.jjqb.core.LabelTextUtil;
 import org.nightlabs.jjqb.core.ObjectReference;
 import org.nightlabs.jjqb.core.ObjectReferenceChild;
 import org.nightlabs.jjqb.core.oda.ResultSet;
@@ -70,13 +75,27 @@ public class ObjectReferenceImpl implements ObjectReference
 	}
 
 	@Override
-	public String toLabelString() {
+	public String getLabelText(Set<LabelTextOption> labelTextOptions)
+	{
+		if (labelTextOptions == null)
+			throw new IllegalArgumentException("labelTextOptions == null");
+
 		StringBuilder sb = new StringBuilder();
 
-		sb.append(this.getObjectClassName());
-		sb.append('[').append(this.getObjectID()).append(']');
+		if (labelTextOptions.contains(LabelTextOption.showPackageName))
+			sb.append(this.getObjectClassName());
+		else
+			sb.append(LabelTextUtil.getSimpleClassName(this.getObjectClassName()));
 
-		if (this.getObjectToString() != null)
+		if (
+				(labelTextOptions.contains(LabelTextOption.showPersistentID) && (resultCellObjectRefDTO instanceof ResultCellPersistentObjectRefDTO)) ||
+				(labelTextOptions.contains(LabelTextOption.showTransientID) && (resultCellObjectRefDTO instanceof ResultCellTransientObjectRefDTO))
+		)
+		{
+			sb.append('[').append(this.getObjectID()).append(']');
+		}
+
+		if (labelTextOptions.contains(LabelTextOption.showObjectToString) && this.getObjectToString() != null)
 			sb.append(": ").append(this.getObjectToString());
 
 		return sb.toString();
