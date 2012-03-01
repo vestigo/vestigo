@@ -1,0 +1,154 @@
+grammar org.nightlabs.jjqb.xtext.jdoql.JDOQL with org.eclipse.xtext.common.Terminals
+
+generate jDOQL "http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL"
+
+SingleStringJDOQL: 
+	select=Select from=From (where=Where)?
+;
+
+Select:
+	'select' ('unique')? (resultClause=ResultClause)? (intoClause=IntoClause)?
+;
+
+ResultClause:
+	('distinct')? resultSpecs+=ResultSpecs (',')?
+;
+
+IntoClause:
+	'into' resultClassName=ClassOrInterfaceName
+;
+
+From:
+	'from' candidateClassName=CandidateClassName (excludeClause=ExcludeClause)?
+;
+
+Where:
+	'where' e=BooleanExpression
+;
+
+ExcludeClause:
+	excludeSubclasses='exclude subclasses'
+;
+
+QualifiedIdentifier:
+	ID ('.'ID)*
+;
+
+CandidateClassName:
+	QualifiedIdentifier
+;
+
+ClassOrInterfaceName:
+	QualifiedIdentifier
+;
+
+ResultSpecs:
+	ResultSpec (',')?
+;
+
+ResultSpec:
+	Expression (resultNaming=ResultNaming)?
+;
+
+ResultNaming:
+	'as' identifier=ID
+;
+
+BooleanExpression:
+	left=Expression (op=BooleanOp right=Expression)
+;
+
+BooleanOp:
+	'>' | '>=' | '<' | '<=' | 'instanceof' | '==' | '!=' | '&&' | '||'
+;
+
+Expression:
+	left=UnaryExpression (op=InfixOp right=UnaryExpression)?
+;
+
+InfixOp:
+	'*' | '/' | '%' | '+' | '-' | '&' | '|'
+;
+
+UnaryExpression:
+	modifier=PrefixOp expression=Primary |
+	cast=Cast expression=Primary |
+	expression=Primary
+;
+
+Cast:
+	'(' Type ')'
+;
+
+PrefixOp: 
+	'+' | '-' | '~' | '!'
+;
+
+Primary:
+	literal=Literal | 
+	this='this' |
+	classOrInterface = ClassOrInterfaceName |
+	'(' expression=Expression ')' 
+//	| '(' subquery=Subquery ')' 
+//	| methodInvocation=MethodInvocation 
+//	| aggregateExpression=AggregateExpression
+//	| fieldAccess=FieldAccess 
+//	| variableName=VariableName
+//	| parameterName=ParameterName
+;
+
+Type:
+	PrimitiveType |
+	ClassOrInterfaceName
+;
+
+PrimitiveType:
+	NumericType |
+	'boolean'
+;
+
+NumericType:
+	IntegralType |
+	FloatingPointType
+;
+
+IntegralType:
+	'byte' | 'short' | 'int' | 'long' | 'char'
+;
+
+FloatingPointType:
+	'float' | 'double'
+;
+
+IntegerLiteral:                                        
+	INT
+;
+
+FloatingPointLiteral:
+	INT		// TODO
+;                                 
+
+CharacterLiteral:                                      
+	STRING		// TODO
+;
+
+StringLiteral:
+	STRING
+;                                         
+
+BooleanLiteral:
+    'true' | 'false'
+;
+
+NullLiteral:
+    'null'
+;
+
+Literal:
+    IntegerLiteral |
+//    FloatingPointLiteral |
+    BooleanLiteral |
+//    CharacterLiteral |
+    StringLiteral |
+    NullLiteral
+;
