@@ -15,8 +15,8 @@ package org.nightlabs.jjqb.core.oda.impl;
 
 import org.eclipse.datatools.connectivity.oda.IDataSetMetaData;
 import org.eclipse.datatools.connectivity.oda.OdaException;
-import org.nightlabs.jjqb.childvm.shared.ConnectionDTO;
-import org.nightlabs.jjqb.childvm.shared.JPAConnectionDTO;
+import org.nightlabs.jjqb.childvm.shared.dto.ConnectionDTO;
+import org.nightlabs.jjqb.childvm.shared.dto.JPAConnectionDTO;
 import org.nightlabs.jjqb.core.oda.JPAConnection;
 import org.nightlabs.jjqb.core.oda.Query;
 

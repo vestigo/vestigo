@@ -3,10 +3,10 @@ package org.nightlabs.jjqb.core.oda;
 import org.eclipse.datatools.connectivity.oda.IResultSet;
 import org.eclipse.datatools.connectivity.oda.IResultSetMetaData;
 import org.eclipse.datatools.connectivity.oda.OdaException;
-import org.nightlabs.jjqb.childvm.shared.ResultCellDTO;
-import org.nightlabs.jjqb.childvm.shared.ResultCellNullDTO;
-import org.nightlabs.jjqb.childvm.shared.ResultCellSimpleDTO;
 import org.nightlabs.jjqb.childvm.shared.ResultSetID;
+import org.nightlabs.jjqb.childvm.shared.dto.ResultCellDTO;
+import org.nightlabs.jjqb.childvm.shared.dto.ResultCellNullDTO;
+import org.nightlabs.jjqb.childvm.shared.dto.ResultCellSimpleDTO;
 import org.nightlabs.jjqb.core.ObjectReference;
 import org.nightlabs.jjqb.core.resource.Messages;
 

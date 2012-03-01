@@ -18,12 +18,12 @@ import java.util.Set;
 import java.util.UUID;
 
 import org.nightlabs.jjqb.childvm.shared.MapEntry;
-import org.nightlabs.jjqb.childvm.shared.ResultCellDTO;
-import org.nightlabs.jjqb.childvm.shared.ResultCellNullDTO;
-import org.nightlabs.jjqb.childvm.shared.ResultCellObjectRefDTO;
-import org.nightlabs.jjqb.childvm.shared.ResultCellSimpleDTO;
-import org.nightlabs.jjqb.childvm.shared.ResultCellTransientObjectRefDTO;
 import org.nightlabs.jjqb.childvm.shared.ResultSetID;
+import org.nightlabs.jjqb.childvm.shared.dto.ResultCellDTO;
+import org.nightlabs.jjqb.childvm.shared.dto.ResultCellNullDTO;
+import org.nightlabs.jjqb.childvm.shared.dto.ResultCellObjectRefDTO;
+import org.nightlabs.jjqb.childvm.shared.dto.ResultCellSimpleDTO;
+import org.nightlabs.jjqb.childvm.shared.dto.ResultCellTransientObjectRefDTO;
 import org.nightlabs.util.reflect.ReflectUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

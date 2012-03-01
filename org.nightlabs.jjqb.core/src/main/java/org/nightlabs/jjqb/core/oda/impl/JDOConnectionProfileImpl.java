@@ -1,7 +1,7 @@
 package org.nightlabs.jjqb.core.oda.impl;
 
-import org.nightlabs.jjqb.childvm.shared.ConnectionProfileDTO;
-import org.nightlabs.jjqb.childvm.shared.JDOConnectionProfileDTO;
+import org.nightlabs.jjqb.childvm.shared.dto.ConnectionProfileDTO;
+import org.nightlabs.jjqb.childvm.shared.dto.JDOConnectionProfileDTO;
 import org.nightlabs.jjqb.core.oda.JDOConnectionProfile;
 
 /**

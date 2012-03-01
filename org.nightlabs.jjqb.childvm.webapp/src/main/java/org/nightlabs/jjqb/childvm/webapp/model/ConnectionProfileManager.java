@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.ServiceLoader;
 
-import org.nightlabs.jjqb.childvm.shared.ConnectionProfileDTO;
+import org.nightlabs.jjqb.childvm.shared.dto.ConnectionProfileDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

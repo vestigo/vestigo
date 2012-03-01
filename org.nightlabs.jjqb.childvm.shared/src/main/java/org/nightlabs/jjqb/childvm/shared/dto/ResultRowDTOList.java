@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.childvm.shared;
+package org.nightlabs.jjqb.childvm.shared.dto;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -7,17 +7,17 @@ import java.util.List;
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
  */
-public class ConnectionDTOList
+public class ResultRowDTOList
 implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 
-	private List<ConnectionDTO> elements = new ArrayList<ConnectionDTO>();
+	private List<ResultRowDTO> elements = new ArrayList<ResultRowDTO>();
 
-	public List<ConnectionDTO> getElements() {
+	public List<ResultRowDTO> getElements() {
 		return elements;
 	}
-	public void setElements(List<ConnectionDTO> elements) {
+	public void setElements(List<ResultRowDTO> elements) {
 		this.elements = elements;
 	}
 }

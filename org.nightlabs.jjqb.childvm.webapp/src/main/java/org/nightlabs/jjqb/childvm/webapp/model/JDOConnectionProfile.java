@@ -7,9 +7,9 @@ import java.util.Properties;
 import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManagerFactory;
 
-import org.nightlabs.jjqb.childvm.shared.ConnectionProfileDTO;
-import org.nightlabs.jjqb.childvm.shared.JDOConnectionProfileDTO;
 import org.nightlabs.jjqb.childvm.shared.PropertiesUtil;
+import org.nightlabs.jjqb.childvm.shared.dto.ConnectionProfileDTO;
+import org.nightlabs.jjqb.childvm.shared.dto.JDOConnectionProfileDTO;
 import org.nightlabs.jjqb.childvm.shared.persistencexml.JDOPersistenceUnitHelper;
 import org.nightlabs.jjqb.childvm.shared.persistencexml.PersistenceUnitHelper;
 import org.slf4j.Logger;

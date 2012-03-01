@@ -5,9 +5,9 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 
-import org.nightlabs.jjqb.childvm.shared.QueryDTO;
-import org.nightlabs.jjqb.childvm.shared.ResultSetDTO;
 import org.nightlabs.jjqb.childvm.shared.ResultSetID;
+import org.nightlabs.jjqb.childvm.shared.dto.QueryDTO;
+import org.nightlabs.jjqb.childvm.shared.dto.ResultSetDTO;
 import org.nightlabs.jjqb.childvm.webapp.model.Connection;
 import org.nightlabs.jjqb.childvm.webapp.model.ConnectionManager;
 import org.nightlabs.jjqb.childvm.webapp.model.ResultSet;

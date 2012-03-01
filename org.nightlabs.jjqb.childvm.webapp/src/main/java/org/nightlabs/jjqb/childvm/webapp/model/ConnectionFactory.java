@@ -3,7 +3,7 @@
  */
 package org.nightlabs.jjqb.childvm.webapp.model;
 
-import org.nightlabs.jjqb.childvm.shared.ConnectionDTO;
+import org.nightlabs.jjqb.childvm.shared.dto.ConnectionDTO;
 
 /**
  * @author Alexander Bieber <!-- alex [AT] nightlabs [DOT] de -->

@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import org.nightlabs.jjqb.childvm.shared.ResultCellDTO;
-import org.nightlabs.jjqb.childvm.shared.ResultCellObjectRefDTO;
-import org.nightlabs.jjqb.childvm.shared.ResultCellPersistentObjectRefDTO;
-import org.nightlabs.jjqb.childvm.shared.ResultCellTransientObjectRefDTO;
 import org.nightlabs.jjqb.childvm.shared.api.ChildVM;
+import org.nightlabs.jjqb.childvm.shared.dto.ResultCellDTO;
+import org.nightlabs.jjqb.childvm.shared.dto.ResultCellObjectRefDTO;
+import org.nightlabs.jjqb.childvm.shared.dto.ResultCellPersistentObjectRefDTO;
+import org.nightlabs.jjqb.childvm.shared.dto.ResultCellTransientObjectRefDTO;
 import org.nightlabs.jjqb.core.LabelTextOption;
 import org.nightlabs.jjqb.core.LabelTextUtil;
 import org.nightlabs.jjqb.core.ObjectReference;

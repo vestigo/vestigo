@@ -10,9 +10,9 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.QueryParam;
 
-import org.nightlabs.jjqb.childvm.shared.ConnectionDTO;
-import org.nightlabs.jjqb.childvm.shared.ConnectionDTOList;
-import org.nightlabs.jjqb.childvm.shared.ConnectionDTOPutResult;
+import org.nightlabs.jjqb.childvm.shared.dto.ConnectionDTO;
+import org.nightlabs.jjqb.childvm.shared.dto.ConnectionDTOList;
+import org.nightlabs.jjqb.childvm.shared.dto.ConnectionDTOPutResult;
 import org.nightlabs.jjqb.childvm.webapp.model.Connection;
 import org.nightlabs.jjqb.childvm.webapp.model.ConnectionManager;
 import org.nightlabs.jjqb.childvm.webapp.model.ConnectionProfile;

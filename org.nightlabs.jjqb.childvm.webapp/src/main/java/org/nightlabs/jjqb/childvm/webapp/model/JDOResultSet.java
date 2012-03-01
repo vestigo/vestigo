@@ -11,9 +11,9 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 import javax.jdo.identity.SingleFieldIdentity;
 
-import org.nightlabs.jjqb.childvm.shared.ResultCellDTO;
-import org.nightlabs.jjqb.childvm.shared.ResultCellPersistentObjectRefDTO;
-import org.nightlabs.jjqb.childvm.shared.ResultCellSimpleDTO;
+import org.nightlabs.jjqb.childvm.shared.dto.ResultCellDTO;
+import org.nightlabs.jjqb.childvm.shared.dto.ResultCellPersistentObjectRefDTO;
+import org.nightlabs.jjqb.childvm.shared.dto.ResultCellSimpleDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.ServiceLoader;
 import java.util.UUID;
 
-import org.nightlabs.jjqb.childvm.shared.ConnectionDTO;
+import org.nightlabs.jjqb.childvm.shared.dto.ConnectionDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

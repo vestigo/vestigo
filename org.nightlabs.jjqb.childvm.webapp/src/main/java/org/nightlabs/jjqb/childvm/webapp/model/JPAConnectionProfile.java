@@ -7,9 +7,9 @@ import java.util.Properties;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import org.nightlabs.jjqb.childvm.shared.ConnectionProfileDTO;
-import org.nightlabs.jjqb.childvm.shared.JPAConnectionProfileDTO;
 import org.nightlabs.jjqb.childvm.shared.PropertiesUtil;
+import org.nightlabs.jjqb.childvm.shared.dto.ConnectionProfileDTO;
+import org.nightlabs.jjqb.childvm.shared.dto.JPAConnectionProfileDTO;
 import org.nightlabs.jjqb.childvm.shared.persistencexml.JPAPersistenceUnitHelper;
 import org.nightlabs.jjqb.childvm.shared.persistencexml.PersistenceUnitHelper;
 import org.slf4j.Logger;

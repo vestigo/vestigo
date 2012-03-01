@@ -14,7 +14,7 @@
 package org.nightlabs.jjqb.cumulus4j.core.oda.impl;
 
 import org.eclipse.datatools.connectivity.oda.OdaException;
-import org.nightlabs.jjqb.childvm.shared.ConnectionDTO;
+import org.nightlabs.jjqb.childvm.shared.dto.ConnectionDTO;
 import org.nightlabs.jjqb.core.oda.JDOConnection;
 import org.nightlabs.jjqb.core.oda.Query;
 import org.nightlabs.jjqb.core.oda.impl.AbstractConnection;

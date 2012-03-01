@@ -9,8 +9,8 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import org.nightlabs.jjqb.childvm.shared.ResultCellDTO;
-import org.nightlabs.jjqb.childvm.shared.ResultCellPersistentObjectRefDTO;
+import org.nightlabs.jjqb.childvm.shared.dto.ResultCellDTO;
+import org.nightlabs.jjqb.childvm.shared.dto.ResultCellPersistentObjectRefDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

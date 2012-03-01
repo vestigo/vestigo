@@ -2,7 +2,7 @@ package org.nightlabs.jjqb.core.internal;
 
 import java.util.Set;
 
-import org.nightlabs.jjqb.childvm.shared.ResultCellDTO;
+import org.nightlabs.jjqb.childvm.shared.dto.ResultCellDTO;
 import org.nightlabs.jjqb.core.FieldDesc;
 import org.nightlabs.jjqb.core.LabelTextOption;
 import org.nightlabs.jjqb.core.LabelTextUtil;

@@ -5,13 +5,13 @@ import java.util.List;
 import java.util.SortedSet;
 import java.util.UUID;
 
-import org.nightlabs.jjqb.childvm.shared.ConnectionDTO;
-import org.nightlabs.jjqb.childvm.shared.ConnectionProfileDTO;
-import org.nightlabs.jjqb.childvm.shared.QueryParameterDTO;
-import org.nightlabs.jjqb.childvm.shared.ResultCellDTO;
-import org.nightlabs.jjqb.childvm.shared.ResultCellObjectRefDTO;
-import org.nightlabs.jjqb.childvm.shared.ResultRowDTO;
 import org.nightlabs.jjqb.childvm.shared.ResultSetID;
+import org.nightlabs.jjqb.childvm.shared.dto.ConnectionDTO;
+import org.nightlabs.jjqb.childvm.shared.dto.ConnectionProfileDTO;
+import org.nightlabs.jjqb.childvm.shared.dto.QueryParameterDTO;
+import org.nightlabs.jjqb.childvm.shared.dto.ResultCellDTO;
+import org.nightlabs.jjqb.childvm.shared.dto.ResultCellObjectRefDTO;
+import org.nightlabs.jjqb.childvm.shared.dto.ResultRowDTO;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de

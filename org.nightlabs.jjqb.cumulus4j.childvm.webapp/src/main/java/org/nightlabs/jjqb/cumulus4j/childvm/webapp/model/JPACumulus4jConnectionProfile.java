@@ -1,6 +1,6 @@
 package org.nightlabs.jjqb.cumulus4j.childvm.webapp.model;
 
-import org.nightlabs.jjqb.childvm.shared.ConnectionProfileDTO;
+import org.nightlabs.jjqb.childvm.shared.dto.ConnectionProfileDTO;
 import org.nightlabs.jjqb.childvm.webapp.model.ConnectionProfile;
 import org.nightlabs.jjqb.childvm.webapp.model.ConnectionProfileFactory;
 import org.nightlabs.jjqb.childvm.webapp.model.JPAConnectionProfile;

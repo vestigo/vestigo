@@ -11,8 +11,8 @@ import java.util.UUID;
 import junit.framework.Assert;
 
 import org.junit.Test;
-import org.nightlabs.jjqb.childvm.shared.ConnectionProfileDTO;
-import org.nightlabs.jjqb.childvm.shared.JPAConnectionProfileDTO;
+import org.nightlabs.jjqb.childvm.shared.dto.ConnectionProfileDTO;
+import org.nightlabs.jjqb.childvm.shared.dto.JPAConnectionProfileDTO;
 
 /**
  * @author Alexander Bieber <!-- alex [AT] nightlabs [DOT] de -->

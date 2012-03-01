@@ -6,8 +6,8 @@ package org.nightlabs.jjqb.cumulus4j.childvm.webapp.model.test;
 import junit.framework.Assert;
 
 import org.junit.Test;
-import org.nightlabs.jjqb.childvm.shared.JDOConnectionDTO;
-import org.nightlabs.jjqb.childvm.shared.JPAConnectionDTO;
+import org.nightlabs.jjqb.childvm.shared.dto.JDOConnectionDTO;
+import org.nightlabs.jjqb.childvm.shared.dto.JPAConnectionDTO;
 import org.nightlabs.jjqb.childvm.webapp.model.Connection;
 import org.nightlabs.jjqb.childvm.webapp.model.JDOConnection;
 import org.nightlabs.jjqb.childvm.webapp.model.JPAConnection;

@@ -10,9 +10,9 @@ import junit.framework.Assert;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.nightlabs.jjqb.childvm.shared.ConnectionProfileDTO;
-import org.nightlabs.jjqb.childvm.shared.JDOConnectionProfileDTO;
-import org.nightlabs.jjqb.childvm.shared.JPAConnectionProfileDTO;
+import org.nightlabs.jjqb.childvm.shared.dto.ConnectionProfileDTO;
+import org.nightlabs.jjqb.childvm.shared.dto.JDOConnectionProfileDTO;
+import org.nightlabs.jjqb.childvm.shared.dto.JPAConnectionProfileDTO;
 import org.nightlabs.jjqb.childvm.webapp.model.ConnectionProfile;
 import org.nightlabs.jjqb.childvm.webapp.model.ConnectionProfileManager;
 import org.nightlabs.jjqb.childvm.webapp.model.JDOConnectionProfile;

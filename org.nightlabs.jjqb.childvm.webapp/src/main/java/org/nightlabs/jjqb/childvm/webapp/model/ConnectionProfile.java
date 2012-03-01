@@ -14,9 +14,9 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 
-import org.nightlabs.jjqb.childvm.shared.ConnectionProfileDTO;
 import org.nightlabs.jjqb.childvm.shared.PropertiesUtil;
 import org.nightlabs.jjqb.childvm.shared.classloader.ClassLoaderManager;
+import org.nightlabs.jjqb.childvm.shared.dto.ConnectionProfileDTO;
 import org.nightlabs.jjqb.childvm.shared.persistencexml.PersistenceUnitHelper;
 import org.nightlabs.jjqb.childvm.shared.persistencexml.PersistenceXml;
 import org.nightlabs.jjqb.childvm.shared.persistencexml.PersistenceXmlScanner;

@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.childvm.shared;
+package org.nightlabs.jjqb.childvm.shared.dto;
 
 import java.io.Serializable;
 import java.util.ArrayList;

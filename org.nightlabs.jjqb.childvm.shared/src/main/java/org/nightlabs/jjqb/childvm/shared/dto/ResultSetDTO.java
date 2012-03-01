@@ -1,6 +1,8 @@
-package org.nightlabs.jjqb.childvm.shared;
+package org.nightlabs.jjqb.childvm.shared.dto;
 
 import java.io.Serializable;
+
+import org.nightlabs.jjqb.childvm.shared.ResultSetID;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de

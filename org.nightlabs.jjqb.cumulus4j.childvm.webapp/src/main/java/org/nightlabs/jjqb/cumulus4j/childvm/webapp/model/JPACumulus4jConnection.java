@@ -8,8 +8,8 @@ import java.util.SortedSet;
 
 import javax.persistence.Query;
 
-import org.nightlabs.jjqb.childvm.shared.ConnectionDTO;
-import org.nightlabs.jjqb.childvm.shared.QueryParameterDTO;
+import org.nightlabs.jjqb.childvm.shared.dto.ConnectionDTO;
+import org.nightlabs.jjqb.childvm.shared.dto.QueryParameterDTO;
 import org.nightlabs.jjqb.childvm.webapp.model.Connection;
 import org.nightlabs.jjqb.childvm.webapp.model.ConnectionFactory;
 import org.nightlabs.jjqb.childvm.webapp.model.JPAConnection;

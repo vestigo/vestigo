@@ -1,6 +1,6 @@
 package org.nightlabs.jjqb.cumulus4j.core.oda.impl;
 
-import org.nightlabs.jjqb.childvm.shared.ConnectionProfileDTO;
+import org.nightlabs.jjqb.childvm.shared.dto.ConnectionProfileDTO;
 import org.nightlabs.jjqb.core.oda.JDOConnectionProfile;
 import org.nightlabs.jjqb.cumulus4j.childvm.shared.JDOCumulus4jConnectionProfileDTO;
 import org.nightlabs.jjqb.cumulus4j.core.oda.Cumulus4jConnectionProfile;

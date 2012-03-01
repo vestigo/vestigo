@@ -9,9 +9,9 @@ import junit.framework.Assert;
 
 import org.junit.After;
 import org.junit.Before;
-import org.nightlabs.jjqb.childvm.shared.ConnectionDTO;
-import org.nightlabs.jjqb.childvm.shared.ConnectionProfileDTO;
 import org.nightlabs.jjqb.childvm.shared.api.ChildVM;
+import org.nightlabs.jjqb.childvm.shared.dto.ConnectionDTO;
+import org.nightlabs.jjqb.childvm.shared.dto.ConnectionProfileDTO;
 import org.nightlabs.jjqb.childvm.webapp.client.ChildVMWebappClient;
 import org.nightlabs.jjqb.childvm.webapp.client.testresources.sql.AbstractSetup;
 

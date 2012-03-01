@@ -14,9 +14,9 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 import javax.script.ScriptEngine;
 
-import org.nightlabs.jjqb.childvm.shared.ConnectionDTO;
-import org.nightlabs.jjqb.childvm.shared.JDOConnectionDTO;
-import org.nightlabs.jjqb.childvm.shared.QueryParameterDTO;
+import org.nightlabs.jjqb.childvm.shared.dto.ConnectionDTO;
+import org.nightlabs.jjqb.childvm.shared.dto.JDOConnectionDTO;
+import org.nightlabs.jjqb.childvm.shared.dto.QueryParameterDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

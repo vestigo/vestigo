@@ -7,11 +7,11 @@ import junit.framework.Assert;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.nightlabs.jjqb.childvm.shared.ConnectionDTO;
-import org.nightlabs.jjqb.childvm.shared.ConnectionProfileDTO;
-import org.nightlabs.jjqb.childvm.shared.JDOConnectionDTO;
-import org.nightlabs.jjqb.childvm.shared.JDOConnectionProfileDTO;
-import org.nightlabs.jjqb.childvm.shared.JPAConnectionDTO;
+import org.nightlabs.jjqb.childvm.shared.dto.ConnectionDTO;
+import org.nightlabs.jjqb.childvm.shared.dto.ConnectionProfileDTO;
+import org.nightlabs.jjqb.childvm.shared.dto.JDOConnectionDTO;
+import org.nightlabs.jjqb.childvm.shared.dto.JDOConnectionProfileDTO;
+import org.nightlabs.jjqb.childvm.shared.dto.JPAConnectionDTO;
 import org.nightlabs.jjqb.childvm.shared.persistencexml.JDOPersistenceUnitHelper;
 import org.nightlabs.jjqb.childvm.shared.persistencexml.PersistenceUnitHelper;
 import org.nightlabs.jjqb.childvm.webapp.model.Connection;
