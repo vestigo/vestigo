@@ -6,6 +6,9 @@
 	<version>0.1.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
+	<url>http://jjqb.nightlabs.com</url>
+	<name>JJQB - JDO/JPA Query Browser</name>
+
 	<parent>
 		<groupId>org.nightlabs.eclipse</groupId>
 		<artifactId>org.nightlabs.eclipse.parent</artifactId>

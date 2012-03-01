@@ -153,7 +153,13 @@ public class ClassLoaderManager
 	{
 		String fn = file.getName();
 		String fnLower = fn.toLowerCase();
-		return fnLower.endsWith(".ear") || fnLower.endsWith(".war") || fnLower.endsWith(".zip");
+		return (
+				fnLower.endsWith(".ear") ||
+				fnLower.endsWith(".rar") ||
+				fnLower.endsWith(".sar") ||
+				fnLower.endsWith(".war") ||
+				fnLower.endsWith(".zip")
+		);
 	}
 
 	private boolean isNonContainerArchive(File file)

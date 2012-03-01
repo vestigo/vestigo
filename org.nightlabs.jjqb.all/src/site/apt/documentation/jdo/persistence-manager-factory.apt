@@ -1,0 +1,14 @@
+	---
+	JDO PersistenceManagerFactory
+	---
+	Marco หงุ่ยตระกูล-Schulze
+	---
+	2012-02-16
+
+JDO PersistenceManagerFactory
+
+	Any JDO-enabled application will require at least one <PersistenceManagerFactory>. Typically applications
+	create one per datastore being utilised. A <PersistenceManagerFactory> provides access to <PersistenceManager>s
+	which allow objects to be persisted, and retrieved.
+
+	Please read more on the {{{http://www.datanucleus.org/products/accessplatform_3_0/jdo/pmf.html}DataNucleus web site}}.
