@@ -1,0 +1,26 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.nightlabs.jjqb.xtext.jdoql.ui
+Bundle-Vendor: NightLabs Consulting GmbH
+Bundle-Version: 0.1.1.qualifier
+Bundle-SymbolicName: org.nightlabs.jjqb.xtext.jdoql.ui;singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.nightlabs.jjqb.xtext.jdoql;visibility:=reexport,
+ org.eclipse.xtext.ui,
+ org.eclipse.ui.editors;bundle-version="3.5.0",
+ org.eclipse.ui.ide;bundle-version="3.5.0",
+ org.eclipse.xtext.ui.shared,
+ org.eclipse.ui,
+ org.eclipse.xtext.builder,
+ org.antlr.runtime,
+ org.eclipse.xtext.common.types.ui,
+ org.eclipse.xtext.ui.codetemplates.ui,
+ org.eclipse.compare
+Import-Package: org.apache.log4j,
+ org.apache.commons.logging
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Export-Package: org.nightlabs.jjqb.xtext.jdoql.ui.contentassist,
+ org.nightlabs.jjqb.xtext.jdoql.ui.contentassist.antlr,
+ org.nightlabs.jjqb.xtext.jdoql.ui.internal
+Bundle-Activator: org.nightlabs.jjqb.xtext.jdoql.ui.internal.JDOQLActivator
+Bundle-ClassPath: .
