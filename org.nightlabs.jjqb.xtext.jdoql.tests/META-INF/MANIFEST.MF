@@ -1,0 +1,19 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.nightlabs.jjqb.xtext.jdoql.tests
+Bundle-Vendor: NightLabs Consulting GmbH
+Bundle-Version: 0.1.1.qualifier
+Bundle-SymbolicName: org.nightlabs.jjqb.xtext.jdoql.tests;singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.nightlabs.jjqb.xtext.jdoql,
+ org.nightlabs.jjqb.xtext.jdoql.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.xtext,
+ org.eclipse.xtext.junit4,
+ org.eclipse.xtext.ui.junit,
+ org.junit4,
+ org.eclipse.ui.workbench;resolution:=optional
+Import-Package: org.apache.log4j,
+ org.apache.commons.logging
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-ClassPath: .
