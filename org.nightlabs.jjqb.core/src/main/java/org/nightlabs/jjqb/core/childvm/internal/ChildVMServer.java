@@ -63,7 +63,7 @@ public class ChildVMServer
 	public static final String PREFERENCE_KEY_LOG4J_ADDITIONAL_PROPERTIES = "childVM.log4j.additionalProperties";
 
 	public static final String PREFERENCE_KEY_SERVER_START_TIMEOUT_MS = "childVM.server.startTimeoutMS";
-	public static final long PREFERENCE_DEFAULT_SERVER_START_TIMEOUT_MS = 60L * 1000L;
+	public static final long PREFERENCE_DEFAULT_SERVER_START_TIMEOUT_MS = 30L * 1000L;
 
 	/**
 	 * Launch the child JVM in debug mode, so that connecting from the IDE
@@ -73,6 +73,16 @@ public class ChildVMServer
 
 	public static final String PREFERENCE_KEY_DEBUG_MODE_PORT = "childVM.debugMode.port";
 	public static final int PREFERENCE_DEFAULT_DEBUG_MODE_PORT = 8000;
+
+	public static final String PREFERENCE_KEY_WAC_SOCKET_CONNECT_TIMEOUT_MS = "childVM.webappClient.socketConnectTimeoutMS";
+	public static final int PREFERENCE_DEFAULT_WAC_SOCKET_CONNECT_TIMEOUT_MS = ChildVMWebappClient.DEFAULT_SOCKET_CONNECT_TIMEOUT_MS;
+	public static final String PREFERENCE_KEY_WAC_SOCKET_READ_TIMEOUT_MS = "childVM.webappClient.socketReadTimeoutMS";
+	public static final int PREFERENCE_DEFAULT_WAC_SOCKET_READ_TIMEOUT_MS = ChildVMWebappClient.DEFAULT_SOCKET_READ_TIMEOUT_MS;
+
+	public static final String PREFERENCE_KEY_WAC_ONLINECHECK_SOCKET_CONNECT_TIMEOUT_MS = "childVM.webappClient.onlineCheck.socketConnectTimeoutMS";
+	public static final int PREFERENCE_DEFAULT_WAC_ONLINECHECK_SOCKET_CONNECT_TIMEOUT_MS = ChildVMWebappClient.DEFAULT_ONLINECHECK_SOCKET_CONNECT_TIMEOUT_MS;
+	public static final String PREFERENCE_KEY_WAC_ONLINECHECK_SOCKET_READ_TIMEOUT_MS = "childVM.webappClient.onlineCheck.socketReadTimeoutMS";
+	public static final int PREFERENCE_DEFAULT_WAC_ONLINECHECK_SOCKET_READ_TIMEOUT_MS = ChildVMWebappClient.DEFAULT_ONLINECHECK_SOCKET_READ_TIMEOUT_MS;
 
 	/**
 	 * <p>
@@ -128,7 +138,12 @@ public class ChildVMServer
 
 	public ChildVM getChildVM() {
 		if (childVMClient == null) {
-			childVMClient = new ChildVMWebappClient("localhost", webAppName, port);
+			ChildVMWebappClient client = new ChildVMWebappClient("localhost", webAppName, port);
+			client.setSocketConnectTimeoutMillis(getChildVMWebappClientSocketConnectTimeoutMillis());
+			client.setSocketReadTimeoutMillis(getChildVMWebappClientSocketReadTimeoutMillis());
+			client.setOnlineCheckSocketConnectTimeoutMillis(getChildVMWebappClientOnlineCheckSocketConnectTimeoutMillis());
+			client.setOnlineCheckSocketReadTimeoutMillis(getChildVMWebappClientOnlineCheckSocketReadTimeoutMillis());
+			childVMClient = client;
 		}
 		return childVMClient;
 	}
@@ -577,5 +592,19 @@ public class ChildVMServer
 	private boolean isChildVMDebugModeWaitForDebugger()
 	{
 		return JJQBCorePlugin.getDefault().getPreferences().getBoolean(PREFERENCE_KEY_DEBUG_MODE_WAIT_FOR_DEBUGGER, false);
+	}
+
+	public int getChildVMWebappClientSocketConnectTimeoutMillis() {
+		return (int) JJQBCorePlugin.getDefault().getPreferences().getLong(PREFERENCE_KEY_WAC_SOCKET_CONNECT_TIMEOUT_MS, PREFERENCE_DEFAULT_WAC_SOCKET_CONNECT_TIMEOUT_MS);
+	}
+	public int getChildVMWebappClientSocketReadTimeoutMillis() {
+		return (int) JJQBCorePlugin.getDefault().getPreferences().getLong(PREFERENCE_KEY_WAC_SOCKET_READ_TIMEOUT_MS, PREFERENCE_DEFAULT_WAC_SOCKET_READ_TIMEOUT_MS);
+	}
+
+	public int getChildVMWebappClientOnlineCheckSocketConnectTimeoutMillis() {
+		return (int) JJQBCorePlugin.getDefault().getPreferences().getLong(PREFERENCE_KEY_WAC_ONLINECHECK_SOCKET_CONNECT_TIMEOUT_MS, PREFERENCE_DEFAULT_WAC_ONLINECHECK_SOCKET_CONNECT_TIMEOUT_MS);
+	}
+	public int getChildVMWebappClientOnlineCheckSocketReadTimeoutMillis() {
+		return (int) JJQBCorePlugin.getDefault().getPreferences().getLong(PREFERENCE_KEY_WAC_ONLINECHECK_SOCKET_READ_TIMEOUT_MS, PREFERENCE_DEFAULT_WAC_ONLINECHECK_SOCKET_READ_TIMEOUT_MS);
 	}
 }

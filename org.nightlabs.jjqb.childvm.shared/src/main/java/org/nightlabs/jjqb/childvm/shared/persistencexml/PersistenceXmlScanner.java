@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.core.persistencexml;
+package org.nightlabs.jjqb.childvm.shared.persistencexml;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,7 +16,7 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 
 import org.nightlabs.jjqb.childvm.shared.classloader.ClassLoaderManager;
-import org.nightlabs.jjqb.core.persistencexml.jaxb.Persistence;
+import org.nightlabs.jjqb.childvm.shared.persistencexml.jaxb.Persistence;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -1,8 +1,8 @@
-package org.nightlabs.jjqb.core.persistencexml;
+package org.nightlabs.jjqb.childvm.shared.persistencexml;
 
 import java.net.URL;
 
-import org.nightlabs.jjqb.core.persistencexml.jaxb.Persistence;
+import org.nightlabs.jjqb.childvm.shared.persistencexml.jaxb.Persistence;
 
 public class PersistenceXml
 {

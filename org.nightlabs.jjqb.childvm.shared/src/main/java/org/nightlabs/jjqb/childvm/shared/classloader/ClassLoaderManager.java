@@ -24,6 +24,8 @@ public class ClassLoaderManager
 	private static final Logger logger = LoggerFactory.getLogger(ClassLoaderManager.class);
 
 	private List<URL> persistenceEngineClasspathURLList;
+	private List<URL> persistenceEngineOverlayClasspathURLList = new ArrayList<URL>();
+	private List<URL> persistenceEngineOverlayClasspathURLList_readOnly = Collections.unmodifiableList(persistenceEngineOverlayClasspathURLList);
 
 	private File tempDir;
 //	private ConnectionProfile connectionProfile;
@@ -108,7 +110,9 @@ public class ClassLoaderManager
 		if (this.persistenceEngineClasspathURLList == null) {
 			Properties connProperties = getConnectionProperties();
 			List<String> persistenceEngineClasspathStringList = PropertiesUtil.getList(connProperties, PropertiesUtil.PREFIX_META_PERSISTENCE_ENGINE_CLASSPATH);
-			List<URL> persistenceEngineClasspathURLList = new ArrayList<URL>(persistenceEngineClasspathStringList.size());
+			List<URL> persistenceEngineClasspathURLList = new ArrayList<URL>(
+					persistenceEngineOverlayClasspathURLList.size() + persistenceEngineClasspathStringList.size()
+			);
 			for (String persistenceEngineClasspathElement : persistenceEngineClasspathStringList) {
 				logger.debug("open: adding persistenceEngineClasspathElement: " + persistenceEngineClasspathElement);
 
@@ -129,6 +133,7 @@ public class ClassLoaderManager
 				}
 			}
 
+			persistenceEngineClasspathURLList.addAll(0, persistenceEngineOverlayClasspathURLList);
 			this.persistenceEngineClasspathURLList = persistenceEngineClasspathURLList;
 		}
 
@@ -144,12 +149,31 @@ public class ClassLoaderManager
 		}
 	};
 
-	private void populatePersistenceEngineClasspathURLList(List<URL> persistenceEngineClasspathURLList, File file)
-	throws IOException
+	private boolean isContainerArchive(File file)
 	{
 		String fn = file.getName();
 		String fnLower = fn.toLowerCase();
-		if (fnLower.endsWith(".ear") || fnLower.endsWith(".war") || fnLower.endsWith(".zip")) {
+		return fnLower.endsWith(".ear") || fnLower.endsWith(".war") || fnLower.endsWith(".zip");
+	}
+
+	private boolean isNonContainerArchive(File file)
+	{
+		String fn = file.getName();
+		String fnLower = fn.toLowerCase();
+		return fnLower.endsWith(".jar");
+	}
+
+	private void populatePersistenceEngineClasspathURLList(List<URL> persistenceEngineClasspathURLList, File file)
+	throws IOException
+	{
+		populatePersistenceEngineClasspathURLList(persistenceEngineClasspathURLList, file, true);
+	}
+
+	private void populatePersistenceEngineClasspathURLList(List<URL> persistenceEngineClasspathURLList, File file, boolean includeAll)
+	throws IOException
+	{
+		String fn = file.getName();
+		if (isContainerArchive(file)) {
 			byte[] hash;
 			try {
 				hash = Util.hash(IOUtil.simplifyPath(file).getBytes(IOUtil.CHARSET_UTF_8), Util.HASH_ALGORITHM_SHA);
@@ -166,10 +190,10 @@ public class ClassLoaderManager
 			Collections.sort(earURLList, urlComparator);
 
 			persistenceEngineClasspathURLList.addAll(earURLList);
-		}
-		else {
 			persistenceEngineClasspathURLList.add(file.toURI().toURL());
 		}
+		else if (includeAll || isNonContainerArchive(file))
+			persistenceEngineClasspathURLList.add(file.toURI().toURL());
 	}
 
 	private void populatePersistenceEngineClasspathURLListRecurseDirs(List<URL> persistenceEngineClasspathURLList, File file)
@@ -187,8 +211,9 @@ public class ClassLoaderManager
 					populatePersistenceEngineClasspathURLListRecurseDirs(persistenceEngineClasspathURLList, child);
 			}
 		}
-		else
-			persistenceEngineClasspathURLList.add(file.toURI().toURL());
+		else {
+			populatePersistenceEngineClasspathURLList(persistenceEngineClasspathURLList, file, false);
+		}
 	}
 
 // We need a separate class loader for JDBC. Due to that, we decided for this parent-VM-child-VM-architecture.
@@ -214,6 +239,13 @@ public class ClassLoaderManager
 			this.persistenceEngineClassLoader = persistenceEngineClassLoader;
 		}
 		return this.persistenceEngineClassLoader;
+	}
+
+	public List<URL> getPersistenceEngineOverlayClasspathURLList() {
+		if (isOpen())
+			return persistenceEngineOverlayClasspathURLList_readOnly;
+		else
+			return persistenceEngineOverlayClasspathURLList;
 	}
 
 	@Override

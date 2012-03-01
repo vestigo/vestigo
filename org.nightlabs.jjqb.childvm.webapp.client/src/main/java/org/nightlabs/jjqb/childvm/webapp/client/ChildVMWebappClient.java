@@ -1,9 +1,12 @@
 package org.nightlabs.jjqb.childvm.webapp.client;
 
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.IdentityHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.SortedSet;
 import java.util.UUID;
 
@@ -46,8 +49,11 @@ import com.sun.jersey.api.client.config.DefaultClientConfig;
 public class ChildVMWebappClient
 implements ChildVM
 {
-	private static final int TIMEOUT_SOCKET_CONNECT_MS = 10 * 1000; // TODO make timeout configurable
-	private static final int TIMEOUT_SOCKET_READ_MS = 90 * 1000; // TODO make timeout configurable
+	public static final int DEFAULT_SOCKET_CONNECT_TIMEOUT_MS = 10 * 1000;
+	public static final int DEFAULT_SOCKET_READ_TIMEOUT_MS = 90 * 1000;
+
+	public static final int DEFAULT_ONLINECHECK_SOCKET_CONNECT_TIMEOUT_MS = 5 * 1000;
+	public static final int DEFAULT_ONLINECHECK_SOCKET_READ_TIMEOUT_MS = 3 * 1000;
 
 	private static final Logger logger = LoggerFactory.getLogger(ChildVMWebappClient.class);
 	static {
@@ -56,7 +62,23 @@ implements ChildVM
 
 	private String baseURL;
 
-	private LinkedList<Client> clientCache = new LinkedList<Client>();
+	private Map<String, LinkedList<Client>> key2ClientCache = new HashMap<String, LinkedList<Client>>();
+	private Map<Client, String> client2clientCacheKey = new IdentityHashMap<Client, String>();
+
+	protected String getClientCacheKey(int socketConnectTimeoutMillis, int socketReadTimeoutMillis)
+	{
+		return String.valueOf(socketConnectTimeoutMillis) + ':' + socketReadTimeoutMillis;
+	}
+
+	protected LinkedList<Client> getClientCache(String clientCacheKey)
+	{
+		LinkedList<Client> clientCache = key2ClientCache.get(clientCacheKey);
+		if (clientCache == null) {
+			clientCache = new LinkedList<Client>();
+			key2ClientCache.put(clientCacheKey, clientCache);
+		}
+		return clientCache;
+	}
 
 	public ChildVMWebappClient(String host, String webAppName, int port)
 	{
@@ -106,27 +128,69 @@ implements ChildVM
 		return client.resource(baseURL + relativePath);
 	}
 
+	private int socketConnectTimeoutMillis = DEFAULT_SOCKET_CONNECT_TIMEOUT_MS;
+
+	private int socketReadTimeoutMillis = DEFAULT_SOCKET_READ_TIMEOUT_MS;
+
+	private int onlineCheckSocketConnectTimeoutMillis = DEFAULT_ONLINECHECK_SOCKET_CONNECT_TIMEOUT_MS;
+
+	private int onlineCheckSocketReadTimeoutMillis = DEFAULT_ONLINECHECK_SOCKET_READ_TIMEOUT_MS;
+
+	public int getSocketConnectTimeoutMillis() {
+		return socketConnectTimeoutMillis;
+	}
+	public void setSocketConnectTimeoutMillis(int socketConnectTimeoutMillis) {
+		this.socketConnectTimeoutMillis = socketConnectTimeoutMillis;
+	}
+	public int getSocketReadTimeoutMillis() {
+		return socketReadTimeoutMillis;
+	}
+	public void setSocketReadTimeoutMillis(int socketReadTimeoutMillis) {
+		this.socketReadTimeoutMillis = socketReadTimeoutMillis;
+	}
+
+	public int getOnlineCheckSocketConnectTimeoutMillis() {
+		return onlineCheckSocketConnectTimeoutMillis;
+	}
+	public void setOnlineCheckSocketConnectTimeoutMillis(int socketOnlineCheckConnectTimeoutMillis) {
+		this.onlineCheckSocketConnectTimeoutMillis = socketOnlineCheckConnectTimeoutMillis;
+	}
+	public int getOnlineCheckSocketReadTimeoutMillis() {
+		return onlineCheckSocketReadTimeoutMillis;
+	}
+	public void setOnlineCheckSocketReadTimeoutMillis(int socketOnlineCheckReadTimeoutMillis) {
+		this.onlineCheckSocketReadTimeoutMillis = socketOnlineCheckReadTimeoutMillis;
+	}
+
 	private synchronized Client acquireClient()
 	{
-		Client client = clientCache.poll();
+		return acquireClient(socketConnectTimeoutMillis, socketReadTimeoutMillis);
+	}
+
+	private synchronized Client acquireClient(int socketConnectTimeoutMillis, int socketReadTimeoutMillis)
+	{
+		String clientCacheKey = getClientCacheKey(socketConnectTimeoutMillis, socketReadTimeoutMillis);
+		Client client = getClientCache(clientCacheKey).poll();
 		if (client == null) {
 			ClientConfig clientConfig = new DefaultClientConfig(JavaNativeMessageBodyReader.class, JavaNativeMessageBodyWriter.class);
-			clientConfig.getProperties().put(ClientConfig.PROPERTY_CONNECT_TIMEOUT, Integer.valueOf(TIMEOUT_SOCKET_CONNECT_MS)); // must be a java.lang.Integer
-			clientConfig.getProperties().put(ClientConfig.PROPERTY_READ_TIMEOUT, Integer.valueOf(TIMEOUT_SOCKET_READ_MS)); // must be a java.lang.Integer
+			clientConfig.getProperties().put(ClientConfig.PROPERTY_CONNECT_TIMEOUT, Integer.valueOf(socketConnectTimeoutMillis)); // must be a java.lang.Integer
+			clientConfig.getProperties().put(ClientConfig.PROPERTY_READ_TIMEOUT, Integer.valueOf(socketReadTimeoutMillis)); // must be a java.lang.Integer
 			client = Client.create(clientConfig);
+			client2clientCacheKey.put(client, clientCacheKey);
 		}
 		return client;
 	}
 
 	private synchronized void releaseClient(Client client)
 	{
-		clientCache.add(client);
+		String clientCacheKey = client2clientCacheKey.get(client);
+		getClientCache(clientCacheKey).add(client);
 	}
 
 	@Override
 	public boolean isOnline()
 	{
-		Client client = acquireClient();
+		Client client = acquireClient(onlineCheckSocketConnectTimeoutMillis, onlineCheckSocketReadTimeoutMillis);
 		try {
 			String result = getChildVMAppResource(client, "IsOnline").accept(MediaType.TEXT_PLAIN_TYPE).get(String.class);
 			return result != null && result.toLowerCase(Locale.ENGLISH).equals(Boolean.TRUE.toString().toLowerCase(Locale.ENGLISH));

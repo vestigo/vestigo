@@ -1,14 +1,29 @@
 package org.nightlabs.jjqb.childvm.webapp.model;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+
 import org.nightlabs.jjqb.childvm.shared.ConnectionProfileDTO;
 import org.nightlabs.jjqb.childvm.shared.PropertiesUtil;
 import org.nightlabs.jjqb.childvm.shared.classloader.ClassLoaderManager;
+import org.nightlabs.jjqb.childvm.shared.persistencexml.PersistenceUnitHelper;
+import org.nightlabs.jjqb.childvm.shared.persistencexml.PersistenceXml;
+import org.nightlabs.jjqb.childvm.shared.persistencexml.PersistenceXmlScanner;
+import org.nightlabs.jjqb.childvm.shared.persistencexml.jaxb.Persistence;
+import org.nightlabs.jjqb.childvm.shared.persistencexml.jaxb.Persistence.PersistenceUnit;
+import org.nightlabs.util.IOUtil;
+import org.nightlabs.util.Util;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,11 +37,22 @@ public abstract class ConnectionProfile
 	private String profileID;
 	private Properties connectionProperties;
 
+	private File tempDir;
+
 	private ClassLoaderManager classLoaderManager = new ClassLoaderManager();
+	private String syntheticPersistenceUnitName;
 
 	public ConnectionProfile() {
 		logger.debug("[{}].<init>: created new instance of {}", Long.toHexString(System.identityHashCode(this)), this.getClass().getName());
 //		classLoaderManager.setConnectionProfile(this);
+		Runtime.getRuntime().addShutdownHook(new Thread() {
+			@Override
+			public void run() {
+				File td = tempDir;
+				if (td != null)
+					IOUtil.deleteDirectoryRecursively(td);
+			}
+		});
 	}
 
 	public final synchronized void fromConnectionProfileDTO(ConnectionProfileDTO dto)
@@ -73,10 +99,22 @@ public abstract class ConnectionProfile
 				new Object[] { Long.toHexString(System.identityHashCode(this)), profileID, connection.getConnectionID() }
 		);
 
-		if (openConnections.isEmpty()) {
-			onFirstConnectionOpen(connection);
+		boolean successful = false;
+		try {
+			if (openConnections.isEmpty()) {
+				onFirstConnectionOpen(connection);
+			}
+			openConnections.add(connection);
+			successful = true;
+		} finally {
+			if (! successful) {
+				try {
+					onConnectionClose(connection);
+				} catch (Throwable closeEx) {
+					logger.warn("onConnectionOpen: Closing partially opened connection failed: " + closeEx, closeEx);
+				}
+			}
 		}
-		openConnections.add(connection);
 	}
 
 	protected void onFirstConnectionOpen(Connection connection) {
@@ -85,14 +123,94 @@ public abstract class ConnectionProfile
 				new Object[] { Long.toHexString(System.identityHashCode(this)), profileID, connection.getConnectionID() }
 		);
 
+		try {
+			File userTempDir = IOUtil.getUserTempDir("jjqb." + ConnectionProfile.class.getSimpleName() + '.', null);
+			tempDir = IOUtil.createUniqueIncrementalFolder(userTempDir, "instance-");
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+
 		if (isPersistenceUnitSyntheticOverride()) {
-			// TODO use the PersistenceXmlScanner (which still needs to be moved into the shared project) to read the original
-			// persistence unit, apply the properties, store the new persistence unit and make sure it is used (either use a new name
-			// or hide all other persistence.xml files from the classpath).
+			logger.info(
+					"[{}].onFirstConnectionOpen: profileID={} connectionID={}: persistenceUnitSyntheticOverride is active. Creating synthetic PU.",
+					new Object[] { Long.toHexString(System.identityHashCode(this)), profileID, connection.getConnectionID() }
+			);
+			initSyntheticPersistenceUnit();
 		}
 
 		classLoaderManager.open(connectionProperties);
 	}
+
+	private void initSyntheticPersistenceUnit()
+	{
+		syntheticPersistenceUnitName = null;
+		String persistenceUnitName = getPersistenceUnitName();
+		if (persistenceUnitName == null) {
+			logger.warn(
+					"[{}].initSyntheticPersistenceUnit: profileID={}: persistenceUnitSyntheticOverride is active, but there is no persistenceUnitName specified! Cannot create synthetic PU!",
+					new Object[] { Long.toHexString(System.identityHashCode(this)), profileID }
+			);
+			return;
+		}
+
+		PersistenceXmlScanner scanner = new PersistenceXmlScanner();
+		scanner.open(connectionProperties);
+		try {
+			Collection<PersistenceXml> persistenceXmls = scanner.searchPersistenceXmls();
+			for (PersistenceXml persistenceXml : persistenceXmls) {
+				List<PersistenceUnit> persistenceUnits = persistenceXml.getPersistence().getPersistenceUnit();
+				for (PersistenceUnit persistenceUnit : persistenceUnits) {
+					if (persistenceUnitName.equals(persistenceUnit.getName())) {
+						initSyntheticPersistenceUnit(persistenceXml, persistenceUnit);
+						return;
+					}
+				}
+			}
+		} catch (RuntimeException e) {
+			throw e;
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		} finally {
+			scanner.close();
+		}
+	}
+
+	private void initSyntheticPersistenceUnit(PersistenceXml persistenceXml, PersistenceUnit persistenceUnit) throws IOException, JAXBException
+	{
+		logger.info(
+				"[{}].initSyntheticPersistenceUnit: profileID={}: Found original persistenceUnit at classpathURL={}",
+				new Object[] { Long.toHexString(System.identityHashCode(this)), profileID, persistenceXml.getClasspathURL() }
+		);
+
+		Properties rawPersistenceProperties = PropertiesUtil.getProperties(connectionProperties, PropertiesUtil.PREFIX_PERSISTENCE);
+		Map<String, String> filteredPersistenceProperties = filterPersistenceProperties(rawPersistenceProperties);
+
+		Persistence newPersistence = new Persistence();
+		newPersistence.setVersion(persistenceXml.getPersistence().getVersion());
+		PersistenceUnit newPersistenceUnit = Util.cloneSerializable(persistenceUnit);
+		syntheticPersistenceUnitName = newPersistenceUnit.getName() + "_" + Long.toString(System.currentTimeMillis(), 36);
+		newPersistenceUnit.setName(syntheticPersistenceUnitName);
+		newPersistence.getPersistenceUnit().add(newPersistenceUnit);
+		getPersistenceUnitHelper().populatePersistenceUnitFromProperties(newPersistenceUnit, filteredPersistenceProperties);
+
+		File classpathDir = new File(tempDir, "overlay-classpath");
+		File metaInfDir = new File(classpathDir, PersistenceXmlScanner.META_INF);
+		metaInfDir.mkdirs();
+		if (!metaInfDir.isDirectory())
+			throw new IOException("Could not create directory: " + metaInfDir.getAbsolutePath());
+
+		File persistenceXmlFile = new File(metaInfDir, PersistenceXmlScanner.PERSISTENCE_XML);
+
+		JAXBContext context = JAXBContext.newInstance(Persistence.class);
+		Marshaller marshaller = context.createMarshaller();
+		marshaller.setProperty("jaxb.formatted.output", Boolean.TRUE);
+		marshaller.marshal(newPersistence, persistenceXmlFile);
+
+		classLoaderManager.getPersistenceEngineOverlayClasspathURLList().clear();
+		classLoaderManager.getPersistenceEngineOverlayClasspathURLList().add(classpathDir.toURI().toURL());
+	}
+
+	protected abstract PersistenceUnitHelper getPersistenceUnitHelper();
 
 	public synchronized void onConnectionClose(Connection connection) {
 		logger.debug(
@@ -113,6 +231,13 @@ public abstract class ConnectionProfile
 		);
 
 		classLoaderManager.close();
+		syntheticPersistenceUnitName = null;
+
+		File tempDir = this.tempDir;
+		if (tempDir != null) {
+			IOUtil.deleteDirectoryRecursively(tempDir);
+			this.tempDir = null;
+		}
 	}
 
 	public ClassLoaderManager getClassLoaderManager() {
@@ -126,7 +251,11 @@ public abstract class ConnectionProfile
 		return Boolean.parseBoolean(connectionProperties.getProperty(PropertiesUtil.PERSISTENCE_UNIT_SYNTHETIC_OVERRIDE));
 	}
 
-	protected String getPersistenceUnitName() {
+	protected String getPersistenceUnitName()
+	{
+		if (syntheticPersistenceUnitName != null)
+			return syntheticPersistenceUnitName;
+
 		if (connectionProperties == null)
 			return null;
 

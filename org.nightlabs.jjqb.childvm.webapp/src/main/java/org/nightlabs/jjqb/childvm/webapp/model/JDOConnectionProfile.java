@@ -10,6 +10,8 @@ import javax.jdo.PersistenceManagerFactory;
 import org.nightlabs.jjqb.childvm.shared.ConnectionProfileDTO;
 import org.nightlabs.jjqb.childvm.shared.JDOConnectionProfileDTO;
 import org.nightlabs.jjqb.childvm.shared.PropertiesUtil;
+import org.nightlabs.jjqb.childvm.shared.persistencexml.JDOPersistenceUnitHelper;
+import org.nightlabs.jjqb.childvm.shared.persistencexml.PersistenceUnitHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -39,7 +41,8 @@ public class JDOConnectionProfile extends ConnectionProfile
 	}
 
 	@Override
-	protected void onFirstConnectionOpen(Connection connection) {
+	protected void onFirstConnectionOpen(Connection connection)
+	{
 		super.onFirstConnectionOpen(connection);
 
 		if (logger.isDebugEnabled()) {
@@ -47,7 +50,6 @@ public class JDOConnectionProfile extends ConnectionProfile
 				"[{}].onFirstConnectionOpen: profileID={} connectionID={}.",
 				new Object[] { Long.toHexString(System.identityHashCode(this)), getProfileID(), connection.getConnectionID() });
 		}
-
 
 		ClassLoader persistenceEngineClassLoader;
 		try {
@@ -59,23 +61,33 @@ public class JDOConnectionProfile extends ConnectionProfile
 			throw new RuntimeException(e);
 		}
 
-		Properties rawPersistenceProperties = PropertiesUtil.getProperties(getConnectionProperties(), PropertiesUtil.PREFIX_PERSISTENCE);
-		Map<String, String> filteredPersistenceProperties = filterPersistenceProperties(rawPersistenceProperties);
+		String persistenceUnitName = getPersistenceUnitName();
+		if (logger.isDebugEnabled()) {
+			logger.debug("[{}].onFirstConnectionOpen: creating PersistenceManagerFactory with persistenceUnitName={}.", Long.toHexString(System.identityHashCode(this)), persistenceUnitName);
+		}
+
+		Map<String, String> filteredPersistenceProperties = null;
+		if (persistenceUnitName == null || !isPersistenceUnitSyntheticOverride()) {
+			Properties rawPersistenceProperties = PropertiesUtil.getProperties(getConnectionProperties(), PropertiesUtil.PREFIX_PERSISTENCE);
+			filteredPersistenceProperties = filterPersistenceProperties(rawPersistenceProperties);
+		}
 
 		ClassLoader backupContextClassLoader = Thread.currentThread().getContextClassLoader();
 		try {
 			Thread.currentThread().setContextClassLoader(persistenceEngineClassLoader);
 
-			String persistenceUnitName = getPersistenceUnitName();
-			if (logger.isDebugEnabled()) {
-				logger.debug("[{}].onFirstConnectionOpen: creating persistenceManagerFactory with persistenceUnitName {}.", Long.toHexString(System.identityHashCode(this)), persistenceUnitName);
-			}
-			if (persistenceUnitName == null || persistenceUnitName.isEmpty()) {
+			if (persistenceUnitName == null)
 				persistenceManagerFactory = JDOHelper.getPersistenceManagerFactory(filteredPersistenceProperties, persistenceEngineClassLoader);
-			}
 			else {
-				persistenceManagerFactory = JDOHelper.getPersistenceManagerFactory(filteredPersistenceProperties, persistenceUnitName, persistenceEngineClassLoader);
+				if (persistenceUnitName.isEmpty())
+					throw new IllegalStateException("persistenceUnitName.isEmpty() should never happen - it should be either null or a non-empty string!");
+
+				if (filteredPersistenceProperties == null)
+					persistenceManagerFactory = JDOHelper.getPersistenceManagerFactory(persistenceUnitName, persistenceEngineClassLoader);
+				else
+					persistenceManagerFactory = JDOHelper.getPersistenceManagerFactory(filteredPersistenceProperties, persistenceUnitName, persistenceEngineClassLoader);
 			}
+
 			if (logger.isDebugEnabled()) {
 				logger.debug("[{}].onFirstConnectionOpen: created persistenceManagerFactory.", Long.toHexString(System.identityHashCode(this)));
 			}
@@ -103,5 +115,10 @@ public class JDOConnectionProfile extends ConnectionProfile
 
 	public PersistenceManagerFactory getPersistenceManagerFactory() {
 		return persistenceManagerFactory;
+	}
+
+	@Override
+	protected PersistenceUnitHelper getPersistenceUnitHelper() {
+		return new JDOPersistenceUnitHelper();
 	}
 }

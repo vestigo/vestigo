@@ -25,15 +25,16 @@ import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.widgets.Hyperlink;
 import org.nightlabs.jjqb.childvm.shared.PropertiesUtil;
-import org.nightlabs.jjqb.core.persistencexml.PersistenceXml;
-import org.nightlabs.jjqb.core.persistencexml.PersistenceXmlScanner;
-import org.nightlabs.jjqb.core.persistencexml.jaxb.Persistence.PersistenceUnit;
+import org.nightlabs.jjqb.childvm.shared.persistencexml.PersistenceXml;
+import org.nightlabs.jjqb.childvm.shared.persistencexml.PersistenceXmlScanner;
+import org.nightlabs.jjqb.childvm.shared.persistencexml.jaxb.Persistence.PersistenceUnit;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -61,6 +62,7 @@ public abstract class PersistenceUnitPage extends AbstractDataSourceEditorPage
 	private Text persistenceUnitNameText;
 //	private Button persistenceUnitSearchButton;
 	private ListViewer persistenceUnitNamesList;
+	private Button syntheticOverrideCheckBox;
 
 	@Override
 	public Properties collectCustomProperties(Properties properties)
@@ -71,9 +73,14 @@ public abstract class PersistenceUnitPage extends AbstractDataSourceEditorPage
 		if (oldPUName == null)
 			oldPUName = "";
 
+		// No need to remove the persistenceUnitSyntheticOverride, because it is always set (never removed).
+
 		String persistenceUnitName = persistenceUnitNameText.getText().trim();
 		if (!persistenceUnitName.isEmpty())
 			properties.setProperty(PropertiesUtil.PERSISTENCE_UNIT_NAME, persistenceUnitName);
+
+		boolean persistenceUnitSyntheticOverride = syntheticOverrideCheckBox.getSelection();
+		properties.setProperty(PropertiesUtil.PERSISTENCE_UNIT_SYNTHETIC_OVERRIDE, Boolean.toString(persistenceUnitSyntheticOverride));
 
 		// TODO Report bug and put URL to report here!!! When bug is fixed, remove this workaround!
 		// BEGIN WORKAROUND
@@ -82,6 +89,8 @@ public abstract class PersistenceUnitPage extends AbstractDataSourceEditorPage
 		// properties in order to find out, if their value changed. Thus a missing entry in the new properties doesn't
 		// cause the 'changed' flag to be set to true. As long as this bug exists, we store the current timestamp
 		// to force the changed data to be written. Marco :-)
+		// No need to compare the persistenceUnitSyntheticOverride, because it is always set (never removed). And if
+		// this is the only thing that changes, it is detected even without this timestamp.
 		if (!oldPUName.equals(persistenceUnitName))
 			properties.setProperty(PropertiesUtil.WORKAROUND_TIMESTAMP, Long.toString(System.currentTimeMillis(), 36));
 		// END WORKAROUND
@@ -123,6 +132,10 @@ public abstract class PersistenceUnitPage extends AbstractDataSourceEditorPage
 
 		persistenceUnitNameText = new Text(puParent, SWT.BORDER);
 		persistenceUnitNameText.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+
+		syntheticOverrideCheckBox = new Button(puParent, SWT.CHECK);
+		syntheticOverrideCheckBox.setText("Create and use synthetic persistence unit.");
+		syntheticOverrideCheckBox.setToolTipText("If this option is active, the original persistence unit is copied into a separate persistence.xml. While copying, the properties specified here are directly applied. This option may thus work around bugs in the persistence engine affecting the properties-overriding-mechanism.");
 
 //		persistenceUnitSearchButton = new Button(puParent, SWT.PUSH);
 //		persistenceUnitSearchButton.setImage(JJQBUIPlugin.getDefault().getImage(PersistenceUnitPage.class, "persistenceUnitSearchButton", JJQBUIPlugin.IMAGE_SIZE_16x16));
@@ -179,6 +192,9 @@ public abstract class PersistenceUnitPage extends AbstractDataSourceEditorPage
 	@Override
 	public void setCustomProperties(Properties properties) {
 		persistenceUnitNameText.setText(properties.getProperty(PropertiesUtil.PERSISTENCE_UNIT_NAME, ""));
+
+		boolean puSyntheticOverride = Boolean.parseBoolean(properties.getProperty(PropertiesUtil.PERSISTENCE_UNIT_SYNTHETIC_OVERRIDE));
+		syntheticOverrideCheckBox.setSelection(puSyntheticOverride);
 	}
 
 	private PreferencePageDirtyListener preferencePageDirtyListener = new PreferencePageDirtyListener() {

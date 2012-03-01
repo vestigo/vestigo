@@ -41,6 +41,11 @@ public class ChildVMPreferencePage extends FieldEditorPreferencePage implements 
 
 		getPreferenceStore().setDefault(ChildVMServer.PREFERENCE_KEY_LOG4J_ROOT_LOG_LEVEL, ChildVMServer.PREFERENCE_DEFAULT_LOG4J_ROOT_LOG_LEVEL);
 		getPreferenceStore().setDefault(ChildVMServer.PREFERENCE_KEY_DEBUG_MODE_PORT, ChildVMServer.PREFERENCE_DEFAULT_DEBUG_MODE_PORT);
+
+		getPreferenceStore().setDefault(ChildVMServer.PREFERENCE_KEY_WAC_SOCKET_CONNECT_TIMEOUT_MS, ChildVMServer.PREFERENCE_DEFAULT_WAC_SOCKET_CONNECT_TIMEOUT_MS);
+		getPreferenceStore().setDefault(ChildVMServer.PREFERENCE_KEY_WAC_SOCKET_READ_TIMEOUT_MS, ChildVMServer.PREFERENCE_DEFAULT_WAC_SOCKET_READ_TIMEOUT_MS);
+		getPreferenceStore().setDefault(ChildVMServer.PREFERENCE_KEY_WAC_ONLINECHECK_SOCKET_CONNECT_TIMEOUT_MS, ChildVMServer.PREFERENCE_DEFAULT_WAC_ONLINECHECK_SOCKET_CONNECT_TIMEOUT_MS);
+		getPreferenceStore().setDefault(ChildVMServer.PREFERENCE_KEY_WAC_ONLINECHECK_SOCKET_READ_TIMEOUT_MS, ChildVMServer.PREFERENCE_DEFAULT_WAC_ONLINECHECK_SOCKET_READ_TIMEOUT_MS);
 	}
 
 	@Override
@@ -82,6 +87,13 @@ public class ChildVMPreferencePage extends FieldEditorPreferencePage implements 
 		addField(new BooleanFieldEditor(ChildVMServer.PREFERENCE_KEY_DEBUG_MODE_ENABLED, "Debugging: Enabled:", BooleanFieldEditor.SEPARATE_LABEL, getFieldEditorParent()));
 		addField(new IntegerFieldEditor(ChildVMServer.PREFERENCE_KEY_DEBUG_MODE_PORT, "Debugging: Port:", getFieldEditorParent()));
 		addField(new BooleanFieldEditor(ChildVMServer.PREFERENCE_KEY_DEBUG_MODE_WAIT_FOR_DEBUGGER, "Debugging: Wait for debugger:", BooleanFieldEditor.SEPARATE_LABEL, getFieldEditorParent()));
+
+		addHorizontalSeparator(getFieldEditorParent());
+
+		addField(new IntegerFieldEditor(ChildVMServer.PREFERENCE_KEY_WAC_SOCKET_CONNECT_TIMEOUT_MS, "Client: Socket connect timeout:", getFieldEditorParent()));
+		addField(new IntegerFieldEditor(ChildVMServer.PREFERENCE_KEY_WAC_SOCKET_READ_TIMEOUT_MS, "Client: Socket read timeout:", getFieldEditorParent()));
+		addField(new IntegerFieldEditor(ChildVMServer.PREFERENCE_KEY_WAC_ONLINECHECK_SOCKET_CONNECT_TIMEOUT_MS, "Client: Online-check: Socket connect timeout:", getFieldEditorParent()));
+		addField(new IntegerFieldEditor(ChildVMServer.PREFERENCE_KEY_WAC_ONLINECHECK_SOCKET_READ_TIMEOUT_MS, "Client: Online-check: Socket read timeout:", getFieldEditorParent()));
 	}
 
 	private void addHorizontalSeparator(Composite parent)

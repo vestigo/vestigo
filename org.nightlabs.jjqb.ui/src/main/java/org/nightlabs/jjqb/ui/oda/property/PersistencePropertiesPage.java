@@ -18,9 +18,9 @@ import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.nightlabs.jjqb.childvm.shared.PropertiesUtil;
-import org.nightlabs.jjqb.core.persistencexml.jaxb.Persistence;
-import org.nightlabs.jjqb.core.persistencexml.jaxb.Persistence.PersistenceUnit;
-import org.nightlabs.jjqb.core.persistencexml.jaxb.Persistence.PersistenceUnit.Properties.Property;
+import org.nightlabs.jjqb.childvm.shared.persistencexml.PersistenceUnitHelper;
+import org.nightlabs.jjqb.childvm.shared.persistencexml.jaxb.Persistence;
+import org.nightlabs.jjqb.childvm.shared.persistencexml.jaxb.Persistence.PersistenceUnit;
 import org.nightlabs.jjqb.ui.oda.EditPropertiesComposite;
 import org.nightlabs.jjqb.ui.oda.LoadPropertiesHandler;
 import org.nightlabs.jjqb.ui.oda.SavePropertiesHandler;
@@ -117,11 +117,12 @@ public abstract class PersistencePropertiesPage extends AbstractDataSourceEditor
 					if (puIdx >= 0) {
 						PersistenceUnit persistenceUnit = persistenceUnits.get(puIdx);
 						Properties properties = new Properties();
-						for (Property p : persistenceUnit.getProperties().getProperty()) {
-							if (p != null && p.getName() != null && p.getValue() != null)
-								properties.setProperty(p.getName(), p.getValue());
-						}
-						populatePropertiesFromPersistenceUnit(properties, persistenceUnit);
+						getPersistenceUnitHelper().populatePropertiesFromPersistenceUnit(properties, persistenceUnit);
+//						for (Property p : persistenceUnit.getProperties().getProperty()) {
+//							if (p != null && p.getName() != null && p.getValue() != null)
+//								properties.setProperty(p.getName(), p.getValue());
+//						}
+//						populatePropertiesFromPersistenceUnit(properties, persistenceUnit);
 						return properties;
 					}
 				}
@@ -169,20 +170,21 @@ public abstract class PersistencePropertiesPage extends AbstractDataSourceEditor
 					persistence.getPersistenceUnit().add(persistenceUnit);
 				}
 
-				// We always overwrite all properties.
-				persistenceUnit.setProperties(new Persistence.PersistenceUnit.Properties());
+				// We always overwrite all properties. // really? better not! We override only what is to be overridden.
+//				persistenceUnit.setProperties(new Persistence.PersistenceUnit.Properties());
 
-				properties = (Properties) properties.clone();
-				populatePersistenceUnitFromProperties(persistenceUnit, properties);
-				for (Map.Entry<?, ?> me : properties.entrySet()) {
-					Property property = findProperty(persistenceUnit.getProperties(), me.getKey().toString());
-					if (property == null) {
-						property = new Property();
-						property.setName(me.getKey().toString());
-						persistenceUnit.getProperties().getProperty().add(property);
-					}
-					property.setValue(me.getValue().toString());
-				}
+				getPersistenceUnitHelper().populatePersistenceUnitFromProperties(persistenceUnit, properties);
+//				properties = (Properties) properties.clone();
+//				populatePersistenceUnitFromProperties(persistenceUnit, properties);
+//				for (Map.Entry<?, ?> me : properties.entrySet()) {
+//					Property property = findProperty(persistenceUnit.getProperties(), me.getKey().toString());
+//					if (property == null) {
+//						property = new Property();
+//						property.setName(me.getKey().toString());
+//						persistenceUnit.getProperties().getProperty().add(property);
+//					}
+//					property.setValue(me.getValue().toString());
+//				}
 
 				Marshaller marshaller = context.createMarshaller();
 				marshaller.setProperty("jaxb.formatted.output", Boolean.TRUE);
@@ -208,16 +210,18 @@ public abstract class PersistencePropertiesPage extends AbstractDataSourceEditor
 		}
 	};
 
-	private Property findProperty(Persistence.PersistenceUnit.Properties persistenceUnitProperties, String key) {
-		for (Property property : persistenceUnitProperties.getProperty()) {
-			if (key.equals(property.getName()))
-				return property;
-		}
-		return null;
-	}
+	protected abstract PersistenceUnitHelper getPersistenceUnitHelper();
 
-	protected abstract void populatePropertiesFromPersistenceUnit(Properties properties, PersistenceUnit persistenceUnit);
-	protected abstract void populatePersistenceUnitFromProperties(PersistenceUnit persistenceUnit, Properties properties);
+//	private Property findProperty(Persistence.PersistenceUnit.Properties persistenceUnitProperties, String key) {
+//		for (Property property : persistenceUnitProperties.getProperty()) {
+//			if (key.equals(property.getName()))
+//				return property;
+//		}
+//		return null;
+//	}
+//
+//	protected abstract void populatePropertiesFromPersistenceUnit(Properties properties, PersistenceUnit persistenceUnit);
+//	protected abstract void populatePersistenceUnitFromProperties(PersistenceUnit persistenceUnit, Properties properties);
 
 	private Persistence loadPersistenceXml(JAXBContext context, File file, InputStream persistenceXmlIn) throws JAXBException
 	{
@@ -245,29 +249,29 @@ public abstract class PersistencePropertiesPage extends AbstractDataSourceEditor
 		}
 		return properties;
 	}
-
-	protected static void setPropertyIfNotNullAndNotEmpty(Properties properties, String key, String value) {
-		if (value != null && !value.trim().isEmpty())
-			properties.setProperty(key, value);
-	}
-
-	protected static void setPropertyIfNotNullAndNotEmpty(Properties properties, String key, Enum<?> value) {
-		if (value != null)
-			setPropertyIfNotNullAndNotEmpty(properties, key, value.name());
-	}
-
-	protected static String removeProperty(Properties properties, String key)
-	{
-		String result = (String) properties.remove(key);
-		return result;
-	}
-
-	protected static <E extends Enum<E>> E removeProperty(Properties properties, String key, Class<E> e)
-	{
-		String sval = removeProperty(properties, key);
-		if (sval == null)
-			return null;
-
-		return Enum.valueOf(e, sval);
-	}
+//
+//	protected static void setPropertyIfNotNullAndNotEmpty(Properties properties, String key, String value) {
+//		if (value != null && !value.trim().isEmpty())
+//			properties.setProperty(key, value);
+//	}
+//
+//	protected static void setPropertyIfNotNullAndNotEmpty(Properties properties, String key, Enum<?> value) {
+//		if (value != null)
+//			setPropertyIfNotNullAndNotEmpty(properties, key, value.name());
+//	}
+//
+//	protected static String removeProperty(Properties properties, String key)
+//	{
+//		String result = (String) properties.remove(key);
+//		return result;
+//	}
+//
+//	protected static <E extends Enum<E>> E removeProperty(Properties properties, String key, Class<E> e)
+//	{
+//		String sval = removeProperty(properties, key);
+//		if (sval == null)
+//			return null;
+//
+//		return Enum.valueOf(e, sval);
+//	}
 }

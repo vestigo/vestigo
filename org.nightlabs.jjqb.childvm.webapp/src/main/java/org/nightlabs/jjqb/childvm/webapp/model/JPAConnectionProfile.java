@@ -10,12 +10,18 @@ import javax.persistence.Persistence;
 import org.nightlabs.jjqb.childvm.shared.ConnectionProfileDTO;
 import org.nightlabs.jjqb.childvm.shared.JPAConnectionProfileDTO;
 import org.nightlabs.jjqb.childvm.shared.PropertiesUtil;
+import org.nightlabs.jjqb.childvm.shared.persistencexml.JPAPersistenceUnitHelper;
+import org.nightlabs.jjqb.childvm.shared.persistencexml.PersistenceUnitHelper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
  */
 public class JPAConnectionProfile extends ConnectionProfile
 {
+	private static final Logger logger = LoggerFactory.getLogger(JPAConnectionProfile.class);
+
 	private EntityManagerFactory entityManagerFactory;
 
 	public static class Factory implements ConnectionProfileFactory {
@@ -35,7 +41,8 @@ public class JPAConnectionProfile extends ConnectionProfile
 	}
 
 	@Override
-	protected void onFirstConnectionOpen(Connection connection) {
+	protected void onFirstConnectionOpen(Connection connection)
+	{
 		super.onFirstConnectionOpen(connection);
 
 		ClassLoader persistenceEngineClassLoader;
@@ -45,14 +52,26 @@ public class JPAConnectionProfile extends ConnectionProfile
 			throw new RuntimeException(e);
 		}
 
-		Properties rawPersistenceProperties = PropertiesUtil.getProperties(getConnectionProperties(), PropertiesUtil.PREFIX_PERSISTENCE);
-		Map<String, String> filteredPersistenceProperties = filterPersistenceProperties(rawPersistenceProperties);
+		String persistenceUnitName = getPersistenceUnitName();
+		if (logger.isDebugEnabled()) {
+			logger.debug("[{}].onFirstConnectionOpen: creating EntityManagerFactory with persistenceUnitName={}.", Long.toHexString(System.identityHashCode(this)), persistenceUnitName);
+		}
+
+		Map<String, String> filteredPersistenceProperties = null;
+		if (persistenceUnitName == null || !isPersistenceUnitSyntheticOverride()) {
+			Properties rawPersistenceProperties = PropertiesUtil.getProperties(getConnectionProperties(), PropertiesUtil.PREFIX_PERSISTENCE);
+			filteredPersistenceProperties = filterPersistenceProperties(rawPersistenceProperties);
+		}
 
 		ClassLoader backupContextClassLoader = Thread.currentThread().getContextClassLoader();
 		try {
 			Thread.currentThread().setContextClassLoader(persistenceEngineClassLoader);
 
-			entityManagerFactory = Persistence.createEntityManagerFactory(getPersistenceUnitName(), filteredPersistenceProperties);
+			if (filteredPersistenceProperties == null)
+				entityManagerFactory = Persistence.createEntityManagerFactory(persistenceUnitName);
+			else
+				entityManagerFactory = Persistence.createEntityManagerFactory(persistenceUnitName, filteredPersistenceProperties);
+
 		} finally {
 			Thread.currentThread().setContextClassLoader(backupContextClassLoader);
 		}
@@ -69,5 +88,10 @@ public class JPAConnectionProfile extends ConnectionProfile
 
 	public EntityManagerFactory getEntityManagerFactory() {
 		return entityManagerFactory;
+	}
+
+	@Override
+	protected PersistenceUnitHelper getPersistenceUnitHelper() {
+		return new JPAPersistenceUnitHelper();
 	}
 }

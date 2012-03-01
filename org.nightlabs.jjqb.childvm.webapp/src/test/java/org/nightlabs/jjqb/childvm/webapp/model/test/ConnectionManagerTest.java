@@ -12,6 +12,8 @@ import org.nightlabs.jjqb.childvm.shared.ConnectionProfileDTO;
 import org.nightlabs.jjqb.childvm.shared.JDOConnectionDTO;
 import org.nightlabs.jjqb.childvm.shared.JDOConnectionProfileDTO;
 import org.nightlabs.jjqb.childvm.shared.JPAConnectionDTO;
+import org.nightlabs.jjqb.childvm.shared.persistencexml.JDOPersistenceUnitHelper;
+import org.nightlabs.jjqb.childvm.shared.persistencexml.PersistenceUnitHelper;
 import org.nightlabs.jjqb.childvm.webapp.model.Connection;
 import org.nightlabs.jjqb.childvm.webapp.model.ConnectionManager;
 import org.nightlabs.jjqb.childvm.webapp.model.ConnectionProfile;
@@ -23,13 +25,13 @@ public class ConnectionManagerTest {
 
 	protected ConnectionManager connectionManager;
 	protected ConnectionProfileManager connectionProfileManager;
-	
+
 	@Before
 	public void createConnectionManager() {
 		connectionProfileManager = createMockConnectionProfileManager();
 		connectionManager = new ConnectionManager(connectionProfileManager);
 	}
-	
+
 	@Test
 	public void testCreateJDOConnection() {
 		Connection connection = putJDOConnection();
@@ -60,7 +62,7 @@ public class ConnectionManagerTest {
 		Connection connection2 = connectionManager.getConnection(connection.getConnectionID());
 		Assert.assertSame(connection, connection2);
 	}
-	
+
 	@Test
 	public void testGetConnectionsByProfileID() {
 		Connection connection = putJDOConnection();
@@ -69,28 +71,28 @@ public class ConnectionManagerTest {
 		connectionDTO.setConnectionID(UUID.randomUUID());
 		connectionDTO.setProfileID(connection2.getConnectionProfile().getProfileID());
 		Connection connection3 = connectionManager.putConnectionDTO(connectionDTO);
-		
+
 		Collection<Connection> connections = connectionManager.getConnections(connection.getConnectionProfile().getProfileID());
 		Assert.assertEquals(connections.size(), 1);
 		Assert.assertTrue(connections.contains(connection));
-		
+
 		connections = connectionManager.getConnections(connection2.getConnectionProfile().getProfileID());
 		Assert.assertEquals(connections.size(), 2);
 		Assert.assertTrue(connections.contains(connection2));
 		Assert.assertTrue(connections.contains(connection3));
 	}
-	
-	
+
+
 	@Test
 	public void testGetUnknownConnection() {
 		Assert.assertNull(connectionManager.getConnection(UUID.randomUUID()));
 	}
-	
+
 	@Test(expected=IllegalArgumentException.class)
 	public void testGetUnknownConnectionWithException() {
 		connectionManager.getConnection(UUID.randomUUID(), true);
 	}
-	
+
 	@Test
 	public void testGetConnections() {
 		putJDOConnection();
@@ -98,14 +100,14 @@ public class ConnectionManagerTest {
 		Collection<Connection> connections = connectionManager.getConnections();
 		Assert.assertEquals(connections.size(), 2);
 	}
-	
+
 	@Test(expected=UnsupportedOperationException.class)
 	public void testGetConnectionsReturnsUnmodifialbeCollection() {
 		putJDOConnection();
 		Collection<Connection> connections = connectionManager.getConnections();
 		connections.clear();
 	}
-	
+
 	protected Connection putConnection(Class<? extends ConnectionDTO> dtoClass) {
 		ConnectionDTO connectionDTO;
 		try {
@@ -125,7 +127,7 @@ public class ConnectionManagerTest {
 	protected Connection putJPAConnection() {
 		return putConnection(JPAConnectionDTO.class);
 	}
-	
+
 	protected ConnectionProfileManager createMockConnectionProfileManager() {
 		return new ConnectionProfileManager() {
 			@Override
@@ -137,7 +139,12 @@ public class ConnectionManagerTest {
 						profileDTO.setProfileID(profileID);
 						return profileDTO;
 					}
-					
+
+					@Override
+					protected PersistenceUnitHelper getPersistenceUnitHelper() {
+						return new JDOPersistenceUnitHelper();
+					}
+
 					@Override
 					public String getProfileID() {
 						return profileID;
@@ -151,5 +158,5 @@ public class ConnectionManagerTest {
 		connectionDTO.setConnectionID(UUID.randomUUID());
 		connectionDTO.setProfileID(UUID.randomUUID().toString());
 	}
-	
+
 }
