@@ -16,6 +16,7 @@ package org.nightlabs.jjqb.ui.oda;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -43,7 +44,9 @@ import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
+import org.nightlabs.jjqb.childvm.shared.classloader.ClassLoaderManager;
 import org.nightlabs.jjqb.ui.JJQBUIPlugin;
+import org.nightlabs.util.IOUtil;
 import org.nightlabs.util.Util;
 
 /**
@@ -276,22 +279,48 @@ public class EditClasspathComposite extends Composite implements ICellModifier
 		String[] fileNames = dialog.getFileNames();
 		if (fileNames != null && fileNames.length != 0) {
 			File directory = new File(dialog.getFilterPath());
+			lastAddClasspathElementDirectory = directory;
+
 			for (String fileName : fileNames) {
 				File file = new File(directory, fileName);
-				lastAddClasspathElementDirectory = file.getParentFile();
 
-				if (!file.exists())
-					return;
+//				if (!file.exists())
+//					continue;
 
 				ArrayList<String> newInput = new ArrayList<String>(getClasspathElements().size());
 				newInput.addAll(getClasspathElements());
-				newInput.add(file.getAbsolutePath());
+				newInput.add(getClasspathElementFromFile(file));
 				setInput(newInput);
 			}
 		}
 
 		propertyChangeSupport.firePropertyChange(CP_ELEMENT_ADDED, null, fileNames);
 	}
+
+	private String getClasspathElementFromFile(File file)
+	{
+		try {
+			String absolutePath = file.getAbsolutePath();
+
+			final String[][] var2filePaths = new String[][] {
+					{ ClassLoaderManager.PROPERTY_MAVEN_LOCAL_REPOSITORY, ClassLoaderManager.getMavenLocalRepository().getAbsolutePath() },
+					{ ClassLoaderManager.PROPERTY_USER_HOME, IOUtil.getUserHome().getAbsolutePath() },
+					{ ClassLoaderManager.PROPERTY_SYSTEM_TEMP_DIR, IOUtil.getTempDir().getAbsolutePath() },
+			};
+
+			for (String[] var2filePath : var2filePaths) {
+				File f = new File(var2filePath[1]);
+				String relativePath = IOUtil.getRelativePath(f, file);
+				if (!new File(relativePath).isAbsolute() && !relativePath.startsWith(".." + File.separatorChar))
+					return "file:" + "${" + var2filePath[0] + "}/" + relativePath.replace(File.separatorChar, '/');
+			}
+
+			return "file:" + absolutePath;
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
 
 	public File getLastAddClasspathElementDirectory() {
 		return lastAddClasspathElementDirectory;

@@ -7,7 +7,9 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 import org.nightlabs.jjqb.childvm.shared.PropertiesUtil;
@@ -22,6 +24,10 @@ import org.slf4j.LoggerFactory;
 public class ClassLoaderManager
 {
 	private static final Logger logger = LoggerFactory.getLogger(ClassLoaderManager.class);
+
+	public static final String PROPERTY_USER_HOME = "user.home";
+	public static final String PROPERTY_MAVEN_LOCAL_REPOSITORY = "maven.localRepository";
+	public static final String PROPERTY_SYSTEM_TEMP_DIR = "java.io.tmpdir";
 
 	private List<URL> persistenceEngineClasspathURLList;
 	private List<URL> persistenceEngineOverlayClasspathURLList = new ArrayList<URL>();
@@ -40,6 +46,11 @@ public class ClassLoaderManager
 					IOUtil.deleteDirectoryRecursively(td);
 			}
 		});
+	}
+
+	public static File getMavenLocalRepository()
+	{
+		return new File(new File(IOUtil.getUserHome(), ".m2"), "repository");
 	}
 
 //	public void setConnectionProfile(ConnectionProfile connectionProfile)
@@ -96,11 +107,29 @@ public class ClassLoaderManager
 		persistenceEngineClassLoader = null;
 		persistenceEngineClasspathURLList = null;
 		connectionProperties = null;
+		persistenceEngineClasspathVariables = null;
 
 		if (tempDir != null) {
 			IOUtil.deleteDirectoryRecursively(tempDir);
 			tempDir = null;
 		}
+	}
+
+	private Map<String, String> persistenceEngineClasspathVariables = null;
+
+	private Map<String, String> getPersistenceEngineClasspathVariables()
+	{
+		assertOpen();
+
+		Map<String, String> result = this.persistenceEngineClasspathVariables;
+		if (result == null) {
+			@SuppressWarnings({ "rawtypes", "unchecked" })
+			Map<String, String> m = new HashMap<String, String>((Map)System.getProperties());
+			m.put(PROPERTY_MAVEN_LOCAL_REPOSITORY, getMavenLocalRepository().getAbsolutePath());
+			result = m;
+			this.persistenceEngineClasspathVariables = result;
+		}
+		return result;
 	}
 
 	public List<URL> getPersistenceEngineClasspathURLList() throws IOException
@@ -113,17 +142,31 @@ public class ClassLoaderManager
 			List<URL> persistenceEngineClasspathURLList = new ArrayList<URL>(
 					persistenceEngineOverlayClasspathURLList.size() + persistenceEngineClasspathStringList.size()
 			);
+
 			for (String persistenceEngineClasspathElement : persistenceEngineClasspathStringList) {
-				logger.debug("open: adding persistenceEngineClasspathElement: " + persistenceEngineClasspathElement);
+				logger.debug("open: adding persistenceEngineClasspathElement: {}", persistenceEngineClasspathElement);
+				persistenceEngineClasspathElement = IOUtil.replaceTemplateVariables(
+						persistenceEngineClasspathElement, getPersistenceEngineClasspathVariables()
+				);
+				logger.trace("open: resolved persistenceEngineClasspathElement: {}", persistenceEngineClasspathElement);
 
-				File f = new File(persistenceEngineClasspathElement);
-				if (!f.exists())
-					throw new IOException("persistenceEngineClasspathElement points to a non-existing file: " + f.getAbsolutePath());
+				if (persistenceEngineClasspathElement.startsWith("http:"))
+					persistenceEngineClasspathURLList.add(new URL(persistenceEngineClasspathElement));
+				else if (persistenceEngineClasspathElement.startsWith("https:"))
+					persistenceEngineClasspathURLList.add(new URL(persistenceEngineClasspathElement));
+				else {
+					if (persistenceEngineClasspathElement.startsWith("file:"))
+						persistenceEngineClasspathElement = persistenceEngineClasspathElement.substring("file:".length());
 
-				if (!f.canRead())
-					throw new IOException("persistenceEngineClasspathElement points to an existing but non-readable file: " + f.getAbsolutePath());
+					File f = new File(persistenceEngineClasspathElement);
+					if (!f.exists())
+						throw new IOException("persistenceEngineClasspathElement points to a non-existing file: " + f.getAbsolutePath());
 
-				populatePersistenceEngineClasspathURLList(persistenceEngineClasspathURLList, f);
+					if (!f.canRead())
+						throw new IOException("persistenceEngineClasspathElement points to an existing but non-readable file: " + f.getAbsolutePath());
+
+					populatePersistenceEngineClasspathURLList(persistenceEngineClasspathURLList, f);
+				}
 			}
 
 			if (logger.isTraceEnabled()) {
