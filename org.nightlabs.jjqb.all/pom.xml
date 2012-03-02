@@ -19,20 +19,24 @@
 		<module>../org.nightlabs.jjqb.childvm.webapp.client.testmodel</module>
 		<module>../org.nightlabs.jjqb.childvm.webapp.client.testresources</module>
 		<module>../org.nightlabs.jjqb.core</module>
-<!--
-		<module>../org.nightlabs.jjqb.derby</module>
--->
 		<module>../org.nightlabs.jjqb.parent</module>
 		<module>../org.nightlabs.jjqb.ui</module>
 		<module>../org.nightlabs.jjqb.assembly.parent</module>
-		
+
+		<!-- BEGIN XText -->
+		<module>../org.nightlabs.jjqb.xtext.parent</module>
+		<module>../org.nightlabs.jjqb.xtext.jdoql</module>
+		<module>../org.nightlabs.jjqb.xtext.jdoql.tests</module>
+		<module>../org.nightlabs.jjqb.xtext.jdoql.ui</module>
+		<!-- END XText -->
+
 		<!-- BEGIN Cumulus4j -->
 		<module>../org.nightlabs.jjqb.cumulus4j.childvm.shared</module>
 		<module>../org.nightlabs.jjqb.cumulus4j.childvm.webapp</module>
 		<module>../org.nightlabs.jjqb.cumulus4j.core</module>
 		<module>../org.nightlabs.jjqb.cumulus4j.ui</module>
 		<!-- END Cumulus4j -->
-		
+
 		<!-- All tycho build projects -->
 		<!-- 
 		<module>../org.nightlabs.jjqb.tycho</module>
