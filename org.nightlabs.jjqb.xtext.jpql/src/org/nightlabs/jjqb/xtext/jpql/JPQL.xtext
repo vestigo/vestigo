@@ -1,0 +1,373 @@
+grammar org.nightlabs.jjqb.xtext.jpql.JPQL with org.eclipse.xtext.common.Terminals
+
+generate jPQL "http://www.nightlabs.org/jjqb/xtext/jdoql/JPQL"
+
+QueryModule:
+	(imports+=Import)*
+	(defaultQuery=JPQLQuery)?
+	(namedQueries+=NamedQuery)*
+;
+
+Import :
+	'IMPORT' importURI=STRING
+;
+
+NamedQuery:
+	name=ID ":" query=JPQLQuery
+;
+
+JPQLQuery:
+	SelectStatement |
+	UpdateStatement |
+	DeleteStatement
+;
+
+SelectStatement:
+	selectFromClause=SelectFromClause
+	(whereClause=WhereClause)?
+//	(groupBy=GroupClause)?
+	(having=HavingClause)?
+	(order=OrderClause)?
+;
+
+//GroupClause:
+//	'GROUP' 'BY' grouping=Group
+//;
+
+HavingClause:
+	'HAVING' having=OrExpression
+;
+
+OrderClause:
+	'ORDER' 'BY' ordering+=OrderItem (',' ordering+=OrderItem)* ((isAsc?='ASC')|(isDesc?='DESC'))?
+;
+
+OrderItem:
+	var=[FromEntry]'.'feature=ID
+;
+
+UpdateStatement:
+	updateClause=UpdateClause
+	setClause=SetClause
+	(whereClause=WhereClause)?
+;
+
+UpdateClause:
+	'UPDATE' fromEntries+=FromEntry (',' fromEntries+=FromEntry)*
+;
+
+SetClause:
+	'SET' items+=UpdateItem (',' items+=UpdateItem)*
+;
+
+UpdateItem:
+	alias=AliasAttributeExpression '=' value=Value
+;
+
+DeleteStatement:
+	deleteClause=DeleteClause
+	(whereClause=WhereClause)?
+;
+
+DeleteClause:
+	'DELETE' fromClause=FromClause
+;
+
+SelectFromClause:
+	(selectClause=SelectClause)?
+	fromClause=FromClause
+;
+
+SelectClause:
+	'SELECT' (isDistinct?='DISTINCT')? expressions+=SelectExpression (',' expressions+=SelectExpression)*
+;
+
+SelectExpression:
+	AliasAttributeExpression |
+	SelectAggregateExpression |
+	SelectConstructorExpression
+;
+
+SelectAggregateExpression:
+	AvgAggregate |
+	MaxAggregate |
+	MinAggregate |
+	SumAggregate |
+	CountAggregate
+;
+
+AvgAggregate:
+	'AVG' '(' (isDistinct?='DISTINCT')? item=AliasAttributeExpression ')'
+;
+
+MaxAggregate:
+	'MAX' '(' (isDistinct?='DISTINCT')? item=AliasAttributeExpression ')'
+;
+
+MinAggregate:
+	'MIN' '(' (isDistinct?='DISTINCT')? item=AliasAttributeExpression ')'
+;
+
+SumAggregate:
+	'SUM' '(' (isDistinct?='DISTINCT')? item=AliasAttributeExpression ')'
+;
+
+CountAggregate:
+	'COUNT' '(' (isDistinct?='DISTINCT')? item=AliasAttributeExpression ')'
+;
+
+SelectConstructorExpression:
+	'NEW' name=ID '(' items+=AliasAttributeExpression (',' items+=AliasAttributeExpression)* ')'
+;
+
+FromClause:
+	'FROM' fromEntries+=FromClass (',' fromEntries+=FromEntry )*
+;
+
+FromEntry:
+	FromClass |
+	FromCollection
+;
+
+VariableDeclaration returns VariableDeclaration:
+	("AS")? name=ID
+;
+
+FromClass:
+	FromClassId | 
+	FromClassVar
+;
+
+FromClassId returns FromClass:
+	type=ID
+;
+
+FromClassVar returns FromClass:
+	type=ID variable=VariableDeclaration (joins+=FromJoin)*
+;
+
+FromCollection returns FromCollection:	
+	'IN' '(' path=AliasAttributeExpression ')' variable=VariableDeclaration
+;
+
+FromJoin:
+	Join |
+	LeftJoin |
+	InnerJoin
+;
+
+Join:
+	'JOIN' (isFetch?='FETCH')? path=AliasAttributeExpression variable=VariableDeclaration
+;
+
+LeftJoin:
+	'LEFT' (isOuter?='OUTER')? 'JOIN' (isFetch?='FETCH')? path=AliasAttributeExpression variable=VariableDeclaration
+;
+
+InnerJoin:
+	'INNER' 'JOIN' (isFetch?='FETCH')? path=AliasAttributeExpression variable=VariableDeclaration
+;
+
+WhereClause:
+	'WHERE' whereEntry=OrExpression
+;
+
+OrExpression returns Expression:
+	AndExpression ({OrExpression.entries+=current}  ("OR" entries+=AndExpression)+)?
+;
+ 
+AndExpression returns Expression:
+	ConcreteExpression ({AndExpression.entries+=current} ("AND" entries+=ConcreteExpression)+)?
+;
+
+ConcreteExpression returns Expression:
+	ParExpression | 
+	OperatorExpression |
+	ExistsExpression |
+	AllExpression |
+	AnyExpression |
+	SomeExpression |
+	CollectionExpression |
+	NullComparisonExpression |
+	EmptyComparisonExpression |
+	LikeExpression |
+	InExpression |
+	BetweenExpression
+;
+
+ParExpression returns Expression:
+	"(" ExpressionTerm ")"
+;
+
+OperatorExpression:
+	lhs=Variable operator=Operator rhs=ExpressionTerm 
+;
+
+ExistsExpression:
+	(isNot?='NOT')? 'EXISTS' query=QueryExpression
+;
+
+AllExpression:
+	'ALL' query=QueryExpression
+;
+
+AnyExpression:
+	'ANY' query=QueryExpression
+;
+
+SomeExpression:
+	'SOME' query=QueryExpression
+;
+
+CollectionExpression:
+	lhs=Variable (isNot?='NOT')? 'MEMBER' ('OF')? rhs=AliasAttributeExpression
+;
+
+NullComparisonExpression:
+	lhs=Variable 'IS' (isNot?='NOT')? 'NULL'
+;
+
+EmptyComparisonExpression:
+	lhs=Variable 'IS' (isNot?='NOT')? 'EMPTY'
+;
+
+LikeExpression:
+	lhs=Variable (isNot?='NOT')? 'LIKE' pattern=STRING
+;
+
+InExpression:
+	InSeqExpression |
+	InQueryExpression
+;
+
+InSeqExpression:
+	lhs=Variable (isNot?='NOT')? 'IN' '(' items+=Variable (',' items+=Variable)* ')'
+;
+
+InQueryExpression:
+	lhs=Variable (isNot?='NOT')? 'IN' query=QueryExpression
+;
+
+BetweenExpression:
+	lhs=Variable (isNot?='NOT')? 'BETWEEN' min=Value 'AND' max=Value
+;
+
+Variable:
+	AliasAttributeExpression | 
+	ParameterExpression |
+	Value
+;
+
+ExpressionTerm:
+	Variable |
+	QueryExpression
+;
+
+AliasAttributeExpression:
+	alias=[VariableDeclaration|ID] ("." attributes+=ID)*
+;
+
+ParameterExpression:
+	':'name=ID
+;
+
+Function:
+	StringFunction |
+	NumericFunction
+;
+
+StringFunction returns Function:
+	name=StringFunctionName '(' params+=Variable (',' params+=Variable) ')'
+;
+
+StringFunctionName:
+	'CONCAT' | 
+	'SUBSTRING' | 
+//	TRIM ([[trim_specification] [trim_character] FROM] string_primary) | 
+	'LOWER' | 
+	'UPPER' |
+	'LENGTH' |
+	'LOCATE'
+;
+
+NumericFunction returns Function:
+	name=NumericFunctionName '(' params+=Variable (',' params+=Variable) ')'
+;
+
+NumericFunctionName:
+	'ABS' | 'SQRT' | 'MOD' | 'SIZE'
+;
+
+DateTimeFunctionName:
+	'CURRENT_DATE' | 'CURRENT_TIME' | 'CURRENT_TIMESTAMP'
+;
+
+//DoubleExpression: 
+//	value=SIGNED_DOUBLE
+//; 
+//
+//LongExpression: 
+//	value=SINGED_LONG	
+//; 
+
+Value:
+	IntegerExpression |
+	StringExpression |
+	NullExpression |
+	BooleanExpression |
+	DateTimeExpression
+;
+
+IntegerExpression:
+	value=INT
+;
+
+StringExpression: 
+	value=STRING
+; 
+
+NullExpression:
+	value="NULL"
+; 
+
+BooleanExpression: 
+	value?=("TRUE" | "FALSE")
+;
+
+DateTimeExpression:
+	value=LiteralTemporal
+;
+
+QueryExpression returns SelectStatement:
+	"(" SelectStatement ")"
+;
+
+enum Operator:
+	lessThen="<" | 
+	greaterThen=">" | 
+	lessEqual="<=" | 
+	greaterEqual=">=" | 
+	equal="=" | 
+	notEqual="!="
+;
+
+terminal LiteralTemporal: 
+	DATE_LITERAL | 
+	TIME_LITERAL | 
+	TIMESTAMP_LITERAL
+;
+terminal DATE_LITERAL: 
+	'(' ('d') (' ' | '\t')+ '\'' DATE_STRING '\'' (' ' | '\t')* ')'
+    ;
+terminal TIME_LITERAL
+    : '(' ('t') (' ' | '\t')+ '\'' TIME_STRING '\'' (' ' | '\t')* ')'
+    ;
+terminal TIMESTAMP_LITERAL
+    : '(' ('ts') (' ' | '\t')+ '\'' DATE_STRING ' ' TIME_STRING '\'' (' ' | '\t')* ')'
+    ;
+terminal DATE_STRING
+    : '0'..'9' '0'..'9' '0'..'9' '0'..'9' '-' '0'..'9' '0'..'9' '-' '0'..'9' '0'..'9'
+    ;    
+terminal TIME_STRING
+    : '0'..'9' ('0'..'9')? ':' '0'..'9' '0'..'9' ':' '0'..'9' '0'..'9' '.' '0'..'9'*
+    ;
