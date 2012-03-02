@@ -190,8 +190,13 @@
 				<version>${jjqb.version}</version>
 			</dependency>
 			<!-- END org.nightlabs.jjqb.cumulus4j -->
-			
+
 			<!-- BEGIN org.nightlabs.jjqb.xtext -->
+			<dependency>
+				<groupId>org.nightlabs.jjqb</groupId>
+				<artifactId>org.nightlabs.jjqb.xtext.parent</artifactId>
+				<version>${jjqb.version}</version>
+			</dependency>
 			<dependency>
 				<groupId>org.nightlabs.jjqb</groupId>
 				<artifactId>org.nightlabs.jjqb.xtext.jdoql</artifactId>

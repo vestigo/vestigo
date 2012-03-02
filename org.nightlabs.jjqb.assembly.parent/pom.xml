@@ -19,6 +19,18 @@
 		<skipPluginExecution>true</skipPluginExecution>
 		<eclipse.babel.artifactIds>org.eclipse.babel.eclipse-de</eclipse.babel.artifactIds>
 	</properties>
+	
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.nightlabs.jjqb</groupId>
+				<artifactId>org.nightlabs.jjqb.xtext.parent</artifactId>
+				<version>${jjqb.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
 	<dependencies>
 		<!-- BEGIN org.nightlabs.eclipse.* -->
@@ -214,6 +226,125 @@ Marco :-)
 			<groupId>javax.jdo</groupId>
 			<artifactId>jdo-api</artifactId>
 		</dependency>
+
+		<!-- BEGIN Xtext ->
+		... Xtext runtime zip instead of individual deps!
+		<dependency>
+			<groupId>com.google.inject</groupId>
+			<artifactId>com.google.inject</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>com.google.guava</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.xtend2</groupId>
+			<artifactId>org.eclipse.xtend2.lib</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.xtext</groupId>
+			<artifactId>org.eclipse.xtext.builder</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.xtext</groupId>
+			<artifactId>org.eclipse.xtext.common.types.ui</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.xtext</groupId>
+			<artifactId>org.eclipse.xtext.common.types</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.xtext</groupId>
+			<artifactId>org.eclipse.xtext.common.types</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.xtext</groupId>
+			<artifactId>org.eclipse.xtext.ecore</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.xtext</groupId>
+			<artifactId>org.eclipse.xtext.generator</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.xtext</groupId>
+			<artifactId>org.eclipse.xtext.logging</artifactId>
+		</dependency>		
+		<dependency>
+			<groupId>org.eclipse.xtext</groupId>
+			<artifactId>org.eclipse.xtext.ui</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.xtext</groupId>
+			<artifactId>org.eclipse.xtext.util</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.xtext</groupId>
+			<artifactId>org.eclipse.xtext.xbase.lib</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.xtext</groupId>
+			<artifactId>org.eclipse.xtext</artifactId>
+		</dependency>
+		<!- END Xtext -->
+
+		<!-- BEGIN XText additional RUNTIME libs for assembly -->
+		<!-- Even though, we use the org.eclipse.xtext.runtime.zip (containing many xtext runtime libs), we have to add some more here. -->
+		<dependency>
+			<groupId>javax.inject</groupId>
+			<artifactId>javax.inject</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.antlr.runtime</groupId>
+			<artifactId>org.antlr.runtime</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.xtext</groupId>
+			<artifactId>org.eclipse.xtext.ui.shared</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.xtext</groupId>
+			<artifactId>org.eclipse.xtext.ui.codetemplates</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.xtext</groupId>
+			<artifactId>org.eclipse.xtext.ui.codetemplates.ui</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.xpand</groupId>
+			<artifactId>org.eclipse.xpand</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.xpand</groupId>
+			<artifactId>org.eclipse.xtend</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.emf</groupId>
+			<artifactId>org.eclipse.emf.mwe.core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.emf</groupId>
+			<artifactId>org.eclipse.emf.mwe2.runtime</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>org.apache.commons.cli</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.xpand</groupId>
+			<artifactId>org.eclipse.xtend.typesystem.emf</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.emf</groupId>
+			<artifactId>org.eclipse.emf.mwe.utils</artifactId>
+		</dependency>
+		<!-- END XText additional RUNTIME libs for assembly -->
+
+		<dependency>
+		    <groupId>org.eclipse.xtext</groupId>
+		    <artifactId>org.eclipse.xtext.runtime</artifactId>
+		    <version>2.2.1</version>
+		    <type>zip</type>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -303,7 +434,20 @@ Marco :-)
 									**/org.eclipse.update*
 								</excludes>
 							</configuration>
-						</execution>						
+						</execution>
+						<execution>
+							<id>unpack-xtext</id>
+							<phase>package</phase>
+							<goals>
+								<goal>unpack-dependencies</goal>
+							</goals>
+							<configuration>
+								<skip>${skipPluginExecution}</skip>
+								<outputDirectory>${assembly.directory}</outputDirectory>
+								<includeGroupIds>org.eclipse.xtext</includeGroupIds>
+								<includeArtifactIds>org.eclipse.xtext.runtime</includeArtifactIds>
+							</configuration>
+						</execution>
 						<execution>
 							<id>copy-plugins</id>
 							<goals>

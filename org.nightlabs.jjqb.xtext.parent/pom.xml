@@ -12,6 +12,12 @@
 	</parent>
 
 
+	<properties>
+		<xtext.version>2.2.0.v201112121625</xtext.version>
+		<!-- 2.2.1.v201112130541 -->
+	</properties>
+
+
 	<repositories>
 		<repository>
 			<id>maven.eclipse.org-public</id>
@@ -51,7 +57,7 @@
 			<dependency>
 				<groupId>org.eclipse.xtext</groupId>
 				<artifactId>org.eclipse.xtext.xtend2.lib</artifactId>
-				<version>2.2.0.v201112121625</version>
+				<version>${xtext.version}</version>
 				<exclusions>
 					<exclusion>
 						<groupId>com.google.guava</groupId>
@@ -76,30 +82,39 @@
 			<dependency>
 				<groupId>org.eclipse.xtext</groupId>
 				<artifactId>org.eclipse.xtext</artifactId>
-				<version>2.2.0.v201112121625</version>
+				<version>${xtext.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.eclipse.xtext</groupId>
 				<artifactId>org.eclipse.xtext.common.types</artifactId>
-				<version>2.2.0.v201112121625</version>
+				<version>${xtext.version}</version>
 			</dependency>
 			<!-- END xtext -->
-
+			
+			<!-- BEGIN override versions that are otherwise not found -->
+			<dependency>
+				<groupId>org.eclipse.equinox</groupId>
+				<artifactId>org.eclipse.equinox.p2.metadata.repository</artifactId>
+				<version>1.1.0</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.ecf</groupId>
+				<artifactId>org.eclipse.ecf.provider.filetransfer</artifactId>
+				<version>3.1.0</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.ecf</groupId>
+				<artifactId>org.eclipse.ecf.filetransfer</artifactId>
+				<version>4.0.0</version>
+			</dependency>
+			<!-- END override versions that are otherwise not found -->
 
 			<!-- BEGIN xtext UI -->
 			<dependency>
 				<groupId>org.eclipse.xtext</groupId>
 				<artifactId>org.eclipse.xtext.ui</artifactId>
-				<version>2.2.0.v201112121625</version>
+				<version>${xtext.version}</version>
 				<exclusions>
-					<!--
-					These were not found (Eclipse's maven repository sucks!), but fortunately, these
-					libraries are not necessary for compilation, anyway. Marco :-)
-					-->
-					<exclusion>
-						<groupId>org.eclipse.equinox</groupId>
-						<artifactId>org.eclipse.equinox.p2.metadata.repository</artifactId>
-					</exclusion>
 					<exclusion>
 						<groupId>org.eclipse.ecf</groupId>
 						<artifactId>org.eclipse.ecf.provider.filetransfer</artifactId>
@@ -110,31 +125,37 @@
 			<dependency>
 				<groupId>org.eclipse.xtext</groupId>
 				<artifactId>org.eclipse.xtext.common.types.ui</artifactId>
-				<version>2.2.0.v201112121625</version>
+				<version>${xtext.version}</version>
 			</dependency>
-	
+
 			<dependency>
 				<groupId>org.eclipse.xtext</groupId>
 				<artifactId>org.eclipse.xtext.builder</artifactId>
-				<version>2.2.0.v201112121625</version>
+				<version>${xtext.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>com.google.guava</groupId>
+						<artifactId>guava</artifactId>
+					</exclusion>
+				</exclusions>
 			</dependency>
 	
 			<dependency>
 				<groupId>org.eclipse.xtext</groupId>
 				<artifactId>org.eclipse.xtext.ui.shared</artifactId>
-				<version>2.2.0.v201112121625</version>
+				<version>${xtext.version}</version>
 			</dependency>
 	
 			<dependency>
 				<groupId>org.eclipse.xtext</groupId>
 				<artifactId>org.eclipse.xtext.ui.codetemplates</artifactId>
-				<version>2.2.0.v201112121625</version>
+				<version>${xtext.version}</version>
 			</dependency>
 	
 			<dependency>
 				<groupId>org.eclipse.xtext</groupId>
 				<artifactId>org.eclipse.xtext.ui.codetemplates.ui</artifactId>
-				<version>2.2.0.v201112121625</version>
+				<version>${xtext.version}</version>
 			</dependency>
 			<!-- END xtext UI -->
 
@@ -143,9 +164,147 @@
 			<dependency>
 				<groupId>org.eclipse.xtext</groupId>
 				<artifactId>org.eclipse.xtext.junit4</artifactId>
-				<version>2.2.0.v201112121625</version>
+				<version>${xtext.version}</version>
 			</dependency>
 			<!-- END xtext tests -->
+
+			<!-- BEGIN XText additional RUNTIME libs for assembly -->
+			<!-- Even though, we use the org.eclipse.xtext.runtime.zip (containing many xtext runtime libs), we have to add some more here. -->
+			<dependency>
+				<groupId>org.antlr.runtime</groupId>
+				<artifactId>org.antlr.runtime</artifactId>
+				<version>3.2.0.v201101311130</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.inject</groupId>
+				<artifactId>javax.inject</artifactId>
+				<version>1.0.0.v20091030</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.eclipse.xpand</groupId>
+				<artifactId>org.eclipse.xpand</artifactId>
+				<version>1.2.0.v201112120939</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.eclipse.xpand</groupId>
+						<artifactId>org.eclipse.emf.mwe.core</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.eclipse.xpand</groupId>
+						<artifactId>org.eclipse.emf.common</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.eclipse.xpand</groupId>
+						<artifactId>org.antlr.runtime</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+
+			<dependency>
+				<groupId>org.eclipse.xpand</groupId>
+				<artifactId>org.eclipse.xtend</artifactId>
+				<version>1.2.0.v201112120939</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.eclipse.xpand</groupId>
+						<artifactId>org.eclipse.emf.mwe.core</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.eclipse.xpand</groupId>
+						<artifactId>org.eclipse.emf.common</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.eclipse.xpand</groupId>
+						<artifactId>org.antlr.runtime</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+
+			<dependency>
+				<groupId>org.eclipse.emf</groupId>
+				<artifactId>org.eclipse.emf.mwe.core</artifactId>
+				<version>1.2.1.v201112120646</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.emf</groupId>
+				<artifactId>org.eclipse.emf.mwe2.runtime</artifactId>
+				<version>2.2.0.v201112120646</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>org.apache.commons.cli</artifactId>
+				<version>1.2.0.v201105210650</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.xpand</groupId>
+				<artifactId>org.eclipse.xtend.typesystem.emf</artifactId>
+				<version>1.2.0.v201112120939</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.eclipse.xpand</groupId>
+						<artifactId>org.eclipse.emf.mwe.core</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.eclipse.xpand</groupId>
+						<artifactId>org.eclipse.emf.ecore.xmi</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.eclipse.xpand</groupId>
+						<artifactId>org.eclipse.emf.mwe.utils</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+
+			<dependency>
+				<groupId>org.eclipse.emf</groupId>
+				<artifactId>org.eclipse.emf.mwe.utils</artifactId>
+				<version>1.2.1.v201112120646</version>
+			</dependency>
+
+			<!--
+			<dependency>
+				<groupId>org.eclipse.emf</groupId>
+				<artifactId>org.eclipse.emf.mwe.core</artifactId>
+				<version>1.2.1.v201112120646</version>
+			</dependency>
+			-->
+			<!-- END XText additional RUNTIME libs for assembly -->
+
+			<!-- BEGIN XText additional RUNTIME libs for assembly ->
+			...using runtime zip instead (because the xtext-version in maven repositories is slightly older). see assembly.parent/pom.xml
+			<dependency>
+				<groupId>org.eclipse.xtext</groupId>
+				<artifactId>org.eclipse.xtext.ecore</artifactId>
+				<version>${xtext.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.xtext</groupId>
+				<artifactId>org.eclipse.xtext.generator</artifactId>
+				<version>${xtext.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.xtext</groupId>
+				<artifactId>org.eclipse.xtext.logging</artifactId>
+				<version>${xtext.version}</version>
+			</dependency>		
+			<dependency>
+				<groupId>org.eclipse.xtext</groupId>
+				<artifactId>org.eclipse.xtext.ui</artifactId>
+				<version>${xtext.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.xtext</groupId>
+				<artifactId>org.eclipse.xtext.util</artifactId>
+				<version>${xtext.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.xtext</groupId>
+				<artifactId>org.eclipse.xtext.xbase.lib</artifactId>
+				<version>${xtext.version}</version>
+			</dependency>
+			<!- END XText additional RUNTIME libs for assembly -->
+
 		</dependencies>
 	</dependencyManagement>
 
