@@ -72,7 +72,7 @@ implements JDOQueryBrowser
 	}
 	@Override
 	public void removeDisposeListener(DisposeListener disposeListener) {
-		helper.addDisposeListener(disposeListener);
+		helper.removeDisposeListener(disposeListener);
 	}
 
 	@Override
