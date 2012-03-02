@@ -2,7 +2,18 @@
 <?eclipse version="3.0"?>
 
 <plugin>
-
+    <extension
+            point="org.eclipse.ui.editors">
+        <editor
+            class="org.nightlabs.jjqb.xtext.jdoql.ui.JDOQLExecutableExtensionFactory:org.nightlabs.jjqb.xtext.jdoql.ui.browser.JDOQueryBrowserEditor"
+            contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
+            default="true"
+            extensions="jdoql"
+            id="org.nightlabs.jjqb.xtext.jdoql.JDOQL"
+            name="JDOQL Editor">
+        </editor>
+    </extension>
+<!--
     <extension
             point="org.eclipse.ui.editors">
         <editor
@@ -14,6 +25,7 @@
             name="JDOQL Editor">
         </editor>
     </extension>
+-->
     <extension
         point="org.eclipse.ui.handlers">
         <handler

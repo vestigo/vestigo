@@ -7,17 +7,21 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
-import org.nightlabs.jjqb.xtext.jdoql.ui.contentassist.AbstractJDOQLProposalProvider;
 /**
  * see http://www.eclipse.org/Xtext/documentation/latest/xtext.html#contentAssist on how to customize content assistant
  */
 public class JDOQLProposalProvider extends AbstractJDOQLProposalProvider {
 
-	
+
 	@Override
 	public void complete_CandidateClassName(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-		
+
 		super.complete_CandidateClassName(model, ruleCall, context, acceptor);
+
+		System.out.println("************* complete_CandidateClassName ***************");
+		System.out.println(context.getDocument());
+		System.out.println("************* complete_CandidateClassName ***************");
+
 		String[] classes = new String[] {
 				"org.nightlabs.Test1",
 				"org.nightlabs.supadupa.Test2",
@@ -26,7 +30,7 @@ public class JDOQLProposalProvider extends AbstractJDOQLProposalProvider {
 		for (String className : classes) {
 			acceptor.accept(createCompletionProposal(className, context));
 		}
-		
+
 	}
-	
+
 }

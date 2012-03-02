@@ -403,6 +403,15 @@
                   </execution>
                 </executions>
             </plugin>
+
+            <plugin>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifestFile>${basedir}/META-INF/MANIFEST.MF</manifestFile>
+					</archive>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 </project>

@@ -57,15 +57,17 @@
 			<groupId>org.nightlabs.jjqb</groupId>
 			<artifactId>org.nightlabs.jjqb.childvm.webapp.client</artifactId>
 		</dependency>
-<!--
-		<dependency>
-			<groupId>org.nightlabs.jjqb</groupId>
-			<artifactId>org.nightlabs.jjqb.derby</artifactId>
-		</dependency>
--->
 		<dependency>
 			<groupId>org.nightlabs.jjqb</groupId>
 			<artifactId>org.nightlabs.jjqb.ui</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.nightlabs.jjqb</groupId>
+			<artifactId>org.nightlabs.jjqb.xtext.jdoql</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.nightlabs.jjqb</groupId>
+			<artifactId>org.nightlabs.jjqb.xtext.jdoql.ui</artifactId>
 		</dependency>
 		<!-- END org.nightlabs.jjqb.* -->
 

@@ -1,7 +1,8 @@
-package org.nightlabs.jjqb.ui.browser;
+package org.nightlabs.jjqb.xtext.jdoql.ui.browser;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.text.IDocument;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
@@ -13,17 +14,23 @@ import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.PartInitException;
-import org.nightlabs.jdo.jdoqleditor.editor.JDOQLEditor;
+import org.eclipse.xtext.ui.editor.XtextEditor;
+import org.nightlabs.jjqb.ui.browser.ExecuteQueryAdapter;
+import org.nightlabs.jjqb.ui.browser.ExecuteQueryEvent;
+import org.nightlabs.jjqb.ui.browser.ExecuteQueryListener;
+import org.nightlabs.jjqb.ui.browser.JDOQueryBrowser;
+import org.nightlabs.jjqb.ui.browser.JDOQueryBrowserManager;
+import org.nightlabs.jjqb.ui.browser.QueryBrowserManager;
+import org.nightlabs.jjqb.ui.browser.QueryBrowserManagerComposite;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
- * @deprecated Replaced by <code>org.nightlabs.jjqb.xtext.jdoql.ui.browser.JDOQueryBrowserEditor</code>! Will be removed soon.
  */
-@Deprecated
 public class JDOQueryBrowserEditor
-extends JDOQLEditor
+//extends JDOQLEditor
+extends XtextEditor
 implements JDOQueryBrowser
 {
 	private static final Logger logger = LoggerFactory.getLogger(JDOQueryBrowserEditor.class);
@@ -65,7 +72,11 @@ implements JDOQueryBrowser
 				c.setLayoutData(new GridData(GridData.FILL_BOTH));
 		}
 
-		getDocumentProvider().getDocument(getEditorInput()).addDocumentListener(helper.getDocumentListener());
+		IDocument document = getDocumentProvider().getDocument(getEditorInput());
+		document.addDocumentListener(helper.getDocumentListener());
+		System.out.println("************* createPartControl ***************");
+		System.out.println(document);
+		System.out.println("************* createPartControl ***************");
 	}
 
 	@Override

@@ -15,6 +15,10 @@
 			<groupId>org.nightlabs.jjqb</groupId>
 			<artifactId>org.nightlabs.jjqb.xtext.jdoql</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.nightlabs.jjqb</groupId>
+			<artifactId>org.nightlabs.jjqb.ui</artifactId>
+		</dependency>
 
 		<!-- BEGIN org.nightlabs.eclipse -->
 		<dependency>
