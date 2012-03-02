@@ -20,11 +20,14 @@ import org.nightlabs.jjqb.childvm.shared.api.ChildVM;
 import org.nightlabs.jjqb.childvm.shared.dto.ResultCellDTO;
 import org.nightlabs.jjqb.childvm.shared.dto.ResultCellNullDTO;
 import org.nightlabs.jjqb.childvm.shared.dto.ResultCellObjectRefDTO;
+import org.nightlabs.jjqb.childvm.shared.dto.ResultCellPersistentObjectRefDTO;
 import org.nightlabs.jjqb.childvm.shared.dto.ResultCellSimpleDTO;
+import org.nightlabs.jjqb.childvm.shared.dto.ResultCellTransientObjectRefDTO;
 import org.nightlabs.jjqb.childvm.shared.dto.ResultRowDTO;
 import org.nightlabs.jjqb.core.JJQBCorePlugin;
 import org.nightlabs.jjqb.core.ObjectReference;
-import org.nightlabs.jjqb.core.internal.ObjectReferenceImpl;
+import org.nightlabs.jjqb.core.internal.PersistentObjectReferenceImpl;
+import org.nightlabs.jjqb.core.internal.TransientObjectReferenceImpl;
 import org.nightlabs.jjqb.core.oda.Query;
 import org.nightlabs.jjqb.core.oda.ResultSet;
 
@@ -466,13 +469,22 @@ public abstract class AbstractResultSet implements ResultSet
 			);
 			ObjectReference objectReference = qualifiedObjectID2objectReference.get(qualifiedObjectID);
 			if (objectReference == null) {
-				objectReference = new ObjectReferenceImpl(this, resultCellObjectRefDTO);
+				objectReference = createObjectReference(resultCellObjectRefDTO);
 				qualifiedObjectID2objectReference.put(qualifiedObjectID, objectReference);
 			}
 			return objectReference;
 		}
 
 		throw new IllegalStateException("Unknown ResultCellDTO subclass: " + resultCellDTO);
+	}
+
+	private ObjectReference createObjectReference(ResultCellObjectRefDTO resultCellObjectRefDTO)
+	{
+		if (resultCellObjectRefDTO instanceof ResultCellPersistentObjectRefDTO)
+			return new PersistentObjectReferenceImpl(this, resultCellObjectRefDTO);
+		if (resultCellObjectRefDTO instanceof ResultCellTransientObjectRefDTO)
+			return new TransientObjectReferenceImpl(this, resultCellObjectRefDTO);
+		throw new IllegalStateException("Unknown ResultCellObjectRefDTO subclass: " + resultCellObjectRefDTO);
 	}
 
 	private String getQualifiedObjectID(String objectClassName, String objectIDString)

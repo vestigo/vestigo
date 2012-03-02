@@ -28,4 +28,6 @@ public interface ConnectionProfile {
 
 	Properties getPersistentConnectionProperties();
 	Properties getTransientConnectionProperties();
+
+	boolean isClassAssignableFrom(String targetClass, String candidateClass);
 }

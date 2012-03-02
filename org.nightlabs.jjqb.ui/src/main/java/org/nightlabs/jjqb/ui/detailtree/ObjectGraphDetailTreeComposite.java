@@ -20,6 +20,7 @@ import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.MouseAdapter;
 import org.eclipse.swt.events.MouseEvent;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.nightlabs.jjqb.core.LabelTextOption;
@@ -77,6 +78,13 @@ implements LabelTextOptionsContainer
 		ObjectGraphDetailTreeContentProvider treeContentProvider = new ObjectGraphDetailTreeContentProvider();
 		treeViewer.setContentProvider(treeContentProvider);
 		treeViewer.setLabelProvider(new LabelProvider() {
+			@Override
+			public Image getImage(Object element) {
+				if (element instanceof ObjectGraphDetailTreeNode)
+					return ((ObjectGraphDetailTreeNode)element).getLabelImage();
+				else
+					return super.getImage(element);
+			}
 			@Override
 			public String getText(Object element) {
 				if (element instanceof ObjectGraphDetailTreeNode)

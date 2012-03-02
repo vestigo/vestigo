@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.childvm.webapp;
+package org.nightlabs.jjqb.childvm.webapp.service;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.Produces;

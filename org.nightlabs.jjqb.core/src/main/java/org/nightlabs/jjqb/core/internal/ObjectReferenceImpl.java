@@ -19,7 +19,7 @@ import org.nightlabs.util.Util;
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
  */
-public class ObjectReferenceImpl implements ObjectReference
+public abstract class ObjectReferenceImpl implements ObjectReference
 {
 	private ResultSet resultSet;
 	private ResultCellObjectRefDTO resultCellObjectRefDTO;
@@ -136,5 +136,17 @@ public class ObjectReferenceImpl implements ObjectReference
 			this.children = children;
 		}
 		return children;
+	}
+
+	@Override
+	public boolean isObjectInstanceOf(Class<?> targetClass)
+	{
+		return isObjectInstanceOf(targetClass.getName());
+	}
+
+	@Override
+	public boolean isObjectInstanceOf(String targetClass)
+	{
+		return resultSet.getQuery().getConnection().getConnectionProfile().isClassAssignableFrom(targetClass, getObjectClassName());
 	}
 }

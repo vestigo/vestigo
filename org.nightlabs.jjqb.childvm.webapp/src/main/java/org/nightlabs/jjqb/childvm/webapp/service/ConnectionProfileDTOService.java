@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.childvm.webapp;
+package org.nightlabs.jjqb.childvm.webapp.service;
 
 import java.net.MalformedURLException;
 import java.util.Collection;

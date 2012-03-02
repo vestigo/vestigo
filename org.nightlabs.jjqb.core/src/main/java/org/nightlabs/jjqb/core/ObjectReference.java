@@ -112,4 +112,8 @@ public interface ObjectReference {
 	 * in UI.
 	 */
 	String getLabelText(Set<LabelTextOption> labelTextOptions);
+
+	boolean isObjectInstanceOf(Class<?> targetClass);
+
+	boolean isObjectInstanceOf(String targetClass);
 }

@@ -1,9 +1,11 @@
-package org.nightlabs.jjqb.childvm.webapp;
+package org.nightlabs.jjqb.childvm.webapp.service;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+
+import org.nightlabs.jjqb.childvm.webapp.ParentVMHeartBeat;
 
 /**
  * REST service for testing whether the server is completely online and the REST app is deployed (&amp; ready).

@@ -18,9 +18,9 @@ import org.nightlabs.jjqb.childvm.shared.dto.ResultRowDTO;
  */
 public interface ChildVM
 {
-	
+
 	boolean isOnline();
-	
+
 	void putConnectionProfileDTO(ConnectionProfileDTO connectionProfileDTO) throws ChildVMException;
 
 	Collection<ConnectionProfileDTO> getConnectionProfileDTOs() throws ChildVMException;
@@ -49,4 +49,6 @@ public interface ChildVM
 	void deleteResultSetDTO(ResultSetID resultSetID) throws ChildVMException;
 
 	List<ResultCellDTO> getChildren(ResultSetID resultSetID, ResultCellObjectRefDTO resultCellObjectRefDTO) throws ChildVMException;
+
+	boolean isClassAssignableFrom(String profileID, String targetClass, String candidateClass);
 }

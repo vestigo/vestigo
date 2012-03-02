@@ -9,6 +9,13 @@ import javax.ws.rs.core.Application;
 
 import org.nightlabs.jjqb.childvm.shared.provider.JavaNativeMessageBodyReader;
 import org.nightlabs.jjqb.childvm.shared.provider.JavaNativeMessageBodyWriter;
+import org.nightlabs.jjqb.childvm.webapp.service.ConnectionDTOService;
+import org.nightlabs.jjqb.childvm.webapp.service.ConnectionProfileDTOService;
+import org.nightlabs.jjqb.childvm.webapp.service.IsClassAssignableFromService;
+import org.nightlabs.jjqb.childvm.webapp.service.IsOnlineService;
+import org.nightlabs.jjqb.childvm.webapp.service.ResultCellDTOService;
+import org.nightlabs.jjqb.childvm.webapp.service.ResultRowDTOService;
+import org.nightlabs.jjqb.childvm.webapp.service.ResultSetDTOService;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
@@ -26,6 +33,7 @@ extends Application
 		// BEGIN services
 		ConnectionDTOService.class,
 		ConnectionProfileDTOService.class,
+		IsClassAssignableFromService.class,
 		IsOnlineService.class,
 		ResultCellDTOService.class,
 		ResultRowDTOService.class,

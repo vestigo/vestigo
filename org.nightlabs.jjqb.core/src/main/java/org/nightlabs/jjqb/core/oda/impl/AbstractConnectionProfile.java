@@ -37,6 +37,7 @@ public abstract class AbstractConnectionProfile implements ConnectionProfile
 
 	private ChildVMServer childVMServer;
 	private String profileID;
+	private Map<String, Boolean> classesKey2IsClassAssignableFromResult;
 
 	@Override
 	public String getProfileID() {
@@ -103,6 +104,7 @@ public abstract class AbstractConnectionProfile implements ConnectionProfile
 		logger.info("preFirstConnectionOpen: profileID={} connection={}", profileID, connection);
 		this.persistentConnectionProperties = connection.getConnectionProperties();
 		this.transientConnectionProperties = obtainTransientConnectionProperties();
+		this.classesKey2IsClassAssignableFromResult = new HashMap<String, Boolean>();
 		try {
 			getChildVMServer().open();
 		} catch (IOException e) {
@@ -301,15 +303,16 @@ public abstract class AbstractConnectionProfile implements ConnectionProfile
 		connectionsOpening.remove(connection); // in case, the opening process was interrupted.
 	}
 
-	public synchronized void postLastConnectionClose(Connection connection) throws OdaException
+	protected synchronized void postLastConnectionClose(Connection connection) throws OdaException
 	{
 		logger.info("postLastConnectionClose: profileID={} connection={}", profileID, connection);
 		try {
 			getChildVMServer().close();
 		} catch (IOException e) {
 			throw new OdaException(e);
+		} finally {
+			classesKey2IsClassAssignableFromResult = null;
 		}
-//			classLoaderManager.close();
 	}
 
 	@Override
@@ -350,4 +353,30 @@ public abstract class AbstractConnectionProfile implements ConnectionProfile
 	}
 
 	protected abstract ConnectionProfileDTO newConnectionProfileDTO();
+
+	private String getClassesKey(String targetClass, String candidateClass)
+	{
+		if (targetClass == null)
+			throw new IllegalArgumentException("targetClass == null");
+
+		if (candidateClass == null)
+			throw new IllegalArgumentException("candidateClass == null");
+
+		return targetClass + ':' + candidateClass;
+	}
+
+	@Override
+	public synchronized boolean isClassAssignableFrom(String targetClass, String candidateClass)
+	{
+		if (classesKey2IsClassAssignableFromResult == null)
+			throw new IllegalStateException("Profile is not open! classesKey2IsClassAssignableFromResult == null");
+
+		String classesKey = getClassesKey(targetClass, candidateClass);
+		Boolean result = classesKey2IsClassAssignableFromResult.get(classesKey);
+		if (result == null) {
+			result = getChildVM().isClassAssignableFrom(profileID, targetClass, candidateClass);
+			classesKey2IsClassAssignableFromResult.put(classesKey, result);
+		}
+		return result;
+	}
 }

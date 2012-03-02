@@ -470,4 +470,31 @@ implements ChildVM
 			releaseClient(client);
 		}
 	}
+
+	@Override
+	public boolean isClassAssignableFrom(String profileID, String targetClass, String candidateClass)
+	{
+		if (profileID == null)
+			throw new IllegalArgumentException("profileID == null");
+
+		if (targetClass == null)
+			throw new IllegalArgumentException("targetClass == null");
+
+		if (candidateClass == null)
+			throw new IllegalArgumentException("candidateClass == null");
+
+		Client client = acquireClient();
+		try {
+			WebResource resource = getChildVMAppResource(client, "IsClassAssignableFrom/" + profileID + '/' + targetClass + '/' + candidateClass);
+			Boolean result = resource.accept(MediaTypeConst.APPLICATION_JAVA_NATIVE_TYPE).get(boolean.class);
+			if (result == null)
+				throw new IllegalStateException("GET request returned null!");
+			return result;
+		} catch (UniformInterfaceException x) {
+			handleUniformInterfaceException(x);
+			throw x; // we do not expect null
+		} finally {
+			releaseClient(client);
+		}
+	}
 }
