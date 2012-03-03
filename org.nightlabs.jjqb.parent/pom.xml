@@ -212,6 +212,21 @@
 				<artifactId>org.nightlabs.jjqb.xtext.jdoql.ui</artifactId>
 				<version>${jjqb.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>org.nightlabs.jjqb</groupId>
+				<artifactId>org.nightlabs.jjqb.xtext.jpql</artifactId>
+				<version>${jjqb.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.nightlabs.jjqb</groupId>
+				<artifactId>org.nightlabs.jjqb.xtext.jpql.tests</artifactId>
+				<version>${jjqb.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.nightlabs.jjqb</groupId>
+				<artifactId>org.nightlabs.jjqb.xtext.jpql.ui</artifactId>
+				<version>${jjqb.version}</version>
+			</dependency>
 			<!-- END org.nightlabs.jjqb.xtext -->
 
 			<!-- BEGIN org.eclipse -->

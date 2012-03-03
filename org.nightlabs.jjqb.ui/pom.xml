@@ -111,6 +111,7 @@ temporarily... because of exampleeditor - we should switch back to the property,
 					<exclude>target/**/*</exclude>
 					<exclude>.project</exclude>
 					<exclude>.classpath</exclude>
+					<exclude>*.target</exclude>
 				</excludes>
 			</resource>
 			<resource>

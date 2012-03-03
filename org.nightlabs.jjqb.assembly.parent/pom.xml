@@ -69,6 +69,14 @@
 			<groupId>org.nightlabs.jjqb</groupId>
 			<artifactId>org.nightlabs.jjqb.xtext.jdoql.ui</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.nightlabs.jjqb</groupId>
+			<artifactId>org.nightlabs.jjqb.xtext.jpql</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.nightlabs.jjqb</groupId>
+			<artifactId>org.nightlabs.jjqb.xtext.jpql.ui</artifactId>
+		</dependency>
 		<!-- END org.nightlabs.jjqb.* -->
 
 		<!-- BEGIN org.nightlabs.jjqb.cumulus4j.* -->

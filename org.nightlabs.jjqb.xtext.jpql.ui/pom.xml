@@ -1,0 +1,75 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>org.nightlabs.jjqb.xtext.jpql.ui</artifactId>
+
+	<parent>
+		<groupId>org.nightlabs.jjqb</groupId>
+		<artifactId>org.nightlabs.jjqb.xtext.parent</artifactId>
+		<version>0.1.1-SNAPSHOT</version>
+		<relativePath>../org.nightlabs.jjqb.xtext.parent</relativePath>
+	</parent>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.nightlabs.jjqb</groupId>
+			<artifactId>org.nightlabs.jjqb.xtext.jpql</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.nightlabs.jjqb</groupId>
+			<artifactId>org.nightlabs.jjqb.ui</artifactId>
+		</dependency>
+
+		<!-- BEGIN org.nightlabs.eclipse -->
+		<dependency>
+			<groupId>org.nightlabs.eclipse</groupId>
+			<artifactId>org.nightlabs.eclipse.compatibility.rcp</artifactId>
+			<scope>provided</scope>
+			<exclusions>
+				<exclusion>
+					<artifactId>
+						org.eclipse.update.configurator
+					</artifactId>
+					<groupId>org.eclipse.update</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<!-- END org.nightlabs.eclipse -->
+
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.eclipse.xtext</groupId>
+			<artifactId>org.eclipse.xtext.ui</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.eclipse.xtext</groupId>
+			<artifactId>org.eclipse.xtext.common.types.ui</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.eclipse.xtext</groupId>
+			<artifactId>org.eclipse.xtext.builder</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.eclipse.xtext</groupId>
+			<artifactId>org.eclipse.xtext.ui.shared</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.eclipse.xtext</groupId>
+			<artifactId>org.eclipse.xtext.ui.codetemplates</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.eclipse.xtext</groupId>
+			<artifactId>org.eclipse.xtext.ui.codetemplates.ui</artifactId>
+		</dependency>
+	</dependencies>
+
+</project>
