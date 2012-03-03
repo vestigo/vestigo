@@ -166,6 +166,11 @@
 				<artifactId>org.eclipse.xtext.junit4</artifactId>
 				<version>${xtext.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>org.eclipse.xtext</groupId>
+				<artifactId>org.eclipse.xtext.ui.junit</artifactId>
+				<version>${xtext.version}</version>
+			</dependency>
 			<!-- END xtext tests -->
 
 			<!-- BEGIN XText additional RUNTIME libs for assembly -->
