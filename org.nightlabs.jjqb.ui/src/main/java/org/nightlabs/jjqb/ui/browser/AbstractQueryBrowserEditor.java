@@ -1,7 +1,7 @@
 package org.nightlabs.jjqb.ui.browser;
 
-import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.text.IDocument;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
@@ -13,24 +13,35 @@ import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.texteditor.IDocumentProvider;
 import org.eclipse.xtext.ui.editor.XtextEditor;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
+import com.google.inject.Injector;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
  */
-public class AbstractQueryBrowserEditor
+public abstract class AbstractQueryBrowserEditor
 extends XtextEditor
 implements QueryBrowser
 {
-	private static final Logger logger = LoggerFactory.getLogger(AbstractQueryBrowserEditor.class);
-
 	private Helper helper = new Helper(this);
-	private boolean dirty;
-	private QueryBrowserManager queryBrowserManager = new JPAQueryBrowserManager(this);
+	private QueryBrowserManager queryBrowserManager;
 	private QueryBrowserManagerComposite queryBrowserManagerComposite;
 	private Composite queryEditorComposite;
+	private JJQBDocumentProvider documentProvider;
+
+	protected abstract QueryBrowserManager createQueryBrowserManager();
+
+	@Override
+	public synchronized IDocumentProvider getDocumentProvider()
+	{
+		if (documentProvider == null) {
+				documentProvider = new JJQBDocumentProvider(this);
+				getInjector().injectMembers(documentProvider);
+		}
+		return documentProvider;
+	}
 
 	@Override
 	public String getQueryID() {
@@ -46,7 +57,7 @@ implements QueryBrowser
 				helper.fireDisposeListeners(e);
 			}
 		});
-		queryBrowserManager.addExecuteQueryListener(executeQueryListener);
+		getQueryBrowserManager().addExecuteQueryListener(executeQueryListener);
 
 		queryEditorComposite = new Composite(parent, SWT.BORDER);
 		queryEditorComposite.setLayout(new GridLayout());
@@ -54,7 +65,7 @@ implements QueryBrowser
 		queryBrowserManagerComposite = new QueryBrowserManagerComposite(
 				queryEditorComposite, SWT.BORDER
 				);
-		queryBrowserManagerComposite.setQueryBrowserManager(queryBrowserManager);
+		queryBrowserManagerComposite.setQueryBrowserManager(getQueryBrowserManager());
 
 		super.createPartControl(queryEditorComposite);
 
@@ -63,7 +74,11 @@ implements QueryBrowser
 				c.setLayoutData(new GridData(GridData.FILL_BOTH));
 		}
 
-		getDocumentProvider().getDocument(getEditorInput()).addDocumentListener(helper.getDocumentListener());
+		IDocument document = getDocumentProvider().getDocument(getEditorInput());
+		if (document == null)
+			throw new IllegalStateException("There is no document for the current editorInput!");
+
+		document.addDocumentListener(helper.getDocumentListener());
 	}
 
 	@Override
@@ -100,48 +115,34 @@ implements QueryBrowser
 	public void init(IEditorSite site, IEditorInput input) throws PartInitException
 	{
 		super.init(site, input);
-		queryBrowserManager.editorInputChanged();
-		markNotDirty();
+		getQueryBrowserManager().editorInputChanged();
 	}
 
 	@Override
 	public void doRevertToSaved() {
 		super.doRevertToSaved();
-		queryBrowserManager.editorInputChanged();
-		markNotDirty();
+		getQueryBrowserManager().editorInputChanged();
 	}
 
 	@Override
-	public void doSave(IProgressMonitor progressMonitor) {
-		queryBrowserManager.appendPropertiesToQueryText();
-		super.doSave(progressMonitor);
-		queryBrowserManager.extractAndRemovePropertiesFromQueryText();
-		markNotDirty();
-	}
+	public synchronized QueryBrowserManager getQueryBrowserManager()
+	{
+		if (queryBrowserManager == null)
+			queryBrowserManager = createQueryBrowserManager();
 
-	@Override
-	public QueryBrowserManager getQueryBrowserManager() {
 		return queryBrowserManager;
 	}
 
 	@Override
 	public boolean isDirty() {
-		return dirty;
+		return super.isDirty();
 	}
 
 	@Override
 	public void markDirty() {
-		if (!dirty) {
-			dirty = true;
-			firePropertyChange(IEditorPart.PROP_DIRTY);
-		}
+		documentProvider.markDirty();
+		firePropertyChange(IEditorPart.PROP_DIRTY);
 	}
 
-	@Override
-	public void markNotDirty() {
-		if (dirty) {
-			dirty = false;
-			firePropertyChange(IEditorPart.PROP_DIRTY);
-		}
-	}
+	protected abstract Injector getInjector();
 }

@@ -95,5 +95,5 @@ public interface QueryBrowser
 
 	void markDirty();
 
-	void markNotDirty();
+//	void markNotDirty();
 }

@@ -25,7 +25,6 @@ import org.eclipse.ui.part.FileEditorInput;
 import org.nightlabs.jjqb.core.oda.DataSourceDriverRegistry;
 import org.nightlabs.jjqb.core.oda.JDODriver;
 import org.nightlabs.jjqb.core.oda.JPADriver;
-import org.nightlabs.jjqb.ui.browser.JDOQueryBrowserEditor;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
@@ -72,7 +71,8 @@ implements IObjectActionDelegate, IViewActionDelegate
 //							new NonExistingFileEditorInput(fileStore, "new-"),
 							new FileEditorInput(efile),
 //							org.nightlabs.jjqb.ui.exampleeditor.XMLEditor.class.getName()
-							JDOQueryBrowserEditor.class.getName()
+//							JDOQueryBrowserEditor.class.getName()
+							"org.nightlabs.jjqb.xtext.jdoql.JDOQL"
 					);
 				} catch (Exception e) {
 					// TODO Auto-generated catch block

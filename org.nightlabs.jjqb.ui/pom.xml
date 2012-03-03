@@ -87,6 +87,10 @@
 			<groupId>org.eclipse.xtext</groupId>
 			<artifactId>org.eclipse.xtext.ui</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>com.google.inject</groupId>
+			<artifactId>com.google.inject</artifactId>
+		</dependency>
 		<!-- END org.eclipse.xtext -->
 
 		<!-- BEGIN org.nightlabs.eclipse -->

@@ -121,7 +121,8 @@ public abstract class QueryBrowserManager
 		queryParameterManager.addPropertyChangeListener(new PropertyChangeListener() {
 			@Override
 			public void propertyChange(PropertyChangeEvent evt) {
-				queryBrowser.markDirty();
+				if (!QueryParameterManager.PropertyName.editorInputChanged.name().equals(evt.getPropertyName()))
+					queryBrowser.markDirty();
 			}
 		});
 	}
@@ -767,10 +768,10 @@ public abstract class QueryBrowserManager
 	public void editorInputChanged()
 	{
 		assertUIThread();
-		propertiesType2Properties.remove(PropertiesType.editor_file);
+//		propertiesType2Properties.remove(PropertiesType.editor_file); // is overwritten by extractAndRemovePropertiesFromQueryText(...) before
 		propertiesType2Properties.remove(PropertiesType.editor_preferenceStore);
 
-		extractAndRemovePropertiesFromQueryText();
+//		extractAndRemovePropertiesFromQueryText();
 		populateConnectionProfiles();
 		queryParameterManager.editorInputChanged();
 	}
@@ -779,24 +780,25 @@ public abstract class QueryBrowserManager
 		return new ArrayList<ResultSetTableModel>(connection2ResultSetTableModel.values());
 	}
 
-	public void extractAndRemovePropertiesFromQueryText()
+//	public void extractAndRemovePropertiesFromQueryText()
+//	{
+//		assertUIThread();
+//		String queryText = queryBrowser.getQueryText();
+//		queryText = extractAndRemovePropertiesFromQueryText(queryText);
+//		queryBrowser.setQueryText(queryText);
+//	}
+
+	public String extractAndRemovePropertiesFromQueryText(String queryText)
 	{
 		assertUIThread();
-		String queryText = queryBrowser.getQueryText();
+
+		String result = queryText;
 		int indexOfBegin = queryText.indexOf(QUERY_TEXT_PROPERTIES_BEGIN_MARKER);
 		int indexOfEnd = queryText.indexOf(QUERY_TEXT_PROPERTIES_END_MARKER);
 		if (indexOfEnd >= 0)
 			indexOfEnd += QUERY_TEXT_PROPERTIES_END_MARKER.length();
 
 		PropertiesWithChangeSupport properties = new PropertiesWithChangeSupport();
-
-		PropertyChangeListener propertyChangeListener = new PropertyChangeListener() {
-			@Override
-			public void propertyChange(PropertyChangeEvent evt) {
-				markEditorDirty();
-			}
-		};
-		properties.addPropertyChangeListener(propertyChangeListener);
 
 		if (indexOfBegin >= 0) {
 			String propertiesString = queryText.substring(
@@ -810,7 +812,7 @@ public abstract class QueryBrowserManager
 			stringBeforeProperties = removeTrailingLineDelimiter(stringBeforeProperties);
 			stringAfterProperties = removeLeadingLineDelimiter(stringAfterProperties);
 
-			queryBrowser.setQueryText(stringBeforeProperties + stringAfterProperties);
+			result = stringBeforeProperties + stringAfterProperties;
 
 			try {
 				BufferedReader reader = new BufferedReader(new StringReader(propertiesString));
@@ -834,16 +836,30 @@ public abstract class QueryBrowserManager
 			}
 		}
 
+		PropertyChangeListener propertyChangeListener = new PropertyChangeListener() {
+			@Override
+			public void propertyChange(PropertyChangeEvent evt) {
+				markEditorDirty();
+			}
+		};
+		properties.addPropertyChangeListener(propertyChangeListener);
+
 		propertiesType2Properties.put(PropertiesType.editor_file, properties);
+
+		return result;
 	}
 
-	public void appendPropertiesToQueryText()
-	{
-		assertUIThread();
-		String queryText = queryBrowser.getQueryText();
+//	public void appendPropertiesToQueryText()
+//	{
+//		assertUIThread();
+//		String queryText = queryBrowser.getQueryText();
+//		queryBrowser.setQueryText(queryText + getPropertiesForAppendingToQueryText());
+//	}
 
+	public String getPropertiesForAppendingToQueryText()
+	{
 		StringBuilder sb = new StringBuilder();
-		sb.append(queryText).append('\n').append(QUERY_TEXT_PROPERTIES_BEGIN_MARKER);
+		sb.append('\n').append(QUERY_TEXT_PROPERTIES_BEGIN_MARKER);
 
 		PropertiesWithChangeSupport properties = getProperties(PropertiesType.editor_file);
 		SortedMap<?, ?> propertiesSorted = new TreeMap<Object, Object>(properties);
@@ -858,8 +874,7 @@ public abstract class QueryBrowserManager
 		}
 
 		sb.append('\n').append(QUERY_TEXT_PROPERTIES_END_MARKER).append('\n');
-
-		queryBrowser.setQueryText(sb.toString());
+		return sb.toString();
 	}
 
 	private String removeTrailingLineDelimiter(String s)
@@ -888,7 +903,7 @@ public abstract class QueryBrowserManager
 
 	private void markEditorDirty()
 	{
-		// TODO mark editor dirty
+		getQueryBrowser().markDirty();
 	}
 
 	public void addPropertyChangeListener(PropertyChangeListener listener) {
