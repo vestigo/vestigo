@@ -1,14 +1,14 @@
-package org.nightlabs.jjqb.xtext.jdoql.ui.browser;
+package org.nightlabs.jjqb.xtext.jpql.ui.browser;
 
 import org.nightlabs.jjqb.ui.browser.AbstractQueryBrowserEditor;
-import org.nightlabs.jjqb.ui.browser.JDOQueryBrowser;
+import org.nightlabs.jjqb.ui.browser.JPAQueryBrowser;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
  */
-public class JDOQueryBrowserEditor
+public class JPAQueryBrowserEditor
 extends AbstractQueryBrowserEditor
-implements JDOQueryBrowser
+implements JPAQueryBrowser
 {
 
 }

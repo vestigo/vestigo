@@ -13,20 +13,18 @@ import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.PartInitException;
-import org.eclipse.ui.editors.text.TextEditor;
+import org.eclipse.xtext.ui.editor.XtextEditor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
- * @deprecated Replaced by <code>org.nightlabs.jjqb.xtext.jpql.ui.browser.JPAQueryBrowserEditor</code>! Will be removed soon.
  */
-@Deprecated
-public class JPAQueryBrowserEditor
-extends TextEditor
-implements JPAQueryBrowser
+public class AbstractQueryBrowserEditor
+extends XtextEditor
+implements QueryBrowser
 {
-	private static final Logger logger = LoggerFactory.getLogger(JPAQueryBrowserEditor.class);
+	private static final Logger logger = LoggerFactory.getLogger(AbstractQueryBrowserEditor.class);
 
 	private Helper helper = new Helper(this);
 	private boolean dirty;

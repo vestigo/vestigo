@@ -415,6 +415,7 @@
 -->
 
 
+<!-- This editor has been replaced by the one in project 'org.nightlabs.jjqb.xtext.jpql.ui'. Marco :-)
    <extension
          point="org.eclipse.ui.editors">
       <editor
@@ -427,6 +428,7 @@
             name="JPA Query Browser">
       </editor>
    </extension>
+-->
 
 
    <extension

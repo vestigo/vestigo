@@ -15,9 +15,12 @@ Require-Bundle: org.nightlabs.jjqb.xtext.jpql;visibility:=reexport,
  org.antlr.runtime,
  org.eclipse.xtext.common.types.ui,
  org.eclipse.xtext.ui.codetemplates.ui,
- org.eclipse.compare
-Import-Package: org.apache.log4j,
- org.apache.commons.logging
+ org.eclipse.compare,
+ org.nightlabs.jjqb.core,
+ org.nightlabs.jjqb.ui
+Import-Package: org.apache.commons.logging,
+ org.apache.log4j,
+ org.slf4j
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: org.nightlabs.jjqb.xtext.jpql.ui.contentassist,
  org.nightlabs.jjqb.xtext.jpql.ui.contentassist.antlr,

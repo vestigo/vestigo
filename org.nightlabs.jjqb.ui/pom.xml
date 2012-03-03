@@ -11,6 +11,22 @@
 		<relativePath>../org.nightlabs.jjqb.parent</relativePath>
 	</parent>
 
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<!--
+				We need this for our AbstractQueryBrowserEditor (subclass of XtextEditor). Otherwise, we'd need
+				a new project for this one class. IMHO it's better to introduce this dependency. Marco :-)
+				-->
+				<groupId>org.nightlabs.jjqb</groupId>
+				<artifactId>org.nightlabs.jjqb.xtext.parent</artifactId>
+				<version>${jjqb.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
 	<dependencies>
 		<!-- BEGIN org.nightlabs.jjqb -->
 		<dependency>
@@ -61,6 +77,17 @@
 			</exclusions>
 		</dependency>
 		<!-- END org.eclipse -->
+		
+		<!-- BEGIN org.eclipse.xtext -->
+		<!--
+		We need this for our AbstractQueryBrowserEditor (subclass of XtextEditor). Otherwise, we'd need
+		a new project for this one class. IMHO it's better to introduce this dependency. Marco :-)
+		-->
+		<dependency>
+			<groupId>org.eclipse.xtext</groupId>
+			<artifactId>org.eclipse.xtext.ui</artifactId>
+		</dependency>
+		<!-- END org.eclipse.xtext -->
 
 		<!-- BEGIN org.nightlabs.eclipse -->
 		<dependency>
