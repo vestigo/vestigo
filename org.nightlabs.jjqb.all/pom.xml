@@ -28,6 +28,9 @@
 		<module>../org.nightlabs.jjqb.xtext.jdoql</module>
 		<module>../org.nightlabs.jjqb.xtext.jdoql.tests</module>
 		<module>../org.nightlabs.jjqb.xtext.jdoql.ui</module>
+		<module>../org.nightlabs.jjqb.xtext.jpql</module>
+		<module>../org.nightlabs.jjqb.xtext.jpql.tests</module>
+		<module>../org.nightlabs.jjqb.xtext.jpql.ui</module>
 		<!-- END XText -->
 
 		<!-- BEGIN Cumulus4j -->
