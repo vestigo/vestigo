@@ -116,6 +116,12 @@ implements QueryBrowser
 	{
 		super.init(site, input);
 		getQueryBrowserManager().editorInputChanged();
+
+		if (input != null) {
+			IDocument document = getDocumentProvider().getDocument(input);
+			if (document != null)
+				QueryBrowserManagerRegistry.sharedInstance().register(document, getQueryBrowserManager());
+		}
 	}
 
 	@Override
@@ -127,8 +133,15 @@ implements QueryBrowser
 	@Override
 	public synchronized QueryBrowserManager getQueryBrowserManager()
 	{
-		if (queryBrowserManager == null)
+		if (queryBrowserManager == null) {
 			queryBrowserManager = createQueryBrowserManager();
+			IEditorInput input = getEditorInput();
+			if (input != null) {
+				IDocument document = getDocumentProvider().getDocument(input);
+				if (document != null)
+					QueryBrowserManagerRegistry.sharedInstance().register(document, queryBrowserManager);
+			}
+		}
 
 		return queryBrowserManager;
 	}
