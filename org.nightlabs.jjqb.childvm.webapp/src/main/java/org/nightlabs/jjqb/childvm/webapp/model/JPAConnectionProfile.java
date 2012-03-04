@@ -1,10 +1,15 @@
 package org.nightlabs.jjqb.childvm.webapp.model;
 
 import java.io.IOException;
+import java.lang.annotation.Annotation;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Map;
 import java.util.Properties;
 
+import javax.persistence.Entity;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.MappedSuperclass;
 import javax.persistence.Persistence;
 
 import org.nightlabs.jjqb.childvm.shared.PropertiesUtil;
@@ -93,5 +98,13 @@ public class JPAConnectionProfile extends ConnectionProfile
 	@Override
 	protected PersistenceUnitHelper getPersistenceUnitHelper() {
 		return new JPAPersistenceUnitHelper();
+	}
+
+	@Override
+	protected Collection<Class<? extends Annotation>> getAnnotationClassesOfQueryableCandidateClass() {
+		Collection<Class<? extends Annotation>> result = new ArrayList<Class<? extends Annotation>>(3);
+		result.add(Entity.class);
+		result.add(MappedSuperclass.class);
+		return result;
 	}
 }

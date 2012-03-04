@@ -9,6 +9,7 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
+import java.util.SortedSet;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
@@ -38,6 +39,7 @@ public abstract class AbstractConnectionProfile implements ConnectionProfile
 	private ChildVMServer childVMServer;
 	private String profileID;
 	private Map<String, Boolean> classesKey2IsClassAssignableFromResult;
+	private SortedSet<String> queryableCandidateClasses;
 
 	@Override
 	public String getProfileID() {
@@ -105,6 +107,7 @@ public abstract class AbstractConnectionProfile implements ConnectionProfile
 		this.persistentConnectionProperties = connection.getConnectionProperties();
 		this.transientConnectionProperties = obtainTransientConnectionProperties();
 		this.classesKey2IsClassAssignableFromResult = new HashMap<String, Boolean>();
+		this.queryableCandidateClasses = null;
 		try {
 			getChildVMServer().open();
 		} catch (IOException e) {
@@ -312,6 +315,7 @@ public abstract class AbstractConnectionProfile implements ConnectionProfile
 			throw new OdaException(e);
 		} finally {
 			classesKey2IsClassAssignableFromResult = null;
+			queryableCandidateClasses = null;
 		}
 	}
 
@@ -378,5 +382,19 @@ public abstract class AbstractConnectionProfile implements ConnectionProfile
 			classesKey2IsClassAssignableFromResult.put(classesKey, result);
 		}
 		return result;
+	}
+
+	@Override
+	public synchronized boolean isOpen() {
+		return !connectionsOpened.isEmpty();
+	}
+
+	@Override
+	public synchronized SortedSet<String> getQueryableCandidateClasses()
+	{
+		if (queryableCandidateClasses == null)
+			queryableCandidateClasses = getChildVM().getQueryableCandidateClasses(profileID);
+
+		return queryableCandidateClasses;
 	}
 }

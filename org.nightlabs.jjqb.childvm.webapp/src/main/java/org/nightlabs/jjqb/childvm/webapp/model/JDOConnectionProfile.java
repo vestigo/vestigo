@@ -1,11 +1,15 @@
 package org.nightlabs.jjqb.childvm.webapp.model;
 
 import java.io.IOException;
+import java.lang.annotation.Annotation;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Map;
 import java.util.Properties;
 
 import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManagerFactory;
+import javax.jdo.annotations.PersistenceCapable;
 
 import org.nightlabs.jjqb.childvm.shared.PropertiesUtil;
 import org.nightlabs.jjqb.childvm.shared.dto.ConnectionProfileDTO;
@@ -120,5 +124,12 @@ public class JDOConnectionProfile extends ConnectionProfile
 	@Override
 	protected PersistenceUnitHelper getPersistenceUnitHelper() {
 		return new JDOPersistenceUnitHelper();
+	}
+
+	@Override
+	protected Collection<Class<? extends Annotation>> getAnnotationClassesOfQueryableCandidateClass() {
+		Collection<Class<? extends Annotation>> result = new ArrayList<Class<? extends Annotation>>(1);
+		result.add(PersistenceCapable.class);
+		return result;
 	}
 }

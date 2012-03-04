@@ -27,6 +27,7 @@ import org.nightlabs.jjqb.childvm.shared.dto.ResultCellObjectRefDTO;
 import org.nightlabs.jjqb.childvm.shared.dto.ResultRowDTO;
 import org.nightlabs.jjqb.childvm.shared.dto.ResultRowDTOList;
 import org.nightlabs.jjqb.childvm.shared.dto.ResultSetDTO;
+import org.nightlabs.jjqb.childvm.shared.dto.StringSortedSetDTO;
 import org.nightlabs.jjqb.childvm.shared.provider.JavaNativeMessageBodyReader;
 import org.nightlabs.jjqb.childvm.shared.provider.JavaNativeMessageBodyWriter;
 import org.nightlabs.jjqb.childvm.shared.provider.MediaTypeConst;
@@ -490,6 +491,32 @@ implements ChildVM
 			if (result == null)
 				throw new IllegalStateException("GET request returned null!");
 			return result;
+		} catch (UniformInterfaceException x) {
+			handleUniformInterfaceException(x);
+			throw x; // we do not expect null
+		} finally {
+			releaseClient(client);
+		}
+	}
+
+	@Override
+	public SortedSet<String> getQueryableCandidateClasses(String profileID)
+	{
+		if (profileID == null)
+			throw new IllegalArgumentException("profileID == null");
+
+		Client client = acquireClient();
+		try {
+			WebResource resource = getChildVMAppResource(client, "QueryableCandidateClasses/" + profileID);
+			StringSortedSetDTO result = resource.accept(MediaTypeConst.APPLICATION_JAVA_NATIVE_TYPE).get(StringSortedSetDTO.class);
+
+			if (result == null)
+				throw new IllegalStateException("GET request returned null!");
+
+			if (result.getElements() == null) // an empty set is OK - null is not!
+				throw new IllegalStateException("GET request returned empty DTO (dto.elements == null)!");
+
+			return result.getElements();
 		} catch (UniformInterfaceException x) {
 			handleUniformInterfaceException(x);
 			throw x; // we do not expect null

@@ -1,6 +1,8 @@
 package org.nightlabs.jjqb.childvm.webapp.model.test;
 
+import java.lang.annotation.Annotation;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.UUID;
 
 import junit.framework.Assert;
@@ -148,6 +150,10 @@ public class ConnectionManagerTest {
 					@Override
 					public String getProfileID() {
 						return profileID;
+					}
+					@Override
+					protected Collection<Class<? extends Annotation>> getAnnotationClassesOfQueryableCandidateClass() {
+						return Collections.emptyList();
 					}
 				};
 			}

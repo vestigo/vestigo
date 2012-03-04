@@ -128,7 +128,7 @@ public class QueryEditorManagerComposite extends Composite
 			if (queryEditorManager == null)
 				return;
 
-			int index = queryEditorManager.getConnectionProfiles().indexOf(queryEditorManager.getConnectionProfile());
+			int index = queryEditorManager.getODAConnectionProfiles().indexOf(queryEditorManager.getODAConnectionProfile());
 			connectionProfileCombo.select(index);
 		}
 	};
@@ -166,7 +166,7 @@ public class QueryEditorManagerComposite extends Composite
 		if (selectionIndex < 0)
 			queryEditorManager.setConnectionProfile(null);
 		else {
-			List<IConnectionProfile> connectionProfiles = queryEditorManager.getConnectionProfiles();
+			List<IConnectionProfile> connectionProfiles = queryEditorManager.getODAConnectionProfiles();
 			IConnectionProfile connectionProfile = connectionProfiles.get(selectionIndex);
 			queryEditorManager.setConnectionProfile(connectionProfile);
 		}
@@ -236,8 +236,8 @@ public class QueryEditorManagerComposite extends Composite
 		connectionProfileCombo.removeAll();
 		if (queryEditorManager != null) {
 			int selectionIndex = -1; int index = -1;
-			IConnectionProfile selectedConnectionProfile = queryEditorManager.getConnectionProfile();
-			for (IConnectionProfile connectionProfile : queryEditorManager.getConnectionProfiles()) {
+			IConnectionProfile selectedConnectionProfile = queryEditorManager.getODAConnectionProfile();
+			for (IConnectionProfile connectionProfile : queryEditorManager.getODAConnectionProfiles()) {
 				++index;
 				connectionProfileCombo.add(connectionProfile.getName());
 				if (connectionProfile == selectedConnectionProfile)

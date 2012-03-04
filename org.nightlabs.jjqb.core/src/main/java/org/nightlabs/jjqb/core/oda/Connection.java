@@ -10,6 +10,21 @@ import org.eclipse.datatools.connectivity.oda.OdaException;
  */
 public interface Connection extends org.eclipse.datatools.connectivity.oda.IConnection
 {
+//	public static final class Helper {
+//		private Helper() { }
+//		public static Connection unwrap(org.eclipse.datatools.connectivity.IConnection odaConnection)
+//		{
+//			org.eclipse.datatools.connectivity.oda.consumer.helper.OdaConnection rawConnection = (org.eclipse.datatools.connectivity.oda.consumer.helper.OdaConnection) odaConnection.getRawConnection();
+//			try {
+//				Field realConnectionField = org.eclipse.datatools.connectivity.oda.consumer.helper.OdaConnection.class.getField("m_object");
+//				realConnectionField.setAccessible(true);
+//				Connection realConnection = (Connection) realConnectionField.get(rawConnection);
+//			} catch (Exception e) {
+//				throw new RuntimeException(e);
+//			}
+//		}
+//	}
+
 	UUID getConnectionID();
 
 	ConnectionProfile getConnectionProfile();

@@ -3,13 +3,15 @@
 */
 package org.nightlabs.jjqb.xtext.jdoql.ui.contentassist;
 
-import org.eclipse.datatools.connectivity.IConnectionProfile;
+import java.util.SortedSet;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
-import org.nightlabs.jjqb.ui.editor.QueryEditorManager;
+import org.nightlabs.jjqb.core.oda.ConnectionProfile;
 import org.nightlabs.jjqb.ui.editor.DocumentContextManager;
+import org.nightlabs.jjqb.ui.editor.QueryEditorManager;
 /**
  * see http://www.eclipse.org/Xtext/documentation/latest/xtext.html#contentAssist on how to customize content assistant
  */
@@ -21,23 +23,13 @@ public class JDOQLProposalProvider extends AbstractJDOQLProposalProvider {
 
 		super.complete_CandidateClassName(model, ruleCall, context, acceptor);
 
-		System.out.println("************* complete_CandidateClassName ***************");
 		QueryEditorManager queryEditorManager = DocumentContextManager.sharedInstance().getQueryEditorManager(context.getDocument(), true);
-		System.out.println("queryBrowserManager: " + queryEditorManager);
-		IConnectionProfile connectionProfile = queryEditorManager.getConnectionProfile();
-		// How to get my ConnectionProfile with my childVM?!
-		System.out.println("connectionProfile: " + connectionProfile);
-		System.out.println("************* complete_CandidateClassName ***************");
-
-		String[] classes = new String[] {
-				"org.nightlabs.Test1",
-				"org.nightlabs.supadupa.Test2",
-				"org.nightlabs.xxx.SuperClass"
-		};
-		for (String className : classes) {
-			acceptor.accept(createCompletionProposal(className, context));
+		ConnectionProfile jjqbConnectionProfile = queryEditorManager.getJJQBConnectionProfileAskingUserIfNecessary();
+		if (jjqbConnectionProfile != null) {
+			SortedSet<String> classes = jjqbConnectionProfile.getQueryableCandidateClasses();
+			for (String className : classes)
+				acceptor.accept(createCompletionProposal(className, context));
 		}
-
 	}
 
 }

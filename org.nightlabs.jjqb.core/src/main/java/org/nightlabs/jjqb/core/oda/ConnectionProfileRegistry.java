@@ -28,6 +28,14 @@ public class ConnectionProfileRegistry
 	// TODO I think we need to remove instances from here again?! This currently prevents garbage collection! Marco :-)
 	private Map<String, ConnectionProfile> profileID2connectionProfile = new HashMap<String, ConnectionProfile>();
 
+	public synchronized ConnectionProfile getConnectionProfile(String profileID)
+	{
+		if (profileID == null)
+			throw new IllegalArgumentException("profileID == null");
+
+		return profileID2connectionProfile.get(profileID);
+	}
+
 	public synchronized ConnectionProfile getConnectionProfile(Class<? extends Connection> connectionClass, String profileID)
 	{
 		if (connectionClass == null)

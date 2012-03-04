@@ -17,6 +17,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 import java.util.Set;
 import java.util.SortedMap;
 import java.util.TreeMap;
@@ -37,14 +38,19 @@ import org.eclipse.datatools.connectivity.oda.IConnection;
 import org.eclipse.datatools.connectivity.oda.IQuery;
 import org.eclipse.datatools.connectivity.oda.IResultSet;
 import org.eclipse.datatools.connectivity.oda.OdaException;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
+import org.nightlabs.jjqb.childvm.shared.PropertiesUtil;
 import org.nightlabs.jjqb.core.PropertiesWithChangeSupport;
+import org.nightlabs.jjqb.core.oda.ConnectionProfile;
+import org.nightlabs.jjqb.core.oda.ConnectionProfileRegistry;
 import org.nightlabs.jjqb.core.oda.DelegatingConnection;
 import org.nightlabs.jjqb.core.oda.DelegatingResultSet;
 import org.nightlabs.jjqb.ui.JJQBUIPlugin;
@@ -70,7 +76,7 @@ public abstract class QueryEditorManager
 		connectionProfile
 	}
 
-	private static final String connectionFactoryID = "org.eclipse.datatools.connectivity.oda.IConnection";
+	public static final String connectionFactoryID = "org.eclipse.datatools.connectivity.oda.IConnection";
 
 	private static final String PROPERTY_LAST_CONNECTION_PROFILE_INSTANCE_ID = "lastConnectionProfile.instanceID";
 	private static final String QUERY_TEXT_PROPERTIES_BEGIN_MARKER = "------PROPERTIES_BEGIN------";
@@ -197,7 +203,7 @@ public abstract class QueryEditorManager
 		String lastConnProfInstanceID = null;
 		String lastGlobalConnProfInstanceID = null;
 
-		IConnectionProfile selection = getConnectionProfile();
+		IConnectionProfile selection = getODAConnectionProfile();
 
 		List<IConnectionProfile> connectionProfiles = new ArrayList<IConnectionProfile>();
 		for (IConnectionProfile connectionProfile : ProfileManager.getInstance().getProfiles()) {
@@ -355,7 +361,7 @@ public abstract class QueryEditorManager
 		}
 	};
 
-	private Throwable findSingleException(IStatus status)
+	private static Throwable findSingleException(IStatus status)
 	{
 		Collection<Throwable> exceptions = collectExceptions(status);
 		if (exceptions.size() == 1)
@@ -364,7 +370,7 @@ public abstract class QueryEditorManager
 			return null;
 	}
 
-	private Collection<Throwable> collectExceptions(IStatus status)
+	private static Collection<Throwable> collectExceptions(IStatus status)
 	{
 		Set<Throwable> exceptions = new HashSet<Throwable>();
 
@@ -427,6 +433,75 @@ public abstract class QueryEditorManager
 		return delegatingConnection;
 	}
 
+	public ConnectionProfile getJJQBConnectionProfileAskingUserIfNecessary()
+	{
+		IConnectionProfile odaConnectionProfile = getODAConnectionProfile();
+		ConnectionProfile jjqbConnectionProfile = getJJQBConnectionProfile();
+		if (jjqbConnectionProfile  == null) {
+			Shell parentShell = display.getActiveShell();
+			if (odaConnectionProfile == null) {
+				MessageDialog.openInformation(parentShell , "No connection selected!", "There is no current connection. Please select a connection first.");
+				return null;
+			}
+
+			if (MessageDialog.openQuestion(parentShell, "Connection not open!", "The connection is not open. Do you want to open the connection now?")) {
+				IManagedConnection managedConnection = odaConnectionProfile.getManagedConnection(QueryEditorManager.connectionFactoryID);
+				if (managedConnection == null)
+					throw new IllegalStateException("odaConnectionProfile.getManagedConnection(QueryEditorManager.connectionFactoryID) returned null!");
+
+				if (managedConnection.getConnection() != null && managedConnection.isConnected())
+					throw new IllegalStateException("The managedConnection is connected! Sth. is very odd here!");
+
+				IStatus status = odaConnectionProfile.connectWithoutJob();
+				if (IStatus.OK != status.getCode()) {
+					Throwable exception = QueryEditorManager.findSingleException(status);
+					if (exception != null)
+						throw new RuntimeException(exception);
+					else
+						throw new RuntimeException("Opening connection failed: " + status);
+				}
+
+				jjqbConnectionProfile = getJJQBConnectionProfile();
+				if (jjqbConnectionProfile == null)
+					throw new IllegalStateException("Even after opening the connection, queryEditorManager.getJJQBConnectionProfile() returned null!");
+			}
+		}
+		return jjqbConnectionProfile;
+	}
+
+	public ConnectionProfile getJJQBConnectionProfile()
+	{
+		IConnectionProfile odaConnectionProfile = getODAConnectionProfile();
+		if (odaConnectionProfile == null)
+			return null;
+
+// Looking up the real connection via reflection works, but sucks (the private field might be renamed any time). Marco :-)
+//		final IManagedConnection managedConnection = odaConnectionProfile.getManagedConnection(connectionFactoryID);
+//		org.eclipse.datatools.connectivity.IConnection odaConnection = managedConnection.getConnection();
+//		if (odaConnection == null || !managedConnection.isConnected())
+//			return null;
+//
+//		org.eclipse.datatools.connectivity.oda.consumer.helper.OdaConnection rawConnection = (OdaConnection) odaConnection.getRawConnection();
+//		try {
+//			Field realConnectionField = org.eclipse.datatools.connectivity.oda.consumer.helper.OdaConnection.class.getField("m_object");
+//			realConnectionField.setAccessible(true);
+//			Connection realConnection = (Connection) realConnectionField.get(rawConnection);
+//		} catch (Exception e) {
+//			throw new RuntimeException(e);
+//		}
+
+		Properties properties = odaConnectionProfile.getProperties(odaConnectionProfile.getProviderId());
+		String profileID = PropertiesUtil.getProfileID(properties);
+		if (profileID == null)
+			throw new IllegalStateException("PropertiesUtil.getProfileID(connProperties) returned null!");
+
+		ConnectionProfile jjqbConnectionProfile = ConnectionProfileRegistry.sharedInstance().getConnectionProfile(profileID);
+		if (jjqbConnectionProfile != null && !jjqbConnectionProfile.isOpen())
+			return null;
+
+		return jjqbConnectionProfile;
+	}
+
 //	public synchronized IConnection getConnection(IConnectionProfile connectionProfile, IProgressMonitor monitor)
 //	{
 //		IManagedConnection managedConnection = connectionProfile.getManagedConnection(connectionFactoryID);
@@ -447,7 +522,7 @@ public abstract class QueryEditorManager
 //		return (IConnection) connection.getRawConnection();
 //	}
 
-	public List<IConnectionProfile> getConnectionProfiles() {
+	public List<IConnectionProfile> getODAConnectionProfiles() {
 		assertUIThread();
 		return connectionProfiles;
 	}
@@ -456,7 +531,7 @@ public abstract class QueryEditorManager
 	 * Get the current connection profile. If there is none currently selected, returns <code>null</code>.
 	 * @return the current connection profile or <code>null</code>.
 	 */
-	public IConnectionProfile getConnectionProfile()
+	public IConnectionProfile getODAConnectionProfile()
 	{
 		assertUIThread();
 		return connectionProfile;
@@ -585,7 +660,7 @@ public abstract class QueryEditorManager
 
 		final QueryContext queryContext = new QueryContext();
 
-		final IConnectionProfile connectionProfile = getConnectionProfile();
+		final IConnectionProfile connectionProfile = getODAConnectionProfile();
 		if (connectionProfile == null)
 			throw new IllegalStateException("No ConnectionProfile selected!");
 

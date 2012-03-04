@@ -51,4 +51,6 @@ public interface ChildVM
 	List<ResultCellDTO> getChildren(ResultSetID resultSetID, ResultCellObjectRefDTO resultCellObjectRefDTO) throws ChildVMException;
 
 	boolean isClassAssignableFrom(String profileID, String targetClass, String candidateClass);
+
+	SortedSet<String> getQueryableCandidateClasses(String profileID);
 }

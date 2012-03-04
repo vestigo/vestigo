@@ -2,6 +2,9 @@ package org.nightlabs.jjqb.childvm.webapp.model;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.lang.annotation.Annotation;
+import java.net.URL;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -9,6 +12,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -33,6 +38,8 @@ import org.slf4j.LoggerFactory;
 public abstract class ConnectionProfile
 {
 	private static final Logger logger = LoggerFactory.getLogger(ConnectionProfile.class);
+
+	private static final String CLASS_SUFFIX = ".class";
 
 	private String profileID;
 	private Properties connectionProperties;
@@ -273,5 +280,75 @@ public abstract class ConnectionProfile
 			filteredPersistenceProperties.put(key, value);
 		}
 		return filteredPersistenceProperties;
+	}
+
+	protected void collectQueryableCandidateClassesInDirectory(Collection<Class<?>> classes, ClassLoader classLoader, File classpathDirectory) throws IOException
+	{
+
+	}
+
+	protected void collectQueryableCandidateClassesInZip(Collection<Class<?>> classes, ClassLoader classLoader, URL url) throws IOException
+	{
+		InputStream in = url.openStream();
+		try {
+			ZipInputStream zin = new ZipInputStream(in);
+			ZipEntry zipEntry;
+			while (null != (zipEntry = zin.getNextEntry())) {
+				String name = zipEntry.getName();
+				if (!name.endsWith(CLASS_SUFFIX))
+					continue;
+
+				String className = name.substring(0, name.length() - CLASS_SUFFIX.length()).replace('/', '.');
+				Class<?> clazz;
+				try {
+					clazz = classLoader.loadClass(className);
+				} catch (Throwable t) {
+					logger.error("collectQueryableCandidateClassesInZip: className=" + className + ": " + t, t);
+					continue;
+				}
+				if (isQueryableCandidateClass(clazz))
+					classes.add(clazz);
+			}
+		} finally {
+			in.close();
+		}
+	}
+
+	protected boolean isQueryableCandidateClass(Class<?> clazz) {
+		Collection<Class<? extends Annotation>> annotationClasses = getAnnotationClassesOfQueryableCandidateClass();
+		for (Class<? extends Annotation> annotationClass : annotationClasses) {
+			if (clazz.getAnnotation(annotationClass) != null)
+				return true;
+		}
+		return false;
+	}
+
+	protected abstract Collection<Class<? extends Annotation>> getAnnotationClassesOfQueryableCandidateClass();
+
+	public Collection<Class<?>> getQueryableCandidateClasses() throws IOException
+	{
+		ClassLoader classLoader = classLoaderManager.getPersistenceEngineClassLoader();
+//		ReflectUtil.listClassesInPackage(packageName, cld, recurse)
+
+		Set<Class<?>> classes = new HashSet<Class<?>>();
+
+		List<URL> classpathURLs = classLoaderManager.getPersistenceEngineClasspathURLList();
+		for (URL url : classpathURLs) {
+			try {
+				if ("file".equals(url.getProtocol())) {
+					File file = new File(url.toURI());
+					if (file.isDirectory()) {
+						collectQueryableCandidateClassesInDirectory(classes, classLoader, file);
+						continue;
+					}
+				}
+
+				collectQueryableCandidateClassesInZip(classes,classLoader, url);
+			} catch (Exception x) {
+				logger.error("getQueryableCandidateClasses: url=" + url + ": " + x, x);
+			}
+		}
+
+		return classes;
 	}
 }

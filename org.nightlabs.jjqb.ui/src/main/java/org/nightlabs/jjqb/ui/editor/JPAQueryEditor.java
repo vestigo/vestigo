@@ -5,5 +5,5 @@ package org.nightlabs.jjqb.ui.editor;
  */
 public interface JPAQueryEditor extends QueryEditor
 {
-
+	public static final String EDITOR_ID = "org.nightlabs.jjqb.xtext.jpql.JPQL";
 }
