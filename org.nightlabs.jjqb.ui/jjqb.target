@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde version="3.6"?>
 
-<target name="JJQB" sequenceNumber="13">
+<target name="JJQB" sequenceNumber="17">
 <locations>
 <location path="${workspace_loc}/org.nightlabs.jjqb.assembly.linux-gtk-x86_64/target/assembly/eclipse" type="Directory"/>
 <location path="${workspace_loc}/org.nightlabs.jjqb.assembly.linux-gtk-x86_64/target/assembly/eclipse/dropins" type="Directory"/>
@@ -11,4 +11,11 @@
 <ws>gtk</ws>
 <arch>x86_64</arch>
 </environment>
+<launcherArgs>
+<vmArgs>-Xmx512m
+-XX:MaxPermSize=128m
+-XX:+UseConcMarkSweepGC
+-XX:+CMSClassUnloadingEnabled
+-XX:+CMSPermGenSweepingEnabled</vmArgs>
+</launcherArgs>
 </target>
