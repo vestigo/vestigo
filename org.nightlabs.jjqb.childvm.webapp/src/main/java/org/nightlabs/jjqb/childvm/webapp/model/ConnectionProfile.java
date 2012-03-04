@@ -284,7 +284,30 @@ public abstract class ConnectionProfile
 
 	protected void collectQueryableCandidateClassesInDirectory(Collection<Class<?>> classes, ClassLoader classLoader, File classpathDirectory) throws IOException
 	{
+		collectQueryableCandidateClassesInDirectoryRecursively(classes, classLoader, classpathDirectory, classpathDirectory);
+	}
 
+	protected void collectQueryableCandidateClassesInDirectoryRecursively(Collection<Class<?>> classes, ClassLoader classLoader, File classpathDirectory, File fileOrDir) throws IOException
+	{
+		if (fileOrDir.isFile() && fileOrDir.getName().endsWith(CLASS_SUFFIX)) {
+			String name = IOUtil.getRelativePath(classpathDirectory, fileOrDir);
+			String className = name.substring(0, name.length() - CLASS_SUFFIX.length()).replace('/', '.');
+			Class<?> clazz = null;
+			try {
+				clazz = classLoader.loadClass(className);
+			} catch (Throwable t) {
+				logger.error("collectQueryableCandidateClassesInDirectoryRecursively: classpathDirectory='" + classpathDirectory.getAbsolutePath() + "' className=" + className + ": " + t, t);
+			}
+			if (clazz != null && isQueryableCandidateClass(clazz))
+				classes.add(clazz);
+		}
+		else {
+			File[] children = fileOrDir.listFiles();
+			if (children != null) {
+				for (File child : children)
+					collectQueryableCandidateClassesInDirectoryRecursively(classes, classLoader, classpathDirectory, child);
+			}
+		}
 	}
 
 	protected void collectQueryableCandidateClassesInZip(Collection<Class<?>> classes, ClassLoader classLoader, URL url) throws IOException
@@ -303,7 +326,7 @@ public abstract class ConnectionProfile
 				try {
 					clazz = classLoader.loadClass(className);
 				} catch (Throwable t) {
-					logger.error("collectQueryableCandidateClassesInZip: className=" + className + ": " + t, t);
+					logger.error("collectQueryableCandidateClassesInZip: url=" + url + " className=" + className + ": " + t, t);
 					continue;
 				}
 				if (isQueryableCandidateClass(clazz))
@@ -328,7 +351,6 @@ public abstract class ConnectionProfile
 	public Collection<Class<?>> getQueryableCandidateClasses() throws IOException
 	{
 		ClassLoader classLoader = classLoaderManager.getPersistenceEngineClassLoader();
-//		ReflectUtil.listClassesInPackage(packageName, cld, recurse)
 
 		Set<Class<?>> classes = new HashSet<Class<?>>();
 
