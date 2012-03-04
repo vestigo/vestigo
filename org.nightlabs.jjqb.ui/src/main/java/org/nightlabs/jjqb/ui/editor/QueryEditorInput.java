@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.ui.browser;
+package org.nightlabs.jjqb.ui.editor;
 
 import org.eclipse.datatools.connectivity.IConnectionProfile;
 import org.eclipse.jface.resource.ImageDescriptor;
@@ -14,25 +14,25 @@ import org.eclipse.ui.IURIEditorInput;
  *
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
  */
-public class QueryBrowserEditorInput implements IEditorInput
+public class QueryEditorInput implements IEditorInput
 {
 	private IConnectionProfile connectionProfile;
 
 	private IEditorInput fileEditorInput;
 
-	public QueryBrowserEditorInput(IConnectionProfile connectionProfile, IFileEditorInput fileEditorInput)
+	public QueryEditorInput(IConnectionProfile connectionProfile, IFileEditorInput fileEditorInput)
 	{
 		this.connectionProfile = connectionProfile;
 		this.fileEditorInput = fileEditorInput;
 	}
 
-	public QueryBrowserEditorInput(IConnectionProfile connectionProfile, IPathEditorInput fileEditorInput)
+	public QueryEditorInput(IConnectionProfile connectionProfile, IPathEditorInput fileEditorInput)
 	{
 		this.connectionProfile = connectionProfile;
 		this.fileEditorInput = fileEditorInput;
 	}
 
-	public QueryBrowserEditorInput(IConnectionProfile connectionProfile, IURIEditorInput fileEditorInput)
+	public QueryEditorInput(IConnectionProfile connectionProfile, IURIEditorInput fileEditorInput)
 	{
 		this.connectionProfile = connectionProfile;
 		this.fileEditorInput = fileEditorInput;
@@ -41,7 +41,7 @@ public class QueryBrowserEditorInput implements IEditorInput
 	/**
 	 * {@inheritDoc}
 	 * <p>
-	 * The implementation in {@link QueryBrowserEditorInput} can return the following adapters:
+	 * The implementation in {@link QueryEditorInput} can return the following adapters:
 	 * </p>
 	 * <ul>
 	 * <li>{@link IFileEditorInput}: same as {@link #getFileEditorInput()}</li>

@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.ui.browser;
+package org.nightlabs.jjqb.ui.editor;
 
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.text.IDocument;
@@ -21,17 +21,17 @@ import com.google.inject.Injector;
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
  */
-public abstract class AbstractQueryBrowserEditor
+public abstract class AbstractQueryEditor
 extends XtextEditor
-implements QueryBrowser
+implements QueryEditor
 {
 	private Helper helper = new Helper(this);
-	private QueryBrowserManager queryBrowserManager;
-	private QueryBrowserManagerComposite queryBrowserManagerComposite;
+	private QueryEditorManager queryEditorManager;
+	private QueryEditorManagerComposite queryEditorManagerComposite;
 	private Composite queryEditorComposite;
 	private JJQBDocumentProvider documentProvider;
 
-	protected abstract QueryBrowserManager createQueryBrowserManager();
+	protected abstract QueryEditorManager createQueryEditorManager();
 
 	@Override
 	public synchronized IDocumentProvider getDocumentProvider()
@@ -62,15 +62,15 @@ implements QueryBrowser
 		queryEditorComposite = new Composite(parent, SWT.BORDER);
 		queryEditorComposite.setLayout(new GridLayout());
 
-		queryBrowserManagerComposite = new QueryBrowserManagerComposite(
+		queryEditorManagerComposite = new QueryEditorManagerComposite(
 				queryEditorComposite, SWT.BORDER
 				);
-		queryBrowserManagerComposite.setQueryBrowserManager(getQueryBrowserManager());
+		queryEditorManagerComposite.setQueryBrowserManager(getQueryBrowserManager());
 
 		super.createPartControl(queryEditorComposite);
 
 		for (Control c : queryEditorComposite.getChildren()) {
-			if (c != queryBrowserManagerComposite)
+			if (c != queryEditorManagerComposite)
 				c.setLayoutData(new GridData(GridData.FILL_BOTH));
 		}
 
@@ -120,7 +120,7 @@ implements QueryBrowser
 		if (input != null) {
 			IDocument document = getDocumentProvider().getDocument(input);
 			if (document != null)
-				QueryBrowserManagerRegistry.sharedInstance().register(document, getQueryBrowserManager());
+				DocumentContextManager.sharedInstance().register(document, getQueryBrowserManager());
 		}
 	}
 
@@ -131,19 +131,19 @@ implements QueryBrowser
 	}
 
 	@Override
-	public synchronized QueryBrowserManager getQueryBrowserManager()
+	public synchronized QueryEditorManager getQueryBrowserManager()
 	{
-		if (queryBrowserManager == null) {
-			queryBrowserManager = createQueryBrowserManager();
+		if (queryEditorManager == null) {
+			queryEditorManager = createQueryEditorManager();
 			IEditorInput input = getEditorInput();
 			if (input != null) {
 				IDocument document = getDocumentProvider().getDocument(input);
 				if (document != null)
-					QueryBrowserManagerRegistry.sharedInstance().register(document, queryBrowserManager);
+					DocumentContextManager.sharedInstance().register(document, queryEditorManager);
 			}
 		}
 
-		return queryBrowserManager;
+		return queryEditorManager;
 	}
 
 	@Override

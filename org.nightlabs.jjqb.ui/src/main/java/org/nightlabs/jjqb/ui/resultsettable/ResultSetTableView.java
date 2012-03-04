@@ -13,10 +13,10 @@ import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchPartReference;
 import org.eclipse.ui.part.ViewPart;
 import org.nightlabs.jjqb.core.LabelTextOption;
-import org.nightlabs.jjqb.ui.browser.ExecuteQueryAdapter;
-import org.nightlabs.jjqb.ui.browser.ExecuteQueryEvent;
-import org.nightlabs.jjqb.ui.browser.ExecuteQueryListener;
-import org.nightlabs.jjqb.ui.browser.QueryBrowser;
+import org.nightlabs.jjqb.ui.editor.ExecuteQueryAdapter;
+import org.nightlabs.jjqb.ui.editor.ExecuteQueryEvent;
+import org.nightlabs.jjqb.ui.editor.ExecuteQueryListener;
+import org.nightlabs.jjqb.ui.editor.QueryEditor;
 import org.nightlabs.jjqb.ui.labeltextoptionaction.LabelTextOptionsContainer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,7 +29,7 @@ public class ResultSetTableView extends ViewPart implements LabelTextOptionsCont
 	private static final Logger logger = LoggerFactory.getLogger(ResultSetTableView.class);
 
 	private ResultSetTableComposite resultSetTableComposite;
-	private QueryBrowser queryBrowser;
+	private QueryEditor queryEditor;
 
 	@Override
 	public void createPartControl(Composite parent) {
@@ -57,8 +57,8 @@ public class ResultSetTableView extends ViewPart implements LabelTextOptionsCont
 
 		// in case, this view is opened AFTER the query browser editor, we register the currently active editor
 		IEditorPart activeEditor = getSite().getPage().getActiveEditor();
-		if (activeEditor instanceof QueryBrowser)
-			registerQueryBrowser((QueryBrowser) activeEditor);
+		if (activeEditor instanceof QueryEditor)
+			registerQueryBrowser((QueryEditor) activeEditor);
 	}
 
 	private ExecuteQueryListener executeQueryListener = new ExecuteQueryAdapter() {
@@ -68,28 +68,28 @@ public class ResultSetTableView extends ViewPart implements LabelTextOptionsCont
 		}
 	};
 
-	private void registerQueryBrowser(QueryBrowser queryBrowser)
+	private void registerQueryBrowser(QueryEditor queryEditor)
 	{
-		if (queryBrowser == null)
-			throw new IllegalArgumentException("queryBrowser == null");
+		if (queryEditor == null)
+			throw new IllegalArgumentException("queryEditor == null");
 
-		if (this.queryBrowser == queryBrowser)
+		if (this.queryEditor == queryEditor)
 			return;
 
 		unregisterQueryBrowser(); // just in case, we have another one assigned.
 
-		this.queryBrowser = queryBrowser;
+		this.queryEditor = queryEditor;
 		// TODO this must be refactored when we support multiple resultSets per query browser!
-		Collection<ResultSetTableModel> resultSetTableModels = queryBrowser.getQueryBrowserManager().getResultSetTableModels();
+		Collection<ResultSetTableModel> resultSetTableModels = queryEditor.getQueryBrowserManager().getResultSetTableModels();
 		resultSetTableComposite.setInput(resultSetTableModels.isEmpty() ? null : resultSetTableModels.iterator().next());
-		queryBrowser.getQueryBrowserManager().addExecuteQueryListener(executeQueryListener);
+		queryEditor.getQueryBrowserManager().addExecuteQueryListener(executeQueryListener);
 	}
 
 	private void unregisterQueryBrowser()
 	{
-		if (queryBrowser != null) {
-			queryBrowser.getQueryBrowserManager().removeExecuteQueryListener(executeQueryListener);
-			queryBrowser = null;
+		if (queryEditor != null) {
+			queryEditor.getQueryBrowserManager().removeExecuteQueryListener(executeQueryListener);
+			queryEditor = null;
 		}
 
 		if (resultSetTableComposite != null)
@@ -102,8 +102,8 @@ public class ResultSetTableView extends ViewPart implements LabelTextOptionsCont
 		public void partVisible(IWorkbenchPartReference partRef) {
 			logger.info("partVisible: partRef={}", partRef);
 			IWorkbenchPart part = partRef.getPart(true);
-			if (part instanceof QueryBrowser)
-				registerQueryBrowser((QueryBrowser) part);
+			if (part instanceof QueryEditor)
+				registerQueryBrowser((QueryEditor) part);
 		}
 
 		@Override
@@ -120,7 +120,7 @@ public class ResultSetTableView extends ViewPart implements LabelTextOptionsCont
 		public void partHidden(IWorkbenchPartReference partRef) {
 			logger.info("partHidden: partRef={}", partRef);
 			IWorkbenchPart part = partRef.getPart(true);
-			if (queryBrowser == part)
+			if (queryEditor == part)
 				unregisterQueryBrowser();
 		}
 
@@ -144,8 +144,8 @@ public class ResultSetTableView extends ViewPart implements LabelTextOptionsCont
 			logger.info("partActivated: partRef={}", partRef);
 
 			IWorkbenchPart part = partRef.getPart(true);
-			if (part instanceof QueryBrowser)
-				registerQueryBrowser((QueryBrowser) part);
+			if (part instanceof QueryEditor)
+				registerQueryBrowser((QueryEditor) part);
 		}
 	};
 

@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.ui.browser;
+package org.nightlabs.jjqb.ui.editor;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 

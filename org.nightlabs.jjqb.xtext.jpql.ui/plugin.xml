@@ -6,7 +6,7 @@
     <extension
             point="org.eclipse.ui.editors">
         <editor
-            class="org.nightlabs.jjqb.xtext.jpql.ui.JPQLExecutableExtensionFactory:org.nightlabs.jjqb.xtext.jpql.ui.browser.JPAQueryBrowserEditor"
+            class="org.nightlabs.jjqb.xtext.jpql.ui.JPQLExecutableExtensionFactory:org.nightlabs.jjqb.xtext.jpql.ui.editor.JPAQueryEditorImpl"
             contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
             default="true"
             extensions="jpql"

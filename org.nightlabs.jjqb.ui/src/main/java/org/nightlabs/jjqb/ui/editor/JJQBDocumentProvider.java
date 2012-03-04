@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.ui.browser;
+package org.nightlabs.jjqb.ui.editor;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -14,15 +14,15 @@ import org.nightlabs.util.IOUtil;
 public class JJQBDocumentProvider extends XtextDocumentProvider
 {
 	private Display display;
-	private QueryBrowser queryBrowser;
+	private QueryEditor queryEditor;
 	private boolean dirty = false;
 
-	public JJQBDocumentProvider(QueryBrowser queryBrowser)
+	public JJQBDocumentProvider(QueryEditor queryEditor)
 	{
-		if (queryBrowser == null)
-			throw new IllegalArgumentException("queryBrowser == null");
+		if (queryEditor == null)
+			throw new IllegalArgumentException("queryEditor == null");
 
-		this.queryBrowser = queryBrowser;
+		this.queryEditor = queryEditor;
 
 		display = Display.getCurrent();
 		if (display == null)
@@ -35,11 +35,11 @@ public class JJQBDocumentProvider extends XtextDocumentProvider
 		final String[] appendText = new String[1];
 
 		// Currently, this method is always called on the UI thread, but maybe this changes later.
-		// Better ensure, that we really access the QueryBrowserManager on the UI thread (otherwise, it will throw an exception).
+		// Better ensure, that we really access the QueryEditorManager on the UI thread (otherwise, it will throw an exception).
 		display.syncExec(new Runnable() {
 			@Override
 			public void run() {
-				appendText[0] = queryBrowser.getQueryBrowserManager().getPropertiesForAppendingToQueryText();
+				appendText[0] = queryEditor.getQueryBrowserManager().getPropertiesForAppendingToQueryText();
 			}
 		});
 
@@ -64,11 +64,11 @@ public class JJQBDocumentProvider extends XtextDocumentProvider
 			text[0] = IOUtil.readTextFile(contentStream, encoding);
 
 			// Currently, this method is always called on the UI thread, but maybe this changes later.
-			// Better ensure, that we really access the QueryBrowserManager on the UI thread (otherwise, it will throw an exception).
+			// Better ensure, that we really access the QueryEditorManager on the UI thread (otherwise, it will throw an exception).
 			display.syncExec(new Runnable() {
 				@Override
 				public void run() {
-					text[0] = queryBrowser.getQueryBrowserManager().extractAndRemovePropertiesFromQueryText(text[0]);
+					text[0] = queryEditor.getQueryBrowserManager().extractAndRemovePropertiesFromQueryText(text[0]);
 				}
 			});
 

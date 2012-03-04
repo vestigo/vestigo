@@ -6,7 +6,7 @@
     <extension
             point="org.eclipse.ui.editors">
         <editor
-            class="org.nightlabs.jjqb.xtext.jdoql.ui.JDOQLExecutableExtensionFactory:org.nightlabs.jjqb.xtext.jdoql.ui.browser.JDOQueryBrowserEditor"
+            class="org.nightlabs.jjqb.xtext.jdoql.ui.JDOQLExecutableExtensionFactory:org.nightlabs.jjqb.xtext.jdoql.ui.editor.JDOQueryEditorImpl"
             contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
             default="true"
             extensions="jdoql"

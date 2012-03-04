@@ -18,7 +18,7 @@ import org.eclipse.ui.IViewReference;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.part.ViewPart;
 import org.nightlabs.jjqb.core.LabelTextOption;
-import org.nightlabs.jjqb.ui.browser.QueryBrowser;
+import org.nightlabs.jjqb.ui.editor.QueryEditor;
 import org.nightlabs.jjqb.ui.labeltextoptionaction.LabelTextOptionsContainer;
 import org.nightlabs.jjqb.ui.resultsettable.ResultSetTableCell;
 import org.nightlabs.jjqb.ui.resultsettable.ResultSetTableRow;
@@ -62,7 +62,7 @@ public class ObjectGraphDetailTreeView extends ViewPart implements LabelTextOpti
 		@Override
 		public void selectionChanged(IWorkbenchPart part, ISelection selection)
 		{
-			if (part instanceof QueryBrowser) {
+			if (part instanceof QueryEditor) {
 				// Clear the selection.
 //				clearInput();
 			}

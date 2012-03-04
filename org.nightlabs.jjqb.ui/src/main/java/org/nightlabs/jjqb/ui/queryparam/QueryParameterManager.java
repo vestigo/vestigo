@@ -12,8 +12,8 @@ import java.util.UUID;
 
 import org.eclipse.swt.widgets.Display;
 import org.nightlabs.jjqb.core.PropertiesWithChangeSupport;
-import org.nightlabs.jjqb.ui.browser.PropertiesType;
-import org.nightlabs.jjqb.ui.browser.QueryBrowserManager;
+import org.nightlabs.jjqb.ui.editor.PropertiesType;
+import org.nightlabs.jjqb.ui.editor.QueryEditorManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -71,7 +71,7 @@ public class QueryParameterManager
 	private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
 	private Display display;
-	private QueryBrowserManager queryBrowserManager;
+	private QueryEditorManager queryEditorManager;
 
 	private List<QueryParameter> queryParameters = new ArrayList<QueryParameter>();
 
@@ -86,12 +86,12 @@ public class QueryParameterManager
 		}
 	};
 
-	public QueryParameterManager(QueryBrowserManager queryBrowserManager)
+	public QueryParameterManager(QueryEditorManager queryEditorManager)
 	{
-		if (queryBrowserManager == null)
-			throw new IllegalArgumentException("queryBrowserManager == null");
+		if (queryEditorManager == null)
+			throw new IllegalArgumentException("queryEditorManager == null");
 
-		this.queryBrowserManager = queryBrowserManager;
+		this.queryEditorManager = queryEditorManager;
 		this.display = Display.getCurrent();
 		if (this.display == null)
 			throw new IllegalStateException("Thread mismatch! This method must be called on the SWT UI thread!");
@@ -107,9 +107,9 @@ public class QueryParameterManager
 			throw new IllegalStateException("Thread mismatch! This method must be called on the *SAME* SWT UI thread as this instance was created!");
 	}
 
-	public QueryBrowserManager getQueryBrowserManager() {
+	public QueryEditorManager getQueryBrowserManager() {
 		assertUIThread();
-		return queryBrowserManager;
+		return queryEditorManager;
 	}
 
 	public List<QueryParameter> getQueryParameters() {
@@ -368,7 +368,7 @@ public class QueryParameterManager
 	}
 
 	public void editorInputChanged() {
-		properties = queryBrowserManager.getProperties(PropertiesType.editor_file);
+		properties = queryEditorManager.getProperties(PropertiesType.editor_file);
 		readFromProperties();
 		propertyChangeSupport.firePropertyChange(PropertyName.editorInputChanged.name(), null, null);
 	}

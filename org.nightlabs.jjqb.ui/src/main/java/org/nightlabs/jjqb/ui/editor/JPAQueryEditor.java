@@ -1,9 +1,9 @@
-package org.nightlabs.jjqb.ui.browser;
+package org.nightlabs.jjqb.ui.editor;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
  */
-public interface JDOQueryBrowser extends QueryBrowser
+public interface JPAQueryEditor extends QueryEditor
 {
 
 }

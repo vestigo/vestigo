@@ -8,8 +8,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
-import org.nightlabs.jjqb.ui.browser.QueryBrowserManager;
-import org.nightlabs.jjqb.ui.browser.QueryBrowserManagerRegistry;
+import org.nightlabs.jjqb.ui.editor.QueryEditorManager;
+import org.nightlabs.jjqb.ui.editor.DocumentContextManager;
 /**
  * see http://www.eclipse.org/Xtext/documentation/latest/xtext.html#contentAssist on how to customize content assistant
  */
@@ -22,9 +22,9 @@ public class JDOQLProposalProvider extends AbstractJDOQLProposalProvider {
 		super.complete_CandidateClassName(model, ruleCall, context, acceptor);
 
 		System.out.println("************* complete_CandidateClassName ***************");
-		QueryBrowserManager queryBrowserManager = QueryBrowserManagerRegistry.sharedInstance().getQueryBrowserManagerForDocument(context.getDocument(), true);
-		System.out.println("queryBrowserManager: " + queryBrowserManager);
-		IConnectionProfile connectionProfile = queryBrowserManager.getConnectionProfile();
+		QueryEditorManager queryEditorManager = DocumentContextManager.sharedInstance().getQueryEditorManager(context.getDocument(), true);
+		System.out.println("queryBrowserManager: " + queryEditorManager);
+		IConnectionProfile connectionProfile = queryEditorManager.getConnectionProfile();
 		// How to get my ConnectionProfile with my childVM?!
 		System.out.println("connectionProfile: " + connectionProfile);
 		System.out.println("************* complete_CandidateClassName ***************");

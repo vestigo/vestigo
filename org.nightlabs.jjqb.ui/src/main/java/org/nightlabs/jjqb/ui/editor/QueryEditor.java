@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.ui.browser;
+package org.nightlabs.jjqb.ui.editor;
 
 import java.io.File;
 import java.io.IOException;
@@ -17,11 +17,11 @@ import org.nightlabs.util.IOUtil;
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
  */
-public interface QueryBrowser
+public interface QueryEditor
 {
 	static final class Helper
 	{
-		private QueryBrowser queryBrowser;
+		private QueryEditor queryEditor;
 		private ListenerList disposeListenerList = new ListenerList();
 
 		private IDocumentListener documentListener = new IDocumentListener() {
@@ -30,17 +30,17 @@ public interface QueryBrowser
 
 			@Override
 			public void documentChanged(DocumentEvent event) {
-				queryBrowser.markDirty();
+				queryEditor.markDirty();
 			}
 		};
 
-		public Helper(final QueryBrowser queryBrowser) {
-			this.queryBrowser = queryBrowser;
+		public Helper(final QueryEditor queryEditor) {
+			this.queryEditor = queryEditor;
 		}
 
 		public final String getQueryIDFromEditorInput()
 		{
-			IEditorInput editorInput = queryBrowser.getEditorInput();
+			IEditorInput editorInput = queryEditor.getEditorInput();
 			if (editorInput instanceof IPathEditorInput) {
 				IPathEditorInput input = (IPathEditorInput) editorInput;
 				try {
@@ -89,7 +89,7 @@ public interface QueryBrowser
 	void addDisposeListener(DisposeListener disposeListener);
 	void removeDisposeListener(DisposeListener disposeListener);
 
-	QueryBrowserManager getQueryBrowserManager();
+	QueryEditorManager getQueryBrowserManager();
 
 	boolean isDirty();
 

@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.ui.browser;
+package org.nightlabs.jjqb.ui.editor;
 
 import org.eclipse.datatools.connectivity.oda.IResultSet;
 import org.nightlabs.jjqb.ui.resultsettable.ResultSetTableModel;

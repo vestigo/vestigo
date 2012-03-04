@@ -403,12 +403,12 @@
    <extension
          point="org.eclipse.ui.editors">
       <editor
-            class="org.nightlabs.jjqb.ui.browser.JDOQueryBrowserEditor"
+            class="org.nightlabs.jjqb.ui.editor.JDOQueryBrowserEditor"
             contributorClass="org.eclipse.ui.texteditor.BasicTextEditorActionContributor"
             default="true"
             extensions="jdoql"
             icon="icons/jdo.png"
-            id="org.nightlabs.jjqb.ui.browser.JDOQueryBrowserEditor"
+            id="org.nightlabs.jjqb.ui.editor.JDOQueryBrowserEditor"
             name="JDO Query Browser">
       </editor>
    </extension>
@@ -419,12 +419,12 @@
    <extension
          point="org.eclipse.ui.editors">
       <editor
-            class="org.nightlabs.jjqb.ui.browser.JPAQueryBrowserEditor"
+            class="org.nightlabs.jjqb.ui.editor.JPAQueryBrowserEditor"
             contributorClass="org.eclipse.ui.texteditor.BasicTextEditorActionContributor"
             default="true"
             extensions="jpql"
             icon="icons/jpa.png"
-            id="org.nightlabs.jjqb.ui.browser.JPAQueryBrowserEditor"
+            id="org.nightlabs.jjqb.ui.editor.JPAQueryBrowserEditor"
             name="JPA Query Browser">
       </editor>
    </extension>

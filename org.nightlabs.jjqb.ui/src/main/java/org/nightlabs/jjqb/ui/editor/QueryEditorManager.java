@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.ui.browser;
+package org.nightlabs.jjqb.ui.editor;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -61,9 +61,9 @@ import org.slf4j.LoggerFactory;
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
  */
-public abstract class QueryBrowserManager
+public abstract class QueryEditorManager
 {
-	private static final Logger logger = LoggerFactory.getLogger(QueryBrowserManager.class);
+	private static final Logger logger = LoggerFactory.getLogger(QueryEditorManager.class);
 
 	public static enum PropertyName {
 		connectionProfiles,
@@ -78,7 +78,7 @@ public abstract class QueryBrowserManager
 	private static final String QUERY_TEXT_LINE_COMMENT_MARKER = "--";
 
 	private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
-	private QueryBrowser queryBrowser;
+	private QueryEditor queryEditor;
 	private Display display;
 
 	private List<IConnectionProfile> connectionProfiles = Collections.unmodifiableList(new ArrayList<IConnectionProfile>());
@@ -98,12 +98,12 @@ public abstract class QueryBrowserManager
 
 	private QueryParameterManager queryParameterManager = new QueryParameterManager(this);
 
-	public QueryBrowserManager(QueryBrowser queryBrowser)
+	public QueryEditorManager(QueryEditor queryEditor)
 	{
-		if (queryBrowser == null)
-			throw new IllegalArgumentException("queryBrowser == null");
+		if (queryEditor == null)
+			throw new IllegalArgumentException("queryEditor == null");
 
-		this.queryBrowser = queryBrowser;
+		this.queryEditor = queryEditor;
 		this.display = Display.getCurrent();
 		if (this.display == null)
 			throw new IllegalStateException("Thread mismatch! This method must be called on the SWT UI thread!");
@@ -122,7 +122,7 @@ public abstract class QueryBrowserManager
 			@Override
 			public void propertyChange(PropertyChangeEvent evt) {
 				if (!QueryParameterManager.PropertyName.editorInputChanged.name().equals(evt.getPropertyName()))
-					queryBrowser.markDirty();
+					queryEditor.markDirty();
 			}
 		});
 	}
@@ -148,7 +148,7 @@ public abstract class QueryBrowserManager
 			}
 		};
 
-		queryBrowser.addDisposeListener(new DisposeListener() {
+		queryEditor.addDisposeListener(new DisposeListener() {
 			@Override
 			public void widgetDisposed(DisposeEvent event) {
 				onDispose();
@@ -165,10 +165,10 @@ public abstract class QueryBrowserManager
 			throw new IllegalStateException("Thread mismatch! This method must be called on the same SWT UI thread as the instance was created!");
 	}
 
-	public QueryBrowser getQueryBrowser()
+	public QueryEditor getQueryBrowser()
 	{
 		assertUIThread();
-		return queryBrowser;
+		return queryEditor;
 	}
 
 	private boolean isConnectionProfileExisting(IConnectionProfile connectionProfile)
@@ -230,7 +230,7 @@ public abstract class QueryBrowserManager
 				" selection.instanceID={} selection.name={}" +
 				" lastConnProfInstanceID={} lastGlobalConnProfInstanceID={}",
 				new Object[] {
-						queryBrowser.getQueryID(),
+						queryEditor.getQueryID(),
 						(selection == null ? null : selection.getInstanceID()),
 						(selection == null ? null : selection.getName()),
 						lastConnProfInstanceID, lastGlobalConnProfInstanceID
@@ -252,7 +252,7 @@ public abstract class QueryBrowserManager
 					" No selection! Falling back to globalSelection:" +
 					" globalSelection.instanceID={} globalSelection.name={}",
 					new Object[] {
-							queryBrowser.getQueryID(), (globalSelection == null ? null : globalSelection.getInstanceID()),
+							queryEditor.getQueryID(), (globalSelection == null ? null : globalSelection.getInstanceID()),
 							(globalSelection == null ? null : globalSelection.getName())
 					}
 			);
@@ -270,7 +270,7 @@ public abstract class QueryBrowserManager
 						new Object[] {
 								(selection == null ? null : selection.getInstanceID()),
 								(selection == null ? null : selection.getName()),
-								queryBrowser.getQueryID()
+								queryEditor.getQueryID()
 						}
 				);
 			}
@@ -278,7 +278,7 @@ public abstract class QueryBrowserManager
 				logger.info(
 						"populateConnectionProfiles: queryID={}:" +
 						" No global selection either! But cannot fall back to first existing profile, because there are no profiles.",
-						queryBrowser.getQueryID()
+						queryEditor.getQueryID()
 				);
 			}
 		}
@@ -310,7 +310,7 @@ public abstract class QueryBrowserManager
 //			IConnectionProfile connectionProfile = event.getConnectionProfile();
 //
 //			org.eclipse.datatools.connectivity.IConnection connection;
-//			synchronized (QueryBrowserManager.this) {
+//			synchronized (QueryEditorManager.this) {
 //				connection = connectionProfile2connection.remove(connectionProfile);
 //				managedConnection.removeConnectionListener(this);
 //				managedConnectionsWithRegisteredListener.remove(managedConnection);
@@ -408,7 +408,7 @@ public abstract class QueryBrowserManager
 			public void close() throws OdaException
 			{
 				ResultSetTableModel model;
-				synchronized(QueryBrowserManager.this) {
+				synchronized(QueryEditorManager.this) {
 					model = connection2ResultSetTableModel.get(this);
 				}
 				if (model != null)
@@ -464,7 +464,7 @@ public abstract class QueryBrowserManager
 
 	public void setConnectionProfile(IConnectionProfile connectionProfile)
 	{
-		logger.info("setConnectionProfile: queryID={}: entered", queryBrowser.getQueryID());
+		logger.info("setConnectionProfile: queryID={}: entered", queryEditor.getQueryID());
 
 		int connectionProfileIndex = connectionProfiles.indexOf(connectionProfile);
 		IConnectionProfile newConnectionProfile = connectionProfileIndex >= 0 ? connectionProfiles.get(connectionProfileIndex) : null;
@@ -476,7 +476,7 @@ public abstract class QueryBrowserManager
 		logger.info(
 				"onSelectConnectionProfile: queryID={} connectionProfileInstanceID={} connectionProfileName={}",
 				new Object[] {
-						queryBrowser.getQueryID(), connectionProfileInstanceID,
+						queryEditor.getQueryID(), connectionProfileInstanceID,
 						newConnectionProfile == null ? null : newConnectionProfile.getName()
 				}
 		);
@@ -489,7 +489,7 @@ public abstract class QueryBrowserManager
 			if (oldValue == null || !oldValue.equals(connectionProfileInstanceID)) {
 				logger.info(
 						"onSelectConnectionProfile: queryID={}: Setting global connection profile: connectionProfileInstanceID={}",
-						queryBrowser.getQueryID(), connectionProfileInstanceID
+						queryEditor.getQueryID(), connectionProfileInstanceID
 				);
 				getProperties(PropertiesType.global).setProperty(
 						getImplementationSpecificGlobalPropertyKey(PROPERTY_LAST_CONNECTION_PROFILE_INSTANCE_ID),
@@ -590,7 +590,7 @@ public abstract class QueryBrowserManager
 			throw new IllegalStateException("No ConnectionProfile selected!");
 
 		queryContext.setConnectionProfile(connectionProfile);
-		queryContext.setQueryText(queryBrowser.getQueryText());
+		queryContext.setQueryText(queryEditor.getQueryText());
 		queryContext.setQueryParameters(queryParameterManager);
 
 		ExecuteQueryEvent executeQueryEvent = new ExecuteQueryEvent(queryContext);
@@ -690,7 +690,7 @@ public abstract class QueryBrowserManager
 				@Override
 				public void close() throws OdaException {
 					ResultSetTableModel model;
-					synchronized(QueryBrowserManager.this) {
+					synchronized(QueryEditorManager.this) {
 						model = connection2ResultSetTableModel.remove(connection);
 					}
 					if (model != null)
@@ -749,9 +749,9 @@ public abstract class QueryBrowserManager
 				throw new IllegalStateException("Cannot lazy-load! Properties for this type should have already been created: " + propertiesType);
 			case editor_preferenceStore:
 			{
-				String queryID = queryBrowser.getQueryID();
+				String queryID = queryEditor.getQueryID();
 				if (queryID == null)
-					throw new IllegalStateException("queryBrowser.getQueryID() returned null!");
+					throw new IllegalStateException("queryEditor.getQueryID() returned null!");
 
 				properties = JJQBUIPlugin.getDefault().getProperties(this.getClass().getName() + '.' + propertiesType + '.' + queryID);
 				break;
@@ -783,9 +783,9 @@ public abstract class QueryBrowserManager
 //	public void extractAndRemovePropertiesFromQueryText()
 //	{
 //		assertUIThread();
-//		String queryText = queryBrowser.getQueryText();
+//		String queryText = queryEditor.getQueryText();
 //		queryText = extractAndRemovePropertiesFromQueryText(queryText);
-//		queryBrowser.setQueryText(queryText);
+//		queryEditor.setQueryText(queryText);
 //	}
 
 	public String extractAndRemovePropertiesFromQueryText(String queryText)
@@ -852,8 +852,8 @@ public abstract class QueryBrowserManager
 //	public void appendPropertiesToQueryText()
 //	{
 //		assertUIThread();
-//		String queryText = queryBrowser.getQueryText();
-//		queryBrowser.setQueryText(queryText + getPropertiesForAppendingToQueryText());
+//		String queryText = queryEditor.getQueryText();
+//		queryEditor.setQueryText(queryText + getPropertiesForAppendingToQueryText());
 //	}
 
 	public String getPropertiesForAppendingToQueryText()

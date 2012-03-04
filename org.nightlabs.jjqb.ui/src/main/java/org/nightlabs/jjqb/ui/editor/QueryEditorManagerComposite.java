@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.ui.browser;
+package org.nightlabs.jjqb.ui.editor;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -22,12 +22,12 @@ import org.slf4j.LoggerFactory;
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
  */
-public class QueryBrowserManagerComposite extends Composite
+public class QueryEditorManagerComposite extends Composite
 {
-	private static final Logger logger = LoggerFactory.getLogger(QueryBrowserManagerComposite.class);
+	private static final Logger logger = LoggerFactory.getLogger(QueryEditorManagerComposite.class);
 
 	private Display display;
-	private QueryBrowserManager queryBrowserManager;
+	private QueryEditorManager queryEditorManager;
 
 	private Combo connectionProfileCombo;
 	private Button executeQueryButton;
@@ -36,7 +36,7 @@ public class QueryBrowserManagerComposite extends Composite
 //	private ExpandableComposite queryParameterExpandableComposite;
 //	private QueryParameterManagerComposite queryParameterManagerComposite;
 
-	public QueryBrowserManagerComposite(Composite parent, int style) {
+	public QueryEditorManagerComposite(Composite parent, int style) {
 		super(parent, style);
 		display = getDisplay();
 
@@ -55,35 +55,35 @@ public class QueryBrowserManagerComposite extends Composite
 //		createQueryParameterComposite();
 	}
 
-	public void setQueryBrowserManager(QueryBrowserManager queryBrowserManager)
+	public void setQueryBrowserManager(QueryEditorManager queryEditorManager)
 	{
 		assertUIThread();
-		if (this.queryBrowserManager == queryBrowserManager)
+		if (this.queryEditorManager == queryEditorManager)
 			return;
 
 //		queryParameterManagerComposite.setQueryParameterManager(null);
 
-		if (this.queryBrowserManager != null) {
-			this.queryBrowserManager.removePropertyChangeListener(
-					QueryBrowserManager.PropertyName.connectionProfiles, propertyChangeListener_connectionProfiles
+		if (this.queryEditorManager != null) {
+			this.queryEditorManager.removePropertyChangeListener(
+					QueryEditorManager.PropertyName.connectionProfiles, propertyChangeListener_connectionProfiles
 			);
-			this.queryBrowserManager.removePropertyChangeListener(
-					QueryBrowserManager.PropertyName.connectionProfile, propertyChangeListener_connectionProfile
+			this.queryEditorManager.removePropertyChangeListener(
+					QueryEditorManager.PropertyName.connectionProfile, propertyChangeListener_connectionProfile
 			);
-			this.queryBrowserManager.removeExecuteQueryListener(executeQueryListener);
+			this.queryEditorManager.removeExecuteQueryListener(executeQueryListener);
 		}
 
-		this.queryBrowserManager = queryBrowserManager;
+		this.queryEditorManager = queryEditorManager;
 		populateConnectionProfileCombo();
 
-		if (this.queryBrowserManager != null) {
-			this.queryBrowserManager.addPropertyChangeListener(
-					QueryBrowserManager.PropertyName.connectionProfiles, propertyChangeListener_connectionProfiles
+		if (this.queryEditorManager != null) {
+			this.queryEditorManager.addPropertyChangeListener(
+					QueryEditorManager.PropertyName.connectionProfiles, propertyChangeListener_connectionProfiles
 			);
-			this.queryBrowserManager.addPropertyChangeListener(
-					QueryBrowserManager.PropertyName.connectionProfile, propertyChangeListener_connectionProfile
+			this.queryEditorManager.addPropertyChangeListener(
+					QueryEditorManager.PropertyName.connectionProfile, propertyChangeListener_connectionProfile
 			);
-			this.queryBrowserManager.addExecuteQueryListener(executeQueryListener);
+			this.queryEditorManager.addExecuteQueryListener(executeQueryListener);
 
 //			queryParameterManagerComposite.setQueryParameterManager(this.queryBrowserManager.getQueryParameterManager());
 		}
@@ -125,18 +125,18 @@ public class QueryBrowserManagerComposite extends Composite
 		public void propertyChange(PropertyChangeEvent evt)
 		{
 			assertUIThread();
-			if (queryBrowserManager == null)
+			if (queryEditorManager == null)
 				return;
 
-			int index = queryBrowserManager.getConnectionProfiles().indexOf(queryBrowserManager.getConnectionProfile());
+			int index = queryEditorManager.getConnectionProfiles().indexOf(queryEditorManager.getConnectionProfile());
 			connectionProfileCombo.select(index);
 		}
 	};
 
-	public QueryBrowserManager getQueryBrowserManager()
+	public QueryEditorManager getQueryBrowserManager()
 	{
 		assertUIThread();
-		return queryBrowserManager;
+		return queryEditorManager;
 	}
 
 	protected void assertUIThread()
@@ -159,16 +159,16 @@ public class QueryBrowserManagerComposite extends Composite
 	}
 
 	private void connectionProfileComboSelected() {
-		if (queryBrowserManager == null)
+		if (queryEditorManager == null)
 			return;
 
 		int selectionIndex = connectionProfileCombo.getSelectionIndex();
 		if (selectionIndex < 0)
-			queryBrowserManager.setConnectionProfile(null);
+			queryEditorManager.setConnectionProfile(null);
 		else {
-			List<IConnectionProfile> connectionProfiles = queryBrowserManager.getConnectionProfiles();
+			List<IConnectionProfile> connectionProfiles = queryEditorManager.getConnectionProfiles();
 			IConnectionProfile connectionProfile = connectionProfiles.get(selectionIndex);
-			queryBrowserManager.setConnectionProfile(connectionProfile);
+			queryEditorManager.setConnectionProfile(connectionProfile);
 		}
 	}
 
@@ -186,8 +186,8 @@ public class QueryBrowserManagerComposite extends Composite
 	}
 
 	private void executeQueryButtonPressed() {
-		if (queryBrowserManager != null)
-			queryBrowserManager.executeQuery();
+		if (queryEditorManager != null)
+			queryEditorManager.executeQuery();
 	}
 
 	private void createLoadNextButton()
@@ -198,11 +198,11 @@ public class QueryBrowserManagerComposite extends Composite
 		loadNextBunchButton.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				if (queryBrowserManager == null)
+				if (queryEditorManager == null)
 					return;
 
 				// TODO this must be in the result set view!
-				for (ResultSetTableModel model : queryBrowserManager.getResultSetTableModels()) {
+				for (ResultSetTableModel model : queryEditorManager.getResultSetTableModels()) {
 					if (model != null)
 						model.loadNextBunch();
 				}
@@ -234,10 +234,10 @@ public class QueryBrowserManagerComposite extends Composite
 	private void populateConnectionProfileCombo()
 	{
 		connectionProfileCombo.removeAll();
-		if (queryBrowserManager != null) {
+		if (queryEditorManager != null) {
 			int selectionIndex = -1; int index = -1;
-			IConnectionProfile selectedConnectionProfile = queryBrowserManager.getConnectionProfile();
-			for (IConnectionProfile connectionProfile : queryBrowserManager.getConnectionProfiles()) {
+			IConnectionProfile selectedConnectionProfile = queryEditorManager.getConnectionProfile();
+			for (IConnectionProfile connectionProfile : queryEditorManager.getConnectionProfiles()) {
 				++index;
 				connectionProfileCombo.add(connectionProfile.getName());
 				if (connectionProfile == selectedConnectionProfile)
