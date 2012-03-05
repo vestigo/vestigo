@@ -40,6 +40,7 @@ public class ChildVMPreferencePage extends FieldEditorPreferencePage implements 
 		getPreferenceStore().setDefault(ChildVMServer.PREFERENCE_KEY_SERVER_START_TIMEOUT_MS, ChildVMServer.PREFERENCE_DEFAULT_SERVER_START_TIMEOUT_MS);
 
 		getPreferenceStore().setDefault(ChildVMServer.PREFERENCE_KEY_LOG4J_ROOT_LOG_LEVEL, ChildVMServer.PREFERENCE_DEFAULT_LOG4J_ROOT_LOG_LEVEL);
+		getPreferenceStore().setDefault(ChildVMServer.PREFERENCE_KEY_LOG4J_ADDITIONAL_PROPERTIES, ChildVMServer.PREFERENCE_DEFAULT_LOG4J_ADDITIONAL_PROPERTIES);
 		getPreferenceStore().setDefault(ChildVMServer.PREFERENCE_KEY_DEBUG_MODE_PORT, ChildVMServer.PREFERENCE_DEFAULT_DEBUG_MODE_PORT);
 
 		getPreferenceStore().setDefault(ChildVMServer.PREFERENCE_KEY_WAC_SOCKET_CONNECT_TIMEOUT_MS, ChildVMServer.PREFERENCE_DEFAULT_WAC_SOCKET_CONNECT_TIMEOUT_MS);

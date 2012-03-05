@@ -1,8 +1,6 @@
 package org.nightlabs.jjqb.childvm.webapp.model.test;
 
-import java.lang.annotation.Annotation;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.UUID;
 
 import junit.framework.Assert;
@@ -16,6 +14,7 @@ import org.nightlabs.jjqb.childvm.shared.dto.JDOConnectionProfileDTO;
 import org.nightlabs.jjqb.childvm.shared.dto.JPAConnectionDTO;
 import org.nightlabs.jjqb.childvm.shared.persistencexml.JDOPersistenceUnitHelper;
 import org.nightlabs.jjqb.childvm.shared.persistencexml.PersistenceUnitHelper;
+import org.nightlabs.jjqb.childvm.webapp.asm.ClassAnnotationReader;
 import org.nightlabs.jjqb.childvm.webapp.model.Connection;
 import org.nightlabs.jjqb.childvm.webapp.model.ConnectionManager;
 import org.nightlabs.jjqb.childvm.webapp.model.ConnectionProfile;
@@ -152,8 +151,8 @@ public class ConnectionManagerTest {
 						return profileID;
 					}
 					@Override
-					protected Collection<Class<? extends Annotation>> getAnnotationClassesOfQueryableCandidateClass() {
-						return Collections.emptyList();
+					protected boolean isQueryableCandidateClass(ClassAnnotationReader classAnnotationReader) {
+						return false;
 					}
 				};
 			}

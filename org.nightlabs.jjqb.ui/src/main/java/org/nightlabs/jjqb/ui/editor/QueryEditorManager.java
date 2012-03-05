@@ -435,7 +435,8 @@ public abstract class QueryEditorManager
 
 	public ConnectionProfile getJJQBConnectionProfileAskingUserIfNecessary()
 	{
-		IConnectionProfile odaConnectionProfile = getODAConnectionProfile();
+		assertUIThread();
+		final IConnectionProfile odaConnectionProfile = getODAConnectionProfile();
 		ConnectionProfile jjqbConnectionProfile = getJJQBConnectionProfile();
 		if (jjqbConnectionProfile  == null) {
 			Shell parentShell = display.getActiveShell();
@@ -449,16 +450,41 @@ public abstract class QueryEditorManager
 				if (managedConnection == null)
 					throw new IllegalStateException("odaConnectionProfile.getManagedConnection(QueryEditorManager.connectionFactoryID) returned null!");
 
-				if (managedConnection.getConnection() != null && managedConnection.isConnected())
-					throw new IllegalStateException("The managedConnection is connected! Sth. is very odd here!");
+				// This might actually happen, if the connection is opened multiple times in parallel (we try to avoid blocking the UI thread, hence this is possible).
+//				if (managedConnection.getConnection() != null && managedConnection.isConnected())
+//					throw new IllegalStateException("The managedConnection is connected! Sth. is very odd here!");
 
-				IStatus status = odaConnectionProfile.connectWithoutJob();
-				if (IStatus.OK != status.getCode()) {
-					Throwable exception = QueryEditorManager.findSingleException(status);
+				final IStatus[] status = new IStatus[1];
+
+				Job openJob = new Job("Opening connection") {
+					@Override
+					protected IStatus run(IProgressMonitor monitor) {
+						synchronized(QueryEditorManager.this) {
+							IManagedConnection managedConnection = odaConnectionProfile.getManagedConnection(QueryEditorManager.connectionFactoryID);
+							if (managedConnection == null)
+								throw new IllegalStateException("odaConnectionProfile.getManagedConnection(QueryEditorManager.connectionFactoryID) returned null!");
+
+							if (managedConnection.getConnection() == null || !managedConnection.isConnected())
+								status[0] = odaConnectionProfile.connectWithoutJob();
+							else
+								status[0] = Status.OK_STATUS;
+						}
+						return status[0];
+					}
+				};
+				openJob.setPriority(Job.INTERACTIVE);
+				openJob.schedule();
+
+				while (status[0] == null && !display.readAndDispatch()) {
+					display.sleep();
+				}
+
+				if (IStatus.OK != status[0].getCode()) {
+					Throwable exception = QueryEditorManager.findSingleException(status[0]);
 					if (exception != null)
 						throw new RuntimeException(exception);
 					else
-						throw new RuntimeException("Opening connection failed: " + status);
+						throw new RuntimeException("Opening connection failed: " + status[0]);
 				}
 
 				jjqbConnectionProfile = getJJQBConnectionProfile();
@@ -1010,4 +1036,6 @@ public abstract class QueryEditorManager
 		assertUIThread();
 		executeQueryListeners.remove(listener);
 	}
+
+	private static final void doNothing() { }
 }

@@ -70,6 +70,11 @@
 		<jersey.version>1.9</jersey.version>
 		<licence.version>1.0.0-SNAPSHOT</licence.version>
 
+		<!-- Jersey uses ASM 3.1, hence we cannot use 4.0 :-( Need to switch to a newer version when Jersey does.
+		We use the transitive dependency from Jersey and don't declare it here, explicitely. Marco :-)
+		<asm.version>4.0</asm.version>
+		-->
+
 		<!-- Always aggregate. -->
 		<aggregate>true</aggregate>
 	</properties>
@@ -291,13 +296,6 @@
 				<artifactId>jersey-server</artifactId>
 				<version>${jersey.version}</version>
 			</dependency>
-			
-			<dependency>
-				<groupId>org.eclipse.persistence</groupId>
-				<artifactId>javax.persistence</artifactId>
-				<version>2.0.0</version>
-				<scope>provided</scope> <!-- javax.jdo is provided in parent => I do the same for javax.persistence. -->
-			</dependency>
 
 			<dependency>
 				<groupId>javax.servlet</groupId>
@@ -305,13 +303,60 @@
 				<version>2.5</version>
 				<scope>provided</scope>
 			</dependency>
-			
+
 			<dependency>
 				<groupId>junit</groupId>
 				<artifactId>junit</artifactId>
 				<version>4.10</version>
 				<scope>test</scope>
 			</dependency>
+
+			<dependency>
+				<groupId>org.eclipse.persistence</groupId>
+				<artifactId>javax.persistence</artifactId>
+				<version>2.0.0</version>
+				<scope>provided</scope> <!-- javax.jdo is provided in parent => I do the same for javax.persistence. -->
+			</dependency>
+
+			<!--
+			<dependency>
+				<groupId>asm</groupId>
+				<artifactId>asm</artifactId>
+				<version>${asm.version}</version>
+			</dependency>
+			-->
+			<!-- The groupID "org.ow2.asm" is used by newer ASM versions only - 3.1 (as introduced by Jersey) is using only "asm" as groupID.
+			<dependency>
+				<groupId>org.ow2.asm</groupId>
+				<artifactId>asm</artifactId>
+				<version>${asm.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.ow2.asm</groupId>
+				<artifactId>asm-analysis</artifactId>
+				<version>${asm.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.ow2.asm</groupId>
+				<artifactId>asm-commons</artifactId>
+				<version>${asm.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.ow2.asm</groupId>
+				<artifactId>asm-tree</artifactId>
+				<version>${asm.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.ow2.asm</groupId>
+				<artifactId>asm-util</artifactId>
+				<version>${asm.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.ow2.asm</groupId>
+				<artifactId>asm-xml</artifactId>
+				<version>${asm.version}</version>
+			</dependency>
+			-->
 			<!-- END third party -->
 	
 			<!-- BEGIN org.nightlabs.**.* -->

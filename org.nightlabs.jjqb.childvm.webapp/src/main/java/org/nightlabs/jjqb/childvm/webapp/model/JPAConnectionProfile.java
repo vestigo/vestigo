@@ -1,11 +1,9 @@
 package org.nightlabs.jjqb.childvm.webapp.model;
 
 import java.io.IOException;
-import java.lang.annotation.Annotation;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Map;
 import java.util.Properties;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.EntityManagerFactory;
@@ -17,6 +15,7 @@ import org.nightlabs.jjqb.childvm.shared.dto.ConnectionProfileDTO;
 import org.nightlabs.jjqb.childvm.shared.dto.JPAConnectionProfileDTO;
 import org.nightlabs.jjqb.childvm.shared.persistencexml.JPAPersistenceUnitHelper;
 import org.nightlabs.jjqb.childvm.shared.persistencexml.PersistenceUnitHelper;
+import org.nightlabs.jjqb.childvm.webapp.asm.ClassAnnotationReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -101,10 +100,8 @@ public class JPAConnectionProfile extends ConnectionProfile
 	}
 
 	@Override
-	protected Collection<Class<? extends Annotation>> getAnnotationClassesOfQueryableCandidateClass() {
-		Collection<Class<? extends Annotation>> result = new ArrayList<Class<? extends Annotation>>(3);
-		result.add(Entity.class);
-		result.add(MappedSuperclass.class);
-		return result;
+	protected boolean isQueryableCandidateClass(ClassAnnotationReader classAnnotationReader) {
+		Set<String> classAnnotations = classAnnotationReader.getClassAnnotations();
+		return classAnnotations.contains(Entity.class.getName()) || classAnnotations.contains(MappedSuperclass.class.getName());
 	}
 }

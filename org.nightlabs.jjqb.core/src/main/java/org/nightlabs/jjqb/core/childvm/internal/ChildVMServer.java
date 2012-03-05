@@ -61,6 +61,8 @@ public class ChildVMServer
 	public static final String PREFERENCE_DEFAULT_LOG4J_ROOT_LOG_LEVEL = LogLevel.FATAL.name();
 
 	public static final String PREFERENCE_KEY_LOG4J_ADDITIONAL_PROPERTIES = "childVM.log4j.additionalProperties";
+	//public static final String PREFERENCE_DEFAULT_LOG4J_ADDITIONAL_PROPERTIES = "#log4j.category.mypackage.MyClass=DEBUG\n#log4j.additivity.mypackage.MyClass=false";
+	public static final String PREFERENCE_DEFAULT_LOG4J_ADDITIONAL_PROPERTIES = "#log4j.category.mypackage.MyClass=DEBUG";
 
 	public static final String PREFERENCE_KEY_SERVER_START_TIMEOUT_MS = "childVM.server.startTimeoutMS";
 	public static final long PREFERENCE_DEFAULT_SERVER_START_TIMEOUT_MS = 30L * 1000L;
@@ -576,7 +578,7 @@ public class ChildVMServer
 
 	private String getChildVMLog4jAdditionalProperties()
 	{
-		return JJQBCorePlugin.getDefault().getPreferences().get(PREFERENCE_KEY_LOG4J_ADDITIONAL_PROPERTIES, "");
+		return JJQBCorePlugin.getDefault().getPreferences().get(PREFERENCE_KEY_LOG4J_ADDITIONAL_PROPERTIES, PREFERENCE_DEFAULT_LOG4J_ADDITIONAL_PROPERTIES);
 	}
 
 	private boolean isChildVMDebugModeEnabled()

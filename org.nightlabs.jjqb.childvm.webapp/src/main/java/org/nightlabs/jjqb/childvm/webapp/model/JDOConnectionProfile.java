@@ -1,9 +1,6 @@
 package org.nightlabs.jjqb.childvm.webapp.model;
 
 import java.io.IOException;
-import java.lang.annotation.Annotation;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Map;
 import java.util.Properties;
 
@@ -16,6 +13,7 @@ import org.nightlabs.jjqb.childvm.shared.dto.ConnectionProfileDTO;
 import org.nightlabs.jjqb.childvm.shared.dto.JDOConnectionProfileDTO;
 import org.nightlabs.jjqb.childvm.shared.persistencexml.JDOPersistenceUnitHelper;
 import org.nightlabs.jjqb.childvm.shared.persistencexml.PersistenceUnitHelper;
+import org.nightlabs.jjqb.childvm.webapp.asm.ClassAnnotationReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -127,9 +125,7 @@ public class JDOConnectionProfile extends ConnectionProfile
 	}
 
 	@Override
-	protected Collection<Class<? extends Annotation>> getAnnotationClassesOfQueryableCandidateClass() {
-		Collection<Class<? extends Annotation>> result = new ArrayList<Class<? extends Annotation>>(1);
-		result.add(PersistenceCapable.class);
-		return result;
+	protected boolean isQueryableCandidateClass(ClassAnnotationReader classAnnotationReader) {
+		return classAnnotationReader.getClassAnnotations().contains(PersistenceCapable.class.getName());
 	}
 }
