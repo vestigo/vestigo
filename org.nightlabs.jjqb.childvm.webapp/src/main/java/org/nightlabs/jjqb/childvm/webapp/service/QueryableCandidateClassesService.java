@@ -1,9 +1,7 @@
 package org.nightlabs.jjqb.childvm.webapp.service;
 
 import java.io.IOException;
-import java.util.Collection;
 import java.util.SortedSet;
-import java.util.TreeSet;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -38,11 +36,12 @@ public class QueryableCandidateClassesService extends AbstractService
 		if (connectionProfile == null)
 			throw new IllegalArgumentException("There is no ConnectionProfile with profileID=" + profileID);
 
-		Collection<Class<?>> classes = connectionProfile.getQueryableCandidateClasses();
-		SortedSet<String> result = new TreeSet<String>();
-		for (Class<?> c : classes)
-			result.add(c.getName());
+//		Collection<Class<?>> classes = connectionProfile.getQueryableCandidateClasses();
+//		SortedSet<String> result = new TreeSet<String>();
+//		for (Class<?> c : classes)
+//			result.add(c.getName());
 
+		SortedSet<String> result = connectionProfile.getQueryableCandidateClasses();
 		return new StringSortedSetDTO(result);
 	}
 }

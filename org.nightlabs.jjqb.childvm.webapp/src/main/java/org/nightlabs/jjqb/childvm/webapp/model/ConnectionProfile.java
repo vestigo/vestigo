@@ -11,6 +11,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
@@ -282,29 +284,27 @@ public abstract class ConnectionProfile
 		return filteredPersistenceProperties;
 	}
 
-	protected void collectQueryableCandidateClassesInDirectory(Collection<Class<?>> classes, ClassLoader classLoader, File classpathDirectory) throws IOException
+	protected void collectQueryableCandidateClassesInDirectory(Collection<String> classes, ClassLoader classLoader, File classpathDirectory) throws IOException
 	{
 		collectQueryableCandidateClassesInDirectoryRecursively(classes, classLoader, classpathDirectory, classpathDirectory);
 	}
 
-	protected void collectQueryableCandidateClassesInDirectoryRecursively(Collection<Class<?>> classes, ClassLoader classLoader, File classpathDirectory, File fileOrDir) throws IOException
+	protected void collectQueryableCandidateClassesInDirectoryRecursively(Collection<String> classes, ClassLoader classLoader, File classpathDirectory, File fileOrDir) throws IOException
 	{
 		if (fileOrDir.isFile() && fileOrDir.getName().endsWith(CLASS_SUFFIX)) {
-//			String name = IOUtil.getRelativePath(classpathDirectory, fileOrDir);
-//			String className = name.substring(0, name.length() - CLASS_SUFFIX.length()).replace('/', '.');
 			ClassAnnotationReader classAnnotationReader = getClassAnnotationReader();
 			classAnnotationReader.read(fileOrDir);
-			String className = classAnnotationReader.getClassName();
 			if (isQueryableCandidateClass(classAnnotationReader)) {
-				Class<?> clazz = null;
-				try {
-					clazz = classLoader.loadClass(className);
-				} catch (Throwable t) {
-					logger.error("collectQueryableCandidateClassesInDirectoryRecursively: classpathDirectory='" + classpathDirectory.getAbsolutePath() + "' className=" + className + ": " + t, t);
-				}
-	//			if (clazz != null && isQueryableCandidateClass(clazz))
-				if (clazz != null)
-					classes.add(clazz);
+				String className = classAnnotationReader.getClassName();
+//				Class<?> clazz = null;
+//				try {
+//					clazz = classLoader.loadClass(className);
+//				} catch (Throwable t) {
+//					logger.error("collectQueryableCandidateClassesInDirectoryRecursively: classpathDirectory='" + classpathDirectory.getAbsolutePath() + "' className=" + className + ": " + t, t);
+//				}
+//				if (clazz != null)
+//					classes.add(clazz);
+				classes.add(className);
 			}
 		}
 		else {
@@ -316,7 +316,7 @@ public abstract class ConnectionProfile
 		}
 	}
 
-	protected void collectQueryableCandidateClassesInZip(Collection<Class<?>> classes, ClassLoader classLoader, URL url) throws IOException
+	protected void collectQueryableCandidateClassesInZip(Collection<String> classes, ClassLoader classLoader, URL url) throws IOException
 	{
 		InputStream in = url.openStream();
 		try {
@@ -334,16 +334,16 @@ public abstract class ConnectionProfile
 
 				String className = classAnnotationReader.getClassName();
 
-//				String className = name.substring(0, name.length() - CLASS_SUFFIX.length()).replace('/', '.');
-				Class<?> clazz = null;
-				try {
-					clazz = classLoader.loadClass(className);
-				} catch (Throwable t) {
-					logger.error("collectQueryableCandidateClassesInZip: url=" + url + " className=" + className + ": " + t, t);
-				}
-//				if (isQueryableCandidateClass(clazz))
-				if (clazz != null)
-					classes.add(clazz);
+//				Class<?> clazz = null;
+//				try {
+//					clazz = classLoader.loadClass(className);
+//				} catch (Throwable t) {
+//					logger.error("collectQueryableCandidateClassesInZip: url=" + url + " className=" + className + ": " + t, t);
+//				}
+//				if (clazz != null)
+//					classes.add(clazz);
+
+				classes.add(className);
 			}
 		} finally {
 			in.close();
@@ -354,23 +354,14 @@ public abstract class ConnectionProfile
 		return new ClassAnnotationReader();
 	}
 
-//	protected boolean isQueryableCandidateClass(Class<?> clazz) {
-//		Collection<Class<? extends Annotation>> annotationClasses = getAnnotationClassesOfQueryableCandidateClass();
-//		for (Class<? extends Annotation> annotationClass : annotationClasses) {
-//			if (clazz.getAnnotation(annotationClass) != null)
-//				return true;
-//		}
-//		return false;
-//	}
-
 	protected abstract boolean isQueryableCandidateClass(ClassAnnotationReader classAnnotationReader);
 
-	public Collection<Class<?>> getQueryableCandidateClasses() throws IOException
+	public SortedSet<String> getQueryableCandidateClasses() throws IOException
 	{
 		long startTimestamp = System.currentTimeMillis();
 		ClassLoader classLoader = classLoaderManager.getPersistenceEngineClassLoader();
 
-		Set<Class<?>> classes = new HashSet<Class<?>>();
+		SortedSet<String> classes = new TreeSet<String>();
 
 		List<URL> classpathURLs = classLoaderManager.getPersistenceEngineClasspathURLList();
 		for (URL url : classpathURLs) {
