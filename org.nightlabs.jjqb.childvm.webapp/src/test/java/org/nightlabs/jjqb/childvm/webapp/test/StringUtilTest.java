@@ -14,10 +14,10 @@ public class StringUtilTest
 	public void removeCommentsAndConvertEOLsToUnixEOLs()
 	{
 		String queryText = (
-				"-- comment 1\n" +
-				"SELECT FROM org.bla.Bla \"-- NOT comment\"\r\n" +
-				"-- completely commented line\r\r" +
-				"WHERE this.bla - this.blubb > :arg -- comment 3\r" +
+				"// comment 1\n" +
+				"SELECT FROM org.bla.Bla \"// NOT comment\"\r\n" +
+				"// completely commented line\r\r" +
+				"WHERE this.bla - this.blubb > :arg // comment 3\r" +
 				"\t	&& this.ooo < :arg2\r"
 		);
 
@@ -39,7 +39,7 @@ public class StringUtilTest
 
 		String expected = (
 				"\n" +
-				"SELECT FROM org.bla.Bla \"-- NOT comment\"\n" +
+				"SELECT FROM org.bla.Bla \"// NOT comment\"\n" +
 				"\n" +
 				"\n" +
 				"WHERE this.bla - this.blubb > :arg \n" +

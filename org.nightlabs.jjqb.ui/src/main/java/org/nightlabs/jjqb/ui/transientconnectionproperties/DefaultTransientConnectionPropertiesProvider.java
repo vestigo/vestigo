@@ -26,7 +26,7 @@ public class DefaultTransientConnectionPropertiesProvider extends AbstractTransi
 				if (PlatformUI.getWorkbench() != null && PlatformUI.getWorkbench().getActiveWorkbenchWindow() != null)
 					shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
 
-				PropertiesProviderDialog dialog = createPropertiesProviderDialog(shell);
+				TransientConnectionPropertiesProviderDialog dialog = createPropertiesProviderDialog(shell);
 				if (Dialog.OK == dialog.open()) {
 					result[0] = dialog.getProperties();
 				}
@@ -39,9 +39,9 @@ public class DefaultTransientConnectionPropertiesProvider extends AbstractTransi
 		return result[0];
 	}
 
-	protected PropertiesProviderDialog createPropertiesProviderDialog(Shell shell)
+	protected TransientConnectionPropertiesProviderDialog createPropertiesProviderDialog(Shell shell)
 	{
-		return new PropertiesProviderDialog(shell, DefaultTransientConnectionPropertiesProvider.this, createPreferencePage());
+		return new TransientConnectionPropertiesProviderDialog(shell, DefaultTransientConnectionPropertiesProvider.this, createPreferencePage());
 	}
 
 	protected PreferencePage createPreferencePage()

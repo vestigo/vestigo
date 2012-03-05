@@ -41,6 +41,10 @@ public interface QueryEditor
 		public final String getQueryIDFromEditorInput()
 		{
 			IEditorInput editorInput = queryEditor.getEditorInput();
+
+			if (!(editorInput instanceof IPathEditorInput))
+				editorInput = (IEditorInput) editorInput.getAdapter(IPathEditorInput.class);
+
 			if (editorInput instanceof IPathEditorInput) {
 				IPathEditorInput input = (IPathEditorInput) editorInput;
 				try {
@@ -51,6 +55,10 @@ public interface QueryEditor
 					throw new RuntimeException(e);
 				}
 			}
+
+			if (editorInput == null)
+				return "NEW"; // TODO make sure this is unique!
+
 			throw new IllegalArgumentException("Unknown implementation of IEditorInput: " + editorInput);
 		}
 

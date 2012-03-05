@@ -164,11 +164,11 @@ public class QueryEditorManagerComposite extends Composite
 
 		int selectionIndex = connectionProfileCombo.getSelectionIndex();
 		if (selectionIndex < 0)
-			queryEditorManager.setConnectionProfile(null);
+			queryEditorManager.setODAConnectionProfile(null);
 		else {
 			List<IConnectionProfile> connectionProfiles = queryEditorManager.getODAConnectionProfiles();
 			IConnectionProfile connectionProfile = connectionProfiles.get(selectionIndex);
-			queryEditorManager.setConnectionProfile(connectionProfile);
+			queryEditorManager.setODAConnectionProfile(connectionProfile);
 		}
 	}
 

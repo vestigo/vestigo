@@ -1,5 +1,8 @@
 package org.nightlabs.jjqb.ui.editor;
 
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IStorage;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.datatools.connectivity.IConnectionProfile;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.IEditorInput;
@@ -9,31 +12,24 @@ import org.eclipse.ui.IPersistableElement;
 import org.eclipse.ui.IURIEditorInput;
 
 /**
- * Editor input wrapping a {@link #getFileEditorInput() another editor input} and passing
+ * Editor input wrapping {@link IFileEditorInput another editor input} and passing
  * additionally a {@link #getConnectionProfile() selected connection profile}.
  *
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
  */
-public class QueryEditorInput implements IEditorInput
+public class QueryEditorInput implements IEditorInput, IFileEditorInput
 {
 	private IConnectionProfile connectionProfile;
-
-	private IEditorInput fileEditorInput;
+	private IFileEditorInput fileEditorInput;
 
 	public QueryEditorInput(IConnectionProfile connectionProfile, IFileEditorInput fileEditorInput)
 	{
-		this.connectionProfile = connectionProfile;
-		this.fileEditorInput = fileEditorInput;
-	}
+		if (connectionProfile == null)
+			throw new IllegalArgumentException("connectionProfile == null");
 
-	public QueryEditorInput(IConnectionProfile connectionProfile, IPathEditorInput fileEditorInput)
-	{
-		this.connectionProfile = connectionProfile;
-		this.fileEditorInput = fileEditorInput;
-	}
+		if (fileEditorInput == null)
+			throw new IllegalArgumentException("fileEditorInput == null");
 
-	public QueryEditorInput(IConnectionProfile connectionProfile, IURIEditorInput fileEditorInput)
-	{
 		this.connectionProfile = connectionProfile;
 		this.fileEditorInput = fileEditorInput;
 	}
@@ -51,7 +47,7 @@ public class QueryEditorInput implements IEditorInput
 	 * </ul>
 	 */
 	@Override
-	public Object getAdapter(Class adapter)
+	public Object getAdapter(@SuppressWarnings("rawtypes") Class adapter)
 	{
 		if (IFileEditorInput.class.isAssignableFrom(adapter))
 			return fileEditorInput;
@@ -70,47 +66,45 @@ public class QueryEditorInput implements IEditorInput
 
 	@Override
 	public boolean exists() {
-		if (fileEditorInput != null)
-			return fileEditorInput.exists();
-		else
-			return false;
+		return fileEditorInput.exists();
 	}
 
 	@Override
 	public ImageDescriptor getImageDescriptor() {
-		// TODO Auto-generated method stub
-		return null;
+		return fileEditorInput.getImageDescriptor();
 	}
 
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
-		return null;
+		return fileEditorInput.getName();
 	}
 
 	@Override
 	public IPersistableElement getPersistable() {
-		// TODO Auto-generated method stub
-		return null;
+		return fileEditorInput.getPersistable();
 	}
 
 	@Override
 	public String getToolTipText() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/**
-	 * The actual wrapped editor input.
-	 * Can be an instance of {@link IFileEditorInput}, {@link IPathEditorInput} or {@link IURIEditorInput}.
-	 * Can be obtained via {@link #getAdapter(Class)}, too.
-	 * @return the actual wrapped editor input.
-	 */
-	public IEditorInput getFileEditorInput() {
-		return fileEditorInput;
+		return fileEditorInput.getToolTipText();
 	}
 
 	public IConnectionProfile getConnectionProfile() {
 		return connectionProfile;
+	}
+
+	@Override
+	public IStorage getStorage() throws CoreException {
+		return fileEditorInput.getStorage();
+	}
+
+	@Override
+	public IFile getFile() {
+		return fileEditorInput.getFile();
+	}
+
+	@Override
+	public String toString() {
+		return this.getClass().getSimpleName() + '[' + connectionProfile + ',' + getFile().getFullPath() + ']';
 	}
 }

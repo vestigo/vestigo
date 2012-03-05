@@ -9,10 +9,17 @@ import java.io.StringWriter;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IProjectDescription;
+import org.eclipse.core.resources.IWorkspace;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.eclipse.xtext.ui.XtextProjectHelper;
 import org.nightlabs.jjqb.core.PropertiesWithChangeSupport;
 import org.osgi.framework.BundleContext;
 
@@ -42,6 +49,10 @@ public class JJQBUIPlugin extends AbstractUIPlugin
 	public void stop(BundleContext context) throws Exception {
 		plugin = null;
 		super.stop(context);
+
+		IProject tempProject = getTempProject();
+		if (tempProject != null)
+			tempProject.delete(true, true, new NullProgressMonitor());
 	}
 
 	/**
@@ -104,14 +115,12 @@ public class JJQBUIPlugin extends AbstractUIPlugin
 	{
 		StringWriter writer = new StringWriter();
 		try {
-			properties.store(writer, "JDO/JPA Query Browser");
+			properties.store(writer, null); // "JDO/JPA Query Browser");
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
 		return writer.toString();
 	}
-
-
 
 	public ImageDescriptor getImageDescriptor(Class<?> clazz, String identifier, String size)
 	{
@@ -151,5 +160,37 @@ public class JJQBUIPlugin extends AbstractUIPlugin
 
 		image = JJQBUIPlugin.getDefault().getImageRegistry().get(imageKey);
 		return image;
+	}
+
+	public IProject getTempProject()
+	{
+		IWorkspace ws = ResourcesPlugin.getWorkspace();
+		IProject project = ws.getRoot().getProject("JJQB temporary files");
+		return project;
+	}
+
+	public IProject createTempProject() throws CoreException
+	{
+		IProject project = getTempProject();
+
+		if (!project.exists())
+	    project.create(new NullProgressMonitor());
+
+		if (!project.isOpen())
+	    project.open(new NullProgressMonitor());
+
+		if (project.getNature(XtextProjectHelper.NATURE_ID) == null) {
+			IProjectDescription desc = project.getDescription();
+		  desc.setNatureIds(new String[] { XtextProjectHelper.NATURE_ID } );
+		  project.setDescription(desc, new NullProgressMonitor());
+//			for (IProjectNatureDescriptor natureDescriptor : ws.getNatureDescriptors()) {
+//				if (!natureID.equals(natureDescriptor.getNatureId()))
+//					continue;
+//
+//				natureDescriptor
+//			}
+		}
+
+		return project;
 	}
 }

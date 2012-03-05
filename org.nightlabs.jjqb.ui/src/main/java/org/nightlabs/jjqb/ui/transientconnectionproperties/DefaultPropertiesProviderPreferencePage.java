@@ -18,7 +18,7 @@ public class DefaultPropertiesProviderPreferencePage extends FieldEditorPreferen
 	public DefaultPropertiesProviderPreferencePage(TransientConnectionPropertiesProvider transientConnectionPropertiesProvider) {
 		super(
 				"Transient connection properties",
-				JJQBUIPlugin.getDefault().getImageDescriptor(DefaultPropertiesProviderPreferencePage.class, "image", JJQBUIPlugin.IMAGE_SIZE_75x70),
+				JJQBUIPlugin.getDefault().getImageDescriptor(DefaultPropertiesProviderPreferencePage.class, null, JJQBUIPlugin.IMAGE_SIZE_75x70),
 				GRID
 		);
 		this.transientConnectionPropertiesProvider = transientConnectionPropertiesProvider;

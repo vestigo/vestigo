@@ -43,6 +43,7 @@ import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PartInitException;
@@ -79,20 +80,16 @@ public abstract class QueryEditorManager
 	public static final String connectionFactoryID = "org.eclipse.datatools.connectivity.oda.IConnection";
 
 	private static final String PROPERTY_LAST_CONNECTION_PROFILE_INSTANCE_ID = "lastConnectionProfile.instanceID";
-	private static final String QUERY_TEXT_PROPERTIES_BEGIN_MARKER = "------PROPERTIES_BEGIN------";
-	private static final String QUERY_TEXT_PROPERTIES_END_MARKER = "------PROPERTIES_END------";
-	private static final String QUERY_TEXT_LINE_COMMENT_MARKER = "--";
+	private static final String QUERY_TEXT_PROPERTIES_BEGIN_MARKER = "//------PROPERTIES_BEGIN------";
+	private static final String QUERY_TEXT_PROPERTIES_END_MARKER = "//------PROPERTIES_END------";
+	private static final String QUERY_TEXT_LINE_COMMENT_MARKER = "//";
 
 	private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 	private QueryEditor queryEditor;
 	private Display display;
 
 	private List<IConnectionProfile> connectionProfiles = Collections.unmodifiableList(new ArrayList<IConnectionProfile>());
-	private IConnectionProfile connectionProfile;
-
-//	private volatile IConnection connection;
-//	private volatile IQuery query;
-//	private volatile ResultSetTableModel resultSetTableModel;
+	private IConnectionProfile odaConnectionProfile;
 
 	private Map<IConnection, ResultSetTableModel> connection2ResultSetTableModel = new HashMap<IConnection, ResultSetTableModel>();
 
@@ -295,7 +292,7 @@ public abstract class QueryEditorManager
 				PropertyName.connectionProfiles.name(), oldConnectionProfiles, this.connectionProfiles
 		);
 
-		setConnectionProfile(selection);
+		setODAConnectionProfile(selection);
 	}
 
 
@@ -313,11 +310,11 @@ public abstract class QueryEditorManager
 //		@Override
 //		public void aboutToClose(ConnectEvent event) {
 //			IManagedConnection managedConnection = event.getConnection();
-//			IConnectionProfile connectionProfile = event.getConnectionProfile();
+//			IConnectionProfile odaConnectionProfile = event.getConnectionProfile();
 //
 //			org.eclipse.datatools.connectivity.IConnection connection;
 //			synchronized (QueryEditorManager.this) {
-//				connection = connectionProfile2connection.remove(connectionProfile);
+//				connection = connectionProfile2connection.remove(odaConnectionProfile);
 //				managedConnection.removeConnectionListener(this);
 //				managedConnectionsWithRegisteredListener.remove(managedConnection);
 //			}
@@ -404,7 +401,7 @@ public abstract class QueryEditorManager
 
 		final org.eclipse.datatools.connectivity.IConnection connection = connectionProfile.createConnection(connectionFactoryID);
 		if (connection == null)
-			throw new IllegalStateException("connectionProfile.createConnection(...) returned null");
+			throw new IllegalStateException("odaConnectionProfile.createConnection(...) returned null");
 
 		final CloseConnectionManagedConnectionListener[] ccmcl = new CloseConnectionManagedConnectionListener[1];
 
@@ -473,6 +470,7 @@ public abstract class QueryEditorManager
 					}
 				};
 				openJob.setPriority(Job.INTERACTIVE);
+				openJob.setUser(true);
 				openJob.schedule();
 
 				while (status[0] == null && !display.readAndDispatch()) {
@@ -528,22 +526,22 @@ public abstract class QueryEditorManager
 		return jjqbConnectionProfile;
 	}
 
-//	public synchronized IConnection getConnection(IConnectionProfile connectionProfile, IProgressMonitor monitor)
+//	public synchronized IConnection getConnection(IConnectionProfile odaConnectionProfile, IProgressMonitor monitor)
 //	{
-//		IManagedConnection managedConnection = connectionProfile.getManagedConnection(connectionFactoryID);
+//		IManagedConnection managedConnection = odaConnectionProfile.getManagedConnection(connectionFactoryID);
 //		if (managedConnectionsWithRegisteredListener.add(managedConnection))
 //			managedConnection.addConnectionListener(managedConnectionListener);
 //
 //		if (managedConnection.getConnection() == null)
-//			connectionProfile.connectWithoutJob();
+//			odaConnectionProfile.connectWithoutJob();
 //
-//		org.eclipse.datatools.connectivity.IConnection connection = connectionProfile2connection.get(connectionProfile);
+//		org.eclipse.datatools.connectivity.IConnection connection = connectionProfile2connection.get(odaConnectionProfile);
 //		if (connection == null) {
-//			connection = connectionProfile.createConnection(connectionFactoryID);
+//			connection = odaConnectionProfile.createConnection(connectionFactoryID);
 //			if (connection == null)
-//				throw new IllegalStateException("connectionProfile.createConnection(...) returned null");
+//				throw new IllegalStateException("odaConnectionProfile.createConnection(...) returned null");
 //
-//			connectionProfile2connection.put(connectionProfile, connection);
+//			connectionProfile2connection.put(odaConnectionProfile, connection);
 //		}
 //		return (IConnection) connection.getRawConnection();
 //	}
@@ -560,17 +558,17 @@ public abstract class QueryEditorManager
 	public IConnectionProfile getODAConnectionProfile()
 	{
 		assertUIThread();
-		return connectionProfile;
+		return odaConnectionProfile;
 	}
 
-	public void setConnectionProfile(IConnectionProfile connectionProfile)
+	public void setODAConnectionProfile(IConnectionProfile connectionProfile)
 	{
 		logger.info("setConnectionProfile: queryID={}: entered", queryEditor.getQueryID());
 
 		int connectionProfileIndex = connectionProfiles.indexOf(connectionProfile);
 		IConnectionProfile newConnectionProfile = connectionProfileIndex >= 0 ? connectionProfiles.get(connectionProfileIndex) : null;
-		IConnectionProfile oldConnectionProfile = this.connectionProfile;
-		this.connectionProfile = newConnectionProfile;
+		IConnectionProfile oldConnectionProfile = this.odaConnectionProfile;
+		this.odaConnectionProfile = newConnectionProfile;
 
 		String connectionProfileInstanceID = newConnectionProfile == null ? null : newConnectionProfile.getInstanceID();
 
@@ -869,11 +867,23 @@ public abstract class QueryEditorManager
 	public void editorInputChanged()
 	{
 		assertUIThread();
+
 //		propertiesType2Properties.remove(PropertiesType.editor_file); // is overwritten by extractAndRemovePropertiesFromQueryText(...) before
 		propertiesType2Properties.remove(PropertiesType.editor_preferenceStore);
 
+		// In case of an empty (new) editor with no real file, the load method is never called and thus these properties must be set now.
+//		if ((queryEditor.getEditorInput() instanceof QueryEditorInput) && ((QueryEditorInput)queryEditor.getEditorInput()).getFileEditorInput() == null)
+		if (!propertiesType2Properties.containsKey(PropertiesType.editor_file))
+			propertiesType2Properties.put(PropertiesType.editor_file, new PropertiesWithChangeSupport());
+
 //		extractAndRemovePropertiesFromQueryText();
+
 		populateConnectionProfiles();
+		IEditorInput input = queryEditor.getEditorInput();
+		if (input instanceof QueryEditorInput) {
+			this.setODAConnectionProfile(((QueryEditorInput)input).getConnectionProfile());
+		}
+
 		queryParameterManager.editorInputChanged();
 	}
 

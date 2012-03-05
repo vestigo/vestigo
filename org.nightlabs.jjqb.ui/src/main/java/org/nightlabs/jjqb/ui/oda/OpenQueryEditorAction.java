@@ -4,11 +4,12 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IWorkspace;
-import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.IPath;
-import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IConfigurationElement;
+import org.eclipse.core.runtime.IExtension;
+import org.eclipse.core.runtime.IExtensionPoint;
+import org.eclipse.core.runtime.IExtensionRegistry;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.datatools.connectivity.IConnectionProfile;
 import org.eclipse.datatools.connectivity.oda.IDriver;
 import org.eclipse.jface.action.IAction;
@@ -19,19 +20,23 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IViewActionDelegate;
 import org.eclipse.ui.IViewPart;
+import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchPartSite;
-import org.eclipse.ui.part.FileEditorInput;
 import org.nightlabs.jjqb.core.oda.DataSourceDriverRegistry;
 import org.nightlabs.jjqb.core.oda.JDODriver;
 import org.nightlabs.jjqb.core.oda.JPADriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
  */
-public class OpenQueryBrowserAction
+public class OpenQueryEditorAction
 implements IObjectActionDelegate, IViewActionDelegate
 {
+	private static final Logger logger = LoggerFactory.getLogger(OpenQueryEditorAction.class);
+
 	private boolean runAlreadyCalled = false;
 	private IWorkbenchPart targetPart;
 	private List<IConnectionProfile> selectedConnectionProfiles;
@@ -44,39 +49,53 @@ implements IObjectActionDelegate, IViewActionDelegate
 		return site == null ? null : site.getShell();
 	}
 
+	private OpenQueryEditorActionDelegate getOpenQueryEditorActionDelegate(String providerID) throws CoreException
+	{
+		final IExtensionRegistry registry = Platform.getExtensionRegistry();
+		if (registry == null)
+			throw new IllegalStateException("Platform.getExtensionRegistry() returned null!");
+
+		final String extensionPointId = "org.nightlabs.jjqb.ui.openQueryEditorActionDelegate";
+		final IExtensionPoint extensionPoint = registry.getExtensionPoint(extensionPointId);
+		if (extensionPoint == null)
+			throw new IllegalStateException("Unable to resolve extension-point: " + extensionPointId); //$NON-NLS-1$
+
+		final IExtension[] extensions = extensionPoint.getExtensions();
+		for (final IExtension extension : extensions) {
+			final IConfigurationElement[] elements = extension.getConfigurationElements();
+			for (final IConfigurationElement element : elements) {
+				String extProviderID = element.getAttribute("providerID");
+				if (!providerID.equals(extProviderID))
+					continue;
+
+				Object object = element.createExecutableExtension("class");
+				if (!(object instanceof OpenQueryEditorActionDelegate))
+					throw new IllegalStateException("executableExtension is not an instance of OpenQueryEditorActionDelegate! Contributing plugin: " + element.getContributor().getName());
+
+				return (OpenQueryEditorActionDelegate) object;
+			}
+		}
+
+		throw new IllegalStateException("There is no extension for extensionPoint='" + extensionPointId + "' and providerID='" + providerID + "'!");
+	}
+
 	@Override
 	public void run(IAction action) {
 		runAlreadyCalled = true;
 		if (selectedConnectionProfiles == null || selectedConnectionProfiles.isEmpty()) {
-			MessageDialog.openError(getShell(), "Empty selection", "There is no JDO- or JPA-driver selected! Please select one.");
+			MessageDialog.openError(getShell(), "Empty selection", "There is no JDO- or JPA-connection selected! Please select one.");
 			action.setEnabled(false);
 		}
 		else {
-//			MessageDialog.openInformation(getShell(), "Test", "selectedConnectionProfiles: " + selectedConnectionProfiles);
+			IWorkbenchPage workbenchPage = getSite().getWorkbenchWindow().getActivePage();
 			for (IConnectionProfile connectionProfile : selectedConnectionProfiles) {
 				try {
-//					File jfile = new File("/home/mschulze/workspaces/jjqe.1/org.nightlabs.eclipse.compatibility.rcp/pom.xml");
-					IWorkspace workspace = ResourcesPlugin.getWorkspace();
-//					IPath location = Path.fromOSString(jfile.getAbsolutePath());
-					IPath location = new Path("/adfsdaf/src/test.jdoql");
-//					IFile efile = workspace.getRoot().getFileForLocation(location);
-					IFile efile = workspace.getRoot().getFile(location);
-
-//					IPath stateLocation= EditorsPlugin.getDefault().getStateLocation();
-//					IPath path= stateLocation.append("/_" + new Object().hashCode()); //$NON-NLS-1$
-//					IFileStore fileStore = EFS.getLocalFileSystem().getStore(path);
-
-					// TODO how the hell can I open the editor without knowing an existing file name?!
-					getSite().getWorkbenchWindow().getActivePage().openEditor(
-//							new NonExistingFileEditorInput(fileStore, "new-"),
-							new FileEditorInput(efile),
-//							org.nightlabs.jjqb.ui.exampleeditor.XMLEditor.class.getName()
-//							JDOQueryBrowserEditor.class.getName()
-							"org.nightlabs.jjqb.xtext.jdoql.JDOQL"
-					);
+					OpenQueryEditorActionDelegate delegate = getOpenQueryEditorActionDelegate(connectionProfile.getProviderId());
+					delegate.setConnectionProfile(connectionProfile);
+					delegate.setWorkbenchPage(workbenchPage);
+					delegate.openQueryEditor();
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					logger.error("run: " + e, e);
 					MessageDialog.openError(getShell(), "Opening editor failed", "Could not open the editor: " + e);
 				}
 			}

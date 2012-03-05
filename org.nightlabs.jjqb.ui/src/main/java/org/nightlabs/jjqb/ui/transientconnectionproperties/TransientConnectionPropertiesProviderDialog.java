@@ -22,14 +22,14 @@ import org.nightlabs.jjqb.core.oda.ConnectionProfile;
 import org.nightlabs.jjqb.core.transientconnectionproperties.TransientConnectionPropertiesProvider;
 import org.nightlabs.jjqb.ui.JJQBUIPlugin;
 
-public class PropertiesProviderDialog extends TitleAreaDialog implements IPreferencePageContainer
+public class TransientConnectionPropertiesProviderDialog extends TitleAreaDialog implements IPreferencePageContainer
 {
 	private TransientConnectionPropertiesProvider transientConnectionPropertiesProvider;
 	private ConnectionProfile connectionProfile;
 	private PreferenceStore preferenceStore;
 	private PreferencePage preferencePage;
 
-	public PropertiesProviderDialog(Shell parentShell, TransientConnectionPropertiesProvider transientConnectionPropertiesProvider, PreferencePage preferencePage)
+	public TransientConnectionPropertiesProviderDialog(Shell parentShell, TransientConnectionPropertiesProvider transientConnectionPropertiesProvider, PreferencePage preferencePage)
 	{
 		super(parentShell);
 		this.transientConnectionPropertiesProvider = transientConnectionPropertiesProvider;
@@ -70,7 +70,7 @@ public class PropertiesProviderDialog extends TitleAreaDialog implements IPrefer
 	{
 		super.configureShell(newShell);
 		newShell.setText("Transient connection properties");
-		newShell.setImage(JJQBUIPlugin.getDefault().getImage(PropertiesProviderDialog.class, "shell", JJQBUIPlugin.IMAGE_SIZE_16x16)); //$NON-NLS-1$
+		newShell.setImage(JJQBUIPlugin.getDefault().getImage(TransientConnectionPropertiesProviderDialog.class, "shell", JJQBUIPlugin.IMAGE_SIZE_16x16)); //$NON-NLS-1$
 	}
 
 	@Override

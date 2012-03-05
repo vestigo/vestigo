@@ -100,7 +100,7 @@ implements IWorkbenchPreferencePage
 		descriptionLabel = super.createDescriptionLabel(parent);
 		return descriptionLabel;
 	}
-	
+
 	@Override
 	public void createControl(Composite parent) {
 		setTitle(Messages.getString("LicencePreferencePage.title")); //$NON-NLS-1$

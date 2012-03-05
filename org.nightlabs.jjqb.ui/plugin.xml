@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
+   <extension-point id="openQueryEditorActionDelegate" name="openQueryEditorActionDelegate" schema="schema/openQueryEditorActionDelegate.exsd"/>
 
     <extension
           point="org.eclipse.ui.intro.configExtension">
@@ -234,12 +235,14 @@
             id="org.nightlabs.jjqb.ui.viewContribution_DataSourceExplorerNavigator"
             targetID="org.eclipse.datatools.connectivity.DataSourceExplorerNavigator">
          <action
-               class="org.nightlabs.jjqb.ui.oda.OpenQueryBrowserAction"
+               class="org.nightlabs.jjqb.ui.oda.OpenQueryEditorAction"
                enablesFor="+"
-               id="org.nightlabs.jjqb.ui.oda.OpenQueryBrowserAction"
-               label="Open query browser"
+               icon="icons/org.nightlabs.jjqb.ui.oda/OpenQueryEditorAction.16x16.png"
+               id="org.nightlabs.jjqb.ui.oda.OpenQueryEditorAction"
+               label="Open JDO/JPA query editor"
                style="push"
-               toolbarPath="additions">
+               toolbarPath="additions"
+               menubarPath="additions">
          </action>
       </viewContribution>
 
@@ -390,9 +393,9 @@
             id="org.nightlabs.jjqb.ui.objectContribution_AbstractDriver"
             objectClass="org.eclipse.datatools.connectivity.IConnectionProfile">
          <action
-               class="org.nightlabs.jjqb.ui.oda.OpenQueryBrowserAction"
+               class="org.nightlabs.jjqb.ui.oda.OpenQueryEditorAction"
                enablesFor="+"
-               id="org.nightlabs.jjqb.ui.oda.OpenQueryBrowserAction"
+               id="org.nightlabs.jjqb.ui.oda.OpenQueryEditorAction"
                label="Open query browser">
          </action>
       </objectContribution>
@@ -497,6 +500,19 @@
           connectionProfileClass="org.nightlabs.jjqb.core.oda.ConnectionProfile"
           id="org.nightlabs.jjqb.ui.transientconnectionproperties.DefaultTransientConnectionPropertiesProvider">
     </provider>
+ </extension>
+ <extension
+       point="org.nightlabs.jjqb.ui.openQueryEditorActionDelegate">
+    <delegate
+          class="org.nightlabs.jjqb.ui.oda.JDOOpenQueryEditorActionDelegate"
+          id="org.nightlabs.jjqb.core.oda.JDODriver"
+          providerID="org.nightlabs.jjqb.core.oda.JDODriver">
+    </delegate>
+    <delegate
+          class="org.nightlabs.jjqb.ui.oda.JPAOpenQueryEditorActionDelegate"
+          id="org.nightlabs.jjqb.core.oda.JPADriver"
+          providerID="org.nightlabs.jjqb.core.oda.JPADriver">
+    </delegate>
  </extension>
 
 </plugin>

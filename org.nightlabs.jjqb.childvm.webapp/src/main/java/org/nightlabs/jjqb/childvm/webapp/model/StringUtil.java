@@ -43,10 +43,13 @@ public class StringUtil
 	{
 		StringBuilder result = new StringBuilder();
 
+		// Two of the lineCommentChars directly following each other are the beginning of a line comment.
+		final char lineCommentChar = '/';
+
 		StreamTokenizer st = new StreamTokenizer(new StringReader(queryText));
 		st.resetSyntax();
 		st.wordChars(0, Character.MAX_VALUE);
-		st.ordinaryChar('-');
+		st.ordinaryChar(lineCommentChar);
 		st.ordinaryChar('\n');
 		st.ordinaryChar('\r');
 		st.ordinaryChar('"');
@@ -61,8 +64,8 @@ public class StringUtil
 			Character deferred = null;
 			while (st.nextToken() != StreamTokenizer.TT_EOF) {
 				if (deferred != null) {
-					if (deferred.charValue() == '-') {
-						if (st.ttype == '-')
+					if (deferred.charValue() == lineCommentChar) {
+						if (st.ttype == lineCommentChar)
 							isInLineComment = true;
 						else
 							result.append(deferred);
@@ -83,7 +86,7 @@ public class StringUtil
 					isInStringDoubleQuote = !isInStringDoubleQuote;
 				else if (st.ttype == '\'' && !isInLineComment)
 					isInStringSingleQuote = !isInStringSingleQuote;
-				else if (st.ttype == '-' && !isInLineComment && !isInStringDoubleQuote && !isInStringSingleQuote)
+				else if (st.ttype == lineCommentChar && !isInLineComment && !isInStringDoubleQuote && !isInStringSingleQuote)
 					defer = true;
 				else if (st.ttype == '\r') {
 					defer = true;
