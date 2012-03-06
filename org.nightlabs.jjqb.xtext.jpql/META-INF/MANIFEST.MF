@@ -34,5 +34,6 @@ Export-Package: org.nightlabs.jjqb.xtext.jpql,
  org.nightlabs.jjqb.xtext.jpql.validation,
  org.nightlabs.jjqb.xtext.jpql.scoping,
  org.nightlabs.jjqb.xtext.jpql.generator,
- org.nightlabs.jjqb.xtext.jpql.formatting
+ org.nightlabs.jjqb.xtext.jpql.formatting,
+ org.nightlabs.jjqb.xtext.jpql.parser.antlr.lexer
 

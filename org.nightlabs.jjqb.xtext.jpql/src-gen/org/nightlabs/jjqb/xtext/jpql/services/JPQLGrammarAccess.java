@@ -998,44 +998,72 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getFromClassVarParserRuleCall_1() { return cFromClassVarParserRuleCall_1; }
 	}
 
+	public class QualifiedIdentifierElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "QualifiedIdentifier");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final RuleCall cIDTerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Keyword cFullStopKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final RuleCall cIDTerminalRuleCall_1_1 = (RuleCall)cGroup_1.eContents().get(1);
+		
+		//QualifiedIdentifier:
+		//	ID ("." ID)*;
+		public ParserRule getRule() { return rule; }
+
+		//ID ("." ID)*
+		public Group getGroup() { return cGroup; }
+
+		//ID
+		public RuleCall getIDTerminalRuleCall_0() { return cIDTerminalRuleCall_0; }
+
+		//("." ID)*
+		public Group getGroup_1() { return cGroup_1; }
+
+		//"."
+		public Keyword getFullStopKeyword_1_0() { return cFullStopKeyword_1_0; }
+
+		//ID
+		public RuleCall getIDTerminalRuleCall_1_1() { return cIDTerminalRuleCall_1_1; }
+	}
+
 	public class FromClassIdElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "FromClassId");
 		private final Assignment cTypeAssignment = (Assignment)rule.eContents().get(1);
-		private final RuleCall cTypeIDTerminalRuleCall_0 = (RuleCall)cTypeAssignment.eContents().get(0);
+		private final RuleCall cTypeQualifiedIdentifierParserRuleCall_0 = (RuleCall)cTypeAssignment.eContents().get(0);
 		
 		//FromClassId returns FromClass:
-		//	type=ID;
+		//	type=QualifiedIdentifier;
 		public ParserRule getRule() { return rule; }
 
-		//type=ID
+		//type=QualifiedIdentifier
 		public Assignment getTypeAssignment() { return cTypeAssignment; }
 
-		//ID
-		public RuleCall getTypeIDTerminalRuleCall_0() { return cTypeIDTerminalRuleCall_0; }
+		//QualifiedIdentifier
+		public RuleCall getTypeQualifiedIdentifierParserRuleCall_0() { return cTypeQualifiedIdentifierParserRuleCall_0; }
 	}
 
 	public class FromClassVarElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "FromClassVar");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cTypeAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cTypeIDTerminalRuleCall_0_0 = (RuleCall)cTypeAssignment_0.eContents().get(0);
+		private final RuleCall cTypeQualifiedIdentifierParserRuleCall_0_0 = (RuleCall)cTypeAssignment_0.eContents().get(0);
 		private final Assignment cVariableAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cVariableVariableDeclarationParserRuleCall_1_0 = (RuleCall)cVariableAssignment_1.eContents().get(0);
 		private final Assignment cJoinsAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cJoinsFromJoinParserRuleCall_2_0 = (RuleCall)cJoinsAssignment_2.eContents().get(0);
 		
 		//FromClassVar returns FromClass:
-		//	type=ID variable=VariableDeclaration joins+=FromJoin*;
+		//	type=QualifiedIdentifier variable=VariableDeclaration joins+=FromJoin*;
 		public ParserRule getRule() { return rule; }
 
-		//type=ID variable=VariableDeclaration joins+=FromJoin*
+		//type=QualifiedIdentifier variable=VariableDeclaration joins+=FromJoin*
 		public Group getGroup() { return cGroup; }
 
-		//type=ID
+		//type=QualifiedIdentifier
 		public Assignment getTypeAssignment_0() { return cTypeAssignment_0; }
 
-		//ID
-		public RuleCall getTypeIDTerminalRuleCall_0_0() { return cTypeIDTerminalRuleCall_0_0; }
+		//QualifiedIdentifier
+		public RuleCall getTypeQualifiedIdentifierParserRuleCall_0_0() { return cTypeQualifiedIdentifierParserRuleCall_0_0; }
 
 		//variable=VariableDeclaration
 		public Assignment getVariableAssignment_1() { return cVariableAssignment_1; }
@@ -2477,6 +2505,7 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 	private FromEntryElements pFromEntry;
 	private VariableDeclarationElements pVariableDeclaration;
 	private FromClassElements pFromClass;
+	private QualifiedIdentifierElements pQualifiedIdentifier;
 	private FromClassIdElements pFromClassId;
 	private FromClassVarElements pFromClassVar;
 	private FromCollectionElements pFromCollection;
@@ -2832,8 +2861,18 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 		return getFromClassAccess().getRule();
 	}
 
+	//QualifiedIdentifier:
+	//	ID ("." ID)*;
+	public QualifiedIdentifierElements getQualifiedIdentifierAccess() {
+		return (pQualifiedIdentifier != null) ? pQualifiedIdentifier : (pQualifiedIdentifier = new QualifiedIdentifierElements());
+	}
+	
+	public ParserRule getQualifiedIdentifierRule() {
+		return getQualifiedIdentifierAccess().getRule();
+	}
+
 	//FromClassId returns FromClass:
-	//	type=ID;
+	//	type=QualifiedIdentifier;
 	public FromClassIdElements getFromClassIdAccess() {
 		return (pFromClassId != null) ? pFromClassId : (pFromClassId = new FromClassIdElements());
 	}
@@ -2843,7 +2882,7 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//FromClassVar returns FromClass:
-	//	type=ID variable=VariableDeclaration joins+=FromJoin*;
+	//	type=QualifiedIdentifier variable=VariableDeclaration joins+=FromJoin*;
 	public FromClassVarElements getFromClassVarAccess() {
 		return (pFromClassVar != null) ? pFromClassVar : (pFromClassVar = new FromClassVarElements());
 	}

@@ -730,7 +730,7 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     type=ID
+	 *     type=QualifiedIdentifier
 	 */
 	protected void sequence_FromClassId(EObject context, FromClass semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -739,7 +739,7 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (type=ID variable=VariableDeclaration joins+=FromJoin*)
+	 *     (type=QualifiedIdentifier variable=VariableDeclaration joins+=FromJoin*)
 	 */
 	protected void sequence_FromClassVar(EObject context, FromClass semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -748,7 +748,7 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (type=ID | (type=ID variable=VariableDeclaration joins+=FromJoin*))
+	 *     (type=QualifiedIdentifier | (type=QualifiedIdentifier variable=VariableDeclaration joins+=FromJoin*))
 	 */
 	protected void sequence_FromClass(EObject context, FromClass semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

@@ -138,12 +138,16 @@ FromClass:
 	FromClassVar
 ;
 
+QualifiedIdentifier:
+	ID ('.'ID)*
+;
+
 FromClassId returns FromClass:
-	type=ID
+	type=QualifiedIdentifier
 ;
 
 FromClassVar returns FromClass:
-	type=ID variable=VariableDeclaration (joins+=FromJoin)*
+	type=QualifiedIdentifier variable=VariableDeclaration (joins+=FromJoin)*
 ;
 
 FromCollection returns FromCollection:	

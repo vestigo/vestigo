@@ -84,6 +84,8 @@ public class JPQLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getFromClauseAccess().getGroup(), "rule__FromClause__Group__0");
 					put(grammarAccess.getFromClauseAccess().getGroup_2(), "rule__FromClause__Group_2__0");
 					put(grammarAccess.getVariableDeclarationAccess().getGroup(), "rule__VariableDeclaration__Group__0");
+					put(grammarAccess.getQualifiedIdentifierAccess().getGroup(), "rule__QualifiedIdentifier__Group__0");
+					put(grammarAccess.getQualifiedIdentifierAccess().getGroup_1(), "rule__QualifiedIdentifier__Group_1__0");
 					put(grammarAccess.getFromClassVarAccess().getGroup(), "rule__FromClassVar__Group__0");
 					put(grammarAccess.getFromCollectionAccess().getGroup(), "rule__FromCollection__Group__0");
 					put(grammarAccess.getJoinAccess().getGroup(), "rule__Join__Group__0");
