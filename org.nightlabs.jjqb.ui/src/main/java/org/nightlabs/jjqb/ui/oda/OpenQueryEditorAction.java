@@ -4,12 +4,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IConfigurationElement;
-import org.eclipse.core.runtime.IExtension;
-import org.eclipse.core.runtime.IExtensionPoint;
-import org.eclipse.core.runtime.IExtensionRegistry;
-import org.eclipse.core.runtime.Platform;
 import org.eclipse.datatools.connectivity.IConnectionProfile;
 import org.eclipse.datatools.connectivity.oda.IDriver;
 import org.eclipse.jface.action.IAction;
@@ -17,6 +11,8 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.IEditorDescriptor;
+import org.eclipse.ui.IEditorRegistry;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IViewActionDelegate;
 import org.eclipse.ui.IViewPart;
@@ -25,6 +21,8 @@ import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchPartSite;
 import org.nightlabs.jjqb.core.oda.DataSourceDriverRegistry;
 import org.nightlabs.jjqb.core.oda.Driver;
+import org.nightlabs.jjqb.ui.editor.NonExistingStorageEditorInput;
+import org.nightlabs.jjqb.ui.editor.QueryEditorInput;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -48,35 +46,35 @@ implements IObjectActionDelegate, IViewActionDelegate
 		return site == null ? null : site.getShell();
 	}
 
-	private OpenQueryEditorActionDelegate getOpenQueryEditorActionDelegate(String providerID) throws CoreException
-	{
-		final IExtensionRegistry registry = Platform.getExtensionRegistry();
-		if (registry == null)
-			throw new IllegalStateException("Platform.getExtensionRegistry() returned null!");
-
-		final String extensionPointId = "org.nightlabs.jjqb.ui.openQueryEditorActionDelegate";
-		final IExtensionPoint extensionPoint = registry.getExtensionPoint(extensionPointId);
-		if (extensionPoint == null)
-			throw new IllegalStateException("Unable to resolve extension-point: " + extensionPointId); //$NON-NLS-1$
-
-		final IExtension[] extensions = extensionPoint.getExtensions();
-		for (final IExtension extension : extensions) {
-			final IConfigurationElement[] elements = extension.getConfigurationElements();
-			for (final IConfigurationElement element : elements) {
-				String extProviderID = element.getAttribute("providerID");
-				if (!providerID.equals(extProviderID))
-					continue;
-
-				Object object = element.createExecutableExtension("class");
-				if (!(object instanceof OpenQueryEditorActionDelegate))
-					throw new IllegalStateException("executableExtension is not an instance of OpenQueryEditorActionDelegate! Contributing plugin: " + element.getContributor().getName());
-
-				return (OpenQueryEditorActionDelegate) object;
-			}
-		}
-
-		throw new IllegalStateException("There is no extension for extensionPoint='" + extensionPointId + "' and providerID='" + providerID + "'!");
-	}
+//	private OpenQueryEditorActionDelegate getOpenQueryEditorActionDelegate(String providerID) throws CoreException
+//	{
+//		final IExtensionRegistry registry = Platform.getExtensionRegistry();
+//		if (registry == null)
+//			throw new IllegalStateException("Platform.getExtensionRegistry() returned null!");
+//
+//		final String extensionPointId = "org.nightlabs.jjqb.ui.openQueryEditorActionDelegate";
+//		final IExtensionPoint extensionPoint = registry.getExtensionPoint(extensionPointId);
+//		if (extensionPoint == null)
+//			throw new IllegalStateException("Unable to resolve extension-point: " + extensionPointId); //$NON-NLS-1$
+//
+//		final IExtension[] extensions = extensionPoint.getExtensions();
+//		for (final IExtension extension : extensions) {
+//			final IConfigurationElement[] elements = extension.getConfigurationElements();
+//			for (final IConfigurationElement element : elements) {
+//				String extProviderID = element.getAttribute("providerID");
+//				if (!providerID.equals(extProviderID))
+//					continue;
+//
+//				Object object = element.createExecutableExtension("class");
+//				if (!(object instanceof OpenQueryEditorActionDelegate))
+//					throw new IllegalStateException("executableExtension is not an instance of OpenQueryEditorActionDelegate! Contributing plugin: " + element.getContributor().getName());
+//
+//				return (OpenQueryEditorActionDelegate) object;
+//			}
+//		}
+//
+//		throw new IllegalStateException("There is no extension for extensionPoint='" + extensionPointId + "' and providerID='" + providerID + "'!");
+//	}
 
 	@Override
 	public void run(IAction action) {
@@ -87,12 +85,29 @@ implements IObjectActionDelegate, IViewActionDelegate
 		}
 		else {
 			IWorkbenchPage workbenchPage = getSite().getWorkbenchWindow().getActivePage();
+			IEditorRegistry editorRegistry= workbenchPage.getWorkbenchWindow().getWorkbench().getEditorRegistry();
+
 			for (IConnectionProfile connectionProfile : selectedConnectionProfiles) {
 				try {
-					OpenQueryEditorActionDelegate delegate = getOpenQueryEditorActionDelegate(connectionProfile.getProviderId());
-					delegate.setConnectionProfile(connectionProfile);
-					delegate.setWorkbenchPage(workbenchPage);
-					delegate.openQueryEditor();
+					String providerID = connectionProfile.getProviderId();
+					String fileExtension = QueryFileExtensionRegistry.getFileExtension(providerID);
+					IEditorDescriptor descriptor = editorRegistry.getDefaultEditor("dummy." + fileExtension);
+					if (descriptor == null) {
+						throw new IllegalStateException("There is no editor registered for the file-extension \"" + fileExtension + "\"!");
+//						editorID = EditorsUI.DEFAULT_TEXT_EDITOR_ID;
+					}
+					String editorID = descriptor.getId();
+
+					workbenchPage.openEditor(
+//							new NonExistingStorageEditorInput("query", fileExtension),
+							new QueryEditorInput(connectionProfile, new NonExistingStorageEditorInput("query", fileExtension)),
+							editorID
+					);
+
+//					OpenQueryEditorActionDelegate delegate = getOpenQueryEditorActionDelegate(connectionProfile.getProviderId());
+//					delegate.setConnectionProfile(connectionProfile);
+//					delegate.setWorkbenchPage(workbenchPage);
+//					delegate.openQueryEditor();
 				} catch (Exception e) {
 					logger.error("run: " + e, e);
 					MessageDialog.openError(getShell(), "Opening editor failed", "Could not open the editor: " + e);

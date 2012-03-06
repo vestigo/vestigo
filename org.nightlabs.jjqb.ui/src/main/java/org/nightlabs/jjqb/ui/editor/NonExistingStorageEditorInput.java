@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package org.nightlabs.jjqb.ui.editor;
 
@@ -23,41 +23,42 @@ import org.nightlabs.util.IOUtil;
 /**
  * @author Alexander Bieber <!-- bieber [at] nightlabs [DOT] de -->
  */
-public class NonExistingStorageEditorInput extends NonExistingFileEditorInput implements IStorageEditorInput {
-
+public class NonExistingStorageEditorInput
+extends NonExistingFileEditorInput
+implements IStorageEditorInput
+{
 	public class NonExistingStorage extends PlatformObject implements IEncodedStorage {
-		
+
 		@Override
 		public boolean isReadOnly() {
 			return false;
 		}
-		
+
 		@Override
 		public String getName() {
 			return NonExistingStorageEditorInput.this.getName();
 		}
-		
+
 		@Override
 		public IPath getFullPath() {
 			return NonExistingStorageEditorInput.this.getPath(NonExistingStorageEditorInput.this);
 		}
-		
+
 		@Override
 		public InputStream getContents() throws CoreException {
 			return fileStore.openInputStream(EFS.NONE, new NullProgressMonitor());
 		}
-		
+
 		@Override
 		public String getCharset() throws CoreException {
 			return IOUtil.CHARSET_NAME_UTF_8;
 		}
 	}
-	
+
 	private IFileStore fileStore;
 	private NonExistingStorage storage;
 	private String fileExtension;
-	
-	
+
 	protected NonExistingStorageEditorInput(IFileStore fileStore, String namePrefix, String fileExtension) {
 		super(fileStore, namePrefix);
 		this.fileStore = fileStore;
@@ -71,7 +72,7 @@ public class NonExistingStorageEditorInput extends NonExistingFileEditorInput im
 	public NonExistingStorageEditorInput(String namePrefix, String extension) {
 		this(createFileStore(), namePrefix, extension);
 	}
-	
+
 	private static NullFileStore createFileStore() {
 		return new NullFileStore(new Path("")) {
 			@Override
@@ -80,7 +81,7 @@ public class NonExistingStorageEditorInput extends NonExistingFileEditorInput im
 			}
 		};
 	}
-	
+
 	@Override
 	public String getName() {
 		return super.getName() + "." + fileExtension;
@@ -90,7 +91,7 @@ public class NonExistingStorageEditorInput extends NonExistingFileEditorInput im
 	public IStorage getStorage() throws CoreException {
 		return storage;
 	}
-	
+
 	@Override
 	public boolean equals(Object o) {
 		return this == o;

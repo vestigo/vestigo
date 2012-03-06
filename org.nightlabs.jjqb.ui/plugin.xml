@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
-   <extension-point id="openQueryEditorActionDelegate" name="openQueryEditorActionDelegate" schema="schema/openQueryEditorActionDelegate.exsd"/>
+   <extension-point id="queryFileExtension" name="queryFileExtension" schema="schema/queryFileExtension.exsd"/>
 
     <extension
           point="org.eclipse.ui.intro.configExtension">
@@ -390,13 +390,31 @@
          point="org.eclipse.ui.popupMenus">
       <objectContribution
             adaptable="false"
-            id="org.nightlabs.jjqb.ui.objectContribution_AbstractDriver"
+            id="org.nightlabs.jjqb.ui.objectContribution_ConnectionProfile"
             objectClass="org.eclipse.datatools.connectivity.IConnectionProfile">
          <action
                class="org.nightlabs.jjqb.ui.oda.OpenQueryEditorAction"
                enablesFor="+"
+               icon="icons/org.nightlabs.jjqb.ui.oda/OpenQueryEditorAction.16x16.png"
                id="org.nightlabs.jjqb.ui.oda.OpenQueryEditorAction"
-               label="Open query browser">
+               label="Open JDO/JPA query editor">
+         </action>
+      </objectContribution>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="false"
+            id="org.nightlabs.jjqb.ui.objectContribution_IResource"
+            objectClass="org.eclipse.core.resources.IResource">
+         <action
+               class="org.nightlabs.jjqb.ui.newwizard.NewQueryAction"
+               enablesFor="+"
+               icon="icons/org.nightlabs.jjqb.ui.newwizard/NewQueryWizard.16x16.png"
+               id="org.nightlabs.jjqb.ui.newwizard.NewQueryAction"
+               label="JDO/JPA query file"
+               menubarPath="common.new.menu/all-uncategorized">
          </action>
       </objectContribution>
    </extension>
@@ -502,17 +520,43 @@
     </provider>
  </extension>
  <extension
-       point="org.nightlabs.jjqb.ui.openQueryEditorActionDelegate">
-    <delegate
-          class="org.nightlabs.jjqb.ui.oda.JDOOpenQueryEditorActionDelegate"
-          id="org.nightlabs.jjqb.core.oda.JDODriver"
+       point="org.eclipse.ui.newWizards">
+    <category
+          id="org.nightlabs.jjqb.ui"
+          name="JDO/JPA Query Browser">
+    </category>
+    <wizard
+          category="org.nightlabs.jjqb.ui"
+          class="org.nightlabs.jjqb.ui.newwizard.NewProjectWizard"
+          descriptionImage="icons/org.nightlabs.jjqb.ui.newwizard/NewProjectWizard.75x70.png"
+          finalPerspective="org.nightlabs.jjqb.ui.JJQBPerspective"
+          icon="icons/org.nightlabs.jjqb.ui.newwizard/NewProjectWizard.16x16.png"
+          id="org.nightlabs.jjqb.ui.newwizard.NewProjectWizard"
+          name="JJQB project"
+          project="true">
+    </wizard>
+    <wizard
+          category="org.nightlabs.jjqb.ui"
+          class="org.nightlabs.jjqb.ui.newwizard.NewQueryWizard"
+          descriptionImage="icons/org.nightlabs.jjqb.ui.newwizard/NewQueryWizard.75x70.png"
+          finalPerspective="org.nightlabs.jjqb.ui.JJQBPerspective"
+          icon="icons/org.nightlabs.jjqb.ui.newwizard/NewQueryWizard.16x16.png"
+          id="org.nightlabs.jjqb.ui.newwizard.NewQueryWizard"
+          name="JJQB query">
+    </wizard>
+    <primaryWizard id="org.nightlabs.jjqb.ui.newwizard.NewProjectWizard" />
+    <primaryWizard id="org.nightlabs.jjqb.ui.newwizard.NewQueryWizard" />
+ </extension>
+ <extension
+       point="org.nightlabs.jjqb.ui.queryFileExtension">
+    <queryFileExtension
+          fileExtension="jdoql"
           providerID="org.nightlabs.jjqb.core.oda.JDODriver">
-    </delegate>
-    <delegate
-          class="org.nightlabs.jjqb.ui.oda.JPAOpenQueryEditorActionDelegate"
-          id="org.nightlabs.jjqb.core.oda.JPADriver"
+    </queryFileExtension>
+    <queryFileExtension
+          fileExtension="jpql"
           providerID="org.nightlabs.jjqb.core.oda.JPADriver">
-    </delegate>
+    </queryFileExtension>
  </extension>
 
 </plugin>

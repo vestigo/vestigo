@@ -224,17 +224,15 @@
       </provider>
    </extension>
    <extension
-         point="org.nightlabs.jjqb.ui.openQueryEditorActionDelegate">
-      <delegate
-            class="org.nightlabs.jjqb.ui.oda.JDOOpenQueryEditorActionDelegate"
-            id="org.nightlabs.jjqb.cumulus4j.core.oda.JDOCumulus4jDriver"
+         point="org.nightlabs.jjqb.ui.queryFileExtension">
+      <queryFileExtension
+            fileExtension="jdoql"
             providerID="org.nightlabs.jjqb.cumulus4j.core.oda.JDOCumulus4jDriver">
-      </delegate>
-      <delegate
-            class="org.nightlabs.jjqb.ui.oda.JPAOpenQueryEditorActionDelegate"
-            id="org.nightlabs.jjqb.cumulus4j.core.oda.JPACumulus4jDriver"
+      </queryFileExtension>
+      <queryFileExtension
+            fileExtension="jpql"
             providerID="org.nightlabs.jjqb.cumulus4j.core.oda.JPACumulus4jDriver">
-      </delegate>
+      </queryFileExtension>
    </extension>
 
 

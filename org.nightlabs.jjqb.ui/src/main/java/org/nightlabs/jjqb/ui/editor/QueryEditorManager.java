@@ -79,7 +79,7 @@ public abstract class QueryEditorManager
 
 	public static final String connectionFactoryID = "org.eclipse.datatools.connectivity.oda.IConnection";
 
-	private static final String PROPERTY_LAST_CONNECTION_PROFILE_INSTANCE_ID = "lastConnectionProfile.instanceID";
+	public static final String PROPERTY_LAST_CONNECTION_PROFILE_INSTANCE_ID = "lastConnectionProfile.instanceID";
 	private static final String QUERY_TEXT_PROPERTIES_BEGIN_MARKER = "//------PROPERTIES_BEGIN------";
 	private static final String QUERY_TEXT_PROPERTIES_END_MARKER = "//------PROPERTIES_END------";
 	private static final String QUERY_TEXT_LINE_COMMENT_MARKER = "//";
@@ -174,7 +174,7 @@ public abstract class QueryEditorManager
 		return queryEditor;
 	}
 
-	private boolean isConnectionProfileExisting(IConnectionProfile connectionProfile)
+	private boolean isConnectionProfileExisting(Collection<IConnectionProfile> connectionProfiles, IConnectionProfile connectionProfile)
 	{
 		for (IConnectionProfile cp : connectionProfiles) {
 			if (cp.equals(connectionProfile))
@@ -214,7 +214,7 @@ public abstract class QueryEditorManager
 				return o1.getName().compareTo(o2.getName());
 			}
 		});
-		if (!isConnectionProfileExisting(selection)) // maybe already deleted => check, if still existing.
+		if (!isConnectionProfileExisting(connectionProfiles, selection)) // maybe already deleted => check, if still existing.
 			selection = null;
 
 		IConnectionProfile globalSelection = null;
@@ -223,8 +223,8 @@ public abstract class QueryEditorManager
 			lastConnProfInstanceID = getProperties(PropertiesType.editor_preferenceStore).getProperty(
 					PROPERTY_LAST_CONNECTION_PROFILE_INSTANCE_ID
 			);
-			lastGlobalConnProfInstanceID = getProperties(PropertiesType.global).getProperty(
-					getImplementationSpecificGlobalPropertyKey(PROPERTY_LAST_CONNECTION_PROFILE_INSTANCE_ID)
+			lastGlobalConnProfInstanceID = getProperties(PropertiesType.editorType).getProperty(
+					PROPERTY_LAST_CONNECTION_PROFILE_INSTANCE_ID
 			);
 		}
 
@@ -268,7 +268,7 @@ public abstract class QueryEditorManager
 				selection = connectionProfiles.get(0);
 				logger.info(
 						"populateConnectionProfiles: queryID={}:" +
-						" No global selection either! Falling back to first existing profile:" +
+						" No editorType selection either! Falling back to first existing profile:" +
 						" selection.instanceID={} selection.name={}",
 						new Object[] {
 								(selection == null ? null : selection.getInstanceID()),
@@ -280,7 +280,7 @@ public abstract class QueryEditorManager
 			else {
 				logger.info(
 						"populateConnectionProfiles: queryID={}:" +
-						" No global selection either! But cannot fall back to first existing profile, because there are no profiles.",
+						" No editorType selection either! But cannot fall back to first existing profile, because there are no profiles.",
 						queryEditor.getQueryID()
 				);
 			}
@@ -587,11 +587,15 @@ public abstract class QueryEditorManager
 
 			if (oldValue == null || !oldValue.equals(connectionProfileInstanceID)) {
 				logger.info(
-						"onSelectConnectionProfile: queryID={}: Setting global connection profile: connectionProfileInstanceID={}",
+						"onSelectConnectionProfile: queryID={}: Setting editorType connection profile: connectionProfileInstanceID={}",
 						queryEditor.getQueryID(), connectionProfileInstanceID
 				);
+				getProperties(PropertiesType.editorType).setProperty(
+						PROPERTY_LAST_CONNECTION_PROFILE_INSTANCE_ID,
+						connectionProfileInstanceID
+				);
 				getProperties(PropertiesType.global).setProperty(
-						getImplementationSpecificGlobalPropertyKey(PROPERTY_LAST_CONNECTION_PROFILE_INSTANCE_ID),
+						PROPERTY_LAST_CONNECTION_PROFILE_INSTANCE_ID,
 						connectionProfileInstanceID
 				);
 			}
@@ -602,10 +606,10 @@ public abstract class QueryEditorManager
 		);
 	}
 
-	protected String getImplementationSpecificGlobalPropertyKey(String propertyKey)
-	{
-		return this.getClass().getName() + '.' + propertyKey;
-	}
+//	protected String getImplementationSpecificGlobalPropertyKey(String propertyKey)
+//	{
+//		return this.getClass().getName() + '.' + propertyKey;
+//	}
 
 	protected abstract boolean isConnectionProfileCompatible(IConnectionProfile connectionProfile);
 //	{
@@ -831,6 +835,11 @@ public abstract class QueryEditorManager
 		return resultSetTableModel;
 	}
 
+	public static PropertiesWithChangeSupport getGlobalProperties()
+	{
+		return JJQBUIPlugin.getDefault().getProperties(QueryEditorManager.class.getName());
+	}
+
 	public PropertiesWithChangeSupport getProperties(PropertiesType propertiesType)
 	{
 		assertUIThread();
@@ -840,6 +849,11 @@ public abstract class QueryEditorManager
 
 		switch (propertiesType) {
 			case global:
+			{
+				properties = getGlobalProperties();
+				break;
+			}
+			case editorType:
 			{
 				properties = JJQBUIPlugin.getDefault().getProperties(this.getClass().getName() + '.' + propertiesType);
 				break;

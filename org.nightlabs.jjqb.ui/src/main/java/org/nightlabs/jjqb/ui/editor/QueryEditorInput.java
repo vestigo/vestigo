@@ -28,7 +28,7 @@ public class QueryEditorInput implements IEditorInput, IStorageEditorInput
 			throw new IllegalArgumentException("connectionProfile == null");
 
 		if (storageEditorInput == null)
-			throw new IllegalArgumentException("fileEditorInput == null");
+			throw new IllegalArgumentException("storageEditorInput == null");
 
 		this.connectionProfile = connectionProfile;
 		this.storageEditorInput = storageEditorInput;
@@ -49,19 +49,20 @@ public class QueryEditorInput implements IEditorInput, IStorageEditorInput
 	@Override
 	public Object getAdapter(@SuppressWarnings("rawtypes") Class adapter)
 	{
-		if (IStorageEditorInput.class.isAssignableFrom(adapter))
-			return storageEditorInput;
-
-		if (IPathEditorInput.class.isAssignableFrom(adapter))
-			return storageEditorInput;
-
-		if (IURIEditorInput.class.isAssignableFrom(adapter))
-			return storageEditorInput;
-
-		if (IConnectionProfile.class.isAssignableFrom(adapter))
-			return connectionProfile;
-
-		return null;
+//		if (IStorageEditorInput.class.isAssignableFrom(adapter))
+//			return storageEditorInput;
+//
+//		if (IPathEditorInput.class.isAssignableFrom(adapter))
+//			return storageEditorInput;
+//
+//		if (IURIEditorInput.class.isAssignableFrom(adapter))
+//			return storageEditorInput;
+//
+//		if (IConnectionProfile.class.isAssignableFrom(adapter))
+//			return connectionProfile;
+//
+//		return null;
+		return storageEditorInput.getAdapter(adapter);
 	}
 
 	@Override

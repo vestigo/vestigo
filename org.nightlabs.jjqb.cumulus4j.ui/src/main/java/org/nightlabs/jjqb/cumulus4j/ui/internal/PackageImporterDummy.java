@@ -12,7 +12,4 @@ public class PackageImporterDummy {
 	org.eclipse.datatools.connectivity.oda.profile.OdaConnectionFactory odaConnectionFactory;
 	org.eclipse.datatools.connectivity.oda.design.ui.wizards.NewDataSourceWizard newDataSourceWizard;
 
-	org.nightlabs.jjqb.ui.oda.JDOOpenQueryEditorActionDelegate jdoOpenQueryEditorActionDelegate;
-	org.nightlabs.jjqb.ui.oda.JPAOpenQueryEditorActionDelegate jpaOpenQueryEditorActionDelegate;
-
 }

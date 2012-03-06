@@ -179,6 +179,13 @@ implements QueryEditor
 
 	@Override
 	public void doSaveAs() {
+		// TODO when the file has been renamed, we have to move our properties (from the preference store).
+		// Maybe we can use some nice eclipse refactoring listeners for this purpose? Probably cleaner than doing
+		// sth. here. However, we probably have to do sth. here anyway because the method
+		// org.nightlabs.jjqb.ui.editor.QueryEditor.Helper.getQueryIDFromEditorInput() returns a unique but not-to-filesystem-linked
+		// identifier for editors having a NonExistingStorageEditorInput (it uses the memory-address). Hence we probably cannot do
+		// anything in a refactoring-listener and probably we have to do both (refactoring-listener AND sth. here).
+		// Marco :-)
 		super.doSaveAs();
 		getQueryBrowserManager().editorInputChanged();
 		registerDocumentContext();

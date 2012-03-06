@@ -42,8 +42,11 @@ public interface QueryEditor
 		{
 			IEditorInput editorInput = queryEditor.getEditorInput();
 
-			if (!(editorInput instanceof IPathEditorInput))
-				editorInput = (IEditorInput) editorInput.getAdapter(IPathEditorInput.class);
+			if (!(editorInput instanceof IPathEditorInput)) {
+				IEditorInput newInput = (IEditorInput) editorInput.getAdapter(IPathEditorInput.class);
+				if (newInput != null)
+					editorInput = newInput;
+			}
 
 			if (editorInput instanceof IPathEditorInput) {
 				IPathEditorInput input = (IPathEditorInput) editorInput;
@@ -56,8 +59,14 @@ public interface QueryEditor
 				}
 			}
 
-			if (editorInput == null)
-				return "NEW"; // TODO make sure this is unique!
+			if (!(editorInput instanceof NonExistingStorageEditorInput)) {
+				IEditorInput newInput = (IEditorInput) editorInput.getAdapter(NonExistingStorageEditorInput.class);
+				if (newInput != null)
+					editorInput = newInput;
+			}
+
+			if (editorInput instanceof NonExistingStorageEditorInput)
+				return "new." + Integer.toHexString(System.identityHashCode(editorInput));
 
 			throw new IllegalArgumentException("Unknown implementation of IEditorInput: " + editorInput);
 		}
