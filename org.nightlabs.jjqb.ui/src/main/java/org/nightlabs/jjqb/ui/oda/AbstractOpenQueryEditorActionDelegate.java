@@ -64,4 +64,30 @@ implements OpenQueryEditorActionDelegate
 	protected abstract String getEditorID();
 
 	protected abstract String getFileExtension();
+
+	// BEGIN trying with code from org.eclipse.ui.internal.editors.text.UntitledTextFileWizard
+	// Does not work :-( Same bug:
+	//
+	// https://bugs.eclipse.org/bugs/show_bug.cgi?id=363986
+	// https://bugs.eclipse.org/bugs/show_bug.cgi?id=289212
+	//
+	// Marco :-)
+//	@Override
+//	public void openQueryEditor() throws CoreException {
+//		IFileStore fileStore= queryFileStore();
+//		IEditorInput input= createEditorInput(fileStore);
+//		String editorID = getEditorID();
+//		workbenchPage.openEditor(input, editorID);
+//	}
+//
+//	private IFileStore queryFileStore() {
+//		IPath stateLocation= EditorsPlugin.getDefault().getStateLocation();
+//		IPath path= stateLocation.append("/_" + new Object().hashCode()); //$NON-NLS-1$
+//		return EFS.getLocalFileSystem().getStore(path);
+//	}
+//
+//	private IEditorInput createEditorInput(IFileStore fileStore) {
+//		return new NonExistingFileEditorInput(fileStore, "query-");
+//	}
+	// END trying with code from org.eclipse.ui.internal.editors.text.UntitledTextFileWizard
 }
