@@ -24,11 +24,27 @@
 					<groupId>org.nightlabs.jjqb</groupId>
 					<artifactId>org.nightlabs.jjqb.childvm.webapp</artifactId>
 				</exclusion>
-				<exclusion>
-					<groupId>org.eclipse.update</groupId>
-					<artifactId>org.eclipse.update.configurator</artifactId>
-				</exclusion>
 			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.nightlabs.jjqb</groupId>
+			<artifactId>org.nightlabs.jjqb.xtext.jdoql</artifactId>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.nightlabs.jjqb</groupId>
+			<artifactId>org.nightlabs.jjqb.xtext.jdoql.ui</artifactId>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.nightlabs.jjqb</groupId>
+			<artifactId>org.nightlabs.jjqb.xtext.jpql</artifactId>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.nightlabs.jjqb</groupId>
+			<artifactId>org.nightlabs.jjqb.xtext.jpql.ui</artifactId>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>javax.jdo</groupId>
