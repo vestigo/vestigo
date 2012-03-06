@@ -24,8 +24,7 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchPartSite;
 import org.nightlabs.jjqb.core.oda.DataSourceDriverRegistry;
-import org.nightlabs.jjqb.core.oda.JDODriver;
-import org.nightlabs.jjqb.core.oda.JPADriver;
+import org.nightlabs.jjqb.core.oda.Driver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -114,11 +113,8 @@ implements IObjectActionDelegate, IViewActionDelegate
 				if (element instanceof IConnectionProfile) {
 					IConnectionProfile connectionProfile = (IConnectionProfile) element;
 					String providerId = connectionProfile.getProviderId();
-//					if (JDODriver.PROVIDER_ID.equals(providerId) || JPADriver.PROVIDER_ID.equals(providerId))
-//						selectedConnectionProfiles.add(connectionProfile);
-
 					Class<? extends IDriver> driverClass = DataSourceDriverRegistry.sharedInstance().getDriverClassForProviderID(providerId);
-					if (driverClass != null && (JDODriver.class.isAssignableFrom(driverClass) || JPADriver.class.isAssignableFrom(driverClass)))
+					if (driverClass != null && Driver.class.isAssignableFrom(driverClass))
 						selectedConnectionProfiles.add(connectionProfile);
 				}
 			}
