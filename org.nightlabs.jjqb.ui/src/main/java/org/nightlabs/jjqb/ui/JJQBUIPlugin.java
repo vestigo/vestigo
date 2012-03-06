@@ -49,10 +49,6 @@ public class JJQBUIPlugin extends AbstractUIPlugin
 	public void stop(BundleContext context) throws Exception {
 		plugin = null;
 		super.stop(context);
-
-		IProject tempProject = getTempProject();
-		if (tempProject != null)
-			tempProject.delete(true, true, new NullProgressMonitor());
 	}
 
 	/**
@@ -160,37 +156,5 @@ public class JJQBUIPlugin extends AbstractUIPlugin
 
 		image = JJQBUIPlugin.getDefault().getImageRegistry().get(imageKey);
 		return image;
-	}
-
-	public IProject getTempProject()
-	{
-		IWorkspace ws = ResourcesPlugin.getWorkspace();
-		IProject project = ws.getRoot().getProject("JJQB temporary files");
-		return project;
-	}
-
-	public IProject createTempProject() throws CoreException
-	{
-		IProject project = getTempProject();
-
-		if (!project.exists())
-	    project.create(new NullProgressMonitor());
-
-		if (!project.isOpen())
-	    project.open(new NullProgressMonitor());
-
-		if (project.getNature(XtextProjectHelper.NATURE_ID) == null) {
-			IProjectDescription desc = project.getDescription();
-		  desc.setNatureIds(new String[] { XtextProjectHelper.NATURE_ID } );
-		  project.setDescription(desc, new NullProgressMonitor());
-//			for (IProjectNatureDescriptor natureDescriptor : ws.getNatureDescriptors()) {
-//				if (!natureID.equals(natureDescriptor.getNatureId()))
-//					continue;
-//
-//				natureDescriptor
-//			}
-		}
-
-		return project;
 	}
 }

@@ -1,6 +1,5 @@
 package org.nightlabs.jjqb.ui.editor;
 
-import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IStorage;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.datatools.connectivity.IConnectionProfile;
@@ -9,6 +8,7 @@ import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.IPathEditorInput;
 import org.eclipse.ui.IPersistableElement;
+import org.eclipse.ui.IStorageEditorInput;
 import org.eclipse.ui.IURIEditorInput;
 
 /**
@@ -17,21 +17,21 @@ import org.eclipse.ui.IURIEditorInput;
  *
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
  */
-public class QueryEditorInput implements IEditorInput, IFileEditorInput
+public class QueryEditorInput implements IEditorInput, IStorageEditorInput
 {
 	private IConnectionProfile connectionProfile;
-	private IFileEditorInput fileEditorInput;
+	private IStorageEditorInput storageEditorInput;
 
-	public QueryEditorInput(IConnectionProfile connectionProfile, IFileEditorInput fileEditorInput)
+	public QueryEditorInput(IConnectionProfile connectionProfile, IStorageEditorInput storageEditorInput)
 	{
 		if (connectionProfile == null)
 			throw new IllegalArgumentException("connectionProfile == null");
 
-		if (fileEditorInput == null)
+		if (storageEditorInput == null)
 			throw new IllegalArgumentException("fileEditorInput == null");
 
 		this.connectionProfile = connectionProfile;
-		this.fileEditorInput = fileEditorInput;
+		this.storageEditorInput = storageEditorInput;
 	}
 
 	/**
@@ -49,14 +49,14 @@ public class QueryEditorInput implements IEditorInput, IFileEditorInput
 	@Override
 	public Object getAdapter(@SuppressWarnings("rawtypes") Class adapter)
 	{
-		if (IFileEditorInput.class.isAssignableFrom(adapter))
-			return fileEditorInput;
+		if (IStorageEditorInput.class.isAssignableFrom(adapter))
+			return storageEditorInput;
 
 		if (IPathEditorInput.class.isAssignableFrom(adapter))
-			return fileEditorInput;
+			return storageEditorInput;
 
 		if (IURIEditorInput.class.isAssignableFrom(adapter))
-			return fileEditorInput;
+			return storageEditorInput;
 
 		if (IConnectionProfile.class.isAssignableFrom(adapter))
 			return connectionProfile;
@@ -66,27 +66,27 @@ public class QueryEditorInput implements IEditorInput, IFileEditorInput
 
 	@Override
 	public boolean exists() {
-		return fileEditorInput.exists();
+		return storageEditorInput.exists();
 	}
 
 	@Override
 	public ImageDescriptor getImageDescriptor() {
-		return fileEditorInput.getImageDescriptor();
+		return storageEditorInput.getImageDescriptor();
 	}
 
 	@Override
 	public String getName() {
-		return fileEditorInput.getName();
+		return storageEditorInput.getName();
 	}
 
 	@Override
 	public IPersistableElement getPersistable() {
-		return fileEditorInput.getPersistable();
+		return storageEditorInput.getPersistable();
 	}
 
 	@Override
 	public String getToolTipText() {
-		return fileEditorInput.getToolTipText();
+		return storageEditorInput.getToolTipText();
 	}
 
 	public IConnectionProfile getConnectionProfile() {
@@ -95,16 +95,11 @@ public class QueryEditorInput implements IEditorInput, IFileEditorInput
 
 	@Override
 	public IStorage getStorage() throws CoreException {
-		return fileEditorInput.getStorage();
-	}
-
-	@Override
-	public IFile getFile() {
-		return fileEditorInput.getFile();
+		return storageEditorInput.getStorage();
 	}
 
 	@Override
 	public String toString() {
-		return this.getClass().getSimpleName() + '[' + connectionProfile + ',' + getFile().getFullPath() + ']';
+		return this.getClass().getSimpleName() + '[' + connectionProfile + ',' + storageEditorInput + ']';
 	}
 }
