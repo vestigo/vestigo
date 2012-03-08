@@ -466,15 +466,20 @@ public abstract class QueryEditorManager
 					@Override
 					protected IStatus run(IProgressMonitor monitor) {
 						logger.info("getJJQBConnectionProfileAskingUserIfNecessary.openJob.run: odaConnectionProfile.name={} odaConnectionProfile.idHashCode={}", odaConnectionProfile.getName(), Integer.toHexString(System.identityHashCode(odaConnectionProfile)));
-						synchronized(odaConnectionProfile) {
-							IManagedConnection managedConnection = odaConnectionProfile.getManagedConnection(QueryEditorManager.connectionFactoryID);
-							if (managedConnection == null)
-								throw new IllegalStateException("odaConnectionProfile.getManagedConnection(QueryEditorManager.connectionFactoryID) returned null!");
+						try {
+							synchronized(odaConnectionProfile) {
+								IManagedConnection managedConnection = odaConnectionProfile.getManagedConnection(QueryEditorManager.connectionFactoryID);
+								if (managedConnection == null)
+									throw new IllegalStateException("odaConnectionProfile.getManagedConnection(QueryEditorManager.connectionFactoryID) returned null!");
 
-							if (managedConnection.getConnection() == null || !managedConnection.isConnected())
-								statusCarrier.status = odaConnectionProfile.connectWithoutJob();
-							else
-								statusCarrier.status = Status.OK_STATUS;
+								if (managedConnection.getConnection() == null || !managedConnection.isConnected())
+									statusCarrier.status = odaConnectionProfile.connectWithoutJob();
+								else
+									statusCarrier.status = Status.OK_STATUS;
+							}
+						} finally {
+							if (statusCarrier.status == null)
+								statusCarrier.status = Status.CANCEL_STATUS;
 						}
 						return statusCarrier.status;
 					}
