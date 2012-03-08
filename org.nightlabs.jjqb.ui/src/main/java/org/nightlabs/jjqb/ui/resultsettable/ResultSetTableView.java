@@ -1,6 +1,5 @@
 package org.nightlabs.jjqb.ui.resultsettable;
 
-import java.util.Collection;
 import java.util.Set;
 
 import org.eclipse.swt.SWT;
@@ -105,8 +104,8 @@ public class ResultSetTableView extends ViewPart implements LabelTextOptionsCont
 
 		this.queryEditor = queryEditor;
 		// TODO this must be refactored when we support multiple resultSets per query browser!
-		Collection<ResultSetTableModel> resultSetTableModels = queryEditor.getQueryEditorManager().getResultSetTableModels();
-		setInput(resultSetTableModels.isEmpty() ? null : resultSetTableModels.iterator().next());
+		ResultSetTableModel resultSetTableModel = queryEditor.getQueryEditorManager().getResultSetTableModel();
+		setInput(resultSetTableModel);
 		queryEditor.getQueryEditorManager().addExecuteQueryListener(executeQueryListener);
 	}
 
