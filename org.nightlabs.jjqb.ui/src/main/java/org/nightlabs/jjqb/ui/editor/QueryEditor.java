@@ -106,7 +106,7 @@ public interface QueryEditor
 	void addDisposeListener(DisposeListener disposeListener);
 	void removeDisposeListener(DisposeListener disposeListener);
 
-	QueryEditorManager getQueryBrowserManager();
+	QueryEditorManager getQueryEditorManager();
 
 	boolean isDirty();
 

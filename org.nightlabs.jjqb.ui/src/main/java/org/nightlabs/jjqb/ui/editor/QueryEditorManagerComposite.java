@@ -15,7 +15,6 @@ import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
-import org.nightlabs.jjqb.ui.resultsettable.ResultSetTableModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -31,10 +30,7 @@ public class QueryEditorManagerComposite extends Composite
 
 	private Combo connectionProfileCombo;
 	private Button executeQueryButton;
-	private Button loadNextBunchButton;
-
-//	private ExpandableComposite queryParameterExpandableComposite;
-//	private QueryParameterManagerComposite queryParameterManagerComposite;
+//	private Button loadNextBunchButton;
 
 	public QueryEditorManagerComposite(Composite parent, int style) {
 		super(parent, style);
@@ -43,16 +39,13 @@ public class QueryEditorManagerComposite extends Composite
 		this.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 		GridLayout layout = new GridLayout();
 		this.setLayout(layout);
-		layout.numColumns = 4;
+		layout.numColumns = 3;
 
 		// first row
 		new Label(this, SWT.NONE).setText("Connection: ");
 		createConnectionProfileCombo();
 		createExecuteQueryButton();
-		createLoadNextButton();
-
-		// second row
-//		createQueryParameterComposite();
+//		createLoadNextButton();
 	}
 
 	public void setQueryBrowserManager(QueryEditorManager queryEditorManager)
@@ -60,8 +53,6 @@ public class QueryEditorManagerComposite extends Composite
 		assertUIThread();
 		if (this.queryEditorManager == queryEditorManager)
 			return;
-
-//		queryParameterManagerComposite.setQueryParameterManager(null);
 
 		if (this.queryEditorManager != null) {
 			this.queryEditorManager.removePropertyChangeListener(
@@ -84,8 +75,6 @@ public class QueryEditorManagerComposite extends Composite
 					QueryEditorManager.PropertyName.connectionProfile, propertyChangeListener_connectionProfile
 			);
 			this.queryEditorManager.addExecuteQueryListener(executeQueryListener);
-
-//			queryParameterManagerComposite.setQueryParameterManager(this.queryBrowserManager.getQueryParameterManager());
 		}
 	}
 
@@ -93,21 +82,21 @@ public class QueryEditorManagerComposite extends Composite
 		@Override
 		public void preExecuteQuery(ExecuteQueryEvent executeQueryEvent) {
 			setEnabled(false);
-			loadNextBunchButton.setEnabled(false);
+//			loadNextBunchButton.setEnabled(false);
 		}
 		@Override
 		public void postExecuteQuery(ExecuteQueryEvent executeQueryEvent) {
 			setEnabled(true);
-			ResultSetTableModel resultSetTableModel = executeQueryEvent.getResultSetTableModel();
-			if (resultSetTableModel != null) {
-				loadNextBunchButton.setEnabled(true);
-				resultSetTableModel.addPropertyChangeListener(ResultSetTableModel.PropertyName.completelyLoaded, new PropertyChangeListener() {
-					@Override
-					public void propertyChange(PropertyChangeEvent evt) {
-						loadNextBunchButton.setEnabled((Boolean)evt.getNewValue() == false);
-					}
-				});
-			}
+//			ResultSetTableModel resultSetTableModel = executeQueryEvent.getResultSetTableModel();
+//			if (resultSetTableModel != null) {
+//				loadNextBunchButton.setEnabled(true);
+//				resultSetTableModel.addPropertyChangeListener(ResultSetTableModel.PropertyName.completelyLoaded, new PropertyChangeListener() {
+//					@Override
+//					public void propertyChange(PropertyChangeEvent evt) {
+//						loadNextBunchButton.setEnabled((Boolean)evt.getNewValue() == false);
+//					}
+//				});
+//			}
 		}
 	};
 
@@ -190,45 +179,25 @@ public class QueryEditorManagerComposite extends Composite
 			queryEditorManager.executeQuery();
 	}
 
-	private void createLoadNextButton()
-	{
-		loadNextBunchButton = new Button(this, SWT.PUSH);
-		loadNextBunchButton.setText("Next");
-		loadNextBunchButton.setToolTipText("Load next 100 records");
-		loadNextBunchButton.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				if (queryEditorManager == null)
-					return;
-
-				// TODO this must be in the result set view!
-				for (ResultSetTableModel model : queryEditorManager.getResultSetTableModels()) {
-					if (model != null)
-						model.loadNextBunch();
-				}
-			}
-		});
-		setLoadNextActionEnabled(false);
-	}
-
-//	private void createQueryParameterComposite()
+//	private void createLoadNextButton()
 //	{
-//		queryParameterExpandableComposite = new ExpandableComposite(this, SWT.NONE, ExpandableComposite.TWISTIE);
-//		queryParameterExpandableComposite.setText("Parameters");
-//		GridData gd = new GridData(GridData.FILL_HORIZONTAL);
-//		gd.horizontalSpan = ((GridLayout)this.getLayout()).numColumns;
-//		queryParameterExpandableComposite.setLayoutData(gd);
-//
-//		queryParameterExpandableComposite.setLayout(new FillLayout());
-//
-//		queryParameterManagerComposite = new QueryParameterManagerComposite(queryParameterExpandableComposite, SWT.NONE);
-//		queryParameterExpandableComposite.setClient(queryParameterManagerComposite);
-//		queryParameterExpandableComposite.addExpansionListener(new ExpansionAdapter() {
+//		loadNextBunchButton = new Button(this, SWT.PUSH);
+//		loadNextBunchButton.setText("Next");
+//		loadNextBunchButton.setToolTipText("Load next 100 records");
+//		loadNextBunchButton.addSelectionListener(new SelectionAdapter() {
 //			@Override
-//			public void expansionStateChanged(ExpansionEvent e) {
-//				getParent().layout(true, true);
+//			public void widgetSelected(SelectionEvent e) {
+//				if (queryEditorManager == null)
+//					return;
+//
+//				// TODO this must be in the result set view!
+//				for (ResultSetTableModel model : queryEditorManager.getResultSetTableModels()) {
+//					if (model != null)
+//						model.loadNextBunch();
+//				}
 //			}
 //		});
+//		setLoadNextActionEnabled(false);
 //	}
 
 	private void populateConnectionProfileCombo()
@@ -248,15 +217,15 @@ public class QueryEditorManagerComposite extends Composite
 		}
 	}
 
-	public void setLoadNextActionEnabled(boolean enabled)
-	{
-		assertUIThread();
-		loadNextBunchButton.setEnabled(enabled);
-	}
-
-	public boolean isLoadNextActionEnabled()
-	{
-		assertUIThread();
-		return loadNextBunchButton.getEnabled();
-	}
+//	public void setLoadNextActionEnabled(boolean enabled)
+//	{
+//		assertUIThread();
+//		loadNextBunchButton.setEnabled(enabled);
+//	}
+//
+//	public boolean isLoadNextActionEnabled()
+//	{
+//		assertUIThread();
+//		return loadNextBunchButton.getEnabled();
+//	}
 }

@@ -39,7 +39,7 @@ public class JJQBDocumentProvider extends XtextDocumentProvider
 		display.syncExec(new Runnable() {
 			@Override
 			public void run() {
-				appendText[0] = queryEditor.getQueryBrowserManager().getPropertiesForAppendingToQueryText();
+				appendText[0] = queryEditor.getQueryEditorManager().getPropertiesForAppendingToQueryText();
 			}
 		});
 
@@ -68,7 +68,7 @@ public class JJQBDocumentProvider extends XtextDocumentProvider
 			display.syncExec(new Runnable() {
 				@Override
 				public void run() {
-					text[0] = queryEditor.getQueryBrowserManager().extractAndRemovePropertiesFromQueryText(text[0]);
+					text[0] = queryEditor.getQueryEditorManager().extractAndRemovePropertiesFromQueryText(text[0]);
 				}
 			});
 

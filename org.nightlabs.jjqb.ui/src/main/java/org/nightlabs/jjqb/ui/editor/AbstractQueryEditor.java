@@ -62,7 +62,7 @@ implements QueryEditor
 				helper.fireDisposeListeners(event);
 			}
 		});
-		getQueryBrowserManager().addExecuteQueryListener(executeQueryListener);
+		getQueryEditorManager().addExecuteQueryListener(executeQueryListener);
 
 		queryEditorComposite = new Composite(parent, SWT.BORDER);
 		queryEditorComposite.setLayout(new GridLayout());
@@ -70,7 +70,7 @@ implements QueryEditor
 		queryEditorManagerComposite = new QueryEditorManagerComposite(
 				queryEditorComposite, SWT.BORDER
 				);
-		queryEditorManagerComposite.setQueryBrowserManager(getQueryBrowserManager());
+		queryEditorManagerComposite.setQueryBrowserManager(getQueryEditorManager());
 
 		super.createPartControl(queryEditorComposite);
 
@@ -120,14 +120,14 @@ implements QueryEditor
 	public void init(final IEditorSite site, IEditorInput input) throws PartInitException
 	{
 		super.init(site, input);
-		getQueryBrowserManager().editorInputChanged();
+		getQueryEditorManager().editorInputChanged();
 		registerDocumentContext();
 	}
 
 	protected void registerDocumentContext()
 	{
 		IEditorInput input = getEditorInput();
-		QueryEditorManager queryBrowserManager = getQueryBrowserManager();
+		QueryEditorManager queryBrowserManager = getQueryEditorManager();
 		if (input != null && queryBrowserManager != null) {
 			IDocument document = getDocumentProvider().getDocument(input);
 			if (document != null) {
@@ -139,12 +139,12 @@ implements QueryEditor
 	@Override
 	public void doRevertToSaved() {
 		super.doRevertToSaved();
-		getQueryBrowserManager().editorInputChanged();
+		getQueryEditorManager().editorInputChanged();
 		registerDocumentContext();
 	}
 
 	@Override
-	public synchronized QueryEditorManager getQueryBrowserManager()
+	public synchronized QueryEditorManager getQueryEditorManager()
 	{
 		if (queryEditorManager == null) {
 			queryEditorManager = createQueryEditorManager();
@@ -187,7 +187,7 @@ implements QueryEditor
 		// anything in a refactoring-listener and probably we have to do both (refactoring-listener AND sth. here).
 		// Marco :-)
 		super.doSaveAs();
-		getQueryBrowserManager().editorInputChanged();
+		getQueryEditorManager().editorInputChanged();
 		registerDocumentContext();
 	}
 }

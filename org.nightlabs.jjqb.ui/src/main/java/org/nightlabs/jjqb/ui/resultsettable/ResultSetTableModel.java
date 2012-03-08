@@ -16,6 +16,8 @@ import org.eclipse.jface.viewers.deferred.AbstractConcurrentModel;
 import org.eclipse.jface.viewers.deferred.IConcurrentModel;
 import org.eclipse.jface.viewers.deferred.IConcurrentModelListener;
 import org.eclipse.swt.widgets.Display;
+import org.nightlabs.jjqb.core.PropertiesWithChangeSupport;
+import org.nightlabs.jjqb.ui.JJQBUIPlugin;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,6 +30,12 @@ implements IConcurrentModel // not necessary - just convenient to see the javado
 {
 	private static final Logger logger = LoggerFactory.getLogger(ResultSetTableModel.class);
 
+	/**
+	 * Properties used for the {@link PropertyChangeListener}s. Pass the {@link Enum#name() name} these to
+	 * {@link ResultSetTableModel#addPropertyChangeListener(PropertyName, PropertyChangeListener) addPropertyChangeListener(...)}.
+	 *
+	 * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+	 */
 	public static enum PropertyName {
 		/**
 		 * @see #isCompletelyLoaded()
@@ -38,6 +46,32 @@ implements IConcurrentModel // not necessary - just convenient to see the javado
 
 		closed
 	}
+
+	/**
+	 * Property key used in the {@link #getProperties() persistent properties} to
+	 * reference the last used <code>bunchSize</code>.
+	 * @see #loadNextBunch(int)
+	 */
+	public static final String PROPERTY_KEY_LAST_BUNCH_SIZE = "lastBunchSize";
+
+	public static PropertiesWithChangeSupport getProperties() {
+		return JJQBUIPlugin.getDefault().getProperties(ResultSetTableModel.class.getName());
+	}
+
+	public static int getLastBunchSize()
+	{
+		String s = getProperties().getProperty(PROPERTY_KEY_LAST_BUNCH_SIZE);
+		if (s == null)
+			return 100;
+		else
+			return Integer.valueOf(s);
+	}
+
+	public static void setLastBunchSize(int lastBunchSize)
+	{
+		getProperties().setProperty(PROPERTY_KEY_LAST_BUNCH_SIZE, Integer.toString(lastBunchSize));
+	}
+
 
 	private IConnection connection;
 	private volatile Object[] rowsLoadedArray;
@@ -127,20 +161,31 @@ implements IConcurrentModel // not necessary - just convenient to see the javado
 
 	public synchronized void loadNextBunch()
 	{
+		loadNextBunch(getLastBunchSize());
+	}
+
+	public synchronized void loadNextBunch(int bunchSize)
+	{
 		if (loadNextBunchJob != null)
 			return;
 
+		if (bunchSize < 1)
+			bunchSize = Integer.MAX_VALUE;
+
+		setLastBunchSize(bunchSize);
+
 		initialLoadDone = true;
 
+		final int finalBunchSize = bunchSize;
 		Job job = new Job("Loading rows...") {
 			@Override
 			protected IStatus run(IProgressMonitor monitor) {
 				try {
 					// load 100 first results
-					List<ResultSetTableRow> rows = new ArrayList<ResultSetTableRow>(100);
+					List<ResultSetTableRow> rows = new ArrayList<ResultSetTableRow>(Math.min(finalBunchSize, 10000));
 					int counter = 0;
 					boolean lastResultSetNextResult = true;
-					while (++counter <= 100 && (lastResultSetNextResult = resultSet.next())) {
+					while (++counter <= finalBunchSize && (lastResultSetNextResult = resultSet.next())) {
 						int columnCount = resultSet.getMetaData().getColumnCount(); // TODO move up - only testing with call to next first.
 						ResultSetTableCell[] cells = new ResultSetTableCell[columnCount];
 						for (int columnIndex = 1; columnIndex <= columnCount; ++columnIndex) {

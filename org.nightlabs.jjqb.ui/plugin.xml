@@ -304,12 +304,12 @@
                toolbarPath="additions"
                menubarPath="additions">
          </action>
-            
+
          <action
                class="org.nightlabs.jjqb.ui.resultsettable.NextAction"
                id="org.nightlabs.jjqb.ui.resultsettable.NextAction"
                label="Next"
-               style="push"
+               style="pulldown"
                toolbarPath="additions">
          </action>
       </viewContribution>

@@ -27,9 +27,11 @@ import org.slf4j.LoggerFactory;
 public class ResultSetTableView extends ViewPart implements LabelTextOptionsContainer
 {
 	private static final Logger logger = LoggerFactory.getLogger(ResultSetTableView.class);
+//	private static final String nextActionGroupMarkerID = "next";
 
 	private ResultSetTableComposite resultSetTableComposite;
 	private QueryEditor queryEditor;
+//	private NextAction nextAction;
 
 	@Override
 	public void createPartControl(Composite parent) {
@@ -59,14 +61,37 @@ public class ResultSetTableView extends ViewPart implements LabelTextOptionsCont
 		IEditorPart activeEditor = getSite().getPage().getActiveEditor();
 		if (activeEditor instanceof QueryEditor)
 			registerQueryBrowser((QueryEditor) activeEditor);
+
+//		IToolBarManager toolBarManager = getViewSite().getActionBars().getToolBarManager();
+//		if (toolBarManager.find(nextActionGroupMarkerID) == null) {
+//			toolBarManager.insertAfter(NextAction.class.getName(), new GroupMarker(nextActionGroupMarkerID));
+//			if (toolBarManager.find(nextActionGroupMarkerID) == null)
+//				throw new IllegalStateException("toolBarManager.find(nextActionGroupMarkerID) == null");
+//		}
+//
+//		toolBarManager.remove(NextAction.class.getName());
+
+//		nextAction = new NextAction();
+//		nextAction.init(this);
+		updateNextAction();
+
+//		toolBarManager.insertAfter(nextActionGroupMarkerID, nextAction);
+//		toolBarManager.add(nextAction);
 	}
 
 	private ExecuteQueryListener executeQueryListener = new ExecuteQueryAdapter() {
 		@Override
 		public void postExecuteQuery(ExecuteQueryEvent executeQueryEvent) {
-			resultSetTableComposite.setInput(executeQueryEvent.getResultSetTableModel());
+			setInput(executeQueryEvent.getResultSetTableModel());
 		}
 	};
+
+	private void updateNextAction() {
+//		if (nextAction != null)
+//			nextAction.selectionChanged(nextAction, StructuredSelection.EMPTY);
+//		ResultSetTableModel model = getResultSetTableModel();
+//		getSite().getSelectionProvider().setSelection(model == null ? StructuredSelection.EMPTY : new StructuredSelection(model));
+	}
 
 	private void registerQueryBrowser(QueryEditor queryEditor)
 	{
@@ -80,20 +105,27 @@ public class ResultSetTableView extends ViewPart implements LabelTextOptionsCont
 
 		this.queryEditor = queryEditor;
 		// TODO this must be refactored when we support multiple resultSets per query browser!
-		Collection<ResultSetTableModel> resultSetTableModels = queryEditor.getQueryBrowserManager().getResultSetTableModels();
-		resultSetTableComposite.setInput(resultSetTableModels.isEmpty() ? null : resultSetTableModels.iterator().next());
-		queryEditor.getQueryBrowserManager().addExecuteQueryListener(executeQueryListener);
+		Collection<ResultSetTableModel> resultSetTableModels = queryEditor.getQueryEditorManager().getResultSetTableModels();
+		setInput(resultSetTableModels.isEmpty() ? null : resultSetTableModels.iterator().next());
+		queryEditor.getQueryEditorManager().addExecuteQueryListener(executeQueryListener);
 	}
 
 	private void unregisterQueryBrowser()
 	{
 		if (queryEditor != null) {
-			queryEditor.getQueryBrowserManager().removeExecuteQueryListener(executeQueryListener);
+			queryEditor.getQueryEditorManager().removeExecuteQueryListener(executeQueryListener);
 			queryEditor = null;
 		}
 
-		if (resultSetTableComposite != null)
-			resultSetTableComposite.setInput(null);
+		setInput(null);
+	}
+
+	protected void setInput(ResultSetTableModel model)
+	{
+		if (resultSetTableComposite != null) {
+			resultSetTableComposite.setInput(model);
+			updateNextAction();
+		}
 	}
 
 	private IPartListener2 partListener = new IPartListener2()

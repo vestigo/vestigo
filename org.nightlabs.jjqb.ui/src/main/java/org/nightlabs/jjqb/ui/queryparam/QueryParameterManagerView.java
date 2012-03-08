@@ -46,7 +46,7 @@ public class QueryParameterManagerView extends ViewPart
 		unregisterQueryBrowser(); // just in case, we have another one assigned.
 
 		this.queryEditor = queryEditor;
-		queryParameterManagerComposite.setQueryParameterManager(queryEditor.getQueryBrowserManager().getQueryParameterManager());
+		queryParameterManagerComposite.setQueryParameterManager(queryEditor.getQueryEditorManager().getQueryParameterManager());
 	}
 
 	private void unregisterQueryBrowser()
