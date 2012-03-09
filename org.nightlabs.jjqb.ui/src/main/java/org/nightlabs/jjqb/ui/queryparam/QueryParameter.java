@@ -100,6 +100,8 @@ implements Serializable, Comparable<QueryParameter>
 
 		this.value = value;
 		propertyChangeSupport.firePropertyChange(PropertyName.value.name(), old, value);
+
+		setValueBackup(old);
 	}
 
 	public Object getValueBackup() {

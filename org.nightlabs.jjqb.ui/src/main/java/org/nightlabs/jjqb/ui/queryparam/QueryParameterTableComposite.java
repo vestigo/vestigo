@@ -381,16 +381,11 @@ public class QueryParameterTableComposite extends Composite implements ISelectio
 				if (queryParameter.getType() == null)
 					throw new IllegalStateException("queryParameter.type == null");
 
-				if (valueIsNull) {
-					if (queryParameter.getValue() != null) {
-						queryParameter.setValueBackup(queryParameter.getValue());
-						queryParameter.setValue(null);
-					}
-				}
+				if (valueIsNull)
+					queryParameter.setValue(null);
 				else {
 //					ParameterValueEditingSupportDelegate delegate = getParameterValueEditingSupportDelegate(queryParameter.getType());
 					queryParameter.setValue(queryParameter.getValueBackup());
-					queryParameter.setValueBackup(null);
 
 					if (!queryParameter.getType().isInstance(queryParameter.getValue())) {
 						String valueString = QueryParameter.parameterValueObjectToString(queryParameter.getValue());

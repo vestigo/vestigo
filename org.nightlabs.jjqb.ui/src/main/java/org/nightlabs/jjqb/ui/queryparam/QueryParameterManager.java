@@ -261,7 +261,7 @@ public class QueryParameterManager
 					);
 			return null;
 		}
-		queryParameter.setValueBackup(valueBackup);
+		queryParameter.setValueBackup(valueBackup); // essential to call this AFTER setValue(...), because setValue(...) internally backups.
 
 		queryParameter.addPropertyChangeListener(queryParameterPropertyChangeListener);
 		return queryParameter;
