@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
+import org.nightlabs.jjqb.childvm.shared.PropertiesUtil;
 import org.nightlabs.jjqb.childvm.shared.persistencexml.jaxb.Persistence;
 import org.nightlabs.jjqb.childvm.shared.persistencexml.jaxb.Persistence.PersistenceUnit;
 import org.nightlabs.jjqb.childvm.shared.persistencexml.jaxb.Persistence.PersistenceUnit.Properties.Property;
@@ -28,10 +29,22 @@ public abstract class PersistenceUnitHelper
 		populateSpecialPropertiesFromPersistenceUnit(toProperties, fromPersistenceUnit);
 	}
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
+	protected Map<String, String> filterPersistenceProperties(Map<?, ?> rawPersistenceProperties) {
+		Map<String, String> filteredPersistenceProperties = new HashMap<String, String>();
+		for (Map.Entry<?, ?> me : rawPersistenceProperties.entrySet()) {
+			String key = String.valueOf(me.getKey());
+			String value = String.valueOf(me.getValue());
+			if (PropertiesUtil.NULL_VALUE.equals(value))
+				value = null;
+
+			filteredPersistenceProperties.put(key, value);
+		}
+		return filteredPersistenceProperties;
+	}
+
 	public void populatePersistenceUnitFromProperties(PersistenceUnit toPersistenceUnit, Properties fromProperties)
 	{
-		populatePersistenceUnitFromProperties(toPersistenceUnit, (Map)fromProperties);
+		populatePersistenceUnitFromProperties(toPersistenceUnit, filterPersistenceProperties(fromProperties));
 	}
 
 	public void populatePersistenceUnitFromProperties(PersistenceUnit toPersistenceUnit, Map<String, String> fromProperties)

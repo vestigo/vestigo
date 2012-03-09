@@ -276,7 +276,7 @@ public abstract class ConnectionProfile
 		for (Map.Entry<?, ?> me : rawPersistenceProperties.entrySet()) {
 			String key = String.valueOf(me.getKey());
 			String value = String.valueOf(me.getValue());
-			if ("_NULL_".equals(value))
+			if (PropertiesUtil.NULL_VALUE.equals(value))
 				value = null;
 
 			filteredPersistenceProperties.put(key, value);

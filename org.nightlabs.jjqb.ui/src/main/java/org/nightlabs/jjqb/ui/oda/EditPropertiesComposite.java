@@ -63,7 +63,9 @@ import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
+import org.nightlabs.jjqb.childvm.shared.PropertiesUtil;
 import org.nightlabs.jjqb.core.oda.OdaMultiCauseException;
+import org.nightlabs.jjqb.ui.JJQBUIPlugin;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -279,7 +281,7 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 			if (defaults != null) {
 				value = defaults.getProperty(mapEntry.getKey());
 				if (value == null)
-					value = "_NULL_";
+					value = PropertiesUtil.NULL_VALUE;
 
 				mapEntry.setValue(value);
 			}
@@ -292,7 +294,7 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 //				value = defaults.getProperty(mapEntry.getKey());
 
 			if (value == null)
-				value = "_NULL_";
+				value = PropertiesUtil.NULL_VALUE;
 
 			properties.setProperty(mapEntry.getKey(), value);
 			mapEntry.setValue(value);
@@ -307,7 +309,7 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 		setLayout(layout);
 
 		loadFromFile = new Button(this, SWT.PUSH);
-		loadFromFile.setText("Load...");
+		loadFromFile.setImage(JJQBUIPlugin.getDefault().getImage(EditPropertiesComposite.class, "loadFromFile", JJQBUIPlugin.IMAGE_SIZE_16x16));
 		loadFromFile.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent event) {
@@ -316,7 +318,7 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 		});
 
 		saveToFile = new Button(this, SWT.PUSH);
-		saveToFile.setText("Save...");
+		saveToFile.setImage(JJQBUIPlugin.getDefault().getImage(EditPropertiesComposite.class, "saveToFile", JJQBUIPlugin.IMAGE_SIZE_16x16));
 		saveToFile.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent event) {
@@ -527,10 +529,8 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 					in.close();
 				}
 			} catch (RuntimeException e) {
-				// TODO: ErrorHandling
 				throw e;
 			} catch (Exception e) {
-				// TODO: ErrorHandling
 				throw new RuntimeException(e);
 			}
 		}
@@ -620,7 +620,9 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 
 		String fileName = dialog.open();
 		if (fileName != null && !"".equals(fileName)) {
-			File propsFile = new File(fileName);
+			// fileName is the fully qualified path, but unfortunately, already with the first file-extension added automatically
+			// even if the user did not specify a file extension. We therefore have to ask the dialog again for some properties.
+			File propsFile = new File(new File(dialog.getFilterPath()), dialog.getFileName());
 
 			Properties properties = new Properties();
 			for (Map.Entry<?, ?> me : getContentProvider().getProperties().entrySet()) {

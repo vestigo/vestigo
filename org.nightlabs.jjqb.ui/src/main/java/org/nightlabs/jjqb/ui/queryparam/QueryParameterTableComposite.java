@@ -32,6 +32,7 @@ import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Table;
 import org.nightlabs.jjqb.childvm.shared.JavaScriptFormula;
+import org.nightlabs.jjqb.childvm.shared.PropertiesUtil;
 import org.nightlabs.jjqb.ui.jface.CalendarCellEditor;
 import org.nightlabs.jjqb.ui.jface.DateCellEditor;
 import org.nightlabs.jjqb.ui.jface.JavaScriptFormulaCellEditor;
@@ -88,7 +89,7 @@ public class QueryParameterTableComposite extends Composite implements ISelectio
 	}
 
 	static final String[] PARAM_VALUE_BOOLEAN_NAMES = {
-		"_NULL_",
+		PropertiesUtil.NULL_VALUE,
 		Boolean.TRUE.toString(),
 		Boolean.FALSE.toString()
 	};

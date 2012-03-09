@@ -10,6 +10,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+import org.nightlabs.jjqb.childvm.shared.PropertiesUtil;
+
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
  */
@@ -132,7 +134,7 @@ implements Serializable, Comparable<QueryParameter>
 	public static final String parameterValueObjectToString(Object value)
 	{
 		if (value == null)
-			return "_NULL_";
+			return PropertiesUtil.NULL_VALUE;
 
 		ParameterValueStringConverter converter = getParameterValueStringConverter(value.getClass());
 		return converter.parameterValueObjectToString(value);
@@ -146,7 +148,7 @@ implements Serializable, Comparable<QueryParameter>
 		if (valueString == null)
 			return null;
 
-		if ("_NULL_".equals(valueString))
+		if (PropertiesUtil.NULL_VALUE.equals(valueString))
 			return null;
 
 		ParameterValueStringConverter converter = getParameterValueStringConverter(parameterType);

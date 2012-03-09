@@ -5,6 +5,8 @@ import java.util.Map;
 
 import org.eclipse.jface.dialogs.TitleAreaDialog;
 import org.eclipse.jface.viewers.ArrayContentProvider;
+import org.eclipse.jface.viewers.DoubleClickEvent;
+import org.eclipse.jface.viewers.IDoubleClickListener;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.LabelProvider;
@@ -107,6 +109,14 @@ public class SelectSavePropertiesHandlerDialog extends TitleAreaDialog {
 				IStructuredSelection sel = (IStructuredSelection) event.getSelection();
 				selectedSavePropertiesHandler = (SavePropertiesHandler) sel.getFirstElement();
 				getButton(OK).setEnabled(selectedSavePropertiesHandler != null);
+			}
+		});
+
+		listViewer.addDoubleClickListener(new IDoubleClickListener() {
+			@Override
+			public void doubleClick(DoubleClickEvent event) {
+				if (getButton(OK).isEnabled())
+					okPressed();
 			}
 		});
 

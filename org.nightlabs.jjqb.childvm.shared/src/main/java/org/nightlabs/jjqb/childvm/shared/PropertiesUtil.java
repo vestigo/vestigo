@@ -65,6 +65,8 @@ public class PropertiesUtil extends Properties
 	 */
 	public static final String PERSISTENCE_UNIT_SYNTHETIC_OVERRIDE = PREFIX_META + "persistenceUnitSyntheticOverride";
 
+	public static final String NULL_VALUE = "_NULL_";
+
 	public static void putAll(java.util.Properties source, java.util.Properties target, String keyPrefix)
 	{
 		for (Object element : source.keySet()) {
