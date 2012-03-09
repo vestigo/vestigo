@@ -10,8 +10,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-import org.nightlabs.jjqb.childvm.shared.PropertiesUtil;
-
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
  */
@@ -33,7 +31,8 @@ implements Serializable, Comparable<QueryParameter>
 		index,
 		name,
 		type,
-		value
+		value,
+		valueBackup
 	}
 
 	private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
@@ -43,6 +42,7 @@ implements Serializable, Comparable<QueryParameter>
 	private String name;
 	private Class<?> type;
 	private Object value;
+	private Object valueBackup;
 
 	public QueryParameter(UUID queryParameterID, int index)
 	{
@@ -61,45 +61,57 @@ implements Serializable, Comparable<QueryParameter>
 		return index;
 	}
 	public void setIndex(int index) {
-		int oldIndex = this.index;
-		if (oldIndex == index)
+		int old = this.index;
+		if (old == index)
 			return;
 
 		this.index = index;
-		propertyChangeSupport.firePropertyChange(PropertyName.index.name(), oldIndex, index);
+		propertyChangeSupport.firePropertyChange(PropertyName.index.name(), old, index);
 	}
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
-		String oldName = this.name;
-		if (oldName == name)
+		String old = this.name;
+		if (old == name || (old != null && old.equals(name)))
 			return;
 
 		this.name = name;
-		propertyChangeSupport.firePropertyChange(PropertyName.name.name(), oldName, name);
+		propertyChangeSupport.firePropertyChange(PropertyName.name.name(), old, name);
 	}
 	public Class<?> getType() {
 		return type;
 	}
 	public void setType(Class<?> type) {
-		Class<?> oldType = this.type;
-		if (oldType == type)
+		Class<?> old = this.type;
+		if (old == type)
 			return;
 
 		this.type = type;
-		propertyChangeSupport.firePropertyChange(PropertyName.type.name(), oldType, type);
+		propertyChangeSupport.firePropertyChange(PropertyName.type.name(), old, type);
 	}
 	public Object getValue() {
 		return value;
 	}
 	public void setValue(Object value) {
-		Object oldValue = this.value;
-		if (oldValue == value)
+		Object old = this.value;
+		if (old == value || (old != null && old.equals(value)))
 			return;
 
 		this.value = value;
-		propertyChangeSupport.firePropertyChange(PropertyName.value.name(), oldValue, value);
+		propertyChangeSupport.firePropertyChange(PropertyName.value.name(), old, value);
+	}
+
+	public Object getValueBackup() {
+		return valueBackup;
+	}
+	public void setValueBackup(Object valueBackup) {
+		Object old = this.valueBackup;
+		if (old == valueBackup || (old != null && old.equals(valueBackup)))
+			return;
+
+		this.valueBackup = valueBackup;
+		propertyChangeSupport.firePropertyChange(PropertyName.valueBackup.name(), old, valueBackup);
 	}
 
 	@Override
@@ -134,7 +146,7 @@ implements Serializable, Comparable<QueryParameter>
 	public static final String parameterValueObjectToString(Object value)
 	{
 		if (value == null)
-			return PropertiesUtil.NULL_VALUE;
+			return null; // PropertiesUtil.NULL_VALUE;
 
 		ParameterValueStringConverter converter = getParameterValueStringConverter(value.getClass());
 		return converter.parameterValueObjectToString(value);
@@ -148,8 +160,8 @@ implements Serializable, Comparable<QueryParameter>
 		if (valueString == null)
 			return null;
 
-		if (PropertiesUtil.NULL_VALUE.equals(valueString))
-			return null;
+//		if (PropertiesUtil.NULL_VALUE.equals(valueString))
+//			return null;
 
 		ParameterValueStringConverter converter = getParameterValueStringConverter(parameterType);
 		return converter.parameterValueStringToObject(parameterType, valueString);

@@ -15,9 +15,7 @@ public class JDOPersistencePropertiesPage extends PersistencePropertiesPage {
 				"" +
 				"Additionally, you very likely have to set 'javax.jdo.option.ConnectionURL', 'javax.jdo.option.ConnectionUserName', " +
 				"'javax.jdo.option.ConnectionPassword' and the like to make your database " +
-				"coordinates known.\n\n" +
-				"" +
-				"The special value '_NULL_' overrides a property as if it was not declared in the persistence unit."
+				"coordinates known."
 		);
 	}
 

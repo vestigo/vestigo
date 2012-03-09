@@ -1,6 +1,7 @@
 package org.nightlabs.jjqb.ui.queryparam;
 
 import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 /**
@@ -14,7 +15,8 @@ class ParameterValueStringConverterForObject extends AbstractParameterValueStrin
 	}
 
 	@Override
-	public Object parameterValueStringToObject(Class<?> parameterType, String valueString) {
+	public Object parameterValueStringToObject(Class<?> parameterType, String valueString)
+	{
 		Object valueObject = null;
 
 		valueObject = parameterValueStringToObject_valueOf(parameterType, valueString);
@@ -30,7 +32,6 @@ class ParameterValueStringConverterForObject extends AbstractParameterValueStrin
 			return valueObject;
 
 		throw new IllegalStateException("This class provides no known way to create an instance from a string: " + parameterType.getName());
-
 	}
 
 	private static final Object parameterValueStringToObject_constructor(Class<?> parameterType, String valueString)
@@ -46,6 +47,7 @@ class ParameterValueStringConverterForObject extends AbstractParameterValueStrin
 			Object valueObject = constructor.newInstance(valueString);
 			return valueObject;
 		} catch (Exception e) {
+			handleInvocationTargetException(e);
 			throw new RuntimeException(e);
 		}
 	}
@@ -63,6 +65,7 @@ class ParameterValueStringConverterForObject extends AbstractParameterValueStrin
 			Object valueObject = method.invoke(null, valueString);
 			return valueObject;
 		} catch (Exception e) {
+			handleInvocationTargetException(e);
 			throw new RuntimeException(e);
 		}
 	}
@@ -80,7 +83,18 @@ class ParameterValueStringConverterForObject extends AbstractParameterValueStrin
 			Object valueObject = method.invoke(null, valueString);
 			return valueObject;
 		} catch (Exception e) {
+			handleInvocationTargetException(e);
 			throw new RuntimeException(e);
+		}
+	}
+
+	private static void handleInvocationTargetException(Throwable e) {
+		if (e instanceof InvocationTargetException) {
+			Throwable target = ((InvocationTargetException)e).getTargetException();
+			if (target instanceof RuntimeException)
+				throw (RuntimeException)target;
+			else
+				throw new RuntimeException(target);
 		}
 	}
 }

@@ -15,4 +15,9 @@ public interface ParameterValueEditingSupportDelegate {
 
 	void setValue(QueryParameter queryParameter, Object value);
 
+//	/**
+//	 * @param queryParameter the query parameter for which to create a default value.
+//	 * @return the non-<code>null</code> default value or <code>null</code>, if a non-<code>null</code> value cannot be created.
+//	 */
+//	Object getDefaultNonNullValue(QueryParameter queryParameter);
 }

@@ -22,7 +22,7 @@ public class PropertiesUtil extends org.nightlabs.util.PropertiesUtil
 {
 	private static final Logger logger = LoggerFactory.getLogger(PropertiesUtil.class);
 
-	private PropertiesUtil() { }
+	protected PropertiesUtil() { }
 
 	/**
 	 * Prefix for properties that that are used by JJQB itself.
@@ -36,11 +36,6 @@ public class PropertiesUtil extends org.nightlabs.util.PropertiesUtil
 	 * (without the prefix).
 	 */
 	public static final String PREFIX_PERSISTENCE = "persistence.";
-
-//	/**
-//	 * The unique ID of the profile.
-//	 */
-//	public static final String PROFILE_ID = PREFIX_META + "profile.id";
 
 	/**
 	 * Prefix for the classpath elements that make up the classpath of the JDO/JPA persistence implementation.
@@ -91,15 +86,6 @@ public class PropertiesUtil extends org.nightlabs.util.PropertiesUtil
 		return resultList;
 	}
 
-//	public static String getProfileID(java.util.Properties properties)
-//	{
-//		String profileID1 = _getProfileID(properties);
-//		String profileID2 = _getProfileID(properties);
-//		if (!profileID1.equals(profileID2))
-//			throw new IllegalStateException("profileID1 != profileID2 :: " + profileID1 + " != " + profileID2);
-//
-//		return profileID1;
-//	}
 	public static String getProfileID(java.util.Properties properties)
 	{
 		TreeMap<String, String> m = new TreeMap<String, String>();
@@ -132,27 +118,5 @@ public class PropertiesUtil extends org.nightlabs.util.PropertiesUtil
 		byte[] hash = md.digest();
 		String result = Util.encodeHexStr(hash);
 		return result;
-
-//		String profileIDStr = properties.getProperty(PROFILE_ID);
-//		if (profileIDStr == null)
-//			return null;
-//
-//		return UUID.fromString(profileIDStr);
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-// TODO The following should be pushed upstream into the superclass. Marco :-)
-
-	public static final String NULL_VALUE = "_NULL_"; // TODO remove this!
 }

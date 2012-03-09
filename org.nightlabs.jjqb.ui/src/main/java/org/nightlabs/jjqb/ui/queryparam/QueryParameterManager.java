@@ -11,6 +11,7 @@ import java.util.Set;
 import java.util.UUID;
 
 import org.eclipse.swt.widgets.Display;
+import org.nightlabs.jjqb.childvm.shared.PropertiesUtil;
 import org.nightlabs.jjqb.core.PropertiesWithChangeSupport;
 import org.nightlabs.jjqb.ui.editor.PropertiesType;
 import org.nightlabs.jjqb.ui.editor.QueryEditorManager;
@@ -30,6 +31,8 @@ public class QueryParameterManager
 	private static final String PROPERTY_KEY_QUERY_PARAMETER_NAME_SUFFIX = ".name";
 	private static final String PROPERTY_KEY_QUERY_PARAMETER_TYPE_SUFFIX = ".type";
 	private static final String PROPERTY_KEY_QUERY_PARAMETER_VALUE_SUFFIX = ".value";
+	private static final String PROPERTY_KEY_QUERY_PARAMETER_VALUE_BACKUP_SUFFIX = ".valueBackup";
+	private static final String PROPERTY_KEY_QUERY_PARAMETER_NULL_SUFFIX = PropertiesUtil.SUFFIX_NULL_VALUE;
 
 	public enum PropertyName {
 		/**
@@ -226,19 +229,39 @@ public class QueryParameterManager
 		}
 		queryParameter.setType(type);
 
-		propertyKey = propertyKeyPrefix + PROPERTY_KEY_QUERY_PARAMETER_VALUE_SUFFIX;
-		String valueStr = properties.getProperty(propertyKey);
-		Object value;
+		propertyKey = propertyKeyPrefix + PROPERTY_KEY_QUERY_PARAMETER_NULL_SUFFIX;
+		String nullStr = properties.getProperty(propertyKey);
+		boolean valueIsNull = Boolean.parseBoolean(nullStr);
+
+		if (!valueIsNull) {
+			propertyKey = propertyKeyPrefix + PROPERTY_KEY_QUERY_PARAMETER_VALUE_SUFFIX;
+			String valueStr = properties.getProperty(propertyKey);
+			Object value;
+			try {
+				value = QueryParameter.parameterValueStringToObject(type, valueStr);
+			} catch (Exception x) {
+				logger.warn(
+						"readFromProperties_oneQueryParameter: propertyKey=\"{}\": value=\"{}\" cannot be converted from its String-representation into an instance of {}: " + x,
+						new Object[] { propertyKey, valueStr, type == null ? null : type.getName() }
+						);
+				return null;
+			}
+			queryParameter.setValue(value);
+		}
+
+		propertyKey = propertyKeyPrefix + PROPERTY_KEY_QUERY_PARAMETER_VALUE_BACKUP_SUFFIX;
+		String valueBackupStr = properties.getProperty(propertyKey);
+		Object valueBackup;
 		try {
-			value = QueryParameter.parameterValueStringToObject(type, valueStr);
+			valueBackup = QueryParameter.parameterValueStringToObject(type, valueBackupStr);
 		} catch (Exception x) {
 			logger.warn(
-					"readFromProperties_oneQueryParameter: propertyKey=\"{}\": value=\"{}\" cannot be converted from its String-representation into an instance of {}: " + x,
-					new Object[] { propertyKey, valueStr, type == null ? null : type.getName() }
+					"readFromProperties_oneQueryParameter: propertyKey=\"{}\": valueBackup=\"{}\" cannot be converted from its String-representation into an instance of {}: " + x,
+					new Object[] { propertyKey, valueBackupStr, type == null ? null : type.getName() }
 					);
 			return null;
 		}
-		queryParameter.setValue(value);
+		queryParameter.setValueBackup(valueBackup);
 
 		queryParameter.addPropertyChangeListener(queryParameterPropertyChangeListener);
 		return queryParameter;
@@ -266,9 +289,27 @@ public class QueryParameterManager
 				queryParameter.getType() == null ? "" : queryParameter.getType().getName()
 		);
 
+		if (queryParameter.getValue() == null)
+			properties.remove(propertyKeyPrefix + PROPERTY_KEY_QUERY_PARAMETER_VALUE_SUFFIX);
+		else {
+			properties.setProperty(
+					propertyKeyPrefix + PROPERTY_KEY_QUERY_PARAMETER_VALUE_SUFFIX,
+					QueryParameter.parameterValueObjectToString(queryParameter.getValue())
+			);
+		}
+
+		if (queryParameter.getValueBackup() == null)
+			properties.remove(propertyKeyPrefix + PROPERTY_KEY_QUERY_PARAMETER_VALUE_BACKUP_SUFFIX);
+		else {
+			properties.setProperty(
+					propertyKeyPrefix + PROPERTY_KEY_QUERY_PARAMETER_VALUE_BACKUP_SUFFIX,
+					QueryParameter.parameterValueObjectToString(queryParameter.getValueBackup())
+			);
+		}
+
 		properties.setProperty(
-				propertyKeyPrefix + PROPERTY_KEY_QUERY_PARAMETER_VALUE_SUFFIX,
-				QueryParameter.parameterValueObjectToString(queryParameter.getValue())
+				propertyKeyPrefix + PROPERTY_KEY_QUERY_PARAMETER_NULL_SUFFIX,
+				Boolean.toString(queryParameter.getValue() == null)
 		);
 	}
 

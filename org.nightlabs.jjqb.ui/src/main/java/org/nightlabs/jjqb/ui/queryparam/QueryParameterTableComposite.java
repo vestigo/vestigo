@@ -13,6 +13,7 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.CellEditor;
 import org.eclipse.jface.viewers.CellLabelProvider;
+import org.eclipse.jface.viewers.CheckboxCellEditor;
 import org.eclipse.jface.viewers.ColumnPixelData;
 import org.eclipse.jface.viewers.ColumnViewer;
 import org.eclipse.jface.viewers.ColumnWeightData;
@@ -32,7 +33,7 @@ import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Table;
 import org.nightlabs.jjqb.childvm.shared.JavaScriptFormula;
-import org.nightlabs.jjqb.childvm.shared.PropertiesUtil;
+import org.nightlabs.jjqb.ui.JJQBUIPlugin;
 import org.nightlabs.jjqb.ui.jface.CalendarCellEditor;
 import org.nightlabs.jjqb.ui.jface.DateCellEditor;
 import org.nightlabs.jjqb.ui.jface.JavaScriptFormulaCellEditor;
@@ -54,6 +55,7 @@ public class QueryParameterTableComposite extends Composite implements ISelectio
 
 	private ComboBoxCellEditor comboBoxCellEditorParameterType;
 	private TextCellEditor textCellEditor;
+	private CheckboxCellEditor checkboxCellEditor;
 
 	private static final Class<?>[] PARAM_TYPES = {
 		// BEGIN simple types
@@ -89,7 +91,8 @@ public class QueryParameterTableComposite extends Composite implements ISelectio
 	}
 
 	static final String[] PARAM_VALUE_BOOLEAN_NAMES = {
-		PropertiesUtil.NULL_VALUE,
+//		PropertiesUtil.NULL_VALUE,
+		String.valueOf((Object)null),
 		Boolean.TRUE.toString(),
 		Boolean.FALSE.toString()
 	};
@@ -133,6 +136,7 @@ public class QueryParameterTableComposite extends Composite implements ISelectio
 		createParameterIndexColumn(layout);
 		createParameterNameColumn(layout);
 		createParameterTypeColumn(layout);
+		createParameterNullColumn(layout);
 		createParameterValueColumn(layout);
 		table.setLayout(layout);
 	}
@@ -143,6 +147,7 @@ public class QueryParameterTableComposite extends Composite implements ISelectio
 
 		comboBoxCellEditorParameterType = new ComboBoxCellEditor(table, PARAM_TYPE_NAMES, SWT.READ_ONLY);
 		textCellEditor = new TextCellEditor(table);
+		checkboxCellEditor = new CheckboxCellEditor(table);
 
 		queryParameterType2CellEditor.put(Object.class, textCellEditor);
 		queryParameterType2CellEditor.put(Boolean.class, new ComboBoxCellEditor(table, PARAM_VALUE_BOOLEAN_NAMES, SWT.READ_ONLY));
@@ -317,7 +322,7 @@ public class QueryParameterTableComposite extends Composite implements ISelectio
 				tableViewer.refresh(queryParameter);
 			} catch (Exception x) {
 				logger.error("setValue: " + x, x);
-				MessageDialog.openError(getShell(), "Cannot set value", "Setting the value failed: " + x);
+				MessageDialog.openError(getShell(), "Cannot set type", "Setting the type failed: " + x);
 			}
 		}
 
@@ -330,6 +335,95 @@ public class QueryParameterTableComposite extends Composite implements ISelectio
 		protected boolean canEdit(Object element) { return true; }
 	}
 
+	private void createParameterNullColumn(TableLayout layout)
+	{
+		TableViewerColumn tableViewerColumn = new TableViewerColumn(tableViewer, SWT.LEFT);
+		tableViewerColumn.setLabelProvider(new ParameterNullLabelProvider());
+		tableViewerColumn.getColumn().setText("Null");
+		tableViewerColumn.setEditingSupport(new ParameterNullEditingSupport(tableViewer));
+		layout.addColumnData(new ColumnPixelData(24));
+	}
+
+	private final class ParameterNullEditingSupport extends EditingSupport
+	{
+		private Logger logger = LoggerFactory.getLogger(ParameterNullEditingSupport.class);
+
+		public ParameterNullEditingSupport(ColumnViewer viewer) {
+			super(viewer);
+		}
+
+		@Override
+		protected Object getValue(Object element) {
+			QueryParameter queryParameter = (QueryParameter) element;
+			return queryParameter.getValue() == null;
+		}
+
+		@Override
+		protected void setValue(Object element, Object value) {
+			try {
+				QueryParameter queryParameter = (QueryParameter) element;
+				if (!(value instanceof Boolean))
+					throw new IllegalArgumentException("value is an instance of " + (value == null ? null : value.getClass().getName()) + " instead of Boolean: " + value);
+
+				Boolean valueIsNull = (Boolean) value;
+
+				if (queryParameter.getType() == null)
+					throw new IllegalStateException("queryParameter.type == null");
+
+				if (valueIsNull) {
+					if (queryParameter.getValue() != null) {
+						queryParameter.setValueBackup(queryParameter.getValue());
+						queryParameter.setValue(null);
+					}
+				}
+				else {
+//					ParameterValueEditingSupportDelegate delegate = getParameterValueEditingSupportDelegate(queryParameter.getType());
+					queryParameter.setValue(queryParameter.getValueBackup());
+					queryParameter.setValueBackup(null);
+
+					if (!queryParameter.getType().isInstance(queryParameter.getValue())) {
+						String valueString = QueryParameter.parameterValueObjectToString(queryParameter.getValue());
+						try {
+							queryParameter.setValue(
+									QueryParameter.parameterValueStringToObject(queryParameter.getType(), valueString)
+							);
+						} catch (Exception x) {
+							logger.warn(
+									"setValue: Falling back to value null, because cannot convert '" +
+											valueString + "' of old type " +
+											(queryParameter.getType() == null ? null : queryParameter.getType().getName()) +
+											" to new type " + queryParameter.getType().getName() + ": " + x,
+											x
+							);
+							queryParameter.setValue(null);
+						}
+					}
+
+//					if (queryParameter.getValue() == null)
+//						queryParameter.setValue(delegate.getDefaultNonNullValue(queryParameter));
+				}
+
+				tableViewer.refresh(queryParameter);
+			} catch (Exception x) {
+				logger.error("setValue: " + x, x);
+				MessageDialog.openError(getShell(), "Cannot set value", "Setting the value failed: " + x);
+			}
+		}
+
+		@Override
+		protected CellEditor getCellEditor(Object element)
+		{
+			return checkboxCellEditor;
+		}
+
+		@Override
+		protected boolean canEdit(Object element) {
+			QueryParameter queryParameter = (QueryParameter) element;
+			ParameterValueEditingSupportDelegate delegate = getParameterValueEditingSupportDelegate(queryParameter.getType());
+			return delegate.canEdit(queryParameter);
+		}
+	}
+
 	private void createParameterValueColumn(TableLayout layout)
 	{
 		TableViewerColumn tableViewerColumn = new TableViewerColumn(tableViewer, SWT.LEFT);
@@ -339,7 +433,6 @@ public class QueryParameterTableComposite extends Composite implements ISelectio
 		ColumnWeightData columnWeightData = new ColumnWeightData(50);
 		columnWeightData.minimumWidth = 330;
 		layout.addColumnData(columnWeightData);
-//		layout.addColumnData(new ColumnPixelData(300));
 	}
 
 	private final class ParameterValueEditingSupport extends EditingSupport
@@ -355,7 +448,8 @@ public class QueryParameterTableComposite extends Composite implements ISelectio
 			QueryParameter queryParameter = (QueryParameter) element;
 
 			ParameterValueEditingSupportDelegate delegate = getParameterValueEditingSupportDelegate(queryParameter.getType());
-			return delegate.getValue(queryParameter);
+			Object value = delegate.getValue(queryParameter);
+			return value;
 		}
 
 		@Override
@@ -447,6 +541,19 @@ public class QueryParameterTableComposite extends Composite implements ISelectio
 			else {
 				viewerCell.setText(QueryParameter.parameterValueObjectToString(parameter.getValue()));
 			}
+		}
+	}
+
+	private static class ParameterNullLabelProvider extends CellLabelProvider
+	{
+		@Override
+		public void update(ViewerCell viewerCell) {
+			QueryParameter parameter = (QueryParameter) viewerCell.getElement();
+
+			if (parameter.getValue() == null)
+				viewerCell.setImage(JJQBUIPlugin.getDefault().getImage(QueryParameterTableComposite.class, "isNull", JJQBUIPlugin.IMAGE_SIZE_16x16));
+			else
+				viewerCell.setImage(JJQBUIPlugin.getDefault().getImage(QueryParameterTableComposite.class, "isNotNull", JJQBUIPlugin.IMAGE_SIZE_16x16));
 		}
 	}
 

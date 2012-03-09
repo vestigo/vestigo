@@ -15,9 +15,7 @@ public class JPAPersistencePropertiesPage extends PersistencePropertiesPage {
 				"" +
 				"Additionally, you very likely have to set 'javax.persistence.jdbc.url', 'javax.persistence.jdbc.user', " +
 				"'javax.persistence.jdbc.password' and the like to make your database " +
-				"coordinates known.\n\n" +
-				"" +
-				"The special value '_NULL_' overrides a property as if it was not declared in the persistence unit."
+				"coordinates known."
 		);
 	}
 

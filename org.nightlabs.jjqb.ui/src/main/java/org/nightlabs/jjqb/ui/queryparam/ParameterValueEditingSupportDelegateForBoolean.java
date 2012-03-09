@@ -13,4 +13,8 @@ class ParameterValueEditingSupportDelegateForBoolean extends AbstractParameterVa
 	public void setValue(QueryParameter queryParameter, Object value) {
 		queryParameter.setValue(QueryParameterTableComposite.parameterValueBooleanIndexToObject((Integer)value));
 	}
+//	@Override
+//	public Object getDefaultNonNullValue(QueryParameter queryParameter) {
+//		return Boolean.FALSE;
+//	}
 }
