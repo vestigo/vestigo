@@ -23,6 +23,8 @@ import org.eclipse.swt.events.ControlAdapter;
 import org.eclipse.swt.events.ControlEvent;
 import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
@@ -132,6 +134,12 @@ public abstract class PersistenceUnitPage extends AbstractDataSourceEditorPage
 
 		persistenceUnitNameText = new Text(puParent, SWT.BORDER);
 		persistenceUnitNameText.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+		persistenceUnitNameText.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				markDirty();
+			}
+		});
 
 		syntheticOverrideCheckBox = new Button(puParent, SWT.CHECK);
 		syntheticOverrideCheckBox.setText("Create and use synthetic persistence unit.");
@@ -200,6 +208,7 @@ public abstract class PersistenceUnitPage extends AbstractDataSourceEditorPage
 	private PreferencePageDirtyListener preferencePageDirtyListener = new PreferencePageDirtyListener() {
 		@Override
 		public void onMarkDirty(PreferencePageDirtyEvent event) {
+			logger.info("preferencePageDirtyListener.onMarkDirty: event.source={}", event.getSource());
 			if (event.getSource() instanceof ClasspathPage)
 				searchPersistenceUnitsAsyncInJob();
 		}

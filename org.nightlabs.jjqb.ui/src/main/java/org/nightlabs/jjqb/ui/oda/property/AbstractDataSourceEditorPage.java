@@ -78,6 +78,19 @@ extends DataSourceEditorPage
 	}
 
 	@Override
+	protected void createCustomContents(Composite parent)
+  {
+//      Properties props = getDataSourceProperties();
+		// The original implementation (in ODA) uses the above line, which causes
+		// our multi-page-setup to have empty follow-up-pages in the new-datasource-wizard.
+		// We therefore use the following approach instead. Marco :-)
+		Collection<PreferencePage> preferencePages = PreferencePageSetManager.sharedInstance().getPreferencePages(parent.getShell());
+		Properties props = doCollectProperties(preferencePages);
+    // calls abstract method provided by custom page extension
+    createAndInitCustomControl( parent, props );
+  }
+
+	@Override
 	public void createControl(Composite parent) {
 		super.createControl(parent);
 		PreferencePageSetManager.sharedInstance().register(this);
@@ -236,14 +249,20 @@ extends DataSourceEditorPage
 	 * @return the draft-properties, which means the properties as they are visible in the UI.
 	 */
 	private Properties doCollectProperties() {
+		Collection<PreferencePage> preferencePages = PreferencePageSetManager.sharedInstance().getPreferencePages(this);
+		return doCollectProperties(preferencePages);
+	}
+
+	private Properties doCollectProperties(Collection<PreferencePage> preferencePages) {
 		Properties properties = getDataSourceProperties();
 
 		properties = (Properties) properties.clone();
 
-		Collection<PreferencePage> preferencePages = PreferencePageSetManager.sharedInstance().getPreferencePages(this);
-		for (PreferencePage preferencePage : preferencePages) {
-			if (preferencePage instanceof DataSourceEditorPage)
-				((DataSourceEditorPage)preferencePage).collectCustomProperties(properties);
+		if (preferencePages != null) {
+			for (PreferencePage preferencePage : preferencePages) {
+				if (preferencePage instanceof DataSourceEditorPage)
+					((DataSourceEditorPage)preferencePage).collectCustomProperties(properties);
+			}
 		}
 
 		return properties;

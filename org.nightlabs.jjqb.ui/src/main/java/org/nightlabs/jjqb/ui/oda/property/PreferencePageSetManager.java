@@ -92,6 +92,16 @@ class PreferencePageSetManager
 		return pages;
 	}
 
+	public synchronized Collection<PreferencePage> getPreferencePages(Shell shell)
+	{
+		logger.info("getPreferencePages: shell={}", shell);
+		if (shell == null)
+			throw new IllegalArgumentException("shell == null");
+
+		Set<PreferencePage> pages = shell2PreferencePageMap.get(shell);
+		return pages;
+	}
+
 	public synchronized <P extends PreferencePage> Collection<P> getPreferencePages(PreferencePage page, Class<P> preferencePageClass)
 	{
 		Collection<P> result = new ArrayList<P>();

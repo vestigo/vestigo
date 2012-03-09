@@ -31,11 +31,18 @@ import java.util.TreeMap;
 
 import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.jface.dialogs.Dialog;
+import org.eclipse.jface.resource.FontRegistry;
 import org.eclipse.jface.viewers.CellEditor;
+import org.eclipse.jface.viewers.CheckStateChangedEvent;
+import org.eclipse.jface.viewers.CheckboxTableViewer;
 import org.eclipse.jface.viewers.ColumnWeightData;
 import org.eclipse.jface.viewers.ICellModifier;
+import org.eclipse.jface.viewers.ICheckStateListener;
+import org.eclipse.jface.viewers.ICheckStateProvider;
 import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
+import org.eclipse.jface.viewers.ITableColorProvider;
+import org.eclipse.jface.viewers.ITableFontProvider;
 import org.eclipse.jface.viewers.ITableLabelProvider;
 import org.eclipse.jface.viewers.TableLayout;
 import org.eclipse.jface.viewers.TableViewer;
@@ -44,6 +51,8 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -68,6 +77,9 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 {
 	private static final Logger logger = LoggerFactory.getLogger(EditPropertiesComposite.class);
 
+	private TableViewer tableViewer;
+	private Table table;
+
 	private Button loadFromFile;
 	private Button saveToFile;
 
@@ -77,11 +89,69 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 	private static final String COL_KEY = "Col-Key";
 	private static final String COL_VAL = "Col-Val";
 
-	public static class LabelProvider implements ITableLabelProvider {
+	private Properties input;
+
+	private ICheckStateProvider checkStateProvider = new ICheckStateProvider() {
 		@Override
-		public Image getColumnImage(Object element, int colIdx) {
-			return null;
+		public boolean isGrayed(Object element) {
+			if (!(element instanceof Map.Entry<?, ?>))
+				return true;
+
+			if (!(input instanceof PropertiesWithDefaults))
+				return true;
+
+			@SuppressWarnings("unchecked")
+			Map.Entry<String, String> me = (Entry<String, String>) element;
+			PropertiesWithDefaults propertiesWithDefaults = (PropertiesWithDefaults) input;
+			return !propertiesWithDefaults.getDefaults().containsKey(me.getKey());
 		}
+
+		@Override
+		public boolean isChecked(Object element) {
+			if (!(element instanceof Map.Entry<?, ?>))
+				return true;
+
+			if (input == null) // should be impossible, but better check
+				return true;
+
+			@SuppressWarnings("unchecked")
+			Map.Entry<String, String> me = (Entry<String, String>) element;
+			return input.containsKey(me.getKey());
+		}
+	};
+
+	private ICheckStateListener checkStateListener = new ICheckStateListener() {
+		@Override
+		public void checkStateChanged(CheckStateChangedEvent event) {
+			Object element = event.getElement();
+			if (!(element instanceof Map.Entry<?, ?>) || !(input instanceof PropertiesWithDefaults)) {
+				event.getCheckable().setChecked(element, true);
+				return;
+			}
+
+			@SuppressWarnings("unchecked")
+			Map.Entry<String, String> me = (Entry<String, String>) element;
+			PropertiesWithDefaults propertiesWithDefaults = (PropertiesWithDefaults) input;
+			if (!propertiesWithDefaults.getDefaults().containsKey(me.getKey())) {
+				event.getCheckable().setChecked(element, true);
+				return;
+			}
+
+			if (event.getChecked())
+				getContentProvider().overrideProperty(me);
+			else
+				getContentProvider().resetPropertyToDefault(me);
+
+			tableViewer.refresh(true);
+		}
+	};
+
+	public class LabelProvider implements ITableLabelProvider, ITableFontProvider, ITableColorProvider
+	{
+		private FontRegistry fontRegistry = new FontRegistry();
+
+		@Override
+		public Image getColumnImage(Object element, int colIdx) { return null; }
 
 		@Override
 		public String getColumnText(Object element, int colIdx) {
@@ -97,6 +167,41 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 			return "";
 		}
 
+		/**
+		 * Properties that only exist in the defaults are gray;
+		 * properties that exist in the defaults but are overridden are black and bold;
+		 * properties that do not exist in the defaults are normal (black and not bold).
+		 */
+		@Override
+		public Color getForeground(Object element, int columnIndex) {
+			if (checkStateProvider.isGrayed(element))
+				return null;
+
+			if (checkStateProvider.isChecked(element))
+				return null;
+			else
+				return getDisplay().getSystemColor(SWT.COLOR_DARK_GRAY);
+		}
+
+		@Override
+		public Color getBackground(Object element, int columnIndex) { return null; }
+
+		/**
+		 * Properties that only exist in the defaults are gray;
+		 * properties that exist in the defaults but are overridden are black and bold;
+		 * properties that do not exist in the defaults are normal (black and not bold).
+		 */
+		@Override
+		public Font getFont(Object element, int columnIndex) {
+			if (checkStateProvider.isGrayed(element))
+				return null;
+
+			if (checkStateProvider.isChecked(element))
+				return fontRegistry.getBold(table.getFont().getFontData()[0].getName());
+			else
+				return null;
+		}
+
 		@Override
 		public void addListener(ILabelProviderListener listener) { }
 		@Override
@@ -105,37 +210,53 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 		public boolean isLabelProperty(Object element, String property) { return false; }
 		@Override
 		public void dispose() { }
+
 	}
 
-	public static class ContentProvider implements IStructuredContentProvider {
-
-		private TreeMap<Object, Object> properties;
+	public static class ContentProvider implements IStructuredContentProvider
+	{
+		private Properties propertiesBackup = new Properties();
+		private Properties defaults;
+		private Properties properties;
+		private TreeMap<String, String> propertiesWithDefaultsMerged;
 
 		@Override
 		public Object[] getElements(Object inputElement) {
-			if (inputElement instanceof Map) {
-				this.properties = new TreeMap<Object, Object>((Map<?, ?>)inputElement);
-				Object[] result = new Object[((Map<?, ?>)inputElement).entrySet().size() + 1];
+			defaults = null;
+			if (inputElement instanceof Properties) {
+				properties = (Properties)inputElement;
+				propertiesWithDefaultsMerged = new TreeMap<String, String>();
+
+				if (properties instanceof PropertiesWithDefaults) {
+					defaults = ((PropertiesWithDefaults)properties).getDefaults();
+					if (defaults != null) {
+						for (Map.Entry<?, ?> me : defaults.entrySet())
+							propertiesWithDefaultsMerged.put(me.getKey().toString(), me.getValue().toString());
+					}
+				}
+
+				for (Map.Entry<?, ?> me : properties.entrySet())
+					propertiesWithDefaultsMerged.put(me.getKey().toString(), me.getValue().toString());
+
+				Object[] result = new Object[propertiesWithDefaultsMerged.size() + 1];
 				int i = 0;
-				for (Iterator<Map.Entry<Object, Object>> iter = properties.entrySet().iterator(); iter.hasNext();) {
+				for (Iterator<Map.Entry<String, String>> iter = propertiesWithDefaultsMerged.entrySet().iterator(); iter.hasNext();) {
 					result[i++] = iter.next();
 				}
 				// we put a dummy object as last element for the add new key cell editor
 				result[result.length-1] = new Object();
 				return result;
 			}
-			return Collections.EMPTY_MAP.entrySet().toArray();
+			return Collections.emptyMap().entrySet().toArray();
 		}
 
 		@Override
-		public void dispose() {
-		}
+		public void dispose() { }
 
 		@Override
-		public void inputChanged(Viewer arg0, Object arg1, Object arg2) {
-		}
+		public void inputChanged(Viewer viewer, Object oldInput, Object newInput) { }
 
-		public Map<Object, Object> getProperties() {
+		public Properties getProperties() {
 			return properties;
 		}
 
@@ -145,15 +266,38 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 		}
 
 		public void renameProperty(String oldName, String newName) {
-			Object val = properties.remove(oldName);
+			Object value = properties.remove(oldName);
 			if (!"".equals(newName))
-				properties.put(newName, val);
+				properties.put(newName, value);
 		}
 
-	}
+		public void resetPropertyToDefault(Map.Entry<String, String> mapEntry) {
+			String value = (String) properties.remove(mapEntry.getKey());
+			if (value != null)
+				propertiesBackup.setProperty(mapEntry.getKey(), value);
 
-	protected TableViewer tableViewer;
-	protected Table table;
+			if (defaults != null) {
+				value = defaults.getProperty(mapEntry.getKey());
+				if (value == null)
+					value = "_NULL_";
+
+				mapEntry.setValue(value);
+			}
+		}
+
+		public void overrideProperty(Map.Entry<String, String> mapEntry) {
+			String value = (String) propertiesBackup.remove(mapEntry.getKey());
+
+//			if (value == null && defaults != null)
+//				value = defaults.getProperty(mapEntry.getKey());
+
+			if (value == null)
+				value = "_NULL_";
+
+			properties.setProperty(mapEntry.getKey(), value);
+			mapEntry.setValue(value);
+		}
+	}
 
 	public EditPropertiesComposite(Composite parent, int style) {
 		super(parent, style);
@@ -180,12 +324,43 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 			}
 		});
 
-		tableViewer = new TableViewer(this, SWT.BORDER | SWT.FULL_SELECTION | SWT.SINGLE);
-		GridData tgd = new GridData(GridData.FILL_BOTH);
-		tgd.horizontalSpan = layout.numColumns;
-		table = tableViewer.getTable();
+		createTableViewer();
+
+		addLoadPropertiesHandler(loadPropertiesHandler);
+		addSavePropertiesHandler(savePropertiesHandler);
+	}
+
+	private void createTableViewer()
+	{
+		if (table != null) {
+			table.dispose();
+			table = null;
+			tableViewer = null;
+		}
+
+		GridLayout layout = (GridLayout) getLayout();
+
+		int style = SWT.BORDER | SWT.FULL_SELECTION | SWT.SINGLE;
+		if (input instanceof PropertiesWithDefaults)
+			style |= SWT.CHECK;
+
+//		tableViewer = new TableViewer(this, style);
+//		table = tableViewer.getTable();
+		table = new Table(this, style);
+
+		if ((style & SWT.CHECK) != 0) {
+			tableViewer = new CheckboxTableViewer(table);
+			((CheckboxTableViewer)tableViewer).setCheckStateProvider(checkStateProvider);
+			((CheckboxTableViewer)tableViewer).addCheckStateListener(checkStateListener);
+		}
+		else
+			tableViewer = new TableViewer(table);
+
 		table.setHeaderVisible(true);
 		table.setLinesVisible(true);
+
+		GridData tgd = new GridData(GridData.FILL_BOTH);
+		tgd.horizontalSpan = layout.numColumns;
 		table.setLayoutData(tgd);
 
 		(new TableColumn(table, SWT.LEFT)).setText("name");
@@ -212,8 +387,8 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 			}
 		});
 
-		addLoadPropertiesHandler(loadPropertiesHandler);
-		addSavePropertiesHandler(savePropertiesHandler);
+		tableViewer.setInput(input);
+		layout(true, true);
 	}
 
 	private LoadPropertiesHandler loadPropertiesHandler = new LoadPropertiesHandler() {
@@ -334,7 +509,7 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 						try {
 							Properties properties = handler.load(propsFile, in);
 							if (properties != null) {
-								setInput(properties);
+								setProperties(properties);
 								return;
 							}
 						} catch (OperationCanceledException x) {
@@ -490,23 +665,20 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 		return table;
 	}
 
-	/**
-	 * Sets the tableViewers input.
-	 *
-	 */
-	public void setInput(Map input) {
-		if (tableViewer != null)
-			tableViewer.setInput(input);
+	public void setProperties(Properties properties) {
+		this.input = properties;
+		createTableViewer(); // recreate
+		tableViewer.setInput(input);
 	}
 
 	/**
 	 * Returns the Properties from the ContentProvider
 	 */
-	public Map getProperties() {
+	public Properties getProperties() {
 		return getContentProvider().getProperties();
 	}
 
-	public ContentProvider getContentProvider() {
+	private ContentProvider getContentProvider() {
 		return (ContentProvider)tableViewer.getContentProvider();
 	}
 
@@ -563,7 +735,7 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 			@Override
 			public void run() {
 				// First set the input newly. This will keep most selections stable (i.e. reselect what was selected previously).
-				setInput(getContentProvider().getProperties());
+				setProperties(getContentProvider().getProperties());
 
 				// However, if we changed the property name, the Map.Entry-instance is a new one and thus, we must
 				// re-select manually. Marco :-)

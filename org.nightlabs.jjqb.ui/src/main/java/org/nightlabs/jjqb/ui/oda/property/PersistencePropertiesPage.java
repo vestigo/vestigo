@@ -3,6 +3,7 @@ package org.nightlabs.jjqb.ui.oda.property;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -13,16 +14,26 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.OperationCanceledException;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.DisposeEvent;
+import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
 import org.nightlabs.jjqb.childvm.shared.PropertiesUtil;
 import org.nightlabs.jjqb.childvm.shared.persistencexml.PersistenceUnitHelper;
+import org.nightlabs.jjqb.childvm.shared.persistencexml.PersistenceXml;
+import org.nightlabs.jjqb.childvm.shared.persistencexml.PersistenceXmlScanner;
 import org.nightlabs.jjqb.childvm.shared.persistencexml.jaxb.Persistence;
 import org.nightlabs.jjqb.childvm.shared.persistencexml.jaxb.Persistence.PersistenceUnit;
 import org.nightlabs.jjqb.ui.oda.EditPropertiesComposite;
 import org.nightlabs.jjqb.ui.oda.LoadPropertiesHandler;
+import org.nightlabs.jjqb.ui.oda.PropertiesWithDefaults;
 import org.nightlabs.jjqb.ui.oda.SavePropertiesHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,6 +42,8 @@ public abstract class PersistencePropertiesPage extends AbstractDataSourceEditor
 {
 	private static final Logger logger = LoggerFactory.getLogger(PersistencePropertiesPage.class);
 
+	private Display display;
+	private Map<String, PersistenceUnit> persistenceUnitName2persistenceUnit;
 	private EditPropertiesComposite editPropertiesComposite;
 
 	{
@@ -44,7 +57,7 @@ public abstract class PersistencePropertiesPage extends AbstractDataSourceEditor
 
 		Properties oldProps = removePropertiesManagedByThisPage(properties);
 
-		Properties persistenceProperties = propsFromMap(editPropertiesComposite.getProperties());
+		Properties persistenceProperties = editPropertiesComposite.getProperties();
 		Properties newProps = new Properties();
 		PropertiesUtil.putAll(persistenceProperties, newProps, PropertiesUtil.PREFIX_PERSISTENCE);
 		properties.putAll(newProps);
@@ -84,11 +97,20 @@ public abstract class PersistencePropertiesPage extends AbstractDataSourceEditor
 	{
 		logger.info("createAndInitCustomControl: entered.");
 
+		display = parent.getDisplay();
 		editPropertiesComposite = new EditPropertiesComposite(parent, SWT.NONE);
 		editPropertiesComposite.setLayoutData(null);
 
 		editPropertiesComposite.addLoadPropertiesHandler(0, loadPropertiesHandler);
 		editPropertiesComposite.addSavePropertiesHandler(0, savePropertiesHandler);
+
+		PreferencePageSetManager.sharedInstance().addPreferencePageDirtyListener(preferencePageDirtyListener);
+		editPropertiesComposite.addDisposeListener(new DisposeListener() {
+			@Override
+			public void widgetDisposed(DisposeEvent e) {
+				PreferencePageSetManager.sharedInstance().removePreferencePageDirtyListener(preferencePageDirtyListener);
+			}
+		});
 	}
 
 	private LoadPropertiesHandler loadPropertiesHandler = new LoadPropertiesHandler() {
@@ -212,17 +234,6 @@ public abstract class PersistencePropertiesPage extends AbstractDataSourceEditor
 
 	protected abstract PersistenceUnitHelper getPersistenceUnitHelper();
 
-//	private Property findProperty(Persistence.PersistenceUnit.Properties persistenceUnitProperties, String key) {
-//		for (Property property : persistenceUnitProperties.getProperty()) {
-//			if (key.equals(property.getName()))
-//				return property;
-//		}
-//		return null;
-//	}
-//
-//	protected abstract void populatePropertiesFromPersistenceUnit(Properties properties, PersistenceUnit persistenceUnit);
-//	protected abstract void populatePersistenceUnitFromProperties(PersistenceUnit persistenceUnit, Properties properties);
-
 	private Persistence loadPersistenceXml(JAXBContext context, File file, InputStream persistenceXmlIn) throws JAXBException
 	{
 		Object o = context.createUnmarshaller().unmarshal(persistenceXmlIn);
@@ -234,44 +245,97 @@ public abstract class PersistencePropertiesPage extends AbstractDataSourceEditor
 
 	@Override
 	public void setCustomProperties(Properties properties) {
-		Properties persistenceProperties = PropertiesUtil.getProperties(properties, PropertiesUtil.PREFIX_PERSISTENCE);
-		editPropertiesComposite.setInput(persistenceProperties);
+		String persistenceUnitName = properties.getProperty(PropertiesUtil.PERSISTENCE_UNIT_NAME, "");
+		if (!persistenceUnitName.trim().isEmpty())
+			searchPersistenceUnitsAsyncInJob(properties);
+		else {
+			Properties persistenceProperties = PropertiesUtil.getProperties(properties, PropertiesUtil.PREFIX_PERSISTENCE);
+			editPropertiesComposite.setProperties(persistenceProperties);
+		}
 	}
 
-	private static Properties propsFromMap(Map<?, ?> map)
-	{
-		Properties properties = new Properties();
-		if (map != null) {
-			for (Map.Entry<?, ?> me : map.entrySet()) {
-				if (me.getKey() != null)
-					properties.setProperty(me.getKey().toString(), me.getValue() == null ? "" : me.getValue().toString());
+	private PreferencePageDirtyListener preferencePageDirtyListener = new PreferencePageDirtyListener() {
+		@Override
+		public void onMarkDirty(PreferencePageDirtyEvent event) {
+			logger.info("preferencePageDirtyListener.onMarkDirty: event.source={}", event.getSource());
+
+			if (event.getSource() instanceof ClasspathPage)
+				searchPersistenceUnitsAsyncInJob(collectProperties());
+			else if (event.getSource() instanceof PersistenceUnitPage) {
+				if (persistenceUnitName2persistenceUnit == null)
+					searchPersistenceUnitsAsyncInJob(collectProperties());
+				else
+					loadPersistenceUnitAsDefaults(collectProperties());
 			}
 		}
-		return properties;
+	};
+
+	private void searchPersistenceUnitsAsyncInJob(final Properties properties) {
+		Properties loadingDataDummyProperties = new Properties();
+		loadingDataDummyProperties.setProperty(">>> Loading persistence unit... <<<", "");
+		editPropertiesComposite.setProperties(loadingDataDummyProperties);
+
+		Job job = new Job("Searching persistence units") {
+			@Override
+			protected IStatus run(IProgressMonitor monitor) {
+				PersistenceXmlScanner persistenceXmlScanner = new PersistenceXmlScanner();
+				try {
+					persistenceXmlScanner.open(properties);
+					Collection<PersistenceXml> persistenceXmls = persistenceXmlScanner.searchPersistenceXmls();
+
+					final Map<String, PersistenceUnit> persistenceUnitName2persistenceUnit = new HashMap<String, PersistenceUnit>();
+					for (PersistenceXml persistenceXml : persistenceXmls) {
+						List<PersistenceUnit> persistenceUnits = persistenceXml.getPersistence().getPersistenceUnit();
+						for (PersistenceUnit persistenceUnit : persistenceUnits) {
+							if (!persistenceUnitName2persistenceUnit.containsKey(persistenceUnit.getName()))
+								persistenceUnitName2persistenceUnit.put(persistenceUnit.getName().trim(), persistenceUnit);
+						}
+					}
+
+					display.asyncExec(new Runnable() {
+						@Override
+						public void run() {
+							if (editPropertiesComposite.isDisposed())
+								return;
+
+							PersistencePropertiesPage.this.persistenceUnitName2persistenceUnit = persistenceUnitName2persistenceUnit;
+							loadPersistenceUnitAsDefaults(properties);
+						}
+					});
+
+				} catch (RuntimeException e) {
+					logger.error("persistenceUnitSearchButtonPressed.job.run: " + e, e);
+					throw e;
+				} catch (Exception e) {
+					logger.error("persistenceUnitSearchButtonPressed.job.run: " + e, e);
+					throw new RuntimeException(e);
+				} finally {
+					persistenceXmlScanner.close();
+				}
+
+				return Status.OK_STATUS;
+			}
+		};
+		job.setUser(true);
+		job.schedule();
 	}
-//
-//	protected static void setPropertyIfNotNullAndNotEmpty(Properties properties, String key, String value) {
-//		if (value != null && !value.trim().isEmpty())
-//			properties.setProperty(key, value);
-//	}
-//
-//	protected static void setPropertyIfNotNullAndNotEmpty(Properties properties, String key, Enum<?> value) {
-//		if (value != null)
-//			setPropertyIfNotNullAndNotEmpty(properties, key, value.name());
-//	}
-//
-//	protected static String removeProperty(Properties properties, String key)
-//	{
-//		String result = (String) properties.remove(key);
-//		return result;
-//	}
-//
-//	protected static <E extends Enum<E>> E removeProperty(Properties properties, String key, Class<E> e)
-//	{
-//		String sval = removeProperty(properties, key);
-//		if (sval == null)
-//			return null;
-//
-//		return Enum.valueOf(e, sval);
-//	}
+
+	private void loadPersistenceUnitAsDefaults(Properties properties)
+	{
+		Properties persistenceProperties = PropertiesUtil.getProperties(properties, PropertiesUtil.PREFIX_PERSISTENCE);
+
+		String persistenceUnitName = properties.getProperty(PropertiesUtil.PERSISTENCE_UNIT_NAME, "").trim();
+		if (!persistenceUnitName.isEmpty() && persistenceUnitName2persistenceUnit != null) {
+			PersistenceUnit persistenceUnit = persistenceUnitName2persistenceUnit.get(persistenceUnitName);
+			if (persistenceUnit != null) {
+				Properties defaults = new Properties();
+				getPersistenceUnitHelper().populatePropertiesFromPersistenceUnit(defaults, persistenceUnit);
+				PropertiesWithDefaults propertiesWithDefaults = new PropertiesWithDefaults(defaults);
+				propertiesWithDefaults.putAll(persistenceProperties);
+				persistenceProperties = propertiesWithDefaults;
+			}
+		}
+
+		editPropertiesComposite.setProperties(persistenceProperties);
+	}
 }
