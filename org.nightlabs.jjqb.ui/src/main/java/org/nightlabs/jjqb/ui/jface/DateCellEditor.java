@@ -17,6 +17,7 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.DateTime;
+import org.eclipse.swt.widgets.Display;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
@@ -34,6 +35,7 @@ public class DateCellEditor extends CellEditor
 	private Button nullCheckBox;
 	private DateTime date;
 	private DateTime time;
+	private Display display;
 
 	public DateCellEditor(Composite parent) {
 		super(parent);
@@ -41,6 +43,7 @@ public class DateCellEditor extends CellEditor
 
 	@Override
 	protected Control createControl(Composite parent) {
+		display = parent.getDisplay();
 		Composite composite = new Composite(parent, SWT.NONE);
 
 		nullCheckBox = createNullCheckBox(composite);
@@ -138,18 +141,24 @@ public class DateCellEditor extends CellEditor
 		if (control == null)
 			return;
 
-		nullCheckBox.setFocus();
+		if (nullCheckBox != null) {
+			nullCheckBox.setFocus();
+			nullCheckBox.addFocusListener(getFocusListener());
+		}
+		else if (date != null)
+			date.setFocus();
+		else if (time != null)
+			time.setFocus();
 
-		nullCheckBox.addFocusListener(getFocusListener());
 		date.addFocusListener(getFocusListener());
 		time.addFocusListener(getFocusListener());
 	}
 
 	private FocusListener focusListener;
 
-    private FocusListener getFocusListener() {
-    	if (focusListener == null) {
-    		focusListener = new FocusListener() {
+	private FocusListener getFocusListener() {
+		if (focusListener == null) {
+			focusListener = new FocusListener() {
 
 				@Override
 				public void focusGained(FocusEvent e) {
@@ -161,7 +170,7 @@ public class DateCellEditor extends CellEditor
 				{
 					// We defer the check for the focused control to the next UI event loop cycle, because we just lost the focus and
 					// it must first be gained by another control, before the check makes sense. Hence we cannot do it immediately.
-					nullCheckBox.getDisplay().asyncExec(new Runnable() {
+					display.asyncExec(new Runnable() {
 						@Override
 						public void run() {
 							if (control.isDisposed())
@@ -176,22 +185,25 @@ public class DateCellEditor extends CellEditor
 						}
 					});
 				}
-    		};
-    	}
+			};
+		}
 
-    	return focusListener;
+		return focusListener;
 	}
 
-    protected boolean isValueNull()
-    {
-    	if (nullCheckBox != null)
-    		return nullCheckBox.getSelection();
+	protected boolean isValueNull()
+	{
+		if (nullCheckBox != null)
+			return nullCheckBox.getSelection();
 
-    	if (deferredValue != null)
-    		return false;
+		if (deferredValue != null)
+			return false;
 
-    	return true;
-    }
+		if (display != null)
+			return false;
+
+		return true;
+	}
 
 	@Override
 	protected void doSetValue(Object value)

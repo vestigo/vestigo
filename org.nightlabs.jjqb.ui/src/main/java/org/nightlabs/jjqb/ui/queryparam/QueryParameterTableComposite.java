@@ -30,6 +30,7 @@ import org.eclipse.jface.viewers.TextCellEditor;
 import org.eclipse.jface.viewers.ViewerCell;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.FillLayout;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Table;
 import org.nightlabs.jjqb.childvm.shared.JavaScriptFormula;
@@ -151,8 +152,18 @@ public class QueryParameterTableComposite extends Composite implements ISelectio
 
 		queryParameterType2CellEditor.put(Object.class, textCellEditor);
 		queryParameterType2CellEditor.put(Boolean.class, new ComboBoxCellEditor(table, PARAM_VALUE_BOOLEAN_NAMES, SWT.READ_ONLY));
-		queryParameterType2CellEditor.put(Calendar.class, new CalendarCellEditor(table));
-		queryParameterType2CellEditor.put(Date.class, new DateCellEditor(table));
+		queryParameterType2CellEditor.put(Calendar.class, new CalendarCellEditor(table) {
+			@Override
+			protected Button createNullCheckBox(Composite parent) {
+				return null;
+			}
+		});
+		queryParameterType2CellEditor.put(Date.class, new DateCellEditor(table) {
+			@Override
+			protected Button createNullCheckBox(Composite parent) {
+				return null;
+			}
+		});
 		queryParameterType2CellEditor.put(JavaScriptFormula.class, new JavaScriptFormulaCellEditor(table));
 	}
 
