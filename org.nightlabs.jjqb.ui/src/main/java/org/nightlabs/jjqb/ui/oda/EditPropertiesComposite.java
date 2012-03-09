@@ -22,7 +22,6 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -34,7 +33,9 @@ import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.resource.FontRegistry;
 import org.eclipse.jface.viewers.CellEditor;
 import org.eclipse.jface.viewers.CheckStateChangedEvent;
+import org.eclipse.jface.viewers.CheckboxCellEditor;
 import org.eclipse.jface.viewers.CheckboxTableViewer;
+import org.eclipse.jface.viewers.ColumnPixelData;
 import org.eclipse.jface.viewers.ColumnWeightData;
 import org.eclipse.jface.viewers.ICellModifier;
 import org.eclipse.jface.viewers.ICheckStateListener;
@@ -89,6 +90,7 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 	private List<SavePropertiesHandler> savePropertiesHandlers = new ArrayList<SavePropertiesHandler>();
 
 	private static final String COL_KEY = "Col-Key";
+	private static final String COL_NUL = "Col-Nul";
 	private static final String COL_VAL = "Col-Val";
 
 	private Properties input;
@@ -153,20 +155,38 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 		private FontRegistry fontRegistry = new FontRegistry();
 
 		@Override
-		public Image getColumnImage(Object element, int colIdx) { return null; }
+		public Image getColumnImage(Object element, int colIdx) {
+			if (element instanceof Map.Entry) {
+				Map.Entry<?,?> me = (Entry<?, ?>) element;
+				if (colIdx == 1) {
+					if (PropertiesUtil.isNullValue(getContentProvider().getPropertiesMerged(), me.getKey().toString()))
+						return JJQBUIPlugin.getDefault().getImage(EditPropertiesComposite.class, "isNull", JJQBUIPlugin.IMAGE_SIZE_16x16);
+					else
+						return JJQBUIPlugin.getDefault().getImage(EditPropertiesComposite.class, "isNotNull", JJQBUIPlugin.IMAGE_SIZE_16x16);
+				}
+			}
+			return null;
+		}
 
 		@Override
 		public String getColumnText(Object element, int colIdx) {
 			if (element instanceof Map.Entry) {
+				String key = ((Map.Entry<?,?>)element).getKey().toString();
+				String value = ((Map.Entry<?,?>)element).getValue().toString();
 				switch (colIdx) {
-					case 0: return ((Map.Entry<?,?>)element).getKey().toString();
-					case 1: return ((Map.Entry<?,?>)element).getValue().toString();
+					case 0: return key;
+					case 2: {
+						if (PropertiesUtil.isNullValue(getContentProvider().getPropertiesMerged(), key))
+							return "";
+						else
+							return value;
+					}
 				}
 			} else {
 				if (colIdx == 0)
 					return "Add key ...";
 			}
-			return "";
+			return null;
 		}
 
 		/**
@@ -175,7 +195,11 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 		 * properties that do not exist in the defaults are normal (black and not bold).
 		 */
 		@Override
-		public Color getForeground(Object element, int columnIndex) {
+		public Color getForeground(Object element, int columnIndex)
+		{
+			if (columnIndex == 2 && (element instanceof Map.Entry) && PropertiesUtil.isNullValue(getContentProvider().getPropertiesMerged(), ((Map.Entry<?,?>)element).getKey().toString()))
+				return getDisplay().getSystemColor(SWT.COLOR_GRAY);
+
 			if (checkStateProvider.isGrayed(element))
 				return null;
 
@@ -195,6 +219,9 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 		 */
 		@Override
 		public Font getFont(Object element, int columnIndex) {
+			if (columnIndex == 2 && (element instanceof Map.Entry) && PropertiesUtil.isNullValue(getContentProvider().getPropertiesMerged(), ((Map.Entry<?,?>)element).getKey().toString()))
+				return null;
+
 			if (checkStateProvider.isGrayed(element))
 				return null;
 
@@ -212,7 +239,6 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 		public boolean isLabelProperty(Object element, String property) { return false; }
 		@Override
 		public void dispose() { }
-
 	}
 
 	public static class ContentProvider implements IStructuredContentProvider
@@ -220,32 +246,38 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 		private Properties propertiesBackup = new Properties();
 		private Properties defaults;
 		private Properties properties;
-		private TreeMap<String, String> propertiesWithDefaultsMerged;
+		private TreeMap<String, String> propertiesMerged = new TreeMap<String, String>();
+		private Map<String, Map.Entry<String, String>> key2propertiesMergedMapEntry = new HashMap<String, Map.Entry<String,String>>();;
 
 		@Override
 		public Object[] getElements(Object inputElement) {
 			defaults = null;
 			if (inputElement instanceof Properties) {
 				properties = (Properties)inputElement;
-				propertiesWithDefaultsMerged = new TreeMap<String, String>();
+				propertiesMerged = new TreeMap<String, String>();
+				key2propertiesMergedMapEntry = new HashMap<String, Map.Entry<String,String>>();
 
 				if (properties instanceof PropertiesWithDefaults) {
 					defaults = ((PropertiesWithDefaults)properties).getDefaults();
 					if (defaults != null) {
 						for (Map.Entry<?, ?> me : defaults.entrySet())
-							propertiesWithDefaultsMerged.put(me.getKey().toString(), me.getValue().toString());
+							propertiesMerged.put(me.getKey().toString(), me.getValue().toString());
 					}
 				}
 
 				for (Map.Entry<?, ?> me : properties.entrySet())
-					propertiesWithDefaultsMerged.put(me.getKey().toString(), me.getValue().toString());
+					propertiesMerged.put(me.getKey().toString(), me.getValue().toString());
 
-				Object[] result = new Object[propertiesWithDefaultsMerged.size() + 1];
-				int i = 0;
-				for (Iterator<Map.Entry<String, String>> iter = propertiesWithDefaultsMerged.entrySet().iterator(); iter.hasNext();) {
-					result[i++] = iter.next();
+				List<Map.Entry<String, String>> resultList = new ArrayList<Map.Entry<String, String>>(propertiesMerged.size() + 1);
+				for (Map.Entry<String, String> me : propertiesMerged.entrySet()) {
+					key2propertiesMergedMapEntry.put(me.getKey(), me);
+					if (!PropertiesUtil.isMetaPropertyKeyNullValue(me.getKey()))
+						resultList.add(me);
 				}
+
 				// we put a dummy object as last element for the add new key cell editor
+				Object[] result = new Object[resultList.size() + 1];
+				resultList.toArray(result);
 				result[result.length-1] = new Object();
 				return result;
 			}
@@ -258,6 +290,10 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 		@Override
 		public void inputChanged(Viewer viewer, Object oldInput, Object newInput) { }
 
+		public TreeMap<String, String> getPropertiesMerged() {
+			return propertiesMerged;
+		}
+
 		public Properties getProperties() {
 			return properties;
 		}
@@ -268,33 +304,56 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 		}
 
 		public void renameProperty(String oldName, String newName) {
-			Object value = properties.remove(oldName);
+			properties.remove(oldName);
+			Object value = propertiesMerged.remove(oldName);
 			if (!"".equals(newName))
 				properties.put(newName, value);
 		}
 
-		public void resetPropertyToDefault(Map.Entry<String, String> mapEntry) {
+		public void resetPropertyToDefault(Map.Entry<String, String> mapEntry)
+		{
 			String value = (String) properties.remove(mapEntry.getKey());
 			if (value != null)
 				propertiesBackup.setProperty(mapEntry.getKey(), value);
 
+			String metaPropertyKeyNullValue = PropertiesUtil.getMetaPropertyKeyNullValue(mapEntry.getKey());
+			String metaPropertyValueNullValue = (String) properties.remove(metaPropertyKeyNullValue);
+			if (metaPropertyValueNullValue != null)
+				propertiesBackup.setProperty(metaPropertyKeyNullValue, metaPropertyValueNullValue);
+
 			if (defaults != null) {
 				value = defaults.getProperty(mapEntry.getKey());
-				if (value == null)
-					value = PropertiesUtil.NULL_VALUE;
+				if (value == null) {
+					value = "";
+					propertiesMerged.put(metaPropertyKeyNullValue, Boolean.TRUE.toString());
+				}
 
 				mapEntry.setValue(value);
 			}
 		}
 
-		public void overrideProperty(Map.Entry<String, String> mapEntry) {
+		public void overrideProperty(String key)
+		{
+			Map.Entry<String, String> me = key2propertiesMergedMapEntry.get(key);
+			if (me != null)
+				overrideProperty(me);
+		}
+
+		public void overrideProperty(Map.Entry<String, String> mapEntry)
+		{
 			String value = (String) propertiesBackup.remove(mapEntry.getKey());
+			String metaPropertyKeyNullValue = PropertiesUtil.getMetaPropertyKeyNullValue(mapEntry.getKey());
 
-//			if (value == null && defaults != null)
-//				value = defaults.getProperty(mapEntry.getKey());
-
-			if (value == null)
-				value = PropertiesUtil.NULL_VALUE;
+			if (value == null) {
+				value = mapEntry.getValue();
+				propertiesMerged.put(metaPropertyKeyNullValue, Boolean.TRUE.toString());
+				properties.setProperty(metaPropertyKeyNullValue, Boolean.TRUE.toString());
+			}
+			else {
+				String metaPropertyValueNullValue = (String) propertiesBackup.remove(metaPropertyKeyNullValue);
+				if (metaPropertyValueNullValue != null)
+					properties.setProperty(metaPropertyKeyNullValue, metaPropertyValueNullValue);
+			}
 
 			properties.setProperty(mapEntry.getKey(), value);
 			mapEntry.setValue(value);
@@ -346,17 +405,15 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 		if (input instanceof PropertiesWithDefaults)
 			style |= SWT.CHECK;
 
-//		tableViewer = new TableViewer(this, style);
-//		table = tableViewer.getTable();
 		table = new Table(this, style);
 
-		if ((style & SWT.CHECK) != 0) {
+		if ((style & SWT.CHECK) == 0)
+			tableViewer = new TableViewer(table);
+		else {
 			tableViewer = new CheckboxTableViewer(table);
 			((CheckboxTableViewer)tableViewer).setCheckStateProvider(checkStateProvider);
 			((CheckboxTableViewer)tableViewer).addCheckStateListener(checkStateListener);
 		}
-		else
-			tableViewer = new TableViewer(table);
 
 		table.setHeaderVisible(true);
 		table.setLinesVisible(true);
@@ -365,16 +422,17 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 		tgd.horizontalSpan = layout.numColumns;
 		table.setLayoutData(tgd);
 
-		(new TableColumn(table, SWT.LEFT)).setText("name");
-		(new TableColumn(table, SWT.LEFT)).setText("value");
+		createTableColumn(table, "name", "Property name");
+		createTableColumn(table, "null", "Is the property value 'null' rather than the value displayed in the 'value' column?");
+		createTableColumn(table, "value", "Property value (if 'null' is not checked).");
 
 		configureTableLayout();
 
 		tableViewer.setContentProvider(new ContentProvider());
 		tableViewer.setLabelProvider(new LabelProvider());
 
-		tableViewer.setColumnProperties(new String[] {COL_KEY, COL_VAL});
-		tableViewer.setCellEditors(new CellEditor[] {new TextCellEditor(table), new TextCellEditor(table)});
+		tableViewer.setColumnProperties(new String[] {COL_KEY, COL_NUL, COL_VAL});
+		tableViewer.setCellEditors(new CellEditor[] {new TextCellEditor(table), new CheckboxCellEditor(table), new TextCellEditor(table)});
 		tableViewer.setCellModifier(this);
 
 		// The first table layouting seems to occur before the window (shell) has its final size. Hence the table columns
@@ -391,6 +449,13 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 
 		tableViewer.setInput(input);
 		layout(true, true);
+	}
+
+	private TableColumn createTableColumn(Table table, String text, String toolTipText) {
+		TableColumn tableColumn = new TableColumn(table, SWT.LEFT);
+		tableColumn.setText(text);
+		tableColumn.setToolTipText(toolTipText);
+		return tableColumn;
 	}
 
 	private LoadPropertiesHandler loadPropertiesHandler = new LoadPropertiesHandler() {
@@ -511,6 +576,21 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 						try {
 							Properties properties = handler.load(propsFile, in);
 							if (properties != null) {
+								if (getProperties() instanceof PropertiesWithDefaults) {
+									Properties defaults = ((PropertiesWithDefaults)getProperties()).getDefaults();
+									PropertiesWithDefaults newProps = new PropertiesWithDefaults(defaults);
+									newProps.putAll(properties);
+									properties = newProps;
+									for (Map.Entry<?, ?> me : defaults.entrySet()) {
+										String key = me.getKey().toString();
+										String value = me.getValue().toString();
+										if (!properties.containsKey(key)) {
+											properties.setProperty(key, value);
+											properties.setProperty(PropertiesUtil.getMetaPropertyKeyNullValue(key), Boolean.TRUE.toString());
+										}
+									}
+								}
+
 								setProperties(properties);
 								return;
 							}
@@ -659,6 +739,7 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 	{
 		TableLayout tableLayout = new TableLayout();
 		tableLayout.addColumnData(new ColumnWeightData(1, true));
+		tableLayout.addColumnData(new ColumnPixelData(24, false));
 		tableLayout.addColumnData(new ColumnWeightData(1, true));
 		table.setLayout(tableLayout);
 	}
@@ -686,11 +767,14 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 
 	@Override
 	public boolean canModify(Object element, String property) {
-		return true; // allow
-//		if (element instanceof Map.Entry) {
-//			return COL_VAL.equals(property);
-//		}
-//		return COL_KEY.equals(property);
+		if (element instanceof TableItem)
+			element = ((TableItem)element).getData();
+
+		if (element instanceof Map.Entry<?,?>)
+			return true; // allow
+
+		// If it's our "Add..." row, we only allow writing into the key field.
+		return COL_KEY.equals(property);
 	}
 
 	@Override
@@ -698,13 +782,16 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 		if (element instanceof TableItem)
 			element = ((TableItem)element).getData();
 
-		if (element instanceof Map.Entry) {
+		Object result = "";
+		if (element instanceof Map.Entry<?,?>) {
 			if (COL_KEY.equals(property))
-				return ((Map.Entry<?,?>)element).getKey();
-			if (COL_VAL.equals(property))
-				return ((Map.Entry<?,?>)element).getValue();
+				result = ((Map.Entry<?,?>)element).getKey();
+			else if (COL_NUL.equals(property))
+				result = PropertiesUtil.isNullValue(getContentProvider().getPropertiesMerged(), (String)((Map.Entry<?,?>)element).getKey());
+			else if (COL_VAL.equals(property))
+				result = ((Map.Entry<?,?>)element).getValue();
 		}
-		return "";
+		return result;
 	}
 
 	@Override
@@ -713,7 +800,7 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 		String newSelectedName = null;
 		Object element = ((TableItem)tableElement).getData();
 		if (element instanceof Map.Entry) {
-			String newVal = (String)value;
+			String newVal = value instanceof Boolean ? Boolean.toString((Boolean)value) : (String)value;
 			String oldKey = (String)((Map.Entry<?,?>)element).getKey();
 			if (COL_KEY.equals(property)) {
 				if (oldKey.equals(newVal))
@@ -722,8 +809,15 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 				getContentProvider().renameProperty(oldKey, newVal);
 				newSelectedName = newVal;
 			}
+			else if (COL_NUL.equals(property)) {
+//				if (getContentProvider().getProperties().getProperty(oldKey) == null)
+//					getContentProvider().setProperty(oldKey, getContentProvider().getPropertiesWithDefaultsMerged().get(oldKey));
+				getContentProvider().overrideProperty(oldKey);
+				getContentProvider().setProperty(PropertiesUtil.getMetaPropertyKeyNullValue(oldKey), newVal);
+			}
 			else if (COL_VAL.equals(property)) {
 				getContentProvider().setProperty(oldKey, newVal);
+				getContentProvider().setProperty(PropertiesUtil.getMetaPropertyKeyNullValue(oldKey), Boolean.FALSE.toString());
 			}
 		}
 		else {

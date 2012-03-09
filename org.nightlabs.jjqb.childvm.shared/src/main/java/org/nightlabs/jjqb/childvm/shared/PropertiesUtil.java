@@ -11,7 +11,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.nightlabs.util.IOUtil;
-import org.nightlabs.util.Properties;
 import org.nightlabs.util.Util;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,7 +18,7 @@ import org.slf4j.LoggerFactory;
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
  */
-public class PropertiesUtil extends Properties
+public class PropertiesUtil extends org.nightlabs.util.PropertiesUtil
 {
 	private static final Logger logger = LoggerFactory.getLogger(PropertiesUtil.class);
 
@@ -64,8 +63,6 @@ public class PropertiesUtil extends Properties
 	 * value (equivalent to removing them from the file).
 	 */
 	public static final String PERSISTENCE_UNIT_SYNTHETIC_OVERRIDE = PREFIX_META + "persistenceUnitSyntheticOverride";
-
-	public static final String NULL_VALUE = "_NULL_";
 
 	public static void putAll(java.util.Properties source, java.util.Properties target, String keyPrefix)
 	{
@@ -142,4 +139,20 @@ public class PropertiesUtil extends Properties
 //
 //		return UUID.fromString(profileIDStr);
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+// TODO The following should be pushed upstream into the superclass. Marco :-)
+
+	public static final String NULL_VALUE = "_NULL_"; // TODO remove this!
 }

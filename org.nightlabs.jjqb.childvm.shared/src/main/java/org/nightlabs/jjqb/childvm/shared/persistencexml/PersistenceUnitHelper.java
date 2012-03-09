@@ -29,22 +29,9 @@ public abstract class PersistenceUnitHelper
 		populateSpecialPropertiesFromPersistenceUnit(toProperties, fromPersistenceUnit);
 	}
 
-	protected Map<String, String> filterPersistenceProperties(Map<?, ?> rawPersistenceProperties) {
-		Map<String, String> filteredPersistenceProperties = new HashMap<String, String>();
-		for (Map.Entry<?, ?> me : rawPersistenceProperties.entrySet()) {
-			String key = String.valueOf(me.getKey());
-			String value = String.valueOf(me.getValue());
-			if (PropertiesUtil.NULL_VALUE.equals(value))
-				value = null;
-
-			filteredPersistenceProperties.put(key, value);
-		}
-		return filteredPersistenceProperties;
-	}
-
 	public void populatePersistenceUnitFromProperties(PersistenceUnit toPersistenceUnit, Properties fromProperties)
 	{
-		populatePersistenceUnitFromProperties(toPersistenceUnit, filterPersistenceProperties(fromProperties));
+		populatePersistenceUnitFromProperties(toPersistenceUnit, PropertiesUtil.filterProperties(fromProperties));
 	}
 
 	public void populatePersistenceUnitFromProperties(PersistenceUnit toPersistenceUnit, Map<String, String> fromProperties)

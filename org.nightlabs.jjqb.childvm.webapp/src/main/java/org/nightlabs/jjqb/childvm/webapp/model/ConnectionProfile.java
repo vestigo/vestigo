@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -272,16 +271,17 @@ public abstract class ConnectionProfile
 	}
 
 	protected Map<String, String> filterPersistenceProperties(Map<?, ?> rawPersistenceProperties) {
-		Map<String, String> filteredPersistenceProperties = new HashMap<String, String>();
-		for (Map.Entry<?, ?> me : rawPersistenceProperties.entrySet()) {
-			String key = String.valueOf(me.getKey());
-			String value = String.valueOf(me.getValue());
-			if (PropertiesUtil.NULL_VALUE.equals(value))
-				value = null;
-
-			filteredPersistenceProperties.put(key, value);
-		}
-		return filteredPersistenceProperties;
+		return PropertiesUtil.filterProperties(rawPersistenceProperties);
+//		Map<String, String> filteredPersistenceProperties = new HashMap<String, String>();
+//		for (Map.Entry<?, ?> me : rawPersistenceProperties.entrySet()) {
+//			String key = String.valueOf(me.getKey());
+//			String value = String.valueOf(me.getValue());
+//			if (PropertiesUtil.NULL_VALUE.equals(value))
+//				value = null;
+//
+//			filteredPersistenceProperties.put(key, value);
+//		}
+//		return filteredPersistenceProperties;
 	}
 
 	protected void collectQueryableCandidateClassesInDirectory(Collection<String> classes, ClassLoader classLoader, File classpathDirectory) throws IOException
