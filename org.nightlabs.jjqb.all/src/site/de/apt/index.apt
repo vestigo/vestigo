@@ -5,12 +5,12 @@
 	---
 	2012-02-16
 
-JDO/JPA-Query-Browser (JJQB)
+JDO/JPA-Query-Browser
 
 * Befragen Sie Ihre Objekt-Datenbank!
 
-	Sind Sie es leid, *SQL*-Tabellen zu durchsuchen, obwohl Sie ein *Objekt*-Datenmodell verwenden?
-	Benutzen Sie JJQB, um Ihre Datenbank auf der Objekt-Ebene abzufragen!
+	Sind Sie es leid, <<SQL>>-Tabellen zu durchsuchen, obwohl Sie ein <<Objekt>>-Datenmodell verwenden?
+	Benutzen Sie JJQB, um Ihre Datenbank <<auf der Objekt-Ebene>> abzufragen!
 
 * Probieren Sie JDO/JPA-Abfragen!
 

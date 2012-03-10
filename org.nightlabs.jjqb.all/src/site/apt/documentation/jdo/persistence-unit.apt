@@ -13,6 +13,9 @@ JDO persistence unit
 	classes, and jars that contain all classes to be persisted in a grouping. The <persistence-unit> is named, and the
 	name is used for identifying it.
 
-	In JDO, usage of a <persistence-unit> is optional.
+	In JDO, a <persistence-unit> is optional, because JDO supports dynamic registration of classes at runtime (which
+	JPA does not). But even though it is optional, it is often used to specify some settings configuring the
+	persistence engine (e.g. whether to use optimistic or pessimistic transactions, whether there is a transaction
+	manager, etc.).
 
 	Please read more on the {{{http://www.datanucleus.org/products/accessplatform_3_0/jdo/persistence_unit.html}DataNucleus web site}}.

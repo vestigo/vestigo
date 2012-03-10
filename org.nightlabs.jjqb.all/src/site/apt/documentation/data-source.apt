@@ -37,12 +37,36 @@ Data source
 	by the application to tell the JDO/JPA engine with which entities and which database it wants to work.
 	If your data model is accompanied by a persistence unit, you should make JJQB use it.
 
-	You can override
-	settings that do not apply to the environment provided by JJQB. For example,
-	{{{http://en.wikipedia.org/wiki/Java_Transaction_API}JTA}} is not available in
-	JJQB. If your persistence unit specifies the usage of JTA you'll have to override this setting with the
-	value 'RESOURCE_JOCAL'.
+	Note, that you can override settings which do not apply to the environment provided by JJQB.
+	See {{Persistence properties}} below.
 
 	See {{{./jdo/persistence-unit.html}JDO persistence unit}} or {{{./jpa/persistence-unit.html}JPA persistence unit}}
 	for further details.
 
+* {Persistence properties}
+
+	In most cases, the persistence unit does not declare all information required for a connection. For example,
+	it is common, that the connection-URL as well as user-name and password are not specified in the
+	persistence unit. After all, the application likely needs to communicate with different database servers
+	and therefore this information is stored outside in some configuration specified by an administrator
+	or user (rather than being hard-coded into the persistence unit by the developer).
+
+	Additionally to completing information missing in the persistence unit, the persistence properties
+	can override settings that are already present, but undesired or inadequate. For example, you might want
+	to disable features that slow down the startup process of your persistence engine (e.g. validation of
+	indexes and RDBMS table structure).
+	
+	And if your application runs in a managed environment (aka application server like Glassfish, JBoss, Tomcat etc.),
+	the persistence unit likely declares to make use of {{{http://en.wikipedia.org/wiki/Java_Transaction_API}JTA}}.
+	But JTA is not available in JJQB. Thus, you'll have to override this setting with the
+	value 'RESOURCE_JOCAL'.
+
+* How to set up a JDO data source
+
+	Please {{{./jdo/how-to-set-up-a-jdo-data-source.html}click here}} to see a series of screen shots explaining
+	{{{./jdo/how-to-set-up-a-jdo-data-source.html}how to set up a JDO data source}}.
+
+* How to set up a JPA data source
+
+	Please {{{./jpa/how-to-set-up-a-jpa-data-source.html}click here}} to see a series of screen shots explaining
+	{{{./jpa/how-to-set-up-a-jpa-data-source.html}how to set up a JPA data source}}.

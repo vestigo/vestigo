@@ -1,0 +1,56 @@
+	---
+	How to set up a JDO data source
+	---
+	Marco หงุ่ยตระกูล-Schulze
+	---
+	2012-03-09
+
+How to set up a JDO data source
+
+	In the following we'll show you how to create a new <data source>. The name <data source> and
+	<connection> are often used interchangeably.
+
+* Open the <JDO/JPA Query Browser> perspective
+
+	If you did not yet switch to this perspective, click in the main menu on
+	<Window> => <Open Perspective> => <Other...>:
+
+[../../images/jdo/how-to-set-up-a-jdo-data-source/05.png]
+
+	In the following dialog, you select the <JDO/JPA Query Browser> perspective:
+
+[../../images/jdo/how-to-set-up-a-jdo-data-source/07.png]
+
+* Start the wizard
+
+	In the <Data Source Explorer> view, you right-click on <JDO Connections> and then
+	on <New...>:
+
+[../../images/jdo/how-to-set-up-a-jdo-data-source/10.png]
+
+* Give the new data source a name
+
+	First, you have to specify the name of the new data source. This name is used to reference this
+	data source everywhere in the application. 
+
+[../../images/jdo/how-to-set-up-a-jdo-data-source/20.png]
+
+* Classpath
+
+[../../images/jdo/how-to-set-up-a-jdo-data-source/30.png]
+
+* Persistence unit
+
+[../../images/jdo/how-to-set-up-a-jdo-data-source/40.png]
+
+* Persistence properties
+
+[../../images/jdo/how-to-set-up-a-jdo-data-source/50.png]
+
+* Test the connection
+
+[../../images/jdo/how-to-set-up-a-jdo-data-source/60.png]
+
+* Finish
+
+[../../images/jdo/how-to-set-up-a-jdo-data-source/70.png]
