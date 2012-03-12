@@ -216,7 +216,7 @@ Quick try with tycho - didn't work this way, yet, though :-( Need more research.
 		-->
 		<site>
 			<id>jjqb.nightlabs.com</id>
-			<url>${distributionManagement.site.prefix}/jjqb.nightlabs.com/htdocs/${project.version}/</url>
+			<url>${distributionManagement.site.prefix}/vestigo.nightlabs.com/htdocs/${project.version}/</url>
 		</site>
 	</distributionManagement>
 </project>
