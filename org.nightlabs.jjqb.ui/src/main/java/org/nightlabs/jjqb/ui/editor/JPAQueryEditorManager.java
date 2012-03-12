@@ -23,4 +23,9 @@ public class JPAQueryEditorManager extends QueryEditorManager
 		Class<? extends IDriver> driverClass = DataSourceDriverRegistry.sharedInstance().getDriverClassForProviderID(providerId);
 		return driverClass != null && JPADriver.class.isAssignableFrom(driverClass);
 	}
+
+	@Override
+	protected String getDefaultQueryTextForCandidateClass(String className) {
+		return String.format("SELECT this FROM %s this", className);
+	}
 }

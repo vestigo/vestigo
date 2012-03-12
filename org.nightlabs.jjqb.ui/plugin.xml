@@ -476,6 +476,12 @@
             icon="icons/org.nightlabs.jjqb.ui.queryparam/QueryParameterManagerView.16x16.png"
             category="org.nightlabs.jjqb.ui"
             class="org.nightlabs.jjqb.ui.queryparam.QueryParameterManagerView"/>
+      <view
+            category="org.nightlabs.jjqb.ui"
+            class="org.nightlabs.jjqb.ui.candidateclassview.CandidateClassView"
+            id="org.nightlabs.jjqb.ui.candidateclassview.CandidateClassView"
+            name="Candidate classes">
+      </view>
    </extension>
 
 

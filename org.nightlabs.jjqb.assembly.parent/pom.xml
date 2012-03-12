@@ -412,6 +412,13 @@ Marco :-)
 		</dependency>
 
 		<dependency>
+			<groupId>org.eclipse</groupId>
+			<artifactId>org.eclipse.rcp.source</artifactId>
+			<version>3.7.2</version>
+			<type>zip</type>
+		</dependency>
+
+		<dependency>
 			<groupId>org.eclipse.xsd</groupId>
 			<artifactId>org.eclipse.xsd.runtime</artifactId>
 			<version>2.7.2</version>
@@ -531,6 +538,11 @@ Marco :-)
 								<outputDirectory>${assembly.directory}</outputDirectory>
 								<includeGroupIds>org.eclipse.emf</includeGroupIds>
 								<includeArtifactIds>org.eclipse.emf.runtime</includeArtifactIds>
+								<excludes>
+									**/org.eclipse.ant.core*,
+									**/org.eclipse.core.resources*,
+									**/org.eclipse.core.variables*
+								</excludes>
 							</configuration>
 						</execution>
 						<execution>
@@ -739,9 +751,22 @@ Marco :-)
 									</goals>
 									<configuration>
 										<skip>${skipPluginExecution}</skip>
-										<outputDirectory>${assembly.directory}</outputDirectory>
+										<outputDirectory>${assembly.eclipse.directory}</outputDirectory>
 										<includeGroupIds>org.eclipse.jdt</includeGroupIds>
 										<includeArtifactIds>org.eclipse.jdt.source</includeArtifactIds>
+									</configuration>
+								</execution>
+								<execution>
+									<id>unpack-rcp-source</id>
+									<phase>package</phase>
+									<goals>
+										<goal>unpack-dependencies</goal>
+									</goals>
+									<configuration>
+										<skip>${skipPluginExecution}</skip>
+										<outputDirectory>${assembly.eclipse.directory}</outputDirectory>
+										<includeGroupIds>org.eclipse</includeGroupIds>
+										<includeArtifactIds>org.eclipse.rcp.source</includeArtifactIds>
 									</configuration>
 								</execution>
 								<execution>

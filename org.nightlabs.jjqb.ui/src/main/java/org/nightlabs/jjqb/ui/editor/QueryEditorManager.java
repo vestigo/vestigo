@@ -34,6 +34,7 @@ import org.eclipse.datatools.connectivity.IManagedConnection;
 import org.eclipse.datatools.connectivity.IProfileListener;
 import org.eclipse.datatools.connectivity.ManagedConnectionAdapter;
 import org.eclipse.datatools.connectivity.ProfileManager;
+import org.eclipse.datatools.connectivity.ProfileRule;
 import org.eclipse.datatools.connectivity.oda.IConnection;
 import org.eclipse.datatools.connectivity.oda.IQuery;
 import org.eclipse.datatools.connectivity.oda.IResultSet;
@@ -56,6 +57,7 @@ import org.nightlabs.jjqb.core.oda.DelegatingConnection;
 import org.nightlabs.jjqb.core.oda.DelegatingResultSet;
 import org.nightlabs.jjqb.ui.JJQBUIPlugin;
 import org.nightlabs.jjqb.ui.detailtree.ObjectGraphDetailTreeView;
+import org.nightlabs.jjqb.ui.oda.OdaUtil;
 import org.nightlabs.jjqb.ui.queryparam.QueryParameter;
 import org.nightlabs.jjqb.ui.queryparam.QueryParameterManager;
 import org.nightlabs.jjqb.ui.resultsettable.ResultSetTableModel;
@@ -76,8 +78,6 @@ public abstract class QueryEditorManager
 		connectionProfiles,
 		connectionProfile
 	}
-
-	public static final String connectionFactoryID = "org.eclipse.datatools.connectivity.oda.IConnection";
 
 	public static final String PROPERTY_LAST_CONNECTION_PROFILE_INSTANCE_ID = "lastConnectionProfile.instanceID";
 	private static final String QUERY_TEXT_PROPERTIES_BEGIN_MARKER = "//------PROPERTIES_BEGIN------";
@@ -170,7 +170,7 @@ public abstract class QueryEditorManager
 			throw new IllegalStateException("Thread mismatch! This method must be called on the same SWT UI thread as the instance was created!");
 	}
 
-	public QueryEditor getQueryBrowser()
+	public QueryEditor getQueryEditor()
 	{
 		assertUIThread();
 		return queryEditor;
@@ -386,53 +386,50 @@ public abstract class QueryEditorManager
 		return exceptions;
 	}
 
-	public IConnection createConnection(IConnectionProfile connectionProfile, IProgressMonitor monitor)
+	private IConnection createConnection(IConnectionProfile connectionProfile, IProgressMonitor monitor)
 	{
 		logger.info("createConnection: connectionProfile.name={} connectionProfile.idHashCode={}", connectionProfile.getName(), Integer.toHexString(System.identityHashCode(connectionProfile)));
-		synchronized (connectionProfile) {
-			final IManagedConnection managedConnection = connectionProfile.getManagedConnection(connectionFactoryID);
-
-			if (managedConnection.getConnection() == null || !managedConnection.isConnected()) {
-				IStatus status = connectionProfile.connectWithoutJob();
-				if (IStatus.OK != status.getCode()) {
-					Throwable exception = findSingleException(status);
-					if (exception != null)
-						throw new RuntimeException(exception);
-					else
-						throw new RuntimeException("Opening connection failed: " + status);
-				}
+		final IManagedConnection managedConnection = OdaUtil.getManagedConnection(connectionProfile);
+		if (!managedConnection.isConnected()) {
+			IStatus status = connectionProfile.connectWithoutJob();
+			if (IStatus.OK != status.getCode()) {
+				Throwable exception = findSingleException(status);
+				if (exception != null)
+					throw new RuntimeException(exception);
+				else
+					throw new RuntimeException("Opening connection failed: " + status);
 			}
-
-			final org.eclipse.datatools.connectivity.IConnection connection = connectionProfile.createConnection(connectionFactoryID);
-			if (connection == null)
-				throw new IllegalStateException("odaConnectionProfile.createConnection(...) returned null");
-
-			final CloseConnectionManagedConnectionListener[] ccmcl = new CloseConnectionManagedConnectionListener[1];
-
-			IConnection rawConnection = (IConnection) connection.getRawConnection();
-			IConnection delegatingConnection = new DelegatingConnection(rawConnection) {
-				@Override
-				public void close() throws OdaException
-				{
-					ResultSetTableModel model;
-					synchronized(QueryEditorManager.this) {
-						model = connection2ResultSetTableModel.get(this);
-					}
-					if (model != null)
-						model.close();
-
-					if (ccmcl[0] != null)
-						managedConnection.removeConnectionListener(ccmcl[0]);
-
-					connection.close();
-					super.close();
-				}
-			};
-			CloseConnectionManagedConnectionListener closeConnectionManagedConnectionListener = new CloseConnectionManagedConnectionListener(connection, delegatingConnection);
-			ccmcl[0] = closeConnectionManagedConnectionListener;
-			managedConnection.addConnectionListener(closeConnectionManagedConnectionListener);
-			return delegatingConnection;
 		}
+
+		final org.eclipse.datatools.connectivity.IConnection connection = connectionProfile.createConnection(OdaUtil.connectionFactoryID);
+		if (connection == null)
+			throw new IllegalStateException("odaConnectionProfile.createConnection(...) returned null");
+
+		final CloseConnectionManagedConnectionListener[] ccmcl = new CloseConnectionManagedConnectionListener[1];
+
+		IConnection rawConnection = (IConnection) connection.getRawConnection();
+		IConnection delegatingConnection = new DelegatingConnection(rawConnection) {
+			@Override
+			public void close() throws OdaException
+			{
+				ResultSetTableModel model;
+				synchronized(QueryEditorManager.this) {
+					model = connection2ResultSetTableModel.get(this);
+				}
+				if (model != null)
+					model.close();
+
+				if (ccmcl[0] != null)
+					managedConnection.removeConnectionListener(ccmcl[0]);
+
+				connection.close();
+				super.close();
+			}
+		};
+		CloseConnectionManagedConnectionListener closeConnectionManagedConnectionListener = new CloseConnectionManagedConnectionListener(connection, delegatingConnection);
+		ccmcl[0] = closeConnectionManagedConnectionListener;
+		managedConnection.addConnectionListener(closeConnectionManagedConnectionListener);
+		return delegatingConnection;
 	}
 
 	private static final class StatusCarrier {
@@ -452,14 +449,6 @@ public abstract class QueryEditorManager
 			}
 
 			if (MessageDialog.openQuestion(parentShell, "Connection not open!", "The connection is not open. Do you want to open the connection now?")) {
-				IManagedConnection managedConnection = odaConnectionProfile.getManagedConnection(QueryEditorManager.connectionFactoryID);
-				if (managedConnection == null)
-					throw new IllegalStateException("odaConnectionProfile.getManagedConnection(QueryEditorManager.connectionFactoryID) returned null!");
-
-				// This might actually happen, if the connection is opened multiple times in parallel (we try to avoid blocking the UI thread, hence this is possible).
-//				if (managedConnection.getConnection() != null && managedConnection.isConnected())
-//					throw new IllegalStateException("The managedConnection is connected! Sth. is very odd here!");
-
 				final StatusCarrier statusCarrier = new StatusCarrier();
 
 				Job openJob = new Job("Opening connection") {
@@ -467,16 +456,11 @@ public abstract class QueryEditorManager
 					protected IStatus run(IProgressMonitor monitor) {
 						logger.info("getJJQBConnectionProfileAskingUserIfNecessary.openJob.run: odaConnectionProfile.name={} odaConnectionProfile.idHashCode={}", odaConnectionProfile.getName(), Integer.toHexString(System.identityHashCode(odaConnectionProfile)));
 						try {
-							synchronized(odaConnectionProfile) {
-								IManagedConnection managedConnection = odaConnectionProfile.getManagedConnection(QueryEditorManager.connectionFactoryID);
-								if (managedConnection == null)
-									throw new IllegalStateException("odaConnectionProfile.getManagedConnection(QueryEditorManager.connectionFactoryID) returned null!");
-
-								if (managedConnection.getConnection() == null || !managedConnection.isConnected())
-									statusCarrier.status = odaConnectionProfile.connectWithoutJob();
-								else
-									statusCarrier.status = Status.OK_STATUS;
-							}
+							IManagedConnection managedConnection = OdaUtil.getManagedConnection(odaConnectionProfile);
+							if (!managedConnection.isConnected())
+								statusCarrier.status = odaConnectionProfile.connectWithoutJob();
+							else
+								statusCarrier.status = Status.OK_STATUS;
 						} finally {
 							if (statusCarrier.status == null)
 								statusCarrier.status = Status.CANCEL_STATUS;
@@ -486,6 +470,7 @@ public abstract class QueryEditorManager
 				};
 				openJob.setPriority(Job.INTERACTIVE);
 				openJob.setUser(true);
+				openJob.setRule(new ProfileRule(odaConnectionProfile));
 				openJob.schedule();
 
 				IStatus status = null;
@@ -765,6 +750,8 @@ public abstract class QueryEditorManager
 
 		};
 		job.setUser(true);
+		job.setPriority(Job.INTERACTIVE);
+		job.setRule(new ProfileRule(connectionProfile));
 		job.schedule();
 	}
 
@@ -1038,7 +1025,7 @@ public abstract class QueryEditorManager
 
 	private void markEditorDirty()
 	{
-		getQueryBrowser().markDirty();
+		getQueryEditor().markDirty();
 	}
 
 	public void addPropertyChangeListener(PropertyChangeListener listener) {
@@ -1072,4 +1059,14 @@ public abstract class QueryEditorManager
 	}
 
 	private static final void doNothing() { }
+
+	public void assignDefaultQueryTextForCandidateClass(String className) {
+		String queryText = getDefaultQueryTextForCandidateClass(className);
+		if (queryEditor.getQueryText().equals(queryText))
+			executeQuery();
+		else
+			queryEditor.setQueryText(queryText);
+	}
+
+	protected abstract String getDefaultQueryTextForCandidateClass(String className);
 }

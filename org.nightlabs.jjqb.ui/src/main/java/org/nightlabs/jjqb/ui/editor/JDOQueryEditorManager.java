@@ -22,4 +22,9 @@ public class JDOQueryEditorManager extends QueryEditorManager
 		Class<? extends IDriver> driverClass = DataSourceDriverRegistry.sharedInstance().getDriverClassForProviderID(providerId);
 		return driverClass != null && JDODriver.class.isAssignableFrom(driverClass);
 	}
+
+	@Override
+	protected String getDefaultQueryTextForCandidateClass(String className) {
+		return String.format("SELECT FROM %s", className);
+	}
 }

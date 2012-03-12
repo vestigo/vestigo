@@ -56,10 +56,10 @@ public class ResultSetTableView extends ViewPart implements LabelTextOptionsCont
 //			}
 //		});
 
-		// in case, this view is opened AFTER the query browser editor, we register the currently active editor
+		// in case, this view is opened AFTER the query editor, we register the currently active editor
 		IEditorPart activeEditor = getSite().getPage().getActiveEditor();
 		if (activeEditor instanceof QueryEditor)
-			registerQueryBrowser((QueryEditor) activeEditor);
+			registerQueryEditor((QueryEditor) activeEditor);
 
 //		IToolBarManager toolBarManager = getViewSite().getActionBars().getToolBarManager();
 //		if (toolBarManager.find(nextActionGroupMarkerID) == null) {
@@ -92,7 +92,7 @@ public class ResultSetTableView extends ViewPart implements LabelTextOptionsCont
 //		getSite().getSelectionProvider().setSelection(model == null ? StructuredSelection.EMPTY : new StructuredSelection(model));
 	}
 
-	private void registerQueryBrowser(QueryEditor queryEditor)
+	private void registerQueryEditor(QueryEditor queryEditor)
 	{
 		if (queryEditor == null)
 			throw new IllegalArgumentException("queryEditor == null");
@@ -100,7 +100,7 @@ public class ResultSetTableView extends ViewPart implements LabelTextOptionsCont
 		if (this.queryEditor == queryEditor)
 			return;
 
-		unregisterQueryBrowser(); // just in case, we have another one assigned.
+		unregisterQueryEditor(); // just in case, we have another one assigned.
 
 		this.queryEditor = queryEditor;
 		// TODO this must be refactored when we support multiple resultSets per query browser!
@@ -109,7 +109,7 @@ public class ResultSetTableView extends ViewPart implements LabelTextOptionsCont
 		queryEditor.getQueryEditorManager().addExecuteQueryListener(executeQueryListener);
 	}
 
-	private void unregisterQueryBrowser()
+	private void unregisterQueryEditor()
 	{
 		if (queryEditor != null) {
 			queryEditor.getQueryEditorManager().removeExecuteQueryListener(executeQueryListener);
@@ -134,7 +134,7 @@ public class ResultSetTableView extends ViewPart implements LabelTextOptionsCont
 			logger.info("partVisible: partRef={}", partRef);
 			IWorkbenchPart part = partRef.getPart(true);
 			if (part instanceof QueryEditor)
-				registerQueryBrowser((QueryEditor) part);
+				registerQueryEditor((QueryEditor) part);
 		}
 
 		@Override
@@ -152,7 +152,7 @@ public class ResultSetTableView extends ViewPart implements LabelTextOptionsCont
 			logger.info("partHidden: partRef={}", partRef);
 			IWorkbenchPart part = partRef.getPart(true);
 			if (queryEditor == part)
-				unregisterQueryBrowser();
+				unregisterQueryEditor();
 		}
 
 		@Override
@@ -176,7 +176,7 @@ public class ResultSetTableView extends ViewPart implements LabelTextOptionsCont
 
 			IWorkbenchPart part = partRef.getPart(true);
 			if (part instanceof QueryEditor)
-				registerQueryBrowser((QueryEditor) part);
+				registerQueryEditor((QueryEditor) part);
 		}
 	};
 
@@ -189,7 +189,7 @@ public class ResultSetTableView extends ViewPart implements LabelTextOptionsCont
 	private DisposeListener disposeListener = new DisposeListener() {
 		@Override
 		public void widgetDisposed(DisposeEvent e) {
-			unregisterQueryBrowser();
+			unregisterQueryEditor();
 			getSite().getPage().removePartListener(partListener);
 		}
 	};

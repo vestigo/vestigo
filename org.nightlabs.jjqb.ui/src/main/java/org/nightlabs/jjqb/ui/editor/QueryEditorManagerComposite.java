@@ -142,6 +142,20 @@ public class QueryEditorManagerComposite extends Composite
 		connectionProfileCombo.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
+				// https://bugs.eclipse.org/bugs/show_bug.cgi?id=306006
+//				executeQueryButton.setFocus();
+//				connectionProfileCombo.setFocus();
+				// Fuck, the above causes the combo to loose and not re-gain the focus!
+				// The below works better, but causes strange focus bugs when afterwards clicking into
+				// the "Data Source Explorer" view. The focus stays somehow lost until I click on the view's title header-tab. Marco.
+//				try {
+//					((IEditorPart)queryEditorManager.getQueryEditor()).getEditorSite().getPage().openEditor(
+//							((IEditorPart)queryEditorManager.getQueryEditor()).getEditorInput(),
+//							queryEditorManager.getQueryEditor().getClass().getName()
+//					);
+//				} catch (PartInitException e1) {
+//					logger.warn("connectionProfileCombo_widgetSelected: " + e1, e1);
+//				}
 				connectionProfileComboSelected();
 			}
 		});
