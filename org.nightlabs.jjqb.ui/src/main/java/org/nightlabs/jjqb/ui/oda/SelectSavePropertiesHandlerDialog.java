@@ -41,10 +41,6 @@ public class SelectSavePropertiesHandlerDialog extends TitleAreaDialog {
 		this.title = title; // we cannot call this.setTitle(...) here - defer!
 		this.message = message; // we cannot call this.setMessage(...) here - defer!
 		this.savePropertiesHandlers = savePropertiesHandlers;
-
-//		for (int i = 0; i < 50; i++) {
-//			persistenceUnitNames.add("Test " + i);
-//		}
 	}
 
 	@Override

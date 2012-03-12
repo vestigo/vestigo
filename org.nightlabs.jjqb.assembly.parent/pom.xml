@@ -148,16 +148,19 @@ Marco :-)
 			<artifactId>jersey-core</artifactId>
 		</dependency>
 
-		<!--
 		<dependency>
+			<!-- Xtext requires log4j. -->
 			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<!- FIXME Have a custom bundled log4j here, because the official release 
-				has two identical packages in Import-Package => OSGI won't resolve that bundle ->
-			<version>1.2.16-NL</version>
+			<artifactId>org.apache.log4j</artifactId>
+			<!-- FIXME Have a custom bundled log4j here, because the official release 
+				has two identical packages in Import-Package => OSGI won't resolve that bundle
+				2012-03-12: Switched to artifactId = org.apache.log4j with Bundle-Symbolic-Name being the same, because
+				Xtext requires this symbolic-name (and exactly this version).
+			-->
+			<version>1.2.15.v201012070815</version>
 		</dependency>
 
-		<!- jmdns needed by log4j ->
+		<!-- jmdns needed by log4j ... hmmm, not by the currently used version... ->
 		<dependency>
 			<groupId>javax.jmdns</groupId>
 			<artifactId>jmdns</artifactId>
@@ -169,15 +172,22 @@ Marco :-)
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
 		</dependency>
-<!--
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
 		</dependency>
--->
+<!--
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-simple</artifactId>
+		</dependency>
+-->
+
+		<dependency>
+			<!-- Xtext requires commons-lang. -->
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.6</version>
 		</dependency>
 
 		<!-- BEGIN JAXB -->
@@ -229,6 +239,11 @@ Marco :-)
 		<dependency>
 			<groupId>javax.jdo</groupId>
 			<artifactId>jdo-api</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.eclipse.persistence</groupId>
+			<artifactId>javax.persistence</artifactId>
 		</dependency>
 
 		<!-- BEGIN Xtext ->
@@ -344,6 +359,72 @@ Marco :-)
 		<!-- END XText additional RUNTIME libs for assembly -->
 
 		<dependency>
+		    <groupId>org.eclipse.dtp</groupId>
+		    <artifactId>org.eclipse.dtp.runtime</artifactId>
+		    <version>1.9.2</version>
+		    <type>zip</type>
+		</dependency>
+		<dependency>
+		    <groupId>org.eclipse.dtp</groupId>
+		    <artifactId>org.eclipse.dtp.sdk</artifactId>
+		    <version>1.9.2</version>
+		    <type>zip</type>
+		</dependency>
+
+		<dependency>
+		    <groupId>org.eclipse.emf</groupId>
+		    <artifactId>org.eclipse.emf.runtime</artifactId>
+		    <version>2.7.2</version>
+		    <type>zip</type>
+		</dependency>
+		<dependency>
+		    <groupId>org.eclipse.emf</groupId>
+		    <artifactId>org.eclipse.emf.sourcedoc</artifactId>
+		    <version>2.7.2</version>
+		    <type>zip</type>
+		</dependency>
+
+		<dependency>
+		    <groupId>org.eclipse.gef</groupId>
+		    <artifactId>org.eclipse.gef.runtime</artifactId>
+		    <version>3.7.2</version>
+		    <type>zip</type>
+		</dependency>
+		<dependency>
+		    <groupId>org.eclipse.gef</groupId>
+		    <artifactId>org.eclipse.gef.sdk</artifactId>
+		    <version>3.7.2</version>
+		    <type>zip</type>
+		</dependency>
+
+		<dependency>
+			<!-- JDT is required by Xtext :-( Still, we should not make our core dependent on it!!! -->
+			<groupId>org.eclipse.jdt</groupId>
+			<artifactId>org.eclipse.jdt.runtime</artifactId>
+			<version>3.7.2-NL</version>
+			<type>zip</type>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.jdt</groupId>
+			<artifactId>org.eclipse.jdt.source</artifactId>
+			<version>3.7.2</version>
+			<type>zip</type>
+		</dependency>
+
+		<dependency>
+			<groupId>org.eclipse.xsd</groupId>
+			<artifactId>org.eclipse.xsd.runtime</artifactId>
+			<version>2.7.2</version>
+			<type>zip</type>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.xsd</groupId>
+			<artifactId>org.eclipse.xsd.sourcedoc</artifactId>
+			<version>2.7.2</version>
+			<type>zip</type>
+		</dependency>
+
+		<dependency>
 		    <groupId>org.eclipse.xtext</groupId>
 		    <artifactId>org.eclipse.xtext.runtime</artifactId>
 		    <version>2.2.1</version>
@@ -437,6 +518,45 @@ Marco :-)
 									**/org.eclipse.ui.navigator*,
 									**/org.eclipse.update*
 								</excludes>
+							</configuration>
+						</execution>
+						<execution>
+							<id>unpack-emf</id>
+							<phase>package</phase>
+							<goals>
+								<goal>unpack-dependencies</goal>
+							</goals>
+							<configuration>
+								<skip>${skipPluginExecution}</skip>
+								<outputDirectory>${assembly.directory}</outputDirectory>
+								<includeGroupIds>org.eclipse.emf</includeGroupIds>
+								<includeArtifactIds>org.eclipse.emf.runtime</includeArtifactIds>
+							</configuration>
+						</execution>
+						<execution>
+							<id>unpack-jdt</id>
+							<phase>package</phase>
+							<goals>
+								<goal>unpack-dependencies</goal>
+							</goals>
+							<configuration>
+								<skip>${skipPluginExecution}</skip>
+								<outputDirectory>${assembly.directory}</outputDirectory>
+								<includeGroupIds>org.eclipse.jdt</includeGroupIds>
+								<includeArtifactIds>org.eclipse.jdt.runtime</includeArtifactIds>
+							</configuration>
+						</execution>
+						<execution>
+							<id>unpack-xsd</id>
+							<phase>package</phase>
+							<goals>
+								<goal>unpack-dependencies</goal>
+							</goals>
+							<configuration>
+								<skip>${skipPluginExecution}</skip>
+								<outputDirectory>${assembly.directory}</outputDirectory>
+								<includeGroupIds>org.eclipse.xsd</includeGroupIds>
+								<includeArtifactIds>org.eclipse.xsd.runtime</includeArtifactIds>
 							</configuration>
 						</execution>
 						<execution>
@@ -546,13 +666,14 @@ Marco :-)
 
 	<profiles>
 		<profile>
-			<id>include-test-plugins</id>
+			<id>include-dev-stuff</id>
 			<activation>
 				<property>
-					<name>assembly.includeTestPlugins</name>
+					<name>assembly.includeDevStuff</name>
 					<value>!false</value>
 				</property>
 			</activation>
+
 			<dependencies>
 				<dependency>
 					<groupId>org.eclipse.xtext</groupId>
@@ -563,6 +684,133 @@ Marco :-)
 					<artifactId>org.eclipse.xtext.ui.junit</artifactId>
 				</dependency>
 			</dependencies>
+
+			<build>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-dependency-plugin</artifactId>
+							<executions>
+								<execution>
+									<id>unpack-dtp</id>
+									<phase>package</phase>
+									<goals>
+										<goal>unpack-dependencies</goal>
+									</goals>
+									<configuration>
+										<skip>${skipPluginExecution}</skip>
+										<outputDirectory>${assembly.directory}</outputDirectory>
+										<includeGroupIds>org.eclipse.dtp</includeGroupIds>
+										<includeArtifactIds>org.eclipse.dtp.sdk</includeArtifactIds>
+									</configuration>
+								</execution>
+								<execution>
+									<id>unpack-emf-sourcedoc</id>
+									<phase>package</phase>
+									<goals>
+										<goal>unpack-dependencies</goal>
+									</goals>
+									<configuration>
+										<skip>${skipPluginExecution}</skip>
+										<outputDirectory>${assembly.directory}</outputDirectory>
+										<includeGroupIds>org.eclipse.emf</includeGroupIds>
+										<includeArtifactIds>org.eclipse.emf.sourcedoc</includeArtifactIds>
+									</configuration>
+								</execution>
+								<execution>
+									<id>unpack-gef</id>
+									<phase>package</phase>
+									<goals>
+										<goal>unpack-dependencies</goal>
+									</goals>
+									<configuration>
+										<skip>${skipPluginExecution}</skip>
+										<outputDirectory>${assembly.directory}</outputDirectory>
+										<includeGroupIds>org.eclipse.gef</includeGroupIds>
+										<includeArtifactIds>org.eclipse.gef.sdk</includeArtifactIds>
+									</configuration>
+								</execution>
+								<execution>
+									<id>unpack-jdt-source</id>
+									<phase>package</phase>
+									<goals>
+										<goal>unpack-dependencies</goal>
+									</goals>
+									<configuration>
+										<skip>${skipPluginExecution}</skip>
+										<outputDirectory>${assembly.directory}</outputDirectory>
+										<includeGroupIds>org.eclipse.jdt</includeGroupIds>
+										<includeArtifactIds>org.eclipse.jdt.source</includeArtifactIds>
+									</configuration>
+								</execution>
+								<execution>
+									<id>unpack-xsd-sourcedoc</id>
+									<phase>package</phase>
+									<goals>
+										<goal>unpack-dependencies</goal>
+									</goals>
+									<configuration>
+										<skip>${skipPluginExecution}</skip>
+										<outputDirectory>${assembly.directory}</outputDirectory>
+										<includeGroupIds>org.eclipse.xsd</includeGroupIds>
+										<includeArtifactIds>org.eclipse.xsd.sourcedoc</includeArtifactIds>
+									</configuration>
+								</execution>
+							</executions>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+			</build>
+		</profile>
+
+		<profile>
+			<id>NOT-include-dev-stuff</id>
+			<activation>
+				<property>
+					<name>assembly.includeDevStuff</name>
+					<value>false</value>
+				</property>
+			</activation>
+
+			<build>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-dependency-plugin</artifactId>
+							<executions>
+								<execution>
+									<id>unpack-dtp</id>
+									<phase>package</phase>
+									<goals>
+										<goal>unpack-dependencies</goal>
+									</goals>
+									<configuration>
+										<skip>${skipPluginExecution}</skip>
+										<outputDirectory>${assembly.directory}</outputDirectory>
+										<includeGroupIds>org.eclipse.dtp</includeGroupIds>
+										<includeArtifactIds>org.eclipse.dtp.runtime</includeArtifactIds>
+									</configuration>
+								</execution>
+								<execution>
+									<id>unpack-gef</id>
+									<phase>package</phase>
+									<goals>
+										<goal>unpack-dependencies</goal>
+									</goals>
+									<configuration>
+										<skip>${skipPluginExecution}</skip>
+										<outputDirectory>${assembly.directory}</outputDirectory>
+										<includeGroupIds>org.eclipse.gef</includeGroupIds>
+										<includeArtifactIds>org.eclipse.gef.runtime</includeArtifactIds>
+									</configuration>
+								</execution>
+							</executions>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+			</build>
 		</profile>
 
 		<profile>

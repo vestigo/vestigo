@@ -50,10 +50,6 @@ public class SelectPersistenceUnitDialog extends TitleAreaDialog {
 		this.message = message; // we cannot call this.setMessage(...) here - defer!
 		this.persistenceUnitNames = persistenceUnitNames;
 		this.selectedPersistenceUnitName = selectedPersistenceUnitName;
-
-//		for (int i = 0; i < 50; i++) {
-//			persistenceUnitNames.add("Test " + i);
-//		}
 	}
 
 	@Override
