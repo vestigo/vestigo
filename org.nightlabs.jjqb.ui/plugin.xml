@@ -564,5 +564,44 @@
           providerID="org.nightlabs.jjqb.core.oda.JPADriver">
     </queryFileExtension>
  </extension>
+ <extension
+       point="org.eclipse.ui.commands">
+    <command
+          categoryId="org.nightlabs.jjqb.ui"
+          defaultHandler="org.nightlabs.jjqb.ui.editor.ExecuteQueryCommandHandler"
+          description="Execute the query of the active editor."
+          id="org.nightlabs.jjqb.ui.editor.ExecuteQueryCommand"
+          name="Execute query">
+    </command>
+    <category
+          id="org.nightlabs.jjqb.ui"
+          name="JDO/JPA Query Browser">
+    </category>
+ </extension>
+ <extension
+       point="org.eclipse.ui.menus">
+    <menuContribution
+          allPopups="false"
+          locationURI="toolbar:org.eclipse.ui.main.toolbar">
+       <toolbar
+             id="org.nightlabs.jjqb.ui.editor">
+          <command
+                commandId="org.nightlabs.jjqb.ui.editor.ExecuteQueryCommand"
+                icon="icons/org.nightlabs.jjqb.ui.editor/ExecuteQueryCommand.16x16.png"
+                style="push"
+                tooltip="Execute query">
+          </command>
+       </toolbar>
+    </menuContribution>
+ </extension>
+ <extension
+       point="org.eclipse.ui.bindings">
+    <key
+          commandId="org.nightlabs.jjqb.ui.editor.ExecuteQueryCommand"
+          contextId="org.eclipse.ui.contexts.window"
+          schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+          sequence="Ctrl+F5">
+    </key>
+ </extension>
 
 </plugin>

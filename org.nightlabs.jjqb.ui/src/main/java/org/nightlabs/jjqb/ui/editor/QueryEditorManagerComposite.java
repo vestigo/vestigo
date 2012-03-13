@@ -13,8 +13,10 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
+import org.nightlabs.jjqb.ui.JJQBUIPlugin;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -30,7 +32,6 @@ public class QueryEditorManagerComposite extends Composite
 
 	private Combo connectionProfileCombo;
 	private Button executeQueryButton;
-//	private Button loadNextBunchButton;
 
 	public QueryEditorManagerComposite(Composite parent, int style) {
 		super(parent, style);
@@ -45,7 +46,6 @@ public class QueryEditorManagerComposite extends Composite
 		new Label(this, SWT.NONE).setText("Connection: ");
 		createConnectionProfileCombo();
 		createExecuteQueryButton();
-//		createLoadNextButton();
 	}
 
 	public void setQueryBrowserManager(QueryEditorManager queryEditorManager)
@@ -82,23 +82,20 @@ public class QueryEditorManagerComposite extends Composite
 		@Override
 		public void preExecuteQuery(ExecuteQueryEvent executeQueryEvent) {
 			setEnabled(false);
-//			loadNextBunchButton.setEnabled(false);
 		}
 		@Override
 		public void postExecuteQuery(ExecuteQueryEvent executeQueryEvent) {
 			setEnabled(true);
-//			ResultSetTableModel resultSetTableModel = executeQueryEvent.getResultSetTableModel();
-//			if (resultSetTableModel != null) {
-//				loadNextBunchButton.setEnabled(true);
-//				resultSetTableModel.addPropertyChangeListener(ResultSetTableModel.PropertyName.completelyLoaded, new PropertyChangeListener() {
-//					@Override
-//					public void propertyChange(PropertyChangeEvent evt) {
-//						loadNextBunchButton.setEnabled((Boolean)evt.getNewValue() == false);
-//					}
-//				});
-//			}
 		}
 	};
+
+	@Override
+	public void setEnabled(boolean enabled) {
+		for (Control child : getChildren())
+			child.setEnabled(enabled);
+
+		super.setEnabled(enabled);
+	}
 
 	private PropertyChangeListener propertyChangeListener_connectionProfiles = new PropertyChangeListener() {
 		@Override
@@ -178,7 +175,7 @@ public class QueryEditorManagerComposite extends Composite
 	private void createExecuteQueryButton()
 	{
 		executeQueryButton = new Button(this, SWT.PUSH);
-		executeQueryButton.setText("Execute");
+		executeQueryButton.setImage(JJQBUIPlugin.getDefault().getImage(QueryEditorManagerComposite.class, "executeQueryButton", JJQBUIPlugin.IMAGE_SIZE_16x16));
 		executeQueryButton.setToolTipText("Execute query");
 		executeQueryButton.addSelectionListener(new SelectionAdapter() {
 			@Override
@@ -192,27 +189,6 @@ public class QueryEditorManagerComposite extends Composite
 		if (queryEditorManager != null)
 			queryEditorManager.executeQuery();
 	}
-
-//	private void createLoadNextButton()
-//	{
-//		loadNextBunchButton = new Button(this, SWT.PUSH);
-//		loadNextBunchButton.setText("Next");
-//		loadNextBunchButton.setToolTipText("Load next 100 records");
-//		loadNextBunchButton.addSelectionListener(new SelectionAdapter() {
-//			@Override
-//			public void widgetSelected(SelectionEvent e) {
-//				if (queryEditorManager == null)
-//					return;
-//
-//				// TODO this must be in the result set view!
-//				for (ResultSetTableModel model : queryEditorManager.getResultSetTableModels()) {
-//					if (model != null)
-//						model.loadNextBunch();
-//				}
-//			}
-//		});
-//		setLoadNextActionEnabled(false);
-//	}
 
 	private void populateConnectionProfileCombo()
 	{
@@ -230,16 +206,4 @@ public class QueryEditorManagerComposite extends Composite
 			connectionProfileCombo.select(selectionIndex);
 		}
 	}
-
-//	public void setLoadNextActionEnabled(boolean enabled)
-//	{
-//		assertUIThread();
-//		loadNextBunchButton.setEnabled(enabled);
-//	}
-//
-//	public boolean isLoadNextActionEnabled()
-//	{
-//		assertUIThread();
-//		return loadNextBunchButton.getEnabled();
-//	}
 }
