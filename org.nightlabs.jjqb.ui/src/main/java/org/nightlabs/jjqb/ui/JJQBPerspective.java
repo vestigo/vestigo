@@ -13,16 +13,23 @@ import org.nightlabs.jjqb.ui.resultsettable.ResultSetTableView;
  */
 public class JJQBPerspective implements IPerspectiveFactory
 {
+	private static final String LEFT_TOP = "leftTop";
+	private static final String LEFT_CENTER = "leftCenter";
+	private static final String LEFT_BOTTOM = "leftBottom";
+
 	@Override
 	public void createInitialLayout(IPageLayout layout) {
 		layout.setEditorAreaVisible(true);
-		IFolderLayout leftTop = layout.createFolder("leftTop", IPageLayout.LEFT, 0.4f, IPageLayout.ID_EDITOR_AREA);
+		IFolderLayout leftTop = layout.createFolder(LEFT_TOP, IPageLayout.LEFT, 0.4f, IPageLayout.ID_EDITOR_AREA);
+		leftTop.addView("org.eclipse.datatools.connectivity.DataSourceExplorerNavigator"); // TODO constant
 		leftTop.addView("org.eclipse.ui.navigator.ProjectExplorer"); // TODO isn't there a constant somewhere
-		leftTop.addView(QueryParameterManagerView.class.getName());
-		leftTop.addView(CandidateClassView.class.getName());
 
-		IFolderLayout leftBottom = layout.createFolder("leftBottom", IPageLayout.BOTTOM, 0.5f, "leftTop");
-		leftBottom.addView("org.eclipse.datatools.connectivity.DataSourceExplorerNavigator"); // TODO constant
+		IFolderLayout leftCenter = layout.createFolder(LEFT_CENTER, IPageLayout.BOTTOM, 0.333f, LEFT_TOP);
+		leftCenter.addView(CandidateClassView.class.getName());
+		leftCenter.addView(QueryParameterManagerView.class.getName());
+
+
+		IFolderLayout leftBottom = layout.createFolder(LEFT_BOTTOM, IPageLayout.BOTTOM, 0.5f, LEFT_CENTER);
 		leftBottom.addView(ObjectGraphDetailTreeView.class.getName());
 
 		layout.addView(ResultSetTableView.class.getName(), IPageLayout.BOTTOM, 0.5f, IPageLayout.ID_EDITOR_AREA);

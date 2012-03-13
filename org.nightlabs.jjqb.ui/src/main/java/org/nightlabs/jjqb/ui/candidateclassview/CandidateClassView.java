@@ -65,7 +65,6 @@ public class CandidateClassView extends ViewPart
 				if (queryEditorManager != null)
 					queryEditorManager.assignDefaultQueryTextForCandidateClass(candidateClass.getClassName());
 			}
-
 		});
 	}
 
@@ -113,7 +112,7 @@ public class CandidateClassView extends ViewPart
 			for (Iterator<?> it = sel.iterator(); it.hasNext(); ) {
 				Object selectedElement = it.next();
 				if (selectedElement instanceof IConnectionProfile) {
-					setQueryEditor(null);
+					setQueryEditorButDoNotSetConnectionProfile(null);
 					setConnectionProfile((IConnectionProfile) selectedElement);
 					return;
 				}
@@ -121,7 +120,13 @@ public class CandidateClassView extends ViewPart
 		}
 	};
 
-	private void setQueryEditor(QueryEditor queryEditor)
+	public void setQueryEditor(QueryEditor queryEditor)
+	{
+		setQueryEditorButDoNotSetConnectionProfile(queryEditor);
+		setConnectionProfile(queryEditorManager == null ? null : queryEditorManager.getODAConnectionProfile());
+	}
+
+	private void setQueryEditorButDoNotSetConnectionProfile(QueryEditor queryEditor)
 	{
 		if (this.queryEditorManager != null) {
 			this.queryEditorManager.removePropertyChangeListener(queryEditorManagerPropertyChangeListener);
@@ -133,10 +138,9 @@ public class CandidateClassView extends ViewPart
 		if (this.queryEditorManager != null)
 			this.queryEditorManager.addPropertyChangeListener(queryEditorManagerPropertyChangeListener);
 
-		setConnectionProfile(queryEditorManager == null ? null : queryEditorManager.getODAConnectionProfile());
 	}
 
-	private void setConnectionProfile(IConnectionProfile connectionProfile) {
+	public void setConnectionProfile(IConnectionProfile connectionProfile) {
 		this.connectionProfile = connectionProfile;
 		candidateClassComposite.setInput(connectionProfile);
 	}
@@ -145,6 +149,7 @@ public class CandidateClassView extends ViewPart
 		@Override
 		public void propertyChange(PropertyChangeEvent evt) {
 			if (QueryEditorManager.PropertyName.connectionProfile.name().equals(evt.getPropertyName())) {
+				// The user selected another ConnectionProfile in the QueryEditorManager[Composite].
 				IConnectionProfile odaConnectionProfile = (IConnectionProfile) evt.getNewValue();
 				setConnectionProfile(odaConnectionProfile);
 			}

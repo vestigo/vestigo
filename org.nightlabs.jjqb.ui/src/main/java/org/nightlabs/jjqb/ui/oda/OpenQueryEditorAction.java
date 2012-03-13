@@ -4,12 +4,16 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.eclipse.datatools.connectivity.ConnectEvent;
 import org.eclipse.datatools.connectivity.IConnectionProfile;
+import org.eclipse.datatools.connectivity.IManagedConnectionListener;
+import org.eclipse.datatools.connectivity.ManagedConnectionAdapter;
 import org.eclipse.datatools.connectivity.oda.IDriver;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorDescriptor;
 import org.eclipse.ui.IEditorRegistry;
@@ -19,8 +23,10 @@ import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchPartSite;
+import org.eclipse.ui.PartInitException;
 import org.nightlabs.jjqb.core.oda.DataSourceDriverRegistry;
 import org.nightlabs.jjqb.core.oda.Driver;
+import org.nightlabs.jjqb.ui.candidateclassview.CandidateClassView;
 import org.nightlabs.jjqb.ui.editor.NonExistingStorageEditorInput;
 import org.nightlabs.jjqb.ui.editor.QueryEditorInput;
 import org.slf4j.Logger;
@@ -45,36 +51,10 @@ implements IObjectActionDelegate, IViewActionDelegate
 		IWorkbenchPartSite site = getSite();
 		return site == null ? null : site.getShell();
 	}
-
-//	private OpenQueryEditorActionDelegate getOpenQueryEditorActionDelegate(String providerID) throws CoreException
-//	{
-//		final IExtensionRegistry registry = Platform.getExtensionRegistry();
-//		if (registry == null)
-//			throw new IllegalStateException("Platform.getExtensionRegistry() returned null!");
-//
-//		final String extensionPointId = "org.nightlabs.jjqb.ui.openQueryEditorActionDelegate";
-//		final IExtensionPoint extensionPoint = registry.getExtensionPoint(extensionPointId);
-//		if (extensionPoint == null)
-//			throw new IllegalStateException("Unable to resolve extension-point: " + extensionPointId); //$NON-NLS-1$
-//
-//		final IExtension[] extensions = extensionPoint.getExtensions();
-//		for (final IExtension extension : extensions) {
-//			final IConfigurationElement[] elements = extension.getConfigurationElements();
-//			for (final IConfigurationElement element : elements) {
-//				String extProviderID = element.getAttribute("providerID");
-//				if (!providerID.equals(extProviderID))
-//					continue;
-//
-//				Object object = element.createExecutableExtension("class");
-//				if (!(object instanceof OpenQueryEditorActionDelegate))
-//					throw new IllegalStateException("executableExtension is not an instance of OpenQueryEditorActionDelegate! Contributing plugin: " + element.getContributor().getName());
-//
-//				return (OpenQueryEditorActionDelegate) object;
-//			}
-//		}
-//
-//		throw new IllegalStateException("There is no extension for extensionPoint='" + extensionPointId + "' and providerID='" + providerID + "'!");
-//	}
+	private Display getDisplay() {
+		Shell shell = getShell();
+		return shell == null ? null : shell.getDisplay();
+	}
 
 	@Override
 	public void run(IAction action) {
@@ -99,15 +79,9 @@ implements IObjectActionDelegate, IViewActionDelegate
 					String editorID = descriptor.getId();
 
 					workbenchPage.openEditor(
-//							new NonExistingStorageEditorInput("query", fileExtension),
 							new QueryEditorInput(connectionProfile, new NonExistingStorageEditorInput("query", fileExtension)),
 							editorID
 					);
-
-//					OpenQueryEditorActionDelegate delegate = getOpenQueryEditorActionDelegate(connectionProfile.getProviderId());
-//					delegate.setConnectionProfile(connectionProfile);
-//					delegate.setWorkbenchPage(workbenchPage);
-//					delegate.openQueryEditor();
 				} catch (Exception e) {
 					logger.error("run: " + e, e);
 					MessageDialog.openError(getShell(), "Opening editor failed", "Could not open the editor: " + e);
@@ -119,6 +93,7 @@ implements IObjectActionDelegate, IViewActionDelegate
 	@Override
 	public void selectionChanged(IAction action, ISelection selection)
 	{
+		unhookConnectionListener(this.selectedConnectionProfiles);
 		this.selectedConnectionProfiles = null;
 		if (selection instanceof IStructuredSelection) {
 			IStructuredSelection sel = (IStructuredSelection) selection;
@@ -134,6 +109,7 @@ implements IObjectActionDelegate, IViewActionDelegate
 				}
 			}
 			this.selectedConnectionProfiles = selectedConnectionProfiles;
+			hookConnectionListener(selectedConnectionProfiles);
 		}
 
 		if (runAlreadyCalled)
@@ -150,4 +126,50 @@ implements IObjectActionDelegate, IViewActionDelegate
 		this.targetPart = view;
 	}
 
+
+	// BEGIN Show CandidateClassView when selected connection is opened.
+	private void hookConnectionListener(List<IConnectionProfile> connectionProfiles)
+	{
+		if (connectionProfiles == null)
+			return;
+
+		for (IConnectionProfile connectionProfile : connectionProfiles)
+			OdaUtil.getManagedConnection(connectionProfile).addConnectionListener(connectionListener);
+	}
+
+	private void unhookConnectionListener(List<IConnectionProfile> connectionProfiles)
+	{
+		if (connectionProfiles == null)
+			return;
+
+		for (IConnectionProfile connectionProfile : connectionProfiles)
+			OdaUtil.getManagedConnection(connectionProfile).removeConnectionListener(connectionListener);
+	}
+
+	private IManagedConnectionListener connectionListener = new ManagedConnectionAdapter()
+	{
+		@Override
+		public void opened(final ConnectEvent event) {
+			Display display = getDisplay();
+			if (display == null)
+				return;
+
+			display.asyncExec(new Runnable() {
+				@Override
+				public void run() {
+					IWorkbenchPartSite site = getSite();
+					if (site == null)
+						return;
+
+					try {
+						IViewPart view = site.getPage().showView(CandidateClassView.class.getName());
+						((CandidateClassView)view).setConnectionProfile(event.getConnectionProfile());
+					} catch (PartInitException e) {
+						logger.warn("connectionListener.opened: " + e, e);
+					}
+				}
+			});
+		}
+	};
+	// END Show CandidateClassView when selected connection is opened.
 }
