@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.nightlabs.jjqb.core.connectionPropertiesFilter">
+      <filter
+            class="org.nightlabs.jjqb.jdt.core.connectionpropertiesfilter.ResolveClasspathContainersConnectionPropertiesFilter">
+      </filter>
+   </extension>
+
+</plugin>

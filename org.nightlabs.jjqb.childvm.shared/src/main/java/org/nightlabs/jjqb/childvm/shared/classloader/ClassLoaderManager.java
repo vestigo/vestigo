@@ -3,6 +3,7 @@ package org.nightlabs.jjqb.childvm.shared.classloader;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.net.URLDecoder;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -158,7 +159,7 @@ public class ClassLoaderManager
 					if (persistenceEngineClasspathElement.startsWith("file:"))
 						persistenceEngineClasspathElement = persistenceEngineClasspathElement.substring("file:".length());
 
-					File f = new File(persistenceEngineClasspathElement);
+					File f = new File(URLDecoder.decode(persistenceEngineClasspathElement, IOUtil.CHARSET_NAME_UTF_8));
 					if (!f.exists())
 						throw new IOException("persistenceEngineClasspathElement points to a non-existing file: " + f.getAbsolutePath());
 

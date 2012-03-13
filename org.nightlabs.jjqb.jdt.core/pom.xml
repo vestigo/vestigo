@@ -16,6 +16,11 @@
 			<groupId>org.nightlabs.jjqb</groupId>
 			<artifactId>org.nightlabs.jjqb.core</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.eclipse.jdt</groupId>
+			<artifactId>org.eclipse.jdt.core</artifactId>
+			<version>3.6.2</version>
+		</dependency>
 	</dependencies>
 
 	<build>

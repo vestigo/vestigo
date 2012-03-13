@@ -108,6 +108,9 @@ public class CandidateClassView extends ViewPart
 			if (part instanceof QueryEditor)
 				return; // We manage them via the partListener below - hence we react only on OTHER selections.
 
+			if (!(selection instanceof IStructuredSelection))
+				return;
+
 			IStructuredSelection sel = (IStructuredSelection) selection;
 			for (Iterator<?> it = sel.iterator(); it.hasNext(); ) {
 				Object selectedElement = it.next();
