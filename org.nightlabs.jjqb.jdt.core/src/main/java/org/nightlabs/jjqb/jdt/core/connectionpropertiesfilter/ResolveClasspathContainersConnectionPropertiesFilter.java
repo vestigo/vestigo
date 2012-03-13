@@ -39,7 +39,7 @@ public class ResolveClasspathContainersConnectionPropertiesFilter extends Abstra
 		Map<String, List<String>> replaceClasspathEntries = new HashMap<String, List<String>>();
 
 		for (String peClasspathEntry : persistenceEngineClasspathStringList) {
-			if (!peClasspathEntry.startsWith(ProjectURI.PROTOCOL_PREFIX))
+			if (!peClasspathEntry.startsWith(ProjectURI.SCHEME_PREFIX))
 				continue;
 
 			if (replaceClasspathEntries.containsKey(peClasspathEntry))

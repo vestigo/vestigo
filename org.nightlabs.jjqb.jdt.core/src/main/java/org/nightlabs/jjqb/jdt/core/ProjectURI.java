@@ -14,8 +14,8 @@ public class ProjectURI implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 
-	public static final String PROTOCOL = "project";
-	public static final String PROTOCOL_PREFIX = PROTOCOL + ':';
+	public static final String SCHEME = "project";
+	public static final String SCHEME_PREFIX = SCHEME + ':';
 
 	private String projectName;
 
@@ -34,8 +34,8 @@ public class ProjectURI implements Serializable
 		if (uri == null)
 			throw new IllegalArgumentException("uri == null");
 
-		if (!PROTOCOL.equals(uri.getScheme()))
-			throw new IllegalArgumentException("uri scheme '" + uri.getScheme() + "' is unsupported! Should be '" + PROTOCOL + "' instead: " + uri);
+		if (!SCHEME.equals(uri.getScheme()))
+			throw new IllegalArgumentException("uri scheme '" + uri.getScheme() + "' is unsupported! Should be '" + SCHEME + "' instead: " + uri);
 
 		String encodedName = uri.getSchemeSpecificPart();
 		try {
@@ -88,7 +88,7 @@ public class ProjectURI implements Serializable
 	@Override
 	public String toString() {
 		try {
-			return PROTOCOL_PREFIX + URLEncoder.encode(projectName, IOUtil.CHARSET_NAME_UTF_8);
+			return SCHEME_PREFIX + URLEncoder.encode(projectName, IOUtil.CHARSET_NAME_UTF_8);
 		} catch (UnsupportedEncodingException e) {
 			throw new RuntimeException(e);
 		}
