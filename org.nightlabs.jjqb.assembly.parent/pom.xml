@@ -43,7 +43,7 @@
 			<artifactId>org.nightlabs.eclipse.extension</artifactId>
 		</dependency>
 		<!-- END org.nightlabs.eclipse.* -->
-		
+
 		<!-- BEGIN org.nightlabs.jjqb.* -->
 		<dependency>
 			<groupId>org.nightlabs.jjqb</groupId>
@@ -94,6 +94,17 @@
 		</dependency>
 		<!-- END org.nightlabs.jjqb.cumulus4j.* -->
 
+		<!-- BEGIN org.nightlabs.jjqb.jdt.* -->
+		<dependency>
+			<groupId>org.nightlabs.jjqb</groupId>
+			<artifactId>org.nightlabs.jjqb.jdt.core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.nightlabs.jjqb</groupId>
+			<artifactId>org.nightlabs.jjqb.jdt.ui</artifactId>
+		</dependency>
+		<!-- END org.nightlabs.jjqb.cumulus4j.* -->
+
 		<!-- BEGIN org.nightlabs.**.* -->
 		<dependency>
 			<groupId>org.nightlabs</groupId>
@@ -125,19 +136,6 @@
 		</dependency>
 		<!-- END org.nightlabs.**.* -->
 		
-<!--
-We use the Eclipse JEE IDE as platform, hence we don't need to add the ODA stuff - it's already included.
-Adding it again causes a conflict (can have only one singleton-marked plugin).
-Marco :-)
-		<dependency>
-			<groupId>org.eclipse.birt.rcp-report-designer.v2-6-0-mvnzd</groupId>
-			<artifactId>org.eclipse.datatools.connectivity.oda</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.eclipse.birt.rcp-report-designer.v2-6-0-mvnzd</groupId>
-			<artifactId>org.eclipse.datatools.connectivity.oda.design.ui</artifactId>
-		</dependency>
--->
 		<!-- #### LIBS -->
 		<dependency>
 			<groupId>com.sun.jersey</groupId>

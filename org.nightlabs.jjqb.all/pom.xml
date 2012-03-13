@@ -23,6 +23,18 @@
 		<module>../org.nightlabs.jjqb.ui</module>
 		<module>../org.nightlabs.jjqb.assembly.parent</module>
 
+		<!-- BEGIN Cumulus4j -->
+		<module>../org.nightlabs.jjqb.cumulus4j.childvm.shared</module>
+		<module>../org.nightlabs.jjqb.cumulus4j.childvm.webapp</module>
+		<module>../org.nightlabs.jjqb.cumulus4j.core</module>
+		<module>../org.nightlabs.jjqb.cumulus4j.ui</module>
+		<!-- END Cumulus4j -->
+		
+		<!-- BEGIN JDT -->
+		<module>../org.nightlabs.jjqb.jdt.core</module>
+		<module>../org.nightlabs.jjqb.jdt.ui</module>
+		<!-- END JDT -->
+		
 		<!-- BEGIN XText -->
 		<module>../org.nightlabs.jjqb.xtext.parent</module>
 		<module>../org.nightlabs.jjqb.xtext.jdoql</module>
@@ -32,13 +44,6 @@
 		<module>../org.nightlabs.jjqb.xtext.jpql.tests</module>
 		<module>../org.nightlabs.jjqb.xtext.jpql.ui</module>
 		<!-- END XText -->
-
-		<!-- BEGIN Cumulus4j -->
-		<module>../org.nightlabs.jjqb.cumulus4j.childvm.shared</module>
-		<module>../org.nightlabs.jjqb.cumulus4j.childvm.webapp</module>
-		<module>../org.nightlabs.jjqb.cumulus4j.core</module>
-		<module>../org.nightlabs.jjqb.cumulus4j.ui</module>
-		<!-- END Cumulus4j -->
 
 		<!-- All tycho build projects -->
 		<!-- 

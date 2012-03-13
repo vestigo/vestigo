@@ -158,13 +158,6 @@
 				<artifactId>org.nightlabs.jjqb.core</artifactId>
 				<version>${jjqb.version}</version>
 			</dependency>
-<!--
-			<dependency>
-				<groupId>org.nightlabs.jjqb</groupId>
-				<artifactId>org.nightlabs.jjqb.derby</artifactId>
-				<version>${jjqb.version}</version>
-			</dependency>
--->
 			<dependency>
 				<groupId>org.nightlabs.jjqb</groupId>
 				<artifactId>org.nightlabs.jjqb.ui</artifactId>
@@ -195,6 +188,19 @@
 				<version>${jjqb.version}</version>
 			</dependency>
 			<!-- END org.nightlabs.jjqb.cumulus4j -->
+
+			<!-- BEGIN org.nightlabs.jjqb.jdt -->
+			<dependency>
+				<groupId>org.nightlabs.jjqb</groupId>
+				<artifactId>org.nightlabs.jjqb.jdt.core</artifactId>
+				<version>${jjqb.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.nightlabs.jjqb</groupId>
+				<artifactId>org.nightlabs.jjqb.jdt.ui</artifactId>
+				<version>${jjqb.version}</version>
+			</dependency>
+			<!-- END org.nightlabs.jjqb.jdt -->
 
 			<!-- BEGIN org.nightlabs.jjqb.xtext -->
 			<dependency>
