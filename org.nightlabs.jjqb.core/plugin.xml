@@ -5,6 +5,7 @@
    <extension-point id="childVMWebApp" name="ChildVM WebApp" schema="schema/childVMWebApp.exsd"/>
    <extension-point id="connectionProfile" name="ConnectionProfile" schema="schema/connectionProfile.exsd"/>
    <extension-point id="transientConnectionPropertiesProvider" name="TransientConnectionPropertiesProvider" schema="schema/transientConnectionPropertiesProvider.exsd"/>
+   <extension-point id="connectionPropertiesFilter" name="connectionPropertiesFilter" schema="schema/connectionPropertiesFilter.exsd"/>
 
 
     <extension
