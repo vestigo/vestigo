@@ -18,7 +18,7 @@ public class ExecuteQueryCommandHandler extends AbstractHandler
 		Shell shell = HandlerUtil.getActiveShell(event);
 
 		if (activeEditor == null) {
-			MessageDialog.openInformation(shell, "No active query editor", "There is no query editor currently active. Please open and focus a query editor!");
+			MessageDialog.openInformation(shell, "No active query editor", "Cannot execute query, because there is no query editor currently active. Please open and focus a query editor!");
 			return null;
 		}
 
