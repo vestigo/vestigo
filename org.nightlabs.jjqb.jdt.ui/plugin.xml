@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.nightlabs.jjqb.ui.editClasspathActionDelegate">
+      <action
+            class="org.nightlabs.jjqb.jdt.ui.oda.classpath.AddProjectActionDelegate"
+            group="add"
+            icon="icons/org.nightlabs.jjqb.jdt.ui.oda.classpath/AddProjectActionDelegate.16x16.png"
+            id="org.nightlabs.jjqb.jdt.ui.oda.classpath.AddProjectActionDelegate"
+            label="Add project"
+            tooltip="Add a java project from your workspace.">
+      </action>
+   </extension>
+
+</plugin>

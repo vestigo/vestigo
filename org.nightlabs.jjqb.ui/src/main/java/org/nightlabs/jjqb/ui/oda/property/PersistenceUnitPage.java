@@ -37,6 +37,7 @@ import org.nightlabs.jjqb.childvm.shared.PropertiesUtil;
 import org.nightlabs.jjqb.childvm.shared.persistencexml.PersistenceXml;
 import org.nightlabs.jjqb.childvm.shared.persistencexml.PersistenceXmlScanner;
 import org.nightlabs.jjqb.childvm.shared.persistencexml.jaxb.Persistence.PersistenceUnit;
+import org.nightlabs.jjqb.core.connectionpropertiesfilter.ConnectionPropertiesFilterManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -237,6 +238,8 @@ public abstract class PersistenceUnitPage extends AbstractDataSourceEditorPage
 		Job job = new Job("Searching persistence units") {
 			@Override
 			protected IStatus run(IProgressMonitor monitor) {
+				new ConnectionPropertiesFilterManager().filterConnectionProperties(properties);
+
 				PersistenceXmlScanner persistenceXmlScanner = new PersistenceXmlScanner();
 				try {
 					persistenceXmlScanner.open(properties);

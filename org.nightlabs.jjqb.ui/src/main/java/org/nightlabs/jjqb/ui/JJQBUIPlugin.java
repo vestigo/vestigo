@@ -9,17 +9,10 @@ import java.io.StringWriter;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.eclipse.core.resources.IProject;
-import org.eclipse.core.resources.IProjectDescription;
-import org.eclipse.core.resources.IWorkspace;
-import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
-import org.eclipse.xtext.ui.XtextProjectHelper;
 import org.nightlabs.jjqb.core.PropertiesWithChangeSupport;
 import org.osgi.framework.BundleContext;
 
@@ -74,8 +67,7 @@ public class JJQBUIPlugin extends AbstractUIPlugin
 	private PropertiesWithChangeSupport readPropertiesFromPreferenceStore(final String preferenceKey)
 	{
 		getStateLocation();
-		JJQBUIPlugin plugin = JJQBUIPlugin.getDefault();
-		final IPreferenceStore preferenceStore = plugin.getPreferenceStore();
+		final IPreferenceStore preferenceStore = getPreferenceStore();
 
 		final PropertiesWithChangeSupport properties = readPropertiesFromString(
 				preferenceStore.getString(preferenceKey)
@@ -137,7 +129,7 @@ public class JJQBUIPlugin extends AbstractUIPlugin
 		resource.append('.').append(size).append(".png");
 
 		imageDescriptor = ImageDescriptor.createFromURL(
-				JJQBUIPlugin.getDefault().getBundle().getResource(resource.toString())
+				getBundle().getResource(resource.toString())
 		);
 
 		getImageRegistry().put(imageKey, imageDescriptor);
@@ -148,13 +140,13 @@ public class JJQBUIPlugin extends AbstractUIPlugin
 	public Image getImage(Class<?> clazz, String identifier, String size)
 	{
 		String imageKey = clazz.getName() + '-' + identifier;
-		Image image = JJQBUIPlugin.getDefault().getImageRegistry().get(imageKey);
+		Image image = getImageRegistry().get(imageKey);
 		if (image != null)
 			return image;
 
 		getImageDescriptor(clazz, identifier, size);
 
-		image = JJQBUIPlugin.getDefault().getImageRegistry().get(imageKey);
+		image = getImageRegistry().get(imageKey);
 		return image;
 	}
 }

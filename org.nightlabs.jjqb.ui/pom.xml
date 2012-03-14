@@ -101,7 +101,7 @@ temporarily... because of exampleeditor - we should switch back to the property,
 			<artifactId>${org.nightlabs.eclipse.compatibility.artifactId}</artifactId>
 -->
 			<artifactId>org.nightlabs.eclipse.compatibility.rcp</artifactId>
-			<scope>provided</scope>
+			<scope>compile</scope>
 			<exclusions>
 				<exclusion>
 					<artifactId>

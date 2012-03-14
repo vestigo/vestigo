@@ -16,6 +16,10 @@
 			<groupId>org.nightlabs.jjqb</groupId>
 			<artifactId>org.nightlabs.jjqb.ui</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.nightlabs.jjqb</groupId>
+			<artifactId>org.nightlabs.jjqb.jdt.core</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -53,6 +57,14 @@
 			<plugin>
 				<groupId>org.apache.felix</groupId>
 				<artifactId>maven-bundle-plugin</artifactId>
+				<configuration>
+					<instructions>
+						<Bundle-Activator>org.nightlabs.jjqb.jdt.ui.JJQBJDTUIPlugin</Bundle-Activator>
+						<Bundle-ActivationPolicy>lazy</Bundle-ActivationPolicy>
+						<Require-Bundle>org.eclipse.core.runtime</Require-Bundle>
+						<Import-Package>!org.eclipse.core.runtime,*</Import-Package>
+					</instructions>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

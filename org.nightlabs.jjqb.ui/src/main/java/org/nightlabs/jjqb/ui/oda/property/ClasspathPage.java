@@ -11,7 +11,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.nightlabs.jjqb.childvm.shared.PropertiesUtil;
-import org.nightlabs.jjqb.ui.oda.EditClasspathComposite;
+import org.nightlabs.jjqb.ui.oda.classpath.EditClasspathComposite;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -2,6 +2,7 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension-point id="queryFileExtension" name="queryFileExtension" schema="schema/queryFileExtension.exsd"/>
+   <extension-point id="editClasspathActionDelegate" name="editClasspathActionDelegate" schema="schema/editClasspathActionDelegate.exsd"/>
 
     <extension
           point="org.eclipse.ui.intro.configExtension">
@@ -602,6 +603,54 @@
           schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
           sequence="Ctrl+F5">
     </key>
+ </extension>
+ <extension
+       point="org.nightlabs.jjqb.ui.editClasspathActionDelegate">
+    <action
+          class="org.nightlabs.jjqb.ui.oda.classpath.AddFileActionDelegate"
+          group="add"
+          icon="icons/org.nightlabs.jjqb.ui.oda.classpath/AddFileActionDelegate.16x16.png"
+          id="org.nightlabs.jjqb.ui.oda.classpath.AddFileActionDelegate"
+          label="Add file(s)"
+          orderHint="100"
+          tooltip="Add one or more files (EAR, JAR, WAR etc.).">
+    </action>
+    <action
+          class="org.nightlabs.jjqb.ui.oda.classpath.AddFolderActionDelegate"
+          group="add"
+          icon="icons/org.nightlabs.jjqb.ui.oda.classpath/AddFolderActionDelegate.16x16.png"
+          id="org.nightlabs.jjqb.ui.oda.classpath.AddFolderActionDelegate"
+          label="Add folder"
+          orderHint="110"
+          tooltip="Add a 'classes' folder.">
+    </action>
+    <action
+          class="org.nightlabs.jjqb.ui.oda.classpath.RemoveActionDelegate"
+          group="remove"
+          icon="icons/org.nightlabs.jjqb.ui.oda.classpath/RemoveActionDelegate.16x16.png"
+          id="org.nightlabs.jjqb.ui.oda.classpath.RemoveActionDelegate"
+          label="Remove"
+          orderHint="100"
+          tooltip="Remove the selected classpath elements.">
+    </action>
+    <action
+          class="org.nightlabs.jjqb.ui.oda.classpath.MoveUpActionDelegate"
+          group="move"
+          icon="icons/org.nightlabs.jjqb.ui.oda.classpath/MoveUpActionDelegate.16x16.png"
+          id="org.nightlabs.jjqb.ui.oda.classpath.MoveUpActionDelegate"
+          label="Move up"
+          orderHint="110"
+          tooltip="Move the selected element(s) up.">
+    </action>
+    <action
+          class="org.nightlabs.jjqb.ui.oda.classpath.MoveDownActionDelegate"
+          group="move"
+          icon="icons/org.nightlabs.jjqb.ui.oda.classpath/MoveDownActionDelegate.16x16.png"
+          id="org.nightlabs.jjqb.ui.oda.classpath.MoveDownActionDelegate"
+          label="Move down"
+          orderHint="120"
+          tooltip="Move the selected element(s) down.">
+    </action>
  </extension>
 
 </plugin>
