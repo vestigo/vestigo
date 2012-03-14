@@ -23,31 +23,40 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.TableViewer;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.MouseAdapter;
 import org.eclipse.swt.events.MouseEvent;
-import org.eclipse.swt.layout.FillLayout;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Table;
+import org.eclipse.swt.widgets.Text;
 import org.nightlabs.jjqb.childvm.shared.PropertiesUtil;
 import org.nightlabs.jjqb.core.oda.ConnectionProfile;
 import org.nightlabs.jjqb.core.oda.ConnectionProfileRegistry;
 import org.nightlabs.jjqb.ui.oda.OdaUtil;
+import org.nightlabs.jjqb.ui.resource.Messages;
 
 public class CandidateClassComposite extends Composite
 {
-	private static final String MESSAGE_NO_CONNECTION_PROFILE = ">>> No connection selected. <<<";
-	private static final String MESSAGE_CONNECTION_PROFILE_CLOSED = ">>> The selected connection is not open. Double-click to open it. <<<";
-	private static final String MESSAGE_CONNECTING = ">>> Connecting ... <<<";
-	private static final String MESSAGE_LOADING_DATA = ">>> Loading data ... <<<";
-	private static final String MESSAGE_ERROR = ">>> Error: %s <<<";
+	private static final String MESSAGE_NO_CONNECTION_PROFILE = Messages.getString("CandidateClassComposite.message[noConnectionProfile]"); //$NON-NLS-1$
+	private static final String MESSAGE_CONNECTION_PROFILE_CLOSED = Messages.getString("CandidateClassComposite.message[connectionProfileClosed]"); //$NON-NLS-1$
+	private static final String MESSAGE_CONNECTING = Messages.getString("CandidateClassComposite.message[connecting]"); //$NON-NLS-1$
+	private static final String MESSAGE_LOADING_DATA = Messages.getString("CandidateClassComposite.message[loadingData]"); //$NON-NLS-1$
+	private static final String MESSAGE_ERROR = Messages.getString("CandidateClassComposite.message[error]"); //$NON-NLS-1$
 
 	public enum PropertyName {
 		candidateClassDoubleClicked
 	}
 
 	private Display display;
+	private Text filterText;
 	private TableViewer tableViewer;
 	private Table table;
 	private IConnectionProfile odaConnectionProfile;
@@ -58,15 +67,88 @@ public class CandidateClassComposite extends Composite
 	public CandidateClassComposite(Composite parent, int style) {
 		super(parent, style);
 		display = parent.getDisplay();
-		setLayout(new FillLayout(SWT.HORIZONTAL | SWT.VERTICAL));
+		GridLayout gridLayout = new GridLayout(2, false);
+		setLayout(gridLayout);
+
+		new Label(this, SWT.NONE).setText(Messages.getString("CandidateClassComposite.filterLabel.text")); //$NON-NLS-1$
+		createFilterText();
+		filterText.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+
 		createTableViewer();
+		GridData gd = new GridData(GridData.FILL_BOTH);
+		gd.horizontalSpan = gridLayout.numColumns;
+		table.setLayoutData(gd);
 		_setConnectionProfile(null);
 	}
 
 	protected void assertUIThread()
 	{
 		if (Display.getCurrent() != display)
-			throw new IllegalStateException("This method must be called on the SWT UI thread!");
+			throw new IllegalStateException("This method must be called on the SWT UI thread!"); //$NON-NLS-1$
+	}
+
+	private volatile Job searchDelayJob = null;
+	private void createFilterText() {
+		filterText = new Text(this, SWT.BORDER);
+		filterText.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				Job job = new Job("Searching") { //$NON-NLS-1$
+					@Override
+					protected IStatus run(IProgressMonitor monitor)
+					{
+						final Job thisJob = this;
+						if (searchDelayJob != thisJob)
+							return Status.CANCEL_STATUS;
+
+						display.asyncExec(new Runnable() {
+							@Override
+							public void run() {
+								if (searchDelayJob != thisJob)
+									return;
+
+								if (filterText.isDisposed() || table == null || table.isDisposed())
+									return;
+
+								String text = filterText.getText();
+								if (text.isEmpty())
+									tableViewer.resetFilters();
+								else
+									tableViewer.setFilters(new ViewerFilter[] { new TextViewerFilter(text) });
+							}
+						});
+
+						return Status.OK_STATUS;
+					}
+				};
+				job.setPriority(Job.INTERACTIVE);
+				job.setSystem(true);
+				searchDelayJob = job;
+				job.schedule(500);
+			}
+		});
+	}
+
+	private class TextViewerFilter extends ViewerFilter
+	{
+		private String text;
+
+		public TextViewerFilter(String searchText) {
+			if (searchText == null)
+				throw new IllegalArgumentException("filterText == null"); //$NON-NLS-1$
+
+			this.text = searchText.toLowerCase();
+		}
+
+		@Override
+		public boolean select(Viewer viewer, Object parentElement, Object element)
+		{
+			if (!(element instanceof CandidateClass))
+				return true;
+
+			CandidateClass candidateClass = (CandidateClass) element;
+			return candidateClass.getClassNameLowerCase().contains(text);
+		}
 	}
 
 	private void createTableViewer()
@@ -136,7 +218,7 @@ public class CandidateClassComposite extends Composite
 		assertUIThread();
 
 		if (odaConnectionProfile == null)
-			throw new IllegalStateException("odaConnectionProfile == null");
+			throw new IllegalStateException("odaConnectionProfile == null"); //$NON-NLS-1$
 
 		tableViewer.setInput(Collections.singletonList(MESSAGE_CONNECTING));
 
@@ -194,7 +276,7 @@ public class CandidateClassComposite extends Composite
 				String profileID = PropertiesUtil.getProfileID(connectionProperties);
 				jjqbConnectionProfile = ConnectionProfileRegistry.sharedInstance().getConnectionProfile(profileID);
 				if (jjqbConnectionProfile == null)
-					throw new IllegalStateException("jjqbConnectionProfile == null :: profileID == " + profileID);
+					throw new IllegalStateException("jjqbConnectionProfile == null :: profileID == " + profileID); //$NON-NLS-1$
 
 				loadCandidateClasses();
 			}
@@ -207,11 +289,11 @@ public class CandidateClassComposite extends Composite
 
 		final ConnectionProfile jjqbConnectionProfile = this.jjqbConnectionProfile;
 		if (jjqbConnectionProfile == null)
-			throw new IllegalStateException("jjqbConnectionProfile == null");
+			throw new IllegalStateException("jjqbConnectionProfile == null"); //$NON-NLS-1$
 
 		tableViewer.setInput(Collections.singletonList(MESSAGE_LOADING_DATA));
 
-		Job job = new Job("Loading candidate classes") {
+		Job job = new Job(Messages.getString("CandidateClassComposite.loadCandidateClassesJob.name")) { //$NON-NLS-1$
 			@Override
 			protected IStatus run(IProgressMonitor monitor)
 			{

@@ -21,11 +21,11 @@ import org.osgi.framework.BundleContext;
  */
 public class JJQBUIPlugin extends AbstractUIPlugin
 {
-	public static final String BUNDLE_SYMBOLIC_NAME = "org.nightlabs.jjqb.ui";
+	public static final String BUNDLE_SYMBOLIC_NAME = "org.nightlabs.jjqb.ui"; //$NON-NLS-1$
 
-	public static final String IMAGE_SIZE_16x16 = "16x16";
-	public static final String IMAGE_SIZE_24x24 = "24x24";
-	public static final String IMAGE_SIZE_75x70 = "75x70";
+	public static final String IMAGE_SIZE_16x16 = "16x16"; //$NON-NLS-1$
+	public static final String IMAGE_SIZE_24x24 = "24x24"; //$NON-NLS-1$
+	public static final String IMAGE_SIZE_75x70 = "75x70"; //$NON-NLS-1$
 
 	// The shared instance
 	private static JJQBUIPlugin plugin;
@@ -118,7 +118,7 @@ public class JJQBUIPlugin extends AbstractUIPlugin
 			return imageDescriptor;
 
 		StringBuilder resource = new StringBuilder();
-		resource.append("icons/").append(clazz.getPackage().getName()).append('/').append(clazz.getSimpleName());
+		resource.append("icons/").append(clazz.getPackage().getName()).append('/').append(clazz.getSimpleName()); //$NON-NLS-1$
 
 		if (identifier != null && !identifier.isEmpty())
 			resource.append('-').append(identifier);
@@ -126,7 +126,7 @@ public class JJQBUIPlugin extends AbstractUIPlugin
 		if (size == null)
 			size = IMAGE_SIZE_16x16;
 
-		resource.append('.').append(size).append(".png");
+		resource.append('.').append(size).append(".png"); //$NON-NLS-1$
 
 		imageDescriptor = ImageDescriptor.createFromURL(
 				getBundle().getResource(resource.toString())

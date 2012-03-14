@@ -35,6 +35,7 @@ import org.nightlabs.jjqb.ui.oda.EditPropertiesComposite;
 import org.nightlabs.jjqb.ui.oda.LoadPropertiesHandler;
 import org.nightlabs.jjqb.ui.oda.PropertiesWithDefaults;
 import org.nightlabs.jjqb.ui.oda.SavePropertiesHandler;
+import org.nightlabs.jjqb.ui.resource.Messages;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -47,13 +48,13 @@ public abstract class PersistencePropertiesPage extends AbstractDataSourceEditor
 	private EditPropertiesComposite editPropertiesComposite;
 
 	{
-		setTitle("Persistence properties");
+		setTitle(Messages.getString("PersistencePropertiesPage.title")); //$NON-NLS-1$
 	}
 
 	@Override
 	public Properties collectCustomProperties(Properties properties)
 	{
-		logger.info("collectManagedProperties: entered.");
+		logger.info("collectManagedProperties: entered."); //$NON-NLS-1$
 
 		Properties oldProps = removePropertiesManagedByThisPage(properties);
 
@@ -95,7 +96,7 @@ public abstract class PersistencePropertiesPage extends AbstractDataSourceEditor
 	@Override
 	protected void createCustomControl(Composite parent)
 	{
-		logger.info("createAndInitCustomControl: entered.");
+		logger.info("createAndInitCustomControl: entered."); //$NON-NLS-1$
 
 		display = parent.getDisplay();
 		editPropertiesComposite = new EditPropertiesComposite(parent, SWT.NONE);
@@ -117,7 +118,7 @@ public abstract class PersistencePropertiesPage extends AbstractDataSourceEditor
 		@Override
 		public Map<String, String> getFileNameFilters() {
 			Map<String, String> m = new HashMap<String, String>();
-			m.put("persistence.xml files", "*persistence*.xml");
+			m.put(Messages.getString("PersistencePropertiesPage.persistenceXmlFileNameFilterTitle"), "*persistence*.xml"); //$NON-NLS-1$ //$NON-NLS-2$
 			return m;
 		}
 		@Override
@@ -129,8 +130,8 @@ public abstract class PersistencePropertiesPage extends AbstractDataSourceEditor
 				List<String> persistenceUnitNames = SelectPersistenceUnitDialog.getPersistenceUnitNames(persistenceUnits);
 				SelectPersistenceUnitDialog puDialog = new SelectPersistenceUnitDialog(
 						getShell(),
-						"Select persistence unit",
-						"The following persistence units have been found in the selected file. Please select the unit you wish to use.",
+						Messages.getString("PersistencePropertiesPage.selectPersistenceUnitDialog.title"), //$NON-NLS-1$
+						Messages.getString("PersistencePropertiesPage.selectPersistenceUnitDialog.text"), //$NON-NLS-1$
 						persistenceUnitNames,
 						collectProperties().getProperty(PropertiesUtil.PERSISTENCE_UNIT_NAME)
 				);
@@ -161,7 +162,7 @@ public abstract class PersistencePropertiesPage extends AbstractDataSourceEditor
 		{
 			String persistenceUnitName = collectProperties().getProperty(PropertiesUtil.PERSISTENCE_UNIT_NAME);
 			if (persistenceUnitName == null || persistenceUnitName.trim().isEmpty())
-				persistenceUnitName = "jjqb_" + Long.toHexString(System.currentTimeMillis());
+				persistenceUnitName = "jjqb_" + Long.toHexString(System.currentTimeMillis()); //$NON-NLS-1$
 
 			try {
 				JAXBContext context = JAXBContext.newInstance(Persistence.class);
@@ -209,7 +210,7 @@ public abstract class PersistencePropertiesPage extends AbstractDataSourceEditor
 //				}
 
 				Marshaller marshaller = context.createMarshaller();
-				marshaller.setProperty("jaxb.formatted.output", Boolean.TRUE);
+				marshaller.setProperty("jaxb.formatted.output", Boolean.TRUE); //$NON-NLS-1$
 				marshaller.marshal(persistence, file);
 			} catch (RuntimeException x) {
 				throw x;
@@ -221,14 +222,14 @@ public abstract class PersistencePropertiesPage extends AbstractDataSourceEditor
 		@Override
 		public Map<String, String> getFileNameFilters() {
 			Map<String, String> m = new HashMap<String, String>();
-			m.put("persistence.xml files", "*persistence*.xml");
+			m.put(Messages.getString("PersistencePropertiesPage.persistenceXmlFileNameFilterTitle"), "*persistence*.xml"); //$NON-NLS-1$ //$NON-NLS-2$
 			return m;
 		}
 
 		@Override
 		public boolean canHandle(File file, Properties properties) {
 			String fileName = file.getName();
-			return fileName.toLowerCase().endsWith(".xml") && fileName.toLowerCase().contains("persistence");
+			return fileName.toLowerCase().endsWith(".xml") && fileName.toLowerCase().contains("persistence"); //$NON-NLS-1$ //$NON-NLS-2$
 		}
 	};
 
@@ -238,14 +239,14 @@ public abstract class PersistencePropertiesPage extends AbstractDataSourceEditor
 	{
 		Object o = context.createUnmarshaller().unmarshal(persistenceXmlIn);
 		if (!(o instanceof Persistence))
-			throw new IllegalStateException("File '" + file.getAbsolutePath() + "' contains an object of type " + o.getClass().getName() + " instead of " + Persistence.class.getName() + "!");
+			throw new IllegalStateException("File '" + file.getAbsolutePath() + "' contains an object of type " + o.getClass().getName() + " instead of " + Persistence.class.getName() + "!"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
 
 		return (Persistence)o;
 	}
 
 	@Override
 	public void setCustomProperties(Properties properties) {
-		String persistenceUnitName = properties.getProperty(PropertiesUtil.PERSISTENCE_UNIT_NAME, "");
+		String persistenceUnitName = properties.getProperty(PropertiesUtil.PERSISTENCE_UNIT_NAME, ""); //$NON-NLS-1$
 		if (!persistenceUnitName.trim().isEmpty())
 			searchPersistenceUnitsAsyncInJob(properties);
 		else {
@@ -257,7 +258,7 @@ public abstract class PersistencePropertiesPage extends AbstractDataSourceEditor
 	private PreferencePageDirtyListener preferencePageDirtyListener = new PreferencePageDirtyListener() {
 		@Override
 		public void onMarkDirty(PreferencePageDirtyEvent event) {
-			logger.info("preferencePageDirtyListener.onMarkDirty: event.source={}", event.getSource());
+			logger.info("preferencePageDirtyListener.onMarkDirty: event.source={}", event.getSource()); //$NON-NLS-1$
 
 			if (event.getSource() instanceof ClasspathPage)
 				searchPersistenceUnitsAsyncInJob(collectProperties());
@@ -272,10 +273,10 @@ public abstract class PersistencePropertiesPage extends AbstractDataSourceEditor
 
 	private void searchPersistenceUnitsAsyncInJob(final Properties properties) {
 		Properties loadingDataDummyProperties = new Properties();
-		loadingDataDummyProperties.setProperty(">>> Loading persistence unit... <<<", "");
+		loadingDataDummyProperties.setProperty(Messages.getString("PersistencePropertiesPage.loadingPersistenceUnitMessage"), ""); //$NON-NLS-1$ //$NON-NLS-2$
 		editPropertiesComposite.setProperties(loadingDataDummyProperties);
 
-		Job job = new Job("Searching persistence units") {
+		Job job = new Job(Messages.getString("PersistencePropertiesPage.searchPersistenceUnitsJob.name")) { //$NON-NLS-1$
 			@Override
 			protected IStatus run(IProgressMonitor monitor) {
 				PersistenceXmlScanner persistenceXmlScanner = new PersistenceXmlScanner();
@@ -304,10 +305,10 @@ public abstract class PersistencePropertiesPage extends AbstractDataSourceEditor
 					});
 
 				} catch (RuntimeException e) {
-					logger.error("persistenceUnitSearchButtonPressed.job.run: " + e, e);
+					logger.error("persistenceUnitSearchButtonPressed.job.run: " + e, e); //$NON-NLS-1$
 					throw e;
 				} catch (Exception e) {
-					logger.error("persistenceUnitSearchButtonPressed.job.run: " + e, e);
+					logger.error("persistenceUnitSearchButtonPressed.job.run: " + e, e); //$NON-NLS-1$
 					throw new RuntimeException(e);
 				} finally {
 					persistenceXmlScanner.close();
@@ -324,7 +325,7 @@ public abstract class PersistencePropertiesPage extends AbstractDataSourceEditor
 	{
 		Properties persistenceProperties = PropertiesUtil.getProperties(properties, PropertiesUtil.PREFIX_PERSISTENCE);
 
-		String persistenceUnitName = properties.getProperty(PropertiesUtil.PERSISTENCE_UNIT_NAME, "").trim();
+		String persistenceUnitName = properties.getProperty(PropertiesUtil.PERSISTENCE_UNIT_NAME, "").trim(); //$NON-NLS-1$
 		if (!persistenceUnitName.isEmpty() && persistenceUnitName2persistenceUnit != null) {
 			PersistenceUnit persistenceUnit = persistenceUnitName2persistenceUnit.get(persistenceUnitName);
 			if (persistenceUnit != null) {

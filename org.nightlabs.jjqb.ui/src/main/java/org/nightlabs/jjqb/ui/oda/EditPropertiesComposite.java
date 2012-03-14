@@ -810,14 +810,15 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 				newSelectedName = newVal;
 			}
 			else if (COL_NUL.equals(property)) {
-//				if (getContentProvider().getProperties().getProperty(oldKey) == null)
-//					getContentProvider().setProperty(oldKey, getContentProvider().getPropertiesWithDefaultsMerged().get(oldKey));
 				getContentProvider().overrideProperty(oldKey);
-				getContentProvider().setProperty(PropertiesUtil.getMetaPropertyKeyNullValue(oldKey), newVal);
+				if (Boolean.FALSE.equals(value))
+					getContentProvider().getProperties().remove(PropertiesUtil.getMetaPropertyKeyNullValue(oldKey));
+				else
+					getContentProvider().setProperty(PropertiesUtil.getMetaPropertyKeyNullValue(oldKey), newVal);
 			}
 			else if (COL_VAL.equals(property)) {
 				getContentProvider().setProperty(oldKey, newVal);
-				getContentProvider().setProperty(PropertiesUtil.getMetaPropertyKeyNullValue(oldKey), Boolean.FALSE.toString());
+				getContentProvider().getProperties().remove(PropertiesUtil.getMetaPropertyKeyNullValue(oldKey));
 			}
 		}
 		else {

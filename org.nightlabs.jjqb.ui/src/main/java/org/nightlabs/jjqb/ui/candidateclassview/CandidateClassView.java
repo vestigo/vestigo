@@ -26,6 +26,7 @@ import org.nightlabs.jjqb.ui.editor.QueryEditor;
 import org.nightlabs.jjqb.ui.editor.QueryEditorInput;
 import org.nightlabs.jjqb.ui.editor.QueryEditorManager;
 import org.nightlabs.jjqb.ui.oda.QueryFileExtensionRegistry;
+import org.nightlabs.jjqb.ui.resource.Messages;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -75,20 +76,20 @@ public class CandidateClassView extends ViewPart
 		try {
 			String providerID = connectionProfile.getProviderId();
 			String fileExtension = QueryFileExtensionRegistry.getFileExtension(providerID);
-			IEditorDescriptor descriptor = editorRegistry.getDefaultEditor("dummy." + fileExtension);
+			IEditorDescriptor descriptor = editorRegistry.getDefaultEditor("dummy." + fileExtension); //$NON-NLS-1$
 			if (descriptor == null) {
-				throw new IllegalStateException("There is no editor registered for the file-extension \"" + fileExtension + "\"!");
+				throw new IllegalStateException("There is no editor registered for the file-extension \"" + fileExtension + "\"!"); //$NON-NLS-1$ //$NON-NLS-2$
 //				editorID = EditorsUI.DEFAULT_TEXT_EDITOR_ID;
 			}
 			String editorID = descriptor.getId();
 
 			workbenchPage.openEditor(
-					new QueryEditorInput(connectionProfile, new NonExistingStorageEditorInput("query", fileExtension)),
+					new QueryEditorInput(connectionProfile, new NonExistingStorageEditorInput("query", fileExtension)), //$NON-NLS-1$
 					editorID
 			);
 		} catch (Exception e) {
-			logger.error("run: " + e, e);
-			MessageDialog.openError(getSite().getShell(), "Opening editor failed", "Could not open the editor: " + e);
+			logger.error("run: " + e, e); //$NON-NLS-1$
+			MessageDialog.openError(getSite().getShell(), Messages.getString("CandidateClassView.openQueryEditorFailedDialog.title"), String.format(Messages.getString("CandidateClassView.openQueryEditorFailedDialog.text"), e.toString())); //$NON-NLS-1$ //$NON-NLS-2$
 		}
 	}
 
@@ -163,7 +164,7 @@ public class CandidateClassView extends ViewPart
 	{
 		@Override
 		public void partVisible(IWorkbenchPartReference partRef) {
-			logger.info("partVisible: partRef={}", partRef);
+			logger.info("partVisible: partRef={}", partRef); //$NON-NLS-1$
 			IWorkbenchPart part = partRef.getPart(true);
 			if (part instanceof QueryEditor)
 				setQueryEditor((QueryEditor) part);
@@ -171,27 +172,27 @@ public class CandidateClassView extends ViewPart
 
 		@Override
 		public void partOpened(IWorkbenchPartReference partRef) {
-			logger.info("partOpened: partRef={}", partRef);
+			logger.info("partOpened: partRef={}", partRef); //$NON-NLS-1$
 		}
 
 		@Override
 		public void partInputChanged(IWorkbenchPartReference partRef) {
-			logger.info("partInputChanged: partRef={}", partRef);
+			logger.info("partInputChanged: partRef={}", partRef); //$NON-NLS-1$
 		}
 
 		@Override
 		public void partHidden(IWorkbenchPartReference partRef) {
-			logger.info("partHidden: partRef={}", partRef);
+			logger.info("partHidden: partRef={}", partRef); //$NON-NLS-1$
 		}
 
 		@Override
 		public void partDeactivated(IWorkbenchPartReference partRef) {
-			logger.info("partDeactivated: partRef={}", partRef);
+			logger.info("partDeactivated: partRef={}", partRef); //$NON-NLS-1$
 		}
 
 		@Override
 		public void partClosed(IWorkbenchPartReference partRef) {
-			logger.info("partClosed: partRef={}", partRef);
+			logger.info("partClosed: partRef={}", partRef); //$NON-NLS-1$
 			IWorkbenchPart part = partRef.getPart(true);
 			if (part == queryEditor)
 				setQueryEditor(null);
@@ -199,12 +200,12 @@ public class CandidateClassView extends ViewPart
 
 		@Override
 		public void partBroughtToTop(IWorkbenchPartReference partRef) {
-			logger.info("partBroughtToTop: partRef={}", partRef);
+			logger.info("partBroughtToTop: partRef={}", partRef); //$NON-NLS-1$
 		}
 
 		@Override
 		public void partActivated(IWorkbenchPartReference partRef) {
-			logger.info("partActivated: partRef={}", partRef);
+			logger.info("partActivated: partRef={}", partRef); //$NON-NLS-1$
 
 			IWorkbenchPart part = partRef.getPart(true);
 			if (part instanceof QueryEditor)

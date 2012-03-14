@@ -76,14 +76,14 @@ public class EditClasspathComposite extends Composite implements ICellModifier, 
 {
 	private static final Logger logger = LoggerFactory.getLogger(EditClasspathComposite.class);
 
-	public static final String CP_ELEMENT_ADDED = "added";
-	public static final String CP_ELEMENT_REMOVED = "removed";
-	public static final String CP_ELEMENT_MOVED = "moved";
-	public static final String CP_ELEMENT_MODIFIED = "modified";
+	public static final String CP_ELEMENT_ADDED = "added"; //$NON-NLS-1$
+	public static final String CP_ELEMENT_REMOVED = "removed"; //$NON-NLS-1$
+	public static final String CP_ELEMENT_MOVED = "moved"; //$NON-NLS-1$
+	public static final String CP_ELEMENT_MODIFIED = "modified"; //$NON-NLS-1$
 
 	private Map<EditClasspathActionDelegate, EditClasspathAction> actionDelegate2Action = new HashMap<EditClasspathActionDelegate, EditClasspathAction>();
 
-	private static final String COL_ELEMENT = "Col-Element";
+	private static final String COL_ELEMENT = "Col-Element"; //$NON-NLS-1$
 
 	private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
@@ -119,13 +119,13 @@ public class EditClasspathComposite extends Composite implements ICellModifier, 
 
 				String text = String.valueOf(element);
 				int textLength = text.length();
-				while (tableGC.textExtent(text).x > table.getClientArea().width - 8 && textLength > 10)
+				while (tableGC.textExtent(text).x > tableColumn.getWidth() - 8 && textLength > 10)
 					text = shrinkText(String.valueOf(element), --textLength);
 
 				return text;
 			}
 
-			return "";
+			return ""; //$NON-NLS-1$
 		}
 
 		@Override
@@ -147,10 +147,10 @@ public class EditClasspathComposite extends Composite implements ICellModifier, 
 		if (text.length() <= newLength)
 			return text;
 
-		final String cutSymbol = "...";
+		final String cutSymbol = "..."; //$NON-NLS-1$
 
 		if (newLength < cutSymbol.length())
-			throw new IllegalArgumentException("newLength < cutSymbol.length()");
+			throw new IllegalArgumentException("newLength < cutSymbol.length()"); //$NON-NLS-1$
 
 		int beginLength = (newLength - cutSymbol.length()) / 2;
 		int endLength = newLength - beginLength - cutSymbol.length();
@@ -159,7 +159,7 @@ public class EditClasspathComposite extends Composite implements ICellModifier, 
 		String end = text.substring(text.length() - endLength, text.length());
 		String result = begin + cutSymbol + end;
 		if (result.length() != newLength)
-			throw new IllegalStateException("result.length() != newLength :: " + result.length() + " != " + newLength);
+			throw new IllegalStateException("result.length() != newLength :: " + result.length() + " != " + newLength); //$NON-NLS-1$ //$NON-NLS-2$
 
 		return result;
 	}
@@ -195,6 +195,7 @@ public class EditClasspathComposite extends Composite implements ICellModifier, 
 
 	protected TableViewer tableViewer;
 	protected Table table;
+	protected TableColumn tableColumn;
 	protected GC tableGC;
 
 	public EditClasspathComposite(Composite parent, int style) {
@@ -229,13 +230,17 @@ public class EditClasspathComposite extends Composite implements ICellModifier, 
 		GridData tgd = new GridData(GridData.FILL_BOTH);
 		tgd.horizontalSpan = gridLayout.numColumns;
 		table = tableViewer.getTable();
-		table.setHeaderVisible(true);
+		table.setHeaderVisible(false);
 		table.setLinesVisible(true);
 		table.setLayoutData(tgd);
 
 		table.addControlListener(new ControlAdapter() {
 			@Override
 			public void controlResized(ControlEvent e) {
+				TableLayout tableLayout = new TableLayout();
+				tableLayout.addColumnData(new ColumnWeightData(1, false));
+				table.setLayout(tableLayout);
+				table.layout(true);
 				tableViewer.refresh(true);
 			}
 		});
@@ -250,11 +255,10 @@ public class EditClasspathComposite extends Composite implements ICellModifier, 
 
 		tableGC = new GC(table);
 
-		(new TableColumn(table, SWT.LEFT)).setText("Classpath element");
+		tableColumn = new TableColumn(table, SWT.LEFT);
+		tableColumn.setText("Classpath element"); //$NON-NLS-1$
 
-		TableLayout tableLayout = new TableLayout();
-		tableLayout.addColumnData(new ColumnWeightData(1, true));
-		table.setLayout(tableLayout);
+		assignTableLayout();
 
 		tableViewer.setContentProvider(new ContentProvider());
 		tableViewer.setLabelProvider(new LabelProvider());
@@ -273,6 +277,12 @@ public class EditClasspathComposite extends Composite implements ICellModifier, 
 		setInput(new ArrayList<String>());
 	}
 
+	private void assignTableLayout() {
+		TableLayout tableLayout = new TableLayout();
+		tableLayout.addColumnData(new ColumnWeightData(1, false));
+		table.setLayout(tableLayout);
+	}
+
 	private void fireSelectionChangedEvent(ISelection selection)
 	{
 		SelectionChangedEvent newEvent = new SelectionChangedEvent(EditClasspathComposite.this, selection);
@@ -283,13 +293,13 @@ public class EditClasspathComposite extends Composite implements ICellModifier, 
 			me.getKey().selectionChanged(me.getValue(), selection);
 	}
 
-	private static final String extensionPointId_editClasspathActionDelegate = "org.nightlabs.jjqb.ui.editClasspathActionDelegate";
+	private static final String extensionPointId_editClasspathActionDelegate = "org.nightlabs.jjqb.ui.editClasspathActionDelegate"; //$NON-NLS-1$
 
 	private List<EditClasspathActionDelegate> getEditClasspathActionDelegates()
 	{
 		final IExtensionRegistry registry = Platform.getExtensionRegistry();
 		if (registry == null)
-			throw new IllegalStateException("Platform.getExtensionRegistry() returned null!");
+			throw new IllegalStateException("Platform.getExtensionRegistry() returned null!"); //$NON-NLS-1$
 
 		final String extensionPointId = extensionPointId_editClasspathActionDelegate;
 		final IExtensionPoint extensionPoint = registry.getExtensionPoint(extensionPointId);
@@ -306,13 +316,13 @@ public class EditClasspathComposite extends Composite implements ICellModifier, 
 			for (final IConfigurationElement element : elements) {
 				Object executableExtension;
 				try {
-					executableExtension = element.createExecutableExtension("class");
+					executableExtension = element.createExecutableExtension("class"); //$NON-NLS-1$
 				} catch (CoreException e) {
-					throw new RuntimeException("Could not create executable extension for class \"" + element.getAttribute("class") + "\"!!! Extension registered in bundle \"" + element.getContributor().getName() + "\". Cause: " + e, e);
+					throw new RuntimeException("Could not create executable extension for class \"" + element.getAttribute("class") + "\"!!! Extension registered in bundle \"" + element.getContributor().getName() + "\". Cause: " + e, e); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
 				}
 
 				if (!(executableExtension instanceof EditClasspathActionDelegate))
-					throw new RuntimeException("Executable extension of type \"" + element.getAttribute("class") + "\" does not implement \"" + EditClasspathActionDelegate.class.getName() + "\"!!! Extension registered in bundle \"" + element.getContributor().getName() + "\".");
+					throw new RuntimeException("Executable extension of type \"" + element.getAttribute("class") + "\" does not implement \"" + EditClasspathActionDelegate.class.getName() + "\"!!! Extension registered in bundle \"" + element.getContributor().getName() + "\"."); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$
 
 				++actionDelegateQty;
 				EditClasspathActionDelegate actionDelegate = (EditClasspathActionDelegate) executableExtension;
@@ -321,9 +331,9 @@ public class EditClasspathComposite extends Composite implements ICellModifier, 
 				String group = actionDelegate.getGroup();
 				if (!group2ActionDelegates.containsKey(group)) {
 					if (group != null && !group.isEmpty())
-						logger.warn("getEditClasspathActionDelegates: Unknown group: {}", group);
+						logger.warn("getEditClasspathActionDelegates: Unknown group: {}", group); //$NON-NLS-1$
 
-					group = "additions";
+					group = "additions"; //$NON-NLS-1$
 				}
 
 				group2ActionDelegates.get(group).add(actionDelegate);
@@ -344,10 +354,10 @@ public class EditClasspathComposite extends Composite implements ICellModifier, 
 		return result;
 	}
 
-	public static final String ACTION_DELEGATE_GROUP_ADD = "add";
-	public static final String ACTION_DELEGATE_GROUP_REMOVE = "remove";
-	public static final String ACTION_DELEGATE_GROUP_MOVE = "move";
-	public static final String ACTION_DELEGATE_GROUP_ADDITIONS = "additions";
+	public static final String ACTION_DELEGATE_GROUP_ADD = "add"; //$NON-NLS-1$
+	public static final String ACTION_DELEGATE_GROUP_REMOVE = "remove"; //$NON-NLS-1$
+	public static final String ACTION_DELEGATE_GROUP_MOVE = "move"; //$NON-NLS-1$
+	public static final String ACTION_DELEGATE_GROUP_ADDITIONS = "additions"; //$NON-NLS-1$
 
 	public static final String[] ACTION_DELEGATE_GROUPS = {
 		ACTION_DELEGATE_GROUP_ADD,
@@ -364,7 +374,7 @@ public class EditClasspathComposite extends Composite implements ICellModifier, 
 	public void addClasspathElements(Collection<String> classpathElements)
 	{
 		if (classpathElements == null)
-			throw new IllegalArgumentException("classpathElements == null");
+			throw new IllegalArgumentException("classpathElements == null"); //$NON-NLS-1$
 
 		ArrayList<String> newInput = new ArrayList<String>(getClasspathElements().size() + classpathElements.size());
 		newInput.addAll(getClasspathElements());
@@ -381,7 +391,7 @@ public class EditClasspathComposite extends Composite implements ICellModifier, 
 	public void removeClasspathElements(Collection<String> classpathElements)
 	{
 		if (classpathElements == null)
-			throw new IllegalArgumentException("classpathElements == null");
+			throw new IllegalArgumentException("classpathElements == null"); //$NON-NLS-1$
 
 		ArrayList<String> newInput = new ArrayList<String>(getClasspathElements());
 		newInput.removeAll(classpathElements);
@@ -438,11 +448,11 @@ public class EditClasspathComposite extends Composite implements ICellModifier, 
 			for (String[] var2filePath : var2filePaths) {
 				File f = new File(var2filePath[1]);
 				String relativePath = IOUtil.getRelativePath(f, file);
-				if (!new File(relativePath).isAbsolute() && !relativePath.startsWith(".." + File.separatorChar))
-					return "file:" + "${" + var2filePath[0] + "}/" + relativePath.replace(File.separatorChar, '/');
+				if (!new File(relativePath).isAbsolute() && !relativePath.startsWith(".." + File.separatorChar)) //$NON-NLS-1$
+					return "file:" + "${" + var2filePath[0] + "}/" + relativePath.replace(File.separatorChar, '/'); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 			}
 
-			return "file:" + absolutePath;
+			return "file:" + absolutePath; //$NON-NLS-1$
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
@@ -508,7 +518,7 @@ public class EditClasspathComposite extends Composite implements ICellModifier, 
 	@Override
 	public void addSelectionChangedListener(ISelectionChangedListener listener) {
 		if (listener == null)
-			throw new IllegalArgumentException("listener == null");
+			throw new IllegalArgumentException("listener == null"); //$NON-NLS-1$
 
 		selectionChangedListeners.add(listener);
 	}
