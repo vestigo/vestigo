@@ -165,6 +165,33 @@
 			</dependency>
 			<!-- END org.nightlabs.jjqb -->
 			
+			<!-- BEGIN org.nightlabs.jjqb.assembly -->
+			<dependency>
+				<groupId>org.nightlabs.jjqb</groupId>
+				<artifactId>org.nightlabs.jjqb.assembly.parent</artifactId>
+				<version>${jjqb.version}</version>
+				<type>pom</type>
+			</dependency>
+			<dependency>
+				<groupId>org.nightlabs.jjqb</groupId>
+				<artifactId>org.nightlabs.jjqb.assembly.linux-gtk</artifactId>
+				<version>${jjqb.version}</version>
+				<type>tar.gz</type>
+			</dependency>
+			<dependency>
+				<groupId>org.nightlabs.jjqb</groupId>
+				<artifactId>org.nightlabs.jjqb.assembly.linux-gtk-x86-64</artifactId>
+				<version>${jjqb.version}</version>
+				<type>tar.gz</type>
+			</dependency>
+			<dependency>
+				<groupId>org.nightlabs.jjqb</groupId>
+				<artifactId>org.nightlabs.jjqb.assembly.win32</artifactId>
+				<version>${jjqb.version}</version>
+				<type>zip</type>
+			</dependency>
+			<!-- END org.nightlabs.jjqb.assembly -->			
+			
 			<!-- BEGIN org.nightlabs.jjqb.cumulus4j -->
 			<dependency>
 				<groupId>org.nightlabs.jjqb</groupId>
