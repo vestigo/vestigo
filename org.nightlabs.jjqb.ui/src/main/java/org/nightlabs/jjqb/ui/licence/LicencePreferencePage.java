@@ -59,7 +59,7 @@ implements IWorkbenchPreferencePage
 	public void init(IWorkbench workbench)
 	{
 		display = workbench.getDisplay();
-		IPreferenceStore preferenceStore = new ScopedPreferenceStore(ConfigurationScope.INSTANCE, LicenceManagerPlugin.BUNDLE_SYMBOLIC_NAME);
+		IPreferenceStore preferenceStore = new ScopedPreferenceStore(new ConfigurationScope(), LicenceManagerPlugin.BUNDLE_SYMBOLIC_NAME);
 		setPreferenceStore(preferenceStore);
 		updateDescription();
 	}
