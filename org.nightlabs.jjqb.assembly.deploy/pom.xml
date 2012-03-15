@@ -41,19 +41,22 @@
 			<artifactId>org.nightlabs.jjqb.assembly.linux-gtk</artifactId>
 			<type>tar.gz</type>
 			<version>${jjqb.version}</version> <!-- TODO remove as soon as the parent is built with this in dependency-management -->
+			<scope>compile</scope>
 		</dependency>
+		<!--
 		<dependency>
 			<groupId>org.nightlabs.jjqb</groupId>
 			<artifactId>org.nightlabs.jjqb.assembly.linux-gtk-x86_64</artifactId>
 			<type>tar.gz</type>
-			<version>${jjqb.version}</version> <!-- TODO remove as soon as the parent is built with this in dependency-management -->
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.nightlabs.jjqb</groupId>
 			<artifactId>org.nightlabs.jjqb.assembly.win32</artifactId>
 			<type>zip</type>
-			<version>${jjqb.version}</version> <!-- TODO remove as soon as the parent is built with this in dependency-management -->
+			<scope>compile</scope>
 		</dependency>
+		-->
 	</dependencies>
 
 	<distributionManagement>
@@ -74,12 +77,14 @@
 							<goal>copy-dependencies</goal>
 						</goals>
 						<configuration>
+							<includeScope>compile</includeScope>
 							<excludeTransitive>true</excludeTransitive>
 							<includeArtifactIds>
 								org.nightlabs.jjqb.assembly.linux-gtk,
 								org.nightlabs.jjqb.assembly.linux-gtk-x86_64,
 								org.nightlabs.jjqb.assembly.win32
 							</includeArtifactIds>
+							<includeTypes>zip,tar.gz</includeTypes>
 							<outputDirectory>${project.build.directory}/site/</outputDirectory>
 						</configuration>
 					</execution>
