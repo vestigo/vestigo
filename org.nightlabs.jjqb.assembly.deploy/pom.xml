@@ -58,22 +58,28 @@
 									<groupId>org.nightlabs.jjqb</groupId>
 									<artifactId>org.nightlabs.jjqb.assembly.linux-gtk</artifactId>
 									<version>${jjqb.version}</version>
+									<classifier>bin</classifier>
 									<type>tar.gz</type>
 									<overWrite>true</overWrite>
+									<destFileName>vestigo-linux-gtk-${jjqb.version}.tar.gz</destFileName>
 								</artifactItem>
 								<artifactItem>
 									<groupId>org.nightlabs.jjqb</groupId>
 									<artifactId>org.nightlabs.jjqb.assembly.linux-gtk-x86_64</artifactId>
 									<version>${jjqb.version}</version>
+									<classifier>bin</classifier>
 									<type>tar.gz</type>
 									<overWrite>true</overWrite>
+									<destFileName>vestigo-linux-gtk-x86-64-${jjqb.version}.tar.gz</destFileName>
 								</artifactItem>
 								<artifactItem>
 									<groupId>org.nightlabs.jjqb</groupId>
 									<artifactId>org.nightlabs.jjqb.assembly.win32</artifactId>
 									<version>${jjqb.version}</version>
+									<classifier>bin</classifier>
 									<type>tar.gz</type>
 									<overWrite>true</overWrite>
+									<destFileName>vestigo-win32-${jjqb.version}.tar.gz</destFileName>
 								</artifactItem>
 							</artifactItems>
 							<outputDirectory>${project.build.directory}/site/</outputDirectory>
