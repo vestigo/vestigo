@@ -327,7 +327,7 @@ public abstract class ResultSet
 		else {
 			ClassLoader persistenceEngineClassLoader;
 			try {
-				persistenceEngineClassLoader = connection.getConnectionProfile().getClassLoaderManager().getPersistenceEngineClassLoader();
+				persistenceEngineClassLoader = connection.getConnectionProfile().getClassLoaderManager().getPersistenceEngineClassLoader(null);
 			} catch (IOException e) {
 				throw new RuntimeException(e);
 			}

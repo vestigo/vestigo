@@ -55,7 +55,7 @@ public class JDOConnectionProfile extends ConnectionProfile
 
 		ClassLoader persistenceEngineClassLoader;
 		try {
-			persistenceEngineClassLoader = getClassLoaderManager().getPersistenceEngineClassLoader();
+			persistenceEngineClassLoader = getClassLoaderManager().getPersistenceEngineClassLoader(null);
 			if (logger.isDebugEnabled()) {
 				logger.debug("[{}].onFirstConnectionOpen: created persistenceEngineClassLoader.", Long.toHexString(System.identityHashCode(this)));
 			}

@@ -17,6 +17,10 @@ import javax.xml.bind.JAXBException;
 
 import org.nightlabs.jjqb.childvm.shared.classloader.ClassLoaderManager;
 import org.nightlabs.jjqb.childvm.shared.persistencexml.jaxb.Persistence;
+import org.nightlabs.progress.NullProgressMonitor;
+import org.nightlabs.progress.OperationCanceledException;
+import org.nightlabs.progress.ProgressMonitor;
+import org.nightlabs.progress.SubProgressMonitor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -45,62 +49,86 @@ public class PersistenceXmlScanner {
 		classLoaderManager.close();
 	}
 
-	public Collection<PersistenceXml> searchPersistenceXmls() throws IOException, JAXBException
+	public Collection<PersistenceXml> searchPersistenceXmls(ProgressMonitor monitor) throws IOException, JAXBException
 	{
-		JAXBContext context = JAXBContext.newInstance(Persistence.class);
-		List<PersistenceXml> persistenceXmls = new ArrayList<PersistenceXml>();
-		List<URL> urlList = classLoaderManager.getPersistenceEngineClasspathURLList();
-		for (URL url : urlList) {
-			try {
-				populatePersistenceXmls(context, persistenceXmls, url);
-			} catch (Exception e) {
-				logger.warn("searchPersistenceXmls: url='" + url + "': " + e, e);
+		if (monitor == null)
+			monitor = new NullProgressMonitor();
+
+		String taskName = "Search persistence.xml files";
+		monitor.beginTask(taskName, 100);
+		try {
+			JAXBContext context = JAXBContext.newInstance(Persistence.class);
+			monitor.worked(5);
+
+			List<PersistenceXml> persistenceXmls = new ArrayList<PersistenceXml>();
+			List<URL> urlList = classLoaderManager.getPersistenceEngineClasspathURLList(new SubProgressMonitor(monitor, 65));
+
+			SubProgressMonitor subMonitor = new SubProgressMonitor(monitor, 30);
+			subMonitor.beginTask(taskName, urlList.size() * 10);
+			for (URL url : urlList) {
+				if (monitor.isCanceled())
+					throw new OperationCanceledException();
+
+				try {
+					populatePersistenceXmls(context, persistenceXmls, url, new SubProgressMonitor(subMonitor, 10));
+				} catch (Exception e) {
+					logger.warn("searchPersistenceXmls: url='" + url + "': " + e, e);
+				}
 			}
+			subMonitor.done();
+			return persistenceXmls;
+		} finally {
+			monitor.done();
 		}
-		return persistenceXmls;
 	}
 
-	private void populatePersistenceXmls(JAXBContext context, List<PersistenceXml> persistenceXmls, URL url) throws IOException, URISyntaxException, JAXBException
+	private void populatePersistenceXmls(JAXBContext context, List<PersistenceXml> persistenceXmls, URL url, ProgressMonitor monitor) throws IOException, URISyntaxException, JAXBException
 	{
-		if (!"file".equals(url.getProtocol())) {
-			logger.warn("populatePersistenceXmls: Ignoring unsupported URL (unknown protocol): {}", url);
-			return;
-		}
-
-		File file = new File(url.toURI());
-
-		if (!file.exists()) {
-			logger.warn("populatePersistenceXmls: File or directory does not exist: {}", file.getAbsolutePath());
-			return;
-		}
-
-		if (file.isDirectory()) {
-			File persistenceXmlFile = new File(new File(file, META_INF), PERSISTENCE_XML);
-			if (persistenceXmlFile.exists())
-				persistenceXmls.add(loadPersistenceXml(context, url, persistenceXmlFile));
-			else
-				logger.debug("populatePersistenceXmls: {} not found at location: {}", PERSISTENCE_XML, persistenceXmlFile.getAbsolutePath());
-		}
-
-		String fnLower = file.getName().toLowerCase();
-		if (!(fnLower.endsWith(".ear") || fnLower.endsWith(".war") || fnLower.endsWith(".jar"))) {
-			logger.debug("populatePersistenceXmls: Ignoring non-archive file: {}", file.getAbsolutePath());
-			return;
-		}
-
-		ZipFile zipFile = new ZipFile(file);
+		monitor.beginTask("Search persistence.xml files", 100);
 		try {
-			ZipEntry zipEntry = zipFile.getEntry(META_INF + '/' + PERSISTENCE_XML);
-			if (zipEntry == null) {
-				logger.debug("populatePersistenceXmls: {} not found in zip file: {}", META_INF + '/' + PERSISTENCE_XML, file.getAbsolutePath());
+			if (!"file".equals(url.getProtocol())) {
+				logger.warn("populatePersistenceXmls: Ignoring unsupported URL (unknown protocol): {}", url);
 				return;
 			}
 
-			InputStream in = zipFile.getInputStream(zipEntry);
-			persistenceXmls.add(loadPersistenceXml(context, url, in));
-			in.close();
+			File file = new File(url.toURI());
+
+			if (!file.exists()) {
+				logger.warn("populatePersistenceXmls: File or directory does not exist: {}", file.getAbsolutePath());
+				return;
+			}
+
+			if (file.isDirectory()) {
+				File persistenceXmlFile = new File(new File(file, META_INF), PERSISTENCE_XML);
+				if (persistenceXmlFile.exists())
+					persistenceXmls.add(loadPersistenceXml(context, url, persistenceXmlFile));
+				else
+					logger.debug("populatePersistenceXmls: {} not found at location: {}", PERSISTENCE_XML, persistenceXmlFile.getAbsolutePath());
+			}
+
+			String fnLower = file.getName().toLowerCase();
+			if (!(fnLower.endsWith(".ear") || fnLower.endsWith(".war") || fnLower.endsWith(".jar"))) {
+				logger.debug("populatePersistenceXmls: Ignoring non-archive file: {}", file.getAbsolutePath());
+				return;
+			}
+
+			ZipFile zipFile = new ZipFile(file);
+			try {
+				ZipEntry zipEntry = zipFile.getEntry(META_INF + '/' + PERSISTENCE_XML);
+				if (zipEntry == null) {
+					logger.debug("populatePersistenceXmls: {} not found in zip file: {}", META_INF + '/' + PERSISTENCE_XML, file.getAbsolutePath());
+					return;
+				}
+
+				InputStream in = zipFile.getInputStream(zipEntry);
+				persistenceXmls.add(loadPersistenceXml(context, url, in));
+				in.close();
+			} finally {
+				zipFile.close();
+			}
 		} finally {
-			zipFile.close();
+			monitor.worked(100);
+			monitor.done();
 		}
 	}
 

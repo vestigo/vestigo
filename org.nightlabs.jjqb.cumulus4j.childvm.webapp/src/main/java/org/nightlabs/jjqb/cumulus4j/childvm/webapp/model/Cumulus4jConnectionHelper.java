@@ -123,7 +123,7 @@ public class Cumulus4jConnectionHelper
 
 		ClassLoader backupContextClassLoader = Thread.currentThread().getContextClassLoader();
 		try {
-			ClassLoader persistenceEngineClassLoader = connection.getConnectionProfile().getClassLoaderManager().getPersistenceEngineClassLoader();
+			ClassLoader persistenceEngineClassLoader = connection.getConnectionProfile().getClassLoaderManager().getPersistenceEngineClassLoader(null);
 			Thread.currentThread().setContextClassLoader(persistenceEngineClassLoader);
 
 			// KeyManagerAPIConfiguration configuration = new KeyManagerAPIConfiguration();

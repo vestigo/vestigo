@@ -96,7 +96,7 @@ public class JPAResultSet extends ResultSet
 		try {
 			entityClass = Class.forName(
 					objectClassName, false,
-					getConnection().getConnectionProfile().getClassLoaderManager().getPersistenceEngineClassLoader()
+					getConnection().getConnectionProfile().getClassLoaderManager().getPersistenceEngineClassLoader(null)
 			);
 		} catch (ClassNotFoundException e) {
 			throw new RuntimeException(e);

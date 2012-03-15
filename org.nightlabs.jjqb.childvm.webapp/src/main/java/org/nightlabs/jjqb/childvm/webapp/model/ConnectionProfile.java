@@ -164,7 +164,7 @@ public abstract class ConnectionProfile
 		PersistenceXmlScanner scanner = new PersistenceXmlScanner();
 		scanner.open(connectionProperties);
 		try {
-			Collection<PersistenceXml> persistenceXmls = scanner.searchPersistenceXmls();
+			Collection<PersistenceXml> persistenceXmls = scanner.searchPersistenceXmls(null);
 			for (PersistenceXml persistenceXml : persistenceXmls) {
 				List<PersistenceUnit> persistenceUnits = persistenceXml.getPersistence().getPersistenceUnit();
 				for (PersistenceUnit persistenceUnit : persistenceUnits) {
@@ -359,11 +359,11 @@ public abstract class ConnectionProfile
 	public SortedSet<String> getQueryableCandidateClasses() throws IOException
 	{
 		long startTimestamp = System.currentTimeMillis();
-		ClassLoader classLoader = classLoaderManager.getPersistenceEngineClassLoader();
+		ClassLoader classLoader = classLoaderManager.getPersistenceEngineClassLoader(null);
 
 		SortedSet<String> classes = new TreeSet<String>();
 
-		List<URL> classpathURLs = classLoaderManager.getPersistenceEngineClasspathURLList();
+		List<URL> classpathURLs = classLoaderManager.getPersistenceEngineClasspathURLList(null);
 		for (URL url : classpathURLs) {
 			try {
 				if ("file".equals(url.getProtocol())) {

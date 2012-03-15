@@ -18,6 +18,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.swt.SWT;
@@ -31,6 +32,7 @@ import org.nightlabs.jjqb.childvm.shared.persistencexml.PersistenceXml;
 import org.nightlabs.jjqb.childvm.shared.persistencexml.PersistenceXmlScanner;
 import org.nightlabs.jjqb.childvm.shared.persistencexml.jaxb.Persistence;
 import org.nightlabs.jjqb.childvm.shared.persistencexml.jaxb.Persistence.PersistenceUnit;
+import org.nightlabs.jjqb.core.progress.ProgressMonitorWrapper;
 import org.nightlabs.jjqb.ui.oda.EditPropertiesComposite;
 import org.nightlabs.jjqb.ui.oda.LoadPropertiesHandler;
 import org.nightlabs.jjqb.ui.oda.PropertiesWithDefaults;
@@ -279,42 +281,52 @@ public abstract class PersistencePropertiesPage extends AbstractDataSourceEditor
 		Job job = new Job(Messages.getString("PersistencePropertiesPage.searchPersistenceUnitsJob.name")) { //$NON-NLS-1$
 			@Override
 			protected IStatus run(IProgressMonitor monitor) {
-				PersistenceXmlScanner persistenceXmlScanner = new PersistenceXmlScanner();
+				monitor.beginTask(Messages.getString("PersistencePropertiesPage.searchPersistenceUnitsJob.name"), 100); //$NON-NLS-1$
 				try {
-					persistenceXmlScanner.open(properties);
-					Collection<PersistenceXml> persistenceXmls = persistenceXmlScanner.searchPersistenceXmls();
+					PersistenceXmlScanner persistenceXmlScanner = new PersistenceXmlScanner();
+					try {
+						persistenceXmlScanner.open(properties);
+						monitor.worked(5);
 
-					final Map<String, PersistenceUnit> persistenceUnitName2persistenceUnit = new HashMap<String, PersistenceUnit>();
-					for (PersistenceXml persistenceXml : persistenceXmls) {
-						List<PersistenceUnit> persistenceUnits = persistenceXml.getPersistence().getPersistenceUnit();
-						for (PersistenceUnit persistenceUnit : persistenceUnits) {
-							if (!persistenceUnitName2persistenceUnit.containsKey(persistenceUnit.getName()))
-								persistenceUnitName2persistenceUnit.put(persistenceUnit.getName().trim(), persistenceUnit);
+						Collection<PersistenceXml> persistenceXmls = persistenceXmlScanner.searchPersistenceXmls(
+								new ProgressMonitorWrapper(new SubProgressMonitor(monitor, 90))
+						);
+
+						final Map<String, PersistenceUnit> persistenceUnitName2persistenceUnit = new HashMap<String, PersistenceUnit>();
+						for (PersistenceXml persistenceXml : persistenceXmls) {
+							List<PersistenceUnit> persistenceUnits = persistenceXml.getPersistence().getPersistenceUnit();
+							for (PersistenceUnit persistenceUnit : persistenceUnits) {
+								if (!persistenceUnitName2persistenceUnit.containsKey(persistenceUnit.getName()))
+									persistenceUnitName2persistenceUnit.put(persistenceUnit.getName().trim(), persistenceUnit);
+							}
 						}
+
+						monitor.worked(5);
+
+						display.asyncExec(new Runnable() {
+							@Override
+							public void run() {
+								if (editPropertiesComposite.isDisposed())
+									return;
+
+								PersistencePropertiesPage.this.persistenceUnitName2persistenceUnit = persistenceUnitName2persistenceUnit;
+								loadPersistenceUnitAsDefaults(properties);
+							}
+						});
+
+					} catch (RuntimeException e) {
+						logger.error("persistenceUnitSearchButtonPressed.job.run: " + e, e); //$NON-NLS-1$
+						throw e;
+					} catch (Exception e) {
+						logger.error("persistenceUnitSearchButtonPressed.job.run: " + e, e); //$NON-NLS-1$
+						throw new RuntimeException(e);
+					} finally {
+						persistenceXmlScanner.close();
 					}
-
-					display.asyncExec(new Runnable() {
-						@Override
-						public void run() {
-							if (editPropertiesComposite.isDisposed())
-								return;
-
-							PersistencePropertiesPage.this.persistenceUnitName2persistenceUnit = persistenceUnitName2persistenceUnit;
-							loadPersistenceUnitAsDefaults(properties);
-						}
-					});
-
-				} catch (RuntimeException e) {
-					logger.error("persistenceUnitSearchButtonPressed.job.run: " + e, e); //$NON-NLS-1$
-					throw e;
-				} catch (Exception e) {
-					logger.error("persistenceUnitSearchButtonPressed.job.run: " + e, e); //$NON-NLS-1$
-					throw new RuntimeException(e);
+					return Status.OK_STATUS;
 				} finally {
-					persistenceXmlScanner.close();
+					monitor.done();
 				}
-
-				return Status.OK_STATUS;
 			}
 		};
 		job.setUser(true);

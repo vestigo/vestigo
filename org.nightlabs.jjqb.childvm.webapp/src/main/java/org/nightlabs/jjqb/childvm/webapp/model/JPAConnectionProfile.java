@@ -51,7 +51,7 @@ public class JPAConnectionProfile extends ConnectionProfile
 
 		ClassLoader persistenceEngineClassLoader;
 		try {
-			persistenceEngineClassLoader = getClassLoaderManager().getPersistenceEngineClassLoader();
+			persistenceEngineClassLoader = getClassLoaderManager().getPersistenceEngineClassLoader(null);
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}

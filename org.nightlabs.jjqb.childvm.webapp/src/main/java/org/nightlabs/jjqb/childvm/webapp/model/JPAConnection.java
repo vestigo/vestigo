@@ -54,7 +54,7 @@ extends Connection
 
 			ClassLoader persistenceEngineClassLoader;
 			try {
-				persistenceEngineClassLoader = connectionProfile.getClassLoaderManager().getPersistenceEngineClassLoader();
+				persistenceEngineClassLoader = connectionProfile.getClassLoaderManager().getPersistenceEngineClassLoader(null);
 			} catch (IOException e) {
 				throw new RuntimeException(e);
 			}

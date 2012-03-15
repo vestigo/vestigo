@@ -59,7 +59,7 @@ public class JerseyProxyServlet extends HttpServlet
 		HttpServlet jerseyServlet = this.jerseyServlet;
 
 		if (connectionProfile != null && jerseyServlet != null) {
-			ClassLoader persistenceEngineClassLoader = connectionProfile.getClassLoaderManager().getPersistenceEngineClassLoader();
+			ClassLoader persistenceEngineClassLoader = connectionProfile.getClassLoaderManager().getPersistenceEngineClassLoader(null);
 			ClassLoader backupContextClassLoader = Thread.currentThread().getContextClassLoader();
 			try {
 				Thread.currentThread().setContextClassLoader(persistenceEngineClassLoader);
@@ -78,7 +78,7 @@ public class JerseyProxyServlet extends HttpServlet
 		if (connectionProfile == null)
 			throw new IllegalStateException("connectionProfile not yet assigned!");
 
-		ClassLoader persistenceEngineClassLoader = connectionProfile.getClassLoaderManager().getPersistenceEngineClassLoader();
+		ClassLoader persistenceEngineClassLoader = connectionProfile.getClassLoaderManager().getPersistenceEngineClassLoader(null);
 		ClassLoader backupContextClassLoader = Thread.currentThread().getContextClassLoader();
 		try {
 			Thread.currentThread().setContextClassLoader(persistenceEngineClassLoader);

@@ -39,7 +39,7 @@ public class IsClassAssignableFromService extends AbstractService
 			throw new IllegalArgumentException("candidateClass == null");
 
 		ConnectionProfile connectionProfile = ConnectionProfileManager.sharedInstance().getConnectionProfile(profileID, true);
-		ClassLoader peClassLoader = connectionProfile.getClassLoaderManager().getPersistenceEngineClassLoader();
+		ClassLoader peClassLoader = connectionProfile.getClassLoaderManager().getPersistenceEngineClassLoader(null);
 		Class<?> tClass = peClassLoader.loadClass(targetClass);
 		Class<?> cClass = peClassLoader.loadClass(candidateClass);
 		return tClass.isAssignableFrom(cClass);
