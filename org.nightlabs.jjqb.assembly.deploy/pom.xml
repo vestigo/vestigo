@@ -77,7 +77,7 @@
 									<artifactId>org.nightlabs.jjqb.assembly.win32</artifactId>
 									<version>${jjqb.version}</version>
 									<classifier>bin</classifier>
-									<type>tar.gz</type>
+									<type>zip</type>
 									<overWrite>true</overWrite>
 									<destFileName>vestigo-win32-${jjqb.version}.tar.gz</destFileName>
 								</artifactItem>
