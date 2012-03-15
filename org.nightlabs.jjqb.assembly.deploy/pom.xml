@@ -40,16 +40,19 @@
 			<groupId>org.nightlabs.jjqb</groupId>
 			<artifactId>org.nightlabs.jjqb.assembly.linux-gtk</artifactId>
 			<type>tar.gz</type>
+			<version>${jjqb.version}</version> <!-- TODO remove as soon as the parent is built with this in dependency-management -->
 		</dependency>
 		<dependency>
 			<groupId>org.nightlabs.jjqb</groupId>
 			<artifactId>org.nightlabs.jjqb.assembly.linux-gtk-x86_64</artifactId>
 			<type>tar.gz</type>
+			<version>${jjqb.version}</version> <!-- TODO remove as soon as the parent is built with this in dependency-management -->
 		</dependency>
 		<dependency>
 			<groupId>org.nightlabs.jjqb</groupId>
 			<artifactId>org.nightlabs.jjqb.assembly.win32</artifactId>
 			<type>zip</type>
+			<version>${jjqb.version}</version> <!-- TODO remove as soon as the parent is built with this in dependency-management -->
 		</dependency>
 	</dependencies>
 
