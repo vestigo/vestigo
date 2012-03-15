@@ -23,7 +23,7 @@
 	<distributionManagement>
 		<site>
 			<id>jjqb.nightlabs.com</id>
-			<url>${distributionManagement.site.prefix}/jjqb.nightlabs.com/htdocs/${project.version}/</url>
+			<url>${distributionManagement.site.prefix}/jjqb.nightlabs.com/htdocs/${project.version}/download/p2</url>
 		</site>
 	</distributionManagement>
 	
@@ -39,7 +39,7 @@
 						</goals>
 						<configuration>
 							<includeArtifactIds>org.nightlabs.jjqb.tycho.p2.repository</includeArtifactIds>
-							<outputDirectory>${project.build.directory}/site/download/p2</outputDirectory>
+							<outputDirectory>${project.build.directory}/site</outputDirectory>
 						</configuration>
 					</execution>
 				</executions>

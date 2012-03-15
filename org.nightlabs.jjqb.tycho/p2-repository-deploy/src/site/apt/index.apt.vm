@@ -1,0 +1,28 @@
+ -----
+ Vestigo p2 repository
+ -----
+ Alexander Bieber
+ -----
+ 2012-03-15
+ -----
+
+Vestigo p2 repository
+ 
+ This is the p2 repsoitory for Vestigo (version ${project.version}).
+ 
+ In order to install vestigo start Eclipse (http://www.eclipse.org) and 
+ open up the menu items <<Help>> | <<Install new software>>. 
+ Enter the following url to create a new site:
+
+--------------------------------------------------------- 
+http://vestigo.nightlabs.com/${project.version}download/p2
+---------------------------------------------------------
+
+
+ 
+  
+ 
+
+      
+ 
+ 

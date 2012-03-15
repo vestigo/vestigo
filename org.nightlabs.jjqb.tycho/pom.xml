@@ -12,6 +12,7 @@
 
 	<modules>
 		<module>feature-jjqb</module>
+		<module>feature-jdt</module>
 		<module>feature-cumulus4j</module>
 		<module>p2-repository</module>
 		<module>p2-repository-deploy</module>
@@ -27,6 +28,11 @@
 			<dependency>
 				<groupId>org.nightlabs.jjqb</groupId>
 				<artifactId>org.nightlabs.jjqb.cumulus4j.ui.feature</artifactId>
+				<version>${jjqb.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.nightlabs.jjqb</groupId>
+				<artifactId>org.nightlabs.jjqb.jdt.ui.feature</artifactId>
 				<version>${jjqb.version}</version>
 			</dependency>
 			<dependency>

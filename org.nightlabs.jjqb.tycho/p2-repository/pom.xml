@@ -37,6 +37,11 @@
 		</dependency>
 		<dependency>
 			<groupId>org.nightlabs.jjqb</groupId>
+			<artifactId>org.nightlabs.jjqb.jdt.ui.feature</artifactId>
+			<version>0.1.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.nightlabs.jjqb</groupId>
 			<artifactId>org.nightlabs.jjqb.cumulus4j.ui.feature</artifactId>
 			<version>0.1.1-SNAPSHOT</version>
 		</dependency>

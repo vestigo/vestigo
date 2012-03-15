@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="org.nightlabs.jjqb.cumulus4j.ui.feature"
-      label="Vestigo Cumulus4j integration"
+      id="org.nightlabs.jjqb.jdt.ui.feature"
+      label="Vestigo JDT integration"
       version="0.1.1.qualifier"
       provider-name="NightLabs Consulting GmbH">
 
@@ -22,24 +22,16 @@
    </requires>
 
    <plugin
-         id="org.nightlabs.jjqb.cumulus4j.childvm.shared"
+         id="org.nightlabs.jjqb.jdt.core"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="org.nightlabs.jjqb.cumulus4j.core"
+         id="org.nightlabs.jjqb.jdt.ui"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
-
-   <plugin
-         id="org.nightlabs.jjqb.cumulus4j.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
 </feature>
