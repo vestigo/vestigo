@@ -23,7 +23,7 @@
 	<distributionManagement>
 		<site>
 			<id>jjqb.nightlabs.com</id>
-			<url>${distributionManagement.site.prefix}/jjqb.nightlabs.com/htdocs/${project.version}/download/p2</url>
+			<url>${distributionManagement.site.prefix}/vestigo.nightlabs.com/htdocs/${project.version}/download/p2</url>
 		</site>
 	</distributionManagement>
 	
