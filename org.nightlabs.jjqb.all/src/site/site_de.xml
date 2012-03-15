@@ -2,11 +2,11 @@
 <project xmlns="http://maven.apache.org/DECORATION/1.1.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/DECORATION/1.1.0 http://maven.apache.org/xsd/decoration-1.1.0.xsd"
-	name="JDO/JPA-Query-Browser (JJQB)">
+	name="Vestigo">
 
 	<bannerLeft>
-		<name>JDO/JPA-Query-Browser (JJQB)</name>
-		<href>http://jjqb.nightlabs.com/</href>
+		<name>Vestigo (JDO/JPA-Query-Browser)</name>
+		<href>http://vestigo.nightlabs.com/</href>
 	</bannerLeft>
 
 	<poweredBy>
