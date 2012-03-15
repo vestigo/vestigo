@@ -75,9 +75,11 @@
 						</goals>
 						<configuration>
 							<excludeTransitive>true</excludeTransitive>
-						<!--
-							<includeArtifactIds>org.nightlabs.jjqb.assembly.linux-gtk,org.nightlabs.jjqb.assembly.linux-gtk-x86_64,org.nightlabs.jjqb.assembly.win32</includeArtifactIds>
-						-->
+							<includeArtifactIds>
+								org.nightlabs.jjqb.assembly.linux-gtk,
+								org.nightlabs.jjqb.assembly.linux-gtk-x86_64,
+								org.nightlabs.jjqb.assembly.win32
+							</includeArtifactIds>
 							<outputDirectory>${project.build.directory}/site/</outputDirectory>
 						</configuration>
 					</execution>
