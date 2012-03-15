@@ -68,7 +68,7 @@
 	<properties>
 		<jjqb.version>${project.version}</jjqb.version>
 		<jersey.version>1.9</jersey.version>
-		<licence.version>1.0.0</licence.version>
+		<licence.version>1.0.1</licence.version>
 
 		<!-- Jersey uses ASM 3.1, hence we cannot use 4.0 :-( Need to switch to a newer version when Jersey does.
 		We use the transitive dependency from Jersey and don't declare it here, explicitely. Marco :-)

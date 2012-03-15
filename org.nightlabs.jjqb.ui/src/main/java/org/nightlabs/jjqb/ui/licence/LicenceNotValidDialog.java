@@ -258,10 +258,21 @@ public class LicenceNotValidDialog extends TitleAreaDialog
 					@Override
 					public void run() {
 						if (licenceManager.isLicenceValid()) {
+							String customerCompanyName = licenceManager.getCustomerCompanyName();
+							String customerNameWithTitle = licenceManager.getCustomerNameWithTitle();
+
+							String greeting;
+							if (customerNameWithTitle != null)
+								greeting = String.format(Messages.getString("LicenceNotValidDialog.purchaseThanksDialog.text[greetingPerson]"), customerNameWithTitle); //$NON-NLS-1$
+							else if (customerCompanyName != null)
+								greeting = String.format(Messages.getString("LicenceNotValidDialog.purchaseThanksDialog.text[greetingEmployee]"), customerCompanyName); //$NON-NLS-1$
+							else
+								greeting = Messages.getString("LicenceNotValidDialog.purchaseThanksDialog.text[greetingAnonymous]");
+
 							MessageDialog.openInformation(
 									getParentShell(),
 									Messages.getString("LicenceNotValidDialog.purchaseThanksDialog.title"), //$NON-NLS-1$
-									Messages.getString("LicenceNotValidDialog.purchaseThanksDialog.text") //$NON-NLS-1$
+									String.format(Messages.getString("LicenceNotValidDialog.purchaseThanksDialog.text[body]"), greeting) //$NON-NLS-1$
 							);
 						}
 						else
