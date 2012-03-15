@@ -1,0 +1,31 @@
+	---
+	Download
+	---
+	Marco หงุ่ยตระกูล-Schulze
+	---
+	2012-02-16
+
+Download
+
+* Stand-alone
+
+	You can download a stand-alone version of Vestigo here:
+
+	* {{{./stand-alone/vestigo-linux-gtk-${project.version}-SNAPSHOT.tar.gz}GNU/Linux/GTK 32}}
+
+	* {{{./stand-alone/vestigo-linux-gtk-x86-64-${project.version}.tar.gz}GNU/Linux/GTK 64}}
+
+	* {{{./stand-alone/vestigo-win32-${project.version}.zip}Windows 32}}
+
+	[]
+
+* Plug-in
+
+	If you already use {{{http://www.eclipse.org}Eclipse}} as IDE, you can add the following update-site and install
+	Vestigo as plug-in into your existing IDE: 
+
+--------------------------------------------------------- 
+http://vestigo.nightlabs.com/${project.version}/download/p2
+---------------------------------------------------------
+
+	Start Eclipse and open up the menu items <<Help>> | <<Install new software>>. Enter the url above to create a new site.

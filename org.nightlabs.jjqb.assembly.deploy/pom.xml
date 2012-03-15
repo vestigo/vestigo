@@ -38,7 +38,7 @@
 	<distributionManagement>
 		<site>
 			<id>jjqb.nightlabs.com</id>
-			<url>${distributionManagement.site.prefix}/jjqb.nightlabs.com/htdocs/${project.version}/download/stand-alone</url>
+			<url>${distributionManagement.site.prefix}/vestigo.nightlabs.com/htdocs/${project.version}/download/stand-alone</url>
 		</site>
 	</distributionManagement>
 
@@ -79,7 +79,7 @@
 									<classifier>bin</classifier>
 									<type>zip</type>
 									<overWrite>true</overWrite>
-									<destFileName>vestigo-win32-${jjqb.version}.tar.gz</destFileName>
+									<destFileName>vestigo-win32-${jjqb.version}.zip</destFileName>
 								</artifactItem>
 							</artifactItems>
 							<outputDirectory>${project.build.directory}/site/</outputDirectory>
