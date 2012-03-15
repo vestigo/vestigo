@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>org.nightlabs.jjqb.tycho.p2.repository.deploy</artifactId>
+	<packaging>pom</packaging>
+
+	<parent>
+		<groupId>org.nightlabs.jjqb</groupId>
+		<artifactId>org.nightlabs.jjqb.parent</artifactId>
+		<version>0.1.1-SNAPSHOT</version>
+		<relativePath>../org.nightlabs.jjqb.parent</relativePath>
+	</parent>
+
+	<repositories>		
+		<repository>
+			<id>dev.nightlabs.org-private-libs-release-local</id>
+			<url>https://dev.nightlabs.org/maven-repository-private/libs-release-local</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+		</repository>
+		<repository>
+			<id>dev.nightlabs.org-private-libs-snapshot-local</id>
+			<url>https://dev.nightlabs.org/maven-repository-private/libs-snapshot-local</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+		</repository>
+	</repositories>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.nightlabs.jjqb</groupId>
+			<artifactId>org.nightlabs.jjqb.assembly.linux-gtk</artifactId>
+			<type>tar.gz</type>
+		</dependency>
+		<dependency>
+			<groupId>org.nightlabs.jjqb</groupId>
+			<artifactId>org.nightlabs.jjqb.assembly.linux-gtk-x86_64</artifactId>
+			<type>tar.gz</type>
+		</dependency>
+		<dependency>
+			<groupId>org.nightlabs.jjqb</groupId>
+			<artifactId>org.nightlabs.jjqb.assembly.win32</artifactId>
+			<type>zip</type>
+		</dependency>
+	</dependencies>
+
+	<distributionManagement>
+		<site>
+			<id>jjqb.nightlabs.com</id>
+			<url>${distributionManagement.site.prefix}/jjqb.nightlabs.com/htdocs/${project.version}/download/stand-alone</url>
+		</site>
+	</distributionManagement>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+						<!--
+							<includeArtifactIds>org.nightlabs.jjqb.assembly.linux-gtk,org.nightlabs.jjqb.assembly.linux-gtk-x86_64,org.nightlabs.jjqb.assembly.win32</includeArtifactIds>
+						-->
+							<outputDirectory>${project.build.directory}/site/</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-site-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
