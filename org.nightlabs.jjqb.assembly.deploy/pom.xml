@@ -45,14 +45,24 @@
 	<build>
 		<plugins>
 			<plugin>
-				<artifactId>maven-site-plugin</artifactId>
+				<artifactId>maven-clean-plugin</artifactId>
 				<executions>
 					<execution>
+						<id>clean-after-site</id>
+						<phase>post-site</phase>
 						<goals>
-							<goal>site</goal>
+							<goal>clean</goal>
 						</goals>
 						<configuration>
-							<skip>true</skip>
+							<excludeDefaultDirectories>true</excludeDefaultDirectories>
+							<filesets>
+								<fileSet>
+									<directory>target/site</directory>
+									<excludes>
+										<exclude>vestigo-*</exclude>
+									</excludes>
+								</fileSet>
+							</filesets>
 						</configuration>
 					</execution>
 				</executions>
@@ -61,7 +71,7 @@
 				<artifactId>maven-dependency-plugin</artifactId>
 				<executions>
 					<execution>
-						<phase>process-resources</phase>
+						<phase>pre-site</phase>
 						<goals>
 							<goal>copy</goal>
 						</goals>
