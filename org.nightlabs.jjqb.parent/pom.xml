@@ -467,7 +467,8 @@
 
 				<plugin>
 					<artifactId>maven-site-plugin</artifactId>
-					<version>3.0-beta-3</version>
+					<!-- <version>3.0-beta-3</version> -->
+					<version>3.0</version>
 					<configuration>
 						<locales>en,de</locales>
 						<inputencoding>UTF-8</inputencoding>
