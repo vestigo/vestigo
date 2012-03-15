@@ -67,6 +67,15 @@
 						</goals>
 						<configuration>
 							<artifactItems>
+								<artifactItem>
+									<groupId>org.nightlabs.jjqb</groupId>
+									<artifactId>org.nightlabs.jjqb.assembly.parent</artifactId>
+									<version>${jjqb.version}</version>
+									<type>pom</type>
+									<overWrite>true</overWrite>
+									<destFileName>vestigo-TEST.pom</destFileName>
+								</artifactItem>
+							
 								<!--
 								<artifactItem>
 									<groupId>org.nightlabs.jjqb</groupId>
@@ -77,7 +86,6 @@
 									<overWrite>true</overWrite>
 									<destFileName>vestigo-linux-gtk-${jjqb.version}.tar.gz</destFileName>
 								</artifactItem>
-								-->
 								<artifactItem>
 									<groupId>org.nightlabs.jjqb</groupId>
 									<artifactId>org.nightlabs.jjqb.assembly.linux-gtk-x86_64</artifactId>
@@ -87,7 +95,6 @@
 									<overWrite>true</overWrite>
 									<destFileName>vestigo-linux-gtk-x86-64-${jjqb.version}.tar.gz</destFileName>
 								</artifactItem>
-								<!--
 								<artifactItem>
 									<groupId>org.nightlabs.jjqb</groupId>
 									<artifactId>org.nightlabs.jjqb.assembly.win32</artifactId>
