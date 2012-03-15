@@ -625,6 +625,24 @@
           tooltip="Add a 'classes' folder.">
     </action>
     <action
+          class="org.nightlabs.jjqb.ui.oda.classpath.AddFolderWildcardActionDelegate"
+          group="add"
+          icon="icons/org.nightlabs.jjqb.ui.oda.classpath/AddFolderWildcardActionDelegate.16x16.png"
+          id="org.nightlabs.jjqb.ui.oda.classpath.AddFolderWildcardActionDelegate"
+          label="Add files of one folder"
+          orderHint="120"
+          tooltip="Add the files (EAR, JAR, WAR, etc.) of one folder. Do NOT recurse into subdirectories.">
+    </action>
+    <action
+          class="org.nightlabs.jjqb.ui.oda.classpath.AddFolderRecursiveWildcardActionDelegate"
+          group="add"
+          icon="icons/org.nightlabs.jjqb.ui.oda.classpath/AddFolderRecursiveWildcardActionDelegate.16x16.png"
+          id="org.nightlabs.jjqb.ui.oda.classpath.AddFolderRecursiveWildcardActionDelegate"
+          label="Add files of one folder and recursive sub-folders"
+          orderHint="130"
+          tooltip="Add the files (EAR, JAR, WAR, etc.) of one folder and all its subdirectories (recursively).">
+    </action>
+    <action
           class="org.nightlabs.jjqb.ui.oda.classpath.RemoveActionDelegate"
           group="remove"
           icon="icons/org.nightlabs.jjqb.ui.oda.classpath/RemoveActionDelegate.16x16.png"

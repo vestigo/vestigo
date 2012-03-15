@@ -16,7 +16,7 @@ package org.nightlabs.jjqb.ui.oda.classpath;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.File;
-import java.io.IOException;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -436,26 +436,34 @@ public class EditClasspathComposite extends Composite implements ICellModifier, 
 
 	public String getClasspathElementFromFile(File file)
 	{
-		try {
-			String absolutePath = file.getAbsolutePath();
+		String result = null;
+		URI fileAbsoluteURI = file.toURI();
+		String fileAbsoluteURIStr = fileAbsoluteURI.toString();
 
-			final String[][] var2filePaths = new String[][] {
-					{ ClassLoaderManager.PROPERTY_MAVEN_LOCAL_REPOSITORY, ClassLoaderManager.getMavenLocalRepository().getAbsolutePath() },
-					{ ClassLoaderManager.PROPERTY_USER_HOME, IOUtil.getUserHome().getAbsolutePath() },
-					{ ClassLoaderManager.PROPERTY_SYSTEM_TEMP_DIR, IOUtil.getTempDir().getAbsolutePath() },
-			};
+		final String[][] var2filePaths = new String[][] {
+				{ ClassLoaderManager.PROPERTY_MAVEN_LOCAL_REPOSITORY, ClassLoaderManager.getMavenLocalRepository().getAbsolutePath() },
+				{ ClassLoaderManager.PROPERTY_USER_HOME, IOUtil.getUserHome().getAbsolutePath() },
+				{ ClassLoaderManager.PROPERTY_SYSTEM_TEMP_DIR, IOUtil.getTempDir().getAbsolutePath() },
+		};
 
-			for (String[] var2filePath : var2filePaths) {
-				File f = new File(var2filePath[1]);
-				String relativePath = IOUtil.getRelativePath(f, file);
-				if (!new File(relativePath).isAbsolute() && !relativePath.startsWith(".." + File.separatorChar)) //$NON-NLS-1$
-					return "file:" + "${" + var2filePath[0] + "}/" + relativePath.replace(File.separatorChar, '/'); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+		for (String[] var2filePath : var2filePaths) {
+			File f = new File(var2filePath[1]);
+			URI varURI = f.toURI();
+			String varURIStr = varURI.toString();
+			if (fileAbsoluteURIStr.startsWith(varURIStr)) {
+				String varWithMarkers = "${" + var2filePath[0] + '}'; //$NON-NLS-1$
+				String pathAfterVar = fileAbsoluteURIStr.substring(varURIStr.length());
+				if (!pathAfterVar.startsWith("/")) //$NON-NLS-1$
+					pathAfterVar = '/' + pathAfterVar;
+				result = varURI.getScheme() + ':' + varWithMarkers + pathAfterVar;
+				break;
 			}
-
-			return "file:" + absolutePath; //$NON-NLS-1$
-		} catch (IOException e) {
-			throw new RuntimeException(e);
 		}
+
+		if (result == null)
+			result = file.toURI().toString(); // uses always the absolute file
+
+		return result;
 	}
 
 	public Table getTable() {

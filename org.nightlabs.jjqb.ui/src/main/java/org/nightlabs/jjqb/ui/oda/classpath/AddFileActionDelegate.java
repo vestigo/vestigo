@@ -8,10 +8,8 @@ import org.eclipse.jface.action.IAction;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.FileDialog;
 
-public class AddFileActionDelegate extends AbstractEditClasspathActionDelegate
+public class AddFileActionDelegate extends AbstractAddClasspathElementActionDelegate
 {
-	private static File lastAddClasspathElementDirectory;
-
 	@Override
 	public void run(IAction action) {
 		FileDialog dialog = new FileDialog(getShell(), SWT.OPEN | SWT.MULTI);

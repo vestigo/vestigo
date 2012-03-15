@@ -35,7 +35,6 @@ public class ClassLoaderManager
 	private List<URL> persistenceEngineOverlayClasspathURLList_readOnly = Collections.unmodifiableList(persistenceEngineOverlayClasspathURLList);
 
 	private File tempDir;
-//	private ConnectionProfile connectionProfile;
 	private Properties connectionProperties;
 
 	public ClassLoaderManager() {
@@ -54,24 +53,6 @@ public class ClassLoaderManager
 		return new File(new File(IOUtil.getUserHome(), ".m2"), "repository");
 	}
 
-//	public void setConnectionProfile(ConnectionProfile connectionProfile)
-//	{
-//		if (connectionProfile == null)
-//			throw new IllegalArgumentException("connectionProfile == null");
-//
-//		if (this.connectionProfile == connectionProfile)
-//			return;
-//
-//		if (this.connectionProfile != null)
-//			throw new IllegalStateException("this.connectionProfile already assigned! Cannot change!");
-//
-//		this.connectionProfile =  connectionProfile;
-//	}
-//
-//	public ConnectionProfile getConnectionProfile() {
-//		return connectionProfile;
-//	}
-
 	public boolean isOpen(){
 		return connectionProperties != null;
 	}
@@ -87,9 +68,6 @@ public class ClassLoaderManager
 
 	public synchronized final void open(Properties connProperties)
 	{
-//		if (connectionProfile == null)
-//			throw new IllegalStateException("this.connectionProfile == null !!! Call setConnectionProfile(...) first!");
-
 		if (connProperties == null)
 			throw new IllegalArgumentException("connProperties == null");
 
@@ -145,6 +123,7 @@ public class ClassLoaderManager
 			);
 
 			for (String persistenceEngineClasspathElement : persistenceEngineClasspathStringList) {
+				String origPersistenceEngineClasspathElement = persistenceEngineClasspathElement;
 				logger.debug("open: adding persistenceEngineClasspathElement: {}", persistenceEngineClasspathElement);
 				persistenceEngineClasspathElement = IOUtil.replaceTemplateVariables(
 						persistenceEngineClasspathElement, getPersistenceEngineClasspathVariables()
@@ -159,6 +138,26 @@ public class ClassLoaderManager
 					if (persistenceEngineClasspathElement.startsWith("file:"))
 						persistenceEngineClasspathElement = persistenceEngineClasspathElement.substring("file:".length());
 
+					boolean recurseDirs = false;
+					boolean filesOfDir = false;
+					if (persistenceEngineClasspathElement.contains("*")) {
+						if (persistenceEngineClasspathElement.endsWith("/**")) {
+							recurseDirs = true;
+							persistenceEngineClasspathElement = persistenceEngineClasspathElement.substring(0, persistenceEngineClasspathElement.length() - 2);
+						}
+						else if(persistenceEngineClasspathElement.endsWith("/**/*")) {
+							recurseDirs = true;
+							persistenceEngineClasspathElement = persistenceEngineClasspathElement.substring(0, persistenceEngineClasspathElement.length() - 4);
+						}
+						else if (persistenceEngineClasspathElement.endsWith("/*")) {
+							filesOfDir = true;
+							persistenceEngineClasspathElement = persistenceEngineClasspathElement.substring(0, persistenceEngineClasspathElement.length() - 1);
+						}
+
+						if (persistenceEngineClasspathElement.contains("*"))
+							throw new UnsupportedOperationException("Unsupported use of wildcard '*'! Only '/*' or '/**/*' at the end are allowed! Affected classpath-element makes use of '*' at another location or more than once: " + origPersistenceEngineClasspathElement);
+					}
+
 					File f = new File(URLDecoder.decode(persistenceEngineClasspathElement, IOUtil.CHARSET_NAME_UTF_8));
 					if (!f.exists())
 						throw new IOException("persistenceEngineClasspathElement points to a non-existing file: " + f.getAbsolutePath());
@@ -166,7 +165,24 @@ public class ClassLoaderManager
 					if (!f.canRead())
 						throw new IOException("persistenceEngineClasspathElement points to an existing but non-readable file: " + f.getAbsolutePath());
 
-					populatePersistenceEngineClasspathURLList(persistenceEngineClasspathURLList, f);
+					if (recurseDirs) {
+						if (!f.isDirectory())
+							throw new UnsupportedOperationException("persistenceEngineClasspathElement points to a file instead of a directory, which is not allowed when using the wildcard '*': " + f.getAbsolutePath());
+
+						populatePersistenceEngineClasspathURLListRecurseDirs(persistenceEngineClasspathURLList, f);
+					}
+					else if (filesOfDir) {
+						if (!f.isDirectory())
+							throw new UnsupportedOperationException("persistenceEngineClasspathElement points to a file instead of a directory, which is not allowed when using the wildcard '*': " + f.getAbsolutePath());
+
+						File[] children = f.listFiles();
+						if (children != null) {
+							for (File child : children)
+								populatePersistenceEngineClasspathURLList(persistenceEngineClasspathURLList, child);
+						}
+					}
+					else
+						populatePersistenceEngineClasspathURLList(persistenceEngineClasspathURLList, f);
 				}
 			}
 
