@@ -32,6 +32,7 @@ import org.nightlabs.jjqb.childvm.shared.persistencexml.PersistenceXml;
 import org.nightlabs.jjqb.childvm.shared.persistencexml.PersistenceXmlScanner;
 import org.nightlabs.jjqb.childvm.shared.persistencexml.jaxb.Persistence;
 import org.nightlabs.jjqb.childvm.shared.persistencexml.jaxb.Persistence.PersistenceUnit;
+import org.nightlabs.jjqb.core.connectionpropertiesfilter.ConnectionPropertiesFilterManager;
 import org.nightlabs.jjqb.core.progress.ProgressMonitorWrapper;
 import org.nightlabs.jjqb.ui.oda.EditPropertiesComposite;
 import org.nightlabs.jjqb.ui.oda.LoadPropertiesHandler;
@@ -283,13 +284,16 @@ public abstract class PersistencePropertiesPage extends AbstractDataSourceEditor
 			protected IStatus run(IProgressMonitor monitor) {
 				monitor.beginTask(Messages.getString("PersistencePropertiesPage.searchPersistenceUnitsJob.name"), 100); //$NON-NLS-1$
 				try {
+					new ConnectionPropertiesFilterManager().filterConnectionProperties(properties);
+					monitor.worked(10);
+
 					PersistenceXmlScanner persistenceXmlScanner = new PersistenceXmlScanner();
 					try {
 						persistenceXmlScanner.open(properties);
 						monitor.worked(5);
 
 						Collection<PersistenceXml> persistenceXmls = persistenceXmlScanner.searchPersistenceXmls(
-								new ProgressMonitorWrapper(new SubProgressMonitor(monitor, 90))
+								new ProgressMonitorWrapper(new SubProgressMonitor(monitor, 80))
 						);
 
 						final Map<String, PersistenceUnit> persistenceUnitName2persistenceUnit = new HashMap<String, PersistenceUnit>();
