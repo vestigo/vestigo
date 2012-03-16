@@ -186,7 +186,25 @@
 			</dependency>
 			<dependency>
 				<groupId>org.nightlabs.jjqb</groupId>
+				<artifactId>org.nightlabs.jjqb.assembly.macosx-cocoa</artifactId>
+				<version>${jjqb.version}</version>
+				<type>tar.gz</type>
+			</dependency>
+			<dependency>
+				<groupId>org.nightlabs.jjqb</groupId>
+				<artifactId>org.nightlabs.jjqb.assembly.macosx-cocoa-x86_64</artifactId>
+				<version>${jjqb.version}</version>
+				<type>tar.gz</type>
+			</dependency>
+			<dependency>
+				<groupId>org.nightlabs.jjqb</groupId>
 				<artifactId>org.nightlabs.jjqb.assembly.win32</artifactId>
+				<version>${jjqb.version}</version>
+				<type>zip</type>
+			</dependency>
+			<dependency>
+				<groupId>org.nightlabs.jjqb</groupId>
+				<artifactId>org.nightlabs.jjqb.assembly.win32-x86_64</artifactId>
 				<version>${jjqb.version}</version>
 				<type>zip</type>
 			</dependency>
