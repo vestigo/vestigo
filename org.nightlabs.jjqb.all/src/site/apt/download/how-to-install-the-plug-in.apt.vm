@@ -17,7 +17,7 @@ How to install the Vestigo plug-in
 
 	Enter the URL of Xtext's update-site and press the <Add...> button.
 	
-	<<Xtext URL: {{http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/}}>>
+	<<{{http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/}}>>
 
 [../images/how-to-install-the-plug-in/20.png]
 
@@ -31,7 +31,7 @@ How to install the Vestigo plug-in
 
 	Repeat the same for the Vestigo update-site-URL: Enter it into the <Work with> text field and press <Add...>.
 
-	<<Vestigo URL: {{http://vestigo.nightlabs.com/${project.version}/download/p2}}>>
+	<<{{http://vestigo.nightlabs.com/${project.version}/download/p2}}>>
 
 [../images/how-to-install-the-plug-in/40.png]
 
