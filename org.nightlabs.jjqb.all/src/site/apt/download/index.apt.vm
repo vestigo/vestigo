@@ -11,11 +11,11 @@ Download
 
 	You can download a stand-alone version of Vestigo here:
 
-	* {{{./stand-alone/vestigo-linux-gtk-${project.version}.tar.gz}GNU/Linux/GTK 32}}
+	* {{{http://vestigo.nightlabs.com/${project.version}/download/stand-alone/vestigo-linux-gtk-${project.version}.tar.gz}GNU/Linux/GTK 32}}
 
-	* {{{./stand-alone/vestigo-linux-gtk-x86-64-${project.version}.tar.gz}GNU/Linux/GTK 64}}
+	* {{{http://vestigo.nightlabs.com/${project.version}/download/stand-alone/vestigo-linux-gtk-x86-64-${project.version}.tar.gz}GNU/Linux/GTK 64}}
 
-	* {{{./stand-alone/vestigo-win32-${project.version}.zip}Windows 32}}
+	* {{{http://vestigo.nightlabs.com/${project.version}/download/stand-alone/vestigo-win32-${project.version}.zip}Windows 32}}
 
 	[]
 
