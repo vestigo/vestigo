@@ -46,6 +46,7 @@
 		<plugins>
 			<plugin>
 				<artifactId>maven-site-plugin</artifactId>
+				<version>3.0-beta-3</version> <!-- TODO remove this - it's only temporary! -->
 				<configuration>
 					<locales>en</locales>
 					<reportPlugins></reportPlugins>
