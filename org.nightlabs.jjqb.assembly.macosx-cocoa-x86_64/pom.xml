@@ -1,0 +1,72 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>org.nightlabs.jjqb.assembly.macosx-cocoa-x86_64</artifactId>
+	<packaging>pom</packaging>
+
+	<parent>
+		<groupId>org.nightlabs.jjqb</groupId>
+		<artifactId>org.nightlabs.jjqb.assembly.parent</artifactId>
+		<version>0.1.1-SNAPSHOT</version>
+		<relativePath>../org.nightlabs.jjqb.assembly.parent</relativePath>
+	</parent>
+
+	<properties>
+		<eclipse.platform.artifactId>org.eclipse.platform.macosx-cocoa-x86_64</eclipse.platform.artifactId>
+		<org.nightlabs.eclipse.compatibility.artifactId>org.nightlabs.eclipse.compatibility.rcp</org.nightlabs.eclipse.compatibility.artifactId>
+		<skipPluginExecution>false</skipPluginExecution>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.eclipse</groupId>
+			<artifactId>${eclipse.platform.artifactId}</artifactId>
+			<version>3.7.2</version>
+			<!-- FIXME: Using manually created zip-bundle because tar.gz bundles can't be filtered with excludes. See: http://jira.codehaus.org/browse/MDEP-242 -->
+			<type>zip</type>
+		</dependency>
+	</dependencies>
+
+	<!-- FIXME: This can be removed when http://jira.codehaus.org/browse/MNG-5127 
+		is resolved. Then the parent-profile 'build-assembly' would have been activated 
+		and plugins would have been executed by default -->
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-dependency-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+			</plugin>
+<!--
+  now in extra profile to be able to suppress it.
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+			</plugin>
+-->
+		</plugins>
+	</build>
+	
+	<profiles>
+		<profile>
+			<id>assembly-packaging</id>
+			<activation>
+				<property>
+					<name>assembly.skip</name>
+					<value>!true</value>
+				</property>
+			</activation>
+
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-assembly-plugin</artifactId>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+</project>
