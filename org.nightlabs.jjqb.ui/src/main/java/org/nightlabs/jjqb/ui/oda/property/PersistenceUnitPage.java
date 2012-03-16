@@ -3,6 +3,7 @@ package org.nightlabs.jjqb.ui.oda.property;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -14,6 +15,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.core.runtime.jobs.Job;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -67,7 +69,26 @@ public abstract class PersistenceUnitPage extends AbstractDataSourceEditorPage
 	private Display display;
 	private Text persistenceUnitNameText;
 	private ListViewer persistenceUnitNamesList;
+	private Map<String, List<PersistenceUnitRef>> persistenceUnitName2PersistenceUnitRefs = new HashMap<String, List<PersistenceUnitRef>>();
 	private Button syntheticOverrideCheckBox;
+
+	private static final class PersistenceUnitRef
+	{
+		private PersistenceXml persistenceXml;
+		private PersistenceUnit persistenceUnit;
+
+		public PersistenceUnitRef(PersistenceXml persistenceXml, PersistenceUnit persistenceUnit) {
+			this.persistenceXml = persistenceXml;
+			this.persistenceUnit = persistenceUnit;
+		}
+
+		public PersistenceXml getPersistenceXml() {
+			return persistenceXml;
+		}
+		public PersistenceUnit getPersistenceUnit() {
+			return persistenceUnit;
+		}
+	}
 
 	@Override
 	public Properties collectCustomProperties(Properties properties)
@@ -165,6 +186,25 @@ public abstract class PersistenceUnitPage extends AbstractDataSourceEditorPage
 					return;
 
 				persistenceUnitNameText.setText(unitName);
+				List<PersistenceUnitRef> puRefs = persistenceUnitName2PersistenceUnitRefs.get(unitName);
+				if (puRefs != null && puRefs.size() > 1) {
+					StringBuilder puXmlUrls = new StringBuilder();
+					for (PersistenceUnitRef puRef : puRefs) {
+						if (puXmlUrls.length() > 0)
+							puXmlUrls.append("\n\n");
+
+						puXmlUrls.append(puRef.getPersistenceXml().getClasspathURL());
+					}
+
+					MessageDialog.openWarning(
+							getShell(),
+							"Multiple persistence units with the same name",
+							String.format(
+									"The persistence unit '%s' is declared multiple times in the following locations:\n\n%s\n\nPlease fix your classpath declaration or rename the persistence units to resolve this conflict. With the current configuration, it is unsure which persistence unit will be picked and it might even randomly change.",
+									unitName, puXmlUrls.toString()
+							)
+					);
+				}
 			}
 		});
 
@@ -237,11 +277,20 @@ public abstract class PersistenceUnitPage extends AbstractDataSourceEditorPage
 						persistenceXmlScanner.open(properties);
 						Collection<PersistenceXml> persistenceXmls = persistenceXmlScanner.searchPersistenceXmls(new ProgressMonitorWrapper(new SubProgressMonitor(monitor, 80)));
 
+						final Map<String, List<PersistenceUnitRef>> pun2puRefs = new HashMap<String, List<PersistenceUnitRef>>();
 						final List<String> persistenceUnitNames = new ArrayList<String>();
 						for (PersistenceXml persistenceXml : persistenceXmls) {
 							List<PersistenceUnit> persistenceUnits = persistenceXml.getPersistence().getPersistenceUnit();
-							for (PersistenceUnit persistenceUnit : persistenceUnits)
-								persistenceUnitNames.add(persistenceUnit.getName());
+							for (PersistenceUnit persistenceUnit : persistenceUnits) {
+								String puName = persistenceUnit.getName();
+								List<PersistenceUnitRef> puRefs = pun2puRefs.get(puName);
+								if (puRefs == null) {
+									puRefs = new ArrayList<PersistenceUnitRef>();
+									pun2puRefs.put(puName, puRefs);
+									persistenceUnitNames.add(puName);
+								}
+								puRefs.add(new PersistenceUnitRef(persistenceXml, persistenceUnit));
+							}
 						}
 
 						Collections.sort(persistenceUnitNames);
@@ -256,6 +305,7 @@ public abstract class PersistenceUnitPage extends AbstractDataSourceEditorPage
 								if (persistenceUnitNameText.isDisposed() || thisJob != searchPersistenceUnitsJob)
 									return;
 
+								persistenceUnitName2PersistenceUnitRefs = pun2puRefs;
 								if (persistenceUnitNames.isEmpty())
 									persistenceUnitNamesList.setInput(Collections.singletonList(PUN_LIST_ELEMENT_NO_PERSISTENCE_UNIT_FOUND));
 								else
