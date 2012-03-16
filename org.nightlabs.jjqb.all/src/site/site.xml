@@ -20,6 +20,11 @@
 			href="http://www.eclipse.org"
 			target="_blank" />
 
+		<logo name="famfamfam"
+			img="./images/famfamfam.png"
+			href="http://www.famfamfam.com"
+			target="_blank" />
+
 		<logo name="Maven" href="http://maven.apache.org/"
 			img="http://maven.apache.org/images/logos/maven-feather.png"
 			target="_blank" />
@@ -31,7 +36,7 @@
 			<item name="Documentation" href="./documentation/index.html" />
 			<item name="Screenshots" href="./screenshots/index.html" />
 			<item name="Download" href="./download/index.html" />
-			<item name="Purchase" href="./purchase/" />
+			<item name="Purchase" href="./purchase/" target="_blank" />
 		</links>
 
 		<menu name="Documentation">
