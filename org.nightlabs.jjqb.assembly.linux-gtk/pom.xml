@@ -15,6 +15,7 @@
 		<eclipse.platform.artifactId>org.eclipse.platform.linux-gtk</eclipse.platform.artifactId>
 		<!-- <eclipse.platform.artifactId>org.eclipse.jee.linux-gtk</eclipse.platform.artifactId> -->
 		<org.nightlabs.eclipse.compatibility.artifactId>org.nightlabs.eclipse.compatibility.rcp</org.nightlabs.eclipse.compatibility.artifactId>
+		<skipPluginExecution>false</skipPluginExecution>
 	</properties>
 
 	<dependencies>
@@ -36,37 +37,11 @@
 				<artifactId>maven-dependency-plugin</artifactId>
 			</plugin>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
 			</plugin>
-<!--
 			<plugin>
 				<artifactId>maven-antrun-plugin</artifactId>
 			</plugin>
--->
-			<!--
-			Though this is declared in the parent, it is not executed at all. I have no idea why. But when I copy this here,
-			it works. Marco :-)
-			-->
-			<plugin>
-				<artifactId>maven-antrun-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>make-eclipse-executable</id>
-						<phase>package</phase> <!-- append to the packaging phase. -->
-						<goals>
-							<goal>run</goal>
-						</goals>
-						<inherited>false</inherited>
-						<configuration>
-							<target>
-								<chmod file="${assembly.eclipse.directory}/eclipse" perm="ugo+x" />
-							</target>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-
 <!--
   now in extra profile to be able to suppress it.
 			<plugin>

@@ -6,16 +6,10 @@
 	<id>bin</id>
 	<formats>
 		<format>tar.gz</format>
-<!-- Other formats not built
- 
-		<format>tar.bz2</format>
-		<format>zip</format>
- -->		
 	</formats>
-	<baseDirectory>eclipse</baseDirectory>
+	<baseDirectory>vestigo</baseDirectory>
 	<fileSets>
 		<fileSet>
-			<!--  <directory>${project.build.directory}/assembly</directory>  -->
 			<directory>${assembly.eclipse.directory}</directory>
 			<outputDirectory>/</outputDirectory>
 			<includes>

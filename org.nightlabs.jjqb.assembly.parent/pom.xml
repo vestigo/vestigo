@@ -441,7 +441,6 @@
 		<pluginManagement>
 			<plugins>
 				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-dependency-plugin</artifactId>
 					<executions>
 						<execution>
@@ -584,6 +583,7 @@
 						</execution>
 						<execution>
 							<id>copy-plugins</id>
+							<phase>package</phase>
 							<goals>
 								<goal>copy-dependencies</goal>
 							</goals>
@@ -596,6 +596,7 @@
 							</configuration>
 						</execution>
 					</executions>
+					<!--
 					<configuration>
 						<artifactItems>
 							<artifactItem>
@@ -604,6 +605,7 @@
 							</artifactItem>
 						</artifactItems>
 					</configuration>
+					-->
 				</plugin>
 				<plugin>
 					<artifactId>maven-resources-plugin</artifactId>
@@ -634,14 +636,18 @@
 					<executions>
 						<execution>
 							<id>make-eclipse-executable</id>
-							<phase>package</phase> <!-- append to the packaging phase. -->
+							<phase>package</phase>
 							<goals>
 								<goal>run</goal>
 							</goals>
-							<inherited>false</inherited>
 							<configuration>
+								<skip>${skipPluginExecution}</skip>
 								<target>
-									<chmod file="${assembly.eclipse.directory}/eclipse" perm="ugo+x" />
+									<move   file="${assembly.eclipse.directory}/eclipse"      tofile="${assembly.eclipse.directory}/vestigo"     failonerror="false" verbose="true" />
+									<move   file="${assembly.eclipse.directory}/eclipse.exe"  tofile="${assembly.eclipse.directory}/vestigo.exe" failonerror="false" verbose="true" />
+									<move   file="${assembly.eclipse.directory}/eclipse.ini"  tofile="${assembly.eclipse.directory}/vestigo.ini" failonerror="false" verbose="true" />
+									<delete file="${assembly.eclipse.directory}/eclipsec.exe" failonerror="false" verbose="true" />
+									<chmod  file="${assembly.eclipse.directory}/vestigo" perm="ugo+x" verbose="true" />
 								</target>
 							</configuration>
 						</execution>
@@ -653,7 +659,7 @@
 					<executions>
 						<execution>
 							<id>make-assembly</id>
-							<phase>package</phase> <!-- append to the packaging phase. -->
+							<phase>package</phase>
 							<goals>
 								<goal>single</goal>
 							</goals>
