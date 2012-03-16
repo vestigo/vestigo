@@ -113,6 +113,26 @@
 									<overWrite>true</overWrite>
 									<destFileName>vestigo-linux-gtk-x86-64-${jjqb.version}.tar.gz</destFileName>
 								</artifactItem>
+
+								<artifactItem>
+									<groupId>org.nightlabs.jjqb</groupId>
+									<artifactId>org.nightlabs.jjqb.assembly.macosx-cocoa</artifactId>
+									<version>${jjqb.version}</version>
+									<classifier>bin</classifier>
+									<type>tar.gz</type>
+									<overWrite>true</overWrite>
+									<destFileName>vestigo-macosx-cocoa-${jjqb.version}.tar.gz</destFileName>
+								</artifactItem>
+								<artifactItem>
+									<groupId>org.nightlabs.jjqb</groupId>
+									<artifactId>org.nightlabs.jjqb.assembly.macosx-cocoa-x86_64</artifactId>
+									<version>${jjqb.version}</version>
+									<classifier>bin</classifier>
+									<type>tar.gz</type>
+									<overWrite>true</overWrite>
+									<destFileName>vestigo-macosx-cocoa-x86-64-${jjqb.version}.tar.gz</destFileName>
+								</artifactItem>
+
 								<artifactItem>
 									<groupId>org.nightlabs.jjqb</groupId>
 									<artifactId>org.nightlabs.jjqb.assembly.win32</artifactId>
@@ -122,6 +142,16 @@
 									<overWrite>true</overWrite>
 									<destFileName>vestigo-win32-${jjqb.version}.zip</destFileName>
 								</artifactItem>
+								<artifactItem>
+									<groupId>org.nightlabs.jjqb</groupId>
+									<artifactId>org.nightlabs.jjqb.assembly.win32-x86-64</artifactId>
+									<version>${jjqb.version}</version>
+									<classifier>bin</classifier>
+									<type>zip</type>
+									<overWrite>true</overWrite>
+									<destFileName>vestigo-win32-${jjqb.version}.zip</destFileName>
+								</artifactItem>
+
 							</artifactItems>
 							<outputDirectory>${project.build.directory}/site/</outputDirectory>
 						</configuration>
