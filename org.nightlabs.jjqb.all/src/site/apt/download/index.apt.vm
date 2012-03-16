@@ -11,7 +11,7 @@ Download
 
 	You can download a stand-alone version of Vestigo here:
 
-	* {{{./stand-alone/vestigo-linux-gtk-${project.version}-SNAPSHOT.tar.gz}GNU/Linux/GTK 32}}
+	* {{{./stand-alone/vestigo-linux-gtk-${project.version}.tar.gz}GNU/Linux/GTK 32}}
 
 	* {{{./stand-alone/vestigo-linux-gtk-x86-64-${project.version}.tar.gz}GNU/Linux/GTK 64}}
 
