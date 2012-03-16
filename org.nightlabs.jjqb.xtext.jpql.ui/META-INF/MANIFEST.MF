@@ -1,8 +1,8 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.nightlabs.jjqb.xtext.jpql.ui
-Bundle-Vendor: My Company
-Bundle-Version: 1.0.0
+Bundle-Vendor: NightLabs Consulting GmbH
+Bundle-Version: 0.1.1.qualifier
 Bundle-SymbolicName: org.nightlabs.jjqb.xtext.jpql.ui; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.nightlabs.jjqb.xtext.jpql;visibility:=reexport,
