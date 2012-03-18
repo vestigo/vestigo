@@ -15,7 +15,6 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.core.runtime.jobs.Job;
-import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -71,24 +70,6 @@ public abstract class PersistenceUnitPage extends AbstractDataSourceEditorPage
 	private ListViewer persistenceUnitNamesList;
 	private Map<String, List<PersistenceUnitRef>> persistenceUnitName2PersistenceUnitRefs = new HashMap<String, List<PersistenceUnitRef>>();
 	private Button syntheticOverrideCheckBox;
-
-	private static final class PersistenceUnitRef
-	{
-		private PersistenceXml persistenceXml;
-		private PersistenceUnit persistenceUnit;
-
-		public PersistenceUnitRef(PersistenceXml persistenceXml, PersistenceUnit persistenceUnit) {
-			this.persistenceXml = persistenceXml;
-			this.persistenceUnit = persistenceUnit;
-		}
-
-		public PersistenceXml getPersistenceXml() {
-			return persistenceXml;
-		}
-		public PersistenceUnit getPersistenceUnit() {
-			return persistenceUnit;
-		}
-	}
 
 	@Override
 	public Properties collectCustomProperties(Properties properties)
@@ -188,22 +169,33 @@ public abstract class PersistenceUnitPage extends AbstractDataSourceEditorPage
 				persistenceUnitNameText.setText(unitName);
 				List<PersistenceUnitRef> puRefs = persistenceUnitName2PersistenceUnitRefs.get(unitName);
 				if (puRefs != null && puRefs.size() > 1) {
-					StringBuilder puXmlUrls = new StringBuilder();
-					for (PersistenceUnitRef puRef : puRefs) {
-						if (puXmlUrls.length() > 0)
-							puXmlUrls.append("\n\n");
-
-						puXmlUrls.append(puRef.getPersistenceXml().getClasspathURL());
-					}
-
-					MessageDialog.openWarning(
-							getShell(),
-							"Multiple persistence units with the same name",
-							String.format(
-									"The persistence unit '%s' is declared multiple times in the following locations:\n\n%s\n\nPlease fix your classpath declaration or rename the persistence units to resolve this conflict. With the current configuration, it is unsure which persistence unit will be picked and it might even randomly change.",
-									unitName, puXmlUrls.toString()
-							)
+//					StringBuilder puXmlUrls = new StringBuilder();
+//					for (PersistenceUnitRef puRef : puRefs) {
+//						if (puXmlUrls.length() > 0)
+//							puXmlUrls.append("\n\n");
+//
+//						puXmlUrls.append(puRef.getPersistenceXml().getClasspathURL());
+//					}
+//
+//					MessageDialog.openWarning(
+//							getShell(),
+//							"Multiple persistence units with the same name",
+//							String.format(
+//									"The persistence unit '%s' is declared multiple times in the following locations:\n\n%s\n\nPlease fix your classpath declaration or rename the persistence units to resolve this conflict. With the current configuration, it is unsure which persistence unit will be picked and it might even randomly change.",
+//									unitName, puXmlUrls.toString()
+//							)
+//					);
+					MultiplePersistenceUnitsWithSameNameDialog dialog = new MultiplePersistenceUnitsWithSameNameDialog(
+						getShell(),
+						"Multiple persistence units with the same name",
+						String.format(
+								"The persistence unit '%s' is declared multiple times in the locations shown below. Please fix your classpath declaration or rename the persistence units to resolve this conflict.",
+								unitName
+						),
+						"With the current configuration, it is unsure which persistence unit will be picked and it might even randomly change.",
+						puRefs
 					);
+					dialog.open();
 				}
 			}
 		});
