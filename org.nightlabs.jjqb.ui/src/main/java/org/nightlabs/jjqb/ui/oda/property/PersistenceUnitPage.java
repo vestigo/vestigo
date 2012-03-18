@@ -187,12 +187,18 @@ public abstract class PersistenceUnitPage extends AbstractDataSourceEditorPage
 //					);
 					MultiplePersistenceUnitsWithSameNameDialog dialog = new MultiplePersistenceUnitsWithSameNameDialog(
 						getShell(),
-						"Multiple persistence units with the same name",
+						String.format(
+								"Multiple persistence units with the same name '%s'",
+								unitName
+						),
 						String.format(
 								"The persistence unit '%s' is declared multiple times in the locations shown below. Please fix your classpath declaration or rename the persistence units to resolve this conflict.",
 								unitName
 						),
-						"With the current configuration, it is unsure which persistence unit will be picked and it might even randomly change.",
+						String.format(
+								"With the current configuration, it is unsure which persistence unit will be picked and it might even randomly change.",
+								unitName
+						),
 						puRefs
 					);
 					dialog.open();
