@@ -169,22 +169,6 @@ public abstract class PersistenceUnitPage extends AbstractDataSourceEditorPage
 				persistenceUnitNameText.setText(unitName);
 				List<PersistenceUnitRef> puRefs = persistenceUnitName2PersistenceUnitRefs.get(unitName);
 				if (puRefs != null && puRefs.size() > 1) {
-//					StringBuilder puXmlUrls = new StringBuilder();
-//					for (PersistenceUnitRef puRef : puRefs) {
-//						if (puXmlUrls.length() > 0)
-//							puXmlUrls.append("\n\n");
-//
-//						puXmlUrls.append(puRef.getPersistenceXml().getClasspathURL());
-//					}
-//
-//					MessageDialog.openWarning(
-//							getShell(),
-//							"Multiple persistence units with the same name",
-//							String.format(
-//									"The persistence unit '%s' is declared multiple times in the following locations:\n\n%s\n\nPlease fix your classpath declaration or rename the persistence units to resolve this conflict. With the current configuration, it is unsure which persistence unit will be picked and it might even randomly change.",
-//									unitName, puXmlUrls.toString()
-//							)
-//					);
 					MultiplePersistenceUnitsWithSameNameDialog dialog = new MultiplePersistenceUnitsWithSameNameDialog(
 						getShell(),
 						String.format(
