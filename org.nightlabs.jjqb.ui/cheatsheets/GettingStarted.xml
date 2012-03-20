@@ -7,10 +7,131 @@
    </intro>                                                                                                                                        
    <item title="Open the Vestigo perspective" dialog="true" skip="false">                                                                               
       <description>                                                                                                                                
-         If the perspective is not already open open the perspective. Select in the main menu <b>Window &gt; Show Perspective &gt; Other... &gt; Vestigo</b> or click on the link below.
+         If the perspective is not already open open the perspective. 
+         Select in the main menu <b>Window &gt; Show Perspective &gt; Other... &gt; Vestigo</b> or click on the link below.
       </description>
       <command
             required="false"
             serialization="org.eclipse.ui.perspectives.showPerspective(org.eclipse.ui.perspectives.showPerspective.perspectiveId=org.nightlabs.jjqb.ui.JJQBPerspective)"/>                                                                                                                               
-   </item>                                                                                                                                         
-</cheatsheet>           
+   </item>
+   <item
+         title="Download demo project">
+      <description>
+         You can download a demo project with simple JDO and JPA data-modelsOpen the browser 
+         to download the demo project. to quickly get started using Vestigo. 
+         The demo project is provided as zip file whose contents should be extracted to some directory
+         on your hard drive you can easily relocate.
+         <br/><br/> 
+         The location of the demo project is: <b>http://vestigo.nightlabs.com/latest-dev/download/p2/artifacts.jar</b>.
+         <br/><br/> 
+         The next step will open the Eclipse internal browser to download the zip. 
+         The following will close the browser. You can of course skip these steps and download the file using an other method.
+      </description>
+      <subitem
+            label="Open the browser to download the demo project."
+            skip="true">
+      	<command
+            required="false"
+            serialization="org.eclipse.ui.browser.openBrowser(url=http://vestigo.nightlabs.com/latest-dev/download/p2/artifacts.jar)"/>
+      </subitem>
+      <subitem
+            label="Close the browser that was used to download the demo project."
+            skip="true">
+      	<command
+            required="false"
+            serialization="org.eclipse.ui.file.close"/>
+      </subitem>
+   </item>
+   <item
+         title="Start the Connection Profile Wizard"
+         dialog="true">
+      <description>
+         Select the <b>Data Source Explorer</b> view and right-click on the <b>JPA Connections</b> entry in the tree of connection types. 
+         Invoke the <b>New...</b> action from the context menu.
+      </description>
+      <action
+      		class="org.nightlabs.jjqb.ui.cheatsheet.action.OpenConnectionProfileWizardAction"
+      		pluginId="org.nightlabs.jjqb.ui"
+      	/>
+   </item>
+   <item
+         title="Define a connection name">
+      <description>
+      	 Enter a name for the connection. Use for example <b>Demo JPA connection</b>. 
+      	 When finished click the <b>Next</b> button of the wizard.
+      </description>
+   </item>
+   <item
+         title="Define the classpath for the connection">
+      <description>
+      	 In the next step you must define the classpath for the conneciton. 
+      	 The classpath of your connection must include your datamodel, the JPA implementation and the JDBC drivers to access the database.
+      	 For the demo project all is provided in the projects zip-file as separate jars.
+      	 <br/><br/>
+      	 Use the first action of the wizard page to <b>Add one or more files (EAR, JAR, WAR etc.).</b> In the dialog that opens browse to the
+      	 directory you've extracted the demo project to and select <b>all jar-files</b>, then click <b>OK</b>. 
+      	 <br/><br/>
+      	 Note, that Vestigo also allows to add all contents of an archive (zip, war, ear etc.) or folder recursively. However for this  
+      	 tutorial we will use the separate jars.
+      	 <br/><br/>
+      	 When you've added all jars of the demo project click the <b>Next</b> button.      
+      </description>
+   </item> 
+   <item
+         title="Choose the persistence unit">
+      <description>
+      	 When the <b>Persistence unit</b> page opens it automatically searches for persistence units in your classpath. 
+      	 For the demo project it will find two persistence units, please use the one for JPA: <b>vestigoDemoMovieJPA</b>. 
+      	 Select the persistence unit from the table and click <b>Next</b>.
+      </description>
+   </item>
+   <item
+         title="Check and override persistence properties">
+      <description>
+         The next page will initially show you all properties from the persistence unit you have selected. 
+      	 Note that these entries are displayed in light gray indicating that they are inherited from the persistence unit.
+      	 For this demo you need to override one entry, the connection url defining the coordinates to the derby database 
+      	 containing the demo data.
+      	 <br/><br/> 
+      	 Change the entry with the key <b>javax.persistence.jdbc.url</b> to match the path of the
+      	 folder you've extracted the demo project to. For example on Linux the the new value might look like this 
+      	 <b>jdbc:derby:/home/myuser/tmp/vestigo-demo/derby/vestigoDemoMovieJPA;create=true</b>. 
+      	 On Windows the Entry might look something like the following: 
+      	 <b>jdbc:derby:/home/abieber/tmp/vestigo-demo/derby/vestigoDemoMovieJPA;create=true</b>
+      	 <br/><br/>
+      	 Note that after changing the value the entry will be automatically checked and displayed with a fat font indicating
+      	 that you have overwritten the value from the persistence unit.
+      	 <br/><br/>
+      	 When you're done changing the value click the <b>Test Connection</b> button in order to check your settings. 
+      	 If the ping succeeds you can <b>Finish</b> the dialog. You've just created your first Vestigo JPA connection profile. 
+      </description>
+   </item>
+   <item
+         title="Connect the profile">
+      <description>
+      	 After you've created the connection profile you can connect it. 
+      	 Select the new connection in the <b>Data Source Explorer</b> view, right-click and select <b>Connect</b>.
+      </description>
+   </item>
+   <item
+         title="Show the candidate classes">
+      <description>
+      	 After the connection has been established the <b>Candidate classes</b> view will load all classes that are possible
+      	 candidates for a query. Bring the view to the foreground in order to see the list of candidate classes. 
+      </description>
+   </item>
+   <item
+         title="Create simple query for a candidate class">
+      <description>
+      	 In order to create a simple query selecting all instances of a class you only have to <b>double-click the class</b> in the 
+      	 <b>Candidate classes</b> view. This will create a new query editor already including the select statement.
+      </description>
+   </item>
+   <item
+         title="Execute the query">
+      <description>
+      	 In order to create a simple query selecting all instances of a class you only have to <b>double-click the class</b> in the 
+      	 <b>Candidate classes</b> view. This will create a new query editor already including the select statement.
+      </description>
+   </item>
+</cheatsheet>
