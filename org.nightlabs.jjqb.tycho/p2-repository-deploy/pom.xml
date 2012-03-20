@@ -8,7 +8,7 @@
 	<parent>
 		<groupId>org.nightlabs.jjqb</groupId>
 		<artifactId>org.nightlabs.jjqb.tycho</artifactId>
-		<version>0.1.1-SNAPSHOT</version>
+		<version>0.1.1</version>
 		<relativePath>..</relativePath>
 	</parent>
 

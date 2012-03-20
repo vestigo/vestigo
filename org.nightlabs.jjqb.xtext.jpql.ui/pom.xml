@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>org.nightlabs.jjqb</groupId>
 		<artifactId>org.nightlabs.jjqb.xtext.parent</artifactId>
-		<version>0.1.1-SNAPSHOT</version>
+		<version>0.1.1</version>
 		<relativePath>../org.nightlabs.jjqb.xtext.parent</relativePath>
 	</parent>
 

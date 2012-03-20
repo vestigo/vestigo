@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.nightlabs.jjqb.xtext.jdoql.ui
 Bundle-Vendor: NightLabs Consulting GmbH
-Bundle-Version: 0.1.1.qualifier
+Bundle-Version: 0.1.1
 Bundle-SymbolicName: org.nightlabs.jjqb.xtext.jdoql.ui;singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.nightlabs.jjqb.xtext.jdoql;visibility:=reexport,

@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.nightlabs.jjqb.xtext.jpql.tests
 Bundle-Vendor: NightLabs Consulting GmbH
-Bundle-Version: 0.1.1.qualifier
+Bundle-Version: 0.1.1
 Bundle-SymbolicName: org.nightlabs.jjqb.xtext.jpql.tests; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.nightlabs.jjqb.xtext.jpql,
