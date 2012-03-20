@@ -97,7 +97,7 @@
       	 folder you've extracted the demo project to. For example on Linux the the new value might look like this 
       	 <b>jdbc:derby:/home/myuser/tmp/vestigo-demo/derby/vestigoDemoMovieJPA;create=true</b>. 
       	 On Windows the Entry might look something like the following: 
-      	 <b>jdbc:derby:/home/abieber/tmp/vestigo-demo/derby/vestigoDemoMovieJPA;create=true</b>
+      	 <b>jdbc:derby:C:\Users\myuser\Desktop\vestigo-demo\derby\vestigoDemoMovieJPA;create=true</b>
       	 <br/><br/>
       	 Note that after changing the value the entry will be automatically checked and displayed with a fat font indicating
       	 that you have overwritten the value from the persistence unit.
@@ -124,14 +124,18 @@
          title="Create simple query for a candidate class">
       <description>
       	 In order to create a simple query selecting all instances of a class you only have to <b>double-click the class</b> in the 
-      	 <b>Candidate classes</b> view. This will create a new query editor already including the select statement.
+      	 <b>Candidate classes</b> view. Choose the <b>org.nightlbs.jjqb.demo.jpa.Movie</b> class and double-click. 
+      	 This will create a new query editor already including the select statement.
       </description>
    </item>
    <item
          title="Execute the query">
       <description>
+      	 To execute the query use the <b>Execute</b> Button ([Ctrl + F5]) or double-click once again on the
       	 In order to create a simple query selecting all instances of a class you only have to <b>double-click the class</b> in the 
       	 <b>Candidate classes</b> view. This will create a new query editor already including the select statement.
+      	 <br/><br/>
+      	 The query is executed and you can now browse the results in the <b>Result Sets</b> and <b>Object Graph Detail Tree</b> views. 
       </description>
    </item>
 </cheatsheet>
