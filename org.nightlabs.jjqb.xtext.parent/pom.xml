@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>org.nightlabs.jjqb</groupId>
 		<artifactId>org.nightlabs.jjqb.parent</artifactId>
-		<version>0.1.1</version>
+		<version>0.1.2</version>
 		<relativePath>../org.nightlabs.jjqb.parent</relativePath>
 	</parent>
 
@@ -73,7 +73,7 @@
 			<dependency>
 				<groupId>com.google.guava</groupId>
 				<artifactId>com.google.guava</artifactId>
-				<version>10.0.1.1</version>
+				<version>10.0.1.2</version>
 			</dependency>
 			<!-- END xtend -->
 
@@ -178,7 +178,7 @@
 			<dependency>
 				<groupId>org.antlr.runtime</groupId>
 				<artifactId>org.antlr.runtime</artifactId>
-				<version>3.2.0.v201101311130</version>
+				<version>3.2.0.v20.1.2311130</version>
 			</dependency>
 			<dependency>
 				<groupId>javax.inject</groupId>

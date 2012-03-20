@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/org.nightlabs.jjqb.ui.feature_0.1.1.jar" id="org.nightlabs.jjqb.ui.feature" version="0.1.1">
+   <feature url="features/org.nightlabs.jjqb.ui.feature_0.1.2.jar" id="org.nightlabs.jjqb.ui.feature" version="0.1.2">
       <category name="org.nightlabs.jjqb.category"/>
    </feature>
-   <feature url="features/org.nightlabs.jjqb.jdt.ui.feature_0.1.1.jar" id="org.nightlabs.jjqb.jdt.ui.feature" version="0.1.1">
+   <feature url="features/org.nightlabs.jjqb.jdt.ui.feature_0.1.2.jar" id="org.nightlabs.jjqb.jdt.ui.feature" version="0.1.2">
       <category name="org.nightlabs.jjqb.category"/>
    </feature>
-   <feature url="features/org.nightlabs.jjqb.cumulus4j.ui.feature_0.1.1.jar" id="org.nightlabs.jjqb.cumulus4j.ui.feature" version="0.1.1">
+   <feature url="features/org.nightlabs.jjqb.cumulus4j.ui.feature_0.1.2.jar" id="org.nightlabs.jjqb.cumulus4j.ui.feature" version="0.1.2">
       <category name="org.nightlabs.jjqb.category"/>
    </feature>
    <category-def name="org.nightlabs.jjqb.category" label="Vestigo"/>

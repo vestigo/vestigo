@@ -2,7 +2,7 @@
 <feature
       id="org.nightlabs.jjqb.cumulus4j.ui.feature"
       label="Vestigo Cumulus4j integration"
-      version="0.1.1"
+      version="0.1.2"
       provider-name="NightLabs Consulting GmbH">
 
    <description url="http://www.example.com/description">
@@ -18,7 +18,7 @@
    </license>
 
    <requires>
-      <import feature="org.nightlabs.jjqb.ui.feature" version="0.1.1" match="greaterOrEqual"/>
+      <import feature="org.nightlabs.jjqb.ui.feature" version="0.1.2" match="greaterOrEqual"/>
    </requires>
 
    <plugin
