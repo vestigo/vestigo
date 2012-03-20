@@ -89,13 +89,6 @@ public class JPQLSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case JPQLPackage.NAMED_QUERY:
-      {
-        NamedQuery namedQuery = (NamedQuery)theEObject;
-        T result = caseNamedQuery(namedQuery);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case JPQLPackage.JPQL_QUERY:
       {
         JPQLQuery jpqlQuery = (JPQLQuery)theEObject;
@@ -110,6 +103,20 @@ public class JPQLSwitch<T> extends Switch<T>
         if (result == null) result = caseJPQLQuery(selectStatement);
         if (result == null) result = caseExpressionTerm(selectStatement);
         if (result == null) result = caseExpression(selectStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case JPQLPackage.GROUP_CLAUSE:
+      {
+        GroupClause groupClause = (GroupClause)theEObject;
+        T result = caseGroupClause(groupClause);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case JPQLPackage.GROUP_ITEM:
+      {
+        GroupItem groupItem = (GroupItem)theEObject;
+        T result = caseGroupItem(groupItem);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -547,17 +554,6 @@ public class JPQLSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case JPQLPackage.DATE_TIME_EXPRESSION:
-      {
-        DateTimeExpression dateTimeExpression = (DateTimeExpression)theEObject;
-        T result = caseDateTimeExpression(dateTimeExpression);
-        if (result == null) result = caseValue(dateTimeExpression);
-        if (result == null) result = caseVariable(dateTimeExpression);
-        if (result == null) result = caseExpressionTerm(dateTimeExpression);
-        if (result == null) result = caseExpression(dateTimeExpression);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case JPQLPackage.OR_EXPRESSION:
       {
         OrExpression orExpression = (OrExpression)theEObject;
@@ -611,22 +607,6 @@ public class JPQLSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Named Query</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Named Query</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseNamedQuery(NamedQuery object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Query</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -654,6 +634,38 @@ public class JPQLSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseSelectStatement(SelectStatement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Group Clause</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Group Clause</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseGroupClause(GroupClause object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Group Item</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Group Item</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseGroupItem(GroupItem object)
   {
     return null;
   }
@@ -1502,22 +1514,6 @@ public class JPQLSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseBooleanExpression(BooleanExpression object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Date Time Expression</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Date Time Expression</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseDateTimeExpression(DateTimeExpression object)
   {
     return null;
   }

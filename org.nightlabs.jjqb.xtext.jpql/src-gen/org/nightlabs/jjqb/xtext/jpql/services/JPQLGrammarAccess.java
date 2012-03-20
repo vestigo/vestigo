@@ -24,14 +24,12 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cImportsImportParserRuleCall_0_0 = (RuleCall)cImportsAssignment_0.eContents().get(0);
 		private final Assignment cDefaultQueryAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cDefaultQueryJPQLQueryParserRuleCall_1_0 = (RuleCall)cDefaultQueryAssignment_1.eContents().get(0);
-		private final Assignment cNamedQueriesAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cNamedQueriesNamedQueryParserRuleCall_2_0 = (RuleCall)cNamedQueriesAssignment_2.eContents().get(0);
 		
 		//QueryModule:
-		//	imports+=Import* defaultQuery=JPQLQuery? namedQueries+=NamedQuery*;
+		//	imports+=Import* defaultQuery=JPQLQuery?;
 		public ParserRule getRule() { return rule; }
 
-		//imports+=Import* defaultQuery=JPQLQuery? namedQueries+=NamedQuery*
+		//imports+=Import* defaultQuery=JPQLQuery?
 		public Group getGroup() { return cGroup; }
 
 		//imports+=Import*
@@ -45,12 +43,6 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 
 		//JPQLQuery
 		public RuleCall getDefaultQueryJPQLQueryParserRuleCall_1_0() { return cDefaultQueryJPQLQueryParserRuleCall_1_0; }
-
-		//namedQueries+=NamedQuery*
-		public Assignment getNamedQueriesAssignment_2() { return cNamedQueriesAssignment_2; }
-
-		//NamedQuery
-		public RuleCall getNamedQueriesNamedQueryParserRuleCall_2_0() { return cNamedQueriesNamedQueryParserRuleCall_2_0; }
 	}
 
 	public class ImportElements extends AbstractParserRuleElementFinder {
@@ -75,38 +67,6 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 
 		//STRING
 		public RuleCall getImportURISTRINGTerminalRuleCall_1_0() { return cImportURISTRINGTerminalRuleCall_1_0; }
-	}
-
-	public class NamedQueryElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "NamedQuery");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cNameIDTerminalRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
-		private final Keyword cColonKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cQueryAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cQueryJPQLQueryParserRuleCall_2_0 = (RuleCall)cQueryAssignment_2.eContents().get(0);
-		
-		//NamedQuery:
-		//	name=ID ":" query=JPQLQuery;
-		public ParserRule getRule() { return rule; }
-
-		//name=ID ":" query=JPQLQuery
-		public Group getGroup() { return cGroup; }
-
-		//name=ID
-		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
-
-		//ID
-		public RuleCall getNameIDTerminalRuleCall_0_0() { return cNameIDTerminalRuleCall_0_0; }
-
-		//":"
-		public Keyword getColonKeyword_1() { return cColonKeyword_1; }
-
-		//query=JPQLQuery
-		public Assignment getQueryAssignment_2() { return cQueryAssignment_2; }
-
-		//JPQLQuery
-		public RuleCall getQueryJPQLQueryParserRuleCall_2_0() { return cQueryJPQLQueryParserRuleCall_2_0; }
 	}
 
 	public class JPQLQueryElements extends AbstractParserRuleElementFinder {
@@ -140,18 +100,19 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cSelectFromClauseSelectFromClauseParserRuleCall_0_0 = (RuleCall)cSelectFromClauseAssignment_0.eContents().get(0);
 		private final Assignment cWhereClauseAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cWhereClauseWhereClauseParserRuleCall_1_0 = (RuleCall)cWhereClauseAssignment_1.eContents().get(0);
-		private final Assignment cHavingAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cHavingHavingClauseParserRuleCall_2_0 = (RuleCall)cHavingAssignment_2.eContents().get(0);
-		private final Assignment cOrderAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cOrderOrderClauseParserRuleCall_3_0 = (RuleCall)cOrderAssignment_3.eContents().get(0);
+		private final Assignment cGroupByAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cGroupByGroupClauseParserRuleCall_2_0 = (RuleCall)cGroupByAssignment_2.eContents().get(0);
+		private final Assignment cHavingAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cHavingHavingClauseParserRuleCall_3_0 = (RuleCall)cHavingAssignment_3.eContents().get(0);
+		private final Assignment cOrderAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cOrderOrderClauseParserRuleCall_4_0 = (RuleCall)cOrderAssignment_4.eContents().get(0);
 		
 		//SelectStatement:
-		//	selectFromClause=SelectFromClause whereClause=WhereClause? //	(groupBy=GroupClause)?
-		//	having=HavingClause? order=OrderClause?;
+		//	selectFromClause=SelectFromClause whereClause=WhereClause? groupBy=GroupClause? having=HavingClause?
+		//	order=OrderClause?;
 		public ParserRule getRule() { return rule; }
 
-		//selectFromClause=SelectFromClause whereClause=WhereClause? //	(groupBy=GroupClause)?
-		//having=HavingClause? order=OrderClause?
+		//selectFromClause=SelectFromClause whereClause=WhereClause? groupBy=GroupClause? having=HavingClause? order=OrderClause?
 		public Group getGroup() { return cGroup; }
 
 		//selectFromClause=SelectFromClause
@@ -166,17 +127,83 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 		//WhereClause
 		public RuleCall getWhereClauseWhereClauseParserRuleCall_1_0() { return cWhereClauseWhereClauseParserRuleCall_1_0; }
 
+		//groupBy=GroupClause?
+		public Assignment getGroupByAssignment_2() { return cGroupByAssignment_2; }
+
+		//GroupClause
+		public RuleCall getGroupByGroupClauseParserRuleCall_2_0() { return cGroupByGroupClauseParserRuleCall_2_0; }
+
 		//having=HavingClause?
-		public Assignment getHavingAssignment_2() { return cHavingAssignment_2; }
+		public Assignment getHavingAssignment_3() { return cHavingAssignment_3; }
 
 		//HavingClause
-		public RuleCall getHavingHavingClauseParserRuleCall_2_0() { return cHavingHavingClauseParserRuleCall_2_0; }
+		public RuleCall getHavingHavingClauseParserRuleCall_3_0() { return cHavingHavingClauseParserRuleCall_3_0; }
 
 		//order=OrderClause?
-		public Assignment getOrderAssignment_3() { return cOrderAssignment_3; }
+		public Assignment getOrderAssignment_4() { return cOrderAssignment_4; }
 
 		//OrderClause
-		public RuleCall getOrderOrderClauseParserRuleCall_3_0() { return cOrderOrderClauseParserRuleCall_3_0; }
+		public RuleCall getOrderOrderClauseParserRuleCall_4_0() { return cOrderOrderClauseParserRuleCall_4_0; }
+	}
+
+	public class GroupClauseElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "GroupClause");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cGROUPKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cBYKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cGroupingAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cGroupingGroupItemParserRuleCall_2_0 = (RuleCall)cGroupingAssignment_2.eContents().get(0);
+		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
+		private final Keyword cCommaKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Assignment cGroupingAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
+		private final RuleCall cGroupingGroupItemParserRuleCall_3_1_0 = (RuleCall)cGroupingAssignment_3_1.eContents().get(0);
+		
+		//GroupClause:
+		//	"GROUP" "BY" grouping+=GroupItem ("," grouping+=GroupItem)*;
+		public ParserRule getRule() { return rule; }
+
+		//"GROUP" "BY" grouping+=GroupItem ("," grouping+=GroupItem)*
+		public Group getGroup() { return cGroup; }
+
+		//"GROUP"
+		public Keyword getGROUPKeyword_0() { return cGROUPKeyword_0; }
+
+		//"BY"
+		public Keyword getBYKeyword_1() { return cBYKeyword_1; }
+
+		//grouping+=GroupItem
+		public Assignment getGroupingAssignment_2() { return cGroupingAssignment_2; }
+
+		//GroupItem
+		public RuleCall getGroupingGroupItemParserRuleCall_2_0() { return cGroupingGroupItemParserRuleCall_2_0; }
+
+		//("," grouping+=GroupItem)*
+		public Group getGroup_3() { return cGroup_3; }
+
+		//","
+		public Keyword getCommaKeyword_3_0() { return cCommaKeyword_3_0; }
+
+		//grouping+=GroupItem
+		public Assignment getGroupingAssignment_3_1() { return cGroupingAssignment_3_1; }
+
+		//GroupItem
+		public RuleCall getGroupingGroupItemParserRuleCall_3_1_0() { return cGroupingGroupItemParserRuleCall_3_1_0; }
+	}
+
+	public class GroupItemElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "GroupItem");
+		private final Assignment cVarAssignment = (Assignment)rule.eContents().get(1);
+		private final RuleCall cVarAliasAttributeExpressionParserRuleCall_0 = (RuleCall)cVarAssignment.eContents().get(0);
+		
+		//GroupItem:
+		//	var=AliasAttributeExpression;
+		public ParserRule getRule() { return rule; }
+
+		//var=AliasAttributeExpression
+		public Assignment getVarAssignment() { return cVarAssignment; }
+
+		//AliasAttributeExpression
+		public RuleCall getVarAliasAttributeExpressionParserRuleCall_0() { return cVarAliasAttributeExpressionParserRuleCall_0; }
 	}
 
 	public class HavingClauseElements extends AbstractParserRuleElementFinder {
@@ -186,9 +213,6 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cHavingAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cHavingOrExpressionParserRuleCall_1_0 = (RuleCall)cHavingAssignment_1.eContents().get(0);
 		
-		////GroupClause:
-		////	'GROUP' 'BY' grouping=Group
-		////;
 		//HavingClause:
 		//	"HAVING" having=OrExpression;
 		public ParserRule getRule() { return rule; }
@@ -272,38 +296,19 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 
 	public class OrderItemElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "OrderItem");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cVarAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final CrossReference cVarFromEntryCrossReference_0_0 = (CrossReference)cVarAssignment_0.eContents().get(0);
-		private final RuleCall cVarFromEntryIDTerminalRuleCall_0_0_1 = (RuleCall)cVarFromEntryCrossReference_0_0.eContents().get(1);
-		private final Keyword cFullStopKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cFeatureAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cFeatureIDTerminalRuleCall_2_0 = (RuleCall)cFeatureAssignment_2.eContents().get(0);
+		private final Assignment cVarAssignment = (Assignment)rule.eContents().get(1);
+		private final RuleCall cVarAliasAttributeExpressionParserRuleCall_0 = (RuleCall)cVarAssignment.eContents().get(0);
 		
-		//OrderItem:
-		//	var=[FromEntry] "." feature=ID;
+		//OrderItem: //	var=[FromEntry]'.'feature=ID
+		//	var=AliasAttributeExpression;
 		public ParserRule getRule() { return rule; }
 
-		//var=[FromEntry] "." feature=ID
-		public Group getGroup() { return cGroup; }
+		////	var=[FromEntry]'.'feature=ID
+		//var=AliasAttributeExpression
+		public Assignment getVarAssignment() { return cVarAssignment; }
 
-		//var=[FromEntry]
-		public Assignment getVarAssignment_0() { return cVarAssignment_0; }
-
-		//[FromEntry]
-		public CrossReference getVarFromEntryCrossReference_0_0() { return cVarFromEntryCrossReference_0_0; }
-
-		//ID
-		public RuleCall getVarFromEntryIDTerminalRuleCall_0_0_1() { return cVarFromEntryIDTerminalRuleCall_0_0_1; }
-
-		//"."
-		public Keyword getFullStopKeyword_1() { return cFullStopKeyword_1; }
-
-		//feature=ID
-		public Assignment getFeatureAssignment_2() { return cFeatureAssignment_2; }
-
-		//ID
-		public RuleCall getFeatureIDTerminalRuleCall_2_0() { return cFeatureIDTerminalRuleCall_2_0; }
+		//AliasAttributeExpression
+		public RuleCall getVarAliasAttributeExpressionParserRuleCall_0() { return cVarAliasAttributeExpressionParserRuleCall_0; }
 	}
 
 	public class UpdateStatementElements extends AbstractParserRuleElementFinder {
@@ -2272,7 +2277,6 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cStringExpressionParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		private final RuleCall cNullExpressionParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		private final RuleCall cBooleanExpressionParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
-		private final RuleCall cDateTimeExpressionParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
 		
 		////DoubleExpression: 
 		////	value=SIGNED_DOUBLE
@@ -2282,10 +2286,10 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 		////	value=SINGED_LONG	
 		////; 
 		//Value:
-		//	IntegerExpression | StringExpression | NullExpression | BooleanExpression | DateTimeExpression;
+		//	IntegerExpression | StringExpression | NullExpression | BooleanExpression;
 		public ParserRule getRule() { return rule; }
 
-		//IntegerExpression | StringExpression | NullExpression | BooleanExpression | DateTimeExpression
+		//IntegerExpression | StringExpression | NullExpression | BooleanExpression
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//IntegerExpression
@@ -2299,9 +2303,6 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 
 		//BooleanExpression
 		public RuleCall getBooleanExpressionParserRuleCall_3() { return cBooleanExpressionParserRuleCall_3; }
-
-		//DateTimeExpression
-		public RuleCall getDateTimeExpressionParserRuleCall_4() { return cDateTimeExpressionParserRuleCall_4; }
 	}
 
 	public class IntegerExpressionElements extends AbstractParserRuleElementFinder {
@@ -2374,22 +2375,6 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 
 		//"FALSE"
 		public Keyword getValueFALSEKeyword_0_1() { return cValueFALSEKeyword_0_1; }
-	}
-
-	public class DateTimeExpressionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "DateTimeExpression");
-		private final Assignment cValueAssignment = (Assignment)rule.eContents().get(1);
-		private final RuleCall cValueLiteralTemporalTerminalRuleCall_0 = (RuleCall)cValueAssignment.eContents().get(0);
-		
-		//DateTimeExpression:
-		//	value=LiteralTemporal;
-		public ParserRule getRule() { return rule; }
-
-		//value=LiteralTemporal
-		public Assignment getValueAssignment() { return cValueAssignment; }
-
-		//LiteralTemporal
-		public RuleCall getValueLiteralTemporalTerminalRuleCall_0() { return cValueLiteralTemporalTerminalRuleCall_0; }
 	}
 
 	public class QueryExpressionElements extends AbstractParserRuleElementFinder {
@@ -2479,9 +2464,10 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 	
 	private QueryModuleElements pQueryModule;
 	private ImportElements pImport;
-	private NamedQueryElements pNamedQuery;
 	private JPQLQueryElements pJPQLQuery;
 	private SelectStatementElements pSelectStatement;
+	private GroupClauseElements pGroupClause;
+	private GroupItemElements pGroupItem;
 	private HavingClauseElements pHavingClause;
 	private OrderClauseElements pOrderClause;
 	private OrderItemElements pOrderItem;
@@ -2546,15 +2532,8 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 	private StringExpressionElements pStringExpression;
 	private NullExpressionElements pNullExpression;
 	private BooleanExpressionElements pBooleanExpression;
-	private DateTimeExpressionElements pDateTimeExpression;
 	private QueryExpressionElements pQueryExpression;
 	private OperatorElements unknownRuleOperator;
-	private TerminalRule tLiteralTemporal;
-	private TerminalRule tDATE_LITERAL;
-	private TerminalRule tTIME_LITERAL;
-	private TerminalRule tTIMESTAMP_LITERAL;
-	private TerminalRule tDATE_STRING;
-	private TerminalRule tTIME_STRING;
 	
 	private final GrammarProvider grammarProvider;
 
@@ -2578,7 +2557,7 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 
 	
 	//QueryModule:
-	//	imports+=Import* defaultQuery=JPQLQuery? namedQueries+=NamedQuery*;
+	//	imports+=Import* defaultQuery=JPQLQuery?;
 	public QueryModuleElements getQueryModuleAccess() {
 		return (pQueryModule != null) ? pQueryModule : (pQueryModule = new QueryModuleElements());
 	}
@@ -2597,16 +2576,6 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 		return getImportAccess().getRule();
 	}
 
-	//NamedQuery:
-	//	name=ID ":" query=JPQLQuery;
-	public NamedQueryElements getNamedQueryAccess() {
-		return (pNamedQuery != null) ? pNamedQuery : (pNamedQuery = new NamedQueryElements());
-	}
-	
-	public ParserRule getNamedQueryRule() {
-		return getNamedQueryAccess().getRule();
-	}
-
 	//JPQLQuery:
 	//	SelectStatement | UpdateStatement | DeleteStatement;
 	public JPQLQueryElements getJPQLQueryAccess() {
@@ -2618,8 +2587,8 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//SelectStatement:
-	//	selectFromClause=SelectFromClause whereClause=WhereClause? //	(groupBy=GroupClause)?
-	//	having=HavingClause? order=OrderClause?;
+	//	selectFromClause=SelectFromClause whereClause=WhereClause? groupBy=GroupClause? having=HavingClause?
+	//	order=OrderClause?;
 	public SelectStatementElements getSelectStatementAccess() {
 		return (pSelectStatement != null) ? pSelectStatement : (pSelectStatement = new SelectStatementElements());
 	}
@@ -2628,9 +2597,26 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 		return getSelectStatementAccess().getRule();
 	}
 
-	////GroupClause:
-	////	'GROUP' 'BY' grouping=Group
-	////;
+	//GroupClause:
+	//	"GROUP" "BY" grouping+=GroupItem ("," grouping+=GroupItem)*;
+	public GroupClauseElements getGroupClauseAccess() {
+		return (pGroupClause != null) ? pGroupClause : (pGroupClause = new GroupClauseElements());
+	}
+	
+	public ParserRule getGroupClauseRule() {
+		return getGroupClauseAccess().getRule();
+	}
+
+	//GroupItem:
+	//	var=AliasAttributeExpression;
+	public GroupItemElements getGroupItemAccess() {
+		return (pGroupItem != null) ? pGroupItem : (pGroupItem = new GroupItemElements());
+	}
+	
+	public ParserRule getGroupItemRule() {
+		return getGroupItemAccess().getRule();
+	}
+
 	//HavingClause:
 	//	"HAVING" having=OrExpression;
 	public HavingClauseElements getHavingClauseAccess() {
@@ -2651,8 +2637,8 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 		return getOrderClauseAccess().getRule();
 	}
 
-	//OrderItem:
-	//	var=[FromEntry] "." feature=ID;
+	//OrderItem: //	var=[FromEntry]'.'feature=ID
+	//	var=AliasAttributeExpression;
 	public OrderItemElements getOrderItemAccess() {
 		return (pOrderItem != null) ? pOrderItem : (pOrderItem = new OrderItemElements());
 	}
@@ -3232,7 +3218,7 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 	////	value=SINGED_LONG	
 	////; 
 	//Value:
-	//	IntegerExpression | StringExpression | NullExpression | BooleanExpression | DateTimeExpression;
+	//	IntegerExpression | StringExpression | NullExpression | BooleanExpression;
 	public ValueElements getValueAccess() {
 		return (pValue != null) ? pValue : (pValue = new ValueElements());
 	}
@@ -3281,16 +3267,6 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 		return getBooleanExpressionAccess().getRule();
 	}
 
-	//DateTimeExpression:
-	//	value=LiteralTemporal;
-	public DateTimeExpressionElements getDateTimeExpressionAccess() {
-		return (pDateTimeExpression != null) ? pDateTimeExpression : (pDateTimeExpression = new DateTimeExpressionElements());
-	}
-	
-	public ParserRule getDateTimeExpressionRule() {
-		return getDateTimeExpressionAccess().getRule();
-	}
-
 	//QueryExpression returns SelectStatement:
 	//	"(" SelectStatement ")";
 	public QueryExpressionElements getQueryExpressionAccess() {
@@ -3310,42 +3286,6 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 	public EnumRule getOperatorRule() {
 		return getOperatorAccess().getRule();
 	}
-
-	//terminal LiteralTemporal:
-	//	DATE_LITERAL | TIME_LITERAL | TIMESTAMP_LITERAL;
-	public TerminalRule getLiteralTemporalRule() {
-		return (tLiteralTemporal != null) ? tLiteralTemporal : (tLiteralTemporal = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "LiteralTemporal"));
-	} 
-
-	//terminal DATE_LITERAL:
-	//	"(" "d" (" " | "\t")+ "\'" DATE_STRING "\'" (" " | "\t")* ")";
-	public TerminalRule getDATE_LITERALRule() {
-		return (tDATE_LITERAL != null) ? tDATE_LITERAL : (tDATE_LITERAL = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "DATE_LITERAL"));
-	} 
-
-	//terminal TIME_LITERAL:
-	//	"(" "t" (" " | "\t")+ "\'" TIME_STRING "\'" (" " | "\t")* ")";
-	public TerminalRule getTIME_LITERALRule() {
-		return (tTIME_LITERAL != null) ? tTIME_LITERAL : (tTIME_LITERAL = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "TIME_LITERAL"));
-	} 
-
-	//terminal TIMESTAMP_LITERAL:
-	//	"(" "ts" (" " | "\t")+ "\'" DATE_STRING " " TIME_STRING "\'" (" " | "\t")* ")";
-	public TerminalRule getTIMESTAMP_LITERALRule() {
-		return (tTIMESTAMP_LITERAL != null) ? tTIMESTAMP_LITERAL : (tTIMESTAMP_LITERAL = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "TIMESTAMP_LITERAL"));
-	} 
-
-	//terminal DATE_STRING:
-	//	"0".."9" "0".."9" "0".."9" "0".."9" "-" "0".."9" "0".."9" "-" "0".."9" "0".."9";
-	public TerminalRule getDATE_STRINGRule() {
-		return (tDATE_STRING != null) ? tDATE_STRING : (tDATE_STRING = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "DATE_STRING"));
-	} 
-
-	//terminal TIME_STRING:
-	//	"0".."9" "0".."9"? ":" "0".."9" "0".."9" ":" "0".."9" "0".."9" "." "0".."9"*;
-	public TerminalRule getTIME_STRINGRule() {
-		return (tTIME_STRING != null) ? tTIME_STRING : (tTIME_STRING = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "TIME_STRING"));
-	} 
 
 	//terminal ID:
 	//	"^"? ("a".."z" | "A".."Z" | "_") ("a".."z" | "A".."Z" | "_" | "0".."9")*;

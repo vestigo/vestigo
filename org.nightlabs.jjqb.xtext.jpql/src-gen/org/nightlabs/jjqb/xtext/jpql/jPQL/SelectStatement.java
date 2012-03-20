@@ -15,6 +15,7 @@ package org.nightlabs.jjqb.xtext.jpql.jPQL;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.SelectStatement#getSelectFromClause <em>Select From Clause</em>}</li>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.SelectStatement#getGroupBy <em>Group By</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.SelectStatement#getHaving <em>Having</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.SelectStatement#getOrder <em>Order</em>}</li>
  * </ul>
@@ -51,6 +52,32 @@ public interface SelectStatement extends JPQLQuery, ExpressionTerm
    * @generated
    */
   void setSelectFromClause(SelectFromClause value);
+
+  /**
+   * Returns the value of the '<em><b>Group By</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Group By</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Group By</em>' containment reference.
+   * @see #setGroupBy(GroupClause)
+   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getSelectStatement_GroupBy()
+   * @model containment="true"
+   * @generated
+   */
+  GroupClause getGroupBy();
+
+  /**
+   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.SelectStatement#getGroupBy <em>Group By</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Group By</em>' containment reference.
+   * @see #getGroupBy()
+   * @generated
+   */
+  void setGroupBy(GroupClause value);
 
   /**
    * Returns the value of the '<em><b>Having</b></em>' containment reference.

@@ -24,7 +24,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.Import;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLQuery;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.NamedQuery;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.QueryModule;
 
 /**
@@ -36,7 +35,6 @@ import org.nightlabs.jjqb.xtext.jpql.jPQL.QueryModule;
  * <ul>
  *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.QueryModuleImpl#getImports <em>Imports</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.QueryModuleImpl#getDefaultQuery <em>Default Query</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.QueryModuleImpl#getNamedQueries <em>Named Queries</em>}</li>
  * </ul>
  * </p>
  *
@@ -63,16 +61,6 @@ public class QueryModuleImpl extends MinimalEObjectImpl.Container implements Que
    * @ordered
    */
   protected JPQLQuery defaultQuery;
-
-  /**
-   * The cached value of the '{@link #getNamedQueries() <em>Named Queries</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getNamedQueries()
-   * @generated
-   * @ordered
-   */
-  protected EList<NamedQuery> namedQueries;
 
   /**
    * <!-- begin-user-doc -->
@@ -162,20 +150,6 @@ public class QueryModuleImpl extends MinimalEObjectImpl.Container implements Que
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<NamedQuery> getNamedQueries()
-  {
-    if (namedQueries == null)
-    {
-      namedQueries = new EObjectContainmentEList<NamedQuery>(NamedQuery.class, this, JPQLPackage.QUERY_MODULE__NAMED_QUERIES);
-    }
-    return namedQueries;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -185,8 +159,6 @@ public class QueryModuleImpl extends MinimalEObjectImpl.Container implements Que
         return ((InternalEList<?>)getImports()).basicRemove(otherEnd, msgs);
       case JPQLPackage.QUERY_MODULE__DEFAULT_QUERY:
         return basicSetDefaultQuery(null, msgs);
-      case JPQLPackage.QUERY_MODULE__NAMED_QUERIES:
-        return ((InternalEList<?>)getNamedQueries()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -205,8 +177,6 @@ public class QueryModuleImpl extends MinimalEObjectImpl.Container implements Que
         return getImports();
       case JPQLPackage.QUERY_MODULE__DEFAULT_QUERY:
         return getDefaultQuery();
-      case JPQLPackage.QUERY_MODULE__NAMED_QUERIES:
-        return getNamedQueries();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -229,10 +199,6 @@ public class QueryModuleImpl extends MinimalEObjectImpl.Container implements Que
       case JPQLPackage.QUERY_MODULE__DEFAULT_QUERY:
         setDefaultQuery((JPQLQuery)newValue);
         return;
-      case JPQLPackage.QUERY_MODULE__NAMED_QUERIES:
-        getNamedQueries().clear();
-        getNamedQueries().addAll((Collection<? extends NamedQuery>)newValue);
-        return;
     }
     super.eSet(featureID, newValue);
   }
@@ -253,9 +219,6 @@ public class QueryModuleImpl extends MinimalEObjectImpl.Container implements Que
       case JPQLPackage.QUERY_MODULE__DEFAULT_QUERY:
         setDefaultQuery((JPQLQuery)null);
         return;
-      case JPQLPackage.QUERY_MODULE__NAMED_QUERIES:
-        getNamedQueries().clear();
-        return;
     }
     super.eUnset(featureID);
   }
@@ -274,8 +237,6 @@ public class QueryModuleImpl extends MinimalEObjectImpl.Container implements Que
         return imports != null && !imports.isEmpty();
       case JPQLPackage.QUERY_MODULE__DEFAULT_QUERY:
         return defaultQuery != null;
-      case JPQLPackage.QUERY_MODULE__NAMED_QUERIES:
-        return namedQueries != null && !namedQueries.isEmpty();
     }
     return super.eIsSet(featureID);
   }

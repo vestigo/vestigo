@@ -20,22 +20,24 @@
     <genClasses ecoreClass="JPQL.ecore#//QueryModule">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//QueryModule/imports"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//QueryModule/defaultQuery"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//QueryModule/namedQueries"/>
     </genClasses>
     <genClasses ecoreClass="JPQL.ecore#//Import">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JPQL.ecore#//Import/importURI"/>
-    </genClasses>
-    <genClasses ecoreClass="JPQL.ecore#//NamedQuery">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JPQL.ecore#//NamedQuery/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//NamedQuery/query"/>
     </genClasses>
     <genClasses ecoreClass="JPQL.ecore#//JPQLQuery">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//JPQLQuery/whereClause"/>
     </genClasses>
     <genClasses ecoreClass="JPQL.ecore#//SelectStatement">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//SelectStatement/selectFromClause"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//SelectStatement/groupBy"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//SelectStatement/having"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//SelectStatement/order"/>
+    </genClasses>
+    <genClasses ecoreClass="JPQL.ecore#//GroupClause">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//GroupClause/grouping"/>
+    </genClasses>
+    <genClasses ecoreClass="JPQL.ecore#//GroupItem">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//GroupItem/var"/>
     </genClasses>
     <genClasses ecoreClass="JPQL.ecore#//HavingClause">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//HavingClause/having"/>
@@ -46,8 +48,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JPQL.ecore#//OrderClause/isDesc"/>
     </genClasses>
     <genClasses ecoreClass="JPQL.ecore#//OrderItem">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference JPQL.ecore#//OrderItem/var"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JPQL.ecore#//OrderItem/feature"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//OrderItem/var"/>
     </genClasses>
     <genClasses ecoreClass="JPQL.ecore#//UpdateStatement">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//UpdateStatement/updateClause"/>
@@ -198,9 +199,6 @@
     </genClasses>
     <genClasses ecoreClass="JPQL.ecore#//BooleanExpression">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JPQL.ecore#//BooleanExpression/value"/>
-    </genClasses>
-    <genClasses ecoreClass="JPQL.ecore#//DateTimeExpression">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JPQL.ecore#//DateTimeExpression/value"/>
     </genClasses>
     <genClasses ecoreClass="JPQL.ecore#//OrExpression">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//OrExpression/entries"/>

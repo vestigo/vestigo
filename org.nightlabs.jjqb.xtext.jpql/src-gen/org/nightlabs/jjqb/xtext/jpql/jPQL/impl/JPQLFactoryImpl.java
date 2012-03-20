@@ -70,9 +70,10 @@ public class JPQLFactoryImpl extends EFactoryImpl implements JPQLFactory
     {
       case JPQLPackage.QUERY_MODULE: return createQueryModule();
       case JPQLPackage.IMPORT: return createImport();
-      case JPQLPackage.NAMED_QUERY: return createNamedQuery();
       case JPQLPackage.JPQL_QUERY: return createJPQLQuery();
       case JPQLPackage.SELECT_STATEMENT: return createSelectStatement();
+      case JPQLPackage.GROUP_CLAUSE: return createGroupClause();
+      case JPQLPackage.GROUP_ITEM: return createGroupItem();
       case JPQLPackage.HAVING_CLAUSE: return createHavingClause();
       case JPQLPackage.ORDER_CLAUSE: return createOrderClause();
       case JPQLPackage.ORDER_ITEM: return createOrderItem();
@@ -126,7 +127,6 @@ public class JPQLFactoryImpl extends EFactoryImpl implements JPQLFactory
       case JPQLPackage.STRING_EXPRESSION: return createStringExpression();
       case JPQLPackage.NULL_EXPRESSION: return createNullExpression();
       case JPQLPackage.BOOLEAN_EXPRESSION: return createBooleanExpression();
-      case JPQLPackage.DATE_TIME_EXPRESSION: return createDateTimeExpression();
       case JPQLPackage.OR_EXPRESSION: return createOrExpression();
       case JPQLPackage.AND_EXPRESSION: return createAndExpression();
       default:
@@ -195,17 +195,6 @@ public class JPQLFactoryImpl extends EFactoryImpl implements JPQLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public NamedQuery createNamedQuery()
-  {
-    NamedQueryImpl namedQuery = new NamedQueryImpl();
-    return namedQuery;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public JPQLQuery createJPQLQuery()
   {
     JPQLQueryImpl jpqlQuery = new JPQLQueryImpl();
@@ -221,6 +210,28 @@ public class JPQLFactoryImpl extends EFactoryImpl implements JPQLFactory
   {
     SelectStatementImpl selectStatement = new SelectStatementImpl();
     return selectStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public GroupClause createGroupClause()
+  {
+    GroupClauseImpl groupClause = new GroupClauseImpl();
+    return groupClause;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public GroupItem createGroupItem()
+  {
+    GroupItemImpl groupItem = new GroupItemImpl();
+    return groupItem;
   }
 
   /**
@@ -804,17 +815,6 @@ public class JPQLFactoryImpl extends EFactoryImpl implements JPQLFactory
   {
     BooleanExpressionImpl booleanExpression = new BooleanExpressionImpl();
     return booleanExpression;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public DateTimeExpression createDateTimeExpression()
-  {
-    DateTimeExpressionImpl dateTimeExpression = new DateTimeExpressionImpl();
-    return dateTimeExpression;
   }
 
   /**

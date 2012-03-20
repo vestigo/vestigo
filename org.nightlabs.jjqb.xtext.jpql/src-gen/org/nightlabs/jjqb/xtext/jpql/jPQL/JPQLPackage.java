@@ -89,22 +89,13 @@ public interface JPQLPackage extends EPackage
   int QUERY_MODULE__DEFAULT_QUERY = 1;
 
   /**
-   * The feature id for the '<em><b>Named Queries</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int QUERY_MODULE__NAMED_QUERIES = 2;
-
-  /**
    * The number of structural features of the '<em>Query Module</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int QUERY_MODULE_FEATURE_COUNT = 3;
+  int QUERY_MODULE_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.ImportImpl <em>Import</em>}' class.
@@ -135,43 +126,6 @@ public interface JPQLPackage extends EPackage
   int IMPORT_FEATURE_COUNT = 1;
 
   /**
-   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.NamedQueryImpl <em>Named Query</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.NamedQueryImpl
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getNamedQuery()
-   * @generated
-   */
-  int NAMED_QUERY = 2;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int NAMED_QUERY__NAME = 0;
-
-  /**
-   * The feature id for the '<em><b>Query</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int NAMED_QUERY__QUERY = 1;
-
-  /**
-   * The number of structural features of the '<em>Named Query</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int NAMED_QUERY_FEATURE_COUNT = 2;
-
-  /**
    * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLQueryImpl <em>Query</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -179,7 +133,7 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getJPQLQuery()
    * @generated
    */
-  int JPQL_QUERY = 3;
+  int JPQL_QUERY = 2;
 
   /**
    * The feature id for the '<em><b>Where Clause</b></em>' containment reference.
@@ -207,7 +161,7 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getSelectStatement()
    * @generated
    */
-  int SELECT_STATEMENT = 4;
+  int SELECT_STATEMENT = 3;
 
   /**
    * The feature id for the '<em><b>Where Clause</b></em>' containment reference.
@@ -228,13 +182,22 @@ public interface JPQLPackage extends EPackage
   int SELECT_STATEMENT__SELECT_FROM_CLAUSE = JPQL_QUERY_FEATURE_COUNT + 0;
 
   /**
+   * The feature id for the '<em><b>Group By</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SELECT_STATEMENT__GROUP_BY = JPQL_QUERY_FEATURE_COUNT + 1;
+
+  /**
    * The feature id for the '<em><b>Having</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SELECT_STATEMENT__HAVING = JPQL_QUERY_FEATURE_COUNT + 1;
+  int SELECT_STATEMENT__HAVING = JPQL_QUERY_FEATURE_COUNT + 2;
 
   /**
    * The feature id for the '<em><b>Order</b></em>' containment reference.
@@ -243,7 +206,7 @@ public interface JPQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SELECT_STATEMENT__ORDER = JPQL_QUERY_FEATURE_COUNT + 2;
+  int SELECT_STATEMENT__ORDER = JPQL_QUERY_FEATURE_COUNT + 3;
 
   /**
    * The number of structural features of the '<em>Select Statement</em>' class.
@@ -252,7 +215,63 @@ public interface JPQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SELECT_STATEMENT_FEATURE_COUNT = JPQL_QUERY_FEATURE_COUNT + 3;
+  int SELECT_STATEMENT_FEATURE_COUNT = JPQL_QUERY_FEATURE_COUNT + 4;
+
+  /**
+   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.GroupClauseImpl <em>Group Clause</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.GroupClauseImpl
+   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getGroupClause()
+   * @generated
+   */
+  int GROUP_CLAUSE = 4;
+
+  /**
+   * The feature id for the '<em><b>Grouping</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GROUP_CLAUSE__GROUPING = 0;
+
+  /**
+   * The number of structural features of the '<em>Group Clause</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GROUP_CLAUSE_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.GroupItemImpl <em>Group Item</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.GroupItemImpl
+   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getGroupItem()
+   * @generated
+   */
+  int GROUP_ITEM = 5;
+
+  /**
+   * The feature id for the '<em><b>Var</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GROUP_ITEM__VAR = 0;
+
+  /**
+   * The number of structural features of the '<em>Group Item</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GROUP_ITEM_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.HavingClauseImpl <em>Having Clause</em>}' class.
@@ -262,7 +281,7 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getHavingClause()
    * @generated
    */
-  int HAVING_CLAUSE = 5;
+  int HAVING_CLAUSE = 6;
 
   /**
    * The feature id for the '<em><b>Having</b></em>' containment reference.
@@ -290,7 +309,7 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getOrderClause()
    * @generated
    */
-  int ORDER_CLAUSE = 6;
+  int ORDER_CLAUSE = 7;
 
   /**
    * The feature id for the '<em><b>Ordering</b></em>' containment reference list.
@@ -336,10 +355,10 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getOrderItem()
    * @generated
    */
-  int ORDER_ITEM = 7;
+  int ORDER_ITEM = 8;
 
   /**
-   * The feature id for the '<em><b>Var</b></em>' reference.
+   * The feature id for the '<em><b>Var</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -348,22 +367,13 @@ public interface JPQLPackage extends EPackage
   int ORDER_ITEM__VAR = 0;
 
   /**
-   * The feature id for the '<em><b>Feature</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ORDER_ITEM__FEATURE = 1;
-
-  /**
    * The number of structural features of the '<em>Order Item</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ORDER_ITEM_FEATURE_COUNT = 2;
+  int ORDER_ITEM_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.UpdateStatementImpl <em>Update Statement</em>}' class.
@@ -373,7 +383,7 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getUpdateStatement()
    * @generated
    */
-  int UPDATE_STATEMENT = 8;
+  int UPDATE_STATEMENT = 9;
 
   /**
    * The feature id for the '<em><b>Where Clause</b></em>' containment reference.
@@ -419,7 +429,7 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getUpdateClause()
    * @generated
    */
-  int UPDATE_CLAUSE = 9;
+  int UPDATE_CLAUSE = 10;
 
   /**
    * The feature id for the '<em><b>From Entries</b></em>' containment reference list.
@@ -447,7 +457,7 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getSetClause()
    * @generated
    */
-  int SET_CLAUSE = 10;
+  int SET_CLAUSE = 11;
 
   /**
    * The feature id for the '<em><b>Items</b></em>' containment reference list.
@@ -475,7 +485,7 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getUpdateItem()
    * @generated
    */
-  int UPDATE_ITEM = 11;
+  int UPDATE_ITEM = 12;
 
   /**
    * The feature id for the '<em><b>Alias</b></em>' containment reference.
@@ -512,7 +522,7 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getDeleteStatement()
    * @generated
    */
-  int DELETE_STATEMENT = 12;
+  int DELETE_STATEMENT = 13;
 
   /**
    * The feature id for the '<em><b>Where Clause</b></em>' containment reference.
@@ -549,7 +559,7 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getDeleteClause()
    * @generated
    */
-  int DELETE_CLAUSE = 13;
+  int DELETE_CLAUSE = 14;
 
   /**
    * The feature id for the '<em><b>From Clause</b></em>' containment reference.
@@ -577,7 +587,7 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getSelectFromClause()
    * @generated
    */
-  int SELECT_FROM_CLAUSE = 14;
+  int SELECT_FROM_CLAUSE = 15;
 
   /**
    * The feature id for the '<em><b>Select Clause</b></em>' containment reference.
@@ -614,7 +624,7 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getSelectClause()
    * @generated
    */
-  int SELECT_CLAUSE = 15;
+  int SELECT_CLAUSE = 16;
 
   /**
    * The feature id for the '<em><b>Is Distinct</b></em>' attribute.
@@ -651,7 +661,7 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getSelectExpression()
    * @generated
    */
-  int SELECT_EXPRESSION = 16;
+  int SELECT_EXPRESSION = 17;
 
   /**
    * The number of structural features of the '<em>Select Expression</em>' class.
@@ -670,7 +680,7 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getSelectAggregateExpression()
    * @generated
    */
-  int SELECT_AGGREGATE_EXPRESSION = 17;
+  int SELECT_AGGREGATE_EXPRESSION = 18;
 
   /**
    * The feature id for the '<em><b>Is Distinct</b></em>' attribute.
@@ -707,7 +717,7 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getAvgAggregate()
    * @generated
    */
-  int AVG_AGGREGATE = 18;
+  int AVG_AGGREGATE = 19;
 
   /**
    * The feature id for the '<em><b>Is Distinct</b></em>' attribute.
@@ -744,7 +754,7 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getMaxAggregate()
    * @generated
    */
-  int MAX_AGGREGATE = 19;
+  int MAX_AGGREGATE = 20;
 
   /**
    * The feature id for the '<em><b>Is Distinct</b></em>' attribute.
@@ -781,7 +791,7 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getMinAggregate()
    * @generated
    */
-  int MIN_AGGREGATE = 20;
+  int MIN_AGGREGATE = 21;
 
   /**
    * The feature id for the '<em><b>Is Distinct</b></em>' attribute.
@@ -818,7 +828,7 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getSumAggregate()
    * @generated
    */
-  int SUM_AGGREGATE = 21;
+  int SUM_AGGREGATE = 22;
 
   /**
    * The feature id for the '<em><b>Is Distinct</b></em>' attribute.
@@ -855,7 +865,7 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getCountAggregate()
    * @generated
    */
-  int COUNT_AGGREGATE = 22;
+  int COUNT_AGGREGATE = 23;
 
   /**
    * The feature id for the '<em><b>Is Distinct</b></em>' attribute.
@@ -892,7 +902,7 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getSelectConstructorExpression()
    * @generated
    */
-  int SELECT_CONSTRUCTOR_EXPRESSION = 23;
+  int SELECT_CONSTRUCTOR_EXPRESSION = 24;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -929,7 +939,7 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getFromClause()
    * @generated
    */
-  int FROM_CLAUSE = 24;
+  int FROM_CLAUSE = 25;
 
   /**
    * The feature id for the '<em><b>From Entries</b></em>' containment reference list.
@@ -957,7 +967,7 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getFromEntry()
    * @generated
    */
-  int FROM_ENTRY = 25;
+  int FROM_ENTRY = 26;
 
   /**
    * The feature id for the '<em><b>Variable</b></em>' containment reference.
@@ -985,7 +995,7 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getVariableDeclaration()
    * @generated
    */
-  int VARIABLE_DECLARATION = 26;
+  int VARIABLE_DECLARATION = 27;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1013,7 +1023,7 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getFromClass()
    * @generated
    */
-  int FROM_CLASS = 27;
+  int FROM_CLASS = 28;
 
   /**
    * The feature id for the '<em><b>Variable</b></em>' containment reference.
@@ -1059,7 +1069,7 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getFromCollection()
    * @generated
    */
-  int FROM_COLLECTION = 28;
+  int FROM_COLLECTION = 29;
 
   /**
    * The feature id for the '<em><b>Variable</b></em>' containment reference.
@@ -1096,7 +1106,7 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getFromJoin()
    * @generated
    */
-  int FROM_JOIN = 29;
+  int FROM_JOIN = 30;
 
   /**
    * The feature id for the '<em><b>Is Fetch</b></em>' attribute.
@@ -1142,7 +1152,7 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getJoin()
    * @generated
    */
-  int JOIN = 30;
+  int JOIN = 31;
 
   /**
    * The feature id for the '<em><b>Is Fetch</b></em>' attribute.
@@ -1188,7 +1198,7 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getLeftJoin()
    * @generated
    */
-  int LEFT_JOIN = 31;
+  int LEFT_JOIN = 32;
 
   /**
    * The feature id for the '<em><b>Is Fetch</b></em>' attribute.
@@ -1243,7 +1253,7 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getInnerJoin()
    * @generated
    */
-  int INNER_JOIN = 32;
+  int INNER_JOIN = 33;
 
   /**
    * The feature id for the '<em><b>Is Fetch</b></em>' attribute.
@@ -1289,7 +1299,7 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getWhereClause()
    * @generated
    */
-  int WHERE_CLAUSE = 33;
+  int WHERE_CLAUSE = 34;
 
   /**
    * The feature id for the '<em><b>Where Entry</b></em>' containment reference.
@@ -1317,7 +1327,7 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getExpression()
    * @generated
    */
-  int EXPRESSION = 34;
+  int EXPRESSION = 35;
 
   /**
    * The number of structural features of the '<em>Expression</em>' class.
@@ -1336,7 +1346,7 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getOperatorExpression()
    * @generated
    */
-  int OPERATOR_EXPRESSION = 35;
+  int OPERATOR_EXPRESSION = 36;
 
   /**
    * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -1382,7 +1392,7 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getExistsExpression()
    * @generated
    */
-  int EXISTS_EXPRESSION = 36;
+  int EXISTS_EXPRESSION = 37;
 
   /**
    * The feature id for the '<em><b>Is Not</b></em>' attribute.
@@ -1419,7 +1429,7 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getAllExpression()
    * @generated
    */
-  int ALL_EXPRESSION = 37;
+  int ALL_EXPRESSION = 38;
 
   /**
    * The feature id for the '<em><b>Query</b></em>' containment reference.
@@ -1447,7 +1457,7 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getAnyExpression()
    * @generated
    */
-  int ANY_EXPRESSION = 38;
+  int ANY_EXPRESSION = 39;
 
   /**
    * The feature id for the '<em><b>Query</b></em>' containment reference.
@@ -1475,7 +1485,7 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getSomeExpression()
    * @generated
    */
-  int SOME_EXPRESSION = 39;
+  int SOME_EXPRESSION = 40;
 
   /**
    * The feature id for the '<em><b>Query</b></em>' containment reference.
@@ -1503,7 +1513,7 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getCollectionExpression()
    * @generated
    */
-  int COLLECTION_EXPRESSION = 40;
+  int COLLECTION_EXPRESSION = 41;
 
   /**
    * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -1549,7 +1559,7 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getNullComparisonExpression()
    * @generated
    */
-  int NULL_COMPARISON_EXPRESSION = 41;
+  int NULL_COMPARISON_EXPRESSION = 42;
 
   /**
    * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -1586,7 +1596,7 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getEmptyComparisonExpression()
    * @generated
    */
-  int EMPTY_COMPARISON_EXPRESSION = 42;
+  int EMPTY_COMPARISON_EXPRESSION = 43;
 
   /**
    * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -1623,7 +1633,7 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getLikeExpression()
    * @generated
    */
-  int LIKE_EXPRESSION = 43;
+  int LIKE_EXPRESSION = 44;
 
   /**
    * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -1669,7 +1679,7 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getInExpression()
    * @generated
    */
-  int IN_EXPRESSION = 44;
+  int IN_EXPRESSION = 45;
 
   /**
    * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -1706,7 +1716,7 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getInSeqExpression()
    * @generated
    */
-  int IN_SEQ_EXPRESSION = 45;
+  int IN_SEQ_EXPRESSION = 46;
 
   /**
    * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -1752,7 +1762,7 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getInQueryExpression()
    * @generated
    */
-  int IN_QUERY_EXPRESSION = 46;
+  int IN_QUERY_EXPRESSION = 47;
 
   /**
    * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -1798,7 +1808,7 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getBetweenExpression()
    * @generated
    */
-  int BETWEEN_EXPRESSION = 47;
+  int BETWEEN_EXPRESSION = 48;
 
   /**
    * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -1853,7 +1863,7 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getExpressionTerm()
    * @generated
    */
-  int EXPRESSION_TERM = 49;
+  int EXPRESSION_TERM = 50;
 
   /**
    * The number of structural features of the '<em>Expression Term</em>' class.
@@ -1872,7 +1882,7 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getVariable()
    * @generated
    */
-  int VARIABLE = 48;
+  int VARIABLE = 49;
 
   /**
    * The number of structural features of the '<em>Variable</em>' class.
@@ -1891,7 +1901,7 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getAliasAttributeExpression()
    * @generated
    */
-  int ALIAS_ATTRIBUTE_EXPRESSION = 50;
+  int ALIAS_ATTRIBUTE_EXPRESSION = 51;
 
   /**
    * The feature id for the '<em><b>Alias</b></em>' reference.
@@ -1928,7 +1938,7 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getParameterExpression()
    * @generated
    */
-  int PARAMETER_EXPRESSION = 51;
+  int PARAMETER_EXPRESSION = 52;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1956,7 +1966,7 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getFunction()
    * @generated
    */
-  int FUNCTION = 52;
+  int FUNCTION = 53;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1993,7 +2003,7 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getValue()
    * @generated
    */
-  int VALUE = 53;
+  int VALUE = 54;
 
   /**
    * The number of structural features of the '<em>Value</em>' class.
@@ -2012,7 +2022,7 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getIntegerExpression()
    * @generated
    */
-  int INTEGER_EXPRESSION = 54;
+  int INTEGER_EXPRESSION = 55;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2040,7 +2050,7 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getStringExpression()
    * @generated
    */
-  int STRING_EXPRESSION = 55;
+  int STRING_EXPRESSION = 56;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2068,7 +2078,7 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getNullExpression()
    * @generated
    */
-  int NULL_EXPRESSION = 56;
+  int NULL_EXPRESSION = 57;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2096,7 +2106,7 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getBooleanExpression()
    * @generated
    */
-  int BOOLEAN_EXPRESSION = 57;
+  int BOOLEAN_EXPRESSION = 58;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2115,34 +2125,6 @@ public interface JPQLPackage extends EPackage
    * @ordered
    */
   int BOOLEAN_EXPRESSION_FEATURE_COUNT = VALUE_FEATURE_COUNT + 1;
-
-  /**
-   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.DateTimeExpressionImpl <em>Date Time Expression</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.DateTimeExpressionImpl
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getDateTimeExpression()
-   * @generated
-   */
-  int DATE_TIME_EXPRESSION = 58;
-
-  /**
-   * The feature id for the '<em><b>Value</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DATE_TIME_EXPRESSION__VALUE = VALUE_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>Date Time Expression</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DATE_TIME_EXPRESSION_FEATURE_COUNT = VALUE_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.OrExpressionImpl <em>Or Expression</em>}' class.
@@ -2244,17 +2226,6 @@ public interface JPQLPackage extends EPackage
   EReference getQueryModule_DefaultQuery();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.QueryModule#getNamedQueries <em>Named Queries</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Named Queries</em>'.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.QueryModule#getNamedQueries()
-   * @see #getQueryModule()
-   * @generated
-   */
-  EReference getQueryModule_NamedQueries();
-
-  /**
    * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.Import <em>Import</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2274,38 +2245,6 @@ public interface JPQLPackage extends EPackage
    * @generated
    */
   EAttribute getImport_ImportURI();
-
-  /**
-   * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.NamedQuery <em>Named Query</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Named Query</em>'.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.NamedQuery
-   * @generated
-   */
-  EClass getNamedQuery();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.NamedQuery#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.NamedQuery#getName()
-   * @see #getNamedQuery()
-   * @generated
-   */
-  EAttribute getNamedQuery_Name();
-
-  /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.NamedQuery#getQuery <em>Query</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Query</em>'.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.NamedQuery#getQuery()
-   * @see #getNamedQuery()
-   * @generated
-   */
-  EReference getNamedQuery_Query();
 
   /**
    * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLQuery <em>Query</em>}'.
@@ -2350,6 +2289,17 @@ public interface JPQLPackage extends EPackage
   EReference getSelectStatement_SelectFromClause();
 
   /**
+   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.SelectStatement#getGroupBy <em>Group By</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Group By</em>'.
+   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.SelectStatement#getGroupBy()
+   * @see #getSelectStatement()
+   * @generated
+   */
+  EReference getSelectStatement_GroupBy();
+
+  /**
    * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.SelectStatement#getHaving <em>Having</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2370,6 +2320,48 @@ public interface JPQLPackage extends EPackage
    * @generated
    */
   EReference getSelectStatement_Order();
+
+  /**
+   * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.GroupClause <em>Group Clause</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Group Clause</em>'.
+   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.GroupClause
+   * @generated
+   */
+  EClass getGroupClause();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.GroupClause#getGrouping <em>Grouping</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Grouping</em>'.
+   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.GroupClause#getGrouping()
+   * @see #getGroupClause()
+   * @generated
+   */
+  EReference getGroupClause_Grouping();
+
+  /**
+   * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.GroupItem <em>Group Item</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Group Item</em>'.
+   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.GroupItem
+   * @generated
+   */
+  EClass getGroupItem();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.GroupItem#getVar <em>Var</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Var</em>'.
+   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.GroupItem#getVar()
+   * @see #getGroupItem()
+   * @generated
+   */
+  EReference getGroupItem_Var();
 
   /**
    * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.HavingClause <em>Having Clause</em>}'.
@@ -2446,26 +2438,15 @@ public interface JPQLPackage extends EPackage
   EClass getOrderItem();
 
   /**
-   * Returns the meta object for the reference '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.OrderItem#getVar <em>Var</em>}'.
+   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.OrderItem#getVar <em>Var</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Var</em>'.
+   * @return the meta object for the containment reference '<em>Var</em>'.
    * @see org.nightlabs.jjqb.xtext.jpql.jPQL.OrderItem#getVar()
    * @see #getOrderItem()
    * @generated
    */
   EReference getOrderItem_Var();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.OrderItem#getFeature <em>Feature</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Feature</em>'.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.OrderItem#getFeature()
-   * @see #getOrderItem()
-   * @generated
-   */
-  EAttribute getOrderItem_Feature();
 
   /**
    * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.UpdateStatement <em>Update Statement</em>}'.
@@ -3650,27 +3631,6 @@ public interface JPQLPackage extends EPackage
   EAttribute getBooleanExpression_Value();
 
   /**
-   * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.DateTimeExpression <em>Date Time Expression</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Date Time Expression</em>'.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.DateTimeExpression
-   * @generated
-   */
-  EClass getDateTimeExpression();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.DateTimeExpression#getValue <em>Value</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Value</em>'.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.DateTimeExpression#getValue()
-   * @see #getDateTimeExpression()
-   * @generated
-   */
-  EAttribute getDateTimeExpression_Value();
-
-  /**
    * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.OrExpression <em>Or Expression</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3772,14 +3732,6 @@ public interface JPQLPackage extends EPackage
     EReference QUERY_MODULE__DEFAULT_QUERY = eINSTANCE.getQueryModule_DefaultQuery();
 
     /**
-     * The meta object literal for the '<em><b>Named Queries</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference QUERY_MODULE__NAMED_QUERIES = eINSTANCE.getQueryModule_NamedQueries();
-
-    /**
      * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.ImportImpl <em>Import</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -3796,32 +3748,6 @@ public interface JPQLPackage extends EPackage
      * @generated
      */
     EAttribute IMPORT__IMPORT_URI = eINSTANCE.getImport_ImportURI();
-
-    /**
-     * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.NamedQueryImpl <em>Named Query</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.NamedQueryImpl
-     * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getNamedQuery()
-     * @generated
-     */
-    EClass NAMED_QUERY = eINSTANCE.getNamedQuery();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute NAMED_QUERY__NAME = eINSTANCE.getNamedQuery_Name();
-
-    /**
-     * The meta object literal for the '<em><b>Query</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference NAMED_QUERY__QUERY = eINSTANCE.getNamedQuery_Query();
 
     /**
      * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLQueryImpl <em>Query</em>}' class.
@@ -3860,6 +3786,14 @@ public interface JPQLPackage extends EPackage
     EReference SELECT_STATEMENT__SELECT_FROM_CLAUSE = eINSTANCE.getSelectStatement_SelectFromClause();
 
     /**
+     * The meta object literal for the '<em><b>Group By</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SELECT_STATEMENT__GROUP_BY = eINSTANCE.getSelectStatement_GroupBy();
+
+    /**
      * The meta object literal for the '<em><b>Having</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -3874,6 +3808,42 @@ public interface JPQLPackage extends EPackage
      * @generated
      */
     EReference SELECT_STATEMENT__ORDER = eINSTANCE.getSelectStatement_Order();
+
+    /**
+     * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.GroupClauseImpl <em>Group Clause</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.GroupClauseImpl
+     * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getGroupClause()
+     * @generated
+     */
+    EClass GROUP_CLAUSE = eINSTANCE.getGroupClause();
+
+    /**
+     * The meta object literal for the '<em><b>Grouping</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference GROUP_CLAUSE__GROUPING = eINSTANCE.getGroupClause_Grouping();
+
+    /**
+     * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.GroupItemImpl <em>Group Item</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.GroupItemImpl
+     * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getGroupItem()
+     * @generated
+     */
+    EClass GROUP_ITEM = eINSTANCE.getGroupItem();
+
+    /**
+     * The meta object literal for the '<em><b>Var</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference GROUP_ITEM__VAR = eINSTANCE.getGroupItem_Var();
 
     /**
      * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.HavingClauseImpl <em>Having Clause</em>}' class.
@@ -3938,20 +3908,12 @@ public interface JPQLPackage extends EPackage
     EClass ORDER_ITEM = eINSTANCE.getOrderItem();
 
     /**
-     * The meta object literal for the '<em><b>Var</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Var</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     EReference ORDER_ITEM__VAR = eINSTANCE.getOrderItem_Var();
-
-    /**
-     * The meta object literal for the '<em><b>Feature</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute ORDER_ITEM__FEATURE = eINSTANCE.getOrderItem_Feature();
 
     /**
      * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.UpdateStatementImpl <em>Update Statement</em>}' class.
@@ -4948,24 +4910,6 @@ public interface JPQLPackage extends EPackage
      * @generated
      */
     EAttribute BOOLEAN_EXPRESSION__VALUE = eINSTANCE.getBooleanExpression_Value();
-
-    /**
-     * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.DateTimeExpressionImpl <em>Date Time Expression</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.DateTimeExpressionImpl
-     * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getDateTimeExpression()
-     * @generated
-     */
-    EClass DATE_TIME_EXPRESSION = eINSTANCE.getDateTimeExpression();
-
-    /**
-     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute DATE_TIME_EXPRESSION__VALUE = eINSTANCE.getDateTimeExpression_Value();
 
     /**
      * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.OrExpressionImpl <em>Or Expression</em>}' class.

@@ -15,23 +15,23 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.nightlabs.jjqb.xtext.jpql.jPQL.AliasAttributeExpression;
+import org.nightlabs.jjqb.xtext.jpql.jPQL.GroupItem;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.OrderItem;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Order Item</b></em>'.
+ * An implementation of the model object '<em><b>Group Item</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.OrderItemImpl#getVar <em>Var</em>}</li>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.GroupItemImpl#getVar <em>Var</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class OrderItemImpl extends MinimalEObjectImpl.Container implements OrderItem
+public class GroupItemImpl extends MinimalEObjectImpl.Container implements GroupItem
 {
   /**
    * The cached value of the '{@link #getVar() <em>Var</em>}' containment reference.
@@ -48,7 +48,7 @@ public class OrderItemImpl extends MinimalEObjectImpl.Container implements Order
    * <!-- end-user-doc -->
    * @generated
    */
-  protected OrderItemImpl()
+  protected GroupItemImpl()
   {
     super();
   }
@@ -61,7 +61,7 @@ public class OrderItemImpl extends MinimalEObjectImpl.Container implements Order
   @Override
   protected EClass eStaticClass()
   {
-    return JPQLPackage.Literals.ORDER_ITEM;
+    return JPQLPackage.Literals.GROUP_ITEM;
   }
 
   /**
@@ -85,7 +85,7 @@ public class OrderItemImpl extends MinimalEObjectImpl.Container implements Order
     var = newVar;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JPQLPackage.ORDER_ITEM__VAR, oldVar, newVar);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JPQLPackage.GROUP_ITEM__VAR, oldVar, newVar);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -102,14 +102,14 @@ public class OrderItemImpl extends MinimalEObjectImpl.Container implements Order
     {
       NotificationChain msgs = null;
       if (var != null)
-        msgs = ((InternalEObject)var).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JPQLPackage.ORDER_ITEM__VAR, null, msgs);
+        msgs = ((InternalEObject)var).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JPQLPackage.GROUP_ITEM__VAR, null, msgs);
       if (newVar != null)
-        msgs = ((InternalEObject)newVar).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JPQLPackage.ORDER_ITEM__VAR, null, msgs);
+        msgs = ((InternalEObject)newVar).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JPQLPackage.GROUP_ITEM__VAR, null, msgs);
       msgs = basicSetVar(newVar, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, JPQLPackage.ORDER_ITEM__VAR, newVar, newVar));
+      eNotify(new ENotificationImpl(this, Notification.SET, JPQLPackage.GROUP_ITEM__VAR, newVar, newVar));
   }
 
   /**
@@ -122,7 +122,7 @@ public class OrderItemImpl extends MinimalEObjectImpl.Container implements Order
   {
     switch (featureID)
     {
-      case JPQLPackage.ORDER_ITEM__VAR:
+      case JPQLPackage.GROUP_ITEM__VAR:
         return basicSetVar(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -138,7 +138,7 @@ public class OrderItemImpl extends MinimalEObjectImpl.Container implements Order
   {
     switch (featureID)
     {
-      case JPQLPackage.ORDER_ITEM__VAR:
+      case JPQLPackage.GROUP_ITEM__VAR:
         return getVar();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -154,7 +154,7 @@ public class OrderItemImpl extends MinimalEObjectImpl.Container implements Order
   {
     switch (featureID)
     {
-      case JPQLPackage.ORDER_ITEM__VAR:
+      case JPQLPackage.GROUP_ITEM__VAR:
         setVar((AliasAttributeExpression)newValue);
         return;
     }
@@ -171,7 +171,7 @@ public class OrderItemImpl extends MinimalEObjectImpl.Container implements Order
   {
     switch (featureID)
     {
-      case JPQLPackage.ORDER_ITEM__VAR:
+      case JPQLPackage.GROUP_ITEM__VAR:
         setVar((AliasAttributeExpression)null);
         return;
     }
@@ -188,10 +188,10 @@ public class OrderItemImpl extends MinimalEObjectImpl.Container implements Order
   {
     switch (featureID)
     {
-      case JPQLPackage.ORDER_ITEM__VAR:
+      case JPQLPackage.GROUP_ITEM__VAR:
         return var != null;
     }
     return super.eIsSet(featureID);
   }
 
-} //OrderItemImpl
+} //GroupItemImpl

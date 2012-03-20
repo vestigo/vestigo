@@ -44,15 +44,6 @@ public interface JPQLFactory extends EFactory
   Import createImport();
 
   /**
-   * Returns a new object of class '<em>Named Query</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Named Query</em>'.
-   * @generated
-   */
-  NamedQuery createNamedQuery();
-
-  /**
    * Returns a new object of class '<em>Query</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -69,6 +60,24 @@ public interface JPQLFactory extends EFactory
    * @generated
    */
   SelectStatement createSelectStatement();
+
+  /**
+   * Returns a new object of class '<em>Group Clause</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Group Clause</em>'.
+   * @generated
+   */
+  GroupClause createGroupClause();
+
+  /**
+   * Returns a new object of class '<em>Group Item</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Group Item</em>'.
+   * @generated
+   */
+  GroupItem createGroupItem();
 
   /**
    * Returns a new object of class '<em>Having Clause</em>'.
@@ -546,15 +555,6 @@ public interface JPQLFactory extends EFactory
    * @generated
    */
   BooleanExpression createBooleanExpression();
-
-  /**
-   * Returns a new object of class '<em>Date Time Expression</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Date Time Expression</em>'.
-   * @generated
-   */
-  DateTimeExpression createDateTimeExpression();
 
   /**
    * Returns a new object of class '<em>Or Expression</em>'.

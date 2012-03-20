@@ -19,7 +19,6 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.QueryModule#getImports <em>Imports</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.QueryModule#getDefaultQuery <em>Default Query</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.QueryModule#getNamedQueries <em>Named Queries</em>}</li>
  * </ul>
  * </p>
  *
@@ -70,21 +69,5 @@ public interface QueryModule extends EObject
    * @generated
    */
   void setDefaultQuery(JPQLQuery value);
-
-  /**
-   * Returns the value of the '<em><b>Named Queries</b></em>' containment reference list.
-   * The list contents are of type {@link org.nightlabs.jjqb.xtext.jpql.jPQL.NamedQuery}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Named Queries</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Named Queries</em>' containment reference list.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getQueryModule_NamedQueries()
-   * @model containment="true"
-   * @generated
-   */
-  EList<NamedQuery> getNamedQueries();
 
 } // QueryModule

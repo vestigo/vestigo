@@ -5,15 +5,10 @@ generate jPQL "http://www.nightlabs.org/jjqb/xtext/jdoql/JPQL"
 QueryModule:
 	(imports+=Import)*
 	(defaultQuery=JPQLQuery)?
-	(namedQueries+=NamedQuery)*
 ;
 
-Import :
+Import:
 	'IMPORT' importURI=STRING
-;
-
-NamedQuery:
-	name=ID ":" query=JPQLQuery
 ;
 
 JPQLQuery:
@@ -25,14 +20,18 @@ JPQLQuery:
 SelectStatement:
 	selectFromClause=SelectFromClause
 	(whereClause=WhereClause)?
-//	(groupBy=GroupClause)?
+	(groupBy=GroupClause)?
 	(having=HavingClause)?
 	(order=OrderClause)?
 ;
 
-//GroupClause:
-//	'GROUP' 'BY' grouping=Group
-//;
+GroupClause:
+	'GROUP' 'BY' grouping+=GroupItem (',' grouping+=GroupItem)*
+;
+
+GroupItem:
+	var=AliasAttributeExpression
+;
 
 HavingClause:
 	'HAVING' having=OrExpression
@@ -43,7 +42,8 @@ OrderClause:
 ;
 
 OrderItem:
-	var=[FromEntry]'.'feature=ID
+//	var=[FromEntry]'.'feature=ID
+	var=AliasAttributeExpression
 ;
 
 UpdateStatement:
@@ -109,11 +109,11 @@ MinAggregate:
 ;
 
 SumAggregate:
-	'SUM' '(' (isDistinct?='DISTINCT')? item=AliasAttributeExpression ')'
+	'SUM' '(' (isDistinct?='DISTINCT')?item=AliasAttributeExpression ')'
 ;
 
 CountAggregate:
-	'COUNT' '(' (isDistinct?='DISTINCT')? item=AliasAttributeExpression ')'
+	'COUNT' '(' (isDistinct?='DISTINCT')?item=AliasAttributeExpression ')'
 ;
 
 SelectConstructorExpression:
@@ -318,8 +318,7 @@ Value:
 	IntegerExpression |
 	StringExpression |
 	NullExpression |
-	BooleanExpression |
-	DateTimeExpression
+	BooleanExpression
 ;
 
 IntegerExpression:
@@ -338,10 +337,6 @@ BooleanExpression:
 	value?=("TRUE" | "FALSE")
 ;
 
-DateTimeExpression:
-	value=LiteralTemporal
-;
-
 QueryExpression returns SelectStatement:
 	"(" SelectStatement ")"
 ;
@@ -354,24 +349,3 @@ enum Operator:
 	equal="=" | 
 	notEqual="!="
 ;
-
-terminal LiteralTemporal: 
-	DATE_LITERAL | 
-	TIME_LITERAL | 
-	TIMESTAMP_LITERAL
-;
-terminal DATE_LITERAL: 
-	'(' ('d') (' ' | '\t')+ '\'' DATE_STRING '\'' (' ' | '\t')* ')'
-    ;
-terminal TIME_LITERAL
-    : '(' ('t') (' ' | '\t')+ '\'' TIME_STRING '\'' (' ' | '\t')* ')'
-    ;
-terminal TIMESTAMP_LITERAL
-    : '(' ('ts') (' ' | '\t')+ '\'' DATE_STRING ' ' TIME_STRING '\'' (' ' | '\t')* ')'
-    ;
-terminal DATE_STRING
-    : '0'..'9' '0'..'9' '0'..'9' '0'..'9' '-' '0'..'9' '0'..'9' '-' '0'..'9' '0'..'9'
-    ;    
-terminal TIME_STRING
-    : '0'..'9' ('0'..'9')? ':' '0'..'9' '0'..'9' ':' '0'..'9' '0'..'9' '.' '0'..'9'*
-    ;

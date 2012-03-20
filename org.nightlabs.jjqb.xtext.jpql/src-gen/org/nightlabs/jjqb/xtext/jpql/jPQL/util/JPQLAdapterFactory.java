@@ -88,11 +88,6 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
         return createImportAdapter();
       }
       @Override
-      public Adapter caseNamedQuery(NamedQuery object)
-      {
-        return createNamedQueryAdapter();
-      }
-      @Override
       public Adapter caseJPQLQuery(JPQLQuery object)
       {
         return createJPQLQueryAdapter();
@@ -101,6 +96,16 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
       public Adapter caseSelectStatement(SelectStatement object)
       {
         return createSelectStatementAdapter();
+      }
+      @Override
+      public Adapter caseGroupClause(GroupClause object)
+      {
+        return createGroupClauseAdapter();
+      }
+      @Override
+      public Adapter caseGroupItem(GroupItem object)
+      {
+        return createGroupItemAdapter();
       }
       @Override
       public Adapter caseHavingClause(HavingClause object)
@@ -368,11 +373,6 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
         return createBooleanExpressionAdapter();
       }
       @Override
-      public Adapter caseDateTimeExpression(DateTimeExpression object)
-      {
-        return createDateTimeExpressionAdapter();
-      }
-      @Override
       public Adapter caseOrExpression(OrExpression object)
       {
         return createOrExpressionAdapter();
@@ -435,21 +435,6 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.NamedQuery <em>Named Query</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.NamedQuery
-   * @generated
-   */
-  public Adapter createNamedQueryAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLQuery <em>Query</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -475,6 +460,36 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createSelectStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.GroupClause <em>Group Clause</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.GroupClause
+   * @generated
+   */
+  public Adapter createGroupClauseAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.GroupItem <em>Group Item</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.GroupItem
+   * @generated
+   */
+  public Adapter createGroupItemAdapter()
   {
     return null;
   }
@@ -1270,21 +1285,6 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createBooleanExpressionAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.DateTimeExpression <em>Date Time Expression</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.DateTimeExpression
-   * @generated
-   */
-  public Adapter createDateTimeExpressionAdapter()
   {
     return null;
   }

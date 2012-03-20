@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.nightlabs.jjqb.xtext.jpql.jPQL.GroupClause;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.HavingClause;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.OrderClause;
@@ -27,6 +28,7 @@ import org.nightlabs.jjqb.xtext.jpql.jPQL.SelectStatement;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.SelectStatementImpl#getSelectFromClause <em>Select From Clause</em>}</li>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.SelectStatementImpl#getGroupBy <em>Group By</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.SelectStatementImpl#getHaving <em>Having</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.SelectStatementImpl#getOrder <em>Order</em>}</li>
  * </ul>
@@ -45,6 +47,16 @@ public class SelectStatementImpl extends JPQLQueryImpl implements SelectStatemen
    * @ordered
    */
   protected SelectFromClause selectFromClause;
+
+  /**
+   * The cached value of the '{@link #getGroupBy() <em>Group By</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getGroupBy()
+   * @generated
+   * @ordered
+   */
+  protected GroupClause groupBy;
 
   /**
    * The cached value of the '{@link #getHaving() <em>Having</em>}' containment reference.
@@ -133,6 +145,54 @@ public class SelectStatementImpl extends JPQLQueryImpl implements SelectStatemen
     }
     else if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, JPQLPackage.SELECT_STATEMENT__SELECT_FROM_CLAUSE, newSelectFromClause, newSelectFromClause));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public GroupClause getGroupBy()
+  {
+    return groupBy;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetGroupBy(GroupClause newGroupBy, NotificationChain msgs)
+  {
+    GroupClause oldGroupBy = groupBy;
+    groupBy = newGroupBy;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JPQLPackage.SELECT_STATEMENT__GROUP_BY, oldGroupBy, newGroupBy);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setGroupBy(GroupClause newGroupBy)
+  {
+    if (newGroupBy != groupBy)
+    {
+      NotificationChain msgs = null;
+      if (groupBy != null)
+        msgs = ((InternalEObject)groupBy).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JPQLPackage.SELECT_STATEMENT__GROUP_BY, null, msgs);
+      if (newGroupBy != null)
+        msgs = ((InternalEObject)newGroupBy).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JPQLPackage.SELECT_STATEMENT__GROUP_BY, null, msgs);
+      msgs = basicSetGroupBy(newGroupBy, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, JPQLPackage.SELECT_STATEMENT__GROUP_BY, newGroupBy, newGroupBy));
   }
 
   /**
@@ -243,6 +303,8 @@ public class SelectStatementImpl extends JPQLQueryImpl implements SelectStatemen
     {
       case JPQLPackage.SELECT_STATEMENT__SELECT_FROM_CLAUSE:
         return basicSetSelectFromClause(null, msgs);
+      case JPQLPackage.SELECT_STATEMENT__GROUP_BY:
+        return basicSetGroupBy(null, msgs);
       case JPQLPackage.SELECT_STATEMENT__HAVING:
         return basicSetHaving(null, msgs);
       case JPQLPackage.SELECT_STATEMENT__ORDER:
@@ -263,6 +325,8 @@ public class SelectStatementImpl extends JPQLQueryImpl implements SelectStatemen
     {
       case JPQLPackage.SELECT_STATEMENT__SELECT_FROM_CLAUSE:
         return getSelectFromClause();
+      case JPQLPackage.SELECT_STATEMENT__GROUP_BY:
+        return getGroupBy();
       case JPQLPackage.SELECT_STATEMENT__HAVING:
         return getHaving();
       case JPQLPackage.SELECT_STATEMENT__ORDER:
@@ -283,6 +347,9 @@ public class SelectStatementImpl extends JPQLQueryImpl implements SelectStatemen
     {
       case JPQLPackage.SELECT_STATEMENT__SELECT_FROM_CLAUSE:
         setSelectFromClause((SelectFromClause)newValue);
+        return;
+      case JPQLPackage.SELECT_STATEMENT__GROUP_BY:
+        setGroupBy((GroupClause)newValue);
         return;
       case JPQLPackage.SELECT_STATEMENT__HAVING:
         setHaving((HavingClause)newValue);
@@ -307,6 +374,9 @@ public class SelectStatementImpl extends JPQLQueryImpl implements SelectStatemen
       case JPQLPackage.SELECT_STATEMENT__SELECT_FROM_CLAUSE:
         setSelectFromClause((SelectFromClause)null);
         return;
+      case JPQLPackage.SELECT_STATEMENT__GROUP_BY:
+        setGroupBy((GroupClause)null);
+        return;
       case JPQLPackage.SELECT_STATEMENT__HAVING:
         setHaving((HavingClause)null);
         return;
@@ -329,6 +399,8 @@ public class SelectStatementImpl extends JPQLQueryImpl implements SelectStatemen
     {
       case JPQLPackage.SELECT_STATEMENT__SELECT_FROM_CLAUSE:
         return selectFromClause != null;
+      case JPQLPackage.SELECT_STATEMENT__GROUP_BY:
+        return groupBy != null;
       case JPQLPackage.SELECT_STATEMENT__HAVING:
         return having != null;
       case JPQLPackage.SELECT_STATEMENT__ORDER:
