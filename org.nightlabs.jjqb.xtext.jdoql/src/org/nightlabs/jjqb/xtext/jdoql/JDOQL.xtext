@@ -135,6 +135,7 @@ UnaryExpression returns Expression:
 ;
 
 FieldAccessExpression returns Expression:
+	StaticMethodExpression |
 	ParameterOrFieldOrMethodExpression ({FieldAccessExpression.left=current} '.' right=FieldOrMethodExpression)*
 ;
 
@@ -144,14 +145,49 @@ ParameterOrFieldOrMethodExpression returns Expression:
 //	declaredParameterName=[DeclaredParameterName] |
 	id=ID |
 	':' parameterName=ParameterName |
-	ParenthesesExpression
+	ParenthesesExpression |
+	method=MethodExpression
 ;
 
 FieldOrMethodExpression returns Expression:
 	literal=Literal |
 	this='this' |
 	id=ID |
-	ParenthesesExpression
+	ParenthesesExpression |
+	method=MethodExpression
+;
+
+StaticMethodExpression returns Expression:
+	{Expression} 'java.lang.'? 'Math.abs' '(' numeric=ConditionalOrExpression ')' |
+	{Expression} 'java.lang.'? 'Math.sqrt' '(' numeric=ConditionalOrExpression ')' |
+	{Expression} 'javax.jdo.'? 'JDOHelper.getObjectId' '(' persistable=ConditionalOrExpression ')'
+;
+
+MethodExpression returns Expression:
+	// BEGIN Collection methods
+	{Expression} 'contains' '(' element=ConditionalOrExpression ')' |
+	{Expression} 'isEmpty' '(' ')' |
+	{Expression} 'size' '(' ')' |
+	{Expression} 'get' '(' arg=ConditionalOrExpression ')' | // arg is the index in case of a List
+	// END Collection methods
+
+	// BEGIN Map methods
+	{Expression} 'containsKey' '(' key=ConditionalOrExpression ')' |
+	{Expression} 'containsValue' '(' value=ConditionalOrExpression ')' |
+//	{Expression} 'isEmpty' '(' ')' | // already declared as Collection method - cannot redeclare
+//	{Expression} 'size' '(' ')' | // already declared as Collection method - cannot redeclare
+//	{Expression} 'get' '(' arg=ConditionalOrExpression ')' | // arg is the key, but already declared as Collection method - cannot redeclare
+	// END Map methods
+	
+	// BEGIN String methods
+	{Expression} 'startsWith' '(' string=ConditionalOrExpression ')' |
+	{Expression} 'endsWith' '(' string=ConditionalOrExpression ')' |
+	{Expression} 'matches' '(' regex=ConditionalOrExpression ')' |
+	{Expression} 'toLowerCase' '(' ')' |
+	{Expression} 'toUpperCase' '(' ')' |
+	{Expression} 'indexOf' '(' string=ConditionalOrExpression (',' fromIndex=ConditionalOrExpression )? ')' |
+	{Expression} 'substring' '(' beginIndex=ConditionalOrExpression (',' endIndex=ConditionalOrExpression)? ')'
+	// END String methods
 ;
 
 ParenthesesExpression returns Expression:
