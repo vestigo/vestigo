@@ -33,7 +33,6 @@ import org.nightlabs.jjqb.xtext.jpql.jPQL.Function;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.GroupClause;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.GroupItem;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.HavingClause;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.Import;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.InQueryExpression;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.InSeqExpression;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.InnerJoin;
@@ -51,7 +50,6 @@ import org.nightlabs.jjqb.xtext.jpql.jPQL.OrExpression;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.OrderClause;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.OrderItem;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.ParameterExpression;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.QueryModule;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.SelectClause;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.SelectConstructorExpression;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.SelectFromClause;
@@ -288,12 +286,6 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 					return; 
 				}
 				else break;
-			case JPQLPackage.IMPORT:
-				if(context == grammarAccess.getImportRule()) {
-					sequence_Import(context, (Import) semanticObject); 
-					return; 
-				}
-				else break;
 			case JPQLPackage.IN_QUERY_EXPRESSION:
 				if(context == grammarAccess.getAndExpressionRule() ||
 				   context == grammarAccess.getAndExpressionAccess().getAndExpressionEntriesAction_1_0() ||
@@ -447,12 +439,6 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 				   context == grammarAccess.getParameterExpressionRule() ||
 				   context == grammarAccess.getVariableRule()) {
 					sequence_ParameterExpression(context, (ParameterExpression) semanticObject); 
-					return; 
-				}
-				else break;
-			case JPQLPackage.QUERY_MODULE:
-				if(context == grammarAccess.getQueryModuleRule()) {
-					sequence_QueryModule(context, (QueryModule) semanticObject); 
 					return; 
 				}
 				else break;
@@ -810,22 +796,6 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     importURI=STRING
-	 */
-	protected void sequence_Import(EObject context, Import semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, JPQLPackage.Literals.IMPORT__IMPORT_URI) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JPQLPackage.Literals.IMPORT__IMPORT_URI));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getImportAccess().getImportURISTRINGTerminalRuleCall_1_0(), semanticObject.getImportURI());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Constraint:
 	 *     (lhs=Variable isNot?='NOT'? query=QueryExpression)
 	 */
 	protected void sequence_InQueryExpression(EObject context, InQueryExpression semanticObject) {
@@ -1015,15 +985,6 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
 		feeder.accept(grammarAccess.getParameterExpressionAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
 		feeder.finish();
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (imports+=Import* defaultQuery=JPQLQuery?)
-	 */
-	protected void sequence_QueryModule(EObject context, QueryModule semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

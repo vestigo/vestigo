@@ -37,7 +37,6 @@ import org.nightlabs.jjqb.xtext.jpql.jPQL.Function;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.GroupClause;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.GroupItem;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.HavingClause;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.Import;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.InExpression;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.InQueryExpression;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.InSeqExpression;
@@ -59,7 +58,6 @@ import org.nightlabs.jjqb.xtext.jpql.jPQL.OrExpression;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.OrderClause;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.OrderItem;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.ParameterExpression;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.QueryModule;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.SelectAggregateExpression;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.SelectClause;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.SelectConstructorExpression;
@@ -86,20 +84,6 @@ import org.nightlabs.jjqb.xtext.jpql.jPQL.WhereClause;
  */
 public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
 {
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass queryModuleEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass importEClass = null;
-
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -581,56 +565,6 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
     // Update the registry and return the package
     EPackage.Registry.INSTANCE.put(JPQLPackage.eNS_URI, theJPQLPackage);
     return theJPQLPackage;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getQueryModule()
-  {
-    return queryModuleEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getQueryModule_Imports()
-  {
-    return (EReference)queryModuleEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getQueryModule_DefaultQuery()
-  {
-    return (EReference)queryModuleEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getImport()
-  {
-    return importEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getImport_ImportURI()
-  {
-    return (EAttribute)importEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -2023,13 +1957,6 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
     isCreated = true;
 
     // Create classes and their features
-    queryModuleEClass = createEClass(QUERY_MODULE);
-    createEReference(queryModuleEClass, QUERY_MODULE__IMPORTS);
-    createEReference(queryModuleEClass, QUERY_MODULE__DEFAULT_QUERY);
-
-    importEClass = createEClass(IMPORT);
-    createEAttribute(importEClass, IMPORT__IMPORT_URI);
-
     jpqlQueryEClass = createEClass(JPQL_QUERY);
     createEReference(jpqlQueryEClass, JPQL_QUERY__WHERE_CLAUSE);
 
@@ -2300,13 +2227,6 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
     andExpressionEClass.getESuperTypes().add(this.getExpression());
 
     // Initialize classes and features; add operations and parameters
-    initEClass(queryModuleEClass, QueryModule.class, "QueryModule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getQueryModule_Imports(), this.getImport(), null, "imports", null, 0, -1, QueryModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getQueryModule_DefaultQuery(), this.getJPQLQuery(), null, "defaultQuery", null, 0, 1, QueryModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(importEClass, Import.class, "Import", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getImport_ImportURI(), ecorePackage.getEString(), "importURI", null, 0, 1, Import.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
     initEClass(jpqlQueryEClass, JPQLQuery.class, "JPQLQuery", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getJPQLQuery_WhereClause(), this.getWhereClause(), null, "whereClause", null, 0, 1, JPQLQuery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

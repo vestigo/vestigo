@@ -26,24 +26,6 @@ public interface JPQLFactory extends EFactory
   JPQLFactory eINSTANCE = org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLFactoryImpl.init();
 
   /**
-   * Returns a new object of class '<em>Query Module</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Query Module</em>'.
-   * @generated
-   */
-  QueryModule createQueryModule();
-
-  /**
-   * Returns a new object of class '<em>Import</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Import</em>'.
-   * @generated
-   */
-  Import createImport();
-
-  /**
    * Returns a new object of class '<em>Query</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

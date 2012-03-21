@@ -78,16 +78,6 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
     new JPQLSwitch<Adapter>()
     {
       @Override
-      public Adapter caseQueryModule(QueryModule object)
-      {
-        return createQueryModuleAdapter();
-      }
-      @Override
-      public Adapter caseImport(Import object)
-      {
-        return createImportAdapter();
-      }
-      @Override
       public Adapter caseJPQLQuery(JPQLQuery object)
       {
         return createJPQLQueryAdapter();
@@ -403,36 +393,6 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
     return modelSwitch.doSwitch((EObject)target);
   }
 
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.QueryModule <em>Query Module</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.QueryModule
-   * @generated
-   */
-  public Adapter createQueryModuleAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.Import <em>Import</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.Import
-   * @generated
-   */
-  public Adapter createImportAdapter()
-  {
-    return null;
-  }
 
   /**
    * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLQuery <em>Query</em>}'.

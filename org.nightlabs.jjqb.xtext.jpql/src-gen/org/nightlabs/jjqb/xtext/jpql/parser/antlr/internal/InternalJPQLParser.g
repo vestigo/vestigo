@@ -45,7 +45,7 @@ import org.nightlabs.jjqb.xtext.jpql.services.JPQLGrammarAccess;
 	
 	@Override
 	protected String getFirstRuleName() {
-		return "QueryModule";	
+		return "JPQLQuery";	
 	} 
 	   	   	
 	@Override
@@ -60,107 +60,6 @@ import org.nightlabs.jjqb.xtext.jpql.services.JPQLGrammarAccess;
 	    appendSkippedTokens();
 	}
 }
-
-
-
-
-// Entry rule entryRuleQueryModule
-entryRuleQueryModule returns [EObject current=null]
-	:
-	{ newCompositeNode(grammarAccess.getQueryModuleRule()); }
-	 iv_ruleQueryModule=ruleQueryModule 
-	 { $current=$iv_ruleQueryModule.current; } 
-	 EOF 
-;
-
-// Rule QueryModule
-ruleQueryModule returns [EObject current=null] 
-    @init { enterRule(); 
-    }
-    @after { leaveRule(); }:
-((
-(
-		{ 
-	        newCompositeNode(grammarAccess.getQueryModuleAccess().getImportsImportParserRuleCall_0_0()); 
-	    }
-		lv_imports_0_0=ruleImport		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getQueryModuleRule());
-	        }
-       		add(
-       			$current, 
-       			"imports",
-        		lv_imports_0_0, 
-        		"Import");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)*(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getQueryModuleAccess().getDefaultQueryJPQLQueryParserRuleCall_1_0()); 
-	    }
-		lv_defaultQuery_1_0=ruleJPQLQuery		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getQueryModuleRule());
-	        }
-       		set(
-       			$current, 
-       			"defaultQuery",
-        		lv_defaultQuery_1_0, 
-        		"JPQLQuery");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)?)
-;
-
-
-
-
-
-// Entry rule entryRuleImport
-entryRuleImport returns [EObject current=null]
-	:
-	{ newCompositeNode(grammarAccess.getImportRule()); }
-	 iv_ruleImport=ruleImport 
-	 { $current=$iv_ruleImport.current; } 
-	 EOF 
-;
-
-// Rule Import
-ruleImport returns [EObject current=null] 
-    @init { enterRule(); 
-    }
-    @after { leaveRule(); }:
-(
-	otherlv_0=KEYWORD_56
-    {
-    	newLeafNode(otherlv_0, grammarAccess.getImportAccess().getIMPORTKeyword_0());
-    }
-(
-(
-		lv_importURI_1_0=RULE_STRING
-		{
-			newLeafNode(lv_importURI_1_0, grammarAccess.getImportAccess().getImportURISTRINGTerminalRuleCall_1_0()); 
-		}
-		{
-	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getImportRule());
-	        }
-       		setWithLastConsumed(
-       			$current, 
-       			"importURI",
-        		lv_importURI_1_0, 
-        		"STRING");
-	    }
-
-)
-))
-;
-
 
 
 
@@ -724,7 +623,7 @@ ruleUpdateClause returns [EObject current=null]
     }
     @after { leaveRule(); }:
 (
-	otherlv_0=KEYWORD_61
+	otherlv_0=KEYWORD_60
     {
     	newLeafNode(otherlv_0, grammarAccess.getUpdateClauseAccess().getUPDATEKeyword_0());
     }
@@ -1078,14 +977,14 @@ ruleSelectClause returns [EObject current=null]
     }
     @after { leaveRule(); }:
 (
-	otherlv_0=KEYWORD_60
+	otherlv_0=KEYWORD_59
     {
     	newLeafNode(otherlv_0, grammarAccess.getSelectClauseAccess().getSELECTKeyword_0());
     }
 (
 (
 		lv_isDistinct_1_0=
-	KEYWORD_63
+	KEYWORD_62
     {
         newLeafNode(lv_isDistinct_1_0, grammarAccess.getSelectClauseAccess().getIsDistinctDISTINCTKeyword_1_0());
     }
@@ -1317,7 +1216,7 @@ ruleAvgAggregate returns [EObject current=null]
 (
 (
 		lv_isDistinct_2_0=
-	KEYWORD_63
+	KEYWORD_62
     {
         newLeafNode(lv_isDistinct_2_0, grammarAccess.getAvgAggregateAccess().getIsDistinctDISTINCTKeyword_2_0());
     }
@@ -1387,7 +1286,7 @@ ruleMaxAggregate returns [EObject current=null]
 (
 (
 		lv_isDistinct_2_0=
-	KEYWORD_63
+	KEYWORD_62
     {
         newLeafNode(lv_isDistinct_2_0, grammarAccess.getMaxAggregateAccess().getIsDistinctDISTINCTKeyword_2_0());
     }
@@ -1457,7 +1356,7 @@ ruleMinAggregate returns [EObject current=null]
 (
 (
 		lv_isDistinct_2_0=
-	KEYWORD_63
+	KEYWORD_62
     {
         newLeafNode(lv_isDistinct_2_0, grammarAccess.getMinAggregateAccess().getIsDistinctDISTINCTKeyword_2_0());
     }
@@ -1527,7 +1426,7 @@ ruleSumAggregate returns [EObject current=null]
 (
 (
 		lv_isDistinct_2_0=
-	KEYWORD_63
+	KEYWORD_62
     {
         newLeafNode(lv_isDistinct_2_0, grammarAccess.getSumAggregateAccess().getIsDistinctDISTINCTKeyword_2_0());
     }
@@ -1597,7 +1496,7 @@ ruleCountAggregate returns [EObject current=null]
 (
 (
 		lv_isDistinct_2_0=
-	KEYWORD_63
+	KEYWORD_62
     {
         newLeafNode(lv_isDistinct_2_0, grammarAccess.getCountAggregateAccess().getIsDistinctDISTINCTKeyword_2_0());
     }
@@ -3194,7 +3093,7 @@ ruleCollectionExpression returns [EObject current=null]
 
 )
 )?
-	otherlv_2=KEYWORD_59
+	otherlv_2=KEYWORD_58
     {
     	newLeafNode(otherlv_2, grammarAccess.getCollectionExpressionAccess().getMEMBERKeyword_2());
     }
@@ -3720,7 +3619,7 @@ ruleBetweenExpression returns [EObject current=null]
 
 )
 )?
-	otherlv_2=KEYWORD_62
+	otherlv_2=KEYWORD_61
     {
     	newLeafNode(otherlv_2, grammarAccess.getBetweenExpressionAccess().getBETWEENKeyword_2());
     }
@@ -4096,7 +3995,7 @@ ruleStringFunctionName returns [AntlrDatatypeRuleToken current=new AntlrDatatype
     }
 
     |
-	kw=KEYWORD_64 
+	kw=KEYWORD_63 
     {
         $current.merge(kw);
         newLeafNode(kw, grammarAccess.getStringFunctionNameAccess().getSUBSTRINGKeyword_1()); 
@@ -4117,14 +4016,14 @@ ruleStringFunctionName returns [AntlrDatatypeRuleToken current=new AntlrDatatype
     }
 
     |
-	kw=KEYWORD_57 
+	kw=KEYWORD_56 
     {
         $current.merge(kw);
         newLeafNode(kw, grammarAccess.getStringFunctionNameAccess().getLENGTHKeyword_4()); 
     }
 
     |
-	kw=KEYWORD_58 
+	kw=KEYWORD_57 
     {
         $current.merge(kw);
         newLeafNode(kw, grammarAccess.getStringFunctionNameAccess().getLOCATEKeyword_5()); 

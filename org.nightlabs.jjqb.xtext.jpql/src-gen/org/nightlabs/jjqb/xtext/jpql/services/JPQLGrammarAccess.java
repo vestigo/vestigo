@@ -17,58 +17,6 @@ import org.eclipse.xtext.common.services.TerminalsGrammarAccess;
 public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 	
 	
-	public class QueryModuleElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "QueryModule");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cImportsAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cImportsImportParserRuleCall_0_0 = (RuleCall)cImportsAssignment_0.eContents().get(0);
-		private final Assignment cDefaultQueryAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cDefaultQueryJPQLQueryParserRuleCall_1_0 = (RuleCall)cDefaultQueryAssignment_1.eContents().get(0);
-		
-		//QueryModule:
-		//	imports+=Import* defaultQuery=JPQLQuery?;
-		public ParserRule getRule() { return rule; }
-
-		//imports+=Import* defaultQuery=JPQLQuery?
-		public Group getGroup() { return cGroup; }
-
-		//imports+=Import*
-		public Assignment getImportsAssignment_0() { return cImportsAssignment_0; }
-
-		//Import
-		public RuleCall getImportsImportParserRuleCall_0_0() { return cImportsImportParserRuleCall_0_0; }
-
-		//defaultQuery=JPQLQuery?
-		public Assignment getDefaultQueryAssignment_1() { return cDefaultQueryAssignment_1; }
-
-		//JPQLQuery
-		public RuleCall getDefaultQueryJPQLQueryParserRuleCall_1_0() { return cDefaultQueryJPQLQueryParserRuleCall_1_0; }
-	}
-
-	public class ImportElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Import");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cIMPORTKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cImportURIAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cImportURISTRINGTerminalRuleCall_1_0 = (RuleCall)cImportURIAssignment_1.eContents().get(0);
-		
-		//Import:
-		//	"IMPORT" importURI=STRING;
-		public ParserRule getRule() { return rule; }
-
-		//"IMPORT" importURI=STRING
-		public Group getGroup() { return cGroup; }
-
-		//"IMPORT"
-		public Keyword getIMPORTKeyword_0() { return cIMPORTKeyword_0; }
-
-		//importURI=STRING
-		public Assignment getImportURIAssignment_1() { return cImportURIAssignment_1; }
-
-		//STRING
-		public RuleCall getImportURISTRINGTerminalRuleCall_1_0() { return cImportURISTRINGTerminalRuleCall_1_0; }
-	}
-
 	public class JPQLQueryElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "JPQLQuery");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
@@ -2462,8 +2410,6 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 		public Keyword getNotEqualExclamationMarkEqualsSignKeyword_5_0() { return cNotEqualExclamationMarkEqualsSignKeyword_5_0; }
 	}
 	
-	private QueryModuleElements pQueryModule;
-	private ImportElements pImport;
 	private JPQLQueryElements pJPQLQuery;
 	private SelectStatementElements pSelectStatement;
 	private GroupClauseElements pGroupClause;
@@ -2556,26 +2502,6 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	
-	//QueryModule:
-	//	imports+=Import* defaultQuery=JPQLQuery?;
-	public QueryModuleElements getQueryModuleAccess() {
-		return (pQueryModule != null) ? pQueryModule : (pQueryModule = new QueryModuleElements());
-	}
-	
-	public ParserRule getQueryModuleRule() {
-		return getQueryModuleAccess().getRule();
-	}
-
-	//Import:
-	//	"IMPORT" importURI=STRING;
-	public ImportElements getImportAccess() {
-		return (pImport != null) ? pImport : (pImport = new ImportElements());
-	}
-	
-	public ParserRule getImportRule() {
-		return getImportAccess().getRule();
-	}
-
 	//JPQLQuery:
 	//	SelectStatement | UpdateStatement | DeleteStatement;
 	public JPQLQueryElements getJPQLQueryAccess() {

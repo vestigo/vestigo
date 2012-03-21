@@ -55,8 +55,6 @@ public class JPQLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getValueAccess().getAlternatives(), "rule__Value__Alternatives");
 					put(grammarAccess.getBooleanExpressionAccess().getValueAlternatives_0(), "rule__BooleanExpression__ValueAlternatives_0");
 					put(grammarAccess.getOperatorAccess().getAlternatives(), "rule__Operator__Alternatives");
-					put(grammarAccess.getQueryModuleAccess().getGroup(), "rule__QueryModule__Group__0");
-					put(grammarAccess.getImportAccess().getGroup(), "rule__Import__Group__0");
 					put(grammarAccess.getSelectStatementAccess().getGroup(), "rule__SelectStatement__Group__0");
 					put(grammarAccess.getGroupClauseAccess().getGroup(), "rule__GroupClause__Group__0");
 					put(grammarAccess.getGroupClauseAccess().getGroup_3(), "rule__GroupClause__Group_3__0");
@@ -120,9 +118,6 @@ public class JPQLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getNumericFunctionAccess().getGroup(), "rule__NumericFunction__Group__0");
 					put(grammarAccess.getNumericFunctionAccess().getGroup_3(), "rule__NumericFunction__Group_3__0");
 					put(grammarAccess.getQueryExpressionAccess().getGroup(), "rule__QueryExpression__Group__0");
-					put(grammarAccess.getQueryModuleAccess().getImportsAssignment_0(), "rule__QueryModule__ImportsAssignment_0");
-					put(grammarAccess.getQueryModuleAccess().getDefaultQueryAssignment_1(), "rule__QueryModule__DefaultQueryAssignment_1");
-					put(grammarAccess.getImportAccess().getImportURIAssignment_1(), "rule__Import__ImportURIAssignment_1");
 					put(grammarAccess.getSelectStatementAccess().getSelectFromClauseAssignment_0(), "rule__SelectStatement__SelectFromClauseAssignment_0");
 					put(grammarAccess.getSelectStatementAccess().getWhereClauseAssignment_1(), "rule__SelectStatement__WhereClauseAssignment_1");
 					put(grammarAccess.getSelectStatementAccess().getGroupByAssignment_2(), "rule__SelectStatement__GroupByAssignment_2");
@@ -241,7 +236,7 @@ public class JPQLParser extends AbstractContentAssistParser {
 	protected Collection<FollowElement> getFollowElements(AbstractInternalContentAssistParser parser) {
 		try {
 			org.nightlabs.jjqb.xtext.jpql.ui.contentassist.antlr.internal.InternalJPQLParser typedParser = (org.nightlabs.jjqb.xtext.jpql.ui.contentassist.antlr.internal.InternalJPQLParser) parser;
-			typedParser.entryRuleQueryModule();
+			typedParser.entryRuleJPQLQuery();
 			return typedParser.getFollowElements();
 		} catch(RecognitionException ex) {
 			throw new RuntimeException(ex);

@@ -2,15 +2,6 @@ grammar org.nightlabs.jjqb.xtext.jpql.JPQL with org.eclipse.xtext.common.Termina
 
 generate jPQL "http://www.nightlabs.org/jjqb/xtext/jdoql/JPQL"
 
-QueryModule:
-	(imports+=Import)*
-	(defaultQuery=JPQLQuery)?
-;
-
-Import:
-	'IMPORT' importURI=STRING
-;
-
 JPQLQuery:
 	SelectStatement |
 	UpdateStatement |

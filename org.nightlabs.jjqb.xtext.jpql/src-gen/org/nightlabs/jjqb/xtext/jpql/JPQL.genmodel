@@ -17,13 +17,6 @@
       <genEnumLiterals ecoreEnumLiteral="JPQL.ecore#//Operator/equal"/>
       <genEnumLiterals ecoreEnumLiteral="JPQL.ecore#//Operator/notEqual"/>
     </genEnums>
-    <genClasses ecoreClass="JPQL.ecore#//QueryModule">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//QueryModule/imports"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//QueryModule/defaultQuery"/>
-    </genClasses>
-    <genClasses ecoreClass="JPQL.ecore#//Import">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JPQL.ecore#//Import/importURI"/>
-    </genClasses>
     <genClasses ecoreClass="JPQL.ecore#//JPQLQuery">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//JPQLQuery/whereClause"/>
     </genClasses>

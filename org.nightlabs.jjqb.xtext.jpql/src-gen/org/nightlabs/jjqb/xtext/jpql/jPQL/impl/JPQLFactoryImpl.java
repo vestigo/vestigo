@@ -68,8 +68,6 @@ public class JPQLFactoryImpl extends EFactoryImpl implements JPQLFactory
   {
     switch (eClass.getClassifierID())
     {
-      case JPQLPackage.QUERY_MODULE: return createQueryModule();
-      case JPQLPackage.IMPORT: return createImport();
       case JPQLPackage.JPQL_QUERY: return createJPQLQuery();
       case JPQLPackage.SELECT_STATEMENT: return createSelectStatement();
       case JPQLPackage.GROUP_CLAUSE: return createGroupClause();
@@ -166,28 +164,6 @@ public class JPQLFactoryImpl extends EFactoryImpl implements JPQLFactory
       default:
         throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
     }
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public QueryModule createQueryModule()
-  {
-    QueryModuleImpl queryModule = new QueryModuleImpl();
-    return queryModule;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Import createImport()
-  {
-    ImportImpl import_ = new ImportImpl();
-    return import_;
   }
 
   /**
