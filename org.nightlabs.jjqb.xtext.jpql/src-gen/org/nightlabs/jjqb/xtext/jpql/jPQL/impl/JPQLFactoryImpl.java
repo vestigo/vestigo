@@ -102,7 +102,7 @@ public class JPQLFactoryImpl extends EFactoryImpl implements JPQLFactory
       case JPQLPackage.INNER_JOIN: return createInnerJoin();
       case JPQLPackage.WHERE_CLAUSE: return createWhereClause();
       case JPQLPackage.EXPRESSION: return createExpression();
-      case JPQLPackage.OPERATOR_EXPRESSION: return createOperatorExpression();
+      case JPQLPackage.COMPARISON_OPERATOR_EXPRESSION: return createComparisonOperatorExpression();
       case JPQLPackage.EXISTS_EXPRESSION: return createExistsExpression();
       case JPQLPackage.ALL_EXPRESSION: return createAllExpression();
       case JPQLPackage.ANY_EXPRESSION: return createAnyExpression();
@@ -142,8 +142,8 @@ public class JPQLFactoryImpl extends EFactoryImpl implements JPQLFactory
   {
     switch (eDataType.getClassifierID())
     {
-      case JPQLPackage.OPERATOR:
-        return createOperatorFromString(eDataType, initialValue);
+      case JPQLPackage.COMPARISON_OPERATOR:
+        return createComparisonOperatorFromString(eDataType, initialValue);
       default:
         throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
     }
@@ -159,8 +159,8 @@ public class JPQLFactoryImpl extends EFactoryImpl implements JPQLFactory
   {
     switch (eDataType.getClassifierID())
     {
-      case JPQLPackage.OPERATOR:
-        return convertOperatorToString(eDataType, instanceValue);
+      case JPQLPackage.COMPARISON_OPERATOR:
+        return convertComparisonOperatorToString(eDataType, instanceValue);
       default:
         throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
     }
@@ -545,10 +545,10 @@ public class JPQLFactoryImpl extends EFactoryImpl implements JPQLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public OperatorExpression createOperatorExpression()
+  public ComparisonOperatorExpression createComparisonOperatorExpression()
   {
-    OperatorExpressionImpl operatorExpression = new OperatorExpressionImpl();
-    return operatorExpression;
+    ComparisonOperatorExpressionImpl comparisonOperatorExpression = new ComparisonOperatorExpressionImpl();
+    return comparisonOperatorExpression;
   }
 
   /**
@@ -820,9 +820,9 @@ public class JPQLFactoryImpl extends EFactoryImpl implements JPQLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Operator createOperatorFromString(EDataType eDataType, String initialValue)
+  public ComparisonOperator createComparisonOperatorFromString(EDataType eDataType, String initialValue)
   {
-    Operator result = Operator.get(initialValue);
+    ComparisonOperator result = ComparisonOperator.get(initialValue);
     if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
     return result;
   }
@@ -832,7 +832,7 @@ public class JPQLFactoryImpl extends EFactoryImpl implements JPQLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public String convertOperatorToString(EDataType eDataType, Object instanceValue)
+  public String convertComparisonOperatorToString(EDataType eDataType, Object instanceValue)
   {
     return instanceValue == null ? null : instanceValue.toString();
   }

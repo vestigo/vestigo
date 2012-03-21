@@ -133,8 +133,8 @@ public class InternalJPQLParser extends AbstractInternalContentAssistParser {
     		tokenNameToValue.put("KEYWORD_6", "'<'");
     		tokenNameToValue.put("KEYWORD_7", "'='");
     		tokenNameToValue.put("KEYWORD_8", "'>'");
-    		tokenNameToValue.put("KEYWORD_9", "'!='");
-    		tokenNameToValue.put("KEYWORD_10", "'<='");
+    		tokenNameToValue.put("KEYWORD_9", "'<='");
+    		tokenNameToValue.put("KEYWORD_10", "'<>'");
     		tokenNameToValue.put("KEYWORD_11", "'>='");
     		tokenNameToValue.put("KEYWORD_12", "'AS'");
     		tokenNameToValue.put("KEYWORD_13", "'BY'");
@@ -3289,21 +3289,21 @@ public class InternalJPQLParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "ruleParExpression"
 
 
-    // $ANTLR start "entryRuleOperatorExpression"
-    // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:1246:1: entryRuleOperatorExpression : ruleOperatorExpression EOF ;
-    public final void entryRuleOperatorExpression() throws RecognitionException {
+    // $ANTLR start "entryRuleComparisonOperatorExpression"
+    // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:1246:1: entryRuleComparisonOperatorExpression : ruleComparisonOperatorExpression EOF ;
+    public final void entryRuleComparisonOperatorExpression() throws RecognitionException {
         try {
-            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:1247:1: ( ruleOperatorExpression EOF )
-            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:1248:1: ruleOperatorExpression EOF
+            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:1247:1: ( ruleComparisonOperatorExpression EOF )
+            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:1248:1: ruleComparisonOperatorExpression EOF
             {
-             before(grammarAccess.getOperatorExpressionRule()); 
-            pushFollow(FOLLOW_ruleOperatorExpression_in_entryRuleOperatorExpression2614);
-            ruleOperatorExpression();
+             before(grammarAccess.getComparisonOperatorExpressionRule()); 
+            pushFollow(FOLLOW_ruleComparisonOperatorExpression_in_entryRuleComparisonOperatorExpression2614);
+            ruleComparisonOperatorExpression();
 
             state._fsp--;
 
-             after(grammarAccess.getOperatorExpressionRule()); 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleOperatorExpression2621); 
+             after(grammarAccess.getComparisonOperatorExpressionRule()); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleComparisonOperatorExpression2621); 
 
             }
 
@@ -3316,35 +3316,35 @@ public class InternalJPQLParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "entryRuleOperatorExpression"
+    // $ANTLR end "entryRuleComparisonOperatorExpression"
 
 
-    // $ANTLR start "ruleOperatorExpression"
-    // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:1255:1: ruleOperatorExpression : ( ( rule__OperatorExpression__Group__0 ) ) ;
-    public final void ruleOperatorExpression() throws RecognitionException {
+    // $ANTLR start "ruleComparisonOperatorExpression"
+    // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:1255:1: ruleComparisonOperatorExpression : ( ( rule__ComparisonOperatorExpression__Group__0 ) ) ;
+    public final void ruleComparisonOperatorExpression() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:1259:5: ( ( ( rule__OperatorExpression__Group__0 ) ) )
-            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:1260:1: ( ( rule__OperatorExpression__Group__0 ) )
+            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:1259:5: ( ( ( rule__ComparisonOperatorExpression__Group__0 ) ) )
+            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:1260:1: ( ( rule__ComparisonOperatorExpression__Group__0 ) )
             {
-            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:1260:1: ( ( rule__OperatorExpression__Group__0 ) )
-            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:1261:1: ( rule__OperatorExpression__Group__0 )
+            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:1260:1: ( ( rule__ComparisonOperatorExpression__Group__0 ) )
+            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:1261:1: ( rule__ComparisonOperatorExpression__Group__0 )
             {
-             before(grammarAccess.getOperatorExpressionAccess().getGroup()); 
-            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:1262:1: ( rule__OperatorExpression__Group__0 )
-            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:1262:2: rule__OperatorExpression__Group__0
+             before(grammarAccess.getComparisonOperatorExpressionAccess().getGroup()); 
+            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:1262:1: ( rule__ComparisonOperatorExpression__Group__0 )
+            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:1262:2: rule__ComparisonOperatorExpression__Group__0
             {
-            pushFollow(FOLLOW_rule__OperatorExpression__Group__0_in_ruleOperatorExpression2651);
-            rule__OperatorExpression__Group__0();
+            pushFollow(FOLLOW_rule__ComparisonOperatorExpression__Group__0_in_ruleComparisonOperatorExpression2651);
+            rule__ComparisonOperatorExpression__Group__0();
 
             state._fsp--;
 
 
             }
 
-             after(grammarAccess.getOperatorExpressionAccess().getGroup()); 
+             after(grammarAccess.getComparisonOperatorExpressionAccess().getGroup()); 
 
             }
 
@@ -3363,7 +3363,7 @@ public class InternalJPQLParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "ruleOperatorExpression"
+    // $ANTLR end "ruleComparisonOperatorExpression"
 
 
     // $ANTLR start "entryRuleExistsExpression"
@@ -5368,32 +5368,32 @@ public class InternalJPQLParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "ruleQueryExpression"
 
 
-    // $ANTLR start "ruleOperator"
-    // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:2007:1: ruleOperator : ( ( rule__Operator__Alternatives ) ) ;
-    public final void ruleOperator() throws RecognitionException {
+    // $ANTLR start "ruleComparisonOperator"
+    // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:2007:1: ruleComparisonOperator : ( ( rule__ComparisonOperator__Alternatives ) ) ;
+    public final void ruleComparisonOperator() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:2011:1: ( ( ( rule__Operator__Alternatives ) ) )
-            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:2012:1: ( ( rule__Operator__Alternatives ) )
+            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:2011:1: ( ( ( rule__ComparisonOperator__Alternatives ) ) )
+            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:2012:1: ( ( rule__ComparisonOperator__Alternatives ) )
             {
-            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:2012:1: ( ( rule__Operator__Alternatives ) )
-            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:2013:1: ( rule__Operator__Alternatives )
+            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:2012:1: ( ( rule__ComparisonOperator__Alternatives ) )
+            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:2013:1: ( rule__ComparisonOperator__Alternatives )
             {
-             before(grammarAccess.getOperatorAccess().getAlternatives()); 
-            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:2014:1: ( rule__Operator__Alternatives )
-            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:2014:2: rule__Operator__Alternatives
+             before(grammarAccess.getComparisonOperatorAccess().getAlternatives()); 
+            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:2014:1: ( rule__ComparisonOperator__Alternatives )
+            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:2014:2: rule__ComparisonOperator__Alternatives
             {
-            pushFollow(FOLLOW_rule__Operator__Alternatives_in_ruleOperator4356);
-            rule__Operator__Alternatives();
+            pushFollow(FOLLOW_rule__ComparisonOperator__Alternatives_in_ruleComparisonOperator4356);
+            rule__ComparisonOperator__Alternatives();
 
             state._fsp--;
 
 
             }
 
-             after(grammarAccess.getOperatorAccess().getAlternatives()); 
+             after(grammarAccess.getComparisonOperatorAccess().getAlternatives()); 
 
             }
 
@@ -5412,7 +5412,7 @@ public class InternalJPQLParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "ruleOperator"
+    // $ANTLR end "ruleComparisonOperator"
 
 
     // $ANTLR start "rule__JPQLQuery__Alternatives"
@@ -6133,13 +6133,13 @@ public class InternalJPQLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ConcreteExpression__Alternatives"
-    // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:2215:1: rule__ConcreteExpression__Alternatives : ( ( ruleParExpression ) | ( ruleOperatorExpression ) | ( ruleExistsExpression ) | ( ruleAllExpression ) | ( ruleAnyExpression ) | ( ruleSomeExpression ) | ( ruleCollectionExpression ) | ( ruleNullComparisonExpression ) | ( ruleEmptyComparisonExpression ) | ( ruleLikeExpression ) | ( ruleInExpression ) | ( ruleBetweenExpression ) );
+    // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:2215:1: rule__ConcreteExpression__Alternatives : ( ( ruleParExpression ) | ( ruleComparisonOperatorExpression ) | ( ruleExistsExpression ) | ( ruleAllExpression ) | ( ruleAnyExpression ) | ( ruleSomeExpression ) | ( ruleCollectionExpression ) | ( ruleNullComparisonExpression ) | ( ruleEmptyComparisonExpression ) | ( ruleLikeExpression ) | ( ruleInExpression ) | ( ruleBetweenExpression ) );
     public final void rule__ConcreteExpression__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:2219:1: ( ( ruleParExpression ) | ( ruleOperatorExpression ) | ( ruleExistsExpression ) | ( ruleAllExpression ) | ( ruleAnyExpression ) | ( ruleSomeExpression ) | ( ruleCollectionExpression ) | ( ruleNullComparisonExpression ) | ( ruleEmptyComparisonExpression ) | ( ruleLikeExpression ) | ( ruleInExpression ) | ( ruleBetweenExpression ) )
+            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:2219:1: ( ( ruleParExpression ) | ( ruleComparisonOperatorExpression ) | ( ruleExistsExpression ) | ( ruleAllExpression ) | ( ruleAnyExpression ) | ( ruleSomeExpression ) | ( ruleCollectionExpression ) | ( ruleNullComparisonExpression ) | ( ruleEmptyComparisonExpression ) | ( ruleLikeExpression ) | ( ruleInExpression ) | ( ruleBetweenExpression ) )
             int alt8=12;
             alt8 = dfa8.predict(input);
             switch (alt8) {
@@ -6163,18 +6163,18 @@ public class InternalJPQLParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 2 :
-                    // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:2226:6: ( ruleOperatorExpression )
+                    // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:2226:6: ( ruleComparisonOperatorExpression )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:2226:6: ( ruleOperatorExpression )
-                    // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:2227:1: ruleOperatorExpression
+                    // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:2226:6: ( ruleComparisonOperatorExpression )
+                    // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:2227:1: ruleComparisonOperatorExpression
                     {
-                     before(grammarAccess.getConcreteExpressionAccess().getOperatorExpressionParserRuleCall_1()); 
-                    pushFollow(FOLLOW_ruleOperatorExpression_in_rule__ConcreteExpression__Alternatives4855);
-                    ruleOperatorExpression();
+                     before(grammarAccess.getConcreteExpressionAccess().getComparisonOperatorExpressionParserRuleCall_1()); 
+                    pushFollow(FOLLOW_ruleComparisonOperatorExpression_in_rule__ConcreteExpression__Alternatives4855);
+                    ruleComparisonOperatorExpression();
 
                     state._fsp--;
 
-                     after(grammarAccess.getConcreteExpressionAccess().getOperatorExpressionParserRuleCall_1()); 
+                     after(grammarAccess.getConcreteExpressionAccess().getComparisonOperatorExpressionParserRuleCall_1()); 
 
                     }
 
@@ -7117,14 +7117,14 @@ public class InternalJPQLParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__BooleanExpression__ValueAlternatives_0"
 
 
-    // $ANTLR start "rule__Operator__Alternatives"
-    // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:2531:1: rule__Operator__Alternatives : ( ( ( KEYWORD_6 ) ) | ( ( KEYWORD_8 ) ) | ( ( KEYWORD_10 ) ) | ( ( KEYWORD_11 ) ) | ( ( KEYWORD_7 ) ) | ( ( KEYWORD_9 ) ) );
-    public final void rule__Operator__Alternatives() throws RecognitionException {
+    // $ANTLR start "rule__ComparisonOperator__Alternatives"
+    // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:2531:1: rule__ComparisonOperator__Alternatives : ( ( ( KEYWORD_6 ) ) | ( ( KEYWORD_8 ) ) | ( ( KEYWORD_9 ) ) | ( ( KEYWORD_11 ) ) | ( ( KEYWORD_7 ) ) | ( ( KEYWORD_10 ) ) );
+    public final void rule__ComparisonOperator__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:2535:1: ( ( ( KEYWORD_6 ) ) | ( ( KEYWORD_8 ) ) | ( ( KEYWORD_10 ) ) | ( ( KEYWORD_11 ) ) | ( ( KEYWORD_7 ) ) | ( ( KEYWORD_9 ) ) )
+            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:2535:1: ( ( ( KEYWORD_6 ) ) | ( ( KEYWORD_8 ) ) | ( ( KEYWORD_9 ) ) | ( ( KEYWORD_11 ) ) | ( ( KEYWORD_7 ) ) | ( ( KEYWORD_10 ) ) )
             int alt16=6;
             switch ( input.LA(1) ) {
             case KEYWORD_6:
@@ -7137,7 +7137,7 @@ public class InternalJPQLParser extends AbstractInternalContentAssistParser {
                 alt16=2;
                 }
                 break;
-            case KEYWORD_10:
+            case KEYWORD_9:
                 {
                 alt16=3;
                 }
@@ -7152,7 +7152,7 @@ public class InternalJPQLParser extends AbstractInternalContentAssistParser {
                 alt16=5;
                 }
                 break;
-            case KEYWORD_9:
+            case KEYWORD_10:
                 {
                 alt16=6;
                 }
@@ -7171,15 +7171,15 @@ public class InternalJPQLParser extends AbstractInternalContentAssistParser {
                     // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:2536:1: ( ( KEYWORD_6 ) )
                     // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:2537:1: ( KEYWORD_6 )
                     {
-                     before(grammarAccess.getOperatorAccess().getLessThenEnumLiteralDeclaration_0()); 
+                     before(grammarAccess.getComparisonOperatorAccess().getLessThenEnumLiteralDeclaration_0()); 
                     // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:2538:1: ( KEYWORD_6 )
                     // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:2538:3: KEYWORD_6
                     {
-                    match(input,KEYWORD_6,FOLLOW_KEYWORD_6_in_rule__Operator__Alternatives5592); 
+                    match(input,KEYWORD_6,FOLLOW_KEYWORD_6_in_rule__ComparisonOperator__Alternatives5592); 
 
                     }
 
-                     after(grammarAccess.getOperatorAccess().getLessThenEnumLiteralDeclaration_0()); 
+                     after(grammarAccess.getComparisonOperatorAccess().getLessThenEnumLiteralDeclaration_0()); 
 
                     }
 
@@ -7192,15 +7192,15 @@ public class InternalJPQLParser extends AbstractInternalContentAssistParser {
                     // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:2543:6: ( ( KEYWORD_8 ) )
                     // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:2544:1: ( KEYWORD_8 )
                     {
-                     before(grammarAccess.getOperatorAccess().getGreaterThenEnumLiteralDeclaration_1()); 
+                     before(grammarAccess.getComparisonOperatorAccess().getGreaterThenEnumLiteralDeclaration_1()); 
                     // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:2545:1: ( KEYWORD_8 )
                     // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:2545:3: KEYWORD_8
                     {
-                    match(input,KEYWORD_8,FOLLOW_KEYWORD_8_in_rule__Operator__Alternatives5612); 
+                    match(input,KEYWORD_8,FOLLOW_KEYWORD_8_in_rule__ComparisonOperator__Alternatives5612); 
 
                     }
 
-                     after(grammarAccess.getOperatorAccess().getGreaterThenEnumLiteralDeclaration_1()); 
+                     after(grammarAccess.getComparisonOperatorAccess().getGreaterThenEnumLiteralDeclaration_1()); 
 
                     }
 
@@ -7208,20 +7208,20 @@ public class InternalJPQLParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 3 :
-                    // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:2550:6: ( ( KEYWORD_10 ) )
+                    // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:2550:6: ( ( KEYWORD_9 ) )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:2550:6: ( ( KEYWORD_10 ) )
-                    // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:2551:1: ( KEYWORD_10 )
+                    // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:2550:6: ( ( KEYWORD_9 ) )
+                    // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:2551:1: ( KEYWORD_9 )
                     {
-                     before(grammarAccess.getOperatorAccess().getLessEqualEnumLiteralDeclaration_2()); 
-                    // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:2552:1: ( KEYWORD_10 )
-                    // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:2552:3: KEYWORD_10
+                     before(grammarAccess.getComparisonOperatorAccess().getLessEqualEnumLiteralDeclaration_2()); 
+                    // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:2552:1: ( KEYWORD_9 )
+                    // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:2552:3: KEYWORD_9
                     {
-                    match(input,KEYWORD_10,FOLLOW_KEYWORD_10_in_rule__Operator__Alternatives5632); 
+                    match(input,KEYWORD_9,FOLLOW_KEYWORD_9_in_rule__ComparisonOperator__Alternatives5632); 
 
                     }
 
-                     after(grammarAccess.getOperatorAccess().getLessEqualEnumLiteralDeclaration_2()); 
+                     after(grammarAccess.getComparisonOperatorAccess().getLessEqualEnumLiteralDeclaration_2()); 
 
                     }
 
@@ -7234,15 +7234,15 @@ public class InternalJPQLParser extends AbstractInternalContentAssistParser {
                     // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:2557:6: ( ( KEYWORD_11 ) )
                     // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:2558:1: ( KEYWORD_11 )
                     {
-                     before(grammarAccess.getOperatorAccess().getGreaterEqualEnumLiteralDeclaration_3()); 
+                     before(grammarAccess.getComparisonOperatorAccess().getGreaterEqualEnumLiteralDeclaration_3()); 
                     // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:2559:1: ( KEYWORD_11 )
                     // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:2559:3: KEYWORD_11
                     {
-                    match(input,KEYWORD_11,FOLLOW_KEYWORD_11_in_rule__Operator__Alternatives5652); 
+                    match(input,KEYWORD_11,FOLLOW_KEYWORD_11_in_rule__ComparisonOperator__Alternatives5652); 
 
                     }
 
-                     after(grammarAccess.getOperatorAccess().getGreaterEqualEnumLiteralDeclaration_3()); 
+                     after(grammarAccess.getComparisonOperatorAccess().getGreaterEqualEnumLiteralDeclaration_3()); 
 
                     }
 
@@ -7255,15 +7255,15 @@ public class InternalJPQLParser extends AbstractInternalContentAssistParser {
                     // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:2564:6: ( ( KEYWORD_7 ) )
                     // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:2565:1: ( KEYWORD_7 )
                     {
-                     before(grammarAccess.getOperatorAccess().getEqualEnumLiteralDeclaration_4()); 
+                     before(grammarAccess.getComparisonOperatorAccess().getEqualEnumLiteralDeclaration_4()); 
                     // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:2566:1: ( KEYWORD_7 )
                     // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:2566:3: KEYWORD_7
                     {
-                    match(input,KEYWORD_7,FOLLOW_KEYWORD_7_in_rule__Operator__Alternatives5672); 
+                    match(input,KEYWORD_7,FOLLOW_KEYWORD_7_in_rule__ComparisonOperator__Alternatives5672); 
 
                     }
 
-                     after(grammarAccess.getOperatorAccess().getEqualEnumLiteralDeclaration_4()); 
+                     after(grammarAccess.getComparisonOperatorAccess().getEqualEnumLiteralDeclaration_4()); 
 
                     }
 
@@ -7271,20 +7271,20 @@ public class InternalJPQLParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 6 :
-                    // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:2571:6: ( ( KEYWORD_9 ) )
+                    // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:2571:6: ( ( KEYWORD_10 ) )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:2571:6: ( ( KEYWORD_9 ) )
-                    // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:2572:1: ( KEYWORD_9 )
+                    // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:2571:6: ( ( KEYWORD_10 ) )
+                    // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:2572:1: ( KEYWORD_10 )
                     {
-                     before(grammarAccess.getOperatorAccess().getNotEqualEnumLiteralDeclaration_5()); 
-                    // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:2573:1: ( KEYWORD_9 )
-                    // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:2573:3: KEYWORD_9
+                     before(grammarAccess.getComparisonOperatorAccess().getNotEqualEnumLiteralDeclaration_5()); 
+                    // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:2573:1: ( KEYWORD_10 )
+                    // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:2573:3: KEYWORD_10
                     {
-                    match(input,KEYWORD_9,FOLLOW_KEYWORD_9_in_rule__Operator__Alternatives5692); 
+                    match(input,KEYWORD_10,FOLLOW_KEYWORD_10_in_rule__ComparisonOperator__Alternatives5692); 
 
                     }
 
-                     after(grammarAccess.getOperatorAccess().getNotEqualEnumLiteralDeclaration_5()); 
+                     after(grammarAccess.getComparisonOperatorAccess().getNotEqualEnumLiteralDeclaration_5()); 
 
                     }
 
@@ -7305,7 +7305,7 @@ public class InternalJPQLParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Operator__Alternatives"
+    // $ANTLR end "rule__ComparisonOperator__Alternatives"
 
 
     // $ANTLR start "rule__SelectStatement__Group__0"
@@ -18235,23 +18235,23 @@ public class InternalJPQLParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__ParExpression__Group__2__Impl"
 
 
-    // $ANTLR start "rule__OperatorExpression__Group__0"
-    // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:6755:1: rule__OperatorExpression__Group__0 : rule__OperatorExpression__Group__0__Impl rule__OperatorExpression__Group__1 ;
-    public final void rule__OperatorExpression__Group__0() throws RecognitionException {
+    // $ANTLR start "rule__ComparisonOperatorExpression__Group__0"
+    // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:6755:1: rule__ComparisonOperatorExpression__Group__0 : rule__ComparisonOperatorExpression__Group__0__Impl rule__ComparisonOperatorExpression__Group__1 ;
+    public final void rule__ComparisonOperatorExpression__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:6759:1: ( rule__OperatorExpression__Group__0__Impl rule__OperatorExpression__Group__1 )
-            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:6760:2: rule__OperatorExpression__Group__0__Impl rule__OperatorExpression__Group__1
+            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:6759:1: ( rule__ComparisonOperatorExpression__Group__0__Impl rule__ComparisonOperatorExpression__Group__1 )
+            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:6760:2: rule__ComparisonOperatorExpression__Group__0__Impl rule__ComparisonOperatorExpression__Group__1
             {
-            pushFollow(FOLLOW_rule__OperatorExpression__Group__0__Impl_in_rule__OperatorExpression__Group__013947);
-            rule__OperatorExpression__Group__0__Impl();
+            pushFollow(FOLLOW_rule__ComparisonOperatorExpression__Group__0__Impl_in_rule__ComparisonOperatorExpression__Group__013947);
+            rule__ComparisonOperatorExpression__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__OperatorExpression__Group__1_in_rule__OperatorExpression__Group__013950);
-            rule__OperatorExpression__Group__1();
+            pushFollow(FOLLOW_rule__ComparisonOperatorExpression__Group__1_in_rule__ComparisonOperatorExpression__Group__013950);
+            rule__ComparisonOperatorExpression__Group__1();
 
             state._fsp--;
 
@@ -18270,35 +18270,35 @@ public class InternalJPQLParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__OperatorExpression__Group__0"
+    // $ANTLR end "rule__ComparisonOperatorExpression__Group__0"
 
 
-    // $ANTLR start "rule__OperatorExpression__Group__0__Impl"
-    // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:6767:1: rule__OperatorExpression__Group__0__Impl : ( ( rule__OperatorExpression__LhsAssignment_0 ) ) ;
-    public final void rule__OperatorExpression__Group__0__Impl() throws RecognitionException {
+    // $ANTLR start "rule__ComparisonOperatorExpression__Group__0__Impl"
+    // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:6767:1: rule__ComparisonOperatorExpression__Group__0__Impl : ( ( rule__ComparisonOperatorExpression__LhsAssignment_0 ) ) ;
+    public final void rule__ComparisonOperatorExpression__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:6771:1: ( ( ( rule__OperatorExpression__LhsAssignment_0 ) ) )
-            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:6772:1: ( ( rule__OperatorExpression__LhsAssignment_0 ) )
+            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:6771:1: ( ( ( rule__ComparisonOperatorExpression__LhsAssignment_0 ) ) )
+            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:6772:1: ( ( rule__ComparisonOperatorExpression__LhsAssignment_0 ) )
             {
-            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:6772:1: ( ( rule__OperatorExpression__LhsAssignment_0 ) )
-            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:6773:1: ( rule__OperatorExpression__LhsAssignment_0 )
+            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:6772:1: ( ( rule__ComparisonOperatorExpression__LhsAssignment_0 ) )
+            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:6773:1: ( rule__ComparisonOperatorExpression__LhsAssignment_0 )
             {
-             before(grammarAccess.getOperatorExpressionAccess().getLhsAssignment_0()); 
-            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:6774:1: ( rule__OperatorExpression__LhsAssignment_0 )
-            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:6774:2: rule__OperatorExpression__LhsAssignment_0
+             before(grammarAccess.getComparisonOperatorExpressionAccess().getLhsAssignment_0()); 
+            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:6774:1: ( rule__ComparisonOperatorExpression__LhsAssignment_0 )
+            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:6774:2: rule__ComparisonOperatorExpression__LhsAssignment_0
             {
-            pushFollow(FOLLOW_rule__OperatorExpression__LhsAssignment_0_in_rule__OperatorExpression__Group__0__Impl13977);
-            rule__OperatorExpression__LhsAssignment_0();
+            pushFollow(FOLLOW_rule__ComparisonOperatorExpression__LhsAssignment_0_in_rule__ComparisonOperatorExpression__Group__0__Impl13977);
+            rule__ComparisonOperatorExpression__LhsAssignment_0();
 
             state._fsp--;
 
 
             }
 
-             after(grammarAccess.getOperatorExpressionAccess().getLhsAssignment_0()); 
+             after(grammarAccess.getComparisonOperatorExpressionAccess().getLhsAssignment_0()); 
 
             }
 
@@ -18317,26 +18317,26 @@ public class InternalJPQLParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__OperatorExpression__Group__0__Impl"
+    // $ANTLR end "rule__ComparisonOperatorExpression__Group__0__Impl"
 
 
-    // $ANTLR start "rule__OperatorExpression__Group__1"
-    // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:6784:1: rule__OperatorExpression__Group__1 : rule__OperatorExpression__Group__1__Impl rule__OperatorExpression__Group__2 ;
-    public final void rule__OperatorExpression__Group__1() throws RecognitionException {
+    // $ANTLR start "rule__ComparisonOperatorExpression__Group__1"
+    // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:6784:1: rule__ComparisonOperatorExpression__Group__1 : rule__ComparisonOperatorExpression__Group__1__Impl rule__ComparisonOperatorExpression__Group__2 ;
+    public final void rule__ComparisonOperatorExpression__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:6788:1: ( rule__OperatorExpression__Group__1__Impl rule__OperatorExpression__Group__2 )
-            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:6789:2: rule__OperatorExpression__Group__1__Impl rule__OperatorExpression__Group__2
+            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:6788:1: ( rule__ComparisonOperatorExpression__Group__1__Impl rule__ComparisonOperatorExpression__Group__2 )
+            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:6789:2: rule__ComparisonOperatorExpression__Group__1__Impl rule__ComparisonOperatorExpression__Group__2
             {
-            pushFollow(FOLLOW_rule__OperatorExpression__Group__1__Impl_in_rule__OperatorExpression__Group__114007);
-            rule__OperatorExpression__Group__1__Impl();
+            pushFollow(FOLLOW_rule__ComparisonOperatorExpression__Group__1__Impl_in_rule__ComparisonOperatorExpression__Group__114007);
+            rule__ComparisonOperatorExpression__Group__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__OperatorExpression__Group__2_in_rule__OperatorExpression__Group__114010);
-            rule__OperatorExpression__Group__2();
+            pushFollow(FOLLOW_rule__ComparisonOperatorExpression__Group__2_in_rule__ComparisonOperatorExpression__Group__114010);
+            rule__ComparisonOperatorExpression__Group__2();
 
             state._fsp--;
 
@@ -18355,35 +18355,35 @@ public class InternalJPQLParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__OperatorExpression__Group__1"
+    // $ANTLR end "rule__ComparisonOperatorExpression__Group__1"
 
 
-    // $ANTLR start "rule__OperatorExpression__Group__1__Impl"
-    // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:6796:1: rule__OperatorExpression__Group__1__Impl : ( ( rule__OperatorExpression__OperatorAssignment_1 ) ) ;
-    public final void rule__OperatorExpression__Group__1__Impl() throws RecognitionException {
+    // $ANTLR start "rule__ComparisonOperatorExpression__Group__1__Impl"
+    // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:6796:1: rule__ComparisonOperatorExpression__Group__1__Impl : ( ( rule__ComparisonOperatorExpression__OperatorAssignment_1 ) ) ;
+    public final void rule__ComparisonOperatorExpression__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:6800:1: ( ( ( rule__OperatorExpression__OperatorAssignment_1 ) ) )
-            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:6801:1: ( ( rule__OperatorExpression__OperatorAssignment_1 ) )
+            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:6800:1: ( ( ( rule__ComparisonOperatorExpression__OperatorAssignment_1 ) ) )
+            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:6801:1: ( ( rule__ComparisonOperatorExpression__OperatorAssignment_1 ) )
             {
-            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:6801:1: ( ( rule__OperatorExpression__OperatorAssignment_1 ) )
-            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:6802:1: ( rule__OperatorExpression__OperatorAssignment_1 )
+            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:6801:1: ( ( rule__ComparisonOperatorExpression__OperatorAssignment_1 ) )
+            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:6802:1: ( rule__ComparisonOperatorExpression__OperatorAssignment_1 )
             {
-             before(grammarAccess.getOperatorExpressionAccess().getOperatorAssignment_1()); 
-            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:6803:1: ( rule__OperatorExpression__OperatorAssignment_1 )
-            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:6803:2: rule__OperatorExpression__OperatorAssignment_1
+             before(grammarAccess.getComparisonOperatorExpressionAccess().getOperatorAssignment_1()); 
+            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:6803:1: ( rule__ComparisonOperatorExpression__OperatorAssignment_1 )
+            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:6803:2: rule__ComparisonOperatorExpression__OperatorAssignment_1
             {
-            pushFollow(FOLLOW_rule__OperatorExpression__OperatorAssignment_1_in_rule__OperatorExpression__Group__1__Impl14037);
-            rule__OperatorExpression__OperatorAssignment_1();
+            pushFollow(FOLLOW_rule__ComparisonOperatorExpression__OperatorAssignment_1_in_rule__ComparisonOperatorExpression__Group__1__Impl14037);
+            rule__ComparisonOperatorExpression__OperatorAssignment_1();
 
             state._fsp--;
 
 
             }
 
-             after(grammarAccess.getOperatorExpressionAccess().getOperatorAssignment_1()); 
+             after(grammarAccess.getComparisonOperatorExpressionAccess().getOperatorAssignment_1()); 
 
             }
 
@@ -18402,21 +18402,21 @@ public class InternalJPQLParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__OperatorExpression__Group__1__Impl"
+    // $ANTLR end "rule__ComparisonOperatorExpression__Group__1__Impl"
 
 
-    // $ANTLR start "rule__OperatorExpression__Group__2"
-    // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:6813:1: rule__OperatorExpression__Group__2 : rule__OperatorExpression__Group__2__Impl ;
-    public final void rule__OperatorExpression__Group__2() throws RecognitionException {
+    // $ANTLR start "rule__ComparisonOperatorExpression__Group__2"
+    // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:6813:1: rule__ComparisonOperatorExpression__Group__2 : rule__ComparisonOperatorExpression__Group__2__Impl ;
+    public final void rule__ComparisonOperatorExpression__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:6817:1: ( rule__OperatorExpression__Group__2__Impl )
-            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:6818:2: rule__OperatorExpression__Group__2__Impl
+            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:6817:1: ( rule__ComparisonOperatorExpression__Group__2__Impl )
+            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:6818:2: rule__ComparisonOperatorExpression__Group__2__Impl
             {
-            pushFollow(FOLLOW_rule__OperatorExpression__Group__2__Impl_in_rule__OperatorExpression__Group__214067);
-            rule__OperatorExpression__Group__2__Impl();
+            pushFollow(FOLLOW_rule__ComparisonOperatorExpression__Group__2__Impl_in_rule__ComparisonOperatorExpression__Group__214067);
+            rule__ComparisonOperatorExpression__Group__2__Impl();
 
             state._fsp--;
 
@@ -18435,35 +18435,35 @@ public class InternalJPQLParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__OperatorExpression__Group__2"
+    // $ANTLR end "rule__ComparisonOperatorExpression__Group__2"
 
 
-    // $ANTLR start "rule__OperatorExpression__Group__2__Impl"
-    // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:6824:1: rule__OperatorExpression__Group__2__Impl : ( ( rule__OperatorExpression__RhsAssignment_2 ) ) ;
-    public final void rule__OperatorExpression__Group__2__Impl() throws RecognitionException {
+    // $ANTLR start "rule__ComparisonOperatorExpression__Group__2__Impl"
+    // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:6824:1: rule__ComparisonOperatorExpression__Group__2__Impl : ( ( rule__ComparisonOperatorExpression__RhsAssignment_2 ) ) ;
+    public final void rule__ComparisonOperatorExpression__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:6828:1: ( ( ( rule__OperatorExpression__RhsAssignment_2 ) ) )
-            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:6829:1: ( ( rule__OperatorExpression__RhsAssignment_2 ) )
+            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:6828:1: ( ( ( rule__ComparisonOperatorExpression__RhsAssignment_2 ) ) )
+            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:6829:1: ( ( rule__ComparisonOperatorExpression__RhsAssignment_2 ) )
             {
-            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:6829:1: ( ( rule__OperatorExpression__RhsAssignment_2 ) )
-            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:6830:1: ( rule__OperatorExpression__RhsAssignment_2 )
+            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:6829:1: ( ( rule__ComparisonOperatorExpression__RhsAssignment_2 ) )
+            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:6830:1: ( rule__ComparisonOperatorExpression__RhsAssignment_2 )
             {
-             before(grammarAccess.getOperatorExpressionAccess().getRhsAssignment_2()); 
-            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:6831:1: ( rule__OperatorExpression__RhsAssignment_2 )
-            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:6831:2: rule__OperatorExpression__RhsAssignment_2
+             before(grammarAccess.getComparisonOperatorExpressionAccess().getRhsAssignment_2()); 
+            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:6831:1: ( rule__ComparisonOperatorExpression__RhsAssignment_2 )
+            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:6831:2: rule__ComparisonOperatorExpression__RhsAssignment_2
             {
-            pushFollow(FOLLOW_rule__OperatorExpression__RhsAssignment_2_in_rule__OperatorExpression__Group__2__Impl14094);
-            rule__OperatorExpression__RhsAssignment_2();
+            pushFollow(FOLLOW_rule__ComparisonOperatorExpression__RhsAssignment_2_in_rule__ComparisonOperatorExpression__Group__2__Impl14094);
+            rule__ComparisonOperatorExpression__RhsAssignment_2();
 
             state._fsp--;
 
 
             }
 
-             after(grammarAccess.getOperatorExpressionAccess().getRhsAssignment_2()); 
+             after(grammarAccess.getComparisonOperatorExpressionAccess().getRhsAssignment_2()); 
 
             }
 
@@ -18482,7 +18482,7 @@ public class InternalJPQLParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__OperatorExpression__Group__2__Impl"
+    // $ANTLR end "rule__ComparisonOperatorExpression__Group__2__Impl"
 
 
     // $ANTLR start "rule__ExistsExpression__Group__0"
@@ -26766,9 +26766,9 @@ public class InternalJPQLParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__AndExpression__EntriesAssignment_1_1_1"
 
 
-    // $ANTLR start "rule__OperatorExpression__LhsAssignment_0"
-    // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:10078:1: rule__OperatorExpression__LhsAssignment_0 : ( ruleVariable ) ;
-    public final void rule__OperatorExpression__LhsAssignment_0() throws RecognitionException {
+    // $ANTLR start "rule__ComparisonOperatorExpression__LhsAssignment_0"
+    // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:10078:1: rule__ComparisonOperatorExpression__LhsAssignment_0 : ( ruleVariable ) ;
+    public final void rule__ComparisonOperatorExpression__LhsAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -26779,13 +26779,13 @@ public class InternalJPQLParser extends AbstractInternalContentAssistParser {
             // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:10083:1: ( ruleVariable )
             // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:10084:1: ruleVariable
             {
-             before(grammarAccess.getOperatorExpressionAccess().getLhsVariableParserRuleCall_0_0()); 
-            pushFollow(FOLLOW_ruleVariable_in_rule__OperatorExpression__LhsAssignment_020561);
+             before(grammarAccess.getComparisonOperatorExpressionAccess().getLhsVariableParserRuleCall_0_0()); 
+            pushFollow(FOLLOW_ruleVariable_in_rule__ComparisonOperatorExpression__LhsAssignment_020561);
             ruleVariable();
 
             state._fsp--;
 
-             after(grammarAccess.getOperatorExpressionAccess().getLhsVariableParserRuleCall_0_0()); 
+             after(grammarAccess.getComparisonOperatorExpressionAccess().getLhsVariableParserRuleCall_0_0()); 
 
             }
 
@@ -26804,29 +26804,29 @@ public class InternalJPQLParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__OperatorExpression__LhsAssignment_0"
+    // $ANTLR end "rule__ComparisonOperatorExpression__LhsAssignment_0"
 
 
-    // $ANTLR start "rule__OperatorExpression__OperatorAssignment_1"
-    // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:10093:1: rule__OperatorExpression__OperatorAssignment_1 : ( ruleOperator ) ;
-    public final void rule__OperatorExpression__OperatorAssignment_1() throws RecognitionException {
+    // $ANTLR start "rule__ComparisonOperatorExpression__OperatorAssignment_1"
+    // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:10093:1: rule__ComparisonOperatorExpression__OperatorAssignment_1 : ( ruleComparisonOperator ) ;
+    public final void rule__ComparisonOperatorExpression__OperatorAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:10097:1: ( ( ruleOperator ) )
-            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:10098:1: ( ruleOperator )
+            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:10097:1: ( ( ruleComparisonOperator ) )
+            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:10098:1: ( ruleComparisonOperator )
             {
-            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:10098:1: ( ruleOperator )
-            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:10099:1: ruleOperator
+            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:10098:1: ( ruleComparisonOperator )
+            // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:10099:1: ruleComparisonOperator
             {
-             before(grammarAccess.getOperatorExpressionAccess().getOperatorOperatorEnumRuleCall_1_0()); 
-            pushFollow(FOLLOW_ruleOperator_in_rule__OperatorExpression__OperatorAssignment_120592);
-            ruleOperator();
+             before(grammarAccess.getComparisonOperatorExpressionAccess().getOperatorComparisonOperatorEnumRuleCall_1_0()); 
+            pushFollow(FOLLOW_ruleComparisonOperator_in_rule__ComparisonOperatorExpression__OperatorAssignment_120592);
+            ruleComparisonOperator();
 
             state._fsp--;
 
-             after(grammarAccess.getOperatorExpressionAccess().getOperatorOperatorEnumRuleCall_1_0()); 
+             after(grammarAccess.getComparisonOperatorExpressionAccess().getOperatorComparisonOperatorEnumRuleCall_1_0()); 
 
             }
 
@@ -26845,12 +26845,12 @@ public class InternalJPQLParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__OperatorExpression__OperatorAssignment_1"
+    // $ANTLR end "rule__ComparisonOperatorExpression__OperatorAssignment_1"
 
 
-    // $ANTLR start "rule__OperatorExpression__RhsAssignment_2"
-    // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:10108:1: rule__OperatorExpression__RhsAssignment_2 : ( ruleExpressionTerm ) ;
-    public final void rule__OperatorExpression__RhsAssignment_2() throws RecognitionException {
+    // $ANTLR start "rule__ComparisonOperatorExpression__RhsAssignment_2"
+    // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:10108:1: rule__ComparisonOperatorExpression__RhsAssignment_2 : ( ruleExpressionTerm ) ;
+    public final void rule__ComparisonOperatorExpression__RhsAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -26861,13 +26861,13 @@ public class InternalJPQLParser extends AbstractInternalContentAssistParser {
             // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:10113:1: ( ruleExpressionTerm )
             // ../org.nightlabs.jjqb.xtext.jpql.ui/src-gen/org/nightlabs/jjqb/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:10114:1: ruleExpressionTerm
             {
-             before(grammarAccess.getOperatorExpressionAccess().getRhsExpressionTermParserRuleCall_2_0()); 
-            pushFollow(FOLLOW_ruleExpressionTerm_in_rule__OperatorExpression__RhsAssignment_220623);
+             before(grammarAccess.getComparisonOperatorExpressionAccess().getRhsExpressionTermParserRuleCall_2_0()); 
+            pushFollow(FOLLOW_ruleExpressionTerm_in_rule__ComparisonOperatorExpression__RhsAssignment_220623);
             ruleExpressionTerm();
 
             state._fsp--;
 
-             after(grammarAccess.getOperatorExpressionAccess().getRhsExpressionTermParserRuleCall_2_0()); 
+             after(grammarAccess.getComparisonOperatorExpressionAccess().getRhsExpressionTermParserRuleCall_2_0()); 
 
             }
 
@@ -26886,7 +26886,7 @@ public class InternalJPQLParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__OperatorExpression__RhsAssignment_2"
+    // $ANTLR end "rule__ComparisonOperatorExpression__RhsAssignment_2"
 
 
     // $ANTLR start "rule__ExistsExpression__IsNotAssignment_0"
@@ -28659,7 +28659,7 @@ public class InternalJPQLParser extends AbstractInternalContentAssistParser {
             this.transition = DFA8_transition;
         }
         public String getDescription() {
-            return "2215:1: rule__ConcreteExpression__Alternatives : ( ( ruleParExpression ) | ( ruleOperatorExpression ) | ( ruleExistsExpression ) | ( ruleAllExpression ) | ( ruleAnyExpression ) | ( ruleSomeExpression ) | ( ruleCollectionExpression ) | ( ruleNullComparisonExpression ) | ( ruleEmptyComparisonExpression ) | ( ruleLikeExpression ) | ( ruleInExpression ) | ( ruleBetweenExpression ) );";
+            return "2215:1: rule__ConcreteExpression__Alternatives : ( ( ruleParExpression ) | ( ruleComparisonOperatorExpression ) | ( ruleExistsExpression ) | ( ruleAllExpression ) | ( ruleAnyExpression ) | ( ruleSomeExpression ) | ( ruleCollectionExpression ) | ( ruleNullComparisonExpression ) | ( ruleEmptyComparisonExpression ) | ( ruleLikeExpression ) | ( ruleInExpression ) | ( ruleBetweenExpression ) );";
         }
     }
     static final String DFA9_eotS =
@@ -28850,9 +28850,9 @@ public class InternalJPQLParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_ruleParExpression_in_entryRuleParExpression2550 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleParExpression2557 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ParExpression__Group__0_in_ruleParExpression2587 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleOperatorExpression_in_entryRuleOperatorExpression2614 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleOperatorExpression2621 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__OperatorExpression__Group__0_in_ruleOperatorExpression2651 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleComparisonOperatorExpression_in_entryRuleComparisonOperatorExpression2614 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleComparisonOperatorExpression2621 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ComparisonOperatorExpression__Group__0_in_ruleComparisonOperatorExpression2651 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleExistsExpression_in_entryRuleExistsExpression2678 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleExistsExpression2685 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ExistsExpression__Group__0_in_ruleExistsExpression2715 = new BitSet(new long[]{0x0000000000000002L});
@@ -28931,7 +28931,7 @@ public class InternalJPQLParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_ruleQueryExpression_in_entryRuleQueryExpression4282 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleQueryExpression4289 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__QueryExpression__Group__0_in_ruleQueryExpression4319 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Operator__Alternatives_in_ruleOperator4356 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ComparisonOperator__Alternatives_in_ruleComparisonOperator4356 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleSelectStatement_in_rule__JPQLQuery__Alternatives4391 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleUpdateStatement_in_rule__JPQLQuery__Alternatives4408 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleDeleteStatement_in_rule__JPQLQuery__Alternatives4425 = new BitSet(new long[]{0x0000000000000002L});
@@ -28953,7 +28953,7 @@ public class InternalJPQLParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_ruleLeftJoin_in_rule__FromJoin__Alternatives4789 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleInnerJoin_in_rule__FromJoin__Alternatives4806 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleParExpression_in_rule__ConcreteExpression__Alternatives4838 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleOperatorExpression_in_rule__ConcreteExpression__Alternatives4855 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleComparisonOperatorExpression_in_rule__ConcreteExpression__Alternatives4855 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleExistsExpression_in_rule__ConcreteExpression__Alternatives4872 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleAllExpression_in_rule__ConcreteExpression__Alternatives4889 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleAnyExpression_in_rule__ConcreteExpression__Alternatives4906 = new BitSet(new long[]{0x0000000000000002L});
@@ -28987,12 +28987,12 @@ public class InternalJPQLParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_ruleBooleanExpression_in_rule__Value__Alternatives5504 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_KEYWORD_40_in_rule__BooleanExpression__ValueAlternatives_05537 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_KEYWORD_43_in_rule__BooleanExpression__ValueAlternatives_05557 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_6_in_rule__Operator__Alternatives5592 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_8_in_rule__Operator__Alternatives5612 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_10_in_rule__Operator__Alternatives5632 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_11_in_rule__Operator__Alternatives5652 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_7_in_rule__Operator__Alternatives5672 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_9_in_rule__Operator__Alternatives5692 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_6_in_rule__ComparisonOperator__Alternatives5592 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_8_in_rule__ComparisonOperator__Alternatives5612 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_9_in_rule__ComparisonOperator__Alternatives5632 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_11_in_rule__ComparisonOperator__Alternatives5652 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_7_in_rule__ComparisonOperator__Alternatives5672 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_10_in_rule__ComparisonOperator__Alternatives5692 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__SelectStatement__Group__0__Impl_in_rule__SelectStatement__Group__05724 = new BitSet(new long[]{0x0000000024802000L});
     public static final BitSet FOLLOW_rule__SelectStatement__Group__1_in_rule__SelectStatement__Group__05727 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__SelectStatement__SelectFromClauseAssignment_0_in_rule__SelectStatement__Group__0__Impl5754 = new BitSet(new long[]{0x0000000000000002L});
@@ -29347,14 +29347,14 @@ public class InternalJPQLParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_ruleExpressionTerm_in_rule__ParExpression__Group__1__Impl13853 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ParExpression__Group__2__Impl_in_rule__ParExpression__Group__213882 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_KEYWORD_2_in_rule__ParExpression__Group__2__Impl13910 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__OperatorExpression__Group__0__Impl_in_rule__OperatorExpression__Group__013947 = new BitSet(new long[]{0x00E0000000000000L,0x0000000000000038L});
-    public static final BitSet FOLLOW_rule__OperatorExpression__Group__1_in_rule__OperatorExpression__Group__013950 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__OperatorExpression__LhsAssignment_0_in_rule__OperatorExpression__Group__0__Impl13977 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__OperatorExpression__Group__1__Impl_in_rule__OperatorExpression__Group__114007 = new BitSet(new long[]{0x4000008800200000L,0x00000000000001C4L});
-    public static final BitSet FOLLOW_rule__OperatorExpression__Group__2_in_rule__OperatorExpression__Group__114010 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__OperatorExpression__OperatorAssignment_1_in_rule__OperatorExpression__Group__1__Impl14037 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__OperatorExpression__Group__2__Impl_in_rule__OperatorExpression__Group__214067 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__OperatorExpression__RhsAssignment_2_in_rule__OperatorExpression__Group__2__Impl14094 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ComparisonOperatorExpression__Group__0__Impl_in_rule__ComparisonOperatorExpression__Group__013947 = new BitSet(new long[]{0x00E0000000000000L,0x0000000000000038L});
+    public static final BitSet FOLLOW_rule__ComparisonOperatorExpression__Group__1_in_rule__ComparisonOperatorExpression__Group__013950 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ComparisonOperatorExpression__LhsAssignment_0_in_rule__ComparisonOperatorExpression__Group__0__Impl13977 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ComparisonOperatorExpression__Group__1__Impl_in_rule__ComparisonOperatorExpression__Group__114007 = new BitSet(new long[]{0x4000008800200000L,0x00000000000001C4L});
+    public static final BitSet FOLLOW_rule__ComparisonOperatorExpression__Group__2_in_rule__ComparisonOperatorExpression__Group__114010 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ComparisonOperatorExpression__OperatorAssignment_1_in_rule__ComparisonOperatorExpression__Group__1__Impl14037 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ComparisonOperatorExpression__Group__2__Impl_in_rule__ComparisonOperatorExpression__Group__214067 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ComparisonOperatorExpression__RhsAssignment_2_in_rule__ComparisonOperatorExpression__Group__2__Impl14094 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ExistsExpression__Group__0__Impl_in_rule__ExistsExpression__Group__014130 = new BitSet(new long[]{0x0004000000001000L});
     public static final BitSet FOLLOW_rule__ExistsExpression__Group__1_in_rule__ExistsExpression__Group__014133 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ExistsExpression__IsNotAssignment_0_in_rule__ExistsExpression__Group__0__Impl14160 = new BitSet(new long[]{0x0000000000000002L});
@@ -29605,9 +29605,9 @@ public class InternalJPQLParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_ruleOrExpression_in_rule__WhereClause__WhereEntryAssignment_120468 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleAndExpression_in_rule__OrExpression__EntriesAssignment_1_1_120499 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleConcreteExpression_in_rule__AndExpression__EntriesAssignment_1_1_120530 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleVariable_in_rule__OperatorExpression__LhsAssignment_020561 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleOperator_in_rule__OperatorExpression__OperatorAssignment_120592 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleExpressionTerm_in_rule__OperatorExpression__RhsAssignment_220623 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleVariable_in_rule__ComparisonOperatorExpression__LhsAssignment_020561 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleComparisonOperator_in_rule__ComparisonOperatorExpression__OperatorAssignment_120592 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleExpressionTerm_in_rule__ComparisonOperatorExpression__RhsAssignment_220623 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_KEYWORD_28_in_rule__ExistsExpression__IsNotAssignment_020659 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleQueryExpression_in_rule__ExistsExpression__QueryAssignment_220698 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleQueryExpression_in_rule__AllExpression__QueryAssignment_120729 = new BitSet(new long[]{0x0000000000000002L});

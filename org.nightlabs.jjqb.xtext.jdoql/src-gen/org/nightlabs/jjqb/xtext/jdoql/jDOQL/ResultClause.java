@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ResultClause#isIsDistinct <em>Is Distinct</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ResultClause#getResultSpecs <em>Result Specs</em>}</li>
  * </ul>
  * </p>
@@ -28,8 +29,34 @@ import org.eclipse.emf.ecore.EObject;
 public interface ResultClause extends EObject
 {
   /**
+   * Returns the value of the '<em><b>Is Distinct</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Is Distinct</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Is Distinct</em>' attribute.
+   * @see #setIsDistinct(boolean)
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage#getResultClause_IsDistinct()
+   * @model
+   * @generated
+   */
+  boolean isIsDistinct();
+
+  /**
+   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ResultClause#isIsDistinct <em>Is Distinct</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Is Distinct</em>' attribute.
+   * @see #isIsDistinct()
+   * @generated
+   */
+  void setIsDistinct(boolean value);
+
+  /**
    * Returns the value of the '<em><b>Result Specs</b></em>' containment reference list.
-   * The list contents are of type {@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ResultSpecs}.
+   * The list contents are of type {@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ResultSpec}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Result Specs</em>' containment reference list isn't clear,
@@ -41,6 +68,6 @@ public interface ResultClause extends EObject
    * @model containment="true"
    * @generated
    */
-  EList<ResultSpecs> getResultSpecs();
+  EList<ResultSpec> getResultSpecs();
 
 } // ResultClause

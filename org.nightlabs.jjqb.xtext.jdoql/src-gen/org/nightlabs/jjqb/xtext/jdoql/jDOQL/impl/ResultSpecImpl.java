@@ -7,6 +7,8 @@ package org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
 import org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage;
 import org.nightlabs.jjqb.xtext.jdoql.jDOQL.ResultSpec;
 
@@ -19,7 +21,7 @@ import org.nightlabs.jjqb.xtext.jdoql.jDOQL.ResultSpec;
  *
  * @generated
  */
-public class ResultSpecImpl extends ResultSpecsImpl implements ResultSpec
+public class ResultSpecImpl extends MinimalEObjectImpl.Container implements ResultSpec
 {
   /**
    * <!-- begin-user-doc -->

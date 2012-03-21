@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression;
 import org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage;
 import org.nightlabs.jjqb.xtext.jdoql.jDOQL.ResultNaming;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.UnaryExpression;
+import org.nightlabs.jjqb.xtext.jdoql.jDOQL.UnaryOperator;
 
 /**
  * <!-- begin-user-doc -->
@@ -26,9 +26,13 @@ import org.nightlabs.jjqb.xtext.jdoql.jDOQL.UnaryExpression;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ExpressionImpl#getResultNaming <em>Result Naming</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ExpressionImpl#getLeft <em>Left</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ExpressionImpl#getOp <em>Op</em>}</li>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ExpressionImpl#getUnaryOperator <em>Unary Operator</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ExpressionImpl#getRight <em>Right</em>}</li>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ExpressionImpl#getLiteral <em>Literal</em>}</li>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ExpressionImpl#getThis <em>This</em>}</li>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ExpressionImpl#getId <em>Id</em>}</li>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ExpressionImpl#getParameterName <em>Parameter Name</em>}</li>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ExpressionImpl#getLeft <em>Left</em>}</li>
  * </ul>
  * </p>
  *
@@ -47,34 +51,24 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
   protected ResultNaming resultNaming;
 
   /**
-   * The cached value of the '{@link #getLeft() <em>Left</em>}' containment reference.
+   * The default value of the '{@link #getUnaryOperator() <em>Unary Operator</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getLeft()
+   * @see #getUnaryOperator()
    * @generated
    * @ordered
    */
-  protected UnaryExpression left;
+  protected static final UnaryOperator UNARY_OPERATOR_EDEFAULT = UnaryOperator.POSITIVE;
 
   /**
-   * The default value of the '{@link #getOp() <em>Op</em>}' attribute.
+   * The cached value of the '{@link #getUnaryOperator() <em>Unary Operator</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getOp()
+   * @see #getUnaryOperator()
    * @generated
    * @ordered
    */
-  protected static final String OP_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getOp() <em>Op</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getOp()
-   * @generated
-   * @ordered
-   */
-  protected String op = OP_EDEFAULT;
+  protected UnaryOperator unaryOperator = UNARY_OPERATOR_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getRight() <em>Right</em>}' containment reference.
@@ -84,7 +78,97 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
    * @generated
    * @ordered
    */
-  protected UnaryExpression right;
+  protected Expression right;
+
+  /**
+   * The default value of the '{@link #getLiteral() <em>Literal</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getLiteral()
+   * @generated
+   * @ordered
+   */
+  protected static final String LITERAL_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getLiteral() <em>Literal</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getLiteral()
+   * @generated
+   * @ordered
+   */
+  protected String literal = LITERAL_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getThis() <em>This</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getThis()
+   * @generated
+   * @ordered
+   */
+  protected static final String THIS_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getThis() <em>This</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getThis()
+   * @generated
+   * @ordered
+   */
+  protected String this_ = THIS_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getId() <em>Id</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getId()
+   * @generated
+   * @ordered
+   */
+  protected static final String ID_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getId()
+   * @generated
+   * @ordered
+   */
+  protected String id = ID_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getParameterName() <em>Parameter Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getParameterName()
+   * @generated
+   * @ordered
+   */
+  protected static final String PARAMETER_NAME_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getParameterName() <em>Parameter Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getParameterName()
+   * @generated
+   * @ordered
+   */
+  protected String parameterName = PARAMETER_NAME_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getLeft() <em>Left</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getLeft()
+   * @generated
+   * @ordered
+   */
+  protected Expression left;
 
   /**
    * <!-- begin-user-doc -->
@@ -160,9 +244,9 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
    * <!-- end-user-doc -->
    * @generated
    */
-  public UnaryExpression getLeft()
+  public UnaryOperator getUnaryOperator()
   {
-    return left;
+    return unaryOperator;
   }
 
   /**
@@ -170,16 +254,12 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetLeft(UnaryExpression newLeft, NotificationChain msgs)
+  public void setUnaryOperator(UnaryOperator newUnaryOperator)
   {
-    UnaryExpression oldLeft = left;
-    left = newLeft;
+    UnaryOperator oldUnaryOperator = unaryOperator;
+    unaryOperator = newUnaryOperator == null ? UNARY_OPERATOR_EDEFAULT : newUnaryOperator;
     if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JDOQLPackage.EXPRESSION__LEFT, oldLeft, newLeft);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
+      eNotify(new ENotificationImpl(this, Notification.SET, JDOQLPackage.EXPRESSION__UNARY_OPERATOR, oldUnaryOperator, unaryOperator));
   }
 
   /**
@@ -187,51 +267,7 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setLeft(UnaryExpression newLeft)
-  {
-    if (newLeft != left)
-    {
-      NotificationChain msgs = null;
-      if (left != null)
-        msgs = ((InternalEObject)left).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JDOQLPackage.EXPRESSION__LEFT, null, msgs);
-      if (newLeft != null)
-        msgs = ((InternalEObject)newLeft).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JDOQLPackage.EXPRESSION__LEFT, null, msgs);
-      msgs = basicSetLeft(newLeft, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, JDOQLPackage.EXPRESSION__LEFT, newLeft, newLeft));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String getOp()
-  {
-    return op;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setOp(String newOp)
-  {
-    String oldOp = op;
-    op = newOp;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, JDOQLPackage.EXPRESSION__OP, oldOp, op));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public UnaryExpression getRight()
+  public Expression getRight()
   {
     return right;
   }
@@ -241,9 +277,9 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetRight(UnaryExpression newRight, NotificationChain msgs)
+  public NotificationChain basicSetRight(Expression newRight, NotificationChain msgs)
   {
-    UnaryExpression oldRight = right;
+    Expression oldRight = right;
     right = newRight;
     if (eNotificationRequired())
     {
@@ -258,7 +294,7 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setRight(UnaryExpression newRight)
+  public void setRight(Expression newRight)
   {
     if (newRight != right)
     {
@@ -279,6 +315,146 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
    * <!-- end-user-doc -->
    * @generated
    */
+  public String getLiteral()
+  {
+    return literal;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setLiteral(String newLiteral)
+  {
+    String oldLiteral = literal;
+    literal = newLiteral;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, JDOQLPackage.EXPRESSION__LITERAL, oldLiteral, literal));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getThis()
+  {
+    return this_;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setThis(String newThis)
+  {
+    String oldThis = this_;
+    this_ = newThis;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, JDOQLPackage.EXPRESSION__THIS, oldThis, this_));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getId()
+  {
+    return id;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setId(String newId)
+  {
+    String oldId = id;
+    id = newId;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, JDOQLPackage.EXPRESSION__ID, oldId, id));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getParameterName()
+  {
+    return parameterName;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setParameterName(String newParameterName)
+  {
+    String oldParameterName = parameterName;
+    parameterName = newParameterName;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, JDOQLPackage.EXPRESSION__PARAMETER_NAME, oldParameterName, parameterName));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Expression getLeft()
+  {
+    return left;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetLeft(Expression newLeft, NotificationChain msgs)
+  {
+    Expression oldLeft = left;
+    left = newLeft;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JDOQLPackage.EXPRESSION__LEFT, oldLeft, newLeft);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setLeft(Expression newLeft)
+  {
+    if (newLeft != left)
+    {
+      NotificationChain msgs = null;
+      if (left != null)
+        msgs = ((InternalEObject)left).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JDOQLPackage.EXPRESSION__LEFT, null, msgs);
+      if (newLeft != null)
+        msgs = ((InternalEObject)newLeft).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JDOQLPackage.EXPRESSION__LEFT, null, msgs);
+      msgs = basicSetLeft(newLeft, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, JDOQLPackage.EXPRESSION__LEFT, newLeft, newLeft));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -286,10 +462,10 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
     {
       case JDOQLPackage.EXPRESSION__RESULT_NAMING:
         return basicSetResultNaming(null, msgs);
-      case JDOQLPackage.EXPRESSION__LEFT:
-        return basicSetLeft(null, msgs);
       case JDOQLPackage.EXPRESSION__RIGHT:
         return basicSetRight(null, msgs);
+      case JDOQLPackage.EXPRESSION__LEFT:
+        return basicSetLeft(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -306,12 +482,20 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
     {
       case JDOQLPackage.EXPRESSION__RESULT_NAMING:
         return getResultNaming();
-      case JDOQLPackage.EXPRESSION__LEFT:
-        return getLeft();
-      case JDOQLPackage.EXPRESSION__OP:
-        return getOp();
+      case JDOQLPackage.EXPRESSION__UNARY_OPERATOR:
+        return getUnaryOperator();
       case JDOQLPackage.EXPRESSION__RIGHT:
         return getRight();
+      case JDOQLPackage.EXPRESSION__LITERAL:
+        return getLiteral();
+      case JDOQLPackage.EXPRESSION__THIS:
+        return getThis();
+      case JDOQLPackage.EXPRESSION__ID:
+        return getId();
+      case JDOQLPackage.EXPRESSION__PARAMETER_NAME:
+        return getParameterName();
+      case JDOQLPackage.EXPRESSION__LEFT:
+        return getLeft();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -329,14 +513,26 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
       case JDOQLPackage.EXPRESSION__RESULT_NAMING:
         setResultNaming((ResultNaming)newValue);
         return;
-      case JDOQLPackage.EXPRESSION__LEFT:
-        setLeft((UnaryExpression)newValue);
-        return;
-      case JDOQLPackage.EXPRESSION__OP:
-        setOp((String)newValue);
+      case JDOQLPackage.EXPRESSION__UNARY_OPERATOR:
+        setUnaryOperator((UnaryOperator)newValue);
         return;
       case JDOQLPackage.EXPRESSION__RIGHT:
-        setRight((UnaryExpression)newValue);
+        setRight((Expression)newValue);
+        return;
+      case JDOQLPackage.EXPRESSION__LITERAL:
+        setLiteral((String)newValue);
+        return;
+      case JDOQLPackage.EXPRESSION__THIS:
+        setThis((String)newValue);
+        return;
+      case JDOQLPackage.EXPRESSION__ID:
+        setId((String)newValue);
+        return;
+      case JDOQLPackage.EXPRESSION__PARAMETER_NAME:
+        setParameterName((String)newValue);
+        return;
+      case JDOQLPackage.EXPRESSION__LEFT:
+        setLeft((Expression)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -355,14 +551,26 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
       case JDOQLPackage.EXPRESSION__RESULT_NAMING:
         setResultNaming((ResultNaming)null);
         return;
-      case JDOQLPackage.EXPRESSION__LEFT:
-        setLeft((UnaryExpression)null);
-        return;
-      case JDOQLPackage.EXPRESSION__OP:
-        setOp(OP_EDEFAULT);
+      case JDOQLPackage.EXPRESSION__UNARY_OPERATOR:
+        setUnaryOperator(UNARY_OPERATOR_EDEFAULT);
         return;
       case JDOQLPackage.EXPRESSION__RIGHT:
-        setRight((UnaryExpression)null);
+        setRight((Expression)null);
+        return;
+      case JDOQLPackage.EXPRESSION__LITERAL:
+        setLiteral(LITERAL_EDEFAULT);
+        return;
+      case JDOQLPackage.EXPRESSION__THIS:
+        setThis(THIS_EDEFAULT);
+        return;
+      case JDOQLPackage.EXPRESSION__ID:
+        setId(ID_EDEFAULT);
+        return;
+      case JDOQLPackage.EXPRESSION__PARAMETER_NAME:
+        setParameterName(PARAMETER_NAME_EDEFAULT);
+        return;
+      case JDOQLPackage.EXPRESSION__LEFT:
+        setLeft((Expression)null);
         return;
     }
     super.eUnset(featureID);
@@ -380,12 +588,20 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
     {
       case JDOQLPackage.EXPRESSION__RESULT_NAMING:
         return resultNaming != null;
-      case JDOQLPackage.EXPRESSION__LEFT:
-        return left != null;
-      case JDOQLPackage.EXPRESSION__OP:
-        return OP_EDEFAULT == null ? op != null : !OP_EDEFAULT.equals(op);
+      case JDOQLPackage.EXPRESSION__UNARY_OPERATOR:
+        return unaryOperator != UNARY_OPERATOR_EDEFAULT;
       case JDOQLPackage.EXPRESSION__RIGHT:
         return right != null;
+      case JDOQLPackage.EXPRESSION__LITERAL:
+        return LITERAL_EDEFAULT == null ? literal != null : !LITERAL_EDEFAULT.equals(literal);
+      case JDOQLPackage.EXPRESSION__THIS:
+        return THIS_EDEFAULT == null ? this_ != null : !THIS_EDEFAULT.equals(this_);
+      case JDOQLPackage.EXPRESSION__ID:
+        return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
+      case JDOQLPackage.EXPRESSION__PARAMETER_NAME:
+        return PARAMETER_NAME_EDEFAULT == null ? parameterName != null : !PARAMETER_NAME_EDEFAULT.equals(parameterName);
+      case JDOQLPackage.EXPRESSION__LEFT:
+        return left != null;
     }
     return super.eIsSet(featureID);
   }
@@ -401,8 +617,16 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (op: ");
-    result.append(op);
+    result.append(" (unaryOperator: ");
+    result.append(unaryOperator);
+    result.append(", literal: ");
+    result.append(literal);
+    result.append(", this: ");
+    result.append(this_);
+    result.append(", id: ");
+    result.append(id);
+    result.append(", parameterName: ");
+    result.append(parameterName);
     result.append(')');
     return result.toString();
   }

@@ -14,11 +14,14 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.From;
+import org.nightlabs.jjqb.xtext.jdoql.jDOQL.FromClause;
+import org.nightlabs.jjqb.xtext.jdoql.jDOQL.ImportClause;
 import org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.Select;
+import org.nightlabs.jjqb.xtext.jdoql.jDOQL.ParametersClause;
+import org.nightlabs.jjqb.xtext.jdoql.jDOQL.SelectClause;
 import org.nightlabs.jjqb.xtext.jdoql.jDOQL.SingleStringJDOQL;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.Where;
+import org.nightlabs.jjqb.xtext.jdoql.jDOQL.VariablesClause;
+import org.nightlabs.jjqb.xtext.jdoql.jDOQL.WhereClause;
 
 /**
  * <!-- begin-user-doc -->
@@ -27,9 +30,15 @@ import org.nightlabs.jjqb.xtext.jdoql.jDOQL.Where;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SingleStringJDOQLImpl#getSelect <em>Select</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SingleStringJDOQLImpl#getFrom <em>From</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SingleStringJDOQLImpl#getWhere <em>Where</em>}</li>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SingleStringJDOQLImpl#getSelectClause <em>Select Clause</em>}</li>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SingleStringJDOQLImpl#getFromClause <em>From Clause</em>}</li>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SingleStringJDOQLImpl#getWhereClause <em>Where Clause</em>}</li>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SingleStringJDOQLImpl#getVariablesClause <em>Variables Clause</em>}</li>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SingleStringJDOQLImpl#getParametersClause <em>Parameters Clause</em>}</li>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SingleStringJDOQLImpl#getImportClause <em>Import Clause</em>}</li>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SingleStringJDOQLImpl#getGroupByClause <em>Group By Clause</em>}</li>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SingleStringJDOQLImpl#getOrderByClause <em>Order By Clause</em>}</li>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SingleStringJDOQLImpl#getRangeClause <em>Range Clause</em>}</li>
  * </ul>
  * </p>
  *
@@ -38,34 +47,124 @@ import org.nightlabs.jjqb.xtext.jdoql.jDOQL.Where;
 public class SingleStringJDOQLImpl extends MinimalEObjectImpl.Container implements SingleStringJDOQL
 {
   /**
-   * The cached value of the '{@link #getSelect() <em>Select</em>}' containment reference.
+   * The cached value of the '{@link #getSelectClause() <em>Select Clause</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getSelect()
+   * @see #getSelectClause()
    * @generated
    * @ordered
    */
-  protected Select select;
+  protected SelectClause selectClause;
 
   /**
-   * The cached value of the '{@link #getFrom() <em>From</em>}' containment reference.
+   * The cached value of the '{@link #getFromClause() <em>From Clause</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getFrom()
+   * @see #getFromClause()
    * @generated
    * @ordered
    */
-  protected From from;
+  protected FromClause fromClause;
 
   /**
-   * The cached value of the '{@link #getWhere() <em>Where</em>}' containment reference.
+   * The cached value of the '{@link #getWhereClause() <em>Where Clause</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getWhere()
+   * @see #getWhereClause()
    * @generated
    * @ordered
    */
-  protected Where where;
+  protected WhereClause whereClause;
+
+  /**
+   * The cached value of the '{@link #getVariablesClause() <em>Variables Clause</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getVariablesClause()
+   * @generated
+   * @ordered
+   */
+  protected VariablesClause variablesClause;
+
+  /**
+   * The cached value of the '{@link #getParametersClause() <em>Parameters Clause</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getParametersClause()
+   * @generated
+   * @ordered
+   */
+  protected ParametersClause parametersClause;
+
+  /**
+   * The cached value of the '{@link #getImportClause() <em>Import Clause</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getImportClause()
+   * @generated
+   * @ordered
+   */
+  protected ImportClause importClause;
+
+  /**
+   * The default value of the '{@link #getGroupByClause() <em>Group By Clause</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getGroupByClause()
+   * @generated
+   * @ordered
+   */
+  protected static final String GROUP_BY_CLAUSE_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getGroupByClause() <em>Group By Clause</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getGroupByClause()
+   * @generated
+   * @ordered
+   */
+  protected String groupByClause = GROUP_BY_CLAUSE_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getOrderByClause() <em>Order By Clause</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getOrderByClause()
+   * @generated
+   * @ordered
+   */
+  protected static final String ORDER_BY_CLAUSE_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getOrderByClause() <em>Order By Clause</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getOrderByClause()
+   * @generated
+   * @ordered
+   */
+  protected String orderByClause = ORDER_BY_CLAUSE_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getRangeClause() <em>Range Clause</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getRangeClause()
+   * @generated
+   * @ordered
+   */
+  protected static final String RANGE_CLAUSE_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getRangeClause() <em>Range Clause</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getRangeClause()
+   * @generated
+   * @ordered
+   */
+  protected String rangeClause = RANGE_CLAUSE_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -93,9 +192,9 @@ public class SingleStringJDOQLImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public Select getSelect()
+  public SelectClause getSelectClause()
   {
-    return select;
+    return selectClause;
   }
 
   /**
@@ -103,13 +202,13 @@ public class SingleStringJDOQLImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetSelect(Select newSelect, NotificationChain msgs)
+  public NotificationChain basicSetSelectClause(SelectClause newSelectClause, NotificationChain msgs)
   {
-    Select oldSelect = select;
-    select = newSelect;
+    SelectClause oldSelectClause = selectClause;
+    selectClause = newSelectClause;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JDOQLPackage.SINGLE_STRING_JDOQL__SELECT, oldSelect, newSelect);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JDOQLPackage.SINGLE_STRING_JDOQL__SELECT_CLAUSE, oldSelectClause, newSelectClause);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -120,20 +219,20 @@ public class SingleStringJDOQLImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setSelect(Select newSelect)
+  public void setSelectClause(SelectClause newSelectClause)
   {
-    if (newSelect != select)
+    if (newSelectClause != selectClause)
     {
       NotificationChain msgs = null;
-      if (select != null)
-        msgs = ((InternalEObject)select).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JDOQLPackage.SINGLE_STRING_JDOQL__SELECT, null, msgs);
-      if (newSelect != null)
-        msgs = ((InternalEObject)newSelect).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JDOQLPackage.SINGLE_STRING_JDOQL__SELECT, null, msgs);
-      msgs = basicSetSelect(newSelect, msgs);
+      if (selectClause != null)
+        msgs = ((InternalEObject)selectClause).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JDOQLPackage.SINGLE_STRING_JDOQL__SELECT_CLAUSE, null, msgs);
+      if (newSelectClause != null)
+        msgs = ((InternalEObject)newSelectClause).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JDOQLPackage.SINGLE_STRING_JDOQL__SELECT_CLAUSE, null, msgs);
+      msgs = basicSetSelectClause(newSelectClause, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, JDOQLPackage.SINGLE_STRING_JDOQL__SELECT, newSelect, newSelect));
+      eNotify(new ENotificationImpl(this, Notification.SET, JDOQLPackage.SINGLE_STRING_JDOQL__SELECT_CLAUSE, newSelectClause, newSelectClause));
   }
 
   /**
@@ -141,9 +240,9 @@ public class SingleStringJDOQLImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public From getFrom()
+  public FromClause getFromClause()
   {
-    return from;
+    return fromClause;
   }
 
   /**
@@ -151,13 +250,13 @@ public class SingleStringJDOQLImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetFrom(From newFrom, NotificationChain msgs)
+  public NotificationChain basicSetFromClause(FromClause newFromClause, NotificationChain msgs)
   {
-    From oldFrom = from;
-    from = newFrom;
+    FromClause oldFromClause = fromClause;
+    fromClause = newFromClause;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JDOQLPackage.SINGLE_STRING_JDOQL__FROM, oldFrom, newFrom);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JDOQLPackage.SINGLE_STRING_JDOQL__FROM_CLAUSE, oldFromClause, newFromClause);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -168,20 +267,20 @@ public class SingleStringJDOQLImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setFrom(From newFrom)
+  public void setFromClause(FromClause newFromClause)
   {
-    if (newFrom != from)
+    if (newFromClause != fromClause)
     {
       NotificationChain msgs = null;
-      if (from != null)
-        msgs = ((InternalEObject)from).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JDOQLPackage.SINGLE_STRING_JDOQL__FROM, null, msgs);
-      if (newFrom != null)
-        msgs = ((InternalEObject)newFrom).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JDOQLPackage.SINGLE_STRING_JDOQL__FROM, null, msgs);
-      msgs = basicSetFrom(newFrom, msgs);
+      if (fromClause != null)
+        msgs = ((InternalEObject)fromClause).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JDOQLPackage.SINGLE_STRING_JDOQL__FROM_CLAUSE, null, msgs);
+      if (newFromClause != null)
+        msgs = ((InternalEObject)newFromClause).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JDOQLPackage.SINGLE_STRING_JDOQL__FROM_CLAUSE, null, msgs);
+      msgs = basicSetFromClause(newFromClause, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, JDOQLPackage.SINGLE_STRING_JDOQL__FROM, newFrom, newFrom));
+      eNotify(new ENotificationImpl(this, Notification.SET, JDOQLPackage.SINGLE_STRING_JDOQL__FROM_CLAUSE, newFromClause, newFromClause));
   }
 
   /**
@@ -189,9 +288,9 @@ public class SingleStringJDOQLImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public Where getWhere()
+  public WhereClause getWhereClause()
   {
-    return where;
+    return whereClause;
   }
 
   /**
@@ -199,13 +298,13 @@ public class SingleStringJDOQLImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetWhere(Where newWhere, NotificationChain msgs)
+  public NotificationChain basicSetWhereClause(WhereClause newWhereClause, NotificationChain msgs)
   {
-    Where oldWhere = where;
-    where = newWhere;
+    WhereClause oldWhereClause = whereClause;
+    whereClause = newWhereClause;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JDOQLPackage.SINGLE_STRING_JDOQL__WHERE, oldWhere, newWhere);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JDOQLPackage.SINGLE_STRING_JDOQL__WHERE_CLAUSE, oldWhereClause, newWhereClause);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -216,20 +315,233 @@ public class SingleStringJDOQLImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setWhere(Where newWhere)
+  public void setWhereClause(WhereClause newWhereClause)
   {
-    if (newWhere != where)
+    if (newWhereClause != whereClause)
     {
       NotificationChain msgs = null;
-      if (where != null)
-        msgs = ((InternalEObject)where).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JDOQLPackage.SINGLE_STRING_JDOQL__WHERE, null, msgs);
-      if (newWhere != null)
-        msgs = ((InternalEObject)newWhere).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JDOQLPackage.SINGLE_STRING_JDOQL__WHERE, null, msgs);
-      msgs = basicSetWhere(newWhere, msgs);
+      if (whereClause != null)
+        msgs = ((InternalEObject)whereClause).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JDOQLPackage.SINGLE_STRING_JDOQL__WHERE_CLAUSE, null, msgs);
+      if (newWhereClause != null)
+        msgs = ((InternalEObject)newWhereClause).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JDOQLPackage.SINGLE_STRING_JDOQL__WHERE_CLAUSE, null, msgs);
+      msgs = basicSetWhereClause(newWhereClause, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, JDOQLPackage.SINGLE_STRING_JDOQL__WHERE, newWhere, newWhere));
+      eNotify(new ENotificationImpl(this, Notification.SET, JDOQLPackage.SINGLE_STRING_JDOQL__WHERE_CLAUSE, newWhereClause, newWhereClause));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public VariablesClause getVariablesClause()
+  {
+    return variablesClause;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetVariablesClause(VariablesClause newVariablesClause, NotificationChain msgs)
+  {
+    VariablesClause oldVariablesClause = variablesClause;
+    variablesClause = newVariablesClause;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JDOQLPackage.SINGLE_STRING_JDOQL__VARIABLES_CLAUSE, oldVariablesClause, newVariablesClause);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setVariablesClause(VariablesClause newVariablesClause)
+  {
+    if (newVariablesClause != variablesClause)
+    {
+      NotificationChain msgs = null;
+      if (variablesClause != null)
+        msgs = ((InternalEObject)variablesClause).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JDOQLPackage.SINGLE_STRING_JDOQL__VARIABLES_CLAUSE, null, msgs);
+      if (newVariablesClause != null)
+        msgs = ((InternalEObject)newVariablesClause).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JDOQLPackage.SINGLE_STRING_JDOQL__VARIABLES_CLAUSE, null, msgs);
+      msgs = basicSetVariablesClause(newVariablesClause, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, JDOQLPackage.SINGLE_STRING_JDOQL__VARIABLES_CLAUSE, newVariablesClause, newVariablesClause));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ParametersClause getParametersClause()
+  {
+    return parametersClause;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetParametersClause(ParametersClause newParametersClause, NotificationChain msgs)
+  {
+    ParametersClause oldParametersClause = parametersClause;
+    parametersClause = newParametersClause;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JDOQLPackage.SINGLE_STRING_JDOQL__PARAMETERS_CLAUSE, oldParametersClause, newParametersClause);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setParametersClause(ParametersClause newParametersClause)
+  {
+    if (newParametersClause != parametersClause)
+    {
+      NotificationChain msgs = null;
+      if (parametersClause != null)
+        msgs = ((InternalEObject)parametersClause).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JDOQLPackage.SINGLE_STRING_JDOQL__PARAMETERS_CLAUSE, null, msgs);
+      if (newParametersClause != null)
+        msgs = ((InternalEObject)newParametersClause).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JDOQLPackage.SINGLE_STRING_JDOQL__PARAMETERS_CLAUSE, null, msgs);
+      msgs = basicSetParametersClause(newParametersClause, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, JDOQLPackage.SINGLE_STRING_JDOQL__PARAMETERS_CLAUSE, newParametersClause, newParametersClause));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ImportClause getImportClause()
+  {
+    return importClause;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetImportClause(ImportClause newImportClause, NotificationChain msgs)
+  {
+    ImportClause oldImportClause = importClause;
+    importClause = newImportClause;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JDOQLPackage.SINGLE_STRING_JDOQL__IMPORT_CLAUSE, oldImportClause, newImportClause);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setImportClause(ImportClause newImportClause)
+  {
+    if (newImportClause != importClause)
+    {
+      NotificationChain msgs = null;
+      if (importClause != null)
+        msgs = ((InternalEObject)importClause).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JDOQLPackage.SINGLE_STRING_JDOQL__IMPORT_CLAUSE, null, msgs);
+      if (newImportClause != null)
+        msgs = ((InternalEObject)newImportClause).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JDOQLPackage.SINGLE_STRING_JDOQL__IMPORT_CLAUSE, null, msgs);
+      msgs = basicSetImportClause(newImportClause, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, JDOQLPackage.SINGLE_STRING_JDOQL__IMPORT_CLAUSE, newImportClause, newImportClause));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getGroupByClause()
+  {
+    return groupByClause;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setGroupByClause(String newGroupByClause)
+  {
+    String oldGroupByClause = groupByClause;
+    groupByClause = newGroupByClause;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, JDOQLPackage.SINGLE_STRING_JDOQL__GROUP_BY_CLAUSE, oldGroupByClause, groupByClause));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getOrderByClause()
+  {
+    return orderByClause;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setOrderByClause(String newOrderByClause)
+  {
+    String oldOrderByClause = orderByClause;
+    orderByClause = newOrderByClause;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, JDOQLPackage.SINGLE_STRING_JDOQL__ORDER_BY_CLAUSE, oldOrderByClause, orderByClause));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getRangeClause()
+  {
+    return rangeClause;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setRangeClause(String newRangeClause)
+  {
+    String oldRangeClause = rangeClause;
+    rangeClause = newRangeClause;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, JDOQLPackage.SINGLE_STRING_JDOQL__RANGE_CLAUSE, oldRangeClause, rangeClause));
   }
 
   /**
@@ -242,12 +554,18 @@ public class SingleStringJDOQLImpl extends MinimalEObjectImpl.Container implemen
   {
     switch (featureID)
     {
-      case JDOQLPackage.SINGLE_STRING_JDOQL__SELECT:
-        return basicSetSelect(null, msgs);
-      case JDOQLPackage.SINGLE_STRING_JDOQL__FROM:
-        return basicSetFrom(null, msgs);
-      case JDOQLPackage.SINGLE_STRING_JDOQL__WHERE:
-        return basicSetWhere(null, msgs);
+      case JDOQLPackage.SINGLE_STRING_JDOQL__SELECT_CLAUSE:
+        return basicSetSelectClause(null, msgs);
+      case JDOQLPackage.SINGLE_STRING_JDOQL__FROM_CLAUSE:
+        return basicSetFromClause(null, msgs);
+      case JDOQLPackage.SINGLE_STRING_JDOQL__WHERE_CLAUSE:
+        return basicSetWhereClause(null, msgs);
+      case JDOQLPackage.SINGLE_STRING_JDOQL__VARIABLES_CLAUSE:
+        return basicSetVariablesClause(null, msgs);
+      case JDOQLPackage.SINGLE_STRING_JDOQL__PARAMETERS_CLAUSE:
+        return basicSetParametersClause(null, msgs);
+      case JDOQLPackage.SINGLE_STRING_JDOQL__IMPORT_CLAUSE:
+        return basicSetImportClause(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -262,12 +580,24 @@ public class SingleStringJDOQLImpl extends MinimalEObjectImpl.Container implemen
   {
     switch (featureID)
     {
-      case JDOQLPackage.SINGLE_STRING_JDOQL__SELECT:
-        return getSelect();
-      case JDOQLPackage.SINGLE_STRING_JDOQL__FROM:
-        return getFrom();
-      case JDOQLPackage.SINGLE_STRING_JDOQL__WHERE:
-        return getWhere();
+      case JDOQLPackage.SINGLE_STRING_JDOQL__SELECT_CLAUSE:
+        return getSelectClause();
+      case JDOQLPackage.SINGLE_STRING_JDOQL__FROM_CLAUSE:
+        return getFromClause();
+      case JDOQLPackage.SINGLE_STRING_JDOQL__WHERE_CLAUSE:
+        return getWhereClause();
+      case JDOQLPackage.SINGLE_STRING_JDOQL__VARIABLES_CLAUSE:
+        return getVariablesClause();
+      case JDOQLPackage.SINGLE_STRING_JDOQL__PARAMETERS_CLAUSE:
+        return getParametersClause();
+      case JDOQLPackage.SINGLE_STRING_JDOQL__IMPORT_CLAUSE:
+        return getImportClause();
+      case JDOQLPackage.SINGLE_STRING_JDOQL__GROUP_BY_CLAUSE:
+        return getGroupByClause();
+      case JDOQLPackage.SINGLE_STRING_JDOQL__ORDER_BY_CLAUSE:
+        return getOrderByClause();
+      case JDOQLPackage.SINGLE_STRING_JDOQL__RANGE_CLAUSE:
+        return getRangeClause();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -282,14 +612,32 @@ public class SingleStringJDOQLImpl extends MinimalEObjectImpl.Container implemen
   {
     switch (featureID)
     {
-      case JDOQLPackage.SINGLE_STRING_JDOQL__SELECT:
-        setSelect((Select)newValue);
+      case JDOQLPackage.SINGLE_STRING_JDOQL__SELECT_CLAUSE:
+        setSelectClause((SelectClause)newValue);
         return;
-      case JDOQLPackage.SINGLE_STRING_JDOQL__FROM:
-        setFrom((From)newValue);
+      case JDOQLPackage.SINGLE_STRING_JDOQL__FROM_CLAUSE:
+        setFromClause((FromClause)newValue);
         return;
-      case JDOQLPackage.SINGLE_STRING_JDOQL__WHERE:
-        setWhere((Where)newValue);
+      case JDOQLPackage.SINGLE_STRING_JDOQL__WHERE_CLAUSE:
+        setWhereClause((WhereClause)newValue);
+        return;
+      case JDOQLPackage.SINGLE_STRING_JDOQL__VARIABLES_CLAUSE:
+        setVariablesClause((VariablesClause)newValue);
+        return;
+      case JDOQLPackage.SINGLE_STRING_JDOQL__PARAMETERS_CLAUSE:
+        setParametersClause((ParametersClause)newValue);
+        return;
+      case JDOQLPackage.SINGLE_STRING_JDOQL__IMPORT_CLAUSE:
+        setImportClause((ImportClause)newValue);
+        return;
+      case JDOQLPackage.SINGLE_STRING_JDOQL__GROUP_BY_CLAUSE:
+        setGroupByClause((String)newValue);
+        return;
+      case JDOQLPackage.SINGLE_STRING_JDOQL__ORDER_BY_CLAUSE:
+        setOrderByClause((String)newValue);
+        return;
+      case JDOQLPackage.SINGLE_STRING_JDOQL__RANGE_CLAUSE:
+        setRangeClause((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -305,14 +653,32 @@ public class SingleStringJDOQLImpl extends MinimalEObjectImpl.Container implemen
   {
     switch (featureID)
     {
-      case JDOQLPackage.SINGLE_STRING_JDOQL__SELECT:
-        setSelect((Select)null);
+      case JDOQLPackage.SINGLE_STRING_JDOQL__SELECT_CLAUSE:
+        setSelectClause((SelectClause)null);
         return;
-      case JDOQLPackage.SINGLE_STRING_JDOQL__FROM:
-        setFrom((From)null);
+      case JDOQLPackage.SINGLE_STRING_JDOQL__FROM_CLAUSE:
+        setFromClause((FromClause)null);
         return;
-      case JDOQLPackage.SINGLE_STRING_JDOQL__WHERE:
-        setWhere((Where)null);
+      case JDOQLPackage.SINGLE_STRING_JDOQL__WHERE_CLAUSE:
+        setWhereClause((WhereClause)null);
+        return;
+      case JDOQLPackage.SINGLE_STRING_JDOQL__VARIABLES_CLAUSE:
+        setVariablesClause((VariablesClause)null);
+        return;
+      case JDOQLPackage.SINGLE_STRING_JDOQL__PARAMETERS_CLAUSE:
+        setParametersClause((ParametersClause)null);
+        return;
+      case JDOQLPackage.SINGLE_STRING_JDOQL__IMPORT_CLAUSE:
+        setImportClause((ImportClause)null);
+        return;
+      case JDOQLPackage.SINGLE_STRING_JDOQL__GROUP_BY_CLAUSE:
+        setGroupByClause(GROUP_BY_CLAUSE_EDEFAULT);
+        return;
+      case JDOQLPackage.SINGLE_STRING_JDOQL__ORDER_BY_CLAUSE:
+        setOrderByClause(ORDER_BY_CLAUSE_EDEFAULT);
+        return;
+      case JDOQLPackage.SINGLE_STRING_JDOQL__RANGE_CLAUSE:
+        setRangeClause(RANGE_CLAUSE_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -328,14 +694,47 @@ public class SingleStringJDOQLImpl extends MinimalEObjectImpl.Container implemen
   {
     switch (featureID)
     {
-      case JDOQLPackage.SINGLE_STRING_JDOQL__SELECT:
-        return select != null;
-      case JDOQLPackage.SINGLE_STRING_JDOQL__FROM:
-        return from != null;
-      case JDOQLPackage.SINGLE_STRING_JDOQL__WHERE:
-        return where != null;
+      case JDOQLPackage.SINGLE_STRING_JDOQL__SELECT_CLAUSE:
+        return selectClause != null;
+      case JDOQLPackage.SINGLE_STRING_JDOQL__FROM_CLAUSE:
+        return fromClause != null;
+      case JDOQLPackage.SINGLE_STRING_JDOQL__WHERE_CLAUSE:
+        return whereClause != null;
+      case JDOQLPackage.SINGLE_STRING_JDOQL__VARIABLES_CLAUSE:
+        return variablesClause != null;
+      case JDOQLPackage.SINGLE_STRING_JDOQL__PARAMETERS_CLAUSE:
+        return parametersClause != null;
+      case JDOQLPackage.SINGLE_STRING_JDOQL__IMPORT_CLAUSE:
+        return importClause != null;
+      case JDOQLPackage.SINGLE_STRING_JDOQL__GROUP_BY_CLAUSE:
+        return GROUP_BY_CLAUSE_EDEFAULT == null ? groupByClause != null : !GROUP_BY_CLAUSE_EDEFAULT.equals(groupByClause);
+      case JDOQLPackage.SINGLE_STRING_JDOQL__ORDER_BY_CLAUSE:
+        return ORDER_BY_CLAUSE_EDEFAULT == null ? orderByClause != null : !ORDER_BY_CLAUSE_EDEFAULT.equals(orderByClause);
+      case JDOQLPackage.SINGLE_STRING_JDOQL__RANGE_CLAUSE:
+        return RANGE_CLAUSE_EDEFAULT == null ? rangeClause != null : !RANGE_CLAUSE_EDEFAULT.equals(rangeClause);
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (groupByClause: ");
+    result.append(groupByClause);
+    result.append(", orderByClause: ");
+    result.append(orderByClause);
+    result.append(", rangeClause: ");
+    result.append(rangeClause);
+    result.append(')');
+    return result.toString();
   }
 
 } //SingleStringJDOQLImpl

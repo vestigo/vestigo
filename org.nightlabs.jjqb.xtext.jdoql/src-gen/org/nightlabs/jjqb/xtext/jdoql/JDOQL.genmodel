@@ -9,57 +9,107 @@
     editorPluginID="org.nightlabs.jjqb.xtext.jdoql.editor">
   <genPackages prefix="JDOQL" basePackage="org.nightlabs.jjqb.xtext.jdoql" disposableProviderFactory="true"
       ecorePackage="JDOQL.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="JDOQL.ecore#//UnaryOperator">
+      <genEnumLiterals ecoreEnumLiteral="JDOQL.ecore#//UnaryOperator/positive"/>
+      <genEnumLiterals ecoreEnumLiteral="JDOQL.ecore#//UnaryOperator/negative"/>
+      <genEnumLiterals ecoreEnumLiteral="JDOQL.ecore#//UnaryOperator/bitwiseNot"/>
+      <genEnumLiterals ecoreEnumLiteral="JDOQL.ecore#//UnaryOperator/logicalNot"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="JDOQL.ecore#//AdditionOperator">
+      <genEnumLiterals ecoreEnumLiteral="JDOQL.ecore#//AdditionOperator/add"/>
+      <genEnumLiterals ecoreEnumLiteral="JDOQL.ecore#//AdditionOperator/subtract"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="JDOQL.ecore#//MultiplicationOperator">
+      <genEnumLiterals ecoreEnumLiteral="JDOQL.ecore#//MultiplicationOperator/multiply"/>
+      <genEnumLiterals ecoreEnumLiteral="JDOQL.ecore#//MultiplicationOperator/divide"/>
+      <genEnumLiterals ecoreEnumLiteral="JDOQL.ecore#//MultiplicationOperator/modulo"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="JDOQL.ecore#//ComparisonOperator">
+      <genEnumLiterals ecoreEnumLiteral="JDOQL.ecore#//ComparisonOperator/lessThen"/>
+      <genEnumLiterals ecoreEnumLiteral="JDOQL.ecore#//ComparisonOperator/greaterThen"/>
+      <genEnumLiterals ecoreEnumLiteral="JDOQL.ecore#//ComparisonOperator/lessEqual"/>
+      <genEnumLiterals ecoreEnumLiteral="JDOQL.ecore#//ComparisonOperator/greaterEqual"/>
+      <genEnumLiterals ecoreEnumLiteral="JDOQL.ecore#//ComparisonOperator/equal"/>
+      <genEnumLiterals ecoreEnumLiteral="JDOQL.ecore#//ComparisonOperator/notEqual"/>
+      <genEnumLiterals ecoreEnumLiteral="JDOQL.ecore#//ComparisonOperator/instanceof"/>
+    </genEnums>
     <genClasses ecoreClass="JDOQL.ecore#//SingleStringJDOQL">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//SingleStringJDOQL/select"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//SingleStringJDOQL/from"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//SingleStringJDOQL/where"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//SingleStringJDOQL/selectClause"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//SingleStringJDOQL/fromClause"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//SingleStringJDOQL/whereClause"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//SingleStringJDOQL/variablesClause"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//SingleStringJDOQL/parametersClause"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//SingleStringJDOQL/importClause"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDOQL.ecore#//SingleStringJDOQL/groupByClause"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDOQL.ecore#//SingleStringJDOQL/orderByClause"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDOQL.ecore#//SingleStringJDOQL/rangeClause"/>
     </genClasses>
-    <genClasses ecoreClass="JDOQL.ecore#//Select">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//Select/resultClause"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//Select/intoClause"/>
+    <genClasses ecoreClass="JDOQL.ecore#//SelectClause">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDOQL.ecore#//SelectClause/isUnique"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//SelectClause/resultClause"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//SelectClause/intoClause"/>
     </genClasses>
     <genClasses ecoreClass="JDOQL.ecore#//ResultClause">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDOQL.ecore#//ResultClause/isDistinct"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//ResultClause/resultSpecs"/>
     </genClasses>
     <genClasses ecoreClass="JDOQL.ecore#//IntoClause">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDOQL.ecore#//IntoClause/resultClassName"/>
     </genClasses>
-    <genClasses ecoreClass="JDOQL.ecore#//From">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDOQL.ecore#//From/candidateClassName"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//From/excludeClause"/>
-    </genClasses>
-    <genClasses ecoreClass="JDOQL.ecore#//Where">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//Where/e"/>
-    </genClasses>
-    <genClasses ecoreClass="JDOQL.ecore#//ExcludeClause">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDOQL.ecore#//ExcludeClause/excludeSubclasses"/>
-    </genClasses>
-    <genClasses ecoreClass="JDOQL.ecore#//ResultSpecs"/>
     <genClasses ecoreClass="JDOQL.ecore#//ResultSpec"/>
     <genClasses ecoreClass="JDOQL.ecore#//ResultNaming">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDOQL.ecore#//ResultNaming/identifier"/>
     </genClasses>
-    <genClasses ecoreClass="JDOQL.ecore#//BooleanExpression">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//BooleanExpression/left"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDOQL.ecore#//BooleanExpression/op"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//BooleanExpression/right"/>
+    <genClasses ecoreClass="JDOQL.ecore#//FromClause">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDOQL.ecore#//FromClause/candidateClassName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDOQL.ecore#//FromClause/isExcludeSubclasses"/>
+    </genClasses>
+    <genClasses ecoreClass="JDOQL.ecore#//WhereClause">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//WhereClause/filter"/>
+    </genClasses>
+    <genClasses ecoreClass="JDOQL.ecore#//VariablesClause">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//VariablesClause/variableDeclarations"/>
+    </genClasses>
+    <genClasses ecoreClass="JDOQL.ecore#//VariableDeclaration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDOQL.ecore#//VariableDeclaration/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDOQL.ecore#//VariableDeclaration/variableName"/>
+    </genClasses>
+    <genClasses ecoreClass="JDOQL.ecore#//ParametersClause">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//ParametersClause/parameterDeclarations"/>
+    </genClasses>
+    <genClasses ecoreClass="JDOQL.ecore#//ParameterDeclaration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDOQL.ecore#//ParameterDeclaration/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//ParameterDeclaration/declaredParameterName"/>
+    </genClasses>
+    <genClasses ecoreClass="JDOQL.ecore#//DeclaredParameterName">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDOQL.ecore#//DeclaredParameterName/name"/>
+    </genClasses>
+    <genClasses ecoreClass="JDOQL.ecore#//ImportClause">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDOQL.ecore#//ImportClause/importDeclarations"/>
     </genClasses>
     <genClasses ecoreClass="JDOQL.ecore#//Expression">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//Expression/resultNaming"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//Expression/left"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDOQL.ecore#//Expression/op"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDOQL.ecore#//Expression/unaryOperator"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//Expression/right"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDOQL.ecore#//Expression/literal"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDOQL.ecore#//Expression/this"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDOQL.ecore#//Expression/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDOQL.ecore#//Expression/parameterName"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//Expression/left"/>
     </genClasses>
-    <genClasses ecoreClass="JDOQL.ecore#//UnaryExpression">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDOQL.ecore#//UnaryExpression/modifier"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//UnaryExpression/expression"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDOQL.ecore#//UnaryExpression/cast"/>
+    <genClasses ecoreClass="JDOQL.ecore#//ConditionalOrExpression"/>
+    <genClasses ecoreClass="JDOQL.ecore#//ConditionalAndExpression"/>
+    <genClasses ecoreClass="JDOQL.ecore#//SimpleOrExpression"/>
+    <genClasses ecoreClass="JDOQL.ecore#//SimpleAndExpression"/>
+    <genClasses ecoreClass="JDOQL.ecore#//ComparisonOperatorExpression">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDOQL.ecore#//ComparisonOperatorExpression/operator"/>
     </genClasses>
-    <genClasses ecoreClass="JDOQL.ecore#//Primary">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDOQL.ecore#//Primary/literal"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDOQL.ecore#//Primary/this"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDOQL.ecore#//Primary/classOrInterface"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//Primary/expression"/>
+    <genClasses ecoreClass="JDOQL.ecore#//AdditionExpression">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDOQL.ecore#//AdditionExpression/operator"/>
     </genClasses>
+    <genClasses ecoreClass="JDOQL.ecore#//MultiplicationExpression">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDOQL.ecore#//MultiplicationExpression/operator"/>
+    </genClasses>
+    <genClasses ecoreClass="JDOQL.ecore#//FieldAccessExpression"/>
   </genPackages>
 </genmodel:GenModel>

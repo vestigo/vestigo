@@ -21,6 +21,8 @@ import org.nightlabs.jjqb.xtext.jpql.jPQL.AvgAggregate;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.BetweenExpression;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.BooleanExpression;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.CollectionExpression;
+import org.nightlabs.jjqb.xtext.jpql.jPQL.ComparisonOperator;
+import org.nightlabs.jjqb.xtext.jpql.jPQL.ComparisonOperatorExpression;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.CountAggregate;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.DeleteClause;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.DeleteStatement;
@@ -52,8 +54,6 @@ import org.nightlabs.jjqb.xtext.jpql.jPQL.MaxAggregate;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.MinAggregate;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.NullComparisonExpression;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.NullExpression;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.Operator;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.OperatorExpression;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.OrExpression;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.OrderClause;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.OrderItem;
@@ -327,7 +327,7 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass operatorExpressionEClass = null;
+  private EClass comparisonOperatorExpressionEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -502,7 +502,7 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EEnum operatorEEnum = null;
+  private EEnum comparisonOperatorEEnum = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -1302,9 +1302,9 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getOperatorExpression()
+  public EClass getComparisonOperatorExpression()
   {
-    return operatorExpressionEClass;
+    return comparisonOperatorExpressionEClass;
   }
 
   /**
@@ -1312,9 +1312,9 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getOperatorExpression_Lhs()
+  public EReference getComparisonOperatorExpression_Lhs()
   {
-    return (EReference)operatorExpressionEClass.getEStructuralFeatures().get(0);
+    return (EReference)comparisonOperatorExpressionEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1322,9 +1322,9 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getOperatorExpression_Operator()
+  public EAttribute getComparisonOperatorExpression_Operator()
   {
-    return (EAttribute)operatorExpressionEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)comparisonOperatorExpressionEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1332,9 +1332,9 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getOperatorExpression_Rhs()
+  public EReference getComparisonOperatorExpression_Rhs()
   {
-    return (EReference)operatorExpressionEClass.getEStructuralFeatures().get(2);
+    return (EReference)comparisonOperatorExpressionEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -1922,9 +1922,9 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EEnum getOperator()
+  public EEnum getComparisonOperator()
   {
-    return operatorEEnum;
+    return comparisonOperatorEEnum;
   }
 
   /**
@@ -2064,10 +2064,10 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
 
     expressionEClass = createEClass(EXPRESSION);
 
-    operatorExpressionEClass = createEClass(OPERATOR_EXPRESSION);
-    createEReference(operatorExpressionEClass, OPERATOR_EXPRESSION__LHS);
-    createEAttribute(operatorExpressionEClass, OPERATOR_EXPRESSION__OPERATOR);
-    createEReference(operatorExpressionEClass, OPERATOR_EXPRESSION__RHS);
+    comparisonOperatorExpressionEClass = createEClass(COMPARISON_OPERATOR_EXPRESSION);
+    createEReference(comparisonOperatorExpressionEClass, COMPARISON_OPERATOR_EXPRESSION__LHS);
+    createEAttribute(comparisonOperatorExpressionEClass, COMPARISON_OPERATOR_EXPRESSION__OPERATOR);
+    createEReference(comparisonOperatorExpressionEClass, COMPARISON_OPERATOR_EXPRESSION__RHS);
 
     existsExpressionEClass = createEClass(EXISTS_EXPRESSION);
     createEAttribute(existsExpressionEClass, EXISTS_EXPRESSION__IS_NOT);
@@ -2152,7 +2152,7 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
     createEReference(andExpressionEClass, AND_EXPRESSION__ENTRIES);
 
     // Create enums
-    operatorEEnum = createEEnum(OPERATOR);
+    comparisonOperatorEEnum = createEEnum(COMPARISON_OPERATOR);
   }
 
   /**
@@ -2200,7 +2200,7 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
     joinEClass.getESuperTypes().add(this.getFromJoin());
     leftJoinEClass.getESuperTypes().add(this.getFromJoin());
     innerJoinEClass.getESuperTypes().add(this.getFromJoin());
-    operatorExpressionEClass.getESuperTypes().add(this.getExpression());
+    comparisonOperatorExpressionEClass.getESuperTypes().add(this.getExpression());
     existsExpressionEClass.getESuperTypes().add(this.getExpression());
     allExpressionEClass.getESuperTypes().add(this.getExpression());
     anyExpressionEClass.getESuperTypes().add(this.getExpression());
@@ -2334,10 +2334,10 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
 
     initEClass(expressionEClass, Expression.class, "Expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-    initEClass(operatorExpressionEClass, OperatorExpression.class, "OperatorExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getOperatorExpression_Lhs(), this.getVariable(), null, "lhs", null, 0, 1, OperatorExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getOperatorExpression_Operator(), this.getOperator(), "operator", null, 0, 1, OperatorExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getOperatorExpression_Rhs(), this.getExpressionTerm(), null, "rhs", null, 0, 1, OperatorExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(comparisonOperatorExpressionEClass, ComparisonOperatorExpression.class, "ComparisonOperatorExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getComparisonOperatorExpression_Lhs(), this.getVariable(), null, "lhs", null, 0, 1, ComparisonOperatorExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getComparisonOperatorExpression_Operator(), this.getComparisonOperator(), "operator", null, 0, 1, ComparisonOperatorExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getComparisonOperatorExpression_Rhs(), this.getExpressionTerm(), null, "rhs", null, 0, 1, ComparisonOperatorExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(existsExpressionEClass, ExistsExpression.class, "ExistsExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getExistsExpression_IsNot(), ecorePackage.getEBoolean(), "isNot", null, 0, 1, ExistsExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2422,13 +2422,13 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
     initEReference(getAndExpression_Entries(), this.getExpression(), null, "entries", null, 0, -1, AndExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Initialize enums and add enum literals
-    initEEnum(operatorEEnum, Operator.class, "Operator");
-    addEEnumLiteral(operatorEEnum, Operator.LESS_THEN);
-    addEEnumLiteral(operatorEEnum, Operator.GREATER_THEN);
-    addEEnumLiteral(operatorEEnum, Operator.LESS_EQUAL);
-    addEEnumLiteral(operatorEEnum, Operator.GREATER_EQUAL);
-    addEEnumLiteral(operatorEEnum, Operator.EQUAL);
-    addEEnumLiteral(operatorEEnum, Operator.NOT_EQUAL);
+    initEEnum(comparisonOperatorEEnum, ComparisonOperator.class, "ComparisonOperator");
+    addEEnumLiteral(comparisonOperatorEEnum, ComparisonOperator.LESS_THEN);
+    addEEnumLiteral(comparisonOperatorEEnum, ComparisonOperator.GREATER_THEN);
+    addEEnumLiteral(comparisonOperatorEEnum, ComparisonOperator.LESS_EQUAL);
+    addEEnumLiteral(comparisonOperatorEEnum, ComparisonOperator.GREATER_EQUAL);
+    addEEnumLiteral(comparisonOperatorEEnum, ComparisonOperator.EQUAL);
+    addEEnumLiteral(comparisonOperatorEEnum, ComparisonOperator.NOT_EQUAL);
 
     // Create resource
     createResource(eNS_URI);

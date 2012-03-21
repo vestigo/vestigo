@@ -248,9 +248,9 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
         return createExpressionAdapter();
       }
       @Override
-      public Adapter caseOperatorExpression(OperatorExpression object)
+      public Adapter caseComparisonOperatorExpression(ComparisonOperatorExpression object)
       {
-        return createOperatorExpressionAdapter();
+        return createComparisonOperatorExpressionAdapter();
       }
       @Override
       public Adapter caseExistsExpression(ExistsExpression object)
@@ -905,16 +905,16 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.OperatorExpression <em>Operator Expression</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.ComparisonOperatorExpression <em>Comparison Operator Expression</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.OperatorExpression
+   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.ComparisonOperatorExpression
    * @generated
    */
-  public Adapter createOperatorExpressionAdapter()
+  public Adapter createComparisonOperatorExpressionAdapter()
   {
     return null;
   }

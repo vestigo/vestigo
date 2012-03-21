@@ -9,24 +9,49 @@
         <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//SingleStringJDOQL"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Assignment" feature="select" operator="=">
+        <elements xsi:type="xtext:Assignment" feature="selectClause" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.1"/>
         </elements>
-        <elements xsi:type="xtext:Assignment" feature="from" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.4"/>
+        <elements xsi:type="xtext:Assignment" feature="fromClause" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.6"/>
         </elements>
-        <elements xsi:type="xtext:Assignment" cardinality="?" feature="where" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.5"/>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="whereClause" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.7"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="variablesClause" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.8"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="parametersClause" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.11"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="importClause" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.15"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="groupByClause" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.17"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="orderByClause" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.18"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="rangeClause" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.19"/>
         </elements>
       </alternatives>
     </rules>
-    <rules xsi:type="xtext:ParserRule" name="Select">
+    <rules xsi:type="xtext:ParserRule" name="SelectClause">
       <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Select"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//SelectClause"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Keyword" value="select"/>
-        <elements xsi:type="xtext:Keyword" cardinality="?" value="unique"/>
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.0">
+            <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//SelectClause"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="SELECT"/>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="isUnique" operator="?=">
+          <terminal xsi:type="xtext:Keyword" value="UNIQUE"/>
+        </elements>
         <elements xsi:type="xtext:Assignment" cardinality="?" feature="resultClause" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
         </elements>
@@ -40,11 +65,18 @@
         <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//ResultClause"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Keyword" cardinality="?" value="distinct"/>
-        <elements xsi:type="xtext:Assignment" feature="resultSpecs" operator="+=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.10"/>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="isDistinct" operator="?=">
+          <terminal xsi:type="xtext:Keyword" value="DISTINCT"/>
         </elements>
-        <elements xsi:type="xtext:Keyword" cardinality="?" value=","/>
+        <elements xsi:type="xtext:Assignment" feature="resultSpecs" operator="+=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.4"/>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="*">
+          <elements xsi:type="xtext:Keyword" value=","/>
+          <elements xsi:type="xtext:Assignment" feature="resultSpecs" operator="+=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.4"/>
+          </elements>
+        </elements>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="IntoClause">
@@ -52,76 +84,10 @@
         <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//IntoClause"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Keyword" value="into"/>
+        <elements xsi:type="xtext:Keyword" value="INTO"/>
         <elements xsi:type="xtext:Assignment" feature="resultClassName" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.9"/>
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.47"/>
         </elements>
-      </alternatives>
-    </rules>
-    <rules xsi:type="xtext:ParserRule" name="From">
-      <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//From"/>
-      </type>
-      <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Keyword" value="from"/>
-        <elements xsi:type="xtext:Assignment" feature="candidateClassName" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.8"/>
-        </elements>
-        <elements xsi:type="xtext:Assignment" cardinality="?" feature="excludeClause" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.6"/>
-        </elements>
-      </alternatives>
-    </rules>
-    <rules xsi:type="xtext:ParserRule" name="Where">
-      <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Where"/>
-      </type>
-      <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Keyword" value="where"/>
-        <elements xsi:type="xtext:Assignment" feature="e" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.13"/>
-        </elements>
-      </alternatives>
-    </rules>
-    <rules xsi:type="xtext:ParserRule" name="ExcludeClause">
-      <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//ExcludeClause"/>
-      </type>
-      <alternatives xsi:type="xtext:Assignment" feature="excludeSubclasses" operator="=">
-        <terminal xsi:type="xtext:Keyword" value="exclude subclasses"/>
-      </alternatives>
-    </rules>
-    <rules xsi:type="xtext:ParserRule" name="QualifiedIdentifier">
-      <type metamodel="/1/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      </type>
-      <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
-        <elements xsi:type="xtext:Group" cardinality="*">
-          <elements xsi:type="xtext:Keyword" value="."/>
-          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
-        </elements>
-      </alternatives>
-    </rules>
-    <rules xsi:type="xtext:ParserRule" name="CandidateClassName">
-      <type metamodel="/1/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      </type>
-      <alternatives xsi:type="xtext:RuleCall" rule="/0/@rules.7"/>
-    </rules>
-    <rules xsi:type="xtext:ParserRule" name="ClassOrInterfaceName">
-      <type metamodel="/1/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      </type>
-      <alternatives xsi:type="xtext:RuleCall" rule="/0/@rules.7"/>
-    </rules>
-    <rules xsi:type="xtext:ParserRule" name="ResultSpecs">
-      <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//ResultSpecs"/>
-      </type>
-      <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.11"/>
-        <elements xsi:type="xtext:Keyword" cardinality="?" value=","/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="ResultSpec">
@@ -129,9 +95,9 @@
         <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//ResultSpec"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.15"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.20"/>
         <elements xsi:type="xtext:Assignment" cardinality="?" feature="resultNaming" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.12"/>
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.5"/>
         </elements>
       </alternatives>
     </rules>
@@ -140,102 +106,391 @@
         <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//ResultNaming"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Keyword" value="as"/>
+        <elements xsi:type="xtext:Keyword" value="AS"/>
         <elements xsi:type="xtext:Assignment" feature="identifier" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
         </elements>
       </alternatives>
     </rules>
-    <rules xsi:type="xtext:ParserRule" name="BooleanExpression">
+    <rules xsi:type="xtext:ParserRule" name="FromClause">
       <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//BooleanExpression"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//FromClause"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Assignment" feature="left" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.15"/>
+        <elements xsi:type="xtext:Keyword" value="FROM"/>
+        <elements xsi:type="xtext:Assignment" feature="candidateClassName" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.46"/>
         </elements>
-        <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Assignment" feature="op" operator="=">
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.14"/>
+        <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:Assignment" feature="isExcludeSubclasses" operator="?=">
+            <terminal xsi:type="xtext:Keyword" value="EXCLUDE"/>
           </elements>
-          <elements xsi:type="xtext:Assignment" feature="right" operator="=">
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.15"/>
-          </elements>
+          <elements xsi:type="xtext:Keyword" value="SUBCLASSES"/>
         </elements>
       </alternatives>
     </rules>
-    <rules xsi:type="xtext:ParserRule" name="BooleanOp">
+    <rules xsi:type="xtext:ParserRule" name="WhereClause">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//WhereClause"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="WHERE"/>
+        <elements xsi:type="xtext:Assignment" feature="filter" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.20"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="VariablesClause">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//VariablesClause"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="VARIABLES"/>
+        <elements xsi:type="xtext:Assignment" feature="variableDeclarations" operator="+=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.9"/>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="*">
+          <elements xsi:type="xtext:Keyword" value=";"/>
+          <elements xsi:type="xtext:Assignment" feature="variableDeclarations" operator="+=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.9"/>
+          </elements>
+        </elements>
+        <elements xsi:type="xtext:Keyword" cardinality="?" value=";"/>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="VariableDeclaration">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//VariableDeclaration"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Assignment" feature="type" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.33"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="variableName" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.10"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="VariableName">
       <type metamodel="/1/@metamodelDeclarations.0">
         <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </type>
-      <alternatives xsi:type="xtext:Alternatives">
-        <elements xsi:type="xtext:Keyword" value=">"/>
-        <elements xsi:type="xtext:Keyword" value=">="/>
-        <elements xsi:type="xtext:Keyword" value="&lt;"/>
-        <elements xsi:type="xtext:Keyword" value="&lt;="/>
-        <elements xsi:type="xtext:Keyword" value="instanceof"/>
-        <elements xsi:type="xtext:Keyword" value="=="/>
-        <elements xsi:type="xtext:Keyword" value="!="/>
-        <elements xsi:type="xtext:Keyword" value="&amp;&amp;"/>
-        <elements xsi:type="xtext:Keyword" value="||"/>
+      <alternatives xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="ParametersClause">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//ParametersClause"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="PARAMETERS"/>
+        <elements xsi:type="xtext:Assignment" feature="parameterDeclarations" operator="+=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.12"/>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="*">
+          <elements xsi:type="xtext:Keyword" value=","/>
+          <elements xsi:type="xtext:Assignment" feature="parameterDeclarations" operator="+=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.12"/>
+          </elements>
+        </elements>
+        <elements xsi:type="xtext:Keyword" cardinality="?" value=","/>
       </alternatives>
     </rules>
-    <rules xsi:type="xtext:ParserRule" name="Expression">
+    <rules xsi:type="xtext:ParserRule" name="ParameterDeclaration">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//ParameterDeclaration"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Assignment" feature="type" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.33"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="declaredParameterName" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.13"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="DeclaredParameterName">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//DeclaredParameterName"/>
+      </type>
+      <alternatives xsi:type="xtext:Assignment" feature="name" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.14"/>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="ParameterName">
+      <type metamodel="/1/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </type>
+      <alternatives xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="ImportClause">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//ImportClause"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Assignment" feature="importDeclarations" operator="+=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.16"/>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="*">
+          <elements xsi:type="xtext:Keyword" value=";"/>
+          <elements xsi:type="xtext:Assignment" feature="importDeclarations" operator="+=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.16"/>
+          </elements>
+        </elements>
+        <elements xsi:type="xtext:Keyword" cardinality="?" value=";"/>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="ImportDeclaration">
+      <type metamodel="/1/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="import"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.45"/>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="GroupByClause">
+      <type metamodel="/1/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="GROUP"/>
+        <elements xsi:type="xtext:Keyword" value="BY"/>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="OrderByClause">
+      <type metamodel="/1/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="ORDER"/>
+        <elements xsi:type="xtext:Keyword" value="BY"/>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="RangeClause">
+      <type metamodel="/1/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </type>
+      <alternatives xsi:type="xtext:Keyword" value="RANGE"/>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="ConditionalOrExpression">
       <type metamodel="/0/@metamodelDeclarations.0">
         <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Assignment" feature="left" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.17"/>
-        </elements>
-        <elements xsi:type="xtext:Group" cardinality="?">
-          <elements xsi:type="xtext:Assignment" feature="op" operator="=">
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.16"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.21"/>
+        <elements xsi:type="xtext:Group" cardinality="*">
+          <elements xsi:type="xtext:Action" feature="left" operator="=">
+            <type metamodel="/0/@metamodelDeclarations.0">
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//ConditionalOrExpression"/>
+            </type>
           </elements>
+          <elements xsi:type="xtext:Keyword" value="||"/>
           <elements xsi:type="xtext:Assignment" feature="right" operator="=">
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.17"/>
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.21"/>
           </elements>
         </elements>
       </alternatives>
     </rules>
-    <rules xsi:type="xtext:ParserRule" name="InfixOp">
-      <type metamodel="/1/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <rules xsi:type="xtext:ParserRule" name="ConditionalAndExpression">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
       </type>
-      <alternatives xsi:type="xtext:Alternatives">
-        <elements xsi:type="xtext:Keyword" value="*"/>
-        <elements xsi:type="xtext:Keyword" value="/"/>
-        <elements xsi:type="xtext:Keyword" value="%"/>
-        <elements xsi:type="xtext:Keyword" value="+"/>
-        <elements xsi:type="xtext:Keyword" value="-"/>
-        <elements xsi:type="xtext:Keyword" value="&amp;"/>
-        <elements xsi:type="xtext:Keyword" value="|"/>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.22"/>
+        <elements xsi:type="xtext:Group" cardinality="*">
+          <elements xsi:type="xtext:Action" feature="left" operator="=">
+            <type metamodel="/0/@metamodelDeclarations.0">
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//ConditionalAndExpression"/>
+            </type>
+          </elements>
+          <elements xsi:type="xtext:Keyword" value="&amp;&amp;"/>
+          <elements xsi:type="xtext:Assignment" feature="right" operator="=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.22"/>
+          </elements>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="SimpleOrExpression">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.23"/>
+        <elements xsi:type="xtext:Group" cardinality="*">
+          <elements xsi:type="xtext:Action" feature="left" operator="=">
+            <type metamodel="/0/@metamodelDeclarations.0">
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//SimpleOrExpression"/>
+            </type>
+          </elements>
+          <elements xsi:type="xtext:Keyword" value="|"/>
+          <elements xsi:type="xtext:Assignment" feature="right" operator="=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.23"/>
+          </elements>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="SimpleAndExpression">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.24"/>
+        <elements xsi:type="xtext:Group" cardinality="*">
+          <elements xsi:type="xtext:Action" feature="left" operator="=">
+            <type metamodel="/0/@metamodelDeclarations.0">
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//SimpleAndExpression"/>
+            </type>
+          </elements>
+          <elements xsi:type="xtext:Keyword" value="&amp;"/>
+          <elements xsi:type="xtext:Assignment" feature="right" operator="=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.24"/>
+          </elements>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="ComparisonOperatorExpression">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.25"/>
+        <elements xsi:type="xtext:Group" cardinality="*">
+          <elements xsi:type="xtext:Action" feature="left" operator="=">
+            <type metamodel="/0/@metamodelDeclarations.0">
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//ComparisonOperatorExpression"/>
+            </type>
+          </elements>
+          <elements xsi:type="xtext:Assignment" feature="operator" operator="=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.51"/>
+          </elements>
+          <elements xsi:type="xtext:Assignment" feature="right" operator="=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.25"/>
+          </elements>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="AdditionExpression">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.26"/>
+        <elements xsi:type="xtext:Group" cardinality="*">
+          <elements xsi:type="xtext:Action" feature="left" operator="=">
+            <type metamodel="/0/@metamodelDeclarations.0">
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//AdditionExpression"/>
+            </type>
+          </elements>
+          <elements xsi:type="xtext:Assignment" feature="operator" operator="=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.49"/>
+          </elements>
+          <elements xsi:type="xtext:Assignment" feature="right" operator="=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.26"/>
+          </elements>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="MultiplicationExpression">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.27"/>
+        <elements xsi:type="xtext:Group" cardinality="*">
+          <elements xsi:type="xtext:Action" feature="left" operator="=">
+            <type metamodel="/0/@metamodelDeclarations.0">
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//MultiplicationExpression"/>
+            </type>
+          </elements>
+          <elements xsi:type="xtext:Assignment" feature="operator" operator="=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.50"/>
+          </elements>
+          <elements xsi:type="xtext:Assignment" feature="right" operator="=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.27"/>
+          </elements>
+        </elements>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="UnaryExpression">
       <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//UnaryExpression"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="unaryOperator" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.48"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="right" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.28"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="FieldAccessExpression">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.29"/>
+        <elements xsi:type="xtext:Group" cardinality="*">
+          <elements xsi:type="xtext:Action" feature="left" operator="=">
+            <type metamodel="/0/@metamodelDeclarations.0">
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//FieldAccessExpression"/>
+            </type>
+          </elements>
+          <elements xsi:type="xtext:Keyword" value="."/>
+          <elements xsi:type="xtext:Assignment" feature="right" operator="=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.30"/>
+          </elements>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="ParameterOrFieldOrMethodExpression">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
-        <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Assignment" feature="modifier" operator="=">
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.19"/>
-          </elements>
-          <elements xsi:type="xtext:Assignment" feature="expression" operator="=">
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.20"/>
-          </elements>
+        <elements xsi:type="xtext:Assignment" feature="literal" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.44"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="this" operator="=">
+          <terminal xsi:type="xtext:Keyword" value="this"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="id" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
         </elements>
         <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Assignment" feature="cast" operator="=">
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.18"/>
-          </elements>
-          <elements xsi:type="xtext:Assignment" feature="expression" operator="=">
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.20"/>
+          <elements xsi:type="xtext:Keyword" value=":"/>
+          <elements xsi:type="xtext:Assignment" feature="parameterName" operator="=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.14"/>
           </elements>
         </elements>
-        <elements xsi:type="xtext:Assignment" feature="expression" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.20"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.31"/>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="FieldOrMethodExpression">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+      </type>
+      <alternatives xsi:type="xtext:Alternatives">
+        <elements xsi:type="xtext:Assignment" feature="literal" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.44"/>
         </elements>
+        <elements xsi:type="xtext:Assignment" feature="this" operator="=">
+          <terminal xsi:type="xtext:Keyword" value="this"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="id" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
+        </elements>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.31"/>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="ParenthesesExpression">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="("/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.20"/>
+        <elements xsi:type="xtext:Keyword" value=")"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="Cast">
@@ -244,42 +499,8 @@
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="("/>
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.21"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.33"/>
         <elements xsi:type="xtext:Keyword" value=")"/>
-      </alternatives>
-    </rules>
-    <rules xsi:type="xtext:ParserRule" name="PrefixOp">
-      <type metamodel="/1/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      </type>
-      <alternatives xsi:type="xtext:Alternatives">
-        <elements xsi:type="xtext:Keyword" value="+"/>
-        <elements xsi:type="xtext:Keyword" value="-"/>
-        <elements xsi:type="xtext:Keyword" value="~"/>
-        <elements xsi:type="xtext:Keyword" value="!"/>
-      </alternatives>
-    </rules>
-    <rules xsi:type="xtext:ParserRule" name="Primary">
-      <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Primary"/>
-      </type>
-      <alternatives xsi:type="xtext:Alternatives">
-        <elements xsi:type="xtext:Assignment" feature="literal" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.32"/>
-        </elements>
-        <elements xsi:type="xtext:Assignment" feature="this" operator="=">
-          <terminal xsi:type="xtext:Keyword" value="this"/>
-        </elements>
-        <elements xsi:type="xtext:Assignment" feature="classOrInterface" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.9"/>
-        </elements>
-        <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Keyword" value="("/>
-          <elements xsi:type="xtext:Assignment" feature="expression" operator="=">
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.15"/>
-          </elements>
-          <elements xsi:type="xtext:Keyword" value=")"/>
-        </elements>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="Type">
@@ -287,8 +508,8 @@
         <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.22"/>
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.9"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.34"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.47"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="PrimitiveType">
@@ -296,7 +517,7 @@
         <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.23"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.35"/>
         <elements xsi:type="xtext:Keyword" value="boolean"/>
       </alternatives>
     </rules>
@@ -305,8 +526,8 @@
         <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.24"/>
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.25"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.36"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.37"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="IntegralType">
@@ -374,10 +595,126 @@
         <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.26"/>
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.30"/>
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.29"/>
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.31"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.38"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.42"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.41"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.43"/>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="QualifiedIdentifier">
+      <type metamodel="/1/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
+        <elements xsi:type="xtext:Group" cardinality="*">
+          <elements xsi:type="xtext:Keyword" value="."/>
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="CandidateClassName">
+      <type metamodel="/1/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </type>
+      <alternatives xsi:type="xtext:RuleCall" rule="/0/@rules.45"/>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="ClassOrInterfaceName">
+      <type metamodel="/1/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </type>
+      <alternatives xsi:type="xtext:RuleCall" rule="/0/@rules.45"/>
+    </rules>
+    <rules xsi:type="xtext:EnumRule" name="UnaryOperator">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EEnum" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//UnaryOperator"/>
+      </type>
+      <alternatives xsi:type="xtext:Alternatives">
+        <elements xsi:type="xtext:EnumLiteralDeclaration">
+          <enumLiteral href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//UnaryOperator/positive"/>
+          <literal value="+"/>
+        </elements>
+        <elements xsi:type="xtext:EnumLiteralDeclaration">
+          <enumLiteral href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//UnaryOperator/negative"/>
+          <literal value="-"/>
+        </elements>
+        <elements xsi:type="xtext:EnumLiteralDeclaration">
+          <enumLiteral href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//UnaryOperator/bitwiseNot"/>
+          <literal value="~"/>
+        </elements>
+        <elements xsi:type="xtext:EnumLiteralDeclaration">
+          <enumLiteral href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//UnaryOperator/logicalNot"/>
+          <literal value="!"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:EnumRule" name="AdditionOperator">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EEnum" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//AdditionOperator"/>
+      </type>
+      <alternatives xsi:type="xtext:Alternatives">
+        <elements xsi:type="xtext:EnumLiteralDeclaration">
+          <enumLiteral href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//AdditionOperator/add"/>
+          <literal value="+"/>
+        </elements>
+        <elements xsi:type="xtext:EnumLiteralDeclaration">
+          <enumLiteral href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//AdditionOperator/subtract"/>
+          <literal value="-"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:EnumRule" name="MultiplicationOperator">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EEnum" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//MultiplicationOperator"/>
+      </type>
+      <alternatives xsi:type="xtext:Alternatives">
+        <elements xsi:type="xtext:EnumLiteralDeclaration">
+          <enumLiteral href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//MultiplicationOperator/multiply"/>
+          <literal value="*"/>
+        </elements>
+        <elements xsi:type="xtext:EnumLiteralDeclaration">
+          <enumLiteral href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//MultiplicationOperator/divide"/>
+          <literal value="/"/>
+        </elements>
+        <elements xsi:type="xtext:EnumLiteralDeclaration">
+          <enumLiteral href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//MultiplicationOperator/modulo"/>
+          <literal value="%"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:EnumRule" name="ComparisonOperator">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EEnum" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//ComparisonOperator"/>
+      </type>
+      <alternatives xsi:type="xtext:Alternatives">
+        <elements xsi:type="xtext:EnumLiteralDeclaration">
+          <enumLiteral href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//ComparisonOperator/lessThen"/>
+          <literal value="&lt;"/>
+        </elements>
+        <elements xsi:type="xtext:EnumLiteralDeclaration">
+          <enumLiteral href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//ComparisonOperator/greaterThen"/>
+          <literal value=">"/>
+        </elements>
+        <elements xsi:type="xtext:EnumLiteralDeclaration">
+          <enumLiteral href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//ComparisonOperator/lessEqual"/>
+          <literal value="&lt;="/>
+        </elements>
+        <elements xsi:type="xtext:EnumLiteralDeclaration">
+          <enumLiteral href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//ComparisonOperator/greaterEqual"/>
+          <literal value=">="/>
+        </elements>
+        <elements xsi:type="xtext:EnumLiteralDeclaration">
+          <enumLiteral href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//ComparisonOperator/equal"/>
+          <literal value="=="/>
+        </elements>
+        <elements xsi:type="xtext:EnumLiteralDeclaration">
+          <enumLiteral href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//ComparisonOperator/notEqual"/>
+          <literal value="!="/>
+        </elements>
+        <elements xsi:type="xtext:EnumLiteralDeclaration">
+          <enumLiteral href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//ComparisonOperator/instanceof"/>
+          <literal value="instanceof"/>
+        </elements>
       </alternatives>
     </rules>
   </xtext:Grammar>

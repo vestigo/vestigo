@@ -114,9 +114,9 @@ KEYWORD_29 : ('S'|'s')('E'|'e')('T'|'t');
 
 KEYWORD_30 : ('S'|'s')('U'|'u')('M'|'m');
 
-KEYWORD_9 : '!''=';
+KEYWORD_9 : '<''=';
 
-KEYWORD_10 : '<''=';
+KEYWORD_10 : '<''>';
 
 KEYWORD_11 : '>''=';
 

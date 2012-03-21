@@ -335,11 +335,11 @@ public class JPQLSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case JPQLPackage.OPERATOR_EXPRESSION:
+      case JPQLPackage.COMPARISON_OPERATOR_EXPRESSION:
       {
-        OperatorExpression operatorExpression = (OperatorExpression)theEObject;
-        T result = caseOperatorExpression(operatorExpression);
-        if (result == null) result = caseExpression(operatorExpression);
+        ComparisonOperatorExpression comparisonOperatorExpression = (ComparisonOperatorExpression)theEObject;
+        T result = caseComparisonOperatorExpression(comparisonOperatorExpression);
+        if (result == null) result = caseExpression(comparisonOperatorExpression);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -1105,17 +1105,17 @@ public class JPQLSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Operator Expression</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Comparison Operator Expression</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Operator Expression</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Comparison Operator Expression</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseOperatorExpression(OperatorExpression object)
+  public T caseComparisonOperatorExpression(ComparisonOperatorExpression object)
   {
     return null;
   }

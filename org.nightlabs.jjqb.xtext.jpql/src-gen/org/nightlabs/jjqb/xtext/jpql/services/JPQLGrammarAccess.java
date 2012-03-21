@@ -24,6 +24,8 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cUpdateStatementParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		private final RuleCall cDeleteStatementParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		
+		//// http://www.datanucleus.org/products/accessplatform_3_1/jpa/jpql.html
+		//// Current spec: JPA 3.0, JPQL BNF at bottom
 		//JPQLQuery:
 		//	SelectStatement | UpdateStatement | DeleteStatement;
 		public ParserRule getRule() { return rule; }
@@ -1339,7 +1341,7 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ConcreteExpression");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cParExpressionParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cOperatorExpressionParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cComparisonOperatorExpressionParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		private final RuleCall cExistsExpressionParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		private final RuleCall cAllExpressionParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		private final RuleCall cAnyExpressionParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
@@ -1352,12 +1354,12 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cBetweenExpressionParserRuleCall_11 = (RuleCall)cAlternatives.eContents().get(11);
 		
 		//ConcreteExpression returns Expression:
-		//	ParExpression | OperatorExpression | ExistsExpression | AllExpression | AnyExpression | SomeExpression |
+		//	ParExpression | ComparisonOperatorExpression | ExistsExpression | AllExpression | AnyExpression | SomeExpression |
 		//	CollectionExpression | NullComparisonExpression | EmptyComparisonExpression | LikeExpression | InExpression |
 		//	BetweenExpression;
 		public ParserRule getRule() { return rule; }
 
-		//ParExpression | OperatorExpression | ExistsExpression | AllExpression | AnyExpression | SomeExpression |
+		//ParExpression | ComparisonOperatorExpression | ExistsExpression | AllExpression | AnyExpression | SomeExpression |
 		//CollectionExpression | NullComparisonExpression | EmptyComparisonExpression | LikeExpression | InExpression |
 		//BetweenExpression
 		public Alternatives getAlternatives() { return cAlternatives; }
@@ -1365,8 +1367,8 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 		//ParExpression
 		public RuleCall getParExpressionParserRuleCall_0() { return cParExpressionParserRuleCall_0; }
 
-		//OperatorExpression
-		public RuleCall getOperatorExpressionParserRuleCall_1() { return cOperatorExpressionParserRuleCall_1; }
+		//ComparisonOperatorExpression
+		public RuleCall getComparisonOperatorExpressionParserRuleCall_1() { return cComparisonOperatorExpressionParserRuleCall_1; }
 
 		//ExistsExpression
 		public RuleCall getExistsExpressionParserRuleCall_2() { return cExistsExpressionParserRuleCall_2; }
@@ -1423,21 +1425,21 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 		public Keyword getRightParenthesisKeyword_2() { return cRightParenthesisKeyword_2; }
 	}
 
-	public class OperatorExpressionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "OperatorExpression");
+	public class ComparisonOperatorExpressionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ComparisonOperatorExpression");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cLhsAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final RuleCall cLhsVariableParserRuleCall_0_0 = (RuleCall)cLhsAssignment_0.eContents().get(0);
 		private final Assignment cOperatorAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cOperatorOperatorEnumRuleCall_1_0 = (RuleCall)cOperatorAssignment_1.eContents().get(0);
+		private final RuleCall cOperatorComparisonOperatorEnumRuleCall_1_0 = (RuleCall)cOperatorAssignment_1.eContents().get(0);
 		private final Assignment cRhsAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cRhsExpressionTermParserRuleCall_2_0 = (RuleCall)cRhsAssignment_2.eContents().get(0);
 		
-		//OperatorExpression:
-		//	lhs=Variable operator=Operator rhs=ExpressionTerm;
+		//ComparisonOperatorExpression:
+		//	lhs=Variable operator=ComparisonOperator rhs=ExpressionTerm;
 		public ParserRule getRule() { return rule; }
 
-		//lhs=Variable operator=Operator rhs=ExpressionTerm
+		//lhs=Variable operator=ComparisonOperator rhs=ExpressionTerm
 		public Group getGroup() { return cGroup; }
 
 		//lhs=Variable
@@ -1446,11 +1448,11 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 		//Variable
 		public RuleCall getLhsVariableParserRuleCall_0_0() { return cLhsVariableParserRuleCall_0_0; }
 
-		//operator=Operator
+		//operator=ComparisonOperator
 		public Assignment getOperatorAssignment_1() { return cOperatorAssignment_1; }
 
-		//Operator
-		public RuleCall getOperatorOperatorEnumRuleCall_1_0() { return cOperatorOperatorEnumRuleCall_1_0; }
+		//ComparisonOperator
+		public RuleCall getOperatorComparisonOperatorEnumRuleCall_1_0() { return cOperatorComparisonOperatorEnumRuleCall_1_0; }
 
 		//rhs=ExpressionTerm
 		public Assignment getRhsAssignment_2() { return cRhsAssignment_2; }
@@ -2350,8 +2352,8 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	
-	public class OperatorElements extends AbstractEnumRuleElementFinder {
-		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "Operator");
+	public class ComparisonOperatorElements extends AbstractEnumRuleElementFinder {
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "ComparisonOperator");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final EnumLiteralDeclaration cLessThenEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
 		private final Keyword cLessThenLessThanSignKeyword_0_0 = (Keyword)cLessThenEnumLiteralDeclaration_0.eContents().get(0);
@@ -2364,13 +2366,13 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 		private final EnumLiteralDeclaration cEqualEnumLiteralDeclaration_4 = (EnumLiteralDeclaration)cAlternatives.eContents().get(4);
 		private final Keyword cEqualEqualsSignKeyword_4_0 = (Keyword)cEqualEnumLiteralDeclaration_4.eContents().get(0);
 		private final EnumLiteralDeclaration cNotEqualEnumLiteralDeclaration_5 = (EnumLiteralDeclaration)cAlternatives.eContents().get(5);
-		private final Keyword cNotEqualExclamationMarkEqualsSignKeyword_5_0 = (Keyword)cNotEqualEnumLiteralDeclaration_5.eContents().get(0);
+		private final Keyword cNotEqualLessThanSignGreaterThanSignKeyword_5_0 = (Keyword)cNotEqualEnumLiteralDeclaration_5.eContents().get(0);
 		
-		//enum Operator:
-		//	lessThen="<" | greaterThen=">" | lessEqual="<=" | greaterEqual=">=" | equal="=" | notEqual="!=";
+		//enum ComparisonOperator:
+		//	lessThen="<" | greaterThen=">" | lessEqual="<=" | greaterEqual=">=" | equal="=" | notEqual="<>";
 		public EnumRule getRule() { return rule; }
 
-		//lessThen="<" | greaterThen=">" | lessEqual="<=" | greaterEqual=">=" | equal="=" | notEqual="!="
+		//lessThen="<" | greaterThen=">" | lessEqual="<=" | greaterEqual=">=" | equal="=" | notEqual="<>"
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//lessThen="<"
@@ -2403,11 +2405,11 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 		//"="
 		public Keyword getEqualEqualsSignKeyword_4_0() { return cEqualEqualsSignKeyword_4_0; }
 
-		//notEqual="!="
+		//notEqual="<>"
 		public EnumLiteralDeclaration getNotEqualEnumLiteralDeclaration_5() { return cNotEqualEnumLiteralDeclaration_5; }
 
-		//"!="
-		public Keyword getNotEqualExclamationMarkEqualsSignKeyword_5_0() { return cNotEqualExclamationMarkEqualsSignKeyword_5_0; }
+		//"<>"
+		public Keyword getNotEqualLessThanSignGreaterThanSignKeyword_5_0() { return cNotEqualLessThanSignGreaterThanSignKeyword_5_0; }
 	}
 	
 	private JPQLQueryElements pJPQLQuery;
@@ -2450,7 +2452,7 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 	private AndExpressionElements pAndExpression;
 	private ConcreteExpressionElements pConcreteExpression;
 	private ParExpressionElements pParExpression;
-	private OperatorExpressionElements pOperatorExpression;
+	private ComparisonOperatorExpressionElements pComparisonOperatorExpression;
 	private ExistsExpressionElements pExistsExpression;
 	private AllExpressionElements pAllExpression;
 	private AnyExpressionElements pAnyExpression;
@@ -2479,7 +2481,7 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 	private NullExpressionElements pNullExpression;
 	private BooleanExpressionElements pBooleanExpression;
 	private QueryExpressionElements pQueryExpression;
-	private OperatorElements unknownRuleOperator;
+	private ComparisonOperatorElements unknownRuleComparisonOperator;
 	
 	private final GrammarProvider grammarProvider;
 
@@ -2502,6 +2504,8 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	
+	//// http://www.datanucleus.org/products/accessplatform_3_1/jpa/jpql.html
+	//// Current spec: JPA 3.0, JPQL BNF at bottom
 	//JPQLQuery:
 	//	SelectStatement | UpdateStatement | DeleteStatement;
 	public JPQLQueryElements getJPQLQueryAccess() {
@@ -2884,7 +2888,7 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ConcreteExpression returns Expression:
-	//	ParExpression | OperatorExpression | ExistsExpression | AllExpression | AnyExpression | SomeExpression |
+	//	ParExpression | ComparisonOperatorExpression | ExistsExpression | AllExpression | AnyExpression | SomeExpression |
 	//	CollectionExpression | NullComparisonExpression | EmptyComparisonExpression | LikeExpression | InExpression |
 	//	BetweenExpression;
 	public ConcreteExpressionElements getConcreteExpressionAccess() {
@@ -2905,14 +2909,14 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 		return getParExpressionAccess().getRule();
 	}
 
-	//OperatorExpression:
-	//	lhs=Variable operator=Operator rhs=ExpressionTerm;
-	public OperatorExpressionElements getOperatorExpressionAccess() {
-		return (pOperatorExpression != null) ? pOperatorExpression : (pOperatorExpression = new OperatorExpressionElements());
+	//ComparisonOperatorExpression:
+	//	lhs=Variable operator=ComparisonOperator rhs=ExpressionTerm;
+	public ComparisonOperatorExpressionElements getComparisonOperatorExpressionAccess() {
+		return (pComparisonOperatorExpression != null) ? pComparisonOperatorExpression : (pComparisonOperatorExpression = new ComparisonOperatorExpressionElements());
 	}
 	
-	public ParserRule getOperatorExpressionRule() {
-		return getOperatorExpressionAccess().getRule();
+	public ParserRule getComparisonOperatorExpressionRule() {
+		return getComparisonOperatorExpressionAccess().getRule();
 	}
 
 	//ExistsExpression:
@@ -3203,14 +3207,14 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 		return getQueryExpressionAccess().getRule();
 	}
 
-	//enum Operator:
-	//	lessThen="<" | greaterThen=">" | lessEqual="<=" | greaterEqual=">=" | equal="=" | notEqual="!=";
-	public OperatorElements getOperatorAccess() {
-		return (unknownRuleOperator != null) ? unknownRuleOperator : (unknownRuleOperator = new OperatorElements());
+	//enum ComparisonOperator:
+	//	lessThen="<" | greaterThen=">" | lessEqual="<=" | greaterEqual=">=" | equal="=" | notEqual="<>";
+	public ComparisonOperatorElements getComparisonOperatorAccess() {
+		return (unknownRuleComparisonOperator != null) ? unknownRuleComparisonOperator : (unknownRuleComparisonOperator = new ComparisonOperatorElements());
 	}
 	
-	public EnumRule getOperatorRule() {
-		return getOperatorAccess().getRule();
+	public EnumRule getComparisonOperatorRule() {
+		return getComparisonOperatorAccess().getRule();
 	}
 
 	//terminal ID:

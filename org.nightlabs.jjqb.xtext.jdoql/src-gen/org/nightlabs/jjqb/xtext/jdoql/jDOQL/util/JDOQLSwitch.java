@@ -82,10 +82,10 @@ public class JDOQLSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case JDOQLPackage.SELECT:
+      case JDOQLPackage.SELECT_CLAUSE:
       {
-        Select select = (Select)theEObject;
-        T result = caseSelect(select);
+        SelectClause selectClause = (SelectClause)theEObject;
+        T result = caseSelectClause(selectClause);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -103,39 +103,10 @@ public class JDOQLSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case JDOQLPackage.FROM:
-      {
-        From from = (From)theEObject;
-        T result = caseFrom(from);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case JDOQLPackage.WHERE:
-      {
-        Where where = (Where)theEObject;
-        T result = caseWhere(where);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case JDOQLPackage.EXCLUDE_CLAUSE:
-      {
-        ExcludeClause excludeClause = (ExcludeClause)theEObject;
-        T result = caseExcludeClause(excludeClause);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case JDOQLPackage.RESULT_SPECS:
-      {
-        ResultSpecs resultSpecs = (ResultSpecs)theEObject;
-        T result = caseResultSpecs(resultSpecs);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case JDOQLPackage.RESULT_SPEC:
       {
         ResultSpec resultSpec = (ResultSpec)theEObject;
         T result = caseResultSpec(resultSpec);
-        if (result == null) result = caseResultSpecs(resultSpec);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -146,10 +117,59 @@ public class JDOQLSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case JDOQLPackage.BOOLEAN_EXPRESSION:
+      case JDOQLPackage.FROM_CLAUSE:
       {
-        BooleanExpression booleanExpression = (BooleanExpression)theEObject;
-        T result = caseBooleanExpression(booleanExpression);
+        FromClause fromClause = (FromClause)theEObject;
+        T result = caseFromClause(fromClause);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case JDOQLPackage.WHERE_CLAUSE:
+      {
+        WhereClause whereClause = (WhereClause)theEObject;
+        T result = caseWhereClause(whereClause);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case JDOQLPackage.VARIABLES_CLAUSE:
+      {
+        VariablesClause variablesClause = (VariablesClause)theEObject;
+        T result = caseVariablesClause(variablesClause);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case JDOQLPackage.VARIABLE_DECLARATION:
+      {
+        VariableDeclaration variableDeclaration = (VariableDeclaration)theEObject;
+        T result = caseVariableDeclaration(variableDeclaration);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case JDOQLPackage.PARAMETERS_CLAUSE:
+      {
+        ParametersClause parametersClause = (ParametersClause)theEObject;
+        T result = caseParametersClause(parametersClause);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case JDOQLPackage.PARAMETER_DECLARATION:
+      {
+        ParameterDeclaration parameterDeclaration = (ParameterDeclaration)theEObject;
+        T result = caseParameterDeclaration(parameterDeclaration);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case JDOQLPackage.DECLARED_PARAMETER_NAME:
+      {
+        DeclaredParameterName declaredParameterName = (DeclaredParameterName)theEObject;
+        T result = caseDeclaredParameterName(declaredParameterName);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case JDOQLPackage.IMPORT_CLAUSE:
+      {
+        ImportClause importClause = (ImportClause)theEObject;
+        T result = caseImportClause(importClause);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -158,21 +178,78 @@ public class JDOQLSwitch<T> extends Switch<T>
         Expression expression = (Expression)theEObject;
         T result = caseExpression(expression);
         if (result == null) result = caseResultSpec(expression);
-        if (result == null) result = caseResultSpecs(expression);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case JDOQLPackage.UNARY_EXPRESSION:
+      case JDOQLPackage.CONDITIONAL_OR_EXPRESSION:
       {
-        UnaryExpression unaryExpression = (UnaryExpression)theEObject;
-        T result = caseUnaryExpression(unaryExpression);
+        ConditionalOrExpression conditionalOrExpression = (ConditionalOrExpression)theEObject;
+        T result = caseConditionalOrExpression(conditionalOrExpression);
+        if (result == null) result = caseExpression(conditionalOrExpression);
+        if (result == null) result = caseResultSpec(conditionalOrExpression);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case JDOQLPackage.PRIMARY:
+      case JDOQLPackage.CONDITIONAL_AND_EXPRESSION:
       {
-        Primary primary = (Primary)theEObject;
-        T result = casePrimary(primary);
+        ConditionalAndExpression conditionalAndExpression = (ConditionalAndExpression)theEObject;
+        T result = caseConditionalAndExpression(conditionalAndExpression);
+        if (result == null) result = caseExpression(conditionalAndExpression);
+        if (result == null) result = caseResultSpec(conditionalAndExpression);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case JDOQLPackage.SIMPLE_OR_EXPRESSION:
+      {
+        SimpleOrExpression simpleOrExpression = (SimpleOrExpression)theEObject;
+        T result = caseSimpleOrExpression(simpleOrExpression);
+        if (result == null) result = caseExpression(simpleOrExpression);
+        if (result == null) result = caseResultSpec(simpleOrExpression);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case JDOQLPackage.SIMPLE_AND_EXPRESSION:
+      {
+        SimpleAndExpression simpleAndExpression = (SimpleAndExpression)theEObject;
+        T result = caseSimpleAndExpression(simpleAndExpression);
+        if (result == null) result = caseExpression(simpleAndExpression);
+        if (result == null) result = caseResultSpec(simpleAndExpression);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case JDOQLPackage.COMPARISON_OPERATOR_EXPRESSION:
+      {
+        ComparisonOperatorExpression comparisonOperatorExpression = (ComparisonOperatorExpression)theEObject;
+        T result = caseComparisonOperatorExpression(comparisonOperatorExpression);
+        if (result == null) result = caseExpression(comparisonOperatorExpression);
+        if (result == null) result = caseResultSpec(comparisonOperatorExpression);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case JDOQLPackage.ADDITION_EXPRESSION:
+      {
+        AdditionExpression additionExpression = (AdditionExpression)theEObject;
+        T result = caseAdditionExpression(additionExpression);
+        if (result == null) result = caseExpression(additionExpression);
+        if (result == null) result = caseResultSpec(additionExpression);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case JDOQLPackage.MULTIPLICATION_EXPRESSION:
+      {
+        MultiplicationExpression multiplicationExpression = (MultiplicationExpression)theEObject;
+        T result = caseMultiplicationExpression(multiplicationExpression);
+        if (result == null) result = caseExpression(multiplicationExpression);
+        if (result == null) result = caseResultSpec(multiplicationExpression);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case JDOQLPackage.FIELD_ACCESS_EXPRESSION:
+      {
+        FieldAccessExpression fieldAccessExpression = (FieldAccessExpression)theEObject;
+        T result = caseFieldAccessExpression(fieldAccessExpression);
+        if (result == null) result = caseExpression(fieldAccessExpression);
+        if (result == null) result = caseResultSpec(fieldAccessExpression);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -197,17 +274,17 @@ public class JDOQLSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Select</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Select Clause</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Select</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Select Clause</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseSelect(Select object)
+  public T caseSelectClause(SelectClause object)
   {
     return null;
   }
@@ -245,70 +322,6 @@ public class JDOQLSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>From</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>From</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseFrom(From object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Where</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Where</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseWhere(Where object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Exclude Clause</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Exclude Clause</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseExcludeClause(ExcludeClause object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Result Specs</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Result Specs</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseResultSpecs(ResultSpecs object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Result Spec</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -341,17 +354,129 @@ public class JDOQLSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Boolean Expression</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>From Clause</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Boolean Expression</em>'.
+   * @return the result of interpreting the object as an instance of '<em>From Clause</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseBooleanExpression(BooleanExpression object)
+  public T caseFromClause(FromClause object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Where Clause</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Where Clause</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseWhereClause(WhereClause object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Variables Clause</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Variables Clause</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseVariablesClause(VariablesClause object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Variable Declaration</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Variable Declaration</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseVariableDeclaration(VariableDeclaration object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Parameters Clause</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Parameters Clause</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseParametersClause(ParametersClause object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Parameter Declaration</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Parameter Declaration</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseParameterDeclaration(ParameterDeclaration object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Declared Parameter Name</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Declared Parameter Name</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseDeclaredParameterName(DeclaredParameterName object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Import Clause</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Import Clause</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseImportClause(ImportClause object)
   {
     return null;
   }
@@ -373,33 +498,129 @@ public class JDOQLSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Unary Expression</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Conditional Or Expression</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Unary Expression</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Conditional Or Expression</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseUnaryExpression(UnaryExpression object)
+  public T caseConditionalOrExpression(ConditionalOrExpression object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Primary</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Conditional And Expression</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Primary</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Conditional And Expression</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T casePrimary(Primary object)
+  public T caseConditionalAndExpression(ConditionalAndExpression object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Simple Or Expression</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Simple Or Expression</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSimpleOrExpression(SimpleOrExpression object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Simple And Expression</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Simple And Expression</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSimpleAndExpression(SimpleAndExpression object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Comparison Operator Expression</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Comparison Operator Expression</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseComparisonOperatorExpression(ComparisonOperatorExpression object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Addition Expression</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Addition Expression</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAdditionExpression(AdditionExpression object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Multiplication Expression</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Multiplication Expression</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseMultiplicationExpression(MultiplicationExpression object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Field Access Expression</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Field Access Expression</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseFieldAccessExpression(FieldAccessExpression object)
   {
     return null;
   }

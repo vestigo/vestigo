@@ -6,6 +6,7 @@
 package org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -68,21 +69,76 @@ public class JDOQLFactoryImpl extends EFactoryImpl implements JDOQLFactory
     switch (eClass.getClassifierID())
     {
       case JDOQLPackage.SINGLE_STRING_JDOQL: return createSingleStringJDOQL();
-      case JDOQLPackage.SELECT: return createSelect();
+      case JDOQLPackage.SELECT_CLAUSE: return createSelectClause();
       case JDOQLPackage.RESULT_CLAUSE: return createResultClause();
       case JDOQLPackage.INTO_CLAUSE: return createIntoClause();
-      case JDOQLPackage.FROM: return createFrom();
-      case JDOQLPackage.WHERE: return createWhere();
-      case JDOQLPackage.EXCLUDE_CLAUSE: return createExcludeClause();
-      case JDOQLPackage.RESULT_SPECS: return createResultSpecs();
       case JDOQLPackage.RESULT_SPEC: return createResultSpec();
       case JDOQLPackage.RESULT_NAMING: return createResultNaming();
-      case JDOQLPackage.BOOLEAN_EXPRESSION: return createBooleanExpression();
+      case JDOQLPackage.FROM_CLAUSE: return createFromClause();
+      case JDOQLPackage.WHERE_CLAUSE: return createWhereClause();
+      case JDOQLPackage.VARIABLES_CLAUSE: return createVariablesClause();
+      case JDOQLPackage.VARIABLE_DECLARATION: return createVariableDeclaration();
+      case JDOQLPackage.PARAMETERS_CLAUSE: return createParametersClause();
+      case JDOQLPackage.PARAMETER_DECLARATION: return createParameterDeclaration();
+      case JDOQLPackage.DECLARED_PARAMETER_NAME: return createDeclaredParameterName();
+      case JDOQLPackage.IMPORT_CLAUSE: return createImportClause();
       case JDOQLPackage.EXPRESSION: return createExpression();
-      case JDOQLPackage.UNARY_EXPRESSION: return createUnaryExpression();
-      case JDOQLPackage.PRIMARY: return createPrimary();
+      case JDOQLPackage.CONDITIONAL_OR_EXPRESSION: return createConditionalOrExpression();
+      case JDOQLPackage.CONDITIONAL_AND_EXPRESSION: return createConditionalAndExpression();
+      case JDOQLPackage.SIMPLE_OR_EXPRESSION: return createSimpleOrExpression();
+      case JDOQLPackage.SIMPLE_AND_EXPRESSION: return createSimpleAndExpression();
+      case JDOQLPackage.COMPARISON_OPERATOR_EXPRESSION: return createComparisonOperatorExpression();
+      case JDOQLPackage.ADDITION_EXPRESSION: return createAdditionExpression();
+      case JDOQLPackage.MULTIPLICATION_EXPRESSION: return createMultiplicationExpression();
+      case JDOQLPackage.FIELD_ACCESS_EXPRESSION: return createFieldAccessExpression();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+    }
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Object createFromString(EDataType eDataType, String initialValue)
+  {
+    switch (eDataType.getClassifierID())
+    {
+      case JDOQLPackage.UNARY_OPERATOR:
+        return createUnaryOperatorFromString(eDataType, initialValue);
+      case JDOQLPackage.ADDITION_OPERATOR:
+        return createAdditionOperatorFromString(eDataType, initialValue);
+      case JDOQLPackage.MULTIPLICATION_OPERATOR:
+        return createMultiplicationOperatorFromString(eDataType, initialValue);
+      case JDOQLPackage.COMPARISON_OPERATOR:
+        return createComparisonOperatorFromString(eDataType, initialValue);
+      default:
+        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+    }
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String convertToString(EDataType eDataType, Object instanceValue)
+  {
+    switch (eDataType.getClassifierID())
+    {
+      case JDOQLPackage.UNARY_OPERATOR:
+        return convertUnaryOperatorToString(eDataType, instanceValue);
+      case JDOQLPackage.ADDITION_OPERATOR:
+        return convertAdditionOperatorToString(eDataType, instanceValue);
+      case JDOQLPackage.MULTIPLICATION_OPERATOR:
+        return convertMultiplicationOperatorToString(eDataType, instanceValue);
+      case JDOQLPackage.COMPARISON_OPERATOR:
+        return convertComparisonOperatorToString(eDataType, instanceValue);
+      default:
+        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
     }
   }
 
@@ -102,10 +158,10 @@ public class JDOQLFactoryImpl extends EFactoryImpl implements JDOQLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Select createSelect()
+  public SelectClause createSelectClause()
   {
-    SelectImpl select = new SelectImpl();
-    return select;
+    SelectClauseImpl selectClause = new SelectClauseImpl();
+    return selectClause;
   }
 
   /**
@@ -135,50 +191,6 @@ public class JDOQLFactoryImpl extends EFactoryImpl implements JDOQLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public From createFrom()
-  {
-    FromImpl from = new FromImpl();
-    return from;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Where createWhere()
-  {
-    WhereImpl where = new WhereImpl();
-    return where;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ExcludeClause createExcludeClause()
-  {
-    ExcludeClauseImpl excludeClause = new ExcludeClauseImpl();
-    return excludeClause;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ResultSpecs createResultSpecs()
-  {
-    ResultSpecsImpl resultSpecs = new ResultSpecsImpl();
-    return resultSpecs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public ResultSpec createResultSpec()
   {
     ResultSpecImpl resultSpec = new ResultSpecImpl();
@@ -201,10 +213,87 @@ public class JDOQLFactoryImpl extends EFactoryImpl implements JDOQLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public BooleanExpression createBooleanExpression()
+  public FromClause createFromClause()
   {
-    BooleanExpressionImpl booleanExpression = new BooleanExpressionImpl();
-    return booleanExpression;
+    FromClauseImpl fromClause = new FromClauseImpl();
+    return fromClause;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public WhereClause createWhereClause()
+  {
+    WhereClauseImpl whereClause = new WhereClauseImpl();
+    return whereClause;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public VariablesClause createVariablesClause()
+  {
+    VariablesClauseImpl variablesClause = new VariablesClauseImpl();
+    return variablesClause;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public VariableDeclaration createVariableDeclaration()
+  {
+    VariableDeclarationImpl variableDeclaration = new VariableDeclarationImpl();
+    return variableDeclaration;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ParametersClause createParametersClause()
+  {
+    ParametersClauseImpl parametersClause = new ParametersClauseImpl();
+    return parametersClause;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ParameterDeclaration createParameterDeclaration()
+  {
+    ParameterDeclarationImpl parameterDeclaration = new ParameterDeclarationImpl();
+    return parameterDeclaration;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public DeclaredParameterName createDeclaredParameterName()
+  {
+    DeclaredParameterNameImpl declaredParameterName = new DeclaredParameterNameImpl();
+    return declaredParameterName;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ImportClause createImportClause()
+  {
+    ImportClauseImpl importClause = new ImportClauseImpl();
+    return importClause;
   }
 
   /**
@@ -223,10 +312,10 @@ public class JDOQLFactoryImpl extends EFactoryImpl implements JDOQLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public UnaryExpression createUnaryExpression()
+  public ConditionalOrExpression createConditionalOrExpression()
   {
-    UnaryExpressionImpl unaryExpression = new UnaryExpressionImpl();
-    return unaryExpression;
+    ConditionalOrExpressionImpl conditionalOrExpression = new ConditionalOrExpressionImpl();
+    return conditionalOrExpression;
   }
 
   /**
@@ -234,10 +323,164 @@ public class JDOQLFactoryImpl extends EFactoryImpl implements JDOQLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Primary createPrimary()
+  public ConditionalAndExpression createConditionalAndExpression()
   {
-    PrimaryImpl primary = new PrimaryImpl();
-    return primary;
+    ConditionalAndExpressionImpl conditionalAndExpression = new ConditionalAndExpressionImpl();
+    return conditionalAndExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public SimpleOrExpression createSimpleOrExpression()
+  {
+    SimpleOrExpressionImpl simpleOrExpression = new SimpleOrExpressionImpl();
+    return simpleOrExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public SimpleAndExpression createSimpleAndExpression()
+  {
+    SimpleAndExpressionImpl simpleAndExpression = new SimpleAndExpressionImpl();
+    return simpleAndExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ComparisonOperatorExpression createComparisonOperatorExpression()
+  {
+    ComparisonOperatorExpressionImpl comparisonOperatorExpression = new ComparisonOperatorExpressionImpl();
+    return comparisonOperatorExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public AdditionExpression createAdditionExpression()
+  {
+    AdditionExpressionImpl additionExpression = new AdditionExpressionImpl();
+    return additionExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public MultiplicationExpression createMultiplicationExpression()
+  {
+    MultiplicationExpressionImpl multiplicationExpression = new MultiplicationExpressionImpl();
+    return multiplicationExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public FieldAccessExpression createFieldAccessExpression()
+  {
+    FieldAccessExpressionImpl fieldAccessExpression = new FieldAccessExpressionImpl();
+    return fieldAccessExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public UnaryOperator createUnaryOperatorFromString(EDataType eDataType, String initialValue)
+  {
+    UnaryOperator result = UnaryOperator.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertUnaryOperatorToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public AdditionOperator createAdditionOperatorFromString(EDataType eDataType, String initialValue)
+  {
+    AdditionOperator result = AdditionOperator.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertAdditionOperatorToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public MultiplicationOperator createMultiplicationOperatorFromString(EDataType eDataType, String initialValue)
+  {
+    MultiplicationOperator result = MultiplicationOperator.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertMultiplicationOperatorToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ComparisonOperator createComparisonOperatorFromString(EDataType eDataType, String initialValue)
+  {
+    ComparisonOperator result = ComparisonOperator.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertComparisonOperatorToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
   }
 
   /**

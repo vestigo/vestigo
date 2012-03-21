@@ -1,4 +1,4 @@
-module org.nightlabs.jjqb.xtext.jdoql.GenerateJPQL
+module org.nightlabs.jjqb.xtext.jdoql.GenerateJDOQL
 
 import org.eclipse.emf.mwe.utils.*
 import org.eclipse.xtext.generator.*
@@ -64,6 +64,7 @@ Workflow {
             fragment = parser.antlr.ex.rt.AntlrGeneratorFragment {
               options = {
                   ignoreCase = true
+                  backtrack = true
               }
             }
 

@@ -7,6 +7,7 @@ package org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
@@ -14,6 +15,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
@@ -21,7 +23,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage;
 import org.nightlabs.jjqb.xtext.jdoql.jDOQL.ResultClause;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.ResultSpecs;
+import org.nightlabs.jjqb.xtext.jdoql.jDOQL.ResultSpec;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,6 +32,7 @@ import org.nightlabs.jjqb.xtext.jdoql.jDOQL.ResultSpecs;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ResultClauseImpl#isIsDistinct <em>Is Distinct</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ResultClauseImpl#getResultSpecs <em>Result Specs</em>}</li>
  * </ul>
  * </p>
@@ -39,6 +42,26 @@ import org.nightlabs.jjqb.xtext.jdoql.jDOQL.ResultSpecs;
 public class ResultClauseImpl extends MinimalEObjectImpl.Container implements ResultClause
 {
   /**
+   * The default value of the '{@link #isIsDistinct() <em>Is Distinct</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isIsDistinct()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean IS_DISTINCT_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isIsDistinct() <em>Is Distinct</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isIsDistinct()
+   * @generated
+   * @ordered
+   */
+  protected boolean isDistinct = IS_DISTINCT_EDEFAULT;
+
+  /**
    * The cached value of the '{@link #getResultSpecs() <em>Result Specs</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -46,7 +69,7 @@ public class ResultClauseImpl extends MinimalEObjectImpl.Container implements Re
    * @generated
    * @ordered
    */
-  protected EList<ResultSpecs> resultSpecs;
+  protected EList<ResultSpec> resultSpecs;
 
   /**
    * <!-- begin-user-doc -->
@@ -74,11 +97,34 @@ public class ResultClauseImpl extends MinimalEObjectImpl.Container implements Re
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<ResultSpecs> getResultSpecs()
+  public boolean isIsDistinct()
+  {
+    return isDistinct;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setIsDistinct(boolean newIsDistinct)
+  {
+    boolean oldIsDistinct = isDistinct;
+    isDistinct = newIsDistinct;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, JDOQLPackage.RESULT_CLAUSE__IS_DISTINCT, oldIsDistinct, isDistinct));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<ResultSpec> getResultSpecs()
   {
     if (resultSpecs == null)
     {
-      resultSpecs = new EObjectContainmentEList<ResultSpecs>(ResultSpecs.class, this, JDOQLPackage.RESULT_CLAUSE__RESULT_SPECS);
+      resultSpecs = new EObjectContainmentEList<ResultSpec>(ResultSpec.class, this, JDOQLPackage.RESULT_CLAUSE__RESULT_SPECS);
     }
     return resultSpecs;
   }
@@ -109,6 +155,8 @@ public class ResultClauseImpl extends MinimalEObjectImpl.Container implements Re
   {
     switch (featureID)
     {
+      case JDOQLPackage.RESULT_CLAUSE__IS_DISTINCT:
+        return isIsDistinct();
       case JDOQLPackage.RESULT_CLAUSE__RESULT_SPECS:
         return getResultSpecs();
     }
@@ -126,9 +174,12 @@ public class ResultClauseImpl extends MinimalEObjectImpl.Container implements Re
   {
     switch (featureID)
     {
+      case JDOQLPackage.RESULT_CLAUSE__IS_DISTINCT:
+        setIsDistinct((Boolean)newValue);
+        return;
       case JDOQLPackage.RESULT_CLAUSE__RESULT_SPECS:
         getResultSpecs().clear();
-        getResultSpecs().addAll((Collection<? extends ResultSpecs>)newValue);
+        getResultSpecs().addAll((Collection<? extends ResultSpec>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -144,6 +195,9 @@ public class ResultClauseImpl extends MinimalEObjectImpl.Container implements Re
   {
     switch (featureID)
     {
+      case JDOQLPackage.RESULT_CLAUSE__IS_DISTINCT:
+        setIsDistinct(IS_DISTINCT_EDEFAULT);
+        return;
       case JDOQLPackage.RESULT_CLAUSE__RESULT_SPECS:
         getResultSpecs().clear();
         return;
@@ -161,10 +215,29 @@ public class ResultClauseImpl extends MinimalEObjectImpl.Container implements Re
   {
     switch (featureID)
     {
+      case JDOQLPackage.RESULT_CLAUSE__IS_DISTINCT:
+        return isDistinct != IS_DISTINCT_EDEFAULT;
       case JDOQLPackage.RESULT_CLAUSE__RESULT_SPECS:
         return resultSpecs != null && !resultSpecs.isEmpty();
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (isDistinct: ");
+    result.append(isDistinct);
+    result.append(')');
+    return result.toString();
   }
 
 } //ResultClauseImpl

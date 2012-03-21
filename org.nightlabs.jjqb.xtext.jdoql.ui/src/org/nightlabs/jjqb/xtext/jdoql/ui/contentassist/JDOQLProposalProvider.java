@@ -6,21 +6,22 @@ package org.nightlabs.jjqb.xtext.jdoql.ui.contentassist;
 import java.util.SortedSet;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
 import org.nightlabs.jjqb.core.oda.ConnectionProfile;
 import org.nightlabs.jjqb.ui.editor.DocumentContextManager;
 import org.nightlabs.jjqb.ui.editor.QueryEditorManager;
+import org.nightlabs.jjqb.ui.queryparam.QueryParameter;
 /**
  * see http://www.eclipse.org/Xtext/documentation/latest/xtext.html#contentAssist on how to customize content assistant
  */
-public class JDOQLProposalProvider extends AbstractJDOQLProposalProvider {
-
-
+public class JDOQLProposalProvider extends AbstractJDOQLProposalProvider
+{
 	@Override
-	public void complete_CandidateClassName(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-
+	public void complete_CandidateClassName(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor)
+	{
 		super.complete_CandidateClassName(model, ruleCall, context, acceptor);
 
 		QueryEditorManager queryEditorManager = DocumentContextManager.sharedInstance().getQueryEditorManager(context.getDocument(), true);
@@ -32,4 +33,18 @@ public class JDOQLProposalProvider extends AbstractJDOQLProposalProvider {
 		}
 	}
 
+	@Override
+	public void completeParameterOrFieldOrMethodExpression_ParameterName(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		super.completeParameterOrFieldOrMethodExpression_ParameterName(model, assignment, context, acceptor);
+	}
+	
+	@Override
+	public void complete_ParameterName(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		super.complete_ParameterName(model, ruleCall, context, acceptor);
+
+		QueryEditorManager queryEditorManager = DocumentContextManager.sharedInstance().getQueryEditorManager(context.getDocument(), true);
+		for (QueryParameter queryParameter : queryEditorManager.getQueryParameterManager().getQueryParameters()) {
+			acceptor.accept(createCompletionProposal(queryParameter.getName(), context));
+		}
+	}
 }

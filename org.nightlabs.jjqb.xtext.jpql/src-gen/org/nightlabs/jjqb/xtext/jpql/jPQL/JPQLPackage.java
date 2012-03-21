@@ -1274,14 +1274,14 @@ public interface JPQLPackage extends EPackage
   int EXPRESSION_FEATURE_COUNT = 0;
 
   /**
-   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.OperatorExpressionImpl <em>Operator Expression</em>}' class.
+   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.ComparisonOperatorExpressionImpl <em>Comparison Operator Expression</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.OperatorExpressionImpl
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getOperatorExpression()
+   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.ComparisonOperatorExpressionImpl
+   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getComparisonOperatorExpression()
    * @generated
    */
-  int OPERATOR_EXPRESSION = 34;
+  int COMPARISON_OPERATOR_EXPRESSION = 34;
 
   /**
    * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -1290,7 +1290,7 @@ public interface JPQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int OPERATOR_EXPRESSION__LHS = EXPRESSION_FEATURE_COUNT + 0;
+  int COMPARISON_OPERATOR_EXPRESSION__LHS = EXPRESSION_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Operator</b></em>' attribute.
@@ -1299,7 +1299,7 @@ public interface JPQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int OPERATOR_EXPRESSION__OPERATOR = EXPRESSION_FEATURE_COUNT + 1;
+  int COMPARISON_OPERATOR_EXPRESSION__OPERATOR = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Rhs</b></em>' containment reference.
@@ -1308,16 +1308,16 @@ public interface JPQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int OPERATOR_EXPRESSION__RHS = EXPRESSION_FEATURE_COUNT + 2;
+  int COMPARISON_OPERATOR_EXPRESSION__RHS = EXPRESSION_FEATURE_COUNT + 2;
 
   /**
-   * The number of structural features of the '<em>Operator Expression</em>' class.
+   * The number of structural features of the '<em>Comparison Operator Expression</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int OPERATOR_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 3;
+  int COMPARISON_OPERATOR_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 3;
 
   /**
    * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.ExistsExpressionImpl <em>Exists Expression</em>}' class.
@@ -2118,14 +2118,14 @@ public interface JPQLPackage extends EPackage
   int AND_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.Operator <em>Operator</em>}' enum.
+   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.ComparisonOperator <em>Comparison Operator</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.Operator
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getOperator()
+   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.ComparisonOperator
+   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getComparisonOperator()
    * @generated
    */
-  int OPERATOR = 59;
+  int COMPARISON_OPERATOR = 59;
 
 
   /**
@@ -2898,47 +2898,47 @@ public interface JPQLPackage extends EPackage
   EClass getExpression();
 
   /**
-   * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.OperatorExpression <em>Operator Expression</em>}'.
+   * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.ComparisonOperatorExpression <em>Comparison Operator Expression</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Operator Expression</em>'.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.OperatorExpression
+   * @return the meta object for class '<em>Comparison Operator Expression</em>'.
+   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.ComparisonOperatorExpression
    * @generated
    */
-  EClass getOperatorExpression();
+  EClass getComparisonOperatorExpression();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.OperatorExpression#getLhs <em>Lhs</em>}'.
+   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.ComparisonOperatorExpression#getLhs <em>Lhs</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Lhs</em>'.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.OperatorExpression#getLhs()
-   * @see #getOperatorExpression()
+   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.ComparisonOperatorExpression#getLhs()
+   * @see #getComparisonOperatorExpression()
    * @generated
    */
-  EReference getOperatorExpression_Lhs();
+  EReference getComparisonOperatorExpression_Lhs();
 
   /**
-   * Returns the meta object for the attribute '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.OperatorExpression#getOperator <em>Operator</em>}'.
+   * Returns the meta object for the attribute '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.ComparisonOperatorExpression#getOperator <em>Operator</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Operator</em>'.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.OperatorExpression#getOperator()
-   * @see #getOperatorExpression()
+   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.ComparisonOperatorExpression#getOperator()
+   * @see #getComparisonOperatorExpression()
    * @generated
    */
-  EAttribute getOperatorExpression_Operator();
+  EAttribute getComparisonOperatorExpression_Operator();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.OperatorExpression#getRhs <em>Rhs</em>}'.
+   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.ComparisonOperatorExpression#getRhs <em>Rhs</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Rhs</em>'.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.OperatorExpression#getRhs()
-   * @see #getOperatorExpression()
+   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.ComparisonOperatorExpression#getRhs()
+   * @see #getComparisonOperatorExpression()
    * @generated
    */
-  EReference getOperatorExpression_Rhs();
+  EReference getComparisonOperatorExpression_Rhs();
 
   /**
    * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.ExistsExpression <em>Exists Expression</em>}'.
@@ -3555,14 +3555,14 @@ public interface JPQLPackage extends EPackage
   EReference getAndExpression_Entries();
 
   /**
-   * Returns the meta object for enum '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.Operator <em>Operator</em>}'.
+   * Returns the meta object for enum '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.ComparisonOperator <em>Comparison Operator</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for enum '<em>Operator</em>'.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.Operator
+   * @return the meta object for enum '<em>Comparison Operator</em>'.
+   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.ComparisonOperator
    * @generated
    */
-  EEnum getOperator();
+  EEnum getComparisonOperator();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -4240,14 +4240,14 @@ public interface JPQLPackage extends EPackage
     EClass EXPRESSION = eINSTANCE.getExpression();
 
     /**
-     * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.OperatorExpressionImpl <em>Operator Expression</em>}' class.
+     * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.ComparisonOperatorExpressionImpl <em>Comparison Operator Expression</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.OperatorExpressionImpl
-     * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getOperatorExpression()
+     * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.ComparisonOperatorExpressionImpl
+     * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getComparisonOperatorExpression()
      * @generated
      */
-    EClass OPERATOR_EXPRESSION = eINSTANCE.getOperatorExpression();
+    EClass COMPARISON_OPERATOR_EXPRESSION = eINSTANCE.getComparisonOperatorExpression();
 
     /**
      * The meta object literal for the '<em><b>Lhs</b></em>' containment reference feature.
@@ -4255,7 +4255,7 @@ public interface JPQLPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference OPERATOR_EXPRESSION__LHS = eINSTANCE.getOperatorExpression_Lhs();
+    EReference COMPARISON_OPERATOR_EXPRESSION__LHS = eINSTANCE.getComparisonOperatorExpression_Lhs();
 
     /**
      * The meta object literal for the '<em><b>Operator</b></em>' attribute feature.
@@ -4263,7 +4263,7 @@ public interface JPQLPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute OPERATOR_EXPRESSION__OPERATOR = eINSTANCE.getOperatorExpression_Operator();
+    EAttribute COMPARISON_OPERATOR_EXPRESSION__OPERATOR = eINSTANCE.getComparisonOperatorExpression_Operator();
 
     /**
      * The meta object literal for the '<em><b>Rhs</b></em>' containment reference feature.
@@ -4271,7 +4271,7 @@ public interface JPQLPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference OPERATOR_EXPRESSION__RHS = eINSTANCE.getOperatorExpression_Rhs();
+    EReference COMPARISON_OPERATOR_EXPRESSION__RHS = eINSTANCE.getComparisonOperatorExpression_Rhs();
 
     /**
      * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.ExistsExpressionImpl <em>Exists Expression</em>}' class.
@@ -4786,14 +4786,14 @@ public interface JPQLPackage extends EPackage
     EReference AND_EXPRESSION__ENTRIES = eINSTANCE.getAndExpression_Entries();
 
     /**
-     * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.Operator <em>Operator</em>}' enum.
+     * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.ComparisonOperator <em>Comparison Operator</em>}' enum.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.nightlabs.jjqb.xtext.jpql.jPQL.Operator
-     * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getOperator()
+     * @see org.nightlabs.jjqb.xtext.jpql.jPQL.ComparisonOperator
+     * @see org.nightlabs.jjqb.xtext.jpql.jPQL.impl.JPQLPackageImpl#getComparisonOperator()
      * @generated
      */
-    EEnum OPERATOR = eINSTANCE.getOperator();
+    EEnum COMPARISON_OPERATOR = eINSTANCE.getComparisonOperator();
 
   }
 

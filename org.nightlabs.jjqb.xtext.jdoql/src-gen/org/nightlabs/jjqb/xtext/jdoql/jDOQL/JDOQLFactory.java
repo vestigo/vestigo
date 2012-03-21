@@ -35,13 +35,13 @@ public interface JDOQLFactory extends EFactory
   SingleStringJDOQL createSingleStringJDOQL();
 
   /**
-   * Returns a new object of class '<em>Select</em>'.
+   * Returns a new object of class '<em>Select Clause</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Select</em>'.
+   * @return a new object of class '<em>Select Clause</em>'.
    * @generated
    */
-  Select createSelect();
+  SelectClause createSelectClause();
 
   /**
    * Returns a new object of class '<em>Result Clause</em>'.
@@ -62,42 +62,6 @@ public interface JDOQLFactory extends EFactory
   IntoClause createIntoClause();
 
   /**
-   * Returns a new object of class '<em>From</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>From</em>'.
-   * @generated
-   */
-  From createFrom();
-
-  /**
-   * Returns a new object of class '<em>Where</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Where</em>'.
-   * @generated
-   */
-  Where createWhere();
-
-  /**
-   * Returns a new object of class '<em>Exclude Clause</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Exclude Clause</em>'.
-   * @generated
-   */
-  ExcludeClause createExcludeClause();
-
-  /**
-   * Returns a new object of class '<em>Result Specs</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Result Specs</em>'.
-   * @generated
-   */
-  ResultSpecs createResultSpecs();
-
-  /**
    * Returns a new object of class '<em>Result Spec</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -116,13 +80,76 @@ public interface JDOQLFactory extends EFactory
   ResultNaming createResultNaming();
 
   /**
-   * Returns a new object of class '<em>Boolean Expression</em>'.
+   * Returns a new object of class '<em>From Clause</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Boolean Expression</em>'.
+   * @return a new object of class '<em>From Clause</em>'.
    * @generated
    */
-  BooleanExpression createBooleanExpression();
+  FromClause createFromClause();
+
+  /**
+   * Returns a new object of class '<em>Where Clause</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Where Clause</em>'.
+   * @generated
+   */
+  WhereClause createWhereClause();
+
+  /**
+   * Returns a new object of class '<em>Variables Clause</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Variables Clause</em>'.
+   * @generated
+   */
+  VariablesClause createVariablesClause();
+
+  /**
+   * Returns a new object of class '<em>Variable Declaration</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Variable Declaration</em>'.
+   * @generated
+   */
+  VariableDeclaration createVariableDeclaration();
+
+  /**
+   * Returns a new object of class '<em>Parameters Clause</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Parameters Clause</em>'.
+   * @generated
+   */
+  ParametersClause createParametersClause();
+
+  /**
+   * Returns a new object of class '<em>Parameter Declaration</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Parameter Declaration</em>'.
+   * @generated
+   */
+  ParameterDeclaration createParameterDeclaration();
+
+  /**
+   * Returns a new object of class '<em>Declared Parameter Name</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Declared Parameter Name</em>'.
+   * @generated
+   */
+  DeclaredParameterName createDeclaredParameterName();
+
+  /**
+   * Returns a new object of class '<em>Import Clause</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Import Clause</em>'.
+   * @generated
+   */
+  ImportClause createImportClause();
 
   /**
    * Returns a new object of class '<em>Expression</em>'.
@@ -134,22 +161,76 @@ public interface JDOQLFactory extends EFactory
   Expression createExpression();
 
   /**
-   * Returns a new object of class '<em>Unary Expression</em>'.
+   * Returns a new object of class '<em>Conditional Or Expression</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Unary Expression</em>'.
+   * @return a new object of class '<em>Conditional Or Expression</em>'.
    * @generated
    */
-  UnaryExpression createUnaryExpression();
+  ConditionalOrExpression createConditionalOrExpression();
 
   /**
-   * Returns a new object of class '<em>Primary</em>'.
+   * Returns a new object of class '<em>Conditional And Expression</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Primary</em>'.
+   * @return a new object of class '<em>Conditional And Expression</em>'.
    * @generated
    */
-  Primary createPrimary();
+  ConditionalAndExpression createConditionalAndExpression();
+
+  /**
+   * Returns a new object of class '<em>Simple Or Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Simple Or Expression</em>'.
+   * @generated
+   */
+  SimpleOrExpression createSimpleOrExpression();
+
+  /**
+   * Returns a new object of class '<em>Simple And Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Simple And Expression</em>'.
+   * @generated
+   */
+  SimpleAndExpression createSimpleAndExpression();
+
+  /**
+   * Returns a new object of class '<em>Comparison Operator Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Comparison Operator Expression</em>'.
+   * @generated
+   */
+  ComparisonOperatorExpression createComparisonOperatorExpression();
+
+  /**
+   * Returns a new object of class '<em>Addition Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Addition Expression</em>'.
+   * @generated
+   */
+  AdditionExpression createAdditionExpression();
+
+  /**
+   * Returns a new object of class '<em>Multiplication Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Multiplication Expression</em>'.
+   * @generated
+   */
+  MultiplicationExpression createMultiplicationExpression();
+
+  /**
+   * Returns a new object of class '<em>Field Access Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Field Access Expression</em>'.
+   * @generated
+   */
+  FieldAccessExpression createFieldAccessExpression();
 
   /**
    * Returns the package supported by this factory.

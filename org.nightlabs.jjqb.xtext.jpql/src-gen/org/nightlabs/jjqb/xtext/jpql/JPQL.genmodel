@@ -9,13 +9,13 @@
     editorPluginID="org.nightlabs.jjqb.xtext.jpql.editor">
   <genPackages prefix="JPQL" basePackage="org.nightlabs.jjqb.xtext.jpql" disposableProviderFactory="true"
       ecorePackage="JPQL.ecore#/">
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="JPQL.ecore#//Operator">
-      <genEnumLiterals ecoreEnumLiteral="JPQL.ecore#//Operator/lessThen"/>
-      <genEnumLiterals ecoreEnumLiteral="JPQL.ecore#//Operator/greaterThen"/>
-      <genEnumLiterals ecoreEnumLiteral="JPQL.ecore#//Operator/lessEqual"/>
-      <genEnumLiterals ecoreEnumLiteral="JPQL.ecore#//Operator/greaterEqual"/>
-      <genEnumLiterals ecoreEnumLiteral="JPQL.ecore#//Operator/equal"/>
-      <genEnumLiterals ecoreEnumLiteral="JPQL.ecore#//Operator/notEqual"/>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="JPQL.ecore#//ComparisonOperator">
+      <genEnumLiterals ecoreEnumLiteral="JPQL.ecore#//ComparisonOperator/lessThen"/>
+      <genEnumLiterals ecoreEnumLiteral="JPQL.ecore#//ComparisonOperator/greaterThen"/>
+      <genEnumLiterals ecoreEnumLiteral="JPQL.ecore#//ComparisonOperator/lessEqual"/>
+      <genEnumLiterals ecoreEnumLiteral="JPQL.ecore#//ComparisonOperator/greaterEqual"/>
+      <genEnumLiterals ecoreEnumLiteral="JPQL.ecore#//ComparisonOperator/equal"/>
+      <genEnumLiterals ecoreEnumLiteral="JPQL.ecore#//ComparisonOperator/notEqual"/>
     </genEnums>
     <genClasses ecoreClass="JPQL.ecore#//JPQLQuery">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//JPQLQuery/whereClause"/>
@@ -115,10 +115,10 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//WhereClause/whereEntry"/>
     </genClasses>
     <genClasses ecoreClass="JPQL.ecore#//Expression"/>
-    <genClasses ecoreClass="JPQL.ecore#//OperatorExpression">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//OperatorExpression/lhs"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JPQL.ecore#//OperatorExpression/operator"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//OperatorExpression/rhs"/>
+    <genClasses ecoreClass="JPQL.ecore#//ComparisonOperatorExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//ComparisonOperatorExpression/lhs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JPQL.ecore#//ComparisonOperatorExpression/operator"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//ComparisonOperatorExpression/rhs"/>
     </genClasses>
     <genClasses ecoreClass="JPQL.ecore#//ExistsExpression">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JPQL.ecore#//ExistsExpression/isNot"/>

@@ -17,18 +17,16 @@ import org.nightlabs.jjqb.xtext.jdoql.services.JDOQLGrammarAccess;
 public class AbstractJDOQLSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected JDOQLGrammarAccess grammarAccess;
-	protected AbstractElementAlias match_ResultClause_CommaKeyword_2_q;
-	protected AbstractElementAlias match_ResultClause_DistinctKeyword_0_q;
-	protected AbstractElementAlias match_ResultSpecs_CommaKeyword_1_q;
-	protected AbstractElementAlias match_Select_UniqueKeyword_1_q;
+	protected AbstractElementAlias match_ImportClause_SemicolonKeyword_2_q;
+	protected AbstractElementAlias match_ParametersClause_CommaKeyword_3_q;
+	protected AbstractElementAlias match_VariablesClause_SemicolonKeyword_3_q;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (JDOQLGrammarAccess) access;
-		match_ResultClause_CommaKeyword_2_q = new TokenAlias(false, true, grammarAccess.getResultClauseAccess().getCommaKeyword_2());
-		match_ResultClause_DistinctKeyword_0_q = new TokenAlias(false, true, grammarAccess.getResultClauseAccess().getDistinctKeyword_0());
-		match_ResultSpecs_CommaKeyword_1_q = new TokenAlias(false, true, grammarAccess.getResultSpecsAccess().getCommaKeyword_1());
-		match_Select_UniqueKeyword_1_q = new TokenAlias(false, true, grammarAccess.getSelectAccess().getUniqueKeyword_1());
+		match_ImportClause_SemicolonKeyword_2_q = new TokenAlias(false, true, grammarAccess.getImportClauseAccess().getSemicolonKeyword_2());
+		match_ParametersClause_CommaKeyword_3_q = new TokenAlias(false, true, grammarAccess.getParametersClauseAccess().getCommaKeyword_3());
+		match_VariablesClause_SemicolonKeyword_3_q = new TokenAlias(false, true, grammarAccess.getVariablesClauseAccess().getSemicolonKeyword_3());
 	}
 	
 	@Override
@@ -43,31 +41,21 @@ public class AbstractJDOQLSyntacticSequencer extends AbstractSyntacticSequencer 
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if(match_ResultClause_CommaKeyword_2_q.equals(syntax))
-				emit_ResultClause_CommaKeyword_2_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if(match_ResultClause_DistinctKeyword_0_q.equals(syntax))
-				emit_ResultClause_DistinctKeyword_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if(match_ResultSpecs_CommaKeyword_1_q.equals(syntax))
-				emit_ResultSpecs_CommaKeyword_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if(match_Select_UniqueKeyword_1_q.equals(syntax))
-				emit_Select_UniqueKeyword_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			if(match_ImportClause_SemicolonKeyword_2_q.equals(syntax))
+				emit_ImportClause_SemicolonKeyword_2_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_ParametersClause_CommaKeyword_3_q.equals(syntax))
+				emit_ParametersClause_CommaKeyword_3_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_VariablesClause_SemicolonKeyword_3_q.equals(syntax))
+				emit_VariablesClause_SemicolonKeyword_3_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
 
 	/**
 	 * Syntax:
-	 *     ','?
+	 *     ';'?
 	 */
-	protected void emit_ResultClause_CommaKeyword_2_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Syntax:
-	 *     'distinct'?
-	 */
-	protected void emit_ResultClause_DistinctKeyword_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_ImportClause_SemicolonKeyword_2_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
@@ -75,15 +63,15 @@ public class AbstractJDOQLSyntacticSequencer extends AbstractSyntacticSequencer 
 	 * Syntax:
 	 *     ','?
 	 */
-	protected void emit_ResultSpecs_CommaKeyword_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_ParametersClause_CommaKeyword_3_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
 	/**
 	 * Syntax:
-	 *     'unique'?
+	 *     ';'?
 	 */
-	protected void emit_Select_UniqueKeyword_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_VariablesClause_SemicolonKeyword_3_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

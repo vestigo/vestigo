@@ -5,6 +5,7 @@
  */
 package org.nightlabs.jjqb.xtext.jdoql.jDOQL;
 
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -16,6 +17,6 @@ package org.nightlabs.jjqb.xtext.jdoql.jDOQL;
  * @model
  * @generated
  */
-public interface ResultSpec extends ResultSpecs
+public interface ResultSpec extends EObject
 {
 } // ResultSpec

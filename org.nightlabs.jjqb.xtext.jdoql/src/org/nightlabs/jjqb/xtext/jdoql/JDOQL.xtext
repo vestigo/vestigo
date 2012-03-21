@@ -1,100 +1,152 @@
 grammar org.nightlabs.jjqb.xtext.jdoql.JDOQL with org.eclipse.xtext.common.Terminals
 
-generate jDOQL "http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL"
+generate jDOQL 'http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL'
+
+// http://db.apache.org/jdo/specifications.html
+// Current spec: 3.0, chapter 26 JDOQL BNF, page 341ff
 
 SingleStringJDOQL: 
-	select=Select from=From (where=Where)?
+	selectClause=SelectClause
+	fromClause=FromClause
+	(whereClause=WhereClause)?
+	(variablesClause=VariablesClause)?
+	(parametersClause=ParametersClause)?
+	(importClause=ImportClause)?
+	(groupByClause=GroupByClause)?
+	(orderByClause=OrderByClause)?
+	(rangeClause=RangeClause)?
 ;
 
-Select:
-	'select' ('unique')? (resultClause=ResultClause)? (intoClause=IntoClause)?
+SelectClause:
+	{SelectClause} 'SELECT' (isUnique?='UNIQUE')? (resultClause=ResultClause)? (intoClause=IntoClause)?
 ;
 
 ResultClause:
-	('distinct')? resultSpecs+=ResultSpecs (',')?
+	(isDistinct?='DISTINCT')? resultSpecs+=ResultSpec (',' resultSpecs+=ResultSpec)*
 ;
 
 IntoClause:
-	'into' resultClassName=ClassOrInterfaceName
-;
-
-From:
-	'from' candidateClassName=CandidateClassName (excludeClause=ExcludeClause)?
-;
-
-Where:
-	'where' e=BooleanExpression
-;
-
-ExcludeClause:
-	excludeSubclasses='exclude subclasses'
-;
-
-QualifiedIdentifier:
-	ID ('.'ID)*
-;
-
-CandidateClassName:
-	QualifiedIdentifier
-;
-
-ClassOrInterfaceName:
-	QualifiedIdentifier
-;
-
-ResultSpecs:
-	ResultSpec (',')?
+	'INTO' resultClassName=ClassOrInterfaceName
 ;
 
 ResultSpec:
-	Expression (resultNaming=ResultNaming)?
+	ConditionalOrExpression (resultNaming=ResultNaming)?
 ;
 
 ResultNaming:
-	'as' identifier=ID
+	'AS' identifier=ID
 ;
 
-BooleanExpression:
-	left=Expression (op=BooleanOp right=Expression)
+FromClause:
+	'FROM' candidateClassName=CandidateClassName (isExcludeSubclasses?='EXCLUDE' 'SUBCLASSES')?
 ;
 
-BooleanOp:
-	'>' | '>=' | '<' | '<=' | 'instanceof' | '==' | '!=' | '&&' | '||'
+WhereClause:
+	'WHERE' filter=ConditionalOrExpression
 ;
 
-Expression:
-	left=UnaryExpression (op=InfixOp right=UnaryExpression)?
+VariablesClause:
+	'VARIABLES' variableDeclarations+=VariableDeclaration (';' variableDeclarations+=VariableDeclaration)* ';'?
 ;
 
-InfixOp:
-	'*' | '/' | '%' | '+' | '-' | '&' | '|'
+VariableDeclaration:
+	type=Type variableName=VariableName
 ;
 
-UnaryExpression:
-	modifier=PrefixOp expression=Primary |
-	cast=Cast expression=Primary |
-	expression=Primary
+VariableName: ID;
+
+ParametersClause:
+	'PARAMETERS' parameterDeclarations+=ParameterDeclaration (',' parameterDeclarations+=ParameterDeclaration)* ','?
+;
+
+ParameterDeclaration:
+	type=Type declaredParameterName=DeclaredParameterName
+;
+
+DeclaredParameterName:
+	name=ParameterName
+;
+
+ParameterName: ID;
+
+ImportClause:
+	importDeclarations+=ImportDeclaration (';' importDeclarations+=ImportDeclaration)* ';'?
+;
+
+ImportDeclaration:
+	'import' QualifiedIdentifier
+;
+
+GroupByClause:
+	'GROUP' 'BY'
+;
+
+OrderByClause:
+	'ORDER' 'BY'
+;
+
+RangeClause:
+	'RANGE'
+;
+
+ConditionalOrExpression returns Expression:
+	ConditionalAndExpression ({ConditionalOrExpression.left=current} '||' right=ConditionalAndExpression)*
+;
+
+ConditionalAndExpression returns Expression:
+	SimpleOrExpression ({ConditionalAndExpression.left=current} '&&' right=SimpleOrExpression)*
+;
+
+SimpleOrExpression returns Expression:
+	SimpleAndExpression ({SimpleOrExpression.left=current} '|' right=SimpleAndExpression)*
+;
+
+SimpleAndExpression returns Expression:
+	ComparisonOperatorExpression ({SimpleAndExpression.left=current} '&' right=ComparisonOperatorExpression)*
+;
+
+ComparisonOperatorExpression returns Expression:
+	AdditionExpression ({ComparisonOperatorExpression.left=current} operator=ComparisonOperator right=AdditionExpression)*
+;
+
+AdditionExpression returns Expression:
+	MultiplicationExpression ({AdditionExpression.left=current} operator=AdditionOperator right=MultiplicationExpression)*
+;
+
+MultiplicationExpression returns Expression:
+	UnaryExpression ({MultiplicationExpression.left=current} operator=MultiplicationOperator right=UnaryExpression)*
+;
+
+UnaryExpression returns Expression:
+	(unaryOperator=UnaryOperator)? right=FieldAccessExpression
+;
+
+FieldAccessExpression returns Expression:
+	ParameterOrFieldOrMethodExpression ({FieldAccessExpression.left=current} '.' right=FieldOrMethodExpression)*
+;
+
+ParameterOrFieldOrMethodExpression returns Expression:
+	literal=Literal |
+	this='this' |
+//	declaredParameterName=[DeclaredParameterName] |
+	id=ID |
+	':' parameterName=ParameterName |
+	ParenthesesExpression
+;
+
+FieldOrMethodExpression returns Expression:
+	literal=Literal |
+	this='this' |
+	id=ID |
+	ParenthesesExpression
+;
+
+ParenthesesExpression returns Expression:
+	'(' ConditionalOrExpression ')'
 ;
 
 Cast:
 	'(' Type ')'
-;
-
-PrefixOp: 
-	'+' | '-' | '~' | '!'
-;
-
-Primary:
-	literal=Literal | 
-	this='this' |
-	classOrInterface = ClassOrInterfaceName |
-	'(' expression=Expression ')' 
-//	| '(' subquery=Subquery ')' 
-//	| methodInvocation=MethodInvocation 
-//	| aggregateExpression=AggregateExpression
-//	| fieldAccess=FieldAccess 
-//	| variableName=VariableName
-//	| parameterName=ParameterName
 ;
 
 Type:
@@ -151,4 +203,44 @@ Literal:
 //    CharacterLiteral |
     StringLiteral |
     NullLiteral
+;
+
+QualifiedIdentifier:
+	ID ('.'ID)*
+;
+
+CandidateClassName:
+	QualifiedIdentifier
+;
+
+ClassOrInterfaceName:
+	QualifiedIdentifier
+;
+
+enum UnaryOperator: 
+	positive='+' |
+	negative='-' |
+	bitwiseNot='~' |
+	logicalNot='!'
+;
+
+enum AdditionOperator:
+	add='+' |
+	subtract='-'
+;
+
+enum MultiplicationOperator:
+	multiply='*' |
+	divide='/' |
+	modulo='%'
+;
+
+enum ComparisonOperator:
+	lessThen='<' | 
+	greaterThen='>' | 
+	lessEqual='<=' | 
+	greaterEqual='>=' | 
+	equal='==' | 
+	notEqual='!=' |
+	instanceof='instanceof'
 ;

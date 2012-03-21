@@ -54,7 +54,7 @@ public class JPQLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getDateTimeFunctionNameAccess().getAlternatives(), "rule__DateTimeFunctionName__Alternatives");
 					put(grammarAccess.getValueAccess().getAlternatives(), "rule__Value__Alternatives");
 					put(grammarAccess.getBooleanExpressionAccess().getValueAlternatives_0(), "rule__BooleanExpression__ValueAlternatives_0");
-					put(grammarAccess.getOperatorAccess().getAlternatives(), "rule__Operator__Alternatives");
+					put(grammarAccess.getComparisonOperatorAccess().getAlternatives(), "rule__ComparisonOperator__Alternatives");
 					put(grammarAccess.getSelectStatementAccess().getGroup(), "rule__SelectStatement__Group__0");
 					put(grammarAccess.getGroupClauseAccess().getGroup(), "rule__GroupClause__Group__0");
 					put(grammarAccess.getGroupClauseAccess().getGroup_3(), "rule__GroupClause__Group_3__0");
@@ -97,7 +97,7 @@ public class JPQLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getAndExpressionAccess().getGroup_1(), "rule__AndExpression__Group_1__0");
 					put(grammarAccess.getAndExpressionAccess().getGroup_1_1(), "rule__AndExpression__Group_1_1__0");
 					put(grammarAccess.getParExpressionAccess().getGroup(), "rule__ParExpression__Group__0");
-					put(grammarAccess.getOperatorExpressionAccess().getGroup(), "rule__OperatorExpression__Group__0");
+					put(grammarAccess.getComparisonOperatorExpressionAccess().getGroup(), "rule__ComparisonOperatorExpression__Group__0");
 					put(grammarAccess.getExistsExpressionAccess().getGroup(), "rule__ExistsExpression__Group__0");
 					put(grammarAccess.getAllExpressionAccess().getGroup(), "rule__AllExpression__Group__0");
 					put(grammarAccess.getAnyExpressionAccess().getGroup(), "rule__AnyExpression__Group__0");
@@ -184,9 +184,9 @@ public class JPQLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getWhereClauseAccess().getWhereEntryAssignment_1(), "rule__WhereClause__WhereEntryAssignment_1");
 					put(grammarAccess.getOrExpressionAccess().getEntriesAssignment_1_1_1(), "rule__OrExpression__EntriesAssignment_1_1_1");
 					put(grammarAccess.getAndExpressionAccess().getEntriesAssignment_1_1_1(), "rule__AndExpression__EntriesAssignment_1_1_1");
-					put(grammarAccess.getOperatorExpressionAccess().getLhsAssignment_0(), "rule__OperatorExpression__LhsAssignment_0");
-					put(grammarAccess.getOperatorExpressionAccess().getOperatorAssignment_1(), "rule__OperatorExpression__OperatorAssignment_1");
-					put(grammarAccess.getOperatorExpressionAccess().getRhsAssignment_2(), "rule__OperatorExpression__RhsAssignment_2");
+					put(grammarAccess.getComparisonOperatorExpressionAccess().getLhsAssignment_0(), "rule__ComparisonOperatorExpression__LhsAssignment_0");
+					put(grammarAccess.getComparisonOperatorExpressionAccess().getOperatorAssignment_1(), "rule__ComparisonOperatorExpression__OperatorAssignment_1");
+					put(grammarAccess.getComparisonOperatorExpressionAccess().getRhsAssignment_2(), "rule__ComparisonOperatorExpression__RhsAssignment_2");
 					put(grammarAccess.getExistsExpressionAccess().getIsNotAssignment_0(), "rule__ExistsExpression__IsNotAssignment_0");
 					put(grammarAccess.getExistsExpressionAccess().getQueryAssignment_2(), "rule__ExistsExpression__QueryAssignment_2");
 					put(grammarAccess.getAllExpressionAccess().getQueryAssignment_1(), "rule__AllExpression__QueryAssignment_1");

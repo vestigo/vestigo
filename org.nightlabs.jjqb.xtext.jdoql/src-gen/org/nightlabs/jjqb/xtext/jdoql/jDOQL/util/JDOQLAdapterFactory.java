@@ -83,9 +83,9 @@ public class JDOQLAdapterFactory extends AdapterFactoryImpl
         return createSingleStringJDOQLAdapter();
       }
       @Override
-      public Adapter caseSelect(Select object)
+      public Adapter caseSelectClause(SelectClause object)
       {
-        return createSelectAdapter();
+        return createSelectClauseAdapter();
       }
       @Override
       public Adapter caseResultClause(ResultClause object)
@@ -98,26 +98,6 @@ public class JDOQLAdapterFactory extends AdapterFactoryImpl
         return createIntoClauseAdapter();
       }
       @Override
-      public Adapter caseFrom(From object)
-      {
-        return createFromAdapter();
-      }
-      @Override
-      public Adapter caseWhere(Where object)
-      {
-        return createWhereAdapter();
-      }
-      @Override
-      public Adapter caseExcludeClause(ExcludeClause object)
-      {
-        return createExcludeClauseAdapter();
-      }
-      @Override
-      public Adapter caseResultSpecs(ResultSpecs object)
-      {
-        return createResultSpecsAdapter();
-      }
-      @Override
       public Adapter caseResultSpec(ResultSpec object)
       {
         return createResultSpecAdapter();
@@ -128,9 +108,44 @@ public class JDOQLAdapterFactory extends AdapterFactoryImpl
         return createResultNamingAdapter();
       }
       @Override
-      public Adapter caseBooleanExpression(BooleanExpression object)
+      public Adapter caseFromClause(FromClause object)
       {
-        return createBooleanExpressionAdapter();
+        return createFromClauseAdapter();
+      }
+      @Override
+      public Adapter caseWhereClause(WhereClause object)
+      {
+        return createWhereClauseAdapter();
+      }
+      @Override
+      public Adapter caseVariablesClause(VariablesClause object)
+      {
+        return createVariablesClauseAdapter();
+      }
+      @Override
+      public Adapter caseVariableDeclaration(VariableDeclaration object)
+      {
+        return createVariableDeclarationAdapter();
+      }
+      @Override
+      public Adapter caseParametersClause(ParametersClause object)
+      {
+        return createParametersClauseAdapter();
+      }
+      @Override
+      public Adapter caseParameterDeclaration(ParameterDeclaration object)
+      {
+        return createParameterDeclarationAdapter();
+      }
+      @Override
+      public Adapter caseDeclaredParameterName(DeclaredParameterName object)
+      {
+        return createDeclaredParameterNameAdapter();
+      }
+      @Override
+      public Adapter caseImportClause(ImportClause object)
+      {
+        return createImportClauseAdapter();
       }
       @Override
       public Adapter caseExpression(Expression object)
@@ -138,14 +153,44 @@ public class JDOQLAdapterFactory extends AdapterFactoryImpl
         return createExpressionAdapter();
       }
       @Override
-      public Adapter caseUnaryExpression(UnaryExpression object)
+      public Adapter caseConditionalOrExpression(ConditionalOrExpression object)
       {
-        return createUnaryExpressionAdapter();
+        return createConditionalOrExpressionAdapter();
       }
       @Override
-      public Adapter casePrimary(Primary object)
+      public Adapter caseConditionalAndExpression(ConditionalAndExpression object)
       {
-        return createPrimaryAdapter();
+        return createConditionalAndExpressionAdapter();
+      }
+      @Override
+      public Adapter caseSimpleOrExpression(SimpleOrExpression object)
+      {
+        return createSimpleOrExpressionAdapter();
+      }
+      @Override
+      public Adapter caseSimpleAndExpression(SimpleAndExpression object)
+      {
+        return createSimpleAndExpressionAdapter();
+      }
+      @Override
+      public Adapter caseComparisonOperatorExpression(ComparisonOperatorExpression object)
+      {
+        return createComparisonOperatorExpressionAdapter();
+      }
+      @Override
+      public Adapter caseAdditionExpression(AdditionExpression object)
+      {
+        return createAdditionExpressionAdapter();
+      }
+      @Override
+      public Adapter caseMultiplicationExpression(MultiplicationExpression object)
+      {
+        return createMultiplicationExpressionAdapter();
+      }
+      @Override
+      public Adapter caseFieldAccessExpression(FieldAccessExpression object)
+      {
+        return createFieldAccessExpressionAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -185,16 +230,16 @@ public class JDOQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Select <em>Select</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SelectClause <em>Select Clause</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.Select
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.SelectClause
    * @generated
    */
-  public Adapter createSelectAdapter()
+  public Adapter createSelectClauseAdapter()
   {
     return null;
   }
@@ -230,66 +275,6 @@ public class JDOQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.From <em>From</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.From
-   * @generated
-   */
-  public Adapter createFromAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Where <em>Where</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.Where
-   * @generated
-   */
-  public Adapter createWhereAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ExcludeClause <em>Exclude Clause</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.ExcludeClause
-   * @generated
-   */
-  public Adapter createExcludeClauseAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ResultSpecs <em>Result Specs</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.ResultSpecs
-   * @generated
-   */
-  public Adapter createResultSpecsAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ResultSpec <em>Result Spec</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -320,16 +305,121 @@ public class JDOQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.BooleanExpression <em>Boolean Expression</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.FromClause <em>From Clause</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.BooleanExpression
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.FromClause
    * @generated
    */
-  public Adapter createBooleanExpressionAdapter()
+  public Adapter createFromClauseAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.WhereClause <em>Where Clause</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.WhereClause
+   * @generated
+   */
+  public Adapter createWhereClauseAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.VariablesClause <em>Variables Clause</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.VariablesClause
+   * @generated
+   */
+  public Adapter createVariablesClauseAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.VariableDeclaration <em>Variable Declaration</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.VariableDeclaration
+   * @generated
+   */
+  public Adapter createVariableDeclarationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ParametersClause <em>Parameters Clause</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.ParametersClause
+   * @generated
+   */
+  public Adapter createParametersClauseAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ParameterDeclaration <em>Parameter Declaration</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.ParameterDeclaration
+   * @generated
+   */
+  public Adapter createParameterDeclarationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.DeclaredParameterName <em>Declared Parameter Name</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.DeclaredParameterName
+   * @generated
+   */
+  public Adapter createDeclaredParameterNameAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ImportClause <em>Import Clause</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.ImportClause
+   * @generated
+   */
+  public Adapter createImportClauseAdapter()
   {
     return null;
   }
@@ -350,31 +440,121 @@ public class JDOQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.UnaryExpression <em>Unary Expression</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ConditionalOrExpression <em>Conditional Or Expression</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.UnaryExpression
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.ConditionalOrExpression
    * @generated
    */
-  public Adapter createUnaryExpressionAdapter()
+  public Adapter createConditionalOrExpressionAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Primary <em>Primary</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ConditionalAndExpression <em>Conditional And Expression</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.Primary
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.ConditionalAndExpression
    * @generated
    */
-  public Adapter createPrimaryAdapter()
+  public Adapter createConditionalAndExpressionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SimpleOrExpression <em>Simple Or Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.SimpleOrExpression
+   * @generated
+   */
+  public Adapter createSimpleOrExpressionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SimpleAndExpression <em>Simple And Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.SimpleAndExpression
+   * @generated
+   */
+  public Adapter createSimpleAndExpressionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ComparisonOperatorExpression <em>Comparison Operator Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.ComparisonOperatorExpression
+   * @generated
+   */
+  public Adapter createComparisonOperatorExpressionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.AdditionExpression <em>Addition Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.AdditionExpression
+   * @generated
+   */
+  public Adapter createAdditionExpressionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.MultiplicationExpression <em>Multiplication Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.MultiplicationExpression
+   * @generated
+   */
+  public Adapter createMultiplicationExpressionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.FieldAccessExpression <em>Field Access Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.FieldAccessExpression
+   * @generated
+   */
+  public Adapter createFieldAccessExpressionAdapter()
   {
     return null;
   }

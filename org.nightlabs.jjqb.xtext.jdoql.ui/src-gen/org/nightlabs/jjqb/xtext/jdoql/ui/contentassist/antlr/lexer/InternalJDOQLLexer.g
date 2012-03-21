@@ -16,59 +16,75 @@ import org.eclipse.xtext.ui.editor.contentassist.antlr.internal.Lexer;
 
 
 
-KEYWORD_42 : ('E'|'e')('X'|'x')('C'|'c')('L'|'l')('U'|'u')('D'|'d')('E'|'e')' '('S'|'s')('U'|'u')('B'|'b')('C'|'c')('L'|'l')('A'|'a')('S'|'s')('S'|'s')('E'|'e')('S'|'s');
+KEYWORD_50 : ('P'|'p')('A'|'a')('R'|'r')('A'|'a')('M'|'m')('E'|'e')('T'|'t')('E'|'e')('R'|'r')('S'|'s');
 
-KEYWORD_41 : ('I'|'i')('N'|'n')('S'|'s')('T'|'t')('A'|'a')('N'|'n')('C'|'c')('E'|'e')('O'|'o')('F'|'f');
+KEYWORD_51 : ('S'|'s')('U'|'u')('B'|'b')('C'|'c')('L'|'l')('A'|'a')('S'|'s')('S'|'s')('E'|'e')('S'|'s');
 
-KEYWORD_40 : ('D'|'d')('I'|'i')('S'|'s')('T'|'t')('I'|'i')('N'|'n')('C'|'c')('T'|'t');
+KEYWORD_52 : ('I'|'i')('N'|'n')('S'|'s')('T'|'t')('A'|'a')('N'|'n')('C'|'c')('E'|'e')('O'|'o')('F'|'f');
 
-KEYWORD_39 : ('B'|'b')('O'|'o')('O'|'o')('L'|'l')('E'|'e')('A'|'a')('N'|'n');
+KEYWORD_49 : ('V'|'v')('A'|'a')('R'|'r')('I'|'i')('A'|'a')('B'|'b')('L'|'l')('E'|'e')('S'|'s');
 
-KEYWORD_36 : ('D'|'d')('O'|'o')('U'|'u')('B'|'b')('L'|'l')('E'|'e');
+KEYWORD_48 : ('D'|'d')('I'|'i')('S'|'s')('T'|'t')('I'|'i')('N'|'n')('C'|'c')('T'|'t');
 
-KEYWORD_37 : ('S'|'s')('E'|'e')('L'|'l')('E'|'e')('C'|'c')('T'|'t');
+KEYWORD_46 : ('E'|'e')('X'|'x')('C'|'c')('L'|'l')('U'|'u')('D'|'d')('E'|'e');
 
-KEYWORD_38 : ('U'|'u')('N'|'n')('I'|'i')('Q'|'q')('U'|'u')('E'|'e');
+KEYWORD_47 : ('B'|'b')('O'|'o')('O'|'o')('L'|'l')('E'|'e')('A'|'a')('N'|'n');
 
-KEYWORD_32 : ('F'|'f')('A'|'a')('L'|'l')('S'|'s')('E'|'e');
+KEYWORD_42 : ('S'|'s')('E'|'e')('L'|'l')('E'|'e')('C'|'c')('T'|'t');
 
-KEYWORD_33 : ('F'|'f')('L'|'l')('O'|'o')('A'|'a')('T'|'t');
+KEYWORD_43 : ('U'|'u')('N'|'n')('I'|'i')('Q'|'q')('U'|'u')('E'|'e');
 
-KEYWORD_34 : ('S'|'s')('H'|'h')('O'|'o')('R'|'r')('T'|'t');
+KEYWORD_44 : ('D'|'d')('O'|'o')('U'|'u')('B'|'b')('L'|'l')('E'|'e');
 
-KEYWORD_35 : ('W'|'w')('H'|'h')('E'|'e')('R'|'r')('E'|'e');
+KEYWORD_45 : ('I'|'i')('M'|'m')('P'|'p')('O'|'o')('R'|'r')('T'|'t');
 
-KEYWORD_24 : ('B'|'b')('Y'|'y')('T'|'t')('E'|'e');
+KEYWORD_35 : ('G'|'g')('R'|'r')('O'|'o')('U'|'u')('P'|'p');
 
-KEYWORD_25 : ('C'|'c')('H'|'h')('A'|'a')('R'|'r');
+KEYWORD_36 : ('O'|'o')('R'|'r')('D'|'d')('E'|'e')('R'|'r');
 
-KEYWORD_26 : ('F'|'f')('R'|'r')('O'|'o')('M'|'m');
+KEYWORD_37 : ('R'|'r')('A'|'a')('N'|'n')('G'|'g')('E'|'e');
 
-KEYWORD_27 : ('I'|'i')('N'|'n')('T'|'t')('O'|'o');
+KEYWORD_38 : ('W'|'w')('H'|'h')('E'|'e')('R'|'r')('E'|'e');
 
-KEYWORD_28 : ('L'|'l')('O'|'o')('N'|'n')('G'|'g');
+KEYWORD_39 : ('F'|'f')('A'|'a')('L'|'l')('S'|'s')('E'|'e');
 
-KEYWORD_29 : ('N'|'n')('U'|'u')('L'|'l')('L'|'l');
+KEYWORD_40 : ('F'|'f')('L'|'l')('O'|'o')('A'|'a')('T'|'t');
 
-KEYWORD_30 : ('T'|'t')('H'|'h')('I'|'i')('S'|'s');
+KEYWORD_41 : ('S'|'s')('H'|'h')('O'|'o')('R'|'r')('T'|'t');
 
-KEYWORD_31 : ('T'|'t')('R'|'r')('U'|'u')('E'|'e');
+KEYWORD_27 : ('F'|'f')('R'|'r')('O'|'o')('M'|'m');
 
-KEYWORD_23 : ('I'|'i')('N'|'n')('T'|'t');
+KEYWORD_28 : ('I'|'i')('N'|'n')('T'|'t')('O'|'o');
 
-KEYWORD_16 : '!''=';
+KEYWORD_29 : ('B'|'b')('Y'|'y')('T'|'t')('E'|'e');
 
-KEYWORD_17 : '&''&';
+KEYWORD_30 : ('C'|'c')('H'|'h')('A'|'a')('R'|'r');
 
-KEYWORD_18 : '<''=';
+KEYWORD_31 : ('L'|'l')('O'|'o')('N'|'n')('G'|'g');
 
-KEYWORD_19 : '=''=';
+KEYWORD_32 : ('N'|'n')('U'|'u')('L'|'l')('L'|'l');
 
-KEYWORD_20 : '>''=';
+KEYWORD_33 : ('T'|'t')('H'|'h')('I'|'i')('S'|'s');
 
-KEYWORD_21 : ('A'|'a')('S'|'s');
+KEYWORD_34 : ('T'|'t')('R'|'r')('U'|'u')('E'|'e');
 
-KEYWORD_22 : '|''|';
+KEYWORD_26 : ('I'|'i')('N'|'n')('T'|'t');
+
+KEYWORD_18 : '!''=';
+
+KEYWORD_19 : '&''&';
+
+KEYWORD_20 : '<''=';
+
+KEYWORD_21 : '=''=';
+
+KEYWORD_22 : '>''=';
+
+KEYWORD_23 : ('A'|'a')('S'|'s');
+
+KEYWORD_24 : ('B'|'b')('Y'|'y');
+
+KEYWORD_25 : '|''|';
 
 KEYWORD_1 : '!';
 
@@ -92,13 +108,17 @@ KEYWORD_10 : '.';
 
 KEYWORD_11 : '/';
 
-KEYWORD_12 : '<';
+KEYWORD_12 : ':';
 
-KEYWORD_13 : '>';
+KEYWORD_13 : ';';
 
-KEYWORD_14 : '|';
+KEYWORD_14 : '<';
 
-KEYWORD_15 : '~';
+KEYWORD_15 : '>';
+
+KEYWORD_16 : '|';
+
+KEYWORD_17 : '~';
 
 
 

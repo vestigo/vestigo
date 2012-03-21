@@ -15,9 +15,15 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SingleStringJDOQL#getSelect <em>Select</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SingleStringJDOQL#getFrom <em>From</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SingleStringJDOQL#getWhere <em>Where</em>}</li>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SingleStringJDOQL#getSelectClause <em>Select Clause</em>}</li>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SingleStringJDOQL#getFromClause <em>From Clause</em>}</li>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SingleStringJDOQL#getWhereClause <em>Where Clause</em>}</li>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SingleStringJDOQL#getVariablesClause <em>Variables Clause</em>}</li>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SingleStringJDOQL#getParametersClause <em>Parameters Clause</em>}</li>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SingleStringJDOQL#getImportClause <em>Import Clause</em>}</li>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SingleStringJDOQL#getGroupByClause <em>Group By Clause</em>}</li>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SingleStringJDOQL#getOrderByClause <em>Order By Clause</em>}</li>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SingleStringJDOQL#getRangeClause <em>Range Clause</em>}</li>
  * </ul>
  * </p>
  *
@@ -28,81 +34,237 @@ import org.eclipse.emf.ecore.EObject;
 public interface SingleStringJDOQL extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Select</b></em>' containment reference.
+   * Returns the value of the '<em><b>Select Clause</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Select</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Select Clause</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Select</em>' containment reference.
-   * @see #setSelect(Select)
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage#getSingleStringJDOQL_Select()
+   * @return the value of the '<em>Select Clause</em>' containment reference.
+   * @see #setSelectClause(SelectClause)
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage#getSingleStringJDOQL_SelectClause()
    * @model containment="true"
    * @generated
    */
-  Select getSelect();
+  SelectClause getSelectClause();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SingleStringJDOQL#getSelect <em>Select</em>}' containment reference.
+   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SingleStringJDOQL#getSelectClause <em>Select Clause</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Select</em>' containment reference.
-   * @see #getSelect()
+   * @param value the new value of the '<em>Select Clause</em>' containment reference.
+   * @see #getSelectClause()
    * @generated
    */
-  void setSelect(Select value);
+  void setSelectClause(SelectClause value);
 
   /**
-   * Returns the value of the '<em><b>From</b></em>' containment reference.
+   * Returns the value of the '<em><b>From Clause</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>From</em>' containment reference isn't clear,
+   * If the meaning of the '<em>From Clause</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>From</em>' containment reference.
-   * @see #setFrom(From)
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage#getSingleStringJDOQL_From()
+   * @return the value of the '<em>From Clause</em>' containment reference.
+   * @see #setFromClause(FromClause)
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage#getSingleStringJDOQL_FromClause()
    * @model containment="true"
    * @generated
    */
-  From getFrom();
+  FromClause getFromClause();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SingleStringJDOQL#getFrom <em>From</em>}' containment reference.
+   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SingleStringJDOQL#getFromClause <em>From Clause</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>From</em>' containment reference.
-   * @see #getFrom()
+   * @param value the new value of the '<em>From Clause</em>' containment reference.
+   * @see #getFromClause()
    * @generated
    */
-  void setFrom(From value);
+  void setFromClause(FromClause value);
 
   /**
-   * Returns the value of the '<em><b>Where</b></em>' containment reference.
+   * Returns the value of the '<em><b>Where Clause</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Where</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Where Clause</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Where</em>' containment reference.
-   * @see #setWhere(Where)
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage#getSingleStringJDOQL_Where()
+   * @return the value of the '<em>Where Clause</em>' containment reference.
+   * @see #setWhereClause(WhereClause)
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage#getSingleStringJDOQL_WhereClause()
    * @model containment="true"
    * @generated
    */
-  Where getWhere();
+  WhereClause getWhereClause();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SingleStringJDOQL#getWhere <em>Where</em>}' containment reference.
+   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SingleStringJDOQL#getWhereClause <em>Where Clause</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Where</em>' containment reference.
-   * @see #getWhere()
+   * @param value the new value of the '<em>Where Clause</em>' containment reference.
+   * @see #getWhereClause()
    * @generated
    */
-  void setWhere(Where value);
+  void setWhereClause(WhereClause value);
+
+  /**
+   * Returns the value of the '<em><b>Variables Clause</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Variables Clause</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Variables Clause</em>' containment reference.
+   * @see #setVariablesClause(VariablesClause)
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage#getSingleStringJDOQL_VariablesClause()
+   * @model containment="true"
+   * @generated
+   */
+  VariablesClause getVariablesClause();
+
+  /**
+   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SingleStringJDOQL#getVariablesClause <em>Variables Clause</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Variables Clause</em>' containment reference.
+   * @see #getVariablesClause()
+   * @generated
+   */
+  void setVariablesClause(VariablesClause value);
+
+  /**
+   * Returns the value of the '<em><b>Parameters Clause</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Parameters Clause</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Parameters Clause</em>' containment reference.
+   * @see #setParametersClause(ParametersClause)
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage#getSingleStringJDOQL_ParametersClause()
+   * @model containment="true"
+   * @generated
+   */
+  ParametersClause getParametersClause();
+
+  /**
+   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SingleStringJDOQL#getParametersClause <em>Parameters Clause</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Parameters Clause</em>' containment reference.
+   * @see #getParametersClause()
+   * @generated
+   */
+  void setParametersClause(ParametersClause value);
+
+  /**
+   * Returns the value of the '<em><b>Import Clause</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Import Clause</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Import Clause</em>' containment reference.
+   * @see #setImportClause(ImportClause)
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage#getSingleStringJDOQL_ImportClause()
+   * @model containment="true"
+   * @generated
+   */
+  ImportClause getImportClause();
+
+  /**
+   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SingleStringJDOQL#getImportClause <em>Import Clause</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Import Clause</em>' containment reference.
+   * @see #getImportClause()
+   * @generated
+   */
+  void setImportClause(ImportClause value);
+
+  /**
+   * Returns the value of the '<em><b>Group By Clause</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Group By Clause</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Group By Clause</em>' attribute.
+   * @see #setGroupByClause(String)
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage#getSingleStringJDOQL_GroupByClause()
+   * @model
+   * @generated
+   */
+  String getGroupByClause();
+
+  /**
+   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SingleStringJDOQL#getGroupByClause <em>Group By Clause</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Group By Clause</em>' attribute.
+   * @see #getGroupByClause()
+   * @generated
+   */
+  void setGroupByClause(String value);
+
+  /**
+   * Returns the value of the '<em><b>Order By Clause</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Order By Clause</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Order By Clause</em>' attribute.
+   * @see #setOrderByClause(String)
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage#getSingleStringJDOQL_OrderByClause()
+   * @model
+   * @generated
+   */
+  String getOrderByClause();
+
+  /**
+   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SingleStringJDOQL#getOrderByClause <em>Order By Clause</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Order By Clause</em>' attribute.
+   * @see #getOrderByClause()
+   * @generated
+   */
+  void setOrderByClause(String value);
+
+  /**
+   * Returns the value of the '<em><b>Range Clause</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Range Clause</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Range Clause</em>' attribute.
+   * @see #setRangeClause(String)
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage#getSingleStringJDOQL_RangeClause()
+   * @model
+   * @generated
+   */
+  String getRangeClause();
+
+  /**
+   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SingleStringJDOQL#getRangeClause <em>Range Clause</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Range Clause</em>' attribute.
+   * @see #getRangeClause()
+   * @generated
+   */
+  void setRangeClause(String value);
 
 } // SingleStringJDOQL

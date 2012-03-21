@@ -332,13 +332,13 @@ public interface JPQLFactory extends EFactory
   Expression createExpression();
 
   /**
-   * Returns a new object of class '<em>Operator Expression</em>'.
+   * Returns a new object of class '<em>Comparison Operator Expression</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Operator Expression</em>'.
+   * @return a new object of class '<em>Comparison Operator Expression</em>'.
    * @generated
    */
-  OperatorExpression createOperatorExpression();
+  ComparisonOperatorExpression createComparisonOperatorExpression();
 
   /**
    * Returns a new object of class '<em>Exists Expression</em>'.
