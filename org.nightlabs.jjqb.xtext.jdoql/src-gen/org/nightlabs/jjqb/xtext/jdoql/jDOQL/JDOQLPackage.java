@@ -125,7 +125,7 @@ public interface JDOQLPackage extends EPackage
   int SINGLE_STRING_JDOQL__IMPORT_CLAUSE = 5;
 
   /**
-   * The feature id for the '<em><b>Group By Clause</b></em>' attribute.
+   * The feature id for the '<em><b>Group By Clause</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -134,7 +134,7 @@ public interface JDOQLPackage extends EPackage
   int SINGLE_STRING_JDOQL__GROUP_BY_CLAUSE = 6;
 
   /**
-   * The feature id for the '<em><b>Order By Clause</b></em>' attribute.
+   * The feature id for the '<em><b>Order By Clause</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -143,7 +143,7 @@ public interface JDOQLPackage extends EPackage
   int SINGLE_STRING_JDOQL__ORDER_BY_CLAUSE = 7;
 
   /**
-   * The feature id for the '<em><b>Range Clause</b></em>' attribute.
+   * The feature id for the '<em><b>Range Clause</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -496,7 +496,7 @@ public interface JDOQLPackage extends EPackage
   int PARAMETER_DECLARATION__TYPE = 0;
 
   /**
-   * The feature id for the '<em><b>Declared Parameter Name</b></em>' containment reference.
+   * The feature id for the '<em><b>Declared Parameter Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -514,34 +514,6 @@ public interface JDOQLPackage extends EPackage
   int PARAMETER_DECLARATION_FEATURE_COUNT = 2;
 
   /**
-   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.DeclaredParameterNameImpl <em>Declared Parameter Name</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.DeclaredParameterNameImpl
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getDeclaredParameterName()
-   * @generated
-   */
-  int DECLARED_PARAMETER_NAME = 12;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DECLARED_PARAMETER_NAME__NAME = 0;
-
-  /**
-   * The number of structural features of the '<em>Declared Parameter Name</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DECLARED_PARAMETER_NAME_FEATURE_COUNT = 1;
-
-  /**
    * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ImportClauseImpl <em>Import Clause</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -549,7 +521,7 @@ public interface JDOQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getImportClause()
    * @generated
    */
-  int IMPORT_CLAUSE = 13;
+  int IMPORT_CLAUSE = 12;
 
   /**
    * The feature id for the '<em><b>Import Declarations</b></em>' attribute list.
@@ -570,6 +542,155 @@ public interface JDOQLPackage extends EPackage
   int IMPORT_CLAUSE_FEATURE_COUNT = 1;
 
   /**
+   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.GroupByClauseImpl <em>Group By Clause</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.GroupByClauseImpl
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getGroupByClause()
+   * @generated
+   */
+  int GROUP_BY_CLAUSE = 13;
+
+  /**
+   * The feature id for the '<em><b>Grouping</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GROUP_BY_CLAUSE__GROUPING = 0;
+
+  /**
+   * The feature id for the '<em><b>Having Clause</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GROUP_BY_CLAUSE__HAVING_CLAUSE = 1;
+
+  /**
+   * The number of structural features of the '<em>Group By Clause</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GROUP_BY_CLAUSE_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.HavingClauseImpl <em>Having Clause</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.HavingClauseImpl
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getHavingClause()
+   * @generated
+   */
+  int HAVING_CLAUSE = 14;
+
+  /**
+   * The feature id for the '<em><b>Having</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int HAVING_CLAUSE__HAVING = 0;
+
+  /**
+   * The number of structural features of the '<em>Having Clause</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int HAVING_CLAUSE_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.OrderByClauseImpl <em>Order By Clause</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.OrderByClauseImpl
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getOrderByClause()
+   * @generated
+   */
+  int ORDER_BY_CLAUSE = 15;
+
+  /**
+   * The feature id for the '<em><b>Ordering</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ORDER_BY_CLAUSE__ORDERING = 0;
+
+  /**
+   * The number of structural features of the '<em>Order By Clause</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ORDER_BY_CLAUSE_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.OrderBySpecImpl <em>Order By Spec</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.OrderBySpecImpl
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getOrderBySpec()
+   * @generated
+   */
+  int ORDER_BY_SPEC = 16;
+
+  /**
+   * The number of structural features of the '<em>Order By Spec</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ORDER_BY_SPEC_FEATURE_COUNT = 0;
+
+  /**
+   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.RangeClauseImpl <em>Range Clause</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.RangeClauseImpl
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getRangeClause()
+   * @generated
+   */
+  int RANGE_CLAUSE = 17;
+
+  /**
+   * The feature id for the '<em><b>Start</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RANGE_CLAUSE__START = 0;
+
+  /**
+   * The feature id for the '<em><b>End</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RANGE_CLAUSE__END = 1;
+
+  /**
+   * The number of structural features of the '<em>Range Clause</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RANGE_CLAUSE_FEATURE_COUNT = 2;
+
+  /**
    * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ExpressionImpl <em>Expression</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -577,7 +698,7 @@ public interface JDOQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getExpression()
    * @generated
    */
-  int EXPRESSION = 14;
+  int EXPRESSION = 18;
 
   /**
    * The feature id for the '<em><b>Result Naming</b></em>' containment reference.
@@ -589,13 +710,22 @@ public interface JDOQLPackage extends EPackage
   int EXPRESSION__RESULT_NAMING = RESULT_SPEC_FEATURE_COUNT + 0;
 
   /**
+   * The feature id for the '<em><b>Direction</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPRESSION__DIRECTION = RESULT_SPEC_FEATURE_COUNT + 1;
+
+  /**
    * The feature id for the '<em><b>Unary Operator</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int EXPRESSION__UNARY_OPERATOR = RESULT_SPEC_FEATURE_COUNT + 1;
+  int EXPRESSION__UNARY_OPERATOR = RESULT_SPEC_FEATURE_COUNT + 2;
 
   /**
    * The feature id for the '<em><b>Right</b></em>' containment reference.
@@ -604,7 +734,7 @@ public interface JDOQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXPRESSION__RIGHT = RESULT_SPEC_FEATURE_COUNT + 2;
+  int EXPRESSION__RIGHT = RESULT_SPEC_FEATURE_COUNT + 3;
 
   /**
    * The feature id for the '<em><b>Literal</b></em>' attribute.
@@ -613,7 +743,7 @@ public interface JDOQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXPRESSION__LITERAL = RESULT_SPEC_FEATURE_COUNT + 3;
+  int EXPRESSION__LITERAL = RESULT_SPEC_FEATURE_COUNT + 4;
 
   /**
    * The feature id for the '<em><b>This</b></em>' attribute.
@@ -622,7 +752,7 @@ public interface JDOQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXPRESSION__THIS = RESULT_SPEC_FEATURE_COUNT + 4;
+  int EXPRESSION__THIS = RESULT_SPEC_FEATURE_COUNT + 5;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -631,7 +761,7 @@ public interface JDOQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXPRESSION__ID = RESULT_SPEC_FEATURE_COUNT + 5;
+  int EXPRESSION__ID = RESULT_SPEC_FEATURE_COUNT + 6;
 
   /**
    * The feature id for the '<em><b>Parameter Name</b></em>' attribute.
@@ -640,7 +770,7 @@ public interface JDOQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXPRESSION__PARAMETER_NAME = RESULT_SPEC_FEATURE_COUNT + 6;
+  int EXPRESSION__PARAMETER_NAME = RESULT_SPEC_FEATURE_COUNT + 7;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -649,7 +779,7 @@ public interface JDOQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXPRESSION__LEFT = RESULT_SPEC_FEATURE_COUNT + 7;
+  int EXPRESSION__LEFT = RESULT_SPEC_FEATURE_COUNT + 8;
 
   /**
    * The number of structural features of the '<em>Expression</em>' class.
@@ -658,7 +788,7 @@ public interface JDOQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXPRESSION_FEATURE_COUNT = RESULT_SPEC_FEATURE_COUNT + 8;
+  int EXPRESSION_FEATURE_COUNT = RESULT_SPEC_FEATURE_COUNT + 9;
 
   /**
    * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ConditionalOrExpressionImpl <em>Conditional Or Expression</em>}' class.
@@ -668,7 +798,7 @@ public interface JDOQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getConditionalOrExpression()
    * @generated
    */
-  int CONDITIONAL_OR_EXPRESSION = 15;
+  int CONDITIONAL_OR_EXPRESSION = 19;
 
   /**
    * The feature id for the '<em><b>Result Naming</b></em>' containment reference.
@@ -678,6 +808,15 @@ public interface JDOQLPackage extends EPackage
    * @ordered
    */
   int CONDITIONAL_OR_EXPRESSION__RESULT_NAMING = EXPRESSION__RESULT_NAMING;
+
+  /**
+   * The feature id for the '<em><b>Direction</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONDITIONAL_OR_EXPRESSION__DIRECTION = EXPRESSION__DIRECTION;
 
   /**
    * The feature id for the '<em><b>Unary Operator</b></em>' attribute.
@@ -759,7 +898,7 @@ public interface JDOQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getConditionalAndExpression()
    * @generated
    */
-  int CONDITIONAL_AND_EXPRESSION = 16;
+  int CONDITIONAL_AND_EXPRESSION = 20;
 
   /**
    * The feature id for the '<em><b>Result Naming</b></em>' containment reference.
@@ -769,6 +908,15 @@ public interface JDOQLPackage extends EPackage
    * @ordered
    */
   int CONDITIONAL_AND_EXPRESSION__RESULT_NAMING = EXPRESSION__RESULT_NAMING;
+
+  /**
+   * The feature id for the '<em><b>Direction</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONDITIONAL_AND_EXPRESSION__DIRECTION = EXPRESSION__DIRECTION;
 
   /**
    * The feature id for the '<em><b>Unary Operator</b></em>' attribute.
@@ -850,7 +998,7 @@ public interface JDOQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getSimpleOrExpression()
    * @generated
    */
-  int SIMPLE_OR_EXPRESSION = 17;
+  int SIMPLE_OR_EXPRESSION = 21;
 
   /**
    * The feature id for the '<em><b>Result Naming</b></em>' containment reference.
@@ -860,6 +1008,15 @@ public interface JDOQLPackage extends EPackage
    * @ordered
    */
   int SIMPLE_OR_EXPRESSION__RESULT_NAMING = EXPRESSION__RESULT_NAMING;
+
+  /**
+   * The feature id for the '<em><b>Direction</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SIMPLE_OR_EXPRESSION__DIRECTION = EXPRESSION__DIRECTION;
 
   /**
    * The feature id for the '<em><b>Unary Operator</b></em>' attribute.
@@ -941,7 +1098,7 @@ public interface JDOQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getSimpleAndExpression()
    * @generated
    */
-  int SIMPLE_AND_EXPRESSION = 18;
+  int SIMPLE_AND_EXPRESSION = 22;
 
   /**
    * The feature id for the '<em><b>Result Naming</b></em>' containment reference.
@@ -951,6 +1108,15 @@ public interface JDOQLPackage extends EPackage
    * @ordered
    */
   int SIMPLE_AND_EXPRESSION__RESULT_NAMING = EXPRESSION__RESULT_NAMING;
+
+  /**
+   * The feature id for the '<em><b>Direction</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SIMPLE_AND_EXPRESSION__DIRECTION = EXPRESSION__DIRECTION;
 
   /**
    * The feature id for the '<em><b>Unary Operator</b></em>' attribute.
@@ -1032,7 +1198,7 @@ public interface JDOQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getComparisonOperatorExpression()
    * @generated
    */
-  int COMPARISON_OPERATOR_EXPRESSION = 19;
+  int COMPARISON_OPERATOR_EXPRESSION = 23;
 
   /**
    * The feature id for the '<em><b>Result Naming</b></em>' containment reference.
@@ -1042,6 +1208,15 @@ public interface JDOQLPackage extends EPackage
    * @ordered
    */
   int COMPARISON_OPERATOR_EXPRESSION__RESULT_NAMING = EXPRESSION__RESULT_NAMING;
+
+  /**
+   * The feature id for the '<em><b>Direction</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPARISON_OPERATOR_EXPRESSION__DIRECTION = EXPRESSION__DIRECTION;
 
   /**
    * The feature id for the '<em><b>Unary Operator</b></em>' attribute.
@@ -1132,7 +1307,7 @@ public interface JDOQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getAdditionExpression()
    * @generated
    */
-  int ADDITION_EXPRESSION = 20;
+  int ADDITION_EXPRESSION = 24;
 
   /**
    * The feature id for the '<em><b>Result Naming</b></em>' containment reference.
@@ -1142,6 +1317,15 @@ public interface JDOQLPackage extends EPackage
    * @ordered
    */
   int ADDITION_EXPRESSION__RESULT_NAMING = EXPRESSION__RESULT_NAMING;
+
+  /**
+   * The feature id for the '<em><b>Direction</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ADDITION_EXPRESSION__DIRECTION = EXPRESSION__DIRECTION;
 
   /**
    * The feature id for the '<em><b>Unary Operator</b></em>' attribute.
@@ -1232,7 +1416,7 @@ public interface JDOQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getMultiplicationExpression()
    * @generated
    */
-  int MULTIPLICATION_EXPRESSION = 21;
+  int MULTIPLICATION_EXPRESSION = 25;
 
   /**
    * The feature id for the '<em><b>Result Naming</b></em>' containment reference.
@@ -1242,6 +1426,15 @@ public interface JDOQLPackage extends EPackage
    * @ordered
    */
   int MULTIPLICATION_EXPRESSION__RESULT_NAMING = EXPRESSION__RESULT_NAMING;
+
+  /**
+   * The feature id for the '<em><b>Direction</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MULTIPLICATION_EXPRESSION__DIRECTION = EXPRESSION__DIRECTION;
 
   /**
    * The feature id for the '<em><b>Unary Operator</b></em>' attribute.
@@ -1332,7 +1525,7 @@ public interface JDOQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getFieldAccessExpression()
    * @generated
    */
-  int FIELD_ACCESS_EXPRESSION = 22;
+  int FIELD_ACCESS_EXPRESSION = 26;
 
   /**
    * The feature id for the '<em><b>Result Naming</b></em>' containment reference.
@@ -1342,6 +1535,15 @@ public interface JDOQLPackage extends EPackage
    * @ordered
    */
   int FIELD_ACCESS_EXPRESSION__RESULT_NAMING = EXPRESSION__RESULT_NAMING;
+
+  /**
+   * The feature id for the '<em><b>Direction</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FIELD_ACCESS_EXPRESSION__DIRECTION = EXPRESSION__DIRECTION;
 
   /**
    * The feature id for the '<em><b>Unary Operator</b></em>' attribute.
@@ -1416,6 +1618,16 @@ public interface JDOQLPackage extends EPackage
   int FIELD_ACCESS_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 0;
 
   /**
+   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.OrderByDirection <em>Order By Direction</em>}' enum.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.OrderByDirection
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getOrderByDirection()
+   * @generated
+   */
+  int ORDER_BY_DIRECTION = 27;
+
+  /**
    * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.UnaryOperator <em>Unary Operator</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1423,7 +1635,7 @@ public interface JDOQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getUnaryOperator()
    * @generated
    */
-  int UNARY_OPERATOR = 23;
+  int UNARY_OPERATOR = 28;
 
   /**
    * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.AdditionOperator <em>Addition Operator</em>}' enum.
@@ -1433,7 +1645,7 @@ public interface JDOQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getAdditionOperator()
    * @generated
    */
-  int ADDITION_OPERATOR = 24;
+  int ADDITION_OPERATOR = 29;
 
   /**
    * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.MultiplicationOperator <em>Multiplication Operator</em>}' enum.
@@ -1443,7 +1655,7 @@ public interface JDOQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getMultiplicationOperator()
    * @generated
    */
-  int MULTIPLICATION_OPERATOR = 25;
+  int MULTIPLICATION_OPERATOR = 30;
 
   /**
    * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ComparisonOperator <em>Comparison Operator</em>}' enum.
@@ -1453,7 +1665,7 @@ public interface JDOQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getComparisonOperator()
    * @generated
    */
-  int COMPARISON_OPERATOR = 26;
+  int COMPARISON_OPERATOR = 31;
 
 
   /**
@@ -1533,37 +1745,37 @@ public interface JDOQLPackage extends EPackage
   EReference getSingleStringJDOQL_ImportClause();
 
   /**
-   * Returns the meta object for the attribute '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SingleStringJDOQL#getGroupByClause <em>Group By Clause</em>}'.
+   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SingleStringJDOQL#getGroupByClause <em>Group By Clause</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Group By Clause</em>'.
+   * @return the meta object for the containment reference '<em>Group By Clause</em>'.
    * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.SingleStringJDOQL#getGroupByClause()
    * @see #getSingleStringJDOQL()
    * @generated
    */
-  EAttribute getSingleStringJDOQL_GroupByClause();
+  EReference getSingleStringJDOQL_GroupByClause();
 
   /**
-   * Returns the meta object for the attribute '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SingleStringJDOQL#getOrderByClause <em>Order By Clause</em>}'.
+   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SingleStringJDOQL#getOrderByClause <em>Order By Clause</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Order By Clause</em>'.
+   * @return the meta object for the containment reference '<em>Order By Clause</em>'.
    * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.SingleStringJDOQL#getOrderByClause()
    * @see #getSingleStringJDOQL()
    * @generated
    */
-  EAttribute getSingleStringJDOQL_OrderByClause();
+  EReference getSingleStringJDOQL_OrderByClause();
 
   /**
-   * Returns the meta object for the attribute '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SingleStringJDOQL#getRangeClause <em>Range Clause</em>}'.
+   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SingleStringJDOQL#getRangeClause <em>Range Clause</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Range Clause</em>'.
+   * @return the meta object for the containment reference '<em>Range Clause</em>'.
    * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.SingleStringJDOQL#getRangeClause()
    * @see #getSingleStringJDOQL()
    * @generated
    */
-  EAttribute getSingleStringJDOQL_RangeClause();
+  EReference getSingleStringJDOQL_RangeClause();
 
   /**
    * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SelectClause <em>Select Clause</em>}'.
@@ -1841,36 +2053,15 @@ public interface JDOQLPackage extends EPackage
   EAttribute getParameterDeclaration_Type();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ParameterDeclaration#getDeclaredParameterName <em>Declared Parameter Name</em>}'.
+   * Returns the meta object for the attribute '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ParameterDeclaration#getDeclaredParameterName <em>Declared Parameter Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Declared Parameter Name</em>'.
+   * @return the meta object for the attribute '<em>Declared Parameter Name</em>'.
    * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.ParameterDeclaration#getDeclaredParameterName()
    * @see #getParameterDeclaration()
    * @generated
    */
-  EReference getParameterDeclaration_DeclaredParameterName();
-
-  /**
-   * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.DeclaredParameterName <em>Declared Parameter Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Declared Parameter Name</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.DeclaredParameterName
-   * @generated
-   */
-  EClass getDeclaredParameterName();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.DeclaredParameterName#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.DeclaredParameterName#getName()
-   * @see #getDeclaredParameterName()
-   * @generated
-   */
-  EAttribute getDeclaredParameterName_Name();
+  EAttribute getParameterDeclaration_DeclaredParameterName();
 
   /**
    * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ImportClause <em>Import Clause</em>}'.
@@ -1894,6 +2085,122 @@ public interface JDOQLPackage extends EPackage
   EAttribute getImportClause_ImportDeclarations();
 
   /**
+   * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.GroupByClause <em>Group By Clause</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Group By Clause</em>'.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.GroupByClause
+   * @generated
+   */
+  EClass getGroupByClause();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.GroupByClause#getGrouping <em>Grouping</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Grouping</em>'.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.GroupByClause#getGrouping()
+   * @see #getGroupByClause()
+   * @generated
+   */
+  EReference getGroupByClause_Grouping();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.GroupByClause#getHavingClause <em>Having Clause</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Having Clause</em>'.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.GroupByClause#getHavingClause()
+   * @see #getGroupByClause()
+   * @generated
+   */
+  EReference getGroupByClause_HavingClause();
+
+  /**
+   * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.HavingClause <em>Having Clause</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Having Clause</em>'.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.HavingClause
+   * @generated
+   */
+  EClass getHavingClause();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.HavingClause#getHaving <em>Having</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Having</em>'.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.HavingClause#getHaving()
+   * @see #getHavingClause()
+   * @generated
+   */
+  EReference getHavingClause_Having();
+
+  /**
+   * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.OrderByClause <em>Order By Clause</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Order By Clause</em>'.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.OrderByClause
+   * @generated
+   */
+  EClass getOrderByClause();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.OrderByClause#getOrdering <em>Ordering</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Ordering</em>'.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.OrderByClause#getOrdering()
+   * @see #getOrderByClause()
+   * @generated
+   */
+  EReference getOrderByClause_Ordering();
+
+  /**
+   * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.OrderBySpec <em>Order By Spec</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Order By Spec</em>'.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.OrderBySpec
+   * @generated
+   */
+  EClass getOrderBySpec();
+
+  /**
+   * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.RangeClause <em>Range Clause</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Range Clause</em>'.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.RangeClause
+   * @generated
+   */
+  EClass getRangeClause();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.RangeClause#getStart <em>Start</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Start</em>'.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.RangeClause#getStart()
+   * @see #getRangeClause()
+   * @generated
+   */
+  EReference getRangeClause_Start();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.RangeClause#getEnd <em>End</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>End</em>'.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.RangeClause#getEnd()
+   * @see #getRangeClause()
+   * @generated
+   */
+  EReference getRangeClause_End();
+
+  /**
    * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression <em>Expression</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1913,6 +2220,17 @@ public interface JDOQLPackage extends EPackage
    * @generated
    */
   EReference getExpression_ResultNaming();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getDirection <em>Direction</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Direction</em>'.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getDirection()
+   * @see #getExpression()
+   * @generated
+   */
+  EAttribute getExpression_Direction();
 
   /**
    * Returns the meta object for the attribute '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getUnaryOperator <em>Unary Operator</em>}'.
@@ -2105,6 +2423,16 @@ public interface JDOQLPackage extends EPackage
   EClass getFieldAccessExpression();
 
   /**
+   * Returns the meta object for enum '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.OrderByDirection <em>Order By Direction</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for enum '<em>Order By Direction</em>'.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.OrderByDirection
+   * @generated
+   */
+  EEnum getOrderByDirection();
+
+  /**
    * Returns the meta object for enum '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.UnaryOperator <em>Unary Operator</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2226,28 +2554,28 @@ public interface JDOQLPackage extends EPackage
     EReference SINGLE_STRING_JDOQL__IMPORT_CLAUSE = eINSTANCE.getSingleStringJDOQL_ImportClause();
 
     /**
-     * The meta object literal for the '<em><b>Group By Clause</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Group By Clause</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute SINGLE_STRING_JDOQL__GROUP_BY_CLAUSE = eINSTANCE.getSingleStringJDOQL_GroupByClause();
+    EReference SINGLE_STRING_JDOQL__GROUP_BY_CLAUSE = eINSTANCE.getSingleStringJDOQL_GroupByClause();
 
     /**
-     * The meta object literal for the '<em><b>Order By Clause</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Order By Clause</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute SINGLE_STRING_JDOQL__ORDER_BY_CLAUSE = eINSTANCE.getSingleStringJDOQL_OrderByClause();
+    EReference SINGLE_STRING_JDOQL__ORDER_BY_CLAUSE = eINSTANCE.getSingleStringJDOQL_OrderByClause();
 
     /**
-     * The meta object literal for the '<em><b>Range Clause</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Range Clause</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute SINGLE_STRING_JDOQL__RANGE_CLAUSE = eINSTANCE.getSingleStringJDOQL_RangeClause();
+    EReference SINGLE_STRING_JDOQL__RANGE_CLAUSE = eINSTANCE.getSingleStringJDOQL_RangeClause();
 
     /**
      * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SelectClauseImpl <em>Select Clause</em>}' class.
@@ -2480,30 +2808,12 @@ public interface JDOQLPackage extends EPackage
     EAttribute PARAMETER_DECLARATION__TYPE = eINSTANCE.getParameterDeclaration_Type();
 
     /**
-     * The meta object literal for the '<em><b>Declared Parameter Name</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Declared Parameter Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference PARAMETER_DECLARATION__DECLARED_PARAMETER_NAME = eINSTANCE.getParameterDeclaration_DeclaredParameterName();
-
-    /**
-     * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.DeclaredParameterNameImpl <em>Declared Parameter Name</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.DeclaredParameterNameImpl
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getDeclaredParameterName()
-     * @generated
-     */
-    EClass DECLARED_PARAMETER_NAME = eINSTANCE.getDeclaredParameterName();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute DECLARED_PARAMETER_NAME__NAME = eINSTANCE.getDeclaredParameterName_Name();
+    EAttribute PARAMETER_DECLARATION__DECLARED_PARAMETER_NAME = eINSTANCE.getParameterDeclaration_DeclaredParameterName();
 
     /**
      * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ImportClauseImpl <em>Import Clause</em>}' class.
@@ -2524,6 +2834,104 @@ public interface JDOQLPackage extends EPackage
     EAttribute IMPORT_CLAUSE__IMPORT_DECLARATIONS = eINSTANCE.getImportClause_ImportDeclarations();
 
     /**
+     * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.GroupByClauseImpl <em>Group By Clause</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.GroupByClauseImpl
+     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getGroupByClause()
+     * @generated
+     */
+    EClass GROUP_BY_CLAUSE = eINSTANCE.getGroupByClause();
+
+    /**
+     * The meta object literal for the '<em><b>Grouping</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference GROUP_BY_CLAUSE__GROUPING = eINSTANCE.getGroupByClause_Grouping();
+
+    /**
+     * The meta object literal for the '<em><b>Having Clause</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference GROUP_BY_CLAUSE__HAVING_CLAUSE = eINSTANCE.getGroupByClause_HavingClause();
+
+    /**
+     * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.HavingClauseImpl <em>Having Clause</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.HavingClauseImpl
+     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getHavingClause()
+     * @generated
+     */
+    EClass HAVING_CLAUSE = eINSTANCE.getHavingClause();
+
+    /**
+     * The meta object literal for the '<em><b>Having</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference HAVING_CLAUSE__HAVING = eINSTANCE.getHavingClause_Having();
+
+    /**
+     * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.OrderByClauseImpl <em>Order By Clause</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.OrderByClauseImpl
+     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getOrderByClause()
+     * @generated
+     */
+    EClass ORDER_BY_CLAUSE = eINSTANCE.getOrderByClause();
+
+    /**
+     * The meta object literal for the '<em><b>Ordering</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ORDER_BY_CLAUSE__ORDERING = eINSTANCE.getOrderByClause_Ordering();
+
+    /**
+     * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.OrderBySpecImpl <em>Order By Spec</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.OrderBySpecImpl
+     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getOrderBySpec()
+     * @generated
+     */
+    EClass ORDER_BY_SPEC = eINSTANCE.getOrderBySpec();
+
+    /**
+     * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.RangeClauseImpl <em>Range Clause</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.RangeClauseImpl
+     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getRangeClause()
+     * @generated
+     */
+    EClass RANGE_CLAUSE = eINSTANCE.getRangeClause();
+
+    /**
+     * The meta object literal for the '<em><b>Start</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference RANGE_CLAUSE__START = eINSTANCE.getRangeClause_Start();
+
+    /**
+     * The meta object literal for the '<em><b>End</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference RANGE_CLAUSE__END = eINSTANCE.getRangeClause_End();
+
+    /**
      * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ExpressionImpl <em>Expression</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2540,6 +2948,14 @@ public interface JDOQLPackage extends EPackage
      * @generated
      */
     EReference EXPRESSION__RESULT_NAMING = eINSTANCE.getExpression_ResultNaming();
+
+    /**
+     * The meta object literal for the '<em><b>Direction</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute EXPRESSION__DIRECTION = eINSTANCE.getExpression_Direction();
 
     /**
      * The meta object literal for the '<em><b>Unary Operator</b></em>' attribute feature.
@@ -2700,6 +3116,16 @@ public interface JDOQLPackage extends EPackage
      * @generated
      */
     EClass FIELD_ACCESS_EXPRESSION = eINSTANCE.getFieldAccessExpression();
+
+    /**
+     * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.OrderByDirection <em>Order By Direction</em>}' enum.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.OrderByDirection
+     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getOrderByDirection()
+     * @generated
+     */
+    EEnum ORDER_BY_DIRECTION = eINSTANCE.getOrderByDirection();
 
     /**
      * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.UnaryOperator <em>Unary Operator</em>}' enum.

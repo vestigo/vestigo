@@ -80,8 +80,12 @@ public class JDOQLFactoryImpl extends EFactoryImpl implements JDOQLFactory
       case JDOQLPackage.VARIABLE_DECLARATION: return createVariableDeclaration();
       case JDOQLPackage.PARAMETERS_CLAUSE: return createParametersClause();
       case JDOQLPackage.PARAMETER_DECLARATION: return createParameterDeclaration();
-      case JDOQLPackage.DECLARED_PARAMETER_NAME: return createDeclaredParameterName();
       case JDOQLPackage.IMPORT_CLAUSE: return createImportClause();
+      case JDOQLPackage.GROUP_BY_CLAUSE: return createGroupByClause();
+      case JDOQLPackage.HAVING_CLAUSE: return createHavingClause();
+      case JDOQLPackage.ORDER_BY_CLAUSE: return createOrderByClause();
+      case JDOQLPackage.ORDER_BY_SPEC: return createOrderBySpec();
+      case JDOQLPackage.RANGE_CLAUSE: return createRangeClause();
       case JDOQLPackage.EXPRESSION: return createExpression();
       case JDOQLPackage.CONDITIONAL_OR_EXPRESSION: return createConditionalOrExpression();
       case JDOQLPackage.CONDITIONAL_AND_EXPRESSION: return createConditionalAndExpression();
@@ -106,6 +110,8 @@ public class JDOQLFactoryImpl extends EFactoryImpl implements JDOQLFactory
   {
     switch (eDataType.getClassifierID())
     {
+      case JDOQLPackage.ORDER_BY_DIRECTION:
+        return createOrderByDirectionFromString(eDataType, initialValue);
       case JDOQLPackage.UNARY_OPERATOR:
         return createUnaryOperatorFromString(eDataType, initialValue);
       case JDOQLPackage.ADDITION_OPERATOR:
@@ -129,6 +135,8 @@ public class JDOQLFactoryImpl extends EFactoryImpl implements JDOQLFactory
   {
     switch (eDataType.getClassifierID())
     {
+      case JDOQLPackage.ORDER_BY_DIRECTION:
+        return convertOrderByDirectionToString(eDataType, instanceValue);
       case JDOQLPackage.UNARY_OPERATOR:
         return convertUnaryOperatorToString(eDataType, instanceValue);
       case JDOQLPackage.ADDITION_OPERATOR:
@@ -279,10 +287,10 @@ public class JDOQLFactoryImpl extends EFactoryImpl implements JDOQLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public DeclaredParameterName createDeclaredParameterName()
+  public ImportClause createImportClause()
   {
-    DeclaredParameterNameImpl declaredParameterName = new DeclaredParameterNameImpl();
-    return declaredParameterName;
+    ImportClauseImpl importClause = new ImportClauseImpl();
+    return importClause;
   }
 
   /**
@@ -290,10 +298,54 @@ public class JDOQLFactoryImpl extends EFactoryImpl implements JDOQLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public ImportClause createImportClause()
+  public GroupByClause createGroupByClause()
   {
-    ImportClauseImpl importClause = new ImportClauseImpl();
-    return importClause;
+    GroupByClauseImpl groupByClause = new GroupByClauseImpl();
+    return groupByClause;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public HavingClause createHavingClause()
+  {
+    HavingClauseImpl havingClause = new HavingClauseImpl();
+    return havingClause;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public OrderByClause createOrderByClause()
+  {
+    OrderByClauseImpl orderByClause = new OrderByClauseImpl();
+    return orderByClause;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public OrderBySpec createOrderBySpec()
+  {
+    OrderBySpecImpl orderBySpec = new OrderBySpecImpl();
+    return orderBySpec;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public RangeClause createRangeClause()
+  {
+    RangeClauseImpl rangeClause = new RangeClauseImpl();
+    return rangeClause;
   }
 
   /**
@@ -393,6 +445,28 @@ public class JDOQLFactoryImpl extends EFactoryImpl implements JDOQLFactory
   {
     FieldAccessExpressionImpl fieldAccessExpression = new FieldAccessExpressionImpl();
     return fieldAccessExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public OrderByDirection createOrderByDirectionFromString(EDataType eDataType, String initialValue)
+  {
+    OrderByDirection result = OrderByDirection.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertOrderByDirectionToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
   }
 
   /**

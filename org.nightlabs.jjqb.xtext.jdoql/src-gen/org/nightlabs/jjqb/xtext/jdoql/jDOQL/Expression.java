@@ -15,6 +15,7 @@ package org.nightlabs.jjqb.xtext.jdoql.jDOQL;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getResultNaming <em>Result Naming</em>}</li>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getDirection <em>Direction</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getUnaryOperator <em>Unary Operator</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getRight <em>Right</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getLiteral <em>Literal</em>}</li>
@@ -29,7 +30,7 @@ package org.nightlabs.jjqb.xtext.jdoql.jDOQL;
  * @model
  * @generated
  */
-public interface Expression extends ResultSpec
+public interface Expression extends ResultSpec, OrderBySpec
 {
   /**
    * Returns the value of the '<em><b>Result Naming</b></em>' containment reference.
@@ -56,6 +57,35 @@ public interface Expression extends ResultSpec
    * @generated
    */
   void setResultNaming(ResultNaming value);
+
+  /**
+   * Returns the value of the '<em><b>Direction</b></em>' attribute.
+   * The literals are from the enumeration {@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.OrderByDirection}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Direction</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Direction</em>' attribute.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.OrderByDirection
+   * @see #setDirection(OrderByDirection)
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage#getExpression_Direction()
+   * @model
+   * @generated
+   */
+  OrderByDirection getDirection();
+
+  /**
+   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getDirection <em>Direction</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Direction</em>' attribute.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.OrderByDirection
+   * @see #getDirection()
+   * @generated
+   */
+  void setDirection(OrderByDirection value);
 
   /**
    * Returns the value of the '<em><b>Unary Operator</b></em>' attribute.

@@ -190,81 +190,81 @@ public interface SingleStringJDOQL extends EObject
   void setImportClause(ImportClause value);
 
   /**
-   * Returns the value of the '<em><b>Group By Clause</b></em>' attribute.
+   * Returns the value of the '<em><b>Group By Clause</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Group By Clause</em>' attribute isn't clear,
+   * If the meaning of the '<em>Group By Clause</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Group By Clause</em>' attribute.
-   * @see #setGroupByClause(String)
+   * @return the value of the '<em>Group By Clause</em>' containment reference.
+   * @see #setGroupByClause(GroupByClause)
    * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage#getSingleStringJDOQL_GroupByClause()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  String getGroupByClause();
+  GroupByClause getGroupByClause();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SingleStringJDOQL#getGroupByClause <em>Group By Clause</em>}' attribute.
+   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SingleStringJDOQL#getGroupByClause <em>Group By Clause</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Group By Clause</em>' attribute.
+   * @param value the new value of the '<em>Group By Clause</em>' containment reference.
    * @see #getGroupByClause()
    * @generated
    */
-  void setGroupByClause(String value);
+  void setGroupByClause(GroupByClause value);
 
   /**
-   * Returns the value of the '<em><b>Order By Clause</b></em>' attribute.
+   * Returns the value of the '<em><b>Order By Clause</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Order By Clause</em>' attribute isn't clear,
+   * If the meaning of the '<em>Order By Clause</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Order By Clause</em>' attribute.
-   * @see #setOrderByClause(String)
+   * @return the value of the '<em>Order By Clause</em>' containment reference.
+   * @see #setOrderByClause(OrderByClause)
    * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage#getSingleStringJDOQL_OrderByClause()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  String getOrderByClause();
+  OrderByClause getOrderByClause();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SingleStringJDOQL#getOrderByClause <em>Order By Clause</em>}' attribute.
+   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SingleStringJDOQL#getOrderByClause <em>Order By Clause</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Order By Clause</em>' attribute.
+   * @param value the new value of the '<em>Order By Clause</em>' containment reference.
    * @see #getOrderByClause()
    * @generated
    */
-  void setOrderByClause(String value);
+  void setOrderByClause(OrderByClause value);
 
   /**
-   * Returns the value of the '<em><b>Range Clause</b></em>' attribute.
+   * Returns the value of the '<em><b>Range Clause</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Range Clause</em>' attribute isn't clear,
+   * If the meaning of the '<em>Range Clause</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Range Clause</em>' attribute.
-   * @see #setRangeClause(String)
+   * @return the value of the '<em>Range Clause</em>' containment reference.
+   * @see #setRangeClause(RangeClause)
    * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage#getSingleStringJDOQL_RangeClause()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  String getRangeClause();
+  RangeClause getRangeClause();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SingleStringJDOQL#getRangeClause <em>Range Clause</em>}' attribute.
+   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SingleStringJDOQL#getRangeClause <em>Range Clause</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Range Clause</em>' attribute.
+   * @param value the new value of the '<em>Range Clause</em>' containment reference.
    * @see #getRangeClause()
    * @generated
    */
-  void setRangeClause(String value);
+  void setRangeClause(RangeClause value);
 
 } // SingleStringJDOQL

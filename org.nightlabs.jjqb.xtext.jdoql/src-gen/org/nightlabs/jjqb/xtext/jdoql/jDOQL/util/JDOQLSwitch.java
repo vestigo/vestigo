@@ -159,17 +159,45 @@ public class JDOQLSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case JDOQLPackage.DECLARED_PARAMETER_NAME:
-      {
-        DeclaredParameterName declaredParameterName = (DeclaredParameterName)theEObject;
-        T result = caseDeclaredParameterName(declaredParameterName);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case JDOQLPackage.IMPORT_CLAUSE:
       {
         ImportClause importClause = (ImportClause)theEObject;
         T result = caseImportClause(importClause);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case JDOQLPackage.GROUP_BY_CLAUSE:
+      {
+        GroupByClause groupByClause = (GroupByClause)theEObject;
+        T result = caseGroupByClause(groupByClause);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case JDOQLPackage.HAVING_CLAUSE:
+      {
+        HavingClause havingClause = (HavingClause)theEObject;
+        T result = caseHavingClause(havingClause);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case JDOQLPackage.ORDER_BY_CLAUSE:
+      {
+        OrderByClause orderByClause = (OrderByClause)theEObject;
+        T result = caseOrderByClause(orderByClause);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case JDOQLPackage.ORDER_BY_SPEC:
+      {
+        OrderBySpec orderBySpec = (OrderBySpec)theEObject;
+        T result = caseOrderBySpec(orderBySpec);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case JDOQLPackage.RANGE_CLAUSE:
+      {
+        RangeClause rangeClause = (RangeClause)theEObject;
+        T result = caseRangeClause(rangeClause);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -178,6 +206,7 @@ public class JDOQLSwitch<T> extends Switch<T>
         Expression expression = (Expression)theEObject;
         T result = caseExpression(expression);
         if (result == null) result = caseResultSpec(expression);
+        if (result == null) result = caseOrderBySpec(expression);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -187,6 +216,7 @@ public class JDOQLSwitch<T> extends Switch<T>
         T result = caseConditionalOrExpression(conditionalOrExpression);
         if (result == null) result = caseExpression(conditionalOrExpression);
         if (result == null) result = caseResultSpec(conditionalOrExpression);
+        if (result == null) result = caseOrderBySpec(conditionalOrExpression);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -196,6 +226,7 @@ public class JDOQLSwitch<T> extends Switch<T>
         T result = caseConditionalAndExpression(conditionalAndExpression);
         if (result == null) result = caseExpression(conditionalAndExpression);
         if (result == null) result = caseResultSpec(conditionalAndExpression);
+        if (result == null) result = caseOrderBySpec(conditionalAndExpression);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -205,6 +236,7 @@ public class JDOQLSwitch<T> extends Switch<T>
         T result = caseSimpleOrExpression(simpleOrExpression);
         if (result == null) result = caseExpression(simpleOrExpression);
         if (result == null) result = caseResultSpec(simpleOrExpression);
+        if (result == null) result = caseOrderBySpec(simpleOrExpression);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -214,6 +246,7 @@ public class JDOQLSwitch<T> extends Switch<T>
         T result = caseSimpleAndExpression(simpleAndExpression);
         if (result == null) result = caseExpression(simpleAndExpression);
         if (result == null) result = caseResultSpec(simpleAndExpression);
+        if (result == null) result = caseOrderBySpec(simpleAndExpression);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -223,6 +256,7 @@ public class JDOQLSwitch<T> extends Switch<T>
         T result = caseComparisonOperatorExpression(comparisonOperatorExpression);
         if (result == null) result = caseExpression(comparisonOperatorExpression);
         if (result == null) result = caseResultSpec(comparisonOperatorExpression);
+        if (result == null) result = caseOrderBySpec(comparisonOperatorExpression);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -232,6 +266,7 @@ public class JDOQLSwitch<T> extends Switch<T>
         T result = caseAdditionExpression(additionExpression);
         if (result == null) result = caseExpression(additionExpression);
         if (result == null) result = caseResultSpec(additionExpression);
+        if (result == null) result = caseOrderBySpec(additionExpression);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -241,6 +276,7 @@ public class JDOQLSwitch<T> extends Switch<T>
         T result = caseMultiplicationExpression(multiplicationExpression);
         if (result == null) result = caseExpression(multiplicationExpression);
         if (result == null) result = caseResultSpec(multiplicationExpression);
+        if (result == null) result = caseOrderBySpec(multiplicationExpression);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -250,6 +286,7 @@ public class JDOQLSwitch<T> extends Switch<T>
         T result = caseFieldAccessExpression(fieldAccessExpression);
         if (result == null) result = caseExpression(fieldAccessExpression);
         if (result == null) result = caseResultSpec(fieldAccessExpression);
+        if (result == null) result = caseOrderBySpec(fieldAccessExpression);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -450,22 +487,6 @@ public class JDOQLSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Declared Parameter Name</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Declared Parameter Name</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseDeclaredParameterName(DeclaredParameterName object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Import Clause</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -477,6 +498,86 @@ public class JDOQLSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseImportClause(ImportClause object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Group By Clause</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Group By Clause</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseGroupByClause(GroupByClause object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Having Clause</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Having Clause</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseHavingClause(HavingClause object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Order By Clause</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Order By Clause</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseOrderByClause(OrderByClause object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Order By Spec</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Order By Spec</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseOrderBySpec(OrderBySpec object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Range Clause</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Range Clause</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseRangeClause(RangeClause object)
   {
     return null;
   }

@@ -16,9 +16,12 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="importClause" eType="#//ImportClause"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="groupByClause" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="orderByClause" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rangeClause" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="groupByClause" eType="#//GroupByClause"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="orderByClause" eType="#//OrderByClause"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rangeClause" eType="#//RangeClause"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SelectClause">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isUnique" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
@@ -61,19 +64,44 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ParameterDeclaration">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="declaredParameterName"
-        eType="#//DeclaredParameterName" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DeclaredParameterName">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="declaredParameterName"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ImportClause">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="importDeclarations" unique="false"
         upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Expression" eSuperTypes="#//ResultSpec">
+  <eClassifiers xsi:type="ecore:EClass" name="GroupByClause">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="grouping" upperBound="-1"
+        eType="#//Expression" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="havingClause" eType="#//HavingClause"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="HavingClause">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="having" eType="#//Expression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OrderByClause">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ordering" upperBound="-1"
+        eType="#//OrderBySpec" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OrderBySpec"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="OrderByDirection">
+    <eLiterals name="asc" literal="ASC"/>
+    <eLiterals name="ascending" value="1" literal="ASCENDING"/>
+    <eLiterals name="desc" value="2" literal="DESC"/>
+    <eLiterals name="descending" value="3" literal="DESCENDING"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RangeClause">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="start" eType="#//Expression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="end" eType="#//Expression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Expression" eSuperTypes="#//ResultSpec #//OrderBySpec">
     <eStructuralFeatures xsi:type="ecore:EReference" name="resultNaming" eType="#//ResultNaming"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="direction" eType="#//OrderByDirection"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="unaryOperator" eType="#//UnaryOperator"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//Expression"
         containment="true"/>

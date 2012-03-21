@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression;
 import org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage;
+import org.nightlabs.jjqb.xtext.jdoql.jDOQL.OrderByDirection;
 import org.nightlabs.jjqb.xtext.jdoql.jDOQL.ResultNaming;
 import org.nightlabs.jjqb.xtext.jdoql.jDOQL.UnaryOperator;
 
@@ -26,6 +27,7 @@ import org.nightlabs.jjqb.xtext.jdoql.jDOQL.UnaryOperator;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ExpressionImpl#getResultNaming <em>Result Naming</em>}</li>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ExpressionImpl#getDirection <em>Direction</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ExpressionImpl#getUnaryOperator <em>Unary Operator</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ExpressionImpl#getRight <em>Right</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ExpressionImpl#getLiteral <em>Literal</em>}</li>
@@ -49,6 +51,26 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
    * @ordered
    */
   protected ResultNaming resultNaming;
+
+  /**
+   * The default value of the '{@link #getDirection() <em>Direction</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getDirection()
+   * @generated
+   * @ordered
+   */
+  protected static final OrderByDirection DIRECTION_EDEFAULT = OrderByDirection.ASC;
+
+  /**
+   * The cached value of the '{@link #getDirection() <em>Direction</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getDirection()
+   * @generated
+   * @ordered
+   */
+  protected OrderByDirection direction = DIRECTION_EDEFAULT;
 
   /**
    * The default value of the '{@link #getUnaryOperator() <em>Unary Operator</em>}' attribute.
@@ -237,6 +259,29 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
     }
     else if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, JDOQLPackage.EXPRESSION__RESULT_NAMING, newResultNaming, newResultNaming));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public OrderByDirection getDirection()
+  {
+    return direction;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setDirection(OrderByDirection newDirection)
+  {
+    OrderByDirection oldDirection = direction;
+    direction = newDirection == null ? DIRECTION_EDEFAULT : newDirection;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, JDOQLPackage.EXPRESSION__DIRECTION, oldDirection, direction));
   }
 
   /**
@@ -482,6 +527,8 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
     {
       case JDOQLPackage.EXPRESSION__RESULT_NAMING:
         return getResultNaming();
+      case JDOQLPackage.EXPRESSION__DIRECTION:
+        return getDirection();
       case JDOQLPackage.EXPRESSION__UNARY_OPERATOR:
         return getUnaryOperator();
       case JDOQLPackage.EXPRESSION__RIGHT:
@@ -512,6 +559,9 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
     {
       case JDOQLPackage.EXPRESSION__RESULT_NAMING:
         setResultNaming((ResultNaming)newValue);
+        return;
+      case JDOQLPackage.EXPRESSION__DIRECTION:
+        setDirection((OrderByDirection)newValue);
         return;
       case JDOQLPackage.EXPRESSION__UNARY_OPERATOR:
         setUnaryOperator((UnaryOperator)newValue);
@@ -551,6 +601,9 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
       case JDOQLPackage.EXPRESSION__RESULT_NAMING:
         setResultNaming((ResultNaming)null);
         return;
+      case JDOQLPackage.EXPRESSION__DIRECTION:
+        setDirection(DIRECTION_EDEFAULT);
+        return;
       case JDOQLPackage.EXPRESSION__UNARY_OPERATOR:
         setUnaryOperator(UNARY_OPERATOR_EDEFAULT);
         return;
@@ -588,6 +641,8 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
     {
       case JDOQLPackage.EXPRESSION__RESULT_NAMING:
         return resultNaming != null;
+      case JDOQLPackage.EXPRESSION__DIRECTION:
+        return direction != DIRECTION_EDEFAULT;
       case JDOQLPackage.EXPRESSION__UNARY_OPERATOR:
         return unaryOperator != UNARY_OPERATOR_EDEFAULT;
       case JDOQLPackage.EXPRESSION__RIGHT:
@@ -617,7 +672,9 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (unaryOperator: ");
+    result.append(" (direction: ");
+    result.append(direction);
+    result.append(", unaryOperator: ");
     result.append(unaryOperator);
     result.append(", literal: ");
     result.append(literal);

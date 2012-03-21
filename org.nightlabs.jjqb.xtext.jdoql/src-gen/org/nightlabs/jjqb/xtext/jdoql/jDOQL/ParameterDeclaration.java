@@ -53,29 +53,29 @@ public interface ParameterDeclaration extends EObject
   void setType(String value);
 
   /**
-   * Returns the value of the '<em><b>Declared Parameter Name</b></em>' containment reference.
+   * Returns the value of the '<em><b>Declared Parameter Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Declared Parameter Name</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Declared Parameter Name</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Declared Parameter Name</em>' containment reference.
-   * @see #setDeclaredParameterName(DeclaredParameterName)
+   * @return the value of the '<em>Declared Parameter Name</em>' attribute.
+   * @see #setDeclaredParameterName(String)
    * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage#getParameterDeclaration_DeclaredParameterName()
-   * @model containment="true"
+   * @model
    * @generated
    */
-  DeclaredParameterName getDeclaredParameterName();
+  String getDeclaredParameterName();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ParameterDeclaration#getDeclaredParameterName <em>Declared Parameter Name</em>}' containment reference.
+   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ParameterDeclaration#getDeclaredParameterName <em>Declared Parameter Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Declared Parameter Name</em>' containment reference.
+   * @param value the new value of the '<em>Declared Parameter Name</em>' attribute.
    * @see #getDeclaredParameterName()
    * @generated
    */
-  void setDeclaredParameterName(DeclaredParameterName value);
+  void setDeclaredParameterName(String value);
 
 } // ParameterDeclaration

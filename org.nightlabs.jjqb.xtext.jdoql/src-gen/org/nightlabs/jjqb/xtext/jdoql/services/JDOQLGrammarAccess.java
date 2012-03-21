@@ -39,8 +39,6 @@ public class JDOQLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cRangeClauseAssignment_8 = (Assignment)cGroup.eContents().get(8);
 		private final RuleCall cRangeClauseRangeClauseParserRuleCall_8_0 = (RuleCall)cRangeClauseAssignment_8.eContents().get(0);
 		
-		//// http://db.apache.org/jdo/specifications.html
-		//// Current spec: 3.0, chapter 26 JDOQL BNF, page 341ff
 		//SingleStringJDOQL:
 		//	selectClause=SelectClause fromClause=FromClause whereClause=WhereClause? variablesClause=VariablesClause?
 		//	parametersClause=ParametersClause? importClause=ImportClause? groupByClause=GroupByClause?
@@ -489,18 +487,14 @@ public class JDOQLGrammarAccess extends AbstractGrammarElementFinder {
 
 	public class DeclaredParameterNameElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "DeclaredParameterName");
-		private final Assignment cNameAssignment = (Assignment)rule.eContents().get(1);
-		private final RuleCall cNameParameterNameParserRuleCall_0 = (RuleCall)cNameAssignment.eContents().get(0);
+		private final RuleCall cParameterNameParserRuleCall = (RuleCall)rule.eContents().get(1);
 		
 		//DeclaredParameterName:
-		//	name=ParameterName;
+		//	ParameterName;
 		public ParserRule getRule() { return rule; }
 
-		//name=ParameterName
-		public Assignment getNameAssignment() { return cNameAssignment; }
-
 		//ParameterName
-		public RuleCall getNameParameterNameParserRuleCall_0() { return cNameParameterNameParserRuleCall_0; }
+		public RuleCall getParameterNameParserRuleCall() { return cParameterNameParserRuleCall; }
 	}
 
 	public class ParameterNameElements extends AbstractParserRuleElementFinder {
@@ -580,12 +574,22 @@ public class JDOQLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cGROUPKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Keyword cBYKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cGroupingAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cGroupingConditionalOrExpressionParserRuleCall_2_0 = (RuleCall)cGroupingAssignment_2.eContents().get(0);
+		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
+		private final Keyword cCommaKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Assignment cGroupingAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
+		private final RuleCall cGroupingConditionalOrExpressionParserRuleCall_3_1_0 = (RuleCall)cGroupingAssignment_3_1.eContents().get(0);
+		private final Keyword cCommaKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cHavingClauseAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cHavingClauseHavingClauseParserRuleCall_5_0 = (RuleCall)cHavingClauseAssignment_5.eContents().get(0);
 		
 		//GroupByClause:
-		//	"GROUP" "BY";
+		//	"GROUP" "BY" grouping+=ConditionalOrExpression ("," grouping+=ConditionalOrExpression)* ","?
+		//	havingClause=HavingClause?;
 		public ParserRule getRule() { return rule; }
 
-		//"GROUP" "BY"
+		//"GROUP" "BY" grouping+=ConditionalOrExpression ("," grouping+=ConditionalOrExpression)* ","? havingClause=HavingClause?
 		public Group getGroup() { return cGroup; }
 
 		//"GROUP"
@@ -593,6 +597,57 @@ public class JDOQLGrammarAccess extends AbstractGrammarElementFinder {
 
 		//"BY"
 		public Keyword getBYKeyword_1() { return cBYKeyword_1; }
+
+		//grouping+=ConditionalOrExpression
+		public Assignment getGroupingAssignment_2() { return cGroupingAssignment_2; }
+
+		//ConditionalOrExpression
+		public RuleCall getGroupingConditionalOrExpressionParserRuleCall_2_0() { return cGroupingConditionalOrExpressionParserRuleCall_2_0; }
+
+		//("," grouping+=ConditionalOrExpression)*
+		public Group getGroup_3() { return cGroup_3; }
+
+		//","
+		public Keyword getCommaKeyword_3_0() { return cCommaKeyword_3_0; }
+
+		//grouping+=ConditionalOrExpression
+		public Assignment getGroupingAssignment_3_1() { return cGroupingAssignment_3_1; }
+
+		//ConditionalOrExpression
+		public RuleCall getGroupingConditionalOrExpressionParserRuleCall_3_1_0() { return cGroupingConditionalOrExpressionParserRuleCall_3_1_0; }
+
+		//","?
+		public Keyword getCommaKeyword_4() { return cCommaKeyword_4; }
+
+		//havingClause=HavingClause?
+		public Assignment getHavingClauseAssignment_5() { return cHavingClauseAssignment_5; }
+
+		//HavingClause
+		public RuleCall getHavingClauseHavingClauseParserRuleCall_5_0() { return cHavingClauseHavingClauseParserRuleCall_5_0; }
+	}
+
+	public class HavingClauseElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "HavingClause");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cHAVINGKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cHavingAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cHavingConditionalOrExpressionParserRuleCall_1_0 = (RuleCall)cHavingAssignment_1.eContents().get(0);
+		
+		//HavingClause:
+		//	"HAVING" having=ConditionalOrExpression;
+		public ParserRule getRule() { return rule; }
+
+		//"HAVING" having=ConditionalOrExpression
+		public Group getGroup() { return cGroup; }
+
+		//"HAVING"
+		public Keyword getHAVINGKeyword_0() { return cHAVINGKeyword_0; }
+
+		//having=ConditionalOrExpression
+		public Assignment getHavingAssignment_1() { return cHavingAssignment_1; }
+
+		//ConditionalOrExpression
+		public RuleCall getHavingConditionalOrExpressionParserRuleCall_1_0() { return cHavingConditionalOrExpressionParserRuleCall_1_0; }
 	}
 
 	public class OrderByClauseElements extends AbstractParserRuleElementFinder {
@@ -600,12 +655,19 @@ public class JDOQLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cORDERKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Keyword cBYKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cOrderingAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cOrderingOrderBySpecParserRuleCall_2_0 = (RuleCall)cOrderingAssignment_2.eContents().get(0);
+		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
+		private final Keyword cCommaKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Assignment cOrderingAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
+		private final RuleCall cOrderingOrderBySpecParserRuleCall_3_1_0 = (RuleCall)cOrderingAssignment_3_1.eContents().get(0);
+		private final Keyword cCommaKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
 		//OrderByClause:
-		//	"ORDER" "BY";
+		//	"ORDER" "BY" ordering+=OrderBySpec ("," ordering+=OrderBySpec)* ","?;
 		public ParserRule getRule() { return rule; }
 
-		//"ORDER" "BY"
+		//"ORDER" "BY" ordering+=OrderBySpec ("," ordering+=OrderBySpec)* ","?
 		public Group getGroup() { return cGroup; }
 
 		//"ORDER"
@@ -613,18 +675,87 @@ public class JDOQLGrammarAccess extends AbstractGrammarElementFinder {
 
 		//"BY"
 		public Keyword getBYKeyword_1() { return cBYKeyword_1; }
+
+		//ordering+=OrderBySpec
+		public Assignment getOrderingAssignment_2() { return cOrderingAssignment_2; }
+
+		//OrderBySpec
+		public RuleCall getOrderingOrderBySpecParserRuleCall_2_0() { return cOrderingOrderBySpecParserRuleCall_2_0; }
+
+		//("," ordering+=OrderBySpec)*
+		public Group getGroup_3() { return cGroup_3; }
+
+		//","
+		public Keyword getCommaKeyword_3_0() { return cCommaKeyword_3_0; }
+
+		//ordering+=OrderBySpec
+		public Assignment getOrderingAssignment_3_1() { return cOrderingAssignment_3_1; }
+
+		//OrderBySpec
+		public RuleCall getOrderingOrderBySpecParserRuleCall_3_1_0() { return cOrderingOrderBySpecParserRuleCall_3_1_0; }
+
+		//","?
+		public Keyword getCommaKeyword_4() { return cCommaKeyword_4; }
+	}
+
+	public class OrderBySpecElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "OrderBySpec");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final RuleCall cConditionalOrExpressionParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Assignment cDirectionAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cDirectionOrderByDirectionEnumRuleCall_1_0 = (RuleCall)cDirectionAssignment_1.eContents().get(0);
+		
+		//OrderBySpec:
+		//	ConditionalOrExpression direction=OrderByDirection;
+		public ParserRule getRule() { return rule; }
+
+		//ConditionalOrExpression direction=OrderByDirection
+		public Group getGroup() { return cGroup; }
+
+		//ConditionalOrExpression
+		public RuleCall getConditionalOrExpressionParserRuleCall_0() { return cConditionalOrExpressionParserRuleCall_0; }
+
+		//direction=OrderByDirection
+		public Assignment getDirectionAssignment_1() { return cDirectionAssignment_1; }
+
+		//OrderByDirection
+		public RuleCall getDirectionOrderByDirectionEnumRuleCall_1_0() { return cDirectionOrderByDirectionEnumRuleCall_1_0; }
 	}
 
 	public class RangeClauseElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "RangeClause");
-		private final Keyword cRANGEKeyword = (Keyword)rule.eContents().get(1);
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cRANGEKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cStartAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cStartConditionalOrExpressionParserRuleCall_1_0 = (RuleCall)cStartAssignment_1.eContents().get(0);
+		private final Keyword cCommaKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cEndAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cEndConditionalOrExpressionParserRuleCall_3_0 = (RuleCall)cEndAssignment_3.eContents().get(0);
 		
 		//RangeClause:
-		//	"RANGE";
+		//	"RANGE" start=ConditionalOrExpression "," end=ConditionalOrExpression;
 		public ParserRule getRule() { return rule; }
 
+		//"RANGE" start=ConditionalOrExpression "," end=ConditionalOrExpression
+		public Group getGroup() { return cGroup; }
+
 		//"RANGE"
-		public Keyword getRANGEKeyword() { return cRANGEKeyword; }
+		public Keyword getRANGEKeyword_0() { return cRANGEKeyword_0; }
+
+		//start=ConditionalOrExpression
+		public Assignment getStartAssignment_1() { return cStartAssignment_1; }
+
+		//ConditionalOrExpression
+		public RuleCall getStartConditionalOrExpressionParserRuleCall_1_0() { return cStartConditionalOrExpressionParserRuleCall_1_0; }
+
+		//","
+		public Keyword getCommaKeyword_2() { return cCommaKeyword_2; }
+
+		//end=ConditionalOrExpression
+		public Assignment getEndAssignment_3() { return cEndAssignment_3; }
+
+		//ConditionalOrExpression
+		public RuleCall getEndConditionalOrExpressionParserRuleCall_3_0() { return cEndConditionalOrExpressionParserRuleCall_3_0; }
 	}
 
 	public class ConditionalOrExpressionElements extends AbstractParserRuleElementFinder {
@@ -1228,32 +1359,6 @@ public class JDOQLGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getINTTerminalRuleCall() { return cINTTerminalRuleCall; }
 	}
 
-	public class FloatingPointLiteralElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "FloatingPointLiteral");
-		private final RuleCall cINTTerminalRuleCall = (RuleCall)rule.eContents().get(1);
-		
-		//FloatingPointLiteral: // TODO
-		//	INT;
-		public ParserRule getRule() { return rule; }
-
-		//// TODO
-		//INT
-		public RuleCall getINTTerminalRuleCall() { return cINTTerminalRuleCall; }
-	}
-
-	public class CharacterLiteralElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "CharacterLiteral");
-		private final RuleCall cSTRINGTerminalRuleCall = (RuleCall)rule.eContents().get(1);
-		
-		//CharacterLiteral: // TODO
-		//	STRING;
-		public ParserRule getRule() { return rule; }
-
-		//// TODO
-		//STRING
-		public RuleCall getSTRINGTerminalRuleCall() { return cSTRINGTerminalRuleCall; }
-	}
-
 	public class StringLiteralElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "StringLiteral");
 		private final RuleCall cSTRINGTerminalRuleCall = (RuleCall)rule.eContents().get(1);
@@ -1307,24 +1412,18 @@ public class JDOQLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cNullLiteralParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		
 		//Literal:
-		//	IntegerLiteral | //    FloatingPointLiteral |
-		//	BooleanLiteral | //    CharacterLiteral |
-		//	StringLiteral | NullLiteral;
+		//	IntegerLiteral | BooleanLiteral | StringLiteral | NullLiteral;
 		public ParserRule getRule() { return rule; }
 
-		//IntegerLiteral | //    FloatingPointLiteral |
-		//BooleanLiteral | //    CharacterLiteral |
-		//StringLiteral | NullLiteral
+		//IntegerLiteral | BooleanLiteral | StringLiteral | NullLiteral
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//IntegerLiteral
 		public RuleCall getIntegerLiteralParserRuleCall_0() { return cIntegerLiteralParserRuleCall_0; }
 
-		////    FloatingPointLiteral |
 		//BooleanLiteral
 		public RuleCall getBooleanLiteralParserRuleCall_1() { return cBooleanLiteralParserRuleCall_1; }
 
-		////    CharacterLiteral |
 		//StringLiteral
 		public RuleCall getStringLiteralParserRuleCall_2() { return cStringLiteralParserRuleCall_2; }
 
@@ -1385,6 +1484,50 @@ public class JDOQLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	
+	public class OrderByDirectionElements extends AbstractEnumRuleElementFinder {
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "OrderByDirection");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final EnumLiteralDeclaration cAscEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
+		private final Keyword cAscASCKeyword_0_0 = (Keyword)cAscEnumLiteralDeclaration_0.eContents().get(0);
+		private final EnumLiteralDeclaration cAscendingEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cAscendingASCENDINGKeyword_1_0 = (Keyword)cAscendingEnumLiteralDeclaration_1.eContents().get(0);
+		private final EnumLiteralDeclaration cDescEnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
+		private final Keyword cDescDESCKeyword_2_0 = (Keyword)cDescEnumLiteralDeclaration_2.eContents().get(0);
+		private final EnumLiteralDeclaration cDescendingEnumLiteralDeclaration_3 = (EnumLiteralDeclaration)cAlternatives.eContents().get(3);
+		private final Keyword cDescendingDESCENDINGKeyword_3_0 = (Keyword)cDescendingEnumLiteralDeclaration_3.eContents().get(0);
+		
+		//enum OrderByDirection:
+		//	asc="ASC" | ascending="ASCENDING" | desc="DESC" | descending="DESCENDING";
+		public EnumRule getRule() { return rule; }
+
+		//asc="ASC" | ascending="ASCENDING" | desc="DESC" | descending="DESCENDING"
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//asc="ASC"
+		public EnumLiteralDeclaration getAscEnumLiteralDeclaration_0() { return cAscEnumLiteralDeclaration_0; }
+
+		//"ASC"
+		public Keyword getAscASCKeyword_0_0() { return cAscASCKeyword_0_0; }
+
+		//ascending="ASCENDING"
+		public EnumLiteralDeclaration getAscendingEnumLiteralDeclaration_1() { return cAscendingEnumLiteralDeclaration_1; }
+
+		//"ASCENDING"
+		public Keyword getAscendingASCENDINGKeyword_1_0() { return cAscendingASCENDINGKeyword_1_0; }
+
+		//desc="DESC"
+		public EnumLiteralDeclaration getDescEnumLiteralDeclaration_2() { return cDescEnumLiteralDeclaration_2; }
+
+		//"DESC"
+		public Keyword getDescDESCKeyword_2_0() { return cDescDESCKeyword_2_0; }
+
+		//descending="DESCENDING"
+		public EnumLiteralDeclaration getDescendingEnumLiteralDeclaration_3() { return cDescendingEnumLiteralDeclaration_3; }
+
+		//"DESCENDING"
+		public Keyword getDescendingDESCENDINGKeyword_3_0() { return cDescendingDESCENDINGKeyword_3_0; }
+	}
+
 	public class UnaryOperatorElements extends AbstractEnumRuleElementFinder {
 		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "UnaryOperator");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
@@ -1579,7 +1722,10 @@ public class JDOQLGrammarAccess extends AbstractGrammarElementFinder {
 	private ImportClauseElements pImportClause;
 	private ImportDeclarationElements pImportDeclaration;
 	private GroupByClauseElements pGroupByClause;
+	private HavingClauseElements pHavingClause;
 	private OrderByClauseElements pOrderByClause;
+	private OrderBySpecElements pOrderBySpec;
+	private OrderByDirectionElements unknownRuleOrderByDirection;
 	private RangeClauseElements pRangeClause;
 	private ConditionalOrExpressionElements pConditionalOrExpression;
 	private ConditionalAndExpressionElements pConditionalAndExpression;
@@ -1600,8 +1746,6 @@ public class JDOQLGrammarAccess extends AbstractGrammarElementFinder {
 	private IntegralTypeElements pIntegralType;
 	private FloatingPointTypeElements pFloatingPointType;
 	private IntegerLiteralElements pIntegerLiteral;
-	private FloatingPointLiteralElements pFloatingPointLiteral;
-	private CharacterLiteralElements pCharacterLiteral;
 	private StringLiteralElements pStringLiteral;
 	private BooleanLiteralElements pBooleanLiteral;
 	private NullLiteralElements pNullLiteral;
@@ -1635,8 +1779,6 @@ public class JDOQLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	
-	//// http://db.apache.org/jdo/specifications.html
-	//// Current spec: 3.0, chapter 26 JDOQL BNF, page 341ff
 	//SingleStringJDOQL:
 	//	selectClause=SelectClause fromClause=FromClause whereClause=WhereClause? variablesClause=VariablesClause?
 	//	parametersClause=ParametersClause? importClause=ImportClause? groupByClause=GroupByClause?
@@ -1770,7 +1912,7 @@ public class JDOQLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//DeclaredParameterName:
-	//	name=ParameterName;
+	//	ParameterName;
 	public DeclaredParameterNameElements getDeclaredParameterNameAccess() {
 		return (pDeclaredParameterName != null) ? pDeclaredParameterName : (pDeclaredParameterName = new DeclaredParameterNameElements());
 	}
@@ -1810,7 +1952,8 @@ public class JDOQLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//GroupByClause:
-	//	"GROUP" "BY";
+	//	"GROUP" "BY" grouping+=ConditionalOrExpression ("," grouping+=ConditionalOrExpression)* ","?
+	//	havingClause=HavingClause?;
 	public GroupByClauseElements getGroupByClauseAccess() {
 		return (pGroupByClause != null) ? pGroupByClause : (pGroupByClause = new GroupByClauseElements());
 	}
@@ -1819,8 +1962,18 @@ public class JDOQLGrammarAccess extends AbstractGrammarElementFinder {
 		return getGroupByClauseAccess().getRule();
 	}
 
+	//HavingClause:
+	//	"HAVING" having=ConditionalOrExpression;
+	public HavingClauseElements getHavingClauseAccess() {
+		return (pHavingClause != null) ? pHavingClause : (pHavingClause = new HavingClauseElements());
+	}
+	
+	public ParserRule getHavingClauseRule() {
+		return getHavingClauseAccess().getRule();
+	}
+
 	//OrderByClause:
-	//	"ORDER" "BY";
+	//	"ORDER" "BY" ordering+=OrderBySpec ("," ordering+=OrderBySpec)* ","?;
 	public OrderByClauseElements getOrderByClauseAccess() {
 		return (pOrderByClause != null) ? pOrderByClause : (pOrderByClause = new OrderByClauseElements());
 	}
@@ -1829,8 +1982,28 @@ public class JDOQLGrammarAccess extends AbstractGrammarElementFinder {
 		return getOrderByClauseAccess().getRule();
 	}
 
+	//OrderBySpec:
+	//	ConditionalOrExpression direction=OrderByDirection;
+	public OrderBySpecElements getOrderBySpecAccess() {
+		return (pOrderBySpec != null) ? pOrderBySpec : (pOrderBySpec = new OrderBySpecElements());
+	}
+	
+	public ParserRule getOrderBySpecRule() {
+		return getOrderBySpecAccess().getRule();
+	}
+
+	//enum OrderByDirection:
+	//	asc="ASC" | ascending="ASCENDING" | desc="DESC" | descending="DESCENDING";
+	public OrderByDirectionElements getOrderByDirectionAccess() {
+		return (unknownRuleOrderByDirection != null) ? unknownRuleOrderByDirection : (unknownRuleOrderByDirection = new OrderByDirectionElements());
+	}
+	
+	public EnumRule getOrderByDirectionRule() {
+		return getOrderByDirectionAccess().getRule();
+	}
+
 	//RangeClause:
-	//	"RANGE";
+	//	"RANGE" start=ConditionalOrExpression "," end=ConditionalOrExpression;
 	public RangeClauseElements getRangeClauseAccess() {
 		return (pRangeClause != null) ? pRangeClause : (pRangeClause = new RangeClauseElements());
 	}
@@ -2032,26 +2205,6 @@ public class JDOQLGrammarAccess extends AbstractGrammarElementFinder {
 		return getIntegerLiteralAccess().getRule();
 	}
 
-	//FloatingPointLiteral: // TODO
-	//	INT;
-	public FloatingPointLiteralElements getFloatingPointLiteralAccess() {
-		return (pFloatingPointLiteral != null) ? pFloatingPointLiteral : (pFloatingPointLiteral = new FloatingPointLiteralElements());
-	}
-	
-	public ParserRule getFloatingPointLiteralRule() {
-		return getFloatingPointLiteralAccess().getRule();
-	}
-
-	//CharacterLiteral: // TODO
-	//	STRING;
-	public CharacterLiteralElements getCharacterLiteralAccess() {
-		return (pCharacterLiteral != null) ? pCharacterLiteral : (pCharacterLiteral = new CharacterLiteralElements());
-	}
-	
-	public ParserRule getCharacterLiteralRule() {
-		return getCharacterLiteralAccess().getRule();
-	}
-
 	//StringLiteral:
 	//	STRING;
 	public StringLiteralElements getStringLiteralAccess() {
@@ -2083,9 +2236,7 @@ public class JDOQLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Literal:
-	//	IntegerLiteral | //    FloatingPointLiteral |
-	//	BooleanLiteral | //    CharacterLiteral |
-	//	StringLiteral | NullLiteral;
+	//	IntegerLiteral | BooleanLiteral | StringLiteral | NullLiteral;
 	public LiteralElements getLiteralAccess() {
 		return (pLiteral != null) ? pLiteral : (pLiteral = new LiteralElements());
 	}

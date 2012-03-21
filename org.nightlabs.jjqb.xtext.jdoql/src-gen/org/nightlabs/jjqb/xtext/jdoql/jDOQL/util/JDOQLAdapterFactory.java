@@ -138,14 +138,34 @@ public class JDOQLAdapterFactory extends AdapterFactoryImpl
         return createParameterDeclarationAdapter();
       }
       @Override
-      public Adapter caseDeclaredParameterName(DeclaredParameterName object)
-      {
-        return createDeclaredParameterNameAdapter();
-      }
-      @Override
       public Adapter caseImportClause(ImportClause object)
       {
         return createImportClauseAdapter();
+      }
+      @Override
+      public Adapter caseGroupByClause(GroupByClause object)
+      {
+        return createGroupByClauseAdapter();
+      }
+      @Override
+      public Adapter caseHavingClause(HavingClause object)
+      {
+        return createHavingClauseAdapter();
+      }
+      @Override
+      public Adapter caseOrderByClause(OrderByClause object)
+      {
+        return createOrderByClauseAdapter();
+      }
+      @Override
+      public Adapter caseOrderBySpec(OrderBySpec object)
+      {
+        return createOrderBySpecAdapter();
+      }
+      @Override
+      public Adapter caseRangeClause(RangeClause object)
+      {
+        return createRangeClauseAdapter();
       }
       @Override
       public Adapter caseExpression(Expression object)
@@ -395,21 +415,6 @@ public class JDOQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.DeclaredParameterName <em>Declared Parameter Name</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.DeclaredParameterName
-   * @generated
-   */
-  public Adapter createDeclaredParameterNameAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ImportClause <em>Import Clause</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -420,6 +425,81 @@ public class JDOQLAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createImportClauseAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.GroupByClause <em>Group By Clause</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.GroupByClause
+   * @generated
+   */
+  public Adapter createGroupByClauseAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.HavingClause <em>Having Clause</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.HavingClause
+   * @generated
+   */
+  public Adapter createHavingClauseAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.OrderByClause <em>Order By Clause</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.OrderByClause
+   * @generated
+   */
+  public Adapter createOrderByClauseAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.OrderBySpec <em>Order By Spec</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.OrderBySpec
+   * @generated
+   */
+  public Adapter createOrderBySpecAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.RangeClause <em>Range Clause</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.RangeClause
+   * @generated
+   */
+  public Adapter createRangeClauseAdapter()
   {
     return null;
   }

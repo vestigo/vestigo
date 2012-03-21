@@ -5,6 +5,8 @@ generate jDOQL 'http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL'
 // http://db.apache.org/jdo/specifications.html
 // Current spec: 3.0, chapter 26 JDOQL BNF, page 341ff
 
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+
 SingleStringJDOQL: 
 	selectClause=SelectClause
 	fromClause=FromClause
@@ -63,9 +65,7 @@ ParameterDeclaration:
 	type=Type declaredParameterName=DeclaredParameterName
 ;
 
-DeclaredParameterName:
-	name=ParameterName
-;
+DeclaredParameterName: ParameterName;
 
 ParameterName: ID;
 
@@ -78,15 +78,28 @@ ImportDeclaration:
 ;
 
 GroupByClause:
-	'GROUP' 'BY'
+	'GROUP' 'BY' grouping+=ConditionalOrExpression (',' grouping+=ConditionalOrExpression)* ','? (havingClause=HavingClause)?
+;
+
+HavingClause:
+	'HAVING' having=ConditionalOrExpression
 ;
 
 OrderByClause:
-	'ORDER' 'BY'
+	'ORDER' 'BY' ordering+=OrderBySpec (',' ordering+=OrderBySpec)* ','?
+;
+
+OrderBySpec:
+	ConditionalOrExpression direction=OrderByDirection
+;
+
+enum OrderByDirection:
+	asc='ASC' | ascending='ASCENDING' |
+	desc='DESC' | descending='DESCENDING'
 ;
 
 RangeClause:
-	'RANGE'
+	'RANGE' start=ConditionalOrExpression ',' end=ConditionalOrExpression
 ;
 
 ConditionalOrExpression returns Expression:
@@ -172,37 +185,27 @@ FloatingPointType:
 	'float' | 'double'
 ;
 
-IntegerLiteral:                                        
+IntegerLiteral:
 	INT
-;
-
-FloatingPointLiteral:
-	INT		// TODO
 ;                                 
-
-CharacterLiteral:                                      
-	STRING		// TODO
-;
 
 StringLiteral:
 	STRING
 ;                                         
 
 BooleanLiteral:
-    'true' | 'false'
+	'true' | 'false'
 ;
 
 NullLiteral:
-    'null'
+	'null'
 ;
 
 Literal:
-    IntegerLiteral |
-//    FloatingPointLiteral |
-    BooleanLiteral |
-//    CharacterLiteral |
-    StringLiteral |
-    NullLiteral
+	IntegerLiteral |
+	BooleanLiteral |
+	StringLiteral |
+	NullLiteral
 ;
 
 QualifiedIdentifier:

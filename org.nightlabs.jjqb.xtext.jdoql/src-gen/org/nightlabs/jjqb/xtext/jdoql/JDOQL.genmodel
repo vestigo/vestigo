@@ -9,6 +9,12 @@
     editorPluginID="org.nightlabs.jjqb.xtext.jdoql.editor">
   <genPackages prefix="JDOQL" basePackage="org.nightlabs.jjqb.xtext.jdoql" disposableProviderFactory="true"
       ecorePackage="JDOQL.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="JDOQL.ecore#//OrderByDirection">
+      <genEnumLiterals ecoreEnumLiteral="JDOQL.ecore#//OrderByDirection/asc"/>
+      <genEnumLiterals ecoreEnumLiteral="JDOQL.ecore#//OrderByDirection/ascending"/>
+      <genEnumLiterals ecoreEnumLiteral="JDOQL.ecore#//OrderByDirection/desc"/>
+      <genEnumLiterals ecoreEnumLiteral="JDOQL.ecore#//OrderByDirection/descending"/>
+    </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="JDOQL.ecore#//UnaryOperator">
       <genEnumLiterals ecoreEnumLiteral="JDOQL.ecore#//UnaryOperator/positive"/>
       <genEnumLiterals ecoreEnumLiteral="JDOQL.ecore#//UnaryOperator/negative"/>
@@ -40,9 +46,9 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//SingleStringJDOQL/variablesClause"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//SingleStringJDOQL/parametersClause"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//SingleStringJDOQL/importClause"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDOQL.ecore#//SingleStringJDOQL/groupByClause"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDOQL.ecore#//SingleStringJDOQL/orderByClause"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDOQL.ecore#//SingleStringJDOQL/rangeClause"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//SingleStringJDOQL/groupByClause"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//SingleStringJDOQL/orderByClause"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//SingleStringJDOQL/rangeClause"/>
     </genClasses>
     <genClasses ecoreClass="JDOQL.ecore#//SelectClause">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDOQL.ecore#//SelectClause/isUnique"/>
@@ -79,16 +85,29 @@
     </genClasses>
     <genClasses ecoreClass="JDOQL.ecore#//ParameterDeclaration">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDOQL.ecore#//ParameterDeclaration/type"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//ParameterDeclaration/declaredParameterName"/>
-    </genClasses>
-    <genClasses ecoreClass="JDOQL.ecore#//DeclaredParameterName">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDOQL.ecore#//DeclaredParameterName/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDOQL.ecore#//ParameterDeclaration/declaredParameterName"/>
     </genClasses>
     <genClasses ecoreClass="JDOQL.ecore#//ImportClause">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDOQL.ecore#//ImportClause/importDeclarations"/>
     </genClasses>
+    <genClasses ecoreClass="JDOQL.ecore#//GroupByClause">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//GroupByClause/grouping"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//GroupByClause/havingClause"/>
+    </genClasses>
+    <genClasses ecoreClass="JDOQL.ecore#//HavingClause">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//HavingClause/having"/>
+    </genClasses>
+    <genClasses ecoreClass="JDOQL.ecore#//OrderByClause">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//OrderByClause/ordering"/>
+    </genClasses>
+    <genClasses ecoreClass="JDOQL.ecore#//OrderBySpec"/>
+    <genClasses ecoreClass="JDOQL.ecore#//RangeClause">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//RangeClause/start"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//RangeClause/end"/>
+    </genClasses>
     <genClasses ecoreClass="JDOQL.ecore#//Expression">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//Expression/resultNaming"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDOQL.ecore#//Expression/direction"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDOQL.ecore#//Expression/unaryOperator"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//Expression/right"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDOQL.ecore#//Expression/literal"/>

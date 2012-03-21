@@ -6,15 +6,12 @@
 package org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.DeclaredParameterName;
 import org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage;
 import org.nightlabs.jjqb.xtext.jdoql.jDOQL.ParameterDeclaration;
 
@@ -55,14 +52,24 @@ public class ParameterDeclarationImpl extends MinimalEObjectImpl.Container imple
   protected String type = TYPE_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getDeclaredParameterName() <em>Declared Parameter Name</em>}' containment reference.
+   * The default value of the '{@link #getDeclaredParameterName() <em>Declared Parameter Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getDeclaredParameterName()
    * @generated
    * @ordered
    */
-  protected DeclaredParameterName declaredParameterName;
+  protected static final String DECLARED_PARAMETER_NAME_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getDeclaredParameterName() <em>Declared Parameter Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getDeclaredParameterName()
+   * @generated
+   * @ordered
+   */
+  protected String declaredParameterName = DECLARED_PARAMETER_NAME_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -113,7 +120,7 @@ public class ParameterDeclarationImpl extends MinimalEObjectImpl.Container imple
    * <!-- end-user-doc -->
    * @generated
    */
-  public DeclaredParameterName getDeclaredParameterName()
+  public String getDeclaredParameterName()
   {
     return declaredParameterName;
   }
@@ -123,53 +130,12 @@ public class ParameterDeclarationImpl extends MinimalEObjectImpl.Container imple
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetDeclaredParameterName(DeclaredParameterName newDeclaredParameterName, NotificationChain msgs)
+  public void setDeclaredParameterName(String newDeclaredParameterName)
   {
-    DeclaredParameterName oldDeclaredParameterName = declaredParameterName;
+    String oldDeclaredParameterName = declaredParameterName;
     declaredParameterName = newDeclaredParameterName;
     if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JDOQLPackage.PARAMETER_DECLARATION__DECLARED_PARAMETER_NAME, oldDeclaredParameterName, newDeclaredParameterName);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setDeclaredParameterName(DeclaredParameterName newDeclaredParameterName)
-  {
-    if (newDeclaredParameterName != declaredParameterName)
-    {
-      NotificationChain msgs = null;
-      if (declaredParameterName != null)
-        msgs = ((InternalEObject)declaredParameterName).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JDOQLPackage.PARAMETER_DECLARATION__DECLARED_PARAMETER_NAME, null, msgs);
-      if (newDeclaredParameterName != null)
-        msgs = ((InternalEObject)newDeclaredParameterName).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JDOQLPackage.PARAMETER_DECLARATION__DECLARED_PARAMETER_NAME, null, msgs);
-      msgs = basicSetDeclaredParameterName(newDeclaredParameterName, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, JDOQLPackage.PARAMETER_DECLARATION__DECLARED_PARAMETER_NAME, newDeclaredParameterName, newDeclaredParameterName));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-  {
-    switch (featureID)
-    {
-      case JDOQLPackage.PARAMETER_DECLARATION__DECLARED_PARAMETER_NAME:
-        return basicSetDeclaredParameterName(null, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
+      eNotify(new ENotificationImpl(this, Notification.SET, JDOQLPackage.PARAMETER_DECLARATION__DECLARED_PARAMETER_NAME, oldDeclaredParameterName, declaredParameterName));
   }
 
   /**
@@ -204,7 +170,7 @@ public class ParameterDeclarationImpl extends MinimalEObjectImpl.Container imple
         setType((String)newValue);
         return;
       case JDOQLPackage.PARAMETER_DECLARATION__DECLARED_PARAMETER_NAME:
-        setDeclaredParameterName((DeclaredParameterName)newValue);
+        setDeclaredParameterName((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -224,7 +190,7 @@ public class ParameterDeclarationImpl extends MinimalEObjectImpl.Container imple
         setType(TYPE_EDEFAULT);
         return;
       case JDOQLPackage.PARAMETER_DECLARATION__DECLARED_PARAMETER_NAME:
-        setDeclaredParameterName((DeclaredParameterName)null);
+        setDeclaredParameterName(DECLARED_PARAMETER_NAME_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -243,7 +209,7 @@ public class ParameterDeclarationImpl extends MinimalEObjectImpl.Container imple
       case JDOQLPackage.PARAMETER_DECLARATION__TYPE:
         return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
       case JDOQLPackage.PARAMETER_DECLARATION__DECLARED_PARAMETER_NAME:
-        return declaredParameterName != null;
+        return DECLARED_PARAMETER_NAME_EDEFAULT == null ? declaredParameterName != null : !DECLARED_PARAMETER_NAME_EDEFAULT.equals(declaredParameterName);
     }
     return super.eIsSet(featureID);
   }
@@ -261,6 +227,8 @@ public class ParameterDeclarationImpl extends MinimalEObjectImpl.Container imple
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (type: ");
     result.append(type);
+    result.append(", declaredParameterName: ");
+    result.append(declaredParameterName);
     result.append(')');
     return result.toString();
   }

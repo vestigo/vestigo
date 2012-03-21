@@ -134,15 +134,6 @@ public interface JDOQLFactory extends EFactory
   ParameterDeclaration createParameterDeclaration();
 
   /**
-   * Returns a new object of class '<em>Declared Parameter Name</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Declared Parameter Name</em>'.
-   * @generated
-   */
-  DeclaredParameterName createDeclaredParameterName();
-
-  /**
    * Returns a new object of class '<em>Import Clause</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -150,6 +141,51 @@ public interface JDOQLFactory extends EFactory
    * @generated
    */
   ImportClause createImportClause();
+
+  /**
+   * Returns a new object of class '<em>Group By Clause</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Group By Clause</em>'.
+   * @generated
+   */
+  GroupByClause createGroupByClause();
+
+  /**
+   * Returns a new object of class '<em>Having Clause</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Having Clause</em>'.
+   * @generated
+   */
+  HavingClause createHavingClause();
+
+  /**
+   * Returns a new object of class '<em>Order By Clause</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Order By Clause</em>'.
+   * @generated
+   */
+  OrderByClause createOrderByClause();
+
+  /**
+   * Returns a new object of class '<em>Order By Spec</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Order By Spec</em>'.
+   * @generated
+   */
+  OrderBySpec createOrderBySpec();
+
+  /**
+   * Returns a new object of class '<em>Range Clause</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Range Clause</em>'.
+   * @generated
+   */
+  RangeClause createRangeClause();
 
   /**
    * Returns a new object of class '<em>Expression</em>'.

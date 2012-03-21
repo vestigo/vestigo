@@ -17,14 +17,18 @@ import org.nightlabs.jjqb.xtext.jdoql.services.JDOQLGrammarAccess;
 public class AbstractJDOQLSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected JDOQLGrammarAccess grammarAccess;
+	protected AbstractElementAlias match_GroupByClause_CommaKeyword_4_q;
 	protected AbstractElementAlias match_ImportClause_SemicolonKeyword_2_q;
+	protected AbstractElementAlias match_OrderByClause_CommaKeyword_4_q;
 	protected AbstractElementAlias match_ParametersClause_CommaKeyword_3_q;
 	protected AbstractElementAlias match_VariablesClause_SemicolonKeyword_3_q;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (JDOQLGrammarAccess) access;
+		match_GroupByClause_CommaKeyword_4_q = new TokenAlias(false, true, grammarAccess.getGroupByClauseAccess().getCommaKeyword_4());
 		match_ImportClause_SemicolonKeyword_2_q = new TokenAlias(false, true, grammarAccess.getImportClauseAccess().getSemicolonKeyword_2());
+		match_OrderByClause_CommaKeyword_4_q = new TokenAlias(false, true, grammarAccess.getOrderByClauseAccess().getCommaKeyword_4());
 		match_ParametersClause_CommaKeyword_3_q = new TokenAlias(false, true, grammarAccess.getParametersClauseAccess().getCommaKeyword_3());
 		match_VariablesClause_SemicolonKeyword_3_q = new TokenAlias(false, true, grammarAccess.getVariablesClauseAccess().getSemicolonKeyword_3());
 	}
@@ -41,8 +45,12 @@ public class AbstractJDOQLSyntacticSequencer extends AbstractSyntacticSequencer 
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if(match_ImportClause_SemicolonKeyword_2_q.equals(syntax))
+			if(match_GroupByClause_CommaKeyword_4_q.equals(syntax))
+				emit_GroupByClause_CommaKeyword_4_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_ImportClause_SemicolonKeyword_2_q.equals(syntax))
 				emit_ImportClause_SemicolonKeyword_2_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_OrderByClause_CommaKeyword_4_q.equals(syntax))
+				emit_OrderByClause_CommaKeyword_4_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_ParametersClause_CommaKeyword_3_q.equals(syntax))
 				emit_ParametersClause_CommaKeyword_3_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_VariablesClause_SemicolonKeyword_3_q.equals(syntax))
@@ -53,9 +61,25 @@ public class AbstractJDOQLSyntacticSequencer extends AbstractSyntacticSequencer 
 
 	/**
 	 * Syntax:
+	 *     ','?
+	 */
+	protected void emit_GroupByClause_CommaKeyword_4_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Syntax:
 	 *     ';'?
 	 */
 	protected void emit_ImportClause_SemicolonKeyword_2_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Syntax:
+	 *     ','?
+	 */
+	protected void emit_OrderByClause_CommaKeyword_4_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

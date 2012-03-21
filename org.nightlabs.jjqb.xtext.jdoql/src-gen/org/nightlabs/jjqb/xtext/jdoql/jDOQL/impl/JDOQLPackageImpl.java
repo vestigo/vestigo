@@ -19,18 +19,23 @@ import org.nightlabs.jjqb.xtext.jdoql.jDOQL.ComparisonOperator;
 import org.nightlabs.jjqb.xtext.jdoql.jDOQL.ComparisonOperatorExpression;
 import org.nightlabs.jjqb.xtext.jdoql.jDOQL.ConditionalAndExpression;
 import org.nightlabs.jjqb.xtext.jdoql.jDOQL.ConditionalOrExpression;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.DeclaredParameterName;
 import org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression;
 import org.nightlabs.jjqb.xtext.jdoql.jDOQL.FieldAccessExpression;
 import org.nightlabs.jjqb.xtext.jdoql.jDOQL.FromClause;
+import org.nightlabs.jjqb.xtext.jdoql.jDOQL.GroupByClause;
+import org.nightlabs.jjqb.xtext.jdoql.jDOQL.HavingClause;
 import org.nightlabs.jjqb.xtext.jdoql.jDOQL.ImportClause;
 import org.nightlabs.jjqb.xtext.jdoql.jDOQL.IntoClause;
 import org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLFactory;
 import org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage;
 import org.nightlabs.jjqb.xtext.jdoql.jDOQL.MultiplicationExpression;
 import org.nightlabs.jjqb.xtext.jdoql.jDOQL.MultiplicationOperator;
+import org.nightlabs.jjqb.xtext.jdoql.jDOQL.OrderByClause;
+import org.nightlabs.jjqb.xtext.jdoql.jDOQL.OrderByDirection;
+import org.nightlabs.jjqb.xtext.jdoql.jDOQL.OrderBySpec;
 import org.nightlabs.jjqb.xtext.jdoql.jDOQL.ParameterDeclaration;
 import org.nightlabs.jjqb.xtext.jdoql.jDOQL.ParametersClause;
+import org.nightlabs.jjqb.xtext.jdoql.jDOQL.RangeClause;
 import org.nightlabs.jjqb.xtext.jdoql.jDOQL.ResultClause;
 import org.nightlabs.jjqb.xtext.jdoql.jDOQL.ResultNaming;
 import org.nightlabs.jjqb.xtext.jdoql.jDOQL.ResultSpec;
@@ -140,14 +145,42 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass declaredParameterNameEClass = null;
+  private EClass importClauseEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass importClauseEClass = null;
+  private EClass groupByClauseEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass havingClauseEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass orderByClauseEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass orderBySpecEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass rangeClauseEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -211,6 +244,13 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
    * @generated
    */
   private EClass fieldAccessExpressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum orderByDirectionEEnum = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -378,9 +418,9 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getSingleStringJDOQL_GroupByClause()
+  public EReference getSingleStringJDOQL_GroupByClause()
   {
-    return (EAttribute)singleStringJDOQLEClass.getEStructuralFeatures().get(6);
+    return (EReference)singleStringJDOQLEClass.getEStructuralFeatures().get(6);
   }
 
   /**
@@ -388,9 +428,9 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getSingleStringJDOQL_OrderByClause()
+  public EReference getSingleStringJDOQL_OrderByClause()
   {
-    return (EAttribute)singleStringJDOQLEClass.getEStructuralFeatures().get(7);
+    return (EReference)singleStringJDOQLEClass.getEStructuralFeatures().get(7);
   }
 
   /**
@@ -398,9 +438,9 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getSingleStringJDOQL_RangeClause()
+  public EReference getSingleStringJDOQL_RangeClause()
   {
-    return (EAttribute)singleStringJDOQLEClass.getEStructuralFeatures().get(8);
+    return (EReference)singleStringJDOQLEClass.getEStructuralFeatures().get(8);
   }
 
   /**
@@ -668,29 +708,9 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getParameterDeclaration_DeclaredParameterName()
+  public EAttribute getParameterDeclaration_DeclaredParameterName()
   {
-    return (EReference)parameterDeclarationEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getDeclaredParameterName()
-  {
-    return declaredParameterNameEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getDeclaredParameterName_Name()
-  {
-    return (EAttribute)declaredParameterNameEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)parameterDeclarationEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -718,6 +738,116 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getGroupByClause()
+  {
+    return groupByClauseEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getGroupByClause_Grouping()
+  {
+    return (EReference)groupByClauseEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getGroupByClause_HavingClause()
+  {
+    return (EReference)groupByClauseEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getHavingClause()
+  {
+    return havingClauseEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getHavingClause_Having()
+  {
+    return (EReference)havingClauseEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getOrderByClause()
+  {
+    return orderByClauseEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getOrderByClause_Ordering()
+  {
+    return (EReference)orderByClauseEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getOrderBySpec()
+  {
+    return orderBySpecEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getRangeClause()
+  {
+    return rangeClauseEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getRangeClause_Start()
+  {
+    return (EReference)rangeClauseEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getRangeClause_End()
+  {
+    return (EReference)rangeClauseEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getExpression()
   {
     return expressionEClass;
@@ -738,7 +868,7 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getExpression_UnaryOperator()
+  public EAttribute getExpression_Direction()
   {
     return (EAttribute)expressionEClass.getEStructuralFeatures().get(1);
   }
@@ -748,9 +878,19 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getExpression_UnaryOperator()
+  {
+    return (EAttribute)expressionEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EReference getExpression_Right()
   {
-    return (EReference)expressionEClass.getEStructuralFeatures().get(2);
+    return (EReference)expressionEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -760,7 +900,7 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
    */
   public EAttribute getExpression_Literal()
   {
-    return (EAttribute)expressionEClass.getEStructuralFeatures().get(3);
+    return (EAttribute)expressionEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -770,7 +910,7 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
    */
   public EAttribute getExpression_This()
   {
-    return (EAttribute)expressionEClass.getEStructuralFeatures().get(4);
+    return (EAttribute)expressionEClass.getEStructuralFeatures().get(5);
   }
 
   /**
@@ -780,7 +920,7 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
    */
   public EAttribute getExpression_Id()
   {
-    return (EAttribute)expressionEClass.getEStructuralFeatures().get(5);
+    return (EAttribute)expressionEClass.getEStructuralFeatures().get(6);
   }
 
   /**
@@ -790,7 +930,7 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
    */
   public EAttribute getExpression_ParameterName()
   {
-    return (EAttribute)expressionEClass.getEStructuralFeatures().get(6);
+    return (EAttribute)expressionEClass.getEStructuralFeatures().get(7);
   }
 
   /**
@@ -800,7 +940,7 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
    */
   public EReference getExpression_Left()
   {
-    return (EReference)expressionEClass.getEStructuralFeatures().get(7);
+    return (EReference)expressionEClass.getEStructuralFeatures().get(8);
   }
 
   /**
@@ -918,6 +1058,16 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EEnum getOrderByDirection()
+  {
+    return orderByDirectionEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EEnum getUnaryOperator()
   {
     return unaryOperatorEEnum;
@@ -990,9 +1140,9 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
     createEReference(singleStringJDOQLEClass, SINGLE_STRING_JDOQL__VARIABLES_CLAUSE);
     createEReference(singleStringJDOQLEClass, SINGLE_STRING_JDOQL__PARAMETERS_CLAUSE);
     createEReference(singleStringJDOQLEClass, SINGLE_STRING_JDOQL__IMPORT_CLAUSE);
-    createEAttribute(singleStringJDOQLEClass, SINGLE_STRING_JDOQL__GROUP_BY_CLAUSE);
-    createEAttribute(singleStringJDOQLEClass, SINGLE_STRING_JDOQL__ORDER_BY_CLAUSE);
-    createEAttribute(singleStringJDOQLEClass, SINGLE_STRING_JDOQL__RANGE_CLAUSE);
+    createEReference(singleStringJDOQLEClass, SINGLE_STRING_JDOQL__GROUP_BY_CLAUSE);
+    createEReference(singleStringJDOQLEClass, SINGLE_STRING_JDOQL__ORDER_BY_CLAUSE);
+    createEReference(singleStringJDOQLEClass, SINGLE_STRING_JDOQL__RANGE_CLAUSE);
 
     selectClauseEClass = createEClass(SELECT_CLAUSE);
     createEAttribute(selectClauseEClass, SELECT_CLAUSE__IS_UNIQUE);
@@ -1030,16 +1180,30 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
 
     parameterDeclarationEClass = createEClass(PARAMETER_DECLARATION);
     createEAttribute(parameterDeclarationEClass, PARAMETER_DECLARATION__TYPE);
-    createEReference(parameterDeclarationEClass, PARAMETER_DECLARATION__DECLARED_PARAMETER_NAME);
-
-    declaredParameterNameEClass = createEClass(DECLARED_PARAMETER_NAME);
-    createEAttribute(declaredParameterNameEClass, DECLARED_PARAMETER_NAME__NAME);
+    createEAttribute(parameterDeclarationEClass, PARAMETER_DECLARATION__DECLARED_PARAMETER_NAME);
 
     importClauseEClass = createEClass(IMPORT_CLAUSE);
     createEAttribute(importClauseEClass, IMPORT_CLAUSE__IMPORT_DECLARATIONS);
 
+    groupByClauseEClass = createEClass(GROUP_BY_CLAUSE);
+    createEReference(groupByClauseEClass, GROUP_BY_CLAUSE__GROUPING);
+    createEReference(groupByClauseEClass, GROUP_BY_CLAUSE__HAVING_CLAUSE);
+
+    havingClauseEClass = createEClass(HAVING_CLAUSE);
+    createEReference(havingClauseEClass, HAVING_CLAUSE__HAVING);
+
+    orderByClauseEClass = createEClass(ORDER_BY_CLAUSE);
+    createEReference(orderByClauseEClass, ORDER_BY_CLAUSE__ORDERING);
+
+    orderBySpecEClass = createEClass(ORDER_BY_SPEC);
+
+    rangeClauseEClass = createEClass(RANGE_CLAUSE);
+    createEReference(rangeClauseEClass, RANGE_CLAUSE__START);
+    createEReference(rangeClauseEClass, RANGE_CLAUSE__END);
+
     expressionEClass = createEClass(EXPRESSION);
     createEReference(expressionEClass, EXPRESSION__RESULT_NAMING);
+    createEAttribute(expressionEClass, EXPRESSION__DIRECTION);
     createEAttribute(expressionEClass, EXPRESSION__UNARY_OPERATOR);
     createEReference(expressionEClass, EXPRESSION__RIGHT);
     createEAttribute(expressionEClass, EXPRESSION__LITERAL);
@@ -1068,6 +1232,7 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
     fieldAccessExpressionEClass = createEClass(FIELD_ACCESS_EXPRESSION);
 
     // Create enums
+    orderByDirectionEEnum = createEEnum(ORDER_BY_DIRECTION);
     unaryOperatorEEnum = createEEnum(UNARY_OPERATOR);
     additionOperatorEEnum = createEEnum(ADDITION_OPERATOR);
     multiplicationOperatorEEnum = createEEnum(MULTIPLICATION_OPERATOR);
@@ -1104,6 +1269,7 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
 
     // Add supertypes to classes
     expressionEClass.getESuperTypes().add(this.getResultSpec());
+    expressionEClass.getESuperTypes().add(this.getOrderBySpec());
     conditionalOrExpressionEClass.getESuperTypes().add(this.getExpression());
     conditionalAndExpressionEClass.getESuperTypes().add(this.getExpression());
     simpleOrExpressionEClass.getESuperTypes().add(this.getExpression());
@@ -1121,9 +1287,9 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
     initEReference(getSingleStringJDOQL_VariablesClause(), this.getVariablesClause(), null, "variablesClause", null, 0, 1, SingleStringJDOQL.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getSingleStringJDOQL_ParametersClause(), this.getParametersClause(), null, "parametersClause", null, 0, 1, SingleStringJDOQL.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getSingleStringJDOQL_ImportClause(), this.getImportClause(), null, "importClause", null, 0, 1, SingleStringJDOQL.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getSingleStringJDOQL_GroupByClause(), ecorePackage.getEString(), "groupByClause", null, 0, 1, SingleStringJDOQL.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getSingleStringJDOQL_OrderByClause(), ecorePackage.getEString(), "orderByClause", null, 0, 1, SingleStringJDOQL.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getSingleStringJDOQL_RangeClause(), ecorePackage.getEString(), "rangeClause", null, 0, 1, SingleStringJDOQL.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSingleStringJDOQL_GroupByClause(), this.getGroupByClause(), null, "groupByClause", null, 0, 1, SingleStringJDOQL.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSingleStringJDOQL_OrderByClause(), this.getOrderByClause(), null, "orderByClause", null, 0, 1, SingleStringJDOQL.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSingleStringJDOQL_RangeClause(), this.getRangeClause(), null, "rangeClause", null, 0, 1, SingleStringJDOQL.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(selectClauseEClass, SelectClause.class, "SelectClause", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getSelectClause_IsUnique(), ecorePackage.getEBoolean(), "isUnique", null, 0, 1, SelectClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1161,16 +1327,30 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
 
     initEClass(parameterDeclarationEClass, ParameterDeclaration.class, "ParameterDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getParameterDeclaration_Type(), ecorePackage.getEString(), "type", null, 0, 1, ParameterDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getParameterDeclaration_DeclaredParameterName(), this.getDeclaredParameterName(), null, "declaredParameterName", null, 0, 1, ParameterDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(declaredParameterNameEClass, DeclaredParameterName.class, "DeclaredParameterName", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getDeclaredParameterName_Name(), ecorePackage.getEString(), "name", null, 0, 1, DeclaredParameterName.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getParameterDeclaration_DeclaredParameterName(), ecorePackage.getEString(), "declaredParameterName", null, 0, 1, ParameterDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(importClauseEClass, ImportClause.class, "ImportClause", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getImportClause_ImportDeclarations(), ecorePackage.getEString(), "importDeclarations", null, 0, -1, ImportClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+    initEClass(groupByClauseEClass, GroupByClause.class, "GroupByClause", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getGroupByClause_Grouping(), this.getExpression(), null, "grouping", null, 0, -1, GroupByClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getGroupByClause_HavingClause(), this.getHavingClause(), null, "havingClause", null, 0, 1, GroupByClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(havingClauseEClass, HavingClause.class, "HavingClause", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getHavingClause_Having(), this.getExpression(), null, "having", null, 0, 1, HavingClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(orderByClauseEClass, OrderByClause.class, "OrderByClause", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getOrderByClause_Ordering(), this.getOrderBySpec(), null, "ordering", null, 0, -1, OrderByClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(orderBySpecEClass, OrderBySpec.class, "OrderBySpec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(rangeClauseEClass, RangeClause.class, "RangeClause", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getRangeClause_Start(), this.getExpression(), null, "start", null, 0, 1, RangeClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getRangeClause_End(), this.getExpression(), null, "end", null, 0, 1, RangeClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
     initEClass(expressionEClass, Expression.class, "Expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getExpression_ResultNaming(), this.getResultNaming(), null, "resultNaming", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getExpression_Direction(), this.getOrderByDirection(), "direction", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getExpression_UnaryOperator(), this.getUnaryOperator(), "unaryOperator", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getExpression_Right(), this.getExpression(), null, "right", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getExpression_Literal(), ecorePackage.getEString(), "literal", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1199,6 +1379,12 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
     initEClass(fieldAccessExpressionEClass, FieldAccessExpression.class, "FieldAccessExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     // Initialize enums and add enum literals
+    initEEnum(orderByDirectionEEnum, OrderByDirection.class, "OrderByDirection");
+    addEEnumLiteral(orderByDirectionEEnum, OrderByDirection.ASC);
+    addEEnumLiteral(orderByDirectionEEnum, OrderByDirection.ASCENDING);
+    addEEnumLiteral(orderByDirectionEEnum, OrderByDirection.DESC);
+    addEEnumLiteral(orderByDirectionEEnum, OrderByDirection.DESCENDING);
+
     initEEnum(unaryOperatorEEnum, UnaryOperator.class, "UnaryOperator");
     addEEnumLiteral(unaryOperatorEEnum, UnaryOperator.POSITIVE);
     addEEnumLiteral(unaryOperatorEEnum, UnaryOperator.NEGATIVE);
