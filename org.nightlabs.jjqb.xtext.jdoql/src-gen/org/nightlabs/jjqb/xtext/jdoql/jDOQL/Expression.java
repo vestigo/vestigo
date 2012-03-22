@@ -24,7 +24,7 @@ package org.nightlabs.jjqb.xtext.jdoql.jDOQL;
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getId <em>Id</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getParameterName <em>Parameter Name</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getMethod <em>Method</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getNumeric <em>Numeric</em>}</li>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getNumber <em>Number</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getPersistable <em>Persistable</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#isIsDistinct <em>Is Distinct</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getAggregateArgument <em>Aggregate Argument</em>}</li>
@@ -32,9 +32,11 @@ package org.nightlabs.jjqb.xtext.jdoql.jDOQL;
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getArg <em>Arg</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getKey <em>Key</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getValue <em>Value</em>}</li>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getIndex <em>Index</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getString <em>String</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getRegex <em>Regex</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getFromIndex <em>From Index</em>}</li>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getRegex <em>Regex</em>}</li>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getReplacement <em>Replacement</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getBeginIndex <em>Begin Index</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getEndIndex <em>End Index</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getLeft <em>Left</em>}</li>
@@ -314,30 +316,30 @@ public interface Expression extends ResultSpec, OrderBySpec
   void setMethod(Expression value);
 
   /**
-   * Returns the value of the '<em><b>Numeric</b></em>' containment reference.
+   * Returns the value of the '<em><b>Number</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Numeric</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Number</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Numeric</em>' containment reference.
-   * @see #setNumeric(Expression)
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage#getExpression_Numeric()
+   * @return the value of the '<em>Number</em>' containment reference.
+   * @see #setNumber(Expression)
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage#getExpression_Number()
    * @model containment="true"
    * @generated
    */
-  Expression getNumeric();
+  Expression getNumber();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getNumeric <em>Numeric</em>}' containment reference.
+   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getNumber <em>Number</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Numeric</em>' containment reference.
-   * @see #getNumeric()
+   * @param value the new value of the '<em>Number</em>' containment reference.
+   * @see #getNumber()
    * @generated
    */
-  void setNumeric(Expression value);
+  void setNumber(Expression value);
 
   /**
    * Returns the value of the '<em><b>Persistable</b></em>' containment reference.
@@ -522,6 +524,32 @@ public interface Expression extends ResultSpec, OrderBySpec
   void setValue(Expression value);
 
   /**
+   * Returns the value of the '<em><b>Index</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Index</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Index</em>' containment reference.
+   * @see #setIndex(Expression)
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage#getExpression_Index()
+   * @model containment="true"
+   * @generated
+   */
+  Expression getIndex();
+
+  /**
+   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getIndex <em>Index</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Index</em>' containment reference.
+   * @see #getIndex()
+   * @generated
+   */
+  void setIndex(Expression value);
+
+  /**
    * Returns the value of the '<em><b>String</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
@@ -546,6 +574,32 @@ public interface Expression extends ResultSpec, OrderBySpec
    * @generated
    */
   void setString(Expression value);
+
+  /**
+   * Returns the value of the '<em><b>From Index</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>From Index</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>From Index</em>' containment reference.
+   * @see #setFromIndex(Expression)
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage#getExpression_FromIndex()
+   * @model containment="true"
+   * @generated
+   */
+  Expression getFromIndex();
+
+  /**
+   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getFromIndex <em>From Index</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>From Index</em>' containment reference.
+   * @see #getFromIndex()
+   * @generated
+   */
+  void setFromIndex(Expression value);
 
   /**
    * Returns the value of the '<em><b>Regex</b></em>' containment reference.
@@ -574,30 +628,30 @@ public interface Expression extends ResultSpec, OrderBySpec
   void setRegex(Expression value);
 
   /**
-   * Returns the value of the '<em><b>From Index</b></em>' containment reference.
+   * Returns the value of the '<em><b>Replacement</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>From Index</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Replacement</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>From Index</em>' containment reference.
-   * @see #setFromIndex(Expression)
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage#getExpression_FromIndex()
+   * @return the value of the '<em>Replacement</em>' containment reference.
+   * @see #setReplacement(Expression)
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage#getExpression_Replacement()
    * @model containment="true"
    * @generated
    */
-  Expression getFromIndex();
+  Expression getReplacement();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getFromIndex <em>From Index</em>}' containment reference.
+   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getReplacement <em>Replacement</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>From Index</em>' containment reference.
-   * @see #getFromIndex()
+   * @param value the new value of the '<em>Replacement</em>' containment reference.
+   * @see #getReplacement()
    * @generated
    */
-  void setFromIndex(Expression value);
+  void setReplacement(Expression value);
 
   /**
    * Returns the value of the '<em><b>Begin Index</b></em>' containment reference.

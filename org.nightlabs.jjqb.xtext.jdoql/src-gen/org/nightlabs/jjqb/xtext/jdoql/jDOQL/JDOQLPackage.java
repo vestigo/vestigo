@@ -791,13 +791,13 @@ public interface JDOQLPackage extends EPackage
   int EXPRESSION__METHOD = RESULT_SPEC_FEATURE_COUNT + 9;
 
   /**
-   * The feature id for the '<em><b>Numeric</b></em>' containment reference.
+   * The feature id for the '<em><b>Number</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int EXPRESSION__NUMERIC = RESULT_SPEC_FEATURE_COUNT + 10;
+  int EXPRESSION__NUMBER = RESULT_SPEC_FEATURE_COUNT + 10;
 
   /**
    * The feature id for the '<em><b>Persistable</b></em>' containment reference.
@@ -863,22 +863,22 @@ public interface JDOQLPackage extends EPackage
   int EXPRESSION__VALUE = RESULT_SPEC_FEATURE_COUNT + 17;
 
   /**
+   * The feature id for the '<em><b>Index</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPRESSION__INDEX = RESULT_SPEC_FEATURE_COUNT + 18;
+
+  /**
    * The feature id for the '<em><b>String</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int EXPRESSION__STRING = RESULT_SPEC_FEATURE_COUNT + 18;
-
-  /**
-   * The feature id for the '<em><b>Regex</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int EXPRESSION__REGEX = RESULT_SPEC_FEATURE_COUNT + 19;
+  int EXPRESSION__STRING = RESULT_SPEC_FEATURE_COUNT + 19;
 
   /**
    * The feature id for the '<em><b>From Index</b></em>' containment reference.
@@ -890,13 +890,31 @@ public interface JDOQLPackage extends EPackage
   int EXPRESSION__FROM_INDEX = RESULT_SPEC_FEATURE_COUNT + 20;
 
   /**
+   * The feature id for the '<em><b>Regex</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPRESSION__REGEX = RESULT_SPEC_FEATURE_COUNT + 21;
+
+  /**
+   * The feature id for the '<em><b>Replacement</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPRESSION__REPLACEMENT = RESULT_SPEC_FEATURE_COUNT + 22;
+
+  /**
    * The feature id for the '<em><b>Begin Index</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int EXPRESSION__BEGIN_INDEX = RESULT_SPEC_FEATURE_COUNT + 21;
+  int EXPRESSION__BEGIN_INDEX = RESULT_SPEC_FEATURE_COUNT + 23;
 
   /**
    * The feature id for the '<em><b>End Index</b></em>' containment reference.
@@ -905,7 +923,7 @@ public interface JDOQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXPRESSION__END_INDEX = RESULT_SPEC_FEATURE_COUNT + 22;
+  int EXPRESSION__END_INDEX = RESULT_SPEC_FEATURE_COUNT + 24;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -914,7 +932,7 @@ public interface JDOQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXPRESSION__LEFT = RESULT_SPEC_FEATURE_COUNT + 23;
+  int EXPRESSION__LEFT = RESULT_SPEC_FEATURE_COUNT + 25;
 
   /**
    * The number of structural features of the '<em>Expression</em>' class.
@@ -923,7 +941,7 @@ public interface JDOQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXPRESSION_FEATURE_COUNT = RESULT_SPEC_FEATURE_COUNT + 24;
+  int EXPRESSION_FEATURE_COUNT = RESULT_SPEC_FEATURE_COUNT + 26;
 
   /**
    * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ConditionalOrExpressionImpl <em>Conditional Or Expression</em>}' class.
@@ -1026,13 +1044,13 @@ public interface JDOQLPackage extends EPackage
   int CONDITIONAL_OR_EXPRESSION__METHOD = EXPRESSION__METHOD;
 
   /**
-   * The feature id for the '<em><b>Numeric</b></em>' containment reference.
+   * The feature id for the '<em><b>Number</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CONDITIONAL_OR_EXPRESSION__NUMERIC = EXPRESSION__NUMERIC;
+  int CONDITIONAL_OR_EXPRESSION__NUMBER = EXPRESSION__NUMBER;
 
   /**
    * The feature id for the '<em><b>Persistable</b></em>' containment reference.
@@ -1098,6 +1116,15 @@ public interface JDOQLPackage extends EPackage
   int CONDITIONAL_OR_EXPRESSION__VALUE = EXPRESSION__VALUE;
 
   /**
+   * The feature id for the '<em><b>Index</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONDITIONAL_OR_EXPRESSION__INDEX = EXPRESSION__INDEX;
+
+  /**
    * The feature id for the '<em><b>String</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1105,6 +1132,15 @@ public interface JDOQLPackage extends EPackage
    * @ordered
    */
   int CONDITIONAL_OR_EXPRESSION__STRING = EXPRESSION__STRING;
+
+  /**
+   * The feature id for the '<em><b>From Index</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONDITIONAL_OR_EXPRESSION__FROM_INDEX = EXPRESSION__FROM_INDEX;
 
   /**
    * The feature id for the '<em><b>Regex</b></em>' containment reference.
@@ -1116,13 +1152,13 @@ public interface JDOQLPackage extends EPackage
   int CONDITIONAL_OR_EXPRESSION__REGEX = EXPRESSION__REGEX;
 
   /**
-   * The feature id for the '<em><b>From Index</b></em>' containment reference.
+   * The feature id for the '<em><b>Replacement</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CONDITIONAL_OR_EXPRESSION__FROM_INDEX = EXPRESSION__FROM_INDEX;
+  int CONDITIONAL_OR_EXPRESSION__REPLACEMENT = EXPRESSION__REPLACEMENT;
 
   /**
    * The feature id for the '<em><b>Begin Index</b></em>' containment reference.
@@ -1261,13 +1297,13 @@ public interface JDOQLPackage extends EPackage
   int CONDITIONAL_AND_EXPRESSION__METHOD = EXPRESSION__METHOD;
 
   /**
-   * The feature id for the '<em><b>Numeric</b></em>' containment reference.
+   * The feature id for the '<em><b>Number</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CONDITIONAL_AND_EXPRESSION__NUMERIC = EXPRESSION__NUMERIC;
+  int CONDITIONAL_AND_EXPRESSION__NUMBER = EXPRESSION__NUMBER;
 
   /**
    * The feature id for the '<em><b>Persistable</b></em>' containment reference.
@@ -1333,6 +1369,15 @@ public interface JDOQLPackage extends EPackage
   int CONDITIONAL_AND_EXPRESSION__VALUE = EXPRESSION__VALUE;
 
   /**
+   * The feature id for the '<em><b>Index</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONDITIONAL_AND_EXPRESSION__INDEX = EXPRESSION__INDEX;
+
+  /**
    * The feature id for the '<em><b>String</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1340,6 +1385,15 @@ public interface JDOQLPackage extends EPackage
    * @ordered
    */
   int CONDITIONAL_AND_EXPRESSION__STRING = EXPRESSION__STRING;
+
+  /**
+   * The feature id for the '<em><b>From Index</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONDITIONAL_AND_EXPRESSION__FROM_INDEX = EXPRESSION__FROM_INDEX;
 
   /**
    * The feature id for the '<em><b>Regex</b></em>' containment reference.
@@ -1351,13 +1405,13 @@ public interface JDOQLPackage extends EPackage
   int CONDITIONAL_AND_EXPRESSION__REGEX = EXPRESSION__REGEX;
 
   /**
-   * The feature id for the '<em><b>From Index</b></em>' containment reference.
+   * The feature id for the '<em><b>Replacement</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CONDITIONAL_AND_EXPRESSION__FROM_INDEX = EXPRESSION__FROM_INDEX;
+  int CONDITIONAL_AND_EXPRESSION__REPLACEMENT = EXPRESSION__REPLACEMENT;
 
   /**
    * The feature id for the '<em><b>Begin Index</b></em>' containment reference.
@@ -1496,13 +1550,13 @@ public interface JDOQLPackage extends EPackage
   int SIMPLE_OR_EXPRESSION__METHOD = EXPRESSION__METHOD;
 
   /**
-   * The feature id for the '<em><b>Numeric</b></em>' containment reference.
+   * The feature id for the '<em><b>Number</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SIMPLE_OR_EXPRESSION__NUMERIC = EXPRESSION__NUMERIC;
+  int SIMPLE_OR_EXPRESSION__NUMBER = EXPRESSION__NUMBER;
 
   /**
    * The feature id for the '<em><b>Persistable</b></em>' containment reference.
@@ -1568,6 +1622,15 @@ public interface JDOQLPackage extends EPackage
   int SIMPLE_OR_EXPRESSION__VALUE = EXPRESSION__VALUE;
 
   /**
+   * The feature id for the '<em><b>Index</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SIMPLE_OR_EXPRESSION__INDEX = EXPRESSION__INDEX;
+
+  /**
    * The feature id for the '<em><b>String</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1575,6 +1638,15 @@ public interface JDOQLPackage extends EPackage
    * @ordered
    */
   int SIMPLE_OR_EXPRESSION__STRING = EXPRESSION__STRING;
+
+  /**
+   * The feature id for the '<em><b>From Index</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SIMPLE_OR_EXPRESSION__FROM_INDEX = EXPRESSION__FROM_INDEX;
 
   /**
    * The feature id for the '<em><b>Regex</b></em>' containment reference.
@@ -1586,13 +1658,13 @@ public interface JDOQLPackage extends EPackage
   int SIMPLE_OR_EXPRESSION__REGEX = EXPRESSION__REGEX;
 
   /**
-   * The feature id for the '<em><b>From Index</b></em>' containment reference.
+   * The feature id for the '<em><b>Replacement</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SIMPLE_OR_EXPRESSION__FROM_INDEX = EXPRESSION__FROM_INDEX;
+  int SIMPLE_OR_EXPRESSION__REPLACEMENT = EXPRESSION__REPLACEMENT;
 
   /**
    * The feature id for the '<em><b>Begin Index</b></em>' containment reference.
@@ -1731,13 +1803,13 @@ public interface JDOQLPackage extends EPackage
   int SIMPLE_AND_EXPRESSION__METHOD = EXPRESSION__METHOD;
 
   /**
-   * The feature id for the '<em><b>Numeric</b></em>' containment reference.
+   * The feature id for the '<em><b>Number</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SIMPLE_AND_EXPRESSION__NUMERIC = EXPRESSION__NUMERIC;
+  int SIMPLE_AND_EXPRESSION__NUMBER = EXPRESSION__NUMBER;
 
   /**
    * The feature id for the '<em><b>Persistable</b></em>' containment reference.
@@ -1803,6 +1875,15 @@ public interface JDOQLPackage extends EPackage
   int SIMPLE_AND_EXPRESSION__VALUE = EXPRESSION__VALUE;
 
   /**
+   * The feature id for the '<em><b>Index</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SIMPLE_AND_EXPRESSION__INDEX = EXPRESSION__INDEX;
+
+  /**
    * The feature id for the '<em><b>String</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1810,6 +1891,15 @@ public interface JDOQLPackage extends EPackage
    * @ordered
    */
   int SIMPLE_AND_EXPRESSION__STRING = EXPRESSION__STRING;
+
+  /**
+   * The feature id for the '<em><b>From Index</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SIMPLE_AND_EXPRESSION__FROM_INDEX = EXPRESSION__FROM_INDEX;
 
   /**
    * The feature id for the '<em><b>Regex</b></em>' containment reference.
@@ -1821,13 +1911,13 @@ public interface JDOQLPackage extends EPackage
   int SIMPLE_AND_EXPRESSION__REGEX = EXPRESSION__REGEX;
 
   /**
-   * The feature id for the '<em><b>From Index</b></em>' containment reference.
+   * The feature id for the '<em><b>Replacement</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SIMPLE_AND_EXPRESSION__FROM_INDEX = EXPRESSION__FROM_INDEX;
+  int SIMPLE_AND_EXPRESSION__REPLACEMENT = EXPRESSION__REPLACEMENT;
 
   /**
    * The feature id for the '<em><b>Begin Index</b></em>' containment reference.
@@ -1966,13 +2056,13 @@ public interface JDOQLPackage extends EPackage
   int COMPARISON_OPERATOR_EXPRESSION__METHOD = EXPRESSION__METHOD;
 
   /**
-   * The feature id for the '<em><b>Numeric</b></em>' containment reference.
+   * The feature id for the '<em><b>Number</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int COMPARISON_OPERATOR_EXPRESSION__NUMERIC = EXPRESSION__NUMERIC;
+  int COMPARISON_OPERATOR_EXPRESSION__NUMBER = EXPRESSION__NUMBER;
 
   /**
    * The feature id for the '<em><b>Persistable</b></em>' containment reference.
@@ -2038,6 +2128,15 @@ public interface JDOQLPackage extends EPackage
   int COMPARISON_OPERATOR_EXPRESSION__VALUE = EXPRESSION__VALUE;
 
   /**
+   * The feature id for the '<em><b>Index</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPARISON_OPERATOR_EXPRESSION__INDEX = EXPRESSION__INDEX;
+
+  /**
    * The feature id for the '<em><b>String</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2045,6 +2144,15 @@ public interface JDOQLPackage extends EPackage
    * @ordered
    */
   int COMPARISON_OPERATOR_EXPRESSION__STRING = EXPRESSION__STRING;
+
+  /**
+   * The feature id for the '<em><b>From Index</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPARISON_OPERATOR_EXPRESSION__FROM_INDEX = EXPRESSION__FROM_INDEX;
 
   /**
    * The feature id for the '<em><b>Regex</b></em>' containment reference.
@@ -2056,13 +2164,13 @@ public interface JDOQLPackage extends EPackage
   int COMPARISON_OPERATOR_EXPRESSION__REGEX = EXPRESSION__REGEX;
 
   /**
-   * The feature id for the '<em><b>From Index</b></em>' containment reference.
+   * The feature id for the '<em><b>Replacement</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int COMPARISON_OPERATOR_EXPRESSION__FROM_INDEX = EXPRESSION__FROM_INDEX;
+  int COMPARISON_OPERATOR_EXPRESSION__REPLACEMENT = EXPRESSION__REPLACEMENT;
 
   /**
    * The feature id for the '<em><b>Begin Index</b></em>' containment reference.
@@ -2210,13 +2318,13 @@ public interface JDOQLPackage extends EPackage
   int ADDITION_EXPRESSION__METHOD = EXPRESSION__METHOD;
 
   /**
-   * The feature id for the '<em><b>Numeric</b></em>' containment reference.
+   * The feature id for the '<em><b>Number</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ADDITION_EXPRESSION__NUMERIC = EXPRESSION__NUMERIC;
+  int ADDITION_EXPRESSION__NUMBER = EXPRESSION__NUMBER;
 
   /**
    * The feature id for the '<em><b>Persistable</b></em>' containment reference.
@@ -2282,6 +2390,15 @@ public interface JDOQLPackage extends EPackage
   int ADDITION_EXPRESSION__VALUE = EXPRESSION__VALUE;
 
   /**
+   * The feature id for the '<em><b>Index</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ADDITION_EXPRESSION__INDEX = EXPRESSION__INDEX;
+
+  /**
    * The feature id for the '<em><b>String</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2289,6 +2406,15 @@ public interface JDOQLPackage extends EPackage
    * @ordered
    */
   int ADDITION_EXPRESSION__STRING = EXPRESSION__STRING;
+
+  /**
+   * The feature id for the '<em><b>From Index</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ADDITION_EXPRESSION__FROM_INDEX = EXPRESSION__FROM_INDEX;
 
   /**
    * The feature id for the '<em><b>Regex</b></em>' containment reference.
@@ -2300,13 +2426,13 @@ public interface JDOQLPackage extends EPackage
   int ADDITION_EXPRESSION__REGEX = EXPRESSION__REGEX;
 
   /**
-   * The feature id for the '<em><b>From Index</b></em>' containment reference.
+   * The feature id for the '<em><b>Replacement</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ADDITION_EXPRESSION__FROM_INDEX = EXPRESSION__FROM_INDEX;
+  int ADDITION_EXPRESSION__REPLACEMENT = EXPRESSION__REPLACEMENT;
 
   /**
    * The feature id for the '<em><b>Begin Index</b></em>' containment reference.
@@ -2454,13 +2580,13 @@ public interface JDOQLPackage extends EPackage
   int MULTIPLICATION_EXPRESSION__METHOD = EXPRESSION__METHOD;
 
   /**
-   * The feature id for the '<em><b>Numeric</b></em>' containment reference.
+   * The feature id for the '<em><b>Number</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MULTIPLICATION_EXPRESSION__NUMERIC = EXPRESSION__NUMERIC;
+  int MULTIPLICATION_EXPRESSION__NUMBER = EXPRESSION__NUMBER;
 
   /**
    * The feature id for the '<em><b>Persistable</b></em>' containment reference.
@@ -2526,6 +2652,15 @@ public interface JDOQLPackage extends EPackage
   int MULTIPLICATION_EXPRESSION__VALUE = EXPRESSION__VALUE;
 
   /**
+   * The feature id for the '<em><b>Index</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MULTIPLICATION_EXPRESSION__INDEX = EXPRESSION__INDEX;
+
+  /**
    * The feature id for the '<em><b>String</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2533,6 +2668,15 @@ public interface JDOQLPackage extends EPackage
    * @ordered
    */
   int MULTIPLICATION_EXPRESSION__STRING = EXPRESSION__STRING;
+
+  /**
+   * The feature id for the '<em><b>From Index</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MULTIPLICATION_EXPRESSION__FROM_INDEX = EXPRESSION__FROM_INDEX;
 
   /**
    * The feature id for the '<em><b>Regex</b></em>' containment reference.
@@ -2544,13 +2688,13 @@ public interface JDOQLPackage extends EPackage
   int MULTIPLICATION_EXPRESSION__REGEX = EXPRESSION__REGEX;
 
   /**
-   * The feature id for the '<em><b>From Index</b></em>' containment reference.
+   * The feature id for the '<em><b>Replacement</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MULTIPLICATION_EXPRESSION__FROM_INDEX = EXPRESSION__FROM_INDEX;
+  int MULTIPLICATION_EXPRESSION__REPLACEMENT = EXPRESSION__REPLACEMENT;
 
   /**
    * The feature id for the '<em><b>Begin Index</b></em>' containment reference.
@@ -2698,13 +2842,13 @@ public interface JDOQLPackage extends EPackage
   int FIELD_ACCESS_EXPRESSION__METHOD = EXPRESSION__METHOD;
 
   /**
-   * The feature id for the '<em><b>Numeric</b></em>' containment reference.
+   * The feature id for the '<em><b>Number</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FIELD_ACCESS_EXPRESSION__NUMERIC = EXPRESSION__NUMERIC;
+  int FIELD_ACCESS_EXPRESSION__NUMBER = EXPRESSION__NUMBER;
 
   /**
    * The feature id for the '<em><b>Persistable</b></em>' containment reference.
@@ -2770,6 +2914,15 @@ public interface JDOQLPackage extends EPackage
   int FIELD_ACCESS_EXPRESSION__VALUE = EXPRESSION__VALUE;
 
   /**
+   * The feature id for the '<em><b>Index</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FIELD_ACCESS_EXPRESSION__INDEX = EXPRESSION__INDEX;
+
+  /**
    * The feature id for the '<em><b>String</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2777,6 +2930,15 @@ public interface JDOQLPackage extends EPackage
    * @ordered
    */
   int FIELD_ACCESS_EXPRESSION__STRING = EXPRESSION__STRING;
+
+  /**
+   * The feature id for the '<em><b>From Index</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FIELD_ACCESS_EXPRESSION__FROM_INDEX = EXPRESSION__FROM_INDEX;
 
   /**
    * The feature id for the '<em><b>Regex</b></em>' containment reference.
@@ -2788,13 +2950,13 @@ public interface JDOQLPackage extends EPackage
   int FIELD_ACCESS_EXPRESSION__REGEX = EXPRESSION__REGEX;
 
   /**
-   * The feature id for the '<em><b>From Index</b></em>' containment reference.
+   * The feature id for the '<em><b>Replacement</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FIELD_ACCESS_EXPRESSION__FROM_INDEX = EXPRESSION__FROM_INDEX;
+  int FIELD_ACCESS_EXPRESSION__REPLACEMENT = EXPRESSION__REPLACEMENT;
 
   /**
    * The feature id for the '<em><b>Begin Index</b></em>' containment reference.
@@ -3536,15 +3698,15 @@ public interface JDOQLPackage extends EPackage
   EReference getExpression_Method();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getNumeric <em>Numeric</em>}'.
+   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getNumber <em>Number</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Numeric</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getNumeric()
+   * @return the meta object for the containment reference '<em>Number</em>'.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getNumber()
    * @see #getExpression()
    * @generated
    */
-  EReference getExpression_Numeric();
+  EReference getExpression_Number();
 
   /**
    * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getPersistable <em>Persistable</em>}'.
@@ -3624,6 +3786,17 @@ public interface JDOQLPackage extends EPackage
   EReference getExpression_Value();
 
   /**
+   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getIndex <em>Index</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Index</em>'.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getIndex()
+   * @see #getExpression()
+   * @generated
+   */
+  EReference getExpression_Index();
+
+  /**
    * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getString <em>String</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3633,6 +3806,17 @@ public interface JDOQLPackage extends EPackage
    * @generated
    */
   EReference getExpression_String();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getFromIndex <em>From Index</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>From Index</em>'.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getFromIndex()
+   * @see #getExpression()
+   * @generated
+   */
+  EReference getExpression_FromIndex();
 
   /**
    * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getRegex <em>Regex</em>}'.
@@ -3646,15 +3830,15 @@ public interface JDOQLPackage extends EPackage
   EReference getExpression_Regex();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getFromIndex <em>From Index</em>}'.
+   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getReplacement <em>Replacement</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>From Index</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getFromIndex()
+   * @return the meta object for the containment reference '<em>Replacement</em>'.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getReplacement()
    * @see #getExpression()
    * @generated
    */
-  EReference getExpression_FromIndex();
+  EReference getExpression_Replacement();
 
   /**
    * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getBeginIndex <em>Begin Index</em>}'.
@@ -4402,12 +4586,12 @@ public interface JDOQLPackage extends EPackage
     EReference EXPRESSION__METHOD = eINSTANCE.getExpression_Method();
 
     /**
-     * The meta object literal for the '<em><b>Numeric</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Number</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference EXPRESSION__NUMERIC = eINSTANCE.getExpression_Numeric();
+    EReference EXPRESSION__NUMBER = eINSTANCE.getExpression_Number();
 
     /**
      * The meta object literal for the '<em><b>Persistable</b></em>' containment reference feature.
@@ -4466,12 +4650,28 @@ public interface JDOQLPackage extends EPackage
     EReference EXPRESSION__VALUE = eINSTANCE.getExpression_Value();
 
     /**
+     * The meta object literal for the '<em><b>Index</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EXPRESSION__INDEX = eINSTANCE.getExpression_Index();
+
+    /**
      * The meta object literal for the '<em><b>String</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     EReference EXPRESSION__STRING = eINSTANCE.getExpression_String();
+
+    /**
+     * The meta object literal for the '<em><b>From Index</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EXPRESSION__FROM_INDEX = eINSTANCE.getExpression_FromIndex();
 
     /**
      * The meta object literal for the '<em><b>Regex</b></em>' containment reference feature.
@@ -4482,12 +4682,12 @@ public interface JDOQLPackage extends EPackage
     EReference EXPRESSION__REGEX = eINSTANCE.getExpression_Regex();
 
     /**
-     * The meta object literal for the '<em><b>From Index</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Replacement</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference EXPRESSION__FROM_INDEX = eINSTANCE.getExpression_FromIndex();
+    EReference EXPRESSION__REPLACEMENT = eINSTANCE.getExpression_Replacement();
 
     /**
      * The meta object literal for the '<em><b>Begin Index</b></em>' containment reference feature.

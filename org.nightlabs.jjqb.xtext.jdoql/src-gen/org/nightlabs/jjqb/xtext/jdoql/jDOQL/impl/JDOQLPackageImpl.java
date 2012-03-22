@@ -958,7 +958,7 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getExpression_Numeric()
+  public EReference getExpression_Number()
   {
     return (EReference)expressionEClass.getEStructuralFeatures().get(10);
   }
@@ -1038,7 +1038,7 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getExpression_String()
+  public EReference getExpression_Index()
   {
     return (EReference)expressionEClass.getEStructuralFeatures().get(18);
   }
@@ -1048,7 +1048,7 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getExpression_Regex()
+  public EReference getExpression_String()
   {
     return (EReference)expressionEClass.getEStructuralFeatures().get(19);
   }
@@ -1068,7 +1068,7 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getExpression_BeginIndex()
+  public EReference getExpression_Regex()
   {
     return (EReference)expressionEClass.getEStructuralFeatures().get(21);
   }
@@ -1078,7 +1078,7 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getExpression_EndIndex()
+  public EReference getExpression_Replacement()
   {
     return (EReference)expressionEClass.getEStructuralFeatures().get(22);
   }
@@ -1088,9 +1088,29 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getExpression_Left()
+  public EReference getExpression_BeginIndex()
   {
     return (EReference)expressionEClass.getEStructuralFeatures().get(23);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getExpression_EndIndex()
+  {
+    return (EReference)expressionEClass.getEStructuralFeatures().get(24);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getExpression_Left()
+  {
+    return (EReference)expressionEClass.getEStructuralFeatures().get(25);
   }
 
   /**
@@ -1362,7 +1382,7 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
     createEAttribute(expressionEClass, EXPRESSION__ID);
     createEAttribute(expressionEClass, EXPRESSION__PARAMETER_NAME);
     createEReference(expressionEClass, EXPRESSION__METHOD);
-    createEReference(expressionEClass, EXPRESSION__NUMERIC);
+    createEReference(expressionEClass, EXPRESSION__NUMBER);
     createEReference(expressionEClass, EXPRESSION__PERSISTABLE);
     createEAttribute(expressionEClass, EXPRESSION__IS_DISTINCT);
     createEReference(expressionEClass, EXPRESSION__AGGREGATE_ARGUMENT);
@@ -1370,9 +1390,11 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
     createEReference(expressionEClass, EXPRESSION__ARG);
     createEReference(expressionEClass, EXPRESSION__KEY);
     createEReference(expressionEClass, EXPRESSION__VALUE);
+    createEReference(expressionEClass, EXPRESSION__INDEX);
     createEReference(expressionEClass, EXPRESSION__STRING);
-    createEReference(expressionEClass, EXPRESSION__REGEX);
     createEReference(expressionEClass, EXPRESSION__FROM_INDEX);
+    createEReference(expressionEClass, EXPRESSION__REGEX);
+    createEReference(expressionEClass, EXPRESSION__REPLACEMENT);
     createEReference(expressionEClass, EXPRESSION__BEGIN_INDEX);
     createEReference(expressionEClass, EXPRESSION__END_INDEX);
     createEReference(expressionEClass, EXPRESSION__LEFT);
@@ -1524,7 +1546,7 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
     initEAttribute(getExpression_Id(), ecorePackage.getEString(), "id", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getExpression_ParameterName(), ecorePackage.getEString(), "parameterName", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getExpression_Method(), this.getExpression(), null, "method", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getExpression_Numeric(), this.getExpression(), null, "numeric", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getExpression_Number(), this.getExpression(), null, "number", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getExpression_Persistable(), this.getExpression(), null, "persistable", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getExpression_IsDistinct(), ecorePackage.getEBoolean(), "isDistinct", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getExpression_AggregateArgument(), this.getExpression(), null, "aggregateArgument", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1532,9 +1554,11 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
     initEReference(getExpression_Arg(), this.getExpression(), null, "arg", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getExpression_Key(), this.getExpression(), null, "key", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getExpression_Value(), this.getExpression(), null, "value", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getExpression_Index(), this.getExpression(), null, "index", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getExpression_String(), this.getExpression(), null, "string", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getExpression_Regex(), this.getExpression(), null, "regex", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getExpression_FromIndex(), this.getExpression(), null, "fromIndex", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getExpression_Regex(), this.getExpression(), null, "regex", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getExpression_Replacement(), this.getExpression(), null, "replacement", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getExpression_BeginIndex(), this.getExpression(), null, "beginIndex", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getExpression_EndIndex(), this.getExpression(), null, "endIndex", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getExpression_Left(), this.getExpression(), null, "left", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -36,7 +36,7 @@ import org.nightlabs.jjqb.xtext.jdoql.jDOQL.UnaryOperator;
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ExpressionImpl#getId <em>Id</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ExpressionImpl#getParameterName <em>Parameter Name</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ExpressionImpl#getMethod <em>Method</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ExpressionImpl#getNumeric <em>Numeric</em>}</li>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ExpressionImpl#getNumber <em>Number</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ExpressionImpl#getPersistable <em>Persistable</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ExpressionImpl#isIsDistinct <em>Is Distinct</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ExpressionImpl#getAggregateArgument <em>Aggregate Argument</em>}</li>
@@ -44,9 +44,11 @@ import org.nightlabs.jjqb.xtext.jdoql.jDOQL.UnaryOperator;
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ExpressionImpl#getArg <em>Arg</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ExpressionImpl#getKey <em>Key</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ExpressionImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ExpressionImpl#getIndex <em>Index</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ExpressionImpl#getString <em>String</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ExpressionImpl#getRegex <em>Regex</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ExpressionImpl#getFromIndex <em>From Index</em>}</li>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ExpressionImpl#getRegex <em>Regex</em>}</li>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ExpressionImpl#getReplacement <em>Replacement</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ExpressionImpl#getBeginIndex <em>Begin Index</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ExpressionImpl#getEndIndex <em>End Index</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ExpressionImpl#getLeft <em>Left</em>}</li>
@@ -228,14 +230,14 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
   protected Expression method;
 
   /**
-   * The cached value of the '{@link #getNumeric() <em>Numeric</em>}' containment reference.
+   * The cached value of the '{@link #getNumber() <em>Number</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getNumeric()
+   * @see #getNumber()
    * @generated
    * @ordered
    */
-  protected Expression numeric;
+  protected Expression number;
 
   /**
    * The cached value of the '{@link #getPersistable() <em>Persistable</em>}' containment reference.
@@ -318,6 +320,16 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
   protected Expression value;
 
   /**
+   * The cached value of the '{@link #getIndex() <em>Index</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getIndex()
+   * @generated
+   * @ordered
+   */
+  protected Expression index;
+
+  /**
    * The cached value of the '{@link #getString() <em>String</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -326,6 +338,16 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
    * @ordered
    */
   protected Expression string;
+
+  /**
+   * The cached value of the '{@link #getFromIndex() <em>From Index</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getFromIndex()
+   * @generated
+   * @ordered
+   */
+  protected Expression fromIndex;
 
   /**
    * The cached value of the '{@link #getRegex() <em>Regex</em>}' containment reference.
@@ -338,14 +360,14 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
   protected Expression regex;
 
   /**
-   * The cached value of the '{@link #getFromIndex() <em>From Index</em>}' containment reference.
+   * The cached value of the '{@link #getReplacement() <em>Replacement</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getFromIndex()
+   * @see #getReplacement()
    * @generated
    * @ordered
    */
-  protected Expression fromIndex;
+  protected Expression replacement;
 
   /**
    * The cached value of the '{@link #getBeginIndex() <em>Begin Index</em>}' containment reference.
@@ -708,9 +730,9 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
    * <!-- end-user-doc -->
    * @generated
    */
-  public Expression getNumeric()
+  public Expression getNumber()
   {
-    return numeric;
+    return number;
   }
 
   /**
@@ -718,13 +740,13 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetNumeric(Expression newNumeric, NotificationChain msgs)
+  public NotificationChain basicSetNumber(Expression newNumber, NotificationChain msgs)
   {
-    Expression oldNumeric = numeric;
-    numeric = newNumeric;
+    Expression oldNumber = number;
+    number = newNumber;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JDOQLPackage.EXPRESSION__NUMERIC, oldNumeric, newNumeric);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JDOQLPackage.EXPRESSION__NUMBER, oldNumber, newNumber);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -735,20 +757,20 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setNumeric(Expression newNumeric)
+  public void setNumber(Expression newNumber)
   {
-    if (newNumeric != numeric)
+    if (newNumber != number)
     {
       NotificationChain msgs = null;
-      if (numeric != null)
-        msgs = ((InternalEObject)numeric).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JDOQLPackage.EXPRESSION__NUMERIC, null, msgs);
-      if (newNumeric != null)
-        msgs = ((InternalEObject)newNumeric).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JDOQLPackage.EXPRESSION__NUMERIC, null, msgs);
-      msgs = basicSetNumeric(newNumeric, msgs);
+      if (number != null)
+        msgs = ((InternalEObject)number).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JDOQLPackage.EXPRESSION__NUMBER, null, msgs);
+      if (newNumber != null)
+        msgs = ((InternalEObject)newNumber).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JDOQLPackage.EXPRESSION__NUMBER, null, msgs);
+      msgs = basicSetNumber(newNumber, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, JDOQLPackage.EXPRESSION__NUMERIC, newNumeric, newNumeric));
+      eNotify(new ENotificationImpl(this, Notification.SET, JDOQLPackage.EXPRESSION__NUMBER, newNumber, newNumber));
   }
 
   /**
@@ -1067,6 +1089,54 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
    * <!-- end-user-doc -->
    * @generated
    */
+  public Expression getIndex()
+  {
+    return index;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetIndex(Expression newIndex, NotificationChain msgs)
+  {
+    Expression oldIndex = index;
+    index = newIndex;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JDOQLPackage.EXPRESSION__INDEX, oldIndex, newIndex);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setIndex(Expression newIndex)
+  {
+    if (newIndex != index)
+    {
+      NotificationChain msgs = null;
+      if (index != null)
+        msgs = ((InternalEObject)index).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JDOQLPackage.EXPRESSION__INDEX, null, msgs);
+      if (newIndex != null)
+        msgs = ((InternalEObject)newIndex).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JDOQLPackage.EXPRESSION__INDEX, null, msgs);
+      msgs = basicSetIndex(newIndex, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, JDOQLPackage.EXPRESSION__INDEX, newIndex, newIndex));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public Expression getString()
   {
     return string;
@@ -1108,6 +1178,54 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
     }
     else if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, JDOQLPackage.EXPRESSION__STRING, newString, newString));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Expression getFromIndex()
+  {
+    return fromIndex;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetFromIndex(Expression newFromIndex, NotificationChain msgs)
+  {
+    Expression oldFromIndex = fromIndex;
+    fromIndex = newFromIndex;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JDOQLPackage.EXPRESSION__FROM_INDEX, oldFromIndex, newFromIndex);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setFromIndex(Expression newFromIndex)
+  {
+    if (newFromIndex != fromIndex)
+    {
+      NotificationChain msgs = null;
+      if (fromIndex != null)
+        msgs = ((InternalEObject)fromIndex).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JDOQLPackage.EXPRESSION__FROM_INDEX, null, msgs);
+      if (newFromIndex != null)
+        msgs = ((InternalEObject)newFromIndex).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JDOQLPackage.EXPRESSION__FROM_INDEX, null, msgs);
+      msgs = basicSetFromIndex(newFromIndex, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, JDOQLPackage.EXPRESSION__FROM_INDEX, newFromIndex, newFromIndex));
   }
 
   /**
@@ -1163,9 +1281,9 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
    * <!-- end-user-doc -->
    * @generated
    */
-  public Expression getFromIndex()
+  public Expression getReplacement()
   {
-    return fromIndex;
+    return replacement;
   }
 
   /**
@@ -1173,13 +1291,13 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetFromIndex(Expression newFromIndex, NotificationChain msgs)
+  public NotificationChain basicSetReplacement(Expression newReplacement, NotificationChain msgs)
   {
-    Expression oldFromIndex = fromIndex;
-    fromIndex = newFromIndex;
+    Expression oldReplacement = replacement;
+    replacement = newReplacement;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JDOQLPackage.EXPRESSION__FROM_INDEX, oldFromIndex, newFromIndex);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JDOQLPackage.EXPRESSION__REPLACEMENT, oldReplacement, newReplacement);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -1190,20 +1308,20 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setFromIndex(Expression newFromIndex)
+  public void setReplacement(Expression newReplacement)
   {
-    if (newFromIndex != fromIndex)
+    if (newReplacement != replacement)
     {
       NotificationChain msgs = null;
-      if (fromIndex != null)
-        msgs = ((InternalEObject)fromIndex).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JDOQLPackage.EXPRESSION__FROM_INDEX, null, msgs);
-      if (newFromIndex != null)
-        msgs = ((InternalEObject)newFromIndex).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JDOQLPackage.EXPRESSION__FROM_INDEX, null, msgs);
-      msgs = basicSetFromIndex(newFromIndex, msgs);
+      if (replacement != null)
+        msgs = ((InternalEObject)replacement).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JDOQLPackage.EXPRESSION__REPLACEMENT, null, msgs);
+      if (newReplacement != null)
+        msgs = ((InternalEObject)newReplacement).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JDOQLPackage.EXPRESSION__REPLACEMENT, null, msgs);
+      msgs = basicSetReplacement(newReplacement, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, JDOQLPackage.EXPRESSION__FROM_INDEX, newFromIndex, newFromIndex));
+      eNotify(new ENotificationImpl(this, Notification.SET, JDOQLPackage.EXPRESSION__REPLACEMENT, newReplacement, newReplacement));
   }
 
   /**
@@ -1366,8 +1484,8 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
         return basicSetRight(null, msgs);
       case JDOQLPackage.EXPRESSION__METHOD:
         return basicSetMethod(null, msgs);
-      case JDOQLPackage.EXPRESSION__NUMERIC:
-        return basicSetNumeric(null, msgs);
+      case JDOQLPackage.EXPRESSION__NUMBER:
+        return basicSetNumber(null, msgs);
       case JDOQLPackage.EXPRESSION__PERSISTABLE:
         return basicSetPersistable(null, msgs);
       case JDOQLPackage.EXPRESSION__AGGREGATE_ARGUMENT:
@@ -1380,12 +1498,16 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
         return basicSetKey(null, msgs);
       case JDOQLPackage.EXPRESSION__VALUE:
         return basicSetValue(null, msgs);
+      case JDOQLPackage.EXPRESSION__INDEX:
+        return basicSetIndex(null, msgs);
       case JDOQLPackage.EXPRESSION__STRING:
         return basicSetString(null, msgs);
-      case JDOQLPackage.EXPRESSION__REGEX:
-        return basicSetRegex(null, msgs);
       case JDOQLPackage.EXPRESSION__FROM_INDEX:
         return basicSetFromIndex(null, msgs);
+      case JDOQLPackage.EXPRESSION__REGEX:
+        return basicSetRegex(null, msgs);
+      case JDOQLPackage.EXPRESSION__REPLACEMENT:
+        return basicSetReplacement(null, msgs);
       case JDOQLPackage.EXPRESSION__BEGIN_INDEX:
         return basicSetBeginIndex(null, msgs);
       case JDOQLPackage.EXPRESSION__END_INDEX:
@@ -1426,8 +1548,8 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
         return getParameterName();
       case JDOQLPackage.EXPRESSION__METHOD:
         return getMethod();
-      case JDOQLPackage.EXPRESSION__NUMERIC:
-        return getNumeric();
+      case JDOQLPackage.EXPRESSION__NUMBER:
+        return getNumber();
       case JDOQLPackage.EXPRESSION__PERSISTABLE:
         return getPersistable();
       case JDOQLPackage.EXPRESSION__IS_DISTINCT:
@@ -1442,12 +1564,16 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
         return getKey();
       case JDOQLPackage.EXPRESSION__VALUE:
         return getValue();
+      case JDOQLPackage.EXPRESSION__INDEX:
+        return getIndex();
       case JDOQLPackage.EXPRESSION__STRING:
         return getString();
-      case JDOQLPackage.EXPRESSION__REGEX:
-        return getRegex();
       case JDOQLPackage.EXPRESSION__FROM_INDEX:
         return getFromIndex();
+      case JDOQLPackage.EXPRESSION__REGEX:
+        return getRegex();
+      case JDOQLPackage.EXPRESSION__REPLACEMENT:
+        return getReplacement();
       case JDOQLPackage.EXPRESSION__BEGIN_INDEX:
         return getBeginIndex();
       case JDOQLPackage.EXPRESSION__END_INDEX:
@@ -1498,8 +1624,8 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
       case JDOQLPackage.EXPRESSION__METHOD:
         setMethod((Expression)newValue);
         return;
-      case JDOQLPackage.EXPRESSION__NUMERIC:
-        setNumeric((Expression)newValue);
+      case JDOQLPackage.EXPRESSION__NUMBER:
+        setNumber((Expression)newValue);
         return;
       case JDOQLPackage.EXPRESSION__PERSISTABLE:
         setPersistable((Expression)newValue);
@@ -1522,14 +1648,20 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
       case JDOQLPackage.EXPRESSION__VALUE:
         setValue((Expression)newValue);
         return;
+      case JDOQLPackage.EXPRESSION__INDEX:
+        setIndex((Expression)newValue);
+        return;
       case JDOQLPackage.EXPRESSION__STRING:
         setString((Expression)newValue);
+        return;
+      case JDOQLPackage.EXPRESSION__FROM_INDEX:
+        setFromIndex((Expression)newValue);
         return;
       case JDOQLPackage.EXPRESSION__REGEX:
         setRegex((Expression)newValue);
         return;
-      case JDOQLPackage.EXPRESSION__FROM_INDEX:
-        setFromIndex((Expression)newValue);
+      case JDOQLPackage.EXPRESSION__REPLACEMENT:
+        setReplacement((Expression)newValue);
         return;
       case JDOQLPackage.EXPRESSION__BEGIN_INDEX:
         setBeginIndex((Expression)newValue);
@@ -1584,8 +1716,8 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
       case JDOQLPackage.EXPRESSION__METHOD:
         setMethod((Expression)null);
         return;
-      case JDOQLPackage.EXPRESSION__NUMERIC:
-        setNumeric((Expression)null);
+      case JDOQLPackage.EXPRESSION__NUMBER:
+        setNumber((Expression)null);
         return;
       case JDOQLPackage.EXPRESSION__PERSISTABLE:
         setPersistable((Expression)null);
@@ -1608,14 +1740,20 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
       case JDOQLPackage.EXPRESSION__VALUE:
         setValue((Expression)null);
         return;
+      case JDOQLPackage.EXPRESSION__INDEX:
+        setIndex((Expression)null);
+        return;
       case JDOQLPackage.EXPRESSION__STRING:
         setString((Expression)null);
+        return;
+      case JDOQLPackage.EXPRESSION__FROM_INDEX:
+        setFromIndex((Expression)null);
         return;
       case JDOQLPackage.EXPRESSION__REGEX:
         setRegex((Expression)null);
         return;
-      case JDOQLPackage.EXPRESSION__FROM_INDEX:
-        setFromIndex((Expression)null);
+      case JDOQLPackage.EXPRESSION__REPLACEMENT:
+        setReplacement((Expression)null);
         return;
       case JDOQLPackage.EXPRESSION__BEGIN_INDEX:
         setBeginIndex((Expression)null);
@@ -1660,8 +1798,8 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
         return PARAMETER_NAME_EDEFAULT == null ? parameterName != null : !PARAMETER_NAME_EDEFAULT.equals(parameterName);
       case JDOQLPackage.EXPRESSION__METHOD:
         return method != null;
-      case JDOQLPackage.EXPRESSION__NUMERIC:
-        return numeric != null;
+      case JDOQLPackage.EXPRESSION__NUMBER:
+        return number != null;
       case JDOQLPackage.EXPRESSION__PERSISTABLE:
         return persistable != null;
       case JDOQLPackage.EXPRESSION__IS_DISTINCT:
@@ -1676,12 +1814,16 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
         return key != null;
       case JDOQLPackage.EXPRESSION__VALUE:
         return value != null;
+      case JDOQLPackage.EXPRESSION__INDEX:
+        return index != null;
       case JDOQLPackage.EXPRESSION__STRING:
         return string != null;
-      case JDOQLPackage.EXPRESSION__REGEX:
-        return regex != null;
       case JDOQLPackage.EXPRESSION__FROM_INDEX:
         return fromIndex != null;
+      case JDOQLPackage.EXPRESSION__REGEX:
+        return regex != null;
+      case JDOQLPackage.EXPRESSION__REPLACEMENT:
+        return replacement != null;
       case JDOQLPackage.EXPRESSION__BEGIN_INDEX:
         return beginIndex != null;
       case JDOQLPackage.EXPRESSION__END_INDEX:

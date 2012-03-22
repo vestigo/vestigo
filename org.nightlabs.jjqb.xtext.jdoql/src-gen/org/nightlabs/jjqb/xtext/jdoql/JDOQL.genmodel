@@ -116,7 +116,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDOQL.ecore#//Expression/id"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDOQL.ecore#//Expression/parameterName"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//Expression/method"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//Expression/numeric"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//Expression/number"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//Expression/persistable"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDOQL.ecore#//Expression/isDistinct"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//Expression/aggregateArgument"/>
@@ -124,9 +124,11 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//Expression/arg"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//Expression/key"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//Expression/value"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//Expression/index"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//Expression/string"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//Expression/regex"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//Expression/fromIndex"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//Expression/regex"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//Expression/replacement"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//Expression/beginIndex"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//Expression/endIndex"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//Expression/left"/>

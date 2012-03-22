@@ -159,12 +159,37 @@ FieldOrMethodExpression returns Expression:
 ;
 
 StaticMethodExpression returns Expression:
-	{Expression} 'java.lang.Math.abs' '(' numeric=ConditionalOrExpression ')' |
-	{Expression} 'Math.abs' '(' numeric=ConditionalOrExpression ')' |
-	{Expression} 'java.lang.Math.sqrt' '(' numeric=ConditionalOrExpression ')' |
-	{Expression} 'Math.sqrt' '(' numeric=ConditionalOrExpression ')' |
-	{Expression} 'javax.jdo.JDOHelper.getObjectId' '(' persistable=ConditionalOrExpression ')' |
+	{Expression} 'Math.abs' '(' number=ConditionalOrExpression ')' |
+	{Expression} 'Math.sqrt' '(' number=ConditionalOrExpression ')' |
+	{Expression} 'Math.cos' '(' number=ConditionalOrExpression ')' |
+	{Expression} 'Math.sin' '(' number=ConditionalOrExpression ')' |
+	{Expression} 'Math.tan' '(' number=ConditionalOrExpression ')' |
+	{Expression} 'Math.acos' '(' number=ConditionalOrExpression ')' |
+	{Expression} 'Math.asin' '(' number=ConditionalOrExpression ')' |
+	{Expression} 'Math.atan' '(' number=ConditionalOrExpression ')' |
+	{Expression} 'Math.ceil' '(' number=ConditionalOrExpression ')' |
+	{Expression} 'Math.exp' '(' number=ConditionalOrExpression ')' |
+	{Expression} 'Math.floor' '(' number=ConditionalOrExpression ')' |
+	{Expression} 'Math.log' '(' number=ConditionalOrExpression ')' |
+
+	{Expression} 'java.lang.Math.abs' '(' number=ConditionalOrExpression ')' |
+	{Expression} 'java.lang.Math.sqrt' '(' number=ConditionalOrExpression ')' |
+	{Expression} 'java.lang.Math.cos' '(' number=ConditionalOrExpression ')' |
+	{Expression} 'java.lang.Math.sin' '(' number=ConditionalOrExpression ')' |
+	{Expression} 'java.lang.Math.tan' '(' number=ConditionalOrExpression ')' |
+	{Expression} 'java.lang.Math.acos' '(' number=ConditionalOrExpression ')' |
+	{Expression} 'java.lang.Math.asin' '(' number=ConditionalOrExpression ')' |
+	{Expression} 'java.lang.Math.atan' '(' number=ConditionalOrExpression ')' |
+	{Expression} 'java.lang.Math.ceil' '(' number=ConditionalOrExpression ')' |
+	{Expression} 'java.lang.Math.exp' '(' number=ConditionalOrExpression ')' |
+	{Expression} 'java.lang.Math.floor' '(' number=ConditionalOrExpression ')' |
+	{Expression} 'java.lang.Math.log' '(' number=ConditionalOrExpression ')' |
+
 	{Expression} 'JDOHelper.getObjectId' '(' persistable=ConditionalOrExpression ')' |
+	{Expression} 'JDOHelper.getVersion' '(' persistable=ConditionalOrExpression ')' |
+
+	{Expression} 'javax.jdo.JDOHelper.getObjectId' '(' persistable=ConditionalOrExpression ')' |
+	{Expression} 'javax.jdo.JDOHelper.getVersion' '(' persistable=ConditionalOrExpression ')' |	
 
 	// Would be cleaner to declare the following aggregate expressions separately, but here works for now.
 	// Marco :-)
@@ -172,15 +197,15 @@ StaticMethodExpression returns Expression:
 	{Expression} 'sum' '(' (isDistinct?='DISTINCT')? aggregateArgument=ConditionalOrExpression ')' |
 	{Expression} 'min' '(' aggregateArgument=ConditionalOrExpression ')' |
 	{Expression} 'max' '(' aggregateArgument=ConditionalOrExpression ')' |
-	{Expression} 'avg' '(' (isDistinct?='DISTINCT')? aggregateArgument=ConditionalOrExpression ')'	
+	{Expression} 'avg' '(' (isDistinct?='DISTINCT')? aggregateArgument=ConditionalOrExpression ')'
 ;
 
 MethodExpression returns Expression:
 	// BEGIN Collection methods
 	{Expression} 'contains' '(' element=ConditionalOrExpression ')' |
+	{Expression} 'get' '(' arg=ConditionalOrExpression ')' | // arg is the index in case of a List
 	{Expression} 'isEmpty' '(' ')' |
 	{Expression} 'size' '(' ')' |
-	{Expression} 'get' '(' arg=ConditionalOrExpression ')' | // arg is the index in case of a List
 	// END Collection methods
 
 	// BEGIN Map methods
@@ -189,17 +214,38 @@ MethodExpression returns Expression:
 //	{Expression} 'isEmpty' '(' ')' | // already declared as Collection method - cannot redeclare
 //	{Expression} 'size' '(' ')' | // already declared as Collection method - cannot redeclare
 //	{Expression} 'get' '(' arg=ConditionalOrExpression ')' | // arg is the key, but already declared as Collection method - cannot redeclare
+	{Expression} 'containsEntry' '(' key=ConditionalOrExpression ',' value=ConditionalOrExpression ')' | 
 	// END Map methods
 	
 	// BEGIN String methods
-	{Expression} 'startsWith' '(' string=ConditionalOrExpression ')' |
+	{Expression} 'charAt' '(' index=ConditionalOrExpression ')' |
 	{Expression} 'endsWith' '(' string=ConditionalOrExpression ')' |
+	{Expression} 'equals' '(' string=ConditionalOrExpression ')' |
+	{Expression} 'equalsIgnoreCase' '(' string=ConditionalOrExpression ')' |
+	{Expression} 'indexOf' '(' string=ConditionalOrExpression (',' fromIndex=ConditionalOrExpression )? ')' |
+	{Expression} 'length' '(' ')' |
 	{Expression} 'matches' '(' regex=ConditionalOrExpression ')' |
+	{Expression} 'replaceAll' '(' regex=ConditionalOrExpression ',' replacement=ConditionalOrExpression ')' |
+	{Expression} 'startsWith' '(' string=ConditionalOrExpression ')' |
+	{Expression} 'substring' '(' beginIndex=ConditionalOrExpression (',' endIndex=ConditionalOrExpression)? ')' |
 	{Expression} 'toLowerCase' '(' ')' |
 	{Expression} 'toUpperCase' '(' ')' |
-	{Expression} 'indexOf' '(' string=ConditionalOrExpression (',' fromIndex=ConditionalOrExpression )? ')' |
-	{Expression} 'substring' '(' beginIndex=ConditionalOrExpression (',' endIndex=ConditionalOrExpression)? ')'
+	{Expression} 'trim' '(' ')' |
 	// END String methods
+
+	// BEGIN Temporal methods
+	{Expression} 'getDay' '(' ')' |
+	{Expression} 'getMonth' '(' ')' |
+	{Expression} 'getYear' '(' ')' |
+	{Expression} 'getHour' '(' ')' |
+	{Expression} 'getMinute' '(' ')' |
+	{Expression} 'getSecond' '(' ')' |
+	// END Temporal methods
+
+	// BEGIN Enum methods
+	{Expression} 'ordinal' '(' ')' |
+	{Expression} 'toString' '(' ')'
+	// END Enum methods
 ;
 
 ParenthesesExpression returns Expression:
@@ -263,7 +309,7 @@ QualifiedIdentifier:
 //	'javax.jdo.'ID ('.'ID)* |
 //	'javax'ID'.jdo'ID ('.'ID)* |
 	// the above DOES NOT WORK :-((( Have to look for another solution!
-	// for now, at least listing the most common from these packages explicitely (this works)...
+	// for now, at least listing the most common	 from these packages explicitely (this works)...
 	'java.lang.Boolean' |
 	'java.lang.Byte' |
 	'java.lang.Character' |

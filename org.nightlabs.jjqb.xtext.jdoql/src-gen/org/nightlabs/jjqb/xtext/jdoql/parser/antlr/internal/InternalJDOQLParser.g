@@ -271,14 +271,14 @@ ruleSelectClause returns [EObject current=null]
             $current);
     }
 )
-	otherlv_1=KEYWORD_53
+	otherlv_1=KEYWORD_54
     {
     	newLeafNode(otherlv_1, grammarAccess.getSelectClauseAccess().getSELECTKeyword_1());
     }
 (
 (
 		lv_isUnique_2_0=
-	KEYWORD_54
+	KEYWORD_55
     {
         newLeafNode(lv_isUnique_2_0, grammarAccess.getSelectClauseAccess().getIsUniqueUNIQUEKeyword_2_0());
     }
@@ -351,7 +351,7 @@ ruleResultClause returns [EObject current=null]
 ((
 (
 		lv_isDistinct_0_0=
-	KEYWORD_63
+	KEYWORD_71
     {
         newLeafNode(lv_isDistinct_0_0, grammarAccess.getResultClauseAccess().getIsDistinctDISTINCTKeyword_0_0());
     }
@@ -591,7 +591,7 @@ ruleFromClause returns [EObject current=null]
 )((
 (
 		lv_isExcludeSubclasses_2_0=
-	KEYWORD_58
+	KEYWORD_63
     {
         newLeafNode(lv_isExcludeSubclasses_2_0, grammarAccess.getFromClauseAccess().getIsExcludeSubclassesEXCLUDEKeyword_2_0_0());
     }
@@ -605,7 +605,7 @@ ruleFromClause returns [EObject current=null]
 
 )
 )
-	otherlv_3=KEYWORD_73
+	otherlv_3=KEYWORD_95
     {
     	newLeafNode(otherlv_3, grammarAccess.getFromClauseAccess().getSUBCLASSESKeyword_2_1());
     }
@@ -631,7 +631,7 @@ ruleWhereClause returns [EObject current=null]
     }
     @after { leaveRule(); }:
 (
-	otherlv_0=KEYWORD_46
+	otherlv_0=KEYWORD_47
     {
     	newLeafNode(otherlv_0, grammarAccess.getWhereClauseAccess().getWHEREKeyword_0());
     }
@@ -675,7 +675,7 @@ ruleVariablesClause returns [EObject current=null]
     }
     @after { leaveRule(); }:
 (
-	otherlv_0=KEYWORD_69
+	otherlv_0=KEYWORD_88
     {
     	newLeafNode(otherlv_0, grammarAccess.getVariablesClauseAccess().getVARIABLESKeyword_0());
     }
@@ -833,7 +833,7 @@ ruleParametersClause returns [EObject current=null]
     }
     @after { leaveRule(); }:
 (
-	otherlv_0=KEYWORD_72
+	otherlv_0=KEYWORD_94
     {
     	newLeafNode(otherlv_0, grammarAccess.getParametersClauseAccess().getPARAMETERSKeyword_0());
     }
@@ -1092,7 +1092,7 @@ ruleImportDeclaration returns [AntlrDatatypeRuleToken current=new AntlrDatatypeR
     @after { leaveRule();
     }:
 (
-	kw=KEYWORD_56 
+	kw=KEYWORD_60 
     {
         $current.merge(kw);
         newLeafNode(kw, grammarAccess.getImportDeclarationAccess().getImportKeyword_0()); 
@@ -1130,7 +1130,7 @@ ruleGroupByClause returns [EObject current=null]
     }
     @after { leaveRule(); }:
 (
-	otherlv_0=KEYWORD_43
+	otherlv_0=KEYWORD_44
     {
     	newLeafNode(otherlv_0, grammarAccess.getGroupByClauseAccess().getGROUPKeyword_0());
     }
@@ -1225,7 +1225,7 @@ ruleHavingClause returns [EObject current=null]
     }
     @after { leaveRule(); }:
 (
-	otherlv_0=KEYWORD_52
+	otherlv_0=KEYWORD_53
     {
     	newLeafNode(otherlv_0, grammarAccess.getHavingClauseAccess().getHAVINGKeyword_0());
     }
@@ -1269,7 +1269,7 @@ ruleOrderByClause returns [EObject current=null]
     }
     @after { leaveRule(); }:
 (
-	otherlv_0=KEYWORD_44
+	otherlv_0=KEYWORD_45
     {
     	newLeafNode(otherlv_0, grammarAccess.getOrderByClauseAccess().getORDERKeyword_0());
     }
@@ -1397,7 +1397,7 @@ ruleRangeClause returns [EObject current=null]
     }
     @after { leaveRule(); }:
 (
-	otherlv_0=KEYWORD_45
+	otherlv_0=KEYWORD_46
     {
     	newLeafNode(otherlv_0, grammarAccess.getRangeClauseAccess().getRANGEKeyword_0());
     }
@@ -2387,9 +2387,9 @@ ruleStaticMethodExpression returns [EObject current=null]
             $current);
     }
 )
-	otherlv_1=KEYWORD_88
+	otherlv_1=KEYWORD_72
     {
-    	newLeafNode(otherlv_1, grammarAccess.getStaticMethodExpressionAccess().getJavaLangMathAbsKeyword_0_1());
+    	newLeafNode(otherlv_1, grammarAccess.getStaticMethodExpressionAccess().getMathAbsKeyword_0_1());
     }
 
 	otherlv_2=KEYWORD_4
@@ -2399,16 +2399,16 @@ ruleStaticMethodExpression returns [EObject current=null]
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumericConditionalOrExpressionParserRuleCall_0_3_0()); 
+	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_0_3_0()); 
 	    }
-		lv_numeric_3_0=ruleConditionalOrExpression		{
+		lv_number_3_0=ruleConditionalOrExpression		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getStaticMethodExpressionRule());
 	        }
        		set(
        			$current, 
-       			"numeric",
-        		lv_numeric_3_0, 
+       			"number",
+        		lv_number_3_0, 
         		"ConditionalOrExpression");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -2430,9 +2430,9 @@ ruleStaticMethodExpression returns [EObject current=null]
             $current);
     }
 )
-	otherlv_6=KEYWORD_64
+	otherlv_6=KEYWORD_87
     {
-    	newLeafNode(otherlv_6, grammarAccess.getStaticMethodExpressionAccess().getMathAbsKeyword_1_1());
+    	newLeafNode(otherlv_6, grammarAccess.getStaticMethodExpressionAccess().getMathSqrtKeyword_1_1());
     }
 
 	otherlv_7=KEYWORD_4
@@ -2442,16 +2442,16 @@ ruleStaticMethodExpression returns [EObject current=null]
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumericConditionalOrExpressionParserRuleCall_1_3_0()); 
+	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_1_3_0()); 
 	    }
-		lv_numeric_8_0=ruleConditionalOrExpression		{
+		lv_number_8_0=ruleConditionalOrExpression		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getStaticMethodExpressionRule());
 	        }
        		set(
        			$current, 
-       			"numeric",
-        		lv_numeric_8_0, 
+       			"number",
+        		lv_number_8_0, 
         		"ConditionalOrExpression");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -2473,9 +2473,9 @@ ruleStaticMethodExpression returns [EObject current=null]
             $current);
     }
 )
-	otherlv_11=KEYWORD_90
+	otherlv_11=KEYWORD_73
     {
-    	newLeafNode(otherlv_11, grammarAccess.getStaticMethodExpressionAccess().getJavaLangMathSqrtKeyword_2_1());
+    	newLeafNode(otherlv_11, grammarAccess.getStaticMethodExpressionAccess().getMathCosKeyword_2_1());
     }
 
 	otherlv_12=KEYWORD_4
@@ -2485,16 +2485,16 @@ ruleStaticMethodExpression returns [EObject current=null]
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumericConditionalOrExpressionParserRuleCall_2_3_0()); 
+	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_2_3_0()); 
 	    }
-		lv_numeric_13_0=ruleConditionalOrExpression		{
+		lv_number_13_0=ruleConditionalOrExpression		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getStaticMethodExpressionRule());
 	        }
        		set(
        			$current, 
-       			"numeric",
-        		lv_numeric_13_0, 
+       			"number",
+        		lv_number_13_0, 
         		"ConditionalOrExpression");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -2516,9 +2516,9 @@ ruleStaticMethodExpression returns [EObject current=null]
             $current);
     }
 )
-	otherlv_16=KEYWORD_68
+	otherlv_16=KEYWORD_76
     {
-    	newLeafNode(otherlv_16, grammarAccess.getStaticMethodExpressionAccess().getMathSqrtKeyword_3_1());
+    	newLeafNode(otherlv_16, grammarAccess.getStaticMethodExpressionAccess().getMathSinKeyword_3_1());
     }
 
 	otherlv_17=KEYWORD_4
@@ -2528,16 +2528,16 @@ ruleStaticMethodExpression returns [EObject current=null]
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumericConditionalOrExpressionParserRuleCall_3_3_0()); 
+	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_3_3_0()); 
 	    }
-		lv_numeric_18_0=ruleConditionalOrExpression		{
+		lv_number_18_0=ruleConditionalOrExpression		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getStaticMethodExpressionRule());
 	        }
        		set(
        			$current, 
-       			"numeric",
-        		lv_numeric_18_0, 
+       			"number",
+        		lv_number_18_0, 
         		"ConditionalOrExpression");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -2559,9 +2559,9 @@ ruleStaticMethodExpression returns [EObject current=null]
             $current);
     }
 )
-	otherlv_21=KEYWORD_92
+	otherlv_21=KEYWORD_77
     {
-    	newLeafNode(otherlv_21, grammarAccess.getStaticMethodExpressionAccess().getJavaxJdoJDOHelperGetObjectIdKeyword_4_1());
+    	newLeafNode(otherlv_21, grammarAccess.getStaticMethodExpressionAccess().getMathTanKeyword_4_1());
     }
 
 	otherlv_22=KEYWORD_4
@@ -2571,16 +2571,16 @@ ruleStaticMethodExpression returns [EObject current=null]
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getPersistableConditionalOrExpressionParserRuleCall_4_3_0()); 
+	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_4_3_0()); 
 	    }
-		lv_persistable_23_0=ruleConditionalOrExpression		{
+		lv_number_23_0=ruleConditionalOrExpression		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getStaticMethodExpressionRule());
 	        }
        		set(
        			$current, 
-       			"persistable",
-        		lv_persistable_23_0, 
+       			"number",
+        		lv_number_23_0, 
         		"ConditionalOrExpression");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -2602,9 +2602,9 @@ ruleStaticMethodExpression returns [EObject current=null]
             $current);
     }
 )
-	otherlv_26=KEYWORD_91
+	otherlv_26=KEYWORD_83
     {
-    	newLeafNode(otherlv_26, grammarAccess.getStaticMethodExpressionAccess().getJDOHelperGetObjectIdKeyword_5_1());
+    	newLeafNode(otherlv_26, grammarAccess.getStaticMethodExpressionAccess().getMathAcosKeyword_5_1());
     }
 
 	otherlv_27=KEYWORD_4
@@ -2614,16 +2614,16 @@ ruleStaticMethodExpression returns [EObject current=null]
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getPersistableConditionalOrExpressionParserRuleCall_5_3_0()); 
+	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_5_3_0()); 
 	    }
-		lv_persistable_28_0=ruleConditionalOrExpression		{
+		lv_number_28_0=ruleConditionalOrExpression		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getStaticMethodExpressionRule());
 	        }
        		set(
        			$current, 
-       			"persistable",
-        		lv_persistable_28_0, 
+       			"number",
+        		lv_number_28_0, 
         		"ConditionalOrExpression");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -2645,9 +2645,9 @@ ruleStaticMethodExpression returns [EObject current=null]
             $current);
     }
 )
-	otherlv_31=KEYWORD_47
+	otherlv_31=KEYWORD_84
     {
-    	newLeafNode(otherlv_31, grammarAccess.getStaticMethodExpressionAccess().getCountKeyword_6_1());
+    	newLeafNode(otherlv_31, grammarAccess.getStaticMethodExpressionAccess().getMathAsinKeyword_6_1());
     }
 
 	otherlv_32=KEYWORD_4
@@ -2656,42 +2656,26 @@ ruleStaticMethodExpression returns [EObject current=null]
     }
 (
 (
-		lv_isDistinct_33_0=
-	KEYWORD_63
-    {
-        newLeafNode(lv_isDistinct_33_0, grammarAccess.getStaticMethodExpressionAccess().getIsDistinctDISTINCTKeyword_6_3_0());
-    }
-
-	    {
-	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getStaticMethodExpressionRule());
-	        }
-       		setWithLastConsumed($current, "isDistinct", true, "DISTINCT");
-	    }
-
-)
-)?(
-(
 		{ 
-	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getAggregateArgumentConditionalOrExpressionParserRuleCall_6_4_0()); 
+	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_6_3_0()); 
 	    }
-		lv_aggregateArgument_34_0=ruleConditionalOrExpression		{
+		lv_number_33_0=ruleConditionalOrExpression		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getStaticMethodExpressionRule());
 	        }
        		set(
        			$current, 
-       			"aggregateArgument",
-        		lv_aggregateArgument_34_0, 
+       			"number",
+        		lv_number_33_0, 
         		"ConditionalOrExpression");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
 )
-	otherlv_35=KEYWORD_5
+	otherlv_34=KEYWORD_5
     {
-    	newLeafNode(otherlv_35, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_6_5());
+    	newLeafNode(otherlv_34, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_6_4());
     }
 )
     |((
@@ -2704,53 +2688,37 @@ ruleStaticMethodExpression returns [EObject current=null]
             $current);
     }
 )
-	otherlv_37=KEYWORD_32
+	otherlv_36=KEYWORD_85
     {
-    	newLeafNode(otherlv_37, grammarAccess.getStaticMethodExpressionAccess().getSumKeyword_7_1());
+    	newLeafNode(otherlv_36, grammarAccess.getStaticMethodExpressionAccess().getMathAtanKeyword_7_1());
     }
 
-	otherlv_38=KEYWORD_4
+	otherlv_37=KEYWORD_4
     {
-    	newLeafNode(otherlv_38, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_7_2());
+    	newLeafNode(otherlv_37, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_7_2());
     }
 (
-(
-		lv_isDistinct_39_0=
-	KEYWORD_63
-    {
-        newLeafNode(lv_isDistinct_39_0, grammarAccess.getStaticMethodExpressionAccess().getIsDistinctDISTINCTKeyword_7_3_0());
-    }
-
-	    {
-	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getStaticMethodExpressionRule());
-	        }
-       		setWithLastConsumed($current, "isDistinct", true, "DISTINCT");
-	    }
-
-)
-)?(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getAggregateArgumentConditionalOrExpressionParserRuleCall_7_4_0()); 
+	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_7_3_0()); 
 	    }
-		lv_aggregateArgument_40_0=ruleConditionalOrExpression		{
+		lv_number_38_0=ruleConditionalOrExpression		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getStaticMethodExpressionRule());
 	        }
        		set(
        			$current, 
-       			"aggregateArgument",
-        		lv_aggregateArgument_40_0, 
+       			"number",
+        		lv_number_38_0, 
         		"ConditionalOrExpression");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
 )
-	otherlv_41=KEYWORD_5
+	otherlv_39=KEYWORD_5
     {
-    	newLeafNode(otherlv_41, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_7_5());
+    	newLeafNode(otherlv_39, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_7_4());
     }
 )
     |((
@@ -2763,37 +2731,37 @@ ruleStaticMethodExpression returns [EObject current=null]
             $current);
     }
 )
-	otherlv_43=KEYWORD_31
+	otherlv_41=KEYWORD_86
     {
-    	newLeafNode(otherlv_43, grammarAccess.getStaticMethodExpressionAccess().getMinKeyword_8_1());
+    	newLeafNode(otherlv_41, grammarAccess.getStaticMethodExpressionAccess().getMathCeilKeyword_8_1());
     }
 
-	otherlv_44=KEYWORD_4
+	otherlv_42=KEYWORD_4
     {
-    	newLeafNode(otherlv_44, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_8_2());
+    	newLeafNode(otherlv_42, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_8_2());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getAggregateArgumentConditionalOrExpressionParserRuleCall_8_3_0()); 
+	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_8_3_0()); 
 	    }
-		lv_aggregateArgument_45_0=ruleConditionalOrExpression		{
+		lv_number_43_0=ruleConditionalOrExpression		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getStaticMethodExpressionRule());
 	        }
        		set(
        			$current, 
-       			"aggregateArgument",
-        		lv_aggregateArgument_45_0, 
+       			"number",
+        		lv_number_43_0, 
         		"ConditionalOrExpression");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
 )
-	otherlv_46=KEYWORD_5
+	otherlv_44=KEYWORD_5
     {
-    	newLeafNode(otherlv_46, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_8_4());
+    	newLeafNode(otherlv_44, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_8_4());
     }
 )
     |((
@@ -2806,37 +2774,37 @@ ruleStaticMethodExpression returns [EObject current=null]
             $current);
     }
 )
-	otherlv_48=KEYWORD_30
+	otherlv_46=KEYWORD_74
     {
-    	newLeafNode(otherlv_48, grammarAccess.getStaticMethodExpressionAccess().getMaxKeyword_9_1());
+    	newLeafNode(otherlv_46, grammarAccess.getStaticMethodExpressionAccess().getMathExpKeyword_9_1());
     }
 
-	otherlv_49=KEYWORD_4
+	otherlv_47=KEYWORD_4
     {
-    	newLeafNode(otherlv_49, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_9_2());
+    	newLeafNode(otherlv_47, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_9_2());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getAggregateArgumentConditionalOrExpressionParserRuleCall_9_3_0()); 
+	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_9_3_0()); 
 	    }
-		lv_aggregateArgument_50_0=ruleConditionalOrExpression		{
+		lv_number_48_0=ruleConditionalOrExpression		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getStaticMethodExpressionRule());
 	        }
        		set(
        			$current, 
-       			"aggregateArgument",
-        		lv_aggregateArgument_50_0, 
+       			"number",
+        		lv_number_48_0, 
         		"ConditionalOrExpression");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
 )
-	otherlv_51=KEYWORD_5
+	otherlv_49=KEYWORD_5
     {
-    	newLeafNode(otherlv_51, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_9_4());
+    	newLeafNode(otherlv_49, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_9_4());
     }
 )
     |((
@@ -2849,21 +2817,795 @@ ruleStaticMethodExpression returns [EObject current=null]
             $current);
     }
 )
-	otherlv_53=KEYWORD_27
+	otherlv_51=KEYWORD_93
     {
-    	newLeafNode(otherlv_53, grammarAccess.getStaticMethodExpressionAccess().getAvgKeyword_10_1());
+    	newLeafNode(otherlv_51, grammarAccess.getStaticMethodExpressionAccess().getMathFloorKeyword_10_1());
     }
 
-	otherlv_54=KEYWORD_4
+	otherlv_52=KEYWORD_4
     {
-    	newLeafNode(otherlv_54, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_10_2());
+    	newLeafNode(otherlv_52, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_10_2());
     }
 (
 (
-		lv_isDistinct_55_0=
-	KEYWORD_63
+		{ 
+	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_10_3_0()); 
+	    }
+		lv_number_53_0=ruleConditionalOrExpression		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getStaticMethodExpressionRule());
+	        }
+       		set(
+       			$current, 
+       			"number",
+        		lv_number_53_0, 
+        		"ConditionalOrExpression");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)
+	otherlv_54=KEYWORD_5
     {
-        newLeafNode(lv_isDistinct_55_0, grammarAccess.getStaticMethodExpressionAccess().getIsDistinctDISTINCTKeyword_10_3_0());
+    	newLeafNode(otherlv_54, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_10_4());
+    }
+)
+    |((
+	{ 
+	  /* */ 
+	}
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getStaticMethodExpressionAccess().getExpressionAction_11_0(),
+            $current);
+    }
+)
+	otherlv_56=KEYWORD_75
+    {
+    	newLeafNode(otherlv_56, grammarAccess.getStaticMethodExpressionAccess().getMathLogKeyword_11_1());
+    }
+
+	otherlv_57=KEYWORD_4
+    {
+    	newLeafNode(otherlv_57, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_11_2());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_11_3_0()); 
+	    }
+		lv_number_58_0=ruleConditionalOrExpression		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getStaticMethodExpressionRule());
+	        }
+       		set(
+       			$current, 
+       			"number",
+        		lv_number_58_0, 
+        		"ConditionalOrExpression");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)
+	otherlv_59=KEYWORD_5
+    {
+    	newLeafNode(otherlv_59, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_11_4());
+    }
+)
+    |((
+	{ 
+	  /* */ 
+	}
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getStaticMethodExpressionAccess().getExpressionAction_12_0(),
+            $current);
+    }
+)
+	otherlv_61=KEYWORD_113
+    {
+    	newLeafNode(otherlv_61, grammarAccess.getStaticMethodExpressionAccess().getJavaLangMathAbsKeyword_12_1());
+    }
+
+	otherlv_62=KEYWORD_4
+    {
+    	newLeafNode(otherlv_62, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_12_2());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_12_3_0()); 
+	    }
+		lv_number_63_0=ruleConditionalOrExpression		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getStaticMethodExpressionRule());
+	        }
+       		set(
+       			$current, 
+       			"number",
+        		lv_number_63_0, 
+        		"ConditionalOrExpression");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)
+	otherlv_64=KEYWORD_5
+    {
+    	newLeafNode(otherlv_64, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_12_4());
+    }
+)
+    |((
+	{ 
+	  /* */ 
+	}
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getStaticMethodExpressionAccess().getExpressionAction_13_0(),
+            $current);
+    }
+)
+	otherlv_66=KEYWORD_124
+    {
+    	newLeafNode(otherlv_66, grammarAccess.getStaticMethodExpressionAccess().getJavaLangMathSqrtKeyword_13_1());
+    }
+
+	otherlv_67=KEYWORD_4
+    {
+    	newLeafNode(otherlv_67, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_13_2());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_13_3_0()); 
+	    }
+		lv_number_68_0=ruleConditionalOrExpression		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getStaticMethodExpressionRule());
+	        }
+       		set(
+       			$current, 
+       			"number",
+        		lv_number_68_0, 
+        		"ConditionalOrExpression");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)
+	otherlv_69=KEYWORD_5
+    {
+    	newLeafNode(otherlv_69, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_13_4());
+    }
+)
+    |((
+	{ 
+	  /* */ 
+	}
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getStaticMethodExpressionAccess().getExpressionAction_14_0(),
+            $current);
+    }
+)
+	otherlv_71=KEYWORD_114
+    {
+    	newLeafNode(otherlv_71, grammarAccess.getStaticMethodExpressionAccess().getJavaLangMathCosKeyword_14_1());
+    }
+
+	otherlv_72=KEYWORD_4
+    {
+    	newLeafNode(otherlv_72, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_14_2());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_14_3_0()); 
+	    }
+		lv_number_73_0=ruleConditionalOrExpression		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getStaticMethodExpressionRule());
+	        }
+       		set(
+       			$current, 
+       			"number",
+        		lv_number_73_0, 
+        		"ConditionalOrExpression");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)
+	otherlv_74=KEYWORD_5
+    {
+    	newLeafNode(otherlv_74, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_14_4());
+    }
+)
+    |((
+	{ 
+	  /* */ 
+	}
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getStaticMethodExpressionAccess().getExpressionAction_15_0(),
+            $current);
+    }
+)
+	otherlv_76=KEYWORD_117
+    {
+    	newLeafNode(otherlv_76, grammarAccess.getStaticMethodExpressionAccess().getJavaLangMathSinKeyword_15_1());
+    }
+
+	otherlv_77=KEYWORD_4
+    {
+    	newLeafNode(otherlv_77, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_15_2());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_15_3_0()); 
+	    }
+		lv_number_78_0=ruleConditionalOrExpression		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getStaticMethodExpressionRule());
+	        }
+       		set(
+       			$current, 
+       			"number",
+        		lv_number_78_0, 
+        		"ConditionalOrExpression");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)
+	otherlv_79=KEYWORD_5
+    {
+    	newLeafNode(otherlv_79, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_15_4());
+    }
+)
+    |((
+	{ 
+	  /* */ 
+	}
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getStaticMethodExpressionAccess().getExpressionAction_16_0(),
+            $current);
+    }
+)
+	otherlv_81=KEYWORD_118
+    {
+    	newLeafNode(otherlv_81, grammarAccess.getStaticMethodExpressionAccess().getJavaLangMathTanKeyword_16_1());
+    }
+
+	otherlv_82=KEYWORD_4
+    {
+    	newLeafNode(otherlv_82, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_16_2());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_16_3_0()); 
+	    }
+		lv_number_83_0=ruleConditionalOrExpression		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getStaticMethodExpressionRule());
+	        }
+       		set(
+       			$current, 
+       			"number",
+        		lv_number_83_0, 
+        		"ConditionalOrExpression");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)
+	otherlv_84=KEYWORD_5
+    {
+    	newLeafNode(otherlv_84, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_16_4());
+    }
+)
+    |((
+	{ 
+	  /* */ 
+	}
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getStaticMethodExpressionAccess().getExpressionAction_17_0(),
+            $current);
+    }
+)
+	otherlv_86=KEYWORD_120
+    {
+    	newLeafNode(otherlv_86, grammarAccess.getStaticMethodExpressionAccess().getJavaLangMathAcosKeyword_17_1());
+    }
+
+	otherlv_87=KEYWORD_4
+    {
+    	newLeafNode(otherlv_87, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_17_2());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_17_3_0()); 
+	    }
+		lv_number_88_0=ruleConditionalOrExpression		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getStaticMethodExpressionRule());
+	        }
+       		set(
+       			$current, 
+       			"number",
+        		lv_number_88_0, 
+        		"ConditionalOrExpression");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)
+	otherlv_89=KEYWORD_5
+    {
+    	newLeafNode(otherlv_89, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_17_4());
+    }
+)
+    |((
+	{ 
+	  /* */ 
+	}
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getStaticMethodExpressionAccess().getExpressionAction_18_0(),
+            $current);
+    }
+)
+	otherlv_91=KEYWORD_121
+    {
+    	newLeafNode(otherlv_91, grammarAccess.getStaticMethodExpressionAccess().getJavaLangMathAsinKeyword_18_1());
+    }
+
+	otherlv_92=KEYWORD_4
+    {
+    	newLeafNode(otherlv_92, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_18_2());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_18_3_0()); 
+	    }
+		lv_number_93_0=ruleConditionalOrExpression		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getStaticMethodExpressionRule());
+	        }
+       		set(
+       			$current, 
+       			"number",
+        		lv_number_93_0, 
+        		"ConditionalOrExpression");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)
+	otherlv_94=KEYWORD_5
+    {
+    	newLeafNode(otherlv_94, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_18_4());
+    }
+)
+    |((
+	{ 
+	  /* */ 
+	}
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getStaticMethodExpressionAccess().getExpressionAction_19_0(),
+            $current);
+    }
+)
+	otherlv_96=KEYWORD_122
+    {
+    	newLeafNode(otherlv_96, grammarAccess.getStaticMethodExpressionAccess().getJavaLangMathAtanKeyword_19_1());
+    }
+
+	otherlv_97=KEYWORD_4
+    {
+    	newLeafNode(otherlv_97, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_19_2());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_19_3_0()); 
+	    }
+		lv_number_98_0=ruleConditionalOrExpression		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getStaticMethodExpressionRule());
+	        }
+       		set(
+       			$current, 
+       			"number",
+        		lv_number_98_0, 
+        		"ConditionalOrExpression");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)
+	otherlv_99=KEYWORD_5
+    {
+    	newLeafNode(otherlv_99, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_19_4());
+    }
+)
+    |((
+	{ 
+	  /* */ 
+	}
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getStaticMethodExpressionAccess().getExpressionAction_20_0(),
+            $current);
+    }
+)
+	otherlv_101=KEYWORD_123
+    {
+    	newLeafNode(otherlv_101, grammarAccess.getStaticMethodExpressionAccess().getJavaLangMathCeilKeyword_20_1());
+    }
+
+	otherlv_102=KEYWORD_4
+    {
+    	newLeafNode(otherlv_102, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_20_2());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_20_3_0()); 
+	    }
+		lv_number_103_0=ruleConditionalOrExpression		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getStaticMethodExpressionRule());
+	        }
+       		set(
+       			$current, 
+       			"number",
+        		lv_number_103_0, 
+        		"ConditionalOrExpression");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)
+	otherlv_104=KEYWORD_5
+    {
+    	newLeafNode(otherlv_104, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_20_4());
+    }
+)
+    |((
+	{ 
+	  /* */ 
+	}
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getStaticMethodExpressionAccess().getExpressionAction_21_0(),
+            $current);
+    }
+)
+	otherlv_106=KEYWORD_115
+    {
+    	newLeafNode(otherlv_106, grammarAccess.getStaticMethodExpressionAccess().getJavaLangMathExpKeyword_21_1());
+    }
+
+	otherlv_107=KEYWORD_4
+    {
+    	newLeafNode(otherlv_107, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_21_2());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_21_3_0()); 
+	    }
+		lv_number_108_0=ruleConditionalOrExpression		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getStaticMethodExpressionRule());
+	        }
+       		set(
+       			$current, 
+       			"number",
+        		lv_number_108_0, 
+        		"ConditionalOrExpression");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)
+	otherlv_109=KEYWORD_5
+    {
+    	newLeafNode(otherlv_109, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_21_4());
+    }
+)
+    |((
+	{ 
+	  /* */ 
+	}
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getStaticMethodExpressionAccess().getExpressionAction_22_0(),
+            $current);
+    }
+)
+	otherlv_111=KEYWORD_126
+    {
+    	newLeafNode(otherlv_111, grammarAccess.getStaticMethodExpressionAccess().getJavaLangMathFloorKeyword_22_1());
+    }
+
+	otherlv_112=KEYWORD_4
+    {
+    	newLeafNode(otherlv_112, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_22_2());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_22_3_0()); 
+	    }
+		lv_number_113_0=ruleConditionalOrExpression		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getStaticMethodExpressionRule());
+	        }
+       		set(
+       			$current, 
+       			"number",
+        		lv_number_113_0, 
+        		"ConditionalOrExpression");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)
+	otherlv_114=KEYWORD_5
+    {
+    	newLeafNode(otherlv_114, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_22_4());
+    }
+)
+    |((
+	{ 
+	  /* */ 
+	}
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getStaticMethodExpressionAccess().getExpressionAction_23_0(),
+            $current);
+    }
+)
+	otherlv_116=KEYWORD_116
+    {
+    	newLeafNode(otherlv_116, grammarAccess.getStaticMethodExpressionAccess().getJavaLangMathLogKeyword_23_1());
+    }
+
+	otherlv_117=KEYWORD_4
+    {
+    	newLeafNode(otherlv_117, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_23_2());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_23_3_0()); 
+	    }
+		lv_number_118_0=ruleConditionalOrExpression		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getStaticMethodExpressionRule());
+	        }
+       		set(
+       			$current, 
+       			"number",
+        		lv_number_118_0, 
+        		"ConditionalOrExpression");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)
+	otherlv_119=KEYWORD_5
+    {
+    	newLeafNode(otherlv_119, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_23_4());
+    }
+)
+    |((
+	{ 
+	  /* */ 
+	}
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getStaticMethodExpressionAccess().getExpressionAction_24_0(),
+            $current);
+    }
+)
+	otherlv_121=KEYWORD_127
+    {
+    	newLeafNode(otherlv_121, grammarAccess.getStaticMethodExpressionAccess().getJDOHelperGetObjectIdKeyword_24_1());
+    }
+
+	otherlv_122=KEYWORD_4
+    {
+    	newLeafNode(otherlv_122, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_24_2());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getPersistableConditionalOrExpressionParserRuleCall_24_3_0()); 
+	    }
+		lv_persistable_123_0=ruleConditionalOrExpression		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getStaticMethodExpressionRule());
+	        }
+       		set(
+       			$current, 
+       			"persistable",
+        		lv_persistable_123_0, 
+        		"ConditionalOrExpression");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)
+	otherlv_124=KEYWORD_5
+    {
+    	newLeafNode(otherlv_124, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_24_4());
+    }
+)
+    |((
+	{ 
+	  /* */ 
+	}
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getStaticMethodExpressionAccess().getExpressionAction_25_0(),
+            $current);
+    }
+)
+	otherlv_126=KEYWORD_125
+    {
+    	newLeafNode(otherlv_126, grammarAccess.getStaticMethodExpressionAccess().getJDOHelperGetVersionKeyword_25_1());
+    }
+
+	otherlv_127=KEYWORD_4
+    {
+    	newLeafNode(otherlv_127, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_25_2());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getPersistableConditionalOrExpressionParserRuleCall_25_3_0()); 
+	    }
+		lv_persistable_128_0=ruleConditionalOrExpression		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getStaticMethodExpressionRule());
+	        }
+       		set(
+       			$current, 
+       			"persistable",
+        		lv_persistable_128_0, 
+        		"ConditionalOrExpression");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)
+	otherlv_129=KEYWORD_5
+    {
+    	newLeafNode(otherlv_129, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_25_4());
+    }
+)
+    |((
+	{ 
+	  /* */ 
+	}
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getStaticMethodExpressionAccess().getExpressionAction_26_0(),
+            $current);
+    }
+)
+	otherlv_131=KEYWORD_129
+    {
+    	newLeafNode(otherlv_131, grammarAccess.getStaticMethodExpressionAccess().getJavaxJdoJDOHelperGetObjectIdKeyword_26_1());
+    }
+
+	otherlv_132=KEYWORD_4
+    {
+    	newLeafNode(otherlv_132, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_26_2());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getPersistableConditionalOrExpressionParserRuleCall_26_3_0()); 
+	    }
+		lv_persistable_133_0=ruleConditionalOrExpression		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getStaticMethodExpressionRule());
+	        }
+       		set(
+       			$current, 
+       			"persistable",
+        		lv_persistable_133_0, 
+        		"ConditionalOrExpression");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)
+	otherlv_134=KEYWORD_5
+    {
+    	newLeafNode(otherlv_134, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_26_4());
+    }
+)
+    |((
+	{ 
+	  /* */ 
+	}
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getStaticMethodExpressionAccess().getExpressionAction_27_0(),
+            $current);
+    }
+)
+	otherlv_136=KEYWORD_128
+    {
+    	newLeafNode(otherlv_136, grammarAccess.getStaticMethodExpressionAccess().getJavaxJdoJDOHelperGetVersionKeyword_27_1());
+    }
+
+	otherlv_137=KEYWORD_4
+    {
+    	newLeafNode(otherlv_137, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_27_2());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getPersistableConditionalOrExpressionParserRuleCall_27_3_0()); 
+	    }
+		lv_persistable_138_0=ruleConditionalOrExpression		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getStaticMethodExpressionRule());
+	        }
+       		set(
+       			$current, 
+       			"persistable",
+        		lv_persistable_138_0, 
+        		"ConditionalOrExpression");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)
+	otherlv_139=KEYWORD_5
+    {
+    	newLeafNode(otherlv_139, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_27_4());
+    }
+)
+    |((
+	{ 
+	  /* */ 
+	}
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getStaticMethodExpressionAccess().getExpressionAction_28_0(),
+            $current);
+    }
+)
+	otherlv_141=KEYWORD_48
+    {
+    	newLeafNode(otherlv_141, grammarAccess.getStaticMethodExpressionAccess().getCountKeyword_28_1());
+    }
+
+	otherlv_142=KEYWORD_4
+    {
+    	newLeafNode(otherlv_142, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_28_2());
+    }
+(
+(
+		lv_isDistinct_143_0=
+	KEYWORD_71
+    {
+        newLeafNode(lv_isDistinct_143_0, grammarAccess.getStaticMethodExpressionAccess().getIsDistinctDISTINCTKeyword_28_3_0());
     }
 
 	    {
@@ -2877,25 +3619,229 @@ ruleStaticMethodExpression returns [EObject current=null]
 )?(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getAggregateArgumentConditionalOrExpressionParserRuleCall_10_4_0()); 
+	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getAggregateArgumentConditionalOrExpressionParserRuleCall_28_4_0()); 
 	    }
-		lv_aggregateArgument_56_0=ruleConditionalOrExpression		{
+		lv_aggregateArgument_144_0=ruleConditionalOrExpression		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getStaticMethodExpressionRule());
 	        }
        		set(
        			$current, 
        			"aggregateArgument",
-        		lv_aggregateArgument_56_0, 
+        		lv_aggregateArgument_144_0, 
         		"ConditionalOrExpression");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
 )
-	otherlv_57=KEYWORD_5
+	otherlv_145=KEYWORD_5
     {
-    	newLeafNode(otherlv_57, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_10_5());
+    	newLeafNode(otherlv_145, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_28_5());
+    }
+)
+    |((
+	{ 
+	  /* */ 
+	}
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getStaticMethodExpressionAccess().getExpressionAction_29_0(),
+            $current);
+    }
+)
+	otherlv_147=KEYWORD_32
+    {
+    	newLeafNode(otherlv_147, grammarAccess.getStaticMethodExpressionAccess().getSumKeyword_29_1());
+    }
+
+	otherlv_148=KEYWORD_4
+    {
+    	newLeafNode(otherlv_148, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_29_2());
+    }
+(
+(
+		lv_isDistinct_149_0=
+	KEYWORD_71
+    {
+        newLeafNode(lv_isDistinct_149_0, grammarAccess.getStaticMethodExpressionAccess().getIsDistinctDISTINCTKeyword_29_3_0());
+    }
+
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getStaticMethodExpressionRule());
+	        }
+       		setWithLastConsumed($current, "isDistinct", true, "DISTINCT");
+	    }
+
+)
+)?(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getAggregateArgumentConditionalOrExpressionParserRuleCall_29_4_0()); 
+	    }
+		lv_aggregateArgument_150_0=ruleConditionalOrExpression		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getStaticMethodExpressionRule());
+	        }
+       		set(
+       			$current, 
+       			"aggregateArgument",
+        		lv_aggregateArgument_150_0, 
+        		"ConditionalOrExpression");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)
+	otherlv_151=KEYWORD_5
+    {
+    	newLeafNode(otherlv_151, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_29_5());
+    }
+)
+    |((
+	{ 
+	  /* */ 
+	}
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getStaticMethodExpressionAccess().getExpressionAction_30_0(),
+            $current);
+    }
+)
+	otherlv_153=KEYWORD_31
+    {
+    	newLeafNode(otherlv_153, grammarAccess.getStaticMethodExpressionAccess().getMinKeyword_30_1());
+    }
+
+	otherlv_154=KEYWORD_4
+    {
+    	newLeafNode(otherlv_154, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_30_2());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getAggregateArgumentConditionalOrExpressionParserRuleCall_30_3_0()); 
+	    }
+		lv_aggregateArgument_155_0=ruleConditionalOrExpression		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getStaticMethodExpressionRule());
+	        }
+       		set(
+       			$current, 
+       			"aggregateArgument",
+        		lv_aggregateArgument_155_0, 
+        		"ConditionalOrExpression");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)
+	otherlv_156=KEYWORD_5
+    {
+    	newLeafNode(otherlv_156, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_30_4());
+    }
+)
+    |((
+	{ 
+	  /* */ 
+	}
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getStaticMethodExpressionAccess().getExpressionAction_31_0(),
+            $current);
+    }
+)
+	otherlv_158=KEYWORD_30
+    {
+    	newLeafNode(otherlv_158, grammarAccess.getStaticMethodExpressionAccess().getMaxKeyword_31_1());
+    }
+
+	otherlv_159=KEYWORD_4
+    {
+    	newLeafNode(otherlv_159, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_31_2());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getAggregateArgumentConditionalOrExpressionParserRuleCall_31_3_0()); 
+	    }
+		lv_aggregateArgument_160_0=ruleConditionalOrExpression		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getStaticMethodExpressionRule());
+	        }
+       		set(
+       			$current, 
+       			"aggregateArgument",
+        		lv_aggregateArgument_160_0, 
+        		"ConditionalOrExpression");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)
+	otherlv_161=KEYWORD_5
+    {
+    	newLeafNode(otherlv_161, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_31_4());
+    }
+)
+    |((
+	{ 
+	  /* */ 
+	}
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getStaticMethodExpressionAccess().getExpressionAction_32_0(),
+            $current);
+    }
+)
+	otherlv_163=KEYWORD_27
+    {
+    	newLeafNode(otherlv_163, grammarAccess.getStaticMethodExpressionAccess().getAvgKeyword_32_1());
+    }
+
+	otherlv_164=KEYWORD_4
+    {
+    	newLeafNode(otherlv_164, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_32_2());
+    }
+(
+(
+		lv_isDistinct_165_0=
+	KEYWORD_71
+    {
+        newLeafNode(lv_isDistinct_165_0, grammarAccess.getStaticMethodExpressionAccess().getIsDistinctDISTINCTKeyword_32_3_0());
+    }
+
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getStaticMethodExpressionRule());
+	        }
+       		setWithLastConsumed($current, "isDistinct", true, "DISTINCT");
+	    }
+
+)
+)?(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getAggregateArgumentConditionalOrExpressionParserRuleCall_32_4_0()); 
+	    }
+		lv_aggregateArgument_166_0=ruleConditionalOrExpression		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getStaticMethodExpressionRule());
+	        }
+       		set(
+       			$current, 
+       			"aggregateArgument",
+        		lv_aggregateArgument_166_0, 
+        		"ConditionalOrExpression");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)
+	otherlv_167=KEYWORD_5
+    {
+    	newLeafNode(otherlv_167, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_32_5());
     }
 ))
 ;
@@ -2928,7 +3874,7 @@ ruleMethodExpression returns [EObject current=null]
             $current);
     }
 )
-	otherlv_1=KEYWORD_65
+	otherlv_1=KEYWORD_78
     {
     	newLeafNode(otherlv_1, grammarAccess.getMethodExpressionAccess().getContainsKeyword_0_1());
     }
@@ -2971,19 +3917,37 @@ ruleMethodExpression returns [EObject current=null]
             $current);
     }
 )
-	otherlv_6=KEYWORD_61
+	otherlv_6=KEYWORD_28
     {
-    	newLeafNode(otherlv_6, grammarAccess.getMethodExpressionAccess().getIsEmptyKeyword_1_1());
+    	newLeafNode(otherlv_6, grammarAccess.getMethodExpressionAccess().getGetKeyword_1_1());
     }
 
 	otherlv_7=KEYWORD_4
     {
     	newLeafNode(otherlv_7, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_1_2());
     }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getArgConditionalOrExpressionParserRuleCall_1_3_0()); 
+	    }
+		lv_arg_8_0=ruleConditionalOrExpression		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getMethodExpressionRule());
+	        }
+       		set(
+       			$current, 
+       			"arg",
+        		lv_arg_8_0, 
+        		"ConditionalOrExpression");
+	        afterParserOrEnumRuleCall();
+	    }
 
-	otherlv_8=KEYWORD_5
+)
+)
+	otherlv_9=KEYWORD_5
     {
-    	newLeafNode(otherlv_8, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_1_3());
+    	newLeafNode(otherlv_9, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_1_4());
     }
 )
     |((
@@ -2996,19 +3960,19 @@ ruleMethodExpression returns [EObject current=null]
             $current);
     }
 )
-	otherlv_10=KEYWORD_40
+	otherlv_11=KEYWORD_68
     {
-    	newLeafNode(otherlv_10, grammarAccess.getMethodExpressionAccess().getSizeKeyword_2_1());
+    	newLeafNode(otherlv_11, grammarAccess.getMethodExpressionAccess().getIsEmptyKeyword_2_1());
     }
 
-	otherlv_11=KEYWORD_4
+	otherlv_12=KEYWORD_4
     {
-    	newLeafNode(otherlv_11, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_2_2());
+    	newLeafNode(otherlv_12, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_2_2());
     }
 
-	otherlv_12=KEYWORD_5
+	otherlv_13=KEYWORD_5
     {
-    	newLeafNode(otherlv_12, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_2_3());
+    	newLeafNode(otherlv_13, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_2_3());
     }
 )
     |((
@@ -3021,37 +3985,19 @@ ruleMethodExpression returns [EObject current=null]
             $current);
     }
 )
-	otherlv_14=KEYWORD_28
+	otherlv_15=KEYWORD_40
     {
-    	newLeafNode(otherlv_14, grammarAccess.getMethodExpressionAccess().getGetKeyword_3_1());
+    	newLeafNode(otherlv_15, grammarAccess.getMethodExpressionAccess().getSizeKeyword_3_1());
     }
 
-	otherlv_15=KEYWORD_4
+	otherlv_16=KEYWORD_4
     {
-    	newLeafNode(otherlv_15, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_3_2());
+    	newLeafNode(otherlv_16, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_3_2());
     }
-(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getArgConditionalOrExpressionParserRuleCall_3_3_0()); 
-	    }
-		lv_arg_16_0=ruleConditionalOrExpression		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getMethodExpressionRule());
-	        }
-       		set(
-       			$current, 
-       			"arg",
-        		lv_arg_16_0, 
-        		"ConditionalOrExpression");
-	        afterParserOrEnumRuleCall();
-	    }
 
-)
-)
 	otherlv_17=KEYWORD_5
     {
-    	newLeafNode(otherlv_17, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_3_4());
+    	newLeafNode(otherlv_17, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_3_3());
     }
 )
     |((
@@ -3064,7 +4010,7 @@ ruleMethodExpression returns [EObject current=null]
             $current);
     }
 )
-	otherlv_19=KEYWORD_76
+	otherlv_19=KEYWORD_99
     {
     	newLeafNode(otherlv_19, grammarAccess.getMethodExpressionAccess().getContainsKeyKeyword_4_1());
     }
@@ -3107,7 +4053,7 @@ ruleMethodExpression returns [EObject current=null]
             $current);
     }
 )
-	otherlv_24=KEYWORD_79
+	otherlv_24=KEYWORD_103
     {
     	newLeafNode(otherlv_24, grammarAccess.getMethodExpressionAccess().getContainsValueKeyword_5_1());
     }
@@ -3150,9 +4096,9 @@ ruleMethodExpression returns [EObject current=null]
             $current);
     }
 )
-	otherlv_29=KEYWORD_75
+	otherlv_29=KEYWORD_102
     {
-    	newLeafNode(otherlv_29, grammarAccess.getMethodExpressionAccess().getStartsWithKeyword_6_1());
+    	newLeafNode(otherlv_29, grammarAccess.getMethodExpressionAccess().getContainsEntryKeyword_6_1());
     }
 
 	otherlv_30=KEYWORD_4
@@ -3162,25 +4108,48 @@ ruleMethodExpression returns [EObject current=null]
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getStringConditionalOrExpressionParserRuleCall_6_3_0()); 
+	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getKeyConditionalOrExpressionParserRuleCall_6_3_0()); 
 	    }
-		lv_string_31_0=ruleConditionalOrExpression		{
+		lv_key_31_0=ruleConditionalOrExpression		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getMethodExpressionRule());
 	        }
        		set(
        			$current, 
-       			"string",
-        		lv_string_31_0, 
+       			"key",
+        		lv_key_31_0, 
         		"ConditionalOrExpression");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
 )
-	otherlv_32=KEYWORD_5
+	otherlv_32=KEYWORD_8
     {
-    	newLeafNode(otherlv_32, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_6_4());
+    	newLeafNode(otherlv_32, grammarAccess.getMethodExpressionAccess().getCommaKeyword_6_4());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getValueConditionalOrExpressionParserRuleCall_6_5_0()); 
+	    }
+		lv_value_33_0=ruleConditionalOrExpression		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getMethodExpressionRule());
+	        }
+       		set(
+       			$current, 
+       			"value",
+        		lv_value_33_0, 
+        		"ConditionalOrExpression");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)
+	otherlv_34=KEYWORD_5
+    {
+    	newLeafNode(otherlv_34, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_6_6());
     }
 )
     |((
@@ -3193,37 +4162,37 @@ ruleMethodExpression returns [EObject current=null]
             $current);
     }
 )
-	otherlv_34=KEYWORD_66
+	otherlv_36=KEYWORD_56
     {
-    	newLeafNode(otherlv_34, grammarAccess.getMethodExpressionAccess().getEndsWithKeyword_7_1());
+    	newLeafNode(otherlv_36, grammarAccess.getMethodExpressionAccess().getCharAtKeyword_7_1());
     }
 
-	otherlv_35=KEYWORD_4
+	otherlv_37=KEYWORD_4
     {
-    	newLeafNode(otherlv_35, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_7_2());
+    	newLeafNode(otherlv_37, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_7_2());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getStringConditionalOrExpressionParserRuleCall_7_3_0()); 
+	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getIndexConditionalOrExpressionParserRuleCall_7_3_0()); 
 	    }
-		lv_string_36_0=ruleConditionalOrExpression		{
+		lv_index_38_0=ruleConditionalOrExpression		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getMethodExpressionRule());
 	        }
        		set(
        			$current, 
-       			"string",
-        		lv_string_36_0, 
+       			"index",
+        		lv_index_38_0, 
         		"ConditionalOrExpression");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
 )
-	otherlv_37=KEYWORD_5
+	otherlv_39=KEYWORD_5
     {
-    	newLeafNode(otherlv_37, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_7_4());
+    	newLeafNode(otherlv_39, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_7_4());
     }
 )
     |((
@@ -3236,37 +4205,37 @@ ruleMethodExpression returns [EObject current=null]
             $current);
     }
 )
-	otherlv_39=KEYWORD_62
+	otherlv_41=KEYWORD_79
     {
-    	newLeafNode(otherlv_39, grammarAccess.getMethodExpressionAccess().getMatchesKeyword_8_1());
+    	newLeafNode(otherlv_41, grammarAccess.getMethodExpressionAccess().getEndsWithKeyword_8_1());
     }
 
-	otherlv_40=KEYWORD_4
+	otherlv_42=KEYWORD_4
     {
-    	newLeafNode(otherlv_40, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_8_2());
+    	newLeafNode(otherlv_42, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_8_2());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getRegexConditionalOrExpressionParserRuleCall_8_3_0()); 
+	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getStringConditionalOrExpressionParserRuleCall_8_3_0()); 
 	    }
-		lv_regex_41_0=ruleConditionalOrExpression		{
+		lv_string_43_0=ruleConditionalOrExpression		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getMethodExpressionRule());
 	        }
        		set(
        			$current, 
-       			"regex",
-        		lv_regex_41_0, 
+       			"string",
+        		lv_string_43_0, 
         		"ConditionalOrExpression");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
 )
-	otherlv_42=KEYWORD_5
+	otherlv_44=KEYWORD_5
     {
-    	newLeafNode(otherlv_42, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_8_4());
+    	newLeafNode(otherlv_44, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_8_4());
     }
 )
     |((
@@ -3279,19 +4248,37 @@ ruleMethodExpression returns [EObject current=null]
             $current);
     }
 )
-	otherlv_44=KEYWORD_77
+	otherlv_46=KEYWORD_58
     {
-    	newLeafNode(otherlv_44, grammarAccess.getMethodExpressionAccess().getToLowerCaseKeyword_9_1());
+    	newLeafNode(otherlv_46, grammarAccess.getMethodExpressionAccess().getEqualsKeyword_9_1());
     }
 
-	otherlv_45=KEYWORD_4
+	otherlv_47=KEYWORD_4
     {
-    	newLeafNode(otherlv_45, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_9_2());
+    	newLeafNode(otherlv_47, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_9_2());
     }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getStringConditionalOrExpressionParserRuleCall_9_3_0()); 
+	    }
+		lv_string_48_0=ruleConditionalOrExpression		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getMethodExpressionRule());
+	        }
+       		set(
+       			$current, 
+       			"string",
+        		lv_string_48_0, 
+        		"ConditionalOrExpression");
+	        afterParserOrEnumRuleCall();
+	    }
 
-	otherlv_46=KEYWORD_5
+)
+)
+	otherlv_49=KEYWORD_5
     {
-    	newLeafNode(otherlv_46, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_9_3());
+    	newLeafNode(otherlv_49, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_9_4());
     }
 )
     |((
@@ -3304,19 +4291,37 @@ ruleMethodExpression returns [EObject current=null]
             $current);
     }
 )
-	otherlv_48=KEYWORD_78
+	otherlv_51=KEYWORD_108
     {
-    	newLeafNode(otherlv_48, grammarAccess.getMethodExpressionAccess().getToUpperCaseKeyword_10_1());
+    	newLeafNode(otherlv_51, grammarAccess.getMethodExpressionAccess().getEqualsIgnoreCaseKeyword_10_1());
     }
 
-	otherlv_49=KEYWORD_4
+	otherlv_52=KEYWORD_4
     {
-    	newLeafNode(otherlv_49, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_10_2());
+    	newLeafNode(otherlv_52, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_10_2());
     }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getStringConditionalOrExpressionParserRuleCall_10_3_0()); 
+	    }
+		lv_string_53_0=ruleConditionalOrExpression		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getMethodExpressionRule());
+	        }
+       		set(
+       			$current, 
+       			"string",
+        		lv_string_53_0, 
+        		"ConditionalOrExpression");
+	        afterParserOrEnumRuleCall();
+	    }
 
-	otherlv_50=KEYWORD_5
+)
+)
+	otherlv_54=KEYWORD_5
     {
-    	newLeafNode(otherlv_50, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_10_3());
+    	newLeafNode(otherlv_54, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_10_4());
     }
 )
     |((
@@ -3329,60 +4334,60 @@ ruleMethodExpression returns [EObject current=null]
             $current);
     }
 )
-	otherlv_52=KEYWORD_60
+	otherlv_56=KEYWORD_67
     {
-    	newLeafNode(otherlv_52, grammarAccess.getMethodExpressionAccess().getIndexOfKeyword_11_1());
+    	newLeafNode(otherlv_56, grammarAccess.getMethodExpressionAccess().getIndexOfKeyword_11_1());
     }
 
-	otherlv_53=KEYWORD_4
+	otherlv_57=KEYWORD_4
     {
-    	newLeafNode(otherlv_53, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_11_2());
+    	newLeafNode(otherlv_57, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_11_2());
     }
 (
 (
 		{ 
 	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getStringConditionalOrExpressionParserRuleCall_11_3_0()); 
 	    }
-		lv_string_54_0=ruleConditionalOrExpression		{
+		lv_string_58_0=ruleConditionalOrExpression		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getMethodExpressionRule());
 	        }
        		set(
        			$current, 
        			"string",
-        		lv_string_54_0, 
+        		lv_string_58_0, 
         		"ConditionalOrExpression");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
 )(
-	otherlv_55=KEYWORD_8
+	otherlv_59=KEYWORD_8
     {
-    	newLeafNode(otherlv_55, grammarAccess.getMethodExpressionAccess().getCommaKeyword_11_4_0());
+    	newLeafNode(otherlv_59, grammarAccess.getMethodExpressionAccess().getCommaKeyword_11_4_0());
     }
 (
 (
 		{ 
 	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getFromIndexConditionalOrExpressionParserRuleCall_11_4_1_0()); 
 	    }
-		lv_fromIndex_56_0=ruleConditionalOrExpression		{
+		lv_fromIndex_60_0=ruleConditionalOrExpression		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getMethodExpressionRule());
 	        }
        		set(
        			$current, 
        			"fromIndex",
-        		lv_fromIndex_56_0, 
+        		lv_fromIndex_60_0, 
         		"ConditionalOrExpression");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
 ))?
-	otherlv_57=KEYWORD_5
+	otherlv_61=KEYWORD_5
     {
-    	newLeafNode(otherlv_57, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_11_5());
+    	newLeafNode(otherlv_61, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_11_5());
     }
 )
     |((
@@ -3395,60 +4400,512 @@ ruleMethodExpression returns [EObject current=null]
             $current);
     }
 )
-	otherlv_59=KEYWORD_70
+	otherlv_63=KEYWORD_62
     {
-    	newLeafNode(otherlv_59, grammarAccess.getMethodExpressionAccess().getSubstringKeyword_12_1());
+    	newLeafNode(otherlv_63, grammarAccess.getMethodExpressionAccess().getLengthKeyword_12_1());
     }
 
-	otherlv_60=KEYWORD_4
+	otherlv_64=KEYWORD_4
     {
-    	newLeafNode(otherlv_60, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_12_2());
+    	newLeafNode(otherlv_64, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_12_2());
+    }
+
+	otherlv_65=KEYWORD_5
+    {
+    	newLeafNode(otherlv_65, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_12_3());
+    }
+)
+    |((
+	{ 
+	  /* */ 
+	}
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getMethodExpressionAccess().getExpressionAction_13_0(),
+            $current);
+    }
+)
+	otherlv_67=KEYWORD_69
+    {
+    	newLeafNode(otherlv_67, grammarAccess.getMethodExpressionAccess().getMatchesKeyword_13_1());
+    }
+
+	otherlv_68=KEYWORD_4
+    {
+    	newLeafNode(otherlv_68, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_13_2());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getBeginIndexConditionalOrExpressionParserRuleCall_12_3_0()); 
+	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getRegexConditionalOrExpressionParserRuleCall_13_3_0()); 
 	    }
-		lv_beginIndex_61_0=ruleConditionalOrExpression		{
+		lv_regex_69_0=ruleConditionalOrExpression		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getMethodExpressionRule());
+	        }
+       		set(
+       			$current, 
+       			"regex",
+        		lv_regex_69_0, 
+        		"ConditionalOrExpression");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)
+	otherlv_70=KEYWORD_5
+    {
+    	newLeafNode(otherlv_70, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_13_4());
+    }
+)
+    |((
+	{ 
+	  /* */ 
+	}
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getMethodExpressionAccess().getExpressionAction_14_0(),
+            $current);
+    }
+)
+	otherlv_72=KEYWORD_97
+    {
+    	newLeafNode(otherlv_72, grammarAccess.getMethodExpressionAccess().getReplaceAllKeyword_14_1());
+    }
+
+	otherlv_73=KEYWORD_4
+    {
+    	newLeafNode(otherlv_73, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_14_2());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getRegexConditionalOrExpressionParserRuleCall_14_3_0()); 
+	    }
+		lv_regex_74_0=ruleConditionalOrExpression		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getMethodExpressionRule());
+	        }
+       		set(
+       			$current, 
+       			"regex",
+        		lv_regex_74_0, 
+        		"ConditionalOrExpression");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)
+	otherlv_75=KEYWORD_8
+    {
+    	newLeafNode(otherlv_75, grammarAccess.getMethodExpressionAccess().getCommaKeyword_14_4());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getReplacementConditionalOrExpressionParserRuleCall_14_5_0()); 
+	    }
+		lv_replacement_76_0=ruleConditionalOrExpression		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getMethodExpressionRule());
+	        }
+       		set(
+       			$current, 
+       			"replacement",
+        		lv_replacement_76_0, 
+        		"ConditionalOrExpression");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)
+	otherlv_77=KEYWORD_5
+    {
+    	newLeafNode(otherlv_77, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_14_6());
+    }
+)
+    |((
+	{ 
+	  /* */ 
+	}
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getMethodExpressionAccess().getExpressionAction_15_0(),
+            $current);
+    }
+)
+	otherlv_79=KEYWORD_98
+    {
+    	newLeafNode(otherlv_79, grammarAccess.getMethodExpressionAccess().getStartsWithKeyword_15_1());
+    }
+
+	otherlv_80=KEYWORD_4
+    {
+    	newLeafNode(otherlv_80, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_15_2());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getStringConditionalOrExpressionParserRuleCall_15_3_0()); 
+	    }
+		lv_string_81_0=ruleConditionalOrExpression		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getMethodExpressionRule());
+	        }
+       		set(
+       			$current, 
+       			"string",
+        		lv_string_81_0, 
+        		"ConditionalOrExpression");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)
+	otherlv_82=KEYWORD_5
+    {
+    	newLeafNode(otherlv_82, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_15_4());
+    }
+)
+    |((
+	{ 
+	  /* */ 
+	}
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getMethodExpressionAccess().getExpressionAction_16_0(),
+            $current);
+    }
+)
+	otherlv_84=KEYWORD_91
+    {
+    	newLeafNode(otherlv_84, grammarAccess.getMethodExpressionAccess().getSubstringKeyword_16_1());
+    }
+
+	otherlv_85=KEYWORD_4
+    {
+    	newLeafNode(otherlv_85, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_16_2());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getBeginIndexConditionalOrExpressionParserRuleCall_16_3_0()); 
+	    }
+		lv_beginIndex_86_0=ruleConditionalOrExpression		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getMethodExpressionRule());
 	        }
        		set(
        			$current, 
        			"beginIndex",
-        		lv_beginIndex_61_0, 
+        		lv_beginIndex_86_0, 
         		"ConditionalOrExpression");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
 )(
-	otherlv_62=KEYWORD_8
+	otherlv_87=KEYWORD_8
     {
-    	newLeafNode(otherlv_62, grammarAccess.getMethodExpressionAccess().getCommaKeyword_12_4_0());
+    	newLeafNode(otherlv_87, grammarAccess.getMethodExpressionAccess().getCommaKeyword_16_4_0());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getEndIndexConditionalOrExpressionParserRuleCall_12_4_1_0()); 
+	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getEndIndexConditionalOrExpressionParserRuleCall_16_4_1_0()); 
 	    }
-		lv_endIndex_63_0=ruleConditionalOrExpression		{
+		lv_endIndex_88_0=ruleConditionalOrExpression		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getMethodExpressionRule());
 	        }
        		set(
        			$current, 
        			"endIndex",
-        		lv_endIndex_63_0, 
+        		lv_endIndex_88_0, 
         		"ConditionalOrExpression");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
 ))?
-	otherlv_64=KEYWORD_5
+	otherlv_89=KEYWORD_5
     {
-    	newLeafNode(otherlv_64, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_12_5());
+    	newLeafNode(otherlv_89, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_16_5());
+    }
+)
+    |((
+	{ 
+	  /* */ 
+	}
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getMethodExpressionAccess().getExpressionAction_17_0(),
+            $current);
+    }
+)
+	otherlv_91=KEYWORD_100
+    {
+    	newLeafNode(otherlv_91, grammarAccess.getMethodExpressionAccess().getToLowerCaseKeyword_17_1());
+    }
+
+	otherlv_92=KEYWORD_4
+    {
+    	newLeafNode(otherlv_92, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_17_2());
+    }
+
+	otherlv_93=KEYWORD_5
+    {
+    	newLeafNode(otherlv_93, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_17_3());
+    }
+)
+    |((
+	{ 
+	  /* */ 
+	}
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getMethodExpressionAccess().getExpressionAction_18_0(),
+            $current);
+    }
+)
+	otherlv_95=KEYWORD_101
+    {
+    	newLeafNode(otherlv_95, grammarAccess.getMethodExpressionAccess().getToUpperCaseKeyword_18_1());
+    }
+
+	otherlv_96=KEYWORD_4
+    {
+    	newLeafNode(otherlv_96, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_18_2());
+    }
+
+	otherlv_97=KEYWORD_5
+    {
+    	newLeafNode(otherlv_97, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_18_3());
+    }
+)
+    |((
+	{ 
+	  /* */ 
+	}
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getMethodExpressionAccess().getExpressionAction_19_0(),
+            $current);
+    }
+)
+	otherlv_99=KEYWORD_42
+    {
+    	newLeafNode(otherlv_99, grammarAccess.getMethodExpressionAccess().getTrimKeyword_19_1());
+    }
+
+	otherlv_100=KEYWORD_4
+    {
+    	newLeafNode(otherlv_100, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_19_2());
+    }
+
+	otherlv_101=KEYWORD_5
+    {
+    	newLeafNode(otherlv_101, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_19_3());
+    }
+)
+    |((
+	{ 
+	  /* */ 
+	}
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getMethodExpressionAccess().getExpressionAction_20_0(),
+            $current);
+    }
+)
+	otherlv_103=KEYWORD_59
+    {
+    	newLeafNode(otherlv_103, grammarAccess.getMethodExpressionAccess().getGetDayKeyword_20_1());
+    }
+
+	otherlv_104=KEYWORD_4
+    {
+    	newLeafNode(otherlv_104, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_20_2());
+    }
+
+	otherlv_105=KEYWORD_5
+    {
+    	newLeafNode(otherlv_105, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_20_3());
+    }
+)
+    |((
+	{ 
+	  /* */ 
+	}
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getMethodExpressionAccess().getExpressionAction_21_0(),
+            $current);
+    }
+)
+	otherlv_107=KEYWORD_80
+    {
+    	newLeafNode(otherlv_107, grammarAccess.getMethodExpressionAccess().getGetMonthKeyword_21_1());
+    }
+
+	otherlv_108=KEYWORD_4
+    {
+    	newLeafNode(otherlv_108, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_21_2());
+    }
+
+	otherlv_109=KEYWORD_5
+    {
+    	newLeafNode(otherlv_109, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_21_3());
+    }
+)
+    |((
+	{ 
+	  /* */ 
+	}
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getMethodExpressionAccess().getExpressionAction_22_0(),
+            $current);
+    }
+)
+	otherlv_111=KEYWORD_66
+    {
+    	newLeafNode(otherlv_111, grammarAccess.getMethodExpressionAccess().getGetYearKeyword_22_1());
+    }
+
+	otherlv_112=KEYWORD_4
+    {
+    	newLeafNode(otherlv_112, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_22_2());
+    }
+
+	otherlv_113=KEYWORD_5
+    {
+    	newLeafNode(otherlv_113, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_22_3());
+    }
+)
+    |((
+	{ 
+	  /* */ 
+	}
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getMethodExpressionAccess().getExpressionAction_23_0(),
+            $current);
+    }
+)
+	otherlv_115=KEYWORD_65
+    {
+    	newLeafNode(otherlv_115, grammarAccess.getMethodExpressionAccess().getGetHourKeyword_23_1());
+    }
+
+	otherlv_116=KEYWORD_4
+    {
+    	newLeafNode(otherlv_116, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_23_2());
+    }
+
+	otherlv_117=KEYWORD_5
+    {
+    	newLeafNode(otherlv_117, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_23_3());
+    }
+)
+    |((
+	{ 
+	  /* */ 
+	}
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getMethodExpressionAccess().getExpressionAction_24_0(),
+            $current);
+    }
+)
+	otherlv_119=KEYWORD_89
+    {
+    	newLeafNode(otherlv_119, grammarAccess.getMethodExpressionAccess().getGetMinuteKeyword_24_1());
+    }
+
+	otherlv_120=KEYWORD_4
+    {
+    	newLeafNode(otherlv_120, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_24_2());
+    }
+
+	otherlv_121=KEYWORD_5
+    {
+    	newLeafNode(otherlv_121, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_24_3());
+    }
+)
+    |((
+	{ 
+	  /* */ 
+	}
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getMethodExpressionAccess().getExpressionAction_25_0(),
+            $current);
+    }
+)
+	otherlv_123=KEYWORD_90
+    {
+    	newLeafNode(otherlv_123, grammarAccess.getMethodExpressionAccess().getGetSecondKeyword_25_1());
+    }
+
+	otherlv_124=KEYWORD_4
+    {
+    	newLeafNode(otherlv_124, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_25_2());
+    }
+
+	otherlv_125=KEYWORD_5
+    {
+    	newLeafNode(otherlv_125, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_25_3());
+    }
+)
+    |((
+	{ 
+	  /* */ 
+	}
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getMethodExpressionAccess().getExpressionAction_26_0(),
+            $current);
+    }
+)
+	otherlv_127=KEYWORD_70
+    {
+    	newLeafNode(otherlv_127, grammarAccess.getMethodExpressionAccess().getOrdinalKeyword_26_1());
+    }
+
+	otherlv_128=KEYWORD_4
+    {
+    	newLeafNode(otherlv_128, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_26_2());
+    }
+
+	otherlv_129=KEYWORD_5
+    {
+    	newLeafNode(otherlv_129, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_26_3());
+    }
+)
+    |((
+	{ 
+	  /* */ 
+	}
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getMethodExpressionAccess().getExpressionAction_27_0(),
+            $current);
+    }
+)
+	otherlv_131=KEYWORD_81
+    {
+    	newLeafNode(otherlv_131, grammarAccess.getMethodExpressionAccess().getToStringKeyword_27_1());
+    }
+
+	otherlv_132=KEYWORD_4
+    {
+    	newLeafNode(otherlv_132, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_27_2());
+    }
+
+	otherlv_133=KEYWORD_5
+    {
+    	newLeafNode(otherlv_133, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_27_3());
     }
 ))
 ;
@@ -3573,7 +5030,7 @@ rulePrimitiveType returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleT
     }
 
     |
-	kw=KEYWORD_59 
+	kw=KEYWORD_64 
     {
         $current.merge(kw);
         newLeafNode(kw, grammarAccess.getPrimitiveTypeAccess().getBooleanKeyword_1()); 
@@ -3653,7 +5110,7 @@ ruleIntegralType returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleTo
     }
 
     |
-	kw=KEYWORD_51 
+	kw=KEYWORD_52 
     {
         $current.merge(kw);
         newLeafNode(kw, grammarAccess.getIntegralTypeAccess().getShortKeyword_1()); 
@@ -3702,14 +5159,14 @@ ruleFloatingPointType returns [AntlrDatatypeRuleToken current=new AntlrDatatypeR
     @after { leaveRule();
     }:
 (
-	kw=KEYWORD_49 
+	kw=KEYWORD_50 
     {
         $current.merge(kw);
         newLeafNode(kw, grammarAccess.getFloatingPointTypeAccess().getFloatKeyword_0()); 
     }
 
     |
-	kw=KEYWORD_55 
+	kw=KEYWORD_57 
     {
         $current.merge(kw);
         newLeafNode(kw, grammarAccess.getFloatingPointTypeAccess().getDoubleKeyword_1()); 
@@ -3795,14 +5252,14 @@ ruleBooleanLiteral returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRule
     @after { leaveRule();
     }:
 (
-	kw=KEYWORD_42 
+	kw=KEYWORD_43 
     {
         $current.merge(kw);
         newLeafNode(kw, grammarAccess.getBooleanLiteralAccess().getTrueKeyword_0()); 
     }
 
     |
-	kw=KEYWORD_48 
+	kw=KEYWORD_49 
     {
         $current.merge(kw);
         newLeafNode(kw, grammarAccess.getBooleanLiteralAccess().getFalseKeyword_1()); 
@@ -3927,70 +5384,70 @@ ruleQualifiedIdentifier returns [AntlrDatatypeRuleToken current=new AntlrDatatyp
     @after { leaveRule();
     }:
 (
-	kw=KEYWORD_86 
+	kw=KEYWORD_111 
     {
         $current.merge(kw);
         newLeafNode(kw, grammarAccess.getQualifiedIdentifierAccess().getJavaLangBooleanKeyword_0()); 
     }
 
     |
-	kw=KEYWORD_80 
+	kw=KEYWORD_104 
     {
         $current.merge(kw);
         newLeafNode(kw, grammarAccess.getQualifiedIdentifierAccess().getJavaLangByteKeyword_1()); 
     }
 
     |
-	kw=KEYWORD_89 
+	kw=KEYWORD_119 
     {
         $current.merge(kw);
         newLeafNode(kw, grammarAccess.getQualifiedIdentifierAccess().getJavaLangCharacterKeyword_2()); 
     }
 
     |
-	kw=KEYWORD_84 
+	kw=KEYWORD_109 
     {
         $current.merge(kw);
         newLeafNode(kw, grammarAccess.getQualifiedIdentifierAccess().getJavaLangDoubleKeyword_3()); 
     }
 
     |
-	kw=KEYWORD_82 
+	kw=KEYWORD_106 
     {
         $current.merge(kw);
         newLeafNode(kw, grammarAccess.getQualifiedIdentifierAccess().getJavaLangFloatKeyword_4()); 
     }
 
     |
-	kw=KEYWORD_87 
+	kw=KEYWORD_112 
     {
         $current.merge(kw);
         newLeafNode(kw, grammarAccess.getQualifiedIdentifierAccess().getJavaLangIntegerKeyword_5()); 
     }
 
     |
-	kw=KEYWORD_81 
+	kw=KEYWORD_105 
     {
         $current.merge(kw);
         newLeafNode(kw, grammarAccess.getQualifiedIdentifierAccess().getJavaLangLongKeyword_6()); 
     }
 
     |
-	kw=KEYWORD_83 
+	kw=KEYWORD_107 
     {
         $current.merge(kw);
         newLeafNode(kw, grammarAccess.getQualifiedIdentifierAccess().getJavaLangShortKeyword_7()); 
     }
 
     |
-	kw=KEYWORD_85 
+	kw=KEYWORD_110 
     {
         $current.merge(kw);
         newLeafNode(kw, grammarAccess.getQualifiedIdentifierAccess().getJavaLangStringKeyword_8()); 
     }
 
     |(
-	kw=KEYWORD_50 
+	kw=KEYWORD_51 
     {
         $current.merge(kw);
         newLeafNode(kw, grammarAccess.getQualifiedIdentifierAccess().getJavaKeyword_9_0()); 
@@ -4017,7 +5474,7 @@ ruleQualifiedIdentifier returns [AntlrDatatypeRuleToken current=new AntlrDatatyp
     }
 )*)
     |(
-	kw=KEYWORD_57 
+	kw=KEYWORD_61 
     {
         $current.merge(kw);
         newLeafNode(kw, grammarAccess.getQualifiedIdentifierAccess().getJavaxKeyword_10_0()); 
@@ -4146,7 +5603,7 @@ ruleOrderByDirection returns [Enumerator current=null]
         newLeafNode(enumLiteral_0, grammarAccess.getOrderByDirectionAccess().getAscEnumLiteralDeclaration_0()); 
     }
 )
-    |(    enumLiteral_1=KEYWORD_67
+    |(    enumLiteral_1=KEYWORD_82
     {
         $current = grammarAccess.getOrderByDirectionAccess().getAscendingEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
         newLeafNode(enumLiteral_1, grammarAccess.getOrderByDirectionAccess().getAscendingEnumLiteralDeclaration_1()); 
@@ -4158,7 +5615,7 @@ ruleOrderByDirection returns [Enumerator current=null]
         newLeafNode(enumLiteral_2, grammarAccess.getOrderByDirectionAccess().getDescEnumLiteralDeclaration_2()); 
     }
 )
-    |(    enumLiteral_3=KEYWORD_71
+    |(    enumLiteral_3=KEYWORD_92
     {
         $current = grammarAccess.getOrderByDirectionAccess().getDescendingEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
         newLeafNode(enumLiteral_3, grammarAccess.getOrderByDirectionAccess().getDescendingEnumLiteralDeclaration_3()); 
@@ -4282,7 +5739,7 @@ ruleComparisonOperator returns [Enumerator current=null]
         newLeafNode(enumLiteral_5, grammarAccess.getComparisonOperatorAccess().getNotEqualEnumLiteralDeclaration_5()); 
     }
 )
-    |(    enumLiteral_6=KEYWORD_74
+    |(    enumLiteral_6=KEYWORD_96
     {
         $current = grammarAccess.getComparisonOperatorAccess().getInstanceofEnumLiteralDeclaration_6().getEnumLiteral().getInstance();
         newLeafNode(enumLiteral_6, grammarAccess.getComparisonOperatorAccess().getInstanceofEnumLiteralDeclaration_6()); 

@@ -513,10 +513,15 @@ public class AbstractJDOQLSemanticSequencer extends AbstractSemanticSequencer {
 	 *         arg=ConditionalOrExpression | 
 	 *         key=ConditionalOrExpression | 
 	 *         value=ConditionalOrExpression | 
+	 *         (key=ConditionalOrExpression value=ConditionalOrExpression) | 
+	 *         index=ConditionalOrExpression | 
 	 *         string=ConditionalOrExpression | 
 	 *         string=ConditionalOrExpression | 
-	 *         regex=ConditionalOrExpression | 
+	 *         string=ConditionalOrExpression | 
 	 *         (string=ConditionalOrExpression fromIndex=ConditionalOrExpression?) | 
+	 *         regex=ConditionalOrExpression | 
+	 *         (regex=ConditionalOrExpression replacement=ConditionalOrExpression) | 
+	 *         string=ConditionalOrExpression | 
 	 *         (beginIndex=ConditionalOrExpression endIndex=ConditionalOrExpression?)
 	 *     )
 	 */
@@ -818,10 +823,32 @@ public class AbstractJDOQLSemanticSequencer extends AbstractSemanticSequencer {
 	/**
 	 * Constraint:
 	 *     (
-	 *         numeric=ConditionalOrExpression | 
-	 *         numeric=ConditionalOrExpression | 
-	 *         numeric=ConditionalOrExpression | 
-	 *         numeric=ConditionalOrExpression | 
+	 *         number=ConditionalOrExpression | 
+	 *         number=ConditionalOrExpression | 
+	 *         number=ConditionalOrExpression | 
+	 *         number=ConditionalOrExpression | 
+	 *         number=ConditionalOrExpression | 
+	 *         number=ConditionalOrExpression | 
+	 *         number=ConditionalOrExpression | 
+	 *         number=ConditionalOrExpression | 
+	 *         number=ConditionalOrExpression | 
+	 *         number=ConditionalOrExpression | 
+	 *         number=ConditionalOrExpression | 
+	 *         number=ConditionalOrExpression | 
+	 *         number=ConditionalOrExpression | 
+	 *         number=ConditionalOrExpression | 
+	 *         number=ConditionalOrExpression | 
+	 *         number=ConditionalOrExpression | 
+	 *         number=ConditionalOrExpression | 
+	 *         number=ConditionalOrExpression | 
+	 *         number=ConditionalOrExpression | 
+	 *         number=ConditionalOrExpression | 
+	 *         number=ConditionalOrExpression | 
+	 *         number=ConditionalOrExpression | 
+	 *         number=ConditionalOrExpression | 
+	 *         number=ConditionalOrExpression | 
+	 *         persistable=ConditionalOrExpression | 
+	 *         persistable=ConditionalOrExpression | 
 	 *         persistable=ConditionalOrExpression | 
 	 *         persistable=ConditionalOrExpression | 
 	 *         (isDistinct?='DISTINCT'? aggregateArgument=ConditionalOrExpression) | 
