@@ -4,7 +4,7 @@ import java.util.EnumSet;
 
 import org.eclipse.swt.graphics.Image;
 import org.nightlabs.vestigo.core.LabelTextOption;
-import org.nightlabs.vestigo.ui.JJQBUIPlugin;
+import org.nightlabs.vestigo.ui.VestigoUIPlugin;
 
 public class MessageObjectGraphDetailTreeNode
 extends ObjectGraphDetailTreeNode
@@ -24,8 +24,8 @@ extends ObjectGraphDetailTreeNode
 
 	@Override
 	public Image getLabelImage() {
-		return JJQBUIPlugin.getDefault().getImage(
-				MessageObjectGraphDetailTreeNode.class, null, JJQBUIPlugin.IMAGE_SIZE_16x16
+		return VestigoUIPlugin.getDefault().getImage(
+				MessageObjectGraphDetailTreeNode.class, null, VestigoUIPlugin.IMAGE_SIZE_16x16
 		);
 	}
 }

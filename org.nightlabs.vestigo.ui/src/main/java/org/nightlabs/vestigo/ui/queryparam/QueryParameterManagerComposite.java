@@ -12,14 +12,14 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
-import org.nightlabs.vestigo.ui.JJQBUIPlugin;
+import org.nightlabs.vestigo.ui.VestigoUIPlugin;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
  */
 public class QueryParameterManagerComposite extends Composite
 {
-	private JJQBUIPlugin plugin = JJQBUIPlugin.getDefault();
+	private VestigoUIPlugin plugin = VestigoUIPlugin.getDefault();
 
 	private QueryParameterManager queryParameterManager;
 

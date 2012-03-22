@@ -28,7 +28,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.nightlabs.vestigo.core.oda.DataSourceDriverRegistry;
 import org.nightlabs.vestigo.core.oda.Driver;
-import org.nightlabs.vestigo.ui.JJQBUIPlugin;
+import org.nightlabs.vestigo.ui.VestigoUIPlugin;
 import org.nightlabs.vestigo.ui.editor.QueryEditorManager;
 
 public class ConnectionProfileTreeComposite extends Composite implements ISelectionProvider
@@ -77,7 +77,7 @@ public class ConnectionProfileTreeComposite extends Composite implements ISelect
 		public Image getImage(Object element)
 		{
 			if (element instanceof ICategory)
-				return JJQBUIPlugin.getDefault().getImage(ConnectionProfileTreeComposite.class, "category", JJQBUIPlugin.IMAGE_SIZE_16x16);
+				return VestigoUIPlugin.getDefault().getImage(ConnectionProfileTreeComposite.class, "category", VestigoUIPlugin.IMAGE_SIZE_16x16);
 
 			return super.getImage(element);
 		}

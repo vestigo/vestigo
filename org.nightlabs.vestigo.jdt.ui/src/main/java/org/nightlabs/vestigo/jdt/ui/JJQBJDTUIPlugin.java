@@ -3,7 +3,7 @@ package org.nightlabs.vestigo.jdt.ui;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
-import org.nightlabs.vestigo.ui.JJQBUIPlugin;
+import org.nightlabs.vestigo.ui.VestigoUIPlugin;
 import org.osgi.framework.BundleContext;
 
 /**
@@ -51,7 +51,7 @@ public class JJQBJDTUIPlugin extends AbstractUIPlugin
 			resource.append('-').append(identifier);
 
 		if (size == null)
-			size = JJQBUIPlugin.IMAGE_SIZE_16x16;
+			size = VestigoUIPlugin.IMAGE_SIZE_16x16;
 
 		resource.append('.').append(size).append(".png");
 

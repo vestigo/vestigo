@@ -13,7 +13,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 import org.eclipse.ui.preferences.ScopedPreferenceStore;
-import org.nightlabs.vestigo.core.JJQBCorePlugin;
+import org.nightlabs.vestigo.core.VestigoCorePlugin;
 import org.nightlabs.vestigo.core.childvm.LogLevel;
 import org.nightlabs.vestigo.core.childvm.internal.ChildVMServer;
 import org.nightlabs.vestigo.ui.preference.MultiLineStringFieldEditor;
@@ -28,7 +28,7 @@ public class ChildVMPreferencePage extends FieldEditorPreferencePage implements 
 	@Override
 	public void init(IWorkbench workbench)
 	{
-		setPreferenceStore(new ScopedPreferenceStore(new InstanceScope(), JJQBCorePlugin.BUNDLE_SYMBOLIC_NAME));
+		setPreferenceStore(new ScopedPreferenceStore(new InstanceScope(), VestigoCorePlugin.BUNDLE_SYMBOLIC_NAME));
 		setDescription("Settings to control the behaviour of the child VM.");
 
 		getPreferenceStore().setDefault(ChildVMServer.PREFERENCE_KEY_JAVA_COMMAND, ChildVMServer.PREFERENCE_DEFAULT_JAVA_COMMAND);

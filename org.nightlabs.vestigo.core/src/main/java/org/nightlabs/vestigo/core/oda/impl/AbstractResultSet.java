@@ -24,7 +24,7 @@ import org.nightlabs.vestigo.childvm.shared.dto.ResultCellPersistentObjectRefDTO
 import org.nightlabs.vestigo.childvm.shared.dto.ResultCellSimpleDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.ResultCellTransientObjectRefDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.ResultRowDTO;
-import org.nightlabs.vestigo.core.JJQBCorePlugin;
+import org.nightlabs.vestigo.core.VestigoCorePlugin;
 import org.nightlabs.vestigo.core.ObjectReference;
 import org.nightlabs.vestigo.core.internal.PersistentObjectReferenceImpl;
 import org.nightlabs.vestigo.core.internal.TransientObjectReferenceImpl;
@@ -139,7 +139,7 @@ public abstract class AbstractResultSet implements ResultSet
 
 	private void constrainMaxRowsIfLicenceIsNotValid()
 	{
-		if (!JJQBCorePlugin.getDefault().getLicenceManager().isLicenceValid()) {
+		if (!VestigoCorePlugin.getDefault().getLicenceManager().isLicenceValid()) {
 			licenceIsNotValid = true;
 			if (maxRows < 1 || maxRows > AbstractQuery.MAX_ROWS_WITHOUT_VALID_LICENCE)
 				maxRows = AbstractQuery.MAX_ROWS_WITHOUT_VALID_LICENCE;

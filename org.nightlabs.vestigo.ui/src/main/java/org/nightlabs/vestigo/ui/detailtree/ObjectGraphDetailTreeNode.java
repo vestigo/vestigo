@@ -7,14 +7,14 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.swt.graphics.Image;
-import org.nightlabs.vestigo.core.JJQBCorePlugin;
+import org.nightlabs.vestigo.core.VestigoCorePlugin;
 import org.nightlabs.vestigo.core.LabelTextOption;
 import org.nightlabs.vestigo.core.LabelTextUtil;
 import org.nightlabs.vestigo.core.ObjectReference;
 import org.nightlabs.vestigo.core.ObjectReferenceChild;
 import org.nightlabs.vestigo.core.PersistentObjectReference;
 import org.nightlabs.vestigo.core.oda.ResultSet;
-import org.nightlabs.vestigo.ui.JJQBUIPlugin;
+import org.nightlabs.vestigo.ui.VestigoUIPlugin;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
@@ -30,7 +30,7 @@ public class ObjectGraphDetailTreeNode
 		this(object);
 		this.parentNode = parentNode;
 
-		if (!JJQBCorePlugin.getDefault().getLicenceManager().isLicenceValid()) {
+		if (!VestigoCorePlugin.getDefault().getLicenceManager().isLicenceValid()) {
 			int level = 0;
 			ObjectGraphDetailTreeNode n = parentNode;
 			while (n != null) {
@@ -136,10 +136,10 @@ public class ObjectGraphDetailTreeNode
 
 	private Image getLabelImage(String identifier)
 	{
-		return JJQBUIPlugin.getDefault().getImage(
+		return VestigoUIPlugin.getDefault().getImage(
 				ObjectGraphDetailTreeNode.class,
 				identifier,
-				JJQBUIPlugin.IMAGE_SIZE_16x16
+				VestigoUIPlugin.IMAGE_SIZE_16x16
 		);
 	}
 

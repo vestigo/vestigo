@@ -12,7 +12,7 @@
       </description>
       <command
             required="false"
-            serialization="org.eclipse.ui.perspectives.showPerspective(org.eclipse.ui.perspectives.showPerspective.perspectiveId=org.nightlabs.vestigo.ui.JJQBPerspective)"/>                                                                                                                               
+            serialization="org.eclipse.ui.perspectives.showPerspective(org.eclipse.ui.perspectives.showPerspective.perspectiveId=org.nightlabs.vestigo.ui.VestigoPerspective)"/>                                                                                                                               
    </item>
    <item
          title="Download demo project">

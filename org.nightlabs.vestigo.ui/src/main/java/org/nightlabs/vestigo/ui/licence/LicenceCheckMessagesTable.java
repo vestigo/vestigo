@@ -16,7 +16,7 @@ import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
-import org.nightlabs.vestigo.ui.JJQBUIPlugin;
+import org.nightlabs.vestigo.ui.VestigoUIPlugin;
 import org.nightlabs.licence.manager.ErrorMessage;
 import org.nightlabs.licence.manager.InfoMessage;
 import org.nightlabs.licence.manager.Message;
@@ -60,13 +60,13 @@ public class LicenceCheckMessagesTable extends Composite
 		public Image getColumnImage(Object element, int columnIndex) {
 			if (columnIndex == 1) {
 				if (element instanceof InfoMessage)
-					return JJQBUIPlugin.getDefault().getImage(LicenceCheckMessagesTable.class, "info", JJQBUIPlugin.IMAGE_SIZE_16x16);
+					return VestigoUIPlugin.getDefault().getImage(LicenceCheckMessagesTable.class, "info", VestigoUIPlugin.IMAGE_SIZE_16x16);
 
 				if (element instanceof WarningMessage)
-					return JJQBUIPlugin.getDefault().getImage(LicenceCheckMessagesTable.class, "warning", JJQBUIPlugin.IMAGE_SIZE_16x16);
+					return VestigoUIPlugin.getDefault().getImage(LicenceCheckMessagesTable.class, "warning", VestigoUIPlugin.IMAGE_SIZE_16x16);
 
 				if (element instanceof ErrorMessage)
-					return JJQBUIPlugin.getDefault().getImage(LicenceCheckMessagesTable.class, "error", JJQBUIPlugin.IMAGE_SIZE_16x16);
+					return VestigoUIPlugin.getDefault().getImage(LicenceCheckMessagesTable.class, "error", VestigoUIPlugin.IMAGE_SIZE_16x16);
 			}
 			return null;
 		}

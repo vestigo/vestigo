@@ -23,7 +23,7 @@ import org.eclipse.ui.forms.events.HyperlinkAdapter;
 import org.eclipse.ui.forms.events.HyperlinkEvent;
 import org.eclipse.ui.forms.widgets.Hyperlink;
 import org.eclipse.ui.preferences.ScopedPreferenceStore;
-import org.nightlabs.vestigo.core.JJQBCorePlugin;
+import org.nightlabs.vestigo.core.VestigoCorePlugin;
 import org.nightlabs.vestigo.ui.preference.MultiLineStringFieldEditor;
 import org.nightlabs.vestigo.ui.resource.Messages;
 import org.nightlabs.licence.manager.CheckLicenceAdapter;
@@ -43,7 +43,7 @@ implements IWorkbenchPreferencePage
 	private static final Logger logger = LoggerFactory.getLogger(LicencePreferencePage.class);
 
 	private Display display;
-	private LicenceManager licenceManager = JJQBCorePlugin.getDefault().getLicenceManager();
+	private LicenceManager licenceManager = VestigoCorePlugin.getDefault().getLicenceManager();
 
 	private Label descriptionLabel;
 

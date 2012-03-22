@@ -21,7 +21,7 @@ import org.eclipse.datatools.connectivity.oda.spec.QuerySpecification;
 import org.nightlabs.vestigo.childvm.shared.ResultSetID;
 import org.nightlabs.vestigo.childvm.shared.api.ChildVM;
 import org.nightlabs.vestigo.childvm.shared.dto.QueryParameterDTO;
-import org.nightlabs.vestigo.core.JJQBCorePlugin;
+import org.nightlabs.vestigo.core.VestigoCorePlugin;
 import org.nightlabs.vestigo.core.oda.Query;
 import org.nightlabs.vestigo.core.oda.QueryID;
 import org.nightlabs.vestigo.core.oda.ResultSet;
@@ -65,7 +65,7 @@ public abstract class AbstractQuery implements Query
 		if (maxRows > 0 && maxRows <= MAX_ROWS_WITHOUT_VALID_LICENCE)
 			return;
 
-		if (!JJQBCorePlugin.getDefault().getLicenceManager().isLicenceValid())
+		if (!VestigoCorePlugin.getDefault().getLicenceManager().isLicenceValid())
 			maxRows = MAX_ROWS_WITHOUT_VALID_LICENCE;
 	}
 

@@ -20,10 +20,10 @@ import org.slf4j.LoggerFactory;
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
  */
-public class JJQBCorePlugin
+public class VestigoCorePlugin
 implements BundleActivator
 {
-	private static final Logger logger = LoggerFactory.getLogger(JJQBCorePlugin.class);
+	private static final Logger logger = LoggerFactory.getLogger(VestigoCorePlugin.class);
 
 	public static final String BUNDLE_SYMBOLIC_NAME = "org.nightlabs.vestigo.core"; //$NON-NLS-1$
 
@@ -31,7 +31,7 @@ implements BundleActivator
 	private LicenceManager licenceManager;
 
 	// The shared instance
-	private static JJQBCorePlugin plugin;
+	private static VestigoCorePlugin plugin;
 
 	public Bundle getBundle() {
 		BundleContext bundleContext = this.bundleContext;
@@ -134,7 +134,7 @@ implements BundleActivator
 	 *
 	 * @return the shared instance
 	 */
-	public static JJQBCorePlugin getDefault() {
+	public static VestigoCorePlugin getDefault() {
 		return plugin;
 	}
 

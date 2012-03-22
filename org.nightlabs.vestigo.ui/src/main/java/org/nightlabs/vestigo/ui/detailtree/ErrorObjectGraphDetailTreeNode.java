@@ -1,7 +1,7 @@
 package org.nightlabs.vestigo.ui.detailtree;
 
 import org.eclipse.swt.graphics.Image;
-import org.nightlabs.vestigo.ui.JJQBUIPlugin;
+import org.nightlabs.vestigo.ui.VestigoUIPlugin;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
@@ -18,8 +18,8 @@ public class ErrorObjectGraphDetailTreeNode extends MessageObjectGraphDetailTree
 
 	@Override
 	public Image getLabelImage() {
-		return JJQBUIPlugin.getDefault().getImage(
-				ErrorObjectGraphDetailTreeNode.class, null, JJQBUIPlugin.IMAGE_SIZE_16x16
+		return VestigoUIPlugin.getDefault().getImage(
+				ErrorObjectGraphDetailTreeNode.class, null, VestigoUIPlugin.IMAGE_SIZE_16x16
 		);
 	}
 }

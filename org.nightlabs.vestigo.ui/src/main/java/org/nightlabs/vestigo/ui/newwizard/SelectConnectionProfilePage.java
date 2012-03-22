@@ -9,7 +9,7 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.widgets.Composite;
-import org.nightlabs.vestigo.ui.JJQBUIPlugin;
+import org.nightlabs.vestigo.ui.VestigoUIPlugin;
 import org.nightlabs.vestigo.ui.oda.ConnectionProfileTreeComposite;
 import org.nightlabs.vestigo.ui.wizard.WizardHopPage;
 
@@ -29,7 +29,7 @@ implements ISelectionProvider
 		super(
 				pageName,
 				"Select connection profile",
-				JJQBUIPlugin.getDefault().getImageDescriptor(SelectConnectionProfilePage.class, "title", JJQBUIPlugin.IMAGE_SIZE_75x70)
+				VestigoUIPlugin.getDefault().getImageDescriptor(SelectConnectionProfilePage.class, "title", VestigoUIPlugin.IMAGE_SIZE_75x70)
 		);
 
 		setDescription("Please select the connection profile for which you want to create a new query.");

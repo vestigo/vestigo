@@ -66,7 +66,7 @@ import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 import org.nightlabs.vestigo.childvm.shared.PropertiesUtil;
 import org.nightlabs.vestigo.core.oda.OdaMultiCauseException;
-import org.nightlabs.vestigo.ui.JJQBUIPlugin;
+import org.nightlabs.vestigo.ui.VestigoUIPlugin;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -160,9 +160,9 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 				Map.Entry<?,?> me = (Entry<?, ?>) element;
 				if (colIdx == 1) {
 					if (PropertiesUtil.isNullValue(getContentProvider().getPropertiesMerged(), me.getKey().toString()))
-						return JJQBUIPlugin.getDefault().getImage(EditPropertiesComposite.class, "isNull", JJQBUIPlugin.IMAGE_SIZE_16x16);
+						return VestigoUIPlugin.getDefault().getImage(EditPropertiesComposite.class, "isNull", VestigoUIPlugin.IMAGE_SIZE_16x16);
 					else
-						return JJQBUIPlugin.getDefault().getImage(EditPropertiesComposite.class, "isNotNull", JJQBUIPlugin.IMAGE_SIZE_16x16);
+						return VestigoUIPlugin.getDefault().getImage(EditPropertiesComposite.class, "isNotNull", VestigoUIPlugin.IMAGE_SIZE_16x16);
 				}
 			}
 			return null;
@@ -368,7 +368,7 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 		setLayout(layout);
 
 		loadFromFile = new Button(this, SWT.PUSH);
-		loadFromFile.setImage(JJQBUIPlugin.getDefault().getImage(EditPropertiesComposite.class, "loadFromFile", JJQBUIPlugin.IMAGE_SIZE_16x16));
+		loadFromFile.setImage(VestigoUIPlugin.getDefault().getImage(EditPropertiesComposite.class, "loadFromFile", VestigoUIPlugin.IMAGE_SIZE_16x16));
 		loadFromFile.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent event) {
@@ -377,7 +377,7 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 		});
 
 		saveToFile = new Button(this, SWT.PUSH);
-		saveToFile.setImage(JJQBUIPlugin.getDefault().getImage(EditPropertiesComposite.class, "saveToFile", JJQBUIPlugin.IMAGE_SIZE_16x16));
+		saveToFile.setImage(VestigoUIPlugin.getDefault().getImage(EditPropertiesComposite.class, "saveToFile", VestigoUIPlugin.IMAGE_SIZE_16x16));
 		saveToFile.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent event) {

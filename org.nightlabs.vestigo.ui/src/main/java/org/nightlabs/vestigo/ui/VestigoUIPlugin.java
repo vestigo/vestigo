@@ -19,7 +19,7 @@ import org.osgi.framework.BundleContext;
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
  */
-public class JJQBUIPlugin extends AbstractUIPlugin
+public class VestigoUIPlugin extends AbstractUIPlugin
 {
 	public static final String BUNDLE_SYMBOLIC_NAME = "org.nightlabs.vestigo.ui"; //$NON-NLS-1$
 
@@ -28,7 +28,7 @@ public class JJQBUIPlugin extends AbstractUIPlugin
 	public static final String IMAGE_SIZE_75x70 = "75x70"; //$NON-NLS-1$
 
 	// The shared instance
-	private static JJQBUIPlugin plugin;
+	private static VestigoUIPlugin plugin;
 
 	private Map<String, PropertiesWithChangeSupport> propertiesScope2Properties = new HashMap<String, PropertiesWithChangeSupport>();
 
@@ -49,7 +49,7 @@ public class JJQBUIPlugin extends AbstractUIPlugin
 	 *
 	 * @return the shared instance
 	 */
-	public static JJQBUIPlugin getDefault() {
+	public static VestigoUIPlugin getDefault() {
 		return plugin;
 	}
 

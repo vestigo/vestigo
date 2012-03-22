@@ -17,7 +17,7 @@ import org.eclipse.jface.viewers.deferred.IConcurrentModel;
 import org.eclipse.jface.viewers.deferred.IConcurrentModelListener;
 import org.eclipse.swt.widgets.Display;
 import org.nightlabs.vestigo.core.PropertiesWithChangeSupport;
-import org.nightlabs.vestigo.ui.JJQBUIPlugin;
+import org.nightlabs.vestigo.ui.VestigoUIPlugin;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -55,7 +55,7 @@ implements IConcurrentModel // not necessary - just convenient to see the javado
 	public static final String PROPERTY_KEY_LAST_BUNCH_SIZE = "lastBunchSize";
 
 	public static PropertiesWithChangeSupport getProperties() {
-		return JJQBUIPlugin.getDefault().getProperties(ResultSetTableModel.class.getName());
+		return VestigoUIPlugin.getDefault().getProperties(ResultSetTableModel.class.getName());
 	}
 
 	public static int getLastBunchSize()

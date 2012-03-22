@@ -13,7 +13,7 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
-import org.nightlabs.vestigo.ui.JJQBUIPlugin;
+import org.nightlabs.vestigo.ui.VestigoUIPlugin;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
@@ -42,7 +42,7 @@ public class MultiplePersistenceUnitsWithSameNameDialog extends TitleAreaDialog 
 	protected Control createContents(Composite parent) {
 		Control contents = super.createContents(parent);
 
-		setTitleImage(JJQBUIPlugin.getDefault().getImage(MultiplePersistenceUnitsWithSameNameDialog.class, "title", JJQBUIPlugin.IMAGE_SIZE_75x70));
+		setTitleImage(VestigoUIPlugin.getDefault().getImage(MultiplePersistenceUnitsWithSameNameDialog.class, "title", VestigoUIPlugin.IMAGE_SIZE_75x70));
 		setTitle(title);
 		setMessage(message);
 
@@ -67,7 +67,7 @@ public class MultiplePersistenceUnitsWithSameNameDialog extends TitleAreaDialog 
 	{
 		super.configureShell(newShell);
 		newShell.setText(title);
-		newShell.setImage(JJQBUIPlugin.getDefault().getImage(MultiplePersistenceUnitsWithSameNameDialog.class, "shell", JJQBUIPlugin.IMAGE_SIZE_16x16)); //$NON-NLS-1$
+		newShell.setImage(VestigoUIPlugin.getDefault().getImage(MultiplePersistenceUnitsWithSameNameDialog.class, "shell", VestigoUIPlugin.IMAGE_SIZE_16x16)); //$NON-NLS-1$
 	}
 
 	@Override

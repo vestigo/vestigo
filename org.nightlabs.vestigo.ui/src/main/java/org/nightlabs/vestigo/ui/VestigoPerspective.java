@@ -11,7 +11,7 @@ import org.nightlabs.vestigo.ui.resultsettable.ResultSetTableView;
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
  */
-public class JJQBPerspective implements IPerspectiveFactory
+public class VestigoPerspective implements IPerspectiveFactory
 {
 	private static final String LEFT_TOP = "leftTop"; //$NON-NLS-1$
 	private static final String LEFT_CENTER = "leftCenter"; //$NON-NLS-1$

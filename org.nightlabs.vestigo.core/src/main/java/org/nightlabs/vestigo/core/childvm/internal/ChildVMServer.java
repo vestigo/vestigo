@@ -28,7 +28,7 @@ import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.Platform;
 import org.nightlabs.vestigo.childvm.shared.api.ChildVM;
 import org.nightlabs.vestigo.childvm.webapp.client.ChildVMWebappClient;
-import org.nightlabs.vestigo.core.JJQBCorePlugin;
+import org.nightlabs.vestigo.core.VestigoCorePlugin;
 import org.nightlabs.vestigo.core.childvm.LogLevel;
 import org.nightlabs.vestigo.core.childvm.WebApp;
 import org.nightlabs.util.IOUtil;
@@ -543,70 +543,70 @@ public class ChildVMServer
 
 	private long getChildVMServerStartTimeoutMS()
 	{
-		return JJQBCorePlugin.getDefault().getPreferences().getLong(PREFERENCE_KEY_SERVER_START_TIMEOUT_MS, PREFERENCE_DEFAULT_SERVER_START_TIMEOUT_MS);
+		return VestigoCorePlugin.getDefault().getPreferences().getLong(PREFERENCE_KEY_SERVER_START_TIMEOUT_MS, PREFERENCE_DEFAULT_SERVER_START_TIMEOUT_MS);
 	}
 
 	private String getChildVMJavaCommand()
 	{
-		return JJQBCorePlugin.getDefault().getPreferences().get(PREFERENCE_KEY_JAVA_COMMAND, PREFERENCE_DEFAULT_JAVA_COMMAND);
+		return VestigoCorePlugin.getDefault().getPreferences().get(PREFERENCE_KEY_JAVA_COMMAND, PREFERENCE_DEFAULT_JAVA_COMMAND);
 	}
 
 	private int getChildVMJavaHeapMaxMB()
 	{
-		return (int)JJQBCorePlugin.getDefault().getPreferences().getLong(PREFERENCE_KEY_JAVA_HEAP_MAX_MB, PREFERENCE_DEFAULT_JAVA_HEAP_MAX_MB);
+		return (int)VestigoCorePlugin.getDefault().getPreferences().getLong(PREFERENCE_KEY_JAVA_HEAP_MAX_MB, PREFERENCE_DEFAULT_JAVA_HEAP_MAX_MB);
 	}
 
 	private int getChildVMJavaHeapMinMB()
 	{
-		return (int)JJQBCorePlugin.getDefault().getPreferences().getLong(PREFERENCE_KEY_JAVA_HEAP_MIN_MB, PREFERENCE_DEFAULT_JAVA_HEAP_MIN_MB);
+		return (int)VestigoCorePlugin.getDefault().getPreferences().getLong(PREFERENCE_KEY_JAVA_HEAP_MIN_MB, PREFERENCE_DEFAULT_JAVA_HEAP_MIN_MB);
 	}
 
 	private int getChildVMJavaPermGenMaxMB()
 	{
-		return (int)JJQBCorePlugin.getDefault().getPreferences().getLong(PREFERENCE_KEY_JAVA_PERM_GEN_MAX_MB, PREFERENCE_DEFAULT_JAVA_PERM_GEN_MAX_MB);
+		return (int)VestigoCorePlugin.getDefault().getPreferences().getLong(PREFERENCE_KEY_JAVA_PERM_GEN_MAX_MB, PREFERENCE_DEFAULT_JAVA_PERM_GEN_MAX_MB);
 	}
 
 	private boolean isChildVMJavaPermGenGCEnabled()
 	{
-		return JJQBCorePlugin.getDefault().getPreferences().getBoolean(PREFERENCE_KEY_JAVA_PERM_GEN_GC_ENABLED, PREFERENCE_DEFAULT_JAVA_PERM_GEN_GC_ENABLED);
+		return VestigoCorePlugin.getDefault().getPreferences().getBoolean(PREFERENCE_KEY_JAVA_PERM_GEN_GC_ENABLED, PREFERENCE_DEFAULT_JAVA_PERM_GEN_GC_ENABLED);
 	}
 
 	private String getChildVMLog4jRootLogLevel()
 	{
-		return JJQBCorePlugin.getDefault().getPreferences().get(PREFERENCE_KEY_LOG4J_ROOT_LOG_LEVEL, PREFERENCE_DEFAULT_LOG4J_ROOT_LOG_LEVEL);
+		return VestigoCorePlugin.getDefault().getPreferences().get(PREFERENCE_KEY_LOG4J_ROOT_LOG_LEVEL, PREFERENCE_DEFAULT_LOG4J_ROOT_LOG_LEVEL);
 	}
 
 	private String getChildVMLog4jAdditionalProperties()
 	{
-		return JJQBCorePlugin.getDefault().getPreferences().get(PREFERENCE_KEY_LOG4J_ADDITIONAL_PROPERTIES, PREFERENCE_DEFAULT_LOG4J_ADDITIONAL_PROPERTIES);
+		return VestigoCorePlugin.getDefault().getPreferences().get(PREFERENCE_KEY_LOG4J_ADDITIONAL_PROPERTIES, PREFERENCE_DEFAULT_LOG4J_ADDITIONAL_PROPERTIES);
 	}
 
 	private boolean isChildVMDebugModeEnabled()
 	{
-		return JJQBCorePlugin.getDefault().getPreferences().getBoolean(PREFERENCE_KEY_DEBUG_MODE_ENABLED, false);
+		return VestigoCorePlugin.getDefault().getPreferences().getBoolean(PREFERENCE_KEY_DEBUG_MODE_ENABLED, false);
 	}
 
 	private int getChildVMDebugModePort()
 	{
-		return (int) JJQBCorePlugin.getDefault().getPreferences().getLong(PREFERENCE_KEY_DEBUG_MODE_PORT, PREFERENCE_DEFAULT_DEBUG_MODE_PORT);
+		return (int) VestigoCorePlugin.getDefault().getPreferences().getLong(PREFERENCE_KEY_DEBUG_MODE_PORT, PREFERENCE_DEFAULT_DEBUG_MODE_PORT);
 	}
 
 	private boolean isChildVMDebugModeWaitForDebugger()
 	{
-		return JJQBCorePlugin.getDefault().getPreferences().getBoolean(PREFERENCE_KEY_DEBUG_MODE_WAIT_FOR_DEBUGGER, false);
+		return VestigoCorePlugin.getDefault().getPreferences().getBoolean(PREFERENCE_KEY_DEBUG_MODE_WAIT_FOR_DEBUGGER, false);
 	}
 
 	public int getChildVMWebappClientSocketConnectTimeoutMillis() {
-		return (int) JJQBCorePlugin.getDefault().getPreferences().getLong(PREFERENCE_KEY_WAC_SOCKET_CONNECT_TIMEOUT_MS, PREFERENCE_DEFAULT_WAC_SOCKET_CONNECT_TIMEOUT_MS);
+		return (int) VestigoCorePlugin.getDefault().getPreferences().getLong(PREFERENCE_KEY_WAC_SOCKET_CONNECT_TIMEOUT_MS, PREFERENCE_DEFAULT_WAC_SOCKET_CONNECT_TIMEOUT_MS);
 	}
 	public int getChildVMWebappClientSocketReadTimeoutMillis() {
-		return (int) JJQBCorePlugin.getDefault().getPreferences().getLong(PREFERENCE_KEY_WAC_SOCKET_READ_TIMEOUT_MS, PREFERENCE_DEFAULT_WAC_SOCKET_READ_TIMEOUT_MS);
+		return (int) VestigoCorePlugin.getDefault().getPreferences().getLong(PREFERENCE_KEY_WAC_SOCKET_READ_TIMEOUT_MS, PREFERENCE_DEFAULT_WAC_SOCKET_READ_TIMEOUT_MS);
 	}
 
 	public int getChildVMWebappClientOnlineCheckSocketConnectTimeoutMillis() {
-		return (int) JJQBCorePlugin.getDefault().getPreferences().getLong(PREFERENCE_KEY_WAC_ONLINECHECK_SOCKET_CONNECT_TIMEOUT_MS, PREFERENCE_DEFAULT_WAC_ONLINECHECK_SOCKET_CONNECT_TIMEOUT_MS);
+		return (int) VestigoCorePlugin.getDefault().getPreferences().getLong(PREFERENCE_KEY_WAC_ONLINECHECK_SOCKET_CONNECT_TIMEOUT_MS, PREFERENCE_DEFAULT_WAC_ONLINECHECK_SOCKET_CONNECT_TIMEOUT_MS);
 	}
 	public int getChildVMWebappClientOnlineCheckSocketReadTimeoutMillis() {
-		return (int) JJQBCorePlugin.getDefault().getPreferences().getLong(PREFERENCE_KEY_WAC_ONLINECHECK_SOCKET_READ_TIMEOUT_MS, PREFERENCE_DEFAULT_WAC_ONLINECHECK_SOCKET_READ_TIMEOUT_MS);
+		return (int) VestigoCorePlugin.getDefault().getPreferences().getLong(PREFERENCE_KEY_WAC_ONLINECHECK_SOCKET_READ_TIMEOUT_MS, PREFERENCE_DEFAULT_WAC_ONLINECHECK_SOCKET_READ_TIMEOUT_MS);
 	}
 }

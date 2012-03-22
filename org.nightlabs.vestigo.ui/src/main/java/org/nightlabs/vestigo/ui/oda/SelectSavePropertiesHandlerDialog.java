@@ -19,7 +19,7 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Shell;
-import org.nightlabs.vestigo.ui.JJQBUIPlugin;
+import org.nightlabs.vestigo.ui.VestigoUIPlugin;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
@@ -47,7 +47,7 @@ public class SelectSavePropertiesHandlerDialog extends TitleAreaDialog {
 	protected Control createContents(Composite parent) {
 		Control contents = super.createContents(parent);
 
-		setTitleImage(JJQBUIPlugin.getDefault().getImage(SelectSavePropertiesHandlerDialog.class, "title", JJQBUIPlugin.IMAGE_SIZE_75x70)); //$NON-NLS-1$
+		setTitleImage(VestigoUIPlugin.getDefault().getImage(SelectSavePropertiesHandlerDialog.class, "title", VestigoUIPlugin.IMAGE_SIZE_75x70)); //$NON-NLS-1$
 		setTitle(title);
 		setMessage(message);
 
@@ -72,7 +72,7 @@ public class SelectSavePropertiesHandlerDialog extends TitleAreaDialog {
 	{
 		super.configureShell(newShell);
 		newShell.setText(title);
-		newShell.setImage(JJQBUIPlugin.getDefault().getImage(SelectSavePropertiesHandlerDialog.class, "shell", JJQBUIPlugin.IMAGE_SIZE_16x16)); //$NON-NLS-1$
+		newShell.setImage(VestigoUIPlugin.getDefault().getImage(SelectSavePropertiesHandlerDialog.class, "shell", VestigoUIPlugin.IMAGE_SIZE_16x16)); //$NON-NLS-1$
 	}
 
 	@Override

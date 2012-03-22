@@ -488,11 +488,11 @@
 
    <extension point="org.eclipse.ui.perspectives">
         <perspective
-            class="org.nightlabs.vestigo.ui.JJQBPerspective"
+            class="org.nightlabs.vestigo.ui.VestigoPerspective"
             fixed="false"
-            icon="icons/org.nightlabs.vestigo.ui/JJQBPerspective.16x16.png"
-            id="org.nightlabs.vestigo.ui.JJQBPerspective"
-            name="JDO/JPA Query Browser"/>
+            icon="icons/org.nightlabs.vestigo.ui/VestigoPerspective.16x16.png"
+            id="org.nightlabs.vestigo.ui.VestigoPerspective"
+            name="Vestigo"/>
     </extension>
 
 	<extension point="org.eclipse.ui.preferencePages">
@@ -536,7 +536,7 @@
           category="org.nightlabs.vestigo.ui"
           class="org.nightlabs.vestigo.ui.newwizard.NewProjectWizard"
           descriptionImage="icons/org.nightlabs.vestigo.ui.newwizard/NewProjectWizard.75x70.png"
-          finalPerspective="org.nightlabs.vestigo.ui.JJQBPerspective"
+          finalPerspective="org.nightlabs.vestigo.ui.VestigoPerspective"
           icon="icons/org.nightlabs.vestigo.ui.newwizard/NewProjectWizard.16x16.png"
           id="org.nightlabs.vestigo.ui.newwizard.NewProjectWizard"
           name="JJQB project"
@@ -546,7 +546,7 @@
           category="org.nightlabs.vestigo.ui"
           class="org.nightlabs.vestigo.ui.newwizard.NewQueryWizard"
           descriptionImage="icons/org.nightlabs.vestigo.ui.newwizard/NewQueryWizard.75x70.png"
-          finalPerspective="org.nightlabs.vestigo.ui.JJQBPerspective"
+          finalPerspective="org.nightlabs.vestigo.ui.VestigoPerspective"
           icon="icons/org.nightlabs.vestigo.ui.newwizard/NewQueryWizard.16x16.png"
           id="org.nightlabs.vestigo.ui.newwizard.NewQueryWizard"
           name="JJQB query">

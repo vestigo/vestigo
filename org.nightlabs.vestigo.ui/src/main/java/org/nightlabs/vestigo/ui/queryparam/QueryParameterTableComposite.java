@@ -34,7 +34,7 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Table;
 import org.nightlabs.vestigo.childvm.shared.JavaScriptFormula;
-import org.nightlabs.vestigo.ui.JJQBUIPlugin;
+import org.nightlabs.vestigo.ui.VestigoUIPlugin;
 import org.nightlabs.vestigo.ui.jface.CalendarCellEditor;
 import org.nightlabs.vestigo.ui.jface.DateCellEditor;
 import org.nightlabs.vestigo.ui.jface.JavaScriptFormulaCellEditor;
@@ -557,9 +557,9 @@ public class QueryParameterTableComposite extends Composite implements ISelectio
 			QueryParameter parameter = (QueryParameter) viewerCell.getElement();
 
 			if (parameter.getValue() == null)
-				viewerCell.setImage(JJQBUIPlugin.getDefault().getImage(QueryParameterTableComposite.class, "isNull", JJQBUIPlugin.IMAGE_SIZE_16x16));
+				viewerCell.setImage(VestigoUIPlugin.getDefault().getImage(QueryParameterTableComposite.class, "isNull", VestigoUIPlugin.IMAGE_SIZE_16x16));
 			else
-				viewerCell.setImage(JJQBUIPlugin.getDefault().getImage(QueryParameterTableComposite.class, "isNotNull", JJQBUIPlugin.IMAGE_SIZE_16x16));
+				viewerCell.setImage(VestigoUIPlugin.getDefault().getImage(QueryParameterTableComposite.class, "isNotNull", VestigoUIPlugin.IMAGE_SIZE_16x16));
 		}
 	}
 

@@ -7,7 +7,6 @@
 	<packaging>pom</packaging>
 
 	<url>http://vestigo.nightlabs.com</url>
-	<name>JJQB - JDO/JPA Query Browser</name>
 
 	<parent>
 		<groupId>org.nightlabs.eclipse</groupId>

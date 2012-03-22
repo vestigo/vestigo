@@ -55,7 +55,7 @@ import org.nightlabs.vestigo.core.oda.ConnectionProfile;
 import org.nightlabs.vestigo.core.oda.ConnectionProfileRegistry;
 import org.nightlabs.vestigo.core.oda.DelegatingConnection;
 import org.nightlabs.vestigo.core.oda.DelegatingResultSet;
-import org.nightlabs.vestigo.ui.JJQBUIPlugin;
+import org.nightlabs.vestigo.ui.VestigoUIPlugin;
 import org.nightlabs.vestigo.ui.detailtree.ObjectGraphDetailTreeView;
 import org.nightlabs.vestigo.ui.oda.OdaUtil;
 import org.nightlabs.vestigo.ui.queryparam.QueryParameter;
@@ -845,7 +845,7 @@ public abstract class QueryEditorManager
 
 	public static PropertiesWithChangeSupport getGlobalProperties()
 	{
-		return JJQBUIPlugin.getDefault().getProperties(QueryEditorManager.class.getName());
+		return VestigoUIPlugin.getDefault().getProperties(QueryEditorManager.class.getName());
 	}
 
 	public PropertiesWithChangeSupport getProperties(PropertiesType propertiesType)
@@ -863,7 +863,7 @@ public abstract class QueryEditorManager
 			}
 			case editorType:
 			{
-				properties = JJQBUIPlugin.getDefault().getProperties(this.getClass().getName() + '.' + propertiesType);
+				properties = VestigoUIPlugin.getDefault().getProperties(this.getClass().getName() + '.' + propertiesType);
 				break;
 			}
 			case editor_file:
@@ -874,7 +874,7 @@ public abstract class QueryEditorManager
 				if (queryID == null)
 					throw new IllegalStateException("queryEditor.getQueryID() returned null!");
 
-				properties = JJQBUIPlugin.getDefault().getProperties(this.getClass().getName() + '.' + propertiesType + '.' + queryID);
+				properties = VestigoUIPlugin.getDefault().getProperties(this.getClass().getName() + '.' + propertiesType + '.' + queryID);
 				break;
 			}
 			default:

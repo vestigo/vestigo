@@ -20,7 +20,7 @@ import org.eclipse.ui.IWorkbenchPreferencePage;
 import org.eclipse.ui.PlatformUI;
 import org.nightlabs.vestigo.core.oda.ConnectionProfile;
 import org.nightlabs.vestigo.core.transientconnectionproperties.TransientConnectionPropertiesProvider;
-import org.nightlabs.vestigo.ui.JJQBUIPlugin;
+import org.nightlabs.vestigo.ui.VestigoUIPlugin;
 
 public class TransientConnectionPropertiesProviderDialog extends TitleAreaDialog implements IPreferencePageContainer
 {
@@ -70,7 +70,7 @@ public class TransientConnectionPropertiesProviderDialog extends TitleAreaDialog
 	{
 		super.configureShell(newShell);
 		newShell.setText("Transient connection properties");
-		newShell.setImage(JJQBUIPlugin.getDefault().getImage(TransientConnectionPropertiesProviderDialog.class, "shell", JJQBUIPlugin.IMAGE_SIZE_16x16)); //$NON-NLS-1$
+		newShell.setImage(VestigoUIPlugin.getDefault().getImage(TransientConnectionPropertiesProviderDialog.class, "shell", VestigoUIPlugin.IMAGE_SIZE_16x16)); //$NON-NLS-1$
 	}
 
 	@Override
