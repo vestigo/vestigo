@@ -466,21 +466,21 @@ public class JDOQLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cIsExcludeSubclassesEXCLUDEKeyword_3_0_0 = (Keyword)cIsExcludeSubclassesAssignment_3_0.eContents().get(0);
 		private final Keyword cSUBCLASSESKeyword_3_1 = (Keyword)cGroup_3.eContents().get(1);
 		
-		//SubqueryFromClause: // The parser cannot differentiate between a candidate class and a field-access. The only reason
+		//SubqueryFromClause: // The parser cannot differentiate between a candidate-class and a field-access. The only reason
 		//// why we have to add the field-access-expression separately is that "this" otherwise is a key-word deemed
 		//// at the wrong location. Hence we add it now explicitely to the right location ;-) Marco :-)
 		//	"FROM" ("this" "." fieldAccessExpression=FieldAccessExpression | candidateClassName=CandidateClassName) alias=Alias?
 		//	(isExcludeSubclasses?="EXCLUDE" "SUBCLASSES")?;
 		public ParserRule getRule() { return rule; }
 
-		//// The parser cannot differentiate between a candidate class and a field-access. The only reason
+		//// The parser cannot differentiate between a candidate-class and a field-access. The only reason
 		//// why we have to add the field-access-expression separately is that "this" otherwise is a key-word deemed
 		//// at the wrong location. Hence we add it now explicitely to the right location ;-) Marco :-)
 		//"FROM" ("this" "." fieldAccessExpression=FieldAccessExpression | candidateClassName=CandidateClassName) alias=Alias?
 		//(isExcludeSubclasses?="EXCLUDE" "SUBCLASSES")?
 		public Group getGroup() { return cGroup; }
 
-		//// The parser cannot differentiate between a candidate class and a field-access. The only reason
+		//// The parser cannot differentiate between a candidate-class and a field-access. The only reason
 		//// why we have to add the field-access-expression separately is that "this" otherwise is a key-word deemed
 		//// at the wrong location. Hence we add it now explicitely to the right location ;-) Marco :-)
 		//"FROM"
@@ -4132,7 +4132,7 @@ public class JDOQLGrammarAccess extends AbstractGrammarElementFinder {
 		return getFromClauseAccess().getRule();
 	}
 
-	//SubqueryFromClause: // The parser cannot differentiate between a candidate class and a field-access. The only reason
+	//SubqueryFromClause: // The parser cannot differentiate between a candidate-class and a field-access. The only reason
 	//// why we have to add the field-access-expression separately is that "this" otherwise is a key-word deemed
 	//// at the wrong location. Hence we add it now explicitely to the right location ;-) Marco :-)
 	//	"FROM" ("this" "." fieldAccessExpression=FieldAccessExpression | candidateClassName=CandidateClassName) alias=Alias?
