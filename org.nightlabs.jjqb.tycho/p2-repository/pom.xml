@@ -59,6 +59,25 @@
 					<compress>true</compress>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.nightlabs</groupId>
+				<artifactId>org.nightlabs.p2.repository.references.plugin</artifactId>
+				<version>1.2.0</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>add-references</goal>
+						</goals>
+						<configuration>
+							<repositoryArchive>${project.build.directory}/${project.artifactId}.zip</repositoryArchive>
+							<references>
+								<reference>http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/</reference>
+							</references>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 </project>
