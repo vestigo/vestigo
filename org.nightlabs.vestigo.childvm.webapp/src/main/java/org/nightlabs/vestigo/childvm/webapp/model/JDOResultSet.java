@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.childvm.webapp.model;
+package org.nightlabs.vestigo.childvm.webapp.model;
 
 import java.lang.reflect.Field;
 import java.util.Collection;
@@ -11,9 +11,9 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 import javax.jdo.identity.SingleFieldIdentity;
 
-import org.nightlabs.jjqb.childvm.shared.dto.ResultCellDTO;
-import org.nightlabs.jjqb.childvm.shared.dto.ResultCellPersistentObjectRefDTO;
-import org.nightlabs.jjqb.childvm.shared.dto.ResultCellSimpleDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.ResultCellDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.ResultCellPersistentObjectRefDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.ResultCellSimpleDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

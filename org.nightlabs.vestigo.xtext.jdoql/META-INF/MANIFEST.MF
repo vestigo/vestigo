@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: org.nightlabs.jjqb.xtext.jdoql
+Bundle-Name: org.nightlabs.vestigo.xtext.jdoql
 Bundle-Vendor: NightLabs Consulting GmbH
 Bundle-Version: 0.2.0.qualifier
-Bundle-SymbolicName: org.nightlabs.jjqb.xtext.jdoql;singleton:=true
+Bundle-SymbolicName: org.nightlabs.vestigo.xtext.jdoql;singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext;bundle-version="2.1.0";visibility:=reexport,
  org.eclipse.xtext.xbase;bundle-version="2.1.0";resolution:=optional;visibility:=reexport,
@@ -23,17 +23,17 @@ Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib,
  org.eclipse.xtend2.lib
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Export-Package: org.nightlabs.jjqb.xtext.jdoql,
- org.nightlabs.jjqb.xtext.jdoql.services,
- org.nightlabs.jjqb.xtext.jdoql.jDOQL,
- org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl,
- org.nightlabs.jjqb.xtext.jdoql.jDOQL.util,
- org.nightlabs.jjqb.xtext.jdoql.serializer,
- org.nightlabs.jjqb.xtext.jdoql.parser.antlr,
- org.nightlabs.jjqb.xtext.jdoql.parser.antlr.internal,
- org.nightlabs.jjqb.xtext.jdoql.parser.antlr.lexer,
- org.nightlabs.jjqb.xtext.jdoql.validation,
- org.nightlabs.jjqb.xtext.jdoql.scoping,
- org.nightlabs.jjqb.xtext.jdoql.generator,
- org.nightlabs.jjqb.xtext.jdoql.formatting
+Export-Package: org.nightlabs.vestigo.xtext.jdoql,
+ org.nightlabs.vestigo.xtext.jdoql.services,
+ org.nightlabs.vestigo.xtext.jdoql.jDOQL,
+ org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl,
+ org.nightlabs.vestigo.xtext.jdoql.jDOQL.util,
+ org.nightlabs.vestigo.xtext.jdoql.serializer,
+ org.nightlabs.vestigo.xtext.jdoql.parser.antlr,
+ org.nightlabs.vestigo.xtext.jdoql.parser.antlr.internal,
+ org.nightlabs.vestigo.xtext.jdoql.parser.antlr.lexer,
+ org.nightlabs.vestigo.xtext.jdoql.validation,
+ org.nightlabs.vestigo.xtext.jdoql.scoping,
+ org.nightlabs.vestigo.xtext.jdoql.generator,
+ org.nightlabs.vestigo.xtext.jdoql.formatting
 Bundle-ClassPath: .

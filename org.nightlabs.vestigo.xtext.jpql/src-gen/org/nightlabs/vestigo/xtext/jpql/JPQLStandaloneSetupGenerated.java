@@ -1,5 +1,5 @@
 
-package org.nightlabs.jjqb.xtext.jpql;
+package org.nightlabs.vestigo.xtext.jpql;
 
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.xtext.ISetup;
@@ -23,12 +23,12 @@ public class JPQLStandaloneSetupGenerated implements ISetup {
 	}
 	
 	public Injector createInjector() {
-		return Guice.createInjector(new org.nightlabs.jjqb.xtext.jpql.JPQLRuntimeModule());
+		return Guice.createInjector(new org.nightlabs.vestigo.xtext.jpql.JPQLRuntimeModule());
 	}
 	
 	public void register(Injector injector) {
-	if (!EPackage.Registry.INSTANCE.containsKey("http://www.nightlabs.org/jjqb/xtext/jdoql/JPQL")) {
-		EPackage.Registry.INSTANCE.put("http://www.nightlabs.org/jjqb/xtext/jdoql/JPQL", org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage.eINSTANCE);
+	if (!EPackage.Registry.INSTANCE.containsKey("http://www.nightlabs.org/vestigo/xtext/jdoql/JPQL")) {
+		EPackage.Registry.INSTANCE.put("http://www.nightlabs.org/vestigo/xtext/jdoql/JPQL", org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage.eINSTANCE);
 	}
 
 		org.eclipse.xtext.resource.IResourceFactory resourceFactory = injector.getInstance(org.eclipse.xtext.resource.IResourceFactory.class);

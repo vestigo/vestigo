@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.childvm.webapp.service;
+package org.nightlabs.vestigo.childvm.webapp.service;
 
 import java.net.MalformedURLException;
 import java.util.Collection;
@@ -10,11 +10,11 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 
-import org.nightlabs.jjqb.childvm.shared.dto.ConnectionProfileDTO;
-import org.nightlabs.jjqb.childvm.shared.dto.ConnectionProfileDTOList;
-import org.nightlabs.jjqb.childvm.shared.dto.ConnectionProfileDTOPutResult;
-import org.nightlabs.jjqb.childvm.webapp.model.ConnectionProfile;
-import org.nightlabs.jjqb.childvm.webapp.model.ConnectionProfileManager;
+import org.nightlabs.vestigo.childvm.shared.dto.ConnectionProfileDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.ConnectionProfileDTOList;
+import org.nightlabs.vestigo.childvm.shared.dto.ConnectionProfileDTOPutResult;
+import org.nightlabs.vestigo.childvm.webapp.model.ConnectionProfile;
+import org.nightlabs.vestigo.childvm.webapp.model.ConnectionProfileManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -85,7 +85,7 @@ extends AbstractService
 
 		ConnectionProfileManager connectionProfileManager = ConnectionProfileManager.sharedInstance();
 
-		// uriInfo.baseUri=http://localhost:59324/org.nightlabs.jjqb.cumulus4j.childvm.webapp/ChildVMApp/
+		// uriInfo.baseUri=http://localhost:59324/org.nightlabs.vestigo.cumulus4j.childvm.webapp/ChildVMApp/
 		// => cut the final "ChildVMApp/" from it.
 		try {
 			String baseURL = uriInfo.getBaseUri().toURL().toString();

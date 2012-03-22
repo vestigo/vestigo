@@ -1,7 +1,7 @@
-package org.nightlabs.jjqb.childvm.shared.api;
+package org.nightlabs.vestigo.childvm.shared.api;
 
-import org.nightlabs.jjqb.childvm.shared.Error;
-import org.nightlabs.jjqb.childvm.shared.ErrorStackTraceElement;
+import org.nightlabs.vestigo.childvm.shared.Error;
+import org.nightlabs.vestigo.childvm.shared.ErrorStackTraceElement;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de

@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.childvm.webapp.model.test;
+package org.nightlabs.vestigo.childvm.webapp.model.test;
 
 import java.util.Collection;
 import java.util.UUID;
@@ -7,20 +7,20 @@ import junit.framework.Assert;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.nightlabs.jjqb.childvm.shared.dto.ConnectionDTO;
-import org.nightlabs.jjqb.childvm.shared.dto.ConnectionProfileDTO;
-import org.nightlabs.jjqb.childvm.shared.dto.JDOConnectionDTO;
-import org.nightlabs.jjqb.childvm.shared.dto.JDOConnectionProfileDTO;
-import org.nightlabs.jjqb.childvm.shared.dto.JPAConnectionDTO;
-import org.nightlabs.jjqb.childvm.shared.persistencexml.JDOPersistenceUnitHelper;
-import org.nightlabs.jjqb.childvm.shared.persistencexml.PersistenceUnitHelper;
-import org.nightlabs.jjqb.childvm.webapp.asm.ClassAnnotationReader;
-import org.nightlabs.jjqb.childvm.webapp.model.Connection;
-import org.nightlabs.jjqb.childvm.webapp.model.ConnectionManager;
-import org.nightlabs.jjqb.childvm.webapp.model.ConnectionProfile;
-import org.nightlabs.jjqb.childvm.webapp.model.ConnectionProfileManager;
-import org.nightlabs.jjqb.childvm.webapp.model.JDOConnection;
-import org.nightlabs.jjqb.childvm.webapp.model.JPAConnection;
+import org.nightlabs.vestigo.childvm.shared.dto.ConnectionDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.ConnectionProfileDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.JDOConnectionDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.JDOConnectionProfileDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.JPAConnectionDTO;
+import org.nightlabs.vestigo.childvm.shared.persistencexml.JDOPersistenceUnitHelper;
+import org.nightlabs.vestigo.childvm.shared.persistencexml.PersistenceUnitHelper;
+import org.nightlabs.vestigo.childvm.webapp.asm.ClassAnnotationReader;
+import org.nightlabs.vestigo.childvm.webapp.model.Connection;
+import org.nightlabs.vestigo.childvm.webapp.model.ConnectionManager;
+import org.nightlabs.vestigo.childvm.webapp.model.ConnectionProfile;
+import org.nightlabs.vestigo.childvm.webapp.model.ConnectionProfileManager;
+import org.nightlabs.vestigo.childvm.webapp.model.JDOConnection;
+import org.nightlabs.vestigo.childvm.webapp.model.JPAConnection;
 
 public class ConnectionManagerTest {
 

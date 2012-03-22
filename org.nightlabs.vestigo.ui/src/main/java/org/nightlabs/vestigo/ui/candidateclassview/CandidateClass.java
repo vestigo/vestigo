@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.ui.candidateclassview;
+package org.nightlabs.vestigo.ui.candidateclassview;
 
 public class CandidateClass
 {

@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.childvm.shared.provider;
+package org.nightlabs.vestigo.childvm.shared.provider;
 
 import java.io.IOException;
 import java.io.InputStream;

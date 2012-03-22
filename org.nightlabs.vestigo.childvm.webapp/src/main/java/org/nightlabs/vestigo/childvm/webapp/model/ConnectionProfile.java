@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.childvm.webapp.model;
+package org.nightlabs.vestigo.childvm.webapp.model;
 
 import java.io.File;
 import java.io.IOException;
@@ -19,15 +19,15 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 
-import org.nightlabs.jjqb.childvm.shared.PropertiesUtil;
-import org.nightlabs.jjqb.childvm.shared.classloader.ClassLoaderManager;
-import org.nightlabs.jjqb.childvm.shared.dto.ConnectionProfileDTO;
-import org.nightlabs.jjqb.childvm.shared.persistencexml.PersistenceUnitHelper;
-import org.nightlabs.jjqb.childvm.shared.persistencexml.PersistenceXml;
-import org.nightlabs.jjqb.childvm.shared.persistencexml.PersistenceXmlScanner;
-import org.nightlabs.jjqb.childvm.shared.persistencexml.jaxb.Persistence;
-import org.nightlabs.jjqb.childvm.shared.persistencexml.jaxb.Persistence.PersistenceUnit;
-import org.nightlabs.jjqb.childvm.webapp.asm.ClassAnnotationReader;
+import org.nightlabs.vestigo.childvm.shared.PropertiesUtil;
+import org.nightlabs.vestigo.childvm.shared.classloader.ClassLoaderManager;
+import org.nightlabs.vestigo.childvm.shared.dto.ConnectionProfileDTO;
+import org.nightlabs.vestigo.childvm.shared.persistencexml.PersistenceUnitHelper;
+import org.nightlabs.vestigo.childvm.shared.persistencexml.PersistenceXml;
+import org.nightlabs.vestigo.childvm.shared.persistencexml.PersistenceXmlScanner;
+import org.nightlabs.vestigo.childvm.shared.persistencexml.jaxb.Persistence;
+import org.nightlabs.vestigo.childvm.shared.persistencexml.jaxb.Persistence.PersistenceUnit;
+import org.nightlabs.vestigo.childvm.webapp.asm.ClassAnnotationReader;
 import org.nightlabs.util.IOUtil;
 import org.nightlabs.util.Util;
 import org.slf4j.Logger;
@@ -132,7 +132,7 @@ public abstract class ConnectionProfile
 		);
 
 		try {
-			File userTempDir = IOUtil.getUserTempDir("jjqb." + ConnectionProfile.class.getSimpleName() + '.', null);
+			File userTempDir = IOUtil.getUserTempDir("vestigo." + ConnectionProfile.class.getSimpleName() + '.', null);
 			tempDir = IOUtil.createUniqueIncrementalFolder(userTempDir, "instance-");
 		} catch (IOException e) {
 			throw new RuntimeException(e);

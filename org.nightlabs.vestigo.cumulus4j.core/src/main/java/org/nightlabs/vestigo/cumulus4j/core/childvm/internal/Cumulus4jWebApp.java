@@ -1,6 +1,6 @@
-package org.nightlabs.jjqb.cumulus4j.core.childvm.internal;
+package org.nightlabs.vestigo.cumulus4j.core.childvm.internal;
 
-import org.nightlabs.jjqb.core.childvm.AbstractWebApp;
+import org.nightlabs.vestigo.core.childvm.AbstractWebApp;
 
 public class Cumulus4jWebApp extends AbstractWebApp {
 

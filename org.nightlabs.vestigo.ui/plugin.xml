@@ -23,13 +23,13 @@
   <extension                                                                                                                                      
          point="org.eclipse.ui.cheatsheets.cheatSheetContent">                                                                                     
       <category                                                                                                                                    
-            id="org.nightlabs.jjqb.ui.cheatsheets"                                                                                                      
+            id="org.nightlabs.vestigo.ui.cheatsheets"                                                                                                      
             name="%cheatsheets.category.name">                                                                                                      
       </category>                                                                                                                                  
       <cheatsheet                                                                                                                                  
-            category="org.nightlabs.jjqb.ui.cheatsheets"                                                                                                
+            category="org.nightlabs.vestigo.ui.cheatsheets"                                                                                                
             contentFile="$nl$/cheatsheets/GettingStarted.xml"                                                                                               
-            id="org.nightlabs.jjqb.ui.cheatsheets.gettingStarted"                                                                                                
+            id="org.nightlabs.vestigo.ui.cheatsheets.gettingStarted"                                                                                                
             name="%cheatsheets.gettingStarted.name">                                                                                                         
          <description>                                                                                                                             
             %cheatsheets.gettingStarted.description                                                                                                          
@@ -41,7 +41,7 @@
    <extension
          point="org.eclipse.datatools.connectivity.connectionProfile">
       <category
-            id="org.nightlabs.jjqb.core.oda"
+            id="org.nightlabs.vestigo.core.oda"
             name="JDO/JPA Query Browser">
       </category>
    </extension>
@@ -49,91 +49,91 @@
 	<extension
          point="org.eclipse.datatools.connectivity.connectionProfile">
       <category
-            id="org.nightlabs.jjqb.core.oda.JDODriver"
+            id="org.nightlabs.vestigo.core.oda.JDODriver"
             name="JDO Connections"
-            parentCategory="org.nightlabs.jjqb.core.oda"/>
+            parentCategory="org.nightlabs.vestigo.core.oda"/>
       <connectionProfile
-            category="org.nightlabs.jjqb.core.oda.JDODriver"
+            category="org.nightlabs.vestigo.core.oda.JDODriver"
             icon="icons/jdo.png"
-            id="org.nightlabs.jjqb.core.oda.JDODriver"
+            id="org.nightlabs.vestigo.core.oda.JDODriver"
             name="JDO Connection Profile"
             pingFactory="org.eclipse.datatools.connectivity.oda.profile.OdaConnectionFactory"/>
       <connectionFactory
             id="org.eclipse.datatools.connectivity.oda.IConnection"
             name="JDO Connection Factory"
             class="org.eclipse.datatools.connectivity.oda.profile.OdaConnectionFactory"
-            profile="org.nightlabs.jjqb.core.oda.JDODriver"/>
+            profile="org.nightlabs.vestigo.core.oda.JDODriver"/>
       <newWizard
-            id="org.nightlabs.jjqb.core.oda.JDODriver"
+            id="org.nightlabs.vestigo.core.oda.JDODriver"
             name="New JDO connection"
             class="org.eclipse.datatools.connectivity.oda.design.ui.wizards.NewDataSourceWizard"
             description="Create a new JDO connection"
             icon="icons/jdo.png"
-            profile="org.nightlabs.jjqb.core.oda.JDODriver"/>
+            profile="org.nightlabs.vestigo.core.oda.JDODriver"/>
    </extension>
 
 
    <extension
          point="org.eclipse.datatools.connectivity.connectionProfile">
       <category
-            id="org.nightlabs.jjqb.core.oda.JPADriver"
+            id="org.nightlabs.vestigo.core.oda.JPADriver"
             name="JPA Connections"
-            parentCategory="org.nightlabs.jjqb.core.oda"/>
+            parentCategory="org.nightlabs.vestigo.core.oda"/>
       <connectionProfile
-            category="org.nightlabs.jjqb.core.oda.JPADriver"
+            category="org.nightlabs.vestigo.core.oda.JPADriver"
             icon="icons/jpa.png"
-            id="org.nightlabs.jjqb.core.oda.JPADriver"
+            id="org.nightlabs.vestigo.core.oda.JPADriver"
             name="JPA Connection Profile"
             pingFactory="org.eclipse.datatools.connectivity.oda.profile.OdaConnectionFactory"/>
       <connectionFactory
             id="org.eclipse.datatools.connectivity.oda.IConnection"
             name="JPA Connection Factory"
             class="org.eclipse.datatools.connectivity.oda.profile.OdaConnectionFactory"
-            profile="org.nightlabs.jjqb.core.oda.JPADriver"/>
+            profile="org.nightlabs.vestigo.core.oda.JPADriver"/>
       <newWizard
-            id="org.nightlabs.jjqb.core.oda.JPADriver"
+            id="org.nightlabs.vestigo.core.oda.JPADriver"
             name="New JPA connection"
             class="org.eclipse.datatools.connectivity.oda.design.ui.wizards.NewDataSourceWizard"
             description="Create a new JPA connection"
             icon="icons/jpa.png"
-            profile="org.nightlabs.jjqb.core.oda.JPADriver"/>
+            profile="org.nightlabs.vestigo.core.oda.JPADriver"/>
    </extension>
 
 
    <extension
          point="org.eclipse.ui.propertyPages">
       <page
-            id="org.nightlabs.jjqb.ui.oda.property.JDOClasspathPage"
+            id="org.nightlabs.vestigo.ui.oda.property.JDOClasspathPage"
             name="Classpath"
-            class="org.nightlabs.jjqb.ui.oda.property.JDOClasspathPage"
+            class="org.nightlabs.vestigo.ui.oda.property.JDOClasspathPage"
             objectClass="org.eclipse.datatools.connectivity.IConnectionProfile">
          <filter
                name="org.eclipse.datatools.profile.property.id"
-               value="org.nightlabs.jjqb.core.oda.JDODriver"/>
+               value="org.nightlabs.vestigo.core.oda.JDODriver"/>
       </page>
    </extension>
    <extension
          point="org.eclipse.ui.propertyPages">
       <page
-            id="org.nightlabs.jjqb.ui.oda.property.JDOPersistenceUnitPage"
+            id="org.nightlabs.vestigo.ui.oda.property.JDOPersistenceUnitPage"
             name="Persistence unit"
-            class="org.nightlabs.jjqb.ui.oda.property.JDOPersistenceUnitPage"
+            class="org.nightlabs.vestigo.ui.oda.property.JDOPersistenceUnitPage"
             objectClass="org.eclipse.datatools.connectivity.IConnectionProfile">
          <filter
                name="org.eclipse.datatools.profile.property.id"
-               value="org.nightlabs.jjqb.core.oda.JDODriver"/>
+               value="org.nightlabs.vestigo.core.oda.JDODriver"/>
       </page>
    </extension>
    <extension
          point="org.eclipse.ui.propertyPages">
       <page
-            id="org.nightlabs.jjqb.ui.oda.property.JDOPersistencePropertiesPage"
+            id="org.nightlabs.vestigo.ui.oda.property.JDOPersistencePropertiesPage"
             name="Persistence properties"
-            class="org.nightlabs.jjqb.ui.oda.property.JDOPersistencePropertiesPage"
+            class="org.nightlabs.vestigo.ui.oda.property.JDOPersistencePropertiesPage"
             objectClass="org.eclipse.datatools.connectivity.IConnectionProfile">
          <filter
                name="org.eclipse.datatools.profile.property.id"
-               value="org.nightlabs.jjqb.core.oda.JDODriver"/>
+               value="org.nightlabs.vestigo.core.oda.JDODriver"/>
       </page>
    </extension>
 
@@ -141,53 +141,53 @@
    <extension
          point="org.eclipse.ui.propertyPages">
       <page
-            id="org.nightlabs.jjqb.ui.oda.property.JPAClasspathPage"
+            id="org.nightlabs.vestigo.ui.oda.property.JPAClasspathPage"
             name="Classpath"
-            class="org.nightlabs.jjqb.ui.oda.property.JPAClasspathPage"
+            class="org.nightlabs.vestigo.ui.oda.property.JPAClasspathPage"
             objectClass="org.eclipse.datatools.connectivity.IConnectionProfile">
          <filter
                name="org.eclipse.datatools.profile.property.id"
-               value="org.nightlabs.jjqb.core.oda.JPADriver"/>
+               value="org.nightlabs.vestigo.core.oda.JPADriver"/>
       </page>
    </extension>
    <extension
          point="org.eclipse.ui.propertyPages">
       <page
-            id="org.nightlabs.jjqb.ui.oda.property.JPAPersistenceUnitPage"
+            id="org.nightlabs.vestigo.ui.oda.property.JPAPersistenceUnitPage"
             name="Persistence unit"
-            class="org.nightlabs.jjqb.ui.oda.property.JPAPersistenceUnitPage"
+            class="org.nightlabs.vestigo.ui.oda.property.JPAPersistenceUnitPage"
             objectClass="org.eclipse.datatools.connectivity.IConnectionProfile">
          <filter
                name="org.eclipse.datatools.profile.property.id"
-               value="org.nightlabs.jjqb.core.oda.JPADriver"/>
+               value="org.nightlabs.vestigo.core.oda.JPADriver"/>
       </page>
    </extension>
    <extension
          point="org.eclipse.ui.propertyPages">
       <page
-            id="org.nightlabs.jjqb.ui.oda.property.JPAPersistencePropertiesPage"
+            id="org.nightlabs.vestigo.ui.oda.property.JPAPersistencePropertiesPage"
             name="Persistence properties"
-            class="org.nightlabs.jjqb.ui.oda.property.JPAPersistencePropertiesPage"
+            class="org.nightlabs.vestigo.ui.oda.property.JPAPersistencePropertiesPage"
             objectClass="org.eclipse.datatools.connectivity.IConnectionProfile">
          <filter
                name="org.eclipse.datatools.profile.property.id"
-               value="org.nightlabs.jjqb.core.oda.JPADriver"/>
+               value="org.nightlabs.vestigo.core.oda.JPADriver"/>
       </page>
    </extension>
 
 
    <extension
             point="org.eclipse.datatools.connectivity.oda.design.ui.dataSource">
-      <dataSourceUI id="org.nightlabs.jjqb.core.oda.JDODriver">
+      <dataSourceUI id="org.nightlabs.vestigo.core.oda.JDODriver">
         <newDataSourceWizard
               includesProgressMonitor="false"
-              pageClass="org.nightlabs.jjqb.ui.oda.wizard.JDOWizardPage"
+              pageClass="org.nightlabs.vestigo.ui.oda.wizard.JDOWizardPage"
               pageTitle="JDO DataSource"
               windowTitle="JDO DataSource"/>
       </dataSourceUI> 
       <dataSetUI
-              id="org.nightlabs.jjqb.core.JDODataSet"
-              initialPageId="org.nightlabs.jjqb.ui.oda.JDOQueryWizardPage"
+              id="org.nightlabs.vestigo.core.JDODataSet"
+              initialPageId="org.nightlabs.vestigo.ui.oda.JDOQueryWizardPage"
               supportsInParameters="true"
               supportsOutParameters="false">
         <dataSetWizard
@@ -196,25 +196,25 @@
         <dataSetPage
               displayName="JDO Query"
               icon="icons/jdo.png"
-              id="org.nightlabs.jjqb.ui.JDOQueryWizardPage"
+              id="org.nightlabs.vestigo.ui.JDOQueryWizardPage"
               path="/"
-              wizardPageClass="org.nightlabs.jjqb.ui.oda.JDOQueryWizardPage"/>
+              wizardPageClass="org.nightlabs.vestigo.ui.oda.JDOQueryWizardPage"/>
       </dataSetUI>
    </extension>
 
 
    <extension
             point="org.eclipse.datatools.connectivity.oda.design.ui.dataSource">
-      <dataSourceUI id="org.nightlabs.jjqb.core.oda.JPADriver">
+      <dataSourceUI id="org.nightlabs.vestigo.core.oda.JPADriver">
         <newDataSourceWizard
               includesProgressMonitor="false"
-              pageClass="org.nightlabs.jjqb.ui.oda.wizard.JPAWizardPage"
+              pageClass="org.nightlabs.vestigo.ui.oda.wizard.JPAWizardPage"
               pageTitle="JPA DataSource"
               windowTitle="JPA DataSource"/>
       </dataSourceUI> 
       <dataSetUI
-              id="org.nightlabs.jjqb.core.JPADataSet"
-              initialPageId="org.nightlabs.jjqb.ui.oda.JPAQueryWizardPage"
+              id="org.nightlabs.vestigo.core.JPADataSet"
+              initialPageId="org.nightlabs.vestigo.ui.oda.JPAQueryWizardPage"
               supportsInParameters="true"
               supportsOutParameters="false">
         <dataSetWizard
@@ -223,9 +223,9 @@
         <dataSetPage
               displayName="JPA Query"
               icon="icons/jpa.png"
-              id="org.nightlabs.jjqb.ui.JPAQueryWizardPage"
+              id="org.nightlabs.vestigo.ui.JPAQueryWizardPage"
               path="/"
-              wizardPageClass="org.nightlabs.jjqb.ui.JPAQueryWizardPage"/>
+              wizardPageClass="org.nightlabs.vestigo.ui.JPAQueryWizardPage"/>
       </dataSetUI> 
    </extension>
 
@@ -233,13 +233,13 @@
    <extension
          point="org.eclipse.ui.viewActions">
       <viewContribution
-            id="org.nightlabs.jjqb.ui.viewContribution_DataSourceExplorerNavigator"
+            id="org.nightlabs.vestigo.ui.viewContribution_DataSourceExplorerNavigator"
             targetID="org.eclipse.datatools.connectivity.DataSourceExplorerNavigator">
          <action
-               class="org.nightlabs.jjqb.ui.oda.OpenQueryEditorAction"
+               class="org.nightlabs.vestigo.ui.oda.OpenQueryEditorAction"
                enablesFor="+"
-               icon="icons/org.nightlabs.jjqb.ui.oda/OpenQueryEditorAction.16x16.png"
-               id="org.nightlabs.jjqb.ui.oda.OpenQueryEditorAction"
+               icon="icons/org.nightlabs.vestigo.ui.oda/OpenQueryEditorAction.16x16.png"
+               id="org.nightlabs.vestigo.ui.oda.OpenQueryEditorAction"
                label="Open JDO/JPA query editor"
                style="push"
                toolbarPath="additions"
@@ -248,12 +248,12 @@
       </viewContribution>
 
       <viewContribution
-            id="org.nightlabs.jjqb.ui.viewContribution_ResultSetTableView"
-            targetID="org.nightlabs.jjqb.ui.resultsettable.ResultSetTableView">
+            id="org.nightlabs.vestigo.ui.viewContribution_ResultSetTableView"
+            targetID="org.nightlabs.vestigo.ui.resultsettable.ResultSetTableView">
          <action
-               class="org.nightlabs.jjqb.ui.labeltextoptionaction.ToggleShowObjectToStringAction"
-               id="org.nightlabs.jjqb.ui.labeltextoptionaction.ToggleShowObjectToStringAction"
-               icon="icons/org.nightlabs.jjqb.ui.labeltextoptionaction/ToggleShowObjectToStringAction.16x16.png"
+               class="org.nightlabs.vestigo.ui.labeltextoptionaction.ToggleShowObjectToStringAction"
+               id="org.nightlabs.vestigo.ui.labeltextoptionaction.ToggleShowObjectToStringAction"
+               icon="icons/org.nightlabs.vestigo.ui.labeltextoptionaction/ToggleShowObjectToStringAction.16x16.png"
                state="true"
                style="toggle"
                label="Show 'toString()' of complex objects"
@@ -262,9 +262,9 @@
                menubarPath="additions">
          </action>
          <action
-               class="org.nightlabs.jjqb.ui.labeltextoptionaction.ToggleShowPackageNameAction"
-               id="org.nightlabs.jjqb.ui.labeltextoptionaction.ToggleShowPackageNameAction"
-               icon="icons/org.nightlabs.jjqb.ui.labeltextoptionaction/ToggleShowPackageNameAction.16x16.png"
+               class="org.nightlabs.vestigo.ui.labeltextoptionaction.ToggleShowPackageNameAction"
+               id="org.nightlabs.vestigo.ui.labeltextoptionaction.ToggleShowPackageNameAction"
+               icon="icons/org.nightlabs.vestigo.ui.labeltextoptionaction/ToggleShowPackageNameAction.16x16.png"
                state="false"
                style="toggle"
                label="Show package names"
@@ -273,9 +273,9 @@
                menubarPath="additions">
          </action>
          <action
-               class="org.nightlabs.jjqb.ui.labeltextoptionaction.ToggleShowPersistentIDAction"
-               id="org.nightlabs.jjqb.ui.labeltextoptionaction.ToggleShowPersistentIDAction"
-               icon="icons/org.nightlabs.jjqb.ui.labeltextoptionaction/ToggleShowPersistentIDAction.16x16.png"
+               class="org.nightlabs.vestigo.ui.labeltextoptionaction.ToggleShowPersistentIDAction"
+               id="org.nightlabs.vestigo.ui.labeltextoptionaction.ToggleShowPersistentIDAction"
+               icon="icons/org.nightlabs.vestigo.ui.labeltextoptionaction/ToggleShowPersistentIDAction.16x16.png"
                state="true"
                style="toggle"
                label="Show persistent IDs"
@@ -284,9 +284,9 @@
                menubarPath="additions">
          </action>
          <action
-               class="org.nightlabs.jjqb.ui.labeltextoptionaction.ToggleShowTransientIDAction"
-               id="org.nightlabs.jjqb.ui.labeltextoptionaction.ToggleShowTransientIDAction"
-               icon="icons/org.nightlabs.jjqb.ui.labeltextoptionaction/ToggleShowTransientIDAction.16x16.png"
+               class="org.nightlabs.vestigo.ui.labeltextoptionaction.ToggleShowTransientIDAction"
+               id="org.nightlabs.vestigo.ui.labeltextoptionaction.ToggleShowTransientIDAction"
+               icon="icons/org.nightlabs.vestigo.ui.labeltextoptionaction/ToggleShowTransientIDAction.16x16.png"
                state="false"
                style="toggle"
                label="Show transient IDs"
@@ -295,9 +295,9 @@
                menubarPath="additions">
          </action>
          <action
-               class="org.nightlabs.jjqb.ui.labeltextoptionaction.ToggleShowInstanceTypeAction"
-               id="org.nightlabs.jjqb.ui.labeltextoptionaction.ToggleShowInstanceTypeAction"
-               icon="icons/org.nightlabs.jjqb.ui.labeltextoptionaction/ToggleShowInstanceTypeAction.16x16.png"
+               class="org.nightlabs.vestigo.ui.labeltextoptionaction.ToggleShowInstanceTypeAction"
+               id="org.nightlabs.vestigo.ui.labeltextoptionaction.ToggleShowInstanceTypeAction"
+               icon="icons/org.nightlabs.vestigo.ui.labeltextoptionaction/ToggleShowInstanceTypeAction.16x16.png"
                state="false"
                style="toggle"
                label="Show instance types (always)"
@@ -307,8 +307,8 @@
          </action>
 
          <action
-               class="org.nightlabs.jjqb.ui.resultsettable.NextAction"
-               id="org.nightlabs.jjqb.ui.resultsettable.NextAction"
+               class="org.nightlabs.vestigo.ui.resultsettable.NextAction"
+               id="org.nightlabs.vestigo.ui.resultsettable.NextAction"
                label="Next"
                style="pulldown"
                toolbarPath="additions">
@@ -316,12 +316,12 @@
       </viewContribution>
 
       <viewContribution
-            id="org.nightlabs.jjqb.ui.viewContribution_ObjectGraphDetailTreeView"
-            targetID="org.nightlabs.jjqb.ui.detailtree.ObjectGraphDetailTreeView">
+            id="org.nightlabs.vestigo.ui.viewContribution_ObjectGraphDetailTreeView"
+            targetID="org.nightlabs.vestigo.ui.detailtree.ObjectGraphDetailTreeView">
          <action
-               class="org.nightlabs.jjqb.ui.labeltextoptionaction.ToggleShowObjectToStringAction"
-               id="org.nightlabs.jjqb.ui.labeltextoptionaction.ToggleShowObjectToStringAction"
-               icon="icons/org.nightlabs.jjqb.ui.labeltextoptionaction/ToggleShowObjectToStringAction.16x16.png"
+               class="org.nightlabs.vestigo.ui.labeltextoptionaction.ToggleShowObjectToStringAction"
+               id="org.nightlabs.vestigo.ui.labeltextoptionaction.ToggleShowObjectToStringAction"
+               icon="icons/org.nightlabs.vestigo.ui.labeltextoptionaction/ToggleShowObjectToStringAction.16x16.png"
                state="false"
                style="toggle"
                label="Show 'toString()' of complex objects"
@@ -330,9 +330,9 @@
                menubarPath="additions">
          </action>
          <action
-               class="org.nightlabs.jjqb.ui.labeltextoptionaction.ToggleShowPackageNameAction"
-               id="org.nightlabs.jjqb.ui.labeltextoptionaction.ToggleShowPackageNameAction"
-               icon="icons/org.nightlabs.jjqb.ui.labeltextoptionaction/ToggleShowPackageNameAction.16x16.png"
+               class="org.nightlabs.vestigo.ui.labeltextoptionaction.ToggleShowPackageNameAction"
+               id="org.nightlabs.vestigo.ui.labeltextoptionaction.ToggleShowPackageNameAction"
+               icon="icons/org.nightlabs.vestigo.ui.labeltextoptionaction/ToggleShowPackageNameAction.16x16.png"
                state="false"
                style="toggle"
                label="Show package names"
@@ -341,9 +341,9 @@
                menubarPath="additions">
          </action>
          <action
-               class="org.nightlabs.jjqb.ui.labeltextoptionaction.ToggleShowPersistentIDAction"
-               id="org.nightlabs.jjqb.ui.labeltextoptionaction.ToggleShowPersistentIDAction"
-               icon="icons/org.nightlabs.jjqb.ui.labeltextoptionaction/ToggleShowPersistentIDAction.16x16.png"
+               class="org.nightlabs.vestigo.ui.labeltextoptionaction.ToggleShowPersistentIDAction"
+               id="org.nightlabs.vestigo.ui.labeltextoptionaction.ToggleShowPersistentIDAction"
+               icon="icons/org.nightlabs.vestigo.ui.labeltextoptionaction/ToggleShowPersistentIDAction.16x16.png"
                state="true"
                style="toggle"
                label="Show persistent IDs"
@@ -352,9 +352,9 @@
                menubarPath="additions">
          </action>
          <action
-               class="org.nightlabs.jjqb.ui.labeltextoptionaction.ToggleShowTransientIDAction"
-               id="org.nightlabs.jjqb.ui.labeltextoptionaction.ToggleShowTransientIDAction"
-               icon="icons/org.nightlabs.jjqb.ui.labeltextoptionaction/ToggleShowTransientIDAction.16x16.png"
+               class="org.nightlabs.vestigo.ui.labeltextoptionaction.ToggleShowTransientIDAction"
+               id="org.nightlabs.vestigo.ui.labeltextoptionaction.ToggleShowTransientIDAction"
+               icon="icons/org.nightlabs.vestigo.ui.labeltextoptionaction/ToggleShowTransientIDAction.16x16.png"
                state="false"
                style="toggle"
                label="Show transient IDs"
@@ -363,9 +363,9 @@
                menubarPath="additions">
          </action>
          <action
-               class="org.nightlabs.jjqb.ui.labeltextoptionaction.ToggleShowFieldTypeAction"
-               id="org.nightlabs.jjqb.ui.labeltextoptionaction.ToggleShowFieldTypeAction"
-               icon="icons/org.nightlabs.jjqb.ui.labeltextoptionaction/ToggleShowFieldTypeAction.16x16.png"
+               class="org.nightlabs.vestigo.ui.labeltextoptionaction.ToggleShowFieldTypeAction"
+               id="org.nightlabs.vestigo.ui.labeltextoptionaction.ToggleShowFieldTypeAction"
+               icon="icons/org.nightlabs.vestigo.ui.labeltextoptionaction/ToggleShowFieldTypeAction.16x16.png"
                state="false"
                style="toggle"
                label="Show field types"
@@ -374,9 +374,9 @@
                menubarPath="additions">
          </action>
          <action
-               class="org.nightlabs.jjqb.ui.labeltextoptionaction.ToggleShowInstanceTypeAction"
-               id="org.nightlabs.jjqb.ui.labeltextoptionaction.ToggleShowInstanceTypeAction"
-               icon="icons/org.nightlabs.jjqb.ui.labeltextoptionaction/ToggleShowInstanceTypeAction.16x16.png"
+               class="org.nightlabs.vestigo.ui.labeltextoptionaction.ToggleShowInstanceTypeAction"
+               id="org.nightlabs.vestigo.ui.labeltextoptionaction.ToggleShowInstanceTypeAction"
+               icon="icons/org.nightlabs.vestigo.ui.labeltextoptionaction/ToggleShowInstanceTypeAction.16x16.png"
                state="false"
                style="toggle"
                label="Show instance types (always)"
@@ -391,13 +391,13 @@
          point="org.eclipse.ui.popupMenus">
       <objectContribution
             adaptable="false"
-            id="org.nightlabs.jjqb.ui.objectContribution_ConnectionProfile"
+            id="org.nightlabs.vestigo.ui.objectContribution_ConnectionProfile"
             objectClass="org.eclipse.datatools.connectivity.IConnectionProfile">
          <action
-               class="org.nightlabs.jjqb.ui.oda.OpenQueryEditorAction"
+               class="org.nightlabs.vestigo.ui.oda.OpenQueryEditorAction"
                enablesFor="+"
-               icon="icons/org.nightlabs.jjqb.ui.oda/OpenQueryEditorAction.16x16.png"
-               id="org.nightlabs.jjqb.ui.oda.OpenQueryEditorAction"
+               icon="icons/org.nightlabs.vestigo.ui.oda/OpenQueryEditorAction.16x16.png"
+               id="org.nightlabs.vestigo.ui.oda.OpenQueryEditorAction"
                label="Open JDO/JPA query editor">
          </action>
       </objectContribution>
@@ -407,13 +407,13 @@
          point="org.eclipse.ui.popupMenus">
       <objectContribution
             adaptable="false"
-            id="org.nightlabs.jjqb.ui.objectContribution_IResource"
+            id="org.nightlabs.vestigo.ui.objectContribution_IResource"
             objectClass="org.eclipse.core.resources.IResource">
          <action
-               class="org.nightlabs.jjqb.ui.newwizard.NewQueryAction"
+               class="org.nightlabs.vestigo.ui.newwizard.NewQueryAction"
                enablesFor="+"
-               icon="icons/org.nightlabs.jjqb.ui.newwizard/NewQueryWizard.16x16.png"
-               id="org.nightlabs.jjqb.ui.newwizard.NewQueryAction"
+               icon="icons/org.nightlabs.vestigo.ui.newwizard/NewQueryWizard.16x16.png"
+               id="org.nightlabs.vestigo.ui.newwizard.NewQueryAction"
                label="JDO/JPA query file"
                menubarPath="common.new.menu/all-uncategorized">
          </action>
@@ -421,32 +421,32 @@
    </extension>
 
 
-<!-- This editor has been replaced by the one in project 'org.nightlabs.jjqb.xtext.jdoql.ui'. Marco :-)
+<!-- This editor has been replaced by the one in project 'org.nightlabs.vestigo.xtext.jdoql.ui'. Marco :-)
    <extension
          point="org.eclipse.ui.editors">
       <editor
-            class="org.nightlabs.jjqb.ui.editor.JDOQueryBrowserEditor"
+            class="org.nightlabs.vestigo.ui.editor.JDOQueryBrowserEditor"
             contributorClass="org.eclipse.ui.texteditor.BasicTextEditorActionContributor"
             default="true"
             extensions="jdoql"
             icon="icons/jdo.png"
-            id="org.nightlabs.jjqb.ui.editor.JDOQueryBrowserEditor"
+            id="org.nightlabs.vestigo.ui.editor.JDOQueryBrowserEditor"
             name="JDO Query Browser">
       </editor>
    </extension>
 -->
 
 
-<!-- This editor has been replaced by the one in project 'org.nightlabs.jjqb.xtext.jpql.ui'. Marco :-)
+<!-- This editor has been replaced by the one in project 'org.nightlabs.vestigo.xtext.jpql.ui'. Marco :-)
    <extension
          point="org.eclipse.ui.editors">
       <editor
-            class="org.nightlabs.jjqb.ui.editor.JPAQueryBrowserEditor"
+            class="org.nightlabs.vestigo.ui.editor.JPAQueryBrowserEditor"
             contributorClass="org.eclipse.ui.texteditor.BasicTextEditorActionContributor"
             default="true"
             extensions="jpql"
             icon="icons/jpa.png"
-            id="org.nightlabs.jjqb.ui.editor.JPAQueryBrowserEditor"
+            id="org.nightlabs.vestigo.ui.editor.JPAQueryBrowserEditor"
             name="JPA Query Browser">
       </editor>
    </extension>
@@ -456,31 +456,31 @@
    <extension
          point="org.eclipse.ui.views">
       <category 
-            id="org.nightlabs.jjqb.ui"
+            id="org.nightlabs.vestigo.ui"
             name="JDO/JPA Query Browser">
       </category>
 
-      <view id="org.nightlabs.jjqb.ui.resultsettable.ResultSetTableView"
+      <view id="org.nightlabs.vestigo.ui.resultsettable.ResultSetTableView"
             name="Result set view"
-            icon="icons/org.nightlabs.jjqb.ui.resultsettable/ResultSetTableView.16x16.png"
-            category="org.nightlabs.jjqb.ui"
-            class="org.nightlabs.jjqb.ui.resultsettable.ResultSetTableView"/>
+            icon="icons/org.nightlabs.vestigo.ui.resultsettable/ResultSetTableView.16x16.png"
+            category="org.nightlabs.vestigo.ui"
+            class="org.nightlabs.vestigo.ui.resultsettable.ResultSetTableView"/>
 
-      <view id="org.nightlabs.jjqb.ui.detailtree.ObjectGraphDetailTreeView"
+      <view id="org.nightlabs.vestigo.ui.detailtree.ObjectGraphDetailTreeView"
             name="Object graph detail tree"
-            icon="icons/org.nightlabs.jjqb.ui.detailtree/ObjectGraphDetailTreeView.16x16.png"
-            category="org.nightlabs.jjqb.ui"
-            class="org.nightlabs.jjqb.ui.detailtree.ObjectGraphDetailTreeView"/>
+            icon="icons/org.nightlabs.vestigo.ui.detailtree/ObjectGraphDetailTreeView.16x16.png"
+            category="org.nightlabs.vestigo.ui"
+            class="org.nightlabs.vestigo.ui.detailtree.ObjectGraphDetailTreeView"/>
 
-      <view id="org.nightlabs.jjqb.ui.queryparam.QueryParameterManagerView"
+      <view id="org.nightlabs.vestigo.ui.queryparam.QueryParameterManagerView"
             name="Query parameters"
-            icon="icons/org.nightlabs.jjqb.ui.queryparam/QueryParameterManagerView.16x16.png"
-            category="org.nightlabs.jjqb.ui"
-            class="org.nightlabs.jjqb.ui.queryparam.QueryParameterManagerView"/>
+            icon="icons/org.nightlabs.vestigo.ui.queryparam/QueryParameterManagerView.16x16.png"
+            category="org.nightlabs.vestigo.ui"
+            class="org.nightlabs.vestigo.ui.queryparam.QueryParameterManagerView"/>
       <view
-            category="org.nightlabs.jjqb.ui"
-            class="org.nightlabs.jjqb.ui.candidateclassview.CandidateClassView"
-            id="org.nightlabs.jjqb.ui.candidateclassview.CandidateClassView"
+            category="org.nightlabs.vestigo.ui"
+            class="org.nightlabs.vestigo.ui.candidateclassview.CandidateClassView"
+            id="org.nightlabs.vestigo.ui.candidateclassview.CandidateClassView"
             name="Candidate classes">
       </view>
    </extension>
@@ -488,94 +488,94 @@
 
    <extension point="org.eclipse.ui.perspectives">
         <perspective
-            class="org.nightlabs.jjqb.ui.JJQBPerspective"
+            class="org.nightlabs.vestigo.ui.JJQBPerspective"
             fixed="false"
-            icon="icons/org.nightlabs.jjqb.ui/JJQBPerspective.16x16.png"
-            id="org.nightlabs.jjqb.ui.JJQBPerspective"
+            icon="icons/org.nightlabs.vestigo.ui/JJQBPerspective.16x16.png"
+            id="org.nightlabs.vestigo.ui.JJQBPerspective"
             name="JDO/JPA Query Browser"/>
     </extension>
 
 	<extension point="org.eclipse.ui.preferencePages">
 		<page
-        class="org.nightlabs.jjqb.ui.preference.JJQBCategoryPreferencePage"
-        id="org.nightlabs.jjqb.ui.preference.JJQBCategoryPreferencePage"
+        class="org.nightlabs.vestigo.ui.preference.JJQBCategoryPreferencePage"
+        id="org.nightlabs.vestigo.ui.preference.JJQBCategoryPreferencePage"
         name="JJQB">
 		</page>
 	</extension>
 	<extension point="org.eclipse.ui.preferencePages">
 		<page
-        category="org.nightlabs.jjqb.ui.preference.JJQBCategoryPreferencePage"
-        class="org.nightlabs.jjqb.ui.licence.LicencePreferencePage"
-        id="org.nightlabs.jjqb.ui.licence.LicencePreferencePage"
+        category="org.nightlabs.vestigo.ui.preference.JJQBCategoryPreferencePage"
+        class="org.nightlabs.vestigo.ui.licence.LicencePreferencePage"
+        id="org.nightlabs.vestigo.ui.licence.LicencePreferencePage"
         name="Licence">
 		</page>
 	</extension>
 	<extension point="org.eclipse.ui.preferencePages">
 		<page
-		category="org.nightlabs.jjqb.ui.preference.JJQBCategoryPreferencePage"
-		class="org.nightlabs.jjqb.ui.childvm.ChildVMPreferencePage"
-		id="org.nightlabs.jjqb.ui.childvm.ChildVMPreferencePage"
+		category="org.nightlabs.vestigo.ui.preference.JJQBCategoryPreferencePage"
+		class="org.nightlabs.vestigo.ui.childvm.ChildVMPreferencePage"
+		id="org.nightlabs.vestigo.ui.childvm.ChildVMPreferencePage"
 		name="ChildVM">
 		</page>
 	</extension>
  <extension
-       point="org.nightlabs.jjqb.core.transientConnectionPropertiesProvider">
+       point="org.nightlabs.vestigo.core.transientConnectionPropertiesProvider">
     <provider
-          class="org.nightlabs.jjqb.ui.transientconnectionproperties.DefaultTransientConnectionPropertiesProvider"
-          connectionProfileClass="org.nightlabs.jjqb.core.oda.ConnectionProfile"
-          id="org.nightlabs.jjqb.ui.transientconnectionproperties.DefaultTransientConnectionPropertiesProvider">
+          class="org.nightlabs.vestigo.ui.transientconnectionproperties.DefaultTransientConnectionPropertiesProvider"
+          connectionProfileClass="org.nightlabs.vestigo.core.oda.ConnectionProfile"
+          id="org.nightlabs.vestigo.ui.transientconnectionproperties.DefaultTransientConnectionPropertiesProvider">
     </provider>
  </extension>
  <extension
        point="org.eclipse.ui.newWizards">
     <category
-          id="org.nightlabs.jjqb.ui"
+          id="org.nightlabs.vestigo.ui"
           name="JDO/JPA Query Browser">
     </category>
     <wizard
-          category="org.nightlabs.jjqb.ui"
-          class="org.nightlabs.jjqb.ui.newwizard.NewProjectWizard"
-          descriptionImage="icons/org.nightlabs.jjqb.ui.newwizard/NewProjectWizard.75x70.png"
-          finalPerspective="org.nightlabs.jjqb.ui.JJQBPerspective"
-          icon="icons/org.nightlabs.jjqb.ui.newwizard/NewProjectWizard.16x16.png"
-          id="org.nightlabs.jjqb.ui.newwizard.NewProjectWizard"
+          category="org.nightlabs.vestigo.ui"
+          class="org.nightlabs.vestigo.ui.newwizard.NewProjectWizard"
+          descriptionImage="icons/org.nightlabs.vestigo.ui.newwizard/NewProjectWizard.75x70.png"
+          finalPerspective="org.nightlabs.vestigo.ui.JJQBPerspective"
+          icon="icons/org.nightlabs.vestigo.ui.newwizard/NewProjectWizard.16x16.png"
+          id="org.nightlabs.vestigo.ui.newwizard.NewProjectWizard"
           name="JJQB project"
           project="true">
     </wizard>
     <wizard
-          category="org.nightlabs.jjqb.ui"
-          class="org.nightlabs.jjqb.ui.newwizard.NewQueryWizard"
-          descriptionImage="icons/org.nightlabs.jjqb.ui.newwizard/NewQueryWizard.75x70.png"
-          finalPerspective="org.nightlabs.jjqb.ui.JJQBPerspective"
-          icon="icons/org.nightlabs.jjqb.ui.newwizard/NewQueryWizard.16x16.png"
-          id="org.nightlabs.jjqb.ui.newwizard.NewQueryWizard"
+          category="org.nightlabs.vestigo.ui"
+          class="org.nightlabs.vestigo.ui.newwizard.NewQueryWizard"
+          descriptionImage="icons/org.nightlabs.vestigo.ui.newwizard/NewQueryWizard.75x70.png"
+          finalPerspective="org.nightlabs.vestigo.ui.JJQBPerspective"
+          icon="icons/org.nightlabs.vestigo.ui.newwizard/NewQueryWizard.16x16.png"
+          id="org.nightlabs.vestigo.ui.newwizard.NewQueryWizard"
           name="JJQB query">
     </wizard>
-    <primaryWizard id="org.nightlabs.jjqb.ui.newwizard.NewProjectWizard" />
-    <primaryWizard id="org.nightlabs.jjqb.ui.newwizard.NewQueryWizard" />
+    <primaryWizard id="org.nightlabs.vestigo.ui.newwizard.NewProjectWizard" />
+    <primaryWizard id="org.nightlabs.vestigo.ui.newwizard.NewQueryWizard" />
  </extension>
  <extension
-       point="org.nightlabs.jjqb.ui.queryFileExtension">
+       point="org.nightlabs.vestigo.ui.queryFileExtension">
     <queryFileExtension
           fileExtension="jdoql"
-          providerID="org.nightlabs.jjqb.core.oda.JDODriver">
+          providerID="org.nightlabs.vestigo.core.oda.JDODriver">
     </queryFileExtension>
     <queryFileExtension
           fileExtension="jpql"
-          providerID="org.nightlabs.jjqb.core.oda.JPADriver">
+          providerID="org.nightlabs.vestigo.core.oda.JPADriver">
     </queryFileExtension>
  </extension>
  <extension
        point="org.eclipse.ui.commands">
     <command
-          categoryId="org.nightlabs.jjqb.ui"
-          defaultHandler="org.nightlabs.jjqb.ui.editor.ExecuteQueryCommandHandler"
+          categoryId="org.nightlabs.vestigo.ui"
+          defaultHandler="org.nightlabs.vestigo.ui.editor.ExecuteQueryCommandHandler"
           description="Execute the query of the active editor."
-          id="org.nightlabs.jjqb.ui.editor.ExecuteQueryCommand"
+          id="org.nightlabs.vestigo.ui.editor.ExecuteQueryCommand"
           name="Execute query">
     </command>
     <category
-          id="org.nightlabs.jjqb.ui"
+          id="org.nightlabs.vestigo.ui"
           name="JDO/JPA Query Browser">
     </category>
  </extension>
@@ -585,10 +585,10 @@
           allPopups="false"
           locationURI="toolbar:org.eclipse.ui.main.toolbar">
        <toolbar
-             id="org.nightlabs.jjqb.ui.editor">
+             id="org.nightlabs.vestigo.ui.editor">
           <command
-                commandId="org.nightlabs.jjqb.ui.editor.ExecuteQueryCommand"
-                icon="icons/org.nightlabs.jjqb.ui.editor/ExecuteQueryCommand.16x16.png"
+                commandId="org.nightlabs.vestigo.ui.editor.ExecuteQueryCommand"
+                icon="icons/org.nightlabs.vestigo.ui.editor/ExecuteQueryCommand.16x16.png"
                 style="push"
                 tooltip="Execute query">
           </command>
@@ -598,73 +598,73 @@
  <extension
        point="org.eclipse.ui.bindings">
     <key
-          commandId="org.nightlabs.jjqb.ui.editor.ExecuteQueryCommand"
+          commandId="org.nightlabs.vestigo.ui.editor.ExecuteQueryCommand"
           contextId="org.eclipse.ui.contexts.window"
           schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
           sequence="Ctrl+F5">
     </key>
  </extension>
  <extension
-       point="org.nightlabs.jjqb.ui.editClasspathActionDelegate">
+       point="org.nightlabs.vestigo.ui.editClasspathActionDelegate">
     <action
-          class="org.nightlabs.jjqb.ui.oda.classpath.AddFileActionDelegate"
+          class="org.nightlabs.vestigo.ui.oda.classpath.AddFileActionDelegate"
           group="add"
-          icon="icons/org.nightlabs.jjqb.ui.oda.classpath/AddFileActionDelegate.16x16.png"
-          id="org.nightlabs.jjqb.ui.oda.classpath.AddFileActionDelegate"
+          icon="icons/org.nightlabs.vestigo.ui.oda.classpath/AddFileActionDelegate.16x16.png"
+          id="org.nightlabs.vestigo.ui.oda.classpath.AddFileActionDelegate"
           label="Add file(s)"
           orderHint="100"
           tooltip="Add one or more files (EAR, JAR, WAR etc.).">
     </action>
     <action
-          class="org.nightlabs.jjqb.ui.oda.classpath.AddFolderActionDelegate"
+          class="org.nightlabs.vestigo.ui.oda.classpath.AddFolderActionDelegate"
           group="add"
-          icon="icons/org.nightlabs.jjqb.ui.oda.classpath/AddFolderActionDelegate.16x16.png"
-          id="org.nightlabs.jjqb.ui.oda.classpath.AddFolderActionDelegate"
+          icon="icons/org.nightlabs.vestigo.ui.oda.classpath/AddFolderActionDelegate.16x16.png"
+          id="org.nightlabs.vestigo.ui.oda.classpath.AddFolderActionDelegate"
           label="Add folder"
           orderHint="110"
           tooltip="Add a 'classes' folder.">
     </action>
     <action
-          class="org.nightlabs.jjqb.ui.oda.classpath.AddFolderWildcardActionDelegate"
+          class="org.nightlabs.vestigo.ui.oda.classpath.AddFolderWildcardActionDelegate"
           group="add"
-          icon="icons/org.nightlabs.jjqb.ui.oda.classpath/AddFolderWildcardActionDelegate.16x16.png"
-          id="org.nightlabs.jjqb.ui.oda.classpath.AddFolderWildcardActionDelegate"
+          icon="icons/org.nightlabs.vestigo.ui.oda.classpath/AddFolderWildcardActionDelegate.16x16.png"
+          id="org.nightlabs.vestigo.ui.oda.classpath.AddFolderWildcardActionDelegate"
           label="Add files of one folder"
           orderHint="120"
           tooltip="Add the files (EAR, JAR, WAR, etc.) of one folder. Do NOT recurse into subdirectories.">
     </action>
     <action
-          class="org.nightlabs.jjqb.ui.oda.classpath.AddFolderRecursiveWildcardActionDelegate"
+          class="org.nightlabs.vestigo.ui.oda.classpath.AddFolderRecursiveWildcardActionDelegate"
           group="add"
-          icon="icons/org.nightlabs.jjqb.ui.oda.classpath/AddFolderRecursiveWildcardActionDelegate.16x16.png"
-          id="org.nightlabs.jjqb.ui.oda.classpath.AddFolderRecursiveWildcardActionDelegate"
+          icon="icons/org.nightlabs.vestigo.ui.oda.classpath/AddFolderRecursiveWildcardActionDelegate.16x16.png"
+          id="org.nightlabs.vestigo.ui.oda.classpath.AddFolderRecursiveWildcardActionDelegate"
           label="Add files of one folder and recursive sub-folders"
           orderHint="130"
           tooltip="Add the files (EAR, JAR, WAR, etc.) of one folder and all its subdirectories (recursively).">
     </action>
     <action
-          class="org.nightlabs.jjqb.ui.oda.classpath.RemoveActionDelegate"
+          class="org.nightlabs.vestigo.ui.oda.classpath.RemoveActionDelegate"
           group="remove"
-          icon="icons/org.nightlabs.jjqb.ui.oda.classpath/RemoveActionDelegate.16x16.png"
-          id="org.nightlabs.jjqb.ui.oda.classpath.RemoveActionDelegate"
+          icon="icons/org.nightlabs.vestigo.ui.oda.classpath/RemoveActionDelegate.16x16.png"
+          id="org.nightlabs.vestigo.ui.oda.classpath.RemoveActionDelegate"
           label="Remove"
           orderHint="100"
           tooltip="Remove the selected classpath elements.">
     </action>
     <action
-          class="org.nightlabs.jjqb.ui.oda.classpath.MoveUpActionDelegate"
+          class="org.nightlabs.vestigo.ui.oda.classpath.MoveUpActionDelegate"
           group="move"
-          icon="icons/org.nightlabs.jjqb.ui.oda.classpath/MoveUpActionDelegate.16x16.png"
-          id="org.nightlabs.jjqb.ui.oda.classpath.MoveUpActionDelegate"
+          icon="icons/org.nightlabs.vestigo.ui.oda.classpath/MoveUpActionDelegate.16x16.png"
+          id="org.nightlabs.vestigo.ui.oda.classpath.MoveUpActionDelegate"
           label="Move up"
           orderHint="110"
           tooltip="Move the selected element(s) up.">
     </action>
     <action
-          class="org.nightlabs.jjqb.ui.oda.classpath.MoveDownActionDelegate"
+          class="org.nightlabs.vestigo.ui.oda.classpath.MoveDownActionDelegate"
           group="move"
-          icon="icons/org.nightlabs.jjqb.ui.oda.classpath/MoveDownActionDelegate.16x16.png"
-          id="org.nightlabs.jjqb.ui.oda.classpath.MoveDownActionDelegate"
+          icon="icons/org.nightlabs.vestigo.ui.oda.classpath/MoveDownActionDelegate.16x16.png"
+          id="org.nightlabs.vestigo.ui.oda.classpath.MoveDownActionDelegate"
           label="Move down"
           orderHint="120"
           tooltip="Move the selected element(s) down.">

@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.core.oda.impl;
+package org.nightlabs.vestigo.core.oda.impl;
 
 import java.io.IOException;
 import java.util.Collection;
@@ -19,14 +19,14 @@ import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.datatools.connectivity.oda.OdaException;
-import org.nightlabs.jjqb.childvm.shared.api.ChildVM;
-import org.nightlabs.jjqb.childvm.shared.dto.ConnectionProfileDTO;
-import org.nightlabs.jjqb.core.childvm.internal.ChildVMServer;
-import org.nightlabs.jjqb.core.connectionpropertiesfilter.ConnectionPropertiesFilterManager;
-import org.nightlabs.jjqb.core.oda.Connection;
-import org.nightlabs.jjqb.core.oda.ConnectionProfile;
-import org.nightlabs.jjqb.core.oda.ConnectionPropertyMeta;
-import org.nightlabs.jjqb.core.transientconnectionproperties.TransientConnectionPropertiesProvider;
+import org.nightlabs.vestigo.childvm.shared.api.ChildVM;
+import org.nightlabs.vestigo.childvm.shared.dto.ConnectionProfileDTO;
+import org.nightlabs.vestigo.core.childvm.internal.ChildVMServer;
+import org.nightlabs.vestigo.core.connectionpropertiesfilter.ConnectionPropertiesFilterManager;
+import org.nightlabs.vestigo.core.oda.Connection;
+import org.nightlabs.vestigo.core.oda.ConnectionProfile;
+import org.nightlabs.vestigo.core.oda.ConnectionPropertyMeta;
+import org.nightlabs.vestigo.core.transientconnectionproperties.TransientConnectionPropertiesProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -59,7 +59,7 @@ public abstract class AbstractConnectionProfile implements ConnectionProfile
 
 	/**
 	 * Get the name of the web-app (without file name suffix). The basic web-app is
-	 * <code>"org.nightlabs.jjqb.childvm.webapp"</code>, but depending on the connection
+	 * <code>"org.nightlabs.vestigo.childvm.webapp"</code>, but depending on the connection
 	 * additional libraries might be necessary and thus a different web-app might need to
 	 * be used.
 	 *
@@ -200,7 +200,7 @@ public abstract class AbstractConnectionProfile implements ConnectionProfile
 		return element;
 	}
 
-	private static final String extensionPointId_transientConnectionPropertiesProvider = "org.nightlabs.jjqb.core.transientConnectionPropertiesProvider";
+	private static final String extensionPointId_transientConnectionPropertiesProvider = "org.nightlabs.vestigo.core.transientConnectionPropertiesProvider";
 
 	protected static synchronized Map<String, IConfigurationElement> getConnectionProfileClassName2ConfigurationElementMap()
 	{

@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.demo.jdo;
+package org.nightlabs.vestigo.demo.jdo;
 
 import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.IdentityType;

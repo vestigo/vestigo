@@ -12,7 +12,7 @@
       </description>
       <command
             required="false"
-            serialization="org.eclipse.ui.perspectives.showPerspective(org.eclipse.ui.perspectives.showPerspective.perspectiveId=org.nightlabs.jjqb.ui.JJQBPerspective)"/>                                                                                                                               
+            serialization="org.eclipse.ui.perspectives.showPerspective(org.eclipse.ui.perspectives.showPerspective.perspectiveId=org.nightlabs.vestigo.ui.JJQBPerspective)"/>                                                                                                                               
    </item>
    <item
          title="Download demo project">
@@ -50,8 +50,8 @@
          Invoke the <b>New...</b> action from the context menu.
       </description>
       <action
-      		class="org.nightlabs.jjqb.ui.cheatsheet.action.OpenConnectionProfileWizardAction"
-      		pluginId="org.nightlabs.jjqb.ui"
+      		class="org.nightlabs.vestigo.ui.cheatsheet.action.OpenConnectionProfileWizardAction"
+      		pluginId="org.nightlabs.vestigo.ui"
       	/>
    </item>
    <item
@@ -124,7 +124,7 @@
          title="Create simple query for a candidate class">
       <description>
       	 In order to create a simple query selecting all instances of a class you only have to <b>double-click the class</b> in the 
-      	 <b>Candidate classes</b> view. Choose the <b>org.nightlbs.jjqb.demo.jpa.Movie</b> class and double-click. 
+      	 <b>Candidate classes</b> view. Choose the <b>org.nightlbs.vestigo.demo.jpa.Movie</b> class and double-click. 
       	 This will create a new query editor already including the select statement.
       </description>
    </item>

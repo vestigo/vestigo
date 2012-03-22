@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.ui;
+package org.nightlabs.vestigo.ui;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -13,7 +13,7 @@ import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
-import org.nightlabs.jjqb.core.PropertiesWithChangeSupport;
+import org.nightlabs.vestigo.core.PropertiesWithChangeSupport;
 import org.osgi.framework.BundleContext;
 
 /**
@@ -21,7 +21,7 @@ import org.osgi.framework.BundleContext;
  */
 public class JJQBUIPlugin extends AbstractUIPlugin
 {
-	public static final String BUNDLE_SYMBOLIC_NAME = "org.nightlabs.jjqb.ui"; //$NON-NLS-1$
+	public static final String BUNDLE_SYMBOLIC_NAME = "org.nightlabs.vestigo.ui"; //$NON-NLS-1$
 
 	public static final String IMAGE_SIZE_16x16 = "16x16"; //$NON-NLS-1$
 	public static final String IMAGE_SIZE_24x24 = "24x24"; //$NON-NLS-1$

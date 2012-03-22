@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.jdt.core;
+package org.nightlabs.vestigo.jdt.core;
 
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;

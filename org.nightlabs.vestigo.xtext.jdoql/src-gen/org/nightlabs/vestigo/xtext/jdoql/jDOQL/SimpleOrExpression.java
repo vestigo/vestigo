@@ -3,7 +3,7 @@
  * </copyright>
  *
  */
-package org.nightlabs.jjqb.xtext.jdoql.jDOQL;
+package org.nightlabs.vestigo.xtext.jdoql.jDOQL;
 
 
 /**
@@ -14,11 +14,11 @@ package org.nightlabs.jjqb.xtext.jdoql.jDOQL;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SimpleOrExpression#getLeft <em>Left</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.SimpleOrExpression#getLeft <em>Left</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage#getSimpleOrExpression()
+ * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.JDOQLPackage#getSimpleOrExpression()
  * @model
  * @generated
  */
@@ -34,14 +34,14 @@ public interface SimpleOrExpression extends Expression
    * <!-- end-user-doc -->
    * @return the value of the '<em>Left</em>' containment reference.
    * @see #setLeft(Expression)
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage#getSimpleOrExpression_Left()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.JDOQLPackage#getSimpleOrExpression_Left()
    * @model containment="true"
    * @generated
    */
   Expression getLeft();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SimpleOrExpression#getLeft <em>Left</em>}' containment reference.
+   * Sets the value of the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.SimpleOrExpression#getLeft <em>Left</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Left</em>' containment reference.

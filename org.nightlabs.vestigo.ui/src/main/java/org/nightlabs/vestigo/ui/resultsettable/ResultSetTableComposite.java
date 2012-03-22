@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.ui.resultsettable;
+package org.nightlabs.vestigo.ui.resultsettable;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -46,12 +46,12 @@ import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
-import org.nightlabs.jjqb.core.LabelTextOption;
-import org.nightlabs.jjqb.core.LabelTextUtil;
-import org.nightlabs.jjqb.core.ObjectReference;
-import org.nightlabs.jjqb.core.oda.ResultSet;
-import org.nightlabs.jjqb.ui.labeltextoptionaction.LabelTextOptionsContainer;
-import org.nightlabs.jjqb.ui.licence.LicenceNotValidDialog;
+import org.nightlabs.vestigo.core.LabelTextOption;
+import org.nightlabs.vestigo.core.LabelTextUtil;
+import org.nightlabs.vestigo.core.ObjectReference;
+import org.nightlabs.vestigo.core.oda.ResultSet;
+import org.nightlabs.vestigo.ui.labeltextoptionaction.LabelTextOptionsContainer;
+import org.nightlabs.vestigo.ui.licence.LicenceNotValidDialog;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

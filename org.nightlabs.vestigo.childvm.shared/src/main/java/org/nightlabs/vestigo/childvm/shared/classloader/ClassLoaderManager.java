@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.childvm.shared.classloader;
+package org.nightlabs.vestigo.childvm.shared.classloader;
 
 import java.io.File;
 import java.io.IOException;
@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
-import org.nightlabs.jjqb.childvm.shared.PropertiesUtil;
+import org.nightlabs.vestigo.childvm.shared.PropertiesUtil;
 import org.nightlabs.progress.NullProgressMonitor;
 import org.nightlabs.progress.OperationCanceledException;
 import org.nightlabs.progress.ProgressMonitor;
@@ -78,7 +78,7 @@ public class ClassLoaderManager
 		this.connectionProperties = connProperties;
 
 		try {
-			File userTempDir = IOUtil.getUserTempDir("jjqb." + ClassLoaderManager.class.getSimpleName() + '.', null);
+			File userTempDir = IOUtil.getUserTempDir("vestigo." + ClassLoaderManager.class.getSimpleName() + '.', null);
 			tempDir = IOUtil.createUniqueIncrementalFolder(userTempDir, "instance-");
 		} catch (IOException e) {
 			throw new RuntimeException(e);

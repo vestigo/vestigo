@@ -1,12 +1,12 @@
-package org.nightlabs.jjqb.ui;
+package org.nightlabs.vestigo.ui;
 
 import org.eclipse.ui.IFolderLayout;
 import org.eclipse.ui.IPageLayout;
 import org.eclipse.ui.IPerspectiveFactory;
-import org.nightlabs.jjqb.ui.candidateclassview.CandidateClassView;
-import org.nightlabs.jjqb.ui.detailtree.ObjectGraphDetailTreeView;
-import org.nightlabs.jjqb.ui.queryparam.QueryParameterManagerView;
-import org.nightlabs.jjqb.ui.resultsettable.ResultSetTableView;
+import org.nightlabs.vestigo.ui.candidateclassview.CandidateClassView;
+import org.nightlabs.vestigo.ui.detailtree.ObjectGraphDetailTreeView;
+import org.nightlabs.vestigo.ui.queryparam.QueryParameterManagerView;
+import org.nightlabs.vestigo.ui.resultsettable.ResultSetTableView;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de

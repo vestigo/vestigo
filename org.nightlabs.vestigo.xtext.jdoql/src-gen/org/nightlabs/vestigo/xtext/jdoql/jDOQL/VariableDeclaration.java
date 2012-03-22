@@ -3,7 +3,7 @@
  * </copyright>
  *
  */
-package org.nightlabs.jjqb.xtext.jdoql.jDOQL;
+package org.nightlabs.vestigo.xtext.jdoql.jDOQL;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -15,12 +15,12 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.VariableDeclaration#getType <em>Type</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.VariableDeclaration#getVariableName <em>Variable Name</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.VariableDeclaration#getType <em>Type</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.VariableDeclaration#getVariableName <em>Variable Name</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage#getVariableDeclaration()
+ * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.JDOQLPackage#getVariableDeclaration()
  * @model
  * @generated
  */
@@ -36,14 +36,14 @@ public interface VariableDeclaration extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Type</em>' attribute.
    * @see #setType(String)
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage#getVariableDeclaration_Type()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.JDOQLPackage#getVariableDeclaration_Type()
    * @model
    * @generated
    */
   String getType();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.VariableDeclaration#getType <em>Type</em>}' attribute.
+   * Sets the value of the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.VariableDeclaration#getType <em>Type</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Type</em>' attribute.
@@ -62,14 +62,14 @@ public interface VariableDeclaration extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Variable Name</em>' attribute.
    * @see #setVariableName(String)
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage#getVariableDeclaration_VariableName()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.JDOQLPackage#getVariableDeclaration_VariableName()
    * @model
    * @generated
    */
   String getVariableName();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.VariableDeclaration#getVariableName <em>Variable Name</em>}' attribute.
+   * Sets the value of the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.VariableDeclaration#getVariableName <em>Variable Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Variable Name</em>' attribute.

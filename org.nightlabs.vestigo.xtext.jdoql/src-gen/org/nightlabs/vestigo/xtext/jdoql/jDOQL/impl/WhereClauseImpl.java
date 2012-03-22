@@ -3,7 +3,7 @@
  * </copyright>
  *
  */
-package org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl;
+package org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -14,9 +14,9 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.WhereClause;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.JDOQLPackage;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.WhereClause;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,7 +25,7 @@ import org.nightlabs.jjqb.xtext.jdoql.jDOQL.WhereClause;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.WhereClauseImpl#getFilter <em>Filter</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.WhereClauseImpl#getFilter <em>Filter</em>}</li>
  * </ul>
  * </p>
  *

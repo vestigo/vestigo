@@ -3,7 +3,7 @@
  * </copyright>
  *
  */
-package org.nightlabs.jjqb.xtext.jpql.jPQL.impl;
+package org.nightlabs.vestigo.xtext.jpql.jPQL.impl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -13,67 +13,67 @@ import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
-import org.nightlabs.jjqb.xtext.jpql.jPQL.AliasAttributeExpression;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.AllExpression;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.AndExpression;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.AnyExpression;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.AvgAggregate;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.BetweenExpression;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.BooleanExpression;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.CollectionExpression;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.ComparisonOperator;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.ComparisonOperatorExpression;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.CountAggregate;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.DeleteClause;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.DeleteStatement;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.EmptyComparisonExpression;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.ExistsExpression;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.Expression;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.ExpressionTerm;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.FromClass;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.FromClause;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.FromCollection;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.FromEntry;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.FromJoin;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.Function;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.GroupByClause;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.HavingClause;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.InExpression;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.InQueryExpression;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.InSeqExpression;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.InnerJoin;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.IntegerExpression;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLFactory;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLQuery;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.Join;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.LeftJoin;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.LikeExpression;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.MaxAggregate;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.MinAggregate;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.NullComparisonExpression;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.NullExpression;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.OrExpression;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.OrderByClause;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.OrderByDirection;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.OrderBySpec;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.ParameterExpression;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.SelectAggregateExpression;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.SelectClause;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.SelectConstructorExpression;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.SelectExpression;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.SelectStatement;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.SetClause;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.SomeExpression;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.StringExpression;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.SumAggregate;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.UpdateClause;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.UpdateItem;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.UpdateStatement;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.Value;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.Variable;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.VariableDeclaration;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.WhereClause;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.AliasAttributeExpression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.AllExpression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.AndExpression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.AnyExpression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.AvgAggregate;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.BetweenExpression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.BooleanExpression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.CollectionExpression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.ComparisonOperator;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.ComparisonOperatorExpression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.CountAggregate;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.DeleteClause;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.DeleteStatement;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.EmptyComparisonExpression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.ExistsExpression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.Expression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.ExpressionTerm;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.FromClass;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.FromClause;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.FromCollection;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.FromEntry;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.FromJoin;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.Function;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.GroupByClause;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.HavingClause;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.InExpression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.InQueryExpression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.InSeqExpression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.InnerJoin;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.IntegerExpression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLFactory;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLQuery;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.Join;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.LeftJoin;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.LikeExpression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.MaxAggregate;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.MinAggregate;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.NullComparisonExpression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.NullExpression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.OrExpression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.OrderByClause;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.OrderByDirection;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.OrderBySpec;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.ParameterExpression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.SelectAggregateExpression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.SelectClause;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.SelectConstructorExpression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.SelectExpression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.SelectStatement;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.SetClause;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.SomeExpression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.StringExpression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.SumAggregate;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.UpdateClause;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.UpdateItem;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.UpdateStatement;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.Value;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.Variable;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.VariableDeclaration;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.WhereClause;
 
 /**
  * <!-- begin-user-doc -->
@@ -507,7 +507,7 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see org.eclipse.emf.ecore.EPackage.Registry
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#eNS_URI
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#eNS_URI
    * @see #init()
    * @generated
    */

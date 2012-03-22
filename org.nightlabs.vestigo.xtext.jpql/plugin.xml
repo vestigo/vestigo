@@ -5,9 +5,9 @@
 
   <extension point="org.eclipse.emf.ecore.generated_package">
     <package 
-       uri = "http://www.nightlabs.org/jjqb/xtext/jdoql/JPQL" 
-       class = "org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage"
-       genModel = "org/nightlabs/jjqb/xtext/jpql/JPQL.genmodel" /> 
+       uri = "http://www.nightlabs.org/vestigo/xtext/jdoql/JPQL" 
+       class = "org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage"
+       genModel = "org/nightlabs/vestigo/xtext/jpql/JPQL.genmodel" /> 
 	
   </extension>
 

@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.childvm.webapp.model;
+package org.nightlabs.vestigo.childvm.webapp.model;
 
 import java.io.IOException;
 import java.util.Map;
@@ -8,12 +8,12 @@ import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.annotations.PersistenceCapable;
 
-import org.nightlabs.jjqb.childvm.shared.PropertiesUtil;
-import org.nightlabs.jjqb.childvm.shared.dto.ConnectionProfileDTO;
-import org.nightlabs.jjqb.childvm.shared.dto.JDOConnectionProfileDTO;
-import org.nightlabs.jjqb.childvm.shared.persistencexml.JDOPersistenceUnitHelper;
-import org.nightlabs.jjqb.childvm.shared.persistencexml.PersistenceUnitHelper;
-import org.nightlabs.jjqb.childvm.webapp.asm.ClassAnnotationReader;
+import org.nightlabs.vestigo.childvm.shared.PropertiesUtil;
+import org.nightlabs.vestigo.childvm.shared.dto.ConnectionProfileDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.JDOConnectionProfileDTO;
+import org.nightlabs.vestigo.childvm.shared.persistencexml.JDOPersistenceUnitHelper;
+import org.nightlabs.vestigo.childvm.shared.persistencexml.PersistenceUnitHelper;
+import org.nightlabs.vestigo.childvm.webapp.asm.ClassAnnotationReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

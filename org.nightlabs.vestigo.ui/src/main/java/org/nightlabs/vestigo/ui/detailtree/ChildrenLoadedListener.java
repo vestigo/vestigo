@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.ui.detailtree;
+package org.nightlabs.vestigo.ui.detailtree;
 
 public interface ChildrenLoadedListener {
 

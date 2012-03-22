@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.ui.oda.property;
+package org.nightlabs.vestigo.ui.oda.property;
 
 public interface PreferencePageDirtyListener {
 	void onMarkDirty(PreferencePageDirtyEvent event);

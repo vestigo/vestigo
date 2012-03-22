@@ -3,7 +3,7 @@
  * </copyright>
  *
  */
-package org.nightlabs.jjqb.xtext.jpql.jPQL;
+package org.nightlabs.vestigo.xtext.jpql.jPQL;
 
 
 /**
@@ -14,12 +14,12 @@ package org.nightlabs.jjqb.xtext.jpql.jPQL;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.ExistsExpression#isIsNot <em>Is Not</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.ExistsExpression#getRight <em>Right</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jpql.jPQL.ExistsExpression#isIsNot <em>Is Not</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jpql.jPQL.ExistsExpression#getRight <em>Right</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getExistsExpression()
+ * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getExistsExpression()
  * @model
  * @generated
  */
@@ -35,14 +35,14 @@ public interface ExistsExpression extends Expression
    * <!-- end-user-doc -->
    * @return the value of the '<em>Is Not</em>' attribute.
    * @see #setIsNot(boolean)
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getExistsExpression_IsNot()
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getExistsExpression_IsNot()
    * @model
    * @generated
    */
   boolean isIsNot();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.ExistsExpression#isIsNot <em>Is Not</em>}' attribute.
+   * Sets the value of the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.ExistsExpression#isIsNot <em>Is Not</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Is Not</em>' attribute.
@@ -61,14 +61,14 @@ public interface ExistsExpression extends Expression
    * <!-- end-user-doc -->
    * @return the value of the '<em>Right</em>' containment reference.
    * @see #setRight(SelectStatement)
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getExistsExpression_Right()
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getExistsExpression_Right()
    * @model containment="true"
    * @generated
    */
   SelectStatement getRight();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.ExistsExpression#getRight <em>Right</em>}' containment reference.
+   * Sets the value of the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.ExistsExpression#getRight <em>Right</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Right</em>' containment reference.

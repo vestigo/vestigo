@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.core;
+package org.nightlabs.vestigo.core;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -25,7 +25,7 @@ implements BundleActivator
 {
 	private static final Logger logger = LoggerFactory.getLogger(JJQBCorePlugin.class);
 
-	public static final String BUNDLE_SYMBOLIC_NAME = "org.nightlabs.jjqb.core"; //$NON-NLS-1$
+	public static final String BUNDLE_SYMBOLIC_NAME = "org.nightlabs.vestigo.core"; //$NON-NLS-1$
 
 	private BundleContext bundleContext;
 	private LicenceManager licenceManager;
@@ -104,7 +104,7 @@ implements BundleActivator
 
 //		licenceManager = new LicenceManagerOnlineImpl(Long.toString(87920));
 		Version version = context.getBundle().getVersion();
-		licenceManager = new LicenceManagerOfflineImpl("org.nightlabs.jjqb", version);
+		licenceManager = new LicenceManagerOfflineImpl("org.nightlabs.vestigo", version);
 
 		logger.info("start: Started context.bundle.symbolicName={}", context.getBundle().getSymbolicName());
 	}

@@ -1,14 +1,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<artifactId>org.nightlabs.jjqb.ui</artifactId>
+	<artifactId>org.nightlabs.vestigo.ui</artifactId>
 	<packaging>bundle</packaging>
 
 	<parent>
-		<groupId>org.nightlabs.jjqb</groupId>
-		<artifactId>org.nightlabs.jjqb.parent</artifactId>
+		<groupId>org.nightlabs.vestigo</groupId>
+		<artifactId>org.nightlabs.vestigo.parent</artifactId>
 		<version>0.2.0-SNAPSHOT</version>
-		<relativePath>../org.nightlabs.jjqb.parent</relativePath>
+		<relativePath>../org.nightlabs.vestigo.parent</relativePath>
 	</parent>
 
 	<dependencyManagement>
@@ -18,9 +18,9 @@
 				We need this for our AbstractQueryBrowserEditor (subclass of XtextEditor). Otherwise, we'd need
 				a new project for this one class. IMHO it's better to introduce this dependency. Marco :-)
 				-->
-				<groupId>org.nightlabs.jjqb</groupId>
-				<artifactId>org.nightlabs.jjqb.xtext.parent</artifactId>
-				<version>${jjqb.version}</version>
+				<groupId>org.nightlabs.vestigo</groupId>
+				<artifactId>org.nightlabs.vestigo.xtext.parent</artifactId>
+				<version>${vestigo.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
@@ -28,12 +28,12 @@
 	</dependencyManagement>
 
 	<dependencies>
-		<!-- BEGIN org.nightlabs.jjqb -->
+		<!-- BEGIN org.nightlabs.vestigo -->
 		<dependency>
-			<groupId>org.nightlabs.jjqb</groupId>
-			<artifactId>org.nightlabs.jjqb.core</artifactId>
+			<groupId>org.nightlabs.vestigo</groupId>
+			<artifactId>org.nightlabs.vestigo.core</artifactId>
 		</dependency>
-		<!-- END org.nightlabs.jjqb -->
+		<!-- END org.nightlabs.vestigo -->
 
 		<!-- BEGIN org.eclipse -->
 		<dependency>
@@ -170,7 +170,7 @@ temporarily... because of exampleeditor - we should switch back to the property,
 					<manifestLocation>META-INF</manifestLocation>
 				-->
 					<instructions>
-						<Bundle-Activator>org.nightlabs.jjqb.ui.JJQBUIPlugin</Bundle-Activator>
+						<Bundle-Activator>org.nightlabs.vestigo.ui.JJQBUIPlugin</Bundle-Activator>
 						<Bundle-ActivationPolicy>lazy</Bundle-ActivationPolicy>
 						<Require-Bundle>org.eclipse.core.runtime</Require-Bundle>
 						<Import-Package>!org.eclipse.core.runtime,*</Import-Package>

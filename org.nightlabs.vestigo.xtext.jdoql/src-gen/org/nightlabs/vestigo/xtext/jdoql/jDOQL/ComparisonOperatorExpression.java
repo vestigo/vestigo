@@ -3,7 +3,7 @@
  * </copyright>
  *
  */
-package org.nightlabs.jjqb.xtext.jdoql.jDOQL;
+package org.nightlabs.vestigo.xtext.jdoql.jDOQL;
 
 
 /**
@@ -14,12 +14,12 @@ package org.nightlabs.jjqb.xtext.jdoql.jDOQL;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ComparisonOperatorExpression#getLeft <em>Left</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ComparisonOperatorExpression#getOperator <em>Operator</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.ComparisonOperatorExpression#getLeft <em>Left</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.ComparisonOperatorExpression#getOperator <em>Operator</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage#getComparisonOperatorExpression()
+ * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.JDOQLPackage#getComparisonOperatorExpression()
  * @model
  * @generated
  */
@@ -35,14 +35,14 @@ public interface ComparisonOperatorExpression extends Expression
    * <!-- end-user-doc -->
    * @return the value of the '<em>Left</em>' containment reference.
    * @see #setLeft(Expression)
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage#getComparisonOperatorExpression_Left()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.JDOQLPackage#getComparisonOperatorExpression_Left()
    * @model containment="true"
    * @generated
    */
   Expression getLeft();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ComparisonOperatorExpression#getLeft <em>Left</em>}' containment reference.
+   * Sets the value of the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.ComparisonOperatorExpression#getLeft <em>Left</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Left</em>' containment reference.
@@ -53,7 +53,7 @@ public interface ComparisonOperatorExpression extends Expression
 
   /**
    * Returns the value of the '<em><b>Operator</b></em>' attribute.
-   * The literals are from the enumeration {@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ComparisonOperator}.
+   * The literals are from the enumeration {@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.ComparisonOperator}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Operator</em>' attribute isn't clear,
@@ -61,20 +61,20 @@ public interface ComparisonOperatorExpression extends Expression
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Operator</em>' attribute.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.ComparisonOperator
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.ComparisonOperator
    * @see #setOperator(ComparisonOperator)
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage#getComparisonOperatorExpression_Operator()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.JDOQLPackage#getComparisonOperatorExpression_Operator()
    * @model
    * @generated
    */
   ComparisonOperator getOperator();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ComparisonOperatorExpression#getOperator <em>Operator</em>}' attribute.
+   * Sets the value of the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.ComparisonOperatorExpression#getOperator <em>Operator</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Operator</em>' attribute.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.ComparisonOperator
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.ComparisonOperator
    * @see #getOperator()
    * @generated
    */

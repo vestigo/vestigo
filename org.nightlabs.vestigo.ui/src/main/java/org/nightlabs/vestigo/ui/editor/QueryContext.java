@@ -1,12 +1,12 @@
-package org.nightlabs.jjqb.ui.editor;
+package org.nightlabs.vestigo.ui.editor;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.datatools.connectivity.IConnectionProfile;
 import org.eclipse.datatools.connectivity.oda.IConnection;
-import org.nightlabs.jjqb.ui.queryparam.QueryParameter;
-import org.nightlabs.jjqb.ui.queryparam.QueryParameterManager;
+import org.nightlabs.vestigo.ui.queryparam.QueryParameter;
+import org.nightlabs.vestigo.ui.queryparam.QueryParameterManager;
 import org.nightlabs.util.Util;
 
 /**

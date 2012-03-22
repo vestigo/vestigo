@@ -1,8 +1,8 @@
-package org.nightlabs.jjqb.ui.labeltextoptionaction;
+package org.nightlabs.vestigo.ui.labeltextoptionaction;
 
 import java.util.Set;
 
-import org.nightlabs.jjqb.core.LabelTextOption;
+import org.nightlabs.vestigo.core.LabelTextOption;
 
 public interface LabelTextOptionsContainer
 {

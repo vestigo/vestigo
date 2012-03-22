@@ -1,7 +1,7 @@
-package org.nightlabs.jjqb.ui.oda.wizard;
+package org.nightlabs.vestigo.ui.oda.wizard;
 
-import org.nightlabs.jjqb.ui.oda.property.AbstractDataSourceEditorPage;
-import org.nightlabs.jjqb.ui.wizard.WizardHop;
+import org.nightlabs.vestigo.ui.oda.property.AbstractDataSourceEditorPage;
+import org.nightlabs.vestigo.ui.wizard.WizardHop;
 
 public abstract class AbstractDataSourceEditorWizardPage
 extends GenericDataSourceEditorWizardPage

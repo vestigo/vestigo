@@ -1,12 +1,12 @@
-module org.nightlabs.jjqb.xtext.jdoql.GenerateJDOQL
+module org.nightlabs.vestigo.xtext.jdoql.GenerateJDOQL
 
 import org.eclipse.emf.mwe.utils.*
 import org.eclipse.xtext.generator.*
 import org.eclipse.xtext.ui.generator.*
 
-var grammarURI = "classpath:/org/nightlabs/jjqb/xtext/jdoql/JDOQL.xtext"
+var grammarURI = "classpath:/org/nightlabs/vestigo/xtext/jdoql/JDOQL.xtext"
 var file.extensions = "jdoql"
-var projectName = "org.nightlabs.jjqb.xtext.jdoql"
+var projectName = "org.nightlabs.vestigo.xtext.jdoql"
 var runtimeProject = "../${projectName}"
 
 Workflow {

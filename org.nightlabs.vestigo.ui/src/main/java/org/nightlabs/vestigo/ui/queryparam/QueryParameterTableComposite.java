@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.ui.queryparam;
+package org.nightlabs.vestigo.ui.queryparam;
 
 import java.text.DateFormat;
 import java.util.Calendar;
@@ -33,11 +33,11 @@ import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Table;
-import org.nightlabs.jjqb.childvm.shared.JavaScriptFormula;
-import org.nightlabs.jjqb.ui.JJQBUIPlugin;
-import org.nightlabs.jjqb.ui.jface.CalendarCellEditor;
-import org.nightlabs.jjqb.ui.jface.DateCellEditor;
-import org.nightlabs.jjqb.ui.jface.JavaScriptFormulaCellEditor;
+import org.nightlabs.vestigo.childvm.shared.JavaScriptFormula;
+import org.nightlabs.vestigo.ui.JJQBUIPlugin;
+import org.nightlabs.vestigo.ui.jface.CalendarCellEditor;
+import org.nightlabs.vestigo.ui.jface.DateCellEditor;
+import org.nightlabs.vestigo.ui.jface.JavaScriptFormulaCellEditor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

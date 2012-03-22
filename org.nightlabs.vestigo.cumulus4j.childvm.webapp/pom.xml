@@ -1,39 +1,39 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<artifactId>org.nightlabs.jjqb.cumulus4j.childvm.webapp</artifactId>
+	<artifactId>org.nightlabs.vestigo.cumulus4j.childvm.webapp</artifactId>
 	<packaging>war</packaging>
 
 	<parent>
-		<groupId>org.nightlabs.jjqb</groupId>
-		<artifactId>org.nightlabs.jjqb.parent</artifactId>
+		<groupId>org.nightlabs.vestigo</groupId>
+		<artifactId>org.nightlabs.vestigo.parent</artifactId>
 		<version>0.2.0-SNAPSHOT</version>
-		<relativePath>../org.nightlabs.jjqb.parent</relativePath>
+		<relativePath>../org.nightlabs.vestigo.parent</relativePath>
 	</parent>
 
 	<dependencies>
 		<dependency>
-			<groupId>org.nightlabs.jjqb</groupId>
-			<artifactId>org.nightlabs.jjqb.childvm.shared</artifactId>
+			<groupId>org.nightlabs.vestigo</groupId>
+			<artifactId>org.nightlabs.vestigo.childvm.shared</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.nightlabs.jjqb</groupId>
-			<artifactId>org.nightlabs.jjqb.childvm.webapp</artifactId>
+			<groupId>org.nightlabs.vestigo</groupId>
+			<artifactId>org.nightlabs.vestigo.childvm.webapp</artifactId>
 			<type>war</type>
 		</dependency>
 		<dependency>
-			<groupId>org.nightlabs.jjqb</groupId>
-			<artifactId>org.nightlabs.jjqb.childvm.webapp</artifactId>
+			<groupId>org.nightlabs.vestigo</groupId>
+			<artifactId>org.nightlabs.vestigo.childvm.webapp</artifactId>
 			<classifier>jar</classifier>
 			<scope>provided</scope> <!-- Not 'compile', because the 'war' above is already merged via the 'overlay' mechanism. -->
 		</dependency>
 		<dependency>
-			<groupId>org.nightlabs.jjqb</groupId>
-			<artifactId>org.nightlabs.jjqb.cumulus4j.childvm.shared</artifactId>
+			<groupId>org.nightlabs.vestigo</groupId>
+			<artifactId>org.nightlabs.vestigo.cumulus4j.childvm.shared</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.nightlabs.jjqb</groupId>
-			<artifactId>org.nightlabs.jjqb.childvm.webapp</artifactId>
+			<groupId>org.nightlabs.vestigo</groupId>
+			<artifactId>org.nightlabs.vestigo.childvm.webapp</artifactId>
 			<classifier>tests</classifier>
 <!--			<type>war</type> -->
 			<scope>test</scope>
@@ -56,8 +56,8 @@
 			</activation>
 			<dependencies>
 				<dependency>
-					<groupId>org.nightlabs.jjqb</groupId>
-					<artifactId>org.nightlabs.jjqb.childvm.webapp</artifactId>
+					<groupId>org.nightlabs.vestigo</groupId>
+					<artifactId>org.nightlabs.vestigo.childvm.webapp</artifactId>
 					<classifier>tests</classifier>
 				</dependency>
 			</dependencies>

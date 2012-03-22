@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.ui.preference;
+package org.nightlabs.vestigo.ui.preference;
 
 import java.net.URL;
 
@@ -16,8 +16,8 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.forms.events.HyperlinkAdapter;
 import org.eclipse.ui.forms.events.HyperlinkEvent;
 import org.eclipse.ui.forms.widgets.Hyperlink;
-import org.nightlabs.jjqb.ui.licence.LicenceNotValidDialog;
-import org.nightlabs.jjqb.ui.resource.Messages;
+import org.nightlabs.vestigo.ui.licence.LicenceNotValidDialog;
+import org.nightlabs.vestigo.ui.resource.Messages;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

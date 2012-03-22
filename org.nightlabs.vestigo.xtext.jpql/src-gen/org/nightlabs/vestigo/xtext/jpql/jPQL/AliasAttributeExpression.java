@@ -3,7 +3,7 @@
  * </copyright>
  *
  */
-package org.nightlabs.jjqb.xtext.jpql.jPQL;
+package org.nightlabs.vestigo.xtext.jpql.jPQL;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -15,13 +15,13 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.AliasAttributeExpression#getDirection <em>Direction</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.AliasAttributeExpression#getAlias <em>Alias</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.AliasAttributeExpression#getAttributes <em>Attributes</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jpql.jPQL.AliasAttributeExpression#getDirection <em>Direction</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jpql.jPQL.AliasAttributeExpression#getAlias <em>Alias</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jpql.jPQL.AliasAttributeExpression#getAttributes <em>Attributes</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getAliasAttributeExpression()
+ * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getAliasAttributeExpression()
  * @model
  * @generated
  */
@@ -29,7 +29,7 @@ public interface AliasAttributeExpression extends OrderBySpec, SelectExpression,
 {
   /**
    * Returns the value of the '<em><b>Direction</b></em>' attribute.
-   * The literals are from the enumeration {@link org.nightlabs.jjqb.xtext.jpql.jPQL.OrderByDirection}.
+   * The literals are from the enumeration {@link org.nightlabs.vestigo.xtext.jpql.jPQL.OrderByDirection}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Direction</em>' attribute isn't clear,
@@ -37,20 +37,20 @@ public interface AliasAttributeExpression extends OrderBySpec, SelectExpression,
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Direction</em>' attribute.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.OrderByDirection
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.OrderByDirection
    * @see #setDirection(OrderByDirection)
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getAliasAttributeExpression_Direction()
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getAliasAttributeExpression_Direction()
    * @model
    * @generated
    */
   OrderByDirection getDirection();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.AliasAttributeExpression#getDirection <em>Direction</em>}' attribute.
+   * Sets the value of the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.AliasAttributeExpression#getDirection <em>Direction</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Direction</em>' attribute.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.OrderByDirection
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.OrderByDirection
    * @see #getDirection()
    * @generated
    */
@@ -66,14 +66,14 @@ public interface AliasAttributeExpression extends OrderBySpec, SelectExpression,
    * <!-- end-user-doc -->
    * @return the value of the '<em>Alias</em>' reference.
    * @see #setAlias(VariableDeclaration)
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getAliasAttributeExpression_Alias()
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getAliasAttributeExpression_Alias()
    * @model
    * @generated
    */
   VariableDeclaration getAlias();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.AliasAttributeExpression#getAlias <em>Alias</em>}' reference.
+   * Sets the value of the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.AliasAttributeExpression#getAlias <em>Alias</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Alias</em>' reference.
@@ -92,7 +92,7 @@ public interface AliasAttributeExpression extends OrderBySpec, SelectExpression,
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Attributes</em>' attribute list.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getAliasAttributeExpression_Attributes()
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getAliasAttributeExpression_Attributes()
    * @model unique="false"
    * @generated
    */

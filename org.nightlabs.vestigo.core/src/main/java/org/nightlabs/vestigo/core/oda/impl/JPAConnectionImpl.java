@@ -11,14 +11,14 @@
  *   Alexander Bieber, NightLabs - initial API and implementation              *
  ******************************************************************************/
 
-package org.nightlabs.jjqb.core.oda.impl;
+package org.nightlabs.vestigo.core.oda.impl;
 
 import org.eclipse.datatools.connectivity.oda.IDataSetMetaData;
 import org.eclipse.datatools.connectivity.oda.OdaException;
-import org.nightlabs.jjqb.childvm.shared.dto.ConnectionDTO;
-import org.nightlabs.jjqb.childvm.shared.dto.JPAConnectionDTO;
-import org.nightlabs.jjqb.core.oda.JPAConnection;
-import org.nightlabs.jjqb.core.oda.Query;
+import org.nightlabs.vestigo.childvm.shared.dto.ConnectionDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.JPAConnectionDTO;
+import org.nightlabs.vestigo.core.oda.JPAConnection;
+import org.nightlabs.vestigo.core.oda.Query;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de

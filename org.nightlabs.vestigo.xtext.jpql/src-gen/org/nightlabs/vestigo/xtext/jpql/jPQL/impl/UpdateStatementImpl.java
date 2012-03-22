@@ -3,7 +3,7 @@
  * </copyright>
  *
  */
-package org.nightlabs.jjqb.xtext.jpql.jPQL.impl;
+package org.nightlabs.vestigo.xtext.jpql.jPQL.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -13,10 +13,10 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.SetClause;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.UpdateClause;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.UpdateStatement;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.SetClause;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.UpdateClause;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.UpdateStatement;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,8 +25,8 @@ import org.nightlabs.jjqb.xtext.jpql.jPQL.UpdateStatement;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.UpdateStatementImpl#getUpdateClause <em>Update Clause</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.UpdateStatementImpl#getSetClause <em>Set Clause</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.UpdateStatementImpl#getUpdateClause <em>Update Clause</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.UpdateStatementImpl#getSetClause <em>Set Clause</em>}</li>
  * </ul>
  * </p>
  *

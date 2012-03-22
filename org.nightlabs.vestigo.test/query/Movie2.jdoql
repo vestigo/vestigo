@@ -9,6 +9,6 @@ WHERE
 ------PROPERTIES_BEGIN------
 --queryParameter%5B63b6135f-1b44-4014-8021-e017e31c8094%5D.index=1
 --queryParameter%5B63b6135f-1b44-4014-8021-e017e31c8094%5D.name=
---queryParameter%5B63b6135f-1b44-4014-8021-e017e31c8094%5D.type=org.nightlabs.jjqb.childvm.shared.JavaScriptFormula
+--queryParameter%5B63b6135f-1b44-4014-8021-e017e31c8094%5D.type=org.nightlabs.vestigo.childvm.shared.JavaScriptFormula
 --queryParameter%5B63b6135f-1b44-4014-8021-e017e31c8094%5D.value=var+query+%3D+pm.newQuery%28%22SELECT+FROM+org.cumulus4j.store.test.movie.Person%22%29%3B%0Avar+persons+%3D+new+java.util.ArrayList%28query.execute%28%29%29%3B%0Ajava.util.Collections.shuffle%28persons%29%3B%0Apersons.get%280%29%3B
 ------PROPERTIES_END------

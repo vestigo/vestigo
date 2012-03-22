@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="org.nightlabs.jjqb.jdt.ui.feature"
+      id="org.nightlabs.vestigo.jdt.ui.feature"
       label="Vestigo JDT integration"
       version="0.2.0.qualifier"
       provider-name="NightLabs Consulting GmbH">
@@ -18,18 +18,18 @@
    </license>
 
    <requires>
-      <import feature="org.nightlabs.jjqb.ui.feature" version="0.2.0" match="greaterOrEqual"/>
+      <import feature="org.nightlabs.vestigo.ui.feature" version="0.2.0" match="greaterOrEqual"/>
    </requires>
 
    <plugin
-         id="org.nightlabs.jjqb.jdt.core"
+         id="org.nightlabs.vestigo.jdt.core"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="org.nightlabs.jjqb.jdt.ui"
+         id="org.nightlabs.vestigo.jdt.ui"
          download-size="0"
          install-size="0"
          version="0.0.0"

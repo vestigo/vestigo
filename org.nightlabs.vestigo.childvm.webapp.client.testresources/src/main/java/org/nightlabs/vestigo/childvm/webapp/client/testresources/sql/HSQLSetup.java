@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.nightlabs.jjqb.childvm.webapp.client.testresources.sql;
+package org.nightlabs.vestigo.childvm.webapp.client.testresources.sql;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -20,7 +20,7 @@ public class HSQLSetup extends AbstractSetup {
 
 	public static String getDefaultJdbcUrl() {
 //		jdbc:derby:/srv/databases/thisdb
-		return "jdbc:hsqldb:file:" + System.getProperty("java.io.tmpdir", "") + "/jjqb-test-db; shutdown=true";
+		return "jdbc:hsqldb:file:" + System.getProperty("java.io.tmpdir", "") + "/vestigo-test-db; shutdown=true";
 	}
 	
 	public static String getDefaultJdbcDriver() {
@@ -30,8 +30,8 @@ public class HSQLSetup extends AbstractSetup {
 	
 	@Override
 	public Connection getConnection() throws SQLException {
-//		return DriverManager.getConnection("jdbc:hsqldb:mem:jjqb-test; shutdown=true", "sa", "" );
-//		return DriverManager.getConnection("jdbc:hsqldb:mem:jjqb-test", "sa", "" );
+//		return DriverManager.getConnection("jdbc:hsqldb:mem:vestigo-test; shutdown=true", "sa", "" );
+//		return DriverManager.getConnection("jdbc:hsqldb:mem:vestigo-test", "sa", "" );
 		return DriverManager.getConnection(getDefaultJdbcUrl(), "sa", "" );
 	}
 

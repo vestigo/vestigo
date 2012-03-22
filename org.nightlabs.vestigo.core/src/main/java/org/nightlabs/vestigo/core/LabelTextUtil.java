@@ -1,11 +1,11 @@
-package org.nightlabs.jjqb.core;
+package org.nightlabs.vestigo.core;
 
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import org.nightlabs.jjqb.core.oda.ResultSet;
+import org.nightlabs.vestigo.core.oda.ResultSet;
 
 public final class LabelTextUtil {
 	private LabelTextUtil() { }

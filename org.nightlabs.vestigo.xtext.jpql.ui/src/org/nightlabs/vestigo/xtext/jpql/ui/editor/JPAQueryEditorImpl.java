@@ -1,9 +1,9 @@
-package org.nightlabs.jjqb.xtext.jpql.ui.editor;
+package org.nightlabs.vestigo.xtext.jpql.ui.editor;
 
-import org.nightlabs.jjqb.ui.editor.AbstractQueryEditor;
-import org.nightlabs.jjqb.ui.editor.JPAQueryEditor;
-import org.nightlabs.jjqb.ui.editor.JPAQueryEditorManager;
-import org.nightlabs.jjqb.ui.editor.QueryEditorManager;
+import org.nightlabs.vestigo.ui.editor.AbstractQueryEditor;
+import org.nightlabs.vestigo.ui.editor.JPAQueryEditor;
+import org.nightlabs.vestigo.ui.editor.JPAQueryEditorManager;
+import org.nightlabs.vestigo.ui.editor.QueryEditorManager;
 
 import com.google.inject.Injector;
 
@@ -21,6 +21,6 @@ implements JPAQueryEditor
 
 	@Override
 	protected Injector getInjector() {
-		return org.nightlabs.jjqb.xtext.jpql.ui.internal.JPQLActivator.getInstance().getInjector("org.nightlabs.jjqb.xtext.jpql.JPQL");
+		return org.nightlabs.vestigo.xtext.jpql.ui.internal.JPQLActivator.getInstance().getInjector("org.nightlabs.vestigo.xtext.jpql.JPQL");
 	}
 }

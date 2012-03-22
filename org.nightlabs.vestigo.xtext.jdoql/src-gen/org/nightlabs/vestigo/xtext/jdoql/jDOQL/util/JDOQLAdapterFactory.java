@@ -3,7 +3,7 @@
  * </copyright>
  *
  */
-package org.nightlabs.jjqb.xtext.jdoql.jDOQL.util;
+package org.nightlabs.vestigo.xtext.jdoql.jDOQL.util;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
@@ -12,14 +12,14 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
 import org.eclipse.emf.ecore.EObject;
 
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.*;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.*;
 
 /**
  * <!-- begin-user-doc -->
  * The <b>Adapter Factory</b> for the model.
  * It provides an adapter <code>createXXX</code> method for each class of the model.
  * <!-- end-user-doc -->
- * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage
+ * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.JDOQLPackage
  * @generated
  */
 public class JDOQLAdapterFactory extends AdapterFactoryImpl
@@ -260,13 +260,13 @@ public class JDOQLAdapterFactory extends AdapterFactoryImpl
 
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SingleStringJDOQL <em>Single String JDOQL</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.SingleStringJDOQL <em>Single String JDOQL</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.SingleStringJDOQL
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.SingleStringJDOQL
    * @generated
    */
   public Adapter createSingleStringJDOQLAdapter()
@@ -275,13 +275,13 @@ public class JDOQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Subquery <em>Subquery</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.Subquery <em>Subquery</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.Subquery
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.Subquery
    * @generated
    */
   public Adapter createSubqueryAdapter()
@@ -290,13 +290,13 @@ public class JDOQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SelectClause <em>Select Clause</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.SelectClause <em>Select Clause</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.SelectClause
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.SelectClause
    * @generated
    */
   public Adapter createSelectClauseAdapter()
@@ -305,13 +305,13 @@ public class JDOQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SubquerySelectClause <em>Subquery Select Clause</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.SubquerySelectClause <em>Subquery Select Clause</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.SubquerySelectClause
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.SubquerySelectClause
    * @generated
    */
   public Adapter createSubquerySelectClauseAdapter()
@@ -320,13 +320,13 @@ public class JDOQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ResultClause <em>Result Clause</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.ResultClause <em>Result Clause</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.ResultClause
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.ResultClause
    * @generated
    */
   public Adapter createResultClauseAdapter()
@@ -335,13 +335,13 @@ public class JDOQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SubqueryResultClause <em>Subquery Result Clause</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.SubqueryResultClause <em>Subquery Result Clause</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.SubqueryResultClause
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.SubqueryResultClause
    * @generated
    */
   public Adapter createSubqueryResultClauseAdapter()
@@ -350,13 +350,13 @@ public class JDOQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.IntoClause <em>Into Clause</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.IntoClause <em>Into Clause</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.IntoClause
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.IntoClause
    * @generated
    */
   public Adapter createIntoClauseAdapter()
@@ -365,13 +365,13 @@ public class JDOQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ResultSpec <em>Result Spec</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.ResultSpec <em>Result Spec</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.ResultSpec
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.ResultSpec
    * @generated
    */
   public Adapter createResultSpecAdapter()
@@ -380,13 +380,13 @@ public class JDOQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ResultNaming <em>Result Naming</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.ResultNaming <em>Result Naming</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.ResultNaming
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.ResultNaming
    * @generated
    */
   public Adapter createResultNamingAdapter()
@@ -395,13 +395,13 @@ public class JDOQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.FromClause <em>From Clause</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.FromClause <em>From Clause</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.FromClause
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.FromClause
    * @generated
    */
   public Adapter createFromClauseAdapter()
@@ -410,13 +410,13 @@ public class JDOQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SubqueryFromClause <em>Subquery From Clause</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.SubqueryFromClause <em>Subquery From Clause</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.SubqueryFromClause
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.SubqueryFromClause
    * @generated
    */
   public Adapter createSubqueryFromClauseAdapter()
@@ -425,13 +425,13 @@ public class JDOQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Alias <em>Alias</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.Alias <em>Alias</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.Alias
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.Alias
    * @generated
    */
   public Adapter createAliasAdapter()
@@ -440,13 +440,13 @@ public class JDOQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.WhereClause <em>Where Clause</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.WhereClause <em>Where Clause</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.WhereClause
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.WhereClause
    * @generated
    */
   public Adapter createWhereClauseAdapter()
@@ -455,13 +455,13 @@ public class JDOQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.VariablesClause <em>Variables Clause</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.VariablesClause <em>Variables Clause</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.VariablesClause
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.VariablesClause
    * @generated
    */
   public Adapter createVariablesClauseAdapter()
@@ -470,13 +470,13 @@ public class JDOQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.VariableDeclaration <em>Variable Declaration</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.VariableDeclaration <em>Variable Declaration</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.VariableDeclaration
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.VariableDeclaration
    * @generated
    */
   public Adapter createVariableDeclarationAdapter()
@@ -485,13 +485,13 @@ public class JDOQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ParametersClause <em>Parameters Clause</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.ParametersClause <em>Parameters Clause</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.ParametersClause
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.ParametersClause
    * @generated
    */
   public Adapter createParametersClauseAdapter()
@@ -500,13 +500,13 @@ public class JDOQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ParameterDeclaration <em>Parameter Declaration</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.ParameterDeclaration <em>Parameter Declaration</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.ParameterDeclaration
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.ParameterDeclaration
    * @generated
    */
   public Adapter createParameterDeclarationAdapter()
@@ -515,13 +515,13 @@ public class JDOQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ImportClause <em>Import Clause</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.ImportClause <em>Import Clause</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.ImportClause
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.ImportClause
    * @generated
    */
   public Adapter createImportClauseAdapter()
@@ -530,13 +530,13 @@ public class JDOQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.GroupByClause <em>Group By Clause</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.GroupByClause <em>Group By Clause</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.GroupByClause
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.GroupByClause
    * @generated
    */
   public Adapter createGroupByClauseAdapter()
@@ -545,13 +545,13 @@ public class JDOQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.HavingClause <em>Having Clause</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.HavingClause <em>Having Clause</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.HavingClause
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.HavingClause
    * @generated
    */
   public Adapter createHavingClauseAdapter()
@@ -560,13 +560,13 @@ public class JDOQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.OrderByClause <em>Order By Clause</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.OrderByClause <em>Order By Clause</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.OrderByClause
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.OrderByClause
    * @generated
    */
   public Adapter createOrderByClauseAdapter()
@@ -575,13 +575,13 @@ public class JDOQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.OrderBySpec <em>Order By Spec</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.OrderBySpec <em>Order By Spec</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.OrderBySpec
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.OrderBySpec
    * @generated
    */
   public Adapter createOrderBySpecAdapter()
@@ -590,13 +590,13 @@ public class JDOQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.RangeClause <em>Range Clause</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.RangeClause <em>Range Clause</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.RangeClause
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.RangeClause
    * @generated
    */
   public Adapter createRangeClauseAdapter()
@@ -605,13 +605,13 @@ public class JDOQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression <em>Expression</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression <em>Expression</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression
    * @generated
    */
   public Adapter createExpressionAdapter()
@@ -620,13 +620,13 @@ public class JDOQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ConditionalOrExpression <em>Conditional Or Expression</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.ConditionalOrExpression <em>Conditional Or Expression</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.ConditionalOrExpression
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.ConditionalOrExpression
    * @generated
    */
   public Adapter createConditionalOrExpressionAdapter()
@@ -635,13 +635,13 @@ public class JDOQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ConditionalAndExpression <em>Conditional And Expression</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.ConditionalAndExpression <em>Conditional And Expression</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.ConditionalAndExpression
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.ConditionalAndExpression
    * @generated
    */
   public Adapter createConditionalAndExpressionAdapter()
@@ -650,13 +650,13 @@ public class JDOQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SimpleOrExpression <em>Simple Or Expression</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.SimpleOrExpression <em>Simple Or Expression</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.SimpleOrExpression
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.SimpleOrExpression
    * @generated
    */
   public Adapter createSimpleOrExpressionAdapter()
@@ -665,13 +665,13 @@ public class JDOQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SimpleAndExpression <em>Simple And Expression</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.SimpleAndExpression <em>Simple And Expression</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.SimpleAndExpression
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.SimpleAndExpression
    * @generated
    */
   public Adapter createSimpleAndExpressionAdapter()
@@ -680,13 +680,13 @@ public class JDOQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ComparisonOperatorExpression <em>Comparison Operator Expression</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.ComparisonOperatorExpression <em>Comparison Operator Expression</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.ComparisonOperatorExpression
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.ComparisonOperatorExpression
    * @generated
    */
   public Adapter createComparisonOperatorExpressionAdapter()
@@ -695,13 +695,13 @@ public class JDOQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.AdditionExpression <em>Addition Expression</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.AdditionExpression <em>Addition Expression</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.AdditionExpression
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.AdditionExpression
    * @generated
    */
   public Adapter createAdditionExpressionAdapter()
@@ -710,13 +710,13 @@ public class JDOQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.MultiplicationExpression <em>Multiplication Expression</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.MultiplicationExpression <em>Multiplication Expression</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.MultiplicationExpression
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.MultiplicationExpression
    * @generated
    */
   public Adapter createMultiplicationExpressionAdapter()
@@ -725,13 +725,13 @@ public class JDOQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.FieldAccessExpression <em>Field Access Expression</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.FieldAccessExpression <em>Field Access Expression</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.FieldAccessExpression
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.FieldAccessExpression
    * @generated
    */
   public Adapter createFieldAccessExpressionAdapter()

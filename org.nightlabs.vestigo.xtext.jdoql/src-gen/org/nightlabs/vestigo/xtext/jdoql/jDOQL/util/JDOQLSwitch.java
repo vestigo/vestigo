@@ -3,14 +3,14 @@
  * </copyright>
  *
  */
-package org.nightlabs.jjqb.xtext.jdoql.jDOQL.util;
+package org.nightlabs.vestigo.xtext.jdoql.jDOQL.util;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.Switch;
 
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.*;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.*;
 
 /**
  * <!-- begin-user-doc -->
@@ -22,7 +22,7 @@ import org.nightlabs.jjqb.xtext.jdoql.jDOQL.*;
  * until a non-null result is returned,
  * which is the result of the switch.
  * <!-- end-user-doc -->
- * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage
+ * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.JDOQLPackage
  * @generated
  */
 public class JDOQLSwitch<T> extends Switch<T>

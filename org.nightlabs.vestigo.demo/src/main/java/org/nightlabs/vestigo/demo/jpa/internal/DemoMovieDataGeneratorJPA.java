@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.demo.jpa.internal;
+package org.nightlabs.vestigo.demo.jpa.internal;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -12,10 +12,10 @@ import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
-import org.nightlabs.jjqb.demo.jpa.Language;
-import org.nightlabs.jjqb.demo.jpa.Movie;
-import org.nightlabs.jjqb.demo.jpa.Person;
-import org.nightlabs.jjqb.demo.jpa.Rating;
+import org.nightlabs.vestigo.demo.jpa.Language;
+import org.nightlabs.vestigo.demo.jpa.Movie;
+import org.nightlabs.vestigo.demo.jpa.Person;
+import org.nightlabs.vestigo.demo.jpa.Rating;
 
 public class DemoMovieDataGeneratorJPA {
 

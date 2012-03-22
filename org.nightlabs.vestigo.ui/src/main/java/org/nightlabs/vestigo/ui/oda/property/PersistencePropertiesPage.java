@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.ui.oda.property;
+package org.nightlabs.vestigo.ui.oda.property;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -26,19 +26,19 @@ import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
-import org.nightlabs.jjqb.childvm.shared.PropertiesUtil;
-import org.nightlabs.jjqb.childvm.shared.persistencexml.PersistenceUnitHelper;
-import org.nightlabs.jjqb.childvm.shared.persistencexml.PersistenceXml;
-import org.nightlabs.jjqb.childvm.shared.persistencexml.PersistenceXmlScanner;
-import org.nightlabs.jjqb.childvm.shared.persistencexml.jaxb.Persistence;
-import org.nightlabs.jjqb.childvm.shared.persistencexml.jaxb.Persistence.PersistenceUnit;
-import org.nightlabs.jjqb.core.connectionpropertiesfilter.ConnectionPropertiesFilterManager;
-import org.nightlabs.jjqb.core.progress.ProgressMonitorWrapper;
-import org.nightlabs.jjqb.ui.oda.EditPropertiesComposite;
-import org.nightlabs.jjqb.ui.oda.LoadPropertiesHandler;
-import org.nightlabs.jjqb.ui.oda.PropertiesWithDefaults;
-import org.nightlabs.jjqb.ui.oda.SavePropertiesHandler;
-import org.nightlabs.jjqb.ui.resource.Messages;
+import org.nightlabs.vestigo.childvm.shared.PropertiesUtil;
+import org.nightlabs.vestigo.childvm.shared.persistencexml.PersistenceUnitHelper;
+import org.nightlabs.vestigo.childvm.shared.persistencexml.PersistenceXml;
+import org.nightlabs.vestigo.childvm.shared.persistencexml.PersistenceXmlScanner;
+import org.nightlabs.vestigo.childvm.shared.persistencexml.jaxb.Persistence;
+import org.nightlabs.vestigo.childvm.shared.persistencexml.jaxb.Persistence.PersistenceUnit;
+import org.nightlabs.vestigo.core.connectionpropertiesfilter.ConnectionPropertiesFilterManager;
+import org.nightlabs.vestigo.core.progress.ProgressMonitorWrapper;
+import org.nightlabs.vestigo.ui.oda.EditPropertiesComposite;
+import org.nightlabs.vestigo.ui.oda.LoadPropertiesHandler;
+import org.nightlabs.vestigo.ui.oda.PropertiesWithDefaults;
+import org.nightlabs.vestigo.ui.oda.SavePropertiesHandler;
+import org.nightlabs.vestigo.ui.resource.Messages;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -165,7 +165,7 @@ public abstract class PersistencePropertiesPage extends AbstractDataSourceEditor
 		{
 			String persistenceUnitName = collectProperties().getProperty(PropertiesUtil.PERSISTENCE_UNIT_NAME);
 			if (persistenceUnitName == null || persistenceUnitName.trim().isEmpty())
-				persistenceUnitName = "jjqb_" + Long.toHexString(System.currentTimeMillis()); //$NON-NLS-1$
+				persistenceUnitName = "vestigo_" + Long.toHexString(System.currentTimeMillis()); //$NON-NLS-1$
 
 			try {
 				JAXBContext context = JAXBContext.newInstance(Persistence.class);

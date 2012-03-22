@@ -1,8 +1,8 @@
-package org.nightlabs.jjqb.ui.oda.wizard;
+package org.nightlabs.vestigo.ui.oda.wizard;
 
-import org.nightlabs.jjqb.ui.oda.property.JDOClasspathPage;
-import org.nightlabs.jjqb.ui.oda.property.JDOPersistencePropertiesPage;
-import org.nightlabs.jjqb.ui.oda.property.JDOPersistenceUnitPage;
+import org.nightlabs.vestigo.ui.oda.property.JDOClasspathPage;
+import org.nightlabs.vestigo.ui.oda.property.JDOPersistencePropertiesPage;
+import org.nightlabs.vestigo.ui.oda.property.JDOPersistenceUnitPage;
 
 
 public class JDOWizardPage extends AbstractDataSourceEditorWizardPage {

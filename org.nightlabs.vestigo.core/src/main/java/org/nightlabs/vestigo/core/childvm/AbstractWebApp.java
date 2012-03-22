@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.core.childvm;
+package org.nightlabs.vestigo.core.childvm;
 
 import java.io.InputStream;
 

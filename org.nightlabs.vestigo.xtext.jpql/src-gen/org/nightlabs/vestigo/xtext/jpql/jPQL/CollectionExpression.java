@@ -3,7 +3,7 @@
  * </copyright>
  *
  */
-package org.nightlabs.jjqb.xtext.jpql.jPQL;
+package org.nightlabs.vestigo.xtext.jpql.jPQL;
 
 
 /**
@@ -14,13 +14,13 @@ package org.nightlabs.jjqb.xtext.jpql.jPQL;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.CollectionExpression#getLeft <em>Left</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.CollectionExpression#isIsNot <em>Is Not</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.CollectionExpression#getRight <em>Right</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jpql.jPQL.CollectionExpression#getLeft <em>Left</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jpql.jPQL.CollectionExpression#isIsNot <em>Is Not</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jpql.jPQL.CollectionExpression#getRight <em>Right</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getCollectionExpression()
+ * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getCollectionExpression()
  * @model
  * @generated
  */
@@ -36,14 +36,14 @@ public interface CollectionExpression extends Expression
    * <!-- end-user-doc -->
    * @return the value of the '<em>Left</em>' containment reference.
    * @see #setLeft(Variable)
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getCollectionExpression_Left()
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getCollectionExpression_Left()
    * @model containment="true"
    * @generated
    */
   Variable getLeft();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.CollectionExpression#getLeft <em>Left</em>}' containment reference.
+   * Sets the value of the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.CollectionExpression#getLeft <em>Left</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Left</em>' containment reference.
@@ -62,14 +62,14 @@ public interface CollectionExpression extends Expression
    * <!-- end-user-doc -->
    * @return the value of the '<em>Is Not</em>' attribute.
    * @see #setIsNot(boolean)
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getCollectionExpression_IsNot()
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getCollectionExpression_IsNot()
    * @model
    * @generated
    */
   boolean isIsNot();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.CollectionExpression#isIsNot <em>Is Not</em>}' attribute.
+   * Sets the value of the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.CollectionExpression#isIsNot <em>Is Not</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Is Not</em>' attribute.
@@ -88,14 +88,14 @@ public interface CollectionExpression extends Expression
    * <!-- end-user-doc -->
    * @return the value of the '<em>Right</em>' containment reference.
    * @see #setRight(AliasAttributeExpression)
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getCollectionExpression_Right()
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getCollectionExpression_Right()
    * @model containment="true"
    * @generated
    */
   AliasAttributeExpression getRight();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.CollectionExpression#getRight <em>Right</em>}' containment reference.
+   * Sets the value of the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.CollectionExpression#getRight <em>Right</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Right</em>' containment reference.

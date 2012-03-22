@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.demo.jpa;
+package org.nightlabs.vestigo.demo.jpa;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

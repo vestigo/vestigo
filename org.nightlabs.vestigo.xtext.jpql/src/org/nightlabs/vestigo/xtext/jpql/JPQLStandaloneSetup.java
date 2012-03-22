@@ -1,5 +1,5 @@
 
-package org.nightlabs.jjqb.xtext.jpql;
+package org.nightlabs.vestigo.xtext.jpql;
 
 /**
  * Initialization support for running Xtext languages 

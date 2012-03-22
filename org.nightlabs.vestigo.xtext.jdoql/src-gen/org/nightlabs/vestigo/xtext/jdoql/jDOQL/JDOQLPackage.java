@@ -3,7 +3,7 @@
  * </copyright>
  *
  */
-package org.nightlabs.jjqb.xtext.jdoql.jDOQL;
+package org.nightlabs.vestigo.xtext.jdoql.jDOQL;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.EReference;
  *   <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLFactory
+ * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.JDOQLFactory
  * @model kind="package"
  * @generated
  */
@@ -42,7 +42,7 @@ public interface JDOQLPackage extends EPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  String eNS_URI = "http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL";
+  String eNS_URI = "http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL";
 
   /**
    * The package namespace name.
@@ -58,14 +58,14 @@ public interface JDOQLPackage extends EPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  JDOQLPackage eINSTANCE = org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl.init();
+  JDOQLPackage eINSTANCE = org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl.init();
 
   /**
-   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SingleStringJDOQLImpl <em>Single String JDOQL</em>}' class.
+   * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.SingleStringJDOQLImpl <em>Single String JDOQL</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SingleStringJDOQLImpl
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getSingleStringJDOQL()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.SingleStringJDOQLImpl
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getSingleStringJDOQL()
    * @generated
    */
   int SINGLE_STRING_JDOQL = 0;
@@ -161,11 +161,11 @@ public interface JDOQLPackage extends EPackage
   int SINGLE_STRING_JDOQL_FEATURE_COUNT = 9;
 
   /**
-   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ResultSpecImpl <em>Result Spec</em>}' class.
+   * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.ResultSpecImpl <em>Result Spec</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ResultSpecImpl
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getResultSpec()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.ResultSpecImpl
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getResultSpec()
    * @generated
    */
   int RESULT_SPEC = 7;
@@ -180,11 +180,11 @@ public interface JDOQLPackage extends EPackage
   int RESULT_SPEC_FEATURE_COUNT = 0;
 
   /**
-   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ExpressionImpl <em>Expression</em>}' class.
+   * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.ExpressionImpl <em>Expression</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ExpressionImpl
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getExpression()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.ExpressionImpl
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getExpression()
    * @generated
    */
   int EXPRESSION = 23;
@@ -424,11 +424,11 @@ public interface JDOQLPackage extends EPackage
   int EXPRESSION_FEATURE_COUNT = RESULT_SPEC_FEATURE_COUNT + 25;
 
   /**
-   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SubqueryImpl <em>Subquery</em>}' class.
+   * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.SubqueryImpl <em>Subquery</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SubqueryImpl
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getSubquery()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.SubqueryImpl
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getSubquery()
    * @generated
    */
   int SUBQUERY = 1;
@@ -722,11 +722,11 @@ public interface JDOQLPackage extends EPackage
   int SUBQUERY_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 6;
 
   /**
-   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SubquerySelectClauseImpl <em>Subquery Select Clause</em>}' class.
+   * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.SubquerySelectClauseImpl <em>Subquery Select Clause</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SubquerySelectClauseImpl
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getSubquerySelectClause()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.SubquerySelectClauseImpl
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getSubquerySelectClause()
    * @generated
    */
   int SUBQUERY_SELECT_CLAUSE = 3;
@@ -741,11 +741,11 @@ public interface JDOQLPackage extends EPackage
   int SUBQUERY_SELECT_CLAUSE_FEATURE_COUNT = 0;
 
   /**
-   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SelectClauseImpl <em>Select Clause</em>}' class.
+   * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.SelectClauseImpl <em>Select Clause</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SelectClauseImpl
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getSelectClause()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.SelectClauseImpl
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getSelectClause()
    * @generated
    */
   int SELECT_CLAUSE = 2;
@@ -787,11 +787,11 @@ public interface JDOQLPackage extends EPackage
   int SELECT_CLAUSE_FEATURE_COUNT = SUBQUERY_SELECT_CLAUSE_FEATURE_COUNT + 3;
 
   /**
-   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ResultClauseImpl <em>Result Clause</em>}' class.
+   * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.ResultClauseImpl <em>Result Clause</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ResultClauseImpl
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getResultClause()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.ResultClauseImpl
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getResultClause()
    * @generated
    */
   int RESULT_CLAUSE = 4;
@@ -824,11 +824,11 @@ public interface JDOQLPackage extends EPackage
   int RESULT_CLAUSE_FEATURE_COUNT = 2;
 
   /**
-   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SubqueryResultClauseImpl <em>Subquery Result Clause</em>}' class.
+   * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.SubqueryResultClauseImpl <em>Subquery Result Clause</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SubqueryResultClauseImpl
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getSubqueryResultClause()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.SubqueryResultClauseImpl
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getSubqueryResultClause()
    * @generated
    */
   int SUBQUERY_RESULT_CLAUSE = 5;
@@ -861,11 +861,11 @@ public interface JDOQLPackage extends EPackage
   int SUBQUERY_RESULT_CLAUSE_FEATURE_COUNT = 2;
 
   /**
-   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.IntoClauseImpl <em>Into Clause</em>}' class.
+   * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.IntoClauseImpl <em>Into Clause</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.IntoClauseImpl
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getIntoClause()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.IntoClauseImpl
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getIntoClause()
    * @generated
    */
   int INTO_CLAUSE = 6;
@@ -889,11 +889,11 @@ public interface JDOQLPackage extends EPackage
   int INTO_CLAUSE_FEATURE_COUNT = 1;
 
   /**
-   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ResultNamingImpl <em>Result Naming</em>}' class.
+   * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.ResultNamingImpl <em>Result Naming</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ResultNamingImpl
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getResultNaming()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.ResultNamingImpl
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getResultNaming()
    * @generated
    */
   int RESULT_NAMING = 8;
@@ -917,11 +917,11 @@ public interface JDOQLPackage extends EPackage
   int RESULT_NAMING_FEATURE_COUNT = 1;
 
   /**
-   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.FromClauseImpl <em>From Clause</em>}' class.
+   * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.FromClauseImpl <em>From Clause</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.FromClauseImpl
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getFromClause()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.FromClauseImpl
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getFromClause()
    * @generated
    */
   int FROM_CLAUSE = 9;
@@ -954,11 +954,11 @@ public interface JDOQLPackage extends EPackage
   int FROM_CLAUSE_FEATURE_COUNT = 2;
 
   /**
-   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SubqueryFromClauseImpl <em>Subquery From Clause</em>}' class.
+   * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.SubqueryFromClauseImpl <em>Subquery From Clause</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SubqueryFromClauseImpl
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getSubqueryFromClause()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.SubqueryFromClauseImpl
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getSubqueryFromClause()
    * @generated
    */
   int SUBQUERY_FROM_CLAUSE = 10;
@@ -1009,11 +1009,11 @@ public interface JDOQLPackage extends EPackage
   int SUBQUERY_FROM_CLAUSE_FEATURE_COUNT = 4;
 
   /**
-   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.AliasImpl <em>Alias</em>}' class.
+   * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.AliasImpl <em>Alias</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.AliasImpl
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getAlias()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.AliasImpl
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getAlias()
    * @generated
    */
   int ALIAS = 11;
@@ -1037,11 +1037,11 @@ public interface JDOQLPackage extends EPackage
   int ALIAS_FEATURE_COUNT = 1;
 
   /**
-   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.WhereClauseImpl <em>Where Clause</em>}' class.
+   * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.WhereClauseImpl <em>Where Clause</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.WhereClauseImpl
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getWhereClause()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.WhereClauseImpl
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getWhereClause()
    * @generated
    */
   int WHERE_CLAUSE = 12;
@@ -1065,11 +1065,11 @@ public interface JDOQLPackage extends EPackage
   int WHERE_CLAUSE_FEATURE_COUNT = 1;
 
   /**
-   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.VariablesClauseImpl <em>Variables Clause</em>}' class.
+   * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.VariablesClauseImpl <em>Variables Clause</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.VariablesClauseImpl
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getVariablesClause()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.VariablesClauseImpl
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getVariablesClause()
    * @generated
    */
   int VARIABLES_CLAUSE = 13;
@@ -1093,11 +1093,11 @@ public interface JDOQLPackage extends EPackage
   int VARIABLES_CLAUSE_FEATURE_COUNT = 1;
 
   /**
-   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.VariableDeclarationImpl <em>Variable Declaration</em>}' class.
+   * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.VariableDeclarationImpl <em>Variable Declaration</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.VariableDeclarationImpl
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getVariableDeclaration()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.VariableDeclarationImpl
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getVariableDeclaration()
    * @generated
    */
   int VARIABLE_DECLARATION = 14;
@@ -1130,11 +1130,11 @@ public interface JDOQLPackage extends EPackage
   int VARIABLE_DECLARATION_FEATURE_COUNT = 2;
 
   /**
-   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ParametersClauseImpl <em>Parameters Clause</em>}' class.
+   * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.ParametersClauseImpl <em>Parameters Clause</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ParametersClauseImpl
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getParametersClause()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.ParametersClauseImpl
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getParametersClause()
    * @generated
    */
   int PARAMETERS_CLAUSE = 15;
@@ -1158,11 +1158,11 @@ public interface JDOQLPackage extends EPackage
   int PARAMETERS_CLAUSE_FEATURE_COUNT = 1;
 
   /**
-   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ParameterDeclarationImpl <em>Parameter Declaration</em>}' class.
+   * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.ParameterDeclarationImpl <em>Parameter Declaration</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ParameterDeclarationImpl
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getParameterDeclaration()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.ParameterDeclarationImpl
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getParameterDeclaration()
    * @generated
    */
   int PARAMETER_DECLARATION = 16;
@@ -1195,11 +1195,11 @@ public interface JDOQLPackage extends EPackage
   int PARAMETER_DECLARATION_FEATURE_COUNT = 2;
 
   /**
-   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ImportClauseImpl <em>Import Clause</em>}' class.
+   * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.ImportClauseImpl <em>Import Clause</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ImportClauseImpl
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getImportClause()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.ImportClauseImpl
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getImportClause()
    * @generated
    */
   int IMPORT_CLAUSE = 17;
@@ -1223,11 +1223,11 @@ public interface JDOQLPackage extends EPackage
   int IMPORT_CLAUSE_FEATURE_COUNT = 1;
 
   /**
-   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.GroupByClauseImpl <em>Group By Clause</em>}' class.
+   * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.GroupByClauseImpl <em>Group By Clause</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.GroupByClauseImpl
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getGroupByClause()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.GroupByClauseImpl
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getGroupByClause()
    * @generated
    */
   int GROUP_BY_CLAUSE = 18;
@@ -1260,11 +1260,11 @@ public interface JDOQLPackage extends EPackage
   int GROUP_BY_CLAUSE_FEATURE_COUNT = 2;
 
   /**
-   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.HavingClauseImpl <em>Having Clause</em>}' class.
+   * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.HavingClauseImpl <em>Having Clause</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.HavingClauseImpl
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getHavingClause()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.HavingClauseImpl
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getHavingClause()
    * @generated
    */
   int HAVING_CLAUSE = 19;
@@ -1288,11 +1288,11 @@ public interface JDOQLPackage extends EPackage
   int HAVING_CLAUSE_FEATURE_COUNT = 1;
 
   /**
-   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.OrderByClauseImpl <em>Order By Clause</em>}' class.
+   * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.OrderByClauseImpl <em>Order By Clause</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.OrderByClauseImpl
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getOrderByClause()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.OrderByClauseImpl
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getOrderByClause()
    * @generated
    */
   int ORDER_BY_CLAUSE = 20;
@@ -1316,11 +1316,11 @@ public interface JDOQLPackage extends EPackage
   int ORDER_BY_CLAUSE_FEATURE_COUNT = 1;
 
   /**
-   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.OrderBySpecImpl <em>Order By Spec</em>}' class.
+   * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.OrderBySpecImpl <em>Order By Spec</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.OrderBySpecImpl
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getOrderBySpec()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.OrderBySpecImpl
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getOrderBySpec()
    * @generated
    */
   int ORDER_BY_SPEC = 21;
@@ -1335,11 +1335,11 @@ public interface JDOQLPackage extends EPackage
   int ORDER_BY_SPEC_FEATURE_COUNT = 0;
 
   /**
-   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.RangeClauseImpl <em>Range Clause</em>}' class.
+   * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.RangeClauseImpl <em>Range Clause</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.RangeClauseImpl
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getRangeClause()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.RangeClauseImpl
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getRangeClause()
    * @generated
    */
   int RANGE_CLAUSE = 22;
@@ -1372,11 +1372,11 @@ public interface JDOQLPackage extends EPackage
   int RANGE_CLAUSE_FEATURE_COUNT = 2;
 
   /**
-   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ConditionalOrExpressionImpl <em>Conditional Or Expression</em>}' class.
+   * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.ConditionalOrExpressionImpl <em>Conditional Or Expression</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ConditionalOrExpressionImpl
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getConditionalOrExpression()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.ConditionalOrExpressionImpl
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getConditionalOrExpression()
    * @generated
    */
   int CONDITIONAL_OR_EXPRESSION = 24;
@@ -1625,11 +1625,11 @@ public interface JDOQLPackage extends EPackage
   int CONDITIONAL_OR_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ConditionalAndExpressionImpl <em>Conditional And Expression</em>}' class.
+   * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.ConditionalAndExpressionImpl <em>Conditional And Expression</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ConditionalAndExpressionImpl
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getConditionalAndExpression()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.ConditionalAndExpressionImpl
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getConditionalAndExpression()
    * @generated
    */
   int CONDITIONAL_AND_EXPRESSION = 25;
@@ -1878,11 +1878,11 @@ public interface JDOQLPackage extends EPackage
   int CONDITIONAL_AND_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SimpleOrExpressionImpl <em>Simple Or Expression</em>}' class.
+   * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.SimpleOrExpressionImpl <em>Simple Or Expression</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SimpleOrExpressionImpl
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getSimpleOrExpression()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.SimpleOrExpressionImpl
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getSimpleOrExpression()
    * @generated
    */
   int SIMPLE_OR_EXPRESSION = 26;
@@ -2131,11 +2131,11 @@ public interface JDOQLPackage extends EPackage
   int SIMPLE_OR_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SimpleAndExpressionImpl <em>Simple And Expression</em>}' class.
+   * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.SimpleAndExpressionImpl <em>Simple And Expression</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SimpleAndExpressionImpl
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getSimpleAndExpression()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.SimpleAndExpressionImpl
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getSimpleAndExpression()
    * @generated
    */
   int SIMPLE_AND_EXPRESSION = 27;
@@ -2384,11 +2384,11 @@ public interface JDOQLPackage extends EPackage
   int SIMPLE_AND_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ComparisonOperatorExpressionImpl <em>Comparison Operator Expression</em>}' class.
+   * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.ComparisonOperatorExpressionImpl <em>Comparison Operator Expression</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ComparisonOperatorExpressionImpl
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getComparisonOperatorExpression()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.ComparisonOperatorExpressionImpl
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getComparisonOperatorExpression()
    * @generated
    */
   int COMPARISON_OPERATOR_EXPRESSION = 28;
@@ -2646,11 +2646,11 @@ public interface JDOQLPackage extends EPackage
   int COMPARISON_OPERATOR_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
 
   /**
-   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.AdditionExpressionImpl <em>Addition Expression</em>}' class.
+   * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.AdditionExpressionImpl <em>Addition Expression</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.AdditionExpressionImpl
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getAdditionExpression()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.AdditionExpressionImpl
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getAdditionExpression()
    * @generated
    */
   int ADDITION_EXPRESSION = 29;
@@ -2908,11 +2908,11 @@ public interface JDOQLPackage extends EPackage
   int ADDITION_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
 
   /**
-   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.MultiplicationExpressionImpl <em>Multiplication Expression</em>}' class.
+   * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.MultiplicationExpressionImpl <em>Multiplication Expression</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.MultiplicationExpressionImpl
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getMultiplicationExpression()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.MultiplicationExpressionImpl
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getMultiplicationExpression()
    * @generated
    */
   int MULTIPLICATION_EXPRESSION = 30;
@@ -3170,11 +3170,11 @@ public interface JDOQLPackage extends EPackage
   int MULTIPLICATION_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
 
   /**
-   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.FieldAccessExpressionImpl <em>Field Access Expression</em>}' class.
+   * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.FieldAccessExpressionImpl <em>Field Access Expression</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.FieldAccessExpressionImpl
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getFieldAccessExpression()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.FieldAccessExpressionImpl
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getFieldAccessExpression()
    * @generated
    */
   int FIELD_ACCESS_EXPRESSION = 31;
@@ -3423,1313 +3423,1313 @@ public interface JDOQLPackage extends EPackage
   int FIELD_ACCESS_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.OrderByDirection <em>Order By Direction</em>}' enum.
+   * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.OrderByDirection <em>Order By Direction</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.OrderByDirection
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getOrderByDirection()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.OrderByDirection
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getOrderByDirection()
    * @generated
    */
   int ORDER_BY_DIRECTION = 32;
 
   /**
-   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.UnaryOperator <em>Unary Operator</em>}' enum.
+   * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.UnaryOperator <em>Unary Operator</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.UnaryOperator
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getUnaryOperator()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.UnaryOperator
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getUnaryOperator()
    * @generated
    */
   int UNARY_OPERATOR = 33;
 
   /**
-   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.AdditionOperator <em>Addition Operator</em>}' enum.
+   * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.AdditionOperator <em>Addition Operator</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.AdditionOperator
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getAdditionOperator()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.AdditionOperator
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getAdditionOperator()
    * @generated
    */
   int ADDITION_OPERATOR = 34;
 
   /**
-   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.MultiplicationOperator <em>Multiplication Operator</em>}' enum.
+   * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.MultiplicationOperator <em>Multiplication Operator</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.MultiplicationOperator
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getMultiplicationOperator()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.MultiplicationOperator
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getMultiplicationOperator()
    * @generated
    */
   int MULTIPLICATION_OPERATOR = 35;
 
   /**
-   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ComparisonOperator <em>Comparison Operator</em>}' enum.
+   * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.ComparisonOperator <em>Comparison Operator</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.ComparisonOperator
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getComparisonOperator()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.ComparisonOperator
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getComparisonOperator()
    * @generated
    */
   int COMPARISON_OPERATOR = 36;
 
 
   /**
-   * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SingleStringJDOQL <em>Single String JDOQL</em>}'.
+   * Returns the meta object for class '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.SingleStringJDOQL <em>Single String JDOQL</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Single String JDOQL</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.SingleStringJDOQL
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.SingleStringJDOQL
    * @generated
    */
   EClass getSingleStringJDOQL();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SingleStringJDOQL#getSelectClause <em>Select Clause</em>}'.
+   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.SingleStringJDOQL#getSelectClause <em>Select Clause</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Select Clause</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.SingleStringJDOQL#getSelectClause()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.SingleStringJDOQL#getSelectClause()
    * @see #getSingleStringJDOQL()
    * @generated
    */
   EReference getSingleStringJDOQL_SelectClause();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SingleStringJDOQL#getFromClause <em>From Clause</em>}'.
+   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.SingleStringJDOQL#getFromClause <em>From Clause</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>From Clause</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.SingleStringJDOQL#getFromClause()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.SingleStringJDOQL#getFromClause()
    * @see #getSingleStringJDOQL()
    * @generated
    */
   EReference getSingleStringJDOQL_FromClause();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SingleStringJDOQL#getWhereClause <em>Where Clause</em>}'.
+   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.SingleStringJDOQL#getWhereClause <em>Where Clause</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Where Clause</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.SingleStringJDOQL#getWhereClause()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.SingleStringJDOQL#getWhereClause()
    * @see #getSingleStringJDOQL()
    * @generated
    */
   EReference getSingleStringJDOQL_WhereClause();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SingleStringJDOQL#getVariablesClause <em>Variables Clause</em>}'.
+   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.SingleStringJDOQL#getVariablesClause <em>Variables Clause</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Variables Clause</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.SingleStringJDOQL#getVariablesClause()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.SingleStringJDOQL#getVariablesClause()
    * @see #getSingleStringJDOQL()
    * @generated
    */
   EReference getSingleStringJDOQL_VariablesClause();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SingleStringJDOQL#getParametersClause <em>Parameters Clause</em>}'.
+   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.SingleStringJDOQL#getParametersClause <em>Parameters Clause</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Parameters Clause</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.SingleStringJDOQL#getParametersClause()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.SingleStringJDOQL#getParametersClause()
    * @see #getSingleStringJDOQL()
    * @generated
    */
   EReference getSingleStringJDOQL_ParametersClause();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SingleStringJDOQL#getImportClause <em>Import Clause</em>}'.
+   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.SingleStringJDOQL#getImportClause <em>Import Clause</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Import Clause</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.SingleStringJDOQL#getImportClause()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.SingleStringJDOQL#getImportClause()
    * @see #getSingleStringJDOQL()
    * @generated
    */
   EReference getSingleStringJDOQL_ImportClause();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SingleStringJDOQL#getGroupByClause <em>Group By Clause</em>}'.
+   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.SingleStringJDOQL#getGroupByClause <em>Group By Clause</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Group By Clause</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.SingleStringJDOQL#getGroupByClause()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.SingleStringJDOQL#getGroupByClause()
    * @see #getSingleStringJDOQL()
    * @generated
    */
   EReference getSingleStringJDOQL_GroupByClause();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SingleStringJDOQL#getOrderByClause <em>Order By Clause</em>}'.
+   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.SingleStringJDOQL#getOrderByClause <em>Order By Clause</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Order By Clause</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.SingleStringJDOQL#getOrderByClause()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.SingleStringJDOQL#getOrderByClause()
    * @see #getSingleStringJDOQL()
    * @generated
    */
   EReference getSingleStringJDOQL_OrderByClause();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SingleStringJDOQL#getRangeClause <em>Range Clause</em>}'.
+   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.SingleStringJDOQL#getRangeClause <em>Range Clause</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Range Clause</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.SingleStringJDOQL#getRangeClause()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.SingleStringJDOQL#getRangeClause()
    * @see #getSingleStringJDOQL()
    * @generated
    */
   EReference getSingleStringJDOQL_RangeClause();
 
   /**
-   * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Subquery <em>Subquery</em>}'.
+   * Returns the meta object for class '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.Subquery <em>Subquery</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Subquery</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.Subquery
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.Subquery
    * @generated
    */
   EClass getSubquery();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Subquery#getSelectClause <em>Select Clause</em>}'.
+   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.Subquery#getSelectClause <em>Select Clause</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Select Clause</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.Subquery#getSelectClause()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.Subquery#getSelectClause()
    * @see #getSubquery()
    * @generated
    */
   EReference getSubquery_SelectClause();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Subquery#getFromClause <em>From Clause</em>}'.
+   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.Subquery#getFromClause <em>From Clause</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>From Clause</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.Subquery#getFromClause()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.Subquery#getFromClause()
    * @see #getSubquery()
    * @generated
    */
   EReference getSubquery_FromClause();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Subquery#getWhereClause <em>Where Clause</em>}'.
+   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.Subquery#getWhereClause <em>Where Clause</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Where Clause</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.Subquery#getWhereClause()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.Subquery#getWhereClause()
    * @see #getSubquery()
    * @generated
    */
   EReference getSubquery_WhereClause();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Subquery#getVariablesClause <em>Variables Clause</em>}'.
+   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.Subquery#getVariablesClause <em>Variables Clause</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Variables Clause</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.Subquery#getVariablesClause()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.Subquery#getVariablesClause()
    * @see #getSubquery()
    * @generated
    */
   EReference getSubquery_VariablesClause();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Subquery#getParametersClause <em>Parameters Clause</em>}'.
+   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.Subquery#getParametersClause <em>Parameters Clause</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Parameters Clause</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.Subquery#getParametersClause()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.Subquery#getParametersClause()
    * @see #getSubquery()
    * @generated
    */
   EReference getSubquery_ParametersClause();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Subquery#getImportClause <em>Import Clause</em>}'.
+   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.Subquery#getImportClause <em>Import Clause</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Import Clause</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.Subquery#getImportClause()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.Subquery#getImportClause()
    * @see #getSubquery()
    * @generated
    */
   EReference getSubquery_ImportClause();
 
   /**
-   * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SelectClause <em>Select Clause</em>}'.
+   * Returns the meta object for class '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.SelectClause <em>Select Clause</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Select Clause</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.SelectClause
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.SelectClause
    * @generated
    */
   EClass getSelectClause();
 
   /**
-   * Returns the meta object for the attribute '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SelectClause#isIsUnique <em>Is Unique</em>}'.
+   * Returns the meta object for the attribute '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.SelectClause#isIsUnique <em>Is Unique</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Is Unique</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.SelectClause#isIsUnique()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.SelectClause#isIsUnique()
    * @see #getSelectClause()
    * @generated
    */
   EAttribute getSelectClause_IsUnique();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SelectClause#getResultClause <em>Result Clause</em>}'.
+   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.SelectClause#getResultClause <em>Result Clause</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Result Clause</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.SelectClause#getResultClause()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.SelectClause#getResultClause()
    * @see #getSelectClause()
    * @generated
    */
   EReference getSelectClause_ResultClause();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SelectClause#getIntoClause <em>Into Clause</em>}'.
+   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.SelectClause#getIntoClause <em>Into Clause</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Into Clause</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.SelectClause#getIntoClause()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.SelectClause#getIntoClause()
    * @see #getSelectClause()
    * @generated
    */
   EReference getSelectClause_IntoClause();
 
   /**
-   * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SubquerySelectClause <em>Subquery Select Clause</em>}'.
+   * Returns the meta object for class '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.SubquerySelectClause <em>Subquery Select Clause</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Subquery Select Clause</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.SubquerySelectClause
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.SubquerySelectClause
    * @generated
    */
   EClass getSubquerySelectClause();
 
   /**
-   * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ResultClause <em>Result Clause</em>}'.
+   * Returns the meta object for class '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.ResultClause <em>Result Clause</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Result Clause</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.ResultClause
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.ResultClause
    * @generated
    */
   EClass getResultClause();
 
   /**
-   * Returns the meta object for the attribute '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ResultClause#isIsDistinct <em>Is Distinct</em>}'.
+   * Returns the meta object for the attribute '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.ResultClause#isIsDistinct <em>Is Distinct</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Is Distinct</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.ResultClause#isIsDistinct()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.ResultClause#isIsDistinct()
    * @see #getResultClause()
    * @generated
    */
   EAttribute getResultClause_IsDistinct();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ResultClause#getResultSpecs <em>Result Specs</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.ResultClause#getResultSpecs <em>Result Specs</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Result Specs</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.ResultClause#getResultSpecs()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.ResultClause#getResultSpecs()
    * @see #getResultClause()
    * @generated
    */
   EReference getResultClause_ResultSpecs();
 
   /**
-   * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SubqueryResultClause <em>Subquery Result Clause</em>}'.
+   * Returns the meta object for class '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.SubqueryResultClause <em>Subquery Result Clause</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Subquery Result Clause</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.SubqueryResultClause
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.SubqueryResultClause
    * @generated
    */
   EClass getSubqueryResultClause();
 
   /**
-   * Returns the meta object for the attribute '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SubqueryResultClause#isIsDistinct <em>Is Distinct</em>}'.
+   * Returns the meta object for the attribute '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.SubqueryResultClause#isIsDistinct <em>Is Distinct</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Is Distinct</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.SubqueryResultClause#isIsDistinct()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.SubqueryResultClause#isIsDistinct()
    * @see #getSubqueryResultClause()
    * @generated
    */
   EAttribute getSubqueryResultClause_IsDistinct();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SubqueryResultClause#getResultExpression <em>Result Expression</em>}'.
+   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.SubqueryResultClause#getResultExpression <em>Result Expression</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Result Expression</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.SubqueryResultClause#getResultExpression()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.SubqueryResultClause#getResultExpression()
    * @see #getSubqueryResultClause()
    * @generated
    */
   EReference getSubqueryResultClause_ResultExpression();
 
   /**
-   * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.IntoClause <em>Into Clause</em>}'.
+   * Returns the meta object for class '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.IntoClause <em>Into Clause</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Into Clause</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.IntoClause
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.IntoClause
    * @generated
    */
   EClass getIntoClause();
 
   /**
-   * Returns the meta object for the attribute '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.IntoClause#getResultClassName <em>Result Class Name</em>}'.
+   * Returns the meta object for the attribute '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.IntoClause#getResultClassName <em>Result Class Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Result Class Name</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.IntoClause#getResultClassName()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.IntoClause#getResultClassName()
    * @see #getIntoClause()
    * @generated
    */
   EAttribute getIntoClause_ResultClassName();
 
   /**
-   * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ResultSpec <em>Result Spec</em>}'.
+   * Returns the meta object for class '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.ResultSpec <em>Result Spec</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Result Spec</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.ResultSpec
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.ResultSpec
    * @generated
    */
   EClass getResultSpec();
 
   /**
-   * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ResultNaming <em>Result Naming</em>}'.
+   * Returns the meta object for class '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.ResultNaming <em>Result Naming</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Result Naming</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.ResultNaming
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.ResultNaming
    * @generated
    */
   EClass getResultNaming();
 
   /**
-   * Returns the meta object for the attribute '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ResultNaming#getIdentifier <em>Identifier</em>}'.
+   * Returns the meta object for the attribute '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.ResultNaming#getIdentifier <em>Identifier</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Identifier</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.ResultNaming#getIdentifier()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.ResultNaming#getIdentifier()
    * @see #getResultNaming()
    * @generated
    */
   EAttribute getResultNaming_Identifier();
 
   /**
-   * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.FromClause <em>From Clause</em>}'.
+   * Returns the meta object for class '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.FromClause <em>From Clause</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>From Clause</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.FromClause
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.FromClause
    * @generated
    */
   EClass getFromClause();
 
   /**
-   * Returns the meta object for the attribute '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.FromClause#getCandidateClassName <em>Candidate Class Name</em>}'.
+   * Returns the meta object for the attribute '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.FromClause#getCandidateClassName <em>Candidate Class Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Candidate Class Name</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.FromClause#getCandidateClassName()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.FromClause#getCandidateClassName()
    * @see #getFromClause()
    * @generated
    */
   EAttribute getFromClause_CandidateClassName();
 
   /**
-   * Returns the meta object for the attribute '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.FromClause#isIsExcludeSubclasses <em>Is Exclude Subclasses</em>}'.
+   * Returns the meta object for the attribute '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.FromClause#isIsExcludeSubclasses <em>Is Exclude Subclasses</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Is Exclude Subclasses</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.FromClause#isIsExcludeSubclasses()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.FromClause#isIsExcludeSubclasses()
    * @see #getFromClause()
    * @generated
    */
   EAttribute getFromClause_IsExcludeSubclasses();
 
   /**
-   * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SubqueryFromClause <em>Subquery From Clause</em>}'.
+   * Returns the meta object for class '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.SubqueryFromClause <em>Subquery From Clause</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Subquery From Clause</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.SubqueryFromClause
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.SubqueryFromClause
    * @generated
    */
   EClass getSubqueryFromClause();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SubqueryFromClause#getFieldAccessExpression <em>Field Access Expression</em>}'.
+   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.SubqueryFromClause#getFieldAccessExpression <em>Field Access Expression</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Field Access Expression</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.SubqueryFromClause#getFieldAccessExpression()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.SubqueryFromClause#getFieldAccessExpression()
    * @see #getSubqueryFromClause()
    * @generated
    */
   EReference getSubqueryFromClause_FieldAccessExpression();
 
   /**
-   * Returns the meta object for the attribute '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SubqueryFromClause#getCandidateClassName <em>Candidate Class Name</em>}'.
+   * Returns the meta object for the attribute '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.SubqueryFromClause#getCandidateClassName <em>Candidate Class Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Candidate Class Name</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.SubqueryFromClause#getCandidateClassName()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.SubqueryFromClause#getCandidateClassName()
    * @see #getSubqueryFromClause()
    * @generated
    */
   EAttribute getSubqueryFromClause_CandidateClassName();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SubqueryFromClause#getAlias <em>Alias</em>}'.
+   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.SubqueryFromClause#getAlias <em>Alias</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Alias</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.SubqueryFromClause#getAlias()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.SubqueryFromClause#getAlias()
    * @see #getSubqueryFromClause()
    * @generated
    */
   EReference getSubqueryFromClause_Alias();
 
   /**
-   * Returns the meta object for the attribute '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SubqueryFromClause#isIsExcludeSubclasses <em>Is Exclude Subclasses</em>}'.
+   * Returns the meta object for the attribute '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.SubqueryFromClause#isIsExcludeSubclasses <em>Is Exclude Subclasses</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Is Exclude Subclasses</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.SubqueryFromClause#isIsExcludeSubclasses()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.SubqueryFromClause#isIsExcludeSubclasses()
    * @see #getSubqueryFromClause()
    * @generated
    */
   EAttribute getSubqueryFromClause_IsExcludeSubclasses();
 
   /**
-   * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Alias <em>Alias</em>}'.
+   * Returns the meta object for class '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.Alias <em>Alias</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Alias</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.Alias
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.Alias
    * @generated
    */
   EClass getAlias();
 
   /**
-   * Returns the meta object for the attribute '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Alias#getIdentifier <em>Identifier</em>}'.
+   * Returns the meta object for the attribute '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.Alias#getIdentifier <em>Identifier</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Identifier</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.Alias#getIdentifier()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.Alias#getIdentifier()
    * @see #getAlias()
    * @generated
    */
   EAttribute getAlias_Identifier();
 
   /**
-   * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.WhereClause <em>Where Clause</em>}'.
+   * Returns the meta object for class '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.WhereClause <em>Where Clause</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Where Clause</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.WhereClause
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.WhereClause
    * @generated
    */
   EClass getWhereClause();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.WhereClause#getFilter <em>Filter</em>}'.
+   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.WhereClause#getFilter <em>Filter</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Filter</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.WhereClause#getFilter()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.WhereClause#getFilter()
    * @see #getWhereClause()
    * @generated
    */
   EReference getWhereClause_Filter();
 
   /**
-   * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.VariablesClause <em>Variables Clause</em>}'.
+   * Returns the meta object for class '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.VariablesClause <em>Variables Clause</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Variables Clause</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.VariablesClause
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.VariablesClause
    * @generated
    */
   EClass getVariablesClause();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.VariablesClause#getVariableDeclarations <em>Variable Declarations</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.VariablesClause#getVariableDeclarations <em>Variable Declarations</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Variable Declarations</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.VariablesClause#getVariableDeclarations()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.VariablesClause#getVariableDeclarations()
    * @see #getVariablesClause()
    * @generated
    */
   EReference getVariablesClause_VariableDeclarations();
 
   /**
-   * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.VariableDeclaration <em>Variable Declaration</em>}'.
+   * Returns the meta object for class '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.VariableDeclaration <em>Variable Declaration</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Variable Declaration</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.VariableDeclaration
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.VariableDeclaration
    * @generated
    */
   EClass getVariableDeclaration();
 
   /**
-   * Returns the meta object for the attribute '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.VariableDeclaration#getType <em>Type</em>}'.
+   * Returns the meta object for the attribute '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.VariableDeclaration#getType <em>Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Type</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.VariableDeclaration#getType()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.VariableDeclaration#getType()
    * @see #getVariableDeclaration()
    * @generated
    */
   EAttribute getVariableDeclaration_Type();
 
   /**
-   * Returns the meta object for the attribute '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.VariableDeclaration#getVariableName <em>Variable Name</em>}'.
+   * Returns the meta object for the attribute '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.VariableDeclaration#getVariableName <em>Variable Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Variable Name</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.VariableDeclaration#getVariableName()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.VariableDeclaration#getVariableName()
    * @see #getVariableDeclaration()
    * @generated
    */
   EAttribute getVariableDeclaration_VariableName();
 
   /**
-   * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ParametersClause <em>Parameters Clause</em>}'.
+   * Returns the meta object for class '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.ParametersClause <em>Parameters Clause</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Parameters Clause</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.ParametersClause
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.ParametersClause
    * @generated
    */
   EClass getParametersClause();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ParametersClause#getParameterDeclarations <em>Parameter Declarations</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.ParametersClause#getParameterDeclarations <em>Parameter Declarations</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Parameter Declarations</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.ParametersClause#getParameterDeclarations()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.ParametersClause#getParameterDeclarations()
    * @see #getParametersClause()
    * @generated
    */
   EReference getParametersClause_ParameterDeclarations();
 
   /**
-   * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ParameterDeclaration <em>Parameter Declaration</em>}'.
+   * Returns the meta object for class '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.ParameterDeclaration <em>Parameter Declaration</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Parameter Declaration</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.ParameterDeclaration
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.ParameterDeclaration
    * @generated
    */
   EClass getParameterDeclaration();
 
   /**
-   * Returns the meta object for the attribute '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ParameterDeclaration#getType <em>Type</em>}'.
+   * Returns the meta object for the attribute '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.ParameterDeclaration#getType <em>Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Type</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.ParameterDeclaration#getType()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.ParameterDeclaration#getType()
    * @see #getParameterDeclaration()
    * @generated
    */
   EAttribute getParameterDeclaration_Type();
 
   /**
-   * Returns the meta object for the attribute '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ParameterDeclaration#getDeclaredParameterName <em>Declared Parameter Name</em>}'.
+   * Returns the meta object for the attribute '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.ParameterDeclaration#getDeclaredParameterName <em>Declared Parameter Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Declared Parameter Name</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.ParameterDeclaration#getDeclaredParameterName()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.ParameterDeclaration#getDeclaredParameterName()
    * @see #getParameterDeclaration()
    * @generated
    */
   EAttribute getParameterDeclaration_DeclaredParameterName();
 
   /**
-   * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ImportClause <em>Import Clause</em>}'.
+   * Returns the meta object for class '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.ImportClause <em>Import Clause</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Import Clause</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.ImportClause
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.ImportClause
    * @generated
    */
   EClass getImportClause();
 
   /**
-   * Returns the meta object for the attribute list '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ImportClause#getImportDeclarations <em>Import Declarations</em>}'.
+   * Returns the meta object for the attribute list '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.ImportClause#getImportDeclarations <em>Import Declarations</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute list '<em>Import Declarations</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.ImportClause#getImportDeclarations()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.ImportClause#getImportDeclarations()
    * @see #getImportClause()
    * @generated
    */
   EAttribute getImportClause_ImportDeclarations();
 
   /**
-   * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.GroupByClause <em>Group By Clause</em>}'.
+   * Returns the meta object for class '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.GroupByClause <em>Group By Clause</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Group By Clause</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.GroupByClause
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.GroupByClause
    * @generated
    */
   EClass getGroupByClause();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.GroupByClause#getGrouping <em>Grouping</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.GroupByClause#getGrouping <em>Grouping</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Grouping</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.GroupByClause#getGrouping()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.GroupByClause#getGrouping()
    * @see #getGroupByClause()
    * @generated
    */
   EReference getGroupByClause_Grouping();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.GroupByClause#getHavingClause <em>Having Clause</em>}'.
+   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.GroupByClause#getHavingClause <em>Having Clause</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Having Clause</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.GroupByClause#getHavingClause()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.GroupByClause#getHavingClause()
    * @see #getGroupByClause()
    * @generated
    */
   EReference getGroupByClause_HavingClause();
 
   /**
-   * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.HavingClause <em>Having Clause</em>}'.
+   * Returns the meta object for class '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.HavingClause <em>Having Clause</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Having Clause</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.HavingClause
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.HavingClause
    * @generated
    */
   EClass getHavingClause();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.HavingClause#getHaving <em>Having</em>}'.
+   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.HavingClause#getHaving <em>Having</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Having</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.HavingClause#getHaving()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.HavingClause#getHaving()
    * @see #getHavingClause()
    * @generated
    */
   EReference getHavingClause_Having();
 
   /**
-   * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.OrderByClause <em>Order By Clause</em>}'.
+   * Returns the meta object for class '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.OrderByClause <em>Order By Clause</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Order By Clause</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.OrderByClause
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.OrderByClause
    * @generated
    */
   EClass getOrderByClause();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.OrderByClause#getOrdering <em>Ordering</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.OrderByClause#getOrdering <em>Ordering</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Ordering</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.OrderByClause#getOrdering()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.OrderByClause#getOrdering()
    * @see #getOrderByClause()
    * @generated
    */
   EReference getOrderByClause_Ordering();
 
   /**
-   * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.OrderBySpec <em>Order By Spec</em>}'.
+   * Returns the meta object for class '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.OrderBySpec <em>Order By Spec</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Order By Spec</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.OrderBySpec
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.OrderBySpec
    * @generated
    */
   EClass getOrderBySpec();
 
   /**
-   * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.RangeClause <em>Range Clause</em>}'.
+   * Returns the meta object for class '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.RangeClause <em>Range Clause</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Range Clause</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.RangeClause
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.RangeClause
    * @generated
    */
   EClass getRangeClause();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.RangeClause#getStart <em>Start</em>}'.
+   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.RangeClause#getStart <em>Start</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Start</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.RangeClause#getStart()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.RangeClause#getStart()
    * @see #getRangeClause()
    * @generated
    */
   EReference getRangeClause_Start();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.RangeClause#getEnd <em>End</em>}'.
+   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.RangeClause#getEnd <em>End</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>End</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.RangeClause#getEnd()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.RangeClause#getEnd()
    * @see #getRangeClause()
    * @generated
    */
   EReference getRangeClause_End();
 
   /**
-   * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression <em>Expression</em>}'.
+   * Returns the meta object for class '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression <em>Expression</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Expression</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression
    * @generated
    */
   EClass getExpression();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getResultNaming <em>Result Naming</em>}'.
+   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression#getResultNaming <em>Result Naming</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Result Naming</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getResultNaming()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression#getResultNaming()
    * @see #getExpression()
    * @generated
    */
   EReference getExpression_ResultNaming();
 
   /**
-   * Returns the meta object for the attribute '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getDirection <em>Direction</em>}'.
+   * Returns the meta object for the attribute '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression#getDirection <em>Direction</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Direction</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getDirection()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression#getDirection()
    * @see #getExpression()
    * @generated
    */
   EAttribute getExpression_Direction();
 
   /**
-   * Returns the meta object for the attribute '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getCastType <em>Cast Type</em>}'.
+   * Returns the meta object for the attribute '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression#getCastType <em>Cast Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Cast Type</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getCastType()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression#getCastType()
    * @see #getExpression()
    * @generated
    */
   EAttribute getExpression_CastType();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getRight <em>Right</em>}'.
+   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression#getRight <em>Right</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Right</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getRight()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression#getRight()
    * @see #getExpression()
    * @generated
    */
   EReference getExpression_Right();
 
   /**
-   * Returns the meta object for the attribute '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getUnaryOperator <em>Unary Operator</em>}'.
+   * Returns the meta object for the attribute '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression#getUnaryOperator <em>Unary Operator</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Unary Operator</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getUnaryOperator()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression#getUnaryOperator()
    * @see #getExpression()
    * @generated
    */
   EAttribute getExpression_UnaryOperator();
 
   /**
-   * Returns the meta object for the attribute '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getLiteral <em>Literal</em>}'.
+   * Returns the meta object for the attribute '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression#getLiteral <em>Literal</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Literal</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getLiteral()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression#getLiteral()
    * @see #getExpression()
    * @generated
    */
   EAttribute getExpression_Literal();
 
   /**
-   * Returns the meta object for the attribute '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getThis <em>This</em>}'.
+   * Returns the meta object for the attribute '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression#getThis <em>This</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>This</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getThis()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression#getThis()
    * @see #getExpression()
    * @generated
    */
   EAttribute getExpression_This();
 
   /**
-   * Returns the meta object for the attribute '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getId <em>Id</em>}'.
+   * Returns the meta object for the attribute '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression#getId <em>Id</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Id</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getId()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression#getId()
    * @see #getExpression()
    * @generated
    */
   EAttribute getExpression_Id();
 
   /**
-   * Returns the meta object for the attribute '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getParameterName <em>Parameter Name</em>}'.
+   * Returns the meta object for the attribute '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression#getParameterName <em>Parameter Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Parameter Name</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getParameterName()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression#getParameterName()
    * @see #getExpression()
    * @generated
    */
   EAttribute getExpression_ParameterName();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getMethod <em>Method</em>}'.
+   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression#getMethod <em>Method</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Method</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getMethod()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression#getMethod()
    * @see #getExpression()
    * @generated
    */
   EReference getExpression_Method();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getNumber <em>Number</em>}'.
+   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression#getNumber <em>Number</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Number</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getNumber()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression#getNumber()
    * @see #getExpression()
    * @generated
    */
   EReference getExpression_Number();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getPersistable <em>Persistable</em>}'.
+   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression#getPersistable <em>Persistable</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Persistable</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getPersistable()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression#getPersistable()
    * @see #getExpression()
    * @generated
    */
   EReference getExpression_Persistable();
 
   /**
-   * Returns the meta object for the attribute '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#isIsDistinct <em>Is Distinct</em>}'.
+   * Returns the meta object for the attribute '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression#isIsDistinct <em>Is Distinct</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Is Distinct</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#isIsDistinct()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression#isIsDistinct()
    * @see #getExpression()
    * @generated
    */
   EAttribute getExpression_IsDistinct();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getAggregateArgument <em>Aggregate Argument</em>}'.
+   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression#getAggregateArgument <em>Aggregate Argument</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Aggregate Argument</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getAggregateArgument()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression#getAggregateArgument()
    * @see #getExpression()
    * @generated
    */
   EReference getExpression_AggregateArgument();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getElement <em>Element</em>}'.
+   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression#getElement <em>Element</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Element</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getElement()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression#getElement()
    * @see #getExpression()
    * @generated
    */
   EReference getExpression_Element();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getArg <em>Arg</em>}'.
+   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression#getArg <em>Arg</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Arg</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getArg()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression#getArg()
    * @see #getExpression()
    * @generated
    */
   EReference getExpression_Arg();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getKey <em>Key</em>}'.
+   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression#getKey <em>Key</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Key</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getKey()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression#getKey()
    * @see #getExpression()
    * @generated
    */
   EReference getExpression_Key();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getValue <em>Value</em>}'.
+   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression#getValue <em>Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Value</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getValue()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression#getValue()
    * @see #getExpression()
    * @generated
    */
   EReference getExpression_Value();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getIndex <em>Index</em>}'.
+   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression#getIndex <em>Index</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Index</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getIndex()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression#getIndex()
    * @see #getExpression()
    * @generated
    */
   EReference getExpression_Index();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getString <em>String</em>}'.
+   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression#getString <em>String</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>String</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getString()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression#getString()
    * @see #getExpression()
    * @generated
    */
   EReference getExpression_String();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getFromIndex <em>From Index</em>}'.
+   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression#getFromIndex <em>From Index</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>From Index</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getFromIndex()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression#getFromIndex()
    * @see #getExpression()
    * @generated
    */
   EReference getExpression_FromIndex();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getRegex <em>Regex</em>}'.
+   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression#getRegex <em>Regex</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Regex</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getRegex()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression#getRegex()
    * @see #getExpression()
    * @generated
    */
   EReference getExpression_Regex();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getReplacement <em>Replacement</em>}'.
+   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression#getReplacement <em>Replacement</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Replacement</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getReplacement()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression#getReplacement()
    * @see #getExpression()
    * @generated
    */
   EReference getExpression_Replacement();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getBeginIndex <em>Begin Index</em>}'.
+   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression#getBeginIndex <em>Begin Index</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Begin Index</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getBeginIndex()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression#getBeginIndex()
    * @see #getExpression()
    * @generated
    */
   EReference getExpression_BeginIndex();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getEndIndex <em>End Index</em>}'.
+   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression#getEndIndex <em>End Index</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>End Index</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getEndIndex()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression#getEndIndex()
    * @see #getExpression()
    * @generated
    */
   EReference getExpression_EndIndex();
 
   /**
-   * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ConditionalOrExpression <em>Conditional Or Expression</em>}'.
+   * Returns the meta object for class '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.ConditionalOrExpression <em>Conditional Or Expression</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Conditional Or Expression</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.ConditionalOrExpression
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.ConditionalOrExpression
    * @generated
    */
   EClass getConditionalOrExpression();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ConditionalOrExpression#getLeft <em>Left</em>}'.
+   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.ConditionalOrExpression#getLeft <em>Left</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Left</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.ConditionalOrExpression#getLeft()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.ConditionalOrExpression#getLeft()
    * @see #getConditionalOrExpression()
    * @generated
    */
   EReference getConditionalOrExpression_Left();
 
   /**
-   * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ConditionalAndExpression <em>Conditional And Expression</em>}'.
+   * Returns the meta object for class '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.ConditionalAndExpression <em>Conditional And Expression</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Conditional And Expression</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.ConditionalAndExpression
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.ConditionalAndExpression
    * @generated
    */
   EClass getConditionalAndExpression();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ConditionalAndExpression#getLeft <em>Left</em>}'.
+   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.ConditionalAndExpression#getLeft <em>Left</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Left</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.ConditionalAndExpression#getLeft()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.ConditionalAndExpression#getLeft()
    * @see #getConditionalAndExpression()
    * @generated
    */
   EReference getConditionalAndExpression_Left();
 
   /**
-   * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SimpleOrExpression <em>Simple Or Expression</em>}'.
+   * Returns the meta object for class '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.SimpleOrExpression <em>Simple Or Expression</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Simple Or Expression</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.SimpleOrExpression
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.SimpleOrExpression
    * @generated
    */
   EClass getSimpleOrExpression();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SimpleOrExpression#getLeft <em>Left</em>}'.
+   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.SimpleOrExpression#getLeft <em>Left</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Left</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.SimpleOrExpression#getLeft()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.SimpleOrExpression#getLeft()
    * @see #getSimpleOrExpression()
    * @generated
    */
   EReference getSimpleOrExpression_Left();
 
   /**
-   * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SimpleAndExpression <em>Simple And Expression</em>}'.
+   * Returns the meta object for class '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.SimpleAndExpression <em>Simple And Expression</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Simple And Expression</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.SimpleAndExpression
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.SimpleAndExpression
    * @generated
    */
   EClass getSimpleAndExpression();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SimpleAndExpression#getLeft <em>Left</em>}'.
+   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.SimpleAndExpression#getLeft <em>Left</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Left</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.SimpleAndExpression#getLeft()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.SimpleAndExpression#getLeft()
    * @see #getSimpleAndExpression()
    * @generated
    */
   EReference getSimpleAndExpression_Left();
 
   /**
-   * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ComparisonOperatorExpression <em>Comparison Operator Expression</em>}'.
+   * Returns the meta object for class '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.ComparisonOperatorExpression <em>Comparison Operator Expression</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Comparison Operator Expression</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.ComparisonOperatorExpression
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.ComparisonOperatorExpression
    * @generated
    */
   EClass getComparisonOperatorExpression();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ComparisonOperatorExpression#getLeft <em>Left</em>}'.
+   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.ComparisonOperatorExpression#getLeft <em>Left</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Left</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.ComparisonOperatorExpression#getLeft()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.ComparisonOperatorExpression#getLeft()
    * @see #getComparisonOperatorExpression()
    * @generated
    */
   EReference getComparisonOperatorExpression_Left();
 
   /**
-   * Returns the meta object for the attribute '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ComparisonOperatorExpression#getOperator <em>Operator</em>}'.
+   * Returns the meta object for the attribute '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.ComparisonOperatorExpression#getOperator <em>Operator</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Operator</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.ComparisonOperatorExpression#getOperator()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.ComparisonOperatorExpression#getOperator()
    * @see #getComparisonOperatorExpression()
    * @generated
    */
   EAttribute getComparisonOperatorExpression_Operator();
 
   /**
-   * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.AdditionExpression <em>Addition Expression</em>}'.
+   * Returns the meta object for class '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.AdditionExpression <em>Addition Expression</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Addition Expression</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.AdditionExpression
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.AdditionExpression
    * @generated
    */
   EClass getAdditionExpression();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.AdditionExpression#getLeft <em>Left</em>}'.
+   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.AdditionExpression#getLeft <em>Left</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Left</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.AdditionExpression#getLeft()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.AdditionExpression#getLeft()
    * @see #getAdditionExpression()
    * @generated
    */
   EReference getAdditionExpression_Left();
 
   /**
-   * Returns the meta object for the attribute '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.AdditionExpression#getOperator <em>Operator</em>}'.
+   * Returns the meta object for the attribute '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.AdditionExpression#getOperator <em>Operator</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Operator</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.AdditionExpression#getOperator()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.AdditionExpression#getOperator()
    * @see #getAdditionExpression()
    * @generated
    */
   EAttribute getAdditionExpression_Operator();
 
   /**
-   * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.MultiplicationExpression <em>Multiplication Expression</em>}'.
+   * Returns the meta object for class '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.MultiplicationExpression <em>Multiplication Expression</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Multiplication Expression</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.MultiplicationExpression
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.MultiplicationExpression
    * @generated
    */
   EClass getMultiplicationExpression();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.MultiplicationExpression#getLeft <em>Left</em>}'.
+   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.MultiplicationExpression#getLeft <em>Left</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Left</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.MultiplicationExpression#getLeft()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.MultiplicationExpression#getLeft()
    * @see #getMultiplicationExpression()
    * @generated
    */
   EReference getMultiplicationExpression_Left();
 
   /**
-   * Returns the meta object for the attribute '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.MultiplicationExpression#getOperator <em>Operator</em>}'.
+   * Returns the meta object for the attribute '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.MultiplicationExpression#getOperator <em>Operator</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Operator</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.MultiplicationExpression#getOperator()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.MultiplicationExpression#getOperator()
    * @see #getMultiplicationExpression()
    * @generated
    */
   EAttribute getMultiplicationExpression_Operator();
 
   /**
-   * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.FieldAccessExpression <em>Field Access Expression</em>}'.
+   * Returns the meta object for class '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.FieldAccessExpression <em>Field Access Expression</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Field Access Expression</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.FieldAccessExpression
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.FieldAccessExpression
    * @generated
    */
   EClass getFieldAccessExpression();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.FieldAccessExpression#getLeft <em>Left</em>}'.
+   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.FieldAccessExpression#getLeft <em>Left</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Left</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.FieldAccessExpression#getLeft()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.FieldAccessExpression#getLeft()
    * @see #getFieldAccessExpression()
    * @generated
    */
   EReference getFieldAccessExpression_Left();
 
   /**
-   * Returns the meta object for enum '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.OrderByDirection <em>Order By Direction</em>}'.
+   * Returns the meta object for enum '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.OrderByDirection <em>Order By Direction</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for enum '<em>Order By Direction</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.OrderByDirection
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.OrderByDirection
    * @generated
    */
   EEnum getOrderByDirection();
 
   /**
-   * Returns the meta object for enum '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.UnaryOperator <em>Unary Operator</em>}'.
+   * Returns the meta object for enum '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.UnaryOperator <em>Unary Operator</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for enum '<em>Unary Operator</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.UnaryOperator
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.UnaryOperator
    * @generated
    */
   EEnum getUnaryOperator();
 
   /**
-   * Returns the meta object for enum '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.AdditionOperator <em>Addition Operator</em>}'.
+   * Returns the meta object for enum '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.AdditionOperator <em>Addition Operator</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for enum '<em>Addition Operator</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.AdditionOperator
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.AdditionOperator
    * @generated
    */
   EEnum getAdditionOperator();
 
   /**
-   * Returns the meta object for enum '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.MultiplicationOperator <em>Multiplication Operator</em>}'.
+   * Returns the meta object for enum '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.MultiplicationOperator <em>Multiplication Operator</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for enum '<em>Multiplication Operator</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.MultiplicationOperator
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.MultiplicationOperator
    * @generated
    */
   EEnum getMultiplicationOperator();
 
   /**
-   * Returns the meta object for enum '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ComparisonOperator <em>Comparison Operator</em>}'.
+   * Returns the meta object for enum '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.ComparisonOperator <em>Comparison Operator</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for enum '<em>Comparison Operator</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.ComparisonOperator
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.ComparisonOperator
    * @generated
    */
   EEnum getComparisonOperator();
@@ -4758,11 +4758,11 @@ public interface JDOQLPackage extends EPackage
   interface Literals
   {
     /**
-     * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SingleStringJDOQLImpl <em>Single String JDOQL</em>}' class.
+     * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.SingleStringJDOQLImpl <em>Single String JDOQL</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SingleStringJDOQLImpl
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getSingleStringJDOQL()
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.SingleStringJDOQLImpl
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getSingleStringJDOQL()
      * @generated
      */
     EClass SINGLE_STRING_JDOQL = eINSTANCE.getSingleStringJDOQL();
@@ -4840,11 +4840,11 @@ public interface JDOQLPackage extends EPackage
     EReference SINGLE_STRING_JDOQL__RANGE_CLAUSE = eINSTANCE.getSingleStringJDOQL_RangeClause();
 
     /**
-     * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SubqueryImpl <em>Subquery</em>}' class.
+     * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.SubqueryImpl <em>Subquery</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SubqueryImpl
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getSubquery()
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.SubqueryImpl
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getSubquery()
      * @generated
      */
     EClass SUBQUERY = eINSTANCE.getSubquery();
@@ -4898,11 +4898,11 @@ public interface JDOQLPackage extends EPackage
     EReference SUBQUERY__IMPORT_CLAUSE = eINSTANCE.getSubquery_ImportClause();
 
     /**
-     * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SelectClauseImpl <em>Select Clause</em>}' class.
+     * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.SelectClauseImpl <em>Select Clause</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SelectClauseImpl
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getSelectClause()
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.SelectClauseImpl
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getSelectClause()
      * @generated
      */
     EClass SELECT_CLAUSE = eINSTANCE.getSelectClause();
@@ -4932,21 +4932,21 @@ public interface JDOQLPackage extends EPackage
     EReference SELECT_CLAUSE__INTO_CLAUSE = eINSTANCE.getSelectClause_IntoClause();
 
     /**
-     * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SubquerySelectClauseImpl <em>Subquery Select Clause</em>}' class.
+     * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.SubquerySelectClauseImpl <em>Subquery Select Clause</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SubquerySelectClauseImpl
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getSubquerySelectClause()
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.SubquerySelectClauseImpl
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getSubquerySelectClause()
      * @generated
      */
     EClass SUBQUERY_SELECT_CLAUSE = eINSTANCE.getSubquerySelectClause();
 
     /**
-     * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ResultClauseImpl <em>Result Clause</em>}' class.
+     * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.ResultClauseImpl <em>Result Clause</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ResultClauseImpl
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getResultClause()
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.ResultClauseImpl
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getResultClause()
      * @generated
      */
     EClass RESULT_CLAUSE = eINSTANCE.getResultClause();
@@ -4968,11 +4968,11 @@ public interface JDOQLPackage extends EPackage
     EReference RESULT_CLAUSE__RESULT_SPECS = eINSTANCE.getResultClause_ResultSpecs();
 
     /**
-     * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SubqueryResultClauseImpl <em>Subquery Result Clause</em>}' class.
+     * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.SubqueryResultClauseImpl <em>Subquery Result Clause</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SubqueryResultClauseImpl
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getSubqueryResultClause()
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.SubqueryResultClauseImpl
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getSubqueryResultClause()
      * @generated
      */
     EClass SUBQUERY_RESULT_CLAUSE = eINSTANCE.getSubqueryResultClause();
@@ -4994,11 +4994,11 @@ public interface JDOQLPackage extends EPackage
     EReference SUBQUERY_RESULT_CLAUSE__RESULT_EXPRESSION = eINSTANCE.getSubqueryResultClause_ResultExpression();
 
     /**
-     * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.IntoClauseImpl <em>Into Clause</em>}' class.
+     * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.IntoClauseImpl <em>Into Clause</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.IntoClauseImpl
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getIntoClause()
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.IntoClauseImpl
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getIntoClause()
      * @generated
      */
     EClass INTO_CLAUSE = eINSTANCE.getIntoClause();
@@ -5012,21 +5012,21 @@ public interface JDOQLPackage extends EPackage
     EAttribute INTO_CLAUSE__RESULT_CLASS_NAME = eINSTANCE.getIntoClause_ResultClassName();
 
     /**
-     * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ResultSpecImpl <em>Result Spec</em>}' class.
+     * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.ResultSpecImpl <em>Result Spec</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ResultSpecImpl
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getResultSpec()
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.ResultSpecImpl
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getResultSpec()
      * @generated
      */
     EClass RESULT_SPEC = eINSTANCE.getResultSpec();
 
     /**
-     * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ResultNamingImpl <em>Result Naming</em>}' class.
+     * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.ResultNamingImpl <em>Result Naming</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ResultNamingImpl
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getResultNaming()
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.ResultNamingImpl
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getResultNaming()
      * @generated
      */
     EClass RESULT_NAMING = eINSTANCE.getResultNaming();
@@ -5040,11 +5040,11 @@ public interface JDOQLPackage extends EPackage
     EAttribute RESULT_NAMING__IDENTIFIER = eINSTANCE.getResultNaming_Identifier();
 
     /**
-     * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.FromClauseImpl <em>From Clause</em>}' class.
+     * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.FromClauseImpl <em>From Clause</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.FromClauseImpl
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getFromClause()
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.FromClauseImpl
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getFromClause()
      * @generated
      */
     EClass FROM_CLAUSE = eINSTANCE.getFromClause();
@@ -5066,11 +5066,11 @@ public interface JDOQLPackage extends EPackage
     EAttribute FROM_CLAUSE__IS_EXCLUDE_SUBCLASSES = eINSTANCE.getFromClause_IsExcludeSubclasses();
 
     /**
-     * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SubqueryFromClauseImpl <em>Subquery From Clause</em>}' class.
+     * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.SubqueryFromClauseImpl <em>Subquery From Clause</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SubqueryFromClauseImpl
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getSubqueryFromClause()
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.SubqueryFromClauseImpl
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getSubqueryFromClause()
      * @generated
      */
     EClass SUBQUERY_FROM_CLAUSE = eINSTANCE.getSubqueryFromClause();
@@ -5108,11 +5108,11 @@ public interface JDOQLPackage extends EPackage
     EAttribute SUBQUERY_FROM_CLAUSE__IS_EXCLUDE_SUBCLASSES = eINSTANCE.getSubqueryFromClause_IsExcludeSubclasses();
 
     /**
-     * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.AliasImpl <em>Alias</em>}' class.
+     * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.AliasImpl <em>Alias</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.AliasImpl
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getAlias()
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.AliasImpl
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getAlias()
      * @generated
      */
     EClass ALIAS = eINSTANCE.getAlias();
@@ -5126,11 +5126,11 @@ public interface JDOQLPackage extends EPackage
     EAttribute ALIAS__IDENTIFIER = eINSTANCE.getAlias_Identifier();
 
     /**
-     * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.WhereClauseImpl <em>Where Clause</em>}' class.
+     * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.WhereClauseImpl <em>Where Clause</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.WhereClauseImpl
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getWhereClause()
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.WhereClauseImpl
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getWhereClause()
      * @generated
      */
     EClass WHERE_CLAUSE = eINSTANCE.getWhereClause();
@@ -5144,11 +5144,11 @@ public interface JDOQLPackage extends EPackage
     EReference WHERE_CLAUSE__FILTER = eINSTANCE.getWhereClause_Filter();
 
     /**
-     * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.VariablesClauseImpl <em>Variables Clause</em>}' class.
+     * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.VariablesClauseImpl <em>Variables Clause</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.VariablesClauseImpl
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getVariablesClause()
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.VariablesClauseImpl
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getVariablesClause()
      * @generated
      */
     EClass VARIABLES_CLAUSE = eINSTANCE.getVariablesClause();
@@ -5162,11 +5162,11 @@ public interface JDOQLPackage extends EPackage
     EReference VARIABLES_CLAUSE__VARIABLE_DECLARATIONS = eINSTANCE.getVariablesClause_VariableDeclarations();
 
     /**
-     * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.VariableDeclarationImpl <em>Variable Declaration</em>}' class.
+     * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.VariableDeclarationImpl <em>Variable Declaration</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.VariableDeclarationImpl
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getVariableDeclaration()
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.VariableDeclarationImpl
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getVariableDeclaration()
      * @generated
      */
     EClass VARIABLE_DECLARATION = eINSTANCE.getVariableDeclaration();
@@ -5188,11 +5188,11 @@ public interface JDOQLPackage extends EPackage
     EAttribute VARIABLE_DECLARATION__VARIABLE_NAME = eINSTANCE.getVariableDeclaration_VariableName();
 
     /**
-     * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ParametersClauseImpl <em>Parameters Clause</em>}' class.
+     * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.ParametersClauseImpl <em>Parameters Clause</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ParametersClauseImpl
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getParametersClause()
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.ParametersClauseImpl
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getParametersClause()
      * @generated
      */
     EClass PARAMETERS_CLAUSE = eINSTANCE.getParametersClause();
@@ -5206,11 +5206,11 @@ public interface JDOQLPackage extends EPackage
     EReference PARAMETERS_CLAUSE__PARAMETER_DECLARATIONS = eINSTANCE.getParametersClause_ParameterDeclarations();
 
     /**
-     * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ParameterDeclarationImpl <em>Parameter Declaration</em>}' class.
+     * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.ParameterDeclarationImpl <em>Parameter Declaration</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ParameterDeclarationImpl
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getParameterDeclaration()
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.ParameterDeclarationImpl
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getParameterDeclaration()
      * @generated
      */
     EClass PARAMETER_DECLARATION = eINSTANCE.getParameterDeclaration();
@@ -5232,11 +5232,11 @@ public interface JDOQLPackage extends EPackage
     EAttribute PARAMETER_DECLARATION__DECLARED_PARAMETER_NAME = eINSTANCE.getParameterDeclaration_DeclaredParameterName();
 
     /**
-     * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ImportClauseImpl <em>Import Clause</em>}' class.
+     * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.ImportClauseImpl <em>Import Clause</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ImportClauseImpl
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getImportClause()
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.ImportClauseImpl
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getImportClause()
      * @generated
      */
     EClass IMPORT_CLAUSE = eINSTANCE.getImportClause();
@@ -5250,11 +5250,11 @@ public interface JDOQLPackage extends EPackage
     EAttribute IMPORT_CLAUSE__IMPORT_DECLARATIONS = eINSTANCE.getImportClause_ImportDeclarations();
 
     /**
-     * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.GroupByClauseImpl <em>Group By Clause</em>}' class.
+     * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.GroupByClauseImpl <em>Group By Clause</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.GroupByClauseImpl
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getGroupByClause()
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.GroupByClauseImpl
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getGroupByClause()
      * @generated
      */
     EClass GROUP_BY_CLAUSE = eINSTANCE.getGroupByClause();
@@ -5276,11 +5276,11 @@ public interface JDOQLPackage extends EPackage
     EReference GROUP_BY_CLAUSE__HAVING_CLAUSE = eINSTANCE.getGroupByClause_HavingClause();
 
     /**
-     * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.HavingClauseImpl <em>Having Clause</em>}' class.
+     * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.HavingClauseImpl <em>Having Clause</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.HavingClauseImpl
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getHavingClause()
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.HavingClauseImpl
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getHavingClause()
      * @generated
      */
     EClass HAVING_CLAUSE = eINSTANCE.getHavingClause();
@@ -5294,11 +5294,11 @@ public interface JDOQLPackage extends EPackage
     EReference HAVING_CLAUSE__HAVING = eINSTANCE.getHavingClause_Having();
 
     /**
-     * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.OrderByClauseImpl <em>Order By Clause</em>}' class.
+     * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.OrderByClauseImpl <em>Order By Clause</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.OrderByClauseImpl
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getOrderByClause()
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.OrderByClauseImpl
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getOrderByClause()
      * @generated
      */
     EClass ORDER_BY_CLAUSE = eINSTANCE.getOrderByClause();
@@ -5312,21 +5312,21 @@ public interface JDOQLPackage extends EPackage
     EReference ORDER_BY_CLAUSE__ORDERING = eINSTANCE.getOrderByClause_Ordering();
 
     /**
-     * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.OrderBySpecImpl <em>Order By Spec</em>}' class.
+     * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.OrderBySpecImpl <em>Order By Spec</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.OrderBySpecImpl
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getOrderBySpec()
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.OrderBySpecImpl
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getOrderBySpec()
      * @generated
      */
     EClass ORDER_BY_SPEC = eINSTANCE.getOrderBySpec();
 
     /**
-     * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.RangeClauseImpl <em>Range Clause</em>}' class.
+     * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.RangeClauseImpl <em>Range Clause</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.RangeClauseImpl
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getRangeClause()
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.RangeClauseImpl
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getRangeClause()
      * @generated
      */
     EClass RANGE_CLAUSE = eINSTANCE.getRangeClause();
@@ -5348,11 +5348,11 @@ public interface JDOQLPackage extends EPackage
     EReference RANGE_CLAUSE__END = eINSTANCE.getRangeClause_End();
 
     /**
-     * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ExpressionImpl <em>Expression</em>}' class.
+     * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.ExpressionImpl <em>Expression</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ExpressionImpl
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getExpression()
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.ExpressionImpl
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getExpression()
      * @generated
      */
     EClass EXPRESSION = eINSTANCE.getExpression();
@@ -5558,11 +5558,11 @@ public interface JDOQLPackage extends EPackage
     EReference EXPRESSION__END_INDEX = eINSTANCE.getExpression_EndIndex();
 
     /**
-     * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ConditionalOrExpressionImpl <em>Conditional Or Expression</em>}' class.
+     * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.ConditionalOrExpressionImpl <em>Conditional Or Expression</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ConditionalOrExpressionImpl
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getConditionalOrExpression()
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.ConditionalOrExpressionImpl
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getConditionalOrExpression()
      * @generated
      */
     EClass CONDITIONAL_OR_EXPRESSION = eINSTANCE.getConditionalOrExpression();
@@ -5576,11 +5576,11 @@ public interface JDOQLPackage extends EPackage
     EReference CONDITIONAL_OR_EXPRESSION__LEFT = eINSTANCE.getConditionalOrExpression_Left();
 
     /**
-     * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ConditionalAndExpressionImpl <em>Conditional And Expression</em>}' class.
+     * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.ConditionalAndExpressionImpl <em>Conditional And Expression</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ConditionalAndExpressionImpl
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getConditionalAndExpression()
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.ConditionalAndExpressionImpl
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getConditionalAndExpression()
      * @generated
      */
     EClass CONDITIONAL_AND_EXPRESSION = eINSTANCE.getConditionalAndExpression();
@@ -5594,11 +5594,11 @@ public interface JDOQLPackage extends EPackage
     EReference CONDITIONAL_AND_EXPRESSION__LEFT = eINSTANCE.getConditionalAndExpression_Left();
 
     /**
-     * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SimpleOrExpressionImpl <em>Simple Or Expression</em>}' class.
+     * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.SimpleOrExpressionImpl <em>Simple Or Expression</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SimpleOrExpressionImpl
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getSimpleOrExpression()
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.SimpleOrExpressionImpl
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getSimpleOrExpression()
      * @generated
      */
     EClass SIMPLE_OR_EXPRESSION = eINSTANCE.getSimpleOrExpression();
@@ -5612,11 +5612,11 @@ public interface JDOQLPackage extends EPackage
     EReference SIMPLE_OR_EXPRESSION__LEFT = eINSTANCE.getSimpleOrExpression_Left();
 
     /**
-     * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SimpleAndExpressionImpl <em>Simple And Expression</em>}' class.
+     * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.SimpleAndExpressionImpl <em>Simple And Expression</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SimpleAndExpressionImpl
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getSimpleAndExpression()
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.SimpleAndExpressionImpl
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getSimpleAndExpression()
      * @generated
      */
     EClass SIMPLE_AND_EXPRESSION = eINSTANCE.getSimpleAndExpression();
@@ -5630,11 +5630,11 @@ public interface JDOQLPackage extends EPackage
     EReference SIMPLE_AND_EXPRESSION__LEFT = eINSTANCE.getSimpleAndExpression_Left();
 
     /**
-     * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ComparisonOperatorExpressionImpl <em>Comparison Operator Expression</em>}' class.
+     * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.ComparisonOperatorExpressionImpl <em>Comparison Operator Expression</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ComparisonOperatorExpressionImpl
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getComparisonOperatorExpression()
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.ComparisonOperatorExpressionImpl
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getComparisonOperatorExpression()
      * @generated
      */
     EClass COMPARISON_OPERATOR_EXPRESSION = eINSTANCE.getComparisonOperatorExpression();
@@ -5656,11 +5656,11 @@ public interface JDOQLPackage extends EPackage
     EAttribute COMPARISON_OPERATOR_EXPRESSION__OPERATOR = eINSTANCE.getComparisonOperatorExpression_Operator();
 
     /**
-     * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.AdditionExpressionImpl <em>Addition Expression</em>}' class.
+     * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.AdditionExpressionImpl <em>Addition Expression</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.AdditionExpressionImpl
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getAdditionExpression()
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.AdditionExpressionImpl
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getAdditionExpression()
      * @generated
      */
     EClass ADDITION_EXPRESSION = eINSTANCE.getAdditionExpression();
@@ -5682,11 +5682,11 @@ public interface JDOQLPackage extends EPackage
     EAttribute ADDITION_EXPRESSION__OPERATOR = eINSTANCE.getAdditionExpression_Operator();
 
     /**
-     * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.MultiplicationExpressionImpl <em>Multiplication Expression</em>}' class.
+     * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.MultiplicationExpressionImpl <em>Multiplication Expression</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.MultiplicationExpressionImpl
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getMultiplicationExpression()
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.MultiplicationExpressionImpl
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getMultiplicationExpression()
      * @generated
      */
     EClass MULTIPLICATION_EXPRESSION = eINSTANCE.getMultiplicationExpression();
@@ -5708,11 +5708,11 @@ public interface JDOQLPackage extends EPackage
     EAttribute MULTIPLICATION_EXPRESSION__OPERATOR = eINSTANCE.getMultiplicationExpression_Operator();
 
     /**
-     * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.FieldAccessExpressionImpl <em>Field Access Expression</em>}' class.
+     * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.FieldAccessExpressionImpl <em>Field Access Expression</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.FieldAccessExpressionImpl
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getFieldAccessExpression()
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.FieldAccessExpressionImpl
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getFieldAccessExpression()
      * @generated
      */
     EClass FIELD_ACCESS_EXPRESSION = eINSTANCE.getFieldAccessExpression();
@@ -5726,51 +5726,51 @@ public interface JDOQLPackage extends EPackage
     EReference FIELD_ACCESS_EXPRESSION__LEFT = eINSTANCE.getFieldAccessExpression_Left();
 
     /**
-     * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.OrderByDirection <em>Order By Direction</em>}' enum.
+     * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.OrderByDirection <em>Order By Direction</em>}' enum.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.OrderByDirection
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getOrderByDirection()
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.OrderByDirection
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getOrderByDirection()
      * @generated
      */
     EEnum ORDER_BY_DIRECTION = eINSTANCE.getOrderByDirection();
 
     /**
-     * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.UnaryOperator <em>Unary Operator</em>}' enum.
+     * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.UnaryOperator <em>Unary Operator</em>}' enum.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.UnaryOperator
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getUnaryOperator()
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.UnaryOperator
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getUnaryOperator()
      * @generated
      */
     EEnum UNARY_OPERATOR = eINSTANCE.getUnaryOperator();
 
     /**
-     * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.AdditionOperator <em>Addition Operator</em>}' enum.
+     * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.AdditionOperator <em>Addition Operator</em>}' enum.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.AdditionOperator
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getAdditionOperator()
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.AdditionOperator
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getAdditionOperator()
      * @generated
      */
     EEnum ADDITION_OPERATOR = eINSTANCE.getAdditionOperator();
 
     /**
-     * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.MultiplicationOperator <em>Multiplication Operator</em>}' enum.
+     * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.MultiplicationOperator <em>Multiplication Operator</em>}' enum.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.MultiplicationOperator
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getMultiplicationOperator()
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.MultiplicationOperator
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getMultiplicationOperator()
      * @generated
      */
     EEnum MULTIPLICATION_OPERATOR = eINSTANCE.getMultiplicationOperator();
 
     /**
-     * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ComparisonOperator <em>Comparison Operator</em>}' enum.
+     * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.ComparisonOperator <em>Comparison Operator</em>}' enum.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.ComparisonOperator
-     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getComparisonOperator()
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.ComparisonOperator
+     * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getComparisonOperator()
      * @generated
      */
     EEnum COMPARISON_OPERATOR = eINSTANCE.getComparisonOperator();

@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.childvm.webapp.model;
+package org.nightlabs.vestigo.childvm.webapp.model;
 
 import java.io.IOException;
 import java.lang.reflect.Field;
@@ -17,13 +17,13 @@ import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
-import org.nightlabs.jjqb.childvm.shared.MapEntry;
-import org.nightlabs.jjqb.childvm.shared.ResultSetID;
-import org.nightlabs.jjqb.childvm.shared.dto.ResultCellDTO;
-import org.nightlabs.jjqb.childvm.shared.dto.ResultCellNullDTO;
-import org.nightlabs.jjqb.childvm.shared.dto.ResultCellObjectRefDTO;
-import org.nightlabs.jjqb.childvm.shared.dto.ResultCellSimpleDTO;
-import org.nightlabs.jjqb.childvm.shared.dto.ResultCellTransientObjectRefDTO;
+import org.nightlabs.vestigo.childvm.shared.MapEntry;
+import org.nightlabs.vestigo.childvm.shared.ResultSetID;
+import org.nightlabs.vestigo.childvm.shared.dto.ResultCellDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.ResultCellNullDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.ResultCellObjectRefDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.ResultCellSimpleDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.ResultCellTransientObjectRefDTO;
 import org.nightlabs.util.reflect.ReflectUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

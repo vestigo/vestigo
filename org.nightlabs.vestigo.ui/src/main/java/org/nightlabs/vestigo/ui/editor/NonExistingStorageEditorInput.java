@@ -1,7 +1,7 @@
 /**
  *
  */
-package org.nightlabs.jjqb.ui.editor;
+package org.nightlabs.vestigo.ui.editor;
 
 import java.io.InputStream;
 

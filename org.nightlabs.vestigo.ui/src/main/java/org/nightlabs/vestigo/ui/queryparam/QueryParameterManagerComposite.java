@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.ui.queryparam;
+package org.nightlabs.vestigo.ui.queryparam;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -12,7 +12,7 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
-import org.nightlabs.jjqb.ui.JJQBUIPlugin;
+import org.nightlabs.vestigo.ui.JJQBUIPlugin;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de

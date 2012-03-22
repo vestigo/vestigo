@@ -3,7 +3,7 @@
  * </copyright>
  *
  */
-package org.nightlabs.jjqb.xtext.jpql.jPQL.impl;
+package org.nightlabs.vestigo.xtext.jpql.jPQL.impl;
 
 import java.util.Collection;
 
@@ -21,9 +21,9 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.SelectClause;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.SelectExpression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.SelectClause;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.SelectExpression;
 
 /**
  * <!-- begin-user-doc -->
@@ -32,8 +32,8 @@ import org.nightlabs.jjqb.xtext.jpql.jPQL.SelectExpression;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.SelectClauseImpl#isIsDistinct <em>Is Distinct</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.SelectClauseImpl#getExpressions <em>Expressions</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.SelectClauseImpl#isIsDistinct <em>Is Distinct</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.SelectClauseImpl#getExpressions <em>Expressions</em>}</li>
  * </ul>
  * </p>
  *

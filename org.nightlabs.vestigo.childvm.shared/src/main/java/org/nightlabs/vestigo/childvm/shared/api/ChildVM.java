@@ -1,17 +1,17 @@
-package org.nightlabs.jjqb.childvm.shared.api;
+package org.nightlabs.vestigo.childvm.shared.api;
 
 import java.util.Collection;
 import java.util.List;
 import java.util.SortedSet;
 import java.util.UUID;
 
-import org.nightlabs.jjqb.childvm.shared.ResultSetID;
-import org.nightlabs.jjqb.childvm.shared.dto.ConnectionDTO;
-import org.nightlabs.jjqb.childvm.shared.dto.ConnectionProfileDTO;
-import org.nightlabs.jjqb.childvm.shared.dto.QueryParameterDTO;
-import org.nightlabs.jjqb.childvm.shared.dto.ResultCellDTO;
-import org.nightlabs.jjqb.childvm.shared.dto.ResultCellObjectRefDTO;
-import org.nightlabs.jjqb.childvm.shared.dto.ResultRowDTO;
+import org.nightlabs.vestigo.childvm.shared.ResultSetID;
+import org.nightlabs.vestigo.childvm.shared.dto.ConnectionDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.ConnectionProfileDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.QueryParameterDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.ResultCellDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.ResultCellObjectRefDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.ResultRowDTO;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de

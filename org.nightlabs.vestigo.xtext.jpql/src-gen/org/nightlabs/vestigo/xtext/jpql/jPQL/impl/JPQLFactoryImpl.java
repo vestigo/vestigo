@@ -3,7 +3,7 @@
  * </copyright>
  *
  */
-package org.nightlabs.jjqb.xtext.jpql.jPQL.impl;
+package org.nightlabs.vestigo.xtext.jpql.jPQL.impl;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
-import org.nightlabs.jjqb.xtext.jpql.jPQL.*;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.*;
 
 /**
  * <!-- begin-user-doc -->
@@ -34,7 +34,7 @@ public class JPQLFactoryImpl extends EFactoryImpl implements JPQLFactory
   {
     try
     {
-      JPQLFactory theJPQLFactory = (JPQLFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.nightlabs.org/jjqb/xtext/jdoql/JPQL"); 
+      JPQLFactory theJPQLFactory = (JPQLFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.nightlabs.org/vestigo/xtext/jdoql/JPQL"); 
       if (theJPQLFactory != null)
       {
         return theJPQLFactory;

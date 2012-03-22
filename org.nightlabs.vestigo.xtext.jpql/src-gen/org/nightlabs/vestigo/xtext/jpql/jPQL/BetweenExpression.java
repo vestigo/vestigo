@@ -3,7 +3,7 @@
  * </copyright>
  *
  */
-package org.nightlabs.jjqb.xtext.jpql.jPQL;
+package org.nightlabs.vestigo.xtext.jpql.jPQL;
 
 
 /**
@@ -14,14 +14,14 @@ package org.nightlabs.jjqb.xtext.jpql.jPQL;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.BetweenExpression#getLeft <em>Left</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.BetweenExpression#isIsNot <em>Is Not</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.BetweenExpression#getMin <em>Min</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.BetweenExpression#getMax <em>Max</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jpql.jPQL.BetweenExpression#getLeft <em>Left</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jpql.jPQL.BetweenExpression#isIsNot <em>Is Not</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jpql.jPQL.BetweenExpression#getMin <em>Min</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jpql.jPQL.BetweenExpression#getMax <em>Max</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getBetweenExpression()
+ * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getBetweenExpression()
  * @model
  * @generated
  */
@@ -37,14 +37,14 @@ public interface BetweenExpression extends Expression
    * <!-- end-user-doc -->
    * @return the value of the '<em>Left</em>' containment reference.
    * @see #setLeft(Variable)
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getBetweenExpression_Left()
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getBetweenExpression_Left()
    * @model containment="true"
    * @generated
    */
   Variable getLeft();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.BetweenExpression#getLeft <em>Left</em>}' containment reference.
+   * Sets the value of the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.BetweenExpression#getLeft <em>Left</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Left</em>' containment reference.
@@ -63,14 +63,14 @@ public interface BetweenExpression extends Expression
    * <!-- end-user-doc -->
    * @return the value of the '<em>Is Not</em>' attribute.
    * @see #setIsNot(boolean)
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getBetweenExpression_IsNot()
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getBetweenExpression_IsNot()
    * @model
    * @generated
    */
   boolean isIsNot();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.BetweenExpression#isIsNot <em>Is Not</em>}' attribute.
+   * Sets the value of the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.BetweenExpression#isIsNot <em>Is Not</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Is Not</em>' attribute.
@@ -89,14 +89,14 @@ public interface BetweenExpression extends Expression
    * <!-- end-user-doc -->
    * @return the value of the '<em>Min</em>' containment reference.
    * @see #setMin(Value)
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getBetweenExpression_Min()
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getBetweenExpression_Min()
    * @model containment="true"
    * @generated
    */
   Value getMin();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.BetweenExpression#getMin <em>Min</em>}' containment reference.
+   * Sets the value of the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.BetweenExpression#getMin <em>Min</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Min</em>' containment reference.
@@ -115,14 +115,14 @@ public interface BetweenExpression extends Expression
    * <!-- end-user-doc -->
    * @return the value of the '<em>Max</em>' containment reference.
    * @see #setMax(Value)
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getBetweenExpression_Max()
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getBetweenExpression_Max()
    * @model containment="true"
    * @generated
    */
   Value getMax();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.BetweenExpression#getMax <em>Max</em>}' containment reference.
+   * Sets the value of the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.BetweenExpression#getMax <em>Max</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Max</em>' containment reference.

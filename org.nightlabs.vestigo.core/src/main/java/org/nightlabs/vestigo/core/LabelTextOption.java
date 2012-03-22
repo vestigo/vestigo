@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.core;
+package org.nightlabs.vestigo.core;
 
 /**
  * Option controlling how various <code>getLabelText(Set&lt;LabelTextOption&gt;)</code> methods behave.

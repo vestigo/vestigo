@@ -3,7 +3,7 @@
  * </copyright>
  *
  */
-package org.nightlabs.jjqb.xtext.jpql.jPQL.impl;
+package org.nightlabs.vestigo.xtext.jpql.jPQL.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -13,11 +13,11 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.nightlabs.jjqb.xtext.jpql.jPQL.ComparisonOperator;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.ComparisonOperatorExpression;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.ExpressionTerm;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.Variable;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.ComparisonOperator;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.ComparisonOperatorExpression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.ExpressionTerm;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.Variable;
 
 /**
  * <!-- begin-user-doc -->
@@ -26,9 +26,9 @@ import org.nightlabs.jjqb.xtext.jpql.jPQL.Variable;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.ComparisonOperatorExpressionImpl#getLeft <em>Left</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.ComparisonOperatorExpressionImpl#getOperator <em>Operator</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.ComparisonOperatorExpressionImpl#getRight <em>Right</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.ComparisonOperatorExpressionImpl#getLeft <em>Left</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.ComparisonOperatorExpressionImpl#getOperator <em>Operator</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.ComparisonOperatorExpressionImpl#getRight <em>Right</em>}</li>
  * </ul>
  * </p>
  *

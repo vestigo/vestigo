@@ -3,7 +3,7 @@
  * </copyright>
  *
  */
-package org.nightlabs.jjqb.xtext.jpql.jPQL;
+package org.nightlabs.vestigo.xtext.jpql.jPQL;
 
 
 /**
@@ -12,7 +12,7 @@ package org.nightlabs.jjqb.xtext.jpql.jPQL;
  * <!-- end-user-doc -->
  *
  *
- * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getAvgAggregate()
+ * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getAvgAggregate()
  * @model
  * @generated
  */

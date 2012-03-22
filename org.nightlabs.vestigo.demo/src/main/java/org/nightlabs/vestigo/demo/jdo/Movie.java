@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.demo.jdo;
+package org.nightlabs.vestigo.demo.jdo;
 
 import java.util.HashSet;
 import java.util.Set;

@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.ui.oda.classpath;
+package org.nightlabs.vestigo.ui.oda.classpath;
 
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.IActionDelegate;

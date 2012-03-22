@@ -7,8 +7,8 @@
 
       <dataSource
             defaultDisplayName="JDO Driver"
-            driverClass="org.nightlabs.jjqb.cumulus4j.core.oda.impl.JDOCumulus4jDriverImpl"
-            id="org.nightlabs.jjqb.cumulus4j.core.oda.JDOCumulus4jDriver"
+            driverClass="org.nightlabs.vestigo.cumulus4j.core.oda.impl.JDOCumulus4jDriverImpl"
+            id="org.nightlabs.vestigo.cumulus4j.core.oda.JDOCumulus4jDriver"
             odaVersion="3.0"
             setThreadContextClassLoader="true">
          <properties>
@@ -24,7 +24,7 @@
 <!-- TODO what's this dataSet good for? do we need it? copied from org.nightlabs.birt.jdo... -->
       <dataSet
             defaultDisplayName="JDO Data Set"            
-            id="org.nightlabs.jjqb.core.oda.JDODataSet">
+            id="org.nightlabs.vestigo.core.oda.JDODataSet">
          <dataTypeMapping
                nativeDataType="String"
                nativeDataTypeCode="1"
@@ -59,8 +59,8 @@
 
       <dataSource
             defaultDisplayName="JPA Driver"
-            driverClass="org.nightlabs.jjqb.cumulus4j.core.oda.impl.JPACumulus4jDriverImpl"
-            id="org.nightlabs.jjqb.cumulus4j.core.oda.JPACumulus4jDriver"
+            driverClass="org.nightlabs.vestigo.cumulus4j.core.oda.impl.JPACumulus4jDriverImpl"
+            id="org.nightlabs.vestigo.cumulus4j.core.oda.JPACumulus4jDriver"
             odaVersion="3.0"
             setThreadContextClassLoader="true">
          <properties>
@@ -76,7 +76,7 @@
 <!-- TODO what's this dataSet good for? do we need it? copied from org.nightlabs.birt.jdo... -->
       <dataSet
             defaultDisplayName="JDO Data Set"            
-            id="org.nightlabs.jjqb.core.oda.JDODataSet">
+            id="org.nightlabs.vestigo.core.oda.JDODataSet">
          <dataTypeMapping
                nativeDataType="String"
                nativeDataTypeCode="1"
@@ -107,21 +107,21 @@
 
 
    <extension
-         point="org.nightlabs.jjqb.core.childVMWebApp">
+         point="org.nightlabs.vestigo.core.childVMWebApp">
       <webApp
-            class="org.nightlabs.jjqb.cumulus4j.core.childvm.internal.Cumulus4jWebApp"
-            webAppName="org.nightlabs.jjqb.cumulus4j.childvm.webapp">
+            class="org.nightlabs.vestigo.cumulus4j.core.childvm.internal.Cumulus4jWebApp"
+            webAppName="org.nightlabs.vestigo.cumulus4j.childvm.webapp">
       </webApp>
    </extension>
    <extension
-         point="org.nightlabs.jjqb.core.connectionProfile">
+         point="org.nightlabs.vestigo.core.connectionProfile">
       <connectionProfile
-            class="org.nightlabs.jjqb.cumulus4j.core.oda.impl.JDOCumulus4jConnectionProfileImpl"
-            connectionType="org.nightlabs.jjqb.cumulus4j.core.oda.impl.JDOCumulus4jConnectionImpl">
+            class="org.nightlabs.vestigo.cumulus4j.core.oda.impl.JDOCumulus4jConnectionProfileImpl"
+            connectionType="org.nightlabs.vestigo.cumulus4j.core.oda.impl.JDOCumulus4jConnectionImpl">
       </connectionProfile>
       <connectionProfile
-            class="org.nightlabs.jjqb.cumulus4j.core.oda.impl.JPACumulus4jConnectionProfileImpl"
-            connectionType="org.nightlabs.jjqb.cumulus4j.core.oda.impl.JPACumulus4jConnectionImpl">
+            class="org.nightlabs.vestigo.cumulus4j.core.oda.impl.JPACumulus4jConnectionProfileImpl"
+            connectionType="org.nightlabs.vestigo.cumulus4j.core.oda.impl.JPACumulus4jConnectionImpl">
       </connectionProfile>
    </extension>
 </plugin>

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.nightlabs.jjqb.childvm.webapp.client.testmodel.jdo;
+package org.nightlabs.vestigo.childvm.webapp.client.testmodel.jdo;
 
 import java.util.ArrayList;
 

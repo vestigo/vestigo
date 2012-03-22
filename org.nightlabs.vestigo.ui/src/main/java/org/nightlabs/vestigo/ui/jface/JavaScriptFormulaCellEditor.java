@@ -1,10 +1,10 @@
-package org.nightlabs.jjqb.ui.jface;
+package org.nightlabs.vestigo.ui.jface;
 
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.viewers.DialogCellEditor;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
-import org.nightlabs.jjqb.childvm.shared.JavaScriptFormula;
+import org.nightlabs.vestigo.childvm.shared.JavaScriptFormula;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de

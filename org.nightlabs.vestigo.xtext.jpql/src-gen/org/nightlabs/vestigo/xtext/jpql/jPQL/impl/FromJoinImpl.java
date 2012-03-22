@@ -3,7 +3,7 @@
  * </copyright>
  *
  */
-package org.nightlabs.jjqb.xtext.jpql.jPQL.impl;
+package org.nightlabs.vestigo.xtext.jpql.jPQL.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -14,10 +14,10 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.nightlabs.jjqb.xtext.jpql.jPQL.AliasAttributeExpression;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.FromJoin;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.VariableDeclaration;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.AliasAttributeExpression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.FromJoin;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.VariableDeclaration;
 
 /**
  * <!-- begin-user-doc -->
@@ -26,9 +26,9 @@ import org.nightlabs.jjqb.xtext.jpql.jPQL.VariableDeclaration;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.FromJoinImpl#isIsFetch <em>Is Fetch</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.FromJoinImpl#getPath <em>Path</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.FromJoinImpl#getVariable <em>Variable</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.FromJoinImpl#isIsFetch <em>Is Fetch</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.FromJoinImpl#getPath <em>Path</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.FromJoinImpl#getVariable <em>Variable</em>}</li>
  * </ul>
  * </p>
  *

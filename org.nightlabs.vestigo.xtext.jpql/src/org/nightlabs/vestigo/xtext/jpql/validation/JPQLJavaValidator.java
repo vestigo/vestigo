@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.xtext.jpql.validation;
+package org.nightlabs.vestigo.xtext.jpql.validation;
  
 
 public class JPQLJavaValidator extends AbstractJPQLJavaValidator {

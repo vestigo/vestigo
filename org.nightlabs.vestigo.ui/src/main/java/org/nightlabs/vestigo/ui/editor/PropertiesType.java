@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.ui.editor;
+package org.nightlabs.vestigo.ui.editor;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de

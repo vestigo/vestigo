@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.core.oda.impl;
+package org.nightlabs.vestigo.core.oda.impl;
 
 import java.math.BigDecimal;
 import java.sql.Date;
@@ -18,13 +18,13 @@ import org.eclipse.datatools.connectivity.oda.IResultSetMetaData;
 import org.eclipse.datatools.connectivity.oda.OdaException;
 import org.eclipse.datatools.connectivity.oda.SortSpec;
 import org.eclipse.datatools.connectivity.oda.spec.QuerySpecification;
-import org.nightlabs.jjqb.childvm.shared.ResultSetID;
-import org.nightlabs.jjqb.childvm.shared.api.ChildVM;
-import org.nightlabs.jjqb.childvm.shared.dto.QueryParameterDTO;
-import org.nightlabs.jjqb.core.JJQBCorePlugin;
-import org.nightlabs.jjqb.core.oda.Query;
-import org.nightlabs.jjqb.core.oda.QueryID;
-import org.nightlabs.jjqb.core.oda.ResultSet;
+import org.nightlabs.vestigo.childvm.shared.ResultSetID;
+import org.nightlabs.vestigo.childvm.shared.api.ChildVM;
+import org.nightlabs.vestigo.childvm.shared.dto.QueryParameterDTO;
+import org.nightlabs.vestigo.core.JJQBCorePlugin;
+import org.nightlabs.vestigo.core.oda.Query;
+import org.nightlabs.vestigo.core.oda.QueryID;
+import org.nightlabs.vestigo.core.oda.ResultSet;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de

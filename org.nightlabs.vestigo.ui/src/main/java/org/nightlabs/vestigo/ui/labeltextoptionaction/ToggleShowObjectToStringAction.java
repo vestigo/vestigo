@@ -1,6 +1,6 @@
-package org.nightlabs.jjqb.ui.labeltextoptionaction;
+package org.nightlabs.vestigo.ui.labeltextoptionaction;
 
-import org.nightlabs.jjqb.core.LabelTextOption;
+import org.nightlabs.vestigo.core.LabelTextOption;
 
 public class ToggleShowObjectToStringAction extends AbstractToggleLabelTextOptionAction
 {

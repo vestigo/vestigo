@@ -3,7 +3,7 @@
  * </copyright>
  *
  */
-package org.nightlabs.jjqb.xtext.jpql.jPQL;
+package org.nightlabs.vestigo.xtext.jpql.jPQL;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -15,13 +15,13 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.FromJoin#isIsFetch <em>Is Fetch</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.FromJoin#getPath <em>Path</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.FromJoin#getVariable <em>Variable</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jpql.jPQL.FromJoin#isIsFetch <em>Is Fetch</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jpql.jPQL.FromJoin#getPath <em>Path</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jpql.jPQL.FromJoin#getVariable <em>Variable</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getFromJoin()
+ * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getFromJoin()
  * @model
  * @generated
  */
@@ -37,14 +37,14 @@ public interface FromJoin extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Is Fetch</em>' attribute.
    * @see #setIsFetch(boolean)
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getFromJoin_IsFetch()
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getFromJoin_IsFetch()
    * @model
    * @generated
    */
   boolean isIsFetch();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.FromJoin#isIsFetch <em>Is Fetch</em>}' attribute.
+   * Sets the value of the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.FromJoin#isIsFetch <em>Is Fetch</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Is Fetch</em>' attribute.
@@ -63,14 +63,14 @@ public interface FromJoin extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Path</em>' containment reference.
    * @see #setPath(AliasAttributeExpression)
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getFromJoin_Path()
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getFromJoin_Path()
    * @model containment="true"
    * @generated
    */
   AliasAttributeExpression getPath();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.FromJoin#getPath <em>Path</em>}' containment reference.
+   * Sets the value of the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.FromJoin#getPath <em>Path</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Path</em>' containment reference.
@@ -89,14 +89,14 @@ public interface FromJoin extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Variable</em>' containment reference.
    * @see #setVariable(VariableDeclaration)
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getFromJoin_Variable()
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getFromJoin_Variable()
    * @model containment="true"
    * @generated
    */
   VariableDeclaration getVariable();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.FromJoin#getVariable <em>Variable</em>}' containment reference.
+   * Sets the value of the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.FromJoin#getVariable <em>Variable</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Variable</em>' containment reference.

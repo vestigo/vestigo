@@ -6,10 +6,10 @@
 
 	<persistence-unit name="vestigoDemoMovieJPA">
 		<provider>org.datanucleus.api.jpa.PersistenceProviderImpl</provider>
-		<class>org.nightlabs.jjqb.demo.jpa.Language</class>
-		<class>org.nightlabs.jjqb.demo.jpa.Movie</class>
-		<class>org.nightlabs.jjqb.demo.jpa.Person</class>
-		<class>org.nightlabs.jjqb.demo.jpa.Rating</class>
+		<class>org.nightlabs.vestigo.demo.jpa.Language</class>
+		<class>org.nightlabs.vestigo.demo.jpa.Movie</class>
+		<class>org.nightlabs.vestigo.demo.jpa.Person</class>
+		<class>org.nightlabs.vestigo.demo.jpa.Rating</class>
 		<exclude-unlisted-classes />
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver"/>
@@ -20,10 +20,10 @@
 	</persistence-unit>
 	
 	<persistence-unit name="vestigoDemoMovieJDO">
-		<class>org.nightlabs.jjqb.demo.jdo.Language</class>
-		<class>org.nightlabs.jjqb.demo.jdo.Movie</class>
-		<class>org.nightlabs.jjqb.demo.jdo.Person</class>
-		<class>org.nightlabs.jjqb.demo.jdo.Rating</class>
+		<class>org.nightlabs.vestigo.demo.jdo.Language</class>
+		<class>org.nightlabs.vestigo.demo.jdo.Movie</class>
+		<class>org.nightlabs.vestigo.demo.jdo.Person</class>
+		<class>org.nightlabs.vestigo.demo.jdo.Rating</class>
 		<exclude-unlisted-classes />
         <properties>
             <property name="javax.jdo.option.ConnectionDriverName" value="org.apache.derby.jdbc.EmbeddedDriver"/>

@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.ui.oda.wizard;
+package org.nightlabs.vestigo.ui.oda.wizard;
 
 import java.util.Properties;
 
@@ -9,11 +9,11 @@ import org.eclipse.jface.wizard.IWizard;
 import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.widgets.Composite;
-import org.nightlabs.jjqb.ui.oda.property.AbstractDataSourceEditorPage;
-import org.nightlabs.jjqb.ui.oda.property.IDataSourceEditorPageContainer;
-import org.nightlabs.jjqb.ui.wizard.IWizardHop;
-import org.nightlabs.jjqb.ui.wizard.IWizardHopPage;
-import org.nightlabs.jjqb.ui.wizard.WizardHopPageSupport;
+import org.nightlabs.vestigo.ui.oda.property.AbstractDataSourceEditorPage;
+import org.nightlabs.vestigo.ui.oda.property.IDataSourceEditorPageContainer;
+import org.nightlabs.vestigo.ui.wizard.IWizardHop;
+import org.nightlabs.vestigo.ui.wizard.IWizardHopPage;
+import org.nightlabs.vestigo.ui.wizard.WizardHopPageSupport;
 import org.nightlabs.util.Util;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

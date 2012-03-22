@@ -1,9 +1,9 @@
-package org.nightlabs.jjqb.childvm.webapp.test;
+package org.nightlabs.vestigo.childvm.webapp.test;
 
 import junit.framework.Assert;
 
 import org.junit.Test;
-import org.nightlabs.jjqb.childvm.webapp.model.StringUtil;
+import org.nightlabs.vestigo.childvm.webapp.model.StringUtil;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de

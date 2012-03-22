@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.childvm.webapp.client.internal;
+package org.nightlabs.vestigo.childvm.webapp.client.internal;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de

@@ -1,9 +1,9 @@
-package org.nightlabs.jjqb.childvm.webapp.service;
+package org.nightlabs.vestigo.childvm.webapp.service;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.Produces;
 
-import org.nightlabs.jjqb.childvm.shared.provider.MediaTypeConst;
+import org.nightlabs.vestigo.childvm.shared.provider.MediaTypeConst;
 
 /**
  * Abstract base class for all REST services.

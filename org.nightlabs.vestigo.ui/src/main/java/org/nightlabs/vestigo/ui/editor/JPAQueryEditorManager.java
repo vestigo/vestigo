@@ -1,9 +1,9 @@
-package org.nightlabs.jjqb.ui.editor;
+package org.nightlabs.vestigo.ui.editor;
 
 import org.eclipse.datatools.connectivity.IConnectionProfile;
 import org.eclipse.datatools.connectivity.oda.IDriver;
-import org.nightlabs.jjqb.core.oda.DataSourceDriverRegistry;
-import org.nightlabs.jjqb.core.oda.JPADriver;
+import org.nightlabs.vestigo.core.oda.DataSourceDriverRegistry;
+import org.nightlabs.vestigo.core.oda.JPADriver;
 
 
 /**

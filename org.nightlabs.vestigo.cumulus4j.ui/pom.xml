@@ -1,34 +1,34 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<artifactId>org.nightlabs.jjqb.cumulus4j.ui</artifactId>
+	<artifactId>org.nightlabs.vestigo.cumulus4j.ui</artifactId>
 	<packaging>bundle</packaging>
 
 	<parent>
-		<groupId>org.nightlabs.jjqb</groupId>
-		<artifactId>org.nightlabs.jjqb.parent</artifactId>
+		<groupId>org.nightlabs.vestigo</groupId>
+		<artifactId>org.nightlabs.vestigo.parent</artifactId>
 		<version>0.2.0-SNAPSHOT</version>
-		<relativePath>../org.nightlabs.jjqb.parent</relativePath>
+		<relativePath>../org.nightlabs.vestigo.parent</relativePath>
 	</parent>
 
 	<dependencies>
-		<!-- BEGIN org.nightlabs.jjqb -->
+		<!-- BEGIN org.nightlabs.vestigo -->
 		<dependency>
-			<groupId>org.nightlabs.jjqb</groupId>
-			<artifactId>org.nightlabs.jjqb.core</artifactId>
+			<groupId>org.nightlabs.vestigo</groupId>
+			<artifactId>org.nightlabs.vestigo.core</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.nightlabs.jjqb</groupId>
-			<artifactId>org.nightlabs.jjqb.ui</artifactId>
+			<groupId>org.nightlabs.vestigo</groupId>
+			<artifactId>org.nightlabs.vestigo.ui</artifactId>
 		</dependency>
-		<!-- END org.nightlabs.jjqb -->
+		<!-- END org.nightlabs.vestigo -->
 		
-		<!-- BEGIN org.nightlabs.jjqb.cumulus4j -->
+		<!-- BEGIN org.nightlabs.vestigo.cumulus4j -->
 		<dependency>
-			<groupId>org.nightlabs.jjqb</groupId>
-			<artifactId>org.nightlabs.jjqb.cumulus4j.childvm.shared</artifactId>
+			<groupId>org.nightlabs.vestigo</groupId>
+			<artifactId>org.nightlabs.vestigo.cumulus4j.childvm.shared</artifactId>
 		</dependency>
-		<!-- END org.nightlabs.jjqb.cumulus4j -->
+		<!-- END org.nightlabs.vestigo.cumulus4j -->
 		
 
 		<!-- BEGIN org.eclipse -->
@@ -84,7 +84,7 @@
 				<configuration>
 					<!-- <manifestLocation>META-INF</manifestLocation> -->
 					<instructions>
-<!-- 						<Bundle-Activator>org.nightlabs.jjqb.cumulus4j.ui.JJQBCumulus4JUIPlugin</Bundle-Activator> -->
+<!-- 						<Bundle-Activator>org.nightlabs.vestigo.cumulus4j.ui.JJQBCumulus4JUIPlugin</Bundle-Activator> -->
 <!-- 						<Bundle-ActivationPolicy>lazy</Bundle-ActivationPolicy> -->
 					</instructions>
 				</configuration>

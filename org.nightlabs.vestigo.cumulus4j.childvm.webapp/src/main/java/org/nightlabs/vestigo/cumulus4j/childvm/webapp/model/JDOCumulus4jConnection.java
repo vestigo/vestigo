@@ -1,20 +1,20 @@
 /**
  *
  */
-package org.nightlabs.jjqb.cumulus4j.childvm.webapp.model;
+package org.nightlabs.vestigo.cumulus4j.childvm.webapp.model;
 
 import java.util.Collection;
 import java.util.SortedSet;
 
 import javax.jdo.Query;
 
-import org.nightlabs.jjqb.childvm.shared.dto.ConnectionDTO;
-import org.nightlabs.jjqb.childvm.shared.dto.QueryParameterDTO;
-import org.nightlabs.jjqb.childvm.webapp.model.Connection;
-import org.nightlabs.jjqb.childvm.webapp.model.ConnectionFactory;
-import org.nightlabs.jjqb.childvm.webapp.model.JDOConnection;
-import org.nightlabs.jjqb.childvm.webapp.model.ResultSet;
-import org.nightlabs.jjqb.cumulus4j.childvm.shared.JDOCumulus4jConnectionDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.ConnectionDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.QueryParameterDTO;
+import org.nightlabs.vestigo.childvm.webapp.model.Connection;
+import org.nightlabs.vestigo.childvm.webapp.model.ConnectionFactory;
+import org.nightlabs.vestigo.childvm.webapp.model.JDOConnection;
+import org.nightlabs.vestigo.childvm.webapp.model.ResultSet;
+import org.nightlabs.vestigo.cumulus4j.childvm.shared.JDOCumulus4jConnectionDTO;
 
 /**
  * @author Alexander Bieber <!-- alex [AT] nightlabs [DOT] de -->

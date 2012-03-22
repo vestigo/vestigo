@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.childvm.shared;
+package org.nightlabs.vestigo.childvm.shared;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

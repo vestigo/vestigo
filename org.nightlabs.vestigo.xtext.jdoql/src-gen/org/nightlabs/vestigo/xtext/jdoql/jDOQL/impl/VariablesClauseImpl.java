@@ -3,7 +3,7 @@
  * </copyright>
  *
  */
-package org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl;
+package org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl;
 
 import java.util.Collection;
 
@@ -19,9 +19,9 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.VariableDeclaration;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.VariablesClause;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.JDOQLPackage;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.VariableDeclaration;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.VariablesClause;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,7 +30,7 @@ import org.nightlabs.jjqb.xtext.jdoql.jDOQL.VariablesClause;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.VariablesClauseImpl#getVariableDeclarations <em>Variable Declarations</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.VariablesClauseImpl#getVariableDeclarations <em>Variable Declarations</em>}</li>
  * </ul>
  * </p>
  *

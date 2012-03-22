@@ -1,12 +1,12 @@
-package org.nightlabs.jjqb.childvm.webapp;
+package org.nightlabs.vestigo.childvm.webapp;
 
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
 
-import org.nightlabs.jjqb.childvm.shared.Error;
-import org.nightlabs.jjqb.childvm.shared.ErrorStackTraceElement;
-import org.nightlabs.jjqb.childvm.shared.provider.MediaTypeConst;
+import org.nightlabs.vestigo.childvm.shared.Error;
+import org.nightlabs.vestigo.childvm.shared.ErrorStackTraceElement;
+import org.nightlabs.vestigo.childvm.shared.provider.MediaTypeConst;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de

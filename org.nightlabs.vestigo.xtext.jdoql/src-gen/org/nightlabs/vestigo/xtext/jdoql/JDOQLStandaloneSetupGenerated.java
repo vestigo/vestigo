@@ -1,5 +1,5 @@
 
-package org.nightlabs.jjqb.xtext.jdoql;
+package org.nightlabs.vestigo.xtext.jdoql;
 
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.xtext.ISetup;
@@ -23,12 +23,12 @@ public class JDOQLStandaloneSetupGenerated implements ISetup {
 	}
 	
 	public Injector createInjector() {
-		return Guice.createInjector(new org.nightlabs.jjqb.xtext.jdoql.JDOQLRuntimeModule());
+		return Guice.createInjector(new org.nightlabs.vestigo.xtext.jdoql.JDOQLRuntimeModule());
 	}
 	
 	public void register(Injector injector) {
-	if (!EPackage.Registry.INSTANCE.containsKey("http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL")) {
-		EPackage.Registry.INSTANCE.put("http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL", org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage.eINSTANCE);
+	if (!EPackage.Registry.INSTANCE.containsKey("http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL")) {
+		EPackage.Registry.INSTANCE.put("http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL", org.nightlabs.vestigo.xtext.jdoql.jDOQL.JDOQLPackage.eINSTANCE);
 	}
 
 		org.eclipse.xtext.resource.IResourceFactory resourceFactory = injector.getInstance(org.eclipse.xtext.resource.IResourceFactory.class);

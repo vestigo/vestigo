@@ -3,7 +3,7 @@
  * </copyright>
  *
  */
-package org.nightlabs.jjqb.xtext.jpql.jPQL;
+package org.nightlabs.vestigo.xtext.jpql.jPQL;
 
 
 /**
@@ -14,11 +14,11 @@ package org.nightlabs.jjqb.xtext.jpql.jPQL;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.InQueryExpression#getQuery <em>Query</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jpql.jPQL.InQueryExpression#getQuery <em>Query</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getInQueryExpression()
+ * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getInQueryExpression()
  * @model
  * @generated
  */
@@ -34,14 +34,14 @@ public interface InQueryExpression extends InExpression
    * <!-- end-user-doc -->
    * @return the value of the '<em>Query</em>' containment reference.
    * @see #setQuery(SelectStatement)
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getInQueryExpression_Query()
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getInQueryExpression_Query()
    * @model containment="true"
    * @generated
    */
   SelectStatement getQuery();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.InQueryExpression#getQuery <em>Query</em>}' containment reference.
+   * Sets the value of the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.InQueryExpression#getQuery <em>Query</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Query</em>' containment reference.

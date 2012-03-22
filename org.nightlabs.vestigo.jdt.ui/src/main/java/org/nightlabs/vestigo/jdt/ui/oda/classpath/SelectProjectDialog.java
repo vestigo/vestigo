@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.jdt.ui.oda.classpath;
+package org.nightlabs.vestigo.jdt.ui.oda.classpath;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -23,9 +23,9 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Shell;
-import org.nightlabs.jjqb.childvm.shared.persistencexml.jaxb.Persistence.PersistenceUnit;
-import org.nightlabs.jjqb.jdt.ui.JJQBJDTUIPlugin;
-import org.nightlabs.jjqb.ui.JJQBUIPlugin;
+import org.nightlabs.vestigo.childvm.shared.persistencexml.jaxb.Persistence.PersistenceUnit;
+import org.nightlabs.vestigo.jdt.ui.JJQBJDTUIPlugin;
+import org.nightlabs.vestigo.ui.JJQBUIPlugin;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

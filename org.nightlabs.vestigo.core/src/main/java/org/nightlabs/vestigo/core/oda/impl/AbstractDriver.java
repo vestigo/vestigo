@@ -1,10 +1,10 @@
-package org.nightlabs.jjqb.core.oda.impl;
+package org.nightlabs.vestigo.core.oda.impl;
 
 import org.eclipse.datatools.connectivity.oda.LogConfiguration;
 import org.eclipse.datatools.connectivity.oda.OdaException;
-import org.nightlabs.jjqb.core.oda.Connection;
-import org.nightlabs.jjqb.core.oda.ConnectionExtensionRegistry;
-import org.nightlabs.jjqb.core.oda.Driver;
+import org.nightlabs.vestigo.core.oda.Connection;
+import org.nightlabs.vestigo.core.oda.ConnectionExtensionRegistry;
+import org.nightlabs.vestigo.core.oda.Driver;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
@@ -50,7 +50,7 @@ public abstract class AbstractDriver implements Driver {
 
 	@Override
 	public final Connection getConnection(String connectionClassName) throws OdaException {
-		org.nightlabs.jjqb.core.oda.Connection connection = _getConnection(connectionClassName);
+		org.nightlabs.vestigo.core.oda.Connection connection = _getConnection(connectionClassName);
 		ConnectionExtensionRegistry.sharedInstance().bind(connection);
 		return connection;
 	}

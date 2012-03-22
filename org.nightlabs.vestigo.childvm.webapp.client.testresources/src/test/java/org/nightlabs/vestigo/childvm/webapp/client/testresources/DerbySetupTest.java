@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.nightlabs.jjqb.childvm.webapp.client.testresources;
+package org.nightlabs.vestigo.childvm.webapp.client.testresources;
 
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -9,7 +9,7 @@ import java.sql.Statement;
 import junit.framework.Assert;
 
 import org.junit.Test;
-import org.nightlabs.jjqb.childvm.webapp.client.testresources.sql.DerbySetup;
+import org.nightlabs.vestigo.childvm.webapp.client.testresources.sql.DerbySetup;
 
 /**
  * @author Alexander Bieber <!-- alex [AT] nightlabs [DOT] de -->

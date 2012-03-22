@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <launchConfiguration type="org.eclipse.emf.mwe2.launch.Mwe2LaunchConfigurationType">
-<stringAttribute key="org.eclipse.debug.core.ATTR_REFRESH_SCOPE" value="${working_set:&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#10;&lt;resources&gt;&#10;&lt;item path=&quot;/org.nightlabs.jjqb.xtext.jpql&quot; type=&quot;4&quot;/&gt;&#10;&lt;item path=&quot;/org.nightlabs.jjqb.xtext.jpql.generator&quot; type=&quot;4&quot;/&gt;&#10;&lt;item path=&quot;/org.nightlabs.jjqb.xtext.jpql.tests&quot; type=&quot;4&quot;/&gt;&#10;&lt;item path=&quot;/org.nightlabs.jjqb.xtext.jpql.ui&quot; type=&quot;4&quot;/&gt;&#10;&lt;/resources&gt;}"/>
+<stringAttribute key="org.eclipse.debug.core.ATTR_REFRESH_SCOPE" value="${working_set:&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#10;&lt;resources&gt;&#10;&lt;item path=&quot;/org.nightlabs.vestigo.xtext.jpql&quot; type=&quot;4&quot;/&gt;&#10;&lt;item path=&quot;/org.nightlabs.vestigo.xtext.jpql.generator&quot; type=&quot;4&quot;/&gt;&#10;&lt;item path=&quot;/org.nightlabs.vestigo.xtext.jpql.tests&quot; type=&quot;4&quot;/&gt;&#10;&lt;item path=&quot;/org.nightlabs.vestigo.xtext.jpql.ui&quot; type=&quot;4&quot;/&gt;&#10;&lt;/resources&gt;}"/>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
-<listEntry value="/org.nightlabs.jjqb.xtext.jpql"/>
+<listEntry value="/org.nightlabs.vestigo.xtext.jpql"/>
 </listAttribute>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
 <listEntry value="4"/>
@@ -12,7 +12,7 @@
 <listEntry value="org.eclipse.debug.ui.launchGroup.run"/>
 </listAttribute>
 <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="org.eclipse.emf.mwe2.launch.runtime.Mwe2Launcher"/>
-<stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="src/org/nightlabs/jjqb/xtext/jpql/GenerateJPQL.mwe2"/>
-<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="org.nightlabs.jjqb.xtext.jpql"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="src/org/nightlabs/vestigo/xtext/jpql/GenerateJPQL.mwe2"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="org.nightlabs.vestigo.xtext.jpql"/>
 <stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Xmx512m"/>
 </launchConfiguration>

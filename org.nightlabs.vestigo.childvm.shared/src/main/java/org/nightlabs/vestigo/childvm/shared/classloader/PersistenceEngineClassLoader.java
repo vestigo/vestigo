@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.childvm.shared.classloader;
+package org.nightlabs.vestigo.childvm.shared.classloader;
 
 import java.io.IOException;
 import java.net.URL;

@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.ui.editor;
+package org.nightlabs.vestigo.ui.editor;
 
 import org.eclipse.datatools.connectivity.IConnectionProfile;
 import org.eclipse.ui.IEditorInput;

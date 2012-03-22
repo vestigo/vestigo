@@ -1,9 +1,9 @@
-package org.nightlabs.jjqb.cumulus4j.core.oda.impl;
+package org.nightlabs.vestigo.cumulus4j.core.oda.impl;
 
-import org.nightlabs.jjqb.core.oda.JDOQuery;
-import org.nightlabs.jjqb.core.oda.ResultSet;
-import org.nightlabs.jjqb.core.oda.impl.AbstractConnection;
-import org.nightlabs.jjqb.core.oda.impl.AbstractQuery;
+import org.nightlabs.vestigo.core.oda.JDOQuery;
+import org.nightlabs.vestigo.core.oda.ResultSet;
+import org.nightlabs.vestigo.core.oda.impl.AbstractConnection;
+import org.nightlabs.vestigo.core.oda.impl.AbstractQuery;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de

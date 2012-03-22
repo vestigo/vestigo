@@ -11,12 +11,12 @@
 // *   Alexander Bieber, NightLabs - initial API and implementation              *
 // ******************************************************************************/
 //
-//package org.nightlabs.jjqb.cumulus4j.ui.oda;
+//package org.nightlabs.vestigo.cumulus4j.ui.oda;
 //
 //import org.eclipse.swt.SWT;
 //import org.eclipse.swt.widgets.Composite;
-//import org.nightlabs.jjqb.ui.oda.AbstractDriverPropertiesComposite;
-//import org.nightlabs.jjqb.ui.oda.AbstractDriverPropertyPage;
+//import org.nightlabs.vestigo.ui.oda.AbstractDriverPropertiesComposite;
+//import org.nightlabs.vestigo.ui.oda.AbstractDriverPropertyPage;
 //
 ///**
 // * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de

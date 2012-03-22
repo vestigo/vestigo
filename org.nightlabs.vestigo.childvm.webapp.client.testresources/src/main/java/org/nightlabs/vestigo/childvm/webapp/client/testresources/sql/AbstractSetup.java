@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.childvm.webapp.client.testresources.sql;
+package org.nightlabs.vestigo.childvm.webapp.client.testresources.sql;
 
 import java.io.InputStream;
 import java.sql.Connection;
@@ -84,7 +84,7 @@ public abstract class AbstractSetup {
 	}
 
 	protected InputStream getScript(String type, String name) {
-		String resourcePath = "jjqb-test-sql-scripts/" + dbType + "-" + type + "-" + name + ".sql";
+		String resourcePath = "vestigo-test-sql-scripts/" + dbType + "-" + type + "-" + name + ".sql";
 		return AbstractSetup.class.getClassLoader().getResourceAsStream(resourcePath);
 	}
 	

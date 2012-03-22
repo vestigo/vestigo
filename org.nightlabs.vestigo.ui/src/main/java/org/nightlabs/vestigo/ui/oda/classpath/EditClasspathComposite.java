@@ -11,7 +11,7 @@
  *   Alexander Bieber, NightLabs - initial API and implementation              *
  ******************************************************************************/
 
-package org.nightlabs.jjqb.ui.oda.classpath;
+package org.nightlabs.vestigo.ui.oda.classpath;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -63,7 +63,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
-import org.nightlabs.jjqb.childvm.shared.classloader.ClassLoaderManager;
+import org.nightlabs.vestigo.childvm.shared.classloader.ClassLoaderManager;
 import org.nightlabs.util.IOUtil;
 import org.nightlabs.util.Util;
 import org.slf4j.Logger;
@@ -293,7 +293,7 @@ public class EditClasspathComposite extends Composite implements ICellModifier, 
 			me.getKey().selectionChanged(me.getValue(), selection);
 	}
 
-	private static final String extensionPointId_editClasspathActionDelegate = "org.nightlabs.jjqb.ui.editClasspathActionDelegate"; //$NON-NLS-1$
+	private static final String extensionPointId_editClasspathActionDelegate = "org.nightlabs.vestigo.ui.editClasspathActionDelegate"; //$NON-NLS-1$
 
 	private List<EditClasspathActionDelegate> getEditClasspathActionDelegates()
 	{

@@ -3,7 +3,7 @@
  * </copyright>
  *
  */
-package org.nightlabs.jjqb.xtext.jpql.jPQL;
+package org.nightlabs.vestigo.xtext.jpql.jPQL;
 
 
 /**
@@ -14,12 +14,12 @@ package org.nightlabs.jjqb.xtext.jpql.jPQL;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.InExpression#getLeft <em>Left</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.InExpression#isIsNot <em>Is Not</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jpql.jPQL.InExpression#getLeft <em>Left</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jpql.jPQL.InExpression#isIsNot <em>Is Not</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getInExpression()
+ * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getInExpression()
  * @model
  * @generated
  */
@@ -35,14 +35,14 @@ public interface InExpression extends Expression
    * <!-- end-user-doc -->
    * @return the value of the '<em>Left</em>' containment reference.
    * @see #setLeft(Variable)
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getInExpression_Left()
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getInExpression_Left()
    * @model containment="true"
    * @generated
    */
   Variable getLeft();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.InExpression#getLeft <em>Left</em>}' containment reference.
+   * Sets the value of the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.InExpression#getLeft <em>Left</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Left</em>' containment reference.
@@ -61,14 +61,14 @@ public interface InExpression extends Expression
    * <!-- end-user-doc -->
    * @return the value of the '<em>Is Not</em>' attribute.
    * @see #setIsNot(boolean)
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getInExpression_IsNot()
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getInExpression_IsNot()
    * @model
    * @generated
    */
   boolean isIsNot();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.InExpression#isIsNot <em>Is Not</em>}' attribute.
+   * Sets the value of the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.InExpression#isIsNot <em>Is Not</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Is Not</em>' attribute.

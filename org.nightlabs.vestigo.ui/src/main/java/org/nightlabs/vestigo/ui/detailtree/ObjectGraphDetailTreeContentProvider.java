@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.ui.detailtree;
+package org.nightlabs.vestigo.ui.detailtree;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -15,8 +15,8 @@ import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.widgets.Display;
-import org.nightlabs.jjqb.core.ObjectReference;
-import org.nightlabs.jjqb.core.ObjectReferenceChild;
+import org.nightlabs.vestigo.core.ObjectReference;
+import org.nightlabs.vestigo.core.ObjectReferenceChild;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de

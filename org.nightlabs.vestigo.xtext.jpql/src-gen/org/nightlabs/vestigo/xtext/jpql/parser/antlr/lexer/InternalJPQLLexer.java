@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.xtext.jpql.parser.antlr.lexer;
+package org.nightlabs.vestigo.xtext.jpql.parser.antlr.lexer;
 
 // Hack: Use our own Lexer superclass by means of import. 
 // Currently there is no other way to specify the superclass for the lexer.
@@ -98,15 +98,15 @@ public class InternalJPQLLexer extends Lexer {
         super(input,state);
 
     }
-    public String getGrammarFileName() { return "../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g"; }
+    public String getGrammarFileName() { return "../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g"; }
 
     // $ANTLR start "KEYWORD_66"
     public final void mKEYWORD_66() throws RecognitionException {
         try {
             int _type = KEYWORD_66;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:19:12: ( ( 'C' | 'c' ) ( 'U' | 'u' ) ( 'R' | 'r' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'T' | 't' ) '_' ( 'T' | 't' ) ( 'I' | 'i' ) ( 'M' | 'm' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'A' | 'a' ) ( 'M' | 'm' ) ( 'P' | 'p' ) )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:19:14: ( 'C' | 'c' ) ( 'U' | 'u' ) ( 'R' | 'r' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'T' | 't' ) '_' ( 'T' | 't' ) ( 'I' | 'i' ) ( 'M' | 'm' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'A' | 'a' ) ( 'M' | 'm' ) ( 'P' | 'p' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:19:12: ( ( 'C' | 'c' ) ( 'U' | 'u' ) ( 'R' | 'r' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'T' | 't' ) '_' ( 'T' | 't' ) ( 'I' | 'i' ) ( 'M' | 'm' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'A' | 'a' ) ( 'M' | 'm' ) ( 'P' | 'p' ) )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:19:14: ( 'C' | 'c' ) ( 'U' | 'u' ) ( 'R' | 'r' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'T' | 't' ) '_' ( 'T' | 't' ) ( 'I' | 'i' ) ( 'M' | 'm' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'A' | 'a' ) ( 'M' | 'm' ) ( 'P' | 'p' )
             {
             if ( input.LA(1)=='C'||input.LA(1)=='c' ) {
                 input.consume();
@@ -269,8 +269,8 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = KEYWORD_64;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:21:12: ( ( 'C' | 'c' ) ( 'U' | 'u' ) ( 'R' | 'r' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'T' | 't' ) '_' ( 'D' | 'd' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'E' | 'e' ) )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:21:14: ( 'C' | 'c' ) ( 'U' | 'u' ) ( 'R' | 'r' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'T' | 't' ) '_' ( 'D' | 'd' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'E' | 'e' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:21:12: ( ( 'C' | 'c' ) ( 'U' | 'u' ) ( 'R' | 'r' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'T' | 't' ) '_' ( 'D' | 'd' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'E' | 'e' ) )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:21:14: ( 'C' | 'c' ) ( 'U' | 'u' ) ( 'R' | 'r' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'T' | 't' ) '_' ( 'D' | 'd' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'E' | 'e' )
             {
             if ( input.LA(1)=='C'||input.LA(1)=='c' ) {
                 input.consume();
@@ -388,8 +388,8 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = KEYWORD_65;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:23:12: ( ( 'C' | 'c' ) ( 'U' | 'u' ) ( 'R' | 'r' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'T' | 't' ) '_' ( 'T' | 't' ) ( 'I' | 'i' ) ( 'M' | 'm' ) ( 'E' | 'e' ) )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:23:14: ( 'C' | 'c' ) ( 'U' | 'u' ) ( 'R' | 'r' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'T' | 't' ) '_' ( 'T' | 't' ) ( 'I' | 'i' ) ( 'M' | 'm' ) ( 'E' | 'e' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:23:12: ( ( 'C' | 'c' ) ( 'U' | 'u' ) ( 'R' | 'r' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'T' | 't' ) '_' ( 'T' | 't' ) ( 'I' | 'i' ) ( 'M' | 'm' ) ( 'E' | 'e' ) )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:23:14: ( 'C' | 'c' ) ( 'U' | 'u' ) ( 'R' | 'r' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'T' | 't' ) '_' ( 'T' | 't' ) ( 'I' | 'i' ) ( 'M' | 'm' ) ( 'E' | 'e' )
             {
             if ( input.LA(1)=='C'||input.LA(1)=='c' ) {
                 input.consume();
@@ -507,8 +507,8 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = KEYWORD_63;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:25:12: ( ( 'S' | 's' ) ( 'U' | 'u' ) ( 'B' | 'b' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'R' | 'r' ) ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'G' | 'g' ) )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:25:14: ( 'S' | 's' ) ( 'U' | 'u' ) ( 'B' | 'b' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'R' | 'r' ) ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'G' | 'g' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:25:12: ( ( 'S' | 's' ) ( 'U' | 'u' ) ( 'B' | 'b' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'R' | 'r' ) ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'G' | 'g' ) )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:25:14: ( 'S' | 's' ) ( 'U' | 'u' ) ( 'B' | 'b' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'R' | 'r' ) ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'G' | 'g' )
             {
             if ( input.LA(1)=='S'||input.LA(1)=='s' ) {
                 input.consume();
@@ -607,8 +607,8 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = KEYWORD_62;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:27:12: ( ( 'D' | 'd' ) ( 'I' | 'i' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'C' | 'c' ) ( 'T' | 't' ) )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:27:14: ( 'D' | 'd' ) ( 'I' | 'i' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'C' | 'c' ) ( 'T' | 't' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:27:12: ( ( 'D' | 'd' ) ( 'I' | 'i' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'C' | 'c' ) ( 'T' | 't' ) )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:27:14: ( 'D' | 'd' ) ( 'I' | 'i' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'C' | 'c' ) ( 'T' | 't' )
             {
             if ( input.LA(1)=='D'||input.LA(1)=='d' ) {
                 input.consume();
@@ -698,8 +698,8 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = KEYWORD_61;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:29:12: ( ( 'B' | 'b' ) ( 'E' | 'e' ) ( 'T' | 't' ) ( 'W' | 'w' ) ( 'E' | 'e' ) ( 'E' | 'e' ) ( 'N' | 'n' ) )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:29:14: ( 'B' | 'b' ) ( 'E' | 'e' ) ( 'T' | 't' ) ( 'W' | 'w' ) ( 'E' | 'e' ) ( 'E' | 'e' ) ( 'N' | 'n' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:29:12: ( ( 'B' | 'b' ) ( 'E' | 'e' ) ( 'T' | 't' ) ( 'W' | 'w' ) ( 'E' | 'e' ) ( 'E' | 'e' ) ( 'N' | 'n' ) )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:29:14: ( 'B' | 'b' ) ( 'E' | 'e' ) ( 'T' | 't' ) ( 'W' | 'w' ) ( 'E' | 'e' ) ( 'E' | 'e' ) ( 'N' | 'n' )
             {
             if ( input.LA(1)=='B'||input.LA(1)=='b' ) {
                 input.consume();
@@ -780,8 +780,8 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = KEYWORD_52;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:31:12: ( ( 'C' | 'c' ) ( 'O' | 'o' ) ( 'N' | 'n' ) ( 'C' | 'c' ) ( 'A' | 'a' ) ( 'T' | 't' ) )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:31:14: ( 'C' | 'c' ) ( 'O' | 'o' ) ( 'N' | 'n' ) ( 'C' | 'c' ) ( 'A' | 'a' ) ( 'T' | 't' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:31:12: ( ( 'C' | 'c' ) ( 'O' | 'o' ) ( 'N' | 'n' ) ( 'C' | 'c' ) ( 'A' | 'a' ) ( 'T' | 't' ) )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:31:14: ( 'C' | 'c' ) ( 'O' | 'o' ) ( 'N' | 'n' ) ( 'C' | 'c' ) ( 'A' | 'a' ) ( 'T' | 't' )
             {
             if ( input.LA(1)=='C'||input.LA(1)=='c' ) {
                 input.consume();
@@ -853,8 +853,8 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = KEYWORD_53;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:33:12: ( ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'L' | 'l' ) ( 'E' | 'e' ) ( 'T' | 't' ) ( 'E' | 'e' ) )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:33:14: ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'L' | 'l' ) ( 'E' | 'e' ) ( 'T' | 't' ) ( 'E' | 'e' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:33:12: ( ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'L' | 'l' ) ( 'E' | 'e' ) ( 'T' | 't' ) ( 'E' | 'e' ) )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:33:14: ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'L' | 'l' ) ( 'E' | 'e' ) ( 'T' | 't' ) ( 'E' | 'e' )
             {
             if ( input.LA(1)=='D'||input.LA(1)=='d' ) {
                 input.consume();
@@ -926,8 +926,8 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = KEYWORD_54;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:35:12: ( ( 'E' | 'e' ) ( 'X' | 'x' ) ( 'I' | 'i' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'S' | 's' ) )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:35:14: ( 'E' | 'e' ) ( 'X' | 'x' ) ( 'I' | 'i' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'S' | 's' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:35:12: ( ( 'E' | 'e' ) ( 'X' | 'x' ) ( 'I' | 'i' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'S' | 's' ) )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:35:14: ( 'E' | 'e' ) ( 'X' | 'x' ) ( 'I' | 'i' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'S' | 's' )
             {
             if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
                 input.consume();
@@ -999,8 +999,8 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = KEYWORD_55;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:37:12: ( ( 'H' | 'h' ) ( 'A' | 'a' ) ( 'V' | 'v' ) ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'G' | 'g' ) )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:37:14: ( 'H' | 'h' ) ( 'A' | 'a' ) ( 'V' | 'v' ) ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'G' | 'g' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:37:12: ( ( 'H' | 'h' ) ( 'A' | 'a' ) ( 'V' | 'v' ) ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'G' | 'g' ) )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:37:14: ( 'H' | 'h' ) ( 'A' | 'a' ) ( 'V' | 'v' ) ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'G' | 'g' )
             {
             if ( input.LA(1)=='H'||input.LA(1)=='h' ) {
                 input.consume();
@@ -1072,8 +1072,8 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = KEYWORD_56;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:39:12: ( ( 'L' | 'l' ) ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'G' | 'g' ) ( 'T' | 't' ) ( 'H' | 'h' ) )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:39:14: ( 'L' | 'l' ) ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'G' | 'g' ) ( 'T' | 't' ) ( 'H' | 'h' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:39:12: ( ( 'L' | 'l' ) ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'G' | 'g' ) ( 'T' | 't' ) ( 'H' | 'h' ) )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:39:14: ( 'L' | 'l' ) ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'G' | 'g' ) ( 'T' | 't' ) ( 'H' | 'h' )
             {
             if ( input.LA(1)=='L'||input.LA(1)=='l' ) {
                 input.consume();
@@ -1145,8 +1145,8 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = KEYWORD_57;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:41:12: ( ( 'L' | 'l' ) ( 'O' | 'o' ) ( 'C' | 'c' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'E' | 'e' ) )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:41:14: ( 'L' | 'l' ) ( 'O' | 'o' ) ( 'C' | 'c' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'E' | 'e' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:41:12: ( ( 'L' | 'l' ) ( 'O' | 'o' ) ( 'C' | 'c' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'E' | 'e' ) )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:41:14: ( 'L' | 'l' ) ( 'O' | 'o' ) ( 'C' | 'c' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'E' | 'e' )
             {
             if ( input.LA(1)=='L'||input.LA(1)=='l' ) {
                 input.consume();
@@ -1218,8 +1218,8 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = KEYWORD_58;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:43:12: ( ( 'M' | 'm' ) ( 'E' | 'e' ) ( 'M' | 'm' ) ( 'B' | 'b' ) ( 'E' | 'e' ) ( 'R' | 'r' ) )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:43:14: ( 'M' | 'm' ) ( 'E' | 'e' ) ( 'M' | 'm' ) ( 'B' | 'b' ) ( 'E' | 'e' ) ( 'R' | 'r' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:43:12: ( ( 'M' | 'm' ) ( 'E' | 'e' ) ( 'M' | 'm' ) ( 'B' | 'b' ) ( 'E' | 'e' ) ( 'R' | 'r' ) )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:43:14: ( 'M' | 'm' ) ( 'E' | 'e' ) ( 'M' | 'm' ) ( 'B' | 'b' ) ( 'E' | 'e' ) ( 'R' | 'r' )
             {
             if ( input.LA(1)=='M'||input.LA(1)=='m' ) {
                 input.consume();
@@ -1291,8 +1291,8 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = KEYWORD_59;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:45:12: ( ( 'S' | 's' ) ( 'E' | 'e' ) ( 'L' | 'l' ) ( 'E' | 'e' ) ( 'C' | 'c' ) ( 'T' | 't' ) )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:45:14: ( 'S' | 's' ) ( 'E' | 'e' ) ( 'L' | 'l' ) ( 'E' | 'e' ) ( 'C' | 'c' ) ( 'T' | 't' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:45:12: ( ( 'S' | 's' ) ( 'E' | 'e' ) ( 'L' | 'l' ) ( 'E' | 'e' ) ( 'C' | 'c' ) ( 'T' | 't' ) )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:45:14: ( 'S' | 's' ) ( 'E' | 'e' ) ( 'L' | 'l' ) ( 'E' | 'e' ) ( 'C' | 'c' ) ( 'T' | 't' )
             {
             if ( input.LA(1)=='S'||input.LA(1)=='s' ) {
                 input.consume();
@@ -1364,8 +1364,8 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = KEYWORD_60;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:47:12: ( ( 'U' | 'u' ) ( 'P' | 'p' ) ( 'D' | 'd' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'E' | 'e' ) )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:47:14: ( 'U' | 'u' ) ( 'P' | 'p' ) ( 'D' | 'd' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'E' | 'e' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:47:12: ( ( 'U' | 'u' ) ( 'P' | 'p' ) ( 'D' | 'd' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'E' | 'e' ) )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:47:14: ( 'U' | 'u' ) ( 'P' | 'p' ) ( 'D' | 'd' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'E' | 'e' )
             {
             if ( input.LA(1)=='U'||input.LA(1)=='u' ) {
                 input.consume();
@@ -1437,8 +1437,8 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = KEYWORD_41;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:49:12: ( ( 'C' | 'c' ) ( 'O' | 'o' ) ( 'U' | 'u' ) ( 'N' | 'n' ) ( 'T' | 't' ) )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:49:14: ( 'C' | 'c' ) ( 'O' | 'o' ) ( 'U' | 'u' ) ( 'N' | 'n' ) ( 'T' | 't' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:49:12: ( ( 'C' | 'c' ) ( 'O' | 'o' ) ( 'U' | 'u' ) ( 'N' | 'n' ) ( 'T' | 't' ) )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:49:14: ( 'C' | 'c' ) ( 'O' | 'o' ) ( 'U' | 'u' ) ( 'N' | 'n' ) ( 'T' | 't' )
             {
             if ( input.LA(1)=='C'||input.LA(1)=='c' ) {
                 input.consume();
@@ -1501,8 +1501,8 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = KEYWORD_42;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:51:12: ( ( 'E' | 'e' ) ( 'M' | 'm' ) ( 'P' | 'p' ) ( 'T' | 't' ) ( 'Y' | 'y' ) )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:51:14: ( 'E' | 'e' ) ( 'M' | 'm' ) ( 'P' | 'p' ) ( 'T' | 't' ) ( 'Y' | 'y' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:51:12: ( ( 'E' | 'e' ) ( 'M' | 'm' ) ( 'P' | 'p' ) ( 'T' | 't' ) ( 'Y' | 'y' ) )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:51:14: ( 'E' | 'e' ) ( 'M' | 'm' ) ( 'P' | 'p' ) ( 'T' | 't' ) ( 'Y' | 'y' )
             {
             if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
                 input.consume();
@@ -1565,8 +1565,8 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = KEYWORD_43;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:53:12: ( ( 'F' | 'f' ) ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' ) )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:53:14: ( 'F' | 'f' ) ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:53:12: ( ( 'F' | 'f' ) ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' ) )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:53:14: ( 'F' | 'f' ) ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' )
             {
             if ( input.LA(1)=='F'||input.LA(1)=='f' ) {
                 input.consume();
@@ -1629,8 +1629,8 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = KEYWORD_44;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:55:12: ( ( 'F' | 'f' ) ( 'E' | 'e' ) ( 'T' | 't' ) ( 'C' | 'c' ) ( 'H' | 'h' ) )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:55:14: ( 'F' | 'f' ) ( 'E' | 'e' ) ( 'T' | 't' ) ( 'C' | 'c' ) ( 'H' | 'h' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:55:12: ( ( 'F' | 'f' ) ( 'E' | 'e' ) ( 'T' | 't' ) ( 'C' | 'c' ) ( 'H' | 'h' ) )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:55:14: ( 'F' | 'f' ) ( 'E' | 'e' ) ( 'T' | 't' ) ( 'C' | 'c' ) ( 'H' | 'h' )
             {
             if ( input.LA(1)=='F'||input.LA(1)=='f' ) {
                 input.consume();
@@ -1693,8 +1693,8 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = KEYWORD_45;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:57:12: ( ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'U' | 'u' ) ( 'P' | 'p' ) )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:57:14: ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'U' | 'u' ) ( 'P' | 'p' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:57:12: ( ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'U' | 'u' ) ( 'P' | 'p' ) )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:57:14: ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'U' | 'u' ) ( 'P' | 'p' )
             {
             if ( input.LA(1)=='G'||input.LA(1)=='g' ) {
                 input.consume();
@@ -1757,8 +1757,8 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = KEYWORD_46;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:59:12: ( ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'N' | 'n' ) ( 'E' | 'e' ) ( 'R' | 'r' ) )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:59:14: ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'N' | 'n' ) ( 'E' | 'e' ) ( 'R' | 'r' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:59:12: ( ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'N' | 'n' ) ( 'E' | 'e' ) ( 'R' | 'r' ) )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:59:14: ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'N' | 'n' ) ( 'E' | 'e' ) ( 'R' | 'r' )
             {
             if ( input.LA(1)=='I'||input.LA(1)=='i' ) {
                 input.consume();
@@ -1821,8 +1821,8 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = KEYWORD_47;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:61:12: ( ( 'L' | 'l' ) ( 'O' | 'o' ) ( 'W' | 'w' ) ( 'E' | 'e' ) ( 'R' | 'r' ) )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:61:14: ( 'L' | 'l' ) ( 'O' | 'o' ) ( 'W' | 'w' ) ( 'E' | 'e' ) ( 'R' | 'r' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:61:12: ( ( 'L' | 'l' ) ( 'O' | 'o' ) ( 'W' | 'w' ) ( 'E' | 'e' ) ( 'R' | 'r' ) )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:61:14: ( 'L' | 'l' ) ( 'O' | 'o' ) ( 'W' | 'w' ) ( 'E' | 'e' ) ( 'R' | 'r' )
             {
             if ( input.LA(1)=='L'||input.LA(1)=='l' ) {
                 input.consume();
@@ -1885,8 +1885,8 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = KEYWORD_48;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:63:12: ( ( 'O' | 'o' ) ( 'R' | 'r' ) ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'R' | 'r' ) )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:63:14: ( 'O' | 'o' ) ( 'R' | 'r' ) ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'R' | 'r' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:63:12: ( ( 'O' | 'o' ) ( 'R' | 'r' ) ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'R' | 'r' ) )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:63:14: ( 'O' | 'o' ) ( 'R' | 'r' ) ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'R' | 'r' )
             {
             if ( input.LA(1)=='O'||input.LA(1)=='o' ) {
                 input.consume();
@@ -1949,8 +1949,8 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = KEYWORD_49;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:65:12: ( ( 'O' | 'o' ) ( 'U' | 'u' ) ( 'T' | 't' ) ( 'E' | 'e' ) ( 'R' | 'r' ) )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:65:14: ( 'O' | 'o' ) ( 'U' | 'u' ) ( 'T' | 't' ) ( 'E' | 'e' ) ( 'R' | 'r' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:65:12: ( ( 'O' | 'o' ) ( 'U' | 'u' ) ( 'T' | 't' ) ( 'E' | 'e' ) ( 'R' | 'r' ) )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:65:14: ( 'O' | 'o' ) ( 'U' | 'u' ) ( 'T' | 't' ) ( 'E' | 'e' ) ( 'R' | 'r' )
             {
             if ( input.LA(1)=='O'||input.LA(1)=='o' ) {
                 input.consume();
@@ -2013,8 +2013,8 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = KEYWORD_50;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:67:12: ( ( 'U' | 'u' ) ( 'P' | 'p' ) ( 'P' | 'p' ) ( 'E' | 'e' ) ( 'R' | 'r' ) )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:67:14: ( 'U' | 'u' ) ( 'P' | 'p' ) ( 'P' | 'p' ) ( 'E' | 'e' ) ( 'R' | 'r' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:67:12: ( ( 'U' | 'u' ) ( 'P' | 'p' ) ( 'P' | 'p' ) ( 'E' | 'e' ) ( 'R' | 'r' ) )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:67:14: ( 'U' | 'u' ) ( 'P' | 'p' ) ( 'P' | 'p' ) ( 'E' | 'e' ) ( 'R' | 'r' )
             {
             if ( input.LA(1)=='U'||input.LA(1)=='u' ) {
                 input.consume();
@@ -2077,8 +2077,8 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = KEYWORD_51;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:69:12: ( ( 'W' | 'w' ) ( 'H' | 'h' ) ( 'E' | 'e' ) ( 'R' | 'r' ) ( 'E' | 'e' ) )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:69:14: ( 'W' | 'w' ) ( 'H' | 'h' ) ( 'E' | 'e' ) ( 'R' | 'r' ) ( 'E' | 'e' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:69:12: ( ( 'W' | 'w' ) ( 'H' | 'h' ) ( 'E' | 'e' ) ( 'R' | 'r' ) ( 'E' | 'e' ) )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:69:14: ( 'W' | 'w' ) ( 'H' | 'h' ) ( 'E' | 'e' ) ( 'R' | 'r' ) ( 'E' | 'e' )
             {
             if ( input.LA(1)=='W'||input.LA(1)=='w' ) {
                 input.consume();
@@ -2141,8 +2141,8 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = KEYWORD_31;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:71:12: ( ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'C' | 'c' ) )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:71:14: ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'C' | 'c' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:71:12: ( ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'C' | 'c' ) )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:71:14: ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'C' | 'c' )
             {
             if ( input.LA(1)=='D'||input.LA(1)=='d' ) {
                 input.consume();
@@ -2196,8 +2196,8 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = KEYWORD_32;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:73:12: ( ( 'F' | 'f' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'M' | 'm' ) )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:73:14: ( 'F' | 'f' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'M' | 'm' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:73:12: ( ( 'F' | 'f' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'M' | 'm' ) )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:73:14: ( 'F' | 'f' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'M' | 'm' )
             {
             if ( input.LA(1)=='F'||input.LA(1)=='f' ) {
                 input.consume();
@@ -2251,8 +2251,8 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = KEYWORD_33;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:75:12: ( ( 'J' | 'j' ) ( 'O' | 'o' ) ( 'I' | 'i' ) ( 'N' | 'n' ) )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:75:14: ( 'J' | 'j' ) ( 'O' | 'o' ) ( 'I' | 'i' ) ( 'N' | 'n' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:75:12: ( ( 'J' | 'j' ) ( 'O' | 'o' ) ( 'I' | 'i' ) ( 'N' | 'n' ) )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:75:14: ( 'J' | 'j' ) ( 'O' | 'o' ) ( 'I' | 'i' ) ( 'N' | 'n' )
             {
             if ( input.LA(1)=='J'||input.LA(1)=='j' ) {
                 input.consume();
@@ -2306,8 +2306,8 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = KEYWORD_34;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:77:12: ( ( 'L' | 'l' ) ( 'E' | 'e' ) ( 'F' | 'f' ) ( 'T' | 't' ) )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:77:14: ( 'L' | 'l' ) ( 'E' | 'e' ) ( 'F' | 'f' ) ( 'T' | 't' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:77:12: ( ( 'L' | 'l' ) ( 'E' | 'e' ) ( 'F' | 'f' ) ( 'T' | 't' ) )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:77:14: ( 'L' | 'l' ) ( 'E' | 'e' ) ( 'F' | 'f' ) ( 'T' | 't' )
             {
             if ( input.LA(1)=='L'||input.LA(1)=='l' ) {
                 input.consume();
@@ -2361,8 +2361,8 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = KEYWORD_35;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:79:12: ( ( 'L' | 'l' ) ( 'I' | 'i' ) ( 'K' | 'k' ) ( 'E' | 'e' ) )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:79:14: ( 'L' | 'l' ) ( 'I' | 'i' ) ( 'K' | 'k' ) ( 'E' | 'e' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:79:12: ( ( 'L' | 'l' ) ( 'I' | 'i' ) ( 'K' | 'k' ) ( 'E' | 'e' ) )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:79:14: ( 'L' | 'l' ) ( 'I' | 'i' ) ( 'K' | 'k' ) ( 'E' | 'e' )
             {
             if ( input.LA(1)=='L'||input.LA(1)=='l' ) {
                 input.consume();
@@ -2416,8 +2416,8 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = KEYWORD_36;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:81:12: ( ( 'N' | 'n' ) ( 'U' | 'u' ) ( 'L' | 'l' ) ( 'L' | 'l' ) )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:81:14: ( 'N' | 'n' ) ( 'U' | 'u' ) ( 'L' | 'l' ) ( 'L' | 'l' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:81:12: ( ( 'N' | 'n' ) ( 'U' | 'u' ) ( 'L' | 'l' ) ( 'L' | 'l' ) )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:81:14: ( 'N' | 'n' ) ( 'U' | 'u' ) ( 'L' | 'l' ) ( 'L' | 'l' )
             {
             if ( input.LA(1)=='N'||input.LA(1)=='n' ) {
                 input.consume();
@@ -2471,8 +2471,8 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = KEYWORD_37;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:83:12: ( ( 'S' | 's' ) ( 'I' | 'i' ) ( 'Z' | 'z' ) ( 'E' | 'e' ) )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:83:14: ( 'S' | 's' ) ( 'I' | 'i' ) ( 'Z' | 'z' ) ( 'E' | 'e' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:83:12: ( ( 'S' | 's' ) ( 'I' | 'i' ) ( 'Z' | 'z' ) ( 'E' | 'e' ) )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:83:14: ( 'S' | 's' ) ( 'I' | 'i' ) ( 'Z' | 'z' ) ( 'E' | 'e' )
             {
             if ( input.LA(1)=='S'||input.LA(1)=='s' ) {
                 input.consume();
@@ -2526,8 +2526,8 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = KEYWORD_38;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:85:12: ( ( 'S' | 's' ) ( 'O' | 'o' ) ( 'M' | 'm' ) ( 'E' | 'e' ) )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:85:14: ( 'S' | 's' ) ( 'O' | 'o' ) ( 'M' | 'm' ) ( 'E' | 'e' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:85:12: ( ( 'S' | 's' ) ( 'O' | 'o' ) ( 'M' | 'm' ) ( 'E' | 'e' ) )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:85:14: ( 'S' | 's' ) ( 'O' | 'o' ) ( 'M' | 'm' ) ( 'E' | 'e' )
             {
             if ( input.LA(1)=='S'||input.LA(1)=='s' ) {
                 input.consume();
@@ -2581,8 +2581,8 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = KEYWORD_39;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:87:12: ( ( 'S' | 's' ) ( 'Q' | 'q' ) ( 'R' | 'r' ) ( 'T' | 't' ) )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:87:14: ( 'S' | 's' ) ( 'Q' | 'q' ) ( 'R' | 'r' ) ( 'T' | 't' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:87:12: ( ( 'S' | 's' ) ( 'Q' | 'q' ) ( 'R' | 'r' ) ( 'T' | 't' ) )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:87:14: ( 'S' | 's' ) ( 'Q' | 'q' ) ( 'R' | 'r' ) ( 'T' | 't' )
             {
             if ( input.LA(1)=='S'||input.LA(1)=='s' ) {
                 input.consume();
@@ -2636,8 +2636,8 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = KEYWORD_40;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:89:12: ( ( 'T' | 't' ) ( 'R' | 'r' ) ( 'U' | 'u' ) ( 'E' | 'e' ) )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:89:14: ( 'T' | 't' ) ( 'R' | 'r' ) ( 'U' | 'u' ) ( 'E' | 'e' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:89:12: ( ( 'T' | 't' ) ( 'R' | 'r' ) ( 'U' | 'u' ) ( 'E' | 'e' ) )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:89:14: ( 'T' | 't' ) ( 'R' | 'r' ) ( 'U' | 'u' ) ( 'E' | 'e' )
             {
             if ( input.LA(1)=='T'||input.LA(1)=='t' ) {
                 input.consume();
@@ -2691,8 +2691,8 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = KEYWORD_18;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:91:12: ( ( 'A' | 'a' ) ( 'B' | 'b' ) ( 'S' | 's' ) )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:91:14: ( 'A' | 'a' ) ( 'B' | 'b' ) ( 'S' | 's' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:91:12: ( ( 'A' | 'a' ) ( 'B' | 'b' ) ( 'S' | 's' ) )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:91:14: ( 'A' | 'a' ) ( 'B' | 'b' ) ( 'S' | 's' )
             {
             if ( input.LA(1)=='A'||input.LA(1)=='a' ) {
                 input.consume();
@@ -2737,8 +2737,8 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = KEYWORD_19;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:93:12: ( ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'L' | 'l' ) )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:93:14: ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'L' | 'l' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:93:12: ( ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'L' | 'l' ) )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:93:14: ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'L' | 'l' )
             {
             if ( input.LA(1)=='A'||input.LA(1)=='a' ) {
                 input.consume();
@@ -2783,8 +2783,8 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = KEYWORD_20;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:95:12: ( ( 'A' | 'a' ) ( 'N' | 'n' ) ( 'D' | 'd' ) )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:95:14: ( 'A' | 'a' ) ( 'N' | 'n' ) ( 'D' | 'd' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:95:12: ( ( 'A' | 'a' ) ( 'N' | 'n' ) ( 'D' | 'd' ) )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:95:14: ( 'A' | 'a' ) ( 'N' | 'n' ) ( 'D' | 'd' )
             {
             if ( input.LA(1)=='A'||input.LA(1)=='a' ) {
                 input.consume();
@@ -2829,8 +2829,8 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = KEYWORD_21;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:97:12: ( ( 'A' | 'a' ) ( 'N' | 'n' ) ( 'Y' | 'y' ) )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:97:14: ( 'A' | 'a' ) ( 'N' | 'n' ) ( 'Y' | 'y' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:97:12: ( ( 'A' | 'a' ) ( 'N' | 'n' ) ( 'Y' | 'y' ) )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:97:14: ( 'A' | 'a' ) ( 'N' | 'n' ) ( 'Y' | 'y' )
             {
             if ( input.LA(1)=='A'||input.LA(1)=='a' ) {
                 input.consume();
@@ -2875,8 +2875,8 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = KEYWORD_22;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:99:12: ( ( 'A' | 'a' ) ( 'S' | 's' ) ( 'C' | 'c' ) )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:99:14: ( 'A' | 'a' ) ( 'S' | 's' ) ( 'C' | 'c' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:99:12: ( ( 'A' | 'a' ) ( 'S' | 's' ) ( 'C' | 'c' ) )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:99:14: ( 'A' | 'a' ) ( 'S' | 's' ) ( 'C' | 'c' )
             {
             if ( input.LA(1)=='A'||input.LA(1)=='a' ) {
                 input.consume();
@@ -2921,8 +2921,8 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = KEYWORD_23;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:101:12: ( ( 'A' | 'a' ) ( 'V' | 'v' ) ( 'G' | 'g' ) )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:101:14: ( 'A' | 'a' ) ( 'V' | 'v' ) ( 'G' | 'g' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:101:12: ( ( 'A' | 'a' ) ( 'V' | 'v' ) ( 'G' | 'g' ) )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:101:14: ( 'A' | 'a' ) ( 'V' | 'v' ) ( 'G' | 'g' )
             {
             if ( input.LA(1)=='A'||input.LA(1)=='a' ) {
                 input.consume();
@@ -2967,8 +2967,8 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = KEYWORD_24;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:103:12: ( ( 'M' | 'm' ) ( 'A' | 'a' ) ( 'X' | 'x' ) )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:103:14: ( 'M' | 'm' ) ( 'A' | 'a' ) ( 'X' | 'x' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:103:12: ( ( 'M' | 'm' ) ( 'A' | 'a' ) ( 'X' | 'x' ) )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:103:14: ( 'M' | 'm' ) ( 'A' | 'a' ) ( 'X' | 'x' )
             {
             if ( input.LA(1)=='M'||input.LA(1)=='m' ) {
                 input.consume();
@@ -3013,8 +3013,8 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = KEYWORD_25;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:105:12: ( ( 'M' | 'm' ) ( 'I' | 'i' ) ( 'N' | 'n' ) )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:105:14: ( 'M' | 'm' ) ( 'I' | 'i' ) ( 'N' | 'n' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:105:12: ( ( 'M' | 'm' ) ( 'I' | 'i' ) ( 'N' | 'n' ) )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:105:14: ( 'M' | 'm' ) ( 'I' | 'i' ) ( 'N' | 'n' )
             {
             if ( input.LA(1)=='M'||input.LA(1)=='m' ) {
                 input.consume();
@@ -3059,8 +3059,8 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = KEYWORD_26;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:107:12: ( ( 'M' | 'm' ) ( 'O' | 'o' ) ( 'D' | 'd' ) )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:107:14: ( 'M' | 'm' ) ( 'O' | 'o' ) ( 'D' | 'd' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:107:12: ( ( 'M' | 'm' ) ( 'O' | 'o' ) ( 'D' | 'd' ) )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:107:14: ( 'M' | 'm' ) ( 'O' | 'o' ) ( 'D' | 'd' )
             {
             if ( input.LA(1)=='M'||input.LA(1)=='m' ) {
                 input.consume();
@@ -3105,8 +3105,8 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = KEYWORD_27;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:109:12: ( ( 'N' | 'n' ) ( 'E' | 'e' ) ( 'W' | 'w' ) )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:109:14: ( 'N' | 'n' ) ( 'E' | 'e' ) ( 'W' | 'w' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:109:12: ( ( 'N' | 'n' ) ( 'E' | 'e' ) ( 'W' | 'w' ) )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:109:14: ( 'N' | 'n' ) ( 'E' | 'e' ) ( 'W' | 'w' )
             {
             if ( input.LA(1)=='N'||input.LA(1)=='n' ) {
                 input.consume();
@@ -3151,8 +3151,8 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = KEYWORD_28;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:111:12: ( ( 'N' | 'n' ) ( 'O' | 'o' ) ( 'T' | 't' ) )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:111:14: ( 'N' | 'n' ) ( 'O' | 'o' ) ( 'T' | 't' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:111:12: ( ( 'N' | 'n' ) ( 'O' | 'o' ) ( 'T' | 't' ) )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:111:14: ( 'N' | 'n' ) ( 'O' | 'o' ) ( 'T' | 't' )
             {
             if ( input.LA(1)=='N'||input.LA(1)=='n' ) {
                 input.consume();
@@ -3197,8 +3197,8 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = KEYWORD_29;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:113:12: ( ( 'S' | 's' ) ( 'E' | 'e' ) ( 'T' | 't' ) )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:113:14: ( 'S' | 's' ) ( 'E' | 'e' ) ( 'T' | 't' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:113:12: ( ( 'S' | 's' ) ( 'E' | 'e' ) ( 'T' | 't' ) )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:113:14: ( 'S' | 's' ) ( 'E' | 'e' ) ( 'T' | 't' )
             {
             if ( input.LA(1)=='S'||input.LA(1)=='s' ) {
                 input.consume();
@@ -3243,8 +3243,8 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = KEYWORD_30;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:115:12: ( ( 'S' | 's' ) ( 'U' | 'u' ) ( 'M' | 'm' ) )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:115:14: ( 'S' | 's' ) ( 'U' | 'u' ) ( 'M' | 'm' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:115:12: ( ( 'S' | 's' ) ( 'U' | 'u' ) ( 'M' | 'm' ) )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:115:14: ( 'S' | 's' ) ( 'U' | 'u' ) ( 'M' | 'm' )
             {
             if ( input.LA(1)=='S'||input.LA(1)=='s' ) {
                 input.consume();
@@ -3289,8 +3289,8 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = KEYWORD_9;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:117:11: ( '<' '=' )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:117:13: '<' '='
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:117:11: ( '<' '=' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:117:13: '<' '='
             {
             match('<'); 
             match('='); 
@@ -3310,8 +3310,8 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = KEYWORD_10;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:119:12: ( '<' '>' )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:119:14: '<' '>'
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:119:12: ( '<' '>' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:119:14: '<' '>'
             {
             match('<'); 
             match('>'); 
@@ -3331,8 +3331,8 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = KEYWORD_11;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:121:12: ( '>' '=' )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:121:14: '>' '='
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:121:12: ( '>' '=' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:121:14: '>' '='
             {
             match('>'); 
             match('='); 
@@ -3352,8 +3352,8 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = KEYWORD_12;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:123:12: ( ( 'A' | 'a' ) ( 'S' | 's' ) )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:123:14: ( 'A' | 'a' ) ( 'S' | 's' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:123:12: ( ( 'A' | 'a' ) ( 'S' | 's' ) )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:123:14: ( 'A' | 'a' ) ( 'S' | 's' )
             {
             if ( input.LA(1)=='A'||input.LA(1)=='a' ) {
                 input.consume();
@@ -3389,8 +3389,8 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = KEYWORD_13;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:125:12: ( ( 'B' | 'b' ) ( 'Y' | 'y' ) )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:125:14: ( 'B' | 'b' ) ( 'Y' | 'y' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:125:12: ( ( 'B' | 'b' ) ( 'Y' | 'y' ) )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:125:14: ( 'B' | 'b' ) ( 'Y' | 'y' )
             {
             if ( input.LA(1)=='B'||input.LA(1)=='b' ) {
                 input.consume();
@@ -3426,8 +3426,8 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = KEYWORD_14;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:127:12: ( ( 'I' | 'i' ) ( 'N' | 'n' ) )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:127:14: ( 'I' | 'i' ) ( 'N' | 'n' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:127:12: ( ( 'I' | 'i' ) ( 'N' | 'n' ) )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:127:14: ( 'I' | 'i' ) ( 'N' | 'n' )
             {
             if ( input.LA(1)=='I'||input.LA(1)=='i' ) {
                 input.consume();
@@ -3463,8 +3463,8 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = KEYWORD_15;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:129:12: ( ( 'I' | 'i' ) ( 'S' | 's' ) )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:129:14: ( 'I' | 'i' ) ( 'S' | 's' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:129:12: ( ( 'I' | 'i' ) ( 'S' | 's' ) )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:129:14: ( 'I' | 'i' ) ( 'S' | 's' )
             {
             if ( input.LA(1)=='I'||input.LA(1)=='i' ) {
                 input.consume();
@@ -3500,8 +3500,8 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = KEYWORD_16;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:131:12: ( ( 'O' | 'o' ) ( 'F' | 'f' ) )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:131:14: ( 'O' | 'o' ) ( 'F' | 'f' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:131:12: ( ( 'O' | 'o' ) ( 'F' | 'f' ) )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:131:14: ( 'O' | 'o' ) ( 'F' | 'f' )
             {
             if ( input.LA(1)=='O'||input.LA(1)=='o' ) {
                 input.consume();
@@ -3537,8 +3537,8 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = KEYWORD_17;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:133:12: ( ( 'O' | 'o' ) ( 'R' | 'r' ) )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:133:14: ( 'O' | 'o' ) ( 'R' | 'r' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:133:12: ( ( 'O' | 'o' ) ( 'R' | 'r' ) )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:133:14: ( 'O' | 'o' ) ( 'R' | 'r' )
             {
             if ( input.LA(1)=='O'||input.LA(1)=='o' ) {
                 input.consume();
@@ -3574,8 +3574,8 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = KEYWORD_1;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:135:11: ( '(' )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:135:13: '('
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:135:11: ( '(' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:135:13: '('
             {
             match('('); 
 
@@ -3594,8 +3594,8 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = KEYWORD_2;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:137:11: ( ')' )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:137:13: ')'
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:137:11: ( ')' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:137:13: ')'
             {
             match(')'); 
 
@@ -3614,8 +3614,8 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = KEYWORD_3;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:139:11: ( ',' )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:139:13: ','
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:139:11: ( ',' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:139:13: ','
             {
             match(','); 
 
@@ -3634,8 +3634,8 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = KEYWORD_4;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:141:11: ( '.' )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:141:13: '.'
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:141:11: ( '.' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:141:13: '.'
             {
             match('.'); 
 
@@ -3654,8 +3654,8 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = KEYWORD_5;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:143:11: ( ':' )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:143:13: ':'
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:143:11: ( ':' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:143:13: ':'
             {
             match(':'); 
 
@@ -3674,8 +3674,8 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = KEYWORD_6;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:145:11: ( '<' )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:145:13: '<'
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:145:11: ( '<' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:145:13: '<'
             {
             match('<'); 
 
@@ -3694,8 +3694,8 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = KEYWORD_7;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:147:11: ( '=' )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:147:13: '='
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:147:11: ( '=' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:147:13: '='
             {
             match('='); 
 
@@ -3714,8 +3714,8 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = KEYWORD_8;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:149:11: ( '>' )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:149:13: '>'
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:149:11: ( '>' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:149:13: '>'
             {
             match('>'); 
 
@@ -3734,10 +3734,10 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:153:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:153:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:153:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:153:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             {
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:153:11: ( '^' )?
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:153:11: ( '^' )?
             int alt1=2;
             int LA1_0 = input.LA(1);
 
@@ -3746,7 +3746,7 @@ public class InternalJPQLLexer extends Lexer {
             }
             switch (alt1) {
                 case 1 :
-                    // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:153:11: '^'
+                    // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:153:11: '^'
                     {
                     match('^'); 
 
@@ -3764,7 +3764,7 @@ public class InternalJPQLLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:153:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:153:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             loop2:
             do {
                 int alt2=2;
@@ -3777,7 +3777,7 @@ public class InternalJPQLLexer extends Lexer {
 
                 switch (alt2) {
             	case 1 :
-            	    // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:
+            	    // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:
             	    {
             	    if ( (input.LA(1)>='0' && input.LA(1)<='9')||(input.LA(1)>='A' && input.LA(1)<='Z')||input.LA(1)=='_'||(input.LA(1)>='a' && input.LA(1)<='z') ) {
             	        input.consume();
@@ -3813,10 +3813,10 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = RULE_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:155:10: ( ( '0' .. '9' )+ )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:155:12: ( '0' .. '9' )+
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:155:10: ( ( '0' .. '9' )+ )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:155:12: ( '0' .. '9' )+
             {
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:155:12: ( '0' .. '9' )+
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:155:12: ( '0' .. '9' )+
             int cnt3=0;
             loop3:
             do {
@@ -3830,7 +3830,7 @@ public class InternalJPQLLexer extends Lexer {
 
                 switch (alt3) {
             	case 1 :
-            	    // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:155:13: '0' .. '9'
+            	    // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:155:13: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -3862,10 +3862,10 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:157:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:157:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:157:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:157:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:157:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:157:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt6=2;
             int LA6_0 = input.LA(1);
 
@@ -3883,10 +3883,10 @@ public class InternalJPQLLexer extends Lexer {
             }
             switch (alt6) {
                 case 1 :
-                    // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:157:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:157:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:157:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:157:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop4:
                     do {
                         int alt4=3;
@@ -3902,7 +3902,7 @@ public class InternalJPQLLexer extends Lexer {
 
                         switch (alt4) {
                     	case 1 :
-                    	    // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:157:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:157:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
                     	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
@@ -3918,7 +3918,7 @@ public class InternalJPQLLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:157:66: ~ ( ( '\\\\' | '\"' ) )
+                    	    // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:157:66: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -3943,10 +3943,10 @@ public class InternalJPQLLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:157:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:157:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:157:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:157:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop5:
                     do {
                         int alt5=3;
@@ -3962,7 +3962,7 @@ public class InternalJPQLLexer extends Lexer {
 
                         switch (alt5) {
                     	case 1 :
-                    	    // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:157:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:157:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
                     	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
@@ -3978,7 +3978,7 @@ public class InternalJPQLLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:157:137: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:157:137: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -4021,12 +4021,12 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:159:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:159:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:159:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:159:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:159:24: ( options {greedy=false; } : . )*
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:159:24: ( options {greedy=false; } : . )*
             loop7:
             do {
                 int alt7=2;
@@ -4051,7 +4051,7 @@ public class InternalJPQLLexer extends Lexer {
 
                 switch (alt7) {
             	case 1 :
-            	    // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:159:52: .
+            	    // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:159:52: .
             	    {
             	    matchAny(); 
 
@@ -4081,12 +4081,12 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:161:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:161:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:161:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:161:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:161:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:161:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop8:
             do {
                 int alt8=2;
@@ -4099,7 +4099,7 @@ public class InternalJPQLLexer extends Lexer {
 
                 switch (alt8) {
             	case 1 :
-            	    // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:161:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:161:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -4119,7 +4119,7 @@ public class InternalJPQLLexer extends Lexer {
                 }
             } while (true);
 
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:161:40: ( ( '\\r' )? '\\n' )?
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:161:40: ( ( '\\r' )? '\\n' )?
             int alt10=2;
             int LA10_0 = input.LA(1);
 
@@ -4128,9 +4128,9 @@ public class InternalJPQLLexer extends Lexer {
             }
             switch (alt10) {
                 case 1 :
-                    // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:161:41: ( '\\r' )? '\\n'
+                    // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:161:41: ( '\\r' )? '\\n'
                     {
-                    // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:161:41: ( '\\r' )?
+                    // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:161:41: ( '\\r' )?
                     int alt9=2;
                     int LA9_0 = input.LA(1);
 
@@ -4139,7 +4139,7 @@ public class InternalJPQLLexer extends Lexer {
                     }
                     switch (alt9) {
                         case 1 :
-                            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:161:41: '\\r'
+                            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:161:41: '\\r'
                             {
                             match('\r'); 
 
@@ -4171,10 +4171,10 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:163:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:163:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:163:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:163:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:163:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:163:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt11=0;
             loop11:
             do {
@@ -4188,7 +4188,7 @@ public class InternalJPQLLexer extends Lexer {
 
                 switch (alt11) {
             	case 1 :
-            	    // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:
+            	    // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:
             	    {
             	    if ( (input.LA(1)>='\t' && input.LA(1)<='\n')||input.LA(1)=='\r'||input.LA(1)==' ' ) {
             	        input.consume();
@@ -4228,8 +4228,8 @@ public class InternalJPQLLexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:165:16: ( . )
-            // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:165:18: .
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:165:16: ( . )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:165:18: .
             {
             matchAny(); 
 
@@ -4244,516 +4244,516 @@ public class InternalJPQLLexer extends Lexer {
     // $ANTLR end "RULE_ANY_OTHER"
 
     public void mTokens() throws RecognitionException {
-        // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:8: ( KEYWORD_66 | KEYWORD_64 | KEYWORD_65 | KEYWORD_63 | KEYWORD_62 | KEYWORD_61 | KEYWORD_52 | KEYWORD_53 | KEYWORD_54 | KEYWORD_55 | KEYWORD_56 | KEYWORD_57 | KEYWORD_58 | KEYWORD_59 | KEYWORD_60 | KEYWORD_41 | KEYWORD_42 | KEYWORD_43 | KEYWORD_44 | KEYWORD_45 | KEYWORD_46 | KEYWORD_47 | KEYWORD_48 | KEYWORD_49 | KEYWORD_50 | KEYWORD_51 | KEYWORD_31 | KEYWORD_32 | KEYWORD_33 | KEYWORD_34 | KEYWORD_35 | KEYWORD_36 | KEYWORD_37 | KEYWORD_38 | KEYWORD_39 | KEYWORD_40 | KEYWORD_18 | KEYWORD_19 | KEYWORD_20 | KEYWORD_21 | KEYWORD_22 | KEYWORD_23 | KEYWORD_24 | KEYWORD_25 | KEYWORD_26 | KEYWORD_27 | KEYWORD_28 | KEYWORD_29 | KEYWORD_30 | KEYWORD_9 | KEYWORD_10 | KEYWORD_11 | KEYWORD_12 | KEYWORD_13 | KEYWORD_14 | KEYWORD_15 | KEYWORD_16 | KEYWORD_17 | KEYWORD_1 | KEYWORD_2 | KEYWORD_3 | KEYWORD_4 | KEYWORD_5 | KEYWORD_6 | KEYWORD_7 | KEYWORD_8 | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
+        // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:8: ( KEYWORD_66 | KEYWORD_64 | KEYWORD_65 | KEYWORD_63 | KEYWORD_62 | KEYWORD_61 | KEYWORD_52 | KEYWORD_53 | KEYWORD_54 | KEYWORD_55 | KEYWORD_56 | KEYWORD_57 | KEYWORD_58 | KEYWORD_59 | KEYWORD_60 | KEYWORD_41 | KEYWORD_42 | KEYWORD_43 | KEYWORD_44 | KEYWORD_45 | KEYWORD_46 | KEYWORD_47 | KEYWORD_48 | KEYWORD_49 | KEYWORD_50 | KEYWORD_51 | KEYWORD_31 | KEYWORD_32 | KEYWORD_33 | KEYWORD_34 | KEYWORD_35 | KEYWORD_36 | KEYWORD_37 | KEYWORD_38 | KEYWORD_39 | KEYWORD_40 | KEYWORD_18 | KEYWORD_19 | KEYWORD_20 | KEYWORD_21 | KEYWORD_22 | KEYWORD_23 | KEYWORD_24 | KEYWORD_25 | KEYWORD_26 | KEYWORD_27 | KEYWORD_28 | KEYWORD_29 | KEYWORD_30 | KEYWORD_9 | KEYWORD_10 | KEYWORD_11 | KEYWORD_12 | KEYWORD_13 | KEYWORD_14 | KEYWORD_15 | KEYWORD_16 | KEYWORD_17 | KEYWORD_1 | KEYWORD_2 | KEYWORD_3 | KEYWORD_4 | KEYWORD_5 | KEYWORD_6 | KEYWORD_7 | KEYWORD_8 | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
         int alt12=73;
         alt12 = dfa12.predict(input);
         switch (alt12) {
             case 1 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:10: KEYWORD_66
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:10: KEYWORD_66
                 {
                 mKEYWORD_66(); 
 
                 }
                 break;
             case 2 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:21: KEYWORD_64
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:21: KEYWORD_64
                 {
                 mKEYWORD_64(); 
 
                 }
                 break;
             case 3 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:32: KEYWORD_65
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:32: KEYWORD_65
                 {
                 mKEYWORD_65(); 
 
                 }
                 break;
             case 4 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:43: KEYWORD_63
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:43: KEYWORD_63
                 {
                 mKEYWORD_63(); 
 
                 }
                 break;
             case 5 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:54: KEYWORD_62
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:54: KEYWORD_62
                 {
                 mKEYWORD_62(); 
 
                 }
                 break;
             case 6 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:65: KEYWORD_61
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:65: KEYWORD_61
                 {
                 mKEYWORD_61(); 
 
                 }
                 break;
             case 7 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:76: KEYWORD_52
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:76: KEYWORD_52
                 {
                 mKEYWORD_52(); 
 
                 }
                 break;
             case 8 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:87: KEYWORD_53
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:87: KEYWORD_53
                 {
                 mKEYWORD_53(); 
 
                 }
                 break;
             case 9 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:98: KEYWORD_54
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:98: KEYWORD_54
                 {
                 mKEYWORD_54(); 
 
                 }
                 break;
             case 10 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:109: KEYWORD_55
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:109: KEYWORD_55
                 {
                 mKEYWORD_55(); 
 
                 }
                 break;
             case 11 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:120: KEYWORD_56
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:120: KEYWORD_56
                 {
                 mKEYWORD_56(); 
 
                 }
                 break;
             case 12 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:131: KEYWORD_57
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:131: KEYWORD_57
                 {
                 mKEYWORD_57(); 
 
                 }
                 break;
             case 13 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:142: KEYWORD_58
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:142: KEYWORD_58
                 {
                 mKEYWORD_58(); 
 
                 }
                 break;
             case 14 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:153: KEYWORD_59
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:153: KEYWORD_59
                 {
                 mKEYWORD_59(); 
 
                 }
                 break;
             case 15 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:164: KEYWORD_60
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:164: KEYWORD_60
                 {
                 mKEYWORD_60(); 
 
                 }
                 break;
             case 16 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:175: KEYWORD_41
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:175: KEYWORD_41
                 {
                 mKEYWORD_41(); 
 
                 }
                 break;
             case 17 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:186: KEYWORD_42
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:186: KEYWORD_42
                 {
                 mKEYWORD_42(); 
 
                 }
                 break;
             case 18 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:197: KEYWORD_43
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:197: KEYWORD_43
                 {
                 mKEYWORD_43(); 
 
                 }
                 break;
             case 19 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:208: KEYWORD_44
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:208: KEYWORD_44
                 {
                 mKEYWORD_44(); 
 
                 }
                 break;
             case 20 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:219: KEYWORD_45
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:219: KEYWORD_45
                 {
                 mKEYWORD_45(); 
 
                 }
                 break;
             case 21 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:230: KEYWORD_46
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:230: KEYWORD_46
                 {
                 mKEYWORD_46(); 
 
                 }
                 break;
             case 22 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:241: KEYWORD_47
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:241: KEYWORD_47
                 {
                 mKEYWORD_47(); 
 
                 }
                 break;
             case 23 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:252: KEYWORD_48
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:252: KEYWORD_48
                 {
                 mKEYWORD_48(); 
 
                 }
                 break;
             case 24 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:263: KEYWORD_49
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:263: KEYWORD_49
                 {
                 mKEYWORD_49(); 
 
                 }
                 break;
             case 25 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:274: KEYWORD_50
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:274: KEYWORD_50
                 {
                 mKEYWORD_50(); 
 
                 }
                 break;
             case 26 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:285: KEYWORD_51
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:285: KEYWORD_51
                 {
                 mKEYWORD_51(); 
 
                 }
                 break;
             case 27 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:296: KEYWORD_31
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:296: KEYWORD_31
                 {
                 mKEYWORD_31(); 
 
                 }
                 break;
             case 28 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:307: KEYWORD_32
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:307: KEYWORD_32
                 {
                 mKEYWORD_32(); 
 
                 }
                 break;
             case 29 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:318: KEYWORD_33
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:318: KEYWORD_33
                 {
                 mKEYWORD_33(); 
 
                 }
                 break;
             case 30 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:329: KEYWORD_34
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:329: KEYWORD_34
                 {
                 mKEYWORD_34(); 
 
                 }
                 break;
             case 31 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:340: KEYWORD_35
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:340: KEYWORD_35
                 {
                 mKEYWORD_35(); 
 
                 }
                 break;
             case 32 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:351: KEYWORD_36
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:351: KEYWORD_36
                 {
                 mKEYWORD_36(); 
 
                 }
                 break;
             case 33 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:362: KEYWORD_37
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:362: KEYWORD_37
                 {
                 mKEYWORD_37(); 
 
                 }
                 break;
             case 34 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:373: KEYWORD_38
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:373: KEYWORD_38
                 {
                 mKEYWORD_38(); 
 
                 }
                 break;
             case 35 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:384: KEYWORD_39
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:384: KEYWORD_39
                 {
                 mKEYWORD_39(); 
 
                 }
                 break;
             case 36 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:395: KEYWORD_40
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:395: KEYWORD_40
                 {
                 mKEYWORD_40(); 
 
                 }
                 break;
             case 37 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:406: KEYWORD_18
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:406: KEYWORD_18
                 {
                 mKEYWORD_18(); 
 
                 }
                 break;
             case 38 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:417: KEYWORD_19
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:417: KEYWORD_19
                 {
                 mKEYWORD_19(); 
 
                 }
                 break;
             case 39 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:428: KEYWORD_20
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:428: KEYWORD_20
                 {
                 mKEYWORD_20(); 
 
                 }
                 break;
             case 40 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:439: KEYWORD_21
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:439: KEYWORD_21
                 {
                 mKEYWORD_21(); 
 
                 }
                 break;
             case 41 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:450: KEYWORD_22
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:450: KEYWORD_22
                 {
                 mKEYWORD_22(); 
 
                 }
                 break;
             case 42 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:461: KEYWORD_23
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:461: KEYWORD_23
                 {
                 mKEYWORD_23(); 
 
                 }
                 break;
             case 43 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:472: KEYWORD_24
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:472: KEYWORD_24
                 {
                 mKEYWORD_24(); 
 
                 }
                 break;
             case 44 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:483: KEYWORD_25
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:483: KEYWORD_25
                 {
                 mKEYWORD_25(); 
 
                 }
                 break;
             case 45 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:494: KEYWORD_26
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:494: KEYWORD_26
                 {
                 mKEYWORD_26(); 
 
                 }
                 break;
             case 46 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:505: KEYWORD_27
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:505: KEYWORD_27
                 {
                 mKEYWORD_27(); 
 
                 }
                 break;
             case 47 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:516: KEYWORD_28
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:516: KEYWORD_28
                 {
                 mKEYWORD_28(); 
 
                 }
                 break;
             case 48 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:527: KEYWORD_29
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:527: KEYWORD_29
                 {
                 mKEYWORD_29(); 
 
                 }
                 break;
             case 49 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:538: KEYWORD_30
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:538: KEYWORD_30
                 {
                 mKEYWORD_30(); 
 
                 }
                 break;
             case 50 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:549: KEYWORD_9
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:549: KEYWORD_9
                 {
                 mKEYWORD_9(); 
 
                 }
                 break;
             case 51 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:559: KEYWORD_10
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:559: KEYWORD_10
                 {
                 mKEYWORD_10(); 
 
                 }
                 break;
             case 52 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:570: KEYWORD_11
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:570: KEYWORD_11
                 {
                 mKEYWORD_11(); 
 
                 }
                 break;
             case 53 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:581: KEYWORD_12
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:581: KEYWORD_12
                 {
                 mKEYWORD_12(); 
 
                 }
                 break;
             case 54 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:592: KEYWORD_13
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:592: KEYWORD_13
                 {
                 mKEYWORD_13(); 
 
                 }
                 break;
             case 55 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:603: KEYWORD_14
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:603: KEYWORD_14
                 {
                 mKEYWORD_14(); 
 
                 }
                 break;
             case 56 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:614: KEYWORD_15
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:614: KEYWORD_15
                 {
                 mKEYWORD_15(); 
 
                 }
                 break;
             case 57 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:625: KEYWORD_16
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:625: KEYWORD_16
                 {
                 mKEYWORD_16(); 
 
                 }
                 break;
             case 58 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:636: KEYWORD_17
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:636: KEYWORD_17
                 {
                 mKEYWORD_17(); 
 
                 }
                 break;
             case 59 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:647: KEYWORD_1
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:647: KEYWORD_1
                 {
                 mKEYWORD_1(); 
 
                 }
                 break;
             case 60 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:657: KEYWORD_2
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:657: KEYWORD_2
                 {
                 mKEYWORD_2(); 
 
                 }
                 break;
             case 61 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:667: KEYWORD_3
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:667: KEYWORD_3
                 {
                 mKEYWORD_3(); 
 
                 }
                 break;
             case 62 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:677: KEYWORD_4
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:677: KEYWORD_4
                 {
                 mKEYWORD_4(); 
 
                 }
                 break;
             case 63 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:687: KEYWORD_5
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:687: KEYWORD_5
                 {
                 mKEYWORD_5(); 
 
                 }
                 break;
             case 64 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:697: KEYWORD_6
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:697: KEYWORD_6
                 {
                 mKEYWORD_6(); 
 
                 }
                 break;
             case 65 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:707: KEYWORD_7
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:707: KEYWORD_7
                 {
                 mKEYWORD_7(); 
 
                 }
                 break;
             case 66 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:717: KEYWORD_8
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:717: KEYWORD_8
                 {
                 mKEYWORD_8(); 
 
                 }
                 break;
             case 67 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:727: RULE_ID
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:727: RULE_ID
                 {
                 mRULE_ID(); 
 
                 }
                 break;
             case 68 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:735: RULE_INT
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:735: RULE_INT
                 {
                 mRULE_INT(); 
 
                 }
                 break;
             case 69 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:744: RULE_STRING
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:744: RULE_STRING
                 {
                 mRULE_STRING(); 
 
                 }
                 break;
             case 70 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:756: RULE_ML_COMMENT
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:756: RULE_ML_COMMENT
                 {
                 mRULE_ML_COMMENT(); 
 
                 }
                 break;
             case 71 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:772: RULE_SL_COMMENT
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:772: RULE_SL_COMMENT
                 {
                 mRULE_SL_COMMENT(); 
 
                 }
                 break;
             case 72 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:788: RULE_WS
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:788: RULE_WS
                 {
                 mRULE_WS(); 
 
                 }
                 break;
             case 73 :
-                // ../org.nightlabs.jjqb.xtext.jpql/src-gen/org/nightlabs/jjqb/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:796: RULE_ANY_OTHER
+                // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/lexer/InternalJPQLLexer.g:1:796: RULE_ANY_OTHER
                 {
                 mRULE_ANY_OTHER(); 
 

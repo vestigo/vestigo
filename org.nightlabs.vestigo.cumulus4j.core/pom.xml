@@ -1,29 +1,29 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<artifactId>org.nightlabs.jjqb.cumulus4j.core</artifactId>
+	<artifactId>org.nightlabs.vestigo.cumulus4j.core</artifactId>
 	<packaging>bundle</packaging>
 
 	<parent>
-		<groupId>org.nightlabs.jjqb</groupId>
-		<artifactId>org.nightlabs.jjqb.parent</artifactId>
+		<groupId>org.nightlabs.vestigo</groupId>
+		<artifactId>org.nightlabs.vestigo.parent</artifactId>
 		<version>0.2.0-SNAPSHOT</version>
-		<relativePath>../org.nightlabs.jjqb.parent</relativePath>
+		<relativePath>../org.nightlabs.vestigo.parent</relativePath>
 	</parent>
 
 	<dependencies>
 		<dependency>
-			<groupId>org.nightlabs.jjqb</groupId>
-			<artifactId>org.nightlabs.jjqb.core</artifactId>
+			<groupId>org.nightlabs.vestigo</groupId>
+			<artifactId>org.nightlabs.vestigo.core</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.nightlabs.jjqb</groupId>
-			<artifactId>org.nightlabs.jjqb.cumulus4j.childvm.shared</artifactId>
+			<groupId>org.nightlabs.vestigo</groupId>
+			<artifactId>org.nightlabs.vestigo.cumulus4j.childvm.shared</artifactId>
 		</dependency>
 		<dependency>
 			<!-- force this to already be compiled before => make sure we copy the up-to-date-dependency. -->
-			<groupId>org.nightlabs.jjqb</groupId>
-			<artifactId>org.nightlabs.jjqb.cumulus4j.childvm.webapp</artifactId>
+			<groupId>org.nightlabs.vestigo</groupId>
+			<artifactId>org.nightlabs.vestigo.cumulus4j.childvm.webapp</artifactId>
 			<type>war</type>
 			<scope>provided</scope>
 		</dependency>
@@ -84,12 +84,12 @@
 						<configuration>
 							<artifactItems>
 								<artifactItem>
-									<groupId>org.nightlabs.jjqb</groupId>
-									<artifactId>org.nightlabs.jjqb.cumulus4j.childvm.webapp</artifactId>
+									<groupId>org.nightlabs.vestigo</groupId>
+									<artifactId>org.nightlabs.vestigo.cumulus4j.childvm.webapp</artifactId>
 									<type>war</type>
 									<version>${project.version}</version>
 									<overWrite>true</overWrite>
-									<outputDirectory>src/main/resources/org/nightlabs/jjqb/cumulus4j/core/childvm/internal/resource</outputDirectory>
+									<outputDirectory>src/main/resources/org/nightlabs/vestigo/cumulus4j/core/childvm/internal/resource</outputDirectory>
 								</artifactItem>
 							</artifactItems>
 							<stripVersion>true</stripVersion>
@@ -107,7 +107,7 @@
 				-->
 				<!-- We currently do not need any bundle-activator/eclipse-plugin-class. Marco :-)
 					<instructions>
-						<Bundle-Activator>org.nightlabs.jjqb.cumulus4j.core.JJQBCumulus4jCorePlugin</Bundle-Activator>
+						<Bundle-Activator>org.nightlabs.vestigo.cumulus4j.core.JJQBCumulus4jCorePlugin</Bundle-Activator>
 						<Bundle-ActivationPolicy>lazy</Bundle-ActivationPolicy>
 					</instructions>
 				-->

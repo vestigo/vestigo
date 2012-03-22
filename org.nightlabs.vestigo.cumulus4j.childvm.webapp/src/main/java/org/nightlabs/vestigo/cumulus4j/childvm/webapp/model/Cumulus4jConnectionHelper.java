@@ -1,13 +1,13 @@
-package org.nightlabs.jjqb.cumulus4j.childvm.webapp.model;
+package org.nightlabs.vestigo.cumulus4j.childvm.webapp.model;
 
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Properties;
 
-import org.nightlabs.jjqb.childvm.webapp.model.Connection;
-import org.nightlabs.jjqb.childvm.webapp.model.ConnectionProfileManager;
-import org.nightlabs.jjqb.cumulus4j.childvm.shared.Cumulus4jConnectionProperties;
+import org.nightlabs.vestigo.childvm.webapp.model.Connection;
+import org.nightlabs.vestigo.childvm.webapp.model.ConnectionProfileManager;
+import org.nightlabs.vestigo.cumulus4j.childvm.shared.Cumulus4jConnectionProperties;
 
 public class Cumulus4jConnectionHelper
 {

@@ -1,14 +1,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<artifactId>org.nightlabs.jjqb.childvm.webapp.client.testresources</artifactId>
+	<artifactId>org.nightlabs.vestigo.childvm.webapp.client.testresources</artifactId>
 	<packaging>jar</packaging>
 
 	<parent>
-		<groupId>org.nightlabs.jjqb</groupId>
-		<artifactId>org.nightlabs.jjqb.parent</artifactId>
+		<groupId>org.nightlabs.vestigo</groupId>
+		<artifactId>org.nightlabs.vestigo.parent</artifactId>
 		<version>0.2.0-SNAPSHOT</version>
-		<relativePath>../org.nightlabs.jjqb.parent</relativePath>
+		<relativePath>../org.nightlabs.vestigo.parent</relativePath>
 	</parent>
 
 	<dependencies>
@@ -23,8 +23,8 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.nightlabs.jjqb</groupId>
-			<artifactId>org.nightlabs.jjqb.childvm.webapp.client.testmodel</artifactId>
+			<groupId>org.nightlabs.vestigo</groupId>
+			<artifactId>org.nightlabs.vestigo.childvm.webapp.client.testmodel</artifactId>
 			<scope>test</scope>
 		</dependency>
 		
@@ -96,10 +96,10 @@
 						<configuration>
 							<artifactItems>
 								<artifactItem>
-									<groupId>org.nightlabs.jjqb</groupId>
-									<artifactId>org.nightlabs.jjqb.childvm.webapp.client.testmodel</artifactId>
+									<groupId>org.nightlabs.vestigo</groupId>
+									<artifactId>org.nightlabs.vestigo.childvm.webapp.client.testmodel</artifactId>
 									<overWrite>true</overWrite>
-									<version>${jjqb.version}</version>
+									<version>${vestigo.version}</version>
 								</artifactItem>
 								<artifactItem>
 									<groupId>javax.jdo</groupId>
@@ -133,7 +133,7 @@
 								</artifactItem>								
 
 							</artifactItems>
-							<outputDirectory>${project.build.outputDirectory}/jjqb-test-connection-libs</outputDirectory>
+							<outputDirectory>${project.build.outputDirectory}/vestigo-test-connection-libs</outputDirectory>
 							<overWriteReleases>false</overWriteReleases>
 							<overWriteSnapshots>true</overWriteSnapshots>
 						</configuration>

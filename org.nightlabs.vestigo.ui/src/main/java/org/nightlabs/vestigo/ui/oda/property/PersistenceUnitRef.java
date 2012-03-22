@@ -1,7 +1,7 @@
-package org.nightlabs.jjqb.ui.oda.property;
+package org.nightlabs.vestigo.ui.oda.property;
 
-import org.nightlabs.jjqb.childvm.shared.persistencexml.PersistenceXml;
-import org.nightlabs.jjqb.childvm.shared.persistencexml.jaxb.Persistence.PersistenceUnit;
+import org.nightlabs.vestigo.childvm.shared.persistencexml.PersistenceXml;
+import org.nightlabs.vestigo.childvm.shared.persistencexml.jaxb.Persistence.PersistenceUnit;
 
 final class PersistenceUnitRef
 {

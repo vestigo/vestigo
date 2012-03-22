@@ -1,5 +1,5 @@
 
-package org.nightlabs.jjqb.xtext.jpql.ui.quickfix;
+package org.nightlabs.vestigo.xtext.jpql.ui.quickfix;
 
 import org.eclipse.xtext.ui.editor.quickfix.DefaultQuickfixProvider;
 

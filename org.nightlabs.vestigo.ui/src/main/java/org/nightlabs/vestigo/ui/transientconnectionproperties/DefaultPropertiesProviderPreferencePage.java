@@ -1,14 +1,14 @@
-package org.nightlabs.jjqb.ui.transientconnectionproperties;
+package org.nightlabs.vestigo.ui.transientconnectionproperties;
 
 import java.util.Collection;
 
 import org.eclipse.jface.preference.FieldEditor;
 import org.eclipse.jface.preference.FieldEditorPreferencePage;
 import org.eclipse.jface.preference.StringFieldEditor;
-import org.nightlabs.jjqb.core.oda.ConnectionProfile;
-import org.nightlabs.jjqb.core.oda.ConnectionPropertyMeta;
-import org.nightlabs.jjqb.core.transientconnectionproperties.TransientConnectionPropertiesProvider;
-import org.nightlabs.jjqb.ui.JJQBUIPlugin;
+import org.nightlabs.vestigo.core.oda.ConnectionProfile;
+import org.nightlabs.vestigo.core.oda.ConnectionPropertyMeta;
+import org.nightlabs.vestigo.core.transientconnectionproperties.TransientConnectionPropertiesProvider;
+import org.nightlabs.vestigo.ui.JJQBUIPlugin;
 
 public class DefaultPropertiesProviderPreferencePage extends FieldEditorPreferencePage
 {

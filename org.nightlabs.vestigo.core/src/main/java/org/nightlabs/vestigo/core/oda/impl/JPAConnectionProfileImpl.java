@@ -1,8 +1,8 @@
-package org.nightlabs.jjqb.core.oda.impl;
+package org.nightlabs.vestigo.core.oda.impl;
 
-import org.nightlabs.jjqb.childvm.shared.dto.ConnectionProfileDTO;
-import org.nightlabs.jjqb.childvm.shared.dto.JPAConnectionProfileDTO;
-import org.nightlabs.jjqb.core.oda.JPAConnectionProfile;
+import org.nightlabs.vestigo.childvm.shared.dto.ConnectionProfileDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.JPAConnectionProfileDTO;
+import org.nightlabs.vestigo.core.oda.JPAConnectionProfile;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
@@ -13,7 +13,7 @@ implements JPAConnectionProfile
 {
 	@Override
 	protected String getWebAppName() {
-		return "org.nightlabs.jjqb.childvm.webapp";
+		return "org.nightlabs.vestigo.childvm.webapp";
 	}
 
 	@Override

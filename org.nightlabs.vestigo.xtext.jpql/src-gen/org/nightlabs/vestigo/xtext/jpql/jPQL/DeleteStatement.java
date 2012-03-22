@@ -3,7 +3,7 @@
  * </copyright>
  *
  */
-package org.nightlabs.jjqb.xtext.jpql.jPQL;
+package org.nightlabs.vestigo.xtext.jpql.jPQL;
 
 
 /**
@@ -14,11 +14,11 @@ package org.nightlabs.jjqb.xtext.jpql.jPQL;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.DeleteStatement#getDeleteClause <em>Delete Clause</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jpql.jPQL.DeleteStatement#getDeleteClause <em>Delete Clause</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getDeleteStatement()
+ * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getDeleteStatement()
  * @model
  * @generated
  */
@@ -34,14 +34,14 @@ public interface DeleteStatement extends JPQLQuery
    * <!-- end-user-doc -->
    * @return the value of the '<em>Delete Clause</em>' containment reference.
    * @see #setDeleteClause(DeleteClause)
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getDeleteStatement_DeleteClause()
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getDeleteStatement_DeleteClause()
    * @model containment="true"
    * @generated
    */
   DeleteClause getDeleteClause();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.DeleteStatement#getDeleteClause <em>Delete Clause</em>}' containment reference.
+   * Sets the value of the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.DeleteStatement#getDeleteClause <em>Delete Clause</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Delete Clause</em>' containment reference.

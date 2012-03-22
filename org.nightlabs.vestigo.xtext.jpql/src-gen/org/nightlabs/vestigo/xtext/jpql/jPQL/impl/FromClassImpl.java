@@ -3,7 +3,7 @@
  * </copyright>
  *
  */
-package org.nightlabs.jjqb.xtext.jpql.jPQL.impl;
+package org.nightlabs.vestigo.xtext.jpql.jPQL.impl;
 
 import java.util.Collection;
 
@@ -20,9 +20,9 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.nightlabs.jjqb.xtext.jpql.jPQL.FromClass;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.FromJoin;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.FromClass;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.FromJoin;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -31,8 +31,8 @@ import org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.FromClassImpl#getType <em>Type</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.FromClassImpl#getJoins <em>Joins</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.FromClassImpl#getType <em>Type</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.FromClassImpl#getJoins <em>Joins</em>}</li>
  * </ul>
  * </p>
  *

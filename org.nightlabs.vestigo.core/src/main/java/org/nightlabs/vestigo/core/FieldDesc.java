@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.core;
+package org.nightlabs.vestigo.core;
 
 import java.lang.reflect.Field;
 

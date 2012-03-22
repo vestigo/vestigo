@@ -3,7 +3,7 @@
  * </copyright>
  *
  */
-package org.nightlabs.jjqb.xtext.jdoql.jDOQL;
+package org.nightlabs.vestigo.xtext.jdoql.jDOQL;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -15,11 +15,11 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.WhereClause#getFilter <em>Filter</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.WhereClause#getFilter <em>Filter</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage#getWhereClause()
+ * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.JDOQLPackage#getWhereClause()
  * @model
  * @generated
  */
@@ -35,14 +35,14 @@ public interface WhereClause extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Filter</em>' containment reference.
    * @see #setFilter(Expression)
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage#getWhereClause_Filter()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.JDOQLPackage#getWhereClause_Filter()
    * @model containment="true"
    * @generated
    */
   Expression getFilter();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.WhereClause#getFilter <em>Filter</em>}' containment reference.
+   * Sets the value of the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.WhereClause#getFilter <em>Filter</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Filter</em>' containment reference.

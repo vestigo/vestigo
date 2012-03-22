@@ -1,7 +1,7 @@
-package org.nightlabs.jjqb.core.oda.impl;
+package org.nightlabs.vestigo.core.oda.impl;
 
-import org.nightlabs.jjqb.core.oda.JDOQuery;
-import org.nightlabs.jjqb.core.oda.ResultSet;
+import org.nightlabs.vestigo.core.oda.JDOQuery;
+import org.nightlabs.vestigo.core.oda.ResultSet;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de

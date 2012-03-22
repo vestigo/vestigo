@@ -6,7 +6,7 @@ lexer grammar InternalJDOQLLexer;
 
 
 @header {
-package org.nightlabs.jjqb.xtext.jdoql.ui.contentassist.antlr.lexer;
+package org.nightlabs.vestigo.xtext.jdoql.ui.contentassist.antlr.lexer;
 
 // Hack: Use our own Lexer superclass by means of import. 
 // Currently there is no other way to specify the superclass for the lexer.

@@ -1,9 +1,9 @@
-package org.nightlabs.jjqb.cumulus4j.core.oda.impl;
+package org.nightlabs.vestigo.cumulus4j.core.oda.impl;
 
-import org.nightlabs.jjqb.childvm.shared.dto.ConnectionProfileDTO;
-import org.nightlabs.jjqb.core.oda.JPAConnectionProfile;
-import org.nightlabs.jjqb.cumulus4j.childvm.shared.JPACumulus4jConnectionProfileDTO;
-import org.nightlabs.jjqb.cumulus4j.core.oda.Cumulus4jConnectionProfile;
+import org.nightlabs.vestigo.childvm.shared.dto.ConnectionProfileDTO;
+import org.nightlabs.vestigo.core.oda.JPAConnectionProfile;
+import org.nightlabs.vestigo.cumulus4j.childvm.shared.JPACumulus4jConnectionProfileDTO;
+import org.nightlabs.vestigo.cumulus4j.core.oda.Cumulus4jConnectionProfile;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de

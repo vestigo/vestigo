@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.ui.oda.property;
+package org.nightlabs.vestigo.ui.oda.property;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -35,12 +35,12 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.widgets.Hyperlink;
-import org.nightlabs.jjqb.childvm.shared.PropertiesUtil;
-import org.nightlabs.jjqb.childvm.shared.persistencexml.PersistenceXml;
-import org.nightlabs.jjqb.childvm.shared.persistencexml.PersistenceXmlScanner;
-import org.nightlabs.jjqb.childvm.shared.persistencexml.jaxb.Persistence.PersistenceUnit;
-import org.nightlabs.jjqb.core.connectionpropertiesfilter.ConnectionPropertiesFilterManager;
-import org.nightlabs.jjqb.core.progress.ProgressMonitorWrapper;
+import org.nightlabs.vestigo.childvm.shared.PropertiesUtil;
+import org.nightlabs.vestigo.childvm.shared.persistencexml.PersistenceXml;
+import org.nightlabs.vestigo.childvm.shared.persistencexml.PersistenceXmlScanner;
+import org.nightlabs.vestigo.childvm.shared.persistencexml.jaxb.Persistence.PersistenceUnit;
+import org.nightlabs.vestigo.core.connectionpropertiesfilter.ConnectionPropertiesFilterManager;
+import org.nightlabs.vestigo.core.progress.ProgressMonitorWrapper;
 import org.nightlabs.progress.OperationCanceledException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

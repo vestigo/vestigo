@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.childvm.webapp.model;
+package org.nightlabs.vestigo.childvm.webapp.model;
 
 import java.io.BufferedReader;
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.childvm.webapp.client.testresources.sql;
+package org.nightlabs.vestigo.childvm.webapp.client.testresources.sql;
 
 import java.io.BufferedReader;
 import java.io.InputStream;

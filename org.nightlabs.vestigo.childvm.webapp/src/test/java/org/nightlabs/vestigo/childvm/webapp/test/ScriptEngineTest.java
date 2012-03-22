@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.childvm.webapp.test;
+package org.nightlabs.vestigo.childvm.webapp.test;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;

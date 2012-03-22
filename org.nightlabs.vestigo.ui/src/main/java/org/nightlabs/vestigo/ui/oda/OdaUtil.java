@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.ui.oda;
+package org.nightlabs.vestigo.ui.oda;
 
 import org.eclipse.datatools.connectivity.IConnectionProfile;
 import org.eclipse.datatools.connectivity.IManagedConnection;

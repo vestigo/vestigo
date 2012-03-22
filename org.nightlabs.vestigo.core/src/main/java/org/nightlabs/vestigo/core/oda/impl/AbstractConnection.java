@@ -11,7 +11,7 @@
  *   Alexander Bieber, NightLabs - initial API and implementation              *
  ******************************************************************************/
 
-package org.nightlabs.jjqb.core.oda.impl;
+package org.nightlabs.vestigo.core.oda.impl;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -24,16 +24,16 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import org.eclipse.datatools.connectivity.oda.IDataSetMetaData;
 import org.eclipse.datatools.connectivity.oda.OdaException;
-import org.nightlabs.jjqb.childvm.shared.PropertiesUtil;
-import org.nightlabs.jjqb.childvm.shared.api.ChildVM;
-import org.nightlabs.jjqb.childvm.shared.dto.ConnectionDTO;
-import org.nightlabs.jjqb.core.oda.Connection;
-import org.nightlabs.jjqb.core.oda.ConnectionExtension;
-import org.nightlabs.jjqb.core.oda.ConnectionExtensionRegistry;
-import org.nightlabs.jjqb.core.oda.ConnectionProfile;
-import org.nightlabs.jjqb.core.oda.ConnectionProfileRegistry;
-import org.nightlabs.jjqb.core.oda.OdaMultiCauseException;
-import org.nightlabs.jjqb.core.oda.Query;
+import org.nightlabs.vestigo.childvm.shared.PropertiesUtil;
+import org.nightlabs.vestigo.childvm.shared.api.ChildVM;
+import org.nightlabs.vestigo.childvm.shared.dto.ConnectionDTO;
+import org.nightlabs.vestigo.core.oda.Connection;
+import org.nightlabs.vestigo.core.oda.ConnectionExtension;
+import org.nightlabs.vestigo.core.oda.ConnectionExtensionRegistry;
+import org.nightlabs.vestigo.core.oda.ConnectionProfile;
+import org.nightlabs.vestigo.core.oda.ConnectionProfileRegistry;
+import org.nightlabs.vestigo.core.oda.OdaMultiCauseException;
+import org.nightlabs.vestigo.core.oda.Query;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

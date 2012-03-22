@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.ui.resultsettable;
+package org.nightlabs.vestigo.ui.resultsettable;
 
 import java.util.Set;
 
@@ -11,12 +11,12 @@ import org.eclipse.ui.IPartListener2;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchPartReference;
 import org.eclipse.ui.part.ViewPart;
-import org.nightlabs.jjqb.core.LabelTextOption;
-import org.nightlabs.jjqb.ui.editor.ExecuteQueryAdapter;
-import org.nightlabs.jjqb.ui.editor.ExecuteQueryEvent;
-import org.nightlabs.jjqb.ui.editor.ExecuteQueryListener;
-import org.nightlabs.jjqb.ui.editor.QueryEditor;
-import org.nightlabs.jjqb.ui.labeltextoptionaction.LabelTextOptionsContainer;
+import org.nightlabs.vestigo.core.LabelTextOption;
+import org.nightlabs.vestigo.ui.editor.ExecuteQueryAdapter;
+import org.nightlabs.vestigo.ui.editor.ExecuteQueryEvent;
+import org.nightlabs.vestigo.ui.editor.ExecuteQueryListener;
+import org.nightlabs.vestigo.ui.editor.QueryEditor;
+import org.nightlabs.vestigo.ui.labeltextoptionaction.LabelTextOptionsContainer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

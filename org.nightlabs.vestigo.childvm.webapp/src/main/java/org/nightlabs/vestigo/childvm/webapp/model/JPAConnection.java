@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.childvm.webapp.model;
+package org.nightlabs.vestigo.childvm.webapp.model;
 
 import java.io.IOException;
 import java.util.Collection;
@@ -9,9 +9,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.script.ScriptEngine;
 
-import org.nightlabs.jjqb.childvm.shared.dto.ConnectionDTO;
-import org.nightlabs.jjqb.childvm.shared.dto.JPAConnectionDTO;
-import org.nightlabs.jjqb.childvm.shared.dto.QueryParameterDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.ConnectionDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.JPAConnectionDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.QueryParameterDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

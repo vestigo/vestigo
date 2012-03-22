@@ -5,92 +5,92 @@
 	<extension
          point="org.eclipse.datatools.connectivity.connectionProfile">
       <category
-            id="org.nightlabs.jjqb.cumulus4j.core.oda.JDOCumulus4jDriver"
+            id="org.nightlabs.vestigo.cumulus4j.core.oda.JDOCumulus4jDriver"
             name="JDO+Cumulus4j Connections"
-            parentCategory="org.nightlabs.jjqb.core.oda"/>
+            parentCategory="org.nightlabs.vestigo.core.oda"/>
       <connectionProfile
-            category="org.nightlabs.jjqb.cumulus4j.core.oda.JDOCumulus4jDriver"
+            category="org.nightlabs.vestigo.cumulus4j.core.oda.JDOCumulus4jDriver"
             icon="icons/jdo.png"
-            id="org.nightlabs.jjqb.cumulus4j.core.oda.JDOCumulus4jDriver"
+            id="org.nightlabs.vestigo.cumulus4j.core.oda.JDOCumulus4jDriver"
             name="JDO+Cumulus4j Connection Profile"
             pingFactory="org.eclipse.datatools.connectivity.oda.profile.OdaConnectionFactory"/>
       <connectionFactory
             id="org.eclipse.datatools.connectivity.oda.IConnection"
             name="JDO Connection Factory"
             class="org.eclipse.datatools.connectivity.oda.profile.OdaConnectionFactory"
-            profile="org.nightlabs.jjqb.cumulus4j.core.oda.JDOCumulus4jDriver"/>
+            profile="org.nightlabs.vestigo.cumulus4j.core.oda.JDOCumulus4jDriver"/>
       <newWizard
-            id="org.nightlabs.jjqb.cumulus4j.core.oda.JDOCumulus4jDriver"
+            id="org.nightlabs.vestigo.cumulus4j.core.oda.JDOCumulus4jDriver"
             name="New JDO+Cumulus4j connection"
             class="org.eclipse.datatools.connectivity.oda.design.ui.wizards.NewDataSourceWizard"
             description="Create a new JDO+Cumulus4j connection"
             icon="icons/jdo.png"
-            profile="org.nightlabs.jjqb.cumulus4j.core.oda.JDOCumulus4jDriver"/>
+            profile="org.nightlabs.vestigo.cumulus4j.core.oda.JDOCumulus4jDriver"/>
    </extension>
 
 
    <extension
          point="org.eclipse.datatools.connectivity.connectionProfile">
       <category
-            id="org.nightlabs.jjqb.cumulus4j.core.oda.JPACumulus4jDriver"
+            id="org.nightlabs.vestigo.cumulus4j.core.oda.JPACumulus4jDriver"
             name="JPA+Cumulus4j Connections"
-            parentCategory="org.nightlabs.jjqb.core.oda"/>
+            parentCategory="org.nightlabs.vestigo.core.oda"/>
       <connectionProfile
-            category="org.nightlabs.jjqb.cumulus4j.core.oda.JPACumulus4jDriver"
+            category="org.nightlabs.vestigo.cumulus4j.core.oda.JPACumulus4jDriver"
             icon="icons/jpa.png"
-            id="org.nightlabs.jjqb.cumulus4j.core.oda.JPACumulus4jDriver"
+            id="org.nightlabs.vestigo.cumulus4j.core.oda.JPACumulus4jDriver"
             name="JPA+Cumulus4j Connection Profile"
             pingFactory="org.eclipse.datatools.connectivity.oda.profile.OdaConnectionFactory"/>
       <connectionFactory
             id="org.eclipse.datatools.connectivity.oda.IConnection"
             name="JPA+Cumulus4j Connection Factory"
             class="org.eclipse.datatools.connectivity.oda.profile.OdaConnectionFactory"
-            profile="org.nightlabs.jjqb.cumulus4j.core.oda.JPACumulus4jDriver"/>
+            profile="org.nightlabs.vestigo.cumulus4j.core.oda.JPACumulus4jDriver"/>
       <newWizard
-            id="org.nightlabs.jjqb.cumulus4j.core.oda.JPACumulus4jDriver"
+            id="org.nightlabs.vestigo.cumulus4j.core.oda.JPACumulus4jDriver"
             name="New JPA+Cumulus4j connection"
             class="org.eclipse.datatools.connectivity.oda.design.ui.wizards.NewDataSourceWizard"
             description="Create a new JPA+Cumulus4j connection"
             icon="icons/jpa.png"
-            profile="org.nightlabs.jjqb.cumulus4j.core.oda.JPACumulus4jDriver"/>
+            profile="org.nightlabs.vestigo.cumulus4j.core.oda.JPACumulus4jDriver"/>
    </extension>
 
 
-<!-- BEGIN default pages (copied from org.nightlabs.jjqb.ui and JDODriver/JPADriver replaced by Cumulus4j-specific driver) -->
+<!-- BEGIN default pages (copied from org.nightlabs.vestigo.ui and JDODriver/JPADriver replaced by Cumulus4j-specific driver) -->
    <extension
          point="org.eclipse.ui.propertyPages">
       <page
-            id="org.nightlabs.jjqb.cumulus4j.ui.oda.property.JDOCumulus4jClasspathPage"
+            id="org.nightlabs.vestigo.cumulus4j.ui.oda.property.JDOCumulus4jClasspathPage"
             name="Classpath"
-            class="org.nightlabs.jjqb.ui.oda.property.JDOClasspathPage"
+            class="org.nightlabs.vestigo.ui.oda.property.JDOClasspathPage"
             objectClass="org.eclipse.datatools.connectivity.IConnectionProfile">
          <filter
                name="org.eclipse.datatools.profile.property.id"
-               value="org.nightlabs.jjqb.cumulus4j.core.oda.JDOCumulus4jDriver"/>
+               value="org.nightlabs.vestigo.cumulus4j.core.oda.JDOCumulus4jDriver"/>
       </page>
    </extension>
    <extension
          point="org.eclipse.ui.propertyPages">
       <page
-            id="org.nightlabs.jjqb.cumulus4j.ui.oda.property.JDOCumulus4jPersistenceUnitPage"
+            id="org.nightlabs.vestigo.cumulus4j.ui.oda.property.JDOCumulus4jPersistenceUnitPage"
             name="Persistence unit"
-            class="org.nightlabs.jjqb.ui.oda.property.JDOPersistenceUnitPage"
+            class="org.nightlabs.vestigo.ui.oda.property.JDOPersistenceUnitPage"
             objectClass="org.eclipse.datatools.connectivity.IConnectionProfile">
          <filter
                name="org.eclipse.datatools.profile.property.id"
-               value="org.nightlabs.jjqb.cumulus4j.core.oda.JDOCumulus4jDriver"/>
+               value="org.nightlabs.vestigo.cumulus4j.core.oda.JDOCumulus4jDriver"/>
       </page>
    </extension>
    <extension
          point="org.eclipse.ui.propertyPages">
       <page
-            id="org.nightlabs.jjqb.cumulus4j.ui.oda.property.JDOCumulus4jPersistencePropertiesPage"
+            id="org.nightlabs.vestigo.cumulus4j.ui.oda.property.JDOCumulus4jPersistencePropertiesPage"
             name="Persistence properties"
-            class="org.nightlabs.jjqb.ui.oda.property.JDOPersistencePropertiesPage"
+            class="org.nightlabs.vestigo.ui.oda.property.JDOPersistencePropertiesPage"
             objectClass="org.eclipse.datatools.connectivity.IConnectionProfile">
          <filter
                name="org.eclipse.datatools.profile.property.id"
-               value="org.nightlabs.jjqb.cumulus4j.core.oda.JDOCumulus4jDriver"/>
+               value="org.nightlabs.vestigo.cumulus4j.core.oda.JDOCumulus4jDriver"/>
       </page>
    </extension>
 
@@ -98,52 +98,52 @@
    <extension
          point="org.eclipse.ui.propertyPages">
       <page
-            id="org.nightlabs.jjqb.cumulus4j.ui.oda.property.JPACumulus4jClasspathPage"
+            id="org.nightlabs.vestigo.cumulus4j.ui.oda.property.JPACumulus4jClasspathPage"
             name="Classpath"
-            class="org.nightlabs.jjqb.ui.oda.property.JPAClasspathPage"
+            class="org.nightlabs.vestigo.ui.oda.property.JPAClasspathPage"
             objectClass="org.eclipse.datatools.connectivity.IConnectionProfile">
          <filter
                name="org.eclipse.datatools.profile.property.id"
-               value="org.nightlabs.jjqb.cumulus4j.core.oda.JPACumulus4jDriver"/>
+               value="org.nightlabs.vestigo.cumulus4j.core.oda.JPACumulus4jDriver"/>
       </page>
    </extension>
    <extension
          point="org.eclipse.ui.propertyPages">
       <page
-            id="org.nightlabs.jjqb.cumulus4j.ui.oda.property.JPACumulus4jPersistenceUnitPage"
+            id="org.nightlabs.vestigo.cumulus4j.ui.oda.property.JPACumulus4jPersistenceUnitPage"
             name="Persistence unit"
-            class="org.nightlabs.jjqb.ui.oda.property.JPAPersistenceUnitPage"
+            class="org.nightlabs.vestigo.ui.oda.property.JPAPersistenceUnitPage"
             objectClass="org.eclipse.datatools.connectivity.IConnectionProfile">
          <filter
                name="org.eclipse.datatools.profile.property.id"
-               value="org.nightlabs.jjqb.cumulus4j.core.oda.JPACumulus4jDriver"/>
+               value="org.nightlabs.vestigo.cumulus4j.core.oda.JPACumulus4jDriver"/>
       </page>
    </extension>
    <extension
          point="org.eclipse.ui.propertyPages">
       <page
-            id="org.nightlabs.jjqb.cumulus4j.ui.oda.property.JPACumulus4jPersistencePropertiesPage"
+            id="org.nightlabs.vestigo.cumulus4j.ui.oda.property.JPACumulus4jPersistencePropertiesPage"
             name="Persistence properties"
-            class="org.nightlabs.jjqb.ui.oda.property.JPAPersistencePropertiesPage"
+            class="org.nightlabs.vestigo.ui.oda.property.JPAPersistencePropertiesPage"
             objectClass="org.eclipse.datatools.connectivity.IConnectionProfile">
          <filter
                name="org.eclipse.datatools.profile.property.id"
-               value="org.nightlabs.jjqb.cumulus4j.core.oda.JPACumulus4jDriver"/>
+               value="org.nightlabs.vestigo.cumulus4j.core.oda.JPACumulus4jDriver"/>
       </page>
    </extension>
-<!-- END default pages (copied from org.nightlabs.jjqb.ui and JDODriver/JPADriver replaced by Cumulus4j-specific driver) -->
+<!-- END default pages (copied from org.nightlabs.vestigo.ui and JDODriver/JPADriver replaced by Cumulus4j-specific driver) -->
 
 
    <extension
          point="org.eclipse.ui.propertyPages">
       <page
-            id="org.nightlabs.jjqb.cumulus4j.ui.oda.property.JDOCumulus4jKeyStorePage"
+            id="org.nightlabs.vestigo.cumulus4j.ui.oda.property.JDOCumulus4jKeyStorePage"
             name="Cumulus4j"
-            class="org.nightlabs.jjqb.cumulus4j.ui.oda.property.Cumulus4jKeyStorePage"
+            class="org.nightlabs.vestigo.cumulus4j.ui.oda.property.Cumulus4jKeyStorePage"
             objectClass="org.eclipse.datatools.connectivity.IConnectionProfile">
          <filter
                name="org.eclipse.datatools.profile.property.id"
-               value="org.nightlabs.jjqb.cumulus4j.core.oda.JDOCumulus4jDriver"/>
+               value="org.nightlabs.vestigo.cumulus4j.core.oda.JDOCumulus4jDriver"/>
       </page>
    </extension>
 
@@ -151,13 +151,13 @@
    <extension
          point="org.eclipse.ui.propertyPages">
       <page
-            id="org.nightlabs.jjqb.cumulus4j.ui.oda.property.JPACumulus4jKeyStorePage"
+            id="org.nightlabs.vestigo.cumulus4j.ui.oda.property.JPACumulus4jKeyStorePage"
             name="Cumulus4j"
-            class="org.nightlabs.jjqb.cumulus4j.ui.oda.property.Cumulus4jKeyStorePage"
+            class="org.nightlabs.vestigo.cumulus4j.ui.oda.property.Cumulus4jKeyStorePage"
             objectClass="org.eclipse.datatools.connectivity.IConnectionProfile">
          <filter
                name="org.eclipse.datatools.profile.property.id"
-               value="org.nightlabs.jjqb.cumulus4j.core.oda.JPACumulus4jDriver"/>
+               value="org.nightlabs.vestigo.cumulus4j.core.oda.JPACumulus4jDriver"/>
       </page>
    </extension>
 
@@ -165,16 +165,16 @@
 
    <extension
             point="org.eclipse.datatools.connectivity.oda.design.ui.dataSource">
-      <dataSourceUI id="org.nightlabs.jjqb.cumulus4j.core.oda.JDOCumulus4jDriver">
+      <dataSourceUI id="org.nightlabs.vestigo.cumulus4j.core.oda.JDOCumulus4jDriver">
         <newDataSourceWizard
               includesProgressMonitor="false"
-              pageClass="org.nightlabs.jjqb.cumulus4j.ui.oda.wizard.JDOCumulus4jWizardPage"
+              pageClass="org.nightlabs.vestigo.cumulus4j.ui.oda.wizard.JDOCumulus4jWizardPage"
               pageTitle="JDO+Cumulus4j DataSource"
               windowTitle="JDO+Cumulus4j DataSource"/>
       </dataSourceUI> 
       <dataSetUI
-              id="org.nightlabs.jjqb.core.JDODataSet"
-              initialPageId="org.nightlabs.jjqb.ui.oda.JDOQueryWizardPage"
+              id="org.nightlabs.vestigo.core.JDODataSet"
+              initialPageId="org.nightlabs.vestigo.ui.oda.JDOQueryWizardPage"
               supportsInParameters="true"
               supportsOutParameters="false">
         <dataSetWizard
@@ -183,25 +183,25 @@
         <dataSetPage
               displayName="JDO+Cumulus4j Query"
               icon="icons/jdo.png"
-              id="org.nightlabs.jjqb.ui.JDOQueryWizardPage"
+              id="org.nightlabs.vestigo.ui.JDOQueryWizardPage"
               path="/"
-              wizardPageClass="org.nightlabs.jjqb.ui.oda.JDOQueryWizardPage"/>
+              wizardPageClass="org.nightlabs.vestigo.ui.oda.JDOQueryWizardPage"/>
       </dataSetUI>
    </extension>
 
 
    <extension
             point="org.eclipse.datatools.connectivity.oda.design.ui.dataSource">
-      <dataSourceUI id="org.nightlabs.jjqb.cumulus4j.core.oda.JPACumulus4jDriver">
+      <dataSourceUI id="org.nightlabs.vestigo.cumulus4j.core.oda.JPACumulus4jDriver">
         <newDataSourceWizard
               includesProgressMonitor="false"
-              pageClass="org.nightlabs.jjqb.cumulus4j.ui.oda.wizard.JPACumulus4jWizardPage"
+              pageClass="org.nightlabs.vestigo.cumulus4j.ui.oda.wizard.JPACumulus4jWizardPage"
               pageTitle="JPA+Cumulus4j DataSource"
               windowTitle="JPA+Cumulus4j DataSource"/>
       </dataSourceUI> 
       <dataSetUI
-              id="org.nightlabs.jjqb.core.JPADataSet"
-              initialPageId="org.nightlabs.jjqb.ui.oda.JPAQueryWizardPage"
+              id="org.nightlabs.vestigo.core.JPADataSet"
+              initialPageId="org.nightlabs.vestigo.ui.oda.JPAQueryWizardPage"
               supportsInParameters="true"
               supportsOutParameters="false">
         <dataSetWizard
@@ -210,28 +210,28 @@
         <dataSetPage
               displayName="JPA+Cumulus4j Query"
               icon="icons/jpa.png"
-              id="org.nightlabs.jjqb.ui.JPAQueryWizardPage"
+              id="org.nightlabs.vestigo.ui.JPAQueryWizardPage"
               path="/"
-              wizardPageClass="org.nightlabs.jjqb.ui.JPAQueryWizardPage"/>
+              wizardPageClass="org.nightlabs.vestigo.ui.JPAQueryWizardPage"/>
       </dataSetUI> 
    </extension>
    <extension
-         point="org.nightlabs.jjqb.core.transientConnectionPropertiesProvider">
+         point="org.nightlabs.vestigo.core.transientConnectionPropertiesProvider">
       <provider
-            class="org.nightlabs.jjqb.cumulus4j.ui.transientconnectionproperties.Cumulus4jTransientConnectionPropertiesProvider"
-            connectionProfileClass="org.nightlabs.jjqb.cumulus4j.core.oda.Cumulus4jConnectionProfile"
-            id="org.nightlabs.jjqb.cumulus4j.ui.transientconnectionproperties.Cumulus4jTransientConnectionPropertiesProvider">
+            class="org.nightlabs.vestigo.cumulus4j.ui.transientconnectionproperties.Cumulus4jTransientConnectionPropertiesProvider"
+            connectionProfileClass="org.nightlabs.vestigo.cumulus4j.core.oda.Cumulus4jConnectionProfile"
+            id="org.nightlabs.vestigo.cumulus4j.ui.transientconnectionproperties.Cumulus4jTransientConnectionPropertiesProvider">
       </provider>
    </extension>
    <extension
-         point="org.nightlabs.jjqb.ui.queryFileExtension">
+         point="org.nightlabs.vestigo.ui.queryFileExtension">
       <queryFileExtension
             fileExtension="jdoql"
-            providerID="org.nightlabs.jjqb.cumulus4j.core.oda.JDOCumulus4jDriver">
+            providerID="org.nightlabs.vestigo.cumulus4j.core.oda.JDOCumulus4jDriver">
       </queryFileExtension>
       <queryFileExtension
             fileExtension="jpql"
-            providerID="org.nightlabs.jjqb.cumulus4j.core.oda.JPACumulus4jDriver">
+            providerID="org.nightlabs.vestigo.cumulus4j.core.oda.JPACumulus4jDriver">
       </queryFileExtension>
    </extension>
 
@@ -244,22 +244,22 @@ Don't delete! We'll need this for splitting the settings UI into several pages. 
    <extension
          point="org.eclipse.ui.propertyPages">
       <page
-            id="org.nightlabs.jjqb.cumulus4j.ui.JDOCumulus4jPropertyPage1"
+            id="org.nightlabs.vestigo.cumulus4j.ui.JDOCumulus4jPropertyPage1"
             name="Cumulus4j PropertyPage 1"
-            class="org.nightlabs.jjqb.cumulus4j.ui.JDOCumulus4jPropertyPage1"
+            class="org.nightlabs.vestigo.cumulus4j.ui.JDOCumulus4jPropertyPage1"
             objectClass="org.eclipse.datatools.connectivity.IConnectionProfile">
          <filter
                name="org.eclipse.datatools.profile.property.id"
-               value="org.nightlabs.jjqb.cumulus4j.core.oda.JDOCumulus4jDriver"/>
+               value="org.nightlabs.vestigo.cumulus4j.core.oda.JDOCumulus4jDriver"/>
       </page>
       <page
-            class="org.nightlabs.jjqb.cumulus4j.ui.JDOCumulus4jPropertyPage2"
-            id="org.nightlabs.jjqb.cumulus4j.ui.JDOCumulus4jPropertyPage2"
+            class="org.nightlabs.vestigo.cumulus4j.ui.JDOCumulus4jPropertyPage2"
+            id="org.nightlabs.vestigo.cumulus4j.ui.JDOCumulus4jPropertyPage2"
             name="Cumulus4j PropertyPage 2"
             objectClass="org.eclipse.datatools.connectivity.IConnectionProfile">
          <filter
                name="org.eclipse.datatools.profile.property.id"
-               value="org.nightlabs.jjqb.cumulus4j.core.oda.JDOCumulus4jDriver">
+               value="org.nightlabs.vestigo.cumulus4j.core.oda.JDOCumulus4jDriver">
          </filter>
       </page>
    </extension>
@@ -273,14 +273,14 @@ Don't delete! We'll need this for splitting the settings UI into several pages. 
    <extension
          point="org.eclipse.datatools.connectivity.connectionProfile">
       <category
-            id="org.nightlabs.jjqb.cumulus4j.core.oda.JDOCumulus4jDriver"
+            id="org.nightlabs.vestigo.cumulus4j.core.oda.JDOCumulus4jDriver"
             name="JDO+Cumulus4j Connections"
             parentCategory="%oda.parent.category.id">
       </category>
       <connectionProfile
-            category="org.nightlabs.jjqb.cumulus4j.core.oda.JDOCumulus4jDriver"
+            category="org.nightlabs.vestigo.cumulus4j.core.oda.JDOCumulus4jDriver"
             icon="icons/jdo.png"
-            id="org.nightlabs.jjqb.cumulus4j.core.oda.JDOCumulus4jDriver"
+            id="org.nightlabs.vestigo.cumulus4j.core.oda.JDOCumulus4jDriver"
             name="JDO+Cumulus4j connection profile"
             pingFactory="org.eclipse.datatools.connectivity.oda.profile.OdaConnectionFactory">
       </connectionProfile>
@@ -288,31 +288,31 @@ Don't delete! We'll need this for splitting the settings UI into several pages. 
             class="org.eclipse.datatools.connectivity.oda.profile.OdaConnectionFactory"
             id="org.eclipse.datatools.connectivity.oda.IConnection"
             name="JDO+Cumulus4j Connection Factory"
-            profile="org.nightlabs.jjqb.cumulus4j.core.oda.JDOCumulus4jDriver">
+            profile="org.nightlabs.vestigo.cumulus4j.core.oda.JDOCumulus4jDriver">
       </connectionFactory>
       <newWizard
-            class="org.nightlabs.jjqb.cumulus4j.ui.NewJDOCumulus4jConnectionProfileWizard"
+            class="org.nightlabs.vestigo.cumulus4j.ui.NewJDOCumulus4jConnectionProfileWizard"
             description="Create a new JDO+Cumulus4j connection"
             icon="icons/jdo.png"
-            id="org.nightlabs.jjqb.cumulus4j.core.oda.JDOCumulus4jDriver"
+            id="org.nightlabs.vestigo.cumulus4j.core.oda.JDOCumulus4jDriver"
             name="New JDO+Cumulus4j connection"
-            profile="org.nightlabs.jjqb.cumulus4j.core.oda.JDOCumulus4jDriver">
+            profile="org.nightlabs.vestigo.cumulus4j.core.oda.JDOCumulus4jDriver">
       </newWizard>
    </extension>
    <extension
          point="org.eclipse.datatools.connectivity.oda.design.ui.dataSource">
       <dataSourceUI
-            id="org.nightlabs.jjqb.cumulus4j.core.oda.JDOCumulus4jDriver">
+            id="org.nightlabs.vestigo.cumulus4j.core.oda.JDOCumulus4jDriver">
          <newDataSourceWizard
                includesProgressMonitor="false"
-               pageClass="org.nightlabs.jjqb.cumulus4j.ui.JDOCumulus4jDriverWizardPage"
+               pageClass="org.nightlabs.vestigo.cumulus4j.ui.JDOCumulus4jDriverWizardPage"
                pageTitle="JDO DataSource"
                windowTitle="JDO DataSource">
          </newDataSourceWizard>
       </dataSourceUI>
       <dataSetUI
-            id="org.nightlabs.jjqb.core.JDODataSet"
-            initialPageId="org.nightlabs.jjqb.ui.oda.JDOQueryWizardPage"
+            id="org.nightlabs.vestigo.core.JDODataSet"
+            initialPageId="org.nightlabs.vestigo.ui.oda.JDOQueryWizardPage"
             supportsInParameters="true"
             supportsOutParameters="false">
          <dataSetWizard
@@ -322,9 +322,9 @@ Don't delete! We'll need this for splitting the settings UI into several pages. 
          <dataSetPage
                displayName="JDO Query"
                icon="icons/jdo.png"
-               id="org.nightlabs.jjqb.ui.JDOQueryWizardPage"
+               id="org.nightlabs.vestigo.ui.JDOQueryWizardPage"
                path="/"
-               wizardPageClass="org.nightlabs.jjqb.ui.oda.JDOQueryWizardPage">
+               wizardPageClass="org.nightlabs.vestigo.ui.oda.JDOQueryWizardPage">
          </dataSetPage>
       </dataSetUI>
    </extension>

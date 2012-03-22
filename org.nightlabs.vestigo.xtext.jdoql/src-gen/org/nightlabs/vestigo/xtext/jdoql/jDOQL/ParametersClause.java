@@ -3,7 +3,7 @@
  * </copyright>
  *
  */
-package org.nightlabs.jjqb.xtext.jdoql.jDOQL;
+package org.nightlabs.vestigo.xtext.jdoql.jDOQL;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -17,11 +17,11 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ParametersClause#getParameterDeclarations <em>Parameter Declarations</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.ParametersClause#getParameterDeclarations <em>Parameter Declarations</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage#getParametersClause()
+ * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.JDOQLPackage#getParametersClause()
  * @model
  * @generated
  */
@@ -29,7 +29,7 @@ public interface ParametersClause extends EObject
 {
   /**
    * Returns the value of the '<em><b>Parameter Declarations</b></em>' containment reference list.
-   * The list contents are of type {@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ParameterDeclaration}.
+   * The list contents are of type {@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.ParameterDeclaration}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Parameter Declarations</em>' containment reference list isn't clear,
@@ -37,7 +37,7 @@ public interface ParametersClause extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Parameter Declarations</em>' containment reference list.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage#getParametersClause_ParameterDeclarations()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.JDOQLPackage#getParametersClause_ParameterDeclarations()
    * @model containment="true"
    * @generated
    */

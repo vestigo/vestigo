@@ -6,7 +6,7 @@
 //
 
 
-package org.nightlabs.jjqb.childvm.shared.persistencexml.jaxb;
+package org.nightlabs.vestigo.childvm.shared.persistencexml.jaxb;
 
 import java.io.Serializable;
 import java.util.ArrayList;

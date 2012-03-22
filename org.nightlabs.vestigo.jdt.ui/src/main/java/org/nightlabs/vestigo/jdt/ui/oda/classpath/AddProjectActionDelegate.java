@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.jdt.ui.oda.classpath;
+package org.nightlabs.vestigo.jdt.ui.oda.classpath;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,8 +6,8 @@ import java.util.List;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.Dialog;
-import org.nightlabs.jjqb.jdt.core.ProjectURI;
-import org.nightlabs.jjqb.ui.oda.classpath.AbstractEditClasspathActionDelegate;
+import org.nightlabs.vestigo.jdt.core.ProjectURI;
+import org.nightlabs.vestigo.ui.oda.classpath.AbstractEditClasspathActionDelegate;
 
 public class AddProjectActionDelegate extends AbstractEditClasspathActionDelegate
 {

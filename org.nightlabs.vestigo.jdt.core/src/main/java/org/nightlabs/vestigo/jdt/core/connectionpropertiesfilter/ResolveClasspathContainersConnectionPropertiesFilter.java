@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.jdt.core.connectionpropertiesfilter;
+package org.nightlabs.vestigo.jdt.core.connectionpropertiesfilter;
 
 import java.io.File;
 import java.net.MalformedURLException;
@@ -22,9 +22,9 @@ import org.eclipse.jdt.core.IClasspathEntry;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jdt.core.JavaModelException;
-import org.nightlabs.jjqb.childvm.shared.PropertiesUtil;
-import org.nightlabs.jjqb.core.connectionpropertiesfilter.AbstractConnectionPropertiesFilter;
-import org.nightlabs.jjqb.jdt.core.ProjectURI;
+import org.nightlabs.vestigo.childvm.shared.PropertiesUtil;
+import org.nightlabs.vestigo.core.connectionpropertiesfilter.AbstractConnectionPropertiesFilter;
+import org.nightlabs.vestigo.jdt.core.ProjectURI;
 
 public class ResolveClasspathContainersConnectionPropertiesFilter extends AbstractConnectionPropertiesFilter
 {

@@ -1,7 +1,7 @@
 <project default="build">
 	<target name="build">
 		<delete verbose="true" failonerror="false">
-			<fileset dir="src/main/java/org/nightlabs/jjqb/childvm/shared/persistencexml/jaxb">
+			<fileset dir="src/main/java/org/nightlabs/vestigo/childvm/shared/persistencexml/jaxb">
 				<include name="**/*"/>
 			</fileset>
 		</delete>
@@ -14,7 +14,7 @@
 			<arg value="src/main/java"/>
 
 			<arg value="-p"/>
-			<arg value="org.nightlabs.jjqb.childvm.shared.persistencexml.jaxb"/>
+			<arg value="org.nightlabs.vestigo.childvm.shared.persistencexml.jaxb"/>
 
 			<arg value="-extension"/>
 			

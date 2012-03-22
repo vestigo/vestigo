@@ -1,7 +1,7 @@
 ///**
 // *
 // */
-//package org.nightlabs.jjqb.cumulus4j.ui;
+//package org.nightlabs.vestigo.cumulus4j.ui;
 //
 //import java.util.Properties;
 //
@@ -12,8 +12,8 @@
 //import org.eclipse.swt.widgets.Control;
 //import org.eclipse.swt.widgets.Label;
 //import org.eclipse.swt.widgets.Text;
-//import org.nightlabs.jjqb.ui.oda.AbstractPropertyHopPage;
-//import org.nightlabs.jjqb.ui.oda.IPropertyHopPage.PropertyHopPage;
+//import org.nightlabs.vestigo.ui.oda.AbstractPropertyHopPage;
+//import org.nightlabs.vestigo.ui.oda.IPropertyHopPage.PropertyHopPage;
 //
 //
 ///**

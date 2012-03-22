@@ -1,17 +1,17 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>org.nightlabs.jjqb.tycho</artifactId>
+	<artifactId>org.nightlabs.vestigo.tycho</artifactId>
 	<packaging>pom</packaging>
 
 	<parent>
-		<groupId>org.nightlabs.jjqb</groupId>
-		<artifactId>org.nightlabs.jjqb.parent</artifactId>
+		<groupId>org.nightlabs.vestigo</groupId>
+		<artifactId>org.nightlabs.vestigo.parent</artifactId>
 		<version>0.2.0-SNAPSHOT</version>
 	</parent>
 
 	<modules>
-		<module>feature-jjqb</module>
+		<module>feature-vestigo</module>
 		<module>feature-jdt</module>
 		<module>feature-cumulus4j</module>
 		<module>p2-repository</module>
@@ -21,25 +21,25 @@
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
-				<groupId>org.nightlabs.jjqb</groupId>
-				<artifactId>org.nightlabs.jjqb.ui.feature</artifactId>
-				<version>${jjqb.version}</version>
+				<groupId>org.nightlabs.vestigo</groupId>
+				<artifactId>org.nightlabs.vestigo.ui.feature</artifactId>
+				<version>${vestigo.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.nightlabs.jjqb</groupId>
-				<artifactId>org.nightlabs.jjqb.cumulus4j.ui.feature</artifactId>
-				<version>${jjqb.version}</version>
+				<groupId>org.nightlabs.vestigo</groupId>
+				<artifactId>org.nightlabs.vestigo.cumulus4j.ui.feature</artifactId>
+				<version>${vestigo.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.nightlabs.jjqb</groupId>
-				<artifactId>org.nightlabs.jjqb.jdt.ui.feature</artifactId>
-				<version>${jjqb.version}</version>
+				<groupId>org.nightlabs.vestigo</groupId>
+				<artifactId>org.nightlabs.vestigo.jdt.ui.feature</artifactId>
+				<version>${vestigo.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.nightlabs.jjqb</groupId>
-				<artifactId>org.nightlabs.jjqb.tycho.p2.repository</artifactId>
+				<groupId>org.nightlabs.vestigo</groupId>
+				<artifactId>org.nightlabs.vestigo.tycho.p2.repository</artifactId>
 				<type>zip</type>
-				<version>${jjqb.version}</version>
+				<version>${vestigo.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>

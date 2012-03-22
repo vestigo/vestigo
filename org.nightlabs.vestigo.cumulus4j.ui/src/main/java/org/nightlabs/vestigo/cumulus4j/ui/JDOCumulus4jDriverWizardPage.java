@@ -1,5 +1,5 @@
-//package org.nightlabs.jjqb.cumulus4j.ui;
-//import org.nightlabs.jjqb.ui.oda.JDODriverWizardPage;
+//package org.nightlabs.vestigo.cumulus4j.ui;
+//import org.nightlabs.vestigo.ui.oda.JDODriverWizardPage;
 //
 ///**
 // * @author Alexander Bieber <!-- alex [AT] nightlabs [DOT] de -->

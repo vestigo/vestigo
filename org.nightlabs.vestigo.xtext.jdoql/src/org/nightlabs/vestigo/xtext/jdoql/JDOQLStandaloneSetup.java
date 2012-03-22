@@ -1,5 +1,5 @@
 
-package org.nightlabs.jjqb.xtext.jdoql;
+package org.nightlabs.vestigo.xtext.jdoql;
 
 /**
  * Initialization support for running Xtext languages 

@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.ui.licence;
+package org.nightlabs.vestigo.ui.licence;
 
 import java.net.URL;
 
@@ -20,9 +20,9 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.forms.events.HyperlinkAdapter;
 import org.eclipse.ui.forms.events.HyperlinkEvent;
 import org.eclipse.ui.forms.widgets.Hyperlink;
-import org.nightlabs.jjqb.core.JJQBCorePlugin;
-import org.nightlabs.jjqb.ui.JJQBUIPlugin;
-import org.nightlabs.jjqb.ui.resource.Messages;
+import org.nightlabs.vestigo.core.JJQBCorePlugin;
+import org.nightlabs.vestigo.ui.JJQBUIPlugin;
+import org.nightlabs.vestigo.ui.resource.Messages;
 import org.nightlabs.licence.manager.LicenceManager;
 import org.nightlabs.licence.manager.LicenceManagerOfflineImpl;
 import org.nightlabs.licence.manager.LicenceManagerOnlineImpl;

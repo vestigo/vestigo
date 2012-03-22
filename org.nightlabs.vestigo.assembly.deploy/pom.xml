@@ -2,14 +2,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>org.nightlabs.jjqb.assembly.deploy</artifactId>
+	<artifactId>org.nightlabs.vestigo.assembly.deploy</artifactId>
 	<packaging>pom</packaging>
 
 	<parent>
-		<groupId>org.nightlabs.jjqb</groupId>
-		<artifactId>org.nightlabs.jjqb.parent</artifactId>
+		<groupId>org.nightlabs.vestigo</groupId>
+		<artifactId>org.nightlabs.vestigo.parent</artifactId>
 		<version>0.2.0-SNAPSHOT</version>
-		<relativePath>../org.nightlabs.jjqb.parent</relativePath>
+		<relativePath>../org.nightlabs.vestigo.parent</relativePath>
 	</parent>
 
 	<repositories>		
@@ -37,7 +37,7 @@
 
 	<distributionManagement>
 		<site>
-			<id>jjqb.nightlabs.com</id>
+			<id>vestigo.nightlabs.com</id>
 			<url>${distributionManagement.site.prefix}/vestigo.nightlabs.com/htdocs/${project.version}/download/stand-alone</url>
 		</site>
 	</distributionManagement>
@@ -86,9 +86,9 @@
 							<artifactItems>
 								<!--
 								<artifactItem>
-									<groupId>org.nightlabs.jjqb</groupId>
-									<artifactId>org.nightlabs.jjqb.assembly.parent</artifactId>
-									<version>${jjqb.version}</version>
+									<groupId>org.nightlabs.vestigo</groupId>
+									<artifactId>org.nightlabs.vestigo.assembly.parent</artifactId>
+									<version>${vestigo.version}</version>
 									<type>pom</type>
 									<overWrite>true</overWrite>
 									<destFileName>vestigo-TEST.pom</destFileName>
@@ -96,60 +96,60 @@
 								-->
 
 								<artifactItem>
-									<groupId>org.nightlabs.jjqb</groupId>
-									<artifactId>org.nightlabs.jjqb.assembly.linux-gtk</artifactId>
-									<version>${jjqb.version}</version>
+									<groupId>org.nightlabs.vestigo</groupId>
+									<artifactId>org.nightlabs.vestigo.assembly.linux-gtk</artifactId>
+									<version>${vestigo.version}</version>
 									<classifier>bin</classifier>
 									<type>tar.gz</type>
 									<overWrite>true</overWrite>
-									<destFileName>vestigo-linux-gtk-${jjqb.version}.tar.gz</destFileName>
+									<destFileName>vestigo-linux-gtk-${vestigo.version}.tar.gz</destFileName>
 								</artifactItem>
 								<artifactItem>
-									<groupId>org.nightlabs.jjqb</groupId>
-									<artifactId>org.nightlabs.jjqb.assembly.linux-gtk-x86_64</artifactId>
-									<version>${jjqb.version}</version>
+									<groupId>org.nightlabs.vestigo</groupId>
+									<artifactId>org.nightlabs.vestigo.assembly.linux-gtk-x86_64</artifactId>
+									<version>${vestigo.version}</version>
 									<classifier>bin</classifier>
 									<type>tar.gz</type>
 									<overWrite>true</overWrite>
-									<destFileName>vestigo-linux-gtk-x86_64-${jjqb.version}.tar.gz</destFileName>
+									<destFileName>vestigo-linux-gtk-x86_64-${vestigo.version}.tar.gz</destFileName>
 								</artifactItem>
 
 								<artifactItem>
-									<groupId>org.nightlabs.jjqb</groupId>
-									<artifactId>org.nightlabs.jjqb.assembly.macosx-cocoa</artifactId>
-									<version>${jjqb.version}</version>
+									<groupId>org.nightlabs.vestigo</groupId>
+									<artifactId>org.nightlabs.vestigo.assembly.macosx-cocoa</artifactId>
+									<version>${vestigo.version}</version>
 									<classifier>bin</classifier>
 									<type>tar.gz</type>
 									<overWrite>true</overWrite>
-									<destFileName>vestigo-macosx-cocoa-${jjqb.version}.tar.gz</destFileName>
+									<destFileName>vestigo-macosx-cocoa-${vestigo.version}.tar.gz</destFileName>
 								</artifactItem>
 								<artifactItem>
-									<groupId>org.nightlabs.jjqb</groupId>
-									<artifactId>org.nightlabs.jjqb.assembly.macosx-cocoa-x86_64</artifactId>
-									<version>${jjqb.version}</version>
+									<groupId>org.nightlabs.vestigo</groupId>
+									<artifactId>org.nightlabs.vestigo.assembly.macosx-cocoa-x86_64</artifactId>
+									<version>${vestigo.version}</version>
 									<classifier>bin</classifier>
 									<type>tar.gz</type>
 									<overWrite>true</overWrite>
-									<destFileName>vestigo-macosx-cocoa-x86_64-${jjqb.version}.tar.gz</destFileName>
+									<destFileName>vestigo-macosx-cocoa-x86_64-${vestigo.version}.tar.gz</destFileName>
 								</artifactItem>
 
 								<artifactItem>
-									<groupId>org.nightlabs.jjqb</groupId>
-									<artifactId>org.nightlabs.jjqb.assembly.win32</artifactId>
-									<version>${jjqb.version}</version>
+									<groupId>org.nightlabs.vestigo</groupId>
+									<artifactId>org.nightlabs.vestigo.assembly.win32</artifactId>
+									<version>${vestigo.version}</version>
 									<classifier>bin</classifier>
 									<type>zip</type>
 									<overWrite>true</overWrite>
-									<destFileName>vestigo-win32-${jjqb.version}.zip</destFileName>
+									<destFileName>vestigo-win32-${vestigo.version}.zip</destFileName>
 								</artifactItem>
 								<artifactItem>
-									<groupId>org.nightlabs.jjqb</groupId>
-									<artifactId>org.nightlabs.jjqb.assembly.win32-x86_64</artifactId>
-									<version>${jjqb.version}</version>
+									<groupId>org.nightlabs.vestigo</groupId>
+									<artifactId>org.nightlabs.vestigo.assembly.win32-x86_64</artifactId>
+									<version>${vestigo.version}</version>
 									<classifier>bin</classifier>
 									<type>zip</type>
 									<overWrite>true</overWrite>
-									<destFileName>vestigo-win32-x86_64-${jjqb.version}.zip</destFileName>
+									<destFileName>vestigo-win32-x86_64-${vestigo.version}.zip</destFileName>
 								</artifactItem>
 
 							</artifactItems>

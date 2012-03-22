@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.core.connectionpropertiesfilter;
+package org.nightlabs.vestigo.core.connectionpropertiesfilter;
 
 import java.util.Properties;
 import java.util.SortedMap;
@@ -13,7 +13,7 @@ import org.eclipse.core.runtime.Platform;
 
 public class ConnectionPropertiesFilterManager
 {
-	private static final String extensionPointId_connectionPropertiesFilter = "org.nightlabs.jjqb.core.connectionPropertiesFilter";
+	private static final String extensionPointId_connectionPropertiesFilter = "org.nightlabs.vestigo.core.connectionPropertiesFilter";
 
 	public void filterConnectionProperties(Properties connectionProperties)
 	{

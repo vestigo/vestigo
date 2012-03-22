@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.core.internal;
+package org.nightlabs.vestigo.core.internal;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de

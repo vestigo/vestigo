@@ -1,7 +1,7 @@
-package org.nightlabs.jjqb.ui.detailtree;
+package org.nightlabs.vestigo.ui.detailtree;
 
 import org.eclipse.swt.graphics.Image;
-import org.nightlabs.jjqb.ui.JJQBUIPlugin;
+import org.nightlabs.vestigo.ui.JJQBUIPlugin;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de

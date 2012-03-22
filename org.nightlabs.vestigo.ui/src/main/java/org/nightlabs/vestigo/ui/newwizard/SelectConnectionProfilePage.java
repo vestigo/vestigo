@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.ui.newwizard;
+package org.nightlabs.vestigo.ui.newwizard;
 
 import org.eclipse.core.runtime.ListenerList;
 import org.eclipse.datatools.connectivity.IConnectionProfile;
@@ -9,9 +9,9 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.widgets.Composite;
-import org.nightlabs.jjqb.ui.JJQBUIPlugin;
-import org.nightlabs.jjqb.ui.oda.ConnectionProfileTreeComposite;
-import org.nightlabs.jjqb.ui.wizard.WizardHopPage;
+import org.nightlabs.vestigo.ui.JJQBUIPlugin;
+import org.nightlabs.vestigo.ui.oda.ConnectionProfileTreeComposite;
+import org.nightlabs.vestigo.ui.wizard.WizardHopPage;
 
 public class SelectConnectionProfilePage
 extends WizardHopPage

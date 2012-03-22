@@ -3,7 +3,7 @@
  * </copyright>
  *
  */
-package org.nightlabs.jjqb.xtext.jpql.jPQL;
+package org.nightlabs.vestigo.xtext.jpql.jPQL;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -15,12 +15,12 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.UpdateItem#getAlias <em>Alias</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.UpdateItem#getValue <em>Value</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jpql.jPQL.UpdateItem#getAlias <em>Alias</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jpql.jPQL.UpdateItem#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getUpdateItem()
+ * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getUpdateItem()
  * @model
  * @generated
  */
@@ -36,14 +36,14 @@ public interface UpdateItem extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Alias</em>' containment reference.
    * @see #setAlias(AliasAttributeExpression)
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getUpdateItem_Alias()
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getUpdateItem_Alias()
    * @model containment="true"
    * @generated
    */
   AliasAttributeExpression getAlias();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.UpdateItem#getAlias <em>Alias</em>}' containment reference.
+   * Sets the value of the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.UpdateItem#getAlias <em>Alias</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Alias</em>' containment reference.
@@ -62,14 +62,14 @@ public interface UpdateItem extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Value</em>' containment reference.
    * @see #setValue(Value)
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getUpdateItem_Value()
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getUpdateItem_Value()
    * @model containment="true"
    * @generated
    */
   Value getValue();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.UpdateItem#getValue <em>Value</em>}' containment reference.
+   * Sets the value of the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.UpdateItem#getValue <em>Value</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Value</em>' containment reference.

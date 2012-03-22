@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <genmodel:GenModel xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
-    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.nightlabs.jjqb.xtext.jdoql/src-gen"
-    editDirectory="/org.nightlabs.jjqb.xtext.jdoql.edit/src" editorDirectory="/org.nightlabs.jjqb.xtext.jdoql.editor/src"
-    modelPluginID="org.nightlabs.jjqb.xtext.jdoql" forceOverwrite="true" modelName="JDOQL"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.nightlabs.vestigo.xtext.jdoql/src-gen"
+    editDirectory="/org.nightlabs.vestigo.xtext.jdoql.edit/src" editorDirectory="/org.nightlabs.vestigo.xtext.jdoql.editor/src"
+    modelPluginID="org.nightlabs.vestigo.xtext.jdoql" forceOverwrite="true" modelName="JDOQL"
     updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
-    complianceLevel="5.0" copyrightFields="false" editPluginID="org.nightlabs.jjqb.xtext.jdoql.edit"
-    editorPluginID="org.nightlabs.jjqb.xtext.jdoql.editor">
-  <genPackages prefix="JDOQL" basePackage="org.nightlabs.jjqb.xtext.jdoql" disposableProviderFactory="true"
+    complianceLevel="5.0" copyrightFields="false" editPluginID="org.nightlabs.vestigo.xtext.jdoql.edit"
+    editorPluginID="org.nightlabs.vestigo.xtext.jdoql.editor">
+  <genPackages prefix="JDOQL" basePackage="org.nightlabs.vestigo.xtext.jdoql" disposableProviderFactory="true"
       ecorePackage="JDOQL.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="JDOQL.ecore#//OrderByDirection">
       <genEnumLiterals ecoreEnumLiteral="JDOQL.ecore#//OrderByDirection/asc"/>

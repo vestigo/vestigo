@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.core.oda.impl;
+package org.nightlabs.vestigo.core.oda.impl;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -15,21 +15,21 @@ import org.eclipse.datatools.connectivity.oda.IBlob;
 import org.eclipse.datatools.connectivity.oda.IClob;
 import org.eclipse.datatools.connectivity.oda.IResultSetMetaData;
 import org.eclipse.datatools.connectivity.oda.OdaException;
-import org.nightlabs.jjqb.childvm.shared.ResultSetID;
-import org.nightlabs.jjqb.childvm.shared.api.ChildVM;
-import org.nightlabs.jjqb.childvm.shared.dto.ResultCellDTO;
-import org.nightlabs.jjqb.childvm.shared.dto.ResultCellNullDTO;
-import org.nightlabs.jjqb.childvm.shared.dto.ResultCellObjectRefDTO;
-import org.nightlabs.jjqb.childvm.shared.dto.ResultCellPersistentObjectRefDTO;
-import org.nightlabs.jjqb.childvm.shared.dto.ResultCellSimpleDTO;
-import org.nightlabs.jjqb.childvm.shared.dto.ResultCellTransientObjectRefDTO;
-import org.nightlabs.jjqb.childvm.shared.dto.ResultRowDTO;
-import org.nightlabs.jjqb.core.JJQBCorePlugin;
-import org.nightlabs.jjqb.core.ObjectReference;
-import org.nightlabs.jjqb.core.internal.PersistentObjectReferenceImpl;
-import org.nightlabs.jjqb.core.internal.TransientObjectReferenceImpl;
-import org.nightlabs.jjqb.core.oda.Query;
-import org.nightlabs.jjqb.core.oda.ResultSet;
+import org.nightlabs.vestigo.childvm.shared.ResultSetID;
+import org.nightlabs.vestigo.childvm.shared.api.ChildVM;
+import org.nightlabs.vestigo.childvm.shared.dto.ResultCellDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.ResultCellNullDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.ResultCellObjectRefDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.ResultCellPersistentObjectRefDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.ResultCellSimpleDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.ResultCellTransientObjectRefDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.ResultRowDTO;
+import org.nightlabs.vestigo.core.JJQBCorePlugin;
+import org.nightlabs.vestigo.core.ObjectReference;
+import org.nightlabs.vestigo.core.internal.PersistentObjectReferenceImpl;
+import org.nightlabs.vestigo.core.internal.TransientObjectReferenceImpl;
+import org.nightlabs.vestigo.core.oda.Query;
+import org.nightlabs.vestigo.core.oda.ResultSet;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de

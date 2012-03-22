@@ -1,6 +1,6 @@
-package org.nightlabs.jjqb.cumulus4j.childvm.shared;
+package org.nightlabs.vestigo.cumulus4j.childvm.shared;
 
-import org.nightlabs.jjqb.childvm.shared.dto.JPAConnectionDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.JPAConnectionDTO;
 
 public class JPACumulus4jConnectionDTO extends JPAConnectionDTO {
 

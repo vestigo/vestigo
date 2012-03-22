@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.ui.licence;
+package org.nightlabs.vestigo.ui.licence;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -23,9 +23,9 @@ import org.eclipse.ui.forms.events.HyperlinkAdapter;
 import org.eclipse.ui.forms.events.HyperlinkEvent;
 import org.eclipse.ui.forms.widgets.Hyperlink;
 import org.eclipse.ui.preferences.ScopedPreferenceStore;
-import org.nightlabs.jjqb.core.JJQBCorePlugin;
-import org.nightlabs.jjqb.ui.preference.MultiLineStringFieldEditor;
-import org.nightlabs.jjqb.ui.resource.Messages;
+import org.nightlabs.vestigo.core.JJQBCorePlugin;
+import org.nightlabs.vestigo.ui.preference.MultiLineStringFieldEditor;
+import org.nightlabs.vestigo.ui.resource.Messages;
 import org.nightlabs.licence.manager.CheckLicenceAdapter;
 import org.nightlabs.licence.manager.CheckLicenceEvent;
 import org.nightlabs.licence.manager.LicenceManager;

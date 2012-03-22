@@ -3,7 +3,7 @@
  * </copyright>
  *
  */
-package org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl;
+package org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -14,9 +14,9 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.RangeClause;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.JDOQLPackage;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.RangeClause;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,8 +25,8 @@ import org.nightlabs.jjqb.xtext.jdoql.jDOQL.RangeClause;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.RangeClauseImpl#getStart <em>Start</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.RangeClauseImpl#getEnd <em>End</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.RangeClauseImpl#getStart <em>Start</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.RangeClauseImpl#getEnd <em>End</em>}</li>
  * </ul>
  * </p>
  *

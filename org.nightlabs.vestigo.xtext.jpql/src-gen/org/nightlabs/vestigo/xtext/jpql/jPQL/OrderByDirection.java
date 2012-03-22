@@ -3,7 +3,7 @@
  * </copyright>
  *
  */
-package org.nightlabs.jjqb.xtext.jpql.jPQL;
+package org.nightlabs.vestigo.xtext.jpql.jPQL;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -16,7 +16,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Order By Direction</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getOrderByDirection()
+ * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getOrderByDirection()
  * @model
  * @generated
  */

@@ -1,11 +1,11 @@
-package org.nightlabs.jjqb.childvm.shared.persistencexml;
+package org.nightlabs.vestigo.childvm.shared.persistencexml;
 
 import java.util.Map;
 
-import org.nightlabs.jjqb.childvm.shared.persistencexml.jaxb.Persistence.PersistenceUnit;
-import org.nightlabs.jjqb.childvm.shared.persistencexml.jaxb.PersistenceUnitCachingType;
-import org.nightlabs.jjqb.childvm.shared.persistencexml.jaxb.PersistenceUnitTransactionType;
-import org.nightlabs.jjqb.childvm.shared.persistencexml.jaxb.PersistenceUnitValidationModeType;
+import org.nightlabs.vestigo.childvm.shared.persistencexml.jaxb.Persistence.PersistenceUnit;
+import org.nightlabs.vestigo.childvm.shared.persistencexml.jaxb.PersistenceUnitCachingType;
+import org.nightlabs.vestigo.childvm.shared.persistencexml.jaxb.PersistenceUnitTransactionType;
+import org.nightlabs.vestigo.childvm.shared.persistencexml.jaxb.PersistenceUnitValidationModeType;
 
 public class JPAPersistenceUnitHelper extends PersistenceUnitHelper {
 

@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.core.oda;
+package org.nightlabs.vestigo.core.oda;
 
 public class ConnectionPropertyMeta {
 

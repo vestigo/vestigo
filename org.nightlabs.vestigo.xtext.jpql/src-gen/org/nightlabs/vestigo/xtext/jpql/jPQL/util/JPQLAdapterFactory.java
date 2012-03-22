@@ -3,7 +3,7 @@
  * </copyright>
  *
  */
-package org.nightlabs.jjqb.xtext.jpql.jPQL.util;
+package org.nightlabs.vestigo.xtext.jpql.jPQL.util;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
@@ -12,14 +12,14 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
 import org.eclipse.emf.ecore.EObject;
 
-import org.nightlabs.jjqb.xtext.jpql.jPQL.*;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.*;
 
 /**
  * <!-- begin-user-doc -->
  * The <b>Adapter Factory</b> for the model.
  * It provides an adapter <code>createXXX</code> method for each class of the model.
  * <!-- end-user-doc -->
- * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage
+ * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage
  * @generated
  */
 public class JPQLAdapterFactory extends AdapterFactoryImpl
@@ -385,13 +385,13 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
 
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLQuery <em>Query</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLQuery <em>Query</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLQuery
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLQuery
    * @generated
    */
   public Adapter createJPQLQueryAdapter()
@@ -400,13 +400,13 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.SelectStatement <em>Select Statement</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.SelectStatement <em>Select Statement</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.SelectStatement
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.SelectStatement
    * @generated
    */
   public Adapter createSelectStatementAdapter()
@@ -415,13 +415,13 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.GroupByClause <em>Group By Clause</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.GroupByClause <em>Group By Clause</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.GroupByClause
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.GroupByClause
    * @generated
    */
   public Adapter createGroupByClauseAdapter()
@@ -430,13 +430,13 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.HavingClause <em>Having Clause</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.HavingClause <em>Having Clause</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.HavingClause
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.HavingClause
    * @generated
    */
   public Adapter createHavingClauseAdapter()
@@ -445,13 +445,13 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.OrderByClause <em>Order By Clause</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.OrderByClause <em>Order By Clause</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.OrderByClause
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.OrderByClause
    * @generated
    */
   public Adapter createOrderByClauseAdapter()
@@ -460,13 +460,13 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.OrderBySpec <em>Order By Spec</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.OrderBySpec <em>Order By Spec</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.OrderBySpec
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.OrderBySpec
    * @generated
    */
   public Adapter createOrderBySpecAdapter()
@@ -475,13 +475,13 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.UpdateStatement <em>Update Statement</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.UpdateStatement <em>Update Statement</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.UpdateStatement
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.UpdateStatement
    * @generated
    */
   public Adapter createUpdateStatementAdapter()
@@ -490,13 +490,13 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.UpdateClause <em>Update Clause</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.UpdateClause <em>Update Clause</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.UpdateClause
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.UpdateClause
    * @generated
    */
   public Adapter createUpdateClauseAdapter()
@@ -505,13 +505,13 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.SetClause <em>Set Clause</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.SetClause <em>Set Clause</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.SetClause
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.SetClause
    * @generated
    */
   public Adapter createSetClauseAdapter()
@@ -520,13 +520,13 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.UpdateItem <em>Update Item</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.UpdateItem <em>Update Item</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.UpdateItem
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.UpdateItem
    * @generated
    */
   public Adapter createUpdateItemAdapter()
@@ -535,13 +535,13 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.DeleteStatement <em>Delete Statement</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.DeleteStatement <em>Delete Statement</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.DeleteStatement
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.DeleteStatement
    * @generated
    */
   public Adapter createDeleteStatementAdapter()
@@ -550,13 +550,13 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.DeleteClause <em>Delete Clause</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.DeleteClause <em>Delete Clause</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.DeleteClause
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.DeleteClause
    * @generated
    */
   public Adapter createDeleteClauseAdapter()
@@ -565,13 +565,13 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.SelectClause <em>Select Clause</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.SelectClause <em>Select Clause</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.SelectClause
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.SelectClause
    * @generated
    */
   public Adapter createSelectClauseAdapter()
@@ -580,13 +580,13 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.SelectExpression <em>Select Expression</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.SelectExpression <em>Select Expression</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.SelectExpression
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.SelectExpression
    * @generated
    */
   public Adapter createSelectExpressionAdapter()
@@ -595,13 +595,13 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.SelectAggregateExpression <em>Select Aggregate Expression</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.SelectAggregateExpression <em>Select Aggregate Expression</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.SelectAggregateExpression
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.SelectAggregateExpression
    * @generated
    */
   public Adapter createSelectAggregateExpressionAdapter()
@@ -610,13 +610,13 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.AvgAggregate <em>Avg Aggregate</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.AvgAggregate <em>Avg Aggregate</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.AvgAggregate
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.AvgAggregate
    * @generated
    */
   public Adapter createAvgAggregateAdapter()
@@ -625,13 +625,13 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.MaxAggregate <em>Max Aggregate</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.MaxAggregate <em>Max Aggregate</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.MaxAggregate
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.MaxAggregate
    * @generated
    */
   public Adapter createMaxAggregateAdapter()
@@ -640,13 +640,13 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.MinAggregate <em>Min Aggregate</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.MinAggregate <em>Min Aggregate</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.MinAggregate
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.MinAggregate
    * @generated
    */
   public Adapter createMinAggregateAdapter()
@@ -655,13 +655,13 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.SumAggregate <em>Sum Aggregate</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.SumAggregate <em>Sum Aggregate</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.SumAggregate
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.SumAggregate
    * @generated
    */
   public Adapter createSumAggregateAdapter()
@@ -670,13 +670,13 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.CountAggregate <em>Count Aggregate</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.CountAggregate <em>Count Aggregate</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.CountAggregate
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.CountAggregate
    * @generated
    */
   public Adapter createCountAggregateAdapter()
@@ -685,13 +685,13 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.SelectConstructorExpression <em>Select Constructor Expression</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.SelectConstructorExpression <em>Select Constructor Expression</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.SelectConstructorExpression
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.SelectConstructorExpression
    * @generated
    */
   public Adapter createSelectConstructorExpressionAdapter()
@@ -700,13 +700,13 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.FromClause <em>From Clause</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.FromClause <em>From Clause</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.FromClause
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.FromClause
    * @generated
    */
   public Adapter createFromClauseAdapter()
@@ -715,13 +715,13 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.FromEntry <em>From Entry</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.FromEntry <em>From Entry</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.FromEntry
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.FromEntry
    * @generated
    */
   public Adapter createFromEntryAdapter()
@@ -730,13 +730,13 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.VariableDeclaration <em>Variable Declaration</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.VariableDeclaration <em>Variable Declaration</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.VariableDeclaration
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.VariableDeclaration
    * @generated
    */
   public Adapter createVariableDeclarationAdapter()
@@ -745,13 +745,13 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.FromClass <em>From Class</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.FromClass <em>From Class</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.FromClass
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.FromClass
    * @generated
    */
   public Adapter createFromClassAdapter()
@@ -760,13 +760,13 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.FromCollection <em>From Collection</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.FromCollection <em>From Collection</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.FromCollection
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.FromCollection
    * @generated
    */
   public Adapter createFromCollectionAdapter()
@@ -775,13 +775,13 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.FromJoin <em>From Join</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.FromJoin <em>From Join</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.FromJoin
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.FromJoin
    * @generated
    */
   public Adapter createFromJoinAdapter()
@@ -790,13 +790,13 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.Join <em>Join</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.Join <em>Join</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.Join
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.Join
    * @generated
    */
   public Adapter createJoinAdapter()
@@ -805,13 +805,13 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.LeftJoin <em>Left Join</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.LeftJoin <em>Left Join</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.LeftJoin
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.LeftJoin
    * @generated
    */
   public Adapter createLeftJoinAdapter()
@@ -820,13 +820,13 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.InnerJoin <em>Inner Join</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.InnerJoin <em>Inner Join</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.InnerJoin
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.InnerJoin
    * @generated
    */
   public Adapter createInnerJoinAdapter()
@@ -835,13 +835,13 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.WhereClause <em>Where Clause</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.WhereClause <em>Where Clause</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.WhereClause
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.WhereClause
    * @generated
    */
   public Adapter createWhereClauseAdapter()
@@ -850,13 +850,13 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.Expression <em>Expression</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.Expression <em>Expression</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.Expression
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.Expression
    * @generated
    */
   public Adapter createExpressionAdapter()
@@ -865,13 +865,13 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.ComparisonOperatorExpression <em>Comparison Operator Expression</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.ComparisonOperatorExpression <em>Comparison Operator Expression</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.ComparisonOperatorExpression
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.ComparisonOperatorExpression
    * @generated
    */
   public Adapter createComparisonOperatorExpressionAdapter()
@@ -880,13 +880,13 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.ExistsExpression <em>Exists Expression</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.ExistsExpression <em>Exists Expression</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.ExistsExpression
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.ExistsExpression
    * @generated
    */
   public Adapter createExistsExpressionAdapter()
@@ -895,13 +895,13 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.AllExpression <em>All Expression</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.AllExpression <em>All Expression</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.AllExpression
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.AllExpression
    * @generated
    */
   public Adapter createAllExpressionAdapter()
@@ -910,13 +910,13 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.AnyExpression <em>Any Expression</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.AnyExpression <em>Any Expression</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.AnyExpression
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.AnyExpression
    * @generated
    */
   public Adapter createAnyExpressionAdapter()
@@ -925,13 +925,13 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.SomeExpression <em>Some Expression</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.SomeExpression <em>Some Expression</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.SomeExpression
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.SomeExpression
    * @generated
    */
   public Adapter createSomeExpressionAdapter()
@@ -940,13 +940,13 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.CollectionExpression <em>Collection Expression</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.CollectionExpression <em>Collection Expression</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.CollectionExpression
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.CollectionExpression
    * @generated
    */
   public Adapter createCollectionExpressionAdapter()
@@ -955,13 +955,13 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.NullComparisonExpression <em>Null Comparison Expression</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.NullComparisonExpression <em>Null Comparison Expression</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.NullComparisonExpression
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.NullComparisonExpression
    * @generated
    */
   public Adapter createNullComparisonExpressionAdapter()
@@ -970,13 +970,13 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.EmptyComparisonExpression <em>Empty Comparison Expression</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.EmptyComparisonExpression <em>Empty Comparison Expression</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.EmptyComparisonExpression
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.EmptyComparisonExpression
    * @generated
    */
   public Adapter createEmptyComparisonExpressionAdapter()
@@ -985,13 +985,13 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.LikeExpression <em>Like Expression</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.LikeExpression <em>Like Expression</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.LikeExpression
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.LikeExpression
    * @generated
    */
   public Adapter createLikeExpressionAdapter()
@@ -1000,13 +1000,13 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.InExpression <em>In Expression</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.InExpression <em>In Expression</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.InExpression
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.InExpression
    * @generated
    */
   public Adapter createInExpressionAdapter()
@@ -1015,13 +1015,13 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.InSeqExpression <em>In Seq Expression</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.InSeqExpression <em>In Seq Expression</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.InSeqExpression
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.InSeqExpression
    * @generated
    */
   public Adapter createInSeqExpressionAdapter()
@@ -1030,13 +1030,13 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.InQueryExpression <em>In Query Expression</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.InQueryExpression <em>In Query Expression</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.InQueryExpression
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.InQueryExpression
    * @generated
    */
   public Adapter createInQueryExpressionAdapter()
@@ -1045,13 +1045,13 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.BetweenExpression <em>Between Expression</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.BetweenExpression <em>Between Expression</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.BetweenExpression
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.BetweenExpression
    * @generated
    */
   public Adapter createBetweenExpressionAdapter()
@@ -1060,13 +1060,13 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.Variable <em>Variable</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.Variable <em>Variable</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.Variable
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.Variable
    * @generated
    */
   public Adapter createVariableAdapter()
@@ -1075,13 +1075,13 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.ExpressionTerm <em>Expression Term</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.ExpressionTerm <em>Expression Term</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.ExpressionTerm
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.ExpressionTerm
    * @generated
    */
   public Adapter createExpressionTermAdapter()
@@ -1090,13 +1090,13 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.AliasAttributeExpression <em>Alias Attribute Expression</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.AliasAttributeExpression <em>Alias Attribute Expression</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.AliasAttributeExpression
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.AliasAttributeExpression
    * @generated
    */
   public Adapter createAliasAttributeExpressionAdapter()
@@ -1105,13 +1105,13 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.ParameterExpression <em>Parameter Expression</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.ParameterExpression <em>Parameter Expression</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.ParameterExpression
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.ParameterExpression
    * @generated
    */
   public Adapter createParameterExpressionAdapter()
@@ -1120,13 +1120,13 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.Function <em>Function</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.Function <em>Function</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.Function
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.Function
    * @generated
    */
   public Adapter createFunctionAdapter()
@@ -1135,13 +1135,13 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.Value <em>Value</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.Value <em>Value</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.Value
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.Value
    * @generated
    */
   public Adapter createValueAdapter()
@@ -1150,13 +1150,13 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.IntegerExpression <em>Integer Expression</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.IntegerExpression <em>Integer Expression</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.IntegerExpression
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.IntegerExpression
    * @generated
    */
   public Adapter createIntegerExpressionAdapter()
@@ -1165,13 +1165,13 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.StringExpression <em>String Expression</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.StringExpression <em>String Expression</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.StringExpression
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.StringExpression
    * @generated
    */
   public Adapter createStringExpressionAdapter()
@@ -1180,13 +1180,13 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.NullExpression <em>Null Expression</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.NullExpression <em>Null Expression</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.NullExpression
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.NullExpression
    * @generated
    */
   public Adapter createNullExpressionAdapter()
@@ -1195,13 +1195,13 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.BooleanExpression <em>Boolean Expression</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.BooleanExpression <em>Boolean Expression</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.BooleanExpression
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.BooleanExpression
    * @generated
    */
   public Adapter createBooleanExpressionAdapter()
@@ -1210,13 +1210,13 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.OrExpression <em>Or Expression</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.OrExpression <em>Or Expression</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.OrExpression
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.OrExpression
    * @generated
    */
   public Adapter createOrExpressionAdapter()
@@ -1225,13 +1225,13 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.AndExpression <em>And Expression</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.AndExpression <em>And Expression</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.AndExpression
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.AndExpression
    * @generated
    */
   public Adapter createAndExpressionAdapter()

@@ -1,11 +1,11 @@
-package org.nightlabs.jjqb.core.oda;
+package org.nightlabs.vestigo.core.oda;
 
 import java.util.Collection;
 import java.util.Properties;
 import java.util.SortedSet;
 
 import org.eclipse.datatools.connectivity.oda.OdaException;
-import org.nightlabs.jjqb.childvm.shared.api.ChildVM;
+import org.nightlabs.vestigo.childvm.shared.api.ChildVM;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de

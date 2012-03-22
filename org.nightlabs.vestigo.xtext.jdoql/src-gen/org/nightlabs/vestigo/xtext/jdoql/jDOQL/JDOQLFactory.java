@@ -3,7 +3,7 @@
  * </copyright>
  *
  */
-package org.nightlabs.jjqb.xtext.jdoql.jDOQL;
+package org.nightlabs.vestigo.xtext.jdoql.jDOQL;
 
 import org.eclipse.emf.ecore.EFactory;
 
@@ -12,7 +12,7 @@ import org.eclipse.emf.ecore.EFactory;
  * The <b>Factory</b> for the model.
  * It provides a create method for each non-abstract class of the model.
  * <!-- end-user-doc -->
- * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage
+ * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.JDOQLPackage
  * @generated
  */
 public interface JDOQLFactory extends EFactory
@@ -23,7 +23,7 @@ public interface JDOQLFactory extends EFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  JDOQLFactory eINSTANCE = org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLFactoryImpl.init();
+  JDOQLFactory eINSTANCE = org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.JDOQLFactoryImpl.init();
 
   /**
    * Returns a new object of class '<em>Single String JDOQL</em>'.

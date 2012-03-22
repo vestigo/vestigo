@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.ui.oda.property;
+package org.nightlabs.vestigo.ui.oda.property;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;

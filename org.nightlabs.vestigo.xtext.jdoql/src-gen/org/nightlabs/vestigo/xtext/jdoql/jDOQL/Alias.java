@@ -3,7 +3,7 @@
  * </copyright>
  *
  */
-package org.nightlabs.jjqb.xtext.jdoql.jDOQL;
+package org.nightlabs.vestigo.xtext.jdoql.jDOQL;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -15,11 +15,11 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Alias#getIdentifier <em>Identifier</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.Alias#getIdentifier <em>Identifier</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage#getAlias()
+ * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.JDOQLPackage#getAlias()
  * @model
  * @generated
  */
@@ -35,14 +35,14 @@ public interface Alias extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Identifier</em>' attribute.
    * @see #setIdentifier(String)
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage#getAlias_Identifier()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.JDOQLPackage#getAlias_Identifier()
    * @model
    * @generated
    */
   String getIdentifier();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Alias#getIdentifier <em>Identifier</em>}' attribute.
+   * Sets the value of the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.Alias#getIdentifier <em>Identifier</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Identifier</em>' attribute.

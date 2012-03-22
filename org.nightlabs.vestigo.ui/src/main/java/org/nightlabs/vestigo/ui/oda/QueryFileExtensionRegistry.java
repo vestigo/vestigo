@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.ui.oda;
+package org.nightlabs.vestigo.ui.oda;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
@@ -17,7 +17,7 @@ public class QueryFileExtensionRegistry
 		if (registry == null)
 			throw new IllegalStateException("Platform.getExtensionRegistry() returned null!");
 
-		final String extensionPointId = "org.nightlabs.jjqb.ui.queryFileExtension";
+		final String extensionPointId = "org.nightlabs.vestigo.ui.queryFileExtension";
 		final IExtensionPoint extensionPoint = registry.getExtensionPoint(extensionPointId);
 		if (extensionPoint == null)
 			throw new IllegalStateException("Unable to resolve extension-point: " + extensionPointId); //$NON-NLS-1$

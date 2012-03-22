@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!-- Schema file written by PDE -->
-<schema targetNamespace="org.nightlabs.jjqb.ui" xmlns="http://www.w3.org/2001/XMLSchema">
+<schema targetNamespace="org.nightlabs.vestigo.ui" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
       <appinfo>
-         <meta.schema plugin="org.nightlabs.jjqb.ui" id="queryFileExtension" name="queryFileExtension"/>
+         <meta.schema plugin="org.nightlabs.vestigo.ui" id="queryFileExtension" name="queryFileExtension"/>
       </appinfo>
       <documentation>
          [Enter description of this extension point.]

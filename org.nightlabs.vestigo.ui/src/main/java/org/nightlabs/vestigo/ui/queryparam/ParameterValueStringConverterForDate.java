@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.ui.queryparam;
+package org.nightlabs.vestigo.ui.queryparam;
 
 import java.text.DateFormat;
 import java.text.ParseException;

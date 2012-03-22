@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.ui.oda;
+package org.nightlabs.vestigo.ui.oda;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -26,10 +26,10 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
-import org.nightlabs.jjqb.core.oda.DataSourceDriverRegistry;
-import org.nightlabs.jjqb.core.oda.Driver;
-import org.nightlabs.jjqb.ui.JJQBUIPlugin;
-import org.nightlabs.jjqb.ui.editor.QueryEditorManager;
+import org.nightlabs.vestigo.core.oda.DataSourceDriverRegistry;
+import org.nightlabs.vestigo.core.oda.Driver;
+import org.nightlabs.vestigo.ui.JJQBUIPlugin;
+import org.nightlabs.vestigo.ui.editor.QueryEditorManager;
 
 public class ConnectionProfileTreeComposite extends Composite implements ISelectionProvider
 {

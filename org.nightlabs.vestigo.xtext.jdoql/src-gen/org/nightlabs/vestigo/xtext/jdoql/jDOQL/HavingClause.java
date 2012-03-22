@@ -3,7 +3,7 @@
  * </copyright>
  *
  */
-package org.nightlabs.jjqb.xtext.jdoql.jDOQL;
+package org.nightlabs.vestigo.xtext.jdoql.jDOQL;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -15,11 +15,11 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.HavingClause#getHaving <em>Having</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.HavingClause#getHaving <em>Having</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage#getHavingClause()
+ * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.JDOQLPackage#getHavingClause()
  * @model
  * @generated
  */
@@ -35,14 +35,14 @@ public interface HavingClause extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Having</em>' containment reference.
    * @see #setHaving(Expression)
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage#getHavingClause_Having()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.JDOQLPackage#getHavingClause_Having()
    * @model containment="true"
    * @generated
    */
   Expression getHaving();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.HavingClause#getHaving <em>Having</em>}' containment reference.
+   * Sets the value of the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.HavingClause#getHaving <em>Having</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Having</em>' containment reference.

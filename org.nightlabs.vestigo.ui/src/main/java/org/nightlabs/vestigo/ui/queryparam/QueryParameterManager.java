@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.ui.queryparam;
+package org.nightlabs.vestigo.ui.queryparam;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -11,10 +11,10 @@ import java.util.Set;
 import java.util.UUID;
 
 import org.eclipse.swt.widgets.Display;
-import org.nightlabs.jjqb.childvm.shared.PropertiesUtil;
-import org.nightlabs.jjqb.core.PropertiesWithChangeSupport;
-import org.nightlabs.jjqb.ui.editor.PropertiesType;
-import org.nightlabs.jjqb.ui.editor.QueryEditorManager;
+import org.nightlabs.vestigo.childvm.shared.PropertiesUtil;
+import org.nightlabs.vestigo.core.PropertiesWithChangeSupport;
+import org.nightlabs.vestigo.ui.editor.PropertiesType;
+import org.nightlabs.vestigo.ui.editor.QueryEditorManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

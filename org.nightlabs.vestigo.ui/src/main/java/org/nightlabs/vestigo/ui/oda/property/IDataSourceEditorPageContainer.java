@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.ui.oda.property;
+package org.nightlabs.vestigo.ui.oda.property;
 
 import org.eclipse.jface.preference.IPreferencePageContainer;
 import org.eclipse.jface.resource.ImageDescriptor;

@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.core.oda;
+package org.nightlabs.vestigo.core.oda;
 
 import java.util.Properties;
 import java.util.UUID;

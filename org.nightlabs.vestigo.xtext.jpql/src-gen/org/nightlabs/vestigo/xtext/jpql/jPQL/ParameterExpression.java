@@ -3,7 +3,7 @@
  * </copyright>
  *
  */
-package org.nightlabs.jjqb.xtext.jpql.jPQL;
+package org.nightlabs.vestigo.xtext.jpql.jPQL;
 
 
 /**
@@ -14,11 +14,11 @@ package org.nightlabs.jjqb.xtext.jpql.jPQL;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.ParameterExpression#getName <em>Name</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jpql.jPQL.ParameterExpression#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getParameterExpression()
+ * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getParameterExpression()
  * @model
  * @generated
  */
@@ -34,14 +34,14 @@ public interface ParameterExpression extends Variable
    * <!-- end-user-doc -->
    * @return the value of the '<em>Name</em>' attribute.
    * @see #setName(String)
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getParameterExpression_Name()
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getParameterExpression_Name()
    * @model
    * @generated
    */
   String getName();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.ParameterExpression#getName <em>Name</em>}' attribute.
+   * Sets the value of the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.ParameterExpression#getName <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Name</em>' attribute.

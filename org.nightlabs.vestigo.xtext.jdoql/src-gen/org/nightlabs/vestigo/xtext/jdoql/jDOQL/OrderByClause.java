@@ -3,7 +3,7 @@
  * </copyright>
  *
  */
-package org.nightlabs.jjqb.xtext.jdoql.jDOQL;
+package org.nightlabs.vestigo.xtext.jdoql.jDOQL;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -17,11 +17,11 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.OrderByClause#getOrdering <em>Ordering</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.OrderByClause#getOrdering <em>Ordering</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage#getOrderByClause()
+ * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.JDOQLPackage#getOrderByClause()
  * @model
  * @generated
  */
@@ -29,7 +29,7 @@ public interface OrderByClause extends EObject
 {
   /**
    * Returns the value of the '<em><b>Ordering</b></em>' containment reference list.
-   * The list contents are of type {@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.OrderBySpec}.
+   * The list contents are of type {@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.OrderBySpec}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Ordering</em>' containment reference list isn't clear,
@@ -37,7 +37,7 @@ public interface OrderByClause extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Ordering</em>' containment reference list.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage#getOrderByClause_Ordering()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.JDOQLPackage#getOrderByClause_Ordering()
    * @model containment="true"
    * @generated
    */

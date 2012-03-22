@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.childvm.webapp;
+package org.nightlabs.vestigo.childvm.webapp;
 
 import java.util.Date;
 import java.util.Timer;

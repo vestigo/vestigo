@@ -13,8 +13,8 @@
 
       <dataSource
             defaultDisplayName="JDO Driver"
-            driverClass="org.nightlabs.jjqb.core.oda.impl.JDODriverImpl"
-            id="org.nightlabs.jjqb.core.oda.JDODriver"
+            driverClass="org.nightlabs.vestigo.core.oda.impl.JDODriverImpl"
+            id="org.nightlabs.vestigo.core.oda.JDODriver"
             odaVersion="3.0"
             setThreadContextClassLoader="true">
          <properties>
@@ -30,7 +30,7 @@
 <!-- TODO what's this dataSet good for? do we need it? copied from org.nightlabs.birt.jdo... -->
       <dataSet
             defaultDisplayName="JDO Data Set"            
-            id="org.nightlabs.jjqb.core.oda.JDODataSet">
+            id="org.nightlabs.vestigo.core.oda.JDODataSet">
          <dataTypeMapping
                nativeDataType="String"
                nativeDataTypeCode="1"
@@ -65,8 +65,8 @@
 
       <dataSource
             defaultDisplayName="JPA Driver"
-            driverClass="org.nightlabs.jjqb.core.oda.impl.JPADriverImpl"
-            id="org.nightlabs.jjqb.core.oda.JPADriver"
+            driverClass="org.nightlabs.vestigo.core.oda.impl.JPADriverImpl"
+            id="org.nightlabs.vestigo.core.oda.JPADriver"
             odaVersion="3.0"
             setThreadContextClassLoader="true">
          <properties>
@@ -82,7 +82,7 @@
 <!-- TODO what's this dataSet good for? do we need it? copied from org.nightlabs.birt.jdo... -->
       <dataSet
             defaultDisplayName="JDO Data Set"            
-            id="org.nightlabs.jjqb.core.oda.JDODataSet">
+            id="org.nightlabs.vestigo.core.oda.JDODataSet">
          <dataTypeMapping
                nativeDataType="String"
                nativeDataTypeCode="1"
@@ -113,22 +113,22 @@
 
 
    <extension
-         point="org.nightlabs.jjqb.core.childVMWebApp">
+         point="org.nightlabs.vestigo.core.childVMWebApp">
       <webApp
-            class="org.nightlabs.jjqb.core.childvm.internal.DefaultWebApp"
-            webAppName="org.nightlabs.jjqb.childvm.webapp">
+            class="org.nightlabs.vestigo.core.childvm.internal.DefaultWebApp"
+            webAppName="org.nightlabs.vestigo.childvm.webapp">
       </webApp>
    </extension>
    <extension
-         point="org.nightlabs.jjqb.core.connectionProfile">
+         point="org.nightlabs.vestigo.core.connectionProfile">
       <connectionProfile
-            class="org.nightlabs.jjqb.core.oda.impl.JDOConnectionProfileImpl"
-            connectionType="org.nightlabs.jjqb.core.oda.JDOConnection"
+            class="org.nightlabs.vestigo.core.oda.impl.JDOConnectionProfileImpl"
+            connectionType="org.nightlabs.vestigo.core.oda.JDOConnection"
             priority="100">
       </connectionProfile>
       <connectionProfile
-            class="org.nightlabs.jjqb.core.oda.impl.JPAConnectionProfileImpl"
-            connectionType="org.nightlabs.jjqb.core.oda.JPAConnection"
+            class="org.nightlabs.vestigo.core.oda.impl.JPAConnectionProfileImpl"
+            connectionType="org.nightlabs.vestigo.core.oda.JPAConnection"
             priority="100">
       </connectionProfile>
    </extension>

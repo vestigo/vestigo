@@ -24,7 +24,7 @@
  *                                                                             *
  ******************************************************************************/
 
-package org.nightlabs.jjqb.ui.wizard;
+package org.nightlabs.vestigo.ui.wizard;
 
 import java.util.List;
 

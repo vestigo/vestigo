@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.core.connectionpropertiesfilter;
+package org.nightlabs.vestigo.core.connectionpropertiesfilter;
 
 import java.util.Properties;
 

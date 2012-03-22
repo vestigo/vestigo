@@ -3,7 +3,7 @@
  * </copyright>
  *
  */
-package org.nightlabs.jjqb.xtext.jpql.jPQL;
+package org.nightlabs.vestigo.xtext.jpql.jPQL;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -17,11 +17,11 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.FromClause#getFromEntries <em>From Entries</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jpql.jPQL.FromClause#getFromEntries <em>From Entries</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getFromClause()
+ * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getFromClause()
  * @model
  * @generated
  */
@@ -29,7 +29,7 @@ public interface FromClause extends EObject
 {
   /**
    * Returns the value of the '<em><b>From Entries</b></em>' containment reference list.
-   * The list contents are of type {@link org.nightlabs.jjqb.xtext.jpql.jPQL.FromEntry}.
+   * The list contents are of type {@link org.nightlabs.vestigo.xtext.jpql.jPQL.FromEntry}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>From Entries</em>' containment reference list isn't clear,
@@ -37,7 +37,7 @@ public interface FromClause extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>From Entries</em>' containment reference list.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getFromClause_FromEntries()
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getFromClause_FromEntries()
    * @model containment="true"
    * @generated
    */

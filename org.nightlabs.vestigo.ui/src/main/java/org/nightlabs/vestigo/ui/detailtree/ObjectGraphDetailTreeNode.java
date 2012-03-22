@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.ui.detailtree;
+package org.nightlabs.vestigo.ui.detailtree;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -7,14 +7,14 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.swt.graphics.Image;
-import org.nightlabs.jjqb.core.JJQBCorePlugin;
-import org.nightlabs.jjqb.core.LabelTextOption;
-import org.nightlabs.jjqb.core.LabelTextUtil;
-import org.nightlabs.jjqb.core.ObjectReference;
-import org.nightlabs.jjqb.core.ObjectReferenceChild;
-import org.nightlabs.jjqb.core.PersistentObjectReference;
-import org.nightlabs.jjqb.core.oda.ResultSet;
-import org.nightlabs.jjqb.ui.JJQBUIPlugin;
+import org.nightlabs.vestigo.core.JJQBCorePlugin;
+import org.nightlabs.vestigo.core.LabelTextOption;
+import org.nightlabs.vestigo.core.LabelTextUtil;
+import org.nightlabs.vestigo.core.ObjectReference;
+import org.nightlabs.vestigo.core.ObjectReferenceChild;
+import org.nightlabs.vestigo.core.PersistentObjectReference;
+import org.nightlabs.vestigo.core.oda.ResultSet;
+import org.nightlabs.vestigo.ui.JJQBUIPlugin;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de

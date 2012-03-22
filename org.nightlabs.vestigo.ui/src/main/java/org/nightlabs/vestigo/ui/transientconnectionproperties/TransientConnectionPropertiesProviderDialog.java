@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.ui.transientconnectionproperties;
+package org.nightlabs.vestigo.ui.transientconnectionproperties;
 
 import java.util.Map;
 import java.util.Properties;
@@ -18,9 +18,9 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 import org.eclipse.ui.PlatformUI;
-import org.nightlabs.jjqb.core.oda.ConnectionProfile;
-import org.nightlabs.jjqb.core.transientconnectionproperties.TransientConnectionPropertiesProvider;
-import org.nightlabs.jjqb.ui.JJQBUIPlugin;
+import org.nightlabs.vestigo.core.oda.ConnectionProfile;
+import org.nightlabs.vestigo.core.transientconnectionproperties.TransientConnectionPropertiesProvider;
+import org.nightlabs.vestigo.ui.JJQBUIPlugin;
 
 public class TransientConnectionPropertiesProviderDialog extends TitleAreaDialog implements IPreferencePageContainer
 {

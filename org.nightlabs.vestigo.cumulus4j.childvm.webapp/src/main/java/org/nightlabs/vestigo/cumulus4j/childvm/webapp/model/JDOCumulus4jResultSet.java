@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.cumulus4j.childvm.webapp.model;
+package org.nightlabs.vestigo.cumulus4j.childvm.webapp.model;
 
 import java.lang.reflect.Field;
 import java.util.Collection;
@@ -6,8 +6,8 @@ import java.util.List;
 
 import javax.jdo.Query;
 
-import org.nightlabs.jjqb.childvm.webapp.model.FieldValue;
-import org.nightlabs.jjqb.childvm.webapp.model.JDOResultSet;
+import org.nightlabs.vestigo.childvm.webapp.model.FieldValue;
+import org.nightlabs.vestigo.childvm.webapp.model.JDOResultSet;
 
 public class JDOCumulus4jResultSet extends JDOResultSet
 {

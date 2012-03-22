@@ -2,14 +2,14 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<artifactId>org.nightlabs.jjqb.demo</artifactId>
+	<artifactId>org.nightlabs.vestigo.demo</artifactId>
 	<packaging>bundle</packaging>
 
 	<parent>
-		<groupId>org.nightlabs.jjqb</groupId>
-		<artifactId>org.nightlabs.jjqb.parent</artifactId>
+		<groupId>org.nightlabs.vestigo</groupId>
+		<artifactId>org.nightlabs.vestigo.parent</artifactId>
 		<version>0.2.0-SNAPSHOT</version>
-		<relativePath>../org.nightlabs.jjqb.parent</relativePath>
+		<relativePath>../org.nightlabs.vestigo.parent</relativePath>
 	</parent>
 
 	<dependencies>
@@ -76,7 +76,7 @@
 							<goal>java</goal>
 						</goals>
 						<configuration>
-							<mainClass>org.nightlabs.jjqb.demo.jpa.internal.DemoMovieDataGeneratorJPA</mainClass>
+							<mainClass>org.nightlabs.vestigo.demo.jpa.internal.DemoMovieDataGeneratorJPA</mainClass>
 						</configuration>
 					</execution>
 					<execution>
@@ -86,7 +86,7 @@
 							<goal>java</goal>
 						</goals>
 						<configuration>
-							<mainClass>org.nightlabs.jjqb.demo.jdo.internal.DemoMovieDataGeneratorJDO</mainClass>
+							<mainClass>org.nightlabs.vestigo.demo.jdo.internal.DemoMovieDataGeneratorJDO</mainClass>
 						</configuration>
 					</execution>
 				</executions>

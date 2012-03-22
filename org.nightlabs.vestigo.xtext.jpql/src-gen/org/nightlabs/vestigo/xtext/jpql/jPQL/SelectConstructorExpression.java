@@ -3,7 +3,7 @@
  * </copyright>
  *
  */
-package org.nightlabs.jjqb.xtext.jpql.jPQL;
+package org.nightlabs.vestigo.xtext.jpql.jPQL;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -15,12 +15,12 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.SelectConstructorExpression#getName <em>Name</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.SelectConstructorExpression#getItems <em>Items</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jpql.jPQL.SelectConstructorExpression#getName <em>Name</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jpql.jPQL.SelectConstructorExpression#getItems <em>Items</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getSelectConstructorExpression()
+ * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getSelectConstructorExpression()
  * @model
  * @generated
  */
@@ -36,14 +36,14 @@ public interface SelectConstructorExpression extends SelectExpression
    * <!-- end-user-doc -->
    * @return the value of the '<em>Name</em>' attribute.
    * @see #setName(String)
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getSelectConstructorExpression_Name()
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getSelectConstructorExpression_Name()
    * @model
    * @generated
    */
   String getName();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.SelectConstructorExpression#getName <em>Name</em>}' attribute.
+   * Sets the value of the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.SelectConstructorExpression#getName <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Name</em>' attribute.
@@ -54,7 +54,7 @@ public interface SelectConstructorExpression extends SelectExpression
 
   /**
    * Returns the value of the '<em><b>Items</b></em>' containment reference list.
-   * The list contents are of type {@link org.nightlabs.jjqb.xtext.jpql.jPQL.AliasAttributeExpression}.
+   * The list contents are of type {@link org.nightlabs.vestigo.xtext.jpql.jPQL.AliasAttributeExpression}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Items</em>' containment reference list isn't clear,
@@ -62,7 +62,7 @@ public interface SelectConstructorExpression extends SelectExpression
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Items</em>' containment reference list.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getSelectConstructorExpression_Items()
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getSelectConstructorExpression_Items()
    * @model containment="true"
    * @generated
    */

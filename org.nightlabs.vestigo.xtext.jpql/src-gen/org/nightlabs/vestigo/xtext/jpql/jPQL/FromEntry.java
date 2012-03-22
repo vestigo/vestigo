@@ -3,7 +3,7 @@
  * </copyright>
  *
  */
-package org.nightlabs.jjqb.xtext.jpql.jPQL;
+package org.nightlabs.vestigo.xtext.jpql.jPQL;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -15,11 +15,11 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.FromEntry#getVariable <em>Variable</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jpql.jPQL.FromEntry#getVariable <em>Variable</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getFromEntry()
+ * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getFromEntry()
  * @model
  * @generated
  */
@@ -35,14 +35,14 @@ public interface FromEntry extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Variable</em>' containment reference.
    * @see #setVariable(VariableDeclaration)
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getFromEntry_Variable()
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getFromEntry_Variable()
    * @model containment="true"
    * @generated
    */
   VariableDeclaration getVariable();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.FromEntry#getVariable <em>Variable</em>}' containment reference.
+   * Sets the value of the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.FromEntry#getVariable <em>Variable</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Variable</em>' containment reference.

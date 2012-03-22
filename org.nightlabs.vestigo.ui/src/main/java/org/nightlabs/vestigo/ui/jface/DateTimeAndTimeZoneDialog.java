@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.ui.jface;
+package org.nightlabs.vestigo.ui.jface;
 
 import java.util.Calendar;
 import java.util.Date;

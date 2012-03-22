@@ -1,11 +1,11 @@
-package org.nightlabs.jjqb.core;
+package org.nightlabs.vestigo.core;
 
 import java.lang.reflect.Field;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
 
-import org.nightlabs.jjqb.childvm.shared.api.ChildVM;
+import org.nightlabs.vestigo.childvm.shared.api.ChildVM;
 
 /**
  * <p>

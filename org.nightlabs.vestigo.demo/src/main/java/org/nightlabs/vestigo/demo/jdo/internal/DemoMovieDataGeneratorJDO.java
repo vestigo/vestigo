@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.demo.jdo.internal;
+package org.nightlabs.vestigo.demo.jdo.internal;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -12,10 +12,10 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
 
-import org.nightlabs.jjqb.demo.jdo.Language;
-import org.nightlabs.jjqb.demo.jdo.Movie;
-import org.nightlabs.jjqb.demo.jdo.Person;
-import org.nightlabs.jjqb.demo.jdo.Rating;
+import org.nightlabs.vestigo.demo.jdo.Language;
+import org.nightlabs.vestigo.demo.jdo.Movie;
+import org.nightlabs.vestigo.demo.jdo.Person;
+import org.nightlabs.vestigo.demo.jdo.Rating;
 
 public class DemoMovieDataGeneratorJDO {
 

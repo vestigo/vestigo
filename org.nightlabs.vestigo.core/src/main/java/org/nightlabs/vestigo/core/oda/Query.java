@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.core.oda;
+package org.nightlabs.vestigo.core.oda;
 
 import org.eclipse.datatools.connectivity.oda.IResultSet;
 import org.eclipse.datatools.connectivity.oda.OdaException;

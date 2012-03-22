@@ -3,7 +3,7 @@
  * </copyright>
  *
  */
-package org.nightlabs.jjqb.xtext.jpql.jPQL;
+package org.nightlabs.vestigo.xtext.jpql.jPQL;
 
 
 /**
@@ -14,11 +14,11 @@ package org.nightlabs.jjqb.xtext.jpql.jPQL;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.LeftJoin#isIsOuter <em>Is Outer</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jpql.jPQL.LeftJoin#isIsOuter <em>Is Outer</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getLeftJoin()
+ * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getLeftJoin()
  * @model
  * @generated
  */
@@ -34,14 +34,14 @@ public interface LeftJoin extends FromJoin
    * <!-- end-user-doc -->
    * @return the value of the '<em>Is Outer</em>' attribute.
    * @see #setIsOuter(boolean)
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getLeftJoin_IsOuter()
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getLeftJoin_IsOuter()
    * @model
    * @generated
    */
   boolean isIsOuter();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.LeftJoin#isIsOuter <em>Is Outer</em>}' attribute.
+   * Sets the value of the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.LeftJoin#isIsOuter <em>Is Outer</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Is Outer</em>' attribute.

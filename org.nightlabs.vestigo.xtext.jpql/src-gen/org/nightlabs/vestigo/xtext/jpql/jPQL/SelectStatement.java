@@ -3,7 +3,7 @@
  * </copyright>
  *
  */
-package org.nightlabs.jjqb.xtext.jpql.jPQL;
+package org.nightlabs.vestigo.xtext.jpql.jPQL;
 
 
 /**
@@ -14,14 +14,14 @@ package org.nightlabs.jjqb.xtext.jpql.jPQL;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.SelectStatement#getSelectClause <em>Select Clause</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.SelectStatement#getFromClause <em>From Clause</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.SelectStatement#getGroupByClause <em>Group By Clause</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.SelectStatement#getOrderByClause <em>Order By Clause</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jpql.jPQL.SelectStatement#getSelectClause <em>Select Clause</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jpql.jPQL.SelectStatement#getFromClause <em>From Clause</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jpql.jPQL.SelectStatement#getGroupByClause <em>Group By Clause</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jpql.jPQL.SelectStatement#getOrderByClause <em>Order By Clause</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getSelectStatement()
+ * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getSelectStatement()
  * @model
  * @generated
  */
@@ -37,14 +37,14 @@ public interface SelectStatement extends JPQLQuery, ExpressionTerm
    * <!-- end-user-doc -->
    * @return the value of the '<em>Select Clause</em>' containment reference.
    * @see #setSelectClause(SelectClause)
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getSelectStatement_SelectClause()
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getSelectStatement_SelectClause()
    * @model containment="true"
    * @generated
    */
   SelectClause getSelectClause();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.SelectStatement#getSelectClause <em>Select Clause</em>}' containment reference.
+   * Sets the value of the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.SelectStatement#getSelectClause <em>Select Clause</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Select Clause</em>' containment reference.
@@ -63,14 +63,14 @@ public interface SelectStatement extends JPQLQuery, ExpressionTerm
    * <!-- end-user-doc -->
    * @return the value of the '<em>From Clause</em>' containment reference.
    * @see #setFromClause(FromClause)
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getSelectStatement_FromClause()
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getSelectStatement_FromClause()
    * @model containment="true"
    * @generated
    */
   FromClause getFromClause();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.SelectStatement#getFromClause <em>From Clause</em>}' containment reference.
+   * Sets the value of the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.SelectStatement#getFromClause <em>From Clause</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>From Clause</em>' containment reference.
@@ -89,14 +89,14 @@ public interface SelectStatement extends JPQLQuery, ExpressionTerm
    * <!-- end-user-doc -->
    * @return the value of the '<em>Group By Clause</em>' containment reference.
    * @see #setGroupByClause(GroupByClause)
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getSelectStatement_GroupByClause()
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getSelectStatement_GroupByClause()
    * @model containment="true"
    * @generated
    */
   GroupByClause getGroupByClause();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.SelectStatement#getGroupByClause <em>Group By Clause</em>}' containment reference.
+   * Sets the value of the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.SelectStatement#getGroupByClause <em>Group By Clause</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Group By Clause</em>' containment reference.
@@ -115,14 +115,14 @@ public interface SelectStatement extends JPQLQuery, ExpressionTerm
    * <!-- end-user-doc -->
    * @return the value of the '<em>Order By Clause</em>' containment reference.
    * @see #setOrderByClause(OrderByClause)
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getSelectStatement_OrderByClause()
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getSelectStatement_OrderByClause()
    * @model containment="true"
    * @generated
    */
   OrderByClause getOrderByClause();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.SelectStatement#getOrderByClause <em>Order By Clause</em>}' containment reference.
+   * Sets the value of the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.SelectStatement#getOrderByClause <em>Order By Clause</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Order By Clause</em>' containment reference.

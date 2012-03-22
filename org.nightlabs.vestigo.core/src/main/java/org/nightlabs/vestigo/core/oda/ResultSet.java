@@ -1,14 +1,14 @@
-package org.nightlabs.jjqb.core.oda;
+package org.nightlabs.vestigo.core.oda;
 
 import org.eclipse.datatools.connectivity.oda.IResultSet;
 import org.eclipse.datatools.connectivity.oda.IResultSetMetaData;
 import org.eclipse.datatools.connectivity.oda.OdaException;
-import org.nightlabs.jjqb.childvm.shared.ResultSetID;
-import org.nightlabs.jjqb.childvm.shared.dto.ResultCellDTO;
-import org.nightlabs.jjqb.childvm.shared.dto.ResultCellNullDTO;
-import org.nightlabs.jjqb.childvm.shared.dto.ResultCellSimpleDTO;
-import org.nightlabs.jjqb.core.ObjectReference;
-import org.nightlabs.jjqb.core.resource.Messages;
+import org.nightlabs.vestigo.childvm.shared.ResultSetID;
+import org.nightlabs.vestigo.childvm.shared.dto.ResultCellDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.ResultCellNullDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.ResultCellSimpleDTO;
+import org.nightlabs.vestigo.core.ObjectReference;
+import org.nightlabs.vestigo.core.resource.Messages;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de

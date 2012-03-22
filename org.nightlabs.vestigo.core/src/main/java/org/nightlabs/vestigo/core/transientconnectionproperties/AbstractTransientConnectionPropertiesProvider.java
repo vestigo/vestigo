@@ -1,8 +1,8 @@
-package org.nightlabs.jjqb.core.transientconnectionproperties;
+package org.nightlabs.vestigo.core.transientconnectionproperties;
 
 import java.util.Collection;
 
-import org.nightlabs.jjqb.core.oda.ConnectionProfile;
+import org.nightlabs.vestigo.core.oda.ConnectionProfile;
 
 public abstract class AbstractTransientConnectionPropertiesProvider
 implements TransientConnectionPropertiesProvider

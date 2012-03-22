@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.core.progress;
+package org.nightlabs.vestigo.core.progress;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.nightlabs.progress.ProgressMonitor;

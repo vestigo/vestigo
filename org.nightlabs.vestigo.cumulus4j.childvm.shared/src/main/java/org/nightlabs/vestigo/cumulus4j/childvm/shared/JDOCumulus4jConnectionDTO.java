@@ -1,9 +1,9 @@
 /**
  * 
  */
-package org.nightlabs.jjqb.cumulus4j.childvm.shared;
+package org.nightlabs.vestigo.cumulus4j.childvm.shared;
 
-import org.nightlabs.jjqb.childvm.shared.dto.JDOConnectionDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.JDOConnectionDTO;
 
 /**
  * @author Alexander Bieber <!-- alex [AT] nightlabs [DOT] de -->

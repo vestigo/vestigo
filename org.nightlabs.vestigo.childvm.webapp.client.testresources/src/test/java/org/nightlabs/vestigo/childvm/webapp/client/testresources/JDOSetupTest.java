@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.nightlabs.jjqb.childvm.webapp.client.testresources;
+package org.nightlabs.vestigo.childvm.webapp.client.testresources;
 
 import java.util.Date;
 import java.util.Map;
@@ -16,9 +16,9 @@ import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Transaction;
 
 import org.junit.Test;
-import org.nightlabs.jjqb.childvm.webapp.client.testmodel.jdo.JDOCollectionElement;
-import org.nightlabs.jjqb.childvm.webapp.client.testmodel.jdo.JDOComplexEntity;
-import org.nightlabs.jjqb.childvm.webapp.client.testmodel.jdo.JDOReferencedElement;
+import org.nightlabs.vestigo.childvm.webapp.client.testmodel.jdo.JDOCollectionElement;
+import org.nightlabs.vestigo.childvm.webapp.client.testmodel.jdo.JDOComplexEntity;
+import org.nightlabs.vestigo.childvm.webapp.client.testmodel.jdo.JDOReferencedElement;
 
 
 /**

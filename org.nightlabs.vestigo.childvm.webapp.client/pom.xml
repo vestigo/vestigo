@@ -1,24 +1,24 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<artifactId>org.nightlabs.jjqb.childvm.webapp.client</artifactId>
+	<artifactId>org.nightlabs.vestigo.childvm.webapp.client</artifactId>
 	<packaging>bundle</packaging>
 
 	<parent>
-		<groupId>org.nightlabs.jjqb</groupId>
-		<artifactId>org.nightlabs.jjqb.parent</artifactId>
+		<groupId>org.nightlabs.vestigo</groupId>
+		<artifactId>org.nightlabs.vestigo.parent</artifactId>
 		<version>0.2.0-SNAPSHOT</version>
-		<relativePath>../org.nightlabs.jjqb.parent</relativePath>
+		<relativePath>../org.nightlabs.vestigo.parent</relativePath>
 	</parent>
 
 	<dependencies>
 		<dependency>
-			<groupId>org.nightlabs.jjqb</groupId>
-			<artifactId>org.nightlabs.jjqb.childvm.shared</artifactId>
+			<groupId>org.nightlabs.vestigo</groupId>
+			<artifactId>org.nightlabs.vestigo.childvm.shared</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.nightlabs.jjqb</groupId>
-			<artifactId>org.nightlabs.jjqb.childvm.webapp</artifactId>
+			<groupId>org.nightlabs.vestigo</groupId>
+			<artifactId>org.nightlabs.vestigo.childvm.webapp</artifactId>
 			<type>war</type>
 		</dependency>
 
@@ -50,8 +50,8 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.nightlabs.jjqb</groupId>
-			<artifactId>org.nightlabs.jjqb.childvm.webapp.client.testresources</artifactId>
+			<groupId>org.nightlabs.vestigo</groupId>
+			<artifactId>org.nightlabs.vestigo.childvm.webapp.client.testresources</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -78,8 +78,8 @@
 						<artifactId>jetty-maven-plugin</artifactId>
 						<version>8.1.0.RC2</version>
 						<configuration>
-							<war>${project.build.directory}/../../org.nightlabs.jjqb.childvm.webapp/target/org.nightlabs.jjqb.childvm.webapp-${jjqb.version}.war</war>
-							<contextPath>org.nightlabs.jjqb.childvm.webapp</contextPath>
+							<war>${project.build.directory}/../../org.nightlabs.vestigo.childvm.webapp/target/org.nightlabs.vestigo.childvm.webapp-${vestigo.version}.war</war>
+							<contextPath>org.nightlabs.vestigo.childvm.webapp</contextPath>
 							<scanIntervalSeconds>10</scanIntervalSeconds>
 							<stopKey>foo</stopKey>
 							<stopPort>9999</stopPort>
@@ -90,12 +90,12 @@
 									<value>file:${project.basedir}/src/test/resources/log4j.properties</value>
 								</systemProperty>
 								<systemProperty>
-									<name>org.nightlabs.jjqb.childvm.webapp.ParentVMHeartBeat.checkHeartbeat</name>
+									<name>org.nightlabs.vestigo.childvm.webapp.ParentVMHeartBeat.checkHeartbeat</name>
 									<value>false</value>
 								</systemProperty>
 								<systemProperty>
-									<name>jjqb.version</name>
-									<value>${jjqb.version}</value>
+									<name>vestigo.version</name>
+									<value>${vestigo.version}</value>
 								</systemProperty>
 							</systemProperties>
 						</configuration>
@@ -134,8 +134,8 @@
 				<artifactId>maven-failsafe-plugin</artifactId>
 				<configuration>
 					<systemPropertyVariables>
-						<jjqb-test-connection-libs>${project.build.directory}/dependency/jjqb-test-connection-libs</jjqb-test-connection-libs>
-						<jjqb.version>${jjqb.version}</jjqb.version>
+						<vestigo-test-connection-libs>${project.build.directory}/dependency/vestigo-test-connection-libs</vestigo-test-connection-libs>
+						<vestigo.version>${vestigo.version}</vestigo.version>
 					</systemPropertyVariables>
 				</configuration>
 				<executions>
@@ -166,9 +166,9 @@
 							<goal>unpack-dependencies</goal>
 						</goals>
 						<configuration>
-							<includeArtifactIds>org.nightlabs.jjqb.childvm.webapp.client.testresources</includeArtifactIds>
+							<includeArtifactIds>org.nightlabs.vestigo.childvm.webapp.client.testresources</includeArtifactIds>
 							<outputDirectory>${project.build.directory}/dependency</outputDirectory>
-							<includes>jjqb-test-connection-libs/**/*.*</includes>
+							<includes>vestigo-test-connection-libs/**/*.*</includes>
 							<overWriteReleases>false</overWriteReleases>
 							<overWriteSnapshots>true</overWriteSnapshots>
 						</configuration>

@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.ui.oda;
+package org.nightlabs.vestigo.ui.oda;
 
 import java.util.List;
 import java.util.Map;
@@ -19,7 +19,7 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Shell;
-import org.nightlabs.jjqb.ui.JJQBUIPlugin;
+import org.nightlabs.vestigo.ui.JJQBUIPlugin;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de

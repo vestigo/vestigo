@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.childvm.shared.persistencexml;
+package org.nightlabs.vestigo.childvm.shared.persistencexml;
 
 import java.io.File;
 import java.io.IOException;
@@ -15,8 +15,8 @@ import java.util.zip.ZipFile;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 
-import org.nightlabs.jjqb.childvm.shared.classloader.ClassLoaderManager;
-import org.nightlabs.jjqb.childvm.shared.persistencexml.jaxb.Persistence;
+import org.nightlabs.vestigo.childvm.shared.classloader.ClassLoaderManager;
+import org.nightlabs.vestigo.childvm.shared.persistencexml.jaxb.Persistence;
 import org.nightlabs.progress.NullProgressMonitor;
 import org.nightlabs.progress.OperationCanceledException;
 import org.nightlabs.progress.ProgressMonitor;

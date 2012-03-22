@@ -3,7 +3,7 @@
  * </copyright>
  *
  */
-package org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl;
+package org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -14,17 +14,17 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.FromClause;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.GroupByClause;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.ImportClause;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.OrderByClause;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.ParametersClause;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.RangeClause;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.SelectClause;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.SingleStringJDOQL;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.VariablesClause;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.WhereClause;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.FromClause;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.GroupByClause;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.ImportClause;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.JDOQLPackage;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.OrderByClause;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.ParametersClause;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.RangeClause;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.SelectClause;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.SingleStringJDOQL;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.VariablesClause;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.WhereClause;
 
 /**
  * <!-- begin-user-doc -->
@@ -33,15 +33,15 @@ import org.nightlabs.jjqb.xtext.jdoql.jDOQL.WhereClause;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SingleStringJDOQLImpl#getSelectClause <em>Select Clause</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SingleStringJDOQLImpl#getFromClause <em>From Clause</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SingleStringJDOQLImpl#getWhereClause <em>Where Clause</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SingleStringJDOQLImpl#getVariablesClause <em>Variables Clause</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SingleStringJDOQLImpl#getParametersClause <em>Parameters Clause</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SingleStringJDOQLImpl#getImportClause <em>Import Clause</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SingleStringJDOQLImpl#getGroupByClause <em>Group By Clause</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SingleStringJDOQLImpl#getOrderByClause <em>Order By Clause</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SingleStringJDOQLImpl#getRangeClause <em>Range Clause</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.SingleStringJDOQLImpl#getSelectClause <em>Select Clause</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.SingleStringJDOQLImpl#getFromClause <em>From Clause</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.SingleStringJDOQLImpl#getWhereClause <em>Where Clause</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.SingleStringJDOQLImpl#getVariablesClause <em>Variables Clause</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.SingleStringJDOQLImpl#getParametersClause <em>Parameters Clause</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.SingleStringJDOQLImpl#getImportClause <em>Import Clause</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.SingleStringJDOQLImpl#getGroupByClause <em>Group By Clause</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.SingleStringJDOQLImpl#getOrderByClause <em>Order By Clause</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.SingleStringJDOQLImpl#getRangeClause <em>Range Clause</em>}</li>
  * </ul>
  * </p>
  *

@@ -1,11 +1,11 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: org.nightlabs.jjqb.xtext.jdoql.ui
+Bundle-Name: org.nightlabs.vestigo.xtext.jdoql.ui
 Bundle-Vendor: NightLabs Consulting GmbH
 Bundle-Version: 0.2.0.qualifier
-Bundle-SymbolicName: org.nightlabs.jjqb.xtext.jdoql.ui;singleton:=true
+Bundle-SymbolicName: org.nightlabs.vestigo.xtext.jdoql.ui;singleton:=true
 Bundle-ActivationPolicy: lazy
-Require-Bundle: org.nightlabs.jjqb.xtext.jdoql;visibility:=reexport,
+Require-Bundle: org.nightlabs.vestigo.xtext.jdoql;visibility:=reexport,
  org.eclipse.xtext.ui,
  org.eclipse.ui.editors;bundle-version="3.5.0",
  org.eclipse.ui.ide;bundle-version="3.5.0",
@@ -16,14 +16,14 @@ Require-Bundle: org.nightlabs.jjqb.xtext.jdoql;visibility:=reexport,
  org.eclipse.xtext.common.types.ui,
  org.eclipse.xtext.ui.codetemplates.ui,
  org.eclipse.compare,
- org.nightlabs.jjqb.core,
- org.nightlabs.jjqb.ui
+ org.nightlabs.vestigo.core,
+ org.nightlabs.vestigo.ui
 Import-Package: org.apache.commons.logging,
  org.apache.log4j,
  org.slf4j
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Export-Package: org.nightlabs.jjqb.xtext.jdoql.ui.contentassist,
- org.nightlabs.jjqb.xtext.jdoql.ui.contentassist.antlr,
- org.nightlabs.jjqb.xtext.jdoql.ui.internal
-Bundle-Activator: org.nightlabs.jjqb.xtext.jdoql.ui.internal.JDOQLActivator
+Export-Package: org.nightlabs.vestigo.xtext.jdoql.ui.contentassist,
+ org.nightlabs.vestigo.xtext.jdoql.ui.contentassist.antlr,
+ org.nightlabs.vestigo.xtext.jdoql.ui.internal
+Bundle-Activator: org.nightlabs.vestigo.xtext.jdoql.ui.internal.JDOQLActivator
 Bundle-ClassPath: .

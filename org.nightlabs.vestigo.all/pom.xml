@@ -2,52 +2,52 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<artifactId>org.nightlabs.jjqb.all</artifactId>
+	<artifactId>org.nightlabs.vestigo.all</artifactId>
 	<packaging>pom</packaging>
 
 	<parent>
-		<groupId>org.nightlabs.jjqb</groupId>
-		<artifactId>org.nightlabs.jjqb.parent</artifactId>
+		<groupId>org.nightlabs.vestigo</groupId>
+		<artifactId>org.nightlabs.vestigo.parent</artifactId>
 		<version>0.2.0-SNAPSHOT</version>
-		<relativePath>../org.nightlabs.jjqb.parent</relativePath>
+		<relativePath>../org.nightlabs.vestigo.parent</relativePath>
 	</parent>
 
 	<modules>
-		<module>../org.nightlabs.jjqb.childvm.shared</module>
-		<module>../org.nightlabs.jjqb.childvm.webapp</module>
-		<module>../org.nightlabs.jjqb.childvm.webapp.client</module>
-		<module>../org.nightlabs.jjqb.childvm.webapp.client.testmodel</module>
-		<module>../org.nightlabs.jjqb.childvm.webapp.client.testresources</module>
-		<module>../org.nightlabs.jjqb.core</module>
-		<module>../org.nightlabs.jjqb.parent</module>
-		<module>../org.nightlabs.jjqb.ui</module>
-		<module>../org.nightlabs.jjqb.assembly.parent</module>
+		<module>../org.nightlabs.vestigo.childvm.shared</module>
+		<module>../org.nightlabs.vestigo.childvm.webapp</module>
+		<module>../org.nightlabs.vestigo.childvm.webapp.client</module>
+		<module>../org.nightlabs.vestigo.childvm.webapp.client.testmodel</module>
+		<module>../org.nightlabs.vestigo.childvm.webapp.client.testresources</module>
+		<module>../org.nightlabs.vestigo.core</module>
+		<module>../org.nightlabs.vestigo.parent</module>
+		<module>../org.nightlabs.vestigo.ui</module>
+		<module>../org.nightlabs.vestigo.assembly.parent</module>
 
 		<!-- BEGIN Cumulus4j -->
-		<module>../org.nightlabs.jjqb.cumulus4j.childvm.shared</module>
-		<module>../org.nightlabs.jjqb.cumulus4j.childvm.webapp</module>
-		<module>../org.nightlabs.jjqb.cumulus4j.core</module>
-		<module>../org.nightlabs.jjqb.cumulus4j.ui</module>
+		<module>../org.nightlabs.vestigo.cumulus4j.childvm.shared</module>
+		<module>../org.nightlabs.vestigo.cumulus4j.childvm.webapp</module>
+		<module>../org.nightlabs.vestigo.cumulus4j.core</module>
+		<module>../org.nightlabs.vestigo.cumulus4j.ui</module>
 		<!-- END Cumulus4j -->
 		
 		<!-- BEGIN JDT -->
-		<module>../org.nightlabs.jjqb.jdt.core</module>
-		<module>../org.nightlabs.jjqb.jdt.ui</module>
+		<module>../org.nightlabs.vestigo.jdt.core</module>
+		<module>../org.nightlabs.vestigo.jdt.ui</module>
 		<!-- END JDT -->
 		
 		<!-- BEGIN XText -->
-		<module>../org.nightlabs.jjqb.xtext.parent</module>
-		<module>../org.nightlabs.jjqb.xtext.jdoql</module>
-		<module>../org.nightlabs.jjqb.xtext.jdoql.tests</module>
-		<module>../org.nightlabs.jjqb.xtext.jdoql.ui</module>
-		<module>../org.nightlabs.jjqb.xtext.jpql</module>
-		<module>../org.nightlabs.jjqb.xtext.jpql.tests</module>
-		<module>../org.nightlabs.jjqb.xtext.jpql.ui</module>
+		<module>../org.nightlabs.vestigo.xtext.parent</module>
+		<module>../org.nightlabs.vestigo.xtext.jdoql</module>
+		<module>../org.nightlabs.vestigo.xtext.jdoql.tests</module>
+		<module>../org.nightlabs.vestigo.xtext.jdoql.ui</module>
+		<module>../org.nightlabs.vestigo.xtext.jpql</module>
+		<module>../org.nightlabs.vestigo.xtext.jpql.tests</module>
+		<module>../org.nightlabs.vestigo.xtext.jpql.ui</module>
 		<!-- END XText -->
 
 		<!-- All tycho build projects -->
 		<!-- 
-		<module>../org.nightlabs.jjqb.tycho</module>
+		<module>../org.nightlabs.vestigo.tycho</module>
 		 -->
 	</modules>
 	
@@ -66,12 +66,12 @@
 				</property>
 			</activation>
 			<modules>
-				<module>../org.nightlabs.jjqb.assembly.linux-gtk</module>
-				<module>../org.nightlabs.jjqb.assembly.linux-gtk-x86_64</module>
-				<module>../org.nightlabs.jjqb.assembly.macosx-cocoa</module>
-				<module>../org.nightlabs.jjqb.assembly.macosx-cocoa-x86_64</module>
-				<module>../org.nightlabs.jjqb.assembly.win32</module>
-				<module>../org.nightlabs.jjqb.assembly.win32-x86_64</module>
+				<module>../org.nightlabs.vestigo.assembly.linux-gtk</module>
+				<module>../org.nightlabs.vestigo.assembly.linux-gtk-x86_64</module>
+				<module>../org.nightlabs.vestigo.assembly.macosx-cocoa</module>
+				<module>../org.nightlabs.vestigo.assembly.macosx-cocoa-x86_64</module>
+				<module>../org.nightlabs.vestigo.assembly.win32</module>
+				<module>../org.nightlabs.vestigo.assembly.win32-x86_64</module>
 			</modules>
 		</profile>
 
@@ -89,7 +89,7 @@
 				</os>
 			</activation>
 			<modules>
-				<module>../org.nightlabs.jjqb.assembly.linux-gtk</module>
+				<module>../org.nightlabs.vestigo.assembly.linux-gtk</module>
 			</modules>
 		</profile>
 		<profile>
@@ -106,7 +106,7 @@
 				</os>
 			</activation>
 			<modules>
-				<module>../org.nightlabs.jjqb.assembly.linux-gtk-x86_64</module>
+				<module>../org.nightlabs.vestigo.assembly.linux-gtk-x86_64</module>
 			</modules>
 		</profile>
 
@@ -124,7 +124,7 @@
 				</os>
 			</activation>
 			<modules>
-				<module>../org.nightlabs.jjqb.assembly.macosx-cocoa</module>
+				<module>../org.nightlabs.vestigo.assembly.macosx-cocoa</module>
 			</modules>
 		</profile>
 		<profile>
@@ -141,7 +141,7 @@
 				</os>
 			</activation>
 			<modules>
-				<module>../org.nightlabs.jjqb.assembly.macosx-cocoa-x86_64</module>
+				<module>../org.nightlabs.vestigo.assembly.macosx-cocoa-x86_64</module>
 			</modules>
 		</profile>
 
@@ -158,7 +158,7 @@
 				</os>
 			</activation>
 			<modules>
-				<module>../org.nightlabs.jjqb.assembly.win32</module>
+				<module>../org.nightlabs.vestigo.assembly.win32</module>
 			</modules>
 		</profile>
 		<profile>
@@ -174,7 +174,7 @@
 				</os>
 			</activation>
 			<modules>
-				<module>../org.nightlabs.jjqb.assembly.win32-x86_64</module>
+				<module>../org.nightlabs.vestigo.assembly.win32-x86_64</module>
 			</modules>
 		</profile>
 	</profiles>
@@ -189,12 +189,12 @@ Quick try with tycho - didn't work this way, yet, though :-( Need more research.
 
 	<dependencies>
 		<dependency>
-			<groupId>org.nightlabs.jjqb</groupId>
-			<artifactId>org.nightlabs.jjqb.core</artifactId>
+			<groupId>org.nightlabs.vestigo</groupId>
+			<artifactId>org.nightlabs.vestigo.core</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.nightlabs.jjqb</groupId>
-			<artifactId>org.nightlabs.jjqb.ui</artifactId>
+			<groupId>org.nightlabs.vestigo</groupId>
+			<artifactId>org.nightlabs.vestigo.ui</artifactId>
 		</dependency>
 	</dependencies>
 
@@ -260,7 +260,7 @@ Quick try with tycho - didn't work this way, yet, though :-( Need more research.
 		<!--
 		We configure the site only here (and not in the parent), because it otherwise uploads all
 		modules individually, which we don't want. We want it to upload only the one from
-		org.nightlabs.jjqb.all.
+		org.nightlabs.vestigo.all.
 
 		The property "distributionManagement.site.prefix" must be declared in the settings.xml
 		like this:
@@ -278,7 +278,7 @@ Quick try with tycho - didn't work this way, yet, though :-( Need more research.
         </profiles>
 		-->
 		<site>
-			<id>jjqb.nightlabs.com</id>
+			<id>vestigo.nightlabs.com</id>
 			<url>${distributionManagement.site.prefix}/vestigo.nightlabs.com/htdocs/${project.version}/</url>
 		</site>
 	</distributionManagement>

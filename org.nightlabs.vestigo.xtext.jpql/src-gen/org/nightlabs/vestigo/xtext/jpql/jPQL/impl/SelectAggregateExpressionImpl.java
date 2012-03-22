@@ -3,7 +3,7 @@
  * </copyright>
  *
  */
-package org.nightlabs.jjqb.xtext.jpql.jPQL.impl;
+package org.nightlabs.vestigo.xtext.jpql.jPQL.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -13,9 +13,9 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.nightlabs.jjqb.xtext.jpql.jPQL.AliasAttributeExpression;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.SelectAggregateExpression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.AliasAttributeExpression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.SelectAggregateExpression;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,8 +24,8 @@ import org.nightlabs.jjqb.xtext.jpql.jPQL.SelectAggregateExpression;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.SelectAggregateExpressionImpl#isIsDistinct <em>Is Distinct</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.SelectAggregateExpressionImpl#getItem <em>Item</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.SelectAggregateExpressionImpl#isIsDistinct <em>Is Distinct</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.SelectAggregateExpressionImpl#getItem <em>Item</em>}</li>
  * </ul>
  * </p>
  *

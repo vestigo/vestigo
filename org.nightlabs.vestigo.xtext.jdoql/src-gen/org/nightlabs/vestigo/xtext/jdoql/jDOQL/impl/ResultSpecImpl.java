@@ -3,14 +3,14 @@
  * </copyright>
  *
  */
-package org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl;
+package org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl;
 
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.ResultSpec;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.JDOQLPackage;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.ResultSpec;
 
 /**
  * <!-- begin-user-doc -->

@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.cumulus4j.childvm.shared;
+package org.nightlabs.vestigo.cumulus4j.childvm.shared;
 
 public class Cumulus4jConnectionProperties
 {

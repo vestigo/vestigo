@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.nightlabs.jjqb.childvm.webapp.client.testmodel.jpa;
+package org.nightlabs.vestigo.childvm.webapp.client.testmodel.jpa;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

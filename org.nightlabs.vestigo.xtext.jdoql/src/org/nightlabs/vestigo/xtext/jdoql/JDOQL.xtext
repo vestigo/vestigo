@@ -1,6 +1,6 @@
-grammar org.nightlabs.jjqb.xtext.jdoql.JDOQL with org.eclipse.xtext.common.Terminals
+grammar org.nightlabs.vestigo.xtext.jdoql.JDOQL with org.eclipse.xtext.common.Terminals
 
-generate jDOQL 'http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL'
+generate jDOQL 'http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL'
 
 // http://www.datanucleus.org/products/accessplatform_3_1/jdo/jdoql_methods.html
 // http://db.apache.org/jdo/specifications.html

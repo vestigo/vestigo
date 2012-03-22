@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.childvm.webapp.service;
+package org.nightlabs.vestigo.childvm.webapp.service;
 
 import java.util.Collection;
 import java.util.UUID;
@@ -10,13 +10,13 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.QueryParam;
 
-import org.nightlabs.jjqb.childvm.shared.dto.ConnectionDTO;
-import org.nightlabs.jjqb.childvm.shared.dto.ConnectionDTOList;
-import org.nightlabs.jjqb.childvm.shared.dto.ConnectionDTOPutResult;
-import org.nightlabs.jjqb.childvm.webapp.model.Connection;
-import org.nightlabs.jjqb.childvm.webapp.model.ConnectionManager;
-import org.nightlabs.jjqb.childvm.webapp.model.ConnectionProfile;
-import org.nightlabs.jjqb.childvm.webapp.model.ConnectionProfileManager;
+import org.nightlabs.vestigo.childvm.shared.dto.ConnectionDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.ConnectionDTOList;
+import org.nightlabs.vestigo.childvm.shared.dto.ConnectionDTOPutResult;
+import org.nightlabs.vestigo.childvm.webapp.model.Connection;
+import org.nightlabs.vestigo.childvm.webapp.model.ConnectionManager;
+import org.nightlabs.vestigo.childvm.webapp.model.ConnectionProfile;
+import org.nightlabs.vestigo.childvm.webapp.model.ConnectionProfileManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

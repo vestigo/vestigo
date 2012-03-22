@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.core.childvm.internal;
+package org.nightlabs.vestigo.core.childvm.internal;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;

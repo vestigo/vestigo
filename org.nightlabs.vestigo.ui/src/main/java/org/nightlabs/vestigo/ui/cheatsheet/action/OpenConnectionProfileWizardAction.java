@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.ui.cheatsheet.action;
+package org.nightlabs.vestigo.ui.cheatsheet.action;
 
 import org.eclipse.datatools.connectivity.internal.Category;
 import org.eclipse.datatools.connectivity.ui.actions.AddProfileViewAction;
@@ -21,7 +21,7 @@ public class OpenConnectionProfileWizardAction extends Action implements IAction
 	@Override
 	public void run(final String[] params, final ICheatSheetManager cheatSheetManager) {
 		try {
-			final String categoryID = "org.nightlabs.jjqb.core.oda.JPADriver";
+			final String categoryID = "org.nightlabs.vestigo.core.oda.JPADriver";
 			IViewPart dataSourceNavigatorView = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
 					.showView("org.eclipse.datatools.connectivity.DataSourceExplorerNavigator");
 			Category jpaCategory = new Category(null) {

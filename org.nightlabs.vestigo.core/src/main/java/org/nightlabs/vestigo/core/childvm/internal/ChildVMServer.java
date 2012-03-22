@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.core.childvm.internal;
+package org.nightlabs.vestigo.core.childvm.internal;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -26,11 +26,11 @@ import org.eclipse.core.runtime.IExtension;
 import org.eclipse.core.runtime.IExtensionPoint;
 import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.Platform;
-import org.nightlabs.jjqb.childvm.shared.api.ChildVM;
-import org.nightlabs.jjqb.childvm.webapp.client.ChildVMWebappClient;
-import org.nightlabs.jjqb.core.JJQBCorePlugin;
-import org.nightlabs.jjqb.core.childvm.LogLevel;
-import org.nightlabs.jjqb.core.childvm.WebApp;
+import org.nightlabs.vestigo.childvm.shared.api.ChildVM;
+import org.nightlabs.vestigo.childvm.webapp.client.ChildVMWebappClient;
+import org.nightlabs.vestigo.core.JJQBCorePlugin;
+import org.nightlabs.vestigo.core.childvm.LogLevel;
+import org.nightlabs.vestigo.core.childvm.WebApp;
 import org.nightlabs.util.IOUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -223,7 +223,7 @@ public class ChildVMServer
 		if (registry == null)
 			throw new IllegalStateException("Platform.getExtensionRegistry() returned null!");
 
-		final String extensionPointId = "org.nightlabs.jjqb.core.childVMWebApp";
+		final String extensionPointId = "org.nightlabs.vestigo.core.childVMWebApp";
 		final IExtensionPoint extensionPoint = registry.getExtensionPoint(extensionPointId);
 		if (extensionPoint == null)
 			throw new IllegalStateException("Unable to resolve extension-point: " + extensionPointId); //$NON-NLS-1$

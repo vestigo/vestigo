@@ -3,7 +3,7 @@
  * </copyright>
  *
  */
-package org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl;
+package org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -13,45 +13,45 @@ import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.AdditionExpression;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.AdditionOperator;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.Alias;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.ComparisonOperator;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.ComparisonOperatorExpression;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.ConditionalAndExpression;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.ConditionalOrExpression;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.FieldAccessExpression;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.FromClause;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.GroupByClause;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.HavingClause;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.ImportClause;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.IntoClause;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLFactory;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.MultiplicationExpression;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.MultiplicationOperator;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.OrderByClause;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.OrderByDirection;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.OrderBySpec;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.ParameterDeclaration;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.ParametersClause;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.RangeClause;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.ResultClause;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.ResultNaming;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.ResultSpec;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.SelectClause;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.SimpleAndExpression;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.SimpleOrExpression;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.SingleStringJDOQL;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.Subquery;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.SubqueryFromClause;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.SubqueryResultClause;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.SubquerySelectClause;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.UnaryOperator;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.VariableDeclaration;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.VariablesClause;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.WhereClause;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.AdditionExpression;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.AdditionOperator;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.Alias;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.ComparisonOperator;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.ComparisonOperatorExpression;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.ConditionalAndExpression;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.ConditionalOrExpression;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.FieldAccessExpression;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.FromClause;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.GroupByClause;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.HavingClause;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.ImportClause;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.IntoClause;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.JDOQLFactory;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.JDOQLPackage;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.MultiplicationExpression;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.MultiplicationOperator;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.OrderByClause;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.OrderByDirection;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.OrderBySpec;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.ParameterDeclaration;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.ParametersClause;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.RangeClause;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.ResultClause;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.ResultNaming;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.ResultSpec;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.SelectClause;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.SimpleAndExpression;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.SimpleOrExpression;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.SingleStringJDOQL;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.Subquery;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.SubqueryFromClause;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.SubqueryResultClause;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.SubquerySelectClause;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.UnaryOperator;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.VariableDeclaration;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.VariablesClause;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.WhereClause;
 
 /**
  * <!-- begin-user-doc -->
@@ -331,7 +331,7 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see org.eclipse.emf.ecore.EPackage.Registry
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage#eNS_URI
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.JDOQLPackage#eNS_URI
    * @see #init()
    * @generated
    */

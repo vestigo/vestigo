@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.childvm.webapp;
+package org.nightlabs.vestigo.childvm.webapp;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -7,16 +7,16 @@ import java.util.Set;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
-import org.nightlabs.jjqb.childvm.shared.provider.JavaNativeMessageBodyReader;
-import org.nightlabs.jjqb.childvm.shared.provider.JavaNativeMessageBodyWriter;
-import org.nightlabs.jjqb.childvm.webapp.service.ConnectionDTOService;
-import org.nightlabs.jjqb.childvm.webapp.service.ConnectionProfileDTOService;
-import org.nightlabs.jjqb.childvm.webapp.service.IsClassAssignableFromService;
-import org.nightlabs.jjqb.childvm.webapp.service.IsOnlineService;
-import org.nightlabs.jjqb.childvm.webapp.service.QueryableCandidateClassesService;
-import org.nightlabs.jjqb.childvm.webapp.service.ResultCellDTOService;
-import org.nightlabs.jjqb.childvm.webapp.service.ResultRowDTOService;
-import org.nightlabs.jjqb.childvm.webapp.service.ResultSetDTOService;
+import org.nightlabs.vestigo.childvm.shared.provider.JavaNativeMessageBodyReader;
+import org.nightlabs.vestigo.childvm.shared.provider.JavaNativeMessageBodyWriter;
+import org.nightlabs.vestigo.childvm.webapp.service.ConnectionDTOService;
+import org.nightlabs.vestigo.childvm.webapp.service.ConnectionProfileDTOService;
+import org.nightlabs.vestigo.childvm.webapp.service.IsClassAssignableFromService;
+import org.nightlabs.vestigo.childvm.webapp.service.IsOnlineService;
+import org.nightlabs.vestigo.childvm.webapp.service.QueryableCandidateClassesService;
+import org.nightlabs.vestigo.childvm.webapp.service.ResultCellDTOService;
+import org.nightlabs.vestigo.childvm.webapp.service.ResultRowDTOService;
+import org.nightlabs.vestigo.childvm.webapp.service.ResultSetDTOService;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de

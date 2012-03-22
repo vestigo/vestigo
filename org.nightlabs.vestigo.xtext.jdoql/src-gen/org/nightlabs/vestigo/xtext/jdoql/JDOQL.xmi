@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="ASCII"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:xtext="http://www.eclipse.org/2008/Xtext">
-  <xtext:Grammar name="org.nightlabs.jjqb.xtext.jdoql.JDOQL" usedGrammars="/1">
+  <xtext:Grammar name="org.nightlabs.vestigo.xtext.jdoql.JDOQL" usedGrammars="/1">
     <metamodelDeclarations xsi:type="xtext:GeneratedMetamodel" name="jDOQL">
-      <ePackage href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#/"/>
+      <ePackage href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#/"/>
     </metamodelDeclarations>
     <metamodelDeclarations xsi:type="xtext:ReferencedMetamodel" alias="ecore">
       <ePackage href="http://www.eclipse.org/emf/2002/Ecore#/"/>
     </metamodelDeclarations>
     <rules xsi:type="xtext:ParserRule" name="SingleStringJDOQL">
       <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//SingleStringJDOQL"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//SingleStringJDOQL"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Assignment" feature="selectClause" operator="=">
@@ -43,7 +43,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="Subquery">
       <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Subquery"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Subquery"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Assignment" feature="selectClause" operator="=">
@@ -68,12 +68,12 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="SelectClause">
       <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//SelectClause"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//SelectClause"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.0">
-            <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//SelectClause"/>
+            <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//SelectClause"/>
           </type>
         </elements>
         <elements xsi:type="xtext:Keyword" value="SELECT"/>
@@ -90,12 +90,12 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="SubquerySelectClause">
       <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//SubquerySelectClause"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//SubquerySelectClause"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.0">
-            <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//SelectClause"/>
+            <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//SelectClause"/>
           </type>
         </elements>
         <elements xsi:type="xtext:Keyword" value="SELECT"/>
@@ -112,7 +112,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="ResultClause">
       <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//ResultClause"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//ResultClause"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Assignment" cardinality="?" feature="isDistinct" operator="?=">
@@ -132,7 +132,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="SubqueryResultClause">
       <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//SubqueryResultClause"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//SubqueryResultClause"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Assignment" cardinality="?" feature="isDistinct" operator="?=">
@@ -146,7 +146,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="IntoClause">
       <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//IntoClause"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//IntoClause"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="INTO"/>
@@ -157,7 +157,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="ResultSpec">
       <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//ResultSpec"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//ResultSpec"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.28"/>
@@ -168,7 +168,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="ResultNaming">
       <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//ResultNaming"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//ResultNaming"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="AS"/>
@@ -179,7 +179,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="FromClause">
       <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//FromClause"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//FromClause"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="FROM"/>
@@ -196,7 +196,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="SubqueryFromClause">
       <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//SubqueryFromClause"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//SubqueryFromClause"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="FROM"/>
@@ -225,7 +225,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="Alias">
       <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Alias"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Alias"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" cardinality="?" value="AS"/>
@@ -236,7 +236,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="WhereClause">
       <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//WhereClause"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//WhereClause"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="WHERE"/>
@@ -247,7 +247,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="VariablesClause">
       <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//VariablesClause"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//VariablesClause"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="VARIABLES"/>
@@ -265,7 +265,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="VariableDeclaration">
       <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//VariableDeclaration"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//VariableDeclaration"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Assignment" feature="type" operator="=">
@@ -284,7 +284,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="ParametersClause">
       <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//ParametersClause"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//ParametersClause"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="PARAMETERS"/>
@@ -302,7 +302,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="ParameterDeclaration">
       <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//ParameterDeclaration"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//ParameterDeclaration"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Assignment" feature="type" operator="=">
@@ -327,7 +327,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="ImportClause">
       <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//ImportClause"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//ImportClause"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Assignment" feature="importDeclarations" operator="+=">
@@ -353,7 +353,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="GroupByClause">
       <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//GroupByClause"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//GroupByClause"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="GROUP"/>
@@ -375,7 +375,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="HavingClause">
       <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//HavingClause"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//HavingClause"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="HAVING"/>
@@ -386,7 +386,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="OrderByClause">
       <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//OrderByClause"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//OrderByClause"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="ORDER"/>
@@ -405,7 +405,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="OrderBySpec">
       <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//OrderBySpec"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//OrderBySpec"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.28"/>
@@ -416,30 +416,30 @@
     </rules>
     <rules xsi:type="xtext:EnumRule" name="OrderByDirection">
       <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EEnum" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//OrderByDirection"/>
+        <classifier xsi:type="ecore:EEnum" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//OrderByDirection"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//OrderByDirection/asc"/>
+          <enumLiteral href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//OrderByDirection/asc"/>
           <literal value="ASC"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//OrderByDirection/ascending"/>
+          <enumLiteral href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//OrderByDirection/ascending"/>
           <literal value="ASCENDING"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//OrderByDirection/desc"/>
+          <enumLiteral href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//OrderByDirection/desc"/>
           <literal value="DESC"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//OrderByDirection/descending"/>
+          <enumLiteral href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//OrderByDirection/descending"/>
           <literal value="DESCENDING"/>
         </elements>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="RangeClause">
       <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//RangeClause"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//RangeClause"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="RANGE"/>
@@ -454,14 +454,14 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="ConditionalOrExpression">
       <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.29"/>
         <elements xsi:type="xtext:Group" cardinality="*">
           <elements xsi:type="xtext:Action" feature="left" operator="=">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//ConditionalOrExpression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//ConditionalOrExpression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="||"/>
@@ -473,14 +473,14 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="ConditionalAndExpression">
       <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.30"/>
         <elements xsi:type="xtext:Group" cardinality="*">
           <elements xsi:type="xtext:Action" feature="left" operator="=">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//ConditionalAndExpression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//ConditionalAndExpression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="&amp;&amp;"/>
@@ -492,14 +492,14 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="SimpleOrExpression">
       <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.31"/>
         <elements xsi:type="xtext:Group" cardinality="*">
           <elements xsi:type="xtext:Action" feature="left" operator="=">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//SimpleOrExpression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//SimpleOrExpression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="|"/>
@@ -511,14 +511,14 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="SimpleAndExpression">
       <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.32"/>
         <elements xsi:type="xtext:Group" cardinality="*">
           <elements xsi:type="xtext:Action" feature="left" operator="=">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//SimpleAndExpression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//SimpleAndExpression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="&amp;"/>
@@ -530,14 +530,14 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="ComparisonOperatorExpression">
       <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.33"/>
         <elements xsi:type="xtext:Group" cardinality="*">
           <elements xsi:type="xtext:Action" feature="left" operator="=">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//ComparisonOperatorExpression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//ComparisonOperatorExpression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Assignment" feature="operator" operator="=">
@@ -551,14 +551,14 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="AdditionExpression">
       <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.34"/>
         <elements xsi:type="xtext:Group" cardinality="*">
           <elements xsi:type="xtext:Action" feature="left" operator="=">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//AdditionExpression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//AdditionExpression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Assignment" feature="operator" operator="=">
@@ -572,14 +572,14 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="MultiplicationExpression">
       <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.35"/>
         <elements xsi:type="xtext:Group" cardinality="*">
           <elements xsi:type="xtext:Action" feature="left" operator="=">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//MultiplicationExpression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//MultiplicationExpression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Assignment" feature="operator" operator="=">
@@ -593,7 +593,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="UnaryExpression">
       <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
         <elements xsi:type="xtext:Group">
@@ -618,7 +618,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="FieldAccessExpression">
       <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.39"/>
@@ -627,7 +627,7 @@
           <elements xsi:type="xtext:Group" cardinality="*">
             <elements xsi:type="xtext:Action" feature="left" operator="=">
               <type metamodel="/0/@metamodelDeclarations.0">
-                <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//FieldAccessExpression"/>
+                <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//FieldAccessExpression"/>
               </type>
             </elements>
             <elements xsi:type="xtext:Keyword" value="."/>
@@ -640,7 +640,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="ParameterOrFieldOrMethodExpression">
       <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
         <elements xsi:type="xtext:Assignment" feature="literal" operator="=">
@@ -666,7 +666,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="FieldOrMethodExpression">
       <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
         <elements xsi:type="xtext:Assignment" feature="literal" operator="=">
@@ -686,13 +686,13 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="StaticMethodExpression">
       <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Action">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="Math.abs"/>
@@ -705,7 +705,7 @@
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Action">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="Math.sqrt"/>
@@ -718,7 +718,7 @@
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Action">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="Math.cos"/>
@@ -731,7 +731,7 @@
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Action">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="Math.sin"/>
@@ -744,7 +744,7 @@
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Action">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="Math.tan"/>
@@ -757,7 +757,7 @@
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Action">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="Math.acos"/>
@@ -770,7 +770,7 @@
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Action">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="Math.asin"/>
@@ -783,7 +783,7 @@
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Action">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="Math.atan"/>
@@ -796,7 +796,7 @@
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Action">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="Math.ceil"/>
@@ -809,7 +809,7 @@
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Action">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="Math.exp"/>
@@ -822,7 +822,7 @@
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Action">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="Math.floor"/>
@@ -835,7 +835,7 @@
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Action">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="Math.log"/>
@@ -848,7 +848,7 @@
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Action">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="java.lang.Math.abs"/>
@@ -861,7 +861,7 @@
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Action">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="java.lang.Math.sqrt"/>
@@ -874,7 +874,7 @@
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Action">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="java.lang.Math.cos"/>
@@ -887,7 +887,7 @@
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Action">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="java.lang.Math.sin"/>
@@ -900,7 +900,7 @@
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Action">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="java.lang.Math.tan"/>
@@ -913,7 +913,7 @@
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Action">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="java.lang.Math.acos"/>
@@ -926,7 +926,7 @@
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Action">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="java.lang.Math.asin"/>
@@ -939,7 +939,7 @@
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Action">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="java.lang.Math.atan"/>
@@ -952,7 +952,7 @@
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Action">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="java.lang.Math.ceil"/>
@@ -965,7 +965,7 @@
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Action">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="java.lang.Math.exp"/>
@@ -978,7 +978,7 @@
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Action">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="java.lang.Math.floor"/>
@@ -991,7 +991,7 @@
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Action">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="java.lang.Math.log"/>
@@ -1004,7 +1004,7 @@
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Action">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="JDOHelper.getObjectId"/>
@@ -1017,7 +1017,7 @@
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Action">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="JDOHelper.getVersion"/>
@@ -1030,7 +1030,7 @@
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Action">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="javax.jdo.JDOHelper.getObjectId"/>
@@ -1043,7 +1043,7 @@
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Action">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="javax.jdo.JDOHelper.getVersion"/>
@@ -1056,7 +1056,7 @@
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Action">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="count"/>
@@ -1072,7 +1072,7 @@
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Action">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="sum"/>
@@ -1088,7 +1088,7 @@
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Action">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="min"/>
@@ -1101,7 +1101,7 @@
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Action">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="max"/>
@@ -1114,7 +1114,7 @@
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Action">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="avg"/>
@@ -1131,13 +1131,13 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="MethodExpression">
       <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Action">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="contains"/>
@@ -1150,7 +1150,7 @@
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Action">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="get"/>
@@ -1163,7 +1163,7 @@
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Action">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="isEmpty"/>
@@ -1173,7 +1173,7 @@
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Action">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="size"/>
@@ -1183,7 +1183,7 @@
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Action">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="containsKey"/>
@@ -1196,7 +1196,7 @@
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Action">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="containsValue"/>
@@ -1209,7 +1209,7 @@
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Action">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="containsEntry"/>
@@ -1226,7 +1226,7 @@
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Action">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="charAt"/>
@@ -1239,7 +1239,7 @@
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Action">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="endsWith"/>
@@ -1252,7 +1252,7 @@
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Action">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="equals"/>
@@ -1265,7 +1265,7 @@
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Action">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="equalsIgnoreCase"/>
@@ -1278,7 +1278,7 @@
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Action">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="indexOf"/>
@@ -1297,7 +1297,7 @@
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Action">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="length"/>
@@ -1307,7 +1307,7 @@
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Action">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="matches"/>
@@ -1320,7 +1320,7 @@
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Action">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="replaceAll"/>
@@ -1337,7 +1337,7 @@
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Action">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="startsWith"/>
@@ -1350,7 +1350,7 @@
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Action">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="substring"/>
@@ -1369,7 +1369,7 @@
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Action">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="toLowerCase"/>
@@ -1379,7 +1379,7 @@
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Action">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="toUpperCase"/>
@@ -1389,7 +1389,7 @@
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Action">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="trim"/>
@@ -1399,7 +1399,7 @@
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Action">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="getDay"/>
@@ -1409,7 +1409,7 @@
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Action">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="getMonth"/>
@@ -1419,7 +1419,7 @@
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Action">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="getYear"/>
@@ -1429,7 +1429,7 @@
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Action">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="getHour"/>
@@ -1439,7 +1439,7 @@
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Action">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="getMinute"/>
@@ -1449,7 +1449,7 @@
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Action">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="getSecond"/>
@@ -1459,7 +1459,7 @@
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Action">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="ordinal"/>
@@ -1469,7 +1469,7 @@
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Action">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="toString"/>
@@ -1480,7 +1480,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="ParenthesesExpression">
       <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//Expression"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="("/>
@@ -1630,92 +1630,92 @@
     </rules>
     <rules xsi:type="xtext:EnumRule" name="UnaryOperator">
       <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EEnum" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//UnaryOperator"/>
+        <classifier xsi:type="ecore:EEnum" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//UnaryOperator"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//UnaryOperator/positive"/>
+          <enumLiteral href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//UnaryOperator/positive"/>
           <literal value="+"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//UnaryOperator/negative"/>
+          <enumLiteral href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//UnaryOperator/negative"/>
           <literal value="-"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//UnaryOperator/bitwiseNot"/>
+          <enumLiteral href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//UnaryOperator/bitwiseNot"/>
           <literal value="~"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//UnaryOperator/logicalNot"/>
+          <enumLiteral href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//UnaryOperator/logicalNot"/>
           <literal value="!"/>
         </elements>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:EnumRule" name="AdditionOperator">
       <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EEnum" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//AdditionOperator"/>
+        <classifier xsi:type="ecore:EEnum" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//AdditionOperator"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//AdditionOperator/add"/>
+          <enumLiteral href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//AdditionOperator/add"/>
           <literal value="+"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//AdditionOperator/subtract"/>
+          <enumLiteral href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//AdditionOperator/subtract"/>
           <literal value="-"/>
         </elements>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:EnumRule" name="MultiplicationOperator">
       <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EEnum" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//MultiplicationOperator"/>
+        <classifier xsi:type="ecore:EEnum" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//MultiplicationOperator"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//MultiplicationOperator/multiply"/>
+          <enumLiteral href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//MultiplicationOperator/multiply"/>
           <literal value="*"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//MultiplicationOperator/divide"/>
+          <enumLiteral href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//MultiplicationOperator/divide"/>
           <literal value="/"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//MultiplicationOperator/modulo"/>
+          <enumLiteral href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//MultiplicationOperator/modulo"/>
           <literal value="%"/>
         </elements>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:EnumRule" name="ComparisonOperator">
       <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EEnum" href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//ComparisonOperator"/>
+        <classifier xsi:type="ecore:EEnum" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//ComparisonOperator"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//ComparisonOperator/lessThen"/>
+          <enumLiteral href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//ComparisonOperator/lessThen"/>
           <literal value="&lt;"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//ComparisonOperator/greaterThen"/>
+          <enumLiteral href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//ComparisonOperator/greaterThen"/>
           <literal value=">"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//ComparisonOperator/lessEqual"/>
+          <enumLiteral href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//ComparisonOperator/lessEqual"/>
           <literal value="&lt;="/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//ComparisonOperator/greaterEqual"/>
+          <enumLiteral href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//ComparisonOperator/greaterEqual"/>
           <literal value=">="/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//ComparisonOperator/equal"/>
+          <enumLiteral href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//ComparisonOperator/equal"/>
           <literal value="=="/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//ComparisonOperator/notEqual"/>
+          <enumLiteral href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//ComparisonOperator/notEqual"/>
           <literal value="!="/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL#//ComparisonOperator/instanceof"/>
+          <enumLiteral href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//ComparisonOperator/instanceof"/>
           <literal value="instanceof"/>
         </elements>
       </alternatives>

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/org.nightlabs.jjqb.ui.feature_0.2.0.qualifier.jar" id="org.nightlabs.jjqb.ui.feature" version="0.2.0.qualifier">
-      <category name="org.nightlabs.jjqb.category"/>
+   <feature url="features/org.nightlabs.vestigo.ui.feature_0.2.0.qualifier.jar" id="org.nightlabs.vestigo.ui.feature" version="0.2.0.qualifier">
+      <category name="org.nightlabs.vestigo.category"/>
    </feature>
-   <feature url="features/org.nightlabs.jjqb.jdt.ui.feature_0.2.0.qualifier.jar" id="org.nightlabs.jjqb.jdt.ui.feature" version="0.2.0.qualifier">
-      <category name="org.nightlabs.jjqb.category"/>
+   <feature url="features/org.nightlabs.vestigo.jdt.ui.feature_0.2.0.qualifier.jar" id="org.nightlabs.vestigo.jdt.ui.feature" version="0.2.0.qualifier">
+      <category name="org.nightlabs.vestigo.category"/>
    </feature>
-   <feature url="features/org.nightlabs.jjqb.cumulus4j.ui.feature_0.2.0.qualifier.jar" id="org.nightlabs.jjqb.cumulus4j.ui.feature" version="0.2.0.qualifier">
-      <category name="org.nightlabs.jjqb.category"/>
+   <feature url="features/org.nightlabs.vestigo.cumulus4j.ui.feature_0.2.0.qualifier.jar" id="org.nightlabs.vestigo.cumulus4j.ui.feature" version="0.2.0.qualifier">
+      <category name="org.nightlabs.vestigo.category"/>
    </feature>
-   <category-def name="org.nightlabs.jjqb.category" label="Vestigo"/>
+   <category-def name="org.nightlabs.vestigo.category" label="Vestigo"/>
 </site>

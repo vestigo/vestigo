@@ -3,7 +3,7 @@
  * </copyright>
  *
  */
-package org.nightlabs.jjqb.xtext.jpql.jPQL.impl;
+package org.nightlabs.vestigo.xtext.jpql.jPQL.impl;
 
 import java.util.Collection;
 
@@ -19,9 +19,9 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.OrderByClause;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.OrderBySpec;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.OrderByClause;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.OrderBySpec;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,7 +30,7 @@ import org.nightlabs.jjqb.xtext.jpql.jPQL.OrderBySpec;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.OrderByClauseImpl#getOrdering <em>Ordering</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.OrderByClauseImpl#getOrdering <em>Ordering</em>}</li>
  * </ul>
  * </p>
  *

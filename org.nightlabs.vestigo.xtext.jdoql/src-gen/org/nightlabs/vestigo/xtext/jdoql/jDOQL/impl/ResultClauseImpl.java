@@ -3,7 +3,7 @@
  * </copyright>
  *
  */
-package org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl;
+package org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl;
 
 import java.util.Collection;
 
@@ -21,9 +21,9 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.ResultClause;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.ResultSpec;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.JDOQLPackage;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.ResultClause;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.ResultSpec;
 
 /**
  * <!-- begin-user-doc -->
@@ -32,8 +32,8 @@ import org.nightlabs.jjqb.xtext.jdoql.jDOQL.ResultSpec;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ResultClauseImpl#isIsDistinct <em>Is Distinct</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ResultClauseImpl#getResultSpecs <em>Result Specs</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.ResultClauseImpl#isIsDistinct <em>Is Distinct</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.ResultClauseImpl#getResultSpecs <em>Result Specs</em>}</li>
  * </ul>
  * </p>
  *

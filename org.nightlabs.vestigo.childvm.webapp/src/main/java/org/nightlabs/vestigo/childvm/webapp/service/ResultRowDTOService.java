@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.childvm.webapp.service;
+package org.nightlabs.vestigo.childvm.webapp.service;
 
 import java.lang.reflect.Array;
 
@@ -8,12 +8,12 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.QueryParam;
 
-import org.nightlabs.jjqb.childvm.shared.ResultSetID;
-import org.nightlabs.jjqb.childvm.shared.dto.ResultRowDTO;
-import org.nightlabs.jjqb.childvm.shared.dto.ResultRowDTOList;
-import org.nightlabs.jjqb.childvm.webapp.model.Connection;
-import org.nightlabs.jjqb.childvm.webapp.model.ConnectionManager;
-import org.nightlabs.jjqb.childvm.webapp.model.ResultSet;
+import org.nightlabs.vestigo.childvm.shared.ResultSetID;
+import org.nightlabs.vestigo.childvm.shared.dto.ResultRowDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.ResultRowDTOList;
+import org.nightlabs.vestigo.childvm.webapp.model.Connection;
+import org.nightlabs.vestigo.childvm.webapp.model.ConnectionManager;
+import org.nightlabs.vestigo.childvm.webapp.model.ResultSet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

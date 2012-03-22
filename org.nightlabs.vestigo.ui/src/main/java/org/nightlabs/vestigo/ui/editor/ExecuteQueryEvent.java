@@ -1,7 +1,7 @@
-package org.nightlabs.jjqb.ui.editor;
+package org.nightlabs.vestigo.ui.editor;
 
 import org.eclipse.datatools.connectivity.oda.IResultSet;
-import org.nightlabs.jjqb.ui.resultsettable.ResultSetTableModel;
+import org.nightlabs.vestigo.ui.resultsettable.ResultSetTableModel;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de

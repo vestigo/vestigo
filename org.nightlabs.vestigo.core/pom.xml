@@ -1,14 +1,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<artifactId>org.nightlabs.jjqb.core</artifactId>
+	<artifactId>org.nightlabs.vestigo.core</artifactId>
 	<packaging>bundle</packaging>
 
 	<parent>
-		<groupId>org.nightlabs.jjqb</groupId>
-		<artifactId>org.nightlabs.jjqb.parent</artifactId>
+		<groupId>org.nightlabs.vestigo</groupId>
+		<artifactId>org.nightlabs.vestigo.parent</artifactId>
 		<version>0.2.0-SNAPSHOT</version>
-		<relativePath>../org.nightlabs.jjqb.parent</relativePath>
+		<relativePath>../org.nightlabs.vestigo.parent</relativePath>
 	</parent>
 
 	<dependencies>
@@ -64,20 +64,20 @@
 			<artifactId>org.nightlabs.eclipse.extension</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.nightlabs.jjqb</groupId>
-			<artifactId>org.nightlabs.jjqb.childvm.shared</artifactId>
+			<groupId>org.nightlabs.vestigo</groupId>
+			<artifactId>org.nightlabs.vestigo.childvm.shared</artifactId>
 		</dependency>
 
 		<dependency>
 			<!-- force this to already be compiled before => make sure we copy the up-to-date-dependency. -->
-			<groupId>org.nightlabs.jjqb</groupId>
-			<artifactId>org.nightlabs.jjqb.childvm.webapp</artifactId>
+			<groupId>org.nightlabs.vestigo</groupId>
+			<artifactId>org.nightlabs.vestigo.childvm.webapp</artifactId>
 			<type>war</type>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.nightlabs.jjqb</groupId>
-			<artifactId>org.nightlabs.jjqb.childvm.webapp.client</artifactId>
+			<groupId>org.nightlabs.vestigo</groupId>
+			<artifactId>org.nightlabs.vestigo.childvm.webapp.client</artifactId>
 		</dependency>
 	</dependencies>
 
@@ -134,16 +134,16 @@
 									<type>zip</type>
 									<version>8.0.4.v20111024</version>
 									<overWrite>false</overWrite>
-									<outputDirectory>src/main/resources/org/nightlabs/jjqb/core/childvm/internal/resource</outputDirectory>
+									<outputDirectory>src/main/resources/org/nightlabs/vestigo/core/childvm/internal/resource</outputDirectory>
 <!--									<destFileName>jetty.zip</destFileName> -->
 								</artifactItem>
 								<artifactItem>
-									<groupId>org.nightlabs.jjqb</groupId>
-									<artifactId>org.nightlabs.jjqb.childvm.webapp</artifactId>
+									<groupId>org.nightlabs.vestigo</groupId>
+									<artifactId>org.nightlabs.vestigo.childvm.webapp</artifactId>
 									<type>war</type>
 									<version>${project.version}</version>
 									<overWrite>true</overWrite>
-									<outputDirectory>src/main/resources/org/nightlabs/jjqb/core/childvm/internal/resource</outputDirectory>
+									<outputDirectory>src/main/resources/org/nightlabs/vestigo/core/childvm/internal/resource</outputDirectory>
 								</artifactItem>
 							</artifactItems>
 							<stripVersion>true</stripVersion>
@@ -160,7 +160,7 @@
 					<manifestLocation>META-INF</manifestLocation>
 				-->
 					<instructions>
-						<Bundle-Activator>org.nightlabs.jjqb.core.JJQBCorePlugin</Bundle-Activator>
+						<Bundle-Activator>org.nightlabs.vestigo.core.JJQBCorePlugin</Bundle-Activator>
 						<Bundle-ActivationPolicy>lazy</Bundle-ActivationPolicy>
 						<Require-Bundle>org.eclipse.core.runtime</Require-Bundle>
 						<Import-Package>!org.eclipse.core.runtime,*</Import-Package>

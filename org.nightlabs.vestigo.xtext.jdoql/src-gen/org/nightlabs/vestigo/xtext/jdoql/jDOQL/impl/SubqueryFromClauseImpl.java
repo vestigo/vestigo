@@ -3,7 +3,7 @@
  * </copyright>
  *
  */
-package org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl;
+package org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -14,10 +14,10 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.Alias;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.SubqueryFromClause;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.Alias;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.JDOQLPackage;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.SubqueryFromClause;
 
 /**
  * <!-- begin-user-doc -->
@@ -26,10 +26,10 @@ import org.nightlabs.jjqb.xtext.jdoql.jDOQL.SubqueryFromClause;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SubqueryFromClauseImpl#getFieldAccessExpression <em>Field Access Expression</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SubqueryFromClauseImpl#getCandidateClassName <em>Candidate Class Name</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SubqueryFromClauseImpl#getAlias <em>Alias</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SubqueryFromClauseImpl#isIsExcludeSubclasses <em>Is Exclude Subclasses</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.SubqueryFromClauseImpl#getFieldAccessExpression <em>Field Access Expression</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.SubqueryFromClauseImpl#getCandidateClassName <em>Candidate Class Name</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.SubqueryFromClauseImpl#getAlias <em>Alias</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.SubqueryFromClauseImpl#isIsExcludeSubclasses <em>Is Exclude Subclasses</em>}</li>
  * </ul>
  * </p>
  *

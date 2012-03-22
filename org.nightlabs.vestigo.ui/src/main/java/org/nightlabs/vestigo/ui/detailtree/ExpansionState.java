@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.ui.detailtree;
+package org.nightlabs.vestigo.ui.detailtree;
 
 import java.util.HashMap;
 import java.util.Map;

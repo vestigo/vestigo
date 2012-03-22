@@ -1,9 +1,9 @@
 /**
  *
  */
-package org.nightlabs.jjqb.childvm.webapp.model;
+package org.nightlabs.vestigo.childvm.webapp.model;
 
-import org.nightlabs.jjqb.childvm.shared.dto.ConnectionProfileDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.ConnectionProfileDTO;
 
 /**
  * @author Alexander Bieber <!-- alex [AT] nightlabs [DOT] de -->

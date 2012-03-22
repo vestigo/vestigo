@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.childvm.webapp.client.testmodel.jdo;
+package org.nightlabs.vestigo.childvm.webapp.client.testmodel.jdo;
 
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.PersistenceCapable;

@@ -3,7 +3,7 @@
  * </copyright>
  *
  */
-package org.nightlabs.jjqb.xtext.jdoql.jDOQL;
+package org.nightlabs.vestigo.xtext.jdoql.jDOQL;
 
 
 /**
@@ -14,12 +14,12 @@ package org.nightlabs.jjqb.xtext.jdoql.jDOQL;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.AdditionExpression#getLeft <em>Left</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.AdditionExpression#getOperator <em>Operator</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.AdditionExpression#getLeft <em>Left</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.AdditionExpression#getOperator <em>Operator</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage#getAdditionExpression()
+ * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.JDOQLPackage#getAdditionExpression()
  * @model
  * @generated
  */
@@ -35,14 +35,14 @@ public interface AdditionExpression extends Expression
    * <!-- end-user-doc -->
    * @return the value of the '<em>Left</em>' containment reference.
    * @see #setLeft(Expression)
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage#getAdditionExpression_Left()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.JDOQLPackage#getAdditionExpression_Left()
    * @model containment="true"
    * @generated
    */
   Expression getLeft();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.AdditionExpression#getLeft <em>Left</em>}' containment reference.
+   * Sets the value of the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.AdditionExpression#getLeft <em>Left</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Left</em>' containment reference.
@@ -53,7 +53,7 @@ public interface AdditionExpression extends Expression
 
   /**
    * Returns the value of the '<em><b>Operator</b></em>' attribute.
-   * The literals are from the enumeration {@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.AdditionOperator}.
+   * The literals are from the enumeration {@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.AdditionOperator}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Operator</em>' attribute isn't clear,
@@ -61,20 +61,20 @@ public interface AdditionExpression extends Expression
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Operator</em>' attribute.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.AdditionOperator
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.AdditionOperator
    * @see #setOperator(AdditionOperator)
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage#getAdditionExpression_Operator()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.JDOQLPackage#getAdditionExpression_Operator()
    * @model
    * @generated
    */
   AdditionOperator getOperator();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.AdditionExpression#getOperator <em>Operator</em>}' attribute.
+   * Sets the value of the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.AdditionExpression#getOperator <em>Operator</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Operator</em>' attribute.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.AdditionOperator
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.AdditionOperator
    * @see #getOperator()
    * @generated
    */

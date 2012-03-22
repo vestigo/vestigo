@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.xtext.jdoql.validation;
+package org.nightlabs.vestigo.xtext.jdoql.validation;
  
 
 public class JDOQLJavaValidator extends AbstractJDOQLJavaValidator {

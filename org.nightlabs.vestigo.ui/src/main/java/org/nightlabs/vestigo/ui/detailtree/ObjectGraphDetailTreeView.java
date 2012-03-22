@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.ui.detailtree;
+package org.nightlabs.vestigo.ui.detailtree;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,12 +17,12 @@ import org.eclipse.ui.ISelectionListener;
 import org.eclipse.ui.IViewReference;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.part.ViewPart;
-import org.nightlabs.jjqb.core.LabelTextOption;
-import org.nightlabs.jjqb.ui.editor.QueryEditor;
-import org.nightlabs.jjqb.ui.labeltextoptionaction.LabelTextOptionsContainer;
-import org.nightlabs.jjqb.ui.resultsettable.ResultSetTableCell;
-import org.nightlabs.jjqb.ui.resultsettable.ResultSetTableRow;
-import org.nightlabs.jjqb.ui.resultsettable.ResultSetTableView;
+import org.nightlabs.vestigo.core.LabelTextOption;
+import org.nightlabs.vestigo.ui.editor.QueryEditor;
+import org.nightlabs.vestigo.ui.labeltextoptionaction.LabelTextOptionsContainer;
+import org.nightlabs.vestigo.ui.resultsettable.ResultSetTableCell;
+import org.nightlabs.vestigo.ui.resultsettable.ResultSetTableRow;
+import org.nightlabs.vestigo.ui.resultsettable.ResultSetTableView;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de

@@ -3,7 +3,7 @@
  * </copyright>
  *
  */
-package org.nightlabs.jjqb.xtext.jpql.jPQL;
+package org.nightlabs.vestigo.xtext.jpql.jPQL;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -13,7 +13,7 @@ import org.eclipse.emf.ecore.EObject;
  * <!-- end-user-doc -->
  *
  *
- * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getOrderBySpec()
+ * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getOrderBySpec()
  * @model
  * @generated
  */

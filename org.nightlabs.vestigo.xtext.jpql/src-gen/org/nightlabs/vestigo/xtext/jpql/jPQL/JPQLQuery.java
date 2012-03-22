@@ -3,7 +3,7 @@
  * </copyright>
  *
  */
-package org.nightlabs.jjqb.xtext.jpql.jPQL;
+package org.nightlabs.vestigo.xtext.jpql.jPQL;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -15,11 +15,11 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLQuery#getWhereClause <em>Where Clause</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLQuery#getWhereClause <em>Where Clause</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getJPQLQuery()
+ * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getJPQLQuery()
  * @model
  * @generated
  */
@@ -35,14 +35,14 @@ public interface JPQLQuery extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Where Clause</em>' containment reference.
    * @see #setWhereClause(WhereClause)
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getJPQLQuery_WhereClause()
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getJPQLQuery_WhereClause()
    * @model containment="true"
    * @generated
    */
   WhereClause getWhereClause();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLQuery#getWhereClause <em>Where Clause</em>}' containment reference.
+   * Sets the value of the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLQuery#getWhereClause <em>Where Clause</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Where Clause</em>' containment reference.

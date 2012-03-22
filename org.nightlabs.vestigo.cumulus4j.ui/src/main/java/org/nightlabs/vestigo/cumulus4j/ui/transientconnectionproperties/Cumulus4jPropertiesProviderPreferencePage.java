@@ -1,11 +1,11 @@
-package org.nightlabs.jjqb.cumulus4j.ui.transientconnectionproperties;
+package org.nightlabs.vestigo.cumulus4j.ui.transientconnectionproperties;
 
 import org.eclipse.jface.preference.FieldEditor;
-import org.nightlabs.jjqb.core.oda.ConnectionPropertyMeta;
-import org.nightlabs.jjqb.core.transientconnectionproperties.TransientConnectionPropertiesProvider;
-import org.nightlabs.jjqb.cumulus4j.childvm.shared.Cumulus4jConnectionProperties;
-import org.nightlabs.jjqb.ui.preference.PasswordFieldEditor;
-import org.nightlabs.jjqb.ui.transientconnectionproperties.DefaultPropertiesProviderPreferencePage;
+import org.nightlabs.vestigo.core.oda.ConnectionPropertyMeta;
+import org.nightlabs.vestigo.core.transientconnectionproperties.TransientConnectionPropertiesProvider;
+import org.nightlabs.vestigo.cumulus4j.childvm.shared.Cumulus4jConnectionProperties;
+import org.nightlabs.vestigo.ui.preference.PasswordFieldEditor;
+import org.nightlabs.vestigo.ui.transientconnectionproperties.DefaultPropertiesProviderPreferencePage;
 
 public class Cumulus4jPropertiesProviderPreferencePage extends DefaultPropertiesProviderPreferencePage {
 

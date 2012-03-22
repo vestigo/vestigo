@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.ui.childvm;
+package org.nightlabs.vestigo.ui.childvm;
 
 import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.jface.preference.BooleanFieldEditor;
@@ -13,10 +13,10 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 import org.eclipse.ui.preferences.ScopedPreferenceStore;
-import org.nightlabs.jjqb.core.JJQBCorePlugin;
-import org.nightlabs.jjqb.core.childvm.LogLevel;
-import org.nightlabs.jjqb.core.childvm.internal.ChildVMServer;
-import org.nightlabs.jjqb.ui.preference.MultiLineStringFieldEditor;
+import org.nightlabs.vestigo.core.JJQBCorePlugin;
+import org.nightlabs.vestigo.core.childvm.LogLevel;
+import org.nightlabs.vestigo.core.childvm.internal.ChildVMServer;
+import org.nightlabs.vestigo.ui.preference.MultiLineStringFieldEditor;
 
 public class ChildVMPreferencePage extends FieldEditorPreferencePage implements IWorkbenchPreferencePage
 {

@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.ui.resultsettable;
+package org.nightlabs.vestigo.ui.resultsettable;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;

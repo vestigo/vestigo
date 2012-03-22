@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.ui.candidateclassview;
+package org.nightlabs.vestigo.ui.candidateclassview;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -37,11 +37,11 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.Text;
-import org.nightlabs.jjqb.childvm.shared.PropertiesUtil;
-import org.nightlabs.jjqb.core.oda.ConnectionProfile;
-import org.nightlabs.jjqb.core.oda.ConnectionProfileRegistry;
-import org.nightlabs.jjqb.ui.oda.OdaUtil;
-import org.nightlabs.jjqb.ui.resource.Messages;
+import org.nightlabs.vestigo.childvm.shared.PropertiesUtil;
+import org.nightlabs.vestigo.core.oda.ConnectionProfile;
+import org.nightlabs.vestigo.core.oda.ConnectionProfileRegistry;
+import org.nightlabs.vestigo.ui.oda.OdaUtil;
+import org.nightlabs.vestigo.ui.resource.Messages;
 
 public class CandidateClassComposite extends Composite
 {
@@ -61,7 +61,7 @@ public class CandidateClassComposite extends Composite
 	private Table table;
 	private IConnectionProfile odaConnectionProfile;
 	private IManagedConnection managedConnection;
-	private ConnectionProfile jjqbConnectionProfile;
+	private ConnectionProfile vestigoConnectionProfile;
 	private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
 	public CandidateClassComposite(Composite parent, int style) {
@@ -263,7 +263,7 @@ public class CandidateClassComposite extends Composite
 
 		this.odaConnectionProfile = connectionProfile;
 		this.managedConnection = connectionProfile == null ? null : OdaUtil.getManagedConnection(connectionProfile);
-		this.jjqbConnectionProfile = null;
+		this.vestigoConnectionProfile = null;
 		if (connectionProfile == null)
 			tableViewer.setInput(Collections.singletonList(MESSAGE_NO_CONNECTION_PROFILE));
 		else {
@@ -274,9 +274,9 @@ public class CandidateClassComposite extends Composite
 			else {
 				Properties connectionProperties = odaConnectionProfile.getProperties(odaConnectionProfile.getProviderId());
 				String profileID = PropertiesUtil.getProfileID(connectionProperties);
-				jjqbConnectionProfile = ConnectionProfileRegistry.sharedInstance().getConnectionProfile(profileID);
-				if (jjqbConnectionProfile == null)
-					throw new IllegalStateException("jjqbConnectionProfile == null :: profileID == " + profileID); //$NON-NLS-1$
+				vestigoConnectionProfile = ConnectionProfileRegistry.sharedInstance().getConnectionProfile(profileID);
+				if (vestigoConnectionProfile == null)
+					throw new IllegalStateException("vestigoConnectionProfile == null :: profileID == " + profileID); //$NON-NLS-1$
 
 				loadCandidateClasses();
 			}
@@ -287,9 +287,9 @@ public class CandidateClassComposite extends Composite
 	{
 		assertUIThread();
 
-		final ConnectionProfile jjqbConnectionProfile = this.jjqbConnectionProfile;
-		if (jjqbConnectionProfile == null)
-			throw new IllegalStateException("jjqbConnectionProfile == null"); //$NON-NLS-1$
+		final ConnectionProfile vestigoConnectionProfile = this.vestigoConnectionProfile;
+		if (vestigoConnectionProfile == null)
+			throw new IllegalStateException("vestigoConnectionProfile == null"); //$NON-NLS-1$
 
 		tableViewer.setInput(Collections.singletonList(MESSAGE_LOADING_DATA));
 
@@ -298,7 +298,7 @@ public class CandidateClassComposite extends Composite
 			protected IStatus run(IProgressMonitor monitor)
 			{
 				try {
-					final SortedSet<String> queryableCandidateClasses = jjqbConnectionProfile.getQueryableCandidateClasses();
+					final SortedSet<String> queryableCandidateClasses = vestigoConnectionProfile.getQueryableCandidateClasses();
 					final List<CandidateClass> candidateClassesList = new ArrayList<CandidateClass>(queryableCandidateClasses.size());
 					for (String className : queryableCandidateClasses)
 						candidateClassesList.add(new CandidateClass(className));

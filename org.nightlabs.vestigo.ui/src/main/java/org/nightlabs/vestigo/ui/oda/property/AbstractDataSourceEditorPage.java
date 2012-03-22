@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.ui.oda.property;
+package org.nightlabs.vestigo.ui.oda.property;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -27,7 +27,7 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.forms.events.HyperlinkAdapter;
 import org.eclipse.ui.forms.events.HyperlinkEvent;
 import org.eclipse.ui.forms.widgets.Hyperlink;
-import org.nightlabs.jjqb.childvm.shared.PropertiesUtil;
+import org.nightlabs.vestigo.childvm.shared.PropertiesUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -333,10 +333,10 @@ extends DataSourceEditorPage
 	{
 		FileDialog dialog = new FileDialog(getShell(), SWT.OPEN);
 
-		String ext_jjqb = "*.jjqbconnection";
+		String ext_vestigo = "*.vestigoconnection";
 		String ext_all = "*.*";
-		dialog.setFilterNames(new String[] { String.format("JJQB connection files (%s)", ext_jjqb), String.format("All filed (%s)", ext_all) });
-		dialog.setFilterExtensions(new String[] { ext_jjqb, ext_all });
+		dialog.setFilterNames(new String[] { String.format("JJQB connection files (%s)", ext_vestigo), String.format("All filed (%s)", ext_all) });
+		dialog.setFilterExtensions(new String[] { ext_vestigo, ext_all });
 
 		String fileName = dialog.open();
 		if (fileName != null && !"".equals(fileName)) {
@@ -371,7 +371,7 @@ extends DataSourceEditorPage
 		String fileName = dialog.open();
 		if (fileName != null && !"".equals(fileName)) {
 
-			final String suffix = ".jjqbconnection";
+			final String suffix = ".vestigoconnection";
 			if (!fileName.toLowerCase().endsWith(suffix))
 				fileName += suffix;
 

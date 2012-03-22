@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.ui.oda.classpath;
+package org.nightlabs.vestigo.ui.oda.classpath;
 
 import java.net.URL;
 

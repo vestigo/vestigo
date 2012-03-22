@@ -1,12 +1,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>org.nightlabs.jjqb</groupId>
-	<artifactId>org.nightlabs.jjqb.parent</artifactId>
+	<groupId>org.nightlabs.vestigo</groupId>
+	<artifactId>org.nightlabs.vestigo.parent</artifactId>
 	<version>0.2.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
-	<url>http://jjqb.nightlabs.com</url>
+	<url>http://vestigo.nightlabs.com</url>
 	<name>JJQB - JDO/JPA Query Browser</name>
 
 	<parent>
@@ -66,7 +66,7 @@
 	</repositories>
 
 	<properties>
-		<jjqb.version>${project.version}</jjqb.version>
+		<vestigo.version>${project.version}</vestigo.version>
 		<jersey.version>1.9</jersey.version>
 		<licence.version>1.0.1</licence.version>
 
@@ -80,20 +80,20 @@
 	</properties>
 
 	<scm>
-		<url>https://dev.nightlabs.org/svn/private/main/jjqb/trunk/</url>
-		<connection>scm:svn:https://dev.nightlabs.org/svn/private/main/jjqb/trunk/</connection>
-		<developerConnection>scm:svn:https://dev.nightlabs.org/svn/private/main/jjqb/trunk/</developerConnection>
+		<url>https://dev.nightlabs.org/svn/private/main/vestigo/trunk/</url>
+		<connection>scm:svn:https://dev.nightlabs.org/svn/private/main/vestigo/trunk/</connection>
+		<developerConnection>scm:svn:https://dev.nightlabs.org/svn/private/main/vestigo/trunk/</developerConnection>
 	</scm>
 
 	<distributionManagement>
 		<!--
 		We configure this "junk" directory here in order to make Maven upload everyting but the
-		'org.nightlabs.jjqb.all' to a directory which doesn't disturb us. I did not yet find out how to prevent
+		'org.nightlabs.vestigo.all' to a directory which doesn't disturb us. I did not yet find out how to prevent
 		Maven from uploading the other modules completely. Marco.
 		-->
 		<site>
-			<id>jjqb.nightlabs.com</id>
-			<url>file:${java.io.tmpdir}/jjqb-junk</url>
+			<id>vestigo.nightlabs.com</id>
+			<url>file:${java.io.tmpdir}/vestigo-junk</url>
 		</site>
 		<repository>
 			<id>dev.nightlabs.org-private-libs-release-local</id>
@@ -109,181 +109,181 @@
 
 	<dependencyManagement>
 		<dependencies>
-			<!-- BEGIN org.nightlabs.jjqb -->
+			<!-- BEGIN org.nightlabs.vestigo -->
 			<dependency>
-				<groupId>org.nightlabs.jjqb</groupId>
-				<artifactId>org.nightlabs.jjqb.childvm.shared</artifactId>
-				<version>${jjqb.version}</version>
+				<groupId>org.nightlabs.vestigo</groupId>
+				<artifactId>org.nightlabs.vestigo.childvm.shared</artifactId>
+				<version>${vestigo.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.nightlabs.jjqb</groupId>
-				<artifactId>org.nightlabs.jjqb.childvm.client</artifactId>
-				<version>${jjqb.version}</version>
+				<groupId>org.nightlabs.vestigo</groupId>
+				<artifactId>org.nightlabs.vestigo.childvm.client</artifactId>
+				<version>${vestigo.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.nightlabs.jjqb</groupId>
-				<artifactId>org.nightlabs.jjqb.childvm.webapp</artifactId>
+				<groupId>org.nightlabs.vestigo</groupId>
+				<artifactId>org.nightlabs.vestigo.childvm.webapp</artifactId>
 				<type>war</type>
-				<version>${jjqb.version}</version>
+				<version>${vestigo.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.nightlabs.jjqb</groupId>
-				<artifactId>org.nightlabs.jjqb.childvm.webapp</artifactId>
+				<groupId>org.nightlabs.vestigo</groupId>
+				<artifactId>org.nightlabs.vestigo.childvm.webapp</artifactId>
 				<classifier>tests</classifier>
-				<version>${jjqb.version}</version>
+				<version>${vestigo.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.nightlabs.jjqb</groupId>
-				<artifactId>org.nightlabs.jjqb.childvm.webapp</artifactId>
-				<version>${jjqb.version}</version>
+				<groupId>org.nightlabs.vestigo</groupId>
+				<artifactId>org.nightlabs.vestigo.childvm.webapp</artifactId>
+				<version>${vestigo.version}</version>
 				<classifier>jar</classifier>
 			</dependency>
 			<dependency>
-				<groupId>org.nightlabs.jjqb</groupId>
-				<artifactId>org.nightlabs.jjqb.childvm.webapp.client</artifactId>
-				<version>${jjqb.version}</version>
+				<groupId>org.nightlabs.vestigo</groupId>
+				<artifactId>org.nightlabs.vestigo.childvm.webapp.client</artifactId>
+				<version>${vestigo.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.nightlabs.jjqb</groupId>
-				<artifactId>org.nightlabs.jjqb.childvm.webapp.client.testmodel</artifactId>
-				<version>${jjqb.version}</version>
+				<groupId>org.nightlabs.vestigo</groupId>
+				<artifactId>org.nightlabs.vestigo.childvm.webapp.client.testmodel</artifactId>
+				<version>${vestigo.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.nightlabs.jjqb</groupId>
-				<artifactId>org.nightlabs.jjqb.childvm.webapp.client.testresources</artifactId>
-				<version>${jjqb.version}</version>
+				<groupId>org.nightlabs.vestigo</groupId>
+				<artifactId>org.nightlabs.vestigo.childvm.webapp.client.testresources</artifactId>
+				<version>${vestigo.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.nightlabs.jjqb</groupId>
-				<artifactId>org.nightlabs.jjqb.core</artifactId>
-				<version>${jjqb.version}</version>
+				<groupId>org.nightlabs.vestigo</groupId>
+				<artifactId>org.nightlabs.vestigo.core</artifactId>
+				<version>${vestigo.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.nightlabs.jjqb</groupId>
-				<artifactId>org.nightlabs.jjqb.ui</artifactId>
-				<version>${jjqb.version}</version>
+				<groupId>org.nightlabs.vestigo</groupId>
+				<artifactId>org.nightlabs.vestigo.ui</artifactId>
+				<version>${vestigo.version}</version>
 			</dependency>
-			<!-- END org.nightlabs.jjqb -->
+			<!-- END org.nightlabs.vestigo -->
 			
-			<!-- BEGIN org.nightlabs.jjqb.assembly -->
+			<!-- BEGIN org.nightlabs.vestigo.assembly -->
 			<dependency>
-				<groupId>org.nightlabs.jjqb</groupId>
-				<artifactId>org.nightlabs.jjqb.assembly.parent</artifactId>
-				<version>${jjqb.version}</version>
+				<groupId>org.nightlabs.vestigo</groupId>
+				<artifactId>org.nightlabs.vestigo.assembly.parent</artifactId>
+				<version>${vestigo.version}</version>
 				<type>pom</type>
 			</dependency>
 			<dependency>
-				<groupId>org.nightlabs.jjqb</groupId>
-				<artifactId>org.nightlabs.jjqb.assembly.linux-gtk</artifactId>
-				<version>${jjqb.version}</version>
+				<groupId>org.nightlabs.vestigo</groupId>
+				<artifactId>org.nightlabs.vestigo.assembly.linux-gtk</artifactId>
+				<version>${vestigo.version}</version>
 				<type>tar.gz</type>
 			</dependency>
 			<dependency>
-				<groupId>org.nightlabs.jjqb</groupId>
-				<artifactId>org.nightlabs.jjqb.assembly.linux-gtk-x86-64</artifactId>
-				<version>${jjqb.version}</version>
+				<groupId>org.nightlabs.vestigo</groupId>
+				<artifactId>org.nightlabs.vestigo.assembly.linux-gtk-x86-64</artifactId>
+				<version>${vestigo.version}</version>
 				<type>tar.gz</type>
 			</dependency>
 			<dependency>
-				<groupId>org.nightlabs.jjqb</groupId>
-				<artifactId>org.nightlabs.jjqb.assembly.macosx-cocoa</artifactId>
-				<version>${jjqb.version}</version>
+				<groupId>org.nightlabs.vestigo</groupId>
+				<artifactId>org.nightlabs.vestigo.assembly.macosx-cocoa</artifactId>
+				<version>${vestigo.version}</version>
 				<type>tar.gz</type>
 			</dependency>
 			<dependency>
-				<groupId>org.nightlabs.jjqb</groupId>
-				<artifactId>org.nightlabs.jjqb.assembly.macosx-cocoa-x86_64</artifactId>
-				<version>${jjqb.version}</version>
+				<groupId>org.nightlabs.vestigo</groupId>
+				<artifactId>org.nightlabs.vestigo.assembly.macosx-cocoa-x86_64</artifactId>
+				<version>${vestigo.version}</version>
 				<type>tar.gz</type>
 			</dependency>
 			<dependency>
-				<groupId>org.nightlabs.jjqb</groupId>
-				<artifactId>org.nightlabs.jjqb.assembly.win32</artifactId>
-				<version>${jjqb.version}</version>
+				<groupId>org.nightlabs.vestigo</groupId>
+				<artifactId>org.nightlabs.vestigo.assembly.win32</artifactId>
+				<version>${vestigo.version}</version>
 				<type>zip</type>
 			</dependency>
 			<dependency>
-				<groupId>org.nightlabs.jjqb</groupId>
-				<artifactId>org.nightlabs.jjqb.assembly.win32-x86_64</artifactId>
-				<version>${jjqb.version}</version>
+				<groupId>org.nightlabs.vestigo</groupId>
+				<artifactId>org.nightlabs.vestigo.assembly.win32-x86_64</artifactId>
+				<version>${vestigo.version}</version>
 				<type>zip</type>
 			</dependency>
-			<!-- END org.nightlabs.jjqb.assembly -->			
+			<!-- END org.nightlabs.vestigo.assembly -->			
 			
-			<!-- BEGIN org.nightlabs.jjqb.cumulus4j -->
+			<!-- BEGIN org.nightlabs.vestigo.cumulus4j -->
 			<dependency>
-				<groupId>org.nightlabs.jjqb</groupId>
-				<artifactId>org.nightlabs.jjqb.cumulus4j.childvm.shared</artifactId>
-				<version>${jjqb.version}</version>
+				<groupId>org.nightlabs.vestigo</groupId>
+				<artifactId>org.nightlabs.vestigo.cumulus4j.childvm.shared</artifactId>
+				<version>${vestigo.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.nightlabs.jjqb</groupId>
-				<artifactId>org.nightlabs.jjqb.cumulus4j.childvm.webapp</artifactId>
+				<groupId>org.nightlabs.vestigo</groupId>
+				<artifactId>org.nightlabs.vestigo.cumulus4j.childvm.webapp</artifactId>
 				<type>war</type>
-				<version>${jjqb.version}</version>
+				<version>${vestigo.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.nightlabs.jjqb</groupId>
-				<artifactId>org.nightlabs.jjqb.cumulus4j.core</artifactId>
-				<version>${jjqb.version}</version>
+				<groupId>org.nightlabs.vestigo</groupId>
+				<artifactId>org.nightlabs.vestigo.cumulus4j.core</artifactId>
+				<version>${vestigo.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.nightlabs.jjqb</groupId>
-				<artifactId>org.nightlabs.jjqb.cumulus4j.ui</artifactId>
-				<version>${jjqb.version}</version>
+				<groupId>org.nightlabs.vestigo</groupId>
+				<artifactId>org.nightlabs.vestigo.cumulus4j.ui</artifactId>
+				<version>${vestigo.version}</version>
 			</dependency>
-			<!-- END org.nightlabs.jjqb.cumulus4j -->
+			<!-- END org.nightlabs.vestigo.cumulus4j -->
 
-			<!-- BEGIN org.nightlabs.jjqb.jdt -->
+			<!-- BEGIN org.nightlabs.vestigo.jdt -->
 			<dependency>
-				<groupId>org.nightlabs.jjqb</groupId>
-				<artifactId>org.nightlabs.jjqb.jdt.core</artifactId>
-				<version>${jjqb.version}</version>
+				<groupId>org.nightlabs.vestigo</groupId>
+				<artifactId>org.nightlabs.vestigo.jdt.core</artifactId>
+				<version>${vestigo.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.nightlabs.jjqb</groupId>
-				<artifactId>org.nightlabs.jjqb.jdt.ui</artifactId>
-				<version>${jjqb.version}</version>
+				<groupId>org.nightlabs.vestigo</groupId>
+				<artifactId>org.nightlabs.vestigo.jdt.ui</artifactId>
+				<version>${vestigo.version}</version>
 			</dependency>
-			<!-- END org.nightlabs.jjqb.jdt -->
+			<!-- END org.nightlabs.vestigo.jdt -->
 
-			<!-- BEGIN org.nightlabs.jjqb.xtext -->
+			<!-- BEGIN org.nightlabs.vestigo.xtext -->
 			<dependency>
-				<groupId>org.nightlabs.jjqb</groupId>
-				<artifactId>org.nightlabs.jjqb.xtext.parent</artifactId>
-				<version>${jjqb.version}</version>
+				<groupId>org.nightlabs.vestigo</groupId>
+				<artifactId>org.nightlabs.vestigo.xtext.parent</artifactId>
+				<version>${vestigo.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.nightlabs.jjqb</groupId>
-				<artifactId>org.nightlabs.jjqb.xtext.jdoql</artifactId>
-				<version>${jjqb.version}</version>
+				<groupId>org.nightlabs.vestigo</groupId>
+				<artifactId>org.nightlabs.vestigo.xtext.jdoql</artifactId>
+				<version>${vestigo.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.nightlabs.jjqb</groupId>
-				<artifactId>org.nightlabs.jjqb.xtext.jdoql.tests</artifactId>
-				<version>${jjqb.version}</version>
+				<groupId>org.nightlabs.vestigo</groupId>
+				<artifactId>org.nightlabs.vestigo.xtext.jdoql.tests</artifactId>
+				<version>${vestigo.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.nightlabs.jjqb</groupId>
-				<artifactId>org.nightlabs.jjqb.xtext.jdoql.ui</artifactId>
-				<version>${jjqb.version}</version>
+				<groupId>org.nightlabs.vestigo</groupId>
+				<artifactId>org.nightlabs.vestigo.xtext.jdoql.ui</artifactId>
+				<version>${vestigo.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.nightlabs.jjqb</groupId>
-				<artifactId>org.nightlabs.jjqb.xtext.jpql</artifactId>
-				<version>${jjqb.version}</version>
+				<groupId>org.nightlabs.vestigo</groupId>
+				<artifactId>org.nightlabs.vestigo.xtext.jpql</artifactId>
+				<version>${vestigo.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.nightlabs.jjqb</groupId>
-				<artifactId>org.nightlabs.jjqb.xtext.jpql.tests</artifactId>
-				<version>${jjqb.version}</version>
+				<groupId>org.nightlabs.vestigo</groupId>
+				<artifactId>org.nightlabs.vestigo.xtext.jpql.tests</artifactId>
+				<version>${vestigo.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.nightlabs.jjqb</groupId>
-				<artifactId>org.nightlabs.jjqb.xtext.jpql.ui</artifactId>
-				<version>${jjqb.version}</version>
+				<groupId>org.nightlabs.vestigo</groupId>
+				<artifactId>org.nightlabs.vestigo.xtext.jpql.ui</artifactId>
+				<version>${vestigo.version}</version>
 			</dependency>
-			<!-- END org.nightlabs.jjqb.xtext -->
+			<!-- END org.nightlabs.vestigo.xtext -->
 
 			<!-- BEGIN org.eclipse -->
 			<dependency> <!-- Belongs to Eclipse, though it uses a different groupId. -->
@@ -487,7 +487,7 @@
 					<artifactId>maven-site-plugin</artifactId>
 					<!--
 					The version 3.0 has the bug that it deploys to
-					file:/tmp/jjqb-junk/../../opt/tomcat-jenkins/.jenkins/workspace/JDO_JPA_Query_Browser_Deploy_Stand-alone_Assemblies/scp:/nightly@eagle.nighthost.de/srv/www/nightly/vestigo.nightlabs.com/htdocs/0.1.1/download/stand-alone
+					file:/tmp/vestigo-junk/../../opt/tomcat-jenkins/.jenkins/workspace/JDO_JPA_Query_Browser_Deploy_Stand-alone_Assemblies/scp:/nightly@eagle.nighthost.de/srv/www/nightly/vestigo.nightlabs.com/htdocs/0.1.1/download/stand-alone
 					instead of
 					scp:/nightly@eagle.nighthost.de/srv/www/nightly/vestigo.nightlabs.com/htdocs/0.1.1/download/stand-alone
 					Downgrading to the beta-3 instead. Marco :-) 

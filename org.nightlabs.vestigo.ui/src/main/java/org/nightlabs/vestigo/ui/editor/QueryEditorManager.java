@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.ui.editor;
+package org.nightlabs.vestigo.ui.editor;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -49,19 +49,19 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
-import org.nightlabs.jjqb.childvm.shared.PropertiesUtil;
-import org.nightlabs.jjqb.core.PropertiesWithChangeSupport;
-import org.nightlabs.jjqb.core.oda.ConnectionProfile;
-import org.nightlabs.jjqb.core.oda.ConnectionProfileRegistry;
-import org.nightlabs.jjqb.core.oda.DelegatingConnection;
-import org.nightlabs.jjqb.core.oda.DelegatingResultSet;
-import org.nightlabs.jjqb.ui.JJQBUIPlugin;
-import org.nightlabs.jjqb.ui.detailtree.ObjectGraphDetailTreeView;
-import org.nightlabs.jjqb.ui.oda.OdaUtil;
-import org.nightlabs.jjqb.ui.queryparam.QueryParameter;
-import org.nightlabs.jjqb.ui.queryparam.QueryParameterManager;
-import org.nightlabs.jjqb.ui.resultsettable.ResultSetTableModel;
-import org.nightlabs.jjqb.ui.resultsettable.ResultSetTableView;
+import org.nightlabs.vestigo.childvm.shared.PropertiesUtil;
+import org.nightlabs.vestigo.core.PropertiesWithChangeSupport;
+import org.nightlabs.vestigo.core.oda.ConnectionProfile;
+import org.nightlabs.vestigo.core.oda.ConnectionProfileRegistry;
+import org.nightlabs.vestigo.core.oda.DelegatingConnection;
+import org.nightlabs.vestigo.core.oda.DelegatingResultSet;
+import org.nightlabs.vestigo.ui.JJQBUIPlugin;
+import org.nightlabs.vestigo.ui.detailtree.ObjectGraphDetailTreeView;
+import org.nightlabs.vestigo.ui.oda.OdaUtil;
+import org.nightlabs.vestigo.ui.queryparam.QueryParameter;
+import org.nightlabs.vestigo.ui.queryparam.QueryParameterManager;
+import org.nightlabs.vestigo.ui.resultsettable.ResultSetTableModel;
+import org.nightlabs.vestigo.ui.resultsettable.ResultSetTableView;
 import org.nightlabs.util.IOUtil;
 import org.nightlabs.util.Stopwatch;
 import org.slf4j.Logger;
@@ -440,8 +440,8 @@ public abstract class QueryEditorManager
 	{
 		assertUIThread();
 		final IConnectionProfile odaConnectionProfile = getODAConnectionProfile();
-		ConnectionProfile jjqbConnectionProfile = getJJQBConnectionProfile();
-		if (jjqbConnectionProfile  == null) {
+		ConnectionProfile vestigoConnectionProfile = getJJQBConnectionProfile();
+		if (vestigoConnectionProfile  == null) {
 			Shell parentShell = display.getActiveShell();
 			if (odaConnectionProfile == null) {
 				MessageDialog.openInformation(parentShell , "No connection selected!", "There is no current connection. Please select a connection first.");
@@ -490,12 +490,12 @@ public abstract class QueryEditorManager
 						throw new RuntimeException("Opening connection failed: " + status);
 				}
 
-				jjqbConnectionProfile = getJJQBConnectionProfile();
-				if (jjqbConnectionProfile == null)
+				vestigoConnectionProfile = getJJQBConnectionProfile();
+				if (vestigoConnectionProfile == null)
 					throw new IllegalStateException("Even after opening the connection, queryEditorManager.getJJQBConnectionProfile() returned null!");
 			}
 		}
-		return jjqbConnectionProfile;
+		return vestigoConnectionProfile;
 	}
 
 	public ConnectionProfile getJJQBConnectionProfile()
@@ -524,11 +524,11 @@ public abstract class QueryEditorManager
 		if (profileID == null)
 			throw new IllegalStateException("PropertiesUtil.getProfileID(connProperties) returned null!");
 
-		ConnectionProfile jjqbConnectionProfile = ConnectionProfileRegistry.sharedInstance().getConnectionProfile(profileID);
-		if (jjqbConnectionProfile != null && !jjqbConnectionProfile.isOpen())
+		ConnectionProfile vestigoConnectionProfile = ConnectionProfileRegistry.sharedInstance().getConnectionProfile(profileID);
+		if (vestigoConnectionProfile != null && !vestigoConnectionProfile.isOpen())
 			return null;
 
-		return jjqbConnectionProfile;
+		return vestigoConnectionProfile;
 	}
 
 //	public synchronized IConnection getConnection(IConnectionProfile odaConnectionProfile, IProgressMonitor monitor)
@@ -622,7 +622,7 @@ public abstract class QueryEditorManager
 //		if (registry == null)
 //			throw new IllegalStateException("Platform.getExtensionRegistry() returned null!");
 //
-//		final String extensionPointId = "org.nightlabs.jjqb.ui.connectionProfileProviderID2queryBrowserManagerMapping";
+//		final String extensionPointId = "org.nightlabs.vestigo.ui.connectionProfileProviderID2queryBrowserManagerMapping";
 //		final IExtensionPoint extensionPoint = registry.getExtensionPoint(extensionPointId);
 //		if (extensionPoint == null)
 //			throw new IllegalStateException("Unable to resolve extension-point: " + extensionPointId); //$NON-NLS-1$

@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.core.oda;
+package org.nightlabs.vestigo.core.oda;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -51,7 +51,7 @@ public class ConnectionProfileRegistry
 			if (registry == null)
 				throw new IllegalStateException("Platform.getExtensionRegistry() returned null!");
 
-			final String extensionPointId = "org.nightlabs.jjqb.core.connectionProfile";
+			final String extensionPointId = "org.nightlabs.vestigo.core.connectionProfile";
 			final IExtensionPoint extensionPoint = registry.getExtensionPoint(extensionPointId);
 			if (extensionPoint == null)
 				throw new IllegalStateException("Unable to resolve extension-point: " + extensionPointId); //$NON-NLS-1$

@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.ui.newwizard;
+package org.nightlabs.vestigo.ui.newwizard;
 
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;

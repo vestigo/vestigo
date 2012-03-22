@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.xtext.jpql.validation;
+package org.nightlabs.vestigo.xtext.jpql.validation;
  
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +11,7 @@ public class AbstractJPQLJavaValidator extends AbstractDeclarativeValidator {
 	@Override
 	protected List<EPackage> getEPackages() {
 	    List<EPackage> result = new ArrayList<EPackage>();
-	    result.add(org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage.eINSTANCE);
+	    result.add(org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage.eINSTANCE);
 		return result;
 	}
 

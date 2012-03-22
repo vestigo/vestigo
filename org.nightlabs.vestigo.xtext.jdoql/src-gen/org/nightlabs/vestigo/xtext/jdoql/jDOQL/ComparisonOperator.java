@@ -3,7 +3,7 @@
  * </copyright>
  *
  */
-package org.nightlabs.jjqb.xtext.jdoql.jDOQL;
+package org.nightlabs.vestigo.xtext.jdoql.jDOQL;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -16,7 +16,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Comparison Operator</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage#getComparisonOperator()
+ * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.JDOQLPackage#getComparisonOperator()
  * @model
  * @generated
  */

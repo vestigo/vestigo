@@ -1,16 +1,16 @@
-package org.nightlabs.jjqb.childvm.webapp.service;
+package org.nightlabs.vestigo.childvm.webapp.service;
 
 import javax.ws.rs.DELETE;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 
-import org.nightlabs.jjqb.childvm.shared.ResultSetID;
-import org.nightlabs.jjqb.childvm.shared.dto.QueryDTO;
-import org.nightlabs.jjqb.childvm.shared.dto.ResultSetDTO;
-import org.nightlabs.jjqb.childvm.webapp.model.Connection;
-import org.nightlabs.jjqb.childvm.webapp.model.ConnectionManager;
-import org.nightlabs.jjqb.childvm.webapp.model.ResultSet;
+import org.nightlabs.vestigo.childvm.shared.ResultSetID;
+import org.nightlabs.vestigo.childvm.shared.dto.QueryDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.ResultSetDTO;
+import org.nightlabs.vestigo.childvm.webapp.model.Connection;
+import org.nightlabs.vestigo.childvm.webapp.model.ConnectionManager;
+import org.nightlabs.vestigo.childvm.webapp.model.ResultSet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

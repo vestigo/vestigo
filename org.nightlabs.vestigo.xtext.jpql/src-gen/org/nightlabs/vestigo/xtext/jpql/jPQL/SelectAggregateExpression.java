@@ -3,7 +3,7 @@
  * </copyright>
  *
  */
-package org.nightlabs.jjqb.xtext.jpql.jPQL;
+package org.nightlabs.vestigo.xtext.jpql.jPQL;
 
 
 /**
@@ -14,12 +14,12 @@ package org.nightlabs.jjqb.xtext.jpql.jPQL;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.SelectAggregateExpression#isIsDistinct <em>Is Distinct</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.SelectAggregateExpression#getItem <em>Item</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jpql.jPQL.SelectAggregateExpression#isIsDistinct <em>Is Distinct</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jpql.jPQL.SelectAggregateExpression#getItem <em>Item</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getSelectAggregateExpression()
+ * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getSelectAggregateExpression()
  * @model
  * @generated
  */
@@ -35,14 +35,14 @@ public interface SelectAggregateExpression extends SelectExpression
    * <!-- end-user-doc -->
    * @return the value of the '<em>Is Distinct</em>' attribute.
    * @see #setIsDistinct(boolean)
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getSelectAggregateExpression_IsDistinct()
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getSelectAggregateExpression_IsDistinct()
    * @model
    * @generated
    */
   boolean isIsDistinct();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.SelectAggregateExpression#isIsDistinct <em>Is Distinct</em>}' attribute.
+   * Sets the value of the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.SelectAggregateExpression#isIsDistinct <em>Is Distinct</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Is Distinct</em>' attribute.
@@ -61,14 +61,14 @@ public interface SelectAggregateExpression extends SelectExpression
    * <!-- end-user-doc -->
    * @return the value of the '<em>Item</em>' containment reference.
    * @see #setItem(AliasAttributeExpression)
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getSelectAggregateExpression_Item()
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getSelectAggregateExpression_Item()
    * @model containment="true"
    * @generated
    */
   AliasAttributeExpression getItem();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.SelectAggregateExpression#getItem <em>Item</em>}' containment reference.
+   * Sets the value of the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.SelectAggregateExpression#getItem <em>Item</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Item</em>' containment reference.

@@ -11,7 +11,7 @@ options {
 }
 
 @header {
-package org.nightlabs.jjqb.xtext.jdoql.parser.antlr.internal; 
+package org.nightlabs.vestigo.xtext.jdoql.parser.antlr.internal; 
 
 import org.eclipse.xtext.*;
 import org.eclipse.xtext.parser.*;
@@ -23,7 +23,7 @@ import org.eclipse.xtext.parser.antlr.AbstractInternalAntlrParser;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream.HiddenTokens;
 import org.eclipse.xtext.parser.antlr.AntlrDatatypeRuleToken;
-import org.nightlabs.jjqb.xtext.jdoql.services.JDOQLGrammarAccess;
+import org.nightlabs.vestigo.xtext.jdoql.services.JDOQLGrammarAccess;
 
 }
 

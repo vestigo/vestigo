@@ -1,13 +1,13 @@
-package org.nightlabs.jjqb.core.internal;
+package org.nightlabs.vestigo.core.internal;
 
 import java.util.Set;
 
-import org.nightlabs.jjqb.childvm.shared.dto.ResultCellDTO;
-import org.nightlabs.jjqb.core.FieldDesc;
-import org.nightlabs.jjqb.core.LabelTextOption;
-import org.nightlabs.jjqb.core.LabelTextUtil;
-import org.nightlabs.jjqb.core.ObjectReference;
-import org.nightlabs.jjqb.core.ObjectReferenceChild;
+import org.nightlabs.vestigo.childvm.shared.dto.ResultCellDTO;
+import org.nightlabs.vestigo.core.FieldDesc;
+import org.nightlabs.vestigo.core.LabelTextOption;
+import org.nightlabs.vestigo.core.LabelTextUtil;
+import org.nightlabs.vestigo.core.ObjectReference;
+import org.nightlabs.vestigo.core.ObjectReferenceChild;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de

@@ -1,12 +1,12 @@
-module org.nightlabs.jjqb.xtext.jpql.GenerateJPQL
+module org.nightlabs.vestigo.xtext.jpql.GenerateJPQL
 
 import org.eclipse.emf.mwe.utils.*
 import org.eclipse.xtext.generator.*
 import org.eclipse.xtext.ui.generator.*
 
-var grammarURI = "classpath:/org/nightlabs/jjqb/xtext/jpql/JPQL.xtext"
+var grammarURI = "classpath:/org/nightlabs/vestigo/xtext/jpql/JPQL.xtext"
 var file.extensions = "jpql"
-var projectName = "org.nightlabs.jjqb.xtext.jpql"
+var projectName = "org.nightlabs.vestigo.xtext.jpql"
 var runtimeProject = "../${projectName}"
 
 Workflow {

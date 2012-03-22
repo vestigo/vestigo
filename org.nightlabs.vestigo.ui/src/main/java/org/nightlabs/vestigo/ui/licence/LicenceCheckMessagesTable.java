@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.ui.licence;
+package org.nightlabs.vestigo.ui.licence;
 
 import java.text.DateFormat;
 import java.util.List;
@@ -16,7 +16,7 @@ import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
-import org.nightlabs.jjqb.ui.JJQBUIPlugin;
+import org.nightlabs.vestigo.ui.JJQBUIPlugin;
 import org.nightlabs.licence.manager.ErrorMessage;
 import org.nightlabs.licence.manager.InfoMessage;
 import org.nightlabs.licence.manager.Message;

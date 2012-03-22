@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.xtext.jdoql.generator;
+package org.nightlabs.vestigo.xtext.jdoql.generator;
 
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.generator.IFileSystemAccess;

@@ -6,11 +6,11 @@
     <extension
             point="org.eclipse.ui.editors">
         <editor
-            class="org.nightlabs.jjqb.xtext.jpql.ui.JPQLExecutableExtensionFactory:org.nightlabs.jjqb.xtext.jpql.ui.editor.JPAQueryEditorImpl"
+            class="org.nightlabs.vestigo.xtext.jpql.ui.JPQLExecutableExtensionFactory:org.nightlabs.vestigo.xtext.jpql.ui.editor.JPAQueryEditorImpl"
             contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
             default="true"
             extensions="jpql"
-            id="org.nightlabs.jjqb.xtext.jpql.JPQL"
+            id="org.nightlabs.vestigo.xtext.jpql.JPQL"
             name="JPQL Editor">
         </editor>
     </extension>
@@ -18,11 +18,11 @@
     <extension
             point="org.eclipse.ui.editors">
         <editor
-            class="org.nightlabs.jjqb.xtext.jpql.ui.JPQLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
+            class="org.nightlabs.vestigo.xtext.jpql.ui.JPQLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
             contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
             default="true"
             extensions="jpql"
-            id="org.nightlabs.jjqb.xtext.jpql.JPQL"
+            id="org.nightlabs.vestigo.xtext.jpql.JPQL"
             name="JPQL Editor">
         </editor>
     </extension>
@@ -30,31 +30,31 @@
     <extension
         point="org.eclipse.ui.handlers">
         <handler
-            class="org.nightlabs.jjqb.xtext.jpql.ui.JPQLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclarationHandler"
+            class="org.nightlabs.vestigo.xtext.jpql.ui.JPQLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclarationHandler"
             commandId="org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclaration">
             <activeWhen>
                 <reference
-                    definitionId="org.nightlabs.jjqb.xtext.jpql.JPQL.Editor.opened">
+                    definitionId="org.nightlabs.vestigo.xtext.jpql.JPQL.Editor.opened">
                 </reference>
             </activeWhen>
         </handler>
         <handler
-            class="org.nightlabs.jjqb.xtext.jpql.ui.JPQLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.handler.ValidateActionHandler"
-            commandId="org.nightlabs.jjqb.xtext.jpql.JPQL.validate">
+            class="org.nightlabs.vestigo.xtext.jpql.ui.JPQLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.handler.ValidateActionHandler"
+            commandId="org.nightlabs.vestigo.xtext.jpql.JPQL.validate">
          <activeWhen>
             <reference
-                    definitionId="org.nightlabs.jjqb.xtext.jpql.JPQL.Editor.opened">
+                    definitionId="org.nightlabs.vestigo.xtext.jpql.JPQL.Editor.opened">
             </reference>
          </activeWhen>
       </handler>
     </extension>
     <extension point="org.eclipse.core.expressions.definitions">
-        <definition id="org.nightlabs.jjqb.xtext.jpql.JPQL.Editor.opened">
+        <definition id="org.nightlabs.vestigo.xtext.jpql.JPQL.Editor.opened">
             <and>
                 <reference definitionId="isActiveEditorAnInstanceOfXtextEditor"/>
                 <with variable="activeEditor">
                     <test property="org.eclipse.xtext.ui.editor.XtextEditor.languageName" 
-                        value="org.nightlabs.jjqb.xtext.jpql.JPQL" 
+                        value="org.nightlabs.vestigo.xtext.jpql.JPQL" 
                         forcePluginActivation="true"/>
                 </with>        
             </and>
@@ -63,33 +63,33 @@
     <extension
             point="org.eclipse.ui.preferencePages">
         <page
-            class="org.nightlabs.jjqb.xtext.jpql.ui.JPQLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
-            id="org.nightlabs.jjqb.xtext.jpql.JPQL"
+            class="org.nightlabs.vestigo.xtext.jpql.ui.JPQLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+            id="org.nightlabs.vestigo.xtext.jpql.JPQL"
             name="JPQL">
-            <keywordReference id="org.nightlabs.jjqb.xtext.jpql.ui.keyword_JPQL"/>
+            <keywordReference id="org.nightlabs.vestigo.xtext.jpql.ui.keyword_JPQL"/>
         </page>
         <page
-            category="org.nightlabs.jjqb.xtext.jpql.JPQL"
-            class="org.nightlabs.jjqb.xtext.jpql.ui.JPQLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.syntaxcoloring.SyntaxColoringPreferencePage"
-            id="org.nightlabs.jjqb.xtext.jpql.JPQL.coloring"
+            category="org.nightlabs.vestigo.xtext.jpql.JPQL"
+            class="org.nightlabs.vestigo.xtext.jpql.ui.JPQLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.syntaxcoloring.SyntaxColoringPreferencePage"
+            id="org.nightlabs.vestigo.xtext.jpql.JPQL.coloring"
             name="Syntax Coloring">
-            <keywordReference id="org.nightlabs.jjqb.xtext.jpql.ui.keyword_JPQL"/>
+            <keywordReference id="org.nightlabs.vestigo.xtext.jpql.ui.keyword_JPQL"/>
         </page>
         <page
-            category="org.nightlabs.jjqb.xtext.jpql.JPQL"
-            class="org.nightlabs.jjqb.xtext.jpql.ui.JPQLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.templates.XtextTemplatePreferencePage"
-            id="org.nightlabs.jjqb.xtext.jpql.JPQL.templates"
+            category="org.nightlabs.vestigo.xtext.jpql.JPQL"
+            class="org.nightlabs.vestigo.xtext.jpql.ui.JPQLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.templates.XtextTemplatePreferencePage"
+            id="org.nightlabs.vestigo.xtext.jpql.JPQL.templates"
             name="Templates">
-            <keywordReference id="org.nightlabs.jjqb.xtext.jpql.ui.keyword_JPQL"/>
+            <keywordReference id="org.nightlabs.vestigo.xtext.jpql.ui.keyword_JPQL"/>
         </page>
     </extension>
     <extension
             point="org.eclipse.ui.propertyPages">
         <page
-            class="org.nightlabs.jjqb.xtext.jpql.ui.JPQLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
-            id="org.nightlabs.jjqb.xtext.jpql.JPQL"
+            class="org.nightlabs.vestigo.xtext.jpql.ui.JPQLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+            id="org.nightlabs.vestigo.xtext.jpql.JPQL"
             name="JPQL">
-            <keywordReference id="org.nightlabs.jjqb.xtext.jpql.ui.keyword_JPQL"/>
+            <keywordReference id="org.nightlabs.vestigo.xtext.jpql.ui.keyword_JPQL"/>
             <enabledWhen>
 	            <adapt type="org.eclipse.core.resources.IProject"/>
 			</enabledWhen>
@@ -99,14 +99,14 @@
     <extension
         point="org.eclipse.ui.keywords">
         <keyword
-            id="org.nightlabs.jjqb.xtext.jpql.ui.keyword_JPQL"
+            id="org.nightlabs.vestigo.xtext.jpql.ui.keyword_JPQL"
             label="JPQL"/>
     </extension>
     <extension
          point="org.eclipse.ui.commands">
       <command
             description="Trigger expensive validation"
-            id="org.nightlabs.jjqb.xtext.jpql.JPQL.validate"
+            id="org.nightlabs.vestigo.xtext.jpql.JPQL.validate"
             name="Validate">
       </command>
     </extension>
@@ -114,12 +114,12 @@
         <menuContribution
             locationURI="popup:#TextEditorContext?after=group.edit">
              <command
-                 commandId="org.nightlabs.jjqb.xtext.jpql.JPQL.validate"
+                 commandId="org.nightlabs.vestigo.xtext.jpql.JPQL.validate"
                  style="push"
                  tooltip="Trigger expensive validation">
             <visibleWhen checkEnabled="false">
                 <reference
-                    definitionId="org.nightlabs.jjqb.xtext.jpql.JPQL.Editor.opened">
+                    definitionId="org.nightlabs.vestigo.xtext.jpql.JPQL.Editor.opened">
                 </reference>
             </visibleWhen>
          </command>  
@@ -129,7 +129,7 @@
 		<menuContribution locationURI="popup:#TextEditorContext?endof=group.find">
 			<command commandId="org.eclipse.xtext.ui.editor.FindReferences">
 				<visibleWhen checkEnabled="false">
-                	<reference definitionId="org.nightlabs.jjqb.xtext.jpql.JPQL.Editor.opened">
+                	<reference definitionId="org.nightlabs.vestigo.xtext.jpql.JPQL.Editor.opened">
                 	</reference>
             	</visibleWhen>
 			</command>
@@ -137,11 +137,11 @@
 	</extension>
 	<extension point="org.eclipse.ui.handlers">
 	    <handler
-            class="org.nightlabs.jjqb.xtext.jpql.ui.JPQLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.findrefs.FindReferencesHandler"
+            class="org.nightlabs.vestigo.xtext.jpql.ui.JPQLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.findrefs.FindReferencesHandler"
             commandId="org.eclipse.xtext.ui.editor.FindReferences">
             <activeWhen>
                 <reference
-                    definitionId="org.nightlabs.jjqb.xtext.jpql.JPQL.Editor.opened">
+                    definitionId="org.nightlabs.vestigo.xtext.jpql.JPQL.Editor.opened">
                 </reference>
             </activeWhen>
         </handler>
@@ -152,13 +152,13 @@
 	<extension
 		point="org.eclipse.emf.ecore.extension_parser">
 		<parser
-			class="org.nightlabs.jjqb.xtext.jpql.ui.JPQLExecutableExtensionFactory:org.eclipse.xtext.resource.IResourceFactory"
+			class="org.nightlabs.vestigo.xtext.jpql.ui.JPQLExecutableExtensionFactory:org.eclipse.xtext.resource.IResourceFactory"
 			type="jpql">
 		</parser>
 	</extension>
 	<extension point="org.eclipse.xtext.extension_resourceServiceProvider">
         <resourceServiceProvider
-            class="org.nightlabs.jjqb.xtext.jpql.ui.JPQLExecutableExtensionFactory:org.eclipse.xtext.ui.resource.IResourceUIServiceProvider"
+            class="org.nightlabs.vestigo.xtext.jpql.ui.JPQLExecutableExtensionFactory:org.eclipse.xtext.ui.resource.IResourceUIServiceProvider"
             uriExtension="jpql">
         </resourceServiceProvider>
     </extension>
@@ -168,27 +168,27 @@
    <extension
          point="org.eclipse.xtext.builder.participant">
       <participant
-            class="org.nightlabs.jjqb.xtext.jpql.ui.JPQLExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant">
+            class="org.nightlabs.vestigo.xtext.jpql.ui.JPQLExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant">
       </participant>
    </extension>
    <extension
             point="org.eclipse.ui.preferencePages">
         <page
-            category="org.nightlabs.jjqb.xtext.jpql.JPQL"
-            class="org.nightlabs.jjqb.xtext.jpql.ui.JPQLExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
-            id="org.nightlabs.jjqb.xtext.jpql.JPQL.compiler.preferencePage"
+            category="org.nightlabs.vestigo.xtext.jpql.JPQL"
+            class="org.nightlabs.vestigo.xtext.jpql.ui.JPQLExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
+            id="org.nightlabs.vestigo.xtext.jpql.JPQL.compiler.preferencePage"
             name="Compiler">
-            <keywordReference id="org.nightlabs.jjqb.xtext.jpql.ui.keyword_JPQL"/>
+            <keywordReference id="org.nightlabs.vestigo.xtext.jpql.ui.keyword_JPQL"/>
         </page>
     </extension>
     <extension
             point="org.eclipse.ui.propertyPages">
         <page
-            category="org.nightlabs.jjqb.xtext.jpql.JPQL"
-            class="org.nightlabs.jjqb.xtext.jpql.ui.JPQLExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
-            id="org.nightlabs.jjqb.xtext.jpql.JPQL.compiler.propertyPage"
+            category="org.nightlabs.vestigo.xtext.jpql.JPQL"
+            class="org.nightlabs.vestigo.xtext.jpql.ui.JPQLExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
+            id="org.nightlabs.vestigo.xtext.jpql.JPQL.compiler.propertyPage"
             name="Compiler">
-            <keywordReference id="org.nightlabs.jjqb.xtext.jpql.ui.keyword_JPQL"/>
+            <keywordReference id="org.nightlabs.vestigo.xtext.jpql.ui.keyword_JPQL"/>
             <enabledWhen>
 	            <adapt type="org.eclipse.core.resources.IProject"/>
 			</enabledWhen>
@@ -200,11 +200,11 @@
 	<extension
 		point="org.eclipse.ui.handlers">
 		<handler 
-			class="org.nightlabs.jjqb.xtext.jpql.ui.JPQLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.outline.quickoutline.ShowQuickOutlineActionHandler"
+			class="org.nightlabs.vestigo.xtext.jpql.ui.JPQLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.outline.quickoutline.ShowQuickOutlineActionHandler"
 			commandId="org.eclipse.xtext.ui.editor.outline.QuickOutline">
 			<activeWhen>
 				<reference
-					definitionId="org.nightlabs.jjqb.xtext.jpql.JPQL.Editor.opened">
+					definitionId="org.nightlabs.vestigo.xtext.jpql.JPQL.Editor.opened">
 				</reference>
 			</activeWhen>
 		</handler>
@@ -224,7 +224,7 @@
 				style="push"
 				tooltip="Open Quick Outline">
 				<visibleWhen checkEnabled="false">
-					<reference definitionId="org.nightlabs.jjqb.xtext.jpql.JPQL.Editor.opened"/>
+					<reference definitionId="org.nightlabs.vestigo.xtext.jpql.JPQL.Editor.opened"/>
 				</visibleWhen>
 			</command>
 		</menuContribution>
@@ -233,17 +233,17 @@
    <extension
          point="org.eclipse.ui.ide.markerResolution">
       <markerResolutionGenerator
-            class="org.nightlabs.jjqb.xtext.jpql.ui.JPQLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator">
+            class="org.nightlabs.vestigo.xtext.jpql.ui.JPQLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator">
       </markerResolutionGenerator>
    </extension>
    	<!-- Rename Refactoring -->
 	<extension point="org.eclipse.ui.handlers">
 		<handler 
-			class="org.nightlabs.jjqb.xtext.jpql.ui.JPQLExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.IRenameElementHandler"
+			class="org.nightlabs.vestigo.xtext.jpql.ui.JPQLExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.IRenameElementHandler"
 			commandId="org.eclipse.xtext.ui.refactoring.RenameElement">
 			<activeWhen>
 				<reference
-					definitionId="org.nightlabs.jjqb.xtext.jpql.JPQL.Editor.opened">
+					definitionId="org.nightlabs.vestigo.xtext.jpql.JPQL.Editor.opened">
 				</reference>
 			</activeWhen>
 		</handler>
@@ -255,7 +255,7 @@
                style="push">
             <visibleWhen checkEnabled="false">
                <reference
-                     definitionId="org.nightlabs.jjqb.xtext.jpql.JPQL.Editor.opened">
+                     definitionId="org.nightlabs.vestigo.xtext.jpql.JPQL.Editor.opened">
                </reference>
             </visibleWhen>
          </command>
@@ -263,29 +263,29 @@
    </extension>
    <extension point="org.eclipse.ui.preferencePages">
 	    <page
-	        category="org.nightlabs.jjqb.xtext.jpql.JPQL"
-	        class="org.nightlabs.jjqb.xtext.jpql.ui.JPQLExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.RefactoringPreferencePage"
-	        id="org.nightlabs.jjqb.xtext.jpql.JPQL.refactoring"
+	        category="org.nightlabs.vestigo.xtext.jpql.JPQL"
+	        class="org.nightlabs.vestigo.xtext.jpql.ui.JPQLExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.RefactoringPreferencePage"
+	        id="org.nightlabs.vestigo.xtext.jpql.JPQL.refactoring"
 	        name="Refactoring">
-	        <keywordReference id="org.nightlabs.jjqb.xtext.jpql.ui.keyword_JPQL"/>
+	        <keywordReference id="org.nightlabs.vestigo.xtext.jpql.ui.keyword_JPQL"/>
 	    </page>
 	</extension>
 
   <extension point="org.eclipse.compare.contentViewers">
-    <viewer id="org.nightlabs.jjqb.xtext.jpql.JPQL.compare.contentViewers"
-            class="org.nightlabs.jjqb.xtext.jpql.ui.JPQLExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
+    <viewer id="org.nightlabs.vestigo.xtext.jpql.JPQL.compare.contentViewers"
+            class="org.nightlabs.vestigo.xtext.jpql.ui.JPQLExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
             extensions="jpql">
     </viewer>
   </extension>
   <extension point="org.eclipse.compare.contentMergeViewers">
-    <viewer id="org.nightlabs.jjqb.xtext.jpql.JPQL.compare.contentMergeViewers"
-            class="org.nightlabs.jjqb.xtext.jpql.ui.JPQLExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
+    <viewer id="org.nightlabs.vestigo.xtext.jpql.JPQL.compare.contentMergeViewers"
+            class="org.nightlabs.vestigo.xtext.jpql.ui.JPQLExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
             extensions="jpql" label="JPQL Compare">
      </viewer>
   </extension>
   <extension point="org.eclipse.ui.editors.documentProviders">
-    <provider id="org.nightlabs.jjqb.xtext.jpql.JPQL.editors.documentProviders"
-            class="org.nightlabs.jjqb.xtext.jpql.ui.JPQLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.model.XtextDocumentProvider"
+    <provider id="org.nightlabs.vestigo.xtext.jpql.JPQL.editors.documentProviders"
+            class="org.nightlabs.vestigo.xtext.jpql.ui.JPQLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.model.XtextDocumentProvider"
             extensions="jpql">
     </provider>
   </extension>

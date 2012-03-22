@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.cumulus4j.childvm.webapp.model;
+package org.nightlabs.vestigo.cumulus4j.childvm.webapp.model;
 
 import java.lang.reflect.Field;
 import java.util.Collection;
@@ -6,8 +6,8 @@ import java.util.List;
 
 import javax.persistence.Query;
 
-import org.nightlabs.jjqb.childvm.webapp.model.FieldValue;
-import org.nightlabs.jjqb.childvm.webapp.model.JPAResultSet;
+import org.nightlabs.vestigo.childvm.webapp.model.FieldValue;
+import org.nightlabs.vestigo.childvm.webapp.model.JPAResultSet;
 
 public class JPACumulus4jResultSet extends JPAResultSet {
 

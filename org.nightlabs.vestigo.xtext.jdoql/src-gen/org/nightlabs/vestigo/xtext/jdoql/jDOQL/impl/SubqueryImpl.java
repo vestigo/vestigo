@@ -3,7 +3,7 @@
  * </copyright>
  *
  */
-package org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl;
+package org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -13,14 +13,14 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.ImportClause;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.ParametersClause;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.Subquery;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.SubqueryFromClause;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.SubquerySelectClause;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.VariablesClause;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.WhereClause;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.ImportClause;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.JDOQLPackage;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.ParametersClause;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.Subquery;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.SubqueryFromClause;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.SubquerySelectClause;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.VariablesClause;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.WhereClause;
 
 /**
  * <!-- begin-user-doc -->
@@ -29,12 +29,12 @@ import org.nightlabs.jjqb.xtext.jdoql.jDOQL.WhereClause;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SubqueryImpl#getSelectClause <em>Select Clause</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SubqueryImpl#getFromClause <em>From Clause</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SubqueryImpl#getWhereClause <em>Where Clause</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SubqueryImpl#getVariablesClause <em>Variables Clause</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SubqueryImpl#getParametersClause <em>Parameters Clause</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SubqueryImpl#getImportClause <em>Import Clause</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.SubqueryImpl#getSelectClause <em>Select Clause</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.SubqueryImpl#getFromClause <em>From Clause</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.SubqueryImpl#getWhereClause <em>Where Clause</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.SubqueryImpl#getVariablesClause <em>Variables Clause</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.SubqueryImpl#getParametersClause <em>Parameters Clause</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.SubqueryImpl#getImportClause <em>Import Clause</em>}</li>
  * </ul>
  * </p>
  *

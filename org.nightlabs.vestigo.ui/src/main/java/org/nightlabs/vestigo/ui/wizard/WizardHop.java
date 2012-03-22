@@ -24,7 +24,7 @@
  *                                                                             *
  ******************************************************************************/
 
-package org.nightlabs.jjqb.ui.wizard;
+package org.nightlabs.vestigo.ui.wizard;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -90,14 +90,14 @@ public class WizardHop implements IWizardHop
 	}
 
 	/**
-	 * @see org.nightlabs.jjqb.ui.wizard.IWizardHop#getParentHop()
+	 * @see org.nightlabs.vestigo.ui.wizard.IWizardHop#getParentHop()
 	 */
 	public IWizardHop getParentHop()
 	{
 		return parentHop;
 	}
 	/**
-	 * @see org.nightlabs.jjqb.ui.wizard.IWizardHop#setParentHop(org.nightlabs.jjqb.ui.wizard.IWizardHop)
+	 * @see org.nightlabs.vestigo.ui.wizard.IWizardHop#setParentHop(org.nightlabs.vestigo.ui.wizard.IWizardHop)
 	 */
 	public void setParentHop(IWizardHop parentHop)
 	{
@@ -125,7 +125,7 @@ public class WizardHop implements IWizardHop
 	}
 
 	/**
-	 * @see org.nightlabs.jjqb.ui.wizard.IWizardHop#getExitPage()
+	 * @see org.nightlabs.vestigo.ui.wizard.IWizardHop#getExitPage()
 	 */
 	public IWizardHopPage getExitPage()
 	{
@@ -133,7 +133,7 @@ public class WizardHop implements IWizardHop
 	}
 
 	/**
-	 * @see org.nightlabs.jjqb.ui.wizard.IWizardHop#setExitPage(org.nightlabs.jjqb.ui.wizard.IWizardHopPage)
+	 * @see org.nightlabs.vestigo.ui.wizard.IWizardHop#setExitPage(org.nightlabs.vestigo.ui.wizard.IWizardHopPage)
 	 */
 	public void setExitPage(IWizardHopPage exitPage)
 	{
@@ -189,7 +189,7 @@ public class WizardHop implements IWizardHop
 	}
 
 	/**
-	 * @see org.nightlabs.jjqb.ui.wizard.IWizardHop#removeAllHopPagesAfter(org.nightlabs.jjqb.ui.wizard.IWizardHopPage)
+	 * @see org.nightlabs.vestigo.ui.wizard.IWizardHop#removeAllHopPagesAfter(org.nightlabs.vestigo.ui.wizard.IWizardHopPage)
 	 */
 	public void removeAllHopPagesAfter(IWizardHopPage page)
 	{
@@ -289,7 +289,7 @@ public class WizardHop implements IWizardHop
 //	}
 
 	/**
-	 * @see org.nightlabs.jjqb.ui.wizard.IWizardHop#getFirstHopPage()
+	 * @see org.nightlabs.vestigo.ui.wizard.IWizardHop#getFirstHopPage()
 	 */
 	public IWizardHopPage getFirstHopPage()
 	{
@@ -300,7 +300,7 @@ public class WizardHop implements IWizardHop
 	}
 
 	/**
-	 * @see org.nightlabs.jjqb.ui.wizard.IWizardHop#getLastHopPage()
+	 * @see org.nightlabs.vestigo.ui.wizard.IWizardHop#getLastHopPage()
 	 */
 	public IWizardHopPage getLastHopPage()
 	{
@@ -311,7 +311,7 @@ public class WizardHop implements IWizardHop
 	}
 
 	/**
-	 * @see org.nightlabs.jjqb.ui.wizard.IWizardHop#removeHopPage(org.nightlabs.jjqb.ui.wizard.IWizardHopPage)
+	 * @see org.nightlabs.vestigo.ui.wizard.IWizardHop#removeHopPage(org.nightlabs.vestigo.ui.wizard.IWizardHopPage)
 	 */
 	public boolean removeHopPage(IWizardHopPage page)
 	{
@@ -319,7 +319,7 @@ public class WizardHop implements IWizardHop
 	}
 
 	/**
-	 * @see org.nightlabs.jjqb.ui.wizard.IWizardHop#getHopPages()
+	 * @see org.nightlabs.vestigo.ui.wizard.IWizardHop#getHopPages()
 	 */
 	public List<IWizardHopPage> getHopPages()
 	{

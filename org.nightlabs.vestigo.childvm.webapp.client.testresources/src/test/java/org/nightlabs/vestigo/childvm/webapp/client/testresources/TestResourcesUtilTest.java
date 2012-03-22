@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.childvm.webapp.client.testresources;
+package org.nightlabs.vestigo.childvm.webapp.client.testresources;
 
 import java.util.Map;
 

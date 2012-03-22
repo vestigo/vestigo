@@ -3,7 +3,7 @@
  * </copyright>
  *
  */
-package org.nightlabs.jjqb.xtext.jpql.jPQL;
+package org.nightlabs.vestigo.xtext.jpql.jPQL;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -15,11 +15,11 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.OrExpression#getEntries <em>Entries</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jpql.jPQL.OrExpression#getEntries <em>Entries</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getOrExpression()
+ * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getOrExpression()
  * @model
  * @generated
  */
@@ -27,7 +27,7 @@ public interface OrExpression extends Expression
 {
   /**
    * Returns the value of the '<em><b>Entries</b></em>' containment reference list.
-   * The list contents are of type {@link org.nightlabs.jjqb.xtext.jpql.jPQL.Expression}.
+   * The list contents are of type {@link org.nightlabs.vestigo.xtext.jpql.jPQL.Expression}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Entries</em>' containment reference list isn't clear,
@@ -35,7 +35,7 @@ public interface OrExpression extends Expression
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Entries</em>' containment reference list.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getOrExpression_Entries()
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getOrExpression_Entries()
    * @model containment="true"
    * @generated
    */

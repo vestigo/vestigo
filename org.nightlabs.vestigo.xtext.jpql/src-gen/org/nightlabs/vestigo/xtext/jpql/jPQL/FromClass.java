@@ -3,7 +3,7 @@
  * </copyright>
  *
  */
-package org.nightlabs.jjqb.xtext.jpql.jPQL;
+package org.nightlabs.vestigo.xtext.jpql.jPQL;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -15,12 +15,12 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.FromClass#getType <em>Type</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.FromClass#getJoins <em>Joins</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jpql.jPQL.FromClass#getType <em>Type</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jpql.jPQL.FromClass#getJoins <em>Joins</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getFromClass()
+ * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getFromClass()
  * @model
  * @generated
  */
@@ -36,14 +36,14 @@ public interface FromClass extends FromEntry
    * <!-- end-user-doc -->
    * @return the value of the '<em>Type</em>' attribute.
    * @see #setType(String)
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getFromClass_Type()
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getFromClass_Type()
    * @model
    * @generated
    */
   String getType();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.FromClass#getType <em>Type</em>}' attribute.
+   * Sets the value of the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.FromClass#getType <em>Type</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Type</em>' attribute.
@@ -54,7 +54,7 @@ public interface FromClass extends FromEntry
 
   /**
    * Returns the value of the '<em><b>Joins</b></em>' containment reference list.
-   * The list contents are of type {@link org.nightlabs.jjqb.xtext.jpql.jPQL.FromJoin}.
+   * The list contents are of type {@link org.nightlabs.vestigo.xtext.jpql.jPQL.FromJoin}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Joins</em>' containment reference list isn't clear,
@@ -62,7 +62,7 @@ public interface FromClass extends FromEntry
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Joins</em>' containment reference list.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getFromClass_Joins()
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getFromClass_Joins()
    * @model containment="true"
    * @generated
    */

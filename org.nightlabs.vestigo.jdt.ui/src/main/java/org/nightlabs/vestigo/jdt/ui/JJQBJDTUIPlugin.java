@@ -1,9 +1,9 @@
-package org.nightlabs.jjqb.jdt.ui;
+package org.nightlabs.vestigo.jdt.ui;
 
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
-import org.nightlabs.jjqb.ui.JJQBUIPlugin;
+import org.nightlabs.vestigo.ui.JJQBUIPlugin;
 import org.osgi.framework.BundleContext;
 
 /**
@@ -11,7 +11,7 @@ import org.osgi.framework.BundleContext;
  */
 public class JJQBJDTUIPlugin extends AbstractUIPlugin
 {
-	public static final String BUNDLE_SYMBOLIC_NAME = "org.nightlabs.jjqb.jdt.ui";
+	public static final String BUNDLE_SYMBOLIC_NAME = "org.nightlabs.vestigo.jdt.ui";
 
 	// The shared instance
 	private static JJQBJDTUIPlugin plugin;

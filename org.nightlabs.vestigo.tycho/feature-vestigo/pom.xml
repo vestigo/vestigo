@@ -4,46 +4,46 @@
 	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
 
-	<artifactId>org.nightlabs.jjqb.ui.feature</artifactId>
+	<artifactId>org.nightlabs.vestigo.ui.feature</artifactId>
 	<packaging>eclipse-feature</packaging>
 
 	<parent>
-		<groupId>org.nightlabs.jjqb</groupId>
-		<artifactId>org.nightlabs.jjqb.tycho</artifactId>
+		<groupId>org.nightlabs.vestigo</groupId>
+		<artifactId>org.nightlabs.vestigo.tycho</artifactId>
 		<version>0.2.0-SNAPSHOT</version>
 		<relativePath>..</relativePath>
 	</parent>
 
 	<dependencies>
 		<dependency>
-			<groupId>org.nightlabs.jjqb</groupId>
-			<artifactId>org.nightlabs.jjqb.ui</artifactId>
+			<groupId>org.nightlabs.vestigo</groupId>
+			<artifactId>org.nightlabs.vestigo.ui</artifactId>
 			<scope>compile</scope>
 			<exclusions>
 				<exclusion>
-					<groupId>org.nightlabs.jjqb</groupId>
-					<artifactId>org.nightlabs.jjqb.childvm.webapp</artifactId>
+					<groupId>org.nightlabs.vestigo</groupId>
+					<artifactId>org.nightlabs.vestigo.childvm.webapp</artifactId>
 				</exclusion>
 			</exclusions>
 		</dependency>
 		<dependency>
-			<groupId>org.nightlabs.jjqb</groupId>
-			<artifactId>org.nightlabs.jjqb.xtext.jdoql</artifactId>
+			<groupId>org.nightlabs.vestigo</groupId>
+			<artifactId>org.nightlabs.vestigo.xtext.jdoql</artifactId>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.nightlabs.jjqb</groupId>
-			<artifactId>org.nightlabs.jjqb.xtext.jdoql.ui</artifactId>
+			<groupId>org.nightlabs.vestigo</groupId>
+			<artifactId>org.nightlabs.vestigo.xtext.jdoql.ui</artifactId>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.nightlabs.jjqb</groupId>
-			<artifactId>org.nightlabs.jjqb.xtext.jpql</artifactId>
+			<groupId>org.nightlabs.vestigo</groupId>
+			<artifactId>org.nightlabs.vestigo.xtext.jpql</artifactId>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.nightlabs.jjqb</groupId>
-			<artifactId>org.nightlabs.jjqb.xtext.jpql.ui</artifactId>
+			<groupId>org.nightlabs.vestigo</groupId>
+			<artifactId>org.nightlabs.vestigo.xtext.jpql.ui</artifactId>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>

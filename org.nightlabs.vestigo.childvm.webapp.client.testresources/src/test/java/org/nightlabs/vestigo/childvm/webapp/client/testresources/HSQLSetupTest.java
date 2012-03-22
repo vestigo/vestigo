@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.nightlabs.jjqb.childvm.webapp.client.testresources;
+package org.nightlabs.vestigo.childvm.webapp.client.testresources;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -11,7 +11,7 @@ import junit.framework.Assert;
 
 import org.junit.Ignore;
 import org.junit.Test;
-import org.nightlabs.jjqb.childvm.webapp.client.testresources.sql.HSQLSetup;
+import org.nightlabs.vestigo.childvm.webapp.client.testresources.sql.HSQLSetup;
 
 /**
  * @author Alexander Bieber <!-- alex [AT] nightlabs [DOT] de -->

@@ -1,10 +1,10 @@
-package org.nightlabs.jjqb.ui.detailtree;
+package org.nightlabs.vestigo.ui.detailtree;
 
 import java.util.EnumSet;
 
 import org.eclipse.swt.graphics.Image;
-import org.nightlabs.jjqb.core.LabelTextOption;
-import org.nightlabs.jjqb.ui.JJQBUIPlugin;
+import org.nightlabs.vestigo.core.LabelTextOption;
+import org.nightlabs.vestigo.ui.JJQBUIPlugin;
 
 public class MessageObjectGraphDetailTreeNode
 extends ObjectGraphDetailTreeNode

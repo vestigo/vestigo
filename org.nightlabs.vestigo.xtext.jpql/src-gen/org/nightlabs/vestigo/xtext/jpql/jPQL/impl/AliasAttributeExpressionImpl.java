@@ -3,7 +3,7 @@
  * </copyright>
  *
  */
-package org.nightlabs.jjqb.xtext.jpql.jPQL.impl;
+package org.nightlabs.vestigo.xtext.jpql.jPQL.impl;
 
 import java.util.Collection;
 
@@ -18,10 +18,10 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EDataTypeEList;
 
-import org.nightlabs.jjqb.xtext.jpql.jPQL.AliasAttributeExpression;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.OrderByDirection;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.VariableDeclaration;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.AliasAttributeExpression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.OrderByDirection;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.VariableDeclaration;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,9 +30,9 @@ import org.nightlabs.jjqb.xtext.jpql.jPQL.VariableDeclaration;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.AliasAttributeExpressionImpl#getDirection <em>Direction</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.AliasAttributeExpressionImpl#getAlias <em>Alias</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.AliasAttributeExpressionImpl#getAttributes <em>Attributes</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.AliasAttributeExpressionImpl#getDirection <em>Direction</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.AliasAttributeExpressionImpl#getAlias <em>Alias</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.AliasAttributeExpressionImpl#getAttributes <em>Attributes</em>}</li>
  * </ul>
  * </p>
  *

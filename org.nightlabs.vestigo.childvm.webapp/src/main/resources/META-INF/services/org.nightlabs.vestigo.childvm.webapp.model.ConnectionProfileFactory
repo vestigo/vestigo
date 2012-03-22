@@ -1,2 +1,2 @@
-org.nightlabs.jjqb.childvm.webapp.model.JPAConnectionProfile$Factory
-org.nightlabs.jjqb.childvm.webapp.model.JDOConnectionProfile$Factory
+org.nightlabs.vestigo.childvm.webapp.model.JPAConnectionProfile$Factory
+org.nightlabs.vestigo.childvm.webapp.model.JDOConnectionProfile$Factory

@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.ui.queryparam;
+package org.nightlabs.vestigo.ui.queryparam;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.DisposeEvent;
@@ -9,7 +9,7 @@ import org.eclipse.ui.IPartListener2;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchPartReference;
 import org.eclipse.ui.part.ViewPart;
-import org.nightlabs.jjqb.ui.editor.QueryEditor;
+import org.nightlabs.vestigo.ui.editor.QueryEditor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.ui.candidateclassview;
+package org.nightlabs.vestigo.ui.candidateclassview;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -21,12 +21,12 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchPartReference;
 import org.eclipse.ui.part.ViewPart;
-import org.nightlabs.jjqb.ui.editor.NonExistingStorageEditorInput;
-import org.nightlabs.jjqb.ui.editor.QueryEditor;
-import org.nightlabs.jjqb.ui.editor.QueryEditorInput;
-import org.nightlabs.jjqb.ui.editor.QueryEditorManager;
-import org.nightlabs.jjqb.ui.oda.QueryFileExtensionRegistry;
-import org.nightlabs.jjqb.ui.resource.Messages;
+import org.nightlabs.vestigo.ui.editor.NonExistingStorageEditorInput;
+import org.nightlabs.vestigo.ui.editor.QueryEditor;
+import org.nightlabs.vestigo.ui.editor.QueryEditorInput;
+import org.nightlabs.vestigo.ui.editor.QueryEditorManager;
+import org.nightlabs.vestigo.ui.oda.QueryFileExtensionRegistry;
+import org.nightlabs.vestigo.ui.resource.Messages;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

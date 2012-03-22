@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!-- Schema file written by PDE -->
-<schema targetNamespace="org.nightlabs.jjqb.core" xmlns="http://www.w3.org/2001/XMLSchema">
+<schema targetNamespace="org.nightlabs.vestigo.core" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
       <appinfo>
-         <meta.schema plugin="org.nightlabs.jjqb.core" id="connectionProfile" name="ConnectionProfile"/>
+         <meta.schema plugin="org.nightlabs.vestigo.core" id="connectionProfile" name="ConnectionProfile"/>
       </appinfo>
       <documentation>
          [Enter description of this extension point.]
@@ -55,7 +55,7 @@
                   
                </documentation>
                <appinfo>
-                  <meta.attribute kind="java" basedOn=":org.nightlabs.jjqb.core.oda.ConnectionProfile"/>
+                  <meta.attribute kind="java" basedOn=":org.nightlabs.vestigo.core.oda.ConnectionProfile"/>
                </appinfo>
             </annotation>
          </attribute>
@@ -65,7 +65,7 @@
                   Class or interface of a connection to which the given connectionProfile should be assigned. A concrete.
                </documentation>
                <appinfo>
-                  <meta.attribute kind="java" basedOn=":org.nightlabs.jjqb.core.oda.Connection"/>
+                  <meta.attribute kind="java" basedOn=":org.nightlabs.vestigo.core.oda.Connection"/>
                </appinfo>
             </annotation>
          </attribute>

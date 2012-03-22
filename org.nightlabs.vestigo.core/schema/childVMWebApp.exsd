@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!-- Schema file written by PDE -->
-<schema targetNamespace="org.nightlabs.jjqb.core" xmlns="http://www.w3.org/2001/XMLSchema">
+<schema targetNamespace="org.nightlabs.vestigo.core" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
       <appinfo>
-         <meta.schema plugin="org.nightlabs.jjqb.core" id="childVMWebApp" name="ChildVM WebApp"/>
+         <meta.schema plugin="org.nightlabs.vestigo.core" id="childVMWebApp" name="ChildVM WebApp"/>
       </appinfo>
       <documentation>
          [Enter description of this extension point.]
@@ -62,7 +62,7 @@
                   
                </documentation>
                <appinfo>
-                  <meta.attribute kind="java" basedOn=":org.nightlabs.jjqb.core.childvm.WebApp"/>
+                  <meta.attribute kind="java" basedOn=":org.nightlabs.vestigo.core.childvm.WebApp"/>
                </appinfo>
             </annotation>
          </attribute>

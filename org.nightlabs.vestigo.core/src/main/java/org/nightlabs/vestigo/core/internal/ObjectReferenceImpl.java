@@ -1,19 +1,19 @@
-package org.nightlabs.jjqb.core.internal;
+package org.nightlabs.vestigo.core.internal;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import org.nightlabs.jjqb.childvm.shared.api.ChildVM;
-import org.nightlabs.jjqb.childvm.shared.dto.ResultCellDTO;
-import org.nightlabs.jjqb.childvm.shared.dto.ResultCellObjectRefDTO;
-import org.nightlabs.jjqb.childvm.shared.dto.ResultCellPersistentObjectRefDTO;
-import org.nightlabs.jjqb.childvm.shared.dto.ResultCellTransientObjectRefDTO;
-import org.nightlabs.jjqb.core.LabelTextOption;
-import org.nightlabs.jjqb.core.LabelTextUtil;
-import org.nightlabs.jjqb.core.ObjectReference;
-import org.nightlabs.jjqb.core.ObjectReferenceChild;
-import org.nightlabs.jjqb.core.oda.ResultSet;
+import org.nightlabs.vestigo.childvm.shared.api.ChildVM;
+import org.nightlabs.vestigo.childvm.shared.dto.ResultCellDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.ResultCellObjectRefDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.ResultCellPersistentObjectRefDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.ResultCellTransientObjectRefDTO;
+import org.nightlabs.vestigo.core.LabelTextOption;
+import org.nightlabs.vestigo.core.LabelTextUtil;
+import org.nightlabs.vestigo.core.ObjectReference;
+import org.nightlabs.vestigo.core.ObjectReferenceChild;
+import org.nightlabs.vestigo.core.oda.ResultSet;
 import org.nightlabs.util.Util;
 
 /**

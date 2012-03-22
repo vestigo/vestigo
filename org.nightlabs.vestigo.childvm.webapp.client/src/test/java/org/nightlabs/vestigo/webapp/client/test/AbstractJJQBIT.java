@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.webapp.client.test;
+package org.nightlabs.vestigo.webapp.client.test;
 
 import java.sql.SQLException;
 import java.util.Collection;
@@ -9,11 +9,11 @@ import junit.framework.Assert;
 
 import org.junit.After;
 import org.junit.Before;
-import org.nightlabs.jjqb.childvm.shared.api.ChildVM;
-import org.nightlabs.jjqb.childvm.shared.dto.ConnectionDTO;
-import org.nightlabs.jjqb.childvm.shared.dto.ConnectionProfileDTO;
-import org.nightlabs.jjqb.childvm.webapp.client.ChildVMWebappClient;
-import org.nightlabs.jjqb.childvm.webapp.client.testresources.sql.AbstractSetup;
+import org.nightlabs.vestigo.childvm.shared.api.ChildVM;
+import org.nightlabs.vestigo.childvm.shared.dto.ConnectionDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.ConnectionProfileDTO;
+import org.nightlabs.vestigo.childvm.webapp.client.ChildVMWebappClient;
+import org.nightlabs.vestigo.childvm.webapp.client.testresources.sql.AbstractSetup;
 
 public class AbstractJJQBIT {
 

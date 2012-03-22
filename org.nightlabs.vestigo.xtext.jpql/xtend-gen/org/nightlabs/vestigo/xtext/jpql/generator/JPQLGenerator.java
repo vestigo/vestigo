@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.xtext.jpql.generator;
+package org.nightlabs.vestigo.xtext.jpql.generator;
 
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.generator.IFileSystemAccess;

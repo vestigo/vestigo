@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.nightlabs.jjqb.childvm.webapp.model.test;
+package org.nightlabs.vestigo.childvm.webapp.model.test;
 
 import java.util.Collection;
 import java.util.UUID;
@@ -10,13 +10,13 @@ import junit.framework.Assert;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.nightlabs.jjqb.childvm.shared.dto.ConnectionProfileDTO;
-import org.nightlabs.jjqb.childvm.shared.dto.JDOConnectionProfileDTO;
-import org.nightlabs.jjqb.childvm.shared.dto.JPAConnectionProfileDTO;
-import org.nightlabs.jjqb.childvm.webapp.model.ConnectionProfile;
-import org.nightlabs.jjqb.childvm.webapp.model.ConnectionProfileManager;
-import org.nightlabs.jjqb.childvm.webapp.model.JDOConnectionProfile;
-import org.nightlabs.jjqb.childvm.webapp.model.JPAConnectionProfile;
+import org.nightlabs.vestigo.childvm.shared.dto.ConnectionProfileDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.JDOConnectionProfileDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.JPAConnectionProfileDTO;
+import org.nightlabs.vestigo.childvm.webapp.model.ConnectionProfile;
+import org.nightlabs.vestigo.childvm.webapp.model.ConnectionProfileManager;
+import org.nightlabs.vestigo.childvm.webapp.model.JDOConnectionProfile;
+import org.nightlabs.vestigo.childvm.webapp.model.JPAConnectionProfile;
 
 /**
  * @author Alexander Bieber <!-- alex [AT] nightlabs [DOT] de -->

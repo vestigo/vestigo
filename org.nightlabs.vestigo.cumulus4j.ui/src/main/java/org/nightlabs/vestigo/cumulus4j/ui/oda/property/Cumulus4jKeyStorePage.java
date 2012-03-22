@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.cumulus4j.ui.oda.property;
+package org.nightlabs.vestigo.cumulus4j.ui.oda.property;
 
 import java.util.Properties;
 
@@ -10,9 +10,9 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
-import org.nightlabs.jjqb.childvm.shared.PropertiesUtil;
-import org.nightlabs.jjqb.cumulus4j.childvm.shared.Cumulus4jConnectionProperties;
-import org.nightlabs.jjqb.ui.oda.property.AbstractDataSourceEditorPage;
+import org.nightlabs.vestigo.childvm.shared.PropertiesUtil;
+import org.nightlabs.vestigo.cumulus4j.childvm.shared.Cumulus4jConnectionProperties;
+import org.nightlabs.vestigo.ui.oda.property.AbstractDataSourceEditorPage;
 
 public class Cumulus4jKeyStorePage extends AbstractDataSourceEditorPage
 {

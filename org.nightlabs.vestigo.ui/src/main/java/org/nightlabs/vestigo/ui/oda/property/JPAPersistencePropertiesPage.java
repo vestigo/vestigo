@@ -1,7 +1,7 @@
-package org.nightlabs.jjqb.ui.oda.property;
+package org.nightlabs.vestigo.ui.oda.property;
 
-import org.nightlabs.jjqb.childvm.shared.persistencexml.JPAPersistenceUnitHelper;
-import org.nightlabs.jjqb.childvm.shared.persistencexml.PersistenceUnitHelper;
+import org.nightlabs.vestigo.childvm.shared.persistencexml.JPAPersistenceUnitHelper;
+import org.nightlabs.vestigo.childvm.shared.persistencexml.PersistenceUnitHelper;
 
 public class JPAPersistencePropertiesPage extends PersistencePropertiesPage {
 

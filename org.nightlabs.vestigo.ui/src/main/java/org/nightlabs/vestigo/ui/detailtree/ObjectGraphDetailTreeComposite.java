@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.ui.detailtree;
+package org.nightlabs.vestigo.ui.detailtree;
 
 import java.util.Collections;
 import java.util.EnumSet;
@@ -23,11 +23,11 @@ import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
-import org.nightlabs.jjqb.core.LabelTextOption;
-import org.nightlabs.jjqb.core.ObjectReferenceChild;
-import org.nightlabs.jjqb.core.oda.ResultSet;
-import org.nightlabs.jjqb.ui.labeltextoptionaction.LabelTextOptionsContainer;
-import org.nightlabs.jjqb.ui.licence.LicenceNotValidDialog;
+import org.nightlabs.vestigo.core.LabelTextOption;
+import org.nightlabs.vestigo.core.ObjectReferenceChild;
+import org.nightlabs.vestigo.core.oda.ResultSet;
+import org.nightlabs.vestigo.ui.labeltextoptionaction.LabelTextOptionsContainer;
+import org.nightlabs.vestigo.ui.licence.LicenceNotValidDialog;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

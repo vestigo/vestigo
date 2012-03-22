@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.ui.transientconnectionproperties;
+package org.nightlabs.vestigo.ui.transientconnectionproperties;
 
 import java.util.Properties;
 
@@ -8,7 +8,7 @@ import org.eclipse.jface.preference.PreferencePage;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
-import org.nightlabs.jjqb.core.transientconnectionproperties.AbstractTransientConnectionPropertiesProvider;
+import org.nightlabs.vestigo.core.transientconnectionproperties.AbstractTransientConnectionPropertiesProvider;
 
 public class DefaultTransientConnectionPropertiesProvider extends AbstractTransientConnectionPropertiesProvider
 {

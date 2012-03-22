@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.ui.editor;
+package org.nightlabs.vestigo.ui.editor;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IStorage;

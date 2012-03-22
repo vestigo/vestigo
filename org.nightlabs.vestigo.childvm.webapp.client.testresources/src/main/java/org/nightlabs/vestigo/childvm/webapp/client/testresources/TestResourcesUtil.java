@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.childvm.webapp.client.testresources;
+package org.nightlabs.vestigo.childvm.webapp.client.testresources;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -11,8 +11,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Properties;
 
-import org.nightlabs.jjqb.childvm.webapp.client.testresources.sql.DerbySetup;
-import org.nightlabs.jjqb.childvm.webapp.client.testresources.sql.HSQLSetup;
+import org.nightlabs.vestigo.childvm.webapp.client.testresources.sql.DerbySetup;
+import org.nightlabs.vestigo.childvm.webapp.client.testresources.sql.HSQLSetup;
 import org.nightlabs.util.IOUtil;
 
 public class TestResourcesUtil {
@@ -20,7 +20,7 @@ public class TestResourcesUtil {
 	public static Map<String, String> loadProperties(String name) {
 		Properties props = new Properties();
 		try {
-			InputStream in = TestResourcesUtil.class.getClassLoader().getResource("jjqb-test-connection-props/" + name).openStream();
+			InputStream in = TestResourcesUtil.class.getClassLoader().getResource("vestigo-test-connection-props/" + name).openStream();
 			InputStream propsInputStream;
 			try {
 				
@@ -54,11 +54,11 @@ public class TestResourcesUtil {
 	
 	
 	private static void setDefaultProperties() {
-		setSysProp("jjqbTest.jdbc.url.hsql", HSQLSetup.getDefaultJdbcUrl());
-		setSysProp("jjqbTest.jdbc.driver.hsql", HSQLSetup.getDefaultJdbcDriver());
+		setSysProp("vestigoTest.jdbc.url.hsql", HSQLSetup.getDefaultJdbcUrl());
+		setSysProp("vestigoTest.jdbc.driver.hsql", HSQLSetup.getDefaultJdbcDriver());
 		
-		setSysProp("jjqbTest.jdbc.url.derby", DerbySetup.getDefaultJdbcUrl());
-		setSysProp("jjqbTest.jdbc.driver.derby", DerbySetup.getDefaultJdbcDriver());
+		setSysProp("vestigoTest.jdbc.url.derby", DerbySetup.getDefaultJdbcUrl());
+		setSysProp("vestigoTest.jdbc.driver.derby", DerbySetup.getDefaultJdbcDriver());
 	}
 	
 	

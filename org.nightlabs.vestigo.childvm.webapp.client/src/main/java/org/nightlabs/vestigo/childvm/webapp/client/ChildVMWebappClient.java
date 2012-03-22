@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.childvm.webapp.client;
+package org.nightlabs.vestigo.childvm.webapp.client;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -12,28 +12,28 @@ import java.util.UUID;
 
 import javax.ws.rs.core.MediaType;
 
-import org.nightlabs.jjqb.childvm.shared.ResultSetID;
-import org.nightlabs.jjqb.childvm.shared.api.ChildVM;
-import org.nightlabs.jjqb.childvm.shared.api.ChildVMException;
-import org.nightlabs.jjqb.childvm.shared.dto.ConnectionDTO;
-import org.nightlabs.jjqb.childvm.shared.dto.ConnectionDTOList;
-import org.nightlabs.jjqb.childvm.shared.dto.ConnectionProfileDTO;
-import org.nightlabs.jjqb.childvm.shared.dto.ConnectionProfileDTOList;
-import org.nightlabs.jjqb.childvm.shared.dto.QueryDTO;
-import org.nightlabs.jjqb.childvm.shared.dto.QueryParameterDTO;
-import org.nightlabs.jjqb.childvm.shared.dto.ResultCellDTO;
-import org.nightlabs.jjqb.childvm.shared.dto.ResultCellDTOList;
-import org.nightlabs.jjqb.childvm.shared.dto.ResultCellObjectRefDTO;
-import org.nightlabs.jjqb.childvm.shared.dto.ResultRowDTO;
-import org.nightlabs.jjqb.childvm.shared.dto.ResultRowDTOList;
-import org.nightlabs.jjqb.childvm.shared.dto.ResultSetDTO;
-import org.nightlabs.jjqb.childvm.shared.dto.StringSortedSetDTO;
-import org.nightlabs.jjqb.childvm.shared.provider.JavaNativeMessageBodyReader;
-import org.nightlabs.jjqb.childvm.shared.provider.JavaNativeMessageBodyWriter;
-import org.nightlabs.jjqb.childvm.shared.provider.MediaTypeConst;
-import org.nightlabs.jjqb.childvm.webapp.client.internal.PathSegment;
-import org.nightlabs.jjqb.childvm.webapp.client.internal.QueryParameter;
-import org.nightlabs.jjqb.childvm.webapp.client.internal.RelativePathPart;
+import org.nightlabs.vestigo.childvm.shared.ResultSetID;
+import org.nightlabs.vestigo.childvm.shared.api.ChildVM;
+import org.nightlabs.vestigo.childvm.shared.api.ChildVMException;
+import org.nightlabs.vestigo.childvm.shared.dto.ConnectionDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.ConnectionDTOList;
+import org.nightlabs.vestigo.childvm.shared.dto.ConnectionProfileDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.ConnectionProfileDTOList;
+import org.nightlabs.vestigo.childvm.shared.dto.QueryDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.QueryParameterDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.ResultCellDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.ResultCellDTOList;
+import org.nightlabs.vestigo.childvm.shared.dto.ResultCellObjectRefDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.ResultRowDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.ResultRowDTOList;
+import org.nightlabs.vestigo.childvm.shared.dto.ResultSetDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.StringSortedSetDTO;
+import org.nightlabs.vestigo.childvm.shared.provider.JavaNativeMessageBodyReader;
+import org.nightlabs.vestigo.childvm.shared.provider.JavaNativeMessageBodyWriter;
+import org.nightlabs.vestigo.childvm.shared.provider.MediaTypeConst;
+import org.nightlabs.vestigo.childvm.webapp.client.internal.PathSegment;
+import org.nightlabs.vestigo.childvm.webapp.client.internal.QueryParameter;
+import org.nightlabs.vestigo.childvm.webapp.client.internal.RelativePathPart;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -302,13 +302,13 @@ implements ChildVM
 			return;
 
 		logger.error("handleUniformInterfaceException: " + x, x);
-		org.nightlabs.jjqb.childvm.shared.Error error = null;
+		org.nightlabs.vestigo.childvm.shared.Error error = null;
 		try {
 			ClientResponse clientResponse = x.getResponse();
 
 			clientResponse.bufferEntity();
 			if (clientResponse.hasEntity())
-				error = clientResponse.getEntity(org.nightlabs.jjqb.childvm.shared.Error.class);
+				error = clientResponse.getEntity(org.nightlabs.vestigo.childvm.shared.Error.class);
 		} catch (Exception y) {
 			logger.error("handleUniformInterfaceException: " + y, y);
 		}

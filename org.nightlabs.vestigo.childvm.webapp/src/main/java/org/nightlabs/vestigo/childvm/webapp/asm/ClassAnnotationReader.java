@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.childvm.webapp.asm;
+package org.nightlabs.vestigo.childvm.webapp.asm;
 
 import java.io.File;
 import java.io.FileInputStream;

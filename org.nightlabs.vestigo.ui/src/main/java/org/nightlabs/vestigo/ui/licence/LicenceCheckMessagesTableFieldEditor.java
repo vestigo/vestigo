@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.ui.licence;
+package org.nightlabs.vestigo.ui.licence;
 
 import org.eclipse.jface.preference.FieldEditor;
 import org.eclipse.swt.layout.GridData;

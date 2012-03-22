@@ -1,7 +1,7 @@
-package org.nightlabs.jjqb.cumulus4j.ui.transientconnectionproperties;
+package org.nightlabs.vestigo.cumulus4j.ui.transientconnectionproperties;
 
 import org.eclipse.jface.preference.PreferencePage;
-import org.nightlabs.jjqb.ui.transientconnectionproperties.DefaultTransientConnectionPropertiesProvider;
+import org.nightlabs.vestigo.ui.transientconnectionproperties.DefaultTransientConnectionPropertiesProvider;
 
 public class Cumulus4jTransientConnectionPropertiesProvider extends DefaultTransientConnectionPropertiesProvider
 {

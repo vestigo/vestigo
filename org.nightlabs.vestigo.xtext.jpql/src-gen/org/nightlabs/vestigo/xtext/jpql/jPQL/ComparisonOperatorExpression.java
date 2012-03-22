@@ -3,7 +3,7 @@
  * </copyright>
  *
  */
-package org.nightlabs.jjqb.xtext.jpql.jPQL;
+package org.nightlabs.vestigo.xtext.jpql.jPQL;
 
 
 /**
@@ -14,13 +14,13 @@ package org.nightlabs.jjqb.xtext.jpql.jPQL;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.ComparisonOperatorExpression#getLeft <em>Left</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.ComparisonOperatorExpression#getOperator <em>Operator</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.ComparisonOperatorExpression#getRight <em>Right</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jpql.jPQL.ComparisonOperatorExpression#getLeft <em>Left</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jpql.jPQL.ComparisonOperatorExpression#getOperator <em>Operator</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jpql.jPQL.ComparisonOperatorExpression#getRight <em>Right</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getComparisonOperatorExpression()
+ * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getComparisonOperatorExpression()
  * @model
  * @generated
  */
@@ -36,14 +36,14 @@ public interface ComparisonOperatorExpression extends Expression
    * <!-- end-user-doc -->
    * @return the value of the '<em>Left</em>' containment reference.
    * @see #setLeft(Variable)
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getComparisonOperatorExpression_Left()
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getComparisonOperatorExpression_Left()
    * @model containment="true"
    * @generated
    */
   Variable getLeft();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.ComparisonOperatorExpression#getLeft <em>Left</em>}' containment reference.
+   * Sets the value of the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.ComparisonOperatorExpression#getLeft <em>Left</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Left</em>' containment reference.
@@ -54,7 +54,7 @@ public interface ComparisonOperatorExpression extends Expression
 
   /**
    * Returns the value of the '<em><b>Operator</b></em>' attribute.
-   * The literals are from the enumeration {@link org.nightlabs.jjqb.xtext.jpql.jPQL.ComparisonOperator}.
+   * The literals are from the enumeration {@link org.nightlabs.vestigo.xtext.jpql.jPQL.ComparisonOperator}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Operator</em>' attribute isn't clear,
@@ -62,20 +62,20 @@ public interface ComparisonOperatorExpression extends Expression
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Operator</em>' attribute.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.ComparisonOperator
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.ComparisonOperator
    * @see #setOperator(ComparisonOperator)
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getComparisonOperatorExpression_Operator()
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getComparisonOperatorExpression_Operator()
    * @model
    * @generated
    */
   ComparisonOperator getOperator();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.ComparisonOperatorExpression#getOperator <em>Operator</em>}' attribute.
+   * Sets the value of the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.ComparisonOperatorExpression#getOperator <em>Operator</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Operator</em>' attribute.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.ComparisonOperator
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.ComparisonOperator
    * @see #getOperator()
    * @generated
    */
@@ -91,14 +91,14 @@ public interface ComparisonOperatorExpression extends Expression
    * <!-- end-user-doc -->
    * @return the value of the '<em>Right</em>' containment reference.
    * @see #setRight(ExpressionTerm)
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getComparisonOperatorExpression_Right()
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getComparisonOperatorExpression_Right()
    * @model containment="true"
    * @generated
    */
   ExpressionTerm getRight();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.ComparisonOperatorExpression#getRight <em>Right</em>}' containment reference.
+   * Sets the value of the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.ComparisonOperatorExpression#getRight <em>Right</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Right</em>' containment reference.

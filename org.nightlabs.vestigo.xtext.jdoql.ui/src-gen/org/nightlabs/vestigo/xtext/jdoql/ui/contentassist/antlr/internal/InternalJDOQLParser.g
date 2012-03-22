@@ -10,7 +10,7 @@ options {
 }
 
 @header {
-package org.nightlabs.jjqb.xtext.jdoql.ui.contentassist.antlr.internal; 
+package org.nightlabs.vestigo.xtext.jdoql.ui.contentassist.antlr.internal; 
 
 import java.util.Map;
 import java.util.HashMap;
@@ -25,7 +25,7 @@ import org.eclipse.xtext.parser.antlr.XtextTokenStream;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream.HiddenTokens;
 import org.eclipse.xtext.ui.editor.contentassist.antlr.internal.AbstractInternalContentAssistParser;
 import org.eclipse.xtext.ui.editor.contentassist.antlr.internal.DFA;
-import org.nightlabs.jjqb.xtext.jdoql.services.JDOQLGrammarAccess;
+import org.nightlabs.vestigo.xtext.jdoql.services.JDOQLGrammarAccess;
 
 }
 

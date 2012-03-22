@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.nightlabs.jjqb.childvm.webapp.client.testresources.sql;
+package org.nightlabs.vestigo.childvm.webapp.client.testresources.sql;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -21,8 +21,8 @@ public class DerbySetup extends AbstractSetup {
 	public static String getDefaultJdbcUrl() {
 //		
 //		return "jdbc:derby:sampleDB;create=true";
-//		return "jdbc:derby:" + System.getProperty("java.io.tmpdir", "") + "/jjqb-test-db-derby;create=true;shutdown=true";
-		return "jdbc:derby:" + System.getProperty("java.io.tmpdir", "") + "/jjqb-test-db-derby;create=true";
+//		return "jdbc:derby:" + System.getProperty("java.io.tmpdir", "") + "/vestigo-test-db-derby;create=true;shutdown=true";
+		return "jdbc:derby:" + System.getProperty("java.io.tmpdir", "") + "/vestigo-test-db-derby;create=true";
 	}
 	
 	public static String getDefaultJdbcDriver() {
@@ -31,8 +31,8 @@ public class DerbySetup extends AbstractSetup {
 	
 	@Override
 	public Connection getConnection() throws SQLException {
-//		return DriverManager.getConnection("jdbc:hsqldb:mem:jjqb-test; shutdown=true", "sa", "" );
-//		return DriverManager.getConnection("jdbc:hsqldb:mem:jjqb-test", "sa", "" );
+//		return DriverManager.getConnection("jdbc:hsqldb:mem:vestigo-test; shutdown=true", "sa", "" );
+//		return DriverManager.getConnection("jdbc:hsqldb:mem:vestigo-test", "sa", "" );
 //		Properties props = new Properties();
 //		props.put("create", "true");
 //		props.put("shutdown", "true");

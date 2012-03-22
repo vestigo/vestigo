@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.cumulus4j.childvm.webapp.jerseyproxy;
+package org.nightlabs.vestigo.cumulus4j.childvm.webapp.jerseyproxy;
 
 import java.io.IOException;
 import java.util.Collection;
@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.nightlabs.jjqb.childvm.webapp.model.ConnectionProfile;
-import org.nightlabs.jjqb.childvm.webapp.model.ConnectionProfileManager;
+import org.nightlabs.vestigo.childvm.webapp.model.ConnectionProfile;
+import org.nightlabs.vestigo.childvm.webapp.model.ConnectionProfileManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.childvm.shared;
+package org.nightlabs.vestigo.childvm.shared;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de

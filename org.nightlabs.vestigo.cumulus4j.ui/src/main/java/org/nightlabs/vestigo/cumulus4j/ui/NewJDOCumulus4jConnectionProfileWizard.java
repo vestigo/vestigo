@@ -1,10 +1,10 @@
 ///**
 // *
 // */
-//package org.nightlabs.jjqb.cumulus4j.ui;
+//package org.nightlabs.vestigo.cumulus4j.ui;
 //
 //import org.eclipse.datatools.connectivity.oda.OdaException;
-//import org.nightlabs.jjqb.ui.oda.AbstractPropertyHopWizardNewWizard;
+//import org.nightlabs.vestigo.ui.oda.AbstractPropertyHopWizardNewWizard;
 //
 ///**
 // * @author Alexander Bieber <!-- alex [AT] nightlabs [DOT] de -->
@@ -29,7 +29,7 @@
 //	}
 //
 //	/* (non-Javadoc)
-//	 * @see org.nightlabs.jjqb.ui.oda.AbstractPropertyHopWizardNewWizard#addHopPages()
+//	 * @see org.nightlabs.vestigo.ui.oda.AbstractPropertyHopWizardNewWizard#addHopPages()
 //	 */
 //	@Override
 //	protected void addHopPages() {

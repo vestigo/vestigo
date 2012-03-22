@@ -3,7 +3,7 @@
  * </copyright>
  *
  */
-package org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl;
+package org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.*;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.*;
 
 /**
  * <!-- begin-user-doc -->
@@ -34,7 +34,7 @@ public class JDOQLFactoryImpl extends EFactoryImpl implements JDOQLFactory
   {
     try
     {
-      JDOQLFactory theJDOQLFactory = (JDOQLFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL"); 
+      JDOQLFactory theJDOQLFactory = (JDOQLFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL"); 
       if (theJDOQLFactory != null)
       {
         return theJDOQLFactory;

@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.cumulus4j.ui.internal;
+package org.nightlabs.vestigo.cumulus4j.ui.internal;
 
 /**
  * Dummy that forces the maven-bundle-plugin to additionally import neccessary

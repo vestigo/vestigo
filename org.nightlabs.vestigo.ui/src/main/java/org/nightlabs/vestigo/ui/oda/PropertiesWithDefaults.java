@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.ui.oda;
+package org.nightlabs.vestigo.ui.oda;
 
 import java.util.Properties;
 

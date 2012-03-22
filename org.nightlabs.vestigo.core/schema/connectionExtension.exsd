@@ -1,14 +1,14 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!-- Schema file written by PDE -->
-<schema targetNamespace="org.nightlabs.jjqb.core" xmlns="http://www.w3.org/2001/XMLSchema">
+<schema targetNamespace="org.nightlabs.vestigo.core" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
       <appinfo>
-         <meta.schema plugin="org.nightlabs.jjqb.core" id="connectionExtension" name="ConnectionExtension"/>
+         <meta.schema plugin="org.nightlabs.vestigo.core" id="connectionExtension" name="ConnectionExtension"/>
       </appinfo>
       <documentation>
          It is possible to bind a connection-extension to a connection. One instance of the connection-extension is bound to exactly one instance of the connection.
 
-The declaration can either be done via a factory that will exist as singleton and provide connection-extensions when needed. Or the extension-class itself can be registered (in this case, an instance of org.nightlabs.jjqb.core.oda.impl.DefaultConnectionExtensionFactory will be used as factory).
+The declaration can either be done via a factory that will exist as singleton and provide connection-extensions when needed. Or the extension-class itself can be registered (in this case, an instance of org.nightlabs.vestigo.core.oda.impl.DefaultConnectionExtensionFactory will be used as factory).
       </documentation>
    </annotation>
 
@@ -65,7 +65,7 @@ The declaration can either be done via a factory that will exist as singleton an
                   
                </documentation>
                <appinfo>
-                  <meta.attribute kind="java" basedOn=":org.nightlabs.jjqb.core.oda.ConnectionExtension"/>
+                  <meta.attribute kind="java" basedOn=":org.nightlabs.vestigo.core.oda.ConnectionExtension"/>
                </appinfo>
             </annotation>
          </attribute>
@@ -114,7 +114,7 @@ The declaration can either be done via a factory that will exist as singleton an
                   
                </documentation>
                <appinfo>
-                  <meta.attribute kind="java" basedOn=":org.nightlabs.jjqb.core.oda.ConnectionExtensionFactory"/>
+                  <meta.attribute kind="java" basedOn=":org.nightlabs.vestigo.core.oda.ConnectionExtensionFactory"/>
                </appinfo>
             </annotation>
          </attribute>

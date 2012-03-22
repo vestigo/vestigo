@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <introContent>
-  	<extensionContent id="jjqb-ui-overview-extensions" style="css/overview.css" name="Vestigo Overview" path="overview/@">
-		<group style-id="content-group" id="jjqb-ui-overview-group">
+  	<extensionContent id="vestigo-ui-overview-extensions" style="css/overview.css" name="Vestigo Overview" path="overview/@">
+		<group style-id="content-group" id="vestigo-ui-overview-group">
        		<link 
 	       		label="Vestigo (JPA &amp; JDO Query Browser for Eclipse)" 
-    	   		url="http://jjqb.nightlabs.com" 
-       			id="jjqb-ui-overview" 
+    	   		url="http://vestigo.nightlabs.com" 
+       			id="vestigo-ui-overview" 
        			style-id="content-link">
           		<text>Open the Vestigo documentation-section of the vestigo-website.</text>
        		</link>

@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.xtext.jdoql.serializer;
+package org.nightlabs.vestigo.xtext.jdoql.serializer;
 
 import com.google.inject.Inject;
 import java.util.List;
@@ -13,7 +13,7 @@ import org.eclipse.xtext.serializer.analysis.GrammarAlias.TokenAlias;
 import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynNavigable;
 import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynTransition;
 import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
-import org.nightlabs.jjqb.xtext.jdoql.services.JDOQLGrammarAccess;
+import org.nightlabs.vestigo.xtext.jdoql.services.JDOQLGrammarAccess;
 
 @SuppressWarnings("restriction")
 public class AbstractJDOQLSyntacticSequencer extends AbstractSyntacticSequencer {

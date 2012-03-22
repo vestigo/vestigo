@@ -3,12 +3,12 @@
  * </copyright>
  *
  */
-package org.nightlabs.jjqb.xtext.jpql.jPQL.impl;
+package org.nightlabs.vestigo.xtext.jpql.jPQL.impl;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.nightlabs.jjqb.xtext.jpql.jPQL.CountAggregate;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.CountAggregate;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage;
 
 /**
  * <!-- begin-user-doc -->

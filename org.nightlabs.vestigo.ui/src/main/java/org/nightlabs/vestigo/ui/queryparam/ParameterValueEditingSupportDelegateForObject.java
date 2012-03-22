@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.ui.queryparam;
+package org.nightlabs.vestigo.ui.queryparam;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

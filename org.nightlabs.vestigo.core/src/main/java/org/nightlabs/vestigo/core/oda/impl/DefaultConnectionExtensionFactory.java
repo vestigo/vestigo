@@ -1,10 +1,10 @@
-package org.nightlabs.jjqb.core.oda.impl;
+package org.nightlabs.vestigo.core.oda.impl;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
-import org.nightlabs.jjqb.core.oda.AbstractConnectionExtensionFactory;
-import org.nightlabs.jjqb.core.oda.Connection;
-import org.nightlabs.jjqb.core.oda.ConnectionExtension;
+import org.nightlabs.vestigo.core.oda.AbstractConnectionExtensionFactory;
+import org.nightlabs.vestigo.core.oda.Connection;
+import org.nightlabs.vestigo.core.oda.ConnectionExtension;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de

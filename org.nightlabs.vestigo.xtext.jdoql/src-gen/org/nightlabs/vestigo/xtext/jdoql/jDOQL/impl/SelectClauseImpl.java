@@ -3,7 +3,7 @@
  * </copyright>
  *
  */
-package org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl;
+package org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -14,9 +14,9 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.IntoClause;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.SelectClause;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.IntoClause;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.JDOQLPackage;
+import org.nightlabs.vestigo.xtext.jdoql.jDOQL.SelectClause;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,9 +25,9 @@ import org.nightlabs.jjqb.xtext.jdoql.jDOQL.SelectClause;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SelectClauseImpl#isIsUnique <em>Is Unique</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SelectClauseImpl#getResultClause <em>Result Clause</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SelectClauseImpl#getIntoClause <em>Into Clause</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.SelectClauseImpl#isIsUnique <em>Is Unique</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.SelectClauseImpl#getResultClause <em>Result Clause</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.SelectClauseImpl#getIntoClause <em>Into Clause</em>}</li>
  * </ul>
  * </p>
  *

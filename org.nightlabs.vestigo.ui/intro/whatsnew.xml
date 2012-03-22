@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <introContent>
-  	<extensionContent id="jjqb-ui-whatsnew-extension" style="css/whatsnew.css" name="Vestigo Overview" path="whatsnew/@">
-		<group style-id="content-group" id="jjqb-ui-whatsnew-group">
+  	<extensionContent id="vestigo-ui-whatsnew-extension" style="css/whatsnew.css" name="Vestigo Overview" path="whatsnew/@">
+		<group style-id="content-group" id="vestigo-ui-whatsnew-group">
        		<link 
 	       		label="Vestigo (JPA &amp; JDO Query Browser for Eclipse)" 
-    	   		url="http://jjqb.nightlabs.com" 
-       			id="jjqb-ui-whatsnew" 
+    	   		url="http://vestigo.nightlabs.com" 
+       			id="vestigo-ui-whatsnew" 
        			style-id="content-link">
           		<text>Find out how the latest Vestigo features can help you to quickly create and execute JPA or JDO queries.</text>
        		</link>

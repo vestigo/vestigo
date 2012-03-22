@@ -1,12 +1,12 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: org.nightlabs.jjqb.xtext.jdoql.tests
+Bundle-Name: org.nightlabs.vestigo.xtext.jdoql.tests
 Bundle-Vendor: NightLabs Consulting GmbH
 Bundle-Version: 0.2.0.qualifier
-Bundle-SymbolicName: org.nightlabs.jjqb.xtext.jdoql.tests;singleton:=true
+Bundle-SymbolicName: org.nightlabs.vestigo.xtext.jdoql.tests;singleton:=true
 Bundle-ActivationPolicy: lazy
-Require-Bundle: org.nightlabs.jjqb.xtext.jdoql,
- org.nightlabs.jjqb.xtext.jdoql.ui,
+Require-Bundle: org.nightlabs.vestigo.xtext.jdoql,
+ org.nightlabs.vestigo.xtext.jdoql.ui,
  org.eclipse.core.runtime,
  org.eclipse.xtext,
  org.eclipse.xtext.junit4,

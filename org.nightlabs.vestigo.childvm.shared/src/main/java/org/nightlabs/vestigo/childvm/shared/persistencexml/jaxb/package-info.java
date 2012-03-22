@@ -6,4 +6,4 @@
 //
 
 @javax.xml.bind.annotation.XmlSchema(namespace = "http://java.sun.com/xml/ns/persistence", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
-package org.nightlabs.jjqb.childvm.shared.persistencexml.jaxb;
+package org.nightlabs.vestigo.childvm.shared.persistencexml.jaxb;

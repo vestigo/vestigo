@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.childvm.webapp.model;
+package org.nightlabs.vestigo.childvm.webapp.model;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.ServiceLoader;
 import java.util.UUID;
 
-import org.nightlabs.jjqb.childvm.shared.dto.ConnectionDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.ConnectionDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -3,7 +3,7 @@
  * </copyright>
  *
  */
-package org.nightlabs.jjqb.xtext.jdoql.jDOQL;
+package org.nightlabs.vestigo.xtext.jdoql.jDOQL;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -17,11 +17,11 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ImportClause#getImportDeclarations <em>Import Declarations</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.ImportClause#getImportDeclarations <em>Import Declarations</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage#getImportClause()
+ * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.JDOQLPackage#getImportClause()
  * @model
  * @generated
  */
@@ -37,7 +37,7 @@ public interface ImportClause extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Import Declarations</em>' attribute list.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage#getImportClause_ImportDeclarations()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.JDOQLPackage#getImportClause_ImportDeclarations()
    * @model unique="false"
    * @generated
    */

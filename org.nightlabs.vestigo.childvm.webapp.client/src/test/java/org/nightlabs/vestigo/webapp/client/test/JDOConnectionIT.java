@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.webapp.client.test;
+package org.nightlabs.vestigo.webapp.client.test;
 
 import java.util.List;
 import java.util.TreeSet;
@@ -8,16 +8,16 @@ import junit.framework.Assert;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.nightlabs.jjqb.childvm.shared.ResultSetID;
-import org.nightlabs.jjqb.childvm.shared.dto.ConnectionDTO;
-import org.nightlabs.jjqb.childvm.shared.dto.ConnectionProfileDTO;
-import org.nightlabs.jjqb.childvm.shared.dto.JDOConnectionDTO;
-import org.nightlabs.jjqb.childvm.shared.dto.JDOConnectionProfileDTO;
-import org.nightlabs.jjqb.childvm.shared.dto.QueryParameterDTO;
-import org.nightlabs.jjqb.childvm.shared.dto.ResultRowDTO;
-import org.nightlabs.jjqb.childvm.webapp.client.testresources.TestResourcesUtil;
-import org.nightlabs.jjqb.childvm.webapp.client.testresources.sql.AbstractSetup;
-import org.nightlabs.jjqb.childvm.webapp.client.testresources.sql.HSQLSetup;
+import org.nightlabs.vestigo.childvm.shared.ResultSetID;
+import org.nightlabs.vestigo.childvm.shared.dto.ConnectionDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.ConnectionProfileDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.JDOConnectionDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.JDOConnectionProfileDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.QueryParameterDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.ResultRowDTO;
+import org.nightlabs.vestigo.childvm.webapp.client.testresources.TestResourcesUtil;
+import org.nightlabs.vestigo.childvm.webapp.client.testresources.sql.AbstractSetup;
+import org.nightlabs.vestigo.childvm.webapp.client.testresources.sql.HSQLSetup;
 
 public class JDOConnectionIT extends AbstractJJQBIT {
 	
@@ -26,9 +26,9 @@ public class JDOConnectionIT extends AbstractJJQBIT {
 
 	@BeforeClass
 	public static void setupTemplateVars() {
-//		System.setProperty("jjqb-test-connection-libs", "target/dependency/jjqb-test-connection-libs");
-//		System.setProperty("jjqbTest.jdbc.url.hsql", "jdbc:hsqldb:file:/tmp/jjqb-test-db;shutdown=true");
-//		System.setProperty("jjqbTest.jdbc.url.derby", "jdbc:derby:/tmp/jjqb-test-db-derby;shutdown=true");
+//		System.setProperty("vestigo-test-connection-libs", "target/dependency/vestigo-test-connection-libs");
+//		System.setProperty("vestigoTest.jdbc.url.hsql", "jdbc:hsqldb:file:/tmp/vestigo-test-db;shutdown=true");
+//		System.setProperty("vestigoTest.jdbc.url.derby", "jdbc:derby:/tmp/vestigo-test-db-derby;shutdown=true");
 	}
 	
 	@Test
@@ -50,7 +50,7 @@ public class JDOConnectionIT extends AbstractJJQBIT {
 	public void testOpenJDOConnectionWithModel() {
 		setup(createSetup(), "JDOSimpleEntity-1");
 		ConnectionDTO jdoConnection = openJDOConnection(UUID.randomUUID().toString(), JDO_DN_WITH_TESTMODEL_PROPERTIES);
-		ResultSetID executeQuery = client.executeQuery(jdoConnection.getConnectionID(), "SELECT this FROM org.nightlabs.jjqb.childvm.webapp.client.testmodel.jdo.JDOSimpleEntity", new TreeSet<QueryParameterDTO>());
+		ResultSetID executeQuery = client.executeQuery(jdoConnection.getConnectionID(), "SELECT this FROM org.nightlabs.vestigo.childvm.webapp.client.testmodel.jdo.JDOSimpleEntity", new TreeSet<QueryParameterDTO>());
 		List<ResultRowDTO> nextResultRowDTOList = client.nextResultRowDTOList(executeQuery, 100);
 		Assert.assertTrue(nextResultRowDTOList.size() > 0);
 	}

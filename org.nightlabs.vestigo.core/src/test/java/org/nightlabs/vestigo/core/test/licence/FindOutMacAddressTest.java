@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.core.test.licence;
+package org.nightlabs.vestigo.core.test.licence;
 
 import java.net.NetworkInterface;
 import java.util.Enumeration;

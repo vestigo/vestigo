@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.ui.oda;
+package org.nightlabs.vestigo.ui.oda;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -24,11 +24,11 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchPartSite;
 import org.eclipse.ui.PartInitException;
-import org.nightlabs.jjqb.core.oda.DataSourceDriverRegistry;
-import org.nightlabs.jjqb.core.oda.Driver;
-import org.nightlabs.jjqb.ui.candidateclassview.CandidateClassView;
-import org.nightlabs.jjqb.ui.editor.NonExistingStorageEditorInput;
-import org.nightlabs.jjqb.ui.editor.QueryEditorInput;
+import org.nightlabs.vestigo.core.oda.DataSourceDriverRegistry;
+import org.nightlabs.vestigo.core.oda.Driver;
+import org.nightlabs.vestigo.ui.candidateclassview.CandidateClassView;
+import org.nightlabs.vestigo.ui.editor.NonExistingStorageEditorInput;
+import org.nightlabs.vestigo.ui.editor.QueryEditorInput;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

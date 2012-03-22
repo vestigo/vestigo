@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.core.connectionpropertiesfilter;
+package org.nightlabs.vestigo.core.connectionpropertiesfilter;
 
 
 public abstract class AbstractConnectionPropertiesFilter implements ConnectionPropertiesFilter

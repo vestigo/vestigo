@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.childvm.shared.dto;
+package org.nightlabs.vestigo.childvm.shared.dto;
 
 import java.io.Serializable;
 

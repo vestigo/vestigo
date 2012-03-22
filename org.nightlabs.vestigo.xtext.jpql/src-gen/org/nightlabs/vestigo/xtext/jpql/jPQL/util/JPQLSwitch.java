@@ -3,14 +3,14 @@
  * </copyright>
  *
  */
-package org.nightlabs.jjqb.xtext.jpql.jPQL.util;
+package org.nightlabs.vestigo.xtext.jpql.jPQL.util;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.Switch;
 
-import org.nightlabs.jjqb.xtext.jpql.jPQL.*;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.*;
 
 /**
  * <!-- begin-user-doc -->
@@ -22,7 +22,7 @@ import org.nightlabs.jjqb.xtext.jpql.jPQL.*;
  * until a non-null result is returned,
  * which is the result of the switch.
  * <!-- end-user-doc -->
- * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage
+ * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage
  * @generated
  */
 public class JPQLSwitch<T> extends Switch<T>

@@ -1,6 +1,6 @@
-package org.nightlabs.jjqb.core.childvm.internal;
+package org.nightlabs.vestigo.core.childvm.internal;
 
-import org.nightlabs.jjqb.core.childvm.AbstractWebApp;
+import org.nightlabs.vestigo.core.childvm.AbstractWebApp;
 
 public class DefaultWebApp extends AbstractWebApp
 {

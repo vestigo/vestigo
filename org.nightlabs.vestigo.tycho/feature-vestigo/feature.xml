@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="org.nightlabs.jjqb.ui.feature"
+      id="org.nightlabs.vestigo.ui.feature"
       label="Vestigo - JDO JPA Query Browser"
       version="0.2.0.qualifier"
       provider-name="NightLabs Consulting GmbH"
-      plugin="org.nightlabs.jjqb.ui">
+      plugin="org.nightlabs.vestigo.ui">
 
    <description url="http://www.example.com/description">
       [Enter Feature Description here.]
@@ -19,7 +19,7 @@
    </license>
 
    <plugin
-         id="org.nightlabs.jjqb.ui"
+         id="org.nightlabs.vestigo.ui"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -47,7 +47,7 @@
          unpack="false"/>
 
    <plugin
-         id="org.nightlabs.jjqb.core"
+         id="org.nightlabs.vestigo.core"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -68,14 +68,14 @@
          unpack="false"/>
 
    <plugin
-         id="org.nightlabs.jjqb.childvm.shared"
+         id="org.nightlabs.vestigo.childvm.shared"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="org.nightlabs.jjqb.childvm.webapp.client"
+         id="org.nightlabs.vestigo.childvm.webapp.client"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -124,28 +124,28 @@
          unpack="false"/>
 
    <plugin
-         id="org.nightlabs.jjqb.xtext.jdoql"
+         id="org.nightlabs.vestigo.xtext.jdoql"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="org.nightlabs.jjqb.xtext.jdoql.ui"
+         id="org.nightlabs.vestigo.xtext.jdoql.ui"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="org.nightlabs.jjqb.xtext.jpql"
+         id="org.nightlabs.vestigo.xtext.jpql"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="org.nightlabs.jjqb.xtext.jpql.ui"
+         id="org.nightlabs.vestigo.xtext.jpql.ui"
          download-size="0"
          install-size="0"
          version="0.0.0"

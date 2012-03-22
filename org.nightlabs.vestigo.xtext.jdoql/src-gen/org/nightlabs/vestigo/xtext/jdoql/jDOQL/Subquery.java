@@ -3,7 +3,7 @@
  * </copyright>
  *
  */
-package org.nightlabs.jjqb.xtext.jdoql.jDOQL;
+package org.nightlabs.vestigo.xtext.jdoql.jDOQL;
 
 
 /**
@@ -14,16 +14,16 @@ package org.nightlabs.jjqb.xtext.jdoql.jDOQL;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Subquery#getSelectClause <em>Select Clause</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Subquery#getFromClause <em>From Clause</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Subquery#getWhereClause <em>Where Clause</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Subquery#getVariablesClause <em>Variables Clause</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Subquery#getParametersClause <em>Parameters Clause</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Subquery#getImportClause <em>Import Clause</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.Subquery#getSelectClause <em>Select Clause</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.Subquery#getFromClause <em>From Clause</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.Subquery#getWhereClause <em>Where Clause</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.Subquery#getVariablesClause <em>Variables Clause</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.Subquery#getParametersClause <em>Parameters Clause</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.Subquery#getImportClause <em>Import Clause</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage#getSubquery()
+ * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.JDOQLPackage#getSubquery()
  * @model
  * @generated
  */
@@ -39,14 +39,14 @@ public interface Subquery extends Expression
    * <!-- end-user-doc -->
    * @return the value of the '<em>Select Clause</em>' containment reference.
    * @see #setSelectClause(SubquerySelectClause)
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage#getSubquery_SelectClause()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.JDOQLPackage#getSubquery_SelectClause()
    * @model containment="true"
    * @generated
    */
   SubquerySelectClause getSelectClause();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Subquery#getSelectClause <em>Select Clause</em>}' containment reference.
+   * Sets the value of the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.Subquery#getSelectClause <em>Select Clause</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Select Clause</em>' containment reference.
@@ -65,14 +65,14 @@ public interface Subquery extends Expression
    * <!-- end-user-doc -->
    * @return the value of the '<em>From Clause</em>' containment reference.
    * @see #setFromClause(SubqueryFromClause)
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage#getSubquery_FromClause()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.JDOQLPackage#getSubquery_FromClause()
    * @model containment="true"
    * @generated
    */
   SubqueryFromClause getFromClause();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Subquery#getFromClause <em>From Clause</em>}' containment reference.
+   * Sets the value of the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.Subquery#getFromClause <em>From Clause</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>From Clause</em>' containment reference.
@@ -91,14 +91,14 @@ public interface Subquery extends Expression
    * <!-- end-user-doc -->
    * @return the value of the '<em>Where Clause</em>' containment reference.
    * @see #setWhereClause(WhereClause)
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage#getSubquery_WhereClause()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.JDOQLPackage#getSubquery_WhereClause()
    * @model containment="true"
    * @generated
    */
   WhereClause getWhereClause();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Subquery#getWhereClause <em>Where Clause</em>}' containment reference.
+   * Sets the value of the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.Subquery#getWhereClause <em>Where Clause</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Where Clause</em>' containment reference.
@@ -117,14 +117,14 @@ public interface Subquery extends Expression
    * <!-- end-user-doc -->
    * @return the value of the '<em>Variables Clause</em>' containment reference.
    * @see #setVariablesClause(VariablesClause)
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage#getSubquery_VariablesClause()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.JDOQLPackage#getSubquery_VariablesClause()
    * @model containment="true"
    * @generated
    */
   VariablesClause getVariablesClause();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Subquery#getVariablesClause <em>Variables Clause</em>}' containment reference.
+   * Sets the value of the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.Subquery#getVariablesClause <em>Variables Clause</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Variables Clause</em>' containment reference.
@@ -143,14 +143,14 @@ public interface Subquery extends Expression
    * <!-- end-user-doc -->
    * @return the value of the '<em>Parameters Clause</em>' containment reference.
    * @see #setParametersClause(ParametersClause)
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage#getSubquery_ParametersClause()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.JDOQLPackage#getSubquery_ParametersClause()
    * @model containment="true"
    * @generated
    */
   ParametersClause getParametersClause();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Subquery#getParametersClause <em>Parameters Clause</em>}' containment reference.
+   * Sets the value of the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.Subquery#getParametersClause <em>Parameters Clause</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Parameters Clause</em>' containment reference.
@@ -169,14 +169,14 @@ public interface Subquery extends Expression
    * <!-- end-user-doc -->
    * @return the value of the '<em>Import Clause</em>' containment reference.
    * @see #setImportClause(ImportClause)
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage#getSubquery_ImportClause()
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.JDOQLPackage#getSubquery_ImportClause()
    * @model containment="true"
    * @generated
    */
   ImportClause getImportClause();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Subquery#getImportClause <em>Import Clause</em>}' containment reference.
+   * Sets the value of the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.Subquery#getImportClause <em>Import Clause</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Import Clause</em>' containment reference.

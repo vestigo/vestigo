@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.ui.newwizard;
+package org.nightlabs.vestigo.ui.newwizard;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;

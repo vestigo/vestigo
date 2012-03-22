@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.ui.resultsettable;
+package org.nightlabs.vestigo.ui.resultsettable;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -16,8 +16,8 @@ import org.eclipse.jface.viewers.deferred.AbstractConcurrentModel;
 import org.eclipse.jface.viewers.deferred.IConcurrentModel;
 import org.eclipse.jface.viewers.deferred.IConcurrentModelListener;
 import org.eclipse.swt.widgets.Display;
-import org.nightlabs.jjqb.core.PropertiesWithChangeSupport;
-import org.nightlabs.jjqb.ui.JJQBUIPlugin;
+import org.nightlabs.vestigo.core.PropertiesWithChangeSupport;
+import org.nightlabs.vestigo.ui.JJQBUIPlugin;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

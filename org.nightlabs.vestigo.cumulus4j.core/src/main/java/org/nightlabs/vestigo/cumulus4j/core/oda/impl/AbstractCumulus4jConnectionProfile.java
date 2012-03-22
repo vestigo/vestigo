@@ -1,14 +1,14 @@
-package org.nightlabs.jjqb.cumulus4j.core.oda.impl;
+package org.nightlabs.vestigo.cumulus4j.core.oda.impl;
 
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.nightlabs.jjqb.core.oda.ConnectionPropertyMeta;
-import org.nightlabs.jjqb.core.oda.impl.AbstractConnectionProfile;
-import org.nightlabs.jjqb.cumulus4j.childvm.shared.Cumulus4jConnectionProperties;
-import org.nightlabs.jjqb.cumulus4j.core.resource.Messages;
+import org.nightlabs.vestigo.core.oda.ConnectionPropertyMeta;
+import org.nightlabs.vestigo.core.oda.impl.AbstractConnectionProfile;
+import org.nightlabs.vestigo.cumulus4j.childvm.shared.Cumulus4jConnectionProperties;
+import org.nightlabs.vestigo.cumulus4j.core.resource.Messages;
 
 public abstract class AbstractCumulus4jConnectionProfile extends AbstractConnectionProfile
 {
@@ -41,7 +41,7 @@ public abstract class AbstractCumulus4jConnectionProfile extends AbstractConnect
 
 	@Override
 	protected String getWebAppName() {
-		return "org.nightlabs.jjqb.cumulus4j.childvm.webapp"; //$NON-NLS-1$
+		return "org.nightlabs.vestigo.cumulus4j.childvm.webapp"; //$NON-NLS-1$
 	}
 
 	@Override

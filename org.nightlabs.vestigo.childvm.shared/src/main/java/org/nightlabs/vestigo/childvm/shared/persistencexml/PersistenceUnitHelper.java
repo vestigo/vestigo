@@ -1,13 +1,13 @@
-package org.nightlabs.jjqb.childvm.shared.persistencexml;
+package org.nightlabs.vestigo.childvm.shared.persistencexml;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
-import org.nightlabs.jjqb.childvm.shared.PropertiesUtil;
-import org.nightlabs.jjqb.childvm.shared.persistencexml.jaxb.Persistence;
-import org.nightlabs.jjqb.childvm.shared.persistencexml.jaxb.Persistence.PersistenceUnit;
-import org.nightlabs.jjqb.childvm.shared.persistencexml.jaxb.Persistence.PersistenceUnit.Properties.Property;
+import org.nightlabs.vestigo.childvm.shared.PropertiesUtil;
+import org.nightlabs.vestigo.childvm.shared.persistencexml.jaxb.Persistence;
+import org.nightlabs.vestigo.childvm.shared.persistencexml.jaxb.Persistence.PersistenceUnit;
+import org.nightlabs.vestigo.childvm.shared.persistencexml.jaxb.Persistence.PersistenceUnit.Properties.Property;
 
 public abstract class PersistenceUnitHelper
 {

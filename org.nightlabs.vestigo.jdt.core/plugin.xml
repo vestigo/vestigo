@@ -2,9 +2,9 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension
-         point="org.nightlabs.jjqb.core.connectionPropertiesFilter">
+         point="org.nightlabs.vestigo.core.connectionPropertiesFilter">
       <filter
-            class="org.nightlabs.jjqb.jdt.core.connectionpropertiesfilter.ResolveClasspathContainersConnectionPropertiesFilter">
+            class="org.nightlabs.vestigo.jdt.core.connectionpropertiesfilter.ResolveClasspathContainersConnectionPropertiesFilter">
       </filter>
    </extension>
 

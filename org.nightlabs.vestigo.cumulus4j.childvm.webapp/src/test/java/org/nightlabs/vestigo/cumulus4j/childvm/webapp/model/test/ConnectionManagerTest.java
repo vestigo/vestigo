@@ -1,26 +1,26 @@
 /**
  *
  */
-package org.nightlabs.jjqb.cumulus4j.childvm.webapp.model.test;
+package org.nightlabs.vestigo.cumulus4j.childvm.webapp.model.test;
 
 import junit.framework.Assert;
 
 import org.junit.Test;
-import org.nightlabs.jjqb.childvm.shared.dto.JDOConnectionDTO;
-import org.nightlabs.jjqb.childvm.shared.dto.JPAConnectionDTO;
-import org.nightlabs.jjqb.childvm.webapp.model.Connection;
-import org.nightlabs.jjqb.childvm.webapp.model.JDOConnection;
-import org.nightlabs.jjqb.childvm.webapp.model.JPAConnection;
-import org.nightlabs.jjqb.cumulus4j.childvm.shared.JDOCumulus4jConnectionDTO;
-import org.nightlabs.jjqb.cumulus4j.childvm.shared.JPACumulus4jConnectionDTO;
-import org.nightlabs.jjqb.cumulus4j.childvm.webapp.model.JDOCumulus4jConnection;
-import org.nightlabs.jjqb.cumulus4j.childvm.webapp.model.JPACumulus4jConnection;
+import org.nightlabs.vestigo.childvm.shared.dto.JDOConnectionDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.JPAConnectionDTO;
+import org.nightlabs.vestigo.childvm.webapp.model.Connection;
+import org.nightlabs.vestigo.childvm.webapp.model.JDOConnection;
+import org.nightlabs.vestigo.childvm.webapp.model.JPAConnection;
+import org.nightlabs.vestigo.cumulus4j.childvm.shared.JDOCumulus4jConnectionDTO;
+import org.nightlabs.vestigo.cumulus4j.childvm.shared.JPACumulus4jConnectionDTO;
+import org.nightlabs.vestigo.cumulus4j.childvm.webapp.model.JDOCumulus4jConnection;
+import org.nightlabs.vestigo.cumulus4j.childvm.webapp.model.JPACumulus4jConnection;
 
 /**
  * @author Alexander Bieber <!-- alex [AT] nightlabs [DOT] de -->
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
  */
-public class ConnectionManagerTest extends org.nightlabs.jjqb.childvm.webapp.model.test.ConnectionManagerTest {
+public class ConnectionManagerTest extends org.nightlabs.vestigo.childvm.webapp.model.test.ConnectionManagerTest {
 
 	/**
 	 * This is to test that the default connection creation still works

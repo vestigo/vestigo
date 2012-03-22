@@ -1,9 +1,9 @@
-package org.nightlabs.jjqb.cumulus4j.core.oda.impl;
+package org.nightlabs.vestigo.cumulus4j.core.oda.impl;
 
 import org.eclipse.datatools.connectivity.oda.OdaException;
-import org.nightlabs.jjqb.core.oda.Connection;
-import org.nightlabs.jjqb.core.oda.impl.AbstractDriver;
-import org.nightlabs.jjqb.cumulus4j.core.oda.JDOCumulus4jDriver;
+import org.nightlabs.vestigo.core.oda.Connection;
+import org.nightlabs.vestigo.core.oda.impl.AbstractDriver;
+import org.nightlabs.vestigo.cumulus4j.core.oda.JDOCumulus4jDriver;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de

@@ -1,4 +1,4 @@
-package org.nightlabs.jjqb.ui.newwizard;
+package org.nightlabs.vestigo.ui.newwizard;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.CoreException;
@@ -15,8 +15,8 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.dialogs.WizardNewFileCreationPage;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.wizards.newresource.BasicNewFileResourceWizard;
-import org.nightlabs.jjqb.ui.editor.QueryEditorInput;
-import org.nightlabs.jjqb.ui.oda.QueryFileExtensionRegistry;
+import org.nightlabs.vestigo.ui.editor.QueryEditorInput;
+import org.nightlabs.vestigo.ui.oda.QueryFileExtensionRegistry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
