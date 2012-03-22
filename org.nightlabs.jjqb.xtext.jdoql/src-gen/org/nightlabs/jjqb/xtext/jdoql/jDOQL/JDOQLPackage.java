@@ -161,117 +161,6 @@ public interface JDOQLPackage extends EPackage
   int SINGLE_STRING_JDOQL_FEATURE_COUNT = 9;
 
   /**
-   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SelectClauseImpl <em>Select Clause</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SelectClauseImpl
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getSelectClause()
-   * @generated
-   */
-  int SELECT_CLAUSE = 1;
-
-  /**
-   * The feature id for the '<em><b>Is Unique</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SELECT_CLAUSE__IS_UNIQUE = 0;
-
-  /**
-   * The feature id for the '<em><b>Result Clause</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SELECT_CLAUSE__RESULT_CLAUSE = 1;
-
-  /**
-   * The feature id for the '<em><b>Into Clause</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SELECT_CLAUSE__INTO_CLAUSE = 2;
-
-  /**
-   * The number of structural features of the '<em>Select Clause</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SELECT_CLAUSE_FEATURE_COUNT = 3;
-
-  /**
-   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ResultClauseImpl <em>Result Clause</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ResultClauseImpl
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getResultClause()
-   * @generated
-   */
-  int RESULT_CLAUSE = 2;
-
-  /**
-   * The feature id for the '<em><b>Is Distinct</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int RESULT_CLAUSE__IS_DISTINCT = 0;
-
-  /**
-   * The feature id for the '<em><b>Result Specs</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int RESULT_CLAUSE__RESULT_SPECS = 1;
-
-  /**
-   * The number of structural features of the '<em>Result Clause</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int RESULT_CLAUSE_FEATURE_COUNT = 2;
-
-  /**
-   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.IntoClauseImpl <em>Into Clause</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.IntoClauseImpl
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getIntoClause()
-   * @generated
-   */
-  int INTO_CLAUSE = 3;
-
-  /**
-   * The feature id for the '<em><b>Result Class Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int INTO_CLAUSE__RESULT_CLASS_NAME = 0;
-
-  /**
-   * The number of structural features of the '<em>Into Clause</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int INTO_CLAUSE_FEATURE_COUNT = 1;
-
-  /**
    * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ResultSpecImpl <em>Result Spec</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -279,7 +168,7 @@ public interface JDOQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getResultSpec()
    * @generated
    */
-  int RESULT_SPEC = 4;
+  int RESULT_SPEC = 7;
 
   /**
    * The number of structural features of the '<em>Result Spec</em>' class.
@@ -291,406 +180,6 @@ public interface JDOQLPackage extends EPackage
   int RESULT_SPEC_FEATURE_COUNT = 0;
 
   /**
-   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ResultNamingImpl <em>Result Naming</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ResultNamingImpl
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getResultNaming()
-   * @generated
-   */
-  int RESULT_NAMING = 5;
-
-  /**
-   * The feature id for the '<em><b>Identifier</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int RESULT_NAMING__IDENTIFIER = 0;
-
-  /**
-   * The number of structural features of the '<em>Result Naming</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int RESULT_NAMING_FEATURE_COUNT = 1;
-
-  /**
-   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.FromClauseImpl <em>From Clause</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.FromClauseImpl
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getFromClause()
-   * @generated
-   */
-  int FROM_CLAUSE = 6;
-
-  /**
-   * The feature id for the '<em><b>Candidate Class Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int FROM_CLAUSE__CANDIDATE_CLASS_NAME = 0;
-
-  /**
-   * The feature id for the '<em><b>Is Exclude Subclasses</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int FROM_CLAUSE__IS_EXCLUDE_SUBCLASSES = 1;
-
-  /**
-   * The number of structural features of the '<em>From Clause</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int FROM_CLAUSE_FEATURE_COUNT = 2;
-
-  /**
-   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.WhereClauseImpl <em>Where Clause</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.WhereClauseImpl
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getWhereClause()
-   * @generated
-   */
-  int WHERE_CLAUSE = 7;
-
-  /**
-   * The feature id for the '<em><b>Filter</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int WHERE_CLAUSE__FILTER = 0;
-
-  /**
-   * The number of structural features of the '<em>Where Clause</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int WHERE_CLAUSE_FEATURE_COUNT = 1;
-
-  /**
-   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.VariablesClauseImpl <em>Variables Clause</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.VariablesClauseImpl
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getVariablesClause()
-   * @generated
-   */
-  int VARIABLES_CLAUSE = 8;
-
-  /**
-   * The feature id for the '<em><b>Variable Declarations</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int VARIABLES_CLAUSE__VARIABLE_DECLARATIONS = 0;
-
-  /**
-   * The number of structural features of the '<em>Variables Clause</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int VARIABLES_CLAUSE_FEATURE_COUNT = 1;
-
-  /**
-   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.VariableDeclarationImpl <em>Variable Declaration</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.VariableDeclarationImpl
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getVariableDeclaration()
-   * @generated
-   */
-  int VARIABLE_DECLARATION = 9;
-
-  /**
-   * The feature id for the '<em><b>Type</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int VARIABLE_DECLARATION__TYPE = 0;
-
-  /**
-   * The feature id for the '<em><b>Variable Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int VARIABLE_DECLARATION__VARIABLE_NAME = 1;
-
-  /**
-   * The number of structural features of the '<em>Variable Declaration</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int VARIABLE_DECLARATION_FEATURE_COUNT = 2;
-
-  /**
-   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ParametersClauseImpl <em>Parameters Clause</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ParametersClauseImpl
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getParametersClause()
-   * @generated
-   */
-  int PARAMETERS_CLAUSE = 10;
-
-  /**
-   * The feature id for the '<em><b>Parameter Declarations</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PARAMETERS_CLAUSE__PARAMETER_DECLARATIONS = 0;
-
-  /**
-   * The number of structural features of the '<em>Parameters Clause</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PARAMETERS_CLAUSE_FEATURE_COUNT = 1;
-
-  /**
-   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ParameterDeclarationImpl <em>Parameter Declaration</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ParameterDeclarationImpl
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getParameterDeclaration()
-   * @generated
-   */
-  int PARAMETER_DECLARATION = 11;
-
-  /**
-   * The feature id for the '<em><b>Type</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PARAMETER_DECLARATION__TYPE = 0;
-
-  /**
-   * The feature id for the '<em><b>Declared Parameter Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PARAMETER_DECLARATION__DECLARED_PARAMETER_NAME = 1;
-
-  /**
-   * The number of structural features of the '<em>Parameter Declaration</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PARAMETER_DECLARATION_FEATURE_COUNT = 2;
-
-  /**
-   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ImportClauseImpl <em>Import Clause</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ImportClauseImpl
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getImportClause()
-   * @generated
-   */
-  int IMPORT_CLAUSE = 12;
-
-  /**
-   * The feature id for the '<em><b>Import Declarations</b></em>' attribute list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int IMPORT_CLAUSE__IMPORT_DECLARATIONS = 0;
-
-  /**
-   * The number of structural features of the '<em>Import Clause</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int IMPORT_CLAUSE_FEATURE_COUNT = 1;
-
-  /**
-   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.GroupByClauseImpl <em>Group By Clause</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.GroupByClauseImpl
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getGroupByClause()
-   * @generated
-   */
-  int GROUP_BY_CLAUSE = 13;
-
-  /**
-   * The feature id for the '<em><b>Grouping</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int GROUP_BY_CLAUSE__GROUPING = 0;
-
-  /**
-   * The feature id for the '<em><b>Having Clause</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int GROUP_BY_CLAUSE__HAVING_CLAUSE = 1;
-
-  /**
-   * The number of structural features of the '<em>Group By Clause</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int GROUP_BY_CLAUSE_FEATURE_COUNT = 2;
-
-  /**
-   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.HavingClauseImpl <em>Having Clause</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.HavingClauseImpl
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getHavingClause()
-   * @generated
-   */
-  int HAVING_CLAUSE = 14;
-
-  /**
-   * The feature id for the '<em><b>Having</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int HAVING_CLAUSE__HAVING = 0;
-
-  /**
-   * The number of structural features of the '<em>Having Clause</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int HAVING_CLAUSE_FEATURE_COUNT = 1;
-
-  /**
-   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.OrderByClauseImpl <em>Order By Clause</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.OrderByClauseImpl
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getOrderByClause()
-   * @generated
-   */
-  int ORDER_BY_CLAUSE = 15;
-
-  /**
-   * The feature id for the '<em><b>Ordering</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ORDER_BY_CLAUSE__ORDERING = 0;
-
-  /**
-   * The number of structural features of the '<em>Order By Clause</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ORDER_BY_CLAUSE_FEATURE_COUNT = 1;
-
-  /**
-   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.OrderBySpecImpl <em>Order By Spec</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.OrderBySpecImpl
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getOrderBySpec()
-   * @generated
-   */
-  int ORDER_BY_SPEC = 16;
-
-  /**
-   * The number of structural features of the '<em>Order By Spec</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ORDER_BY_SPEC_FEATURE_COUNT = 0;
-
-  /**
-   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.RangeClauseImpl <em>Range Clause</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.RangeClauseImpl
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getRangeClause()
-   * @generated
-   */
-  int RANGE_CLAUSE = 17;
-
-  /**
-   * The feature id for the '<em><b>Start</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int RANGE_CLAUSE__START = 0;
-
-  /**
-   * The feature id for the '<em><b>End</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int RANGE_CLAUSE__END = 1;
-
-  /**
-   * The number of structural features of the '<em>Range Clause</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int RANGE_CLAUSE_FEATURE_COUNT = 2;
-
-  /**
    * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ExpressionImpl <em>Expression</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -698,7 +187,7 @@ public interface JDOQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getExpression()
    * @generated
    */
-  int EXPRESSION = 18;
+  int EXPRESSION = 23;
 
   /**
    * The feature id for the '<em><b>Result Naming</b></em>' containment reference.
@@ -926,22 +415,961 @@ public interface JDOQLPackage extends EPackage
   int EXPRESSION__END_INDEX = RESULT_SPEC_FEATURE_COUNT + 24;
 
   /**
-   * The feature id for the '<em><b>Left</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int EXPRESSION__LEFT = RESULT_SPEC_FEATURE_COUNT + 25;
-
-  /**
    * The number of structural features of the '<em>Expression</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int EXPRESSION_FEATURE_COUNT = RESULT_SPEC_FEATURE_COUNT + 26;
+  int EXPRESSION_FEATURE_COUNT = RESULT_SPEC_FEATURE_COUNT + 25;
+
+  /**
+   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SubqueryImpl <em>Subquery</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SubqueryImpl
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getSubquery()
+   * @generated
+   */
+  int SUBQUERY = 1;
+
+  /**
+   * The feature id for the '<em><b>Result Naming</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SUBQUERY__RESULT_NAMING = EXPRESSION__RESULT_NAMING;
+
+  /**
+   * The feature id for the '<em><b>Direction</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SUBQUERY__DIRECTION = EXPRESSION__DIRECTION;
+
+  /**
+   * The feature id for the '<em><b>Cast Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SUBQUERY__CAST_TYPE = EXPRESSION__CAST_TYPE;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SUBQUERY__RIGHT = EXPRESSION__RIGHT;
+
+  /**
+   * The feature id for the '<em><b>Unary Operator</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SUBQUERY__UNARY_OPERATOR = EXPRESSION__UNARY_OPERATOR;
+
+  /**
+   * The feature id for the '<em><b>Literal</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SUBQUERY__LITERAL = EXPRESSION__LITERAL;
+
+  /**
+   * The feature id for the '<em><b>This</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SUBQUERY__THIS = EXPRESSION__THIS;
+
+  /**
+   * The feature id for the '<em><b>Id</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SUBQUERY__ID = EXPRESSION__ID;
+
+  /**
+   * The feature id for the '<em><b>Parameter Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SUBQUERY__PARAMETER_NAME = EXPRESSION__PARAMETER_NAME;
+
+  /**
+   * The feature id for the '<em><b>Method</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SUBQUERY__METHOD = EXPRESSION__METHOD;
+
+  /**
+   * The feature id for the '<em><b>Number</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SUBQUERY__NUMBER = EXPRESSION__NUMBER;
+
+  /**
+   * The feature id for the '<em><b>Persistable</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SUBQUERY__PERSISTABLE = EXPRESSION__PERSISTABLE;
+
+  /**
+   * The feature id for the '<em><b>Is Distinct</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SUBQUERY__IS_DISTINCT = EXPRESSION__IS_DISTINCT;
+
+  /**
+   * The feature id for the '<em><b>Aggregate Argument</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SUBQUERY__AGGREGATE_ARGUMENT = EXPRESSION__AGGREGATE_ARGUMENT;
+
+  /**
+   * The feature id for the '<em><b>Element</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SUBQUERY__ELEMENT = EXPRESSION__ELEMENT;
+
+  /**
+   * The feature id for the '<em><b>Arg</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SUBQUERY__ARG = EXPRESSION__ARG;
+
+  /**
+   * The feature id for the '<em><b>Key</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SUBQUERY__KEY = EXPRESSION__KEY;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SUBQUERY__VALUE = EXPRESSION__VALUE;
+
+  /**
+   * The feature id for the '<em><b>Index</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SUBQUERY__INDEX = EXPRESSION__INDEX;
+
+  /**
+   * The feature id for the '<em><b>String</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SUBQUERY__STRING = EXPRESSION__STRING;
+
+  /**
+   * The feature id for the '<em><b>From Index</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SUBQUERY__FROM_INDEX = EXPRESSION__FROM_INDEX;
+
+  /**
+   * The feature id for the '<em><b>Regex</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SUBQUERY__REGEX = EXPRESSION__REGEX;
+
+  /**
+   * The feature id for the '<em><b>Replacement</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SUBQUERY__REPLACEMENT = EXPRESSION__REPLACEMENT;
+
+  /**
+   * The feature id for the '<em><b>Begin Index</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SUBQUERY__BEGIN_INDEX = EXPRESSION__BEGIN_INDEX;
+
+  /**
+   * The feature id for the '<em><b>End Index</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SUBQUERY__END_INDEX = EXPRESSION__END_INDEX;
+
+  /**
+   * The feature id for the '<em><b>Select Clause</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SUBQUERY__SELECT_CLAUSE = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>From Clause</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SUBQUERY__FROM_CLAUSE = EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Where Clause</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SUBQUERY__WHERE_CLAUSE = EXPRESSION_FEATURE_COUNT + 2;
+
+  /**
+   * The feature id for the '<em><b>Variables Clause</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SUBQUERY__VARIABLES_CLAUSE = EXPRESSION_FEATURE_COUNT + 3;
+
+  /**
+   * The feature id for the '<em><b>Parameters Clause</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SUBQUERY__PARAMETERS_CLAUSE = EXPRESSION_FEATURE_COUNT + 4;
+
+  /**
+   * The feature id for the '<em><b>Import Clause</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SUBQUERY__IMPORT_CLAUSE = EXPRESSION_FEATURE_COUNT + 5;
+
+  /**
+   * The number of structural features of the '<em>Subquery</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SUBQUERY_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 6;
+
+  /**
+   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SubquerySelectClauseImpl <em>Subquery Select Clause</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SubquerySelectClauseImpl
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getSubquerySelectClause()
+   * @generated
+   */
+  int SUBQUERY_SELECT_CLAUSE = 3;
+
+  /**
+   * The number of structural features of the '<em>Subquery Select Clause</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SUBQUERY_SELECT_CLAUSE_FEATURE_COUNT = 0;
+
+  /**
+   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SelectClauseImpl <em>Select Clause</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SelectClauseImpl
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getSelectClause()
+   * @generated
+   */
+  int SELECT_CLAUSE = 2;
+
+  /**
+   * The feature id for the '<em><b>Is Unique</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SELECT_CLAUSE__IS_UNIQUE = SUBQUERY_SELECT_CLAUSE_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Result Clause</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SELECT_CLAUSE__RESULT_CLAUSE = SUBQUERY_SELECT_CLAUSE_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Into Clause</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SELECT_CLAUSE__INTO_CLAUSE = SUBQUERY_SELECT_CLAUSE_FEATURE_COUNT + 2;
+
+  /**
+   * The number of structural features of the '<em>Select Clause</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SELECT_CLAUSE_FEATURE_COUNT = SUBQUERY_SELECT_CLAUSE_FEATURE_COUNT + 3;
+
+  /**
+   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ResultClauseImpl <em>Result Clause</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ResultClauseImpl
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getResultClause()
+   * @generated
+   */
+  int RESULT_CLAUSE = 4;
+
+  /**
+   * The feature id for the '<em><b>Is Distinct</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RESULT_CLAUSE__IS_DISTINCT = 0;
+
+  /**
+   * The feature id for the '<em><b>Result Specs</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RESULT_CLAUSE__RESULT_SPECS = 1;
+
+  /**
+   * The number of structural features of the '<em>Result Clause</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RESULT_CLAUSE_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SubqueryResultClauseImpl <em>Subquery Result Clause</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SubqueryResultClauseImpl
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getSubqueryResultClause()
+   * @generated
+   */
+  int SUBQUERY_RESULT_CLAUSE = 5;
+
+  /**
+   * The feature id for the '<em><b>Is Distinct</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SUBQUERY_RESULT_CLAUSE__IS_DISTINCT = 0;
+
+  /**
+   * The feature id for the '<em><b>Result Expression</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SUBQUERY_RESULT_CLAUSE__RESULT_EXPRESSION = 1;
+
+  /**
+   * The number of structural features of the '<em>Subquery Result Clause</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SUBQUERY_RESULT_CLAUSE_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.IntoClauseImpl <em>Into Clause</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.IntoClauseImpl
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getIntoClause()
+   * @generated
+   */
+  int INTO_CLAUSE = 6;
+
+  /**
+   * The feature id for the '<em><b>Result Class Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INTO_CLAUSE__RESULT_CLASS_NAME = 0;
+
+  /**
+   * The number of structural features of the '<em>Into Clause</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INTO_CLAUSE_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ResultNamingImpl <em>Result Naming</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ResultNamingImpl
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getResultNaming()
+   * @generated
+   */
+  int RESULT_NAMING = 8;
+
+  /**
+   * The feature id for the '<em><b>Identifier</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RESULT_NAMING__IDENTIFIER = 0;
+
+  /**
+   * The number of structural features of the '<em>Result Naming</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RESULT_NAMING_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.FromClauseImpl <em>From Clause</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.FromClauseImpl
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getFromClause()
+   * @generated
+   */
+  int FROM_CLAUSE = 9;
+
+  /**
+   * The feature id for the '<em><b>Candidate Class Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FROM_CLAUSE__CANDIDATE_CLASS_NAME = 0;
+
+  /**
+   * The feature id for the '<em><b>Is Exclude Subclasses</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FROM_CLAUSE__IS_EXCLUDE_SUBCLASSES = 1;
+
+  /**
+   * The number of structural features of the '<em>From Clause</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FROM_CLAUSE_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SubqueryFromClauseImpl <em>Subquery From Clause</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SubqueryFromClauseImpl
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getSubqueryFromClause()
+   * @generated
+   */
+  int SUBQUERY_FROM_CLAUSE = 10;
+
+  /**
+   * The feature id for the '<em><b>Field Access Expression</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SUBQUERY_FROM_CLAUSE__FIELD_ACCESS_EXPRESSION = 0;
+
+  /**
+   * The feature id for the '<em><b>Candidate Class Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SUBQUERY_FROM_CLAUSE__CANDIDATE_CLASS_NAME = 1;
+
+  /**
+   * The feature id for the '<em><b>Alias</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SUBQUERY_FROM_CLAUSE__ALIAS = 2;
+
+  /**
+   * The feature id for the '<em><b>Is Exclude Subclasses</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SUBQUERY_FROM_CLAUSE__IS_EXCLUDE_SUBCLASSES = 3;
+
+  /**
+   * The number of structural features of the '<em>Subquery From Clause</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SUBQUERY_FROM_CLAUSE_FEATURE_COUNT = 4;
+
+  /**
+   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.AliasImpl <em>Alias</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.AliasImpl
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getAlias()
+   * @generated
+   */
+  int ALIAS = 11;
+
+  /**
+   * The feature id for the '<em><b>Identifier</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ALIAS__IDENTIFIER = 0;
+
+  /**
+   * The number of structural features of the '<em>Alias</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ALIAS_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.WhereClauseImpl <em>Where Clause</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.WhereClauseImpl
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getWhereClause()
+   * @generated
+   */
+  int WHERE_CLAUSE = 12;
+
+  /**
+   * The feature id for the '<em><b>Filter</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WHERE_CLAUSE__FILTER = 0;
+
+  /**
+   * The number of structural features of the '<em>Where Clause</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WHERE_CLAUSE_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.VariablesClauseImpl <em>Variables Clause</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.VariablesClauseImpl
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getVariablesClause()
+   * @generated
+   */
+  int VARIABLES_CLAUSE = 13;
+
+  /**
+   * The feature id for the '<em><b>Variable Declarations</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VARIABLES_CLAUSE__VARIABLE_DECLARATIONS = 0;
+
+  /**
+   * The number of structural features of the '<em>Variables Clause</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VARIABLES_CLAUSE_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.VariableDeclarationImpl <em>Variable Declaration</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.VariableDeclarationImpl
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getVariableDeclaration()
+   * @generated
+   */
+  int VARIABLE_DECLARATION = 14;
+
+  /**
+   * The feature id for the '<em><b>Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VARIABLE_DECLARATION__TYPE = 0;
+
+  /**
+   * The feature id for the '<em><b>Variable Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VARIABLE_DECLARATION__VARIABLE_NAME = 1;
+
+  /**
+   * The number of structural features of the '<em>Variable Declaration</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VARIABLE_DECLARATION_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ParametersClauseImpl <em>Parameters Clause</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ParametersClauseImpl
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getParametersClause()
+   * @generated
+   */
+  int PARAMETERS_CLAUSE = 15;
+
+  /**
+   * The feature id for the '<em><b>Parameter Declarations</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARAMETERS_CLAUSE__PARAMETER_DECLARATIONS = 0;
+
+  /**
+   * The number of structural features of the '<em>Parameters Clause</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARAMETERS_CLAUSE_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ParameterDeclarationImpl <em>Parameter Declaration</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ParameterDeclarationImpl
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getParameterDeclaration()
+   * @generated
+   */
+  int PARAMETER_DECLARATION = 16;
+
+  /**
+   * The feature id for the '<em><b>Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARAMETER_DECLARATION__TYPE = 0;
+
+  /**
+   * The feature id for the '<em><b>Declared Parameter Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARAMETER_DECLARATION__DECLARED_PARAMETER_NAME = 1;
+
+  /**
+   * The number of structural features of the '<em>Parameter Declaration</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARAMETER_DECLARATION_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ImportClauseImpl <em>Import Clause</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ImportClauseImpl
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getImportClause()
+   * @generated
+   */
+  int IMPORT_CLAUSE = 17;
+
+  /**
+   * The feature id for the '<em><b>Import Declarations</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int IMPORT_CLAUSE__IMPORT_DECLARATIONS = 0;
+
+  /**
+   * The number of structural features of the '<em>Import Clause</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int IMPORT_CLAUSE_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.GroupByClauseImpl <em>Group By Clause</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.GroupByClauseImpl
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getGroupByClause()
+   * @generated
+   */
+  int GROUP_BY_CLAUSE = 18;
+
+  /**
+   * The feature id for the '<em><b>Grouping</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GROUP_BY_CLAUSE__GROUPING = 0;
+
+  /**
+   * The feature id for the '<em><b>Having Clause</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GROUP_BY_CLAUSE__HAVING_CLAUSE = 1;
+
+  /**
+   * The number of structural features of the '<em>Group By Clause</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GROUP_BY_CLAUSE_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.HavingClauseImpl <em>Having Clause</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.HavingClauseImpl
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getHavingClause()
+   * @generated
+   */
+  int HAVING_CLAUSE = 19;
+
+  /**
+   * The feature id for the '<em><b>Having</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int HAVING_CLAUSE__HAVING = 0;
+
+  /**
+   * The number of structural features of the '<em>Having Clause</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int HAVING_CLAUSE_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.OrderByClauseImpl <em>Order By Clause</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.OrderByClauseImpl
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getOrderByClause()
+   * @generated
+   */
+  int ORDER_BY_CLAUSE = 20;
+
+  /**
+   * The feature id for the '<em><b>Ordering</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ORDER_BY_CLAUSE__ORDERING = 0;
+
+  /**
+   * The number of structural features of the '<em>Order By Clause</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ORDER_BY_CLAUSE_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.OrderBySpecImpl <em>Order By Spec</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.OrderBySpecImpl
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getOrderBySpec()
+   * @generated
+   */
+  int ORDER_BY_SPEC = 21;
+
+  /**
+   * The number of structural features of the '<em>Order By Spec</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ORDER_BY_SPEC_FEATURE_COUNT = 0;
+
+  /**
+   * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.RangeClauseImpl <em>Range Clause</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.RangeClauseImpl
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getRangeClause()
+   * @generated
+   */
+  int RANGE_CLAUSE = 22;
+
+  /**
+   * The feature id for the '<em><b>Start</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RANGE_CLAUSE__START = 0;
+
+  /**
+   * The feature id for the '<em><b>End</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RANGE_CLAUSE__END = 1;
+
+  /**
+   * The number of structural features of the '<em>Range Clause</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RANGE_CLAUSE_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ConditionalOrExpressionImpl <em>Conditional Or Expression</em>}' class.
@@ -951,7 +1379,7 @@ public interface JDOQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getConditionalOrExpression()
    * @generated
    */
-  int CONDITIONAL_OR_EXPRESSION = 19;
+  int CONDITIONAL_OR_EXPRESSION = 24;
 
   /**
    * The feature id for the '<em><b>Result Naming</b></em>' containment reference.
@@ -1185,7 +1613,7 @@ public interface JDOQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONDITIONAL_OR_EXPRESSION__LEFT = EXPRESSION__LEFT;
+  int CONDITIONAL_OR_EXPRESSION__LEFT = EXPRESSION_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Conditional Or Expression</em>' class.
@@ -1194,7 +1622,7 @@ public interface JDOQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONDITIONAL_OR_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 0;
+  int CONDITIONAL_OR_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ConditionalAndExpressionImpl <em>Conditional And Expression</em>}' class.
@@ -1204,7 +1632,7 @@ public interface JDOQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getConditionalAndExpression()
    * @generated
    */
-  int CONDITIONAL_AND_EXPRESSION = 20;
+  int CONDITIONAL_AND_EXPRESSION = 25;
 
   /**
    * The feature id for the '<em><b>Result Naming</b></em>' containment reference.
@@ -1438,7 +1866,7 @@ public interface JDOQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONDITIONAL_AND_EXPRESSION__LEFT = EXPRESSION__LEFT;
+  int CONDITIONAL_AND_EXPRESSION__LEFT = EXPRESSION_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Conditional And Expression</em>' class.
@@ -1447,7 +1875,7 @@ public interface JDOQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONDITIONAL_AND_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 0;
+  int CONDITIONAL_AND_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SimpleOrExpressionImpl <em>Simple Or Expression</em>}' class.
@@ -1457,7 +1885,7 @@ public interface JDOQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getSimpleOrExpression()
    * @generated
    */
-  int SIMPLE_OR_EXPRESSION = 21;
+  int SIMPLE_OR_EXPRESSION = 26;
 
   /**
    * The feature id for the '<em><b>Result Naming</b></em>' containment reference.
@@ -1691,7 +2119,7 @@ public interface JDOQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SIMPLE_OR_EXPRESSION__LEFT = EXPRESSION__LEFT;
+  int SIMPLE_OR_EXPRESSION__LEFT = EXPRESSION_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Simple Or Expression</em>' class.
@@ -1700,7 +2128,7 @@ public interface JDOQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SIMPLE_OR_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 0;
+  int SIMPLE_OR_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SimpleAndExpressionImpl <em>Simple And Expression</em>}' class.
@@ -1710,7 +2138,7 @@ public interface JDOQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getSimpleAndExpression()
    * @generated
    */
-  int SIMPLE_AND_EXPRESSION = 22;
+  int SIMPLE_AND_EXPRESSION = 27;
 
   /**
    * The feature id for the '<em><b>Result Naming</b></em>' containment reference.
@@ -1944,7 +2372,7 @@ public interface JDOQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SIMPLE_AND_EXPRESSION__LEFT = EXPRESSION__LEFT;
+  int SIMPLE_AND_EXPRESSION__LEFT = EXPRESSION_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Simple And Expression</em>' class.
@@ -1953,7 +2381,7 @@ public interface JDOQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SIMPLE_AND_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 0;
+  int SIMPLE_AND_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ComparisonOperatorExpressionImpl <em>Comparison Operator Expression</em>}' class.
@@ -1963,7 +2391,7 @@ public interface JDOQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getComparisonOperatorExpression()
    * @generated
    */
-  int COMPARISON_OPERATOR_EXPRESSION = 23;
+  int COMPARISON_OPERATOR_EXPRESSION = 28;
 
   /**
    * The feature id for the '<em><b>Result Naming</b></em>' containment reference.
@@ -2197,7 +2625,7 @@ public interface JDOQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int COMPARISON_OPERATOR_EXPRESSION__LEFT = EXPRESSION__LEFT;
+  int COMPARISON_OPERATOR_EXPRESSION__LEFT = EXPRESSION_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Operator</b></em>' attribute.
@@ -2206,7 +2634,7 @@ public interface JDOQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int COMPARISON_OPERATOR_EXPRESSION__OPERATOR = EXPRESSION_FEATURE_COUNT + 0;
+  int COMPARISON_OPERATOR_EXPRESSION__OPERATOR = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Comparison Operator Expression</em>' class.
@@ -2215,7 +2643,7 @@ public interface JDOQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int COMPARISON_OPERATOR_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
+  int COMPARISON_OPERATOR_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.AdditionExpressionImpl <em>Addition Expression</em>}' class.
@@ -2225,7 +2653,7 @@ public interface JDOQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getAdditionExpression()
    * @generated
    */
-  int ADDITION_EXPRESSION = 24;
+  int ADDITION_EXPRESSION = 29;
 
   /**
    * The feature id for the '<em><b>Result Naming</b></em>' containment reference.
@@ -2459,7 +2887,7 @@ public interface JDOQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ADDITION_EXPRESSION__LEFT = EXPRESSION__LEFT;
+  int ADDITION_EXPRESSION__LEFT = EXPRESSION_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Operator</b></em>' attribute.
@@ -2468,7 +2896,7 @@ public interface JDOQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ADDITION_EXPRESSION__OPERATOR = EXPRESSION_FEATURE_COUNT + 0;
+  int ADDITION_EXPRESSION__OPERATOR = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Addition Expression</em>' class.
@@ -2477,7 +2905,7 @@ public interface JDOQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ADDITION_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
+  int ADDITION_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.MultiplicationExpressionImpl <em>Multiplication Expression</em>}' class.
@@ -2487,7 +2915,7 @@ public interface JDOQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getMultiplicationExpression()
    * @generated
    */
-  int MULTIPLICATION_EXPRESSION = 25;
+  int MULTIPLICATION_EXPRESSION = 30;
 
   /**
    * The feature id for the '<em><b>Result Naming</b></em>' containment reference.
@@ -2721,7 +3149,7 @@ public interface JDOQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MULTIPLICATION_EXPRESSION__LEFT = EXPRESSION__LEFT;
+  int MULTIPLICATION_EXPRESSION__LEFT = EXPRESSION_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Operator</b></em>' attribute.
@@ -2730,7 +3158,7 @@ public interface JDOQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MULTIPLICATION_EXPRESSION__OPERATOR = EXPRESSION_FEATURE_COUNT + 0;
+  int MULTIPLICATION_EXPRESSION__OPERATOR = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Multiplication Expression</em>' class.
@@ -2739,7 +3167,7 @@ public interface JDOQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MULTIPLICATION_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
+  int MULTIPLICATION_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.FieldAccessExpressionImpl <em>Field Access Expression</em>}' class.
@@ -2749,7 +3177,7 @@ public interface JDOQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getFieldAccessExpression()
    * @generated
    */
-  int FIELD_ACCESS_EXPRESSION = 26;
+  int FIELD_ACCESS_EXPRESSION = 31;
 
   /**
    * The feature id for the '<em><b>Result Naming</b></em>' containment reference.
@@ -2983,7 +3411,7 @@ public interface JDOQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FIELD_ACCESS_EXPRESSION__LEFT = EXPRESSION__LEFT;
+  int FIELD_ACCESS_EXPRESSION__LEFT = EXPRESSION_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Field Access Expression</em>' class.
@@ -2992,7 +3420,7 @@ public interface JDOQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FIELD_ACCESS_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 0;
+  int FIELD_ACCESS_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.OrderByDirection <em>Order By Direction</em>}' enum.
@@ -3002,7 +3430,7 @@ public interface JDOQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getOrderByDirection()
    * @generated
    */
-  int ORDER_BY_DIRECTION = 27;
+  int ORDER_BY_DIRECTION = 32;
 
   /**
    * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.UnaryOperator <em>Unary Operator</em>}' enum.
@@ -3012,7 +3440,7 @@ public interface JDOQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getUnaryOperator()
    * @generated
    */
-  int UNARY_OPERATOR = 28;
+  int UNARY_OPERATOR = 33;
 
   /**
    * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.AdditionOperator <em>Addition Operator</em>}' enum.
@@ -3022,7 +3450,7 @@ public interface JDOQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getAdditionOperator()
    * @generated
    */
-  int ADDITION_OPERATOR = 29;
+  int ADDITION_OPERATOR = 34;
 
   /**
    * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.MultiplicationOperator <em>Multiplication Operator</em>}' enum.
@@ -3032,7 +3460,7 @@ public interface JDOQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getMultiplicationOperator()
    * @generated
    */
-  int MULTIPLICATION_OPERATOR = 30;
+  int MULTIPLICATION_OPERATOR = 35;
 
   /**
    * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ComparisonOperator <em>Comparison Operator</em>}' enum.
@@ -3042,7 +3470,7 @@ public interface JDOQLPackage extends EPackage
    * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getComparisonOperator()
    * @generated
    */
-  int COMPARISON_OPERATOR = 31;
+  int COMPARISON_OPERATOR = 36;
 
 
   /**
@@ -3155,6 +3583,82 @@ public interface JDOQLPackage extends EPackage
   EReference getSingleStringJDOQL_RangeClause();
 
   /**
+   * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Subquery <em>Subquery</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Subquery</em>'.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.Subquery
+   * @generated
+   */
+  EClass getSubquery();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Subquery#getSelectClause <em>Select Clause</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Select Clause</em>'.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.Subquery#getSelectClause()
+   * @see #getSubquery()
+   * @generated
+   */
+  EReference getSubquery_SelectClause();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Subquery#getFromClause <em>From Clause</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>From Clause</em>'.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.Subquery#getFromClause()
+   * @see #getSubquery()
+   * @generated
+   */
+  EReference getSubquery_FromClause();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Subquery#getWhereClause <em>Where Clause</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Where Clause</em>'.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.Subquery#getWhereClause()
+   * @see #getSubquery()
+   * @generated
+   */
+  EReference getSubquery_WhereClause();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Subquery#getVariablesClause <em>Variables Clause</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Variables Clause</em>'.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.Subquery#getVariablesClause()
+   * @see #getSubquery()
+   * @generated
+   */
+  EReference getSubquery_VariablesClause();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Subquery#getParametersClause <em>Parameters Clause</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Parameters Clause</em>'.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.Subquery#getParametersClause()
+   * @see #getSubquery()
+   * @generated
+   */
+  EReference getSubquery_ParametersClause();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Subquery#getImportClause <em>Import Clause</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Import Clause</em>'.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.Subquery#getImportClause()
+   * @see #getSubquery()
+   * @generated
+   */
+  EReference getSubquery_ImportClause();
+
+  /**
    * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SelectClause <em>Select Clause</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3198,6 +3702,16 @@ public interface JDOQLPackage extends EPackage
   EReference getSelectClause_IntoClause();
 
   /**
+   * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SubquerySelectClause <em>Subquery Select Clause</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Subquery Select Clause</em>'.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.SubquerySelectClause
+   * @generated
+   */
+  EClass getSubquerySelectClause();
+
+  /**
    * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ResultClause <em>Result Clause</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3228,6 +3742,38 @@ public interface JDOQLPackage extends EPackage
    * @generated
    */
   EReference getResultClause_ResultSpecs();
+
+  /**
+   * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SubqueryResultClause <em>Subquery Result Clause</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Subquery Result Clause</em>'.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.SubqueryResultClause
+   * @generated
+   */
+  EClass getSubqueryResultClause();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SubqueryResultClause#isIsDistinct <em>Is Distinct</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Is Distinct</em>'.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.SubqueryResultClause#isIsDistinct()
+   * @see #getSubqueryResultClause()
+   * @generated
+   */
+  EAttribute getSubqueryResultClause_IsDistinct();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SubqueryResultClause#getResultExpression <em>Result Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Result Expression</em>'.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.SubqueryResultClause#getResultExpression()
+   * @see #getSubqueryResultClause()
+   * @generated
+   */
+  EReference getSubqueryResultClause_ResultExpression();
 
   /**
    * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.IntoClause <em>Into Clause</em>}'.
@@ -3312,6 +3858,81 @@ public interface JDOQLPackage extends EPackage
    * @generated
    */
   EAttribute getFromClause_IsExcludeSubclasses();
+
+  /**
+   * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SubqueryFromClause <em>Subquery From Clause</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Subquery From Clause</em>'.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.SubqueryFromClause
+   * @generated
+   */
+  EClass getSubqueryFromClause();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SubqueryFromClause#getFieldAccessExpression <em>Field Access Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Field Access Expression</em>'.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.SubqueryFromClause#getFieldAccessExpression()
+   * @see #getSubqueryFromClause()
+   * @generated
+   */
+  EReference getSubqueryFromClause_FieldAccessExpression();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SubqueryFromClause#getCandidateClassName <em>Candidate Class Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Candidate Class Name</em>'.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.SubqueryFromClause#getCandidateClassName()
+   * @see #getSubqueryFromClause()
+   * @generated
+   */
+  EAttribute getSubqueryFromClause_CandidateClassName();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SubqueryFromClause#getAlias <em>Alias</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Alias</em>'.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.SubqueryFromClause#getAlias()
+   * @see #getSubqueryFromClause()
+   * @generated
+   */
+  EReference getSubqueryFromClause_Alias();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SubqueryFromClause#isIsExcludeSubclasses <em>Is Exclude Subclasses</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Is Exclude Subclasses</em>'.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.SubqueryFromClause#isIsExcludeSubclasses()
+   * @see #getSubqueryFromClause()
+   * @generated
+   */
+  EAttribute getSubqueryFromClause_IsExcludeSubclasses();
+
+  /**
+   * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Alias <em>Alias</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Alias</em>'.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.Alias
+   * @generated
+   */
+  EClass getAlias();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Alias#getIdentifier <em>Identifier</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Identifier</em>'.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.Alias#getIdentifier()
+   * @see #getAlias()
+   * @generated
+   */
+  EAttribute getAlias_Identifier();
 
   /**
    * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.WhereClause <em>Where Clause</em>}'.
@@ -3863,17 +4484,6 @@ public interface JDOQLPackage extends EPackage
   EReference getExpression_EndIndex();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getLeft <em>Left</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Left</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getLeft()
-   * @see #getExpression()
-   * @generated
-   */
-  EReference getExpression_Left();
-
-  /**
    * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ConditionalOrExpression <em>Conditional Or Expression</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3882,6 +4492,17 @@ public interface JDOQLPackage extends EPackage
    * @generated
    */
   EClass getConditionalOrExpression();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ConditionalOrExpression#getLeft <em>Left</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Left</em>'.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.ConditionalOrExpression#getLeft()
+   * @see #getConditionalOrExpression()
+   * @generated
+   */
+  EReference getConditionalOrExpression_Left();
 
   /**
    * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ConditionalAndExpression <em>Conditional And Expression</em>}'.
@@ -3894,6 +4515,17 @@ public interface JDOQLPackage extends EPackage
   EClass getConditionalAndExpression();
 
   /**
+   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ConditionalAndExpression#getLeft <em>Left</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Left</em>'.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.ConditionalAndExpression#getLeft()
+   * @see #getConditionalAndExpression()
+   * @generated
+   */
+  EReference getConditionalAndExpression_Left();
+
+  /**
    * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SimpleOrExpression <em>Simple Or Expression</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3902,6 +4534,17 @@ public interface JDOQLPackage extends EPackage
    * @generated
    */
   EClass getSimpleOrExpression();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SimpleOrExpression#getLeft <em>Left</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Left</em>'.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.SimpleOrExpression#getLeft()
+   * @see #getSimpleOrExpression()
+   * @generated
+   */
+  EReference getSimpleOrExpression_Left();
 
   /**
    * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SimpleAndExpression <em>Simple And Expression</em>}'.
@@ -3914,6 +4557,17 @@ public interface JDOQLPackage extends EPackage
   EClass getSimpleAndExpression();
 
   /**
+   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SimpleAndExpression#getLeft <em>Left</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Left</em>'.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.SimpleAndExpression#getLeft()
+   * @see #getSimpleAndExpression()
+   * @generated
+   */
+  EReference getSimpleAndExpression_Left();
+
+  /**
    * Returns the meta object for class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ComparisonOperatorExpression <em>Comparison Operator Expression</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3922,6 +4576,17 @@ public interface JDOQLPackage extends EPackage
    * @generated
    */
   EClass getComparisonOperatorExpression();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ComparisonOperatorExpression#getLeft <em>Left</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Left</em>'.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.ComparisonOperatorExpression#getLeft()
+   * @see #getComparisonOperatorExpression()
+   * @generated
+   */
+  EReference getComparisonOperatorExpression_Left();
 
   /**
    * Returns the meta object for the attribute '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ComparisonOperatorExpression#getOperator <em>Operator</em>}'.
@@ -3945,6 +4610,17 @@ public interface JDOQLPackage extends EPackage
   EClass getAdditionExpression();
 
   /**
+   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.AdditionExpression#getLeft <em>Left</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Left</em>'.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.AdditionExpression#getLeft()
+   * @see #getAdditionExpression()
+   * @generated
+   */
+  EReference getAdditionExpression_Left();
+
+  /**
    * Returns the meta object for the attribute '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.AdditionExpression#getOperator <em>Operator</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3966,6 +4642,17 @@ public interface JDOQLPackage extends EPackage
   EClass getMultiplicationExpression();
 
   /**
+   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.MultiplicationExpression#getLeft <em>Left</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Left</em>'.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.MultiplicationExpression#getLeft()
+   * @see #getMultiplicationExpression()
+   * @generated
+   */
+  EReference getMultiplicationExpression_Left();
+
+  /**
    * Returns the meta object for the attribute '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.MultiplicationExpression#getOperator <em>Operator</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3985,6 +4672,17 @@ public interface JDOQLPackage extends EPackage
    * @generated
    */
   EClass getFieldAccessExpression();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.FieldAccessExpression#getLeft <em>Left</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Left</em>'.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.FieldAccessExpression#getLeft()
+   * @see #getFieldAccessExpression()
+   * @generated
+   */
+  EReference getFieldAccessExpression_Left();
 
   /**
    * Returns the meta object for enum '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.OrderByDirection <em>Order By Direction</em>}'.
@@ -4142,6 +4840,64 @@ public interface JDOQLPackage extends EPackage
     EReference SINGLE_STRING_JDOQL__RANGE_CLAUSE = eINSTANCE.getSingleStringJDOQL_RangeClause();
 
     /**
+     * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SubqueryImpl <em>Subquery</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SubqueryImpl
+     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getSubquery()
+     * @generated
+     */
+    EClass SUBQUERY = eINSTANCE.getSubquery();
+
+    /**
+     * The meta object literal for the '<em><b>Select Clause</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SUBQUERY__SELECT_CLAUSE = eINSTANCE.getSubquery_SelectClause();
+
+    /**
+     * The meta object literal for the '<em><b>From Clause</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SUBQUERY__FROM_CLAUSE = eINSTANCE.getSubquery_FromClause();
+
+    /**
+     * The meta object literal for the '<em><b>Where Clause</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SUBQUERY__WHERE_CLAUSE = eINSTANCE.getSubquery_WhereClause();
+
+    /**
+     * The meta object literal for the '<em><b>Variables Clause</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SUBQUERY__VARIABLES_CLAUSE = eINSTANCE.getSubquery_VariablesClause();
+
+    /**
+     * The meta object literal for the '<em><b>Parameters Clause</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SUBQUERY__PARAMETERS_CLAUSE = eINSTANCE.getSubquery_ParametersClause();
+
+    /**
+     * The meta object literal for the '<em><b>Import Clause</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SUBQUERY__IMPORT_CLAUSE = eINSTANCE.getSubquery_ImportClause();
+
+    /**
      * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SelectClauseImpl <em>Select Clause</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -4176,6 +4932,16 @@ public interface JDOQLPackage extends EPackage
     EReference SELECT_CLAUSE__INTO_CLAUSE = eINSTANCE.getSelectClause_IntoClause();
 
     /**
+     * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SubquerySelectClauseImpl <em>Subquery Select Clause</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SubquerySelectClauseImpl
+     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getSubquerySelectClause()
+     * @generated
+     */
+    EClass SUBQUERY_SELECT_CLAUSE = eINSTANCE.getSubquerySelectClause();
+
+    /**
      * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ResultClauseImpl <em>Result Clause</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -4200,6 +4966,32 @@ public interface JDOQLPackage extends EPackage
      * @generated
      */
     EReference RESULT_CLAUSE__RESULT_SPECS = eINSTANCE.getResultClause_ResultSpecs();
+
+    /**
+     * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SubqueryResultClauseImpl <em>Subquery Result Clause</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SubqueryResultClauseImpl
+     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getSubqueryResultClause()
+     * @generated
+     */
+    EClass SUBQUERY_RESULT_CLAUSE = eINSTANCE.getSubqueryResultClause();
+
+    /**
+     * The meta object literal for the '<em><b>Is Distinct</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute SUBQUERY_RESULT_CLAUSE__IS_DISTINCT = eINSTANCE.getSubqueryResultClause_IsDistinct();
+
+    /**
+     * The meta object literal for the '<em><b>Result Expression</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SUBQUERY_RESULT_CLAUSE__RESULT_EXPRESSION = eINSTANCE.getSubqueryResultClause_ResultExpression();
 
     /**
      * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.IntoClauseImpl <em>Into Clause</em>}' class.
@@ -4272,6 +5064,66 @@ public interface JDOQLPackage extends EPackage
      * @generated
      */
     EAttribute FROM_CLAUSE__IS_EXCLUDE_SUBCLASSES = eINSTANCE.getFromClause_IsExcludeSubclasses();
+
+    /**
+     * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SubqueryFromClauseImpl <em>Subquery From Clause</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SubqueryFromClauseImpl
+     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getSubqueryFromClause()
+     * @generated
+     */
+    EClass SUBQUERY_FROM_CLAUSE = eINSTANCE.getSubqueryFromClause();
+
+    /**
+     * The meta object literal for the '<em><b>Field Access Expression</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SUBQUERY_FROM_CLAUSE__FIELD_ACCESS_EXPRESSION = eINSTANCE.getSubqueryFromClause_FieldAccessExpression();
+
+    /**
+     * The meta object literal for the '<em><b>Candidate Class Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute SUBQUERY_FROM_CLAUSE__CANDIDATE_CLASS_NAME = eINSTANCE.getSubqueryFromClause_CandidateClassName();
+
+    /**
+     * The meta object literal for the '<em><b>Alias</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SUBQUERY_FROM_CLAUSE__ALIAS = eINSTANCE.getSubqueryFromClause_Alias();
+
+    /**
+     * The meta object literal for the '<em><b>Is Exclude Subclasses</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute SUBQUERY_FROM_CLAUSE__IS_EXCLUDE_SUBCLASSES = eINSTANCE.getSubqueryFromClause_IsExcludeSubclasses();
+
+    /**
+     * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.AliasImpl <em>Alias</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.AliasImpl
+     * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.JDOQLPackageImpl#getAlias()
+     * @generated
+     */
+    EClass ALIAS = eINSTANCE.getAlias();
+
+    /**
+     * The meta object literal for the '<em><b>Identifier</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ALIAS__IDENTIFIER = eINSTANCE.getAlias_Identifier();
 
     /**
      * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.WhereClauseImpl <em>Where Clause</em>}' class.
@@ -4706,14 +5558,6 @@ public interface JDOQLPackage extends EPackage
     EReference EXPRESSION__END_INDEX = eINSTANCE.getExpression_EndIndex();
 
     /**
-     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference EXPRESSION__LEFT = eINSTANCE.getExpression_Left();
-
-    /**
      * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ConditionalOrExpressionImpl <em>Conditional Or Expression</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -4722,6 +5566,14 @@ public interface JDOQLPackage extends EPackage
      * @generated
      */
     EClass CONDITIONAL_OR_EXPRESSION = eINSTANCE.getConditionalOrExpression();
+
+    /**
+     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CONDITIONAL_OR_EXPRESSION__LEFT = eINSTANCE.getConditionalOrExpression_Left();
 
     /**
      * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ConditionalAndExpressionImpl <em>Conditional And Expression</em>}' class.
@@ -4734,6 +5586,14 @@ public interface JDOQLPackage extends EPackage
     EClass CONDITIONAL_AND_EXPRESSION = eINSTANCE.getConditionalAndExpression();
 
     /**
+     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CONDITIONAL_AND_EXPRESSION__LEFT = eINSTANCE.getConditionalAndExpression_Left();
+
+    /**
      * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SimpleOrExpressionImpl <em>Simple Or Expression</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -4742,6 +5602,14 @@ public interface JDOQLPackage extends EPackage
      * @generated
      */
     EClass SIMPLE_OR_EXPRESSION = eINSTANCE.getSimpleOrExpression();
+
+    /**
+     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SIMPLE_OR_EXPRESSION__LEFT = eINSTANCE.getSimpleOrExpression_Left();
 
     /**
      * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.SimpleAndExpressionImpl <em>Simple And Expression</em>}' class.
@@ -4754,6 +5622,14 @@ public interface JDOQLPackage extends EPackage
     EClass SIMPLE_AND_EXPRESSION = eINSTANCE.getSimpleAndExpression();
 
     /**
+     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SIMPLE_AND_EXPRESSION__LEFT = eINSTANCE.getSimpleAndExpression_Left();
+
+    /**
      * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ComparisonOperatorExpressionImpl <em>Comparison Operator Expression</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -4762,6 +5638,14 @@ public interface JDOQLPackage extends EPackage
      * @generated
      */
     EClass COMPARISON_OPERATOR_EXPRESSION = eINSTANCE.getComparisonOperatorExpression();
+
+    /**
+     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference COMPARISON_OPERATOR_EXPRESSION__LEFT = eINSTANCE.getComparisonOperatorExpression_Left();
 
     /**
      * The meta object literal for the '<em><b>Operator</b></em>' attribute feature.
@@ -4782,6 +5666,14 @@ public interface JDOQLPackage extends EPackage
     EClass ADDITION_EXPRESSION = eINSTANCE.getAdditionExpression();
 
     /**
+     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ADDITION_EXPRESSION__LEFT = eINSTANCE.getAdditionExpression_Left();
+
+    /**
      * The meta object literal for the '<em><b>Operator</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -4800,6 +5692,14 @@ public interface JDOQLPackage extends EPackage
     EClass MULTIPLICATION_EXPRESSION = eINSTANCE.getMultiplicationExpression();
 
     /**
+     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MULTIPLICATION_EXPRESSION__LEFT = eINSTANCE.getMultiplicationExpression_Left();
+
+    /**
      * The meta object literal for the '<em><b>Operator</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -4816,6 +5716,14 @@ public interface JDOQLPackage extends EPackage
      * @generated
      */
     EClass FIELD_ACCESS_EXPRESSION = eINSTANCE.getFieldAccessExpression();
+
+    /**
+     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference FIELD_ACCESS_EXPRESSION__LEFT = eINSTANCE.getFieldAccessExpression_Left();
 
     /**
      * The meta object literal for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.OrderByDirection <em>Order By Direction</em>}' enum.

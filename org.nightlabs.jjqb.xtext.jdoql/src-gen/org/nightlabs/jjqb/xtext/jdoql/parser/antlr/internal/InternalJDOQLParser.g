@@ -247,6 +247,135 @@ ruleSingleStringJDOQL returns [EObject current=null]
 
 
 
+// Entry rule entryRuleSubquery
+entryRuleSubquery returns [EObject current=null]
+	:
+	{ newCompositeNode(grammarAccess.getSubqueryRule()); }
+	 iv_ruleSubquery=ruleSubquery 
+	 { $current=$iv_ruleSubquery.current; } 
+	 EOF 
+;
+
+// Rule Subquery
+ruleSubquery returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+((
+(
+		{ 
+	        newCompositeNode(grammarAccess.getSubqueryAccess().getSelectClauseSubquerySelectClauseParserRuleCall_0_0()); 
+	    }
+		lv_selectClause_0_0=ruleSubquerySelectClause		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getSubqueryRule());
+	        }
+       		set(
+       			$current, 
+       			"selectClause",
+        		lv_selectClause_0_0, 
+        		"SubquerySelectClause");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getSubqueryAccess().getFromClauseSubqueryFromClauseParserRuleCall_1_0()); 
+	    }
+		lv_fromClause_1_0=ruleSubqueryFromClause		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getSubqueryRule());
+	        }
+       		set(
+       			$current, 
+       			"fromClause",
+        		lv_fromClause_1_0, 
+        		"SubqueryFromClause");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getSubqueryAccess().getWhereClauseWhereClauseParserRuleCall_2_0()); 
+	    }
+		lv_whereClause_2_0=ruleWhereClause		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getSubqueryRule());
+	        }
+       		set(
+       			$current, 
+       			"whereClause",
+        		lv_whereClause_2_0, 
+        		"WhereClause");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)?(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getSubqueryAccess().getVariablesClauseVariablesClauseParserRuleCall_3_0()); 
+	    }
+		lv_variablesClause_3_0=ruleVariablesClause		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getSubqueryRule());
+	        }
+       		set(
+       			$current, 
+       			"variablesClause",
+        		lv_variablesClause_3_0, 
+        		"VariablesClause");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)?(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getSubqueryAccess().getParametersClauseParametersClauseParserRuleCall_4_0()); 
+	    }
+		lv_parametersClause_4_0=ruleParametersClause		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getSubqueryRule());
+	        }
+       		set(
+       			$current, 
+       			"parametersClause",
+        		lv_parametersClause_4_0, 
+        		"ParametersClause");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)?(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getSubqueryAccess().getImportClauseImportClauseParserRuleCall_5_0()); 
+	    }
+		lv_importClause_5_0=ruleImportClause		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getSubqueryRule());
+	        }
+       		set(
+       			$current, 
+       			"importClause",
+        		lv_importClause_5_0, 
+        		"ImportClause");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)?)
+;
+
+
+
+
+
 // Entry rule entryRuleSelectClause
 entryRuleSelectClause returns [EObject current=null]
 	:
@@ -317,6 +446,93 @@ ruleSelectClause returns [EObject current=null]
 		lv_intoClause_4_0=ruleIntoClause		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getSelectClauseRule());
+	        }
+       		set(
+       			$current, 
+       			"intoClause",
+        		lv_intoClause_4_0, 
+        		"IntoClause");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)?)
+;
+
+
+
+
+
+// Entry rule entryRuleSubquerySelectClause
+entryRuleSubquerySelectClause returns [EObject current=null]
+	:
+	{ newCompositeNode(grammarAccess.getSubquerySelectClauseRule()); }
+	 iv_ruleSubquerySelectClause=ruleSubquerySelectClause 
+	 { $current=$iv_ruleSubquerySelectClause.current; } 
+	 EOF 
+;
+
+// Rule SubquerySelectClause
+ruleSubquerySelectClause returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+((
+	{ 
+	  /* */ 
+	}
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getSubquerySelectClauseAccess().getSelectClauseAction_0(),
+            $current);
+    }
+)
+	otherlv_1=KEYWORD_54
+    {
+    	newLeafNode(otherlv_1, grammarAccess.getSubquerySelectClauseAccess().getSELECTKeyword_1());
+    }
+(
+(
+		lv_isUnique_2_0=
+	KEYWORD_55
+    {
+        newLeafNode(lv_isUnique_2_0, grammarAccess.getSubquerySelectClauseAccess().getIsUniqueUNIQUEKeyword_2_0());
+    }
+
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getSubquerySelectClauseRule());
+	        }
+       		setWithLastConsumed($current, "isUnique", true, "UNIQUE");
+	    }
+
+)
+)?(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getSubquerySelectClauseAccess().getResultClauseSubqueryResultClauseParserRuleCall_3_0()); 
+	    }
+		lv_resultClause_3_0=ruleSubqueryResultClause		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getSubquerySelectClauseRule());
+	        }
+       		set(
+       			$current, 
+       			"resultClause",
+        		lv_resultClause_3_0, 
+        		"SubqueryResultClause");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)?(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getSubquerySelectClauseAccess().getIntoClauseIntoClauseParserRuleCall_4_0()); 
+	    }
+		lv_intoClause_4_0=ruleIntoClause		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getSubquerySelectClauseRule());
 	        }
        		set(
        			$current, 
@@ -405,7 +621,72 @@ ruleResultClause returns [EObject current=null]
 	    }
 
 )
-))*)
+))*(
+	otherlv_4=KEYWORD_8
+    {
+    	newLeafNode(otherlv_4, grammarAccess.getResultClauseAccess().getCommaKeyword_3());
+    }
+)?)
+;
+
+
+
+
+
+// Entry rule entryRuleSubqueryResultClause
+entryRuleSubqueryResultClause returns [EObject current=null]
+	:
+	{ newCompositeNode(grammarAccess.getSubqueryResultClauseRule()); }
+	 iv_ruleSubqueryResultClause=ruleSubqueryResultClause 
+	 { $current=$iv_ruleSubqueryResultClause.current; } 
+	 EOF 
+;
+
+// Rule SubqueryResultClause
+ruleSubqueryResultClause returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+((
+(
+		lv_isDistinct_0_0=
+	KEYWORD_71
+    {
+        newLeafNode(lv_isDistinct_0_0, grammarAccess.getSubqueryResultClauseAccess().getIsDistinctDISTINCTKeyword_0_0());
+    }
+
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getSubqueryResultClauseRule());
+	        }
+       		setWithLastConsumed($current, "isDistinct", true, "DISTINCT");
+	    }
+
+)
+)?(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getSubqueryResultClauseAccess().getResultExpressionConditionalOrExpressionParserRuleCall_1_0()); 
+	    }
+		lv_resultExpression_1_0=ruleConditionalOrExpression		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getSubqueryResultClauseRule());
+	        }
+       		set(
+       			$current, 
+       			"resultExpression",
+        		lv_resultExpression_1_0, 
+        		"ConditionalOrExpression");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)(
+	otherlv_2=KEYWORD_8
+    {
+    	newLeafNode(otherlv_2, grammarAccess.getSubqueryResultClauseAccess().getCommaKeyword_2());
+    }
+)?)
 ;
 
 
@@ -610,6 +891,162 @@ ruleFromClause returns [EObject current=null]
     	newLeafNode(otherlv_3, grammarAccess.getFromClauseAccess().getSUBCLASSESKeyword_2_1());
     }
 )?)
+;
+
+
+
+
+
+// Entry rule entryRuleSubqueryFromClause
+entryRuleSubqueryFromClause returns [EObject current=null]
+	:
+	{ newCompositeNode(grammarAccess.getSubqueryFromClauseRule()); }
+	 iv_ruleSubqueryFromClause=ruleSubqueryFromClause 
+	 { $current=$iv_ruleSubqueryFromClause.current; } 
+	 EOF 
+;
+
+// Rule SubqueryFromClause
+ruleSubqueryFromClause returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(
+	otherlv_0=KEYWORD_34
+    {
+    	newLeafNode(otherlv_0, grammarAccess.getSubqueryFromClauseAccess().getFROMKeyword_0());
+    }
+((
+	otherlv_1=KEYWORD_41
+    {
+    	newLeafNode(otherlv_1, grammarAccess.getSubqueryFromClauseAccess().getThisKeyword_1_0_0());
+    }
+
+	otherlv_2=KEYWORD_10
+    {
+    	newLeafNode(otherlv_2, grammarAccess.getSubqueryFromClauseAccess().getFullStopKeyword_1_0_1());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getSubqueryFromClauseAccess().getFieldAccessExpressionFieldAccessExpressionParserRuleCall_1_0_2_0()); 
+	    }
+		lv_fieldAccessExpression_3_0=ruleFieldAccessExpression		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getSubqueryFromClauseRule());
+	        }
+       		set(
+       			$current, 
+       			"fieldAccessExpression",
+        		lv_fieldAccessExpression_3_0, 
+        		"FieldAccessExpression");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+))
+    |(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getSubqueryFromClauseAccess().getCandidateClassNameCandidateClassNameParserRuleCall_1_1_0()); 
+	    }
+		lv_candidateClassName_4_0=ruleCandidateClassName		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getSubqueryFromClauseRule());
+	        }
+       		set(
+       			$current, 
+       			"candidateClassName",
+        		lv_candidateClassName_4_0, 
+        		"CandidateClassName");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+))(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getSubqueryFromClauseAccess().getAliasAliasParserRuleCall_2_0()); 
+	    }
+		lv_alias_5_0=ruleAlias		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getSubqueryFromClauseRule());
+	        }
+       		set(
+       			$current, 
+       			"alias",
+        		lv_alias_5_0, 
+        		"Alias");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)?((
+(
+		lv_isExcludeSubclasses_6_0=
+	KEYWORD_63
+    {
+        newLeafNode(lv_isExcludeSubclasses_6_0, grammarAccess.getSubqueryFromClauseAccess().getIsExcludeSubclassesEXCLUDEKeyword_3_0_0());
+    }
+
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getSubqueryFromClauseRule());
+	        }
+       		setWithLastConsumed($current, "isExcludeSubclasses", true, "EXCLUDE");
+	    }
+
+)
+)
+	otherlv_7=KEYWORD_95
+    {
+    	newLeafNode(otherlv_7, grammarAccess.getSubqueryFromClauseAccess().getSUBCLASSESKeyword_3_1());
+    }
+)?)
+;
+
+
+
+
+
+// Entry rule entryRuleAlias
+entryRuleAlias returns [EObject current=null]
+	:
+	{ newCompositeNode(grammarAccess.getAliasRule()); }
+	 iv_ruleAlias=ruleAlias 
+	 { $current=$iv_ruleAlias.current; } 
+	 EOF 
+;
+
+// Rule Alias
+ruleAlias returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+((
+	otherlv_0=KEYWORD_23
+    {
+    	newLeafNode(otherlv_0, grammarAccess.getAliasAccess().getASKeyword_0());
+    }
+)?(
+(
+		lv_identifier_1_0=RULE_ID
+		{
+			newLeafNode(lv_identifier_1_0, grammarAccess.getAliasAccess().getIdentifierIDTerminalRuleCall_1_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getAliasRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"identifier",
+        		lv_identifier_1_0, 
+        		"ID");
+	    }
+
+)
+))
 ;
 
 
@@ -4933,12 +5370,12 @@ ruleParenthesesExpression returns [EObject current=null]
     {
     	newLeafNode(otherlv_0, grammarAccess.getParenthesesExpressionAccess().getLeftParenthesisKeyword_0());
     }
-
+(
 	{ 
 	  /* */ 
 	}
     { 
-        newCompositeNode(grammarAccess.getParenthesesExpressionAccess().getConditionalOrExpressionParserRuleCall_1()); 
+        newCompositeNode(grammarAccess.getParenthesesExpressionAccess().getConditionalOrExpressionParserRuleCall_1_0()); 
     }
     this_ConditionalOrExpression_1=ruleConditionalOrExpression
     {
@@ -4946,9 +5383,22 @@ ruleParenthesesExpression returns [EObject current=null]
         afterParserOrEnumRuleCall();
     }
 
-	otherlv_2=KEYWORD_5
+    |
+	{ 
+	  /* */ 
+	}
+    { 
+        newCompositeNode(grammarAccess.getParenthesesExpressionAccess().getSubqueryParserRuleCall_1_1()); 
+    }
+    this_Subquery_2=ruleSubquery
     {
-    	newLeafNode(otherlv_2, grammarAccess.getParenthesesExpressionAccess().getRightParenthesisKeyword_2());
+        $current = $this_Subquery_2.current;
+        afterParserOrEnumRuleCall();
+    }
+)
+	otherlv_3=KEYWORD_5
+    {
+    	newLeafNode(otherlv_3, grammarAccess.getParenthesesExpressionAccess().getRightParenthesisKeyword_2());
     }
 )
 ;

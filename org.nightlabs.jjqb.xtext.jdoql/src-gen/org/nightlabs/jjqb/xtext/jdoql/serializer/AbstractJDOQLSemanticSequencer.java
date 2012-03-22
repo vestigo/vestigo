@@ -14,6 +14,7 @@ import org.eclipse.xtext.serializer.sequencer.ISemanticSequencer;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
 import org.nightlabs.jjqb.xtext.jdoql.jDOQL.AdditionExpression;
+import org.nightlabs.jjqb.xtext.jdoql.jDOQL.Alias;
 import org.nightlabs.jjqb.xtext.jdoql.jDOQL.ComparisonOperatorExpression;
 import org.nightlabs.jjqb.xtext.jdoql.jDOQL.ConditionalAndExpression;
 import org.nightlabs.jjqb.xtext.jdoql.jDOQL.ConditionalOrExpression;
@@ -36,6 +37,9 @@ import org.nightlabs.jjqb.xtext.jdoql.jDOQL.SelectClause;
 import org.nightlabs.jjqb.xtext.jdoql.jDOQL.SimpleAndExpression;
 import org.nightlabs.jjqb.xtext.jdoql.jDOQL.SimpleOrExpression;
 import org.nightlabs.jjqb.xtext.jdoql.jDOQL.SingleStringJDOQL;
+import org.nightlabs.jjqb.xtext.jdoql.jDOQL.Subquery;
+import org.nightlabs.jjqb.xtext.jdoql.jDOQL.SubqueryFromClause;
+import org.nightlabs.jjqb.xtext.jdoql.jDOQL.SubqueryResultClause;
 import org.nightlabs.jjqb.xtext.jdoql.jDOQL.VariableDeclaration;
 import org.nightlabs.jjqb.xtext.jdoql.jDOQL.VariablesClause;
 import org.nightlabs.jjqb.xtext.jdoql.jDOQL.WhereClause;
@@ -96,6 +100,12 @@ public class AbstractJDOQLSemanticSequencer extends AbstractSemanticSequencer {
 				}
 				else if(context == grammarAccess.getResultSpecRule()) {
 					sequence_ResultSpec(context, (AdditionExpression) semanticObject); 
+					return; 
+				}
+				else break;
+			case JDOQLPackage.ALIAS:
+				if(context == grammarAccess.getAliasRule()) {
+					sequence_Alias(context, (Alias) semanticObject); 
 					return; 
 				}
 				else break;
@@ -323,6 +333,10 @@ public class AbstractJDOQLSemanticSequencer extends AbstractSemanticSequencer {
 					sequence_SelectClause(context, (SelectClause) semanticObject); 
 					return; 
 				}
+				else if(context == grammarAccess.getSubquerySelectClauseRule()) {
+					sequence_SubquerySelectClause(context, (SelectClause) semanticObject); 
+					return; 
+				}
 				else break;
 			case JDOQLPackage.SIMPLE_AND_EXPRESSION:
 				if(context == grammarAccess.getOrderBySpecRule()) {
@@ -380,6 +394,29 @@ public class AbstractJDOQLSemanticSequencer extends AbstractSemanticSequencer {
 					return; 
 				}
 				else break;
+			case JDOQLPackage.SUBQUERY:
+				if(context == grammarAccess.getFieldAccessExpressionRule() ||
+				   context == grammarAccess.getFieldAccessExpressionAccess().getFieldAccessExpressionLeftAction_1_1_0() ||
+				   context == grammarAccess.getFieldOrMethodExpressionRule() ||
+				   context == grammarAccess.getParameterOrFieldOrMethodExpressionRule() ||
+				   context == grammarAccess.getParenthesesExpressionRule() ||
+				   context == grammarAccess.getSubqueryRule()) {
+					sequence_Subquery(context, (Subquery) semanticObject); 
+					return; 
+				}
+				else break;
+			case JDOQLPackage.SUBQUERY_FROM_CLAUSE:
+				if(context == grammarAccess.getSubqueryFromClauseRule()) {
+					sequence_SubqueryFromClause(context, (SubqueryFromClause) semanticObject); 
+					return; 
+				}
+				else break;
+			case JDOQLPackage.SUBQUERY_RESULT_CLAUSE:
+				if(context == grammarAccess.getSubqueryResultClauseRule()) {
+					sequence_SubqueryResultClause(context, (SubqueryResultClause) semanticObject); 
+					return; 
+				}
+				else break;
 			case JDOQLPackage.VARIABLE_DECLARATION:
 				if(context == grammarAccess.getVariableDeclarationRule()) {
 					sequence_VariableDeclaration(context, (VariableDeclaration) semanticObject); 
@@ -408,6 +445,22 @@ public class AbstractJDOQLSemanticSequencer extends AbstractSemanticSequencer {
 	 */
 	protected void sequence_AdditionExpression(EObject context, AdditionExpression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     identifier=ID
+	 */
+	protected void sequence_Alias(EObject context, Alias semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, JDOQLPackage.Literals.ALIAS__IDENTIFIER) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JDOQLPackage.Literals.ALIAS__IDENTIFIER));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getAliasAccess().getIdentifierIDTerminalRuleCall_1_0(), semanticObject.getIdentifier());
+		feeder.finish();
 	}
 	
 	
@@ -860,6 +913,49 @@ public class AbstractJDOQLSemanticSequencer extends AbstractSemanticSequencer {
 	 *     )
 	 */
 	protected void sequence_StaticMethodExpression(EObject context, Expression semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     ((fieldAccessExpression=FieldAccessExpression | candidateClassName=CandidateClassName) alias=Alias? isExcludeSubclasses?='EXCLUDE'?)
+	 */
+	protected void sequence_SubqueryFromClause(EObject context, SubqueryFromClause semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (isDistinct?='DISTINCT'? resultExpression=ConditionalOrExpression)
+	 */
+	protected void sequence_SubqueryResultClause(EObject context, SubqueryResultClause semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (isUnique?='UNIQUE'? resultClause=SubqueryResultClause? intoClause=IntoClause?)
+	 */
+	protected void sequence_SubquerySelectClause(EObject context, SelectClause semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (
+	 *         selectClause=SubquerySelectClause 
+	 *         fromClause=SubqueryFromClause 
+	 *         whereClause=WhereClause? 
+	 *         variablesClause=VariablesClause? 
+	 *         parametersClause=ParametersClause? 
+	 *         importClause=ImportClause?
+	 *     )
+	 */
+	protected void sequence_Subquery(EObject context, Subquery semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

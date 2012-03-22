@@ -20,12 +20,29 @@ SingleStringJDOQL:
 	(rangeClause=RangeClause)?
 ;
 
+Subquery:
+	selectClause=SubquerySelectClause
+	fromClause=SubqueryFromClause
+	(whereClause=WhereClause)?
+	(variablesClause=VariablesClause)?
+	(parametersClause=ParametersClause)?
+	(importClause=ImportClause)?
+;
+
 SelectClause:
 	{SelectClause} 'SELECT' (isUnique?='UNIQUE')? (resultClause=ResultClause)? (intoClause=IntoClause)?
 ;
 
+SubquerySelectClause:
+	{SelectClause} 'SELECT' (isUnique?='UNIQUE')? (resultClause=SubqueryResultClause)? (intoClause=IntoClause)?
+;
+
 ResultClause:
-	(isDistinct?='DISTINCT')? resultSpecs+=ResultSpec (',' resultSpecs+=ResultSpec)*
+	(isDistinct?='DISTINCT')? resultSpecs+=ResultSpec (',' resultSpecs+=ResultSpec)* ','?
+;
+
+SubqueryResultClause:
+	(isDistinct?='DISTINCT')? resultExpression=ConditionalOrExpression ','?
 ;
 
 IntoClause:
@@ -42,6 +59,18 @@ ResultNaming:
 
 FromClause:
 	'FROM' candidateClassName=CandidateClassName (isExcludeSubclasses?='EXCLUDE' 'SUBCLASSES')?
+;
+
+SubqueryFromClause:
+	// The parser cannot differentiate between a candidate-class and a field-access. The only reason
+	// why we have to add the field-access-expression separately is that "this" otherwise is a key-word deemed
+	// at the wrong location. Hence we add it now explicitely to the right location ;-) Marco :-)
+	'FROM' ('this''.'fieldAccessExpression=FieldAccessExpression | candidateClassName=CandidateClassName)
+	(alias=Alias)? (isExcludeSubclasses?='EXCLUDE' 'SUBCLASSES')?
+;
+
+Alias:
+	'AS'? identifier=ID // in contrast to a ResultNaming, the 'AS' is optional here.
 ;
 
 WhereClause:
@@ -250,7 +279,7 @@ MethodExpression returns Expression:
 ;
 
 ParenthesesExpression returns Expression:
-	'(' ConditionalOrExpression ')'
+	'(' (ConditionalOrExpression | Subquery) ')'
 ;
 
 Type:

@@ -83,14 +83,29 @@ public class JDOQLAdapterFactory extends AdapterFactoryImpl
         return createSingleStringJDOQLAdapter();
       }
       @Override
+      public Adapter caseSubquery(Subquery object)
+      {
+        return createSubqueryAdapter();
+      }
+      @Override
       public Adapter caseSelectClause(SelectClause object)
       {
         return createSelectClauseAdapter();
       }
       @Override
+      public Adapter caseSubquerySelectClause(SubquerySelectClause object)
+      {
+        return createSubquerySelectClauseAdapter();
+      }
+      @Override
       public Adapter caseResultClause(ResultClause object)
       {
         return createResultClauseAdapter();
+      }
+      @Override
+      public Adapter caseSubqueryResultClause(SubqueryResultClause object)
+      {
+        return createSubqueryResultClauseAdapter();
       }
       @Override
       public Adapter caseIntoClause(IntoClause object)
@@ -111,6 +126,16 @@ public class JDOQLAdapterFactory extends AdapterFactoryImpl
       public Adapter caseFromClause(FromClause object)
       {
         return createFromClauseAdapter();
+      }
+      @Override
+      public Adapter caseSubqueryFromClause(SubqueryFromClause object)
+      {
+        return createSubqueryFromClauseAdapter();
+      }
+      @Override
+      public Adapter caseAlias(Alias object)
+      {
+        return createAliasAdapter();
       }
       @Override
       public Adapter caseWhereClause(WhereClause object)
@@ -250,6 +275,21 @@ public class JDOQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Subquery <em>Subquery</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.Subquery
+   * @generated
+   */
+  public Adapter createSubqueryAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SelectClause <em>Select Clause</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -265,6 +305,21 @@ public class JDOQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SubquerySelectClause <em>Subquery Select Clause</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.SubquerySelectClause
+   * @generated
+   */
+  public Adapter createSubquerySelectClauseAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.ResultClause <em>Result Clause</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -275,6 +330,21 @@ public class JDOQLAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createResultClauseAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SubqueryResultClause <em>Subquery Result Clause</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.SubqueryResultClause
+   * @generated
+   */
+  public Adapter createSubqueryResultClauseAdapter()
   {
     return null;
   }
@@ -335,6 +405,36 @@ public class JDOQLAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createFromClauseAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SubqueryFromClause <em>Subquery From Clause</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.SubqueryFromClause
+   * @generated
+   */
+  public Adapter createSubqueryFromClauseAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Alias <em>Alias</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.Alias
+   * @generated
+   */
+  public Adapter createAliasAdapter()
   {
     return null;
   }

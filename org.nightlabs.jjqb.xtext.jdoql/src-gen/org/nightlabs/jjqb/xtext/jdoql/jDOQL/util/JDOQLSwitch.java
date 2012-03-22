@@ -82,10 +82,28 @@ public class JDOQLSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case JDOQLPackage.SUBQUERY:
+      {
+        Subquery subquery = (Subquery)theEObject;
+        T result = caseSubquery(subquery);
+        if (result == null) result = caseExpression(subquery);
+        if (result == null) result = caseResultSpec(subquery);
+        if (result == null) result = caseOrderBySpec(subquery);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case JDOQLPackage.SELECT_CLAUSE:
       {
         SelectClause selectClause = (SelectClause)theEObject;
         T result = caseSelectClause(selectClause);
+        if (result == null) result = caseSubquerySelectClause(selectClause);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case JDOQLPackage.SUBQUERY_SELECT_CLAUSE:
+      {
+        SubquerySelectClause subquerySelectClause = (SubquerySelectClause)theEObject;
+        T result = caseSubquerySelectClause(subquerySelectClause);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -93,6 +111,13 @@ public class JDOQLSwitch<T> extends Switch<T>
       {
         ResultClause resultClause = (ResultClause)theEObject;
         T result = caseResultClause(resultClause);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case JDOQLPackage.SUBQUERY_RESULT_CLAUSE:
+      {
+        SubqueryResultClause subqueryResultClause = (SubqueryResultClause)theEObject;
+        T result = caseSubqueryResultClause(subqueryResultClause);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -121,6 +146,20 @@ public class JDOQLSwitch<T> extends Switch<T>
       {
         FromClause fromClause = (FromClause)theEObject;
         T result = caseFromClause(fromClause);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case JDOQLPackage.SUBQUERY_FROM_CLAUSE:
+      {
+        SubqueryFromClause subqueryFromClause = (SubqueryFromClause)theEObject;
+        T result = caseSubqueryFromClause(subqueryFromClause);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case JDOQLPackage.ALIAS:
+      {
+        Alias alias = (Alias)theEObject;
+        T result = caseAlias(alias);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -311,6 +350,22 @@ public class JDOQLSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Subquery</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Subquery</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSubquery(Subquery object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Select Clause</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -327,6 +382,22 @@ public class JDOQLSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Subquery Select Clause</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Subquery Select Clause</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSubquerySelectClause(SubquerySelectClause object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Result Clause</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -338,6 +409,22 @@ public class JDOQLSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseResultClause(ResultClause object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Subquery Result Clause</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Subquery Result Clause</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSubqueryResultClause(SubqueryResultClause object)
   {
     return null;
   }
@@ -402,6 +489,38 @@ public class JDOQLSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseFromClause(FromClause object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Subquery From Clause</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Subquery From Clause</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSubqueryFromClause(SubqueryFromClause object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Alias</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Alias</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAlias(Alias object)
   {
     return null;
   }

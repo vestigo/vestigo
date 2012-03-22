@@ -9,14 +9,13 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.nightlabs.jjqb.xtext.jdoql.jDOQL.IntoClause;
 import org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage;
-import org.nightlabs.jjqb.xtext.jdoql.jDOQL.ResultClause;
 import org.nightlabs.jjqb.xtext.jdoql.jDOQL.SelectClause;
 
 /**
@@ -34,7 +33,7 @@ import org.nightlabs.jjqb.xtext.jdoql.jDOQL.SelectClause;
  *
  * @generated
  */
-public class SelectClauseImpl extends MinimalEObjectImpl.Container implements SelectClause
+public class SelectClauseImpl extends SubquerySelectClauseImpl implements SelectClause
 {
   /**
    * The default value of the '{@link #isIsUnique() <em>Is Unique</em>}' attribute.
@@ -64,7 +63,7 @@ public class SelectClauseImpl extends MinimalEObjectImpl.Container implements Se
    * @generated
    * @ordered
    */
-  protected ResultClause resultClause;
+  protected EObject resultClause;
 
   /**
    * The cached value of the '{@link #getIntoClause() <em>Into Clause</em>}' containment reference.
@@ -125,7 +124,7 @@ public class SelectClauseImpl extends MinimalEObjectImpl.Container implements Se
    * <!-- end-user-doc -->
    * @generated
    */
-  public ResultClause getResultClause()
+  public EObject getResultClause()
   {
     return resultClause;
   }
@@ -135,9 +134,9 @@ public class SelectClauseImpl extends MinimalEObjectImpl.Container implements Se
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetResultClause(ResultClause newResultClause, NotificationChain msgs)
+  public NotificationChain basicSetResultClause(EObject newResultClause, NotificationChain msgs)
   {
-    ResultClause oldResultClause = resultClause;
+    EObject oldResultClause = resultClause;
     resultClause = newResultClause;
     if (eNotificationRequired())
     {
@@ -152,7 +151,7 @@ public class SelectClauseImpl extends MinimalEObjectImpl.Container implements Se
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setResultClause(ResultClause newResultClause)
+  public void setResultClause(EObject newResultClause)
   {
     if (newResultClause != resultClause)
     {
@@ -268,7 +267,7 @@ public class SelectClauseImpl extends MinimalEObjectImpl.Container implements Se
         setIsUnique((Boolean)newValue);
         return;
       case JDOQLPackage.SELECT_CLAUSE__RESULT_CLAUSE:
-        setResultClause((ResultClause)newValue);
+        setResultClause((EObject)newValue);
         return;
       case JDOQLPackage.SELECT_CLAUSE__INTO_CLAUSE:
         setIntoClause((IntoClause)newValue);
@@ -291,7 +290,7 @@ public class SelectClauseImpl extends MinimalEObjectImpl.Container implements Se
         setIsUnique(IS_UNIQUE_EDEFAULT);
         return;
       case JDOQLPackage.SELECT_CLAUSE__RESULT_CLAUSE:
-        setResultClause((ResultClause)null);
+        setResultClause((EObject)null);
         return;
       case JDOQLPackage.SELECT_CLAUSE__INTO_CLAUSE:
         setIntoClause((IntoClause)null);

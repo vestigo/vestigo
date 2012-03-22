@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.nightlabs.jjqb.xtext.jdoql.jDOQL.AdditionExpression;
 import org.nightlabs.jjqb.xtext.jdoql.jDOQL.AdditionOperator;
+import org.nightlabs.jjqb.xtext.jdoql.jDOQL.Alias;
 import org.nightlabs.jjqb.xtext.jdoql.jDOQL.ComparisonOperator;
 import org.nightlabs.jjqb.xtext.jdoql.jDOQL.ComparisonOperatorExpression;
 import org.nightlabs.jjqb.xtext.jdoql.jDOQL.ConditionalAndExpression;
@@ -43,6 +44,10 @@ import org.nightlabs.jjqb.xtext.jdoql.jDOQL.SelectClause;
 import org.nightlabs.jjqb.xtext.jdoql.jDOQL.SimpleAndExpression;
 import org.nightlabs.jjqb.xtext.jdoql.jDOQL.SimpleOrExpression;
 import org.nightlabs.jjqb.xtext.jdoql.jDOQL.SingleStringJDOQL;
+import org.nightlabs.jjqb.xtext.jdoql.jDOQL.Subquery;
+import org.nightlabs.jjqb.xtext.jdoql.jDOQL.SubqueryFromClause;
+import org.nightlabs.jjqb.xtext.jdoql.jDOQL.SubqueryResultClause;
+import org.nightlabs.jjqb.xtext.jdoql.jDOQL.SubquerySelectClause;
 import org.nightlabs.jjqb.xtext.jdoql.jDOQL.UnaryOperator;
 import org.nightlabs.jjqb.xtext.jdoql.jDOQL.VariableDeclaration;
 import org.nightlabs.jjqb.xtext.jdoql.jDOQL.VariablesClause;
@@ -68,6 +73,13 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass subqueryEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass selectClauseEClass = null;
 
   /**
@@ -75,7 +87,21 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass subquerySelectClauseEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass resultClauseEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass subqueryResultClauseEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -104,6 +130,20 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
    * @generated
    */
   private EClass fromClauseEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass subqueryFromClauseEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass aliasEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -448,6 +488,76 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getSubquery()
+  {
+    return subqueryEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getSubquery_SelectClause()
+  {
+    return (EReference)subqueryEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getSubquery_FromClause()
+  {
+    return (EReference)subqueryEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getSubquery_WhereClause()
+  {
+    return (EReference)subqueryEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getSubquery_VariablesClause()
+  {
+    return (EReference)subqueryEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getSubquery_ParametersClause()
+  {
+    return (EReference)subqueryEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getSubquery_ImportClause()
+  {
+    return (EReference)subqueryEClass.getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getSelectClause()
   {
     return selectClauseEClass;
@@ -488,6 +598,16 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getSubquerySelectClause()
+  {
+    return subquerySelectClauseEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getResultClause()
   {
     return resultClauseEClass;
@@ -511,6 +631,36 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
   public EReference getResultClause_ResultSpecs()
   {
     return (EReference)resultClauseEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getSubqueryResultClause()
+  {
+    return subqueryResultClauseEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getSubqueryResultClause_IsDistinct()
+  {
+    return (EAttribute)subqueryResultClauseEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getSubqueryResultClause_ResultExpression()
+  {
+    return (EReference)subqueryResultClauseEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -591,6 +741,76 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
   public EAttribute getFromClause_IsExcludeSubclasses()
   {
     return (EAttribute)fromClauseEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getSubqueryFromClause()
+  {
+    return subqueryFromClauseEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getSubqueryFromClause_FieldAccessExpression()
+  {
+    return (EReference)subqueryFromClauseEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getSubqueryFromClause_CandidateClassName()
+  {
+    return (EAttribute)subqueryFromClauseEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getSubqueryFromClause_Alias()
+  {
+    return (EReference)subqueryFromClauseEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getSubqueryFromClause_IsExcludeSubclasses()
+  {
+    return (EAttribute)subqueryFromClauseEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getAlias()
+  {
+    return aliasEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getAlias_Identifier()
+  {
+    return (EAttribute)aliasEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1108,9 +1328,9 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getExpression_Left()
+  public EClass getConditionalOrExpression()
   {
-    return (EReference)expressionEClass.getEStructuralFeatures().get(25);
+    return conditionalOrExpressionEClass;
   }
 
   /**
@@ -1118,9 +1338,9 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getConditionalOrExpression()
+  public EReference getConditionalOrExpression_Left()
   {
-    return conditionalOrExpressionEClass;
+    return (EReference)conditionalOrExpressionEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1138,9 +1358,29 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getConditionalAndExpression_Left()
+  {
+    return (EReference)conditionalAndExpressionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getSimpleOrExpression()
   {
     return simpleOrExpressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getSimpleOrExpression_Left()
+  {
+    return (EReference)simpleOrExpressionEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1158,6 +1398,16 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getSimpleAndExpression_Left()
+  {
+    return (EReference)simpleAndExpressionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getComparisonOperatorExpression()
   {
     return comparisonOperatorExpressionEClass;
@@ -1168,9 +1418,19 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getComparisonOperatorExpression_Left()
+  {
+    return (EReference)comparisonOperatorExpressionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EAttribute getComparisonOperatorExpression_Operator()
   {
-    return (EAttribute)comparisonOperatorExpressionEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)comparisonOperatorExpressionEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1188,9 +1448,19 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getAdditionExpression_Left()
+  {
+    return (EReference)additionExpressionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EAttribute getAdditionExpression_Operator()
   {
-    return (EAttribute)additionExpressionEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)additionExpressionEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1208,9 +1478,19 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getMultiplicationExpression_Left()
+  {
+    return (EReference)multiplicationExpressionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EAttribute getMultiplicationExpression_Operator()
   {
-    return (EAttribute)multiplicationExpressionEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)multiplicationExpressionEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1221,6 +1501,16 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
   public EClass getFieldAccessExpression()
   {
     return fieldAccessExpressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getFieldAccessExpression_Left()
+  {
+    return (EReference)fieldAccessExpressionEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1314,14 +1604,28 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
     createEReference(singleStringJDOQLEClass, SINGLE_STRING_JDOQL__ORDER_BY_CLAUSE);
     createEReference(singleStringJDOQLEClass, SINGLE_STRING_JDOQL__RANGE_CLAUSE);
 
+    subqueryEClass = createEClass(SUBQUERY);
+    createEReference(subqueryEClass, SUBQUERY__SELECT_CLAUSE);
+    createEReference(subqueryEClass, SUBQUERY__FROM_CLAUSE);
+    createEReference(subqueryEClass, SUBQUERY__WHERE_CLAUSE);
+    createEReference(subqueryEClass, SUBQUERY__VARIABLES_CLAUSE);
+    createEReference(subqueryEClass, SUBQUERY__PARAMETERS_CLAUSE);
+    createEReference(subqueryEClass, SUBQUERY__IMPORT_CLAUSE);
+
     selectClauseEClass = createEClass(SELECT_CLAUSE);
     createEAttribute(selectClauseEClass, SELECT_CLAUSE__IS_UNIQUE);
     createEReference(selectClauseEClass, SELECT_CLAUSE__RESULT_CLAUSE);
     createEReference(selectClauseEClass, SELECT_CLAUSE__INTO_CLAUSE);
 
+    subquerySelectClauseEClass = createEClass(SUBQUERY_SELECT_CLAUSE);
+
     resultClauseEClass = createEClass(RESULT_CLAUSE);
     createEAttribute(resultClauseEClass, RESULT_CLAUSE__IS_DISTINCT);
     createEReference(resultClauseEClass, RESULT_CLAUSE__RESULT_SPECS);
+
+    subqueryResultClauseEClass = createEClass(SUBQUERY_RESULT_CLAUSE);
+    createEAttribute(subqueryResultClauseEClass, SUBQUERY_RESULT_CLAUSE__IS_DISTINCT);
+    createEReference(subqueryResultClauseEClass, SUBQUERY_RESULT_CLAUSE__RESULT_EXPRESSION);
 
     intoClauseEClass = createEClass(INTO_CLAUSE);
     createEAttribute(intoClauseEClass, INTO_CLAUSE__RESULT_CLASS_NAME);
@@ -1334,6 +1638,15 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
     fromClauseEClass = createEClass(FROM_CLAUSE);
     createEAttribute(fromClauseEClass, FROM_CLAUSE__CANDIDATE_CLASS_NAME);
     createEAttribute(fromClauseEClass, FROM_CLAUSE__IS_EXCLUDE_SUBCLASSES);
+
+    subqueryFromClauseEClass = createEClass(SUBQUERY_FROM_CLAUSE);
+    createEReference(subqueryFromClauseEClass, SUBQUERY_FROM_CLAUSE__FIELD_ACCESS_EXPRESSION);
+    createEAttribute(subqueryFromClauseEClass, SUBQUERY_FROM_CLAUSE__CANDIDATE_CLASS_NAME);
+    createEReference(subqueryFromClauseEClass, SUBQUERY_FROM_CLAUSE__ALIAS);
+    createEAttribute(subqueryFromClauseEClass, SUBQUERY_FROM_CLAUSE__IS_EXCLUDE_SUBCLASSES);
+
+    aliasEClass = createEClass(ALIAS);
+    createEAttribute(aliasEClass, ALIAS__IDENTIFIER);
 
     whereClauseEClass = createEClass(WHERE_CLAUSE);
     createEReference(whereClauseEClass, WHERE_CLAUSE__FILTER);
@@ -1397,26 +1710,33 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
     createEReference(expressionEClass, EXPRESSION__REPLACEMENT);
     createEReference(expressionEClass, EXPRESSION__BEGIN_INDEX);
     createEReference(expressionEClass, EXPRESSION__END_INDEX);
-    createEReference(expressionEClass, EXPRESSION__LEFT);
 
     conditionalOrExpressionEClass = createEClass(CONDITIONAL_OR_EXPRESSION);
+    createEReference(conditionalOrExpressionEClass, CONDITIONAL_OR_EXPRESSION__LEFT);
 
     conditionalAndExpressionEClass = createEClass(CONDITIONAL_AND_EXPRESSION);
+    createEReference(conditionalAndExpressionEClass, CONDITIONAL_AND_EXPRESSION__LEFT);
 
     simpleOrExpressionEClass = createEClass(SIMPLE_OR_EXPRESSION);
+    createEReference(simpleOrExpressionEClass, SIMPLE_OR_EXPRESSION__LEFT);
 
     simpleAndExpressionEClass = createEClass(SIMPLE_AND_EXPRESSION);
+    createEReference(simpleAndExpressionEClass, SIMPLE_AND_EXPRESSION__LEFT);
 
     comparisonOperatorExpressionEClass = createEClass(COMPARISON_OPERATOR_EXPRESSION);
+    createEReference(comparisonOperatorExpressionEClass, COMPARISON_OPERATOR_EXPRESSION__LEFT);
     createEAttribute(comparisonOperatorExpressionEClass, COMPARISON_OPERATOR_EXPRESSION__OPERATOR);
 
     additionExpressionEClass = createEClass(ADDITION_EXPRESSION);
+    createEReference(additionExpressionEClass, ADDITION_EXPRESSION__LEFT);
     createEAttribute(additionExpressionEClass, ADDITION_EXPRESSION__OPERATOR);
 
     multiplicationExpressionEClass = createEClass(MULTIPLICATION_EXPRESSION);
+    createEReference(multiplicationExpressionEClass, MULTIPLICATION_EXPRESSION__LEFT);
     createEAttribute(multiplicationExpressionEClass, MULTIPLICATION_EXPRESSION__OPERATOR);
 
     fieldAccessExpressionEClass = createEClass(FIELD_ACCESS_EXPRESSION);
+    createEReference(fieldAccessExpressionEClass, FIELD_ACCESS_EXPRESSION__LEFT);
 
     // Create enums
     orderByDirectionEEnum = createEEnum(ORDER_BY_DIRECTION);
@@ -1455,6 +1775,8 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
     // Set bounds for type parameters
 
     // Add supertypes to classes
+    subqueryEClass.getESuperTypes().add(this.getExpression());
+    selectClauseEClass.getESuperTypes().add(this.getSubquerySelectClause());
     expressionEClass.getESuperTypes().add(this.getResultSpec());
     expressionEClass.getESuperTypes().add(this.getOrderBySpec());
     conditionalOrExpressionEClass.getESuperTypes().add(this.getExpression());
@@ -1478,14 +1800,28 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
     initEReference(getSingleStringJDOQL_OrderByClause(), this.getOrderByClause(), null, "orderByClause", null, 0, 1, SingleStringJDOQL.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getSingleStringJDOQL_RangeClause(), this.getRangeClause(), null, "rangeClause", null, 0, 1, SingleStringJDOQL.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+    initEClass(subqueryEClass, Subquery.class, "Subquery", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getSubquery_SelectClause(), this.getSubquerySelectClause(), null, "selectClause", null, 0, 1, Subquery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSubquery_FromClause(), this.getSubqueryFromClause(), null, "fromClause", null, 0, 1, Subquery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSubquery_WhereClause(), this.getWhereClause(), null, "whereClause", null, 0, 1, Subquery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSubquery_VariablesClause(), this.getVariablesClause(), null, "variablesClause", null, 0, 1, Subquery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSubquery_ParametersClause(), this.getParametersClause(), null, "parametersClause", null, 0, 1, Subquery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSubquery_ImportClause(), this.getImportClause(), null, "importClause", null, 0, 1, Subquery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
     initEClass(selectClauseEClass, SelectClause.class, "SelectClause", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getSelectClause_IsUnique(), ecorePackage.getEBoolean(), "isUnique", null, 0, 1, SelectClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getSelectClause_ResultClause(), this.getResultClause(), null, "resultClause", null, 0, 1, SelectClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSelectClause_ResultClause(), ecorePackage.getEObject(), null, "resultClause", null, 0, 1, SelectClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getSelectClause_IntoClause(), this.getIntoClause(), null, "intoClause", null, 0, 1, SelectClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(subquerySelectClauseEClass, SubquerySelectClause.class, "SubquerySelectClause", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(resultClauseEClass, ResultClause.class, "ResultClause", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getResultClause_IsDistinct(), ecorePackage.getEBoolean(), "isDistinct", null, 0, 1, ResultClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getResultClause_ResultSpecs(), this.getResultSpec(), null, "resultSpecs", null, 0, -1, ResultClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(subqueryResultClauseEClass, SubqueryResultClause.class, "SubqueryResultClause", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getSubqueryResultClause_IsDistinct(), ecorePackage.getEBoolean(), "isDistinct", null, 0, 1, SubqueryResultClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSubqueryResultClause_ResultExpression(), this.getExpression(), null, "resultExpression", null, 0, 1, SubqueryResultClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(intoClauseEClass, IntoClause.class, "IntoClause", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getIntoClause_ResultClassName(), ecorePackage.getEString(), "resultClassName", null, 0, 1, IntoClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1498,6 +1834,15 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
     initEClass(fromClauseEClass, FromClause.class, "FromClause", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getFromClause_CandidateClassName(), ecorePackage.getEString(), "candidateClassName", null, 0, 1, FromClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getFromClause_IsExcludeSubclasses(), ecorePackage.getEBoolean(), "isExcludeSubclasses", null, 0, 1, FromClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(subqueryFromClauseEClass, SubqueryFromClause.class, "SubqueryFromClause", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getSubqueryFromClause_FieldAccessExpression(), this.getExpression(), null, "fieldAccessExpression", null, 0, 1, SubqueryFromClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getSubqueryFromClause_CandidateClassName(), ecorePackage.getEString(), "candidateClassName", null, 0, 1, SubqueryFromClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSubqueryFromClause_Alias(), this.getAlias(), null, "alias", null, 0, 1, SubqueryFromClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getSubqueryFromClause_IsExcludeSubclasses(), ecorePackage.getEBoolean(), "isExcludeSubclasses", null, 0, 1, SubqueryFromClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(aliasEClass, Alias.class, "Alias", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getAlias_Identifier(), ecorePackage.getEString(), "identifier", null, 0, 1, Alias.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(whereClauseEClass, WhereClause.class, "WhereClause", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getWhereClause_Filter(), this.getExpression(), null, "filter", null, 0, 1, WhereClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1561,26 +1906,33 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
     initEReference(getExpression_Replacement(), this.getExpression(), null, "replacement", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getExpression_BeginIndex(), this.getExpression(), null, "beginIndex", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getExpression_EndIndex(), this.getExpression(), null, "endIndex", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getExpression_Left(), this.getExpression(), null, "left", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(conditionalOrExpressionEClass, ConditionalOrExpression.class, "ConditionalOrExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getConditionalOrExpression_Left(), this.getExpression(), null, "left", null, 0, 1, ConditionalOrExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(conditionalAndExpressionEClass, ConditionalAndExpression.class, "ConditionalAndExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getConditionalAndExpression_Left(), this.getExpression(), null, "left", null, 0, 1, ConditionalAndExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(simpleOrExpressionEClass, SimpleOrExpression.class, "SimpleOrExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getSimpleOrExpression_Left(), this.getExpression(), null, "left", null, 0, 1, SimpleOrExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(simpleAndExpressionEClass, SimpleAndExpression.class, "SimpleAndExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getSimpleAndExpression_Left(), this.getExpression(), null, "left", null, 0, 1, SimpleAndExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(comparisonOperatorExpressionEClass, ComparisonOperatorExpression.class, "ComparisonOperatorExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getComparisonOperatorExpression_Left(), this.getExpression(), null, "left", null, 0, 1, ComparisonOperatorExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getComparisonOperatorExpression_Operator(), this.getComparisonOperator(), "operator", null, 0, 1, ComparisonOperatorExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(additionExpressionEClass, AdditionExpression.class, "AdditionExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getAdditionExpression_Left(), this.getExpression(), null, "left", null, 0, 1, AdditionExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getAdditionExpression_Operator(), this.getAdditionOperator(), "operator", null, 0, 1, AdditionExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(multiplicationExpressionEClass, MultiplicationExpression.class, "MultiplicationExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getMultiplicationExpression_Left(), this.getExpression(), null, "left", null, 0, 1, MultiplicationExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getMultiplicationExpression_Operator(), this.getMultiplicationOperator(), "operator", null, 0, 1, MultiplicationExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(fieldAccessExpressionEClass, FieldAccessExpression.class, "FieldAccessExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getFieldAccessExpression_Left(), this.getExpression(), null, "left", null, 0, 1, FieldAccessExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Initialize enums and add enum literals
     initEEnum(orderByDirectionEEnum, OrderByDirection.class, "OrderByDirection");

@@ -35,6 +35,15 @@ public interface JDOQLFactory extends EFactory
   SingleStringJDOQL createSingleStringJDOQL();
 
   /**
+   * Returns a new object of class '<em>Subquery</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Subquery</em>'.
+   * @generated
+   */
+  Subquery createSubquery();
+
+  /**
    * Returns a new object of class '<em>Select Clause</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -44,6 +53,15 @@ public interface JDOQLFactory extends EFactory
   SelectClause createSelectClause();
 
   /**
+   * Returns a new object of class '<em>Subquery Select Clause</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Subquery Select Clause</em>'.
+   * @generated
+   */
+  SubquerySelectClause createSubquerySelectClause();
+
+  /**
    * Returns a new object of class '<em>Result Clause</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -51,6 +69,15 @@ public interface JDOQLFactory extends EFactory
    * @generated
    */
   ResultClause createResultClause();
+
+  /**
+   * Returns a new object of class '<em>Subquery Result Clause</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Subquery Result Clause</em>'.
+   * @generated
+   */
+  SubqueryResultClause createSubqueryResultClause();
 
   /**
    * Returns a new object of class '<em>Into Clause</em>'.
@@ -87,6 +114,24 @@ public interface JDOQLFactory extends EFactory
    * @generated
    */
   FromClause createFromClause();
+
+  /**
+   * Returns a new object of class '<em>Subquery From Clause</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Subquery From Clause</em>'.
+   * @generated
+   */
+  SubqueryFromClause createSubqueryFromClause();
+
+  /**
+   * Returns a new object of class '<em>Alias</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Alias</em>'.
+   * @generated
+   */
+  Alias createAlias();
 
   /**
    * Returns a new object of class '<em>Where Clause</em>'.

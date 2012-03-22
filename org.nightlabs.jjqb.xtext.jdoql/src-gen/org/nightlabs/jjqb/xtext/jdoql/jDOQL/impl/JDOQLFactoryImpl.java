@@ -69,12 +69,17 @@ public class JDOQLFactoryImpl extends EFactoryImpl implements JDOQLFactory
     switch (eClass.getClassifierID())
     {
       case JDOQLPackage.SINGLE_STRING_JDOQL: return createSingleStringJDOQL();
+      case JDOQLPackage.SUBQUERY: return createSubquery();
       case JDOQLPackage.SELECT_CLAUSE: return createSelectClause();
+      case JDOQLPackage.SUBQUERY_SELECT_CLAUSE: return createSubquerySelectClause();
       case JDOQLPackage.RESULT_CLAUSE: return createResultClause();
+      case JDOQLPackage.SUBQUERY_RESULT_CLAUSE: return createSubqueryResultClause();
       case JDOQLPackage.INTO_CLAUSE: return createIntoClause();
       case JDOQLPackage.RESULT_SPEC: return createResultSpec();
       case JDOQLPackage.RESULT_NAMING: return createResultNaming();
       case JDOQLPackage.FROM_CLAUSE: return createFromClause();
+      case JDOQLPackage.SUBQUERY_FROM_CLAUSE: return createSubqueryFromClause();
+      case JDOQLPackage.ALIAS: return createAlias();
       case JDOQLPackage.WHERE_CLAUSE: return createWhereClause();
       case JDOQLPackage.VARIABLES_CLAUSE: return createVariablesClause();
       case JDOQLPackage.VARIABLE_DECLARATION: return createVariableDeclaration();
@@ -166,6 +171,17 @@ public class JDOQLFactoryImpl extends EFactoryImpl implements JDOQLFactory
    * <!-- end-user-doc -->
    * @generated
    */
+  public Subquery createSubquery()
+  {
+    SubqueryImpl subquery = new SubqueryImpl();
+    return subquery;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public SelectClause createSelectClause()
   {
     SelectClauseImpl selectClause = new SelectClauseImpl();
@@ -177,10 +193,32 @@ public class JDOQLFactoryImpl extends EFactoryImpl implements JDOQLFactory
    * <!-- end-user-doc -->
    * @generated
    */
+  public SubquerySelectClause createSubquerySelectClause()
+  {
+    SubquerySelectClauseImpl subquerySelectClause = new SubquerySelectClauseImpl();
+    return subquerySelectClause;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public ResultClause createResultClause()
   {
     ResultClauseImpl resultClause = new ResultClauseImpl();
     return resultClause;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public SubqueryResultClause createSubqueryResultClause()
+  {
+    SubqueryResultClauseImpl subqueryResultClause = new SubqueryResultClauseImpl();
+    return subqueryResultClause;
   }
 
   /**
@@ -225,6 +263,28 @@ public class JDOQLFactoryImpl extends EFactoryImpl implements JDOQLFactory
   {
     FromClauseImpl fromClause = new FromClauseImpl();
     return fromClause;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public SubqueryFromClause createSubqueryFromClause()
+  {
+    SubqueryFromClauseImpl subqueryFromClause = new SubqueryFromClauseImpl();
+    return subqueryFromClause;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Alias createAlias()
+  {
+    AliasImpl alias = new AliasImpl();
+    return alias;
   }
 
   /**

@@ -51,7 +51,6 @@ import org.nightlabs.jjqb.xtext.jdoql.jDOQL.UnaryOperator;
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ExpressionImpl#getReplacement <em>Replacement</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ExpressionImpl#getBeginIndex <em>Begin Index</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ExpressionImpl#getEndIndex <em>End Index</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ExpressionImpl#getLeft <em>Left</em>}</li>
  * </ul>
  * </p>
  *
@@ -388,16 +387,6 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
    * @ordered
    */
   protected Expression endIndex;
-
-  /**
-   * The cached value of the '{@link #getLeft() <em>Left</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getLeft()
-   * @generated
-   * @ordered
-   */
-  protected Expression left;
 
   /**
    * <!-- begin-user-doc -->
@@ -1425,54 +1414,6 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
    * <!-- end-user-doc -->
    * @generated
    */
-  public Expression getLeft()
-  {
-    return left;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetLeft(Expression newLeft, NotificationChain msgs)
-  {
-    Expression oldLeft = left;
-    left = newLeft;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JDOQLPackage.EXPRESSION__LEFT, oldLeft, newLeft);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setLeft(Expression newLeft)
-  {
-    if (newLeft != left)
-    {
-      NotificationChain msgs = null;
-      if (left != null)
-        msgs = ((InternalEObject)left).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JDOQLPackage.EXPRESSION__LEFT, null, msgs);
-      if (newLeft != null)
-        msgs = ((InternalEObject)newLeft).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JDOQLPackage.EXPRESSION__LEFT, null, msgs);
-      msgs = basicSetLeft(newLeft, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, JDOQLPackage.EXPRESSION__LEFT, newLeft, newLeft));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -1512,8 +1453,6 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
         return basicSetBeginIndex(null, msgs);
       case JDOQLPackage.EXPRESSION__END_INDEX:
         return basicSetEndIndex(null, msgs);
-      case JDOQLPackage.EXPRESSION__LEFT:
-        return basicSetLeft(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -1578,8 +1517,6 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
         return getBeginIndex();
       case JDOQLPackage.EXPRESSION__END_INDEX:
         return getEndIndex();
-      case JDOQLPackage.EXPRESSION__LEFT:
-        return getLeft();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -1668,9 +1605,6 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
         return;
       case JDOQLPackage.EXPRESSION__END_INDEX:
         setEndIndex((Expression)newValue);
-        return;
-      case JDOQLPackage.EXPRESSION__LEFT:
-        setLeft((Expression)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -1761,9 +1695,6 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
       case JDOQLPackage.EXPRESSION__END_INDEX:
         setEndIndex((Expression)null);
         return;
-      case JDOQLPackage.EXPRESSION__LEFT:
-        setLeft((Expression)null);
-        return;
     }
     super.eUnset(featureID);
   }
@@ -1828,8 +1759,6 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
         return beginIndex != null;
       case JDOQLPackage.EXPRESSION__END_INDEX:
         return endIndex != null;
-      case JDOQLPackage.EXPRESSION__LEFT:
-        return left != null;
     }
     return super.eIsSet(featureID);
   }

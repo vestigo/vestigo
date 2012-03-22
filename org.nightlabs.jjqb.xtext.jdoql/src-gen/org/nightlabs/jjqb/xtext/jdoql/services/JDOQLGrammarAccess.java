@@ -105,6 +105,68 @@ public class JDOQLGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getRangeClauseRangeClauseParserRuleCall_8_0() { return cRangeClauseRangeClauseParserRuleCall_8_0; }
 	}
 
+	public class SubqueryElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Subquery");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cSelectClauseAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cSelectClauseSubquerySelectClauseParserRuleCall_0_0 = (RuleCall)cSelectClauseAssignment_0.eContents().get(0);
+		private final Assignment cFromClauseAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cFromClauseSubqueryFromClauseParserRuleCall_1_0 = (RuleCall)cFromClauseAssignment_1.eContents().get(0);
+		private final Assignment cWhereClauseAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cWhereClauseWhereClauseParserRuleCall_2_0 = (RuleCall)cWhereClauseAssignment_2.eContents().get(0);
+		private final Assignment cVariablesClauseAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cVariablesClauseVariablesClauseParserRuleCall_3_0 = (RuleCall)cVariablesClauseAssignment_3.eContents().get(0);
+		private final Assignment cParametersClauseAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cParametersClauseParametersClauseParserRuleCall_4_0 = (RuleCall)cParametersClauseAssignment_4.eContents().get(0);
+		private final Assignment cImportClauseAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cImportClauseImportClauseParserRuleCall_5_0 = (RuleCall)cImportClauseAssignment_5.eContents().get(0);
+		
+		//Subquery:
+		//	selectClause=SubquerySelectClause fromClause=SubqueryFromClause whereClause=WhereClause?
+		//	variablesClause=VariablesClause? parametersClause=ParametersClause? importClause=ImportClause?;
+		public ParserRule getRule() { return rule; }
+
+		//selectClause=SubquerySelectClause fromClause=SubqueryFromClause whereClause=WhereClause?
+		//variablesClause=VariablesClause? parametersClause=ParametersClause? importClause=ImportClause?
+		public Group getGroup() { return cGroup; }
+
+		//selectClause=SubquerySelectClause
+		public Assignment getSelectClauseAssignment_0() { return cSelectClauseAssignment_0; }
+
+		//SubquerySelectClause
+		public RuleCall getSelectClauseSubquerySelectClauseParserRuleCall_0_0() { return cSelectClauseSubquerySelectClauseParserRuleCall_0_0; }
+
+		//fromClause=SubqueryFromClause
+		public Assignment getFromClauseAssignment_1() { return cFromClauseAssignment_1; }
+
+		//SubqueryFromClause
+		public RuleCall getFromClauseSubqueryFromClauseParserRuleCall_1_0() { return cFromClauseSubqueryFromClauseParserRuleCall_1_0; }
+
+		//whereClause=WhereClause?
+		public Assignment getWhereClauseAssignment_2() { return cWhereClauseAssignment_2; }
+
+		//WhereClause
+		public RuleCall getWhereClauseWhereClauseParserRuleCall_2_0() { return cWhereClauseWhereClauseParserRuleCall_2_0; }
+
+		//variablesClause=VariablesClause?
+		public Assignment getVariablesClauseAssignment_3() { return cVariablesClauseAssignment_3; }
+
+		//VariablesClause
+		public RuleCall getVariablesClauseVariablesClauseParserRuleCall_3_0() { return cVariablesClauseVariablesClauseParserRuleCall_3_0; }
+
+		//parametersClause=ParametersClause?
+		public Assignment getParametersClauseAssignment_4() { return cParametersClauseAssignment_4; }
+
+		//ParametersClause
+		public RuleCall getParametersClauseParametersClauseParserRuleCall_4_0() { return cParametersClauseParametersClauseParserRuleCall_4_0; }
+
+		//importClause=ImportClause?
+		public Assignment getImportClauseAssignment_5() { return cImportClauseAssignment_5; }
+
+		//ImportClause
+		public RuleCall getImportClauseImportClauseParserRuleCall_5_0() { return cImportClauseImportClauseParserRuleCall_5_0; }
+	}
+
 	public class SelectClauseElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "SelectClause");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -149,6 +211,50 @@ public class JDOQLGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getIntoClauseIntoClauseParserRuleCall_4_0() { return cIntoClauseIntoClauseParserRuleCall_4_0; }
 	}
 
+	public class SubquerySelectClauseElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "SubquerySelectClause");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cSelectClauseAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cSELECTKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cIsUniqueAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final Keyword cIsUniqueUNIQUEKeyword_2_0 = (Keyword)cIsUniqueAssignment_2.eContents().get(0);
+		private final Assignment cResultClauseAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cResultClauseSubqueryResultClauseParserRuleCall_3_0 = (RuleCall)cResultClauseAssignment_3.eContents().get(0);
+		private final Assignment cIntoClauseAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cIntoClauseIntoClauseParserRuleCall_4_0 = (RuleCall)cIntoClauseAssignment_4.eContents().get(0);
+		
+		//SubquerySelectClause:
+		//	{SelectClause} "SELECT" isUnique?="UNIQUE"? resultClause=SubqueryResultClause? intoClause=IntoClause?;
+		public ParserRule getRule() { return rule; }
+
+		//{SelectClause} "SELECT" isUnique?="UNIQUE"? resultClause=SubqueryResultClause? intoClause=IntoClause?
+		public Group getGroup() { return cGroup; }
+
+		//{SelectClause}
+		public Action getSelectClauseAction_0() { return cSelectClauseAction_0; }
+
+		//"SELECT"
+		public Keyword getSELECTKeyword_1() { return cSELECTKeyword_1; }
+
+		//isUnique?="UNIQUE"?
+		public Assignment getIsUniqueAssignment_2() { return cIsUniqueAssignment_2; }
+
+		//"UNIQUE"
+		public Keyword getIsUniqueUNIQUEKeyword_2_0() { return cIsUniqueUNIQUEKeyword_2_0; }
+
+		//resultClause=SubqueryResultClause?
+		public Assignment getResultClauseAssignment_3() { return cResultClauseAssignment_3; }
+
+		//SubqueryResultClause
+		public RuleCall getResultClauseSubqueryResultClauseParserRuleCall_3_0() { return cResultClauseSubqueryResultClauseParserRuleCall_3_0; }
+
+		//intoClause=IntoClause?
+		public Assignment getIntoClauseAssignment_4() { return cIntoClauseAssignment_4; }
+
+		//IntoClause
+		public RuleCall getIntoClauseIntoClauseParserRuleCall_4_0() { return cIntoClauseIntoClauseParserRuleCall_4_0; }
+	}
+
 	public class ResultClauseElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ResultClause");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -160,12 +266,13 @@ public class JDOQLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cCommaKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
 		private final Assignment cResultSpecsAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
 		private final RuleCall cResultSpecsResultSpecParserRuleCall_2_1_0 = (RuleCall)cResultSpecsAssignment_2_1.eContents().get(0);
+		private final Keyword cCommaKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
 		//ResultClause:
-		//	isDistinct?="DISTINCT"? resultSpecs+=ResultSpec ("," resultSpecs+=ResultSpec)*;
+		//	isDistinct?="DISTINCT"? resultSpecs+=ResultSpec ("," resultSpecs+=ResultSpec)* ","?;
 		public ParserRule getRule() { return rule; }
 
-		//isDistinct?="DISTINCT"? resultSpecs+=ResultSpec ("," resultSpecs+=ResultSpec)*
+		//isDistinct?="DISTINCT"? resultSpecs+=ResultSpec ("," resultSpecs+=ResultSpec)* ","?
 		public Group getGroup() { return cGroup; }
 
 		//isDistinct?="DISTINCT"?
@@ -191,6 +298,41 @@ public class JDOQLGrammarAccess extends AbstractGrammarElementFinder {
 
 		//ResultSpec
 		public RuleCall getResultSpecsResultSpecParserRuleCall_2_1_0() { return cResultSpecsResultSpecParserRuleCall_2_1_0; }
+
+		//","?
+		public Keyword getCommaKeyword_3() { return cCommaKeyword_3; }
+	}
+
+	public class SubqueryResultClauseElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "SubqueryResultClause");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cIsDistinctAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final Keyword cIsDistinctDISTINCTKeyword_0_0 = (Keyword)cIsDistinctAssignment_0.eContents().get(0);
+		private final Assignment cResultExpressionAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cResultExpressionConditionalOrExpressionParserRuleCall_1_0 = (RuleCall)cResultExpressionAssignment_1.eContents().get(0);
+		private final Keyword cCommaKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		
+		//SubqueryResultClause:
+		//	isDistinct?="DISTINCT"? resultExpression=ConditionalOrExpression ","?;
+		public ParserRule getRule() { return rule; }
+
+		//isDistinct?="DISTINCT"? resultExpression=ConditionalOrExpression ","?
+		public Group getGroup() { return cGroup; }
+
+		//isDistinct?="DISTINCT"?
+		public Assignment getIsDistinctAssignment_0() { return cIsDistinctAssignment_0; }
+
+		//"DISTINCT"
+		public Keyword getIsDistinctDISTINCTKeyword_0_0() { return cIsDistinctDISTINCTKeyword_0_0; }
+
+		//resultExpression=ConditionalOrExpression
+		public Assignment getResultExpressionAssignment_1() { return cResultExpressionAssignment_1; }
+
+		//ConditionalOrExpression
+		public RuleCall getResultExpressionConditionalOrExpressionParserRuleCall_1_0() { return cResultExpressionConditionalOrExpressionParserRuleCall_1_0; }
+
+		//","?
+		public Keyword getCommaKeyword_2() { return cCommaKeyword_2; }
 	}
 
 	public class IntoClauseElements extends AbstractParserRuleElementFinder {
@@ -303,6 +445,116 @@ public class JDOQLGrammarAccess extends AbstractGrammarElementFinder {
 
 		//"SUBCLASSES"
 		public Keyword getSUBCLASSESKeyword_2_1() { return cSUBCLASSESKeyword_2_1; }
+	}
+
+	public class SubqueryFromClauseElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "SubqueryFromClause");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cFROMKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
+		private final Group cGroup_1_0 = (Group)cAlternatives_1.eContents().get(0);
+		private final Keyword cThisKeyword_1_0_0 = (Keyword)cGroup_1_0.eContents().get(0);
+		private final Keyword cFullStopKeyword_1_0_1 = (Keyword)cGroup_1_0.eContents().get(1);
+		private final Assignment cFieldAccessExpressionAssignment_1_0_2 = (Assignment)cGroup_1_0.eContents().get(2);
+		private final RuleCall cFieldAccessExpressionFieldAccessExpressionParserRuleCall_1_0_2_0 = (RuleCall)cFieldAccessExpressionAssignment_1_0_2.eContents().get(0);
+		private final Assignment cCandidateClassNameAssignment_1_1 = (Assignment)cAlternatives_1.eContents().get(1);
+		private final RuleCall cCandidateClassNameCandidateClassNameParserRuleCall_1_1_0 = (RuleCall)cCandidateClassNameAssignment_1_1.eContents().get(0);
+		private final Assignment cAliasAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cAliasAliasParserRuleCall_2_0 = (RuleCall)cAliasAssignment_2.eContents().get(0);
+		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
+		private final Assignment cIsExcludeSubclassesAssignment_3_0 = (Assignment)cGroup_3.eContents().get(0);
+		private final Keyword cIsExcludeSubclassesEXCLUDEKeyword_3_0_0 = (Keyword)cIsExcludeSubclassesAssignment_3_0.eContents().get(0);
+		private final Keyword cSUBCLASSESKeyword_3_1 = (Keyword)cGroup_3.eContents().get(1);
+		
+		//SubqueryFromClause: // The parser cannot differentiate between a candidate class and a field-access. The only reason
+		//// why we have to add the field-access-expression separately is that "this" otherwise is a key-word deemed
+		//// at the wrong location. Hence we add it now explicitely to the right location ;-) Marco :-)
+		//	"FROM" ("this" "." fieldAccessExpression=FieldAccessExpression | candidateClassName=CandidateClassName) alias=Alias?
+		//	(isExcludeSubclasses?="EXCLUDE" "SUBCLASSES")?;
+		public ParserRule getRule() { return rule; }
+
+		//// The parser cannot differentiate between a candidate class and a field-access. The only reason
+		//// why we have to add the field-access-expression separately is that "this" otherwise is a key-word deemed
+		//// at the wrong location. Hence we add it now explicitely to the right location ;-) Marco :-)
+		//"FROM" ("this" "." fieldAccessExpression=FieldAccessExpression | candidateClassName=CandidateClassName) alias=Alias?
+		//(isExcludeSubclasses?="EXCLUDE" "SUBCLASSES")?
+		public Group getGroup() { return cGroup; }
+
+		//// The parser cannot differentiate between a candidate class and a field-access. The only reason
+		//// why we have to add the field-access-expression separately is that "this" otherwise is a key-word deemed
+		//// at the wrong location. Hence we add it now explicitely to the right location ;-) Marco :-)
+		//"FROM"
+		public Keyword getFROMKeyword_0() { return cFROMKeyword_0; }
+
+		//"this" "." fieldAccessExpression=FieldAccessExpression | candidateClassName=CandidateClassName
+		public Alternatives getAlternatives_1() { return cAlternatives_1; }
+
+		//"this" "." fieldAccessExpression=FieldAccessExpression
+		public Group getGroup_1_0() { return cGroup_1_0; }
+
+		//"this"
+		public Keyword getThisKeyword_1_0_0() { return cThisKeyword_1_0_0; }
+
+		//"."
+		public Keyword getFullStopKeyword_1_0_1() { return cFullStopKeyword_1_0_1; }
+
+		//fieldAccessExpression=FieldAccessExpression
+		public Assignment getFieldAccessExpressionAssignment_1_0_2() { return cFieldAccessExpressionAssignment_1_0_2; }
+
+		//FieldAccessExpression
+		public RuleCall getFieldAccessExpressionFieldAccessExpressionParserRuleCall_1_0_2_0() { return cFieldAccessExpressionFieldAccessExpressionParserRuleCall_1_0_2_0; }
+
+		//candidateClassName=CandidateClassName
+		public Assignment getCandidateClassNameAssignment_1_1() { return cCandidateClassNameAssignment_1_1; }
+
+		//CandidateClassName
+		public RuleCall getCandidateClassNameCandidateClassNameParserRuleCall_1_1_0() { return cCandidateClassNameCandidateClassNameParserRuleCall_1_1_0; }
+
+		//alias=Alias?
+		public Assignment getAliasAssignment_2() { return cAliasAssignment_2; }
+
+		//Alias
+		public RuleCall getAliasAliasParserRuleCall_2_0() { return cAliasAliasParserRuleCall_2_0; }
+
+		//(isExcludeSubclasses?="EXCLUDE" "SUBCLASSES")?
+		public Group getGroup_3() { return cGroup_3; }
+
+		//isExcludeSubclasses?="EXCLUDE"
+		public Assignment getIsExcludeSubclassesAssignment_3_0() { return cIsExcludeSubclassesAssignment_3_0; }
+
+		//"EXCLUDE"
+		public Keyword getIsExcludeSubclassesEXCLUDEKeyword_3_0_0() { return cIsExcludeSubclassesEXCLUDEKeyword_3_0_0; }
+
+		//"SUBCLASSES"
+		public Keyword getSUBCLASSESKeyword_3_1() { return cSUBCLASSESKeyword_3_1; }
+	}
+
+	public class AliasElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Alias");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cASKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cIdentifierAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cIdentifierIDTerminalRuleCall_1_0 = (RuleCall)cIdentifierAssignment_1.eContents().get(0);
+		
+		//Alias:
+		//	"AS"? identifier= // in contrast to a ResultNaming, the 'AS' is optional here.
+		//	ID;
+		public ParserRule getRule() { return rule; }
+
+		//"AS"? identifier= // in contrast to a ResultNaming, the 'AS' is optional here.
+		//ID
+		public Group getGroup() { return cGroup; }
+
+		//"AS"?
+		public Keyword getASKeyword_0() { return cASKeyword_0; }
+
+		//identifier= // in contrast to a ResultNaming, the 'AS' is optional here.
+		//ID
+		public Assignment getIdentifierAssignment_1() { return cIdentifierAssignment_1; }
+
+		//// in contrast to a ResultNaming, the 'AS' is optional here.
+		//ID
+		public RuleCall getIdentifierIDTerminalRuleCall_1_0() { return cIdentifierIDTerminalRuleCall_1_0; }
 	}
 
 	public class WhereClauseElements extends AbstractParserRuleElementFinder {
@@ -3069,21 +3321,29 @@ public class JDOQLGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ParenthesesExpression");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cLeftParenthesisKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final RuleCall cConditionalOrExpressionParserRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
+		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
+		private final RuleCall cConditionalOrExpressionParserRuleCall_1_0 = (RuleCall)cAlternatives_1.eContents().get(0);
+		private final RuleCall cSubqueryParserRuleCall_1_1 = (RuleCall)cAlternatives_1.eContents().get(1);
 		private final Keyword cRightParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		
 		//ParenthesesExpression returns Expression:
-		//	"(" ConditionalOrExpression ")";
+		//	"(" (ConditionalOrExpression | Subquery) ")";
 		public ParserRule getRule() { return rule; }
 
-		//"(" ConditionalOrExpression ")"
+		//"(" (ConditionalOrExpression | Subquery) ")"
 		public Group getGroup() { return cGroup; }
 
 		//"("
 		public Keyword getLeftParenthesisKeyword_0() { return cLeftParenthesisKeyword_0; }
 
+		//ConditionalOrExpression | Subquery
+		public Alternatives getAlternatives_1() { return cAlternatives_1; }
+
 		//ConditionalOrExpression
-		public RuleCall getConditionalOrExpressionParserRuleCall_1() { return cConditionalOrExpressionParserRuleCall_1; }
+		public RuleCall getConditionalOrExpressionParserRuleCall_1_0() { return cConditionalOrExpressionParserRuleCall_1_0; }
+
+		//Subquery
+		public RuleCall getSubqueryParserRuleCall_1_1() { return cSubqueryParserRuleCall_1_1; }
 
 		//")"
 		public Keyword getRightParenthesisKeyword_2() { return cRightParenthesisKeyword_2; }
@@ -3689,12 +3949,17 @@ public class JDOQLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	private SingleStringJDOQLElements pSingleStringJDOQL;
+	private SubqueryElements pSubquery;
 	private SelectClauseElements pSelectClause;
+	private SubquerySelectClauseElements pSubquerySelectClause;
 	private ResultClauseElements pResultClause;
+	private SubqueryResultClauseElements pSubqueryResultClause;
 	private IntoClauseElements pIntoClause;
 	private ResultSpecElements pResultSpec;
 	private ResultNamingElements pResultNaming;
 	private FromClauseElements pFromClause;
+	private SubqueryFromClauseElements pSubqueryFromClause;
+	private AliasElements pAlias;
 	private WhereClauseElements pWhereClause;
 	private VariablesClauseElements pVariablesClause;
 	private VariableDeclarationElements pVariableDeclaration;
@@ -3776,6 +4041,17 @@ public class JDOQLGrammarAccess extends AbstractGrammarElementFinder {
 		return getSingleStringJDOQLAccess().getRule();
 	}
 
+	//Subquery:
+	//	selectClause=SubquerySelectClause fromClause=SubqueryFromClause whereClause=WhereClause?
+	//	variablesClause=VariablesClause? parametersClause=ParametersClause? importClause=ImportClause?;
+	public SubqueryElements getSubqueryAccess() {
+		return (pSubquery != null) ? pSubquery : (pSubquery = new SubqueryElements());
+	}
+	
+	public ParserRule getSubqueryRule() {
+		return getSubqueryAccess().getRule();
+	}
+
 	//SelectClause:
 	//	{SelectClause} "SELECT" isUnique?="UNIQUE"? resultClause=ResultClause? intoClause=IntoClause?;
 	public SelectClauseElements getSelectClauseAccess() {
@@ -3786,14 +4062,34 @@ public class JDOQLGrammarAccess extends AbstractGrammarElementFinder {
 		return getSelectClauseAccess().getRule();
 	}
 
+	//SubquerySelectClause:
+	//	{SelectClause} "SELECT" isUnique?="UNIQUE"? resultClause=SubqueryResultClause? intoClause=IntoClause?;
+	public SubquerySelectClauseElements getSubquerySelectClauseAccess() {
+		return (pSubquerySelectClause != null) ? pSubquerySelectClause : (pSubquerySelectClause = new SubquerySelectClauseElements());
+	}
+	
+	public ParserRule getSubquerySelectClauseRule() {
+		return getSubquerySelectClauseAccess().getRule();
+	}
+
 	//ResultClause:
-	//	isDistinct?="DISTINCT"? resultSpecs+=ResultSpec ("," resultSpecs+=ResultSpec)*;
+	//	isDistinct?="DISTINCT"? resultSpecs+=ResultSpec ("," resultSpecs+=ResultSpec)* ","?;
 	public ResultClauseElements getResultClauseAccess() {
 		return (pResultClause != null) ? pResultClause : (pResultClause = new ResultClauseElements());
 	}
 	
 	public ParserRule getResultClauseRule() {
 		return getResultClauseAccess().getRule();
+	}
+
+	//SubqueryResultClause:
+	//	isDistinct?="DISTINCT"? resultExpression=ConditionalOrExpression ","?;
+	public SubqueryResultClauseElements getSubqueryResultClauseAccess() {
+		return (pSubqueryResultClause != null) ? pSubqueryResultClause : (pSubqueryResultClause = new SubqueryResultClauseElements());
+	}
+	
+	public ParserRule getSubqueryResultClauseRule() {
+		return getSubqueryResultClauseAccess().getRule();
 	}
 
 	//IntoClause:
@@ -3834,6 +4130,30 @@ public class JDOQLGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getFromClauseRule() {
 		return getFromClauseAccess().getRule();
+	}
+
+	//SubqueryFromClause: // The parser cannot differentiate between a candidate class and a field-access. The only reason
+	//// why we have to add the field-access-expression separately is that "this" otherwise is a key-word deemed
+	//// at the wrong location. Hence we add it now explicitely to the right location ;-) Marco :-)
+	//	"FROM" ("this" "." fieldAccessExpression=FieldAccessExpression | candidateClassName=CandidateClassName) alias=Alias?
+	//	(isExcludeSubclasses?="EXCLUDE" "SUBCLASSES")?;
+	public SubqueryFromClauseElements getSubqueryFromClauseAccess() {
+		return (pSubqueryFromClause != null) ? pSubqueryFromClause : (pSubqueryFromClause = new SubqueryFromClauseElements());
+	}
+	
+	public ParserRule getSubqueryFromClauseRule() {
+		return getSubqueryFromClauseAccess().getRule();
+	}
+
+	//Alias:
+	//	"AS"? identifier= // in contrast to a ResultNaming, the 'AS' is optional here.
+	//	ID;
+	public AliasElements getAliasAccess() {
+		return (pAlias != null) ? pAlias : (pAlias = new AliasElements());
+	}
+	
+	public ParserRule getAliasRule() {
+		return getAliasAccess().getRule();
 	}
 
 	//WhereClause:
@@ -4178,7 +4498,7 @@ public class JDOQLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ParenthesesExpression returns Expression:
-	//	"(" ConditionalOrExpression ")";
+	//	"(" (ConditionalOrExpression | Subquery) ")";
 	public ParenthesesExpressionElements getParenthesesExpressionAccess() {
 		return (pParenthesesExpression != null) ? pParenthesesExpression : (pParenthesesExpression = new ParenthesesExpressionElements());
 	}

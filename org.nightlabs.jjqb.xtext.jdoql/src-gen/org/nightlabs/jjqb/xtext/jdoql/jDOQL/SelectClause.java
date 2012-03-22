@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface SelectClause extends EObject
+public interface SelectClause extends SubquerySelectClause
 {
   /**
    * Returns the value of the '<em><b>Is Unique</b></em>' attribute.
@@ -62,12 +62,12 @@ public interface SelectClause extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Result Clause</em>' containment reference.
-   * @see #setResultClause(ResultClause)
+   * @see #setResultClause(EObject)
    * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage#getSelectClause_ResultClause()
    * @model containment="true"
    * @generated
    */
-  ResultClause getResultClause();
+  EObject getResultClause();
 
   /**
    * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.SelectClause#getResultClause <em>Result Clause</em>}' containment reference.
@@ -77,7 +77,7 @@ public interface SelectClause extends EObject
    * @see #getResultClause()
    * @generated
    */
-  void setResultClause(ResultClause value);
+  void setResultClause(EObject value);
 
   /**
    * Returns the value of the '<em><b>Into Clause</b></em>' containment reference.
