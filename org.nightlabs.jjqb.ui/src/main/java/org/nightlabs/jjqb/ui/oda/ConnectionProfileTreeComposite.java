@@ -49,14 +49,14 @@ public class ConnectionProfileTreeComposite extends Composite implements ISelect
 		String connectionProfileInstanceID = QueryEditorManager.getGlobalProperties().getProperty(QueryEditorManager.PROPERTY_LAST_CONNECTION_PROFILE_INSTANCE_ID);
 		if (connectionProfileInstanceID != null) {
 			IConnectionProfile profile = ProfileManager.getInstance().getProfileByInstanceID(connectionProfileInstanceID);
-			setSelection(new StructuredSelection(profile));
+			setSelection(profile == null ? StructuredSelection.EMPTY : new StructuredSelection(profile));
 		}
 	}
 
 	private void populateTreeViewer()
 	{
 		Object[] elements = contentProvider.getElements(ProfileManager.getInstance().getRootCategories());
-		while (elements.length == 1)
+		while (elements.length == 1 && contentProvider.hasChildren(elements[0]))
 			elements = contentProvider.getChildren(elements[0]);
 
 		treeViewer.setInput(elements);

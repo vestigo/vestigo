@@ -3,7 +3,7 @@ package org.nightlabs.jjqb.ui.newwizard;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.datatools.connectivity.IConnectionProfile;
-import org.eclipse.jface.dialogs.ErrorDialog;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
@@ -12,18 +12,18 @@ import org.eclipse.ui.IEditorDescriptor;
 import org.eclipse.ui.IEditorRegistry;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
-import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.dialogs.WizardNewFileCreationPage;
-import org.eclipse.ui.internal.ide.DialogUtil;
-import org.eclipse.ui.internal.wizards.newresource.ResourceMessages;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.wizards.newresource.BasicNewFileResourceWizard;
 import org.nightlabs.jjqb.ui.editor.QueryEditorInput;
 import org.nightlabs.jjqb.ui.oda.QueryFileExtensionRegistry;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class NewQueryWizard
 extends BasicNewFileResourceWizard
 {
+	private static final Logger logger = LoggerFactory.getLogger(NewQueryWizard.class);
 	private SelectConnectionProfilePage selectConnectionProfilePage;
 	private WizardNewFileCreationPage wizardNewFileCreationPage;
 
@@ -90,15 +90,18 @@ extends BasicNewFileResourceWizard
 					String editorID = descriptor.getId();
 
 					page.openEditor(
-							new QueryEditorInput(connectionProfile, new FileEditorInput(file)),
+							QueryEditorInput.Helper.createQueryEditorInput(connectionProfile, new FileEditorInput(file)),
 							editorID
 					);
 				}
 			}
-		} catch (PartInitException e) {
-			DialogUtil.openError(dw == null ? null : dw.getShell(), ResourceMessages.FileResource_errorMessage, e.getMessage(), e);
-		} catch (CoreException e) {
-			ErrorDialog.openError(dw == null ? null : dw.getShell(), ResourceMessages.FileResource_errorMessage, e.getMessage(), e.getStatus());
+		} catch (Exception e) {
+			logger.error("performFinish: " + e, e);
+			MessageDialog.openError(
+					(dw == null ? null : dw.getShell()),
+					"Opening editor failed!",
+					String.format("Could not open editor for file \"%s\": %s", file.getFullPath().toString(), e.toString())
+			);
 		}
 
 		return true;

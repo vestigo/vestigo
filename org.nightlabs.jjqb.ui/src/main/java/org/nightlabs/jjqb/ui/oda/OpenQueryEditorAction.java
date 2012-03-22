@@ -79,7 +79,7 @@ implements IObjectActionDelegate, IViewActionDelegate
 					String editorID = descriptor.getId();
 
 					workbenchPage.openEditor(
-							new QueryEditorInput(connectionProfile, new NonExistingStorageEditorInput("query", fileExtension)),
+							QueryEditorInput.Helper.createQueryEditorInput(connectionProfile, new NonExistingStorageEditorInput("query", fileExtension)),
 							editorID
 					);
 				} catch (Exception e) {

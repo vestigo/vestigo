@@ -84,7 +84,7 @@ public class CandidateClassView extends ViewPart
 			String editorID = descriptor.getId();
 
 			workbenchPage.openEditor(
-					new QueryEditorInput(connectionProfile, new NonExistingStorageEditorInput("query", fileExtension)), //$NON-NLS-1$
+					QueryEditorInput.Helper.createQueryEditorInput(connectionProfile, new NonExistingStorageEditorInput("query", fileExtension)), //$NON-NLS-1$
 					editorID
 			);
 		} catch (Exception e) {

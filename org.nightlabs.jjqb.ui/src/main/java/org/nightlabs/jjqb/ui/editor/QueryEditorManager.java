@@ -899,8 +899,8 @@ public abstract class QueryEditorManager
 
 		populateConnectionProfiles();
 		IEditorInput input = queryEditor.getEditorInput();
-		if (input instanceof QueryEditorInput) {
-			this.setODAConnectionProfile(((QueryEditorInput)input).getConnectionProfile());
+		if (input instanceof QueryStorageEditorInput) {
+			this.setODAConnectionProfile(((QueryStorageEditorInput)input).getConnectionProfile());
 		}
 
 		queryParameterManager.editorInputChanged();
