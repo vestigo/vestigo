@@ -36,8 +36,7 @@ import org.nightlabs.jjqb.xtext.jpql.jPQL.FromCollection;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.FromEntry;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.FromJoin;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.Function;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.GroupClause;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.GroupItem;
+import org.nightlabs.jjqb.xtext.jpql.jPQL.GroupByClause;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.HavingClause;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.InExpression;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.InQueryExpression;
@@ -55,14 +54,14 @@ import org.nightlabs.jjqb.xtext.jpql.jPQL.MinAggregate;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.NullComparisonExpression;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.NullExpression;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.OrExpression;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.OrderClause;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.OrderItem;
+import org.nightlabs.jjqb.xtext.jpql.jPQL.OrderByClause;
+import org.nightlabs.jjqb.xtext.jpql.jPQL.OrderByDirection;
+import org.nightlabs.jjqb.xtext.jpql.jPQL.OrderBySpec;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.ParameterExpression;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.SelectAggregateExpression;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.SelectClause;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.SelectConstructorExpression;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.SelectExpression;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.SelectFromClause;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.SelectStatement;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.SetClause;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.SomeExpression;
@@ -103,14 +102,7 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass groupClauseEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass groupItemEClass = null;
+  private EClass groupByClauseEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -124,14 +116,14 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass orderClauseEClass = null;
+  private EClass orderByClauseEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass orderItemEClass = null;
+  private EClass orderBySpecEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -174,13 +166,6 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
    * @generated
    */
   private EClass deleteClauseEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass selectFromClauseEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -502,6 +487,13 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EEnum orderByDirectionEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EEnum comparisonOperatorEEnum = null;
 
   /**
@@ -602,7 +594,7 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getSelectStatement_SelectFromClause()
+  public EReference getSelectStatement_SelectClause()
   {
     return (EReference)selectStatementEClass.getEStructuralFeatures().get(0);
   }
@@ -612,7 +604,7 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getSelectStatement_GroupBy()
+  public EReference getSelectStatement_FromClause()
   {
     return (EReference)selectStatementEClass.getEStructuralFeatures().get(1);
   }
@@ -622,7 +614,7 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getSelectStatement_Having()
+  public EReference getSelectStatement_GroupByClause()
   {
     return (EReference)selectStatementEClass.getEStructuralFeatures().get(2);
   }
@@ -632,7 +624,7 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getSelectStatement_Order()
+  public EReference getSelectStatement_OrderByClause()
   {
     return (EReference)selectStatementEClass.getEStructuralFeatures().get(3);
   }
@@ -642,9 +634,9 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getGroupClause()
+  public EClass getGroupByClause()
   {
-    return groupClauseEClass;
+    return groupByClauseEClass;
   }
 
   /**
@@ -652,9 +644,9 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getGroupClause_Grouping()
+  public EReference getGroupByClause_Grouping()
   {
-    return (EReference)groupClauseEClass.getEStructuralFeatures().get(0);
+    return (EReference)groupByClauseEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -662,19 +654,9 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getGroupItem()
+  public EReference getGroupByClause_HavingClause()
   {
-    return groupItemEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getGroupItem_Var()
-  {
-    return (EReference)groupItemEClass.getEStructuralFeatures().get(0);
+    return (EReference)groupByClauseEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -702,9 +684,9 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getOrderClause()
+  public EClass getOrderByClause()
   {
-    return orderClauseEClass;
+    return orderByClauseEClass;
   }
 
   /**
@@ -712,9 +694,9 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getOrderClause_Ordering()
+  public EReference getOrderByClause_Ordering()
   {
-    return (EReference)orderClauseEClass.getEStructuralFeatures().get(0);
+    return (EReference)orderByClauseEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -722,39 +704,9 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getOrderClause_IsAsc()
+  public EClass getOrderBySpec()
   {
-    return (EAttribute)orderClauseEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getOrderClause_IsDesc()
-  {
-    return (EAttribute)orderClauseEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getOrderItem()
-  {
-    return orderItemEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getOrderItem_Var()
-  {
-    return (EReference)orderItemEClass.getEStructuralFeatures().get(0);
+    return orderBySpecEClass;
   }
 
   /**
@@ -895,36 +847,6 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
   public EReference getDeleteClause_FromClause()
   {
     return (EReference)deleteClauseEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getSelectFromClause()
-  {
-    return selectFromClauseEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getSelectFromClause_SelectClause()
-  {
-    return (EReference)selectFromClauseEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getSelectFromClause_FromClause()
-  {
-    return (EReference)selectFromClauseEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1312,7 +1234,7 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getComparisonOperatorExpression_Lhs()
+  public EReference getComparisonOperatorExpression_Left()
   {
     return (EReference)comparisonOperatorExpressionEClass.getEStructuralFeatures().get(0);
   }
@@ -1332,7 +1254,7 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getComparisonOperatorExpression_Rhs()
+  public EReference getComparisonOperatorExpression_Right()
   {
     return (EReference)comparisonOperatorExpressionEClass.getEStructuralFeatures().get(2);
   }
@@ -1362,7 +1284,7 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getExistsExpression_Query()
+  public EReference getExistsExpression_Right()
   {
     return (EReference)existsExpressionEClass.getEStructuralFeatures().get(1);
   }
@@ -1382,7 +1304,7 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getAllExpression_Query()
+  public EReference getAllExpression_Right()
   {
     return (EReference)allExpressionEClass.getEStructuralFeatures().get(0);
   }
@@ -1402,7 +1324,7 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getAnyExpression_Query()
+  public EReference getAnyExpression_Right()
   {
     return (EReference)anyExpressionEClass.getEStructuralFeatures().get(0);
   }
@@ -1422,7 +1344,7 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getSomeExpression_Query()
+  public EReference getSomeExpression_Right()
   {
     return (EReference)someExpressionEClass.getEStructuralFeatures().get(0);
   }
@@ -1442,7 +1364,7 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getCollectionExpression_Lhs()
+  public EReference getCollectionExpression_Left()
   {
     return (EReference)collectionExpressionEClass.getEStructuralFeatures().get(0);
   }
@@ -1462,7 +1384,7 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getCollectionExpression_Rhs()
+  public EReference getCollectionExpression_Right()
   {
     return (EReference)collectionExpressionEClass.getEStructuralFeatures().get(2);
   }
@@ -1482,7 +1404,7 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getNullComparisonExpression_Lhs()
+  public EReference getNullComparisonExpression_Left()
   {
     return (EReference)nullComparisonExpressionEClass.getEStructuralFeatures().get(0);
   }
@@ -1512,7 +1434,7 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getEmptyComparisonExpression_Lhs()
+  public EReference getEmptyComparisonExpression_Left()
   {
     return (EReference)emptyComparisonExpressionEClass.getEStructuralFeatures().get(0);
   }
@@ -1542,7 +1464,7 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getLikeExpression_Lhs()
+  public EReference getLikeExpression_Left()
   {
     return (EReference)likeExpressionEClass.getEStructuralFeatures().get(0);
   }
@@ -1562,7 +1484,7 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getLikeExpression_Pattern()
+  public EAttribute getLikeExpression_Right()
   {
     return (EAttribute)likeExpressionEClass.getEStructuralFeatures().get(2);
   }
@@ -1582,7 +1504,7 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getInExpression_Lhs()
+  public EReference getInExpression_Left()
   {
     return (EReference)inExpressionEClass.getEStructuralFeatures().get(0);
   }
@@ -1652,7 +1574,7 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getBetweenExpression_Lhs()
+  public EReference getBetweenExpression_Left()
   {
     return (EReference)betweenExpressionEClass.getEStructuralFeatures().get(0);
   }
@@ -1722,9 +1644,19 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getAliasAttributeExpression_Direction()
+  {
+    return (EAttribute)aliasAttributeExpressionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EReference getAliasAttributeExpression_Alias()
   {
-    return (EReference)aliasAttributeExpressionEClass.getEStructuralFeatures().get(0);
+    return (EReference)aliasAttributeExpressionEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1734,7 +1666,7 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
    */
   public EAttribute getAliasAttributeExpression_Attributes()
   {
-    return (EAttribute)aliasAttributeExpressionEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)aliasAttributeExpressionEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -1922,6 +1854,16 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EEnum getOrderByDirection()
+  {
+    return orderByDirectionEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EEnum getComparisonOperator()
   {
     return comparisonOperatorEEnum;
@@ -1961,27 +1903,22 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
     createEReference(jpqlQueryEClass, JPQL_QUERY__WHERE_CLAUSE);
 
     selectStatementEClass = createEClass(SELECT_STATEMENT);
-    createEReference(selectStatementEClass, SELECT_STATEMENT__SELECT_FROM_CLAUSE);
-    createEReference(selectStatementEClass, SELECT_STATEMENT__GROUP_BY);
-    createEReference(selectStatementEClass, SELECT_STATEMENT__HAVING);
-    createEReference(selectStatementEClass, SELECT_STATEMENT__ORDER);
+    createEReference(selectStatementEClass, SELECT_STATEMENT__SELECT_CLAUSE);
+    createEReference(selectStatementEClass, SELECT_STATEMENT__FROM_CLAUSE);
+    createEReference(selectStatementEClass, SELECT_STATEMENT__GROUP_BY_CLAUSE);
+    createEReference(selectStatementEClass, SELECT_STATEMENT__ORDER_BY_CLAUSE);
 
-    groupClauseEClass = createEClass(GROUP_CLAUSE);
-    createEReference(groupClauseEClass, GROUP_CLAUSE__GROUPING);
-
-    groupItemEClass = createEClass(GROUP_ITEM);
-    createEReference(groupItemEClass, GROUP_ITEM__VAR);
+    groupByClauseEClass = createEClass(GROUP_BY_CLAUSE);
+    createEReference(groupByClauseEClass, GROUP_BY_CLAUSE__GROUPING);
+    createEReference(groupByClauseEClass, GROUP_BY_CLAUSE__HAVING_CLAUSE);
 
     havingClauseEClass = createEClass(HAVING_CLAUSE);
     createEReference(havingClauseEClass, HAVING_CLAUSE__HAVING);
 
-    orderClauseEClass = createEClass(ORDER_CLAUSE);
-    createEReference(orderClauseEClass, ORDER_CLAUSE__ORDERING);
-    createEAttribute(orderClauseEClass, ORDER_CLAUSE__IS_ASC);
-    createEAttribute(orderClauseEClass, ORDER_CLAUSE__IS_DESC);
+    orderByClauseEClass = createEClass(ORDER_BY_CLAUSE);
+    createEReference(orderByClauseEClass, ORDER_BY_CLAUSE__ORDERING);
 
-    orderItemEClass = createEClass(ORDER_ITEM);
-    createEReference(orderItemEClass, ORDER_ITEM__VAR);
+    orderBySpecEClass = createEClass(ORDER_BY_SPEC);
 
     updateStatementEClass = createEClass(UPDATE_STATEMENT);
     createEReference(updateStatementEClass, UPDATE_STATEMENT__UPDATE_CLAUSE);
@@ -2002,10 +1939,6 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
 
     deleteClauseEClass = createEClass(DELETE_CLAUSE);
     createEReference(deleteClauseEClass, DELETE_CLAUSE__FROM_CLAUSE);
-
-    selectFromClauseEClass = createEClass(SELECT_FROM_CLAUSE);
-    createEReference(selectFromClauseEClass, SELECT_FROM_CLAUSE__SELECT_CLAUSE);
-    createEReference(selectFromClauseEClass, SELECT_FROM_CLAUSE__FROM_CLAUSE);
 
     selectClauseEClass = createEClass(SELECT_CLAUSE);
     createEAttribute(selectClauseEClass, SELECT_CLAUSE__IS_DISTINCT);
@@ -2065,43 +1998,43 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
     expressionEClass = createEClass(EXPRESSION);
 
     comparisonOperatorExpressionEClass = createEClass(COMPARISON_OPERATOR_EXPRESSION);
-    createEReference(comparisonOperatorExpressionEClass, COMPARISON_OPERATOR_EXPRESSION__LHS);
+    createEReference(comparisonOperatorExpressionEClass, COMPARISON_OPERATOR_EXPRESSION__LEFT);
     createEAttribute(comparisonOperatorExpressionEClass, COMPARISON_OPERATOR_EXPRESSION__OPERATOR);
-    createEReference(comparisonOperatorExpressionEClass, COMPARISON_OPERATOR_EXPRESSION__RHS);
+    createEReference(comparisonOperatorExpressionEClass, COMPARISON_OPERATOR_EXPRESSION__RIGHT);
 
     existsExpressionEClass = createEClass(EXISTS_EXPRESSION);
     createEAttribute(existsExpressionEClass, EXISTS_EXPRESSION__IS_NOT);
-    createEReference(existsExpressionEClass, EXISTS_EXPRESSION__QUERY);
+    createEReference(existsExpressionEClass, EXISTS_EXPRESSION__RIGHT);
 
     allExpressionEClass = createEClass(ALL_EXPRESSION);
-    createEReference(allExpressionEClass, ALL_EXPRESSION__QUERY);
+    createEReference(allExpressionEClass, ALL_EXPRESSION__RIGHT);
 
     anyExpressionEClass = createEClass(ANY_EXPRESSION);
-    createEReference(anyExpressionEClass, ANY_EXPRESSION__QUERY);
+    createEReference(anyExpressionEClass, ANY_EXPRESSION__RIGHT);
 
     someExpressionEClass = createEClass(SOME_EXPRESSION);
-    createEReference(someExpressionEClass, SOME_EXPRESSION__QUERY);
+    createEReference(someExpressionEClass, SOME_EXPRESSION__RIGHT);
 
     collectionExpressionEClass = createEClass(COLLECTION_EXPRESSION);
-    createEReference(collectionExpressionEClass, COLLECTION_EXPRESSION__LHS);
+    createEReference(collectionExpressionEClass, COLLECTION_EXPRESSION__LEFT);
     createEAttribute(collectionExpressionEClass, COLLECTION_EXPRESSION__IS_NOT);
-    createEReference(collectionExpressionEClass, COLLECTION_EXPRESSION__RHS);
+    createEReference(collectionExpressionEClass, COLLECTION_EXPRESSION__RIGHT);
 
     nullComparisonExpressionEClass = createEClass(NULL_COMPARISON_EXPRESSION);
-    createEReference(nullComparisonExpressionEClass, NULL_COMPARISON_EXPRESSION__LHS);
+    createEReference(nullComparisonExpressionEClass, NULL_COMPARISON_EXPRESSION__LEFT);
     createEAttribute(nullComparisonExpressionEClass, NULL_COMPARISON_EXPRESSION__IS_NOT);
 
     emptyComparisonExpressionEClass = createEClass(EMPTY_COMPARISON_EXPRESSION);
-    createEReference(emptyComparisonExpressionEClass, EMPTY_COMPARISON_EXPRESSION__LHS);
+    createEReference(emptyComparisonExpressionEClass, EMPTY_COMPARISON_EXPRESSION__LEFT);
     createEAttribute(emptyComparisonExpressionEClass, EMPTY_COMPARISON_EXPRESSION__IS_NOT);
 
     likeExpressionEClass = createEClass(LIKE_EXPRESSION);
-    createEReference(likeExpressionEClass, LIKE_EXPRESSION__LHS);
+    createEReference(likeExpressionEClass, LIKE_EXPRESSION__LEFT);
     createEAttribute(likeExpressionEClass, LIKE_EXPRESSION__IS_NOT);
-    createEAttribute(likeExpressionEClass, LIKE_EXPRESSION__PATTERN);
+    createEAttribute(likeExpressionEClass, LIKE_EXPRESSION__RIGHT);
 
     inExpressionEClass = createEClass(IN_EXPRESSION);
-    createEReference(inExpressionEClass, IN_EXPRESSION__LHS);
+    createEReference(inExpressionEClass, IN_EXPRESSION__LEFT);
     createEAttribute(inExpressionEClass, IN_EXPRESSION__IS_NOT);
 
     inSeqExpressionEClass = createEClass(IN_SEQ_EXPRESSION);
@@ -2111,7 +2044,7 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
     createEReference(inQueryExpressionEClass, IN_QUERY_EXPRESSION__QUERY);
 
     betweenExpressionEClass = createEClass(BETWEEN_EXPRESSION);
-    createEReference(betweenExpressionEClass, BETWEEN_EXPRESSION__LHS);
+    createEReference(betweenExpressionEClass, BETWEEN_EXPRESSION__LEFT);
     createEAttribute(betweenExpressionEClass, BETWEEN_EXPRESSION__IS_NOT);
     createEReference(betweenExpressionEClass, BETWEEN_EXPRESSION__MIN);
     createEReference(betweenExpressionEClass, BETWEEN_EXPRESSION__MAX);
@@ -2121,6 +2054,7 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
     expressionTermEClass = createEClass(EXPRESSION_TERM);
 
     aliasAttributeExpressionEClass = createEClass(ALIAS_ATTRIBUTE_EXPRESSION);
+    createEAttribute(aliasAttributeExpressionEClass, ALIAS_ATTRIBUTE_EXPRESSION__DIRECTION);
     createEReference(aliasAttributeExpressionEClass, ALIAS_ATTRIBUTE_EXPRESSION__ALIAS);
     createEAttribute(aliasAttributeExpressionEClass, ALIAS_ATTRIBUTE_EXPRESSION__ATTRIBUTES);
 
@@ -2152,6 +2086,7 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
     createEReference(andExpressionEClass, AND_EXPRESSION__ENTRIES);
 
     // Create enums
+    orderByDirectionEEnum = createEEnum(ORDER_BY_DIRECTION);
     comparisonOperatorEEnum = createEEnum(COMPARISON_OPERATOR);
   }
 
@@ -2215,6 +2150,7 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
     betweenExpressionEClass.getESuperTypes().add(this.getExpression());
     variableEClass.getESuperTypes().add(this.getExpressionTerm());
     expressionTermEClass.getESuperTypes().add(this.getExpression());
+    aliasAttributeExpressionEClass.getESuperTypes().add(this.getOrderBySpec());
     aliasAttributeExpressionEClass.getESuperTypes().add(this.getSelectExpression());
     aliasAttributeExpressionEClass.getESuperTypes().add(this.getVariable());
     parameterExpressionEClass.getESuperTypes().add(this.getVariable());
@@ -2231,27 +2167,22 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
     initEReference(getJPQLQuery_WhereClause(), this.getWhereClause(), null, "whereClause", null, 0, 1, JPQLQuery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(selectStatementEClass, SelectStatement.class, "SelectStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getSelectStatement_SelectFromClause(), this.getSelectFromClause(), null, "selectFromClause", null, 0, 1, SelectStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getSelectStatement_GroupBy(), this.getGroupClause(), null, "groupBy", null, 0, 1, SelectStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getSelectStatement_Having(), this.getHavingClause(), null, "having", null, 0, 1, SelectStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getSelectStatement_Order(), this.getOrderClause(), null, "order", null, 0, 1, SelectStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSelectStatement_SelectClause(), this.getSelectClause(), null, "selectClause", null, 0, 1, SelectStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSelectStatement_FromClause(), this.getFromClause(), null, "fromClause", null, 0, 1, SelectStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSelectStatement_GroupByClause(), this.getGroupByClause(), null, "groupByClause", null, 0, 1, SelectStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSelectStatement_OrderByClause(), this.getOrderByClause(), null, "orderByClause", null, 0, 1, SelectStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(groupClauseEClass, GroupClause.class, "GroupClause", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getGroupClause_Grouping(), this.getGroupItem(), null, "grouping", null, 0, -1, GroupClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(groupItemEClass, GroupItem.class, "GroupItem", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getGroupItem_Var(), this.getAliasAttributeExpression(), null, "var", null, 0, 1, GroupItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(groupByClauseEClass, GroupByClause.class, "GroupByClause", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getGroupByClause_Grouping(), this.getAliasAttributeExpression(), null, "grouping", null, 0, -1, GroupByClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getGroupByClause_HavingClause(), this.getHavingClause(), null, "havingClause", null, 0, 1, GroupByClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(havingClauseEClass, HavingClause.class, "HavingClause", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getHavingClause_Having(), this.getExpression(), null, "having", null, 0, 1, HavingClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(orderClauseEClass, OrderClause.class, "OrderClause", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getOrderClause_Ordering(), this.getOrderItem(), null, "ordering", null, 0, -1, OrderClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getOrderClause_IsAsc(), ecorePackage.getEBoolean(), "isAsc", null, 0, 1, OrderClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getOrderClause_IsDesc(), ecorePackage.getEBoolean(), "isDesc", null, 0, 1, OrderClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(orderByClauseEClass, OrderByClause.class, "OrderByClause", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getOrderByClause_Ordering(), this.getOrderBySpec(), null, "ordering", null, 0, -1, OrderByClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(orderItemEClass, OrderItem.class, "OrderItem", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getOrderItem_Var(), this.getAliasAttributeExpression(), null, "var", null, 0, 1, OrderItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(orderBySpecEClass, OrderBySpec.class, "OrderBySpec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(updateStatementEClass, UpdateStatement.class, "UpdateStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getUpdateStatement_UpdateClause(), this.getUpdateClause(), null, "updateClause", null, 0, 1, UpdateStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2272,10 +2203,6 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
 
     initEClass(deleteClauseEClass, DeleteClause.class, "DeleteClause", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getDeleteClause_FromClause(), this.getFromClause(), null, "fromClause", null, 0, 1, DeleteClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(selectFromClauseEClass, SelectFromClause.class, "SelectFromClause", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getSelectFromClause_SelectClause(), this.getSelectClause(), null, "selectClause", null, 0, 1, SelectFromClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getSelectFromClause_FromClause(), this.getFromClause(), null, "fromClause", null, 0, 1, SelectFromClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(selectClauseEClass, SelectClause.class, "SelectClause", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getSelectClause_IsDistinct(), ecorePackage.getEBoolean(), "isDistinct", null, 0, 1, SelectClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2335,43 +2262,43 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
     initEClass(expressionEClass, Expression.class, "Expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(comparisonOperatorExpressionEClass, ComparisonOperatorExpression.class, "ComparisonOperatorExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getComparisonOperatorExpression_Lhs(), this.getVariable(), null, "lhs", null, 0, 1, ComparisonOperatorExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getComparisonOperatorExpression_Left(), this.getVariable(), null, "left", null, 0, 1, ComparisonOperatorExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getComparisonOperatorExpression_Operator(), this.getComparisonOperator(), "operator", null, 0, 1, ComparisonOperatorExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getComparisonOperatorExpression_Rhs(), this.getExpressionTerm(), null, "rhs", null, 0, 1, ComparisonOperatorExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getComparisonOperatorExpression_Right(), this.getExpressionTerm(), null, "right", null, 0, 1, ComparisonOperatorExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(existsExpressionEClass, ExistsExpression.class, "ExistsExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getExistsExpression_IsNot(), ecorePackage.getEBoolean(), "isNot", null, 0, 1, ExistsExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getExistsExpression_Query(), this.getSelectStatement(), null, "query", null, 0, 1, ExistsExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getExistsExpression_Right(), this.getSelectStatement(), null, "right", null, 0, 1, ExistsExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(allExpressionEClass, AllExpression.class, "AllExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getAllExpression_Query(), this.getSelectStatement(), null, "query", null, 0, 1, AllExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAllExpression_Right(), this.getSelectStatement(), null, "right", null, 0, 1, AllExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(anyExpressionEClass, AnyExpression.class, "AnyExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getAnyExpression_Query(), this.getSelectStatement(), null, "query", null, 0, 1, AnyExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAnyExpression_Right(), this.getSelectStatement(), null, "right", null, 0, 1, AnyExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(someExpressionEClass, SomeExpression.class, "SomeExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getSomeExpression_Query(), this.getSelectStatement(), null, "query", null, 0, 1, SomeExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSomeExpression_Right(), this.getSelectStatement(), null, "right", null, 0, 1, SomeExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(collectionExpressionEClass, CollectionExpression.class, "CollectionExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getCollectionExpression_Lhs(), this.getVariable(), null, "lhs", null, 0, 1, CollectionExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCollectionExpression_Left(), this.getVariable(), null, "left", null, 0, 1, CollectionExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getCollectionExpression_IsNot(), ecorePackage.getEBoolean(), "isNot", null, 0, 1, CollectionExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getCollectionExpression_Rhs(), this.getAliasAttributeExpression(), null, "rhs", null, 0, 1, CollectionExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCollectionExpression_Right(), this.getAliasAttributeExpression(), null, "right", null, 0, 1, CollectionExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(nullComparisonExpressionEClass, NullComparisonExpression.class, "NullComparisonExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getNullComparisonExpression_Lhs(), this.getVariable(), null, "lhs", null, 0, 1, NullComparisonExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getNullComparisonExpression_Left(), this.getVariable(), null, "left", null, 0, 1, NullComparisonExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getNullComparisonExpression_IsNot(), ecorePackage.getEBoolean(), "isNot", null, 0, 1, NullComparisonExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(emptyComparisonExpressionEClass, EmptyComparisonExpression.class, "EmptyComparisonExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getEmptyComparisonExpression_Lhs(), this.getVariable(), null, "lhs", null, 0, 1, EmptyComparisonExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getEmptyComparisonExpression_Left(), this.getVariable(), null, "left", null, 0, 1, EmptyComparisonExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getEmptyComparisonExpression_IsNot(), ecorePackage.getEBoolean(), "isNot", null, 0, 1, EmptyComparisonExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(likeExpressionEClass, LikeExpression.class, "LikeExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getLikeExpression_Lhs(), this.getVariable(), null, "lhs", null, 0, 1, LikeExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getLikeExpression_Left(), this.getVariable(), null, "left", null, 0, 1, LikeExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getLikeExpression_IsNot(), ecorePackage.getEBoolean(), "isNot", null, 0, 1, LikeExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getLikeExpression_Pattern(), ecorePackage.getEString(), "pattern", null, 0, 1, LikeExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getLikeExpression_Right(), ecorePackage.getEString(), "right", null, 0, 1, LikeExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(inExpressionEClass, InExpression.class, "InExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getInExpression_Lhs(), this.getVariable(), null, "lhs", null, 0, 1, InExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getInExpression_Left(), this.getVariable(), null, "left", null, 0, 1, InExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getInExpression_IsNot(), ecorePackage.getEBoolean(), "isNot", null, 0, 1, InExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(inSeqExpressionEClass, InSeqExpression.class, "InSeqExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -2381,7 +2308,7 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
     initEReference(getInQueryExpression_Query(), this.getSelectStatement(), null, "query", null, 0, 1, InQueryExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(betweenExpressionEClass, BetweenExpression.class, "BetweenExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getBetweenExpression_Lhs(), this.getVariable(), null, "lhs", null, 0, 1, BetweenExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getBetweenExpression_Left(), this.getVariable(), null, "left", null, 0, 1, BetweenExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getBetweenExpression_IsNot(), ecorePackage.getEBoolean(), "isNot", null, 0, 1, BetweenExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getBetweenExpression_Min(), this.getValue(), null, "min", null, 0, 1, BetweenExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getBetweenExpression_Max(), this.getValue(), null, "max", null, 0, 1, BetweenExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2391,6 +2318,7 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
     initEClass(expressionTermEClass, ExpressionTerm.class, "ExpressionTerm", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(aliasAttributeExpressionEClass, AliasAttributeExpression.class, "AliasAttributeExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getAliasAttributeExpression_Direction(), this.getOrderByDirection(), "direction", null, 0, 1, AliasAttributeExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getAliasAttributeExpression_Alias(), this.getVariableDeclaration(), null, "alias", null, 0, 1, AliasAttributeExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getAliasAttributeExpression_Attributes(), ecorePackage.getEString(), "attributes", null, 0, -1, AliasAttributeExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -2422,6 +2350,10 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
     initEReference(getAndExpression_Entries(), this.getExpression(), null, "entries", null, 0, -1, AndExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Initialize enums and add enum literals
+    initEEnum(orderByDirectionEEnum, OrderByDirection.class, "OrderByDirection");
+    addEEnumLiteral(orderByDirectionEEnum, OrderByDirection.ASC);
+    addEEnumLiteral(orderByDirectionEEnum, OrderByDirection.DESC);
+
     initEEnum(comparisonOperatorEEnum, ComparisonOperator.class, "ComparisonOperator");
     addEEnumLiteral(comparisonOperatorEEnum, ComparisonOperator.LESS_THEN);
     addEEnumLiteral(comparisonOperatorEEnum, ComparisonOperator.GREATER_THEN);

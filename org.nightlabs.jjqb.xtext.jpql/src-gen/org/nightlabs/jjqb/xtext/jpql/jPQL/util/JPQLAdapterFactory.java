@@ -88,14 +88,9 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
         return createSelectStatementAdapter();
       }
       @Override
-      public Adapter caseGroupClause(GroupClause object)
+      public Adapter caseGroupByClause(GroupByClause object)
       {
-        return createGroupClauseAdapter();
-      }
-      @Override
-      public Adapter caseGroupItem(GroupItem object)
-      {
-        return createGroupItemAdapter();
+        return createGroupByClauseAdapter();
       }
       @Override
       public Adapter caseHavingClause(HavingClause object)
@@ -103,14 +98,14 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
         return createHavingClauseAdapter();
       }
       @Override
-      public Adapter caseOrderClause(OrderClause object)
+      public Adapter caseOrderByClause(OrderByClause object)
       {
-        return createOrderClauseAdapter();
+        return createOrderByClauseAdapter();
       }
       @Override
-      public Adapter caseOrderItem(OrderItem object)
+      public Adapter caseOrderBySpec(OrderBySpec object)
       {
-        return createOrderItemAdapter();
+        return createOrderBySpecAdapter();
       }
       @Override
       public Adapter caseUpdateStatement(UpdateStatement object)
@@ -141,11 +136,6 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
       public Adapter caseDeleteClause(DeleteClause object)
       {
         return createDeleteClauseAdapter();
-      }
-      @Override
-      public Adapter caseSelectFromClause(SelectFromClause object)
-      {
-        return createSelectFromClauseAdapter();
       }
       @Override
       public Adapter caseSelectClause(SelectClause object)
@@ -425,31 +415,16 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.GroupClause <em>Group Clause</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.GroupByClause <em>Group By Clause</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.GroupClause
+   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.GroupByClause
    * @generated
    */
-  public Adapter createGroupClauseAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.GroupItem <em>Group Item</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.GroupItem
-   * @generated
-   */
-  public Adapter createGroupItemAdapter()
+  public Adapter createGroupByClauseAdapter()
   {
     return null;
   }
@@ -470,31 +445,31 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.OrderClause <em>Order Clause</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.OrderByClause <em>Order By Clause</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.OrderClause
+   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.OrderByClause
    * @generated
    */
-  public Adapter createOrderClauseAdapter()
+  public Adapter createOrderByClauseAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.OrderItem <em>Order Item</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.OrderBySpec <em>Order By Spec</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.OrderItem
+   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.OrderBySpec
    * @generated
    */
-  public Adapter createOrderItemAdapter()
+  public Adapter createOrderBySpecAdapter()
   {
     return null;
   }
@@ -585,21 +560,6 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createDeleteClauseAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.SelectFromClause <em>Select From Clause</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.SelectFromClause
-   * @generated
-   */
-  public Adapter createSelectFromClauseAdapter()
   {
     return null;
   }

@@ -70,18 +70,16 @@ public class JPQLFactoryImpl extends EFactoryImpl implements JPQLFactory
     {
       case JPQLPackage.JPQL_QUERY: return createJPQLQuery();
       case JPQLPackage.SELECT_STATEMENT: return createSelectStatement();
-      case JPQLPackage.GROUP_CLAUSE: return createGroupClause();
-      case JPQLPackage.GROUP_ITEM: return createGroupItem();
+      case JPQLPackage.GROUP_BY_CLAUSE: return createGroupByClause();
       case JPQLPackage.HAVING_CLAUSE: return createHavingClause();
-      case JPQLPackage.ORDER_CLAUSE: return createOrderClause();
-      case JPQLPackage.ORDER_ITEM: return createOrderItem();
+      case JPQLPackage.ORDER_BY_CLAUSE: return createOrderByClause();
+      case JPQLPackage.ORDER_BY_SPEC: return createOrderBySpec();
       case JPQLPackage.UPDATE_STATEMENT: return createUpdateStatement();
       case JPQLPackage.UPDATE_CLAUSE: return createUpdateClause();
       case JPQLPackage.SET_CLAUSE: return createSetClause();
       case JPQLPackage.UPDATE_ITEM: return createUpdateItem();
       case JPQLPackage.DELETE_STATEMENT: return createDeleteStatement();
       case JPQLPackage.DELETE_CLAUSE: return createDeleteClause();
-      case JPQLPackage.SELECT_FROM_CLAUSE: return createSelectFromClause();
       case JPQLPackage.SELECT_CLAUSE: return createSelectClause();
       case JPQLPackage.SELECT_EXPRESSION: return createSelectExpression();
       case JPQLPackage.SELECT_AGGREGATE_EXPRESSION: return createSelectAggregateExpression();
@@ -142,6 +140,8 @@ public class JPQLFactoryImpl extends EFactoryImpl implements JPQLFactory
   {
     switch (eDataType.getClassifierID())
     {
+      case JPQLPackage.ORDER_BY_DIRECTION:
+        return createOrderByDirectionFromString(eDataType, initialValue);
       case JPQLPackage.COMPARISON_OPERATOR:
         return createComparisonOperatorFromString(eDataType, initialValue);
       default:
@@ -159,6 +159,8 @@ public class JPQLFactoryImpl extends EFactoryImpl implements JPQLFactory
   {
     switch (eDataType.getClassifierID())
     {
+      case JPQLPackage.ORDER_BY_DIRECTION:
+        return convertOrderByDirectionToString(eDataType, instanceValue);
       case JPQLPackage.COMPARISON_OPERATOR:
         return convertComparisonOperatorToString(eDataType, instanceValue);
       default:
@@ -193,21 +195,10 @@ public class JPQLFactoryImpl extends EFactoryImpl implements JPQLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public GroupClause createGroupClause()
+  public GroupByClause createGroupByClause()
   {
-    GroupClauseImpl groupClause = new GroupClauseImpl();
-    return groupClause;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public GroupItem createGroupItem()
-  {
-    GroupItemImpl groupItem = new GroupItemImpl();
-    return groupItem;
+    GroupByClauseImpl groupByClause = new GroupByClauseImpl();
+    return groupByClause;
   }
 
   /**
@@ -226,10 +217,10 @@ public class JPQLFactoryImpl extends EFactoryImpl implements JPQLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public OrderClause createOrderClause()
+  public OrderByClause createOrderByClause()
   {
-    OrderClauseImpl orderClause = new OrderClauseImpl();
-    return orderClause;
+    OrderByClauseImpl orderByClause = new OrderByClauseImpl();
+    return orderByClause;
   }
 
   /**
@@ -237,10 +228,10 @@ public class JPQLFactoryImpl extends EFactoryImpl implements JPQLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public OrderItem createOrderItem()
+  public OrderBySpec createOrderBySpec()
   {
-    OrderItemImpl orderItem = new OrderItemImpl();
-    return orderItem;
+    OrderBySpecImpl orderBySpec = new OrderBySpecImpl();
+    return orderBySpec;
   }
 
   /**
@@ -307,17 +298,6 @@ public class JPQLFactoryImpl extends EFactoryImpl implements JPQLFactory
   {
     DeleteClauseImpl deleteClause = new DeleteClauseImpl();
     return deleteClause;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public SelectFromClause createSelectFromClause()
-  {
-    SelectFromClauseImpl selectFromClause = new SelectFromClauseImpl();
-    return selectFromClause;
   }
 
   /**
@@ -813,6 +793,28 @@ public class JPQLFactoryImpl extends EFactoryImpl implements JPQLFactory
   {
     AndExpressionImpl andExpression = new AndExpressionImpl();
     return andExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public OrderByDirection createOrderByDirectionFromString(EDataType eDataType, String initialValue)
+  {
+    OrderByDirection result = OrderByDirection.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertOrderByDirectionToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
   }
 
   /**

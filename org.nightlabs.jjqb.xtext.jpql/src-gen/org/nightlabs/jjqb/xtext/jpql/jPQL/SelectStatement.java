@@ -14,10 +14,10 @@ package org.nightlabs.jjqb.xtext.jpql.jPQL;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.SelectStatement#getSelectFromClause <em>Select From Clause</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.SelectStatement#getGroupBy <em>Group By</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.SelectStatement#getHaving <em>Having</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.SelectStatement#getOrder <em>Order</em>}</li>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.SelectStatement#getSelectClause <em>Select Clause</em>}</li>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.SelectStatement#getFromClause <em>From Clause</em>}</li>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.SelectStatement#getGroupByClause <em>Group By Clause</em>}</li>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.SelectStatement#getOrderByClause <em>Order By Clause</em>}</li>
  * </ul>
  * </p>
  *
@@ -28,107 +28,107 @@ package org.nightlabs.jjqb.xtext.jpql.jPQL;
 public interface SelectStatement extends JPQLQuery, ExpressionTerm
 {
   /**
-   * Returns the value of the '<em><b>Select From Clause</b></em>' containment reference.
+   * Returns the value of the '<em><b>Select Clause</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Select From Clause</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Select Clause</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Select From Clause</em>' containment reference.
-   * @see #setSelectFromClause(SelectFromClause)
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getSelectStatement_SelectFromClause()
+   * @return the value of the '<em>Select Clause</em>' containment reference.
+   * @see #setSelectClause(SelectClause)
+   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getSelectStatement_SelectClause()
    * @model containment="true"
    * @generated
    */
-  SelectFromClause getSelectFromClause();
+  SelectClause getSelectClause();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.SelectStatement#getSelectFromClause <em>Select From Clause</em>}' containment reference.
+   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.SelectStatement#getSelectClause <em>Select Clause</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Select From Clause</em>' containment reference.
-   * @see #getSelectFromClause()
+   * @param value the new value of the '<em>Select Clause</em>' containment reference.
+   * @see #getSelectClause()
    * @generated
    */
-  void setSelectFromClause(SelectFromClause value);
+  void setSelectClause(SelectClause value);
 
   /**
-   * Returns the value of the '<em><b>Group By</b></em>' containment reference.
+   * Returns the value of the '<em><b>From Clause</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Group By</em>' containment reference isn't clear,
+   * If the meaning of the '<em>From Clause</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Group By</em>' containment reference.
-   * @see #setGroupBy(GroupClause)
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getSelectStatement_GroupBy()
+   * @return the value of the '<em>From Clause</em>' containment reference.
+   * @see #setFromClause(FromClause)
+   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getSelectStatement_FromClause()
    * @model containment="true"
    * @generated
    */
-  GroupClause getGroupBy();
+  FromClause getFromClause();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.SelectStatement#getGroupBy <em>Group By</em>}' containment reference.
+   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.SelectStatement#getFromClause <em>From Clause</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Group By</em>' containment reference.
-   * @see #getGroupBy()
+   * @param value the new value of the '<em>From Clause</em>' containment reference.
+   * @see #getFromClause()
    * @generated
    */
-  void setGroupBy(GroupClause value);
+  void setFromClause(FromClause value);
 
   /**
-   * Returns the value of the '<em><b>Having</b></em>' containment reference.
+   * Returns the value of the '<em><b>Group By Clause</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Having</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Group By Clause</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Having</em>' containment reference.
-   * @see #setHaving(HavingClause)
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getSelectStatement_Having()
+   * @return the value of the '<em>Group By Clause</em>' containment reference.
+   * @see #setGroupByClause(GroupByClause)
+   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getSelectStatement_GroupByClause()
    * @model containment="true"
    * @generated
    */
-  HavingClause getHaving();
+  GroupByClause getGroupByClause();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.SelectStatement#getHaving <em>Having</em>}' containment reference.
+   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.SelectStatement#getGroupByClause <em>Group By Clause</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Having</em>' containment reference.
-   * @see #getHaving()
+   * @param value the new value of the '<em>Group By Clause</em>' containment reference.
+   * @see #getGroupByClause()
    * @generated
    */
-  void setHaving(HavingClause value);
+  void setGroupByClause(GroupByClause value);
 
   /**
-   * Returns the value of the '<em><b>Order</b></em>' containment reference.
+   * Returns the value of the '<em><b>Order By Clause</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Order</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Order By Clause</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Order</em>' containment reference.
-   * @see #setOrder(OrderClause)
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getSelectStatement_Order()
+   * @return the value of the '<em>Order By Clause</em>' containment reference.
+   * @see #setOrderByClause(OrderByClause)
+   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getSelectStatement_OrderByClause()
    * @model containment="true"
    * @generated
    */
-  OrderClause getOrder();
+  OrderByClause getOrderByClause();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.SelectStatement#getOrder <em>Order</em>}' containment reference.
+   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.SelectStatement#getOrderByClause <em>Order By Clause</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Order</em>' containment reference.
-   * @see #getOrder()
+   * @param value the new value of the '<em>Order By Clause</em>' containment reference.
+   * @see #getOrderByClause()
    * @generated
    */
-  void setOrder(OrderClause value);
+  void setOrderByClause(OrderByClause value);
 
 } // SelectStatement

@@ -92,17 +92,10 @@ public class JPQLSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case JPQLPackage.GROUP_CLAUSE:
+      case JPQLPackage.GROUP_BY_CLAUSE:
       {
-        GroupClause groupClause = (GroupClause)theEObject;
-        T result = caseGroupClause(groupClause);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case JPQLPackage.GROUP_ITEM:
-      {
-        GroupItem groupItem = (GroupItem)theEObject;
-        T result = caseGroupItem(groupItem);
+        GroupByClause groupByClause = (GroupByClause)theEObject;
+        T result = caseGroupByClause(groupByClause);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -113,17 +106,17 @@ public class JPQLSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case JPQLPackage.ORDER_CLAUSE:
+      case JPQLPackage.ORDER_BY_CLAUSE:
       {
-        OrderClause orderClause = (OrderClause)theEObject;
-        T result = caseOrderClause(orderClause);
+        OrderByClause orderByClause = (OrderByClause)theEObject;
+        T result = caseOrderByClause(orderByClause);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case JPQLPackage.ORDER_ITEM:
+      case JPQLPackage.ORDER_BY_SPEC:
       {
-        OrderItem orderItem = (OrderItem)theEObject;
-        T result = caseOrderItem(orderItem);
+        OrderBySpec orderBySpec = (OrderBySpec)theEObject;
+        T result = caseOrderBySpec(orderBySpec);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -168,13 +161,6 @@ public class JPQLSwitch<T> extends Switch<T>
       {
         DeleteClause deleteClause = (DeleteClause)theEObject;
         T result = caseDeleteClause(deleteClause);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case JPQLPackage.SELECT_FROM_CLAUSE:
-      {
-        SelectFromClause selectFromClause = (SelectFromClause)theEObject;
-        T result = caseSelectFromClause(selectFromClause);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -462,6 +448,7 @@ public class JPQLSwitch<T> extends Switch<T>
       {
         AliasAttributeExpression aliasAttributeExpression = (AliasAttributeExpression)theEObject;
         T result = caseAliasAttributeExpression(aliasAttributeExpression);
+        if (result == null) result = caseOrderBySpec(aliasAttributeExpression);
         if (result == null) result = caseSelectExpression(aliasAttributeExpression);
         if (result == null) result = caseVariable(aliasAttributeExpression);
         if (result == null) result = caseExpressionTerm(aliasAttributeExpression);
@@ -593,33 +580,17 @@ public class JPQLSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Group Clause</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Group By Clause</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Group Clause</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Group By Clause</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseGroupClause(GroupClause object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Group Item</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Group Item</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseGroupItem(GroupItem object)
+  public T caseGroupByClause(GroupByClause object)
   {
     return null;
   }
@@ -641,33 +612,33 @@ public class JPQLSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Order Clause</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Order By Clause</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Order Clause</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Order By Clause</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseOrderClause(OrderClause object)
+  public T caseOrderByClause(OrderByClause object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Order Item</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Order By Spec</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Order Item</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Order By Spec</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseOrderItem(OrderItem object)
+  public T caseOrderBySpec(OrderBySpec object)
   {
     return null;
   }
@@ -764,22 +735,6 @@ public class JPQLSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseDeleteClause(DeleteClause object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Select From Clause</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Select From Clause</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseSelectFromClause(SelectFromClause object)
   {
     return null;
   }

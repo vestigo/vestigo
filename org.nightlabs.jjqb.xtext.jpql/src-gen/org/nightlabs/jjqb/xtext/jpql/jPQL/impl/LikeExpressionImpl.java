@@ -24,9 +24,9 @@ import org.nightlabs.jjqb.xtext.jpql.jPQL.Variable;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.LikeExpressionImpl#getLhs <em>Lhs</em>}</li>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.LikeExpressionImpl#getLeft <em>Left</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.LikeExpressionImpl#isIsNot <em>Is Not</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.LikeExpressionImpl#getPattern <em>Pattern</em>}</li>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.LikeExpressionImpl#getRight <em>Right</em>}</li>
  * </ul>
  * </p>
  *
@@ -35,14 +35,14 @@ import org.nightlabs.jjqb.xtext.jpql.jPQL.Variable;
 public class LikeExpressionImpl extends ExpressionImpl implements LikeExpression
 {
   /**
-   * The cached value of the '{@link #getLhs() <em>Lhs</em>}' containment reference.
+   * The cached value of the '{@link #getLeft() <em>Left</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getLhs()
+   * @see #getLeft()
    * @generated
    * @ordered
    */
-  protected Variable lhs;
+  protected Variable left;
 
   /**
    * The default value of the '{@link #isIsNot() <em>Is Not</em>}' attribute.
@@ -65,24 +65,24 @@ public class LikeExpressionImpl extends ExpressionImpl implements LikeExpression
   protected boolean isNot = IS_NOT_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getPattern() <em>Pattern</em>}' attribute.
+   * The default value of the '{@link #getRight() <em>Right</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getPattern()
+   * @see #getRight()
    * @generated
    * @ordered
    */
-  protected static final String PATTERN_EDEFAULT = null;
+  protected static final String RIGHT_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getPattern() <em>Pattern</em>}' attribute.
+   * The cached value of the '{@link #getRight() <em>Right</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getPattern()
+   * @see #getRight()
    * @generated
    * @ordered
    */
-  protected String pattern = PATTERN_EDEFAULT;
+  protected String right = RIGHT_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -110,9 +110,9 @@ public class LikeExpressionImpl extends ExpressionImpl implements LikeExpression
    * <!-- end-user-doc -->
    * @generated
    */
-  public Variable getLhs()
+  public Variable getLeft()
   {
-    return lhs;
+    return left;
   }
 
   /**
@@ -120,13 +120,13 @@ public class LikeExpressionImpl extends ExpressionImpl implements LikeExpression
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetLhs(Variable newLhs, NotificationChain msgs)
+  public NotificationChain basicSetLeft(Variable newLeft, NotificationChain msgs)
   {
-    Variable oldLhs = lhs;
-    lhs = newLhs;
+    Variable oldLeft = left;
+    left = newLeft;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JPQLPackage.LIKE_EXPRESSION__LHS, oldLhs, newLhs);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JPQLPackage.LIKE_EXPRESSION__LEFT, oldLeft, newLeft);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -137,20 +137,20 @@ public class LikeExpressionImpl extends ExpressionImpl implements LikeExpression
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setLhs(Variable newLhs)
+  public void setLeft(Variable newLeft)
   {
-    if (newLhs != lhs)
+    if (newLeft != left)
     {
       NotificationChain msgs = null;
-      if (lhs != null)
-        msgs = ((InternalEObject)lhs).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JPQLPackage.LIKE_EXPRESSION__LHS, null, msgs);
-      if (newLhs != null)
-        msgs = ((InternalEObject)newLhs).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JPQLPackage.LIKE_EXPRESSION__LHS, null, msgs);
-      msgs = basicSetLhs(newLhs, msgs);
+      if (left != null)
+        msgs = ((InternalEObject)left).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JPQLPackage.LIKE_EXPRESSION__LEFT, null, msgs);
+      if (newLeft != null)
+        msgs = ((InternalEObject)newLeft).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JPQLPackage.LIKE_EXPRESSION__LEFT, null, msgs);
+      msgs = basicSetLeft(newLeft, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, JPQLPackage.LIKE_EXPRESSION__LHS, newLhs, newLhs));
+      eNotify(new ENotificationImpl(this, Notification.SET, JPQLPackage.LIKE_EXPRESSION__LEFT, newLeft, newLeft));
   }
 
   /**
@@ -181,9 +181,9 @@ public class LikeExpressionImpl extends ExpressionImpl implements LikeExpression
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getPattern()
+  public String getRight()
   {
-    return pattern;
+    return right;
   }
 
   /**
@@ -191,12 +191,12 @@ public class LikeExpressionImpl extends ExpressionImpl implements LikeExpression
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setPattern(String newPattern)
+  public void setRight(String newRight)
   {
-    String oldPattern = pattern;
-    pattern = newPattern;
+    String oldRight = right;
+    right = newRight;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, JPQLPackage.LIKE_EXPRESSION__PATTERN, oldPattern, pattern));
+      eNotify(new ENotificationImpl(this, Notification.SET, JPQLPackage.LIKE_EXPRESSION__RIGHT, oldRight, right));
   }
 
   /**
@@ -209,8 +209,8 @@ public class LikeExpressionImpl extends ExpressionImpl implements LikeExpression
   {
     switch (featureID)
     {
-      case JPQLPackage.LIKE_EXPRESSION__LHS:
-        return basicSetLhs(null, msgs);
+      case JPQLPackage.LIKE_EXPRESSION__LEFT:
+        return basicSetLeft(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -225,12 +225,12 @@ public class LikeExpressionImpl extends ExpressionImpl implements LikeExpression
   {
     switch (featureID)
     {
-      case JPQLPackage.LIKE_EXPRESSION__LHS:
-        return getLhs();
+      case JPQLPackage.LIKE_EXPRESSION__LEFT:
+        return getLeft();
       case JPQLPackage.LIKE_EXPRESSION__IS_NOT:
         return isIsNot();
-      case JPQLPackage.LIKE_EXPRESSION__PATTERN:
-        return getPattern();
+      case JPQLPackage.LIKE_EXPRESSION__RIGHT:
+        return getRight();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -245,14 +245,14 @@ public class LikeExpressionImpl extends ExpressionImpl implements LikeExpression
   {
     switch (featureID)
     {
-      case JPQLPackage.LIKE_EXPRESSION__LHS:
-        setLhs((Variable)newValue);
+      case JPQLPackage.LIKE_EXPRESSION__LEFT:
+        setLeft((Variable)newValue);
         return;
       case JPQLPackage.LIKE_EXPRESSION__IS_NOT:
         setIsNot((Boolean)newValue);
         return;
-      case JPQLPackage.LIKE_EXPRESSION__PATTERN:
-        setPattern((String)newValue);
+      case JPQLPackage.LIKE_EXPRESSION__RIGHT:
+        setRight((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -268,14 +268,14 @@ public class LikeExpressionImpl extends ExpressionImpl implements LikeExpression
   {
     switch (featureID)
     {
-      case JPQLPackage.LIKE_EXPRESSION__LHS:
-        setLhs((Variable)null);
+      case JPQLPackage.LIKE_EXPRESSION__LEFT:
+        setLeft((Variable)null);
         return;
       case JPQLPackage.LIKE_EXPRESSION__IS_NOT:
         setIsNot(IS_NOT_EDEFAULT);
         return;
-      case JPQLPackage.LIKE_EXPRESSION__PATTERN:
-        setPattern(PATTERN_EDEFAULT);
+      case JPQLPackage.LIKE_EXPRESSION__RIGHT:
+        setRight(RIGHT_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -291,12 +291,12 @@ public class LikeExpressionImpl extends ExpressionImpl implements LikeExpression
   {
     switch (featureID)
     {
-      case JPQLPackage.LIKE_EXPRESSION__LHS:
-        return lhs != null;
+      case JPQLPackage.LIKE_EXPRESSION__LEFT:
+        return left != null;
       case JPQLPackage.LIKE_EXPRESSION__IS_NOT:
         return isNot != IS_NOT_EDEFAULT;
-      case JPQLPackage.LIKE_EXPRESSION__PATTERN:
-        return PATTERN_EDEFAULT == null ? pattern != null : !PATTERN_EDEFAULT.equals(pattern);
+      case JPQLPackage.LIKE_EXPRESSION__RIGHT:
+        return RIGHT_EDEFAULT == null ? right != null : !RIGHT_EDEFAULT.equals(right);
     }
     return super.eIsSet(featureID);
   }
@@ -314,8 +314,8 @@ public class LikeExpressionImpl extends ExpressionImpl implements LikeExpression
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (isNot: ");
     result.append(isNot);
-    result.append(", pattern: ");
-    result.append(pattern);
+    result.append(", right: ");
+    result.append(right);
     result.append(')');
     return result.toString();
   }

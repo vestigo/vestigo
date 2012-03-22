@@ -13,11 +13,11 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.nightlabs.jjqb.xtext.jpql.jPQL.GroupClause;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.HavingClause;
+import org.nightlabs.jjqb.xtext.jpql.jPQL.FromClause;
+import org.nightlabs.jjqb.xtext.jpql.jPQL.GroupByClause;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.OrderClause;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.SelectFromClause;
+import org.nightlabs.jjqb.xtext.jpql.jPQL.OrderByClause;
+import org.nightlabs.jjqb.xtext.jpql.jPQL.SelectClause;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.SelectStatement;
 
 /**
@@ -27,10 +27,10 @@ import org.nightlabs.jjqb.xtext.jpql.jPQL.SelectStatement;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.SelectStatementImpl#getSelectFromClause <em>Select From Clause</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.SelectStatementImpl#getGroupBy <em>Group By</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.SelectStatementImpl#getHaving <em>Having</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.SelectStatementImpl#getOrder <em>Order</em>}</li>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.SelectStatementImpl#getSelectClause <em>Select Clause</em>}</li>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.SelectStatementImpl#getFromClause <em>From Clause</em>}</li>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.SelectStatementImpl#getGroupByClause <em>Group By Clause</em>}</li>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.SelectStatementImpl#getOrderByClause <em>Order By Clause</em>}</li>
  * </ul>
  * </p>
  *
@@ -39,44 +39,44 @@ import org.nightlabs.jjqb.xtext.jpql.jPQL.SelectStatement;
 public class SelectStatementImpl extends JPQLQueryImpl implements SelectStatement
 {
   /**
-   * The cached value of the '{@link #getSelectFromClause() <em>Select From Clause</em>}' containment reference.
+   * The cached value of the '{@link #getSelectClause() <em>Select Clause</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getSelectFromClause()
+   * @see #getSelectClause()
    * @generated
    * @ordered
    */
-  protected SelectFromClause selectFromClause;
+  protected SelectClause selectClause;
 
   /**
-   * The cached value of the '{@link #getGroupBy() <em>Group By</em>}' containment reference.
+   * The cached value of the '{@link #getFromClause() <em>From Clause</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getGroupBy()
+   * @see #getFromClause()
    * @generated
    * @ordered
    */
-  protected GroupClause groupBy;
+  protected FromClause fromClause;
 
   /**
-   * The cached value of the '{@link #getHaving() <em>Having</em>}' containment reference.
+   * The cached value of the '{@link #getGroupByClause() <em>Group By Clause</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getHaving()
+   * @see #getGroupByClause()
    * @generated
    * @ordered
    */
-  protected HavingClause having;
+  protected GroupByClause groupByClause;
 
   /**
-   * The cached value of the '{@link #getOrder() <em>Order</em>}' containment reference.
+   * The cached value of the '{@link #getOrderByClause() <em>Order By Clause</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getOrder()
+   * @see #getOrderByClause()
    * @generated
    * @ordered
    */
-  protected OrderClause order;
+  protected OrderByClause orderByClause;
 
   /**
    * <!-- begin-user-doc -->
@@ -104,9 +104,9 @@ public class SelectStatementImpl extends JPQLQueryImpl implements SelectStatemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public SelectFromClause getSelectFromClause()
+  public SelectClause getSelectClause()
   {
-    return selectFromClause;
+    return selectClause;
   }
 
   /**
@@ -114,13 +114,13 @@ public class SelectStatementImpl extends JPQLQueryImpl implements SelectStatemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetSelectFromClause(SelectFromClause newSelectFromClause, NotificationChain msgs)
+  public NotificationChain basicSetSelectClause(SelectClause newSelectClause, NotificationChain msgs)
   {
-    SelectFromClause oldSelectFromClause = selectFromClause;
-    selectFromClause = newSelectFromClause;
+    SelectClause oldSelectClause = selectClause;
+    selectClause = newSelectClause;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JPQLPackage.SELECT_STATEMENT__SELECT_FROM_CLAUSE, oldSelectFromClause, newSelectFromClause);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JPQLPackage.SELECT_STATEMENT__SELECT_CLAUSE, oldSelectClause, newSelectClause);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -131,20 +131,20 @@ public class SelectStatementImpl extends JPQLQueryImpl implements SelectStatemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setSelectFromClause(SelectFromClause newSelectFromClause)
+  public void setSelectClause(SelectClause newSelectClause)
   {
-    if (newSelectFromClause != selectFromClause)
+    if (newSelectClause != selectClause)
     {
       NotificationChain msgs = null;
-      if (selectFromClause != null)
-        msgs = ((InternalEObject)selectFromClause).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JPQLPackage.SELECT_STATEMENT__SELECT_FROM_CLAUSE, null, msgs);
-      if (newSelectFromClause != null)
-        msgs = ((InternalEObject)newSelectFromClause).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JPQLPackage.SELECT_STATEMENT__SELECT_FROM_CLAUSE, null, msgs);
-      msgs = basicSetSelectFromClause(newSelectFromClause, msgs);
+      if (selectClause != null)
+        msgs = ((InternalEObject)selectClause).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JPQLPackage.SELECT_STATEMENT__SELECT_CLAUSE, null, msgs);
+      if (newSelectClause != null)
+        msgs = ((InternalEObject)newSelectClause).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JPQLPackage.SELECT_STATEMENT__SELECT_CLAUSE, null, msgs);
+      msgs = basicSetSelectClause(newSelectClause, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, JPQLPackage.SELECT_STATEMENT__SELECT_FROM_CLAUSE, newSelectFromClause, newSelectFromClause));
+      eNotify(new ENotificationImpl(this, Notification.SET, JPQLPackage.SELECT_STATEMENT__SELECT_CLAUSE, newSelectClause, newSelectClause));
   }
 
   /**
@@ -152,9 +152,9 @@ public class SelectStatementImpl extends JPQLQueryImpl implements SelectStatemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public GroupClause getGroupBy()
+  public FromClause getFromClause()
   {
-    return groupBy;
+    return fromClause;
   }
 
   /**
@@ -162,13 +162,13 @@ public class SelectStatementImpl extends JPQLQueryImpl implements SelectStatemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetGroupBy(GroupClause newGroupBy, NotificationChain msgs)
+  public NotificationChain basicSetFromClause(FromClause newFromClause, NotificationChain msgs)
   {
-    GroupClause oldGroupBy = groupBy;
-    groupBy = newGroupBy;
+    FromClause oldFromClause = fromClause;
+    fromClause = newFromClause;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JPQLPackage.SELECT_STATEMENT__GROUP_BY, oldGroupBy, newGroupBy);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JPQLPackage.SELECT_STATEMENT__FROM_CLAUSE, oldFromClause, newFromClause);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -179,20 +179,20 @@ public class SelectStatementImpl extends JPQLQueryImpl implements SelectStatemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setGroupBy(GroupClause newGroupBy)
+  public void setFromClause(FromClause newFromClause)
   {
-    if (newGroupBy != groupBy)
+    if (newFromClause != fromClause)
     {
       NotificationChain msgs = null;
-      if (groupBy != null)
-        msgs = ((InternalEObject)groupBy).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JPQLPackage.SELECT_STATEMENT__GROUP_BY, null, msgs);
-      if (newGroupBy != null)
-        msgs = ((InternalEObject)newGroupBy).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JPQLPackage.SELECT_STATEMENT__GROUP_BY, null, msgs);
-      msgs = basicSetGroupBy(newGroupBy, msgs);
+      if (fromClause != null)
+        msgs = ((InternalEObject)fromClause).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JPQLPackage.SELECT_STATEMENT__FROM_CLAUSE, null, msgs);
+      if (newFromClause != null)
+        msgs = ((InternalEObject)newFromClause).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JPQLPackage.SELECT_STATEMENT__FROM_CLAUSE, null, msgs);
+      msgs = basicSetFromClause(newFromClause, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, JPQLPackage.SELECT_STATEMENT__GROUP_BY, newGroupBy, newGroupBy));
+      eNotify(new ENotificationImpl(this, Notification.SET, JPQLPackage.SELECT_STATEMENT__FROM_CLAUSE, newFromClause, newFromClause));
   }
 
   /**
@@ -200,9 +200,9 @@ public class SelectStatementImpl extends JPQLQueryImpl implements SelectStatemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public HavingClause getHaving()
+  public GroupByClause getGroupByClause()
   {
-    return having;
+    return groupByClause;
   }
 
   /**
@@ -210,13 +210,13 @@ public class SelectStatementImpl extends JPQLQueryImpl implements SelectStatemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetHaving(HavingClause newHaving, NotificationChain msgs)
+  public NotificationChain basicSetGroupByClause(GroupByClause newGroupByClause, NotificationChain msgs)
   {
-    HavingClause oldHaving = having;
-    having = newHaving;
+    GroupByClause oldGroupByClause = groupByClause;
+    groupByClause = newGroupByClause;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JPQLPackage.SELECT_STATEMENT__HAVING, oldHaving, newHaving);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JPQLPackage.SELECT_STATEMENT__GROUP_BY_CLAUSE, oldGroupByClause, newGroupByClause);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -227,20 +227,20 @@ public class SelectStatementImpl extends JPQLQueryImpl implements SelectStatemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setHaving(HavingClause newHaving)
+  public void setGroupByClause(GroupByClause newGroupByClause)
   {
-    if (newHaving != having)
+    if (newGroupByClause != groupByClause)
     {
       NotificationChain msgs = null;
-      if (having != null)
-        msgs = ((InternalEObject)having).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JPQLPackage.SELECT_STATEMENT__HAVING, null, msgs);
-      if (newHaving != null)
-        msgs = ((InternalEObject)newHaving).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JPQLPackage.SELECT_STATEMENT__HAVING, null, msgs);
-      msgs = basicSetHaving(newHaving, msgs);
+      if (groupByClause != null)
+        msgs = ((InternalEObject)groupByClause).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JPQLPackage.SELECT_STATEMENT__GROUP_BY_CLAUSE, null, msgs);
+      if (newGroupByClause != null)
+        msgs = ((InternalEObject)newGroupByClause).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JPQLPackage.SELECT_STATEMENT__GROUP_BY_CLAUSE, null, msgs);
+      msgs = basicSetGroupByClause(newGroupByClause, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, JPQLPackage.SELECT_STATEMENT__HAVING, newHaving, newHaving));
+      eNotify(new ENotificationImpl(this, Notification.SET, JPQLPackage.SELECT_STATEMENT__GROUP_BY_CLAUSE, newGroupByClause, newGroupByClause));
   }
 
   /**
@@ -248,9 +248,9 @@ public class SelectStatementImpl extends JPQLQueryImpl implements SelectStatemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public OrderClause getOrder()
+  public OrderByClause getOrderByClause()
   {
-    return order;
+    return orderByClause;
   }
 
   /**
@@ -258,13 +258,13 @@ public class SelectStatementImpl extends JPQLQueryImpl implements SelectStatemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetOrder(OrderClause newOrder, NotificationChain msgs)
+  public NotificationChain basicSetOrderByClause(OrderByClause newOrderByClause, NotificationChain msgs)
   {
-    OrderClause oldOrder = order;
-    order = newOrder;
+    OrderByClause oldOrderByClause = orderByClause;
+    orderByClause = newOrderByClause;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JPQLPackage.SELECT_STATEMENT__ORDER, oldOrder, newOrder);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JPQLPackage.SELECT_STATEMENT__ORDER_BY_CLAUSE, oldOrderByClause, newOrderByClause);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -275,20 +275,20 @@ public class SelectStatementImpl extends JPQLQueryImpl implements SelectStatemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setOrder(OrderClause newOrder)
+  public void setOrderByClause(OrderByClause newOrderByClause)
   {
-    if (newOrder != order)
+    if (newOrderByClause != orderByClause)
     {
       NotificationChain msgs = null;
-      if (order != null)
-        msgs = ((InternalEObject)order).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JPQLPackage.SELECT_STATEMENT__ORDER, null, msgs);
-      if (newOrder != null)
-        msgs = ((InternalEObject)newOrder).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JPQLPackage.SELECT_STATEMENT__ORDER, null, msgs);
-      msgs = basicSetOrder(newOrder, msgs);
+      if (orderByClause != null)
+        msgs = ((InternalEObject)orderByClause).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JPQLPackage.SELECT_STATEMENT__ORDER_BY_CLAUSE, null, msgs);
+      if (newOrderByClause != null)
+        msgs = ((InternalEObject)newOrderByClause).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JPQLPackage.SELECT_STATEMENT__ORDER_BY_CLAUSE, null, msgs);
+      msgs = basicSetOrderByClause(newOrderByClause, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, JPQLPackage.SELECT_STATEMENT__ORDER, newOrder, newOrder));
+      eNotify(new ENotificationImpl(this, Notification.SET, JPQLPackage.SELECT_STATEMENT__ORDER_BY_CLAUSE, newOrderByClause, newOrderByClause));
   }
 
   /**
@@ -301,14 +301,14 @@ public class SelectStatementImpl extends JPQLQueryImpl implements SelectStatemen
   {
     switch (featureID)
     {
-      case JPQLPackage.SELECT_STATEMENT__SELECT_FROM_CLAUSE:
-        return basicSetSelectFromClause(null, msgs);
-      case JPQLPackage.SELECT_STATEMENT__GROUP_BY:
-        return basicSetGroupBy(null, msgs);
-      case JPQLPackage.SELECT_STATEMENT__HAVING:
-        return basicSetHaving(null, msgs);
-      case JPQLPackage.SELECT_STATEMENT__ORDER:
-        return basicSetOrder(null, msgs);
+      case JPQLPackage.SELECT_STATEMENT__SELECT_CLAUSE:
+        return basicSetSelectClause(null, msgs);
+      case JPQLPackage.SELECT_STATEMENT__FROM_CLAUSE:
+        return basicSetFromClause(null, msgs);
+      case JPQLPackage.SELECT_STATEMENT__GROUP_BY_CLAUSE:
+        return basicSetGroupByClause(null, msgs);
+      case JPQLPackage.SELECT_STATEMENT__ORDER_BY_CLAUSE:
+        return basicSetOrderByClause(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -323,14 +323,14 @@ public class SelectStatementImpl extends JPQLQueryImpl implements SelectStatemen
   {
     switch (featureID)
     {
-      case JPQLPackage.SELECT_STATEMENT__SELECT_FROM_CLAUSE:
-        return getSelectFromClause();
-      case JPQLPackage.SELECT_STATEMENT__GROUP_BY:
-        return getGroupBy();
-      case JPQLPackage.SELECT_STATEMENT__HAVING:
-        return getHaving();
-      case JPQLPackage.SELECT_STATEMENT__ORDER:
-        return getOrder();
+      case JPQLPackage.SELECT_STATEMENT__SELECT_CLAUSE:
+        return getSelectClause();
+      case JPQLPackage.SELECT_STATEMENT__FROM_CLAUSE:
+        return getFromClause();
+      case JPQLPackage.SELECT_STATEMENT__GROUP_BY_CLAUSE:
+        return getGroupByClause();
+      case JPQLPackage.SELECT_STATEMENT__ORDER_BY_CLAUSE:
+        return getOrderByClause();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -345,17 +345,17 @@ public class SelectStatementImpl extends JPQLQueryImpl implements SelectStatemen
   {
     switch (featureID)
     {
-      case JPQLPackage.SELECT_STATEMENT__SELECT_FROM_CLAUSE:
-        setSelectFromClause((SelectFromClause)newValue);
+      case JPQLPackage.SELECT_STATEMENT__SELECT_CLAUSE:
+        setSelectClause((SelectClause)newValue);
         return;
-      case JPQLPackage.SELECT_STATEMENT__GROUP_BY:
-        setGroupBy((GroupClause)newValue);
+      case JPQLPackage.SELECT_STATEMENT__FROM_CLAUSE:
+        setFromClause((FromClause)newValue);
         return;
-      case JPQLPackage.SELECT_STATEMENT__HAVING:
-        setHaving((HavingClause)newValue);
+      case JPQLPackage.SELECT_STATEMENT__GROUP_BY_CLAUSE:
+        setGroupByClause((GroupByClause)newValue);
         return;
-      case JPQLPackage.SELECT_STATEMENT__ORDER:
-        setOrder((OrderClause)newValue);
+      case JPQLPackage.SELECT_STATEMENT__ORDER_BY_CLAUSE:
+        setOrderByClause((OrderByClause)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -371,17 +371,17 @@ public class SelectStatementImpl extends JPQLQueryImpl implements SelectStatemen
   {
     switch (featureID)
     {
-      case JPQLPackage.SELECT_STATEMENT__SELECT_FROM_CLAUSE:
-        setSelectFromClause((SelectFromClause)null);
+      case JPQLPackage.SELECT_STATEMENT__SELECT_CLAUSE:
+        setSelectClause((SelectClause)null);
         return;
-      case JPQLPackage.SELECT_STATEMENT__GROUP_BY:
-        setGroupBy((GroupClause)null);
+      case JPQLPackage.SELECT_STATEMENT__FROM_CLAUSE:
+        setFromClause((FromClause)null);
         return;
-      case JPQLPackage.SELECT_STATEMENT__HAVING:
-        setHaving((HavingClause)null);
+      case JPQLPackage.SELECT_STATEMENT__GROUP_BY_CLAUSE:
+        setGroupByClause((GroupByClause)null);
         return;
-      case JPQLPackage.SELECT_STATEMENT__ORDER:
-        setOrder((OrderClause)null);
+      case JPQLPackage.SELECT_STATEMENT__ORDER_BY_CLAUSE:
+        setOrderByClause((OrderByClause)null);
         return;
     }
     super.eUnset(featureID);
@@ -397,14 +397,14 @@ public class SelectStatementImpl extends JPQLQueryImpl implements SelectStatemen
   {
     switch (featureID)
     {
-      case JPQLPackage.SELECT_STATEMENT__SELECT_FROM_CLAUSE:
-        return selectFromClause != null;
-      case JPQLPackage.SELECT_STATEMENT__GROUP_BY:
-        return groupBy != null;
-      case JPQLPackage.SELECT_STATEMENT__HAVING:
-        return having != null;
-      case JPQLPackage.SELECT_STATEMENT__ORDER:
-        return order != null;
+      case JPQLPackage.SELECT_STATEMENT__SELECT_CLAUSE:
+        return selectClause != null;
+      case JPQLPackage.SELECT_STATEMENT__FROM_CLAUSE:
+        return fromClause != null;
+      case JPQLPackage.SELECT_STATEMENT__GROUP_BY_CLAUSE:
+        return groupByClause != null;
+      case JPQLPackage.SELECT_STATEMENT__ORDER_BY_CLAUSE:
+        return orderByClause != null;
     }
     return super.eIsSet(featureID);
   }

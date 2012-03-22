@@ -9,6 +9,10 @@
     editorPluginID="org.nightlabs.jjqb.xtext.jpql.editor">
   <genPackages prefix="JPQL" basePackage="org.nightlabs.jjqb.xtext.jpql" disposableProviderFactory="true"
       ecorePackage="JPQL.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="JPQL.ecore#//OrderByDirection">
+      <genEnumLiterals ecoreEnumLiteral="JPQL.ecore#//OrderByDirection/asc"/>
+      <genEnumLiterals ecoreEnumLiteral="JPQL.ecore#//OrderByDirection/desc"/>
+    </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="JPQL.ecore#//ComparisonOperator">
       <genEnumLiterals ecoreEnumLiteral="JPQL.ecore#//ComparisonOperator/lessThen"/>
       <genEnumLiterals ecoreEnumLiteral="JPQL.ecore#//ComparisonOperator/greaterThen"/>
@@ -21,28 +25,22 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//JPQLQuery/whereClause"/>
     </genClasses>
     <genClasses ecoreClass="JPQL.ecore#//SelectStatement">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//SelectStatement/selectFromClause"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//SelectStatement/groupBy"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//SelectStatement/having"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//SelectStatement/order"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//SelectStatement/selectClause"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//SelectStatement/fromClause"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//SelectStatement/groupByClause"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//SelectStatement/orderByClause"/>
     </genClasses>
-    <genClasses ecoreClass="JPQL.ecore#//GroupClause">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//GroupClause/grouping"/>
-    </genClasses>
-    <genClasses ecoreClass="JPQL.ecore#//GroupItem">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//GroupItem/var"/>
+    <genClasses ecoreClass="JPQL.ecore#//GroupByClause">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//GroupByClause/grouping"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//GroupByClause/havingClause"/>
     </genClasses>
     <genClasses ecoreClass="JPQL.ecore#//HavingClause">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//HavingClause/having"/>
     </genClasses>
-    <genClasses ecoreClass="JPQL.ecore#//OrderClause">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//OrderClause/ordering"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JPQL.ecore#//OrderClause/isAsc"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JPQL.ecore#//OrderClause/isDesc"/>
+    <genClasses ecoreClass="JPQL.ecore#//OrderByClause">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//OrderByClause/ordering"/>
     </genClasses>
-    <genClasses ecoreClass="JPQL.ecore#//OrderItem">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//OrderItem/var"/>
-    </genClasses>
+    <genClasses ecoreClass="JPQL.ecore#//OrderBySpec"/>
     <genClasses ecoreClass="JPQL.ecore#//UpdateStatement">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//UpdateStatement/updateClause"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//UpdateStatement/setClause"/>
@@ -62,10 +60,6 @@
     </genClasses>
     <genClasses ecoreClass="JPQL.ecore#//DeleteClause">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//DeleteClause/fromClause"/>
-    </genClasses>
-    <genClasses ecoreClass="JPQL.ecore#//SelectFromClause">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//SelectFromClause/selectClause"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//SelectFromClause/fromClause"/>
     </genClasses>
     <genClasses ecoreClass="JPQL.ecore#//SelectClause">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JPQL.ecore#//SelectClause/isDistinct"/>
@@ -116,43 +110,43 @@
     </genClasses>
     <genClasses ecoreClass="JPQL.ecore#//Expression"/>
     <genClasses ecoreClass="JPQL.ecore#//ComparisonOperatorExpression">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//ComparisonOperatorExpression/lhs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//ComparisonOperatorExpression/left"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JPQL.ecore#//ComparisonOperatorExpression/operator"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//ComparisonOperatorExpression/rhs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//ComparisonOperatorExpression/right"/>
     </genClasses>
     <genClasses ecoreClass="JPQL.ecore#//ExistsExpression">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JPQL.ecore#//ExistsExpression/isNot"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//ExistsExpression/query"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//ExistsExpression/right"/>
     </genClasses>
     <genClasses ecoreClass="JPQL.ecore#//AllExpression">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//AllExpression/query"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//AllExpression/right"/>
     </genClasses>
     <genClasses ecoreClass="JPQL.ecore#//AnyExpression">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//AnyExpression/query"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//AnyExpression/right"/>
     </genClasses>
     <genClasses ecoreClass="JPQL.ecore#//SomeExpression">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//SomeExpression/query"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//SomeExpression/right"/>
     </genClasses>
     <genClasses ecoreClass="JPQL.ecore#//CollectionExpression">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//CollectionExpression/lhs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//CollectionExpression/left"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JPQL.ecore#//CollectionExpression/isNot"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//CollectionExpression/rhs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//CollectionExpression/right"/>
     </genClasses>
     <genClasses ecoreClass="JPQL.ecore#//NullComparisonExpression">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//NullComparisonExpression/lhs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//NullComparisonExpression/left"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JPQL.ecore#//NullComparisonExpression/isNot"/>
     </genClasses>
     <genClasses ecoreClass="JPQL.ecore#//EmptyComparisonExpression">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//EmptyComparisonExpression/lhs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//EmptyComparisonExpression/left"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JPQL.ecore#//EmptyComparisonExpression/isNot"/>
     </genClasses>
     <genClasses ecoreClass="JPQL.ecore#//LikeExpression">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//LikeExpression/lhs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//LikeExpression/left"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JPQL.ecore#//LikeExpression/isNot"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JPQL.ecore#//LikeExpression/pattern"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JPQL.ecore#//LikeExpression/right"/>
     </genClasses>
     <genClasses ecoreClass="JPQL.ecore#//InExpression">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//InExpression/lhs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//InExpression/left"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JPQL.ecore#//InExpression/isNot"/>
     </genClasses>
     <genClasses ecoreClass="JPQL.ecore#//InSeqExpression">
@@ -162,7 +156,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//InQueryExpression/query"/>
     </genClasses>
     <genClasses ecoreClass="JPQL.ecore#//BetweenExpression">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//BetweenExpression/lhs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//BetweenExpression/left"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JPQL.ecore#//BetweenExpression/isNot"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//BetweenExpression/min"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//BetweenExpression/max"/>
@@ -170,6 +164,7 @@
     <genClasses ecoreClass="JPQL.ecore#//Variable"/>
     <genClasses ecoreClass="JPQL.ecore#//ExpressionTerm"/>
     <genClasses ecoreClass="JPQL.ecore#//AliasAttributeExpression">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JPQL.ecore#//AliasAttributeExpression/direction"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference JPQL.ecore#//AliasAttributeExpression/alias"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JPQL.ecore#//AliasAttributeExpression/attributes"/>
     </genClasses>

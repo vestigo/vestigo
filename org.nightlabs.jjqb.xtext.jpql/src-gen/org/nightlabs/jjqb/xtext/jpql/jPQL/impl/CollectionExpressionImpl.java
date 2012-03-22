@@ -25,9 +25,9 @@ import org.nightlabs.jjqb.xtext.jpql.jPQL.Variable;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.CollectionExpressionImpl#getLhs <em>Lhs</em>}</li>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.CollectionExpressionImpl#getLeft <em>Left</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.CollectionExpressionImpl#isIsNot <em>Is Not</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.CollectionExpressionImpl#getRhs <em>Rhs</em>}</li>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.CollectionExpressionImpl#getRight <em>Right</em>}</li>
  * </ul>
  * </p>
  *
@@ -36,14 +36,14 @@ import org.nightlabs.jjqb.xtext.jpql.jPQL.Variable;
 public class CollectionExpressionImpl extends ExpressionImpl implements CollectionExpression
 {
   /**
-   * The cached value of the '{@link #getLhs() <em>Lhs</em>}' containment reference.
+   * The cached value of the '{@link #getLeft() <em>Left</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getLhs()
+   * @see #getLeft()
    * @generated
    * @ordered
    */
-  protected Variable lhs;
+  protected Variable left;
 
   /**
    * The default value of the '{@link #isIsNot() <em>Is Not</em>}' attribute.
@@ -66,14 +66,14 @@ public class CollectionExpressionImpl extends ExpressionImpl implements Collecti
   protected boolean isNot = IS_NOT_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getRhs() <em>Rhs</em>}' containment reference.
+   * The cached value of the '{@link #getRight() <em>Right</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getRhs()
+   * @see #getRight()
    * @generated
    * @ordered
    */
-  protected AliasAttributeExpression rhs;
+  protected AliasAttributeExpression right;
 
   /**
    * <!-- begin-user-doc -->
@@ -101,9 +101,9 @@ public class CollectionExpressionImpl extends ExpressionImpl implements Collecti
    * <!-- end-user-doc -->
    * @generated
    */
-  public Variable getLhs()
+  public Variable getLeft()
   {
-    return lhs;
+    return left;
   }
 
   /**
@@ -111,13 +111,13 @@ public class CollectionExpressionImpl extends ExpressionImpl implements Collecti
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetLhs(Variable newLhs, NotificationChain msgs)
+  public NotificationChain basicSetLeft(Variable newLeft, NotificationChain msgs)
   {
-    Variable oldLhs = lhs;
-    lhs = newLhs;
+    Variable oldLeft = left;
+    left = newLeft;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JPQLPackage.COLLECTION_EXPRESSION__LHS, oldLhs, newLhs);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JPQLPackage.COLLECTION_EXPRESSION__LEFT, oldLeft, newLeft);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -128,20 +128,20 @@ public class CollectionExpressionImpl extends ExpressionImpl implements Collecti
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setLhs(Variable newLhs)
+  public void setLeft(Variable newLeft)
   {
-    if (newLhs != lhs)
+    if (newLeft != left)
     {
       NotificationChain msgs = null;
-      if (lhs != null)
-        msgs = ((InternalEObject)lhs).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JPQLPackage.COLLECTION_EXPRESSION__LHS, null, msgs);
-      if (newLhs != null)
-        msgs = ((InternalEObject)newLhs).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JPQLPackage.COLLECTION_EXPRESSION__LHS, null, msgs);
-      msgs = basicSetLhs(newLhs, msgs);
+      if (left != null)
+        msgs = ((InternalEObject)left).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JPQLPackage.COLLECTION_EXPRESSION__LEFT, null, msgs);
+      if (newLeft != null)
+        msgs = ((InternalEObject)newLeft).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JPQLPackage.COLLECTION_EXPRESSION__LEFT, null, msgs);
+      msgs = basicSetLeft(newLeft, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, JPQLPackage.COLLECTION_EXPRESSION__LHS, newLhs, newLhs));
+      eNotify(new ENotificationImpl(this, Notification.SET, JPQLPackage.COLLECTION_EXPRESSION__LEFT, newLeft, newLeft));
   }
 
   /**
@@ -172,9 +172,9 @@ public class CollectionExpressionImpl extends ExpressionImpl implements Collecti
    * <!-- end-user-doc -->
    * @generated
    */
-  public AliasAttributeExpression getRhs()
+  public AliasAttributeExpression getRight()
   {
-    return rhs;
+    return right;
   }
 
   /**
@@ -182,13 +182,13 @@ public class CollectionExpressionImpl extends ExpressionImpl implements Collecti
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetRhs(AliasAttributeExpression newRhs, NotificationChain msgs)
+  public NotificationChain basicSetRight(AliasAttributeExpression newRight, NotificationChain msgs)
   {
-    AliasAttributeExpression oldRhs = rhs;
-    rhs = newRhs;
+    AliasAttributeExpression oldRight = right;
+    right = newRight;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JPQLPackage.COLLECTION_EXPRESSION__RHS, oldRhs, newRhs);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JPQLPackage.COLLECTION_EXPRESSION__RIGHT, oldRight, newRight);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -199,20 +199,20 @@ public class CollectionExpressionImpl extends ExpressionImpl implements Collecti
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setRhs(AliasAttributeExpression newRhs)
+  public void setRight(AliasAttributeExpression newRight)
   {
-    if (newRhs != rhs)
+    if (newRight != right)
     {
       NotificationChain msgs = null;
-      if (rhs != null)
-        msgs = ((InternalEObject)rhs).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JPQLPackage.COLLECTION_EXPRESSION__RHS, null, msgs);
-      if (newRhs != null)
-        msgs = ((InternalEObject)newRhs).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JPQLPackage.COLLECTION_EXPRESSION__RHS, null, msgs);
-      msgs = basicSetRhs(newRhs, msgs);
+      if (right != null)
+        msgs = ((InternalEObject)right).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JPQLPackage.COLLECTION_EXPRESSION__RIGHT, null, msgs);
+      if (newRight != null)
+        msgs = ((InternalEObject)newRight).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JPQLPackage.COLLECTION_EXPRESSION__RIGHT, null, msgs);
+      msgs = basicSetRight(newRight, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, JPQLPackage.COLLECTION_EXPRESSION__RHS, newRhs, newRhs));
+      eNotify(new ENotificationImpl(this, Notification.SET, JPQLPackage.COLLECTION_EXPRESSION__RIGHT, newRight, newRight));
   }
 
   /**
@@ -225,10 +225,10 @@ public class CollectionExpressionImpl extends ExpressionImpl implements Collecti
   {
     switch (featureID)
     {
-      case JPQLPackage.COLLECTION_EXPRESSION__LHS:
-        return basicSetLhs(null, msgs);
-      case JPQLPackage.COLLECTION_EXPRESSION__RHS:
-        return basicSetRhs(null, msgs);
+      case JPQLPackage.COLLECTION_EXPRESSION__LEFT:
+        return basicSetLeft(null, msgs);
+      case JPQLPackage.COLLECTION_EXPRESSION__RIGHT:
+        return basicSetRight(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -243,12 +243,12 @@ public class CollectionExpressionImpl extends ExpressionImpl implements Collecti
   {
     switch (featureID)
     {
-      case JPQLPackage.COLLECTION_EXPRESSION__LHS:
-        return getLhs();
+      case JPQLPackage.COLLECTION_EXPRESSION__LEFT:
+        return getLeft();
       case JPQLPackage.COLLECTION_EXPRESSION__IS_NOT:
         return isIsNot();
-      case JPQLPackage.COLLECTION_EXPRESSION__RHS:
-        return getRhs();
+      case JPQLPackage.COLLECTION_EXPRESSION__RIGHT:
+        return getRight();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -263,14 +263,14 @@ public class CollectionExpressionImpl extends ExpressionImpl implements Collecti
   {
     switch (featureID)
     {
-      case JPQLPackage.COLLECTION_EXPRESSION__LHS:
-        setLhs((Variable)newValue);
+      case JPQLPackage.COLLECTION_EXPRESSION__LEFT:
+        setLeft((Variable)newValue);
         return;
       case JPQLPackage.COLLECTION_EXPRESSION__IS_NOT:
         setIsNot((Boolean)newValue);
         return;
-      case JPQLPackage.COLLECTION_EXPRESSION__RHS:
-        setRhs((AliasAttributeExpression)newValue);
+      case JPQLPackage.COLLECTION_EXPRESSION__RIGHT:
+        setRight((AliasAttributeExpression)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -286,14 +286,14 @@ public class CollectionExpressionImpl extends ExpressionImpl implements Collecti
   {
     switch (featureID)
     {
-      case JPQLPackage.COLLECTION_EXPRESSION__LHS:
-        setLhs((Variable)null);
+      case JPQLPackage.COLLECTION_EXPRESSION__LEFT:
+        setLeft((Variable)null);
         return;
       case JPQLPackage.COLLECTION_EXPRESSION__IS_NOT:
         setIsNot(IS_NOT_EDEFAULT);
         return;
-      case JPQLPackage.COLLECTION_EXPRESSION__RHS:
-        setRhs((AliasAttributeExpression)null);
+      case JPQLPackage.COLLECTION_EXPRESSION__RIGHT:
+        setRight((AliasAttributeExpression)null);
         return;
     }
     super.eUnset(featureID);
@@ -309,12 +309,12 @@ public class CollectionExpressionImpl extends ExpressionImpl implements Collecti
   {
     switch (featureID)
     {
-      case JPQLPackage.COLLECTION_EXPRESSION__LHS:
-        return lhs != null;
+      case JPQLPackage.COLLECTION_EXPRESSION__LEFT:
+        return left != null;
       case JPQLPackage.COLLECTION_EXPRESSION__IS_NOT:
         return isNot != IS_NOT_EDEFAULT;
-      case JPQLPackage.COLLECTION_EXPRESSION__RHS:
-        return rhs != null;
+      case JPQLPackage.COLLECTION_EXPRESSION__RIGHT:
+        return right != null;
     }
     return super.eIsSet(featureID);
   }

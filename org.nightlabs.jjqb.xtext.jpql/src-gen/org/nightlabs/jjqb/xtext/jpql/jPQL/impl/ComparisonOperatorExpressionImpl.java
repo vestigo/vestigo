@@ -26,9 +26,9 @@ import org.nightlabs.jjqb.xtext.jpql.jPQL.Variable;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.ComparisonOperatorExpressionImpl#getLhs <em>Lhs</em>}</li>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.ComparisonOperatorExpressionImpl#getLeft <em>Left</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.ComparisonOperatorExpressionImpl#getOperator <em>Operator</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.ComparisonOperatorExpressionImpl#getRhs <em>Rhs</em>}</li>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.ComparisonOperatorExpressionImpl#getRight <em>Right</em>}</li>
  * </ul>
  * </p>
  *
@@ -37,14 +37,14 @@ import org.nightlabs.jjqb.xtext.jpql.jPQL.Variable;
 public class ComparisonOperatorExpressionImpl extends ExpressionImpl implements ComparisonOperatorExpression
 {
   /**
-   * The cached value of the '{@link #getLhs() <em>Lhs</em>}' containment reference.
+   * The cached value of the '{@link #getLeft() <em>Left</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getLhs()
+   * @see #getLeft()
    * @generated
    * @ordered
    */
-  protected Variable lhs;
+  protected Variable left;
 
   /**
    * The default value of the '{@link #getOperator() <em>Operator</em>}' attribute.
@@ -67,14 +67,14 @@ public class ComparisonOperatorExpressionImpl extends ExpressionImpl implements 
   protected ComparisonOperator operator = OPERATOR_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getRhs() <em>Rhs</em>}' containment reference.
+   * The cached value of the '{@link #getRight() <em>Right</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getRhs()
+   * @see #getRight()
    * @generated
    * @ordered
    */
-  protected ExpressionTerm rhs;
+  protected ExpressionTerm right;
 
   /**
    * <!-- begin-user-doc -->
@@ -102,9 +102,9 @@ public class ComparisonOperatorExpressionImpl extends ExpressionImpl implements 
    * <!-- end-user-doc -->
    * @generated
    */
-  public Variable getLhs()
+  public Variable getLeft()
   {
-    return lhs;
+    return left;
   }
 
   /**
@@ -112,13 +112,13 @@ public class ComparisonOperatorExpressionImpl extends ExpressionImpl implements 
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetLhs(Variable newLhs, NotificationChain msgs)
+  public NotificationChain basicSetLeft(Variable newLeft, NotificationChain msgs)
   {
-    Variable oldLhs = lhs;
-    lhs = newLhs;
+    Variable oldLeft = left;
+    left = newLeft;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JPQLPackage.COMPARISON_OPERATOR_EXPRESSION__LHS, oldLhs, newLhs);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JPQLPackage.COMPARISON_OPERATOR_EXPRESSION__LEFT, oldLeft, newLeft);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -129,20 +129,20 @@ public class ComparisonOperatorExpressionImpl extends ExpressionImpl implements 
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setLhs(Variable newLhs)
+  public void setLeft(Variable newLeft)
   {
-    if (newLhs != lhs)
+    if (newLeft != left)
     {
       NotificationChain msgs = null;
-      if (lhs != null)
-        msgs = ((InternalEObject)lhs).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JPQLPackage.COMPARISON_OPERATOR_EXPRESSION__LHS, null, msgs);
-      if (newLhs != null)
-        msgs = ((InternalEObject)newLhs).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JPQLPackage.COMPARISON_OPERATOR_EXPRESSION__LHS, null, msgs);
-      msgs = basicSetLhs(newLhs, msgs);
+      if (left != null)
+        msgs = ((InternalEObject)left).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JPQLPackage.COMPARISON_OPERATOR_EXPRESSION__LEFT, null, msgs);
+      if (newLeft != null)
+        msgs = ((InternalEObject)newLeft).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JPQLPackage.COMPARISON_OPERATOR_EXPRESSION__LEFT, null, msgs);
+      msgs = basicSetLeft(newLeft, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, JPQLPackage.COMPARISON_OPERATOR_EXPRESSION__LHS, newLhs, newLhs));
+      eNotify(new ENotificationImpl(this, Notification.SET, JPQLPackage.COMPARISON_OPERATOR_EXPRESSION__LEFT, newLeft, newLeft));
   }
 
   /**
@@ -173,9 +173,9 @@ public class ComparisonOperatorExpressionImpl extends ExpressionImpl implements 
    * <!-- end-user-doc -->
    * @generated
    */
-  public ExpressionTerm getRhs()
+  public ExpressionTerm getRight()
   {
-    return rhs;
+    return right;
   }
 
   /**
@@ -183,13 +183,13 @@ public class ComparisonOperatorExpressionImpl extends ExpressionImpl implements 
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetRhs(ExpressionTerm newRhs, NotificationChain msgs)
+  public NotificationChain basicSetRight(ExpressionTerm newRight, NotificationChain msgs)
   {
-    ExpressionTerm oldRhs = rhs;
-    rhs = newRhs;
+    ExpressionTerm oldRight = right;
+    right = newRight;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JPQLPackage.COMPARISON_OPERATOR_EXPRESSION__RHS, oldRhs, newRhs);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JPQLPackage.COMPARISON_OPERATOR_EXPRESSION__RIGHT, oldRight, newRight);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -200,20 +200,20 @@ public class ComparisonOperatorExpressionImpl extends ExpressionImpl implements 
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setRhs(ExpressionTerm newRhs)
+  public void setRight(ExpressionTerm newRight)
   {
-    if (newRhs != rhs)
+    if (newRight != right)
     {
       NotificationChain msgs = null;
-      if (rhs != null)
-        msgs = ((InternalEObject)rhs).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JPQLPackage.COMPARISON_OPERATOR_EXPRESSION__RHS, null, msgs);
-      if (newRhs != null)
-        msgs = ((InternalEObject)newRhs).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JPQLPackage.COMPARISON_OPERATOR_EXPRESSION__RHS, null, msgs);
-      msgs = basicSetRhs(newRhs, msgs);
+      if (right != null)
+        msgs = ((InternalEObject)right).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JPQLPackage.COMPARISON_OPERATOR_EXPRESSION__RIGHT, null, msgs);
+      if (newRight != null)
+        msgs = ((InternalEObject)newRight).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JPQLPackage.COMPARISON_OPERATOR_EXPRESSION__RIGHT, null, msgs);
+      msgs = basicSetRight(newRight, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, JPQLPackage.COMPARISON_OPERATOR_EXPRESSION__RHS, newRhs, newRhs));
+      eNotify(new ENotificationImpl(this, Notification.SET, JPQLPackage.COMPARISON_OPERATOR_EXPRESSION__RIGHT, newRight, newRight));
   }
 
   /**
@@ -226,10 +226,10 @@ public class ComparisonOperatorExpressionImpl extends ExpressionImpl implements 
   {
     switch (featureID)
     {
-      case JPQLPackage.COMPARISON_OPERATOR_EXPRESSION__LHS:
-        return basicSetLhs(null, msgs);
-      case JPQLPackage.COMPARISON_OPERATOR_EXPRESSION__RHS:
-        return basicSetRhs(null, msgs);
+      case JPQLPackage.COMPARISON_OPERATOR_EXPRESSION__LEFT:
+        return basicSetLeft(null, msgs);
+      case JPQLPackage.COMPARISON_OPERATOR_EXPRESSION__RIGHT:
+        return basicSetRight(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -244,12 +244,12 @@ public class ComparisonOperatorExpressionImpl extends ExpressionImpl implements 
   {
     switch (featureID)
     {
-      case JPQLPackage.COMPARISON_OPERATOR_EXPRESSION__LHS:
-        return getLhs();
+      case JPQLPackage.COMPARISON_OPERATOR_EXPRESSION__LEFT:
+        return getLeft();
       case JPQLPackage.COMPARISON_OPERATOR_EXPRESSION__OPERATOR:
         return getOperator();
-      case JPQLPackage.COMPARISON_OPERATOR_EXPRESSION__RHS:
-        return getRhs();
+      case JPQLPackage.COMPARISON_OPERATOR_EXPRESSION__RIGHT:
+        return getRight();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -264,14 +264,14 @@ public class ComparisonOperatorExpressionImpl extends ExpressionImpl implements 
   {
     switch (featureID)
     {
-      case JPQLPackage.COMPARISON_OPERATOR_EXPRESSION__LHS:
-        setLhs((Variable)newValue);
+      case JPQLPackage.COMPARISON_OPERATOR_EXPRESSION__LEFT:
+        setLeft((Variable)newValue);
         return;
       case JPQLPackage.COMPARISON_OPERATOR_EXPRESSION__OPERATOR:
         setOperator((ComparisonOperator)newValue);
         return;
-      case JPQLPackage.COMPARISON_OPERATOR_EXPRESSION__RHS:
-        setRhs((ExpressionTerm)newValue);
+      case JPQLPackage.COMPARISON_OPERATOR_EXPRESSION__RIGHT:
+        setRight((ExpressionTerm)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -287,14 +287,14 @@ public class ComparisonOperatorExpressionImpl extends ExpressionImpl implements 
   {
     switch (featureID)
     {
-      case JPQLPackage.COMPARISON_OPERATOR_EXPRESSION__LHS:
-        setLhs((Variable)null);
+      case JPQLPackage.COMPARISON_OPERATOR_EXPRESSION__LEFT:
+        setLeft((Variable)null);
         return;
       case JPQLPackage.COMPARISON_OPERATOR_EXPRESSION__OPERATOR:
         setOperator(OPERATOR_EDEFAULT);
         return;
-      case JPQLPackage.COMPARISON_OPERATOR_EXPRESSION__RHS:
-        setRhs((ExpressionTerm)null);
+      case JPQLPackage.COMPARISON_OPERATOR_EXPRESSION__RIGHT:
+        setRight((ExpressionTerm)null);
         return;
     }
     super.eUnset(featureID);
@@ -310,12 +310,12 @@ public class ComparisonOperatorExpressionImpl extends ExpressionImpl implements 
   {
     switch (featureID)
     {
-      case JPQLPackage.COMPARISON_OPERATOR_EXPRESSION__LHS:
-        return lhs != null;
+      case JPQLPackage.COMPARISON_OPERATOR_EXPRESSION__LEFT:
+        return left != null;
       case JPQLPackage.COMPARISON_OPERATOR_EXPRESSION__OPERATOR:
         return operator != OPERATOR_EDEFAULT;
-      case JPQLPackage.COMPARISON_OPERATOR_EXPRESSION__RHS:
-        return rhs != null;
+      case JPQLPackage.COMPARISON_OPERATOR_EXPRESSION__RIGHT:
+        return right != null;
     }
     return super.eIsSet(featureID);
   }

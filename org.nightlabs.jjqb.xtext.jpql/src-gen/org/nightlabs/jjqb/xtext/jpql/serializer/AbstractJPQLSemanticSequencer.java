@@ -31,8 +31,7 @@ import org.nightlabs.jjqb.xtext.jpql.jPQL.FromClass;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.FromClause;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.FromCollection;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.Function;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.GroupClause;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.GroupItem;
+import org.nightlabs.jjqb.xtext.jpql.jPQL.GroupByClause;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.HavingClause;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.InQueryExpression;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.InSeqExpression;
@@ -47,12 +46,10 @@ import org.nightlabs.jjqb.xtext.jpql.jPQL.MinAggregate;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.NullComparisonExpression;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.NullExpression;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.OrExpression;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.OrderClause;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.OrderItem;
+import org.nightlabs.jjqb.xtext.jpql.jPQL.OrderByClause;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.ParameterExpression;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.SelectClause;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.SelectConstructorExpression;
-import org.nightlabs.jjqb.xtext.jpql.jPQL.SelectFromClause;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.SelectStatement;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.SetClause;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.SomeExpression;
@@ -105,6 +102,10 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 				   context == grammarAccess.getSelectExpressionRule() ||
 				   context == grammarAccess.getVariableRule()) {
 					sequence_AliasAttributeExpression(context, (AliasAttributeExpression) semanticObject); 
+					return; 
+				}
+				else if(context == grammarAccess.getOrderBySpecRule()) {
+					sequence_OrderBySpec(context, (AliasAttributeExpression) semanticObject); 
 					return; 
 				}
 				else break;
@@ -279,15 +280,9 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 					return; 
 				}
 				else break;
-			case JPQLPackage.GROUP_CLAUSE:
-				if(context == grammarAccess.getGroupClauseRule()) {
-					sequence_GroupClause(context, (GroupClause) semanticObject); 
-					return; 
-				}
-				else break;
-			case JPQLPackage.GROUP_ITEM:
-				if(context == grammarAccess.getGroupItemRule()) {
-					sequence_GroupItem(context, (GroupItem) semanticObject); 
+			case JPQLPackage.GROUP_BY_CLAUSE:
+				if(context == grammarAccess.getGroupByClauseRule()) {
+					sequence_GroupByClause(context, (GroupByClause) semanticObject); 
 					return; 
 				}
 				else break;
@@ -416,15 +411,9 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 					return; 
 				}
 				else break;
-			case JPQLPackage.ORDER_CLAUSE:
-				if(context == grammarAccess.getOrderClauseRule()) {
-					sequence_OrderClause(context, (OrderClause) semanticObject); 
-					return; 
-				}
-				else break;
-			case JPQLPackage.ORDER_ITEM:
-				if(context == grammarAccess.getOrderItemRule()) {
-					sequence_OrderItem(context, (OrderItem) semanticObject); 
+			case JPQLPackage.ORDER_BY_CLAUSE:
+				if(context == grammarAccess.getOrderByClauseRule()) {
+					sequence_OrderByClause(context, (OrderByClause) semanticObject); 
 					return; 
 				}
 				else break;
@@ -452,12 +441,6 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 				if(context == grammarAccess.getSelectConstructorExpressionRule() ||
 				   context == grammarAccess.getSelectExpressionRule()) {
 					sequence_SelectConstructorExpression(context, (SelectConstructorExpression) semanticObject); 
-					return; 
-				}
-				else break;
-			case JPQLPackage.SELECT_FROM_CLAUSE:
-				if(context == grammarAccess.getSelectFromClauseRule()) {
-					sequence_SelectFromClause(context, (SelectFromClause) semanticObject); 
 					return; 
 				}
 				else break;
@@ -562,16 +545,16 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     query=QueryExpression
+	 *     right=QueryExpression
 	 */
 	protected void sequence_AllExpression(EObject context, AllExpression semanticObject) {
 		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, JPQLPackage.Literals.ALL_EXPRESSION__QUERY) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JPQLPackage.Literals.ALL_EXPRESSION__QUERY));
+			if(transientValues.isValueTransient(semanticObject, JPQLPackage.Literals.ALL_EXPRESSION__RIGHT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JPQLPackage.Literals.ALL_EXPRESSION__RIGHT));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getAllExpressionAccess().getQueryQueryExpressionParserRuleCall_1_0(), semanticObject.getQuery());
+		feeder.accept(grammarAccess.getAllExpressionAccess().getRightQueryExpressionParserRuleCall_1_0(), semanticObject.getRight());
 		feeder.finish();
 	}
 	
@@ -587,16 +570,16 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     query=QueryExpression
+	 *     right=QueryExpression
 	 */
 	protected void sequence_AnyExpression(EObject context, AnyExpression semanticObject) {
 		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, JPQLPackage.Literals.ANY_EXPRESSION__QUERY) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JPQLPackage.Literals.ANY_EXPRESSION__QUERY));
+			if(transientValues.isValueTransient(semanticObject, JPQLPackage.Literals.ANY_EXPRESSION__RIGHT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JPQLPackage.Literals.ANY_EXPRESSION__RIGHT));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getAnyExpressionAccess().getQueryQueryExpressionParserRuleCall_1_0(), semanticObject.getQuery());
+		feeder.accept(grammarAccess.getAnyExpressionAccess().getRightQueryExpressionParserRuleCall_1_0(), semanticObject.getRight());
 		feeder.finish();
 	}
 	
@@ -612,7 +595,7 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (lhs=Variable isNot?='NOT'? min=Value max=Value)
+	 *     (left=Variable isNot?='NOT'? min=Value max=Value)
 	 */
 	protected void sequence_BetweenExpression(EObject context, BetweenExpression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -630,7 +613,7 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (lhs=Variable isNot?='NOT'? rhs=AliasAttributeExpression)
+	 *     (left=Variable isNot?='NOT'? right=AliasAttributeExpression)
 	 */
 	protected void sequence_CollectionExpression(EObject context, CollectionExpression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -639,22 +622,22 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (lhs=Variable operator=ComparisonOperator rhs=ExpressionTerm)
+	 *     (left=Variable operator=ComparisonOperator right=ExpressionTerm)
 	 */
 	protected void sequence_ComparisonOperatorExpression(EObject context, ComparisonOperatorExpression semanticObject) {
 		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, JPQLPackage.Literals.COMPARISON_OPERATOR_EXPRESSION__LHS) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JPQLPackage.Literals.COMPARISON_OPERATOR_EXPRESSION__LHS));
+			if(transientValues.isValueTransient(semanticObject, JPQLPackage.Literals.COMPARISON_OPERATOR_EXPRESSION__LEFT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JPQLPackage.Literals.COMPARISON_OPERATOR_EXPRESSION__LEFT));
 			if(transientValues.isValueTransient(semanticObject, JPQLPackage.Literals.COMPARISON_OPERATOR_EXPRESSION__OPERATOR) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JPQLPackage.Literals.COMPARISON_OPERATOR_EXPRESSION__OPERATOR));
-			if(transientValues.isValueTransient(semanticObject, JPQLPackage.Literals.COMPARISON_OPERATOR_EXPRESSION__RHS) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JPQLPackage.Literals.COMPARISON_OPERATOR_EXPRESSION__RHS));
+			if(transientValues.isValueTransient(semanticObject, JPQLPackage.Literals.COMPARISON_OPERATOR_EXPRESSION__RIGHT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JPQLPackage.Literals.COMPARISON_OPERATOR_EXPRESSION__RIGHT));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getComparisonOperatorExpressionAccess().getLhsVariableParserRuleCall_0_0(), semanticObject.getLhs());
+		feeder.accept(grammarAccess.getComparisonOperatorExpressionAccess().getLeftVariableParserRuleCall_0_0(), semanticObject.getLeft());
 		feeder.accept(grammarAccess.getComparisonOperatorExpressionAccess().getOperatorComparisonOperatorEnumRuleCall_1_0(), semanticObject.getOperator());
-		feeder.accept(grammarAccess.getComparisonOperatorExpressionAccess().getRhsExpressionTermParserRuleCall_2_0(), semanticObject.getRhs());
+		feeder.accept(grammarAccess.getComparisonOperatorExpressionAccess().getRightExpressionTermParserRuleCall_2_0(), semanticObject.getRight());
 		feeder.finish();
 	}
 	
@@ -695,7 +678,7 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (lhs=Variable isNot?='NOT'?)
+	 *     (left=Variable isNot?='NOT'?)
 	 */
 	protected void sequence_EmptyComparisonExpression(EObject context, EmptyComparisonExpression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -704,7 +687,7 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (isNot?='NOT'? query=QueryExpression)
+	 *     (isNot?='NOT'? right=QueryExpression)
 	 */
 	protected void sequence_ExistsExpression(EObject context, ExistsExpression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -777,26 +760,10 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (grouping+=GroupItem grouping+=GroupItem*)
+	 *     (grouping+=AliasAttributeExpression grouping+=AliasAttributeExpression* havingClause=HavingClause?)
 	 */
-	protected void sequence_GroupClause(EObject context, GroupClause semanticObject) {
+	protected void sequence_GroupByClause(EObject context, GroupByClause semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     var=AliasAttributeExpression
-	 */
-	protected void sequence_GroupItem(EObject context, GroupItem semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, JPQLPackage.Literals.GROUP_ITEM__VAR) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JPQLPackage.Literals.GROUP_ITEM__VAR));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getGroupItemAccess().getVarAliasAttributeExpressionParserRuleCall_0(), semanticObject.getVar());
-		feeder.finish();
 	}
 	
 	
@@ -818,7 +785,7 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (lhs=Variable isNot?='NOT'? query=QueryExpression)
+	 *     (left=Variable isNot?='NOT'? query=QueryExpression)
 	 */
 	protected void sequence_InQueryExpression(EObject context, InQueryExpression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -827,7 +794,7 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (lhs=Variable isNot?='NOT'? items+=Variable items+=Variable*)
+	 *     (left=Variable isNot?='NOT'? items+=Variable items+=Variable*)
 	 */
 	protected void sequence_InSeqExpression(EObject context, InSeqExpression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -879,7 +846,7 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (lhs=Variable isNot?='NOT'? pattern=STRING)
+	 *     (left=Variable isNot?='NOT'? right=STRING)
 	 */
 	protected void sequence_LikeExpression(EObject context, LikeExpression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -906,7 +873,7 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (lhs=Variable isNot?='NOT'?)
+	 *     (left=Variable isNot?='NOT'?)
 	 */
 	protected void sequence_NullComparisonExpression(EObject context, NullComparisonExpression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -949,26 +916,19 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (ordering+=OrderItem ordering+=OrderItem* (isAsc?='ASC' | isDesc?='DESC')?)
+	 *     (ordering+=OrderBySpec ordering+=OrderBySpec*)
 	 */
-	protected void sequence_OrderClause(EObject context, OrderClause semanticObject) {
+	protected void sequence_OrderByClause(EObject context, OrderByClause semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
 	/**
 	 * Constraint:
-	 *     var=AliasAttributeExpression
+	 *     (alias=[VariableDeclaration|ID] attributes+=ID* direction=OrderByDirection)
 	 */
-	protected void sequence_OrderItem(EObject context, OrderItem semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, JPQLPackage.Literals.ORDER_ITEM__VAR) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JPQLPackage.Literals.ORDER_ITEM__VAR));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getOrderItemAccess().getVarAliasAttributeExpressionParserRuleCall_0(), semanticObject.getVar());
-		feeder.finish();
+	protected void sequence_OrderBySpec(EObject context, AliasAttributeExpression semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -1008,16 +968,7 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (selectClause=SelectClause? fromClause=FromClause)
-	 */
-	protected void sequence_SelectFromClause(EObject context, SelectFromClause semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (selectFromClause=SelectFromClause whereClause=WhereClause? groupBy=GroupClause? having=HavingClause? order=OrderClause?)
+	 *     (selectClause=SelectClause? fromClause=FromClause whereClause=WhereClause? groupByClause=GroupByClause? orderByClause=OrderByClause?)
 	 */
 	protected void sequence_SelectStatement(EObject context, SelectStatement semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1035,16 +986,16 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     query=QueryExpression
+	 *     right=QueryExpression
 	 */
 	protected void sequence_SomeExpression(EObject context, SomeExpression semanticObject) {
 		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, JPQLPackage.Literals.SOME_EXPRESSION__QUERY) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JPQLPackage.Literals.SOME_EXPRESSION__QUERY));
+			if(transientValues.isValueTransient(semanticObject, JPQLPackage.Literals.SOME_EXPRESSION__RIGHT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JPQLPackage.Literals.SOME_EXPRESSION__RIGHT));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getSomeExpressionAccess().getQueryQueryExpressionParserRuleCall_1_0(), semanticObject.getQuery());
+		feeder.accept(grammarAccess.getSomeExpressionAccess().getRightQueryExpressionParserRuleCall_1_0(), semanticObject.getRight());
 		feeder.finish();
 	}
 	

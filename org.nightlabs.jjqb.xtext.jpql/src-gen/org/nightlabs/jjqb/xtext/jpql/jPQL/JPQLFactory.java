@@ -44,22 +44,13 @@ public interface JPQLFactory extends EFactory
   SelectStatement createSelectStatement();
 
   /**
-   * Returns a new object of class '<em>Group Clause</em>'.
+   * Returns a new object of class '<em>Group By Clause</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Group Clause</em>'.
+   * @return a new object of class '<em>Group By Clause</em>'.
    * @generated
    */
-  GroupClause createGroupClause();
-
-  /**
-   * Returns a new object of class '<em>Group Item</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Group Item</em>'.
-   * @generated
-   */
-  GroupItem createGroupItem();
+  GroupByClause createGroupByClause();
 
   /**
    * Returns a new object of class '<em>Having Clause</em>'.
@@ -71,22 +62,22 @@ public interface JPQLFactory extends EFactory
   HavingClause createHavingClause();
 
   /**
-   * Returns a new object of class '<em>Order Clause</em>'.
+   * Returns a new object of class '<em>Order By Clause</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Order Clause</em>'.
+   * @return a new object of class '<em>Order By Clause</em>'.
    * @generated
    */
-  OrderClause createOrderClause();
+  OrderByClause createOrderByClause();
 
   /**
-   * Returns a new object of class '<em>Order Item</em>'.
+   * Returns a new object of class '<em>Order By Spec</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Order Item</em>'.
+   * @return a new object of class '<em>Order By Spec</em>'.
    * @generated
    */
-  OrderItem createOrderItem();
+  OrderBySpec createOrderBySpec();
 
   /**
    * Returns a new object of class '<em>Update Statement</em>'.
@@ -141,15 +132,6 @@ public interface JPQLFactory extends EFactory
    * @generated
    */
   DeleteClause createDeleteClause();
-
-  /**
-   * Returns a new object of class '<em>Select From Clause</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Select From Clause</em>'.
-   * @generated
-   */
-  SelectFromClause createSelectFromClause();
 
   /**
    * Returns a new object of class '<em>Select Clause</em>'.

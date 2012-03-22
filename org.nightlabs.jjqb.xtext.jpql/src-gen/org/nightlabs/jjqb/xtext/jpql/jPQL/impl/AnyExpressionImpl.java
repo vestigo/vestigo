@@ -24,7 +24,7 @@ import org.nightlabs.jjqb.xtext.jpql.jPQL.SelectStatement;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.AnyExpressionImpl#getQuery <em>Query</em>}</li>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.AnyExpressionImpl#getRight <em>Right</em>}</li>
  * </ul>
  * </p>
  *
@@ -33,14 +33,14 @@ import org.nightlabs.jjqb.xtext.jpql.jPQL.SelectStatement;
 public class AnyExpressionImpl extends ExpressionImpl implements AnyExpression
 {
   /**
-   * The cached value of the '{@link #getQuery() <em>Query</em>}' containment reference.
+   * The cached value of the '{@link #getRight() <em>Right</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getQuery()
+   * @see #getRight()
    * @generated
    * @ordered
    */
-  protected SelectStatement query;
+  protected SelectStatement right;
 
   /**
    * <!-- begin-user-doc -->
@@ -68,9 +68,9 @@ public class AnyExpressionImpl extends ExpressionImpl implements AnyExpression
    * <!-- end-user-doc -->
    * @generated
    */
-  public SelectStatement getQuery()
+  public SelectStatement getRight()
   {
-    return query;
+    return right;
   }
 
   /**
@@ -78,13 +78,13 @@ public class AnyExpressionImpl extends ExpressionImpl implements AnyExpression
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetQuery(SelectStatement newQuery, NotificationChain msgs)
+  public NotificationChain basicSetRight(SelectStatement newRight, NotificationChain msgs)
   {
-    SelectStatement oldQuery = query;
-    query = newQuery;
+    SelectStatement oldRight = right;
+    right = newRight;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JPQLPackage.ANY_EXPRESSION__QUERY, oldQuery, newQuery);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JPQLPackage.ANY_EXPRESSION__RIGHT, oldRight, newRight);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -95,20 +95,20 @@ public class AnyExpressionImpl extends ExpressionImpl implements AnyExpression
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setQuery(SelectStatement newQuery)
+  public void setRight(SelectStatement newRight)
   {
-    if (newQuery != query)
+    if (newRight != right)
     {
       NotificationChain msgs = null;
-      if (query != null)
-        msgs = ((InternalEObject)query).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JPQLPackage.ANY_EXPRESSION__QUERY, null, msgs);
-      if (newQuery != null)
-        msgs = ((InternalEObject)newQuery).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JPQLPackage.ANY_EXPRESSION__QUERY, null, msgs);
-      msgs = basicSetQuery(newQuery, msgs);
+      if (right != null)
+        msgs = ((InternalEObject)right).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JPQLPackage.ANY_EXPRESSION__RIGHT, null, msgs);
+      if (newRight != null)
+        msgs = ((InternalEObject)newRight).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JPQLPackage.ANY_EXPRESSION__RIGHT, null, msgs);
+      msgs = basicSetRight(newRight, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, JPQLPackage.ANY_EXPRESSION__QUERY, newQuery, newQuery));
+      eNotify(new ENotificationImpl(this, Notification.SET, JPQLPackage.ANY_EXPRESSION__RIGHT, newRight, newRight));
   }
 
   /**
@@ -121,8 +121,8 @@ public class AnyExpressionImpl extends ExpressionImpl implements AnyExpression
   {
     switch (featureID)
     {
-      case JPQLPackage.ANY_EXPRESSION__QUERY:
-        return basicSetQuery(null, msgs);
+      case JPQLPackage.ANY_EXPRESSION__RIGHT:
+        return basicSetRight(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -137,8 +137,8 @@ public class AnyExpressionImpl extends ExpressionImpl implements AnyExpression
   {
     switch (featureID)
     {
-      case JPQLPackage.ANY_EXPRESSION__QUERY:
-        return getQuery();
+      case JPQLPackage.ANY_EXPRESSION__RIGHT:
+        return getRight();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -153,8 +153,8 @@ public class AnyExpressionImpl extends ExpressionImpl implements AnyExpression
   {
     switch (featureID)
     {
-      case JPQLPackage.ANY_EXPRESSION__QUERY:
-        setQuery((SelectStatement)newValue);
+      case JPQLPackage.ANY_EXPRESSION__RIGHT:
+        setRight((SelectStatement)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -170,8 +170,8 @@ public class AnyExpressionImpl extends ExpressionImpl implements AnyExpression
   {
     switch (featureID)
     {
-      case JPQLPackage.ANY_EXPRESSION__QUERY:
-        setQuery((SelectStatement)null);
+      case JPQLPackage.ANY_EXPRESSION__RIGHT:
+        setRight((SelectStatement)null);
         return;
     }
     super.eUnset(featureID);
@@ -187,8 +187,8 @@ public class AnyExpressionImpl extends ExpressionImpl implements AnyExpression
   {
     switch (featureID)
     {
-      case JPQLPackage.ANY_EXPRESSION__QUERY:
-        return query != null;
+      case JPQLPackage.ANY_EXPRESSION__RIGHT:
+        return right != null;
     }
     return super.eIsSet(featureID);
   }

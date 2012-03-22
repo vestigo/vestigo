@@ -14,9 +14,9 @@ package org.nightlabs.jjqb.xtext.jpql.jPQL;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.CollectionExpression#getLhs <em>Lhs</em>}</li>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.CollectionExpression#getLeft <em>Left</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.CollectionExpression#isIsNot <em>Is Not</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.CollectionExpression#getRhs <em>Rhs</em>}</li>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.CollectionExpression#getRight <em>Right</em>}</li>
  * </ul>
  * </p>
  *
@@ -27,30 +27,30 @@ package org.nightlabs.jjqb.xtext.jpql.jPQL;
 public interface CollectionExpression extends Expression
 {
   /**
-   * Returns the value of the '<em><b>Lhs</b></em>' containment reference.
+   * Returns the value of the '<em><b>Left</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Lhs</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Left</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Lhs</em>' containment reference.
-   * @see #setLhs(Variable)
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getCollectionExpression_Lhs()
+   * @return the value of the '<em>Left</em>' containment reference.
+   * @see #setLeft(Variable)
+   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getCollectionExpression_Left()
    * @model containment="true"
    * @generated
    */
-  Variable getLhs();
+  Variable getLeft();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.CollectionExpression#getLhs <em>Lhs</em>}' containment reference.
+   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.CollectionExpression#getLeft <em>Left</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Lhs</em>' containment reference.
-   * @see #getLhs()
+   * @param value the new value of the '<em>Left</em>' containment reference.
+   * @see #getLeft()
    * @generated
    */
-  void setLhs(Variable value);
+  void setLeft(Variable value);
 
   /**
    * Returns the value of the '<em><b>Is Not</b></em>' attribute.
@@ -79,29 +79,29 @@ public interface CollectionExpression extends Expression
   void setIsNot(boolean value);
 
   /**
-   * Returns the value of the '<em><b>Rhs</b></em>' containment reference.
+   * Returns the value of the '<em><b>Right</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Rhs</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Right</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Rhs</em>' containment reference.
-   * @see #setRhs(AliasAttributeExpression)
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getCollectionExpression_Rhs()
+   * @return the value of the '<em>Right</em>' containment reference.
+   * @see #setRight(AliasAttributeExpression)
+   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getCollectionExpression_Right()
    * @model containment="true"
    * @generated
    */
-  AliasAttributeExpression getRhs();
+  AliasAttributeExpression getRight();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.CollectionExpression#getRhs <em>Rhs</em>}' containment reference.
+   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.CollectionExpression#getRight <em>Right</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Rhs</em>' containment reference.
-   * @see #getRhs()
+   * @param value the new value of the '<em>Right</em>' containment reference.
+   * @see #getRight()
    * @generated
    */
-  void setRhs(AliasAttributeExpression value);
+  void setRight(AliasAttributeExpression value);
 
 } // CollectionExpression

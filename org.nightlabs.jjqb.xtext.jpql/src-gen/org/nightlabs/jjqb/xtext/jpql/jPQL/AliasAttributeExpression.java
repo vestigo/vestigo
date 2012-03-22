@@ -15,6 +15,7 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.AliasAttributeExpression#getDirection <em>Direction</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.AliasAttributeExpression#getAlias <em>Alias</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.AliasAttributeExpression#getAttributes <em>Attributes</em>}</li>
  * </ul>
@@ -24,8 +25,37 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface AliasAttributeExpression extends SelectExpression, Variable
+public interface AliasAttributeExpression extends OrderBySpec, SelectExpression, Variable
 {
+  /**
+   * Returns the value of the '<em><b>Direction</b></em>' attribute.
+   * The literals are from the enumeration {@link org.nightlabs.jjqb.xtext.jpql.jPQL.OrderByDirection}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Direction</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Direction</em>' attribute.
+   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.OrderByDirection
+   * @see #setDirection(OrderByDirection)
+   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getAliasAttributeExpression_Direction()
+   * @model
+   * @generated
+   */
+  OrderByDirection getDirection();
+
+  /**
+   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.AliasAttributeExpression#getDirection <em>Direction</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Direction</em>' attribute.
+   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.OrderByDirection
+   * @see #getDirection()
+   * @generated
+   */
+  void setDirection(OrderByDirection value);
+
   /**
    * Returns the value of the '<em><b>Alias</b></em>' reference.
    * <!-- begin-user-doc -->

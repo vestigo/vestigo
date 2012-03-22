@@ -25,7 +25,7 @@ import org.nightlabs.jjqb.xtext.jpql.jPQL.Variable;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.BetweenExpressionImpl#getLhs <em>Lhs</em>}</li>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.BetweenExpressionImpl#getLeft <em>Left</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.BetweenExpressionImpl#isIsNot <em>Is Not</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.BetweenExpressionImpl#getMin <em>Min</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.BetweenExpressionImpl#getMax <em>Max</em>}</li>
@@ -37,14 +37,14 @@ import org.nightlabs.jjqb.xtext.jpql.jPQL.Variable;
 public class BetweenExpressionImpl extends ExpressionImpl implements BetweenExpression
 {
   /**
-   * The cached value of the '{@link #getLhs() <em>Lhs</em>}' containment reference.
+   * The cached value of the '{@link #getLeft() <em>Left</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getLhs()
+   * @see #getLeft()
    * @generated
    * @ordered
    */
-  protected Variable lhs;
+  protected Variable left;
 
   /**
    * The default value of the '{@link #isIsNot() <em>Is Not</em>}' attribute.
@@ -112,9 +112,9 @@ public class BetweenExpressionImpl extends ExpressionImpl implements BetweenExpr
    * <!-- end-user-doc -->
    * @generated
    */
-  public Variable getLhs()
+  public Variable getLeft()
   {
-    return lhs;
+    return left;
   }
 
   /**
@@ -122,13 +122,13 @@ public class BetweenExpressionImpl extends ExpressionImpl implements BetweenExpr
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetLhs(Variable newLhs, NotificationChain msgs)
+  public NotificationChain basicSetLeft(Variable newLeft, NotificationChain msgs)
   {
-    Variable oldLhs = lhs;
-    lhs = newLhs;
+    Variable oldLeft = left;
+    left = newLeft;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JPQLPackage.BETWEEN_EXPRESSION__LHS, oldLhs, newLhs);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JPQLPackage.BETWEEN_EXPRESSION__LEFT, oldLeft, newLeft);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -139,20 +139,20 @@ public class BetweenExpressionImpl extends ExpressionImpl implements BetweenExpr
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setLhs(Variable newLhs)
+  public void setLeft(Variable newLeft)
   {
-    if (newLhs != lhs)
+    if (newLeft != left)
     {
       NotificationChain msgs = null;
-      if (lhs != null)
-        msgs = ((InternalEObject)lhs).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JPQLPackage.BETWEEN_EXPRESSION__LHS, null, msgs);
-      if (newLhs != null)
-        msgs = ((InternalEObject)newLhs).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JPQLPackage.BETWEEN_EXPRESSION__LHS, null, msgs);
-      msgs = basicSetLhs(newLhs, msgs);
+      if (left != null)
+        msgs = ((InternalEObject)left).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JPQLPackage.BETWEEN_EXPRESSION__LEFT, null, msgs);
+      if (newLeft != null)
+        msgs = ((InternalEObject)newLeft).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JPQLPackage.BETWEEN_EXPRESSION__LEFT, null, msgs);
+      msgs = basicSetLeft(newLeft, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, JPQLPackage.BETWEEN_EXPRESSION__LHS, newLhs, newLhs));
+      eNotify(new ENotificationImpl(this, Notification.SET, JPQLPackage.BETWEEN_EXPRESSION__LEFT, newLeft, newLeft));
   }
 
   /**
@@ -284,8 +284,8 @@ public class BetweenExpressionImpl extends ExpressionImpl implements BetweenExpr
   {
     switch (featureID)
     {
-      case JPQLPackage.BETWEEN_EXPRESSION__LHS:
-        return basicSetLhs(null, msgs);
+      case JPQLPackage.BETWEEN_EXPRESSION__LEFT:
+        return basicSetLeft(null, msgs);
       case JPQLPackage.BETWEEN_EXPRESSION__MIN:
         return basicSetMin(null, msgs);
       case JPQLPackage.BETWEEN_EXPRESSION__MAX:
@@ -304,8 +304,8 @@ public class BetweenExpressionImpl extends ExpressionImpl implements BetweenExpr
   {
     switch (featureID)
     {
-      case JPQLPackage.BETWEEN_EXPRESSION__LHS:
-        return getLhs();
+      case JPQLPackage.BETWEEN_EXPRESSION__LEFT:
+        return getLeft();
       case JPQLPackage.BETWEEN_EXPRESSION__IS_NOT:
         return isIsNot();
       case JPQLPackage.BETWEEN_EXPRESSION__MIN:
@@ -326,8 +326,8 @@ public class BetweenExpressionImpl extends ExpressionImpl implements BetweenExpr
   {
     switch (featureID)
     {
-      case JPQLPackage.BETWEEN_EXPRESSION__LHS:
-        setLhs((Variable)newValue);
+      case JPQLPackage.BETWEEN_EXPRESSION__LEFT:
+        setLeft((Variable)newValue);
         return;
       case JPQLPackage.BETWEEN_EXPRESSION__IS_NOT:
         setIsNot((Boolean)newValue);
@@ -352,8 +352,8 @@ public class BetweenExpressionImpl extends ExpressionImpl implements BetweenExpr
   {
     switch (featureID)
     {
-      case JPQLPackage.BETWEEN_EXPRESSION__LHS:
-        setLhs((Variable)null);
+      case JPQLPackage.BETWEEN_EXPRESSION__LEFT:
+        setLeft((Variable)null);
         return;
       case JPQLPackage.BETWEEN_EXPRESSION__IS_NOT:
         setIsNot(IS_NOT_EDEFAULT);
@@ -378,8 +378,8 @@ public class BetweenExpressionImpl extends ExpressionImpl implements BetweenExpr
   {
     switch (featureID)
     {
-      case JPQLPackage.BETWEEN_EXPRESSION__LHS:
-        return lhs != null;
+      case JPQLPackage.BETWEEN_EXPRESSION__LEFT:
+        return left != null;
       case JPQLPackage.BETWEEN_EXPRESSION__IS_NOT:
         return isNot != IS_NOT_EDEFAULT;
       case JPQLPackage.BETWEEN_EXPRESSION__MIN:

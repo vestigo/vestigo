@@ -25,7 +25,7 @@ import org.nightlabs.jjqb.xtext.jpql.jPQL.SelectStatement;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.ExistsExpressionImpl#isIsNot <em>Is Not</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.ExistsExpressionImpl#getQuery <em>Query</em>}</li>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.ExistsExpressionImpl#getRight <em>Right</em>}</li>
  * </ul>
  * </p>
  *
@@ -54,14 +54,14 @@ public class ExistsExpressionImpl extends ExpressionImpl implements ExistsExpres
   protected boolean isNot = IS_NOT_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getQuery() <em>Query</em>}' containment reference.
+   * The cached value of the '{@link #getRight() <em>Right</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getQuery()
+   * @see #getRight()
    * @generated
    * @ordered
    */
-  protected SelectStatement query;
+  protected SelectStatement right;
 
   /**
    * <!-- begin-user-doc -->
@@ -112,9 +112,9 @@ public class ExistsExpressionImpl extends ExpressionImpl implements ExistsExpres
    * <!-- end-user-doc -->
    * @generated
    */
-  public SelectStatement getQuery()
+  public SelectStatement getRight()
   {
-    return query;
+    return right;
   }
 
   /**
@@ -122,13 +122,13 @@ public class ExistsExpressionImpl extends ExpressionImpl implements ExistsExpres
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetQuery(SelectStatement newQuery, NotificationChain msgs)
+  public NotificationChain basicSetRight(SelectStatement newRight, NotificationChain msgs)
   {
-    SelectStatement oldQuery = query;
-    query = newQuery;
+    SelectStatement oldRight = right;
+    right = newRight;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JPQLPackage.EXISTS_EXPRESSION__QUERY, oldQuery, newQuery);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JPQLPackage.EXISTS_EXPRESSION__RIGHT, oldRight, newRight);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -139,20 +139,20 @@ public class ExistsExpressionImpl extends ExpressionImpl implements ExistsExpres
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setQuery(SelectStatement newQuery)
+  public void setRight(SelectStatement newRight)
   {
-    if (newQuery != query)
+    if (newRight != right)
     {
       NotificationChain msgs = null;
-      if (query != null)
-        msgs = ((InternalEObject)query).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JPQLPackage.EXISTS_EXPRESSION__QUERY, null, msgs);
-      if (newQuery != null)
-        msgs = ((InternalEObject)newQuery).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JPQLPackage.EXISTS_EXPRESSION__QUERY, null, msgs);
-      msgs = basicSetQuery(newQuery, msgs);
+      if (right != null)
+        msgs = ((InternalEObject)right).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JPQLPackage.EXISTS_EXPRESSION__RIGHT, null, msgs);
+      if (newRight != null)
+        msgs = ((InternalEObject)newRight).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JPQLPackage.EXISTS_EXPRESSION__RIGHT, null, msgs);
+      msgs = basicSetRight(newRight, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, JPQLPackage.EXISTS_EXPRESSION__QUERY, newQuery, newQuery));
+      eNotify(new ENotificationImpl(this, Notification.SET, JPQLPackage.EXISTS_EXPRESSION__RIGHT, newRight, newRight));
   }
 
   /**
@@ -165,8 +165,8 @@ public class ExistsExpressionImpl extends ExpressionImpl implements ExistsExpres
   {
     switch (featureID)
     {
-      case JPQLPackage.EXISTS_EXPRESSION__QUERY:
-        return basicSetQuery(null, msgs);
+      case JPQLPackage.EXISTS_EXPRESSION__RIGHT:
+        return basicSetRight(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -183,8 +183,8 @@ public class ExistsExpressionImpl extends ExpressionImpl implements ExistsExpres
     {
       case JPQLPackage.EXISTS_EXPRESSION__IS_NOT:
         return isIsNot();
-      case JPQLPackage.EXISTS_EXPRESSION__QUERY:
-        return getQuery();
+      case JPQLPackage.EXISTS_EXPRESSION__RIGHT:
+        return getRight();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -202,8 +202,8 @@ public class ExistsExpressionImpl extends ExpressionImpl implements ExistsExpres
       case JPQLPackage.EXISTS_EXPRESSION__IS_NOT:
         setIsNot((Boolean)newValue);
         return;
-      case JPQLPackage.EXISTS_EXPRESSION__QUERY:
-        setQuery((SelectStatement)newValue);
+      case JPQLPackage.EXISTS_EXPRESSION__RIGHT:
+        setRight((SelectStatement)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -222,8 +222,8 @@ public class ExistsExpressionImpl extends ExpressionImpl implements ExistsExpres
       case JPQLPackage.EXISTS_EXPRESSION__IS_NOT:
         setIsNot(IS_NOT_EDEFAULT);
         return;
-      case JPQLPackage.EXISTS_EXPRESSION__QUERY:
-        setQuery((SelectStatement)null);
+      case JPQLPackage.EXISTS_EXPRESSION__RIGHT:
+        setRight((SelectStatement)null);
         return;
     }
     super.eUnset(featureID);
@@ -241,8 +241,8 @@ public class ExistsExpressionImpl extends ExpressionImpl implements ExistsExpres
     {
       case JPQLPackage.EXISTS_EXPRESSION__IS_NOT:
         return isNot != IS_NOT_EDEFAULT;
-      case JPQLPackage.EXISTS_EXPRESSION__QUERY:
-        return query != null;
+      case JPQLPackage.EXISTS_EXPRESSION__RIGHT:
+        return right != null;
     }
     return super.eIsSet(featureID);
   }

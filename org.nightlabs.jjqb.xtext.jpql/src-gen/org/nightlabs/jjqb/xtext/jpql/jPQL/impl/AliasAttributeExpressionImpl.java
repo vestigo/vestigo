@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.util.EDataTypeEList;
 
 import org.nightlabs.jjqb.xtext.jpql.jPQL.AliasAttributeExpression;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage;
+import org.nightlabs.jjqb.xtext.jpql.jPQL.OrderByDirection;
 import org.nightlabs.jjqb.xtext.jpql.jPQL.VariableDeclaration;
 
 /**
@@ -29,6 +30,7 @@ import org.nightlabs.jjqb.xtext.jpql.jPQL.VariableDeclaration;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.AliasAttributeExpressionImpl#getDirection <em>Direction</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.AliasAttributeExpressionImpl#getAlias <em>Alias</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.impl.AliasAttributeExpressionImpl#getAttributes <em>Attributes</em>}</li>
  * </ul>
@@ -36,8 +38,28 @@ import org.nightlabs.jjqb.xtext.jpql.jPQL.VariableDeclaration;
  *
  * @generated
  */
-public class AliasAttributeExpressionImpl extends SelectExpressionImpl implements AliasAttributeExpression
+public class AliasAttributeExpressionImpl extends OrderBySpecImpl implements AliasAttributeExpression
 {
+  /**
+   * The default value of the '{@link #getDirection() <em>Direction</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getDirection()
+   * @generated
+   * @ordered
+   */
+  protected static final OrderByDirection DIRECTION_EDEFAULT = OrderByDirection.ASC;
+
+  /**
+   * The cached value of the '{@link #getDirection() <em>Direction</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getDirection()
+   * @generated
+   * @ordered
+   */
+  protected OrderByDirection direction = DIRECTION_EDEFAULT;
+
   /**
    * The cached value of the '{@link #getAlias() <em>Alias</em>}' reference.
    * <!-- begin-user-doc -->
@@ -77,6 +99,29 @@ public class AliasAttributeExpressionImpl extends SelectExpressionImpl implement
   protected EClass eStaticClass()
   {
     return JPQLPackage.Literals.ALIAS_ATTRIBUTE_EXPRESSION;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public OrderByDirection getDirection()
+  {
+    return direction;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setDirection(OrderByDirection newDirection)
+  {
+    OrderByDirection oldDirection = direction;
+    direction = newDirection == null ? DIRECTION_EDEFAULT : newDirection;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, JPQLPackage.ALIAS_ATTRIBUTE_EXPRESSION__DIRECTION, oldDirection, direction));
   }
 
   /**
@@ -146,6 +191,8 @@ public class AliasAttributeExpressionImpl extends SelectExpressionImpl implement
   {
     switch (featureID)
     {
+      case JPQLPackage.ALIAS_ATTRIBUTE_EXPRESSION__DIRECTION:
+        return getDirection();
       case JPQLPackage.ALIAS_ATTRIBUTE_EXPRESSION__ALIAS:
         if (resolve) return getAlias();
         return basicGetAlias();
@@ -166,6 +213,9 @@ public class AliasAttributeExpressionImpl extends SelectExpressionImpl implement
   {
     switch (featureID)
     {
+      case JPQLPackage.ALIAS_ATTRIBUTE_EXPRESSION__DIRECTION:
+        setDirection((OrderByDirection)newValue);
+        return;
       case JPQLPackage.ALIAS_ATTRIBUTE_EXPRESSION__ALIAS:
         setAlias((VariableDeclaration)newValue);
         return;
@@ -187,6 +237,9 @@ public class AliasAttributeExpressionImpl extends SelectExpressionImpl implement
   {
     switch (featureID)
     {
+      case JPQLPackage.ALIAS_ATTRIBUTE_EXPRESSION__DIRECTION:
+        setDirection(DIRECTION_EDEFAULT);
+        return;
       case JPQLPackage.ALIAS_ATTRIBUTE_EXPRESSION__ALIAS:
         setAlias((VariableDeclaration)null);
         return;
@@ -207,6 +260,8 @@ public class AliasAttributeExpressionImpl extends SelectExpressionImpl implement
   {
     switch (featureID)
     {
+      case JPQLPackage.ALIAS_ATTRIBUTE_EXPRESSION__DIRECTION:
+        return direction != DIRECTION_EDEFAULT;
       case JPQLPackage.ALIAS_ATTRIBUTE_EXPRESSION__ALIAS:
         return alias != null;
       case JPQLPackage.ALIAS_ATTRIBUTE_EXPRESSION__ATTRIBUTES:
@@ -226,7 +281,9 @@ public class AliasAttributeExpressionImpl extends SelectExpressionImpl implement
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (attributes: ");
+    result.append(" (direction: ");
+    result.append(direction);
+    result.append(", attributes: ");
     result.append(attributes);
     result.append(')');
     return result.toString();

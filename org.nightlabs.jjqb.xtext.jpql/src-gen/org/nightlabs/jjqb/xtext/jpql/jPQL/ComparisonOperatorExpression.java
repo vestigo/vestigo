@@ -14,9 +14,9 @@ package org.nightlabs.jjqb.xtext.jpql.jPQL;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.ComparisonOperatorExpression#getLhs <em>Lhs</em>}</li>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.ComparisonOperatorExpression#getLeft <em>Left</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.ComparisonOperatorExpression#getOperator <em>Operator</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.ComparisonOperatorExpression#getRhs <em>Rhs</em>}</li>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jpql.jPQL.ComparisonOperatorExpression#getRight <em>Right</em>}</li>
  * </ul>
  * </p>
  *
@@ -27,30 +27,30 @@ package org.nightlabs.jjqb.xtext.jpql.jPQL;
 public interface ComparisonOperatorExpression extends Expression
 {
   /**
-   * Returns the value of the '<em><b>Lhs</b></em>' containment reference.
+   * Returns the value of the '<em><b>Left</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Lhs</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Left</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Lhs</em>' containment reference.
-   * @see #setLhs(Variable)
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getComparisonOperatorExpression_Lhs()
+   * @return the value of the '<em>Left</em>' containment reference.
+   * @see #setLeft(Variable)
+   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getComparisonOperatorExpression_Left()
    * @model containment="true"
    * @generated
    */
-  Variable getLhs();
+  Variable getLeft();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.ComparisonOperatorExpression#getLhs <em>Lhs</em>}' containment reference.
+   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.ComparisonOperatorExpression#getLeft <em>Left</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Lhs</em>' containment reference.
-   * @see #getLhs()
+   * @param value the new value of the '<em>Left</em>' containment reference.
+   * @see #getLeft()
    * @generated
    */
-  void setLhs(Variable value);
+  void setLeft(Variable value);
 
   /**
    * Returns the value of the '<em><b>Operator</b></em>' attribute.
@@ -82,29 +82,29 @@ public interface ComparisonOperatorExpression extends Expression
   void setOperator(ComparisonOperator value);
 
   /**
-   * Returns the value of the '<em><b>Rhs</b></em>' containment reference.
+   * Returns the value of the '<em><b>Right</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Rhs</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Right</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Rhs</em>' containment reference.
-   * @see #setRhs(ExpressionTerm)
-   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getComparisonOperatorExpression_Rhs()
+   * @return the value of the '<em>Right</em>' containment reference.
+   * @see #setRight(ExpressionTerm)
+   * @see org.nightlabs.jjqb.xtext.jpql.jPQL.JPQLPackage#getComparisonOperatorExpression_Right()
    * @model containment="true"
    * @generated
    */
-  ExpressionTerm getRhs();
+  ExpressionTerm getRight();
 
   /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.ComparisonOperatorExpression#getRhs <em>Rhs</em>}' containment reference.
+   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jpql.jPQL.ComparisonOperatorExpression#getRight <em>Right</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Rhs</em>' containment reference.
-   * @see #getRhs()
+   * @param value the new value of the '<em>Right</em>' containment reference.
+   * @see #getRight()
    * @generated
    */
-  void setRhs(ExpressionTerm value);
+  void setRight(ExpressionTerm value);
 
 } // ComparisonOperatorExpression

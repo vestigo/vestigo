@@ -8,36 +8,33 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SelectStatement" eSuperTypes="#//JPQLQuery #//ExpressionTerm">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="selectFromClause" eType="#//SelectFromClause"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="selectClause" eType="#//SelectClause"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="groupBy" eType="#//GroupClause"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fromClause" eType="#//FromClause"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="having" eType="#//HavingClause"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="groupByClause" eType="#//GroupByClause"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="order" eType="#//OrderClause"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="orderByClause" eType="#//OrderByClause"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GroupClause">
+  <eClassifiers xsi:type="ecore:EClass" name="GroupByClause">
     <eStructuralFeatures xsi:type="ecore:EReference" name="grouping" upperBound="-1"
-        eType="#//GroupItem" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GroupItem">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="var" eType="#//AliasAttributeExpression"
+        eType="#//AliasAttributeExpression" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="havingClause" eType="#//HavingClause"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="HavingClause">
     <eStructuralFeatures xsi:type="ecore:EReference" name="having" eType="#//Expression"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="OrderClause">
+  <eClassifiers xsi:type="ecore:EClass" name="OrderByClause">
     <eStructuralFeatures xsi:type="ecore:EReference" name="ordering" upperBound="-1"
-        eType="#//OrderItem" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isAsc" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isDesc" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+        eType="#//OrderBySpec" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="OrderItem">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="var" eType="#//AliasAttributeExpression"
-        containment="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OrderBySpec"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="OrderByDirection">
+    <eLiterals name="asc" literal="ASC"/>
+    <eLiterals name="desc" value="1" literal="DESC"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="UpdateStatement" eSuperTypes="#//JPQLQuery">
     <eStructuralFeatures xsi:type="ecore:EReference" name="updateClause" eType="#//UpdateClause"
@@ -64,12 +61,6 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DeleteClause">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="fromClause" eType="#//FromClause"
-        containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="SelectFromClause">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="selectClause" eType="#//SelectClause"
-        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="fromClause" eType="#//FromClause"
         containment="true"/>
   </eClassifiers>
@@ -132,54 +123,54 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Expression"/>
   <eClassifiers xsi:type="ecore:EClass" name="ComparisonOperatorExpression" eSuperTypes="#//Expression">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="lhs" eType="#//Variable"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//Variable"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="operator" eType="#//ComparisonOperator"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="rhs" eType="#//ExpressionTerm"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//ExpressionTerm"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ExistsExpression" eSuperTypes="#//Expression">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isNot" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="query" eType="#//SelectStatement"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//SelectStatement"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AllExpression" eSuperTypes="#//Expression">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="query" eType="#//SelectStatement"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//SelectStatement"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AnyExpression" eSuperTypes="#//Expression">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="query" eType="#//SelectStatement"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//SelectStatement"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SomeExpression" eSuperTypes="#//Expression">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="query" eType="#//SelectStatement"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//SelectStatement"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CollectionExpression" eSuperTypes="#//Expression">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="lhs" eType="#//Variable"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//Variable"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isNot" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="rhs" eType="#//AliasAttributeExpression"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//AliasAttributeExpression"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NullComparisonExpression" eSuperTypes="#//Expression">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="lhs" eType="#//Variable"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//Variable"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isNot" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EmptyComparisonExpression" eSuperTypes="#//Expression">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="lhs" eType="#//Variable"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//Variable"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isNot" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LikeExpression" eSuperTypes="#//Expression">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="lhs" eType="#//Variable"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//Variable"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isNot" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pattern" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="right" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="InExpression" eSuperTypes="#//Expression">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="lhs" eType="#//Variable"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//Variable"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isNot" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
@@ -192,7 +183,7 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BetweenExpression" eSuperTypes="#//Expression">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="lhs" eType="#//Variable"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//Variable"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isNot" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="min" eType="#//Value" containment="true"/>
@@ -200,7 +191,8 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Variable" eSuperTypes="#//ExpressionTerm"/>
   <eClassifiers xsi:type="ecore:EClass" name="ExpressionTerm" eSuperTypes="#//Expression"/>
-  <eClassifiers xsi:type="ecore:EClass" name="AliasAttributeExpression" eSuperTypes="#//SelectExpression #//Variable">
+  <eClassifiers xsi:type="ecore:EClass" name="AliasAttributeExpression" eSuperTypes="#//OrderBySpec #//SelectExpression #//Variable">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="direction" eType="#//OrderByDirection"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="alias" eType="#//VariableDeclaration"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="attributes" unique="false"
         upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

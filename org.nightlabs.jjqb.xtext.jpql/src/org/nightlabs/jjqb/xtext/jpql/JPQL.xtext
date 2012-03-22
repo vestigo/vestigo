@@ -12,32 +12,32 @@ JPQLQuery:
 ;
 
 SelectStatement:
-	selectFromClause=SelectFromClause
+	(selectClause=SelectClause)?
+	fromClause=FromClause
 	(whereClause=WhereClause)?
-	(groupBy=GroupClause)?
-	(having=HavingClause)?
-	(order=OrderClause)?
+	(groupByClause=GroupByClause)?
+	(orderByClause=OrderByClause)?
 ;
 
-GroupClause:
-	'GROUP' 'BY' grouping+=GroupItem (',' grouping+=GroupItem)*
-;
-
-GroupItem:
-	var=AliasAttributeExpression
+GroupByClause:
+	'GROUP' 'BY' grouping+=AliasAttributeExpression (',' grouping+=AliasAttributeExpression)* (havingClause=HavingClause)?
 ;
 
 HavingClause:
 	'HAVING' having=OrExpression
 ;
 
-OrderClause:
-	'ORDER' 'BY' ordering+=OrderItem (',' ordering+=OrderItem)* ((isAsc?='ASC')|(isDesc?='DESC'))?
+OrderByClause:
+	'ORDER' 'BY' ordering+=OrderBySpec (',' ordering+=OrderBySpec)*
 ;
 
-OrderItem:
-//	var=[FromEntry]'.'feature=ID
-	var=AliasAttributeExpression
+OrderBySpec:
+	AliasAttributeExpression direction=OrderByDirection
+;
+
+enum OrderByDirection:
+	asc='ASC' |
+	desc='DESC'
 ;
 
 UpdateStatement:
@@ -65,11 +65,6 @@ DeleteStatement:
 
 DeleteClause:
 	'DELETE' fromClause=FromClause
-;
-
-SelectFromClause:
-	(selectClause=SelectClause)?
-	fromClause=FromClause
 ;
 
 SelectClause:
@@ -124,7 +119,7 @@ FromEntry:
 ;
 
 VariableDeclaration returns VariableDeclaration:
-	("AS")? name=ID
+	'AS'? name=ID
 ;
 
 FromClass:
@@ -198,39 +193,39 @@ ParExpression returns Expression:
 ;
 
 ComparisonOperatorExpression:
-	lhs=Variable operator=ComparisonOperator rhs=ExpressionTerm 
+	left=Variable operator=ComparisonOperator right=ExpressionTerm 
 ;
 
 ExistsExpression:
-	(isNot?='NOT')? 'EXISTS' query=QueryExpression
+	(isNot?='NOT')? 'EXISTS' right=QueryExpression
 ;
 
 AllExpression:
-	'ALL' query=QueryExpression
+	'ALL' right=QueryExpression
 ;
 
 AnyExpression:
-	'ANY' query=QueryExpression
+	'ANY' right=QueryExpression
 ;
 
 SomeExpression:
-	'SOME' query=QueryExpression
+	'SOME' right=QueryExpression
 ;
 
 CollectionExpression:
-	lhs=Variable (isNot?='NOT')? 'MEMBER' ('OF')? rhs=AliasAttributeExpression
+	left=Variable (isNot?='NOT')? 'MEMBER' ('OF')? right=AliasAttributeExpression
 ;
 
 NullComparisonExpression:
-	lhs=Variable 'IS' (isNot?='NOT')? 'NULL'
+	left=Variable 'IS' (isNot?='NOT')? 'NULL'
 ;
 
 EmptyComparisonExpression:
-	lhs=Variable 'IS' (isNot?='NOT')? 'EMPTY'
+	left=Variable 'IS' (isNot?='NOT')? 'EMPTY'
 ;
 
 LikeExpression:
-	lhs=Variable (isNot?='NOT')? 'LIKE' pattern=STRING
+	left=Variable (isNot?='NOT')? 'LIKE' right=STRING
 ;
 
 InExpression:
@@ -239,15 +234,15 @@ InExpression:
 ;
 
 InSeqExpression:
-	lhs=Variable (isNot?='NOT')? 'IN' '(' items+=Variable (',' items+=Variable)* ')'
+	left=Variable (isNot?='NOT')? 'IN' '(' items+=Variable (',' items+=Variable)* ')'
 ;
 
 InQueryExpression:
-	lhs=Variable (isNot?='NOT')? 'IN' query=QueryExpression
+	left=Variable (isNot?='NOT')? 'IN' query=QueryExpression
 ;
 
 BetweenExpression:
-	lhs=Variable (isNot?='NOT')? 'BETWEEN' min=Value 'AND' max=Value
+	left=Variable (isNot?='NOT')? 'BETWEEN' min=Value 'AND' max=Value
 ;
 
 Variable:
