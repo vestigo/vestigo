@@ -27,10 +27,16 @@ implements BundleActivator
 
 	public static final String BUNDLE_SYMBOLIC_NAME = "org.nightlabs.jjqb.core"; //$NON-NLS-1$
 
+	private BundleContext bundleContext;
 	private LicenceManager licenceManager;
 
 	// The shared instance
 	private static JJQBCorePlugin plugin;
+
+	public Bundle getBundle() {
+		BundleContext bundleContext = this.bundleContext;
+		return bundleContext == null ? null : bundleContext.getBundle();
+	}
 
 	@Override
 	public void start(BundleContext context) throws Exception
@@ -42,6 +48,7 @@ implements BundleActivator
 
 //		super.start(context);
 		plugin = this;
+		this.bundleContext = context;
 
 		// This activator is triggered when classes are loaded and we therefore
 		// start the jersey bundles here, because they are not automatically started.
