@@ -2,6 +2,7 @@ grammar org.nightlabs.jjqb.xtext.jdoql.JDOQL with org.eclipse.xtext.common.Termi
 
 generate jDOQL 'http://www.nightlabs.org/jjqb/xtext/jdoql/JDOQL'
 
+// http://www.datanucleus.org/products/accessplatform_3_1/jdo/jdoql_methods.html
 // http://db.apache.org/jdo/specifications.html
 // Current spec: 3.0, chapter 26 JDOQL BNF, page 341ff
 
