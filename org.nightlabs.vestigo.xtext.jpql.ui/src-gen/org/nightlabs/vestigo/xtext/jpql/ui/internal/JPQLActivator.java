@@ -42,7 +42,7 @@ public class JPQLActivator extends AbstractUIPlugin {
 	
 	private static JPQLActivator INSTANCE;
 	
-	public static final String ORG_NIGHTLABS_JJQB_XTEXT_JPQL_JPQL = "org.nightlabs.vestigo.xtext.jpql.JPQL";
+	public static final String ORG_NIGHTLABS_VESTIGO_XTEXT_JPQL_JPQL = "org.nightlabs.vestigo.xtext.jpql.JPQL";
 	
 	public Injector getInjector(String languageName) {
 		try {
@@ -73,7 +73,7 @@ public class JPQLActivator extends AbstractUIPlugin {
 	}
 	
 	protected Module getRuntimeModule(String grammar) {
-		if (ORG_NIGHTLABS_JJQB_XTEXT_JPQL_JPQL.equals(grammar)) {
+		if (ORG_NIGHTLABS_VESTIGO_XTEXT_JPQL_JPQL.equals(grammar)) {
 			return new org.nightlabs.vestigo.xtext.jpql.JPQLRuntimeModule();
 		}
 		
@@ -81,7 +81,7 @@ public class JPQLActivator extends AbstractUIPlugin {
 	}
 	
 	protected Module getUiModule(String grammar) {
-		if (ORG_NIGHTLABS_JJQB_XTEXT_JPQL_JPQL.equals(grammar)) {
+		if (ORG_NIGHTLABS_VESTIGO_XTEXT_JPQL_JPQL.equals(grammar)) {
 			return new org.nightlabs.vestigo.xtext.jpql.ui.JPQLUiModule(this);
 		}
 		

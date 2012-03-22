@@ -42,7 +42,7 @@ public class JDOQLActivator extends AbstractUIPlugin {
 	
 	private static JDOQLActivator INSTANCE;
 	
-	public static final String ORG_NIGHTLABS_JJQB_XTEXT_JDOQL_JDOQL = "org.nightlabs.vestigo.xtext.jdoql.JDOQL";
+	public static final String ORG_NIGHTLABS_VESTIGO_XTEXT_JDOQL_JDOQL = "org.nightlabs.vestigo.xtext.jdoql.JDOQL";
 	
 	public Injector getInjector(String languageName) {
 		try {
@@ -73,7 +73,7 @@ public class JDOQLActivator extends AbstractUIPlugin {
 	}
 	
 	protected Module getRuntimeModule(String grammar) {
-		if (ORG_NIGHTLABS_JJQB_XTEXT_JDOQL_JDOQL.equals(grammar)) {
+		if (ORG_NIGHTLABS_VESTIGO_XTEXT_JDOQL_JDOQL.equals(grammar)) {
 			return new org.nightlabs.vestigo.xtext.jdoql.JDOQLRuntimeModule();
 		}
 		
@@ -81,7 +81,7 @@ public class JDOQLActivator extends AbstractUIPlugin {
 	}
 	
 	protected Module getUiModule(String grammar) {
-		if (ORG_NIGHTLABS_JJQB_XTEXT_JDOQL_JDOQL.equals(grammar)) {
+		if (ORG_NIGHTLABS_VESTIGO_XTEXT_JDOQL_JDOQL.equals(grammar)) {
 			return new org.nightlabs.vestigo.xtext.jdoql.ui.JDOQLUiModule(this);
 		}
 		

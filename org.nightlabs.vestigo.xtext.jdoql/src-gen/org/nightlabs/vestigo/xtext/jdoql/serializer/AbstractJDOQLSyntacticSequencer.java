@@ -104,20 +104,20 @@ public class AbstractJDOQLSyntacticSequencer extends AbstractSyntacticSequencer 
 	/**
 	 * Syntax:
 	 *     (
-	     ('getYear' '(' ')') | 
-	     ('toString' '(' ')') | 
-	     ('ordinal' '(' ')') | 
-	     ('trim' '(' ')') | 
-	     ('toUpperCase' '(' ')') | 
-	     ('length' '(' ')') | 
-	     ('toLowerCase' '(' ')') | 
-	     ('size' '(' ')') | 
-	     ('getMinute' '(' ')') | 
-	     ('getMonth' '(' ')') | 
-	     ('isEmpty' '(' ')') | 
+	     ('getDay' '(' ')') | 
 	     ('getSecond' '(' ')') | 
 	     ('getHour' '(' ')') | 
-	     ('getDay' '(' ')')
+	     ('getMinute' '(' ')') | 
+	     ('size' '(' ')') | 
+	     ('toUpperCase' '(' ')') | 
+	     ('toLowerCase' '(' ')') | 
+	     ('trim' '(' ')') | 
+	     ('toString' '(' ')') | 
+	     ('length' '(' ')') | 
+	     ('ordinal' '(' ')') | 
+	     ('isEmpty' '(' ')') | 
+	     ('getYear' '(' ')') | 
+	     ('getMonth' '(' ')')
 	 )
 	 */
 	protected void emit_MethodExpression___GetDayKeyword_20_1_LeftParenthesisKeyword_20_2_RightParenthesisKeyword_20_3___or___GetHourKeyword_23_1_LeftParenthesisKeyword_23_2_RightParenthesisKeyword_23_3___or___GetMinuteKeyword_24_1_LeftParenthesisKeyword_24_2_RightParenthesisKeyword_24_3___or___GetMonthKeyword_21_1_LeftParenthesisKeyword_21_2_RightParenthesisKeyword_21_3___or___GetSecondKeyword_25_1_LeftParenthesisKeyword_25_2_RightParenthesisKeyword_25_3___or___GetYearKeyword_22_1_LeftParenthesisKeyword_22_2_RightParenthesisKeyword_22_3___or___IsEmptyKeyword_2_1_LeftParenthesisKeyword_2_2_RightParenthesisKeyword_2_3___or___LengthKeyword_12_1_LeftParenthesisKeyword_12_2_RightParenthesisKeyword_12_3___or___OrdinalKeyword_26_1_LeftParenthesisKeyword_26_2_RightParenthesisKeyword_26_3___or___SizeKeyword_3_1_LeftParenthesisKeyword_3_2_RightParenthesisKeyword_3_3___or___ToLowerCaseKeyword_17_1_LeftParenthesisKeyword_17_2_RightParenthesisKeyword_17_3___or___ToStringKeyword_27_1_LeftParenthesisKeyword_27_2_RightParenthesisKeyword_27_3___or___ToUpperCaseKeyword_18_1_LeftParenthesisKeyword_18_2_RightParenthesisKeyword_18_3___or___TrimKeyword_19_1_LeftParenthesisKeyword_19_2_RightParenthesisKeyword_19_3__(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
