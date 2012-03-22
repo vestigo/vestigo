@@ -1026,30 +1026,62 @@ public class JDOQLGrammarAccess extends AbstractGrammarElementFinder {
 
 	public class UnaryExpressionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "UnaryExpression");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cUnaryOperatorAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cUnaryOperatorUnaryOperatorEnumRuleCall_0_0 = (RuleCall)cUnaryOperatorAssignment_0.eContents().get(0);
-		private final Assignment cRightAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cRightFieldAccessExpressionParserRuleCall_1_0 = (RuleCall)cRightAssignment_1.eContents().get(0);
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
+		private final Assignment cCastTypeAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
+		private final RuleCall cCastTypeTypeParserRuleCall_0_1_0 = (RuleCall)cCastTypeAssignment_0_1.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_0_2 = (Keyword)cGroup_0.eContents().get(2);
+		private final Assignment cRightAssignment_0_3 = (Assignment)cGroup_0.eContents().get(3);
+		private final RuleCall cRightFieldAccessExpressionParserRuleCall_0_3_0 = (RuleCall)cRightAssignment_0_3.eContents().get(0);
+		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
+		private final Assignment cUnaryOperatorAssignment_1_0 = (Assignment)cGroup_1.eContents().get(0);
+		private final RuleCall cUnaryOperatorUnaryOperatorEnumRuleCall_1_0_0 = (RuleCall)cUnaryOperatorAssignment_1_0.eContents().get(0);
+		private final Assignment cRightAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cRightFieldAccessExpressionParserRuleCall_1_1_0 = (RuleCall)cRightAssignment_1_1.eContents().get(0);
 		
 		//UnaryExpression returns Expression:
-		//	unaryOperator=UnaryOperator? right=FieldAccessExpression;
+		//	"(" castType=Type ")" right=FieldAccessExpression | unaryOperator=UnaryOperator? right=FieldAccessExpression;
 		public ParserRule getRule() { return rule; }
 
-		//unaryOperator=UnaryOperator? right=FieldAccessExpression
-		public Group getGroup() { return cGroup; }
+		//"(" castType=Type ")" right=FieldAccessExpression | unaryOperator=UnaryOperator? right=FieldAccessExpression
+		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//unaryOperator=UnaryOperator?
-		public Assignment getUnaryOperatorAssignment_0() { return cUnaryOperatorAssignment_0; }
+		//"(" castType=Type ")" right=FieldAccessExpression
+		public Group getGroup_0() { return cGroup_0; }
 
-		//UnaryOperator
-		public RuleCall getUnaryOperatorUnaryOperatorEnumRuleCall_0_0() { return cUnaryOperatorUnaryOperatorEnumRuleCall_0_0; }
+		//"("
+		public Keyword getLeftParenthesisKeyword_0_0() { return cLeftParenthesisKeyword_0_0; }
+
+		//castType=Type
+		public Assignment getCastTypeAssignment_0_1() { return cCastTypeAssignment_0_1; }
+
+		//Type
+		public RuleCall getCastTypeTypeParserRuleCall_0_1_0() { return cCastTypeTypeParserRuleCall_0_1_0; }
+
+		//")"
+		public Keyword getRightParenthesisKeyword_0_2() { return cRightParenthesisKeyword_0_2; }
 
 		//right=FieldAccessExpression
-		public Assignment getRightAssignment_1() { return cRightAssignment_1; }
+		public Assignment getRightAssignment_0_3() { return cRightAssignment_0_3; }
 
 		//FieldAccessExpression
-		public RuleCall getRightFieldAccessExpressionParserRuleCall_1_0() { return cRightFieldAccessExpressionParserRuleCall_1_0; }
+		public RuleCall getRightFieldAccessExpressionParserRuleCall_0_3_0() { return cRightFieldAccessExpressionParserRuleCall_0_3_0; }
+
+		//unaryOperator=UnaryOperator? right=FieldAccessExpression
+		public Group getGroup_1() { return cGroup_1; }
+
+		//unaryOperator=UnaryOperator?
+		public Assignment getUnaryOperatorAssignment_1_0() { return cUnaryOperatorAssignment_1_0; }
+
+		//UnaryOperator
+		public RuleCall getUnaryOperatorUnaryOperatorEnumRuleCall_1_0_0() { return cUnaryOperatorUnaryOperatorEnumRuleCall_1_0_0; }
+
+		//right=FieldAccessExpression
+		public Assignment getRightAssignment_1_1() { return cRightAssignment_1_1; }
+
+		//FieldAccessExpression
+		public RuleCall getRightFieldAccessExpressionParserRuleCall_1_1_0() { return cRightFieldAccessExpressionParserRuleCall_1_1_0; }
 	}
 
 	public class FieldAccessExpressionElements extends AbstractParserRuleElementFinder {
@@ -1218,111 +1250,365 @@ public class JDOQLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
 		private final Action cExpressionAction_0_0 = (Action)cGroup_0.eContents().get(0);
-		private final Keyword cJavaLangKeyword_0_1 = (Keyword)cGroup_0.eContents().get(1);
-		private final Keyword cMathAbsKeyword_0_2 = (Keyword)cGroup_0.eContents().get(2);
-		private final Keyword cLeftParenthesisKeyword_0_3 = (Keyword)cGroup_0.eContents().get(3);
-		private final Assignment cNumericAssignment_0_4 = (Assignment)cGroup_0.eContents().get(4);
-		private final RuleCall cNumericConditionalOrExpressionParserRuleCall_0_4_0 = (RuleCall)cNumericAssignment_0_4.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_0_5 = (Keyword)cGroup_0.eContents().get(5);
+		private final Keyword cJavaLangMathAbsKeyword_0_1 = (Keyword)cGroup_0.eContents().get(1);
+		private final Keyword cLeftParenthesisKeyword_0_2 = (Keyword)cGroup_0.eContents().get(2);
+		private final Assignment cNumericAssignment_0_3 = (Assignment)cGroup_0.eContents().get(3);
+		private final RuleCall cNumericConditionalOrExpressionParserRuleCall_0_3_0 = (RuleCall)cNumericAssignment_0_3.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_0_4 = (Keyword)cGroup_0.eContents().get(4);
 		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
 		private final Action cExpressionAction_1_0 = (Action)cGroup_1.eContents().get(0);
-		private final Keyword cJavaLangKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
-		private final Keyword cMathSqrtKeyword_1_2 = (Keyword)cGroup_1.eContents().get(2);
-		private final Keyword cLeftParenthesisKeyword_1_3 = (Keyword)cGroup_1.eContents().get(3);
-		private final Assignment cNumericAssignment_1_4 = (Assignment)cGroup_1.eContents().get(4);
-		private final RuleCall cNumericConditionalOrExpressionParserRuleCall_1_4_0 = (RuleCall)cNumericAssignment_1_4.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_1_5 = (Keyword)cGroup_1.eContents().get(5);
+		private final Keyword cMathAbsKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
+		private final Keyword cLeftParenthesisKeyword_1_2 = (Keyword)cGroup_1.eContents().get(2);
+		private final Assignment cNumericAssignment_1_3 = (Assignment)cGroup_1.eContents().get(3);
+		private final RuleCall cNumericConditionalOrExpressionParserRuleCall_1_3_0 = (RuleCall)cNumericAssignment_1_3.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_1_4 = (Keyword)cGroup_1.eContents().get(4);
 		private final Group cGroup_2 = (Group)cAlternatives.eContents().get(2);
 		private final Action cExpressionAction_2_0 = (Action)cGroup_2.eContents().get(0);
-		private final Keyword cJavaxJdoKeyword_2_1 = (Keyword)cGroup_2.eContents().get(1);
-		private final Keyword cJDOHelperGetObjectIdKeyword_2_2 = (Keyword)cGroup_2.eContents().get(2);
-		private final Keyword cLeftParenthesisKeyword_2_3 = (Keyword)cGroup_2.eContents().get(3);
-		private final Assignment cPersistableAssignment_2_4 = (Assignment)cGroup_2.eContents().get(4);
-		private final RuleCall cPersistableConditionalOrExpressionParserRuleCall_2_4_0 = (RuleCall)cPersistableAssignment_2_4.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_2_5 = (Keyword)cGroup_2.eContents().get(5);
+		private final Keyword cJavaLangMathSqrtKeyword_2_1 = (Keyword)cGroup_2.eContents().get(1);
+		private final Keyword cLeftParenthesisKeyword_2_2 = (Keyword)cGroup_2.eContents().get(2);
+		private final Assignment cNumericAssignment_2_3 = (Assignment)cGroup_2.eContents().get(3);
+		private final RuleCall cNumericConditionalOrExpressionParserRuleCall_2_3_0 = (RuleCall)cNumericAssignment_2_3.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_2_4 = (Keyword)cGroup_2.eContents().get(4);
+		private final Group cGroup_3 = (Group)cAlternatives.eContents().get(3);
+		private final Action cExpressionAction_3_0 = (Action)cGroup_3.eContents().get(0);
+		private final Keyword cMathSqrtKeyword_3_1 = (Keyword)cGroup_3.eContents().get(1);
+		private final Keyword cLeftParenthesisKeyword_3_2 = (Keyword)cGroup_3.eContents().get(2);
+		private final Assignment cNumericAssignment_3_3 = (Assignment)cGroup_3.eContents().get(3);
+		private final RuleCall cNumericConditionalOrExpressionParserRuleCall_3_3_0 = (RuleCall)cNumericAssignment_3_3.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_3_4 = (Keyword)cGroup_3.eContents().get(4);
+		private final Group cGroup_4 = (Group)cAlternatives.eContents().get(4);
+		private final Action cExpressionAction_4_0 = (Action)cGroup_4.eContents().get(0);
+		private final Keyword cJavaxJdoJDOHelperGetObjectIdKeyword_4_1 = (Keyword)cGroup_4.eContents().get(1);
+		private final Keyword cLeftParenthesisKeyword_4_2 = (Keyword)cGroup_4.eContents().get(2);
+		private final Assignment cPersistableAssignment_4_3 = (Assignment)cGroup_4.eContents().get(3);
+		private final RuleCall cPersistableConditionalOrExpressionParserRuleCall_4_3_0 = (RuleCall)cPersistableAssignment_4_3.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_4_4 = (Keyword)cGroup_4.eContents().get(4);
+		private final Group cGroup_5 = (Group)cAlternatives.eContents().get(5);
+		private final Action cExpressionAction_5_0 = (Action)cGroup_5.eContents().get(0);
+		private final Keyword cJDOHelperGetObjectIdKeyword_5_1 = (Keyword)cGroup_5.eContents().get(1);
+		private final Keyword cLeftParenthesisKeyword_5_2 = (Keyword)cGroup_5.eContents().get(2);
+		private final Assignment cPersistableAssignment_5_3 = (Assignment)cGroup_5.eContents().get(3);
+		private final RuleCall cPersistableConditionalOrExpressionParserRuleCall_5_3_0 = (RuleCall)cPersistableAssignment_5_3.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_5_4 = (Keyword)cGroup_5.eContents().get(4);
+		private final Group cGroup_6 = (Group)cAlternatives.eContents().get(6);
+		private final Action cExpressionAction_6_0 = (Action)cGroup_6.eContents().get(0);
+		private final Keyword cCountKeyword_6_1 = (Keyword)cGroup_6.eContents().get(1);
+		private final Keyword cLeftParenthesisKeyword_6_2 = (Keyword)cGroup_6.eContents().get(2);
+		private final Assignment cIsDistinctAssignment_6_3 = (Assignment)cGroup_6.eContents().get(3);
+		private final Keyword cIsDistinctDISTINCTKeyword_6_3_0 = (Keyword)cIsDistinctAssignment_6_3.eContents().get(0);
+		private final Assignment cAggregateArgumentAssignment_6_4 = (Assignment)cGroup_6.eContents().get(4);
+		private final RuleCall cAggregateArgumentConditionalOrExpressionParserRuleCall_6_4_0 = (RuleCall)cAggregateArgumentAssignment_6_4.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_6_5 = (Keyword)cGroup_6.eContents().get(5);
+		private final Group cGroup_7 = (Group)cAlternatives.eContents().get(7);
+		private final Action cExpressionAction_7_0 = (Action)cGroup_7.eContents().get(0);
+		private final Keyword cSumKeyword_7_1 = (Keyword)cGroup_7.eContents().get(1);
+		private final Keyword cLeftParenthesisKeyword_7_2 = (Keyword)cGroup_7.eContents().get(2);
+		private final Assignment cIsDistinctAssignment_7_3 = (Assignment)cGroup_7.eContents().get(3);
+		private final Keyword cIsDistinctDISTINCTKeyword_7_3_0 = (Keyword)cIsDistinctAssignment_7_3.eContents().get(0);
+		private final Assignment cAggregateArgumentAssignment_7_4 = (Assignment)cGroup_7.eContents().get(4);
+		private final RuleCall cAggregateArgumentConditionalOrExpressionParserRuleCall_7_4_0 = (RuleCall)cAggregateArgumentAssignment_7_4.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_7_5 = (Keyword)cGroup_7.eContents().get(5);
+		private final Group cGroup_8 = (Group)cAlternatives.eContents().get(8);
+		private final Action cExpressionAction_8_0 = (Action)cGroup_8.eContents().get(0);
+		private final Keyword cMinKeyword_8_1 = (Keyword)cGroup_8.eContents().get(1);
+		private final Keyword cLeftParenthesisKeyword_8_2 = (Keyword)cGroup_8.eContents().get(2);
+		private final Assignment cAggregateArgumentAssignment_8_3 = (Assignment)cGroup_8.eContents().get(3);
+		private final RuleCall cAggregateArgumentConditionalOrExpressionParserRuleCall_8_3_0 = (RuleCall)cAggregateArgumentAssignment_8_3.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_8_4 = (Keyword)cGroup_8.eContents().get(4);
+		private final Group cGroup_9 = (Group)cAlternatives.eContents().get(9);
+		private final Action cExpressionAction_9_0 = (Action)cGroup_9.eContents().get(0);
+		private final Keyword cMaxKeyword_9_1 = (Keyword)cGroup_9.eContents().get(1);
+		private final Keyword cLeftParenthesisKeyword_9_2 = (Keyword)cGroup_9.eContents().get(2);
+		private final Assignment cAggregateArgumentAssignment_9_3 = (Assignment)cGroup_9.eContents().get(3);
+		private final RuleCall cAggregateArgumentConditionalOrExpressionParserRuleCall_9_3_0 = (RuleCall)cAggregateArgumentAssignment_9_3.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_9_4 = (Keyword)cGroup_9.eContents().get(4);
+		private final Group cGroup_10 = (Group)cAlternatives.eContents().get(10);
+		private final Action cExpressionAction_10_0 = (Action)cGroup_10.eContents().get(0);
+		private final Keyword cAvgKeyword_10_1 = (Keyword)cGroup_10.eContents().get(1);
+		private final Keyword cLeftParenthesisKeyword_10_2 = (Keyword)cGroup_10.eContents().get(2);
+		private final Assignment cIsDistinctAssignment_10_3 = (Assignment)cGroup_10.eContents().get(3);
+		private final Keyword cIsDistinctDISTINCTKeyword_10_3_0 = (Keyword)cIsDistinctAssignment_10_3.eContents().get(0);
+		private final Assignment cAggregateArgumentAssignment_10_4 = (Assignment)cGroup_10.eContents().get(4);
+		private final RuleCall cAggregateArgumentConditionalOrExpressionParserRuleCall_10_4_0 = (RuleCall)cAggregateArgumentAssignment_10_4.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_10_5 = (Keyword)cGroup_10.eContents().get(5);
 		
 		//StaticMethodExpression returns Expression:
-		//	{Expression} "java.lang."? "Math.abs" "(" numeric=ConditionalOrExpression ")" | {Expression} "java.lang."? "Math.sqrt"
-		//	"(" numeric=ConditionalOrExpression ")" | {Expression} "javax.jdo."? "JDOHelper.getObjectId" "("
-		//	persistable=ConditionalOrExpression ")";
+		//	{Expression} "java.lang.Math.abs" "(" numeric=ConditionalOrExpression ")" | {Expression} "Math.abs" "("
+		//	numeric=ConditionalOrExpression ")" | {Expression} "java.lang.Math.sqrt" "(" numeric=ConditionalOrExpression ")" |
+		//	{Expression} "Math.sqrt" "(" numeric=ConditionalOrExpression ")" | {Expression} "javax.jdo.JDOHelper.getObjectId" "("
+		//	persistable=ConditionalOrExpression ")" | {Expression} "JDOHelper.getObjectId" "(" persistable=ConditionalOrExpression
+		//	")" | // Would be cleaner to declare the following aggregate expressions separately, but here works for now.
+		//	// Marco :-)
+		//	{Expression} "count" "(" isDistinct?="DISTINCT"? aggregateArgument=ConditionalOrExpression ")" | {Expression} "sum" "("
+		//	isDistinct?="DISTINCT"? aggregateArgument=ConditionalOrExpression ")" | {Expression} "min" "("
+		//	aggregateArgument=ConditionalOrExpression ")" | {Expression} "max" "(" aggregateArgument=ConditionalOrExpression ")" |
+		//	{Expression} "avg" "(" isDistinct?="DISTINCT"? aggregateArgument=ConditionalOrExpression ")";
 		public ParserRule getRule() { return rule; }
 
-		//{Expression} "java.lang."? "Math.abs" "(" numeric=ConditionalOrExpression ")" | {Expression} "java.lang."? "Math.sqrt"
-		//"(" numeric=ConditionalOrExpression ")" | {Expression} "javax.jdo."? "JDOHelper.getObjectId" "("
-		//persistable=ConditionalOrExpression ")"
+		//{Expression} "java.lang.Math.abs" "(" numeric=ConditionalOrExpression ")" | {Expression} "Math.abs" "("
+		//numeric=ConditionalOrExpression ")" | {Expression} "java.lang.Math.sqrt" "(" numeric=ConditionalOrExpression ")" |
+		//{Expression} "Math.sqrt" "(" numeric=ConditionalOrExpression ")" | {Expression} "javax.jdo.JDOHelper.getObjectId" "("
+		//persistable=ConditionalOrExpression ")" | {Expression} "JDOHelper.getObjectId" "(" persistable=ConditionalOrExpression
+		//")" | // Would be cleaner to declare the following aggregate expressions separately, but here works for now.
+		//// Marco :-)
+		//{Expression} "count" "(" isDistinct?="DISTINCT"? aggregateArgument=ConditionalOrExpression ")" | {Expression} "sum" "("
+		//isDistinct?="DISTINCT"? aggregateArgument=ConditionalOrExpression ")" | {Expression} "min" "("
+		//aggregateArgument=ConditionalOrExpression ")" | {Expression} "max" "(" aggregateArgument=ConditionalOrExpression ")" |
+		//{Expression} "avg" "(" isDistinct?="DISTINCT"? aggregateArgument=ConditionalOrExpression ")"
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//{Expression} "java.lang."? "Math.abs" "(" numeric=ConditionalOrExpression ")"
+		//{Expression} "java.lang.Math.abs" "(" numeric=ConditionalOrExpression ")"
 		public Group getGroup_0() { return cGroup_0; }
 
 		//{Expression}
 		public Action getExpressionAction_0_0() { return cExpressionAction_0_0; }
 
-		//"java.lang."?
-		public Keyword getJavaLangKeyword_0_1() { return cJavaLangKeyword_0_1; }
-
-		//"Math.abs"
-		public Keyword getMathAbsKeyword_0_2() { return cMathAbsKeyword_0_2; }
+		//"java.lang.Math.abs"
+		public Keyword getJavaLangMathAbsKeyword_0_1() { return cJavaLangMathAbsKeyword_0_1; }
 
 		//"("
-		public Keyword getLeftParenthesisKeyword_0_3() { return cLeftParenthesisKeyword_0_3; }
+		public Keyword getLeftParenthesisKeyword_0_2() { return cLeftParenthesisKeyword_0_2; }
 
 		//numeric=ConditionalOrExpression
-		public Assignment getNumericAssignment_0_4() { return cNumericAssignment_0_4; }
+		public Assignment getNumericAssignment_0_3() { return cNumericAssignment_0_3; }
 
 		//ConditionalOrExpression
-		public RuleCall getNumericConditionalOrExpressionParserRuleCall_0_4_0() { return cNumericConditionalOrExpressionParserRuleCall_0_4_0; }
+		public RuleCall getNumericConditionalOrExpressionParserRuleCall_0_3_0() { return cNumericConditionalOrExpressionParserRuleCall_0_3_0; }
 
 		//")"
-		public Keyword getRightParenthesisKeyword_0_5() { return cRightParenthesisKeyword_0_5; }
+		public Keyword getRightParenthesisKeyword_0_4() { return cRightParenthesisKeyword_0_4; }
 
-		//{Expression} "java.lang."? "Math.sqrt" "(" numeric=ConditionalOrExpression ")"
+		//{Expression} "Math.abs" "(" numeric=ConditionalOrExpression ")"
 		public Group getGroup_1() { return cGroup_1; }
 
 		//{Expression}
 		public Action getExpressionAction_1_0() { return cExpressionAction_1_0; }
 
-		//"java.lang."?
-		public Keyword getJavaLangKeyword_1_1() { return cJavaLangKeyword_1_1; }
-
-		//"Math.sqrt"
-		public Keyword getMathSqrtKeyword_1_2() { return cMathSqrtKeyword_1_2; }
+		//"Math.abs"
+		public Keyword getMathAbsKeyword_1_1() { return cMathAbsKeyword_1_1; }
 
 		//"("
-		public Keyword getLeftParenthesisKeyword_1_3() { return cLeftParenthesisKeyword_1_3; }
+		public Keyword getLeftParenthesisKeyword_1_2() { return cLeftParenthesisKeyword_1_2; }
 
 		//numeric=ConditionalOrExpression
-		public Assignment getNumericAssignment_1_4() { return cNumericAssignment_1_4; }
+		public Assignment getNumericAssignment_1_3() { return cNumericAssignment_1_3; }
 
 		//ConditionalOrExpression
-		public RuleCall getNumericConditionalOrExpressionParserRuleCall_1_4_0() { return cNumericConditionalOrExpressionParserRuleCall_1_4_0; }
+		public RuleCall getNumericConditionalOrExpressionParserRuleCall_1_3_0() { return cNumericConditionalOrExpressionParserRuleCall_1_3_0; }
 
 		//")"
-		public Keyword getRightParenthesisKeyword_1_5() { return cRightParenthesisKeyword_1_5; }
+		public Keyword getRightParenthesisKeyword_1_4() { return cRightParenthesisKeyword_1_4; }
 
-		//{Expression} "javax.jdo."? "JDOHelper.getObjectId" "(" persistable=ConditionalOrExpression ")"
+		//{Expression} "java.lang.Math.sqrt" "(" numeric=ConditionalOrExpression ")"
 		public Group getGroup_2() { return cGroup_2; }
 
 		//{Expression}
 		public Action getExpressionAction_2_0() { return cExpressionAction_2_0; }
 
-		//"javax.jdo."?
-		public Keyword getJavaxJdoKeyword_2_1() { return cJavaxJdoKeyword_2_1; }
-
-		//"JDOHelper.getObjectId"
-		public Keyword getJDOHelperGetObjectIdKeyword_2_2() { return cJDOHelperGetObjectIdKeyword_2_2; }
+		//"java.lang.Math.sqrt"
+		public Keyword getJavaLangMathSqrtKeyword_2_1() { return cJavaLangMathSqrtKeyword_2_1; }
 
 		//"("
-		public Keyword getLeftParenthesisKeyword_2_3() { return cLeftParenthesisKeyword_2_3; }
+		public Keyword getLeftParenthesisKeyword_2_2() { return cLeftParenthesisKeyword_2_2; }
 
-		//persistable=ConditionalOrExpression
-		public Assignment getPersistableAssignment_2_4() { return cPersistableAssignment_2_4; }
+		//numeric=ConditionalOrExpression
+		public Assignment getNumericAssignment_2_3() { return cNumericAssignment_2_3; }
 
 		//ConditionalOrExpression
-		public RuleCall getPersistableConditionalOrExpressionParserRuleCall_2_4_0() { return cPersistableConditionalOrExpressionParserRuleCall_2_4_0; }
+		public RuleCall getNumericConditionalOrExpressionParserRuleCall_2_3_0() { return cNumericConditionalOrExpressionParserRuleCall_2_3_0; }
 
 		//")"
-		public Keyword getRightParenthesisKeyword_2_5() { return cRightParenthesisKeyword_2_5; }
+		public Keyword getRightParenthesisKeyword_2_4() { return cRightParenthesisKeyword_2_4; }
+
+		//{Expression} "Math.sqrt" "(" numeric=ConditionalOrExpression ")"
+		public Group getGroup_3() { return cGroup_3; }
+
+		//{Expression}
+		public Action getExpressionAction_3_0() { return cExpressionAction_3_0; }
+
+		//"Math.sqrt"
+		public Keyword getMathSqrtKeyword_3_1() { return cMathSqrtKeyword_3_1; }
+
+		//"("
+		public Keyword getLeftParenthesisKeyword_3_2() { return cLeftParenthesisKeyword_3_2; }
+
+		//numeric=ConditionalOrExpression
+		public Assignment getNumericAssignment_3_3() { return cNumericAssignment_3_3; }
+
+		//ConditionalOrExpression
+		public RuleCall getNumericConditionalOrExpressionParserRuleCall_3_3_0() { return cNumericConditionalOrExpressionParserRuleCall_3_3_0; }
+
+		//")"
+		public Keyword getRightParenthesisKeyword_3_4() { return cRightParenthesisKeyword_3_4; }
+
+		//{Expression} "javax.jdo.JDOHelper.getObjectId" "(" persistable=ConditionalOrExpression ")"
+		public Group getGroup_4() { return cGroup_4; }
+
+		//{Expression}
+		public Action getExpressionAction_4_0() { return cExpressionAction_4_0; }
+
+		//"javax.jdo.JDOHelper.getObjectId"
+		public Keyword getJavaxJdoJDOHelperGetObjectIdKeyword_4_1() { return cJavaxJdoJDOHelperGetObjectIdKeyword_4_1; }
+
+		//"("
+		public Keyword getLeftParenthesisKeyword_4_2() { return cLeftParenthesisKeyword_4_2; }
+
+		//persistable=ConditionalOrExpression
+		public Assignment getPersistableAssignment_4_3() { return cPersistableAssignment_4_3; }
+
+		//ConditionalOrExpression
+		public RuleCall getPersistableConditionalOrExpressionParserRuleCall_4_3_0() { return cPersistableConditionalOrExpressionParserRuleCall_4_3_0; }
+
+		//")"
+		public Keyword getRightParenthesisKeyword_4_4() { return cRightParenthesisKeyword_4_4; }
+
+		//{Expression} "JDOHelper.getObjectId" "(" persistable=ConditionalOrExpression ")"
+		public Group getGroup_5() { return cGroup_5; }
+
+		//{Expression}
+		public Action getExpressionAction_5_0() { return cExpressionAction_5_0; }
+
+		//"JDOHelper.getObjectId"
+		public Keyword getJDOHelperGetObjectIdKeyword_5_1() { return cJDOHelperGetObjectIdKeyword_5_1; }
+
+		//"("
+		public Keyword getLeftParenthesisKeyword_5_2() { return cLeftParenthesisKeyword_5_2; }
+
+		//persistable=ConditionalOrExpression
+		public Assignment getPersistableAssignment_5_3() { return cPersistableAssignment_5_3; }
+
+		//ConditionalOrExpression
+		public RuleCall getPersistableConditionalOrExpressionParserRuleCall_5_3_0() { return cPersistableConditionalOrExpressionParserRuleCall_5_3_0; }
+
+		//")"
+		public Keyword getRightParenthesisKeyword_5_4() { return cRightParenthesisKeyword_5_4; }
+
+		//// Would be cleaner to declare the following aggregate expressions separately, but here works for now.
+		//// Marco :-)
+		//{Expression} "count" "(" isDistinct?="DISTINCT"? aggregateArgument=ConditionalOrExpression ")"
+		public Group getGroup_6() { return cGroup_6; }
+
+		//// Would be cleaner to declare the following aggregate expressions separately, but here works for now.
+		//// Marco :-)
+		//{Expression}
+		public Action getExpressionAction_6_0() { return cExpressionAction_6_0; }
+
+		//"count"
+		public Keyword getCountKeyword_6_1() { return cCountKeyword_6_1; }
+
+		//"("
+		public Keyword getLeftParenthesisKeyword_6_2() { return cLeftParenthesisKeyword_6_2; }
+
+		//isDistinct?="DISTINCT"?
+		public Assignment getIsDistinctAssignment_6_3() { return cIsDistinctAssignment_6_3; }
+
+		//"DISTINCT"
+		public Keyword getIsDistinctDISTINCTKeyword_6_3_0() { return cIsDistinctDISTINCTKeyword_6_3_0; }
+
+		//aggregateArgument=ConditionalOrExpression
+		public Assignment getAggregateArgumentAssignment_6_4() { return cAggregateArgumentAssignment_6_4; }
+
+		//ConditionalOrExpression
+		public RuleCall getAggregateArgumentConditionalOrExpressionParserRuleCall_6_4_0() { return cAggregateArgumentConditionalOrExpressionParserRuleCall_6_4_0; }
+
+		//")"
+		public Keyword getRightParenthesisKeyword_6_5() { return cRightParenthesisKeyword_6_5; }
+
+		//{Expression} "sum" "(" isDistinct?="DISTINCT"? aggregateArgument=ConditionalOrExpression ")"
+		public Group getGroup_7() { return cGroup_7; }
+
+		//{Expression}
+		public Action getExpressionAction_7_0() { return cExpressionAction_7_0; }
+
+		//"sum"
+		public Keyword getSumKeyword_7_1() { return cSumKeyword_7_1; }
+
+		//"("
+		public Keyword getLeftParenthesisKeyword_7_2() { return cLeftParenthesisKeyword_7_2; }
+
+		//isDistinct?="DISTINCT"?
+		public Assignment getIsDistinctAssignment_7_3() { return cIsDistinctAssignment_7_3; }
+
+		//"DISTINCT"
+		public Keyword getIsDistinctDISTINCTKeyword_7_3_0() { return cIsDistinctDISTINCTKeyword_7_3_0; }
+
+		//aggregateArgument=ConditionalOrExpression
+		public Assignment getAggregateArgumentAssignment_7_4() { return cAggregateArgumentAssignment_7_4; }
+
+		//ConditionalOrExpression
+		public RuleCall getAggregateArgumentConditionalOrExpressionParserRuleCall_7_4_0() { return cAggregateArgumentConditionalOrExpressionParserRuleCall_7_4_0; }
+
+		//")"
+		public Keyword getRightParenthesisKeyword_7_5() { return cRightParenthesisKeyword_7_5; }
+
+		//{Expression} "min" "(" aggregateArgument=ConditionalOrExpression ")"
+		public Group getGroup_8() { return cGroup_8; }
+
+		//{Expression}
+		public Action getExpressionAction_8_0() { return cExpressionAction_8_0; }
+
+		//"min"
+		public Keyword getMinKeyword_8_1() { return cMinKeyword_8_1; }
+
+		//"("
+		public Keyword getLeftParenthesisKeyword_8_2() { return cLeftParenthesisKeyword_8_2; }
+
+		//aggregateArgument=ConditionalOrExpression
+		public Assignment getAggregateArgumentAssignment_8_3() { return cAggregateArgumentAssignment_8_3; }
+
+		//ConditionalOrExpression
+		public RuleCall getAggregateArgumentConditionalOrExpressionParserRuleCall_8_3_0() { return cAggregateArgumentConditionalOrExpressionParserRuleCall_8_3_0; }
+
+		//")"
+		public Keyword getRightParenthesisKeyword_8_4() { return cRightParenthesisKeyword_8_4; }
+
+		//{Expression} "max" "(" aggregateArgument=ConditionalOrExpression ")"
+		public Group getGroup_9() { return cGroup_9; }
+
+		//{Expression}
+		public Action getExpressionAction_9_0() { return cExpressionAction_9_0; }
+
+		//"max"
+		public Keyword getMaxKeyword_9_1() { return cMaxKeyword_9_1; }
+
+		//"("
+		public Keyword getLeftParenthesisKeyword_9_2() { return cLeftParenthesisKeyword_9_2; }
+
+		//aggregateArgument=ConditionalOrExpression
+		public Assignment getAggregateArgumentAssignment_9_3() { return cAggregateArgumentAssignment_9_3; }
+
+		//ConditionalOrExpression
+		public RuleCall getAggregateArgumentConditionalOrExpressionParserRuleCall_9_3_0() { return cAggregateArgumentConditionalOrExpressionParserRuleCall_9_3_0; }
+
+		//")"
+		public Keyword getRightParenthesisKeyword_9_4() { return cRightParenthesisKeyword_9_4; }
+
+		//{Expression} "avg" "(" isDistinct?="DISTINCT"? aggregateArgument=ConditionalOrExpression ")"
+		public Group getGroup_10() { return cGroup_10; }
+
+		//{Expression}
+		public Action getExpressionAction_10_0() { return cExpressionAction_10_0; }
+
+		//"avg"
+		public Keyword getAvgKeyword_10_1() { return cAvgKeyword_10_1; }
+
+		//"("
+		public Keyword getLeftParenthesisKeyword_10_2() { return cLeftParenthesisKeyword_10_2; }
+
+		//isDistinct?="DISTINCT"?
+		public Assignment getIsDistinctAssignment_10_3() { return cIsDistinctAssignment_10_3; }
+
+		//"DISTINCT"
+		public Keyword getIsDistinctDISTINCTKeyword_10_3_0() { return cIsDistinctDISTINCTKeyword_10_3_0; }
+
+		//aggregateArgument=ConditionalOrExpression
+		public Assignment getAggregateArgumentAssignment_10_4() { return cAggregateArgumentAssignment_10_4; }
+
+		//ConditionalOrExpression
+		public RuleCall getAggregateArgumentConditionalOrExpressionParserRuleCall_10_4_0() { return cAggregateArgumentConditionalOrExpressionParserRuleCall_10_4_0; }
+
+		//")"
+		public Keyword getRightParenthesisKeyword_10_5() { return cRightParenthesisKeyword_10_5; }
 	}
 
 	public class MethodExpressionElements extends AbstractParserRuleElementFinder {
@@ -1771,30 +2057,6 @@ public class JDOQLGrammarAccess extends AbstractGrammarElementFinder {
 		public Keyword getRightParenthesisKeyword_2() { return cRightParenthesisKeyword_2; }
 	}
 
-	public class CastElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Cast");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cLeftParenthesisKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final RuleCall cTypeParserRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
-		private final Keyword cRightParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		
-		//Cast:
-		//	"(" Type ")";
-		public ParserRule getRule() { return rule; }
-
-		//"(" Type ")"
-		public Group getGroup() { return cGroup; }
-
-		//"("
-		public Keyword getLeftParenthesisKeyword_0() { return cLeftParenthesisKeyword_0; }
-
-		//Type
-		public RuleCall getTypeParserRuleCall_1() { return cTypeParserRuleCall_1; }
-
-		//")"
-		public Keyword getRightParenthesisKeyword_2() { return cRightParenthesisKeyword_2; }
-	}
-
 	public class TypeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Type");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
@@ -1993,30 +2255,160 @@ public class JDOQLGrammarAccess extends AbstractGrammarElementFinder {
 
 	public class QualifiedIdentifierElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "QualifiedIdentifier");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final RuleCall cIDTerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
-		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
-		private final Keyword cFullStopKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
-		private final RuleCall cIDTerminalRuleCall_1_1 = (RuleCall)cGroup_1.eContents().get(1);
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Keyword cJavaLangBooleanKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
+		private final Keyword cJavaLangByteKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
+		private final Keyword cJavaLangCharacterKeyword_2 = (Keyword)cAlternatives.eContents().get(2);
+		private final Keyword cJavaLangDoubleKeyword_3 = (Keyword)cAlternatives.eContents().get(3);
+		private final Keyword cJavaLangFloatKeyword_4 = (Keyword)cAlternatives.eContents().get(4);
+		private final Keyword cJavaLangIntegerKeyword_5 = (Keyword)cAlternatives.eContents().get(5);
+		private final Keyword cJavaLangLongKeyword_6 = (Keyword)cAlternatives.eContents().get(6);
+		private final Keyword cJavaLangShortKeyword_7 = (Keyword)cAlternatives.eContents().get(7);
+		private final Keyword cJavaLangStringKeyword_8 = (Keyword)cAlternatives.eContents().get(8);
+		private final Group cGroup_9 = (Group)cAlternatives.eContents().get(9);
+		private final Keyword cJavaKeyword_9_0 = (Keyword)cGroup_9.eContents().get(0);
+		private final RuleCall cIDTerminalRuleCall_9_1 = (RuleCall)cGroup_9.eContents().get(1);
+		private final Group cGroup_9_2 = (Group)cGroup_9.eContents().get(2);
+		private final Keyword cFullStopKeyword_9_2_0 = (Keyword)cGroup_9_2.eContents().get(0);
+		private final RuleCall cIDTerminalRuleCall_9_2_1 = (RuleCall)cGroup_9_2.eContents().get(1);
+		private final Group cGroup_10 = (Group)cAlternatives.eContents().get(10);
+		private final Keyword cJavaxKeyword_10_0 = (Keyword)cGroup_10.eContents().get(0);
+		private final RuleCall cIDTerminalRuleCall_10_1 = (RuleCall)cGroup_10.eContents().get(1);
+		private final Group cGroup_10_2 = (Group)cGroup_10.eContents().get(2);
+		private final Keyword cFullStopKeyword_10_2_0 = (Keyword)cGroup_10_2.eContents().get(0);
+		private final RuleCall cIDTerminalRuleCall_10_2_1 = (RuleCall)cGroup_10_2.eContents().get(1);
+		private final Group cGroup_11 = (Group)cAlternatives.eContents().get(11);
+		private final RuleCall cIDTerminalRuleCall_11_0 = (RuleCall)cGroup_11.eContents().get(0);
+		private final Group cGroup_11_1 = (Group)cGroup_11.eContents().get(1);
+		private final Keyword cFullStopKeyword_11_1_0 = (Keyword)cGroup_11_1.eContents().get(0);
+		private final RuleCall cIDTerminalRuleCall_11_1_1 = (RuleCall)cGroup_11_1.eContents().get(1);
 		
-		//QualifiedIdentifier:
+		//QualifiedIdentifier: // BEGIN workaround
+		//// without this, I get error markers when casting sth. to a class in one of these packages
+		////	'java.'ID ('.'ID)* |
+		////	'java'ID ('.'ID)* |
+		////	'java.lang.'ID ('.'ID)* |
+		////	'java'ID'.lang'ID ('.'ID)* |
+		////	'javax.jdo'ID ('.'ID)* |
+		////	'javax.jdo.'ID ('.'ID)* |
+		////	'javax'ID'.jdo'ID ('.'ID)* |
+		//// the above DOES NOT WORK :-((( Have to look for another solution!
+		//// for now, at least listing the most common from these packages explicitely (this works)...
+		//	"java.lang.Boolean" // for java.util.Map et al.
+		//	// for javax.**
+		//	| "java.lang.Byte" | "java.lang.Character" | "java.lang.Double" | "java.lang.Float" | "java.lang.Integer" |
+		//	"java.lang.Long" | "java.lang.Short" | "java.lang.String" | "java." ID ("." ID)* | "javax." ID ("." ID)* | // END workaround
 		//	ID ("." ID)*;
 		public ParserRule getRule() { return rule; }
 
+		//// BEGIN workaround
+		//// without this, I get error markers when casting sth. to a class in one of these packages
+		////	'java.'ID ('.'ID)* |
+		////	'java'ID ('.'ID)* |
+		////	'java.lang.'ID ('.'ID)* |
+		////	'java'ID'.lang'ID ('.'ID)* |
+		////	'javax.jdo'ID ('.'ID)* |
+		////	'javax.jdo.'ID ('.'ID)* |
+		////	'javax'ID'.jdo'ID ('.'ID)* |
+		//// the above DOES NOT WORK :-((( Have to look for another solution!
+		//// for now, at least listing the most common from these packages explicitely (this works)...
+		//"java.lang.Boolean" // for java.util.Map et al.
+		//// for javax.**
+		//| "java.lang.Byte" | "java.lang.Character" | "java.lang.Double" | "java.lang.Float" | "java.lang.Integer" |
+		//"java.lang.Long" | "java.lang.Short" | "java.lang.String" | "java." ID ("." ID)* | "javax." ID ("." ID)* | // END workaround
 		//ID ("." ID)*
-		public Group getGroup() { return cGroup; }
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//// BEGIN workaround
+		//// without this, I get error markers when casting sth. to a class in one of these packages
+		////	'java.'ID ('.'ID)* |
+		////	'java'ID ('.'ID)* |
+		////	'java.lang.'ID ('.'ID)* |
+		////	'java'ID'.lang'ID ('.'ID)* |
+		////	'javax.jdo'ID ('.'ID)* |
+		////	'javax.jdo.'ID ('.'ID)* |
+		////	'javax'ID'.jdo'ID ('.'ID)* |
+		//// the above DOES NOT WORK :-((( Have to look for another solution!
+		//// for now, at least listing the most common from these packages explicitely (this works)...
+		//"java.lang.Boolean"
+		public Keyword getJavaLangBooleanKeyword_0() { return cJavaLangBooleanKeyword_0; }
+
+		//"java.lang.Byte"
+		public Keyword getJavaLangByteKeyword_1() { return cJavaLangByteKeyword_1; }
+
+		//"java.lang.Character"
+		public Keyword getJavaLangCharacterKeyword_2() { return cJavaLangCharacterKeyword_2; }
+
+		//"java.lang.Double"
+		public Keyword getJavaLangDoubleKeyword_3() { return cJavaLangDoubleKeyword_3; }
+
+		//"java.lang.Float"
+		public Keyword getJavaLangFloatKeyword_4() { return cJavaLangFloatKeyword_4; }
+
+		//"java.lang.Integer"
+		public Keyword getJavaLangIntegerKeyword_5() { return cJavaLangIntegerKeyword_5; }
+
+		//"java.lang.Long"
+		public Keyword getJavaLangLongKeyword_6() { return cJavaLangLongKeyword_6; }
+
+		//"java.lang.Short"
+		public Keyword getJavaLangShortKeyword_7() { return cJavaLangShortKeyword_7; }
+
+		//"java.lang.String"
+		public Keyword getJavaLangStringKeyword_8() { return cJavaLangStringKeyword_8; }
+
+		//"java." ID ("." ID)*
+		public Group getGroup_9() { return cGroup_9; }
+
+		//"java."
+		public Keyword getJavaKeyword_9_0() { return cJavaKeyword_9_0; }
 
 		//ID
-		public RuleCall getIDTerminalRuleCall_0() { return cIDTerminalRuleCall_0; }
+		public RuleCall getIDTerminalRuleCall_9_1() { return cIDTerminalRuleCall_9_1; }
 
 		//("." ID)*
-		public Group getGroup_1() { return cGroup_1; }
+		public Group getGroup_9_2() { return cGroup_9_2; }
 
 		//"."
-		public Keyword getFullStopKeyword_1_0() { return cFullStopKeyword_1_0; }
+		public Keyword getFullStopKeyword_9_2_0() { return cFullStopKeyword_9_2_0; }
 
 		//ID
-		public RuleCall getIDTerminalRuleCall_1_1() { return cIDTerminalRuleCall_1_1; }
+		public RuleCall getIDTerminalRuleCall_9_2_1() { return cIDTerminalRuleCall_9_2_1; }
+
+		//"javax." ID ("." ID)*
+		public Group getGroup_10() { return cGroup_10; }
+
+		//"javax."
+		public Keyword getJavaxKeyword_10_0() { return cJavaxKeyword_10_0; }
+
+		//ID
+		public RuleCall getIDTerminalRuleCall_10_1() { return cIDTerminalRuleCall_10_1; }
+
+		//("." ID)*
+		public Group getGroup_10_2() { return cGroup_10_2; }
+
+		//"."
+		public Keyword getFullStopKeyword_10_2_0() { return cFullStopKeyword_10_2_0; }
+
+		//ID
+		public RuleCall getIDTerminalRuleCall_10_2_1() { return cIDTerminalRuleCall_10_2_1; }
+
+		//// END workaround
+		//ID ("." ID)*
+		public Group getGroup_11() { return cGroup_11; }
+
+		//// END workaround
+		//ID
+		public RuleCall getIDTerminalRuleCall_11_0() { return cIDTerminalRuleCall_11_0; }
+
+		//("." ID)*
+		public Group getGroup_11_1() { return cGroup_11_1; }
+
+		//"."
+		public Keyword getFullStopKeyword_11_1_0() { return cFullStopKeyword_11_1_0; }
+
+		//ID
+		public RuleCall getIDTerminalRuleCall_11_1_1() { return cIDTerminalRuleCall_11_1_1; }
 	}
 
 	public class CandidateClassNameElements extends AbstractParserRuleElementFinder {
@@ -2301,7 +2693,6 @@ public class JDOQLGrammarAccess extends AbstractGrammarElementFinder {
 	private StaticMethodExpressionElements pStaticMethodExpression;
 	private MethodExpressionElements pMethodExpression;
 	private ParenthesesExpressionElements pParenthesesExpression;
-	private CastElements pCast;
 	private TypeElements pType;
 	private PrimitiveTypeElements pPrimitiveType;
 	private NumericTypeElements pNumericType;
@@ -2647,7 +3038,7 @@ public class JDOQLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//UnaryExpression returns Expression:
-	//	unaryOperator=UnaryOperator? right=FieldAccessExpression;
+	//	"(" castType=Type ")" right=FieldAccessExpression | unaryOperator=UnaryOperator? right=FieldAccessExpression;
 	public UnaryExpressionElements getUnaryExpressionAccess() {
 		return (pUnaryExpression != null) ? pUnaryExpression : (pUnaryExpression = new UnaryExpressionElements());
 	}
@@ -2689,9 +3080,16 @@ public class JDOQLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//StaticMethodExpression returns Expression:
-	//	{Expression} "java.lang."? "Math.abs" "(" numeric=ConditionalOrExpression ")" | {Expression} "java.lang."? "Math.sqrt"
-	//	"(" numeric=ConditionalOrExpression ")" | {Expression} "javax.jdo."? "JDOHelper.getObjectId" "("
-	//	persistable=ConditionalOrExpression ")";
+	//	{Expression} "java.lang.Math.abs" "(" numeric=ConditionalOrExpression ")" | {Expression} "Math.abs" "("
+	//	numeric=ConditionalOrExpression ")" | {Expression} "java.lang.Math.sqrt" "(" numeric=ConditionalOrExpression ")" |
+	//	{Expression} "Math.sqrt" "(" numeric=ConditionalOrExpression ")" | {Expression} "javax.jdo.JDOHelper.getObjectId" "("
+	//	persistable=ConditionalOrExpression ")" | {Expression} "JDOHelper.getObjectId" "(" persistable=ConditionalOrExpression
+	//	")" | // Would be cleaner to declare the following aggregate expressions separately, but here works for now.
+	//	// Marco :-)
+	//	{Expression} "count" "(" isDistinct?="DISTINCT"? aggregateArgument=ConditionalOrExpression ")" | {Expression} "sum" "("
+	//	isDistinct?="DISTINCT"? aggregateArgument=ConditionalOrExpression ")" | {Expression} "min" "("
+	//	aggregateArgument=ConditionalOrExpression ")" | {Expression} "max" "(" aggregateArgument=ConditionalOrExpression ")" |
+	//	{Expression} "avg" "(" isDistinct?="DISTINCT"? aggregateArgument=ConditionalOrExpression ")";
 	public StaticMethodExpressionElements getStaticMethodExpressionAccess() {
 		return (pStaticMethodExpression != null) ? pStaticMethodExpression : (pStaticMethodExpression = new StaticMethodExpressionElements());
 	}
@@ -2733,16 +3131,6 @@ public class JDOQLGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getParenthesesExpressionRule() {
 		return getParenthesesExpressionAccess().getRule();
-	}
-
-	//Cast:
-	//	"(" Type ")";
-	public CastElements getCastAccess() {
-		return (pCast != null) ? pCast : (pCast = new CastElements());
-	}
-	
-	public ParserRule getCastRule() {
-		return getCastAccess().getRule();
 	}
 
 	//Type:
@@ -2845,7 +3233,21 @@ public class JDOQLGrammarAccess extends AbstractGrammarElementFinder {
 		return getLiteralAccess().getRule();
 	}
 
-	//QualifiedIdentifier:
+	//QualifiedIdentifier: // BEGIN workaround
+	//// without this, I get error markers when casting sth. to a class in one of these packages
+	////	'java.'ID ('.'ID)* |
+	////	'java'ID ('.'ID)* |
+	////	'java.lang.'ID ('.'ID)* |
+	////	'java'ID'.lang'ID ('.'ID)* |
+	////	'javax.jdo'ID ('.'ID)* |
+	////	'javax.jdo.'ID ('.'ID)* |
+	////	'javax'ID'.jdo'ID ('.'ID)* |
+	//// the above DOES NOT WORK :-((( Have to look for another solution!
+	//// for now, at least listing the most common from these packages explicitely (this works)...
+	//	"java.lang.Boolean" // for java.util.Map et al.
+	//	// for javax.**
+	//	| "java.lang.Byte" | "java.lang.Character" | "java.lang.Double" | "java.lang.Float" | "java.lang.Integer" |
+	//	"java.lang.Long" | "java.lang.Short" | "java.lang.String" | "java." ID ("." ID)* | "javax." ID ("." ID)* | // END workaround
 	//	ID ("." ID)*;
 	public QualifiedIdentifierElements getQualifiedIdentifierAccess() {
 		return (pQualifiedIdentifier != null) ? pQualifiedIdentifier : (pQualifiedIdentifier = new QualifiedIdentifierElements());

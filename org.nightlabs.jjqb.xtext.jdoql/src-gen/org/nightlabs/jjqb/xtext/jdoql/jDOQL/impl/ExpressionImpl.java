@@ -28,8 +28,9 @@ import org.nightlabs.jjqb.xtext.jdoql.jDOQL.UnaryOperator;
  * <ul>
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ExpressionImpl#getResultNaming <em>Result Naming</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ExpressionImpl#getDirection <em>Direction</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ExpressionImpl#getUnaryOperator <em>Unary Operator</em>}</li>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ExpressionImpl#getCastType <em>Cast Type</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ExpressionImpl#getRight <em>Right</em>}</li>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ExpressionImpl#getUnaryOperator <em>Unary Operator</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ExpressionImpl#getLiteral <em>Literal</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ExpressionImpl#getThis <em>This</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ExpressionImpl#getId <em>Id</em>}</li>
@@ -37,6 +38,8 @@ import org.nightlabs.jjqb.xtext.jdoql.jDOQL.UnaryOperator;
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ExpressionImpl#getMethod <em>Method</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ExpressionImpl#getNumeric <em>Numeric</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ExpressionImpl#getPersistable <em>Persistable</em>}</li>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ExpressionImpl#isIsDistinct <em>Is Distinct</em>}</li>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ExpressionImpl#getAggregateArgument <em>Aggregate Argument</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ExpressionImpl#getElement <em>Element</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ExpressionImpl#getArg <em>Arg</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ExpressionImpl#getKey <em>Key</em>}</li>
@@ -85,6 +88,36 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
   protected OrderByDirection direction = DIRECTION_EDEFAULT;
 
   /**
+   * The default value of the '{@link #getCastType() <em>Cast Type</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getCastType()
+   * @generated
+   * @ordered
+   */
+  protected static final String CAST_TYPE_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getCastType() <em>Cast Type</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getCastType()
+   * @generated
+   * @ordered
+   */
+  protected String castType = CAST_TYPE_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getRight() <em>Right</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getRight()
+   * @generated
+   * @ordered
+   */
+  protected Expression right;
+
+  /**
    * The default value of the '{@link #getUnaryOperator() <em>Unary Operator</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -103,16 +136,6 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
    * @ordered
    */
   protected UnaryOperator unaryOperator = UNARY_OPERATOR_EDEFAULT;
-
-  /**
-   * The cached value of the '{@link #getRight() <em>Right</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getRight()
-   * @generated
-   * @ordered
-   */
-  protected Expression right;
 
   /**
    * The default value of the '{@link #getLiteral() <em>Literal</em>}' attribute.
@@ -223,6 +246,36 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
    * @ordered
    */
   protected Expression persistable;
+
+  /**
+   * The default value of the '{@link #isIsDistinct() <em>Is Distinct</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isIsDistinct()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean IS_DISTINCT_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isIsDistinct() <em>Is Distinct</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isIsDistinct()
+   * @generated
+   * @ordered
+   */
+  protected boolean isDistinct = IS_DISTINCT_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getAggregateArgument() <em>Aggregate Argument</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getAggregateArgument()
+   * @generated
+   * @ordered
+   */
+  protected Expression aggregateArgument;
 
   /**
    * The cached value of the '{@link #getElement() <em>Element</em>}' containment reference.
@@ -421,9 +474,9 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
    * <!-- end-user-doc -->
    * @generated
    */
-  public UnaryOperator getUnaryOperator()
+  public String getCastType()
   {
-    return unaryOperator;
+    return castType;
   }
 
   /**
@@ -431,12 +484,12 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setUnaryOperator(UnaryOperator newUnaryOperator)
+  public void setCastType(String newCastType)
   {
-    UnaryOperator oldUnaryOperator = unaryOperator;
-    unaryOperator = newUnaryOperator == null ? UNARY_OPERATOR_EDEFAULT : newUnaryOperator;
+    String oldCastType = castType;
+    castType = newCastType;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, JDOQLPackage.EXPRESSION__UNARY_OPERATOR, oldUnaryOperator, unaryOperator));
+      eNotify(new ENotificationImpl(this, Notification.SET, JDOQLPackage.EXPRESSION__CAST_TYPE, oldCastType, castType));
   }
 
   /**
@@ -485,6 +538,29 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
     }
     else if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, JDOQLPackage.EXPRESSION__RIGHT, newRight, newRight));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public UnaryOperator getUnaryOperator()
+  {
+    return unaryOperator;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setUnaryOperator(UnaryOperator newUnaryOperator)
+  {
+    UnaryOperator oldUnaryOperator = unaryOperator;
+    unaryOperator = newUnaryOperator == null ? UNARY_OPERATOR_EDEFAULT : newUnaryOperator;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, JDOQLPackage.EXPRESSION__UNARY_OPERATOR, oldUnaryOperator, unaryOperator));
   }
 
   /**
@@ -721,6 +797,77 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
     }
     else if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, JDOQLPackage.EXPRESSION__PERSISTABLE, newPersistable, newPersistable));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public boolean isIsDistinct()
+  {
+    return isDistinct;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setIsDistinct(boolean newIsDistinct)
+  {
+    boolean oldIsDistinct = isDistinct;
+    isDistinct = newIsDistinct;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, JDOQLPackage.EXPRESSION__IS_DISTINCT, oldIsDistinct, isDistinct));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Expression getAggregateArgument()
+  {
+    return aggregateArgument;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetAggregateArgument(Expression newAggregateArgument, NotificationChain msgs)
+  {
+    Expression oldAggregateArgument = aggregateArgument;
+    aggregateArgument = newAggregateArgument;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JDOQLPackage.EXPRESSION__AGGREGATE_ARGUMENT, oldAggregateArgument, newAggregateArgument);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setAggregateArgument(Expression newAggregateArgument)
+  {
+    if (newAggregateArgument != aggregateArgument)
+    {
+      NotificationChain msgs = null;
+      if (aggregateArgument != null)
+        msgs = ((InternalEObject)aggregateArgument).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JDOQLPackage.EXPRESSION__AGGREGATE_ARGUMENT, null, msgs);
+      if (newAggregateArgument != null)
+        msgs = ((InternalEObject)newAggregateArgument).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JDOQLPackage.EXPRESSION__AGGREGATE_ARGUMENT, null, msgs);
+      msgs = basicSetAggregateArgument(newAggregateArgument, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, JDOQLPackage.EXPRESSION__AGGREGATE_ARGUMENT, newAggregateArgument, newAggregateArgument));
   }
 
   /**
@@ -1223,6 +1370,8 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
         return basicSetNumeric(null, msgs);
       case JDOQLPackage.EXPRESSION__PERSISTABLE:
         return basicSetPersistable(null, msgs);
+      case JDOQLPackage.EXPRESSION__AGGREGATE_ARGUMENT:
+        return basicSetAggregateArgument(null, msgs);
       case JDOQLPackage.EXPRESSION__ELEMENT:
         return basicSetElement(null, msgs);
       case JDOQLPackage.EXPRESSION__ARG:
@@ -1261,10 +1410,12 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
         return getResultNaming();
       case JDOQLPackage.EXPRESSION__DIRECTION:
         return getDirection();
-      case JDOQLPackage.EXPRESSION__UNARY_OPERATOR:
-        return getUnaryOperator();
+      case JDOQLPackage.EXPRESSION__CAST_TYPE:
+        return getCastType();
       case JDOQLPackage.EXPRESSION__RIGHT:
         return getRight();
+      case JDOQLPackage.EXPRESSION__UNARY_OPERATOR:
+        return getUnaryOperator();
       case JDOQLPackage.EXPRESSION__LITERAL:
         return getLiteral();
       case JDOQLPackage.EXPRESSION__THIS:
@@ -1279,6 +1430,10 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
         return getNumeric();
       case JDOQLPackage.EXPRESSION__PERSISTABLE:
         return getPersistable();
+      case JDOQLPackage.EXPRESSION__IS_DISTINCT:
+        return isIsDistinct();
+      case JDOQLPackage.EXPRESSION__AGGREGATE_ARGUMENT:
+        return getAggregateArgument();
       case JDOQLPackage.EXPRESSION__ELEMENT:
         return getElement();
       case JDOQLPackage.EXPRESSION__ARG:
@@ -1319,11 +1474,14 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
       case JDOQLPackage.EXPRESSION__DIRECTION:
         setDirection((OrderByDirection)newValue);
         return;
-      case JDOQLPackage.EXPRESSION__UNARY_OPERATOR:
-        setUnaryOperator((UnaryOperator)newValue);
+      case JDOQLPackage.EXPRESSION__CAST_TYPE:
+        setCastType((String)newValue);
         return;
       case JDOQLPackage.EXPRESSION__RIGHT:
         setRight((Expression)newValue);
+        return;
+      case JDOQLPackage.EXPRESSION__UNARY_OPERATOR:
+        setUnaryOperator((UnaryOperator)newValue);
         return;
       case JDOQLPackage.EXPRESSION__LITERAL:
         setLiteral((String)newValue);
@@ -1345,6 +1503,12 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
         return;
       case JDOQLPackage.EXPRESSION__PERSISTABLE:
         setPersistable((Expression)newValue);
+        return;
+      case JDOQLPackage.EXPRESSION__IS_DISTINCT:
+        setIsDistinct((Boolean)newValue);
+        return;
+      case JDOQLPackage.EXPRESSION__AGGREGATE_ARGUMENT:
+        setAggregateArgument((Expression)newValue);
         return;
       case JDOQLPackage.EXPRESSION__ELEMENT:
         setElement((Expression)newValue);
@@ -1396,11 +1560,14 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
       case JDOQLPackage.EXPRESSION__DIRECTION:
         setDirection(DIRECTION_EDEFAULT);
         return;
-      case JDOQLPackage.EXPRESSION__UNARY_OPERATOR:
-        setUnaryOperator(UNARY_OPERATOR_EDEFAULT);
+      case JDOQLPackage.EXPRESSION__CAST_TYPE:
+        setCastType(CAST_TYPE_EDEFAULT);
         return;
       case JDOQLPackage.EXPRESSION__RIGHT:
         setRight((Expression)null);
+        return;
+      case JDOQLPackage.EXPRESSION__UNARY_OPERATOR:
+        setUnaryOperator(UNARY_OPERATOR_EDEFAULT);
         return;
       case JDOQLPackage.EXPRESSION__LITERAL:
         setLiteral(LITERAL_EDEFAULT);
@@ -1422,6 +1589,12 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
         return;
       case JDOQLPackage.EXPRESSION__PERSISTABLE:
         setPersistable((Expression)null);
+        return;
+      case JDOQLPackage.EXPRESSION__IS_DISTINCT:
+        setIsDistinct(IS_DISTINCT_EDEFAULT);
+        return;
+      case JDOQLPackage.EXPRESSION__AGGREGATE_ARGUMENT:
+        setAggregateArgument((Expression)null);
         return;
       case JDOQLPackage.EXPRESSION__ELEMENT:
         setElement((Expression)null);
@@ -1471,10 +1644,12 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
         return resultNaming != null;
       case JDOQLPackage.EXPRESSION__DIRECTION:
         return direction != DIRECTION_EDEFAULT;
-      case JDOQLPackage.EXPRESSION__UNARY_OPERATOR:
-        return unaryOperator != UNARY_OPERATOR_EDEFAULT;
+      case JDOQLPackage.EXPRESSION__CAST_TYPE:
+        return CAST_TYPE_EDEFAULT == null ? castType != null : !CAST_TYPE_EDEFAULT.equals(castType);
       case JDOQLPackage.EXPRESSION__RIGHT:
         return right != null;
+      case JDOQLPackage.EXPRESSION__UNARY_OPERATOR:
+        return unaryOperator != UNARY_OPERATOR_EDEFAULT;
       case JDOQLPackage.EXPRESSION__LITERAL:
         return LITERAL_EDEFAULT == null ? literal != null : !LITERAL_EDEFAULT.equals(literal);
       case JDOQLPackage.EXPRESSION__THIS:
@@ -1489,6 +1664,10 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
         return numeric != null;
       case JDOQLPackage.EXPRESSION__PERSISTABLE:
         return persistable != null;
+      case JDOQLPackage.EXPRESSION__IS_DISTINCT:
+        return isDistinct != IS_DISTINCT_EDEFAULT;
+      case JDOQLPackage.EXPRESSION__AGGREGATE_ARGUMENT:
+        return aggregateArgument != null;
       case JDOQLPackage.EXPRESSION__ELEMENT:
         return element != null;
       case JDOQLPackage.EXPRESSION__ARG:
@@ -1526,6 +1705,8 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (direction: ");
     result.append(direction);
+    result.append(", castType: ");
+    result.append(castType);
     result.append(", unaryOperator: ");
     result.append(unaryOperator);
     result.append(", literal: ");
@@ -1536,6 +1717,8 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
     result.append(id);
     result.append(", parameterName: ");
     result.append(parameterName);
+    result.append(", isDistinct: ");
+    result.append(isDistinct);
     result.append(')');
     return result.toString();
   }

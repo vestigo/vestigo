@@ -102,9 +102,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="resultNaming" eType="#//ResultNaming"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="direction" eType="#//OrderByDirection"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unaryOperator" eType="#//UnaryOperator"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="castType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//Expression"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unaryOperator" eType="#//UnaryOperator"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="literal" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="this" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -114,6 +115,9 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="numeric" eType="#//Expression"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="persistable" eType="#//Expression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isDistinct" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="aggregateArgument" eType="#//Expression"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="element" eType="#//Expression"
         containment="true"/>

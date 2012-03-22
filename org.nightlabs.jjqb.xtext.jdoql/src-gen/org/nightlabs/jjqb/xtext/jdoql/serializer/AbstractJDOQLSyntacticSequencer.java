@@ -24,9 +24,6 @@ public class AbstractJDOQLSyntacticSequencer extends AbstractSyntacticSequencer 
 	protected AbstractElementAlias match_MethodExpression___IsEmptyKeyword_1_1_LeftParenthesisKeyword_1_2_RightParenthesisKeyword_1_3___or___SizeKeyword_2_1_LeftParenthesisKeyword_2_2_RightParenthesisKeyword_2_3___or___ToLowerCaseKeyword_9_1_LeftParenthesisKeyword_9_2_RightParenthesisKeyword_9_3___or___ToUpperCaseKeyword_10_1_LeftParenthesisKeyword_10_2_RightParenthesisKeyword_10_3__;
 	protected AbstractElementAlias match_OrderByClause_CommaKeyword_4_q;
 	protected AbstractElementAlias match_ParametersClause_CommaKeyword_3_q;
-	protected AbstractElementAlias match_StaticMethodExpression_JavaLangKeyword_0_1_q;
-	protected AbstractElementAlias match_StaticMethodExpression_JavaLangKeyword_1_1_q;
-	protected AbstractElementAlias match_StaticMethodExpression_JavaxJdoKeyword_2_1_q;
 	protected AbstractElementAlias match_VariablesClause_SemicolonKeyword_3_q;
 	
 	@Inject
@@ -37,9 +34,6 @@ public class AbstractJDOQLSyntacticSequencer extends AbstractSyntacticSequencer 
 		match_MethodExpression___IsEmptyKeyword_1_1_LeftParenthesisKeyword_1_2_RightParenthesisKeyword_1_3___or___SizeKeyword_2_1_LeftParenthesisKeyword_2_2_RightParenthesisKeyword_2_3___or___ToLowerCaseKeyword_9_1_LeftParenthesisKeyword_9_2_RightParenthesisKeyword_9_3___or___ToUpperCaseKeyword_10_1_LeftParenthesisKeyword_10_2_RightParenthesisKeyword_10_3__ = new AlternativeAlias(false, false, new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getMethodExpressionAccess().getIsEmptyKeyword_1_1()), new TokenAlias(false, false, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_1_2()), new TokenAlias(false, false, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_1_3())), new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getMethodExpressionAccess().getSizeKeyword_2_1()), new TokenAlias(false, false, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_2_2()), new TokenAlias(false, false, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_2_3())), new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getMethodExpressionAccess().getToLowerCaseKeyword_9_1()), new TokenAlias(false, false, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_9_2()), new TokenAlias(false, false, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_9_3())), new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getMethodExpressionAccess().getToUpperCaseKeyword_10_1()), new TokenAlias(false, false, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_10_2()), new TokenAlias(false, false, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_10_3())));
 		match_OrderByClause_CommaKeyword_4_q = new TokenAlias(false, true, grammarAccess.getOrderByClauseAccess().getCommaKeyword_4());
 		match_ParametersClause_CommaKeyword_3_q = new TokenAlias(false, true, grammarAccess.getParametersClauseAccess().getCommaKeyword_3());
-		match_StaticMethodExpression_JavaLangKeyword_0_1_q = new TokenAlias(false, true, grammarAccess.getStaticMethodExpressionAccess().getJavaLangKeyword_0_1());
-		match_StaticMethodExpression_JavaLangKeyword_1_1_q = new TokenAlias(false, true, grammarAccess.getStaticMethodExpressionAccess().getJavaLangKeyword_1_1());
-		match_StaticMethodExpression_JavaxJdoKeyword_2_1_q = new TokenAlias(false, true, grammarAccess.getStaticMethodExpressionAccess().getJavaxJdoKeyword_2_1());
 		match_VariablesClause_SemicolonKeyword_3_q = new TokenAlias(false, true, grammarAccess.getVariablesClauseAccess().getSemicolonKeyword_3());
 	}
 	
@@ -65,12 +59,6 @@ public class AbstractJDOQLSyntacticSequencer extends AbstractSyntacticSequencer 
 				emit_OrderByClause_CommaKeyword_4_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_ParametersClause_CommaKeyword_3_q.equals(syntax))
 				emit_ParametersClause_CommaKeyword_3_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if(match_StaticMethodExpression_JavaLangKeyword_0_1_q.equals(syntax))
-				emit_StaticMethodExpression_JavaLangKeyword_0_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if(match_StaticMethodExpression_JavaLangKeyword_1_1_q.equals(syntax))
-				emit_StaticMethodExpression_JavaLangKeyword_1_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if(match_StaticMethodExpression_JavaxJdoKeyword_2_1_q.equals(syntax))
-				emit_StaticMethodExpression_JavaxJdoKeyword_2_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_VariablesClause_SemicolonKeyword_3_q.equals(syntax))
 				emit_VariablesClause_SemicolonKeyword_3_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
@@ -95,7 +83,7 @@ public class AbstractJDOQLSyntacticSequencer extends AbstractSyntacticSequencer 
 	
 	/**
 	 * Syntax:
-	 *     ('isEmpty' '(' ')') | ('size' '(' ')') | ('toUpperCase' '(' ')') | ('toLowerCase' '(' ')')
+	 *     ('toLowerCase' '(' ')') | ('size' '(' ')') | ('toUpperCase' '(' ')') | ('isEmpty' '(' ')')
 	 */
 	protected void emit_MethodExpression___IsEmptyKeyword_1_1_LeftParenthesisKeyword_1_2_RightParenthesisKeyword_1_3___or___SizeKeyword_2_1_LeftParenthesisKeyword_2_2_RightParenthesisKeyword_2_3___or___ToLowerCaseKeyword_9_1_LeftParenthesisKeyword_9_2_RightParenthesisKeyword_9_3___or___ToUpperCaseKeyword_10_1_LeftParenthesisKeyword_10_2_RightParenthesisKeyword_10_3__(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
@@ -114,30 +102,6 @@ public class AbstractJDOQLSyntacticSequencer extends AbstractSyntacticSequencer 
 	 *     ','?
 	 */
 	protected void emit_ParametersClause_CommaKeyword_3_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Syntax:
-	 *     'java.lang.'?
-	 */
-	protected void emit_StaticMethodExpression_JavaLangKeyword_0_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Syntax:
-	 *     'java.lang.'?
-	 */
-	protected void emit_StaticMethodExpression_JavaLangKeyword_1_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Syntax:
-	 *     'javax.jdo.'?
-	 */
-	protected void emit_StaticMethodExpression_JavaxJdoKeyword_2_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

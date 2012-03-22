@@ -586,7 +586,7 @@ public class AbstractJDOQLSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (unaryOperator=UnaryOperator? right=FieldAccessExpression direction=OrderByDirection)
+	 *     (((castType=Type right=FieldAccessExpression) | (unaryOperator=UnaryOperator? right=FieldAccessExpression)) direction=OrderByDirection)
 	 */
 	protected void sequence_OrderBySpec(EObject context, Expression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -735,7 +735,7 @@ public class AbstractJDOQLSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (unaryOperator=UnaryOperator? right=FieldAccessExpression resultNaming=ResultNaming?)
+	 *     (((castType=Type right=FieldAccessExpression) | (unaryOperator=UnaryOperator? right=FieldAccessExpression)) resultNaming=ResultNaming?)
 	 */
 	protected void sequence_ResultSpec(EObject context, Expression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -820,8 +820,16 @@ public class AbstractJDOQLSemanticSequencer extends AbstractSemanticSequencer {
 	 *     (
 	 *         numeric=ConditionalOrExpression | 
 	 *         numeric=ConditionalOrExpression | 
+	 *         numeric=ConditionalOrExpression | 
+	 *         numeric=ConditionalOrExpression | 
 	 *         persistable=ConditionalOrExpression | 
-	 *         (unaryOperator=UnaryOperator? right=FieldAccessExpression)
+	 *         persistable=ConditionalOrExpression | 
+	 *         (isDistinct?='DISTINCT'? aggregateArgument=ConditionalOrExpression) | 
+	 *         (isDistinct?='DISTINCT'? aggregateArgument=ConditionalOrExpression) | 
+	 *         aggregateArgument=ConditionalOrExpression | 
+	 *         aggregateArgument=ConditionalOrExpression | 
+	 *         (isDistinct?='DISTINCT'? aggregateArgument=ConditionalOrExpression) | 
+	 *         ((castType=Type right=FieldAccessExpression) | (unaryOperator=UnaryOperator? right=FieldAccessExpression))
 	 *     )
 	 */
 	protected void sequence_StaticMethodExpression(EObject context, Expression semanticObject) {
@@ -831,7 +839,7 @@ public class AbstractJDOQLSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (unaryOperator=UnaryOperator? right=FieldAccessExpression)
+	 *     ((castType=Type right=FieldAccessExpression) | (unaryOperator=UnaryOperator? right=FieldAccessExpression))
 	 */
 	protected void sequence_UnaryExpression(EObject context, Expression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

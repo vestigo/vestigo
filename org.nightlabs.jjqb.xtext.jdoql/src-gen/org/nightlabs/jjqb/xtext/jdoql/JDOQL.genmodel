@@ -108,8 +108,9 @@
     <genClasses ecoreClass="JDOQL.ecore#//Expression">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//Expression/resultNaming"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDOQL.ecore#//Expression/direction"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDOQL.ecore#//Expression/unaryOperator"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDOQL.ecore#//Expression/castType"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//Expression/right"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDOQL.ecore#//Expression/unaryOperator"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDOQL.ecore#//Expression/literal"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDOQL.ecore#//Expression/this"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDOQL.ecore#//Expression/id"/>
@@ -117,6 +118,8 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//Expression/method"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//Expression/numeric"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//Expression/persistable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDOQL.ecore#//Expression/isDistinct"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//Expression/aggregateArgument"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//Expression/element"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//Expression/arg"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//Expression/key"/>

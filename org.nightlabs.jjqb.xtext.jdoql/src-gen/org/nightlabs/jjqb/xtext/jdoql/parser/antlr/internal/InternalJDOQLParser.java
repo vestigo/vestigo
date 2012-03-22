@@ -23,91 +23,108 @@ import java.util.HashMap;
 @SuppressWarnings("all")
 public class InternalJDOQLParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "KEYWORD_75", "KEYWORD_74", "KEYWORD_71", "KEYWORD_72", "KEYWORD_73", "KEYWORD_64", "KEYWORD_65", "KEYWORD_66", "KEYWORD_67", "KEYWORD_68", "KEYWORD_69", "KEYWORD_70", "KEYWORD_60", "KEYWORD_61", "KEYWORD_62", "KEYWORD_63", "KEYWORD_56", "KEYWORD_57", "KEYWORD_58", "KEYWORD_59", "KEYWORD_51", "KEYWORD_52", "KEYWORD_53", "KEYWORD_54", "KEYWORD_55", "KEYWORD_46", "KEYWORD_47", "KEYWORD_48", "KEYWORD_49", "KEYWORD_50", "KEYWORD_39", "KEYWORD_40", "KEYWORD_41", "KEYWORD_42", "KEYWORD_43", "KEYWORD_44", "KEYWORD_45", "KEYWORD_29", "KEYWORD_30", "KEYWORD_31", "KEYWORD_32", "KEYWORD_33", "KEYWORD_34", "KEYWORD_35", "KEYWORD_36", "KEYWORD_37", "KEYWORD_38", "KEYWORD_26", "KEYWORD_27", "KEYWORD_28", "KEYWORD_18", "KEYWORD_19", "KEYWORD_20", "KEYWORD_21", "KEYWORD_22", "KEYWORD_23", "KEYWORD_24", "KEYWORD_25", "KEYWORD_1", "KEYWORD_2", "KEYWORD_3", "KEYWORD_4", "KEYWORD_5", "KEYWORD_6", "KEYWORD_7", "KEYWORD_8", "KEYWORD_9", "KEYWORD_10", "KEYWORD_11", "KEYWORD_12", "KEYWORD_13", "KEYWORD_14", "KEYWORD_15", "KEYWORD_16", "KEYWORD_17", "RULE_ID", "RULE_INT", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "KEYWORD_92", "KEYWORD_91", "KEYWORD_89", "KEYWORD_90", "KEYWORD_88", "KEYWORD_86", "KEYWORD_87", "KEYWORD_84", "KEYWORD_85", "KEYWORD_82", "KEYWORD_83", "KEYWORD_80", "KEYWORD_81", "KEYWORD_79", "KEYWORD_76", "KEYWORD_77", "KEYWORD_78", "KEYWORD_71", "KEYWORD_72", "KEYWORD_73", "KEYWORD_74", "KEYWORD_75", "KEYWORD_67", "KEYWORD_68", "KEYWORD_69", "KEYWORD_70", "KEYWORD_63", "KEYWORD_64", "KEYWORD_65", "KEYWORD_66", "KEYWORD_58", "KEYWORD_59", "KEYWORD_60", "KEYWORD_61", "KEYWORD_62", "KEYWORD_52", "KEYWORD_53", "KEYWORD_54", "KEYWORD_55", "KEYWORD_56", "KEYWORD_57", "KEYWORD_43", "KEYWORD_44", "KEYWORD_45", "KEYWORD_46", "KEYWORD_47", "KEYWORD_48", "KEYWORD_49", "KEYWORD_50", "KEYWORD_51", "KEYWORD_33", "KEYWORD_34", "KEYWORD_35", "KEYWORD_36", "KEYWORD_37", "KEYWORD_38", "KEYWORD_39", "KEYWORD_40", "KEYWORD_41", "KEYWORD_42", "KEYWORD_26", "KEYWORD_27", "KEYWORD_28", "KEYWORD_29", "KEYWORD_30", "KEYWORD_31", "KEYWORD_32", "KEYWORD_18", "KEYWORD_19", "KEYWORD_20", "KEYWORD_21", "KEYWORD_22", "KEYWORD_23", "KEYWORD_24", "KEYWORD_25", "KEYWORD_1", "KEYWORD_2", "KEYWORD_3", "KEYWORD_4", "KEYWORD_5", "KEYWORD_6", "KEYWORD_7", "KEYWORD_8", "KEYWORD_9", "KEYWORD_10", "KEYWORD_11", "KEYWORD_12", "KEYWORD_13", "KEYWORD_14", "KEYWORD_15", "KEYWORD_16", "KEYWORD_17", "RULE_ID", "RULE_INT", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER"
     };
-    public static final int RULE_ID=79;
-    public static final int RULE_ANY_OTHER=85;
-    public static final int KEYWORD_19=55;
-    public static final int KEYWORD_56=20;
-    public static final int KEYWORD_55=28;
-    public static final int KEYWORD_54=27;
-    public static final int KEYWORD_17=78;
-    public static final int KEYWORD_53=26;
-    public static final int KEYWORD_18=54;
-    public static final int KEYWORD_52=25;
-    public static final int KEYWORD_15=76;
-    public static final int KEYWORD_51=24;
-    public static final int KEYWORD_16=77;
-    public static final int KEYWORD_50=33;
-    public static final int KEYWORD_13=74;
-    public static final int KEYWORD_14=75;
-    public static final int KEYWORD_11=72;
+    public static final int RULE_ID=96;
+    public static final int RULE_ANY_OTHER=102;
+    public static final int KEYWORD_56=43;
+    public static final int KEYWORD_55=42;
+    public static final int KEYWORD_54=41;
+    public static final int KEYWORD_53=40;
+    public static final int KEYWORD_52=39;
+    public static final int KEYWORD_51=53;
+    public static final int KEYWORD_50=52;
     public static final int EOF=-1;
-    public static final int KEYWORD_12=73;
-    public static final int KEYWORD_10=71;
-    public static final int KEYWORD_59=23;
-    public static final int KEYWORD_58=22;
-    public static final int KEYWORD_57=21;
-    public static final int KEYWORD_6=67;
-    public static final int KEYWORD_7=68;
-    public static final int KEYWORD_8=69;
-    public static final int KEYWORD_9=70;
-    public static final int KEYWORD_28=53;
-    public static final int KEYWORD_65=10;
-    public static final int KEYWORD_64=9;
-    public static final int KEYWORD_29=41;
-    public static final int RULE_INT=80;
-    public static final int KEYWORD_67=12;
-    public static final int KEYWORD_66=11;
-    public static final int KEYWORD_24=60;
-    public static final int KEYWORD_61=17;
-    public static final int KEYWORD_25=61;
-    public static final int KEYWORD_60=16;
-    public static final int KEYWORD_26=51;
-    public static final int KEYWORD_63=19;
-    public static final int KEYWORD_62=18;
-    public static final int KEYWORD_27=52;
-    public static final int KEYWORD_20=56;
-    public static final int KEYWORD_21=57;
-    public static final int KEYWORD_22=58;
-    public static final int KEYWORD_23=59;
-    public static final int KEYWORD_69=14;
-    public static final int KEYWORD_68=13;
-    public static final int KEYWORD_71=6;
-    public static final int KEYWORD_72=7;
-    public static final int KEYWORD_73=8;
-    public static final int KEYWORD_74=5;
-    public static final int KEYWORD_75=4;
-    public static final int KEYWORD_30=42;
-    public static final int KEYWORD_1=62;
-    public static final int KEYWORD_34=46;
-    public static final int KEYWORD_5=66;
-    public static final int KEYWORD_33=45;
-    public static final int KEYWORD_4=65;
-    public static final int KEYWORD_70=15;
-    public static final int KEYWORD_32=44;
-    public static final int KEYWORD_3=64;
-    public static final int KEYWORD_31=43;
-    public static final int KEYWORD_2=63;
-    public static final int KEYWORD_38=50;
-    public static final int KEYWORD_37=49;
-    public static final int RULE_SL_COMMENT=83;
-    public static final int KEYWORD_36=48;
-    public static final int KEYWORD_35=47;
-    public static final int RULE_ML_COMMENT=82;
-    public static final int KEYWORD_39=34;
-    public static final int RULE_STRING=81;
-    public static final int KEYWORD_41=36;
-    public static final int KEYWORD_40=35;
-    public static final int KEYWORD_43=38;
-    public static final int KEYWORD_42=37;
-    public static final int KEYWORD_45=40;
-    public static final int KEYWORD_44=39;
-    public static final int KEYWORD_47=30;
-    public static final int RULE_WS=84;
-    public static final int KEYWORD_46=29;
-    public static final int KEYWORD_49=32;
-    public static final int KEYWORD_48=31;
+    public static final int KEYWORD_59=35;
+    public static final int KEYWORD_58=34;
+    public static final int KEYWORD_57=44;
+    public static final int KEYWORD_65=32;
+    public static final int KEYWORD_64=31;
+    public static final int KEYWORD_67=26;
+    public static final int KEYWORD_66=33;
+    public static final int KEYWORD_61=37;
+    public static final int KEYWORD_60=36;
+    public static final int KEYWORD_63=30;
+    public static final int KEYWORD_62=38;
+    public static final int KEYWORD_69=28;
+    public static final int KEYWORD_68=27;
+    public static final int KEYWORD_30=68;
+    public static final int KEYWORD_34=55;
+    public static final int KEYWORD_33=54;
+    public static final int KEYWORD_32=70;
+    public static final int KEYWORD_31=69;
+    public static final int KEYWORD_38=59;
+    public static final int KEYWORD_37=58;
+    public static final int KEYWORD_36=57;
+    public static final int KEYWORD_35=56;
+    public static final int RULE_ML_COMMENT=99;
+    public static final int KEYWORD_39=60;
+    public static final int RULE_STRING=98;
+    public static final int KEYWORD_41=62;
+    public static final int KEYWORD_40=61;
+    public static final int KEYWORD_43=45;
+    public static final int KEYWORD_42=63;
+    public static final int KEYWORD_45=47;
+    public static final int KEYWORD_44=46;
+    public static final int KEYWORD_47=49;
+    public static final int KEYWORD_46=48;
+    public static final int KEYWORD_49=51;
+    public static final int KEYWORD_48=50;
+    public static final int KEYWORD_90=7;
+    public static final int KEYWORD_19=72;
+    public static final int KEYWORD_17=95;
+    public static final int KEYWORD_92=4;
+    public static final int KEYWORD_91=5;
+    public static final int KEYWORD_18=71;
+    public static final int KEYWORD_15=93;
+    public static final int KEYWORD_16=94;
+    public static final int KEYWORD_13=91;
+    public static final int KEYWORD_14=92;
+    public static final int KEYWORD_11=89;
+    public static final int KEYWORD_12=90;
+    public static final int KEYWORD_10=88;
+    public static final int KEYWORD_6=84;
+    public static final int KEYWORD_7=85;
+    public static final int KEYWORD_8=86;
+    public static final int KEYWORD_9=87;
+    public static final int KEYWORD_28=66;
+    public static final int KEYWORD_29=67;
+    public static final int RULE_INT=97;
+    public static final int KEYWORD_24=77;
+    public static final int KEYWORD_25=78;
+    public static final int KEYWORD_26=64;
+    public static final int KEYWORD_27=65;
+    public static final int KEYWORD_20=73;
+    public static final int KEYWORD_21=74;
+    public static final int KEYWORD_22=75;
+    public static final int KEYWORD_23=76;
+    public static final int KEYWORD_79=17;
+    public static final int KEYWORD_71=21;
+    public static final int KEYWORD_72=22;
+    public static final int KEYWORD_73=23;
+    public static final int KEYWORD_74=24;
+    public static final int KEYWORD_75=25;
+    public static final int KEYWORD_76=18;
+    public static final int KEYWORD_77=19;
+    public static final int KEYWORD_78=20;
+    public static final int KEYWORD_1=79;
+    public static final int KEYWORD_5=83;
+    public static final int KEYWORD_4=82;
+    public static final int KEYWORD_70=29;
+    public static final int KEYWORD_3=81;
+    public static final int KEYWORD_2=80;
+    public static final int RULE_SL_COMMENT=100;
+    public static final int KEYWORD_84=11;
+    public static final int KEYWORD_85=12;
+    public static final int KEYWORD_82=13;
+    public static final int KEYWORD_83=14;
+    public static final int KEYWORD_88=8;
+    public static final int KEYWORD_89=6;
+    public static final int KEYWORD_86=9;
+    public static final int KEYWORD_87=10;
+    public static final int KEYWORD_81=16;
+    public static final int KEYWORD_80=15;
+    public static final int RULE_WS=101;
 
     // delegates
     // delegators
@@ -300,7 +317,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
             int alt1=2;
             int LA1_0 = input.LA(1);
 
-            if ( (LA1_0==KEYWORD_42) ) {
+            if ( (LA1_0==KEYWORD_46) ) {
                 alt1=1;
             }
             switch (alt1) {
@@ -346,7 +363,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
             int alt2=2;
             int LA2_0 = input.LA(1);
 
-            if ( (LA2_0==KEYWORD_62) ) {
+            if ( (LA2_0==KEYWORD_69) ) {
                 alt2=1;
             }
             switch (alt2) {
@@ -392,7 +409,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
             int alt3=2;
             int LA3_0 = input.LA(1);
 
-            if ( (LA3_0==KEYWORD_65) ) {
+            if ( (LA3_0==KEYWORD_72) ) {
                 alt3=1;
             }
             switch (alt3) {
@@ -438,7 +455,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
             int alt4=2;
             int LA4_0 = input.LA(1);
 
-            if ( (LA4_0==KEYWORD_50) ) {
+            if ( (LA4_0==KEYWORD_56) ) {
                 alt4=1;
             }
             switch (alt4) {
@@ -484,7 +501,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
             int alt5=2;
             int LA5_0 = input.LA(1);
 
-            if ( (LA5_0==KEYWORD_39) ) {
+            if ( (LA5_0==KEYWORD_43) ) {
                 alt5=1;
             }
             switch (alt5) {
@@ -530,7 +547,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
             int alt6=2;
             int LA6_0 = input.LA(1);
 
-            if ( (LA6_0==KEYWORD_40) ) {
+            if ( (LA6_0==KEYWORD_44) ) {
                 alt6=1;
             }
             switch (alt6) {
@@ -576,7 +593,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
             int alt7=2;
             int LA7_0 = input.LA(1);
 
-            if ( (LA7_0==KEYWORD_41) ) {
+            if ( (LA7_0==KEYWORD_45) ) {
                 alt7=1;
             }
             switch (alt7) {
@@ -681,7 +698,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleSelectClause"
-    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:260:1: ruleSelectClause returns [EObject current=null] : ( () otherlv_1= KEYWORD_47 ( (lv_isUnique_2_0= KEYWORD_48 ) )? ( (lv_resultClause_3_0= ruleResultClause ) )? ( (lv_intoClause_4_0= ruleIntoClause ) )? ) ;
+    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:260:1: ruleSelectClause returns [EObject current=null] : ( () otherlv_1= KEYWORD_53 ( (lv_isUnique_2_0= KEYWORD_54 ) )? ( (lv_resultClause_3_0= ruleResultClause ) )? ( (lv_intoClause_4_0= ruleIntoClause ) )? ) ;
     public final EObject ruleSelectClause() throws RecognitionException {
         EObject current = null;
 
@@ -695,11 +712,11 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:263:28: ( ( () otherlv_1= KEYWORD_47 ( (lv_isUnique_2_0= KEYWORD_48 ) )? ( (lv_resultClause_3_0= ruleResultClause ) )? ( (lv_intoClause_4_0= ruleIntoClause ) )? ) )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:264:1: ( () otherlv_1= KEYWORD_47 ( (lv_isUnique_2_0= KEYWORD_48 ) )? ( (lv_resultClause_3_0= ruleResultClause ) )? ( (lv_intoClause_4_0= ruleIntoClause ) )? )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:263:28: ( ( () otherlv_1= KEYWORD_53 ( (lv_isUnique_2_0= KEYWORD_54 ) )? ( (lv_resultClause_3_0= ruleResultClause ) )? ( (lv_intoClause_4_0= ruleIntoClause ) )? ) )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:264:1: ( () otherlv_1= KEYWORD_53 ( (lv_isUnique_2_0= KEYWORD_54 ) )? ( (lv_resultClause_3_0= ruleResultClause ) )? ( (lv_intoClause_4_0= ruleIntoClause ) )? )
             {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:264:1: ( () otherlv_1= KEYWORD_47 ( (lv_isUnique_2_0= KEYWORD_48 ) )? ( (lv_resultClause_3_0= ruleResultClause ) )? ( (lv_intoClause_4_0= ruleIntoClause ) )? )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:264:2: () otherlv_1= KEYWORD_47 ( (lv_isUnique_2_0= KEYWORD_48 ) )? ( (lv_resultClause_3_0= ruleResultClause ) )? ( (lv_intoClause_4_0= ruleIntoClause ) )?
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:264:1: ( () otherlv_1= KEYWORD_53 ( (lv_isUnique_2_0= KEYWORD_54 ) )? ( (lv_resultClause_3_0= ruleResultClause ) )? ( (lv_intoClause_4_0= ruleIntoClause ) )? )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:264:2: () otherlv_1= KEYWORD_53 ( (lv_isUnique_2_0= KEYWORD_54 ) )? ( (lv_resultClause_3_0= ruleResultClause ) )? ( (lv_intoClause_4_0= ruleIntoClause ) )?
             {
             // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:264:2: ()
             // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:265:2: 
@@ -719,27 +736,27 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,KEYWORD_47,FOLLOW_KEYWORD_47_in_ruleSelectClause399); if (state.failed) return current;
+            otherlv_1=(Token)match(input,KEYWORD_53,FOLLOW_KEYWORD_53_in_ruleSelectClause399); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_1, grammarAccess.getSelectClauseAccess().getSELECTKeyword_1());
                   
             }
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:278:1: ( (lv_isUnique_2_0= KEYWORD_48 ) )?
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:278:1: ( (lv_isUnique_2_0= KEYWORD_54 ) )?
             int alt8=2;
             int LA8_0 = input.LA(1);
 
-            if ( (LA8_0==KEYWORD_48) ) {
+            if ( (LA8_0==KEYWORD_54) ) {
                 alt8=1;
             }
             switch (alt8) {
                 case 1 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:279:1: (lv_isUnique_2_0= KEYWORD_48 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:279:1: (lv_isUnique_2_0= KEYWORD_54 )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:279:1: (lv_isUnique_2_0= KEYWORD_48 )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:280:3: lv_isUnique_2_0= KEYWORD_48
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:279:1: (lv_isUnique_2_0= KEYWORD_54 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:280:3: lv_isUnique_2_0= KEYWORD_54
                     {
-                    lv_isUnique_2_0=(Token)match(input,KEYWORD_48,FOLLOW_KEYWORD_48_in_ruleSelectClause417); if (state.failed) return current;
+                    lv_isUnique_2_0=(Token)match(input,KEYWORD_54,FOLLOW_KEYWORD_54_in_ruleSelectClause417); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               newLeafNode(lv_isUnique_2_0, grammarAccess.getSelectClauseAccess().getIsUniqueUNIQUEKeyword_2_0());
@@ -766,7 +783,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
             int alt9=2;
             int LA9_0 = input.LA(1);
 
-            if ( ((LA9_0>=KEYWORD_75 && LA9_0<=KEYWORD_73)||(LA9_0>=KEYWORD_68 && LA9_0<=KEYWORD_70)||LA9_0==KEYWORD_61||(LA9_0>=KEYWORD_63 && LA9_0<=KEYWORD_59)||(LA9_0>=KEYWORD_53 && LA9_0<=KEYWORD_55)||LA9_0==KEYWORD_43||(LA9_0>=KEYWORD_35 && LA9_0<=KEYWORD_38)||LA9_0==KEYWORD_27||LA9_0==KEYWORD_1||LA9_0==KEYWORD_4||LA9_0==KEYWORD_7||LA9_0==KEYWORD_9||LA9_0==KEYWORD_12||(LA9_0>=KEYWORD_17 && LA9_0<=RULE_STRING)) ) {
+            if ( ((LA9_0>=KEYWORD_92 && LA9_0<=KEYWORD_91)||(LA9_0>=KEYWORD_90 && LA9_0<=KEYWORD_88)||(LA9_0>=KEYWORD_79 && LA9_0<=KEYWORD_78)||LA9_0==KEYWORD_75||LA9_0==KEYWORD_68||(LA9_0>=KEYWORD_70 && LA9_0<=KEYWORD_66)||(LA9_0>=KEYWORD_60 && LA9_0<=KEYWORD_62)||(LA9_0>=KEYWORD_47 && LA9_0<=KEYWORD_48)||(LA9_0>=KEYWORD_39 && LA9_0<=KEYWORD_42)||(LA9_0>=KEYWORD_27 && LA9_0<=KEYWORD_28)||(LA9_0>=KEYWORD_30 && LA9_0<=KEYWORD_32)||LA9_0==KEYWORD_1||LA9_0==KEYWORD_4||LA9_0==KEYWORD_7||LA9_0==KEYWORD_9||LA9_0==KEYWORD_12||(LA9_0>=KEYWORD_17 && LA9_0<=RULE_STRING)) ) {
                 alt9=1;
             }
             switch (alt9) {
@@ -812,7 +829,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
             int alt10=2;
             int LA10_0 = input.LA(1);
 
-            if ( (LA10_0==KEYWORD_31) ) {
+            if ( (LA10_0==KEYWORD_35) ) {
                 alt10=1;
             }
             switch (alt10) {
@@ -917,7 +934,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleResultClause"
-    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:347:1: ruleResultClause returns [EObject current=null] : ( ( (lv_isDistinct_0_0= KEYWORD_56 ) )? ( (lv_resultSpecs_1_0= ruleResultSpec ) ) (otherlv_2= KEYWORD_8 ( (lv_resultSpecs_3_0= ruleResultSpec ) ) )* ) ;
+    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:347:1: ruleResultClause returns [EObject current=null] : ( ( (lv_isDistinct_0_0= KEYWORD_63 ) )? ( (lv_resultSpecs_1_0= ruleResultSpec ) ) (otherlv_2= KEYWORD_8 ( (lv_resultSpecs_3_0= ruleResultSpec ) ) )* ) ;
     public final EObject ruleResultClause() throws RecognitionException {
         EObject current = null;
 
@@ -931,27 +948,27 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:350:28: ( ( ( (lv_isDistinct_0_0= KEYWORD_56 ) )? ( (lv_resultSpecs_1_0= ruleResultSpec ) ) (otherlv_2= KEYWORD_8 ( (lv_resultSpecs_3_0= ruleResultSpec ) ) )* ) )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:351:1: ( ( (lv_isDistinct_0_0= KEYWORD_56 ) )? ( (lv_resultSpecs_1_0= ruleResultSpec ) ) (otherlv_2= KEYWORD_8 ( (lv_resultSpecs_3_0= ruleResultSpec ) ) )* )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:350:28: ( ( ( (lv_isDistinct_0_0= KEYWORD_63 ) )? ( (lv_resultSpecs_1_0= ruleResultSpec ) ) (otherlv_2= KEYWORD_8 ( (lv_resultSpecs_3_0= ruleResultSpec ) ) )* ) )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:351:1: ( ( (lv_isDistinct_0_0= KEYWORD_63 ) )? ( (lv_resultSpecs_1_0= ruleResultSpec ) ) (otherlv_2= KEYWORD_8 ( (lv_resultSpecs_3_0= ruleResultSpec ) ) )* )
             {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:351:1: ( ( (lv_isDistinct_0_0= KEYWORD_56 ) )? ( (lv_resultSpecs_1_0= ruleResultSpec ) ) (otherlv_2= KEYWORD_8 ( (lv_resultSpecs_3_0= ruleResultSpec ) ) )* )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:351:2: ( (lv_isDistinct_0_0= KEYWORD_56 ) )? ( (lv_resultSpecs_1_0= ruleResultSpec ) ) (otherlv_2= KEYWORD_8 ( (lv_resultSpecs_3_0= ruleResultSpec ) ) )*
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:351:1: ( ( (lv_isDistinct_0_0= KEYWORD_63 ) )? ( (lv_resultSpecs_1_0= ruleResultSpec ) ) (otherlv_2= KEYWORD_8 ( (lv_resultSpecs_3_0= ruleResultSpec ) ) )* )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:351:2: ( (lv_isDistinct_0_0= KEYWORD_63 ) )? ( (lv_resultSpecs_1_0= ruleResultSpec ) ) (otherlv_2= KEYWORD_8 ( (lv_resultSpecs_3_0= ruleResultSpec ) ) )*
             {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:351:2: ( (lv_isDistinct_0_0= KEYWORD_56 ) )?
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:351:2: ( (lv_isDistinct_0_0= KEYWORD_63 ) )?
             int alt11=2;
             int LA11_0 = input.LA(1);
 
-            if ( (LA11_0==KEYWORD_56) ) {
+            if ( (LA11_0==KEYWORD_63) ) {
                 alt11=1;
             }
             switch (alt11) {
                 case 1 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:352:1: (lv_isDistinct_0_0= KEYWORD_56 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:352:1: (lv_isDistinct_0_0= KEYWORD_63 )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:352:1: (lv_isDistinct_0_0= KEYWORD_56 )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:353:3: lv_isDistinct_0_0= KEYWORD_56
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:352:1: (lv_isDistinct_0_0= KEYWORD_63 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:353:3: lv_isDistinct_0_0= KEYWORD_63
                     {
-                    lv_isDistinct_0_0=(Token)match(input,KEYWORD_56,FOLLOW_KEYWORD_56_in_ruleResultClause562); if (state.failed) return current;
+                    lv_isDistinct_0_0=(Token)match(input,KEYWORD_63,FOLLOW_KEYWORD_63_in_ruleResultClause562); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               newLeafNode(lv_isDistinct_0_0, grammarAccess.getResultClauseAccess().getIsDistinctDISTINCTKeyword_0_0());
@@ -1137,7 +1154,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleIntoClause"
-    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:425:1: ruleIntoClause returns [EObject current=null] : (otherlv_0= KEYWORD_31 ( (lv_resultClassName_1_0= ruleClassOrInterfaceName ) ) ) ;
+    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:425:1: ruleIntoClause returns [EObject current=null] : (otherlv_0= KEYWORD_35 ( (lv_resultClassName_1_0= ruleClassOrInterfaceName ) ) ) ;
     public final EObject ruleIntoClause() throws RecognitionException {
         EObject current = null;
 
@@ -1148,13 +1165,13 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:428:28: ( (otherlv_0= KEYWORD_31 ( (lv_resultClassName_1_0= ruleClassOrInterfaceName ) ) ) )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:429:1: (otherlv_0= KEYWORD_31 ( (lv_resultClassName_1_0= ruleClassOrInterfaceName ) ) )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:428:28: ( (otherlv_0= KEYWORD_35 ( (lv_resultClassName_1_0= ruleClassOrInterfaceName ) ) ) )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:429:1: (otherlv_0= KEYWORD_35 ( (lv_resultClassName_1_0= ruleClassOrInterfaceName ) ) )
             {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:429:1: (otherlv_0= KEYWORD_31 ( (lv_resultClassName_1_0= ruleClassOrInterfaceName ) ) )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:430:2: otherlv_0= KEYWORD_31 ( (lv_resultClassName_1_0= ruleClassOrInterfaceName ) )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:429:1: (otherlv_0= KEYWORD_35 ( (lv_resultClassName_1_0= ruleClassOrInterfaceName ) ) )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:430:2: otherlv_0= KEYWORD_35 ( (lv_resultClassName_1_0= ruleClassOrInterfaceName ) )
             {
-            otherlv_0=(Token)match(input,KEYWORD_31,FOLLOW_KEYWORD_31_in_ruleIntoClause714); if (state.failed) return current;
+            otherlv_0=(Token)match(input,KEYWORD_35,FOLLOW_KEYWORD_35_in_ruleIntoClause714); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_0, grammarAccess.getIntoClauseAccess().getINTOKeyword_0());
@@ -1521,7 +1538,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFromClause"
-    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:564:1: ruleFromClause returns [EObject current=null] : (otherlv_0= KEYWORD_30 ( (lv_candidateClassName_1_0= ruleCandidateClassName ) ) ( ( (lv_isExcludeSubclasses_2_0= KEYWORD_51 ) ) otherlv_3= KEYWORD_66 )? ) ;
+    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:564:1: ruleFromClause returns [EObject current=null] : (otherlv_0= KEYWORD_34 ( (lv_candidateClassName_1_0= ruleCandidateClassName ) ) ( ( (lv_isExcludeSubclasses_2_0= KEYWORD_58 ) ) otherlv_3= KEYWORD_73 )? ) ;
     public final EObject ruleFromClause() throws RecognitionException {
         EObject current = null;
 
@@ -1534,13 +1551,13 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:567:28: ( (otherlv_0= KEYWORD_30 ( (lv_candidateClassName_1_0= ruleCandidateClassName ) ) ( ( (lv_isExcludeSubclasses_2_0= KEYWORD_51 ) ) otherlv_3= KEYWORD_66 )? ) )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:568:1: (otherlv_0= KEYWORD_30 ( (lv_candidateClassName_1_0= ruleCandidateClassName ) ) ( ( (lv_isExcludeSubclasses_2_0= KEYWORD_51 ) ) otherlv_3= KEYWORD_66 )? )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:567:28: ( (otherlv_0= KEYWORD_34 ( (lv_candidateClassName_1_0= ruleCandidateClassName ) ) ( ( (lv_isExcludeSubclasses_2_0= KEYWORD_58 ) ) otherlv_3= KEYWORD_73 )? ) )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:568:1: (otherlv_0= KEYWORD_34 ( (lv_candidateClassName_1_0= ruleCandidateClassName ) ) ( ( (lv_isExcludeSubclasses_2_0= KEYWORD_58 ) ) otherlv_3= KEYWORD_73 )? )
             {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:568:1: (otherlv_0= KEYWORD_30 ( (lv_candidateClassName_1_0= ruleCandidateClassName ) ) ( ( (lv_isExcludeSubclasses_2_0= KEYWORD_51 ) ) otherlv_3= KEYWORD_66 )? )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:569:2: otherlv_0= KEYWORD_30 ( (lv_candidateClassName_1_0= ruleCandidateClassName ) ) ( ( (lv_isExcludeSubclasses_2_0= KEYWORD_51 ) ) otherlv_3= KEYWORD_66 )?
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:568:1: (otherlv_0= KEYWORD_34 ( (lv_candidateClassName_1_0= ruleCandidateClassName ) ) ( ( (lv_isExcludeSubclasses_2_0= KEYWORD_58 ) ) otherlv_3= KEYWORD_73 )? )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:569:2: otherlv_0= KEYWORD_34 ( (lv_candidateClassName_1_0= ruleCandidateClassName ) ) ( ( (lv_isExcludeSubclasses_2_0= KEYWORD_58 ) ) otherlv_3= KEYWORD_73 )?
             {
-            otherlv_0=(Token)match(input,KEYWORD_30,FOLLOW_KEYWORD_30_in_ruleFromClause1037); if (state.failed) return current;
+            otherlv_0=(Token)match(input,KEYWORD_34,FOLLOW_KEYWORD_34_in_ruleFromClause1037); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_0, grammarAccess.getFromClauseAccess().getFROMKeyword_0());
@@ -1581,24 +1598,24 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:591:2: ( ( (lv_isExcludeSubclasses_2_0= KEYWORD_51 ) ) otherlv_3= KEYWORD_66 )?
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:591:2: ( ( (lv_isExcludeSubclasses_2_0= KEYWORD_58 ) ) otherlv_3= KEYWORD_73 )?
             int alt14=2;
             int LA14_0 = input.LA(1);
 
-            if ( (LA14_0==KEYWORD_51) ) {
+            if ( (LA14_0==KEYWORD_58) ) {
                 alt14=1;
             }
             switch (alt14) {
                 case 1 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:591:3: ( (lv_isExcludeSubclasses_2_0= KEYWORD_51 ) ) otherlv_3= KEYWORD_66
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:591:3: ( (lv_isExcludeSubclasses_2_0= KEYWORD_58 ) ) otherlv_3= KEYWORD_73
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:591:3: ( (lv_isExcludeSubclasses_2_0= KEYWORD_51 ) )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:592:1: (lv_isExcludeSubclasses_2_0= KEYWORD_51 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:591:3: ( (lv_isExcludeSubclasses_2_0= KEYWORD_58 ) )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:592:1: (lv_isExcludeSubclasses_2_0= KEYWORD_58 )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:592:1: (lv_isExcludeSubclasses_2_0= KEYWORD_51 )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:593:3: lv_isExcludeSubclasses_2_0= KEYWORD_51
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:592:1: (lv_isExcludeSubclasses_2_0= KEYWORD_58 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:593:3: lv_isExcludeSubclasses_2_0= KEYWORD_58
                     {
-                    lv_isExcludeSubclasses_2_0=(Token)match(input,KEYWORD_51,FOLLOW_KEYWORD_51_in_ruleFromClause1077); if (state.failed) return current;
+                    lv_isExcludeSubclasses_2_0=(Token)match(input,KEYWORD_58,FOLLOW_KEYWORD_58_in_ruleFromClause1077); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               newLeafNode(lv_isExcludeSubclasses_2_0, grammarAccess.getFromClauseAccess().getIsExcludeSubclassesEXCLUDEKeyword_2_0_0());
@@ -1618,7 +1635,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_3=(Token)match(input,KEYWORD_66,FOLLOW_KEYWORD_66_in_ruleFromClause1101); if (state.failed) return current;
+                    otherlv_3=(Token)match(input,KEYWORD_73,FOLLOW_KEYWORD_73_in_ruleFromClause1101); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_3, grammarAccess.getFromClauseAccess().getSUBCLASSESKeyword_2_1());
@@ -1693,7 +1710,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleWhereClause"
-    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:629:1: ruleWhereClause returns [EObject current=null] : (otherlv_0= KEYWORD_42 ( (lv_filter_1_0= ruleConditionalOrExpression ) ) ) ;
+    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:629:1: ruleWhereClause returns [EObject current=null] : (otherlv_0= KEYWORD_46 ( (lv_filter_1_0= ruleConditionalOrExpression ) ) ) ;
     public final EObject ruleWhereClause() throws RecognitionException {
         EObject current = null;
 
@@ -1704,13 +1721,13 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:632:28: ( (otherlv_0= KEYWORD_42 ( (lv_filter_1_0= ruleConditionalOrExpression ) ) ) )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:633:1: (otherlv_0= KEYWORD_42 ( (lv_filter_1_0= ruleConditionalOrExpression ) ) )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:632:28: ( (otherlv_0= KEYWORD_46 ( (lv_filter_1_0= ruleConditionalOrExpression ) ) ) )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:633:1: (otherlv_0= KEYWORD_46 ( (lv_filter_1_0= ruleConditionalOrExpression ) ) )
             {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:633:1: (otherlv_0= KEYWORD_42 ( (lv_filter_1_0= ruleConditionalOrExpression ) ) )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:634:2: otherlv_0= KEYWORD_42 ( (lv_filter_1_0= ruleConditionalOrExpression ) )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:633:1: (otherlv_0= KEYWORD_46 ( (lv_filter_1_0= ruleConditionalOrExpression ) ) )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:634:2: otherlv_0= KEYWORD_46 ( (lv_filter_1_0= ruleConditionalOrExpression ) )
             {
-            otherlv_0=(Token)match(input,KEYWORD_42,FOLLOW_KEYWORD_42_in_ruleWhereClause1185); if (state.failed) return current;
+            otherlv_0=(Token)match(input,KEYWORD_46,FOLLOW_KEYWORD_46_in_ruleWhereClause1185); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_0, grammarAccess.getWhereClauseAccess().getWHEREKeyword_0());
@@ -1814,7 +1831,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleVariablesClause"
-    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:673:1: ruleVariablesClause returns [EObject current=null] : (otherlv_0= KEYWORD_62 ( (lv_variableDeclarations_1_0= ruleVariableDeclaration ) ) (otherlv_2= KEYWORD_13 ( (lv_variableDeclarations_3_0= ruleVariableDeclaration ) ) )* (otherlv_4= KEYWORD_13 )? ) ;
+    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:673:1: ruleVariablesClause returns [EObject current=null] : (otherlv_0= KEYWORD_69 ( (lv_variableDeclarations_1_0= ruleVariableDeclaration ) ) (otherlv_2= KEYWORD_13 ( (lv_variableDeclarations_3_0= ruleVariableDeclaration ) ) )* (otherlv_4= KEYWORD_13 )? ) ;
     public final EObject ruleVariablesClause() throws RecognitionException {
         EObject current = null;
 
@@ -1829,13 +1846,13 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:676:28: ( (otherlv_0= KEYWORD_62 ( (lv_variableDeclarations_1_0= ruleVariableDeclaration ) ) (otherlv_2= KEYWORD_13 ( (lv_variableDeclarations_3_0= ruleVariableDeclaration ) ) )* (otherlv_4= KEYWORD_13 )? ) )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:677:1: (otherlv_0= KEYWORD_62 ( (lv_variableDeclarations_1_0= ruleVariableDeclaration ) ) (otherlv_2= KEYWORD_13 ( (lv_variableDeclarations_3_0= ruleVariableDeclaration ) ) )* (otherlv_4= KEYWORD_13 )? )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:676:28: ( (otherlv_0= KEYWORD_69 ( (lv_variableDeclarations_1_0= ruleVariableDeclaration ) ) (otherlv_2= KEYWORD_13 ( (lv_variableDeclarations_3_0= ruleVariableDeclaration ) ) )* (otherlv_4= KEYWORD_13 )? ) )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:677:1: (otherlv_0= KEYWORD_69 ( (lv_variableDeclarations_1_0= ruleVariableDeclaration ) ) (otherlv_2= KEYWORD_13 ( (lv_variableDeclarations_3_0= ruleVariableDeclaration ) ) )* (otherlv_4= KEYWORD_13 )? )
             {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:677:1: (otherlv_0= KEYWORD_62 ( (lv_variableDeclarations_1_0= ruleVariableDeclaration ) ) (otherlv_2= KEYWORD_13 ( (lv_variableDeclarations_3_0= ruleVariableDeclaration ) ) )* (otherlv_4= KEYWORD_13 )? )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:678:2: otherlv_0= KEYWORD_62 ( (lv_variableDeclarations_1_0= ruleVariableDeclaration ) ) (otherlv_2= KEYWORD_13 ( (lv_variableDeclarations_3_0= ruleVariableDeclaration ) ) )* (otherlv_4= KEYWORD_13 )?
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:677:1: (otherlv_0= KEYWORD_69 ( (lv_variableDeclarations_1_0= ruleVariableDeclaration ) ) (otherlv_2= KEYWORD_13 ( (lv_variableDeclarations_3_0= ruleVariableDeclaration ) ) )* (otherlv_4= KEYWORD_13 )? )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:678:2: otherlv_0= KEYWORD_69 ( (lv_variableDeclarations_1_0= ruleVariableDeclaration ) ) (otherlv_2= KEYWORD_13 ( (lv_variableDeclarations_3_0= ruleVariableDeclaration ) ) )* (otherlv_4= KEYWORD_13 )?
             {
-            otherlv_0=(Token)match(input,KEYWORD_62,FOLLOW_KEYWORD_62_in_ruleVariablesClause1288); if (state.failed) return current;
+            otherlv_0=(Token)match(input,KEYWORD_69,FOLLOW_KEYWORD_69_in_ruleVariablesClause1288); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_0, grammarAccess.getVariablesClauseAccess().getVARIABLESKeyword_0());
@@ -1885,7 +1902,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                 if ( (LA15_0==KEYWORD_13) ) {
                     int LA15_1 = input.LA(2);
 
-                    if ( (LA15_1==KEYWORD_52||LA15_1==KEYWORD_49||(LA15_1>=KEYWORD_44 && LA15_1<=KEYWORD_45)||(LA15_1>=KEYWORD_32 && LA15_1<=KEYWORD_34)||LA15_1==KEYWORD_28||LA15_1==RULE_ID) ) {
+                    if ( (LA15_1==KEYWORD_89||(LA15_1>=KEYWORD_86 && LA15_1<=KEYWORD_81)||LA15_1==KEYWORD_59||LA15_1==KEYWORD_55||LA15_1==KEYWORD_57||(LA15_1>=KEYWORD_49 && LA15_1<=KEYWORD_51)||(LA15_1>=KEYWORD_36 && LA15_1<=KEYWORD_38)||LA15_1==KEYWORD_29||LA15_1==RULE_ID) ) {
                         alt15=1;
                     }
 
@@ -2268,7 +2285,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleParametersClause"
-    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:831:1: ruleParametersClause returns [EObject current=null] : (otherlv_0= KEYWORD_65 ( (lv_parameterDeclarations_1_0= ruleParameterDeclaration ) ) (otherlv_2= KEYWORD_8 ( (lv_parameterDeclarations_3_0= ruleParameterDeclaration ) ) )* (otherlv_4= KEYWORD_8 )? ) ;
+    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:831:1: ruleParametersClause returns [EObject current=null] : (otherlv_0= KEYWORD_72 ( (lv_parameterDeclarations_1_0= ruleParameterDeclaration ) ) (otherlv_2= KEYWORD_8 ( (lv_parameterDeclarations_3_0= ruleParameterDeclaration ) ) )* (otherlv_4= KEYWORD_8 )? ) ;
     public final EObject ruleParametersClause() throws RecognitionException {
         EObject current = null;
 
@@ -2283,13 +2300,13 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:834:28: ( (otherlv_0= KEYWORD_65 ( (lv_parameterDeclarations_1_0= ruleParameterDeclaration ) ) (otherlv_2= KEYWORD_8 ( (lv_parameterDeclarations_3_0= ruleParameterDeclaration ) ) )* (otherlv_4= KEYWORD_8 )? ) )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:835:1: (otherlv_0= KEYWORD_65 ( (lv_parameterDeclarations_1_0= ruleParameterDeclaration ) ) (otherlv_2= KEYWORD_8 ( (lv_parameterDeclarations_3_0= ruleParameterDeclaration ) ) )* (otherlv_4= KEYWORD_8 )? )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:834:28: ( (otherlv_0= KEYWORD_72 ( (lv_parameterDeclarations_1_0= ruleParameterDeclaration ) ) (otherlv_2= KEYWORD_8 ( (lv_parameterDeclarations_3_0= ruleParameterDeclaration ) ) )* (otherlv_4= KEYWORD_8 )? ) )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:835:1: (otherlv_0= KEYWORD_72 ( (lv_parameterDeclarations_1_0= ruleParameterDeclaration ) ) (otherlv_2= KEYWORD_8 ( (lv_parameterDeclarations_3_0= ruleParameterDeclaration ) ) )* (otherlv_4= KEYWORD_8 )? )
             {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:835:1: (otherlv_0= KEYWORD_65 ( (lv_parameterDeclarations_1_0= ruleParameterDeclaration ) ) (otherlv_2= KEYWORD_8 ( (lv_parameterDeclarations_3_0= ruleParameterDeclaration ) ) )* (otherlv_4= KEYWORD_8 )? )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:836:2: otherlv_0= KEYWORD_65 ( (lv_parameterDeclarations_1_0= ruleParameterDeclaration ) ) (otherlv_2= KEYWORD_8 ( (lv_parameterDeclarations_3_0= ruleParameterDeclaration ) ) )* (otherlv_4= KEYWORD_8 )?
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:835:1: (otherlv_0= KEYWORD_72 ( (lv_parameterDeclarations_1_0= ruleParameterDeclaration ) ) (otherlv_2= KEYWORD_8 ( (lv_parameterDeclarations_3_0= ruleParameterDeclaration ) ) )* (otherlv_4= KEYWORD_8 )? )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:836:2: otherlv_0= KEYWORD_72 ( (lv_parameterDeclarations_1_0= ruleParameterDeclaration ) ) (otherlv_2= KEYWORD_8 ( (lv_parameterDeclarations_3_0= ruleParameterDeclaration ) ) )* (otherlv_4= KEYWORD_8 )?
             {
-            otherlv_0=(Token)match(input,KEYWORD_65,FOLLOW_KEYWORD_65_in_ruleParametersClause1648); if (state.failed) return current;
+            otherlv_0=(Token)match(input,KEYWORD_72,FOLLOW_KEYWORD_72_in_ruleParametersClause1648); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_0, grammarAccess.getParametersClauseAccess().getPARAMETERSKeyword_0());
@@ -2339,7 +2356,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                 if ( (LA17_0==KEYWORD_8) ) {
                     int LA17_1 = input.LA(2);
 
-                    if ( (LA17_1==KEYWORD_52||LA17_1==KEYWORD_49||(LA17_1>=KEYWORD_44 && LA17_1<=KEYWORD_45)||(LA17_1>=KEYWORD_32 && LA17_1<=KEYWORD_34)||LA17_1==KEYWORD_28||LA17_1==RULE_ID) ) {
+                    if ( (LA17_1==KEYWORD_89||(LA17_1>=KEYWORD_86 && LA17_1<=KEYWORD_81)||LA17_1==KEYWORD_59||LA17_1==KEYWORD_55||LA17_1==KEYWORD_57||(LA17_1>=KEYWORD_49 && LA17_1<=KEYWORD_51)||(LA17_1>=KEYWORD_36 && LA17_1<=KEYWORD_38)||LA17_1==KEYWORD_29||LA17_1==RULE_ID) ) {
                         alt17=1;
                     }
 
@@ -2880,7 +2897,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                 if ( (LA19_0==KEYWORD_13) ) {
                     int LA19_1 = input.LA(2);
 
-                    if ( (LA19_1==KEYWORD_50) ) {
+                    if ( (LA19_1==KEYWORD_56) ) {
                         alt19=1;
                     }
 
@@ -3028,7 +3045,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleImportDeclaration"
-    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1089:1: ruleImportDeclaration returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= KEYWORD_50 this_QualifiedIdentifier_1= ruleQualifiedIdentifier ) ;
+    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1089:1: ruleImportDeclaration returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= KEYWORD_56 this_QualifiedIdentifier_1= ruleQualifiedIdentifier ) ;
     public final AntlrDatatypeRuleToken ruleImportDeclaration() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -3039,13 +3056,13 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1093:6: ( (kw= KEYWORD_50 this_QualifiedIdentifier_1= ruleQualifiedIdentifier ) )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1094:1: (kw= KEYWORD_50 this_QualifiedIdentifier_1= ruleQualifiedIdentifier )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1093:6: ( (kw= KEYWORD_56 this_QualifiedIdentifier_1= ruleQualifiedIdentifier ) )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1094:1: (kw= KEYWORD_56 this_QualifiedIdentifier_1= ruleQualifiedIdentifier )
             {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1094:1: (kw= KEYWORD_50 this_QualifiedIdentifier_1= ruleQualifiedIdentifier )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1095:2: kw= KEYWORD_50 this_QualifiedIdentifier_1= ruleQualifiedIdentifier
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1094:1: (kw= KEYWORD_56 this_QualifiedIdentifier_1= ruleQualifiedIdentifier )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1095:2: kw= KEYWORD_56 this_QualifiedIdentifier_1= ruleQualifiedIdentifier
             {
-            kw=(Token)match(input,KEYWORD_50,FOLLOW_KEYWORD_50_in_ruleImportDeclaration2253); if (state.failed) return current;
+            kw=(Token)match(input,KEYWORD_56,FOLLOW_KEYWORD_56_in_ruleImportDeclaration2253); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                       current.merge(kw);
@@ -3136,7 +3153,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleGroupByClause"
-    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1128:1: ruleGroupByClause returns [EObject current=null] : (otherlv_0= KEYWORD_39 otherlv_1= KEYWORD_24 ( (lv_grouping_2_0= ruleConditionalOrExpression ) ) (otherlv_3= KEYWORD_8 ( (lv_grouping_4_0= ruleConditionalOrExpression ) ) )* (otherlv_5= KEYWORD_8 )? ( (lv_havingClause_6_0= ruleHavingClause ) )? ) ;
+    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1128:1: ruleGroupByClause returns [EObject current=null] : (otherlv_0= KEYWORD_43 otherlv_1= KEYWORD_24 ( (lv_grouping_2_0= ruleConditionalOrExpression ) ) (otherlv_3= KEYWORD_8 ( (lv_grouping_4_0= ruleConditionalOrExpression ) ) )* (otherlv_5= KEYWORD_8 )? ( (lv_havingClause_6_0= ruleHavingClause ) )? ) ;
     public final EObject ruleGroupByClause() throws RecognitionException {
         EObject current = null;
 
@@ -3154,13 +3171,13 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1131:28: ( (otherlv_0= KEYWORD_39 otherlv_1= KEYWORD_24 ( (lv_grouping_2_0= ruleConditionalOrExpression ) ) (otherlv_3= KEYWORD_8 ( (lv_grouping_4_0= ruleConditionalOrExpression ) ) )* (otherlv_5= KEYWORD_8 )? ( (lv_havingClause_6_0= ruleHavingClause ) )? ) )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1132:1: (otherlv_0= KEYWORD_39 otherlv_1= KEYWORD_24 ( (lv_grouping_2_0= ruleConditionalOrExpression ) ) (otherlv_3= KEYWORD_8 ( (lv_grouping_4_0= ruleConditionalOrExpression ) ) )* (otherlv_5= KEYWORD_8 )? ( (lv_havingClause_6_0= ruleHavingClause ) )? )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1131:28: ( (otherlv_0= KEYWORD_43 otherlv_1= KEYWORD_24 ( (lv_grouping_2_0= ruleConditionalOrExpression ) ) (otherlv_3= KEYWORD_8 ( (lv_grouping_4_0= ruleConditionalOrExpression ) ) )* (otherlv_5= KEYWORD_8 )? ( (lv_havingClause_6_0= ruleHavingClause ) )? ) )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1132:1: (otherlv_0= KEYWORD_43 otherlv_1= KEYWORD_24 ( (lv_grouping_2_0= ruleConditionalOrExpression ) ) (otherlv_3= KEYWORD_8 ( (lv_grouping_4_0= ruleConditionalOrExpression ) ) )* (otherlv_5= KEYWORD_8 )? ( (lv_havingClause_6_0= ruleHavingClause ) )? )
             {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1132:1: (otherlv_0= KEYWORD_39 otherlv_1= KEYWORD_24 ( (lv_grouping_2_0= ruleConditionalOrExpression ) ) (otherlv_3= KEYWORD_8 ( (lv_grouping_4_0= ruleConditionalOrExpression ) ) )* (otherlv_5= KEYWORD_8 )? ( (lv_havingClause_6_0= ruleHavingClause ) )? )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1133:2: otherlv_0= KEYWORD_39 otherlv_1= KEYWORD_24 ( (lv_grouping_2_0= ruleConditionalOrExpression ) ) (otherlv_3= KEYWORD_8 ( (lv_grouping_4_0= ruleConditionalOrExpression ) ) )* (otherlv_5= KEYWORD_8 )? ( (lv_havingClause_6_0= ruleHavingClause ) )?
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1132:1: (otherlv_0= KEYWORD_43 otherlv_1= KEYWORD_24 ( (lv_grouping_2_0= ruleConditionalOrExpression ) ) (otherlv_3= KEYWORD_8 ( (lv_grouping_4_0= ruleConditionalOrExpression ) ) )* (otherlv_5= KEYWORD_8 )? ( (lv_havingClause_6_0= ruleHavingClause ) )? )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1133:2: otherlv_0= KEYWORD_43 otherlv_1= KEYWORD_24 ( (lv_grouping_2_0= ruleConditionalOrExpression ) ) (otherlv_3= KEYWORD_8 ( (lv_grouping_4_0= ruleConditionalOrExpression ) ) )* (otherlv_5= KEYWORD_8 )? ( (lv_havingClause_6_0= ruleHavingClause ) )?
             {
-            otherlv_0=(Token)match(input,KEYWORD_39,FOLLOW_KEYWORD_39_in_ruleGroupByClause2367); if (state.failed) return current;
+            otherlv_0=(Token)match(input,KEYWORD_43,FOLLOW_KEYWORD_43_in_ruleGroupByClause2367); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_0, grammarAccess.getGroupByClauseAccess().getGROUPKeyword_0());
@@ -3216,7 +3233,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                 if ( (LA21_0==KEYWORD_8) ) {
                     int LA21_1 = input.LA(2);
 
-                    if ( ((LA21_1>=KEYWORD_75 && LA21_1<=KEYWORD_73)||(LA21_1>=KEYWORD_68 && LA21_1<=KEYWORD_70)||LA21_1==KEYWORD_61||LA21_1==KEYWORD_63||(LA21_1>=KEYWORD_57 && LA21_1<=KEYWORD_59)||(LA21_1>=KEYWORD_53 && LA21_1<=KEYWORD_55)||LA21_1==KEYWORD_43||(LA21_1>=KEYWORD_35 && LA21_1<=KEYWORD_38)||LA21_1==KEYWORD_27||LA21_1==KEYWORD_1||LA21_1==KEYWORD_4||LA21_1==KEYWORD_7||LA21_1==KEYWORD_9||LA21_1==KEYWORD_12||(LA21_1>=KEYWORD_17 && LA21_1<=RULE_STRING)) ) {
+                    if ( ((LA21_1>=KEYWORD_92 && LA21_1<=KEYWORD_91)||(LA21_1>=KEYWORD_90 && LA21_1<=KEYWORD_88)||(LA21_1>=KEYWORD_79 && LA21_1<=KEYWORD_78)||LA21_1==KEYWORD_75||LA21_1==KEYWORD_68||LA21_1==KEYWORD_70||(LA21_1>=KEYWORD_64 && LA21_1<=KEYWORD_66)||(LA21_1>=KEYWORD_60 && LA21_1<=KEYWORD_62)||(LA21_1>=KEYWORD_47 && LA21_1<=KEYWORD_48)||(LA21_1>=KEYWORD_39 && LA21_1<=KEYWORD_42)||(LA21_1>=KEYWORD_27 && LA21_1<=KEYWORD_28)||(LA21_1>=KEYWORD_30 && LA21_1<=KEYWORD_32)||LA21_1==KEYWORD_1||LA21_1==KEYWORD_4||LA21_1==KEYWORD_7||LA21_1==KEYWORD_9||LA21_1==KEYWORD_12||(LA21_1>=KEYWORD_17 && LA21_1<=RULE_STRING)) ) {
                         alt21=1;
                     }
 
@@ -3305,7 +3322,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
             int alt23=2;
             int LA23_0 = input.LA(1);
 
-            if ( (LA23_0==KEYWORD_46) ) {
+            if ( (LA23_0==KEYWORD_52) ) {
                 alt23=1;
             }
             switch (alt23) {
@@ -3410,7 +3427,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleHavingClause"
-    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1223:1: ruleHavingClause returns [EObject current=null] : (otherlv_0= KEYWORD_46 ( (lv_having_1_0= ruleConditionalOrExpression ) ) ) ;
+    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1223:1: ruleHavingClause returns [EObject current=null] : (otherlv_0= KEYWORD_52 ( (lv_having_1_0= ruleConditionalOrExpression ) ) ) ;
     public final EObject ruleHavingClause() throws RecognitionException {
         EObject current = null;
 
@@ -3421,13 +3438,13 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1226:28: ( (otherlv_0= KEYWORD_46 ( (lv_having_1_0= ruleConditionalOrExpression ) ) ) )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1227:1: (otherlv_0= KEYWORD_46 ( (lv_having_1_0= ruleConditionalOrExpression ) ) )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1226:28: ( (otherlv_0= KEYWORD_52 ( (lv_having_1_0= ruleConditionalOrExpression ) ) ) )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1227:1: (otherlv_0= KEYWORD_52 ( (lv_having_1_0= ruleConditionalOrExpression ) ) )
             {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1227:1: (otherlv_0= KEYWORD_46 ( (lv_having_1_0= ruleConditionalOrExpression ) ) )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1228:2: otherlv_0= KEYWORD_46 ( (lv_having_1_0= ruleConditionalOrExpression ) )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1227:1: (otherlv_0= KEYWORD_52 ( (lv_having_1_0= ruleConditionalOrExpression ) ) )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1228:2: otherlv_0= KEYWORD_52 ( (lv_having_1_0= ruleConditionalOrExpression ) )
             {
-            otherlv_0=(Token)match(input,KEYWORD_46,FOLLOW_KEYWORD_46_in_ruleHavingClause2555); if (state.failed) return current;
+            otherlv_0=(Token)match(input,KEYWORD_52,FOLLOW_KEYWORD_52_in_ruleHavingClause2555); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_0, grammarAccess.getHavingClauseAccess().getHAVINGKeyword_0());
@@ -3531,7 +3548,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleOrderByClause"
-    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1267:1: ruleOrderByClause returns [EObject current=null] : (otherlv_0= KEYWORD_40 otherlv_1= KEYWORD_24 ( (lv_ordering_2_0= ruleOrderBySpec ) ) (otherlv_3= KEYWORD_8 ( (lv_ordering_4_0= ruleOrderBySpec ) ) )* (otherlv_5= KEYWORD_8 )? ) ;
+    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1267:1: ruleOrderByClause returns [EObject current=null] : (otherlv_0= KEYWORD_44 otherlv_1= KEYWORD_24 ( (lv_ordering_2_0= ruleOrderBySpec ) ) (otherlv_3= KEYWORD_8 ( (lv_ordering_4_0= ruleOrderBySpec ) ) )* (otherlv_5= KEYWORD_8 )? ) ;
     public final EObject ruleOrderByClause() throws RecognitionException {
         EObject current = null;
 
@@ -3547,13 +3564,13 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1270:28: ( (otherlv_0= KEYWORD_40 otherlv_1= KEYWORD_24 ( (lv_ordering_2_0= ruleOrderBySpec ) ) (otherlv_3= KEYWORD_8 ( (lv_ordering_4_0= ruleOrderBySpec ) ) )* (otherlv_5= KEYWORD_8 )? ) )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1271:1: (otherlv_0= KEYWORD_40 otherlv_1= KEYWORD_24 ( (lv_ordering_2_0= ruleOrderBySpec ) ) (otherlv_3= KEYWORD_8 ( (lv_ordering_4_0= ruleOrderBySpec ) ) )* (otherlv_5= KEYWORD_8 )? )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1270:28: ( (otherlv_0= KEYWORD_44 otherlv_1= KEYWORD_24 ( (lv_ordering_2_0= ruleOrderBySpec ) ) (otherlv_3= KEYWORD_8 ( (lv_ordering_4_0= ruleOrderBySpec ) ) )* (otherlv_5= KEYWORD_8 )? ) )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1271:1: (otherlv_0= KEYWORD_44 otherlv_1= KEYWORD_24 ( (lv_ordering_2_0= ruleOrderBySpec ) ) (otherlv_3= KEYWORD_8 ( (lv_ordering_4_0= ruleOrderBySpec ) ) )* (otherlv_5= KEYWORD_8 )? )
             {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1271:1: (otherlv_0= KEYWORD_40 otherlv_1= KEYWORD_24 ( (lv_ordering_2_0= ruleOrderBySpec ) ) (otherlv_3= KEYWORD_8 ( (lv_ordering_4_0= ruleOrderBySpec ) ) )* (otherlv_5= KEYWORD_8 )? )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1272:2: otherlv_0= KEYWORD_40 otherlv_1= KEYWORD_24 ( (lv_ordering_2_0= ruleOrderBySpec ) ) (otherlv_3= KEYWORD_8 ( (lv_ordering_4_0= ruleOrderBySpec ) ) )* (otherlv_5= KEYWORD_8 )?
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1271:1: (otherlv_0= KEYWORD_44 otherlv_1= KEYWORD_24 ( (lv_ordering_2_0= ruleOrderBySpec ) ) (otherlv_3= KEYWORD_8 ( (lv_ordering_4_0= ruleOrderBySpec ) ) )* (otherlv_5= KEYWORD_8 )? )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1272:2: otherlv_0= KEYWORD_44 otherlv_1= KEYWORD_24 ( (lv_ordering_2_0= ruleOrderBySpec ) ) (otherlv_3= KEYWORD_8 ( (lv_ordering_4_0= ruleOrderBySpec ) ) )* (otherlv_5= KEYWORD_8 )?
             {
-            otherlv_0=(Token)match(input,KEYWORD_40,FOLLOW_KEYWORD_40_in_ruleOrderByClause2658); if (state.failed) return current;
+            otherlv_0=(Token)match(input,KEYWORD_44,FOLLOW_KEYWORD_44_in_ruleOrderByClause2658); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_0, grammarAccess.getOrderByClauseAccess().getORDERKeyword_0());
@@ -3609,7 +3626,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                 if ( (LA24_0==KEYWORD_8) ) {
                     int LA24_1 = input.LA(2);
 
-                    if ( ((LA24_1>=KEYWORD_75 && LA24_1<=KEYWORD_73)||(LA24_1>=KEYWORD_68 && LA24_1<=KEYWORD_70)||LA24_1==KEYWORD_61||LA24_1==KEYWORD_63||(LA24_1>=KEYWORD_57 && LA24_1<=KEYWORD_59)||(LA24_1>=KEYWORD_53 && LA24_1<=KEYWORD_55)||LA24_1==KEYWORD_43||(LA24_1>=KEYWORD_35 && LA24_1<=KEYWORD_38)||LA24_1==KEYWORD_27||LA24_1==KEYWORD_1||LA24_1==KEYWORD_4||LA24_1==KEYWORD_7||LA24_1==KEYWORD_9||LA24_1==KEYWORD_12||(LA24_1>=KEYWORD_17 && LA24_1<=RULE_STRING)) ) {
+                    if ( ((LA24_1>=KEYWORD_92 && LA24_1<=KEYWORD_91)||(LA24_1>=KEYWORD_90 && LA24_1<=KEYWORD_88)||(LA24_1>=KEYWORD_79 && LA24_1<=KEYWORD_78)||LA24_1==KEYWORD_75||LA24_1==KEYWORD_68||LA24_1==KEYWORD_70||(LA24_1>=KEYWORD_64 && LA24_1<=KEYWORD_66)||(LA24_1>=KEYWORD_60 && LA24_1<=KEYWORD_62)||(LA24_1>=KEYWORD_47 && LA24_1<=KEYWORD_48)||(LA24_1>=KEYWORD_39 && LA24_1<=KEYWORD_42)||(LA24_1>=KEYWORD_27 && LA24_1<=KEYWORD_28)||(LA24_1>=KEYWORD_30 && LA24_1<=KEYWORD_32)||LA24_1==KEYWORD_1||LA24_1==KEYWORD_4||LA24_1==KEYWORD_7||LA24_1==KEYWORD_9||LA24_1==KEYWORD_12||(LA24_1>=KEYWORD_17 && LA24_1<=RULE_STRING)) ) {
                         alt24=1;
                     }
 
@@ -3894,7 +3911,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleRangeClause"
-    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1395:1: ruleRangeClause returns [EObject current=null] : (otherlv_0= KEYWORD_41 ( (lv_start_1_0= ruleConditionalOrExpression ) ) otherlv_2= KEYWORD_8 ( (lv_end_3_0= ruleConditionalOrExpression ) ) ) ;
+    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1395:1: ruleRangeClause returns [EObject current=null] : (otherlv_0= KEYWORD_45 ( (lv_start_1_0= ruleConditionalOrExpression ) ) otherlv_2= KEYWORD_8 ( (lv_end_3_0= ruleConditionalOrExpression ) ) ) ;
     public final EObject ruleRangeClause() throws RecognitionException {
         EObject current = null;
 
@@ -3908,13 +3925,13 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1398:28: ( (otherlv_0= KEYWORD_41 ( (lv_start_1_0= ruleConditionalOrExpression ) ) otherlv_2= KEYWORD_8 ( (lv_end_3_0= ruleConditionalOrExpression ) ) ) )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1399:1: (otherlv_0= KEYWORD_41 ( (lv_start_1_0= ruleConditionalOrExpression ) ) otherlv_2= KEYWORD_8 ( (lv_end_3_0= ruleConditionalOrExpression ) ) )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1398:28: ( (otherlv_0= KEYWORD_45 ( (lv_start_1_0= ruleConditionalOrExpression ) ) otherlv_2= KEYWORD_8 ( (lv_end_3_0= ruleConditionalOrExpression ) ) ) )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1399:1: (otherlv_0= KEYWORD_45 ( (lv_start_1_0= ruleConditionalOrExpression ) ) otherlv_2= KEYWORD_8 ( (lv_end_3_0= ruleConditionalOrExpression ) ) )
             {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1399:1: (otherlv_0= KEYWORD_41 ( (lv_start_1_0= ruleConditionalOrExpression ) ) otherlv_2= KEYWORD_8 ( (lv_end_3_0= ruleConditionalOrExpression ) ) )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1400:2: otherlv_0= KEYWORD_41 ( (lv_start_1_0= ruleConditionalOrExpression ) ) otherlv_2= KEYWORD_8 ( (lv_end_3_0= ruleConditionalOrExpression ) )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1399:1: (otherlv_0= KEYWORD_45 ( (lv_start_1_0= ruleConditionalOrExpression ) ) otherlv_2= KEYWORD_8 ( (lv_end_3_0= ruleConditionalOrExpression ) ) )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1400:2: otherlv_0= KEYWORD_45 ( (lv_start_1_0= ruleConditionalOrExpression ) ) otherlv_2= KEYWORD_8 ( (lv_end_3_0= ruleConditionalOrExpression ) )
             {
-            otherlv_0=(Token)match(input,KEYWORD_41,FOLLOW_KEYWORD_41_in_ruleRangeClause2939); if (state.failed) return current;
+            otherlv_0=(Token)match(input,KEYWORD_45,FOLLOW_KEYWORD_45_in_ruleRangeClause2939); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_0, grammarAccess.getRangeClauseAccess().getRANGEKeyword_0());
@@ -4850,7 +4867,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                 int alt30=2;
                 int LA30_0 = input.LA(1);
 
-                if ( (LA30_0==KEYWORD_67||LA30_0==KEYWORD_18||(LA30_0>=KEYWORD_20 && LA30_0<=KEYWORD_22)||(LA30_0>=KEYWORD_14 && LA30_0<=KEYWORD_15)) ) {
+                if ( (LA30_0==KEYWORD_74||LA30_0==KEYWORD_18||(LA30_0>=KEYWORD_20 && LA30_0<=KEYWORD_22)||(LA30_0>=KEYWORD_14 && LA30_0<=KEYWORD_15)) ) {
                     alt30=1;
                 }
 
@@ -5451,45 +5468,56 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleUnaryExpression"
-    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1956:1: ruleUnaryExpression returns [EObject current=null] : ( ( (lv_unaryOperator_0_0= ruleUnaryOperator ) )? ( (lv_right_1_0= ruleFieldAccessExpression ) ) ) ;
+    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1956:1: ruleUnaryExpression returns [EObject current=null] : ( (otherlv_0= KEYWORD_4 ( (lv_castType_1_0= ruleType ) ) otherlv_2= KEYWORD_5 ( (lv_right_3_0= ruleFieldAccessExpression ) ) ) | ( ( (lv_unaryOperator_4_0= ruleUnaryOperator ) )? ( (lv_right_5_0= ruleFieldAccessExpression ) ) ) ) ;
     public final EObject ruleUnaryExpression() throws RecognitionException {
         EObject current = null;
 
-        Enumerator lv_unaryOperator_0_0 = null;
+        Token otherlv_0=null;
+        Token otherlv_2=null;
+        AntlrDatatypeRuleToken lv_castType_1_0 = null;
 
-        EObject lv_right_1_0 = null;
+        EObject lv_right_3_0 = null;
+
+        Enumerator lv_unaryOperator_4_0 = null;
+
+        EObject lv_right_5_0 = null;
 
 
          enterRule(); 
             
         try {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1959:28: ( ( ( (lv_unaryOperator_0_0= ruleUnaryOperator ) )? ( (lv_right_1_0= ruleFieldAccessExpression ) ) ) )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1960:1: ( ( (lv_unaryOperator_0_0= ruleUnaryOperator ) )? ( (lv_right_1_0= ruleFieldAccessExpression ) ) )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1959:28: ( ( (otherlv_0= KEYWORD_4 ( (lv_castType_1_0= ruleType ) ) otherlv_2= KEYWORD_5 ( (lv_right_3_0= ruleFieldAccessExpression ) ) ) | ( ( (lv_unaryOperator_4_0= ruleUnaryOperator ) )? ( (lv_right_5_0= ruleFieldAccessExpression ) ) ) ) )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1960:1: ( (otherlv_0= KEYWORD_4 ( (lv_castType_1_0= ruleType ) ) otherlv_2= KEYWORD_5 ( (lv_right_3_0= ruleFieldAccessExpression ) ) ) | ( ( (lv_unaryOperator_4_0= ruleUnaryOperator ) )? ( (lv_right_5_0= ruleFieldAccessExpression ) ) ) )
             {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1960:1: ( ( (lv_unaryOperator_0_0= ruleUnaryOperator ) )? ( (lv_right_1_0= ruleFieldAccessExpression ) ) )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1960:2: ( (lv_unaryOperator_0_0= ruleUnaryOperator ) )? ( (lv_right_1_0= ruleFieldAccessExpression ) )
-            {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1960:2: ( (lv_unaryOperator_0_0= ruleUnaryOperator ) )?
-            int alt33=2;
-            int LA33_0 = input.LA(1);
-
-            if ( (LA33_0==KEYWORD_1||LA33_0==KEYWORD_7||LA33_0==KEYWORD_9||LA33_0==KEYWORD_17) ) {
-                alt33=1;
-            }
-            switch (alt33) {
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1960:1: ( (otherlv_0= KEYWORD_4 ( (lv_castType_1_0= ruleType ) ) otherlv_2= KEYWORD_5 ( (lv_right_3_0= ruleFieldAccessExpression ) ) ) | ( ( (lv_unaryOperator_4_0= ruleUnaryOperator ) )? ( (lv_right_5_0= ruleFieldAccessExpression ) ) ) )
+            int alt34=2;
+            alt34 = dfa34.predict(input);
+            switch (alt34) {
                 case 1 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1961:1: (lv_unaryOperator_0_0= ruleUnaryOperator )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1960:2: (otherlv_0= KEYWORD_4 ( (lv_castType_1_0= ruleType ) ) otherlv_2= KEYWORD_5 ( (lv_right_3_0= ruleFieldAccessExpression ) ) )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1961:1: (lv_unaryOperator_0_0= ruleUnaryOperator )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1962:3: lv_unaryOperator_0_0= ruleUnaryOperator
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1960:2: (otherlv_0= KEYWORD_4 ( (lv_castType_1_0= ruleType ) ) otherlv_2= KEYWORD_5 ( (lv_right_3_0= ruleFieldAccessExpression ) ) )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1961:2: otherlv_0= KEYWORD_4 ( (lv_castType_1_0= ruleType ) ) otherlv_2= KEYWORD_5 ( (lv_right_3_0= ruleFieldAccessExpression ) )
+                    {
+                    otherlv_0=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleUnaryExpression4097); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_0, grammarAccess.getUnaryExpressionAccess().getLeftParenthesisKeyword_0_0());
+                          
+                    }
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1965:1: ( (lv_castType_1_0= ruleType ) )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1966:1: (lv_castType_1_0= ruleType )
+                    {
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1966:1: (lv_castType_1_0= ruleType )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1967:3: lv_castType_1_0= ruleType
                     {
                     if ( state.backtracking==0 ) {
                        
-                      	        newCompositeNode(grammarAccess.getUnaryExpressionAccess().getUnaryOperatorUnaryOperatorEnumRuleCall_0_0()); 
+                      	        newCompositeNode(grammarAccess.getUnaryExpressionAccess().getCastTypeTypeParserRuleCall_0_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleUnaryOperator_in_ruleUnaryExpression4104);
-                    lv_unaryOperator_0_0=ruleUnaryOperator();
+                    pushFollow(FOLLOW_ruleType_in_ruleUnaryExpression4117);
+                    lv_castType_1_0=ruleType();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -5500,9 +5528,9 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                       	        }
                              		set(
                              			current, 
-                             			"unaryOperator",
-                              		lv_unaryOperator_0_0, 
-                              		"UnaryOperator");
+                             			"castType",
+                              		lv_castType_1_0, 
+                              		"Type");
                       	        afterParserOrEnumRuleCall();
                       	    
                     }
@@ -5511,45 +5539,147 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
                     }
+
+                    otherlv_2=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleUnaryExpression4130); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_2, grammarAccess.getUnaryExpressionAccess().getRightParenthesisKeyword_0_2());
+                          
+                    }
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1988:1: ( (lv_right_3_0= ruleFieldAccessExpression ) )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1989:1: (lv_right_3_0= ruleFieldAccessExpression )
+                    {
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1989:1: (lv_right_3_0= ruleFieldAccessExpression )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1990:3: lv_right_3_0= ruleFieldAccessExpression
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	        newCompositeNode(grammarAccess.getUnaryExpressionAccess().getRightFieldAccessExpressionParserRuleCall_0_3_0()); 
+                      	    
+                    }
+                    pushFollow(FOLLOW_ruleFieldAccessExpression_in_ruleUnaryExpression4150);
+                    lv_right_3_0=ruleFieldAccessExpression();
+
+                    state._fsp--;
+                    if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      	        if (current==null) {
+                      	            current = createModelElementForParent(grammarAccess.getUnaryExpressionRule());
+                      	        }
+                             		set(
+                             			current, 
+                             			"right",
+                              		lv_right_3_0, 
+                              		"FieldAccessExpression");
+                      	        afterParserOrEnumRuleCall();
+                      	    
+                    }
+
+                    }
+
+
+                    }
+
+
+                    }
+
+
+                    }
                     break;
+                case 2 :
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2007:6: ( ( (lv_unaryOperator_4_0= ruleUnaryOperator ) )? ( (lv_right_5_0= ruleFieldAccessExpression ) ) )
+                    {
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2007:6: ( ( (lv_unaryOperator_4_0= ruleUnaryOperator ) )? ( (lv_right_5_0= ruleFieldAccessExpression ) ) )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2007:7: ( (lv_unaryOperator_4_0= ruleUnaryOperator ) )? ( (lv_right_5_0= ruleFieldAccessExpression ) )
+                    {
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2007:7: ( (lv_unaryOperator_4_0= ruleUnaryOperator ) )?
+                    int alt33=2;
+                    int LA33_0 = input.LA(1);
 
-            }
+                    if ( (LA33_0==KEYWORD_1||LA33_0==KEYWORD_7||LA33_0==KEYWORD_9||LA33_0==KEYWORD_17) ) {
+                        alt33=1;
+                    }
+                    switch (alt33) {
+                        case 1 :
+                            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2008:1: (lv_unaryOperator_4_0= ruleUnaryOperator )
+                            {
+                            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2008:1: (lv_unaryOperator_4_0= ruleUnaryOperator )
+                            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2009:3: lv_unaryOperator_4_0= ruleUnaryOperator
+                            {
+                            if ( state.backtracking==0 ) {
+                               
+                              	        newCompositeNode(grammarAccess.getUnaryExpressionAccess().getUnaryOperatorUnaryOperatorEnumRuleCall_1_0_0()); 
+                              	    
+                            }
+                            pushFollow(FOLLOW_ruleUnaryOperator_in_ruleUnaryExpression4179);
+                            lv_unaryOperator_4_0=ruleUnaryOperator();
 
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1978:3: ( (lv_right_1_0= ruleFieldAccessExpression ) )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1979:1: (lv_right_1_0= ruleFieldAccessExpression )
-            {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1979:1: (lv_right_1_0= ruleFieldAccessExpression )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:1980:3: lv_right_1_0= ruleFieldAccessExpression
-            {
-            if ( state.backtracking==0 ) {
-               
-              	        newCompositeNode(grammarAccess.getUnaryExpressionAccess().getRightFieldAccessExpressionParserRuleCall_1_0()); 
-              	    
-            }
-            pushFollow(FOLLOW_ruleFieldAccessExpression_in_ruleUnaryExpression4126);
-            lv_right_1_0=ruleFieldAccessExpression();
+                            state._fsp--;
+                            if (state.failed) return current;
+                            if ( state.backtracking==0 ) {
 
-            state._fsp--;
-            if (state.failed) return current;
-            if ( state.backtracking==0 ) {
+                              	        if (current==null) {
+                              	            current = createModelElementForParent(grammarAccess.getUnaryExpressionRule());
+                              	        }
+                                     		set(
+                                     			current, 
+                                     			"unaryOperator",
+                                      		lv_unaryOperator_4_0, 
+                                      		"UnaryOperator");
+                              	        afterParserOrEnumRuleCall();
+                              	    
+                            }
 
-              	        if (current==null) {
-              	            current = createModelElementForParent(grammarAccess.getUnaryExpressionRule());
-              	        }
-                     		set(
-                     			current, 
-                     			"right",
-                      		lv_right_1_0, 
-                      		"FieldAccessExpression");
-              	        afterParserOrEnumRuleCall();
-              	    
-            }
-
-            }
+                            }
 
 
-            }
+                            }
+                            break;
 
+                    }
+
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2025:3: ( (lv_right_5_0= ruleFieldAccessExpression ) )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2026:1: (lv_right_5_0= ruleFieldAccessExpression )
+                    {
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2026:1: (lv_right_5_0= ruleFieldAccessExpression )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2027:3: lv_right_5_0= ruleFieldAccessExpression
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	        newCompositeNode(grammarAccess.getUnaryExpressionAccess().getRightFieldAccessExpressionParserRuleCall_1_1_0()); 
+                      	    
+                    }
+                    pushFollow(FOLLOW_ruleFieldAccessExpression_in_ruleUnaryExpression4201);
+                    lv_right_5_0=ruleFieldAccessExpression();
+
+                    state._fsp--;
+                    if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      	        if (current==null) {
+                      	            current = createModelElementForParent(grammarAccess.getUnaryExpressionRule());
+                      	        }
+                             		set(
+                             			current, 
+                             			"right",
+                              		lv_right_5_0, 
+                              		"FieldAccessExpression");
+                      	        afterParserOrEnumRuleCall();
+                      	    
+                    }
+
+                    }
+
+
+                    }
+
+
+                    }
+
+
+                    }
+                    break;
 
             }
 
@@ -5573,7 +5703,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleFieldAccessExpression"
-    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2004:1: entryRuleFieldAccessExpression returns [EObject current=null] : iv_ruleFieldAccessExpression= ruleFieldAccessExpression EOF ;
+    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2051:1: entryRuleFieldAccessExpression returns [EObject current=null] : iv_ruleFieldAccessExpression= ruleFieldAccessExpression EOF ;
     public final EObject entryRuleFieldAccessExpression() throws RecognitionException {
         EObject current = null;
 
@@ -5581,13 +5711,13 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2005:2: (iv_ruleFieldAccessExpression= ruleFieldAccessExpression EOF )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2006:2: iv_ruleFieldAccessExpression= ruleFieldAccessExpression EOF
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2052:2: (iv_ruleFieldAccessExpression= ruleFieldAccessExpression EOF )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2053:2: iv_ruleFieldAccessExpression= ruleFieldAccessExpression EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getFieldAccessExpressionRule()); 
             }
-            pushFollow(FOLLOW_ruleFieldAccessExpression_in_entryRuleFieldAccessExpression4161);
+            pushFollow(FOLLOW_ruleFieldAccessExpression_in_entryRuleFieldAccessExpression4237);
             iv_ruleFieldAccessExpression=ruleFieldAccessExpression();
 
             state._fsp--;
@@ -5595,7 +5725,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleFieldAccessExpression; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleFieldAccessExpression4171); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleFieldAccessExpression4247); if (state.failed) return current;
 
             }
 
@@ -5613,7 +5743,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFieldAccessExpression"
-    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2013:1: ruleFieldAccessExpression returns [EObject current=null] : (this_StaticMethodExpression_0= ruleStaticMethodExpression | (this_ParameterOrFieldOrMethodExpression_1= ruleParameterOrFieldOrMethodExpression ( () otherlv_3= KEYWORD_10 ( (lv_right_4_0= ruleFieldOrMethodExpression ) ) )* ) ) ;
+    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2060:1: ruleFieldAccessExpression returns [EObject current=null] : (this_StaticMethodExpression_0= ruleStaticMethodExpression | (this_ParameterOrFieldOrMethodExpression_1= ruleParameterOrFieldOrMethodExpression ( () otherlv_3= KEYWORD_10 ( (lv_right_4_0= ruleFieldOrMethodExpression ) ) )* ) ) ;
     public final EObject ruleFieldAccessExpression() throws RecognitionException {
         EObject current = null;
 
@@ -5628,29 +5758,29 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2016:28: ( (this_StaticMethodExpression_0= ruleStaticMethodExpression | (this_ParameterOrFieldOrMethodExpression_1= ruleParameterOrFieldOrMethodExpression ( () otherlv_3= KEYWORD_10 ( (lv_right_4_0= ruleFieldOrMethodExpression ) ) )* ) ) )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2017:1: (this_StaticMethodExpression_0= ruleStaticMethodExpression | (this_ParameterOrFieldOrMethodExpression_1= ruleParameterOrFieldOrMethodExpression ( () otherlv_3= KEYWORD_10 ( (lv_right_4_0= ruleFieldOrMethodExpression ) ) )* ) )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2063:28: ( (this_StaticMethodExpression_0= ruleStaticMethodExpression | (this_ParameterOrFieldOrMethodExpression_1= ruleParameterOrFieldOrMethodExpression ( () otherlv_3= KEYWORD_10 ( (lv_right_4_0= ruleFieldOrMethodExpression ) ) )* ) ) )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2064:1: (this_StaticMethodExpression_0= ruleStaticMethodExpression | (this_ParameterOrFieldOrMethodExpression_1= ruleParameterOrFieldOrMethodExpression ( () otherlv_3= KEYWORD_10 ( (lv_right_4_0= ruleFieldOrMethodExpression ) ) )* ) )
             {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2017:1: (this_StaticMethodExpression_0= ruleStaticMethodExpression | (this_ParameterOrFieldOrMethodExpression_1= ruleParameterOrFieldOrMethodExpression ( () otherlv_3= KEYWORD_10 ( (lv_right_4_0= ruleFieldOrMethodExpression ) ) )* ) )
-            int alt35=2;
-            int LA35_0 = input.LA(1);
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2064:1: (this_StaticMethodExpression_0= ruleStaticMethodExpression | (this_ParameterOrFieldOrMethodExpression_1= ruleParameterOrFieldOrMethodExpression ( () otherlv_3= KEYWORD_10 ( (lv_right_4_0= ruleFieldOrMethodExpression ) ) )* ) )
+            int alt36=2;
+            int LA36_0 = input.LA(1);
 
-            if ( (LA35_0==KEYWORD_75||(LA35_0>=KEYWORD_68 && LA35_0<=KEYWORD_69)||LA35_0==KEYWORD_61||LA35_0==KEYWORD_57) ) {
-                alt35=1;
+            if ( ((LA36_0>=KEYWORD_92 && LA36_0<=KEYWORD_91)||(LA36_0>=KEYWORD_90 && LA36_0<=KEYWORD_88)||LA36_0==KEYWORD_68||LA36_0==KEYWORD_64||LA36_0==KEYWORD_47||LA36_0==KEYWORD_27||(LA36_0>=KEYWORD_30 && LA36_0<=KEYWORD_32)) ) {
+                alt36=1;
             }
-            else if ( ((LA35_0>=KEYWORD_74 && LA35_0<=KEYWORD_73)||LA35_0==KEYWORD_70||LA35_0==KEYWORD_63||(LA35_0>=KEYWORD_58 && LA35_0<=KEYWORD_59)||(LA35_0>=KEYWORD_53 && LA35_0<=KEYWORD_55)||LA35_0==KEYWORD_43||(LA35_0>=KEYWORD_35 && LA35_0<=KEYWORD_38)||LA35_0==KEYWORD_27||LA35_0==KEYWORD_4||LA35_0==KEYWORD_12||(LA35_0>=RULE_ID && LA35_0<=RULE_STRING)) ) {
-                alt35=2;
+            else if ( ((LA36_0>=KEYWORD_79 && LA36_0<=KEYWORD_78)||LA36_0==KEYWORD_75||LA36_0==KEYWORD_70||(LA36_0>=KEYWORD_65 && LA36_0<=KEYWORD_66)||(LA36_0>=KEYWORD_60 && LA36_0<=KEYWORD_62)||LA36_0==KEYWORD_48||(LA36_0>=KEYWORD_39 && LA36_0<=KEYWORD_42)||LA36_0==KEYWORD_28||LA36_0==KEYWORD_4||LA36_0==KEYWORD_12||(LA36_0>=RULE_ID && LA36_0<=RULE_STRING)) ) {
+                alt36=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 35, 0, input);
+                    new NoViableAltException("", 36, 0, input);
 
                 throw nvae;
             }
-            switch (alt35) {
+            switch (alt36) {
                 case 1 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2018:2: this_StaticMethodExpression_0= ruleStaticMethodExpression
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2065:2: this_StaticMethodExpression_0= ruleStaticMethodExpression
                     {
                     if ( state.backtracking==0 ) {
                        
@@ -5662,7 +5792,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getFieldAccessExpressionAccess().getStaticMethodExpressionParserRuleCall_0()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleStaticMethodExpression_in_ruleFieldAccessExpression4221);
+                    pushFollow(FOLLOW_ruleStaticMethodExpression_in_ruleFieldAccessExpression4297);
                     this_StaticMethodExpression_0=ruleStaticMethodExpression();
 
                     state._fsp--;
@@ -5677,10 +5807,10 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2030:6: (this_ParameterOrFieldOrMethodExpression_1= ruleParameterOrFieldOrMethodExpression ( () otherlv_3= KEYWORD_10 ( (lv_right_4_0= ruleFieldOrMethodExpression ) ) )* )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2077:6: (this_ParameterOrFieldOrMethodExpression_1= ruleParameterOrFieldOrMethodExpression ( () otherlv_3= KEYWORD_10 ( (lv_right_4_0= ruleFieldOrMethodExpression ) ) )* )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2030:6: (this_ParameterOrFieldOrMethodExpression_1= ruleParameterOrFieldOrMethodExpression ( () otherlv_3= KEYWORD_10 ( (lv_right_4_0= ruleFieldOrMethodExpression ) ) )* )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2031:2: this_ParameterOrFieldOrMethodExpression_1= ruleParameterOrFieldOrMethodExpression ( () otherlv_3= KEYWORD_10 ( (lv_right_4_0= ruleFieldOrMethodExpression ) ) )*
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2077:6: (this_ParameterOrFieldOrMethodExpression_1= ruleParameterOrFieldOrMethodExpression ( () otherlv_3= KEYWORD_10 ( (lv_right_4_0= ruleFieldOrMethodExpression ) ) )* )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2078:2: this_ParameterOrFieldOrMethodExpression_1= ruleParameterOrFieldOrMethodExpression ( () otherlv_3= KEYWORD_10 ( (lv_right_4_0= ruleFieldOrMethodExpression ) ) )*
                     {
                     if ( state.backtracking==0 ) {
                        
@@ -5692,7 +5822,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getFieldAccessExpressionAccess().getParameterOrFieldOrMethodExpressionParserRuleCall_1_0()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleParameterOrFieldOrMethodExpression_in_ruleFieldAccessExpression4252);
+                    pushFollow(FOLLOW_ruleParameterOrFieldOrMethodExpression_in_ruleFieldAccessExpression4328);
                     this_ParameterOrFieldOrMethodExpression_1=ruleParameterOrFieldOrMethodExpression();
 
                     state._fsp--;
@@ -5703,23 +5833,23 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                               afterParserOrEnumRuleCall();
                           
                     }
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2042:1: ( () otherlv_3= KEYWORD_10 ( (lv_right_4_0= ruleFieldOrMethodExpression ) ) )*
-                    loop34:
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2089:1: ( () otherlv_3= KEYWORD_10 ( (lv_right_4_0= ruleFieldOrMethodExpression ) ) )*
+                    loop35:
                     do {
-                        int alt34=2;
-                        int LA34_0 = input.LA(1);
+                        int alt35=2;
+                        int LA35_0 = input.LA(1);
 
-                        if ( (LA34_0==KEYWORD_10) ) {
-                            alt34=1;
+                        if ( (LA35_0==KEYWORD_10) ) {
+                            alt35=1;
                         }
 
 
-                        switch (alt34) {
+                        switch (alt35) {
                     	case 1 :
-                    	    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2042:2: () otherlv_3= KEYWORD_10 ( (lv_right_4_0= ruleFieldOrMethodExpression ) )
+                    	    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2089:2: () otherlv_3= KEYWORD_10 ( (lv_right_4_0= ruleFieldOrMethodExpression ) )
                     	    {
-                    	    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2042:2: ()
-                    	    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2043:2: 
+                    	    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2089:2: ()
+                    	    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2090:2: 
                     	    {
                     	    if ( state.backtracking==0 ) {
                     	       
@@ -5736,24 +5866,24 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     	    }
 
-                    	    otherlv_3=(Token)match(input,KEYWORD_10,FOLLOW_KEYWORD_10_in_ruleFieldAccessExpression4277); if (state.failed) return current;
+                    	    otherlv_3=(Token)match(input,KEYWORD_10,FOLLOW_KEYWORD_10_in_ruleFieldAccessExpression4353); if (state.failed) return current;
                     	    if ( state.backtracking==0 ) {
 
                     	          	newLeafNode(otherlv_3, grammarAccess.getFieldAccessExpressionAccess().getFullStopKeyword_1_1_1());
                     	          
                     	    }
-                    	    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2056:1: ( (lv_right_4_0= ruleFieldOrMethodExpression ) )
-                    	    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2057:1: (lv_right_4_0= ruleFieldOrMethodExpression )
+                    	    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2103:1: ( (lv_right_4_0= ruleFieldOrMethodExpression ) )
+                    	    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2104:1: (lv_right_4_0= ruleFieldOrMethodExpression )
                     	    {
-                    	    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2057:1: (lv_right_4_0= ruleFieldOrMethodExpression )
-                    	    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2058:3: lv_right_4_0= ruleFieldOrMethodExpression
+                    	    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2104:1: (lv_right_4_0= ruleFieldOrMethodExpression )
+                    	    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2105:3: lv_right_4_0= ruleFieldOrMethodExpression
                     	    {
                     	    if ( state.backtracking==0 ) {
                     	       
                     	      	        newCompositeNode(grammarAccess.getFieldAccessExpressionAccess().getRightFieldOrMethodExpressionParserRuleCall_1_1_2_0()); 
                     	      	    
                     	    }
-                    	    pushFollow(FOLLOW_ruleFieldOrMethodExpression_in_ruleFieldAccessExpression4297);
+                    	    pushFollow(FOLLOW_ruleFieldOrMethodExpression_in_ruleFieldAccessExpression4373);
                     	    lv_right_4_0=ruleFieldOrMethodExpression();
 
                     	    state._fsp--;
@@ -5782,7 +5912,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    break loop34;
+                    	    break loop35;
                         }
                     } while (true);
 
@@ -5815,7 +5945,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleParameterOrFieldOrMethodExpression"
-    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2082:1: entryRuleParameterOrFieldOrMethodExpression returns [EObject current=null] : iv_ruleParameterOrFieldOrMethodExpression= ruleParameterOrFieldOrMethodExpression EOF ;
+    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2129:1: entryRuleParameterOrFieldOrMethodExpression returns [EObject current=null] : iv_ruleParameterOrFieldOrMethodExpression= ruleParameterOrFieldOrMethodExpression EOF ;
     public final EObject entryRuleParameterOrFieldOrMethodExpression() throws RecognitionException {
         EObject current = null;
 
@@ -5823,13 +5953,13 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2083:2: (iv_ruleParameterOrFieldOrMethodExpression= ruleParameterOrFieldOrMethodExpression EOF )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2084:2: iv_ruleParameterOrFieldOrMethodExpression= ruleParameterOrFieldOrMethodExpression EOF
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2130:2: (iv_ruleParameterOrFieldOrMethodExpression= ruleParameterOrFieldOrMethodExpression EOF )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2131:2: iv_ruleParameterOrFieldOrMethodExpression= ruleParameterOrFieldOrMethodExpression EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getParameterOrFieldOrMethodExpressionRule()); 
             }
-            pushFollow(FOLLOW_ruleParameterOrFieldOrMethodExpression_in_entryRuleParameterOrFieldOrMethodExpression4335);
+            pushFollow(FOLLOW_ruleParameterOrFieldOrMethodExpression_in_entryRuleParameterOrFieldOrMethodExpression4411);
             iv_ruleParameterOrFieldOrMethodExpression=ruleParameterOrFieldOrMethodExpression();
 
             state._fsp--;
@@ -5837,7 +5967,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleParameterOrFieldOrMethodExpression; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleParameterOrFieldOrMethodExpression4345); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleParameterOrFieldOrMethodExpression4421); if (state.failed) return current;
 
             }
 
@@ -5855,7 +5985,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleParameterOrFieldOrMethodExpression"
-    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2091:1: ruleParameterOrFieldOrMethodExpression returns [EObject current=null] : ( ( (lv_literal_0_0= ruleLiteral ) ) | ( (lv_this_1_0= KEYWORD_37 ) ) | ( (lv_id_2_0= RULE_ID ) ) | (otherlv_3= KEYWORD_12 ( (lv_parameterName_4_0= ruleParameterName ) ) ) | this_ParenthesesExpression_5= ruleParenthesesExpression | ( (lv_method_6_0= ruleMethodExpression ) ) ) ;
+    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2138:1: ruleParameterOrFieldOrMethodExpression returns [EObject current=null] : ( ( (lv_literal_0_0= ruleLiteral ) ) | ( (lv_this_1_0= KEYWORD_41 ) ) | ( (lv_id_2_0= RULE_ID ) ) | (otherlv_3= KEYWORD_12 ( (lv_parameterName_4_0= ruleParameterName ) ) ) | this_ParenthesesExpression_5= ruleParenthesesExpression | ( (lv_method_6_0= ruleMethodExpression ) ) ) ;
     public final EObject ruleParameterOrFieldOrMethodExpression() throws RecognitionException {
         EObject current = null;
 
@@ -5874,82 +6004,82 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2094:28: ( ( ( (lv_literal_0_0= ruleLiteral ) ) | ( (lv_this_1_0= KEYWORD_37 ) ) | ( (lv_id_2_0= RULE_ID ) ) | (otherlv_3= KEYWORD_12 ( (lv_parameterName_4_0= ruleParameterName ) ) ) | this_ParenthesesExpression_5= ruleParenthesesExpression | ( (lv_method_6_0= ruleMethodExpression ) ) ) )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2095:1: ( ( (lv_literal_0_0= ruleLiteral ) ) | ( (lv_this_1_0= KEYWORD_37 ) ) | ( (lv_id_2_0= RULE_ID ) ) | (otherlv_3= KEYWORD_12 ( (lv_parameterName_4_0= ruleParameterName ) ) ) | this_ParenthesesExpression_5= ruleParenthesesExpression | ( (lv_method_6_0= ruleMethodExpression ) ) )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2141:28: ( ( ( (lv_literal_0_0= ruleLiteral ) ) | ( (lv_this_1_0= KEYWORD_41 ) ) | ( (lv_id_2_0= RULE_ID ) ) | (otherlv_3= KEYWORD_12 ( (lv_parameterName_4_0= ruleParameterName ) ) ) | this_ParenthesesExpression_5= ruleParenthesesExpression | ( (lv_method_6_0= ruleMethodExpression ) ) ) )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2142:1: ( ( (lv_literal_0_0= ruleLiteral ) ) | ( (lv_this_1_0= KEYWORD_41 ) ) | ( (lv_id_2_0= RULE_ID ) ) | (otherlv_3= KEYWORD_12 ( (lv_parameterName_4_0= ruleParameterName ) ) ) | this_ParenthesesExpression_5= ruleParenthesesExpression | ( (lv_method_6_0= ruleMethodExpression ) ) )
             {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2095:1: ( ( (lv_literal_0_0= ruleLiteral ) ) | ( (lv_this_1_0= KEYWORD_37 ) ) | ( (lv_id_2_0= RULE_ID ) ) | (otherlv_3= KEYWORD_12 ( (lv_parameterName_4_0= ruleParameterName ) ) ) | this_ParenthesesExpression_5= ruleParenthesesExpression | ( (lv_method_6_0= ruleMethodExpression ) ) )
-            int alt36=6;
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2142:1: ( ( (lv_literal_0_0= ruleLiteral ) ) | ( (lv_this_1_0= KEYWORD_41 ) ) | ( (lv_id_2_0= RULE_ID ) ) | (otherlv_3= KEYWORD_12 ( (lv_parameterName_4_0= ruleParameterName ) ) ) | this_ParenthesesExpression_5= ruleParenthesesExpression | ( (lv_method_6_0= ruleMethodExpression ) ) )
+            int alt37=6;
             switch ( input.LA(1) ) {
-            case KEYWORD_43:
-            case KEYWORD_35:
-            case KEYWORD_38:
+            case KEYWORD_48:
+            case KEYWORD_39:
+            case KEYWORD_42:
             case RULE_INT:
             case RULE_STRING:
                 {
-                alt36=1;
+                alt37=1;
                 }
                 break;
-            case KEYWORD_37:
+            case KEYWORD_41:
                 {
-                alt36=2;
+                alt37=2;
                 }
                 break;
             case RULE_ID:
                 {
-                alt36=3;
+                alt37=3;
                 }
                 break;
             case KEYWORD_12:
                 {
-                alt36=4;
+                alt37=4;
                 }
                 break;
             case KEYWORD_4:
                 {
-                alt36=5;
+                alt37=5;
                 }
                 break;
-            case KEYWORD_74:
-            case KEYWORD_71:
-            case KEYWORD_72:
-            case KEYWORD_73:
+            case KEYWORD_79:
+            case KEYWORD_76:
+            case KEYWORD_77:
+            case KEYWORD_78:
+            case KEYWORD_75:
             case KEYWORD_70:
-            case KEYWORD_63:
-            case KEYWORD_58:
-            case KEYWORD_59:
-            case KEYWORD_53:
-            case KEYWORD_54:
-            case KEYWORD_55:
-            case KEYWORD_36:
-            case KEYWORD_27:
+            case KEYWORD_65:
+            case KEYWORD_66:
+            case KEYWORD_60:
+            case KEYWORD_61:
+            case KEYWORD_62:
+            case KEYWORD_40:
+            case KEYWORD_28:
                 {
-                alt36=6;
+                alt37=6;
                 }
                 break;
             default:
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 36, 0, input);
+                    new NoViableAltException("", 37, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt36) {
+            switch (alt37) {
                 case 1 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2095:2: ( (lv_literal_0_0= ruleLiteral ) )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2142:2: ( (lv_literal_0_0= ruleLiteral ) )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2095:2: ( (lv_literal_0_0= ruleLiteral ) )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2096:1: (lv_literal_0_0= ruleLiteral )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2142:2: ( (lv_literal_0_0= ruleLiteral ) )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2143:1: (lv_literal_0_0= ruleLiteral )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2096:1: (lv_literal_0_0= ruleLiteral )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2097:3: lv_literal_0_0= ruleLiteral
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2143:1: (lv_literal_0_0= ruleLiteral )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2144:3: lv_literal_0_0= ruleLiteral
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getParameterOrFieldOrMethodExpressionAccess().getLiteralLiteralParserRuleCall_0_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleLiteral_in_ruleParameterOrFieldOrMethodExpression4391);
+                    pushFollow(FOLLOW_ruleLiteral_in_ruleParameterOrFieldOrMethodExpression4467);
                     lv_literal_0_0=ruleLiteral();
 
                     state._fsp--;
@@ -5977,15 +6107,15 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2114:6: ( (lv_this_1_0= KEYWORD_37 ) )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2161:6: ( (lv_this_1_0= KEYWORD_41 ) )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2114:6: ( (lv_this_1_0= KEYWORD_37 ) )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2115:1: (lv_this_1_0= KEYWORD_37 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2161:6: ( (lv_this_1_0= KEYWORD_41 ) )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2162:1: (lv_this_1_0= KEYWORD_41 )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2115:1: (lv_this_1_0= KEYWORD_37 )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2116:3: lv_this_1_0= KEYWORD_37
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2162:1: (lv_this_1_0= KEYWORD_41 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2163:3: lv_this_1_0= KEYWORD_41
                     {
-                    lv_this_1_0=(Token)match(input,KEYWORD_37,FOLLOW_KEYWORD_37_in_ruleParameterOrFieldOrMethodExpression4416); if (state.failed) return current;
+                    lv_this_1_0=(Token)match(input,KEYWORD_41,FOLLOW_KEYWORD_41_in_ruleParameterOrFieldOrMethodExpression4492); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               newLeafNode(lv_this_1_0, grammarAccess.getParameterOrFieldOrMethodExpressionAccess().getThisThisKeyword_1_0());
@@ -6009,15 +6139,15 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2131:6: ( (lv_id_2_0= RULE_ID ) )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2178:6: ( (lv_id_2_0= RULE_ID ) )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2131:6: ( (lv_id_2_0= RULE_ID ) )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2132:1: (lv_id_2_0= RULE_ID )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2178:6: ( (lv_id_2_0= RULE_ID ) )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2179:1: (lv_id_2_0= RULE_ID )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2132:1: (lv_id_2_0= RULE_ID )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2133:3: lv_id_2_0= RULE_ID
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2179:1: (lv_id_2_0= RULE_ID )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2180:3: lv_id_2_0= RULE_ID
                     {
-                    lv_id_2_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleParameterOrFieldOrMethodExpression4450); if (state.failed) return current;
+                    lv_id_2_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleParameterOrFieldOrMethodExpression4526); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       			newLeafNode(lv_id_2_0, grammarAccess.getParameterOrFieldOrMethodExpressionAccess().getIdIDTerminalRuleCall_2_0()); 
@@ -6045,29 +6175,29 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2150:6: (otherlv_3= KEYWORD_12 ( (lv_parameterName_4_0= ruleParameterName ) ) )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2197:6: (otherlv_3= KEYWORD_12 ( (lv_parameterName_4_0= ruleParameterName ) ) )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2150:6: (otherlv_3= KEYWORD_12 ( (lv_parameterName_4_0= ruleParameterName ) ) )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2151:2: otherlv_3= KEYWORD_12 ( (lv_parameterName_4_0= ruleParameterName ) )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2197:6: (otherlv_3= KEYWORD_12 ( (lv_parameterName_4_0= ruleParameterName ) ) )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2198:2: otherlv_3= KEYWORD_12 ( (lv_parameterName_4_0= ruleParameterName ) )
                     {
-                    otherlv_3=(Token)match(input,KEYWORD_12,FOLLOW_KEYWORD_12_in_ruleParameterOrFieldOrMethodExpression4475); if (state.failed) return current;
+                    otherlv_3=(Token)match(input,KEYWORD_12,FOLLOW_KEYWORD_12_in_ruleParameterOrFieldOrMethodExpression4551); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_3, grammarAccess.getParameterOrFieldOrMethodExpressionAccess().getColonKeyword_3_0());
                           
                     }
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2155:1: ( (lv_parameterName_4_0= ruleParameterName ) )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2156:1: (lv_parameterName_4_0= ruleParameterName )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2202:1: ( (lv_parameterName_4_0= ruleParameterName ) )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2203:1: (lv_parameterName_4_0= ruleParameterName )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2156:1: (lv_parameterName_4_0= ruleParameterName )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2157:3: lv_parameterName_4_0= ruleParameterName
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2203:1: (lv_parameterName_4_0= ruleParameterName )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2204:3: lv_parameterName_4_0= ruleParameterName
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getParameterOrFieldOrMethodExpressionAccess().getParameterNameParameterNameParserRuleCall_3_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleParameterName_in_ruleParameterOrFieldOrMethodExpression4495);
+                    pushFollow(FOLLOW_ruleParameterName_in_ruleParameterOrFieldOrMethodExpression4571);
                     lv_parameterName_4_0=ruleParameterName();
 
                     state._fsp--;
@@ -6098,7 +6228,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 5 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2175:2: this_ParenthesesExpression_5= ruleParenthesesExpression
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2222:2: this_ParenthesesExpression_5= ruleParenthesesExpression
                     {
                     if ( state.backtracking==0 ) {
                        
@@ -6110,7 +6240,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getParameterOrFieldOrMethodExpressionAccess().getParenthesesExpressionParserRuleCall_4()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleParenthesesExpression_in_ruleParameterOrFieldOrMethodExpression4527);
+                    pushFollow(FOLLOW_ruleParenthesesExpression_in_ruleParameterOrFieldOrMethodExpression4603);
                     this_ParenthesesExpression_5=ruleParenthesesExpression();
 
                     state._fsp--;
@@ -6125,20 +6255,20 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 6 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2187:6: ( (lv_method_6_0= ruleMethodExpression ) )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2234:6: ( (lv_method_6_0= ruleMethodExpression ) )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2187:6: ( (lv_method_6_0= ruleMethodExpression ) )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2188:1: (lv_method_6_0= ruleMethodExpression )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2234:6: ( (lv_method_6_0= ruleMethodExpression ) )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2235:1: (lv_method_6_0= ruleMethodExpression )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2188:1: (lv_method_6_0= ruleMethodExpression )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2189:3: lv_method_6_0= ruleMethodExpression
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2235:1: (lv_method_6_0= ruleMethodExpression )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2236:3: lv_method_6_0= ruleMethodExpression
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getParameterOrFieldOrMethodExpressionAccess().getMethodMethodExpressionParserRuleCall_5_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleMethodExpression_in_ruleParameterOrFieldOrMethodExpression4553);
+                    pushFollow(FOLLOW_ruleMethodExpression_in_ruleParameterOrFieldOrMethodExpression4629);
                     lv_method_6_0=ruleMethodExpression();
 
                     state._fsp--;
@@ -6188,7 +6318,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleFieldOrMethodExpression"
-    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2213:1: entryRuleFieldOrMethodExpression returns [EObject current=null] : iv_ruleFieldOrMethodExpression= ruleFieldOrMethodExpression EOF ;
+    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2260:1: entryRuleFieldOrMethodExpression returns [EObject current=null] : iv_ruleFieldOrMethodExpression= ruleFieldOrMethodExpression EOF ;
     public final EObject entryRuleFieldOrMethodExpression() throws RecognitionException {
         EObject current = null;
 
@@ -6196,13 +6326,13 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2214:2: (iv_ruleFieldOrMethodExpression= ruleFieldOrMethodExpression EOF )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2215:2: iv_ruleFieldOrMethodExpression= ruleFieldOrMethodExpression EOF
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2261:2: (iv_ruleFieldOrMethodExpression= ruleFieldOrMethodExpression EOF )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2262:2: iv_ruleFieldOrMethodExpression= ruleFieldOrMethodExpression EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getFieldOrMethodExpressionRule()); 
             }
-            pushFollow(FOLLOW_ruleFieldOrMethodExpression_in_entryRuleFieldOrMethodExpression4588);
+            pushFollow(FOLLOW_ruleFieldOrMethodExpression_in_entryRuleFieldOrMethodExpression4664);
             iv_ruleFieldOrMethodExpression=ruleFieldOrMethodExpression();
 
             state._fsp--;
@@ -6210,7 +6340,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleFieldOrMethodExpression; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleFieldOrMethodExpression4598); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleFieldOrMethodExpression4674); if (state.failed) return current;
 
             }
 
@@ -6228,7 +6358,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFieldOrMethodExpression"
-    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2222:1: ruleFieldOrMethodExpression returns [EObject current=null] : ( ( (lv_literal_0_0= ruleLiteral ) ) | ( (lv_this_1_0= KEYWORD_37 ) ) | ( (lv_id_2_0= RULE_ID ) ) | this_ParenthesesExpression_3= ruleParenthesesExpression | ( (lv_method_4_0= ruleMethodExpression ) ) ) ;
+    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2269:1: ruleFieldOrMethodExpression returns [EObject current=null] : ( ( (lv_literal_0_0= ruleLiteral ) ) | ( (lv_this_1_0= KEYWORD_41 ) ) | ( (lv_id_2_0= RULE_ID ) ) | this_ParenthesesExpression_3= ruleParenthesesExpression | ( (lv_method_4_0= ruleMethodExpression ) ) ) ;
     public final EObject ruleFieldOrMethodExpression() throws RecognitionException {
         EObject current = null;
 
@@ -6244,77 +6374,77 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2225:28: ( ( ( (lv_literal_0_0= ruleLiteral ) ) | ( (lv_this_1_0= KEYWORD_37 ) ) | ( (lv_id_2_0= RULE_ID ) ) | this_ParenthesesExpression_3= ruleParenthesesExpression | ( (lv_method_4_0= ruleMethodExpression ) ) ) )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2226:1: ( ( (lv_literal_0_0= ruleLiteral ) ) | ( (lv_this_1_0= KEYWORD_37 ) ) | ( (lv_id_2_0= RULE_ID ) ) | this_ParenthesesExpression_3= ruleParenthesesExpression | ( (lv_method_4_0= ruleMethodExpression ) ) )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2272:28: ( ( ( (lv_literal_0_0= ruleLiteral ) ) | ( (lv_this_1_0= KEYWORD_41 ) ) | ( (lv_id_2_0= RULE_ID ) ) | this_ParenthesesExpression_3= ruleParenthesesExpression | ( (lv_method_4_0= ruleMethodExpression ) ) ) )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2273:1: ( ( (lv_literal_0_0= ruleLiteral ) ) | ( (lv_this_1_0= KEYWORD_41 ) ) | ( (lv_id_2_0= RULE_ID ) ) | this_ParenthesesExpression_3= ruleParenthesesExpression | ( (lv_method_4_0= ruleMethodExpression ) ) )
             {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2226:1: ( ( (lv_literal_0_0= ruleLiteral ) ) | ( (lv_this_1_0= KEYWORD_37 ) ) | ( (lv_id_2_0= RULE_ID ) ) | this_ParenthesesExpression_3= ruleParenthesesExpression | ( (lv_method_4_0= ruleMethodExpression ) ) )
-            int alt37=5;
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2273:1: ( ( (lv_literal_0_0= ruleLiteral ) ) | ( (lv_this_1_0= KEYWORD_41 ) ) | ( (lv_id_2_0= RULE_ID ) ) | this_ParenthesesExpression_3= ruleParenthesesExpression | ( (lv_method_4_0= ruleMethodExpression ) ) )
+            int alt38=5;
             switch ( input.LA(1) ) {
-            case KEYWORD_43:
-            case KEYWORD_35:
-            case KEYWORD_38:
+            case KEYWORD_48:
+            case KEYWORD_39:
+            case KEYWORD_42:
             case RULE_INT:
             case RULE_STRING:
                 {
-                alt37=1;
+                alt38=1;
                 }
                 break;
-            case KEYWORD_37:
+            case KEYWORD_41:
                 {
-                alt37=2;
+                alt38=2;
                 }
                 break;
             case RULE_ID:
                 {
-                alt37=3;
+                alt38=3;
                 }
                 break;
             case KEYWORD_4:
                 {
-                alt37=4;
+                alt38=4;
                 }
                 break;
-            case KEYWORD_74:
-            case KEYWORD_71:
-            case KEYWORD_72:
-            case KEYWORD_73:
+            case KEYWORD_79:
+            case KEYWORD_76:
+            case KEYWORD_77:
+            case KEYWORD_78:
+            case KEYWORD_75:
             case KEYWORD_70:
-            case KEYWORD_63:
-            case KEYWORD_58:
-            case KEYWORD_59:
-            case KEYWORD_53:
-            case KEYWORD_54:
-            case KEYWORD_55:
-            case KEYWORD_36:
-            case KEYWORD_27:
+            case KEYWORD_65:
+            case KEYWORD_66:
+            case KEYWORD_60:
+            case KEYWORD_61:
+            case KEYWORD_62:
+            case KEYWORD_40:
+            case KEYWORD_28:
                 {
-                alt37=5;
+                alt38=5;
                 }
                 break;
             default:
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 37, 0, input);
+                    new NoViableAltException("", 38, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt37) {
+            switch (alt38) {
                 case 1 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2226:2: ( (lv_literal_0_0= ruleLiteral ) )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2273:2: ( (lv_literal_0_0= ruleLiteral ) )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2226:2: ( (lv_literal_0_0= ruleLiteral ) )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2227:1: (lv_literal_0_0= ruleLiteral )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2273:2: ( (lv_literal_0_0= ruleLiteral ) )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2274:1: (lv_literal_0_0= ruleLiteral )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2227:1: (lv_literal_0_0= ruleLiteral )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2228:3: lv_literal_0_0= ruleLiteral
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2274:1: (lv_literal_0_0= ruleLiteral )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2275:3: lv_literal_0_0= ruleLiteral
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getFieldOrMethodExpressionAccess().getLiteralLiteralParserRuleCall_0_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleLiteral_in_ruleFieldOrMethodExpression4644);
+                    pushFollow(FOLLOW_ruleLiteral_in_ruleFieldOrMethodExpression4720);
                     lv_literal_0_0=ruleLiteral();
 
                     state._fsp--;
@@ -6342,15 +6472,15 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2245:6: ( (lv_this_1_0= KEYWORD_37 ) )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2292:6: ( (lv_this_1_0= KEYWORD_41 ) )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2245:6: ( (lv_this_1_0= KEYWORD_37 ) )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2246:1: (lv_this_1_0= KEYWORD_37 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2292:6: ( (lv_this_1_0= KEYWORD_41 ) )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2293:1: (lv_this_1_0= KEYWORD_41 )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2246:1: (lv_this_1_0= KEYWORD_37 )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2247:3: lv_this_1_0= KEYWORD_37
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2293:1: (lv_this_1_0= KEYWORD_41 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2294:3: lv_this_1_0= KEYWORD_41
                     {
-                    lv_this_1_0=(Token)match(input,KEYWORD_37,FOLLOW_KEYWORD_37_in_ruleFieldOrMethodExpression4669); if (state.failed) return current;
+                    lv_this_1_0=(Token)match(input,KEYWORD_41,FOLLOW_KEYWORD_41_in_ruleFieldOrMethodExpression4745); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               newLeafNode(lv_this_1_0, grammarAccess.getFieldOrMethodExpressionAccess().getThisThisKeyword_1_0());
@@ -6374,15 +6504,15 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2262:6: ( (lv_id_2_0= RULE_ID ) )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2309:6: ( (lv_id_2_0= RULE_ID ) )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2262:6: ( (lv_id_2_0= RULE_ID ) )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2263:1: (lv_id_2_0= RULE_ID )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2309:6: ( (lv_id_2_0= RULE_ID ) )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2310:1: (lv_id_2_0= RULE_ID )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2263:1: (lv_id_2_0= RULE_ID )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2264:3: lv_id_2_0= RULE_ID
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2310:1: (lv_id_2_0= RULE_ID )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2311:3: lv_id_2_0= RULE_ID
                     {
-                    lv_id_2_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleFieldOrMethodExpression4703); if (state.failed) return current;
+                    lv_id_2_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleFieldOrMethodExpression4779); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       			newLeafNode(lv_id_2_0, grammarAccess.getFieldOrMethodExpressionAccess().getIdIDTerminalRuleCall_2_0()); 
@@ -6410,7 +6540,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2282:2: this_ParenthesesExpression_3= ruleParenthesesExpression
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2329:2: this_ParenthesesExpression_3= ruleParenthesesExpression
                     {
                     if ( state.backtracking==0 ) {
                        
@@ -6422,7 +6552,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getFieldOrMethodExpressionAccess().getParenthesesExpressionParserRuleCall_3()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleParenthesesExpression_in_ruleFieldOrMethodExpression4739);
+                    pushFollow(FOLLOW_ruleParenthesesExpression_in_ruleFieldOrMethodExpression4815);
                     this_ParenthesesExpression_3=ruleParenthesesExpression();
 
                     state._fsp--;
@@ -6437,20 +6567,20 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 5 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2294:6: ( (lv_method_4_0= ruleMethodExpression ) )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2341:6: ( (lv_method_4_0= ruleMethodExpression ) )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2294:6: ( (lv_method_4_0= ruleMethodExpression ) )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2295:1: (lv_method_4_0= ruleMethodExpression )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2341:6: ( (lv_method_4_0= ruleMethodExpression ) )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2342:1: (lv_method_4_0= ruleMethodExpression )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2295:1: (lv_method_4_0= ruleMethodExpression )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2296:3: lv_method_4_0= ruleMethodExpression
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2342:1: (lv_method_4_0= ruleMethodExpression )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2343:3: lv_method_4_0= ruleMethodExpression
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getFieldOrMethodExpressionAccess().getMethodMethodExpressionParserRuleCall_4_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleMethodExpression_in_ruleFieldOrMethodExpression4765);
+                    pushFollow(FOLLOW_ruleMethodExpression_in_ruleFieldOrMethodExpression4841);
                     lv_method_4_0=ruleMethodExpression();
 
                     state._fsp--;
@@ -6500,7 +6630,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleStaticMethodExpression"
-    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2320:1: entryRuleStaticMethodExpression returns [EObject current=null] : iv_ruleStaticMethodExpression= ruleStaticMethodExpression EOF ;
+    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2367:1: entryRuleStaticMethodExpression returns [EObject current=null] : iv_ruleStaticMethodExpression= ruleStaticMethodExpression EOF ;
     public final EObject entryRuleStaticMethodExpression() throws RecognitionException {
         EObject current = null;
 
@@ -6508,13 +6638,13 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2321:2: (iv_ruleStaticMethodExpression= ruleStaticMethodExpression EOF )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2322:2: iv_ruleStaticMethodExpression= ruleStaticMethodExpression EOF
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2368:2: (iv_ruleStaticMethodExpression= ruleStaticMethodExpression EOF )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2369:2: iv_ruleStaticMethodExpression= ruleStaticMethodExpression EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getStaticMethodExpressionRule()); 
             }
-            pushFollow(FOLLOW_ruleStaticMethodExpression_in_entryRuleStaticMethodExpression4800);
+            pushFollow(FOLLOW_ruleStaticMethodExpression_in_entryRuleStaticMethodExpression4876);
             iv_ruleStaticMethodExpression=ruleStaticMethodExpression();
 
             state._fsp--;
@@ -6522,7 +6652,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleStaticMethodExpression; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleStaticMethodExpression4810); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleStaticMethodExpression4886); if (state.failed) return current;
 
             }
 
@@ -6540,90 +6670,150 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleStaticMethodExpression"
-    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2329:1: ruleStaticMethodExpression returns [EObject current=null] : ( ( () (otherlv_1= KEYWORD_68 )? otherlv_2= KEYWORD_57 otherlv_3= KEYWORD_4 ( (lv_numeric_4_0= ruleConditionalOrExpression ) ) otherlv_5= KEYWORD_5 ) | ( () (otherlv_7= KEYWORD_68 )? otherlv_8= KEYWORD_61 otherlv_9= KEYWORD_4 ( (lv_numeric_10_0= ruleConditionalOrExpression ) ) otherlv_11= KEYWORD_5 ) | ( () (otherlv_13= KEYWORD_69 )? otherlv_14= KEYWORD_75 otherlv_15= KEYWORD_4 ( (lv_persistable_16_0= ruleConditionalOrExpression ) ) otherlv_17= KEYWORD_5 ) ) ;
+    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2376:1: ruleStaticMethodExpression returns [EObject current=null] : ( ( () otherlv_1= KEYWORD_88 otherlv_2= KEYWORD_4 ( (lv_numeric_3_0= ruleConditionalOrExpression ) ) otherlv_4= KEYWORD_5 ) | ( () otherlv_6= KEYWORD_64 otherlv_7= KEYWORD_4 ( (lv_numeric_8_0= ruleConditionalOrExpression ) ) otherlv_9= KEYWORD_5 ) | ( () otherlv_11= KEYWORD_90 otherlv_12= KEYWORD_4 ( (lv_numeric_13_0= ruleConditionalOrExpression ) ) otherlv_14= KEYWORD_5 ) | ( () otherlv_16= KEYWORD_68 otherlv_17= KEYWORD_4 ( (lv_numeric_18_0= ruleConditionalOrExpression ) ) otherlv_19= KEYWORD_5 ) | ( () otherlv_21= KEYWORD_92 otherlv_22= KEYWORD_4 ( (lv_persistable_23_0= ruleConditionalOrExpression ) ) otherlv_24= KEYWORD_5 ) | ( () otherlv_26= KEYWORD_91 otherlv_27= KEYWORD_4 ( (lv_persistable_28_0= ruleConditionalOrExpression ) ) otherlv_29= KEYWORD_5 ) | ( () otherlv_31= KEYWORD_47 otherlv_32= KEYWORD_4 ( (lv_isDistinct_33_0= KEYWORD_63 ) )? ( (lv_aggregateArgument_34_0= ruleConditionalOrExpression ) ) otherlv_35= KEYWORD_5 ) | ( () otherlv_37= KEYWORD_32 otherlv_38= KEYWORD_4 ( (lv_isDistinct_39_0= KEYWORD_63 ) )? ( (lv_aggregateArgument_40_0= ruleConditionalOrExpression ) ) otherlv_41= KEYWORD_5 ) | ( () otherlv_43= KEYWORD_31 otherlv_44= KEYWORD_4 ( (lv_aggregateArgument_45_0= ruleConditionalOrExpression ) ) otherlv_46= KEYWORD_5 ) | ( () otherlv_48= KEYWORD_30 otherlv_49= KEYWORD_4 ( (lv_aggregateArgument_50_0= ruleConditionalOrExpression ) ) otherlv_51= KEYWORD_5 ) | ( () otherlv_53= KEYWORD_27 otherlv_54= KEYWORD_4 ( (lv_isDistinct_55_0= KEYWORD_63 ) )? ( (lv_aggregateArgument_56_0= ruleConditionalOrExpression ) ) otherlv_57= KEYWORD_5 ) ) ;
     public final EObject ruleStaticMethodExpression() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_1=null;
         Token otherlv_2=null;
-        Token otherlv_3=null;
-        Token otherlv_5=null;
+        Token otherlv_4=null;
+        Token otherlv_6=null;
         Token otherlv_7=null;
-        Token otherlv_8=null;
         Token otherlv_9=null;
         Token otherlv_11=null;
-        Token otherlv_13=null;
+        Token otherlv_12=null;
         Token otherlv_14=null;
-        Token otherlv_15=null;
+        Token otherlv_16=null;
         Token otherlv_17=null;
-        EObject lv_numeric_4_0 = null;
+        Token otherlv_19=null;
+        Token otherlv_21=null;
+        Token otherlv_22=null;
+        Token otherlv_24=null;
+        Token otherlv_26=null;
+        Token otherlv_27=null;
+        Token otherlv_29=null;
+        Token otherlv_31=null;
+        Token otherlv_32=null;
+        Token lv_isDistinct_33_0=null;
+        Token otherlv_35=null;
+        Token otherlv_37=null;
+        Token otherlv_38=null;
+        Token lv_isDistinct_39_0=null;
+        Token otherlv_41=null;
+        Token otherlv_43=null;
+        Token otherlv_44=null;
+        Token otherlv_46=null;
+        Token otherlv_48=null;
+        Token otherlv_49=null;
+        Token otherlv_51=null;
+        Token otherlv_53=null;
+        Token otherlv_54=null;
+        Token lv_isDistinct_55_0=null;
+        Token otherlv_57=null;
+        EObject lv_numeric_3_0 = null;
 
-        EObject lv_numeric_10_0 = null;
+        EObject lv_numeric_8_0 = null;
 
-        EObject lv_persistable_16_0 = null;
+        EObject lv_numeric_13_0 = null;
+
+        EObject lv_numeric_18_0 = null;
+
+        EObject lv_persistable_23_0 = null;
+
+        EObject lv_persistable_28_0 = null;
+
+        EObject lv_aggregateArgument_34_0 = null;
+
+        EObject lv_aggregateArgument_40_0 = null;
+
+        EObject lv_aggregateArgument_45_0 = null;
+
+        EObject lv_aggregateArgument_50_0 = null;
+
+        EObject lv_aggregateArgument_56_0 = null;
 
 
          enterRule(); 
             
         try {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2332:28: ( ( ( () (otherlv_1= KEYWORD_68 )? otherlv_2= KEYWORD_57 otherlv_3= KEYWORD_4 ( (lv_numeric_4_0= ruleConditionalOrExpression ) ) otherlv_5= KEYWORD_5 ) | ( () (otherlv_7= KEYWORD_68 )? otherlv_8= KEYWORD_61 otherlv_9= KEYWORD_4 ( (lv_numeric_10_0= ruleConditionalOrExpression ) ) otherlv_11= KEYWORD_5 ) | ( () (otherlv_13= KEYWORD_69 )? otherlv_14= KEYWORD_75 otherlv_15= KEYWORD_4 ( (lv_persistable_16_0= ruleConditionalOrExpression ) ) otherlv_17= KEYWORD_5 ) ) )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2333:1: ( ( () (otherlv_1= KEYWORD_68 )? otherlv_2= KEYWORD_57 otherlv_3= KEYWORD_4 ( (lv_numeric_4_0= ruleConditionalOrExpression ) ) otherlv_5= KEYWORD_5 ) | ( () (otherlv_7= KEYWORD_68 )? otherlv_8= KEYWORD_61 otherlv_9= KEYWORD_4 ( (lv_numeric_10_0= ruleConditionalOrExpression ) ) otherlv_11= KEYWORD_5 ) | ( () (otherlv_13= KEYWORD_69 )? otherlv_14= KEYWORD_75 otherlv_15= KEYWORD_4 ( (lv_persistable_16_0= ruleConditionalOrExpression ) ) otherlv_17= KEYWORD_5 ) )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2379:28: ( ( ( () otherlv_1= KEYWORD_88 otherlv_2= KEYWORD_4 ( (lv_numeric_3_0= ruleConditionalOrExpression ) ) otherlv_4= KEYWORD_5 ) | ( () otherlv_6= KEYWORD_64 otherlv_7= KEYWORD_4 ( (lv_numeric_8_0= ruleConditionalOrExpression ) ) otherlv_9= KEYWORD_5 ) | ( () otherlv_11= KEYWORD_90 otherlv_12= KEYWORD_4 ( (lv_numeric_13_0= ruleConditionalOrExpression ) ) otherlv_14= KEYWORD_5 ) | ( () otherlv_16= KEYWORD_68 otherlv_17= KEYWORD_4 ( (lv_numeric_18_0= ruleConditionalOrExpression ) ) otherlv_19= KEYWORD_5 ) | ( () otherlv_21= KEYWORD_92 otherlv_22= KEYWORD_4 ( (lv_persistable_23_0= ruleConditionalOrExpression ) ) otherlv_24= KEYWORD_5 ) | ( () otherlv_26= KEYWORD_91 otherlv_27= KEYWORD_4 ( (lv_persistable_28_0= ruleConditionalOrExpression ) ) otherlv_29= KEYWORD_5 ) | ( () otherlv_31= KEYWORD_47 otherlv_32= KEYWORD_4 ( (lv_isDistinct_33_0= KEYWORD_63 ) )? ( (lv_aggregateArgument_34_0= ruleConditionalOrExpression ) ) otherlv_35= KEYWORD_5 ) | ( () otherlv_37= KEYWORD_32 otherlv_38= KEYWORD_4 ( (lv_isDistinct_39_0= KEYWORD_63 ) )? ( (lv_aggregateArgument_40_0= ruleConditionalOrExpression ) ) otherlv_41= KEYWORD_5 ) | ( () otherlv_43= KEYWORD_31 otherlv_44= KEYWORD_4 ( (lv_aggregateArgument_45_0= ruleConditionalOrExpression ) ) otherlv_46= KEYWORD_5 ) | ( () otherlv_48= KEYWORD_30 otherlv_49= KEYWORD_4 ( (lv_aggregateArgument_50_0= ruleConditionalOrExpression ) ) otherlv_51= KEYWORD_5 ) | ( () otherlv_53= KEYWORD_27 otherlv_54= KEYWORD_4 ( (lv_isDistinct_55_0= KEYWORD_63 ) )? ( (lv_aggregateArgument_56_0= ruleConditionalOrExpression ) ) otherlv_57= KEYWORD_5 ) ) )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2380:1: ( ( () otherlv_1= KEYWORD_88 otherlv_2= KEYWORD_4 ( (lv_numeric_3_0= ruleConditionalOrExpression ) ) otherlv_4= KEYWORD_5 ) | ( () otherlv_6= KEYWORD_64 otherlv_7= KEYWORD_4 ( (lv_numeric_8_0= ruleConditionalOrExpression ) ) otherlv_9= KEYWORD_5 ) | ( () otherlv_11= KEYWORD_90 otherlv_12= KEYWORD_4 ( (lv_numeric_13_0= ruleConditionalOrExpression ) ) otherlv_14= KEYWORD_5 ) | ( () otherlv_16= KEYWORD_68 otherlv_17= KEYWORD_4 ( (lv_numeric_18_0= ruleConditionalOrExpression ) ) otherlv_19= KEYWORD_5 ) | ( () otherlv_21= KEYWORD_92 otherlv_22= KEYWORD_4 ( (lv_persistable_23_0= ruleConditionalOrExpression ) ) otherlv_24= KEYWORD_5 ) | ( () otherlv_26= KEYWORD_91 otherlv_27= KEYWORD_4 ( (lv_persistable_28_0= ruleConditionalOrExpression ) ) otherlv_29= KEYWORD_5 ) | ( () otherlv_31= KEYWORD_47 otherlv_32= KEYWORD_4 ( (lv_isDistinct_33_0= KEYWORD_63 ) )? ( (lv_aggregateArgument_34_0= ruleConditionalOrExpression ) ) otherlv_35= KEYWORD_5 ) | ( () otherlv_37= KEYWORD_32 otherlv_38= KEYWORD_4 ( (lv_isDistinct_39_0= KEYWORD_63 ) )? ( (lv_aggregateArgument_40_0= ruleConditionalOrExpression ) ) otherlv_41= KEYWORD_5 ) | ( () otherlv_43= KEYWORD_31 otherlv_44= KEYWORD_4 ( (lv_aggregateArgument_45_0= ruleConditionalOrExpression ) ) otherlv_46= KEYWORD_5 ) | ( () otherlv_48= KEYWORD_30 otherlv_49= KEYWORD_4 ( (lv_aggregateArgument_50_0= ruleConditionalOrExpression ) ) otherlv_51= KEYWORD_5 ) | ( () otherlv_53= KEYWORD_27 otherlv_54= KEYWORD_4 ( (lv_isDistinct_55_0= KEYWORD_63 ) )? ( (lv_aggregateArgument_56_0= ruleConditionalOrExpression ) ) otherlv_57= KEYWORD_5 ) )
             {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2333:1: ( ( () (otherlv_1= KEYWORD_68 )? otherlv_2= KEYWORD_57 otherlv_3= KEYWORD_4 ( (lv_numeric_4_0= ruleConditionalOrExpression ) ) otherlv_5= KEYWORD_5 ) | ( () (otherlv_7= KEYWORD_68 )? otherlv_8= KEYWORD_61 otherlv_9= KEYWORD_4 ( (lv_numeric_10_0= ruleConditionalOrExpression ) ) otherlv_11= KEYWORD_5 ) | ( () (otherlv_13= KEYWORD_69 )? otherlv_14= KEYWORD_75 otherlv_15= KEYWORD_4 ( (lv_persistable_16_0= ruleConditionalOrExpression ) ) otherlv_17= KEYWORD_5 ) )
-            int alt41=3;
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2380:1: ( ( () otherlv_1= KEYWORD_88 otherlv_2= KEYWORD_4 ( (lv_numeric_3_0= ruleConditionalOrExpression ) ) otherlv_4= KEYWORD_5 ) | ( () otherlv_6= KEYWORD_64 otherlv_7= KEYWORD_4 ( (lv_numeric_8_0= ruleConditionalOrExpression ) ) otherlv_9= KEYWORD_5 ) | ( () otherlv_11= KEYWORD_90 otherlv_12= KEYWORD_4 ( (lv_numeric_13_0= ruleConditionalOrExpression ) ) otherlv_14= KEYWORD_5 ) | ( () otherlv_16= KEYWORD_68 otherlv_17= KEYWORD_4 ( (lv_numeric_18_0= ruleConditionalOrExpression ) ) otherlv_19= KEYWORD_5 ) | ( () otherlv_21= KEYWORD_92 otherlv_22= KEYWORD_4 ( (lv_persistable_23_0= ruleConditionalOrExpression ) ) otherlv_24= KEYWORD_5 ) | ( () otherlv_26= KEYWORD_91 otherlv_27= KEYWORD_4 ( (lv_persistable_28_0= ruleConditionalOrExpression ) ) otherlv_29= KEYWORD_5 ) | ( () otherlv_31= KEYWORD_47 otherlv_32= KEYWORD_4 ( (lv_isDistinct_33_0= KEYWORD_63 ) )? ( (lv_aggregateArgument_34_0= ruleConditionalOrExpression ) ) otherlv_35= KEYWORD_5 ) | ( () otherlv_37= KEYWORD_32 otherlv_38= KEYWORD_4 ( (lv_isDistinct_39_0= KEYWORD_63 ) )? ( (lv_aggregateArgument_40_0= ruleConditionalOrExpression ) ) otherlv_41= KEYWORD_5 ) | ( () otherlv_43= KEYWORD_31 otherlv_44= KEYWORD_4 ( (lv_aggregateArgument_45_0= ruleConditionalOrExpression ) ) otherlv_46= KEYWORD_5 ) | ( () otherlv_48= KEYWORD_30 otherlv_49= KEYWORD_4 ( (lv_aggregateArgument_50_0= ruleConditionalOrExpression ) ) otherlv_51= KEYWORD_5 ) | ( () otherlv_53= KEYWORD_27 otherlv_54= KEYWORD_4 ( (lv_isDistinct_55_0= KEYWORD_63 ) )? ( (lv_aggregateArgument_56_0= ruleConditionalOrExpression ) ) otherlv_57= KEYWORD_5 ) )
+            int alt42=11;
             switch ( input.LA(1) ) {
+            case KEYWORD_88:
+                {
+                alt42=1;
+                }
+                break;
+            case KEYWORD_64:
+                {
+                alt42=2;
+                }
+                break;
+            case KEYWORD_90:
+                {
+                alt42=3;
+                }
+                break;
             case KEYWORD_68:
                 {
-                int LA41_1 = input.LA(2);
-
-                if ( (LA41_1==KEYWORD_57) ) {
-                    alt41=1;
-                }
-                else if ( (LA41_1==KEYWORD_61) ) {
-                    alt41=2;
-                }
-                else {
-                    if (state.backtracking>0) {state.failed=true; return current;}
-                    NoViableAltException nvae =
-                        new NoViableAltException("", 41, 1, input);
-
-                    throw nvae;
-                }
+                alt42=4;
                 }
                 break;
-            case KEYWORD_57:
+            case KEYWORD_92:
                 {
-                alt41=1;
+                alt42=5;
                 }
                 break;
-            case KEYWORD_61:
+            case KEYWORD_91:
                 {
-                alt41=2;
+                alt42=6;
                 }
                 break;
-            case KEYWORD_75:
-            case KEYWORD_69:
+            case KEYWORD_47:
                 {
-                alt41=3;
+                alt42=7;
+                }
+                break;
+            case KEYWORD_32:
+                {
+                alt42=8;
+                }
+                break;
+            case KEYWORD_31:
+                {
+                alt42=9;
+                }
+                break;
+            case KEYWORD_30:
+                {
+                alt42=10;
+                }
+                break;
+            case KEYWORD_27:
+                {
+                alt42=11;
                 }
                 break;
             default:
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 41, 0, input);
+                    new NoViableAltException("", 42, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt41) {
+            switch (alt42) {
                 case 1 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2333:2: ( () (otherlv_1= KEYWORD_68 )? otherlv_2= KEYWORD_57 otherlv_3= KEYWORD_4 ( (lv_numeric_4_0= ruleConditionalOrExpression ) ) otherlv_5= KEYWORD_5 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2380:2: ( () otherlv_1= KEYWORD_88 otherlv_2= KEYWORD_4 ( (lv_numeric_3_0= ruleConditionalOrExpression ) ) otherlv_4= KEYWORD_5 )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2333:2: ( () (otherlv_1= KEYWORD_68 )? otherlv_2= KEYWORD_57 otherlv_3= KEYWORD_4 ( (lv_numeric_4_0= ruleConditionalOrExpression ) ) otherlv_5= KEYWORD_5 )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2333:3: () (otherlv_1= KEYWORD_68 )? otherlv_2= KEYWORD_57 otherlv_3= KEYWORD_4 ( (lv_numeric_4_0= ruleConditionalOrExpression ) ) otherlv_5= KEYWORD_5
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2380:2: ( () otherlv_1= KEYWORD_88 otherlv_2= KEYWORD_4 ( (lv_numeric_3_0= ruleConditionalOrExpression ) ) otherlv_4= KEYWORD_5 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2380:3: () otherlv_1= KEYWORD_88 otherlv_2= KEYWORD_4 ( (lv_numeric_3_0= ruleConditionalOrExpression ) ) otherlv_4= KEYWORD_5
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2333:3: ()
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2334:2: 
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2380:3: ()
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2381:2: 
                     {
                     if ( state.backtracking==0 ) {
                        
@@ -6640,54 +6830,31 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2342:2: (otherlv_1= KEYWORD_68 )?
-                    int alt38=2;
-                    int LA38_0 = input.LA(1);
-
-                    if ( (LA38_0==KEYWORD_68) ) {
-                        alt38=1;
-                    }
-                    switch (alt38) {
-                        case 1 :
-                            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2343:2: otherlv_1= KEYWORD_68
-                            {
-                            otherlv_1=(Token)match(input,KEYWORD_68,FOLLOW_KEYWORD_68_in_ruleStaticMethodExpression4862); if (state.failed) return current;
-                            if ( state.backtracking==0 ) {
-
-                                  	newLeafNode(otherlv_1, grammarAccess.getStaticMethodExpressionAccess().getJavaLangKeyword_0_1());
-                                  
-                            }
-
-                            }
-                            break;
-
-                    }
-
-                    otherlv_2=(Token)match(input,KEYWORD_57,FOLLOW_KEYWORD_57_in_ruleStaticMethodExpression4876); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,KEYWORD_88,FOLLOW_KEYWORD_88_in_ruleStaticMethodExpression4937); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_2, grammarAccess.getStaticMethodExpressionAccess().getMathAbsKeyword_0_2());
+                          	newLeafNode(otherlv_1, grammarAccess.getStaticMethodExpressionAccess().getJavaLangMathAbsKeyword_0_1());
                           
                     }
-                    otherlv_3=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression4888); if (state.failed) return current;
+                    otherlv_2=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression4949); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_3, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_0_3());
+                          	newLeafNode(otherlv_2, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_0_2());
                           
                     }
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2357:1: ( (lv_numeric_4_0= ruleConditionalOrExpression ) )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2358:1: (lv_numeric_4_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2399:1: ( (lv_numeric_3_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2400:1: (lv_numeric_3_0= ruleConditionalOrExpression )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2358:1: (lv_numeric_4_0= ruleConditionalOrExpression )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2359:3: lv_numeric_4_0= ruleConditionalOrExpression
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2400:1: (lv_numeric_3_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2401:3: lv_numeric_3_0= ruleConditionalOrExpression
                     {
                     if ( state.backtracking==0 ) {
                        
-                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumericConditionalOrExpressionParserRuleCall_0_4_0()); 
+                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumericConditionalOrExpressionParserRuleCall_0_3_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression4908);
-                    lv_numeric_4_0=ruleConditionalOrExpression();
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression4969);
+                    lv_numeric_3_0=ruleConditionalOrExpression();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -6699,7 +6866,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                              		set(
                              			current, 
                              			"numeric",
-                              		lv_numeric_4_0, 
+                              		lv_numeric_3_0, 
                               		"ConditionalOrExpression");
                       	        afterParserOrEnumRuleCall();
                       	    
@@ -6710,10 +6877,10 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_5=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression4921); if (state.failed) return current;
+                    otherlv_4=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression4982); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_5, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_0_5());
+                          	newLeafNode(otherlv_4, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_0_4());
                           
                     }
 
@@ -6723,13 +6890,13 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2381:6: ( () (otherlv_7= KEYWORD_68 )? otherlv_8= KEYWORD_61 otherlv_9= KEYWORD_4 ( (lv_numeric_10_0= ruleConditionalOrExpression ) ) otherlv_11= KEYWORD_5 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2423:6: ( () otherlv_6= KEYWORD_64 otherlv_7= KEYWORD_4 ( (lv_numeric_8_0= ruleConditionalOrExpression ) ) otherlv_9= KEYWORD_5 )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2381:6: ( () (otherlv_7= KEYWORD_68 )? otherlv_8= KEYWORD_61 otherlv_9= KEYWORD_4 ( (lv_numeric_10_0= ruleConditionalOrExpression ) ) otherlv_11= KEYWORD_5 )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2381:7: () (otherlv_7= KEYWORD_68 )? otherlv_8= KEYWORD_61 otherlv_9= KEYWORD_4 ( (lv_numeric_10_0= ruleConditionalOrExpression ) ) otherlv_11= KEYWORD_5
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2423:6: ( () otherlv_6= KEYWORD_64 otherlv_7= KEYWORD_4 ( (lv_numeric_8_0= ruleConditionalOrExpression ) ) otherlv_9= KEYWORD_5 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2423:7: () otherlv_6= KEYWORD_64 otherlv_7= KEYWORD_4 ( (lv_numeric_8_0= ruleConditionalOrExpression ) ) otherlv_9= KEYWORD_5
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2381:7: ()
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2382:2: 
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2423:7: ()
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2424:2: 
                     {
                     if ( state.backtracking==0 ) {
                        
@@ -6746,54 +6913,31 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2390:2: (otherlv_7= KEYWORD_68 )?
-                    int alt39=2;
-                    int LA39_0 = input.LA(1);
-
-                    if ( (LA39_0==KEYWORD_68) ) {
-                        alt39=1;
-                    }
-                    switch (alt39) {
-                        case 1 :
-                            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2391:2: otherlv_7= KEYWORD_68
-                            {
-                            otherlv_7=(Token)match(input,KEYWORD_68,FOLLOW_KEYWORD_68_in_ruleStaticMethodExpression4954); if (state.failed) return current;
-                            if ( state.backtracking==0 ) {
-
-                                  	newLeafNode(otherlv_7, grammarAccess.getStaticMethodExpressionAccess().getJavaLangKeyword_1_1());
-                                  
-                            }
-
-                            }
-                            break;
-
-                    }
-
-                    otherlv_8=(Token)match(input,KEYWORD_61,FOLLOW_KEYWORD_61_in_ruleStaticMethodExpression4968); if (state.failed) return current;
+                    otherlv_6=(Token)match(input,KEYWORD_64,FOLLOW_KEYWORD_64_in_ruleStaticMethodExpression5014); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_8, grammarAccess.getStaticMethodExpressionAccess().getMathSqrtKeyword_1_2());
+                          	newLeafNode(otherlv_6, grammarAccess.getStaticMethodExpressionAccess().getMathAbsKeyword_1_1());
                           
                     }
-                    otherlv_9=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression4980); if (state.failed) return current;
+                    otherlv_7=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression5026); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_9, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_1_3());
+                          	newLeafNode(otherlv_7, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_1_2());
                           
                     }
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2405:1: ( (lv_numeric_10_0= ruleConditionalOrExpression ) )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2406:1: (lv_numeric_10_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2442:1: ( (lv_numeric_8_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2443:1: (lv_numeric_8_0= ruleConditionalOrExpression )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2406:1: (lv_numeric_10_0= ruleConditionalOrExpression )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2407:3: lv_numeric_10_0= ruleConditionalOrExpression
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2443:1: (lv_numeric_8_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2444:3: lv_numeric_8_0= ruleConditionalOrExpression
                     {
                     if ( state.backtracking==0 ) {
                        
-                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumericConditionalOrExpressionParserRuleCall_1_4_0()); 
+                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumericConditionalOrExpressionParserRuleCall_1_3_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression5000);
-                    lv_numeric_10_0=ruleConditionalOrExpression();
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression5046);
+                    lv_numeric_8_0=ruleConditionalOrExpression();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -6805,7 +6949,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                              		set(
                              			current, 
                              			"numeric",
-                              		lv_numeric_10_0, 
+                              		lv_numeric_8_0, 
                               		"ConditionalOrExpression");
                       	        afterParserOrEnumRuleCall();
                       	    
@@ -6816,10 +6960,10 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_11=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression5013); if (state.failed) return current;
+                    otherlv_9=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression5059); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_11, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_1_5());
+                          	newLeafNode(otherlv_9, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_1_4());
                           
                     }
 
@@ -6829,13 +6973,13 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2429:6: ( () (otherlv_13= KEYWORD_69 )? otherlv_14= KEYWORD_75 otherlv_15= KEYWORD_4 ( (lv_persistable_16_0= ruleConditionalOrExpression ) ) otherlv_17= KEYWORD_5 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2466:6: ( () otherlv_11= KEYWORD_90 otherlv_12= KEYWORD_4 ( (lv_numeric_13_0= ruleConditionalOrExpression ) ) otherlv_14= KEYWORD_5 )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2429:6: ( () (otherlv_13= KEYWORD_69 )? otherlv_14= KEYWORD_75 otherlv_15= KEYWORD_4 ( (lv_persistable_16_0= ruleConditionalOrExpression ) ) otherlv_17= KEYWORD_5 )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2429:7: () (otherlv_13= KEYWORD_69 )? otherlv_14= KEYWORD_75 otherlv_15= KEYWORD_4 ( (lv_persistable_16_0= ruleConditionalOrExpression ) ) otherlv_17= KEYWORD_5
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2466:6: ( () otherlv_11= KEYWORD_90 otherlv_12= KEYWORD_4 ( (lv_numeric_13_0= ruleConditionalOrExpression ) ) otherlv_14= KEYWORD_5 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2466:7: () otherlv_11= KEYWORD_90 otherlv_12= KEYWORD_4 ( (lv_numeric_13_0= ruleConditionalOrExpression ) ) otherlv_14= KEYWORD_5
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2429:7: ()
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2430:2: 
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2466:7: ()
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2467:2: 
                     {
                     if ( state.backtracking==0 ) {
                        
@@ -6852,54 +6996,197 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2438:2: (otherlv_13= KEYWORD_69 )?
-                    int alt40=2;
-                    int LA40_0 = input.LA(1);
-
-                    if ( (LA40_0==KEYWORD_69) ) {
-                        alt40=1;
-                    }
-                    switch (alt40) {
-                        case 1 :
-                            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2439:2: otherlv_13= KEYWORD_69
-                            {
-                            otherlv_13=(Token)match(input,KEYWORD_69,FOLLOW_KEYWORD_69_in_ruleStaticMethodExpression5046); if (state.failed) return current;
-                            if ( state.backtracking==0 ) {
-
-                                  	newLeafNode(otherlv_13, grammarAccess.getStaticMethodExpressionAccess().getJavaxJdoKeyword_2_1());
-                                  
-                            }
-
-                            }
-                            break;
-
-                    }
-
-                    otherlv_14=(Token)match(input,KEYWORD_75,FOLLOW_KEYWORD_75_in_ruleStaticMethodExpression5060); if (state.failed) return current;
+                    otherlv_11=(Token)match(input,KEYWORD_90,FOLLOW_KEYWORD_90_in_ruleStaticMethodExpression5091); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_14, grammarAccess.getStaticMethodExpressionAccess().getJDOHelperGetObjectIdKeyword_2_2());
+                          	newLeafNode(otherlv_11, grammarAccess.getStaticMethodExpressionAccess().getJavaLangMathSqrtKeyword_2_1());
                           
                     }
-                    otherlv_15=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression5072); if (state.failed) return current;
+                    otherlv_12=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression5103); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_15, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_2_3());
+                          	newLeafNode(otherlv_12, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_2_2());
                           
                     }
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2453:1: ( (lv_persistable_16_0= ruleConditionalOrExpression ) )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2454:1: (lv_persistable_16_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2485:1: ( (lv_numeric_13_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2486:1: (lv_numeric_13_0= ruleConditionalOrExpression )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2454:1: (lv_persistable_16_0= ruleConditionalOrExpression )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2455:3: lv_persistable_16_0= ruleConditionalOrExpression
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2486:1: (lv_numeric_13_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2487:3: lv_numeric_13_0= ruleConditionalOrExpression
                     {
                     if ( state.backtracking==0 ) {
                        
-                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getPersistableConditionalOrExpressionParserRuleCall_2_4_0()); 
+                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumericConditionalOrExpressionParserRuleCall_2_3_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression5092);
-                    lv_persistable_16_0=ruleConditionalOrExpression();
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression5123);
+                    lv_numeric_13_0=ruleConditionalOrExpression();
+
+                    state._fsp--;
+                    if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      	        if (current==null) {
+                      	            current = createModelElementForParent(grammarAccess.getStaticMethodExpressionRule());
+                      	        }
+                             		set(
+                             			current, 
+                             			"numeric",
+                              		lv_numeric_13_0, 
+                              		"ConditionalOrExpression");
+                      	        afterParserOrEnumRuleCall();
+                      	    
+                    }
+
+                    }
+
+
+                    }
+
+                    otherlv_14=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression5136); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_14, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_2_4());
+                          
+                    }
+
+                    }
+
+
+                    }
+                    break;
+                case 4 :
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2509:6: ( () otherlv_16= KEYWORD_68 otherlv_17= KEYWORD_4 ( (lv_numeric_18_0= ruleConditionalOrExpression ) ) otherlv_19= KEYWORD_5 )
+                    {
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2509:6: ( () otherlv_16= KEYWORD_68 otherlv_17= KEYWORD_4 ( (lv_numeric_18_0= ruleConditionalOrExpression ) ) otherlv_19= KEYWORD_5 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2509:7: () otherlv_16= KEYWORD_68 otherlv_17= KEYWORD_4 ( (lv_numeric_18_0= ruleConditionalOrExpression ) ) otherlv_19= KEYWORD_5
+                    {
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2509:7: ()
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2510:2: 
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	  /* */ 
+                      	
+                    }
+                    if ( state.backtracking==0 ) {
+
+                              current = forceCreateModelElement(
+                                  grammarAccess.getStaticMethodExpressionAccess().getExpressionAction_3_0(),
+                                  current);
+                          
+                    }
+
+                    }
+
+                    otherlv_16=(Token)match(input,KEYWORD_68,FOLLOW_KEYWORD_68_in_ruleStaticMethodExpression5168); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_16, grammarAccess.getStaticMethodExpressionAccess().getMathSqrtKeyword_3_1());
+                          
+                    }
+                    otherlv_17=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression5180); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_17, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_3_2());
+                          
+                    }
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2528:1: ( (lv_numeric_18_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2529:1: (lv_numeric_18_0= ruleConditionalOrExpression )
+                    {
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2529:1: (lv_numeric_18_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2530:3: lv_numeric_18_0= ruleConditionalOrExpression
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumericConditionalOrExpressionParserRuleCall_3_3_0()); 
+                      	    
+                    }
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression5200);
+                    lv_numeric_18_0=ruleConditionalOrExpression();
+
+                    state._fsp--;
+                    if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      	        if (current==null) {
+                      	            current = createModelElementForParent(grammarAccess.getStaticMethodExpressionRule());
+                      	        }
+                             		set(
+                             			current, 
+                             			"numeric",
+                              		lv_numeric_18_0, 
+                              		"ConditionalOrExpression");
+                      	        afterParserOrEnumRuleCall();
+                      	    
+                    }
+
+                    }
+
+
+                    }
+
+                    otherlv_19=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression5213); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_19, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_3_4());
+                          
+                    }
+
+                    }
+
+
+                    }
+                    break;
+                case 5 :
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2552:6: ( () otherlv_21= KEYWORD_92 otherlv_22= KEYWORD_4 ( (lv_persistable_23_0= ruleConditionalOrExpression ) ) otherlv_24= KEYWORD_5 )
+                    {
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2552:6: ( () otherlv_21= KEYWORD_92 otherlv_22= KEYWORD_4 ( (lv_persistable_23_0= ruleConditionalOrExpression ) ) otherlv_24= KEYWORD_5 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2552:7: () otherlv_21= KEYWORD_92 otherlv_22= KEYWORD_4 ( (lv_persistable_23_0= ruleConditionalOrExpression ) ) otherlv_24= KEYWORD_5
+                    {
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2552:7: ()
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2553:2: 
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	  /* */ 
+                      	
+                    }
+                    if ( state.backtracking==0 ) {
+
+                              current = forceCreateModelElement(
+                                  grammarAccess.getStaticMethodExpressionAccess().getExpressionAction_4_0(),
+                                  current);
+                          
+                    }
+
+                    }
+
+                    otherlv_21=(Token)match(input,KEYWORD_92,FOLLOW_KEYWORD_92_in_ruleStaticMethodExpression5245); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_21, grammarAccess.getStaticMethodExpressionAccess().getJavaxJdoJDOHelperGetObjectIdKeyword_4_1());
+                          
+                    }
+                    otherlv_22=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression5257); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_22, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_4_2());
+                          
+                    }
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2571:1: ( (lv_persistable_23_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2572:1: (lv_persistable_23_0= ruleConditionalOrExpression )
+                    {
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2572:1: (lv_persistable_23_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2573:3: lv_persistable_23_0= ruleConditionalOrExpression
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getPersistableConditionalOrExpressionParserRuleCall_4_3_0()); 
+                      	    
+                    }
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression5277);
+                    lv_persistable_23_0=ruleConditionalOrExpression();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -6911,7 +7198,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                              		set(
                              			current, 
                              			"persistable",
-                              		lv_persistable_16_0, 
+                              		lv_persistable_23_0, 
                               		"ConditionalOrExpression");
                       	        afterParserOrEnumRuleCall();
                       	    
@@ -6922,10 +7209,619 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_17=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression5105); if (state.failed) return current;
+                    otherlv_24=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression5290); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_17, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_2_5());
+                          	newLeafNode(otherlv_24, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_4_4());
+                          
+                    }
+
+                    }
+
+
+                    }
+                    break;
+                case 6 :
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2595:6: ( () otherlv_26= KEYWORD_91 otherlv_27= KEYWORD_4 ( (lv_persistable_28_0= ruleConditionalOrExpression ) ) otherlv_29= KEYWORD_5 )
+                    {
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2595:6: ( () otherlv_26= KEYWORD_91 otherlv_27= KEYWORD_4 ( (lv_persistable_28_0= ruleConditionalOrExpression ) ) otherlv_29= KEYWORD_5 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2595:7: () otherlv_26= KEYWORD_91 otherlv_27= KEYWORD_4 ( (lv_persistable_28_0= ruleConditionalOrExpression ) ) otherlv_29= KEYWORD_5
+                    {
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2595:7: ()
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2596:2: 
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	  /* */ 
+                      	
+                    }
+                    if ( state.backtracking==0 ) {
+
+                              current = forceCreateModelElement(
+                                  grammarAccess.getStaticMethodExpressionAccess().getExpressionAction_5_0(),
+                                  current);
+                          
+                    }
+
+                    }
+
+                    otherlv_26=(Token)match(input,KEYWORD_91,FOLLOW_KEYWORD_91_in_ruleStaticMethodExpression5322); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_26, grammarAccess.getStaticMethodExpressionAccess().getJDOHelperGetObjectIdKeyword_5_1());
+                          
+                    }
+                    otherlv_27=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression5334); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_27, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_5_2());
+                          
+                    }
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2614:1: ( (lv_persistable_28_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2615:1: (lv_persistable_28_0= ruleConditionalOrExpression )
+                    {
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2615:1: (lv_persistable_28_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2616:3: lv_persistable_28_0= ruleConditionalOrExpression
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getPersistableConditionalOrExpressionParserRuleCall_5_3_0()); 
+                      	    
+                    }
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression5354);
+                    lv_persistable_28_0=ruleConditionalOrExpression();
+
+                    state._fsp--;
+                    if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      	        if (current==null) {
+                      	            current = createModelElementForParent(grammarAccess.getStaticMethodExpressionRule());
+                      	        }
+                             		set(
+                             			current, 
+                             			"persistable",
+                              		lv_persistable_28_0, 
+                              		"ConditionalOrExpression");
+                      	        afterParserOrEnumRuleCall();
+                      	    
+                    }
+
+                    }
+
+
+                    }
+
+                    otherlv_29=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression5367); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_29, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_5_4());
+                          
+                    }
+
+                    }
+
+
+                    }
+                    break;
+                case 7 :
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2638:6: ( () otherlv_31= KEYWORD_47 otherlv_32= KEYWORD_4 ( (lv_isDistinct_33_0= KEYWORD_63 ) )? ( (lv_aggregateArgument_34_0= ruleConditionalOrExpression ) ) otherlv_35= KEYWORD_5 )
+                    {
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2638:6: ( () otherlv_31= KEYWORD_47 otherlv_32= KEYWORD_4 ( (lv_isDistinct_33_0= KEYWORD_63 ) )? ( (lv_aggregateArgument_34_0= ruleConditionalOrExpression ) ) otherlv_35= KEYWORD_5 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2638:7: () otherlv_31= KEYWORD_47 otherlv_32= KEYWORD_4 ( (lv_isDistinct_33_0= KEYWORD_63 ) )? ( (lv_aggregateArgument_34_0= ruleConditionalOrExpression ) ) otherlv_35= KEYWORD_5
+                    {
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2638:7: ()
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2639:2: 
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	  /* */ 
+                      	
+                    }
+                    if ( state.backtracking==0 ) {
+
+                              current = forceCreateModelElement(
+                                  grammarAccess.getStaticMethodExpressionAccess().getExpressionAction_6_0(),
+                                  current);
+                          
+                    }
+
+                    }
+
+                    otherlv_31=(Token)match(input,KEYWORD_47,FOLLOW_KEYWORD_47_in_ruleStaticMethodExpression5399); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_31, grammarAccess.getStaticMethodExpressionAccess().getCountKeyword_6_1());
+                          
+                    }
+                    otherlv_32=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression5411); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_32, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_6_2());
+                          
+                    }
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2657:1: ( (lv_isDistinct_33_0= KEYWORD_63 ) )?
+                    int alt39=2;
+                    int LA39_0 = input.LA(1);
+
+                    if ( (LA39_0==KEYWORD_63) ) {
+                        alt39=1;
+                    }
+                    switch (alt39) {
+                        case 1 :
+                            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2658:1: (lv_isDistinct_33_0= KEYWORD_63 )
+                            {
+                            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2658:1: (lv_isDistinct_33_0= KEYWORD_63 )
+                            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2659:3: lv_isDistinct_33_0= KEYWORD_63
+                            {
+                            lv_isDistinct_33_0=(Token)match(input,KEYWORD_63,FOLLOW_KEYWORD_63_in_ruleStaticMethodExpression5429); if (state.failed) return current;
+                            if ( state.backtracking==0 ) {
+
+                                      newLeafNode(lv_isDistinct_33_0, grammarAccess.getStaticMethodExpressionAccess().getIsDistinctDISTINCTKeyword_6_3_0());
+                                  
+                            }
+                            if ( state.backtracking==0 ) {
+
+                              	        if (current==null) {
+                              	            current = createModelElement(grammarAccess.getStaticMethodExpressionRule());
+                              	        }
+                                     		setWithLastConsumed(current, "isDistinct", true, "DISTINCT");
+                              	    
+                            }
+
+                            }
+
+
+                            }
+                            break;
+
+                    }
+
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2673:3: ( (lv_aggregateArgument_34_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2674:1: (lv_aggregateArgument_34_0= ruleConditionalOrExpression )
+                    {
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2674:1: (lv_aggregateArgument_34_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2675:3: lv_aggregateArgument_34_0= ruleConditionalOrExpression
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getAggregateArgumentConditionalOrExpressionParserRuleCall_6_4_0()); 
+                      	    
+                    }
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression5462);
+                    lv_aggregateArgument_34_0=ruleConditionalOrExpression();
+
+                    state._fsp--;
+                    if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      	        if (current==null) {
+                      	            current = createModelElementForParent(grammarAccess.getStaticMethodExpressionRule());
+                      	        }
+                             		set(
+                             			current, 
+                             			"aggregateArgument",
+                              		lv_aggregateArgument_34_0, 
+                              		"ConditionalOrExpression");
+                      	        afterParserOrEnumRuleCall();
+                      	    
+                    }
+
+                    }
+
+
+                    }
+
+                    otherlv_35=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression5475); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_35, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_6_5());
+                          
+                    }
+
+                    }
+
+
+                    }
+                    break;
+                case 8 :
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2697:6: ( () otherlv_37= KEYWORD_32 otherlv_38= KEYWORD_4 ( (lv_isDistinct_39_0= KEYWORD_63 ) )? ( (lv_aggregateArgument_40_0= ruleConditionalOrExpression ) ) otherlv_41= KEYWORD_5 )
+                    {
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2697:6: ( () otherlv_37= KEYWORD_32 otherlv_38= KEYWORD_4 ( (lv_isDistinct_39_0= KEYWORD_63 ) )? ( (lv_aggregateArgument_40_0= ruleConditionalOrExpression ) ) otherlv_41= KEYWORD_5 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2697:7: () otherlv_37= KEYWORD_32 otherlv_38= KEYWORD_4 ( (lv_isDistinct_39_0= KEYWORD_63 ) )? ( (lv_aggregateArgument_40_0= ruleConditionalOrExpression ) ) otherlv_41= KEYWORD_5
+                    {
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2697:7: ()
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2698:2: 
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	  /* */ 
+                      	
+                    }
+                    if ( state.backtracking==0 ) {
+
+                              current = forceCreateModelElement(
+                                  grammarAccess.getStaticMethodExpressionAccess().getExpressionAction_7_0(),
+                                  current);
+                          
+                    }
+
+                    }
+
+                    otherlv_37=(Token)match(input,KEYWORD_32,FOLLOW_KEYWORD_32_in_ruleStaticMethodExpression5507); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_37, grammarAccess.getStaticMethodExpressionAccess().getSumKeyword_7_1());
+                          
+                    }
+                    otherlv_38=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression5519); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_38, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_7_2());
+                          
+                    }
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2716:1: ( (lv_isDistinct_39_0= KEYWORD_63 ) )?
+                    int alt40=2;
+                    int LA40_0 = input.LA(1);
+
+                    if ( (LA40_0==KEYWORD_63) ) {
+                        alt40=1;
+                    }
+                    switch (alt40) {
+                        case 1 :
+                            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2717:1: (lv_isDistinct_39_0= KEYWORD_63 )
+                            {
+                            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2717:1: (lv_isDistinct_39_0= KEYWORD_63 )
+                            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2718:3: lv_isDistinct_39_0= KEYWORD_63
+                            {
+                            lv_isDistinct_39_0=(Token)match(input,KEYWORD_63,FOLLOW_KEYWORD_63_in_ruleStaticMethodExpression5537); if (state.failed) return current;
+                            if ( state.backtracking==0 ) {
+
+                                      newLeafNode(lv_isDistinct_39_0, grammarAccess.getStaticMethodExpressionAccess().getIsDistinctDISTINCTKeyword_7_3_0());
+                                  
+                            }
+                            if ( state.backtracking==0 ) {
+
+                              	        if (current==null) {
+                              	            current = createModelElement(grammarAccess.getStaticMethodExpressionRule());
+                              	        }
+                                     		setWithLastConsumed(current, "isDistinct", true, "DISTINCT");
+                              	    
+                            }
+
+                            }
+
+
+                            }
+                            break;
+
+                    }
+
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2732:3: ( (lv_aggregateArgument_40_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2733:1: (lv_aggregateArgument_40_0= ruleConditionalOrExpression )
+                    {
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2733:1: (lv_aggregateArgument_40_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2734:3: lv_aggregateArgument_40_0= ruleConditionalOrExpression
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getAggregateArgumentConditionalOrExpressionParserRuleCall_7_4_0()); 
+                      	    
+                    }
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression5570);
+                    lv_aggregateArgument_40_0=ruleConditionalOrExpression();
+
+                    state._fsp--;
+                    if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      	        if (current==null) {
+                      	            current = createModelElementForParent(grammarAccess.getStaticMethodExpressionRule());
+                      	        }
+                             		set(
+                             			current, 
+                             			"aggregateArgument",
+                              		lv_aggregateArgument_40_0, 
+                              		"ConditionalOrExpression");
+                      	        afterParserOrEnumRuleCall();
+                      	    
+                    }
+
+                    }
+
+
+                    }
+
+                    otherlv_41=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression5583); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_41, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_7_5());
+                          
+                    }
+
+                    }
+
+
+                    }
+                    break;
+                case 9 :
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2756:6: ( () otherlv_43= KEYWORD_31 otherlv_44= KEYWORD_4 ( (lv_aggregateArgument_45_0= ruleConditionalOrExpression ) ) otherlv_46= KEYWORD_5 )
+                    {
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2756:6: ( () otherlv_43= KEYWORD_31 otherlv_44= KEYWORD_4 ( (lv_aggregateArgument_45_0= ruleConditionalOrExpression ) ) otherlv_46= KEYWORD_5 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2756:7: () otherlv_43= KEYWORD_31 otherlv_44= KEYWORD_4 ( (lv_aggregateArgument_45_0= ruleConditionalOrExpression ) ) otherlv_46= KEYWORD_5
+                    {
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2756:7: ()
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2757:2: 
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	  /* */ 
+                      	
+                    }
+                    if ( state.backtracking==0 ) {
+
+                              current = forceCreateModelElement(
+                                  grammarAccess.getStaticMethodExpressionAccess().getExpressionAction_8_0(),
+                                  current);
+                          
+                    }
+
+                    }
+
+                    otherlv_43=(Token)match(input,KEYWORD_31,FOLLOW_KEYWORD_31_in_ruleStaticMethodExpression5615); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_43, grammarAccess.getStaticMethodExpressionAccess().getMinKeyword_8_1());
+                          
+                    }
+                    otherlv_44=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression5627); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_44, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_8_2());
+                          
+                    }
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2775:1: ( (lv_aggregateArgument_45_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2776:1: (lv_aggregateArgument_45_0= ruleConditionalOrExpression )
+                    {
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2776:1: (lv_aggregateArgument_45_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2777:3: lv_aggregateArgument_45_0= ruleConditionalOrExpression
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getAggregateArgumentConditionalOrExpressionParserRuleCall_8_3_0()); 
+                      	    
+                    }
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression5647);
+                    lv_aggregateArgument_45_0=ruleConditionalOrExpression();
+
+                    state._fsp--;
+                    if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      	        if (current==null) {
+                      	            current = createModelElementForParent(grammarAccess.getStaticMethodExpressionRule());
+                      	        }
+                             		set(
+                             			current, 
+                             			"aggregateArgument",
+                              		lv_aggregateArgument_45_0, 
+                              		"ConditionalOrExpression");
+                      	        afterParserOrEnumRuleCall();
+                      	    
+                    }
+
+                    }
+
+
+                    }
+
+                    otherlv_46=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression5660); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_46, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_8_4());
+                          
+                    }
+
+                    }
+
+
+                    }
+                    break;
+                case 10 :
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2799:6: ( () otherlv_48= KEYWORD_30 otherlv_49= KEYWORD_4 ( (lv_aggregateArgument_50_0= ruleConditionalOrExpression ) ) otherlv_51= KEYWORD_5 )
+                    {
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2799:6: ( () otherlv_48= KEYWORD_30 otherlv_49= KEYWORD_4 ( (lv_aggregateArgument_50_0= ruleConditionalOrExpression ) ) otherlv_51= KEYWORD_5 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2799:7: () otherlv_48= KEYWORD_30 otherlv_49= KEYWORD_4 ( (lv_aggregateArgument_50_0= ruleConditionalOrExpression ) ) otherlv_51= KEYWORD_5
+                    {
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2799:7: ()
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2800:2: 
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	  /* */ 
+                      	
+                    }
+                    if ( state.backtracking==0 ) {
+
+                              current = forceCreateModelElement(
+                                  grammarAccess.getStaticMethodExpressionAccess().getExpressionAction_9_0(),
+                                  current);
+                          
+                    }
+
+                    }
+
+                    otherlv_48=(Token)match(input,KEYWORD_30,FOLLOW_KEYWORD_30_in_ruleStaticMethodExpression5692); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_48, grammarAccess.getStaticMethodExpressionAccess().getMaxKeyword_9_1());
+                          
+                    }
+                    otherlv_49=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression5704); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_49, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_9_2());
+                          
+                    }
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2818:1: ( (lv_aggregateArgument_50_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2819:1: (lv_aggregateArgument_50_0= ruleConditionalOrExpression )
+                    {
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2819:1: (lv_aggregateArgument_50_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2820:3: lv_aggregateArgument_50_0= ruleConditionalOrExpression
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getAggregateArgumentConditionalOrExpressionParserRuleCall_9_3_0()); 
+                      	    
+                    }
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression5724);
+                    lv_aggregateArgument_50_0=ruleConditionalOrExpression();
+
+                    state._fsp--;
+                    if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      	        if (current==null) {
+                      	            current = createModelElementForParent(grammarAccess.getStaticMethodExpressionRule());
+                      	        }
+                             		set(
+                             			current, 
+                             			"aggregateArgument",
+                              		lv_aggregateArgument_50_0, 
+                              		"ConditionalOrExpression");
+                      	        afterParserOrEnumRuleCall();
+                      	    
+                    }
+
+                    }
+
+
+                    }
+
+                    otherlv_51=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression5737); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_51, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_9_4());
+                          
+                    }
+
+                    }
+
+
+                    }
+                    break;
+                case 11 :
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2842:6: ( () otherlv_53= KEYWORD_27 otherlv_54= KEYWORD_4 ( (lv_isDistinct_55_0= KEYWORD_63 ) )? ( (lv_aggregateArgument_56_0= ruleConditionalOrExpression ) ) otherlv_57= KEYWORD_5 )
+                    {
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2842:6: ( () otherlv_53= KEYWORD_27 otherlv_54= KEYWORD_4 ( (lv_isDistinct_55_0= KEYWORD_63 ) )? ( (lv_aggregateArgument_56_0= ruleConditionalOrExpression ) ) otherlv_57= KEYWORD_5 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2842:7: () otherlv_53= KEYWORD_27 otherlv_54= KEYWORD_4 ( (lv_isDistinct_55_0= KEYWORD_63 ) )? ( (lv_aggregateArgument_56_0= ruleConditionalOrExpression ) ) otherlv_57= KEYWORD_5
+                    {
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2842:7: ()
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2843:2: 
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	  /* */ 
+                      	
+                    }
+                    if ( state.backtracking==0 ) {
+
+                              current = forceCreateModelElement(
+                                  grammarAccess.getStaticMethodExpressionAccess().getExpressionAction_10_0(),
+                                  current);
+                          
+                    }
+
+                    }
+
+                    otherlv_53=(Token)match(input,KEYWORD_27,FOLLOW_KEYWORD_27_in_ruleStaticMethodExpression5769); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_53, grammarAccess.getStaticMethodExpressionAccess().getAvgKeyword_10_1());
+                          
+                    }
+                    otherlv_54=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression5781); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_54, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_10_2());
+                          
+                    }
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2861:1: ( (lv_isDistinct_55_0= KEYWORD_63 ) )?
+                    int alt41=2;
+                    int LA41_0 = input.LA(1);
+
+                    if ( (LA41_0==KEYWORD_63) ) {
+                        alt41=1;
+                    }
+                    switch (alt41) {
+                        case 1 :
+                            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2862:1: (lv_isDistinct_55_0= KEYWORD_63 )
+                            {
+                            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2862:1: (lv_isDistinct_55_0= KEYWORD_63 )
+                            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2863:3: lv_isDistinct_55_0= KEYWORD_63
+                            {
+                            lv_isDistinct_55_0=(Token)match(input,KEYWORD_63,FOLLOW_KEYWORD_63_in_ruleStaticMethodExpression5799); if (state.failed) return current;
+                            if ( state.backtracking==0 ) {
+
+                                      newLeafNode(lv_isDistinct_55_0, grammarAccess.getStaticMethodExpressionAccess().getIsDistinctDISTINCTKeyword_10_3_0());
+                                  
+                            }
+                            if ( state.backtracking==0 ) {
+
+                              	        if (current==null) {
+                              	            current = createModelElement(grammarAccess.getStaticMethodExpressionRule());
+                              	        }
+                                     		setWithLastConsumed(current, "isDistinct", true, "DISTINCT");
+                              	    
+                            }
+
+                            }
+
+
+                            }
+                            break;
+
+                    }
+
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2877:3: ( (lv_aggregateArgument_56_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2878:1: (lv_aggregateArgument_56_0= ruleConditionalOrExpression )
+                    {
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2878:1: (lv_aggregateArgument_56_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2879:3: lv_aggregateArgument_56_0= ruleConditionalOrExpression
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getAggregateArgumentConditionalOrExpressionParserRuleCall_10_4_0()); 
+                      	    
+                    }
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression5832);
+                    lv_aggregateArgument_56_0=ruleConditionalOrExpression();
+
+                    state._fsp--;
+                    if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      	        if (current==null) {
+                      	            current = createModelElementForParent(grammarAccess.getStaticMethodExpressionRule());
+                      	        }
+                             		set(
+                             			current, 
+                             			"aggregateArgument",
+                              		lv_aggregateArgument_56_0, 
+                              		"ConditionalOrExpression");
+                      	        afterParserOrEnumRuleCall();
+                      	    
+                    }
+
+                    }
+
+
+                    }
+
+                    otherlv_57=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression5845); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_57, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_10_5());
                           
                     }
 
@@ -6957,7 +7853,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleMethodExpression"
-    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2484:1: entryRuleMethodExpression returns [EObject current=null] : iv_ruleMethodExpression= ruleMethodExpression EOF ;
+    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2908:1: entryRuleMethodExpression returns [EObject current=null] : iv_ruleMethodExpression= ruleMethodExpression EOF ;
     public final EObject entryRuleMethodExpression() throws RecognitionException {
         EObject current = null;
 
@@ -6965,13 +7861,13 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2485:2: (iv_ruleMethodExpression= ruleMethodExpression EOF )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2486:2: iv_ruleMethodExpression= ruleMethodExpression EOF
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2909:2: (iv_ruleMethodExpression= ruleMethodExpression EOF )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2910:2: iv_ruleMethodExpression= ruleMethodExpression EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getMethodExpressionRule()); 
             }
-            pushFollow(FOLLOW_ruleMethodExpression_in_entryRuleMethodExpression5140);
+            pushFollow(FOLLOW_ruleMethodExpression_in_entryRuleMethodExpression5880);
             iv_ruleMethodExpression=ruleMethodExpression();
 
             state._fsp--;
@@ -6979,7 +7875,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleMethodExpression; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleMethodExpression5150); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleMethodExpression5890); if (state.failed) return current;
 
             }
 
@@ -6997,7 +7893,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleMethodExpression"
-    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2493:1: ruleMethodExpression returns [EObject current=null] : ( ( () otherlv_1= KEYWORD_58 otherlv_2= KEYWORD_4 ( (lv_element_3_0= ruleConditionalOrExpression ) ) otherlv_4= KEYWORD_5 ) | ( () otherlv_6= KEYWORD_54 otherlv_7= KEYWORD_4 otherlv_8= KEYWORD_5 ) | ( () otherlv_10= KEYWORD_36 otherlv_11= KEYWORD_4 otherlv_12= KEYWORD_5 ) | ( () otherlv_14= KEYWORD_27 otherlv_15= KEYWORD_4 ( (lv_arg_16_0= ruleConditionalOrExpression ) ) otherlv_17= KEYWORD_5 ) | ( () otherlv_19= KEYWORD_71 otherlv_20= KEYWORD_4 ( (lv_key_21_0= ruleConditionalOrExpression ) ) otherlv_22= KEYWORD_5 ) | ( () otherlv_24= KEYWORD_74 otherlv_25= KEYWORD_4 ( (lv_value_26_0= ruleConditionalOrExpression ) ) otherlv_27= KEYWORD_5 ) | ( () otherlv_29= KEYWORD_70 otherlv_30= KEYWORD_4 ( (lv_string_31_0= ruleConditionalOrExpression ) ) otherlv_32= KEYWORD_5 ) | ( () otherlv_34= KEYWORD_59 otherlv_35= KEYWORD_4 ( (lv_string_36_0= ruleConditionalOrExpression ) ) otherlv_37= KEYWORD_5 ) | ( () otherlv_39= KEYWORD_55 otherlv_40= KEYWORD_4 ( (lv_regex_41_0= ruleConditionalOrExpression ) ) otherlv_42= KEYWORD_5 ) | ( () otherlv_44= KEYWORD_72 otherlv_45= KEYWORD_4 otherlv_46= KEYWORD_5 ) | ( () otherlv_48= KEYWORD_73 otherlv_49= KEYWORD_4 otherlv_50= KEYWORD_5 ) | ( () otherlv_52= KEYWORD_53 otherlv_53= KEYWORD_4 ( (lv_string_54_0= ruleConditionalOrExpression ) ) (otherlv_55= KEYWORD_8 ( (lv_fromIndex_56_0= ruleConditionalOrExpression ) ) )? otherlv_57= KEYWORD_5 ) | ( () otherlv_59= KEYWORD_63 otherlv_60= KEYWORD_4 ( (lv_beginIndex_61_0= ruleConditionalOrExpression ) ) (otherlv_62= KEYWORD_8 ( (lv_endIndex_63_0= ruleConditionalOrExpression ) ) )? otherlv_64= KEYWORD_5 ) ) ;
+    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2917:1: ruleMethodExpression returns [EObject current=null] : ( ( () otherlv_1= KEYWORD_65 otherlv_2= KEYWORD_4 ( (lv_element_3_0= ruleConditionalOrExpression ) ) otherlv_4= KEYWORD_5 ) | ( () otherlv_6= KEYWORD_61 otherlv_7= KEYWORD_4 otherlv_8= KEYWORD_5 ) | ( () otherlv_10= KEYWORD_40 otherlv_11= KEYWORD_4 otherlv_12= KEYWORD_5 ) | ( () otherlv_14= KEYWORD_28 otherlv_15= KEYWORD_4 ( (lv_arg_16_0= ruleConditionalOrExpression ) ) otherlv_17= KEYWORD_5 ) | ( () otherlv_19= KEYWORD_76 otherlv_20= KEYWORD_4 ( (lv_key_21_0= ruleConditionalOrExpression ) ) otherlv_22= KEYWORD_5 ) | ( () otherlv_24= KEYWORD_79 otherlv_25= KEYWORD_4 ( (lv_value_26_0= ruleConditionalOrExpression ) ) otherlv_27= KEYWORD_5 ) | ( () otherlv_29= KEYWORD_75 otherlv_30= KEYWORD_4 ( (lv_string_31_0= ruleConditionalOrExpression ) ) otherlv_32= KEYWORD_5 ) | ( () otherlv_34= KEYWORD_66 otherlv_35= KEYWORD_4 ( (lv_string_36_0= ruleConditionalOrExpression ) ) otherlv_37= KEYWORD_5 ) | ( () otherlv_39= KEYWORD_62 otherlv_40= KEYWORD_4 ( (lv_regex_41_0= ruleConditionalOrExpression ) ) otherlv_42= KEYWORD_5 ) | ( () otherlv_44= KEYWORD_77 otherlv_45= KEYWORD_4 otherlv_46= KEYWORD_5 ) | ( () otherlv_48= KEYWORD_78 otherlv_49= KEYWORD_4 otherlv_50= KEYWORD_5 ) | ( () otherlv_52= KEYWORD_60 otherlv_53= KEYWORD_4 ( (lv_string_54_0= ruleConditionalOrExpression ) ) (otherlv_55= KEYWORD_8 ( (lv_fromIndex_56_0= ruleConditionalOrExpression ) ) )? otherlv_57= KEYWORD_5 ) | ( () otherlv_59= KEYWORD_70 otherlv_60= KEYWORD_4 ( (lv_beginIndex_61_0= ruleConditionalOrExpression ) ) (otherlv_62= KEYWORD_8 ( (lv_endIndex_63_0= ruleConditionalOrExpression ) ) )? otherlv_64= KEYWORD_5 ) ) ;
     public final EObject ruleMethodExpression() throws RecognitionException {
         EObject current = null;
 
@@ -7068,94 +7964,94 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2496:28: ( ( ( () otherlv_1= KEYWORD_58 otherlv_2= KEYWORD_4 ( (lv_element_3_0= ruleConditionalOrExpression ) ) otherlv_4= KEYWORD_5 ) | ( () otherlv_6= KEYWORD_54 otherlv_7= KEYWORD_4 otherlv_8= KEYWORD_5 ) | ( () otherlv_10= KEYWORD_36 otherlv_11= KEYWORD_4 otherlv_12= KEYWORD_5 ) | ( () otherlv_14= KEYWORD_27 otherlv_15= KEYWORD_4 ( (lv_arg_16_0= ruleConditionalOrExpression ) ) otherlv_17= KEYWORD_5 ) | ( () otherlv_19= KEYWORD_71 otherlv_20= KEYWORD_4 ( (lv_key_21_0= ruleConditionalOrExpression ) ) otherlv_22= KEYWORD_5 ) | ( () otherlv_24= KEYWORD_74 otherlv_25= KEYWORD_4 ( (lv_value_26_0= ruleConditionalOrExpression ) ) otherlv_27= KEYWORD_5 ) | ( () otherlv_29= KEYWORD_70 otherlv_30= KEYWORD_4 ( (lv_string_31_0= ruleConditionalOrExpression ) ) otherlv_32= KEYWORD_5 ) | ( () otherlv_34= KEYWORD_59 otherlv_35= KEYWORD_4 ( (lv_string_36_0= ruleConditionalOrExpression ) ) otherlv_37= KEYWORD_5 ) | ( () otherlv_39= KEYWORD_55 otherlv_40= KEYWORD_4 ( (lv_regex_41_0= ruleConditionalOrExpression ) ) otherlv_42= KEYWORD_5 ) | ( () otherlv_44= KEYWORD_72 otherlv_45= KEYWORD_4 otherlv_46= KEYWORD_5 ) | ( () otherlv_48= KEYWORD_73 otherlv_49= KEYWORD_4 otherlv_50= KEYWORD_5 ) | ( () otherlv_52= KEYWORD_53 otherlv_53= KEYWORD_4 ( (lv_string_54_0= ruleConditionalOrExpression ) ) (otherlv_55= KEYWORD_8 ( (lv_fromIndex_56_0= ruleConditionalOrExpression ) ) )? otherlv_57= KEYWORD_5 ) | ( () otherlv_59= KEYWORD_63 otherlv_60= KEYWORD_4 ( (lv_beginIndex_61_0= ruleConditionalOrExpression ) ) (otherlv_62= KEYWORD_8 ( (lv_endIndex_63_0= ruleConditionalOrExpression ) ) )? otherlv_64= KEYWORD_5 ) ) )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2497:1: ( ( () otherlv_1= KEYWORD_58 otherlv_2= KEYWORD_4 ( (lv_element_3_0= ruleConditionalOrExpression ) ) otherlv_4= KEYWORD_5 ) | ( () otherlv_6= KEYWORD_54 otherlv_7= KEYWORD_4 otherlv_8= KEYWORD_5 ) | ( () otherlv_10= KEYWORD_36 otherlv_11= KEYWORD_4 otherlv_12= KEYWORD_5 ) | ( () otherlv_14= KEYWORD_27 otherlv_15= KEYWORD_4 ( (lv_arg_16_0= ruleConditionalOrExpression ) ) otherlv_17= KEYWORD_5 ) | ( () otherlv_19= KEYWORD_71 otherlv_20= KEYWORD_4 ( (lv_key_21_0= ruleConditionalOrExpression ) ) otherlv_22= KEYWORD_5 ) | ( () otherlv_24= KEYWORD_74 otherlv_25= KEYWORD_4 ( (lv_value_26_0= ruleConditionalOrExpression ) ) otherlv_27= KEYWORD_5 ) | ( () otherlv_29= KEYWORD_70 otherlv_30= KEYWORD_4 ( (lv_string_31_0= ruleConditionalOrExpression ) ) otherlv_32= KEYWORD_5 ) | ( () otherlv_34= KEYWORD_59 otherlv_35= KEYWORD_4 ( (lv_string_36_0= ruleConditionalOrExpression ) ) otherlv_37= KEYWORD_5 ) | ( () otherlv_39= KEYWORD_55 otherlv_40= KEYWORD_4 ( (lv_regex_41_0= ruleConditionalOrExpression ) ) otherlv_42= KEYWORD_5 ) | ( () otherlv_44= KEYWORD_72 otherlv_45= KEYWORD_4 otherlv_46= KEYWORD_5 ) | ( () otherlv_48= KEYWORD_73 otherlv_49= KEYWORD_4 otherlv_50= KEYWORD_5 ) | ( () otherlv_52= KEYWORD_53 otherlv_53= KEYWORD_4 ( (lv_string_54_0= ruleConditionalOrExpression ) ) (otherlv_55= KEYWORD_8 ( (lv_fromIndex_56_0= ruleConditionalOrExpression ) ) )? otherlv_57= KEYWORD_5 ) | ( () otherlv_59= KEYWORD_63 otherlv_60= KEYWORD_4 ( (lv_beginIndex_61_0= ruleConditionalOrExpression ) ) (otherlv_62= KEYWORD_8 ( (lv_endIndex_63_0= ruleConditionalOrExpression ) ) )? otherlv_64= KEYWORD_5 ) )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2920:28: ( ( ( () otherlv_1= KEYWORD_65 otherlv_2= KEYWORD_4 ( (lv_element_3_0= ruleConditionalOrExpression ) ) otherlv_4= KEYWORD_5 ) | ( () otherlv_6= KEYWORD_61 otherlv_7= KEYWORD_4 otherlv_8= KEYWORD_5 ) | ( () otherlv_10= KEYWORD_40 otherlv_11= KEYWORD_4 otherlv_12= KEYWORD_5 ) | ( () otherlv_14= KEYWORD_28 otherlv_15= KEYWORD_4 ( (lv_arg_16_0= ruleConditionalOrExpression ) ) otherlv_17= KEYWORD_5 ) | ( () otherlv_19= KEYWORD_76 otherlv_20= KEYWORD_4 ( (lv_key_21_0= ruleConditionalOrExpression ) ) otherlv_22= KEYWORD_5 ) | ( () otherlv_24= KEYWORD_79 otherlv_25= KEYWORD_4 ( (lv_value_26_0= ruleConditionalOrExpression ) ) otherlv_27= KEYWORD_5 ) | ( () otherlv_29= KEYWORD_75 otherlv_30= KEYWORD_4 ( (lv_string_31_0= ruleConditionalOrExpression ) ) otherlv_32= KEYWORD_5 ) | ( () otherlv_34= KEYWORD_66 otherlv_35= KEYWORD_4 ( (lv_string_36_0= ruleConditionalOrExpression ) ) otherlv_37= KEYWORD_5 ) | ( () otherlv_39= KEYWORD_62 otherlv_40= KEYWORD_4 ( (lv_regex_41_0= ruleConditionalOrExpression ) ) otherlv_42= KEYWORD_5 ) | ( () otherlv_44= KEYWORD_77 otherlv_45= KEYWORD_4 otherlv_46= KEYWORD_5 ) | ( () otherlv_48= KEYWORD_78 otherlv_49= KEYWORD_4 otherlv_50= KEYWORD_5 ) | ( () otherlv_52= KEYWORD_60 otherlv_53= KEYWORD_4 ( (lv_string_54_0= ruleConditionalOrExpression ) ) (otherlv_55= KEYWORD_8 ( (lv_fromIndex_56_0= ruleConditionalOrExpression ) ) )? otherlv_57= KEYWORD_5 ) | ( () otherlv_59= KEYWORD_70 otherlv_60= KEYWORD_4 ( (lv_beginIndex_61_0= ruleConditionalOrExpression ) ) (otherlv_62= KEYWORD_8 ( (lv_endIndex_63_0= ruleConditionalOrExpression ) ) )? otherlv_64= KEYWORD_5 ) ) )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2921:1: ( ( () otherlv_1= KEYWORD_65 otherlv_2= KEYWORD_4 ( (lv_element_3_0= ruleConditionalOrExpression ) ) otherlv_4= KEYWORD_5 ) | ( () otherlv_6= KEYWORD_61 otherlv_7= KEYWORD_4 otherlv_8= KEYWORD_5 ) | ( () otherlv_10= KEYWORD_40 otherlv_11= KEYWORD_4 otherlv_12= KEYWORD_5 ) | ( () otherlv_14= KEYWORD_28 otherlv_15= KEYWORD_4 ( (lv_arg_16_0= ruleConditionalOrExpression ) ) otherlv_17= KEYWORD_5 ) | ( () otherlv_19= KEYWORD_76 otherlv_20= KEYWORD_4 ( (lv_key_21_0= ruleConditionalOrExpression ) ) otherlv_22= KEYWORD_5 ) | ( () otherlv_24= KEYWORD_79 otherlv_25= KEYWORD_4 ( (lv_value_26_0= ruleConditionalOrExpression ) ) otherlv_27= KEYWORD_5 ) | ( () otherlv_29= KEYWORD_75 otherlv_30= KEYWORD_4 ( (lv_string_31_0= ruleConditionalOrExpression ) ) otherlv_32= KEYWORD_5 ) | ( () otherlv_34= KEYWORD_66 otherlv_35= KEYWORD_4 ( (lv_string_36_0= ruleConditionalOrExpression ) ) otherlv_37= KEYWORD_5 ) | ( () otherlv_39= KEYWORD_62 otherlv_40= KEYWORD_4 ( (lv_regex_41_0= ruleConditionalOrExpression ) ) otherlv_42= KEYWORD_5 ) | ( () otherlv_44= KEYWORD_77 otherlv_45= KEYWORD_4 otherlv_46= KEYWORD_5 ) | ( () otherlv_48= KEYWORD_78 otherlv_49= KEYWORD_4 otherlv_50= KEYWORD_5 ) | ( () otherlv_52= KEYWORD_60 otherlv_53= KEYWORD_4 ( (lv_string_54_0= ruleConditionalOrExpression ) ) (otherlv_55= KEYWORD_8 ( (lv_fromIndex_56_0= ruleConditionalOrExpression ) ) )? otherlv_57= KEYWORD_5 ) | ( () otherlv_59= KEYWORD_70 otherlv_60= KEYWORD_4 ( (lv_beginIndex_61_0= ruleConditionalOrExpression ) ) (otherlv_62= KEYWORD_8 ( (lv_endIndex_63_0= ruleConditionalOrExpression ) ) )? otherlv_64= KEYWORD_5 ) )
             {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2497:1: ( ( () otherlv_1= KEYWORD_58 otherlv_2= KEYWORD_4 ( (lv_element_3_0= ruleConditionalOrExpression ) ) otherlv_4= KEYWORD_5 ) | ( () otherlv_6= KEYWORD_54 otherlv_7= KEYWORD_4 otherlv_8= KEYWORD_5 ) | ( () otherlv_10= KEYWORD_36 otherlv_11= KEYWORD_4 otherlv_12= KEYWORD_5 ) | ( () otherlv_14= KEYWORD_27 otherlv_15= KEYWORD_4 ( (lv_arg_16_0= ruleConditionalOrExpression ) ) otherlv_17= KEYWORD_5 ) | ( () otherlv_19= KEYWORD_71 otherlv_20= KEYWORD_4 ( (lv_key_21_0= ruleConditionalOrExpression ) ) otherlv_22= KEYWORD_5 ) | ( () otherlv_24= KEYWORD_74 otherlv_25= KEYWORD_4 ( (lv_value_26_0= ruleConditionalOrExpression ) ) otherlv_27= KEYWORD_5 ) | ( () otherlv_29= KEYWORD_70 otherlv_30= KEYWORD_4 ( (lv_string_31_0= ruleConditionalOrExpression ) ) otherlv_32= KEYWORD_5 ) | ( () otherlv_34= KEYWORD_59 otherlv_35= KEYWORD_4 ( (lv_string_36_0= ruleConditionalOrExpression ) ) otherlv_37= KEYWORD_5 ) | ( () otherlv_39= KEYWORD_55 otherlv_40= KEYWORD_4 ( (lv_regex_41_0= ruleConditionalOrExpression ) ) otherlv_42= KEYWORD_5 ) | ( () otherlv_44= KEYWORD_72 otherlv_45= KEYWORD_4 otherlv_46= KEYWORD_5 ) | ( () otherlv_48= KEYWORD_73 otherlv_49= KEYWORD_4 otherlv_50= KEYWORD_5 ) | ( () otherlv_52= KEYWORD_53 otherlv_53= KEYWORD_4 ( (lv_string_54_0= ruleConditionalOrExpression ) ) (otherlv_55= KEYWORD_8 ( (lv_fromIndex_56_0= ruleConditionalOrExpression ) ) )? otherlv_57= KEYWORD_5 ) | ( () otherlv_59= KEYWORD_63 otherlv_60= KEYWORD_4 ( (lv_beginIndex_61_0= ruleConditionalOrExpression ) ) (otherlv_62= KEYWORD_8 ( (lv_endIndex_63_0= ruleConditionalOrExpression ) ) )? otherlv_64= KEYWORD_5 ) )
-            int alt44=13;
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2921:1: ( ( () otherlv_1= KEYWORD_65 otherlv_2= KEYWORD_4 ( (lv_element_3_0= ruleConditionalOrExpression ) ) otherlv_4= KEYWORD_5 ) | ( () otherlv_6= KEYWORD_61 otherlv_7= KEYWORD_4 otherlv_8= KEYWORD_5 ) | ( () otherlv_10= KEYWORD_40 otherlv_11= KEYWORD_4 otherlv_12= KEYWORD_5 ) | ( () otherlv_14= KEYWORD_28 otherlv_15= KEYWORD_4 ( (lv_arg_16_0= ruleConditionalOrExpression ) ) otherlv_17= KEYWORD_5 ) | ( () otherlv_19= KEYWORD_76 otherlv_20= KEYWORD_4 ( (lv_key_21_0= ruleConditionalOrExpression ) ) otherlv_22= KEYWORD_5 ) | ( () otherlv_24= KEYWORD_79 otherlv_25= KEYWORD_4 ( (lv_value_26_0= ruleConditionalOrExpression ) ) otherlv_27= KEYWORD_5 ) | ( () otherlv_29= KEYWORD_75 otherlv_30= KEYWORD_4 ( (lv_string_31_0= ruleConditionalOrExpression ) ) otherlv_32= KEYWORD_5 ) | ( () otherlv_34= KEYWORD_66 otherlv_35= KEYWORD_4 ( (lv_string_36_0= ruleConditionalOrExpression ) ) otherlv_37= KEYWORD_5 ) | ( () otherlv_39= KEYWORD_62 otherlv_40= KEYWORD_4 ( (lv_regex_41_0= ruleConditionalOrExpression ) ) otherlv_42= KEYWORD_5 ) | ( () otherlv_44= KEYWORD_77 otherlv_45= KEYWORD_4 otherlv_46= KEYWORD_5 ) | ( () otherlv_48= KEYWORD_78 otherlv_49= KEYWORD_4 otherlv_50= KEYWORD_5 ) | ( () otherlv_52= KEYWORD_60 otherlv_53= KEYWORD_4 ( (lv_string_54_0= ruleConditionalOrExpression ) ) (otherlv_55= KEYWORD_8 ( (lv_fromIndex_56_0= ruleConditionalOrExpression ) ) )? otherlv_57= KEYWORD_5 ) | ( () otherlv_59= KEYWORD_70 otherlv_60= KEYWORD_4 ( (lv_beginIndex_61_0= ruleConditionalOrExpression ) ) (otherlv_62= KEYWORD_8 ( (lv_endIndex_63_0= ruleConditionalOrExpression ) ) )? otherlv_64= KEYWORD_5 ) )
+            int alt45=13;
             switch ( input.LA(1) ) {
-            case KEYWORD_58:
+            case KEYWORD_65:
                 {
-                alt44=1;
+                alt45=1;
                 }
                 break;
-            case KEYWORD_54:
+            case KEYWORD_61:
                 {
-                alt44=2;
+                alt45=2;
                 }
                 break;
-            case KEYWORD_36:
+            case KEYWORD_40:
                 {
-                alt44=3;
+                alt45=3;
                 }
                 break;
-            case KEYWORD_27:
+            case KEYWORD_28:
                 {
-                alt44=4;
+                alt45=4;
                 }
                 break;
-            case KEYWORD_71:
+            case KEYWORD_76:
                 {
-                alt44=5;
+                alt45=5;
                 }
                 break;
-            case KEYWORD_74:
+            case KEYWORD_79:
                 {
-                alt44=6;
+                alt45=6;
+                }
+                break;
+            case KEYWORD_75:
+                {
+                alt45=7;
+                }
+                break;
+            case KEYWORD_66:
+                {
+                alt45=8;
+                }
+                break;
+            case KEYWORD_62:
+                {
+                alt45=9;
+                }
+                break;
+            case KEYWORD_77:
+                {
+                alt45=10;
+                }
+                break;
+            case KEYWORD_78:
+                {
+                alt45=11;
+                }
+                break;
+            case KEYWORD_60:
+                {
+                alt45=12;
                 }
                 break;
             case KEYWORD_70:
                 {
-                alt44=7;
-                }
-                break;
-            case KEYWORD_59:
-                {
-                alt44=8;
-                }
-                break;
-            case KEYWORD_55:
-                {
-                alt44=9;
-                }
-                break;
-            case KEYWORD_72:
-                {
-                alt44=10;
-                }
-                break;
-            case KEYWORD_73:
-                {
-                alt44=11;
-                }
-                break;
-            case KEYWORD_53:
-                {
-                alt44=12;
-                }
-                break;
-            case KEYWORD_63:
-                {
-                alt44=13;
+                alt45=13;
                 }
                 break;
             default:
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 44, 0, input);
+                    new NoViableAltException("", 45, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt44) {
+            switch (alt45) {
                 case 1 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2497:2: ( () otherlv_1= KEYWORD_58 otherlv_2= KEYWORD_4 ( (lv_element_3_0= ruleConditionalOrExpression ) ) otherlv_4= KEYWORD_5 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2921:2: ( () otherlv_1= KEYWORD_65 otherlv_2= KEYWORD_4 ( (lv_element_3_0= ruleConditionalOrExpression ) ) otherlv_4= KEYWORD_5 )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2497:2: ( () otherlv_1= KEYWORD_58 otherlv_2= KEYWORD_4 ( (lv_element_3_0= ruleConditionalOrExpression ) ) otherlv_4= KEYWORD_5 )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2497:3: () otherlv_1= KEYWORD_58 otherlv_2= KEYWORD_4 ( (lv_element_3_0= ruleConditionalOrExpression ) ) otherlv_4= KEYWORD_5
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2921:2: ( () otherlv_1= KEYWORD_65 otherlv_2= KEYWORD_4 ( (lv_element_3_0= ruleConditionalOrExpression ) ) otherlv_4= KEYWORD_5 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2921:3: () otherlv_1= KEYWORD_65 otherlv_2= KEYWORD_4 ( (lv_element_3_0= ruleConditionalOrExpression ) ) otherlv_4= KEYWORD_5
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2497:3: ()
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2498:2: 
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2921:3: ()
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2922:2: 
                     {
                     if ( state.backtracking==0 ) {
                        
@@ -7172,30 +8068,30 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_1=(Token)match(input,KEYWORD_58,FOLLOW_KEYWORD_58_in_ruleMethodExpression5201); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,KEYWORD_65,FOLLOW_KEYWORD_65_in_ruleMethodExpression5941); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_1, grammarAccess.getMethodExpressionAccess().getContainsKeyword_0_1());
                           
                     }
-                    otherlv_2=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression5213); if (state.failed) return current;
+                    otherlv_2=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression5953); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_2, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_0_2());
                           
                     }
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2516:1: ( (lv_element_3_0= ruleConditionalOrExpression ) )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2517:1: (lv_element_3_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2940:1: ( (lv_element_3_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2941:1: (lv_element_3_0= ruleConditionalOrExpression )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2517:1: (lv_element_3_0= ruleConditionalOrExpression )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2518:3: lv_element_3_0= ruleConditionalOrExpression
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2941:1: (lv_element_3_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2942:3: lv_element_3_0= ruleConditionalOrExpression
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getElementConditionalOrExpressionParserRuleCall_0_3_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression5233);
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression5973);
                     lv_element_3_0=ruleConditionalOrExpression();
 
                     state._fsp--;
@@ -7219,7 +8115,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_4=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression5246); if (state.failed) return current;
+                    otherlv_4=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression5986); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_4, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_0_4());
@@ -7232,13 +8128,13 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2540:6: ( () otherlv_6= KEYWORD_54 otherlv_7= KEYWORD_4 otherlv_8= KEYWORD_5 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2964:6: ( () otherlv_6= KEYWORD_61 otherlv_7= KEYWORD_4 otherlv_8= KEYWORD_5 )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2540:6: ( () otherlv_6= KEYWORD_54 otherlv_7= KEYWORD_4 otherlv_8= KEYWORD_5 )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2540:7: () otherlv_6= KEYWORD_54 otherlv_7= KEYWORD_4 otherlv_8= KEYWORD_5
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2964:6: ( () otherlv_6= KEYWORD_61 otherlv_7= KEYWORD_4 otherlv_8= KEYWORD_5 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2964:7: () otherlv_6= KEYWORD_61 otherlv_7= KEYWORD_4 otherlv_8= KEYWORD_5
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2540:7: ()
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2541:2: 
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2964:7: ()
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2965:2: 
                     {
                     if ( state.backtracking==0 ) {
                        
@@ -7255,19 +8151,19 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_6=(Token)match(input,KEYWORD_54,FOLLOW_KEYWORD_54_in_ruleMethodExpression5278); if (state.failed) return current;
+                    otherlv_6=(Token)match(input,KEYWORD_61,FOLLOW_KEYWORD_61_in_ruleMethodExpression6018); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_6, grammarAccess.getMethodExpressionAccess().getIsEmptyKeyword_1_1());
                           
                     }
-                    otherlv_7=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression5290); if (state.failed) return current;
+                    otherlv_7=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression6030); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_7, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_1_2());
                           
                     }
-                    otherlv_8=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression5302); if (state.failed) return current;
+                    otherlv_8=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression6042); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_8, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_1_3());
@@ -7280,13 +8176,13 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2565:6: ( () otherlv_10= KEYWORD_36 otherlv_11= KEYWORD_4 otherlv_12= KEYWORD_5 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2989:6: ( () otherlv_10= KEYWORD_40 otherlv_11= KEYWORD_4 otherlv_12= KEYWORD_5 )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2565:6: ( () otherlv_10= KEYWORD_36 otherlv_11= KEYWORD_4 otherlv_12= KEYWORD_5 )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2565:7: () otherlv_10= KEYWORD_36 otherlv_11= KEYWORD_4 otherlv_12= KEYWORD_5
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2989:6: ( () otherlv_10= KEYWORD_40 otherlv_11= KEYWORD_4 otherlv_12= KEYWORD_5 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2989:7: () otherlv_10= KEYWORD_40 otherlv_11= KEYWORD_4 otherlv_12= KEYWORD_5
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2565:7: ()
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2566:2: 
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2989:7: ()
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2990:2: 
                     {
                     if ( state.backtracking==0 ) {
                        
@@ -7303,19 +8199,19 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_10=(Token)match(input,KEYWORD_36,FOLLOW_KEYWORD_36_in_ruleMethodExpression5334); if (state.failed) return current;
+                    otherlv_10=(Token)match(input,KEYWORD_40,FOLLOW_KEYWORD_40_in_ruleMethodExpression6074); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_10, grammarAccess.getMethodExpressionAccess().getSizeKeyword_2_1());
                           
                     }
-                    otherlv_11=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression5346); if (state.failed) return current;
+                    otherlv_11=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression6086); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_11, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_2_2());
                           
                     }
-                    otherlv_12=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression5358); if (state.failed) return current;
+                    otherlv_12=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression6098); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_12, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_2_3());
@@ -7328,13 +8224,13 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2590:6: ( () otherlv_14= KEYWORD_27 otherlv_15= KEYWORD_4 ( (lv_arg_16_0= ruleConditionalOrExpression ) ) otherlv_17= KEYWORD_5 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3014:6: ( () otherlv_14= KEYWORD_28 otherlv_15= KEYWORD_4 ( (lv_arg_16_0= ruleConditionalOrExpression ) ) otherlv_17= KEYWORD_5 )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2590:6: ( () otherlv_14= KEYWORD_27 otherlv_15= KEYWORD_4 ( (lv_arg_16_0= ruleConditionalOrExpression ) ) otherlv_17= KEYWORD_5 )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2590:7: () otherlv_14= KEYWORD_27 otherlv_15= KEYWORD_4 ( (lv_arg_16_0= ruleConditionalOrExpression ) ) otherlv_17= KEYWORD_5
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3014:6: ( () otherlv_14= KEYWORD_28 otherlv_15= KEYWORD_4 ( (lv_arg_16_0= ruleConditionalOrExpression ) ) otherlv_17= KEYWORD_5 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3014:7: () otherlv_14= KEYWORD_28 otherlv_15= KEYWORD_4 ( (lv_arg_16_0= ruleConditionalOrExpression ) ) otherlv_17= KEYWORD_5
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2590:7: ()
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2591:2: 
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3014:7: ()
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3015:2: 
                     {
                     if ( state.backtracking==0 ) {
                        
@@ -7351,30 +8247,30 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_14=(Token)match(input,KEYWORD_27,FOLLOW_KEYWORD_27_in_ruleMethodExpression5390); if (state.failed) return current;
+                    otherlv_14=(Token)match(input,KEYWORD_28,FOLLOW_KEYWORD_28_in_ruleMethodExpression6130); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_14, grammarAccess.getMethodExpressionAccess().getGetKeyword_3_1());
                           
                     }
-                    otherlv_15=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression5402); if (state.failed) return current;
+                    otherlv_15=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression6142); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_15, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_3_2());
                           
                     }
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2609:1: ( (lv_arg_16_0= ruleConditionalOrExpression ) )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2610:1: (lv_arg_16_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3033:1: ( (lv_arg_16_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3034:1: (lv_arg_16_0= ruleConditionalOrExpression )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2610:1: (lv_arg_16_0= ruleConditionalOrExpression )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2611:3: lv_arg_16_0= ruleConditionalOrExpression
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3034:1: (lv_arg_16_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3035:3: lv_arg_16_0= ruleConditionalOrExpression
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getArgConditionalOrExpressionParserRuleCall_3_3_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression5422);
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression6162);
                     lv_arg_16_0=ruleConditionalOrExpression();
 
                     state._fsp--;
@@ -7398,7 +8294,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_17=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression5435); if (state.failed) return current;
+                    otherlv_17=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression6175); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_17, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_3_4());
@@ -7411,13 +8307,13 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 5 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2633:6: ( () otherlv_19= KEYWORD_71 otherlv_20= KEYWORD_4 ( (lv_key_21_0= ruleConditionalOrExpression ) ) otherlv_22= KEYWORD_5 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3057:6: ( () otherlv_19= KEYWORD_76 otherlv_20= KEYWORD_4 ( (lv_key_21_0= ruleConditionalOrExpression ) ) otherlv_22= KEYWORD_5 )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2633:6: ( () otherlv_19= KEYWORD_71 otherlv_20= KEYWORD_4 ( (lv_key_21_0= ruleConditionalOrExpression ) ) otherlv_22= KEYWORD_5 )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2633:7: () otherlv_19= KEYWORD_71 otherlv_20= KEYWORD_4 ( (lv_key_21_0= ruleConditionalOrExpression ) ) otherlv_22= KEYWORD_5
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3057:6: ( () otherlv_19= KEYWORD_76 otherlv_20= KEYWORD_4 ( (lv_key_21_0= ruleConditionalOrExpression ) ) otherlv_22= KEYWORD_5 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3057:7: () otherlv_19= KEYWORD_76 otherlv_20= KEYWORD_4 ( (lv_key_21_0= ruleConditionalOrExpression ) ) otherlv_22= KEYWORD_5
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2633:7: ()
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2634:2: 
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3057:7: ()
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3058:2: 
                     {
                     if ( state.backtracking==0 ) {
                        
@@ -7434,30 +8330,30 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_19=(Token)match(input,KEYWORD_71,FOLLOW_KEYWORD_71_in_ruleMethodExpression5467); if (state.failed) return current;
+                    otherlv_19=(Token)match(input,KEYWORD_76,FOLLOW_KEYWORD_76_in_ruleMethodExpression6207); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_19, grammarAccess.getMethodExpressionAccess().getContainsKeyKeyword_4_1());
                           
                     }
-                    otherlv_20=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression5479); if (state.failed) return current;
+                    otherlv_20=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression6219); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_20, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_4_2());
                           
                     }
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2652:1: ( (lv_key_21_0= ruleConditionalOrExpression ) )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2653:1: (lv_key_21_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3076:1: ( (lv_key_21_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3077:1: (lv_key_21_0= ruleConditionalOrExpression )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2653:1: (lv_key_21_0= ruleConditionalOrExpression )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2654:3: lv_key_21_0= ruleConditionalOrExpression
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3077:1: (lv_key_21_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3078:3: lv_key_21_0= ruleConditionalOrExpression
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getKeyConditionalOrExpressionParserRuleCall_4_3_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression5499);
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression6239);
                     lv_key_21_0=ruleConditionalOrExpression();
 
                     state._fsp--;
@@ -7481,7 +8377,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_22=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression5512); if (state.failed) return current;
+                    otherlv_22=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression6252); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_22, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_4_4());
@@ -7494,13 +8390,13 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 6 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2676:6: ( () otherlv_24= KEYWORD_74 otherlv_25= KEYWORD_4 ( (lv_value_26_0= ruleConditionalOrExpression ) ) otherlv_27= KEYWORD_5 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3100:6: ( () otherlv_24= KEYWORD_79 otherlv_25= KEYWORD_4 ( (lv_value_26_0= ruleConditionalOrExpression ) ) otherlv_27= KEYWORD_5 )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2676:6: ( () otherlv_24= KEYWORD_74 otherlv_25= KEYWORD_4 ( (lv_value_26_0= ruleConditionalOrExpression ) ) otherlv_27= KEYWORD_5 )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2676:7: () otherlv_24= KEYWORD_74 otherlv_25= KEYWORD_4 ( (lv_value_26_0= ruleConditionalOrExpression ) ) otherlv_27= KEYWORD_5
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3100:6: ( () otherlv_24= KEYWORD_79 otherlv_25= KEYWORD_4 ( (lv_value_26_0= ruleConditionalOrExpression ) ) otherlv_27= KEYWORD_5 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3100:7: () otherlv_24= KEYWORD_79 otherlv_25= KEYWORD_4 ( (lv_value_26_0= ruleConditionalOrExpression ) ) otherlv_27= KEYWORD_5
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2676:7: ()
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2677:2: 
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3100:7: ()
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3101:2: 
                     {
                     if ( state.backtracking==0 ) {
                        
@@ -7517,30 +8413,30 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_24=(Token)match(input,KEYWORD_74,FOLLOW_KEYWORD_74_in_ruleMethodExpression5544); if (state.failed) return current;
+                    otherlv_24=(Token)match(input,KEYWORD_79,FOLLOW_KEYWORD_79_in_ruleMethodExpression6284); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_24, grammarAccess.getMethodExpressionAccess().getContainsValueKeyword_5_1());
                           
                     }
-                    otherlv_25=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression5556); if (state.failed) return current;
+                    otherlv_25=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression6296); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_25, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_5_2());
                           
                     }
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2695:1: ( (lv_value_26_0= ruleConditionalOrExpression ) )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2696:1: (lv_value_26_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3119:1: ( (lv_value_26_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3120:1: (lv_value_26_0= ruleConditionalOrExpression )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2696:1: (lv_value_26_0= ruleConditionalOrExpression )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2697:3: lv_value_26_0= ruleConditionalOrExpression
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3120:1: (lv_value_26_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3121:3: lv_value_26_0= ruleConditionalOrExpression
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getValueConditionalOrExpressionParserRuleCall_5_3_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression5576);
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression6316);
                     lv_value_26_0=ruleConditionalOrExpression();
 
                     state._fsp--;
@@ -7564,7 +8460,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_27=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression5589); if (state.failed) return current;
+                    otherlv_27=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression6329); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_27, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_5_4());
@@ -7577,13 +8473,13 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 7 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2719:6: ( () otherlv_29= KEYWORD_70 otherlv_30= KEYWORD_4 ( (lv_string_31_0= ruleConditionalOrExpression ) ) otherlv_32= KEYWORD_5 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3143:6: ( () otherlv_29= KEYWORD_75 otherlv_30= KEYWORD_4 ( (lv_string_31_0= ruleConditionalOrExpression ) ) otherlv_32= KEYWORD_5 )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2719:6: ( () otherlv_29= KEYWORD_70 otherlv_30= KEYWORD_4 ( (lv_string_31_0= ruleConditionalOrExpression ) ) otherlv_32= KEYWORD_5 )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2719:7: () otherlv_29= KEYWORD_70 otherlv_30= KEYWORD_4 ( (lv_string_31_0= ruleConditionalOrExpression ) ) otherlv_32= KEYWORD_5
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3143:6: ( () otherlv_29= KEYWORD_75 otherlv_30= KEYWORD_4 ( (lv_string_31_0= ruleConditionalOrExpression ) ) otherlv_32= KEYWORD_5 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3143:7: () otherlv_29= KEYWORD_75 otherlv_30= KEYWORD_4 ( (lv_string_31_0= ruleConditionalOrExpression ) ) otherlv_32= KEYWORD_5
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2719:7: ()
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2720:2: 
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3143:7: ()
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3144:2: 
                     {
                     if ( state.backtracking==0 ) {
                        
@@ -7600,30 +8496,30 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_29=(Token)match(input,KEYWORD_70,FOLLOW_KEYWORD_70_in_ruleMethodExpression5621); if (state.failed) return current;
+                    otherlv_29=(Token)match(input,KEYWORD_75,FOLLOW_KEYWORD_75_in_ruleMethodExpression6361); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_29, grammarAccess.getMethodExpressionAccess().getStartsWithKeyword_6_1());
                           
                     }
-                    otherlv_30=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression5633); if (state.failed) return current;
+                    otherlv_30=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression6373); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_30, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_6_2());
                           
                     }
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2738:1: ( (lv_string_31_0= ruleConditionalOrExpression ) )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2739:1: (lv_string_31_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3162:1: ( (lv_string_31_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3163:1: (lv_string_31_0= ruleConditionalOrExpression )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2739:1: (lv_string_31_0= ruleConditionalOrExpression )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2740:3: lv_string_31_0= ruleConditionalOrExpression
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3163:1: (lv_string_31_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3164:3: lv_string_31_0= ruleConditionalOrExpression
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getStringConditionalOrExpressionParserRuleCall_6_3_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression5653);
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression6393);
                     lv_string_31_0=ruleConditionalOrExpression();
 
                     state._fsp--;
@@ -7647,7 +8543,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_32=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression5666); if (state.failed) return current;
+                    otherlv_32=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression6406); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_32, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_6_4());
@@ -7660,13 +8556,13 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 8 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2762:6: ( () otherlv_34= KEYWORD_59 otherlv_35= KEYWORD_4 ( (lv_string_36_0= ruleConditionalOrExpression ) ) otherlv_37= KEYWORD_5 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3186:6: ( () otherlv_34= KEYWORD_66 otherlv_35= KEYWORD_4 ( (lv_string_36_0= ruleConditionalOrExpression ) ) otherlv_37= KEYWORD_5 )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2762:6: ( () otherlv_34= KEYWORD_59 otherlv_35= KEYWORD_4 ( (lv_string_36_0= ruleConditionalOrExpression ) ) otherlv_37= KEYWORD_5 )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2762:7: () otherlv_34= KEYWORD_59 otherlv_35= KEYWORD_4 ( (lv_string_36_0= ruleConditionalOrExpression ) ) otherlv_37= KEYWORD_5
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3186:6: ( () otherlv_34= KEYWORD_66 otherlv_35= KEYWORD_4 ( (lv_string_36_0= ruleConditionalOrExpression ) ) otherlv_37= KEYWORD_5 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3186:7: () otherlv_34= KEYWORD_66 otherlv_35= KEYWORD_4 ( (lv_string_36_0= ruleConditionalOrExpression ) ) otherlv_37= KEYWORD_5
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2762:7: ()
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2763:2: 
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3186:7: ()
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3187:2: 
                     {
                     if ( state.backtracking==0 ) {
                        
@@ -7683,30 +8579,30 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_34=(Token)match(input,KEYWORD_59,FOLLOW_KEYWORD_59_in_ruleMethodExpression5698); if (state.failed) return current;
+                    otherlv_34=(Token)match(input,KEYWORD_66,FOLLOW_KEYWORD_66_in_ruleMethodExpression6438); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_34, grammarAccess.getMethodExpressionAccess().getEndsWithKeyword_7_1());
                           
                     }
-                    otherlv_35=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression5710); if (state.failed) return current;
+                    otherlv_35=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression6450); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_35, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_7_2());
                           
                     }
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2781:1: ( (lv_string_36_0= ruleConditionalOrExpression ) )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2782:1: (lv_string_36_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3205:1: ( (lv_string_36_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3206:1: (lv_string_36_0= ruleConditionalOrExpression )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2782:1: (lv_string_36_0= ruleConditionalOrExpression )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2783:3: lv_string_36_0= ruleConditionalOrExpression
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3206:1: (lv_string_36_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3207:3: lv_string_36_0= ruleConditionalOrExpression
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getStringConditionalOrExpressionParserRuleCall_7_3_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression5730);
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression6470);
                     lv_string_36_0=ruleConditionalOrExpression();
 
                     state._fsp--;
@@ -7730,7 +8626,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_37=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression5743); if (state.failed) return current;
+                    otherlv_37=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression6483); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_37, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_7_4());
@@ -7743,13 +8639,13 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 9 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2805:6: ( () otherlv_39= KEYWORD_55 otherlv_40= KEYWORD_4 ( (lv_regex_41_0= ruleConditionalOrExpression ) ) otherlv_42= KEYWORD_5 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3229:6: ( () otherlv_39= KEYWORD_62 otherlv_40= KEYWORD_4 ( (lv_regex_41_0= ruleConditionalOrExpression ) ) otherlv_42= KEYWORD_5 )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2805:6: ( () otherlv_39= KEYWORD_55 otherlv_40= KEYWORD_4 ( (lv_regex_41_0= ruleConditionalOrExpression ) ) otherlv_42= KEYWORD_5 )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2805:7: () otherlv_39= KEYWORD_55 otherlv_40= KEYWORD_4 ( (lv_regex_41_0= ruleConditionalOrExpression ) ) otherlv_42= KEYWORD_5
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3229:6: ( () otherlv_39= KEYWORD_62 otherlv_40= KEYWORD_4 ( (lv_regex_41_0= ruleConditionalOrExpression ) ) otherlv_42= KEYWORD_5 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3229:7: () otherlv_39= KEYWORD_62 otherlv_40= KEYWORD_4 ( (lv_regex_41_0= ruleConditionalOrExpression ) ) otherlv_42= KEYWORD_5
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2805:7: ()
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2806:2: 
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3229:7: ()
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3230:2: 
                     {
                     if ( state.backtracking==0 ) {
                        
@@ -7766,30 +8662,30 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_39=(Token)match(input,KEYWORD_55,FOLLOW_KEYWORD_55_in_ruleMethodExpression5775); if (state.failed) return current;
+                    otherlv_39=(Token)match(input,KEYWORD_62,FOLLOW_KEYWORD_62_in_ruleMethodExpression6515); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_39, grammarAccess.getMethodExpressionAccess().getMatchesKeyword_8_1());
                           
                     }
-                    otherlv_40=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression5787); if (state.failed) return current;
+                    otherlv_40=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression6527); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_40, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_8_2());
                           
                     }
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2824:1: ( (lv_regex_41_0= ruleConditionalOrExpression ) )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2825:1: (lv_regex_41_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3248:1: ( (lv_regex_41_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3249:1: (lv_regex_41_0= ruleConditionalOrExpression )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2825:1: (lv_regex_41_0= ruleConditionalOrExpression )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2826:3: lv_regex_41_0= ruleConditionalOrExpression
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3249:1: (lv_regex_41_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3250:3: lv_regex_41_0= ruleConditionalOrExpression
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getRegexConditionalOrExpressionParserRuleCall_8_3_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression5807);
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression6547);
                     lv_regex_41_0=ruleConditionalOrExpression();
 
                     state._fsp--;
@@ -7813,7 +8709,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_42=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression5820); if (state.failed) return current;
+                    otherlv_42=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression6560); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_42, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_8_4());
@@ -7826,13 +8722,13 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 10 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2848:6: ( () otherlv_44= KEYWORD_72 otherlv_45= KEYWORD_4 otherlv_46= KEYWORD_5 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3272:6: ( () otherlv_44= KEYWORD_77 otherlv_45= KEYWORD_4 otherlv_46= KEYWORD_5 )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2848:6: ( () otherlv_44= KEYWORD_72 otherlv_45= KEYWORD_4 otherlv_46= KEYWORD_5 )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2848:7: () otherlv_44= KEYWORD_72 otherlv_45= KEYWORD_4 otherlv_46= KEYWORD_5
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3272:6: ( () otherlv_44= KEYWORD_77 otherlv_45= KEYWORD_4 otherlv_46= KEYWORD_5 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3272:7: () otherlv_44= KEYWORD_77 otherlv_45= KEYWORD_4 otherlv_46= KEYWORD_5
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2848:7: ()
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2849:2: 
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3272:7: ()
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3273:2: 
                     {
                     if ( state.backtracking==0 ) {
                        
@@ -7849,19 +8745,19 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_44=(Token)match(input,KEYWORD_72,FOLLOW_KEYWORD_72_in_ruleMethodExpression5852); if (state.failed) return current;
+                    otherlv_44=(Token)match(input,KEYWORD_77,FOLLOW_KEYWORD_77_in_ruleMethodExpression6592); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_44, grammarAccess.getMethodExpressionAccess().getToLowerCaseKeyword_9_1());
                           
                     }
-                    otherlv_45=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression5864); if (state.failed) return current;
+                    otherlv_45=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression6604); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_45, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_9_2());
                           
                     }
-                    otherlv_46=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression5876); if (state.failed) return current;
+                    otherlv_46=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression6616); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_46, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_9_3());
@@ -7874,13 +8770,13 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 11 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2873:6: ( () otherlv_48= KEYWORD_73 otherlv_49= KEYWORD_4 otherlv_50= KEYWORD_5 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3297:6: ( () otherlv_48= KEYWORD_78 otherlv_49= KEYWORD_4 otherlv_50= KEYWORD_5 )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2873:6: ( () otherlv_48= KEYWORD_73 otherlv_49= KEYWORD_4 otherlv_50= KEYWORD_5 )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2873:7: () otherlv_48= KEYWORD_73 otherlv_49= KEYWORD_4 otherlv_50= KEYWORD_5
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3297:6: ( () otherlv_48= KEYWORD_78 otherlv_49= KEYWORD_4 otherlv_50= KEYWORD_5 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3297:7: () otherlv_48= KEYWORD_78 otherlv_49= KEYWORD_4 otherlv_50= KEYWORD_5
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2873:7: ()
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2874:2: 
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3297:7: ()
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3298:2: 
                     {
                     if ( state.backtracking==0 ) {
                        
@@ -7897,19 +8793,19 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_48=(Token)match(input,KEYWORD_73,FOLLOW_KEYWORD_73_in_ruleMethodExpression5908); if (state.failed) return current;
+                    otherlv_48=(Token)match(input,KEYWORD_78,FOLLOW_KEYWORD_78_in_ruleMethodExpression6648); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_48, grammarAccess.getMethodExpressionAccess().getToUpperCaseKeyword_10_1());
                           
                     }
-                    otherlv_49=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression5920); if (state.failed) return current;
+                    otherlv_49=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression6660); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_49, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_10_2());
                           
                     }
-                    otherlv_50=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression5932); if (state.failed) return current;
+                    otherlv_50=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression6672); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_50, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_10_3());
@@ -7922,13 +8818,13 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 12 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2898:6: ( () otherlv_52= KEYWORD_53 otherlv_53= KEYWORD_4 ( (lv_string_54_0= ruleConditionalOrExpression ) ) (otherlv_55= KEYWORD_8 ( (lv_fromIndex_56_0= ruleConditionalOrExpression ) ) )? otherlv_57= KEYWORD_5 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3322:6: ( () otherlv_52= KEYWORD_60 otherlv_53= KEYWORD_4 ( (lv_string_54_0= ruleConditionalOrExpression ) ) (otherlv_55= KEYWORD_8 ( (lv_fromIndex_56_0= ruleConditionalOrExpression ) ) )? otherlv_57= KEYWORD_5 )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2898:6: ( () otherlv_52= KEYWORD_53 otherlv_53= KEYWORD_4 ( (lv_string_54_0= ruleConditionalOrExpression ) ) (otherlv_55= KEYWORD_8 ( (lv_fromIndex_56_0= ruleConditionalOrExpression ) ) )? otherlv_57= KEYWORD_5 )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2898:7: () otherlv_52= KEYWORD_53 otherlv_53= KEYWORD_4 ( (lv_string_54_0= ruleConditionalOrExpression ) ) (otherlv_55= KEYWORD_8 ( (lv_fromIndex_56_0= ruleConditionalOrExpression ) ) )? otherlv_57= KEYWORD_5
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3322:6: ( () otherlv_52= KEYWORD_60 otherlv_53= KEYWORD_4 ( (lv_string_54_0= ruleConditionalOrExpression ) ) (otherlv_55= KEYWORD_8 ( (lv_fromIndex_56_0= ruleConditionalOrExpression ) ) )? otherlv_57= KEYWORD_5 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3322:7: () otherlv_52= KEYWORD_60 otherlv_53= KEYWORD_4 ( (lv_string_54_0= ruleConditionalOrExpression ) ) (otherlv_55= KEYWORD_8 ( (lv_fromIndex_56_0= ruleConditionalOrExpression ) ) )? otherlv_57= KEYWORD_5
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2898:7: ()
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2899:2: 
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3322:7: ()
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3323:2: 
                     {
                     if ( state.backtracking==0 ) {
                        
@@ -7945,30 +8841,30 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_52=(Token)match(input,KEYWORD_53,FOLLOW_KEYWORD_53_in_ruleMethodExpression5964); if (state.failed) return current;
+                    otherlv_52=(Token)match(input,KEYWORD_60,FOLLOW_KEYWORD_60_in_ruleMethodExpression6704); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_52, grammarAccess.getMethodExpressionAccess().getIndexOfKeyword_11_1());
                           
                     }
-                    otherlv_53=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression5976); if (state.failed) return current;
+                    otherlv_53=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression6716); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_53, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_11_2());
                           
                     }
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2917:1: ( (lv_string_54_0= ruleConditionalOrExpression ) )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2918:1: (lv_string_54_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3341:1: ( (lv_string_54_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3342:1: (lv_string_54_0= ruleConditionalOrExpression )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2918:1: (lv_string_54_0= ruleConditionalOrExpression )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2919:3: lv_string_54_0= ruleConditionalOrExpression
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3342:1: (lv_string_54_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3343:3: lv_string_54_0= ruleConditionalOrExpression
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getStringConditionalOrExpressionParserRuleCall_11_3_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression5996);
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression6736);
                     lv_string_54_0=ruleConditionalOrExpression();
 
                     state._fsp--;
@@ -7992,35 +8888,35 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2935:2: (otherlv_55= KEYWORD_8 ( (lv_fromIndex_56_0= ruleConditionalOrExpression ) ) )?
-                    int alt42=2;
-                    int LA42_0 = input.LA(1);
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3359:2: (otherlv_55= KEYWORD_8 ( (lv_fromIndex_56_0= ruleConditionalOrExpression ) ) )?
+                    int alt43=2;
+                    int LA43_0 = input.LA(1);
 
-                    if ( (LA42_0==KEYWORD_8) ) {
-                        alt42=1;
+                    if ( (LA43_0==KEYWORD_8) ) {
+                        alt43=1;
                     }
-                    switch (alt42) {
+                    switch (alt43) {
                         case 1 :
-                            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2936:2: otherlv_55= KEYWORD_8 ( (lv_fromIndex_56_0= ruleConditionalOrExpression ) )
+                            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3360:2: otherlv_55= KEYWORD_8 ( (lv_fromIndex_56_0= ruleConditionalOrExpression ) )
                             {
-                            otherlv_55=(Token)match(input,KEYWORD_8,FOLLOW_KEYWORD_8_in_ruleMethodExpression6010); if (state.failed) return current;
+                            otherlv_55=(Token)match(input,KEYWORD_8,FOLLOW_KEYWORD_8_in_ruleMethodExpression6750); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                                   	newLeafNode(otherlv_55, grammarAccess.getMethodExpressionAccess().getCommaKeyword_11_4_0());
                                   
                             }
-                            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2940:1: ( (lv_fromIndex_56_0= ruleConditionalOrExpression ) )
-                            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2941:1: (lv_fromIndex_56_0= ruleConditionalOrExpression )
+                            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3364:1: ( (lv_fromIndex_56_0= ruleConditionalOrExpression ) )
+                            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3365:1: (lv_fromIndex_56_0= ruleConditionalOrExpression )
                             {
-                            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2941:1: (lv_fromIndex_56_0= ruleConditionalOrExpression )
-                            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2942:3: lv_fromIndex_56_0= ruleConditionalOrExpression
+                            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3365:1: (lv_fromIndex_56_0= ruleConditionalOrExpression )
+                            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3366:3: lv_fromIndex_56_0= ruleConditionalOrExpression
                             {
                             if ( state.backtracking==0 ) {
                                
                               	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getFromIndexConditionalOrExpressionParserRuleCall_11_4_1_0()); 
                               	    
                             }
-                            pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression6030);
+                            pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression6770);
                             lv_fromIndex_56_0=ruleConditionalOrExpression();
 
                             state._fsp--;
@@ -8050,7 +8946,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_57=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression6045); if (state.failed) return current;
+                    otherlv_57=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression6785); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_57, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_11_5());
@@ -8063,13 +8959,13 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 13 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2964:6: ( () otherlv_59= KEYWORD_63 otherlv_60= KEYWORD_4 ( (lv_beginIndex_61_0= ruleConditionalOrExpression ) ) (otherlv_62= KEYWORD_8 ( (lv_endIndex_63_0= ruleConditionalOrExpression ) ) )? otherlv_64= KEYWORD_5 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3388:6: ( () otherlv_59= KEYWORD_70 otherlv_60= KEYWORD_4 ( (lv_beginIndex_61_0= ruleConditionalOrExpression ) ) (otherlv_62= KEYWORD_8 ( (lv_endIndex_63_0= ruleConditionalOrExpression ) ) )? otherlv_64= KEYWORD_5 )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2964:6: ( () otherlv_59= KEYWORD_63 otherlv_60= KEYWORD_4 ( (lv_beginIndex_61_0= ruleConditionalOrExpression ) ) (otherlv_62= KEYWORD_8 ( (lv_endIndex_63_0= ruleConditionalOrExpression ) ) )? otherlv_64= KEYWORD_5 )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2964:7: () otherlv_59= KEYWORD_63 otherlv_60= KEYWORD_4 ( (lv_beginIndex_61_0= ruleConditionalOrExpression ) ) (otherlv_62= KEYWORD_8 ( (lv_endIndex_63_0= ruleConditionalOrExpression ) ) )? otherlv_64= KEYWORD_5
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3388:6: ( () otherlv_59= KEYWORD_70 otherlv_60= KEYWORD_4 ( (lv_beginIndex_61_0= ruleConditionalOrExpression ) ) (otherlv_62= KEYWORD_8 ( (lv_endIndex_63_0= ruleConditionalOrExpression ) ) )? otherlv_64= KEYWORD_5 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3388:7: () otherlv_59= KEYWORD_70 otherlv_60= KEYWORD_4 ( (lv_beginIndex_61_0= ruleConditionalOrExpression ) ) (otherlv_62= KEYWORD_8 ( (lv_endIndex_63_0= ruleConditionalOrExpression ) ) )? otherlv_64= KEYWORD_5
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2964:7: ()
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2965:2: 
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3388:7: ()
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3389:2: 
                     {
                     if ( state.backtracking==0 ) {
                        
@@ -8086,30 +8982,30 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_59=(Token)match(input,KEYWORD_63,FOLLOW_KEYWORD_63_in_ruleMethodExpression6077); if (state.failed) return current;
+                    otherlv_59=(Token)match(input,KEYWORD_70,FOLLOW_KEYWORD_70_in_ruleMethodExpression6817); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_59, grammarAccess.getMethodExpressionAccess().getSubstringKeyword_12_1());
                           
                     }
-                    otherlv_60=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression6089); if (state.failed) return current;
+                    otherlv_60=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression6829); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_60, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_12_2());
                           
                     }
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2983:1: ( (lv_beginIndex_61_0= ruleConditionalOrExpression ) )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2984:1: (lv_beginIndex_61_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3407:1: ( (lv_beginIndex_61_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3408:1: (lv_beginIndex_61_0= ruleConditionalOrExpression )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2984:1: (lv_beginIndex_61_0= ruleConditionalOrExpression )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2985:3: lv_beginIndex_61_0= ruleConditionalOrExpression
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3408:1: (lv_beginIndex_61_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3409:3: lv_beginIndex_61_0= ruleConditionalOrExpression
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getBeginIndexConditionalOrExpressionParserRuleCall_12_3_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression6109);
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression6849);
                     lv_beginIndex_61_0=ruleConditionalOrExpression();
 
                     state._fsp--;
@@ -8133,35 +9029,35 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3001:2: (otherlv_62= KEYWORD_8 ( (lv_endIndex_63_0= ruleConditionalOrExpression ) ) )?
-                    int alt43=2;
-                    int LA43_0 = input.LA(1);
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3425:2: (otherlv_62= KEYWORD_8 ( (lv_endIndex_63_0= ruleConditionalOrExpression ) ) )?
+                    int alt44=2;
+                    int LA44_0 = input.LA(1);
 
-                    if ( (LA43_0==KEYWORD_8) ) {
-                        alt43=1;
+                    if ( (LA44_0==KEYWORD_8) ) {
+                        alt44=1;
                     }
-                    switch (alt43) {
+                    switch (alt44) {
                         case 1 :
-                            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3002:2: otherlv_62= KEYWORD_8 ( (lv_endIndex_63_0= ruleConditionalOrExpression ) )
+                            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3426:2: otherlv_62= KEYWORD_8 ( (lv_endIndex_63_0= ruleConditionalOrExpression ) )
                             {
-                            otherlv_62=(Token)match(input,KEYWORD_8,FOLLOW_KEYWORD_8_in_ruleMethodExpression6123); if (state.failed) return current;
+                            otherlv_62=(Token)match(input,KEYWORD_8,FOLLOW_KEYWORD_8_in_ruleMethodExpression6863); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                                   	newLeafNode(otherlv_62, grammarAccess.getMethodExpressionAccess().getCommaKeyword_12_4_0());
                                   
                             }
-                            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3006:1: ( (lv_endIndex_63_0= ruleConditionalOrExpression ) )
-                            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3007:1: (lv_endIndex_63_0= ruleConditionalOrExpression )
+                            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3430:1: ( (lv_endIndex_63_0= ruleConditionalOrExpression ) )
+                            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3431:1: (lv_endIndex_63_0= ruleConditionalOrExpression )
                             {
-                            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3007:1: (lv_endIndex_63_0= ruleConditionalOrExpression )
-                            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3008:3: lv_endIndex_63_0= ruleConditionalOrExpression
+                            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3431:1: (lv_endIndex_63_0= ruleConditionalOrExpression )
+                            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3432:3: lv_endIndex_63_0= ruleConditionalOrExpression
                             {
                             if ( state.backtracking==0 ) {
                                
                               	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getEndIndexConditionalOrExpressionParserRuleCall_12_4_1_0()); 
                               	    
                             }
-                            pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression6143);
+                            pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression6883);
                             lv_endIndex_63_0=ruleConditionalOrExpression();
 
                             state._fsp--;
@@ -8191,7 +9087,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_64=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression6158); if (state.failed) return current;
+                    otherlv_64=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression6898); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_64, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_12_5());
@@ -8226,7 +9122,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleParenthesesExpression"
-    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3037:1: entryRuleParenthesesExpression returns [EObject current=null] : iv_ruleParenthesesExpression= ruleParenthesesExpression EOF ;
+    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3461:1: entryRuleParenthesesExpression returns [EObject current=null] : iv_ruleParenthesesExpression= ruleParenthesesExpression EOF ;
     public final EObject entryRuleParenthesesExpression() throws RecognitionException {
         EObject current = null;
 
@@ -8234,13 +9130,13 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3038:2: (iv_ruleParenthesesExpression= ruleParenthesesExpression EOF )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3039:2: iv_ruleParenthesesExpression= ruleParenthesesExpression EOF
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3462:2: (iv_ruleParenthesesExpression= ruleParenthesesExpression EOF )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3463:2: iv_ruleParenthesesExpression= ruleParenthesesExpression EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getParenthesesExpressionRule()); 
             }
-            pushFollow(FOLLOW_ruleParenthesesExpression_in_entryRuleParenthesesExpression6193);
+            pushFollow(FOLLOW_ruleParenthesesExpression_in_entryRuleParenthesesExpression6933);
             iv_ruleParenthesesExpression=ruleParenthesesExpression();
 
             state._fsp--;
@@ -8248,7 +9144,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleParenthesesExpression; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleParenthesesExpression6203); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleParenthesesExpression6943); if (state.failed) return current;
 
             }
 
@@ -8266,7 +9162,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleParenthesesExpression"
-    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3046:1: ruleParenthesesExpression returns [EObject current=null] : (otherlv_0= KEYWORD_4 this_ConditionalOrExpression_1= ruleConditionalOrExpression otherlv_2= KEYWORD_5 ) ;
+    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3470:1: ruleParenthesesExpression returns [EObject current=null] : (otherlv_0= KEYWORD_4 this_ConditionalOrExpression_1= ruleConditionalOrExpression otherlv_2= KEYWORD_5 ) ;
     public final EObject ruleParenthesesExpression() throws RecognitionException {
         EObject current = null;
 
@@ -8278,13 +9174,13 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3049:28: ( (otherlv_0= KEYWORD_4 this_ConditionalOrExpression_1= ruleConditionalOrExpression otherlv_2= KEYWORD_5 ) )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3050:1: (otherlv_0= KEYWORD_4 this_ConditionalOrExpression_1= ruleConditionalOrExpression otherlv_2= KEYWORD_5 )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3473:28: ( (otherlv_0= KEYWORD_4 this_ConditionalOrExpression_1= ruleConditionalOrExpression otherlv_2= KEYWORD_5 ) )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3474:1: (otherlv_0= KEYWORD_4 this_ConditionalOrExpression_1= ruleConditionalOrExpression otherlv_2= KEYWORD_5 )
             {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3050:1: (otherlv_0= KEYWORD_4 this_ConditionalOrExpression_1= ruleConditionalOrExpression otherlv_2= KEYWORD_5 )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3051:2: otherlv_0= KEYWORD_4 this_ConditionalOrExpression_1= ruleConditionalOrExpression otherlv_2= KEYWORD_5
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3474:1: (otherlv_0= KEYWORD_4 this_ConditionalOrExpression_1= ruleConditionalOrExpression otherlv_2= KEYWORD_5 )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3475:2: otherlv_0= KEYWORD_4 this_ConditionalOrExpression_1= ruleConditionalOrExpression otherlv_2= KEYWORD_5
             {
-            otherlv_0=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleParenthesesExpression6241); if (state.failed) return current;
+            otherlv_0=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleParenthesesExpression6981); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_0, grammarAccess.getParenthesesExpressionAccess().getLeftParenthesisKeyword_0());
@@ -8300,7 +9196,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                       newCompositeNode(grammarAccess.getParenthesesExpressionAccess().getConditionalOrExpressionParserRuleCall_1()); 
                   
             }
-            pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleParenthesesExpression6265);
+            pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleParenthesesExpression7005);
             this_ConditionalOrExpression_1=ruleConditionalOrExpression();
 
             state._fsp--;
@@ -8311,7 +9207,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                       afterParserOrEnumRuleCall();
                   
             }
-            otherlv_2=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleParenthesesExpression6277); if (state.failed) return current;
+            otherlv_2=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleParenthesesExpression7017); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_2, grammarAccess.getParenthesesExpressionAccess().getRightParenthesisKeyword_2());
@@ -8340,7 +9236,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleType"
-    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3082:1: entryRuleType returns [String current=null] : iv_ruleType= ruleType EOF ;
+    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3504:1: entryRuleType returns [String current=null] : iv_ruleType= ruleType EOF ;
     public final String entryRuleType() throws RecognitionException {
         String current = null;
 
@@ -8348,13 +9244,13 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3083:1: (iv_ruleType= ruleType EOF )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3084:2: iv_ruleType= ruleType EOF
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3505:1: (iv_ruleType= ruleType EOF )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3506:2: iv_ruleType= ruleType EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getTypeRule()); 
             }
-            pushFollow(FOLLOW_ruleType_in_entryRuleType6314);
+            pushFollow(FOLLOW_ruleType_in_entryRuleType7052);
             iv_ruleType=ruleType();
 
             state._fsp--;
@@ -8362,7 +9258,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleType.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleType6325); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleType7063); if (state.failed) return current;
 
             }
 
@@ -8380,7 +9276,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleType"
-    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3091:1: ruleType returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_PrimitiveType_0= rulePrimitiveType | this_ClassOrInterfaceName_1= ruleClassOrInterfaceName ) ;
+    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3513:1: ruleType returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_PrimitiveType_0= rulePrimitiveType | this_ClassOrInterfaceName_1= ruleClassOrInterfaceName ) ;
     public final AntlrDatatypeRuleToken ruleType() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -8392,36 +9288,36 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3095:6: ( (this_PrimitiveType_0= rulePrimitiveType | this_ClassOrInterfaceName_1= ruleClassOrInterfaceName ) )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3096:1: (this_PrimitiveType_0= rulePrimitiveType | this_ClassOrInterfaceName_1= ruleClassOrInterfaceName )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3517:6: ( (this_PrimitiveType_0= rulePrimitiveType | this_ClassOrInterfaceName_1= ruleClassOrInterfaceName ) )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3518:1: (this_PrimitiveType_0= rulePrimitiveType | this_ClassOrInterfaceName_1= ruleClassOrInterfaceName )
             {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3096:1: (this_PrimitiveType_0= rulePrimitiveType | this_ClassOrInterfaceName_1= ruleClassOrInterfaceName )
-            int alt45=2;
-            int LA45_0 = input.LA(1);
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3518:1: (this_PrimitiveType_0= rulePrimitiveType | this_ClassOrInterfaceName_1= ruleClassOrInterfaceName )
+            int alt46=2;
+            int LA46_0 = input.LA(1);
 
-            if ( (LA45_0==KEYWORD_52||LA45_0==KEYWORD_49||(LA45_0>=KEYWORD_44 && LA45_0<=KEYWORD_45)||(LA45_0>=KEYWORD_32 && LA45_0<=KEYWORD_34)||LA45_0==KEYWORD_28) ) {
-                alt45=1;
+            if ( (LA46_0==KEYWORD_59||LA46_0==KEYWORD_55||LA46_0==KEYWORD_49||LA46_0==KEYWORD_51||(LA46_0>=KEYWORD_36 && LA46_0<=KEYWORD_38)||LA46_0==KEYWORD_29) ) {
+                alt46=1;
             }
-            else if ( (LA45_0==RULE_ID) ) {
-                alt45=2;
+            else if ( (LA46_0==KEYWORD_89||(LA46_0>=KEYWORD_86 && LA46_0<=KEYWORD_81)||LA46_0==KEYWORD_57||LA46_0==KEYWORD_50||LA46_0==RULE_ID) ) {
+                alt46=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 45, 0, input);
+                    new NoViableAltException("", 46, 0, input);
 
                 throw nvae;
             }
-            switch (alt45) {
+            switch (alt46) {
                 case 1 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3097:5: this_PrimitiveType_0= rulePrimitiveType
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3519:5: this_PrimitiveType_0= rulePrimitiveType
                     {
                     if ( state.backtracking==0 ) {
                        
                               newCompositeNode(grammarAccess.getTypeAccess().getPrimitiveTypeParserRuleCall_0()); 
                           
                     }
-                    pushFollow(FOLLOW_rulePrimitiveType_in_ruleType6372);
+                    pushFollow(FOLLOW_rulePrimitiveType_in_ruleType7110);
                     this_PrimitiveType_0=rulePrimitiveType();
 
                     state._fsp--;
@@ -8440,14 +9336,14 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3109:5: this_ClassOrInterfaceName_1= ruleClassOrInterfaceName
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3531:5: this_ClassOrInterfaceName_1= ruleClassOrInterfaceName
                     {
                     if ( state.backtracking==0 ) {
                        
                               newCompositeNode(grammarAccess.getTypeAccess().getClassOrInterfaceNameParserRuleCall_1()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleClassOrInterfaceName_in_ruleType6405);
+                    pushFollow(FOLLOW_ruleClassOrInterfaceName_in_ruleType7143);
                     this_ClassOrInterfaceName_1=ruleClassOrInterfaceName();
 
                     state._fsp--;
@@ -8489,7 +9385,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRulePrimitiveType"
-    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3127:1: entryRulePrimitiveType returns [String current=null] : iv_rulePrimitiveType= rulePrimitiveType EOF ;
+    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3549:1: entryRulePrimitiveType returns [String current=null] : iv_rulePrimitiveType= rulePrimitiveType EOF ;
     public final String entryRulePrimitiveType() throws RecognitionException {
         String current = null;
 
@@ -8497,13 +9393,13 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3128:1: (iv_rulePrimitiveType= rulePrimitiveType EOF )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3129:2: iv_rulePrimitiveType= rulePrimitiveType EOF
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3550:1: (iv_rulePrimitiveType= rulePrimitiveType EOF )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3551:2: iv_rulePrimitiveType= rulePrimitiveType EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getPrimitiveTypeRule()); 
             }
-            pushFollow(FOLLOW_rulePrimitiveType_in_entryRulePrimitiveType6450);
+            pushFollow(FOLLOW_rulePrimitiveType_in_entryRulePrimitiveType7188);
             iv_rulePrimitiveType=rulePrimitiveType();
 
             state._fsp--;
@@ -8511,7 +9407,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_rulePrimitiveType.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRulePrimitiveType6461); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRulePrimitiveType7199); if (state.failed) return current;
 
             }
 
@@ -8529,7 +9425,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "rulePrimitiveType"
-    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3136:1: rulePrimitiveType returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_NumericType_0= ruleNumericType | kw= KEYWORD_52 ) ;
+    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3558:1: rulePrimitiveType returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_NumericType_0= ruleNumericType | kw= KEYWORD_59 ) ;
     public final AntlrDatatypeRuleToken rulePrimitiveType() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -8540,36 +9436,36 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3140:6: ( (this_NumericType_0= ruleNumericType | kw= KEYWORD_52 ) )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3141:1: (this_NumericType_0= ruleNumericType | kw= KEYWORD_52 )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3562:6: ( (this_NumericType_0= ruleNumericType | kw= KEYWORD_59 ) )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3563:1: (this_NumericType_0= ruleNumericType | kw= KEYWORD_59 )
             {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3141:1: (this_NumericType_0= ruleNumericType | kw= KEYWORD_52 )
-            int alt46=2;
-            int LA46_0 = input.LA(1);
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3563:1: (this_NumericType_0= ruleNumericType | kw= KEYWORD_59 )
+            int alt47=2;
+            int LA47_0 = input.LA(1);
 
-            if ( (LA46_0==KEYWORD_49||(LA46_0>=KEYWORD_44 && LA46_0<=KEYWORD_45)||(LA46_0>=KEYWORD_32 && LA46_0<=KEYWORD_34)||LA46_0==KEYWORD_28) ) {
-                alt46=1;
+            if ( (LA47_0==KEYWORD_55||LA47_0==KEYWORD_49||LA47_0==KEYWORD_51||(LA47_0>=KEYWORD_36 && LA47_0<=KEYWORD_38)||LA47_0==KEYWORD_29) ) {
+                alt47=1;
             }
-            else if ( (LA46_0==KEYWORD_52) ) {
-                alt46=2;
+            else if ( (LA47_0==KEYWORD_59) ) {
+                alt47=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 46, 0, input);
+                    new NoViableAltException("", 47, 0, input);
 
                 throw nvae;
             }
-            switch (alt46) {
+            switch (alt47) {
                 case 1 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3142:5: this_NumericType_0= ruleNumericType
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3564:5: this_NumericType_0= ruleNumericType
                     {
                     if ( state.backtracking==0 ) {
                        
                               newCompositeNode(grammarAccess.getPrimitiveTypeAccess().getNumericTypeParserRuleCall_0()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleNumericType_in_rulePrimitiveType6508);
+                    pushFollow(FOLLOW_ruleNumericType_in_rulePrimitiveType7246);
                     this_NumericType_0=ruleNumericType();
 
                     state._fsp--;
@@ -8588,9 +9484,9 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3154:2: kw= KEYWORD_52
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3576:2: kw= KEYWORD_59
                     {
-                    kw=(Token)match(input,KEYWORD_52,FOLLOW_KEYWORD_52_in_rulePrimitiveType6532); if (state.failed) return current;
+                    kw=(Token)match(input,KEYWORD_59,FOLLOW_KEYWORD_59_in_rulePrimitiveType7270); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -8624,7 +9520,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleNumericType"
-    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3167:1: entryRuleNumericType returns [String current=null] : iv_ruleNumericType= ruleNumericType EOF ;
+    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3589:1: entryRuleNumericType returns [String current=null] : iv_ruleNumericType= ruleNumericType EOF ;
     public final String entryRuleNumericType() throws RecognitionException {
         String current = null;
 
@@ -8632,13 +9528,13 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3168:1: (iv_ruleNumericType= ruleNumericType EOF )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3169:2: iv_ruleNumericType= ruleNumericType EOF
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3590:1: (iv_ruleNumericType= ruleNumericType EOF )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3591:2: iv_ruleNumericType= ruleNumericType EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getNumericTypeRule()); 
             }
-            pushFollow(FOLLOW_ruleNumericType_in_entryRuleNumericType6572);
+            pushFollow(FOLLOW_ruleNumericType_in_entryRuleNumericType7310);
             iv_ruleNumericType=ruleNumericType();
 
             state._fsp--;
@@ -8646,7 +9542,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleNumericType.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleNumericType6583); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleNumericType7321); if (state.failed) return current;
 
             }
 
@@ -8664,7 +9560,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleNumericType"
-    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3176:1: ruleNumericType returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_IntegralType_0= ruleIntegralType | this_FloatingPointType_1= ruleFloatingPointType ) ;
+    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3598:1: ruleNumericType returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_IntegralType_0= ruleIntegralType | this_FloatingPointType_1= ruleFloatingPointType ) ;
     public final AntlrDatatypeRuleToken ruleNumericType() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -8676,36 +9572,36 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3180:6: ( (this_IntegralType_0= ruleIntegralType | this_FloatingPointType_1= ruleFloatingPointType ) )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3181:1: (this_IntegralType_0= ruleIntegralType | this_FloatingPointType_1= ruleFloatingPointType )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3602:6: ( (this_IntegralType_0= ruleIntegralType | this_FloatingPointType_1= ruleFloatingPointType ) )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3603:1: (this_IntegralType_0= ruleIntegralType | this_FloatingPointType_1= ruleFloatingPointType )
             {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3181:1: (this_IntegralType_0= ruleIntegralType | this_FloatingPointType_1= ruleFloatingPointType )
-            int alt47=2;
-            int LA47_0 = input.LA(1);
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3603:1: (this_IntegralType_0= ruleIntegralType | this_FloatingPointType_1= ruleFloatingPointType )
+            int alt48=2;
+            int LA48_0 = input.LA(1);
 
-            if ( (LA47_0==KEYWORD_45||(LA47_0>=KEYWORD_32 && LA47_0<=KEYWORD_34)||LA47_0==KEYWORD_28) ) {
-                alt47=1;
+            if ( (LA48_0==KEYWORD_51||(LA48_0>=KEYWORD_36 && LA48_0<=KEYWORD_38)||LA48_0==KEYWORD_29) ) {
+                alt48=1;
             }
-            else if ( (LA47_0==KEYWORD_49||LA47_0==KEYWORD_44) ) {
-                alt47=2;
+            else if ( (LA48_0==KEYWORD_55||LA48_0==KEYWORD_49) ) {
+                alt48=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 47, 0, input);
+                    new NoViableAltException("", 48, 0, input);
 
                 throw nvae;
             }
-            switch (alt47) {
+            switch (alt48) {
                 case 1 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3182:5: this_IntegralType_0= ruleIntegralType
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3604:5: this_IntegralType_0= ruleIntegralType
                     {
                     if ( state.backtracking==0 ) {
                        
                               newCompositeNode(grammarAccess.getNumericTypeAccess().getIntegralTypeParserRuleCall_0()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleIntegralType_in_ruleNumericType6630);
+                    pushFollow(FOLLOW_ruleIntegralType_in_ruleNumericType7368);
                     this_IntegralType_0=ruleIntegralType();
 
                     state._fsp--;
@@ -8724,14 +9620,14 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3194:5: this_FloatingPointType_1= ruleFloatingPointType
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3616:5: this_FloatingPointType_1= ruleFloatingPointType
                     {
                     if ( state.backtracking==0 ) {
                        
                               newCompositeNode(grammarAccess.getNumericTypeAccess().getFloatingPointTypeParserRuleCall_1()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleFloatingPointType_in_ruleNumericType6663);
+                    pushFollow(FOLLOW_ruleFloatingPointType_in_ruleNumericType7401);
                     this_FloatingPointType_1=ruleFloatingPointType();
 
                     state._fsp--;
@@ -8773,7 +9669,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleIntegralType"
-    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3212:1: entryRuleIntegralType returns [String current=null] : iv_ruleIntegralType= ruleIntegralType EOF ;
+    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3634:1: entryRuleIntegralType returns [String current=null] : iv_ruleIntegralType= ruleIntegralType EOF ;
     public final String entryRuleIntegralType() throws RecognitionException {
         String current = null;
 
@@ -8781,13 +9677,13 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3213:1: (iv_ruleIntegralType= ruleIntegralType EOF )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3214:2: iv_ruleIntegralType= ruleIntegralType EOF
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3635:1: (iv_ruleIntegralType= ruleIntegralType EOF )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3636:2: iv_ruleIntegralType= ruleIntegralType EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getIntegralTypeRule()); 
             }
-            pushFollow(FOLLOW_ruleIntegralType_in_entryRuleIntegralType6708);
+            pushFollow(FOLLOW_ruleIntegralType_in_entryRuleIntegralType7446);
             iv_ruleIntegralType=ruleIntegralType();
 
             state._fsp--;
@@ -8795,7 +9691,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleIntegralType.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleIntegralType6719); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleIntegralType7457); if (state.failed) return current;
 
             }
 
@@ -8813,7 +9709,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleIntegralType"
-    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3221:1: ruleIntegralType returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= KEYWORD_32 | kw= KEYWORD_45 | kw= KEYWORD_28 | kw= KEYWORD_34 | kw= KEYWORD_33 ) ;
+    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3643:1: ruleIntegralType returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= KEYWORD_36 | kw= KEYWORD_51 | kw= KEYWORD_29 | kw= KEYWORD_38 | kw= KEYWORD_37 ) ;
     public final AntlrDatatypeRuleToken ruleIntegralType() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -8822,50 +9718,50 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3225:6: ( (kw= KEYWORD_32 | kw= KEYWORD_45 | kw= KEYWORD_28 | kw= KEYWORD_34 | kw= KEYWORD_33 ) )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3226:1: (kw= KEYWORD_32 | kw= KEYWORD_45 | kw= KEYWORD_28 | kw= KEYWORD_34 | kw= KEYWORD_33 )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3647:6: ( (kw= KEYWORD_36 | kw= KEYWORD_51 | kw= KEYWORD_29 | kw= KEYWORD_38 | kw= KEYWORD_37 ) )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3648:1: (kw= KEYWORD_36 | kw= KEYWORD_51 | kw= KEYWORD_29 | kw= KEYWORD_38 | kw= KEYWORD_37 )
             {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3226:1: (kw= KEYWORD_32 | kw= KEYWORD_45 | kw= KEYWORD_28 | kw= KEYWORD_34 | kw= KEYWORD_33 )
-            int alt48=5;
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3648:1: (kw= KEYWORD_36 | kw= KEYWORD_51 | kw= KEYWORD_29 | kw= KEYWORD_38 | kw= KEYWORD_37 )
+            int alt49=5;
             switch ( input.LA(1) ) {
-            case KEYWORD_32:
+            case KEYWORD_36:
                 {
-                alt48=1;
+                alt49=1;
                 }
                 break;
-            case KEYWORD_45:
+            case KEYWORD_51:
                 {
-                alt48=2;
+                alt49=2;
                 }
                 break;
-            case KEYWORD_28:
+            case KEYWORD_29:
                 {
-                alt48=3;
+                alt49=3;
                 }
                 break;
-            case KEYWORD_34:
+            case KEYWORD_38:
                 {
-                alt48=4;
+                alt49=4;
                 }
                 break;
-            case KEYWORD_33:
+            case KEYWORD_37:
                 {
-                alt48=5;
+                alt49=5;
                 }
                 break;
             default:
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 48, 0, input);
+                    new NoViableAltException("", 49, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt48) {
+            switch (alt49) {
                 case 1 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3227:2: kw= KEYWORD_32
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3649:2: kw= KEYWORD_36
                     {
-                    kw=(Token)match(input,KEYWORD_32,FOLLOW_KEYWORD_32_in_ruleIntegralType6757); if (state.failed) return current;
+                    kw=(Token)match(input,KEYWORD_36,FOLLOW_KEYWORD_36_in_ruleIntegralType7495); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -8876,9 +9772,9 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3234:2: kw= KEYWORD_45
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3656:2: kw= KEYWORD_51
                     {
-                    kw=(Token)match(input,KEYWORD_45,FOLLOW_KEYWORD_45_in_ruleIntegralType6776); if (state.failed) return current;
+                    kw=(Token)match(input,KEYWORD_51,FOLLOW_KEYWORD_51_in_ruleIntegralType7514); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -8889,9 +9785,9 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3241:2: kw= KEYWORD_28
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3663:2: kw= KEYWORD_29
                     {
-                    kw=(Token)match(input,KEYWORD_28,FOLLOW_KEYWORD_28_in_ruleIntegralType6795); if (state.failed) return current;
+                    kw=(Token)match(input,KEYWORD_29,FOLLOW_KEYWORD_29_in_ruleIntegralType7533); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -8902,9 +9798,9 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3248:2: kw= KEYWORD_34
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3670:2: kw= KEYWORD_38
                     {
-                    kw=(Token)match(input,KEYWORD_34,FOLLOW_KEYWORD_34_in_ruleIntegralType6814); if (state.failed) return current;
+                    kw=(Token)match(input,KEYWORD_38,FOLLOW_KEYWORD_38_in_ruleIntegralType7552); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -8915,9 +9811,9 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 5 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3255:2: kw= KEYWORD_33
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3677:2: kw= KEYWORD_37
                     {
-                    kw=(Token)match(input,KEYWORD_33,FOLLOW_KEYWORD_33_in_ruleIntegralType6833); if (state.failed) return current;
+                    kw=(Token)match(input,KEYWORD_37,FOLLOW_KEYWORD_37_in_ruleIntegralType7571); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -8951,7 +9847,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleFloatingPointType"
-    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3268:1: entryRuleFloatingPointType returns [String current=null] : iv_ruleFloatingPointType= ruleFloatingPointType EOF ;
+    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3690:1: entryRuleFloatingPointType returns [String current=null] : iv_ruleFloatingPointType= ruleFloatingPointType EOF ;
     public final String entryRuleFloatingPointType() throws RecognitionException {
         String current = null;
 
@@ -8959,13 +9855,13 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3269:1: (iv_ruleFloatingPointType= ruleFloatingPointType EOF )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3270:2: iv_ruleFloatingPointType= ruleFloatingPointType EOF
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3691:1: (iv_ruleFloatingPointType= ruleFloatingPointType EOF )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3692:2: iv_ruleFloatingPointType= ruleFloatingPointType EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getFloatingPointTypeRule()); 
             }
-            pushFollow(FOLLOW_ruleFloatingPointType_in_entryRuleFloatingPointType6873);
+            pushFollow(FOLLOW_ruleFloatingPointType_in_entryRuleFloatingPointType7611);
             iv_ruleFloatingPointType=ruleFloatingPointType();
 
             state._fsp--;
@@ -8973,7 +9869,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleFloatingPointType.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleFloatingPointType6884); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleFloatingPointType7622); if (state.failed) return current;
 
             }
 
@@ -8991,7 +9887,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFloatingPointType"
-    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3277:1: ruleFloatingPointType returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= KEYWORD_44 | kw= KEYWORD_49 ) ;
+    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3699:1: ruleFloatingPointType returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= KEYWORD_49 | kw= KEYWORD_55 ) ;
     public final AntlrDatatypeRuleToken ruleFloatingPointType() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -9000,31 +9896,31 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3281:6: ( (kw= KEYWORD_44 | kw= KEYWORD_49 ) )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3282:1: (kw= KEYWORD_44 | kw= KEYWORD_49 )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3703:6: ( (kw= KEYWORD_49 | kw= KEYWORD_55 ) )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3704:1: (kw= KEYWORD_49 | kw= KEYWORD_55 )
             {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3282:1: (kw= KEYWORD_44 | kw= KEYWORD_49 )
-            int alt49=2;
-            int LA49_0 = input.LA(1);
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3704:1: (kw= KEYWORD_49 | kw= KEYWORD_55 )
+            int alt50=2;
+            int LA50_0 = input.LA(1);
 
-            if ( (LA49_0==KEYWORD_44) ) {
-                alt49=1;
+            if ( (LA50_0==KEYWORD_49) ) {
+                alt50=1;
             }
-            else if ( (LA49_0==KEYWORD_49) ) {
-                alt49=2;
+            else if ( (LA50_0==KEYWORD_55) ) {
+                alt50=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 49, 0, input);
+                    new NoViableAltException("", 50, 0, input);
 
                 throw nvae;
             }
-            switch (alt49) {
+            switch (alt50) {
                 case 1 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3283:2: kw= KEYWORD_44
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3705:2: kw= KEYWORD_49
                     {
-                    kw=(Token)match(input,KEYWORD_44,FOLLOW_KEYWORD_44_in_ruleFloatingPointType6922); if (state.failed) return current;
+                    kw=(Token)match(input,KEYWORD_49,FOLLOW_KEYWORD_49_in_ruleFloatingPointType7660); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -9035,9 +9931,9 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3290:2: kw= KEYWORD_49
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3712:2: kw= KEYWORD_55
                     {
-                    kw=(Token)match(input,KEYWORD_49,FOLLOW_KEYWORD_49_in_ruleFloatingPointType6941); if (state.failed) return current;
+                    kw=(Token)match(input,KEYWORD_55,FOLLOW_KEYWORD_55_in_ruleFloatingPointType7679); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -9071,7 +9967,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleIntegerLiteral"
-    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3303:1: entryRuleIntegerLiteral returns [String current=null] : iv_ruleIntegerLiteral= ruleIntegerLiteral EOF ;
+    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3725:1: entryRuleIntegerLiteral returns [String current=null] : iv_ruleIntegerLiteral= ruleIntegerLiteral EOF ;
     public final String entryRuleIntegerLiteral() throws RecognitionException {
         String current = null;
 
@@ -9079,13 +9975,13 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3304:1: (iv_ruleIntegerLiteral= ruleIntegerLiteral EOF )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3305:2: iv_ruleIntegerLiteral= ruleIntegerLiteral EOF
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3726:1: (iv_ruleIntegerLiteral= ruleIntegerLiteral EOF )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3727:2: iv_ruleIntegerLiteral= ruleIntegerLiteral EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getIntegerLiteralRule()); 
             }
-            pushFollow(FOLLOW_ruleIntegerLiteral_in_entryRuleIntegerLiteral6981);
+            pushFollow(FOLLOW_ruleIntegerLiteral_in_entryRuleIntegerLiteral7719);
             iv_ruleIntegerLiteral=ruleIntegerLiteral();
 
             state._fsp--;
@@ -9093,7 +9989,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleIntegerLiteral.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleIntegerLiteral6992); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleIntegerLiteral7730); if (state.failed) return current;
 
             }
 
@@ -9111,7 +10007,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleIntegerLiteral"
-    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3312:1: ruleIntegerLiteral returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : this_INT_0= RULE_INT ;
+    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3734:1: ruleIntegerLiteral returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : this_INT_0= RULE_INT ;
     public final AntlrDatatypeRuleToken ruleIntegerLiteral() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -9120,10 +10016,10 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3316:6: (this_INT_0= RULE_INT )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3317:5: this_INT_0= RULE_INT
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3738:6: (this_INT_0= RULE_INT )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3739:5: this_INT_0= RULE_INT
             {
-            this_INT_0=(Token)match(input,RULE_INT,FOLLOW_RULE_INT_in_ruleIntegerLiteral7031); if (state.failed) return current;
+            this_INT_0=(Token)match(input,RULE_INT,FOLLOW_RULE_INT_in_ruleIntegerLiteral7769); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               		current.merge(this_INT_0);
@@ -9155,7 +10051,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleStringLiteral"
-    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3332:1: entryRuleStringLiteral returns [String current=null] : iv_ruleStringLiteral= ruleStringLiteral EOF ;
+    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3754:1: entryRuleStringLiteral returns [String current=null] : iv_ruleStringLiteral= ruleStringLiteral EOF ;
     public final String entryRuleStringLiteral() throws RecognitionException {
         String current = null;
 
@@ -9163,13 +10059,13 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3333:1: (iv_ruleStringLiteral= ruleStringLiteral EOF )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3334:2: iv_ruleStringLiteral= ruleStringLiteral EOF
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3755:1: (iv_ruleStringLiteral= ruleStringLiteral EOF )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3756:2: iv_ruleStringLiteral= ruleStringLiteral EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getStringLiteralRule()); 
             }
-            pushFollow(FOLLOW_ruleStringLiteral_in_entryRuleStringLiteral7075);
+            pushFollow(FOLLOW_ruleStringLiteral_in_entryRuleStringLiteral7813);
             iv_ruleStringLiteral=ruleStringLiteral();
 
             state._fsp--;
@@ -9177,7 +10073,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleStringLiteral.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleStringLiteral7086); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleStringLiteral7824); if (state.failed) return current;
 
             }
 
@@ -9195,7 +10091,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleStringLiteral"
-    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3341:1: ruleStringLiteral returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : this_STRING_0= RULE_STRING ;
+    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3763:1: ruleStringLiteral returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : this_STRING_0= RULE_STRING ;
     public final AntlrDatatypeRuleToken ruleStringLiteral() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -9204,10 +10100,10 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3345:6: (this_STRING_0= RULE_STRING )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3346:5: this_STRING_0= RULE_STRING
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3767:6: (this_STRING_0= RULE_STRING )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3768:5: this_STRING_0= RULE_STRING
             {
-            this_STRING_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleStringLiteral7125); if (state.failed) return current;
+            this_STRING_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleStringLiteral7863); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               		current.merge(this_STRING_0);
@@ -9239,7 +10135,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleBooleanLiteral"
-    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3361:1: entryRuleBooleanLiteral returns [String current=null] : iv_ruleBooleanLiteral= ruleBooleanLiteral EOF ;
+    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3783:1: entryRuleBooleanLiteral returns [String current=null] : iv_ruleBooleanLiteral= ruleBooleanLiteral EOF ;
     public final String entryRuleBooleanLiteral() throws RecognitionException {
         String current = null;
 
@@ -9247,13 +10143,13 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3362:1: (iv_ruleBooleanLiteral= ruleBooleanLiteral EOF )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3363:2: iv_ruleBooleanLiteral= ruleBooleanLiteral EOF
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3784:1: (iv_ruleBooleanLiteral= ruleBooleanLiteral EOF )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3785:2: iv_ruleBooleanLiteral= ruleBooleanLiteral EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getBooleanLiteralRule()); 
             }
-            pushFollow(FOLLOW_ruleBooleanLiteral_in_entryRuleBooleanLiteral7169);
+            pushFollow(FOLLOW_ruleBooleanLiteral_in_entryRuleBooleanLiteral7907);
             iv_ruleBooleanLiteral=ruleBooleanLiteral();
 
             state._fsp--;
@@ -9261,7 +10157,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleBooleanLiteral.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleBooleanLiteral7180); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleBooleanLiteral7918); if (state.failed) return current;
 
             }
 
@@ -9279,7 +10175,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleBooleanLiteral"
-    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3370:1: ruleBooleanLiteral returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= KEYWORD_38 | kw= KEYWORD_43 ) ;
+    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3792:1: ruleBooleanLiteral returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= KEYWORD_42 | kw= KEYWORD_48 ) ;
     public final AntlrDatatypeRuleToken ruleBooleanLiteral() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -9288,31 +10184,31 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3374:6: ( (kw= KEYWORD_38 | kw= KEYWORD_43 ) )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3375:1: (kw= KEYWORD_38 | kw= KEYWORD_43 )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3796:6: ( (kw= KEYWORD_42 | kw= KEYWORD_48 ) )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3797:1: (kw= KEYWORD_42 | kw= KEYWORD_48 )
             {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3375:1: (kw= KEYWORD_38 | kw= KEYWORD_43 )
-            int alt50=2;
-            int LA50_0 = input.LA(1);
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3797:1: (kw= KEYWORD_42 | kw= KEYWORD_48 )
+            int alt51=2;
+            int LA51_0 = input.LA(1);
 
-            if ( (LA50_0==KEYWORD_38) ) {
-                alt50=1;
+            if ( (LA51_0==KEYWORD_42) ) {
+                alt51=1;
             }
-            else if ( (LA50_0==KEYWORD_43) ) {
-                alt50=2;
+            else if ( (LA51_0==KEYWORD_48) ) {
+                alt51=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 50, 0, input);
+                    new NoViableAltException("", 51, 0, input);
 
                 throw nvae;
             }
-            switch (alt50) {
+            switch (alt51) {
                 case 1 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3376:2: kw= KEYWORD_38
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3798:2: kw= KEYWORD_42
                     {
-                    kw=(Token)match(input,KEYWORD_38,FOLLOW_KEYWORD_38_in_ruleBooleanLiteral7218); if (state.failed) return current;
+                    kw=(Token)match(input,KEYWORD_42,FOLLOW_KEYWORD_42_in_ruleBooleanLiteral7956); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -9323,9 +10219,9 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3383:2: kw= KEYWORD_43
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3805:2: kw= KEYWORD_48
                     {
-                    kw=(Token)match(input,KEYWORD_43,FOLLOW_KEYWORD_43_in_ruleBooleanLiteral7237); if (state.failed) return current;
+                    kw=(Token)match(input,KEYWORD_48,FOLLOW_KEYWORD_48_in_ruleBooleanLiteral7975); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -9359,7 +10255,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleNullLiteral"
-    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3396:1: entryRuleNullLiteral returns [String current=null] : iv_ruleNullLiteral= ruleNullLiteral EOF ;
+    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3818:1: entryRuleNullLiteral returns [String current=null] : iv_ruleNullLiteral= ruleNullLiteral EOF ;
     public final String entryRuleNullLiteral() throws RecognitionException {
         String current = null;
 
@@ -9367,13 +10263,13 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3397:1: (iv_ruleNullLiteral= ruleNullLiteral EOF )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3398:2: iv_ruleNullLiteral= ruleNullLiteral EOF
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3819:1: (iv_ruleNullLiteral= ruleNullLiteral EOF )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3820:2: iv_ruleNullLiteral= ruleNullLiteral EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getNullLiteralRule()); 
             }
-            pushFollow(FOLLOW_ruleNullLiteral_in_entryRuleNullLiteral7277);
+            pushFollow(FOLLOW_ruleNullLiteral_in_entryRuleNullLiteral8015);
             iv_ruleNullLiteral=ruleNullLiteral();
 
             state._fsp--;
@@ -9381,7 +10277,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleNullLiteral.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleNullLiteral7288); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleNullLiteral8026); if (state.failed) return current;
 
             }
 
@@ -9399,7 +10295,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleNullLiteral"
-    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3405:1: ruleNullLiteral returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : kw= KEYWORD_35 ;
+    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3827:1: ruleNullLiteral returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : kw= KEYWORD_39 ;
     public final AntlrDatatypeRuleToken ruleNullLiteral() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -9408,10 +10304,10 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3409:6: (kw= KEYWORD_35 )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3411:2: kw= KEYWORD_35
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3831:6: (kw= KEYWORD_39 )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3833:2: kw= KEYWORD_39
             {
-            kw=(Token)match(input,KEYWORD_35,FOLLOW_KEYWORD_35_in_ruleNullLiteral7325); if (state.failed) return current;
+            kw=(Token)match(input,KEYWORD_39,FOLLOW_KEYWORD_39_in_ruleNullLiteral8063); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                       current.merge(kw);
@@ -9439,7 +10335,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleLiteral"
-    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3424:1: entryRuleLiteral returns [String current=null] : iv_ruleLiteral= ruleLiteral EOF ;
+    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3846:1: entryRuleLiteral returns [String current=null] : iv_ruleLiteral= ruleLiteral EOF ;
     public final String entryRuleLiteral() throws RecognitionException {
         String current = null;
 
@@ -9447,13 +10343,13 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3425:1: (iv_ruleLiteral= ruleLiteral EOF )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3426:2: iv_ruleLiteral= ruleLiteral EOF
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3847:1: (iv_ruleLiteral= ruleLiteral EOF )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3848:2: iv_ruleLiteral= ruleLiteral EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getLiteralRule()); 
             }
-            pushFollow(FOLLOW_ruleLiteral_in_entryRuleLiteral7364);
+            pushFollow(FOLLOW_ruleLiteral_in_entryRuleLiteral8102);
             iv_ruleLiteral=ruleLiteral();
 
             state._fsp--;
@@ -9461,7 +10357,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleLiteral.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleLiteral7375); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleLiteral8113); if (state.failed) return current;
 
             }
 
@@ -9479,7 +10375,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleLiteral"
-    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3433:1: ruleLiteral returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_IntegerLiteral_0= ruleIntegerLiteral | this_BooleanLiteral_1= ruleBooleanLiteral | this_StringLiteral_2= ruleStringLiteral | this_NullLiteral_3= ruleNullLiteral ) ;
+    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3855:1: ruleLiteral returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_IntegerLiteral_0= ruleIntegerLiteral | this_BooleanLiteral_1= ruleBooleanLiteral | this_StringLiteral_2= ruleStringLiteral | this_NullLiteral_3= ruleNullLiteral ) ;
     public final AntlrDatatypeRuleToken ruleLiteral() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -9495,51 +10391,51 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3437:6: ( (this_IntegerLiteral_0= ruleIntegerLiteral | this_BooleanLiteral_1= ruleBooleanLiteral | this_StringLiteral_2= ruleStringLiteral | this_NullLiteral_3= ruleNullLiteral ) )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3438:1: (this_IntegerLiteral_0= ruleIntegerLiteral | this_BooleanLiteral_1= ruleBooleanLiteral | this_StringLiteral_2= ruleStringLiteral | this_NullLiteral_3= ruleNullLiteral )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3859:6: ( (this_IntegerLiteral_0= ruleIntegerLiteral | this_BooleanLiteral_1= ruleBooleanLiteral | this_StringLiteral_2= ruleStringLiteral | this_NullLiteral_3= ruleNullLiteral ) )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3860:1: (this_IntegerLiteral_0= ruleIntegerLiteral | this_BooleanLiteral_1= ruleBooleanLiteral | this_StringLiteral_2= ruleStringLiteral | this_NullLiteral_3= ruleNullLiteral )
             {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3438:1: (this_IntegerLiteral_0= ruleIntegerLiteral | this_BooleanLiteral_1= ruleBooleanLiteral | this_StringLiteral_2= ruleStringLiteral | this_NullLiteral_3= ruleNullLiteral )
-            int alt51=4;
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3860:1: (this_IntegerLiteral_0= ruleIntegerLiteral | this_BooleanLiteral_1= ruleBooleanLiteral | this_StringLiteral_2= ruleStringLiteral | this_NullLiteral_3= ruleNullLiteral )
+            int alt52=4;
             switch ( input.LA(1) ) {
             case RULE_INT:
                 {
-                alt51=1;
+                alt52=1;
                 }
                 break;
-            case KEYWORD_43:
-            case KEYWORD_38:
+            case KEYWORD_48:
+            case KEYWORD_42:
                 {
-                alt51=2;
+                alt52=2;
                 }
                 break;
             case RULE_STRING:
                 {
-                alt51=3;
+                alt52=3;
                 }
                 break;
-            case KEYWORD_35:
+            case KEYWORD_39:
                 {
-                alt51=4;
+                alt52=4;
                 }
                 break;
             default:
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 51, 0, input);
+                    new NoViableAltException("", 52, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt51) {
+            switch (alt52) {
                 case 1 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3439:5: this_IntegerLiteral_0= ruleIntegerLiteral
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3861:5: this_IntegerLiteral_0= ruleIntegerLiteral
                     {
                     if ( state.backtracking==0 ) {
                        
                               newCompositeNode(grammarAccess.getLiteralAccess().getIntegerLiteralParserRuleCall_0()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleIntegerLiteral_in_ruleLiteral7422);
+                    pushFollow(FOLLOW_ruleIntegerLiteral_in_ruleLiteral8160);
                     this_IntegerLiteral_0=ruleIntegerLiteral();
 
                     state._fsp--;
@@ -9558,14 +10454,14 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3451:5: this_BooleanLiteral_1= ruleBooleanLiteral
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3873:5: this_BooleanLiteral_1= ruleBooleanLiteral
                     {
                     if ( state.backtracking==0 ) {
                        
                               newCompositeNode(grammarAccess.getLiteralAccess().getBooleanLiteralParserRuleCall_1()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleBooleanLiteral_in_ruleLiteral7455);
+                    pushFollow(FOLLOW_ruleBooleanLiteral_in_ruleLiteral8193);
                     this_BooleanLiteral_1=ruleBooleanLiteral();
 
                     state._fsp--;
@@ -9584,14 +10480,14 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3463:5: this_StringLiteral_2= ruleStringLiteral
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3885:5: this_StringLiteral_2= ruleStringLiteral
                     {
                     if ( state.backtracking==0 ) {
                        
                               newCompositeNode(grammarAccess.getLiteralAccess().getStringLiteralParserRuleCall_2()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleStringLiteral_in_ruleLiteral7488);
+                    pushFollow(FOLLOW_ruleStringLiteral_in_ruleLiteral8226);
                     this_StringLiteral_2=ruleStringLiteral();
 
                     state._fsp--;
@@ -9610,14 +10506,14 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3475:5: this_NullLiteral_3= ruleNullLiteral
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3897:5: this_NullLiteral_3= ruleNullLiteral
                     {
                     if ( state.backtracking==0 ) {
                        
                               newCompositeNode(grammarAccess.getLiteralAccess().getNullLiteralParserRuleCall_3()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleNullLiteral_in_ruleLiteral7521);
+                    pushFollow(FOLLOW_ruleNullLiteral_in_ruleLiteral8259);
                     this_NullLiteral_3=ruleNullLiteral();
 
                     state._fsp--;
@@ -9659,7 +10555,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleQualifiedIdentifier"
-    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3493:1: entryRuleQualifiedIdentifier returns [String current=null] : iv_ruleQualifiedIdentifier= ruleQualifiedIdentifier EOF ;
+    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3915:1: entryRuleQualifiedIdentifier returns [String current=null] : iv_ruleQualifiedIdentifier= ruleQualifiedIdentifier EOF ;
     public final String entryRuleQualifiedIdentifier() throws RecognitionException {
         String current = null;
 
@@ -9667,13 +10563,13 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3494:1: (iv_ruleQualifiedIdentifier= ruleQualifiedIdentifier EOF )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3495:2: iv_ruleQualifiedIdentifier= ruleQualifiedIdentifier EOF
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3916:1: (iv_ruleQualifiedIdentifier= ruleQualifiedIdentifier EOF )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3917:2: iv_ruleQualifiedIdentifier= ruleQualifiedIdentifier EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getQualifiedIdentifierRule()); 
             }
-            pushFollow(FOLLOW_ruleQualifiedIdentifier_in_entryRuleQualifiedIdentifier7566);
+            pushFollow(FOLLOW_ruleQualifiedIdentifier_in_entryRuleQualifiedIdentifier8304);
             iv_ruleQualifiedIdentifier=ruleQualifiedIdentifier();
 
             state._fsp--;
@@ -9681,7 +10577,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleQualifiedIdentifier.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleQualifiedIdentifier7577); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleQualifiedIdentifier8315); if (state.failed) return current;
 
             }
 
@@ -9699,76 +10595,422 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleQualifiedIdentifier"
-    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3502:1: ruleQualifiedIdentifier returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_ID_0= RULE_ID (kw= KEYWORD_10 this_ID_2= RULE_ID )* ) ;
+    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3924:1: ruleQualifiedIdentifier returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= KEYWORD_86 | kw= KEYWORD_80 | kw= KEYWORD_89 | kw= KEYWORD_84 | kw= KEYWORD_82 | kw= KEYWORD_87 | kw= KEYWORD_81 | kw= KEYWORD_83 | kw= KEYWORD_85 | (kw= KEYWORD_50 this_ID_10= RULE_ID (kw= KEYWORD_10 this_ID_12= RULE_ID )* ) | (kw= KEYWORD_57 this_ID_14= RULE_ID (kw= KEYWORD_10 this_ID_16= RULE_ID )* ) | (this_ID_17= RULE_ID (kw= KEYWORD_10 this_ID_19= RULE_ID )* ) ) ;
     public final AntlrDatatypeRuleToken ruleQualifiedIdentifier() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
-        Token this_ID_0=null;
         Token kw=null;
-        Token this_ID_2=null;
+        Token this_ID_10=null;
+        Token this_ID_12=null;
+        Token this_ID_14=null;
+        Token this_ID_16=null;
+        Token this_ID_17=null;
+        Token this_ID_19=null;
 
          enterRule(); 
             
         try {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3506:6: ( (this_ID_0= RULE_ID (kw= KEYWORD_10 this_ID_2= RULE_ID )* ) )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3507:1: (this_ID_0= RULE_ID (kw= KEYWORD_10 this_ID_2= RULE_ID )* )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3928:6: ( (kw= KEYWORD_86 | kw= KEYWORD_80 | kw= KEYWORD_89 | kw= KEYWORD_84 | kw= KEYWORD_82 | kw= KEYWORD_87 | kw= KEYWORD_81 | kw= KEYWORD_83 | kw= KEYWORD_85 | (kw= KEYWORD_50 this_ID_10= RULE_ID (kw= KEYWORD_10 this_ID_12= RULE_ID )* ) | (kw= KEYWORD_57 this_ID_14= RULE_ID (kw= KEYWORD_10 this_ID_16= RULE_ID )* ) | (this_ID_17= RULE_ID (kw= KEYWORD_10 this_ID_19= RULE_ID )* ) ) )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3929:1: (kw= KEYWORD_86 | kw= KEYWORD_80 | kw= KEYWORD_89 | kw= KEYWORD_84 | kw= KEYWORD_82 | kw= KEYWORD_87 | kw= KEYWORD_81 | kw= KEYWORD_83 | kw= KEYWORD_85 | (kw= KEYWORD_50 this_ID_10= RULE_ID (kw= KEYWORD_10 this_ID_12= RULE_ID )* ) | (kw= KEYWORD_57 this_ID_14= RULE_ID (kw= KEYWORD_10 this_ID_16= RULE_ID )* ) | (this_ID_17= RULE_ID (kw= KEYWORD_10 this_ID_19= RULE_ID )* ) )
             {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3507:1: (this_ID_0= RULE_ID (kw= KEYWORD_10 this_ID_2= RULE_ID )* )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3507:6: this_ID_0= RULE_ID (kw= KEYWORD_10 this_ID_2= RULE_ID )*
-            {
-            this_ID_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleQualifiedIdentifier7617); if (state.failed) return current;
-            if ( state.backtracking==0 ) {
-
-              		current.merge(this_ID_0);
-                  
-            }
-            if ( state.backtracking==0 ) {
-               
-                  newLeafNode(this_ID_0, grammarAccess.getQualifiedIdentifierAccess().getIDTerminalRuleCall_0()); 
-                  
-            }
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3514:1: (kw= KEYWORD_10 this_ID_2= RULE_ID )*
-            loop52:
-            do {
-                int alt52=2;
-                int LA52_0 = input.LA(1);
-
-                if ( (LA52_0==KEYWORD_10) ) {
-                    alt52=1;
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3929:1: (kw= KEYWORD_86 | kw= KEYWORD_80 | kw= KEYWORD_89 | kw= KEYWORD_84 | kw= KEYWORD_82 | kw= KEYWORD_87 | kw= KEYWORD_81 | kw= KEYWORD_83 | kw= KEYWORD_85 | (kw= KEYWORD_50 this_ID_10= RULE_ID (kw= KEYWORD_10 this_ID_12= RULE_ID )* ) | (kw= KEYWORD_57 this_ID_14= RULE_ID (kw= KEYWORD_10 this_ID_16= RULE_ID )* ) | (this_ID_17= RULE_ID (kw= KEYWORD_10 this_ID_19= RULE_ID )* ) )
+            int alt56=12;
+            switch ( input.LA(1) ) {
+            case KEYWORD_86:
+                {
+                alt56=1;
                 }
-
-
-                switch (alt52) {
-            	case 1 :
-            	    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3515:2: kw= KEYWORD_10 this_ID_2= RULE_ID
-            	    {
-            	    kw=(Token)match(input,KEYWORD_10,FOLLOW_KEYWORD_10_in_ruleQualifiedIdentifier7636); if (state.failed) return current;
-            	    if ( state.backtracking==0 ) {
-
-            	              current.merge(kw);
-            	              newLeafNode(kw, grammarAccess.getQualifiedIdentifierAccess().getFullStopKeyword_1_0()); 
-            	          
-            	    }
-            	    this_ID_2=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleQualifiedIdentifier7651); if (state.failed) return current;
-            	    if ( state.backtracking==0 ) {
-
-            	      		current.merge(this_ID_2);
-            	          
-            	    }
-            	    if ( state.backtracking==0 ) {
-            	       
-            	          newLeafNode(this_ID_2, grammarAccess.getQualifiedIdentifierAccess().getIDTerminalRuleCall_1_1()); 
-            	          
-            	    }
-
-            	    }
-            	    break;
-
-            	default :
-            	    break loop52;
+                break;
+            case KEYWORD_80:
+                {
+                alt56=2;
                 }
-            } while (true);
+                break;
+            case KEYWORD_89:
+                {
+                alt56=3;
+                }
+                break;
+            case KEYWORD_84:
+                {
+                alt56=4;
+                }
+                break;
+            case KEYWORD_82:
+                {
+                alt56=5;
+                }
+                break;
+            case KEYWORD_87:
+                {
+                alt56=6;
+                }
+                break;
+            case KEYWORD_81:
+                {
+                alt56=7;
+                }
+                break;
+            case KEYWORD_83:
+                {
+                alt56=8;
+                }
+                break;
+            case KEYWORD_85:
+                {
+                alt56=9;
+                }
+                break;
+            case KEYWORD_50:
+                {
+                alt56=10;
+                }
+                break;
+            case KEYWORD_57:
+                {
+                alt56=11;
+                }
+                break;
+            case RULE_ID:
+                {
+                alt56=12;
+                }
+                break;
+            default:
+                if (state.backtracking>0) {state.failed=true; return current;}
+                NoViableAltException nvae =
+                    new NoViableAltException("", 56, 0, input);
 
+                throw nvae;
+            }
+
+            switch (alt56) {
+                case 1 :
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3930:2: kw= KEYWORD_86
+                    {
+                    kw=(Token)match(input,KEYWORD_86,FOLLOW_KEYWORD_86_in_ruleQualifiedIdentifier8353); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              current.merge(kw);
+                              newLeafNode(kw, grammarAccess.getQualifiedIdentifierAccess().getJavaLangBooleanKeyword_0()); 
+                          
+                    }
+
+                    }
+                    break;
+                case 2 :
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3937:2: kw= KEYWORD_80
+                    {
+                    kw=(Token)match(input,KEYWORD_80,FOLLOW_KEYWORD_80_in_ruleQualifiedIdentifier8372); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              current.merge(kw);
+                              newLeafNode(kw, grammarAccess.getQualifiedIdentifierAccess().getJavaLangByteKeyword_1()); 
+                          
+                    }
+
+                    }
+                    break;
+                case 3 :
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3944:2: kw= KEYWORD_89
+                    {
+                    kw=(Token)match(input,KEYWORD_89,FOLLOW_KEYWORD_89_in_ruleQualifiedIdentifier8391); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              current.merge(kw);
+                              newLeafNode(kw, grammarAccess.getQualifiedIdentifierAccess().getJavaLangCharacterKeyword_2()); 
+                          
+                    }
+
+                    }
+                    break;
+                case 4 :
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3951:2: kw= KEYWORD_84
+                    {
+                    kw=(Token)match(input,KEYWORD_84,FOLLOW_KEYWORD_84_in_ruleQualifiedIdentifier8410); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              current.merge(kw);
+                              newLeafNode(kw, grammarAccess.getQualifiedIdentifierAccess().getJavaLangDoubleKeyword_3()); 
+                          
+                    }
+
+                    }
+                    break;
+                case 5 :
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3958:2: kw= KEYWORD_82
+                    {
+                    kw=(Token)match(input,KEYWORD_82,FOLLOW_KEYWORD_82_in_ruleQualifiedIdentifier8429); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              current.merge(kw);
+                              newLeafNode(kw, grammarAccess.getQualifiedIdentifierAccess().getJavaLangFloatKeyword_4()); 
+                          
+                    }
+
+                    }
+                    break;
+                case 6 :
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3965:2: kw= KEYWORD_87
+                    {
+                    kw=(Token)match(input,KEYWORD_87,FOLLOW_KEYWORD_87_in_ruleQualifiedIdentifier8448); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              current.merge(kw);
+                              newLeafNode(kw, grammarAccess.getQualifiedIdentifierAccess().getJavaLangIntegerKeyword_5()); 
+                          
+                    }
+
+                    }
+                    break;
+                case 7 :
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3972:2: kw= KEYWORD_81
+                    {
+                    kw=(Token)match(input,KEYWORD_81,FOLLOW_KEYWORD_81_in_ruleQualifiedIdentifier8467); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              current.merge(kw);
+                              newLeafNode(kw, grammarAccess.getQualifiedIdentifierAccess().getJavaLangLongKeyword_6()); 
+                          
+                    }
+
+                    }
+                    break;
+                case 8 :
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3979:2: kw= KEYWORD_83
+                    {
+                    kw=(Token)match(input,KEYWORD_83,FOLLOW_KEYWORD_83_in_ruleQualifiedIdentifier8486); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              current.merge(kw);
+                              newLeafNode(kw, grammarAccess.getQualifiedIdentifierAccess().getJavaLangShortKeyword_7()); 
+                          
+                    }
+
+                    }
+                    break;
+                case 9 :
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3986:2: kw= KEYWORD_85
+                    {
+                    kw=(Token)match(input,KEYWORD_85,FOLLOW_KEYWORD_85_in_ruleQualifiedIdentifier8505); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              current.merge(kw);
+                              newLeafNode(kw, grammarAccess.getQualifiedIdentifierAccess().getJavaLangStringKeyword_8()); 
+                          
+                    }
+
+                    }
+                    break;
+                case 10 :
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3992:6: (kw= KEYWORD_50 this_ID_10= RULE_ID (kw= KEYWORD_10 this_ID_12= RULE_ID )* )
+                    {
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3992:6: (kw= KEYWORD_50 this_ID_10= RULE_ID (kw= KEYWORD_10 this_ID_12= RULE_ID )* )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3993:2: kw= KEYWORD_50 this_ID_10= RULE_ID (kw= KEYWORD_10 this_ID_12= RULE_ID )*
+                    {
+                    kw=(Token)match(input,KEYWORD_50,FOLLOW_KEYWORD_50_in_ruleQualifiedIdentifier8525); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              current.merge(kw);
+                              newLeafNode(kw, grammarAccess.getQualifiedIdentifierAccess().getJavaKeyword_9_0()); 
+                          
+                    }
+                    this_ID_10=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleQualifiedIdentifier8540); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      		current.merge(this_ID_10);
+                          
+                    }
+                    if ( state.backtracking==0 ) {
+                       
+                          newLeafNode(this_ID_10, grammarAccess.getQualifiedIdentifierAccess().getIDTerminalRuleCall_9_1()); 
+                          
+                    }
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4005:1: (kw= KEYWORD_10 this_ID_12= RULE_ID )*
+                    loop53:
+                    do {
+                        int alt53=2;
+                        int LA53_0 = input.LA(1);
+
+                        if ( (LA53_0==KEYWORD_10) ) {
+                            alt53=1;
+                        }
+
+
+                        switch (alt53) {
+                    	case 1 :
+                    	    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4006:2: kw= KEYWORD_10 this_ID_12= RULE_ID
+                    	    {
+                    	    kw=(Token)match(input,KEYWORD_10,FOLLOW_KEYWORD_10_in_ruleQualifiedIdentifier8559); if (state.failed) return current;
+                    	    if ( state.backtracking==0 ) {
+
+                    	              current.merge(kw);
+                    	              newLeafNode(kw, grammarAccess.getQualifiedIdentifierAccess().getFullStopKeyword_9_2_0()); 
+                    	          
+                    	    }
+                    	    this_ID_12=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleQualifiedIdentifier8574); if (state.failed) return current;
+                    	    if ( state.backtracking==0 ) {
+
+                    	      		current.merge(this_ID_12);
+                    	          
+                    	    }
+                    	    if ( state.backtracking==0 ) {
+                    	       
+                    	          newLeafNode(this_ID_12, grammarAccess.getQualifiedIdentifierAccess().getIDTerminalRuleCall_9_2_1()); 
+                    	          
+                    	    }
+
+                    	    }
+                    	    break;
+
+                    	default :
+                    	    break loop53;
+                        }
+                    } while (true);
+
+
+                    }
+
+
+                    }
+                    break;
+                case 11 :
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4019:6: (kw= KEYWORD_57 this_ID_14= RULE_ID (kw= KEYWORD_10 this_ID_16= RULE_ID )* )
+                    {
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4019:6: (kw= KEYWORD_57 this_ID_14= RULE_ID (kw= KEYWORD_10 this_ID_16= RULE_ID )* )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4020:2: kw= KEYWORD_57 this_ID_14= RULE_ID (kw= KEYWORD_10 this_ID_16= RULE_ID )*
+                    {
+                    kw=(Token)match(input,KEYWORD_57,FOLLOW_KEYWORD_57_in_ruleQualifiedIdentifier8602); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              current.merge(kw);
+                              newLeafNode(kw, grammarAccess.getQualifiedIdentifierAccess().getJavaxKeyword_10_0()); 
+                          
+                    }
+                    this_ID_14=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleQualifiedIdentifier8617); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      		current.merge(this_ID_14);
+                          
+                    }
+                    if ( state.backtracking==0 ) {
+                       
+                          newLeafNode(this_ID_14, grammarAccess.getQualifiedIdentifierAccess().getIDTerminalRuleCall_10_1()); 
+                          
+                    }
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4032:1: (kw= KEYWORD_10 this_ID_16= RULE_ID )*
+                    loop54:
+                    do {
+                        int alt54=2;
+                        int LA54_0 = input.LA(1);
+
+                        if ( (LA54_0==KEYWORD_10) ) {
+                            alt54=1;
+                        }
+
+
+                        switch (alt54) {
+                    	case 1 :
+                    	    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4033:2: kw= KEYWORD_10 this_ID_16= RULE_ID
+                    	    {
+                    	    kw=(Token)match(input,KEYWORD_10,FOLLOW_KEYWORD_10_in_ruleQualifiedIdentifier8636); if (state.failed) return current;
+                    	    if ( state.backtracking==0 ) {
+
+                    	              current.merge(kw);
+                    	              newLeafNode(kw, grammarAccess.getQualifiedIdentifierAccess().getFullStopKeyword_10_2_0()); 
+                    	          
+                    	    }
+                    	    this_ID_16=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleQualifiedIdentifier8651); if (state.failed) return current;
+                    	    if ( state.backtracking==0 ) {
+
+                    	      		current.merge(this_ID_16);
+                    	          
+                    	    }
+                    	    if ( state.backtracking==0 ) {
+                    	       
+                    	          newLeafNode(this_ID_16, grammarAccess.getQualifiedIdentifierAccess().getIDTerminalRuleCall_10_2_1()); 
+                    	          
+                    	    }
+
+                    	    }
+                    	    break;
+
+                    	default :
+                    	    break loop54;
+                        }
+                    } while (true);
+
+
+                    }
+
+
+                    }
+                    break;
+                case 12 :
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4046:6: (this_ID_17= RULE_ID (kw= KEYWORD_10 this_ID_19= RULE_ID )* )
+                    {
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4046:6: (this_ID_17= RULE_ID (kw= KEYWORD_10 this_ID_19= RULE_ID )* )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4046:11: this_ID_17= RULE_ID (kw= KEYWORD_10 this_ID_19= RULE_ID )*
+                    {
+                    this_ID_17=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleQualifiedIdentifier8681); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      		current.merge(this_ID_17);
+                          
+                    }
+                    if ( state.backtracking==0 ) {
+                       
+                          newLeafNode(this_ID_17, grammarAccess.getQualifiedIdentifierAccess().getIDTerminalRuleCall_11_0()); 
+                          
+                    }
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4053:1: (kw= KEYWORD_10 this_ID_19= RULE_ID )*
+                    loop55:
+                    do {
+                        int alt55=2;
+                        int LA55_0 = input.LA(1);
+
+                        if ( (LA55_0==KEYWORD_10) ) {
+                            alt55=1;
+                        }
+
+
+                        switch (alt55) {
+                    	case 1 :
+                    	    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4054:2: kw= KEYWORD_10 this_ID_19= RULE_ID
+                    	    {
+                    	    kw=(Token)match(input,KEYWORD_10,FOLLOW_KEYWORD_10_in_ruleQualifiedIdentifier8700); if (state.failed) return current;
+                    	    if ( state.backtracking==0 ) {
+
+                    	              current.merge(kw);
+                    	              newLeafNode(kw, grammarAccess.getQualifiedIdentifierAccess().getFullStopKeyword_11_1_0()); 
+                    	          
+                    	    }
+                    	    this_ID_19=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleQualifiedIdentifier8715); if (state.failed) return current;
+                    	    if ( state.backtracking==0 ) {
+
+                    	      		current.merge(this_ID_19);
+                    	          
+                    	    }
+                    	    if ( state.backtracking==0 ) {
+                    	       
+                    	          newLeafNode(this_ID_19, grammarAccess.getQualifiedIdentifierAccess().getIDTerminalRuleCall_11_1_1()); 
+                    	          
+                    	    }
+
+                    	    }
+                    	    break;
+
+                    	default :
+                    	    break loop55;
+                        }
+                    } while (true);
+
+
+                    }
+
+
+                    }
+                    break;
 
             }
 
@@ -9793,7 +11035,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleCandidateClassName"
-    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3535:1: entryRuleCandidateClassName returns [String current=null] : iv_ruleCandidateClassName= ruleCandidateClassName EOF ;
+    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4074:1: entryRuleCandidateClassName returns [String current=null] : iv_ruleCandidateClassName= ruleCandidateClassName EOF ;
     public final String entryRuleCandidateClassName() throws RecognitionException {
         String current = null;
 
@@ -9801,13 +11043,13 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3536:1: (iv_ruleCandidateClassName= ruleCandidateClassName EOF )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3537:2: iv_ruleCandidateClassName= ruleCandidateClassName EOF
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4075:1: (iv_ruleCandidateClassName= ruleCandidateClassName EOF )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4076:2: iv_ruleCandidateClassName= ruleCandidateClassName EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getCandidateClassNameRule()); 
             }
-            pushFollow(FOLLOW_ruleCandidateClassName_in_entryRuleCandidateClassName7698);
+            pushFollow(FOLLOW_ruleCandidateClassName_in_entryRuleCandidateClassName8763);
             iv_ruleCandidateClassName=ruleCandidateClassName();
 
             state._fsp--;
@@ -9815,7 +11057,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleCandidateClassName.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleCandidateClassName7709); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleCandidateClassName8774); if (state.failed) return current;
 
             }
 
@@ -9833,7 +11075,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleCandidateClassName"
-    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3544:1: ruleCandidateClassName returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : this_QualifiedIdentifier_0= ruleQualifiedIdentifier ;
+    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4083:1: ruleCandidateClassName returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : this_QualifiedIdentifier_0= ruleQualifiedIdentifier ;
     public final AntlrDatatypeRuleToken ruleCandidateClassName() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -9843,15 +11085,15 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3548:6: (this_QualifiedIdentifier_0= ruleQualifiedIdentifier )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3550:5: this_QualifiedIdentifier_0= ruleQualifiedIdentifier
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4087:6: (this_QualifiedIdentifier_0= ruleQualifiedIdentifier )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4089:5: this_QualifiedIdentifier_0= ruleQualifiedIdentifier
             {
             if ( state.backtracking==0 ) {
                
                       newCompositeNode(grammarAccess.getCandidateClassNameAccess().getQualifiedIdentifierParserRuleCall()); 
                   
             }
-            pushFollow(FOLLOW_ruleQualifiedIdentifier_in_ruleCandidateClassName7755);
+            pushFollow(FOLLOW_ruleQualifiedIdentifier_in_ruleCandidateClassName8820);
             this_QualifiedIdentifier_0=ruleQualifiedIdentifier();
 
             state._fsp--;
@@ -9887,7 +11129,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleClassOrInterfaceName"
-    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3568:1: entryRuleClassOrInterfaceName returns [String current=null] : iv_ruleClassOrInterfaceName= ruleClassOrInterfaceName EOF ;
+    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4107:1: entryRuleClassOrInterfaceName returns [String current=null] : iv_ruleClassOrInterfaceName= ruleClassOrInterfaceName EOF ;
     public final String entryRuleClassOrInterfaceName() throws RecognitionException {
         String current = null;
 
@@ -9895,13 +11137,13 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3569:1: (iv_ruleClassOrInterfaceName= ruleClassOrInterfaceName EOF )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3570:2: iv_ruleClassOrInterfaceName= ruleClassOrInterfaceName EOF
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4108:1: (iv_ruleClassOrInterfaceName= ruleClassOrInterfaceName EOF )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4109:2: iv_ruleClassOrInterfaceName= ruleClassOrInterfaceName EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getClassOrInterfaceNameRule()); 
             }
-            pushFollow(FOLLOW_ruleClassOrInterfaceName_in_entryRuleClassOrInterfaceName7799);
+            pushFollow(FOLLOW_ruleClassOrInterfaceName_in_entryRuleClassOrInterfaceName8864);
             iv_ruleClassOrInterfaceName=ruleClassOrInterfaceName();
 
             state._fsp--;
@@ -9909,7 +11151,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleClassOrInterfaceName.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleClassOrInterfaceName7810); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleClassOrInterfaceName8875); if (state.failed) return current;
 
             }
 
@@ -9927,7 +11169,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleClassOrInterfaceName"
-    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3577:1: ruleClassOrInterfaceName returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : this_QualifiedIdentifier_0= ruleQualifiedIdentifier ;
+    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4116:1: ruleClassOrInterfaceName returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : this_QualifiedIdentifier_0= ruleQualifiedIdentifier ;
     public final AntlrDatatypeRuleToken ruleClassOrInterfaceName() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -9937,15 +11179,15 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3581:6: (this_QualifiedIdentifier_0= ruleQualifiedIdentifier )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3583:5: this_QualifiedIdentifier_0= ruleQualifiedIdentifier
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4120:6: (this_QualifiedIdentifier_0= ruleQualifiedIdentifier )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4122:5: this_QualifiedIdentifier_0= ruleQualifiedIdentifier
             {
             if ( state.backtracking==0 ) {
                
                       newCompositeNode(grammarAccess.getClassOrInterfaceNameAccess().getQualifiedIdentifierParserRuleCall()); 
                   
             }
-            pushFollow(FOLLOW_ruleQualifiedIdentifier_in_ruleClassOrInterfaceName7856);
+            pushFollow(FOLLOW_ruleQualifiedIdentifier_in_ruleClassOrInterfaceName8921);
             this_QualifiedIdentifier_0=ruleQualifiedIdentifier();
 
             state._fsp--;
@@ -9981,7 +11223,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleOrderByDirection"
-    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3601:1: ruleOrderByDirection returns [Enumerator current=null] : ( (enumLiteral_0= KEYWORD_26 ) | (enumLiteral_1= KEYWORD_60 ) | (enumLiteral_2= KEYWORD_29 ) | (enumLiteral_3= KEYWORD_64 ) ) ;
+    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4140:1: ruleOrderByDirection returns [Enumerator current=null] : ( (enumLiteral_0= KEYWORD_26 ) | (enumLiteral_1= KEYWORD_67 ) | (enumLiteral_2= KEYWORD_33 ) | (enumLiteral_3= KEYWORD_71 ) ) ;
     public final Enumerator ruleOrderByDirection() throws RecognitionException {
         Enumerator current = null;
 
@@ -9992,48 +11234,48 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
          enterRule(); 
         try {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3603:28: ( ( (enumLiteral_0= KEYWORD_26 ) | (enumLiteral_1= KEYWORD_60 ) | (enumLiteral_2= KEYWORD_29 ) | (enumLiteral_3= KEYWORD_64 ) ) )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3604:1: ( (enumLiteral_0= KEYWORD_26 ) | (enumLiteral_1= KEYWORD_60 ) | (enumLiteral_2= KEYWORD_29 ) | (enumLiteral_3= KEYWORD_64 ) )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4142:28: ( ( (enumLiteral_0= KEYWORD_26 ) | (enumLiteral_1= KEYWORD_67 ) | (enumLiteral_2= KEYWORD_33 ) | (enumLiteral_3= KEYWORD_71 ) ) )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4143:1: ( (enumLiteral_0= KEYWORD_26 ) | (enumLiteral_1= KEYWORD_67 ) | (enumLiteral_2= KEYWORD_33 ) | (enumLiteral_3= KEYWORD_71 ) )
             {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3604:1: ( (enumLiteral_0= KEYWORD_26 ) | (enumLiteral_1= KEYWORD_60 ) | (enumLiteral_2= KEYWORD_29 ) | (enumLiteral_3= KEYWORD_64 ) )
-            int alt53=4;
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4143:1: ( (enumLiteral_0= KEYWORD_26 ) | (enumLiteral_1= KEYWORD_67 ) | (enumLiteral_2= KEYWORD_33 ) | (enumLiteral_3= KEYWORD_71 ) )
+            int alt57=4;
             switch ( input.LA(1) ) {
             case KEYWORD_26:
                 {
-                alt53=1;
+                alt57=1;
                 }
                 break;
-            case KEYWORD_60:
+            case KEYWORD_67:
                 {
-                alt53=2;
+                alt57=2;
                 }
                 break;
-            case KEYWORD_29:
+            case KEYWORD_33:
                 {
-                alt53=3;
+                alt57=3;
                 }
                 break;
-            case KEYWORD_64:
+            case KEYWORD_71:
                 {
-                alt53=4;
+                alt57=4;
                 }
                 break;
             default:
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 53, 0, input);
+                    new NoViableAltException("", 57, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt53) {
+            switch (alt57) {
                 case 1 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3604:2: (enumLiteral_0= KEYWORD_26 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4143:2: (enumLiteral_0= KEYWORD_26 )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3604:2: (enumLiteral_0= KEYWORD_26 )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3604:7: enumLiteral_0= KEYWORD_26
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4143:2: (enumLiteral_0= KEYWORD_26 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4143:7: enumLiteral_0= KEYWORD_26
                     {
-                    enumLiteral_0=(Token)match(input,KEYWORD_26,FOLLOW_KEYWORD_26_in_ruleOrderByDirection7917); if (state.failed) return current;
+                    enumLiteral_0=(Token)match(input,KEYWORD_26,FOLLOW_KEYWORD_26_in_ruleOrderByDirection8982); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getOrderByDirectionAccess().getAscEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
@@ -10047,12 +11289,12 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3610:6: (enumLiteral_1= KEYWORD_60 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4149:6: (enumLiteral_1= KEYWORD_67 )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3610:6: (enumLiteral_1= KEYWORD_60 )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3610:11: enumLiteral_1= KEYWORD_60
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4149:6: (enumLiteral_1= KEYWORD_67 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4149:11: enumLiteral_1= KEYWORD_67
                     {
-                    enumLiteral_1=(Token)match(input,KEYWORD_60,FOLLOW_KEYWORD_60_in_ruleOrderByDirection7939); if (state.failed) return current;
+                    enumLiteral_1=(Token)match(input,KEYWORD_67,FOLLOW_KEYWORD_67_in_ruleOrderByDirection9004); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getOrderByDirectionAccess().getAscendingEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
@@ -10066,12 +11308,12 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3616:6: (enumLiteral_2= KEYWORD_29 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4155:6: (enumLiteral_2= KEYWORD_33 )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3616:6: (enumLiteral_2= KEYWORD_29 )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3616:11: enumLiteral_2= KEYWORD_29
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4155:6: (enumLiteral_2= KEYWORD_33 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4155:11: enumLiteral_2= KEYWORD_33
                     {
-                    enumLiteral_2=(Token)match(input,KEYWORD_29,FOLLOW_KEYWORD_29_in_ruleOrderByDirection7961); if (state.failed) return current;
+                    enumLiteral_2=(Token)match(input,KEYWORD_33,FOLLOW_KEYWORD_33_in_ruleOrderByDirection9026); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getOrderByDirectionAccess().getDescEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
@@ -10085,12 +11327,12 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3622:6: (enumLiteral_3= KEYWORD_64 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4161:6: (enumLiteral_3= KEYWORD_71 )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3622:6: (enumLiteral_3= KEYWORD_64 )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3622:11: enumLiteral_3= KEYWORD_64
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4161:6: (enumLiteral_3= KEYWORD_71 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4161:11: enumLiteral_3= KEYWORD_71
                     {
-                    enumLiteral_3=(Token)match(input,KEYWORD_64,FOLLOW_KEYWORD_64_in_ruleOrderByDirection7983); if (state.failed) return current;
+                    enumLiteral_3=(Token)match(input,KEYWORD_71,FOLLOW_KEYWORD_71_in_ruleOrderByDirection9048); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getOrderByDirectionAccess().getDescendingEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
@@ -10126,7 +11368,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleUnaryOperator"
-    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3632:1: ruleUnaryOperator returns [Enumerator current=null] : ( (enumLiteral_0= KEYWORD_7 ) | (enumLiteral_1= KEYWORD_9 ) | (enumLiteral_2= KEYWORD_17 ) | (enumLiteral_3= KEYWORD_1 ) ) ;
+    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4171:1: ruleUnaryOperator returns [Enumerator current=null] : ( (enumLiteral_0= KEYWORD_7 ) | (enumLiteral_1= KEYWORD_9 ) | (enumLiteral_2= KEYWORD_17 ) | (enumLiteral_3= KEYWORD_1 ) ) ;
     public final Enumerator ruleUnaryOperator() throws RecognitionException {
         Enumerator current = null;
 
@@ -10137,48 +11379,48 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
          enterRule(); 
         try {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3634:28: ( ( (enumLiteral_0= KEYWORD_7 ) | (enumLiteral_1= KEYWORD_9 ) | (enumLiteral_2= KEYWORD_17 ) | (enumLiteral_3= KEYWORD_1 ) ) )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3635:1: ( (enumLiteral_0= KEYWORD_7 ) | (enumLiteral_1= KEYWORD_9 ) | (enumLiteral_2= KEYWORD_17 ) | (enumLiteral_3= KEYWORD_1 ) )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4173:28: ( ( (enumLiteral_0= KEYWORD_7 ) | (enumLiteral_1= KEYWORD_9 ) | (enumLiteral_2= KEYWORD_17 ) | (enumLiteral_3= KEYWORD_1 ) ) )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4174:1: ( (enumLiteral_0= KEYWORD_7 ) | (enumLiteral_1= KEYWORD_9 ) | (enumLiteral_2= KEYWORD_17 ) | (enumLiteral_3= KEYWORD_1 ) )
             {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3635:1: ( (enumLiteral_0= KEYWORD_7 ) | (enumLiteral_1= KEYWORD_9 ) | (enumLiteral_2= KEYWORD_17 ) | (enumLiteral_3= KEYWORD_1 ) )
-            int alt54=4;
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4174:1: ( (enumLiteral_0= KEYWORD_7 ) | (enumLiteral_1= KEYWORD_9 ) | (enumLiteral_2= KEYWORD_17 ) | (enumLiteral_3= KEYWORD_1 ) )
+            int alt58=4;
             switch ( input.LA(1) ) {
             case KEYWORD_7:
                 {
-                alt54=1;
+                alt58=1;
                 }
                 break;
             case KEYWORD_9:
                 {
-                alt54=2;
+                alt58=2;
                 }
                 break;
             case KEYWORD_17:
                 {
-                alt54=3;
+                alt58=3;
                 }
                 break;
             case KEYWORD_1:
                 {
-                alt54=4;
+                alt58=4;
                 }
                 break;
             default:
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 54, 0, input);
+                    new NoViableAltException("", 58, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt54) {
+            switch (alt58) {
                 case 1 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3635:2: (enumLiteral_0= KEYWORD_7 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4174:2: (enumLiteral_0= KEYWORD_7 )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3635:2: (enumLiteral_0= KEYWORD_7 )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3635:7: enumLiteral_0= KEYWORD_7
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4174:2: (enumLiteral_0= KEYWORD_7 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4174:7: enumLiteral_0= KEYWORD_7
                     {
-                    enumLiteral_0=(Token)match(input,KEYWORD_7,FOLLOW_KEYWORD_7_in_ruleUnaryOperator8033); if (state.failed) return current;
+                    enumLiteral_0=(Token)match(input,KEYWORD_7,FOLLOW_KEYWORD_7_in_ruleUnaryOperator9098); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getUnaryOperatorAccess().getPositiveEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
@@ -10192,12 +11434,12 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3641:6: (enumLiteral_1= KEYWORD_9 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4180:6: (enumLiteral_1= KEYWORD_9 )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3641:6: (enumLiteral_1= KEYWORD_9 )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3641:11: enumLiteral_1= KEYWORD_9
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4180:6: (enumLiteral_1= KEYWORD_9 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4180:11: enumLiteral_1= KEYWORD_9
                     {
-                    enumLiteral_1=(Token)match(input,KEYWORD_9,FOLLOW_KEYWORD_9_in_ruleUnaryOperator8055); if (state.failed) return current;
+                    enumLiteral_1=(Token)match(input,KEYWORD_9,FOLLOW_KEYWORD_9_in_ruleUnaryOperator9120); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getUnaryOperatorAccess().getNegativeEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
@@ -10211,12 +11453,12 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3647:6: (enumLiteral_2= KEYWORD_17 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4186:6: (enumLiteral_2= KEYWORD_17 )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3647:6: (enumLiteral_2= KEYWORD_17 )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3647:11: enumLiteral_2= KEYWORD_17
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4186:6: (enumLiteral_2= KEYWORD_17 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4186:11: enumLiteral_2= KEYWORD_17
                     {
-                    enumLiteral_2=(Token)match(input,KEYWORD_17,FOLLOW_KEYWORD_17_in_ruleUnaryOperator8077); if (state.failed) return current;
+                    enumLiteral_2=(Token)match(input,KEYWORD_17,FOLLOW_KEYWORD_17_in_ruleUnaryOperator9142); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getUnaryOperatorAccess().getBitwiseNotEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
@@ -10230,12 +11472,12 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3653:6: (enumLiteral_3= KEYWORD_1 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4192:6: (enumLiteral_3= KEYWORD_1 )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3653:6: (enumLiteral_3= KEYWORD_1 )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3653:11: enumLiteral_3= KEYWORD_1
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4192:6: (enumLiteral_3= KEYWORD_1 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4192:11: enumLiteral_3= KEYWORD_1
                     {
-                    enumLiteral_3=(Token)match(input,KEYWORD_1,FOLLOW_KEYWORD_1_in_ruleUnaryOperator8099); if (state.failed) return current;
+                    enumLiteral_3=(Token)match(input,KEYWORD_1,FOLLOW_KEYWORD_1_in_ruleUnaryOperator9164); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getUnaryOperatorAccess().getLogicalNotEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
@@ -10271,7 +11513,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleAdditionOperator"
-    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3663:1: ruleAdditionOperator returns [Enumerator current=null] : ( (enumLiteral_0= KEYWORD_7 ) | (enumLiteral_1= KEYWORD_9 ) ) ;
+    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4202:1: ruleAdditionOperator returns [Enumerator current=null] : ( (enumLiteral_0= KEYWORD_7 ) | (enumLiteral_1= KEYWORD_9 ) ) ;
     public final Enumerator ruleAdditionOperator() throws RecognitionException {
         Enumerator current = null;
 
@@ -10280,34 +11522,34 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
          enterRule(); 
         try {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3665:28: ( ( (enumLiteral_0= KEYWORD_7 ) | (enumLiteral_1= KEYWORD_9 ) ) )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3666:1: ( (enumLiteral_0= KEYWORD_7 ) | (enumLiteral_1= KEYWORD_9 ) )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4204:28: ( ( (enumLiteral_0= KEYWORD_7 ) | (enumLiteral_1= KEYWORD_9 ) ) )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4205:1: ( (enumLiteral_0= KEYWORD_7 ) | (enumLiteral_1= KEYWORD_9 ) )
             {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3666:1: ( (enumLiteral_0= KEYWORD_7 ) | (enumLiteral_1= KEYWORD_9 ) )
-            int alt55=2;
-            int LA55_0 = input.LA(1);
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4205:1: ( (enumLiteral_0= KEYWORD_7 ) | (enumLiteral_1= KEYWORD_9 ) )
+            int alt59=2;
+            int LA59_0 = input.LA(1);
 
-            if ( (LA55_0==KEYWORD_7) ) {
-                alt55=1;
+            if ( (LA59_0==KEYWORD_7) ) {
+                alt59=1;
             }
-            else if ( (LA55_0==KEYWORD_9) ) {
-                alt55=2;
+            else if ( (LA59_0==KEYWORD_9) ) {
+                alt59=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 55, 0, input);
+                    new NoViableAltException("", 59, 0, input);
 
                 throw nvae;
             }
-            switch (alt55) {
+            switch (alt59) {
                 case 1 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3666:2: (enumLiteral_0= KEYWORD_7 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4205:2: (enumLiteral_0= KEYWORD_7 )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3666:2: (enumLiteral_0= KEYWORD_7 )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3666:7: enumLiteral_0= KEYWORD_7
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4205:2: (enumLiteral_0= KEYWORD_7 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4205:7: enumLiteral_0= KEYWORD_7
                     {
-                    enumLiteral_0=(Token)match(input,KEYWORD_7,FOLLOW_KEYWORD_7_in_ruleAdditionOperator8149); if (state.failed) return current;
+                    enumLiteral_0=(Token)match(input,KEYWORD_7,FOLLOW_KEYWORD_7_in_ruleAdditionOperator9214); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getAdditionOperatorAccess().getAddEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
@@ -10321,12 +11563,12 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3672:6: (enumLiteral_1= KEYWORD_9 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4211:6: (enumLiteral_1= KEYWORD_9 )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3672:6: (enumLiteral_1= KEYWORD_9 )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3672:11: enumLiteral_1= KEYWORD_9
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4211:6: (enumLiteral_1= KEYWORD_9 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4211:11: enumLiteral_1= KEYWORD_9
                     {
-                    enumLiteral_1=(Token)match(input,KEYWORD_9,FOLLOW_KEYWORD_9_in_ruleAdditionOperator8171); if (state.failed) return current;
+                    enumLiteral_1=(Token)match(input,KEYWORD_9,FOLLOW_KEYWORD_9_in_ruleAdditionOperator9236); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getAdditionOperatorAccess().getSubtractEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
@@ -10362,7 +11604,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleMultiplicationOperator"
-    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3682:1: ruleMultiplicationOperator returns [Enumerator current=null] : ( (enumLiteral_0= KEYWORD_6 ) | (enumLiteral_1= KEYWORD_11 ) | (enumLiteral_2= KEYWORD_2 ) ) ;
+    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4221:1: ruleMultiplicationOperator returns [Enumerator current=null] : ( (enumLiteral_0= KEYWORD_6 ) | (enumLiteral_1= KEYWORD_11 ) | (enumLiteral_2= KEYWORD_2 ) ) ;
     public final Enumerator ruleMultiplicationOperator() throws RecognitionException {
         Enumerator current = null;
 
@@ -10372,43 +11614,43 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
          enterRule(); 
         try {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3684:28: ( ( (enumLiteral_0= KEYWORD_6 ) | (enumLiteral_1= KEYWORD_11 ) | (enumLiteral_2= KEYWORD_2 ) ) )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3685:1: ( (enumLiteral_0= KEYWORD_6 ) | (enumLiteral_1= KEYWORD_11 ) | (enumLiteral_2= KEYWORD_2 ) )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4223:28: ( ( (enumLiteral_0= KEYWORD_6 ) | (enumLiteral_1= KEYWORD_11 ) | (enumLiteral_2= KEYWORD_2 ) ) )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4224:1: ( (enumLiteral_0= KEYWORD_6 ) | (enumLiteral_1= KEYWORD_11 ) | (enumLiteral_2= KEYWORD_2 ) )
             {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3685:1: ( (enumLiteral_0= KEYWORD_6 ) | (enumLiteral_1= KEYWORD_11 ) | (enumLiteral_2= KEYWORD_2 ) )
-            int alt56=3;
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4224:1: ( (enumLiteral_0= KEYWORD_6 ) | (enumLiteral_1= KEYWORD_11 ) | (enumLiteral_2= KEYWORD_2 ) )
+            int alt60=3;
             switch ( input.LA(1) ) {
             case KEYWORD_6:
                 {
-                alt56=1;
+                alt60=1;
                 }
                 break;
             case KEYWORD_11:
                 {
-                alt56=2;
+                alt60=2;
                 }
                 break;
             case KEYWORD_2:
                 {
-                alt56=3;
+                alt60=3;
                 }
                 break;
             default:
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 56, 0, input);
+                    new NoViableAltException("", 60, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt56) {
+            switch (alt60) {
                 case 1 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3685:2: (enumLiteral_0= KEYWORD_6 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4224:2: (enumLiteral_0= KEYWORD_6 )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3685:2: (enumLiteral_0= KEYWORD_6 )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3685:7: enumLiteral_0= KEYWORD_6
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4224:2: (enumLiteral_0= KEYWORD_6 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4224:7: enumLiteral_0= KEYWORD_6
                     {
-                    enumLiteral_0=(Token)match(input,KEYWORD_6,FOLLOW_KEYWORD_6_in_ruleMultiplicationOperator8221); if (state.failed) return current;
+                    enumLiteral_0=(Token)match(input,KEYWORD_6,FOLLOW_KEYWORD_6_in_ruleMultiplicationOperator9286); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getMultiplicationOperatorAccess().getMultiplyEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
@@ -10422,12 +11664,12 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3691:6: (enumLiteral_1= KEYWORD_11 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4230:6: (enumLiteral_1= KEYWORD_11 )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3691:6: (enumLiteral_1= KEYWORD_11 )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3691:11: enumLiteral_1= KEYWORD_11
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4230:6: (enumLiteral_1= KEYWORD_11 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4230:11: enumLiteral_1= KEYWORD_11
                     {
-                    enumLiteral_1=(Token)match(input,KEYWORD_11,FOLLOW_KEYWORD_11_in_ruleMultiplicationOperator8243); if (state.failed) return current;
+                    enumLiteral_1=(Token)match(input,KEYWORD_11,FOLLOW_KEYWORD_11_in_ruleMultiplicationOperator9308); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getMultiplicationOperatorAccess().getDivideEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
@@ -10441,12 +11683,12 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3697:6: (enumLiteral_2= KEYWORD_2 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4236:6: (enumLiteral_2= KEYWORD_2 )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3697:6: (enumLiteral_2= KEYWORD_2 )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3697:11: enumLiteral_2= KEYWORD_2
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4236:6: (enumLiteral_2= KEYWORD_2 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4236:11: enumLiteral_2= KEYWORD_2
                     {
-                    enumLiteral_2=(Token)match(input,KEYWORD_2,FOLLOW_KEYWORD_2_in_ruleMultiplicationOperator8265); if (state.failed) return current;
+                    enumLiteral_2=(Token)match(input,KEYWORD_2,FOLLOW_KEYWORD_2_in_ruleMultiplicationOperator9330); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getMultiplicationOperatorAccess().getModuloEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
@@ -10482,7 +11724,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleComparisonOperator"
-    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3707:1: ruleComparisonOperator returns [Enumerator current=null] : ( (enumLiteral_0= KEYWORD_14 ) | (enumLiteral_1= KEYWORD_15 ) | (enumLiteral_2= KEYWORD_20 ) | (enumLiteral_3= KEYWORD_22 ) | (enumLiteral_4= KEYWORD_21 ) | (enumLiteral_5= KEYWORD_18 ) | (enumLiteral_6= KEYWORD_67 ) ) ;
+    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4246:1: ruleComparisonOperator returns [Enumerator current=null] : ( (enumLiteral_0= KEYWORD_14 ) | (enumLiteral_1= KEYWORD_15 ) | (enumLiteral_2= KEYWORD_20 ) | (enumLiteral_3= KEYWORD_22 ) | (enumLiteral_4= KEYWORD_21 ) | (enumLiteral_5= KEYWORD_18 ) | (enumLiteral_6= KEYWORD_74 ) ) ;
     public final Enumerator ruleComparisonOperator() throws RecognitionException {
         Enumerator current = null;
 
@@ -10496,63 +11738,63 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
          enterRule(); 
         try {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3709:28: ( ( (enumLiteral_0= KEYWORD_14 ) | (enumLiteral_1= KEYWORD_15 ) | (enumLiteral_2= KEYWORD_20 ) | (enumLiteral_3= KEYWORD_22 ) | (enumLiteral_4= KEYWORD_21 ) | (enumLiteral_5= KEYWORD_18 ) | (enumLiteral_6= KEYWORD_67 ) ) )
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3710:1: ( (enumLiteral_0= KEYWORD_14 ) | (enumLiteral_1= KEYWORD_15 ) | (enumLiteral_2= KEYWORD_20 ) | (enumLiteral_3= KEYWORD_22 ) | (enumLiteral_4= KEYWORD_21 ) | (enumLiteral_5= KEYWORD_18 ) | (enumLiteral_6= KEYWORD_67 ) )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4248:28: ( ( (enumLiteral_0= KEYWORD_14 ) | (enumLiteral_1= KEYWORD_15 ) | (enumLiteral_2= KEYWORD_20 ) | (enumLiteral_3= KEYWORD_22 ) | (enumLiteral_4= KEYWORD_21 ) | (enumLiteral_5= KEYWORD_18 ) | (enumLiteral_6= KEYWORD_74 ) ) )
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4249:1: ( (enumLiteral_0= KEYWORD_14 ) | (enumLiteral_1= KEYWORD_15 ) | (enumLiteral_2= KEYWORD_20 ) | (enumLiteral_3= KEYWORD_22 ) | (enumLiteral_4= KEYWORD_21 ) | (enumLiteral_5= KEYWORD_18 ) | (enumLiteral_6= KEYWORD_74 ) )
             {
-            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3710:1: ( (enumLiteral_0= KEYWORD_14 ) | (enumLiteral_1= KEYWORD_15 ) | (enumLiteral_2= KEYWORD_20 ) | (enumLiteral_3= KEYWORD_22 ) | (enumLiteral_4= KEYWORD_21 ) | (enumLiteral_5= KEYWORD_18 ) | (enumLiteral_6= KEYWORD_67 ) )
-            int alt57=7;
+            // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4249:1: ( (enumLiteral_0= KEYWORD_14 ) | (enumLiteral_1= KEYWORD_15 ) | (enumLiteral_2= KEYWORD_20 ) | (enumLiteral_3= KEYWORD_22 ) | (enumLiteral_4= KEYWORD_21 ) | (enumLiteral_5= KEYWORD_18 ) | (enumLiteral_6= KEYWORD_74 ) )
+            int alt61=7;
             switch ( input.LA(1) ) {
             case KEYWORD_14:
                 {
-                alt57=1;
+                alt61=1;
                 }
                 break;
             case KEYWORD_15:
                 {
-                alt57=2;
+                alt61=2;
                 }
                 break;
             case KEYWORD_20:
                 {
-                alt57=3;
+                alt61=3;
                 }
                 break;
             case KEYWORD_22:
                 {
-                alt57=4;
+                alt61=4;
                 }
                 break;
             case KEYWORD_21:
                 {
-                alt57=5;
+                alt61=5;
                 }
                 break;
             case KEYWORD_18:
                 {
-                alt57=6;
+                alt61=6;
                 }
                 break;
-            case KEYWORD_67:
+            case KEYWORD_74:
                 {
-                alt57=7;
+                alt61=7;
                 }
                 break;
             default:
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 57, 0, input);
+                    new NoViableAltException("", 61, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt57) {
+            switch (alt61) {
                 case 1 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3710:2: (enumLiteral_0= KEYWORD_14 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4249:2: (enumLiteral_0= KEYWORD_14 )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3710:2: (enumLiteral_0= KEYWORD_14 )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3710:7: enumLiteral_0= KEYWORD_14
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4249:2: (enumLiteral_0= KEYWORD_14 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4249:7: enumLiteral_0= KEYWORD_14
                     {
-                    enumLiteral_0=(Token)match(input,KEYWORD_14,FOLLOW_KEYWORD_14_in_ruleComparisonOperator8315); if (state.failed) return current;
+                    enumLiteral_0=(Token)match(input,KEYWORD_14,FOLLOW_KEYWORD_14_in_ruleComparisonOperator9380); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getComparisonOperatorAccess().getLessThenEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
@@ -10566,12 +11808,12 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3716:6: (enumLiteral_1= KEYWORD_15 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4255:6: (enumLiteral_1= KEYWORD_15 )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3716:6: (enumLiteral_1= KEYWORD_15 )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3716:11: enumLiteral_1= KEYWORD_15
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4255:6: (enumLiteral_1= KEYWORD_15 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4255:11: enumLiteral_1= KEYWORD_15
                     {
-                    enumLiteral_1=(Token)match(input,KEYWORD_15,FOLLOW_KEYWORD_15_in_ruleComparisonOperator8337); if (state.failed) return current;
+                    enumLiteral_1=(Token)match(input,KEYWORD_15,FOLLOW_KEYWORD_15_in_ruleComparisonOperator9402); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getComparisonOperatorAccess().getGreaterThenEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
@@ -10585,12 +11827,12 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3722:6: (enumLiteral_2= KEYWORD_20 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4261:6: (enumLiteral_2= KEYWORD_20 )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3722:6: (enumLiteral_2= KEYWORD_20 )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3722:11: enumLiteral_2= KEYWORD_20
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4261:6: (enumLiteral_2= KEYWORD_20 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4261:11: enumLiteral_2= KEYWORD_20
                     {
-                    enumLiteral_2=(Token)match(input,KEYWORD_20,FOLLOW_KEYWORD_20_in_ruleComparisonOperator8359); if (state.failed) return current;
+                    enumLiteral_2=(Token)match(input,KEYWORD_20,FOLLOW_KEYWORD_20_in_ruleComparisonOperator9424); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getComparisonOperatorAccess().getLessEqualEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
@@ -10604,12 +11846,12 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3728:6: (enumLiteral_3= KEYWORD_22 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4267:6: (enumLiteral_3= KEYWORD_22 )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3728:6: (enumLiteral_3= KEYWORD_22 )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3728:11: enumLiteral_3= KEYWORD_22
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4267:6: (enumLiteral_3= KEYWORD_22 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4267:11: enumLiteral_3= KEYWORD_22
                     {
-                    enumLiteral_3=(Token)match(input,KEYWORD_22,FOLLOW_KEYWORD_22_in_ruleComparisonOperator8381); if (state.failed) return current;
+                    enumLiteral_3=(Token)match(input,KEYWORD_22,FOLLOW_KEYWORD_22_in_ruleComparisonOperator9446); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getComparisonOperatorAccess().getGreaterEqualEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
@@ -10623,12 +11865,12 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 5 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3734:6: (enumLiteral_4= KEYWORD_21 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4273:6: (enumLiteral_4= KEYWORD_21 )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3734:6: (enumLiteral_4= KEYWORD_21 )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3734:11: enumLiteral_4= KEYWORD_21
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4273:6: (enumLiteral_4= KEYWORD_21 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4273:11: enumLiteral_4= KEYWORD_21
                     {
-                    enumLiteral_4=(Token)match(input,KEYWORD_21,FOLLOW_KEYWORD_21_in_ruleComparisonOperator8403); if (state.failed) return current;
+                    enumLiteral_4=(Token)match(input,KEYWORD_21,FOLLOW_KEYWORD_21_in_ruleComparisonOperator9468); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getComparisonOperatorAccess().getEqualEnumLiteralDeclaration_4().getEnumLiteral().getInstance();
@@ -10642,12 +11884,12 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 6 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3740:6: (enumLiteral_5= KEYWORD_18 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4279:6: (enumLiteral_5= KEYWORD_18 )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3740:6: (enumLiteral_5= KEYWORD_18 )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3740:11: enumLiteral_5= KEYWORD_18
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4279:6: (enumLiteral_5= KEYWORD_18 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4279:11: enumLiteral_5= KEYWORD_18
                     {
-                    enumLiteral_5=(Token)match(input,KEYWORD_18,FOLLOW_KEYWORD_18_in_ruleComparisonOperator8425); if (state.failed) return current;
+                    enumLiteral_5=(Token)match(input,KEYWORD_18,FOLLOW_KEYWORD_18_in_ruleComparisonOperator9490); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getComparisonOperatorAccess().getNotEqualEnumLiteralDeclaration_5().getEnumLiteral().getInstance();
@@ -10661,12 +11903,12 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 7 :
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3746:6: (enumLiteral_6= KEYWORD_67 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4285:6: (enumLiteral_6= KEYWORD_74 )
                     {
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3746:6: (enumLiteral_6= KEYWORD_67 )
-                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3746:11: enumLiteral_6= KEYWORD_67
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4285:6: (enumLiteral_6= KEYWORD_74 )
+                    // ../org.nightlabs.jjqb.xtext.jdoql/src-gen/org/nightlabs/jjqb/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4285:11: enumLiteral_6= KEYWORD_74
                     {
-                    enumLiteral_6=(Token)match(input,KEYWORD_67,FOLLOW_KEYWORD_67_in_ruleComparisonOperator8447); if (state.failed) return current;
+                    enumLiteral_6=(Token)match(input,KEYWORD_74,FOLLOW_KEYWORD_74_in_ruleComparisonOperator9512); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getComparisonOperatorAccess().getInstanceofEnumLiteralDeclaration_6().getEnumLiteral().getInstance();
@@ -10703,77 +11945,146 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
     // Delegated rules
 
 
+    protected DFA34 dfa34 = new DFA34(this);
+    static final String DFA34_eotS =
+        "\10\uffff";
+    static final String DFA34_eofS =
+        "\6\uffff\1\2\1\uffff";
+    static final String DFA34_minS =
+        "\2\4\1\uffff\1\30\1\uffff\1\21\1\4\1\30";
+    static final String DFA34_maxS =
+        "\2\142\1\uffff\1\136\1\uffff\2\142\1\136";
+    static final String DFA34_acceptS =
+        "\2\uffff\1\2\1\uffff\1\1\3\uffff";
+    static final String DFA34_specialS =
+        "\10\uffff}>";
+    static final String[] DFA34_transitionS = {
+            "\2\2\1\uffff\2\2\10\uffff\4\2\4\uffff\1\2\1\uffff\1\2\1\uffff"+
+            "\1\2\1\uffff\3\2\2\uffff\3\2\12\uffff\2\2\11\uffff\4\2\1\uffff"+
+            "\2\2\1\uffff\3\2\10\uffff\1\2\2\uffff\1\1\2\uffff\1\2\1\uffff"+
+            "\1\2\2\uffff\1\2\4\uffff\4\2",
+            "\2\2\1\4\2\2\10\4\4\2\4\uffff\1\2\1\uffff\1\2\1\uffff\1\2\1"+
+            "\uffff\3\2\1\uffff\1\4\3\2\3\uffff\1\4\1\uffff\1\4\4\uffff\2"+
+            "\2\3\4\3\uffff\3\4\4\2\1\uffff\2\2\1\4\3\2\10\uffff\1\2\2\uffff"+
+            "\1\2\2\uffff\1\2\1\uffff\1\2\2\uffff\1\2\4\uffff\1\2\1\3\2\2",
+            "",
+            "\1\2\56\uffff\5\2\2\uffff\1\2\1\uffff\2\2\1\uffff\1\6\2\2\1"+
+            "\uffff\1\2\1\5\1\2\2\uffff\3\2",
+            "",
+            "\4\2\4\uffff\1\2\3\uffff\1\2\2\uffff\2\2\2\uffff\3\2\13\uffff"+
+            "\1\2\11\uffff\4\2\2\uffff\1\2\17\uffff\1\2\15\uffff\1\7\2\2",
+            "\2\4\1\uffff\2\4\10\uffff\4\4\2\2\1\uffff\1\2\1\4\1\2\1\4\1"+
+            "\2\1\4\1\uffff\3\4\2\uffff\3\4\1\2\3\uffff\1\2\1\uffff\3\2\1"+
+            "\uffff\2\4\3\uffff\3\2\3\uffff\4\4\1\2\2\4\1\uffff\3\4\6\2\1"+
+            "\uffff\1\2\1\uffff\2\2\1\4\7\2\1\4\1\uffff\3\2\1\uffff\3\4",
+            "\1\2\56\uffff\5\2\2\uffff\1\2\1\uffff\2\2\1\uffff\1\6\2\2\1"+
+            "\uffff\1\2\1\5\1\2\2\uffff\3\2"
+    };
+
+    static final short[] DFA34_eot = DFA.unpackEncodedString(DFA34_eotS);
+    static final short[] DFA34_eof = DFA.unpackEncodedString(DFA34_eofS);
+    static final char[] DFA34_min = DFA.unpackEncodedStringToUnsignedChars(DFA34_minS);
+    static final char[] DFA34_max = DFA.unpackEncodedStringToUnsignedChars(DFA34_maxS);
+    static final short[] DFA34_accept = DFA.unpackEncodedString(DFA34_acceptS);
+    static final short[] DFA34_special = DFA.unpackEncodedString(DFA34_specialS);
+    static final short[][] DFA34_transition;
+
+    static {
+        int numStates = DFA34_transitionS.length;
+        DFA34_transition = new short[numStates][];
+        for (int i=0; i<numStates; i++) {
+            DFA34_transition[i] = DFA.unpackEncodedString(DFA34_transitionS[i]);
+        }
+    }
+
+    class DFA34 extends DFA {
+
+        public DFA34(BaseRecognizer recognizer) {
+            this.recognizer = recognizer;
+            this.decisionNumber = 34;
+            this.eot = DFA34_eot;
+            this.eof = DFA34_eof;
+            this.min = DFA34_min;
+            this.max = DFA34_max;
+            this.accept = DFA34_accept;
+            this.special = DFA34_special;
+            this.transition = DFA34_transition;
+        }
+        public String getDescription() {
+            return "1960:1: ( (otherlv_0= KEYWORD_4 ( (lv_castType_1_0= ruleType ) ) otherlv_2= KEYWORD_5 ( (lv_right_3_0= ruleFieldAccessExpression ) ) ) | ( ( (lv_unaryOperator_4_0= ruleUnaryOperator ) )? ( (lv_right_5_0= ruleFieldAccessExpression ) ) ) )";
+        }
+    }
  
 
     public static final BitSet FOLLOW_ruleSingleStringJDOQL_in_entryRuleSingleStringJDOQL73 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleSingleStringJDOQL83 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSelectClause_in_ruleSingleStringJDOQL129 = new BitSet(new long[]{0x0000040000000000L});
-    public static final BitSet FOLLOW_ruleFromClause_in_ruleSingleStringJDOQL150 = new BitSet(new long[]{0x0000003E00040402L});
-    public static final BitSet FOLLOW_ruleWhereClause_in_ruleSingleStringJDOQL171 = new BitSet(new long[]{0x0000001E00040402L});
-    public static final BitSet FOLLOW_ruleVariablesClause_in_ruleSingleStringJDOQL193 = new BitSet(new long[]{0x0000001E00000402L});
-    public static final BitSet FOLLOW_ruleParametersClause_in_ruleSingleStringJDOQL215 = new BitSet(new long[]{0x0000001E00000002L});
-    public static final BitSet FOLLOW_ruleImportClause_in_ruleSingleStringJDOQL237 = new BitSet(new long[]{0x0000001C00000002L});
-    public static final BitSet FOLLOW_ruleGroupByClause_in_ruleSingleStringJDOQL259 = new BitSet(new long[]{0x0000001800000002L});
-    public static final BitSet FOLLOW_ruleOrderByClause_in_ruleSingleStringJDOQL281 = new BitSet(new long[]{0x0000001000000002L});
+    public static final BitSet FOLLOW_ruleSelectClause_in_ruleSingleStringJDOQL129 = new BitSet(new long[]{0x0080000000000000L});
+    public static final BitSet FOLLOW_ruleFromClause_in_ruleSingleStringJDOQL150 = new BitSet(new long[]{0x0001E80010400002L});
+    public static final BitSet FOLLOW_ruleWhereClause_in_ruleSingleStringJDOQL171 = new BitSet(new long[]{0x0000E80010400002L});
+    public static final BitSet FOLLOW_ruleVariablesClause_in_ruleSingleStringJDOQL193 = new BitSet(new long[]{0x0000E80000400002L});
+    public static final BitSet FOLLOW_ruleParametersClause_in_ruleSingleStringJDOQL215 = new BitSet(new long[]{0x0000E80000000002L});
+    public static final BitSet FOLLOW_ruleImportClause_in_ruleSingleStringJDOQL237 = new BitSet(new long[]{0x0000E00000000002L});
+    public static final BitSet FOLLOW_ruleGroupByClause_in_ruleSingleStringJDOQL259 = new BitSet(new long[]{0x0000C00000000002L});
+    public static final BitSet FOLLOW_ruleOrderByClause_in_ruleSingleStringJDOQL281 = new BitSet(new long[]{0x0000800000000002L});
     public static final BitSet FOLLOW_ruleRangeClause_in_ruleSingleStringJDOQL303 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleSelectClause_in_entryRuleSelectClause339 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleSelectClause349 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_47_in_ruleSelectClause399 = new BitSet(new long[]{0x401788409CFAE1F2L,0x000000000003C252L});
-    public static final BitSet FOLLOW_KEYWORD_48_in_ruleSelectClause417 = new BitSet(new long[]{0x401788401CFAE1F2L,0x000000000003C252L});
-    public static final BitSet FOLLOW_ruleResultClause_in_ruleSelectClause450 = new BitSet(new long[]{0x0000080000000002L});
+    public static final BitSet FOLLOW_KEYWORD_53_in_ruleSelectClause399 = new BitSet(new long[]{0xF1060273EA1E01B2L,0x0000000784A48076L});
+    public static final BitSet FOLLOW_KEYWORD_54_in_ruleSelectClause417 = new BitSet(new long[]{0xF1060073EA1E01B2L,0x0000000784A48076L});
+    public static final BitSet FOLLOW_ruleResultClause_in_ruleSelectClause450 = new BitSet(new long[]{0x0100000000000002L});
     public static final BitSet FOLLOW_ruleIntoClause_in_ruleSelectClause472 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleResultClause_in_entryRuleResultClause508 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleResultClause518 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_56_in_ruleResultClause562 = new BitSet(new long[]{0x401780401CFAE1F0L,0x000000000003C252L});
-    public static final BitSet FOLLOW_ruleResultSpec_in_ruleResultClause595 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000020L});
-    public static final BitSet FOLLOW_KEYWORD_8_in_ruleResultClause609 = new BitSet(new long[]{0x401780401CFAE1F0L,0x000000000003C252L});
-    public static final BitSet FOLLOW_ruleResultSpec_in_ruleResultClause629 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000020L});
+    public static final BitSet FOLLOW_KEYWORD_63_in_ruleResultClause562 = new BitSet(new long[]{0xF0060073EA1E01B0L,0x0000000784A48076L});
+    public static final BitSet FOLLOW_ruleResultSpec_in_ruleResultClause595 = new BitSet(new long[]{0x0000000000000002L,0x0000000000400000L});
+    public static final BitSet FOLLOW_KEYWORD_8_in_ruleResultClause609 = new BitSet(new long[]{0xF0060073EA1E01B0L,0x0000000784A48076L});
+    public static final BitSet FOLLOW_ruleResultSpec_in_ruleResultClause629 = new BitSet(new long[]{0x0000000000000002L,0x0000000000400000L});
     public static final BitSet FOLLOW_ruleIntoClause_in_entryRuleIntoClause666 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleIntoClause676 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_31_in_ruleIntoClause714 = new BitSet(new long[]{0x0000000000000000L,0x0000000000008000L});
+    public static final BitSet FOLLOW_KEYWORD_35_in_ruleIntoClause714 = new BitSet(new long[]{0x001010000001FE40L,0x0000000100000000L});
     public static final BitSet FOLLOW_ruleClassOrInterfaceName_in_ruleIntoClause734 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleResultSpec_in_entryRuleResultSpec769 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleResultSpec779 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleResultSpec829 = new BitSet(new long[]{0x0800000000000002L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleResultSpec829 = new BitSet(new long[]{0x0000000000000002L,0x0000000000001000L});
     public static final BitSet FOLLOW_ruleResultNaming_in_ruleResultSpec849 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleResultNaming_in_entryRuleResultNaming885 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleResultNaming895 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_23_in_ruleResultNaming933 = new BitSet(new long[]{0x0000000000000000L,0x0000000000008000L});
+    public static final BitSet FOLLOW_KEYWORD_23_in_ruleResultNaming933 = new BitSet(new long[]{0x0000000000000000L,0x0000000100000000L});
     public static final BitSet FOLLOW_RULE_ID_in_ruleResultNaming949 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleFromClause_in_entryRuleFromClause989 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleFromClause999 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_30_in_ruleFromClause1037 = new BitSet(new long[]{0x0000000000000000L,0x0000000000008000L});
-    public static final BitSet FOLLOW_ruleCandidateClassName_in_ruleFromClause1057 = new BitSet(new long[]{0x0000000001000002L});
-    public static final BitSet FOLLOW_KEYWORD_51_in_ruleFromClause1077 = new BitSet(new long[]{0x0000000000000800L});
-    public static final BitSet FOLLOW_KEYWORD_66_in_ruleFromClause1101 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_34_in_ruleFromClause1037 = new BitSet(new long[]{0x001010000001FE40L,0x0000000100000000L});
+    public static final BitSet FOLLOW_ruleCandidateClassName_in_ruleFromClause1057 = new BitSet(new long[]{0x0000000400000002L});
+    public static final BitSet FOLLOW_KEYWORD_58_in_ruleFromClause1077 = new BitSet(new long[]{0x0000000000800000L});
+    public static final BitSet FOLLOW_KEYWORD_73_in_ruleFromClause1101 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleWhereClause_in_entryRuleWhereClause1137 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleWhereClause1147 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_42_in_ruleWhereClause1185 = new BitSet(new long[]{0x401780401CFAE1F0L,0x000000000003C252L});
+    public static final BitSet FOLLOW_KEYWORD_46_in_ruleWhereClause1185 = new BitSet(new long[]{0xF0060073EA1E01B0L,0x0000000784A48076L});
     public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleWhereClause1205 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleVariablesClause_in_entryRuleVariablesClause1240 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleVariablesClause1250 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_62_in_ruleVariablesClause1288 = new BitSet(new long[]{0x0020718102000000L,0x0000000000008000L});
-    public static final BitSet FOLLOW_ruleVariableDeclaration_in_ruleVariablesClause1308 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000400L});
-    public static final BitSet FOLLOW_KEYWORD_13_in_ruleVariablesClause1322 = new BitSet(new long[]{0x0020718102000000L,0x0000000000008000L});
-    public static final BitSet FOLLOW_ruleVariableDeclaration_in_ruleVariablesClause1342 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000400L});
+    public static final BitSet FOLLOW_KEYWORD_69_in_ruleVariablesClause1288 = new BitSet(new long[]{0x0E3814080001FE40L,0x0000000100000008L});
+    public static final BitSet FOLLOW_ruleVariableDeclaration_in_ruleVariablesClause1308 = new BitSet(new long[]{0x0000000000000002L,0x0000000008000000L});
+    public static final BitSet FOLLOW_KEYWORD_13_in_ruleVariablesClause1322 = new BitSet(new long[]{0x0E3814080001FE40L,0x0000000100000008L});
+    public static final BitSet FOLLOW_ruleVariableDeclaration_in_ruleVariablesClause1342 = new BitSet(new long[]{0x0000000000000002L,0x0000000008000000L});
     public static final BitSet FOLLOW_KEYWORD_13_in_ruleVariablesClause1358 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleVariableDeclaration_in_entryRuleVariableDeclaration1394 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleVariableDeclaration1404 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleType_in_ruleVariableDeclaration1450 = new BitSet(new long[]{0x0000000000000000L,0x0000000000008000L});
+    public static final BitSet FOLLOW_ruleType_in_ruleVariableDeclaration1450 = new BitSet(new long[]{0x0000000000000000L,0x0000000100000000L});
     public static final BitSet FOLLOW_ruleVariableName_in_ruleVariableDeclaration1471 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleVariableName_in_entryRuleVariableName1507 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleVariableName1518 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_RULE_ID_in_ruleVariableName1557 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleParametersClause_in_entryRuleParametersClause1600 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleParametersClause1610 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_65_in_ruleParametersClause1648 = new BitSet(new long[]{0x0020718102000000L,0x0000000000008000L});
-    public static final BitSet FOLLOW_ruleParameterDeclaration_in_ruleParametersClause1668 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000020L});
-    public static final BitSet FOLLOW_KEYWORD_8_in_ruleParametersClause1682 = new BitSet(new long[]{0x0020718102000000L,0x0000000000008000L});
-    public static final BitSet FOLLOW_ruleParameterDeclaration_in_ruleParametersClause1702 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000020L});
+    public static final BitSet FOLLOW_KEYWORD_72_in_ruleParametersClause1648 = new BitSet(new long[]{0x0E3814080001FE40L,0x0000000100000008L});
+    public static final BitSet FOLLOW_ruleParameterDeclaration_in_ruleParametersClause1668 = new BitSet(new long[]{0x0000000000000002L,0x0000000000400000L});
+    public static final BitSet FOLLOW_KEYWORD_8_in_ruleParametersClause1682 = new BitSet(new long[]{0x0E3814080001FE40L,0x0000000100000008L});
+    public static final BitSet FOLLOW_ruleParameterDeclaration_in_ruleParametersClause1702 = new BitSet(new long[]{0x0000000000000002L,0x0000000000400000L});
     public static final BitSet FOLLOW_KEYWORD_8_in_ruleParametersClause1718 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleParameterDeclaration_in_entryRuleParameterDeclaration1754 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleParameterDeclaration1764 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleType_in_ruleParameterDeclaration1810 = new BitSet(new long[]{0x0000000000000000L,0x0000000000008000L});
+    public static final BitSet FOLLOW_ruleType_in_ruleParameterDeclaration1810 = new BitSet(new long[]{0x0000000000000000L,0x0000000100000000L});
     public static final BitSet FOLLOW_ruleDeclaredParameterName_in_ruleParameterDeclaration1831 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleDeclaredParameterName_in_entryRuleDeclaredParameterName1867 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleDeclaredParameterName1878 = new BitSet(new long[]{0x0000000000000002L});
@@ -10783,254 +12094,307 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_RULE_ID_in_ruleParameterName2018 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleImportClause_in_entryRuleImportClause2061 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleImportClause2071 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleImportDeclaration_in_ruleImportClause2117 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000400L});
-    public static final BitSet FOLLOW_KEYWORD_13_in_ruleImportClause2131 = new BitSet(new long[]{0x0000000200000000L});
-    public static final BitSet FOLLOW_ruleImportDeclaration_in_ruleImportClause2151 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000400L});
+    public static final BitSet FOLLOW_ruleImportDeclaration_in_ruleImportClause2117 = new BitSet(new long[]{0x0000000000000002L,0x0000000008000000L});
+    public static final BitSet FOLLOW_KEYWORD_13_in_ruleImportClause2131 = new BitSet(new long[]{0x0000080000000000L});
+    public static final BitSet FOLLOW_ruleImportDeclaration_in_ruleImportClause2151 = new BitSet(new long[]{0x0000000000000002L,0x0000000008000000L});
     public static final BitSet FOLLOW_KEYWORD_13_in_ruleImportClause2167 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleImportDeclaration_in_entryRuleImportDeclaration2204 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleImportDeclaration2215 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_50_in_ruleImportDeclaration2253 = new BitSet(new long[]{0x0000000000000000L,0x0000000000008000L});
+    public static final BitSet FOLLOW_KEYWORD_56_in_ruleImportDeclaration2253 = new BitSet(new long[]{0x001010000001FE40L,0x0000000100000000L});
     public static final BitSet FOLLOW_ruleQualifiedIdentifier_in_ruleImportDeclaration2275 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleGroupByClause_in_entryRuleGroupByClause2319 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleGroupByClause2329 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_39_in_ruleGroupByClause2367 = new BitSet(new long[]{0x1000000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_24_in_ruleGroupByClause2379 = new BitSet(new long[]{0x401780401CFAE1F0L,0x000000000003C252L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleGroupByClause2399 = new BitSet(new long[]{0x0000000020000002L,0x0000000000000020L});
-    public static final BitSet FOLLOW_KEYWORD_8_in_ruleGroupByClause2413 = new BitSet(new long[]{0x401780401CFAE1F0L,0x000000000003C252L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleGroupByClause2433 = new BitSet(new long[]{0x0000000020000002L,0x0000000000000020L});
-    public static final BitSet FOLLOW_KEYWORD_8_in_ruleGroupByClause2449 = new BitSet(new long[]{0x0000000020000002L});
+    public static final BitSet FOLLOW_KEYWORD_43_in_ruleGroupByClause2367 = new BitSet(new long[]{0x0000000000000000L,0x0000000000002000L});
+    public static final BitSet FOLLOW_KEYWORD_24_in_ruleGroupByClause2379 = new BitSet(new long[]{0xF0060073EA1E01B0L,0x0000000784A48076L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleGroupByClause2399 = new BitSet(new long[]{0x0000008000000002L,0x0000000000400000L});
+    public static final BitSet FOLLOW_KEYWORD_8_in_ruleGroupByClause2413 = new BitSet(new long[]{0xF0060073EA1E01B0L,0x0000000784A48076L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleGroupByClause2433 = new BitSet(new long[]{0x0000008000000002L,0x0000000000400000L});
+    public static final BitSet FOLLOW_KEYWORD_8_in_ruleGroupByClause2449 = new BitSet(new long[]{0x0000008000000002L});
     public static final BitSet FOLLOW_ruleHavingClause_in_ruleGroupByClause2471 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleHavingClause_in_entryRuleHavingClause2507 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleHavingClause2517 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_46_in_ruleHavingClause2555 = new BitSet(new long[]{0x401780401CFAE1F0L,0x000000000003C252L});
+    public static final BitSet FOLLOW_KEYWORD_52_in_ruleHavingClause2555 = new BitSet(new long[]{0xF0060073EA1E01B0L,0x0000000784A48076L});
     public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleHavingClause2575 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleOrderByClause_in_entryRuleOrderByClause2610 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleOrderByClause2620 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_40_in_ruleOrderByClause2658 = new BitSet(new long[]{0x1000000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_24_in_ruleOrderByClause2670 = new BitSet(new long[]{0x401780401CFAE1F0L,0x000000000003C252L});
-    public static final BitSet FOLLOW_ruleOrderBySpec_in_ruleOrderByClause2690 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000020L});
-    public static final BitSet FOLLOW_KEYWORD_8_in_ruleOrderByClause2704 = new BitSet(new long[]{0x401780401CFAE1F0L,0x000000000003C252L});
-    public static final BitSet FOLLOW_ruleOrderBySpec_in_ruleOrderByClause2724 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000020L});
+    public static final BitSet FOLLOW_KEYWORD_44_in_ruleOrderByClause2658 = new BitSet(new long[]{0x0000000000000000L,0x0000000000002000L});
+    public static final BitSet FOLLOW_KEYWORD_24_in_ruleOrderByClause2670 = new BitSet(new long[]{0xF0060073EA1E01B0L,0x0000000784A48076L});
+    public static final BitSet FOLLOW_ruleOrderBySpec_in_ruleOrderByClause2690 = new BitSet(new long[]{0x0000000000000002L,0x0000000000400000L});
+    public static final BitSet FOLLOW_KEYWORD_8_in_ruleOrderByClause2704 = new BitSet(new long[]{0xF0060073EA1E01B0L,0x0000000784A48076L});
+    public static final BitSet FOLLOW_ruleOrderBySpec_in_ruleOrderByClause2724 = new BitSet(new long[]{0x0000000000000002L,0x0000000000400000L});
     public static final BitSet FOLLOW_KEYWORD_8_in_ruleOrderByClause2740 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleOrderBySpec_in_entryRuleOrderBySpec2776 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleOrderBySpec2786 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleOrderBySpec2836 = new BitSet(new long[]{0x0008020000010200L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleOrderBySpec2836 = new BitSet(new long[]{0x0040000004200000L,0x0000000000000001L});
     public static final BitSet FOLLOW_ruleOrderByDirection_in_ruleOrderBySpec2856 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleRangeClause_in_entryRuleRangeClause2891 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleRangeClause2901 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_41_in_ruleRangeClause2939 = new BitSet(new long[]{0x401780401CFAE1F0L,0x000000000003C252L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleRangeClause2959 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000020L});
-    public static final BitSet FOLLOW_KEYWORD_8_in_ruleRangeClause2972 = new BitSet(new long[]{0x401780401CFAE1F0L,0x000000000003C252L});
+    public static final BitSet FOLLOW_KEYWORD_45_in_ruleRangeClause2939 = new BitSet(new long[]{0xF0060073EA1E01B0L,0x0000000784A48076L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleRangeClause2959 = new BitSet(new long[]{0x0000000000000000L,0x0000000000400000L});
+    public static final BitSet FOLLOW_KEYWORD_8_in_ruleRangeClause2972 = new BitSet(new long[]{0xF0060073EA1E01B0L,0x0000000784A48076L});
     public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleRangeClause2992 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleConditionalOrExpression_in_entryRuleConditionalOrExpression3027 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleConditionalOrExpression3037 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleConditionalAndExpression_in_ruleConditionalOrExpression3087 = new BitSet(new long[]{0x2000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_25_in_ruleConditionalOrExpression3112 = new BitSet(new long[]{0x401780401CFAE1F0L,0x000000000003C252L});
-    public static final BitSet FOLLOW_ruleConditionalAndExpression_in_ruleConditionalOrExpression3132 = new BitSet(new long[]{0x2000000000000002L});
+    public static final BitSet FOLLOW_ruleConditionalAndExpression_in_ruleConditionalOrExpression3087 = new BitSet(new long[]{0x0000000000000002L,0x0000000000004000L});
+    public static final BitSet FOLLOW_KEYWORD_25_in_ruleConditionalOrExpression3112 = new BitSet(new long[]{0xF0060073EA1E01B0L,0x0000000784A48076L});
+    public static final BitSet FOLLOW_ruleConditionalAndExpression_in_ruleConditionalOrExpression3132 = new BitSet(new long[]{0x0000000000000002L,0x0000000000004000L});
     public static final BitSet FOLLOW_ruleConditionalAndExpression_in_entryRuleConditionalAndExpression3169 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleConditionalAndExpression3179 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSimpleOrExpression_in_ruleConditionalAndExpression3229 = new BitSet(new long[]{0x0080000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_19_in_ruleConditionalAndExpression3254 = new BitSet(new long[]{0x401780401CFAE1F0L,0x000000000003C252L});
-    public static final BitSet FOLLOW_ruleSimpleOrExpression_in_ruleConditionalAndExpression3274 = new BitSet(new long[]{0x0080000000000002L});
+    public static final BitSet FOLLOW_ruleSimpleOrExpression_in_ruleConditionalAndExpression3229 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000100L});
+    public static final BitSet FOLLOW_KEYWORD_19_in_ruleConditionalAndExpression3254 = new BitSet(new long[]{0xF0060073EA1E01B0L,0x0000000784A48076L});
+    public static final BitSet FOLLOW_ruleSimpleOrExpression_in_ruleConditionalAndExpression3274 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000100L});
     public static final BitSet FOLLOW_ruleSimpleOrExpression_in_entryRuleSimpleOrExpression3311 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleSimpleOrExpression3321 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSimpleAndExpression_in_ruleSimpleOrExpression3371 = new BitSet(new long[]{0x0000000000000002L,0x0000000000002000L});
-    public static final BitSet FOLLOW_KEYWORD_16_in_ruleSimpleOrExpression3396 = new BitSet(new long[]{0x401780401CFAE1F0L,0x000000000003C252L});
-    public static final BitSet FOLLOW_ruleSimpleAndExpression_in_ruleSimpleOrExpression3416 = new BitSet(new long[]{0x0000000000000002L,0x0000000000002000L});
+    public static final BitSet FOLLOW_ruleSimpleAndExpression_in_ruleSimpleOrExpression3371 = new BitSet(new long[]{0x0000000000000002L,0x0000000040000000L});
+    public static final BitSet FOLLOW_KEYWORD_16_in_ruleSimpleOrExpression3396 = new BitSet(new long[]{0xF0060073EA1E01B0L,0x0000000784A48076L});
+    public static final BitSet FOLLOW_ruleSimpleAndExpression_in_ruleSimpleOrExpression3416 = new BitSet(new long[]{0x0000000000000002L,0x0000000040000000L});
     public static final BitSet FOLLOW_ruleSimpleAndExpression_in_entryRuleSimpleAndExpression3453 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleSimpleAndExpression3463 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleComparisonOperatorExpression_in_ruleSimpleAndExpression3513 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000001L});
-    public static final BitSet FOLLOW_KEYWORD_3_in_ruleSimpleAndExpression3538 = new BitSet(new long[]{0x401780401CFAE1F0L,0x000000000003C252L});
-    public static final BitSet FOLLOW_ruleComparisonOperatorExpression_in_ruleSimpleAndExpression3558 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000001L});
+    public static final BitSet FOLLOW_ruleComparisonOperatorExpression_in_ruleSimpleAndExpression3513 = new BitSet(new long[]{0x0000000000000002L,0x0000000000020000L});
+    public static final BitSet FOLLOW_KEYWORD_3_in_ruleSimpleAndExpression3538 = new BitSet(new long[]{0xF0060073EA1E01B0L,0x0000000784A48076L});
+    public static final BitSet FOLLOW_ruleComparisonOperatorExpression_in_ruleSimpleAndExpression3558 = new BitSet(new long[]{0x0000000000000002L,0x0000000000020000L});
     public static final BitSet FOLLOW_ruleComparisonOperatorExpression_in_entryRuleComparisonOperatorExpression3595 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleComparisonOperatorExpression3605 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAdditionExpression_in_ruleComparisonOperatorExpression3655 = new BitSet(new long[]{0x0740000000001002L,0x0000000000001800L});
-    public static final BitSet FOLLOW_ruleComparisonOperator_in_ruleComparisonOperatorExpression3688 = new BitSet(new long[]{0x401780401CFAE1F0L,0x000000000003C252L});
-    public static final BitSet FOLLOW_ruleAdditionExpression_in_ruleComparisonOperatorExpression3709 = new BitSet(new long[]{0x0740000000001002L,0x0000000000001800L});
+    public static final BitSet FOLLOW_ruleAdditionExpression_in_ruleComparisonOperatorExpression3655 = new BitSet(new long[]{0x0000000001000002L,0x0000000030000E80L});
+    public static final BitSet FOLLOW_ruleComparisonOperator_in_ruleComparisonOperatorExpression3688 = new BitSet(new long[]{0xF0060073EA1E01B0L,0x0000000784A48076L});
+    public static final BitSet FOLLOW_ruleAdditionExpression_in_ruleComparisonOperatorExpression3709 = new BitSet(new long[]{0x0000000001000002L,0x0000000030000E80L});
     public static final BitSet FOLLOW_ruleAdditionExpression_in_entryRuleAdditionExpression3746 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleAdditionExpression3756 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleMultiplicationExpression_in_ruleAdditionExpression3806 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000050L});
-    public static final BitSet FOLLOW_ruleAdditionOperator_in_ruleAdditionExpression3839 = new BitSet(new long[]{0x401780401CFAE1F0L,0x000000000003C252L});
-    public static final BitSet FOLLOW_ruleMultiplicationExpression_in_ruleAdditionExpression3860 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000050L});
+    public static final BitSet FOLLOW_ruleMultiplicationExpression_in_ruleAdditionExpression3806 = new BitSet(new long[]{0x0000000000000002L,0x0000000000A00000L});
+    public static final BitSet FOLLOW_ruleAdditionOperator_in_ruleAdditionExpression3839 = new BitSet(new long[]{0xF0060073EA1E01B0L,0x0000000784A48076L});
+    public static final BitSet FOLLOW_ruleMultiplicationExpression_in_ruleAdditionExpression3860 = new BitSet(new long[]{0x0000000000000002L,0x0000000000A00000L});
     public static final BitSet FOLLOW_ruleMultiplicationExpression_in_entryRuleMultiplicationExpression3897 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleMultiplicationExpression3907 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleUnaryExpression_in_ruleMultiplicationExpression3957 = new BitSet(new long[]{0x8000000000000002L,0x0000000000000108L});
-    public static final BitSet FOLLOW_ruleMultiplicationOperator_in_ruleMultiplicationExpression3990 = new BitSet(new long[]{0x401780401CFAE1F0L,0x000000000003C252L});
-    public static final BitSet FOLLOW_ruleUnaryExpression_in_ruleMultiplicationExpression4011 = new BitSet(new long[]{0x8000000000000002L,0x0000000000000108L});
+    public static final BitSet FOLLOW_ruleUnaryExpression_in_ruleMultiplicationExpression3957 = new BitSet(new long[]{0x0000000000000002L,0x0000000002110000L});
+    public static final BitSet FOLLOW_ruleMultiplicationOperator_in_ruleMultiplicationExpression3990 = new BitSet(new long[]{0xF0060073EA1E01B0L,0x0000000784A48076L});
+    public static final BitSet FOLLOW_ruleUnaryExpression_in_ruleMultiplicationExpression4011 = new BitSet(new long[]{0x0000000000000002L,0x0000000002110000L});
     public static final BitSet FOLLOW_ruleUnaryExpression_in_entryRuleUnaryExpression4048 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleUnaryExpression4058 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleUnaryOperator_in_ruleUnaryExpression4104 = new BitSet(new long[]{0x401780401CFAE1F0L,0x000000000003C252L});
-    public static final BitSet FOLLOW_ruleFieldAccessExpression_in_ruleUnaryExpression4126 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFieldAccessExpression_in_entryRuleFieldAccessExpression4161 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleFieldAccessExpression4171 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleStaticMethodExpression_in_ruleFieldAccessExpression4221 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleParameterOrFieldOrMethodExpression_in_ruleFieldAccessExpression4252 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000080L});
-    public static final BitSet FOLLOW_KEYWORD_10_in_ruleFieldAccessExpression4277 = new BitSet(new long[]{0x401780401CFAE1F0L,0x000000000003C252L});
-    public static final BitSet FOLLOW_ruleFieldOrMethodExpression_in_ruleFieldAccessExpression4297 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000080L});
-    public static final BitSet FOLLOW_ruleParameterOrFieldOrMethodExpression_in_entryRuleParameterOrFieldOrMethodExpression4335 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleParameterOrFieldOrMethodExpression4345 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleLiteral_in_ruleParameterOrFieldOrMethodExpression4391 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_37_in_ruleParameterOrFieldOrMethodExpression4416 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleParameterOrFieldOrMethodExpression4450 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_12_in_ruleParameterOrFieldOrMethodExpression4475 = new BitSet(new long[]{0x0000000000000000L,0x0000000000008000L});
-    public static final BitSet FOLLOW_ruleParameterName_in_ruleParameterOrFieldOrMethodExpression4495 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleParenthesesExpression_in_ruleParameterOrFieldOrMethodExpression4527 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleMethodExpression_in_ruleParameterOrFieldOrMethodExpression4553 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFieldOrMethodExpression_in_entryRuleFieldOrMethodExpression4588 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleFieldOrMethodExpression4598 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleLiteral_in_ruleFieldOrMethodExpression4644 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_37_in_ruleFieldOrMethodExpression4669 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleFieldOrMethodExpression4703 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleParenthesesExpression_in_ruleFieldOrMethodExpression4739 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleMethodExpression_in_ruleFieldOrMethodExpression4765 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleStaticMethodExpression_in_entryRuleStaticMethodExpression4800 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleStaticMethodExpression4810 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_68_in_ruleStaticMethodExpression4862 = new BitSet(new long[]{0x0000000000200000L});
-    public static final BitSet FOLLOW_KEYWORD_57_in_ruleStaticMethodExpression4876 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression4888 = new BitSet(new long[]{0x401780401CFAE1F0L,0x000000000003C252L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression4908 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000004L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression4921 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_68_in_ruleStaticMethodExpression4954 = new BitSet(new long[]{0x0000000000020000L});
-    public static final BitSet FOLLOW_KEYWORD_61_in_ruleStaticMethodExpression4968 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression4980 = new BitSet(new long[]{0x401780401CFAE1F0L,0x000000000003C252L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression5000 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000004L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression5013 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_69_in_ruleStaticMethodExpression5046 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_KEYWORD_75_in_ruleStaticMethodExpression5060 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression5072 = new BitSet(new long[]{0x401780401CFAE1F0L,0x000000000003C252L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression5092 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000004L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression5105 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleMethodExpression_in_entryRuleMethodExpression5140 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleMethodExpression5150 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_58_in_ruleMethodExpression5201 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression5213 = new BitSet(new long[]{0x401780401CFAE1F0L,0x000000000003C252L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression5233 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000004L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression5246 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_54_in_ruleMethodExpression5278 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression5290 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000004L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression5302 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_36_in_ruleMethodExpression5334 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression5346 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000004L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression5358 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_27_in_ruleMethodExpression5390 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression5402 = new BitSet(new long[]{0x401780401CFAE1F0L,0x000000000003C252L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression5422 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000004L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression5435 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_71_in_ruleMethodExpression5467 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression5479 = new BitSet(new long[]{0x401780401CFAE1F0L,0x000000000003C252L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression5499 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000004L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression5512 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_74_in_ruleMethodExpression5544 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression5556 = new BitSet(new long[]{0x401780401CFAE1F0L,0x000000000003C252L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression5576 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000004L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression5589 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_70_in_ruleMethodExpression5621 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression5633 = new BitSet(new long[]{0x401780401CFAE1F0L,0x000000000003C252L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression5653 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000004L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression5666 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_59_in_ruleMethodExpression5698 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression5710 = new BitSet(new long[]{0x401780401CFAE1F0L,0x000000000003C252L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression5730 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000004L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression5743 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_55_in_ruleMethodExpression5775 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression5787 = new BitSet(new long[]{0x401780401CFAE1F0L,0x000000000003C252L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression5807 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000004L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression5820 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_72_in_ruleMethodExpression5852 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression5864 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000004L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression5876 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_73_in_ruleMethodExpression5908 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression5920 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000004L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression5932 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_53_in_ruleMethodExpression5964 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression5976 = new BitSet(new long[]{0x401780401CFAE1F0L,0x000000000003C252L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression5996 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000024L});
-    public static final BitSet FOLLOW_KEYWORD_8_in_ruleMethodExpression6010 = new BitSet(new long[]{0x401780401CFAE1F0L,0x000000000003C252L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression6030 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000004L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression6045 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_63_in_ruleMethodExpression6077 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression6089 = new BitSet(new long[]{0x401780401CFAE1F0L,0x000000000003C252L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression6109 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000024L});
-    public static final BitSet FOLLOW_KEYWORD_8_in_ruleMethodExpression6123 = new BitSet(new long[]{0x401780401CFAE1F0L,0x000000000003C252L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression6143 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000004L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression6158 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleParenthesesExpression_in_entryRuleParenthesesExpression6193 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleParenthesesExpression6203 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleParenthesesExpression6241 = new BitSet(new long[]{0x401780401CFAE1F0L,0x000000000003C252L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleParenthesesExpression6265 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000004L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleParenthesesExpression6277 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleType_in_entryRuleType6314 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleType6325 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rulePrimitiveType_in_ruleType6372 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleClassOrInterfaceName_in_ruleType6405 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rulePrimitiveType_in_entryRulePrimitiveType6450 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRulePrimitiveType6461 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleNumericType_in_rulePrimitiveType6508 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_52_in_rulePrimitiveType6532 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleNumericType_in_entryRuleNumericType6572 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleNumericType6583 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleIntegralType_in_ruleNumericType6630 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFloatingPointType_in_ruleNumericType6663 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleIntegralType_in_entryRuleIntegralType6708 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleIntegralType6719 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_32_in_ruleIntegralType6757 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_45_in_ruleIntegralType6776 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_28_in_ruleIntegralType6795 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_34_in_ruleIntegralType6814 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_33_in_ruleIntegralType6833 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFloatingPointType_in_entryRuleFloatingPointType6873 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleFloatingPointType6884 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_44_in_ruleFloatingPointType6922 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_49_in_ruleFloatingPointType6941 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleIntegerLiteral_in_entryRuleIntegerLiteral6981 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleIntegerLiteral6992 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_INT_in_ruleIntegerLiteral7031 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleStringLiteral_in_entryRuleStringLiteral7075 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleStringLiteral7086 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_ruleStringLiteral7125 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleBooleanLiteral_in_entryRuleBooleanLiteral7169 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleBooleanLiteral7180 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_38_in_ruleBooleanLiteral7218 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_43_in_ruleBooleanLiteral7237 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleNullLiteral_in_entryRuleNullLiteral7277 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleNullLiteral7288 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_35_in_ruleNullLiteral7325 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleLiteral_in_entryRuleLiteral7364 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleLiteral7375 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleIntegerLiteral_in_ruleLiteral7422 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleBooleanLiteral_in_ruleLiteral7455 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleStringLiteral_in_ruleLiteral7488 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleNullLiteral_in_ruleLiteral7521 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedIdentifier_in_entryRuleQualifiedIdentifier7566 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleQualifiedIdentifier7577 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleQualifiedIdentifier7617 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000080L});
-    public static final BitSet FOLLOW_KEYWORD_10_in_ruleQualifiedIdentifier7636 = new BitSet(new long[]{0x0000000000000000L,0x0000000000008000L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleQualifiedIdentifier7651 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000080L});
-    public static final BitSet FOLLOW_ruleCandidateClassName_in_entryRuleCandidateClassName7698 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleCandidateClassName7709 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedIdentifier_in_ruleCandidateClassName7755 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleClassOrInterfaceName_in_entryRuleClassOrInterfaceName7799 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleClassOrInterfaceName7810 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedIdentifier_in_ruleClassOrInterfaceName7856 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_26_in_ruleOrderByDirection7917 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_60_in_ruleOrderByDirection7939 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_29_in_ruleOrderByDirection7961 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_64_in_ruleOrderByDirection7983 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_7_in_ruleUnaryOperator8033 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_9_in_ruleUnaryOperator8055 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_17_in_ruleUnaryOperator8077 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_1_in_ruleUnaryOperator8099 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_7_in_ruleAdditionOperator8149 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_9_in_ruleAdditionOperator8171 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_6_in_ruleMultiplicationOperator8221 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_11_in_ruleMultiplicationOperator8243 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_2_in_ruleMultiplicationOperator8265 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_14_in_ruleComparisonOperator8315 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_15_in_ruleComparisonOperator8337 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_20_in_ruleComparisonOperator8359 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_22_in_ruleComparisonOperator8381 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_21_in_ruleComparisonOperator8403 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_18_in_ruleComparisonOperator8425 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_67_in_ruleComparisonOperator8447 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleUnaryExpression4097 = new BitSet(new long[]{0x0E3814080001FE40L,0x0000000100000008L});
+    public static final BitSet FOLLOW_ruleType_in_ruleUnaryExpression4117 = new BitSet(new long[]{0x0000000000000000L,0x0000000000080000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleUnaryExpression4130 = new BitSet(new long[]{0xF0060073EA1E01B0L,0x0000000784A48076L});
+    public static final BitSet FOLLOW_ruleFieldAccessExpression_in_ruleUnaryExpression4150 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleUnaryOperator_in_ruleUnaryExpression4179 = new BitSet(new long[]{0xF0060073EA1E01B0L,0x0000000784A48076L});
+    public static final BitSet FOLLOW_ruleFieldAccessExpression_in_ruleUnaryExpression4201 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFieldAccessExpression_in_entryRuleFieldAccessExpression4237 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleFieldAccessExpression4247 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleStaticMethodExpression_in_ruleFieldAccessExpression4297 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleParameterOrFieldOrMethodExpression_in_ruleFieldAccessExpression4328 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
+    public static final BitSet FOLLOW_KEYWORD_10_in_ruleFieldAccessExpression4353 = new BitSet(new long[]{0xF0060073EA1E01B0L,0x0000000784A48076L});
+    public static final BitSet FOLLOW_ruleFieldOrMethodExpression_in_ruleFieldAccessExpression4373 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
+    public static final BitSet FOLLOW_ruleParameterOrFieldOrMethodExpression_in_entryRuleParameterOrFieldOrMethodExpression4411 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleParameterOrFieldOrMethodExpression4421 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleLiteral_in_ruleParameterOrFieldOrMethodExpression4467 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_41_in_ruleParameterOrFieldOrMethodExpression4492 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleParameterOrFieldOrMethodExpression4526 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_12_in_ruleParameterOrFieldOrMethodExpression4551 = new BitSet(new long[]{0x0000000000000000L,0x0000000100000000L});
+    public static final BitSet FOLLOW_ruleParameterName_in_ruleParameterOrFieldOrMethodExpression4571 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleParenthesesExpression_in_ruleParameterOrFieldOrMethodExpression4603 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleMethodExpression_in_ruleParameterOrFieldOrMethodExpression4629 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFieldOrMethodExpression_in_entryRuleFieldOrMethodExpression4664 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleFieldOrMethodExpression4674 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleLiteral_in_ruleFieldOrMethodExpression4720 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_41_in_ruleFieldOrMethodExpression4745 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleFieldOrMethodExpression4779 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleParenthesesExpression_in_ruleFieldOrMethodExpression4815 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleMethodExpression_in_ruleFieldOrMethodExpression4841 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleStaticMethodExpression_in_entryRuleStaticMethodExpression4876 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleStaticMethodExpression4886 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_88_in_ruleStaticMethodExpression4937 = new BitSet(new long[]{0x0000000000000000L,0x0000000000040000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression4949 = new BitSet(new long[]{0xF0060073EA1E01B0L,0x0000000784A48076L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression4969 = new BitSet(new long[]{0x0000000000000000L,0x0000000000080000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression4982 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_64_in_ruleStaticMethodExpression5014 = new BitSet(new long[]{0x0000000000000000L,0x0000000000040000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression5026 = new BitSet(new long[]{0xF0060073EA1E01B0L,0x0000000784A48076L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression5046 = new BitSet(new long[]{0x0000000000000000L,0x0000000000080000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression5059 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_90_in_ruleStaticMethodExpression5091 = new BitSet(new long[]{0x0000000000000000L,0x0000000000040000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression5103 = new BitSet(new long[]{0xF0060073EA1E01B0L,0x0000000784A48076L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression5123 = new BitSet(new long[]{0x0000000000000000L,0x0000000000080000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression5136 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_68_in_ruleStaticMethodExpression5168 = new BitSet(new long[]{0x0000000000000000L,0x0000000000040000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression5180 = new BitSet(new long[]{0xF0060073EA1E01B0L,0x0000000784A48076L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression5200 = new BitSet(new long[]{0x0000000000000000L,0x0000000000080000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression5213 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_92_in_ruleStaticMethodExpression5245 = new BitSet(new long[]{0x0000000000000000L,0x0000000000040000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression5257 = new BitSet(new long[]{0xF0060073EA1E01B0L,0x0000000784A48076L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression5277 = new BitSet(new long[]{0x0000000000000000L,0x0000000000080000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression5290 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_91_in_ruleStaticMethodExpression5322 = new BitSet(new long[]{0x0000000000000000L,0x0000000000040000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression5334 = new BitSet(new long[]{0xF0060073EA1E01B0L,0x0000000784A48076L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression5354 = new BitSet(new long[]{0x0000000000000000L,0x0000000000080000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression5367 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_47_in_ruleStaticMethodExpression5399 = new BitSet(new long[]{0x0000000000000000L,0x0000000000040000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression5411 = new BitSet(new long[]{0xF0060073EA1E01B0L,0x0000000784A48076L});
+    public static final BitSet FOLLOW_KEYWORD_63_in_ruleStaticMethodExpression5429 = new BitSet(new long[]{0xF0060073EA1E01B0L,0x0000000784A48076L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression5462 = new BitSet(new long[]{0x0000000000000000L,0x0000000000080000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression5475 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_32_in_ruleStaticMethodExpression5507 = new BitSet(new long[]{0x0000000000000000L,0x0000000000040000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression5519 = new BitSet(new long[]{0xF0060073EA1E01B0L,0x0000000784A48076L});
+    public static final BitSet FOLLOW_KEYWORD_63_in_ruleStaticMethodExpression5537 = new BitSet(new long[]{0xF0060073EA1E01B0L,0x0000000784A48076L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression5570 = new BitSet(new long[]{0x0000000000000000L,0x0000000000080000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression5583 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_31_in_ruleStaticMethodExpression5615 = new BitSet(new long[]{0x0000000000000000L,0x0000000000040000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression5627 = new BitSet(new long[]{0xF0060073EA1E01B0L,0x0000000784A48076L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression5647 = new BitSet(new long[]{0x0000000000000000L,0x0000000000080000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression5660 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_30_in_ruleStaticMethodExpression5692 = new BitSet(new long[]{0x0000000000000000L,0x0000000000040000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression5704 = new BitSet(new long[]{0xF0060073EA1E01B0L,0x0000000784A48076L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression5724 = new BitSet(new long[]{0x0000000000000000L,0x0000000000080000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression5737 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_27_in_ruleStaticMethodExpression5769 = new BitSet(new long[]{0x0000000000000000L,0x0000000000040000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression5781 = new BitSet(new long[]{0xF0060073EA1E01B0L,0x0000000784A48076L});
+    public static final BitSet FOLLOW_KEYWORD_63_in_ruleStaticMethodExpression5799 = new BitSet(new long[]{0xF0060073EA1E01B0L,0x0000000784A48076L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression5832 = new BitSet(new long[]{0x0000000000000000L,0x0000000000080000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression5845 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleMethodExpression_in_entryRuleMethodExpression5880 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleMethodExpression5890 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_65_in_ruleMethodExpression5941 = new BitSet(new long[]{0x0000000000000000L,0x0000000000040000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression5953 = new BitSet(new long[]{0xF0060073EA1E01B0L,0x0000000784A48076L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression5973 = new BitSet(new long[]{0x0000000000000000L,0x0000000000080000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression5986 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_61_in_ruleMethodExpression6018 = new BitSet(new long[]{0x0000000000000000L,0x0000000000040000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression6030 = new BitSet(new long[]{0x0000000000000000L,0x0000000000080000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression6042 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_40_in_ruleMethodExpression6074 = new BitSet(new long[]{0x0000000000000000L,0x0000000000040000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression6086 = new BitSet(new long[]{0x0000000000000000L,0x0000000000080000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression6098 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_28_in_ruleMethodExpression6130 = new BitSet(new long[]{0x0000000000000000L,0x0000000000040000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression6142 = new BitSet(new long[]{0xF0060073EA1E01B0L,0x0000000784A48076L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression6162 = new BitSet(new long[]{0x0000000000000000L,0x0000000000080000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression6175 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_76_in_ruleMethodExpression6207 = new BitSet(new long[]{0x0000000000000000L,0x0000000000040000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression6219 = new BitSet(new long[]{0xF0060073EA1E01B0L,0x0000000784A48076L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression6239 = new BitSet(new long[]{0x0000000000000000L,0x0000000000080000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression6252 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_79_in_ruleMethodExpression6284 = new BitSet(new long[]{0x0000000000000000L,0x0000000000040000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression6296 = new BitSet(new long[]{0xF0060073EA1E01B0L,0x0000000784A48076L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression6316 = new BitSet(new long[]{0x0000000000000000L,0x0000000000080000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression6329 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_75_in_ruleMethodExpression6361 = new BitSet(new long[]{0x0000000000000000L,0x0000000000040000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression6373 = new BitSet(new long[]{0xF0060073EA1E01B0L,0x0000000784A48076L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression6393 = new BitSet(new long[]{0x0000000000000000L,0x0000000000080000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression6406 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_66_in_ruleMethodExpression6438 = new BitSet(new long[]{0x0000000000000000L,0x0000000000040000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression6450 = new BitSet(new long[]{0xF0060073EA1E01B0L,0x0000000784A48076L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression6470 = new BitSet(new long[]{0x0000000000000000L,0x0000000000080000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression6483 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_62_in_ruleMethodExpression6515 = new BitSet(new long[]{0x0000000000000000L,0x0000000000040000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression6527 = new BitSet(new long[]{0xF0060073EA1E01B0L,0x0000000784A48076L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression6547 = new BitSet(new long[]{0x0000000000000000L,0x0000000000080000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression6560 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_77_in_ruleMethodExpression6592 = new BitSet(new long[]{0x0000000000000000L,0x0000000000040000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression6604 = new BitSet(new long[]{0x0000000000000000L,0x0000000000080000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression6616 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_78_in_ruleMethodExpression6648 = new BitSet(new long[]{0x0000000000000000L,0x0000000000040000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression6660 = new BitSet(new long[]{0x0000000000000000L,0x0000000000080000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression6672 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_60_in_ruleMethodExpression6704 = new BitSet(new long[]{0x0000000000000000L,0x0000000000040000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression6716 = new BitSet(new long[]{0xF0060073EA1E01B0L,0x0000000784A48076L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression6736 = new BitSet(new long[]{0x0000000000000000L,0x0000000000480000L});
+    public static final BitSet FOLLOW_KEYWORD_8_in_ruleMethodExpression6750 = new BitSet(new long[]{0xF0060073EA1E01B0L,0x0000000784A48076L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression6770 = new BitSet(new long[]{0x0000000000000000L,0x0000000000080000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression6785 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_70_in_ruleMethodExpression6817 = new BitSet(new long[]{0x0000000000000000L,0x0000000000040000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression6829 = new BitSet(new long[]{0xF0060073EA1E01B0L,0x0000000784A48076L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression6849 = new BitSet(new long[]{0x0000000000000000L,0x0000000000480000L});
+    public static final BitSet FOLLOW_KEYWORD_8_in_ruleMethodExpression6863 = new BitSet(new long[]{0xF0060073EA1E01B0L,0x0000000784A48076L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression6883 = new BitSet(new long[]{0x0000000000000000L,0x0000000000080000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression6898 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleParenthesesExpression_in_entryRuleParenthesesExpression6933 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleParenthesesExpression6943 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleParenthesesExpression6981 = new BitSet(new long[]{0xF0060073EA1E01B0L,0x0000000784A48076L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleParenthesesExpression7005 = new BitSet(new long[]{0x0000000000000000L,0x0000000000080000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleParenthesesExpression7017 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleType_in_entryRuleType7052 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleType7063 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rulePrimitiveType_in_ruleType7110 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleClassOrInterfaceName_in_ruleType7143 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rulePrimitiveType_in_entryRulePrimitiveType7188 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRulePrimitiveType7199 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleNumericType_in_rulePrimitiveType7246 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_59_in_rulePrimitiveType7270 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleNumericType_in_entryRuleNumericType7310 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleNumericType7321 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleIntegralType_in_ruleNumericType7368 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFloatingPointType_in_ruleNumericType7401 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleIntegralType_in_entryRuleIntegralType7446 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleIntegralType7457 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_36_in_ruleIntegralType7495 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_51_in_ruleIntegralType7514 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_29_in_ruleIntegralType7533 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_38_in_ruleIntegralType7552 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_37_in_ruleIntegralType7571 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFloatingPointType_in_entryRuleFloatingPointType7611 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleFloatingPointType7622 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_49_in_ruleFloatingPointType7660 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_55_in_ruleFloatingPointType7679 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleIntegerLiteral_in_entryRuleIntegerLiteral7719 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleIntegerLiteral7730 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_INT_in_ruleIntegerLiteral7769 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleStringLiteral_in_entryRuleStringLiteral7813 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleStringLiteral7824 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_ruleStringLiteral7863 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleBooleanLiteral_in_entryRuleBooleanLiteral7907 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleBooleanLiteral7918 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_42_in_ruleBooleanLiteral7956 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_48_in_ruleBooleanLiteral7975 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleNullLiteral_in_entryRuleNullLiteral8015 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleNullLiteral8026 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_39_in_ruleNullLiteral8063 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleLiteral_in_entryRuleLiteral8102 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleLiteral8113 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleIntegerLiteral_in_ruleLiteral8160 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleBooleanLiteral_in_ruleLiteral8193 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleStringLiteral_in_ruleLiteral8226 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleNullLiteral_in_ruleLiteral8259 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedIdentifier_in_entryRuleQualifiedIdentifier8304 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleQualifiedIdentifier8315 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_86_in_ruleQualifiedIdentifier8353 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_80_in_ruleQualifiedIdentifier8372 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_89_in_ruleQualifiedIdentifier8391 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_84_in_ruleQualifiedIdentifier8410 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_82_in_ruleQualifiedIdentifier8429 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_87_in_ruleQualifiedIdentifier8448 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_81_in_ruleQualifiedIdentifier8467 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_83_in_ruleQualifiedIdentifier8486 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_85_in_ruleQualifiedIdentifier8505 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_50_in_ruleQualifiedIdentifier8525 = new BitSet(new long[]{0x0000000000000000L,0x0000000100000000L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleQualifiedIdentifier8540 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
+    public static final BitSet FOLLOW_KEYWORD_10_in_ruleQualifiedIdentifier8559 = new BitSet(new long[]{0x0000000000000000L,0x0000000100000000L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleQualifiedIdentifier8574 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
+    public static final BitSet FOLLOW_KEYWORD_57_in_ruleQualifiedIdentifier8602 = new BitSet(new long[]{0x0000000000000000L,0x0000000100000000L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleQualifiedIdentifier8617 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
+    public static final BitSet FOLLOW_KEYWORD_10_in_ruleQualifiedIdentifier8636 = new BitSet(new long[]{0x0000000000000000L,0x0000000100000000L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleQualifiedIdentifier8651 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleQualifiedIdentifier8681 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
+    public static final BitSet FOLLOW_KEYWORD_10_in_ruleQualifiedIdentifier8700 = new BitSet(new long[]{0x0000000000000000L,0x0000000100000000L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleQualifiedIdentifier8715 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
+    public static final BitSet FOLLOW_ruleCandidateClassName_in_entryRuleCandidateClassName8763 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleCandidateClassName8774 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedIdentifier_in_ruleCandidateClassName8820 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleClassOrInterfaceName_in_entryRuleClassOrInterfaceName8864 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleClassOrInterfaceName8875 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedIdentifier_in_ruleClassOrInterfaceName8921 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_26_in_ruleOrderByDirection8982 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_67_in_ruleOrderByDirection9004 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_33_in_ruleOrderByDirection9026 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_71_in_ruleOrderByDirection9048 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_7_in_ruleUnaryOperator9098 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_9_in_ruleUnaryOperator9120 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_17_in_ruleUnaryOperator9142 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_1_in_ruleUnaryOperator9164 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_7_in_ruleAdditionOperator9214 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_9_in_ruleAdditionOperator9236 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_6_in_ruleMultiplicationOperator9286 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_11_in_ruleMultiplicationOperator9308 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_2_in_ruleMultiplicationOperator9330 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_14_in_ruleComparisonOperator9380 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_15_in_ruleComparisonOperator9402 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_20_in_ruleComparisonOperator9424 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_22_in_ruleComparisonOperator9446 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_21_in_ruleComparisonOperator9468 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_18_in_ruleComparisonOperator9490 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_74_in_ruleComparisonOperator9512 = new BitSet(new long[]{0x0000000000000002L});
 
 }

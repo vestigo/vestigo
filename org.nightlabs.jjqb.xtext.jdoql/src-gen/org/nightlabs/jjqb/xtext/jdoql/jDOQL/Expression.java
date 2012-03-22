@@ -16,8 +16,9 @@ package org.nightlabs.jjqb.xtext.jdoql.jDOQL;
  * <ul>
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getResultNaming <em>Result Naming</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getDirection <em>Direction</em>}</li>
- *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getUnaryOperator <em>Unary Operator</em>}</li>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getCastType <em>Cast Type</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getRight <em>Right</em>}</li>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getUnaryOperator <em>Unary Operator</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getLiteral <em>Literal</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getThis <em>This</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getId <em>Id</em>}</li>
@@ -25,6 +26,8 @@ package org.nightlabs.jjqb.xtext.jdoql.jDOQL;
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getMethod <em>Method</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getNumeric <em>Numeric</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getPersistable <em>Persistable</em>}</li>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#isIsDistinct <em>Is Distinct</em>}</li>
+ *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getAggregateArgument <em>Aggregate Argument</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getElement <em>Element</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getArg <em>Arg</em>}</li>
  *   <li>{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getKey <em>Key</em>}</li>
@@ -100,6 +103,58 @@ public interface Expression extends ResultSpec, OrderBySpec
   void setDirection(OrderByDirection value);
 
   /**
+   * Returns the value of the '<em><b>Cast Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Cast Type</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Cast Type</em>' attribute.
+   * @see #setCastType(String)
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage#getExpression_CastType()
+   * @model
+   * @generated
+   */
+  String getCastType();
+
+  /**
+   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getCastType <em>Cast Type</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Cast Type</em>' attribute.
+   * @see #getCastType()
+   * @generated
+   */
+  void setCastType(String value);
+
+  /**
+   * Returns the value of the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Right</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Right</em>' containment reference.
+   * @see #setRight(Expression)
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage#getExpression_Right()
+   * @model containment="true"
+   * @generated
+   */
+  Expression getRight();
+
+  /**
+   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getRight <em>Right</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Right</em>' containment reference.
+   * @see #getRight()
+   * @generated
+   */
+  void setRight(Expression value);
+
+  /**
    * Returns the value of the '<em><b>Unary Operator</b></em>' attribute.
    * The literals are from the enumeration {@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.UnaryOperator}.
    * <!-- begin-user-doc -->
@@ -127,32 +182,6 @@ public interface Expression extends ResultSpec, OrderBySpec
    * @generated
    */
   void setUnaryOperator(UnaryOperator value);
-
-  /**
-   * Returns the value of the '<em><b>Right</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Right</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Right</em>' containment reference.
-   * @see #setRight(Expression)
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage#getExpression_Right()
-   * @model containment="true"
-   * @generated
-   */
-  Expression getRight();
-
-  /**
-   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getRight <em>Right</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Right</em>' containment reference.
-   * @see #getRight()
-   * @generated
-   */
-  void setRight(Expression value);
 
   /**
    * Returns the value of the '<em><b>Literal</b></em>' attribute.
@@ -335,6 +364,58 @@ public interface Expression extends ResultSpec, OrderBySpec
    * @generated
    */
   void setPersistable(Expression value);
+
+  /**
+   * Returns the value of the '<em><b>Is Distinct</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Is Distinct</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Is Distinct</em>' attribute.
+   * @see #setIsDistinct(boolean)
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage#getExpression_IsDistinct()
+   * @model
+   * @generated
+   */
+  boolean isIsDistinct();
+
+  /**
+   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#isIsDistinct <em>Is Distinct</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Is Distinct</em>' attribute.
+   * @see #isIsDistinct()
+   * @generated
+   */
+  void setIsDistinct(boolean value);
+
+  /**
+   * Returns the value of the '<em><b>Aggregate Argument</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Aggregate Argument</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Aggregate Argument</em>' containment reference.
+   * @see #setAggregateArgument(Expression)
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.JDOQLPackage#getExpression_AggregateArgument()
+   * @model containment="true"
+   * @generated
+   */
+  Expression getAggregateArgument();
+
+  /**
+   * Sets the value of the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getAggregateArgument <em>Aggregate Argument</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Aggregate Argument</em>' containment reference.
+   * @see #getAggregateArgument()
+   * @generated
+   */
+  void setAggregateArgument(Expression value);
 
   /**
    * Returns the value of the '<em><b>Element</b></em>' containment reference.

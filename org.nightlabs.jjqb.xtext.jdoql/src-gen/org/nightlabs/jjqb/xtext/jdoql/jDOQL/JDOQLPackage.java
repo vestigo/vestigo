@@ -719,13 +719,13 @@ public interface JDOQLPackage extends EPackage
   int EXPRESSION__DIRECTION = RESULT_SPEC_FEATURE_COUNT + 1;
 
   /**
-   * The feature id for the '<em><b>Unary Operator</b></em>' attribute.
+   * The feature id for the '<em><b>Cast Type</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int EXPRESSION__UNARY_OPERATOR = RESULT_SPEC_FEATURE_COUNT + 2;
+  int EXPRESSION__CAST_TYPE = RESULT_SPEC_FEATURE_COUNT + 2;
 
   /**
    * The feature id for the '<em><b>Right</b></em>' containment reference.
@@ -737,13 +737,22 @@ public interface JDOQLPackage extends EPackage
   int EXPRESSION__RIGHT = RESULT_SPEC_FEATURE_COUNT + 3;
 
   /**
+   * The feature id for the '<em><b>Unary Operator</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPRESSION__UNARY_OPERATOR = RESULT_SPEC_FEATURE_COUNT + 4;
+
+  /**
    * The feature id for the '<em><b>Literal</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int EXPRESSION__LITERAL = RESULT_SPEC_FEATURE_COUNT + 4;
+  int EXPRESSION__LITERAL = RESULT_SPEC_FEATURE_COUNT + 5;
 
   /**
    * The feature id for the '<em><b>This</b></em>' attribute.
@@ -752,7 +761,7 @@ public interface JDOQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXPRESSION__THIS = RESULT_SPEC_FEATURE_COUNT + 5;
+  int EXPRESSION__THIS = RESULT_SPEC_FEATURE_COUNT + 6;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -761,7 +770,7 @@ public interface JDOQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXPRESSION__ID = RESULT_SPEC_FEATURE_COUNT + 6;
+  int EXPRESSION__ID = RESULT_SPEC_FEATURE_COUNT + 7;
 
   /**
    * The feature id for the '<em><b>Parameter Name</b></em>' attribute.
@@ -770,7 +779,7 @@ public interface JDOQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXPRESSION__PARAMETER_NAME = RESULT_SPEC_FEATURE_COUNT + 7;
+  int EXPRESSION__PARAMETER_NAME = RESULT_SPEC_FEATURE_COUNT + 8;
 
   /**
    * The feature id for the '<em><b>Method</b></em>' containment reference.
@@ -779,7 +788,7 @@ public interface JDOQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXPRESSION__METHOD = RESULT_SPEC_FEATURE_COUNT + 8;
+  int EXPRESSION__METHOD = RESULT_SPEC_FEATURE_COUNT + 9;
 
   /**
    * The feature id for the '<em><b>Numeric</b></em>' containment reference.
@@ -788,7 +797,7 @@ public interface JDOQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXPRESSION__NUMERIC = RESULT_SPEC_FEATURE_COUNT + 9;
+  int EXPRESSION__NUMERIC = RESULT_SPEC_FEATURE_COUNT + 10;
 
   /**
    * The feature id for the '<em><b>Persistable</b></em>' containment reference.
@@ -797,7 +806,25 @@ public interface JDOQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXPRESSION__PERSISTABLE = RESULT_SPEC_FEATURE_COUNT + 10;
+  int EXPRESSION__PERSISTABLE = RESULT_SPEC_FEATURE_COUNT + 11;
+
+  /**
+   * The feature id for the '<em><b>Is Distinct</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPRESSION__IS_DISTINCT = RESULT_SPEC_FEATURE_COUNT + 12;
+
+  /**
+   * The feature id for the '<em><b>Aggregate Argument</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPRESSION__AGGREGATE_ARGUMENT = RESULT_SPEC_FEATURE_COUNT + 13;
 
   /**
    * The feature id for the '<em><b>Element</b></em>' containment reference.
@@ -806,7 +833,7 @@ public interface JDOQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXPRESSION__ELEMENT = RESULT_SPEC_FEATURE_COUNT + 11;
+  int EXPRESSION__ELEMENT = RESULT_SPEC_FEATURE_COUNT + 14;
 
   /**
    * The feature id for the '<em><b>Arg</b></em>' containment reference.
@@ -815,7 +842,7 @@ public interface JDOQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXPRESSION__ARG = RESULT_SPEC_FEATURE_COUNT + 12;
+  int EXPRESSION__ARG = RESULT_SPEC_FEATURE_COUNT + 15;
 
   /**
    * The feature id for the '<em><b>Key</b></em>' containment reference.
@@ -824,7 +851,7 @@ public interface JDOQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXPRESSION__KEY = RESULT_SPEC_FEATURE_COUNT + 13;
+  int EXPRESSION__KEY = RESULT_SPEC_FEATURE_COUNT + 16;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -833,7 +860,7 @@ public interface JDOQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXPRESSION__VALUE = RESULT_SPEC_FEATURE_COUNT + 14;
+  int EXPRESSION__VALUE = RESULT_SPEC_FEATURE_COUNT + 17;
 
   /**
    * The feature id for the '<em><b>String</b></em>' containment reference.
@@ -842,7 +869,7 @@ public interface JDOQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXPRESSION__STRING = RESULT_SPEC_FEATURE_COUNT + 15;
+  int EXPRESSION__STRING = RESULT_SPEC_FEATURE_COUNT + 18;
 
   /**
    * The feature id for the '<em><b>Regex</b></em>' containment reference.
@@ -851,7 +878,7 @@ public interface JDOQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXPRESSION__REGEX = RESULT_SPEC_FEATURE_COUNT + 16;
+  int EXPRESSION__REGEX = RESULT_SPEC_FEATURE_COUNT + 19;
 
   /**
    * The feature id for the '<em><b>From Index</b></em>' containment reference.
@@ -860,7 +887,7 @@ public interface JDOQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXPRESSION__FROM_INDEX = RESULT_SPEC_FEATURE_COUNT + 17;
+  int EXPRESSION__FROM_INDEX = RESULT_SPEC_FEATURE_COUNT + 20;
 
   /**
    * The feature id for the '<em><b>Begin Index</b></em>' containment reference.
@@ -869,7 +896,7 @@ public interface JDOQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXPRESSION__BEGIN_INDEX = RESULT_SPEC_FEATURE_COUNT + 18;
+  int EXPRESSION__BEGIN_INDEX = RESULT_SPEC_FEATURE_COUNT + 21;
 
   /**
    * The feature id for the '<em><b>End Index</b></em>' containment reference.
@@ -878,7 +905,7 @@ public interface JDOQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXPRESSION__END_INDEX = RESULT_SPEC_FEATURE_COUNT + 19;
+  int EXPRESSION__END_INDEX = RESULT_SPEC_FEATURE_COUNT + 22;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -887,7 +914,7 @@ public interface JDOQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXPRESSION__LEFT = RESULT_SPEC_FEATURE_COUNT + 20;
+  int EXPRESSION__LEFT = RESULT_SPEC_FEATURE_COUNT + 23;
 
   /**
    * The number of structural features of the '<em>Expression</em>' class.
@@ -896,7 +923,7 @@ public interface JDOQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXPRESSION_FEATURE_COUNT = RESULT_SPEC_FEATURE_COUNT + 21;
+  int EXPRESSION_FEATURE_COUNT = RESULT_SPEC_FEATURE_COUNT + 24;
 
   /**
    * The meta object id for the '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.impl.ConditionalOrExpressionImpl <em>Conditional Or Expression</em>}' class.
@@ -927,13 +954,13 @@ public interface JDOQLPackage extends EPackage
   int CONDITIONAL_OR_EXPRESSION__DIRECTION = EXPRESSION__DIRECTION;
 
   /**
-   * The feature id for the '<em><b>Unary Operator</b></em>' attribute.
+   * The feature id for the '<em><b>Cast Type</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CONDITIONAL_OR_EXPRESSION__UNARY_OPERATOR = EXPRESSION__UNARY_OPERATOR;
+  int CONDITIONAL_OR_EXPRESSION__CAST_TYPE = EXPRESSION__CAST_TYPE;
 
   /**
    * The feature id for the '<em><b>Right</b></em>' containment reference.
@@ -943,6 +970,15 @@ public interface JDOQLPackage extends EPackage
    * @ordered
    */
   int CONDITIONAL_OR_EXPRESSION__RIGHT = EXPRESSION__RIGHT;
+
+  /**
+   * The feature id for the '<em><b>Unary Operator</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONDITIONAL_OR_EXPRESSION__UNARY_OPERATOR = EXPRESSION__UNARY_OPERATOR;
 
   /**
    * The feature id for the '<em><b>Literal</b></em>' attribute.
@@ -1006,6 +1042,24 @@ public interface JDOQLPackage extends EPackage
    * @ordered
    */
   int CONDITIONAL_OR_EXPRESSION__PERSISTABLE = EXPRESSION__PERSISTABLE;
+
+  /**
+   * The feature id for the '<em><b>Is Distinct</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONDITIONAL_OR_EXPRESSION__IS_DISTINCT = EXPRESSION__IS_DISTINCT;
+
+  /**
+   * The feature id for the '<em><b>Aggregate Argument</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONDITIONAL_OR_EXPRESSION__AGGREGATE_ARGUMENT = EXPRESSION__AGGREGATE_ARGUMENT;
 
   /**
    * The feature id for the '<em><b>Element</b></em>' containment reference.
@@ -1135,13 +1189,13 @@ public interface JDOQLPackage extends EPackage
   int CONDITIONAL_AND_EXPRESSION__DIRECTION = EXPRESSION__DIRECTION;
 
   /**
-   * The feature id for the '<em><b>Unary Operator</b></em>' attribute.
+   * The feature id for the '<em><b>Cast Type</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CONDITIONAL_AND_EXPRESSION__UNARY_OPERATOR = EXPRESSION__UNARY_OPERATOR;
+  int CONDITIONAL_AND_EXPRESSION__CAST_TYPE = EXPRESSION__CAST_TYPE;
 
   /**
    * The feature id for the '<em><b>Right</b></em>' containment reference.
@@ -1151,6 +1205,15 @@ public interface JDOQLPackage extends EPackage
    * @ordered
    */
   int CONDITIONAL_AND_EXPRESSION__RIGHT = EXPRESSION__RIGHT;
+
+  /**
+   * The feature id for the '<em><b>Unary Operator</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONDITIONAL_AND_EXPRESSION__UNARY_OPERATOR = EXPRESSION__UNARY_OPERATOR;
 
   /**
    * The feature id for the '<em><b>Literal</b></em>' attribute.
@@ -1214,6 +1277,24 @@ public interface JDOQLPackage extends EPackage
    * @ordered
    */
   int CONDITIONAL_AND_EXPRESSION__PERSISTABLE = EXPRESSION__PERSISTABLE;
+
+  /**
+   * The feature id for the '<em><b>Is Distinct</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONDITIONAL_AND_EXPRESSION__IS_DISTINCT = EXPRESSION__IS_DISTINCT;
+
+  /**
+   * The feature id for the '<em><b>Aggregate Argument</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONDITIONAL_AND_EXPRESSION__AGGREGATE_ARGUMENT = EXPRESSION__AGGREGATE_ARGUMENT;
 
   /**
    * The feature id for the '<em><b>Element</b></em>' containment reference.
@@ -1343,13 +1424,13 @@ public interface JDOQLPackage extends EPackage
   int SIMPLE_OR_EXPRESSION__DIRECTION = EXPRESSION__DIRECTION;
 
   /**
-   * The feature id for the '<em><b>Unary Operator</b></em>' attribute.
+   * The feature id for the '<em><b>Cast Type</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SIMPLE_OR_EXPRESSION__UNARY_OPERATOR = EXPRESSION__UNARY_OPERATOR;
+  int SIMPLE_OR_EXPRESSION__CAST_TYPE = EXPRESSION__CAST_TYPE;
 
   /**
    * The feature id for the '<em><b>Right</b></em>' containment reference.
@@ -1359,6 +1440,15 @@ public interface JDOQLPackage extends EPackage
    * @ordered
    */
   int SIMPLE_OR_EXPRESSION__RIGHT = EXPRESSION__RIGHT;
+
+  /**
+   * The feature id for the '<em><b>Unary Operator</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SIMPLE_OR_EXPRESSION__UNARY_OPERATOR = EXPRESSION__UNARY_OPERATOR;
 
   /**
    * The feature id for the '<em><b>Literal</b></em>' attribute.
@@ -1422,6 +1512,24 @@ public interface JDOQLPackage extends EPackage
    * @ordered
    */
   int SIMPLE_OR_EXPRESSION__PERSISTABLE = EXPRESSION__PERSISTABLE;
+
+  /**
+   * The feature id for the '<em><b>Is Distinct</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SIMPLE_OR_EXPRESSION__IS_DISTINCT = EXPRESSION__IS_DISTINCT;
+
+  /**
+   * The feature id for the '<em><b>Aggregate Argument</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SIMPLE_OR_EXPRESSION__AGGREGATE_ARGUMENT = EXPRESSION__AGGREGATE_ARGUMENT;
 
   /**
    * The feature id for the '<em><b>Element</b></em>' containment reference.
@@ -1551,13 +1659,13 @@ public interface JDOQLPackage extends EPackage
   int SIMPLE_AND_EXPRESSION__DIRECTION = EXPRESSION__DIRECTION;
 
   /**
-   * The feature id for the '<em><b>Unary Operator</b></em>' attribute.
+   * The feature id for the '<em><b>Cast Type</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SIMPLE_AND_EXPRESSION__UNARY_OPERATOR = EXPRESSION__UNARY_OPERATOR;
+  int SIMPLE_AND_EXPRESSION__CAST_TYPE = EXPRESSION__CAST_TYPE;
 
   /**
    * The feature id for the '<em><b>Right</b></em>' containment reference.
@@ -1567,6 +1675,15 @@ public interface JDOQLPackage extends EPackage
    * @ordered
    */
   int SIMPLE_AND_EXPRESSION__RIGHT = EXPRESSION__RIGHT;
+
+  /**
+   * The feature id for the '<em><b>Unary Operator</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SIMPLE_AND_EXPRESSION__UNARY_OPERATOR = EXPRESSION__UNARY_OPERATOR;
 
   /**
    * The feature id for the '<em><b>Literal</b></em>' attribute.
@@ -1630,6 +1747,24 @@ public interface JDOQLPackage extends EPackage
    * @ordered
    */
   int SIMPLE_AND_EXPRESSION__PERSISTABLE = EXPRESSION__PERSISTABLE;
+
+  /**
+   * The feature id for the '<em><b>Is Distinct</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SIMPLE_AND_EXPRESSION__IS_DISTINCT = EXPRESSION__IS_DISTINCT;
+
+  /**
+   * The feature id for the '<em><b>Aggregate Argument</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SIMPLE_AND_EXPRESSION__AGGREGATE_ARGUMENT = EXPRESSION__AGGREGATE_ARGUMENT;
 
   /**
    * The feature id for the '<em><b>Element</b></em>' containment reference.
@@ -1759,13 +1894,13 @@ public interface JDOQLPackage extends EPackage
   int COMPARISON_OPERATOR_EXPRESSION__DIRECTION = EXPRESSION__DIRECTION;
 
   /**
-   * The feature id for the '<em><b>Unary Operator</b></em>' attribute.
+   * The feature id for the '<em><b>Cast Type</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int COMPARISON_OPERATOR_EXPRESSION__UNARY_OPERATOR = EXPRESSION__UNARY_OPERATOR;
+  int COMPARISON_OPERATOR_EXPRESSION__CAST_TYPE = EXPRESSION__CAST_TYPE;
 
   /**
    * The feature id for the '<em><b>Right</b></em>' containment reference.
@@ -1775,6 +1910,15 @@ public interface JDOQLPackage extends EPackage
    * @ordered
    */
   int COMPARISON_OPERATOR_EXPRESSION__RIGHT = EXPRESSION__RIGHT;
+
+  /**
+   * The feature id for the '<em><b>Unary Operator</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPARISON_OPERATOR_EXPRESSION__UNARY_OPERATOR = EXPRESSION__UNARY_OPERATOR;
 
   /**
    * The feature id for the '<em><b>Literal</b></em>' attribute.
@@ -1838,6 +1982,24 @@ public interface JDOQLPackage extends EPackage
    * @ordered
    */
   int COMPARISON_OPERATOR_EXPRESSION__PERSISTABLE = EXPRESSION__PERSISTABLE;
+
+  /**
+   * The feature id for the '<em><b>Is Distinct</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPARISON_OPERATOR_EXPRESSION__IS_DISTINCT = EXPRESSION__IS_DISTINCT;
+
+  /**
+   * The feature id for the '<em><b>Aggregate Argument</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPARISON_OPERATOR_EXPRESSION__AGGREGATE_ARGUMENT = EXPRESSION__AGGREGATE_ARGUMENT;
 
   /**
    * The feature id for the '<em><b>Element</b></em>' containment reference.
@@ -1976,13 +2138,13 @@ public interface JDOQLPackage extends EPackage
   int ADDITION_EXPRESSION__DIRECTION = EXPRESSION__DIRECTION;
 
   /**
-   * The feature id for the '<em><b>Unary Operator</b></em>' attribute.
+   * The feature id for the '<em><b>Cast Type</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ADDITION_EXPRESSION__UNARY_OPERATOR = EXPRESSION__UNARY_OPERATOR;
+  int ADDITION_EXPRESSION__CAST_TYPE = EXPRESSION__CAST_TYPE;
 
   /**
    * The feature id for the '<em><b>Right</b></em>' containment reference.
@@ -1992,6 +2154,15 @@ public interface JDOQLPackage extends EPackage
    * @ordered
    */
   int ADDITION_EXPRESSION__RIGHT = EXPRESSION__RIGHT;
+
+  /**
+   * The feature id for the '<em><b>Unary Operator</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ADDITION_EXPRESSION__UNARY_OPERATOR = EXPRESSION__UNARY_OPERATOR;
 
   /**
    * The feature id for the '<em><b>Literal</b></em>' attribute.
@@ -2055,6 +2226,24 @@ public interface JDOQLPackage extends EPackage
    * @ordered
    */
   int ADDITION_EXPRESSION__PERSISTABLE = EXPRESSION__PERSISTABLE;
+
+  /**
+   * The feature id for the '<em><b>Is Distinct</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ADDITION_EXPRESSION__IS_DISTINCT = EXPRESSION__IS_DISTINCT;
+
+  /**
+   * The feature id for the '<em><b>Aggregate Argument</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ADDITION_EXPRESSION__AGGREGATE_ARGUMENT = EXPRESSION__AGGREGATE_ARGUMENT;
 
   /**
    * The feature id for the '<em><b>Element</b></em>' containment reference.
@@ -2193,13 +2382,13 @@ public interface JDOQLPackage extends EPackage
   int MULTIPLICATION_EXPRESSION__DIRECTION = EXPRESSION__DIRECTION;
 
   /**
-   * The feature id for the '<em><b>Unary Operator</b></em>' attribute.
+   * The feature id for the '<em><b>Cast Type</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MULTIPLICATION_EXPRESSION__UNARY_OPERATOR = EXPRESSION__UNARY_OPERATOR;
+  int MULTIPLICATION_EXPRESSION__CAST_TYPE = EXPRESSION__CAST_TYPE;
 
   /**
    * The feature id for the '<em><b>Right</b></em>' containment reference.
@@ -2209,6 +2398,15 @@ public interface JDOQLPackage extends EPackage
    * @ordered
    */
   int MULTIPLICATION_EXPRESSION__RIGHT = EXPRESSION__RIGHT;
+
+  /**
+   * The feature id for the '<em><b>Unary Operator</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MULTIPLICATION_EXPRESSION__UNARY_OPERATOR = EXPRESSION__UNARY_OPERATOR;
 
   /**
    * The feature id for the '<em><b>Literal</b></em>' attribute.
@@ -2272,6 +2470,24 @@ public interface JDOQLPackage extends EPackage
    * @ordered
    */
   int MULTIPLICATION_EXPRESSION__PERSISTABLE = EXPRESSION__PERSISTABLE;
+
+  /**
+   * The feature id for the '<em><b>Is Distinct</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MULTIPLICATION_EXPRESSION__IS_DISTINCT = EXPRESSION__IS_DISTINCT;
+
+  /**
+   * The feature id for the '<em><b>Aggregate Argument</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MULTIPLICATION_EXPRESSION__AGGREGATE_ARGUMENT = EXPRESSION__AGGREGATE_ARGUMENT;
 
   /**
    * The feature id for the '<em><b>Element</b></em>' containment reference.
@@ -2410,13 +2626,13 @@ public interface JDOQLPackage extends EPackage
   int FIELD_ACCESS_EXPRESSION__DIRECTION = EXPRESSION__DIRECTION;
 
   /**
-   * The feature id for the '<em><b>Unary Operator</b></em>' attribute.
+   * The feature id for the '<em><b>Cast Type</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FIELD_ACCESS_EXPRESSION__UNARY_OPERATOR = EXPRESSION__UNARY_OPERATOR;
+  int FIELD_ACCESS_EXPRESSION__CAST_TYPE = EXPRESSION__CAST_TYPE;
 
   /**
    * The feature id for the '<em><b>Right</b></em>' containment reference.
@@ -2426,6 +2642,15 @@ public interface JDOQLPackage extends EPackage
    * @ordered
    */
   int FIELD_ACCESS_EXPRESSION__RIGHT = EXPRESSION__RIGHT;
+
+  /**
+   * The feature id for the '<em><b>Unary Operator</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FIELD_ACCESS_EXPRESSION__UNARY_OPERATOR = EXPRESSION__UNARY_OPERATOR;
 
   /**
    * The feature id for the '<em><b>Literal</b></em>' attribute.
@@ -2489,6 +2714,24 @@ public interface JDOQLPackage extends EPackage
    * @ordered
    */
   int FIELD_ACCESS_EXPRESSION__PERSISTABLE = EXPRESSION__PERSISTABLE;
+
+  /**
+   * The feature id for the '<em><b>Is Distinct</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FIELD_ACCESS_EXPRESSION__IS_DISTINCT = EXPRESSION__IS_DISTINCT;
+
+  /**
+   * The feature id for the '<em><b>Aggregate Argument</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FIELD_ACCESS_EXPRESSION__AGGREGATE_ARGUMENT = EXPRESSION__AGGREGATE_ARGUMENT;
 
   /**
    * The feature id for the '<em><b>Element</b></em>' containment reference.
@@ -3205,15 +3448,15 @@ public interface JDOQLPackage extends EPackage
   EAttribute getExpression_Direction();
 
   /**
-   * Returns the meta object for the attribute '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getUnaryOperator <em>Unary Operator</em>}'.
+   * Returns the meta object for the attribute '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getCastType <em>Cast Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Unary Operator</em>'.
-   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getUnaryOperator()
+   * @return the meta object for the attribute '<em>Cast Type</em>'.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getCastType()
    * @see #getExpression()
    * @generated
    */
-  EAttribute getExpression_UnaryOperator();
+  EAttribute getExpression_CastType();
 
   /**
    * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getRight <em>Right</em>}'.
@@ -3225,6 +3468,17 @@ public interface JDOQLPackage extends EPackage
    * @generated
    */
   EReference getExpression_Right();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getUnaryOperator <em>Unary Operator</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Unary Operator</em>'.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getUnaryOperator()
+   * @see #getExpression()
+   * @generated
+   */
+  EAttribute getExpression_UnaryOperator();
 
   /**
    * Returns the meta object for the attribute '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getLiteral <em>Literal</em>}'.
@@ -3302,6 +3556,28 @@ public interface JDOQLPackage extends EPackage
    * @generated
    */
   EReference getExpression_Persistable();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#isIsDistinct <em>Is Distinct</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Is Distinct</em>'.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#isIsDistinct()
+   * @see #getExpression()
+   * @generated
+   */
+  EAttribute getExpression_IsDistinct();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getAggregateArgument <em>Aggregate Argument</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Aggregate Argument</em>'.
+   * @see org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getAggregateArgument()
+   * @see #getExpression()
+   * @generated
+   */
+  EReference getExpression_AggregateArgument();
 
   /**
    * Returns the meta object for the containment reference '{@link org.nightlabs.jjqb.xtext.jdoql.jDOQL.Expression#getElement <em>Element</em>}'.
@@ -4062,12 +4338,12 @@ public interface JDOQLPackage extends EPackage
     EAttribute EXPRESSION__DIRECTION = eINSTANCE.getExpression_Direction();
 
     /**
-     * The meta object literal for the '<em><b>Unary Operator</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Cast Type</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute EXPRESSION__UNARY_OPERATOR = eINSTANCE.getExpression_UnaryOperator();
+    EAttribute EXPRESSION__CAST_TYPE = eINSTANCE.getExpression_CastType();
 
     /**
      * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
@@ -4076,6 +4352,14 @@ public interface JDOQLPackage extends EPackage
      * @generated
      */
     EReference EXPRESSION__RIGHT = eINSTANCE.getExpression_Right();
+
+    /**
+     * The meta object literal for the '<em><b>Unary Operator</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute EXPRESSION__UNARY_OPERATOR = eINSTANCE.getExpression_UnaryOperator();
 
     /**
      * The meta object literal for the '<em><b>Literal</b></em>' attribute feature.
@@ -4132,6 +4416,22 @@ public interface JDOQLPackage extends EPackage
      * @generated
      */
     EReference EXPRESSION__PERSISTABLE = eINSTANCE.getExpression_Persistable();
+
+    /**
+     * The meta object literal for the '<em><b>Is Distinct</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute EXPRESSION__IS_DISTINCT = eINSTANCE.getExpression_IsDistinct();
+
+    /**
+     * The meta object literal for the '<em><b>Aggregate Argument</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EXPRESSION__AGGREGATE_ARGUMENT = eINSTANCE.getExpression_AggregateArgument();
 
     /**
      * The meta object literal for the '<em><b>Element</b></em>' containment reference feature.

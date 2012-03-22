@@ -131,6 +131,7 @@ MultiplicationExpression returns Expression:
 ;
 
 UnaryExpression returns Expression:
+	'(' castType=Type ')' right=FieldAccessExpression |
 	(unaryOperator=UnaryOperator)? right=FieldAccessExpression
 ;
 
@@ -158,9 +159,20 @@ FieldOrMethodExpression returns Expression:
 ;
 
 StaticMethodExpression returns Expression:
-	{Expression} 'java.lang.'? 'Math.abs' '(' numeric=ConditionalOrExpression ')' |
-	{Expression} 'java.lang.'? 'Math.sqrt' '(' numeric=ConditionalOrExpression ')' |
-	{Expression} 'javax.jdo.'? 'JDOHelper.getObjectId' '(' persistable=ConditionalOrExpression ')'
+	{Expression} 'java.lang.Math.abs' '(' numeric=ConditionalOrExpression ')' |
+	{Expression} 'Math.abs' '(' numeric=ConditionalOrExpression ')' |
+	{Expression} 'java.lang.Math.sqrt' '(' numeric=ConditionalOrExpression ')' |
+	{Expression} 'Math.sqrt' '(' numeric=ConditionalOrExpression ')' |
+	{Expression} 'javax.jdo.JDOHelper.getObjectId' '(' persistable=ConditionalOrExpression ')' |
+	{Expression} 'JDOHelper.getObjectId' '(' persistable=ConditionalOrExpression ')' |
+
+	// Would be cleaner to declare the following aggregate expressions separately, but here works for now.
+	// Marco :-)
+	{Expression} 'count' '(' (isDistinct?='DISTINCT')? aggregateArgument=ConditionalOrExpression ')' |
+	{Expression} 'sum' '(' (isDistinct?='DISTINCT')? aggregateArgument=ConditionalOrExpression ')' |
+	{Expression} 'min' '(' aggregateArgument=ConditionalOrExpression ')' |
+	{Expression} 'max' '(' aggregateArgument=ConditionalOrExpression ')' |
+	{Expression} 'avg' '(' (isDistinct?='DISTINCT')? aggregateArgument=ConditionalOrExpression ')'	
 ;
 
 MethodExpression returns Expression:
@@ -192,10 +204,6 @@ MethodExpression returns Expression:
 
 ParenthesesExpression returns Expression:
 	'(' ConditionalOrExpression ')'
-;
-
-Cast:
-	'(' Type ')'
 ;
 
 Type:
@@ -245,6 +253,29 @@ Literal:
 ;
 
 QualifiedIdentifier:
+	// BEGIN workaround
+	// without this, I get error markers when casting sth. to a class in one of these packages
+//	'java.'ID ('.'ID)* |
+//	'java'ID ('.'ID)* |
+//	'java.lang.'ID ('.'ID)* |
+//	'java'ID'.lang'ID ('.'ID)* |
+//	'javax.jdo'ID ('.'ID)* |
+//	'javax.jdo.'ID ('.'ID)* |
+//	'javax'ID'.jdo'ID ('.'ID)* |
+	// the above DOES NOT WORK :-((( Have to look for another solution!
+	// for now, at least listing the most common from these packages explicitely (this works)...
+	'java.lang.Boolean' |
+	'java.lang.Byte' |
+	'java.lang.Character' |
+	'java.lang.Double' |
+	'java.lang.Float' |
+	'java.lang.Integer' |
+	'java.lang.Long' |
+	'java.lang.Short' |
+	'java.lang.String' |
+	'java.' ID ('.'ID)* | // for java.util.Map et al.
+	'javax.' ID ('.'ID)* | // for javax.**
+	// END workaround
 	ID ('.'ID)*
 ;
 
