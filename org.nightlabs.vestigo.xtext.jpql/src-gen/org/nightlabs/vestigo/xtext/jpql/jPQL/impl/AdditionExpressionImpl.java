@@ -11,24 +11,24 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.nightlabs.vestigo.xtext.jpql.jPQL.ComparisonOperator;
-import org.nightlabs.vestigo.xtext.jpql.jPQL.ComparisonOperatorExpression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.AdditionExpression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.AdditionOperator;
 import org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Comparison Operator Expression</b></em>'.
+ * An implementation of the model object '<em><b>Addition Expression</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.ComparisonOperatorExpressionImpl#getOperator <em>Operator</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.AdditionExpressionImpl#getOperator <em>Operator</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class ComparisonOperatorExpressionImpl extends ExpressionImpl implements ComparisonOperatorExpression
+public class AdditionExpressionImpl extends ExpressionImpl implements AdditionExpression
 {
   /**
    * The default value of the '{@link #getOperator() <em>Operator</em>}' attribute.
@@ -38,7 +38,7 @@ public class ComparisonOperatorExpressionImpl extends ExpressionImpl implements 
    * @generated
    * @ordered
    */
-  protected static final ComparisonOperator OPERATOR_EDEFAULT = ComparisonOperator.LESS_THEN;
+  protected static final AdditionOperator OPERATOR_EDEFAULT = AdditionOperator.ADD;
 
   /**
    * The cached value of the '{@link #getOperator() <em>Operator</em>}' attribute.
@@ -48,14 +48,14 @@ public class ComparisonOperatorExpressionImpl extends ExpressionImpl implements 
    * @generated
    * @ordered
    */
-  protected ComparisonOperator operator = OPERATOR_EDEFAULT;
+  protected AdditionOperator operator = OPERATOR_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected ComparisonOperatorExpressionImpl()
+  protected AdditionExpressionImpl()
   {
     super();
   }
@@ -68,7 +68,7 @@ public class ComparisonOperatorExpressionImpl extends ExpressionImpl implements 
   @Override
   protected EClass eStaticClass()
   {
-    return JPQLPackage.Literals.COMPARISON_OPERATOR_EXPRESSION;
+    return JPQLPackage.Literals.ADDITION_EXPRESSION;
   }
 
   /**
@@ -76,7 +76,7 @@ public class ComparisonOperatorExpressionImpl extends ExpressionImpl implements 
    * <!-- end-user-doc -->
    * @generated
    */
-  public ComparisonOperator getOperator()
+  public AdditionOperator getOperator()
   {
     return operator;
   }
@@ -86,12 +86,12 @@ public class ComparisonOperatorExpressionImpl extends ExpressionImpl implements 
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setOperator(ComparisonOperator newOperator)
+  public void setOperator(AdditionOperator newOperator)
   {
-    ComparisonOperator oldOperator = operator;
+    AdditionOperator oldOperator = operator;
     operator = newOperator == null ? OPERATOR_EDEFAULT : newOperator;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, JPQLPackage.COMPARISON_OPERATOR_EXPRESSION__OPERATOR, oldOperator, operator));
+      eNotify(new ENotificationImpl(this, Notification.SET, JPQLPackage.ADDITION_EXPRESSION__OPERATOR, oldOperator, operator));
   }
 
   /**
@@ -104,7 +104,7 @@ public class ComparisonOperatorExpressionImpl extends ExpressionImpl implements 
   {
     switch (featureID)
     {
-      case JPQLPackage.COMPARISON_OPERATOR_EXPRESSION__OPERATOR:
+      case JPQLPackage.ADDITION_EXPRESSION__OPERATOR:
         return getOperator();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -120,8 +120,8 @@ public class ComparisonOperatorExpressionImpl extends ExpressionImpl implements 
   {
     switch (featureID)
     {
-      case JPQLPackage.COMPARISON_OPERATOR_EXPRESSION__OPERATOR:
-        setOperator((ComparisonOperator)newValue);
+      case JPQLPackage.ADDITION_EXPRESSION__OPERATOR:
+        setOperator((AdditionOperator)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -137,7 +137,7 @@ public class ComparisonOperatorExpressionImpl extends ExpressionImpl implements 
   {
     switch (featureID)
     {
-      case JPQLPackage.COMPARISON_OPERATOR_EXPRESSION__OPERATOR:
+      case JPQLPackage.ADDITION_EXPRESSION__OPERATOR:
         setOperator(OPERATOR_EDEFAULT);
         return;
     }
@@ -154,7 +154,7 @@ public class ComparisonOperatorExpressionImpl extends ExpressionImpl implements 
   {
     switch (featureID)
     {
-      case JPQLPackage.COMPARISON_OPERATOR_EXPRESSION__OPERATOR:
+      case JPQLPackage.ADDITION_EXPRESSION__OPERATOR:
         return operator != OPERATOR_EDEFAULT;
     }
     return super.eIsSet(featureID);
@@ -177,4 +177,4 @@ public class ComparisonOperatorExpressionImpl extends ExpressionImpl implements 
     return result.toString();
   }
 
-} //ComparisonOperatorExpressionImpl
+} //AdditionExpressionImpl

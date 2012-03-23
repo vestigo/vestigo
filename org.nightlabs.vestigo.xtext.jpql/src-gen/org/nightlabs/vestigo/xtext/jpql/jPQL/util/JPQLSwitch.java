@@ -195,6 +195,15 @@ public class JPQLSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case JPQLPackage.COUNT_AGGREGATE:
+      {
+        CountAggregate countAggregate = (CountAggregate)theEObject;
+        T result = caseCountAggregate(countAggregate);
+        if (result == null) result = caseSelectAggregateExpression(countAggregate);
+        if (result == null) result = caseSelectExpression(countAggregate);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case JPQLPackage.MAX_AGGREGATE:
       {
         MaxAggregate maxAggregate = (MaxAggregate)theEObject;
@@ -219,15 +228,6 @@ public class JPQLSwitch<T> extends Switch<T>
         T result = caseSumAggregate(sumAggregate);
         if (result == null) result = caseSelectAggregateExpression(sumAggregate);
         if (result == null) result = caseSelectExpression(sumAggregate);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case JPQLPackage.COUNT_AGGREGATE:
-      {
-        CountAggregate countAggregate = (CountAggregate)theEObject;
-        T result = caseCountAggregate(countAggregate);
-        if (result == null) result = caseSelectAggregateExpression(countAggregate);
-        if (result == null) result = caseSelectExpression(countAggregate);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -321,112 +321,6 @@ public class JPQLSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case JPQLPackage.COMPARISON_OPERATOR_EXPRESSION:
-      {
-        ComparisonOperatorExpression comparisonOperatorExpression = (ComparisonOperatorExpression)theEObject;
-        T result = caseComparisonOperatorExpression(comparisonOperatorExpression);
-        if (result == null) result = caseExpression(comparisonOperatorExpression);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case JPQLPackage.EXISTS_EXPRESSION:
-      {
-        ExistsExpression existsExpression = (ExistsExpression)theEObject;
-        T result = caseExistsExpression(existsExpression);
-        if (result == null) result = caseExpression(existsExpression);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case JPQLPackage.ALL_EXPRESSION:
-      {
-        AllExpression allExpression = (AllExpression)theEObject;
-        T result = caseAllExpression(allExpression);
-        if (result == null) result = caseExpression(allExpression);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case JPQLPackage.ANY_EXPRESSION:
-      {
-        AnyExpression anyExpression = (AnyExpression)theEObject;
-        T result = caseAnyExpression(anyExpression);
-        if (result == null) result = caseExpression(anyExpression);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case JPQLPackage.SOME_EXPRESSION:
-      {
-        SomeExpression someExpression = (SomeExpression)theEObject;
-        T result = caseSomeExpression(someExpression);
-        if (result == null) result = caseExpression(someExpression);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case JPQLPackage.COLLECTION_EXPRESSION:
-      {
-        CollectionExpression collectionExpression = (CollectionExpression)theEObject;
-        T result = caseCollectionExpression(collectionExpression);
-        if (result == null) result = caseExpression(collectionExpression);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case JPQLPackage.NULL_COMPARISON_EXPRESSION:
-      {
-        NullComparisonExpression nullComparisonExpression = (NullComparisonExpression)theEObject;
-        T result = caseNullComparisonExpression(nullComparisonExpression);
-        if (result == null) result = caseExpression(nullComparisonExpression);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case JPQLPackage.EMPTY_COMPARISON_EXPRESSION:
-      {
-        EmptyComparisonExpression emptyComparisonExpression = (EmptyComparisonExpression)theEObject;
-        T result = caseEmptyComparisonExpression(emptyComparisonExpression);
-        if (result == null) result = caseExpression(emptyComparisonExpression);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case JPQLPackage.LIKE_EXPRESSION:
-      {
-        LikeExpression likeExpression = (LikeExpression)theEObject;
-        T result = caseLikeExpression(likeExpression);
-        if (result == null) result = caseExpression(likeExpression);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case JPQLPackage.IN_EXPRESSION:
-      {
-        InExpression inExpression = (InExpression)theEObject;
-        T result = caseInExpression(inExpression);
-        if (result == null) result = caseExpression(inExpression);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case JPQLPackage.IN_SEQ_EXPRESSION:
-      {
-        InSeqExpression inSeqExpression = (InSeqExpression)theEObject;
-        T result = caseInSeqExpression(inSeqExpression);
-        if (result == null) result = caseInExpression(inSeqExpression);
-        if (result == null) result = caseExpression(inSeqExpression);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case JPQLPackage.IN_QUERY_EXPRESSION:
-      {
-        InQueryExpression inQueryExpression = (InQueryExpression)theEObject;
-        T result = caseInQueryExpression(inQueryExpression);
-        if (result == null) result = caseInExpression(inQueryExpression);
-        if (result == null) result = caseExpression(inQueryExpression);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case JPQLPackage.BETWEEN_EXPRESSION:
-      {
-        BetweenExpression betweenExpression = (BetweenExpression)theEObject;
-        T result = caseBetweenExpression(betweenExpression);
-        if (result == null) result = caseExpression(betweenExpression);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case JPQLPackage.VARIABLE:
       {
         Variable variable = (Variable)theEObject;
@@ -483,47 +377,47 @@ public class JPQLSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case JPQLPackage.INTEGER_EXPRESSION:
+      case JPQLPackage.INTEGER_LITERAL:
       {
-        IntegerExpression integerExpression = (IntegerExpression)theEObject;
-        T result = caseIntegerExpression(integerExpression);
-        if (result == null) result = caseValue(integerExpression);
-        if (result == null) result = caseVariable(integerExpression);
-        if (result == null) result = caseExpressionTerm(integerExpression);
-        if (result == null) result = caseExpression(integerExpression);
+        IntegerLiteral integerLiteral = (IntegerLiteral)theEObject;
+        T result = caseIntegerLiteral(integerLiteral);
+        if (result == null) result = caseValue(integerLiteral);
+        if (result == null) result = caseVariable(integerLiteral);
+        if (result == null) result = caseExpressionTerm(integerLiteral);
+        if (result == null) result = caseExpression(integerLiteral);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case JPQLPackage.STRING_EXPRESSION:
+      case JPQLPackage.STRING_LITERAL:
       {
-        StringExpression stringExpression = (StringExpression)theEObject;
-        T result = caseStringExpression(stringExpression);
-        if (result == null) result = caseValue(stringExpression);
-        if (result == null) result = caseVariable(stringExpression);
-        if (result == null) result = caseExpressionTerm(stringExpression);
-        if (result == null) result = caseExpression(stringExpression);
+        StringLiteral stringLiteral = (StringLiteral)theEObject;
+        T result = caseStringLiteral(stringLiteral);
+        if (result == null) result = caseValue(stringLiteral);
+        if (result == null) result = caseVariable(stringLiteral);
+        if (result == null) result = caseExpressionTerm(stringLiteral);
+        if (result == null) result = caseExpression(stringLiteral);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case JPQLPackage.NULL_EXPRESSION:
+      case JPQLPackage.NULL_LITERAL:
       {
-        NullExpression nullExpression = (NullExpression)theEObject;
-        T result = caseNullExpression(nullExpression);
-        if (result == null) result = caseValue(nullExpression);
-        if (result == null) result = caseVariable(nullExpression);
-        if (result == null) result = caseExpressionTerm(nullExpression);
-        if (result == null) result = caseExpression(nullExpression);
+        NullLiteral nullLiteral = (NullLiteral)theEObject;
+        T result = caseNullLiteral(nullLiteral);
+        if (result == null) result = caseValue(nullLiteral);
+        if (result == null) result = caseVariable(nullLiteral);
+        if (result == null) result = caseExpressionTerm(nullLiteral);
+        if (result == null) result = caseExpression(nullLiteral);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case JPQLPackage.BOOLEAN_EXPRESSION:
+      case JPQLPackage.BOOLEAN_LITERAL:
       {
-        BooleanExpression booleanExpression = (BooleanExpression)theEObject;
-        T result = caseBooleanExpression(booleanExpression);
-        if (result == null) result = caseValue(booleanExpression);
-        if (result == null) result = caseVariable(booleanExpression);
-        if (result == null) result = caseExpressionTerm(booleanExpression);
-        if (result == null) result = caseExpression(booleanExpression);
+        BooleanLiteral booleanLiteral = (BooleanLiteral)theEObject;
+        T result = caseBooleanLiteral(booleanLiteral);
+        if (result == null) result = caseValue(booleanLiteral);
+        if (result == null) result = caseVariable(booleanLiteral);
+        if (result == null) result = caseExpressionTerm(booleanLiteral);
+        if (result == null) result = caseExpression(booleanLiteral);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -540,6 +434,30 @@ public class JPQLSwitch<T> extends Switch<T>
         AndExpression andExpression = (AndExpression)theEObject;
         T result = caseAndExpression(andExpression);
         if (result == null) result = caseExpression(andExpression);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case JPQLPackage.COMPARISON_OPERATOR_EXPRESSION:
+      {
+        ComparisonOperatorExpression comparisonOperatorExpression = (ComparisonOperatorExpression)theEObject;
+        T result = caseComparisonOperatorExpression(comparisonOperatorExpression);
+        if (result == null) result = caseExpression(comparisonOperatorExpression);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case JPQLPackage.ADDITION_EXPRESSION:
+      {
+        AdditionExpression additionExpression = (AdditionExpression)theEObject;
+        T result = caseAdditionExpression(additionExpression);
+        if (result == null) result = caseExpression(additionExpression);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case JPQLPackage.MULTIPLICATION_EXPRESSION:
+      {
+        MultiplicationExpression multiplicationExpression = (MultiplicationExpression)theEObject;
+        T result = caseMultiplicationExpression(multiplicationExpression);
+        if (result == null) result = caseExpression(multiplicationExpression);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -804,6 +722,22 @@ public class JPQLSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Count Aggregate</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Count Aggregate</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseCountAggregate(CountAggregate object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Max Aggregate</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -847,22 +781,6 @@ public class JPQLSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseSumAggregate(SumAggregate object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Count Aggregate</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Count Aggregate</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseCountAggregate(CountAggregate object)
   {
     return null;
   }
@@ -1060,214 +978,6 @@ public class JPQLSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Comparison Operator Expression</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Comparison Operator Expression</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseComparisonOperatorExpression(ComparisonOperatorExpression object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Exists Expression</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Exists Expression</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseExistsExpression(ExistsExpression object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>All Expression</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>All Expression</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseAllExpression(AllExpression object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Any Expression</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Any Expression</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseAnyExpression(AnyExpression object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Some Expression</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Some Expression</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseSomeExpression(SomeExpression object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Collection Expression</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Collection Expression</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseCollectionExpression(CollectionExpression object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Null Comparison Expression</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Null Comparison Expression</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseNullComparisonExpression(NullComparisonExpression object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Empty Comparison Expression</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Empty Comparison Expression</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseEmptyComparisonExpression(EmptyComparisonExpression object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Like Expression</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Like Expression</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseLikeExpression(LikeExpression object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>In Expression</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>In Expression</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseInExpression(InExpression object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>In Seq Expression</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>In Seq Expression</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseInSeqExpression(InSeqExpression object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>In Query Expression</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>In Query Expression</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseInQueryExpression(InQueryExpression object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Between Expression</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Between Expression</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseBetweenExpression(BetweenExpression object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Variable</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -1364,65 +1074,65 @@ public class JPQLSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Integer Expression</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Integer Literal</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Integer Expression</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Integer Literal</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseIntegerExpression(IntegerExpression object)
+  public T caseIntegerLiteral(IntegerLiteral object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>String Expression</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>String Literal</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>String Expression</em>'.
+   * @return the result of interpreting the object as an instance of '<em>String Literal</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseStringExpression(StringExpression object)
+  public T caseStringLiteral(StringLiteral object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Null Expression</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Null Literal</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Null Expression</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Null Literal</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseNullExpression(NullExpression object)
+  public T caseNullLiteral(NullLiteral object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Boolean Expression</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Boolean Literal</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Boolean Expression</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Boolean Literal</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseBooleanExpression(BooleanExpression object)
+  public T caseBooleanLiteral(BooleanLiteral object)
   {
     return null;
   }
@@ -1455,6 +1165,54 @@ public class JPQLSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseAndExpression(AndExpression object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Comparison Operator Expression</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Comparison Operator Expression</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseComparisonOperatorExpression(ComparisonOperatorExpression object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Addition Expression</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Addition Expression</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAdditionExpression(AdditionExpression object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Multiplication Expression</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Multiplication Expression</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseMultiplicationExpression(MultiplicationExpression object)
   {
     return null;
   }

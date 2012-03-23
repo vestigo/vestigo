@@ -170,6 +170,15 @@ public interface JPQLFactory extends EFactory
   AvgAggregate createAvgAggregate();
 
   /**
+   * Returns a new object of class '<em>Count Aggregate</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Count Aggregate</em>'.
+   * @generated
+   */
+  CountAggregate createCountAggregate();
+
+  /**
    * Returns a new object of class '<em>Max Aggregate</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -195,15 +204,6 @@ public interface JPQLFactory extends EFactory
    * @generated
    */
   SumAggregate createSumAggregate();
-
-  /**
-   * Returns a new object of class '<em>Count Aggregate</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Count Aggregate</em>'.
-   * @generated
-   */
-  CountAggregate createCountAggregate();
 
   /**
    * Returns a new object of class '<em>Select Constructor Expression</em>'.
@@ -314,123 +314,6 @@ public interface JPQLFactory extends EFactory
   Expression createExpression();
 
   /**
-   * Returns a new object of class '<em>Comparison Operator Expression</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Comparison Operator Expression</em>'.
-   * @generated
-   */
-  ComparisonOperatorExpression createComparisonOperatorExpression();
-
-  /**
-   * Returns a new object of class '<em>Exists Expression</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Exists Expression</em>'.
-   * @generated
-   */
-  ExistsExpression createExistsExpression();
-
-  /**
-   * Returns a new object of class '<em>All Expression</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>All Expression</em>'.
-   * @generated
-   */
-  AllExpression createAllExpression();
-
-  /**
-   * Returns a new object of class '<em>Any Expression</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Any Expression</em>'.
-   * @generated
-   */
-  AnyExpression createAnyExpression();
-
-  /**
-   * Returns a new object of class '<em>Some Expression</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Some Expression</em>'.
-   * @generated
-   */
-  SomeExpression createSomeExpression();
-
-  /**
-   * Returns a new object of class '<em>Collection Expression</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Collection Expression</em>'.
-   * @generated
-   */
-  CollectionExpression createCollectionExpression();
-
-  /**
-   * Returns a new object of class '<em>Null Comparison Expression</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Null Comparison Expression</em>'.
-   * @generated
-   */
-  NullComparisonExpression createNullComparisonExpression();
-
-  /**
-   * Returns a new object of class '<em>Empty Comparison Expression</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Empty Comparison Expression</em>'.
-   * @generated
-   */
-  EmptyComparisonExpression createEmptyComparisonExpression();
-
-  /**
-   * Returns a new object of class '<em>Like Expression</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Like Expression</em>'.
-   * @generated
-   */
-  LikeExpression createLikeExpression();
-
-  /**
-   * Returns a new object of class '<em>In Expression</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>In Expression</em>'.
-   * @generated
-   */
-  InExpression createInExpression();
-
-  /**
-   * Returns a new object of class '<em>In Seq Expression</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>In Seq Expression</em>'.
-   * @generated
-   */
-  InSeqExpression createInSeqExpression();
-
-  /**
-   * Returns a new object of class '<em>In Query Expression</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>In Query Expression</em>'.
-   * @generated
-   */
-  InQueryExpression createInQueryExpression();
-
-  /**
-   * Returns a new object of class '<em>Between Expression</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Between Expression</em>'.
-   * @generated
-   */
-  BetweenExpression createBetweenExpression();
-
-  /**
    * Returns a new object of class '<em>Variable</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -485,40 +368,40 @@ public interface JPQLFactory extends EFactory
   Value createValue();
 
   /**
-   * Returns a new object of class '<em>Integer Expression</em>'.
+   * Returns a new object of class '<em>Integer Literal</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Integer Expression</em>'.
+   * @return a new object of class '<em>Integer Literal</em>'.
    * @generated
    */
-  IntegerExpression createIntegerExpression();
+  IntegerLiteral createIntegerLiteral();
 
   /**
-   * Returns a new object of class '<em>String Expression</em>'.
+   * Returns a new object of class '<em>String Literal</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>String Expression</em>'.
+   * @return a new object of class '<em>String Literal</em>'.
    * @generated
    */
-  StringExpression createStringExpression();
+  StringLiteral createStringLiteral();
 
   /**
-   * Returns a new object of class '<em>Null Expression</em>'.
+   * Returns a new object of class '<em>Null Literal</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Null Expression</em>'.
+   * @return a new object of class '<em>Null Literal</em>'.
    * @generated
    */
-  NullExpression createNullExpression();
+  NullLiteral createNullLiteral();
 
   /**
-   * Returns a new object of class '<em>Boolean Expression</em>'.
+   * Returns a new object of class '<em>Boolean Literal</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Boolean Expression</em>'.
+   * @return a new object of class '<em>Boolean Literal</em>'.
    * @generated
    */
-  BooleanExpression createBooleanExpression();
+  BooleanLiteral createBooleanLiteral();
 
   /**
    * Returns a new object of class '<em>Or Expression</em>'.
@@ -537,6 +420,33 @@ public interface JPQLFactory extends EFactory
    * @generated
    */
   AndExpression createAndExpression();
+
+  /**
+   * Returns a new object of class '<em>Comparison Operator Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Comparison Operator Expression</em>'.
+   * @generated
+   */
+  ComparisonOperatorExpression createComparisonOperatorExpression();
+
+  /**
+   * Returns a new object of class '<em>Addition Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Addition Expression</em>'.
+   * @generated
+   */
+  AdditionExpression createAdditionExpression();
+
+  /**
+   * Returns a new object of class '<em>Multiplication Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Multiplication Expression</em>'.
+   * @generated
+   */
+  MultiplicationExpression createMultiplicationExpression();
 
   /**
    * Returns the package supported by this factory.

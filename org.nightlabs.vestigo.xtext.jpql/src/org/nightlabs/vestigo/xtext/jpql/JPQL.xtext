@@ -79,14 +79,18 @@ SelectExpression:
 
 SelectAggregateExpression:
 	AvgAggregate |
+	CountAggregate |
 	MaxAggregate |
 	MinAggregate |
-	SumAggregate |
-	CountAggregate
+	SumAggregate
 ;
 
 AvgAggregate:
 	'AVG' '(' (isDistinct?='DISTINCT')? item=AliasAttributeExpression ')'
+;
+
+CountAggregate:
+	'COUNT' '(' (isDistinct?='DISTINCT')?item=AliasAttributeExpression ')'
 ;
 
 MaxAggregate:
@@ -99,10 +103,6 @@ MinAggregate:
 
 SumAggregate:
 	'SUM' '(' (isDistinct?='DISTINCT')?item=AliasAttributeExpression ')'
-;
-
-CountAggregate:
-	'COUNT' '(' (isDistinct?='DISTINCT')?item=AliasAttributeExpression ')'
 ;
 
 SelectConstructorExpression:
@@ -170,12 +170,28 @@ OrExpression returns Expression:
 ;
 
 AndExpression returns Expression:
-	ConcreteExpression ({AndExpression.entries+=current} ("AND" entries+=ConcreteExpression)+)?
+	ComparisonOperatorExpression ({AndExpression.entries+=current} ("AND" entries+=ComparisonOperatorExpression)+)?
+;
+
+ComparisonOperatorExpression returns Expression:
+	AdditionExpression ({ComparisonOperatorExpression.left=current} operator=ComparisonOperator right=AdditionExpression)*
+;
+
+AdditionExpression returns Expression:
+	MultiplicationExpression ({AdditionExpression.left=current} operator=AdditionOperator right=MultiplicationExpression)*
+;
+
+MultiplicationExpression returns Expression:
+	UnaryExpression ({MultiplicationExpression.left=current} operator=MultiplicationOperator right=UnaryExpression)*
+;
+
+UnaryExpression returns Expression:
+	(unaryOperator=UnaryOperator)? right=ConcreteExpression
 ;
 
 ConcreteExpression returns Expression:
-	ParExpression | 
-	ComparisonOperatorExpression |
+	ParenthesesExpression |
+//	ComparisonOperatorExpression |
 	ExistsExpression |
 	AllExpression |
 	AnyExpression |
@@ -188,60 +204,66 @@ ConcreteExpression returns Expression:
 	BetweenExpression
 ;
 
-ParExpression returns Expression:
-	"(" ExpressionTerm ")"
+ParenthesesExpression returns Expression:
+//	'(' (ConditionalOrExpression | Subquery) ')'
+	'(' ExpressionTerm ')'
 ;
 
-ComparisonOperatorExpression:
-	left=Variable operator=ComparisonOperator right=ExpressionTerm 
+//ParExpression returns Expression:
+//	"(" ExpressionTerm ")"
+//;
+
+//ComparisonOperatorExpression:
+//	left=Variable operator=ComparisonOperator right=ExpressionTerm 
+//;
+
+ExistsExpression returns Expression:
+//	(isNot?='NOT')? // collision with general logical NOT
+	'EXISTS' right=Subquery
 ;
 
-ExistsExpression:
-	(isNot?='NOT')? 'EXISTS' right=QueryExpression
+AllExpression returns Expression:
+	'ALL' right=Subquery
 ;
 
-AllExpression:
-	'ALL' right=QueryExpression
+AnyExpression returns Expression:
+	'ANY' right=Subquery
 ;
 
-AnyExpression:
-	'ANY' right=QueryExpression
+SomeExpression returns Expression:
+	'SOME' right=Subquery
 ;
 
-SomeExpression:
-	'SOME' right=QueryExpression
-;
-
-CollectionExpression:
+CollectionExpression returns Expression:
 	left=Variable (isNot?='NOT')? 'MEMBER' ('OF')? right=AliasAttributeExpression
 ;
 
-NullComparisonExpression:
+NullComparisonExpression returns Expression:
 	left=Variable 'IS' (isNot?='NOT')? 'NULL'
 ;
 
-EmptyComparisonExpression:
+EmptyComparisonExpression returns Expression:
 	left=Variable 'IS' (isNot?='NOT')? 'EMPTY'
 ;
 
-LikeExpression:
-	left=Variable (isNot?='NOT')? 'LIKE' right=STRING
+LikeExpression returns Expression:
+	left=Variable (isNot?='NOT')? 'LIKE' right=StringLiteral
 ;
 
-InExpression:
+InExpression returns Expression:
 	InSeqExpression |
 	InQueryExpression
 ;
 
-InSeqExpression:
+InSeqExpression returns Expression:
 	left=Variable (isNot?='NOT')? 'IN' '(' items+=Variable (',' items+=Variable)* ')'
 ;
 
-InQueryExpression:
-	left=Variable (isNot?='NOT')? 'IN' query=QueryExpression
+InQueryExpression returns Expression:
+	left=Variable (isNot?='NOT')? 'IN' query=Subquery
 ;
 
-BetweenExpression:
+BetweenExpression returns Expression:
 	left=Variable (isNot?='NOT')? 'BETWEEN' min=Value 'AND' max=Value
 ;
 
@@ -253,7 +275,7 @@ Variable:
 
 ExpressionTerm:
 	Variable |
-	QueryExpression
+	Subquery
 ;
 
 AliasAttributeExpression:
@@ -301,33 +323,74 @@ DateTimeFunctionName:
 //
 //LongExpression: 
 //	value=SINGED_LONG	
-//; 
+//;
+
+ParameterName: ID; 
 
 Value:
-	IntegerExpression |
-	StringExpression |
-	NullExpression |
-	BooleanExpression
+	IntegerLiteral |
+	StringLiteral |
+	NullLiteral |
+	BooleanLiteral
 ;
 
-IntegerExpression:
+IntegerLiteral:
 	value=INT
 ;
 
-StringExpression: 
+StringLiteral: 
 	value=STRING
 ; 
 
-NullExpression:
-	value="NULL"
-; 
-
-BooleanExpression: 
-	value?=("TRUE" | "FALSE")
+NullLiteral:
+	value='NULL'
 ;
 
-QueryExpression returns SelectStatement:
-	"(" SelectStatement ")"
+BooleanLiteral: 
+	value=('TRUE' | 'FALSE')
+;
+
+//IntegerLiteral:
+//	INT
+//;                                 
+//
+//StringLiteral:
+//	STRING
+//;                                         
+//
+//BooleanLiteral:
+//	'true' | 'false'
+//;
+//
+//NullLiteral:
+//	'null'
+//;
+//
+//Literal:
+//	IntegerLiteral |
+//	BooleanLiteral |
+//	StringLiteral |
+//	NullLiteral
+//;
+
+Subquery returns SelectStatement:
+	'(' SelectStatement ')'
+;
+
+enum UnaryOperator: 
+	positive='+' |
+	negative='-' |
+	logicalNot='NOT'
+;
+
+enum AdditionOperator:
+	add='+' |
+	subtract='-'
+;
+
+enum MultiplicationOperator:
+	multiply='*' |
+	divide='/'
 ;
 
 enum ComparisonOperator:

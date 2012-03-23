@@ -158,6 +158,11 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
         return createAvgAggregateAdapter();
       }
       @Override
+      public Adapter caseCountAggregate(CountAggregate object)
+      {
+        return createCountAggregateAdapter();
+      }
+      @Override
       public Adapter caseMaxAggregate(MaxAggregate object)
       {
         return createMaxAggregateAdapter();
@@ -171,11 +176,6 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
       public Adapter caseSumAggregate(SumAggregate object)
       {
         return createSumAggregateAdapter();
-      }
-      @Override
-      public Adapter caseCountAggregate(CountAggregate object)
-      {
-        return createCountAggregateAdapter();
       }
       @Override
       public Adapter caseSelectConstructorExpression(SelectConstructorExpression object)
@@ -238,71 +238,6 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
         return createExpressionAdapter();
       }
       @Override
-      public Adapter caseComparisonOperatorExpression(ComparisonOperatorExpression object)
-      {
-        return createComparisonOperatorExpressionAdapter();
-      }
-      @Override
-      public Adapter caseExistsExpression(ExistsExpression object)
-      {
-        return createExistsExpressionAdapter();
-      }
-      @Override
-      public Adapter caseAllExpression(AllExpression object)
-      {
-        return createAllExpressionAdapter();
-      }
-      @Override
-      public Adapter caseAnyExpression(AnyExpression object)
-      {
-        return createAnyExpressionAdapter();
-      }
-      @Override
-      public Adapter caseSomeExpression(SomeExpression object)
-      {
-        return createSomeExpressionAdapter();
-      }
-      @Override
-      public Adapter caseCollectionExpression(CollectionExpression object)
-      {
-        return createCollectionExpressionAdapter();
-      }
-      @Override
-      public Adapter caseNullComparisonExpression(NullComparisonExpression object)
-      {
-        return createNullComparisonExpressionAdapter();
-      }
-      @Override
-      public Adapter caseEmptyComparisonExpression(EmptyComparisonExpression object)
-      {
-        return createEmptyComparisonExpressionAdapter();
-      }
-      @Override
-      public Adapter caseLikeExpression(LikeExpression object)
-      {
-        return createLikeExpressionAdapter();
-      }
-      @Override
-      public Adapter caseInExpression(InExpression object)
-      {
-        return createInExpressionAdapter();
-      }
-      @Override
-      public Adapter caseInSeqExpression(InSeqExpression object)
-      {
-        return createInSeqExpressionAdapter();
-      }
-      @Override
-      public Adapter caseInQueryExpression(InQueryExpression object)
-      {
-        return createInQueryExpressionAdapter();
-      }
-      @Override
-      public Adapter caseBetweenExpression(BetweenExpression object)
-      {
-        return createBetweenExpressionAdapter();
-      }
-      @Override
       public Adapter caseVariable(Variable object)
       {
         return createVariableAdapter();
@@ -333,24 +268,24 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
         return createValueAdapter();
       }
       @Override
-      public Adapter caseIntegerExpression(IntegerExpression object)
+      public Adapter caseIntegerLiteral(IntegerLiteral object)
       {
-        return createIntegerExpressionAdapter();
+        return createIntegerLiteralAdapter();
       }
       @Override
-      public Adapter caseStringExpression(StringExpression object)
+      public Adapter caseStringLiteral(StringLiteral object)
       {
-        return createStringExpressionAdapter();
+        return createStringLiteralAdapter();
       }
       @Override
-      public Adapter caseNullExpression(NullExpression object)
+      public Adapter caseNullLiteral(NullLiteral object)
       {
-        return createNullExpressionAdapter();
+        return createNullLiteralAdapter();
       }
       @Override
-      public Adapter caseBooleanExpression(BooleanExpression object)
+      public Adapter caseBooleanLiteral(BooleanLiteral object)
       {
-        return createBooleanExpressionAdapter();
+        return createBooleanLiteralAdapter();
       }
       @Override
       public Adapter caseOrExpression(OrExpression object)
@@ -361,6 +296,21 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
       public Adapter caseAndExpression(AndExpression object)
       {
         return createAndExpressionAdapter();
+      }
+      @Override
+      public Adapter caseComparisonOperatorExpression(ComparisonOperatorExpression object)
+      {
+        return createComparisonOperatorExpressionAdapter();
+      }
+      @Override
+      public Adapter caseAdditionExpression(AdditionExpression object)
+      {
+        return createAdditionExpressionAdapter();
+      }
+      @Override
+      public Adapter caseMultiplicationExpression(MultiplicationExpression object)
+      {
+        return createMultiplicationExpressionAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -625,6 +575,21 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.CountAggregate <em>Count Aggregate</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.CountAggregate
+   * @generated
+   */
+  public Adapter createCountAggregateAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.MaxAggregate <em>Max Aggregate</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -665,21 +630,6 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createSumAggregateAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.CountAggregate <em>Count Aggregate</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.CountAggregate
-   * @generated
-   */
-  public Adapter createCountAggregateAdapter()
   {
     return null;
   }
@@ -865,201 +815,6 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.ComparisonOperatorExpression <em>Comparison Operator Expression</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.ComparisonOperatorExpression
-   * @generated
-   */
-  public Adapter createComparisonOperatorExpressionAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.ExistsExpression <em>Exists Expression</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.ExistsExpression
-   * @generated
-   */
-  public Adapter createExistsExpressionAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.AllExpression <em>All Expression</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.AllExpression
-   * @generated
-   */
-  public Adapter createAllExpressionAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.AnyExpression <em>Any Expression</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.AnyExpression
-   * @generated
-   */
-  public Adapter createAnyExpressionAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.SomeExpression <em>Some Expression</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.SomeExpression
-   * @generated
-   */
-  public Adapter createSomeExpressionAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.CollectionExpression <em>Collection Expression</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.CollectionExpression
-   * @generated
-   */
-  public Adapter createCollectionExpressionAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.NullComparisonExpression <em>Null Comparison Expression</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.NullComparisonExpression
-   * @generated
-   */
-  public Adapter createNullComparisonExpressionAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.EmptyComparisonExpression <em>Empty Comparison Expression</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.EmptyComparisonExpression
-   * @generated
-   */
-  public Adapter createEmptyComparisonExpressionAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.LikeExpression <em>Like Expression</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.LikeExpression
-   * @generated
-   */
-  public Adapter createLikeExpressionAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.InExpression <em>In Expression</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.InExpression
-   * @generated
-   */
-  public Adapter createInExpressionAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.InSeqExpression <em>In Seq Expression</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.InSeqExpression
-   * @generated
-   */
-  public Adapter createInSeqExpressionAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.InQueryExpression <em>In Query Expression</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.InQueryExpression
-   * @generated
-   */
-  public Adapter createInQueryExpressionAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.BetweenExpression <em>Between Expression</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.BetweenExpression
-   * @generated
-   */
-  public Adapter createBetweenExpressionAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.Variable <em>Variable</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -1150,61 +905,61 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.IntegerExpression <em>Integer Expression</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.IntegerLiteral <em>Integer Literal</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.IntegerExpression
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.IntegerLiteral
    * @generated
    */
-  public Adapter createIntegerExpressionAdapter()
+  public Adapter createIntegerLiteralAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.StringExpression <em>String Expression</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.StringLiteral <em>String Literal</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.StringExpression
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.StringLiteral
    * @generated
    */
-  public Adapter createStringExpressionAdapter()
+  public Adapter createStringLiteralAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.NullExpression <em>Null Expression</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.NullLiteral <em>Null Literal</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.NullExpression
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.NullLiteral
    * @generated
    */
-  public Adapter createNullExpressionAdapter()
+  public Adapter createNullLiteralAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.BooleanExpression <em>Boolean Expression</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.BooleanLiteral <em>Boolean Literal</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.BooleanExpression
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.BooleanLiteral
    * @generated
    */
-  public Adapter createBooleanExpressionAdapter()
+  public Adapter createBooleanLiteralAdapter()
   {
     return null;
   }
@@ -1235,6 +990,51 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createAndExpressionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.ComparisonOperatorExpression <em>Comparison Operator Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.ComparisonOperatorExpression
+   * @generated
+   */
+  public Adapter createComparisonOperatorExpressionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.AdditionExpression <em>Addition Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.AdditionExpression
+   * @generated
+   */
+  public Adapter createAdditionExpressionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.MultiplicationExpression <em>Multiplication Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.MultiplicationExpression
+   * @generated
+   */
+  public Adapter createMultiplicationExpressionAdapter()
   {
     return null;
   }

@@ -108,13 +108,85 @@ public interface JPQLPackage extends EPackage
   int SELECT_STATEMENT__WHERE_CLAUSE = JPQL_QUERY__WHERE_CLAUSE;
 
   /**
+   * The feature id for the '<em><b>Unary Operator</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SELECT_STATEMENT__UNARY_OPERATOR = JPQL_QUERY_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SELECT_STATEMENT__RIGHT = JPQL_QUERY_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SELECT_STATEMENT__LEFT = JPQL_QUERY_FEATURE_COUNT + 2;
+
+  /**
+   * The feature id for the '<em><b>Is Not</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SELECT_STATEMENT__IS_NOT = JPQL_QUERY_FEATURE_COUNT + 3;
+
+  /**
+   * The feature id for the '<em><b>Items</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SELECT_STATEMENT__ITEMS = JPQL_QUERY_FEATURE_COUNT + 4;
+
+  /**
+   * The feature id for the '<em><b>Query</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SELECT_STATEMENT__QUERY = JPQL_QUERY_FEATURE_COUNT + 5;
+
+  /**
+   * The feature id for the '<em><b>Min</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SELECT_STATEMENT__MIN = JPQL_QUERY_FEATURE_COUNT + 6;
+
+  /**
+   * The feature id for the '<em><b>Max</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SELECT_STATEMENT__MAX = JPQL_QUERY_FEATURE_COUNT + 7;
+
+  /**
    * The feature id for the '<em><b>Select Clause</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SELECT_STATEMENT__SELECT_CLAUSE = JPQL_QUERY_FEATURE_COUNT + 0;
+  int SELECT_STATEMENT__SELECT_CLAUSE = JPQL_QUERY_FEATURE_COUNT + 8;
 
   /**
    * The feature id for the '<em><b>From Clause</b></em>' containment reference.
@@ -123,7 +195,7 @@ public interface JPQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SELECT_STATEMENT__FROM_CLAUSE = JPQL_QUERY_FEATURE_COUNT + 1;
+  int SELECT_STATEMENT__FROM_CLAUSE = JPQL_QUERY_FEATURE_COUNT + 9;
 
   /**
    * The feature id for the '<em><b>Group By Clause</b></em>' containment reference.
@@ -132,7 +204,7 @@ public interface JPQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SELECT_STATEMENT__GROUP_BY_CLAUSE = JPQL_QUERY_FEATURE_COUNT + 2;
+  int SELECT_STATEMENT__GROUP_BY_CLAUSE = JPQL_QUERY_FEATURE_COUNT + 10;
 
   /**
    * The feature id for the '<em><b>Order By Clause</b></em>' containment reference.
@@ -141,7 +213,7 @@ public interface JPQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SELECT_STATEMENT__ORDER_BY_CLAUSE = JPQL_QUERY_FEATURE_COUNT + 3;
+  int SELECT_STATEMENT__ORDER_BY_CLAUSE = JPQL_QUERY_FEATURE_COUNT + 11;
 
   /**
    * The number of structural features of the '<em>Select Statement</em>' class.
@@ -150,7 +222,7 @@ public interface JPQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SELECT_STATEMENT_FEATURE_COUNT = JPQL_QUERY_FEATURE_COUNT + 4;
+  int SELECT_STATEMENT_FEATURE_COUNT = JPQL_QUERY_FEATURE_COUNT + 12;
 
   /**
    * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.GroupByClauseImpl <em>Group By Clause</em>}' class.
@@ -599,6 +671,43 @@ public interface JPQLPackage extends EPackage
   int AVG_AGGREGATE_FEATURE_COUNT = SELECT_AGGREGATE_EXPRESSION_FEATURE_COUNT + 0;
 
   /**
+   * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.CountAggregateImpl <em>Count Aggregate</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.CountAggregateImpl
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getCountAggregate()
+   * @generated
+   */
+  int COUNT_AGGREGATE = 16;
+
+  /**
+   * The feature id for the '<em><b>Is Distinct</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COUNT_AGGREGATE__IS_DISTINCT = SELECT_AGGREGATE_EXPRESSION__IS_DISTINCT;
+
+  /**
+   * The feature id for the '<em><b>Item</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COUNT_AGGREGATE__ITEM = SELECT_AGGREGATE_EXPRESSION__ITEM;
+
+  /**
+   * The number of structural features of the '<em>Count Aggregate</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COUNT_AGGREGATE_FEATURE_COUNT = SELECT_AGGREGATE_EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
    * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.MaxAggregateImpl <em>Max Aggregate</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -606,7 +715,7 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getMaxAggregate()
    * @generated
    */
-  int MAX_AGGREGATE = 16;
+  int MAX_AGGREGATE = 17;
 
   /**
    * The feature id for the '<em><b>Is Distinct</b></em>' attribute.
@@ -643,7 +752,7 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getMinAggregate()
    * @generated
    */
-  int MIN_AGGREGATE = 17;
+  int MIN_AGGREGATE = 18;
 
   /**
    * The feature id for the '<em><b>Is Distinct</b></em>' attribute.
@@ -680,7 +789,7 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getSumAggregate()
    * @generated
    */
-  int SUM_AGGREGATE = 18;
+  int SUM_AGGREGATE = 19;
 
   /**
    * The feature id for the '<em><b>Is Distinct</b></em>' attribute.
@@ -708,43 +817,6 @@ public interface JPQLPackage extends EPackage
    * @ordered
    */
   int SUM_AGGREGATE_FEATURE_COUNT = SELECT_AGGREGATE_EXPRESSION_FEATURE_COUNT + 0;
-
-  /**
-   * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.CountAggregateImpl <em>Count Aggregate</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.CountAggregateImpl
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getCountAggregate()
-   * @generated
-   */
-  int COUNT_AGGREGATE = 19;
-
-  /**
-   * The feature id for the '<em><b>Is Distinct</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int COUNT_AGGREGATE__IS_DISTINCT = SELECT_AGGREGATE_EXPRESSION__IS_DISTINCT;
-
-  /**
-   * The feature id for the '<em><b>Item</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int COUNT_AGGREGATE__ITEM = SELECT_AGGREGATE_EXPRESSION__ITEM;
-
-  /**
-   * The number of structural features of the '<em>Count Aggregate</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int COUNT_AGGREGATE_FEATURE_COUNT = SELECT_AGGREGATE_EXPRESSION_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.SelectConstructorExpressionImpl <em>Select Constructor Expression</em>}' class.
@@ -1182,41 +1254,13 @@ public interface JPQLPackage extends EPackage
   int EXPRESSION = 31;
 
   /**
-   * The number of structural features of the '<em>Expression</em>' class.
+   * The feature id for the '<em><b>Unary Operator</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int EXPRESSION_FEATURE_COUNT = 0;
-
-  /**
-   * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.ComparisonOperatorExpressionImpl <em>Comparison Operator Expression</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.ComparisonOperatorExpressionImpl
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getComparisonOperatorExpression()
-   * @generated
-   */
-  int COMPARISON_OPERATOR_EXPRESSION = 32;
-
-  /**
-   * The feature id for the '<em><b>Left</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int COMPARISON_OPERATOR_EXPRESSION__LEFT = EXPRESSION_FEATURE_COUNT + 0;
-
-  /**
-   * The feature id for the '<em><b>Operator</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int COMPARISON_OPERATOR_EXPRESSION__OPERATOR = EXPRESSION_FEATURE_COUNT + 1;
+  int EXPRESSION__UNARY_OPERATOR = 0;
 
   /**
    * The feature id for the '<em><b>Right</b></em>' containment reference.
@@ -1225,147 +1269,7 @@ public interface JPQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int COMPARISON_OPERATOR_EXPRESSION__RIGHT = EXPRESSION_FEATURE_COUNT + 2;
-
-  /**
-   * The number of structural features of the '<em>Comparison Operator Expression</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int COMPARISON_OPERATOR_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 3;
-
-  /**
-   * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.ExistsExpressionImpl <em>Exists Expression</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.ExistsExpressionImpl
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getExistsExpression()
-   * @generated
-   */
-  int EXISTS_EXPRESSION = 33;
-
-  /**
-   * The feature id for the '<em><b>Is Not</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int EXISTS_EXPRESSION__IS_NOT = EXPRESSION_FEATURE_COUNT + 0;
-
-  /**
-   * The feature id for the '<em><b>Right</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int EXISTS_EXPRESSION__RIGHT = EXPRESSION_FEATURE_COUNT + 1;
-
-  /**
-   * The number of structural features of the '<em>Exists Expression</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int EXISTS_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
-
-  /**
-   * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.AllExpressionImpl <em>All Expression</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.AllExpressionImpl
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getAllExpression()
-   * @generated
-   */
-  int ALL_EXPRESSION = 34;
-
-  /**
-   * The feature id for the '<em><b>Right</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ALL_EXPRESSION__RIGHT = EXPRESSION_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>All Expression</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ALL_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
-
-  /**
-   * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.AnyExpressionImpl <em>Any Expression</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.AnyExpressionImpl
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getAnyExpression()
-   * @generated
-   */
-  int ANY_EXPRESSION = 35;
-
-  /**
-   * The feature id for the '<em><b>Right</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ANY_EXPRESSION__RIGHT = EXPRESSION_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>Any Expression</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ANY_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
-
-  /**
-   * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.SomeExpressionImpl <em>Some Expression</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.SomeExpressionImpl
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getSomeExpression()
-   * @generated
-   */
-  int SOME_EXPRESSION = 36;
-
-  /**
-   * The feature id for the '<em><b>Right</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SOME_EXPRESSION__RIGHT = EXPRESSION_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>Some Expression</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SOME_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
-
-  /**
-   * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.CollectionExpressionImpl <em>Collection Expression</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.CollectionExpressionImpl
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getCollectionExpression()
-   * @generated
-   */
-  int COLLECTION_EXPRESSION = 37;
+  int EXPRESSION__RIGHT = 1;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1374,7 +1278,7 @@ public interface JPQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int COLLECTION_EXPRESSION__LEFT = EXPRESSION_FEATURE_COUNT + 0;
+  int EXPRESSION__LEFT = 2;
 
   /**
    * The feature id for the '<em><b>Is Not</b></em>' attribute.
@@ -1383,210 +1287,7 @@ public interface JPQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int COLLECTION_EXPRESSION__IS_NOT = EXPRESSION_FEATURE_COUNT + 1;
-
-  /**
-   * The feature id for the '<em><b>Right</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int COLLECTION_EXPRESSION__RIGHT = EXPRESSION_FEATURE_COUNT + 2;
-
-  /**
-   * The number of structural features of the '<em>Collection Expression</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int COLLECTION_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 3;
-
-  /**
-   * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.NullComparisonExpressionImpl <em>Null Comparison Expression</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.NullComparisonExpressionImpl
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getNullComparisonExpression()
-   * @generated
-   */
-  int NULL_COMPARISON_EXPRESSION = 38;
-
-  /**
-   * The feature id for the '<em><b>Left</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int NULL_COMPARISON_EXPRESSION__LEFT = EXPRESSION_FEATURE_COUNT + 0;
-
-  /**
-   * The feature id for the '<em><b>Is Not</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int NULL_COMPARISON_EXPRESSION__IS_NOT = EXPRESSION_FEATURE_COUNT + 1;
-
-  /**
-   * The number of structural features of the '<em>Null Comparison Expression</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int NULL_COMPARISON_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
-
-  /**
-   * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.EmptyComparisonExpressionImpl <em>Empty Comparison Expression</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.EmptyComparisonExpressionImpl
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getEmptyComparisonExpression()
-   * @generated
-   */
-  int EMPTY_COMPARISON_EXPRESSION = 39;
-
-  /**
-   * The feature id for the '<em><b>Left</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int EMPTY_COMPARISON_EXPRESSION__LEFT = EXPRESSION_FEATURE_COUNT + 0;
-
-  /**
-   * The feature id for the '<em><b>Is Not</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int EMPTY_COMPARISON_EXPRESSION__IS_NOT = EXPRESSION_FEATURE_COUNT + 1;
-
-  /**
-   * The number of structural features of the '<em>Empty Comparison Expression</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int EMPTY_COMPARISON_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
-
-  /**
-   * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.LikeExpressionImpl <em>Like Expression</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.LikeExpressionImpl
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getLikeExpression()
-   * @generated
-   */
-  int LIKE_EXPRESSION = 40;
-
-  /**
-   * The feature id for the '<em><b>Left</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LIKE_EXPRESSION__LEFT = EXPRESSION_FEATURE_COUNT + 0;
-
-  /**
-   * The feature id for the '<em><b>Is Not</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LIKE_EXPRESSION__IS_NOT = EXPRESSION_FEATURE_COUNT + 1;
-
-  /**
-   * The feature id for the '<em><b>Right</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LIKE_EXPRESSION__RIGHT = EXPRESSION_FEATURE_COUNT + 2;
-
-  /**
-   * The number of structural features of the '<em>Like Expression</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LIKE_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 3;
-
-  /**
-   * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.InExpressionImpl <em>In Expression</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.InExpressionImpl
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getInExpression()
-   * @generated
-   */
-  int IN_EXPRESSION = 41;
-
-  /**
-   * The feature id for the '<em><b>Left</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int IN_EXPRESSION__LEFT = EXPRESSION_FEATURE_COUNT + 0;
-
-  /**
-   * The feature id for the '<em><b>Is Not</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int IN_EXPRESSION__IS_NOT = EXPRESSION_FEATURE_COUNT + 1;
-
-  /**
-   * The number of structural features of the '<em>In Expression</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int IN_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
-
-  /**
-   * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.InSeqExpressionImpl <em>In Seq Expression</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.InSeqExpressionImpl
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getInSeqExpression()
-   * @generated
-   */
-  int IN_SEQ_EXPRESSION = 42;
-
-  /**
-   * The feature id for the '<em><b>Left</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int IN_SEQ_EXPRESSION__LEFT = IN_EXPRESSION__LEFT;
-
-  /**
-   * The feature id for the '<em><b>Is Not</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int IN_SEQ_EXPRESSION__IS_NOT = IN_EXPRESSION__IS_NOT;
+  int EXPRESSION__IS_NOT = 3;
 
   /**
    * The feature id for the '<em><b>Items</b></em>' containment reference list.
@@ -1595,44 +1296,7 @@ public interface JPQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int IN_SEQ_EXPRESSION__ITEMS = IN_EXPRESSION_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>In Seq Expression</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int IN_SEQ_EXPRESSION_FEATURE_COUNT = IN_EXPRESSION_FEATURE_COUNT + 1;
-
-  /**
-   * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.InQueryExpressionImpl <em>In Query Expression</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.InQueryExpressionImpl
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getInQueryExpression()
-   * @generated
-   */
-  int IN_QUERY_EXPRESSION = 43;
-
-  /**
-   * The feature id for the '<em><b>Left</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int IN_QUERY_EXPRESSION__LEFT = IN_EXPRESSION__LEFT;
-
-  /**
-   * The feature id for the '<em><b>Is Not</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int IN_QUERY_EXPRESSION__IS_NOT = IN_EXPRESSION__IS_NOT;
+  int EXPRESSION__ITEMS = 4;
 
   /**
    * The feature id for the '<em><b>Query</b></em>' containment reference.
@@ -1641,44 +1305,7 @@ public interface JPQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int IN_QUERY_EXPRESSION__QUERY = IN_EXPRESSION_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>In Query Expression</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int IN_QUERY_EXPRESSION_FEATURE_COUNT = IN_EXPRESSION_FEATURE_COUNT + 1;
-
-  /**
-   * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.BetweenExpressionImpl <em>Between Expression</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.BetweenExpressionImpl
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getBetweenExpression()
-   * @generated
-   */
-  int BETWEEN_EXPRESSION = 44;
-
-  /**
-   * The feature id for the '<em><b>Left</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int BETWEEN_EXPRESSION__LEFT = EXPRESSION_FEATURE_COUNT + 0;
-
-  /**
-   * The feature id for the '<em><b>Is Not</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int BETWEEN_EXPRESSION__IS_NOT = EXPRESSION_FEATURE_COUNT + 1;
+  int EXPRESSION__QUERY = 5;
 
   /**
    * The feature id for the '<em><b>Min</b></em>' containment reference.
@@ -1687,7 +1314,7 @@ public interface JPQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BETWEEN_EXPRESSION__MIN = EXPRESSION_FEATURE_COUNT + 2;
+  int EXPRESSION__MIN = 6;
 
   /**
    * The feature id for the '<em><b>Max</b></em>' containment reference.
@@ -1696,16 +1323,16 @@ public interface JPQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BETWEEN_EXPRESSION__MAX = EXPRESSION_FEATURE_COUNT + 3;
+  int EXPRESSION__MAX = 7;
 
   /**
-   * The number of structural features of the '<em>Between Expression</em>' class.
+   * The number of structural features of the '<em>Expression</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int BETWEEN_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 4;
+  int EXPRESSION_FEATURE_COUNT = 8;
 
   /**
    * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.ExpressionTermImpl <em>Expression Term</em>}' class.
@@ -1715,7 +1342,79 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getExpressionTerm()
    * @generated
    */
-  int EXPRESSION_TERM = 46;
+  int EXPRESSION_TERM = 33;
+
+  /**
+   * The feature id for the '<em><b>Unary Operator</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPRESSION_TERM__UNARY_OPERATOR = EXPRESSION__UNARY_OPERATOR;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPRESSION_TERM__RIGHT = EXPRESSION__RIGHT;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPRESSION_TERM__LEFT = EXPRESSION__LEFT;
+
+  /**
+   * The feature id for the '<em><b>Is Not</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPRESSION_TERM__IS_NOT = EXPRESSION__IS_NOT;
+
+  /**
+   * The feature id for the '<em><b>Items</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPRESSION_TERM__ITEMS = EXPRESSION__ITEMS;
+
+  /**
+   * The feature id for the '<em><b>Query</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPRESSION_TERM__QUERY = EXPRESSION__QUERY;
+
+  /**
+   * The feature id for the '<em><b>Min</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPRESSION_TERM__MIN = EXPRESSION__MIN;
+
+  /**
+   * The feature id for the '<em><b>Max</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPRESSION_TERM__MAX = EXPRESSION__MAX;
 
   /**
    * The number of structural features of the '<em>Expression Term</em>' class.
@@ -1734,7 +1433,79 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getVariable()
    * @generated
    */
-  int VARIABLE = 45;
+  int VARIABLE = 32;
+
+  /**
+   * The feature id for the '<em><b>Unary Operator</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VARIABLE__UNARY_OPERATOR = EXPRESSION_TERM__UNARY_OPERATOR;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VARIABLE__RIGHT = EXPRESSION_TERM__RIGHT;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VARIABLE__LEFT = EXPRESSION_TERM__LEFT;
+
+  /**
+   * The feature id for the '<em><b>Is Not</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VARIABLE__IS_NOT = EXPRESSION_TERM__IS_NOT;
+
+  /**
+   * The feature id for the '<em><b>Items</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VARIABLE__ITEMS = EXPRESSION_TERM__ITEMS;
+
+  /**
+   * The feature id for the '<em><b>Query</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VARIABLE__QUERY = EXPRESSION_TERM__QUERY;
+
+  /**
+   * The feature id for the '<em><b>Min</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VARIABLE__MIN = EXPRESSION_TERM__MIN;
+
+  /**
+   * The feature id for the '<em><b>Max</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VARIABLE__MAX = EXPRESSION_TERM__MAX;
 
   /**
    * The number of structural features of the '<em>Variable</em>' class.
@@ -1753,7 +1524,79 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getAliasAttributeExpression()
    * @generated
    */
-  int ALIAS_ATTRIBUTE_EXPRESSION = 47;
+  int ALIAS_ATTRIBUTE_EXPRESSION = 34;
+
+  /**
+   * The feature id for the '<em><b>Unary Operator</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ALIAS_ATTRIBUTE_EXPRESSION__UNARY_OPERATOR = ORDER_BY_SPEC_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ALIAS_ATTRIBUTE_EXPRESSION__RIGHT = ORDER_BY_SPEC_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ALIAS_ATTRIBUTE_EXPRESSION__LEFT = ORDER_BY_SPEC_FEATURE_COUNT + 2;
+
+  /**
+   * The feature id for the '<em><b>Is Not</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ALIAS_ATTRIBUTE_EXPRESSION__IS_NOT = ORDER_BY_SPEC_FEATURE_COUNT + 3;
+
+  /**
+   * The feature id for the '<em><b>Items</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ALIAS_ATTRIBUTE_EXPRESSION__ITEMS = ORDER_BY_SPEC_FEATURE_COUNT + 4;
+
+  /**
+   * The feature id for the '<em><b>Query</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ALIAS_ATTRIBUTE_EXPRESSION__QUERY = ORDER_BY_SPEC_FEATURE_COUNT + 5;
+
+  /**
+   * The feature id for the '<em><b>Min</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ALIAS_ATTRIBUTE_EXPRESSION__MIN = ORDER_BY_SPEC_FEATURE_COUNT + 6;
+
+  /**
+   * The feature id for the '<em><b>Max</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ALIAS_ATTRIBUTE_EXPRESSION__MAX = ORDER_BY_SPEC_FEATURE_COUNT + 7;
 
   /**
    * The feature id for the '<em><b>Direction</b></em>' attribute.
@@ -1762,7 +1605,7 @@ public interface JPQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ALIAS_ATTRIBUTE_EXPRESSION__DIRECTION = ORDER_BY_SPEC_FEATURE_COUNT + 0;
+  int ALIAS_ATTRIBUTE_EXPRESSION__DIRECTION = ORDER_BY_SPEC_FEATURE_COUNT + 8;
 
   /**
    * The feature id for the '<em><b>Alias</b></em>' reference.
@@ -1771,7 +1614,7 @@ public interface JPQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ALIAS_ATTRIBUTE_EXPRESSION__ALIAS = ORDER_BY_SPEC_FEATURE_COUNT + 1;
+  int ALIAS_ATTRIBUTE_EXPRESSION__ALIAS = ORDER_BY_SPEC_FEATURE_COUNT + 9;
 
   /**
    * The feature id for the '<em><b>Attributes</b></em>' attribute list.
@@ -1780,7 +1623,7 @@ public interface JPQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ALIAS_ATTRIBUTE_EXPRESSION__ATTRIBUTES = ORDER_BY_SPEC_FEATURE_COUNT + 2;
+  int ALIAS_ATTRIBUTE_EXPRESSION__ATTRIBUTES = ORDER_BY_SPEC_FEATURE_COUNT + 10;
 
   /**
    * The number of structural features of the '<em>Alias Attribute Expression</em>' class.
@@ -1789,7 +1632,7 @@ public interface JPQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ALIAS_ATTRIBUTE_EXPRESSION_FEATURE_COUNT = ORDER_BY_SPEC_FEATURE_COUNT + 3;
+  int ALIAS_ATTRIBUTE_EXPRESSION_FEATURE_COUNT = ORDER_BY_SPEC_FEATURE_COUNT + 11;
 
   /**
    * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.ParameterExpressionImpl <em>Parameter Expression</em>}' class.
@@ -1799,7 +1642,79 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getParameterExpression()
    * @generated
    */
-  int PARAMETER_EXPRESSION = 48;
+  int PARAMETER_EXPRESSION = 35;
+
+  /**
+   * The feature id for the '<em><b>Unary Operator</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARAMETER_EXPRESSION__UNARY_OPERATOR = VARIABLE__UNARY_OPERATOR;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARAMETER_EXPRESSION__RIGHT = VARIABLE__RIGHT;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARAMETER_EXPRESSION__LEFT = VARIABLE__LEFT;
+
+  /**
+   * The feature id for the '<em><b>Is Not</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARAMETER_EXPRESSION__IS_NOT = VARIABLE__IS_NOT;
+
+  /**
+   * The feature id for the '<em><b>Items</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARAMETER_EXPRESSION__ITEMS = VARIABLE__ITEMS;
+
+  /**
+   * The feature id for the '<em><b>Query</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARAMETER_EXPRESSION__QUERY = VARIABLE__QUERY;
+
+  /**
+   * The feature id for the '<em><b>Min</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARAMETER_EXPRESSION__MIN = VARIABLE__MIN;
+
+  /**
+   * The feature id for the '<em><b>Max</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARAMETER_EXPRESSION__MAX = VARIABLE__MAX;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1827,7 +1742,7 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getFunction()
    * @generated
    */
-  int FUNCTION = 49;
+  int FUNCTION = 36;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1864,7 +1779,79 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getValue()
    * @generated
    */
-  int VALUE = 50;
+  int VALUE = 37;
+
+  /**
+   * The feature id for the '<em><b>Unary Operator</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VALUE__UNARY_OPERATOR = VARIABLE__UNARY_OPERATOR;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VALUE__RIGHT = VARIABLE__RIGHT;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VALUE__LEFT = VARIABLE__LEFT;
+
+  /**
+   * The feature id for the '<em><b>Is Not</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VALUE__IS_NOT = VARIABLE__IS_NOT;
+
+  /**
+   * The feature id for the '<em><b>Items</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VALUE__ITEMS = VARIABLE__ITEMS;
+
+  /**
+   * The feature id for the '<em><b>Query</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VALUE__QUERY = VARIABLE__QUERY;
+
+  /**
+   * The feature id for the '<em><b>Min</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VALUE__MIN = VARIABLE__MIN;
+
+  /**
+   * The feature id for the '<em><b>Max</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VALUE__MAX = VARIABLE__MAX;
 
   /**
    * The number of structural features of the '<em>Value</em>' class.
@@ -1876,14 +1863,86 @@ public interface JPQLPackage extends EPackage
   int VALUE_FEATURE_COUNT = VARIABLE_FEATURE_COUNT + 0;
 
   /**
-   * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.IntegerExpressionImpl <em>Integer Expression</em>}' class.
+   * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.IntegerLiteralImpl <em>Integer Literal</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.IntegerExpressionImpl
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getIntegerExpression()
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.IntegerLiteralImpl
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getIntegerLiteral()
    * @generated
    */
-  int INTEGER_EXPRESSION = 51;
+  int INTEGER_LITERAL = 38;
+
+  /**
+   * The feature id for the '<em><b>Unary Operator</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INTEGER_LITERAL__UNARY_OPERATOR = VALUE__UNARY_OPERATOR;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INTEGER_LITERAL__RIGHT = VALUE__RIGHT;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INTEGER_LITERAL__LEFT = VALUE__LEFT;
+
+  /**
+   * The feature id for the '<em><b>Is Not</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INTEGER_LITERAL__IS_NOT = VALUE__IS_NOT;
+
+  /**
+   * The feature id for the '<em><b>Items</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INTEGER_LITERAL__ITEMS = VALUE__ITEMS;
+
+  /**
+   * The feature id for the '<em><b>Query</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INTEGER_LITERAL__QUERY = VALUE__QUERY;
+
+  /**
+   * The feature id for the '<em><b>Min</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INTEGER_LITERAL__MIN = VALUE__MIN;
+
+  /**
+   * The feature id for the '<em><b>Max</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INTEGER_LITERAL__MAX = VALUE__MAX;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1892,26 +1951,98 @@ public interface JPQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int INTEGER_EXPRESSION__VALUE = VALUE_FEATURE_COUNT + 0;
+  int INTEGER_LITERAL__VALUE = VALUE_FEATURE_COUNT + 0;
 
   /**
-   * The number of structural features of the '<em>Integer Expression</em>' class.
+   * The number of structural features of the '<em>Integer Literal</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int INTEGER_EXPRESSION_FEATURE_COUNT = VALUE_FEATURE_COUNT + 1;
+  int INTEGER_LITERAL_FEATURE_COUNT = VALUE_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.StringExpressionImpl <em>String Expression</em>}' class.
+   * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.StringLiteralImpl <em>String Literal</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.StringExpressionImpl
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getStringExpression()
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.StringLiteralImpl
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getStringLiteral()
    * @generated
    */
-  int STRING_EXPRESSION = 52;
+  int STRING_LITERAL = 39;
+
+  /**
+   * The feature id for the '<em><b>Unary Operator</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_LITERAL__UNARY_OPERATOR = VALUE__UNARY_OPERATOR;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_LITERAL__RIGHT = VALUE__RIGHT;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_LITERAL__LEFT = VALUE__LEFT;
+
+  /**
+   * The feature id for the '<em><b>Is Not</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_LITERAL__IS_NOT = VALUE__IS_NOT;
+
+  /**
+   * The feature id for the '<em><b>Items</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_LITERAL__ITEMS = VALUE__ITEMS;
+
+  /**
+   * The feature id for the '<em><b>Query</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_LITERAL__QUERY = VALUE__QUERY;
+
+  /**
+   * The feature id for the '<em><b>Min</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_LITERAL__MIN = VALUE__MIN;
+
+  /**
+   * The feature id for the '<em><b>Max</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_LITERAL__MAX = VALUE__MAX;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1920,26 +2051,98 @@ public interface JPQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int STRING_EXPRESSION__VALUE = VALUE_FEATURE_COUNT + 0;
+  int STRING_LITERAL__VALUE = VALUE_FEATURE_COUNT + 0;
 
   /**
-   * The number of structural features of the '<em>String Expression</em>' class.
+   * The number of structural features of the '<em>String Literal</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int STRING_EXPRESSION_FEATURE_COUNT = VALUE_FEATURE_COUNT + 1;
+  int STRING_LITERAL_FEATURE_COUNT = VALUE_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.NullExpressionImpl <em>Null Expression</em>}' class.
+   * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.NullLiteralImpl <em>Null Literal</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.NullExpressionImpl
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getNullExpression()
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.NullLiteralImpl
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getNullLiteral()
    * @generated
    */
-  int NULL_EXPRESSION = 53;
+  int NULL_LITERAL = 40;
+
+  /**
+   * The feature id for the '<em><b>Unary Operator</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NULL_LITERAL__UNARY_OPERATOR = VALUE__UNARY_OPERATOR;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NULL_LITERAL__RIGHT = VALUE__RIGHT;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NULL_LITERAL__LEFT = VALUE__LEFT;
+
+  /**
+   * The feature id for the '<em><b>Is Not</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NULL_LITERAL__IS_NOT = VALUE__IS_NOT;
+
+  /**
+   * The feature id for the '<em><b>Items</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NULL_LITERAL__ITEMS = VALUE__ITEMS;
+
+  /**
+   * The feature id for the '<em><b>Query</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NULL_LITERAL__QUERY = VALUE__QUERY;
+
+  /**
+   * The feature id for the '<em><b>Min</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NULL_LITERAL__MIN = VALUE__MIN;
+
+  /**
+   * The feature id for the '<em><b>Max</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NULL_LITERAL__MAX = VALUE__MAX;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1948,26 +2151,98 @@ public interface JPQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int NULL_EXPRESSION__VALUE = VALUE_FEATURE_COUNT + 0;
+  int NULL_LITERAL__VALUE = VALUE_FEATURE_COUNT + 0;
 
   /**
-   * The number of structural features of the '<em>Null Expression</em>' class.
+   * The number of structural features of the '<em>Null Literal</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int NULL_EXPRESSION_FEATURE_COUNT = VALUE_FEATURE_COUNT + 1;
+  int NULL_LITERAL_FEATURE_COUNT = VALUE_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.BooleanExpressionImpl <em>Boolean Expression</em>}' class.
+   * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.BooleanLiteralImpl <em>Boolean Literal</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.BooleanExpressionImpl
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getBooleanExpression()
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.BooleanLiteralImpl
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getBooleanLiteral()
    * @generated
    */
-  int BOOLEAN_EXPRESSION = 54;
+  int BOOLEAN_LITERAL = 41;
+
+  /**
+   * The feature id for the '<em><b>Unary Operator</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BOOLEAN_LITERAL__UNARY_OPERATOR = VALUE__UNARY_OPERATOR;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BOOLEAN_LITERAL__RIGHT = VALUE__RIGHT;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BOOLEAN_LITERAL__LEFT = VALUE__LEFT;
+
+  /**
+   * The feature id for the '<em><b>Is Not</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BOOLEAN_LITERAL__IS_NOT = VALUE__IS_NOT;
+
+  /**
+   * The feature id for the '<em><b>Items</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BOOLEAN_LITERAL__ITEMS = VALUE__ITEMS;
+
+  /**
+   * The feature id for the '<em><b>Query</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BOOLEAN_LITERAL__QUERY = VALUE__QUERY;
+
+  /**
+   * The feature id for the '<em><b>Min</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BOOLEAN_LITERAL__MIN = VALUE__MIN;
+
+  /**
+   * The feature id for the '<em><b>Max</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BOOLEAN_LITERAL__MAX = VALUE__MAX;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1976,16 +2251,16 @@ public interface JPQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BOOLEAN_EXPRESSION__VALUE = VALUE_FEATURE_COUNT + 0;
+  int BOOLEAN_LITERAL__VALUE = VALUE_FEATURE_COUNT + 0;
 
   /**
-   * The number of structural features of the '<em>Boolean Expression</em>' class.
+   * The number of structural features of the '<em>Boolean Literal</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int BOOLEAN_EXPRESSION_FEATURE_COUNT = VALUE_FEATURE_COUNT + 1;
+  int BOOLEAN_LITERAL_FEATURE_COUNT = VALUE_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.OrExpressionImpl <em>Or Expression</em>}' class.
@@ -1995,7 +2270,79 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getOrExpression()
    * @generated
    */
-  int OR_EXPRESSION = 55;
+  int OR_EXPRESSION = 42;
+
+  /**
+   * The feature id for the '<em><b>Unary Operator</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OR_EXPRESSION__UNARY_OPERATOR = EXPRESSION__UNARY_OPERATOR;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OR_EXPRESSION__RIGHT = EXPRESSION__RIGHT;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OR_EXPRESSION__LEFT = EXPRESSION__LEFT;
+
+  /**
+   * The feature id for the '<em><b>Is Not</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OR_EXPRESSION__IS_NOT = EXPRESSION__IS_NOT;
+
+  /**
+   * The feature id for the '<em><b>Items</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OR_EXPRESSION__ITEMS = EXPRESSION__ITEMS;
+
+  /**
+   * The feature id for the '<em><b>Query</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OR_EXPRESSION__QUERY = EXPRESSION__QUERY;
+
+  /**
+   * The feature id for the '<em><b>Min</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OR_EXPRESSION__MIN = EXPRESSION__MIN;
+
+  /**
+   * The feature id for the '<em><b>Max</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OR_EXPRESSION__MAX = EXPRESSION__MAX;
 
   /**
    * The feature id for the '<em><b>Entries</b></em>' containment reference list.
@@ -2023,7 +2370,79 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getAndExpression()
    * @generated
    */
-  int AND_EXPRESSION = 56;
+  int AND_EXPRESSION = 43;
+
+  /**
+   * The feature id for the '<em><b>Unary Operator</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AND_EXPRESSION__UNARY_OPERATOR = EXPRESSION__UNARY_OPERATOR;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AND_EXPRESSION__RIGHT = EXPRESSION__RIGHT;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AND_EXPRESSION__LEFT = EXPRESSION__LEFT;
+
+  /**
+   * The feature id for the '<em><b>Is Not</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AND_EXPRESSION__IS_NOT = EXPRESSION__IS_NOT;
+
+  /**
+   * The feature id for the '<em><b>Items</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AND_EXPRESSION__ITEMS = EXPRESSION__ITEMS;
+
+  /**
+   * The feature id for the '<em><b>Query</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AND_EXPRESSION__QUERY = EXPRESSION__QUERY;
+
+  /**
+   * The feature id for the '<em><b>Min</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AND_EXPRESSION__MIN = EXPRESSION__MIN;
+
+  /**
+   * The feature id for the '<em><b>Max</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AND_EXPRESSION__MAX = EXPRESSION__MAX;
 
   /**
    * The feature id for the '<em><b>Entries</b></em>' containment reference list.
@@ -2044,6 +2463,306 @@ public interface JPQLPackage extends EPackage
   int AND_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
+   * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.ComparisonOperatorExpressionImpl <em>Comparison Operator Expression</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.ComparisonOperatorExpressionImpl
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getComparisonOperatorExpression()
+   * @generated
+   */
+  int COMPARISON_OPERATOR_EXPRESSION = 44;
+
+  /**
+   * The feature id for the '<em><b>Unary Operator</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPARISON_OPERATOR_EXPRESSION__UNARY_OPERATOR = EXPRESSION__UNARY_OPERATOR;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPARISON_OPERATOR_EXPRESSION__RIGHT = EXPRESSION__RIGHT;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPARISON_OPERATOR_EXPRESSION__LEFT = EXPRESSION__LEFT;
+
+  /**
+   * The feature id for the '<em><b>Is Not</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPARISON_OPERATOR_EXPRESSION__IS_NOT = EXPRESSION__IS_NOT;
+
+  /**
+   * The feature id for the '<em><b>Items</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPARISON_OPERATOR_EXPRESSION__ITEMS = EXPRESSION__ITEMS;
+
+  /**
+   * The feature id for the '<em><b>Query</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPARISON_OPERATOR_EXPRESSION__QUERY = EXPRESSION__QUERY;
+
+  /**
+   * The feature id for the '<em><b>Min</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPARISON_OPERATOR_EXPRESSION__MIN = EXPRESSION__MIN;
+
+  /**
+   * The feature id for the '<em><b>Max</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPARISON_OPERATOR_EXPRESSION__MAX = EXPRESSION__MAX;
+
+  /**
+   * The feature id for the '<em><b>Operator</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPARISON_OPERATOR_EXPRESSION__OPERATOR = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Comparison Operator Expression</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPARISON_OPERATOR_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.AdditionExpressionImpl <em>Addition Expression</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.AdditionExpressionImpl
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getAdditionExpression()
+   * @generated
+   */
+  int ADDITION_EXPRESSION = 45;
+
+  /**
+   * The feature id for the '<em><b>Unary Operator</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ADDITION_EXPRESSION__UNARY_OPERATOR = EXPRESSION__UNARY_OPERATOR;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ADDITION_EXPRESSION__RIGHT = EXPRESSION__RIGHT;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ADDITION_EXPRESSION__LEFT = EXPRESSION__LEFT;
+
+  /**
+   * The feature id for the '<em><b>Is Not</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ADDITION_EXPRESSION__IS_NOT = EXPRESSION__IS_NOT;
+
+  /**
+   * The feature id for the '<em><b>Items</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ADDITION_EXPRESSION__ITEMS = EXPRESSION__ITEMS;
+
+  /**
+   * The feature id for the '<em><b>Query</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ADDITION_EXPRESSION__QUERY = EXPRESSION__QUERY;
+
+  /**
+   * The feature id for the '<em><b>Min</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ADDITION_EXPRESSION__MIN = EXPRESSION__MIN;
+
+  /**
+   * The feature id for the '<em><b>Max</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ADDITION_EXPRESSION__MAX = EXPRESSION__MAX;
+
+  /**
+   * The feature id for the '<em><b>Operator</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ADDITION_EXPRESSION__OPERATOR = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Addition Expression</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ADDITION_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.MultiplicationExpressionImpl <em>Multiplication Expression</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.MultiplicationExpressionImpl
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getMultiplicationExpression()
+   * @generated
+   */
+  int MULTIPLICATION_EXPRESSION = 46;
+
+  /**
+   * The feature id for the '<em><b>Unary Operator</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MULTIPLICATION_EXPRESSION__UNARY_OPERATOR = EXPRESSION__UNARY_OPERATOR;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MULTIPLICATION_EXPRESSION__RIGHT = EXPRESSION__RIGHT;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MULTIPLICATION_EXPRESSION__LEFT = EXPRESSION__LEFT;
+
+  /**
+   * The feature id for the '<em><b>Is Not</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MULTIPLICATION_EXPRESSION__IS_NOT = EXPRESSION__IS_NOT;
+
+  /**
+   * The feature id for the '<em><b>Items</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MULTIPLICATION_EXPRESSION__ITEMS = EXPRESSION__ITEMS;
+
+  /**
+   * The feature id for the '<em><b>Query</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MULTIPLICATION_EXPRESSION__QUERY = EXPRESSION__QUERY;
+
+  /**
+   * The feature id for the '<em><b>Min</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MULTIPLICATION_EXPRESSION__MIN = EXPRESSION__MIN;
+
+  /**
+   * The feature id for the '<em><b>Max</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MULTIPLICATION_EXPRESSION__MAX = EXPRESSION__MAX;
+
+  /**
+   * The feature id for the '<em><b>Operator</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MULTIPLICATION_EXPRESSION__OPERATOR = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Multiplication Expression</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MULTIPLICATION_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
    * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.OrderByDirection <em>Order By Direction</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2051,7 +2770,37 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getOrderByDirection()
    * @generated
    */
-  int ORDER_BY_DIRECTION = 57;
+  int ORDER_BY_DIRECTION = 47;
+
+  /**
+   * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.UnaryOperator <em>Unary Operator</em>}' enum.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.UnaryOperator
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getUnaryOperator()
+   * @generated
+   */
+  int UNARY_OPERATOR = 48;
+
+  /**
+   * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.AdditionOperator <em>Addition Operator</em>}' enum.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.AdditionOperator
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getAdditionOperator()
+   * @generated
+   */
+  int ADDITION_OPERATOR = 49;
+
+  /**
+   * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.MultiplicationOperator <em>Multiplication Operator</em>}' enum.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.MultiplicationOperator
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getMultiplicationOperator()
+   * @generated
+   */
+  int MULTIPLICATION_OPERATOR = 50;
 
   /**
    * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.ComparisonOperator <em>Comparison Operator</em>}' enum.
@@ -2061,7 +2810,7 @@ public interface JPQLPackage extends EPackage
    * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getComparisonOperator()
    * @generated
    */
-  int COMPARISON_OPERATOR = 58;
+  int COMPARISON_OPERATOR = 51;
 
 
   /**
@@ -2456,6 +3205,16 @@ public interface JPQLPackage extends EPackage
   EClass getAvgAggregate();
 
   /**
+   * Returns the meta object for class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.CountAggregate <em>Count Aggregate</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Count Aggregate</em>'.
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.CountAggregate
+   * @generated
+   */
+  EClass getCountAggregate();
+
+  /**
    * Returns the meta object for class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.MaxAggregate <em>Max Aggregate</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2484,16 +3243,6 @@ public interface JPQLPackage extends EPackage
    * @generated
    */
   EClass getSumAggregate();
-
-  /**
-   * Returns the meta object for class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.CountAggregate <em>Count Aggregate</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Count Aggregate</em>'.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.CountAggregate
-   * @generated
-   */
-  EClass getCountAggregate();
 
   /**
    * Returns the meta object for class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.SelectConstructorExpression <em>Select Constructor Expression</em>}'.
@@ -2759,420 +3508,92 @@ public interface JPQLPackage extends EPackage
   EClass getExpression();
 
   /**
-   * Returns the meta object for class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.ComparisonOperatorExpression <em>Comparison Operator Expression</em>}'.
+   * Returns the meta object for the attribute '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.Expression#getUnaryOperator <em>Unary Operator</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Comparison Operator Expression</em>'.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.ComparisonOperatorExpression
+   * @return the meta object for the attribute '<em>Unary Operator</em>'.
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.Expression#getUnaryOperator()
+   * @see #getExpression()
    * @generated
    */
-  EClass getComparisonOperatorExpression();
+  EAttribute getExpression_UnaryOperator();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.ComparisonOperatorExpression#getLeft <em>Left</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Left</em>'.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.ComparisonOperatorExpression#getLeft()
-   * @see #getComparisonOperatorExpression()
-   * @generated
-   */
-  EReference getComparisonOperatorExpression_Left();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.ComparisonOperatorExpression#getOperator <em>Operator</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Operator</em>'.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.ComparisonOperatorExpression#getOperator()
-   * @see #getComparisonOperatorExpression()
-   * @generated
-   */
-  EAttribute getComparisonOperatorExpression_Operator();
-
-  /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.ComparisonOperatorExpression#getRight <em>Right</em>}'.
+   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.Expression#getRight <em>Right</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Right</em>'.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.ComparisonOperatorExpression#getRight()
-   * @see #getComparisonOperatorExpression()
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.Expression#getRight()
+   * @see #getExpression()
    * @generated
    */
-  EReference getComparisonOperatorExpression_Right();
+  EReference getExpression_Right();
 
   /**
-   * Returns the meta object for class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.ExistsExpression <em>Exists Expression</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Exists Expression</em>'.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.ExistsExpression
-   * @generated
-   */
-  EClass getExistsExpression();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.ExistsExpression#isIsNot <em>Is Not</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Is Not</em>'.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.ExistsExpression#isIsNot()
-   * @see #getExistsExpression()
-   * @generated
-   */
-  EAttribute getExistsExpression_IsNot();
-
-  /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.ExistsExpression#getRight <em>Right</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Right</em>'.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.ExistsExpression#getRight()
-   * @see #getExistsExpression()
-   * @generated
-   */
-  EReference getExistsExpression_Right();
-
-  /**
-   * Returns the meta object for class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.AllExpression <em>All Expression</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>All Expression</em>'.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.AllExpression
-   * @generated
-   */
-  EClass getAllExpression();
-
-  /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.AllExpression#getRight <em>Right</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Right</em>'.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.AllExpression#getRight()
-   * @see #getAllExpression()
-   * @generated
-   */
-  EReference getAllExpression_Right();
-
-  /**
-   * Returns the meta object for class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.AnyExpression <em>Any Expression</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Any Expression</em>'.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.AnyExpression
-   * @generated
-   */
-  EClass getAnyExpression();
-
-  /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.AnyExpression#getRight <em>Right</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Right</em>'.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.AnyExpression#getRight()
-   * @see #getAnyExpression()
-   * @generated
-   */
-  EReference getAnyExpression_Right();
-
-  /**
-   * Returns the meta object for class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.SomeExpression <em>Some Expression</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Some Expression</em>'.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.SomeExpression
-   * @generated
-   */
-  EClass getSomeExpression();
-
-  /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.SomeExpression#getRight <em>Right</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Right</em>'.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.SomeExpression#getRight()
-   * @see #getSomeExpression()
-   * @generated
-   */
-  EReference getSomeExpression_Right();
-
-  /**
-   * Returns the meta object for class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.CollectionExpression <em>Collection Expression</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Collection Expression</em>'.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.CollectionExpression
-   * @generated
-   */
-  EClass getCollectionExpression();
-
-  /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.CollectionExpression#getLeft <em>Left</em>}'.
+   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.Expression#getLeft <em>Left</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Left</em>'.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.CollectionExpression#getLeft()
-   * @see #getCollectionExpression()
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.Expression#getLeft()
+   * @see #getExpression()
    * @generated
    */
-  EReference getCollectionExpression_Left();
+  EReference getExpression_Left();
 
   /**
-   * Returns the meta object for the attribute '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.CollectionExpression#isIsNot <em>Is Not</em>}'.
+   * Returns the meta object for the attribute '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.Expression#isIsNot <em>Is Not</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Is Not</em>'.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.CollectionExpression#isIsNot()
-   * @see #getCollectionExpression()
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.Expression#isIsNot()
+   * @see #getExpression()
    * @generated
    */
-  EAttribute getCollectionExpression_IsNot();
+  EAttribute getExpression_IsNot();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.CollectionExpression#getRight <em>Right</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Right</em>'.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.CollectionExpression#getRight()
-   * @see #getCollectionExpression()
-   * @generated
-   */
-  EReference getCollectionExpression_Right();
-
-  /**
-   * Returns the meta object for class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.NullComparisonExpression <em>Null Comparison Expression</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Null Comparison Expression</em>'.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.NullComparisonExpression
-   * @generated
-   */
-  EClass getNullComparisonExpression();
-
-  /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.NullComparisonExpression#getLeft <em>Left</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Left</em>'.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.NullComparisonExpression#getLeft()
-   * @see #getNullComparisonExpression()
-   * @generated
-   */
-  EReference getNullComparisonExpression_Left();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.NullComparisonExpression#isIsNot <em>Is Not</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Is Not</em>'.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.NullComparisonExpression#isIsNot()
-   * @see #getNullComparisonExpression()
-   * @generated
-   */
-  EAttribute getNullComparisonExpression_IsNot();
-
-  /**
-   * Returns the meta object for class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.EmptyComparisonExpression <em>Empty Comparison Expression</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Empty Comparison Expression</em>'.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.EmptyComparisonExpression
-   * @generated
-   */
-  EClass getEmptyComparisonExpression();
-
-  /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.EmptyComparisonExpression#getLeft <em>Left</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Left</em>'.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.EmptyComparisonExpression#getLeft()
-   * @see #getEmptyComparisonExpression()
-   * @generated
-   */
-  EReference getEmptyComparisonExpression_Left();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.EmptyComparisonExpression#isIsNot <em>Is Not</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Is Not</em>'.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.EmptyComparisonExpression#isIsNot()
-   * @see #getEmptyComparisonExpression()
-   * @generated
-   */
-  EAttribute getEmptyComparisonExpression_IsNot();
-
-  /**
-   * Returns the meta object for class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.LikeExpression <em>Like Expression</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Like Expression</em>'.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.LikeExpression
-   * @generated
-   */
-  EClass getLikeExpression();
-
-  /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.LikeExpression#getLeft <em>Left</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Left</em>'.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.LikeExpression#getLeft()
-   * @see #getLikeExpression()
-   * @generated
-   */
-  EReference getLikeExpression_Left();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.LikeExpression#isIsNot <em>Is Not</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Is Not</em>'.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.LikeExpression#isIsNot()
-   * @see #getLikeExpression()
-   * @generated
-   */
-  EAttribute getLikeExpression_IsNot();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.LikeExpression#getRight <em>Right</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Right</em>'.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.LikeExpression#getRight()
-   * @see #getLikeExpression()
-   * @generated
-   */
-  EAttribute getLikeExpression_Right();
-
-  /**
-   * Returns the meta object for class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.InExpression <em>In Expression</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>In Expression</em>'.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.InExpression
-   * @generated
-   */
-  EClass getInExpression();
-
-  /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.InExpression#getLeft <em>Left</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Left</em>'.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.InExpression#getLeft()
-   * @see #getInExpression()
-   * @generated
-   */
-  EReference getInExpression_Left();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.InExpression#isIsNot <em>Is Not</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Is Not</em>'.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.InExpression#isIsNot()
-   * @see #getInExpression()
-   * @generated
-   */
-  EAttribute getInExpression_IsNot();
-
-  /**
-   * Returns the meta object for class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.InSeqExpression <em>In Seq Expression</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>In Seq Expression</em>'.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.InSeqExpression
-   * @generated
-   */
-  EClass getInSeqExpression();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.InSeqExpression#getItems <em>Items</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.Expression#getItems <em>Items</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Items</em>'.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.InSeqExpression#getItems()
-   * @see #getInSeqExpression()
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.Expression#getItems()
+   * @see #getExpression()
    * @generated
    */
-  EReference getInSeqExpression_Items();
+  EReference getExpression_Items();
 
   /**
-   * Returns the meta object for class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.InQueryExpression <em>In Query Expression</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>In Query Expression</em>'.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.InQueryExpression
-   * @generated
-   */
-  EClass getInQueryExpression();
-
-  /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.InQueryExpression#getQuery <em>Query</em>}'.
+   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.Expression#getQuery <em>Query</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Query</em>'.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.InQueryExpression#getQuery()
-   * @see #getInQueryExpression()
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.Expression#getQuery()
+   * @see #getExpression()
    * @generated
    */
-  EReference getInQueryExpression_Query();
+  EReference getExpression_Query();
 
   /**
-   * Returns the meta object for class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.BetweenExpression <em>Between Expression</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Between Expression</em>'.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.BetweenExpression
-   * @generated
-   */
-  EClass getBetweenExpression();
-
-  /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.BetweenExpression#getLeft <em>Left</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Left</em>'.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.BetweenExpression#getLeft()
-   * @see #getBetweenExpression()
-   * @generated
-   */
-  EReference getBetweenExpression_Left();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.BetweenExpression#isIsNot <em>Is Not</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Is Not</em>'.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.BetweenExpression#isIsNot()
-   * @see #getBetweenExpression()
-   * @generated
-   */
-  EAttribute getBetweenExpression_IsNot();
-
-  /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.BetweenExpression#getMin <em>Min</em>}'.
+   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.Expression#getMin <em>Min</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Min</em>'.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.BetweenExpression#getMin()
-   * @see #getBetweenExpression()
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.Expression#getMin()
+   * @see #getExpression()
    * @generated
    */
-  EReference getBetweenExpression_Min();
+  EReference getExpression_Min();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.BetweenExpression#getMax <em>Max</em>}'.
+   * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.Expression#getMax <em>Max</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Max</em>'.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.BetweenExpression#getMax()
-   * @see #getBetweenExpression()
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.Expression#getMax()
+   * @see #getExpression()
    * @generated
    */
-  EReference getBetweenExpression_Max();
+  EReference getExpression_Max();
 
   /**
    * Returns the meta object for class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.Variable <em>Variable</em>}'.
@@ -3301,88 +3722,88 @@ public interface JPQLPackage extends EPackage
   EClass getValue();
 
   /**
-   * Returns the meta object for class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.IntegerExpression <em>Integer Expression</em>}'.
+   * Returns the meta object for class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.IntegerLiteral <em>Integer Literal</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Integer Expression</em>'.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.IntegerExpression
+   * @return the meta object for class '<em>Integer Literal</em>'.
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.IntegerLiteral
    * @generated
    */
-  EClass getIntegerExpression();
+  EClass getIntegerLiteral();
 
   /**
-   * Returns the meta object for the attribute '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.IntegerExpression#getValue <em>Value</em>}'.
+   * Returns the meta object for the attribute '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.IntegerLiteral#getValue <em>Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Value</em>'.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.IntegerExpression#getValue()
-   * @see #getIntegerExpression()
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.IntegerLiteral#getValue()
+   * @see #getIntegerLiteral()
    * @generated
    */
-  EAttribute getIntegerExpression_Value();
+  EAttribute getIntegerLiteral_Value();
 
   /**
-   * Returns the meta object for class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.StringExpression <em>String Expression</em>}'.
+   * Returns the meta object for class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.StringLiteral <em>String Literal</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>String Expression</em>'.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.StringExpression
+   * @return the meta object for class '<em>String Literal</em>'.
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.StringLiteral
    * @generated
    */
-  EClass getStringExpression();
+  EClass getStringLiteral();
 
   /**
-   * Returns the meta object for the attribute '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.StringExpression#getValue <em>Value</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Value</em>'.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.StringExpression#getValue()
-   * @see #getStringExpression()
-   * @generated
-   */
-  EAttribute getStringExpression_Value();
-
-  /**
-   * Returns the meta object for class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.NullExpression <em>Null Expression</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Null Expression</em>'.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.NullExpression
-   * @generated
-   */
-  EClass getNullExpression();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.NullExpression#getValue <em>Value</em>}'.
+   * Returns the meta object for the attribute '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.StringLiteral#getValue <em>Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Value</em>'.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.NullExpression#getValue()
-   * @see #getNullExpression()
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.StringLiteral#getValue()
+   * @see #getStringLiteral()
    * @generated
    */
-  EAttribute getNullExpression_Value();
+  EAttribute getStringLiteral_Value();
 
   /**
-   * Returns the meta object for class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.BooleanExpression <em>Boolean Expression</em>}'.
+   * Returns the meta object for class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.NullLiteral <em>Null Literal</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Boolean Expression</em>'.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.BooleanExpression
+   * @return the meta object for class '<em>Null Literal</em>'.
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.NullLiteral
    * @generated
    */
-  EClass getBooleanExpression();
+  EClass getNullLiteral();
 
   /**
-   * Returns the meta object for the attribute '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.BooleanExpression#isValue <em>Value</em>}'.
+   * Returns the meta object for the attribute '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.NullLiteral#getValue <em>Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Value</em>'.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.BooleanExpression#isValue()
-   * @see #getBooleanExpression()
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.NullLiteral#getValue()
+   * @see #getNullLiteral()
    * @generated
    */
-  EAttribute getBooleanExpression_Value();
+  EAttribute getNullLiteral_Value();
+
+  /**
+   * Returns the meta object for class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.BooleanLiteral <em>Boolean Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Boolean Literal</em>'.
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.BooleanLiteral
+   * @generated
+   */
+  EClass getBooleanLiteral();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.BooleanLiteral#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.BooleanLiteral#getValue()
+   * @see #getBooleanLiteral()
+   * @generated
+   */
+  EAttribute getBooleanLiteral_Value();
 
   /**
    * Returns the meta object for class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.OrExpression <em>Or Expression</em>}'.
@@ -3427,6 +3848,69 @@ public interface JPQLPackage extends EPackage
   EReference getAndExpression_Entries();
 
   /**
+   * Returns the meta object for class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.ComparisonOperatorExpression <em>Comparison Operator Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Comparison Operator Expression</em>'.
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.ComparisonOperatorExpression
+   * @generated
+   */
+  EClass getComparisonOperatorExpression();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.ComparisonOperatorExpression#getOperator <em>Operator</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Operator</em>'.
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.ComparisonOperatorExpression#getOperator()
+   * @see #getComparisonOperatorExpression()
+   * @generated
+   */
+  EAttribute getComparisonOperatorExpression_Operator();
+
+  /**
+   * Returns the meta object for class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.AdditionExpression <em>Addition Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Addition Expression</em>'.
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.AdditionExpression
+   * @generated
+   */
+  EClass getAdditionExpression();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.AdditionExpression#getOperator <em>Operator</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Operator</em>'.
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.AdditionExpression#getOperator()
+   * @see #getAdditionExpression()
+   * @generated
+   */
+  EAttribute getAdditionExpression_Operator();
+
+  /**
+   * Returns the meta object for class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.MultiplicationExpression <em>Multiplication Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Multiplication Expression</em>'.
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.MultiplicationExpression
+   * @generated
+   */
+  EClass getMultiplicationExpression();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.MultiplicationExpression#getOperator <em>Operator</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Operator</em>'.
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.MultiplicationExpression#getOperator()
+   * @see #getMultiplicationExpression()
+   * @generated
+   */
+  EAttribute getMultiplicationExpression_Operator();
+
+  /**
    * Returns the meta object for enum '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.OrderByDirection <em>Order By Direction</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3435,6 +3919,36 @@ public interface JPQLPackage extends EPackage
    * @generated
    */
   EEnum getOrderByDirection();
+
+  /**
+   * Returns the meta object for enum '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.UnaryOperator <em>Unary Operator</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for enum '<em>Unary Operator</em>'.
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.UnaryOperator
+   * @generated
+   */
+  EEnum getUnaryOperator();
+
+  /**
+   * Returns the meta object for enum '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.AdditionOperator <em>Addition Operator</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for enum '<em>Addition Operator</em>'.
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.AdditionOperator
+   * @generated
+   */
+  EEnum getAdditionOperator();
+
+  /**
+   * Returns the meta object for enum '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.MultiplicationOperator <em>Multiplication Operator</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for enum '<em>Multiplication Operator</em>'.
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.MultiplicationOperator
+   * @generated
+   */
+  EEnum getMultiplicationOperator();
 
   /**
    * Returns the meta object for enum '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.ComparisonOperator <em>Comparison Operator</em>}'.
@@ -3798,6 +4312,16 @@ public interface JPQLPackage extends EPackage
     EClass AVG_AGGREGATE = eINSTANCE.getAvgAggregate();
 
     /**
+     * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.CountAggregateImpl <em>Count Aggregate</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.CountAggregateImpl
+     * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getCountAggregate()
+     * @generated
+     */
+    EClass COUNT_AGGREGATE = eINSTANCE.getCountAggregate();
+
+    /**
      * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.MaxAggregateImpl <em>Max Aggregate</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -3826,16 +4350,6 @@ public interface JPQLPackage extends EPackage
      * @generated
      */
     EClass SUM_AGGREGATE = eINSTANCE.getSumAggregate();
-
-    /**
-     * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.CountAggregateImpl <em>Count Aggregate</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.CountAggregateImpl
-     * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getCountAggregate()
-     * @generated
-     */
-    EClass COUNT_AGGREGATE = eINSTANCE.getCountAggregate();
 
     /**
      * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.SelectConstructorExpressionImpl <em>Select Constructor Expression</em>}' class.
@@ -4062,30 +4576,12 @@ public interface JPQLPackage extends EPackage
     EClass EXPRESSION = eINSTANCE.getExpression();
 
     /**
-     * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.ComparisonOperatorExpressionImpl <em>Comparison Operator Expression</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.ComparisonOperatorExpressionImpl
-     * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getComparisonOperatorExpression()
-     * @generated
-     */
-    EClass COMPARISON_OPERATOR_EXPRESSION = eINSTANCE.getComparisonOperatorExpression();
-
-    /**
-     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Unary Operator</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference COMPARISON_OPERATOR_EXPRESSION__LEFT = eINSTANCE.getComparisonOperatorExpression_Left();
-
-    /**
-     * The meta object literal for the '<em><b>Operator</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute COMPARISON_OPERATOR_EXPRESSION__OPERATOR = eINSTANCE.getComparisonOperatorExpression_Operator();
+    EAttribute EXPRESSION__UNARY_OPERATOR = eINSTANCE.getExpression_UnaryOperator();
 
     /**
      * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
@@ -4093,97 +4589,7 @@ public interface JPQLPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference COMPARISON_OPERATOR_EXPRESSION__RIGHT = eINSTANCE.getComparisonOperatorExpression_Right();
-
-    /**
-     * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.ExistsExpressionImpl <em>Exists Expression</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.ExistsExpressionImpl
-     * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getExistsExpression()
-     * @generated
-     */
-    EClass EXISTS_EXPRESSION = eINSTANCE.getExistsExpression();
-
-    /**
-     * The meta object literal for the '<em><b>Is Not</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute EXISTS_EXPRESSION__IS_NOT = eINSTANCE.getExistsExpression_IsNot();
-
-    /**
-     * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference EXISTS_EXPRESSION__RIGHT = eINSTANCE.getExistsExpression_Right();
-
-    /**
-     * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.AllExpressionImpl <em>All Expression</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.AllExpressionImpl
-     * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getAllExpression()
-     * @generated
-     */
-    EClass ALL_EXPRESSION = eINSTANCE.getAllExpression();
-
-    /**
-     * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference ALL_EXPRESSION__RIGHT = eINSTANCE.getAllExpression_Right();
-
-    /**
-     * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.AnyExpressionImpl <em>Any Expression</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.AnyExpressionImpl
-     * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getAnyExpression()
-     * @generated
-     */
-    EClass ANY_EXPRESSION = eINSTANCE.getAnyExpression();
-
-    /**
-     * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference ANY_EXPRESSION__RIGHT = eINSTANCE.getAnyExpression_Right();
-
-    /**
-     * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.SomeExpressionImpl <em>Some Expression</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.SomeExpressionImpl
-     * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getSomeExpression()
-     * @generated
-     */
-    EClass SOME_EXPRESSION = eINSTANCE.getSomeExpression();
-
-    /**
-     * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference SOME_EXPRESSION__RIGHT = eINSTANCE.getSomeExpression_Right();
-
-    /**
-     * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.CollectionExpressionImpl <em>Collection Expression</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.CollectionExpressionImpl
-     * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getCollectionExpression()
-     * @generated
-     */
-    EClass COLLECTION_EXPRESSION = eINSTANCE.getCollectionExpression();
+    EReference EXPRESSION__RIGHT = eINSTANCE.getExpression_Right();
 
     /**
      * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
@@ -4191,7 +4597,7 @@ public interface JPQLPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference COLLECTION_EXPRESSION__LEFT = eINSTANCE.getCollectionExpression_Left();
+    EReference EXPRESSION__LEFT = eINSTANCE.getExpression_Left();
 
     /**
      * The meta object literal for the '<em><b>Is Not</b></em>' attribute feature.
@@ -4199,137 +4605,7 @@ public interface JPQLPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute COLLECTION_EXPRESSION__IS_NOT = eINSTANCE.getCollectionExpression_IsNot();
-
-    /**
-     * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference COLLECTION_EXPRESSION__RIGHT = eINSTANCE.getCollectionExpression_Right();
-
-    /**
-     * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.NullComparisonExpressionImpl <em>Null Comparison Expression</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.NullComparisonExpressionImpl
-     * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getNullComparisonExpression()
-     * @generated
-     */
-    EClass NULL_COMPARISON_EXPRESSION = eINSTANCE.getNullComparisonExpression();
-
-    /**
-     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference NULL_COMPARISON_EXPRESSION__LEFT = eINSTANCE.getNullComparisonExpression_Left();
-
-    /**
-     * The meta object literal for the '<em><b>Is Not</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute NULL_COMPARISON_EXPRESSION__IS_NOT = eINSTANCE.getNullComparisonExpression_IsNot();
-
-    /**
-     * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.EmptyComparisonExpressionImpl <em>Empty Comparison Expression</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.EmptyComparisonExpressionImpl
-     * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getEmptyComparisonExpression()
-     * @generated
-     */
-    EClass EMPTY_COMPARISON_EXPRESSION = eINSTANCE.getEmptyComparisonExpression();
-
-    /**
-     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference EMPTY_COMPARISON_EXPRESSION__LEFT = eINSTANCE.getEmptyComparisonExpression_Left();
-
-    /**
-     * The meta object literal for the '<em><b>Is Not</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute EMPTY_COMPARISON_EXPRESSION__IS_NOT = eINSTANCE.getEmptyComparisonExpression_IsNot();
-
-    /**
-     * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.LikeExpressionImpl <em>Like Expression</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.LikeExpressionImpl
-     * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getLikeExpression()
-     * @generated
-     */
-    EClass LIKE_EXPRESSION = eINSTANCE.getLikeExpression();
-
-    /**
-     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference LIKE_EXPRESSION__LEFT = eINSTANCE.getLikeExpression_Left();
-
-    /**
-     * The meta object literal for the '<em><b>Is Not</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute LIKE_EXPRESSION__IS_NOT = eINSTANCE.getLikeExpression_IsNot();
-
-    /**
-     * The meta object literal for the '<em><b>Right</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute LIKE_EXPRESSION__RIGHT = eINSTANCE.getLikeExpression_Right();
-
-    /**
-     * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.InExpressionImpl <em>In Expression</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.InExpressionImpl
-     * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getInExpression()
-     * @generated
-     */
-    EClass IN_EXPRESSION = eINSTANCE.getInExpression();
-
-    /**
-     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference IN_EXPRESSION__LEFT = eINSTANCE.getInExpression_Left();
-
-    /**
-     * The meta object literal for the '<em><b>Is Not</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute IN_EXPRESSION__IS_NOT = eINSTANCE.getInExpression_IsNot();
-
-    /**
-     * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.InSeqExpressionImpl <em>In Seq Expression</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.InSeqExpressionImpl
-     * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getInSeqExpression()
-     * @generated
-     */
-    EClass IN_SEQ_EXPRESSION = eINSTANCE.getInSeqExpression();
+    EAttribute EXPRESSION__IS_NOT = eINSTANCE.getExpression_IsNot();
 
     /**
      * The meta object literal for the '<em><b>Items</b></em>' containment reference list feature.
@@ -4337,17 +4613,7 @@ public interface JPQLPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference IN_SEQ_EXPRESSION__ITEMS = eINSTANCE.getInSeqExpression_Items();
-
-    /**
-     * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.InQueryExpressionImpl <em>In Query Expression</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.InQueryExpressionImpl
-     * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getInQueryExpression()
-     * @generated
-     */
-    EClass IN_QUERY_EXPRESSION = eINSTANCE.getInQueryExpression();
+    EReference EXPRESSION__ITEMS = eINSTANCE.getExpression_Items();
 
     /**
      * The meta object literal for the '<em><b>Query</b></em>' containment reference feature.
@@ -4355,33 +4621,7 @@ public interface JPQLPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference IN_QUERY_EXPRESSION__QUERY = eINSTANCE.getInQueryExpression_Query();
-
-    /**
-     * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.BetweenExpressionImpl <em>Between Expression</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.BetweenExpressionImpl
-     * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getBetweenExpression()
-     * @generated
-     */
-    EClass BETWEEN_EXPRESSION = eINSTANCE.getBetweenExpression();
-
-    /**
-     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference BETWEEN_EXPRESSION__LEFT = eINSTANCE.getBetweenExpression_Left();
-
-    /**
-     * The meta object literal for the '<em><b>Is Not</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute BETWEEN_EXPRESSION__IS_NOT = eINSTANCE.getBetweenExpression_IsNot();
+    EReference EXPRESSION__QUERY = eINSTANCE.getExpression_Query();
 
     /**
      * The meta object literal for the '<em><b>Min</b></em>' containment reference feature.
@@ -4389,7 +4629,7 @@ public interface JPQLPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference BETWEEN_EXPRESSION__MIN = eINSTANCE.getBetweenExpression_Min();
+    EReference EXPRESSION__MIN = eINSTANCE.getExpression_Min();
 
     /**
      * The meta object literal for the '<em><b>Max</b></em>' containment reference feature.
@@ -4397,7 +4637,7 @@ public interface JPQLPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference BETWEEN_EXPRESSION__MAX = eINSTANCE.getBetweenExpression_Max();
+    EReference EXPRESSION__MAX = eINSTANCE.getExpression_Max();
 
     /**
      * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.VariableImpl <em>Variable</em>}' class.
@@ -4508,14 +4748,14 @@ public interface JPQLPackage extends EPackage
     EClass VALUE = eINSTANCE.getValue();
 
     /**
-     * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.IntegerExpressionImpl <em>Integer Expression</em>}' class.
+     * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.IntegerLiteralImpl <em>Integer Literal</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.IntegerExpressionImpl
-     * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getIntegerExpression()
+     * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.IntegerLiteralImpl
+     * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getIntegerLiteral()
      * @generated
      */
-    EClass INTEGER_EXPRESSION = eINSTANCE.getIntegerExpression();
+    EClass INTEGER_LITERAL = eINSTANCE.getIntegerLiteral();
 
     /**
      * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
@@ -4523,35 +4763,17 @@ public interface JPQLPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute INTEGER_EXPRESSION__VALUE = eINSTANCE.getIntegerExpression_Value();
+    EAttribute INTEGER_LITERAL__VALUE = eINSTANCE.getIntegerLiteral_Value();
 
     /**
-     * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.StringExpressionImpl <em>String Expression</em>}' class.
+     * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.StringLiteralImpl <em>String Literal</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.StringExpressionImpl
-     * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getStringExpression()
+     * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.StringLiteralImpl
+     * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getStringLiteral()
      * @generated
      */
-    EClass STRING_EXPRESSION = eINSTANCE.getStringExpression();
-
-    /**
-     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute STRING_EXPRESSION__VALUE = eINSTANCE.getStringExpression_Value();
-
-    /**
-     * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.NullExpressionImpl <em>Null Expression</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.NullExpressionImpl
-     * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getNullExpression()
-     * @generated
-     */
-    EClass NULL_EXPRESSION = eINSTANCE.getNullExpression();
+    EClass STRING_LITERAL = eINSTANCE.getStringLiteral();
 
     /**
      * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
@@ -4559,17 +4781,17 @@ public interface JPQLPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute NULL_EXPRESSION__VALUE = eINSTANCE.getNullExpression_Value();
+    EAttribute STRING_LITERAL__VALUE = eINSTANCE.getStringLiteral_Value();
 
     /**
-     * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.BooleanExpressionImpl <em>Boolean Expression</em>}' class.
+     * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.NullLiteralImpl <em>Null Literal</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.BooleanExpressionImpl
-     * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getBooleanExpression()
+     * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.NullLiteralImpl
+     * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getNullLiteral()
      * @generated
      */
-    EClass BOOLEAN_EXPRESSION = eINSTANCE.getBooleanExpression();
+    EClass NULL_LITERAL = eINSTANCE.getNullLiteral();
 
     /**
      * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
@@ -4577,7 +4799,25 @@ public interface JPQLPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute BOOLEAN_EXPRESSION__VALUE = eINSTANCE.getBooleanExpression_Value();
+    EAttribute NULL_LITERAL__VALUE = eINSTANCE.getNullLiteral_Value();
+
+    /**
+     * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.BooleanLiteralImpl <em>Boolean Literal</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.BooleanLiteralImpl
+     * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getBooleanLiteral()
+     * @generated
+     */
+    EClass BOOLEAN_LITERAL = eINSTANCE.getBooleanLiteral();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute BOOLEAN_LITERAL__VALUE = eINSTANCE.getBooleanLiteral_Value();
 
     /**
      * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.OrExpressionImpl <em>Or Expression</em>}' class.
@@ -4616,6 +4856,60 @@ public interface JPQLPackage extends EPackage
     EReference AND_EXPRESSION__ENTRIES = eINSTANCE.getAndExpression_Entries();
 
     /**
+     * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.ComparisonOperatorExpressionImpl <em>Comparison Operator Expression</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.ComparisonOperatorExpressionImpl
+     * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getComparisonOperatorExpression()
+     * @generated
+     */
+    EClass COMPARISON_OPERATOR_EXPRESSION = eINSTANCE.getComparisonOperatorExpression();
+
+    /**
+     * The meta object literal for the '<em><b>Operator</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute COMPARISON_OPERATOR_EXPRESSION__OPERATOR = eINSTANCE.getComparisonOperatorExpression_Operator();
+
+    /**
+     * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.AdditionExpressionImpl <em>Addition Expression</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.AdditionExpressionImpl
+     * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getAdditionExpression()
+     * @generated
+     */
+    EClass ADDITION_EXPRESSION = eINSTANCE.getAdditionExpression();
+
+    /**
+     * The meta object literal for the '<em><b>Operator</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ADDITION_EXPRESSION__OPERATOR = eINSTANCE.getAdditionExpression_Operator();
+
+    /**
+     * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.MultiplicationExpressionImpl <em>Multiplication Expression</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.MultiplicationExpressionImpl
+     * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getMultiplicationExpression()
+     * @generated
+     */
+    EClass MULTIPLICATION_EXPRESSION = eINSTANCE.getMultiplicationExpression();
+
+    /**
+     * The meta object literal for the '<em><b>Operator</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MULTIPLICATION_EXPRESSION__OPERATOR = eINSTANCE.getMultiplicationExpression_Operator();
+
+    /**
      * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.OrderByDirection <em>Order By Direction</em>}' enum.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -4624,6 +4918,36 @@ public interface JPQLPackage extends EPackage
      * @generated
      */
     EEnum ORDER_BY_DIRECTION = eINSTANCE.getOrderByDirection();
+
+    /**
+     * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.UnaryOperator <em>Unary Operator</em>}' enum.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.nightlabs.vestigo.xtext.jpql.jPQL.UnaryOperator
+     * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getUnaryOperator()
+     * @generated
+     */
+    EEnum UNARY_OPERATOR = eINSTANCE.getUnaryOperator();
+
+    /**
+     * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.AdditionOperator <em>Addition Operator</em>}' enum.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.nightlabs.vestigo.xtext.jpql.jPQL.AdditionOperator
+     * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getAdditionOperator()
+     * @generated
+     */
+    EEnum ADDITION_OPERATOR = eINSTANCE.getAdditionOperator();
+
+    /**
+     * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.MultiplicationOperator <em>Multiplication Operator</em>}' enum.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.nightlabs.vestigo.xtext.jpql.jPQL.MultiplicationOperator
+     * @see org.nightlabs.vestigo.xtext.jpql.jPQL.impl.JPQLPackageImpl#getMultiplicationOperator()
+     * @generated
+     */
+    EEnum MULTIPLICATION_OPERATOR = eINSTANCE.getMultiplicationOperator();
 
     /**
      * The meta object literal for the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.ComparisonOperator <em>Comparison Operator</em>}' enum.

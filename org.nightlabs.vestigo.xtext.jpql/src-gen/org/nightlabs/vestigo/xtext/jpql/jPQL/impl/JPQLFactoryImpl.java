@@ -84,10 +84,10 @@ public class JPQLFactoryImpl extends EFactoryImpl implements JPQLFactory
       case JPQLPackage.SELECT_EXPRESSION: return createSelectExpression();
       case JPQLPackage.SELECT_AGGREGATE_EXPRESSION: return createSelectAggregateExpression();
       case JPQLPackage.AVG_AGGREGATE: return createAvgAggregate();
+      case JPQLPackage.COUNT_AGGREGATE: return createCountAggregate();
       case JPQLPackage.MAX_AGGREGATE: return createMaxAggregate();
       case JPQLPackage.MIN_AGGREGATE: return createMinAggregate();
       case JPQLPackage.SUM_AGGREGATE: return createSumAggregate();
-      case JPQLPackage.COUNT_AGGREGATE: return createCountAggregate();
       case JPQLPackage.SELECT_CONSTRUCTOR_EXPRESSION: return createSelectConstructorExpression();
       case JPQLPackage.FROM_CLAUSE: return createFromClause();
       case JPQLPackage.FROM_ENTRY: return createFromEntry();
@@ -100,31 +100,21 @@ public class JPQLFactoryImpl extends EFactoryImpl implements JPQLFactory
       case JPQLPackage.INNER_JOIN: return createInnerJoin();
       case JPQLPackage.WHERE_CLAUSE: return createWhereClause();
       case JPQLPackage.EXPRESSION: return createExpression();
-      case JPQLPackage.COMPARISON_OPERATOR_EXPRESSION: return createComparisonOperatorExpression();
-      case JPQLPackage.EXISTS_EXPRESSION: return createExistsExpression();
-      case JPQLPackage.ALL_EXPRESSION: return createAllExpression();
-      case JPQLPackage.ANY_EXPRESSION: return createAnyExpression();
-      case JPQLPackage.SOME_EXPRESSION: return createSomeExpression();
-      case JPQLPackage.COLLECTION_EXPRESSION: return createCollectionExpression();
-      case JPQLPackage.NULL_COMPARISON_EXPRESSION: return createNullComparisonExpression();
-      case JPQLPackage.EMPTY_COMPARISON_EXPRESSION: return createEmptyComparisonExpression();
-      case JPQLPackage.LIKE_EXPRESSION: return createLikeExpression();
-      case JPQLPackage.IN_EXPRESSION: return createInExpression();
-      case JPQLPackage.IN_SEQ_EXPRESSION: return createInSeqExpression();
-      case JPQLPackage.IN_QUERY_EXPRESSION: return createInQueryExpression();
-      case JPQLPackage.BETWEEN_EXPRESSION: return createBetweenExpression();
       case JPQLPackage.VARIABLE: return createVariable();
       case JPQLPackage.EXPRESSION_TERM: return createExpressionTerm();
       case JPQLPackage.ALIAS_ATTRIBUTE_EXPRESSION: return createAliasAttributeExpression();
       case JPQLPackage.PARAMETER_EXPRESSION: return createParameterExpression();
       case JPQLPackage.FUNCTION: return createFunction();
       case JPQLPackage.VALUE: return createValue();
-      case JPQLPackage.INTEGER_EXPRESSION: return createIntegerExpression();
-      case JPQLPackage.STRING_EXPRESSION: return createStringExpression();
-      case JPQLPackage.NULL_EXPRESSION: return createNullExpression();
-      case JPQLPackage.BOOLEAN_EXPRESSION: return createBooleanExpression();
+      case JPQLPackage.INTEGER_LITERAL: return createIntegerLiteral();
+      case JPQLPackage.STRING_LITERAL: return createStringLiteral();
+      case JPQLPackage.NULL_LITERAL: return createNullLiteral();
+      case JPQLPackage.BOOLEAN_LITERAL: return createBooleanLiteral();
       case JPQLPackage.OR_EXPRESSION: return createOrExpression();
       case JPQLPackage.AND_EXPRESSION: return createAndExpression();
+      case JPQLPackage.COMPARISON_OPERATOR_EXPRESSION: return createComparisonOperatorExpression();
+      case JPQLPackage.ADDITION_EXPRESSION: return createAdditionExpression();
+      case JPQLPackage.MULTIPLICATION_EXPRESSION: return createMultiplicationExpression();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -142,6 +132,12 @@ public class JPQLFactoryImpl extends EFactoryImpl implements JPQLFactory
     {
       case JPQLPackage.ORDER_BY_DIRECTION:
         return createOrderByDirectionFromString(eDataType, initialValue);
+      case JPQLPackage.UNARY_OPERATOR:
+        return createUnaryOperatorFromString(eDataType, initialValue);
+      case JPQLPackage.ADDITION_OPERATOR:
+        return createAdditionOperatorFromString(eDataType, initialValue);
+      case JPQLPackage.MULTIPLICATION_OPERATOR:
+        return createMultiplicationOperatorFromString(eDataType, initialValue);
       case JPQLPackage.COMPARISON_OPERATOR:
         return createComparisonOperatorFromString(eDataType, initialValue);
       default:
@@ -161,6 +157,12 @@ public class JPQLFactoryImpl extends EFactoryImpl implements JPQLFactory
     {
       case JPQLPackage.ORDER_BY_DIRECTION:
         return convertOrderByDirectionToString(eDataType, instanceValue);
+      case JPQLPackage.UNARY_OPERATOR:
+        return convertUnaryOperatorToString(eDataType, instanceValue);
+      case JPQLPackage.ADDITION_OPERATOR:
+        return convertAdditionOperatorToString(eDataType, instanceValue);
+      case JPQLPackage.MULTIPLICATION_OPERATOR:
+        return convertMultiplicationOperatorToString(eDataType, instanceValue);
       case JPQLPackage.COMPARISON_OPERATOR:
         return convertComparisonOperatorToString(eDataType, instanceValue);
       default:
@@ -349,6 +351,17 @@ public class JPQLFactoryImpl extends EFactoryImpl implements JPQLFactory
    * <!-- end-user-doc -->
    * @generated
    */
+  public CountAggregate createCountAggregate()
+  {
+    CountAggregateImpl countAggregate = new CountAggregateImpl();
+    return countAggregate;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public MaxAggregate createMaxAggregate()
   {
     MaxAggregateImpl maxAggregate = new MaxAggregateImpl();
@@ -375,17 +388,6 @@ public class JPQLFactoryImpl extends EFactoryImpl implements JPQLFactory
   {
     SumAggregateImpl sumAggregate = new SumAggregateImpl();
     return sumAggregate;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public CountAggregate createCountAggregate()
-  {
-    CountAggregateImpl countAggregate = new CountAggregateImpl();
-    return countAggregate;
   }
 
   /**
@@ -525,149 +527,6 @@ public class JPQLFactoryImpl extends EFactoryImpl implements JPQLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public ComparisonOperatorExpression createComparisonOperatorExpression()
-  {
-    ComparisonOperatorExpressionImpl comparisonOperatorExpression = new ComparisonOperatorExpressionImpl();
-    return comparisonOperatorExpression;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ExistsExpression createExistsExpression()
-  {
-    ExistsExpressionImpl existsExpression = new ExistsExpressionImpl();
-    return existsExpression;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public AllExpression createAllExpression()
-  {
-    AllExpressionImpl allExpression = new AllExpressionImpl();
-    return allExpression;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public AnyExpression createAnyExpression()
-  {
-    AnyExpressionImpl anyExpression = new AnyExpressionImpl();
-    return anyExpression;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public SomeExpression createSomeExpression()
-  {
-    SomeExpressionImpl someExpression = new SomeExpressionImpl();
-    return someExpression;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public CollectionExpression createCollectionExpression()
-  {
-    CollectionExpressionImpl collectionExpression = new CollectionExpressionImpl();
-    return collectionExpression;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NullComparisonExpression createNullComparisonExpression()
-  {
-    NullComparisonExpressionImpl nullComparisonExpression = new NullComparisonExpressionImpl();
-    return nullComparisonExpression;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EmptyComparisonExpression createEmptyComparisonExpression()
-  {
-    EmptyComparisonExpressionImpl emptyComparisonExpression = new EmptyComparisonExpressionImpl();
-    return emptyComparisonExpression;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public LikeExpression createLikeExpression()
-  {
-    LikeExpressionImpl likeExpression = new LikeExpressionImpl();
-    return likeExpression;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public InExpression createInExpression()
-  {
-    InExpressionImpl inExpression = new InExpressionImpl();
-    return inExpression;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public InSeqExpression createInSeqExpression()
-  {
-    InSeqExpressionImpl inSeqExpression = new InSeqExpressionImpl();
-    return inSeqExpression;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public InQueryExpression createInQueryExpression()
-  {
-    InQueryExpressionImpl inQueryExpression = new InQueryExpressionImpl();
-    return inQueryExpression;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public BetweenExpression createBetweenExpression()
-  {
-    BetweenExpressionImpl betweenExpression = new BetweenExpressionImpl();
-    return betweenExpression;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public Variable createVariable()
   {
     VariableImpl variable = new VariableImpl();
@@ -734,10 +593,10 @@ public class JPQLFactoryImpl extends EFactoryImpl implements JPQLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public IntegerExpression createIntegerExpression()
+  public IntegerLiteral createIntegerLiteral()
   {
-    IntegerExpressionImpl integerExpression = new IntegerExpressionImpl();
-    return integerExpression;
+    IntegerLiteralImpl integerLiteral = new IntegerLiteralImpl();
+    return integerLiteral;
   }
 
   /**
@@ -745,10 +604,10 @@ public class JPQLFactoryImpl extends EFactoryImpl implements JPQLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public StringExpression createStringExpression()
+  public StringLiteral createStringLiteral()
   {
-    StringExpressionImpl stringExpression = new StringExpressionImpl();
-    return stringExpression;
+    StringLiteralImpl stringLiteral = new StringLiteralImpl();
+    return stringLiteral;
   }
 
   /**
@@ -756,10 +615,10 @@ public class JPQLFactoryImpl extends EFactoryImpl implements JPQLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public NullExpression createNullExpression()
+  public NullLiteral createNullLiteral()
   {
-    NullExpressionImpl nullExpression = new NullExpressionImpl();
-    return nullExpression;
+    NullLiteralImpl nullLiteral = new NullLiteralImpl();
+    return nullLiteral;
   }
 
   /**
@@ -767,10 +626,10 @@ public class JPQLFactoryImpl extends EFactoryImpl implements JPQLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public BooleanExpression createBooleanExpression()
+  public BooleanLiteral createBooleanLiteral()
   {
-    BooleanExpressionImpl booleanExpression = new BooleanExpressionImpl();
-    return booleanExpression;
+    BooleanLiteralImpl booleanLiteral = new BooleanLiteralImpl();
+    return booleanLiteral;
   }
 
   /**
@@ -800,6 +659,39 @@ public class JPQLFactoryImpl extends EFactoryImpl implements JPQLFactory
    * <!-- end-user-doc -->
    * @generated
    */
+  public ComparisonOperatorExpression createComparisonOperatorExpression()
+  {
+    ComparisonOperatorExpressionImpl comparisonOperatorExpression = new ComparisonOperatorExpressionImpl();
+    return comparisonOperatorExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public AdditionExpression createAdditionExpression()
+  {
+    AdditionExpressionImpl additionExpression = new AdditionExpressionImpl();
+    return additionExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public MultiplicationExpression createMultiplicationExpression()
+  {
+    MultiplicationExpressionImpl multiplicationExpression = new MultiplicationExpressionImpl();
+    return multiplicationExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public OrderByDirection createOrderByDirectionFromString(EDataType eDataType, String initialValue)
   {
     OrderByDirection result = OrderByDirection.get(initialValue);
@@ -813,6 +705,72 @@ public class JPQLFactoryImpl extends EFactoryImpl implements JPQLFactory
    * @generated
    */
   public String convertOrderByDirectionToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public UnaryOperator createUnaryOperatorFromString(EDataType eDataType, String initialValue)
+  {
+    UnaryOperator result = UnaryOperator.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertUnaryOperatorToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public AdditionOperator createAdditionOperatorFromString(EDataType eDataType, String initialValue)
+  {
+    AdditionOperator result = AdditionOperator.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertAdditionOperatorToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public MultiplicationOperator createMultiplicationOperatorFromString(EDataType eDataType, String initialValue)
+  {
+    MultiplicationOperator result = MultiplicationOperator.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertMultiplicationOperatorToString(EDataType eDataType, Object instanceValue)
   {
     return instanceValue == null ? null : instanceValue.toString();
   }
