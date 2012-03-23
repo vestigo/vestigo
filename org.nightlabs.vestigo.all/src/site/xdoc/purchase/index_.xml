@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 http://maven.apache.org/xsd/xdoc-2.0.xsd">
 
 	<properties>
-		<title>Purchase JJQB</title>
+		<title>Purchase Vestigo</title>
 		<author>Marco หงุ่ยตระกูล-Schulze</author>
 	</properties>
 	
@@ -18,7 +18,7 @@
 
 	<body>
 
-		<section name="Purchase JJQB">
+		<section name="Purchase Vestigo">
 			<p>
 				You should be forwarded to the shop automatically. If you are not, please
 				<a href="https://secure.payproglobal.com/orderpage.aspx?products=87920">click here</a>. 
