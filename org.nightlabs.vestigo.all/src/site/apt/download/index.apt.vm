@@ -20,12 +20,12 @@ Download
 	* {{{http://vestigo.nightlabs.com/${project.version}/download/stand-alone/vestigo-macosx-cocoa-x86_64-${project.version}.tar.gz}Mac OS X/Cocoa 64}}
 
 	* {{{http://vestigo.nightlabs.com/${project.version}/download/stand-alone/vestigo-win32-${project.version}.zip}Windows 32}}
-	
+
 	* {{{http://vestigo.nightlabs.com/${project.version}/download/stand-alone/vestigo-win32-x86_64-${project.version}.zip}Windows 64}}
 
 	[]
 
-* Plug-in
+* {Plug-in}
 
 	If you already use {{{http://www.eclipse.org}Eclipse}} as IDE, you can add the following update-site and install
 	Vestigo as plug-in into your existing IDE: 
