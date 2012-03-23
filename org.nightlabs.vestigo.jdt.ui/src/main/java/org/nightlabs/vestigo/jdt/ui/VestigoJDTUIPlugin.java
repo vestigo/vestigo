@@ -9,12 +9,12 @@ import org.osgi.framework.BundleContext;
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
  */
-public class JJQBJDTUIPlugin extends AbstractUIPlugin
+public class VestigoJDTUIPlugin extends AbstractUIPlugin
 {
 	public static final String BUNDLE_SYMBOLIC_NAME = "org.nightlabs.vestigo.jdt.ui";
 
 	// The shared instance
-	private static JJQBJDTUIPlugin plugin;
+	private static VestigoJDTUIPlugin plugin;
 
 	@Override
 	public void start(BundleContext context) throws Exception {
@@ -33,7 +33,7 @@ public class JJQBJDTUIPlugin extends AbstractUIPlugin
 	 *
 	 * @return the shared instance
 	 */
-	public static JJQBJDTUIPlugin getDefault() {
+	public static VestigoJDTUIPlugin getDefault() {
 		return plugin;
 	}
 
