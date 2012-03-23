@@ -7,9 +7,9 @@
 
 Data source
 
-	A <data source> is a set of coordinates telling JJQB where to find your data and how to understand it.
+	A <data source> is a set of coordinates telling Vestigo where to find your data and how to understand it.
 	If you ever used an SQL query tool, you remember that you had to specify host name, user name, password and
-	similar data. With JJQB, it's the same - you only have to specify a few additional things.
+	similar data. With Vestigo, it's the same - you only have to specify a few additional things.
 
 	When you set up a data source, you give it a name and can then re-use the same data source for every
 	query you wish to run: You can execute every JDO query on every JDO data source; and every JPA query
@@ -19,9 +19,9 @@ Data source
 
 * Classpath
 
-	JJQB starts a {{{./jdo/persistence-manager-factory.html}JDO PersistenceManagerFactory}} or a
+	Vestigo starts a {{{./jdo/persistence-manager-factory.html}JDO PersistenceManagerFactory}} or a
 	{{{./jpa/entity-manager-factory.html}JPA EntityManagerFactory}}. For this to work, you have to
-	tell JJQB where your data model as well as the JDO or JPA implementation (e.g. DataNucleus,
+	tell Vestigo where your data model as well as the JDO or JPA implementation (e.g. DataNucleus,
 	EclipseLink, Hibernate, OpenJPA, etc.) can be found.
 
 	Similar to the "{{{http://en.wikipedia.org/wiki/Classpath_%28Java%29}-classpath}}" argument of the <<<java>>> program,
@@ -29,15 +29,15 @@ Data source
 
 	Note, that you can put {{{http://en.wikipedia.org/wiki/EAR_%28file_format%29}EAR}} or
 	{{{http://en.wikipedia.org/wiki/WAR_file_format_%28Sun%29}WAR}} files into the classpath which contain other libraries.
-	JJQB will automatically include all the nested JARs.
+	Vestigo will automatically include all the nested JARs.
 
 * Persistence unit
 
 	A persistence unit groups (persistent) classes, settings and other meta-data under a name that can be used
 	by the application to tell the JDO/JPA engine with which entities and which database it wants to work.
-	If your data model is accompanied by a persistence unit, you should make JJQB use it.
+	If your data model is accompanied by a persistence unit, you should make Vestigo use it.
 
-	Note, that you can override settings which do not apply to the environment provided by JJQB.
+	Note, that you can override settings which do not apply to the environment provided by Vestigo.
 	See {{Persistence properties}} below.
 
 	See {{{./jdo/persistence-unit.html}JDO persistence unit}} or {{{./jpa/persistence-unit.html}JPA persistence unit}}
@@ -58,7 +58,7 @@ Data source
 	
 	And if your application runs in a managed environment (aka application server like Glassfish, JBoss, Tomcat etc.),
 	the persistence unit likely declares to make use of {{{http://en.wikipedia.org/wiki/Java_Transaction_API}JTA}}.
-	But JTA is not available in JJQB. Thus, you'll have to override this setting with the
+	But JTA is not available in Vestigo. Thus, you'll have to override this setting with the
 	value 'RESOURCE_JOCAL'.
 
 * How to set up a JDO data source
