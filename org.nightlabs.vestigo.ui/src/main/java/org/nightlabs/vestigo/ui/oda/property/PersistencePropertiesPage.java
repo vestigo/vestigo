@@ -25,7 +25,6 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Display;
 import org.nightlabs.vestigo.childvm.shared.PropertiesUtil;
 import org.nightlabs.vestigo.childvm.shared.persistencexml.PersistenceUnitHelper;
 import org.nightlabs.vestigo.childvm.shared.persistencexml.PersistenceXml;
@@ -46,7 +45,6 @@ public abstract class PersistencePropertiesPage extends AbstractDataSourceEditor
 {
 	private static final Logger logger = LoggerFactory.getLogger(PersistencePropertiesPage.class);
 
-	private Display display;
 	private Map<String, PersistenceUnit> persistenceUnitName2persistenceUnit;
 	private EditPropertiesComposite editPropertiesComposite;
 
@@ -101,7 +99,6 @@ public abstract class PersistencePropertiesPage extends AbstractDataSourceEditor
 	{
 		logger.info("createAndInitCustomControl: entered."); //$NON-NLS-1$
 
-		display = parent.getDisplay();
 		editPropertiesComposite = new EditPropertiesComposite(parent, SWT.NONE);
 		editPropertiesComposite.setLayoutData(null);
 
@@ -247,13 +244,42 @@ public abstract class PersistencePropertiesPage extends AbstractDataSourceEditor
 		return (Persistence)o;
 	}
 
+	private boolean isImportingFile = false;
+
+	@Override
+	protected void importCurrentPageFromFile() {
+		assertUIThread();
+		isImportingFile = true;
+		try {
+			super.importCurrentPageFromFile();
+		} finally {
+			isImportingFile = false;
+		}
+	}
+
 	@Override
 	public void setCustomProperties(Properties properties) {
+		assertUIThread();
+
+		Properties persistenceProperties = PropertiesUtil.getProperties(properties, PropertiesUtil.PREFIX_PERSISTENCE);
+
 		String persistenceUnitName = properties.getProperty(PropertiesUtil.PERSISTENCE_UNIT_NAME, ""); //$NON-NLS-1$
-		if (!persistenceUnitName.trim().isEmpty())
+		if (!persistenceUnitName.trim().isEmpty()) {
+			if (isImportingFile) {
+				Properties mergedProperties = new Properties();
+				for (Map.Entry<?, ?> me : collectProperties().entrySet()) {
+					String key = me.getKey().toString();
+					String value = me.getValue().toString();
+					if (!key.startsWith(PropertiesUtil.PREFIX_PERSISTENCE))
+						mergedProperties.setProperty(key, value);
+				}
+				PropertiesUtil.putAll(persistenceProperties, mergedProperties, PropertiesUtil.PREFIX_PERSISTENCE);
+				properties = mergedProperties;
+			}
+
 			searchPersistenceUnitsAsyncInJob(properties);
+		}
 		else {
-			Properties persistenceProperties = PropertiesUtil.getProperties(properties, PropertiesUtil.PREFIX_PERSISTENCE);
 			editPropertiesComposite.setProperties(persistenceProperties);
 		}
 	}

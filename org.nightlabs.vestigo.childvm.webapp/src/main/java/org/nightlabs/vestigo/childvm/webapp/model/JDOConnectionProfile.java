@@ -128,4 +128,9 @@ public class JDOConnectionProfile extends ConnectionProfile
 	protected boolean isQueryableCandidateClass(ClassAnnotationReader classAnnotationReader) {
 		return classAnnotationReader.getClassAnnotations().contains(PersistenceCapable.class.getName());
 	}
+
+	@Override
+	protected String getConnectionDriverName() {
+		return getConnectionProperties().getProperty(PropertiesUtil.PREFIX_PERSISTENCE + "javax.jdo.option.ConnectionDriverName");
+	}
 }

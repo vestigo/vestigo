@@ -154,6 +154,10 @@ public class ConnectionManagerTest {
 					protected boolean isQueryableCandidateClass(ClassAnnotationReader classAnnotationReader) {
 						return false;
 					}
+					@Override
+					protected String getConnectionDriverName() {
+						return null;
+					}
 				};
 			}
 		};

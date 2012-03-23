@@ -13,13 +13,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
-import org.nightlabs.vestigo.childvm.shared.PropertiesUtil;
 import org.nightlabs.progress.NullProgressMonitor;
 import org.nightlabs.progress.OperationCanceledException;
 import org.nightlabs.progress.ProgressMonitor;
 import org.nightlabs.progress.SubProgressMonitor;
 import org.nightlabs.util.IOUtil;
 import org.nightlabs.util.Util;
+import org.nightlabs.vestigo.childvm.shared.PropertiesUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -145,7 +145,7 @@ public class ClassLoaderManager
 						logger.debug("open: adding persistenceEngineClasspathElement: {}", persistenceEngineClasspathElement);
 						persistenceEngineClasspathElement = IOUtil.replaceTemplateVariables(
 								persistenceEngineClasspathElement, getPersistenceEngineClasspathVariables()
-								);
+						);
 						logger.trace("open: resolved persistenceEngineClasspathElement: {}", persistenceEngineClasspathElement);
 
 						if (persistenceEngineClasspathElement.startsWith("http:"))

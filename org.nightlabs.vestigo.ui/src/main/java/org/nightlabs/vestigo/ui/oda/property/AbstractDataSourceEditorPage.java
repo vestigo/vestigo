@@ -21,6 +21,7 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.ui.PlatformUI;
@@ -36,6 +37,7 @@ extends DataSourceEditorPage
 {
 	private static final Logger logger = LoggerFactory.getLogger(AbstractDataSourceEditorPage.class);
 
+	protected Display display;
 	private IDataSourceEditorPageContainer dataSourceEditorPageContainer;
 	private ImageDescriptor imageDescriptor;
 	private Properties initialProperties;
@@ -69,6 +71,12 @@ extends DataSourceEditorPage
 		return dataSourceEditorPageContainer;
 	}
 
+	protected void assertUIThread()
+	{
+		if (display != null && display != Display.getCurrent())
+			throw new IllegalStateException("Thread mismatch! This method must be called on the SWT UI thread!");
+	}
+
 	@Override
 	protected void testConnection() {
 		if (dataSourceEditorPageContainer != null)
@@ -92,6 +100,7 @@ extends DataSourceEditorPage
 
 	@Override
 	public void createControl(Composite parent) {
+		display = parent.getDisplay();
 		super.createControl(parent);
 		PreferencePageSetManager.sharedInstance().register(this);
 
@@ -331,6 +340,8 @@ extends DataSourceEditorPage
 
 	protected void importCurrentPageFromFile()
 	{
+		assertUIThread();
+
 		FileDialog dialog = new FileDialog(getShell(), SWT.OPEN);
 
 		String ext_vestigo = "*.vestigoconnection";

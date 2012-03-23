@@ -104,4 +104,9 @@ public class JPAConnectionProfile extends ConnectionProfile
 		Set<String> classAnnotations = classAnnotationReader.getClassAnnotations();
 		return classAnnotations.contains(Entity.class.getName()) || classAnnotations.contains(MappedSuperclass.class.getName());
 	}
+
+	@Override
+	protected String getConnectionDriverName() {
+		return getConnectionProperties().getProperty(PropertiesUtil.PREFIX_PERSISTENCE + "javax.persistence.jdbc.driver");
+	}
 }

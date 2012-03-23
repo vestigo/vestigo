@@ -19,6 +19,9 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 
+import org.nightlabs.progress.NullProgressMonitor;
+import org.nightlabs.util.IOUtil;
+import org.nightlabs.util.Util;
 import org.nightlabs.vestigo.childvm.shared.PropertiesUtil;
 import org.nightlabs.vestigo.childvm.shared.classloader.ClassLoaderManager;
 import org.nightlabs.vestigo.childvm.shared.dto.ConnectionProfileDTO;
@@ -28,8 +31,6 @@ import org.nightlabs.vestigo.childvm.shared.persistencexml.PersistenceXmlScanner
 import org.nightlabs.vestigo.childvm.shared.persistencexml.jaxb.Persistence;
 import org.nightlabs.vestigo.childvm.shared.persistencexml.jaxb.Persistence.PersistenceUnit;
 import org.nightlabs.vestigo.childvm.webapp.asm.ClassAnnotationReader;
-import org.nightlabs.util.IOUtil;
-import org.nightlabs.util.Util;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -147,6 +148,36 @@ public abstract class ConnectionProfile
 		}
 
 		classLoaderManager.open(connectionProperties);
+		checkConnectionDriverName();
+	}
+
+	protected abstract String getConnectionDriverName();
+
+	protected void checkConnectionDriverName()
+	{
+		String connectionDriverName = getConnectionDriverName();
+		if (connectionDriverName == null || connectionDriverName.isEmpty()) {
+			logger.debug(
+					"[{}].checkConnectionDriverName: No connectionDriverName specified (or not using the standard property). Skipping check.",
+					Long.toHexString(System.identityHashCode(this))
+			);
+			return;
+		}
+
+		try {
+			ClassLoader persistenceEngineClassLoader = classLoaderManager.getPersistenceEngineClassLoader(new NullProgressMonitor());
+			Class<?> connectionDriverClass = Class.forName(connectionDriverName, true, persistenceEngineClassLoader);
+			if (!java.sql.Driver.class.isAssignableFrom(connectionDriverClass)) {
+				// We do *not* throw an exception, because the connection might not be a JDBC connection
+				// (DataNucleus supports e.g. db4o and many other non-JDBC-backends). Thus, we only log a warning.
+				logger.warn(
+						"[{}].checkConnectionDriverName: {} does not implement {}!",
+						new Object[] { Long.toHexString(System.identityHashCode(this)), connectionDriverName, java.sql.Driver.class.getName() }
+				);
+			}
+		} catch (Throwable e) {
+			logger.warn("[" + Long.toHexString(System.identityHashCode(this)) + "].checkConnectionDriverName: " + e, e);
+		}
 	}
 
 	private void initSyntheticPersistenceUnit()
@@ -214,6 +245,14 @@ public abstract class ConnectionProfile
 		marshaller.setProperty("jaxb.formatted.output", Boolean.TRUE);
 		marshaller.marshal(newPersistence, persistenceXmlFile);
 
+		if (logger.isDebugEnabled()) {
+			String syntheticPersistenceXmlText = IOUtil.readTextFile(persistenceXmlFile).trim();
+			logger.debug(
+					"[{}].initSyntheticPersistenceUnit: \n********************\n{}\n********************",
+					Long.toHexString(System.identityHashCode(this)), syntheticPersistenceXmlText
+			);
+		}
+
 		classLoaderManager.getPersistenceEngineOverlayClasspathURLList().clear();
 		classLoaderManager.getPersistenceEngineOverlayClasspathURLList().add(classpathDir.toURI().toURL());
 	}
@@ -271,17 +310,7 @@ public abstract class ConnectionProfile
 	}
 
 	protected Map<String, String> filterPersistenceProperties(Map<?, ?> rawPersistenceProperties) {
-		return PropertiesUtil.filterProperties(rawPersistenceProperties);
-//		Map<String, String> filteredPersistenceProperties = new HashMap<String, String>();
-//		for (Map.Entry<?, ?> me : rawPersistenceProperties.entrySet()) {
-//			String key = String.valueOf(me.getKey());
-//			String value = String.valueOf(me.getValue());
-//			if (PropertiesUtil.NULL_VALUE.equals(value))
-//				value = null;
-//
-//			filteredPersistenceProperties.put(key, value);
-//		}
-//		return filteredPersistenceProperties;
+		return PropertiesUtil.filterProperties(rawPersistenceProperties, System.getProperties());
 	}
 
 	protected void collectQueryableCandidateClassesInDirectory(Collection<String> classes, ClassLoader classLoader, File classpathDirectory) throws IOException

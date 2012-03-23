@@ -31,17 +31,16 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.widgets.Hyperlink;
+import org.nightlabs.progress.OperationCanceledException;
 import org.nightlabs.vestigo.childvm.shared.PropertiesUtil;
 import org.nightlabs.vestigo.childvm.shared.persistencexml.PersistenceXml;
 import org.nightlabs.vestigo.childvm.shared.persistencexml.PersistenceXmlScanner;
 import org.nightlabs.vestigo.childvm.shared.persistencexml.jaxb.Persistence.PersistenceUnit;
 import org.nightlabs.vestigo.core.connectionpropertiesfilter.ConnectionPropertiesFilterManager;
 import org.nightlabs.vestigo.core.progress.ProgressMonitorWrapper;
-import org.nightlabs.progress.OperationCanceledException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -65,7 +64,6 @@ public abstract class PersistenceUnitPage extends AbstractDataSourceEditorPage
 
 	private static final Logger logger = LoggerFactory.getLogger(PersistenceUnitPage.class);
 
-	private Display display;
 	private Text persistenceUnitNameText;
 	private ListViewer persistenceUnitNamesList;
 	private Map<String, List<PersistenceUnitRef>> persistenceUnitName2PersistenceUnitRefs = new HashMap<String, List<PersistenceUnitRef>>();
@@ -109,8 +107,6 @@ public abstract class PersistenceUnitPage extends AbstractDataSourceEditorPage
 	protected void createCustomControl(final Composite p)
 	{
 		logger.info("createAndInitCustomControl: entered.");
-
-		display = p.getDisplay();
 
 		final Composite parent = new Composite(p, SWT.NONE);
 		GridLayout gridLayout = new GridLayout();
@@ -210,7 +206,10 @@ public abstract class PersistenceUnitPage extends AbstractDataSourceEditorPage
 	public void setCustomProperties(Properties properties) {
 		persistenceUnitNameText.setText(properties.getProperty(PropertiesUtil.PERSISTENCE_UNIT_NAME, ""));
 
-		boolean puSyntheticOverride = Boolean.parseBoolean(properties.getProperty(PropertiesUtil.PERSISTENCE_UNIT_SYNTHETIC_OVERRIDE));
+		// Default for 'syntheticOverride' is true now, because OpenJPA and Hibernate don't accept null values.
+		// Only DataNucleus accepts null. DN rules! Marco :-)
+		String puSyntheticOverrideStr = properties.getProperty(PropertiesUtil.PERSISTENCE_UNIT_SYNTHETIC_OVERRIDE);
+		boolean puSyntheticOverride = puSyntheticOverrideStr == null ? true : Boolean.parseBoolean(puSyntheticOverrideStr);
 		syntheticOverrideCheckBox.setSelection(puSyntheticOverride);
 	}
 
