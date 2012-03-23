@@ -30,14 +30,19 @@ Download
 	If you already use {{{http://www.eclipse.org}Eclipse}} as IDE, you can add the following update-site and install
 	Vestigo as plug-in into your existing IDE: 
 
-	<<{{http://vestigo.nightlabs.com/${project.version}/download/p2}}>>
+	<<{{http://vestigo.nightlabs.com/updates/releases}}>>
 
-	If you did not install {{{http://www.eclipse.org/Xtext/}Xtext}}, yet, you'll have to additionally register the
-	following update-site, before you can install Vestigo:
-
-	<<{{http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/}}>>
-
-	You do not need to manually select and install any Xtext feature. It is sufficient to add the update-site-URL - the
-	installation process will automatically install all required dependencies.
+~~	If you did not install {{{http://www.eclipse.org/Xtext/}Xtext}}, yet, you'll have to additionally register the
+~~	following update-site, before you can install Vestigo:
+~~
+~~	<<{{http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/}}>>
+~~
+~~	You do not need to manually select and install any Xtext feature. It is sufficient to add the update-site-URL - the
+~~	installation process will automatically install all required dependencies.
 
 	For a {{{./how-to-install-the-plug-in.html}step-by-step installation-how-to please click here}}.
+
+	If you're adventurous, you might want to try out a development-snapshot. But be warned, the snapshots might not work
+	and we do not provide any support for them. The update-site for snapshots is:
+
+	<<{{http://vestigo.nightlabs.com/updates/releases}}>>
