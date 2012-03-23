@@ -14,7 +14,7 @@ header("Location: https://secure.payproglobal.com/orderpage.aspx?products=87920"
     <meta name="author" content="Marco หงุ่ยตระกูล-Schulze" />
     <meta name="Date-Revision-yyyymmdd" content="20120216" />
     <meta http-equiv="Content-Language" content="en" />
-    <title>JDO/JPA Query Browser (JJQB) - Purchase JJQB</title>
+    <title>Vestigo - JDO/JPA Query Browser - Purchase</title>
   </head>
   <body>
     You should be forwarded to the shop automatically. If you are not, please
