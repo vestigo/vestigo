@@ -10,8 +10,8 @@ JDO/JPA-Query-Browser
 * Befragen Sie Ihre Objekt-Datenbank!
 
 	Sind Sie es leid, <<SQL>>-Tabellen zu durchsuchen, obwohl Sie ein <<Objekt>>-Datenmodell verwenden?
-	Benutzen Sie JJQB, um Ihre Datenbank <<auf der Objekt-Ebene>> abzufragen!
+	Benutzen Sie Vestigo, um Ihre Datenbank <<auf der Objekt-Ebene>> abzufragen!
 
 * Probieren Sie JDO/JPA-Abfragen!
 
-	Sie müssen eine Abfrage für Ihre Applikation schreiben? Probieren Sie sie zunächst in JJQB aus!
+	Sie müssen eine Abfrage für Ihre Applikation schreiben? Probieren Sie sie zunächst in Vestigo aus!
