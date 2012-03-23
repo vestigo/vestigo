@@ -25,8 +25,8 @@ public class PropertiesUtil extends org.nightlabs.util.PropertiesUtil
 	protected PropertiesUtil() { }
 
 	/**
-	 * Prefix for properties that that are used by JJQB itself.
-	 * These are used by JJQB to manage the connection (e.g. to know which classpath is required
+	 * Prefix for properties that that are used by Vestigo itself.
+	 * These are used by Vestigo to manage the connection (e.g. to know which classpath is required
 	 * for the JDO/JPA implementation) and not passed to the persistence implementation itself.
 	 */
 	public static final String PREFIX_META = "meta.";

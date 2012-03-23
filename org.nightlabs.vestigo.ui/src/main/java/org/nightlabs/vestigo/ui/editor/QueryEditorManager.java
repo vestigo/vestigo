@@ -49,6 +49,8 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
+import org.nightlabs.util.IOUtil;
+import org.nightlabs.util.Stopwatch;
 import org.nightlabs.vestigo.childvm.shared.PropertiesUtil;
 import org.nightlabs.vestigo.core.PropertiesWithChangeSupport;
 import org.nightlabs.vestigo.core.oda.ConnectionProfile;
@@ -62,8 +64,6 @@ import org.nightlabs.vestigo.ui.queryparam.QueryParameter;
 import org.nightlabs.vestigo.ui.queryparam.QueryParameterManager;
 import org.nightlabs.vestigo.ui.resultsettable.ResultSetTableModel;
 import org.nightlabs.vestigo.ui.resultsettable.ResultSetTableView;
-import org.nightlabs.util.IOUtil;
-import org.nightlabs.util.Stopwatch;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -436,11 +436,11 @@ public abstract class QueryEditorManager
 		public volatile IStatus status;
 	}
 
-	public ConnectionProfile getJJQBConnectionProfileAskingUserIfNecessary()
+	public ConnectionProfile getVestigoConnectionProfileAskingUserIfNecessary()
 	{
 		assertUIThread();
 		final IConnectionProfile odaConnectionProfile = getODAConnectionProfile();
-		ConnectionProfile vestigoConnectionProfile = getJJQBConnectionProfile();
+		ConnectionProfile vestigoConnectionProfile = getVestigoConnectionProfile();
 		if (vestigoConnectionProfile  == null) {
 			Shell parentShell = display.getActiveShell();
 			if (odaConnectionProfile == null) {
@@ -454,7 +454,7 @@ public abstract class QueryEditorManager
 				Job openJob = new Job("Opening connection") {
 					@Override
 					protected IStatus run(IProgressMonitor monitor) {
-						logger.info("getJJQBConnectionProfileAskingUserIfNecessary.openJob.run: odaConnectionProfile.name={} odaConnectionProfile.idHashCode={}", odaConnectionProfile.getName(), Integer.toHexString(System.identityHashCode(odaConnectionProfile)));
+						logger.info("getVestigoConnectionProfileAskingUserIfNecessary.openJob.run: odaConnectionProfile.name={} odaConnectionProfile.idHashCode={}", odaConnectionProfile.getName(), Integer.toHexString(System.identityHashCode(odaConnectionProfile)));
 						try {
 							IManagedConnection managedConnection = OdaUtil.getManagedConnection(odaConnectionProfile);
 							if (!managedConnection.isConnected())
@@ -490,15 +490,15 @@ public abstract class QueryEditorManager
 						throw new RuntimeException("Opening connection failed: " + status);
 				}
 
-				vestigoConnectionProfile = getJJQBConnectionProfile();
+				vestigoConnectionProfile = getVestigoConnectionProfile();
 				if (vestigoConnectionProfile == null)
-					throw new IllegalStateException("Even after opening the connection, queryEditorManager.getJJQBConnectionProfile() returned null!");
+					throw new IllegalStateException("Even after opening the connection, queryEditorManager.getVestigoConnectionProfile() returned null!");
 			}
 		}
 		return vestigoConnectionProfile;
 	}
 
-	public ConnectionProfile getJJQBConnectionProfile()
+	public ConnectionProfile getVestigoConnectionProfile()
 	{
 		IConnectionProfile odaConnectionProfile = getODAConnectionProfile();
 		if (odaConnectionProfile == null)

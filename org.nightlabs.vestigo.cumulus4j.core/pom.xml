@@ -107,7 +107,7 @@
 				-->
 				<!-- We currently do not need any bundle-activator/eclipse-plugin-class. Marco :-)
 					<instructions>
-						<Bundle-Activator>org.nightlabs.vestigo.cumulus4j.core.JJQBCumulus4jCorePlugin</Bundle-Activator>
+						<Bundle-Activator>org.nightlabs.vestigo.cumulus4j.core.VestigoCumulus4jCorePlugin</Bundle-Activator>
 						<Bundle-ActivationPolicy>lazy</Bundle-ActivationPolicy>
 					</instructions>
 				-->

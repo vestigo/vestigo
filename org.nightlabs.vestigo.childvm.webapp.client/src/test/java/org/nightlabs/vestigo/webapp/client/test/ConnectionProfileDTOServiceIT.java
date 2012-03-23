@@ -18,7 +18,7 @@ import org.nightlabs.vestigo.childvm.shared.dto.JPAConnectionProfileDTO;
  * @author Alexander Bieber <!-- alex [AT] nightlabs [DOT] de -->
  *
  */
-public class ConnectionProfileDTOServiceIT extends AbstractJJQBIT {
+public class ConnectionProfileDTOServiceIT extends AbstractVestigoIT {
 
 	public ConnectionProfileDTOServiceIT() {
 	}

@@ -19,7 +19,7 @@ import org.nightlabs.vestigo.childvm.webapp.client.testresources.TestResourcesUt
 import org.nightlabs.vestigo.childvm.webapp.client.testresources.sql.AbstractSetup;
 import org.nightlabs.vestigo.childvm.webapp.client.testresources.sql.HSQLSetup;
 
-public class JDOConnectionIT extends AbstractJJQBIT {
+public class JDOConnectionIT extends AbstractVestigoIT {
 	
 	private static final String JDO_DN_WITH_TESTMODEL_PROPERTIES = "jdo-dn-with-testmodel.properties";
 	private static final String JDO_DN_STARTUP_ONLY_PROPERTIES = "jdo-dn-startup-only.properties";

@@ -25,7 +25,7 @@ public class JDOQLProposalProvider extends AbstractJDOQLProposalProvider
 		super.complete_CandidateClassName(model, ruleCall, context, acceptor);
 
 		QueryEditorManager queryEditorManager = DocumentContextManager.sharedInstance().getQueryEditorManager(context.getDocument(), true);
-		ConnectionProfile vestigoConnectionProfile = queryEditorManager.getJJQBConnectionProfileAskingUserIfNecessary();
+		ConnectionProfile vestigoConnectionProfile = queryEditorManager.getVestigoConnectionProfileAskingUserIfNecessary();
 		if (vestigoConnectionProfile != null) {
 			SortedSet<String> classes = vestigoConnectionProfile.getQueryableCandidateClasses();
 			for (String className : classes)

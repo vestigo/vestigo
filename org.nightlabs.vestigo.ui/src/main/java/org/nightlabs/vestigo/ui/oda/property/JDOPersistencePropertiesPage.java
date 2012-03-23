@@ -11,7 +11,7 @@ public class JDOPersistencePropertiesPage extends PersistencePropertiesPage {
 				"can override its settings here.\n\n" +
 				"" +
 				"For example you should override 'javax.jdo.option.TransactionType' and set it " +
-				"to 'RESOURCE_LOCAL', if your persistence unit declares it to use 'JTA' ('JTA' does not work in JJQB).\n\n" +
+				"to 'RESOURCE_LOCAL', if your persistence unit declares it to use 'JTA' ('JTA' does not work in Vestigo).\n\n" +
 				"" +
 				"Additionally, you very likely have to set 'javax.jdo.option.ConnectionURL', 'javax.jdo.option.ConnectionUserName', " +
 				"'javax.jdo.option.ConnectionPassword' and the like to make your database " +

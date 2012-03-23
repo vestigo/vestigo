@@ -335,7 +335,7 @@ extends DataSourceEditorPage
 
 		String ext_vestigo = "*.vestigoconnection";
 		String ext_all = "*.*";
-		dialog.setFilterNames(new String[] { String.format("JJQB connection files (%s)", ext_vestigo), String.format("All filed (%s)", ext_all) });
+		dialog.setFilterNames(new String[] { String.format("Vestigo connection files (%s)", ext_vestigo), String.format("All filed (%s)", ext_all) });
 		dialog.setFilterExtensions(new String[] { ext_vestigo, ext_all });
 
 		String fileName = dialog.open();

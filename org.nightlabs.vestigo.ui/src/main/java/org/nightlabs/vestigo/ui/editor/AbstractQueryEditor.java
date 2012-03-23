@@ -34,7 +34,7 @@ implements QueryEditor
 	private QueryEditorManager queryEditorManager;
 	private QueryEditorManagerComposite queryEditorManagerComposite;
 	private Composite queryEditorComposite;
-	private JJQBDocumentProvider documentProvider;
+	private VestigoDocumentProvider documentProvider;
 
 	protected abstract QueryEditorManager createQueryEditorManager();
 
@@ -42,7 +42,7 @@ implements QueryEditor
 	public synchronized IDocumentProvider getDocumentProvider()
 	{
 		if (documentProvider == null) {
-				documentProvider = new JJQBDocumentProvider(this);
+				documentProvider = new VestigoDocumentProvider(this);
 				getInjector().injectMembers(documentProvider);
 		}
 		return documentProvider;

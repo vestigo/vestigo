@@ -11,13 +11,13 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.xtext.ui.editor.model.XtextDocumentProvider;
 import org.nightlabs.util.IOUtil;
 
-public class JJQBDocumentProvider extends XtextDocumentProvider
+public class VestigoDocumentProvider extends XtextDocumentProvider
 {
 	private Display display;
 	private QueryEditor queryEditor;
 	private boolean dirty = false;
 
-	public JJQBDocumentProvider(QueryEditor queryEditor)
+	public VestigoDocumentProvider(QueryEditor queryEditor)
 	{
 		if (queryEditor == null)
 			throw new IllegalArgumentException("queryEditor == null");

@@ -51,7 +51,7 @@ public class ChildVMPreferencePage extends FieldEditorPreferencePage implements 
 
 	@Override
 	public void createControl(Composite parent) {
-		setTitle("JJQB Child VM");
+		setTitle("Vestigo Child VM");
 		super.createControl(parent);
 	}
 

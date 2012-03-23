@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde version="3.6"?>
 
-<target name="JJQB" sequenceNumber="17">
+<target name="Vestigo" sequenceNumber="17">
 <locations>
 <location path="${workspace_loc}/org.nightlabs.vestigo.assembly.linux-gtk-x86_64/target/assembly/eclipse" type="Directory"/>
 <location path="${workspace_loc}/org.nightlabs.vestigo.assembly.linux-gtk-x86_64/target/assembly/eclipse/dropins" type="Directory"/>

@@ -21,11 +21,11 @@ import org.nightlabs.vestigo.ui.resource.Messages;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class JJQBCategoryPreferencePage extends PreferencePage implements IWorkbenchPreferencePage
+public class VestigoCategoryPreferencePage extends PreferencePage implements IWorkbenchPreferencePage
 {
-	private static final Logger logger = LoggerFactory.getLogger(JJQBCategoryPreferencePage.class);
+	private static final Logger logger = LoggerFactory.getLogger(VestigoCategoryPreferencePage.class);
 
-	public JJQBCategoryPreferencePage() {
+	public VestigoCategoryPreferencePage() {
 		setDescription("Expand the tree to edit preferences for a specific feature.");
 	}
 
@@ -35,7 +35,7 @@ public class JJQBCategoryPreferencePage extends PreferencePage implements IWorkb
 
 	@Override
 	protected Control createContents(Composite p) {
-		setTitle("JJQB - JDO/JPA Query Browser");
+		setTitle("Vestigo - JDO/JPA Query Browser");
 
 		Composite parent = createContentsParent(p);
 

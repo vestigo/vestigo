@@ -15,7 +15,7 @@ import org.nightlabs.vestigo.childvm.shared.dto.ConnectionProfileDTO;
 import org.nightlabs.vestigo.childvm.webapp.client.ChildVMWebappClient;
 import org.nightlabs.vestigo.childvm.webapp.client.testresources.sql.AbstractSetup;
 
-public class AbstractJJQBIT {
+public class AbstractVestigoIT {
 
 	protected ChildVM client;
 	protected Map<AbstractSetup, String> setups = new HashMap<AbstractSetup, String>();

@@ -497,14 +497,14 @@
 
 	<extension point="org.eclipse.ui.preferencePages">
 		<page
-        class="org.nightlabs.vestigo.ui.preference.JJQBCategoryPreferencePage"
-        id="org.nightlabs.vestigo.ui.preference.JJQBCategoryPreferencePage"
-        name="JJQB">
+        class="org.nightlabs.vestigo.ui.preference.VestigoCategoryPreferencePage"
+        id="org.nightlabs.vestigo.ui.preference.VestigoCategoryPreferencePage"
+        name="Vestigo">
 		</page>
 	</extension>
 	<extension point="org.eclipse.ui.preferencePages">
 		<page
-        category="org.nightlabs.vestigo.ui.preference.JJQBCategoryPreferencePage"
+        category="org.nightlabs.vestigo.ui.preference.VestigoCategoryPreferencePage"
         class="org.nightlabs.vestigo.ui.licence.LicencePreferencePage"
         id="org.nightlabs.vestigo.ui.licence.LicencePreferencePage"
         name="Licence">
@@ -512,7 +512,7 @@
 	</extension>
 	<extension point="org.eclipse.ui.preferencePages">
 		<page
-		category="org.nightlabs.vestigo.ui.preference.JJQBCategoryPreferencePage"
+		category="org.nightlabs.vestigo.ui.preference.VestigoCategoryPreferencePage"
 		class="org.nightlabs.vestigo.ui.childvm.ChildVMPreferencePage"
 		id="org.nightlabs.vestigo.ui.childvm.ChildVMPreferencePage"
 		name="ChildVM">
@@ -539,7 +539,7 @@
           finalPerspective="org.nightlabs.vestigo.ui.VestigoPerspective"
           icon="icons/org.nightlabs.vestigo.ui.newwizard/NewProjectWizard.16x16.png"
           id="org.nightlabs.vestigo.ui.newwizard.NewProjectWizard"
-          name="JJQB project"
+          name="Vestigo project"
           project="true">
     </wizard>
     <wizard
@@ -549,7 +549,7 @@
           finalPerspective="org.nightlabs.vestigo.ui.VestigoPerspective"
           icon="icons/org.nightlabs.vestigo.ui.newwizard/NewQueryWizard.16x16.png"
           id="org.nightlabs.vestigo.ui.newwizard.NewQueryWizard"
-          name="JJQB query">
+          name="Vestigo query">
     </wizard>
     <primaryWizard id="org.nightlabs.vestigo.ui.newwizard.NewProjectWizard" />
     <primaryWizard id="org.nightlabs.vestigo.ui.newwizard.NewQueryWizard" />
