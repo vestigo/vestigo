@@ -13,33 +13,19 @@ How to install the Vestigo plug-in
 
 [../images/how-to-install-the-plug-in/10.png]
 
-* Enter the Xtext update-site URL
+* Enter Vestigo's update-site URL
 
-	Enter the URL of Xtext's update-site and press the <Add...> button.
+	Enter the URL of Vestigo's update-site and press the <Add...> button.
 	
-	<<{{http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/}}>>
+	<<{{http://vestigo.nightlabs.com/updates/releases/}}>>
 
 [../images/how-to-install-the-plug-in/20.png]
 
-* Add the Xtext update-site
+* Add the Vestigo update-site
 
 	Give the update-site a nice name and press <OK>.
 
 [../images/how-to-install-the-plug-in/30.png]
-
-* Enter the Vestigo update-site URL
-
-	Repeat the same for the Vestigo update-site-URL: Enter it into the <Work with> text field and press <Add...>.
-
-	<<{{http://vestigo.nightlabs.com/${project.version}/download/p2}}>>
-
-[../images/how-to-install-the-plug-in/40.png]
-
-* Add the Vestigo update-site
-
-	In the following dialog, you should give the update-site a nice name and press <OK>.
-
-[../images/how-to-install-the-plug-in/50.png]
 
 * Select the desired features
 
@@ -47,11 +33,11 @@ How to install the Vestigo plug-in
 	screenshot below or choose individual features. If you don't know what features you need, then simply add
 	all.
 
-[../images/how-to-install-the-plug-in/60.png]
+[../images/how-to-install-the-plug-in/40.png]
 
 * Finish the wizard and restart Eclipse
 
 	Click a few times <Next> and then <Finish> to complete the installation process. You'll have to
-	accept the licences and answer all other questions Eclipse asks you.
+	accept the licences and answer some questions Eclipse will ask you.
 
 	Finally restart Eclipse.
