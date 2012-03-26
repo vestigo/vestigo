@@ -1,0 +1,39 @@
+	---
+	JPA persistence properties
+	---
+	Marco หงุ่ยตระกูล-Schulze
+	---
+	2012-02-16
+
+JPA persistence properties
+
+	In order to start up an <<<EntityManagerFactory>>> you need to specify a configuration (e.g. with which
+	database server to communicate and with which user-name + password to authenticate). Most of these settings
+	are usually specified in the persistence unit. However, you might want to override
+	settings declared there with a wrong or undesired value; or add missing ones.
+
+	Some properties that usually have to be specified are:
+
+	* <<javax.persistence.provider>>: Needs to be specified only, if there are multiple JPA implementations
+	in the classpath.
+
+	* <<javax.persistence.jdbc.driver>>: The fully qualified class name of your JDBC driver, if you use JDBC.
+	Since Java 6, this is optional, because JDBC drivers are now found by the JavaSE
+	{{{http://docs.oracle.com/javase/6/docs/technotes/guides/jar/jar.html#Service%20Provider}Service Provider}} mechanism.
+
+	* <<javax.persistence.jdbc.url>>: An URL telling your JDO implementation where to find your data. This is highly
+	dependent on the database system you use. Here's an example URL for JDBC with MySQL:
+	<<<jdbc:mysql://myhost.mycompany.com/my_database?useLegacyDatetimeCode=false&serverTimezone=UTC>>>
+
+	* <<javax.persistence.jdbc.user>>: The user name to authenticate at your database server.
+
+	* <<javax.persistence.jdbc.password>>: The password to authenticate at your database server.
+
+	* <<javax.persistence.transactionType>>: This <<must>> be <<<RESOURCE_LOCAL>>> or <<<null>>> (i.e. not specified at all
+	or explicitly overridden with a <<<null>>> value).
+
+	[]
+
+	Please consult {{{http://www.datanucleus.org/products/accessplatform_3_0/jpa/emf.html}JPA : EntityManagerFactory}}
+	on the DataNucleus web-site or the appropriate documentation of your JPA implementation for further information
+	about what you can/must specify here. 

@@ -28,22 +28,26 @@ import org.nightlabs.vestigo.jdt.core.ProjectURI;
 
 public class ResolveClasspathContainersConnectionPropertiesFilter extends AbstractConnectionPropertiesFilter
 {
-	protected IWorkspaceRoot workspaceRoot;
+	protected IWorkspaceRoot workspaceRoot = ResourcesPlugin.getWorkspace().getRoot();
+	// There is one instance of this class per filtering-process, hence we can savely store the collected
+	// URLs here in object-fields. Marco :-)
+	protected List<URL> urlList;
+	protected Set<String> urlStringSet;
 
 	@Override
 	public void filter(Properties connectionProperties)
 	{
-		workspaceRoot = ResourcesPlugin.getWorkspace().getRoot();
-
 		List<String> persistenceEngineClasspathStringList = PropertiesUtil.getList(connectionProperties, PropertiesUtil.PREFIX_META_PERSISTENCE_ENGINE_CLASSPATH);
 		Map<String, List<String>> replaceClasspathEntries = new HashMap<String, List<String>>();
+
+		urlStringSet = new HashSet<String>(); // used to ignore duplicates in the resolved classpath (shared by all input-classpath-elements).
 
 		for (String peClasspathEntry : persistenceEngineClasspathStringList) {
 			if (!peClasspathEntry.startsWith(ProjectURI.SCHEME_PREFIX))
 				continue;
 
 			if (replaceClasspathEntries.containsKey(peClasspathEntry))
-				continue; // ignore duplicates
+				continue; // ignore duplicates in the declared classpath
 
 			List<String> newClasspathEntries = new LinkedList<String>();
 			replaceClasspathEntries.put(peClasspathEntry, newClasspathEntries);
@@ -51,9 +55,11 @@ public class ResolveClasspathContainersConnectionPropertiesFilter extends Abstra
 				ProjectURI projectURI = new ProjectURI(new URI(peClasspathEntry));
 				IProject project = workspaceRoot.getProject(projectURI.getProjectName());
 				IJavaProject javaProject = JavaCore.create(project);
-				List<URL> urls = new LinkedList<URL>();
-				populateClasspathURLs(urls, javaProject);
-				for (URL url : urls) {
+
+				urlList = new LinkedList<URL>(); // use a new list for each input-classpath-element.
+				populateClasspathURLs(javaProject);
+
+				for (URL url : urlList) {
 					newClasspathEntries.add(url.toString());
 				}
 			} catch (URISyntaxException x) {
@@ -92,7 +98,7 @@ public class ResolveClasspathContainersConnectionPropertiesFilter extends Abstra
 		PropertiesUtil.putList(persistenceEngineClasspathStringList, connectionProperties, PropertiesUtil.PREFIX_META_PERSISTENCE_ENGINE_CLASSPATH);
 	}
 
-	protected void populateClasspathURLs(List<URL> urls, IJavaProject javaProject)
+	protected void populateClasspathURLs(IJavaProject javaProject)
 	{
 		try {
 			IClasspathEntry[] resolvedClasspath = javaProject.getResolvedClasspath(true);
@@ -113,14 +119,16 @@ public class ResolveClasspathContainersConnectionPropertiesFilter extends Abstra
 						if (!file.exists())
 							throw new IllegalStateException("File exists neither relative to workspace-root, nor absolute: " + classpathEntry.getPath());
 
-						urls.add(file.toURI().toURL());
+						URL url = file.toURI().toURL();
+						if (urlStringSet.add(url.toExternalForm()))
+							urlList.add(url);
 						break;
 					}
 					case IClasspathEntry.CPE_PROJECT: {
 						String projectName = classpathEntry.getPath().segment(0);
 						IProject otherProject = workspaceRoot.getProject(projectName);
 						IJavaProject otherJavaProject = JavaCore.create(otherProject);
-						populateClasspathURLs(urls, otherJavaProject);
+						populateClasspathURLs(otherJavaProject);
 					}
 					case IClasspathEntry.CPE_SOURCE: {
 						IPath outputLocation = classpathEntry.getOutputLocation();
@@ -129,7 +137,9 @@ public class ResolveClasspathContainersConnectionPropertiesFilter extends Abstra
 
 						// is always relative to the workspace root
 						IPath path = workspaceRoot.getFile(outputLocation).getRawLocation();
-						urls.add(path.toFile().toURI().toURL());
+						URL url = path.toFile().toURI().toURL();
+						if (urlStringSet.add(url.toExternalForm()))
+							urlList.add(url);
 						break;
 					}
 					case IClasspathEntry.CPE_VARIABLE: {

@@ -17,7 +17,7 @@ Data source
 	
 	A data source consists of the following coordinates:
 
-* Classpath
+* {Classpath}
 
 	Vestigo starts a {{{./jdo/persistence-manager-factory.html}JDO PersistenceManagerFactory}} or a
 	{{{./jpa/entity-manager-factory.html}JPA EntityManagerFactory}}. For this to work, you have to
@@ -26,42 +26,87 @@ Data source
 
 	Similar to the "{{{http://en.wikipedia.org/wiki/Classpath_%28Java%29}-classpath}}" argument of the <<<java>>> program,
 	you specify a list of {{{http://en.wikipedia.org/wiki/JAR_%28file_format%29}JAR files}} and "classes"-directories.
+	
+	Here's what you can add to the classpath:
 
-	Note, that you can put {{{http://en.wikipedia.org/wiki/EAR_%28file_format%29}EAR}} or
-	{{{http://en.wikipedia.org/wiki/WAR_file_format_%28Sun%29}WAR}} files into the classpath which contain other libraries.
-	Vestigo will automatically include all the nested JARs. Even ZIP files are supported making it possible to reference
-	an entire application archive.
+** "classes"-directories
 
-	Furthermore, you can add a project from your Eclipse workspace (if you have the JDT integration installed). Vestigo resolves
-	project references recursively, hence you normally only need to add one single project - the top-level-project (assembly).
-	However, if your data model is modular and there is no single top-level-project, you may add as many projects as you want.
+	A "classes"-directory is the root of the Java-package-directory graph containing <<<.class>>> files.
 
-	Last but not least, you can add all archives found in a directory - either flat (one single directory only) or fully recursive
-	(including all sub-directories). This is done using the suffix "/*" or "/**/*" respectively. Note that this notation
+** Libraries (JAR files)
+
+	Java libraries are usually packaged as {{{http://en.wikipedia.org/wiki/JAR_%28file_format%29}JAR files}}. Of course,
+	Vestigo supports them in the classpath of a data source.
+
+** Web applications (WAR files)
+
+	A web application is usually packaged in a {{{http://en.wikipedia.org/wiki/WAR_file_format_%28Sun%29}WAR file}}. Vestigo
+	supports both the classes in the <<<WEB-INF/classes>>> directory inside the WAR and the libraries inside the <<<WEB-INF/lib>>>
+	directory (i.e. JARs nested inside the WAR file).
+
+** Container archives (EAR, RAR, SAR, ZIP) 
+
+	You can put {{{http://en.wikipedia.org/wiki/EAR_%28file_format%29}EAR}}, RAR, SAR or
+	{{{http://en.wikipedia.org/wiki/Zip_%28file_format%29}ZIP files}} containing
+	other libraries. Vestigo will automatically include all the nested JARs. Note, that recursive nesting is supported.
+
+** All archives in a directory
+
+	You can add all archives (EAR, JAR, ...) found in a directory - either flat (one single directory only) or fully recursive
+	(including all sub-directories). This is done by using the suffix "/*" or "/**/*" respectively. Note that this notation
 	does not include "classes"-directories but only archives contained in this directory. "classes"-directories always have to be
 	specified individually.
 
-	Example:
+** Java projects
 
-	[[1]] <file:${user.home}/someWorkspace/projectA/bin>
+	If you have the Vestigo-{{{http://www.eclipse.org/jdt/}JDT}}-integration installed, you can add a project from your
+	Eclipse workspace. Vestigo resolves
+	project references recursively (i.e. with transitive dependencies), hence you normally only need to add one single
+	project: the top-level project (assembly).
+	However, if your data model is modular and there is no single top-level project, you may add as many projects as you want.
 
-	[[1]] <file:${user.home}/someWorkspace/projectB/classes>
+** Classpath variables
 
-	[[1]] <file:${user.home}/someApplicationServer/deploy/*>
+	You can use variables inside the classpath-elements using the syntax "$\{VARIABLE}" as you are used from Ant or Maven.
+	Besides all system properties (e.g. <<<$\{user.home}>>> or <<<$\{java.io.tmpdir}>>>), the variable
+	<<<$\{maven.localRepository}>>> is supported (it is equivalent to <<<$\{user.home}/.m2/repository>>>).
 
-	[[1]] <file:${maven.localRepository}/org/nightlabs/**/*>
+** Example:
+
+	[[1]] <<<file:$\{user.home}/someWorkspace/projectA/bin>>>
+
+	[[1]] <<<file:$\{user.home}/someWorkspace/projectB/target/classes/>>>
+
+	[[1]] <<<file:$\{user.home}/someWorkspace/projectB/lib/SomeLibrary.jar>>>
+
+	[[1]] <<<file:$\{user.home}/someApplicationServer/deploy/*>>>
+
+	[[1]] <<<file:$\{maven.localRepository}/org/nightlabs/**/*>>>
+
+	[[1]] <<<project:com.mycompany.myproject>>>
 
 	[]
 
-	The first two classpath-elements are understood as "classes"-directories. That means, if there is a class <my.company.MyClass> in
-	<projectA>, it must be located in the local file system at this location: <${user.home}/someWorkspace/projectA/bin/my/company/MyClass.class>.
-	If there is a JAR inside one of these directories, it is ignored!
+	The first two classpath-elements are understood as "classes"-directories. That means, if there is the class
+	<<<my.company.MyClass>>> in <projectA>, it must be located in the local file system at this location:
+	<<<$\{user.home}/someWorkspace/projectA/bin/my/company/MyClass.class>>>. If there is a JAR inside one of these
+	directories, it is ignored!
+	
+	The third classpath-element references the library <SomeLibrary.jar> inside the directory <lib> of the project
+	<projectB>.
 
-	The third classpath-element denotes all archives (JAR, EAR, SAR, ..., WAR, ZIP) inside <${user.home}/someApplicationServer/deploy/*>, but not
-	inside the sub-directories. For example, <${user.home}/someApplicationServer/deploy/MyWebApp.war> would be included, but
-	<${user.home}/someApplicationServer/deploy/something.last/AnotherWebApp.war> would <<not>> be included.
+	The fourth classpath-element denotes all archives (JAR, EAR, SAR, ..., WAR, ZIP) inside <<<$\{user.home}/someApplicationServer/deploy/*>>>,
+	but not	inside the sub-directories. For example, <<<$\{user.home}/someApplicationServer/deploy/MyWebApp.war>>> would be included, but
+	<<<$\{user.home}/someApplicationServer/deploy/something.last/AnotherWebApp.war>>> would <<not>> be included.
 
-* Persistence unit
+	The fifth classpath-element adds all archives that are found in the directory <<<$\{maven.localRepository}/org/nightlabs>>>
+	or any of its sub-directories.
+
+	The sixth classpath-element is only understood, if the Vestigo-JDT-integration is installed. It will pull the entire
+	classpath of the project <com.mycompany.myproject> into the data source's classpath. That includes transitive dependencies
+	and all classpath-containers that your Eclipse IDE supports.
+
+* {Persistence unit}
 
 	A persistence unit groups (persistent) classes, settings and other meta-data under a name that can be used
 	by the application to tell the JDO/JPA engine with which entities and which database it wants to work.
@@ -85,11 +130,15 @@ Data source
 	can override settings that are already present, but undesired or inadequate. For example, you might want
 	to disable features that slow down the startup process of your persistence engine (e.g. validation of
 	indexes and RDBMS table structure).
-	
+
 	And if your application runs in a managed environment (aka application server like Glassfish, JBoss, Tomcat etc.),
 	the persistence unit likely declares to make use of {{{http://en.wikipedia.org/wiki/Java_Transaction_API}JTA}}.
 	But JTA is not available in Vestigo. Thus, you'll have to override this setting with the
-	value 'RESOURCE_JOCAL'.
+	value 'RESOURCE_JOCAL' or - even simpler - <<<null>>>.
+
+	See {{{./jdo/persistence-properties.html}JDO persistence properties}} or
+	{{{./jpa/persistence-properties.html}JPA persistence properties}}
+	for further details.
 
 * How to set up a JDO data source
 
