@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
  */
-final class DumpStreamToFileThread extends Thread
+public class DumpStreamToFileThread extends Thread
 {
 	private final Logger logger = LoggerFactory.getLogger(DumpStreamToFileThread.class);
 	private InputStream inputStream;

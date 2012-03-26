@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.nightlabs.vestigo.core.connectionPropertiesFilter">
+      <filter
+            class="org.nightlabs.vestigo.maven.core.connectionpropertiesfilter.ResolveMavenClasspathConnectionPropertiesFilter">
+      </filter>
+   </extension>
+</plugin>

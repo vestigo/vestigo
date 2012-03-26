@@ -12,7 +12,7 @@ import org.junit.Test;
 public class ProjectURITest
 {
 	@Test
-	public void fromProjectNameToURLAndBack()
+	public void fromProjectNameToURIAndBack()
 	{
 		String projectName = "Project name with äöüß, หงุ่ยตระกูล, :;. and wite-spaces";
 		ProjectURI projectURI = new ProjectURI(projectName);

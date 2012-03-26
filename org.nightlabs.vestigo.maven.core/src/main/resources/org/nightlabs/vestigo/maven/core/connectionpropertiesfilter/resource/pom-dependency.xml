@@ -1,0 +1,7 @@
+		<dependency>
+			${generate.dependency.groupId}
+			${generate.dependency.artifactId}
+			${generate.dependency.version}
+			${generate.dependency.type}
+			${generate.dependency.classifier}
+		</dependency>

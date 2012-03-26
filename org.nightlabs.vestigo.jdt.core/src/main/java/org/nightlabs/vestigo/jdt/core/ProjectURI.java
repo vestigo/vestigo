@@ -48,9 +48,6 @@ public class ProjectURI implements Serializable
 	public String getProjectName() {
 		return projectName;
 	}
-	public void setProjectName(String projectName) {
-		this.projectName = projectName;
-	}
 
 	@Override
 	public int hashCode()
