@@ -131,6 +131,30 @@
 					</execution>
 				</executions>
 			</plugin>
+
+			<plugin>
+				<artifactId>maven-clean-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>clean-after-site</id>
+						<phase>post-site</phase>
+						<goals>
+							<goal>clean</goal>
+						</goals>
+						<configuration>
+							<excludeDefaultDirectories>true</excludeDefaultDirectories>
+							<filesets>
+								<fileSet>
+									<directory>${project.build.directory}/site</directory>
+									<excludes>
+										<exclude>org.nightlabs.vestigo.*</exclude>
+									</excludes>
+								</fileSet>
+							</filesets>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 
 		<pluginManagement>
