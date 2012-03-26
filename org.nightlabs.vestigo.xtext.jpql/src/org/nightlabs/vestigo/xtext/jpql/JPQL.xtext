@@ -4,6 +4,7 @@ generate jPQL "http://www.nightlabs.org/vestigo/xtext/jdoql/JPQL"
 
 // http://www.datanucleus.org/products/accessplatform_3_1/jpa/jpql.html
 // Current spec: JPA 3.0, JPQL BNF at bottom
+// http://docs.oracle.com/cd/E28613_01/apirefs.1211/e24396/ejb3_langref.html
 
 JPQLQuery:
 	SelectStatement |
