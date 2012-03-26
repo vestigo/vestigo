@@ -37,6 +37,22 @@ How to set up a JDO data source
 
 * Classpath
 
+	Vestigo will start a {{{../jdo/persistence-manager-factory.html}JDO PersistenceManagerFactory}}.
+	For this to work, you have to tell Vestigo where your data model as well as the JDO implementation
+	(e.g. DataNucleus) can be found.
+
+	Similar to the "{{{http://en.wikipedia.org/wiki/Classpath_%28Java%29}-classpath}}" argument of the <<<java>>> program,
+	you specify a list of {{{http://en.wikipedia.org/wiki/JAR_%28file_format%29}JAR files}} and "classes"-directories.
+
+	Note, that you can put {{{http://en.wikipedia.org/wiki/EAR_%28file_format%29}EAR}} or
+	{{{http://en.wikipedia.org/wiki/WAR_file_format_%28Sun%29}WAR}} files into the classpath which contain other libraries.
+	Vestigo will automatically include all the nested JARs. Even ZIP files are supported making it possible to reference
+	an entire application archive.
+
+	Furthermore, you can add a project from your Eclipse workspace (if you have the JDT integration installed). Vestigo resolves
+	project references recursively, hence you normally only need to add one single project - the top-level-project (assembly).
+	However, if your data model is modular and there is no single top-level-project, you may add as many projects as you want.
+
 [../../images/jdo/how-to-set-up-a-jdo-data-source/30.png]
 
 * Persistence unit

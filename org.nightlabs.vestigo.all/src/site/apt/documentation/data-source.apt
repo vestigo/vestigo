@@ -29,7 +29,37 @@ Data source
 
 	Note, that you can put {{{http://en.wikipedia.org/wiki/EAR_%28file_format%29}EAR}} or
 	{{{http://en.wikipedia.org/wiki/WAR_file_format_%28Sun%29}WAR}} files into the classpath which contain other libraries.
-	Vestigo will automatically include all the nested JARs.
+	Vestigo will automatically include all the nested JARs. Even ZIP files are supported making it possible to reference
+	an entire application archive.
+
+	Furthermore, you can add a project from your Eclipse workspace (if you have the JDT integration installed). Vestigo resolves
+	project references recursively, hence you normally only need to add one single project - the top-level-project (assembly).
+	However, if your data model is modular and there is no single top-level-project, you may add as many projects as you want.
+
+	Last but not least, you can add all archives found in a directory - either flat (one single directory only) or fully recursive
+	(including all sub-directories). This is done using the suffix "/*" or "/**/*" respectively. Note that this notation
+	does not include "classes"-directories but only archives contained in this directory. "classes"-directories always have to be
+	specified individually.
+
+	Example:
+
+	[[1]] <file:${user.home}/someWorkspace/projectA/bin>
+
+	[[1]] <file:${user.home}/someWorkspace/projectB/classes>
+
+	[[1]] <file:${user.home}/someApplicationServer/deploy/*>
+
+	[[1]] <file:${maven.localRepository}/org/nightlabs/**/*>
+
+	[]
+
+	The first two classpath-elements are understood as "classes"-directories. That means, if there is a class <my.company.MyClass> in
+	<projectA>, it must be located in the local file system at this location: <${user.home}/someWorkspace/projectA/bin/my/company/MyClass.class>.
+	If there is a JAR inside one of these directories, it is ignored!
+
+	The third classpath-element denotes all archives (JAR, EAR, SAR, ..., WAR, ZIP) inside <${user.home}/someApplicationServer/deploy/*>, but not
+	inside the sub-directories. For example, <${user.home}/someApplicationServer/deploy/MyWebApp.war> would be included, but
+	<${user.home}/someApplicationServer/deploy/something.last/AnotherWebApp.war> would <<not>> be included.
 
 * Persistence unit
 
