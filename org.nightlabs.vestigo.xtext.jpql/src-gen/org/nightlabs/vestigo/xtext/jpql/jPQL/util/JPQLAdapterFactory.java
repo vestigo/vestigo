@@ -12,7 +12,55 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
 import org.eclipse.emf.ecore.EObject;
 
-import org.nightlabs.vestigo.xtext.jpql.jPQL.*;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.AdditionExpression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.AliasAttributeExpression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.AndExpression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.AvgAggregate;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.BooleanLiteral;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.ComparisonOperatorExpression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.CountAggregate;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.DeleteClause;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.DeleteStatement;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.Expression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.ExpressionTerm;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.FloatLiteral;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.FromClass;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.FromClause;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.FromCollection;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.FromEntry;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.FromJoin;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.FunctionExpression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.GroupByClause;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.HavingClause;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.InnerJoin;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.IntegerLiteral;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLQuery;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.Join;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.LeftJoin;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.Literal;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.MaxAggregate;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.MinAggregate;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.MultiplicationExpression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.NullLiteral;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.OrExpression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.OrderByClause;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.OrderBySpec;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.ParameterExpression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.SelectAggregateExpression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.SelectClause;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.SelectConstructorExpression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.SelectExpression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.SelectStatement;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.SetClause;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.StringLiteral;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.SumAggregate;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.UpdateClause;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.UpdateItem;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.UpdateStatement;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.Variable;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.VariableDeclaration;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.WhereClause;
 
 /**
  * <!-- begin-user-doc -->
@@ -258,19 +306,29 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
         return createParameterExpressionAdapter();
       }
       @Override
-      public Adapter caseFunction(Function object)
+      public Adapter caseFunctionExpression(FunctionExpression object)
       {
-        return createFunctionAdapter();
+        return createFunctionExpressionAdapter();
       }
       @Override
-      public Adapter caseValue(Value object)
+      public Adapter caseLiteral(Literal object)
       {
-        return createValueAdapter();
+        return createLiteralAdapter();
       }
       @Override
       public Adapter caseIntegerLiteral(IntegerLiteral object)
       {
         return createIntegerLiteralAdapter();
+      }
+      @Override
+      public Adapter caseFloatLiteral(FloatLiteral object)
+      {
+        return createFloatLiteralAdapter();
+      }
+      @Override
+      public Adapter caseFloat(org.nightlabs.vestigo.xtext.jpql.jPQL.Float object)
+      {
+        return createFloatAdapter();
       }
       @Override
       public Adapter caseStringLiteral(StringLiteral object)
@@ -875,31 +933,31 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.Function <em>Function</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.FunctionExpression <em>Function Expression</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.Function
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.FunctionExpression
    * @generated
    */
-  public Adapter createFunctionAdapter()
+  public Adapter createFunctionExpressionAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.Value <em>Value</em>}'.
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.Literal <em>Literal</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.Value
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.Literal
    * @generated
    */
-  public Adapter createValueAdapter()
+  public Adapter createLiteralAdapter()
   {
     return null;
   }
@@ -915,6 +973,36 @@ public class JPQLAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createIntegerLiteralAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.FloatLiteral <em>Float Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.FloatLiteral
+   * @generated
+   */
+  public Adapter createFloatLiteralAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.Float <em>Float</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.nightlabs.vestigo.xtext.jpql.jPQL.Float
+   * @generated
+   */
+  public Adapter createFloatAdapter()
   {
     return null;
   }

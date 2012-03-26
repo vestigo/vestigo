@@ -25,7 +25,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface AliasAttributeExpression extends OrderBySpec, SelectExpression, Variable
+public interface AliasAttributeExpression extends OrderBySpec, Expression, Variable
 {
   /**
    * Returns the value of the '<em><b>Direction</b></em>' attribute.

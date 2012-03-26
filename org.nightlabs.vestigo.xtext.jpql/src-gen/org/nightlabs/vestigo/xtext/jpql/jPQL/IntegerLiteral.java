@@ -22,7 +22,7 @@ package org.nightlabs.vestigo.xtext.jpql.jPQL;
  * @model
  * @generated
  */
-public interface IntegerLiteral extends Value
+public interface IntegerLiteral extends Literal
 {
   /**
    * Returns the value of the '<em><b>Value</b></em>' attribute.

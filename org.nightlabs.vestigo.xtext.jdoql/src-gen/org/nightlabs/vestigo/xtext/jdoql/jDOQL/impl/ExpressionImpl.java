@@ -36,6 +36,7 @@ import org.nightlabs.vestigo.xtext.jdoql.jDOQL.UnaryOperator;
  *   <li>{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.ExpressionImpl#getId <em>Id</em>}</li>
  *   <li>{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.ExpressionImpl#getParameterName <em>Parameter Name</em>}</li>
  *   <li>{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.ExpressionImpl#getMethod <em>Method</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.ExpressionImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.ExpressionImpl#getNumber <em>Number</em>}</li>
  *   <li>{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.ExpressionImpl#getPersistable <em>Persistable</em>}</li>
  *   <li>{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.ExpressionImpl#isIsDistinct <em>Is Distinct</em>}</li>
@@ -227,6 +228,26 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
    * @ordered
    */
   protected Expression method;
+
+  /**
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected static final String NAME_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected String name = NAME_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getNumber() <em>Number</em>}' containment reference.
@@ -712,6 +733,29 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
     }
     else if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, JDOQLPackage.EXPRESSION__METHOD, newMethod, newMethod));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getName()
+  {
+    return name;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setName(String newName)
+  {
+    String oldName = name;
+    name = newName;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, JDOQLPackage.EXPRESSION__NAME, oldName, name));
   }
 
   /**
@@ -1487,6 +1531,8 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
         return getParameterName();
       case JDOQLPackage.EXPRESSION__METHOD:
         return getMethod();
+      case JDOQLPackage.EXPRESSION__NAME:
+        return getName();
       case JDOQLPackage.EXPRESSION__NUMBER:
         return getNumber();
       case JDOQLPackage.EXPRESSION__PERSISTABLE:
@@ -1560,6 +1606,9 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
         return;
       case JDOQLPackage.EXPRESSION__METHOD:
         setMethod((Expression)newValue);
+        return;
+      case JDOQLPackage.EXPRESSION__NAME:
+        setName((String)newValue);
         return;
       case JDOQLPackage.EXPRESSION__NUMBER:
         setNumber((Expression)newValue);
@@ -1650,6 +1699,9 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
       case JDOQLPackage.EXPRESSION__METHOD:
         setMethod((Expression)null);
         return;
+      case JDOQLPackage.EXPRESSION__NAME:
+        setName(NAME_EDEFAULT);
+        return;
       case JDOQLPackage.EXPRESSION__NUMBER:
         setNumber((Expression)null);
         return;
@@ -1729,6 +1781,8 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
         return PARAMETER_NAME_EDEFAULT == null ? parameterName != null : !PARAMETER_NAME_EDEFAULT.equals(parameterName);
       case JDOQLPackage.EXPRESSION__METHOD:
         return method != null;
+      case JDOQLPackage.EXPRESSION__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case JDOQLPackage.EXPRESSION__NUMBER:
         return number != null;
       case JDOQLPackage.EXPRESSION__PERSISTABLE:
@@ -1788,6 +1842,8 @@ public class ExpressionImpl extends ResultSpecImpl implements Expression
     result.append(id);
     result.append(", parameterName: ");
     result.append(parameterName);
+    result.append(", name: ");
+    result.append(name);
     result.append(", isDistinct: ");
     result.append(isDistinct);
     result.append(')');

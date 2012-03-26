@@ -55,7 +55,7 @@ SetClause:
 ;
 
 UpdateItem:
-	alias=AliasAttributeExpression '=' value=Value
+	alias=AliasAttributeExpression '=' value=Literal
 ;
 
 DeleteStatement:
@@ -72,7 +72,8 @@ SelectClause:
 ;
 
 SelectExpression:
-	AliasAttributeExpression |
+//	AliasAttributeExpression |
+	OrExpression |
 	SelectAggregateExpression |
 	SelectConstructorExpression
 ;
@@ -201,7 +202,11 @@ ConcreteExpression returns Expression:
 	EmptyComparisonExpression |
 	LikeExpression |
 	InExpression |
-	BetweenExpression
+	BetweenExpression |
+	FunctionExpression |
+	AliasAttributeExpression |
+	Literal |
+	ParameterExpression
 ;
 
 ParenthesesExpression returns Expression:
@@ -209,13 +214,6 @@ ParenthesesExpression returns Expression:
 	'(' ExpressionTerm ')'
 ;
 
-//ParExpression returns Expression:
-//	"(" ExpressionTerm ")"
-//;
-
-//ComparisonOperatorExpression:
-//	left=Variable operator=ComparisonOperator right=ExpressionTerm 
-//;
 
 ExistsExpression returns Expression:
 //	(isNot?='NOT')? // collision with general logical NOT
@@ -264,13 +262,13 @@ InQueryExpression returns Expression:
 ;
 
 BetweenExpression returns Expression:
-	left=Variable (isNot?='NOT')? 'BETWEEN' min=Value 'AND' max=Value
+	left=Variable (isNot?='NOT')? 'BETWEEN' min=Literal 'AND' max=Literal
 ;
 
 Variable:
 	AliasAttributeExpression | 
 	ParameterExpression |
-	Value
+	Literal
 ;
 
 ExpressionTerm:
@@ -283,52 +281,58 @@ AliasAttributeExpression:
 ;
 
 ParameterExpression:
-	':'name=ID
+	':'name=ParameterName | '?'index=INT
 ;
 
-Function:
-	StringFunction |
-	NumericFunction
+FunctionExpression returns Expression:
+	ArithmeticFunctionExpression |
+	CollectionFunctionExpression |
+	StringFunctionExpression |
+	TemporalFunctionExpression
 ;
 
-StringFunction returns Function:
-	name=StringFunctionName '(' params+=Variable (',' params+=Variable) ')'
+StringFunctionExpression returns FunctionExpression:
+	name='CONCAT' '(' fields+=Variable (',' fields+=Variable)* ')' |
+	name='SUBSTRING' '(' field=Variable ',' startPos=Variable (',' length=Variable)? ')' |
+	name='TRIM' '(' (trimSpec=TrimSpec)? (trimChar=Variable)? 'FROM'? field=Variable ')' |
+	name='LOWER' '(' field=Variable ')' |
+	name='UPPER' '(' field=Variable ')' |
+	name='LENGTH' '(' field=Variable ')' |
+	name='LOCATE' '(' fields+=Variable ',' fields+=Variable (',' startPos=Variable)? ')'
 ;
 
-StringFunctionName:
-	'CONCAT' | 
-	'SUBSTRING' | 
-//	TRIM ([[trim_specification] [trim_character] FROM] string_primary) | 
-	'LOWER' | 
-	'UPPER' |
-	'LENGTH' |
-	'LOCATE'
+enum TrimSpec:
+	leading='LEADING' | trailing='TRAILING' | both='BOTH'
 ;
 
-NumericFunction returns Function:
-	name=NumericFunctionName '(' params+=Variable (',' params+=Variable) ')'
+ArithmeticFunctionExpression returns FunctionExpression:
+	name='ABS' '(' field=Variable ')' |
+	name='SQRT' '(' field=Variable ')' |
+	name='MOD' '(' fields+=Variable ',' fields+=Variable + ')'
 ;
 
-NumericFunctionName:
-	'ABS' | 'SQRT' | 'MOD' | 'SIZE'
+CollectionFunctionExpression returns FunctionExpression:
+	name='INDEX' '(' field=Variable ')' |
+	name='SIZE' '(' field=Variable ')'
 ;
 
-DateTimeFunctionName:
-	'CURRENT_DATE' | 'CURRENT_TIME' | 'CURRENT_TIMESTAMP'
+TemporalFunctionExpression returns FunctionExpression:
+	name='CURRENT_DATE' ('('')')? |
+	name='CURRENT_TIME' ('('')')? |
+	name='CURRENT_TIMESTAMP' ('('')')? |
+	name='YEAR' '(' field=Variable ')' |
+	name='MONTH' '(' field=Variable ')' |
+	name='DAY' '(' field=Variable ')' |
+	name='HOUR' '(' field=Variable ')' |
+	name='MINUTE' '(' field=Variable ')' |
+	name='SECOND' '(' field=Variable ')'
 ;
-
-//DoubleExpression: 
-//	value=SIGNED_DOUBLE
-//; 
-//
-//LongExpression: 
-//	value=SINGED_LONG	
-//;
 
 ParameterName: ID; 
 
-Value:
+Literal:
 	IntegerLiteral |
+	FloatLiteral |
 	StringLiteral |
 	NullLiteral |
 	BooleanLiteral
@@ -336,6 +340,14 @@ Value:
 
 IntegerLiteral:
 	value=INT
+;
+
+FloatLiteral:
+	value=Float
+;
+
+Float:
+	integerValue=INT '.' fractionValue=INT
 ;
 
 StringLiteral: 
@@ -349,29 +361,6 @@ NullLiteral:
 BooleanLiteral: 
 	value=('TRUE' | 'FALSE')
 ;
-
-//IntegerLiteral:
-//	INT
-//;                                 
-//
-//StringLiteral:
-//	STRING
-//;                                         
-//
-//BooleanLiteral:
-//	'true' | 'false'
-//;
-//
-//NullLiteral:
-//	'null'
-//;
-//
-//Literal:
-//	IntegerLiteral |
-//	BooleanLiteral |
-//	StringLiteral |
-//	NullLiteral
-//;
 
 Subquery returns SelectStatement:
 	'(' SelectStatement ')'

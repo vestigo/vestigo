@@ -562,20 +562,34 @@ public class AbstractJDOQLSemanticSequencer extends AbstractSemanticSequencer {
 	/**
 	 * Constraint:
 	 *     (
-	 *         element=ConditionalOrExpression | 
-	 *         arg=ConditionalOrExpression | 
-	 *         key=ConditionalOrExpression | 
-	 *         value=ConditionalOrExpression | 
-	 *         (key=ConditionalOrExpression value=ConditionalOrExpression) | 
-	 *         index=ConditionalOrExpression | 
-	 *         string=ConditionalOrExpression | 
-	 *         string=ConditionalOrExpression | 
-	 *         string=ConditionalOrExpression | 
-	 *         (string=ConditionalOrExpression fromIndex=ConditionalOrExpression?) | 
-	 *         regex=ConditionalOrExpression | 
-	 *         (regex=ConditionalOrExpression replacement=ConditionalOrExpression) | 
-	 *         string=ConditionalOrExpression | 
-	 *         (beginIndex=ConditionalOrExpression endIndex=ConditionalOrExpression?)
+	 *         (name='contains' element=ConditionalOrExpression) | 
+	 *         (name='get' arg=ConditionalOrExpression) | 
+	 *         name='isEmpty' | 
+	 *         name='size' | 
+	 *         (name='containsKey' key=ConditionalOrExpression) | 
+	 *         (name='containsValue' value=ConditionalOrExpression) | 
+	 *         (name='containsEntry' key=ConditionalOrExpression value=ConditionalOrExpression) | 
+	 *         (name='charAt' index=ConditionalOrExpression) | 
+	 *         (name='endsWith' string=ConditionalOrExpression) | 
+	 *         (name='equals' string=ConditionalOrExpression) | 
+	 *         (name='equalsIgnoreCase' string=ConditionalOrExpression) | 
+	 *         (name='indexOf' string=ConditionalOrExpression fromIndex=ConditionalOrExpression?) | 
+	 *         name='length' | 
+	 *         (name='matches' regex=ConditionalOrExpression) | 
+	 *         (name='replaceAll' regex=ConditionalOrExpression replacement=ConditionalOrExpression) | 
+	 *         (name='startsWith' string=ConditionalOrExpression) | 
+	 *         (name='substring' beginIndex=ConditionalOrExpression endIndex=ConditionalOrExpression?) | 
+	 *         name='toLowerCase' | 
+	 *         name='toUpperCase' | 
+	 *         name='trim' | 
+	 *         name='getDay' | 
+	 *         name='getMonth' | 
+	 *         name='getYear' | 
+	 *         name='getHour' | 
+	 *         name='getMinute' | 
+	 *         name='getSecond' | 
+	 *         name='ordinal' | 
+	 *         name='toString'
 	 *     )
 	 */
 	protected void sequence_MethodExpression(EObject context, Expression semanticObject) {
@@ -876,39 +890,39 @@ public class AbstractJDOQLSemanticSequencer extends AbstractSemanticSequencer {
 	/**
 	 * Constraint:
 	 *     (
-	 *         number=ConditionalOrExpression | 
-	 *         number=ConditionalOrExpression | 
-	 *         number=ConditionalOrExpression | 
-	 *         number=ConditionalOrExpression | 
-	 *         number=ConditionalOrExpression | 
-	 *         number=ConditionalOrExpression | 
-	 *         number=ConditionalOrExpression | 
-	 *         number=ConditionalOrExpression | 
-	 *         number=ConditionalOrExpression | 
-	 *         number=ConditionalOrExpression | 
-	 *         number=ConditionalOrExpression | 
-	 *         number=ConditionalOrExpression | 
-	 *         number=ConditionalOrExpression | 
-	 *         number=ConditionalOrExpression | 
-	 *         number=ConditionalOrExpression | 
-	 *         number=ConditionalOrExpression | 
-	 *         number=ConditionalOrExpression | 
-	 *         number=ConditionalOrExpression | 
-	 *         number=ConditionalOrExpression | 
-	 *         number=ConditionalOrExpression | 
-	 *         number=ConditionalOrExpression | 
-	 *         number=ConditionalOrExpression | 
-	 *         number=ConditionalOrExpression | 
-	 *         number=ConditionalOrExpression | 
-	 *         persistable=ConditionalOrExpression | 
-	 *         persistable=ConditionalOrExpression | 
-	 *         persistable=ConditionalOrExpression | 
-	 *         persistable=ConditionalOrExpression | 
-	 *         (isDistinct?='DISTINCT'? aggregateArgument=ConditionalOrExpression) | 
-	 *         (isDistinct?='DISTINCT'? aggregateArgument=ConditionalOrExpression) | 
-	 *         aggregateArgument=ConditionalOrExpression | 
-	 *         aggregateArgument=ConditionalOrExpression | 
-	 *         (isDistinct?='DISTINCT'? aggregateArgument=ConditionalOrExpression) | 
+	 *         (name='Math.abs' number=ConditionalOrExpression) | 
+	 *         (name='Math.sqrt' number=ConditionalOrExpression) | 
+	 *         (name='Math.cos' number=ConditionalOrExpression) | 
+	 *         (name='Math.sin' number=ConditionalOrExpression) | 
+	 *         (name='Math.tan' number=ConditionalOrExpression) | 
+	 *         (name='Math.acos' number=ConditionalOrExpression) | 
+	 *         (name='Math.asin' number=ConditionalOrExpression) | 
+	 *         (name='Math.atan' number=ConditionalOrExpression) | 
+	 *         (name='Math.ceil' number=ConditionalOrExpression) | 
+	 *         (name='Math.exp' number=ConditionalOrExpression) | 
+	 *         (name='Math.floor' number=ConditionalOrExpression) | 
+	 *         (name='Math.log' number=ConditionalOrExpression) | 
+	 *         (name='java.lang.Math.abs' number=ConditionalOrExpression) | 
+	 *         (name='java.lang.Math.sqrt' number=ConditionalOrExpression) | 
+	 *         (name='java.lang.Math.cos' number=ConditionalOrExpression) | 
+	 *         (name='java.lang.Math.sin' number=ConditionalOrExpression) | 
+	 *         (name='java.lang.Math.tan' number=ConditionalOrExpression) | 
+	 *         (name='java.lang.Math.acos' number=ConditionalOrExpression) | 
+	 *         (name='java.lang.Math.asin' number=ConditionalOrExpression) | 
+	 *         (name='java.lang.Math.atan' number=ConditionalOrExpression) | 
+	 *         (name='java.lang.Math.ceil' number=ConditionalOrExpression) | 
+	 *         (name='java.lang.Math.exp' number=ConditionalOrExpression) | 
+	 *         (name='java.lang.Math.floor' number=ConditionalOrExpression) | 
+	 *         (name='java.lang.Math.log' number=ConditionalOrExpression) | 
+	 *         (name='JDOHelper.getObjectId' persistable=ConditionalOrExpression) | 
+	 *         (name='JDOHelper.getVersion' persistable=ConditionalOrExpression) | 
+	 *         (name='javax.jdo.JDOHelper.getObjectId' persistable=ConditionalOrExpression) | 
+	 *         (name='javax.jdo.JDOHelper.getVersion' persistable=ConditionalOrExpression) | 
+	 *         (name='count' isDistinct?='DISTINCT'? aggregateArgument=ConditionalOrExpression) | 
+	 *         (name='sum' isDistinct?='DISTINCT'? aggregateArgument=ConditionalOrExpression) | 
+	 *         (name='min' aggregateArgument=ConditionalOrExpression) | 
+	 *         (name='max' aggregateArgument=ConditionalOrExpression) | 
+	 *         (name='avg' isDistinct?='DISTINCT'? aggregateArgument=ConditionalOrExpression) | 
 	 *         ((castType=Type right=FieldAccessExpression) | (unaryOperator=UnaryOperator? right=FieldAccessExpression))
 	 *     )
 	 */

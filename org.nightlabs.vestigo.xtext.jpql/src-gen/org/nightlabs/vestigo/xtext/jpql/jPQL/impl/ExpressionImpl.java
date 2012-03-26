@@ -16,16 +16,15 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.nightlabs.vestigo.xtext.jpql.jPQL.Expression;
 import org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.Literal;
 import org.nightlabs.vestigo.xtext.jpql.jPQL.SelectStatement;
 import org.nightlabs.vestigo.xtext.jpql.jPQL.UnaryOperator;
-import org.nightlabs.vestigo.xtext.jpql.jPQL.Value;
 import org.nightlabs.vestigo.xtext.jpql.jPQL.Variable;
 
 /**
@@ -48,7 +47,7 @@ import org.nightlabs.vestigo.xtext.jpql.jPQL.Variable;
  *
  * @generated
  */
-public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expression
+public class ExpressionImpl extends SelectExpressionImpl implements Expression
 {
   /**
    * The default value of the '{@link #getUnaryOperator() <em>Unary Operator</em>}' attribute.
@@ -138,7 +137,7 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
    * @generated
    * @ordered
    */
-  protected Value min;
+  protected Literal min;
 
   /**
    * The cached value of the '{@link #getMax() <em>Max</em>}' containment reference.
@@ -148,7 +147,7 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
    * @generated
    * @ordered
    */
-  protected Value max;
+  protected Literal max;
 
   /**
    * <!-- begin-user-doc -->
@@ -380,7 +379,7 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
    * <!-- end-user-doc -->
    * @generated
    */
-  public Value getMin()
+  public Literal getMin()
   {
     return min;
   }
@@ -390,9 +389,9 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetMin(Value newMin, NotificationChain msgs)
+  public NotificationChain basicSetMin(Literal newMin, NotificationChain msgs)
   {
-    Value oldMin = min;
+    Literal oldMin = min;
     min = newMin;
     if (eNotificationRequired())
     {
@@ -407,7 +406,7 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setMin(Value newMin)
+  public void setMin(Literal newMin)
   {
     if (newMin != min)
     {
@@ -428,7 +427,7 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
    * <!-- end-user-doc -->
    * @generated
    */
-  public Value getMax()
+  public Literal getMax()
   {
     return max;
   }
@@ -438,9 +437,9 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetMax(Value newMax, NotificationChain msgs)
+  public NotificationChain basicSetMax(Literal newMax, NotificationChain msgs)
   {
-    Value oldMax = max;
+    Literal oldMax = max;
     max = newMax;
     if (eNotificationRequired())
     {
@@ -455,7 +454,7 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setMax(Value newMax)
+  public void setMax(Literal newMax)
   {
     if (newMax != max)
     {
@@ -558,10 +557,10 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
         setQuery((SelectStatement)newValue);
         return;
       case JPQLPackage.EXPRESSION__MIN:
-        setMin((Value)newValue);
+        setMin((Literal)newValue);
         return;
       case JPQLPackage.EXPRESSION__MAX:
-        setMax((Value)newValue);
+        setMax((Literal)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -596,10 +595,10 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
         setQuery((SelectStatement)null);
         return;
       case JPQLPackage.EXPRESSION__MIN:
-        setMin((Value)null);
+        setMin((Literal)null);
         return;
       case JPQLPackage.EXPRESSION__MAX:
-        setMax((Value)null);
+        setMax((Literal)null);
         return;
     }
     super.eUnset(featureID);

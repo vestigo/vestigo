@@ -14,7 +14,62 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
-import org.nightlabs.vestigo.xtext.jpql.jPQL.*;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.AdditionExpression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.AdditionOperator;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.AliasAttributeExpression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.AndExpression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.AvgAggregate;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.BooleanLiteral;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.ComparisonOperator;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.ComparisonOperatorExpression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.CountAggregate;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.DeleteClause;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.DeleteStatement;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.Expression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.ExpressionTerm;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.FloatLiteral;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.FromClass;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.FromClause;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.FromCollection;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.FromEntry;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.FromJoin;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.FunctionExpression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.GroupByClause;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.HavingClause;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.InnerJoin;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.IntegerLiteral;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLFactory;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLQuery;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.Join;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.LeftJoin;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.Literal;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.MaxAggregate;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.MinAggregate;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.MultiplicationExpression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.MultiplicationOperator;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.NullLiteral;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.OrExpression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.OrderByClause;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.OrderByDirection;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.OrderBySpec;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.ParameterExpression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.SelectAggregateExpression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.SelectClause;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.SelectConstructorExpression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.SelectExpression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.SelectStatement;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.SetClause;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.StringLiteral;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.SumAggregate;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.TrimSpec;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.UnaryOperator;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.UpdateClause;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.UpdateItem;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.UpdateStatement;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.Variable;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.VariableDeclaration;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.WhereClause;
 
 /**
  * <!-- begin-user-doc -->
@@ -104,9 +159,11 @@ public class JPQLFactoryImpl extends EFactoryImpl implements JPQLFactory
       case JPQLPackage.EXPRESSION_TERM: return createExpressionTerm();
       case JPQLPackage.ALIAS_ATTRIBUTE_EXPRESSION: return createAliasAttributeExpression();
       case JPQLPackage.PARAMETER_EXPRESSION: return createParameterExpression();
-      case JPQLPackage.FUNCTION: return createFunction();
-      case JPQLPackage.VALUE: return createValue();
+      case JPQLPackage.FUNCTION_EXPRESSION: return createFunctionExpression();
+      case JPQLPackage.LITERAL: return createLiteral();
       case JPQLPackage.INTEGER_LITERAL: return createIntegerLiteral();
+      case JPQLPackage.FLOAT_LITERAL: return createFloatLiteral();
+      case JPQLPackage.FLOAT: return createFloat();
       case JPQLPackage.STRING_LITERAL: return createStringLiteral();
       case JPQLPackage.NULL_LITERAL: return createNullLiteral();
       case JPQLPackage.BOOLEAN_LITERAL: return createBooleanLiteral();
@@ -132,6 +189,8 @@ public class JPQLFactoryImpl extends EFactoryImpl implements JPQLFactory
     {
       case JPQLPackage.ORDER_BY_DIRECTION:
         return createOrderByDirectionFromString(eDataType, initialValue);
+      case JPQLPackage.TRIM_SPEC:
+        return createTrimSpecFromString(eDataType, initialValue);
       case JPQLPackage.UNARY_OPERATOR:
         return createUnaryOperatorFromString(eDataType, initialValue);
       case JPQLPackage.ADDITION_OPERATOR:
@@ -157,6 +216,8 @@ public class JPQLFactoryImpl extends EFactoryImpl implements JPQLFactory
     {
       case JPQLPackage.ORDER_BY_DIRECTION:
         return convertOrderByDirectionToString(eDataType, instanceValue);
+      case JPQLPackage.TRIM_SPEC:
+        return convertTrimSpecToString(eDataType, instanceValue);
       case JPQLPackage.UNARY_OPERATOR:
         return convertUnaryOperatorToString(eDataType, instanceValue);
       case JPQLPackage.ADDITION_OPERATOR:
@@ -571,10 +632,10 @@ public class JPQLFactoryImpl extends EFactoryImpl implements JPQLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Function createFunction()
+  public FunctionExpression createFunctionExpression()
   {
-    FunctionImpl function = new FunctionImpl();
-    return function;
+    FunctionExpressionImpl functionExpression = new FunctionExpressionImpl();
+    return functionExpression;
   }
 
   /**
@@ -582,10 +643,10 @@ public class JPQLFactoryImpl extends EFactoryImpl implements JPQLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Value createValue()
+  public Literal createLiteral()
   {
-    ValueImpl value = new ValueImpl();
-    return value;
+    LiteralImpl literal = new LiteralImpl();
+    return literal;
   }
 
   /**
@@ -597,6 +658,28 @@ public class JPQLFactoryImpl extends EFactoryImpl implements JPQLFactory
   {
     IntegerLiteralImpl integerLiteral = new IntegerLiteralImpl();
     return integerLiteral;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public FloatLiteral createFloatLiteral()
+  {
+    FloatLiteralImpl floatLiteral = new FloatLiteralImpl();
+    return floatLiteral;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public org.nightlabs.vestigo.xtext.jpql.jPQL.Float createFloat()
+  {
+    FloatImpl float_ = new FloatImpl();
+    return float_;
   }
 
   /**
@@ -705,6 +788,28 @@ public class JPQLFactoryImpl extends EFactoryImpl implements JPQLFactory
    * @generated
    */
   public String convertOrderByDirectionToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public TrimSpec createTrimSpecFromString(EDataType eDataType, String initialValue)
+  {
+    TrimSpec result = TrimSpec.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertTrimSpecToString(EDataType eDataType, Object instanceValue)
   {
     return instanceValue == null ? null : instanceValue.toString();
   }

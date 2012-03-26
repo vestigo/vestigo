@@ -61,12 +61,12 @@ public interface UpdateItem extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Value</em>' containment reference.
-   * @see #setValue(Value)
+   * @see #setValue(Literal)
    * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getUpdateItem_Value()
    * @model containment="true"
    * @generated
    */
-  Value getValue();
+  Literal getValue();
 
   /**
    * Sets the value of the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.UpdateItem#getValue <em>Value</em>}' containment reference.
@@ -76,6 +76,6 @@ public interface UpdateItem extends EObject
    * @see #getValue()
    * @generated
    */
-  void setValue(Value value);
+  void setValue(Literal value);
 
 } // UpdateItem

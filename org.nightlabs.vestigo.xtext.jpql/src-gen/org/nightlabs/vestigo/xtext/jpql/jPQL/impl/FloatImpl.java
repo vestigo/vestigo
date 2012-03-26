@@ -10,72 +10,72 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage;
-import org.nightlabs.vestigo.xtext.jpql.jPQL.ParameterExpression;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Parameter Expression</b></em>'.
+ * An implementation of the model object '<em><b>Float</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.ParameterExpressionImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.ParameterExpressionImpl#getIndex <em>Index</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.FloatImpl#getIntegerValue <em>Integer Value</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jpql.jPQL.impl.FloatImpl#getFractionValue <em>Fraction Value</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class ParameterExpressionImpl extends ExpressionImpl implements ParameterExpression
+public class FloatImpl extends MinimalEObjectImpl.Container implements org.nightlabs.vestigo.xtext.jpql.jPQL.Float
 {
   /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The default value of the '{@link #getIntegerValue() <em>Integer Value</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getIntegerValue()
    * @generated
    * @ordered
    */
-  protected static final String NAME_EDEFAULT = null;
+  protected static final int INTEGER_VALUE_EDEFAULT = 0;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The cached value of the '{@link #getIntegerValue() <em>Integer Value</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getIntegerValue()
    * @generated
    * @ordered
    */
-  protected String name = NAME_EDEFAULT;
+  protected int integerValue = INTEGER_VALUE_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getIndex() <em>Index</em>}' attribute.
+   * The default value of the '{@link #getFractionValue() <em>Fraction Value</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getIndex()
+   * @see #getFractionValue()
    * @generated
    * @ordered
    */
-  protected static final int INDEX_EDEFAULT = 0;
+  protected static final int FRACTION_VALUE_EDEFAULT = 0;
 
   /**
-   * The cached value of the '{@link #getIndex() <em>Index</em>}' attribute.
+   * The cached value of the '{@link #getFractionValue() <em>Fraction Value</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getIndex()
+   * @see #getFractionValue()
    * @generated
    * @ordered
    */
-  protected int index = INDEX_EDEFAULT;
+  protected int fractionValue = FRACTION_VALUE_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected ParameterExpressionImpl()
+  protected FloatImpl()
   {
     super();
   }
@@ -88,7 +88,7 @@ public class ParameterExpressionImpl extends ExpressionImpl implements Parameter
   @Override
   protected EClass eStaticClass()
   {
-    return JPQLPackage.Literals.PARAMETER_EXPRESSION;
+    return JPQLPackage.Literals.FLOAT;
   }
 
   /**
@@ -96,9 +96,9 @@ public class ParameterExpressionImpl extends ExpressionImpl implements Parameter
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getName()
+  public int getIntegerValue()
   {
-    return name;
+    return integerValue;
   }
 
   /**
@@ -106,12 +106,12 @@ public class ParameterExpressionImpl extends ExpressionImpl implements Parameter
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setName(String newName)
+  public void setIntegerValue(int newIntegerValue)
   {
-    String oldName = name;
-    name = newName;
+    int oldIntegerValue = integerValue;
+    integerValue = newIntegerValue;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, JPQLPackage.PARAMETER_EXPRESSION__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, JPQLPackage.FLOAT__INTEGER_VALUE, oldIntegerValue, integerValue));
   }
 
   /**
@@ -119,9 +119,9 @@ public class ParameterExpressionImpl extends ExpressionImpl implements Parameter
    * <!-- end-user-doc -->
    * @generated
    */
-  public int getIndex()
+  public int getFractionValue()
   {
-    return index;
+    return fractionValue;
   }
 
   /**
@@ -129,12 +129,12 @@ public class ParameterExpressionImpl extends ExpressionImpl implements Parameter
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setIndex(int newIndex)
+  public void setFractionValue(int newFractionValue)
   {
-    int oldIndex = index;
-    index = newIndex;
+    int oldFractionValue = fractionValue;
+    fractionValue = newFractionValue;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, JPQLPackage.PARAMETER_EXPRESSION__INDEX, oldIndex, index));
+      eNotify(new ENotificationImpl(this, Notification.SET, JPQLPackage.FLOAT__FRACTION_VALUE, oldFractionValue, fractionValue));
   }
 
   /**
@@ -147,10 +147,10 @@ public class ParameterExpressionImpl extends ExpressionImpl implements Parameter
   {
     switch (featureID)
     {
-      case JPQLPackage.PARAMETER_EXPRESSION__NAME:
-        return getName();
-      case JPQLPackage.PARAMETER_EXPRESSION__INDEX:
-        return getIndex();
+      case JPQLPackage.FLOAT__INTEGER_VALUE:
+        return getIntegerValue();
+      case JPQLPackage.FLOAT__FRACTION_VALUE:
+        return getFractionValue();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -165,11 +165,11 @@ public class ParameterExpressionImpl extends ExpressionImpl implements Parameter
   {
     switch (featureID)
     {
-      case JPQLPackage.PARAMETER_EXPRESSION__NAME:
-        setName((String)newValue);
+      case JPQLPackage.FLOAT__INTEGER_VALUE:
+        setIntegerValue((Integer)newValue);
         return;
-      case JPQLPackage.PARAMETER_EXPRESSION__INDEX:
-        setIndex((Integer)newValue);
+      case JPQLPackage.FLOAT__FRACTION_VALUE:
+        setFractionValue((Integer)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -185,11 +185,11 @@ public class ParameterExpressionImpl extends ExpressionImpl implements Parameter
   {
     switch (featureID)
     {
-      case JPQLPackage.PARAMETER_EXPRESSION__NAME:
-        setName(NAME_EDEFAULT);
+      case JPQLPackage.FLOAT__INTEGER_VALUE:
+        setIntegerValue(INTEGER_VALUE_EDEFAULT);
         return;
-      case JPQLPackage.PARAMETER_EXPRESSION__INDEX:
-        setIndex(INDEX_EDEFAULT);
+      case JPQLPackage.FLOAT__FRACTION_VALUE:
+        setFractionValue(FRACTION_VALUE_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -205,10 +205,10 @@ public class ParameterExpressionImpl extends ExpressionImpl implements Parameter
   {
     switch (featureID)
     {
-      case JPQLPackage.PARAMETER_EXPRESSION__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case JPQLPackage.PARAMETER_EXPRESSION__INDEX:
-        return index != INDEX_EDEFAULT;
+      case JPQLPackage.FLOAT__INTEGER_VALUE:
+        return integerValue != INTEGER_VALUE_EDEFAULT;
+      case JPQLPackage.FLOAT__FRACTION_VALUE:
+        return fractionValue != FRACTION_VALUE_EDEFAULT;
     }
     return super.eIsSet(featureID);
   }
@@ -224,12 +224,12 @@ public class ParameterExpressionImpl extends ExpressionImpl implements Parameter
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (name: ");
-    result.append(name);
-    result.append(", index: ");
-    result.append(index);
+    result.append(" (integerValue: ");
+    result.append(integerValue);
+    result.append(", fractionValue: ");
+    result.append(fractionValue);
     result.append(')');
     return result.toString();
   }
 
-} //ParameterExpressionImpl
+} //FloatImpl

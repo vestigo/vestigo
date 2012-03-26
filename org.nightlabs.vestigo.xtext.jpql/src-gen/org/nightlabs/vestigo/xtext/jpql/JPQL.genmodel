@@ -13,6 +13,11 @@
       <genEnumLiterals ecoreEnumLiteral="JPQL.ecore#//OrderByDirection/asc"/>
       <genEnumLiterals ecoreEnumLiteral="JPQL.ecore#//OrderByDirection/desc"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="JPQL.ecore#//TrimSpec">
+      <genEnumLiterals ecoreEnumLiteral="JPQL.ecore#//TrimSpec/leading"/>
+      <genEnumLiterals ecoreEnumLiteral="JPQL.ecore#//TrimSpec/trailing"/>
+      <genEnumLiterals ecoreEnumLiteral="JPQL.ecore#//TrimSpec/both"/>
+    </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="JPQL.ecore#//UnaryOperator">
       <genEnumLiterals ecoreEnumLiteral="JPQL.ecore#//UnaryOperator/positive"/>
       <genEnumLiterals ecoreEnumLiteral="JPQL.ecore#//UnaryOperator/negative"/>
@@ -140,14 +145,27 @@
     </genClasses>
     <genClasses ecoreClass="JPQL.ecore#//ParameterExpression">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JPQL.ecore#//ParameterExpression/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JPQL.ecore#//ParameterExpression/index"/>
     </genClasses>
-    <genClasses ecoreClass="JPQL.ecore#//Function">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JPQL.ecore#//Function/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//Function/params"/>
+    <genClasses ecoreClass="JPQL.ecore#//FunctionExpression">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JPQL.ecore#//FunctionExpression/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//FunctionExpression/fields"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//FunctionExpression/field"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//FunctionExpression/startPos"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//FunctionExpression/length"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JPQL.ecore#//FunctionExpression/trimSpec"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//FunctionExpression/trimChar"/>
     </genClasses>
-    <genClasses ecoreClass="JPQL.ecore#//Value"/>
+    <genClasses ecoreClass="JPQL.ecore#//Literal"/>
     <genClasses ecoreClass="JPQL.ecore#//IntegerLiteral">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JPQL.ecore#//IntegerLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="JPQL.ecore#//FloatLiteral">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JPQL.ecore#//FloatLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="JPQL.ecore#//Float">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JPQL.ecore#//Float/integerValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JPQL.ecore#//Float/fractionValue"/>
     </genClasses>
     <genClasses ecoreClass="JPQL.ecore#//StringLiteral">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JPQL.ecore#//StringLiteral/value"/>

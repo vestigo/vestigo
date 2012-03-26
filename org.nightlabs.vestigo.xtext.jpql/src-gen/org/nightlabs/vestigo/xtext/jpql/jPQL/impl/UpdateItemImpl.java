@@ -16,8 +16,8 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.nightlabs.vestigo.xtext.jpql.jPQL.AliasAttributeExpression;
 import org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.Literal;
 import org.nightlabs.vestigo.xtext.jpql.jPQL.UpdateItem;
-import org.nightlabs.vestigo.xtext.jpql.jPQL.Value;
 
 /**
  * <!-- begin-user-doc -->
@@ -53,7 +53,7 @@ public class UpdateItemImpl extends MinimalEObjectImpl.Container implements Upda
    * @generated
    * @ordered
    */
-  protected Value value;
+  protected Literal value;
 
   /**
    * <!-- begin-user-doc -->
@@ -129,7 +129,7 @@ public class UpdateItemImpl extends MinimalEObjectImpl.Container implements Upda
    * <!-- end-user-doc -->
    * @generated
    */
-  public Value getValue()
+  public Literal getValue()
   {
     return value;
   }
@@ -139,9 +139,9 @@ public class UpdateItemImpl extends MinimalEObjectImpl.Container implements Upda
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetValue(Value newValue, NotificationChain msgs)
+  public NotificationChain basicSetValue(Literal newValue, NotificationChain msgs)
   {
-    Value oldValue = value;
+    Literal oldValue = value;
     value = newValue;
     if (eNotificationRequired())
     {
@@ -156,7 +156,7 @@ public class UpdateItemImpl extends MinimalEObjectImpl.Container implements Upda
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setValue(Value newValue)
+  public void setValue(Literal newValue)
   {
     if (newValue != value)
     {
@@ -222,7 +222,7 @@ public class UpdateItemImpl extends MinimalEObjectImpl.Container implements Upda
         setAlias((AliasAttributeExpression)newValue);
         return;
       case JPQLPackage.UPDATE_ITEM__VALUE:
-        setValue((Value)newValue);
+        setValue((Literal)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -242,7 +242,7 @@ public class UpdateItemImpl extends MinimalEObjectImpl.Container implements Upda
         setAlias((AliasAttributeExpression)null);
         return;
       case JPQLPackage.UPDATE_ITEM__VALUE:
-        setValue((Value)null);
+        setValue((Literal)null);
         return;
     }
     super.eUnset(featureID);

@@ -350,22 +350,22 @@ public interface JPQLFactory extends EFactory
   ParameterExpression createParameterExpression();
 
   /**
-   * Returns a new object of class '<em>Function</em>'.
+   * Returns a new object of class '<em>Function Expression</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Function</em>'.
+   * @return a new object of class '<em>Function Expression</em>'.
    * @generated
    */
-  Function createFunction();
+  FunctionExpression createFunctionExpression();
 
   /**
-   * Returns a new object of class '<em>Value</em>'.
+   * Returns a new object of class '<em>Literal</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Value</em>'.
+   * @return a new object of class '<em>Literal</em>'.
    * @generated
    */
-  Value createValue();
+  Literal createLiteral();
 
   /**
    * Returns a new object of class '<em>Integer Literal</em>'.
@@ -375,6 +375,24 @@ public interface JPQLFactory extends EFactory
    * @generated
    */
   IntegerLiteral createIntegerLiteral();
+
+  /**
+   * Returns a new object of class '<em>Float Literal</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Float Literal</em>'.
+   * @generated
+   */
+  FloatLiteral createFloatLiteral();
+
+  /**
+   * Returns a new object of class '<em>Float</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Float</em>'.
+   * @generated
+   */
+  Float createFloat();
 
   /**
    * Returns a new object of class '<em>String Literal</em>'.

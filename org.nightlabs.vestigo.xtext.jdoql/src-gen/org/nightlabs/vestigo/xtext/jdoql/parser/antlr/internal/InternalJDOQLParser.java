@@ -7964,186 +7964,186 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleStaticMethodExpression"
-    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2813:1: ruleStaticMethodExpression returns [EObject current=null] : ( ( () otherlv_1= KEYWORD_72 otherlv_2= KEYWORD_4 ( (lv_number_3_0= ruleConditionalOrExpression ) ) otherlv_4= KEYWORD_5 ) | ( () otherlv_6= KEYWORD_87 otherlv_7= KEYWORD_4 ( (lv_number_8_0= ruleConditionalOrExpression ) ) otherlv_9= KEYWORD_5 ) | ( () otherlv_11= KEYWORD_73 otherlv_12= KEYWORD_4 ( (lv_number_13_0= ruleConditionalOrExpression ) ) otherlv_14= KEYWORD_5 ) | ( () otherlv_16= KEYWORD_76 otherlv_17= KEYWORD_4 ( (lv_number_18_0= ruleConditionalOrExpression ) ) otherlv_19= KEYWORD_5 ) | ( () otherlv_21= KEYWORD_77 otherlv_22= KEYWORD_4 ( (lv_number_23_0= ruleConditionalOrExpression ) ) otherlv_24= KEYWORD_5 ) | ( () otherlv_26= KEYWORD_83 otherlv_27= KEYWORD_4 ( (lv_number_28_0= ruleConditionalOrExpression ) ) otherlv_29= KEYWORD_5 ) | ( () otherlv_31= KEYWORD_84 otherlv_32= KEYWORD_4 ( (lv_number_33_0= ruleConditionalOrExpression ) ) otherlv_34= KEYWORD_5 ) | ( () otherlv_36= KEYWORD_85 otherlv_37= KEYWORD_4 ( (lv_number_38_0= ruleConditionalOrExpression ) ) otherlv_39= KEYWORD_5 ) | ( () otherlv_41= KEYWORD_86 otherlv_42= KEYWORD_4 ( (lv_number_43_0= ruleConditionalOrExpression ) ) otherlv_44= KEYWORD_5 ) | ( () otherlv_46= KEYWORD_74 otherlv_47= KEYWORD_4 ( (lv_number_48_0= ruleConditionalOrExpression ) ) otherlv_49= KEYWORD_5 ) | ( () otherlv_51= KEYWORD_93 otherlv_52= KEYWORD_4 ( (lv_number_53_0= ruleConditionalOrExpression ) ) otherlv_54= KEYWORD_5 ) | ( () otherlv_56= KEYWORD_75 otherlv_57= KEYWORD_4 ( (lv_number_58_0= ruleConditionalOrExpression ) ) otherlv_59= KEYWORD_5 ) | ( () otherlv_61= KEYWORD_113 otherlv_62= KEYWORD_4 ( (lv_number_63_0= ruleConditionalOrExpression ) ) otherlv_64= KEYWORD_5 ) | ( () otherlv_66= KEYWORD_124 otherlv_67= KEYWORD_4 ( (lv_number_68_0= ruleConditionalOrExpression ) ) otherlv_69= KEYWORD_5 ) | ( () otherlv_71= KEYWORD_114 otherlv_72= KEYWORD_4 ( (lv_number_73_0= ruleConditionalOrExpression ) ) otherlv_74= KEYWORD_5 ) | ( () otherlv_76= KEYWORD_117 otherlv_77= KEYWORD_4 ( (lv_number_78_0= ruleConditionalOrExpression ) ) otherlv_79= KEYWORD_5 ) | ( () otherlv_81= KEYWORD_118 otherlv_82= KEYWORD_4 ( (lv_number_83_0= ruleConditionalOrExpression ) ) otherlv_84= KEYWORD_5 ) | ( () otherlv_86= KEYWORD_120 otherlv_87= KEYWORD_4 ( (lv_number_88_0= ruleConditionalOrExpression ) ) otherlv_89= KEYWORD_5 ) | ( () otherlv_91= KEYWORD_121 otherlv_92= KEYWORD_4 ( (lv_number_93_0= ruleConditionalOrExpression ) ) otherlv_94= KEYWORD_5 ) | ( () otherlv_96= KEYWORD_122 otherlv_97= KEYWORD_4 ( (lv_number_98_0= ruleConditionalOrExpression ) ) otherlv_99= KEYWORD_5 ) | ( () otherlv_101= KEYWORD_123 otherlv_102= KEYWORD_4 ( (lv_number_103_0= ruleConditionalOrExpression ) ) otherlv_104= KEYWORD_5 ) | ( () otherlv_106= KEYWORD_115 otherlv_107= KEYWORD_4 ( (lv_number_108_0= ruleConditionalOrExpression ) ) otherlv_109= KEYWORD_5 ) | ( () otherlv_111= KEYWORD_126 otherlv_112= KEYWORD_4 ( (lv_number_113_0= ruleConditionalOrExpression ) ) otherlv_114= KEYWORD_5 ) | ( () otherlv_116= KEYWORD_116 otherlv_117= KEYWORD_4 ( (lv_number_118_0= ruleConditionalOrExpression ) ) otherlv_119= KEYWORD_5 ) | ( () otherlv_121= KEYWORD_127 otherlv_122= KEYWORD_4 ( (lv_persistable_123_0= ruleConditionalOrExpression ) ) otherlv_124= KEYWORD_5 ) | ( () otherlv_126= KEYWORD_125 otherlv_127= KEYWORD_4 ( (lv_persistable_128_0= ruleConditionalOrExpression ) ) otherlv_129= KEYWORD_5 ) | ( () otherlv_131= KEYWORD_129 otherlv_132= KEYWORD_4 ( (lv_persistable_133_0= ruleConditionalOrExpression ) ) otherlv_134= KEYWORD_5 ) | ( () otherlv_136= KEYWORD_128 otherlv_137= KEYWORD_4 ( (lv_persistable_138_0= ruleConditionalOrExpression ) ) otherlv_139= KEYWORD_5 ) | ( () otherlv_141= KEYWORD_48 otherlv_142= KEYWORD_4 ( (lv_isDistinct_143_0= KEYWORD_71 ) )? ( (lv_aggregateArgument_144_0= ruleConditionalOrExpression ) ) otherlv_145= KEYWORD_5 ) | ( () otherlv_147= KEYWORD_32 otherlv_148= KEYWORD_4 ( (lv_isDistinct_149_0= KEYWORD_71 ) )? ( (lv_aggregateArgument_150_0= ruleConditionalOrExpression ) ) otherlv_151= KEYWORD_5 ) | ( () otherlv_153= KEYWORD_31 otherlv_154= KEYWORD_4 ( (lv_aggregateArgument_155_0= ruleConditionalOrExpression ) ) otherlv_156= KEYWORD_5 ) | ( () otherlv_158= KEYWORD_30 otherlv_159= KEYWORD_4 ( (lv_aggregateArgument_160_0= ruleConditionalOrExpression ) ) otherlv_161= KEYWORD_5 ) | ( () otherlv_163= KEYWORD_27 otherlv_164= KEYWORD_4 ( (lv_isDistinct_165_0= KEYWORD_71 ) )? ( (lv_aggregateArgument_166_0= ruleConditionalOrExpression ) ) otherlv_167= KEYWORD_5 ) ) ;
+    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2813:1: ruleStaticMethodExpression returns [EObject current=null] : ( ( ( (lv_name_0_0= KEYWORD_72 ) ) otherlv_1= KEYWORD_4 ( (lv_number_2_0= ruleConditionalOrExpression ) ) otherlv_3= KEYWORD_5 ) | ( ( (lv_name_4_0= KEYWORD_87 ) ) otherlv_5= KEYWORD_4 ( (lv_number_6_0= ruleConditionalOrExpression ) ) otherlv_7= KEYWORD_5 ) | ( ( (lv_name_8_0= KEYWORD_73 ) ) otherlv_9= KEYWORD_4 ( (lv_number_10_0= ruleConditionalOrExpression ) ) otherlv_11= KEYWORD_5 ) | ( ( (lv_name_12_0= KEYWORD_76 ) ) otherlv_13= KEYWORD_4 ( (lv_number_14_0= ruleConditionalOrExpression ) ) otherlv_15= KEYWORD_5 ) | ( ( (lv_name_16_0= KEYWORD_77 ) ) otherlv_17= KEYWORD_4 ( (lv_number_18_0= ruleConditionalOrExpression ) ) otherlv_19= KEYWORD_5 ) | ( ( (lv_name_20_0= KEYWORD_83 ) ) otherlv_21= KEYWORD_4 ( (lv_number_22_0= ruleConditionalOrExpression ) ) otherlv_23= KEYWORD_5 ) | ( ( (lv_name_24_0= KEYWORD_84 ) ) otherlv_25= KEYWORD_4 ( (lv_number_26_0= ruleConditionalOrExpression ) ) otherlv_27= KEYWORD_5 ) | ( ( (lv_name_28_0= KEYWORD_85 ) ) otherlv_29= KEYWORD_4 ( (lv_number_30_0= ruleConditionalOrExpression ) ) otherlv_31= KEYWORD_5 ) | ( ( (lv_name_32_0= KEYWORD_86 ) ) otherlv_33= KEYWORD_4 ( (lv_number_34_0= ruleConditionalOrExpression ) ) otherlv_35= KEYWORD_5 ) | ( ( (lv_name_36_0= KEYWORD_74 ) ) otherlv_37= KEYWORD_4 ( (lv_number_38_0= ruleConditionalOrExpression ) ) otherlv_39= KEYWORD_5 ) | ( ( (lv_name_40_0= KEYWORD_93 ) ) otherlv_41= KEYWORD_4 ( (lv_number_42_0= ruleConditionalOrExpression ) ) otherlv_43= KEYWORD_5 ) | ( ( (lv_name_44_0= KEYWORD_75 ) ) otherlv_45= KEYWORD_4 ( (lv_number_46_0= ruleConditionalOrExpression ) ) otherlv_47= KEYWORD_5 ) | ( ( (lv_name_48_0= KEYWORD_113 ) ) otherlv_49= KEYWORD_4 ( (lv_number_50_0= ruleConditionalOrExpression ) ) otherlv_51= KEYWORD_5 ) | ( ( (lv_name_52_0= KEYWORD_124 ) ) otherlv_53= KEYWORD_4 ( (lv_number_54_0= ruleConditionalOrExpression ) ) otherlv_55= KEYWORD_5 ) | ( ( (lv_name_56_0= KEYWORD_114 ) ) otherlv_57= KEYWORD_4 ( (lv_number_58_0= ruleConditionalOrExpression ) ) otherlv_59= KEYWORD_5 ) | ( ( (lv_name_60_0= KEYWORD_117 ) ) otherlv_61= KEYWORD_4 ( (lv_number_62_0= ruleConditionalOrExpression ) ) otherlv_63= KEYWORD_5 ) | ( ( (lv_name_64_0= KEYWORD_118 ) ) otherlv_65= KEYWORD_4 ( (lv_number_66_0= ruleConditionalOrExpression ) ) otherlv_67= KEYWORD_5 ) | ( ( (lv_name_68_0= KEYWORD_120 ) ) otherlv_69= KEYWORD_4 ( (lv_number_70_0= ruleConditionalOrExpression ) ) otherlv_71= KEYWORD_5 ) | ( ( (lv_name_72_0= KEYWORD_121 ) ) otherlv_73= KEYWORD_4 ( (lv_number_74_0= ruleConditionalOrExpression ) ) otherlv_75= KEYWORD_5 ) | ( ( (lv_name_76_0= KEYWORD_122 ) ) otherlv_77= KEYWORD_4 ( (lv_number_78_0= ruleConditionalOrExpression ) ) otherlv_79= KEYWORD_5 ) | ( ( (lv_name_80_0= KEYWORD_123 ) ) otherlv_81= KEYWORD_4 ( (lv_number_82_0= ruleConditionalOrExpression ) ) otherlv_83= KEYWORD_5 ) | ( ( (lv_name_84_0= KEYWORD_115 ) ) otherlv_85= KEYWORD_4 ( (lv_number_86_0= ruleConditionalOrExpression ) ) otherlv_87= KEYWORD_5 ) | ( ( (lv_name_88_0= KEYWORD_126 ) ) otherlv_89= KEYWORD_4 ( (lv_number_90_0= ruleConditionalOrExpression ) ) otherlv_91= KEYWORD_5 ) | ( ( (lv_name_92_0= KEYWORD_116 ) ) otherlv_93= KEYWORD_4 ( (lv_number_94_0= ruleConditionalOrExpression ) ) otherlv_95= KEYWORD_5 ) | ( ( (lv_name_96_0= KEYWORD_127 ) ) otherlv_97= KEYWORD_4 ( (lv_persistable_98_0= ruleConditionalOrExpression ) ) otherlv_99= KEYWORD_5 ) | ( ( (lv_name_100_0= KEYWORD_125 ) ) otherlv_101= KEYWORD_4 ( (lv_persistable_102_0= ruleConditionalOrExpression ) ) otherlv_103= KEYWORD_5 ) | ( ( (lv_name_104_0= KEYWORD_129 ) ) otherlv_105= KEYWORD_4 ( (lv_persistable_106_0= ruleConditionalOrExpression ) ) otherlv_107= KEYWORD_5 ) | ( ( (lv_name_108_0= KEYWORD_128 ) ) otherlv_109= KEYWORD_4 ( (lv_persistable_110_0= ruleConditionalOrExpression ) ) otherlv_111= KEYWORD_5 ) | ( ( (lv_name_112_0= KEYWORD_48 ) ) otherlv_113= KEYWORD_4 ( (lv_isDistinct_114_0= KEYWORD_71 ) )? ( (lv_aggregateArgument_115_0= ruleConditionalOrExpression ) ) otherlv_116= KEYWORD_5 ) | ( ( (lv_name_117_0= KEYWORD_32 ) ) otherlv_118= KEYWORD_4 ( (lv_isDistinct_119_0= KEYWORD_71 ) )? ( (lv_aggregateArgument_120_0= ruleConditionalOrExpression ) ) otherlv_121= KEYWORD_5 ) | ( ( (lv_name_122_0= KEYWORD_31 ) ) otherlv_123= KEYWORD_4 ( (lv_aggregateArgument_124_0= ruleConditionalOrExpression ) ) otherlv_125= KEYWORD_5 ) | ( ( (lv_name_126_0= KEYWORD_30 ) ) otherlv_127= KEYWORD_4 ( (lv_aggregateArgument_128_0= ruleConditionalOrExpression ) ) otherlv_129= KEYWORD_5 ) | ( ( (lv_name_130_0= KEYWORD_27 ) ) otherlv_131= KEYWORD_4 ( (lv_isDistinct_132_0= KEYWORD_71 ) )? ( (lv_aggregateArgument_133_0= ruleConditionalOrExpression ) ) otherlv_134= KEYWORD_5 ) ) ;
     public final EObject ruleStaticMethodExpression() throws RecognitionException {
         EObject current = null;
 
+        Token lv_name_0_0=null;
         Token otherlv_1=null;
-        Token otherlv_2=null;
-        Token otherlv_4=null;
-        Token otherlv_6=null;
+        Token otherlv_3=null;
+        Token lv_name_4_0=null;
+        Token otherlv_5=null;
         Token otherlv_7=null;
+        Token lv_name_8_0=null;
         Token otherlv_9=null;
         Token otherlv_11=null;
-        Token otherlv_12=null;
-        Token otherlv_14=null;
-        Token otherlv_16=null;
+        Token lv_name_12_0=null;
+        Token otherlv_13=null;
+        Token otherlv_15=null;
+        Token lv_name_16_0=null;
         Token otherlv_17=null;
         Token otherlv_19=null;
+        Token lv_name_20_0=null;
         Token otherlv_21=null;
-        Token otherlv_22=null;
-        Token otherlv_24=null;
-        Token otherlv_26=null;
+        Token otherlv_23=null;
+        Token lv_name_24_0=null;
+        Token otherlv_25=null;
         Token otherlv_27=null;
+        Token lv_name_28_0=null;
         Token otherlv_29=null;
         Token otherlv_31=null;
-        Token otherlv_32=null;
-        Token otherlv_34=null;
-        Token otherlv_36=null;
+        Token lv_name_32_0=null;
+        Token otherlv_33=null;
+        Token otherlv_35=null;
+        Token lv_name_36_0=null;
         Token otherlv_37=null;
         Token otherlv_39=null;
+        Token lv_name_40_0=null;
         Token otherlv_41=null;
-        Token otherlv_42=null;
-        Token otherlv_44=null;
-        Token otherlv_46=null;
+        Token otherlv_43=null;
+        Token lv_name_44_0=null;
+        Token otherlv_45=null;
         Token otherlv_47=null;
+        Token lv_name_48_0=null;
         Token otherlv_49=null;
         Token otherlv_51=null;
-        Token otherlv_52=null;
-        Token otherlv_54=null;
-        Token otherlv_56=null;
+        Token lv_name_52_0=null;
+        Token otherlv_53=null;
+        Token otherlv_55=null;
+        Token lv_name_56_0=null;
         Token otherlv_57=null;
         Token otherlv_59=null;
+        Token lv_name_60_0=null;
         Token otherlv_61=null;
-        Token otherlv_62=null;
-        Token otherlv_64=null;
-        Token otherlv_66=null;
+        Token otherlv_63=null;
+        Token lv_name_64_0=null;
+        Token otherlv_65=null;
         Token otherlv_67=null;
+        Token lv_name_68_0=null;
         Token otherlv_69=null;
         Token otherlv_71=null;
-        Token otherlv_72=null;
-        Token otherlv_74=null;
-        Token otherlv_76=null;
+        Token lv_name_72_0=null;
+        Token otherlv_73=null;
+        Token otherlv_75=null;
+        Token lv_name_76_0=null;
         Token otherlv_77=null;
         Token otherlv_79=null;
+        Token lv_name_80_0=null;
         Token otherlv_81=null;
-        Token otherlv_82=null;
-        Token otherlv_84=null;
-        Token otherlv_86=null;
+        Token otherlv_83=null;
+        Token lv_name_84_0=null;
+        Token otherlv_85=null;
         Token otherlv_87=null;
+        Token lv_name_88_0=null;
         Token otherlv_89=null;
         Token otherlv_91=null;
-        Token otherlv_92=null;
-        Token otherlv_94=null;
-        Token otherlv_96=null;
+        Token lv_name_92_0=null;
+        Token otherlv_93=null;
+        Token otherlv_95=null;
+        Token lv_name_96_0=null;
         Token otherlv_97=null;
         Token otherlv_99=null;
+        Token lv_name_100_0=null;
         Token otherlv_101=null;
-        Token otherlv_102=null;
-        Token otherlv_104=null;
-        Token otherlv_106=null;
+        Token otherlv_103=null;
+        Token lv_name_104_0=null;
+        Token otherlv_105=null;
         Token otherlv_107=null;
+        Token lv_name_108_0=null;
         Token otherlv_109=null;
         Token otherlv_111=null;
-        Token otherlv_112=null;
-        Token otherlv_114=null;
+        Token lv_name_112_0=null;
+        Token otherlv_113=null;
+        Token lv_isDistinct_114_0=null;
         Token otherlv_116=null;
-        Token otherlv_117=null;
-        Token otherlv_119=null;
+        Token lv_name_117_0=null;
+        Token otherlv_118=null;
+        Token lv_isDistinct_119_0=null;
         Token otherlv_121=null;
-        Token otherlv_122=null;
-        Token otherlv_124=null;
-        Token otherlv_126=null;
+        Token lv_name_122_0=null;
+        Token otherlv_123=null;
+        Token otherlv_125=null;
+        Token lv_name_126_0=null;
         Token otherlv_127=null;
         Token otherlv_129=null;
+        Token lv_name_130_0=null;
         Token otherlv_131=null;
-        Token otherlv_132=null;
+        Token lv_isDistinct_132_0=null;
         Token otherlv_134=null;
-        Token otherlv_136=null;
-        Token otherlv_137=null;
-        Token otherlv_139=null;
-        Token otherlv_141=null;
-        Token otherlv_142=null;
-        Token lv_isDistinct_143_0=null;
-        Token otherlv_145=null;
-        Token otherlv_147=null;
-        Token otherlv_148=null;
-        Token lv_isDistinct_149_0=null;
-        Token otherlv_151=null;
-        Token otherlv_153=null;
-        Token otherlv_154=null;
-        Token otherlv_156=null;
-        Token otherlv_158=null;
-        Token otherlv_159=null;
-        Token otherlv_161=null;
-        Token otherlv_163=null;
-        Token otherlv_164=null;
-        Token lv_isDistinct_165_0=null;
-        Token otherlv_167=null;
-        EObject lv_number_3_0 = null;
+        EObject lv_number_2_0 = null;
 
-        EObject lv_number_8_0 = null;
+        EObject lv_number_6_0 = null;
 
-        EObject lv_number_13_0 = null;
+        EObject lv_number_10_0 = null;
+
+        EObject lv_number_14_0 = null;
 
         EObject lv_number_18_0 = null;
 
-        EObject lv_number_23_0 = null;
+        EObject lv_number_22_0 = null;
 
-        EObject lv_number_28_0 = null;
+        EObject lv_number_26_0 = null;
 
-        EObject lv_number_33_0 = null;
+        EObject lv_number_30_0 = null;
+
+        EObject lv_number_34_0 = null;
 
         EObject lv_number_38_0 = null;
 
-        EObject lv_number_43_0 = null;
+        EObject lv_number_42_0 = null;
 
-        EObject lv_number_48_0 = null;
+        EObject lv_number_46_0 = null;
 
-        EObject lv_number_53_0 = null;
+        EObject lv_number_50_0 = null;
+
+        EObject lv_number_54_0 = null;
 
         EObject lv_number_58_0 = null;
 
-        EObject lv_number_63_0 = null;
+        EObject lv_number_62_0 = null;
 
-        EObject lv_number_68_0 = null;
+        EObject lv_number_66_0 = null;
 
-        EObject lv_number_73_0 = null;
+        EObject lv_number_70_0 = null;
+
+        EObject lv_number_74_0 = null;
 
         EObject lv_number_78_0 = null;
 
-        EObject lv_number_83_0 = null;
+        EObject lv_number_82_0 = null;
 
-        EObject lv_number_88_0 = null;
+        EObject lv_number_86_0 = null;
 
-        EObject lv_number_93_0 = null;
+        EObject lv_number_90_0 = null;
 
-        EObject lv_number_98_0 = null;
+        EObject lv_number_94_0 = null;
 
-        EObject lv_number_103_0 = null;
+        EObject lv_persistable_98_0 = null;
 
-        EObject lv_number_108_0 = null;
+        EObject lv_persistable_102_0 = null;
 
-        EObject lv_number_113_0 = null;
+        EObject lv_persistable_106_0 = null;
 
-        EObject lv_number_118_0 = null;
+        EObject lv_persistable_110_0 = null;
 
-        EObject lv_persistable_123_0 = null;
+        EObject lv_aggregateArgument_115_0 = null;
 
-        EObject lv_persistable_128_0 = null;
+        EObject lv_aggregateArgument_120_0 = null;
 
-        EObject lv_persistable_133_0 = null;
+        EObject lv_aggregateArgument_124_0 = null;
 
-        EObject lv_persistable_138_0 = null;
+        EObject lv_aggregateArgument_128_0 = null;
 
-        EObject lv_aggregateArgument_144_0 = null;
-
-        EObject lv_aggregateArgument_150_0 = null;
-
-        EObject lv_aggregateArgument_155_0 = null;
-
-        EObject lv_aggregateArgument_160_0 = null;
-
-        EObject lv_aggregateArgument_166_0 = null;
+        EObject lv_aggregateArgument_133_0 = null;
 
 
          enterRule(); 
             
         try {
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2816:28: ( ( ( () otherlv_1= KEYWORD_72 otherlv_2= KEYWORD_4 ( (lv_number_3_0= ruleConditionalOrExpression ) ) otherlv_4= KEYWORD_5 ) | ( () otherlv_6= KEYWORD_87 otherlv_7= KEYWORD_4 ( (lv_number_8_0= ruleConditionalOrExpression ) ) otherlv_9= KEYWORD_5 ) | ( () otherlv_11= KEYWORD_73 otherlv_12= KEYWORD_4 ( (lv_number_13_0= ruleConditionalOrExpression ) ) otherlv_14= KEYWORD_5 ) | ( () otherlv_16= KEYWORD_76 otherlv_17= KEYWORD_4 ( (lv_number_18_0= ruleConditionalOrExpression ) ) otherlv_19= KEYWORD_5 ) | ( () otherlv_21= KEYWORD_77 otherlv_22= KEYWORD_4 ( (lv_number_23_0= ruleConditionalOrExpression ) ) otherlv_24= KEYWORD_5 ) | ( () otherlv_26= KEYWORD_83 otherlv_27= KEYWORD_4 ( (lv_number_28_0= ruleConditionalOrExpression ) ) otherlv_29= KEYWORD_5 ) | ( () otherlv_31= KEYWORD_84 otherlv_32= KEYWORD_4 ( (lv_number_33_0= ruleConditionalOrExpression ) ) otherlv_34= KEYWORD_5 ) | ( () otherlv_36= KEYWORD_85 otherlv_37= KEYWORD_4 ( (lv_number_38_0= ruleConditionalOrExpression ) ) otherlv_39= KEYWORD_5 ) | ( () otherlv_41= KEYWORD_86 otherlv_42= KEYWORD_4 ( (lv_number_43_0= ruleConditionalOrExpression ) ) otherlv_44= KEYWORD_5 ) | ( () otherlv_46= KEYWORD_74 otherlv_47= KEYWORD_4 ( (lv_number_48_0= ruleConditionalOrExpression ) ) otherlv_49= KEYWORD_5 ) | ( () otherlv_51= KEYWORD_93 otherlv_52= KEYWORD_4 ( (lv_number_53_0= ruleConditionalOrExpression ) ) otherlv_54= KEYWORD_5 ) | ( () otherlv_56= KEYWORD_75 otherlv_57= KEYWORD_4 ( (lv_number_58_0= ruleConditionalOrExpression ) ) otherlv_59= KEYWORD_5 ) | ( () otherlv_61= KEYWORD_113 otherlv_62= KEYWORD_4 ( (lv_number_63_0= ruleConditionalOrExpression ) ) otherlv_64= KEYWORD_5 ) | ( () otherlv_66= KEYWORD_124 otherlv_67= KEYWORD_4 ( (lv_number_68_0= ruleConditionalOrExpression ) ) otherlv_69= KEYWORD_5 ) | ( () otherlv_71= KEYWORD_114 otherlv_72= KEYWORD_4 ( (lv_number_73_0= ruleConditionalOrExpression ) ) otherlv_74= KEYWORD_5 ) | ( () otherlv_76= KEYWORD_117 otherlv_77= KEYWORD_4 ( (lv_number_78_0= ruleConditionalOrExpression ) ) otherlv_79= KEYWORD_5 ) | ( () otherlv_81= KEYWORD_118 otherlv_82= KEYWORD_4 ( (lv_number_83_0= ruleConditionalOrExpression ) ) otherlv_84= KEYWORD_5 ) | ( () otherlv_86= KEYWORD_120 otherlv_87= KEYWORD_4 ( (lv_number_88_0= ruleConditionalOrExpression ) ) otherlv_89= KEYWORD_5 ) | ( () otherlv_91= KEYWORD_121 otherlv_92= KEYWORD_4 ( (lv_number_93_0= ruleConditionalOrExpression ) ) otherlv_94= KEYWORD_5 ) | ( () otherlv_96= KEYWORD_122 otherlv_97= KEYWORD_4 ( (lv_number_98_0= ruleConditionalOrExpression ) ) otherlv_99= KEYWORD_5 ) | ( () otherlv_101= KEYWORD_123 otherlv_102= KEYWORD_4 ( (lv_number_103_0= ruleConditionalOrExpression ) ) otherlv_104= KEYWORD_5 ) | ( () otherlv_106= KEYWORD_115 otherlv_107= KEYWORD_4 ( (lv_number_108_0= ruleConditionalOrExpression ) ) otherlv_109= KEYWORD_5 ) | ( () otherlv_111= KEYWORD_126 otherlv_112= KEYWORD_4 ( (lv_number_113_0= ruleConditionalOrExpression ) ) otherlv_114= KEYWORD_5 ) | ( () otherlv_116= KEYWORD_116 otherlv_117= KEYWORD_4 ( (lv_number_118_0= ruleConditionalOrExpression ) ) otherlv_119= KEYWORD_5 ) | ( () otherlv_121= KEYWORD_127 otherlv_122= KEYWORD_4 ( (lv_persistable_123_0= ruleConditionalOrExpression ) ) otherlv_124= KEYWORD_5 ) | ( () otherlv_126= KEYWORD_125 otherlv_127= KEYWORD_4 ( (lv_persistable_128_0= ruleConditionalOrExpression ) ) otherlv_129= KEYWORD_5 ) | ( () otherlv_131= KEYWORD_129 otherlv_132= KEYWORD_4 ( (lv_persistable_133_0= ruleConditionalOrExpression ) ) otherlv_134= KEYWORD_5 ) | ( () otherlv_136= KEYWORD_128 otherlv_137= KEYWORD_4 ( (lv_persistable_138_0= ruleConditionalOrExpression ) ) otherlv_139= KEYWORD_5 ) | ( () otherlv_141= KEYWORD_48 otherlv_142= KEYWORD_4 ( (lv_isDistinct_143_0= KEYWORD_71 ) )? ( (lv_aggregateArgument_144_0= ruleConditionalOrExpression ) ) otherlv_145= KEYWORD_5 ) | ( () otherlv_147= KEYWORD_32 otherlv_148= KEYWORD_4 ( (lv_isDistinct_149_0= KEYWORD_71 ) )? ( (lv_aggregateArgument_150_0= ruleConditionalOrExpression ) ) otherlv_151= KEYWORD_5 ) | ( () otherlv_153= KEYWORD_31 otherlv_154= KEYWORD_4 ( (lv_aggregateArgument_155_0= ruleConditionalOrExpression ) ) otherlv_156= KEYWORD_5 ) | ( () otherlv_158= KEYWORD_30 otherlv_159= KEYWORD_4 ( (lv_aggregateArgument_160_0= ruleConditionalOrExpression ) ) otherlv_161= KEYWORD_5 ) | ( () otherlv_163= KEYWORD_27 otherlv_164= KEYWORD_4 ( (lv_isDistinct_165_0= KEYWORD_71 ) )? ( (lv_aggregateArgument_166_0= ruleConditionalOrExpression ) ) otherlv_167= KEYWORD_5 ) ) )
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2817:1: ( ( () otherlv_1= KEYWORD_72 otherlv_2= KEYWORD_4 ( (lv_number_3_0= ruleConditionalOrExpression ) ) otherlv_4= KEYWORD_5 ) | ( () otherlv_6= KEYWORD_87 otherlv_7= KEYWORD_4 ( (lv_number_8_0= ruleConditionalOrExpression ) ) otherlv_9= KEYWORD_5 ) | ( () otherlv_11= KEYWORD_73 otherlv_12= KEYWORD_4 ( (lv_number_13_0= ruleConditionalOrExpression ) ) otherlv_14= KEYWORD_5 ) | ( () otherlv_16= KEYWORD_76 otherlv_17= KEYWORD_4 ( (lv_number_18_0= ruleConditionalOrExpression ) ) otherlv_19= KEYWORD_5 ) | ( () otherlv_21= KEYWORD_77 otherlv_22= KEYWORD_4 ( (lv_number_23_0= ruleConditionalOrExpression ) ) otherlv_24= KEYWORD_5 ) | ( () otherlv_26= KEYWORD_83 otherlv_27= KEYWORD_4 ( (lv_number_28_0= ruleConditionalOrExpression ) ) otherlv_29= KEYWORD_5 ) | ( () otherlv_31= KEYWORD_84 otherlv_32= KEYWORD_4 ( (lv_number_33_0= ruleConditionalOrExpression ) ) otherlv_34= KEYWORD_5 ) | ( () otherlv_36= KEYWORD_85 otherlv_37= KEYWORD_4 ( (lv_number_38_0= ruleConditionalOrExpression ) ) otherlv_39= KEYWORD_5 ) | ( () otherlv_41= KEYWORD_86 otherlv_42= KEYWORD_4 ( (lv_number_43_0= ruleConditionalOrExpression ) ) otherlv_44= KEYWORD_5 ) | ( () otherlv_46= KEYWORD_74 otherlv_47= KEYWORD_4 ( (lv_number_48_0= ruleConditionalOrExpression ) ) otherlv_49= KEYWORD_5 ) | ( () otherlv_51= KEYWORD_93 otherlv_52= KEYWORD_4 ( (lv_number_53_0= ruleConditionalOrExpression ) ) otherlv_54= KEYWORD_5 ) | ( () otherlv_56= KEYWORD_75 otherlv_57= KEYWORD_4 ( (lv_number_58_0= ruleConditionalOrExpression ) ) otherlv_59= KEYWORD_5 ) | ( () otherlv_61= KEYWORD_113 otherlv_62= KEYWORD_4 ( (lv_number_63_0= ruleConditionalOrExpression ) ) otherlv_64= KEYWORD_5 ) | ( () otherlv_66= KEYWORD_124 otherlv_67= KEYWORD_4 ( (lv_number_68_0= ruleConditionalOrExpression ) ) otherlv_69= KEYWORD_5 ) | ( () otherlv_71= KEYWORD_114 otherlv_72= KEYWORD_4 ( (lv_number_73_0= ruleConditionalOrExpression ) ) otherlv_74= KEYWORD_5 ) | ( () otherlv_76= KEYWORD_117 otherlv_77= KEYWORD_4 ( (lv_number_78_0= ruleConditionalOrExpression ) ) otherlv_79= KEYWORD_5 ) | ( () otherlv_81= KEYWORD_118 otherlv_82= KEYWORD_4 ( (lv_number_83_0= ruleConditionalOrExpression ) ) otherlv_84= KEYWORD_5 ) | ( () otherlv_86= KEYWORD_120 otherlv_87= KEYWORD_4 ( (lv_number_88_0= ruleConditionalOrExpression ) ) otherlv_89= KEYWORD_5 ) | ( () otherlv_91= KEYWORD_121 otherlv_92= KEYWORD_4 ( (lv_number_93_0= ruleConditionalOrExpression ) ) otherlv_94= KEYWORD_5 ) | ( () otherlv_96= KEYWORD_122 otherlv_97= KEYWORD_4 ( (lv_number_98_0= ruleConditionalOrExpression ) ) otherlv_99= KEYWORD_5 ) | ( () otherlv_101= KEYWORD_123 otherlv_102= KEYWORD_4 ( (lv_number_103_0= ruleConditionalOrExpression ) ) otherlv_104= KEYWORD_5 ) | ( () otherlv_106= KEYWORD_115 otherlv_107= KEYWORD_4 ( (lv_number_108_0= ruleConditionalOrExpression ) ) otherlv_109= KEYWORD_5 ) | ( () otherlv_111= KEYWORD_126 otherlv_112= KEYWORD_4 ( (lv_number_113_0= ruleConditionalOrExpression ) ) otherlv_114= KEYWORD_5 ) | ( () otherlv_116= KEYWORD_116 otherlv_117= KEYWORD_4 ( (lv_number_118_0= ruleConditionalOrExpression ) ) otherlv_119= KEYWORD_5 ) | ( () otherlv_121= KEYWORD_127 otherlv_122= KEYWORD_4 ( (lv_persistable_123_0= ruleConditionalOrExpression ) ) otherlv_124= KEYWORD_5 ) | ( () otherlv_126= KEYWORD_125 otherlv_127= KEYWORD_4 ( (lv_persistable_128_0= ruleConditionalOrExpression ) ) otherlv_129= KEYWORD_5 ) | ( () otherlv_131= KEYWORD_129 otherlv_132= KEYWORD_4 ( (lv_persistable_133_0= ruleConditionalOrExpression ) ) otherlv_134= KEYWORD_5 ) | ( () otherlv_136= KEYWORD_128 otherlv_137= KEYWORD_4 ( (lv_persistable_138_0= ruleConditionalOrExpression ) ) otherlv_139= KEYWORD_5 ) | ( () otherlv_141= KEYWORD_48 otherlv_142= KEYWORD_4 ( (lv_isDistinct_143_0= KEYWORD_71 ) )? ( (lv_aggregateArgument_144_0= ruleConditionalOrExpression ) ) otherlv_145= KEYWORD_5 ) | ( () otherlv_147= KEYWORD_32 otherlv_148= KEYWORD_4 ( (lv_isDistinct_149_0= KEYWORD_71 ) )? ( (lv_aggregateArgument_150_0= ruleConditionalOrExpression ) ) otherlv_151= KEYWORD_5 ) | ( () otherlv_153= KEYWORD_31 otherlv_154= KEYWORD_4 ( (lv_aggregateArgument_155_0= ruleConditionalOrExpression ) ) otherlv_156= KEYWORD_5 ) | ( () otherlv_158= KEYWORD_30 otherlv_159= KEYWORD_4 ( (lv_aggregateArgument_160_0= ruleConditionalOrExpression ) ) otherlv_161= KEYWORD_5 ) | ( () otherlv_163= KEYWORD_27 otherlv_164= KEYWORD_4 ( (lv_isDistinct_165_0= KEYWORD_71 ) )? ( (lv_aggregateArgument_166_0= ruleConditionalOrExpression ) ) otherlv_167= KEYWORD_5 ) )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2816:28: ( ( ( ( (lv_name_0_0= KEYWORD_72 ) ) otherlv_1= KEYWORD_4 ( (lv_number_2_0= ruleConditionalOrExpression ) ) otherlv_3= KEYWORD_5 ) | ( ( (lv_name_4_0= KEYWORD_87 ) ) otherlv_5= KEYWORD_4 ( (lv_number_6_0= ruleConditionalOrExpression ) ) otherlv_7= KEYWORD_5 ) | ( ( (lv_name_8_0= KEYWORD_73 ) ) otherlv_9= KEYWORD_4 ( (lv_number_10_0= ruleConditionalOrExpression ) ) otherlv_11= KEYWORD_5 ) | ( ( (lv_name_12_0= KEYWORD_76 ) ) otherlv_13= KEYWORD_4 ( (lv_number_14_0= ruleConditionalOrExpression ) ) otherlv_15= KEYWORD_5 ) | ( ( (lv_name_16_0= KEYWORD_77 ) ) otherlv_17= KEYWORD_4 ( (lv_number_18_0= ruleConditionalOrExpression ) ) otherlv_19= KEYWORD_5 ) | ( ( (lv_name_20_0= KEYWORD_83 ) ) otherlv_21= KEYWORD_4 ( (lv_number_22_0= ruleConditionalOrExpression ) ) otherlv_23= KEYWORD_5 ) | ( ( (lv_name_24_0= KEYWORD_84 ) ) otherlv_25= KEYWORD_4 ( (lv_number_26_0= ruleConditionalOrExpression ) ) otherlv_27= KEYWORD_5 ) | ( ( (lv_name_28_0= KEYWORD_85 ) ) otherlv_29= KEYWORD_4 ( (lv_number_30_0= ruleConditionalOrExpression ) ) otherlv_31= KEYWORD_5 ) | ( ( (lv_name_32_0= KEYWORD_86 ) ) otherlv_33= KEYWORD_4 ( (lv_number_34_0= ruleConditionalOrExpression ) ) otherlv_35= KEYWORD_5 ) | ( ( (lv_name_36_0= KEYWORD_74 ) ) otherlv_37= KEYWORD_4 ( (lv_number_38_0= ruleConditionalOrExpression ) ) otherlv_39= KEYWORD_5 ) | ( ( (lv_name_40_0= KEYWORD_93 ) ) otherlv_41= KEYWORD_4 ( (lv_number_42_0= ruleConditionalOrExpression ) ) otherlv_43= KEYWORD_5 ) | ( ( (lv_name_44_0= KEYWORD_75 ) ) otherlv_45= KEYWORD_4 ( (lv_number_46_0= ruleConditionalOrExpression ) ) otherlv_47= KEYWORD_5 ) | ( ( (lv_name_48_0= KEYWORD_113 ) ) otherlv_49= KEYWORD_4 ( (lv_number_50_0= ruleConditionalOrExpression ) ) otherlv_51= KEYWORD_5 ) | ( ( (lv_name_52_0= KEYWORD_124 ) ) otherlv_53= KEYWORD_4 ( (lv_number_54_0= ruleConditionalOrExpression ) ) otherlv_55= KEYWORD_5 ) | ( ( (lv_name_56_0= KEYWORD_114 ) ) otherlv_57= KEYWORD_4 ( (lv_number_58_0= ruleConditionalOrExpression ) ) otherlv_59= KEYWORD_5 ) | ( ( (lv_name_60_0= KEYWORD_117 ) ) otherlv_61= KEYWORD_4 ( (lv_number_62_0= ruleConditionalOrExpression ) ) otherlv_63= KEYWORD_5 ) | ( ( (lv_name_64_0= KEYWORD_118 ) ) otherlv_65= KEYWORD_4 ( (lv_number_66_0= ruleConditionalOrExpression ) ) otherlv_67= KEYWORD_5 ) | ( ( (lv_name_68_0= KEYWORD_120 ) ) otherlv_69= KEYWORD_4 ( (lv_number_70_0= ruleConditionalOrExpression ) ) otherlv_71= KEYWORD_5 ) | ( ( (lv_name_72_0= KEYWORD_121 ) ) otherlv_73= KEYWORD_4 ( (lv_number_74_0= ruleConditionalOrExpression ) ) otherlv_75= KEYWORD_5 ) | ( ( (lv_name_76_0= KEYWORD_122 ) ) otherlv_77= KEYWORD_4 ( (lv_number_78_0= ruleConditionalOrExpression ) ) otherlv_79= KEYWORD_5 ) | ( ( (lv_name_80_0= KEYWORD_123 ) ) otherlv_81= KEYWORD_4 ( (lv_number_82_0= ruleConditionalOrExpression ) ) otherlv_83= KEYWORD_5 ) | ( ( (lv_name_84_0= KEYWORD_115 ) ) otherlv_85= KEYWORD_4 ( (lv_number_86_0= ruleConditionalOrExpression ) ) otherlv_87= KEYWORD_5 ) | ( ( (lv_name_88_0= KEYWORD_126 ) ) otherlv_89= KEYWORD_4 ( (lv_number_90_0= ruleConditionalOrExpression ) ) otherlv_91= KEYWORD_5 ) | ( ( (lv_name_92_0= KEYWORD_116 ) ) otherlv_93= KEYWORD_4 ( (lv_number_94_0= ruleConditionalOrExpression ) ) otherlv_95= KEYWORD_5 ) | ( ( (lv_name_96_0= KEYWORD_127 ) ) otherlv_97= KEYWORD_4 ( (lv_persistable_98_0= ruleConditionalOrExpression ) ) otherlv_99= KEYWORD_5 ) | ( ( (lv_name_100_0= KEYWORD_125 ) ) otherlv_101= KEYWORD_4 ( (lv_persistable_102_0= ruleConditionalOrExpression ) ) otherlv_103= KEYWORD_5 ) | ( ( (lv_name_104_0= KEYWORD_129 ) ) otherlv_105= KEYWORD_4 ( (lv_persistable_106_0= ruleConditionalOrExpression ) ) otherlv_107= KEYWORD_5 ) | ( ( (lv_name_108_0= KEYWORD_128 ) ) otherlv_109= KEYWORD_4 ( (lv_persistable_110_0= ruleConditionalOrExpression ) ) otherlv_111= KEYWORD_5 ) | ( ( (lv_name_112_0= KEYWORD_48 ) ) otherlv_113= KEYWORD_4 ( (lv_isDistinct_114_0= KEYWORD_71 ) )? ( (lv_aggregateArgument_115_0= ruleConditionalOrExpression ) ) otherlv_116= KEYWORD_5 ) | ( ( (lv_name_117_0= KEYWORD_32 ) ) otherlv_118= KEYWORD_4 ( (lv_isDistinct_119_0= KEYWORD_71 ) )? ( (lv_aggregateArgument_120_0= ruleConditionalOrExpression ) ) otherlv_121= KEYWORD_5 ) | ( ( (lv_name_122_0= KEYWORD_31 ) ) otherlv_123= KEYWORD_4 ( (lv_aggregateArgument_124_0= ruleConditionalOrExpression ) ) otherlv_125= KEYWORD_5 ) | ( ( (lv_name_126_0= KEYWORD_30 ) ) otherlv_127= KEYWORD_4 ( (lv_aggregateArgument_128_0= ruleConditionalOrExpression ) ) otherlv_129= KEYWORD_5 ) | ( ( (lv_name_130_0= KEYWORD_27 ) ) otherlv_131= KEYWORD_4 ( (lv_isDistinct_132_0= KEYWORD_71 ) )? ( (lv_aggregateArgument_133_0= ruleConditionalOrExpression ) ) otherlv_134= KEYWORD_5 ) ) )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2817:1: ( ( ( (lv_name_0_0= KEYWORD_72 ) ) otherlv_1= KEYWORD_4 ( (lv_number_2_0= ruleConditionalOrExpression ) ) otherlv_3= KEYWORD_5 ) | ( ( (lv_name_4_0= KEYWORD_87 ) ) otherlv_5= KEYWORD_4 ( (lv_number_6_0= ruleConditionalOrExpression ) ) otherlv_7= KEYWORD_5 ) | ( ( (lv_name_8_0= KEYWORD_73 ) ) otherlv_9= KEYWORD_4 ( (lv_number_10_0= ruleConditionalOrExpression ) ) otherlv_11= KEYWORD_5 ) | ( ( (lv_name_12_0= KEYWORD_76 ) ) otherlv_13= KEYWORD_4 ( (lv_number_14_0= ruleConditionalOrExpression ) ) otherlv_15= KEYWORD_5 ) | ( ( (lv_name_16_0= KEYWORD_77 ) ) otherlv_17= KEYWORD_4 ( (lv_number_18_0= ruleConditionalOrExpression ) ) otherlv_19= KEYWORD_5 ) | ( ( (lv_name_20_0= KEYWORD_83 ) ) otherlv_21= KEYWORD_4 ( (lv_number_22_0= ruleConditionalOrExpression ) ) otherlv_23= KEYWORD_5 ) | ( ( (lv_name_24_0= KEYWORD_84 ) ) otherlv_25= KEYWORD_4 ( (lv_number_26_0= ruleConditionalOrExpression ) ) otherlv_27= KEYWORD_5 ) | ( ( (lv_name_28_0= KEYWORD_85 ) ) otherlv_29= KEYWORD_4 ( (lv_number_30_0= ruleConditionalOrExpression ) ) otherlv_31= KEYWORD_5 ) | ( ( (lv_name_32_0= KEYWORD_86 ) ) otherlv_33= KEYWORD_4 ( (lv_number_34_0= ruleConditionalOrExpression ) ) otherlv_35= KEYWORD_5 ) | ( ( (lv_name_36_0= KEYWORD_74 ) ) otherlv_37= KEYWORD_4 ( (lv_number_38_0= ruleConditionalOrExpression ) ) otherlv_39= KEYWORD_5 ) | ( ( (lv_name_40_0= KEYWORD_93 ) ) otherlv_41= KEYWORD_4 ( (lv_number_42_0= ruleConditionalOrExpression ) ) otherlv_43= KEYWORD_5 ) | ( ( (lv_name_44_0= KEYWORD_75 ) ) otherlv_45= KEYWORD_4 ( (lv_number_46_0= ruleConditionalOrExpression ) ) otherlv_47= KEYWORD_5 ) | ( ( (lv_name_48_0= KEYWORD_113 ) ) otherlv_49= KEYWORD_4 ( (lv_number_50_0= ruleConditionalOrExpression ) ) otherlv_51= KEYWORD_5 ) | ( ( (lv_name_52_0= KEYWORD_124 ) ) otherlv_53= KEYWORD_4 ( (lv_number_54_0= ruleConditionalOrExpression ) ) otherlv_55= KEYWORD_5 ) | ( ( (lv_name_56_0= KEYWORD_114 ) ) otherlv_57= KEYWORD_4 ( (lv_number_58_0= ruleConditionalOrExpression ) ) otherlv_59= KEYWORD_5 ) | ( ( (lv_name_60_0= KEYWORD_117 ) ) otherlv_61= KEYWORD_4 ( (lv_number_62_0= ruleConditionalOrExpression ) ) otherlv_63= KEYWORD_5 ) | ( ( (lv_name_64_0= KEYWORD_118 ) ) otherlv_65= KEYWORD_4 ( (lv_number_66_0= ruleConditionalOrExpression ) ) otherlv_67= KEYWORD_5 ) | ( ( (lv_name_68_0= KEYWORD_120 ) ) otherlv_69= KEYWORD_4 ( (lv_number_70_0= ruleConditionalOrExpression ) ) otherlv_71= KEYWORD_5 ) | ( ( (lv_name_72_0= KEYWORD_121 ) ) otherlv_73= KEYWORD_4 ( (lv_number_74_0= ruleConditionalOrExpression ) ) otherlv_75= KEYWORD_5 ) | ( ( (lv_name_76_0= KEYWORD_122 ) ) otherlv_77= KEYWORD_4 ( (lv_number_78_0= ruleConditionalOrExpression ) ) otherlv_79= KEYWORD_5 ) | ( ( (lv_name_80_0= KEYWORD_123 ) ) otherlv_81= KEYWORD_4 ( (lv_number_82_0= ruleConditionalOrExpression ) ) otherlv_83= KEYWORD_5 ) | ( ( (lv_name_84_0= KEYWORD_115 ) ) otherlv_85= KEYWORD_4 ( (lv_number_86_0= ruleConditionalOrExpression ) ) otherlv_87= KEYWORD_5 ) | ( ( (lv_name_88_0= KEYWORD_126 ) ) otherlv_89= KEYWORD_4 ( (lv_number_90_0= ruleConditionalOrExpression ) ) otherlv_91= KEYWORD_5 ) | ( ( (lv_name_92_0= KEYWORD_116 ) ) otherlv_93= KEYWORD_4 ( (lv_number_94_0= ruleConditionalOrExpression ) ) otherlv_95= KEYWORD_5 ) | ( ( (lv_name_96_0= KEYWORD_127 ) ) otherlv_97= KEYWORD_4 ( (lv_persistable_98_0= ruleConditionalOrExpression ) ) otherlv_99= KEYWORD_5 ) | ( ( (lv_name_100_0= KEYWORD_125 ) ) otherlv_101= KEYWORD_4 ( (lv_persistable_102_0= ruleConditionalOrExpression ) ) otherlv_103= KEYWORD_5 ) | ( ( (lv_name_104_0= KEYWORD_129 ) ) otherlv_105= KEYWORD_4 ( (lv_persistable_106_0= ruleConditionalOrExpression ) ) otherlv_107= KEYWORD_5 ) | ( ( (lv_name_108_0= KEYWORD_128 ) ) otherlv_109= KEYWORD_4 ( (lv_persistable_110_0= ruleConditionalOrExpression ) ) otherlv_111= KEYWORD_5 ) | ( ( (lv_name_112_0= KEYWORD_48 ) ) otherlv_113= KEYWORD_4 ( (lv_isDistinct_114_0= KEYWORD_71 ) )? ( (lv_aggregateArgument_115_0= ruleConditionalOrExpression ) ) otherlv_116= KEYWORD_5 ) | ( ( (lv_name_117_0= KEYWORD_32 ) ) otherlv_118= KEYWORD_4 ( (lv_isDistinct_119_0= KEYWORD_71 ) )? ( (lv_aggregateArgument_120_0= ruleConditionalOrExpression ) ) otherlv_121= KEYWORD_5 ) | ( ( (lv_name_122_0= KEYWORD_31 ) ) otherlv_123= KEYWORD_4 ( (lv_aggregateArgument_124_0= ruleConditionalOrExpression ) ) otherlv_125= KEYWORD_5 ) | ( ( (lv_name_126_0= KEYWORD_30 ) ) otherlv_127= KEYWORD_4 ( (lv_aggregateArgument_128_0= ruleConditionalOrExpression ) ) otherlv_129= KEYWORD_5 ) | ( ( (lv_name_130_0= KEYWORD_27 ) ) otherlv_131= KEYWORD_4 ( (lv_isDistinct_132_0= KEYWORD_71 ) )? ( (lv_aggregateArgument_133_0= ruleConditionalOrExpression ) ) otherlv_134= KEYWORD_5 ) )
             {
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2817:1: ( ( () otherlv_1= KEYWORD_72 otherlv_2= KEYWORD_4 ( (lv_number_3_0= ruleConditionalOrExpression ) ) otherlv_4= KEYWORD_5 ) | ( () otherlv_6= KEYWORD_87 otherlv_7= KEYWORD_4 ( (lv_number_8_0= ruleConditionalOrExpression ) ) otherlv_9= KEYWORD_5 ) | ( () otherlv_11= KEYWORD_73 otherlv_12= KEYWORD_4 ( (lv_number_13_0= ruleConditionalOrExpression ) ) otherlv_14= KEYWORD_5 ) | ( () otherlv_16= KEYWORD_76 otherlv_17= KEYWORD_4 ( (lv_number_18_0= ruleConditionalOrExpression ) ) otherlv_19= KEYWORD_5 ) | ( () otherlv_21= KEYWORD_77 otherlv_22= KEYWORD_4 ( (lv_number_23_0= ruleConditionalOrExpression ) ) otherlv_24= KEYWORD_5 ) | ( () otherlv_26= KEYWORD_83 otherlv_27= KEYWORD_4 ( (lv_number_28_0= ruleConditionalOrExpression ) ) otherlv_29= KEYWORD_5 ) | ( () otherlv_31= KEYWORD_84 otherlv_32= KEYWORD_4 ( (lv_number_33_0= ruleConditionalOrExpression ) ) otherlv_34= KEYWORD_5 ) | ( () otherlv_36= KEYWORD_85 otherlv_37= KEYWORD_4 ( (lv_number_38_0= ruleConditionalOrExpression ) ) otherlv_39= KEYWORD_5 ) | ( () otherlv_41= KEYWORD_86 otherlv_42= KEYWORD_4 ( (lv_number_43_0= ruleConditionalOrExpression ) ) otherlv_44= KEYWORD_5 ) | ( () otherlv_46= KEYWORD_74 otherlv_47= KEYWORD_4 ( (lv_number_48_0= ruleConditionalOrExpression ) ) otherlv_49= KEYWORD_5 ) | ( () otherlv_51= KEYWORD_93 otherlv_52= KEYWORD_4 ( (lv_number_53_0= ruleConditionalOrExpression ) ) otherlv_54= KEYWORD_5 ) | ( () otherlv_56= KEYWORD_75 otherlv_57= KEYWORD_4 ( (lv_number_58_0= ruleConditionalOrExpression ) ) otherlv_59= KEYWORD_5 ) | ( () otherlv_61= KEYWORD_113 otherlv_62= KEYWORD_4 ( (lv_number_63_0= ruleConditionalOrExpression ) ) otherlv_64= KEYWORD_5 ) | ( () otherlv_66= KEYWORD_124 otherlv_67= KEYWORD_4 ( (lv_number_68_0= ruleConditionalOrExpression ) ) otherlv_69= KEYWORD_5 ) | ( () otherlv_71= KEYWORD_114 otherlv_72= KEYWORD_4 ( (lv_number_73_0= ruleConditionalOrExpression ) ) otherlv_74= KEYWORD_5 ) | ( () otherlv_76= KEYWORD_117 otherlv_77= KEYWORD_4 ( (lv_number_78_0= ruleConditionalOrExpression ) ) otherlv_79= KEYWORD_5 ) | ( () otherlv_81= KEYWORD_118 otherlv_82= KEYWORD_4 ( (lv_number_83_0= ruleConditionalOrExpression ) ) otherlv_84= KEYWORD_5 ) | ( () otherlv_86= KEYWORD_120 otherlv_87= KEYWORD_4 ( (lv_number_88_0= ruleConditionalOrExpression ) ) otherlv_89= KEYWORD_5 ) | ( () otherlv_91= KEYWORD_121 otherlv_92= KEYWORD_4 ( (lv_number_93_0= ruleConditionalOrExpression ) ) otherlv_94= KEYWORD_5 ) | ( () otherlv_96= KEYWORD_122 otherlv_97= KEYWORD_4 ( (lv_number_98_0= ruleConditionalOrExpression ) ) otherlv_99= KEYWORD_5 ) | ( () otherlv_101= KEYWORD_123 otherlv_102= KEYWORD_4 ( (lv_number_103_0= ruleConditionalOrExpression ) ) otherlv_104= KEYWORD_5 ) | ( () otherlv_106= KEYWORD_115 otherlv_107= KEYWORD_4 ( (lv_number_108_0= ruleConditionalOrExpression ) ) otherlv_109= KEYWORD_5 ) | ( () otherlv_111= KEYWORD_126 otherlv_112= KEYWORD_4 ( (lv_number_113_0= ruleConditionalOrExpression ) ) otherlv_114= KEYWORD_5 ) | ( () otherlv_116= KEYWORD_116 otherlv_117= KEYWORD_4 ( (lv_number_118_0= ruleConditionalOrExpression ) ) otherlv_119= KEYWORD_5 ) | ( () otherlv_121= KEYWORD_127 otherlv_122= KEYWORD_4 ( (lv_persistable_123_0= ruleConditionalOrExpression ) ) otherlv_124= KEYWORD_5 ) | ( () otherlv_126= KEYWORD_125 otherlv_127= KEYWORD_4 ( (lv_persistable_128_0= ruleConditionalOrExpression ) ) otherlv_129= KEYWORD_5 ) | ( () otherlv_131= KEYWORD_129 otherlv_132= KEYWORD_4 ( (lv_persistable_133_0= ruleConditionalOrExpression ) ) otherlv_134= KEYWORD_5 ) | ( () otherlv_136= KEYWORD_128 otherlv_137= KEYWORD_4 ( (lv_persistable_138_0= ruleConditionalOrExpression ) ) otherlv_139= KEYWORD_5 ) | ( () otherlv_141= KEYWORD_48 otherlv_142= KEYWORD_4 ( (lv_isDistinct_143_0= KEYWORD_71 ) )? ( (lv_aggregateArgument_144_0= ruleConditionalOrExpression ) ) otherlv_145= KEYWORD_5 ) | ( () otherlv_147= KEYWORD_32 otherlv_148= KEYWORD_4 ( (lv_isDistinct_149_0= KEYWORD_71 ) )? ( (lv_aggregateArgument_150_0= ruleConditionalOrExpression ) ) otherlv_151= KEYWORD_5 ) | ( () otherlv_153= KEYWORD_31 otherlv_154= KEYWORD_4 ( (lv_aggregateArgument_155_0= ruleConditionalOrExpression ) ) otherlv_156= KEYWORD_5 ) | ( () otherlv_158= KEYWORD_30 otherlv_159= KEYWORD_4 ( (lv_aggregateArgument_160_0= ruleConditionalOrExpression ) ) otherlv_161= KEYWORD_5 ) | ( () otherlv_163= KEYWORD_27 otherlv_164= KEYWORD_4 ( (lv_isDistinct_165_0= KEYWORD_71 ) )? ( (lv_aggregateArgument_166_0= ruleConditionalOrExpression ) ) otherlv_167= KEYWORD_5 ) )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2817:1: ( ( ( (lv_name_0_0= KEYWORD_72 ) ) otherlv_1= KEYWORD_4 ( (lv_number_2_0= ruleConditionalOrExpression ) ) otherlv_3= KEYWORD_5 ) | ( ( (lv_name_4_0= KEYWORD_87 ) ) otherlv_5= KEYWORD_4 ( (lv_number_6_0= ruleConditionalOrExpression ) ) otherlv_7= KEYWORD_5 ) | ( ( (lv_name_8_0= KEYWORD_73 ) ) otherlv_9= KEYWORD_4 ( (lv_number_10_0= ruleConditionalOrExpression ) ) otherlv_11= KEYWORD_5 ) | ( ( (lv_name_12_0= KEYWORD_76 ) ) otherlv_13= KEYWORD_4 ( (lv_number_14_0= ruleConditionalOrExpression ) ) otherlv_15= KEYWORD_5 ) | ( ( (lv_name_16_0= KEYWORD_77 ) ) otherlv_17= KEYWORD_4 ( (lv_number_18_0= ruleConditionalOrExpression ) ) otherlv_19= KEYWORD_5 ) | ( ( (lv_name_20_0= KEYWORD_83 ) ) otherlv_21= KEYWORD_4 ( (lv_number_22_0= ruleConditionalOrExpression ) ) otherlv_23= KEYWORD_5 ) | ( ( (lv_name_24_0= KEYWORD_84 ) ) otherlv_25= KEYWORD_4 ( (lv_number_26_0= ruleConditionalOrExpression ) ) otherlv_27= KEYWORD_5 ) | ( ( (lv_name_28_0= KEYWORD_85 ) ) otherlv_29= KEYWORD_4 ( (lv_number_30_0= ruleConditionalOrExpression ) ) otherlv_31= KEYWORD_5 ) | ( ( (lv_name_32_0= KEYWORD_86 ) ) otherlv_33= KEYWORD_4 ( (lv_number_34_0= ruleConditionalOrExpression ) ) otherlv_35= KEYWORD_5 ) | ( ( (lv_name_36_0= KEYWORD_74 ) ) otherlv_37= KEYWORD_4 ( (lv_number_38_0= ruleConditionalOrExpression ) ) otherlv_39= KEYWORD_5 ) | ( ( (lv_name_40_0= KEYWORD_93 ) ) otherlv_41= KEYWORD_4 ( (lv_number_42_0= ruleConditionalOrExpression ) ) otherlv_43= KEYWORD_5 ) | ( ( (lv_name_44_0= KEYWORD_75 ) ) otherlv_45= KEYWORD_4 ( (lv_number_46_0= ruleConditionalOrExpression ) ) otherlv_47= KEYWORD_5 ) | ( ( (lv_name_48_0= KEYWORD_113 ) ) otherlv_49= KEYWORD_4 ( (lv_number_50_0= ruleConditionalOrExpression ) ) otherlv_51= KEYWORD_5 ) | ( ( (lv_name_52_0= KEYWORD_124 ) ) otherlv_53= KEYWORD_4 ( (lv_number_54_0= ruleConditionalOrExpression ) ) otherlv_55= KEYWORD_5 ) | ( ( (lv_name_56_0= KEYWORD_114 ) ) otherlv_57= KEYWORD_4 ( (lv_number_58_0= ruleConditionalOrExpression ) ) otherlv_59= KEYWORD_5 ) | ( ( (lv_name_60_0= KEYWORD_117 ) ) otherlv_61= KEYWORD_4 ( (lv_number_62_0= ruleConditionalOrExpression ) ) otherlv_63= KEYWORD_5 ) | ( ( (lv_name_64_0= KEYWORD_118 ) ) otherlv_65= KEYWORD_4 ( (lv_number_66_0= ruleConditionalOrExpression ) ) otherlv_67= KEYWORD_5 ) | ( ( (lv_name_68_0= KEYWORD_120 ) ) otherlv_69= KEYWORD_4 ( (lv_number_70_0= ruleConditionalOrExpression ) ) otherlv_71= KEYWORD_5 ) | ( ( (lv_name_72_0= KEYWORD_121 ) ) otherlv_73= KEYWORD_4 ( (lv_number_74_0= ruleConditionalOrExpression ) ) otherlv_75= KEYWORD_5 ) | ( ( (lv_name_76_0= KEYWORD_122 ) ) otherlv_77= KEYWORD_4 ( (lv_number_78_0= ruleConditionalOrExpression ) ) otherlv_79= KEYWORD_5 ) | ( ( (lv_name_80_0= KEYWORD_123 ) ) otherlv_81= KEYWORD_4 ( (lv_number_82_0= ruleConditionalOrExpression ) ) otherlv_83= KEYWORD_5 ) | ( ( (lv_name_84_0= KEYWORD_115 ) ) otherlv_85= KEYWORD_4 ( (lv_number_86_0= ruleConditionalOrExpression ) ) otherlv_87= KEYWORD_5 ) | ( ( (lv_name_88_0= KEYWORD_126 ) ) otherlv_89= KEYWORD_4 ( (lv_number_90_0= ruleConditionalOrExpression ) ) otherlv_91= KEYWORD_5 ) | ( ( (lv_name_92_0= KEYWORD_116 ) ) otherlv_93= KEYWORD_4 ( (lv_number_94_0= ruleConditionalOrExpression ) ) otherlv_95= KEYWORD_5 ) | ( ( (lv_name_96_0= KEYWORD_127 ) ) otherlv_97= KEYWORD_4 ( (lv_persistable_98_0= ruleConditionalOrExpression ) ) otherlv_99= KEYWORD_5 ) | ( ( (lv_name_100_0= KEYWORD_125 ) ) otherlv_101= KEYWORD_4 ( (lv_persistable_102_0= ruleConditionalOrExpression ) ) otherlv_103= KEYWORD_5 ) | ( ( (lv_name_104_0= KEYWORD_129 ) ) otherlv_105= KEYWORD_4 ( (lv_persistable_106_0= ruleConditionalOrExpression ) ) otherlv_107= KEYWORD_5 ) | ( ( (lv_name_108_0= KEYWORD_128 ) ) otherlv_109= KEYWORD_4 ( (lv_persistable_110_0= ruleConditionalOrExpression ) ) otherlv_111= KEYWORD_5 ) | ( ( (lv_name_112_0= KEYWORD_48 ) ) otherlv_113= KEYWORD_4 ( (lv_isDistinct_114_0= KEYWORD_71 ) )? ( (lv_aggregateArgument_115_0= ruleConditionalOrExpression ) ) otherlv_116= KEYWORD_5 ) | ( ( (lv_name_117_0= KEYWORD_32 ) ) otherlv_118= KEYWORD_4 ( (lv_isDistinct_119_0= KEYWORD_71 ) )? ( (lv_aggregateArgument_120_0= ruleConditionalOrExpression ) ) otherlv_121= KEYWORD_5 ) | ( ( (lv_name_122_0= KEYWORD_31 ) ) otherlv_123= KEYWORD_4 ( (lv_aggregateArgument_124_0= ruleConditionalOrExpression ) ) otherlv_125= KEYWORD_5 ) | ( ( (lv_name_126_0= KEYWORD_30 ) ) otherlv_127= KEYWORD_4 ( (lv_aggregateArgument_128_0= ruleConditionalOrExpression ) ) otherlv_129= KEYWORD_5 ) | ( ( (lv_name_130_0= KEYWORD_27 ) ) otherlv_131= KEYWORD_4 ( (lv_isDistinct_132_0= KEYWORD_71 ) )? ( (lv_aggregateArgument_133_0= ruleConditionalOrExpression ) ) otherlv_134= KEYWORD_5 ) )
             int alt56=33;
             switch ( input.LA(1) ) {
             case KEYWORD_72:
@@ -8321,54 +8321,56 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
             switch (alt56) {
                 case 1 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2817:2: ( () otherlv_1= KEYWORD_72 otherlv_2= KEYWORD_4 ( (lv_number_3_0= ruleConditionalOrExpression ) ) otherlv_4= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2817:2: ( ( (lv_name_0_0= KEYWORD_72 ) ) otherlv_1= KEYWORD_4 ( (lv_number_2_0= ruleConditionalOrExpression ) ) otherlv_3= KEYWORD_5 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2817:2: ( () otherlv_1= KEYWORD_72 otherlv_2= KEYWORD_4 ( (lv_number_3_0= ruleConditionalOrExpression ) ) otherlv_4= KEYWORD_5 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2817:3: () otherlv_1= KEYWORD_72 otherlv_2= KEYWORD_4 ( (lv_number_3_0= ruleConditionalOrExpression ) ) otherlv_4= KEYWORD_5
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2817:2: ( ( (lv_name_0_0= KEYWORD_72 ) ) otherlv_1= KEYWORD_4 ( (lv_number_2_0= ruleConditionalOrExpression ) ) otherlv_3= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2817:3: ( (lv_name_0_0= KEYWORD_72 ) ) otherlv_1= KEYWORD_4 ( (lv_number_2_0= ruleConditionalOrExpression ) ) otherlv_3= KEYWORD_5
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2817:3: ()
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2818:2: 
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2817:3: ( (lv_name_0_0= KEYWORD_72 ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2818:1: (lv_name_0_0= KEYWORD_72 )
                     {
-                    if ( state.backtracking==0 ) {
-                       
-                      	  /* */ 
-                      	
-                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2818:1: (lv_name_0_0= KEYWORD_72 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2819:3: lv_name_0_0= KEYWORD_72
+                    {
+                    lv_name_0_0=(Token)match(input,KEYWORD_72,FOLLOW_KEYWORD_72_in_ruleStaticMethodExpression5784); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                              current = forceCreateModelElement(
-                                  grammarAccess.getStaticMethodExpressionAccess().getExpressionAction_0_0(),
-                                  current);
+                              newLeafNode(lv_name_0_0, grammarAccess.getStaticMethodExpressionAccess().getNameMathAbsKeyword_0_0_0());
                           
                     }
-
-                    }
-
-                    otherlv_1=(Token)match(input,KEYWORD_72,FOLLOW_KEYWORD_72_in_ruleStaticMethodExpression5790); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_1, grammarAccess.getStaticMethodExpressionAccess().getMathAbsKeyword_0_1());
-                          
-                    }
-                    otherlv_2=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression5802); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_2, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_0_2());
-                          
-                    }
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2836:1: ( (lv_number_3_0= ruleConditionalOrExpression ) )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2837:1: (lv_number_3_0= ruleConditionalOrExpression )
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2837:1: (lv_number_3_0= ruleConditionalOrExpression )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2838:3: lv_number_3_0= ruleConditionalOrExpression
-                    {
-                    if ( state.backtracking==0 ) {
-                       
-                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_0_3_0()); 
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getStaticMethodExpressionRule());
+                      	        }
+                             		setWithLastConsumed(current, "name", lv_name_0_0, "Math.abs");
                       	    
                     }
-                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression5822);
-                    lv_number_3_0=ruleConditionalOrExpression();
+
+                    }
+
+
+                    }
+
+                    otherlv_1=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression5808); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_1, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_0_1());
+                          
+                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2838:1: ( (lv_number_2_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2839:1: (lv_number_2_0= ruleConditionalOrExpression )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2839:1: (lv_number_2_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2840:3: lv_number_2_0= ruleConditionalOrExpression
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_0_2_0()); 
+                      	    
+                    }
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression5828);
+                    lv_number_2_0=ruleConditionalOrExpression();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -8380,7 +8382,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                              		set(
                              			current, 
                              			"number",
-                              		lv_number_3_0, 
+                              		lv_number_2_0, 
                               		"ConditionalOrExpression");
                       	        afterParserOrEnumRuleCall();
                       	    
@@ -8391,10 +8393,10 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_4=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression5835); if (state.failed) return current;
+                    otherlv_3=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression5841); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_4, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_0_4());
+                          	newLeafNode(otherlv_3, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_0_3());
                           
                     }
 
@@ -8404,54 +8406,56 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2860:6: ( () otherlv_6= KEYWORD_87 otherlv_7= KEYWORD_4 ( (lv_number_8_0= ruleConditionalOrExpression ) ) otherlv_9= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2862:6: ( ( (lv_name_4_0= KEYWORD_87 ) ) otherlv_5= KEYWORD_4 ( (lv_number_6_0= ruleConditionalOrExpression ) ) otherlv_7= KEYWORD_5 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2860:6: ( () otherlv_6= KEYWORD_87 otherlv_7= KEYWORD_4 ( (lv_number_8_0= ruleConditionalOrExpression ) ) otherlv_9= KEYWORD_5 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2860:7: () otherlv_6= KEYWORD_87 otherlv_7= KEYWORD_4 ( (lv_number_8_0= ruleConditionalOrExpression ) ) otherlv_9= KEYWORD_5
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2862:6: ( ( (lv_name_4_0= KEYWORD_87 ) ) otherlv_5= KEYWORD_4 ( (lv_number_6_0= ruleConditionalOrExpression ) ) otherlv_7= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2862:7: ( (lv_name_4_0= KEYWORD_87 ) ) otherlv_5= KEYWORD_4 ( (lv_number_6_0= ruleConditionalOrExpression ) ) otherlv_7= KEYWORD_5
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2860:7: ()
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2861:2: 
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2862:7: ( (lv_name_4_0= KEYWORD_87 ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2863:1: (lv_name_4_0= KEYWORD_87 )
                     {
-                    if ( state.backtracking==0 ) {
-                       
-                      	  /* */ 
-                      	
-                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2863:1: (lv_name_4_0= KEYWORD_87 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2864:3: lv_name_4_0= KEYWORD_87
+                    {
+                    lv_name_4_0=(Token)match(input,KEYWORD_87,FOLLOW_KEYWORD_87_in_ruleStaticMethodExpression5867); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                              current = forceCreateModelElement(
-                                  grammarAccess.getStaticMethodExpressionAccess().getExpressionAction_1_0(),
-                                  current);
+                              newLeafNode(lv_name_4_0, grammarAccess.getStaticMethodExpressionAccess().getNameMathSqrtKeyword_1_0_0());
                           
                     }
-
-                    }
-
-                    otherlv_6=(Token)match(input,KEYWORD_87,FOLLOW_KEYWORD_87_in_ruleStaticMethodExpression5867); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_6, grammarAccess.getStaticMethodExpressionAccess().getMathSqrtKeyword_1_1());
-                          
-                    }
-                    otherlv_7=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression5879); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_7, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_1_2());
-                          
-                    }
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2879:1: ( (lv_number_8_0= ruleConditionalOrExpression ) )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2880:1: (lv_number_8_0= ruleConditionalOrExpression )
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2880:1: (lv_number_8_0= ruleConditionalOrExpression )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2881:3: lv_number_8_0= ruleConditionalOrExpression
-                    {
-                    if ( state.backtracking==0 ) {
-                       
-                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_1_3_0()); 
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getStaticMethodExpressionRule());
+                      	        }
+                             		setWithLastConsumed(current, "name", lv_name_4_0, "Math.sqrt");
                       	    
                     }
-                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression5899);
-                    lv_number_8_0=ruleConditionalOrExpression();
+
+                    }
+
+
+                    }
+
+                    otherlv_5=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression5891); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_5, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_1_1());
+                          
+                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2883:1: ( (lv_number_6_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2884:1: (lv_number_6_0= ruleConditionalOrExpression )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2884:1: (lv_number_6_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2885:3: lv_number_6_0= ruleConditionalOrExpression
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_1_2_0()); 
+                      	    
+                    }
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression5911);
+                    lv_number_6_0=ruleConditionalOrExpression();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -8463,7 +8467,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                              		set(
                              			current, 
                              			"number",
-                              		lv_number_8_0, 
+                              		lv_number_6_0, 
                               		"ConditionalOrExpression");
                       	        afterParserOrEnumRuleCall();
                       	    
@@ -8474,10 +8478,10 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_9=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression5912); if (state.failed) return current;
+                    otherlv_7=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression5924); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_9, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_1_4());
+                          	newLeafNode(otherlv_7, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_1_3());
                           
                     }
 
@@ -8487,54 +8491,56 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2903:6: ( () otherlv_11= KEYWORD_73 otherlv_12= KEYWORD_4 ( (lv_number_13_0= ruleConditionalOrExpression ) ) otherlv_14= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2907:6: ( ( (lv_name_8_0= KEYWORD_73 ) ) otherlv_9= KEYWORD_4 ( (lv_number_10_0= ruleConditionalOrExpression ) ) otherlv_11= KEYWORD_5 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2903:6: ( () otherlv_11= KEYWORD_73 otherlv_12= KEYWORD_4 ( (lv_number_13_0= ruleConditionalOrExpression ) ) otherlv_14= KEYWORD_5 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2903:7: () otherlv_11= KEYWORD_73 otherlv_12= KEYWORD_4 ( (lv_number_13_0= ruleConditionalOrExpression ) ) otherlv_14= KEYWORD_5
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2907:6: ( ( (lv_name_8_0= KEYWORD_73 ) ) otherlv_9= KEYWORD_4 ( (lv_number_10_0= ruleConditionalOrExpression ) ) otherlv_11= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2907:7: ( (lv_name_8_0= KEYWORD_73 ) ) otherlv_9= KEYWORD_4 ( (lv_number_10_0= ruleConditionalOrExpression ) ) otherlv_11= KEYWORD_5
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2903:7: ()
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2904:2: 
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2907:7: ( (lv_name_8_0= KEYWORD_73 ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2908:1: (lv_name_8_0= KEYWORD_73 )
                     {
-                    if ( state.backtracking==0 ) {
-                       
-                      	  /* */ 
-                      	
-                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2908:1: (lv_name_8_0= KEYWORD_73 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2909:3: lv_name_8_0= KEYWORD_73
+                    {
+                    lv_name_8_0=(Token)match(input,KEYWORD_73,FOLLOW_KEYWORD_73_in_ruleStaticMethodExpression5950); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                              current = forceCreateModelElement(
-                                  grammarAccess.getStaticMethodExpressionAccess().getExpressionAction_2_0(),
-                                  current);
+                              newLeafNode(lv_name_8_0, grammarAccess.getStaticMethodExpressionAccess().getNameMathCosKeyword_2_0_0());
                           
                     }
-
-                    }
-
-                    otherlv_11=(Token)match(input,KEYWORD_73,FOLLOW_KEYWORD_73_in_ruleStaticMethodExpression5944); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_11, grammarAccess.getStaticMethodExpressionAccess().getMathCosKeyword_2_1());
-                          
-                    }
-                    otherlv_12=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression5956); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_12, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_2_2());
-                          
-                    }
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2922:1: ( (lv_number_13_0= ruleConditionalOrExpression ) )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2923:1: (lv_number_13_0= ruleConditionalOrExpression )
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2923:1: (lv_number_13_0= ruleConditionalOrExpression )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2924:3: lv_number_13_0= ruleConditionalOrExpression
-                    {
-                    if ( state.backtracking==0 ) {
-                       
-                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_2_3_0()); 
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getStaticMethodExpressionRule());
+                      	        }
+                             		setWithLastConsumed(current, "name", lv_name_8_0, "Math.cos");
                       	    
                     }
-                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression5976);
-                    lv_number_13_0=ruleConditionalOrExpression();
+
+                    }
+
+
+                    }
+
+                    otherlv_9=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression5974); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_9, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_2_1());
+                          
+                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2928:1: ( (lv_number_10_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2929:1: (lv_number_10_0= ruleConditionalOrExpression )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2929:1: (lv_number_10_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2930:3: lv_number_10_0= ruleConditionalOrExpression
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_2_2_0()); 
+                      	    
+                    }
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression5994);
+                    lv_number_10_0=ruleConditionalOrExpression();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -8546,7 +8552,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                              		set(
                              			current, 
                              			"number",
-                              		lv_number_13_0, 
+                              		lv_number_10_0, 
                               		"ConditionalOrExpression");
                       	        afterParserOrEnumRuleCall();
                       	    
@@ -8557,10 +8563,10 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_14=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression5989); if (state.failed) return current;
+                    otherlv_11=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression6007); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_14, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_2_4());
+                          	newLeafNode(otherlv_11, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_2_3());
                           
                     }
 
@@ -8570,53 +8576,140 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2946:6: ( () otherlv_16= KEYWORD_76 otherlv_17= KEYWORD_4 ( (lv_number_18_0= ruleConditionalOrExpression ) ) otherlv_19= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2952:6: ( ( (lv_name_12_0= KEYWORD_76 ) ) otherlv_13= KEYWORD_4 ( (lv_number_14_0= ruleConditionalOrExpression ) ) otherlv_15= KEYWORD_5 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2946:6: ( () otherlv_16= KEYWORD_76 otherlv_17= KEYWORD_4 ( (lv_number_18_0= ruleConditionalOrExpression ) ) otherlv_19= KEYWORD_5 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2946:7: () otherlv_16= KEYWORD_76 otherlv_17= KEYWORD_4 ( (lv_number_18_0= ruleConditionalOrExpression ) ) otherlv_19= KEYWORD_5
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2952:6: ( ( (lv_name_12_0= KEYWORD_76 ) ) otherlv_13= KEYWORD_4 ( (lv_number_14_0= ruleConditionalOrExpression ) ) otherlv_15= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2952:7: ( (lv_name_12_0= KEYWORD_76 ) ) otherlv_13= KEYWORD_4 ( (lv_number_14_0= ruleConditionalOrExpression ) ) otherlv_15= KEYWORD_5
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2946:7: ()
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2947:2: 
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2952:7: ( (lv_name_12_0= KEYWORD_76 ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2953:1: (lv_name_12_0= KEYWORD_76 )
                     {
-                    if ( state.backtracking==0 ) {
-                       
-                      	  /* */ 
-                      	
-                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2953:1: (lv_name_12_0= KEYWORD_76 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2954:3: lv_name_12_0= KEYWORD_76
+                    {
+                    lv_name_12_0=(Token)match(input,KEYWORD_76,FOLLOW_KEYWORD_76_in_ruleStaticMethodExpression6033); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                              current = forceCreateModelElement(
-                                  grammarAccess.getStaticMethodExpressionAccess().getExpressionAction_3_0(),
-                                  current);
+                              newLeafNode(lv_name_12_0, grammarAccess.getStaticMethodExpressionAccess().getNameMathSinKeyword_3_0_0());
                           
                     }
-
-                    }
-
-                    otherlv_16=(Token)match(input,KEYWORD_76,FOLLOW_KEYWORD_76_in_ruleStaticMethodExpression6021); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_16, grammarAccess.getStaticMethodExpressionAccess().getMathSinKeyword_3_1());
-                          
-                    }
-                    otherlv_17=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression6033); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_17, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_3_2());
-                          
-                    }
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2965:1: ( (lv_number_18_0= ruleConditionalOrExpression ) )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2966:1: (lv_number_18_0= ruleConditionalOrExpression )
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2966:1: (lv_number_18_0= ruleConditionalOrExpression )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2967:3: lv_number_18_0= ruleConditionalOrExpression
-                    {
-                    if ( state.backtracking==0 ) {
-                       
-                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_3_3_0()); 
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getStaticMethodExpressionRule());
+                      	        }
+                             		setWithLastConsumed(current, "name", lv_name_12_0, "Math.sin");
                       	    
                     }
-                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression6053);
+
+                    }
+
+
+                    }
+
+                    otherlv_13=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression6057); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_13, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_3_1());
+                          
+                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2973:1: ( (lv_number_14_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2974:1: (lv_number_14_0= ruleConditionalOrExpression )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2974:1: (lv_number_14_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2975:3: lv_number_14_0= ruleConditionalOrExpression
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_3_2_0()); 
+                      	    
+                    }
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression6077);
+                    lv_number_14_0=ruleConditionalOrExpression();
+
+                    state._fsp--;
+                    if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      	        if (current==null) {
+                      	            current = createModelElementForParent(grammarAccess.getStaticMethodExpressionRule());
+                      	        }
+                             		set(
+                             			current, 
+                             			"number",
+                              		lv_number_14_0, 
+                              		"ConditionalOrExpression");
+                      	        afterParserOrEnumRuleCall();
+                      	    
+                    }
+
+                    }
+
+
+                    }
+
+                    otherlv_15=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression6090); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_15, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_3_3());
+                          
+                    }
+
+                    }
+
+
+                    }
+                    break;
+                case 5 :
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2997:6: ( ( (lv_name_16_0= KEYWORD_77 ) ) otherlv_17= KEYWORD_4 ( (lv_number_18_0= ruleConditionalOrExpression ) ) otherlv_19= KEYWORD_5 )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2997:6: ( ( (lv_name_16_0= KEYWORD_77 ) ) otherlv_17= KEYWORD_4 ( (lv_number_18_0= ruleConditionalOrExpression ) ) otherlv_19= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2997:7: ( (lv_name_16_0= KEYWORD_77 ) ) otherlv_17= KEYWORD_4 ( (lv_number_18_0= ruleConditionalOrExpression ) ) otherlv_19= KEYWORD_5
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2997:7: ( (lv_name_16_0= KEYWORD_77 ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2998:1: (lv_name_16_0= KEYWORD_77 )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2998:1: (lv_name_16_0= KEYWORD_77 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2999:3: lv_name_16_0= KEYWORD_77
+                    {
+                    lv_name_16_0=(Token)match(input,KEYWORD_77,FOLLOW_KEYWORD_77_in_ruleStaticMethodExpression6116); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              newLeafNode(lv_name_16_0, grammarAccess.getStaticMethodExpressionAccess().getNameMathTanKeyword_4_0_0());
+                          
+                    }
+                    if ( state.backtracking==0 ) {
+
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getStaticMethodExpressionRule());
+                      	        }
+                             		setWithLastConsumed(current, "name", lv_name_16_0, "Math.tan");
+                      	    
+                    }
+
+                    }
+
+
+                    }
+
+                    otherlv_17=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression6140); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_17, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_4_1());
+                          
+                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3018:1: ( (lv_number_18_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3019:1: (lv_number_18_0= ruleConditionalOrExpression )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3019:1: (lv_number_18_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3020:3: lv_number_18_0= ruleConditionalOrExpression
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_4_2_0()); 
+                      	    
+                    }
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression6160);
                     lv_number_18_0=ruleConditionalOrExpression();
 
                     state._fsp--;
@@ -8640,93 +8733,10 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_19=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression6066); if (state.failed) return current;
+                    otherlv_19=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression6173); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_19, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_3_4());
-                          
-                    }
-
-                    }
-
-
-                    }
-                    break;
-                case 5 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2989:6: ( () otherlv_21= KEYWORD_77 otherlv_22= KEYWORD_4 ( (lv_number_23_0= ruleConditionalOrExpression ) ) otherlv_24= KEYWORD_5 )
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2989:6: ( () otherlv_21= KEYWORD_77 otherlv_22= KEYWORD_4 ( (lv_number_23_0= ruleConditionalOrExpression ) ) otherlv_24= KEYWORD_5 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2989:7: () otherlv_21= KEYWORD_77 otherlv_22= KEYWORD_4 ( (lv_number_23_0= ruleConditionalOrExpression ) ) otherlv_24= KEYWORD_5
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2989:7: ()
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:2990:2: 
-                    {
-                    if ( state.backtracking==0 ) {
-                       
-                      	  /* */ 
-                      	
-                    }
-                    if ( state.backtracking==0 ) {
-
-                              current = forceCreateModelElement(
-                                  grammarAccess.getStaticMethodExpressionAccess().getExpressionAction_4_0(),
-                                  current);
-                          
-                    }
-
-                    }
-
-                    otherlv_21=(Token)match(input,KEYWORD_77,FOLLOW_KEYWORD_77_in_ruleStaticMethodExpression6098); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_21, grammarAccess.getStaticMethodExpressionAccess().getMathTanKeyword_4_1());
-                          
-                    }
-                    otherlv_22=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression6110); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_22, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_4_2());
-                          
-                    }
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3008:1: ( (lv_number_23_0= ruleConditionalOrExpression ) )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3009:1: (lv_number_23_0= ruleConditionalOrExpression )
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3009:1: (lv_number_23_0= ruleConditionalOrExpression )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3010:3: lv_number_23_0= ruleConditionalOrExpression
-                    {
-                    if ( state.backtracking==0 ) {
-                       
-                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_4_3_0()); 
-                      	    
-                    }
-                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression6130);
-                    lv_number_23_0=ruleConditionalOrExpression();
-
-                    state._fsp--;
-                    if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                      	        if (current==null) {
-                      	            current = createModelElementForParent(grammarAccess.getStaticMethodExpressionRule());
-                      	        }
-                             		set(
-                             			current, 
-                             			"number",
-                              		lv_number_23_0, 
-                              		"ConditionalOrExpression");
-                      	        afterParserOrEnumRuleCall();
-                      	    
-                    }
-
-                    }
-
-
-                    }
-
-                    otherlv_24=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression6143); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_24, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_4_4());
+                          	newLeafNode(otherlv_19, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_4_3());
                           
                     }
 
@@ -8736,54 +8746,56 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 6 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3032:6: ( () otherlv_26= KEYWORD_83 otherlv_27= KEYWORD_4 ( (lv_number_28_0= ruleConditionalOrExpression ) ) otherlv_29= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3042:6: ( ( (lv_name_20_0= KEYWORD_83 ) ) otherlv_21= KEYWORD_4 ( (lv_number_22_0= ruleConditionalOrExpression ) ) otherlv_23= KEYWORD_5 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3032:6: ( () otherlv_26= KEYWORD_83 otherlv_27= KEYWORD_4 ( (lv_number_28_0= ruleConditionalOrExpression ) ) otherlv_29= KEYWORD_5 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3032:7: () otherlv_26= KEYWORD_83 otherlv_27= KEYWORD_4 ( (lv_number_28_0= ruleConditionalOrExpression ) ) otherlv_29= KEYWORD_5
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3042:6: ( ( (lv_name_20_0= KEYWORD_83 ) ) otherlv_21= KEYWORD_4 ( (lv_number_22_0= ruleConditionalOrExpression ) ) otherlv_23= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3042:7: ( (lv_name_20_0= KEYWORD_83 ) ) otherlv_21= KEYWORD_4 ( (lv_number_22_0= ruleConditionalOrExpression ) ) otherlv_23= KEYWORD_5
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3032:7: ()
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3033:2: 
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3042:7: ( (lv_name_20_0= KEYWORD_83 ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3043:1: (lv_name_20_0= KEYWORD_83 )
                     {
-                    if ( state.backtracking==0 ) {
-                       
-                      	  /* */ 
-                      	
-                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3043:1: (lv_name_20_0= KEYWORD_83 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3044:3: lv_name_20_0= KEYWORD_83
+                    {
+                    lv_name_20_0=(Token)match(input,KEYWORD_83,FOLLOW_KEYWORD_83_in_ruleStaticMethodExpression6199); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                              current = forceCreateModelElement(
-                                  grammarAccess.getStaticMethodExpressionAccess().getExpressionAction_5_0(),
-                                  current);
+                              newLeafNode(lv_name_20_0, grammarAccess.getStaticMethodExpressionAccess().getNameMathAcosKeyword_5_0_0());
                           
                     }
-
-                    }
-
-                    otherlv_26=(Token)match(input,KEYWORD_83,FOLLOW_KEYWORD_83_in_ruleStaticMethodExpression6175); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_26, grammarAccess.getStaticMethodExpressionAccess().getMathAcosKeyword_5_1());
-                          
-                    }
-                    otherlv_27=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression6187); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_27, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_5_2());
-                          
-                    }
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3051:1: ( (lv_number_28_0= ruleConditionalOrExpression ) )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3052:1: (lv_number_28_0= ruleConditionalOrExpression )
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3052:1: (lv_number_28_0= ruleConditionalOrExpression )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3053:3: lv_number_28_0= ruleConditionalOrExpression
-                    {
-                    if ( state.backtracking==0 ) {
-                       
-                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_5_3_0()); 
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getStaticMethodExpressionRule());
+                      	        }
+                             		setWithLastConsumed(current, "name", lv_name_20_0, "Math.acos");
                       	    
                     }
-                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression6207);
-                    lv_number_28_0=ruleConditionalOrExpression();
+
+                    }
+
+
+                    }
+
+                    otherlv_21=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression6223); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_21, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_5_1());
+                          
+                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3063:1: ( (lv_number_22_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3064:1: (lv_number_22_0= ruleConditionalOrExpression )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3064:1: (lv_number_22_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3065:3: lv_number_22_0= ruleConditionalOrExpression
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_5_2_0()); 
+                      	    
+                    }
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression6243);
+                    lv_number_22_0=ruleConditionalOrExpression();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -8795,7 +8807,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                              		set(
                              			current, 
                              			"number",
-                              		lv_number_28_0, 
+                              		lv_number_22_0, 
                               		"ConditionalOrExpression");
                       	        afterParserOrEnumRuleCall();
                       	    
@@ -8806,10 +8818,10 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_29=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression6220); if (state.failed) return current;
+                    otherlv_23=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression6256); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_29, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_5_4());
+                          	newLeafNode(otherlv_23, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_5_3());
                           
                     }
 
@@ -8819,54 +8831,56 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 7 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3075:6: ( () otherlv_31= KEYWORD_84 otherlv_32= KEYWORD_4 ( (lv_number_33_0= ruleConditionalOrExpression ) ) otherlv_34= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3087:6: ( ( (lv_name_24_0= KEYWORD_84 ) ) otherlv_25= KEYWORD_4 ( (lv_number_26_0= ruleConditionalOrExpression ) ) otherlv_27= KEYWORD_5 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3075:6: ( () otherlv_31= KEYWORD_84 otherlv_32= KEYWORD_4 ( (lv_number_33_0= ruleConditionalOrExpression ) ) otherlv_34= KEYWORD_5 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3075:7: () otherlv_31= KEYWORD_84 otherlv_32= KEYWORD_4 ( (lv_number_33_0= ruleConditionalOrExpression ) ) otherlv_34= KEYWORD_5
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3087:6: ( ( (lv_name_24_0= KEYWORD_84 ) ) otherlv_25= KEYWORD_4 ( (lv_number_26_0= ruleConditionalOrExpression ) ) otherlv_27= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3087:7: ( (lv_name_24_0= KEYWORD_84 ) ) otherlv_25= KEYWORD_4 ( (lv_number_26_0= ruleConditionalOrExpression ) ) otherlv_27= KEYWORD_5
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3075:7: ()
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3076:2: 
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3087:7: ( (lv_name_24_0= KEYWORD_84 ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3088:1: (lv_name_24_0= KEYWORD_84 )
                     {
-                    if ( state.backtracking==0 ) {
-                       
-                      	  /* */ 
-                      	
-                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3088:1: (lv_name_24_0= KEYWORD_84 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3089:3: lv_name_24_0= KEYWORD_84
+                    {
+                    lv_name_24_0=(Token)match(input,KEYWORD_84,FOLLOW_KEYWORD_84_in_ruleStaticMethodExpression6282); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                              current = forceCreateModelElement(
-                                  grammarAccess.getStaticMethodExpressionAccess().getExpressionAction_6_0(),
-                                  current);
+                              newLeafNode(lv_name_24_0, grammarAccess.getStaticMethodExpressionAccess().getNameMathAsinKeyword_6_0_0());
                           
                     }
-
-                    }
-
-                    otherlv_31=(Token)match(input,KEYWORD_84,FOLLOW_KEYWORD_84_in_ruleStaticMethodExpression6252); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_31, grammarAccess.getStaticMethodExpressionAccess().getMathAsinKeyword_6_1());
-                          
-                    }
-                    otherlv_32=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression6264); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_32, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_6_2());
-                          
-                    }
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3094:1: ( (lv_number_33_0= ruleConditionalOrExpression ) )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3095:1: (lv_number_33_0= ruleConditionalOrExpression )
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3095:1: (lv_number_33_0= ruleConditionalOrExpression )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3096:3: lv_number_33_0= ruleConditionalOrExpression
-                    {
-                    if ( state.backtracking==0 ) {
-                       
-                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_6_3_0()); 
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getStaticMethodExpressionRule());
+                      	        }
+                             		setWithLastConsumed(current, "name", lv_name_24_0, "Math.asin");
                       	    
                     }
-                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression6284);
-                    lv_number_33_0=ruleConditionalOrExpression();
+
+                    }
+
+
+                    }
+
+                    otherlv_25=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression6306); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_25, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_6_1());
+                          
+                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3108:1: ( (lv_number_26_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3109:1: (lv_number_26_0= ruleConditionalOrExpression )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3109:1: (lv_number_26_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3110:3: lv_number_26_0= ruleConditionalOrExpression
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_6_2_0()); 
+                      	    
+                    }
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression6326);
+                    lv_number_26_0=ruleConditionalOrExpression();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -8878,7 +8892,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                              		set(
                              			current, 
                              			"number",
-                              		lv_number_33_0, 
+                              		lv_number_26_0, 
                               		"ConditionalOrExpression");
                       	        afterParserOrEnumRuleCall();
                       	    
@@ -8889,10 +8903,10 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_34=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression6297); if (state.failed) return current;
+                    otherlv_27=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression6339); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_34, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_6_4());
+                          	newLeafNode(otherlv_27, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_6_3());
                           
                     }
 
@@ -8902,53 +8916,225 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 8 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3118:6: ( () otherlv_36= KEYWORD_85 otherlv_37= KEYWORD_4 ( (lv_number_38_0= ruleConditionalOrExpression ) ) otherlv_39= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3132:6: ( ( (lv_name_28_0= KEYWORD_85 ) ) otherlv_29= KEYWORD_4 ( (lv_number_30_0= ruleConditionalOrExpression ) ) otherlv_31= KEYWORD_5 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3118:6: ( () otherlv_36= KEYWORD_85 otherlv_37= KEYWORD_4 ( (lv_number_38_0= ruleConditionalOrExpression ) ) otherlv_39= KEYWORD_5 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3118:7: () otherlv_36= KEYWORD_85 otherlv_37= KEYWORD_4 ( (lv_number_38_0= ruleConditionalOrExpression ) ) otherlv_39= KEYWORD_5
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3132:6: ( ( (lv_name_28_0= KEYWORD_85 ) ) otherlv_29= KEYWORD_4 ( (lv_number_30_0= ruleConditionalOrExpression ) ) otherlv_31= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3132:7: ( (lv_name_28_0= KEYWORD_85 ) ) otherlv_29= KEYWORD_4 ( (lv_number_30_0= ruleConditionalOrExpression ) ) otherlv_31= KEYWORD_5
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3118:7: ()
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3119:2: 
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3132:7: ( (lv_name_28_0= KEYWORD_85 ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3133:1: (lv_name_28_0= KEYWORD_85 )
                     {
-                    if ( state.backtracking==0 ) {
-                       
-                      	  /* */ 
-                      	
-                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3133:1: (lv_name_28_0= KEYWORD_85 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3134:3: lv_name_28_0= KEYWORD_85
+                    {
+                    lv_name_28_0=(Token)match(input,KEYWORD_85,FOLLOW_KEYWORD_85_in_ruleStaticMethodExpression6365); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                              current = forceCreateModelElement(
-                                  grammarAccess.getStaticMethodExpressionAccess().getExpressionAction_7_0(),
-                                  current);
+                              newLeafNode(lv_name_28_0, grammarAccess.getStaticMethodExpressionAccess().getNameMathAtanKeyword_7_0_0());
                           
                     }
-
-                    }
-
-                    otherlv_36=(Token)match(input,KEYWORD_85,FOLLOW_KEYWORD_85_in_ruleStaticMethodExpression6329); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_36, grammarAccess.getStaticMethodExpressionAccess().getMathAtanKeyword_7_1());
-                          
-                    }
-                    otherlv_37=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression6341); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_37, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_7_2());
-                          
-                    }
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3137:1: ( (lv_number_38_0= ruleConditionalOrExpression ) )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3138:1: (lv_number_38_0= ruleConditionalOrExpression )
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3138:1: (lv_number_38_0= ruleConditionalOrExpression )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3139:3: lv_number_38_0= ruleConditionalOrExpression
-                    {
-                    if ( state.backtracking==0 ) {
-                       
-                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_7_3_0()); 
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getStaticMethodExpressionRule());
+                      	        }
+                             		setWithLastConsumed(current, "name", lv_name_28_0, "Math.atan");
                       	    
                     }
-                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression6361);
+
+                    }
+
+
+                    }
+
+                    otherlv_29=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression6389); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_29, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_7_1());
+                          
+                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3153:1: ( (lv_number_30_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3154:1: (lv_number_30_0= ruleConditionalOrExpression )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3154:1: (lv_number_30_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3155:3: lv_number_30_0= ruleConditionalOrExpression
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_7_2_0()); 
+                      	    
+                    }
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression6409);
+                    lv_number_30_0=ruleConditionalOrExpression();
+
+                    state._fsp--;
+                    if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      	        if (current==null) {
+                      	            current = createModelElementForParent(grammarAccess.getStaticMethodExpressionRule());
+                      	        }
+                             		set(
+                             			current, 
+                             			"number",
+                              		lv_number_30_0, 
+                              		"ConditionalOrExpression");
+                      	        afterParserOrEnumRuleCall();
+                      	    
+                    }
+
+                    }
+
+
+                    }
+
+                    otherlv_31=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression6422); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_31, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_7_3());
+                          
+                    }
+
+                    }
+
+
+                    }
+                    break;
+                case 9 :
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3177:6: ( ( (lv_name_32_0= KEYWORD_86 ) ) otherlv_33= KEYWORD_4 ( (lv_number_34_0= ruleConditionalOrExpression ) ) otherlv_35= KEYWORD_5 )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3177:6: ( ( (lv_name_32_0= KEYWORD_86 ) ) otherlv_33= KEYWORD_4 ( (lv_number_34_0= ruleConditionalOrExpression ) ) otherlv_35= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3177:7: ( (lv_name_32_0= KEYWORD_86 ) ) otherlv_33= KEYWORD_4 ( (lv_number_34_0= ruleConditionalOrExpression ) ) otherlv_35= KEYWORD_5
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3177:7: ( (lv_name_32_0= KEYWORD_86 ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3178:1: (lv_name_32_0= KEYWORD_86 )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3178:1: (lv_name_32_0= KEYWORD_86 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3179:3: lv_name_32_0= KEYWORD_86
+                    {
+                    lv_name_32_0=(Token)match(input,KEYWORD_86,FOLLOW_KEYWORD_86_in_ruleStaticMethodExpression6448); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              newLeafNode(lv_name_32_0, grammarAccess.getStaticMethodExpressionAccess().getNameMathCeilKeyword_8_0_0());
+                          
+                    }
+                    if ( state.backtracking==0 ) {
+
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getStaticMethodExpressionRule());
+                      	        }
+                             		setWithLastConsumed(current, "name", lv_name_32_0, "Math.ceil");
+                      	    
+                    }
+
+                    }
+
+
+                    }
+
+                    otherlv_33=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression6472); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_33, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_8_1());
+                          
+                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3198:1: ( (lv_number_34_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3199:1: (lv_number_34_0= ruleConditionalOrExpression )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3199:1: (lv_number_34_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3200:3: lv_number_34_0= ruleConditionalOrExpression
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_8_2_0()); 
+                      	    
+                    }
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression6492);
+                    lv_number_34_0=ruleConditionalOrExpression();
+
+                    state._fsp--;
+                    if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      	        if (current==null) {
+                      	            current = createModelElementForParent(grammarAccess.getStaticMethodExpressionRule());
+                      	        }
+                             		set(
+                             			current, 
+                             			"number",
+                              		lv_number_34_0, 
+                              		"ConditionalOrExpression");
+                      	        afterParserOrEnumRuleCall();
+                      	    
+                    }
+
+                    }
+
+
+                    }
+
+                    otherlv_35=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression6505); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_35, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_8_3());
+                          
+                    }
+
+                    }
+
+
+                    }
+                    break;
+                case 10 :
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3222:6: ( ( (lv_name_36_0= KEYWORD_74 ) ) otherlv_37= KEYWORD_4 ( (lv_number_38_0= ruleConditionalOrExpression ) ) otherlv_39= KEYWORD_5 )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3222:6: ( ( (lv_name_36_0= KEYWORD_74 ) ) otherlv_37= KEYWORD_4 ( (lv_number_38_0= ruleConditionalOrExpression ) ) otherlv_39= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3222:7: ( (lv_name_36_0= KEYWORD_74 ) ) otherlv_37= KEYWORD_4 ( (lv_number_38_0= ruleConditionalOrExpression ) ) otherlv_39= KEYWORD_5
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3222:7: ( (lv_name_36_0= KEYWORD_74 ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3223:1: (lv_name_36_0= KEYWORD_74 )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3223:1: (lv_name_36_0= KEYWORD_74 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3224:3: lv_name_36_0= KEYWORD_74
+                    {
+                    lv_name_36_0=(Token)match(input,KEYWORD_74,FOLLOW_KEYWORD_74_in_ruleStaticMethodExpression6531); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              newLeafNode(lv_name_36_0, grammarAccess.getStaticMethodExpressionAccess().getNameMathExpKeyword_9_0_0());
+                          
+                    }
+                    if ( state.backtracking==0 ) {
+
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getStaticMethodExpressionRule());
+                      	        }
+                             		setWithLastConsumed(current, "name", lv_name_36_0, "Math.exp");
+                      	    
+                    }
+
+                    }
+
+
+                    }
+
+                    otherlv_37=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression6555); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_37, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_9_1());
+                          
+                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3243:1: ( (lv_number_38_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3244:1: (lv_number_38_0= ruleConditionalOrExpression )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3244:1: (lv_number_38_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3245:3: lv_number_38_0= ruleConditionalOrExpression
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_9_2_0()); 
+                      	    
+                    }
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression6575);
                     lv_number_38_0=ruleConditionalOrExpression();
 
                     state._fsp--;
@@ -8972,176 +9158,10 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_39=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression6374); if (state.failed) return current;
+                    otherlv_39=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression6588); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_39, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_7_4());
-                          
-                    }
-
-                    }
-
-
-                    }
-                    break;
-                case 9 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3161:6: ( () otherlv_41= KEYWORD_86 otherlv_42= KEYWORD_4 ( (lv_number_43_0= ruleConditionalOrExpression ) ) otherlv_44= KEYWORD_5 )
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3161:6: ( () otherlv_41= KEYWORD_86 otherlv_42= KEYWORD_4 ( (lv_number_43_0= ruleConditionalOrExpression ) ) otherlv_44= KEYWORD_5 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3161:7: () otherlv_41= KEYWORD_86 otherlv_42= KEYWORD_4 ( (lv_number_43_0= ruleConditionalOrExpression ) ) otherlv_44= KEYWORD_5
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3161:7: ()
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3162:2: 
-                    {
-                    if ( state.backtracking==0 ) {
-                       
-                      	  /* */ 
-                      	
-                    }
-                    if ( state.backtracking==0 ) {
-
-                              current = forceCreateModelElement(
-                                  grammarAccess.getStaticMethodExpressionAccess().getExpressionAction_8_0(),
-                                  current);
-                          
-                    }
-
-                    }
-
-                    otherlv_41=(Token)match(input,KEYWORD_86,FOLLOW_KEYWORD_86_in_ruleStaticMethodExpression6406); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_41, grammarAccess.getStaticMethodExpressionAccess().getMathCeilKeyword_8_1());
-                          
-                    }
-                    otherlv_42=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression6418); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_42, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_8_2());
-                          
-                    }
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3180:1: ( (lv_number_43_0= ruleConditionalOrExpression ) )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3181:1: (lv_number_43_0= ruleConditionalOrExpression )
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3181:1: (lv_number_43_0= ruleConditionalOrExpression )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3182:3: lv_number_43_0= ruleConditionalOrExpression
-                    {
-                    if ( state.backtracking==0 ) {
-                       
-                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_8_3_0()); 
-                      	    
-                    }
-                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression6438);
-                    lv_number_43_0=ruleConditionalOrExpression();
-
-                    state._fsp--;
-                    if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                      	        if (current==null) {
-                      	            current = createModelElementForParent(grammarAccess.getStaticMethodExpressionRule());
-                      	        }
-                             		set(
-                             			current, 
-                             			"number",
-                              		lv_number_43_0, 
-                              		"ConditionalOrExpression");
-                      	        afterParserOrEnumRuleCall();
-                      	    
-                    }
-
-                    }
-
-
-                    }
-
-                    otherlv_44=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression6451); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_44, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_8_4());
-                          
-                    }
-
-                    }
-
-
-                    }
-                    break;
-                case 10 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3204:6: ( () otherlv_46= KEYWORD_74 otherlv_47= KEYWORD_4 ( (lv_number_48_0= ruleConditionalOrExpression ) ) otherlv_49= KEYWORD_5 )
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3204:6: ( () otherlv_46= KEYWORD_74 otherlv_47= KEYWORD_4 ( (lv_number_48_0= ruleConditionalOrExpression ) ) otherlv_49= KEYWORD_5 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3204:7: () otherlv_46= KEYWORD_74 otherlv_47= KEYWORD_4 ( (lv_number_48_0= ruleConditionalOrExpression ) ) otherlv_49= KEYWORD_5
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3204:7: ()
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3205:2: 
-                    {
-                    if ( state.backtracking==0 ) {
-                       
-                      	  /* */ 
-                      	
-                    }
-                    if ( state.backtracking==0 ) {
-
-                              current = forceCreateModelElement(
-                                  grammarAccess.getStaticMethodExpressionAccess().getExpressionAction_9_0(),
-                                  current);
-                          
-                    }
-
-                    }
-
-                    otherlv_46=(Token)match(input,KEYWORD_74,FOLLOW_KEYWORD_74_in_ruleStaticMethodExpression6483); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_46, grammarAccess.getStaticMethodExpressionAccess().getMathExpKeyword_9_1());
-                          
-                    }
-                    otherlv_47=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression6495); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_47, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_9_2());
-                          
-                    }
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3223:1: ( (lv_number_48_0= ruleConditionalOrExpression ) )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3224:1: (lv_number_48_0= ruleConditionalOrExpression )
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3224:1: (lv_number_48_0= ruleConditionalOrExpression )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3225:3: lv_number_48_0= ruleConditionalOrExpression
-                    {
-                    if ( state.backtracking==0 ) {
-                       
-                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_9_3_0()); 
-                      	    
-                    }
-                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression6515);
-                    lv_number_48_0=ruleConditionalOrExpression();
-
-                    state._fsp--;
-                    if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                      	        if (current==null) {
-                      	            current = createModelElementForParent(grammarAccess.getStaticMethodExpressionRule());
-                      	        }
-                             		set(
-                             			current, 
-                             			"number",
-                              		lv_number_48_0, 
-                              		"ConditionalOrExpression");
-                      	        afterParserOrEnumRuleCall();
-                      	    
-                    }
-
-                    }
-
-
-                    }
-
-                    otherlv_49=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression6528); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_49, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_9_4());
+                          	newLeafNode(otherlv_39, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_9_3());
                           
                     }
 
@@ -9151,54 +9171,56 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 11 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3247:6: ( () otherlv_51= KEYWORD_93 otherlv_52= KEYWORD_4 ( (lv_number_53_0= ruleConditionalOrExpression ) ) otherlv_54= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3267:6: ( ( (lv_name_40_0= KEYWORD_93 ) ) otherlv_41= KEYWORD_4 ( (lv_number_42_0= ruleConditionalOrExpression ) ) otherlv_43= KEYWORD_5 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3247:6: ( () otherlv_51= KEYWORD_93 otherlv_52= KEYWORD_4 ( (lv_number_53_0= ruleConditionalOrExpression ) ) otherlv_54= KEYWORD_5 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3247:7: () otherlv_51= KEYWORD_93 otherlv_52= KEYWORD_4 ( (lv_number_53_0= ruleConditionalOrExpression ) ) otherlv_54= KEYWORD_5
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3267:6: ( ( (lv_name_40_0= KEYWORD_93 ) ) otherlv_41= KEYWORD_4 ( (lv_number_42_0= ruleConditionalOrExpression ) ) otherlv_43= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3267:7: ( (lv_name_40_0= KEYWORD_93 ) ) otherlv_41= KEYWORD_4 ( (lv_number_42_0= ruleConditionalOrExpression ) ) otherlv_43= KEYWORD_5
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3247:7: ()
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3248:2: 
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3267:7: ( (lv_name_40_0= KEYWORD_93 ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3268:1: (lv_name_40_0= KEYWORD_93 )
                     {
-                    if ( state.backtracking==0 ) {
-                       
-                      	  /* */ 
-                      	
-                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3268:1: (lv_name_40_0= KEYWORD_93 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3269:3: lv_name_40_0= KEYWORD_93
+                    {
+                    lv_name_40_0=(Token)match(input,KEYWORD_93,FOLLOW_KEYWORD_93_in_ruleStaticMethodExpression6614); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                              current = forceCreateModelElement(
-                                  grammarAccess.getStaticMethodExpressionAccess().getExpressionAction_10_0(),
-                                  current);
+                              newLeafNode(lv_name_40_0, grammarAccess.getStaticMethodExpressionAccess().getNameMathFloorKeyword_10_0_0());
                           
                     }
-
-                    }
-
-                    otherlv_51=(Token)match(input,KEYWORD_93,FOLLOW_KEYWORD_93_in_ruleStaticMethodExpression6560); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_51, grammarAccess.getStaticMethodExpressionAccess().getMathFloorKeyword_10_1());
-                          
-                    }
-                    otherlv_52=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression6572); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_52, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_10_2());
-                          
-                    }
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3266:1: ( (lv_number_53_0= ruleConditionalOrExpression ) )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3267:1: (lv_number_53_0= ruleConditionalOrExpression )
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3267:1: (lv_number_53_0= ruleConditionalOrExpression )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3268:3: lv_number_53_0= ruleConditionalOrExpression
-                    {
-                    if ( state.backtracking==0 ) {
-                       
-                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_10_3_0()); 
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getStaticMethodExpressionRule());
+                      	        }
+                             		setWithLastConsumed(current, "name", lv_name_40_0, "Math.floor");
                       	    
                     }
-                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression6592);
-                    lv_number_53_0=ruleConditionalOrExpression();
+
+                    }
+
+
+                    }
+
+                    otherlv_41=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression6638); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_41, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_10_1());
+                          
+                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3288:1: ( (lv_number_42_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3289:1: (lv_number_42_0= ruleConditionalOrExpression )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3289:1: (lv_number_42_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3290:3: lv_number_42_0= ruleConditionalOrExpression
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_10_2_0()); 
+                      	    
+                    }
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression6658);
+                    lv_number_42_0=ruleConditionalOrExpression();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -9210,7 +9232,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                              		set(
                              			current, 
                              			"number",
-                              		lv_number_53_0, 
+                              		lv_number_42_0, 
                               		"ConditionalOrExpression");
                       	        afterParserOrEnumRuleCall();
                       	    
@@ -9221,10 +9243,10 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_54=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression6605); if (state.failed) return current;
+                    otherlv_43=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression6671); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_54, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_10_4());
+                          	newLeafNode(otherlv_43, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_10_3());
                           
                     }
 
@@ -9234,53 +9256,310 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 12 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3290:6: ( () otherlv_56= KEYWORD_75 otherlv_57= KEYWORD_4 ( (lv_number_58_0= ruleConditionalOrExpression ) ) otherlv_59= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3312:6: ( ( (lv_name_44_0= KEYWORD_75 ) ) otherlv_45= KEYWORD_4 ( (lv_number_46_0= ruleConditionalOrExpression ) ) otherlv_47= KEYWORD_5 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3290:6: ( () otherlv_56= KEYWORD_75 otherlv_57= KEYWORD_4 ( (lv_number_58_0= ruleConditionalOrExpression ) ) otherlv_59= KEYWORD_5 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3290:7: () otherlv_56= KEYWORD_75 otherlv_57= KEYWORD_4 ( (lv_number_58_0= ruleConditionalOrExpression ) ) otherlv_59= KEYWORD_5
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3312:6: ( ( (lv_name_44_0= KEYWORD_75 ) ) otherlv_45= KEYWORD_4 ( (lv_number_46_0= ruleConditionalOrExpression ) ) otherlv_47= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3312:7: ( (lv_name_44_0= KEYWORD_75 ) ) otherlv_45= KEYWORD_4 ( (lv_number_46_0= ruleConditionalOrExpression ) ) otherlv_47= KEYWORD_5
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3290:7: ()
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3291:2: 
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3312:7: ( (lv_name_44_0= KEYWORD_75 ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3313:1: (lv_name_44_0= KEYWORD_75 )
                     {
-                    if ( state.backtracking==0 ) {
-                       
-                      	  /* */ 
-                      	
-                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3313:1: (lv_name_44_0= KEYWORD_75 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3314:3: lv_name_44_0= KEYWORD_75
+                    {
+                    lv_name_44_0=(Token)match(input,KEYWORD_75,FOLLOW_KEYWORD_75_in_ruleStaticMethodExpression6697); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                              current = forceCreateModelElement(
-                                  grammarAccess.getStaticMethodExpressionAccess().getExpressionAction_11_0(),
-                                  current);
+                              newLeafNode(lv_name_44_0, grammarAccess.getStaticMethodExpressionAccess().getNameMathLogKeyword_11_0_0());
                           
                     }
-
-                    }
-
-                    otherlv_56=(Token)match(input,KEYWORD_75,FOLLOW_KEYWORD_75_in_ruleStaticMethodExpression6637); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_56, grammarAccess.getStaticMethodExpressionAccess().getMathLogKeyword_11_1());
-                          
-                    }
-                    otherlv_57=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression6649); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_57, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_11_2());
-                          
-                    }
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3309:1: ( (lv_number_58_0= ruleConditionalOrExpression ) )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3310:1: (lv_number_58_0= ruleConditionalOrExpression )
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3310:1: (lv_number_58_0= ruleConditionalOrExpression )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3311:3: lv_number_58_0= ruleConditionalOrExpression
-                    {
-                    if ( state.backtracking==0 ) {
-                       
-                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_11_3_0()); 
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getStaticMethodExpressionRule());
+                      	        }
+                             		setWithLastConsumed(current, "name", lv_name_44_0, "Math.log");
                       	    
                     }
-                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression6669);
+
+                    }
+
+
+                    }
+
+                    otherlv_45=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression6721); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_45, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_11_1());
+                          
+                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3333:1: ( (lv_number_46_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3334:1: (lv_number_46_0= ruleConditionalOrExpression )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3334:1: (lv_number_46_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3335:3: lv_number_46_0= ruleConditionalOrExpression
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_11_2_0()); 
+                      	    
+                    }
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression6741);
+                    lv_number_46_0=ruleConditionalOrExpression();
+
+                    state._fsp--;
+                    if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      	        if (current==null) {
+                      	            current = createModelElementForParent(grammarAccess.getStaticMethodExpressionRule());
+                      	        }
+                             		set(
+                             			current, 
+                             			"number",
+                              		lv_number_46_0, 
+                              		"ConditionalOrExpression");
+                      	        afterParserOrEnumRuleCall();
+                      	    
+                    }
+
+                    }
+
+
+                    }
+
+                    otherlv_47=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression6754); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_47, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_11_3());
+                          
+                    }
+
+                    }
+
+
+                    }
+                    break;
+                case 13 :
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3357:6: ( ( (lv_name_48_0= KEYWORD_113 ) ) otherlv_49= KEYWORD_4 ( (lv_number_50_0= ruleConditionalOrExpression ) ) otherlv_51= KEYWORD_5 )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3357:6: ( ( (lv_name_48_0= KEYWORD_113 ) ) otherlv_49= KEYWORD_4 ( (lv_number_50_0= ruleConditionalOrExpression ) ) otherlv_51= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3357:7: ( (lv_name_48_0= KEYWORD_113 ) ) otherlv_49= KEYWORD_4 ( (lv_number_50_0= ruleConditionalOrExpression ) ) otherlv_51= KEYWORD_5
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3357:7: ( (lv_name_48_0= KEYWORD_113 ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3358:1: (lv_name_48_0= KEYWORD_113 )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3358:1: (lv_name_48_0= KEYWORD_113 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3359:3: lv_name_48_0= KEYWORD_113
+                    {
+                    lv_name_48_0=(Token)match(input,KEYWORD_113,FOLLOW_KEYWORD_113_in_ruleStaticMethodExpression6780); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              newLeafNode(lv_name_48_0, grammarAccess.getStaticMethodExpressionAccess().getNameJavaLangMathAbsKeyword_12_0_0());
+                          
+                    }
+                    if ( state.backtracking==0 ) {
+
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getStaticMethodExpressionRule());
+                      	        }
+                             		setWithLastConsumed(current, "name", lv_name_48_0, "java.lang.Math.abs");
+                      	    
+                    }
+
+                    }
+
+
+                    }
+
+                    otherlv_49=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression6804); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_49, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_12_1());
+                          
+                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3378:1: ( (lv_number_50_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3379:1: (lv_number_50_0= ruleConditionalOrExpression )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3379:1: (lv_number_50_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3380:3: lv_number_50_0= ruleConditionalOrExpression
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_12_2_0()); 
+                      	    
+                    }
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression6824);
+                    lv_number_50_0=ruleConditionalOrExpression();
+
+                    state._fsp--;
+                    if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      	        if (current==null) {
+                      	            current = createModelElementForParent(grammarAccess.getStaticMethodExpressionRule());
+                      	        }
+                             		set(
+                             			current, 
+                             			"number",
+                              		lv_number_50_0, 
+                              		"ConditionalOrExpression");
+                      	        afterParserOrEnumRuleCall();
+                      	    
+                    }
+
+                    }
+
+
+                    }
+
+                    otherlv_51=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression6837); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_51, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_12_3());
+                          
+                    }
+
+                    }
+
+
+                    }
+                    break;
+                case 14 :
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3402:6: ( ( (lv_name_52_0= KEYWORD_124 ) ) otherlv_53= KEYWORD_4 ( (lv_number_54_0= ruleConditionalOrExpression ) ) otherlv_55= KEYWORD_5 )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3402:6: ( ( (lv_name_52_0= KEYWORD_124 ) ) otherlv_53= KEYWORD_4 ( (lv_number_54_0= ruleConditionalOrExpression ) ) otherlv_55= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3402:7: ( (lv_name_52_0= KEYWORD_124 ) ) otherlv_53= KEYWORD_4 ( (lv_number_54_0= ruleConditionalOrExpression ) ) otherlv_55= KEYWORD_5
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3402:7: ( (lv_name_52_0= KEYWORD_124 ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3403:1: (lv_name_52_0= KEYWORD_124 )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3403:1: (lv_name_52_0= KEYWORD_124 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3404:3: lv_name_52_0= KEYWORD_124
+                    {
+                    lv_name_52_0=(Token)match(input,KEYWORD_124,FOLLOW_KEYWORD_124_in_ruleStaticMethodExpression6863); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              newLeafNode(lv_name_52_0, grammarAccess.getStaticMethodExpressionAccess().getNameJavaLangMathSqrtKeyword_13_0_0());
+                          
+                    }
+                    if ( state.backtracking==0 ) {
+
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getStaticMethodExpressionRule());
+                      	        }
+                             		setWithLastConsumed(current, "name", lv_name_52_0, "java.lang.Math.sqrt");
+                      	    
+                    }
+
+                    }
+
+
+                    }
+
+                    otherlv_53=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression6887); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_53, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_13_1());
+                          
+                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3423:1: ( (lv_number_54_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3424:1: (lv_number_54_0= ruleConditionalOrExpression )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3424:1: (lv_number_54_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3425:3: lv_number_54_0= ruleConditionalOrExpression
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_13_2_0()); 
+                      	    
+                    }
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression6907);
+                    lv_number_54_0=ruleConditionalOrExpression();
+
+                    state._fsp--;
+                    if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      	        if (current==null) {
+                      	            current = createModelElementForParent(grammarAccess.getStaticMethodExpressionRule());
+                      	        }
+                             		set(
+                             			current, 
+                             			"number",
+                              		lv_number_54_0, 
+                              		"ConditionalOrExpression");
+                      	        afterParserOrEnumRuleCall();
+                      	    
+                    }
+
+                    }
+
+
+                    }
+
+                    otherlv_55=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression6920); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_55, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_13_3());
+                          
+                    }
+
+                    }
+
+
+                    }
+                    break;
+                case 15 :
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3447:6: ( ( (lv_name_56_0= KEYWORD_114 ) ) otherlv_57= KEYWORD_4 ( (lv_number_58_0= ruleConditionalOrExpression ) ) otherlv_59= KEYWORD_5 )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3447:6: ( ( (lv_name_56_0= KEYWORD_114 ) ) otherlv_57= KEYWORD_4 ( (lv_number_58_0= ruleConditionalOrExpression ) ) otherlv_59= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3447:7: ( (lv_name_56_0= KEYWORD_114 ) ) otherlv_57= KEYWORD_4 ( (lv_number_58_0= ruleConditionalOrExpression ) ) otherlv_59= KEYWORD_5
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3447:7: ( (lv_name_56_0= KEYWORD_114 ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3448:1: (lv_name_56_0= KEYWORD_114 )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3448:1: (lv_name_56_0= KEYWORD_114 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3449:3: lv_name_56_0= KEYWORD_114
+                    {
+                    lv_name_56_0=(Token)match(input,KEYWORD_114,FOLLOW_KEYWORD_114_in_ruleStaticMethodExpression6946); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              newLeafNode(lv_name_56_0, grammarAccess.getStaticMethodExpressionAccess().getNameJavaLangMathCosKeyword_14_0_0());
+                          
+                    }
+                    if ( state.backtracking==0 ) {
+
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getStaticMethodExpressionRule());
+                      	        }
+                             		setWithLastConsumed(current, "name", lv_name_56_0, "java.lang.Math.cos");
+                      	    
+                    }
+
+                    }
+
+
+                    }
+
+                    otherlv_57=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression6970); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_57, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_14_1());
+                          
+                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3468:1: ( (lv_number_58_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3469:1: (lv_number_58_0= ruleConditionalOrExpression )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3469:1: (lv_number_58_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3470:3: lv_number_58_0= ruleConditionalOrExpression
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_14_2_0()); 
+                      	    
+                    }
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression6990);
                     lv_number_58_0=ruleConditionalOrExpression();
 
                     state._fsp--;
@@ -9304,259 +9583,10 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_59=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression6682); if (state.failed) return current;
+                    otherlv_59=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression7003); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_59, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_11_4());
-                          
-                    }
-
-                    }
-
-
-                    }
-                    break;
-                case 13 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3333:6: ( () otherlv_61= KEYWORD_113 otherlv_62= KEYWORD_4 ( (lv_number_63_0= ruleConditionalOrExpression ) ) otherlv_64= KEYWORD_5 )
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3333:6: ( () otherlv_61= KEYWORD_113 otherlv_62= KEYWORD_4 ( (lv_number_63_0= ruleConditionalOrExpression ) ) otherlv_64= KEYWORD_5 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3333:7: () otherlv_61= KEYWORD_113 otherlv_62= KEYWORD_4 ( (lv_number_63_0= ruleConditionalOrExpression ) ) otherlv_64= KEYWORD_5
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3333:7: ()
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3334:2: 
-                    {
-                    if ( state.backtracking==0 ) {
-                       
-                      	  /* */ 
-                      	
-                    }
-                    if ( state.backtracking==0 ) {
-
-                              current = forceCreateModelElement(
-                                  grammarAccess.getStaticMethodExpressionAccess().getExpressionAction_12_0(),
-                                  current);
-                          
-                    }
-
-                    }
-
-                    otherlv_61=(Token)match(input,KEYWORD_113,FOLLOW_KEYWORD_113_in_ruleStaticMethodExpression6714); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_61, grammarAccess.getStaticMethodExpressionAccess().getJavaLangMathAbsKeyword_12_1());
-                          
-                    }
-                    otherlv_62=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression6726); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_62, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_12_2());
-                          
-                    }
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3352:1: ( (lv_number_63_0= ruleConditionalOrExpression ) )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3353:1: (lv_number_63_0= ruleConditionalOrExpression )
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3353:1: (lv_number_63_0= ruleConditionalOrExpression )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3354:3: lv_number_63_0= ruleConditionalOrExpression
-                    {
-                    if ( state.backtracking==0 ) {
-                       
-                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_12_3_0()); 
-                      	    
-                    }
-                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression6746);
-                    lv_number_63_0=ruleConditionalOrExpression();
-
-                    state._fsp--;
-                    if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                      	        if (current==null) {
-                      	            current = createModelElementForParent(grammarAccess.getStaticMethodExpressionRule());
-                      	        }
-                             		set(
-                             			current, 
-                             			"number",
-                              		lv_number_63_0, 
-                              		"ConditionalOrExpression");
-                      	        afterParserOrEnumRuleCall();
-                      	    
-                    }
-
-                    }
-
-
-                    }
-
-                    otherlv_64=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression6759); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_64, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_12_4());
-                          
-                    }
-
-                    }
-
-
-                    }
-                    break;
-                case 14 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3376:6: ( () otherlv_66= KEYWORD_124 otherlv_67= KEYWORD_4 ( (lv_number_68_0= ruleConditionalOrExpression ) ) otherlv_69= KEYWORD_5 )
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3376:6: ( () otherlv_66= KEYWORD_124 otherlv_67= KEYWORD_4 ( (lv_number_68_0= ruleConditionalOrExpression ) ) otherlv_69= KEYWORD_5 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3376:7: () otherlv_66= KEYWORD_124 otherlv_67= KEYWORD_4 ( (lv_number_68_0= ruleConditionalOrExpression ) ) otherlv_69= KEYWORD_5
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3376:7: ()
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3377:2: 
-                    {
-                    if ( state.backtracking==0 ) {
-                       
-                      	  /* */ 
-                      	
-                    }
-                    if ( state.backtracking==0 ) {
-
-                              current = forceCreateModelElement(
-                                  grammarAccess.getStaticMethodExpressionAccess().getExpressionAction_13_0(),
-                                  current);
-                          
-                    }
-
-                    }
-
-                    otherlv_66=(Token)match(input,KEYWORD_124,FOLLOW_KEYWORD_124_in_ruleStaticMethodExpression6791); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_66, grammarAccess.getStaticMethodExpressionAccess().getJavaLangMathSqrtKeyword_13_1());
-                          
-                    }
-                    otherlv_67=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression6803); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_67, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_13_2());
-                          
-                    }
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3395:1: ( (lv_number_68_0= ruleConditionalOrExpression ) )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3396:1: (lv_number_68_0= ruleConditionalOrExpression )
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3396:1: (lv_number_68_0= ruleConditionalOrExpression )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3397:3: lv_number_68_0= ruleConditionalOrExpression
-                    {
-                    if ( state.backtracking==0 ) {
-                       
-                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_13_3_0()); 
-                      	    
-                    }
-                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression6823);
-                    lv_number_68_0=ruleConditionalOrExpression();
-
-                    state._fsp--;
-                    if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                      	        if (current==null) {
-                      	            current = createModelElementForParent(grammarAccess.getStaticMethodExpressionRule());
-                      	        }
-                             		set(
-                             			current, 
-                             			"number",
-                              		lv_number_68_0, 
-                              		"ConditionalOrExpression");
-                      	        afterParserOrEnumRuleCall();
-                      	    
-                    }
-
-                    }
-
-
-                    }
-
-                    otherlv_69=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression6836); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_69, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_13_4());
-                          
-                    }
-
-                    }
-
-
-                    }
-                    break;
-                case 15 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3419:6: ( () otherlv_71= KEYWORD_114 otherlv_72= KEYWORD_4 ( (lv_number_73_0= ruleConditionalOrExpression ) ) otherlv_74= KEYWORD_5 )
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3419:6: ( () otherlv_71= KEYWORD_114 otherlv_72= KEYWORD_4 ( (lv_number_73_0= ruleConditionalOrExpression ) ) otherlv_74= KEYWORD_5 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3419:7: () otherlv_71= KEYWORD_114 otherlv_72= KEYWORD_4 ( (lv_number_73_0= ruleConditionalOrExpression ) ) otherlv_74= KEYWORD_5
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3419:7: ()
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3420:2: 
-                    {
-                    if ( state.backtracking==0 ) {
-                       
-                      	  /* */ 
-                      	
-                    }
-                    if ( state.backtracking==0 ) {
-
-                              current = forceCreateModelElement(
-                                  grammarAccess.getStaticMethodExpressionAccess().getExpressionAction_14_0(),
-                                  current);
-                          
-                    }
-
-                    }
-
-                    otherlv_71=(Token)match(input,KEYWORD_114,FOLLOW_KEYWORD_114_in_ruleStaticMethodExpression6868); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_71, grammarAccess.getStaticMethodExpressionAccess().getJavaLangMathCosKeyword_14_1());
-                          
-                    }
-                    otherlv_72=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression6880); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_72, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_14_2());
-                          
-                    }
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3438:1: ( (lv_number_73_0= ruleConditionalOrExpression ) )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3439:1: (lv_number_73_0= ruleConditionalOrExpression )
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3439:1: (lv_number_73_0= ruleConditionalOrExpression )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3440:3: lv_number_73_0= ruleConditionalOrExpression
-                    {
-                    if ( state.backtracking==0 ) {
-                       
-                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_14_3_0()); 
-                      	    
-                    }
-                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression6900);
-                    lv_number_73_0=ruleConditionalOrExpression();
-
-                    state._fsp--;
-                    if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                      	        if (current==null) {
-                      	            current = createModelElementForParent(grammarAccess.getStaticMethodExpressionRule());
-                      	        }
-                             		set(
-                             			current, 
-                             			"number",
-                              		lv_number_73_0, 
-                              		"ConditionalOrExpression");
-                      	        afterParserOrEnumRuleCall();
-                      	    
-                    }
-
-                    }
-
-
-                    }
-
-                    otherlv_74=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression6913); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_74, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_14_4());
+                          	newLeafNode(otherlv_59, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_14_3());
                           
                     }
 
@@ -9566,53 +9596,395 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 16 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3462:6: ( () otherlv_76= KEYWORD_117 otherlv_77= KEYWORD_4 ( (lv_number_78_0= ruleConditionalOrExpression ) ) otherlv_79= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3492:6: ( ( (lv_name_60_0= KEYWORD_117 ) ) otherlv_61= KEYWORD_4 ( (lv_number_62_0= ruleConditionalOrExpression ) ) otherlv_63= KEYWORD_5 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3462:6: ( () otherlv_76= KEYWORD_117 otherlv_77= KEYWORD_4 ( (lv_number_78_0= ruleConditionalOrExpression ) ) otherlv_79= KEYWORD_5 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3462:7: () otherlv_76= KEYWORD_117 otherlv_77= KEYWORD_4 ( (lv_number_78_0= ruleConditionalOrExpression ) ) otherlv_79= KEYWORD_5
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3492:6: ( ( (lv_name_60_0= KEYWORD_117 ) ) otherlv_61= KEYWORD_4 ( (lv_number_62_0= ruleConditionalOrExpression ) ) otherlv_63= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3492:7: ( (lv_name_60_0= KEYWORD_117 ) ) otherlv_61= KEYWORD_4 ( (lv_number_62_0= ruleConditionalOrExpression ) ) otherlv_63= KEYWORD_5
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3462:7: ()
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3463:2: 
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3492:7: ( (lv_name_60_0= KEYWORD_117 ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3493:1: (lv_name_60_0= KEYWORD_117 )
                     {
-                    if ( state.backtracking==0 ) {
-                       
-                      	  /* */ 
-                      	
-                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3493:1: (lv_name_60_0= KEYWORD_117 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3494:3: lv_name_60_0= KEYWORD_117
+                    {
+                    lv_name_60_0=(Token)match(input,KEYWORD_117,FOLLOW_KEYWORD_117_in_ruleStaticMethodExpression7029); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                              current = forceCreateModelElement(
-                                  grammarAccess.getStaticMethodExpressionAccess().getExpressionAction_15_0(),
-                                  current);
+                              newLeafNode(lv_name_60_0, grammarAccess.getStaticMethodExpressionAccess().getNameJavaLangMathSinKeyword_15_0_0());
                           
                     }
-
-                    }
-
-                    otherlv_76=(Token)match(input,KEYWORD_117,FOLLOW_KEYWORD_117_in_ruleStaticMethodExpression6945); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_76, grammarAccess.getStaticMethodExpressionAccess().getJavaLangMathSinKeyword_15_1());
-                          
-                    }
-                    otherlv_77=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression6957); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_77, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_15_2());
-                          
-                    }
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3481:1: ( (lv_number_78_0= ruleConditionalOrExpression ) )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3482:1: (lv_number_78_0= ruleConditionalOrExpression )
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3482:1: (lv_number_78_0= ruleConditionalOrExpression )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3483:3: lv_number_78_0= ruleConditionalOrExpression
-                    {
-                    if ( state.backtracking==0 ) {
-                       
-                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_15_3_0()); 
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getStaticMethodExpressionRule());
+                      	        }
+                             		setWithLastConsumed(current, "name", lv_name_60_0, "java.lang.Math.sin");
                       	    
                     }
-                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression6977);
+
+                    }
+
+
+                    }
+
+                    otherlv_61=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression7053); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_61, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_15_1());
+                          
+                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3513:1: ( (lv_number_62_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3514:1: (lv_number_62_0= ruleConditionalOrExpression )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3514:1: (lv_number_62_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3515:3: lv_number_62_0= ruleConditionalOrExpression
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_15_2_0()); 
+                      	    
+                    }
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression7073);
+                    lv_number_62_0=ruleConditionalOrExpression();
+
+                    state._fsp--;
+                    if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      	        if (current==null) {
+                      	            current = createModelElementForParent(grammarAccess.getStaticMethodExpressionRule());
+                      	        }
+                             		set(
+                             			current, 
+                             			"number",
+                              		lv_number_62_0, 
+                              		"ConditionalOrExpression");
+                      	        afterParserOrEnumRuleCall();
+                      	    
+                    }
+
+                    }
+
+
+                    }
+
+                    otherlv_63=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression7086); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_63, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_15_3());
+                          
+                    }
+
+                    }
+
+
+                    }
+                    break;
+                case 17 :
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3537:6: ( ( (lv_name_64_0= KEYWORD_118 ) ) otherlv_65= KEYWORD_4 ( (lv_number_66_0= ruleConditionalOrExpression ) ) otherlv_67= KEYWORD_5 )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3537:6: ( ( (lv_name_64_0= KEYWORD_118 ) ) otherlv_65= KEYWORD_4 ( (lv_number_66_0= ruleConditionalOrExpression ) ) otherlv_67= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3537:7: ( (lv_name_64_0= KEYWORD_118 ) ) otherlv_65= KEYWORD_4 ( (lv_number_66_0= ruleConditionalOrExpression ) ) otherlv_67= KEYWORD_5
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3537:7: ( (lv_name_64_0= KEYWORD_118 ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3538:1: (lv_name_64_0= KEYWORD_118 )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3538:1: (lv_name_64_0= KEYWORD_118 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3539:3: lv_name_64_0= KEYWORD_118
+                    {
+                    lv_name_64_0=(Token)match(input,KEYWORD_118,FOLLOW_KEYWORD_118_in_ruleStaticMethodExpression7112); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              newLeafNode(lv_name_64_0, grammarAccess.getStaticMethodExpressionAccess().getNameJavaLangMathTanKeyword_16_0_0());
+                          
+                    }
+                    if ( state.backtracking==0 ) {
+
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getStaticMethodExpressionRule());
+                      	        }
+                             		setWithLastConsumed(current, "name", lv_name_64_0, "java.lang.Math.tan");
+                      	    
+                    }
+
+                    }
+
+
+                    }
+
+                    otherlv_65=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression7136); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_65, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_16_1());
+                          
+                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3558:1: ( (lv_number_66_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3559:1: (lv_number_66_0= ruleConditionalOrExpression )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3559:1: (lv_number_66_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3560:3: lv_number_66_0= ruleConditionalOrExpression
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_16_2_0()); 
+                      	    
+                    }
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression7156);
+                    lv_number_66_0=ruleConditionalOrExpression();
+
+                    state._fsp--;
+                    if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      	        if (current==null) {
+                      	            current = createModelElementForParent(grammarAccess.getStaticMethodExpressionRule());
+                      	        }
+                             		set(
+                             			current, 
+                             			"number",
+                              		lv_number_66_0, 
+                              		"ConditionalOrExpression");
+                      	        afterParserOrEnumRuleCall();
+                      	    
+                    }
+
+                    }
+
+
+                    }
+
+                    otherlv_67=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression7169); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_67, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_16_3());
+                          
+                    }
+
+                    }
+
+
+                    }
+                    break;
+                case 18 :
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3582:6: ( ( (lv_name_68_0= KEYWORD_120 ) ) otherlv_69= KEYWORD_4 ( (lv_number_70_0= ruleConditionalOrExpression ) ) otherlv_71= KEYWORD_5 )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3582:6: ( ( (lv_name_68_0= KEYWORD_120 ) ) otherlv_69= KEYWORD_4 ( (lv_number_70_0= ruleConditionalOrExpression ) ) otherlv_71= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3582:7: ( (lv_name_68_0= KEYWORD_120 ) ) otherlv_69= KEYWORD_4 ( (lv_number_70_0= ruleConditionalOrExpression ) ) otherlv_71= KEYWORD_5
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3582:7: ( (lv_name_68_0= KEYWORD_120 ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3583:1: (lv_name_68_0= KEYWORD_120 )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3583:1: (lv_name_68_0= KEYWORD_120 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3584:3: lv_name_68_0= KEYWORD_120
+                    {
+                    lv_name_68_0=(Token)match(input,KEYWORD_120,FOLLOW_KEYWORD_120_in_ruleStaticMethodExpression7195); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              newLeafNode(lv_name_68_0, grammarAccess.getStaticMethodExpressionAccess().getNameJavaLangMathAcosKeyword_17_0_0());
+                          
+                    }
+                    if ( state.backtracking==0 ) {
+
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getStaticMethodExpressionRule());
+                      	        }
+                             		setWithLastConsumed(current, "name", lv_name_68_0, "java.lang.Math.acos");
+                      	    
+                    }
+
+                    }
+
+
+                    }
+
+                    otherlv_69=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression7219); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_69, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_17_1());
+                          
+                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3603:1: ( (lv_number_70_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3604:1: (lv_number_70_0= ruleConditionalOrExpression )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3604:1: (lv_number_70_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3605:3: lv_number_70_0= ruleConditionalOrExpression
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_17_2_0()); 
+                      	    
+                    }
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression7239);
+                    lv_number_70_0=ruleConditionalOrExpression();
+
+                    state._fsp--;
+                    if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      	        if (current==null) {
+                      	            current = createModelElementForParent(grammarAccess.getStaticMethodExpressionRule());
+                      	        }
+                             		set(
+                             			current, 
+                             			"number",
+                              		lv_number_70_0, 
+                              		"ConditionalOrExpression");
+                      	        afterParserOrEnumRuleCall();
+                      	    
+                    }
+
+                    }
+
+
+                    }
+
+                    otherlv_71=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression7252); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_71, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_17_3());
+                          
+                    }
+
+                    }
+
+
+                    }
+                    break;
+                case 19 :
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3627:6: ( ( (lv_name_72_0= KEYWORD_121 ) ) otherlv_73= KEYWORD_4 ( (lv_number_74_0= ruleConditionalOrExpression ) ) otherlv_75= KEYWORD_5 )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3627:6: ( ( (lv_name_72_0= KEYWORD_121 ) ) otherlv_73= KEYWORD_4 ( (lv_number_74_0= ruleConditionalOrExpression ) ) otherlv_75= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3627:7: ( (lv_name_72_0= KEYWORD_121 ) ) otherlv_73= KEYWORD_4 ( (lv_number_74_0= ruleConditionalOrExpression ) ) otherlv_75= KEYWORD_5
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3627:7: ( (lv_name_72_0= KEYWORD_121 ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3628:1: (lv_name_72_0= KEYWORD_121 )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3628:1: (lv_name_72_0= KEYWORD_121 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3629:3: lv_name_72_0= KEYWORD_121
+                    {
+                    lv_name_72_0=(Token)match(input,KEYWORD_121,FOLLOW_KEYWORD_121_in_ruleStaticMethodExpression7278); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              newLeafNode(lv_name_72_0, grammarAccess.getStaticMethodExpressionAccess().getNameJavaLangMathAsinKeyword_18_0_0());
+                          
+                    }
+                    if ( state.backtracking==0 ) {
+
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getStaticMethodExpressionRule());
+                      	        }
+                             		setWithLastConsumed(current, "name", lv_name_72_0, "java.lang.Math.asin");
+                      	    
+                    }
+
+                    }
+
+
+                    }
+
+                    otherlv_73=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression7302); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_73, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_18_1());
+                          
+                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3648:1: ( (lv_number_74_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3649:1: (lv_number_74_0= ruleConditionalOrExpression )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3649:1: (lv_number_74_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3650:3: lv_number_74_0= ruleConditionalOrExpression
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_18_2_0()); 
+                      	    
+                    }
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression7322);
+                    lv_number_74_0=ruleConditionalOrExpression();
+
+                    state._fsp--;
+                    if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      	        if (current==null) {
+                      	            current = createModelElementForParent(grammarAccess.getStaticMethodExpressionRule());
+                      	        }
+                             		set(
+                             			current, 
+                             			"number",
+                              		lv_number_74_0, 
+                              		"ConditionalOrExpression");
+                      	        afterParserOrEnumRuleCall();
+                      	    
+                    }
+
+                    }
+
+
+                    }
+
+                    otherlv_75=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression7335); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_75, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_18_3());
+                          
+                    }
+
+                    }
+
+
+                    }
+                    break;
+                case 20 :
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3672:6: ( ( (lv_name_76_0= KEYWORD_122 ) ) otherlv_77= KEYWORD_4 ( (lv_number_78_0= ruleConditionalOrExpression ) ) otherlv_79= KEYWORD_5 )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3672:6: ( ( (lv_name_76_0= KEYWORD_122 ) ) otherlv_77= KEYWORD_4 ( (lv_number_78_0= ruleConditionalOrExpression ) ) otherlv_79= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3672:7: ( (lv_name_76_0= KEYWORD_122 ) ) otherlv_77= KEYWORD_4 ( (lv_number_78_0= ruleConditionalOrExpression ) ) otherlv_79= KEYWORD_5
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3672:7: ( (lv_name_76_0= KEYWORD_122 ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3673:1: (lv_name_76_0= KEYWORD_122 )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3673:1: (lv_name_76_0= KEYWORD_122 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3674:3: lv_name_76_0= KEYWORD_122
+                    {
+                    lv_name_76_0=(Token)match(input,KEYWORD_122,FOLLOW_KEYWORD_122_in_ruleStaticMethodExpression7361); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              newLeafNode(lv_name_76_0, grammarAccess.getStaticMethodExpressionAccess().getNameJavaLangMathAtanKeyword_19_0_0());
+                          
+                    }
+                    if ( state.backtracking==0 ) {
+
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getStaticMethodExpressionRule());
+                      	        }
+                             		setWithLastConsumed(current, "name", lv_name_76_0, "java.lang.Math.atan");
+                      	    
+                    }
+
+                    }
+
+
+                    }
+
+                    otherlv_77=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression7385); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_77, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_19_1());
+                          
+                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3693:1: ( (lv_number_78_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3694:1: (lv_number_78_0= ruleConditionalOrExpression )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3694:1: (lv_number_78_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3695:3: lv_number_78_0= ruleConditionalOrExpression
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_19_2_0()); 
+                      	    
+                    }
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression7405);
                     lv_number_78_0=ruleConditionalOrExpression();
 
                     state._fsp--;
@@ -9636,342 +10008,10 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_79=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression6990); if (state.failed) return current;
+                    otherlv_79=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression7418); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_79, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_15_4());
-                          
-                    }
-
-                    }
-
-
-                    }
-                    break;
-                case 17 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3505:6: ( () otherlv_81= KEYWORD_118 otherlv_82= KEYWORD_4 ( (lv_number_83_0= ruleConditionalOrExpression ) ) otherlv_84= KEYWORD_5 )
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3505:6: ( () otherlv_81= KEYWORD_118 otherlv_82= KEYWORD_4 ( (lv_number_83_0= ruleConditionalOrExpression ) ) otherlv_84= KEYWORD_5 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3505:7: () otherlv_81= KEYWORD_118 otherlv_82= KEYWORD_4 ( (lv_number_83_0= ruleConditionalOrExpression ) ) otherlv_84= KEYWORD_5
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3505:7: ()
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3506:2: 
-                    {
-                    if ( state.backtracking==0 ) {
-                       
-                      	  /* */ 
-                      	
-                    }
-                    if ( state.backtracking==0 ) {
-
-                              current = forceCreateModelElement(
-                                  grammarAccess.getStaticMethodExpressionAccess().getExpressionAction_16_0(),
-                                  current);
-                          
-                    }
-
-                    }
-
-                    otherlv_81=(Token)match(input,KEYWORD_118,FOLLOW_KEYWORD_118_in_ruleStaticMethodExpression7022); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_81, grammarAccess.getStaticMethodExpressionAccess().getJavaLangMathTanKeyword_16_1());
-                          
-                    }
-                    otherlv_82=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression7034); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_82, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_16_2());
-                          
-                    }
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3524:1: ( (lv_number_83_0= ruleConditionalOrExpression ) )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3525:1: (lv_number_83_0= ruleConditionalOrExpression )
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3525:1: (lv_number_83_0= ruleConditionalOrExpression )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3526:3: lv_number_83_0= ruleConditionalOrExpression
-                    {
-                    if ( state.backtracking==0 ) {
-                       
-                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_16_3_0()); 
-                      	    
-                    }
-                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression7054);
-                    lv_number_83_0=ruleConditionalOrExpression();
-
-                    state._fsp--;
-                    if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                      	        if (current==null) {
-                      	            current = createModelElementForParent(grammarAccess.getStaticMethodExpressionRule());
-                      	        }
-                             		set(
-                             			current, 
-                             			"number",
-                              		lv_number_83_0, 
-                              		"ConditionalOrExpression");
-                      	        afterParserOrEnumRuleCall();
-                      	    
-                    }
-
-                    }
-
-
-                    }
-
-                    otherlv_84=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression7067); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_84, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_16_4());
-                          
-                    }
-
-                    }
-
-
-                    }
-                    break;
-                case 18 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3548:6: ( () otherlv_86= KEYWORD_120 otherlv_87= KEYWORD_4 ( (lv_number_88_0= ruleConditionalOrExpression ) ) otherlv_89= KEYWORD_5 )
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3548:6: ( () otherlv_86= KEYWORD_120 otherlv_87= KEYWORD_4 ( (lv_number_88_0= ruleConditionalOrExpression ) ) otherlv_89= KEYWORD_5 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3548:7: () otherlv_86= KEYWORD_120 otherlv_87= KEYWORD_4 ( (lv_number_88_0= ruleConditionalOrExpression ) ) otherlv_89= KEYWORD_5
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3548:7: ()
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3549:2: 
-                    {
-                    if ( state.backtracking==0 ) {
-                       
-                      	  /* */ 
-                      	
-                    }
-                    if ( state.backtracking==0 ) {
-
-                              current = forceCreateModelElement(
-                                  grammarAccess.getStaticMethodExpressionAccess().getExpressionAction_17_0(),
-                                  current);
-                          
-                    }
-
-                    }
-
-                    otherlv_86=(Token)match(input,KEYWORD_120,FOLLOW_KEYWORD_120_in_ruleStaticMethodExpression7099); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_86, grammarAccess.getStaticMethodExpressionAccess().getJavaLangMathAcosKeyword_17_1());
-                          
-                    }
-                    otherlv_87=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression7111); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_87, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_17_2());
-                          
-                    }
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3567:1: ( (lv_number_88_0= ruleConditionalOrExpression ) )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3568:1: (lv_number_88_0= ruleConditionalOrExpression )
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3568:1: (lv_number_88_0= ruleConditionalOrExpression )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3569:3: lv_number_88_0= ruleConditionalOrExpression
-                    {
-                    if ( state.backtracking==0 ) {
-                       
-                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_17_3_0()); 
-                      	    
-                    }
-                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression7131);
-                    lv_number_88_0=ruleConditionalOrExpression();
-
-                    state._fsp--;
-                    if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                      	        if (current==null) {
-                      	            current = createModelElementForParent(grammarAccess.getStaticMethodExpressionRule());
-                      	        }
-                             		set(
-                             			current, 
-                             			"number",
-                              		lv_number_88_0, 
-                              		"ConditionalOrExpression");
-                      	        afterParserOrEnumRuleCall();
-                      	    
-                    }
-
-                    }
-
-
-                    }
-
-                    otherlv_89=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression7144); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_89, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_17_4());
-                          
-                    }
-
-                    }
-
-
-                    }
-                    break;
-                case 19 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3591:6: ( () otherlv_91= KEYWORD_121 otherlv_92= KEYWORD_4 ( (lv_number_93_0= ruleConditionalOrExpression ) ) otherlv_94= KEYWORD_5 )
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3591:6: ( () otherlv_91= KEYWORD_121 otherlv_92= KEYWORD_4 ( (lv_number_93_0= ruleConditionalOrExpression ) ) otherlv_94= KEYWORD_5 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3591:7: () otherlv_91= KEYWORD_121 otherlv_92= KEYWORD_4 ( (lv_number_93_0= ruleConditionalOrExpression ) ) otherlv_94= KEYWORD_5
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3591:7: ()
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3592:2: 
-                    {
-                    if ( state.backtracking==0 ) {
-                       
-                      	  /* */ 
-                      	
-                    }
-                    if ( state.backtracking==0 ) {
-
-                              current = forceCreateModelElement(
-                                  grammarAccess.getStaticMethodExpressionAccess().getExpressionAction_18_0(),
-                                  current);
-                          
-                    }
-
-                    }
-
-                    otherlv_91=(Token)match(input,KEYWORD_121,FOLLOW_KEYWORD_121_in_ruleStaticMethodExpression7176); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_91, grammarAccess.getStaticMethodExpressionAccess().getJavaLangMathAsinKeyword_18_1());
-                          
-                    }
-                    otherlv_92=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression7188); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_92, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_18_2());
-                          
-                    }
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3610:1: ( (lv_number_93_0= ruleConditionalOrExpression ) )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3611:1: (lv_number_93_0= ruleConditionalOrExpression )
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3611:1: (lv_number_93_0= ruleConditionalOrExpression )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3612:3: lv_number_93_0= ruleConditionalOrExpression
-                    {
-                    if ( state.backtracking==0 ) {
-                       
-                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_18_3_0()); 
-                      	    
-                    }
-                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression7208);
-                    lv_number_93_0=ruleConditionalOrExpression();
-
-                    state._fsp--;
-                    if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                      	        if (current==null) {
-                      	            current = createModelElementForParent(grammarAccess.getStaticMethodExpressionRule());
-                      	        }
-                             		set(
-                             			current, 
-                             			"number",
-                              		lv_number_93_0, 
-                              		"ConditionalOrExpression");
-                      	        afterParserOrEnumRuleCall();
-                      	    
-                    }
-
-                    }
-
-
-                    }
-
-                    otherlv_94=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression7221); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_94, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_18_4());
-                          
-                    }
-
-                    }
-
-
-                    }
-                    break;
-                case 20 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3634:6: ( () otherlv_96= KEYWORD_122 otherlv_97= KEYWORD_4 ( (lv_number_98_0= ruleConditionalOrExpression ) ) otherlv_99= KEYWORD_5 )
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3634:6: ( () otherlv_96= KEYWORD_122 otherlv_97= KEYWORD_4 ( (lv_number_98_0= ruleConditionalOrExpression ) ) otherlv_99= KEYWORD_5 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3634:7: () otherlv_96= KEYWORD_122 otherlv_97= KEYWORD_4 ( (lv_number_98_0= ruleConditionalOrExpression ) ) otherlv_99= KEYWORD_5
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3634:7: ()
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3635:2: 
-                    {
-                    if ( state.backtracking==0 ) {
-                       
-                      	  /* */ 
-                      	
-                    }
-                    if ( state.backtracking==0 ) {
-
-                              current = forceCreateModelElement(
-                                  grammarAccess.getStaticMethodExpressionAccess().getExpressionAction_19_0(),
-                                  current);
-                          
-                    }
-
-                    }
-
-                    otherlv_96=(Token)match(input,KEYWORD_122,FOLLOW_KEYWORD_122_in_ruleStaticMethodExpression7253); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_96, grammarAccess.getStaticMethodExpressionAccess().getJavaLangMathAtanKeyword_19_1());
-                          
-                    }
-                    otherlv_97=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression7265); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_97, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_19_2());
-                          
-                    }
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3653:1: ( (lv_number_98_0= ruleConditionalOrExpression ) )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3654:1: (lv_number_98_0= ruleConditionalOrExpression )
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3654:1: (lv_number_98_0= ruleConditionalOrExpression )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3655:3: lv_number_98_0= ruleConditionalOrExpression
-                    {
-                    if ( state.backtracking==0 ) {
-                       
-                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_19_3_0()); 
-                      	    
-                    }
-                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression7285);
-                    lv_number_98_0=ruleConditionalOrExpression();
-
-                    state._fsp--;
-                    if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                      	        if (current==null) {
-                      	            current = createModelElementForParent(grammarAccess.getStaticMethodExpressionRule());
-                      	        }
-                             		set(
-                             			current, 
-                             			"number",
-                              		lv_number_98_0, 
-                              		"ConditionalOrExpression");
-                      	        afterParserOrEnumRuleCall();
-                      	    
-                    }
-
-                    }
-
-
-                    }
-
-                    otherlv_99=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression7298); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_99, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_19_4());
+                          	newLeafNode(otherlv_79, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_19_3());
                           
                     }
 
@@ -9981,54 +10021,56 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 21 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3677:6: ( () otherlv_101= KEYWORD_123 otherlv_102= KEYWORD_4 ( (lv_number_103_0= ruleConditionalOrExpression ) ) otherlv_104= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3717:6: ( ( (lv_name_80_0= KEYWORD_123 ) ) otherlv_81= KEYWORD_4 ( (lv_number_82_0= ruleConditionalOrExpression ) ) otherlv_83= KEYWORD_5 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3677:6: ( () otherlv_101= KEYWORD_123 otherlv_102= KEYWORD_4 ( (lv_number_103_0= ruleConditionalOrExpression ) ) otherlv_104= KEYWORD_5 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3677:7: () otherlv_101= KEYWORD_123 otherlv_102= KEYWORD_4 ( (lv_number_103_0= ruleConditionalOrExpression ) ) otherlv_104= KEYWORD_5
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3717:6: ( ( (lv_name_80_0= KEYWORD_123 ) ) otherlv_81= KEYWORD_4 ( (lv_number_82_0= ruleConditionalOrExpression ) ) otherlv_83= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3717:7: ( (lv_name_80_0= KEYWORD_123 ) ) otherlv_81= KEYWORD_4 ( (lv_number_82_0= ruleConditionalOrExpression ) ) otherlv_83= KEYWORD_5
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3677:7: ()
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3678:2: 
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3717:7: ( (lv_name_80_0= KEYWORD_123 ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3718:1: (lv_name_80_0= KEYWORD_123 )
                     {
-                    if ( state.backtracking==0 ) {
-                       
-                      	  /* */ 
-                      	
-                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3718:1: (lv_name_80_0= KEYWORD_123 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3719:3: lv_name_80_0= KEYWORD_123
+                    {
+                    lv_name_80_0=(Token)match(input,KEYWORD_123,FOLLOW_KEYWORD_123_in_ruleStaticMethodExpression7444); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                              current = forceCreateModelElement(
-                                  grammarAccess.getStaticMethodExpressionAccess().getExpressionAction_20_0(),
-                                  current);
+                              newLeafNode(lv_name_80_0, grammarAccess.getStaticMethodExpressionAccess().getNameJavaLangMathCeilKeyword_20_0_0());
                           
                     }
-
-                    }
-
-                    otherlv_101=(Token)match(input,KEYWORD_123,FOLLOW_KEYWORD_123_in_ruleStaticMethodExpression7330); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_101, grammarAccess.getStaticMethodExpressionAccess().getJavaLangMathCeilKeyword_20_1());
-                          
-                    }
-                    otherlv_102=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression7342); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_102, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_20_2());
-                          
-                    }
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3696:1: ( (lv_number_103_0= ruleConditionalOrExpression ) )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3697:1: (lv_number_103_0= ruleConditionalOrExpression )
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3697:1: (lv_number_103_0= ruleConditionalOrExpression )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3698:3: lv_number_103_0= ruleConditionalOrExpression
-                    {
-                    if ( state.backtracking==0 ) {
-                       
-                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_20_3_0()); 
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getStaticMethodExpressionRule());
+                      	        }
+                             		setWithLastConsumed(current, "name", lv_name_80_0, "java.lang.Math.ceil");
                       	    
                     }
-                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression7362);
-                    lv_number_103_0=ruleConditionalOrExpression();
+
+                    }
+
+
+                    }
+
+                    otherlv_81=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression7468); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_81, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_20_1());
+                          
+                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3738:1: ( (lv_number_82_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3739:1: (lv_number_82_0= ruleConditionalOrExpression )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3739:1: (lv_number_82_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3740:3: lv_number_82_0= ruleConditionalOrExpression
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_20_2_0()); 
+                      	    
+                    }
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression7488);
+                    lv_number_82_0=ruleConditionalOrExpression();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -10040,7 +10082,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                              		set(
                              			current, 
                              			"number",
-                              		lv_number_103_0, 
+                              		lv_number_82_0, 
                               		"ConditionalOrExpression");
                       	        afterParserOrEnumRuleCall();
                       	    
@@ -10051,10 +10093,10 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_104=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression7375); if (state.failed) return current;
+                    otherlv_83=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression7501); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_104, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_20_4());
+                          	newLeafNode(otherlv_83, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_20_3());
                           
                     }
 
@@ -10064,54 +10106,56 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 22 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3720:6: ( () otherlv_106= KEYWORD_115 otherlv_107= KEYWORD_4 ( (lv_number_108_0= ruleConditionalOrExpression ) ) otherlv_109= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3762:6: ( ( (lv_name_84_0= KEYWORD_115 ) ) otherlv_85= KEYWORD_4 ( (lv_number_86_0= ruleConditionalOrExpression ) ) otherlv_87= KEYWORD_5 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3720:6: ( () otherlv_106= KEYWORD_115 otherlv_107= KEYWORD_4 ( (lv_number_108_0= ruleConditionalOrExpression ) ) otherlv_109= KEYWORD_5 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3720:7: () otherlv_106= KEYWORD_115 otherlv_107= KEYWORD_4 ( (lv_number_108_0= ruleConditionalOrExpression ) ) otherlv_109= KEYWORD_5
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3762:6: ( ( (lv_name_84_0= KEYWORD_115 ) ) otherlv_85= KEYWORD_4 ( (lv_number_86_0= ruleConditionalOrExpression ) ) otherlv_87= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3762:7: ( (lv_name_84_0= KEYWORD_115 ) ) otherlv_85= KEYWORD_4 ( (lv_number_86_0= ruleConditionalOrExpression ) ) otherlv_87= KEYWORD_5
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3720:7: ()
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3721:2: 
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3762:7: ( (lv_name_84_0= KEYWORD_115 ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3763:1: (lv_name_84_0= KEYWORD_115 )
                     {
-                    if ( state.backtracking==0 ) {
-                       
-                      	  /* */ 
-                      	
-                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3763:1: (lv_name_84_0= KEYWORD_115 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3764:3: lv_name_84_0= KEYWORD_115
+                    {
+                    lv_name_84_0=(Token)match(input,KEYWORD_115,FOLLOW_KEYWORD_115_in_ruleStaticMethodExpression7527); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                              current = forceCreateModelElement(
-                                  grammarAccess.getStaticMethodExpressionAccess().getExpressionAction_21_0(),
-                                  current);
+                              newLeafNode(lv_name_84_0, grammarAccess.getStaticMethodExpressionAccess().getNameJavaLangMathExpKeyword_21_0_0());
                           
                     }
-
-                    }
-
-                    otherlv_106=(Token)match(input,KEYWORD_115,FOLLOW_KEYWORD_115_in_ruleStaticMethodExpression7407); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_106, grammarAccess.getStaticMethodExpressionAccess().getJavaLangMathExpKeyword_21_1());
-                          
-                    }
-                    otherlv_107=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression7419); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_107, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_21_2());
-                          
-                    }
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3739:1: ( (lv_number_108_0= ruleConditionalOrExpression ) )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3740:1: (lv_number_108_0= ruleConditionalOrExpression )
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3740:1: (lv_number_108_0= ruleConditionalOrExpression )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3741:3: lv_number_108_0= ruleConditionalOrExpression
-                    {
-                    if ( state.backtracking==0 ) {
-                       
-                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_21_3_0()); 
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getStaticMethodExpressionRule());
+                      	        }
+                             		setWithLastConsumed(current, "name", lv_name_84_0, "java.lang.Math.exp");
                       	    
                     }
-                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression7439);
-                    lv_number_108_0=ruleConditionalOrExpression();
+
+                    }
+
+
+                    }
+
+                    otherlv_85=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression7551); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_85, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_21_1());
+                          
+                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3783:1: ( (lv_number_86_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3784:1: (lv_number_86_0= ruleConditionalOrExpression )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3784:1: (lv_number_86_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3785:3: lv_number_86_0= ruleConditionalOrExpression
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_21_2_0()); 
+                      	    
+                    }
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression7571);
+                    lv_number_86_0=ruleConditionalOrExpression();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -10123,7 +10167,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                              		set(
                              			current, 
                              			"number",
-                              		lv_number_108_0, 
+                              		lv_number_86_0, 
                               		"ConditionalOrExpression");
                       	        afterParserOrEnumRuleCall();
                       	    
@@ -10134,10 +10178,10 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_109=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression7452); if (state.failed) return current;
+                    otherlv_87=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression7584); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_109, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_21_4());
+                          	newLeafNode(otherlv_87, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_21_3());
                           
                     }
 
@@ -10147,54 +10191,56 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 23 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3763:6: ( () otherlv_111= KEYWORD_126 otherlv_112= KEYWORD_4 ( (lv_number_113_0= ruleConditionalOrExpression ) ) otherlv_114= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3807:6: ( ( (lv_name_88_0= KEYWORD_126 ) ) otherlv_89= KEYWORD_4 ( (lv_number_90_0= ruleConditionalOrExpression ) ) otherlv_91= KEYWORD_5 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3763:6: ( () otherlv_111= KEYWORD_126 otherlv_112= KEYWORD_4 ( (lv_number_113_0= ruleConditionalOrExpression ) ) otherlv_114= KEYWORD_5 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3763:7: () otherlv_111= KEYWORD_126 otherlv_112= KEYWORD_4 ( (lv_number_113_0= ruleConditionalOrExpression ) ) otherlv_114= KEYWORD_5
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3807:6: ( ( (lv_name_88_0= KEYWORD_126 ) ) otherlv_89= KEYWORD_4 ( (lv_number_90_0= ruleConditionalOrExpression ) ) otherlv_91= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3807:7: ( (lv_name_88_0= KEYWORD_126 ) ) otherlv_89= KEYWORD_4 ( (lv_number_90_0= ruleConditionalOrExpression ) ) otherlv_91= KEYWORD_5
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3763:7: ()
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3764:2: 
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3807:7: ( (lv_name_88_0= KEYWORD_126 ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3808:1: (lv_name_88_0= KEYWORD_126 )
                     {
-                    if ( state.backtracking==0 ) {
-                       
-                      	  /* */ 
-                      	
-                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3808:1: (lv_name_88_0= KEYWORD_126 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3809:3: lv_name_88_0= KEYWORD_126
+                    {
+                    lv_name_88_0=(Token)match(input,KEYWORD_126,FOLLOW_KEYWORD_126_in_ruleStaticMethodExpression7610); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                              current = forceCreateModelElement(
-                                  grammarAccess.getStaticMethodExpressionAccess().getExpressionAction_22_0(),
-                                  current);
+                              newLeafNode(lv_name_88_0, grammarAccess.getStaticMethodExpressionAccess().getNameJavaLangMathFloorKeyword_22_0_0());
                           
                     }
-
-                    }
-
-                    otherlv_111=(Token)match(input,KEYWORD_126,FOLLOW_KEYWORD_126_in_ruleStaticMethodExpression7484); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_111, grammarAccess.getStaticMethodExpressionAccess().getJavaLangMathFloorKeyword_22_1());
-                          
-                    }
-                    otherlv_112=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression7496); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_112, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_22_2());
-                          
-                    }
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3782:1: ( (lv_number_113_0= ruleConditionalOrExpression ) )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3783:1: (lv_number_113_0= ruleConditionalOrExpression )
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3783:1: (lv_number_113_0= ruleConditionalOrExpression )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3784:3: lv_number_113_0= ruleConditionalOrExpression
-                    {
-                    if ( state.backtracking==0 ) {
-                       
-                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_22_3_0()); 
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getStaticMethodExpressionRule());
+                      	        }
+                             		setWithLastConsumed(current, "name", lv_name_88_0, "java.lang.Math.floor");
                       	    
                     }
-                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression7516);
-                    lv_number_113_0=ruleConditionalOrExpression();
+
+                    }
+
+
+                    }
+
+                    otherlv_89=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression7634); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_89, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_22_1());
+                          
+                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3828:1: ( (lv_number_90_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3829:1: (lv_number_90_0= ruleConditionalOrExpression )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3829:1: (lv_number_90_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3830:3: lv_number_90_0= ruleConditionalOrExpression
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_22_2_0()); 
+                      	    
+                    }
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression7654);
+                    lv_number_90_0=ruleConditionalOrExpression();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -10206,7 +10252,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                              		set(
                              			current, 
                              			"number",
-                              		lv_number_113_0, 
+                              		lv_number_90_0, 
                               		"ConditionalOrExpression");
                       	        afterParserOrEnumRuleCall();
                       	    
@@ -10217,10 +10263,10 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_114=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression7529); if (state.failed) return current;
+                    otherlv_91=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression7667); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_114, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_22_4());
+                          	newLeafNode(otherlv_91, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_22_3());
                           
                     }
 
@@ -10230,54 +10276,56 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 24 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3806:6: ( () otherlv_116= KEYWORD_116 otherlv_117= KEYWORD_4 ( (lv_number_118_0= ruleConditionalOrExpression ) ) otherlv_119= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3852:6: ( ( (lv_name_92_0= KEYWORD_116 ) ) otherlv_93= KEYWORD_4 ( (lv_number_94_0= ruleConditionalOrExpression ) ) otherlv_95= KEYWORD_5 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3806:6: ( () otherlv_116= KEYWORD_116 otherlv_117= KEYWORD_4 ( (lv_number_118_0= ruleConditionalOrExpression ) ) otherlv_119= KEYWORD_5 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3806:7: () otherlv_116= KEYWORD_116 otherlv_117= KEYWORD_4 ( (lv_number_118_0= ruleConditionalOrExpression ) ) otherlv_119= KEYWORD_5
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3852:6: ( ( (lv_name_92_0= KEYWORD_116 ) ) otherlv_93= KEYWORD_4 ( (lv_number_94_0= ruleConditionalOrExpression ) ) otherlv_95= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3852:7: ( (lv_name_92_0= KEYWORD_116 ) ) otherlv_93= KEYWORD_4 ( (lv_number_94_0= ruleConditionalOrExpression ) ) otherlv_95= KEYWORD_5
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3806:7: ()
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3807:2: 
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3852:7: ( (lv_name_92_0= KEYWORD_116 ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3853:1: (lv_name_92_0= KEYWORD_116 )
                     {
-                    if ( state.backtracking==0 ) {
-                       
-                      	  /* */ 
-                      	
-                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3853:1: (lv_name_92_0= KEYWORD_116 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3854:3: lv_name_92_0= KEYWORD_116
+                    {
+                    lv_name_92_0=(Token)match(input,KEYWORD_116,FOLLOW_KEYWORD_116_in_ruleStaticMethodExpression7693); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                              current = forceCreateModelElement(
-                                  grammarAccess.getStaticMethodExpressionAccess().getExpressionAction_23_0(),
-                                  current);
+                              newLeafNode(lv_name_92_0, grammarAccess.getStaticMethodExpressionAccess().getNameJavaLangMathLogKeyword_23_0_0());
                           
                     }
-
-                    }
-
-                    otherlv_116=(Token)match(input,KEYWORD_116,FOLLOW_KEYWORD_116_in_ruleStaticMethodExpression7561); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_116, grammarAccess.getStaticMethodExpressionAccess().getJavaLangMathLogKeyword_23_1());
-                          
-                    }
-                    otherlv_117=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression7573); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_117, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_23_2());
-                          
-                    }
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3825:1: ( (lv_number_118_0= ruleConditionalOrExpression ) )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3826:1: (lv_number_118_0= ruleConditionalOrExpression )
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3826:1: (lv_number_118_0= ruleConditionalOrExpression )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3827:3: lv_number_118_0= ruleConditionalOrExpression
-                    {
-                    if ( state.backtracking==0 ) {
-                       
-                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_23_3_0()); 
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getStaticMethodExpressionRule());
+                      	        }
+                             		setWithLastConsumed(current, "name", lv_name_92_0, "java.lang.Math.log");
                       	    
                     }
-                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression7593);
-                    lv_number_118_0=ruleConditionalOrExpression();
+
+                    }
+
+
+                    }
+
+                    otherlv_93=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression7717); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_93, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_23_1());
+                          
+                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3873:1: ( (lv_number_94_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3874:1: (lv_number_94_0= ruleConditionalOrExpression )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3874:1: (lv_number_94_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3875:3: lv_number_94_0= ruleConditionalOrExpression
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getNumberConditionalOrExpressionParserRuleCall_23_2_0()); 
+                      	    
+                    }
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression7737);
+                    lv_number_94_0=ruleConditionalOrExpression();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -10289,7 +10337,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                              		set(
                              			current, 
                              			"number",
-                              		lv_number_118_0, 
+                              		lv_number_94_0, 
                               		"ConditionalOrExpression");
                       	        afterParserOrEnumRuleCall();
                       	    
@@ -10300,10 +10348,10 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_119=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression7606); if (state.failed) return current;
+                    otherlv_95=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression7750); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_119, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_23_4());
+                          	newLeafNode(otherlv_95, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_23_3());
                           
                     }
 
@@ -10313,54 +10361,56 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 25 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3849:6: ( () otherlv_121= KEYWORD_127 otherlv_122= KEYWORD_4 ( (lv_persistable_123_0= ruleConditionalOrExpression ) ) otherlv_124= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3897:6: ( ( (lv_name_96_0= KEYWORD_127 ) ) otherlv_97= KEYWORD_4 ( (lv_persistable_98_0= ruleConditionalOrExpression ) ) otherlv_99= KEYWORD_5 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3849:6: ( () otherlv_121= KEYWORD_127 otherlv_122= KEYWORD_4 ( (lv_persistable_123_0= ruleConditionalOrExpression ) ) otherlv_124= KEYWORD_5 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3849:7: () otherlv_121= KEYWORD_127 otherlv_122= KEYWORD_4 ( (lv_persistable_123_0= ruleConditionalOrExpression ) ) otherlv_124= KEYWORD_5
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3897:6: ( ( (lv_name_96_0= KEYWORD_127 ) ) otherlv_97= KEYWORD_4 ( (lv_persistable_98_0= ruleConditionalOrExpression ) ) otherlv_99= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3897:7: ( (lv_name_96_0= KEYWORD_127 ) ) otherlv_97= KEYWORD_4 ( (lv_persistable_98_0= ruleConditionalOrExpression ) ) otherlv_99= KEYWORD_5
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3849:7: ()
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3850:2: 
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3897:7: ( (lv_name_96_0= KEYWORD_127 ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3898:1: (lv_name_96_0= KEYWORD_127 )
                     {
-                    if ( state.backtracking==0 ) {
-                       
-                      	  /* */ 
-                      	
-                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3898:1: (lv_name_96_0= KEYWORD_127 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3899:3: lv_name_96_0= KEYWORD_127
+                    {
+                    lv_name_96_0=(Token)match(input,KEYWORD_127,FOLLOW_KEYWORD_127_in_ruleStaticMethodExpression7776); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                              current = forceCreateModelElement(
-                                  grammarAccess.getStaticMethodExpressionAccess().getExpressionAction_24_0(),
-                                  current);
+                              newLeafNode(lv_name_96_0, grammarAccess.getStaticMethodExpressionAccess().getNameJDOHelperGetObjectIdKeyword_24_0_0());
                           
                     }
-
-                    }
-
-                    otherlv_121=(Token)match(input,KEYWORD_127,FOLLOW_KEYWORD_127_in_ruleStaticMethodExpression7638); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_121, grammarAccess.getStaticMethodExpressionAccess().getJDOHelperGetObjectIdKeyword_24_1());
-                          
-                    }
-                    otherlv_122=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression7650); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_122, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_24_2());
-                          
-                    }
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3868:1: ( (lv_persistable_123_0= ruleConditionalOrExpression ) )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3869:1: (lv_persistable_123_0= ruleConditionalOrExpression )
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3869:1: (lv_persistable_123_0= ruleConditionalOrExpression )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3870:3: lv_persistable_123_0= ruleConditionalOrExpression
-                    {
-                    if ( state.backtracking==0 ) {
-                       
-                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getPersistableConditionalOrExpressionParserRuleCall_24_3_0()); 
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getStaticMethodExpressionRule());
+                      	        }
+                             		setWithLastConsumed(current, "name", lv_name_96_0, "JDOHelper.getObjectId");
                       	    
                     }
-                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression7670);
-                    lv_persistable_123_0=ruleConditionalOrExpression();
+
+                    }
+
+
+                    }
+
+                    otherlv_97=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression7800); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_97, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_24_1());
+                          
+                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3918:1: ( (lv_persistable_98_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3919:1: (lv_persistable_98_0= ruleConditionalOrExpression )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3919:1: (lv_persistable_98_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3920:3: lv_persistable_98_0= ruleConditionalOrExpression
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getPersistableConditionalOrExpressionParserRuleCall_24_2_0()); 
+                      	    
+                    }
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression7820);
+                    lv_persistable_98_0=ruleConditionalOrExpression();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -10372,7 +10422,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                              		set(
                              			current, 
                              			"persistable",
-                              		lv_persistable_123_0, 
+                              		lv_persistable_98_0, 
                               		"ConditionalOrExpression");
                       	        afterParserOrEnumRuleCall();
                       	    
@@ -10383,10 +10433,10 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_124=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression7683); if (state.failed) return current;
+                    otherlv_99=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression7833); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_124, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_24_4());
+                          	newLeafNode(otherlv_99, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_24_3());
                           
                     }
 
@@ -10396,54 +10446,56 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 26 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3892:6: ( () otherlv_126= KEYWORD_125 otherlv_127= KEYWORD_4 ( (lv_persistable_128_0= ruleConditionalOrExpression ) ) otherlv_129= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3942:6: ( ( (lv_name_100_0= KEYWORD_125 ) ) otherlv_101= KEYWORD_4 ( (lv_persistable_102_0= ruleConditionalOrExpression ) ) otherlv_103= KEYWORD_5 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3892:6: ( () otherlv_126= KEYWORD_125 otherlv_127= KEYWORD_4 ( (lv_persistable_128_0= ruleConditionalOrExpression ) ) otherlv_129= KEYWORD_5 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3892:7: () otherlv_126= KEYWORD_125 otherlv_127= KEYWORD_4 ( (lv_persistable_128_0= ruleConditionalOrExpression ) ) otherlv_129= KEYWORD_5
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3942:6: ( ( (lv_name_100_0= KEYWORD_125 ) ) otherlv_101= KEYWORD_4 ( (lv_persistable_102_0= ruleConditionalOrExpression ) ) otherlv_103= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3942:7: ( (lv_name_100_0= KEYWORD_125 ) ) otherlv_101= KEYWORD_4 ( (lv_persistable_102_0= ruleConditionalOrExpression ) ) otherlv_103= KEYWORD_5
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3892:7: ()
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3893:2: 
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3942:7: ( (lv_name_100_0= KEYWORD_125 ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3943:1: (lv_name_100_0= KEYWORD_125 )
                     {
-                    if ( state.backtracking==0 ) {
-                       
-                      	  /* */ 
-                      	
-                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3943:1: (lv_name_100_0= KEYWORD_125 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3944:3: lv_name_100_0= KEYWORD_125
+                    {
+                    lv_name_100_0=(Token)match(input,KEYWORD_125,FOLLOW_KEYWORD_125_in_ruleStaticMethodExpression7859); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                              current = forceCreateModelElement(
-                                  grammarAccess.getStaticMethodExpressionAccess().getExpressionAction_25_0(),
-                                  current);
+                              newLeafNode(lv_name_100_0, grammarAccess.getStaticMethodExpressionAccess().getNameJDOHelperGetVersionKeyword_25_0_0());
                           
                     }
-
-                    }
-
-                    otherlv_126=(Token)match(input,KEYWORD_125,FOLLOW_KEYWORD_125_in_ruleStaticMethodExpression7715); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_126, grammarAccess.getStaticMethodExpressionAccess().getJDOHelperGetVersionKeyword_25_1());
-                          
-                    }
-                    otherlv_127=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression7727); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_127, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_25_2());
-                          
-                    }
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3911:1: ( (lv_persistable_128_0= ruleConditionalOrExpression ) )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3912:1: (lv_persistable_128_0= ruleConditionalOrExpression )
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3912:1: (lv_persistable_128_0= ruleConditionalOrExpression )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3913:3: lv_persistable_128_0= ruleConditionalOrExpression
-                    {
-                    if ( state.backtracking==0 ) {
-                       
-                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getPersistableConditionalOrExpressionParserRuleCall_25_3_0()); 
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getStaticMethodExpressionRule());
+                      	        }
+                             		setWithLastConsumed(current, "name", lv_name_100_0, "JDOHelper.getVersion");
                       	    
                     }
-                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression7747);
-                    lv_persistable_128_0=ruleConditionalOrExpression();
+
+                    }
+
+
+                    }
+
+                    otherlv_101=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression7883); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_101, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_25_1());
+                          
+                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3963:1: ( (lv_persistable_102_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3964:1: (lv_persistable_102_0= ruleConditionalOrExpression )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3964:1: (lv_persistable_102_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3965:3: lv_persistable_102_0= ruleConditionalOrExpression
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getPersistableConditionalOrExpressionParserRuleCall_25_2_0()); 
+                      	    
+                    }
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression7903);
+                    lv_persistable_102_0=ruleConditionalOrExpression();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -10455,7 +10507,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                              		set(
                              			current, 
                              			"persistable",
-                              		lv_persistable_128_0, 
+                              		lv_persistable_102_0, 
                               		"ConditionalOrExpression");
                       	        afterParserOrEnumRuleCall();
                       	    
@@ -10466,10 +10518,10 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_129=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression7760); if (state.failed) return current;
+                    otherlv_103=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression7916); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_129, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_25_4());
+                          	newLeafNode(otherlv_103, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_25_3());
                           
                     }
 
@@ -10479,54 +10531,56 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 27 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3935:6: ( () otherlv_131= KEYWORD_129 otherlv_132= KEYWORD_4 ( (lv_persistable_133_0= ruleConditionalOrExpression ) ) otherlv_134= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3987:6: ( ( (lv_name_104_0= KEYWORD_129 ) ) otherlv_105= KEYWORD_4 ( (lv_persistable_106_0= ruleConditionalOrExpression ) ) otherlv_107= KEYWORD_5 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3935:6: ( () otherlv_131= KEYWORD_129 otherlv_132= KEYWORD_4 ( (lv_persistable_133_0= ruleConditionalOrExpression ) ) otherlv_134= KEYWORD_5 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3935:7: () otherlv_131= KEYWORD_129 otherlv_132= KEYWORD_4 ( (lv_persistable_133_0= ruleConditionalOrExpression ) ) otherlv_134= KEYWORD_5
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3987:6: ( ( (lv_name_104_0= KEYWORD_129 ) ) otherlv_105= KEYWORD_4 ( (lv_persistable_106_0= ruleConditionalOrExpression ) ) otherlv_107= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3987:7: ( (lv_name_104_0= KEYWORD_129 ) ) otherlv_105= KEYWORD_4 ( (lv_persistable_106_0= ruleConditionalOrExpression ) ) otherlv_107= KEYWORD_5
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3935:7: ()
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3936:2: 
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3987:7: ( (lv_name_104_0= KEYWORD_129 ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3988:1: (lv_name_104_0= KEYWORD_129 )
                     {
-                    if ( state.backtracking==0 ) {
-                       
-                      	  /* */ 
-                      	
-                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3988:1: (lv_name_104_0= KEYWORD_129 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3989:3: lv_name_104_0= KEYWORD_129
+                    {
+                    lv_name_104_0=(Token)match(input,KEYWORD_129,FOLLOW_KEYWORD_129_in_ruleStaticMethodExpression7942); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                              current = forceCreateModelElement(
-                                  grammarAccess.getStaticMethodExpressionAccess().getExpressionAction_26_0(),
-                                  current);
+                              newLeafNode(lv_name_104_0, grammarAccess.getStaticMethodExpressionAccess().getNameJavaxJdoJDOHelperGetObjectIdKeyword_26_0_0());
                           
                     }
-
-                    }
-
-                    otherlv_131=(Token)match(input,KEYWORD_129,FOLLOW_KEYWORD_129_in_ruleStaticMethodExpression7792); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_131, grammarAccess.getStaticMethodExpressionAccess().getJavaxJdoJDOHelperGetObjectIdKeyword_26_1());
-                          
-                    }
-                    otherlv_132=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression7804); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_132, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_26_2());
-                          
-                    }
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3954:1: ( (lv_persistable_133_0= ruleConditionalOrExpression ) )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3955:1: (lv_persistable_133_0= ruleConditionalOrExpression )
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3955:1: (lv_persistable_133_0= ruleConditionalOrExpression )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3956:3: lv_persistable_133_0= ruleConditionalOrExpression
-                    {
-                    if ( state.backtracking==0 ) {
-                       
-                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getPersistableConditionalOrExpressionParserRuleCall_26_3_0()); 
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getStaticMethodExpressionRule());
+                      	        }
+                             		setWithLastConsumed(current, "name", lv_name_104_0, "javax.jdo.JDOHelper.getObjectId");
                       	    
                     }
-                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression7824);
-                    lv_persistable_133_0=ruleConditionalOrExpression();
+
+                    }
+
+
+                    }
+
+                    otherlv_105=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression7966); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_105, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_26_1());
+                          
+                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4008:1: ( (lv_persistable_106_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4009:1: (lv_persistable_106_0= ruleConditionalOrExpression )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4009:1: (lv_persistable_106_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4010:3: lv_persistable_106_0= ruleConditionalOrExpression
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getPersistableConditionalOrExpressionParserRuleCall_26_2_0()); 
+                      	    
+                    }
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression7986);
+                    lv_persistable_106_0=ruleConditionalOrExpression();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -10538,7 +10592,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                              		set(
                              			current, 
                              			"persistable",
-                              		lv_persistable_133_0, 
+                              		lv_persistable_106_0, 
                               		"ConditionalOrExpression");
                       	        afterParserOrEnumRuleCall();
                       	    
@@ -10549,10 +10603,10 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_134=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression7837); if (state.failed) return current;
+                    otherlv_107=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression7999); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_134, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_26_4());
+                          	newLeafNode(otherlv_107, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_26_3());
                           
                     }
 
@@ -10562,54 +10616,56 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 28 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3978:6: ( () otherlv_136= KEYWORD_128 otherlv_137= KEYWORD_4 ( (lv_persistable_138_0= ruleConditionalOrExpression ) ) otherlv_139= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4032:6: ( ( (lv_name_108_0= KEYWORD_128 ) ) otherlv_109= KEYWORD_4 ( (lv_persistable_110_0= ruleConditionalOrExpression ) ) otherlv_111= KEYWORD_5 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3978:6: ( () otherlv_136= KEYWORD_128 otherlv_137= KEYWORD_4 ( (lv_persistable_138_0= ruleConditionalOrExpression ) ) otherlv_139= KEYWORD_5 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3978:7: () otherlv_136= KEYWORD_128 otherlv_137= KEYWORD_4 ( (lv_persistable_138_0= ruleConditionalOrExpression ) ) otherlv_139= KEYWORD_5
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4032:6: ( ( (lv_name_108_0= KEYWORD_128 ) ) otherlv_109= KEYWORD_4 ( (lv_persistable_110_0= ruleConditionalOrExpression ) ) otherlv_111= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4032:7: ( (lv_name_108_0= KEYWORD_128 ) ) otherlv_109= KEYWORD_4 ( (lv_persistable_110_0= ruleConditionalOrExpression ) ) otherlv_111= KEYWORD_5
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3978:7: ()
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3979:2: 
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4032:7: ( (lv_name_108_0= KEYWORD_128 ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4033:1: (lv_name_108_0= KEYWORD_128 )
                     {
-                    if ( state.backtracking==0 ) {
-                       
-                      	  /* */ 
-                      	
-                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4033:1: (lv_name_108_0= KEYWORD_128 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4034:3: lv_name_108_0= KEYWORD_128
+                    {
+                    lv_name_108_0=(Token)match(input,KEYWORD_128,FOLLOW_KEYWORD_128_in_ruleStaticMethodExpression8025); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                              current = forceCreateModelElement(
-                                  grammarAccess.getStaticMethodExpressionAccess().getExpressionAction_27_0(),
-                                  current);
+                              newLeafNode(lv_name_108_0, grammarAccess.getStaticMethodExpressionAccess().getNameJavaxJdoJDOHelperGetVersionKeyword_27_0_0());
                           
                     }
-
-                    }
-
-                    otherlv_136=(Token)match(input,KEYWORD_128,FOLLOW_KEYWORD_128_in_ruleStaticMethodExpression7869); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_136, grammarAccess.getStaticMethodExpressionAccess().getJavaxJdoJDOHelperGetVersionKeyword_27_1());
-                          
-                    }
-                    otherlv_137=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression7881); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_137, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_27_2());
-                          
-                    }
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3997:1: ( (lv_persistable_138_0= ruleConditionalOrExpression ) )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3998:1: (lv_persistable_138_0= ruleConditionalOrExpression )
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3998:1: (lv_persistable_138_0= ruleConditionalOrExpression )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:3999:3: lv_persistable_138_0= ruleConditionalOrExpression
-                    {
-                    if ( state.backtracking==0 ) {
-                       
-                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getPersistableConditionalOrExpressionParserRuleCall_27_3_0()); 
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getStaticMethodExpressionRule());
+                      	        }
+                             		setWithLastConsumed(current, "name", lv_name_108_0, "javax.jdo.JDOHelper.getVersion");
                       	    
                     }
-                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression7901);
-                    lv_persistable_138_0=ruleConditionalOrExpression();
+
+                    }
+
+
+                    }
+
+                    otherlv_109=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression8049); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_109, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_27_1());
+                          
+                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4053:1: ( (lv_persistable_110_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4054:1: (lv_persistable_110_0= ruleConditionalOrExpression )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4054:1: (lv_persistable_110_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4055:3: lv_persistable_110_0= ruleConditionalOrExpression
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getPersistableConditionalOrExpressionParserRuleCall_27_2_0()); 
+                      	    
+                    }
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression8069);
+                    lv_persistable_110_0=ruleConditionalOrExpression();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -10621,7 +10677,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                              		set(
                              			current, 
                              			"persistable",
-                              		lv_persistable_138_0, 
+                              		lv_persistable_110_0, 
                               		"ConditionalOrExpression");
                       	        afterParserOrEnumRuleCall();
                       	    
@@ -10632,10 +10688,10 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_139=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression7914); if (state.failed) return current;
+                    otherlv_111=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression8082); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_139, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_27_4());
+                          	newLeafNode(otherlv_111, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_27_3());
                           
                     }
 
@@ -10645,42 +10701,44 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 29 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4021:6: ( () otherlv_141= KEYWORD_48 otherlv_142= KEYWORD_4 ( (lv_isDistinct_143_0= KEYWORD_71 ) )? ( (lv_aggregateArgument_144_0= ruleConditionalOrExpression ) ) otherlv_145= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4077:6: ( ( (lv_name_112_0= KEYWORD_48 ) ) otherlv_113= KEYWORD_4 ( (lv_isDistinct_114_0= KEYWORD_71 ) )? ( (lv_aggregateArgument_115_0= ruleConditionalOrExpression ) ) otherlv_116= KEYWORD_5 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4021:6: ( () otherlv_141= KEYWORD_48 otherlv_142= KEYWORD_4 ( (lv_isDistinct_143_0= KEYWORD_71 ) )? ( (lv_aggregateArgument_144_0= ruleConditionalOrExpression ) ) otherlv_145= KEYWORD_5 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4021:7: () otherlv_141= KEYWORD_48 otherlv_142= KEYWORD_4 ( (lv_isDistinct_143_0= KEYWORD_71 ) )? ( (lv_aggregateArgument_144_0= ruleConditionalOrExpression ) ) otherlv_145= KEYWORD_5
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4077:6: ( ( (lv_name_112_0= KEYWORD_48 ) ) otherlv_113= KEYWORD_4 ( (lv_isDistinct_114_0= KEYWORD_71 ) )? ( (lv_aggregateArgument_115_0= ruleConditionalOrExpression ) ) otherlv_116= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4077:7: ( (lv_name_112_0= KEYWORD_48 ) ) otherlv_113= KEYWORD_4 ( (lv_isDistinct_114_0= KEYWORD_71 ) )? ( (lv_aggregateArgument_115_0= ruleConditionalOrExpression ) ) otherlv_116= KEYWORD_5
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4021:7: ()
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4022:2: 
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4077:7: ( (lv_name_112_0= KEYWORD_48 ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4078:1: (lv_name_112_0= KEYWORD_48 )
                     {
-                    if ( state.backtracking==0 ) {
-                       
-                      	  /* */ 
-                      	
-                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4078:1: (lv_name_112_0= KEYWORD_48 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4079:3: lv_name_112_0= KEYWORD_48
+                    {
+                    lv_name_112_0=(Token)match(input,KEYWORD_48,FOLLOW_KEYWORD_48_in_ruleStaticMethodExpression8108); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                              current = forceCreateModelElement(
-                                  grammarAccess.getStaticMethodExpressionAccess().getExpressionAction_28_0(),
-                                  current);
+                              newLeafNode(lv_name_112_0, grammarAccess.getStaticMethodExpressionAccess().getNameCountKeyword_28_0_0());
                           
                     }
-
-                    }
-
-                    otherlv_141=(Token)match(input,KEYWORD_48,FOLLOW_KEYWORD_48_in_ruleStaticMethodExpression7946); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_141, grammarAccess.getStaticMethodExpressionAccess().getCountKeyword_28_1());
-                          
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getStaticMethodExpressionRule());
+                      	        }
+                             		setWithLastConsumed(current, "name", lv_name_112_0, "count");
+                      	    
                     }
-                    otherlv_142=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression7958); if (state.failed) return current;
+
+                    }
+
+
+                    }
+
+                    otherlv_113=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression8132); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_142, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_28_2());
+                          	newLeafNode(otherlv_113, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_28_1());
                           
                     }
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4040:1: ( (lv_isDistinct_143_0= KEYWORD_71 ) )?
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4098:1: ( (lv_isDistinct_114_0= KEYWORD_71 ) )?
                     int alt53=2;
                     int LA53_0 = input.LA(1);
 
@@ -10689,15 +10747,15 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     switch (alt53) {
                         case 1 :
-                            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4041:1: (lv_isDistinct_143_0= KEYWORD_71 )
+                            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4099:1: (lv_isDistinct_114_0= KEYWORD_71 )
                             {
-                            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4041:1: (lv_isDistinct_143_0= KEYWORD_71 )
-                            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4042:3: lv_isDistinct_143_0= KEYWORD_71
+                            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4099:1: (lv_isDistinct_114_0= KEYWORD_71 )
+                            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4100:3: lv_isDistinct_114_0= KEYWORD_71
                             {
-                            lv_isDistinct_143_0=(Token)match(input,KEYWORD_71,FOLLOW_KEYWORD_71_in_ruleStaticMethodExpression7976); if (state.failed) return current;
+                            lv_isDistinct_114_0=(Token)match(input,KEYWORD_71,FOLLOW_KEYWORD_71_in_ruleStaticMethodExpression8150); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
-                                      newLeafNode(lv_isDistinct_143_0, grammarAccess.getStaticMethodExpressionAccess().getIsDistinctDISTINCTKeyword_28_3_0());
+                                      newLeafNode(lv_isDistinct_114_0, grammarAccess.getStaticMethodExpressionAccess().getIsDistinctDISTINCTKeyword_28_2_0());
                                   
                             }
                             if ( state.backtracking==0 ) {
@@ -10717,19 +10775,19 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4056:3: ( (lv_aggregateArgument_144_0= ruleConditionalOrExpression ) )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4057:1: (lv_aggregateArgument_144_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4114:3: ( (lv_aggregateArgument_115_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4115:1: (lv_aggregateArgument_115_0= ruleConditionalOrExpression )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4057:1: (lv_aggregateArgument_144_0= ruleConditionalOrExpression )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4058:3: lv_aggregateArgument_144_0= ruleConditionalOrExpression
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4115:1: (lv_aggregateArgument_115_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4116:3: lv_aggregateArgument_115_0= ruleConditionalOrExpression
                     {
                     if ( state.backtracking==0 ) {
                        
-                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getAggregateArgumentConditionalOrExpressionParserRuleCall_28_4_0()); 
+                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getAggregateArgumentConditionalOrExpressionParserRuleCall_28_3_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression8009);
-                    lv_aggregateArgument_144_0=ruleConditionalOrExpression();
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression8183);
+                    lv_aggregateArgument_115_0=ruleConditionalOrExpression();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -10741,7 +10799,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                              		set(
                              			current, 
                              			"aggregateArgument",
-                              		lv_aggregateArgument_144_0, 
+                              		lv_aggregateArgument_115_0, 
                               		"ConditionalOrExpression");
                       	        afterParserOrEnumRuleCall();
                       	    
@@ -10752,10 +10810,10 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_145=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression8022); if (state.failed) return current;
+                    otherlv_116=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression8196); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_145, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_28_5());
+                          	newLeafNode(otherlv_116, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_28_4());
                           
                     }
 
@@ -10765,42 +10823,44 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 30 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4080:6: ( () otherlv_147= KEYWORD_32 otherlv_148= KEYWORD_4 ( (lv_isDistinct_149_0= KEYWORD_71 ) )? ( (lv_aggregateArgument_150_0= ruleConditionalOrExpression ) ) otherlv_151= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4138:6: ( ( (lv_name_117_0= KEYWORD_32 ) ) otherlv_118= KEYWORD_4 ( (lv_isDistinct_119_0= KEYWORD_71 ) )? ( (lv_aggregateArgument_120_0= ruleConditionalOrExpression ) ) otherlv_121= KEYWORD_5 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4080:6: ( () otherlv_147= KEYWORD_32 otherlv_148= KEYWORD_4 ( (lv_isDistinct_149_0= KEYWORD_71 ) )? ( (lv_aggregateArgument_150_0= ruleConditionalOrExpression ) ) otherlv_151= KEYWORD_5 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4080:7: () otherlv_147= KEYWORD_32 otherlv_148= KEYWORD_4 ( (lv_isDistinct_149_0= KEYWORD_71 ) )? ( (lv_aggregateArgument_150_0= ruleConditionalOrExpression ) ) otherlv_151= KEYWORD_5
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4138:6: ( ( (lv_name_117_0= KEYWORD_32 ) ) otherlv_118= KEYWORD_4 ( (lv_isDistinct_119_0= KEYWORD_71 ) )? ( (lv_aggregateArgument_120_0= ruleConditionalOrExpression ) ) otherlv_121= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4138:7: ( (lv_name_117_0= KEYWORD_32 ) ) otherlv_118= KEYWORD_4 ( (lv_isDistinct_119_0= KEYWORD_71 ) )? ( (lv_aggregateArgument_120_0= ruleConditionalOrExpression ) ) otherlv_121= KEYWORD_5
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4080:7: ()
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4081:2: 
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4138:7: ( (lv_name_117_0= KEYWORD_32 ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4139:1: (lv_name_117_0= KEYWORD_32 )
                     {
-                    if ( state.backtracking==0 ) {
-                       
-                      	  /* */ 
-                      	
-                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4139:1: (lv_name_117_0= KEYWORD_32 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4140:3: lv_name_117_0= KEYWORD_32
+                    {
+                    lv_name_117_0=(Token)match(input,KEYWORD_32,FOLLOW_KEYWORD_32_in_ruleStaticMethodExpression8222); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                              current = forceCreateModelElement(
-                                  grammarAccess.getStaticMethodExpressionAccess().getExpressionAction_29_0(),
-                                  current);
+                              newLeafNode(lv_name_117_0, grammarAccess.getStaticMethodExpressionAccess().getNameSumKeyword_29_0_0());
                           
                     }
-
-                    }
-
-                    otherlv_147=(Token)match(input,KEYWORD_32,FOLLOW_KEYWORD_32_in_ruleStaticMethodExpression8054); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_147, grammarAccess.getStaticMethodExpressionAccess().getSumKeyword_29_1());
-                          
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getStaticMethodExpressionRule());
+                      	        }
+                             		setWithLastConsumed(current, "name", lv_name_117_0, "sum");
+                      	    
                     }
-                    otherlv_148=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression8066); if (state.failed) return current;
+
+                    }
+
+
+                    }
+
+                    otherlv_118=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression8246); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_148, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_29_2());
+                          	newLeafNode(otherlv_118, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_29_1());
                           
                     }
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4099:1: ( (lv_isDistinct_149_0= KEYWORD_71 ) )?
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4159:1: ( (lv_isDistinct_119_0= KEYWORD_71 ) )?
                     int alt54=2;
                     int LA54_0 = input.LA(1);
 
@@ -10809,15 +10869,15 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     switch (alt54) {
                         case 1 :
-                            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4100:1: (lv_isDistinct_149_0= KEYWORD_71 )
+                            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4160:1: (lv_isDistinct_119_0= KEYWORD_71 )
                             {
-                            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4100:1: (lv_isDistinct_149_0= KEYWORD_71 )
-                            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4101:3: lv_isDistinct_149_0= KEYWORD_71
+                            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4160:1: (lv_isDistinct_119_0= KEYWORD_71 )
+                            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4161:3: lv_isDistinct_119_0= KEYWORD_71
                             {
-                            lv_isDistinct_149_0=(Token)match(input,KEYWORD_71,FOLLOW_KEYWORD_71_in_ruleStaticMethodExpression8084); if (state.failed) return current;
+                            lv_isDistinct_119_0=(Token)match(input,KEYWORD_71,FOLLOW_KEYWORD_71_in_ruleStaticMethodExpression8264); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
-                                      newLeafNode(lv_isDistinct_149_0, grammarAccess.getStaticMethodExpressionAccess().getIsDistinctDISTINCTKeyword_29_3_0());
+                                      newLeafNode(lv_isDistinct_119_0, grammarAccess.getStaticMethodExpressionAccess().getIsDistinctDISTINCTKeyword_29_2_0());
                                   
                             }
                             if ( state.backtracking==0 ) {
@@ -10837,19 +10897,19 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4115:3: ( (lv_aggregateArgument_150_0= ruleConditionalOrExpression ) )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4116:1: (lv_aggregateArgument_150_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4175:3: ( (lv_aggregateArgument_120_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4176:1: (lv_aggregateArgument_120_0= ruleConditionalOrExpression )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4116:1: (lv_aggregateArgument_150_0= ruleConditionalOrExpression )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4117:3: lv_aggregateArgument_150_0= ruleConditionalOrExpression
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4176:1: (lv_aggregateArgument_120_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4177:3: lv_aggregateArgument_120_0= ruleConditionalOrExpression
                     {
                     if ( state.backtracking==0 ) {
                        
-                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getAggregateArgumentConditionalOrExpressionParserRuleCall_29_4_0()); 
+                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getAggregateArgumentConditionalOrExpressionParserRuleCall_29_3_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression8117);
-                    lv_aggregateArgument_150_0=ruleConditionalOrExpression();
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression8297);
+                    lv_aggregateArgument_120_0=ruleConditionalOrExpression();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -10861,7 +10921,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                              		set(
                              			current, 
                              			"aggregateArgument",
-                              		lv_aggregateArgument_150_0, 
+                              		lv_aggregateArgument_120_0, 
                               		"ConditionalOrExpression");
                       	        afterParserOrEnumRuleCall();
                       	    
@@ -10872,10 +10932,10 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_151=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression8130); if (state.failed) return current;
+                    otherlv_121=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression8310); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_151, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_29_5());
+                          	newLeafNode(otherlv_121, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_29_4());
                           
                     }
 
@@ -10885,54 +10945,56 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 31 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4139:6: ( () otherlv_153= KEYWORD_31 otherlv_154= KEYWORD_4 ( (lv_aggregateArgument_155_0= ruleConditionalOrExpression ) ) otherlv_156= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4199:6: ( ( (lv_name_122_0= KEYWORD_31 ) ) otherlv_123= KEYWORD_4 ( (lv_aggregateArgument_124_0= ruleConditionalOrExpression ) ) otherlv_125= KEYWORD_5 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4139:6: ( () otherlv_153= KEYWORD_31 otherlv_154= KEYWORD_4 ( (lv_aggregateArgument_155_0= ruleConditionalOrExpression ) ) otherlv_156= KEYWORD_5 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4139:7: () otherlv_153= KEYWORD_31 otherlv_154= KEYWORD_4 ( (lv_aggregateArgument_155_0= ruleConditionalOrExpression ) ) otherlv_156= KEYWORD_5
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4199:6: ( ( (lv_name_122_0= KEYWORD_31 ) ) otherlv_123= KEYWORD_4 ( (lv_aggregateArgument_124_0= ruleConditionalOrExpression ) ) otherlv_125= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4199:7: ( (lv_name_122_0= KEYWORD_31 ) ) otherlv_123= KEYWORD_4 ( (lv_aggregateArgument_124_0= ruleConditionalOrExpression ) ) otherlv_125= KEYWORD_5
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4139:7: ()
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4140:2: 
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4199:7: ( (lv_name_122_0= KEYWORD_31 ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4200:1: (lv_name_122_0= KEYWORD_31 )
                     {
-                    if ( state.backtracking==0 ) {
-                       
-                      	  /* */ 
-                      	
-                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4200:1: (lv_name_122_0= KEYWORD_31 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4201:3: lv_name_122_0= KEYWORD_31
+                    {
+                    lv_name_122_0=(Token)match(input,KEYWORD_31,FOLLOW_KEYWORD_31_in_ruleStaticMethodExpression8336); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                              current = forceCreateModelElement(
-                                  grammarAccess.getStaticMethodExpressionAccess().getExpressionAction_30_0(),
-                                  current);
+                              newLeafNode(lv_name_122_0, grammarAccess.getStaticMethodExpressionAccess().getNameMinKeyword_30_0_0());
                           
                     }
-
-                    }
-
-                    otherlv_153=(Token)match(input,KEYWORD_31,FOLLOW_KEYWORD_31_in_ruleStaticMethodExpression8162); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_153, grammarAccess.getStaticMethodExpressionAccess().getMinKeyword_30_1());
-                          
-                    }
-                    otherlv_154=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression8174); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_154, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_30_2());
-                          
-                    }
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4158:1: ( (lv_aggregateArgument_155_0= ruleConditionalOrExpression ) )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4159:1: (lv_aggregateArgument_155_0= ruleConditionalOrExpression )
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4159:1: (lv_aggregateArgument_155_0= ruleConditionalOrExpression )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4160:3: lv_aggregateArgument_155_0= ruleConditionalOrExpression
-                    {
-                    if ( state.backtracking==0 ) {
-                       
-                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getAggregateArgumentConditionalOrExpressionParserRuleCall_30_3_0()); 
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getStaticMethodExpressionRule());
+                      	        }
+                             		setWithLastConsumed(current, "name", lv_name_122_0, "min");
                       	    
                     }
-                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression8194);
-                    lv_aggregateArgument_155_0=ruleConditionalOrExpression();
+
+                    }
+
+
+                    }
+
+                    otherlv_123=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression8360); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_123, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_30_1());
+                          
+                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4220:1: ( (lv_aggregateArgument_124_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4221:1: (lv_aggregateArgument_124_0= ruleConditionalOrExpression )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4221:1: (lv_aggregateArgument_124_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4222:3: lv_aggregateArgument_124_0= ruleConditionalOrExpression
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getAggregateArgumentConditionalOrExpressionParserRuleCall_30_2_0()); 
+                      	    
+                    }
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression8380);
+                    lv_aggregateArgument_124_0=ruleConditionalOrExpression();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -10944,7 +11006,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                              		set(
                              			current, 
                              			"aggregateArgument",
-                              		lv_aggregateArgument_155_0, 
+                              		lv_aggregateArgument_124_0, 
                               		"ConditionalOrExpression");
                       	        afterParserOrEnumRuleCall();
                       	    
@@ -10955,10 +11017,10 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_156=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression8207); if (state.failed) return current;
+                    otherlv_125=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression8393); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_156, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_30_4());
+                          	newLeafNode(otherlv_125, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_30_3());
                           
                     }
 
@@ -10968,54 +11030,56 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 32 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4182:6: ( () otherlv_158= KEYWORD_30 otherlv_159= KEYWORD_4 ( (lv_aggregateArgument_160_0= ruleConditionalOrExpression ) ) otherlv_161= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4244:6: ( ( (lv_name_126_0= KEYWORD_30 ) ) otherlv_127= KEYWORD_4 ( (lv_aggregateArgument_128_0= ruleConditionalOrExpression ) ) otherlv_129= KEYWORD_5 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4182:6: ( () otherlv_158= KEYWORD_30 otherlv_159= KEYWORD_4 ( (lv_aggregateArgument_160_0= ruleConditionalOrExpression ) ) otherlv_161= KEYWORD_5 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4182:7: () otherlv_158= KEYWORD_30 otherlv_159= KEYWORD_4 ( (lv_aggregateArgument_160_0= ruleConditionalOrExpression ) ) otherlv_161= KEYWORD_5
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4244:6: ( ( (lv_name_126_0= KEYWORD_30 ) ) otherlv_127= KEYWORD_4 ( (lv_aggregateArgument_128_0= ruleConditionalOrExpression ) ) otherlv_129= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4244:7: ( (lv_name_126_0= KEYWORD_30 ) ) otherlv_127= KEYWORD_4 ( (lv_aggregateArgument_128_0= ruleConditionalOrExpression ) ) otherlv_129= KEYWORD_5
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4182:7: ()
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4183:2: 
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4244:7: ( (lv_name_126_0= KEYWORD_30 ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4245:1: (lv_name_126_0= KEYWORD_30 )
                     {
-                    if ( state.backtracking==0 ) {
-                       
-                      	  /* */ 
-                      	
-                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4245:1: (lv_name_126_0= KEYWORD_30 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4246:3: lv_name_126_0= KEYWORD_30
+                    {
+                    lv_name_126_0=(Token)match(input,KEYWORD_30,FOLLOW_KEYWORD_30_in_ruleStaticMethodExpression8419); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                              current = forceCreateModelElement(
-                                  grammarAccess.getStaticMethodExpressionAccess().getExpressionAction_31_0(),
-                                  current);
+                              newLeafNode(lv_name_126_0, grammarAccess.getStaticMethodExpressionAccess().getNameMaxKeyword_31_0_0());
                           
                     }
-
-                    }
-
-                    otherlv_158=(Token)match(input,KEYWORD_30,FOLLOW_KEYWORD_30_in_ruleStaticMethodExpression8239); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_158, grammarAccess.getStaticMethodExpressionAccess().getMaxKeyword_31_1());
-                          
-                    }
-                    otherlv_159=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression8251); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_159, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_31_2());
-                          
-                    }
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4201:1: ( (lv_aggregateArgument_160_0= ruleConditionalOrExpression ) )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4202:1: (lv_aggregateArgument_160_0= ruleConditionalOrExpression )
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4202:1: (lv_aggregateArgument_160_0= ruleConditionalOrExpression )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4203:3: lv_aggregateArgument_160_0= ruleConditionalOrExpression
-                    {
-                    if ( state.backtracking==0 ) {
-                       
-                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getAggregateArgumentConditionalOrExpressionParserRuleCall_31_3_0()); 
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getStaticMethodExpressionRule());
+                      	        }
+                             		setWithLastConsumed(current, "name", lv_name_126_0, "max");
                       	    
                     }
-                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression8271);
-                    lv_aggregateArgument_160_0=ruleConditionalOrExpression();
+
+                    }
+
+
+                    }
+
+                    otherlv_127=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression8443); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_127, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_31_1());
+                          
+                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4265:1: ( (lv_aggregateArgument_128_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4266:1: (lv_aggregateArgument_128_0= ruleConditionalOrExpression )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4266:1: (lv_aggregateArgument_128_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4267:3: lv_aggregateArgument_128_0= ruleConditionalOrExpression
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getAggregateArgumentConditionalOrExpressionParserRuleCall_31_2_0()); 
+                      	    
+                    }
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression8463);
+                    lv_aggregateArgument_128_0=ruleConditionalOrExpression();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -11027,7 +11091,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                              		set(
                              			current, 
                              			"aggregateArgument",
-                              		lv_aggregateArgument_160_0, 
+                              		lv_aggregateArgument_128_0, 
                               		"ConditionalOrExpression");
                       	        afterParserOrEnumRuleCall();
                       	    
@@ -11038,10 +11102,10 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_161=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression8284); if (state.failed) return current;
+                    otherlv_129=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression8476); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_161, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_31_4());
+                          	newLeafNode(otherlv_129, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_31_3());
                           
                     }
 
@@ -11051,42 +11115,44 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 33 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4225:6: ( () otherlv_163= KEYWORD_27 otherlv_164= KEYWORD_4 ( (lv_isDistinct_165_0= KEYWORD_71 ) )? ( (lv_aggregateArgument_166_0= ruleConditionalOrExpression ) ) otherlv_167= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4289:6: ( ( (lv_name_130_0= KEYWORD_27 ) ) otherlv_131= KEYWORD_4 ( (lv_isDistinct_132_0= KEYWORD_71 ) )? ( (lv_aggregateArgument_133_0= ruleConditionalOrExpression ) ) otherlv_134= KEYWORD_5 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4225:6: ( () otherlv_163= KEYWORD_27 otherlv_164= KEYWORD_4 ( (lv_isDistinct_165_0= KEYWORD_71 ) )? ( (lv_aggregateArgument_166_0= ruleConditionalOrExpression ) ) otherlv_167= KEYWORD_5 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4225:7: () otherlv_163= KEYWORD_27 otherlv_164= KEYWORD_4 ( (lv_isDistinct_165_0= KEYWORD_71 ) )? ( (lv_aggregateArgument_166_0= ruleConditionalOrExpression ) ) otherlv_167= KEYWORD_5
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4289:6: ( ( (lv_name_130_0= KEYWORD_27 ) ) otherlv_131= KEYWORD_4 ( (lv_isDistinct_132_0= KEYWORD_71 ) )? ( (lv_aggregateArgument_133_0= ruleConditionalOrExpression ) ) otherlv_134= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4289:7: ( (lv_name_130_0= KEYWORD_27 ) ) otherlv_131= KEYWORD_4 ( (lv_isDistinct_132_0= KEYWORD_71 ) )? ( (lv_aggregateArgument_133_0= ruleConditionalOrExpression ) ) otherlv_134= KEYWORD_5
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4225:7: ()
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4226:2: 
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4289:7: ( (lv_name_130_0= KEYWORD_27 ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4290:1: (lv_name_130_0= KEYWORD_27 )
                     {
-                    if ( state.backtracking==0 ) {
-                       
-                      	  /* */ 
-                      	
-                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4290:1: (lv_name_130_0= KEYWORD_27 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4291:3: lv_name_130_0= KEYWORD_27
+                    {
+                    lv_name_130_0=(Token)match(input,KEYWORD_27,FOLLOW_KEYWORD_27_in_ruleStaticMethodExpression8502); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                              current = forceCreateModelElement(
-                                  grammarAccess.getStaticMethodExpressionAccess().getExpressionAction_32_0(),
-                                  current);
+                              newLeafNode(lv_name_130_0, grammarAccess.getStaticMethodExpressionAccess().getNameAvgKeyword_32_0_0());
                           
                     }
-
-                    }
-
-                    otherlv_163=(Token)match(input,KEYWORD_27,FOLLOW_KEYWORD_27_in_ruleStaticMethodExpression8316); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_163, grammarAccess.getStaticMethodExpressionAccess().getAvgKeyword_32_1());
-                          
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getStaticMethodExpressionRule());
+                      	        }
+                             		setWithLastConsumed(current, "name", lv_name_130_0, "avg");
+                      	    
                     }
-                    otherlv_164=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression8328); if (state.failed) return current;
+
+                    }
+
+
+                    }
+
+                    otherlv_131=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression8526); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_164, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_32_2());
+                          	newLeafNode(otherlv_131, grammarAccess.getStaticMethodExpressionAccess().getLeftParenthesisKeyword_32_1());
                           
                     }
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4244:1: ( (lv_isDistinct_165_0= KEYWORD_71 ) )?
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4310:1: ( (lv_isDistinct_132_0= KEYWORD_71 ) )?
                     int alt55=2;
                     int LA55_0 = input.LA(1);
 
@@ -11095,15 +11161,15 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     switch (alt55) {
                         case 1 :
-                            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4245:1: (lv_isDistinct_165_0= KEYWORD_71 )
+                            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4311:1: (lv_isDistinct_132_0= KEYWORD_71 )
                             {
-                            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4245:1: (lv_isDistinct_165_0= KEYWORD_71 )
-                            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4246:3: lv_isDistinct_165_0= KEYWORD_71
+                            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4311:1: (lv_isDistinct_132_0= KEYWORD_71 )
+                            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4312:3: lv_isDistinct_132_0= KEYWORD_71
                             {
-                            lv_isDistinct_165_0=(Token)match(input,KEYWORD_71,FOLLOW_KEYWORD_71_in_ruleStaticMethodExpression8346); if (state.failed) return current;
+                            lv_isDistinct_132_0=(Token)match(input,KEYWORD_71,FOLLOW_KEYWORD_71_in_ruleStaticMethodExpression8544); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
-                                      newLeafNode(lv_isDistinct_165_0, grammarAccess.getStaticMethodExpressionAccess().getIsDistinctDISTINCTKeyword_32_3_0());
+                                      newLeafNode(lv_isDistinct_132_0, grammarAccess.getStaticMethodExpressionAccess().getIsDistinctDISTINCTKeyword_32_2_0());
                                   
                             }
                             if ( state.backtracking==0 ) {
@@ -11123,19 +11189,19 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4260:3: ( (lv_aggregateArgument_166_0= ruleConditionalOrExpression ) )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4261:1: (lv_aggregateArgument_166_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4326:3: ( (lv_aggregateArgument_133_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4327:1: (lv_aggregateArgument_133_0= ruleConditionalOrExpression )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4261:1: (lv_aggregateArgument_166_0= ruleConditionalOrExpression )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4262:3: lv_aggregateArgument_166_0= ruleConditionalOrExpression
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4327:1: (lv_aggregateArgument_133_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4328:3: lv_aggregateArgument_133_0= ruleConditionalOrExpression
                     {
                     if ( state.backtracking==0 ) {
                        
-                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getAggregateArgumentConditionalOrExpressionParserRuleCall_32_4_0()); 
+                      	        newCompositeNode(grammarAccess.getStaticMethodExpressionAccess().getAggregateArgumentConditionalOrExpressionParserRuleCall_32_3_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression8379);
-                    lv_aggregateArgument_166_0=ruleConditionalOrExpression();
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression8577);
+                    lv_aggregateArgument_133_0=ruleConditionalOrExpression();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -11147,7 +11213,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                              		set(
                              			current, 
                              			"aggregateArgument",
-                              		lv_aggregateArgument_166_0, 
+                              		lv_aggregateArgument_133_0, 
                               		"ConditionalOrExpression");
                       	        afterParserOrEnumRuleCall();
                       	    
@@ -11158,10 +11224,10 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_167=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression8392); if (state.failed) return current;
+                    otherlv_134=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression8590); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_167, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_32_5());
+                          	newLeafNode(otherlv_134, grammarAccess.getStaticMethodExpressionAccess().getRightParenthesisKeyword_32_4());
                           
                     }
 
@@ -11193,7 +11259,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleMethodExpression"
-    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4291:1: entryRuleMethodExpression returns [EObject current=null] : iv_ruleMethodExpression= ruleMethodExpression EOF ;
+    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4357:1: entryRuleMethodExpression returns [EObject current=null] : iv_ruleMethodExpression= ruleMethodExpression EOF ;
     public final EObject entryRuleMethodExpression() throws RecognitionException {
         EObject current = null;
 
@@ -11201,13 +11267,13 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4292:2: (iv_ruleMethodExpression= ruleMethodExpression EOF )
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4293:2: iv_ruleMethodExpression= ruleMethodExpression EOF
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4358:2: (iv_ruleMethodExpression= ruleMethodExpression EOF )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4359:2: iv_ruleMethodExpression= ruleMethodExpression EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getMethodExpressionRule()); 
             }
-            pushFollow(FOLLOW_ruleMethodExpression_in_entryRuleMethodExpression8427);
+            pushFollow(FOLLOW_ruleMethodExpression_in_entryRuleMethodExpression8625);
             iv_ruleMethodExpression=ruleMethodExpression();
 
             state._fsp--;
@@ -11215,7 +11281,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleMethodExpression; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleMethodExpression8437); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleMethodExpression8635); if (state.failed) return current;
 
             }
 
@@ -11233,142 +11299,142 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleMethodExpression"
-    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4300:1: ruleMethodExpression returns [EObject current=null] : ( ( () otherlv_1= KEYWORD_78 otherlv_2= KEYWORD_4 ( (lv_element_3_0= ruleConditionalOrExpression ) ) otherlv_4= KEYWORD_5 ) | ( () otherlv_6= KEYWORD_28 otherlv_7= KEYWORD_4 ( (lv_arg_8_0= ruleConditionalOrExpression ) ) otherlv_9= KEYWORD_5 ) | ( () otherlv_11= KEYWORD_68 otherlv_12= KEYWORD_4 otherlv_13= KEYWORD_5 ) | ( () otherlv_15= KEYWORD_40 otherlv_16= KEYWORD_4 otherlv_17= KEYWORD_5 ) | ( () otherlv_19= KEYWORD_99 otherlv_20= KEYWORD_4 ( (lv_key_21_0= ruleConditionalOrExpression ) ) otherlv_22= KEYWORD_5 ) | ( () otherlv_24= KEYWORD_103 otherlv_25= KEYWORD_4 ( (lv_value_26_0= ruleConditionalOrExpression ) ) otherlv_27= KEYWORD_5 ) | ( () otherlv_29= KEYWORD_102 otherlv_30= KEYWORD_4 ( (lv_key_31_0= ruleConditionalOrExpression ) ) otherlv_32= KEYWORD_8 ( (lv_value_33_0= ruleConditionalOrExpression ) ) otherlv_34= KEYWORD_5 ) | ( () otherlv_36= KEYWORD_56 otherlv_37= KEYWORD_4 ( (lv_index_38_0= ruleConditionalOrExpression ) ) otherlv_39= KEYWORD_5 ) | ( () otherlv_41= KEYWORD_79 otherlv_42= KEYWORD_4 ( (lv_string_43_0= ruleConditionalOrExpression ) ) otherlv_44= KEYWORD_5 ) | ( () otherlv_46= KEYWORD_58 otherlv_47= KEYWORD_4 ( (lv_string_48_0= ruleConditionalOrExpression ) ) otherlv_49= KEYWORD_5 ) | ( () otherlv_51= KEYWORD_108 otherlv_52= KEYWORD_4 ( (lv_string_53_0= ruleConditionalOrExpression ) ) otherlv_54= KEYWORD_5 ) | ( () otherlv_56= KEYWORD_67 otherlv_57= KEYWORD_4 ( (lv_string_58_0= ruleConditionalOrExpression ) ) (otherlv_59= KEYWORD_8 ( (lv_fromIndex_60_0= ruleConditionalOrExpression ) ) )? otherlv_61= KEYWORD_5 ) | ( () otherlv_63= KEYWORD_62 otherlv_64= KEYWORD_4 otherlv_65= KEYWORD_5 ) | ( () otherlv_67= KEYWORD_69 otherlv_68= KEYWORD_4 ( (lv_regex_69_0= ruleConditionalOrExpression ) ) otherlv_70= KEYWORD_5 ) | ( () otherlv_72= KEYWORD_97 otherlv_73= KEYWORD_4 ( (lv_regex_74_0= ruleConditionalOrExpression ) ) otherlv_75= KEYWORD_8 ( (lv_replacement_76_0= ruleConditionalOrExpression ) ) otherlv_77= KEYWORD_5 ) | ( () otherlv_79= KEYWORD_98 otherlv_80= KEYWORD_4 ( (lv_string_81_0= ruleConditionalOrExpression ) ) otherlv_82= KEYWORD_5 ) | ( () otherlv_84= KEYWORD_91 otherlv_85= KEYWORD_4 ( (lv_beginIndex_86_0= ruleConditionalOrExpression ) ) (otherlv_87= KEYWORD_8 ( (lv_endIndex_88_0= ruleConditionalOrExpression ) ) )? otherlv_89= KEYWORD_5 ) | ( () otherlv_91= KEYWORD_100 otherlv_92= KEYWORD_4 otherlv_93= KEYWORD_5 ) | ( () otherlv_95= KEYWORD_101 otherlv_96= KEYWORD_4 otherlv_97= KEYWORD_5 ) | ( () otherlv_99= KEYWORD_42 otherlv_100= KEYWORD_4 otherlv_101= KEYWORD_5 ) | ( () otherlv_103= KEYWORD_59 otherlv_104= KEYWORD_4 otherlv_105= KEYWORD_5 ) | ( () otherlv_107= KEYWORD_80 otherlv_108= KEYWORD_4 otherlv_109= KEYWORD_5 ) | ( () otherlv_111= KEYWORD_66 otherlv_112= KEYWORD_4 otherlv_113= KEYWORD_5 ) | ( () otherlv_115= KEYWORD_65 otherlv_116= KEYWORD_4 otherlv_117= KEYWORD_5 ) | ( () otherlv_119= KEYWORD_89 otherlv_120= KEYWORD_4 otherlv_121= KEYWORD_5 ) | ( () otherlv_123= KEYWORD_90 otherlv_124= KEYWORD_4 otherlv_125= KEYWORD_5 ) | ( () otherlv_127= KEYWORD_70 otherlv_128= KEYWORD_4 otherlv_129= KEYWORD_5 ) | ( () otherlv_131= KEYWORD_81 otherlv_132= KEYWORD_4 otherlv_133= KEYWORD_5 ) ) ;
+    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4366:1: ruleMethodExpression returns [EObject current=null] : ( ( ( (lv_name_0_0= KEYWORD_78 ) ) otherlv_1= KEYWORD_4 ( (lv_element_2_0= ruleConditionalOrExpression ) ) otherlv_3= KEYWORD_5 ) | ( ( (lv_name_4_0= KEYWORD_28 ) ) otherlv_5= KEYWORD_4 ( (lv_arg_6_0= ruleConditionalOrExpression ) ) otherlv_7= KEYWORD_5 ) | ( ( (lv_name_8_0= KEYWORD_68 ) ) otherlv_9= KEYWORD_4 otherlv_10= KEYWORD_5 ) | ( ( (lv_name_11_0= KEYWORD_40 ) ) otherlv_12= KEYWORD_4 otherlv_13= KEYWORD_5 ) | ( ( (lv_name_14_0= KEYWORD_99 ) ) otherlv_15= KEYWORD_4 ( (lv_key_16_0= ruleConditionalOrExpression ) ) otherlv_17= KEYWORD_5 ) | ( ( (lv_name_18_0= KEYWORD_103 ) ) otherlv_19= KEYWORD_4 ( (lv_value_20_0= ruleConditionalOrExpression ) ) otherlv_21= KEYWORD_5 ) | ( ( (lv_name_22_0= KEYWORD_102 ) ) otherlv_23= KEYWORD_4 ( (lv_key_24_0= ruleConditionalOrExpression ) ) otherlv_25= KEYWORD_8 ( (lv_value_26_0= ruleConditionalOrExpression ) ) otherlv_27= KEYWORD_5 ) | ( ( (lv_name_28_0= KEYWORD_56 ) ) otherlv_29= KEYWORD_4 ( (lv_index_30_0= ruleConditionalOrExpression ) ) otherlv_31= KEYWORD_5 ) | ( ( (lv_name_32_0= KEYWORD_79 ) ) otherlv_33= KEYWORD_4 ( (lv_string_34_0= ruleConditionalOrExpression ) ) otherlv_35= KEYWORD_5 ) | ( ( (lv_name_36_0= KEYWORD_58 ) ) otherlv_37= KEYWORD_4 ( (lv_string_38_0= ruleConditionalOrExpression ) ) otherlv_39= KEYWORD_5 ) | ( ( (lv_name_40_0= KEYWORD_108 ) ) otherlv_41= KEYWORD_4 ( (lv_string_42_0= ruleConditionalOrExpression ) ) otherlv_43= KEYWORD_5 ) | ( ( (lv_name_44_0= KEYWORD_67 ) ) otherlv_45= KEYWORD_4 ( (lv_string_46_0= ruleConditionalOrExpression ) ) (otherlv_47= KEYWORD_8 ( (lv_fromIndex_48_0= ruleConditionalOrExpression ) ) )? otherlv_49= KEYWORD_5 ) | ( ( (lv_name_50_0= KEYWORD_62 ) ) otherlv_51= KEYWORD_4 otherlv_52= KEYWORD_5 ) | ( ( (lv_name_53_0= KEYWORD_69 ) ) otherlv_54= KEYWORD_4 ( (lv_regex_55_0= ruleConditionalOrExpression ) ) otherlv_56= KEYWORD_5 ) | ( ( (lv_name_57_0= KEYWORD_97 ) ) otherlv_58= KEYWORD_4 ( (lv_regex_59_0= ruleConditionalOrExpression ) ) otherlv_60= KEYWORD_8 ( (lv_replacement_61_0= ruleConditionalOrExpression ) ) otherlv_62= KEYWORD_5 ) | ( ( (lv_name_63_0= KEYWORD_98 ) ) otherlv_64= KEYWORD_4 ( (lv_string_65_0= ruleConditionalOrExpression ) ) otherlv_66= KEYWORD_5 ) | ( ( (lv_name_67_0= KEYWORD_91 ) ) otherlv_68= KEYWORD_4 ( (lv_beginIndex_69_0= ruleConditionalOrExpression ) ) (otherlv_70= KEYWORD_8 ( (lv_endIndex_71_0= ruleConditionalOrExpression ) ) )? otherlv_72= KEYWORD_5 ) | ( ( (lv_name_73_0= KEYWORD_100 ) ) otherlv_74= KEYWORD_4 otherlv_75= KEYWORD_5 ) | ( ( (lv_name_76_0= KEYWORD_101 ) ) otherlv_77= KEYWORD_4 otherlv_78= KEYWORD_5 ) | ( ( (lv_name_79_0= KEYWORD_42 ) ) otherlv_80= KEYWORD_4 otherlv_81= KEYWORD_5 ) | ( ( (lv_name_82_0= KEYWORD_59 ) ) otherlv_83= KEYWORD_4 otherlv_84= KEYWORD_5 ) | ( ( (lv_name_85_0= KEYWORD_80 ) ) otherlv_86= KEYWORD_4 otherlv_87= KEYWORD_5 ) | ( ( (lv_name_88_0= KEYWORD_66 ) ) otherlv_89= KEYWORD_4 otherlv_90= KEYWORD_5 ) | ( ( (lv_name_91_0= KEYWORD_65 ) ) otherlv_92= KEYWORD_4 otherlv_93= KEYWORD_5 ) | ( ( (lv_name_94_0= KEYWORD_89 ) ) otherlv_95= KEYWORD_4 otherlv_96= KEYWORD_5 ) | ( ( (lv_name_97_0= KEYWORD_90 ) ) otherlv_98= KEYWORD_4 otherlv_99= KEYWORD_5 ) | ( ( (lv_name_100_0= KEYWORD_70 ) ) otherlv_101= KEYWORD_4 otherlv_102= KEYWORD_5 ) | ( ( (lv_name_103_0= KEYWORD_81 ) ) otherlv_104= KEYWORD_4 otherlv_105= KEYWORD_5 ) ) ;
     public final EObject ruleMethodExpression() throws RecognitionException {
         EObject current = null;
 
+        Token lv_name_0_0=null;
         Token otherlv_1=null;
-        Token otherlv_2=null;
-        Token otherlv_4=null;
-        Token otherlv_6=null;
+        Token otherlv_3=null;
+        Token lv_name_4_0=null;
+        Token otherlv_5=null;
         Token otherlv_7=null;
+        Token lv_name_8_0=null;
         Token otherlv_9=null;
-        Token otherlv_11=null;
+        Token otherlv_10=null;
+        Token lv_name_11_0=null;
         Token otherlv_12=null;
         Token otherlv_13=null;
+        Token lv_name_14_0=null;
         Token otherlv_15=null;
-        Token otherlv_16=null;
         Token otherlv_17=null;
+        Token lv_name_18_0=null;
         Token otherlv_19=null;
-        Token otherlv_20=null;
-        Token otherlv_22=null;
-        Token otherlv_24=null;
+        Token otherlv_21=null;
+        Token lv_name_22_0=null;
+        Token otherlv_23=null;
         Token otherlv_25=null;
         Token otherlv_27=null;
+        Token lv_name_28_0=null;
         Token otherlv_29=null;
-        Token otherlv_30=null;
-        Token otherlv_32=null;
-        Token otherlv_34=null;
-        Token otherlv_36=null;
+        Token otherlv_31=null;
+        Token lv_name_32_0=null;
+        Token otherlv_33=null;
+        Token otherlv_35=null;
+        Token lv_name_36_0=null;
         Token otherlv_37=null;
         Token otherlv_39=null;
+        Token lv_name_40_0=null;
         Token otherlv_41=null;
-        Token otherlv_42=null;
-        Token otherlv_44=null;
-        Token otherlv_46=null;
+        Token otherlv_43=null;
+        Token lv_name_44_0=null;
+        Token otherlv_45=null;
         Token otherlv_47=null;
         Token otherlv_49=null;
+        Token lv_name_50_0=null;
         Token otherlv_51=null;
         Token otherlv_52=null;
+        Token lv_name_53_0=null;
         Token otherlv_54=null;
         Token otherlv_56=null;
-        Token otherlv_57=null;
-        Token otherlv_59=null;
-        Token otherlv_61=null;
-        Token otherlv_63=null;
+        Token lv_name_57_0=null;
+        Token otherlv_58=null;
+        Token otherlv_60=null;
+        Token otherlv_62=null;
+        Token lv_name_63_0=null;
         Token otherlv_64=null;
-        Token otherlv_65=null;
-        Token otherlv_67=null;
+        Token otherlv_66=null;
+        Token lv_name_67_0=null;
         Token otherlv_68=null;
         Token otherlv_70=null;
         Token otherlv_72=null;
-        Token otherlv_73=null;
+        Token lv_name_73_0=null;
+        Token otherlv_74=null;
         Token otherlv_75=null;
+        Token lv_name_76_0=null;
         Token otherlv_77=null;
-        Token otherlv_79=null;
+        Token otherlv_78=null;
+        Token lv_name_79_0=null;
         Token otherlv_80=null;
-        Token otherlv_82=null;
+        Token otherlv_81=null;
+        Token lv_name_82_0=null;
+        Token otherlv_83=null;
         Token otherlv_84=null;
-        Token otherlv_85=null;
+        Token lv_name_85_0=null;
+        Token otherlv_86=null;
         Token otherlv_87=null;
+        Token lv_name_88_0=null;
         Token otherlv_89=null;
-        Token otherlv_91=null;
+        Token otherlv_90=null;
+        Token lv_name_91_0=null;
         Token otherlv_92=null;
         Token otherlv_93=null;
+        Token lv_name_94_0=null;
         Token otherlv_95=null;
         Token otherlv_96=null;
-        Token otherlv_97=null;
+        Token lv_name_97_0=null;
+        Token otherlv_98=null;
         Token otherlv_99=null;
-        Token otherlv_100=null;
+        Token lv_name_100_0=null;
         Token otherlv_101=null;
-        Token otherlv_103=null;
+        Token otherlv_102=null;
+        Token lv_name_103_0=null;
         Token otherlv_104=null;
         Token otherlv_105=null;
-        Token otherlv_107=null;
-        Token otherlv_108=null;
-        Token otherlv_109=null;
-        Token otherlv_111=null;
-        Token otherlv_112=null;
-        Token otherlv_113=null;
-        Token otherlv_115=null;
-        Token otherlv_116=null;
-        Token otherlv_117=null;
-        Token otherlv_119=null;
-        Token otherlv_120=null;
-        Token otherlv_121=null;
-        Token otherlv_123=null;
-        Token otherlv_124=null;
-        Token otherlv_125=null;
-        Token otherlv_127=null;
-        Token otherlv_128=null;
-        Token otherlv_129=null;
-        Token otherlv_131=null;
-        Token otherlv_132=null;
-        Token otherlv_133=null;
-        EObject lv_element_3_0 = null;
+        EObject lv_element_2_0 = null;
 
-        EObject lv_arg_8_0 = null;
+        EObject lv_arg_6_0 = null;
 
-        EObject lv_key_21_0 = null;
+        EObject lv_key_16_0 = null;
+
+        EObject lv_value_20_0 = null;
+
+        EObject lv_key_24_0 = null;
 
         EObject lv_value_26_0 = null;
 
-        EObject lv_key_31_0 = null;
+        EObject lv_index_30_0 = null;
 
-        EObject lv_value_33_0 = null;
+        EObject lv_string_34_0 = null;
 
-        EObject lv_index_38_0 = null;
+        EObject lv_string_38_0 = null;
 
-        EObject lv_string_43_0 = null;
+        EObject lv_string_42_0 = null;
 
-        EObject lv_string_48_0 = null;
+        EObject lv_string_46_0 = null;
 
-        EObject lv_string_53_0 = null;
+        EObject lv_fromIndex_48_0 = null;
 
-        EObject lv_string_58_0 = null;
+        EObject lv_regex_55_0 = null;
 
-        EObject lv_fromIndex_60_0 = null;
+        EObject lv_regex_59_0 = null;
 
-        EObject lv_regex_69_0 = null;
+        EObject lv_replacement_61_0 = null;
 
-        EObject lv_regex_74_0 = null;
+        EObject lv_string_65_0 = null;
 
-        EObject lv_replacement_76_0 = null;
+        EObject lv_beginIndex_69_0 = null;
 
-        EObject lv_string_81_0 = null;
-
-        EObject lv_beginIndex_86_0 = null;
-
-        EObject lv_endIndex_88_0 = null;
+        EObject lv_endIndex_71_0 = null;
 
 
          enterRule(); 
             
         try {
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4303:28: ( ( ( () otherlv_1= KEYWORD_78 otherlv_2= KEYWORD_4 ( (lv_element_3_0= ruleConditionalOrExpression ) ) otherlv_4= KEYWORD_5 ) | ( () otherlv_6= KEYWORD_28 otherlv_7= KEYWORD_4 ( (lv_arg_8_0= ruleConditionalOrExpression ) ) otherlv_9= KEYWORD_5 ) | ( () otherlv_11= KEYWORD_68 otherlv_12= KEYWORD_4 otherlv_13= KEYWORD_5 ) | ( () otherlv_15= KEYWORD_40 otherlv_16= KEYWORD_4 otherlv_17= KEYWORD_5 ) | ( () otherlv_19= KEYWORD_99 otherlv_20= KEYWORD_4 ( (lv_key_21_0= ruleConditionalOrExpression ) ) otherlv_22= KEYWORD_5 ) | ( () otherlv_24= KEYWORD_103 otherlv_25= KEYWORD_4 ( (lv_value_26_0= ruleConditionalOrExpression ) ) otherlv_27= KEYWORD_5 ) | ( () otherlv_29= KEYWORD_102 otherlv_30= KEYWORD_4 ( (lv_key_31_0= ruleConditionalOrExpression ) ) otherlv_32= KEYWORD_8 ( (lv_value_33_0= ruleConditionalOrExpression ) ) otherlv_34= KEYWORD_5 ) | ( () otherlv_36= KEYWORD_56 otherlv_37= KEYWORD_4 ( (lv_index_38_0= ruleConditionalOrExpression ) ) otherlv_39= KEYWORD_5 ) | ( () otherlv_41= KEYWORD_79 otherlv_42= KEYWORD_4 ( (lv_string_43_0= ruleConditionalOrExpression ) ) otherlv_44= KEYWORD_5 ) | ( () otherlv_46= KEYWORD_58 otherlv_47= KEYWORD_4 ( (lv_string_48_0= ruleConditionalOrExpression ) ) otherlv_49= KEYWORD_5 ) | ( () otherlv_51= KEYWORD_108 otherlv_52= KEYWORD_4 ( (lv_string_53_0= ruleConditionalOrExpression ) ) otherlv_54= KEYWORD_5 ) | ( () otherlv_56= KEYWORD_67 otherlv_57= KEYWORD_4 ( (lv_string_58_0= ruleConditionalOrExpression ) ) (otherlv_59= KEYWORD_8 ( (lv_fromIndex_60_0= ruleConditionalOrExpression ) ) )? otherlv_61= KEYWORD_5 ) | ( () otherlv_63= KEYWORD_62 otherlv_64= KEYWORD_4 otherlv_65= KEYWORD_5 ) | ( () otherlv_67= KEYWORD_69 otherlv_68= KEYWORD_4 ( (lv_regex_69_0= ruleConditionalOrExpression ) ) otherlv_70= KEYWORD_5 ) | ( () otherlv_72= KEYWORD_97 otherlv_73= KEYWORD_4 ( (lv_regex_74_0= ruleConditionalOrExpression ) ) otherlv_75= KEYWORD_8 ( (lv_replacement_76_0= ruleConditionalOrExpression ) ) otherlv_77= KEYWORD_5 ) | ( () otherlv_79= KEYWORD_98 otherlv_80= KEYWORD_4 ( (lv_string_81_0= ruleConditionalOrExpression ) ) otherlv_82= KEYWORD_5 ) | ( () otherlv_84= KEYWORD_91 otherlv_85= KEYWORD_4 ( (lv_beginIndex_86_0= ruleConditionalOrExpression ) ) (otherlv_87= KEYWORD_8 ( (lv_endIndex_88_0= ruleConditionalOrExpression ) ) )? otherlv_89= KEYWORD_5 ) | ( () otherlv_91= KEYWORD_100 otherlv_92= KEYWORD_4 otherlv_93= KEYWORD_5 ) | ( () otherlv_95= KEYWORD_101 otherlv_96= KEYWORD_4 otherlv_97= KEYWORD_5 ) | ( () otherlv_99= KEYWORD_42 otherlv_100= KEYWORD_4 otherlv_101= KEYWORD_5 ) | ( () otherlv_103= KEYWORD_59 otherlv_104= KEYWORD_4 otherlv_105= KEYWORD_5 ) | ( () otherlv_107= KEYWORD_80 otherlv_108= KEYWORD_4 otherlv_109= KEYWORD_5 ) | ( () otherlv_111= KEYWORD_66 otherlv_112= KEYWORD_4 otherlv_113= KEYWORD_5 ) | ( () otherlv_115= KEYWORD_65 otherlv_116= KEYWORD_4 otherlv_117= KEYWORD_5 ) | ( () otherlv_119= KEYWORD_89 otherlv_120= KEYWORD_4 otherlv_121= KEYWORD_5 ) | ( () otherlv_123= KEYWORD_90 otherlv_124= KEYWORD_4 otherlv_125= KEYWORD_5 ) | ( () otherlv_127= KEYWORD_70 otherlv_128= KEYWORD_4 otherlv_129= KEYWORD_5 ) | ( () otherlv_131= KEYWORD_81 otherlv_132= KEYWORD_4 otherlv_133= KEYWORD_5 ) ) )
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4304:1: ( ( () otherlv_1= KEYWORD_78 otherlv_2= KEYWORD_4 ( (lv_element_3_0= ruleConditionalOrExpression ) ) otherlv_4= KEYWORD_5 ) | ( () otherlv_6= KEYWORD_28 otherlv_7= KEYWORD_4 ( (lv_arg_8_0= ruleConditionalOrExpression ) ) otherlv_9= KEYWORD_5 ) | ( () otherlv_11= KEYWORD_68 otherlv_12= KEYWORD_4 otherlv_13= KEYWORD_5 ) | ( () otherlv_15= KEYWORD_40 otherlv_16= KEYWORD_4 otherlv_17= KEYWORD_5 ) | ( () otherlv_19= KEYWORD_99 otherlv_20= KEYWORD_4 ( (lv_key_21_0= ruleConditionalOrExpression ) ) otherlv_22= KEYWORD_5 ) | ( () otherlv_24= KEYWORD_103 otherlv_25= KEYWORD_4 ( (lv_value_26_0= ruleConditionalOrExpression ) ) otherlv_27= KEYWORD_5 ) | ( () otherlv_29= KEYWORD_102 otherlv_30= KEYWORD_4 ( (lv_key_31_0= ruleConditionalOrExpression ) ) otherlv_32= KEYWORD_8 ( (lv_value_33_0= ruleConditionalOrExpression ) ) otherlv_34= KEYWORD_5 ) | ( () otherlv_36= KEYWORD_56 otherlv_37= KEYWORD_4 ( (lv_index_38_0= ruleConditionalOrExpression ) ) otherlv_39= KEYWORD_5 ) | ( () otherlv_41= KEYWORD_79 otherlv_42= KEYWORD_4 ( (lv_string_43_0= ruleConditionalOrExpression ) ) otherlv_44= KEYWORD_5 ) | ( () otherlv_46= KEYWORD_58 otherlv_47= KEYWORD_4 ( (lv_string_48_0= ruleConditionalOrExpression ) ) otherlv_49= KEYWORD_5 ) | ( () otherlv_51= KEYWORD_108 otherlv_52= KEYWORD_4 ( (lv_string_53_0= ruleConditionalOrExpression ) ) otherlv_54= KEYWORD_5 ) | ( () otherlv_56= KEYWORD_67 otherlv_57= KEYWORD_4 ( (lv_string_58_0= ruleConditionalOrExpression ) ) (otherlv_59= KEYWORD_8 ( (lv_fromIndex_60_0= ruleConditionalOrExpression ) ) )? otherlv_61= KEYWORD_5 ) | ( () otherlv_63= KEYWORD_62 otherlv_64= KEYWORD_4 otherlv_65= KEYWORD_5 ) | ( () otherlv_67= KEYWORD_69 otherlv_68= KEYWORD_4 ( (lv_regex_69_0= ruleConditionalOrExpression ) ) otherlv_70= KEYWORD_5 ) | ( () otherlv_72= KEYWORD_97 otherlv_73= KEYWORD_4 ( (lv_regex_74_0= ruleConditionalOrExpression ) ) otherlv_75= KEYWORD_8 ( (lv_replacement_76_0= ruleConditionalOrExpression ) ) otherlv_77= KEYWORD_5 ) | ( () otherlv_79= KEYWORD_98 otherlv_80= KEYWORD_4 ( (lv_string_81_0= ruleConditionalOrExpression ) ) otherlv_82= KEYWORD_5 ) | ( () otherlv_84= KEYWORD_91 otherlv_85= KEYWORD_4 ( (lv_beginIndex_86_0= ruleConditionalOrExpression ) ) (otherlv_87= KEYWORD_8 ( (lv_endIndex_88_0= ruleConditionalOrExpression ) ) )? otherlv_89= KEYWORD_5 ) | ( () otherlv_91= KEYWORD_100 otherlv_92= KEYWORD_4 otherlv_93= KEYWORD_5 ) | ( () otherlv_95= KEYWORD_101 otherlv_96= KEYWORD_4 otherlv_97= KEYWORD_5 ) | ( () otherlv_99= KEYWORD_42 otherlv_100= KEYWORD_4 otherlv_101= KEYWORD_5 ) | ( () otherlv_103= KEYWORD_59 otherlv_104= KEYWORD_4 otherlv_105= KEYWORD_5 ) | ( () otherlv_107= KEYWORD_80 otherlv_108= KEYWORD_4 otherlv_109= KEYWORD_5 ) | ( () otherlv_111= KEYWORD_66 otherlv_112= KEYWORD_4 otherlv_113= KEYWORD_5 ) | ( () otherlv_115= KEYWORD_65 otherlv_116= KEYWORD_4 otherlv_117= KEYWORD_5 ) | ( () otherlv_119= KEYWORD_89 otherlv_120= KEYWORD_4 otherlv_121= KEYWORD_5 ) | ( () otherlv_123= KEYWORD_90 otherlv_124= KEYWORD_4 otherlv_125= KEYWORD_5 ) | ( () otherlv_127= KEYWORD_70 otherlv_128= KEYWORD_4 otherlv_129= KEYWORD_5 ) | ( () otherlv_131= KEYWORD_81 otherlv_132= KEYWORD_4 otherlv_133= KEYWORD_5 ) )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4369:28: ( ( ( ( (lv_name_0_0= KEYWORD_78 ) ) otherlv_1= KEYWORD_4 ( (lv_element_2_0= ruleConditionalOrExpression ) ) otherlv_3= KEYWORD_5 ) | ( ( (lv_name_4_0= KEYWORD_28 ) ) otherlv_5= KEYWORD_4 ( (lv_arg_6_0= ruleConditionalOrExpression ) ) otherlv_7= KEYWORD_5 ) | ( ( (lv_name_8_0= KEYWORD_68 ) ) otherlv_9= KEYWORD_4 otherlv_10= KEYWORD_5 ) | ( ( (lv_name_11_0= KEYWORD_40 ) ) otherlv_12= KEYWORD_4 otherlv_13= KEYWORD_5 ) | ( ( (lv_name_14_0= KEYWORD_99 ) ) otherlv_15= KEYWORD_4 ( (lv_key_16_0= ruleConditionalOrExpression ) ) otherlv_17= KEYWORD_5 ) | ( ( (lv_name_18_0= KEYWORD_103 ) ) otherlv_19= KEYWORD_4 ( (lv_value_20_0= ruleConditionalOrExpression ) ) otherlv_21= KEYWORD_5 ) | ( ( (lv_name_22_0= KEYWORD_102 ) ) otherlv_23= KEYWORD_4 ( (lv_key_24_0= ruleConditionalOrExpression ) ) otherlv_25= KEYWORD_8 ( (lv_value_26_0= ruleConditionalOrExpression ) ) otherlv_27= KEYWORD_5 ) | ( ( (lv_name_28_0= KEYWORD_56 ) ) otherlv_29= KEYWORD_4 ( (lv_index_30_0= ruleConditionalOrExpression ) ) otherlv_31= KEYWORD_5 ) | ( ( (lv_name_32_0= KEYWORD_79 ) ) otherlv_33= KEYWORD_4 ( (lv_string_34_0= ruleConditionalOrExpression ) ) otherlv_35= KEYWORD_5 ) | ( ( (lv_name_36_0= KEYWORD_58 ) ) otherlv_37= KEYWORD_4 ( (lv_string_38_0= ruleConditionalOrExpression ) ) otherlv_39= KEYWORD_5 ) | ( ( (lv_name_40_0= KEYWORD_108 ) ) otherlv_41= KEYWORD_4 ( (lv_string_42_0= ruleConditionalOrExpression ) ) otherlv_43= KEYWORD_5 ) | ( ( (lv_name_44_0= KEYWORD_67 ) ) otherlv_45= KEYWORD_4 ( (lv_string_46_0= ruleConditionalOrExpression ) ) (otherlv_47= KEYWORD_8 ( (lv_fromIndex_48_0= ruleConditionalOrExpression ) ) )? otherlv_49= KEYWORD_5 ) | ( ( (lv_name_50_0= KEYWORD_62 ) ) otherlv_51= KEYWORD_4 otherlv_52= KEYWORD_5 ) | ( ( (lv_name_53_0= KEYWORD_69 ) ) otherlv_54= KEYWORD_4 ( (lv_regex_55_0= ruleConditionalOrExpression ) ) otherlv_56= KEYWORD_5 ) | ( ( (lv_name_57_0= KEYWORD_97 ) ) otherlv_58= KEYWORD_4 ( (lv_regex_59_0= ruleConditionalOrExpression ) ) otherlv_60= KEYWORD_8 ( (lv_replacement_61_0= ruleConditionalOrExpression ) ) otherlv_62= KEYWORD_5 ) | ( ( (lv_name_63_0= KEYWORD_98 ) ) otherlv_64= KEYWORD_4 ( (lv_string_65_0= ruleConditionalOrExpression ) ) otherlv_66= KEYWORD_5 ) | ( ( (lv_name_67_0= KEYWORD_91 ) ) otherlv_68= KEYWORD_4 ( (lv_beginIndex_69_0= ruleConditionalOrExpression ) ) (otherlv_70= KEYWORD_8 ( (lv_endIndex_71_0= ruleConditionalOrExpression ) ) )? otherlv_72= KEYWORD_5 ) | ( ( (lv_name_73_0= KEYWORD_100 ) ) otherlv_74= KEYWORD_4 otherlv_75= KEYWORD_5 ) | ( ( (lv_name_76_0= KEYWORD_101 ) ) otherlv_77= KEYWORD_4 otherlv_78= KEYWORD_5 ) | ( ( (lv_name_79_0= KEYWORD_42 ) ) otherlv_80= KEYWORD_4 otherlv_81= KEYWORD_5 ) | ( ( (lv_name_82_0= KEYWORD_59 ) ) otherlv_83= KEYWORD_4 otherlv_84= KEYWORD_5 ) | ( ( (lv_name_85_0= KEYWORD_80 ) ) otherlv_86= KEYWORD_4 otherlv_87= KEYWORD_5 ) | ( ( (lv_name_88_0= KEYWORD_66 ) ) otherlv_89= KEYWORD_4 otherlv_90= KEYWORD_5 ) | ( ( (lv_name_91_0= KEYWORD_65 ) ) otherlv_92= KEYWORD_4 otherlv_93= KEYWORD_5 ) | ( ( (lv_name_94_0= KEYWORD_89 ) ) otherlv_95= KEYWORD_4 otherlv_96= KEYWORD_5 ) | ( ( (lv_name_97_0= KEYWORD_90 ) ) otherlv_98= KEYWORD_4 otherlv_99= KEYWORD_5 ) | ( ( (lv_name_100_0= KEYWORD_70 ) ) otherlv_101= KEYWORD_4 otherlv_102= KEYWORD_5 ) | ( ( (lv_name_103_0= KEYWORD_81 ) ) otherlv_104= KEYWORD_4 otherlv_105= KEYWORD_5 ) ) )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4370:1: ( ( ( (lv_name_0_0= KEYWORD_78 ) ) otherlv_1= KEYWORD_4 ( (lv_element_2_0= ruleConditionalOrExpression ) ) otherlv_3= KEYWORD_5 ) | ( ( (lv_name_4_0= KEYWORD_28 ) ) otherlv_5= KEYWORD_4 ( (lv_arg_6_0= ruleConditionalOrExpression ) ) otherlv_7= KEYWORD_5 ) | ( ( (lv_name_8_0= KEYWORD_68 ) ) otherlv_9= KEYWORD_4 otherlv_10= KEYWORD_5 ) | ( ( (lv_name_11_0= KEYWORD_40 ) ) otherlv_12= KEYWORD_4 otherlv_13= KEYWORD_5 ) | ( ( (lv_name_14_0= KEYWORD_99 ) ) otherlv_15= KEYWORD_4 ( (lv_key_16_0= ruleConditionalOrExpression ) ) otherlv_17= KEYWORD_5 ) | ( ( (lv_name_18_0= KEYWORD_103 ) ) otherlv_19= KEYWORD_4 ( (lv_value_20_0= ruleConditionalOrExpression ) ) otherlv_21= KEYWORD_5 ) | ( ( (lv_name_22_0= KEYWORD_102 ) ) otherlv_23= KEYWORD_4 ( (lv_key_24_0= ruleConditionalOrExpression ) ) otherlv_25= KEYWORD_8 ( (lv_value_26_0= ruleConditionalOrExpression ) ) otherlv_27= KEYWORD_5 ) | ( ( (lv_name_28_0= KEYWORD_56 ) ) otherlv_29= KEYWORD_4 ( (lv_index_30_0= ruleConditionalOrExpression ) ) otherlv_31= KEYWORD_5 ) | ( ( (lv_name_32_0= KEYWORD_79 ) ) otherlv_33= KEYWORD_4 ( (lv_string_34_0= ruleConditionalOrExpression ) ) otherlv_35= KEYWORD_5 ) | ( ( (lv_name_36_0= KEYWORD_58 ) ) otherlv_37= KEYWORD_4 ( (lv_string_38_0= ruleConditionalOrExpression ) ) otherlv_39= KEYWORD_5 ) | ( ( (lv_name_40_0= KEYWORD_108 ) ) otherlv_41= KEYWORD_4 ( (lv_string_42_0= ruleConditionalOrExpression ) ) otherlv_43= KEYWORD_5 ) | ( ( (lv_name_44_0= KEYWORD_67 ) ) otherlv_45= KEYWORD_4 ( (lv_string_46_0= ruleConditionalOrExpression ) ) (otherlv_47= KEYWORD_8 ( (lv_fromIndex_48_0= ruleConditionalOrExpression ) ) )? otherlv_49= KEYWORD_5 ) | ( ( (lv_name_50_0= KEYWORD_62 ) ) otherlv_51= KEYWORD_4 otherlv_52= KEYWORD_5 ) | ( ( (lv_name_53_0= KEYWORD_69 ) ) otherlv_54= KEYWORD_4 ( (lv_regex_55_0= ruleConditionalOrExpression ) ) otherlv_56= KEYWORD_5 ) | ( ( (lv_name_57_0= KEYWORD_97 ) ) otherlv_58= KEYWORD_4 ( (lv_regex_59_0= ruleConditionalOrExpression ) ) otherlv_60= KEYWORD_8 ( (lv_replacement_61_0= ruleConditionalOrExpression ) ) otherlv_62= KEYWORD_5 ) | ( ( (lv_name_63_0= KEYWORD_98 ) ) otherlv_64= KEYWORD_4 ( (lv_string_65_0= ruleConditionalOrExpression ) ) otherlv_66= KEYWORD_5 ) | ( ( (lv_name_67_0= KEYWORD_91 ) ) otherlv_68= KEYWORD_4 ( (lv_beginIndex_69_0= ruleConditionalOrExpression ) ) (otherlv_70= KEYWORD_8 ( (lv_endIndex_71_0= ruleConditionalOrExpression ) ) )? otherlv_72= KEYWORD_5 ) | ( ( (lv_name_73_0= KEYWORD_100 ) ) otherlv_74= KEYWORD_4 otherlv_75= KEYWORD_5 ) | ( ( (lv_name_76_0= KEYWORD_101 ) ) otherlv_77= KEYWORD_4 otherlv_78= KEYWORD_5 ) | ( ( (lv_name_79_0= KEYWORD_42 ) ) otherlv_80= KEYWORD_4 otherlv_81= KEYWORD_5 ) | ( ( (lv_name_82_0= KEYWORD_59 ) ) otherlv_83= KEYWORD_4 otherlv_84= KEYWORD_5 ) | ( ( (lv_name_85_0= KEYWORD_80 ) ) otherlv_86= KEYWORD_4 otherlv_87= KEYWORD_5 ) | ( ( (lv_name_88_0= KEYWORD_66 ) ) otherlv_89= KEYWORD_4 otherlv_90= KEYWORD_5 ) | ( ( (lv_name_91_0= KEYWORD_65 ) ) otherlv_92= KEYWORD_4 otherlv_93= KEYWORD_5 ) | ( ( (lv_name_94_0= KEYWORD_89 ) ) otherlv_95= KEYWORD_4 otherlv_96= KEYWORD_5 ) | ( ( (lv_name_97_0= KEYWORD_90 ) ) otherlv_98= KEYWORD_4 otherlv_99= KEYWORD_5 ) | ( ( (lv_name_100_0= KEYWORD_70 ) ) otherlv_101= KEYWORD_4 otherlv_102= KEYWORD_5 ) | ( ( (lv_name_103_0= KEYWORD_81 ) ) otherlv_104= KEYWORD_4 otherlv_105= KEYWORD_5 ) )
             {
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4304:1: ( ( () otherlv_1= KEYWORD_78 otherlv_2= KEYWORD_4 ( (lv_element_3_0= ruleConditionalOrExpression ) ) otherlv_4= KEYWORD_5 ) | ( () otherlv_6= KEYWORD_28 otherlv_7= KEYWORD_4 ( (lv_arg_8_0= ruleConditionalOrExpression ) ) otherlv_9= KEYWORD_5 ) | ( () otherlv_11= KEYWORD_68 otherlv_12= KEYWORD_4 otherlv_13= KEYWORD_5 ) | ( () otherlv_15= KEYWORD_40 otherlv_16= KEYWORD_4 otherlv_17= KEYWORD_5 ) | ( () otherlv_19= KEYWORD_99 otherlv_20= KEYWORD_4 ( (lv_key_21_0= ruleConditionalOrExpression ) ) otherlv_22= KEYWORD_5 ) | ( () otherlv_24= KEYWORD_103 otherlv_25= KEYWORD_4 ( (lv_value_26_0= ruleConditionalOrExpression ) ) otherlv_27= KEYWORD_5 ) | ( () otherlv_29= KEYWORD_102 otherlv_30= KEYWORD_4 ( (lv_key_31_0= ruleConditionalOrExpression ) ) otherlv_32= KEYWORD_8 ( (lv_value_33_0= ruleConditionalOrExpression ) ) otherlv_34= KEYWORD_5 ) | ( () otherlv_36= KEYWORD_56 otherlv_37= KEYWORD_4 ( (lv_index_38_0= ruleConditionalOrExpression ) ) otherlv_39= KEYWORD_5 ) | ( () otherlv_41= KEYWORD_79 otherlv_42= KEYWORD_4 ( (lv_string_43_0= ruleConditionalOrExpression ) ) otherlv_44= KEYWORD_5 ) | ( () otherlv_46= KEYWORD_58 otherlv_47= KEYWORD_4 ( (lv_string_48_0= ruleConditionalOrExpression ) ) otherlv_49= KEYWORD_5 ) | ( () otherlv_51= KEYWORD_108 otherlv_52= KEYWORD_4 ( (lv_string_53_0= ruleConditionalOrExpression ) ) otherlv_54= KEYWORD_5 ) | ( () otherlv_56= KEYWORD_67 otherlv_57= KEYWORD_4 ( (lv_string_58_0= ruleConditionalOrExpression ) ) (otherlv_59= KEYWORD_8 ( (lv_fromIndex_60_0= ruleConditionalOrExpression ) ) )? otherlv_61= KEYWORD_5 ) | ( () otherlv_63= KEYWORD_62 otherlv_64= KEYWORD_4 otherlv_65= KEYWORD_5 ) | ( () otherlv_67= KEYWORD_69 otherlv_68= KEYWORD_4 ( (lv_regex_69_0= ruleConditionalOrExpression ) ) otherlv_70= KEYWORD_5 ) | ( () otherlv_72= KEYWORD_97 otherlv_73= KEYWORD_4 ( (lv_regex_74_0= ruleConditionalOrExpression ) ) otherlv_75= KEYWORD_8 ( (lv_replacement_76_0= ruleConditionalOrExpression ) ) otherlv_77= KEYWORD_5 ) | ( () otherlv_79= KEYWORD_98 otherlv_80= KEYWORD_4 ( (lv_string_81_0= ruleConditionalOrExpression ) ) otherlv_82= KEYWORD_5 ) | ( () otherlv_84= KEYWORD_91 otherlv_85= KEYWORD_4 ( (lv_beginIndex_86_0= ruleConditionalOrExpression ) ) (otherlv_87= KEYWORD_8 ( (lv_endIndex_88_0= ruleConditionalOrExpression ) ) )? otherlv_89= KEYWORD_5 ) | ( () otherlv_91= KEYWORD_100 otherlv_92= KEYWORD_4 otherlv_93= KEYWORD_5 ) | ( () otherlv_95= KEYWORD_101 otherlv_96= KEYWORD_4 otherlv_97= KEYWORD_5 ) | ( () otherlv_99= KEYWORD_42 otherlv_100= KEYWORD_4 otherlv_101= KEYWORD_5 ) | ( () otherlv_103= KEYWORD_59 otherlv_104= KEYWORD_4 otherlv_105= KEYWORD_5 ) | ( () otherlv_107= KEYWORD_80 otherlv_108= KEYWORD_4 otherlv_109= KEYWORD_5 ) | ( () otherlv_111= KEYWORD_66 otherlv_112= KEYWORD_4 otherlv_113= KEYWORD_5 ) | ( () otherlv_115= KEYWORD_65 otherlv_116= KEYWORD_4 otherlv_117= KEYWORD_5 ) | ( () otherlv_119= KEYWORD_89 otherlv_120= KEYWORD_4 otherlv_121= KEYWORD_5 ) | ( () otherlv_123= KEYWORD_90 otherlv_124= KEYWORD_4 otherlv_125= KEYWORD_5 ) | ( () otherlv_127= KEYWORD_70 otherlv_128= KEYWORD_4 otherlv_129= KEYWORD_5 ) | ( () otherlv_131= KEYWORD_81 otherlv_132= KEYWORD_4 otherlv_133= KEYWORD_5 ) )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4370:1: ( ( ( (lv_name_0_0= KEYWORD_78 ) ) otherlv_1= KEYWORD_4 ( (lv_element_2_0= ruleConditionalOrExpression ) ) otherlv_3= KEYWORD_5 ) | ( ( (lv_name_4_0= KEYWORD_28 ) ) otherlv_5= KEYWORD_4 ( (lv_arg_6_0= ruleConditionalOrExpression ) ) otherlv_7= KEYWORD_5 ) | ( ( (lv_name_8_0= KEYWORD_68 ) ) otherlv_9= KEYWORD_4 otherlv_10= KEYWORD_5 ) | ( ( (lv_name_11_0= KEYWORD_40 ) ) otherlv_12= KEYWORD_4 otherlv_13= KEYWORD_5 ) | ( ( (lv_name_14_0= KEYWORD_99 ) ) otherlv_15= KEYWORD_4 ( (lv_key_16_0= ruleConditionalOrExpression ) ) otherlv_17= KEYWORD_5 ) | ( ( (lv_name_18_0= KEYWORD_103 ) ) otherlv_19= KEYWORD_4 ( (lv_value_20_0= ruleConditionalOrExpression ) ) otherlv_21= KEYWORD_5 ) | ( ( (lv_name_22_0= KEYWORD_102 ) ) otherlv_23= KEYWORD_4 ( (lv_key_24_0= ruleConditionalOrExpression ) ) otherlv_25= KEYWORD_8 ( (lv_value_26_0= ruleConditionalOrExpression ) ) otherlv_27= KEYWORD_5 ) | ( ( (lv_name_28_0= KEYWORD_56 ) ) otherlv_29= KEYWORD_4 ( (lv_index_30_0= ruleConditionalOrExpression ) ) otherlv_31= KEYWORD_5 ) | ( ( (lv_name_32_0= KEYWORD_79 ) ) otherlv_33= KEYWORD_4 ( (lv_string_34_0= ruleConditionalOrExpression ) ) otherlv_35= KEYWORD_5 ) | ( ( (lv_name_36_0= KEYWORD_58 ) ) otherlv_37= KEYWORD_4 ( (lv_string_38_0= ruleConditionalOrExpression ) ) otherlv_39= KEYWORD_5 ) | ( ( (lv_name_40_0= KEYWORD_108 ) ) otherlv_41= KEYWORD_4 ( (lv_string_42_0= ruleConditionalOrExpression ) ) otherlv_43= KEYWORD_5 ) | ( ( (lv_name_44_0= KEYWORD_67 ) ) otherlv_45= KEYWORD_4 ( (lv_string_46_0= ruleConditionalOrExpression ) ) (otherlv_47= KEYWORD_8 ( (lv_fromIndex_48_0= ruleConditionalOrExpression ) ) )? otherlv_49= KEYWORD_5 ) | ( ( (lv_name_50_0= KEYWORD_62 ) ) otherlv_51= KEYWORD_4 otherlv_52= KEYWORD_5 ) | ( ( (lv_name_53_0= KEYWORD_69 ) ) otherlv_54= KEYWORD_4 ( (lv_regex_55_0= ruleConditionalOrExpression ) ) otherlv_56= KEYWORD_5 ) | ( ( (lv_name_57_0= KEYWORD_97 ) ) otherlv_58= KEYWORD_4 ( (lv_regex_59_0= ruleConditionalOrExpression ) ) otherlv_60= KEYWORD_8 ( (lv_replacement_61_0= ruleConditionalOrExpression ) ) otherlv_62= KEYWORD_5 ) | ( ( (lv_name_63_0= KEYWORD_98 ) ) otherlv_64= KEYWORD_4 ( (lv_string_65_0= ruleConditionalOrExpression ) ) otherlv_66= KEYWORD_5 ) | ( ( (lv_name_67_0= KEYWORD_91 ) ) otherlv_68= KEYWORD_4 ( (lv_beginIndex_69_0= ruleConditionalOrExpression ) ) (otherlv_70= KEYWORD_8 ( (lv_endIndex_71_0= ruleConditionalOrExpression ) ) )? otherlv_72= KEYWORD_5 ) | ( ( (lv_name_73_0= KEYWORD_100 ) ) otherlv_74= KEYWORD_4 otherlv_75= KEYWORD_5 ) | ( ( (lv_name_76_0= KEYWORD_101 ) ) otherlv_77= KEYWORD_4 otherlv_78= KEYWORD_5 ) | ( ( (lv_name_79_0= KEYWORD_42 ) ) otherlv_80= KEYWORD_4 otherlv_81= KEYWORD_5 ) | ( ( (lv_name_82_0= KEYWORD_59 ) ) otherlv_83= KEYWORD_4 otherlv_84= KEYWORD_5 ) | ( ( (lv_name_85_0= KEYWORD_80 ) ) otherlv_86= KEYWORD_4 otherlv_87= KEYWORD_5 ) | ( ( (lv_name_88_0= KEYWORD_66 ) ) otherlv_89= KEYWORD_4 otherlv_90= KEYWORD_5 ) | ( ( (lv_name_91_0= KEYWORD_65 ) ) otherlv_92= KEYWORD_4 otherlv_93= KEYWORD_5 ) | ( ( (lv_name_94_0= KEYWORD_89 ) ) otherlv_95= KEYWORD_4 otherlv_96= KEYWORD_5 ) | ( ( (lv_name_97_0= KEYWORD_90 ) ) otherlv_98= KEYWORD_4 otherlv_99= KEYWORD_5 ) | ( ( (lv_name_100_0= KEYWORD_70 ) ) otherlv_101= KEYWORD_4 otherlv_102= KEYWORD_5 ) | ( ( (lv_name_103_0= KEYWORD_81 ) ) otherlv_104= KEYWORD_4 otherlv_105= KEYWORD_5 ) )
             int alt59=28;
             switch ( input.LA(1) ) {
             case KEYWORD_78:
@@ -11521,54 +11587,56 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
             switch (alt59) {
                 case 1 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4304:2: ( () otherlv_1= KEYWORD_78 otherlv_2= KEYWORD_4 ( (lv_element_3_0= ruleConditionalOrExpression ) ) otherlv_4= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4370:2: ( ( (lv_name_0_0= KEYWORD_78 ) ) otherlv_1= KEYWORD_4 ( (lv_element_2_0= ruleConditionalOrExpression ) ) otherlv_3= KEYWORD_5 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4304:2: ( () otherlv_1= KEYWORD_78 otherlv_2= KEYWORD_4 ( (lv_element_3_0= ruleConditionalOrExpression ) ) otherlv_4= KEYWORD_5 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4304:3: () otherlv_1= KEYWORD_78 otherlv_2= KEYWORD_4 ( (lv_element_3_0= ruleConditionalOrExpression ) ) otherlv_4= KEYWORD_5
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4370:2: ( ( (lv_name_0_0= KEYWORD_78 ) ) otherlv_1= KEYWORD_4 ( (lv_element_2_0= ruleConditionalOrExpression ) ) otherlv_3= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4370:3: ( (lv_name_0_0= KEYWORD_78 ) ) otherlv_1= KEYWORD_4 ( (lv_element_2_0= ruleConditionalOrExpression ) ) otherlv_3= KEYWORD_5
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4304:3: ()
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4305:2: 
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4370:3: ( (lv_name_0_0= KEYWORD_78 ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4371:1: (lv_name_0_0= KEYWORD_78 )
                     {
-                    if ( state.backtracking==0 ) {
-                       
-                      	  /* */ 
-                      	
-                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4371:1: (lv_name_0_0= KEYWORD_78 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4372:3: lv_name_0_0= KEYWORD_78
+                    {
+                    lv_name_0_0=(Token)match(input,KEYWORD_78,FOLLOW_KEYWORD_78_in_ruleMethodExpression8680); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                              current = forceCreateModelElement(
-                                  grammarAccess.getMethodExpressionAccess().getExpressionAction_0_0(),
-                                  current);
+                              newLeafNode(lv_name_0_0, grammarAccess.getMethodExpressionAccess().getNameContainsKeyword_0_0_0());
                           
                     }
-
-                    }
-
-                    otherlv_1=(Token)match(input,KEYWORD_78,FOLLOW_KEYWORD_78_in_ruleMethodExpression8488); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_1, grammarAccess.getMethodExpressionAccess().getContainsKeyword_0_1());
-                          
-                    }
-                    otherlv_2=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression8500); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_2, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_0_2());
-                          
-                    }
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4323:1: ( (lv_element_3_0= ruleConditionalOrExpression ) )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4324:1: (lv_element_3_0= ruleConditionalOrExpression )
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4324:1: (lv_element_3_0= ruleConditionalOrExpression )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4325:3: lv_element_3_0= ruleConditionalOrExpression
-                    {
-                    if ( state.backtracking==0 ) {
-                       
-                      	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getElementConditionalOrExpressionParserRuleCall_0_3_0()); 
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getMethodExpressionRule());
+                      	        }
+                             		setWithLastConsumed(current, "name", lv_name_0_0, "contains");
                       	    
                     }
-                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression8520);
-                    lv_element_3_0=ruleConditionalOrExpression();
+
+                    }
+
+
+                    }
+
+                    otherlv_1=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression8704); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_1, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_0_1());
+                          
+                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4391:1: ( (lv_element_2_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4392:1: (lv_element_2_0= ruleConditionalOrExpression )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4392:1: (lv_element_2_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4393:3: lv_element_2_0= ruleConditionalOrExpression
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getElementConditionalOrExpressionParserRuleCall_0_2_0()); 
+                      	    
+                    }
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression8724);
+                    lv_element_2_0=ruleConditionalOrExpression();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -11580,7 +11648,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                              		set(
                              			current, 
                              			"element",
-                              		lv_element_3_0, 
+                              		lv_element_2_0, 
                               		"ConditionalOrExpression");
                       	        afterParserOrEnumRuleCall();
                       	    
@@ -11591,10 +11659,10 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_4=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression8533); if (state.failed) return current;
+                    otherlv_3=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression8737); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_4, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_0_4());
+                          	newLeafNode(otherlv_3, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_0_3());
                           
                     }
 
@@ -11604,54 +11672,56 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4347:6: ( () otherlv_6= KEYWORD_28 otherlv_7= KEYWORD_4 ( (lv_arg_8_0= ruleConditionalOrExpression ) ) otherlv_9= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4415:6: ( ( (lv_name_4_0= KEYWORD_28 ) ) otherlv_5= KEYWORD_4 ( (lv_arg_6_0= ruleConditionalOrExpression ) ) otherlv_7= KEYWORD_5 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4347:6: ( () otherlv_6= KEYWORD_28 otherlv_7= KEYWORD_4 ( (lv_arg_8_0= ruleConditionalOrExpression ) ) otherlv_9= KEYWORD_5 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4347:7: () otherlv_6= KEYWORD_28 otherlv_7= KEYWORD_4 ( (lv_arg_8_0= ruleConditionalOrExpression ) ) otherlv_9= KEYWORD_5
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4415:6: ( ( (lv_name_4_0= KEYWORD_28 ) ) otherlv_5= KEYWORD_4 ( (lv_arg_6_0= ruleConditionalOrExpression ) ) otherlv_7= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4415:7: ( (lv_name_4_0= KEYWORD_28 ) ) otherlv_5= KEYWORD_4 ( (lv_arg_6_0= ruleConditionalOrExpression ) ) otherlv_7= KEYWORD_5
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4347:7: ()
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4348:2: 
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4415:7: ( (lv_name_4_0= KEYWORD_28 ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4416:1: (lv_name_4_0= KEYWORD_28 )
                     {
-                    if ( state.backtracking==0 ) {
-                       
-                      	  /* */ 
-                      	
-                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4416:1: (lv_name_4_0= KEYWORD_28 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4417:3: lv_name_4_0= KEYWORD_28
+                    {
+                    lv_name_4_0=(Token)match(input,KEYWORD_28,FOLLOW_KEYWORD_28_in_ruleMethodExpression8763); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                              current = forceCreateModelElement(
-                                  grammarAccess.getMethodExpressionAccess().getExpressionAction_1_0(),
-                                  current);
+                              newLeafNode(lv_name_4_0, grammarAccess.getMethodExpressionAccess().getNameGetKeyword_1_0_0());
                           
                     }
-
-                    }
-
-                    otherlv_6=(Token)match(input,KEYWORD_28,FOLLOW_KEYWORD_28_in_ruleMethodExpression8565); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_6, grammarAccess.getMethodExpressionAccess().getGetKeyword_1_1());
-                          
-                    }
-                    otherlv_7=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression8577); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_7, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_1_2());
-                          
-                    }
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4366:1: ( (lv_arg_8_0= ruleConditionalOrExpression ) )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4367:1: (lv_arg_8_0= ruleConditionalOrExpression )
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4367:1: (lv_arg_8_0= ruleConditionalOrExpression )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4368:3: lv_arg_8_0= ruleConditionalOrExpression
-                    {
-                    if ( state.backtracking==0 ) {
-                       
-                      	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getArgConditionalOrExpressionParserRuleCall_1_3_0()); 
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getMethodExpressionRule());
+                      	        }
+                             		setWithLastConsumed(current, "name", lv_name_4_0, "get");
                       	    
                     }
-                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression8597);
-                    lv_arg_8_0=ruleConditionalOrExpression();
+
+                    }
+
+
+                    }
+
+                    otherlv_5=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression8787); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_5, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_1_1());
+                          
+                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4436:1: ( (lv_arg_6_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4437:1: (lv_arg_6_0= ruleConditionalOrExpression )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4437:1: (lv_arg_6_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4438:3: lv_arg_6_0= ruleConditionalOrExpression
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getArgConditionalOrExpressionParserRuleCall_1_2_0()); 
+                      	    
+                    }
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression8807);
+                    lv_arg_6_0=ruleConditionalOrExpression();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -11663,7 +11733,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                              		set(
                              			current, 
                              			"arg",
-                              		lv_arg_8_0, 
+                              		lv_arg_6_0, 
                               		"ConditionalOrExpression");
                       	        afterParserOrEnumRuleCall();
                       	    
@@ -11674,10 +11744,10 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_9=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression8610); if (state.failed) return current;
+                    otherlv_7=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression8820); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_9, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_1_4());
+                          	newLeafNode(otherlv_7, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_1_3());
                           
                     }
 
@@ -11687,45 +11757,47 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4390:6: ( () otherlv_11= KEYWORD_68 otherlv_12= KEYWORD_4 otherlv_13= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4460:6: ( ( (lv_name_8_0= KEYWORD_68 ) ) otherlv_9= KEYWORD_4 otherlv_10= KEYWORD_5 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4390:6: ( () otherlv_11= KEYWORD_68 otherlv_12= KEYWORD_4 otherlv_13= KEYWORD_5 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4390:7: () otherlv_11= KEYWORD_68 otherlv_12= KEYWORD_4 otherlv_13= KEYWORD_5
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4460:6: ( ( (lv_name_8_0= KEYWORD_68 ) ) otherlv_9= KEYWORD_4 otherlv_10= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4460:7: ( (lv_name_8_0= KEYWORD_68 ) ) otherlv_9= KEYWORD_4 otherlv_10= KEYWORD_5
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4390:7: ()
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4391:2: 
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4460:7: ( (lv_name_8_0= KEYWORD_68 ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4461:1: (lv_name_8_0= KEYWORD_68 )
                     {
-                    if ( state.backtracking==0 ) {
-                       
-                      	  /* */ 
-                      	
-                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4461:1: (lv_name_8_0= KEYWORD_68 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4462:3: lv_name_8_0= KEYWORD_68
+                    {
+                    lv_name_8_0=(Token)match(input,KEYWORD_68,FOLLOW_KEYWORD_68_in_ruleMethodExpression8846); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                              current = forceCreateModelElement(
-                                  grammarAccess.getMethodExpressionAccess().getExpressionAction_2_0(),
-                                  current);
+                              newLeafNode(lv_name_8_0, grammarAccess.getMethodExpressionAccess().getNameIsEmptyKeyword_2_0_0());
                           
                     }
+                    if ( state.backtracking==0 ) {
+
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getMethodExpressionRule());
+                      	        }
+                             		setWithLastConsumed(current, "name", lv_name_8_0, "isEmpty");
+                      	    
+                    }
 
                     }
 
-                    otherlv_11=(Token)match(input,KEYWORD_68,FOLLOW_KEYWORD_68_in_ruleMethodExpression8642); if (state.failed) return current;
+
+                    }
+
+                    otherlv_9=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression8870); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_11, grammarAccess.getMethodExpressionAccess().getIsEmptyKeyword_2_1());
+                          	newLeafNode(otherlv_9, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_2_1());
                           
                     }
-                    otherlv_12=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression8654); if (state.failed) return current;
+                    otherlv_10=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression8882); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_12, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_2_2());
-                          
-                    }
-                    otherlv_13=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression8666); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_13, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_2_3());
+                          	newLeafNode(otherlv_10, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_2_2());
                           
                     }
 
@@ -11735,45 +11807,47 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4415:6: ( () otherlv_15= KEYWORD_40 otherlv_16= KEYWORD_4 otherlv_17= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4487:6: ( ( (lv_name_11_0= KEYWORD_40 ) ) otherlv_12= KEYWORD_4 otherlv_13= KEYWORD_5 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4415:6: ( () otherlv_15= KEYWORD_40 otherlv_16= KEYWORD_4 otherlv_17= KEYWORD_5 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4415:7: () otherlv_15= KEYWORD_40 otherlv_16= KEYWORD_4 otherlv_17= KEYWORD_5
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4487:6: ( ( (lv_name_11_0= KEYWORD_40 ) ) otherlv_12= KEYWORD_4 otherlv_13= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4487:7: ( (lv_name_11_0= KEYWORD_40 ) ) otherlv_12= KEYWORD_4 otherlv_13= KEYWORD_5
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4415:7: ()
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4416:2: 
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4487:7: ( (lv_name_11_0= KEYWORD_40 ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4488:1: (lv_name_11_0= KEYWORD_40 )
                     {
-                    if ( state.backtracking==0 ) {
-                       
-                      	  /* */ 
-                      	
-                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4488:1: (lv_name_11_0= KEYWORD_40 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4489:3: lv_name_11_0= KEYWORD_40
+                    {
+                    lv_name_11_0=(Token)match(input,KEYWORD_40,FOLLOW_KEYWORD_40_in_ruleMethodExpression8908); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                              current = forceCreateModelElement(
-                                  grammarAccess.getMethodExpressionAccess().getExpressionAction_3_0(),
-                                  current);
+                              newLeafNode(lv_name_11_0, grammarAccess.getMethodExpressionAccess().getNameSizeKeyword_3_0_0());
                           
                     }
+                    if ( state.backtracking==0 ) {
+
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getMethodExpressionRule());
+                      	        }
+                             		setWithLastConsumed(current, "name", lv_name_11_0, "size");
+                      	    
+                    }
 
                     }
 
-                    otherlv_15=(Token)match(input,KEYWORD_40,FOLLOW_KEYWORD_40_in_ruleMethodExpression8698); if (state.failed) return current;
+
+                    }
+
+                    otherlv_12=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression8932); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_15, grammarAccess.getMethodExpressionAccess().getSizeKeyword_3_1());
+                          	newLeafNode(otherlv_12, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_3_1());
                           
                     }
-                    otherlv_16=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression8710); if (state.failed) return current;
+                    otherlv_13=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression8944); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_16, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_3_2());
-                          
-                    }
-                    otherlv_17=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression8722); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_17, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_3_3());
+                          	newLeafNode(otherlv_13, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_3_2());
                           
                     }
 
@@ -11783,54 +11857,56 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 5 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4440:6: ( () otherlv_19= KEYWORD_99 otherlv_20= KEYWORD_4 ( (lv_key_21_0= ruleConditionalOrExpression ) ) otherlv_22= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4514:6: ( ( (lv_name_14_0= KEYWORD_99 ) ) otherlv_15= KEYWORD_4 ( (lv_key_16_0= ruleConditionalOrExpression ) ) otherlv_17= KEYWORD_5 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4440:6: ( () otherlv_19= KEYWORD_99 otherlv_20= KEYWORD_4 ( (lv_key_21_0= ruleConditionalOrExpression ) ) otherlv_22= KEYWORD_5 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4440:7: () otherlv_19= KEYWORD_99 otherlv_20= KEYWORD_4 ( (lv_key_21_0= ruleConditionalOrExpression ) ) otherlv_22= KEYWORD_5
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4514:6: ( ( (lv_name_14_0= KEYWORD_99 ) ) otherlv_15= KEYWORD_4 ( (lv_key_16_0= ruleConditionalOrExpression ) ) otherlv_17= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4514:7: ( (lv_name_14_0= KEYWORD_99 ) ) otherlv_15= KEYWORD_4 ( (lv_key_16_0= ruleConditionalOrExpression ) ) otherlv_17= KEYWORD_5
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4440:7: ()
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4441:2: 
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4514:7: ( (lv_name_14_0= KEYWORD_99 ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4515:1: (lv_name_14_0= KEYWORD_99 )
                     {
-                    if ( state.backtracking==0 ) {
-                       
-                      	  /* */ 
-                      	
-                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4515:1: (lv_name_14_0= KEYWORD_99 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4516:3: lv_name_14_0= KEYWORD_99
+                    {
+                    lv_name_14_0=(Token)match(input,KEYWORD_99,FOLLOW_KEYWORD_99_in_ruleMethodExpression8970); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                              current = forceCreateModelElement(
-                                  grammarAccess.getMethodExpressionAccess().getExpressionAction_4_0(),
-                                  current);
+                              newLeafNode(lv_name_14_0, grammarAccess.getMethodExpressionAccess().getNameContainsKeyKeyword_4_0_0());
                           
                     }
-
-                    }
-
-                    otherlv_19=(Token)match(input,KEYWORD_99,FOLLOW_KEYWORD_99_in_ruleMethodExpression8754); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_19, grammarAccess.getMethodExpressionAccess().getContainsKeyKeyword_4_1());
-                          
-                    }
-                    otherlv_20=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression8766); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_20, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_4_2());
-                          
-                    }
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4459:1: ( (lv_key_21_0= ruleConditionalOrExpression ) )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4460:1: (lv_key_21_0= ruleConditionalOrExpression )
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4460:1: (lv_key_21_0= ruleConditionalOrExpression )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4461:3: lv_key_21_0= ruleConditionalOrExpression
-                    {
-                    if ( state.backtracking==0 ) {
-                       
-                      	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getKeyConditionalOrExpressionParserRuleCall_4_3_0()); 
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getMethodExpressionRule());
+                      	        }
+                             		setWithLastConsumed(current, "name", lv_name_14_0, "containsKey");
                       	    
                     }
-                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression8786);
-                    lv_key_21_0=ruleConditionalOrExpression();
+
+                    }
+
+
+                    }
+
+                    otherlv_15=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression8994); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_15, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_4_1());
+                          
+                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4535:1: ( (lv_key_16_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4536:1: (lv_key_16_0= ruleConditionalOrExpression )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4536:1: (lv_key_16_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4537:3: lv_key_16_0= ruleConditionalOrExpression
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getKeyConditionalOrExpressionParserRuleCall_4_2_0()); 
+                      	    
+                    }
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression9014);
+                    lv_key_16_0=ruleConditionalOrExpression();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -11842,7 +11918,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                              		set(
                              			current, 
                              			"key",
-                              		lv_key_21_0, 
+                              		lv_key_16_0, 
                               		"ConditionalOrExpression");
                       	        afterParserOrEnumRuleCall();
                       	    
@@ -11853,10 +11929,10 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_22=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression8799); if (state.failed) return current;
+                    otherlv_17=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression9027); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_22, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_4_4());
+                          	newLeafNode(otherlv_17, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_4_3());
                           
                     }
 
@@ -11866,53 +11942,181 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 6 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4483:6: ( () otherlv_24= KEYWORD_103 otherlv_25= KEYWORD_4 ( (lv_value_26_0= ruleConditionalOrExpression ) ) otherlv_27= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4559:6: ( ( (lv_name_18_0= KEYWORD_103 ) ) otherlv_19= KEYWORD_4 ( (lv_value_20_0= ruleConditionalOrExpression ) ) otherlv_21= KEYWORD_5 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4483:6: ( () otherlv_24= KEYWORD_103 otherlv_25= KEYWORD_4 ( (lv_value_26_0= ruleConditionalOrExpression ) ) otherlv_27= KEYWORD_5 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4483:7: () otherlv_24= KEYWORD_103 otherlv_25= KEYWORD_4 ( (lv_value_26_0= ruleConditionalOrExpression ) ) otherlv_27= KEYWORD_5
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4559:6: ( ( (lv_name_18_0= KEYWORD_103 ) ) otherlv_19= KEYWORD_4 ( (lv_value_20_0= ruleConditionalOrExpression ) ) otherlv_21= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4559:7: ( (lv_name_18_0= KEYWORD_103 ) ) otherlv_19= KEYWORD_4 ( (lv_value_20_0= ruleConditionalOrExpression ) ) otherlv_21= KEYWORD_5
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4483:7: ()
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4484:2: 
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4559:7: ( (lv_name_18_0= KEYWORD_103 ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4560:1: (lv_name_18_0= KEYWORD_103 )
                     {
-                    if ( state.backtracking==0 ) {
-                       
-                      	  /* */ 
-                      	
-                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4560:1: (lv_name_18_0= KEYWORD_103 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4561:3: lv_name_18_0= KEYWORD_103
+                    {
+                    lv_name_18_0=(Token)match(input,KEYWORD_103,FOLLOW_KEYWORD_103_in_ruleMethodExpression9053); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                              current = forceCreateModelElement(
-                                  grammarAccess.getMethodExpressionAccess().getExpressionAction_5_0(),
-                                  current);
+                              newLeafNode(lv_name_18_0, grammarAccess.getMethodExpressionAccess().getNameContainsValueKeyword_5_0_0());
                           
                     }
-
-                    }
-
-                    otherlv_24=(Token)match(input,KEYWORD_103,FOLLOW_KEYWORD_103_in_ruleMethodExpression8831); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_24, grammarAccess.getMethodExpressionAccess().getContainsValueKeyword_5_1());
-                          
-                    }
-                    otherlv_25=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression8843); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_25, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_5_2());
-                          
-                    }
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4502:1: ( (lv_value_26_0= ruleConditionalOrExpression ) )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4503:1: (lv_value_26_0= ruleConditionalOrExpression )
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4503:1: (lv_value_26_0= ruleConditionalOrExpression )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4504:3: lv_value_26_0= ruleConditionalOrExpression
-                    {
-                    if ( state.backtracking==0 ) {
-                       
-                      	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getValueConditionalOrExpressionParserRuleCall_5_3_0()); 
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getMethodExpressionRule());
+                      	        }
+                             		setWithLastConsumed(current, "name", lv_name_18_0, "containsValue");
                       	    
                     }
-                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression8863);
+
+                    }
+
+
+                    }
+
+                    otherlv_19=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression9077); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_19, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_5_1());
+                          
+                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4580:1: ( (lv_value_20_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4581:1: (lv_value_20_0= ruleConditionalOrExpression )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4581:1: (lv_value_20_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4582:3: lv_value_20_0= ruleConditionalOrExpression
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getValueConditionalOrExpressionParserRuleCall_5_2_0()); 
+                      	    
+                    }
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression9097);
+                    lv_value_20_0=ruleConditionalOrExpression();
+
+                    state._fsp--;
+                    if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      	        if (current==null) {
+                      	            current = createModelElementForParent(grammarAccess.getMethodExpressionRule());
+                      	        }
+                             		set(
+                             			current, 
+                             			"value",
+                              		lv_value_20_0, 
+                              		"ConditionalOrExpression");
+                      	        afterParserOrEnumRuleCall();
+                      	    
+                    }
+
+                    }
+
+
+                    }
+
+                    otherlv_21=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression9110); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_21, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_5_3());
+                          
+                    }
+
+                    }
+
+
+                    }
+                    break;
+                case 7 :
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4604:6: ( ( (lv_name_22_0= KEYWORD_102 ) ) otherlv_23= KEYWORD_4 ( (lv_key_24_0= ruleConditionalOrExpression ) ) otherlv_25= KEYWORD_8 ( (lv_value_26_0= ruleConditionalOrExpression ) ) otherlv_27= KEYWORD_5 )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4604:6: ( ( (lv_name_22_0= KEYWORD_102 ) ) otherlv_23= KEYWORD_4 ( (lv_key_24_0= ruleConditionalOrExpression ) ) otherlv_25= KEYWORD_8 ( (lv_value_26_0= ruleConditionalOrExpression ) ) otherlv_27= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4604:7: ( (lv_name_22_0= KEYWORD_102 ) ) otherlv_23= KEYWORD_4 ( (lv_key_24_0= ruleConditionalOrExpression ) ) otherlv_25= KEYWORD_8 ( (lv_value_26_0= ruleConditionalOrExpression ) ) otherlv_27= KEYWORD_5
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4604:7: ( (lv_name_22_0= KEYWORD_102 ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4605:1: (lv_name_22_0= KEYWORD_102 )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4605:1: (lv_name_22_0= KEYWORD_102 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4606:3: lv_name_22_0= KEYWORD_102
+                    {
+                    lv_name_22_0=(Token)match(input,KEYWORD_102,FOLLOW_KEYWORD_102_in_ruleMethodExpression9136); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              newLeafNode(lv_name_22_0, grammarAccess.getMethodExpressionAccess().getNameContainsEntryKeyword_6_0_0());
+                          
+                    }
+                    if ( state.backtracking==0 ) {
+
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getMethodExpressionRule());
+                      	        }
+                             		setWithLastConsumed(current, "name", lv_name_22_0, "containsEntry");
+                      	    
+                    }
+
+                    }
+
+
+                    }
+
+                    otherlv_23=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression9160); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_23, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_6_1());
+                          
+                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4625:1: ( (lv_key_24_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4626:1: (lv_key_24_0= ruleConditionalOrExpression )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4626:1: (lv_key_24_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4627:3: lv_key_24_0= ruleConditionalOrExpression
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getKeyConditionalOrExpressionParserRuleCall_6_2_0()); 
+                      	    
+                    }
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression9180);
+                    lv_key_24_0=ruleConditionalOrExpression();
+
+                    state._fsp--;
+                    if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      	        if (current==null) {
+                      	            current = createModelElementForParent(grammarAccess.getMethodExpressionRule());
+                      	        }
+                             		set(
+                             			current, 
+                             			"key",
+                              		lv_key_24_0, 
+                              		"ConditionalOrExpression");
+                      	        afterParserOrEnumRuleCall();
+                      	    
+                    }
+
+                    }
+
+
+                    }
+
+                    otherlv_25=(Token)match(input,KEYWORD_8,FOLLOW_KEYWORD_8_in_ruleMethodExpression9193); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_25, grammarAccess.getMethodExpressionAccess().getCommaKeyword_6_3());
+                          
+                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4648:1: ( (lv_value_26_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4649:1: (lv_value_26_0= ruleConditionalOrExpression )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4649:1: (lv_value_26_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4650:3: lv_value_26_0= ruleConditionalOrExpression
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getValueConditionalOrExpressionParserRuleCall_6_4_0()); 
+                      	    
+                    }
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression9213);
                     lv_value_26_0=ruleConditionalOrExpression();
 
                     state._fsp--;
@@ -11936,134 +12140,10 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_27=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression8876); if (state.failed) return current;
+                    otherlv_27=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression9226); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_27, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_5_4());
-                          
-                    }
-
-                    }
-
-
-                    }
-                    break;
-                case 7 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4526:6: ( () otherlv_29= KEYWORD_102 otherlv_30= KEYWORD_4 ( (lv_key_31_0= ruleConditionalOrExpression ) ) otherlv_32= KEYWORD_8 ( (lv_value_33_0= ruleConditionalOrExpression ) ) otherlv_34= KEYWORD_5 )
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4526:6: ( () otherlv_29= KEYWORD_102 otherlv_30= KEYWORD_4 ( (lv_key_31_0= ruleConditionalOrExpression ) ) otherlv_32= KEYWORD_8 ( (lv_value_33_0= ruleConditionalOrExpression ) ) otherlv_34= KEYWORD_5 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4526:7: () otherlv_29= KEYWORD_102 otherlv_30= KEYWORD_4 ( (lv_key_31_0= ruleConditionalOrExpression ) ) otherlv_32= KEYWORD_8 ( (lv_value_33_0= ruleConditionalOrExpression ) ) otherlv_34= KEYWORD_5
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4526:7: ()
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4527:2: 
-                    {
-                    if ( state.backtracking==0 ) {
-                       
-                      	  /* */ 
-                      	
-                    }
-                    if ( state.backtracking==0 ) {
-
-                              current = forceCreateModelElement(
-                                  grammarAccess.getMethodExpressionAccess().getExpressionAction_6_0(),
-                                  current);
-                          
-                    }
-
-                    }
-
-                    otherlv_29=(Token)match(input,KEYWORD_102,FOLLOW_KEYWORD_102_in_ruleMethodExpression8908); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_29, grammarAccess.getMethodExpressionAccess().getContainsEntryKeyword_6_1());
-                          
-                    }
-                    otherlv_30=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression8920); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_30, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_6_2());
-                          
-                    }
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4545:1: ( (lv_key_31_0= ruleConditionalOrExpression ) )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4546:1: (lv_key_31_0= ruleConditionalOrExpression )
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4546:1: (lv_key_31_0= ruleConditionalOrExpression )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4547:3: lv_key_31_0= ruleConditionalOrExpression
-                    {
-                    if ( state.backtracking==0 ) {
-                       
-                      	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getKeyConditionalOrExpressionParserRuleCall_6_3_0()); 
-                      	    
-                    }
-                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression8940);
-                    lv_key_31_0=ruleConditionalOrExpression();
-
-                    state._fsp--;
-                    if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                      	        if (current==null) {
-                      	            current = createModelElementForParent(grammarAccess.getMethodExpressionRule());
-                      	        }
-                             		set(
-                             			current, 
-                             			"key",
-                              		lv_key_31_0, 
-                              		"ConditionalOrExpression");
-                      	        afterParserOrEnumRuleCall();
-                      	    
-                    }
-
-                    }
-
-
-                    }
-
-                    otherlv_32=(Token)match(input,KEYWORD_8,FOLLOW_KEYWORD_8_in_ruleMethodExpression8953); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_32, grammarAccess.getMethodExpressionAccess().getCommaKeyword_6_4());
-                          
-                    }
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4568:1: ( (lv_value_33_0= ruleConditionalOrExpression ) )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4569:1: (lv_value_33_0= ruleConditionalOrExpression )
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4569:1: (lv_value_33_0= ruleConditionalOrExpression )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4570:3: lv_value_33_0= ruleConditionalOrExpression
-                    {
-                    if ( state.backtracking==0 ) {
-                       
-                      	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getValueConditionalOrExpressionParserRuleCall_6_5_0()); 
-                      	    
-                    }
-                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression8973);
-                    lv_value_33_0=ruleConditionalOrExpression();
-
-                    state._fsp--;
-                    if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                      	        if (current==null) {
-                      	            current = createModelElementForParent(grammarAccess.getMethodExpressionRule());
-                      	        }
-                             		set(
-                             			current, 
-                             			"value",
-                              		lv_value_33_0, 
-                              		"ConditionalOrExpression");
-                      	        afterParserOrEnumRuleCall();
-                      	    
-                    }
-
-                    }
-
-
-                    }
-
-                    otherlv_34=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression8986); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_34, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_6_6());
+                          	newLeafNode(otherlv_27, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_6_5());
                           
                     }
 
@@ -12073,54 +12153,56 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 8 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4592:6: ( () otherlv_36= KEYWORD_56 otherlv_37= KEYWORD_4 ( (lv_index_38_0= ruleConditionalOrExpression ) ) otherlv_39= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4672:6: ( ( (lv_name_28_0= KEYWORD_56 ) ) otherlv_29= KEYWORD_4 ( (lv_index_30_0= ruleConditionalOrExpression ) ) otherlv_31= KEYWORD_5 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4592:6: ( () otherlv_36= KEYWORD_56 otherlv_37= KEYWORD_4 ( (lv_index_38_0= ruleConditionalOrExpression ) ) otherlv_39= KEYWORD_5 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4592:7: () otherlv_36= KEYWORD_56 otherlv_37= KEYWORD_4 ( (lv_index_38_0= ruleConditionalOrExpression ) ) otherlv_39= KEYWORD_5
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4672:6: ( ( (lv_name_28_0= KEYWORD_56 ) ) otherlv_29= KEYWORD_4 ( (lv_index_30_0= ruleConditionalOrExpression ) ) otherlv_31= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4672:7: ( (lv_name_28_0= KEYWORD_56 ) ) otherlv_29= KEYWORD_4 ( (lv_index_30_0= ruleConditionalOrExpression ) ) otherlv_31= KEYWORD_5
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4592:7: ()
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4593:2: 
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4672:7: ( (lv_name_28_0= KEYWORD_56 ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4673:1: (lv_name_28_0= KEYWORD_56 )
                     {
-                    if ( state.backtracking==0 ) {
-                       
-                      	  /* */ 
-                      	
-                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4673:1: (lv_name_28_0= KEYWORD_56 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4674:3: lv_name_28_0= KEYWORD_56
+                    {
+                    lv_name_28_0=(Token)match(input,KEYWORD_56,FOLLOW_KEYWORD_56_in_ruleMethodExpression9252); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                              current = forceCreateModelElement(
-                                  grammarAccess.getMethodExpressionAccess().getExpressionAction_7_0(),
-                                  current);
+                              newLeafNode(lv_name_28_0, grammarAccess.getMethodExpressionAccess().getNameCharAtKeyword_7_0_0());
                           
                     }
-
-                    }
-
-                    otherlv_36=(Token)match(input,KEYWORD_56,FOLLOW_KEYWORD_56_in_ruleMethodExpression9018); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_36, grammarAccess.getMethodExpressionAccess().getCharAtKeyword_7_1());
-                          
-                    }
-                    otherlv_37=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression9030); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_37, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_7_2());
-                          
-                    }
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4611:1: ( (lv_index_38_0= ruleConditionalOrExpression ) )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4612:1: (lv_index_38_0= ruleConditionalOrExpression )
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4612:1: (lv_index_38_0= ruleConditionalOrExpression )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4613:3: lv_index_38_0= ruleConditionalOrExpression
-                    {
-                    if ( state.backtracking==0 ) {
-                       
-                      	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getIndexConditionalOrExpressionParserRuleCall_7_3_0()); 
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getMethodExpressionRule());
+                      	        }
+                             		setWithLastConsumed(current, "name", lv_name_28_0, "charAt");
                       	    
                     }
-                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression9050);
-                    lv_index_38_0=ruleConditionalOrExpression();
+
+                    }
+
+
+                    }
+
+                    otherlv_29=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression9276); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_29, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_7_1());
+                          
+                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4693:1: ( (lv_index_30_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4694:1: (lv_index_30_0= ruleConditionalOrExpression )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4694:1: (lv_index_30_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4695:3: lv_index_30_0= ruleConditionalOrExpression
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getIndexConditionalOrExpressionParserRuleCall_7_2_0()); 
+                      	    
+                    }
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression9296);
+                    lv_index_30_0=ruleConditionalOrExpression();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -12132,7 +12214,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                              		set(
                              			current, 
                              			"index",
-                              		lv_index_38_0, 
+                              		lv_index_30_0, 
                               		"ConditionalOrExpression");
                       	        afterParserOrEnumRuleCall();
                       	    
@@ -12143,10 +12225,10 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_39=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression9063); if (state.failed) return current;
+                    otherlv_31=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression9309); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_39, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_7_4());
+                          	newLeafNode(otherlv_31, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_7_3());
                           
                     }
 
@@ -12156,54 +12238,56 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 9 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4635:6: ( () otherlv_41= KEYWORD_79 otherlv_42= KEYWORD_4 ( (lv_string_43_0= ruleConditionalOrExpression ) ) otherlv_44= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4717:6: ( ( (lv_name_32_0= KEYWORD_79 ) ) otherlv_33= KEYWORD_4 ( (lv_string_34_0= ruleConditionalOrExpression ) ) otherlv_35= KEYWORD_5 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4635:6: ( () otherlv_41= KEYWORD_79 otherlv_42= KEYWORD_4 ( (lv_string_43_0= ruleConditionalOrExpression ) ) otherlv_44= KEYWORD_5 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4635:7: () otherlv_41= KEYWORD_79 otherlv_42= KEYWORD_4 ( (lv_string_43_0= ruleConditionalOrExpression ) ) otherlv_44= KEYWORD_5
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4717:6: ( ( (lv_name_32_0= KEYWORD_79 ) ) otherlv_33= KEYWORD_4 ( (lv_string_34_0= ruleConditionalOrExpression ) ) otherlv_35= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4717:7: ( (lv_name_32_0= KEYWORD_79 ) ) otherlv_33= KEYWORD_4 ( (lv_string_34_0= ruleConditionalOrExpression ) ) otherlv_35= KEYWORD_5
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4635:7: ()
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4636:2: 
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4717:7: ( (lv_name_32_0= KEYWORD_79 ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4718:1: (lv_name_32_0= KEYWORD_79 )
                     {
-                    if ( state.backtracking==0 ) {
-                       
-                      	  /* */ 
-                      	
-                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4718:1: (lv_name_32_0= KEYWORD_79 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4719:3: lv_name_32_0= KEYWORD_79
+                    {
+                    lv_name_32_0=(Token)match(input,KEYWORD_79,FOLLOW_KEYWORD_79_in_ruleMethodExpression9335); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                              current = forceCreateModelElement(
-                                  grammarAccess.getMethodExpressionAccess().getExpressionAction_8_0(),
-                                  current);
+                              newLeafNode(lv_name_32_0, grammarAccess.getMethodExpressionAccess().getNameEndsWithKeyword_8_0_0());
                           
                     }
-
-                    }
-
-                    otherlv_41=(Token)match(input,KEYWORD_79,FOLLOW_KEYWORD_79_in_ruleMethodExpression9095); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_41, grammarAccess.getMethodExpressionAccess().getEndsWithKeyword_8_1());
-                          
-                    }
-                    otherlv_42=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression9107); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_42, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_8_2());
-                          
-                    }
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4654:1: ( (lv_string_43_0= ruleConditionalOrExpression ) )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4655:1: (lv_string_43_0= ruleConditionalOrExpression )
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4655:1: (lv_string_43_0= ruleConditionalOrExpression )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4656:3: lv_string_43_0= ruleConditionalOrExpression
-                    {
-                    if ( state.backtracking==0 ) {
-                       
-                      	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getStringConditionalOrExpressionParserRuleCall_8_3_0()); 
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getMethodExpressionRule());
+                      	        }
+                             		setWithLastConsumed(current, "name", lv_name_32_0, "endsWith");
                       	    
                     }
-                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression9127);
-                    lv_string_43_0=ruleConditionalOrExpression();
+
+                    }
+
+
+                    }
+
+                    otherlv_33=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression9359); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_33, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_8_1());
+                          
+                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4738:1: ( (lv_string_34_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4739:1: (lv_string_34_0= ruleConditionalOrExpression )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4739:1: (lv_string_34_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4740:3: lv_string_34_0= ruleConditionalOrExpression
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getStringConditionalOrExpressionParserRuleCall_8_2_0()); 
+                      	    
+                    }
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression9379);
+                    lv_string_34_0=ruleConditionalOrExpression();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -12215,7 +12299,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                              		set(
                              			current, 
                              			"string",
-                              		lv_string_43_0, 
+                              		lv_string_34_0, 
                               		"ConditionalOrExpression");
                       	        afterParserOrEnumRuleCall();
                       	    
@@ -12226,10 +12310,10 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_44=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression9140); if (state.failed) return current;
+                    otherlv_35=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression9392); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_44, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_8_4());
+                          	newLeafNode(otherlv_35, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_8_3());
                           
                     }
 
@@ -12239,54 +12323,56 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 10 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4678:6: ( () otherlv_46= KEYWORD_58 otherlv_47= KEYWORD_4 ( (lv_string_48_0= ruleConditionalOrExpression ) ) otherlv_49= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4762:6: ( ( (lv_name_36_0= KEYWORD_58 ) ) otherlv_37= KEYWORD_4 ( (lv_string_38_0= ruleConditionalOrExpression ) ) otherlv_39= KEYWORD_5 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4678:6: ( () otherlv_46= KEYWORD_58 otherlv_47= KEYWORD_4 ( (lv_string_48_0= ruleConditionalOrExpression ) ) otherlv_49= KEYWORD_5 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4678:7: () otherlv_46= KEYWORD_58 otherlv_47= KEYWORD_4 ( (lv_string_48_0= ruleConditionalOrExpression ) ) otherlv_49= KEYWORD_5
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4762:6: ( ( (lv_name_36_0= KEYWORD_58 ) ) otherlv_37= KEYWORD_4 ( (lv_string_38_0= ruleConditionalOrExpression ) ) otherlv_39= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4762:7: ( (lv_name_36_0= KEYWORD_58 ) ) otherlv_37= KEYWORD_4 ( (lv_string_38_0= ruleConditionalOrExpression ) ) otherlv_39= KEYWORD_5
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4678:7: ()
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4679:2: 
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4762:7: ( (lv_name_36_0= KEYWORD_58 ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4763:1: (lv_name_36_0= KEYWORD_58 )
                     {
-                    if ( state.backtracking==0 ) {
-                       
-                      	  /* */ 
-                      	
-                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4763:1: (lv_name_36_0= KEYWORD_58 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4764:3: lv_name_36_0= KEYWORD_58
+                    {
+                    lv_name_36_0=(Token)match(input,KEYWORD_58,FOLLOW_KEYWORD_58_in_ruleMethodExpression9418); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                              current = forceCreateModelElement(
-                                  grammarAccess.getMethodExpressionAccess().getExpressionAction_9_0(),
-                                  current);
+                              newLeafNode(lv_name_36_0, grammarAccess.getMethodExpressionAccess().getNameEqualsKeyword_9_0_0());
                           
                     }
-
-                    }
-
-                    otherlv_46=(Token)match(input,KEYWORD_58,FOLLOW_KEYWORD_58_in_ruleMethodExpression9172); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_46, grammarAccess.getMethodExpressionAccess().getEqualsKeyword_9_1());
-                          
-                    }
-                    otherlv_47=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression9184); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_47, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_9_2());
-                          
-                    }
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4697:1: ( (lv_string_48_0= ruleConditionalOrExpression ) )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4698:1: (lv_string_48_0= ruleConditionalOrExpression )
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4698:1: (lv_string_48_0= ruleConditionalOrExpression )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4699:3: lv_string_48_0= ruleConditionalOrExpression
-                    {
-                    if ( state.backtracking==0 ) {
-                       
-                      	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getStringConditionalOrExpressionParserRuleCall_9_3_0()); 
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getMethodExpressionRule());
+                      	        }
+                             		setWithLastConsumed(current, "name", lv_name_36_0, "equals");
                       	    
                     }
-                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression9204);
-                    lv_string_48_0=ruleConditionalOrExpression();
+
+                    }
+
+
+                    }
+
+                    otherlv_37=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression9442); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_37, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_9_1());
+                          
+                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4783:1: ( (lv_string_38_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4784:1: (lv_string_38_0= ruleConditionalOrExpression )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4784:1: (lv_string_38_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4785:3: lv_string_38_0= ruleConditionalOrExpression
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getStringConditionalOrExpressionParserRuleCall_9_2_0()); 
+                      	    
+                    }
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression9462);
+                    lv_string_38_0=ruleConditionalOrExpression();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -12298,7 +12384,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                              		set(
                              			current, 
                              			"string",
-                              		lv_string_48_0, 
+                              		lv_string_38_0, 
                               		"ConditionalOrExpression");
                       	        afterParserOrEnumRuleCall();
                       	    
@@ -12309,10 +12395,10 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_49=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression9217); if (state.failed) return current;
+                    otherlv_39=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression9475); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_49, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_9_4());
+                          	newLeafNode(otherlv_39, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_9_3());
                           
                     }
 
@@ -12322,54 +12408,56 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 11 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4721:6: ( () otherlv_51= KEYWORD_108 otherlv_52= KEYWORD_4 ( (lv_string_53_0= ruleConditionalOrExpression ) ) otherlv_54= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4807:6: ( ( (lv_name_40_0= KEYWORD_108 ) ) otherlv_41= KEYWORD_4 ( (lv_string_42_0= ruleConditionalOrExpression ) ) otherlv_43= KEYWORD_5 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4721:6: ( () otherlv_51= KEYWORD_108 otherlv_52= KEYWORD_4 ( (lv_string_53_0= ruleConditionalOrExpression ) ) otherlv_54= KEYWORD_5 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4721:7: () otherlv_51= KEYWORD_108 otherlv_52= KEYWORD_4 ( (lv_string_53_0= ruleConditionalOrExpression ) ) otherlv_54= KEYWORD_5
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4807:6: ( ( (lv_name_40_0= KEYWORD_108 ) ) otherlv_41= KEYWORD_4 ( (lv_string_42_0= ruleConditionalOrExpression ) ) otherlv_43= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4807:7: ( (lv_name_40_0= KEYWORD_108 ) ) otherlv_41= KEYWORD_4 ( (lv_string_42_0= ruleConditionalOrExpression ) ) otherlv_43= KEYWORD_5
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4721:7: ()
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4722:2: 
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4807:7: ( (lv_name_40_0= KEYWORD_108 ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4808:1: (lv_name_40_0= KEYWORD_108 )
                     {
-                    if ( state.backtracking==0 ) {
-                       
-                      	  /* */ 
-                      	
-                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4808:1: (lv_name_40_0= KEYWORD_108 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4809:3: lv_name_40_0= KEYWORD_108
+                    {
+                    lv_name_40_0=(Token)match(input,KEYWORD_108,FOLLOW_KEYWORD_108_in_ruleMethodExpression9501); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                              current = forceCreateModelElement(
-                                  grammarAccess.getMethodExpressionAccess().getExpressionAction_10_0(),
-                                  current);
+                              newLeafNode(lv_name_40_0, grammarAccess.getMethodExpressionAccess().getNameEqualsIgnoreCaseKeyword_10_0_0());
                           
                     }
-
-                    }
-
-                    otherlv_51=(Token)match(input,KEYWORD_108,FOLLOW_KEYWORD_108_in_ruleMethodExpression9249); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_51, grammarAccess.getMethodExpressionAccess().getEqualsIgnoreCaseKeyword_10_1());
-                          
-                    }
-                    otherlv_52=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression9261); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_52, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_10_2());
-                          
-                    }
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4740:1: ( (lv_string_53_0= ruleConditionalOrExpression ) )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4741:1: (lv_string_53_0= ruleConditionalOrExpression )
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4741:1: (lv_string_53_0= ruleConditionalOrExpression )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4742:3: lv_string_53_0= ruleConditionalOrExpression
-                    {
-                    if ( state.backtracking==0 ) {
-                       
-                      	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getStringConditionalOrExpressionParserRuleCall_10_3_0()); 
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getMethodExpressionRule());
+                      	        }
+                             		setWithLastConsumed(current, "name", lv_name_40_0, "equalsIgnoreCase");
                       	    
                     }
-                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression9281);
-                    lv_string_53_0=ruleConditionalOrExpression();
+
+                    }
+
+
+                    }
+
+                    otherlv_41=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression9525); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_41, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_10_1());
+                          
+                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4828:1: ( (lv_string_42_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4829:1: (lv_string_42_0= ruleConditionalOrExpression )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4829:1: (lv_string_42_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4830:3: lv_string_42_0= ruleConditionalOrExpression
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getStringConditionalOrExpressionParserRuleCall_10_2_0()); 
+                      	    
+                    }
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression9545);
+                    lv_string_42_0=ruleConditionalOrExpression();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -12381,7 +12469,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                              		set(
                              			current, 
                              			"string",
-                              		lv_string_53_0, 
+                              		lv_string_42_0, 
                               		"ConditionalOrExpression");
                       	        afterParserOrEnumRuleCall();
                       	    
@@ -12392,10 +12480,10 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_54=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression9294); if (state.failed) return current;
+                    otherlv_43=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression9558); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_54, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_10_4());
+                          	newLeafNode(otherlv_43, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_10_3());
                           
                     }
 
@@ -12405,54 +12493,56 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 12 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4764:6: ( () otherlv_56= KEYWORD_67 otherlv_57= KEYWORD_4 ( (lv_string_58_0= ruleConditionalOrExpression ) ) (otherlv_59= KEYWORD_8 ( (lv_fromIndex_60_0= ruleConditionalOrExpression ) ) )? otherlv_61= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4852:6: ( ( (lv_name_44_0= KEYWORD_67 ) ) otherlv_45= KEYWORD_4 ( (lv_string_46_0= ruleConditionalOrExpression ) ) (otherlv_47= KEYWORD_8 ( (lv_fromIndex_48_0= ruleConditionalOrExpression ) ) )? otherlv_49= KEYWORD_5 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4764:6: ( () otherlv_56= KEYWORD_67 otherlv_57= KEYWORD_4 ( (lv_string_58_0= ruleConditionalOrExpression ) ) (otherlv_59= KEYWORD_8 ( (lv_fromIndex_60_0= ruleConditionalOrExpression ) ) )? otherlv_61= KEYWORD_5 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4764:7: () otherlv_56= KEYWORD_67 otherlv_57= KEYWORD_4 ( (lv_string_58_0= ruleConditionalOrExpression ) ) (otherlv_59= KEYWORD_8 ( (lv_fromIndex_60_0= ruleConditionalOrExpression ) ) )? otherlv_61= KEYWORD_5
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4852:6: ( ( (lv_name_44_0= KEYWORD_67 ) ) otherlv_45= KEYWORD_4 ( (lv_string_46_0= ruleConditionalOrExpression ) ) (otherlv_47= KEYWORD_8 ( (lv_fromIndex_48_0= ruleConditionalOrExpression ) ) )? otherlv_49= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4852:7: ( (lv_name_44_0= KEYWORD_67 ) ) otherlv_45= KEYWORD_4 ( (lv_string_46_0= ruleConditionalOrExpression ) ) (otherlv_47= KEYWORD_8 ( (lv_fromIndex_48_0= ruleConditionalOrExpression ) ) )? otherlv_49= KEYWORD_5
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4764:7: ()
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4765:2: 
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4852:7: ( (lv_name_44_0= KEYWORD_67 ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4853:1: (lv_name_44_0= KEYWORD_67 )
                     {
-                    if ( state.backtracking==0 ) {
-                       
-                      	  /* */ 
-                      	
-                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4853:1: (lv_name_44_0= KEYWORD_67 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4854:3: lv_name_44_0= KEYWORD_67
+                    {
+                    lv_name_44_0=(Token)match(input,KEYWORD_67,FOLLOW_KEYWORD_67_in_ruleMethodExpression9584); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                              current = forceCreateModelElement(
-                                  grammarAccess.getMethodExpressionAccess().getExpressionAction_11_0(),
-                                  current);
+                              newLeafNode(lv_name_44_0, grammarAccess.getMethodExpressionAccess().getNameIndexOfKeyword_11_0_0());
                           
                     }
-
-                    }
-
-                    otherlv_56=(Token)match(input,KEYWORD_67,FOLLOW_KEYWORD_67_in_ruleMethodExpression9326); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_56, grammarAccess.getMethodExpressionAccess().getIndexOfKeyword_11_1());
-                          
-                    }
-                    otherlv_57=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression9338); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_57, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_11_2());
-                          
-                    }
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4783:1: ( (lv_string_58_0= ruleConditionalOrExpression ) )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4784:1: (lv_string_58_0= ruleConditionalOrExpression )
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4784:1: (lv_string_58_0= ruleConditionalOrExpression )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4785:3: lv_string_58_0= ruleConditionalOrExpression
-                    {
-                    if ( state.backtracking==0 ) {
-                       
-                      	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getStringConditionalOrExpressionParserRuleCall_11_3_0()); 
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getMethodExpressionRule());
+                      	        }
+                             		setWithLastConsumed(current, "name", lv_name_44_0, "indexOf");
                       	    
                     }
-                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression9358);
-                    lv_string_58_0=ruleConditionalOrExpression();
+
+                    }
+
+
+                    }
+
+                    otherlv_45=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression9608); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_45, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_11_1());
+                          
+                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4873:1: ( (lv_string_46_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4874:1: (lv_string_46_0= ruleConditionalOrExpression )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4874:1: (lv_string_46_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4875:3: lv_string_46_0= ruleConditionalOrExpression
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getStringConditionalOrExpressionParserRuleCall_11_2_0()); 
+                      	    
+                    }
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression9628);
+                    lv_string_46_0=ruleConditionalOrExpression();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -12464,7 +12554,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                              		set(
                              			current, 
                              			"string",
-                              		lv_string_58_0, 
+                              		lv_string_46_0, 
                               		"ConditionalOrExpression");
                       	        afterParserOrEnumRuleCall();
                       	    
@@ -12475,7 +12565,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4801:2: (otherlv_59= KEYWORD_8 ( (lv_fromIndex_60_0= ruleConditionalOrExpression ) ) )?
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4891:2: (otherlv_47= KEYWORD_8 ( (lv_fromIndex_48_0= ruleConditionalOrExpression ) ) )?
                     int alt57=2;
                     int LA57_0 = input.LA(1);
 
@@ -12484,27 +12574,27 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     switch (alt57) {
                         case 1 :
-                            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4802:2: otherlv_59= KEYWORD_8 ( (lv_fromIndex_60_0= ruleConditionalOrExpression ) )
+                            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4892:2: otherlv_47= KEYWORD_8 ( (lv_fromIndex_48_0= ruleConditionalOrExpression ) )
                             {
-                            otherlv_59=(Token)match(input,KEYWORD_8,FOLLOW_KEYWORD_8_in_ruleMethodExpression9372); if (state.failed) return current;
+                            otherlv_47=(Token)match(input,KEYWORD_8,FOLLOW_KEYWORD_8_in_ruleMethodExpression9642); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
-                                  	newLeafNode(otherlv_59, grammarAccess.getMethodExpressionAccess().getCommaKeyword_11_4_0());
+                                  	newLeafNode(otherlv_47, grammarAccess.getMethodExpressionAccess().getCommaKeyword_11_3_0());
                                   
                             }
-                            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4806:1: ( (lv_fromIndex_60_0= ruleConditionalOrExpression ) )
-                            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4807:1: (lv_fromIndex_60_0= ruleConditionalOrExpression )
+                            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4896:1: ( (lv_fromIndex_48_0= ruleConditionalOrExpression ) )
+                            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4897:1: (lv_fromIndex_48_0= ruleConditionalOrExpression )
                             {
-                            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4807:1: (lv_fromIndex_60_0= ruleConditionalOrExpression )
-                            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4808:3: lv_fromIndex_60_0= ruleConditionalOrExpression
+                            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4897:1: (lv_fromIndex_48_0= ruleConditionalOrExpression )
+                            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4898:3: lv_fromIndex_48_0= ruleConditionalOrExpression
                             {
                             if ( state.backtracking==0 ) {
                                
-                              	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getFromIndexConditionalOrExpressionParserRuleCall_11_4_1_0()); 
+                              	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getFromIndexConditionalOrExpressionParserRuleCall_11_3_1_0()); 
                               	    
                             }
-                            pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression9392);
-                            lv_fromIndex_60_0=ruleConditionalOrExpression();
+                            pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression9662);
+                            lv_fromIndex_48_0=ruleConditionalOrExpression();
 
                             state._fsp--;
                             if (state.failed) return current;
@@ -12516,7 +12606,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                                      		set(
                                      			current, 
                                      			"fromIndex",
-                                      		lv_fromIndex_60_0, 
+                                      		lv_fromIndex_48_0, 
                                       		"ConditionalOrExpression");
                               	        afterParserOrEnumRuleCall();
                               	    
@@ -12533,10 +12623,10 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_61=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression9407); if (state.failed) return current;
+                    otherlv_49=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression9677); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_61, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_11_5());
+                          	newLeafNode(otherlv_49, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_11_4());
                           
                     }
 
@@ -12546,45 +12636,47 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 13 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4830:6: ( () otherlv_63= KEYWORD_62 otherlv_64= KEYWORD_4 otherlv_65= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4920:6: ( ( (lv_name_50_0= KEYWORD_62 ) ) otherlv_51= KEYWORD_4 otherlv_52= KEYWORD_5 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4830:6: ( () otherlv_63= KEYWORD_62 otherlv_64= KEYWORD_4 otherlv_65= KEYWORD_5 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4830:7: () otherlv_63= KEYWORD_62 otherlv_64= KEYWORD_4 otherlv_65= KEYWORD_5
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4920:6: ( ( (lv_name_50_0= KEYWORD_62 ) ) otherlv_51= KEYWORD_4 otherlv_52= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4920:7: ( (lv_name_50_0= KEYWORD_62 ) ) otherlv_51= KEYWORD_4 otherlv_52= KEYWORD_5
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4830:7: ()
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4831:2: 
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4920:7: ( (lv_name_50_0= KEYWORD_62 ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4921:1: (lv_name_50_0= KEYWORD_62 )
                     {
-                    if ( state.backtracking==0 ) {
-                       
-                      	  /* */ 
-                      	
-                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4921:1: (lv_name_50_0= KEYWORD_62 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4922:3: lv_name_50_0= KEYWORD_62
+                    {
+                    lv_name_50_0=(Token)match(input,KEYWORD_62,FOLLOW_KEYWORD_62_in_ruleMethodExpression9703); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                              current = forceCreateModelElement(
-                                  grammarAccess.getMethodExpressionAccess().getExpressionAction_12_0(),
-                                  current);
+                              newLeafNode(lv_name_50_0, grammarAccess.getMethodExpressionAccess().getNameLengthKeyword_12_0_0());
                           
                     }
+                    if ( state.backtracking==0 ) {
+
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getMethodExpressionRule());
+                      	        }
+                             		setWithLastConsumed(current, "name", lv_name_50_0, "length");
+                      	    
+                    }
 
                     }
 
-                    otherlv_63=(Token)match(input,KEYWORD_62,FOLLOW_KEYWORD_62_in_ruleMethodExpression9439); if (state.failed) return current;
+
+                    }
+
+                    otherlv_51=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression9727); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_63, grammarAccess.getMethodExpressionAccess().getLengthKeyword_12_1());
+                          	newLeafNode(otherlv_51, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_12_1());
                           
                     }
-                    otherlv_64=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression9451); if (state.failed) return current;
+                    otherlv_52=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression9739); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_64, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_12_2());
-                          
-                    }
-                    otherlv_65=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression9463); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_65, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_12_3());
+                          	newLeafNode(otherlv_52, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_12_2());
                           
                     }
 
@@ -12594,54 +12686,56 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 14 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4855:6: ( () otherlv_67= KEYWORD_69 otherlv_68= KEYWORD_4 ( (lv_regex_69_0= ruleConditionalOrExpression ) ) otherlv_70= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4947:6: ( ( (lv_name_53_0= KEYWORD_69 ) ) otherlv_54= KEYWORD_4 ( (lv_regex_55_0= ruleConditionalOrExpression ) ) otherlv_56= KEYWORD_5 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4855:6: ( () otherlv_67= KEYWORD_69 otherlv_68= KEYWORD_4 ( (lv_regex_69_0= ruleConditionalOrExpression ) ) otherlv_70= KEYWORD_5 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4855:7: () otherlv_67= KEYWORD_69 otherlv_68= KEYWORD_4 ( (lv_regex_69_0= ruleConditionalOrExpression ) ) otherlv_70= KEYWORD_5
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4947:6: ( ( (lv_name_53_0= KEYWORD_69 ) ) otherlv_54= KEYWORD_4 ( (lv_regex_55_0= ruleConditionalOrExpression ) ) otherlv_56= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4947:7: ( (lv_name_53_0= KEYWORD_69 ) ) otherlv_54= KEYWORD_4 ( (lv_regex_55_0= ruleConditionalOrExpression ) ) otherlv_56= KEYWORD_5
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4855:7: ()
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4856:2: 
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4947:7: ( (lv_name_53_0= KEYWORD_69 ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4948:1: (lv_name_53_0= KEYWORD_69 )
                     {
-                    if ( state.backtracking==0 ) {
-                       
-                      	  /* */ 
-                      	
-                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4948:1: (lv_name_53_0= KEYWORD_69 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4949:3: lv_name_53_0= KEYWORD_69
+                    {
+                    lv_name_53_0=(Token)match(input,KEYWORD_69,FOLLOW_KEYWORD_69_in_ruleMethodExpression9765); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                              current = forceCreateModelElement(
-                                  grammarAccess.getMethodExpressionAccess().getExpressionAction_13_0(),
-                                  current);
+                              newLeafNode(lv_name_53_0, grammarAccess.getMethodExpressionAccess().getNameMatchesKeyword_13_0_0());
                           
                     }
-
-                    }
-
-                    otherlv_67=(Token)match(input,KEYWORD_69,FOLLOW_KEYWORD_69_in_ruleMethodExpression9495); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_67, grammarAccess.getMethodExpressionAccess().getMatchesKeyword_13_1());
-                          
-                    }
-                    otherlv_68=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression9507); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_68, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_13_2());
-                          
-                    }
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4874:1: ( (lv_regex_69_0= ruleConditionalOrExpression ) )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4875:1: (lv_regex_69_0= ruleConditionalOrExpression )
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4875:1: (lv_regex_69_0= ruleConditionalOrExpression )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4876:3: lv_regex_69_0= ruleConditionalOrExpression
-                    {
-                    if ( state.backtracking==0 ) {
-                       
-                      	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getRegexConditionalOrExpressionParserRuleCall_13_3_0()); 
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getMethodExpressionRule());
+                      	        }
+                             		setWithLastConsumed(current, "name", lv_name_53_0, "matches");
                       	    
                     }
-                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression9527);
-                    lv_regex_69_0=ruleConditionalOrExpression();
+
+                    }
+
+
+                    }
+
+                    otherlv_54=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression9789); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_54, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_13_1());
+                          
+                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4968:1: ( (lv_regex_55_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4969:1: (lv_regex_55_0= ruleConditionalOrExpression )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4969:1: (lv_regex_55_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4970:3: lv_regex_55_0= ruleConditionalOrExpression
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getRegexConditionalOrExpressionParserRuleCall_13_2_0()); 
+                      	    
+                    }
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression9809);
+                    lv_regex_55_0=ruleConditionalOrExpression();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -12653,7 +12747,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                              		set(
                              			current, 
                              			"regex",
-                              		lv_regex_69_0, 
+                              		lv_regex_55_0, 
                               		"ConditionalOrExpression");
                       	        afterParserOrEnumRuleCall();
                       	    
@@ -12664,10 +12758,10 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_70=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression9540); if (state.failed) return current;
+                    otherlv_56=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression9822); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_70, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_13_4());
+                          	newLeafNode(otherlv_56, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_13_3());
                           
                     }
 
@@ -12677,54 +12771,56 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 15 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4898:6: ( () otherlv_72= KEYWORD_97 otherlv_73= KEYWORD_4 ( (lv_regex_74_0= ruleConditionalOrExpression ) ) otherlv_75= KEYWORD_8 ( (lv_replacement_76_0= ruleConditionalOrExpression ) ) otherlv_77= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4992:6: ( ( (lv_name_57_0= KEYWORD_97 ) ) otherlv_58= KEYWORD_4 ( (lv_regex_59_0= ruleConditionalOrExpression ) ) otherlv_60= KEYWORD_8 ( (lv_replacement_61_0= ruleConditionalOrExpression ) ) otherlv_62= KEYWORD_5 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4898:6: ( () otherlv_72= KEYWORD_97 otherlv_73= KEYWORD_4 ( (lv_regex_74_0= ruleConditionalOrExpression ) ) otherlv_75= KEYWORD_8 ( (lv_replacement_76_0= ruleConditionalOrExpression ) ) otherlv_77= KEYWORD_5 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4898:7: () otherlv_72= KEYWORD_97 otherlv_73= KEYWORD_4 ( (lv_regex_74_0= ruleConditionalOrExpression ) ) otherlv_75= KEYWORD_8 ( (lv_replacement_76_0= ruleConditionalOrExpression ) ) otherlv_77= KEYWORD_5
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4992:6: ( ( (lv_name_57_0= KEYWORD_97 ) ) otherlv_58= KEYWORD_4 ( (lv_regex_59_0= ruleConditionalOrExpression ) ) otherlv_60= KEYWORD_8 ( (lv_replacement_61_0= ruleConditionalOrExpression ) ) otherlv_62= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4992:7: ( (lv_name_57_0= KEYWORD_97 ) ) otherlv_58= KEYWORD_4 ( (lv_regex_59_0= ruleConditionalOrExpression ) ) otherlv_60= KEYWORD_8 ( (lv_replacement_61_0= ruleConditionalOrExpression ) ) otherlv_62= KEYWORD_5
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4898:7: ()
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4899:2: 
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4992:7: ( (lv_name_57_0= KEYWORD_97 ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4993:1: (lv_name_57_0= KEYWORD_97 )
                     {
-                    if ( state.backtracking==0 ) {
-                       
-                      	  /* */ 
-                      	
-                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4993:1: (lv_name_57_0= KEYWORD_97 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4994:3: lv_name_57_0= KEYWORD_97
+                    {
+                    lv_name_57_0=(Token)match(input,KEYWORD_97,FOLLOW_KEYWORD_97_in_ruleMethodExpression9848); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                              current = forceCreateModelElement(
-                                  grammarAccess.getMethodExpressionAccess().getExpressionAction_14_0(),
-                                  current);
+                              newLeafNode(lv_name_57_0, grammarAccess.getMethodExpressionAccess().getNameReplaceAllKeyword_14_0_0());
                           
                     }
-
-                    }
-
-                    otherlv_72=(Token)match(input,KEYWORD_97,FOLLOW_KEYWORD_97_in_ruleMethodExpression9572); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_72, grammarAccess.getMethodExpressionAccess().getReplaceAllKeyword_14_1());
-                          
-                    }
-                    otherlv_73=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression9584); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_73, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_14_2());
-                          
-                    }
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4917:1: ( (lv_regex_74_0= ruleConditionalOrExpression ) )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4918:1: (lv_regex_74_0= ruleConditionalOrExpression )
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4918:1: (lv_regex_74_0= ruleConditionalOrExpression )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4919:3: lv_regex_74_0= ruleConditionalOrExpression
-                    {
-                    if ( state.backtracking==0 ) {
-                       
-                      	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getRegexConditionalOrExpressionParserRuleCall_14_3_0()); 
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getMethodExpressionRule());
+                      	        }
+                             		setWithLastConsumed(current, "name", lv_name_57_0, "replaceAll");
                       	    
                     }
-                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression9604);
-                    lv_regex_74_0=ruleConditionalOrExpression();
+
+                    }
+
+
+                    }
+
+                    otherlv_58=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression9872); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_58, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_14_1());
+                          
+                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5013:1: ( (lv_regex_59_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5014:1: (lv_regex_59_0= ruleConditionalOrExpression )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5014:1: (lv_regex_59_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5015:3: lv_regex_59_0= ruleConditionalOrExpression
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getRegexConditionalOrExpressionParserRuleCall_14_2_0()); 
+                      	    
+                    }
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression9892);
+                    lv_regex_59_0=ruleConditionalOrExpression();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -12736,7 +12832,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                              		set(
                              			current, 
                              			"regex",
-                              		lv_regex_74_0, 
+                              		lv_regex_59_0, 
                               		"ConditionalOrExpression");
                       	        afterParserOrEnumRuleCall();
                       	    
@@ -12747,25 +12843,25 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_75=(Token)match(input,KEYWORD_8,FOLLOW_KEYWORD_8_in_ruleMethodExpression9617); if (state.failed) return current;
+                    otherlv_60=(Token)match(input,KEYWORD_8,FOLLOW_KEYWORD_8_in_ruleMethodExpression9905); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_75, grammarAccess.getMethodExpressionAccess().getCommaKeyword_14_4());
+                          	newLeafNode(otherlv_60, grammarAccess.getMethodExpressionAccess().getCommaKeyword_14_3());
                           
                     }
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4940:1: ( (lv_replacement_76_0= ruleConditionalOrExpression ) )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4941:1: (lv_replacement_76_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5036:1: ( (lv_replacement_61_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5037:1: (lv_replacement_61_0= ruleConditionalOrExpression )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4941:1: (lv_replacement_76_0= ruleConditionalOrExpression )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4942:3: lv_replacement_76_0= ruleConditionalOrExpression
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5037:1: (lv_replacement_61_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5038:3: lv_replacement_61_0= ruleConditionalOrExpression
                     {
                     if ( state.backtracking==0 ) {
                        
-                      	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getReplacementConditionalOrExpressionParserRuleCall_14_5_0()); 
+                      	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getReplacementConditionalOrExpressionParserRuleCall_14_4_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression9637);
-                    lv_replacement_76_0=ruleConditionalOrExpression();
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression9925);
+                    lv_replacement_61_0=ruleConditionalOrExpression();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -12777,7 +12873,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                              		set(
                              			current, 
                              			"replacement",
-                              		lv_replacement_76_0, 
+                              		lv_replacement_61_0, 
                               		"ConditionalOrExpression");
                       	        afterParserOrEnumRuleCall();
                       	    
@@ -12788,10 +12884,10 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_77=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression9650); if (state.failed) return current;
+                    otherlv_62=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression9938); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_77, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_14_6());
+                          	newLeafNode(otherlv_62, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_14_5());
                           
                     }
 
@@ -12801,54 +12897,56 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 16 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4964:6: ( () otherlv_79= KEYWORD_98 otherlv_80= KEYWORD_4 ( (lv_string_81_0= ruleConditionalOrExpression ) ) otherlv_82= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5060:6: ( ( (lv_name_63_0= KEYWORD_98 ) ) otherlv_64= KEYWORD_4 ( (lv_string_65_0= ruleConditionalOrExpression ) ) otherlv_66= KEYWORD_5 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4964:6: ( () otherlv_79= KEYWORD_98 otherlv_80= KEYWORD_4 ( (lv_string_81_0= ruleConditionalOrExpression ) ) otherlv_82= KEYWORD_5 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4964:7: () otherlv_79= KEYWORD_98 otherlv_80= KEYWORD_4 ( (lv_string_81_0= ruleConditionalOrExpression ) ) otherlv_82= KEYWORD_5
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5060:6: ( ( (lv_name_63_0= KEYWORD_98 ) ) otherlv_64= KEYWORD_4 ( (lv_string_65_0= ruleConditionalOrExpression ) ) otherlv_66= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5060:7: ( (lv_name_63_0= KEYWORD_98 ) ) otherlv_64= KEYWORD_4 ( (lv_string_65_0= ruleConditionalOrExpression ) ) otherlv_66= KEYWORD_5
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4964:7: ()
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4965:2: 
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5060:7: ( (lv_name_63_0= KEYWORD_98 ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5061:1: (lv_name_63_0= KEYWORD_98 )
                     {
-                    if ( state.backtracking==0 ) {
-                       
-                      	  /* */ 
-                      	
-                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5061:1: (lv_name_63_0= KEYWORD_98 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5062:3: lv_name_63_0= KEYWORD_98
+                    {
+                    lv_name_63_0=(Token)match(input,KEYWORD_98,FOLLOW_KEYWORD_98_in_ruleMethodExpression9964); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                              current = forceCreateModelElement(
-                                  grammarAccess.getMethodExpressionAccess().getExpressionAction_15_0(),
-                                  current);
+                              newLeafNode(lv_name_63_0, grammarAccess.getMethodExpressionAccess().getNameStartsWithKeyword_15_0_0());
                           
                     }
-
-                    }
-
-                    otherlv_79=(Token)match(input,KEYWORD_98,FOLLOW_KEYWORD_98_in_ruleMethodExpression9682); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_79, grammarAccess.getMethodExpressionAccess().getStartsWithKeyword_15_1());
-                          
-                    }
-                    otherlv_80=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression9694); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_80, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_15_2());
-                          
-                    }
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4983:1: ( (lv_string_81_0= ruleConditionalOrExpression ) )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4984:1: (lv_string_81_0= ruleConditionalOrExpression )
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4984:1: (lv_string_81_0= ruleConditionalOrExpression )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:4985:3: lv_string_81_0= ruleConditionalOrExpression
-                    {
-                    if ( state.backtracking==0 ) {
-                       
-                      	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getStringConditionalOrExpressionParserRuleCall_15_3_0()); 
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getMethodExpressionRule());
+                      	        }
+                             		setWithLastConsumed(current, "name", lv_name_63_0, "startsWith");
                       	    
                     }
-                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression9714);
-                    lv_string_81_0=ruleConditionalOrExpression();
+
+                    }
+
+
+                    }
+
+                    otherlv_64=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression9988); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_64, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_15_1());
+                          
+                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5081:1: ( (lv_string_65_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5082:1: (lv_string_65_0= ruleConditionalOrExpression )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5082:1: (lv_string_65_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5083:3: lv_string_65_0= ruleConditionalOrExpression
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getStringConditionalOrExpressionParserRuleCall_15_2_0()); 
+                      	    
+                    }
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression10008);
+                    lv_string_65_0=ruleConditionalOrExpression();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -12860,7 +12958,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                              		set(
                              			current, 
                              			"string",
-                              		lv_string_81_0, 
+                              		lv_string_65_0, 
                               		"ConditionalOrExpression");
                       	        afterParserOrEnumRuleCall();
                       	    
@@ -12871,10 +12969,10 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_82=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression9727); if (state.failed) return current;
+                    otherlv_66=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression10021); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_82, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_15_4());
+                          	newLeafNode(otherlv_66, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_15_3());
                           
                     }
 
@@ -12884,54 +12982,56 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 17 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5007:6: ( () otherlv_84= KEYWORD_91 otherlv_85= KEYWORD_4 ( (lv_beginIndex_86_0= ruleConditionalOrExpression ) ) (otherlv_87= KEYWORD_8 ( (lv_endIndex_88_0= ruleConditionalOrExpression ) ) )? otherlv_89= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5105:6: ( ( (lv_name_67_0= KEYWORD_91 ) ) otherlv_68= KEYWORD_4 ( (lv_beginIndex_69_0= ruleConditionalOrExpression ) ) (otherlv_70= KEYWORD_8 ( (lv_endIndex_71_0= ruleConditionalOrExpression ) ) )? otherlv_72= KEYWORD_5 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5007:6: ( () otherlv_84= KEYWORD_91 otherlv_85= KEYWORD_4 ( (lv_beginIndex_86_0= ruleConditionalOrExpression ) ) (otherlv_87= KEYWORD_8 ( (lv_endIndex_88_0= ruleConditionalOrExpression ) ) )? otherlv_89= KEYWORD_5 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5007:7: () otherlv_84= KEYWORD_91 otherlv_85= KEYWORD_4 ( (lv_beginIndex_86_0= ruleConditionalOrExpression ) ) (otherlv_87= KEYWORD_8 ( (lv_endIndex_88_0= ruleConditionalOrExpression ) ) )? otherlv_89= KEYWORD_5
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5105:6: ( ( (lv_name_67_0= KEYWORD_91 ) ) otherlv_68= KEYWORD_4 ( (lv_beginIndex_69_0= ruleConditionalOrExpression ) ) (otherlv_70= KEYWORD_8 ( (lv_endIndex_71_0= ruleConditionalOrExpression ) ) )? otherlv_72= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5105:7: ( (lv_name_67_0= KEYWORD_91 ) ) otherlv_68= KEYWORD_4 ( (lv_beginIndex_69_0= ruleConditionalOrExpression ) ) (otherlv_70= KEYWORD_8 ( (lv_endIndex_71_0= ruleConditionalOrExpression ) ) )? otherlv_72= KEYWORD_5
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5007:7: ()
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5008:2: 
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5105:7: ( (lv_name_67_0= KEYWORD_91 ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5106:1: (lv_name_67_0= KEYWORD_91 )
                     {
-                    if ( state.backtracking==0 ) {
-                       
-                      	  /* */ 
-                      	
-                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5106:1: (lv_name_67_0= KEYWORD_91 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5107:3: lv_name_67_0= KEYWORD_91
+                    {
+                    lv_name_67_0=(Token)match(input,KEYWORD_91,FOLLOW_KEYWORD_91_in_ruleMethodExpression10047); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                              current = forceCreateModelElement(
-                                  grammarAccess.getMethodExpressionAccess().getExpressionAction_16_0(),
-                                  current);
+                              newLeafNode(lv_name_67_0, grammarAccess.getMethodExpressionAccess().getNameSubstringKeyword_16_0_0());
                           
                     }
-
-                    }
-
-                    otherlv_84=(Token)match(input,KEYWORD_91,FOLLOW_KEYWORD_91_in_ruleMethodExpression9759); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_84, grammarAccess.getMethodExpressionAccess().getSubstringKeyword_16_1());
-                          
-                    }
-                    otherlv_85=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression9771); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_85, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_16_2());
-                          
-                    }
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5026:1: ( (lv_beginIndex_86_0= ruleConditionalOrExpression ) )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5027:1: (lv_beginIndex_86_0= ruleConditionalOrExpression )
-                    {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5027:1: (lv_beginIndex_86_0= ruleConditionalOrExpression )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5028:3: lv_beginIndex_86_0= ruleConditionalOrExpression
-                    {
-                    if ( state.backtracking==0 ) {
-                       
-                      	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getBeginIndexConditionalOrExpressionParserRuleCall_16_3_0()); 
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getMethodExpressionRule());
+                      	        }
+                             		setWithLastConsumed(current, "name", lv_name_67_0, "substring");
                       	    
                     }
-                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression9791);
-                    lv_beginIndex_86_0=ruleConditionalOrExpression();
+
+                    }
+
+
+                    }
+
+                    otherlv_68=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression10071); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_68, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_16_1());
+                          
+                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5126:1: ( (lv_beginIndex_69_0= ruleConditionalOrExpression ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5127:1: (lv_beginIndex_69_0= ruleConditionalOrExpression )
+                    {
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5127:1: (lv_beginIndex_69_0= ruleConditionalOrExpression )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5128:3: lv_beginIndex_69_0= ruleConditionalOrExpression
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getBeginIndexConditionalOrExpressionParserRuleCall_16_2_0()); 
+                      	    
+                    }
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression10091);
+                    lv_beginIndex_69_0=ruleConditionalOrExpression();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -12943,7 +13043,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                              		set(
                              			current, 
                              			"beginIndex",
-                              		lv_beginIndex_86_0, 
+                              		lv_beginIndex_69_0, 
                               		"ConditionalOrExpression");
                       	        afterParserOrEnumRuleCall();
                       	    
@@ -12954,7 +13054,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5044:2: (otherlv_87= KEYWORD_8 ( (lv_endIndex_88_0= ruleConditionalOrExpression ) ) )?
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5144:2: (otherlv_70= KEYWORD_8 ( (lv_endIndex_71_0= ruleConditionalOrExpression ) ) )?
                     int alt58=2;
                     int LA58_0 = input.LA(1);
 
@@ -12963,27 +13063,27 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     switch (alt58) {
                         case 1 :
-                            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5045:2: otherlv_87= KEYWORD_8 ( (lv_endIndex_88_0= ruleConditionalOrExpression ) )
+                            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5145:2: otherlv_70= KEYWORD_8 ( (lv_endIndex_71_0= ruleConditionalOrExpression ) )
                             {
-                            otherlv_87=(Token)match(input,KEYWORD_8,FOLLOW_KEYWORD_8_in_ruleMethodExpression9805); if (state.failed) return current;
+                            otherlv_70=(Token)match(input,KEYWORD_8,FOLLOW_KEYWORD_8_in_ruleMethodExpression10105); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
-                                  	newLeafNode(otherlv_87, grammarAccess.getMethodExpressionAccess().getCommaKeyword_16_4_0());
+                                  	newLeafNode(otherlv_70, grammarAccess.getMethodExpressionAccess().getCommaKeyword_16_3_0());
                                   
                             }
-                            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5049:1: ( (lv_endIndex_88_0= ruleConditionalOrExpression ) )
-                            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5050:1: (lv_endIndex_88_0= ruleConditionalOrExpression )
+                            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5149:1: ( (lv_endIndex_71_0= ruleConditionalOrExpression ) )
+                            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5150:1: (lv_endIndex_71_0= ruleConditionalOrExpression )
                             {
-                            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5050:1: (lv_endIndex_88_0= ruleConditionalOrExpression )
-                            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5051:3: lv_endIndex_88_0= ruleConditionalOrExpression
+                            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5150:1: (lv_endIndex_71_0= ruleConditionalOrExpression )
+                            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5151:3: lv_endIndex_71_0= ruleConditionalOrExpression
                             {
                             if ( state.backtracking==0 ) {
                                
-                              	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getEndIndexConditionalOrExpressionParserRuleCall_16_4_1_0()); 
+                              	        newCompositeNode(grammarAccess.getMethodExpressionAccess().getEndIndexConditionalOrExpressionParserRuleCall_16_3_1_0()); 
                               	    
                             }
-                            pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression9825);
-                            lv_endIndex_88_0=ruleConditionalOrExpression();
+                            pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression10125);
+                            lv_endIndex_71_0=ruleConditionalOrExpression();
 
                             state._fsp--;
                             if (state.failed) return current;
@@ -12995,7 +13095,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                                      		set(
                                      			current, 
                                      			"endIndex",
-                                      		lv_endIndex_88_0, 
+                                      		lv_endIndex_71_0, 
                                       		"ConditionalOrExpression");
                               	        afterParserOrEnumRuleCall();
                               	    
@@ -13012,10 +13112,10 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_89=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression9840); if (state.failed) return current;
+                    otherlv_72=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression10140); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_89, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_16_5());
+                          	newLeafNode(otherlv_72, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_16_4());
                           
                     }
 
@@ -13025,45 +13125,47 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 18 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5073:6: ( () otherlv_91= KEYWORD_100 otherlv_92= KEYWORD_4 otherlv_93= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5173:6: ( ( (lv_name_73_0= KEYWORD_100 ) ) otherlv_74= KEYWORD_4 otherlv_75= KEYWORD_5 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5073:6: ( () otherlv_91= KEYWORD_100 otherlv_92= KEYWORD_4 otherlv_93= KEYWORD_5 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5073:7: () otherlv_91= KEYWORD_100 otherlv_92= KEYWORD_4 otherlv_93= KEYWORD_5
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5173:6: ( ( (lv_name_73_0= KEYWORD_100 ) ) otherlv_74= KEYWORD_4 otherlv_75= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5173:7: ( (lv_name_73_0= KEYWORD_100 ) ) otherlv_74= KEYWORD_4 otherlv_75= KEYWORD_5
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5073:7: ()
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5074:2: 
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5173:7: ( (lv_name_73_0= KEYWORD_100 ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5174:1: (lv_name_73_0= KEYWORD_100 )
                     {
-                    if ( state.backtracking==0 ) {
-                       
-                      	  /* */ 
-                      	
-                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5174:1: (lv_name_73_0= KEYWORD_100 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5175:3: lv_name_73_0= KEYWORD_100
+                    {
+                    lv_name_73_0=(Token)match(input,KEYWORD_100,FOLLOW_KEYWORD_100_in_ruleMethodExpression10166); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                              current = forceCreateModelElement(
-                                  grammarAccess.getMethodExpressionAccess().getExpressionAction_17_0(),
-                                  current);
+                              newLeafNode(lv_name_73_0, grammarAccess.getMethodExpressionAccess().getNameToLowerCaseKeyword_17_0_0());
                           
                     }
+                    if ( state.backtracking==0 ) {
+
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getMethodExpressionRule());
+                      	        }
+                             		setWithLastConsumed(current, "name", lv_name_73_0, "toLowerCase");
+                      	    
+                    }
 
                     }
 
-                    otherlv_91=(Token)match(input,KEYWORD_100,FOLLOW_KEYWORD_100_in_ruleMethodExpression9872); if (state.failed) return current;
+
+                    }
+
+                    otherlv_74=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression10190); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_91, grammarAccess.getMethodExpressionAccess().getToLowerCaseKeyword_17_1());
+                          	newLeafNode(otherlv_74, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_17_1());
                           
                     }
-                    otherlv_92=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression9884); if (state.failed) return current;
+                    otherlv_75=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression10202); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_92, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_17_2());
-                          
-                    }
-                    otherlv_93=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression9896); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_93, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_17_3());
+                          	newLeafNode(otherlv_75, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_17_2());
                           
                     }
 
@@ -13073,45 +13175,47 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 19 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5098:6: ( () otherlv_95= KEYWORD_101 otherlv_96= KEYWORD_4 otherlv_97= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5200:6: ( ( (lv_name_76_0= KEYWORD_101 ) ) otherlv_77= KEYWORD_4 otherlv_78= KEYWORD_5 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5098:6: ( () otherlv_95= KEYWORD_101 otherlv_96= KEYWORD_4 otherlv_97= KEYWORD_5 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5098:7: () otherlv_95= KEYWORD_101 otherlv_96= KEYWORD_4 otherlv_97= KEYWORD_5
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5200:6: ( ( (lv_name_76_0= KEYWORD_101 ) ) otherlv_77= KEYWORD_4 otherlv_78= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5200:7: ( (lv_name_76_0= KEYWORD_101 ) ) otherlv_77= KEYWORD_4 otherlv_78= KEYWORD_5
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5098:7: ()
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5099:2: 
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5200:7: ( (lv_name_76_0= KEYWORD_101 ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5201:1: (lv_name_76_0= KEYWORD_101 )
                     {
-                    if ( state.backtracking==0 ) {
-                       
-                      	  /* */ 
-                      	
-                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5201:1: (lv_name_76_0= KEYWORD_101 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5202:3: lv_name_76_0= KEYWORD_101
+                    {
+                    lv_name_76_0=(Token)match(input,KEYWORD_101,FOLLOW_KEYWORD_101_in_ruleMethodExpression10228); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                              current = forceCreateModelElement(
-                                  grammarAccess.getMethodExpressionAccess().getExpressionAction_18_0(),
-                                  current);
+                              newLeafNode(lv_name_76_0, grammarAccess.getMethodExpressionAccess().getNameToUpperCaseKeyword_18_0_0());
                           
                     }
+                    if ( state.backtracking==0 ) {
+
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getMethodExpressionRule());
+                      	        }
+                             		setWithLastConsumed(current, "name", lv_name_76_0, "toUpperCase");
+                      	    
+                    }
 
                     }
 
-                    otherlv_95=(Token)match(input,KEYWORD_101,FOLLOW_KEYWORD_101_in_ruleMethodExpression9928); if (state.failed) return current;
+
+                    }
+
+                    otherlv_77=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression10252); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_95, grammarAccess.getMethodExpressionAccess().getToUpperCaseKeyword_18_1());
+                          	newLeafNode(otherlv_77, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_18_1());
                           
                     }
-                    otherlv_96=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression9940); if (state.failed) return current;
+                    otherlv_78=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression10264); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_96, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_18_2());
-                          
-                    }
-                    otherlv_97=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression9952); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_97, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_18_3());
+                          	newLeafNode(otherlv_78, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_18_2());
                           
                     }
 
@@ -13121,45 +13225,47 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 20 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5123:6: ( () otherlv_99= KEYWORD_42 otherlv_100= KEYWORD_4 otherlv_101= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5227:6: ( ( (lv_name_79_0= KEYWORD_42 ) ) otherlv_80= KEYWORD_4 otherlv_81= KEYWORD_5 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5123:6: ( () otherlv_99= KEYWORD_42 otherlv_100= KEYWORD_4 otherlv_101= KEYWORD_5 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5123:7: () otherlv_99= KEYWORD_42 otherlv_100= KEYWORD_4 otherlv_101= KEYWORD_5
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5227:6: ( ( (lv_name_79_0= KEYWORD_42 ) ) otherlv_80= KEYWORD_4 otherlv_81= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5227:7: ( (lv_name_79_0= KEYWORD_42 ) ) otherlv_80= KEYWORD_4 otherlv_81= KEYWORD_5
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5123:7: ()
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5124:2: 
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5227:7: ( (lv_name_79_0= KEYWORD_42 ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5228:1: (lv_name_79_0= KEYWORD_42 )
                     {
-                    if ( state.backtracking==0 ) {
-                       
-                      	  /* */ 
-                      	
-                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5228:1: (lv_name_79_0= KEYWORD_42 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5229:3: lv_name_79_0= KEYWORD_42
+                    {
+                    lv_name_79_0=(Token)match(input,KEYWORD_42,FOLLOW_KEYWORD_42_in_ruleMethodExpression10290); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                              current = forceCreateModelElement(
-                                  grammarAccess.getMethodExpressionAccess().getExpressionAction_19_0(),
-                                  current);
+                              newLeafNode(lv_name_79_0, grammarAccess.getMethodExpressionAccess().getNameTrimKeyword_19_0_0());
                           
                     }
+                    if ( state.backtracking==0 ) {
+
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getMethodExpressionRule());
+                      	        }
+                             		setWithLastConsumed(current, "name", lv_name_79_0, "trim");
+                      	    
+                    }
 
                     }
 
-                    otherlv_99=(Token)match(input,KEYWORD_42,FOLLOW_KEYWORD_42_in_ruleMethodExpression9984); if (state.failed) return current;
+
+                    }
+
+                    otherlv_80=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression10314); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_99, grammarAccess.getMethodExpressionAccess().getTrimKeyword_19_1());
+                          	newLeafNode(otherlv_80, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_19_1());
                           
                     }
-                    otherlv_100=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression9996); if (state.failed) return current;
+                    otherlv_81=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression10326); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_100, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_19_2());
-                          
-                    }
-                    otherlv_101=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression10008); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_101, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_19_3());
+                          	newLeafNode(otherlv_81, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_19_2());
                           
                     }
 
@@ -13169,45 +13275,47 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 21 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5148:6: ( () otherlv_103= KEYWORD_59 otherlv_104= KEYWORD_4 otherlv_105= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5254:6: ( ( (lv_name_82_0= KEYWORD_59 ) ) otherlv_83= KEYWORD_4 otherlv_84= KEYWORD_5 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5148:6: ( () otherlv_103= KEYWORD_59 otherlv_104= KEYWORD_4 otherlv_105= KEYWORD_5 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5148:7: () otherlv_103= KEYWORD_59 otherlv_104= KEYWORD_4 otherlv_105= KEYWORD_5
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5254:6: ( ( (lv_name_82_0= KEYWORD_59 ) ) otherlv_83= KEYWORD_4 otherlv_84= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5254:7: ( (lv_name_82_0= KEYWORD_59 ) ) otherlv_83= KEYWORD_4 otherlv_84= KEYWORD_5
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5148:7: ()
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5149:2: 
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5254:7: ( (lv_name_82_0= KEYWORD_59 ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5255:1: (lv_name_82_0= KEYWORD_59 )
                     {
-                    if ( state.backtracking==0 ) {
-                       
-                      	  /* */ 
-                      	
-                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5255:1: (lv_name_82_0= KEYWORD_59 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5256:3: lv_name_82_0= KEYWORD_59
+                    {
+                    lv_name_82_0=(Token)match(input,KEYWORD_59,FOLLOW_KEYWORD_59_in_ruleMethodExpression10352); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                              current = forceCreateModelElement(
-                                  grammarAccess.getMethodExpressionAccess().getExpressionAction_20_0(),
-                                  current);
+                              newLeafNode(lv_name_82_0, grammarAccess.getMethodExpressionAccess().getNameGetDayKeyword_20_0_0());
                           
                     }
+                    if ( state.backtracking==0 ) {
+
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getMethodExpressionRule());
+                      	        }
+                             		setWithLastConsumed(current, "name", lv_name_82_0, "getDay");
+                      	    
+                    }
 
                     }
 
-                    otherlv_103=(Token)match(input,KEYWORD_59,FOLLOW_KEYWORD_59_in_ruleMethodExpression10040); if (state.failed) return current;
+
+                    }
+
+                    otherlv_83=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression10376); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_103, grammarAccess.getMethodExpressionAccess().getGetDayKeyword_20_1());
+                          	newLeafNode(otherlv_83, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_20_1());
                           
                     }
-                    otherlv_104=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression10052); if (state.failed) return current;
+                    otherlv_84=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression10388); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_104, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_20_2());
-                          
-                    }
-                    otherlv_105=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression10064); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_105, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_20_3());
+                          	newLeafNode(otherlv_84, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_20_2());
                           
                     }
 
@@ -13217,45 +13325,47 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 22 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5173:6: ( () otherlv_107= KEYWORD_80 otherlv_108= KEYWORD_4 otherlv_109= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5281:6: ( ( (lv_name_85_0= KEYWORD_80 ) ) otherlv_86= KEYWORD_4 otherlv_87= KEYWORD_5 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5173:6: ( () otherlv_107= KEYWORD_80 otherlv_108= KEYWORD_4 otherlv_109= KEYWORD_5 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5173:7: () otherlv_107= KEYWORD_80 otherlv_108= KEYWORD_4 otherlv_109= KEYWORD_5
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5281:6: ( ( (lv_name_85_0= KEYWORD_80 ) ) otherlv_86= KEYWORD_4 otherlv_87= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5281:7: ( (lv_name_85_0= KEYWORD_80 ) ) otherlv_86= KEYWORD_4 otherlv_87= KEYWORD_5
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5173:7: ()
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5174:2: 
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5281:7: ( (lv_name_85_0= KEYWORD_80 ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5282:1: (lv_name_85_0= KEYWORD_80 )
                     {
-                    if ( state.backtracking==0 ) {
-                       
-                      	  /* */ 
-                      	
-                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5282:1: (lv_name_85_0= KEYWORD_80 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5283:3: lv_name_85_0= KEYWORD_80
+                    {
+                    lv_name_85_0=(Token)match(input,KEYWORD_80,FOLLOW_KEYWORD_80_in_ruleMethodExpression10414); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                              current = forceCreateModelElement(
-                                  grammarAccess.getMethodExpressionAccess().getExpressionAction_21_0(),
-                                  current);
+                              newLeafNode(lv_name_85_0, grammarAccess.getMethodExpressionAccess().getNameGetMonthKeyword_21_0_0());
                           
                     }
+                    if ( state.backtracking==0 ) {
+
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getMethodExpressionRule());
+                      	        }
+                             		setWithLastConsumed(current, "name", lv_name_85_0, "getMonth");
+                      	    
+                    }
 
                     }
 
-                    otherlv_107=(Token)match(input,KEYWORD_80,FOLLOW_KEYWORD_80_in_ruleMethodExpression10096); if (state.failed) return current;
+
+                    }
+
+                    otherlv_86=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression10438); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_107, grammarAccess.getMethodExpressionAccess().getGetMonthKeyword_21_1());
+                          	newLeafNode(otherlv_86, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_21_1());
                           
                     }
-                    otherlv_108=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression10108); if (state.failed) return current;
+                    otherlv_87=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression10450); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_108, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_21_2());
-                          
-                    }
-                    otherlv_109=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression10120); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_109, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_21_3());
+                          	newLeafNode(otherlv_87, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_21_2());
                           
                     }
 
@@ -13265,45 +13375,47 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 23 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5198:6: ( () otherlv_111= KEYWORD_66 otherlv_112= KEYWORD_4 otherlv_113= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5308:6: ( ( (lv_name_88_0= KEYWORD_66 ) ) otherlv_89= KEYWORD_4 otherlv_90= KEYWORD_5 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5198:6: ( () otherlv_111= KEYWORD_66 otherlv_112= KEYWORD_4 otherlv_113= KEYWORD_5 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5198:7: () otherlv_111= KEYWORD_66 otherlv_112= KEYWORD_4 otherlv_113= KEYWORD_5
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5308:6: ( ( (lv_name_88_0= KEYWORD_66 ) ) otherlv_89= KEYWORD_4 otherlv_90= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5308:7: ( (lv_name_88_0= KEYWORD_66 ) ) otherlv_89= KEYWORD_4 otherlv_90= KEYWORD_5
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5198:7: ()
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5199:2: 
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5308:7: ( (lv_name_88_0= KEYWORD_66 ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5309:1: (lv_name_88_0= KEYWORD_66 )
                     {
-                    if ( state.backtracking==0 ) {
-                       
-                      	  /* */ 
-                      	
-                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5309:1: (lv_name_88_0= KEYWORD_66 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5310:3: lv_name_88_0= KEYWORD_66
+                    {
+                    lv_name_88_0=(Token)match(input,KEYWORD_66,FOLLOW_KEYWORD_66_in_ruleMethodExpression10476); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                              current = forceCreateModelElement(
-                                  grammarAccess.getMethodExpressionAccess().getExpressionAction_22_0(),
-                                  current);
+                              newLeafNode(lv_name_88_0, grammarAccess.getMethodExpressionAccess().getNameGetYearKeyword_22_0_0());
                           
                     }
+                    if ( state.backtracking==0 ) {
+
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getMethodExpressionRule());
+                      	        }
+                             		setWithLastConsumed(current, "name", lv_name_88_0, "getYear");
+                      	    
+                    }
 
                     }
 
-                    otherlv_111=(Token)match(input,KEYWORD_66,FOLLOW_KEYWORD_66_in_ruleMethodExpression10152); if (state.failed) return current;
+
+                    }
+
+                    otherlv_89=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression10500); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_111, grammarAccess.getMethodExpressionAccess().getGetYearKeyword_22_1());
+                          	newLeafNode(otherlv_89, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_22_1());
                           
                     }
-                    otherlv_112=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression10164); if (state.failed) return current;
+                    otherlv_90=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression10512); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_112, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_22_2());
-                          
-                    }
-                    otherlv_113=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression10176); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_113, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_22_3());
+                          	newLeafNode(otherlv_90, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_22_2());
                           
                     }
 
@@ -13313,45 +13425,47 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 24 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5223:6: ( () otherlv_115= KEYWORD_65 otherlv_116= KEYWORD_4 otherlv_117= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5335:6: ( ( (lv_name_91_0= KEYWORD_65 ) ) otherlv_92= KEYWORD_4 otherlv_93= KEYWORD_5 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5223:6: ( () otherlv_115= KEYWORD_65 otherlv_116= KEYWORD_4 otherlv_117= KEYWORD_5 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5223:7: () otherlv_115= KEYWORD_65 otherlv_116= KEYWORD_4 otherlv_117= KEYWORD_5
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5335:6: ( ( (lv_name_91_0= KEYWORD_65 ) ) otherlv_92= KEYWORD_4 otherlv_93= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5335:7: ( (lv_name_91_0= KEYWORD_65 ) ) otherlv_92= KEYWORD_4 otherlv_93= KEYWORD_5
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5223:7: ()
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5224:2: 
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5335:7: ( (lv_name_91_0= KEYWORD_65 ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5336:1: (lv_name_91_0= KEYWORD_65 )
                     {
-                    if ( state.backtracking==0 ) {
-                       
-                      	  /* */ 
-                      	
-                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5336:1: (lv_name_91_0= KEYWORD_65 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5337:3: lv_name_91_0= KEYWORD_65
+                    {
+                    lv_name_91_0=(Token)match(input,KEYWORD_65,FOLLOW_KEYWORD_65_in_ruleMethodExpression10538); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                              current = forceCreateModelElement(
-                                  grammarAccess.getMethodExpressionAccess().getExpressionAction_23_0(),
-                                  current);
+                              newLeafNode(lv_name_91_0, grammarAccess.getMethodExpressionAccess().getNameGetHourKeyword_23_0_0());
                           
                     }
+                    if ( state.backtracking==0 ) {
+
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getMethodExpressionRule());
+                      	        }
+                             		setWithLastConsumed(current, "name", lv_name_91_0, "getHour");
+                      	    
+                    }
 
                     }
 
-                    otherlv_115=(Token)match(input,KEYWORD_65,FOLLOW_KEYWORD_65_in_ruleMethodExpression10208); if (state.failed) return current;
+
+                    }
+
+                    otherlv_92=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression10562); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_115, grammarAccess.getMethodExpressionAccess().getGetHourKeyword_23_1());
+                          	newLeafNode(otherlv_92, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_23_1());
                           
                     }
-                    otherlv_116=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression10220); if (state.failed) return current;
+                    otherlv_93=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression10574); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_116, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_23_2());
-                          
-                    }
-                    otherlv_117=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression10232); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_117, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_23_3());
+                          	newLeafNode(otherlv_93, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_23_2());
                           
                     }
 
@@ -13361,45 +13475,47 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 25 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5248:6: ( () otherlv_119= KEYWORD_89 otherlv_120= KEYWORD_4 otherlv_121= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5362:6: ( ( (lv_name_94_0= KEYWORD_89 ) ) otherlv_95= KEYWORD_4 otherlv_96= KEYWORD_5 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5248:6: ( () otherlv_119= KEYWORD_89 otherlv_120= KEYWORD_4 otherlv_121= KEYWORD_5 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5248:7: () otherlv_119= KEYWORD_89 otherlv_120= KEYWORD_4 otherlv_121= KEYWORD_5
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5362:6: ( ( (lv_name_94_0= KEYWORD_89 ) ) otherlv_95= KEYWORD_4 otherlv_96= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5362:7: ( (lv_name_94_0= KEYWORD_89 ) ) otherlv_95= KEYWORD_4 otherlv_96= KEYWORD_5
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5248:7: ()
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5249:2: 
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5362:7: ( (lv_name_94_0= KEYWORD_89 ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5363:1: (lv_name_94_0= KEYWORD_89 )
                     {
-                    if ( state.backtracking==0 ) {
-                       
-                      	  /* */ 
-                      	
-                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5363:1: (lv_name_94_0= KEYWORD_89 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5364:3: lv_name_94_0= KEYWORD_89
+                    {
+                    lv_name_94_0=(Token)match(input,KEYWORD_89,FOLLOW_KEYWORD_89_in_ruleMethodExpression10600); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                              current = forceCreateModelElement(
-                                  grammarAccess.getMethodExpressionAccess().getExpressionAction_24_0(),
-                                  current);
+                              newLeafNode(lv_name_94_0, grammarAccess.getMethodExpressionAccess().getNameGetMinuteKeyword_24_0_0());
                           
                     }
+                    if ( state.backtracking==0 ) {
+
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getMethodExpressionRule());
+                      	        }
+                             		setWithLastConsumed(current, "name", lv_name_94_0, "getMinute");
+                      	    
+                    }
 
                     }
 
-                    otherlv_119=(Token)match(input,KEYWORD_89,FOLLOW_KEYWORD_89_in_ruleMethodExpression10264); if (state.failed) return current;
+
+                    }
+
+                    otherlv_95=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression10624); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_119, grammarAccess.getMethodExpressionAccess().getGetMinuteKeyword_24_1());
+                          	newLeafNode(otherlv_95, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_24_1());
                           
                     }
-                    otherlv_120=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression10276); if (state.failed) return current;
+                    otherlv_96=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression10636); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_120, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_24_2());
-                          
-                    }
-                    otherlv_121=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression10288); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_121, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_24_3());
+                          	newLeafNode(otherlv_96, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_24_2());
                           
                     }
 
@@ -13409,45 +13525,47 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 26 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5273:6: ( () otherlv_123= KEYWORD_90 otherlv_124= KEYWORD_4 otherlv_125= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5389:6: ( ( (lv_name_97_0= KEYWORD_90 ) ) otherlv_98= KEYWORD_4 otherlv_99= KEYWORD_5 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5273:6: ( () otherlv_123= KEYWORD_90 otherlv_124= KEYWORD_4 otherlv_125= KEYWORD_5 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5273:7: () otherlv_123= KEYWORD_90 otherlv_124= KEYWORD_4 otherlv_125= KEYWORD_5
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5389:6: ( ( (lv_name_97_0= KEYWORD_90 ) ) otherlv_98= KEYWORD_4 otherlv_99= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5389:7: ( (lv_name_97_0= KEYWORD_90 ) ) otherlv_98= KEYWORD_4 otherlv_99= KEYWORD_5
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5273:7: ()
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5274:2: 
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5389:7: ( (lv_name_97_0= KEYWORD_90 ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5390:1: (lv_name_97_0= KEYWORD_90 )
                     {
-                    if ( state.backtracking==0 ) {
-                       
-                      	  /* */ 
-                      	
-                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5390:1: (lv_name_97_0= KEYWORD_90 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5391:3: lv_name_97_0= KEYWORD_90
+                    {
+                    lv_name_97_0=(Token)match(input,KEYWORD_90,FOLLOW_KEYWORD_90_in_ruleMethodExpression10662); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                              current = forceCreateModelElement(
-                                  grammarAccess.getMethodExpressionAccess().getExpressionAction_25_0(),
-                                  current);
+                              newLeafNode(lv_name_97_0, grammarAccess.getMethodExpressionAccess().getNameGetSecondKeyword_25_0_0());
                           
                     }
+                    if ( state.backtracking==0 ) {
+
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getMethodExpressionRule());
+                      	        }
+                             		setWithLastConsumed(current, "name", lv_name_97_0, "getSecond");
+                      	    
+                    }
 
                     }
 
-                    otherlv_123=(Token)match(input,KEYWORD_90,FOLLOW_KEYWORD_90_in_ruleMethodExpression10320); if (state.failed) return current;
+
+                    }
+
+                    otherlv_98=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression10686); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_123, grammarAccess.getMethodExpressionAccess().getGetSecondKeyword_25_1());
+                          	newLeafNode(otherlv_98, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_25_1());
                           
                     }
-                    otherlv_124=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression10332); if (state.failed) return current;
+                    otherlv_99=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression10698); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_124, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_25_2());
-                          
-                    }
-                    otherlv_125=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression10344); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_125, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_25_3());
+                          	newLeafNode(otherlv_99, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_25_2());
                           
                     }
 
@@ -13457,45 +13575,47 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 27 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5298:6: ( () otherlv_127= KEYWORD_70 otherlv_128= KEYWORD_4 otherlv_129= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5416:6: ( ( (lv_name_100_0= KEYWORD_70 ) ) otherlv_101= KEYWORD_4 otherlv_102= KEYWORD_5 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5298:6: ( () otherlv_127= KEYWORD_70 otherlv_128= KEYWORD_4 otherlv_129= KEYWORD_5 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5298:7: () otherlv_127= KEYWORD_70 otherlv_128= KEYWORD_4 otherlv_129= KEYWORD_5
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5416:6: ( ( (lv_name_100_0= KEYWORD_70 ) ) otherlv_101= KEYWORD_4 otherlv_102= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5416:7: ( (lv_name_100_0= KEYWORD_70 ) ) otherlv_101= KEYWORD_4 otherlv_102= KEYWORD_5
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5298:7: ()
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5299:2: 
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5416:7: ( (lv_name_100_0= KEYWORD_70 ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5417:1: (lv_name_100_0= KEYWORD_70 )
                     {
-                    if ( state.backtracking==0 ) {
-                       
-                      	  /* */ 
-                      	
-                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5417:1: (lv_name_100_0= KEYWORD_70 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5418:3: lv_name_100_0= KEYWORD_70
+                    {
+                    lv_name_100_0=(Token)match(input,KEYWORD_70,FOLLOW_KEYWORD_70_in_ruleMethodExpression10724); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                              current = forceCreateModelElement(
-                                  grammarAccess.getMethodExpressionAccess().getExpressionAction_26_0(),
-                                  current);
+                              newLeafNode(lv_name_100_0, grammarAccess.getMethodExpressionAccess().getNameOrdinalKeyword_26_0_0());
                           
                     }
+                    if ( state.backtracking==0 ) {
+
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getMethodExpressionRule());
+                      	        }
+                             		setWithLastConsumed(current, "name", lv_name_100_0, "ordinal");
+                      	    
+                    }
 
                     }
 
-                    otherlv_127=(Token)match(input,KEYWORD_70,FOLLOW_KEYWORD_70_in_ruleMethodExpression10376); if (state.failed) return current;
+
+                    }
+
+                    otherlv_101=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression10748); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_127, grammarAccess.getMethodExpressionAccess().getOrdinalKeyword_26_1());
+                          	newLeafNode(otherlv_101, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_26_1());
                           
                     }
-                    otherlv_128=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression10388); if (state.failed) return current;
+                    otherlv_102=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression10760); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_128, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_26_2());
-                          
-                    }
-                    otherlv_129=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression10400); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_129, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_26_3());
+                          	newLeafNode(otherlv_102, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_26_2());
                           
                     }
 
@@ -13505,45 +13625,47 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 28 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5323:6: ( () otherlv_131= KEYWORD_81 otherlv_132= KEYWORD_4 otherlv_133= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5443:6: ( ( (lv_name_103_0= KEYWORD_81 ) ) otherlv_104= KEYWORD_4 otherlv_105= KEYWORD_5 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5323:6: ( () otherlv_131= KEYWORD_81 otherlv_132= KEYWORD_4 otherlv_133= KEYWORD_5 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5323:7: () otherlv_131= KEYWORD_81 otherlv_132= KEYWORD_4 otherlv_133= KEYWORD_5
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5443:6: ( ( (lv_name_103_0= KEYWORD_81 ) ) otherlv_104= KEYWORD_4 otherlv_105= KEYWORD_5 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5443:7: ( (lv_name_103_0= KEYWORD_81 ) ) otherlv_104= KEYWORD_4 otherlv_105= KEYWORD_5
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5323:7: ()
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5324:2: 
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5443:7: ( (lv_name_103_0= KEYWORD_81 ) )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5444:1: (lv_name_103_0= KEYWORD_81 )
                     {
-                    if ( state.backtracking==0 ) {
-                       
-                      	  /* */ 
-                      	
-                    }
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5444:1: (lv_name_103_0= KEYWORD_81 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5445:3: lv_name_103_0= KEYWORD_81
+                    {
+                    lv_name_103_0=(Token)match(input,KEYWORD_81,FOLLOW_KEYWORD_81_in_ruleMethodExpression10786); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                              current = forceCreateModelElement(
-                                  grammarAccess.getMethodExpressionAccess().getExpressionAction_27_0(),
-                                  current);
+                              newLeafNode(lv_name_103_0, grammarAccess.getMethodExpressionAccess().getNameToStringKeyword_27_0_0());
                           
                     }
+                    if ( state.backtracking==0 ) {
+
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getMethodExpressionRule());
+                      	        }
+                             		setWithLastConsumed(current, "name", lv_name_103_0, "toString");
+                      	    
+                    }
 
                     }
 
-                    otherlv_131=(Token)match(input,KEYWORD_81,FOLLOW_KEYWORD_81_in_ruleMethodExpression10432); if (state.failed) return current;
+
+                    }
+
+                    otherlv_104=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression10810); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_131, grammarAccess.getMethodExpressionAccess().getToStringKeyword_27_1());
+                          	newLeafNode(otherlv_104, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_27_1());
                           
                     }
-                    otherlv_132=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleMethodExpression10444); if (state.failed) return current;
+                    otherlv_105=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression10822); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_132, grammarAccess.getMethodExpressionAccess().getLeftParenthesisKeyword_27_2());
-                          
-                    }
-                    otherlv_133=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleMethodExpression10456); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_133, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_27_3());
+                          	newLeafNode(otherlv_105, grammarAccess.getMethodExpressionAccess().getRightParenthesisKeyword_27_2());
                           
                     }
 
@@ -13575,7 +13697,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleParenthesesExpression"
-    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5355:1: entryRuleParenthesesExpression returns [EObject current=null] : iv_ruleParenthesesExpression= ruleParenthesesExpression EOF ;
+    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5477:1: entryRuleParenthesesExpression returns [EObject current=null] : iv_ruleParenthesesExpression= ruleParenthesesExpression EOF ;
     public final EObject entryRuleParenthesesExpression() throws RecognitionException {
         EObject current = null;
 
@@ -13583,13 +13705,13 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5356:2: (iv_ruleParenthesesExpression= ruleParenthesesExpression EOF )
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5357:2: iv_ruleParenthesesExpression= ruleParenthesesExpression EOF
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5478:2: (iv_ruleParenthesesExpression= ruleParenthesesExpression EOF )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5479:2: iv_ruleParenthesesExpression= ruleParenthesesExpression EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getParenthesesExpressionRule()); 
             }
-            pushFollow(FOLLOW_ruleParenthesesExpression_in_entryRuleParenthesesExpression10491);
+            pushFollow(FOLLOW_ruleParenthesesExpression_in_entryRuleParenthesesExpression10857);
             iv_ruleParenthesesExpression=ruleParenthesesExpression();
 
             state._fsp--;
@@ -13597,7 +13719,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleParenthesesExpression; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleParenthesesExpression10501); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleParenthesesExpression10867); if (state.failed) return current;
 
             }
 
@@ -13615,7 +13737,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleParenthesesExpression"
-    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5364:1: ruleParenthesesExpression returns [EObject current=null] : (otherlv_0= KEYWORD_4 (this_ConditionalOrExpression_1= ruleConditionalOrExpression | this_Subquery_2= ruleSubquery ) otherlv_3= KEYWORD_5 ) ;
+    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5486:1: ruleParenthesesExpression returns [EObject current=null] : (otherlv_0= KEYWORD_4 (this_ConditionalOrExpression_1= ruleConditionalOrExpression | this_Subquery_2= ruleSubquery ) otherlv_3= KEYWORD_5 ) ;
     public final EObject ruleParenthesesExpression() throws RecognitionException {
         EObject current = null;
 
@@ -13629,19 +13751,19 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5367:28: ( (otherlv_0= KEYWORD_4 (this_ConditionalOrExpression_1= ruleConditionalOrExpression | this_Subquery_2= ruleSubquery ) otherlv_3= KEYWORD_5 ) )
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5368:1: (otherlv_0= KEYWORD_4 (this_ConditionalOrExpression_1= ruleConditionalOrExpression | this_Subquery_2= ruleSubquery ) otherlv_3= KEYWORD_5 )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5489:28: ( (otherlv_0= KEYWORD_4 (this_ConditionalOrExpression_1= ruleConditionalOrExpression | this_Subquery_2= ruleSubquery ) otherlv_3= KEYWORD_5 ) )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5490:1: (otherlv_0= KEYWORD_4 (this_ConditionalOrExpression_1= ruleConditionalOrExpression | this_Subquery_2= ruleSubquery ) otherlv_3= KEYWORD_5 )
             {
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5368:1: (otherlv_0= KEYWORD_4 (this_ConditionalOrExpression_1= ruleConditionalOrExpression | this_Subquery_2= ruleSubquery ) otherlv_3= KEYWORD_5 )
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5369:2: otherlv_0= KEYWORD_4 (this_ConditionalOrExpression_1= ruleConditionalOrExpression | this_Subquery_2= ruleSubquery ) otherlv_3= KEYWORD_5
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5490:1: (otherlv_0= KEYWORD_4 (this_ConditionalOrExpression_1= ruleConditionalOrExpression | this_Subquery_2= ruleSubquery ) otherlv_3= KEYWORD_5 )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5491:2: otherlv_0= KEYWORD_4 (this_ConditionalOrExpression_1= ruleConditionalOrExpression | this_Subquery_2= ruleSubquery ) otherlv_3= KEYWORD_5
             {
-            otherlv_0=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleParenthesesExpression10539); if (state.failed) return current;
+            otherlv_0=(Token)match(input,KEYWORD_4,FOLLOW_KEYWORD_4_in_ruleParenthesesExpression10905); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_0, grammarAccess.getParenthesesExpressionAccess().getLeftParenthesisKeyword_0());
                   
             }
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5373:1: (this_ConditionalOrExpression_1= ruleConditionalOrExpression | this_Subquery_2= ruleSubquery )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5495:1: (this_ConditionalOrExpression_1= ruleConditionalOrExpression | this_Subquery_2= ruleSubquery )
             int alt60=2;
             int LA60_0 = input.LA(1);
 
@@ -13660,7 +13782,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
             }
             switch (alt60) {
                 case 1 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5374:2: this_ConditionalOrExpression_1= ruleConditionalOrExpression
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5496:2: this_ConditionalOrExpression_1= ruleConditionalOrExpression
                     {
                     if ( state.backtracking==0 ) {
                        
@@ -13672,7 +13794,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getParenthesesExpressionAccess().getConditionalOrExpressionParserRuleCall_1_0()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleParenthesesExpression10564);
+                    pushFollow(FOLLOW_ruleConditionalOrExpression_in_ruleParenthesesExpression10930);
                     this_ConditionalOrExpression_1=ruleConditionalOrExpression();
 
                     state._fsp--;
@@ -13687,7 +13809,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5387:2: this_Subquery_2= ruleSubquery
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5509:2: this_Subquery_2= ruleSubquery
                     {
                     if ( state.backtracking==0 ) {
                        
@@ -13699,7 +13821,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getParenthesesExpressionAccess().getSubqueryParserRuleCall_1_1()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleSubquery_in_ruleParenthesesExpression10594);
+                    pushFollow(FOLLOW_ruleSubquery_in_ruleParenthesesExpression10960);
                     this_Subquery_2=ruleSubquery();
 
                     state._fsp--;
@@ -13716,7 +13838,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_3=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleParenthesesExpression10607); if (state.failed) return current;
+            otherlv_3=(Token)match(input,KEYWORD_5,FOLLOW_KEYWORD_5_in_ruleParenthesesExpression10973); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_3, grammarAccess.getParenthesesExpressionAccess().getRightParenthesisKeyword_2());
@@ -13745,7 +13867,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleType"
-    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5411:1: entryRuleType returns [String current=null] : iv_ruleType= ruleType EOF ;
+    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5533:1: entryRuleType returns [String current=null] : iv_ruleType= ruleType EOF ;
     public final String entryRuleType() throws RecognitionException {
         String current = null;
 
@@ -13753,13 +13875,13 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5412:1: (iv_ruleType= ruleType EOF )
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5413:2: iv_ruleType= ruleType EOF
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5534:1: (iv_ruleType= ruleType EOF )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5535:2: iv_ruleType= ruleType EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getTypeRule()); 
             }
-            pushFollow(FOLLOW_ruleType_in_entryRuleType10642);
+            pushFollow(FOLLOW_ruleType_in_entryRuleType11008);
             iv_ruleType=ruleType();
 
             state._fsp--;
@@ -13767,7 +13889,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleType.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleType10653); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleType11019); if (state.failed) return current;
 
             }
 
@@ -13785,7 +13907,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleType"
-    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5420:1: ruleType returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_PrimitiveType_0= rulePrimitiveType | this_ClassOrInterfaceName_1= ruleClassOrInterfaceName ) ;
+    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5542:1: ruleType returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_PrimitiveType_0= rulePrimitiveType | this_ClassOrInterfaceName_1= ruleClassOrInterfaceName ) ;
     public final AntlrDatatypeRuleToken ruleType() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -13797,10 +13919,10 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5424:6: ( (this_PrimitiveType_0= rulePrimitiveType | this_ClassOrInterfaceName_1= ruleClassOrInterfaceName ) )
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5425:1: (this_PrimitiveType_0= rulePrimitiveType | this_ClassOrInterfaceName_1= ruleClassOrInterfaceName )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5546:6: ( (this_PrimitiveType_0= rulePrimitiveType | this_ClassOrInterfaceName_1= ruleClassOrInterfaceName ) )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5547:1: (this_PrimitiveType_0= rulePrimitiveType | this_ClassOrInterfaceName_1= ruleClassOrInterfaceName )
             {
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5425:1: (this_PrimitiveType_0= rulePrimitiveType | this_ClassOrInterfaceName_1= ruleClassOrInterfaceName )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5547:1: (this_PrimitiveType_0= rulePrimitiveType | this_ClassOrInterfaceName_1= ruleClassOrInterfaceName )
             int alt61=2;
             int LA61_0 = input.LA(1);
 
@@ -13819,14 +13941,14 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
             }
             switch (alt61) {
                 case 1 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5426:5: this_PrimitiveType_0= rulePrimitiveType
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5548:5: this_PrimitiveType_0= rulePrimitiveType
                     {
                     if ( state.backtracking==0 ) {
                        
                               newCompositeNode(grammarAccess.getTypeAccess().getPrimitiveTypeParserRuleCall_0()); 
                           
                     }
-                    pushFollow(FOLLOW_rulePrimitiveType_in_ruleType10700);
+                    pushFollow(FOLLOW_rulePrimitiveType_in_ruleType11066);
                     this_PrimitiveType_0=rulePrimitiveType();
 
                     state._fsp--;
@@ -13845,14 +13967,14 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5438:5: this_ClassOrInterfaceName_1= ruleClassOrInterfaceName
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5560:5: this_ClassOrInterfaceName_1= ruleClassOrInterfaceName
                     {
                     if ( state.backtracking==0 ) {
                        
                               newCompositeNode(grammarAccess.getTypeAccess().getClassOrInterfaceNameParserRuleCall_1()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleClassOrInterfaceName_in_ruleType10733);
+                    pushFollow(FOLLOW_ruleClassOrInterfaceName_in_ruleType11099);
                     this_ClassOrInterfaceName_1=ruleClassOrInterfaceName();
 
                     state._fsp--;
@@ -13894,7 +14016,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRulePrimitiveType"
-    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5456:1: entryRulePrimitiveType returns [String current=null] : iv_rulePrimitiveType= rulePrimitiveType EOF ;
+    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5578:1: entryRulePrimitiveType returns [String current=null] : iv_rulePrimitiveType= rulePrimitiveType EOF ;
     public final String entryRulePrimitiveType() throws RecognitionException {
         String current = null;
 
@@ -13902,13 +14024,13 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5457:1: (iv_rulePrimitiveType= rulePrimitiveType EOF )
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5458:2: iv_rulePrimitiveType= rulePrimitiveType EOF
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5579:1: (iv_rulePrimitiveType= rulePrimitiveType EOF )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5580:2: iv_rulePrimitiveType= rulePrimitiveType EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getPrimitiveTypeRule()); 
             }
-            pushFollow(FOLLOW_rulePrimitiveType_in_entryRulePrimitiveType10778);
+            pushFollow(FOLLOW_rulePrimitiveType_in_entryRulePrimitiveType11144);
             iv_rulePrimitiveType=rulePrimitiveType();
 
             state._fsp--;
@@ -13916,7 +14038,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_rulePrimitiveType.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRulePrimitiveType10789); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRulePrimitiveType11155); if (state.failed) return current;
 
             }
 
@@ -13934,7 +14056,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "rulePrimitiveType"
-    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5465:1: rulePrimitiveType returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_NumericType_0= ruleNumericType | kw= KEYWORD_64 ) ;
+    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5587:1: rulePrimitiveType returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_NumericType_0= ruleNumericType | kw= KEYWORD_64 ) ;
     public final AntlrDatatypeRuleToken rulePrimitiveType() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -13945,10 +14067,10 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5469:6: ( (this_NumericType_0= ruleNumericType | kw= KEYWORD_64 ) )
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5470:1: (this_NumericType_0= ruleNumericType | kw= KEYWORD_64 )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5591:6: ( (this_NumericType_0= ruleNumericType | kw= KEYWORD_64 ) )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5592:1: (this_NumericType_0= ruleNumericType | kw= KEYWORD_64 )
             {
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5470:1: (this_NumericType_0= ruleNumericType | kw= KEYWORD_64 )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5592:1: (this_NumericType_0= ruleNumericType | kw= KEYWORD_64 )
             int alt62=2;
             int LA62_0 = input.LA(1);
 
@@ -13967,14 +14089,14 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
             }
             switch (alt62) {
                 case 1 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5471:5: this_NumericType_0= ruleNumericType
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5593:5: this_NumericType_0= ruleNumericType
                     {
                     if ( state.backtracking==0 ) {
                        
                               newCompositeNode(grammarAccess.getPrimitiveTypeAccess().getNumericTypeParserRuleCall_0()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleNumericType_in_rulePrimitiveType10836);
+                    pushFollow(FOLLOW_ruleNumericType_in_rulePrimitiveType11202);
                     this_NumericType_0=ruleNumericType();
 
                     state._fsp--;
@@ -13993,9 +14115,9 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5483:2: kw= KEYWORD_64
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5605:2: kw= KEYWORD_64
                     {
-                    kw=(Token)match(input,KEYWORD_64,FOLLOW_KEYWORD_64_in_rulePrimitiveType10860); if (state.failed) return current;
+                    kw=(Token)match(input,KEYWORD_64,FOLLOW_KEYWORD_64_in_rulePrimitiveType11226); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -14029,7 +14151,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleNumericType"
-    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5496:1: entryRuleNumericType returns [String current=null] : iv_ruleNumericType= ruleNumericType EOF ;
+    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5618:1: entryRuleNumericType returns [String current=null] : iv_ruleNumericType= ruleNumericType EOF ;
     public final String entryRuleNumericType() throws RecognitionException {
         String current = null;
 
@@ -14037,13 +14159,13 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5497:1: (iv_ruleNumericType= ruleNumericType EOF )
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5498:2: iv_ruleNumericType= ruleNumericType EOF
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5619:1: (iv_ruleNumericType= ruleNumericType EOF )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5620:2: iv_ruleNumericType= ruleNumericType EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getNumericTypeRule()); 
             }
-            pushFollow(FOLLOW_ruleNumericType_in_entryRuleNumericType10900);
+            pushFollow(FOLLOW_ruleNumericType_in_entryRuleNumericType11266);
             iv_ruleNumericType=ruleNumericType();
 
             state._fsp--;
@@ -14051,7 +14173,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleNumericType.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleNumericType10911); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleNumericType11277); if (state.failed) return current;
 
             }
 
@@ -14069,7 +14191,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleNumericType"
-    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5505:1: ruleNumericType returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_IntegralType_0= ruleIntegralType | this_FloatingPointType_1= ruleFloatingPointType ) ;
+    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5627:1: ruleNumericType returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_IntegralType_0= ruleIntegralType | this_FloatingPointType_1= ruleFloatingPointType ) ;
     public final AntlrDatatypeRuleToken ruleNumericType() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -14081,10 +14203,10 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5509:6: ( (this_IntegralType_0= ruleIntegralType | this_FloatingPointType_1= ruleFloatingPointType ) )
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5510:1: (this_IntegralType_0= ruleIntegralType | this_FloatingPointType_1= ruleFloatingPointType )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5631:6: ( (this_IntegralType_0= ruleIntegralType | this_FloatingPointType_1= ruleFloatingPointType ) )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5632:1: (this_IntegralType_0= ruleIntegralType | this_FloatingPointType_1= ruleFloatingPointType )
             {
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5510:1: (this_IntegralType_0= ruleIntegralType | this_FloatingPointType_1= ruleFloatingPointType )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5632:1: (this_IntegralType_0= ruleIntegralType | this_FloatingPointType_1= ruleFloatingPointType )
             int alt63=2;
             int LA63_0 = input.LA(1);
 
@@ -14103,14 +14225,14 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
             }
             switch (alt63) {
                 case 1 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5511:5: this_IntegralType_0= ruleIntegralType
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5633:5: this_IntegralType_0= ruleIntegralType
                     {
                     if ( state.backtracking==0 ) {
                        
                               newCompositeNode(grammarAccess.getNumericTypeAccess().getIntegralTypeParserRuleCall_0()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleIntegralType_in_ruleNumericType10958);
+                    pushFollow(FOLLOW_ruleIntegralType_in_ruleNumericType11324);
                     this_IntegralType_0=ruleIntegralType();
 
                     state._fsp--;
@@ -14129,14 +14251,14 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5523:5: this_FloatingPointType_1= ruleFloatingPointType
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5645:5: this_FloatingPointType_1= ruleFloatingPointType
                     {
                     if ( state.backtracking==0 ) {
                        
                               newCompositeNode(grammarAccess.getNumericTypeAccess().getFloatingPointTypeParserRuleCall_1()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleFloatingPointType_in_ruleNumericType10991);
+                    pushFollow(FOLLOW_ruleFloatingPointType_in_ruleNumericType11357);
                     this_FloatingPointType_1=ruleFloatingPointType();
 
                     state._fsp--;
@@ -14178,7 +14300,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleIntegralType"
-    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5541:1: entryRuleIntegralType returns [String current=null] : iv_ruleIntegralType= ruleIntegralType EOF ;
+    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5663:1: entryRuleIntegralType returns [String current=null] : iv_ruleIntegralType= ruleIntegralType EOF ;
     public final String entryRuleIntegralType() throws RecognitionException {
         String current = null;
 
@@ -14186,13 +14308,13 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5542:1: (iv_ruleIntegralType= ruleIntegralType EOF )
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5543:2: iv_ruleIntegralType= ruleIntegralType EOF
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5664:1: (iv_ruleIntegralType= ruleIntegralType EOF )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5665:2: iv_ruleIntegralType= ruleIntegralType EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getIntegralTypeRule()); 
             }
-            pushFollow(FOLLOW_ruleIntegralType_in_entryRuleIntegralType11036);
+            pushFollow(FOLLOW_ruleIntegralType_in_entryRuleIntegralType11402);
             iv_ruleIntegralType=ruleIntegralType();
 
             state._fsp--;
@@ -14200,7 +14322,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleIntegralType.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleIntegralType11047); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleIntegralType11413); if (state.failed) return current;
 
             }
 
@@ -14218,7 +14340,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleIntegralType"
-    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5550:1: ruleIntegralType returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= KEYWORD_36 | kw= KEYWORD_52 | kw= KEYWORD_29 | kw= KEYWORD_38 | kw= KEYWORD_37 ) ;
+    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5672:1: ruleIntegralType returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= KEYWORD_36 | kw= KEYWORD_52 | kw= KEYWORD_29 | kw= KEYWORD_38 | kw= KEYWORD_37 ) ;
     public final AntlrDatatypeRuleToken ruleIntegralType() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -14227,10 +14349,10 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5554:6: ( (kw= KEYWORD_36 | kw= KEYWORD_52 | kw= KEYWORD_29 | kw= KEYWORD_38 | kw= KEYWORD_37 ) )
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5555:1: (kw= KEYWORD_36 | kw= KEYWORD_52 | kw= KEYWORD_29 | kw= KEYWORD_38 | kw= KEYWORD_37 )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5676:6: ( (kw= KEYWORD_36 | kw= KEYWORD_52 | kw= KEYWORD_29 | kw= KEYWORD_38 | kw= KEYWORD_37 ) )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5677:1: (kw= KEYWORD_36 | kw= KEYWORD_52 | kw= KEYWORD_29 | kw= KEYWORD_38 | kw= KEYWORD_37 )
             {
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5555:1: (kw= KEYWORD_36 | kw= KEYWORD_52 | kw= KEYWORD_29 | kw= KEYWORD_38 | kw= KEYWORD_37 )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5677:1: (kw= KEYWORD_36 | kw= KEYWORD_52 | kw= KEYWORD_29 | kw= KEYWORD_38 | kw= KEYWORD_37 )
             int alt64=5;
             switch ( input.LA(1) ) {
             case KEYWORD_36:
@@ -14268,9 +14390,9 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
             switch (alt64) {
                 case 1 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5556:2: kw= KEYWORD_36
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5678:2: kw= KEYWORD_36
                     {
-                    kw=(Token)match(input,KEYWORD_36,FOLLOW_KEYWORD_36_in_ruleIntegralType11085); if (state.failed) return current;
+                    kw=(Token)match(input,KEYWORD_36,FOLLOW_KEYWORD_36_in_ruleIntegralType11451); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -14281,9 +14403,9 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5563:2: kw= KEYWORD_52
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5685:2: kw= KEYWORD_52
                     {
-                    kw=(Token)match(input,KEYWORD_52,FOLLOW_KEYWORD_52_in_ruleIntegralType11104); if (state.failed) return current;
+                    kw=(Token)match(input,KEYWORD_52,FOLLOW_KEYWORD_52_in_ruleIntegralType11470); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -14294,9 +14416,9 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5570:2: kw= KEYWORD_29
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5692:2: kw= KEYWORD_29
                     {
-                    kw=(Token)match(input,KEYWORD_29,FOLLOW_KEYWORD_29_in_ruleIntegralType11123); if (state.failed) return current;
+                    kw=(Token)match(input,KEYWORD_29,FOLLOW_KEYWORD_29_in_ruleIntegralType11489); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -14307,9 +14429,9 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5577:2: kw= KEYWORD_38
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5699:2: kw= KEYWORD_38
                     {
-                    kw=(Token)match(input,KEYWORD_38,FOLLOW_KEYWORD_38_in_ruleIntegralType11142); if (state.failed) return current;
+                    kw=(Token)match(input,KEYWORD_38,FOLLOW_KEYWORD_38_in_ruleIntegralType11508); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -14320,9 +14442,9 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 5 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5584:2: kw= KEYWORD_37
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5706:2: kw= KEYWORD_37
                     {
-                    kw=(Token)match(input,KEYWORD_37,FOLLOW_KEYWORD_37_in_ruleIntegralType11161); if (state.failed) return current;
+                    kw=(Token)match(input,KEYWORD_37,FOLLOW_KEYWORD_37_in_ruleIntegralType11527); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -14356,7 +14478,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleFloatingPointType"
-    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5597:1: entryRuleFloatingPointType returns [String current=null] : iv_ruleFloatingPointType= ruleFloatingPointType EOF ;
+    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5719:1: entryRuleFloatingPointType returns [String current=null] : iv_ruleFloatingPointType= ruleFloatingPointType EOF ;
     public final String entryRuleFloatingPointType() throws RecognitionException {
         String current = null;
 
@@ -14364,13 +14486,13 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5598:1: (iv_ruleFloatingPointType= ruleFloatingPointType EOF )
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5599:2: iv_ruleFloatingPointType= ruleFloatingPointType EOF
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5720:1: (iv_ruleFloatingPointType= ruleFloatingPointType EOF )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5721:2: iv_ruleFloatingPointType= ruleFloatingPointType EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getFloatingPointTypeRule()); 
             }
-            pushFollow(FOLLOW_ruleFloatingPointType_in_entryRuleFloatingPointType11201);
+            pushFollow(FOLLOW_ruleFloatingPointType_in_entryRuleFloatingPointType11567);
             iv_ruleFloatingPointType=ruleFloatingPointType();
 
             state._fsp--;
@@ -14378,7 +14500,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleFloatingPointType.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleFloatingPointType11212); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleFloatingPointType11578); if (state.failed) return current;
 
             }
 
@@ -14396,7 +14518,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFloatingPointType"
-    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5606:1: ruleFloatingPointType returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= KEYWORD_50 | kw= KEYWORD_57 ) ;
+    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5728:1: ruleFloatingPointType returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= KEYWORD_50 | kw= KEYWORD_57 ) ;
     public final AntlrDatatypeRuleToken ruleFloatingPointType() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -14405,10 +14527,10 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5610:6: ( (kw= KEYWORD_50 | kw= KEYWORD_57 ) )
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5611:1: (kw= KEYWORD_50 | kw= KEYWORD_57 )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5732:6: ( (kw= KEYWORD_50 | kw= KEYWORD_57 ) )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5733:1: (kw= KEYWORD_50 | kw= KEYWORD_57 )
             {
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5611:1: (kw= KEYWORD_50 | kw= KEYWORD_57 )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5733:1: (kw= KEYWORD_50 | kw= KEYWORD_57 )
             int alt65=2;
             int LA65_0 = input.LA(1);
 
@@ -14427,9 +14549,9 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
             }
             switch (alt65) {
                 case 1 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5612:2: kw= KEYWORD_50
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5734:2: kw= KEYWORD_50
                     {
-                    kw=(Token)match(input,KEYWORD_50,FOLLOW_KEYWORD_50_in_ruleFloatingPointType11250); if (state.failed) return current;
+                    kw=(Token)match(input,KEYWORD_50,FOLLOW_KEYWORD_50_in_ruleFloatingPointType11616); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -14440,9 +14562,9 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5619:2: kw= KEYWORD_57
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5741:2: kw= KEYWORD_57
                     {
-                    kw=(Token)match(input,KEYWORD_57,FOLLOW_KEYWORD_57_in_ruleFloatingPointType11269); if (state.failed) return current;
+                    kw=(Token)match(input,KEYWORD_57,FOLLOW_KEYWORD_57_in_ruleFloatingPointType11635); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -14476,7 +14598,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleIntegerLiteral"
-    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5632:1: entryRuleIntegerLiteral returns [String current=null] : iv_ruleIntegerLiteral= ruleIntegerLiteral EOF ;
+    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5754:1: entryRuleIntegerLiteral returns [String current=null] : iv_ruleIntegerLiteral= ruleIntegerLiteral EOF ;
     public final String entryRuleIntegerLiteral() throws RecognitionException {
         String current = null;
 
@@ -14484,13 +14606,13 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5633:1: (iv_ruleIntegerLiteral= ruleIntegerLiteral EOF )
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5634:2: iv_ruleIntegerLiteral= ruleIntegerLiteral EOF
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5755:1: (iv_ruleIntegerLiteral= ruleIntegerLiteral EOF )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5756:2: iv_ruleIntegerLiteral= ruleIntegerLiteral EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getIntegerLiteralRule()); 
             }
-            pushFollow(FOLLOW_ruleIntegerLiteral_in_entryRuleIntegerLiteral11309);
+            pushFollow(FOLLOW_ruleIntegerLiteral_in_entryRuleIntegerLiteral11675);
             iv_ruleIntegerLiteral=ruleIntegerLiteral();
 
             state._fsp--;
@@ -14498,7 +14620,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleIntegerLiteral.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleIntegerLiteral11320); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleIntegerLiteral11686); if (state.failed) return current;
 
             }
 
@@ -14516,7 +14638,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleIntegerLiteral"
-    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5641:1: ruleIntegerLiteral returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : this_INT_0= RULE_INT ;
+    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5763:1: ruleIntegerLiteral returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : this_INT_0= RULE_INT ;
     public final AntlrDatatypeRuleToken ruleIntegerLiteral() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -14525,10 +14647,10 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5645:6: (this_INT_0= RULE_INT )
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5646:5: this_INT_0= RULE_INT
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5767:6: (this_INT_0= RULE_INT )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5768:5: this_INT_0= RULE_INT
             {
-            this_INT_0=(Token)match(input,RULE_INT,FOLLOW_RULE_INT_in_ruleIntegerLiteral11359); if (state.failed) return current;
+            this_INT_0=(Token)match(input,RULE_INT,FOLLOW_RULE_INT_in_ruleIntegerLiteral11725); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               		current.merge(this_INT_0);
@@ -14560,7 +14682,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleStringLiteral"
-    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5661:1: entryRuleStringLiteral returns [String current=null] : iv_ruleStringLiteral= ruleStringLiteral EOF ;
+    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5783:1: entryRuleStringLiteral returns [String current=null] : iv_ruleStringLiteral= ruleStringLiteral EOF ;
     public final String entryRuleStringLiteral() throws RecognitionException {
         String current = null;
 
@@ -14568,13 +14690,13 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5662:1: (iv_ruleStringLiteral= ruleStringLiteral EOF )
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5663:2: iv_ruleStringLiteral= ruleStringLiteral EOF
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5784:1: (iv_ruleStringLiteral= ruleStringLiteral EOF )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5785:2: iv_ruleStringLiteral= ruleStringLiteral EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getStringLiteralRule()); 
             }
-            pushFollow(FOLLOW_ruleStringLiteral_in_entryRuleStringLiteral11403);
+            pushFollow(FOLLOW_ruleStringLiteral_in_entryRuleStringLiteral11769);
             iv_ruleStringLiteral=ruleStringLiteral();
 
             state._fsp--;
@@ -14582,7 +14704,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleStringLiteral.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleStringLiteral11414); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleStringLiteral11780); if (state.failed) return current;
 
             }
 
@@ -14600,7 +14722,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleStringLiteral"
-    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5670:1: ruleStringLiteral returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : this_STRING_0= RULE_STRING ;
+    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5792:1: ruleStringLiteral returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : this_STRING_0= RULE_STRING ;
     public final AntlrDatatypeRuleToken ruleStringLiteral() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -14609,10 +14731,10 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5674:6: (this_STRING_0= RULE_STRING )
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5675:5: this_STRING_0= RULE_STRING
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5796:6: (this_STRING_0= RULE_STRING )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5797:5: this_STRING_0= RULE_STRING
             {
-            this_STRING_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleStringLiteral11453); if (state.failed) return current;
+            this_STRING_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleStringLiteral11819); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               		current.merge(this_STRING_0);
@@ -14644,7 +14766,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleBooleanLiteral"
-    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5690:1: entryRuleBooleanLiteral returns [String current=null] : iv_ruleBooleanLiteral= ruleBooleanLiteral EOF ;
+    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5812:1: entryRuleBooleanLiteral returns [String current=null] : iv_ruleBooleanLiteral= ruleBooleanLiteral EOF ;
     public final String entryRuleBooleanLiteral() throws RecognitionException {
         String current = null;
 
@@ -14652,13 +14774,13 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5691:1: (iv_ruleBooleanLiteral= ruleBooleanLiteral EOF )
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5692:2: iv_ruleBooleanLiteral= ruleBooleanLiteral EOF
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5813:1: (iv_ruleBooleanLiteral= ruleBooleanLiteral EOF )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5814:2: iv_ruleBooleanLiteral= ruleBooleanLiteral EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getBooleanLiteralRule()); 
             }
-            pushFollow(FOLLOW_ruleBooleanLiteral_in_entryRuleBooleanLiteral11497);
+            pushFollow(FOLLOW_ruleBooleanLiteral_in_entryRuleBooleanLiteral11863);
             iv_ruleBooleanLiteral=ruleBooleanLiteral();
 
             state._fsp--;
@@ -14666,7 +14788,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleBooleanLiteral.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleBooleanLiteral11508); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleBooleanLiteral11874); if (state.failed) return current;
 
             }
 
@@ -14684,7 +14806,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleBooleanLiteral"
-    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5699:1: ruleBooleanLiteral returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= KEYWORD_43 | kw= KEYWORD_49 ) ;
+    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5821:1: ruleBooleanLiteral returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= KEYWORD_43 | kw= KEYWORD_49 ) ;
     public final AntlrDatatypeRuleToken ruleBooleanLiteral() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -14693,10 +14815,10 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5703:6: ( (kw= KEYWORD_43 | kw= KEYWORD_49 ) )
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5704:1: (kw= KEYWORD_43 | kw= KEYWORD_49 )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5825:6: ( (kw= KEYWORD_43 | kw= KEYWORD_49 ) )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5826:1: (kw= KEYWORD_43 | kw= KEYWORD_49 )
             {
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5704:1: (kw= KEYWORD_43 | kw= KEYWORD_49 )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5826:1: (kw= KEYWORD_43 | kw= KEYWORD_49 )
             int alt66=2;
             int LA66_0 = input.LA(1);
 
@@ -14715,9 +14837,9 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
             }
             switch (alt66) {
                 case 1 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5705:2: kw= KEYWORD_43
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5827:2: kw= KEYWORD_43
                     {
-                    kw=(Token)match(input,KEYWORD_43,FOLLOW_KEYWORD_43_in_ruleBooleanLiteral11546); if (state.failed) return current;
+                    kw=(Token)match(input,KEYWORD_43,FOLLOW_KEYWORD_43_in_ruleBooleanLiteral11912); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -14728,9 +14850,9 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5712:2: kw= KEYWORD_49
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5834:2: kw= KEYWORD_49
                     {
-                    kw=(Token)match(input,KEYWORD_49,FOLLOW_KEYWORD_49_in_ruleBooleanLiteral11565); if (state.failed) return current;
+                    kw=(Token)match(input,KEYWORD_49,FOLLOW_KEYWORD_49_in_ruleBooleanLiteral11931); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -14764,7 +14886,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleNullLiteral"
-    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5725:1: entryRuleNullLiteral returns [String current=null] : iv_ruleNullLiteral= ruleNullLiteral EOF ;
+    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5847:1: entryRuleNullLiteral returns [String current=null] : iv_ruleNullLiteral= ruleNullLiteral EOF ;
     public final String entryRuleNullLiteral() throws RecognitionException {
         String current = null;
 
@@ -14772,13 +14894,13 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5726:1: (iv_ruleNullLiteral= ruleNullLiteral EOF )
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5727:2: iv_ruleNullLiteral= ruleNullLiteral EOF
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5848:1: (iv_ruleNullLiteral= ruleNullLiteral EOF )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5849:2: iv_ruleNullLiteral= ruleNullLiteral EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getNullLiteralRule()); 
             }
-            pushFollow(FOLLOW_ruleNullLiteral_in_entryRuleNullLiteral11605);
+            pushFollow(FOLLOW_ruleNullLiteral_in_entryRuleNullLiteral11971);
             iv_ruleNullLiteral=ruleNullLiteral();
 
             state._fsp--;
@@ -14786,7 +14908,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleNullLiteral.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleNullLiteral11616); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleNullLiteral11982); if (state.failed) return current;
 
             }
 
@@ -14804,7 +14926,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleNullLiteral"
-    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5734:1: ruleNullLiteral returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : kw= KEYWORD_39 ;
+    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5856:1: ruleNullLiteral returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : kw= KEYWORD_39 ;
     public final AntlrDatatypeRuleToken ruleNullLiteral() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -14813,10 +14935,10 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5738:6: (kw= KEYWORD_39 )
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5740:2: kw= KEYWORD_39
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5860:6: (kw= KEYWORD_39 )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5862:2: kw= KEYWORD_39
             {
-            kw=(Token)match(input,KEYWORD_39,FOLLOW_KEYWORD_39_in_ruleNullLiteral11653); if (state.failed) return current;
+            kw=(Token)match(input,KEYWORD_39,FOLLOW_KEYWORD_39_in_ruleNullLiteral12019); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                       current.merge(kw);
@@ -14844,7 +14966,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleLiteral"
-    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5753:1: entryRuleLiteral returns [String current=null] : iv_ruleLiteral= ruleLiteral EOF ;
+    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5875:1: entryRuleLiteral returns [String current=null] : iv_ruleLiteral= ruleLiteral EOF ;
     public final String entryRuleLiteral() throws RecognitionException {
         String current = null;
 
@@ -14852,13 +14974,13 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5754:1: (iv_ruleLiteral= ruleLiteral EOF )
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5755:2: iv_ruleLiteral= ruleLiteral EOF
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5876:1: (iv_ruleLiteral= ruleLiteral EOF )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5877:2: iv_ruleLiteral= ruleLiteral EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getLiteralRule()); 
             }
-            pushFollow(FOLLOW_ruleLiteral_in_entryRuleLiteral11692);
+            pushFollow(FOLLOW_ruleLiteral_in_entryRuleLiteral12058);
             iv_ruleLiteral=ruleLiteral();
 
             state._fsp--;
@@ -14866,7 +14988,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleLiteral.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleLiteral11703); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleLiteral12069); if (state.failed) return current;
 
             }
 
@@ -14884,7 +15006,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleLiteral"
-    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5762:1: ruleLiteral returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_IntegerLiteral_0= ruleIntegerLiteral | this_BooleanLiteral_1= ruleBooleanLiteral | this_StringLiteral_2= ruleStringLiteral | this_NullLiteral_3= ruleNullLiteral ) ;
+    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5884:1: ruleLiteral returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_IntegerLiteral_0= ruleIntegerLiteral | this_BooleanLiteral_1= ruleBooleanLiteral | this_StringLiteral_2= ruleStringLiteral | this_NullLiteral_3= ruleNullLiteral ) ;
     public final AntlrDatatypeRuleToken ruleLiteral() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -14900,10 +15022,10 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5766:6: ( (this_IntegerLiteral_0= ruleIntegerLiteral | this_BooleanLiteral_1= ruleBooleanLiteral | this_StringLiteral_2= ruleStringLiteral | this_NullLiteral_3= ruleNullLiteral ) )
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5767:1: (this_IntegerLiteral_0= ruleIntegerLiteral | this_BooleanLiteral_1= ruleBooleanLiteral | this_StringLiteral_2= ruleStringLiteral | this_NullLiteral_3= ruleNullLiteral )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5888:6: ( (this_IntegerLiteral_0= ruleIntegerLiteral | this_BooleanLiteral_1= ruleBooleanLiteral | this_StringLiteral_2= ruleStringLiteral | this_NullLiteral_3= ruleNullLiteral ) )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5889:1: (this_IntegerLiteral_0= ruleIntegerLiteral | this_BooleanLiteral_1= ruleBooleanLiteral | this_StringLiteral_2= ruleStringLiteral | this_NullLiteral_3= ruleNullLiteral )
             {
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5767:1: (this_IntegerLiteral_0= ruleIntegerLiteral | this_BooleanLiteral_1= ruleBooleanLiteral | this_StringLiteral_2= ruleStringLiteral | this_NullLiteral_3= ruleNullLiteral )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5889:1: (this_IntegerLiteral_0= ruleIntegerLiteral | this_BooleanLiteral_1= ruleBooleanLiteral | this_StringLiteral_2= ruleStringLiteral | this_NullLiteral_3= ruleNullLiteral )
             int alt67=4;
             switch ( input.LA(1) ) {
             case RULE_INT:
@@ -14937,14 +15059,14 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
             switch (alt67) {
                 case 1 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5768:5: this_IntegerLiteral_0= ruleIntegerLiteral
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5890:5: this_IntegerLiteral_0= ruleIntegerLiteral
                     {
                     if ( state.backtracking==0 ) {
                        
                               newCompositeNode(grammarAccess.getLiteralAccess().getIntegerLiteralParserRuleCall_0()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleIntegerLiteral_in_ruleLiteral11750);
+                    pushFollow(FOLLOW_ruleIntegerLiteral_in_ruleLiteral12116);
                     this_IntegerLiteral_0=ruleIntegerLiteral();
 
                     state._fsp--;
@@ -14963,14 +15085,14 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5780:5: this_BooleanLiteral_1= ruleBooleanLiteral
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5902:5: this_BooleanLiteral_1= ruleBooleanLiteral
                     {
                     if ( state.backtracking==0 ) {
                        
                               newCompositeNode(grammarAccess.getLiteralAccess().getBooleanLiteralParserRuleCall_1()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleBooleanLiteral_in_ruleLiteral11783);
+                    pushFollow(FOLLOW_ruleBooleanLiteral_in_ruleLiteral12149);
                     this_BooleanLiteral_1=ruleBooleanLiteral();
 
                     state._fsp--;
@@ -14989,14 +15111,14 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5792:5: this_StringLiteral_2= ruleStringLiteral
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5914:5: this_StringLiteral_2= ruleStringLiteral
                     {
                     if ( state.backtracking==0 ) {
                        
                               newCompositeNode(grammarAccess.getLiteralAccess().getStringLiteralParserRuleCall_2()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleStringLiteral_in_ruleLiteral11816);
+                    pushFollow(FOLLOW_ruleStringLiteral_in_ruleLiteral12182);
                     this_StringLiteral_2=ruleStringLiteral();
 
                     state._fsp--;
@@ -15015,14 +15137,14 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5804:5: this_NullLiteral_3= ruleNullLiteral
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5926:5: this_NullLiteral_3= ruleNullLiteral
                     {
                     if ( state.backtracking==0 ) {
                        
                               newCompositeNode(grammarAccess.getLiteralAccess().getNullLiteralParserRuleCall_3()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleNullLiteral_in_ruleLiteral11849);
+                    pushFollow(FOLLOW_ruleNullLiteral_in_ruleLiteral12215);
                     this_NullLiteral_3=ruleNullLiteral();
 
                     state._fsp--;
@@ -15064,7 +15186,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleQualifiedIdentifier"
-    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5822:1: entryRuleQualifiedIdentifier returns [String current=null] : iv_ruleQualifiedIdentifier= ruleQualifiedIdentifier EOF ;
+    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5944:1: entryRuleQualifiedIdentifier returns [String current=null] : iv_ruleQualifiedIdentifier= ruleQualifiedIdentifier EOF ;
     public final String entryRuleQualifiedIdentifier() throws RecognitionException {
         String current = null;
 
@@ -15072,13 +15194,13 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5823:1: (iv_ruleQualifiedIdentifier= ruleQualifiedIdentifier EOF )
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5824:2: iv_ruleQualifiedIdentifier= ruleQualifiedIdentifier EOF
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5945:1: (iv_ruleQualifiedIdentifier= ruleQualifiedIdentifier EOF )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5946:2: iv_ruleQualifiedIdentifier= ruleQualifiedIdentifier EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getQualifiedIdentifierRule()); 
             }
-            pushFollow(FOLLOW_ruleQualifiedIdentifier_in_entryRuleQualifiedIdentifier11894);
+            pushFollow(FOLLOW_ruleQualifiedIdentifier_in_entryRuleQualifiedIdentifier12260);
             iv_ruleQualifiedIdentifier=ruleQualifiedIdentifier();
 
             state._fsp--;
@@ -15086,7 +15208,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleQualifiedIdentifier.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleQualifiedIdentifier11905); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleQualifiedIdentifier12271); if (state.failed) return current;
 
             }
 
@@ -15104,7 +15226,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleQualifiedIdentifier"
-    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5831:1: ruleQualifiedIdentifier returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= KEYWORD_111 | kw= KEYWORD_104 | kw= KEYWORD_119 | kw= KEYWORD_109 | kw= KEYWORD_106 | kw= KEYWORD_112 | kw= KEYWORD_105 | kw= KEYWORD_107 | kw= KEYWORD_110 | (kw= KEYWORD_51 this_ID_10= RULE_ID (kw= KEYWORD_10 this_ID_12= RULE_ID )* ) | (kw= KEYWORD_61 this_ID_14= RULE_ID (kw= KEYWORD_10 this_ID_16= RULE_ID )* ) | (this_ID_17= RULE_ID (kw= KEYWORD_10 this_ID_19= RULE_ID )* ) ) ;
+    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5953:1: ruleQualifiedIdentifier returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= KEYWORD_111 | kw= KEYWORD_104 | kw= KEYWORD_119 | kw= KEYWORD_109 | kw= KEYWORD_106 | kw= KEYWORD_112 | kw= KEYWORD_105 | kw= KEYWORD_107 | kw= KEYWORD_110 | (kw= KEYWORD_51 this_ID_10= RULE_ID (kw= KEYWORD_10 this_ID_12= RULE_ID )* ) | (kw= KEYWORD_61 this_ID_14= RULE_ID (kw= KEYWORD_10 this_ID_16= RULE_ID )* ) | (this_ID_17= RULE_ID (kw= KEYWORD_10 this_ID_19= RULE_ID )* ) ) ;
     public final AntlrDatatypeRuleToken ruleQualifiedIdentifier() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -15119,10 +15241,10 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5835:6: ( (kw= KEYWORD_111 | kw= KEYWORD_104 | kw= KEYWORD_119 | kw= KEYWORD_109 | kw= KEYWORD_106 | kw= KEYWORD_112 | kw= KEYWORD_105 | kw= KEYWORD_107 | kw= KEYWORD_110 | (kw= KEYWORD_51 this_ID_10= RULE_ID (kw= KEYWORD_10 this_ID_12= RULE_ID )* ) | (kw= KEYWORD_61 this_ID_14= RULE_ID (kw= KEYWORD_10 this_ID_16= RULE_ID )* ) | (this_ID_17= RULE_ID (kw= KEYWORD_10 this_ID_19= RULE_ID )* ) ) )
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5836:1: (kw= KEYWORD_111 | kw= KEYWORD_104 | kw= KEYWORD_119 | kw= KEYWORD_109 | kw= KEYWORD_106 | kw= KEYWORD_112 | kw= KEYWORD_105 | kw= KEYWORD_107 | kw= KEYWORD_110 | (kw= KEYWORD_51 this_ID_10= RULE_ID (kw= KEYWORD_10 this_ID_12= RULE_ID )* ) | (kw= KEYWORD_61 this_ID_14= RULE_ID (kw= KEYWORD_10 this_ID_16= RULE_ID )* ) | (this_ID_17= RULE_ID (kw= KEYWORD_10 this_ID_19= RULE_ID )* ) )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5957:6: ( (kw= KEYWORD_111 | kw= KEYWORD_104 | kw= KEYWORD_119 | kw= KEYWORD_109 | kw= KEYWORD_106 | kw= KEYWORD_112 | kw= KEYWORD_105 | kw= KEYWORD_107 | kw= KEYWORD_110 | (kw= KEYWORD_51 this_ID_10= RULE_ID (kw= KEYWORD_10 this_ID_12= RULE_ID )* ) | (kw= KEYWORD_61 this_ID_14= RULE_ID (kw= KEYWORD_10 this_ID_16= RULE_ID )* ) | (this_ID_17= RULE_ID (kw= KEYWORD_10 this_ID_19= RULE_ID )* ) ) )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5958:1: (kw= KEYWORD_111 | kw= KEYWORD_104 | kw= KEYWORD_119 | kw= KEYWORD_109 | kw= KEYWORD_106 | kw= KEYWORD_112 | kw= KEYWORD_105 | kw= KEYWORD_107 | kw= KEYWORD_110 | (kw= KEYWORD_51 this_ID_10= RULE_ID (kw= KEYWORD_10 this_ID_12= RULE_ID )* ) | (kw= KEYWORD_61 this_ID_14= RULE_ID (kw= KEYWORD_10 this_ID_16= RULE_ID )* ) | (this_ID_17= RULE_ID (kw= KEYWORD_10 this_ID_19= RULE_ID )* ) )
             {
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5836:1: (kw= KEYWORD_111 | kw= KEYWORD_104 | kw= KEYWORD_119 | kw= KEYWORD_109 | kw= KEYWORD_106 | kw= KEYWORD_112 | kw= KEYWORD_105 | kw= KEYWORD_107 | kw= KEYWORD_110 | (kw= KEYWORD_51 this_ID_10= RULE_ID (kw= KEYWORD_10 this_ID_12= RULE_ID )* ) | (kw= KEYWORD_61 this_ID_14= RULE_ID (kw= KEYWORD_10 this_ID_16= RULE_ID )* ) | (this_ID_17= RULE_ID (kw= KEYWORD_10 this_ID_19= RULE_ID )* ) )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5958:1: (kw= KEYWORD_111 | kw= KEYWORD_104 | kw= KEYWORD_119 | kw= KEYWORD_109 | kw= KEYWORD_106 | kw= KEYWORD_112 | kw= KEYWORD_105 | kw= KEYWORD_107 | kw= KEYWORD_110 | (kw= KEYWORD_51 this_ID_10= RULE_ID (kw= KEYWORD_10 this_ID_12= RULE_ID )* ) | (kw= KEYWORD_61 this_ID_14= RULE_ID (kw= KEYWORD_10 this_ID_16= RULE_ID )* ) | (this_ID_17= RULE_ID (kw= KEYWORD_10 this_ID_19= RULE_ID )* ) )
             int alt71=12;
             switch ( input.LA(1) ) {
             case KEYWORD_111:
@@ -15195,9 +15317,9 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
             switch (alt71) {
                 case 1 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5837:2: kw= KEYWORD_111
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5959:2: kw= KEYWORD_111
                     {
-                    kw=(Token)match(input,KEYWORD_111,FOLLOW_KEYWORD_111_in_ruleQualifiedIdentifier11943); if (state.failed) return current;
+                    kw=(Token)match(input,KEYWORD_111,FOLLOW_KEYWORD_111_in_ruleQualifiedIdentifier12309); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -15208,9 +15330,9 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5844:2: kw= KEYWORD_104
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5966:2: kw= KEYWORD_104
                     {
-                    kw=(Token)match(input,KEYWORD_104,FOLLOW_KEYWORD_104_in_ruleQualifiedIdentifier11962); if (state.failed) return current;
+                    kw=(Token)match(input,KEYWORD_104,FOLLOW_KEYWORD_104_in_ruleQualifiedIdentifier12328); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -15221,9 +15343,9 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5851:2: kw= KEYWORD_119
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5973:2: kw= KEYWORD_119
                     {
-                    kw=(Token)match(input,KEYWORD_119,FOLLOW_KEYWORD_119_in_ruleQualifiedIdentifier11981); if (state.failed) return current;
+                    kw=(Token)match(input,KEYWORD_119,FOLLOW_KEYWORD_119_in_ruleQualifiedIdentifier12347); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -15234,9 +15356,9 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5858:2: kw= KEYWORD_109
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5980:2: kw= KEYWORD_109
                     {
-                    kw=(Token)match(input,KEYWORD_109,FOLLOW_KEYWORD_109_in_ruleQualifiedIdentifier12000); if (state.failed) return current;
+                    kw=(Token)match(input,KEYWORD_109,FOLLOW_KEYWORD_109_in_ruleQualifiedIdentifier12366); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -15247,9 +15369,9 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 5 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5865:2: kw= KEYWORD_106
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5987:2: kw= KEYWORD_106
                     {
-                    kw=(Token)match(input,KEYWORD_106,FOLLOW_KEYWORD_106_in_ruleQualifiedIdentifier12019); if (state.failed) return current;
+                    kw=(Token)match(input,KEYWORD_106,FOLLOW_KEYWORD_106_in_ruleQualifiedIdentifier12385); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -15260,9 +15382,9 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 6 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5872:2: kw= KEYWORD_112
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5994:2: kw= KEYWORD_112
                     {
-                    kw=(Token)match(input,KEYWORD_112,FOLLOW_KEYWORD_112_in_ruleQualifiedIdentifier12038); if (state.failed) return current;
+                    kw=(Token)match(input,KEYWORD_112,FOLLOW_KEYWORD_112_in_ruleQualifiedIdentifier12404); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -15273,9 +15395,9 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 7 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5879:2: kw= KEYWORD_105
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6001:2: kw= KEYWORD_105
                     {
-                    kw=(Token)match(input,KEYWORD_105,FOLLOW_KEYWORD_105_in_ruleQualifiedIdentifier12057); if (state.failed) return current;
+                    kw=(Token)match(input,KEYWORD_105,FOLLOW_KEYWORD_105_in_ruleQualifiedIdentifier12423); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -15286,9 +15408,9 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 8 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5886:2: kw= KEYWORD_107
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6008:2: kw= KEYWORD_107
                     {
-                    kw=(Token)match(input,KEYWORD_107,FOLLOW_KEYWORD_107_in_ruleQualifiedIdentifier12076); if (state.failed) return current;
+                    kw=(Token)match(input,KEYWORD_107,FOLLOW_KEYWORD_107_in_ruleQualifiedIdentifier12442); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -15299,9 +15421,9 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 9 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5893:2: kw= KEYWORD_110
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6015:2: kw= KEYWORD_110
                     {
-                    kw=(Token)match(input,KEYWORD_110,FOLLOW_KEYWORD_110_in_ruleQualifiedIdentifier12095); if (state.failed) return current;
+                    kw=(Token)match(input,KEYWORD_110,FOLLOW_KEYWORD_110_in_ruleQualifiedIdentifier12461); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -15312,19 +15434,19 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 10 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5899:6: (kw= KEYWORD_51 this_ID_10= RULE_ID (kw= KEYWORD_10 this_ID_12= RULE_ID )* )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6021:6: (kw= KEYWORD_51 this_ID_10= RULE_ID (kw= KEYWORD_10 this_ID_12= RULE_ID )* )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5899:6: (kw= KEYWORD_51 this_ID_10= RULE_ID (kw= KEYWORD_10 this_ID_12= RULE_ID )* )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5900:2: kw= KEYWORD_51 this_ID_10= RULE_ID (kw= KEYWORD_10 this_ID_12= RULE_ID )*
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6021:6: (kw= KEYWORD_51 this_ID_10= RULE_ID (kw= KEYWORD_10 this_ID_12= RULE_ID )* )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6022:2: kw= KEYWORD_51 this_ID_10= RULE_ID (kw= KEYWORD_10 this_ID_12= RULE_ID )*
                     {
-                    kw=(Token)match(input,KEYWORD_51,FOLLOW_KEYWORD_51_in_ruleQualifiedIdentifier12115); if (state.failed) return current;
+                    kw=(Token)match(input,KEYWORD_51,FOLLOW_KEYWORD_51_in_ruleQualifiedIdentifier12481); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
                               newLeafNode(kw, grammarAccess.getQualifiedIdentifierAccess().getJavaKeyword_9_0()); 
                           
                     }
-                    this_ID_10=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleQualifiedIdentifier12130); if (state.failed) return current;
+                    this_ID_10=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleQualifiedIdentifier12496); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       		current.merge(this_ID_10);
@@ -15335,7 +15457,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                           newLeafNode(this_ID_10, grammarAccess.getQualifiedIdentifierAccess().getIDTerminalRuleCall_9_1()); 
                           
                     }
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5912:1: (kw= KEYWORD_10 this_ID_12= RULE_ID )*
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6034:1: (kw= KEYWORD_10 this_ID_12= RULE_ID )*
                     loop68:
                     do {
                         int alt68=2;
@@ -15348,16 +15470,16 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                         switch (alt68) {
                     	case 1 :
-                    	    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5913:2: kw= KEYWORD_10 this_ID_12= RULE_ID
+                    	    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6035:2: kw= KEYWORD_10 this_ID_12= RULE_ID
                     	    {
-                    	    kw=(Token)match(input,KEYWORD_10,FOLLOW_KEYWORD_10_in_ruleQualifiedIdentifier12149); if (state.failed) return current;
+                    	    kw=(Token)match(input,KEYWORD_10,FOLLOW_KEYWORD_10_in_ruleQualifiedIdentifier12515); if (state.failed) return current;
                     	    if ( state.backtracking==0 ) {
 
                     	              current.merge(kw);
                     	              newLeafNode(kw, grammarAccess.getQualifiedIdentifierAccess().getFullStopKeyword_9_2_0()); 
                     	          
                     	    }
-                    	    this_ID_12=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleQualifiedIdentifier12164); if (state.failed) return current;
+                    	    this_ID_12=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleQualifiedIdentifier12530); if (state.failed) return current;
                     	    if ( state.backtracking==0 ) {
 
                     	      		current.merge(this_ID_12);
@@ -15384,19 +15506,19 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 11 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5926:6: (kw= KEYWORD_61 this_ID_14= RULE_ID (kw= KEYWORD_10 this_ID_16= RULE_ID )* )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6048:6: (kw= KEYWORD_61 this_ID_14= RULE_ID (kw= KEYWORD_10 this_ID_16= RULE_ID )* )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5926:6: (kw= KEYWORD_61 this_ID_14= RULE_ID (kw= KEYWORD_10 this_ID_16= RULE_ID )* )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5927:2: kw= KEYWORD_61 this_ID_14= RULE_ID (kw= KEYWORD_10 this_ID_16= RULE_ID )*
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6048:6: (kw= KEYWORD_61 this_ID_14= RULE_ID (kw= KEYWORD_10 this_ID_16= RULE_ID )* )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6049:2: kw= KEYWORD_61 this_ID_14= RULE_ID (kw= KEYWORD_10 this_ID_16= RULE_ID )*
                     {
-                    kw=(Token)match(input,KEYWORD_61,FOLLOW_KEYWORD_61_in_ruleQualifiedIdentifier12192); if (state.failed) return current;
+                    kw=(Token)match(input,KEYWORD_61,FOLLOW_KEYWORD_61_in_ruleQualifiedIdentifier12558); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
                               newLeafNode(kw, grammarAccess.getQualifiedIdentifierAccess().getJavaxKeyword_10_0()); 
                           
                     }
-                    this_ID_14=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleQualifiedIdentifier12207); if (state.failed) return current;
+                    this_ID_14=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleQualifiedIdentifier12573); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       		current.merge(this_ID_14);
@@ -15407,7 +15529,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                           newLeafNode(this_ID_14, grammarAccess.getQualifiedIdentifierAccess().getIDTerminalRuleCall_10_1()); 
                           
                     }
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5939:1: (kw= KEYWORD_10 this_ID_16= RULE_ID )*
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6061:1: (kw= KEYWORD_10 this_ID_16= RULE_ID )*
                     loop69:
                     do {
                         int alt69=2;
@@ -15420,16 +15542,16 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                         switch (alt69) {
                     	case 1 :
-                    	    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5940:2: kw= KEYWORD_10 this_ID_16= RULE_ID
+                    	    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6062:2: kw= KEYWORD_10 this_ID_16= RULE_ID
                     	    {
-                    	    kw=(Token)match(input,KEYWORD_10,FOLLOW_KEYWORD_10_in_ruleQualifiedIdentifier12226); if (state.failed) return current;
+                    	    kw=(Token)match(input,KEYWORD_10,FOLLOW_KEYWORD_10_in_ruleQualifiedIdentifier12592); if (state.failed) return current;
                     	    if ( state.backtracking==0 ) {
 
                     	              current.merge(kw);
                     	              newLeafNode(kw, grammarAccess.getQualifiedIdentifierAccess().getFullStopKeyword_10_2_0()); 
                     	          
                     	    }
-                    	    this_ID_16=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleQualifiedIdentifier12241); if (state.failed) return current;
+                    	    this_ID_16=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleQualifiedIdentifier12607); if (state.failed) return current;
                     	    if ( state.backtracking==0 ) {
 
                     	      		current.merge(this_ID_16);
@@ -15456,12 +15578,12 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 12 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5953:6: (this_ID_17= RULE_ID (kw= KEYWORD_10 this_ID_19= RULE_ID )* )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6075:6: (this_ID_17= RULE_ID (kw= KEYWORD_10 this_ID_19= RULE_ID )* )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5953:6: (this_ID_17= RULE_ID (kw= KEYWORD_10 this_ID_19= RULE_ID )* )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5953:11: this_ID_17= RULE_ID (kw= KEYWORD_10 this_ID_19= RULE_ID )*
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6075:6: (this_ID_17= RULE_ID (kw= KEYWORD_10 this_ID_19= RULE_ID )* )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6075:11: this_ID_17= RULE_ID (kw= KEYWORD_10 this_ID_19= RULE_ID )*
                     {
-                    this_ID_17=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleQualifiedIdentifier12271); if (state.failed) return current;
+                    this_ID_17=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleQualifiedIdentifier12637); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       		current.merge(this_ID_17);
@@ -15472,7 +15594,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                           newLeafNode(this_ID_17, grammarAccess.getQualifiedIdentifierAccess().getIDTerminalRuleCall_11_0()); 
                           
                     }
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5960:1: (kw= KEYWORD_10 this_ID_19= RULE_ID )*
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6082:1: (kw= KEYWORD_10 this_ID_19= RULE_ID )*
                     loop70:
                     do {
                         int alt70=2;
@@ -15485,16 +15607,16 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
                         switch (alt70) {
                     	case 1 :
-                    	    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5961:2: kw= KEYWORD_10 this_ID_19= RULE_ID
+                    	    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6083:2: kw= KEYWORD_10 this_ID_19= RULE_ID
                     	    {
-                    	    kw=(Token)match(input,KEYWORD_10,FOLLOW_KEYWORD_10_in_ruleQualifiedIdentifier12290); if (state.failed) return current;
+                    	    kw=(Token)match(input,KEYWORD_10,FOLLOW_KEYWORD_10_in_ruleQualifiedIdentifier12656); if (state.failed) return current;
                     	    if ( state.backtracking==0 ) {
 
                     	              current.merge(kw);
                     	              newLeafNode(kw, grammarAccess.getQualifiedIdentifierAccess().getFullStopKeyword_11_1_0()); 
                     	          
                     	    }
-                    	    this_ID_19=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleQualifiedIdentifier12305); if (state.failed) return current;
+                    	    this_ID_19=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleQualifiedIdentifier12671); if (state.failed) return current;
                     	    if ( state.backtracking==0 ) {
 
                     	      		current.merge(this_ID_19);
@@ -15544,7 +15666,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleCandidateClassName"
-    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5981:1: entryRuleCandidateClassName returns [String current=null] : iv_ruleCandidateClassName= ruleCandidateClassName EOF ;
+    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6103:1: entryRuleCandidateClassName returns [String current=null] : iv_ruleCandidateClassName= ruleCandidateClassName EOF ;
     public final String entryRuleCandidateClassName() throws RecognitionException {
         String current = null;
 
@@ -15552,13 +15674,13 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5982:1: (iv_ruleCandidateClassName= ruleCandidateClassName EOF )
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5983:2: iv_ruleCandidateClassName= ruleCandidateClassName EOF
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6104:1: (iv_ruleCandidateClassName= ruleCandidateClassName EOF )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6105:2: iv_ruleCandidateClassName= ruleCandidateClassName EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getCandidateClassNameRule()); 
             }
-            pushFollow(FOLLOW_ruleCandidateClassName_in_entryRuleCandidateClassName12353);
+            pushFollow(FOLLOW_ruleCandidateClassName_in_entryRuleCandidateClassName12719);
             iv_ruleCandidateClassName=ruleCandidateClassName();
 
             state._fsp--;
@@ -15566,7 +15688,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleCandidateClassName.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleCandidateClassName12364); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleCandidateClassName12730); if (state.failed) return current;
 
             }
 
@@ -15584,7 +15706,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleCandidateClassName"
-    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5990:1: ruleCandidateClassName returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : this_QualifiedIdentifier_0= ruleQualifiedIdentifier ;
+    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6112:1: ruleCandidateClassName returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : this_QualifiedIdentifier_0= ruleQualifiedIdentifier ;
     public final AntlrDatatypeRuleToken ruleCandidateClassName() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -15594,15 +15716,15 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5994:6: (this_QualifiedIdentifier_0= ruleQualifiedIdentifier )
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:5996:5: this_QualifiedIdentifier_0= ruleQualifiedIdentifier
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6116:6: (this_QualifiedIdentifier_0= ruleQualifiedIdentifier )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6118:5: this_QualifiedIdentifier_0= ruleQualifiedIdentifier
             {
             if ( state.backtracking==0 ) {
                
                       newCompositeNode(grammarAccess.getCandidateClassNameAccess().getQualifiedIdentifierParserRuleCall()); 
                   
             }
-            pushFollow(FOLLOW_ruleQualifiedIdentifier_in_ruleCandidateClassName12410);
+            pushFollow(FOLLOW_ruleQualifiedIdentifier_in_ruleCandidateClassName12776);
             this_QualifiedIdentifier_0=ruleQualifiedIdentifier();
 
             state._fsp--;
@@ -15638,7 +15760,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleClassOrInterfaceName"
-    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6014:1: entryRuleClassOrInterfaceName returns [String current=null] : iv_ruleClassOrInterfaceName= ruleClassOrInterfaceName EOF ;
+    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6136:1: entryRuleClassOrInterfaceName returns [String current=null] : iv_ruleClassOrInterfaceName= ruleClassOrInterfaceName EOF ;
     public final String entryRuleClassOrInterfaceName() throws RecognitionException {
         String current = null;
 
@@ -15646,13 +15768,13 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6015:1: (iv_ruleClassOrInterfaceName= ruleClassOrInterfaceName EOF )
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6016:2: iv_ruleClassOrInterfaceName= ruleClassOrInterfaceName EOF
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6137:1: (iv_ruleClassOrInterfaceName= ruleClassOrInterfaceName EOF )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6138:2: iv_ruleClassOrInterfaceName= ruleClassOrInterfaceName EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getClassOrInterfaceNameRule()); 
             }
-            pushFollow(FOLLOW_ruleClassOrInterfaceName_in_entryRuleClassOrInterfaceName12454);
+            pushFollow(FOLLOW_ruleClassOrInterfaceName_in_entryRuleClassOrInterfaceName12820);
             iv_ruleClassOrInterfaceName=ruleClassOrInterfaceName();
 
             state._fsp--;
@@ -15660,7 +15782,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleClassOrInterfaceName.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleClassOrInterfaceName12465); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleClassOrInterfaceName12831); if (state.failed) return current;
 
             }
 
@@ -15678,7 +15800,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleClassOrInterfaceName"
-    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6023:1: ruleClassOrInterfaceName returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : this_QualifiedIdentifier_0= ruleQualifiedIdentifier ;
+    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6145:1: ruleClassOrInterfaceName returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : this_QualifiedIdentifier_0= ruleQualifiedIdentifier ;
     public final AntlrDatatypeRuleToken ruleClassOrInterfaceName() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -15688,15 +15810,15 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6027:6: (this_QualifiedIdentifier_0= ruleQualifiedIdentifier )
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6029:5: this_QualifiedIdentifier_0= ruleQualifiedIdentifier
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6149:6: (this_QualifiedIdentifier_0= ruleQualifiedIdentifier )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6151:5: this_QualifiedIdentifier_0= ruleQualifiedIdentifier
             {
             if ( state.backtracking==0 ) {
                
                       newCompositeNode(grammarAccess.getClassOrInterfaceNameAccess().getQualifiedIdentifierParserRuleCall()); 
                   
             }
-            pushFollow(FOLLOW_ruleQualifiedIdentifier_in_ruleClassOrInterfaceName12511);
+            pushFollow(FOLLOW_ruleQualifiedIdentifier_in_ruleClassOrInterfaceName12877);
             this_QualifiedIdentifier_0=ruleQualifiedIdentifier();
 
             state._fsp--;
@@ -15732,7 +15854,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleOrderByDirection"
-    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6047:1: ruleOrderByDirection returns [Enumerator current=null] : ( (enumLiteral_0= KEYWORD_26 ) | (enumLiteral_1= KEYWORD_82 ) | (enumLiteral_2= KEYWORD_33 ) | (enumLiteral_3= KEYWORD_92 ) ) ;
+    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6169:1: ruleOrderByDirection returns [Enumerator current=null] : ( (enumLiteral_0= KEYWORD_26 ) | (enumLiteral_1= KEYWORD_82 ) | (enumLiteral_2= KEYWORD_33 ) | (enumLiteral_3= KEYWORD_92 ) ) ;
     public final Enumerator ruleOrderByDirection() throws RecognitionException {
         Enumerator current = null;
 
@@ -15743,10 +15865,10 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
          enterRule(); 
         try {
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6049:28: ( ( (enumLiteral_0= KEYWORD_26 ) | (enumLiteral_1= KEYWORD_82 ) | (enumLiteral_2= KEYWORD_33 ) | (enumLiteral_3= KEYWORD_92 ) ) )
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6050:1: ( (enumLiteral_0= KEYWORD_26 ) | (enumLiteral_1= KEYWORD_82 ) | (enumLiteral_2= KEYWORD_33 ) | (enumLiteral_3= KEYWORD_92 ) )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6171:28: ( ( (enumLiteral_0= KEYWORD_26 ) | (enumLiteral_1= KEYWORD_82 ) | (enumLiteral_2= KEYWORD_33 ) | (enumLiteral_3= KEYWORD_92 ) ) )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6172:1: ( (enumLiteral_0= KEYWORD_26 ) | (enumLiteral_1= KEYWORD_82 ) | (enumLiteral_2= KEYWORD_33 ) | (enumLiteral_3= KEYWORD_92 ) )
             {
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6050:1: ( (enumLiteral_0= KEYWORD_26 ) | (enumLiteral_1= KEYWORD_82 ) | (enumLiteral_2= KEYWORD_33 ) | (enumLiteral_3= KEYWORD_92 ) )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6172:1: ( (enumLiteral_0= KEYWORD_26 ) | (enumLiteral_1= KEYWORD_82 ) | (enumLiteral_2= KEYWORD_33 ) | (enumLiteral_3= KEYWORD_92 ) )
             int alt72=4;
             switch ( input.LA(1) ) {
             case KEYWORD_26:
@@ -15779,12 +15901,12 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
             switch (alt72) {
                 case 1 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6050:2: (enumLiteral_0= KEYWORD_26 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6172:2: (enumLiteral_0= KEYWORD_26 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6050:2: (enumLiteral_0= KEYWORD_26 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6050:7: enumLiteral_0= KEYWORD_26
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6172:2: (enumLiteral_0= KEYWORD_26 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6172:7: enumLiteral_0= KEYWORD_26
                     {
-                    enumLiteral_0=(Token)match(input,KEYWORD_26,FOLLOW_KEYWORD_26_in_ruleOrderByDirection12572); if (state.failed) return current;
+                    enumLiteral_0=(Token)match(input,KEYWORD_26,FOLLOW_KEYWORD_26_in_ruleOrderByDirection12938); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getOrderByDirectionAccess().getAscEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
@@ -15798,12 +15920,12 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6056:6: (enumLiteral_1= KEYWORD_82 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6178:6: (enumLiteral_1= KEYWORD_82 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6056:6: (enumLiteral_1= KEYWORD_82 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6056:11: enumLiteral_1= KEYWORD_82
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6178:6: (enumLiteral_1= KEYWORD_82 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6178:11: enumLiteral_1= KEYWORD_82
                     {
-                    enumLiteral_1=(Token)match(input,KEYWORD_82,FOLLOW_KEYWORD_82_in_ruleOrderByDirection12594); if (state.failed) return current;
+                    enumLiteral_1=(Token)match(input,KEYWORD_82,FOLLOW_KEYWORD_82_in_ruleOrderByDirection12960); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getOrderByDirectionAccess().getAscendingEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
@@ -15817,12 +15939,12 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6062:6: (enumLiteral_2= KEYWORD_33 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6184:6: (enumLiteral_2= KEYWORD_33 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6062:6: (enumLiteral_2= KEYWORD_33 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6062:11: enumLiteral_2= KEYWORD_33
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6184:6: (enumLiteral_2= KEYWORD_33 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6184:11: enumLiteral_2= KEYWORD_33
                     {
-                    enumLiteral_2=(Token)match(input,KEYWORD_33,FOLLOW_KEYWORD_33_in_ruleOrderByDirection12616); if (state.failed) return current;
+                    enumLiteral_2=(Token)match(input,KEYWORD_33,FOLLOW_KEYWORD_33_in_ruleOrderByDirection12982); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getOrderByDirectionAccess().getDescEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
@@ -15836,12 +15958,12 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6068:6: (enumLiteral_3= KEYWORD_92 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6190:6: (enumLiteral_3= KEYWORD_92 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6068:6: (enumLiteral_3= KEYWORD_92 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6068:11: enumLiteral_3= KEYWORD_92
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6190:6: (enumLiteral_3= KEYWORD_92 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6190:11: enumLiteral_3= KEYWORD_92
                     {
-                    enumLiteral_3=(Token)match(input,KEYWORD_92,FOLLOW_KEYWORD_92_in_ruleOrderByDirection12638); if (state.failed) return current;
+                    enumLiteral_3=(Token)match(input,KEYWORD_92,FOLLOW_KEYWORD_92_in_ruleOrderByDirection13004); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getOrderByDirectionAccess().getDescendingEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
@@ -15877,7 +15999,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleUnaryOperator"
-    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6078:1: ruleUnaryOperator returns [Enumerator current=null] : ( (enumLiteral_0= KEYWORD_7 ) | (enumLiteral_1= KEYWORD_9 ) | (enumLiteral_2= KEYWORD_17 ) | (enumLiteral_3= KEYWORD_1 ) ) ;
+    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6200:1: ruleUnaryOperator returns [Enumerator current=null] : ( (enumLiteral_0= KEYWORD_7 ) | (enumLiteral_1= KEYWORD_9 ) | (enumLiteral_2= KEYWORD_17 ) | (enumLiteral_3= KEYWORD_1 ) ) ;
     public final Enumerator ruleUnaryOperator() throws RecognitionException {
         Enumerator current = null;
 
@@ -15888,10 +16010,10 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
          enterRule(); 
         try {
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6080:28: ( ( (enumLiteral_0= KEYWORD_7 ) | (enumLiteral_1= KEYWORD_9 ) | (enumLiteral_2= KEYWORD_17 ) | (enumLiteral_3= KEYWORD_1 ) ) )
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6081:1: ( (enumLiteral_0= KEYWORD_7 ) | (enumLiteral_1= KEYWORD_9 ) | (enumLiteral_2= KEYWORD_17 ) | (enumLiteral_3= KEYWORD_1 ) )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6202:28: ( ( (enumLiteral_0= KEYWORD_7 ) | (enumLiteral_1= KEYWORD_9 ) | (enumLiteral_2= KEYWORD_17 ) | (enumLiteral_3= KEYWORD_1 ) ) )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6203:1: ( (enumLiteral_0= KEYWORD_7 ) | (enumLiteral_1= KEYWORD_9 ) | (enumLiteral_2= KEYWORD_17 ) | (enumLiteral_3= KEYWORD_1 ) )
             {
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6081:1: ( (enumLiteral_0= KEYWORD_7 ) | (enumLiteral_1= KEYWORD_9 ) | (enumLiteral_2= KEYWORD_17 ) | (enumLiteral_3= KEYWORD_1 ) )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6203:1: ( (enumLiteral_0= KEYWORD_7 ) | (enumLiteral_1= KEYWORD_9 ) | (enumLiteral_2= KEYWORD_17 ) | (enumLiteral_3= KEYWORD_1 ) )
             int alt73=4;
             switch ( input.LA(1) ) {
             case KEYWORD_7:
@@ -15924,12 +16046,12 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
             switch (alt73) {
                 case 1 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6081:2: (enumLiteral_0= KEYWORD_7 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6203:2: (enumLiteral_0= KEYWORD_7 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6081:2: (enumLiteral_0= KEYWORD_7 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6081:7: enumLiteral_0= KEYWORD_7
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6203:2: (enumLiteral_0= KEYWORD_7 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6203:7: enumLiteral_0= KEYWORD_7
                     {
-                    enumLiteral_0=(Token)match(input,KEYWORD_7,FOLLOW_KEYWORD_7_in_ruleUnaryOperator12688); if (state.failed) return current;
+                    enumLiteral_0=(Token)match(input,KEYWORD_7,FOLLOW_KEYWORD_7_in_ruleUnaryOperator13054); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getUnaryOperatorAccess().getPositiveEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
@@ -15943,12 +16065,12 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6087:6: (enumLiteral_1= KEYWORD_9 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6209:6: (enumLiteral_1= KEYWORD_9 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6087:6: (enumLiteral_1= KEYWORD_9 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6087:11: enumLiteral_1= KEYWORD_9
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6209:6: (enumLiteral_1= KEYWORD_9 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6209:11: enumLiteral_1= KEYWORD_9
                     {
-                    enumLiteral_1=(Token)match(input,KEYWORD_9,FOLLOW_KEYWORD_9_in_ruleUnaryOperator12710); if (state.failed) return current;
+                    enumLiteral_1=(Token)match(input,KEYWORD_9,FOLLOW_KEYWORD_9_in_ruleUnaryOperator13076); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getUnaryOperatorAccess().getNegativeEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
@@ -15962,12 +16084,12 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6093:6: (enumLiteral_2= KEYWORD_17 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6215:6: (enumLiteral_2= KEYWORD_17 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6093:6: (enumLiteral_2= KEYWORD_17 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6093:11: enumLiteral_2= KEYWORD_17
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6215:6: (enumLiteral_2= KEYWORD_17 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6215:11: enumLiteral_2= KEYWORD_17
                     {
-                    enumLiteral_2=(Token)match(input,KEYWORD_17,FOLLOW_KEYWORD_17_in_ruleUnaryOperator12732); if (state.failed) return current;
+                    enumLiteral_2=(Token)match(input,KEYWORD_17,FOLLOW_KEYWORD_17_in_ruleUnaryOperator13098); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getUnaryOperatorAccess().getBitwiseNotEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
@@ -15981,12 +16103,12 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6099:6: (enumLiteral_3= KEYWORD_1 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6221:6: (enumLiteral_3= KEYWORD_1 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6099:6: (enumLiteral_3= KEYWORD_1 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6099:11: enumLiteral_3= KEYWORD_1
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6221:6: (enumLiteral_3= KEYWORD_1 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6221:11: enumLiteral_3= KEYWORD_1
                     {
-                    enumLiteral_3=(Token)match(input,KEYWORD_1,FOLLOW_KEYWORD_1_in_ruleUnaryOperator12754); if (state.failed) return current;
+                    enumLiteral_3=(Token)match(input,KEYWORD_1,FOLLOW_KEYWORD_1_in_ruleUnaryOperator13120); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getUnaryOperatorAccess().getLogicalNotEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
@@ -16022,7 +16144,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleAdditionOperator"
-    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6109:1: ruleAdditionOperator returns [Enumerator current=null] : ( (enumLiteral_0= KEYWORD_7 ) | (enumLiteral_1= KEYWORD_9 ) ) ;
+    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6231:1: ruleAdditionOperator returns [Enumerator current=null] : ( (enumLiteral_0= KEYWORD_7 ) | (enumLiteral_1= KEYWORD_9 ) ) ;
     public final Enumerator ruleAdditionOperator() throws RecognitionException {
         Enumerator current = null;
 
@@ -16031,10 +16153,10 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
          enterRule(); 
         try {
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6111:28: ( ( (enumLiteral_0= KEYWORD_7 ) | (enumLiteral_1= KEYWORD_9 ) ) )
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6112:1: ( (enumLiteral_0= KEYWORD_7 ) | (enumLiteral_1= KEYWORD_9 ) )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6233:28: ( ( (enumLiteral_0= KEYWORD_7 ) | (enumLiteral_1= KEYWORD_9 ) ) )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6234:1: ( (enumLiteral_0= KEYWORD_7 ) | (enumLiteral_1= KEYWORD_9 ) )
             {
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6112:1: ( (enumLiteral_0= KEYWORD_7 ) | (enumLiteral_1= KEYWORD_9 ) )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6234:1: ( (enumLiteral_0= KEYWORD_7 ) | (enumLiteral_1= KEYWORD_9 ) )
             int alt74=2;
             int LA74_0 = input.LA(1);
 
@@ -16053,12 +16175,12 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
             }
             switch (alt74) {
                 case 1 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6112:2: (enumLiteral_0= KEYWORD_7 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6234:2: (enumLiteral_0= KEYWORD_7 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6112:2: (enumLiteral_0= KEYWORD_7 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6112:7: enumLiteral_0= KEYWORD_7
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6234:2: (enumLiteral_0= KEYWORD_7 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6234:7: enumLiteral_0= KEYWORD_7
                     {
-                    enumLiteral_0=(Token)match(input,KEYWORD_7,FOLLOW_KEYWORD_7_in_ruleAdditionOperator12804); if (state.failed) return current;
+                    enumLiteral_0=(Token)match(input,KEYWORD_7,FOLLOW_KEYWORD_7_in_ruleAdditionOperator13170); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getAdditionOperatorAccess().getAddEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
@@ -16072,12 +16194,12 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6118:6: (enumLiteral_1= KEYWORD_9 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6240:6: (enumLiteral_1= KEYWORD_9 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6118:6: (enumLiteral_1= KEYWORD_9 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6118:11: enumLiteral_1= KEYWORD_9
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6240:6: (enumLiteral_1= KEYWORD_9 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6240:11: enumLiteral_1= KEYWORD_9
                     {
-                    enumLiteral_1=(Token)match(input,KEYWORD_9,FOLLOW_KEYWORD_9_in_ruleAdditionOperator12826); if (state.failed) return current;
+                    enumLiteral_1=(Token)match(input,KEYWORD_9,FOLLOW_KEYWORD_9_in_ruleAdditionOperator13192); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getAdditionOperatorAccess().getSubtractEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
@@ -16113,7 +16235,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleMultiplicationOperator"
-    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6128:1: ruleMultiplicationOperator returns [Enumerator current=null] : ( (enumLiteral_0= KEYWORD_6 ) | (enumLiteral_1= KEYWORD_11 ) | (enumLiteral_2= KEYWORD_2 ) ) ;
+    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6250:1: ruleMultiplicationOperator returns [Enumerator current=null] : ( (enumLiteral_0= KEYWORD_6 ) | (enumLiteral_1= KEYWORD_11 ) | (enumLiteral_2= KEYWORD_2 ) ) ;
     public final Enumerator ruleMultiplicationOperator() throws RecognitionException {
         Enumerator current = null;
 
@@ -16123,10 +16245,10 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
          enterRule(); 
         try {
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6130:28: ( ( (enumLiteral_0= KEYWORD_6 ) | (enumLiteral_1= KEYWORD_11 ) | (enumLiteral_2= KEYWORD_2 ) ) )
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6131:1: ( (enumLiteral_0= KEYWORD_6 ) | (enumLiteral_1= KEYWORD_11 ) | (enumLiteral_2= KEYWORD_2 ) )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6252:28: ( ( (enumLiteral_0= KEYWORD_6 ) | (enumLiteral_1= KEYWORD_11 ) | (enumLiteral_2= KEYWORD_2 ) ) )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6253:1: ( (enumLiteral_0= KEYWORD_6 ) | (enumLiteral_1= KEYWORD_11 ) | (enumLiteral_2= KEYWORD_2 ) )
             {
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6131:1: ( (enumLiteral_0= KEYWORD_6 ) | (enumLiteral_1= KEYWORD_11 ) | (enumLiteral_2= KEYWORD_2 ) )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6253:1: ( (enumLiteral_0= KEYWORD_6 ) | (enumLiteral_1= KEYWORD_11 ) | (enumLiteral_2= KEYWORD_2 ) )
             int alt75=3;
             switch ( input.LA(1) ) {
             case KEYWORD_6:
@@ -16154,12 +16276,12 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
             switch (alt75) {
                 case 1 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6131:2: (enumLiteral_0= KEYWORD_6 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6253:2: (enumLiteral_0= KEYWORD_6 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6131:2: (enumLiteral_0= KEYWORD_6 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6131:7: enumLiteral_0= KEYWORD_6
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6253:2: (enumLiteral_0= KEYWORD_6 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6253:7: enumLiteral_0= KEYWORD_6
                     {
-                    enumLiteral_0=(Token)match(input,KEYWORD_6,FOLLOW_KEYWORD_6_in_ruleMultiplicationOperator12876); if (state.failed) return current;
+                    enumLiteral_0=(Token)match(input,KEYWORD_6,FOLLOW_KEYWORD_6_in_ruleMultiplicationOperator13242); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getMultiplicationOperatorAccess().getMultiplyEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
@@ -16173,12 +16295,12 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6137:6: (enumLiteral_1= KEYWORD_11 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6259:6: (enumLiteral_1= KEYWORD_11 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6137:6: (enumLiteral_1= KEYWORD_11 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6137:11: enumLiteral_1= KEYWORD_11
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6259:6: (enumLiteral_1= KEYWORD_11 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6259:11: enumLiteral_1= KEYWORD_11
                     {
-                    enumLiteral_1=(Token)match(input,KEYWORD_11,FOLLOW_KEYWORD_11_in_ruleMultiplicationOperator12898); if (state.failed) return current;
+                    enumLiteral_1=(Token)match(input,KEYWORD_11,FOLLOW_KEYWORD_11_in_ruleMultiplicationOperator13264); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getMultiplicationOperatorAccess().getDivideEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
@@ -16192,12 +16314,12 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6143:6: (enumLiteral_2= KEYWORD_2 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6265:6: (enumLiteral_2= KEYWORD_2 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6143:6: (enumLiteral_2= KEYWORD_2 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6143:11: enumLiteral_2= KEYWORD_2
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6265:6: (enumLiteral_2= KEYWORD_2 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6265:11: enumLiteral_2= KEYWORD_2
                     {
-                    enumLiteral_2=(Token)match(input,KEYWORD_2,FOLLOW_KEYWORD_2_in_ruleMultiplicationOperator12920); if (state.failed) return current;
+                    enumLiteral_2=(Token)match(input,KEYWORD_2,FOLLOW_KEYWORD_2_in_ruleMultiplicationOperator13286); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getMultiplicationOperatorAccess().getModuloEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
@@ -16233,7 +16355,7 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleComparisonOperator"
-    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6153:1: ruleComparisonOperator returns [Enumerator current=null] : ( (enumLiteral_0= KEYWORD_14 ) | (enumLiteral_1= KEYWORD_15 ) | (enumLiteral_2= KEYWORD_20 ) | (enumLiteral_3= KEYWORD_22 ) | (enumLiteral_4= KEYWORD_21 ) | (enumLiteral_5= KEYWORD_18 ) | (enumLiteral_6= KEYWORD_96 ) ) ;
+    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6275:1: ruleComparisonOperator returns [Enumerator current=null] : ( (enumLiteral_0= KEYWORD_14 ) | (enumLiteral_1= KEYWORD_15 ) | (enumLiteral_2= KEYWORD_20 ) | (enumLiteral_3= KEYWORD_22 ) | (enumLiteral_4= KEYWORD_21 ) | (enumLiteral_5= KEYWORD_18 ) | (enumLiteral_6= KEYWORD_96 ) ) ;
     public final Enumerator ruleComparisonOperator() throws RecognitionException {
         Enumerator current = null;
 
@@ -16247,10 +16369,10 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
          enterRule(); 
         try {
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6155:28: ( ( (enumLiteral_0= KEYWORD_14 ) | (enumLiteral_1= KEYWORD_15 ) | (enumLiteral_2= KEYWORD_20 ) | (enumLiteral_3= KEYWORD_22 ) | (enumLiteral_4= KEYWORD_21 ) | (enumLiteral_5= KEYWORD_18 ) | (enumLiteral_6= KEYWORD_96 ) ) )
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6156:1: ( (enumLiteral_0= KEYWORD_14 ) | (enumLiteral_1= KEYWORD_15 ) | (enumLiteral_2= KEYWORD_20 ) | (enumLiteral_3= KEYWORD_22 ) | (enumLiteral_4= KEYWORD_21 ) | (enumLiteral_5= KEYWORD_18 ) | (enumLiteral_6= KEYWORD_96 ) )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6277:28: ( ( (enumLiteral_0= KEYWORD_14 ) | (enumLiteral_1= KEYWORD_15 ) | (enumLiteral_2= KEYWORD_20 ) | (enumLiteral_3= KEYWORD_22 ) | (enumLiteral_4= KEYWORD_21 ) | (enumLiteral_5= KEYWORD_18 ) | (enumLiteral_6= KEYWORD_96 ) ) )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6278:1: ( (enumLiteral_0= KEYWORD_14 ) | (enumLiteral_1= KEYWORD_15 ) | (enumLiteral_2= KEYWORD_20 ) | (enumLiteral_3= KEYWORD_22 ) | (enumLiteral_4= KEYWORD_21 ) | (enumLiteral_5= KEYWORD_18 ) | (enumLiteral_6= KEYWORD_96 ) )
             {
-            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6156:1: ( (enumLiteral_0= KEYWORD_14 ) | (enumLiteral_1= KEYWORD_15 ) | (enumLiteral_2= KEYWORD_20 ) | (enumLiteral_3= KEYWORD_22 ) | (enumLiteral_4= KEYWORD_21 ) | (enumLiteral_5= KEYWORD_18 ) | (enumLiteral_6= KEYWORD_96 ) )
+            // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6278:1: ( (enumLiteral_0= KEYWORD_14 ) | (enumLiteral_1= KEYWORD_15 ) | (enumLiteral_2= KEYWORD_20 ) | (enumLiteral_3= KEYWORD_22 ) | (enumLiteral_4= KEYWORD_21 ) | (enumLiteral_5= KEYWORD_18 ) | (enumLiteral_6= KEYWORD_96 ) )
             int alt76=7;
             switch ( input.LA(1) ) {
             case KEYWORD_14:
@@ -16298,12 +16420,12 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
 
             switch (alt76) {
                 case 1 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6156:2: (enumLiteral_0= KEYWORD_14 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6278:2: (enumLiteral_0= KEYWORD_14 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6156:2: (enumLiteral_0= KEYWORD_14 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6156:7: enumLiteral_0= KEYWORD_14
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6278:2: (enumLiteral_0= KEYWORD_14 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6278:7: enumLiteral_0= KEYWORD_14
                     {
-                    enumLiteral_0=(Token)match(input,KEYWORD_14,FOLLOW_KEYWORD_14_in_ruleComparisonOperator12970); if (state.failed) return current;
+                    enumLiteral_0=(Token)match(input,KEYWORD_14,FOLLOW_KEYWORD_14_in_ruleComparisonOperator13336); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getComparisonOperatorAccess().getLessThenEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
@@ -16317,12 +16439,12 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6162:6: (enumLiteral_1= KEYWORD_15 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6284:6: (enumLiteral_1= KEYWORD_15 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6162:6: (enumLiteral_1= KEYWORD_15 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6162:11: enumLiteral_1= KEYWORD_15
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6284:6: (enumLiteral_1= KEYWORD_15 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6284:11: enumLiteral_1= KEYWORD_15
                     {
-                    enumLiteral_1=(Token)match(input,KEYWORD_15,FOLLOW_KEYWORD_15_in_ruleComparisonOperator12992); if (state.failed) return current;
+                    enumLiteral_1=(Token)match(input,KEYWORD_15,FOLLOW_KEYWORD_15_in_ruleComparisonOperator13358); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getComparisonOperatorAccess().getGreaterThenEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
@@ -16336,12 +16458,12 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6168:6: (enumLiteral_2= KEYWORD_20 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6290:6: (enumLiteral_2= KEYWORD_20 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6168:6: (enumLiteral_2= KEYWORD_20 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6168:11: enumLiteral_2= KEYWORD_20
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6290:6: (enumLiteral_2= KEYWORD_20 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6290:11: enumLiteral_2= KEYWORD_20
                     {
-                    enumLiteral_2=(Token)match(input,KEYWORD_20,FOLLOW_KEYWORD_20_in_ruleComparisonOperator13014); if (state.failed) return current;
+                    enumLiteral_2=(Token)match(input,KEYWORD_20,FOLLOW_KEYWORD_20_in_ruleComparisonOperator13380); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getComparisonOperatorAccess().getLessEqualEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
@@ -16355,12 +16477,12 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6174:6: (enumLiteral_3= KEYWORD_22 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6296:6: (enumLiteral_3= KEYWORD_22 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6174:6: (enumLiteral_3= KEYWORD_22 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6174:11: enumLiteral_3= KEYWORD_22
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6296:6: (enumLiteral_3= KEYWORD_22 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6296:11: enumLiteral_3= KEYWORD_22
                     {
-                    enumLiteral_3=(Token)match(input,KEYWORD_22,FOLLOW_KEYWORD_22_in_ruleComparisonOperator13036); if (state.failed) return current;
+                    enumLiteral_3=(Token)match(input,KEYWORD_22,FOLLOW_KEYWORD_22_in_ruleComparisonOperator13402); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getComparisonOperatorAccess().getGreaterEqualEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
@@ -16374,12 +16496,12 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 5 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6180:6: (enumLiteral_4= KEYWORD_21 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6302:6: (enumLiteral_4= KEYWORD_21 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6180:6: (enumLiteral_4= KEYWORD_21 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6180:11: enumLiteral_4= KEYWORD_21
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6302:6: (enumLiteral_4= KEYWORD_21 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6302:11: enumLiteral_4= KEYWORD_21
                     {
-                    enumLiteral_4=(Token)match(input,KEYWORD_21,FOLLOW_KEYWORD_21_in_ruleComparisonOperator13058); if (state.failed) return current;
+                    enumLiteral_4=(Token)match(input,KEYWORD_21,FOLLOW_KEYWORD_21_in_ruleComparisonOperator13424); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getComparisonOperatorAccess().getEqualEnumLiteralDeclaration_4().getEnumLiteral().getInstance();
@@ -16393,12 +16515,12 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 6 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6186:6: (enumLiteral_5= KEYWORD_18 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6308:6: (enumLiteral_5= KEYWORD_18 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6186:6: (enumLiteral_5= KEYWORD_18 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6186:11: enumLiteral_5= KEYWORD_18
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6308:6: (enumLiteral_5= KEYWORD_18 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6308:11: enumLiteral_5= KEYWORD_18
                     {
-                    enumLiteral_5=(Token)match(input,KEYWORD_18,FOLLOW_KEYWORD_18_in_ruleComparisonOperator13080); if (state.failed) return current;
+                    enumLiteral_5=(Token)match(input,KEYWORD_18,FOLLOW_KEYWORD_18_in_ruleComparisonOperator13446); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getComparisonOperatorAccess().getNotEqualEnumLiteralDeclaration_5().getEnumLiteral().getInstance();
@@ -16412,12 +16534,12 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 7 :
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6192:6: (enumLiteral_6= KEYWORD_96 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6314:6: (enumLiteral_6= KEYWORD_96 )
                     {
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6192:6: (enumLiteral_6= KEYWORD_96 )
-                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6192:11: enumLiteral_6= KEYWORD_96
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6314:6: (enumLiteral_6= KEYWORD_96 )
+                    // ../org.nightlabs.vestigo.xtext.jdoql/src-gen/org/nightlabs/vestigo/xtext/jdoql/parser/antlr/internal/InternalJDOQLParser.g:6314:11: enumLiteral_6= KEYWORD_96
                     {
-                    enumLiteral_6=(Token)match(input,KEYWORD_96,FOLLOW_KEYWORD_96_in_ruleComparisonOperator13102); if (state.failed) return current;
+                    enumLiteral_6=(Token)match(input,KEYWORD_96,FOLLOW_KEYWORD_96_in_ruleComparisonOperator13468); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getComparisonOperatorAccess().getInstanceofEnumLiteralDeclaration_6().getEnumLiteral().getInstance();
@@ -16460,11 +16582,11 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
     static final String DFA48_eofS =
         "\6\uffff\1\2\1\uffff";
     static final String DFA48_minS =
-        "\2\4\2\uffff\1\47\1\27\1\4\1\47";
+        "\2\4\1\uffff\1\47\1\uffff\1\27\1\4\1\47";
     static final String DFA48_maxS =
-        "\2\u0087\2\uffff\1\u0083\2\u0087\1\u0083";
+        "\2\u0087\1\uffff\1\u0083\1\uffff\2\u0087\1\u0083";
     static final String DFA48_acceptS =
-        "\2\uffff\1\2\1\1\4\uffff";
+        "\2\uffff\1\2\1\uffff\1\1\3\uffff";
     static final String DFA48_specialS =
         "\10\uffff}>";
     static final String[] DFA48_transitionS = {
@@ -16473,23 +16595,23 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
             "\1\2\1\uffff\2\2\2\uffff\1\2\4\uffff\2\2\11\uffff\5\2\1\uffff"+
             "\2\2\1\uffff\3\2\10\uffff\1\2\2\uffff\1\1\2\uffff\1\2\1\uffff"+
             "\1\2\2\uffff\1\2\4\uffff\4\2",
-            "\5\2\1\3\13\2\2\3\1\2\6\3\5\2\1\uffff\1\2\3\uffff\2\2\1\uffff"+
-            "\5\2\1\uffff\3\2\1\uffff\12\2\1\uffff\1\3\6\2\1\uffff\1\2\1"+
-            "\uffff\1\2\1\3\2\2\1\uffff\1\3\1\2\4\uffff\2\2\3\3\3\uffff\3"+
-            "\3\5\2\1\uffff\2\2\1\3\3\2\10\uffff\1\2\2\uffff\1\2\2\uffff"+
-            "\1\2\1\uffff\1\2\2\uffff\1\2\4\uffff\1\2\1\4\2\2",
-            "",
+            "\5\2\1\4\13\2\2\4\1\2\6\4\5\2\1\uffff\1\2\3\uffff\2\2\1\uffff"+
+            "\5\2\1\uffff\3\2\1\uffff\12\2\1\uffff\1\4\6\2\1\uffff\1\2\1"+
+            "\uffff\1\2\1\4\2\2\1\uffff\1\4\1\2\4\uffff\2\2\3\4\3\uffff\3"+
+            "\4\5\2\1\uffff\2\2\1\4\3\2\10\uffff\1\2\2\uffff\1\2\2\uffff"+
+            "\1\2\1\uffff\1\2\2\uffff\1\2\4\uffff\1\2\1\3\2\2",
             "",
             "\1\2\104\uffff\5\2\2\uffff\1\2\1\uffff\2\2\1\uffff\1\6\2\2"+
             "\1\uffff\1\2\1\5\1\2\2\uffff\3\2",
+            "",
             "\1\2\6\uffff\5\2\5\uffff\2\2\7\uffff\3\2\7\uffff\4\2\2\uffff"+
             "\6\2\3\uffff\1\2\1\uffff\2\2\2\uffff\1\2\5\uffff\1\2\11\uffff"+
             "\5\2\2\uffff\1\2\17\uffff\1\2\15\uffff\1\7\2\2",
-            "\5\3\1\uffff\13\3\2\uffff\1\3\6\uffff\5\3\1\2\1\3\1\2\1\uffff"+
-            "\1\2\2\3\1\2\5\3\1\2\3\3\1\uffff\12\3\2\uffff\6\3\1\2\2\uffff"+
-            "\1\3\1\uffff\2\3\1\2\1\uffff\1\3\3\2\1\uffff\2\3\3\uffff\3\2"+
-            "\3\uffff\5\3\1\2\2\3\1\uffff\3\3\6\2\1\uffff\1\2\1\uffff\2\2"+
-            "\1\3\7\2\1\3\1\uffff\3\2\1\uffff\3\3",
+            "\5\4\1\uffff\13\4\2\uffff\1\4\6\uffff\5\4\1\2\1\4\1\2\1\uffff"+
+            "\1\2\2\4\1\2\5\4\1\2\3\4\1\uffff\12\4\2\uffff\6\4\1\2\2\uffff"+
+            "\1\4\1\uffff\2\4\1\2\1\uffff\1\4\3\2\1\uffff\2\4\3\uffff\3\2"+
+            "\3\uffff\5\4\1\2\2\4\1\uffff\3\4\6\2\1\uffff\1\2\1\uffff\2\2"+
+            "\1\4\7\2\1\4\1\uffff\3\2\1\uffff\3\4",
             "\1\2\104\uffff\5\2\2\uffff\1\2\1\uffff\2\2\1\uffff\1\6\2\2"+
             "\1\uffff\1\2\1\5\1\2\2\uffff\3\2"
     };
@@ -16747,344 +16869,344 @@ public class InternalJDOQLParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_ruleMethodExpression_in_ruleFieldOrMethodExpression5694 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleStaticMethodExpression_in_entryRuleStaticMethodExpression5729 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleStaticMethodExpression5739 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_72_in_ruleStaticMethodExpression5790 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression5802 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression5822 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression5835 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_72_in_ruleStaticMethodExpression5784 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression5808 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression5828 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression5841 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_KEYWORD_87_in_ruleStaticMethodExpression5867 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression5879 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression5899 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression5912 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_73_in_ruleStaticMethodExpression5944 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression5956 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression5976 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression5989 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_76_in_ruleStaticMethodExpression6021 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression6033 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression6053 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression6066 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_77_in_ruleStaticMethodExpression6098 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression6110 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression6130 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression6143 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_83_in_ruleStaticMethodExpression6175 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression6187 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression6207 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression6220 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_84_in_ruleStaticMethodExpression6252 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression6264 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression6284 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression6297 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_85_in_ruleStaticMethodExpression6329 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression6341 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression6361 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression6374 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_86_in_ruleStaticMethodExpression6406 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression6418 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression6438 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression6451 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_74_in_ruleStaticMethodExpression6483 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression6495 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression6515 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression6528 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_93_in_ruleStaticMethodExpression6560 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression6572 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression6592 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression6605 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_75_in_ruleStaticMethodExpression6637 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression6649 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression6669 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression6682 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_113_in_ruleStaticMethodExpression6714 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression6726 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression6746 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression6759 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_124_in_ruleStaticMethodExpression6791 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression6803 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression6823 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression6836 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_114_in_ruleStaticMethodExpression6868 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression6880 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression6900 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression6913 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_117_in_ruleStaticMethodExpression6945 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression6957 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression6977 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression6990 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_118_in_ruleStaticMethodExpression7022 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression7034 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression7054 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression7067 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_120_in_ruleStaticMethodExpression7099 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression7111 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression7131 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression7144 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_121_in_ruleStaticMethodExpression7176 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression7188 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression7208 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression7221 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_122_in_ruleStaticMethodExpression7253 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression7265 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression7285 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression7298 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_123_in_ruleStaticMethodExpression7330 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression7342 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression7362 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression7375 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_115_in_ruleStaticMethodExpression7407 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression7419 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression7439 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression7452 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_126_in_ruleStaticMethodExpression7484 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression7496 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression7516 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression7529 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_116_in_ruleStaticMethodExpression7561 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression7573 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression7593 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression7606 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_127_in_ruleStaticMethodExpression7638 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression7650 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression7670 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression7683 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_125_in_ruleStaticMethodExpression7715 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression7727 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression7747 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression7760 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_129_in_ruleStaticMethodExpression7792 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression7804 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression7824 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression7837 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_128_in_ruleStaticMethodExpression7869 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression7881 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression7901 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression7914 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_48_in_ruleStaticMethodExpression7946 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression7958 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
-    public static final BitSet FOLLOW_KEYWORD_71_in_ruleStaticMethodExpression7976 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression8009 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression8022 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_32_in_ruleStaticMethodExpression8054 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression8066 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
-    public static final BitSet FOLLOW_KEYWORD_71_in_ruleStaticMethodExpression8084 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression8117 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression8130 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_31_in_ruleStaticMethodExpression8162 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression8174 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression8194 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression8207 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_30_in_ruleStaticMethodExpression8239 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression8251 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression8271 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression8284 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_27_in_ruleStaticMethodExpression8316 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression8328 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
-    public static final BitSet FOLLOW_KEYWORD_71_in_ruleStaticMethodExpression8346 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression8379 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression8392 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleMethodExpression_in_entryRuleMethodExpression8427 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleMethodExpression8437 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_78_in_ruleMethodExpression8488 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression8500 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression8520 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression8533 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_28_in_ruleMethodExpression8565 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression8577 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression8597 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression8610 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_68_in_ruleMethodExpression8642 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression8654 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression8666 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_40_in_ruleMethodExpression8698 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression8710 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression8722 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_99_in_ruleMethodExpression8754 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression8766 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression8786 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression8799 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_103_in_ruleMethodExpression8831 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression8843 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression8863 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression8876 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_102_in_ruleMethodExpression8908 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression8920 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression8940 = new BitSet(new long[]{0x0000000000000000L,0x0800000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_8_in_ruleMethodExpression8953 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression8973 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression8986 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_56_in_ruleMethodExpression9018 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression9030 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression9050 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression9063 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_79_in_ruleMethodExpression9095 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression9107 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression9127 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression9140 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_58_in_ruleMethodExpression9172 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression9184 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression9204 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression9217 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_108_in_ruleMethodExpression9249 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression9261 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression9281 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression9294 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_67_in_ruleMethodExpression9326 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression9338 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression9358 = new BitSet(new long[]{0x0000000000000000L,0x0900000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_8_in_ruleMethodExpression9372 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression9392 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression9407 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_62_in_ruleMethodExpression9439 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression9451 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression9463 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_69_in_ruleMethodExpression9495 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression9507 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression9527 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression9540 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_97_in_ruleMethodExpression9572 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression9584 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression9604 = new BitSet(new long[]{0x0000000000000000L,0x0800000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_8_in_ruleMethodExpression9617 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression9637 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression9650 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_98_in_ruleMethodExpression9682 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression9694 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression9714 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression9727 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_91_in_ruleMethodExpression9759 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression9771 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression9791 = new BitSet(new long[]{0x0000000000000000L,0x0900000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_8_in_ruleMethodExpression9805 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression9825 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression9840 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_100_in_ruleMethodExpression9872 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression9884 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression9896 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_101_in_ruleMethodExpression9928 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression9940 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression9952 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_42_in_ruleMethodExpression9984 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression9996 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression10008 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_59_in_ruleMethodExpression10040 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression10052 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression10064 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_80_in_ruleMethodExpression10096 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression10108 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression10120 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_66_in_ruleMethodExpression10152 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression10164 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression10176 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_65_in_ruleMethodExpression10208 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression10220 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression10232 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_89_in_ruleMethodExpression10264 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression10276 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression10288 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_90_in_ruleMethodExpression10320 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression10332 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression10344 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_70_in_ruleMethodExpression10376 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression10388 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression10400 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_81_in_ruleMethodExpression10432 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression10444 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression10456 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleParenthesesExpression_in_entryRuleParenthesesExpression10491 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleParenthesesExpression10501 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_4_in_ruleParenthesesExpression10539 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061357EL,0x00000000000000F0L});
-    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleParenthesesExpression10564 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_ruleSubquery_in_ruleParenthesesExpression10594 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_5_in_ruleParenthesesExpression10607 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleType_in_entryRuleType10642 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleType10653 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rulePrimitiveType_in_ruleType10700 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleClassOrInterfaceName_in_ruleType10733 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rulePrimitiveType_in_entryRulePrimitiveType10778 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRulePrimitiveType10789 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleNumericType_in_rulePrimitiveType10836 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_64_in_rulePrimitiveType10860 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleNumericType_in_entryRuleNumericType10900 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleNumericType10911 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleIntegralType_in_ruleNumericType10958 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFloatingPointType_in_ruleNumericType10991 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleIntegralType_in_entryRuleIntegralType11036 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleIntegralType11047 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_36_in_ruleIntegralType11085 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_52_in_ruleIntegralType11104 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_29_in_ruleIntegralType11123 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_38_in_ruleIntegralType11142 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_37_in_ruleIntegralType11161 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFloatingPointType_in_entryRuleFloatingPointType11201 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleFloatingPointType11212 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_50_in_ruleFloatingPointType11250 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_57_in_ruleFloatingPointType11269 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleIntegerLiteral_in_entryRuleIntegerLiteral11309 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleIntegerLiteral11320 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_INT_in_ruleIntegerLiteral11359 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleStringLiteral_in_entryRuleStringLiteral11403 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleStringLiteral11414 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_ruleStringLiteral11453 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleBooleanLiteral_in_entryRuleBooleanLiteral11497 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleBooleanLiteral11508 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_43_in_ruleBooleanLiteral11546 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_49_in_ruleBooleanLiteral11565 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleNullLiteral_in_entryRuleNullLiteral11605 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleNullLiteral11616 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_39_in_ruleNullLiteral11653 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleLiteral_in_entryRuleLiteral11692 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleLiteral11703 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleIntegerLiteral_in_ruleLiteral11750 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleBooleanLiteral_in_ruleLiteral11783 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleStringLiteral_in_ruleLiteral11816 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleNullLiteral_in_ruleLiteral11849 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedIdentifier_in_entryRuleQualifiedIdentifier11894 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleQualifiedIdentifier11905 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_111_in_ruleQualifiedIdentifier11943 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_104_in_ruleQualifiedIdentifier11962 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_119_in_ruleQualifiedIdentifier11981 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_109_in_ruleQualifiedIdentifier12000 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_106_in_ruleQualifiedIdentifier12019 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_112_in_ruleQualifiedIdentifier12038 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_105_in_ruleQualifiedIdentifier12057 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_107_in_ruleQualifiedIdentifier12076 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_110_in_ruleQualifiedIdentifier12095 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_51_in_ruleQualifiedIdentifier12115 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000020L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleQualifiedIdentifier12130 = new BitSet(new long[]{0x0000000000000002L,0x2000000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_10_in_ruleQualifiedIdentifier12149 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000020L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleQualifiedIdentifier12164 = new BitSet(new long[]{0x0000000000000002L,0x2000000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_61_in_ruleQualifiedIdentifier12192 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000020L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleQualifiedIdentifier12207 = new BitSet(new long[]{0x0000000000000002L,0x2000000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_10_in_ruleQualifiedIdentifier12226 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000020L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleQualifiedIdentifier12241 = new BitSet(new long[]{0x0000000000000002L,0x2000000000000000L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleQualifiedIdentifier12271 = new BitSet(new long[]{0x0000000000000002L,0x2000000000000000L});
-    public static final BitSet FOLLOW_KEYWORD_10_in_ruleQualifiedIdentifier12290 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000020L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleQualifiedIdentifier12305 = new BitSet(new long[]{0x0000000000000002L,0x2000000000000000L});
-    public static final BitSet FOLLOW_ruleCandidateClassName_in_entryRuleCandidateClassName12353 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleCandidateClassName12364 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedIdentifier_in_ruleCandidateClassName12410 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleClassOrInterfaceName_in_entryRuleClassOrInterfaceName12454 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleClassOrInterfaceName12465 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedIdentifier_in_ruleClassOrInterfaceName12511 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_26_in_ruleOrderByDirection12572 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_82_in_ruleOrderByDirection12594 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_33_in_ruleOrderByDirection12616 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_92_in_ruleOrderByDirection12638 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_7_in_ruleUnaryOperator12688 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_9_in_ruleUnaryOperator12710 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_17_in_ruleUnaryOperator12732 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_1_in_ruleUnaryOperator12754 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_7_in_ruleAdditionOperator12804 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_9_in_ruleAdditionOperator12826 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_6_in_ruleMultiplicationOperator12876 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_11_in_ruleMultiplicationOperator12898 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_2_in_ruleMultiplicationOperator12920 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_14_in_ruleComparisonOperator12970 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_15_in_ruleComparisonOperator12992 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_20_in_ruleComparisonOperator13014 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_22_in_ruleComparisonOperator13036 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_21_in_ruleComparisonOperator13058 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_18_in_ruleComparisonOperator13080 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_KEYWORD_96_in_ruleComparisonOperator13102 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression5891 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression5911 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression5924 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_73_in_ruleStaticMethodExpression5950 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression5974 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression5994 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression6007 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_76_in_ruleStaticMethodExpression6033 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression6057 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression6077 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression6090 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_77_in_ruleStaticMethodExpression6116 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression6140 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression6160 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression6173 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_83_in_ruleStaticMethodExpression6199 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression6223 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression6243 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression6256 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_84_in_ruleStaticMethodExpression6282 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression6306 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression6326 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression6339 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_85_in_ruleStaticMethodExpression6365 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression6389 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression6409 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression6422 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_86_in_ruleStaticMethodExpression6448 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression6472 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression6492 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression6505 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_74_in_ruleStaticMethodExpression6531 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression6555 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression6575 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression6588 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_93_in_ruleStaticMethodExpression6614 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression6638 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression6658 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression6671 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_75_in_ruleStaticMethodExpression6697 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression6721 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression6741 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression6754 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_113_in_ruleStaticMethodExpression6780 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression6804 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression6824 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression6837 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_124_in_ruleStaticMethodExpression6863 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression6887 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression6907 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression6920 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_114_in_ruleStaticMethodExpression6946 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression6970 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression6990 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression7003 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_117_in_ruleStaticMethodExpression7029 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression7053 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression7073 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression7086 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_118_in_ruleStaticMethodExpression7112 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression7136 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression7156 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression7169 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_120_in_ruleStaticMethodExpression7195 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression7219 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression7239 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression7252 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_121_in_ruleStaticMethodExpression7278 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression7302 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression7322 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression7335 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_122_in_ruleStaticMethodExpression7361 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression7385 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression7405 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression7418 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_123_in_ruleStaticMethodExpression7444 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression7468 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression7488 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression7501 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_115_in_ruleStaticMethodExpression7527 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression7551 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression7571 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression7584 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_126_in_ruleStaticMethodExpression7610 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression7634 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression7654 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression7667 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_116_in_ruleStaticMethodExpression7693 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression7717 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression7737 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression7750 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_127_in_ruleStaticMethodExpression7776 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression7800 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression7820 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression7833 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_125_in_ruleStaticMethodExpression7859 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression7883 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression7903 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression7916 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_129_in_ruleStaticMethodExpression7942 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression7966 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression7986 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression7999 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_128_in_ruleStaticMethodExpression8025 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression8049 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression8069 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression8082 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_48_in_ruleStaticMethodExpression8108 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression8132 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
+    public static final BitSet FOLLOW_KEYWORD_71_in_ruleStaticMethodExpression8150 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression8183 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression8196 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_32_in_ruleStaticMethodExpression8222 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression8246 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
+    public static final BitSet FOLLOW_KEYWORD_71_in_ruleStaticMethodExpression8264 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression8297 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression8310 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_31_in_ruleStaticMethodExpression8336 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression8360 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression8380 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression8393 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_30_in_ruleStaticMethodExpression8419 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression8443 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression8463 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression8476 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_27_in_ruleStaticMethodExpression8502 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleStaticMethodExpression8526 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
+    public static final BitSet FOLLOW_KEYWORD_71_in_ruleStaticMethodExpression8544 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleStaticMethodExpression8577 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleStaticMethodExpression8590 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleMethodExpression_in_entryRuleMethodExpression8625 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleMethodExpression8635 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_78_in_ruleMethodExpression8680 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression8704 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression8724 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression8737 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_28_in_ruleMethodExpression8763 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression8787 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression8807 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression8820 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_68_in_ruleMethodExpression8846 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression8870 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression8882 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_40_in_ruleMethodExpression8908 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression8932 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression8944 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_99_in_ruleMethodExpression8970 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression8994 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression9014 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression9027 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_103_in_ruleMethodExpression9053 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression9077 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression9097 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression9110 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_102_in_ruleMethodExpression9136 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression9160 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression9180 = new BitSet(new long[]{0x0000000000000000L,0x0800000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_8_in_ruleMethodExpression9193 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression9213 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression9226 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_56_in_ruleMethodExpression9252 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression9276 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression9296 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression9309 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_79_in_ruleMethodExpression9335 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression9359 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression9379 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression9392 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_58_in_ruleMethodExpression9418 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression9442 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression9462 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression9475 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_108_in_ruleMethodExpression9501 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression9525 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression9545 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression9558 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_67_in_ruleMethodExpression9584 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression9608 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression9628 = new BitSet(new long[]{0x0000000000000000L,0x0900000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_8_in_ruleMethodExpression9642 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression9662 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression9677 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_62_in_ruleMethodExpression9703 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression9727 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression9739 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_69_in_ruleMethodExpression9765 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression9789 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression9809 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression9822 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_97_in_ruleMethodExpression9848 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression9872 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression9892 = new BitSet(new long[]{0x0000000000000000L,0x0800000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_8_in_ruleMethodExpression9905 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression9925 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression9938 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_98_in_ruleMethodExpression9964 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression9988 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression10008 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression10021 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_91_in_ruleMethodExpression10047 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression10071 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression10091 = new BitSet(new long[]{0x0000000000000000L,0x0900000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_8_in_ruleMethodExpression10105 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061347EL,0x00000000000000F0L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleMethodExpression10125 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression10140 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_100_in_ruleMethodExpression10166 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression10190 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression10202 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_101_in_ruleMethodExpression10228 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression10252 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression10264 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_42_in_ruleMethodExpression10290 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression10314 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression10326 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_59_in_ruleMethodExpression10352 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression10376 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression10388 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_80_in_ruleMethodExpression10414 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression10438 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression10450 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_66_in_ruleMethodExpression10476 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression10500 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression10512 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_65_in_ruleMethodExpression10538 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression10562 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression10574 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_89_in_ruleMethodExpression10600 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression10624 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression10636 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_90_in_ruleMethodExpression10662 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression10686 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression10698 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_70_in_ruleMethodExpression10724 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression10748 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression10760 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_81_in_ruleMethodExpression10786 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleMethodExpression10810 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleMethodExpression10822 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleParenthesesExpression_in_entryRuleParenthesesExpression10857 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleParenthesesExpression10867 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_4_in_ruleParenthesesExpression10905 = new BitSet(new long[]{0x7FFEFB17C09FFDF0L,0x94900EDF0061357EL,0x00000000000000F0L});
+    public static final BitSet FOLLOW_ruleConditionalOrExpression_in_ruleParenthesesExpression10930 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_ruleSubquery_in_ruleParenthesesExpression10960 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_5_in_ruleParenthesesExpression10973 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleType_in_entryRuleType11008 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleType11019 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rulePrimitiveType_in_ruleType11066 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleClassOrInterfaceName_in_ruleType11099 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rulePrimitiveType_in_entryRulePrimitiveType11144 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRulePrimitiveType11155 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleNumericType_in_rulePrimitiveType11202 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_64_in_rulePrimitiveType11226 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleNumericType_in_entryRuleNumericType11266 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleNumericType11277 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleIntegralType_in_ruleNumericType11324 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFloatingPointType_in_ruleNumericType11357 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleIntegralType_in_entryRuleIntegralType11402 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleIntegralType11413 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_36_in_ruleIntegralType11451 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_52_in_ruleIntegralType11470 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_29_in_ruleIntegralType11489 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_38_in_ruleIntegralType11508 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_37_in_ruleIntegralType11527 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFloatingPointType_in_entryRuleFloatingPointType11567 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleFloatingPointType11578 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_50_in_ruleFloatingPointType11616 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_57_in_ruleFloatingPointType11635 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleIntegerLiteral_in_entryRuleIntegerLiteral11675 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleIntegerLiteral11686 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_INT_in_ruleIntegerLiteral11725 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleStringLiteral_in_entryRuleStringLiteral11769 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleStringLiteral11780 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_ruleStringLiteral11819 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleBooleanLiteral_in_entryRuleBooleanLiteral11863 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleBooleanLiteral11874 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_43_in_ruleBooleanLiteral11912 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_49_in_ruleBooleanLiteral11931 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleNullLiteral_in_entryRuleNullLiteral11971 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleNullLiteral11982 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_39_in_ruleNullLiteral12019 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleLiteral_in_entryRuleLiteral12058 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleLiteral12069 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleIntegerLiteral_in_ruleLiteral12116 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleBooleanLiteral_in_ruleLiteral12149 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleStringLiteral_in_ruleLiteral12182 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleNullLiteral_in_ruleLiteral12215 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedIdentifier_in_entryRuleQualifiedIdentifier12260 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleQualifiedIdentifier12271 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_111_in_ruleQualifiedIdentifier12309 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_104_in_ruleQualifiedIdentifier12328 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_119_in_ruleQualifiedIdentifier12347 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_109_in_ruleQualifiedIdentifier12366 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_106_in_ruleQualifiedIdentifier12385 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_112_in_ruleQualifiedIdentifier12404 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_105_in_ruleQualifiedIdentifier12423 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_107_in_ruleQualifiedIdentifier12442 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_110_in_ruleQualifiedIdentifier12461 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_51_in_ruleQualifiedIdentifier12481 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000020L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleQualifiedIdentifier12496 = new BitSet(new long[]{0x0000000000000002L,0x2000000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_10_in_ruleQualifiedIdentifier12515 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000020L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleQualifiedIdentifier12530 = new BitSet(new long[]{0x0000000000000002L,0x2000000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_61_in_ruleQualifiedIdentifier12558 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000020L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleQualifiedIdentifier12573 = new BitSet(new long[]{0x0000000000000002L,0x2000000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_10_in_ruleQualifiedIdentifier12592 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000020L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleQualifiedIdentifier12607 = new BitSet(new long[]{0x0000000000000002L,0x2000000000000000L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleQualifiedIdentifier12637 = new BitSet(new long[]{0x0000000000000002L,0x2000000000000000L});
+    public static final BitSet FOLLOW_KEYWORD_10_in_ruleQualifiedIdentifier12656 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000020L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleQualifiedIdentifier12671 = new BitSet(new long[]{0x0000000000000002L,0x2000000000000000L});
+    public static final BitSet FOLLOW_ruleCandidateClassName_in_entryRuleCandidateClassName12719 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleCandidateClassName12730 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedIdentifier_in_ruleCandidateClassName12776 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleClassOrInterfaceName_in_entryRuleClassOrInterfaceName12820 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleClassOrInterfaceName12831 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedIdentifier_in_ruleClassOrInterfaceName12877 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_26_in_ruleOrderByDirection12938 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_82_in_ruleOrderByDirection12960 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_33_in_ruleOrderByDirection12982 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_92_in_ruleOrderByDirection13004 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_7_in_ruleUnaryOperator13054 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_9_in_ruleUnaryOperator13076 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_17_in_ruleUnaryOperator13098 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_1_in_ruleUnaryOperator13120 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_7_in_ruleAdditionOperator13170 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_9_in_ruleAdditionOperator13192 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_6_in_ruleMultiplicationOperator13242 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_11_in_ruleMultiplicationOperator13264 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_2_in_ruleMultiplicationOperator13286 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_14_in_ruleComparisonOperator13336 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_15_in_ruleComparisonOperator13358 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_20_in_ruleComparisonOperator13380 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_22_in_ruleComparisonOperator13402 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_21_in_ruleComparisonOperator13424 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_18_in_ruleComparisonOperator13446 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_96_in_ruleComparisonOperator13468 = new BitSet(new long[]{0x0000000000000002L});
 
 }

@@ -25,11 +25,12 @@ import org.nightlabs.vestigo.xtext.jpql.jPQL.ExpressionTerm;
 import org.nightlabs.vestigo.xtext.jpql.jPQL.FromClause;
 import org.nightlabs.vestigo.xtext.jpql.jPQL.GroupByClause;
 import org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.Literal;
 import org.nightlabs.vestigo.xtext.jpql.jPQL.OrderByClause;
 import org.nightlabs.vestigo.xtext.jpql.jPQL.SelectClause;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.SelectExpression;
 import org.nightlabs.vestigo.xtext.jpql.jPQL.SelectStatement;
 import org.nightlabs.vestigo.xtext.jpql.jPQL.UnaryOperator;
-import org.nightlabs.vestigo.xtext.jpql.jPQL.Value;
 import org.nightlabs.vestigo.xtext.jpql.jPQL.Variable;
 
 /**
@@ -146,7 +147,7 @@ public class SelectStatementImpl extends JPQLQueryImpl implements SelectStatemen
    * @generated
    * @ordered
    */
-  protected Value min;
+  protected Literal min;
 
   /**
    * The cached value of the '{@link #getMax() <em>Max</em>}' containment reference.
@@ -156,7 +157,7 @@ public class SelectStatementImpl extends JPQLQueryImpl implements SelectStatemen
    * @generated
    * @ordered
    */
-  protected Value max;
+  protected Literal max;
 
   /**
    * The cached value of the '{@link #getSelectClause() <em>Select Clause</em>}' containment reference.
@@ -428,7 +429,7 @@ public class SelectStatementImpl extends JPQLQueryImpl implements SelectStatemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public Value getMin()
+  public Literal getMin()
   {
     return min;
   }
@@ -438,9 +439,9 @@ public class SelectStatementImpl extends JPQLQueryImpl implements SelectStatemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetMin(Value newMin, NotificationChain msgs)
+  public NotificationChain basicSetMin(Literal newMin, NotificationChain msgs)
   {
-    Value oldMin = min;
+    Literal oldMin = min;
     min = newMin;
     if (eNotificationRequired())
     {
@@ -455,7 +456,7 @@ public class SelectStatementImpl extends JPQLQueryImpl implements SelectStatemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setMin(Value newMin)
+  public void setMin(Literal newMin)
   {
     if (newMin != min)
     {
@@ -476,7 +477,7 @@ public class SelectStatementImpl extends JPQLQueryImpl implements SelectStatemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public Value getMax()
+  public Literal getMax()
   {
     return max;
   }
@@ -486,9 +487,9 @@ public class SelectStatementImpl extends JPQLQueryImpl implements SelectStatemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetMax(Value newMax, NotificationChain msgs)
+  public NotificationChain basicSetMax(Literal newMax, NotificationChain msgs)
   {
-    Value oldMax = max;
+    Literal oldMax = max;
     max = newMax;
     if (eNotificationRequired())
     {
@@ -503,7 +504,7 @@ public class SelectStatementImpl extends JPQLQueryImpl implements SelectStatemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setMax(Value newMax)
+  public void setMax(Literal newMax)
   {
     if (newMax != max)
     {
@@ -814,10 +815,10 @@ public class SelectStatementImpl extends JPQLQueryImpl implements SelectStatemen
         setQuery((SelectStatement)newValue);
         return;
       case JPQLPackage.SELECT_STATEMENT__MIN:
-        setMin((Value)newValue);
+        setMin((Literal)newValue);
         return;
       case JPQLPackage.SELECT_STATEMENT__MAX:
-        setMax((Value)newValue);
+        setMax((Literal)newValue);
         return;
       case JPQLPackage.SELECT_STATEMENT__SELECT_CLAUSE:
         setSelectClause((SelectClause)newValue);
@@ -864,10 +865,10 @@ public class SelectStatementImpl extends JPQLQueryImpl implements SelectStatemen
         setQuery((SelectStatement)null);
         return;
       case JPQLPackage.SELECT_STATEMENT__MIN:
-        setMin((Value)null);
+        setMin((Literal)null);
         return;
       case JPQLPackage.SELECT_STATEMENT__MAX:
-        setMax((Value)null);
+        setMax((Literal)null);
         return;
       case JPQLPackage.SELECT_STATEMENT__SELECT_CLAUSE:
         setSelectClause((SelectClause)null);
@@ -931,6 +932,13 @@ public class SelectStatementImpl extends JPQLQueryImpl implements SelectStatemen
   @Override
   public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass)
   {
+    if (baseClass == SelectExpression.class)
+    {
+      switch (derivedFeatureID)
+      {
+        default: return -1;
+      }
+    }
     if (baseClass == Expression.class)
     {
       switch (derivedFeatureID)
@@ -964,6 +972,13 @@ public class SelectStatementImpl extends JPQLQueryImpl implements SelectStatemen
   @Override
   public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass)
   {
+    if (baseClass == SelectExpression.class)
+    {
+      switch (baseFeatureID)
+      {
+        default: return -1;
+      }
+    }
     if (baseClass == Expression.class)
     {
       switch (baseFeatureID)

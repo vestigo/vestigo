@@ -6,7 +6,6 @@ package org.nightlabs.vestigo.xtext.jdoql.ui.contentassist;
 import java.util.SortedSet;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
@@ -34,12 +33,8 @@ public class JDOQLProposalProvider extends AbstractJDOQLProposalProvider
 	}
 
 	@Override
-	public void completeParameterOrFieldOrMethodExpression_ParameterName(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-		super.completeParameterOrFieldOrMethodExpression_ParameterName(model, assignment, context, acceptor);
-	}
-	
-	@Override
-	public void complete_ParameterName(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+	public void complete_ParameterName(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor)
+	{
 		super.complete_ParameterName(model, ruleCall, context, acceptor);
 
 		QueryEditorManager queryEditorManager = DocumentContextManager.sharedInstance().getQueryEditorManager(context.getDocument(), true);

@@ -280,13 +280,22 @@ public interface JDOQLPackage extends EPackage
   int EXPRESSION__METHOD = RESULT_SPEC_FEATURE_COUNT + 9;
 
   /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPRESSION__NAME = RESULT_SPEC_FEATURE_COUNT + 10;
+
+  /**
    * The feature id for the '<em><b>Number</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int EXPRESSION__NUMBER = RESULT_SPEC_FEATURE_COUNT + 10;
+  int EXPRESSION__NUMBER = RESULT_SPEC_FEATURE_COUNT + 11;
 
   /**
    * The feature id for the '<em><b>Persistable</b></em>' containment reference.
@@ -295,7 +304,7 @@ public interface JDOQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXPRESSION__PERSISTABLE = RESULT_SPEC_FEATURE_COUNT + 11;
+  int EXPRESSION__PERSISTABLE = RESULT_SPEC_FEATURE_COUNT + 12;
 
   /**
    * The feature id for the '<em><b>Is Distinct</b></em>' attribute.
@@ -304,7 +313,7 @@ public interface JDOQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXPRESSION__IS_DISTINCT = RESULT_SPEC_FEATURE_COUNT + 12;
+  int EXPRESSION__IS_DISTINCT = RESULT_SPEC_FEATURE_COUNT + 13;
 
   /**
    * The feature id for the '<em><b>Aggregate Argument</b></em>' containment reference.
@@ -313,7 +322,7 @@ public interface JDOQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXPRESSION__AGGREGATE_ARGUMENT = RESULT_SPEC_FEATURE_COUNT + 13;
+  int EXPRESSION__AGGREGATE_ARGUMENT = RESULT_SPEC_FEATURE_COUNT + 14;
 
   /**
    * The feature id for the '<em><b>Element</b></em>' containment reference.
@@ -322,7 +331,7 @@ public interface JDOQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXPRESSION__ELEMENT = RESULT_SPEC_FEATURE_COUNT + 14;
+  int EXPRESSION__ELEMENT = RESULT_SPEC_FEATURE_COUNT + 15;
 
   /**
    * The feature id for the '<em><b>Arg</b></em>' containment reference.
@@ -331,7 +340,7 @@ public interface JDOQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXPRESSION__ARG = RESULT_SPEC_FEATURE_COUNT + 15;
+  int EXPRESSION__ARG = RESULT_SPEC_FEATURE_COUNT + 16;
 
   /**
    * The feature id for the '<em><b>Key</b></em>' containment reference.
@@ -340,7 +349,7 @@ public interface JDOQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXPRESSION__KEY = RESULT_SPEC_FEATURE_COUNT + 16;
+  int EXPRESSION__KEY = RESULT_SPEC_FEATURE_COUNT + 17;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -349,7 +358,7 @@ public interface JDOQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXPRESSION__VALUE = RESULT_SPEC_FEATURE_COUNT + 17;
+  int EXPRESSION__VALUE = RESULT_SPEC_FEATURE_COUNT + 18;
 
   /**
    * The feature id for the '<em><b>Index</b></em>' containment reference.
@@ -358,7 +367,7 @@ public interface JDOQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXPRESSION__INDEX = RESULT_SPEC_FEATURE_COUNT + 18;
+  int EXPRESSION__INDEX = RESULT_SPEC_FEATURE_COUNT + 19;
 
   /**
    * The feature id for the '<em><b>String</b></em>' containment reference.
@@ -367,7 +376,7 @@ public interface JDOQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXPRESSION__STRING = RESULT_SPEC_FEATURE_COUNT + 19;
+  int EXPRESSION__STRING = RESULT_SPEC_FEATURE_COUNT + 20;
 
   /**
    * The feature id for the '<em><b>From Index</b></em>' containment reference.
@@ -376,7 +385,7 @@ public interface JDOQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXPRESSION__FROM_INDEX = RESULT_SPEC_FEATURE_COUNT + 20;
+  int EXPRESSION__FROM_INDEX = RESULT_SPEC_FEATURE_COUNT + 21;
 
   /**
    * The feature id for the '<em><b>Regex</b></em>' containment reference.
@@ -385,7 +394,7 @@ public interface JDOQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXPRESSION__REGEX = RESULT_SPEC_FEATURE_COUNT + 21;
+  int EXPRESSION__REGEX = RESULT_SPEC_FEATURE_COUNT + 22;
 
   /**
    * The feature id for the '<em><b>Replacement</b></em>' containment reference.
@@ -394,7 +403,7 @@ public interface JDOQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXPRESSION__REPLACEMENT = RESULT_SPEC_FEATURE_COUNT + 22;
+  int EXPRESSION__REPLACEMENT = RESULT_SPEC_FEATURE_COUNT + 23;
 
   /**
    * The feature id for the '<em><b>Begin Index</b></em>' containment reference.
@@ -403,7 +412,7 @@ public interface JDOQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXPRESSION__BEGIN_INDEX = RESULT_SPEC_FEATURE_COUNT + 23;
+  int EXPRESSION__BEGIN_INDEX = RESULT_SPEC_FEATURE_COUNT + 24;
 
   /**
    * The feature id for the '<em><b>End Index</b></em>' containment reference.
@@ -412,7 +421,7 @@ public interface JDOQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXPRESSION__END_INDEX = RESULT_SPEC_FEATURE_COUNT + 24;
+  int EXPRESSION__END_INDEX = RESULT_SPEC_FEATURE_COUNT + 25;
 
   /**
    * The number of structural features of the '<em>Expression</em>' class.
@@ -421,7 +430,7 @@ public interface JDOQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXPRESSION_FEATURE_COUNT = RESULT_SPEC_FEATURE_COUNT + 25;
+  int EXPRESSION_FEATURE_COUNT = RESULT_SPEC_FEATURE_COUNT + 26;
 
   /**
    * The meta object id for the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.impl.SubqueryImpl <em>Subquery</em>}' class.
@@ -522,6 +531,15 @@ public interface JDOQLPackage extends EPackage
    * @ordered
    */
   int SUBQUERY__METHOD = EXPRESSION__METHOD;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SUBQUERY__NAME = EXPRESSION__NAME;
 
   /**
    * The feature id for the '<em><b>Number</b></em>' containment reference.
@@ -1472,6 +1490,15 @@ public interface JDOQLPackage extends EPackage
   int CONDITIONAL_OR_EXPRESSION__METHOD = EXPRESSION__METHOD;
 
   /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONDITIONAL_OR_EXPRESSION__NAME = EXPRESSION__NAME;
+
+  /**
    * The feature id for the '<em><b>Number</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1723,6 +1750,15 @@ public interface JDOQLPackage extends EPackage
    * @ordered
    */
   int CONDITIONAL_AND_EXPRESSION__METHOD = EXPRESSION__METHOD;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONDITIONAL_AND_EXPRESSION__NAME = EXPRESSION__NAME;
 
   /**
    * The feature id for the '<em><b>Number</b></em>' containment reference.
@@ -1978,6 +2014,15 @@ public interface JDOQLPackage extends EPackage
   int SIMPLE_OR_EXPRESSION__METHOD = EXPRESSION__METHOD;
 
   /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SIMPLE_OR_EXPRESSION__NAME = EXPRESSION__NAME;
+
+  /**
    * The feature id for the '<em><b>Number</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2231,6 +2276,15 @@ public interface JDOQLPackage extends EPackage
   int SIMPLE_AND_EXPRESSION__METHOD = EXPRESSION__METHOD;
 
   /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SIMPLE_AND_EXPRESSION__NAME = EXPRESSION__NAME;
+
+  /**
    * The feature id for the '<em><b>Number</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2482,6 +2536,15 @@ public interface JDOQLPackage extends EPackage
    * @ordered
    */
   int COMPARISON_OPERATOR_EXPRESSION__METHOD = EXPRESSION__METHOD;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPARISON_OPERATOR_EXPRESSION__NAME = EXPRESSION__NAME;
 
   /**
    * The feature id for the '<em><b>Number</b></em>' containment reference.
@@ -2746,6 +2809,15 @@ public interface JDOQLPackage extends EPackage
   int ADDITION_EXPRESSION__METHOD = EXPRESSION__METHOD;
 
   /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ADDITION_EXPRESSION__NAME = EXPRESSION__NAME;
+
+  /**
    * The feature id for the '<em><b>Number</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3008,6 +3080,15 @@ public interface JDOQLPackage extends EPackage
   int MULTIPLICATION_EXPRESSION__METHOD = EXPRESSION__METHOD;
 
   /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MULTIPLICATION_EXPRESSION__NAME = EXPRESSION__NAME;
+
+  /**
    * The feature id for the '<em><b>Number</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3268,6 +3349,15 @@ public interface JDOQLPackage extends EPackage
    * @ordered
    */
   int FIELD_ACCESS_EXPRESSION__METHOD = EXPRESSION__METHOD;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FIELD_ACCESS_EXPRESSION__NAME = EXPRESSION__NAME;
 
   /**
    * The feature id for the '<em><b>Number</b></em>' containment reference.
@@ -4317,6 +4407,17 @@ public interface JDOQLPackage extends EPackage
    * @generated
    */
   EReference getExpression_Method();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression#getName()
+   * @see #getExpression()
+   * @generated
+   */
+  EAttribute getExpression_Name();
 
   /**
    * Returns the meta object for the containment reference '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression#getNumber <em>Number</em>}'.
@@ -5436,6 +5537,14 @@ public interface JDOQLPackage extends EPackage
      * @generated
      */
     EReference EXPRESSION__METHOD = eINSTANCE.getExpression_Method();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute EXPRESSION__NAME = eINSTANCE.getExpression_Name();
 
     /**
      * The meta object literal for the '<em><b>Number</b></em>' containment reference feature.

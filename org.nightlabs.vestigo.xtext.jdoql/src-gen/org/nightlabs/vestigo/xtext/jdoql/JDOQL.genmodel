@@ -138,6 +138,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDOQL.ecore#//Expression/id"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDOQL.ecore#//Expression/parameterName"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//Expression/method"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDOQL.ecore#//Expression/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//Expression/number"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDOQL.ecore#//Expression/persistable"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDOQL.ecore#//Expression/isDistinct"/>

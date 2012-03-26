@@ -12,14 +12,15 @@ import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
 import org.nightlabs.vestigo.core.oda.ConnectionProfile;
 import org.nightlabs.vestigo.ui.editor.DocumentContextManager;
 import org.nightlabs.vestigo.ui.editor.QueryEditorManager;
+import org.nightlabs.vestigo.ui.queryparam.QueryParameter;
 /**
  * see http://www.eclipse.org/Xtext/documentation/latest/xtext.html#contentAssist on how to customize content assistant
  */
-public class JPQLProposalProvider extends AbstractJPQLProposalProvider {
-
+public class JPQLProposalProvider extends AbstractJPQLProposalProvider
+{
 	@Override
-	public void complete_FromClass(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-
+	public void complete_FromClass(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor)
+	{
 		super.complete_FromClass(model, ruleCall, context, acceptor);
 
 		QueryEditorManager queryEditorManager = DocumentContextManager.sharedInstance().getQueryEditorManager(context.getDocument(), true);
@@ -31,4 +32,14 @@ public class JPQLProposalProvider extends AbstractJPQLProposalProvider {
 		}
 	}
 
+	@Override
+	public void complete_ParameterName(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor)
+	{
+		super.complete_ParameterName(model, ruleCall, context, acceptor);
+
+		QueryEditorManager queryEditorManager = DocumentContextManager.sharedInstance().getQueryEditorManager(context.getDocument(), true);
+		for (QueryParameter queryParameter : queryEditorManager.getQueryParameterManager().getQueryParameters()) {
+			acceptor.accept(createCompletionProposal(queryParameter.getName(), context));
+		}
+	}
 }

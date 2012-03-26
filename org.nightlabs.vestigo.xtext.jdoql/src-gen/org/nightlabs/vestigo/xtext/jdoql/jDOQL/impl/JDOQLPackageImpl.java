@@ -1178,9 +1178,9 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getExpression_Number()
+  public EAttribute getExpression_Name()
   {
-    return (EReference)expressionEClass.getEStructuralFeatures().get(10);
+    return (EAttribute)expressionEClass.getEStructuralFeatures().get(10);
   }
 
   /**
@@ -1188,7 +1188,7 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getExpression_Persistable()
+  public EReference getExpression_Number()
   {
     return (EReference)expressionEClass.getEStructuralFeatures().get(11);
   }
@@ -1198,9 +1198,19 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getExpression_Persistable()
+  {
+    return (EReference)expressionEClass.getEStructuralFeatures().get(12);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EAttribute getExpression_IsDistinct()
   {
-    return (EAttribute)expressionEClass.getEStructuralFeatures().get(12);
+    return (EAttribute)expressionEClass.getEStructuralFeatures().get(13);
   }
 
   /**
@@ -1210,7 +1220,7 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
    */
   public EReference getExpression_AggregateArgument()
   {
-    return (EReference)expressionEClass.getEStructuralFeatures().get(13);
+    return (EReference)expressionEClass.getEStructuralFeatures().get(14);
   }
 
   /**
@@ -1220,7 +1230,7 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
    */
   public EReference getExpression_Element()
   {
-    return (EReference)expressionEClass.getEStructuralFeatures().get(14);
+    return (EReference)expressionEClass.getEStructuralFeatures().get(15);
   }
 
   /**
@@ -1230,7 +1240,7 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
    */
   public EReference getExpression_Arg()
   {
-    return (EReference)expressionEClass.getEStructuralFeatures().get(15);
+    return (EReference)expressionEClass.getEStructuralFeatures().get(16);
   }
 
   /**
@@ -1240,7 +1250,7 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
    */
   public EReference getExpression_Key()
   {
-    return (EReference)expressionEClass.getEStructuralFeatures().get(16);
+    return (EReference)expressionEClass.getEStructuralFeatures().get(17);
   }
 
   /**
@@ -1250,7 +1260,7 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
    */
   public EReference getExpression_Value()
   {
-    return (EReference)expressionEClass.getEStructuralFeatures().get(17);
+    return (EReference)expressionEClass.getEStructuralFeatures().get(18);
   }
 
   /**
@@ -1260,7 +1270,7 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
    */
   public EReference getExpression_Index()
   {
-    return (EReference)expressionEClass.getEStructuralFeatures().get(18);
+    return (EReference)expressionEClass.getEStructuralFeatures().get(19);
   }
 
   /**
@@ -1270,7 +1280,7 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
    */
   public EReference getExpression_String()
   {
-    return (EReference)expressionEClass.getEStructuralFeatures().get(19);
+    return (EReference)expressionEClass.getEStructuralFeatures().get(20);
   }
 
   /**
@@ -1280,7 +1290,7 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
    */
   public EReference getExpression_FromIndex()
   {
-    return (EReference)expressionEClass.getEStructuralFeatures().get(20);
+    return (EReference)expressionEClass.getEStructuralFeatures().get(21);
   }
 
   /**
@@ -1290,7 +1300,7 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
    */
   public EReference getExpression_Regex()
   {
-    return (EReference)expressionEClass.getEStructuralFeatures().get(21);
+    return (EReference)expressionEClass.getEStructuralFeatures().get(22);
   }
 
   /**
@@ -1300,7 +1310,7 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
    */
   public EReference getExpression_Replacement()
   {
-    return (EReference)expressionEClass.getEStructuralFeatures().get(22);
+    return (EReference)expressionEClass.getEStructuralFeatures().get(23);
   }
 
   /**
@@ -1310,7 +1320,7 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
    */
   public EReference getExpression_BeginIndex()
   {
-    return (EReference)expressionEClass.getEStructuralFeatures().get(23);
+    return (EReference)expressionEClass.getEStructuralFeatures().get(24);
   }
 
   /**
@@ -1320,7 +1330,7 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
    */
   public EReference getExpression_EndIndex()
   {
-    return (EReference)expressionEClass.getEStructuralFeatures().get(24);
+    return (EReference)expressionEClass.getEStructuralFeatures().get(25);
   }
 
   /**
@@ -1695,6 +1705,7 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
     createEAttribute(expressionEClass, EXPRESSION__ID);
     createEAttribute(expressionEClass, EXPRESSION__PARAMETER_NAME);
     createEReference(expressionEClass, EXPRESSION__METHOD);
+    createEAttribute(expressionEClass, EXPRESSION__NAME);
     createEReference(expressionEClass, EXPRESSION__NUMBER);
     createEReference(expressionEClass, EXPRESSION__PERSISTABLE);
     createEAttribute(expressionEClass, EXPRESSION__IS_DISTINCT);
@@ -1891,6 +1902,7 @@ public class JDOQLPackageImpl extends EPackageImpl implements JDOQLPackage
     initEAttribute(getExpression_Id(), ecorePackage.getEString(), "id", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getExpression_ParameterName(), ecorePackage.getEString(), "parameterName", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getExpression_Method(), this.getExpression(), null, "method", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getExpression_Name(), ecorePackage.getEString(), "name", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getExpression_Number(), this.getExpression(), null, "number", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getExpression_Persistable(), this.getExpression(), null, "persistable", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getExpression_IsDistinct(), ecorePackage.getEBoolean(), "isDistinct", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

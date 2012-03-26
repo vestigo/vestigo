@@ -26,12 +26,13 @@ import org.nightlabs.vestigo.xtext.jpql.jPQL.DeleteClause;
 import org.nightlabs.vestigo.xtext.jpql.jPQL.DeleteStatement;
 import org.nightlabs.vestigo.xtext.jpql.jPQL.Expression;
 import org.nightlabs.vestigo.xtext.jpql.jPQL.ExpressionTerm;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.FloatLiteral;
 import org.nightlabs.vestigo.xtext.jpql.jPQL.FromClass;
 import org.nightlabs.vestigo.xtext.jpql.jPQL.FromClause;
 import org.nightlabs.vestigo.xtext.jpql.jPQL.FromCollection;
 import org.nightlabs.vestigo.xtext.jpql.jPQL.FromEntry;
 import org.nightlabs.vestigo.xtext.jpql.jPQL.FromJoin;
-import org.nightlabs.vestigo.xtext.jpql.jPQL.Function;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.FunctionExpression;
 import org.nightlabs.vestigo.xtext.jpql.jPQL.GroupByClause;
 import org.nightlabs.vestigo.xtext.jpql.jPQL.HavingClause;
 import org.nightlabs.vestigo.xtext.jpql.jPQL.InnerJoin;
@@ -41,6 +42,7 @@ import org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage;
 import org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLQuery;
 import org.nightlabs.vestigo.xtext.jpql.jPQL.Join;
 import org.nightlabs.vestigo.xtext.jpql.jPQL.LeftJoin;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.Literal;
 import org.nightlabs.vestigo.xtext.jpql.jPQL.MaxAggregate;
 import org.nightlabs.vestigo.xtext.jpql.jPQL.MinAggregate;
 import org.nightlabs.vestigo.xtext.jpql.jPQL.MultiplicationExpression;
@@ -59,11 +61,11 @@ import org.nightlabs.vestigo.xtext.jpql.jPQL.SelectStatement;
 import org.nightlabs.vestigo.xtext.jpql.jPQL.SetClause;
 import org.nightlabs.vestigo.xtext.jpql.jPQL.StringLiteral;
 import org.nightlabs.vestigo.xtext.jpql.jPQL.SumAggregate;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.TrimSpec;
 import org.nightlabs.vestigo.xtext.jpql.jPQL.UnaryOperator;
 import org.nightlabs.vestigo.xtext.jpql.jPQL.UpdateClause;
 import org.nightlabs.vestigo.xtext.jpql.jPQL.UpdateItem;
 import org.nightlabs.vestigo.xtext.jpql.jPQL.UpdateStatement;
-import org.nightlabs.vestigo.xtext.jpql.jPQL.Value;
 import org.nightlabs.vestigo.xtext.jpql.jPQL.Variable;
 import org.nightlabs.vestigo.xtext.jpql.jPQL.VariableDeclaration;
 import org.nightlabs.vestigo.xtext.jpql.jPQL.WhereClause;
@@ -333,14 +335,14 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass functionEClass = null;
+  private EClass functionExpressionEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass valueEClass = null;
+  private EClass literalEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -348,6 +350,20 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
    * @generated
    */
   private EClass integerLiteralEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass floatLiteralEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass floatEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -411,6 +427,13 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
    * @generated
    */
   private EEnum orderByDirectionEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum trimSpecEEnum = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -1328,9 +1351,9 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getFunction()
+  public EAttribute getParameterExpression_Index()
   {
-    return functionEClass;
+    return (EAttribute)parameterExpressionEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1338,9 +1361,9 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getFunction_Name()
+  public EClass getFunctionExpression()
   {
-    return (EAttribute)functionEClass.getEStructuralFeatures().get(0);
+    return functionExpressionEClass;
   }
 
   /**
@@ -1348,9 +1371,9 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getFunction_Params()
+  public EAttribute getFunctionExpression_Name()
   {
-    return (EReference)functionEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)functionExpressionEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1358,9 +1381,69 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getValue()
+  public EReference getFunctionExpression_Fields()
   {
-    return valueEClass;
+    return (EReference)functionExpressionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getFunctionExpression_Field()
+  {
+    return (EReference)functionExpressionEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getFunctionExpression_StartPos()
+  {
+    return (EReference)functionExpressionEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getFunctionExpression_Length()
+  {
+    return (EReference)functionExpressionEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getFunctionExpression_TrimSpec()
+  {
+    return (EAttribute)functionExpressionEClass.getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getFunctionExpression_TrimChar()
+  {
+    return (EReference)functionExpressionEClass.getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getLiteral()
+  {
+    return literalEClass;
   }
 
   /**
@@ -1381,6 +1464,56 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
   public EAttribute getIntegerLiteral_Value()
   {
     return (EAttribute)integerLiteralEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getFloatLiteral()
+  {
+    return floatLiteralEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getFloatLiteral_Value()
+  {
+    return (EReference)floatLiteralEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getFloat()
+  {
+    return floatEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getFloat_IntegerValue()
+  {
+    return (EAttribute)floatEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getFloat_FractionValue()
+  {
+    return (EAttribute)floatEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1551,6 +1684,16 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
   public EEnum getOrderByDirection()
   {
     return orderByDirectionEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EEnum getTrimSpec()
+  {
+    return trimSpecEEnum;
   }
 
   /**
@@ -1740,15 +1883,28 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
 
     parameterExpressionEClass = createEClass(PARAMETER_EXPRESSION);
     createEAttribute(parameterExpressionEClass, PARAMETER_EXPRESSION__NAME);
+    createEAttribute(parameterExpressionEClass, PARAMETER_EXPRESSION__INDEX);
 
-    functionEClass = createEClass(FUNCTION);
-    createEAttribute(functionEClass, FUNCTION__NAME);
-    createEReference(functionEClass, FUNCTION__PARAMS);
+    functionExpressionEClass = createEClass(FUNCTION_EXPRESSION);
+    createEAttribute(functionExpressionEClass, FUNCTION_EXPRESSION__NAME);
+    createEReference(functionExpressionEClass, FUNCTION_EXPRESSION__FIELDS);
+    createEReference(functionExpressionEClass, FUNCTION_EXPRESSION__FIELD);
+    createEReference(functionExpressionEClass, FUNCTION_EXPRESSION__START_POS);
+    createEReference(functionExpressionEClass, FUNCTION_EXPRESSION__LENGTH);
+    createEAttribute(functionExpressionEClass, FUNCTION_EXPRESSION__TRIM_SPEC);
+    createEReference(functionExpressionEClass, FUNCTION_EXPRESSION__TRIM_CHAR);
 
-    valueEClass = createEClass(VALUE);
+    literalEClass = createEClass(LITERAL);
 
     integerLiteralEClass = createEClass(INTEGER_LITERAL);
     createEAttribute(integerLiteralEClass, INTEGER_LITERAL__VALUE);
+
+    floatLiteralEClass = createEClass(FLOAT_LITERAL);
+    createEReference(floatLiteralEClass, FLOAT_LITERAL__VALUE);
+
+    floatEClass = createEClass(FLOAT);
+    createEAttribute(floatEClass, FLOAT__INTEGER_VALUE);
+    createEAttribute(floatEClass, FLOAT__FRACTION_VALUE);
 
     stringLiteralEClass = createEClass(STRING_LITERAL);
     createEAttribute(stringLiteralEClass, STRING_LITERAL__VALUE);
@@ -1776,6 +1932,7 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
 
     // Create enums
     orderByDirectionEEnum = createEEnum(ORDER_BY_DIRECTION);
+    trimSpecEEnum = createEEnum(TRIM_SPEC);
     unaryOperatorEEnum = createEEnum(UNARY_OPERATOR);
     additionOperatorEEnum = createEEnum(ADDITION_OPERATOR);
     multiplicationOperatorEEnum = createEEnum(MULTIPLICATION_OPERATOR);
@@ -1827,17 +1984,22 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
     joinEClass.getESuperTypes().add(this.getFromJoin());
     leftJoinEClass.getESuperTypes().add(this.getFromJoin());
     innerJoinEClass.getESuperTypes().add(this.getFromJoin());
+    expressionEClass.getESuperTypes().add(this.getSelectExpression());
     variableEClass.getESuperTypes().add(this.getExpressionTerm());
     expressionTermEClass.getESuperTypes().add(this.getExpression());
     aliasAttributeExpressionEClass.getESuperTypes().add(this.getOrderBySpec());
-    aliasAttributeExpressionEClass.getESuperTypes().add(this.getSelectExpression());
+    aliasAttributeExpressionEClass.getESuperTypes().add(this.getExpression());
     aliasAttributeExpressionEClass.getESuperTypes().add(this.getVariable());
+    parameterExpressionEClass.getESuperTypes().add(this.getExpression());
     parameterExpressionEClass.getESuperTypes().add(this.getVariable());
-    valueEClass.getESuperTypes().add(this.getVariable());
-    integerLiteralEClass.getESuperTypes().add(this.getValue());
-    stringLiteralEClass.getESuperTypes().add(this.getValue());
-    nullLiteralEClass.getESuperTypes().add(this.getValue());
-    booleanLiteralEClass.getESuperTypes().add(this.getValue());
+    functionExpressionEClass.getESuperTypes().add(this.getExpression());
+    literalEClass.getESuperTypes().add(this.getExpression());
+    literalEClass.getESuperTypes().add(this.getVariable());
+    integerLiteralEClass.getESuperTypes().add(this.getLiteral());
+    floatLiteralEClass.getESuperTypes().add(this.getLiteral());
+    stringLiteralEClass.getESuperTypes().add(this.getLiteral());
+    nullLiteralEClass.getESuperTypes().add(this.getLiteral());
+    booleanLiteralEClass.getESuperTypes().add(this.getLiteral());
     orExpressionEClass.getESuperTypes().add(this.getExpression());
     andExpressionEClass.getESuperTypes().add(this.getExpression());
     comparisonOperatorExpressionEClass.getESuperTypes().add(this.getExpression());
@@ -1878,7 +2040,7 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
 
     initEClass(updateItemEClass, UpdateItem.class, "UpdateItem", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getUpdateItem_Alias(), this.getAliasAttributeExpression(), null, "alias", null, 0, 1, UpdateItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getUpdateItem_Value(), this.getValue(), null, "value", null, 0, 1, UpdateItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getUpdateItem_Value(), this.getLiteral(), null, "value", null, 0, 1, UpdateItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(deleteStatementEClass, DeleteStatement.class, "DeleteStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getDeleteStatement_DeleteClause(), this.getDeleteClause(), null, "deleteClause", null, 0, 1, DeleteStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1948,8 +2110,8 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
     initEAttribute(getExpression_IsNot(), ecorePackage.getEBoolean(), "isNot", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getExpression_Items(), this.getVariable(), null, "items", null, 0, -1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getExpression_Query(), this.getSelectStatement(), null, "query", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getExpression_Min(), this.getValue(), null, "min", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getExpression_Max(), this.getValue(), null, "max", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getExpression_Min(), this.getLiteral(), null, "min", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getExpression_Max(), this.getLiteral(), null, "max", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(variableEClass, Variable.class, "Variable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -1962,15 +2124,28 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
 
     initEClass(parameterExpressionEClass, ParameterExpression.class, "ParameterExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getParameterExpression_Name(), ecorePackage.getEString(), "name", null, 0, 1, ParameterExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getParameterExpression_Index(), ecorePackage.getEInt(), "index", null, 0, 1, ParameterExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(functionEClass, Function.class, "Function", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getFunction_Name(), ecorePackage.getEString(), "name", null, 0, 1, Function.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getFunction_Params(), this.getVariable(), null, "params", null, 0, -1, Function.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(functionExpressionEClass, FunctionExpression.class, "FunctionExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getFunctionExpression_Name(), ecorePackage.getEString(), "name", null, 0, 1, FunctionExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFunctionExpression_Fields(), this.getVariable(), null, "fields", null, 0, -1, FunctionExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFunctionExpression_Field(), this.getVariable(), null, "field", null, 0, 1, FunctionExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFunctionExpression_StartPos(), this.getVariable(), null, "startPos", null, 0, 1, FunctionExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFunctionExpression_Length(), this.getVariable(), null, "length", null, 0, 1, FunctionExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getFunctionExpression_TrimSpec(), this.getTrimSpec(), "trimSpec", null, 0, 1, FunctionExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFunctionExpression_TrimChar(), this.getVariable(), null, "trimChar", null, 0, 1, FunctionExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(valueEClass, Value.class, "Value", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(literalEClass, Literal.class, "Literal", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(integerLiteralEClass, IntegerLiteral.class, "IntegerLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getIntegerLiteral_Value(), ecorePackage.getEInt(), "value", null, 0, 1, IntegerLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(floatLiteralEClass, FloatLiteral.class, "FloatLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getFloatLiteral_Value(), this.getFloat(), null, "value", null, 0, 1, FloatLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(floatEClass, org.nightlabs.vestigo.xtext.jpql.jPQL.Float.class, "Float", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getFloat_IntegerValue(), ecorePackage.getEInt(), "integerValue", null, 0, 1, org.nightlabs.vestigo.xtext.jpql.jPQL.Float.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getFloat_FractionValue(), ecorePackage.getEInt(), "fractionValue", null, 0, 1, org.nightlabs.vestigo.xtext.jpql.jPQL.Float.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(stringLiteralEClass, StringLiteral.class, "StringLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getStringLiteral_Value(), ecorePackage.getEString(), "value", null, 0, 1, StringLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2000,6 +2175,11 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
     initEEnum(orderByDirectionEEnum, OrderByDirection.class, "OrderByDirection");
     addEEnumLiteral(orderByDirectionEEnum, OrderByDirection.ASC);
     addEEnumLiteral(orderByDirectionEEnum, OrderByDirection.DESC);
+
+    initEEnum(trimSpecEEnum, TrimSpec.class, "TrimSpec");
+    addEEnumLiteral(trimSpecEEnum, TrimSpec.LEADING);
+    addEEnumLiteral(trimSpecEEnum, TrimSpec.TRAILING);
+    addEEnumLiteral(trimSpecEEnum, TrimSpec.BOTH);
 
     initEEnum(unaryOperatorEEnum, UnaryOperator.class, "UnaryOperator");
     addEEnumLiteral(unaryOperatorEEnum, UnaryOperator.POSITIVE);

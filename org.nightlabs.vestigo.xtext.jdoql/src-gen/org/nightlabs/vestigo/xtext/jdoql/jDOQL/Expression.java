@@ -24,6 +24,7 @@ package org.nightlabs.vestigo.xtext.jdoql.jDOQL;
  *   <li>{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression#getId <em>Id</em>}</li>
  *   <li>{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression#getParameterName <em>Parameter Name</em>}</li>
  *   <li>{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression#getMethod <em>Method</em>}</li>
+ *   <li>{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression#getName <em>Name</em>}</li>
  *   <li>{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression#getNumber <em>Number</em>}</li>
  *   <li>{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression#getPersistable <em>Persistable</em>}</li>
  *   <li>{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression#isIsDistinct <em>Is Distinct</em>}</li>
@@ -313,6 +314,32 @@ public interface Expression extends ResultSpec, OrderBySpec
    * @generated
    */
   void setMethod(Expression value);
+
+  /**
+   * Returns the value of the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Name</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Name</em>' attribute.
+   * @see #setName(String)
+   * @see org.nightlabs.vestigo.xtext.jdoql.jDOQL.JDOQLPackage#getExpression_Name()
+   * @model
+   * @generated
+   */
+  String getName();
+
+  /**
+   * Sets the value of the '{@link org.nightlabs.vestigo.xtext.jdoql.jDOQL.Expression#getName <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Name</em>' attribute.
+   * @see #getName()
+   * @generated
+   */
+  void setName(String value);
 
   /**
    * Returns the value of the '<em><b>Number</b></em>' containment reference.

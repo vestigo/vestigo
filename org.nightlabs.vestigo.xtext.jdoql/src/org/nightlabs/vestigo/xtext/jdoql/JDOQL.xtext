@@ -189,92 +189,92 @@ FieldOrMethodExpression returns Expression:
 ;
 
 StaticMethodExpression returns Expression:
-	{Expression} 'Math.abs' '(' number=ConditionalOrExpression ')' |
-	{Expression} 'Math.sqrt' '(' number=ConditionalOrExpression ')' |
-	{Expression} 'Math.cos' '(' number=ConditionalOrExpression ')' |
-	{Expression} 'Math.sin' '(' number=ConditionalOrExpression ')' |
-	{Expression} 'Math.tan' '(' number=ConditionalOrExpression ')' |
-	{Expression} 'Math.acos' '(' number=ConditionalOrExpression ')' |
-	{Expression} 'Math.asin' '(' number=ConditionalOrExpression ')' |
-	{Expression} 'Math.atan' '(' number=ConditionalOrExpression ')' |
-	{Expression} 'Math.ceil' '(' number=ConditionalOrExpression ')' |
-	{Expression} 'Math.exp' '(' number=ConditionalOrExpression ')' |
-	{Expression} 'Math.floor' '(' number=ConditionalOrExpression ')' |
-	{Expression} 'Math.log' '(' number=ConditionalOrExpression ')' |
+	name='Math.abs' '(' number=ConditionalOrExpression ')' |
+	name='Math.sqrt' '(' number=ConditionalOrExpression ')' |
+	name='Math.cos' '(' number=ConditionalOrExpression ')' |
+	name='Math.sin' '(' number=ConditionalOrExpression ')' |
+	name='Math.tan' '(' number=ConditionalOrExpression ')' |
+	name='Math.acos' '(' number=ConditionalOrExpression ')' |
+	name='Math.asin' '(' number=ConditionalOrExpression ')' |
+	name='Math.atan' '(' number=ConditionalOrExpression ')' |
+	name='Math.ceil' '(' number=ConditionalOrExpression ')' |
+	name='Math.exp' '(' number=ConditionalOrExpression ')' |
+	name='Math.floor' '(' number=ConditionalOrExpression ')' |
+	name='Math.log' '(' number=ConditionalOrExpression ')' |
 
-	{Expression} 'java.lang.Math.abs' '(' number=ConditionalOrExpression ')' |
-	{Expression} 'java.lang.Math.sqrt' '(' number=ConditionalOrExpression ')' |
-	{Expression} 'java.lang.Math.cos' '(' number=ConditionalOrExpression ')' |
-	{Expression} 'java.lang.Math.sin' '(' number=ConditionalOrExpression ')' |
-	{Expression} 'java.lang.Math.tan' '(' number=ConditionalOrExpression ')' |
-	{Expression} 'java.lang.Math.acos' '(' number=ConditionalOrExpression ')' |
-	{Expression} 'java.lang.Math.asin' '(' number=ConditionalOrExpression ')' |
-	{Expression} 'java.lang.Math.atan' '(' number=ConditionalOrExpression ')' |
-	{Expression} 'java.lang.Math.ceil' '(' number=ConditionalOrExpression ')' |
-	{Expression} 'java.lang.Math.exp' '(' number=ConditionalOrExpression ')' |
-	{Expression} 'java.lang.Math.floor' '(' number=ConditionalOrExpression ')' |
-	{Expression} 'java.lang.Math.log' '(' number=ConditionalOrExpression ')' |
+	name='java.lang.Math.abs' '(' number=ConditionalOrExpression ')' |
+	name='java.lang.Math.sqrt' '(' number=ConditionalOrExpression ')' |
+	name='java.lang.Math.cos' '(' number=ConditionalOrExpression ')' |
+	name='java.lang.Math.sin' '(' number=ConditionalOrExpression ')' |
+	name='java.lang.Math.tan' '(' number=ConditionalOrExpression ')' |
+	name='java.lang.Math.acos' '(' number=ConditionalOrExpression ')' |
+	name='java.lang.Math.asin' '(' number=ConditionalOrExpression ')' |
+	name='java.lang.Math.atan' '(' number=ConditionalOrExpression ')' |
+	name='java.lang.Math.ceil' '(' number=ConditionalOrExpression ')' |
+	name='java.lang.Math.exp' '(' number=ConditionalOrExpression ')' |
+	name='java.lang.Math.floor' '(' number=ConditionalOrExpression ')' |
+	name='java.lang.Math.log' '(' number=ConditionalOrExpression ')' |
 
-	{Expression} 'JDOHelper.getObjectId' '(' persistable=ConditionalOrExpression ')' |
-	{Expression} 'JDOHelper.getVersion' '(' persistable=ConditionalOrExpression ')' |
+	name='JDOHelper.getObjectId' '(' persistable=ConditionalOrExpression ')' |
+	name='JDOHelper.getVersion' '(' persistable=ConditionalOrExpression ')' |
 
-	{Expression} 'javax.jdo.JDOHelper.getObjectId' '(' persistable=ConditionalOrExpression ')' |
-	{Expression} 'javax.jdo.JDOHelper.getVersion' '(' persistable=ConditionalOrExpression ')' |	
+	name='javax.jdo.JDOHelper.getObjectId' '(' persistable=ConditionalOrExpression ')' |
+	name='javax.jdo.JDOHelper.getVersion' '(' persistable=ConditionalOrExpression ')' |	
 
 	// Would be cleaner to declare the following aggregate expressions separately, but here works for now.
 	// Marco :-)
-	{Expression} 'count' '(' (isDistinct?='DISTINCT')? aggregateArgument=ConditionalOrExpression ')' |
-	{Expression} 'sum' '(' (isDistinct?='DISTINCT')? aggregateArgument=ConditionalOrExpression ')' |
-	{Expression} 'min' '(' aggregateArgument=ConditionalOrExpression ')' |
-	{Expression} 'max' '(' aggregateArgument=ConditionalOrExpression ')' |
-	{Expression} 'avg' '(' (isDistinct?='DISTINCT')? aggregateArgument=ConditionalOrExpression ')'
+	name='count' '(' (isDistinct?='DISTINCT')? aggregateArgument=ConditionalOrExpression ')' |
+	name='sum' '(' (isDistinct?='DISTINCT')? aggregateArgument=ConditionalOrExpression ')' |
+	name='min' '(' aggregateArgument=ConditionalOrExpression ')' |
+	name='max' '(' aggregateArgument=ConditionalOrExpression ')' |
+	name='avg' '(' (isDistinct?='DISTINCT')? aggregateArgument=ConditionalOrExpression ')'
 ;
 
 MethodExpression returns Expression:
 	// BEGIN Collection methods
-	{Expression} 'contains' '(' element=ConditionalOrExpression ')' |
-	{Expression} 'get' '(' arg=ConditionalOrExpression ')' | // arg is the index in case of a List
-	{Expression} 'isEmpty' '(' ')' |
-	{Expression} 'size' '(' ')' |
+	name='contains' '(' element=ConditionalOrExpression ')' |
+	name='get' '(' arg=ConditionalOrExpression ')' | // arg is the index in case of a List
+	name='isEmpty' '(' ')' |
+	name='size' '(' ')' |
 	// END Collection methods
 
 	// BEGIN Map methods
-	{Expression} 'containsKey' '(' key=ConditionalOrExpression ')' |
-	{Expression} 'containsValue' '(' value=ConditionalOrExpression ')' |
-//	{Expression} 'isEmpty' '(' ')' | // already declared as Collection method - cannot redeclare
-//	{Expression} 'size' '(' ')' | // already declared as Collection method - cannot redeclare
-//	{Expression} 'get' '(' arg=ConditionalOrExpression ')' | // arg is the key, but already declared as Collection method - cannot redeclare
-	{Expression} 'containsEntry' '(' key=ConditionalOrExpression ',' value=ConditionalOrExpression ')' | 
+	name='containsKey' '(' key=ConditionalOrExpression ')' |
+	name='containsValue' '(' value=ConditionalOrExpression ')' |
+//	name='isEmpty' '(' ')' | // already declared as Collection method - cannot redeclare
+//	name='size' '(' ')' | // already declared as Collection method - cannot redeclare
+//	name='get' '(' arg=ConditionalOrExpression ')' | // arg is the key, but already declared as Collection method - cannot redeclare
+	name='containsEntry' '(' key=ConditionalOrExpression ',' value=ConditionalOrExpression ')' | 
 	// END Map methods
 	
 	// BEGIN String methods
-	{Expression} 'charAt' '(' index=ConditionalOrExpression ')' |
-	{Expression} 'endsWith' '(' string=ConditionalOrExpression ')' |
-	{Expression} 'equals' '(' string=ConditionalOrExpression ')' |
-	{Expression} 'equalsIgnoreCase' '(' string=ConditionalOrExpression ')' |
-	{Expression} 'indexOf' '(' string=ConditionalOrExpression (',' fromIndex=ConditionalOrExpression )? ')' |
-	{Expression} 'length' '(' ')' |
-	{Expression} 'matches' '(' regex=ConditionalOrExpression ')' |
-	{Expression} 'replaceAll' '(' regex=ConditionalOrExpression ',' replacement=ConditionalOrExpression ')' |
-	{Expression} 'startsWith' '(' string=ConditionalOrExpression ')' |
-	{Expression} 'substring' '(' beginIndex=ConditionalOrExpression (',' endIndex=ConditionalOrExpression)? ')' |
-	{Expression} 'toLowerCase' '(' ')' |
-	{Expression} 'toUpperCase' '(' ')' |
-	{Expression} 'trim' '(' ')' |
+	name='charAt' '(' index=ConditionalOrExpression ')' |
+	name='endsWith' '(' string=ConditionalOrExpression ')' |
+	name='equals' '(' string=ConditionalOrExpression ')' |
+	name='equalsIgnoreCase' '(' string=ConditionalOrExpression ')' |
+	name='indexOf' '(' string=ConditionalOrExpression (',' fromIndex=ConditionalOrExpression )? ')' |
+	name='length' '(' ')' |
+	name='matches' '(' regex=ConditionalOrExpression ')' |
+	name='replaceAll' '(' regex=ConditionalOrExpression ',' replacement=ConditionalOrExpression ')' |
+	name='startsWith' '(' string=ConditionalOrExpression ')' |
+	name='substring' '(' beginIndex=ConditionalOrExpression (',' endIndex=ConditionalOrExpression)? ')' |
+	name='toLowerCase' '(' ')' |
+	name='toUpperCase' '(' ')' |
+	name='trim' '(' ')' |
 	// END String methods
 
 	// BEGIN Temporal methods
-	{Expression} 'getDay' '(' ')' |
-	{Expression} 'getMonth' '(' ')' |
-	{Expression} 'getYear' '(' ')' |
-	{Expression} 'getHour' '(' ')' |
-	{Expression} 'getMinute' '(' ')' |
-	{Expression} 'getSecond' '(' ')' |
+	name='getDay' '(' ')' |
+	name='getMonth' '(' ')' |
+	name='getYear' '(' ')' |
+	name='getHour' '(' ')' |
+	name='getMinute' '(' ')' |
+	name='getSecond' '(' ')' |
 	// END Temporal methods
 
 	// BEGIN Enum methods
-	{Expression} 'ordinal' '(' ')' |
-	{Expression} 'toString' '(' ')'
+	name='ordinal' '(' ')' |
+	name='toString' '(' ')'
 	// END Enum methods
 ;
 

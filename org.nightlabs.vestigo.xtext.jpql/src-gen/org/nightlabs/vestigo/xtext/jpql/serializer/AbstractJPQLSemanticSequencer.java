@@ -23,10 +23,11 @@ import org.nightlabs.vestigo.xtext.jpql.jPQL.CountAggregate;
 import org.nightlabs.vestigo.xtext.jpql.jPQL.DeleteClause;
 import org.nightlabs.vestigo.xtext.jpql.jPQL.DeleteStatement;
 import org.nightlabs.vestigo.xtext.jpql.jPQL.Expression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.FloatLiteral;
 import org.nightlabs.vestigo.xtext.jpql.jPQL.FromClass;
 import org.nightlabs.vestigo.xtext.jpql.jPQL.FromClause;
 import org.nightlabs.vestigo.xtext.jpql.jPQL.FromCollection;
-import org.nightlabs.vestigo.xtext.jpql.jPQL.Function;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.FunctionExpression;
 import org.nightlabs.vestigo.xtext.jpql.jPQL.GroupByClause;
 import org.nightlabs.vestigo.xtext.jpql.jPQL.HavingClause;
 import org.nightlabs.vestigo.xtext.jpql.jPQL.InnerJoin;
@@ -90,7 +91,8 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 				   context == grammarAccess.getComparisonOperatorExpressionRule() ||
 				   context == grammarAccess.getComparisonOperatorExpressionAccess().getComparisonOperatorExpressionLeftAction_1_0() ||
 				   context == grammarAccess.getOrExpressionRule() ||
-				   context == grammarAccess.getOrExpressionAccess().getOrExpressionEntriesAction_1_0()) {
+				   context == grammarAccess.getOrExpressionAccess().getOrExpressionEntriesAction_1_0() ||
+				   context == grammarAccess.getSelectExpressionRule()) {
 					sequence_AdditionExpression(context, (AdditionExpression) semanticObject); 
 					return; 
 				}
@@ -100,7 +102,6 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 				   context == grammarAccess.getConcreteExpressionRule() ||
 				   context == grammarAccess.getExpressionTermRule() ||
 				   context == grammarAccess.getParenthesesExpressionRule() ||
-				   context == grammarAccess.getSelectExpressionRule() ||
 				   context == grammarAccess.getVariableRule()) {
 					sequence_AliasAttributeExpression(context, (AliasAttributeExpression) semanticObject); 
 					return; 
@@ -113,7 +114,8 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 			case JPQLPackage.AND_EXPRESSION:
 				if(context == grammarAccess.getAndExpressionRule() ||
 				   context == grammarAccess.getOrExpressionRule() ||
-				   context == grammarAccess.getOrExpressionAccess().getOrExpressionEntriesAction_1_0()) {
+				   context == grammarAccess.getOrExpressionAccess().getOrExpressionEntriesAction_1_0() ||
+				   context == grammarAccess.getSelectExpressionRule()) {
 					sequence_AndExpression(context, (AndExpression) semanticObject); 
 					return; 
 				}
@@ -130,8 +132,8 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 				if(context == grammarAccess.getBooleanLiteralRule() ||
 				   context == grammarAccess.getConcreteExpressionRule() ||
 				   context == grammarAccess.getExpressionTermRule() ||
+				   context == grammarAccess.getLiteralRule() ||
 				   context == grammarAccess.getParenthesesExpressionRule() ||
-				   context == grammarAccess.getValueRule() ||
 				   context == grammarAccess.getVariableRule()) {
 					sequence_BooleanLiteral(context, (BooleanLiteral) semanticObject); 
 					return; 
@@ -143,7 +145,8 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 				   context == grammarAccess.getComparisonOperatorExpressionRule() ||
 				   context == grammarAccess.getComparisonOperatorExpressionAccess().getComparisonOperatorExpressionLeftAction_1_0() ||
 				   context == grammarAccess.getOrExpressionRule() ||
-				   context == grammarAccess.getOrExpressionAccess().getOrExpressionEntriesAction_1_0()) {
+				   context == grammarAccess.getOrExpressionAccess().getOrExpressionEntriesAction_1_0() ||
+				   context == grammarAccess.getSelectExpressionRule()) {
 					sequence_ComparisonOperatorExpression(context, (ComparisonOperatorExpression) semanticObject); 
 					return; 
 				}
@@ -232,8 +235,26 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 				   context == grammarAccess.getMultiplicationExpressionAccess().getMultiplicationExpressionLeftAction_1_0() ||
 				   context == grammarAccess.getOrExpressionRule() ||
 				   context == grammarAccess.getOrExpressionAccess().getOrExpressionEntriesAction_1_0() ||
+				   context == grammarAccess.getSelectExpressionRule() ||
 				   context == grammarAccess.getUnaryExpressionRule()) {
 					sequence_UnaryExpression(context, (Expression) semanticObject); 
+					return; 
+				}
+				else break;
+			case JPQLPackage.FLOAT:
+				if(context == grammarAccess.getFloatRule()) {
+					sequence_Float(context, (org.nightlabs.vestigo.xtext.jpql.jPQL.Float) semanticObject); 
+					return; 
+				}
+				else break;
+			case JPQLPackage.FLOAT_LITERAL:
+				if(context == grammarAccess.getConcreteExpressionRule() ||
+				   context == grammarAccess.getExpressionTermRule() ||
+				   context == grammarAccess.getFloatLiteralRule() ||
+				   context == grammarAccess.getLiteralRule() ||
+				   context == grammarAccess.getParenthesesExpressionRule() ||
+				   context == grammarAccess.getVariableRule()) {
+					sequence_FloatLiteral(context, (FloatLiteral) semanticObject); 
 					return; 
 				}
 				else break;
@@ -265,17 +286,26 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 					return; 
 				}
 				else break;
-			case JPQLPackage.FUNCTION:
-				if(context == grammarAccess.getFunctionRule()) {
-					sequence_Function(context, (Function) semanticObject); 
+			case JPQLPackage.FUNCTION_EXPRESSION:
+				if(context == grammarAccess.getArithmeticFunctionExpressionRule()) {
+					sequence_ArithmeticFunctionExpression(context, (FunctionExpression) semanticObject); 
 					return; 
 				}
-				else if(context == grammarAccess.getNumericFunctionRule()) {
-					sequence_NumericFunction(context, (Function) semanticObject); 
+				else if(context == grammarAccess.getCollectionFunctionExpressionRule()) {
+					sequence_CollectionFunctionExpression(context, (FunctionExpression) semanticObject); 
 					return; 
 				}
-				else if(context == grammarAccess.getStringFunctionRule()) {
-					sequence_StringFunction(context, (Function) semanticObject); 
+				else if(context == grammarAccess.getConcreteExpressionRule() ||
+				   context == grammarAccess.getFunctionExpressionRule()) {
+					sequence_FunctionExpression(context, (FunctionExpression) semanticObject); 
+					return; 
+				}
+				else if(context == grammarAccess.getStringFunctionExpressionRule()) {
+					sequence_StringFunctionExpression(context, (FunctionExpression) semanticObject); 
+					return; 
+				}
+				else if(context == grammarAccess.getTemporalFunctionExpressionRule()) {
+					sequence_TemporalFunctionExpression(context, (FunctionExpression) semanticObject); 
 					return; 
 				}
 				else break;
@@ -302,8 +332,8 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 				if(context == grammarAccess.getConcreteExpressionRule() ||
 				   context == grammarAccess.getExpressionTermRule() ||
 				   context == grammarAccess.getIntegerLiteralRule() ||
+				   context == grammarAccess.getLiteralRule() ||
 				   context == grammarAccess.getParenthesesExpressionRule() ||
-				   context == grammarAccess.getValueRule() ||
 				   context == grammarAccess.getVariableRule()) {
 					sequence_IntegerLiteral(context, (IntegerLiteral) semanticObject); 
 					return; 
@@ -349,7 +379,8 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 				   context == grammarAccess.getMultiplicationExpressionRule() ||
 				   context == grammarAccess.getMultiplicationExpressionAccess().getMultiplicationExpressionLeftAction_1_0() ||
 				   context == grammarAccess.getOrExpressionRule() ||
-				   context == grammarAccess.getOrExpressionAccess().getOrExpressionEntriesAction_1_0()) {
+				   context == grammarAccess.getOrExpressionAccess().getOrExpressionEntriesAction_1_0() ||
+				   context == grammarAccess.getSelectExpressionRule()) {
 					sequence_MultiplicationExpression(context, (MultiplicationExpression) semanticObject); 
 					return; 
 				}
@@ -357,16 +388,17 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 			case JPQLPackage.NULL_LITERAL:
 				if(context == grammarAccess.getConcreteExpressionRule() ||
 				   context == grammarAccess.getExpressionTermRule() ||
+				   context == grammarAccess.getLiteralRule() ||
 				   context == grammarAccess.getNullLiteralRule() ||
 				   context == grammarAccess.getParenthesesExpressionRule() ||
-				   context == grammarAccess.getValueRule() ||
 				   context == grammarAccess.getVariableRule()) {
 					sequence_NullLiteral(context, (NullLiteral) semanticObject); 
 					return; 
 				}
 				else break;
 			case JPQLPackage.OR_EXPRESSION:
-				if(context == grammarAccess.getOrExpressionRule()) {
+				if(context == grammarAccess.getOrExpressionRule() ||
+				   context == grammarAccess.getSelectExpressionRule()) {
 					sequence_OrExpression(context, (OrExpression) semanticObject); 
 					return; 
 				}
@@ -420,9 +452,9 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 			case JPQLPackage.STRING_LITERAL:
 				if(context == grammarAccess.getConcreteExpressionRule() ||
 				   context == grammarAccess.getExpressionTermRule() ||
+				   context == grammarAccess.getLiteralRule() ||
 				   context == grammarAccess.getParenthesesExpressionRule() ||
 				   context == grammarAccess.getStringLiteralRule() ||
-				   context == grammarAccess.getValueRule() ||
 				   context == grammarAccess.getVariableRule()) {
 					sequence_StringLiteral(context, (StringLiteral) semanticObject); 
 					return; 
@@ -518,6 +550,15 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
+	 *     ((name='ABS' field=Variable) | (name='SQRT' field=Variable) | (name='MOD' fields+=Variable fields+=Variable+))
+	 */
+	protected void sequence_ArithmeticFunctionExpression(EObject context, FunctionExpression semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     (isDistinct?='DISTINCT'? item=AliasAttributeExpression)
 	 */
 	protected void sequence_AvgAggregate(EObject context, AvgAggregate semanticObject) {
@@ -527,7 +568,7 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (left=Variable isNot?='NOT'? min=Value max=Value)
+	 *     (left=Variable isNot?='NOT'? min=Literal max=Literal)
 	 */
 	protected void sequence_BetweenExpression(EObject context, Expression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -554,6 +595,15 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
+	 *     ((name='INDEX' field=Variable) | (name='SIZE' field=Variable))
+	 */
+	protected void sequence_CollectionFunctionExpression(EObject context, FunctionExpression semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     (left=ComparisonOperatorExpression_ComparisonOperatorExpression_1_0 operator=ComparisonOperator right=AdditionExpression)
 	 */
 	protected void sequence_ComparisonOperatorExpression(EObject context, ComparisonOperatorExpression semanticObject) {
@@ -574,7 +624,7 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 	 *         (left=Variable isNot?='NOT'? right=StringLiteral) | 
 	 *         (left=Variable isNot?='NOT'? items+=Variable items+=Variable*) | 
 	 *         (left=Variable isNot?='NOT'? query=Subquery) | 
-	 *         (left=Variable isNot?='NOT'? min=Value max=Value)
+	 *         (left=Variable isNot?='NOT'? min=Literal max=Literal)
 	 *     )
 	 */
 	protected void sequence_ConcreteExpression(EObject context, Expression semanticObject) {
@@ -636,6 +686,34 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
+	 *     value=Float
+	 */
+	protected void sequence_FloatLiteral(EObject context, FloatLiteral semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (integerValue=INT fractionValue=INT)
+	 */
+	protected void sequence_Float(EObject context, org.nightlabs.vestigo.xtext.jpql.jPQL.Float semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, JPQLPackage.Literals.FLOAT__INTEGER_VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JPQLPackage.Literals.FLOAT__INTEGER_VALUE));
+			if(transientValues.isValueTransient(semanticObject, JPQLPackage.Literals.FLOAT__FRACTION_VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JPQLPackage.Literals.FLOAT__FRACTION_VALUE));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getFloatAccess().getIntegerValueINTTerminalRuleCall_0_0(), semanticObject.getIntegerValue());
+		feeder.accept(grammarAccess.getFloatAccess().getFractionValueINTTerminalRuleCall_2_0(), semanticObject.getFractionValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     type=QualifiedIdentifier
 	 */
 	protected void sequence_FromClassId(EObject context, FromClass semanticObject) {
@@ -691,9 +769,31 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     ((name=StringFunctionName params+=Variable params+=Variable) | (name=NumericFunctionName params+=Variable params+=Variable))
+	 *     (
+	 *         (name='ABS' field=Variable) | 
+	 *         (name='SQRT' field=Variable) | 
+	 *         (name='MOD' fields+=Variable fields+=Variable+) | 
+	 *         (name='INDEX' field=Variable) | 
+	 *         (name='SIZE' field=Variable) | 
+	 *         (name='CONCAT' fields+=Variable fields+=Variable*) | 
+	 *         (name='SUBSTRING' field=Variable startPos=Variable length=Variable?) | 
+	 *         (name='TRIM' trimSpec=TrimSpec? trimChar=Variable? field=Variable) | 
+	 *         (name='LOWER' field=Variable) | 
+	 *         (name='UPPER' field=Variable) | 
+	 *         (name='LENGTH' field=Variable) | 
+	 *         (name='LOCATE' fields+=Variable fields+=Variable startPos=Variable?) | 
+	 *         name='CURRENT_DATE' | 
+	 *         name='CURRENT_TIME' | 
+	 *         name='CURRENT_TIMESTAMP' | 
+	 *         (name='YEAR' field=Variable) | 
+	 *         (name='MONTH' field=Variable) | 
+	 *         (name='DAY' field=Variable) | 
+	 *         (name='HOUR' field=Variable) | 
+	 *         (name='MINUTE' field=Variable) | 
+	 *         (name='SECOND' field=Variable)
+	 *     )
 	 */
-	protected void sequence_Function(EObject context, Function semanticObject) {
+	protected void sequence_FunctionExpression(EObject context, FunctionExpression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -842,15 +942,6 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (name=NumericFunctionName params+=Variable params+=Variable)
-	 */
-	protected void sequence_NumericFunction(EObject context, Function semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
 	 *     (entries+=OrExpression_OrExpression_1_0 entries+=AndExpression+)
 	 */
 	protected void sequence_OrExpression(EObject context, OrExpression semanticObject) {
@@ -878,7 +969,7 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     name=ID
+	 *     (name=ParameterName | index=INT)
 	 */
 	protected void sequence_ParameterExpression(EObject context, ParameterExpression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -932,9 +1023,17 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (name=StringFunctionName params+=Variable params+=Variable)
+	 *     (
+	 *         (name='CONCAT' fields+=Variable fields+=Variable*) | 
+	 *         (name='SUBSTRING' field=Variable startPos=Variable length=Variable?) | 
+	 *         (name='TRIM' trimSpec=TrimSpec? trimChar=Variable? field=Variable) | 
+	 *         (name='LOWER' field=Variable) | 
+	 *         (name='UPPER' field=Variable) | 
+	 *         (name='LENGTH' field=Variable) | 
+	 *         (name='LOCATE' fields+=Variable fields+=Variable startPos=Variable?)
+	 *     )
 	 */
-	protected void sequence_StringFunction(EObject context, Function semanticObject) {
+	protected void sequence_StringFunctionExpression(EObject context, FunctionExpression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -959,6 +1058,25 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
+	 *     (
+	 *         name='CURRENT_DATE' | 
+	 *         name='CURRENT_TIME' | 
+	 *         name='CURRENT_TIMESTAMP' | 
+	 *         (name='YEAR' field=Variable) | 
+	 *         (name='MONTH' field=Variable) | 
+	 *         (name='DAY' field=Variable) | 
+	 *         (name='HOUR' field=Variable) | 
+	 *         (name='MINUTE' field=Variable) | 
+	 *         (name='SECOND' field=Variable)
+	 *     )
+	 */
+	protected void sequence_TemporalFunctionExpression(EObject context, FunctionExpression semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     (unaryOperator=UnaryOperator? right=ConcreteExpression)
 	 */
 	protected void sequence_UnaryExpression(EObject context, Expression semanticObject) {
@@ -977,7 +1095,7 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (alias=AliasAttributeExpression value=Value)
+	 *     (alias=AliasAttributeExpression value=Literal)
 	 */
 	protected void sequence_UpdateItem(EObject context, UpdateItem semanticObject) {
 		if(errorAcceptor != null) {
@@ -989,7 +1107,7 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
 		feeder.accept(grammarAccess.getUpdateItemAccess().getAliasAliasAttributeExpressionParserRuleCall_0_0(), semanticObject.getAlias());
-		feeder.accept(grammarAccess.getUpdateItemAccess().getValueValueParserRuleCall_2_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getUpdateItemAccess().getValueLiteralParserRuleCall_2_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	

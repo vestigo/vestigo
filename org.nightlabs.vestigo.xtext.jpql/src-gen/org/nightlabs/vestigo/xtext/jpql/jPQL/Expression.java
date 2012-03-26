@@ -7,8 +7,6 @@ package org.nightlabs.vestigo.xtext.jpql.jPQL;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Expression</b></em>'.
@@ -32,7 +30,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface Expression extends EObject
+public interface Expression extends SelectExpression
 {
   /**
    * Returns the value of the '<em><b>Unary Operator</b></em>' attribute.
@@ -192,12 +190,12 @@ public interface Expression extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Min</em>' containment reference.
-   * @see #setMin(Value)
+   * @see #setMin(Literal)
    * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getExpression_Min()
    * @model containment="true"
    * @generated
    */
-  Value getMin();
+  Literal getMin();
 
   /**
    * Sets the value of the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.Expression#getMin <em>Min</em>}' containment reference.
@@ -207,7 +205,7 @@ public interface Expression extends EObject
    * @see #getMin()
    * @generated
    */
-  void setMin(Value value);
+  void setMin(Literal value);
 
   /**
    * Returns the value of the '<em><b>Max</b></em>' containment reference.
@@ -218,12 +216,12 @@ public interface Expression extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Max</em>' containment reference.
-   * @see #setMax(Value)
+   * @see #setMax(Literal)
    * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getExpression_Max()
    * @model containment="true"
    * @generated
    */
-  Value getMax();
+  Literal getMax();
 
   /**
    * Sets the value of the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.Expression#getMax <em>Max</em>}' containment reference.
@@ -233,6 +231,6 @@ public interface Expression extends EObject
    * @see #getMax()
    * @generated
    */
-  void setMax(Value value);
+  void setMax(Literal value);
 
 } // Expression

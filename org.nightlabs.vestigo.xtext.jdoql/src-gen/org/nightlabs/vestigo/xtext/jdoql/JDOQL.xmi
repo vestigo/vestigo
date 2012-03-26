@@ -690,12 +690,9 @@
       </type>
       <alternatives xsi:type="xtext:Alternatives">
         <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Action">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
-            </type>
+          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="Math.abs"/>
           </elements>
-          <elements xsi:type="xtext:Keyword" value="Math.abs"/>
           <elements xsi:type="xtext:Keyword" value="("/>
           <elements xsi:type="xtext:Assignment" feature="number" operator="=">
             <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.28"/>
@@ -703,12 +700,9 @@
           <elements xsi:type="xtext:Keyword" value=")"/>
         </elements>
         <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Action">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
-            </type>
+          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="Math.sqrt"/>
           </elements>
-          <elements xsi:type="xtext:Keyword" value="Math.sqrt"/>
           <elements xsi:type="xtext:Keyword" value="("/>
           <elements xsi:type="xtext:Assignment" feature="number" operator="=">
             <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.28"/>
@@ -716,12 +710,9 @@
           <elements xsi:type="xtext:Keyword" value=")"/>
         </elements>
         <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Action">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
-            </type>
+          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="Math.cos"/>
           </elements>
-          <elements xsi:type="xtext:Keyword" value="Math.cos"/>
           <elements xsi:type="xtext:Keyword" value="("/>
           <elements xsi:type="xtext:Assignment" feature="number" operator="=">
             <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.28"/>
@@ -729,12 +720,9 @@
           <elements xsi:type="xtext:Keyword" value=")"/>
         </elements>
         <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Action">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
-            </type>
+          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="Math.sin"/>
           </elements>
-          <elements xsi:type="xtext:Keyword" value="Math.sin"/>
           <elements xsi:type="xtext:Keyword" value="("/>
           <elements xsi:type="xtext:Assignment" feature="number" operator="=">
             <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.28"/>
@@ -742,12 +730,9 @@
           <elements xsi:type="xtext:Keyword" value=")"/>
         </elements>
         <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Action">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
-            </type>
+          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="Math.tan"/>
           </elements>
-          <elements xsi:type="xtext:Keyword" value="Math.tan"/>
           <elements xsi:type="xtext:Keyword" value="("/>
           <elements xsi:type="xtext:Assignment" feature="number" operator="=">
             <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.28"/>
@@ -755,12 +740,9 @@
           <elements xsi:type="xtext:Keyword" value=")"/>
         </elements>
         <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Action">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
-            </type>
+          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="Math.acos"/>
           </elements>
-          <elements xsi:type="xtext:Keyword" value="Math.acos"/>
           <elements xsi:type="xtext:Keyword" value="("/>
           <elements xsi:type="xtext:Assignment" feature="number" operator="=">
             <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.28"/>
@@ -768,12 +750,9 @@
           <elements xsi:type="xtext:Keyword" value=")"/>
         </elements>
         <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Action">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
-            </type>
+          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="Math.asin"/>
           </elements>
-          <elements xsi:type="xtext:Keyword" value="Math.asin"/>
           <elements xsi:type="xtext:Keyword" value="("/>
           <elements xsi:type="xtext:Assignment" feature="number" operator="=">
             <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.28"/>
@@ -781,12 +760,9 @@
           <elements xsi:type="xtext:Keyword" value=")"/>
         </elements>
         <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Action">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
-            </type>
+          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="Math.atan"/>
           </elements>
-          <elements xsi:type="xtext:Keyword" value="Math.atan"/>
           <elements xsi:type="xtext:Keyword" value="("/>
           <elements xsi:type="xtext:Assignment" feature="number" operator="=">
             <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.28"/>
@@ -794,12 +770,9 @@
           <elements xsi:type="xtext:Keyword" value=")"/>
         </elements>
         <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Action">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
-            </type>
+          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="Math.ceil"/>
           </elements>
-          <elements xsi:type="xtext:Keyword" value="Math.ceil"/>
           <elements xsi:type="xtext:Keyword" value="("/>
           <elements xsi:type="xtext:Assignment" feature="number" operator="=">
             <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.28"/>
@@ -807,12 +780,9 @@
           <elements xsi:type="xtext:Keyword" value=")"/>
         </elements>
         <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Action">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
-            </type>
+          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="Math.exp"/>
           </elements>
-          <elements xsi:type="xtext:Keyword" value="Math.exp"/>
           <elements xsi:type="xtext:Keyword" value="("/>
           <elements xsi:type="xtext:Assignment" feature="number" operator="=">
             <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.28"/>
@@ -820,12 +790,9 @@
           <elements xsi:type="xtext:Keyword" value=")"/>
         </elements>
         <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Action">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
-            </type>
+          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="Math.floor"/>
           </elements>
-          <elements xsi:type="xtext:Keyword" value="Math.floor"/>
           <elements xsi:type="xtext:Keyword" value="("/>
           <elements xsi:type="xtext:Assignment" feature="number" operator="=">
             <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.28"/>
@@ -833,12 +800,9 @@
           <elements xsi:type="xtext:Keyword" value=")"/>
         </elements>
         <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Action">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
-            </type>
+          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="Math.log"/>
           </elements>
-          <elements xsi:type="xtext:Keyword" value="Math.log"/>
           <elements xsi:type="xtext:Keyword" value="("/>
           <elements xsi:type="xtext:Assignment" feature="number" operator="=">
             <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.28"/>
@@ -846,12 +810,9 @@
           <elements xsi:type="xtext:Keyword" value=")"/>
         </elements>
         <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Action">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
-            </type>
+          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="java.lang.Math.abs"/>
           </elements>
-          <elements xsi:type="xtext:Keyword" value="java.lang.Math.abs"/>
           <elements xsi:type="xtext:Keyword" value="("/>
           <elements xsi:type="xtext:Assignment" feature="number" operator="=">
             <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.28"/>
@@ -859,12 +820,9 @@
           <elements xsi:type="xtext:Keyword" value=")"/>
         </elements>
         <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Action">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
-            </type>
+          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="java.lang.Math.sqrt"/>
           </elements>
-          <elements xsi:type="xtext:Keyword" value="java.lang.Math.sqrt"/>
           <elements xsi:type="xtext:Keyword" value="("/>
           <elements xsi:type="xtext:Assignment" feature="number" operator="=">
             <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.28"/>
@@ -872,12 +830,9 @@
           <elements xsi:type="xtext:Keyword" value=")"/>
         </elements>
         <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Action">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
-            </type>
+          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="java.lang.Math.cos"/>
           </elements>
-          <elements xsi:type="xtext:Keyword" value="java.lang.Math.cos"/>
           <elements xsi:type="xtext:Keyword" value="("/>
           <elements xsi:type="xtext:Assignment" feature="number" operator="=">
             <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.28"/>
@@ -885,12 +840,9 @@
           <elements xsi:type="xtext:Keyword" value=")"/>
         </elements>
         <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Action">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
-            </type>
+          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="java.lang.Math.sin"/>
           </elements>
-          <elements xsi:type="xtext:Keyword" value="java.lang.Math.sin"/>
           <elements xsi:type="xtext:Keyword" value="("/>
           <elements xsi:type="xtext:Assignment" feature="number" operator="=">
             <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.28"/>
@@ -898,12 +850,9 @@
           <elements xsi:type="xtext:Keyword" value=")"/>
         </elements>
         <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Action">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
-            </type>
+          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="java.lang.Math.tan"/>
           </elements>
-          <elements xsi:type="xtext:Keyword" value="java.lang.Math.tan"/>
           <elements xsi:type="xtext:Keyword" value="("/>
           <elements xsi:type="xtext:Assignment" feature="number" operator="=">
             <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.28"/>
@@ -911,12 +860,9 @@
           <elements xsi:type="xtext:Keyword" value=")"/>
         </elements>
         <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Action">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
-            </type>
+          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="java.lang.Math.acos"/>
           </elements>
-          <elements xsi:type="xtext:Keyword" value="java.lang.Math.acos"/>
           <elements xsi:type="xtext:Keyword" value="("/>
           <elements xsi:type="xtext:Assignment" feature="number" operator="=">
             <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.28"/>
@@ -924,12 +870,9 @@
           <elements xsi:type="xtext:Keyword" value=")"/>
         </elements>
         <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Action">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
-            </type>
+          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="java.lang.Math.asin"/>
           </elements>
-          <elements xsi:type="xtext:Keyword" value="java.lang.Math.asin"/>
           <elements xsi:type="xtext:Keyword" value="("/>
           <elements xsi:type="xtext:Assignment" feature="number" operator="=">
             <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.28"/>
@@ -937,12 +880,9 @@
           <elements xsi:type="xtext:Keyword" value=")"/>
         </elements>
         <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Action">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
-            </type>
+          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="java.lang.Math.atan"/>
           </elements>
-          <elements xsi:type="xtext:Keyword" value="java.lang.Math.atan"/>
           <elements xsi:type="xtext:Keyword" value="("/>
           <elements xsi:type="xtext:Assignment" feature="number" operator="=">
             <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.28"/>
@@ -950,12 +890,9 @@
           <elements xsi:type="xtext:Keyword" value=")"/>
         </elements>
         <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Action">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
-            </type>
+          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="java.lang.Math.ceil"/>
           </elements>
-          <elements xsi:type="xtext:Keyword" value="java.lang.Math.ceil"/>
           <elements xsi:type="xtext:Keyword" value="("/>
           <elements xsi:type="xtext:Assignment" feature="number" operator="=">
             <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.28"/>
@@ -963,12 +900,9 @@
           <elements xsi:type="xtext:Keyword" value=")"/>
         </elements>
         <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Action">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
-            </type>
+          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="java.lang.Math.exp"/>
           </elements>
-          <elements xsi:type="xtext:Keyword" value="java.lang.Math.exp"/>
           <elements xsi:type="xtext:Keyword" value="("/>
           <elements xsi:type="xtext:Assignment" feature="number" operator="=">
             <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.28"/>
@@ -976,12 +910,9 @@
           <elements xsi:type="xtext:Keyword" value=")"/>
         </elements>
         <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Action">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
-            </type>
+          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="java.lang.Math.floor"/>
           </elements>
-          <elements xsi:type="xtext:Keyword" value="java.lang.Math.floor"/>
           <elements xsi:type="xtext:Keyword" value="("/>
           <elements xsi:type="xtext:Assignment" feature="number" operator="=">
             <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.28"/>
@@ -989,12 +920,9 @@
           <elements xsi:type="xtext:Keyword" value=")"/>
         </elements>
         <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Action">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
-            </type>
+          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="java.lang.Math.log"/>
           </elements>
-          <elements xsi:type="xtext:Keyword" value="java.lang.Math.log"/>
           <elements xsi:type="xtext:Keyword" value="("/>
           <elements xsi:type="xtext:Assignment" feature="number" operator="=">
             <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.28"/>
@@ -1002,12 +930,9 @@
           <elements xsi:type="xtext:Keyword" value=")"/>
         </elements>
         <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Action">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
-            </type>
+          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="JDOHelper.getObjectId"/>
           </elements>
-          <elements xsi:type="xtext:Keyword" value="JDOHelper.getObjectId"/>
           <elements xsi:type="xtext:Keyword" value="("/>
           <elements xsi:type="xtext:Assignment" feature="persistable" operator="=">
             <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.28"/>
@@ -1015,12 +940,9 @@
           <elements xsi:type="xtext:Keyword" value=")"/>
         </elements>
         <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Action">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
-            </type>
+          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="JDOHelper.getVersion"/>
           </elements>
-          <elements xsi:type="xtext:Keyword" value="JDOHelper.getVersion"/>
           <elements xsi:type="xtext:Keyword" value="("/>
           <elements xsi:type="xtext:Assignment" feature="persistable" operator="=">
             <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.28"/>
@@ -1028,12 +950,9 @@
           <elements xsi:type="xtext:Keyword" value=")"/>
         </elements>
         <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Action">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
-            </type>
+          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="javax.jdo.JDOHelper.getObjectId"/>
           </elements>
-          <elements xsi:type="xtext:Keyword" value="javax.jdo.JDOHelper.getObjectId"/>
           <elements xsi:type="xtext:Keyword" value="("/>
           <elements xsi:type="xtext:Assignment" feature="persistable" operator="=">
             <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.28"/>
@@ -1041,12 +960,9 @@
           <elements xsi:type="xtext:Keyword" value=")"/>
         </elements>
         <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Action">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
-            </type>
+          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="javax.jdo.JDOHelper.getVersion"/>
           </elements>
-          <elements xsi:type="xtext:Keyword" value="javax.jdo.JDOHelper.getVersion"/>
           <elements xsi:type="xtext:Keyword" value="("/>
           <elements xsi:type="xtext:Assignment" feature="persistable" operator="=">
             <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.28"/>
@@ -1054,12 +970,9 @@
           <elements xsi:type="xtext:Keyword" value=")"/>
         </elements>
         <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Action">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
-            </type>
+          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="count"/>
           </elements>
-          <elements xsi:type="xtext:Keyword" value="count"/>
           <elements xsi:type="xtext:Keyword" value="("/>
           <elements xsi:type="xtext:Assignment" cardinality="?" feature="isDistinct" operator="?=">
             <terminal xsi:type="xtext:Keyword" value="DISTINCT"/>
@@ -1070,12 +983,9 @@
           <elements xsi:type="xtext:Keyword" value=")"/>
         </elements>
         <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Action">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
-            </type>
+          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="sum"/>
           </elements>
-          <elements xsi:type="xtext:Keyword" value="sum"/>
           <elements xsi:type="xtext:Keyword" value="("/>
           <elements xsi:type="xtext:Assignment" cardinality="?" feature="isDistinct" operator="?=">
             <terminal xsi:type="xtext:Keyword" value="DISTINCT"/>
@@ -1086,12 +996,9 @@
           <elements xsi:type="xtext:Keyword" value=")"/>
         </elements>
         <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Action">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
-            </type>
+          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="min"/>
           </elements>
-          <elements xsi:type="xtext:Keyword" value="min"/>
           <elements xsi:type="xtext:Keyword" value="("/>
           <elements xsi:type="xtext:Assignment" feature="aggregateArgument" operator="=">
             <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.28"/>
@@ -1099,12 +1006,9 @@
           <elements xsi:type="xtext:Keyword" value=")"/>
         </elements>
         <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Action">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
-            </type>
+          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="max"/>
           </elements>
-          <elements xsi:type="xtext:Keyword" value="max"/>
           <elements xsi:type="xtext:Keyword" value="("/>
           <elements xsi:type="xtext:Assignment" feature="aggregateArgument" operator="=">
             <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.28"/>
@@ -1112,12 +1016,9 @@
           <elements xsi:type="xtext:Keyword" value=")"/>
         </elements>
         <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Action">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
-            </type>
+          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="avg"/>
           </elements>
-          <elements xsi:type="xtext:Keyword" value="avg"/>
           <elements xsi:type="xtext:Keyword" value="("/>
           <elements xsi:type="xtext:Assignment" cardinality="?" feature="isDistinct" operator="?=">
             <terminal xsi:type="xtext:Keyword" value="DISTINCT"/>
@@ -1135,12 +1036,9 @@
       </type>
       <alternatives xsi:type="xtext:Alternatives">
         <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Action">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
-            </type>
+          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="contains"/>
           </elements>
-          <elements xsi:type="xtext:Keyword" value="contains"/>
           <elements xsi:type="xtext:Keyword" value="("/>
           <elements xsi:type="xtext:Assignment" feature="element" operator="=">
             <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.28"/>
@@ -1148,12 +1046,9 @@
           <elements xsi:type="xtext:Keyword" value=")"/>
         </elements>
         <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Action">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
-            </type>
+          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="get"/>
           </elements>
-          <elements xsi:type="xtext:Keyword" value="get"/>
           <elements xsi:type="xtext:Keyword" value="("/>
           <elements xsi:type="xtext:Assignment" feature="arg" operator="=">
             <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.28"/>
@@ -1161,32 +1056,23 @@
           <elements xsi:type="xtext:Keyword" value=")"/>
         </elements>
         <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Action">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
-            </type>
+          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="isEmpty"/>
           </elements>
-          <elements xsi:type="xtext:Keyword" value="isEmpty"/>
           <elements xsi:type="xtext:Keyword" value="("/>
           <elements xsi:type="xtext:Keyword" value=")"/>
         </elements>
         <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Action">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
-            </type>
+          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="size"/>
           </elements>
-          <elements xsi:type="xtext:Keyword" value="size"/>
           <elements xsi:type="xtext:Keyword" value="("/>
           <elements xsi:type="xtext:Keyword" value=")"/>
         </elements>
         <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Action">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
-            </type>
+          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="containsKey"/>
           </elements>
-          <elements xsi:type="xtext:Keyword" value="containsKey"/>
           <elements xsi:type="xtext:Keyword" value="("/>
           <elements xsi:type="xtext:Assignment" feature="key" operator="=">
             <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.28"/>
@@ -1194,12 +1080,9 @@
           <elements xsi:type="xtext:Keyword" value=")"/>
         </elements>
         <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Action">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
-            </type>
+          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="containsValue"/>
           </elements>
-          <elements xsi:type="xtext:Keyword" value="containsValue"/>
           <elements xsi:type="xtext:Keyword" value="("/>
           <elements xsi:type="xtext:Assignment" feature="value" operator="=">
             <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.28"/>
@@ -1207,12 +1090,9 @@
           <elements xsi:type="xtext:Keyword" value=")"/>
         </elements>
         <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Action">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
-            </type>
+          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="containsEntry"/>
           </elements>
-          <elements xsi:type="xtext:Keyword" value="containsEntry"/>
           <elements xsi:type="xtext:Keyword" value="("/>
           <elements xsi:type="xtext:Assignment" feature="key" operator="=">
             <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.28"/>
@@ -1224,12 +1104,9 @@
           <elements xsi:type="xtext:Keyword" value=")"/>
         </elements>
         <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Action">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
-            </type>
+          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="charAt"/>
           </elements>
-          <elements xsi:type="xtext:Keyword" value="charAt"/>
           <elements xsi:type="xtext:Keyword" value="("/>
           <elements xsi:type="xtext:Assignment" feature="index" operator="=">
             <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.28"/>
@@ -1237,12 +1114,9 @@
           <elements xsi:type="xtext:Keyword" value=")"/>
         </elements>
         <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Action">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
-            </type>
+          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="endsWith"/>
           </elements>
-          <elements xsi:type="xtext:Keyword" value="endsWith"/>
           <elements xsi:type="xtext:Keyword" value="("/>
           <elements xsi:type="xtext:Assignment" feature="string" operator="=">
             <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.28"/>
@@ -1250,12 +1124,9 @@
           <elements xsi:type="xtext:Keyword" value=")"/>
         </elements>
         <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Action">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
-            </type>
+          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="equals"/>
           </elements>
-          <elements xsi:type="xtext:Keyword" value="equals"/>
           <elements xsi:type="xtext:Keyword" value="("/>
           <elements xsi:type="xtext:Assignment" feature="string" operator="=">
             <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.28"/>
@@ -1263,12 +1134,9 @@
           <elements xsi:type="xtext:Keyword" value=")"/>
         </elements>
         <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Action">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
-            </type>
+          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="equalsIgnoreCase"/>
           </elements>
-          <elements xsi:type="xtext:Keyword" value="equalsIgnoreCase"/>
           <elements xsi:type="xtext:Keyword" value="("/>
           <elements xsi:type="xtext:Assignment" feature="string" operator="=">
             <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.28"/>
@@ -1276,12 +1144,9 @@
           <elements xsi:type="xtext:Keyword" value=")"/>
         </elements>
         <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Action">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
-            </type>
+          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="indexOf"/>
           </elements>
-          <elements xsi:type="xtext:Keyword" value="indexOf"/>
           <elements xsi:type="xtext:Keyword" value="("/>
           <elements xsi:type="xtext:Assignment" feature="string" operator="=">
             <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.28"/>
@@ -1295,22 +1160,16 @@
           <elements xsi:type="xtext:Keyword" value=")"/>
         </elements>
         <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Action">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
-            </type>
+          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="length"/>
           </elements>
-          <elements xsi:type="xtext:Keyword" value="length"/>
           <elements xsi:type="xtext:Keyword" value="("/>
           <elements xsi:type="xtext:Keyword" value=")"/>
         </elements>
         <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Action">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
-            </type>
+          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="matches"/>
           </elements>
-          <elements xsi:type="xtext:Keyword" value="matches"/>
           <elements xsi:type="xtext:Keyword" value="("/>
           <elements xsi:type="xtext:Assignment" feature="regex" operator="=">
             <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.28"/>
@@ -1318,12 +1177,9 @@
           <elements xsi:type="xtext:Keyword" value=")"/>
         </elements>
         <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Action">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
-            </type>
+          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="replaceAll"/>
           </elements>
-          <elements xsi:type="xtext:Keyword" value="replaceAll"/>
           <elements xsi:type="xtext:Keyword" value="("/>
           <elements xsi:type="xtext:Assignment" feature="regex" operator="=">
             <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.28"/>
@@ -1335,12 +1191,9 @@
           <elements xsi:type="xtext:Keyword" value=")"/>
         </elements>
         <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Action">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
-            </type>
+          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="startsWith"/>
           </elements>
-          <elements xsi:type="xtext:Keyword" value="startsWith"/>
           <elements xsi:type="xtext:Keyword" value="("/>
           <elements xsi:type="xtext:Assignment" feature="string" operator="=">
             <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.28"/>
@@ -1348,12 +1201,9 @@
           <elements xsi:type="xtext:Keyword" value=")"/>
         </elements>
         <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Action">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
-            </type>
+          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="substring"/>
           </elements>
-          <elements xsi:type="xtext:Keyword" value="substring"/>
           <elements xsi:type="xtext:Keyword" value="("/>
           <elements xsi:type="xtext:Assignment" feature="beginIndex" operator="=">
             <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.28"/>
@@ -1367,112 +1217,79 @@
           <elements xsi:type="xtext:Keyword" value=")"/>
         </elements>
         <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Action">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
-            </type>
+          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="toLowerCase"/>
           </elements>
-          <elements xsi:type="xtext:Keyword" value="toLowerCase"/>
           <elements xsi:type="xtext:Keyword" value="("/>
           <elements xsi:type="xtext:Keyword" value=")"/>
         </elements>
         <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Action">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
-            </type>
+          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="toUpperCase"/>
           </elements>
-          <elements xsi:type="xtext:Keyword" value="toUpperCase"/>
           <elements xsi:type="xtext:Keyword" value="("/>
           <elements xsi:type="xtext:Keyword" value=")"/>
         </elements>
         <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Action">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
-            </type>
+          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="trim"/>
           </elements>
-          <elements xsi:type="xtext:Keyword" value="trim"/>
           <elements xsi:type="xtext:Keyword" value="("/>
           <elements xsi:type="xtext:Keyword" value=")"/>
         </elements>
         <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Action">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
-            </type>
+          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="getDay"/>
           </elements>
-          <elements xsi:type="xtext:Keyword" value="getDay"/>
           <elements xsi:type="xtext:Keyword" value="("/>
           <elements xsi:type="xtext:Keyword" value=")"/>
         </elements>
         <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Action">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
-            </type>
+          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="getMonth"/>
           </elements>
-          <elements xsi:type="xtext:Keyword" value="getMonth"/>
           <elements xsi:type="xtext:Keyword" value="("/>
           <elements xsi:type="xtext:Keyword" value=")"/>
         </elements>
         <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Action">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
-            </type>
+          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="getYear"/>
           </elements>
-          <elements xsi:type="xtext:Keyword" value="getYear"/>
           <elements xsi:type="xtext:Keyword" value="("/>
           <elements xsi:type="xtext:Keyword" value=")"/>
         </elements>
         <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Action">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
-            </type>
+          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="getHour"/>
           </elements>
-          <elements xsi:type="xtext:Keyword" value="getHour"/>
           <elements xsi:type="xtext:Keyword" value="("/>
           <elements xsi:type="xtext:Keyword" value=")"/>
         </elements>
         <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Action">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
-            </type>
+          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="getMinute"/>
           </elements>
-          <elements xsi:type="xtext:Keyword" value="getMinute"/>
           <elements xsi:type="xtext:Keyword" value="("/>
           <elements xsi:type="xtext:Keyword" value=")"/>
         </elements>
         <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Action">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
-            </type>
+          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="getSecond"/>
           </elements>
-          <elements xsi:type="xtext:Keyword" value="getSecond"/>
           <elements xsi:type="xtext:Keyword" value="("/>
           <elements xsi:type="xtext:Keyword" value=")"/>
         </elements>
         <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Action">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
-            </type>
+          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="ordinal"/>
           </elements>
-          <elements xsi:type="xtext:Keyword" value="ordinal"/>
           <elements xsi:type="xtext:Keyword" value="("/>
           <elements xsi:type="xtext:Keyword" value=")"/>
         </elements>
         <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Action">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.nightlabs.org/vestigo/xtext/jdoql/JDOQL#//Expression"/>
-            </type>
+          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="toString"/>
           </elements>
-          <elements xsi:type="xtext:Keyword" value="toString"/>
           <elements xsi:type="xtext:Keyword" value="("/>
           <elements xsi:type="xtext:Keyword" value=")"/>
         </elements>

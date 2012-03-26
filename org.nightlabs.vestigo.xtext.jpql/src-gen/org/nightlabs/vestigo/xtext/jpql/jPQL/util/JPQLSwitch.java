@@ -10,7 +10,55 @@ import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.Switch;
 
-import org.nightlabs.vestigo.xtext.jpql.jPQL.*;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.AdditionExpression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.AliasAttributeExpression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.AndExpression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.AvgAggregate;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.BooleanLiteral;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.ComparisonOperatorExpression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.CountAggregate;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.DeleteClause;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.DeleteStatement;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.Expression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.ExpressionTerm;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.FloatLiteral;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.FromClass;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.FromClause;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.FromCollection;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.FromEntry;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.FromJoin;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.FunctionExpression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.GroupByClause;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.HavingClause;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.InnerJoin;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.IntegerLiteral;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLQuery;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.Join;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.LeftJoin;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.Literal;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.MaxAggregate;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.MinAggregate;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.MultiplicationExpression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.NullLiteral;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.OrExpression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.OrderByClause;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.OrderBySpec;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.ParameterExpression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.SelectAggregateExpression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.SelectClause;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.SelectConstructorExpression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.SelectExpression;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.SelectStatement;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.SetClause;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.StringLiteral;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.SumAggregate;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.UpdateClause;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.UpdateItem;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.UpdateStatement;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.Variable;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.VariableDeclaration;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.WhereClause;
 
 /**
  * <!-- begin-user-doc -->
@@ -89,6 +137,7 @@ public class JPQLSwitch<T> extends Switch<T>
         if (result == null) result = caseJPQLQuery(selectStatement);
         if (result == null) result = caseExpressionTerm(selectStatement);
         if (result == null) result = caseExpression(selectStatement);
+        if (result == null) result = caseSelectExpression(selectStatement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -318,6 +367,7 @@ public class JPQLSwitch<T> extends Switch<T>
       {
         Expression expression = (Expression)theEObject;
         T result = caseExpression(expression);
+        if (result == null) result = caseSelectExpression(expression);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -327,6 +377,7 @@ public class JPQLSwitch<T> extends Switch<T>
         T result = caseVariable(variable);
         if (result == null) result = caseExpressionTerm(variable);
         if (result == null) result = caseExpression(variable);
+        if (result == null) result = caseSelectExpression(variable);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -335,6 +386,7 @@ public class JPQLSwitch<T> extends Switch<T>
         ExpressionTerm expressionTerm = (ExpressionTerm)theEObject;
         T result = caseExpressionTerm(expressionTerm);
         if (result == null) result = caseExpression(expressionTerm);
+        if (result == null) result = caseSelectExpression(expressionTerm);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -343,8 +395,8 @@ public class JPQLSwitch<T> extends Switch<T>
         AliasAttributeExpression aliasAttributeExpression = (AliasAttributeExpression)theEObject;
         T result = caseAliasAttributeExpression(aliasAttributeExpression);
         if (result == null) result = caseOrderBySpec(aliasAttributeExpression);
-        if (result == null) result = caseSelectExpression(aliasAttributeExpression);
         if (result == null) result = caseVariable(aliasAttributeExpression);
+        if (result == null) result = caseSelectExpression(aliasAttributeExpression);
         if (result == null) result = caseExpressionTerm(aliasAttributeExpression);
         if (result == null) result = caseExpression(aliasAttributeExpression);
         if (result == null) result = defaultCase(theEObject);
@@ -355,25 +407,29 @@ public class JPQLSwitch<T> extends Switch<T>
         ParameterExpression parameterExpression = (ParameterExpression)theEObject;
         T result = caseParameterExpression(parameterExpression);
         if (result == null) result = caseVariable(parameterExpression);
+        if (result == null) result = caseSelectExpression(parameterExpression);
         if (result == null) result = caseExpressionTerm(parameterExpression);
         if (result == null) result = caseExpression(parameterExpression);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case JPQLPackage.FUNCTION:
+      case JPQLPackage.FUNCTION_EXPRESSION:
       {
-        Function function = (Function)theEObject;
-        T result = caseFunction(function);
+        FunctionExpression functionExpression = (FunctionExpression)theEObject;
+        T result = caseFunctionExpression(functionExpression);
+        if (result == null) result = caseExpression(functionExpression);
+        if (result == null) result = caseSelectExpression(functionExpression);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case JPQLPackage.VALUE:
+      case JPQLPackage.LITERAL:
       {
-        Value value = (Value)theEObject;
-        T result = caseValue(value);
-        if (result == null) result = caseVariable(value);
-        if (result == null) result = caseExpressionTerm(value);
-        if (result == null) result = caseExpression(value);
+        Literal literal = (Literal)theEObject;
+        T result = caseLiteral(literal);
+        if (result == null) result = caseVariable(literal);
+        if (result == null) result = caseSelectExpression(literal);
+        if (result == null) result = caseExpressionTerm(literal);
+        if (result == null) result = caseExpression(literal);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -381,10 +437,30 @@ public class JPQLSwitch<T> extends Switch<T>
       {
         IntegerLiteral integerLiteral = (IntegerLiteral)theEObject;
         T result = caseIntegerLiteral(integerLiteral);
-        if (result == null) result = caseValue(integerLiteral);
+        if (result == null) result = caseLiteral(integerLiteral);
         if (result == null) result = caseVariable(integerLiteral);
+        if (result == null) result = caseSelectExpression(integerLiteral);
         if (result == null) result = caseExpressionTerm(integerLiteral);
         if (result == null) result = caseExpression(integerLiteral);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case JPQLPackage.FLOAT_LITERAL:
+      {
+        FloatLiteral floatLiteral = (FloatLiteral)theEObject;
+        T result = caseFloatLiteral(floatLiteral);
+        if (result == null) result = caseLiteral(floatLiteral);
+        if (result == null) result = caseVariable(floatLiteral);
+        if (result == null) result = caseSelectExpression(floatLiteral);
+        if (result == null) result = caseExpressionTerm(floatLiteral);
+        if (result == null) result = caseExpression(floatLiteral);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case JPQLPackage.FLOAT:
+      {
+        org.nightlabs.vestigo.xtext.jpql.jPQL.Float float_ = (org.nightlabs.vestigo.xtext.jpql.jPQL.Float)theEObject;
+        T result = caseFloat(float_);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -392,8 +468,9 @@ public class JPQLSwitch<T> extends Switch<T>
       {
         StringLiteral stringLiteral = (StringLiteral)theEObject;
         T result = caseStringLiteral(stringLiteral);
-        if (result == null) result = caseValue(stringLiteral);
+        if (result == null) result = caseLiteral(stringLiteral);
         if (result == null) result = caseVariable(stringLiteral);
+        if (result == null) result = caseSelectExpression(stringLiteral);
         if (result == null) result = caseExpressionTerm(stringLiteral);
         if (result == null) result = caseExpression(stringLiteral);
         if (result == null) result = defaultCase(theEObject);
@@ -403,8 +480,9 @@ public class JPQLSwitch<T> extends Switch<T>
       {
         NullLiteral nullLiteral = (NullLiteral)theEObject;
         T result = caseNullLiteral(nullLiteral);
-        if (result == null) result = caseValue(nullLiteral);
+        if (result == null) result = caseLiteral(nullLiteral);
         if (result == null) result = caseVariable(nullLiteral);
+        if (result == null) result = caseSelectExpression(nullLiteral);
         if (result == null) result = caseExpressionTerm(nullLiteral);
         if (result == null) result = caseExpression(nullLiteral);
         if (result == null) result = defaultCase(theEObject);
@@ -414,8 +492,9 @@ public class JPQLSwitch<T> extends Switch<T>
       {
         BooleanLiteral booleanLiteral = (BooleanLiteral)theEObject;
         T result = caseBooleanLiteral(booleanLiteral);
-        if (result == null) result = caseValue(booleanLiteral);
+        if (result == null) result = caseLiteral(booleanLiteral);
         if (result == null) result = caseVariable(booleanLiteral);
+        if (result == null) result = caseSelectExpression(booleanLiteral);
         if (result == null) result = caseExpressionTerm(booleanLiteral);
         if (result == null) result = caseExpression(booleanLiteral);
         if (result == null) result = defaultCase(theEObject);
@@ -426,6 +505,7 @@ public class JPQLSwitch<T> extends Switch<T>
         OrExpression orExpression = (OrExpression)theEObject;
         T result = caseOrExpression(orExpression);
         if (result == null) result = caseExpression(orExpression);
+        if (result == null) result = caseSelectExpression(orExpression);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -434,6 +514,7 @@ public class JPQLSwitch<T> extends Switch<T>
         AndExpression andExpression = (AndExpression)theEObject;
         T result = caseAndExpression(andExpression);
         if (result == null) result = caseExpression(andExpression);
+        if (result == null) result = caseSelectExpression(andExpression);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -442,6 +523,7 @@ public class JPQLSwitch<T> extends Switch<T>
         ComparisonOperatorExpression comparisonOperatorExpression = (ComparisonOperatorExpression)theEObject;
         T result = caseComparisonOperatorExpression(comparisonOperatorExpression);
         if (result == null) result = caseExpression(comparisonOperatorExpression);
+        if (result == null) result = caseSelectExpression(comparisonOperatorExpression);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -450,6 +532,7 @@ public class JPQLSwitch<T> extends Switch<T>
         AdditionExpression additionExpression = (AdditionExpression)theEObject;
         T result = caseAdditionExpression(additionExpression);
         if (result == null) result = caseExpression(additionExpression);
+        if (result == null) result = caseSelectExpression(additionExpression);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -458,6 +541,7 @@ public class JPQLSwitch<T> extends Switch<T>
         MultiplicationExpression multiplicationExpression = (MultiplicationExpression)theEObject;
         T result = caseMultiplicationExpression(multiplicationExpression);
         if (result == null) result = caseExpression(multiplicationExpression);
+        if (result == null) result = caseSelectExpression(multiplicationExpression);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -1042,33 +1126,33 @@ public class JPQLSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Function</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Function Expression</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Function</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Function Expression</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseFunction(Function object)
+  public T caseFunctionExpression(FunctionExpression object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Value</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Literal</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Value</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Literal</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseValue(Value object)
+  public T caseLiteral(Literal object)
   {
     return null;
   }
@@ -1085,6 +1169,38 @@ public class JPQLSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseIntegerLiteral(IntegerLiteral object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Float Literal</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Float Literal</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseFloatLiteral(FloatLiteral object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Float</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Float</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseFloat(org.nightlabs.vestigo.xtext.jpql.jPQL.Float object)
   {
     return null;
   }

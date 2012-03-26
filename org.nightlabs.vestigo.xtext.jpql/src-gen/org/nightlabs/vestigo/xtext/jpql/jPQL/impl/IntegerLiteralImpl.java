@@ -27,7 +27,7 @@ import org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage;
  *
  * @generated
  */
-public class IntegerLiteralImpl extends ValueImpl implements IntegerLiteral
+public class IntegerLiteralImpl extends LiteralImpl implements IntegerLiteral
 {
   /**
    * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
