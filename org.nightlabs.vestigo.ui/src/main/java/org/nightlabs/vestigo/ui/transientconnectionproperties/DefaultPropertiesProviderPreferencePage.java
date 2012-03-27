@@ -8,6 +8,7 @@ import org.eclipse.jface.preference.StringFieldEditor;
 import org.nightlabs.vestigo.core.oda.ConnectionProfile;
 import org.nightlabs.vestigo.core.oda.ConnectionPropertyMeta;
 import org.nightlabs.vestigo.core.transientconnectionproperties.TransientConnectionPropertiesProvider;
+import org.nightlabs.vestigo.ui.AbstractVestigoUIPlugin;
 import org.nightlabs.vestigo.ui.VestigoUIPlugin;
 
 public class DefaultPropertiesProviderPreferencePage extends FieldEditorPreferencePage
@@ -18,7 +19,7 @@ public class DefaultPropertiesProviderPreferencePage extends FieldEditorPreferen
 	public DefaultPropertiesProviderPreferencePage(TransientConnectionPropertiesProvider transientConnectionPropertiesProvider) {
 		super(
 				"Transient connection properties",
-				VestigoUIPlugin.getDefault().getImageDescriptor(DefaultPropertiesProviderPreferencePage.class, null, VestigoUIPlugin.IMAGE_SIZE_75x70),
+				VestigoUIPlugin.getDefault().getImageDescriptor(DefaultPropertiesProviderPreferencePage.class, null, AbstractVestigoUIPlugin.IMAGE_SIZE_75x70),
 				GRID
 		);
 		this.transientConnectionPropertiesProvider = transientConnectionPropertiesProvider;

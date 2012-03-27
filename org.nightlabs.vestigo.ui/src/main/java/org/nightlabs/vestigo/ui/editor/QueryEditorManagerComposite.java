@@ -16,6 +16,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
+import org.nightlabs.vestigo.ui.AbstractVestigoUIPlugin;
 import org.nightlabs.vestigo.ui.VestigoUIPlugin;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -175,7 +176,7 @@ public class QueryEditorManagerComposite extends Composite
 	private void createExecuteQueryButton()
 	{
 		executeQueryButton = new Button(this, SWT.PUSH);
-		executeQueryButton.setImage(VestigoUIPlugin.getDefault().getImage(QueryEditorManagerComposite.class, "executeQueryButton", VestigoUIPlugin.IMAGE_SIZE_16x16));
+		executeQueryButton.setImage(VestigoUIPlugin.getDefault().getImage(QueryEditorManagerComposite.class, "executeQueryButton", AbstractVestigoUIPlugin.IMAGE_SIZE_16x16));
 		executeQueryButton.setToolTipText("Execute query");
 		executeQueryButton.addSelectionListener(new SelectionAdapter() {
 			@Override

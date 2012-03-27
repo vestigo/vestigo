@@ -25,7 +25,7 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Shell;
 import org.nightlabs.vestigo.childvm.shared.persistencexml.jaxb.Persistence.PersistenceUnit;
 import org.nightlabs.vestigo.jdt.ui.VestigoJDTUIPlugin;
-import org.nightlabs.vestigo.ui.VestigoUIPlugin;
+import org.nightlabs.vestigo.ui.AbstractVestigoUIPlugin;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -73,7 +73,7 @@ public class SelectProjectDialog extends TitleAreaDialog
 	protected Control createContents(Composite parent) {
 		Control contents = super.createContents(parent);
 
-		setTitleImage(VestigoJDTUIPlugin.getDefault().getImage(SelectProjectDialog.class, "title", VestigoUIPlugin.IMAGE_SIZE_75x70));
+		setTitleImage(VestigoJDTUIPlugin.getDefault().getImage(SelectProjectDialog.class, "title", AbstractVestigoUIPlugin.IMAGE_SIZE_75x70));
 		setTitle(title);
 		setMessage(message);
 
@@ -98,7 +98,7 @@ public class SelectProjectDialog extends TitleAreaDialog
 	{
 		super.configureShell(newShell);
 		newShell.setText(title);
-		newShell.setImage(VestigoJDTUIPlugin.getDefault().getImage(SelectProjectDialog.class, "shell", VestigoUIPlugin.IMAGE_SIZE_16x16)); //$NON-NLS-1$
+		newShell.setImage(VestigoJDTUIPlugin.getDefault().getImage(SelectProjectDialog.class, "shell", AbstractVestigoUIPlugin.IMAGE_SIZE_16x16)); //$NON-NLS-1$
 	}
 
 	@Override

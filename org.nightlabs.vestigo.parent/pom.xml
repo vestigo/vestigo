@@ -246,6 +246,19 @@
 			</dependency>
 			<!-- END org.nightlabs.vestigo.jdt -->
 
+			<!-- BEGIN org.nightlabs.vestigo.maven -->
+			<dependency>
+				<groupId>org.nightlabs.vestigo</groupId>
+				<artifactId>org.nightlabs.vestigo.maven.core</artifactId>
+				<version>${vestigo.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.nightlabs.vestigo</groupId>
+				<artifactId>org.nightlabs.vestigo.maven.ui</artifactId>
+				<version>${vestigo.version}</version>
+			</dependency>
+			<!-- END org.nightlabs.vestigo.maven -->
+
 			<!-- BEGIN org.nightlabs.vestigo.xtext -->
 			<dependency>
 				<groupId>org.nightlabs.vestigo</groupId>

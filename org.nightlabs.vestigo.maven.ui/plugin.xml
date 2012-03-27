@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.nightlabs.vestigo.maven.core.mavenErrorHandler">
+      <handler
+            class="org.nightlabs.vestigo.maven.ui.DialogMavenErrorHandler">
+      </handler>
+   </extension>
+
+</plugin>

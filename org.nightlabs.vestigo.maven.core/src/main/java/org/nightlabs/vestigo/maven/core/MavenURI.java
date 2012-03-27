@@ -70,8 +70,6 @@ public class MavenURI implements Serializable
 	private String classifier;
 	private String version;
 
-	public MavenURI() { }
-
 	public MavenURI(String ... segments)
 	{
 		init(segments);

@@ -60,10 +60,6 @@
 			<artifactId>org.nightlabs.util</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.nightlabs.eclipse</groupId>
-			<artifactId>org.nightlabs.eclipse.extension</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>org.nightlabs.vestigo</groupId>
 			<artifactId>org.nightlabs.vestigo.childvm.shared</artifactId>
 		</dependency>

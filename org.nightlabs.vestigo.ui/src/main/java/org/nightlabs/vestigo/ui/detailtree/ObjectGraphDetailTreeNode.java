@@ -14,6 +14,7 @@ import org.nightlabs.vestigo.core.ObjectReference;
 import org.nightlabs.vestigo.core.ObjectReferenceChild;
 import org.nightlabs.vestigo.core.PersistentObjectReference;
 import org.nightlabs.vestigo.core.oda.ResultSet;
+import org.nightlabs.vestigo.ui.AbstractVestigoUIPlugin;
 import org.nightlabs.vestigo.ui.VestigoUIPlugin;
 
 /**
@@ -139,7 +140,7 @@ public class ObjectGraphDetailTreeNode
 		return VestigoUIPlugin.getDefault().getImage(
 				ObjectGraphDetailTreeNode.class,
 				identifier,
-				VestigoUIPlugin.IMAGE_SIZE_16x16
+				AbstractVestigoUIPlugin.IMAGE_SIZE_16x16
 		);
 	}
 

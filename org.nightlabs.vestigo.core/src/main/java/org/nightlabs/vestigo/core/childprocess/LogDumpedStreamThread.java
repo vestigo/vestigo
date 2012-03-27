@@ -1,9 +1,10 @@
-package org.nightlabs.vestigo.core.childvm.internal;
+package org.nightlabs.vestigo.core.childprocess;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.StringReader;
+import java.io.UnsupportedEncodingException;
 
 import org.nightlabs.util.IOUtil;
 import org.slf4j.Logger;
@@ -35,6 +36,9 @@ public class LogDumpedStreamThread extends Thread
 	private Long firstNonLoggedWriteTimestamp = null;
 	private long lastWriteTimestamp = 0;
 
+	private volatile StringBuffer outputStringBuffer;
+	private volatile int outputStringBufferMaxLength = 1024 * 1024;
+
 	public void write(byte[] data, int length)
 	{
 		if (data == null)
@@ -46,6 +50,19 @@ public class LogDumpedStreamThread extends Thread
 			if (firstNonLoggedWriteTimestamp == null)
 				firstNonLoggedWriteTimestamp = lastWriteTimestamp;
 		}
+	}
+
+	public void setOutputStringBuffer(StringBuffer outputStringBuffer) {
+		this.outputStringBuffer = outputStringBuffer;
+	}
+	public StringBuffer getOutputStringBuffer() {
+		return outputStringBuffer;
+	}
+	public void setOutputStringBufferMaxLength(int outputStringBufferMaxLength) {
+		this.outputStringBufferMaxLength = outputStringBufferMaxLength;
+	}
+	public int getOutputStringBufferMaxLength() {
+		return outputStringBufferMaxLength;
 	}
 
 	@Override
@@ -70,19 +87,51 @@ public class LogDumpedStreamThread extends Thread
 						doNothing();
 					}
 
-					if (bufferOutputStream.size() > 0) {
-						long firstNonLoggedWriteAge = firstNonLoggedWriteTimestamp == null ? 0 : System.currentTimeMillis() - firstNonLoggedWriteTimestamp;
-						long noWritePeriod = System.currentTimeMillis() - lastWriteTimestamp;
-						if (firstNonLoggedWriteAge > logMaxAge || noWritePeriod > logAfterNoWritePeriod || bufferOutputStream.size() > logWhenBufferExceedsSize) {
-							logger.info(
-									'\n' + prefixEveryLine(bufferOutputStream.toString(IOUtil.CHARSET_NAME_UTF_8))
-							);
-							bufferOutputStream.reset();
-						}
-					}
+					processBuffer(false);
 				}
 			} catch (Throwable e) {
 				logger.error("run: " + e, e);
+			}
+		}
+		processBuffer(true);
+	}
+
+	protected void processBuffer(boolean force)
+	{
+		synchronized (bufferOutputStream) {
+			if (bufferOutputStream.size() > 0) {
+				long firstNonLoggedWriteAge = firstNonLoggedWriteTimestamp == null ? 0 : System.currentTimeMillis() - firstNonLoggedWriteTimestamp;
+				long noWritePeriod = System.currentTimeMillis() - lastWriteTimestamp;
+				if (force || firstNonLoggedWriteAge > logMaxAge || noWritePeriod > logAfterNoWritePeriod || bufferOutputStream.size() > logWhenBufferExceedsSize) {
+					String currentBufferString;
+					try {
+						currentBufferString = bufferOutputStream.toString(IOUtil.CHARSET_NAME_UTF_8);
+					} catch (UnsupportedEncodingException e) {
+						throw new RuntimeException(e);
+					}
+
+					StringBuffer outputStringBuffer = getOutputStringBuffer();
+					if (outputStringBuffer != null) {
+						int newOutputStringBufferLength = outputStringBuffer.length() + currentBufferString.length();
+						if (newOutputStringBufferLength > outputStringBufferMaxLength) {
+							int lastCharPositionToDelete = newOutputStringBufferLength - outputStringBufferMaxLength;
+							// search for first line-break
+							while (outputStringBuffer.length() > lastCharPositionToDelete && outputStringBuffer.charAt(lastCharPositionToDelete) != '\n')
+								++lastCharPositionToDelete;
+
+							lastCharPositionToDelete = Math.min(lastCharPositionToDelete, outputStringBuffer.length() - 1);
+							outputStringBuffer.delete(0, lastCharPositionToDelete + 1);
+						}
+
+						outputStringBuffer.append(currentBufferString);
+					}
+
+					logger.info(
+							'\n' + prefixEveryLine(currentBufferString)
+							);
+
+					bufferOutputStream.reset();
+				}
 			}
 		}
 	}

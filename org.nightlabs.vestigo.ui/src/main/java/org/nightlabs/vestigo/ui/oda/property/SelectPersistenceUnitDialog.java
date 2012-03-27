@@ -18,6 +18,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Shell;
 import org.nightlabs.vestigo.childvm.shared.persistencexml.jaxb.Persistence.PersistenceUnit;
+import org.nightlabs.vestigo.ui.AbstractVestigoUIPlugin;
 import org.nightlabs.vestigo.ui.VestigoUIPlugin;
 
 /**
@@ -56,7 +57,7 @@ public class SelectPersistenceUnitDialog extends TitleAreaDialog {
 	protected Control createContents(Composite parent) {
 		Control contents = super.createContents(parent);
 
-		setTitleImage(VestigoUIPlugin.getDefault().getImage(SelectPersistenceUnitDialog.class, "title", VestigoUIPlugin.IMAGE_SIZE_75x70));
+		setTitleImage(VestigoUIPlugin.getDefault().getImage(SelectPersistenceUnitDialog.class, "title", AbstractVestigoUIPlugin.IMAGE_SIZE_75x70));
 		setTitle(title);
 		setMessage(message);
 
@@ -81,7 +82,7 @@ public class SelectPersistenceUnitDialog extends TitleAreaDialog {
 	{
 		super.configureShell(newShell);
 		newShell.setText(title);
-		newShell.setImage(VestigoUIPlugin.getDefault().getImage(SelectPersistenceUnitDialog.class, "shell", VestigoUIPlugin.IMAGE_SIZE_16x16)); //$NON-NLS-1$
+		newShell.setImage(VestigoUIPlugin.getDefault().getImage(SelectPersistenceUnitDialog.class, "shell", AbstractVestigoUIPlugin.IMAGE_SIZE_16x16)); //$NON-NLS-1$
 	}
 
 	@Override

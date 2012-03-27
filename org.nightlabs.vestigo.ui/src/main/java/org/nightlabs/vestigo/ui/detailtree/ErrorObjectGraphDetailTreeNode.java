@@ -1,6 +1,7 @@
 package org.nightlabs.vestigo.ui.detailtree;
 
 import org.eclipse.swt.graphics.Image;
+import org.nightlabs.vestigo.ui.AbstractVestigoUIPlugin;
 import org.nightlabs.vestigo.ui.VestigoUIPlugin;
 
 /**
@@ -19,7 +20,7 @@ public class ErrorObjectGraphDetailTreeNode extends MessageObjectGraphDetailTree
 	@Override
 	public Image getLabelImage() {
 		return VestigoUIPlugin.getDefault().getImage(
-				ErrorObjectGraphDetailTreeNode.class, null, VestigoUIPlugin.IMAGE_SIZE_16x16
+				ErrorObjectGraphDetailTreeNode.class, null, AbstractVestigoUIPlugin.IMAGE_SIZE_16x16
 		);
 	}
 }

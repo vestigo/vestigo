@@ -1,4 +1,4 @@
-package org.nightlabs.vestigo.core.childvm.internal;
+package org.nightlabs.vestigo.core.childprocess;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -78,6 +78,24 @@ public class DumpStreamToFileThread extends Thread
 			}
 		} finally {
 			logDumpedStreamThread.interrupt();
+			try {
+				outputStream.close();
+			} catch (IOException e) {
+				logger.warn("run: outputStream.close() failed: " + e, e);
+			}
 		}
+	}
+
+	public void setOutputStringBuffer(StringBuffer outputStringBuffer) {
+		logDumpedStreamThread.setOutputStringBuffer(outputStringBuffer);
+	}
+	public StringBuffer getOutputStringBuffer() {
+		return logDumpedStreamThread.getOutputStringBuffer();
+	}
+	public void setOutputStringBufferMaxLength(int outputStringBufferMaxLength) {
+		logDumpedStreamThread.setOutputStringBufferMaxLength(outputStringBufferMaxLength);
+	}
+	public int getOutputStringBufferMaxLength() {
+		return logDumpedStreamThread.getOutputStringBufferMaxLength();
 	}
 }

@@ -19,8 +19,6 @@ public class ProjectURI implements Serializable
 
 	private String projectName;
 
-	public ProjectURI() { }
-
 	public ProjectURI(String projectName)
 	{
 		if (projectName == null)

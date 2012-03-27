@@ -29,6 +29,7 @@ import org.eclipse.core.runtime.Platform;
 import org.nightlabs.vestigo.childvm.shared.api.ChildVM;
 import org.nightlabs.vestigo.childvm.webapp.client.ChildVMWebappClient;
 import org.nightlabs.vestigo.core.VestigoCorePlugin;
+import org.nightlabs.vestigo.core.childprocess.DumpStreamToFileThread;
 import org.nightlabs.vestigo.core.childvm.LogLevel;
 import org.nightlabs.vestigo.core.childvm.WebApp;
 import org.nightlabs.util.IOUtil;

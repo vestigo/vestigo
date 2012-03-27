@@ -10,22 +10,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.jface.preference.IPreferenceStore;
-import org.eclipse.jface.resource.ImageDescriptor;
-import org.eclipse.swt.graphics.Image;
-import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.nightlabs.vestigo.core.PropertiesWithChangeSupport;
 import org.osgi.framework.BundleContext;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
  */
-public class VestigoUIPlugin extends AbstractUIPlugin
+public class VestigoUIPlugin extends AbstractVestigoUIPlugin
 {
 	public static final String BUNDLE_SYMBOLIC_NAME = "org.nightlabs.vestigo.ui"; //$NON-NLS-1$
-
-	public static final String IMAGE_SIZE_16x16 = "16x16"; //$NON-NLS-1$
-	public static final String IMAGE_SIZE_24x24 = "24x24"; //$NON-NLS-1$
-	public static final String IMAGE_SIZE_75x70 = "75x70"; //$NON-NLS-1$
 
 	// The shared instance
 	private static VestigoUIPlugin plugin;
@@ -45,9 +38,8 @@ public class VestigoUIPlugin extends AbstractUIPlugin
 	}
 
 	/**
-	 * Returns the shared instance
-	 *
-	 * @return the shared instance
+	 * Get the shared instance.
+	 * @return the shared instance.
 	 */
 	public static VestigoUIPlugin getDefault() {
 		return plugin;
@@ -66,7 +58,7 @@ public class VestigoUIPlugin extends AbstractUIPlugin
 
 	private PropertiesWithChangeSupport readPropertiesFromPreferenceStore(final String preferenceKey)
 	{
-		getStateLocation();
+//		getStateLocation();
 		final IPreferenceStore preferenceStore = getPreferenceStore();
 
 		final PropertiesWithChangeSupport properties = readPropertiesFromString(
@@ -108,45 +100,5 @@ public class VestigoUIPlugin extends AbstractUIPlugin
 			throw new RuntimeException(e);
 		}
 		return writer.toString();
-	}
-
-	public ImageDescriptor getImageDescriptor(Class<?> clazz, String identifier, String size)
-	{
-		String imageKey = clazz.getName() + '-' + identifier;
-		ImageDescriptor imageDescriptor = getImageRegistry().getDescriptor(imageKey);
-		if (imageDescriptor != null)
-			return imageDescriptor;
-
-		StringBuilder resource = new StringBuilder();
-		resource.append("icons/").append(clazz.getPackage().getName()).append('/').append(clazz.getSimpleName()); //$NON-NLS-1$
-
-		if (identifier != null && !identifier.isEmpty())
-			resource.append('-').append(identifier);
-
-		if (size == null)
-			size = IMAGE_SIZE_16x16;
-
-		resource.append('.').append(size).append(".png"); //$NON-NLS-1$
-
-		imageDescriptor = ImageDescriptor.createFromURL(
-				getBundle().getResource(resource.toString())
-		);
-
-		getImageRegistry().put(imageKey, imageDescriptor);
-
-		return imageDescriptor;
-	}
-
-	public Image getImage(Class<?> clazz, String identifier, String size)
-	{
-		String imageKey = clazz.getName() + '-' + identifier;
-		Image image = getImageRegistry().get(imageKey);
-		if (image != null)
-			return image;
-
-		getImageDescriptor(clazz, identifier, size);
-
-		image = getImageRegistry().get(imageKey);
-		return image;
 	}
 }

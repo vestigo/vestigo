@@ -12,6 +12,7 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
+import org.nightlabs.vestigo.ui.AbstractVestigoUIPlugin;
 import org.nightlabs.vestigo.ui.VestigoUIPlugin;
 
 /**
@@ -19,7 +20,7 @@ import org.nightlabs.vestigo.ui.VestigoUIPlugin;
  */
 public class QueryParameterManagerComposite extends Composite
 {
-	private VestigoUIPlugin plugin = VestigoUIPlugin.getDefault();
+	private AbstractVestigoUIPlugin plugin = VestigoUIPlugin.getDefault();
 
 	private QueryParameterManager queryParameterManager;
 

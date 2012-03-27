@@ -21,6 +21,7 @@ import org.eclipse.ui.forms.events.HyperlinkAdapter;
 import org.eclipse.ui.forms.events.HyperlinkEvent;
 import org.eclipse.ui.forms.widgets.Hyperlink;
 import org.nightlabs.vestigo.core.VestigoCorePlugin;
+import org.nightlabs.vestigo.ui.AbstractVestigoUIPlugin;
 import org.nightlabs.vestigo.ui.VestigoUIPlugin;
 import org.nightlabs.vestigo.ui.resource.Messages;
 import org.nightlabs.licence.manager.LicenceManager;
@@ -95,7 +96,7 @@ public class LicenceNotValidDialog extends TitleAreaDialog
 	protected Control createContents(Composite parent) {
 		Control contents = super.createContents(parent);
 
-		setTitleImage(VestigoUIPlugin.getDefault().getImage(LicenceNotValidDialog.class, "title", VestigoUIPlugin.IMAGE_SIZE_75x70)); //$NON-NLS-1$
+		setTitleImage(VestigoUIPlugin.getDefault().getImage(LicenceNotValidDialog.class, "title", AbstractVestigoUIPlugin.IMAGE_SIZE_75x70)); //$NON-NLS-1$
 		setTitle(Messages.getString("LicenceNotValidDialog.title")); //$NON-NLS-1$
 
 		if (licenceValid)
@@ -131,7 +132,7 @@ public class LicenceNotValidDialog extends TitleAreaDialog
 	{
 		super.configureShell(newShell);
 		newShell.setText(Messages.getString("LicenceNotValidDialog.title")); //$NON-NLS-1$
-		newShell.setImage(VestigoUIPlugin.getDefault().getImage(LicenceNotValidDialog.class, "shell", VestigoUIPlugin.IMAGE_SIZE_16x16)); //$NON-NLS-1$
+		newShell.setImage(VestigoUIPlugin.getDefault().getImage(LicenceNotValidDialog.class, "shell", AbstractVestigoUIPlugin.IMAGE_SIZE_16x16)); //$NON-NLS-1$
 	}
 
 	@Override

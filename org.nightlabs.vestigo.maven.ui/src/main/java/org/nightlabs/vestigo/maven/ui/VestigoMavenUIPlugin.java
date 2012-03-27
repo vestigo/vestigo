@@ -1,17 +1,14 @@
-package org.nightlabs.vestigo.jdt.ui;
+package org.nightlabs.vestigo.maven.ui;
 
 import org.nightlabs.vestigo.ui.AbstractVestigoUIPlugin;
 import org.osgi.framework.BundleContext;
 
-/**
- * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
- */
-public class VestigoJDTUIPlugin extends AbstractVestigoUIPlugin
+public class VestigoMavenUIPlugin extends AbstractVestigoUIPlugin
 {
-	public static final String BUNDLE_SYMBOLIC_NAME = "org.nightlabs.vestigo.jdt.ui";
+	public static final String BUNDLE_SYMBOLIC_NAME = "org.nightlabs.vestigo.maven.ui";
 
 	// The shared instance
-	private static VestigoJDTUIPlugin plugin;
+	private static VestigoMavenUIPlugin plugin;
 
 	@Override
 	public void start(BundleContext context) throws Exception {
@@ -29,7 +26,7 @@ public class VestigoJDTUIPlugin extends AbstractVestigoUIPlugin
 	 * Get the shared instance.
 	 * @return the shared instance.
 	 */
-	public static VestigoJDTUIPlugin getDefault() {
+	public static VestigoMavenUIPlugin getDefault() {
 		return plugin;
 	}
 }

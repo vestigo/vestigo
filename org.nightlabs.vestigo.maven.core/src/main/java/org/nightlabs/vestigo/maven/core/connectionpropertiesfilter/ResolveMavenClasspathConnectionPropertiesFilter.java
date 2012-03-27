@@ -9,7 +9,7 @@ import java.io.Writer;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -19,10 +19,11 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 
+import org.eclipse.core.runtime.OperationCanceledException;
 import org.nightlabs.util.IOUtil;
 import org.nightlabs.vestigo.childvm.shared.PropertiesUtil;
 import org.nightlabs.vestigo.core.connectionpropertiesfilter.AbstractConnectionPropertiesFilter;
-import org.nightlabs.vestigo.maven.core.MavenRunner;
+import org.nightlabs.vestigo.maven.core.DependencyMavenURI;
 import org.nightlabs.vestigo.maven.core.MavenURI;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -134,40 +135,71 @@ public class ResolveMavenClasspathConnectionPropertiesFilter extends AbstractCon
 		try {
 			File projectDirectory = createDownloaderMavenProject(mavenURI);
 
-			MavenRunner mavenRunner = new MavenRunner(projectDirectory);
-			if (mavenRunner.run() != 0)
-				throw new IllegalStateException("Running maven failed with code=" + mavenRunner.getMavenResult());
+			DependencyResolveMavenRunner mavenRunner = new DependencyResolveMavenRunner(projectDirectory);
+			if (mavenRunner.run() != 0) {
+				// an error dialog has already been shown by the MavenRunner itself. But we still abort the process.
+				logger.warn("resolveClasspathURLs: Running maven failed! errorCode={} output={}", mavenRunner.getMavenResultCode(), mavenRunner.getMavenOutput());
+				throw new OperationCanceledException("Maven error code=" + mavenRunner.getMavenResultCode() + "!");
+			}
 
-			File mavenLocalRepository = new File(new File(IOUtil.getUserHome(), ".m2"), "repository");
-			if (!mavenLocalRepository.isDirectory())
-				throw new IllegalStateException("Local maven-repository does not exist or is not an accessible directory or is at unknown location! Expected: " + mavenLocalRepository.getAbsolutePath());
+			List<URL> result = new ArrayList<URL>(mavenRunner.getDependencyMavenURIs().size() + 1);
 
-			String groupPath = mavenURI.getGroupId().replace('.', File.separatorChar);
-			File mainDependencyDir = new File(new File(new File(mavenLocalRepository, groupPath), mavenURI.getArtifactId()), mavenURI.getVersion());
-			if (!mainDependencyDir.isDirectory())
-				throw new IllegalStateException("Directory does not exist or is not accessible: " + mainDependencyDir.getAbsolutePath());
+			File mavenArtifactFile = getMavenArtifactFile(mavenURI);
+			URL mavenArtifactURL = mavenArtifactFile.toURI().toURL();
+			if (urlStringSet.add(mavenArtifactURL.toExternalForm()))
+				result.add(mavenArtifactURL);
 
-			String fileName = mavenURI.getArtifactId() + '-' + mavenURI.getVersion();
-			if (mavenURI.getClassifier() != null)
-				fileName += '-' + mavenURI.getClassifier();
+			for (DependencyMavenURI dependencyMavenURI : mavenRunner.getDependencyMavenURIs()) {
+				mavenArtifactFile = getMavenArtifactFile(dependencyMavenURI);
+				mavenArtifactURL = mavenArtifactFile.toURI().toURL();
+				if (urlStringSet.add(mavenArtifactURL.toExternalForm()))
+					result.add(mavenArtifactURL);
+			}
 
-			if (mavenURI.getType() == null)
-				fileName += '.' + MavenURI.DEFAULT_TYPE;
-			else
-				fileName += '.' + mavenURI.getType();
-
-			File mainDependencyFile = new File(mainDependencyDir,  fileName);
-			if (!mainDependencyFile.exists())
-				throw new IllegalStateException("File does not exist: " + mainDependencyFile.getAbsolutePath());
-
-			// TODO parse the output of maven and add transitive dependencies (additional to the main dependency)! Marco :-)
-
-			return Collections.singletonList(mainDependencyFile.toURI().toURL());
+			return result;
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		} catch (InterruptedException e) {
 			throw new RuntimeException(e);
 		}
+	}
+
+	protected File getMavenArtifactFile(MavenURI mavenURI)
+	{
+		String groupPath = mavenURI.getGroupId().replace('.', File.separatorChar);
+		File dir = new File(new File(new File(getMavenLocalRepository(), groupPath), mavenURI.getArtifactId()), mavenURI.getVersion());
+		if (!dir.isDirectory())
+			throw new IllegalStateException("Directory does not exist or is not accessible: " + dir.getAbsolutePath());
+
+		String fileName = mavenURI.getArtifactId() + '-' + mavenURI.getVersion();
+		if (mavenURI.getClassifier() != null)
+			fileName += '-' + mavenURI.getClassifier();
+
+		if (mavenURI.getType() == null)
+			fileName += '.' + MavenURI.DEFAULT_TYPE;
+		else
+			fileName += '.' + mavenURI.getType();
+
+		File file = new File(dir,  fileName);
+		if (!file.exists())
+			throw new IllegalStateException("File does not exist: " + file.getAbsolutePath());
+
+		return file;
+	}
+
+	private File mavenLocalRepository;
+
+	protected File getMavenLocalRepository()
+	{
+		File mavenLocalRepository = this.mavenLocalRepository;
+		if (mavenLocalRepository == null) {
+			mavenLocalRepository = new File(new File(IOUtil.getUserHome(), ".m2"), "repository");
+			if (!mavenLocalRepository.isDirectory())
+				throw new IllegalStateException("Local maven-repository does not exist or is not an accessible directory or is at unknown location! Expected: " + mavenLocalRepository.getAbsolutePath());
+
+			this.mavenLocalRepository = mavenLocalRepository;
+		}
+		return mavenLocalRepository;
 	}
 
 	protected File createDownloaderMavenProject(MavenURI mavenURI) throws FileNotFoundException, IOException

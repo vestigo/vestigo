@@ -16,7 +16,6 @@ package org.nightlabs.vestigo.core.oda.impl;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Properties;
 import java.util.Set;
 import java.util.UUID;
@@ -28,8 +27,6 @@ import org.nightlabs.vestigo.childvm.shared.PropertiesUtil;
 import org.nightlabs.vestigo.childvm.shared.api.ChildVM;
 import org.nightlabs.vestigo.childvm.shared.dto.ConnectionDTO;
 import org.nightlabs.vestigo.core.oda.Connection;
-import org.nightlabs.vestigo.core.oda.ConnectionExtension;
-import org.nightlabs.vestigo.core.oda.ConnectionExtensionRegistry;
 import org.nightlabs.vestigo.core.oda.ConnectionProfile;
 import org.nightlabs.vestigo.core.oda.ConnectionProfileRegistry;
 import org.nightlabs.vestigo.core.oda.OdaMultiCauseException;
@@ -126,11 +123,7 @@ public abstract class AbstractConnection implements Connection
 		this.appContext = context;
 	}
 
-	protected void preOpen() throws OdaException
-	{
-		for (ConnectionExtension extension : getConnectionExtensions())
-			extension.preOpen();
-	}
+	protected void preOpen() throws OdaException { }
 
 	protected void doOpen() throws OdaException
 	{
@@ -144,11 +137,7 @@ public abstract class AbstractConnection implements Connection
 		// TODO END remove this debug stuff
 	}
 
-	protected void postOpen() throws OdaException
-	{
-		for (ConnectionExtension extension : getConnectionExtensions())
-			extension.postOpen();
-	}
+	protected void postOpen() throws OdaException { }
 
 	/**
 	 * Get the appContext previously set by {@link #setAppContext(Object)}
@@ -210,15 +199,8 @@ public abstract class AbstractConnection implements Connection
 		connectionProperties = null;
 	}
 
-	public List<? extends ConnectionExtension> getConnectionExtensions()
+	protected void preClose() throws OdaException
 	{
-		return ConnectionExtensionRegistry.sharedInstance().getConnectionExtensions(this);
-	}
-
-	protected void preClose() throws OdaException {
-		for (ConnectionExtension extension : getConnectionExtensions())
-			extension.preClose();
-
 		for (Query query : new ArrayList<Query>(queries))
 			query.close();
 	}
@@ -228,10 +210,7 @@ public abstract class AbstractConnection implements Connection
 		getChildVM().deleteConnectionDTO(getConnectionID());
 	}
 
-	protected void postClose() throws OdaException {
-		for (ConnectionExtension extension : getConnectionExtensions())
-			extension.postClose();
-	}
+	protected void postClose() throws OdaException { }
 
 	@Override
 	public boolean isOpen() throws OdaException {

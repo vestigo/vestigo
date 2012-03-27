@@ -84,7 +84,7 @@
 				<configuration>
 					<!-- <manifestLocation>META-INF</manifestLocation> -->
 					<instructions>
-<!-- 						<Bundle-Activator>org.nightlabs.vestigo.cumulus4j.ui.VestigoCumulus4JUIPlugin</Bundle-Activator> -->
+<!-- 						<Bundle-Activator>org.nightlabs.vestigo.cumulus4j.ui.VestigoCumulus4jUIPlugin</Bundle-Activator> -->
 <!-- 						<Bundle-ActivationPolicy>lazy</Bundle-ActivationPolicy> -->
 					</instructions>
 				</configuration>

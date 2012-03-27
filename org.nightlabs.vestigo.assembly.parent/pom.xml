@@ -38,10 +38,6 @@
 			<groupId>org.nightlabs.eclipse</groupId>
 			<artifactId>${org.nightlabs.eclipse.compatibility.artifactId}</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.nightlabs.eclipse</groupId>
-			<artifactId>org.nightlabs.eclipse.extension</artifactId>
-		</dependency>
 		<!-- END org.nightlabs.eclipse.* -->
 
 		<!-- BEGIN org.nightlabs.vestigo.* -->
