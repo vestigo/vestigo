@@ -54,7 +54,7 @@ Quick start (JDO)
 * Classpath
 
 	All libraries needed for this data source are in the folder <<</tmp/vestigo-demo/>>>.
-	Therefore we add <<<file:${java.io.tmpdir}/vestigo-demo/*>>> as shown below. 
+	Therefore we add <<<file:$\{java.io.tmpdir}/vestigo-demo/*>>> as shown below. 
 
 	Please read more about the {{{../data-source.html#Classpath}classpath here}}.
 
@@ -81,7 +81,7 @@ Quick start (JDO)
 	<<<jdbc:derby:$\{java.io.tmpdir}/vestigo-demo/derby/vestigoDemoMovieJDO/>>> is equivalent to
 	<<<jdbc:derby:/tmp/vestigo-demo/derby/vestigoDemoMovieJDO/>>>.
 
-	Please continue reading about the {{{../data-source.html#Persistence_properties}persistence properties here}}.
+	Please continue reading about the {{{./persistence-properties.html}persistence properties here}}.
 
 [../../images/jdo/quick-start/45.png]
 
