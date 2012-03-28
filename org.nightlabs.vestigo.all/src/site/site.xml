@@ -46,6 +46,7 @@
 		</links>
 
 		<menu name="Documentation">
+			<item name="Quick start" href="./documentation/jdo/quick-start.html" />
 			<item name="Data source" href="./documentation/data-source.html" />
 			<item name="Query" href="./documentation/query.html" />
 			<item name="FAQ" href="./documentation/faq.html" />
