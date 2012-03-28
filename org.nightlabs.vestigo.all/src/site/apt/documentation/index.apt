@@ -7,6 +7,10 @@
 
 Documentation
 
+* Get started
+
+	No idea where to start? No problem! Follow this {{{./jdo/quick-start.html}quick start guide}}.
+
 * Data source
 
 	What is a {{{./data-source.html}data source}} and how do I create one?

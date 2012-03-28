@@ -1,0 +1,39 @@
+	---
+	Quick start (JDO)
+	---
+	Marco หงุ่ยตระกูล-Schulze
+	---
+	2012-03-28
+
+Quick start (JDO)
+
+	In the following we'll show you what Vestigo is and how to use it. We'll use a little demo
+	database with a corresponding JDO data model. Note, that our demo data contains a JPA data model,
+	too, in case you prefer to work with JPA. The proceeding is the same (only the JDO query language
+	is more elegant).
+
+* Download and extract the demo data
+
+	Download
+	{{{http://vestigo.nightlabs.com/${project.version}/download/demo/org.nightlabs.vestigo.demo-${project.version}-bin.zip}org.nightlabs.vestigo.demo-${project.version}-bin.zip}}
+	and extract this file somewhere. This guide assumes in the following, that you downloaded the file to
+	<<</tmp>>> and extracted it there leading to the files and directories shown below.
+
+[../../images/jdo/quick-start/10.png]
+
+* Download, extract and start Vestigo
+
+	Go to the {{{../../download/index.html}download area}} and choose the stand-alone version for your
+	operating system. After you downloaded the tar.gz (or zip) file, please extract it and run
+	the program <<<vestigo>>> or <<<vestigo.exe>>> (depending on your environment).
+
+* Close the <Welcome> page and open the <Vestigo> perspective
+
+	For opening the <Vestigo> perspective, please click in the main menu on
+	<Window> => <Open Perspective> => <Other...>:
+
+[../../images/jdo/quick-start/20.png]
+
+	In the following dialog, you select the <Vestigo> perspective:
+
+[../../images/jdo/quick-start/30.png]
