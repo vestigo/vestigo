@@ -461,7 +461,7 @@
       </category>
 
       <view id="org.nightlabs.vestigo.ui.resultsettable.ResultSetTableView"
-            name="Result set view"
+            name="Result set"
             icon="icons/org.nightlabs.vestigo.ui.resultsettable/ResultSetTableView.16x16.png"
             category="org.nightlabs.vestigo.ui"
             class="org.nightlabs.vestigo.ui.resultsettable.ResultSetTableView"/>

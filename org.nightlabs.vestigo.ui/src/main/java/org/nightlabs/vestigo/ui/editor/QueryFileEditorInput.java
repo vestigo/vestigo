@@ -88,4 +88,9 @@ public class QueryFileEditorInput implements IEditorInput, IFileEditorInput, Que
 	public IFile getFile() {
 		return fileEditorInput.getFile();
 	}
+
+	@Override
+	public IFileEditorInput getRawEditorInput() {
+		return fileEditorInput;
+	}
 }

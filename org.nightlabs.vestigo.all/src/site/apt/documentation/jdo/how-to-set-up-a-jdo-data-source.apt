@@ -68,14 +68,14 @@ How to set up a JDO data source
 
 * Test the connection
 
-	We can - and should - test the connection before finishing the wizard: Click the "Test Connection" button. If
-	everything is correct and a <<<PersistenceManagerFactory>>> can successfully be started, you'll see the same
-	dialog as shown in the following screenshot:
+	We can - and should - test the connection before finishing the wizard: Click the <Test Connection> button. If
+	everything is correct and a <<<PersistenceManagerFactory>>> can successfully be started, you'll see
+	this dialog:
 
 [../../images/jdo/how-to-set-up-a-jdo-data-source/60.png]
 
 * Finish
 
-	After clicking the wizard's "Finish" button, our new connection is shown in the <Data Source Explorer> view.  
+	After clicking the wizard's <Finish> button, our new connection is shown in the <Data Source Explorer> view.  
 
 [../../images/jdo/how-to-set-up-a-jdo-data-source/70.png]

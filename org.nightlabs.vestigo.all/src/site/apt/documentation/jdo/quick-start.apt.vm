@@ -17,7 +17,7 @@ Quick start (JDO)
 	Download
 	{{{http://vestigo.nightlabs.com/${project.version}/download/demo/org.nightlabs.vestigo.demo-${project.version}-bin.zip}org.nightlabs.vestigo.demo-${project.version}-bin.zip}}
 	and extract this file somewhere. This guide assumes in the following, that you downloaded the file to
-	<<</tmp>>> and extracted it there leading to the files and directories shown below.
+	<<</tmp/>>> and extracted it there leading to the files and directories shown below.
 
 [../../images/jdo/quick-start/10.png]
 
@@ -32,8 +32,91 @@ Quick start (JDO)
 	For opening the <Vestigo> perspective, please click in the main menu on
 	<Window> => <Open Perspective> => <Other...>:
 
-[../../images/jdo/quick-start/20.png]
+[../../images/jdo/quick-start/15.png]
 
 	In the following dialog, you select the <Vestigo> perspective:
 
+[../../images/jdo/quick-start/20.png]
+
+* Start the wizard
+
+	In the <Data Source Explorer> view, you right-click on <JDO Connections> and then
+	on <New...>:
+
+[../../images/jdo/quick-start/25.png]
+
+* Give the new data source a name
+
+	The new data source needs a name to reference it everywhere in the application.
+
 [../../images/jdo/quick-start/30.png]
+
+* Classpath
+
+	All libraries needed for this data source are in the folder <<</tmp/vestigo-demo/>>>.
+	Therefore we add <<<file:${java.io.tmpdir}/vestigo-demo/*>>> as shown below. 
+
+	Please read more about the {{{../data-source.html#Classpath}classpath here}}.
+
+[../../images/jdo/quick-start/35.png]
+
+* Persistence unit
+
+	Our demo data contains two persistence units: One for JDO and one for JPA. Select
+	<<<vestigoDemoMovieJDO>>>.
+
+	See {{{./persistence-unit.html}JDO persistence unit}} for further details.
+
+[../../images/jdo/quick-start/40.png]
+
+* Persistence properties
+
+	Most settings from the persistence unit can be used as they are. Only one single setting needs to
+	be overwritten: <<<javax.jdo.option.ConnectionURL>>>
+
+	We extracted the demo data into our <<</tmp/>>> directory. Thus, the correct JDBC-URL is:
+	<<<jdbc:derby:/tmp/vestigo-demo/derby/vestigoDemoMovieJDO/>>>
+
+	Note, that you can use variables like <<<$\{VAR}>>> and therefore the URL
+	<<<jdbc:derby:$\{java.io.tmpdir}/vestigo-demo/derby/vestigoDemoMovieJDO/>>> is equivalent to
+	<<<jdbc:derby:/tmp/vestigo-demo/derby/vestigoDemoMovieJDO/>>>.
+
+	Please continue reading about the {{{../data-source.html#Persistence_properties}persistence properties here}}.
+
+[../../images/jdo/quick-start/45.png]
+
+* Test the connection
+
+	We can - and should - test the connection, now: Click the <Test Connection> button. If
+	everything is correct and a <<<PersistenceManagerFactory>>> can successfully be started, you'll see
+	this dialog:
+
+[../../images/jdo/quick-start/50.png]
+
+* Finish the wizard
+
+	After clicking the wizard's <Finish> button, our new connection is shown in the <Data Source Explorer> view.  
+
+[../../images/jdo/quick-start/55.png]
+
+* Open the data source and execute your first query
+
+	A double-click on the <<<JDO demo>>> data source opens it and causes the <Candidate classes view> to load
+	and display all candidate classes (aka entities).
+
+[../../images/jdo/quick-start/60.png]
+
+	When you double-click one of these classes, a new (anonymous) query editor is opened with a simple query
+	for the selected candidate class.
+
+[../../images/jdo/quick-start/65.png]
+	
+	A second double-click on the same class causes the query to be executed and you	can see the results in
+	the <Result set view>.
+
+[../../images/jdo/quick-start/70.png]
+
+	In order to navigate through an object graph, simply select a row in the <Result set> and then navigate
+	through the <Object graph detail tree>.
+
+[../../images/jdo/quick-start/75.png]

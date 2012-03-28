@@ -13,6 +13,7 @@ import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.IEditorDescriptor;
+import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorRegistry;
 import org.eclipse.ui.IPartListener2;
@@ -53,21 +54,37 @@ public class CandidateClassView extends ViewPart
 
 		getSite().getWorkbenchWindow().getSelectionService().addSelectionListener(selectionListener);
 
-		candidateClassComposite.addPropertyChangeListener(CandidateClassComposite.PropertyName.candidateClassDoubleClicked.name(), new PropertyChangeListener() {
-			@Override
-			public void propertyChange(PropertyChangeEvent evt) {
-				CandidateClass candidateClass = (CandidateClass) evt.getNewValue();
-				if (queryEditorManager == null && connectionProfile == null)
-					return;
-
-				if (queryEditorManager == null && connectionProfile != null)
-					openQueryEditor();
-
-				if (queryEditorManager != null)
-					queryEditorManager.assignDefaultQueryTextForCandidateClass(candidateClass.getClassName());
-			}
-		});
+		candidateClassComposite.addPropertyChangeListener(
+				CandidateClassComposite.PropertyName.candidateClassDoubleClicked.name(),
+				candidateClassDoubleClickedListener
+		);
 	}
+
+	private PropertyChangeListener candidateClassDoubleClickedListener = new PropertyChangeListener() {
+		@Override
+		public void propertyChange(PropertyChangeEvent evt) {
+			CandidateClass candidateClass = (CandidateClass) evt.getNewValue();
+			if (queryEditorManager == null && connectionProfile == null)
+				return;
+
+			if (queryEditorManager != null && connectionProfile != null) {
+				// We only overwrite the current query in the currently active editor, if the
+				// active editor is an anonymous one - otherwise, we open a new editor.
+				IEditorInput editorInput = queryEditorManager.getQueryEditor().getEditorInput();
+				if (editorInput instanceof QueryEditorInput) {
+					editorInput = ((QueryEditorInput)editorInput).getRawEditorInput();
+					if (!(editorInput instanceof NonExistingStorageEditorInput))
+						queryEditorManager = null;
+				}
+			}
+
+			if (queryEditorManager == null && connectionProfile != null)
+				openQueryEditor();
+
+			if (queryEditorManager != null)
+				queryEditorManager.assignDefaultQueryTextForCandidateClass(candidateClass.getClassName());
+		}
+	};
 
 	private void openQueryEditor()
 	{

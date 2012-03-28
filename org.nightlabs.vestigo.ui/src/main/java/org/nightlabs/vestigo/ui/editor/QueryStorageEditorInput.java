@@ -82,4 +82,9 @@ public class QueryStorageEditorInput implements IEditorInput, IStorageEditorInpu
 	public String toString() {
 		return this.getClass().getSimpleName() + '[' + connectionProfile + ',' + storageEditorInput + ']';
 	}
+
+	@Override
+	public IStorageEditorInput getRawEditorInput() {
+		return storageEditorInput;
+	}
 }

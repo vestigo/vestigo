@@ -24,4 +24,6 @@ public interface QueryEditorInput extends IEditorInput
 	}
 
 	IConnectionProfile getConnectionProfile();
+
+	IEditorInput getRawEditorInput();
 }
