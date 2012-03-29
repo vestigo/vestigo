@@ -22,6 +22,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -42,6 +43,7 @@ import org.eclipse.jface.viewers.ICheckStateListener;
 import org.eclipse.jface.viewers.ICheckStateProvider;
 import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
+import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.ITableColorProvider;
 import org.eclipse.jface.viewers.ITableFontProvider;
 import org.eclipse.jface.viewers.ITableLabelProvider;
@@ -64,6 +66,7 @@ import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
+import org.nightlabs.util.Util;
 import org.nightlabs.vestigo.childvm.shared.PropertiesUtil;
 import org.nightlabs.vestigo.core.oda.OdaMultiCauseException;
 import org.nightlabs.vestigo.ui.AbstractVestigoUIPlugin;
@@ -84,8 +87,9 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 	private TableViewer tableViewer;
 	private Table table;
 
-	private Button loadFromFile;
-	private Button saveToFile;
+	private Button loadFromFileButton;
+	private Button saveToFileButton;
+	private Button removeButton;
 
 	private List<LoadPropertiesHandler> loadPropertiesHandlers = new ArrayList<LoadPropertiesHandler>();
 	private List<SavePropertiesHandler> savePropertiesHandlers = new ArrayList<SavePropertiesHandler>();
@@ -304,11 +308,26 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 				properties.put(name, value);
 		}
 
-		public void renameProperty(String oldName, String newName) {
+		public void renameProperty(String oldName, String newName)
+		{
+			if (oldName.equals(newName))
+				return;
+
+			String oldMetaPropertyKeyNullValue = PropertiesUtil.getMetaPropertyKeyNullValue(oldName);
+
+
 			properties.remove(oldName);
+			properties.remove(oldMetaPropertyKeyNullValue);
+
+			key2propertiesMergedMapEntry.remove(oldName);
 			Object value = propertiesMerged.remove(oldName);
-			if (!"".equals(newName))
+			Object metaPropertyValueNullValue = propertiesMerged.remove(oldMetaPropertyKeyNullValue);
+
+			if (!"".equals(newName)) {
 				properties.put(newName, value);
+				if (metaPropertyValueNullValue != null)
+					properties.put(PropertiesUtil.getMetaPropertyKeyNullValue(newName), metaPropertyValueNullValue);
+			}
 		}
 
 		public void resetPropertyToDefault(Map.Entry<String, String> mapEntry)
@@ -365,24 +384,45 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 		super(parent, style);
 		setLayoutData(new GridData(GridData.FILL_BOTH));
 		GridLayout layout = new GridLayout();
-		layout.numColumns = 2;
+		layout.numColumns = 3;
 		setLayout(layout);
 
-		loadFromFile = new Button(this, SWT.PUSH);
-		loadFromFile.setImage(VestigoUIPlugin.getDefault().getImage(EditPropertiesComposite.class, "loadFromFile", AbstractVestigoUIPlugin.IMAGE_SIZE_16x16));
-		loadFromFile.addSelectionListener(new SelectionAdapter() {
+		loadFromFileButton = new Button(this, SWT.PUSH);
+		loadFromFileButton.setImage(VestigoUIPlugin.getDefault().getImage(EditPropertiesComposite.class, "loadFromFileButton", AbstractVestigoUIPlugin.IMAGE_SIZE_16x16));
+		loadFromFileButton.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent event) {
 				loadFromFile();
 			}
 		});
 
-		saveToFile = new Button(this, SWT.PUSH);
-		saveToFile.setImage(VestigoUIPlugin.getDefault().getImage(EditPropertiesComposite.class, "saveToFile", AbstractVestigoUIPlugin.IMAGE_SIZE_16x16));
-		saveToFile.addSelectionListener(new SelectionAdapter() {
+		saveToFileButton = new Button(this, SWT.PUSH);
+		saveToFileButton.setImage(VestigoUIPlugin.getDefault().getImage(EditPropertiesComposite.class, "saveToFileButton", AbstractVestigoUIPlugin.IMAGE_SIZE_16x16));
+		saveToFileButton.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent event) {
 				saveToFile();
+			}
+		});
+
+		removeButton = new Button(this, SWT.PUSH);
+		removeButton.setToolTipText("Remove the selected entries.");
+		removeButton.setImage(VestigoUIPlugin.getDefault().getImage(EditPropertiesComposite.class, "removeButton", AbstractVestigoUIPlugin.IMAGE_SIZE_16x16));
+		removeButton.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent event)
+			{
+				IStructuredSelection selection = (IStructuredSelection) tableViewer.getSelection();
+				if (selection.isEmpty())
+					return;
+
+				for (Iterator<?> it = selection.iterator(); it.hasNext(); ) {
+					@SuppressWarnings("unchecked")
+					Map.Entry<String, String> me = (Entry<String, String>) it.next();
+					getContentProvider().renameProperty(me.getKey(), "");
+				}
+
+				tableViewer.refresh(true);
 			}
 		});
 
@@ -402,7 +442,7 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 
 		GridLayout layout = (GridLayout) getLayout();
 
-		int style = SWT.BORDER | SWT.FULL_SELECTION | SWT.SINGLE;
+		int style = SWT.BORDER | SWT.FULL_SELECTION | SWT.MULTI; // SWT.SINGLE;
 		if (input instanceof PropertiesWithDefaults)
 			style |= SWT.CHECK;
 
@@ -600,7 +640,7 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 							return;
 						} catch (Throwable x) {
 							handlerExceptions.add(x);
-							logger.error("loadFromFile: handler.class=" + handler.getClass().getName() + ":" + x, x);
+							logger.error("loadFromFileButton: handler.class=" + handler.getClass().getName() + ":" + x, x);
 						}
 					}
 
@@ -649,7 +689,7 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 		for (Map.Entry<String, String> me : fileNameFilters.entrySet()) {
 			sb.append(String.format("\n  * %s (%s)", me.getKey(), me.getValue()));
 		}
-		loadFromFile.setToolTipText("Load the properties from a file. The following file types are supported:" + sb);
+		loadFromFileButton.setToolTipText("Load the properties from a file. The following file types are supported:" + sb);
 	}
 
 	public void removeLoadPropertiesHandler(LoadPropertiesHandler handler) {
@@ -679,7 +719,7 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 		for (Map.Entry<String, String> me : fileNameFilters.entrySet()) {
 			sb.append(String.format("\n  * %s (%s)", me.getKey(), me.getValue()));
 		}
-		saveToFile.setToolTipText("Save the properties to a file. The following file types are supported:" + sb);
+		saveToFileButton.setToolTipText("Save the properties to a file. The following file types are supported:" + sb);
 	}
 
 	public void removeSavePropertiesHandler(SavePropertiesHandler handler) {
@@ -818,6 +858,10 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 					getContentProvider().setProperty(PropertiesUtil.getMetaPropertyKeyNullValue(oldKey), newVal);
 			}
 			else if (COL_VAL.equals(property)) {
+				String oldVal = getContentProvider().getPropertiesMerged().get(oldKey);
+				if (Util.equals(oldVal, newVal))
+					return;
+
 				getContentProvider().setProperty(oldKey, newVal);
 				getContentProvider().getProperties().remove(PropertiesUtil.getMetaPropertyKeyNullValue(oldKey));
 			}
@@ -833,7 +877,8 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 			@Override
 			public void run() {
 				// First set the input newly. This will keep most selections stable (i.e. reselect what was selected previously).
-				setProperties(getContentProvider().getProperties());
+//				setProperties(getContentProvider().getProperties());
+				tableViewer.refresh(true); // we DO NOT set the input again, because this recreates the table (since we introduced the overwriting of defaults feature)!
 
 				// However, if we changed the property name, the Map.Entry-instance is a new one and thus, we must
 				// re-select manually. Marco :-)
