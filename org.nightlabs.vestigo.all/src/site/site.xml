@@ -29,10 +29,11 @@
 			img="http://maven.apache.org/images/logos/maven-feather.png"
 			target="_blank" />
 	</poweredBy>
-	
+
 	<custom>
 		<hideMenu>
 			<path>index.html</path>
+			<path>screenshots/index.html</path>
 		</hideMenu>
 	</custom>
 

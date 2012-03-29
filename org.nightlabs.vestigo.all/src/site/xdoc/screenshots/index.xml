@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://maven.apache.org/XDOC/2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 http://maven.apache.org/xsd/xdoc-2.0.xsd">
+
+	<properties>
+		<title>Screenshots</title>
+		<author>Marco หงุ่ยตระกูล-Schulze</author>
+	</properties>
+
+	<body>
+
+		<section name="Screenshots">
+			<p>
+				Here we'll show you some screenshots in order to give you an impression of Vestigo:
+			</p>
+
+			<subsection name="Overview">
+				<p>
+					The following screenshots show you Vestigo's default perspective layout - once with a JDO query
+					and once with a JPA query being edited. Additionally, they have different views being visible.
+					Of course, you can drag the views around to adjust the layout to your personal taste.
+				</p>
+				<p>
+					<a href="../images/screenshots/overview1.png" target="_blank"><img src="../images/screenshots/overview1.png" width="750" alt="Overview 1" /></a>
+				</p>
+				<p>
+					<a href="../images/screenshots/overview2.png" target="_blank"><img src="../images/screenshots/overview2.png" width="750" alt="Overview 2" /></a>
+				</p>
+				<p>
+					In the following, we'll show and explain some parts in detail.
+				</p>
+			</subsection>
+
+			<subsection name="Editors with syntax highlighting">
+				<p>
+					The next two screenshots demonstrate how a JDO and a JPA query is displayed:
+					Of course with syntax highlighting for easy readability.
+				</p>
+				<p>
+					<img src="../images/screenshots/jdo-query.png" alt="JDO query" />
+				</p>
+				<p>
+					<img src="../images/screenshots/jpa-query.png" alt="JPA query" />
+				</p>
+			</subsection>
+
+			<subsection name="Editors with code assist">
+				<p>
+					As you expect from a modern, Eclipse-based tool, both JDO and JPA editors do not only provide
+					syntax highlighting, but also code assist. In the first example,
+					you see the code assist suggesting the available candidate classes (aka entities) that can be
+					queried. In the second example, the available query parameters are listed.
+				</p>
+				<p>
+					Simply hit [Ctrl]+[Space] and the code assist will ease your work.
+				</p>
+				<p>
+					<img src="../images/screenshots/code-assist-candidate-classes.png" alt="Code assist suggesting candidate classes" />
+				</p>
+				<p>
+					<img src="../images/screenshots/code-assist-query-parameters.png" alt="Code assist suggesting query parameters" />
+				</p>
+			</subsection>
+
+			<subsection name="Data source explorer">
+				<p>
+					Being based on Eclipse ODA, you find Vestigo's data sources next to all other data sources in
+					the <i>Data Source Explorer</i> view. Besides ordinary JDO and JPA data sources, Vestigo provides
+					full <a href="http://cumulus4j.org">Cumulus4j</a>-support!
+				</p>
+				<p>
+					As you probably already noted, you can select the active data source in each editor, giving you the chance
+					to easily execute every JDO query on every JDO data source and every JPA query on every JPA data source likewise.
+				</p>
+				<p>
+					<img src="../images/screenshots/data-source-explorer.png" alt="Data source explorer" />
+				</p>
+			</subsection>
+
+			<subsection name="Candidate classes">
+				<p>
+					The <i>Candidate classes</i> view lists all classes that can be queried. A simple double-click opens a query
+					editor with a default query for the class.
+				</p>
+				<p>
+					When using a huge data model with lots of classes, the filtering
+					comes in handy: Simply enter a part of the candidate class names you want to see and the listing is filtered
+					accordingly.
+				</p>
+				<p>
+					<img src="../images/screenshots/candidate-classes.png" alt="Candidate classes" />
+				</p>
+			</subsection>
+
+			<subsection name="Query parameters">
+				<p>
+					As already mentioned before, Vestigo provides full support of query parameters. Besides basic types
+					like <code>java.lang.Integer</code> and <code>java.lang.String</code>, you can write JavaScript to
+					create a query parameter value in a very powerful way (e.g. you could even query your database to
+					use an entity instance as query parameter!).
+				</p>
+				<p>
+					<img src="../images/screenshots/query-parameters.png" alt="Query parameters" />
+				</p>
+				<p>
+					<img src="../images/screenshots/query-parameters-type-selection.png" alt="Type selection for a query parameter" />
+				</p>
+			</subsection>
+
+			<subsection name="Result set">
+				<p>
+					After executing a query, the <i>Result set</i> view displays all result rows returned.
+				</p>
+				<p>
+					<img src="../images/screenshots/result-set.png" alt="Result set" />
+				</p>
+			</subsection>
+
+			<subsection name="Object graph detail tree">
+				<p>
+					Since we're dealing with objects and not with flat SQL results, we usually want to dive into the
+					object graphs returned by the query. Simply select a row or a cell in the result set and navigate
+					through the object graph in the <i>Object graph detail tree</i> view.
+				</p>
+				<p>
+					<img src="../images/screenshots/object-graph-detail-tree.png" alt="Object graph detail tree" />
+				</p>
+			</subsection>
+		</section>
+
+	</body>
+
+</document>
