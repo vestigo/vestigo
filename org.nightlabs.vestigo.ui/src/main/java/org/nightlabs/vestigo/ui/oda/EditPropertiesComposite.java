@@ -42,11 +42,14 @@ import org.eclipse.jface.viewers.ICellModifier;
 import org.eclipse.jface.viewers.ICheckStateListener;
 import org.eclipse.jface.viewers.ICheckStateProvider;
 import org.eclipse.jface.viewers.ILabelProviderListener;
+import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.ITableColorProvider;
 import org.eclipse.jface.viewers.ITableFontProvider;
 import org.eclipse.jface.viewers.ITableLabelProvider;
+import org.eclipse.jface.viewers.SelectionChangedEvent;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TableLayout;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TextCellEditor;
@@ -406,6 +409,7 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 		});
 
 		removeButton = new Button(this, SWT.PUSH);
+		removeButton.setEnabled(false);
 		removeButton.setToolTipText("Remove the selected entries.");
 		removeButton.setImage(VestigoUIPlugin.getDefault().getImage(EditPropertiesComposite.class, "removeButton", AbstractVestigoUIPlugin.IMAGE_SIZE_16x16));
 		removeButton.addSelectionListener(new SelectionAdapter() {
@@ -417,11 +421,15 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 					return;
 
 				for (Iterator<?> it = selection.iterator(); it.hasNext(); ) {
-					@SuppressWarnings("unchecked")
-					Map.Entry<String, String> me = (Entry<String, String>) it.next();
-					getContentProvider().renameProperty(me.getKey(), "");
+					Object item = it.next();
+					if (item instanceof Map.Entry<?, ?>) {
+						@SuppressWarnings("unchecked")
+						Map.Entry<String, String> me = (Entry<String, String>) item;
+						getContentProvider().renameProperty(me.getKey(), "");
+					}
 				}
 
+				tableViewer.setSelection(StructuredSelection.EMPTY);
 				tableViewer.refresh(true);
 			}
 		});
@@ -475,6 +483,7 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 		tableViewer.setColumnProperties(new String[] {COL_KEY, COL_NUL, COL_VAL});
 		tableViewer.setCellEditors(new CellEditor[] {new TextCellEditor(table), new CheckboxCellEditor(table), new TextCellEditor(table)});
 		tableViewer.setCellModifier(this);
+		tableViewer.addSelectionChangedListener(tableSelectionChangedListener);
 
 		// The first table layouting seems to occur before the window (shell) has its final size. Hence the table columns
 		// have wrong sizes. We solve this problem by assigning a new table layout in the next UI event cycle (when the size is final).
@@ -491,6 +500,28 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 		tableViewer.setInput(input);
 		layout(true, true);
 	}
+
+	private ISelectionChangedListener tableSelectionChangedListener = new ISelectionChangedListener() {
+		@Override
+		public void selectionChanged(SelectionChangedEvent event) {
+			boolean removeButtonEnabled = false;
+			if (event.getSelection() instanceof IStructuredSelection) {
+				IStructuredSelection selection = (IStructuredSelection) event.getSelection();
+				for (Iterator<?> it = selection.iterator(); it.hasNext(); ) {
+					Object item = it.next();
+					if (item instanceof Map.Entry<?, ?>) {
+						@SuppressWarnings("unchecked")
+						Map.Entry<String, String> me = (Entry<String, String>) item;
+						if (getContentProvider().getProperties().containsKey(me.getKey())) {
+							removeButtonEnabled = true;
+							break;
+						}
+					}
+				}
+				removeButton.setEnabled(removeButtonEnabled);
+			}
+		}
+	};
 
 	private TableColumn createTableColumn(Table table, String text, String toolTipText) {
 		TableColumn tableColumn = new TableColumn(table, SWT.LEFT);
