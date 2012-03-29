@@ -113,6 +113,7 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 				else break;
 			case JPQLPackage.AND_EXPRESSION:
 				if(context == grammarAccess.getAndExpressionRule() ||
+				   context == grammarAccess.getAndExpressionAccess().getAndExpressionEntriesAction_1_0() ||
 				   context == grammarAccess.getOrExpressionRule() ||
 				   context == grammarAccess.getOrExpressionAccess().getOrExpressionEntriesAction_1_0() ||
 				   context == grammarAccess.getSelectExpressionRule()) {
@@ -398,6 +399,7 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 				else break;
 			case JPQLPackage.OR_EXPRESSION:
 				if(context == grammarAccess.getOrExpressionRule() ||
+				   context == grammarAccess.getOrExpressionAccess().getOrExpressionEntriesAction_1_0() ||
 				   context == grammarAccess.getSelectExpressionRule()) {
 					sequence_OrExpression(context, (OrExpression) semanticObject); 
 					return; 
@@ -532,7 +534,7 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (entries+=AndExpression_AndExpression_1_0 entries+=ComparisonOperatorExpression+)
+	 *     (entries+=AndExpression_AndExpression_1_0 entries+=ComparisonOperatorExpression)
 	 */
 	protected void sequence_AndExpression(EObject context, AndExpression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -550,7 +552,11 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     ((name='ABS' field=Variable) | (name='SQRT' field=Variable) | (name='MOD' fields+=Variable fields+=Variable+))
+	 *     (
+	 *         (name='ABS' field=AdditionExpression) | 
+	 *         (name='SQRT' field=AdditionExpression) | 
+	 *         (name='MOD' fields+=AdditionExpression fields+=AdditionExpression)
+	 *     )
 	 */
 	protected void sequence_ArithmeticFunctionExpression(EObject context, FunctionExpression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -770,27 +776,27 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 	/**
 	 * Constraint:
 	 *     (
-	 *         (name='ABS' field=Variable) | 
-	 *         (name='SQRT' field=Variable) | 
-	 *         (name='MOD' fields+=Variable fields+=Variable+) | 
+	 *         (name='ABS' field=AdditionExpression) | 
+	 *         (name='SQRT' field=AdditionExpression) | 
+	 *         (name='MOD' fields+=AdditionExpression fields+=AdditionExpression) | 
 	 *         (name='INDEX' field=Variable) | 
 	 *         (name='SIZE' field=Variable) | 
-	 *         (name='CONCAT' fields+=Variable fields+=Variable*) | 
-	 *         (name='SUBSTRING' field=Variable startPos=Variable length=Variable?) | 
-	 *         (name='TRIM' trimSpec=TrimSpec? trimChar=Variable? field=Variable) | 
-	 *         (name='LOWER' field=Variable) | 
-	 *         (name='UPPER' field=Variable) | 
-	 *         (name='LENGTH' field=Variable) | 
-	 *         (name='LOCATE' fields+=Variable fields+=Variable startPos=Variable?) | 
+	 *         (name='CONCAT' fields+=ConcreteExpression fields+=ConcreteExpression*) | 
+	 *         (name='SUBSTRING' field=ConcreteExpression startPos=AdditionExpression length=AdditionExpression?) | 
+	 *         (name='TRIM' trimSpec=TrimSpec? trimChar=ConcreteExpression? field=Variable) | 
+	 *         (name='LOWER' field=ConcreteExpression) | 
+	 *         (name='UPPER' field=ConcreteExpression) | 
+	 *         (name='LENGTH' field=ConcreteExpression) | 
+	 *         (name='LOCATE' fields+=ConcreteExpression fields+=ConcreteExpression startPos=AdditionExpression?) | 
 	 *         name='CURRENT_DATE' | 
 	 *         name='CURRENT_TIME' | 
 	 *         name='CURRENT_TIMESTAMP' | 
-	 *         (name='YEAR' field=Variable) | 
-	 *         (name='MONTH' field=Variable) | 
-	 *         (name='DAY' field=Variable) | 
-	 *         (name='HOUR' field=Variable) | 
-	 *         (name='MINUTE' field=Variable) | 
-	 *         (name='SECOND' field=Variable)
+	 *         (name='YEAR' field=AdditionExpression) | 
+	 *         (name='MONTH' field=AdditionExpression) | 
+	 *         (name='DAY' field=AdditionExpression) | 
+	 *         (name='HOUR' field=AdditionExpression) | 
+	 *         (name='MINUTE' field=AdditionExpression) | 
+	 *         (name='SECOND' field=AdditionExpression)
 	 *     )
 	 */
 	protected void sequence_FunctionExpression(EObject context, FunctionExpression semanticObject) {
@@ -942,7 +948,7 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (entries+=OrExpression_OrExpression_1_0 entries+=AndExpression+)
+	 *     (entries+=OrExpression_OrExpression_1_0 entries+=AndExpression)
 	 */
 	protected void sequence_OrExpression(EObject context, OrExpression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1024,13 +1030,13 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 	/**
 	 * Constraint:
 	 *     (
-	 *         (name='CONCAT' fields+=Variable fields+=Variable*) | 
-	 *         (name='SUBSTRING' field=Variable startPos=Variable length=Variable?) | 
-	 *         (name='TRIM' trimSpec=TrimSpec? trimChar=Variable? field=Variable) | 
-	 *         (name='LOWER' field=Variable) | 
-	 *         (name='UPPER' field=Variable) | 
-	 *         (name='LENGTH' field=Variable) | 
-	 *         (name='LOCATE' fields+=Variable fields+=Variable startPos=Variable?)
+	 *         (name='CONCAT' fields+=ConcreteExpression fields+=ConcreteExpression*) | 
+	 *         (name='SUBSTRING' field=ConcreteExpression startPos=AdditionExpression length=AdditionExpression?) | 
+	 *         (name='TRIM' trimSpec=TrimSpec? trimChar=ConcreteExpression? field=Variable) | 
+	 *         (name='LOWER' field=ConcreteExpression) | 
+	 *         (name='UPPER' field=ConcreteExpression) | 
+	 *         (name='LENGTH' field=ConcreteExpression) | 
+	 *         (name='LOCATE' fields+=ConcreteExpression fields+=ConcreteExpression startPos=AdditionExpression?)
 	 *     )
 	 */
 	protected void sequence_StringFunctionExpression(EObject context, FunctionExpression semanticObject) {
@@ -1062,12 +1068,12 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 	 *         name='CURRENT_DATE' | 
 	 *         name='CURRENT_TIME' | 
 	 *         name='CURRENT_TIMESTAMP' | 
-	 *         (name='YEAR' field=Variable) | 
-	 *         (name='MONTH' field=Variable) | 
-	 *         (name='DAY' field=Variable) | 
-	 *         (name='HOUR' field=Variable) | 
-	 *         (name='MINUTE' field=Variable) | 
-	 *         (name='SECOND' field=Variable)
+	 *         (name='YEAR' field=AdditionExpression) | 
+	 *         (name='MONTH' field=AdditionExpression) | 
+	 *         (name='DAY' field=AdditionExpression) | 
+	 *         (name='HOUR' field=AdditionExpression) | 
+	 *         (name='MINUTE' field=AdditionExpression) | 
+	 *         (name='SECOND' field=AdditionExpression)
 	 *     )
 	 */
 	protected void sequence_TemporalFunctionExpression(EObject context, FunctionExpression semanticObject) {

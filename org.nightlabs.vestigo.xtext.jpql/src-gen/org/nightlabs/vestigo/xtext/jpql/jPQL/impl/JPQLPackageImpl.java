@@ -1985,15 +1985,13 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
     leftJoinEClass.getESuperTypes().add(this.getFromJoin());
     innerJoinEClass.getESuperTypes().add(this.getFromJoin());
     expressionEClass.getESuperTypes().add(this.getSelectExpression());
+    variableEClass.getESuperTypes().add(this.getExpression());
     variableEClass.getESuperTypes().add(this.getExpressionTerm());
     expressionTermEClass.getESuperTypes().add(this.getExpression());
     aliasAttributeExpressionEClass.getESuperTypes().add(this.getOrderBySpec());
-    aliasAttributeExpressionEClass.getESuperTypes().add(this.getExpression());
     aliasAttributeExpressionEClass.getESuperTypes().add(this.getVariable());
-    parameterExpressionEClass.getESuperTypes().add(this.getExpression());
     parameterExpressionEClass.getESuperTypes().add(this.getVariable());
     functionExpressionEClass.getESuperTypes().add(this.getExpression());
-    literalEClass.getESuperTypes().add(this.getExpression());
     literalEClass.getESuperTypes().add(this.getVariable());
     integerLiteralEClass.getESuperTypes().add(this.getLiteral());
     floatLiteralEClass.getESuperTypes().add(this.getLiteral());
@@ -2128,12 +2126,12 @@ public class JPQLPackageImpl extends EPackageImpl implements JPQLPackage
 
     initEClass(functionExpressionEClass, FunctionExpression.class, "FunctionExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getFunctionExpression_Name(), ecorePackage.getEString(), "name", null, 0, 1, FunctionExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getFunctionExpression_Fields(), this.getVariable(), null, "fields", null, 0, -1, FunctionExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getFunctionExpression_Field(), this.getVariable(), null, "field", null, 0, 1, FunctionExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getFunctionExpression_StartPos(), this.getVariable(), null, "startPos", null, 0, 1, FunctionExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getFunctionExpression_Length(), this.getVariable(), null, "length", null, 0, 1, FunctionExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFunctionExpression_Fields(), this.getExpression(), null, "fields", null, 0, -1, FunctionExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFunctionExpression_Field(), this.getExpression(), null, "field", null, 0, 1, FunctionExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFunctionExpression_StartPos(), this.getExpression(), null, "startPos", null, 0, 1, FunctionExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFunctionExpression_Length(), this.getExpression(), null, "length", null, 0, 1, FunctionExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getFunctionExpression_TrimSpec(), this.getTrimSpec(), "trimSpec", null, 0, 1, FunctionExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getFunctionExpression_TrimChar(), this.getVariable(), null, "trimChar", null, 0, 1, FunctionExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFunctionExpression_TrimChar(), this.getExpression(), null, "trimChar", null, 0, 1, FunctionExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(literalEClass, Literal.class, "Literal", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

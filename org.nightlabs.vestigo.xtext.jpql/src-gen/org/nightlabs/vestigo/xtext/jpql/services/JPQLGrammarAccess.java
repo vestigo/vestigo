@@ -26,6 +26,7 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//// http://www.datanucleus.org/products/accessplatform_3_1/jpa/jpql.html
 		//// Current spec: JPA 3.0, JPQL BNF at bottom
+		//// http://docs.oracle.com/cd/E28613_01/apirefs.1211/e24396/ejb3_langref.html
 		//JPQLQuery:
 		//	SelectStatement | UpdateStatement | DeleteStatement;
 		public ParserRule getRule() { return rule; }
@@ -1217,38 +1218,34 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cAndExpressionParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
 		private final Action cOrExpressionEntriesAction_1_0 = (Action)cGroup_1.eContents().get(0);
-		private final Group cGroup_1_1 = (Group)cGroup_1.eContents().get(1);
-		private final Keyword cORKeyword_1_1_0 = (Keyword)cGroup_1_1.eContents().get(0);
-		private final Assignment cEntriesAssignment_1_1_1 = (Assignment)cGroup_1_1.eContents().get(1);
-		private final RuleCall cEntriesAndExpressionParserRuleCall_1_1_1_0 = (RuleCall)cEntriesAssignment_1_1_1.eContents().get(0);
+		private final Keyword cORKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
+		private final Assignment cEntriesAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
+		private final RuleCall cEntriesAndExpressionParserRuleCall_1_2_0 = (RuleCall)cEntriesAssignment_1_2.eContents().get(0);
 		
 		//OrExpression returns Expression:
-		//	AndExpression ({OrExpression.entries+=current} ("OR" entries+=AndExpression)+)?;
+		//	AndExpression ({OrExpression.entries+=current} "OR" entries+=AndExpression)*;
 		public ParserRule getRule() { return rule; }
 
-		//AndExpression ({OrExpression.entries+=current} ("OR" entries+=AndExpression)+)?
+		//AndExpression ({OrExpression.entries+=current} "OR" entries+=AndExpression)*
 		public Group getGroup() { return cGroup; }
 
 		//AndExpression
 		public RuleCall getAndExpressionParserRuleCall_0() { return cAndExpressionParserRuleCall_0; }
 
-		//({OrExpression.entries+=current} ("OR" entries+=AndExpression)+)?
+		//({OrExpression.entries+=current} "OR" entries+=AndExpression)*
 		public Group getGroup_1() { return cGroup_1; }
 
 		//{OrExpression.entries+=current}
 		public Action getOrExpressionEntriesAction_1_0() { return cOrExpressionEntriesAction_1_0; }
 
-		//("OR" entries+=AndExpression)+
-		public Group getGroup_1_1() { return cGroup_1_1; }
-
 		//"OR"
-		public Keyword getORKeyword_1_1_0() { return cORKeyword_1_1_0; }
+		public Keyword getORKeyword_1_1() { return cORKeyword_1_1; }
 
 		//entries+=AndExpression
-		public Assignment getEntriesAssignment_1_1_1() { return cEntriesAssignment_1_1_1; }
+		public Assignment getEntriesAssignment_1_2() { return cEntriesAssignment_1_2; }
 
 		//AndExpression
-		public RuleCall getEntriesAndExpressionParserRuleCall_1_1_1_0() { return cEntriesAndExpressionParserRuleCall_1_1_1_0; }
+		public RuleCall getEntriesAndExpressionParserRuleCall_1_2_0() { return cEntriesAndExpressionParserRuleCall_1_2_0; }
 	}
 
 	public class AndExpressionElements extends AbstractParserRuleElementFinder {
@@ -1257,38 +1254,34 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cComparisonOperatorExpressionParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
 		private final Action cAndExpressionEntriesAction_1_0 = (Action)cGroup_1.eContents().get(0);
-		private final Group cGroup_1_1 = (Group)cGroup_1.eContents().get(1);
-		private final Keyword cANDKeyword_1_1_0 = (Keyword)cGroup_1_1.eContents().get(0);
-		private final Assignment cEntriesAssignment_1_1_1 = (Assignment)cGroup_1_1.eContents().get(1);
-		private final RuleCall cEntriesComparisonOperatorExpressionParserRuleCall_1_1_1_0 = (RuleCall)cEntriesAssignment_1_1_1.eContents().get(0);
+		private final Keyword cANDKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
+		private final Assignment cEntriesAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
+		private final RuleCall cEntriesComparisonOperatorExpressionParserRuleCall_1_2_0 = (RuleCall)cEntriesAssignment_1_2.eContents().get(0);
 		
 		//AndExpression returns Expression:
-		//	ComparisonOperatorExpression ({AndExpression.entries+=current} ("AND" entries+=ComparisonOperatorExpression)+)?;
+		//	ComparisonOperatorExpression ({AndExpression.entries+=current} "AND" entries+=ComparisonOperatorExpression)*;
 		public ParserRule getRule() { return rule; }
 
-		//ComparisonOperatorExpression ({AndExpression.entries+=current} ("AND" entries+=ComparisonOperatorExpression)+)?
+		//ComparisonOperatorExpression ({AndExpression.entries+=current} "AND" entries+=ComparisonOperatorExpression)*
 		public Group getGroup() { return cGroup; }
 
 		//ComparisonOperatorExpression
 		public RuleCall getComparisonOperatorExpressionParserRuleCall_0() { return cComparisonOperatorExpressionParserRuleCall_0; }
 
-		//({AndExpression.entries+=current} ("AND" entries+=ComparisonOperatorExpression)+)?
+		//({AndExpression.entries+=current} "AND" entries+=ComparisonOperatorExpression)*
 		public Group getGroup_1() { return cGroup_1; }
 
 		//{AndExpression.entries+=current}
 		public Action getAndExpressionEntriesAction_1_0() { return cAndExpressionEntriesAction_1_0; }
 
-		//("AND" entries+=ComparisonOperatorExpression)+
-		public Group getGroup_1_1() { return cGroup_1_1; }
-
 		//"AND"
-		public Keyword getANDKeyword_1_1_0() { return cANDKeyword_1_1_0; }
+		public Keyword getANDKeyword_1_1() { return cANDKeyword_1_1; }
 
 		//entries+=ComparisonOperatorExpression
-		public Assignment getEntriesAssignment_1_1_1() { return cEntriesAssignment_1_1_1; }
+		public Assignment getEntriesAssignment_1_2() { return cEntriesAssignment_1_2; }
 
 		//ComparisonOperatorExpression
-		public RuleCall getEntriesComparisonOperatorExpressionParserRuleCall_1_1_1_0() { return cEntriesComparisonOperatorExpressionParserRuleCall_1_1_1_0; }
+		public RuleCall getEntriesComparisonOperatorExpressionParserRuleCall_1_2_0() { return cEntriesComparisonOperatorExpressionParserRuleCall_1_2_0; }
 	}
 
 	public class ComparisonOperatorExpressionElements extends AbstractParserRuleElementFinder {
@@ -1456,21 +1449,23 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cInExpressionParserRuleCall_9 = (RuleCall)cAlternatives.eContents().get(9);
 		private final RuleCall cBetweenExpressionParserRuleCall_10 = (RuleCall)cAlternatives.eContents().get(10);
 		private final RuleCall cFunctionExpressionParserRuleCall_11 = (RuleCall)cAlternatives.eContents().get(11);
-		private final RuleCall cAliasAttributeExpressionParserRuleCall_12 = (RuleCall)cAlternatives.eContents().get(12);
-		private final RuleCall cLiteralParserRuleCall_13 = (RuleCall)cAlternatives.eContents().get(13);
-		private final RuleCall cParameterExpressionParserRuleCall_14 = (RuleCall)cAlternatives.eContents().get(14);
+		private final RuleCall cVariableParserRuleCall_12 = (RuleCall)cAlternatives.eContents().get(12);
 		
 		//ConcreteExpression returns Expression:
 		//	ParenthesesExpression | //	ComparisonOperatorExpression |
 		//	ExistsExpression | AllExpression | AnyExpression | SomeExpression | CollectionExpression | NullComparisonExpression |
-		//	EmptyComparisonExpression | LikeExpression | InExpression | BetweenExpression | FunctionExpression |
-		//	AliasAttributeExpression | Literal | ParameterExpression;
+		//	EmptyComparisonExpression | LikeExpression | InExpression | BetweenExpression | FunctionExpression | //	AliasAttributeExpression |
+		//	//	Literal |
+		//	//	ParameterExpression
+		//	Variable;
 		public ParserRule getRule() { return rule; }
 
 		//ParenthesesExpression | //	ComparisonOperatorExpression |
 		//ExistsExpression | AllExpression | AnyExpression | SomeExpression | CollectionExpression | NullComparisonExpression |
-		//EmptyComparisonExpression | LikeExpression | InExpression | BetweenExpression | FunctionExpression |
-		//AliasAttributeExpression | Literal | ParameterExpression
+		//EmptyComparisonExpression | LikeExpression | InExpression | BetweenExpression | FunctionExpression | //	AliasAttributeExpression |
+		////	Literal |
+		////	ParameterExpression
+		//Variable
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//ParenthesesExpression
@@ -1510,14 +1505,11 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 		//FunctionExpression
 		public RuleCall getFunctionExpressionParserRuleCall_11() { return cFunctionExpressionParserRuleCall_11; }
 
-		//AliasAttributeExpression
-		public RuleCall getAliasAttributeExpressionParserRuleCall_12() { return cAliasAttributeExpressionParserRuleCall_12; }
-
-		//Literal
-		public RuleCall getLiteralParserRuleCall_13() { return cLiteralParserRuleCall_13; }
-
-		//ParameterExpression
-		public RuleCall getParameterExpressionParserRuleCall_14() { return cParameterExpressionParserRuleCall_14; }
+		////	AliasAttributeExpression |
+		////	Literal |
+		////	ParameterExpression
+		//Variable
+		public RuleCall getVariableParserRuleCall_12() { return cVariableParserRuleCall_12; }
 	}
 
 	public class ParenthesesExpressionElements extends AbstractParserRuleElementFinder {
@@ -2140,25 +2132,25 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cNameCONCATKeyword_0_0_0 = (Keyword)cNameAssignment_0_0.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_0_1 = (Keyword)cGroup_0.eContents().get(1);
 		private final Assignment cFieldsAssignment_0_2 = (Assignment)cGroup_0.eContents().get(2);
-		private final RuleCall cFieldsVariableParserRuleCall_0_2_0 = (RuleCall)cFieldsAssignment_0_2.eContents().get(0);
+		private final RuleCall cFieldsConcreteExpressionParserRuleCall_0_2_0 = (RuleCall)cFieldsAssignment_0_2.eContents().get(0);
 		private final Group cGroup_0_3 = (Group)cGroup_0.eContents().get(3);
 		private final Keyword cCommaKeyword_0_3_0 = (Keyword)cGroup_0_3.eContents().get(0);
 		private final Assignment cFieldsAssignment_0_3_1 = (Assignment)cGroup_0_3.eContents().get(1);
-		private final RuleCall cFieldsVariableParserRuleCall_0_3_1_0 = (RuleCall)cFieldsAssignment_0_3_1.eContents().get(0);
+		private final RuleCall cFieldsConcreteExpressionParserRuleCall_0_3_1_0 = (RuleCall)cFieldsAssignment_0_3_1.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_0_4 = (Keyword)cGroup_0.eContents().get(4);
 		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
 		private final Assignment cNameAssignment_1_0 = (Assignment)cGroup_1.eContents().get(0);
 		private final Keyword cNameSUBSTRINGKeyword_1_0_0 = (Keyword)cNameAssignment_1_0.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
 		private final Assignment cFieldAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
-		private final RuleCall cFieldVariableParserRuleCall_1_2_0 = (RuleCall)cFieldAssignment_1_2.eContents().get(0);
+		private final RuleCall cFieldConcreteExpressionParserRuleCall_1_2_0 = (RuleCall)cFieldAssignment_1_2.eContents().get(0);
 		private final Keyword cCommaKeyword_1_3 = (Keyword)cGroup_1.eContents().get(3);
 		private final Assignment cStartPosAssignment_1_4 = (Assignment)cGroup_1.eContents().get(4);
-		private final RuleCall cStartPosVariableParserRuleCall_1_4_0 = (RuleCall)cStartPosAssignment_1_4.eContents().get(0);
+		private final RuleCall cStartPosAdditionExpressionParserRuleCall_1_4_0 = (RuleCall)cStartPosAssignment_1_4.eContents().get(0);
 		private final Group cGroup_1_5 = (Group)cGroup_1.eContents().get(5);
 		private final Keyword cCommaKeyword_1_5_0 = (Keyword)cGroup_1_5.eContents().get(0);
 		private final Assignment cLengthAssignment_1_5_1 = (Assignment)cGroup_1_5.eContents().get(1);
-		private final RuleCall cLengthVariableParserRuleCall_1_5_1_0 = (RuleCall)cLengthAssignment_1_5_1.eContents().get(0);
+		private final RuleCall cLengthAdditionExpressionParserRuleCall_1_5_1_0 = (RuleCall)cLengthAssignment_1_5_1.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_1_6 = (Keyword)cGroup_1.eContents().get(6);
 		private final Group cGroup_2 = (Group)cAlternatives.eContents().get(2);
 		private final Assignment cNameAssignment_2_0 = (Assignment)cGroup_2.eContents().get(0);
@@ -2167,7 +2159,7 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cTrimSpecAssignment_2_2 = (Assignment)cGroup_2.eContents().get(2);
 		private final RuleCall cTrimSpecTrimSpecEnumRuleCall_2_2_0 = (RuleCall)cTrimSpecAssignment_2_2.eContents().get(0);
 		private final Assignment cTrimCharAssignment_2_3 = (Assignment)cGroup_2.eContents().get(3);
-		private final RuleCall cTrimCharVariableParserRuleCall_2_3_0 = (RuleCall)cTrimCharAssignment_2_3.eContents().get(0);
+		private final RuleCall cTrimCharConcreteExpressionParserRuleCall_2_3_0 = (RuleCall)cTrimCharAssignment_2_3.eContents().get(0);
 		private final Keyword cFROMKeyword_2_4 = (Keyword)cGroup_2.eContents().get(4);
 		private final Assignment cFieldAssignment_2_5 = (Assignment)cGroup_2.eContents().get(5);
 		private final RuleCall cFieldVariableParserRuleCall_2_5_0 = (RuleCall)cFieldAssignment_2_5.eContents().get(0);
@@ -2177,51 +2169,53 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cNameLOWERKeyword_3_0_0 = (Keyword)cNameAssignment_3_0.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_3_1 = (Keyword)cGroup_3.eContents().get(1);
 		private final Assignment cFieldAssignment_3_2 = (Assignment)cGroup_3.eContents().get(2);
-		private final RuleCall cFieldVariableParserRuleCall_3_2_0 = (RuleCall)cFieldAssignment_3_2.eContents().get(0);
+		private final RuleCall cFieldConcreteExpressionParserRuleCall_3_2_0 = (RuleCall)cFieldAssignment_3_2.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_3_3 = (Keyword)cGroup_3.eContents().get(3);
 		private final Group cGroup_4 = (Group)cAlternatives.eContents().get(4);
 		private final Assignment cNameAssignment_4_0 = (Assignment)cGroup_4.eContents().get(0);
 		private final Keyword cNameUPPERKeyword_4_0_0 = (Keyword)cNameAssignment_4_0.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_4_1 = (Keyword)cGroup_4.eContents().get(1);
 		private final Assignment cFieldAssignment_4_2 = (Assignment)cGroup_4.eContents().get(2);
-		private final RuleCall cFieldVariableParserRuleCall_4_2_0 = (RuleCall)cFieldAssignment_4_2.eContents().get(0);
+		private final RuleCall cFieldConcreteExpressionParserRuleCall_4_2_0 = (RuleCall)cFieldAssignment_4_2.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_4_3 = (Keyword)cGroup_4.eContents().get(3);
 		private final Group cGroup_5 = (Group)cAlternatives.eContents().get(5);
 		private final Assignment cNameAssignment_5_0 = (Assignment)cGroup_5.eContents().get(0);
 		private final Keyword cNameLENGTHKeyword_5_0_0 = (Keyword)cNameAssignment_5_0.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_5_1 = (Keyword)cGroup_5.eContents().get(1);
 		private final Assignment cFieldAssignment_5_2 = (Assignment)cGroup_5.eContents().get(2);
-		private final RuleCall cFieldVariableParserRuleCall_5_2_0 = (RuleCall)cFieldAssignment_5_2.eContents().get(0);
+		private final RuleCall cFieldConcreteExpressionParserRuleCall_5_2_0 = (RuleCall)cFieldAssignment_5_2.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_5_3 = (Keyword)cGroup_5.eContents().get(3);
 		private final Group cGroup_6 = (Group)cAlternatives.eContents().get(6);
 		private final Assignment cNameAssignment_6_0 = (Assignment)cGroup_6.eContents().get(0);
 		private final Keyword cNameLOCATEKeyword_6_0_0 = (Keyword)cNameAssignment_6_0.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_6_1 = (Keyword)cGroup_6.eContents().get(1);
 		private final Assignment cFieldsAssignment_6_2 = (Assignment)cGroup_6.eContents().get(2);
-		private final RuleCall cFieldsVariableParserRuleCall_6_2_0 = (RuleCall)cFieldsAssignment_6_2.eContents().get(0);
+		private final RuleCall cFieldsConcreteExpressionParserRuleCall_6_2_0 = (RuleCall)cFieldsAssignment_6_2.eContents().get(0);
 		private final Keyword cCommaKeyword_6_3 = (Keyword)cGroup_6.eContents().get(3);
 		private final Assignment cFieldsAssignment_6_4 = (Assignment)cGroup_6.eContents().get(4);
-		private final RuleCall cFieldsVariableParserRuleCall_6_4_0 = (RuleCall)cFieldsAssignment_6_4.eContents().get(0);
+		private final RuleCall cFieldsConcreteExpressionParserRuleCall_6_4_0 = (RuleCall)cFieldsAssignment_6_4.eContents().get(0);
 		private final Group cGroup_6_5 = (Group)cGroup_6.eContents().get(5);
 		private final Keyword cCommaKeyword_6_5_0 = (Keyword)cGroup_6_5.eContents().get(0);
 		private final Assignment cStartPosAssignment_6_5_1 = (Assignment)cGroup_6_5.eContents().get(1);
-		private final RuleCall cStartPosVariableParserRuleCall_6_5_1_0 = (RuleCall)cStartPosAssignment_6_5_1.eContents().get(0);
+		private final RuleCall cStartPosAdditionExpressionParserRuleCall_6_5_1_0 = (RuleCall)cStartPosAssignment_6_5_1.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_6_6 = (Keyword)cGroup_6.eContents().get(6);
 		
 		//StringFunctionExpression returns FunctionExpression:
-		//	name="CONCAT" "(" fields+=Variable ("," fields+=Variable)* ")" | name="SUBSTRING" "(" field=Variable ","
-		//	startPos=Variable ("," length=Variable)? ")" | name="TRIM" "(" trimSpec=TrimSpec? trimChar=Variable? "FROM"?
-		//	field=Variable ")" | name="LOWER" "(" field=Variable ")" | name="UPPER" "(" field=Variable ")" | name="LENGTH" "("
-		//	field=Variable ")" | name="LOCATE" "(" fields+=Variable "," fields+=Variable ("," startPos=Variable)? ")";
+		//	name="CONCAT" "(" fields+=ConcreteExpression ("," fields+=ConcreteExpression)* ")" | name="SUBSTRING" "("
+		//	field=ConcreteExpression "," startPos=AdditionExpression ("," length=AdditionExpression)? ")" | name="TRIM" "("
+		//	trimSpec=TrimSpec? trimChar=ConcreteExpression? "FROM"? field=Variable ")" | name="LOWER" "(" field=ConcreteExpression
+		//	")" | name="UPPER" "(" field=ConcreteExpression ")" | name="LENGTH" "(" field=ConcreteExpression ")" | name="LOCATE"
+		//	"(" fields+=ConcreteExpression "," fields+=ConcreteExpression ("," startPos=AdditionExpression)? ")";
 		public ParserRule getRule() { return rule; }
 
-		//name="CONCAT" "(" fields+=Variable ("," fields+=Variable)* ")" | name="SUBSTRING" "(" field=Variable ","
-		//startPos=Variable ("," length=Variable)? ")" | name="TRIM" "(" trimSpec=TrimSpec? trimChar=Variable? "FROM"?
-		//field=Variable ")" | name="LOWER" "(" field=Variable ")" | name="UPPER" "(" field=Variable ")" | name="LENGTH" "("
-		//field=Variable ")" | name="LOCATE" "(" fields+=Variable "," fields+=Variable ("," startPos=Variable)? ")"
+		//name="CONCAT" "(" fields+=ConcreteExpression ("," fields+=ConcreteExpression)* ")" | name="SUBSTRING" "("
+		//field=ConcreteExpression "," startPos=AdditionExpression ("," length=AdditionExpression)? ")" | name="TRIM" "("
+		//trimSpec=TrimSpec? trimChar=ConcreteExpression? "FROM"? field=Variable ")" | name="LOWER" "(" field=ConcreteExpression
+		//")" | name="UPPER" "(" field=ConcreteExpression ")" | name="LENGTH" "(" field=ConcreteExpression ")" | name="LOCATE"
+		//"(" fields+=ConcreteExpression "," fields+=ConcreteExpression ("," startPos=AdditionExpression)? ")"
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//name="CONCAT" "(" fields+=Variable ("," fields+=Variable)* ")"
+		//name="CONCAT" "(" fields+=ConcreteExpression ("," fields+=ConcreteExpression)* ")"
 		public Group getGroup_0() { return cGroup_0; }
 
 		//name="CONCAT"
@@ -2233,28 +2227,28 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 		//"("
 		public Keyword getLeftParenthesisKeyword_0_1() { return cLeftParenthesisKeyword_0_1; }
 
-		//fields+=Variable
+		//fields+=ConcreteExpression
 		public Assignment getFieldsAssignment_0_2() { return cFieldsAssignment_0_2; }
 
-		//Variable
-		public RuleCall getFieldsVariableParserRuleCall_0_2_0() { return cFieldsVariableParserRuleCall_0_2_0; }
+		//ConcreteExpression
+		public RuleCall getFieldsConcreteExpressionParserRuleCall_0_2_0() { return cFieldsConcreteExpressionParserRuleCall_0_2_0; }
 
-		//("," fields+=Variable)*
+		//("," fields+=ConcreteExpression)*
 		public Group getGroup_0_3() { return cGroup_0_3; }
 
 		//","
 		public Keyword getCommaKeyword_0_3_0() { return cCommaKeyword_0_3_0; }
 
-		//fields+=Variable
+		//fields+=ConcreteExpression
 		public Assignment getFieldsAssignment_0_3_1() { return cFieldsAssignment_0_3_1; }
 
-		//Variable
-		public RuleCall getFieldsVariableParserRuleCall_0_3_1_0() { return cFieldsVariableParserRuleCall_0_3_1_0; }
+		//ConcreteExpression
+		public RuleCall getFieldsConcreteExpressionParserRuleCall_0_3_1_0() { return cFieldsConcreteExpressionParserRuleCall_0_3_1_0; }
 
 		//")"
 		public Keyword getRightParenthesisKeyword_0_4() { return cRightParenthesisKeyword_0_4; }
 
-		//name="SUBSTRING" "(" field=Variable "," startPos=Variable ("," length=Variable)? ")"
+		//name="SUBSTRING" "(" field=ConcreteExpression "," startPos=AdditionExpression ("," length=AdditionExpression)? ")"
 		public Group getGroup_1() { return cGroup_1; }
 
 		//name="SUBSTRING"
@@ -2266,37 +2260,37 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 		//"("
 		public Keyword getLeftParenthesisKeyword_1_1() { return cLeftParenthesisKeyword_1_1; }
 
-		//field=Variable
+		//field=ConcreteExpression
 		public Assignment getFieldAssignment_1_2() { return cFieldAssignment_1_2; }
 
-		//Variable
-		public RuleCall getFieldVariableParserRuleCall_1_2_0() { return cFieldVariableParserRuleCall_1_2_0; }
+		//ConcreteExpression
+		public RuleCall getFieldConcreteExpressionParserRuleCall_1_2_0() { return cFieldConcreteExpressionParserRuleCall_1_2_0; }
 
 		//","
 		public Keyword getCommaKeyword_1_3() { return cCommaKeyword_1_3; }
 
-		//startPos=Variable
+		//startPos=AdditionExpression
 		public Assignment getStartPosAssignment_1_4() { return cStartPosAssignment_1_4; }
 
-		//Variable
-		public RuleCall getStartPosVariableParserRuleCall_1_4_0() { return cStartPosVariableParserRuleCall_1_4_0; }
+		//AdditionExpression
+		public RuleCall getStartPosAdditionExpressionParserRuleCall_1_4_0() { return cStartPosAdditionExpressionParserRuleCall_1_4_0; }
 
-		//("," length=Variable)?
+		//("," length=AdditionExpression)?
 		public Group getGroup_1_5() { return cGroup_1_5; }
 
 		//","
 		public Keyword getCommaKeyword_1_5_0() { return cCommaKeyword_1_5_0; }
 
-		//length=Variable
+		//length=AdditionExpression
 		public Assignment getLengthAssignment_1_5_1() { return cLengthAssignment_1_5_1; }
 
-		//Variable
-		public RuleCall getLengthVariableParserRuleCall_1_5_1_0() { return cLengthVariableParserRuleCall_1_5_1_0; }
+		//AdditionExpression
+		public RuleCall getLengthAdditionExpressionParserRuleCall_1_5_1_0() { return cLengthAdditionExpressionParserRuleCall_1_5_1_0; }
 
 		//")"
 		public Keyword getRightParenthesisKeyword_1_6() { return cRightParenthesisKeyword_1_6; }
 
-		//name="TRIM" "(" trimSpec=TrimSpec? trimChar=Variable? "FROM"? field=Variable ")"
+		//name="TRIM" "(" trimSpec=TrimSpec? trimChar=ConcreteExpression? "FROM"? field=Variable ")"
 		public Group getGroup_2() { return cGroup_2; }
 
 		//name="TRIM"
@@ -2314,11 +2308,11 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 		//TrimSpec
 		public RuleCall getTrimSpecTrimSpecEnumRuleCall_2_2_0() { return cTrimSpecTrimSpecEnumRuleCall_2_2_0; }
 
-		//trimChar=Variable?
+		//trimChar=ConcreteExpression?
 		public Assignment getTrimCharAssignment_2_3() { return cTrimCharAssignment_2_3; }
 
-		//Variable
-		public RuleCall getTrimCharVariableParserRuleCall_2_3_0() { return cTrimCharVariableParserRuleCall_2_3_0; }
+		//ConcreteExpression
+		public RuleCall getTrimCharConcreteExpressionParserRuleCall_2_3_0() { return cTrimCharConcreteExpressionParserRuleCall_2_3_0; }
 
 		//"FROM"?
 		public Keyword getFROMKeyword_2_4() { return cFROMKeyword_2_4; }
@@ -2332,7 +2326,7 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 		//")"
 		public Keyword getRightParenthesisKeyword_2_6() { return cRightParenthesisKeyword_2_6; }
 
-		//name="LOWER" "(" field=Variable ")"
+		//name="LOWER" "(" field=ConcreteExpression ")"
 		public Group getGroup_3() { return cGroup_3; }
 
 		//name="LOWER"
@@ -2344,16 +2338,16 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 		//"("
 		public Keyword getLeftParenthesisKeyword_3_1() { return cLeftParenthesisKeyword_3_1; }
 
-		//field=Variable
+		//field=ConcreteExpression
 		public Assignment getFieldAssignment_3_2() { return cFieldAssignment_3_2; }
 
-		//Variable
-		public RuleCall getFieldVariableParserRuleCall_3_2_0() { return cFieldVariableParserRuleCall_3_2_0; }
+		//ConcreteExpression
+		public RuleCall getFieldConcreteExpressionParserRuleCall_3_2_0() { return cFieldConcreteExpressionParserRuleCall_3_2_0; }
 
 		//")"
 		public Keyword getRightParenthesisKeyword_3_3() { return cRightParenthesisKeyword_3_3; }
 
-		//name="UPPER" "(" field=Variable ")"
+		//name="UPPER" "(" field=ConcreteExpression ")"
 		public Group getGroup_4() { return cGroup_4; }
 
 		//name="UPPER"
@@ -2365,16 +2359,16 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 		//"("
 		public Keyword getLeftParenthesisKeyword_4_1() { return cLeftParenthesisKeyword_4_1; }
 
-		//field=Variable
+		//field=ConcreteExpression
 		public Assignment getFieldAssignment_4_2() { return cFieldAssignment_4_2; }
 
-		//Variable
-		public RuleCall getFieldVariableParserRuleCall_4_2_0() { return cFieldVariableParserRuleCall_4_2_0; }
+		//ConcreteExpression
+		public RuleCall getFieldConcreteExpressionParserRuleCall_4_2_0() { return cFieldConcreteExpressionParserRuleCall_4_2_0; }
 
 		//")"
 		public Keyword getRightParenthesisKeyword_4_3() { return cRightParenthesisKeyword_4_3; }
 
-		//name="LENGTH" "(" field=Variable ")"
+		//name="LENGTH" "(" field=ConcreteExpression ")"
 		public Group getGroup_5() { return cGroup_5; }
 
 		//name="LENGTH"
@@ -2386,16 +2380,16 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 		//"("
 		public Keyword getLeftParenthesisKeyword_5_1() { return cLeftParenthesisKeyword_5_1; }
 
-		//field=Variable
+		//field=ConcreteExpression
 		public Assignment getFieldAssignment_5_2() { return cFieldAssignment_5_2; }
 
-		//Variable
-		public RuleCall getFieldVariableParserRuleCall_5_2_0() { return cFieldVariableParserRuleCall_5_2_0; }
+		//ConcreteExpression
+		public RuleCall getFieldConcreteExpressionParserRuleCall_5_2_0() { return cFieldConcreteExpressionParserRuleCall_5_2_0; }
 
 		//")"
 		public Keyword getRightParenthesisKeyword_5_3() { return cRightParenthesisKeyword_5_3; }
 
-		//name="LOCATE" "(" fields+=Variable "," fields+=Variable ("," startPos=Variable)? ")"
+		//name="LOCATE" "(" fields+=ConcreteExpression "," fields+=ConcreteExpression ("," startPos=AdditionExpression)? ")"
 		public Group getGroup_6() { return cGroup_6; }
 
 		//name="LOCATE"
@@ -2407,32 +2401,32 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 		//"("
 		public Keyword getLeftParenthesisKeyword_6_1() { return cLeftParenthesisKeyword_6_1; }
 
-		//fields+=Variable
+		//fields+=ConcreteExpression
 		public Assignment getFieldsAssignment_6_2() { return cFieldsAssignment_6_2; }
 
-		//Variable
-		public RuleCall getFieldsVariableParserRuleCall_6_2_0() { return cFieldsVariableParserRuleCall_6_2_0; }
+		//ConcreteExpression
+		public RuleCall getFieldsConcreteExpressionParserRuleCall_6_2_0() { return cFieldsConcreteExpressionParserRuleCall_6_2_0; }
 
 		//","
 		public Keyword getCommaKeyword_6_3() { return cCommaKeyword_6_3; }
 
-		//fields+=Variable
+		//fields+=ConcreteExpression
 		public Assignment getFieldsAssignment_6_4() { return cFieldsAssignment_6_4; }
 
-		//Variable
-		public RuleCall getFieldsVariableParserRuleCall_6_4_0() { return cFieldsVariableParserRuleCall_6_4_0; }
+		//ConcreteExpression
+		public RuleCall getFieldsConcreteExpressionParserRuleCall_6_4_0() { return cFieldsConcreteExpressionParserRuleCall_6_4_0; }
 
-		//("," startPos=Variable)?
+		//("," startPos=AdditionExpression)?
 		public Group getGroup_6_5() { return cGroup_6_5; }
 
 		//","
 		public Keyword getCommaKeyword_6_5_0() { return cCommaKeyword_6_5_0; }
 
-		//startPos=Variable
+		//startPos=AdditionExpression
 		public Assignment getStartPosAssignment_6_5_1() { return cStartPosAssignment_6_5_1; }
 
-		//Variable
-		public RuleCall getStartPosVariableParserRuleCall_6_5_1_0() { return cStartPosVariableParserRuleCall_6_5_1_0; }
+		//AdditionExpression
+		public RuleCall getStartPosAdditionExpressionParserRuleCall_6_5_1_0() { return cStartPosAdditionExpressionParserRuleCall_6_5_1_0; }
 
 		//")"
 		public Keyword getRightParenthesisKeyword_6_6() { return cRightParenthesisKeyword_6_6; }
@@ -2446,36 +2440,36 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cNameABSKeyword_0_0_0 = (Keyword)cNameAssignment_0_0.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_0_1 = (Keyword)cGroup_0.eContents().get(1);
 		private final Assignment cFieldAssignment_0_2 = (Assignment)cGroup_0.eContents().get(2);
-		private final RuleCall cFieldVariableParserRuleCall_0_2_0 = (RuleCall)cFieldAssignment_0_2.eContents().get(0);
+		private final RuleCall cFieldAdditionExpressionParserRuleCall_0_2_0 = (RuleCall)cFieldAssignment_0_2.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_0_3 = (Keyword)cGroup_0.eContents().get(3);
 		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
 		private final Assignment cNameAssignment_1_0 = (Assignment)cGroup_1.eContents().get(0);
 		private final Keyword cNameSQRTKeyword_1_0_0 = (Keyword)cNameAssignment_1_0.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
 		private final Assignment cFieldAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
-		private final RuleCall cFieldVariableParserRuleCall_1_2_0 = (RuleCall)cFieldAssignment_1_2.eContents().get(0);
+		private final RuleCall cFieldAdditionExpressionParserRuleCall_1_2_0 = (RuleCall)cFieldAssignment_1_2.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_1_3 = (Keyword)cGroup_1.eContents().get(3);
 		private final Group cGroup_2 = (Group)cAlternatives.eContents().get(2);
 		private final Assignment cNameAssignment_2_0 = (Assignment)cGroup_2.eContents().get(0);
 		private final Keyword cNameMODKeyword_2_0_0 = (Keyword)cNameAssignment_2_0.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_2_1 = (Keyword)cGroup_2.eContents().get(1);
 		private final Assignment cFieldsAssignment_2_2 = (Assignment)cGroup_2.eContents().get(2);
-		private final RuleCall cFieldsVariableParserRuleCall_2_2_0 = (RuleCall)cFieldsAssignment_2_2.eContents().get(0);
+		private final RuleCall cFieldsAdditionExpressionParserRuleCall_2_2_0 = (RuleCall)cFieldsAssignment_2_2.eContents().get(0);
 		private final Keyword cCommaKeyword_2_3 = (Keyword)cGroup_2.eContents().get(3);
 		private final Assignment cFieldsAssignment_2_4 = (Assignment)cGroup_2.eContents().get(4);
-		private final RuleCall cFieldsVariableParserRuleCall_2_4_0 = (RuleCall)cFieldsAssignment_2_4.eContents().get(0);
+		private final RuleCall cFieldsAdditionExpressionParserRuleCall_2_4_0 = (RuleCall)cFieldsAssignment_2_4.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_2_5 = (Keyword)cGroup_2.eContents().get(5);
 		
 		//ArithmeticFunctionExpression returns FunctionExpression:
-		//	name="ABS" "(" field=Variable ")" | name="SQRT" "(" field=Variable ")" | name="MOD" "(" fields+=Variable ","
-		//	fields+=Variable+ ")";
+		//	name="ABS" "(" field=AdditionExpression ")" | name="SQRT" "(" field=AdditionExpression ")" | name="MOD" "("
+		//	fields+=AdditionExpression "," fields+=AdditionExpression ")";
 		public ParserRule getRule() { return rule; }
 
-		//name="ABS" "(" field=Variable ")" | name="SQRT" "(" field=Variable ")" | name="MOD" "(" fields+=Variable ","
-		//fields+=Variable+ ")"
+		//name="ABS" "(" field=AdditionExpression ")" | name="SQRT" "(" field=AdditionExpression ")" | name="MOD" "("
+		//fields+=AdditionExpression "," fields+=AdditionExpression ")"
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//name="ABS" "(" field=Variable ")"
+		//name="ABS" "(" field=AdditionExpression ")"
 		public Group getGroup_0() { return cGroup_0; }
 
 		//name="ABS"
@@ -2487,16 +2481,16 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 		//"("
 		public Keyword getLeftParenthesisKeyword_0_1() { return cLeftParenthesisKeyword_0_1; }
 
-		//field=Variable
+		//field=AdditionExpression
 		public Assignment getFieldAssignment_0_2() { return cFieldAssignment_0_2; }
 
-		//Variable
-		public RuleCall getFieldVariableParserRuleCall_0_2_0() { return cFieldVariableParserRuleCall_0_2_0; }
+		//AdditionExpression
+		public RuleCall getFieldAdditionExpressionParserRuleCall_0_2_0() { return cFieldAdditionExpressionParserRuleCall_0_2_0; }
 
 		//")"
 		public Keyword getRightParenthesisKeyword_0_3() { return cRightParenthesisKeyword_0_3; }
 
-		//name="SQRT" "(" field=Variable ")"
+		//name="SQRT" "(" field=AdditionExpression ")"
 		public Group getGroup_1() { return cGroup_1; }
 
 		//name="SQRT"
@@ -2508,16 +2502,16 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 		//"("
 		public Keyword getLeftParenthesisKeyword_1_1() { return cLeftParenthesisKeyword_1_1; }
 
-		//field=Variable
+		//field=AdditionExpression
 		public Assignment getFieldAssignment_1_2() { return cFieldAssignment_1_2; }
 
-		//Variable
-		public RuleCall getFieldVariableParserRuleCall_1_2_0() { return cFieldVariableParserRuleCall_1_2_0; }
+		//AdditionExpression
+		public RuleCall getFieldAdditionExpressionParserRuleCall_1_2_0() { return cFieldAdditionExpressionParserRuleCall_1_2_0; }
 
 		//")"
 		public Keyword getRightParenthesisKeyword_1_3() { return cRightParenthesisKeyword_1_3; }
 
-		//name="MOD" "(" fields+=Variable "," fields+=Variable+ ")"
+		//name="MOD" "(" fields+=AdditionExpression "," fields+=AdditionExpression ")"
 		public Group getGroup_2() { return cGroup_2; }
 
 		//name="MOD"
@@ -2529,20 +2523,20 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 		//"("
 		public Keyword getLeftParenthesisKeyword_2_1() { return cLeftParenthesisKeyword_2_1; }
 
-		//fields+=Variable
+		//fields+=AdditionExpression
 		public Assignment getFieldsAssignment_2_2() { return cFieldsAssignment_2_2; }
 
-		//Variable
-		public RuleCall getFieldsVariableParserRuleCall_2_2_0() { return cFieldsVariableParserRuleCall_2_2_0; }
+		//AdditionExpression
+		public RuleCall getFieldsAdditionExpressionParserRuleCall_2_2_0() { return cFieldsAdditionExpressionParserRuleCall_2_2_0; }
 
 		//","
 		public Keyword getCommaKeyword_2_3() { return cCommaKeyword_2_3; }
 
-		//fields+=Variable+
+		//fields+=AdditionExpression
 		public Assignment getFieldsAssignment_2_4() { return cFieldsAssignment_2_4; }
 
-		//Variable
-		public RuleCall getFieldsVariableParserRuleCall_2_4_0() { return cFieldsVariableParserRuleCall_2_4_0; }
+		//AdditionExpression
+		public RuleCall getFieldsAdditionExpressionParserRuleCall_2_4_0() { return cFieldsAdditionExpressionParserRuleCall_2_4_0; }
 
 		//")"
 		public Keyword getRightParenthesisKeyword_2_5() { return cRightParenthesisKeyword_2_5; }
@@ -2642,53 +2636,55 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cNameYEARKeyword_3_0_0 = (Keyword)cNameAssignment_3_0.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_3_1 = (Keyword)cGroup_3.eContents().get(1);
 		private final Assignment cFieldAssignment_3_2 = (Assignment)cGroup_3.eContents().get(2);
-		private final RuleCall cFieldVariableParserRuleCall_3_2_0 = (RuleCall)cFieldAssignment_3_2.eContents().get(0);
+		private final RuleCall cFieldAdditionExpressionParserRuleCall_3_2_0 = (RuleCall)cFieldAssignment_3_2.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_3_3 = (Keyword)cGroup_3.eContents().get(3);
 		private final Group cGroup_4 = (Group)cAlternatives.eContents().get(4);
 		private final Assignment cNameAssignment_4_0 = (Assignment)cGroup_4.eContents().get(0);
 		private final Keyword cNameMONTHKeyword_4_0_0 = (Keyword)cNameAssignment_4_0.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_4_1 = (Keyword)cGroup_4.eContents().get(1);
 		private final Assignment cFieldAssignment_4_2 = (Assignment)cGroup_4.eContents().get(2);
-		private final RuleCall cFieldVariableParserRuleCall_4_2_0 = (RuleCall)cFieldAssignment_4_2.eContents().get(0);
+		private final RuleCall cFieldAdditionExpressionParserRuleCall_4_2_0 = (RuleCall)cFieldAssignment_4_2.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_4_3 = (Keyword)cGroup_4.eContents().get(3);
 		private final Group cGroup_5 = (Group)cAlternatives.eContents().get(5);
 		private final Assignment cNameAssignment_5_0 = (Assignment)cGroup_5.eContents().get(0);
 		private final Keyword cNameDAYKeyword_5_0_0 = (Keyword)cNameAssignment_5_0.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_5_1 = (Keyword)cGroup_5.eContents().get(1);
 		private final Assignment cFieldAssignment_5_2 = (Assignment)cGroup_5.eContents().get(2);
-		private final RuleCall cFieldVariableParserRuleCall_5_2_0 = (RuleCall)cFieldAssignment_5_2.eContents().get(0);
+		private final RuleCall cFieldAdditionExpressionParserRuleCall_5_2_0 = (RuleCall)cFieldAssignment_5_2.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_5_3 = (Keyword)cGroup_5.eContents().get(3);
 		private final Group cGroup_6 = (Group)cAlternatives.eContents().get(6);
 		private final Assignment cNameAssignment_6_0 = (Assignment)cGroup_6.eContents().get(0);
 		private final Keyword cNameHOURKeyword_6_0_0 = (Keyword)cNameAssignment_6_0.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_6_1 = (Keyword)cGroup_6.eContents().get(1);
 		private final Assignment cFieldAssignment_6_2 = (Assignment)cGroup_6.eContents().get(2);
-		private final RuleCall cFieldVariableParserRuleCall_6_2_0 = (RuleCall)cFieldAssignment_6_2.eContents().get(0);
+		private final RuleCall cFieldAdditionExpressionParserRuleCall_6_2_0 = (RuleCall)cFieldAssignment_6_2.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_6_3 = (Keyword)cGroup_6.eContents().get(3);
 		private final Group cGroup_7 = (Group)cAlternatives.eContents().get(7);
 		private final Assignment cNameAssignment_7_0 = (Assignment)cGroup_7.eContents().get(0);
 		private final Keyword cNameMINUTEKeyword_7_0_0 = (Keyword)cNameAssignment_7_0.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_7_1 = (Keyword)cGroup_7.eContents().get(1);
 		private final Assignment cFieldAssignment_7_2 = (Assignment)cGroup_7.eContents().get(2);
-		private final RuleCall cFieldVariableParserRuleCall_7_2_0 = (RuleCall)cFieldAssignment_7_2.eContents().get(0);
+		private final RuleCall cFieldAdditionExpressionParserRuleCall_7_2_0 = (RuleCall)cFieldAssignment_7_2.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_7_3 = (Keyword)cGroup_7.eContents().get(3);
 		private final Group cGroup_8 = (Group)cAlternatives.eContents().get(8);
 		private final Assignment cNameAssignment_8_0 = (Assignment)cGroup_8.eContents().get(0);
 		private final Keyword cNameSECONDKeyword_8_0_0 = (Keyword)cNameAssignment_8_0.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_8_1 = (Keyword)cGroup_8.eContents().get(1);
 		private final Assignment cFieldAssignment_8_2 = (Assignment)cGroup_8.eContents().get(2);
-		private final RuleCall cFieldVariableParserRuleCall_8_2_0 = (RuleCall)cFieldAssignment_8_2.eContents().get(0);
+		private final RuleCall cFieldAdditionExpressionParserRuleCall_8_2_0 = (RuleCall)cFieldAssignment_8_2.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_8_3 = (Keyword)cGroup_8.eContents().get(3);
 		
 		//TemporalFunctionExpression returns FunctionExpression:
 		//	name="CURRENT_DATE" ("(" ")")? | name="CURRENT_TIME" ("(" ")")? | name="CURRENT_TIMESTAMP" ("(" ")")? | name="YEAR"
-		//	"(" field=Variable ")" | name="MONTH" "(" field=Variable ")" | name="DAY" "(" field=Variable ")" | name="HOUR" "("
-		//	field=Variable ")" | name="MINUTE" "(" field=Variable ")" | name="SECOND" "(" field=Variable ")";
+		//	"(" field=AdditionExpression ")" | name="MONTH" "(" field=AdditionExpression ")" | name="DAY" "("
+		//	field=AdditionExpression ")" | name="HOUR" "(" field=AdditionExpression ")" | name="MINUTE" "("
+		//	field=AdditionExpression ")" | name="SECOND" "(" field=AdditionExpression ")";
 		public ParserRule getRule() { return rule; }
 
 		//name="CURRENT_DATE" ("(" ")")? | name="CURRENT_TIME" ("(" ")")? | name="CURRENT_TIMESTAMP" ("(" ")")? | name="YEAR" "("
-		//field=Variable ")" | name="MONTH" "(" field=Variable ")" | name="DAY" "(" field=Variable ")" | name="HOUR" "("
-		//field=Variable ")" | name="MINUTE" "(" field=Variable ")" | name="SECOND" "(" field=Variable ")"
+		//field=AdditionExpression ")" | name="MONTH" "(" field=AdditionExpression ")" | name="DAY" "(" field=AdditionExpression
+		//")" | name="HOUR" "(" field=AdditionExpression ")" | name="MINUTE" "(" field=AdditionExpression ")" | name="SECOND" "("
+		//field=AdditionExpression ")"
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//name="CURRENT_DATE" ("(" ")")?
@@ -2745,7 +2741,7 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 		//")"
 		public Keyword getRightParenthesisKeyword_2_1_1() { return cRightParenthesisKeyword_2_1_1; }
 
-		//name="YEAR" "(" field=Variable ")"
+		//name="YEAR" "(" field=AdditionExpression ")"
 		public Group getGroup_3() { return cGroup_3; }
 
 		//name="YEAR"
@@ -2757,16 +2753,16 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 		//"("
 		public Keyword getLeftParenthesisKeyword_3_1() { return cLeftParenthesisKeyword_3_1; }
 
-		//field=Variable
+		//field=AdditionExpression
 		public Assignment getFieldAssignment_3_2() { return cFieldAssignment_3_2; }
 
-		//Variable
-		public RuleCall getFieldVariableParserRuleCall_3_2_0() { return cFieldVariableParserRuleCall_3_2_0; }
+		//AdditionExpression
+		public RuleCall getFieldAdditionExpressionParserRuleCall_3_2_0() { return cFieldAdditionExpressionParserRuleCall_3_2_0; }
 
 		//")"
 		public Keyword getRightParenthesisKeyword_3_3() { return cRightParenthesisKeyword_3_3; }
 
-		//name="MONTH" "(" field=Variable ")"
+		//name="MONTH" "(" field=AdditionExpression ")"
 		public Group getGroup_4() { return cGroup_4; }
 
 		//name="MONTH"
@@ -2778,16 +2774,16 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 		//"("
 		public Keyword getLeftParenthesisKeyword_4_1() { return cLeftParenthesisKeyword_4_1; }
 
-		//field=Variable
+		//field=AdditionExpression
 		public Assignment getFieldAssignment_4_2() { return cFieldAssignment_4_2; }
 
-		//Variable
-		public RuleCall getFieldVariableParserRuleCall_4_2_0() { return cFieldVariableParserRuleCall_4_2_0; }
+		//AdditionExpression
+		public RuleCall getFieldAdditionExpressionParserRuleCall_4_2_0() { return cFieldAdditionExpressionParserRuleCall_4_2_0; }
 
 		//")"
 		public Keyword getRightParenthesisKeyword_4_3() { return cRightParenthesisKeyword_4_3; }
 
-		//name="DAY" "(" field=Variable ")"
+		//name="DAY" "(" field=AdditionExpression ")"
 		public Group getGroup_5() { return cGroup_5; }
 
 		//name="DAY"
@@ -2799,16 +2795,16 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 		//"("
 		public Keyword getLeftParenthesisKeyword_5_1() { return cLeftParenthesisKeyword_5_1; }
 
-		//field=Variable
+		//field=AdditionExpression
 		public Assignment getFieldAssignment_5_2() { return cFieldAssignment_5_2; }
 
-		//Variable
-		public RuleCall getFieldVariableParserRuleCall_5_2_0() { return cFieldVariableParserRuleCall_5_2_0; }
+		//AdditionExpression
+		public RuleCall getFieldAdditionExpressionParserRuleCall_5_2_0() { return cFieldAdditionExpressionParserRuleCall_5_2_0; }
 
 		//")"
 		public Keyword getRightParenthesisKeyword_5_3() { return cRightParenthesisKeyword_5_3; }
 
-		//name="HOUR" "(" field=Variable ")"
+		//name="HOUR" "(" field=AdditionExpression ")"
 		public Group getGroup_6() { return cGroup_6; }
 
 		//name="HOUR"
@@ -2820,16 +2816,16 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 		//"("
 		public Keyword getLeftParenthesisKeyword_6_1() { return cLeftParenthesisKeyword_6_1; }
 
-		//field=Variable
+		//field=AdditionExpression
 		public Assignment getFieldAssignment_6_2() { return cFieldAssignment_6_2; }
 
-		//Variable
-		public RuleCall getFieldVariableParserRuleCall_6_2_0() { return cFieldVariableParserRuleCall_6_2_0; }
+		//AdditionExpression
+		public RuleCall getFieldAdditionExpressionParserRuleCall_6_2_0() { return cFieldAdditionExpressionParserRuleCall_6_2_0; }
 
 		//")"
 		public Keyword getRightParenthesisKeyword_6_3() { return cRightParenthesisKeyword_6_3; }
 
-		//name="MINUTE" "(" field=Variable ")"
+		//name="MINUTE" "(" field=AdditionExpression ")"
 		public Group getGroup_7() { return cGroup_7; }
 
 		//name="MINUTE"
@@ -2841,16 +2837,16 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 		//"("
 		public Keyword getLeftParenthesisKeyword_7_1() { return cLeftParenthesisKeyword_7_1; }
 
-		//field=Variable
+		//field=AdditionExpression
 		public Assignment getFieldAssignment_7_2() { return cFieldAssignment_7_2; }
 
-		//Variable
-		public RuleCall getFieldVariableParserRuleCall_7_2_0() { return cFieldVariableParserRuleCall_7_2_0; }
+		//AdditionExpression
+		public RuleCall getFieldAdditionExpressionParserRuleCall_7_2_0() { return cFieldAdditionExpressionParserRuleCall_7_2_0; }
 
 		//")"
 		public Keyword getRightParenthesisKeyword_7_3() { return cRightParenthesisKeyword_7_3; }
 
-		//name="SECOND" "(" field=Variable ")"
+		//name="SECOND" "(" field=AdditionExpression ")"
 		public Group getGroup_8() { return cGroup_8; }
 
 		//name="SECOND"
@@ -2862,11 +2858,11 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 		//"("
 		public Keyword getLeftParenthesisKeyword_8_1() { return cLeftParenthesisKeyword_8_1; }
 
-		//field=Variable
+		//field=AdditionExpression
 		public Assignment getFieldAssignment_8_2() { return cFieldAssignment_8_2; }
 
-		//Variable
-		public RuleCall getFieldVariableParserRuleCall_8_2_0() { return cFieldVariableParserRuleCall_8_2_0; }
+		//AdditionExpression
+		public RuleCall getFieldAdditionExpressionParserRuleCall_8_2_0() { return cFieldAdditionExpressionParserRuleCall_8_2_0; }
 
 		//")"
 		public Keyword getRightParenthesisKeyword_8_3() { return cRightParenthesisKeyword_8_3; }
@@ -3379,6 +3375,7 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 	
 	//// http://www.datanucleus.org/products/accessplatform_3_1/jpa/jpql.html
 	//// Current spec: JPA 3.0, JPQL BNF at bottom
+	//// http://docs.oracle.com/cd/E28613_01/apirefs.1211/e24396/ejb3_langref.html
 	//JPQLQuery:
 	//	SelectStatement | UpdateStatement | DeleteStatement;
 	public JPQLQueryElements getJPQLQueryAccess() {
@@ -3731,7 +3728,7 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//OrExpression returns Expression:
-	//	AndExpression ({OrExpression.entries+=current} ("OR" entries+=AndExpression)+)?;
+	//	AndExpression ({OrExpression.entries+=current} "OR" entries+=AndExpression)*;
 	public OrExpressionElements getOrExpressionAccess() {
 		return (pOrExpression != null) ? pOrExpression : (pOrExpression = new OrExpressionElements());
 	}
@@ -3741,7 +3738,7 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//AndExpression returns Expression:
-	//	ComparisonOperatorExpression ({AndExpression.entries+=current} ("AND" entries+=ComparisonOperatorExpression)+)?;
+	//	ComparisonOperatorExpression ({AndExpression.entries+=current} "AND" entries+=ComparisonOperatorExpression)*;
 	public AndExpressionElements getAndExpressionAccess() {
 		return (pAndExpression != null) ? pAndExpression : (pAndExpression = new AndExpressionElements());
 	}
@@ -3795,8 +3792,10 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 	//ConcreteExpression returns Expression:
 	//	ParenthesesExpression | //	ComparisonOperatorExpression |
 	//	ExistsExpression | AllExpression | AnyExpression | SomeExpression | CollectionExpression | NullComparisonExpression |
-	//	EmptyComparisonExpression | LikeExpression | InExpression | BetweenExpression | FunctionExpression |
-	//	AliasAttributeExpression | Literal | ParameterExpression;
+	//	EmptyComparisonExpression | LikeExpression | InExpression | BetweenExpression | FunctionExpression | //	AliasAttributeExpression |
+	//	//	Literal |
+	//	//	ParameterExpression
+	//	Variable;
 	public ConcreteExpressionElements getConcreteExpressionAccess() {
 		return (pConcreteExpression != null) ? pConcreteExpression : (pConcreteExpression = new ConcreteExpressionElements());
 	}
@@ -3986,10 +3985,11 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//StringFunctionExpression returns FunctionExpression:
-	//	name="CONCAT" "(" fields+=Variable ("," fields+=Variable)* ")" | name="SUBSTRING" "(" field=Variable ","
-	//	startPos=Variable ("," length=Variable)? ")" | name="TRIM" "(" trimSpec=TrimSpec? trimChar=Variable? "FROM"?
-	//	field=Variable ")" | name="LOWER" "(" field=Variable ")" | name="UPPER" "(" field=Variable ")" | name="LENGTH" "("
-	//	field=Variable ")" | name="LOCATE" "(" fields+=Variable "," fields+=Variable ("," startPos=Variable)? ")";
+	//	name="CONCAT" "(" fields+=ConcreteExpression ("," fields+=ConcreteExpression)* ")" | name="SUBSTRING" "("
+	//	field=ConcreteExpression "," startPos=AdditionExpression ("," length=AdditionExpression)? ")" | name="TRIM" "("
+	//	trimSpec=TrimSpec? trimChar=ConcreteExpression? "FROM"? field=Variable ")" | name="LOWER" "(" field=ConcreteExpression
+	//	")" | name="UPPER" "(" field=ConcreteExpression ")" | name="LENGTH" "(" field=ConcreteExpression ")" | name="LOCATE"
+	//	"(" fields+=ConcreteExpression "," fields+=ConcreteExpression ("," startPos=AdditionExpression)? ")";
 	public StringFunctionExpressionElements getStringFunctionExpressionAccess() {
 		return (pStringFunctionExpression != null) ? pStringFunctionExpression : (pStringFunctionExpression = new StringFunctionExpressionElements());
 	}
@@ -4009,8 +4009,8 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ArithmeticFunctionExpression returns FunctionExpression:
-	//	name="ABS" "(" field=Variable ")" | name="SQRT" "(" field=Variable ")" | name="MOD" "(" fields+=Variable ","
-	//	fields+=Variable+ ")";
+	//	name="ABS" "(" field=AdditionExpression ")" | name="SQRT" "(" field=AdditionExpression ")" | name="MOD" "("
+	//	fields+=AdditionExpression "," fields+=AdditionExpression ")";
 	public ArithmeticFunctionExpressionElements getArithmeticFunctionExpressionAccess() {
 		return (pArithmeticFunctionExpression != null) ? pArithmeticFunctionExpression : (pArithmeticFunctionExpression = new ArithmeticFunctionExpressionElements());
 	}
@@ -4031,8 +4031,9 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 
 	//TemporalFunctionExpression returns FunctionExpression:
 	//	name="CURRENT_DATE" ("(" ")")? | name="CURRENT_TIME" ("(" ")")? | name="CURRENT_TIMESTAMP" ("(" ")")? | name="YEAR"
-	//	"(" field=Variable ")" | name="MONTH" "(" field=Variable ")" | name="DAY" "(" field=Variable ")" | name="HOUR" "("
-	//	field=Variable ")" | name="MINUTE" "(" field=Variable ")" | name="SECOND" "(" field=Variable ")";
+	//	"(" field=AdditionExpression ")" | name="MONTH" "(" field=AdditionExpression ")" | name="DAY" "("
+	//	field=AdditionExpression ")" | name="HOUR" "(" field=AdditionExpression ")" | name="MINUTE" "("
+	//	field=AdditionExpression ")" | name="SECOND" "(" field=AdditionExpression ")";
 	public TemporalFunctionExpressionElements getTemporalFunctionExpressionAccess() {
 		return (pTemporalFunctionExpression != null) ? pTemporalFunctionExpression : (pTemporalFunctionExpression = new TemporalFunctionExpressionElements());
 	}

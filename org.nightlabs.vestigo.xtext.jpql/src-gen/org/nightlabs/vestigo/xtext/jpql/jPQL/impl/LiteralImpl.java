@@ -19,7 +19,7 @@ import org.nightlabs.vestigo.xtext.jpql.jPQL.Literal;
  *
  * @generated
  */
-public class LiteralImpl extends ExpressionImpl implements Literal
+public class LiteralImpl extends VariableImpl implements Literal
 {
   /**
    * <!-- begin-user-doc -->

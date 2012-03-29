@@ -168,11 +168,11 @@ WhereClause:
 ;
 
 OrExpression returns Expression:
-	AndExpression ({OrExpression.entries+=current} ("OR" entries+=AndExpression)+)?
+	AndExpression ({OrExpression.entries+=current} "OR" entries+=AndExpression)*
 ;
 
 AndExpression returns Expression:
-	ComparisonOperatorExpression ({AndExpression.entries+=current} ("AND" entries+=ComparisonOperatorExpression)+)?
+	ComparisonOperatorExpression ({AndExpression.entries+=current} "AND" entries+=ComparisonOperatorExpression)*
 ;
 
 ComparisonOperatorExpression returns Expression:
@@ -205,9 +205,10 @@ ConcreteExpression returns Expression:
 	InExpression |
 	BetweenExpression |
 	FunctionExpression |
-	AliasAttributeExpression |
-	Literal |
-	ParameterExpression
+//	AliasAttributeExpression |
+//	Literal |
+//	ParameterExpression
+	Variable
 ;
 
 ParenthesesExpression returns Expression:
@@ -293,13 +294,13 @@ FunctionExpression returns Expression:
 ;
 
 StringFunctionExpression returns FunctionExpression:
-	name='CONCAT' '(' fields+=Variable (',' fields+=Variable)* ')' |
-	name='SUBSTRING' '(' field=Variable ',' startPos=Variable (',' length=Variable)? ')' |
-	name='TRIM' '(' (trimSpec=TrimSpec)? (trimChar=Variable)? 'FROM'? field=Variable ')' |
-	name='LOWER' '(' field=Variable ')' |
-	name='UPPER' '(' field=Variable ')' |
-	name='LENGTH' '(' field=Variable ')' |
-	name='LOCATE' '(' fields+=Variable ',' fields+=Variable (',' startPos=Variable)? ')'
+	name='CONCAT' '(' fields+=ConcreteExpression (',' fields+=ConcreteExpression)* ')' |
+	name='SUBSTRING' '(' field=ConcreteExpression ',' startPos=AdditionExpression (',' length=AdditionExpression)? ')' |
+	name='TRIM' '(' (trimSpec=TrimSpec)? (trimChar=ConcreteExpression)? 'FROM'? field=Variable ')' |
+	name='LOWER' '(' field=ConcreteExpression ')' |
+	name='UPPER' '(' field=ConcreteExpression ')' |
+	name='LENGTH' '(' field=ConcreteExpression ')' |
+	name='LOCATE' '(' fields+=ConcreteExpression ',' fields+=ConcreteExpression (',' startPos=AdditionExpression)? ')'
 ;
 
 enum TrimSpec:
@@ -307,9 +308,9 @@ enum TrimSpec:
 ;
 
 ArithmeticFunctionExpression returns FunctionExpression:
-	name='ABS' '(' field=Variable ')' |
-	name='SQRT' '(' field=Variable ')' |
-	name='MOD' '(' fields+=Variable ',' fields+=Variable + ')'
+	name='ABS' '(' field=AdditionExpression ')' |
+	name='SQRT' '(' field=AdditionExpression ')' |
+	name='MOD' '(' fields+=AdditionExpression ',' fields+=AdditionExpression ')'
 ;
 
 CollectionFunctionExpression returns FunctionExpression:
@@ -321,12 +322,12 @@ TemporalFunctionExpression returns FunctionExpression:
 	name='CURRENT_DATE' ('('')')? |
 	name='CURRENT_TIME' ('('')')? |
 	name='CURRENT_TIMESTAMP' ('('')')? |
-	name='YEAR' '(' field=Variable ')' |
-	name='MONTH' '(' field=Variable ')' |
-	name='DAY' '(' field=Variable ')' |
-	name='HOUR' '(' field=Variable ')' |
-	name='MINUTE' '(' field=Variable ')' |
-	name='SECOND' '(' field=Variable ')'
+	name='YEAR' '(' field=AdditionExpression ')' |
+	name='MONTH' '(' field=AdditionExpression ')' |
+	name='DAY' '(' field=AdditionExpression ')' |
+	name='HOUR' '(' field=AdditionExpression ')' |
+	name='MINUTE' '(' field=AdditionExpression ')' |
+	name='SECOND' '(' field=AdditionExpression ')'
 ;
 
 ParameterName: ID; 

@@ -19,7 +19,7 @@ import org.nightlabs.vestigo.xtext.jpql.jPQL.Variable;
  *
  * @generated
  */
-public class VariableImpl extends ExpressionTermImpl implements Variable
+public class VariableImpl extends ExpressionImpl implements Variable
 {
   /**
    * <!-- begin-user-doc -->

@@ -59,7 +59,7 @@ public interface FunctionExpression extends Expression
 
   /**
    * Returns the value of the '<em><b>Fields</b></em>' containment reference list.
-   * The list contents are of type {@link org.nightlabs.vestigo.xtext.jpql.jPQL.Variable}.
+   * The list contents are of type {@link org.nightlabs.vestigo.xtext.jpql.jPQL.Expression}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Fields</em>' containment reference list isn't clear,
@@ -71,7 +71,7 @@ public interface FunctionExpression extends Expression
    * @model containment="true"
    * @generated
    */
-  EList<Variable> getFields();
+  EList<Expression> getFields();
 
   /**
    * Returns the value of the '<em><b>Field</b></em>' containment reference.
@@ -82,12 +82,12 @@ public interface FunctionExpression extends Expression
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Field</em>' containment reference.
-   * @see #setField(Variable)
+   * @see #setField(Expression)
    * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getFunctionExpression_Field()
    * @model containment="true"
    * @generated
    */
-  Variable getField();
+  Expression getField();
 
   /**
    * Sets the value of the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.FunctionExpression#getField <em>Field</em>}' containment reference.
@@ -97,7 +97,7 @@ public interface FunctionExpression extends Expression
    * @see #getField()
    * @generated
    */
-  void setField(Variable value);
+  void setField(Expression value);
 
   /**
    * Returns the value of the '<em><b>Start Pos</b></em>' containment reference.
@@ -108,12 +108,12 @@ public interface FunctionExpression extends Expression
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Start Pos</em>' containment reference.
-   * @see #setStartPos(Variable)
+   * @see #setStartPos(Expression)
    * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getFunctionExpression_StartPos()
    * @model containment="true"
    * @generated
    */
-  Variable getStartPos();
+  Expression getStartPos();
 
   /**
    * Sets the value of the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.FunctionExpression#getStartPos <em>Start Pos</em>}' containment reference.
@@ -123,7 +123,7 @@ public interface FunctionExpression extends Expression
    * @see #getStartPos()
    * @generated
    */
-  void setStartPos(Variable value);
+  void setStartPos(Expression value);
 
   /**
    * Returns the value of the '<em><b>Length</b></em>' containment reference.
@@ -134,12 +134,12 @@ public interface FunctionExpression extends Expression
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Length</em>' containment reference.
-   * @see #setLength(Variable)
+   * @see #setLength(Expression)
    * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getFunctionExpression_Length()
    * @model containment="true"
    * @generated
    */
-  Variable getLength();
+  Expression getLength();
 
   /**
    * Sets the value of the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.FunctionExpression#getLength <em>Length</em>}' containment reference.
@@ -149,7 +149,7 @@ public interface FunctionExpression extends Expression
    * @see #getLength()
    * @generated
    */
-  void setLength(Variable value);
+  void setLength(Expression value);
 
   /**
    * Returns the value of the '<em><b>Trim Spec</b></em>' attribute.
@@ -189,12 +189,12 @@ public interface FunctionExpression extends Expression
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Trim Char</em>' containment reference.
-   * @see #setTrimChar(Variable)
+   * @see #setTrimChar(Expression)
    * @see org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage#getFunctionExpression_TrimChar()
    * @model containment="true"
    * @generated
    */
-  Variable getTrimChar();
+  Expression getTrimChar();
 
   /**
    * Sets the value of the '{@link org.nightlabs.vestigo.xtext.jpql.jPQL.FunctionExpression#getTrimChar <em>Trim Char</em>}' containment reference.
@@ -204,6 +204,6 @@ public interface FunctionExpression extends Expression
    * @see #getTrimChar()
    * @generated
    */
-  void setTrimChar(Variable value);
+  void setTrimChar(Expression value);
 
 } // FunctionExpression

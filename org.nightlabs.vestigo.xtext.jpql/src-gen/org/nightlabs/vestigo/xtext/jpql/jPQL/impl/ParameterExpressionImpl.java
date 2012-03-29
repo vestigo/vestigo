@@ -28,7 +28,7 @@ import org.nightlabs.vestigo.xtext.jpql.jPQL.ParameterExpression;
  *
  * @generated
  */
-public class ParameterExpressionImpl extends ExpressionImpl implements ParameterExpression
+public class ParameterExpressionImpl extends VariableImpl implements ParameterExpression
 {
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.

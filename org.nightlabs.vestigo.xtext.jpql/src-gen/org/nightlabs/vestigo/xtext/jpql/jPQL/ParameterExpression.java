@@ -23,7 +23,7 @@ package org.nightlabs.vestigo.xtext.jpql.jPQL;
  * @model
  * @generated
  */
-public interface ParameterExpression extends Expression, Variable
+public interface ParameterExpression extends Variable
 {
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.

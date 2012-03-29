@@ -98,10 +98,8 @@ public class JPQLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getWhereClauseAccess().getGroup(), "rule__WhereClause__Group__0");
 					put(grammarAccess.getOrExpressionAccess().getGroup(), "rule__OrExpression__Group__0");
 					put(grammarAccess.getOrExpressionAccess().getGroup_1(), "rule__OrExpression__Group_1__0");
-					put(grammarAccess.getOrExpressionAccess().getGroup_1_1(), "rule__OrExpression__Group_1_1__0");
 					put(grammarAccess.getAndExpressionAccess().getGroup(), "rule__AndExpression__Group__0");
 					put(grammarAccess.getAndExpressionAccess().getGroup_1(), "rule__AndExpression__Group_1__0");
-					put(grammarAccess.getAndExpressionAccess().getGroup_1_1(), "rule__AndExpression__Group_1_1__0");
 					put(grammarAccess.getComparisonOperatorExpressionAccess().getGroup(), "rule__ComparisonOperatorExpression__Group__0");
 					put(grammarAccess.getComparisonOperatorExpressionAccess().getGroup_1(), "rule__ComparisonOperatorExpression__Group_1__0");
 					put(grammarAccess.getAdditionExpressionAccess().getGroup(), "rule__AdditionExpression__Group__0");
@@ -215,8 +213,8 @@ public class JPQLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getInnerJoinAccess().getPathAssignment_3(), "rule__InnerJoin__PathAssignment_3");
 					put(grammarAccess.getInnerJoinAccess().getVariableAssignment_4(), "rule__InnerJoin__VariableAssignment_4");
 					put(grammarAccess.getWhereClauseAccess().getWhereEntryAssignment_1(), "rule__WhereClause__WhereEntryAssignment_1");
-					put(grammarAccess.getOrExpressionAccess().getEntriesAssignment_1_1_1(), "rule__OrExpression__EntriesAssignment_1_1_1");
-					put(grammarAccess.getAndExpressionAccess().getEntriesAssignment_1_1_1(), "rule__AndExpression__EntriesAssignment_1_1_1");
+					put(grammarAccess.getOrExpressionAccess().getEntriesAssignment_1_2(), "rule__OrExpression__EntriesAssignment_1_2");
+					put(grammarAccess.getAndExpressionAccess().getEntriesAssignment_1_2(), "rule__AndExpression__EntriesAssignment_1_2");
 					put(grammarAccess.getComparisonOperatorExpressionAccess().getOperatorAssignment_1_1(), "rule__ComparisonOperatorExpression__OperatorAssignment_1_1");
 					put(grammarAccess.getComparisonOperatorExpressionAccess().getRightAssignment_1_2(), "rule__ComparisonOperatorExpression__RightAssignment_1_2");
 					put(grammarAccess.getAdditionExpressionAccess().getOperatorAssignment_1_1(), "rule__AdditionExpression__OperatorAssignment_1_1");

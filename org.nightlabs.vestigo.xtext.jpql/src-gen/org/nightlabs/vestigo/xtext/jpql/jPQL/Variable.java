@@ -16,6 +16,6 @@ package org.nightlabs.vestigo.xtext.jpql.jPQL;
  * @model
  * @generated
  */
-public interface Variable extends ExpressionTerm
+public interface Variable extends Expression, ExpressionTerm
 {
 } // Variable

@@ -396,9 +396,9 @@ public class JPQLSwitch<T> extends Switch<T>
         T result = caseAliasAttributeExpression(aliasAttributeExpression);
         if (result == null) result = caseOrderBySpec(aliasAttributeExpression);
         if (result == null) result = caseVariable(aliasAttributeExpression);
-        if (result == null) result = caseSelectExpression(aliasAttributeExpression);
         if (result == null) result = caseExpressionTerm(aliasAttributeExpression);
         if (result == null) result = caseExpression(aliasAttributeExpression);
+        if (result == null) result = caseSelectExpression(aliasAttributeExpression);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -407,9 +407,9 @@ public class JPQLSwitch<T> extends Switch<T>
         ParameterExpression parameterExpression = (ParameterExpression)theEObject;
         T result = caseParameterExpression(parameterExpression);
         if (result == null) result = caseVariable(parameterExpression);
-        if (result == null) result = caseSelectExpression(parameterExpression);
         if (result == null) result = caseExpressionTerm(parameterExpression);
         if (result == null) result = caseExpression(parameterExpression);
+        if (result == null) result = caseSelectExpression(parameterExpression);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -427,9 +427,9 @@ public class JPQLSwitch<T> extends Switch<T>
         Literal literal = (Literal)theEObject;
         T result = caseLiteral(literal);
         if (result == null) result = caseVariable(literal);
-        if (result == null) result = caseSelectExpression(literal);
         if (result == null) result = caseExpressionTerm(literal);
         if (result == null) result = caseExpression(literal);
+        if (result == null) result = caseSelectExpression(literal);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -439,9 +439,9 @@ public class JPQLSwitch<T> extends Switch<T>
         T result = caseIntegerLiteral(integerLiteral);
         if (result == null) result = caseLiteral(integerLiteral);
         if (result == null) result = caseVariable(integerLiteral);
-        if (result == null) result = caseSelectExpression(integerLiteral);
         if (result == null) result = caseExpressionTerm(integerLiteral);
         if (result == null) result = caseExpression(integerLiteral);
+        if (result == null) result = caseSelectExpression(integerLiteral);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -451,9 +451,9 @@ public class JPQLSwitch<T> extends Switch<T>
         T result = caseFloatLiteral(floatLiteral);
         if (result == null) result = caseLiteral(floatLiteral);
         if (result == null) result = caseVariable(floatLiteral);
-        if (result == null) result = caseSelectExpression(floatLiteral);
         if (result == null) result = caseExpressionTerm(floatLiteral);
         if (result == null) result = caseExpression(floatLiteral);
+        if (result == null) result = caseSelectExpression(floatLiteral);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -470,9 +470,9 @@ public class JPQLSwitch<T> extends Switch<T>
         T result = caseStringLiteral(stringLiteral);
         if (result == null) result = caseLiteral(stringLiteral);
         if (result == null) result = caseVariable(stringLiteral);
-        if (result == null) result = caseSelectExpression(stringLiteral);
         if (result == null) result = caseExpressionTerm(stringLiteral);
         if (result == null) result = caseExpression(stringLiteral);
+        if (result == null) result = caseSelectExpression(stringLiteral);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -482,9 +482,9 @@ public class JPQLSwitch<T> extends Switch<T>
         T result = caseNullLiteral(nullLiteral);
         if (result == null) result = caseLiteral(nullLiteral);
         if (result == null) result = caseVariable(nullLiteral);
-        if (result == null) result = caseSelectExpression(nullLiteral);
         if (result == null) result = caseExpressionTerm(nullLiteral);
         if (result == null) result = caseExpression(nullLiteral);
+        if (result == null) result = caseSelectExpression(nullLiteral);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -494,9 +494,9 @@ public class JPQLSwitch<T> extends Switch<T>
         T result = caseBooleanLiteral(booleanLiteral);
         if (result == null) result = caseLiteral(booleanLiteral);
         if (result == null) result = caseVariable(booleanLiteral);
-        if (result == null) result = caseSelectExpression(booleanLiteral);
         if (result == null) result = caseExpressionTerm(booleanLiteral);
         if (result == null) result = caseExpression(booleanLiteral);
+        if (result == null) result = caseSelectExpression(booleanLiteral);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }

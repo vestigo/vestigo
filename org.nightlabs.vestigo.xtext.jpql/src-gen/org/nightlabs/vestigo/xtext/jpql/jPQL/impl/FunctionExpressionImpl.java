@@ -20,10 +20,10 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.nightlabs.vestigo.xtext.jpql.jPQL.Expression;
 import org.nightlabs.vestigo.xtext.jpql.jPQL.FunctionExpression;
 import org.nightlabs.vestigo.xtext.jpql.jPQL.JPQLPackage;
 import org.nightlabs.vestigo.xtext.jpql.jPQL.TrimSpec;
-import org.nightlabs.vestigo.xtext.jpql.jPQL.Variable;
 
 /**
  * <!-- begin-user-doc -->
@@ -74,7 +74,7 @@ public class FunctionExpressionImpl extends ExpressionImpl implements FunctionEx
    * @generated
    * @ordered
    */
-  protected EList<Variable> fields;
+  protected EList<Expression> fields;
 
   /**
    * The cached value of the '{@link #getField() <em>Field</em>}' containment reference.
@@ -84,7 +84,7 @@ public class FunctionExpressionImpl extends ExpressionImpl implements FunctionEx
    * @generated
    * @ordered
    */
-  protected Variable field;
+  protected Expression field;
 
   /**
    * The cached value of the '{@link #getStartPos() <em>Start Pos</em>}' containment reference.
@@ -94,7 +94,7 @@ public class FunctionExpressionImpl extends ExpressionImpl implements FunctionEx
    * @generated
    * @ordered
    */
-  protected Variable startPos;
+  protected Expression startPos;
 
   /**
    * The cached value of the '{@link #getLength() <em>Length</em>}' containment reference.
@@ -104,7 +104,7 @@ public class FunctionExpressionImpl extends ExpressionImpl implements FunctionEx
    * @generated
    * @ordered
    */
-  protected Variable length;
+  protected Expression length;
 
   /**
    * The default value of the '{@link #getTrimSpec() <em>Trim Spec</em>}' attribute.
@@ -134,7 +134,7 @@ public class FunctionExpressionImpl extends ExpressionImpl implements FunctionEx
    * @generated
    * @ordered
    */
-  protected Variable trimChar;
+  protected Expression trimChar;
 
   /**
    * <!-- begin-user-doc -->
@@ -185,11 +185,11 @@ public class FunctionExpressionImpl extends ExpressionImpl implements FunctionEx
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Variable> getFields()
+  public EList<Expression> getFields()
   {
     if (fields == null)
     {
-      fields = new EObjectContainmentEList<Variable>(Variable.class, this, JPQLPackage.FUNCTION_EXPRESSION__FIELDS);
+      fields = new EObjectContainmentEList<Expression>(Expression.class, this, JPQLPackage.FUNCTION_EXPRESSION__FIELDS);
     }
     return fields;
   }
@@ -199,7 +199,7 @@ public class FunctionExpressionImpl extends ExpressionImpl implements FunctionEx
    * <!-- end-user-doc -->
    * @generated
    */
-  public Variable getField()
+  public Expression getField()
   {
     return field;
   }
@@ -209,9 +209,9 @@ public class FunctionExpressionImpl extends ExpressionImpl implements FunctionEx
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetField(Variable newField, NotificationChain msgs)
+  public NotificationChain basicSetField(Expression newField, NotificationChain msgs)
   {
-    Variable oldField = field;
+    Expression oldField = field;
     field = newField;
     if (eNotificationRequired())
     {
@@ -226,7 +226,7 @@ public class FunctionExpressionImpl extends ExpressionImpl implements FunctionEx
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setField(Variable newField)
+  public void setField(Expression newField)
   {
     if (newField != field)
     {
@@ -247,7 +247,7 @@ public class FunctionExpressionImpl extends ExpressionImpl implements FunctionEx
    * <!-- end-user-doc -->
    * @generated
    */
-  public Variable getStartPos()
+  public Expression getStartPos()
   {
     return startPos;
   }
@@ -257,9 +257,9 @@ public class FunctionExpressionImpl extends ExpressionImpl implements FunctionEx
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetStartPos(Variable newStartPos, NotificationChain msgs)
+  public NotificationChain basicSetStartPos(Expression newStartPos, NotificationChain msgs)
   {
-    Variable oldStartPos = startPos;
+    Expression oldStartPos = startPos;
     startPos = newStartPos;
     if (eNotificationRequired())
     {
@@ -274,7 +274,7 @@ public class FunctionExpressionImpl extends ExpressionImpl implements FunctionEx
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setStartPos(Variable newStartPos)
+  public void setStartPos(Expression newStartPos)
   {
     if (newStartPos != startPos)
     {
@@ -295,7 +295,7 @@ public class FunctionExpressionImpl extends ExpressionImpl implements FunctionEx
    * <!-- end-user-doc -->
    * @generated
    */
-  public Variable getLength()
+  public Expression getLength()
   {
     return length;
   }
@@ -305,9 +305,9 @@ public class FunctionExpressionImpl extends ExpressionImpl implements FunctionEx
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetLength(Variable newLength, NotificationChain msgs)
+  public NotificationChain basicSetLength(Expression newLength, NotificationChain msgs)
   {
-    Variable oldLength = length;
+    Expression oldLength = length;
     length = newLength;
     if (eNotificationRequired())
     {
@@ -322,7 +322,7 @@ public class FunctionExpressionImpl extends ExpressionImpl implements FunctionEx
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setLength(Variable newLength)
+  public void setLength(Expression newLength)
   {
     if (newLength != length)
     {
@@ -366,7 +366,7 @@ public class FunctionExpressionImpl extends ExpressionImpl implements FunctionEx
    * <!-- end-user-doc -->
    * @generated
    */
-  public Variable getTrimChar()
+  public Expression getTrimChar()
   {
     return trimChar;
   }
@@ -376,9 +376,9 @@ public class FunctionExpressionImpl extends ExpressionImpl implements FunctionEx
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetTrimChar(Variable newTrimChar, NotificationChain msgs)
+  public NotificationChain basicSetTrimChar(Expression newTrimChar, NotificationChain msgs)
   {
-    Variable oldTrimChar = trimChar;
+    Expression oldTrimChar = trimChar;
     trimChar = newTrimChar;
     if (eNotificationRequired())
     {
@@ -393,7 +393,7 @@ public class FunctionExpressionImpl extends ExpressionImpl implements FunctionEx
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setTrimChar(Variable newTrimChar)
+  public void setTrimChar(Expression newTrimChar)
   {
     if (newTrimChar != trimChar)
     {
@@ -477,22 +477,22 @@ public class FunctionExpressionImpl extends ExpressionImpl implements FunctionEx
         return;
       case JPQLPackage.FUNCTION_EXPRESSION__FIELDS:
         getFields().clear();
-        getFields().addAll((Collection<? extends Variable>)newValue);
+        getFields().addAll((Collection<? extends Expression>)newValue);
         return;
       case JPQLPackage.FUNCTION_EXPRESSION__FIELD:
-        setField((Variable)newValue);
+        setField((Expression)newValue);
         return;
       case JPQLPackage.FUNCTION_EXPRESSION__START_POS:
-        setStartPos((Variable)newValue);
+        setStartPos((Expression)newValue);
         return;
       case JPQLPackage.FUNCTION_EXPRESSION__LENGTH:
-        setLength((Variable)newValue);
+        setLength((Expression)newValue);
         return;
       case JPQLPackage.FUNCTION_EXPRESSION__TRIM_SPEC:
         setTrimSpec((TrimSpec)newValue);
         return;
       case JPQLPackage.FUNCTION_EXPRESSION__TRIM_CHAR:
-        setTrimChar((Variable)newValue);
+        setTrimChar((Expression)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -515,19 +515,19 @@ public class FunctionExpressionImpl extends ExpressionImpl implements FunctionEx
         getFields().clear();
         return;
       case JPQLPackage.FUNCTION_EXPRESSION__FIELD:
-        setField((Variable)null);
+        setField((Expression)null);
         return;
       case JPQLPackage.FUNCTION_EXPRESSION__START_POS:
-        setStartPos((Variable)null);
+        setStartPos((Expression)null);
         return;
       case JPQLPackage.FUNCTION_EXPRESSION__LENGTH:
-        setLength((Variable)null);
+        setLength((Expression)null);
         return;
       case JPQLPackage.FUNCTION_EXPRESSION__TRIM_SPEC:
         setTrimSpec(TRIM_SPEC_EDEFAULT);
         return;
       case JPQLPackage.FUNCTION_EXPRESSION__TRIM_CHAR:
-        setTrimChar((Variable)null);
+        setTrimChar((Expression)null);
         return;
     }
     super.eUnset(featureID);
