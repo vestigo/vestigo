@@ -535,7 +535,6 @@
     <wizard
           category="org.nightlabs.vestigo.ui"
           class="org.nightlabs.vestigo.ui.newwizard.NewProjectWizard"
-          descriptionImage="icons/org.nightlabs.vestigo.ui.newwizard/NewProjectWizard.75x70.png"
           finalPerspective="org.nightlabs.vestigo.ui.VestigoPerspective"
           icon="icons/org.nightlabs.vestigo.ui.newwizard/NewProjectWizard.16x16.png"
           id="org.nightlabs.vestigo.ui.newwizard.NewProjectWizard"
@@ -545,7 +544,6 @@
     <wizard
           category="org.nightlabs.vestigo.ui"
           class="org.nightlabs.vestigo.ui.newwizard.NewQueryWizard"
-          descriptionImage="icons/org.nightlabs.vestigo.ui.newwizard/NewQueryWizard.75x70.png"
           finalPerspective="org.nightlabs.vestigo.ui.VestigoPerspective"
           icon="icons/org.nightlabs.vestigo.ui.newwizard/NewQueryWizard.16x16.png"
           id="org.nightlabs.vestigo.ui.newwizard.NewQueryWizard"
