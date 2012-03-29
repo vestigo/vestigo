@@ -134,7 +134,7 @@ implements IConcurrentModel // not necessary - just convenient to see the javado
 		return resultSet;
 	}
 
-	private Object[] getRowsLoadedArray()
+	protected Object[] getRowsLoadedArray() // should be private but is needed for workaround in ResultSetTableComposite. Marco :-)
 	{
 		if (rowsLoadedArray == null) {
 			synchronized (this) {
@@ -194,21 +194,22 @@ implements IConcurrentModel // not necessary - just convenient to see the javado
 						}
 						rows.add(new ResultSetTableRow(ResultSetTableModel.this, resultSet.getRow(), cells));
 					}
+					final boolean _completelyLoaded = lastResultSetNextResult == false;
 					synchronized (mutex) {
-						completelyLoaded = lastResultSetNextResult == false;
+						completelyLoaded = _completelyLoaded;
 						rowsLoaded.addAll(rows);
 					}
 					rowsLoadedArray = null;
 					Object[] rowsArray = rows.toArray();
 					fireAdd(rowsArray);
 
-					if (lastResultSetNextResult == false) {
+					if (_completelyLoaded) {
 						Display d = display;
 						if (d != null) {
 							d.asyncExec(new Runnable() {
 								@Override
 								public void run() {
-									propertyChangeSupport.firePropertyChange(PropertyName.completelyLoaded.name(), !completelyLoaded, completelyLoaded);
+									propertyChangeSupport.firePropertyChange(PropertyName.completelyLoaded.name(), !_completelyLoaded, _completelyLoaded);
 								}
 							});
 						}

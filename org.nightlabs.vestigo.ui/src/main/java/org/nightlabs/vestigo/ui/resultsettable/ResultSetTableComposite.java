@@ -114,15 +114,50 @@ implements ISelectionProvider, LabelTextOptionsContainer
 		for (int y = 0; y < table.getBounds().height; ++y) {
 			TableItem item = table.getItem(new Point(1, y));
 			if (item == null)
-				logger.warn("setLabelTextOptions: item is null!");
+				logger.warn("refresh: item is null!");
 			else
 				tableItems.add(item);
 		}
 
 		for (TableItem item : tableItems) {
-			if (item.getData() != null)
+			if (item.getData() != null) {
+				if (item.getData() instanceof ResultSetTableRow)
+					logger.debug("refresh: updating row {}", ((ResultSetTableRow)item.getData()).getResultSetTableRowIndex());
+				else
+					logger.debug("refresh: updating {}", item.getData());
+
 				tableViewer.update(item.getData(), null);
+			}
+			else {
+				// WORKAROUND begin: https://bugs.eclipse.org/bugs/show_bug.cgi?id=146799
+				// It's not always only the last item - sometimes it's an item inbetween. Marco :-)
+				logger.warn("refresh: item.getData() returned null!");
+				int tableItemIndex = -1;
+				for (int index = 0; index < table.getItemCount(); ++index) {
+					if (table.getItem(index) == item) {
+						tableItemIndex = index;
+						break;
+					}
+				}
+
+				if (tableItemIndex < 0)
+					logger.warn("refresh: Did not find tableItemIndex!!!");
+				else {
+//					DeferredContentProvider contentProvider = (DeferredContentProvider) tableViewer.getContentProvider();
+//					contentProvider.updateElement(tableItemIndex); // does not work and that's probably exactly the problem
+					ResultSetTableModel model = getInput();
+					Object[] rowsLoadedArray = model.getRowsLoadedArray();
+					tableViewer.replace(rowsLoadedArray[tableItemIndex], tableItemIndex);
+					logger.debug("refresh: Workaround performed on tableItemIndex={}", tableItemIndex);
+				}
+				// WORKAROUND END: https://bugs.eclipse.org/bugs/show_bug.cgi?id=146799
+			}
 		}
+
+		// WORKAROUND begin: https://bugs.eclipse.org/bugs/show_bug.cgi?id=146799
+		// It's not always only the last item - sometimes it's an item inbetween. Marco :-)
+		table.redraw(0, 0, table.getBounds().width, table.getBounds().height, true);
+		// WORKAROUND END: https://bugs.eclipse.org/bugs/show_bug.cgi?id=146799
 	}
 
 	private void createTableViewer() {
@@ -165,7 +200,7 @@ implements ISelectionProvider, LabelTextOptionsContainer
 	 * There is an SWT bug causing missing (white) areas when scrolling through
 	 * the LAZY table line by line. This listener fixes them by causing a redraw of the entire table.
 	 * As it is deferring the redraw operation, it causes nearly no performance impact (it collects many ordinary
-	 * paint events and executes only one additional Table.redraw() for many of them).
+	 * paint events and executes only one additional refresh operation for many of them).
 	 */
 	private void hookRepairPaintListener() {
 		tableViewer.getTable().addPaintListener(new PaintListener() {
@@ -195,7 +230,9 @@ implements ISelectionProvider, LabelTextOptionsContainer
 								logger.info("paintControl.asyncExecRunnable: entered");
 								repairPaintEventRunnableQueued = false;
 								repairPaintEventRedrawTriggered = true;
-								((Table)e.widget).redraw();
+//								((Table)e.widget).redraw(0, 0, e.width, e.height, true);
+//								tableViewer.refresh(true);
+								refresh();
 							}
 						});
 						return Status.OK_STATUS;
