@@ -71,11 +71,11 @@ public class CandidateClassView extends ViewPart
 				// We only overwrite the current query in the currently active editor, if the
 				// active editor is an anonymous one - otherwise, we open a new editor.
 				IEditorInput editorInput = queryEditorManager.getQueryEditor().getEditorInput();
-				if (editorInput instanceof QueryEditorInput) {
+				if (editorInput instanceof QueryEditorInput)
 					editorInput = ((QueryEditorInput)editorInput).getRawEditorInput();
-					if (!(editorInput instanceof NonExistingStorageEditorInput))
-						queryEditorManager = null;
-				}
+
+				if (!(editorInput instanceof NonExistingStorageEditorInput))
+					queryEditorManager = null;
 			}
 
 			if (queryEditorManager == null && connectionProfile != null)
