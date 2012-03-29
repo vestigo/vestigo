@@ -13,6 +13,7 @@ import org.eclipse.datatools.connectivity.ICategory;
 import org.eclipse.datatools.connectivity.IConnectionProfile;
 import org.eclipse.datatools.connectivity.ProfileManager;
 import org.eclipse.datatools.connectivity.oda.IDriver;
+import org.eclipse.datatools.connectivity.ui.ProfileImageRegistry;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.ISelectionProvider;
@@ -79,6 +80,11 @@ public class ConnectionProfileTreeComposite extends Composite implements ISelect
 		{
 			if (element instanceof ICategory)
 				return VestigoUIPlugin.getDefault().getImage(ConnectionProfileTreeComposite.class, "category", AbstractVestigoUIPlugin.IMAGE_SIZE_16x16);
+
+			if (element instanceof IConnectionProfile) {
+				IConnectionProfile profile = (IConnectionProfile) element;
+				return ProfileImageRegistry.getInstance().getProfileImage(profile.getProvider());
+			}
 
 			return super.getImage(element);
 		}
