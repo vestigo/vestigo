@@ -6,6 +6,7 @@ package org.nightlabs.vestigo.xtext.jdoql.ui.contentassist;
 import java.util.SortedSet;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
@@ -23,13 +24,7 @@ public class JDOQLProposalProvider extends AbstractJDOQLProposalProvider
 	{
 		super.complete_CandidateClassName(model, ruleCall, context, acceptor);
 
-		QueryEditorManager queryEditorManager = DocumentContextManager.sharedInstance().getQueryEditorManager(context.getDocument(), true);
-		ConnectionProfile vestigoConnectionProfile = queryEditorManager.getVestigoConnectionProfileAskingUserIfNecessary();
-		if (vestigoConnectionProfile != null) {
-			SortedSet<String> classes = vestigoConnectionProfile.getQueryableCandidateClasses();
-			for (String className : classes)
-				acceptor.accept(createCompletionProposal(className, context));
-		}
+		createCompletionProposalsFromCandidateClasses(context, acceptor);
 	}
 
 	@Override
@@ -40,6 +35,75 @@ public class JDOQLProposalProvider extends AbstractJDOQLProposalProvider
 		QueryEditorManager queryEditorManager = DocumentContextManager.sharedInstance().getQueryEditorManager(context.getDocument(), true);
 		for (QueryParameter queryParameter : queryEditorManager.getQueryParameterManager().getQueryParameters()) {
 			acceptor.accept(createCompletionProposal(queryParameter.getName(), context));
+		}
+	}
+
+	@Override
+	public void completeParameterDeclaration_Type(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor)
+	{
+		super.completeParameterDeclaration_Type(model, assignment, context, acceptor);
+
+		createCompletionProposalsFromCommonJavaClasses(context, acceptor);
+		createCompletionProposalsFromCandidateClasses(context, acceptor);
+	}
+
+	@Override
+	public void completeVariableDeclaration_Type(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor)
+	{
+		super.completeVariableDeclaration_Type(model, assignment, context, acceptor);
+
+		createCompletionProposalsFromCommonJavaClasses(context, acceptor);
+		createCompletionProposalsFromCandidateClasses(context, acceptor);
+	}
+
+	private static final Class<?>[] COMMON_JAVA_CLASSES = {
+		boolean.class,
+		byte.class,
+		char.class,
+		double.class,
+		float.class,
+		int.class,
+		long.class,
+		short.class,
+
+		java.lang.Boolean.class,
+		java.lang.Byte.class,
+		java.lang.Character.class,
+		java.lang.Double.class,
+		java.lang.Float.class,
+		java.lang.Integer.class,
+		java.lang.Long.class,
+		java.lang.Short.class,
+
+		java.lang.String.class,
+
+		java.math.BigInteger.class,
+		java.math.BigDecimal.class,
+
+		java.util.BitSet.class,
+		java.util.Calendar.class,
+		java.util.Currency.class,
+		java.util.Date.class,
+		java.util.GregorianCalendar.class,
+		java.util.TimeZone.class,
+		java.util.UUID.class
+
+	};
+
+	private void createCompletionProposalsFromCommonJavaClasses(ContentAssistContext context, ICompletionProposalAcceptor acceptor)
+	{
+		for (Class<?> clazz : COMMON_JAVA_CLASSES)
+			acceptor.accept(createCompletionProposal(clazz.getName(), context));
+	}
+
+	private void createCompletionProposalsFromCandidateClasses(ContentAssistContext context, ICompletionProposalAcceptor acceptor)
+	{
+		QueryEditorManager queryEditorManager = DocumentContextManager.sharedInstance().getQueryEditorManager(context.getDocument(), true);
+		ConnectionProfile vestigoConnectionProfile = queryEditorManager.getVestigoConnectionProfileAskingUserIfNecessary();
+		if (vestigoConnectionProfile != null) {
+			SortedSet<String> classes = vestigoConnectionProfile.getQueryableCandidateClasses();
+			for (String className : classes)
+				acceptor.accept(createCompletionProposal(className, context));
 		}
 	}
 }

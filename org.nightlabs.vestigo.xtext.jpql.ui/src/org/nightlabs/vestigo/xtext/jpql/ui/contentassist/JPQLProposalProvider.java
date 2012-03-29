@@ -23,13 +23,7 @@ public class JPQLProposalProvider extends AbstractJPQLProposalProvider
 	{
 		super.complete_FromClass(model, ruleCall, context, acceptor);
 
-		QueryEditorManager queryEditorManager = DocumentContextManager.sharedInstance().getQueryEditorManager(context.getDocument(), true);
-		ConnectionProfile vestigoConnectionProfile = queryEditorManager.getVestigoConnectionProfileAskingUserIfNecessary();
-		if (vestigoConnectionProfile != null) {
-			SortedSet<String> classes = vestigoConnectionProfile.getQueryableCandidateClasses();
-			for (String className : classes)
-				acceptor.accept(createCompletionProposal(className, context));
-		}
+		createCompletionProposalsFromCandidateClasses(context, acceptor);
 	}
 
 	@Override
@@ -40,6 +34,17 @@ public class JPQLProposalProvider extends AbstractJPQLProposalProvider
 		QueryEditorManager queryEditorManager = DocumentContextManager.sharedInstance().getQueryEditorManager(context.getDocument(), true);
 		for (QueryParameter queryParameter : queryEditorManager.getQueryParameterManager().getQueryParameters()) {
 			acceptor.accept(createCompletionProposal(queryParameter.getName(), context));
+		}
+	}
+
+	private void createCompletionProposalsFromCandidateClasses(ContentAssistContext context, ICompletionProposalAcceptor acceptor)
+	{
+		QueryEditorManager queryEditorManager = DocumentContextManager.sharedInstance().getQueryEditorManager(context.getDocument(), true);
+		ConnectionProfile vestigoConnectionProfile = queryEditorManager.getVestigoConnectionProfileAskingUserIfNecessary();
+		if (vestigoConnectionProfile != null) {
+			SortedSet<String> classes = vestigoConnectionProfile.getQueryableCandidateClasses();
+			for (String className : classes)
+				acceptor.accept(createCompletionProposal(className, context));
 		}
 	}
 }
