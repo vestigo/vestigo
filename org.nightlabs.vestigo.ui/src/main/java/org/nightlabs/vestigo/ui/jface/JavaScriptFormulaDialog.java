@@ -1,7 +1,6 @@
 package org.nightlabs.vestigo.ui.jface;
 
-import org.eclipse.jface.dialogs.Dialog;
-import org.eclipse.jface.window.IShellProvider;
+import org.eclipse.jface.dialogs.TitleAreaDialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
@@ -12,20 +11,20 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.nightlabs.vestigo.childvm.shared.JavaScriptFormula;
+import org.nightlabs.vestigo.ui.AbstractVestigoUIPlugin;
+import org.nightlabs.vestigo.ui.VestigoUIPlugin;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
  */
-public class JavaScriptFormulaDialog extends Dialog
+public class JavaScriptFormulaDialog extends TitleAreaDialog
 {
+	private String title = "Edit JavaScript formula";
+
 	private JavaScriptFormula value;
 	private Text text;
 
 	public JavaScriptFormulaDialog(Shell parentShell) {
-		super(parentShell);
-	}
-
-	public JavaScriptFormulaDialog(IShellProvider parentShell) {
 		super(parentShell);
 	}
 
@@ -38,11 +37,11 @@ public class JavaScriptFormulaDialog extends Dialog
 	protected Point getInitialSize() {
 		Point initialSize = super.getInitialSize();
 
-		// MINnimum size
+		// MINimum size
 		initialSize.x = Math.max(initialSize.x, 800);
 		initialSize.y = Math.max(initialSize.y, 600);
 
-		// MAXnimum size
+		// MAXimum size
 		initialSize.x = Math.min(initialSize.x, 1000);
 		initialSize.y = Math.min(initialSize.y, 800);
 
@@ -50,9 +49,11 @@ public class JavaScriptFormulaDialog extends Dialog
 	}
 
 	@Override
-	protected void configureShell(Shell newShell) {
+	protected void configureShell(Shell newShell)
+	{
 		super.configureShell(newShell);
-		newShell.setText("Edit JavaScript formula");
+		newShell.setText(title);
+		newShell.setImage(VestigoUIPlugin.getDefault().getImage(JavaScriptFormulaDialog.class, "shell", AbstractVestigoUIPlugin.IMAGE_SIZE_16x16)); //$NON-NLS-1$
 	}
 
 	public void setValue(JavaScriptFormula value) {
@@ -72,6 +73,17 @@ public class JavaScriptFormulaDialog extends Dialog
 		}
 
 		return this.value;
+	}
+
+	@Override
+	protected Control createContents(Composite parent) {
+		Control contents = super.createContents(parent);
+
+		setTitleImage(VestigoUIPlugin.getDefault().getImage(JavaScriptFormulaDialog.class, "title", AbstractVestigoUIPlugin.IMAGE_SIZE_75x70));
+		setTitle(title);
+		setMessage("Please write JavaScript returning the parameter value. You can access 'persistenceManager'/'pm' (in a JDO query) or 'entityManager'/'em' (in a JPA query) to access the datastore.");
+
+		return contents;
 	}
 
 	@Override

@@ -1,7 +1,14 @@
 package org.nightlabs.vestigo.core;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
 
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
@@ -9,6 +16,7 @@ import org.eclipse.core.runtime.preferences.IPreferencesService;
 import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.nightlabs.licence.manager.LicenceManager;
 import org.nightlabs.licence.manager.LicenceManagerOfflineImpl;
+import org.nightlabs.util.IOUtil;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
@@ -140,5 +148,73 @@ implements BundleActivator
 
 	public LicenceManager getLicenceManager() {
 		return licenceManager;
+	}
+
+	/**
+	 * Get the version from the OSGi bundle and convert it into the Maven-format.
+	 * The resulting version is usable in a URL on <code>http://vestigo.nightlabs.com</code>.
+	 * @return the mavenized version of the Vestigo-core-OSGi-bundle.
+	 * @see #getVersionSpecificURL(String)
+	 */
+	public String getMavenizedVersion()
+	{
+		Version version = getBundle().getVersion();
+		Version versionWithoutQualifier = new Version(version.getMajor(), version.getMinor(), version.getMicro());
+
+		// Maven appends the "SNAPSHOT" with a '-' while OSGi appends the qualifier with a '.' => transform, if necessary.
+		String versionForURL;
+		if ("SNAPSHOT".equals(version.getQualifier())) //$NON-NLS-1$
+			versionForURL = versionWithoutQualifier.toString() + '-' + version.getQualifier();
+		else
+			versionForURL = versionWithoutQualifier.toString();
+
+		return versionForURL;
+	}
+
+	private static final String[] SUPPORTED_LANGUAGES = {
+		Locale.ENGLISH.getLanguage(),
+		Locale.GERMAN.getLanguage()
+	};
+	private static final Set<String> SUPPORTED_LANGUAGE_SET = Collections.unmodifiableSet(new HashSet<String>(Arrays.asList(SUPPORTED_LANGUAGES)));
+
+	private volatile Map<String, String> versionSpecificURLVariables = null;
+
+	/**
+	 * Get a URL for the currently used version of Vestigo.
+	 * Callers usually pass a URL like <code>http://vestigo.nightlabs.com/${version}/download/index.html</code>
+	 * and get a URL matching the currently used Vestigo version.
+	 * Besides <code>${version}</code>, the variable <code>${versionAndLanguage}</code> is supported.
+	 * @param urlWithVariables the raw URL using the variable <code>${version}</code> or <code>${versionAndLanguage}</code>; e.g.:
+	 * <code>http://vestigo.nightlabs.com/${version}/download/index.html</code>
+	 * @return the versioned URL matching the current Vestigo version; e.g.:
+	 * <code>http://vestigo.nightlabs.com/1.3.2-SNAPSHOT/download/index.html</code>
+	 * @see #getMavenizedVersion()
+	 */
+	public String getVersionSpecificURL(String urlWithVariables)
+	{
+		Map<String, String> variables = this.versionSpecificURLVariables;
+		if (variables == null) {
+			variables = new HashMap<String, String>(2);
+			String mavenizedVersion = getMavenizedVersion();
+			Locale locale = Locale.getDefault();
+			String language = locale.getLanguage();
+
+			// We support only some languages => check what's supported and form URL accordingly.
+			String languageURLPart;
+			if (Locale.ENGLISH.getLanguage().equals(language))
+				languageURLPart = ""; //$NON-NLS-1$ // English is the default language and doesn't have an infix in the URL!
+			else if (SUPPORTED_LANGUAGE_SET.contains(language))
+				languageURLPart = '/' + language;
+			else
+				languageURLPart = ""; //$NON-NLS-1$ // Everything we don't support is mapped to the default language.
+
+			variables.put("version", mavenizedVersion);
+			variables.put("versionAndLanguage", mavenizedVersion + languageURLPart);
+			variables = Collections.unmodifiableMap(variables);
+			this.versionSpecificURLVariables = variables;
+		}
+
+		String result = IOUtil.replaceTemplateVariables(urlWithVariables, variables);
+		return result;
 	}
 }

@@ -24,8 +24,8 @@ import org.nightlabs.vestigo.ui.VestigoUIPlugin;
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
  */
-public class SelectPersistenceUnitDialog extends TitleAreaDialog {
-
+public class SelectPersistenceUnitDialog extends TitleAreaDialog
+{
 	private String title;
 	private String message;
 	private List<String> persistenceUnitNames;

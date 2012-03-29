@@ -20,14 +20,13 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.forms.events.HyperlinkAdapter;
 import org.eclipse.ui.forms.events.HyperlinkEvent;
 import org.eclipse.ui.forms.widgets.Hyperlink;
+import org.nightlabs.licence.manager.LicenceManager;
+import org.nightlabs.licence.manager.LicenceManagerOfflineImpl;
+import org.nightlabs.licence.manager.LicenceManagerOnlineImpl;
 import org.nightlabs.vestigo.core.VestigoCorePlugin;
 import org.nightlabs.vestigo.ui.AbstractVestigoUIPlugin;
 import org.nightlabs.vestigo.ui.VestigoUIPlugin;
 import org.nightlabs.vestigo.ui.resource.Messages;
-import org.nightlabs.licence.manager.LicenceManager;
-import org.nightlabs.licence.manager.LicenceManagerOfflineImpl;
-import org.nightlabs.licence.manager.LicenceManagerOnlineImpl;
-import org.osgi.framework.Version;
 import org.osgi.service.prefs.BackingStoreException;
 import org.osgi.service.prefs.Preferences;
 import org.slf4j.Logger;
@@ -40,21 +39,7 @@ public class LicenceNotValidDialog extends TitleAreaDialog
 	public static final String MESSAGE_LICENCE_VALID = Messages.getString("LicenceNotValidDialog.licenceValid"); //$NON-NLS-1$
 	public static final String MESSAGE_LICENCE_NOT_YET_PURCHASED = Messages.getString("LicenceNotValidDialog.licenceNotYetPurchased"); //$NON-NLS-1$
 	public static final String MESSAGE_LICENCE_NOT_VALID = Messages.getString("LicenceNotValidDialog.licenceNotValid"); //$NON-NLS-1$
-
-	public static final String PURCHASE_URL;
-	static {
-		Version version = VestigoCorePlugin.getDefault().getBundle().getVersion();
-		Version versionWithoutQualifier = new Version(version.getMajor(), version.getMinor(), version.getMicro());
-
-		// Maven appends the "SNAPSHOT" with a '-' while OSGi appends the qualifier with a '.' => transform, if necessary.
-		String versionForURL;
-		if ("SNAPSHOT".equals(version.getQualifier())) //$NON-NLS-1$
-			versionForURL = versionWithoutQualifier.toString() + '-' + version.getQualifier();
-		else
-			versionForURL = versionWithoutQualifier.toString();
-
-		PURCHASE_URL = String.format("http://vestigo.nightlabs.com/%s/purchase", versionForURL); //$NON-NLS-1$
-	}
+	public static final String PURCHASE_URL = VestigoCorePlugin.getDefault().getVersionSpecificURL("http://vestigo.nightlabs.com/${version}/purchase"); //$NON-NLS-1$
 
 	public static final String HOME_URL = "http://vestigo.nightlabs.com"; //$NON-NLS-1$
 
