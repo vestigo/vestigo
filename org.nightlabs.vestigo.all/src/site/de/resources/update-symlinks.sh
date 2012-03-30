@@ -57,10 +57,14 @@ function createRelativeSymlink
 
 ## DELETE first
 
+echo
+
+cd "${COPY_BASEDIR}"
 DIR=${COPY_BASEDIR}
 DIR_RELATIVE="."
 
-ls -R | while read FILE; do 
+ls -R | while read FILE; do
+	echo " FILE=$FILE"
 	FILE_LAST_CHAR=${FILE:((${#FILE} - 1)):1}
 #	echo "FILE_LAST_CHAR=${FILE_LAST_CHAR}"
 	if [ "${FILE_LAST_CHAR}" = ":" ]; then
@@ -75,17 +79,19 @@ ls -R | while read FILE; do
 		if [ "$FILE" != "" ]; then
 			if [ -f "$DIR/$FILE" -a "$FILE" != "`basename $0`" ] ; then
 				echo "Deleting file '$FILE' in directory '$DIR'."
-#				createRelativeSymlink "$DIR" "$FILE"
-				echo
+				/bin/rm "$DIR/$FILE"
 			fi
 		fi
 	fi
 done
 
+echo
+
 exit
 
 ## Create symlinks (including parent directories)
 
+cd "${ORIG_BASEDIR}"
 DIR=${ORIG_BASEDIR}
 DIR_RELATIVE="."
 
