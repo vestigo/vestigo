@@ -64,7 +64,6 @@ DIR=${COPY_BASEDIR}
 DIR_RELATIVE="."
 
 ls -R | while read FILE; do
-	echo " FILE=$FILE"
 	FILE_LAST_CHAR=${FILE:((${#FILE} - 1)):1}
 #	echo "FILE_LAST_CHAR=${FILE_LAST_CHAR}"
 	if [ "${FILE_LAST_CHAR}" = ":" ]; then
@@ -76,10 +75,11 @@ ls -R | while read FILE; do
 		DIR="${COPY_BASEDIR}${FILE_CLEANED}"
 	else
 #		if [ "$DIR_RELATIVE" != "." -a "$FILE" != "" ]; then
+		echo "DIR=$DIR FILE=$FILE"
 		if [ "$FILE" != "" ]; then
-			if [ -f "$DIR/$FILE" -a "$FILE" != "`basename $0`" ] ; then
+			if [ ! -d "$DIR/$FILE" -a "$FILE" != "`basename $0`" ] ; then
 				echo "Deleting file '$FILE' in directory '$DIR'."
-				/bin/rm "$DIR/$FILE"
+#				/bin/rm "$DIR/$FILE"
 			fi
 		fi
 	fi
