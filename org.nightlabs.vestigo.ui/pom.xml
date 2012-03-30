@@ -139,6 +139,7 @@ temporarily... because of exampleeditor - we should switch back to the property,
 
 	<build>
 		<resources>
+			<!--
 			<resource>
 				<directory>.</directory>
 				<excludes>
@@ -149,6 +150,21 @@ temporarily... because of exampleeditor - we should switch back to the property,
 					<exclude>.classpath</exclude>
 					<exclude>*.target</exclude>
 				</excludes>
+			</resource>
+			-->
+			<resource>
+				<directory>.</directory>
+				<includes>
+					<include>about.*</include>
+					<include>cheatcheets/**/*</include>
+					<include>icons/**/*</include>
+					<include>intro/**/*</include>
+					<include>LICENSE.txt</include>
+					<include>plugin.xml</include>
+					<include>plugin*.properties</include>
+					<include>schema/**/*</include>
+					<include>vestigo-logo.png</include>
+				</includes>
 			</resource>
 			<resource>
 				<directory>src/main/java</directory>
@@ -162,6 +178,39 @@ temporarily... because of exampleeditor - we should switch back to the property,
 		</resources>
 	
 		<plugins>
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>filter-cheatsheets</id>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+
+						<configuration>
+							<outputDirectory>${basedir}/cheatsheets</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${basedir}/src/main/filtered-cheatsheets</directory>
+									<filtering>true</filtering>
+									<includes>
+										<include>**/*.xml</include>
+									</includes>
+								</resource>
+								<resource>
+									<directory>${basedir}/src/main/filtered-cheatsheets</directory>
+									<filtering>false</filtering>
+									<excludes>
+										<exclude>**/*.xml</exclude>
+									</excludes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
 			<plugin>
 				<groupId>org.apache.felix</groupId>
 				<artifactId>maven-bundle-plugin</artifactId>
