@@ -1,0 +1,1 @@
+../../../resources/purchase/index.php

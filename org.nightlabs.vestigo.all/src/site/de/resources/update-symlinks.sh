@@ -2,6 +2,7 @@
 
 ## This script DELETES ALL FILES in the current directory and all subdirectories and replaces
 ## them by symlinks.
+## Note: This script completely ignores hidden files and directories (which protects .svn!!!).
 ## 2012-03-30. Marco :-)
 
 ## SUB_DIR references the original directory from which we symlink files into this directory.
@@ -70,26 +71,25 @@ ls -R | while read FILE; do
 		FILE_CLEANED=${FILE%\:}
 		FILE_CLEANED=${FILE_CLEANED#.}
 		FILE_CLEANED=${FILE_CLEANED#/}
-		echo "FILE_CLEANED=$FILE_CLEANED"
+#		echo "FILE_CLEANED=$FILE_CLEANED"
 		DIR_RELATIVE=$FILE_CLEANED
 		DIR="${COPY_BASEDIR}${FILE_CLEANED}"
 	else
 #		if [ "$DIR_RELATIVE" != "." -a "$FILE" != "" ]; then
-		echo "DIR=$DIR FILE=$FILE"
+#		echo "DIR=$DIR FILE=$FILE"
 		if [ "$FILE" != "" ]; then
 			if [ ! -d "$DIR/$FILE" -a "$FILE" != "`basename $0`" ] ; then
 				echo "Deleting file '$FILE' in directory '$DIR'."
-#				/bin/rm "$DIR/$FILE"
+				/bin/rm "$DIR/$FILE"
 			fi
 		fi
 	fi
 done
 
-echo
-
-exit
 
 ## Create symlinks (including parent directories)
+
+echo
 
 cd "${ORIG_BASEDIR}"
 DIR=${ORIG_BASEDIR}
@@ -102,7 +102,7 @@ ls -R | while read FILE; do
 		FILE_CLEANED=${FILE%\:}
 		FILE_CLEANED=${FILE_CLEANED#.}
 		FILE_CLEANED=${FILE_CLEANED#/}
-		echo "FILE_CLEANED=$FILE_CLEANED"
+#		echo "FILE_CLEANED=$FILE_CLEANED"
 		DIR_RELATIVE=$FILE_CLEANED
 		DIR="${ORIG_BASEDIR}${FILE_CLEANED}"
 	else
