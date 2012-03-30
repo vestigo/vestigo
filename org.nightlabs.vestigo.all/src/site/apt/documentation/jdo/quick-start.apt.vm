@@ -101,7 +101,7 @@ Quick start (JDO)
 
 * Open the data source and execute your first query
 
-	A double-click on the <<<JDO demo>>> data source opens it and causes the <Candidate classes view> to load
+	A double-click on the <<<JDO demo>>> data source opens it and causes the <Candidate classes> view to load
 	and display all candidate classes (aka entities).
 
 [../../images/jdo/quick-start/60.png]
@@ -112,7 +112,7 @@ Quick start (JDO)
 [../../images/jdo/quick-start/65.png]
 	
 	A second double-click on the same class causes the query to be executed and you	can see the results in
-	the <Result set view>.
+	the <Result set> view.
 
 [../../images/jdo/quick-start/70.png]
 

@@ -10,6 +10,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -32,30 +33,33 @@ public class ResolveMavenClasspathConnectionPropertiesFilter extends AbstractCon
 {
 	private static final Logger logger = LoggerFactory.getLogger(ResolveMavenClasspathConnectionPropertiesFilter.class);
 
-	protected Set<String> urlStringSet;
-	protected List<File> filesToDelete = new LinkedList<File>();
-
-	protected String template_pom;
-	protected String template_pom_dependency;
-
-	private Thread shutdownHook = new Thread() {
+	protected static Set<File> filesToDeleteByShutdownHook = Collections.synchronizedSet(new HashSet<File>());
+	private static Thread shutdownHook = new Thread() {
 		@Override
 		public void run() {
 			try {
-				for (File file : filesToDelete)
+				for (File file : filesToDeleteByShutdownHook)
 					IOUtil.deleteDirectoryRecursively(file);
 			} catch (Exception x) {
 				logger.warn("shutdownHook: " + x, x);
 			}
 		}
 	};
+	static {
+		Runtime.getRuntime().addShutdownHook(shutdownHook);
+	}
+
+	protected List<File> filesToDelete = new LinkedList<File>();
+	protected Set<String> urlStringSet;
+
+	protected String template_pom;
+	protected String template_pom_dependency;
 
 	@Override
 	public void filter(Properties connectionProperties) {
 		List<String> persistenceEngineClasspathStringList = PropertiesUtil.getList(connectionProperties, PropertiesUtil.PREFIX_META_PERSISTENCE_ENGINE_CLASSPATH);
 		Map<String, List<String>> replaceClasspathEntries = new HashMap<String, List<String>>();
 
-		Runtime.getRuntime().addShutdownHook(shutdownHook);
 
 		boolean successful = false;
 		try {
@@ -116,8 +120,10 @@ public class ResolveMavenClasspathConnectionPropertiesFilter extends AbstractCon
 			successful = true;
 		} finally {
 			if (successful) {
-				for (File file : filesToDelete)
+				for (File file : filesToDelete) {
 					IOUtil.deleteDirectoryRecursively(file);
+					filesToDeleteByShutdownHook.remove(file);
+				}
 
 				filesToDelete.clear();
 				Runtime.getRuntime().removeShutdownHook(shutdownHook);
@@ -127,6 +133,10 @@ public class ResolveMavenClasspathConnectionPropertiesFilter extends AbstractCon
 
 	protected void registerFileOrDirectoryToDelete(File fileOrDirectory)
 	{
+		if (fileOrDirectory == null)
+			throw new IllegalArgumentException("fileOrDirectory == null");
+
+		filesToDeleteByShutdownHook.add(fileOrDirectory);
 		filesToDelete.add(fileOrDirectory);
 	}
 
@@ -204,7 +214,9 @@ public class ResolveMavenClasspathConnectionPropertiesFilter extends AbstractCon
 
 	protected File createDownloaderMavenProject(MavenURI mavenURI) throws FileNotFoundException, IOException
 	{
-		File projectDir = IOUtil.createUniqueRandomFolder(IOUtil.getTempDir(), "vestigo.maven.");
+		File baseTempDir = IOUtil.createUserTempDir("vestigo.maven.", null);
+		File projectDir = IOUtil.createUniqueIncrementalFolder(baseTempDir, "instance-");
+		registerFileOrDirectoryToDelete(projectDir);
 		File pomFile = new File(projectDir, "pom.xml");
 
 		String pom = createDownloaderPOM(mavenURI);

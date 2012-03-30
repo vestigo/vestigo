@@ -7,4 +7,97 @@
 
 Query
 
-	TODO Here should be some documentation about how to write and execute a query.
+	A <query> is an expression telling the persistence engine to find some objects according to some
+	criteria. In its simplest form it may look like this:
+
+	* JDOQL:
+
+	<<<SELECT FROM com.myshop.Product>>>
+
+	* JPQL:
+
+	<<<SELECT this FROM com.myshop.Product this>>>
+
+	[]
+
+	Both achieve the same goal: They return all instances of the type <<<com.myshop.Product>>>.
+	If not all instances are desired, it is possible to add some criteria. For example to get only
+	products with a price below 100 €, one could write sth. similar to this:
+
+	* JDOQL:
+
+	<<<SELECT FROM com.myshop.Product\
+	WHERE this.price < 100 && this.currency == 'EUR'>>>
+
+	* JPQL:
+
+	<<<SELECT this FROM com.myshop.Product this\
+	WHERE this.price < 100 AND this.currency = 'EUR'>>>
+
+	[]
+
+* Query parameters
+
+	Instead of writing the criteria's values inline, it is possible to use query parameters like this:
+
+	* JDOQL:
+
+	<<<SELECT FROM com.myshop.Product\
+	WHERE this.price < :maxPrice && this.currency == :currency>>>
+
+	* JPQL:
+
+	<<<SELECT this FROM com.myshop.Product this\
+	WHERE this.price < :maxPrice AND this.currency = :currency>>>
+
+	or
+
+	<<<SELECT this FROM com.myshop.Product this\
+	WHERE this.price < ?1 AND this.currency = ?2>>>
+
+	[]
+
+	It is good practice to use query parameters instead of writing the criteria inline. In an application, the most
+	important reasons for this are:
+
+	*
+
+	Security: The use of query parameters renders attacks like {{{http://en.wikipedia.org/wiki/SQL_injection}SQL injection}}
+	impossible. Even though, we're dealing with JDOQL/JPQL (and not SQL) here, pasting user-input directly into the JDOQL/JPQL might
+	still lead to a vulnerability comparable to the well-known SQL injection.
+
+	*
+
+	Performance: Queries can be precompiled and executed with varying query parameter values. That's faster than
+	compiling the query again and again.
+
+	*
+
+	Robustness: With query parameters, you don't have to care about correct escaping. Technically, this is the same as
+	the aspect of security mentioned above, but from a different point of view (whether the query works or fails).
+
+	[]
+
+	Inside your applications, you should always make use of query parameters! Of course, in Vestigo, the above arguments
+	are not important. However, using query parameters keeps your queries concise and consistent with your application.
+	This is especially important, if you use Vestigo to design the queries to be later-on used inside your application code.
+
+	Additionally, Vestigo gives you the power of {{{./how-to-declare-a-query-parameter-using-javascript.html}JavaScript query parameters}}.
+
+* Query files
+
+	Vestigo stores the actual query expression together with the query parameter values in a single text-file. Hence,
+	all information (except for the {{{./data-source.html}data source}}, of course) is kept together and you can copy the query file to another machine
+	or workspace without loosing the parameter values.
+
+	JDO-queries are stored in <<<*.jdoql>>> files, while JPA-queries are stored in <<<*.jpql>>> files.
+
+* How-tos
+
+	* {{{./jdo/how-to-create-a-jdo-query.html}How to create a JDO query}}
+
+	* {{{./jpa/how-to-create-a-jpa-query.html}How to create a JPA query}}
+
+	* {{{./how-to-declare-a-query-parameter-using-javascript.html}How to declare a query parameter using JavaScript}}
+
+	[]

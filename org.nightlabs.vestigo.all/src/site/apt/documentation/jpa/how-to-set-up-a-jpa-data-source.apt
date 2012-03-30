@@ -1,0 +1,11 @@
+	---
+	How to set up a JPA data source
+	---
+	Marco หงุ่ยตระกูล-Schulze
+	---
+	2012-03-09
+
+How to set up a JPA data source
+
+	In the following we'll show you how to create a new JPA <data source>. Note, that the names <data source> and
+	<connection> (or <connection profile>) are often used interchangeably.

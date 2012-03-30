@@ -1,0 +1,173 @@
+	---
+	How to create a JDO query
+	---
+	Marco หงุ่ยตระกูล-Schulze
+	---
+	2012-03-30
+
+How to create a JDO query
+
+	In this guide, we'll show you how to create a JDO query. We'll start with a very basic one and then add
+	more and more complexity exploring the possibilities of Vestigo and JDOQL.
+
+* Prepare the data source
+
+	First, you need to create a {{{../data-source.html}data source}}. In order to do that, you can follow
+	one of these guides:
+
+	* {{{./quick-start.html}Quick start}}
+
+	* {{{./how-to-set-up-a-jdo-data-source.html}How to set up a JDO data source}}
+
+	[]
+
+	In the following, we'll assume you used the <Quick start> and therefore make use of the data model provided
+	by our demo data.
+
+* Open a query editor
+
+	There are multiple ways to open a query editor:
+
+** Open an anonymous query (without file)
+
+	You can open a query editor without a file (you can still save the contents of the editor to a file, later, if you like).
+	In the <Data Source Explorer> view, select the data source you want to query and right-click on it to open the context-menu.
+	In the context-menu, choose <Open JDO/JPA query editor>. Alternatively you can click the appropriate action in the
+	view's action-bar.
+
+[../../images/jdo/how-to-create-a-jdo-query/010.png]
+
+** Create a project and a query file
+
+	Open the <Project Explorer> view and right-click anywhere in the white area. In the occuring context-menu,
+	choose: <New> => <Project...>
+	
+[../../images/jdo/how-to-create-a-jdo-query/015.png]
+
+	This will open the <New Project> wizard, in which you can select <Vestigo project> and click <Next>.
+
+[../../images/jdo/how-to-create-a-jdo-query/020.png]
+
+	The second wizard page asks you for a project name. After you specified it, you can click <Finish>. There's
+	no need to change anything else on this wizard page.
+
+[../../images/jdo/how-to-create-a-jdo-query/025.png]
+
+	After you created the project, right-click on it to create a new <JDO/JPA query file>.
+
+[../../images/jdo/how-to-create-a-jdo-query/030.png]
+
+	You have to select the data source (aka connection profile) you want to use and then click <Next>.
+
+[../../images/jdo/how-to-create-a-jdo-query/035.png]
+
+	Give the file a name and click <Finish>. Note, that you do not have to specify the file extension.
+	It is automatically added.
+
+[../../images/jdo/how-to-create-a-jdo-query/040.png]
+
+** Open an anonymous query via the <Candidate classes> view
+
+	If you followed the {{{./quick-start.html}quick start guide}}, you already know this way and there's no need to
+	demonstrate it here again.
+
+* Write a simple query
+
+	The first thing you should do, is pressing [Ctrl]+[Space] which will trigger the <Code assist> feature.
+	You'll see a list of (key) words and characters that you can enter at the current location.   
+
+[../../images/jdo/how-to-create-a-jdo-query/045.png]
+
+	After <<<SELECT>>>, you'll have to manually enter a space, but then, you can continue pressing [Ctrl]+[Space] again.
+	We keep things simple and choose <<<FROM>>>.
+
+[../../images/jdo/how-to-create-a-jdo-query/047.png]
+
+[../../images/jdo/how-to-create-a-jdo-query/050.png]
+
+	When you hit [Ctrl]+[Space] after <<<SELECT FROM>>> and the connection to the data source is currently not open,
+	Vestigo will ask you, if you want to open it. Press <<<Yes>>> to continue and get a list of available candidate
+	classes.
+
+[../../images/jdo/how-to-create-a-jdo-query/055.png]
+
+[../../images/jdo/how-to-create-a-jdo-query/060.png]
+
+	Once you specified the candidate class, your query is complete enough to be executed. Press [Ctrl]+[F5]
+	or click the corresponding button!
+
+* Add some simple criteria
+
+	Now it's time to constrain our query. After all, you normally don't want all objects of a certain type. So we add a
+	<<<WHERE>>> clause with a criterion on the field <<<Movie.name>>>: We only want movies with a name containing the
+	string "am".
+
+[../../images/jdo/how-to-create-a-jdo-query/065.png]
+
+* Use a query parameter
+
+	It is good practice to use query parameters instead of writing the criteria inline. In an application, the most
+	important reasons for this are:
+
+	*
+
+	Security: The use of query parameters renders attacks like {{{http://en.wikipedia.org/wiki/SQL_injection}SQL injection}}
+	impossible. Even though, we're dealing with JDOQL (and not SQL) here, pasting user-input directly into the JDOQL might
+	still lead to a vulnerability comparable to the well-known SQL injection.
+
+	*
+
+	Performance: Queries can be precompiled and executed with varying query parameter values. That's faster than
+	compiling the query again and again.
+
+	*
+
+	Robustness: With query parameters, you don't have to care about correct escaping. Technically, this is the same as
+	the aspect of security mentioned above, but from a different point of view (whether the query works or fails).
+
+	[]
+
+	Of course, these reasons do not matter, if you write a query in Vestigo. But they start to matter, when you copy
+	the query from Vestigo into an application or the other way around.
+
+	There are more reasons for query parameters, but rather than iterating them here, we better demonstrate
+	how you can use query parameters in Vestigo: Focus the <Query parameters> view and click the <Add> button.
+
+[../../images/jdo/how-to-create-a-jdo-query/070.png]
+
+	A new line will appear and you can give the parameter a name and a value. The type <<<java.lang.String>>> is already
+	fine for our situation. In other cases, you might want to select another type, though.
+
+	Note, that Vestigo supports JavaScript query parameters, which is explained in detail in
+	{{{../how-to-declare-a-query-parameter-using-javascript.html}How to declare a query parameter using JavaScript}}.
+
+[../../images/jdo/how-to-create-a-jdo-query/075.png]
+
+	Back in the query editor, you can replace the <<<"am">>> by a colon and press [Ctrl]+[Space]: Code-assist will show you
+	all available query parameters. Of course, so far, there's only one.
+
+[../../images/jdo/how-to-create-a-jdo-query/080.png]
+
+	Confirm the parameter using [Enter] and your query is ready to be executed again. Note, that the error marker (which already
+	turned gray when you completed the query) completely disappears when you save the query (e.g. using [Ctrl]+S or via <File> => <Save>).
+
+[../../images/jdo/how-to-create-a-jdo-query/085.png]
+
+* More JDOQL
+
+	The JDO Query Language is very powerful and it is far beyond the scope of this document to explain the entire language. We
+	recommend you take a look at the following pages to learn more about JDOQL:
+
+	* {{{http://www.datanucleus.org/products/accessplatform_3_0/jdo/jdoql_singlestring.html}DataNucleus: JDO: JDOQL Single-String}}
+
+	* {{{http://www.datanucleus.org/products/accessplatform_3_0/jdo/jdoql_result.html}DataNucleus: JDO: JDOQL Result}}
+
+	* {{{http://www.datanucleus.org/products/accessplatform_3_0/jdo/jdoql_methods.html}DataNucleus: JDO: JDOQL Methods}}
+
+	* {{{http://www.datanucleus.org/products/accessplatform_3_0/jdo/jdoql_subquery.html}DataNucleus: JDO: JDOQL Subqueries}}
+
+	* {{{http://www.datanucleus.org/products/accessplatform_3_0/jdo/jdoql_interfaces.html}DataNucleus: JDO: JDOQL Querying interfaces}}
+
+	* {{{http://db.apache.org/jdo/specifications.html}JDO specifications}}
+
+	[]

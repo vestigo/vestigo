@@ -49,7 +49,12 @@
 		<menu name="Dokumentation">
 			<item name="Schnellstart" href="./documentation/jdo/quick-start.html" />
 			<item name="Datenquelle" href="./documentation/data-source.html" />
+			<item name="Anleitung JDO-Datenquelle" href="./documentation/jdo/how-to-set-up-a-jdo-data-source.html" />
+			<item name="Anleitung JPA-Datenquelle" href="./documentation/jpa/how-to-set-up-a-jpa-data-source.html" />
 			<item name="Abfrage" href="./documentation/query.html" />
+			<item name="Anleitung JDO-Abfrage" href="./documentation/jdo/how-to-create-a-jdo-query.html" />
+			<item name="Anleitung JPA-Abfrage" href="./documentation/jpa/how-to-create-a-jpa-query.html" />
+			<item name="Anleitung JavaScript-Abfrageparameter" href="./documentation/how-to-declare-a-query-parameter-using-javascript.html" />
 			<item name="Häufige Fragen" href="./documentation/faq.html" />
 			<item name="Was ist neu?" href="./documentation/whats-new.html" />
 		</menu>

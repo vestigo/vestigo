@@ -13,11 +13,29 @@ Documentation
 
 * Data source
 
-	What is a {{{./data-source.html}data source}} and how do I create one?
+	What is a {{{./data-source.html}data source}}?
+
+** Data source set up how-tos
+
+	* {{{./jdo/how-to-set-up-a-jdo-data-source.html}How to set up a JDO data source}}
+
+	* {{{./jpa/how-to-set-up-a-jpa-data-source.html}How to set up a JPA data source}}
+
+	[]
 
 * Query
 
-	How do I write and execute a {{{./query.html}query}}?
+	What is a {{{./query.html}query}}?
+
+** Query how-tos
+
+	* {{{./jdo/how-to-create-a-jdo-query.html}How to create a JDO query}}
+
+	* {{{./jpa/how-to-create-a-jpa-query.html}How to create a JPA query}}
+
+	* {{{./how-to-declare-a-query-parameter-using-javascript.html}How to declare a query parameter using JavaScript}}
+
+	[]
 
 * FAQ - Frequently Asked Questions
 

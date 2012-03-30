@@ -26,13 +26,13 @@ import org.eclipse.core.runtime.IExtension;
 import org.eclipse.core.runtime.IExtensionPoint;
 import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.Platform;
+import org.nightlabs.util.IOUtil;
 import org.nightlabs.vestigo.childvm.shared.api.ChildVM;
 import org.nightlabs.vestigo.childvm.webapp.client.ChildVMWebappClient;
 import org.nightlabs.vestigo.core.VestigoCorePlugin;
 import org.nightlabs.vestigo.core.childprocess.DumpStreamToFileThread;
 import org.nightlabs.vestigo.core.childvm.LogLevel;
 import org.nightlabs.vestigo.core.childvm.WebApp;
-import org.nightlabs.util.IOUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -154,7 +154,7 @@ public class ChildVMServer
 	protected synchronized File getServerDirectory() throws IOException
 	{
 		if (this.serverDirectory == null) {
-			File jettyTempDir = IOUtil.createUserTempDir("jetty.", null);
+			File jettyTempDir = IOUtil.createUserTempDir("vestigo.jetty.", null);
 			File serverDirectory = IOUtil.createUniqueIncrementalFolder(jettyTempDir, "instance-");
 			createServerPlatform(serverDirectory);
 			undeployUnnecessaryExamples(serverDirectory);
