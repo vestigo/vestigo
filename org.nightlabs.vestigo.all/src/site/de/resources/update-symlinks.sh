@@ -54,25 +54,57 @@ function createRelativeSymlink
 	/bin/ln -s "${REPLACEMENT}${SUB_DIR}${SUFFIX}" "${COPY_BASEDIR}${SUFFIX}"
 }
 
+
+## DELETE first
+
+DIR=${COPY_BASEDIR}
+DIR_RELATIVE="."
+
+ls -R | while read FILE; do 
+	FILE_LAST_CHAR=${FILE:((${#FILE} - 1)):1}
+#	echo "FILE_LAST_CHAR=${FILE_LAST_CHAR}"
+	if [ "${FILE_LAST_CHAR}" = ":" ]; then
+		FILE_CLEANED=${FILE%\:}
+		FILE_CLEANED=${FILE_CLEANED#.}
+		FILE_CLEANED=${FILE_CLEANED#/}
+		echo "FILE_CLEANED=$FILE_CLEANED"
+		DIR_RELATIVE=$FILE_CLEANED
+		DIR="${COPY_BASEDIR}${FILE_CLEANED}"
+	else
+#		if [ "$DIR_RELATIVE" != "." -a "$FILE" != "" ]; then
+		if [ "$FILE" != "" ]; then
+			if [ -f "$DIR/$FILE" -a "$FILE" != "`basename $0`" ] ; then
+				echo "Deleting file '$FILE' in directory '$DIR'."
+#				createRelativeSymlink "$DIR" "$FILE"
+				echo
+			fi
+		fi
+	fi
+done
+
+exit
+
+## Create symlinks (including parent directories)
+
 DIR=${ORIG_BASEDIR}
 DIR_RELATIVE="."
 
-ls -R | while read PATH; do 
-	PATH_LAST_CHAR=${PATH:((${#PATH} - 1)):1}
-#	echo "PATH_LAST_CHAR=${PATH_LAST_CHAR}"
-	if [ "${PATH_LAST_CHAR}" = ":" ]; then
-		PATH_CLEANED=${PATH%\:}
-		PATH_CLEANED=${PATH_CLEANED#.}
-		PATH_CLEANED=${PATH_CLEANED#/}
-		echo "PATH_CLEANED=$PATH_CLEANED"
-		DIR_RELATIVE=$PATH_CLEANED
-		DIR="${ORIG_BASEDIR}${PATH_CLEANED}"
+ls -R | while read FILE; do 
+	FILE_LAST_CHAR=${FILE:((${#FILE} - 1)):1}
+#	echo "FILE_LAST_CHAR=${FILE_LAST_CHAR}"
+	if [ "${FILE_LAST_CHAR}" = ":" ]; then
+		FILE_CLEANED=${FILE%\:}
+		FILE_CLEANED=${FILE_CLEANED#.}
+		FILE_CLEANED=${FILE_CLEANED#/}
+		echo "FILE_CLEANED=$FILE_CLEANED"
+		DIR_RELATIVE=$FILE_CLEANED
+		DIR="${ORIG_BASEDIR}${FILE_CLEANED}"
 	else
-#		if [ "$DIR_RELATIVE" != "." -a "$PATH" != "" ]; then
-		if [ "$PATH" != "" ]; then
-			if [ -f "$DIR/$PATH" ] ; then
-				echo "Processing file '$PATH' in directory '$DIR'."
-				createRelativeSymlink "$DIR" "$PATH"
+#		if [ "$DIR_RELATIVE" != "." -a "$FILE" != "" ]; then
+		if [ "$FILE" != "" ]; then
+			if [ -f "$DIR/$FILE" ] ; then
+				echo "Processing file '$FILE' in directory '$DIR'."
+				createRelativeSymlink "$DIR" "$FILE"
 				echo
 			fi
 		fi
