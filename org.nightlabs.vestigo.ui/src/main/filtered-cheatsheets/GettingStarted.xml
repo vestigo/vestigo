@@ -22,7 +22,7 @@
          The demo project is provided as zip file whose contents should be extracted to some directory
          on your hard drive you can easily relocate.
          <br/><br/> 
-         The location of the demo project is: <b>http://vestigo.nightlabs.com/${project.version}/download/demo/org.nightlabs.vestigo.demo-${project.version}-bin.zip</b>.
+         The location of the demo project is: <b>http://vestigo.nightlabs.com/${project.version}/download/demo/org.nightlabs.vestigo.demo-${project.version}-bin.zip</b>
          <br/><br/> 
          The next step will open the Eclipse internal browser to download the zip. 
          The following will close the browser. You can of course skip these steps and download the file using an other method.
