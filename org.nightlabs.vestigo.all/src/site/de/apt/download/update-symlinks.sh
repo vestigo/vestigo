@@ -6,7 +6,7 @@
 ## 2012-03-30. Marco :-)
 
 ## SUB_DIR references the original directory from which we symlink files into this directory.
-SUB_DIR="../../resources"
+SUB_DIR="../../../apt/download"
 
 COPY_BASEDIR=`dirname $0`
 COPY_BASEDIR=`pwd`
