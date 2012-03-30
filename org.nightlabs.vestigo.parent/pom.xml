@@ -454,7 +454,6 @@
 				<includes>
 					<include>plugin.xml</include>
 					<include>plugin*.properties</include>
-					<include>schema/**/*</include>
 					<include>LICENSE.txt</include>
 					<include>schema/**/*</include>
 					<include>icons/**/*</include>
