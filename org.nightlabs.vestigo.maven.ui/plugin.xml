@@ -7,5 +7,14 @@
             class="org.nightlabs.vestigo.maven.ui.DialogMavenErrorHandler">
       </handler>
    </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            category="org.nightlabs.vestigo.ui.preference.VestigoCategoryPreferencePage"
+            class="org.nightlabs.vestigo.maven.ui.VestigoMavenPreferencePage"
+            id="org.nightlabs.vestigo.maven.ui.VestigoMavenPreferencePage"
+            name="Maven">
+      </page>
+   </extension>
 
 </plugin>

@@ -10,9 +10,13 @@ import java.util.Set;
 
 import org.nightlabs.vestigo.maven.core.DependencyMavenURI;
 import org.nightlabs.vestigo.maven.core.MavenRunner;
+import org.nightlabs.vestigo.maven.core.VestigoMavenCorePlugin;
 
 public class DependencyResolveMavenRunner extends MavenRunner
 {
+	public static final String PREFERENCE_KEY_MAVEN_GOAL = "DependencyResolveMavenRunner.maven.goal";
+	public static final String PREFERENCE_DEFAULT_MAVEN_GOAL = "org.apache.maven.plugins:maven-dependency-plugin:2.4:resolve";
+
 	private Set<DependencyMavenURI> dependencyMavenURIs;
 
 	public DependencyResolveMavenRunner(File projectDirectory) {
@@ -71,6 +75,6 @@ public class DependencyResolveMavenRunner extends MavenRunner
 
 	@Override
 	protected String getMavenGoal() {
-		return "org.apache.maven.plugins:maven-dependency-plugin:2.4:resolve"; // TODO make configurable!
+		return VestigoMavenCorePlugin.getDefault().getPreferences().get(PREFERENCE_KEY_MAVEN_GOAL, PREFERENCE_DEFAULT_MAVEN_GOAL);
 	}
 }

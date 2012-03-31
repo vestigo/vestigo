@@ -19,6 +19,10 @@ public abstract class MavenRunner
 {
 	private static final Logger logger = LoggerFactory.getLogger(MavenRunner.class);
 
+	public static final String PREFERENCE_KEY_MAVEN_COMMAND = "MavenRunner.maven.command";
+	public static final String PREFERENCE_DEFAULT_MAVEN_COMMAND = "mvn";
+
+
 	private File projectDirectory;
 	private File stdOutFile;
 	private File stdErrFile;
@@ -145,7 +149,7 @@ public abstract class MavenRunner
 	}
 
 	protected String getMavenCommand() {
-		return "mvn"; // TODO make configurable!
+		return VestigoMavenCorePlugin.getDefault().getPreferences().get(PREFERENCE_KEY_MAVEN_COMMAND, PREFERENCE_DEFAULT_MAVEN_COMMAND);
 	}
 
 	protected abstract String getMavenGoal();

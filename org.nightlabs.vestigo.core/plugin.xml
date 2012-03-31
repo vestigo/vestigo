@@ -132,5 +132,11 @@
             priority="100">
       </connectionProfile>
    </extension>
+   <extension
+         point="org.nightlabs.vestigo.core.connectionPropertiesFilter">
+      <filter
+            class="org.nightlabs.vestigo.core.connectionpropertiesfilter.ResolveClasspathWorkspaceVariableConnectionPropertiesFilter">
+      </filter>
+   </extension>
    
 </plugin>

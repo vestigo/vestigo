@@ -63,9 +63,10 @@
     <extension
             point="org.eclipse.ui.preferencePages">
         <page
-            class="org.nightlabs.vestigo.xtext.jpql.ui.JPQLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
-            id="org.nightlabs.vestigo.xtext.jpql.JPQL"
-            name="JPQL">
+              category="org.nightlabs.vestigo.ui.preference.VestigoCategoryPreferencePage"
+              class="org.nightlabs.vestigo.xtext.jpql.ui.JPQLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+              id="org.nightlabs.vestigo.xtext.jpql.JPQL"
+              name="JPQL">
             <keywordReference id="org.nightlabs.vestigo.xtext.jpql.ui.keyword_JPQL"/>
         </page>
         <page

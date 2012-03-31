@@ -25,6 +25,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtension;
@@ -63,9 +64,10 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
-import org.nightlabs.vestigo.childvm.shared.classloader.ClassLoaderManager;
 import org.nightlabs.util.IOUtil;
 import org.nightlabs.util.Util;
+import org.nightlabs.vestigo.childvm.shared.classloader.ClassLoaderManager;
+import org.nightlabs.vestigo.core.connectionpropertiesfilter.ResolveClasspathWorkspaceVariableConnectionPropertiesFilter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -440,7 +442,10 @@ public class EditClasspathComposite extends Composite implements ICellModifier, 
 		URI fileAbsoluteURI = file.toURI();
 		String fileAbsoluteURIStr = fileAbsoluteURI.toString();
 
+		String eclipseWorkspace = ResourcesPlugin.getWorkspace().getRoot().getRawLocation().toFile().getAbsolutePath();
+
 		final String[][] var2filePaths = new String[][] {
+				{ ResolveClasspathWorkspaceVariableConnectionPropertiesFilter.PROPERTY_WORKSPACE, eclipseWorkspace },
 				{ ClassLoaderManager.PROPERTY_MAVEN_LOCAL_REPOSITORY, ClassLoaderManager.getMavenLocalRepository().getAbsolutePath() },
 				{ ClassLoaderManager.PROPERTY_USER_HOME, IOUtil.getUserHome().getAbsolutePath() },
 				{ ClassLoaderManager.PROPERTY_SYSTEM_TEMP_DIR, IOUtil.getTempDir().getAbsolutePath() },

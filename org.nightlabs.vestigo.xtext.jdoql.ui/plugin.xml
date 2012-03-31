@@ -63,9 +63,10 @@
     <extension
             point="org.eclipse.ui.preferencePages">
         <page
-            class="org.nightlabs.vestigo.xtext.jdoql.ui.JDOQLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
-            id="org.nightlabs.vestigo.xtext.jdoql.JDOQL"
-            name="JDOQL">
+              category="org.nightlabs.vestigo.ui.preference.VestigoCategoryPreferencePage"
+              class="org.nightlabs.vestigo.xtext.jdoql.ui.JDOQLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+              id="org.nightlabs.vestigo.xtext.jdoql.JDOQL"
+              name="JDOQL">
             <keywordReference id="org.nightlabs.vestigo.xtext.jdoql.ui.keyword_JDOQL"/>
         </page>
         <page

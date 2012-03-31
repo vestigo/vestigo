@@ -38,6 +38,11 @@
 		</dependency>
 
 		<dependency>
+			<groupId>org.eclipse.core</groupId>
+			<artifactId>org.eclipse.core.resources</artifactId>
+		</dependency>
+
+		<dependency>
 		<!--
 		Force correct version of com.ibm.icu, as transitive dependency through org.eclipse.datatools.connectivity.oda
 		points to non-existent version.
