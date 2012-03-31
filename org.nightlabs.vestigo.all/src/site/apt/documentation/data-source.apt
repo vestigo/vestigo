@@ -70,8 +70,14 @@ Data source
 ** Classpath variables
 
 	You can use variables inside the classpath-elements using the syntax "$\{VARIABLE}" as you are used from Ant or Maven.
-	Besides all system properties (e.g. <<<$\{user.home}>>> or <<<$\{java.io.tmpdir}>>>), the variable
-	<<<$\{maven.localRepository}>>> is supported (it is equivalent to <<<$\{user.home}/.m2/repository>>>).
+	Besides all system properties (e.g. <<<$\{user.home}>>> or <<<$\{java.io.tmpdir}>>>), the following variables
+	are supported:
+
+	* <<<$\{maven.localRepository}>>>: This is equivalent to <<<$\{user.home}/.m2/repository>>>.
+
+	* <<<$\{workspace}>>>: This references your current workspace.
+
+	[]
 
 ** Example:
 
