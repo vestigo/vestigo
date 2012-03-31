@@ -22,6 +22,7 @@ public abstract class MavenRunner
 	public static final String PREFERENCE_KEY_MAVEN_COMMAND = "MavenRunner.maven.command";
 	public static final String PREFERENCE_DEFAULT_MAVEN_COMMAND = "mvn";
 
+	public static final String PREFERENCE_KEY_MAVEN_REPOSITORIES = "MavenRunner.maven.repositories";
 
 	private File projectDirectory;
 	private File stdOutFile;

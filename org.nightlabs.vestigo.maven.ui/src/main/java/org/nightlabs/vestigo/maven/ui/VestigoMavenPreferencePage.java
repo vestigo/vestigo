@@ -44,9 +44,12 @@ public class VestigoMavenPreferencePage extends FieldEditorPreferencePage implem
 
 		addField(new StringFieldEditor(MavenRunner.PREFERENCE_KEY_MAVEN_COMMAND, "Maven command:", getFieldEditorParent()));
 
+		addField(new RepositoryTableFieldEditor(MavenRunner.PREFERENCE_KEY_MAVEN_REPOSITORIES, "Repositories:", getFieldEditorParent()));
+
 		addHorizontalSeparator(getFieldEditorParent());
 
 		addField(new StringFieldEditor(DependencyResolveMavenRunner.PREFERENCE_KEY_MAVEN_GOAL, "Dependency resolve goal:", getFieldEditorParent()));
+
 	}
 
 	private void addHorizontalSeparator(Composite parent)
