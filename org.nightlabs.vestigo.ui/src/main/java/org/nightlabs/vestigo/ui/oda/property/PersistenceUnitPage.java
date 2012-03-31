@@ -250,12 +250,13 @@ public abstract class PersistenceUnitPage extends AbstractDataSourceEditorPage
 			{
 				monitor.beginTask("Search persistence units", 100);
 				try {
-					new ConnectionPropertiesFilterManager().filterConnectionProperties(properties);
+					Properties filteredProperties = (Properties) properties.clone();
+					new ConnectionPropertiesFilterManager().filterConnectionProperties(filteredProperties);
 					monitor.worked(10);
 
 					PersistenceXmlScanner persistenceXmlScanner = new PersistenceXmlScanner();
 					try {
-						persistenceXmlScanner.open(properties);
+						persistenceXmlScanner.open(filteredProperties);
 						Collection<PersistenceXml> persistenceXmls = persistenceXmlScanner.searchPersistenceXmls(new ProgressMonitorWrapper(new SubProgressMonitor(monitor, 80)));
 
 						final Map<String, List<PersistenceUnitRef>> pun2puRefs = new HashMap<String, List<PersistenceUnitRef>>();

@@ -289,13 +289,14 @@ public abstract class PersistencePropertiesPage extends AbstractDataSourceEditor
 		public void onMarkDirty(PreferencePageDirtyEvent event) {
 			logger.info("preferencePageDirtyListener.onMarkDirty: event.source={}", event.getSource()); //$NON-NLS-1$
 
+			Properties properties = collectProperties();
 			if (event.getSource() instanceof ClasspathPage)
-				searchPersistenceUnitsAsyncInJob(collectProperties());
+				searchPersistenceUnitsAsyncInJob(properties);
 			else if (event.getSource() instanceof PersistenceUnitPage) {
 				if (persistenceUnitName2persistenceUnit == null)
-					searchPersistenceUnitsAsyncInJob(collectProperties());
+					searchPersistenceUnitsAsyncInJob(properties);
 				else
-					loadPersistenceUnitAsDefaults(collectProperties());
+					loadPersistenceUnitAsDefaults(properties);
 			}
 		}
 	};
@@ -310,12 +311,13 @@ public abstract class PersistencePropertiesPage extends AbstractDataSourceEditor
 			protected IStatus run(IProgressMonitor monitor) {
 				monitor.beginTask(Messages.getString("PersistencePropertiesPage.searchPersistenceUnitsJob.name"), 100); //$NON-NLS-1$
 				try {
-					new ConnectionPropertiesFilterManager().filterConnectionProperties(properties);
+					Properties filteredProperties = (Properties) properties.clone();
+					new ConnectionPropertiesFilterManager().filterConnectionProperties(filteredProperties);
 					monitor.worked(10);
 
 					PersistenceXmlScanner persistenceXmlScanner = new PersistenceXmlScanner();
 					try {
-						persistenceXmlScanner.open(properties);
+						persistenceXmlScanner.open(filteredProperties);
 						monitor.worked(5);
 
 						Collection<PersistenceXml> persistenceXmls = persistenceXmlScanner.searchPersistenceXmls(
