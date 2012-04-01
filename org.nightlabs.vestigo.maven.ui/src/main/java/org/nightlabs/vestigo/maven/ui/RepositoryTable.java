@@ -5,6 +5,9 @@ import java.util.List;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ColumnPixelData;
 import org.eclipse.jface.viewers.ColumnWeightData;
+import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.ISelectionChangedListener;
+import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.ITableLabelProvider;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.TableLayout;
@@ -19,7 +22,7 @@ import org.nightlabs.licence.manager.Message;
 import org.nightlabs.vestigo.maven.core.MavenRepository;
 import org.nightlabs.vestigo.ui.AbstractVestigoUIPlugin;
 
-public class RepositoryTable extends Composite
+public class RepositoryTable extends Composite implements ISelectionProvider
 {
 	private TableViewer tableViewer;
 
@@ -102,5 +105,25 @@ public class RepositoryTable extends Composite
 
 	public final void setInput(List<Message> messages) {
 		tableViewer.setInput(messages);
+	}
+
+	@Override
+	public void addSelectionChangedListener(ISelectionChangedListener listener) {
+		tableViewer.addSelectionChangedListener(listener);
+	}
+
+	@Override
+	public ISelection getSelection() {
+		return tableViewer.getSelection();
+	}
+
+	@Override
+	public void removeSelectionChangedListener(ISelectionChangedListener listener) {
+		tableViewer.removeSelectionChangedListener(listener);
+	}
+
+	@Override
+	public void setSelection(ISelection selection) {
+		tableViewer.setSelection(selection);
 	}
 }
