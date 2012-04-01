@@ -27,6 +27,7 @@ public class RepositoryTableFieldEditor extends FieldEditor
 		Composite buttonBar = new Composite(parent, SWT.NONE);
 		buttonBar.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 		GridLayout buttonBarGridLayout = new GridLayout();
+		buttonBarGridLayout.marginHeight = 0;
 		buttonBar.setLayout(buttonBarGridLayout);
 
 		new Label(buttonBar, SWT.NONE).setLayoutData(new GridData(GridData.FILL_HORIZONTAL)); // spacer to push the buttons to the right

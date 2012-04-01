@@ -2,7 +2,7 @@ package org.nightlabs.vestigo.maven.core;
 
 import java.util.Locale;
 
-public enum MavenRepositoryLayout
+public enum RepositoryLayout
 {
 	DEFAULT,
 	LEGACY;
@@ -11,8 +11,8 @@ public enum MavenRepositoryLayout
 		return name().toLowerCase(Locale.ENGLISH);
 	}
 
-	public static MavenRepositoryLayout fromPOMString(String pomString) {
-		return MavenRepositoryLayout.valueOf(pomString.toUpperCase(Locale.ENGLISH));
+	public static RepositoryLayout fromPOMString(String pomString) {
+		return RepositoryLayout.valueOf(pomString.toUpperCase(Locale.ENGLISH));
 	}
 
 	@Override

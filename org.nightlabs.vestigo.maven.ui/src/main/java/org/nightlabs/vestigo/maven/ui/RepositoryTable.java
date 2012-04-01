@@ -19,7 +19,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.nightlabs.licence.manager.Message;
-import org.nightlabs.vestigo.maven.core.MavenRepository;
+import org.nightlabs.vestigo.maven.core.Repository;
 import org.nightlabs.vestigo.ui.AbstractVestigoUIPlugin;
 
 public class RepositoryTable extends Composite implements ISelectionProvider
@@ -70,20 +70,20 @@ public class RepositoryTable extends Composite implements ISelectionProvider
 		@Override
 		public Image getColumnImage(Object element, int columnIndex)
 		{
-			MavenRepository repository = (MavenRepository) element;
+			Repository repository = (Repository) element;
 
 			if (columnIndex == 3)
-				return VestigoMavenUIPlugin.getDefault().getImage(RepositoryTable.class, "releasesEnabled-" + repository.isReleasesEnabled(), AbstractVestigoUIPlugin.IMAGE_SIZE_16x16);
+				return VestigoMavenUIPlugin.getDefault().getImage(RepositoryTable.class, "releasesEnabled-" + repository.getReleases().isEnabled(), AbstractVestigoUIPlugin.IMAGE_SIZE_16x16);
 
 			if (columnIndex == 4)
-				return VestigoMavenUIPlugin.getDefault().getImage(RepositoryTable.class, "snapshotsEnabled-" + repository.isSnapshotsEnabled(), AbstractVestigoUIPlugin.IMAGE_SIZE_16x16);
+				return VestigoMavenUIPlugin.getDefault().getImage(RepositoryTable.class, "snapshotsEnabled-" + repository.getSnapshots().isEnabled(), AbstractVestigoUIPlugin.IMAGE_SIZE_16x16);
 
 			return null;
 		}
 
 		@Override
 		public String getColumnText(Object element, int columnIndex) {
-			MavenRepository repository = (MavenRepository) element;
+			Repository repository = (Repository) element;
 			switch (columnIndex) {
 				case 0:
 					return repository.getId();
