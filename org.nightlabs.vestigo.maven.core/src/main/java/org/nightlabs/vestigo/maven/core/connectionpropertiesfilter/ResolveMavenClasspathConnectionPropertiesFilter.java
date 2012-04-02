@@ -240,7 +240,8 @@ public class ResolveMavenClasspathConnectionPropertiesFilter extends AbstractCon
 		variables.put("generate.version", mavenURI.getVersion());
 
 		String repositories = VestigoMavenCorePlugin.getDefault().getPreferences().get(MavenRunner.PREFERENCE_KEY_MAVEN_REPOSITORIES, null);
-		variables.put("generate.repositories", repositories);
+		// We force the replacement of the variable, even if there is no repo configured by never passing null.
+		variables.put("generate.repositories", repositories == null ? "" : repositories);
 
 		String dependencies = createDownloaderDependency(mavenURI); // currently only one dependency per file - maybe we refactor this later
 		variables.put("generate.dependencies", dependencies);
