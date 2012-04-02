@@ -6,6 +6,9 @@
    <feature url="features/org.nightlabs.vestigo.jdt.ui.feature_0.2.0.qualifier.jar" id="org.nightlabs.vestigo.jdt.ui.feature" version="0.2.0.qualifier">
       <category name="org.nightlabs.vestigo.category"/>
    </feature>
+   <feature url="features/org.nightlabs.vestigo.maven.ui.feature_0.2.0.qualifier.jar" id="org.nightlabs.vestigo.maven.ui.feature" version="0.2.0.qualifier">
+      <category name="org.nightlabs.vestigo.category"/>
+   </feature>
    <feature url="features/org.nightlabs.vestigo.cumulus4j.ui.feature_0.2.0.qualifier.jar" id="org.nightlabs.vestigo.cumulus4j.ui.feature" version="0.2.0.qualifier">
       <category name="org.nightlabs.vestigo.category"/>
    </feature>
