@@ -99,6 +99,8 @@ Data source
 
 	[[1]] <<<project:com.mycompany.myproject>>>
 
+	[[1]] <<<maven:org.eclipse.persistence:org.eclipse.persistence.jpa:2.3.2>>>
+
 	[]
 
 	The first two classpath-elements are understood as "classes"-directories. That means, if there is the class
@@ -119,6 +121,12 @@ Data source
 	The sixth classpath-element is only understood, if the Vestigo-JDT-integration is installed. It will pull the entire
 	classpath of the project <com.mycompany.myproject> into the data source's classpath. That includes transitive dependencies
 	and all classpath-containers that your Eclipse IDE supports.
+
+	The seventh classpath-element is only understood, if the Vestigo-Maven-integration is installed. It will run the <<<mvn>>>
+	command (using the <<<maven-dependency-plugin>>>) to resolve the artifact with groupId=org.eclipse.persistence
+	and artifactId=org.eclipse.persistence.jpa (and version 2.3.2). All transitive dependencies are resolved, too, i.e. both the
+	specified artifact as well as all dependencies are downloaded (to your local Maven repository, i.e. <<<${user.home}/.m2/repository/>>>)
+	and added to your classpath.
 
 * {Persistence unit}
 
