@@ -99,7 +99,18 @@
 			<groupId>org.nightlabs.vestigo</groupId>
 			<artifactId>org.nightlabs.vestigo.jdt.ui</artifactId>
 		</dependency>
-		<!-- END org.nightlabs.vestigo.cumulus4j.* -->
+		<!-- END org.nightlabs.vestigo.jdt.* -->
+
+		<!-- BEGIN org.nightlabs.vestigo.maven.* -->
+		<dependency>
+			<groupId>org.nightlabs.vestigo</groupId>
+			<artifactId>org.nightlabs.vestigo.maven.core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.nightlabs.vestigo</groupId>
+			<artifactId>org.nightlabs.vestigo.maven.ui</artifactId>
+		</dependency>
+		<!-- END org.nightlabs.vestigo.maven.* -->
 
 		<!-- BEGIN org.nightlabs.**.* -->
 		<dependency>
@@ -131,7 +142,7 @@
 			<artifactId>org.nightlabs.licence.signature</artifactId>
 		</dependency>
 		<!-- END org.nightlabs.**.* -->
-		
+
 		<!-- #### LIBS -->
 		<dependency>
 			<groupId>com.sun.jersey</groupId>
