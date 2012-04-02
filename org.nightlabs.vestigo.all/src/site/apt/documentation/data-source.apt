@@ -125,7 +125,7 @@ Data source
 	The seventh classpath-element is only understood, if the Vestigo-Maven-integration is installed. It will run the <<<mvn>>>
 	command (using the <<<maven-dependency-plugin>>>) to resolve the artifact with groupId <<<org.eclipse.persistence>>>
 	and artifactId <<<org.eclipse.persistence.jpa>>> (and version 2.3.2). All transitive dependencies are resolved, too, i.e. both the
-	specified artifact as well as all dependencies are downloaded (to your local Maven repository, i.e. <<<${user.home}/.m2/repository/>>>)
+	specified artifact as well as all dependencies are downloaded (to your local Maven repository, i.e. <<<$\{user.home}/.m2/repository/>>>)
 	and added to your classpath.
 
 * {Persistence unit}
