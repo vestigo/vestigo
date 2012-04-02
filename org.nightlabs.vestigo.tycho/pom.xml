@@ -49,7 +49,7 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-	
+
  	<properties>
  	<!-- 
 		<osgi.os>linux</osgi.os>
@@ -77,7 +77,7 @@
 	</properties>
 
 	<repositories>
-		
+
 		<repository>
 			<id>dev.nightlabs.org-private-libs-release-local</id>
 			<url>https://dev.nightlabs.org/maven-repository-private/libs-release-local</url>
@@ -98,7 +98,7 @@
 				<enabled>false</enabled>
 			</releases>
 		</repository>
-		
+
 		<repository>
 			<id>indigo</id>
 			<layout>p2</layout>
@@ -106,6 +106,23 @@
 		</repository>
 		
 	</repositories>
+	
+	<pluginRepositories>
+		<pluginRepository>
+			<!--
+			The patched org.eclipse.tycho:tycho-maven-plugin:0.15.99 is in our ext-releases-local.
+			Hence, we temporarily need this here. Marco :-)
+			-->
+			<id>dev.nightlabs.org-ext-releases-local</id>
+			<url>http://dev.nightlabs.org/maven-repository/ext-releases-local</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+		</pluginRepository>
+	</pluginRepositories>
 	
 	<build>
 		<plugins>
