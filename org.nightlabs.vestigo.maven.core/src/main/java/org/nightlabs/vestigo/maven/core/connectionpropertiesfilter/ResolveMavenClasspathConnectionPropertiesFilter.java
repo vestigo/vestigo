@@ -25,7 +25,9 @@ import org.nightlabs.util.IOUtil;
 import org.nightlabs.vestigo.childvm.shared.PropertiesUtil;
 import org.nightlabs.vestigo.core.connectionpropertiesfilter.AbstractConnectionPropertiesFilter;
 import org.nightlabs.vestigo.maven.core.DependencyMavenURI;
+import org.nightlabs.vestigo.maven.core.MavenRunner;
 import org.nightlabs.vestigo.maven.core.MavenURI;
+import org.nightlabs.vestigo.maven.core.VestigoMavenCorePlugin;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -236,6 +238,9 @@ public class ResolveMavenClasspathConnectionPropertiesFilter extends AbstractCon
 		variables.put("generate.groupId", mavenURI.getGroupId());
 		variables.put("generate.artifactId", "download." + mavenURI.getArtifactId());
 		variables.put("generate.version", mavenURI.getVersion());
+
+		String repositories = VestigoMavenCorePlugin.getDefault().getPreferences().get(MavenRunner.PREFERENCE_KEY_MAVEN_REPOSITORIES, null);
+		variables.put("generate.repositories", repositories);
 
 		String dependencies = createDownloaderDependency(mavenURI); // currently only one dependency per file - maybe we refactor this later
 		variables.put("generate.dependencies", dependencies);

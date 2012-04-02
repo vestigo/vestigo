@@ -1,71 +1,112 @@
 package org.nightlabs.vestigo.maven.ui;
 
-import java.util.List;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 
-import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ColumnPixelData;
 import org.eclipse.jface.viewers.ColumnWeightData;
+import org.eclipse.jface.viewers.DoubleClickEvent;
+import org.eclipse.jface.viewers.IDoubleClickListener;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.ISelectionProvider;
+import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.ITableLabelProvider;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.TableLayout;
 import org.eclipse.jface.viewers.TableViewer;
+import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
-import org.nightlabs.licence.manager.Message;
+import org.nightlabs.vestigo.maven.core.Repositories;
 import org.nightlabs.vestigo.maven.core.Repository;
 import org.nightlabs.vestigo.ui.AbstractVestigoUIPlugin;
 
 public class RepositoryTable extends Composite implements ISelectionProvider
 {
+	public static enum Property {
+		doubleClick
+	}
+
+	private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 	private TableViewer tableViewer;
 
 	public RepositoryTable(Composite parent) {
 		super(parent, SWT.NONE);
 		this.setLayout(new FillLayout());
-		tableViewer = new TableViewer(this, SWT.FULL_SELECTION | SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL);
+		tableViewer = new TableViewer(this, SWT.FULL_SELECTION | SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL | SWT.MULTI);
 		Table table = tableViewer.getTable();
 		table.setHeaderVisible(true);
 		table.setLinesVisible(true);
 
-		tableViewer.setContentProvider(new ArrayContentProvider());
+		tableViewer.setContentProvider(new RepositoryContentProvider());
 		tableViewer.setLabelProvider(new RepositoryLabelProvider());
 
 		TableLayout tableLayout = new TableLayout();
 		TableColumn tc = new TableColumn(table, SWT.LEFT);
 		tc.setText("Identifier");
+		tc.setToolTipText("Optional identifier.");
 		tableLayout.addColumnData(new ColumnWeightData(700));
 
 		tc = new TableColumn(table, SWT.LEFT);
 		tc.setText("Name");
+		tc.setToolTipText("Optional name.");
 		tableLayout.addColumnData(new ColumnWeightData(500));
 
 		tc = new TableColumn(table, SWT.LEFT);
 		tc.setText("URL");
+		tc.setToolTipText("Required URL.");
 		tableLayout.addColumnData(new ColumnWeightData(1000));
 
 		tc = new TableColumn(table, SWT.LEFT);
 		tc.setText("Releases");
+		tc.setToolTipText("Does the repository contain releases?");
 		tableLayout.addColumnData(new ColumnPixelData(24));
 
 		tc = new TableColumn(table, SWT.LEFT);
 		tc.setText("Snapshots");
+		tc.setToolTipText("Does the repository contain snapshots?");
 		tableLayout.addColumnData(new ColumnPixelData(24));
 
 		tc = new TableColumn(table, SWT.LEFT);
 		tc.setText("Layout");
+		tc.setToolTipText("Repository layout.");
 		tableLayout.addColumnData(new ColumnPixelData(80));
 
 		table.setLayout(tableLayout);
+
+		tableViewer.addDoubleClickListener(new IDoubleClickListener() {
+			@Override
+			public void doubleClick(DoubleClickEvent event) {
+				propertyChangeSupport.firePropertyChange(Property.doubleClick.name(), null, getSelection());
+			}
+		});
 	}
 
-	private class RepositoryLabelProvider extends LabelProvider implements ITableLabelProvider
+	private static class RepositoryContentProvider implements IStructuredContentProvider
+	{
+		@Override
+		public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
+			// nothing to do
+		}
+
+		@Override
+		public Object[] getElements(Object inputElement) {
+			Repositories repositories = (Repositories) inputElement;
+			return repositories.getRepository().toArray();
+		}
+
+		@Override
+		public void dispose() {
+			// nothing to do
+		}
+	}
+
+	private static class RepositoryLabelProvider extends LabelProvider implements ITableLabelProvider
 	{
 		@Override
 		public Image getColumnImage(Object element, int columnIndex)
@@ -103,8 +144,12 @@ public class RepositoryTable extends Composite implements ISelectionProvider
 		}
 	}
 
-	public final void setInput(List<Message> messages) {
-		tableViewer.setInput(messages);
+	public Repositories getInput() {
+		return (Repositories) tableViewer.getInput();
+	}
+
+	public final void setInput(Repositories repositories) {
+		tableViewer.setInput(repositories);
 	}
 
 	@Override
@@ -125,5 +170,17 @@ public class RepositoryTable extends Composite implements ISelectionProvider
 	@Override
 	public void setSelection(ISelection selection) {
 		tableViewer.setSelection(selection);
+	}
+
+	public void refresh(boolean updateLabels) {
+		tableViewer.refresh(updateLabels);
+	}
+
+	public void addPropertyChangeListener(Property property, PropertyChangeListener listener) {
+		propertyChangeSupport.addPropertyChangeListener(property.name(), listener);
+	}
+
+	public void removePropertyChangeListener(Property property, PropertyChangeListener listener) {
+		propertyChangeSupport.removePropertyChangeListener(property.name(), listener);
 	}
 }

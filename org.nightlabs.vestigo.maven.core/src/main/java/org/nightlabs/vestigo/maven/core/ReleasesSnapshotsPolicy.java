@@ -2,7 +2,7 @@ package org.nightlabs.vestigo.maven.core;
 
 public class ReleasesSnapshotsPolicy
 {
-	private boolean enabled;
+	private boolean enabled = true;
 
 	public boolean isEnabled() {
 		return enabled;

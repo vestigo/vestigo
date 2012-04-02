@@ -1,5 +1,6 @@
 package org.nightlabs.vestigo.maven.core;
 
+
 public class Repository
 {
 	private String id;

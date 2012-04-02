@@ -55,6 +55,7 @@
 				<artifactId>maven-bundle-plugin</artifactId>
 				<configuration>
 					<instructions>
+						<Bundle-Activator>org.nightlabs.vestigo.maven.core.VestigoMavenCorePlugin</Bundle-Activator>
 						<Bundle-ActivationPolicy>lazy</Bundle-ActivationPolicy>
 						<Require-Bundle>org.eclipse.core.runtime</Require-Bundle>
 						<Import-Package>!org.eclipse.core.runtime,*</Import-Package>

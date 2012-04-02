@@ -5,8 +5,9 @@
 	<artifactId>${generate.artifactId}</artifactId>
 	<version>${generate.version}</version>
 
+<!--
 	<repositories>
-		<!-- TODO need clean repository management! Must NOT have any hard-coded repo here! -->
+		<!- TODO need clean repository management! Must NOT have any hard-coded repo here! ->
 		<repository>
 			<id>dev.nightlabs.org-libs-releases-local</id>
 			<url>http://dev.nightlabs.org/maven-repository/libs-releases-local/</url>
@@ -28,6 +29,9 @@
 			</releases>
 		</repository>
 	</repositories>
+-->
+
+${generate.repositories}
 
 	<dependencies>
 ${generate.dependencies}

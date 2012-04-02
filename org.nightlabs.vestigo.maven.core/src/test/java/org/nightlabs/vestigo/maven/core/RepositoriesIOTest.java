@@ -16,21 +16,37 @@ public class RepositoriesIOTest
 		repository1.setUrl("http://repo1.somecompany.com");
 		repository1.getReleases().setEnabled(true);
 		repository1.getSnapshots().setEnabled(true);
+		repository1.setLayout(RepositoryLayout.LEGACY);
 
 		Repository repository2 = new Repository();
 		repositories.getRepository().add(repository2);
 		repository2.setId("id2");
 		repository2.setUrl("http://repo2.somecompany.com");
 		repository2.getReleases().setEnabled(true);
+		repository2.setLayout(RepositoryLayout.DEFAULT);
 
 		RepositoriesIO repositoriesIO = new RepositoriesIO();
 		String xml = repositoriesIO.writeToString(repositories);
+
 		System.out.println(xml);
 
 		Repositories deserialised = repositoriesIO.readFromString(xml);
 		Assert.assertNotNull(deserialised);
 		Assert.assertNotNull(deserialised.getRepository());
 		Assert.assertTrue(deserialised.getRepository().size() == 2);
+
+		assertEquals(repository1, deserialised.getRepository().get(0));
+		assertEquals(repository2, deserialised.getRepository().get(1));
+	}
+
+	private void assertEquals(Repository expected, Repository actual)
+	{
+		Assert.assertEquals(expected.getId(), actual.getId());
+		Assert.assertEquals(expected.getName(), actual.getName());
+		Assert.assertEquals(expected.getUrl(), actual.getUrl());
+		Assert.assertEquals(expected.getLayout(), actual.getLayout());
+		Assert.assertEquals(expected.getReleases().isEnabled(), actual.getReleases().isEnabled());
+		Assert.assertEquals(expected.getSnapshots().isEnabled(), actual.getSnapshots().isEnabled());
 	}
 
 	@Test

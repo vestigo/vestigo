@@ -24,6 +24,9 @@ public class RepositoriesIO
 
 	public String writeToString(Repositories repositories) throws JAXBException
 	{
+		if (repositories == null)
+			throw new IllegalArgumentException("repositories == null");
+
 		JAXBContext context = getContext();
 		Marshaller marshaller = context.createMarshaller();
 		marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
@@ -34,6 +37,9 @@ public class RepositoriesIO
 
 	public Repositories readFromString(String xml) throws JAXBException
 	{
+		if (xml == null)
+			throw new IllegalArgumentException("xml == null");
+
 		JAXBContext context = getContext();
 		Unmarshaller unmarshaller = context.createUnmarshaller();
 		return (Repositories) unmarshaller.unmarshal(new StringReader(xml));
