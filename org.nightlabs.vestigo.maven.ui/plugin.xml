@@ -16,5 +16,16 @@
             name="Maven">
       </page>
    </extension>
+   <extension
+         point="org.nightlabs.vestigo.ui.editClasspathActionDelegate">
+      <action
+            class="org.nightlabs.vestigo.maven.ui.oda.classpath.AddMavenDependencyActionDelegate"
+            group="add"
+            icon="icons/org.nightlabs.vestigo.maven.ui.oda.classpath/AddMavenDependencyActionDelegate.16x16.png"
+            id="org.nightlabs.vestigo.maven.ui.oda.classpath.AddMavenDependencyActionDelegate"
+            label="Add Maven dependency"
+            tooltip="Add a Maven artifact (aka dependency).">
+      </action>
+   </extension>
 
 </plugin>

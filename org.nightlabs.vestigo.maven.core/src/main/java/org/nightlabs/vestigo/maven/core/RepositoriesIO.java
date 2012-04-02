@@ -30,6 +30,7 @@ public class RepositoriesIO
 		JAXBContext context = getContext();
 		Marshaller marshaller = context.createMarshaller();
 		marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+		marshaller.setProperty(Marshaller.JAXB_FRAGMENT, true);
 		StringWriter writer = new StringWriter();
 		marshaller.marshal(repositories, writer);
 		return writer.toString();

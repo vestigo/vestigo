@@ -99,8 +99,9 @@ public class EditRepositoryDialog extends TitleAreaDialog {
 		parent.setLayout(new GridLayout(2, false));
 
 		{
-			Label label = createLabel(parent, "Identifier:", "The optional identifier of the repository.");
+			Label label = createLabel(parent, "Identifier:", "The required identifier of the repository.");
 			idText = createText(parent, repository.getId(), label.getToolTipText());
+			idText.addModifyListener(updateErrorMessageModifyListener);
 		}
 
 		{
@@ -111,12 +112,7 @@ public class EditRepositoryDialog extends TitleAreaDialog {
 		{
 			Label label = createLabel(parent, "URL:", "The required URL of the repository.");
 			urlText = createText(parent, repository.getUrl(), label.getToolTipText());
-			urlText.addModifyListener(new ModifyListener() {
-				@Override
-				public void modifyText(ModifyEvent e) {
-					getButton(OK).setEnabled(!urlText.getText().isEmpty());
-				}
-			});
+			urlText.addModifyListener(updateErrorMessageModifyListener);
 		}
 
 		Composite checkboxWrapper = new Composite(parent, SWT.NONE);
@@ -140,6 +136,54 @@ public class EditRepositoryDialog extends TitleAreaDialog {
 		layoutComboViewer.setInput(RepositoryLayout.values());
 		layoutComboViewer.setSelection(new StructuredSelection(RepositoryLayout.DEFAULT));
 		return dialogArea;
+	}
+
+	private ModifyListener updateErrorMessageModifyListener = new ModifyListener() {
+		@Override
+		public void modifyText(ModifyEvent e) {
+			updateErrorMessage();
+		}
+	};
+
+	private void updateErrorMessage()
+	{
+		String errorMessage = validateUserInput();
+		setErrorMessage(errorMessage);
+		getButton(OK).setEnabled(errorMessage == null);
+	}
+
+	private void updateOKButtonEnabled()
+	{
+		getButton(OK).setEnabled(validateUserInput() == null);
+	}
+
+	private String validateUserInput()
+	{
+		String id = idText.getText().trim();
+		if (id.isEmpty())
+			return "Identifier is empty! The repository's identifier is required and must be specified!";
+
+		final String illegalCharacters = "\\/:\"<>|?*";
+		String illegalCharactersInId = getContainedIllegalCharacters(id, illegalCharacters);
+		if (!illegalCharactersInId.isEmpty())
+			return String.format("Identifier contains the following illegal characters (the characters %1$s are not allowed): %2$s", illegalCharacters, illegalCharactersInId);
+
+		if (urlText.getText().trim().isEmpty())
+			return "URL is empty! The repository's URL is required and must be specified!";
+
+		return null; // everything fine!
+	}
+
+	private String getContainedIllegalCharacters(String input, String illegalCharacters)
+	{
+		StringBuilder result = new StringBuilder();
+
+		for (char c : illegalCharacters.toCharArray()) {
+			if (input.indexOf(c) >= 0)
+				result.append(c);
+		}
+
+		return result.toString();
 	}
 
 	private Label createLabel(Composite parent, String text, String toolTipText)
@@ -203,7 +247,7 @@ public class EditRepositoryDialog extends TitleAreaDialog {
 	@Override
 	protected Control createButtonBar(Composite parent) {
 		Control buttonBar = super.createButtonBar(parent);
-		getButton(OK).setEnabled(!urlText.getText().isEmpty());
+		updateOKButtonEnabled();
 		return buttonBar;
 	}
 }

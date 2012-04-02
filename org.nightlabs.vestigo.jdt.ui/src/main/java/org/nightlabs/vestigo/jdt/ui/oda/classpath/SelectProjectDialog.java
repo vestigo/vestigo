@@ -14,9 +14,10 @@ import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.LabelProvider;
-import org.eclipse.jface.viewers.ListViewer;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
+import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Button;
@@ -26,21 +27,17 @@ import org.eclipse.swt.widgets.Shell;
 import org.nightlabs.vestigo.childvm.shared.persistencexml.jaxb.Persistence.PersistenceUnit;
 import org.nightlabs.vestigo.jdt.ui.VestigoJDTUIPlugin;
 import org.nightlabs.vestigo.ui.AbstractVestigoUIPlugin;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
  */
 public class SelectProjectDialog extends TitleAreaDialog
 {
-	private static final Logger logger = LoggerFactory.getLogger(SelectProjectDialog.class);
-
 	private String title;
 	private String message;
 	private List<IProject> projects;
 	private List<IProject> selectedProjects = Collections.emptyList();
-	private ListViewer listViewer;
+	private TableViewer tableViewer;
 
 	public static List<String> getPersistenceUnitNames(List<PersistenceUnit> persistenceUnits)
 	{
@@ -106,10 +103,18 @@ public class SelectProjectDialog extends TitleAreaDialog
 	{
 		Composite dialogArea = (Composite) super.createDialogArea(dialogAreaParent);
 
-		listViewer = new ListViewer(dialogArea);
-		listViewer.getList().setLayoutData(new GridData(GridData.FILL_BOTH));
-		listViewer.setContentProvider(new ArrayContentProvider());
-		listViewer.setLabelProvider(new LabelProvider() {
+		tableViewer = new TableViewer(dialogArea);
+		tableViewer.getTable().setLayoutData(new GridData(GridData.FILL_BOTH));
+		tableViewer.setContentProvider(new ArrayContentProvider());
+		tableViewer.setLabelProvider(new LabelProvider() {
+			@Override
+			public Image getImage(Object element) {
+				if (element instanceof IProject)
+					return VestigoJDTUIPlugin.getDefault().getImage(SelectProjectDialog.class, "project", AbstractVestigoUIPlugin.IMAGE_SIZE_16x16);
+
+				return super.getImage(element);
+			}
+
 			@Override
 			public String getText(Object element) {
 				if (element instanceof IProject)
@@ -117,9 +122,9 @@ public class SelectProjectDialog extends TitleAreaDialog
 				return super.getText(element);
 			}
 		});
-		listViewer.setInput(projects);
+		tableViewer.setInput(projects);
 
-		listViewer.addSelectionChangedListener(new ISelectionChangedListener() {
+		tableViewer.addSelectionChangedListener(new ISelectionChangedListener() {
 			@SuppressWarnings("unchecked")
 			@Override
 			public void selectionChanged(SelectionChangedEvent event) {
