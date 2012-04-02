@@ -67,6 +67,12 @@ Data source
 	project: the top-level project (assembly).
 	However, if your data model is modular and there is no single top-level project, you may add as many projects as you want.
 
+** Maven artifacts
+
+	If you have {{{http://maven.apache.org/}Maven}} and the Vestigo-Maven-integration installed, you can add Maven artifacts
+	to your classpath. Vestigo uses the <<<mvn>>> command to resolve the specified artifacts (including all transitive
+	dependencies).
+
 ** Classpath variables
 
 	You can use variables inside the classpath-elements using the syntax "$\{VARIABLE}" as you are used from Ant or Maven.
