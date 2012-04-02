@@ -13,6 +13,7 @@
 	<modules>
 		<module>feature-vestigo</module>
 		<module>feature-jdt</module>
+		<module>feature-maven</module>
 		<module>feature-cumulus4j</module>
 		<module>p2-repository</module>
 		<module>p2-repository-deploy</module>
@@ -33,6 +34,11 @@
 			<dependency>
 				<groupId>org.nightlabs.vestigo</groupId>
 				<artifactId>org.nightlabs.vestigo.jdt.ui.feature</artifactId>
+				<version>${vestigo.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.nightlabs.vestigo</groupId>
+				<artifactId>org.nightlabs.vestigo.maven.ui.feature</artifactId>
 				<version>${vestigo.version}</version>
 			</dependency>
 			<dependency>
