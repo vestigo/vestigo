@@ -906,8 +906,13 @@ public abstract class QueryEditorManager
 		queryParameterManager.editorInputChanged();
 	}
 
-	public ResultSetTableModel getResultSetTableModel() {
-		return resultSetTableModel;
+	public ResultSetTableModel getResultSetTableModel()
+	{
+		ResultSetTableModel r = resultSetTableModel;
+		if (r != null && r.isClosed())
+			return null;
+
+		return r;
 	}
 
 	public String extractAndRemovePropertiesFromQueryText(String queryText)

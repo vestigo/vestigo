@@ -233,6 +233,10 @@ implements IConcurrentModel // not necessary - just convenient to see the javado
 
 	private volatile boolean closed;
 
+	public boolean isClosed() {
+		return closed;
+	}
+
 	public void close()
 	{
 		if (closed)
