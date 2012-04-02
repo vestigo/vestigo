@@ -156,7 +156,7 @@ temporarily... because of exampleeditor - we should switch back to the property,
 				<directory>.</directory>
 				<includes>
 					<include>about.*</include>
-					<include>cheatcheets/**/*</include>
+					<include>cheatsheets/**/*</include>
 					<include>icons/**/*</include>
 					<include>intro/**/*</include>
 					<include>LICENSE.txt</include>
