@@ -1,0 +1,48 @@
+	---
+	Herunterladen
+	---
+	Marco หงุ่ยตระกูล-Schulze
+	---
+	2012-02-16
+
+Herunterladen
+
+* Selbständiges Programm
+
+	Sie können Vestigo als autonomes Programm hier herunterladen:
+
+	* {{{http://vestigo.nightlabs.com/${project.version}/download/stand-alone/vestigo-linux-gtk-${project.version}.tar.gz}GNU/Linux/GTK 32}}
+
+	* {{{http://vestigo.nightlabs.com/${project.version}/download/stand-alone/vestigo-linux-gtk-x86_64-${project.version}.tar.gz}GNU/Linux/GTK 64}}
+
+	* {{{http://vestigo.nightlabs.com/${project.version}/download/stand-alone/vestigo-macosx-cocoa-${project.version}.tar.gz}Mac OS X/Cocoa 32}}
+
+	* {{{http://vestigo.nightlabs.com/${project.version}/download/stand-alone/vestigo-macosx-cocoa-x86_64-${project.version}.tar.gz}Mac OS X/Cocoa 64}}
+
+	* {{{http://vestigo.nightlabs.com/${project.version}/download/stand-alone/vestigo-win32-${project.version}.zip}Windows 32}}
+
+	* {{{http://vestigo.nightlabs.com/${project.version}/download/stand-alone/vestigo-win32-x86_64-${project.version}.zip}Windows 64}}
+
+	[]
+
+* {Plugin}
+
+	Wenn Sie {{{http://www.eclipse.org}Eclipse}} als Entwicklungsumgebung (IDE) verwenden, können Sie die folgende Update-Site
+	registrieren und Vestigo als Plugin in Ihre existierende IDE installieren:
+
+	<<{{http://vestigo.nightlabs.com/updates/releases/}}>>
+
+	For a {{{./how-to-install-the-plug-in.html}step-by-step installation-how-to please click here}}.
+
+	If you're adventurous, you might want to try out a development-snapshot. But be warned, the snapshots might not work
+	and we do not provide any support for them. The update-site for snapshots is:
+
+	<<{{http://vestigo.nightlabs.com/updates/snapshots/}}>>
+
+* Demo data
+
+	In order to make it easy for you to test Vestigo, we provide two little Derby demo databases
+	(one with a JDO and one with a JPA data model) that you can download for a quick try-out:
+	{{{http://vestigo.nightlabs.com/${project.version}/download/demo/org.nightlabs.vestigo.demo-${project.version}-bin.zip}org.nightlabs.vestigo.demo-${project.version}-bin.zip}}
+
+	{{{../documentation/jdo/quick-start.html}Click here}} for the corresponding {{{../documentation/jdo/quick-start.html}quick start guide}}!
