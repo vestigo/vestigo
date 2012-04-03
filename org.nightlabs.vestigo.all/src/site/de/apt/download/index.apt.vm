@@ -32,17 +32,17 @@ Herunterladen
 
 	<<{{http://vestigo.nightlabs.com/updates/releases/}}>>
 
-	For a {{{./how-to-install-the-plug-in.html}step-by-step installation-how-to please click here}}.
+	Für eine {{{./how-to-install-the-plug-in.html}detaillierte Installationsanleitung klicken Sie bitte hier}}.
 
-	If you're adventurous, you might want to try out a development-snapshot. But be warned, the snapshots might not work
-	and we do not provide any support for them. The update-site for snapshots is:
+	Falls Sie abenteuerlustig sind, können Sie auch einen Entwicklungsschnappschuß ausprobieren. Aber seien Sie gewarnt,
+	die Schnappschüsse könnten Fehler enthalten und wir bieten für sie keine Unterstützung an. Die Update-Site für Schnappschüsse ist:
 
 	<<{{http://vestigo.nightlabs.com/updates/snapshots/}}>>
 
-* Demo data
+* Demo-Daten
 
-	In order to make it easy for you to test Vestigo, we provide two little Derby demo databases
-	(one with a JDO and one with a JPA data model) that you can download for a quick try-out:
+	Um es Ihnen einfach zu machen, Vestigo auszuprobieren, bieten wir Ihnen hier zwei kleine Derby-Demo-Datenbanken
+	(eine mit einem JDO- und eine mit einem JPA-Datenmodell) zum Herunterladen an:
 	{{{http://vestigo.nightlabs.com/${project.version}/download/demo/org.nightlabs.vestigo.demo-${project.version}-bin.zip}org.nightlabs.vestigo.demo-${project.version}-bin.zip}}
 
-	{{{../documentation/jdo/quick-start.html}Click here}} for the corresponding {{{../documentation/jdo/quick-start.html}quick start guide}}!
+	{{{../documentation/jdo/quick-start.html}Klicken Sie hier}} für die zugehörige {{{../documentation/jdo/quick-start.html}Schnellstartanleitung}}!
