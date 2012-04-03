@@ -675,6 +675,7 @@
           description="Properties specified by the JDO standard."
           id="jdo"
           name="JDO standard"
+          orderHint="100"
           persistenceAPI="jdo">
        <property
              description="The name of the PMF implementation. Only required if you have more than one JDO implementation in the CLASSPATH."
@@ -763,6 +764,7 @@
           description="Properties specified by the JPA standard."
           id="jpa"
           name="JPA standard"
+          orderHint="100"
           persistenceAPI="jpa">
        <property
              description="Class name of the provider to use."
@@ -816,19 +818,15 @@
        point="org.nightlabs.vestigo.ui.persistenceProperty">
     <category
           description="Properties available in DataNucleus 3.0 - most of them work in older versions, too, but you should check the DataNucleus documentation to be sure."
+          descriptionURL="http://www.datanucleus.org/products/accessplatform_3_0/persistence_properties.html"
           id="datanucleus_3_0"
           name="DataNucleus 3.0"
           persistenceAPI="jdo,jpa">
        <category
+             descriptionURL="http://www.datanucleus.org/products/accessplatform_3_0/persistence_properties.html"
              id="datanucleus_3_0.datastore"
              name="Datastore Definition"
              persistenceAPI="jdo,jpa">
-          <property
-                id="datanucleus.ConnectionFactory">
-          </property>
-          <property
-                id="datanucleus.ConnectionFactory2">
-          </property>
           <property
                 id="datanucleus.ConnectionFactoryName">
           </property>
@@ -852,6 +850,7 @@
           </property> 
        </category>
        <category
+             descriptionURL="http://www.datanucleus.org/products/accessplatform_3_0/persistence_properties.html"
              id="datanucleus_3_0.general"
              name="General"
              persistenceAPI="jdo,jpa">
@@ -1004,75 +1003,822 @@
           </property>
        </category>
        <category
+             descriptionURL="http://www.datanucleus.org/products/accessplatform_3_0/persistence_properties.html"
              id="datanucleus_3_0.schemaControl"
              name="Schema Control"
              persistenceAPI="jdo,jpa">
           <property
-                id="org.nightlabs.vestigo.ui.property11">
+                id="datanucleus.autoCreateSchema">
+          </property>
+          <property
+                id="datanucleus.autoCreateTables">
+          </property>
+          <property
+                id="datanucleus.autoCreateColumns">
+          </property>
+          <property
+                id="datanucleus.autoCreateConstraints">
+          </property>
+          <property
+                id="datanucleus.autoCreateWarnOnError">
+          </property>
+          <property
+                id="datanucleus.validateSchema">
+          </property>
+          <property
+                id="datanucleus.validateTables">
+          </property>
+          <property
+                id="datanucleus.validateColumns">
+          </property>
+          <property
+                id="datanucleus.validateConstraints">
+          </property>
+          <property
+                id="datanucleus.readOnlyDatastore">
+          </property>
+          <property
+                id="datanucleus.readOnlyDatastoreAction">
+          </property>
+          <property
+                id="datanucleus.fixedDatastore">
+          </property>
+          <property
+                id="datanucleus.identifierFactory">
+          </property>
+          <property
+                id="datanucleus.identifier.case">
+          </property>
+          <property
+                id="datanucleus.identifier.wordSeparator">
+          </property>
+          <property
+                id="datanucleus.identifier.tablePrefix">
+          </property>
+          <property
+                id="datanucleus.identifier.tableSuffix">
+          </property>
+          <property
+                id="datanucleus.defaultInheritanceStrategy">
+          </property>
+          <property
+                id="datanucleus.store.allowReferencesWithNoImplementations">
           </property>
        </category>
        <category
+             descriptionURL="http://www.datanucleus.org/products/accessplatform_3_0/persistence_properties.html"
              id="datanucleus_3_0.transactionsAndLocking"
              name="Transactions and Locking"
              persistenceAPI="jdo,jpa">
           <property
-                id="org.nightlabs.vestigo.ui.property12">
+                id="datanucleus.transactionIsolation">
+          </property>
+          <property
+                id="datanucleus.SerializeRead">
+          </property>
+          <property
+                id="datanucleus.jtaLocator">
+          </property>
+          <property
+                id="datanucleus.jtaJndiLocation">
+          </property>
+          <property
+                id="datanucleus.datastoreTransactionDelayOperations">
+          </property>
+          <property
+                id="datanucleus.datastoreTransactionFlushLimit">
+          </property>
+          <property
+                id="datanucleus.nontx.atomic">
+          </property>
+          <property
+                id="datanucleus.connectionPoolingType">
+          </property>
+          <property
+                id="datanucleus.connectionPoolingType.nontx">
+          </property>
+          <property
+                id="datanucleus.connection.nontx.releaseAfterUse">
+          </property>
+          <property
+                id="datanucleus.connection.resourceType">
+          </property>
+          <property
+                id="datanucleus.connection.resourceType2">
           </property>
        </category>
        <category
+             descriptionURL="http://www.datanucleus.org/products/accessplatform_3_0/persistence_properties.html"
              id="datanucleus_3_0.caching"
              name="Caching"
              persistenceAPI="jdo,jpa">
           <property
-                id="org.nightlabs.vestigo.ui.property13">
+                id="datanucleus.cache.collections">
+          </property>
+          <property
+                id="datanucleus.cache.collections.lazy">
+          </property>
+          <property
+                id="datanucleus.cache.level1.type">
+          </property>
+          <property
+                id="datanucleus.cache.level2.type">
+          </property>
+          <property
+                id="datanucleus.cache.level2.mode">
+          </property>
+          <property
+                id="datanucleus.cache.level2.cacheName">
+          </property>
+          <property
+                id="datanucleus.cache.level2.maxSize">
+          </property>
+          <property
+                id="datanucleus.cache.level2.clearAtClose">
+          </property>
+          <property
+                id="datanucleus.cache.level2.batchSize">
+          </property>
+          <property
+                id="datanucleus.cache.level2.timeout">
+          </property>
+          <property
+                id="datanucleus.cache.queryCompilation.type">
+          </property>
+          <property
+                id="datanucleus.cache.queryCompilationDatastore.type">
+          </property>
+          <property
+                id="datanucleus.cache.queryResults.type">
+          </property>
+          <property
+                id="datanucleus.cache.queryResults.cacheName">
+          </property>
+          <property
+                id="datanucleus.cache.queryResults.maxSize">
           </property>
        </category>
        <category
+             descriptionURL="http://www.datanucleus.org/products/accessplatform_3_0/persistence_properties.html"
              id="datanucleus_3_0.validation"
              name="Validation"
              persistenceAPI="jdo,jpa">
           <property
-                id="org.nightlabs.vestigo.ui.property14">
+                id="datanucleus.validation.mode">
+          </property>
+          <property
+                id="datanucleus.validation.group.pre-persist">
+          </property>
+          <property
+                id="datanucleus.validation.group.pre-update">
+          </property>
+          <property
+                id="datanucleus.validation.group.pre-remove">
+          </property>
+          <property
+                id="datanucleus.validation.factory">
           </property>
        </category>
        <category
+             descriptionURL="http://www.datanucleus.org/products/accessplatform_3_0/persistence_properties.html"
              id="datanucleus_3_0.valueGeneration"
              name="Value Generation"
              persistenceAPI="jdo,jpa">
           <property
-                id="org.nightlabs.vestigo.ui.property15">
+                id="datanucleus.valuegeneration.transactionAttribute">
+          </property>
+          <property
+                id="datanucleus.valuegeneration.transactionIsolation">
+          </property>
+          <property
+                id="datanucleus.valuegeneration.sequence.allocationSize">
+          </property>
+          <property
+                id="datanucleus.valuegeneration.increment.allocationSize">
           </property>
        </category>
        <category
+             descriptionURL="http://www.datanucleus.org/products/accessplatform_3_0/persistence_properties.html"
              id="datanucleus_3_0.metaData"
              name="Meta Data"
              persistenceAPI="jdo,jpa">
           <property
-                id="org.nightlabs.vestigo.ui.property16">
+                id="datanucleus.metadata.jdoFileExtension">
+          </property>
+          <property
+                id="datanucleus.metadata.ormFileExtension">
+          </property>
+          <property
+                id="datanucleus.metadata.jdoqueryFileExtension">
+          </property>
+          <property
+                id="datanucleus.metadata.validate">
+          </property>
+          <property
+                id="datanucleus.metadata.allowXML">
+          </property>
+          <property
+                id="datanucleus.metadata.allowAnnotations">
+          </property>
+          <property
+                id="datanucleus.metadata.autoregistration">
+          </property>
+          <property
+                id="datanucleus.metadata.supportORM">
           </property>
        </category>
        <category
+             descriptionURL="http://www.datanucleus.org/products/accessplatform_3_0/persistence_properties.html"
              id="datanucleus_3_0.autoStart"
              name="Auto-Start"
              persistenceAPI="jdo,jpa">
           <property
-                id="org.nightlabs.vestigo.ui.property17">
+                id="datanucleus.autoStartMechanism">
+          </property>
+          <property
+                id="datanucleus.autoStartMechanismMode">
+          </property>
+          <property
+                id="datanucleus.autoStartMechanismXmlFile">
+          </property>
+          <property
+                id="datanucleus.autoStartClassNames">
+          </property>
+          <property
+                id="datanucleus.autoStartMetaDataFiles">
           </property>
        </category>
        <category
+             descriptionURL="http://www.datanucleus.org/products/accessplatform_3_0/persistence_properties.html"
              id="datanucleus_3_0.queryControl"
              name="Query control"
              persistenceAPI="jdo,jpa">
           <property
-                id="org.nightlabs.vestigo.ui.property18">
+                id="datanucleus.query.flushBeforeExecution">
+          </property>
+          <property
+                id="datanucleus.query.useFetchPlan">
+          </property>
+          <property
+                id="datanucleus.query.compileOptimised">
+          </property>
+          <property
+                id="datanucleus.query.jdoql.allowAll">
+          </property>
+          <property
+                id="datanucleus.query.sql.allowAll">
+          </property>
+          <property
+                id="datanucleus.query.checkUnusedParameters">
           </property>
        </category>
        <category
+             descriptionURL="http://www.datanucleus.org/products/accessplatform_3_0/persistence_properties.html"
              id="datanucleus_3_0.datastoreSpecific"
              name="Datastore Specific"
              persistenceAPI="jdo,jpa">
+          <category
+                id="datanucleus_3_0.rdbms"
+                name="RDBMS"
+                persistenceAPI="jdo,jpa">
+             <property
+                   id="datanucleus.rdbms.datastoreAdapterClassName">
+             </property>
+             <property
+                   id="datanucleus.rdbms.statementBatchLimit">
+             </property>
+             <property
+                   id="datanucleus.rdbms.checkExistTablesOrViews">
+             </property>
+             <property
+                   id="datanucleus.rdbms.initializeColumnInfo">
+             </property>
+             <property
+                   id="datanucleus.rdbms.classAdditionMaxRetries">
+             </property>
+             <property
+                   id="datanucleus.rdbms.constraintCreateMode">
+             </property>
+             <property
+                   id="datanucleus.rdbms.uniqueConstraints.mapInverse">
+             </property>
+             <property
+                   id="datanucleus.rdbms.discriminatorPerSubclassTable">
+             </property>
+             <property
+                   id="datanucleus.rdbms.useUpdateLock">
+             </property>
+             <property
+                   id="datanucleus.rdbms.stringDefaultLength">
+             </property>
+             <property
+                   id="datanucleus.rdbms.stringLengthExceededAction">
+             </property>
+             <property
+                   id="datanucleus.rdbms.persistEmptyStringAsNull">
+             </property>
+             <property
+                   id="datanucleus.rdbms.query.fetchDirection">
+             </property>
+             <property
+                   id="datanucleus.rdbms.query.resultSetType">
+             </property>
+             <property
+                   id="datanucleus.rdbms.query.resultSetConcurrency">
+             </property>
+             <property
+                   id="datanucleus.rdbms.oracleNlsSortOrder">
+             </property>
+             <property
+                   id="datanucleus.rdbms.schemaTable.tableName">
+             </property>
+             <property
+                   id="datanucleus.rdbms.connectionProviderName">
+             </property>
+             <property
+                   id="datanucleus.rdbms.connectionProviderFailOnError">
+             </property>
+             <property
+                   id="datanucleus.rdbms.dynamicSchemaUpdates">
+             </property>
+             <property
+                   id="datanucleus.rdbms.omitDatabaseMetaDataGetColumns">
+             </property>
+             <property
+                   id="datanucleus.rdbms.sqlTableNamingStrategy">
+             </property>
+             <property
+                   id="datanucleus.rdbms.tableColumnOrder">
+             </property>
+             <property
+                   id="datanucleus.rdbms.allowColumnReuse">
+             </property>
+             <property
+                   id="datanucleus.rdbms.sqlParamValuesInBrackets">
+             </property>
+             <property
+                   id="datanucleus.rdbms.fetchUnloadedAutomatically">
+             </property>
+             <property
+                   id="datanucleus.rdbms.adapter.informixUseSerialForIdentity">
+             </property>
+          </category>
+          <category
+                id="datanucleus_3_0.cloud"
+                name="Cloud"
+                persistenceAPI="jdo,jpa">
+             <property
+                   id="datanucleus.cloud.storage.bucket">
+             </property>
+          </category>
+          <category
+                id="datanucleus_3_0.hbase"
+                name="HBase"
+                persistenceAPI="jdo,jpa">
+             <property
+                   id="datanucleus.hbase.enforceUniquenessInApplication">
+             </property>
+          </category>
+          <category
+                id="datanucleus_3_0.db4o"
+                name="db4o"
+                persistenceAPI="jdo,jpa">
+             <property
+                   id="datanucleus.db4o.outputFile">
+             </property>
+             <property
+                   id="datanucleus.db4o.flushFileBuffers">
+             </property>
+             <property
+                   id="datanucleus.db4o.generateUUIDs">
+             </property>
+             <property
+                   id="datanucleus.db4o.lockDatabaseFile">
+             </property>
+             <property
+                   id="datanucleus.db4o.automaticShutdown">
+             </property>
+             <property
+                   id="datanucleus.db4o.internStrings">
+             </property>
+             <property
+                   id="datanucleus.db4o.exceptionsOnNotStorable">
+             </property>
+             <property
+                   id="datanucleus.db4o.optimizeNativeQueries">
+             </property>
+          </category>
+       </category>
+    </category>
+ </extension>
+ <extension
+       point="org.nightlabs.vestigo.ui.persistenceProperty">
+    <category
+          description="Properties available in OpenJPA 2.2.1 - most of them work in older versions, too, but you should check the OpenJPA documentation to be sure."
+          descriptionURL="http://openjpa.apache.org/builds/apache-openjpa-2.2.1-SNAPSHOT/docs/docbook/manual/ref_guide_conf_openjpa.html"
+          id="openjpa_2_2_1"
+          name="OpenJPA 2.2.1"
+          persistenceAPI="jpa">
+       <property
+             id="openjpa.AutoClear">
+       </property>
+       <property
+             id="openjpa.AutoDetach">
+       </property>
+       <property
+             id="openjpa.BrokerFactory">
+       </property>
+       <property
+             id="openjpa.BrokerImpl">
+       </property>
+       <property
+             id="openjpa.Callbacks">
+       </property>
+       <property
+             id="openjpa.ClassResolver">
+       </property>
+       <property
+             id="openjpa.Compatibility">
+       </property>
+       <property
+             id="openjpa.ConnectionDriverName">
+       </property>
+       <property
+             id="openjpa.Connection2DriverName">
+       </property>
+       <property
+             id="openjpa.ConnectionFactoryName">
+       </property>
+       <property
+             id="openjpa.ConnectionFactory2Name">
+       </property>
+       <property
+             id="openjpa.ConnectionFactoryMode">
+       </property>
+       <property
+             id="openjpa.ConnectionFactoryProperties">
+       </property>
+       <property
+             id="openjpa.ConnectionFactory2Properties">
+       </property>
+       <property
+             id="openjpa.ConnectionPassword">
+       </property>
+       <property
+             id="openjpa.Connection2Password">
+       </property>
+       <property
+             id="openjpa.ConnectionProperties">
+       </property>
+       <property
+             id="openjpa.Connection2Properties">
+       </property>
+       <property
+             id="openjpa.ConnectionURL">
+       </property>
+       <property
+             id="openjpa.Connection2URL">
+       </property>
+       <property
+             id="openjpa.ConnectionUserName">
+       </property>
+       <property
+             id="openjpa.Connection2UserName">
+       </property>
+       <property
+             id="openjpa.ConnectionRetainMode">
+       </property>
+       <property
+             id="openjpa.DataCache">
+       </property>
+       <property
+             id="openjpa.DataCacheManager">
+       </property>
+       <property
+             id="openjpa.DataCacheMode">
+       </property>
+       <property
+             id="openjpa.DataCacheTimeout">
+       </property>
+       <property
+             id="openjpa.DetachState">
+       </property>
+       <property
+             id="openjpa.DynamicDataStructs">
+       </property>
+       <property
+             id="openjpa.DynamicEnhancementAgent">
+       </property>
+       <property
+             id="openjpa.FetchBatchSize">
+       </property>
+       <property
+             id="openjpa.EncryptionProvider">
+       </property>
+       <property
+             id="openjpa.FetchGroups">
+       </property>
+       <property
+             id="openjpa.FlushBeforeQueries">
+       </property>
+       <property
+             id="openjpa.IgnoreChanges">
+       </property>
+       <property
+             id="openjpa.Id">
+       </property>
+       <property
+             id="openjpa.InitializeEagerly">
+       </property>
+       <property
+             id="openjpa.Instrumentation">
+       </property>
+       <property
+             id="openjpa.InverseManager">
+       </property>
+       <property
+             id="openjpa.LockManager">
+       </property>
+       <property
+             id="openjpa.LockTimeout">
+       </property>
+       <property
+             id="openjpa.Log">
+       </property>
+       <property
+             id="openjpa.ManagedRuntime">
+       </property>
+       <property
+             id="openjpa.Mapping">
+       </property>
+       <property
+             id="openjpa.MaxFetchDepth">
+       </property>
+       <property
+             id="openjpa.MetaDataFactory">
+       </property>
+       <property
+             id="openjpa.MetaDataRepository">
+       </property>
+       <property
+             id="openjpa.Multithreaded">
+       </property>
+       <property
+             id="openjpa.Optimistic">
+       </property>
+       <property
+             id="openjpa.OrphanedKeyAction">
+       </property>
+       <property
+             id="openjpa.NontransactionalRead">
+       </property>
+       <property
+             id="openjpa.NontransactionalWrite">
+       </property>
+       <property
+             id="openjpa.ProxyManager">
+       </property>
+       <property
+             id="openjpa.PostLoadOnMerge">
+       </property>
+       <property
+             id="openjpa.QueryCache">
+       </property>
+       <property
+             id="openjpa.QueryCompilationCache">
+       </property>
+       <property
+             id="openjpa.ReadLockLevel">
+       </property>
+       <property
+             id="openjpa.RemoteCommitProvider">
+       </property>
+       <property
+             id="openjpa.RestoreState">
+       </property>
+       <property
+             id="openjpa.RetainState">
+       </property>
+       <property
+             id="openjpa.RetryClassRegistration">
+       </property>
+       <property
+             id="openjpa.RuntimeUnenhancedClasses">
+       </property>
+       <property
+             id="openjpa.SavepointManager">
+       </property>
+       <property
+             id="openjpa.Sequence">
+       </property>
+       <property
+             id="openjpa.Specification">
+       </property>
+       <property
+             id="openjpa.TransactionMode">
+       </property>
+       <property
+             id="openjpa.WriteLockLevel">
+       </property>
+    </category>
+ </extension>
+ <extension
+       point="org.nightlabs.vestigo.ui.persistenceProperty">
+    <category
+          descriptionURL="http://docs.jboss.org/hibernate/orm/4.1/manual/en-US/html/ch03.html"
+          id="hibernate_4_1"
+          name="Hibernate 4.1"
+          persistenceAPI="jpa">
+       <category
+             descriptionURL="http://docs.jboss.org/hibernate/orm/4.1/manual/en-US/html/ch03.html#configuration-hibernatejdbc"
+             id="hibernate_4_1.jdbc"
+             name="JDBC Properties"
+             persistenceAPI="jpa">
           <property
-                id="org.nightlabs.vestigo.ui.property19">
+                id="hibernate.connection.driver_class">
+          </property>
+          <property
+                id="hibernate.connection.url">
+          </property>
+          <property
+                id="hibernate.connection.username">
+          </property>
+          <property
+                id="hibernate.connection.password">
+          </property>
+          <property
+                id="hibernate.connection.pool_size">
+          </property>
+       </category>
+       <category
+             descriptionURL="http://docs.jboss.org/hibernate/orm/4.1/manual/en-US/html/ch03.html#configuration-optional"
+             id="hibernate_4_1.configuration"
+             name="Configuration Properties"
+             persistenceAPI="jpa">
+          <property
+                id="hibernate.dialect">
+          </property>
+          <property
+                id="hibernate.format_sql">
+          </property>
+          <property
+                id="hibernate.default_schema">
+          </property>
+          <property
+                id="hibernate.default_catalog">
+          </property>
+          <property
+                id="hibernate.session_factory_name">
+          </property>
+          <property
+                id="hibernate.max_fetch_depth">
+          </property>
+          <property
+                id="hibernate.default_batch_fetch_size">
+          </property>
+          <property
+                id="hibernate.default_entity_mode">
+          </property>
+          <property
+                id="hibernate.order_updates">
+          </property>
+          <property
+                id="hibernate.generate_statistics">
+          </property>
+          <property
+                id="hibernate.use_identifier_rollback">
+          </property>
+          <property
+                id="hibernate.use_sql_comments">
+          </property>
+          <property
+                id="hibernate.id.new_generator_mappings">
+          </property>
+       </category>
+       <category
+             descriptionURL="http://docs.jboss.org/hibernate/orm/4.1/manual/en-US/html/ch03.html#configuration-optional"
+             id="hibernate_4_1.jdbcAndConnection"
+             name="JDBC and Connection Properties"
+             persistenceAPI="jpa">
+          <property
+                id="hibernate.jdbc.fetch_size">
+          </property>
+          <property
+                id="hibernate.jdbc.batch_size">
+          </property>
+          <property
+                id="hibernate.jdbc.batch_versioned_data">
+          </property>
+          <property
+                id="hibernate.jdbc.factory_class">
+          </property>
+          <property
+                id="hibernate.jdbc.use_scrollable_resultset">
+          </property>
+          <property
+                id="hibernate.jdbc.use_streams_for_binary">
+          </property>
+          <property
+                id="hibernate.jdbc.use_get_generated_keys">
+          </property>
+          <property
+                id="hibernate.connection.provider_class">
+          </property>
+          <property
+                id="hibernate.connection.isolation">
+          </property>
+          <property
+                id="hibernate.connection.autocommit">
+          </property>
+          <property
+                id="hibernate.connection.release_mode">
+          </property>
+          <property
+                id="hibernate.connection.&lt;propertyName&gt;">
+          </property>
+          <property
+                id="hibernate.jndi.&lt;propertyName&gt;">
+          </property>
+       </category>
+       <category
+             descriptionURL="http://docs.jboss.org/hibernate/orm/4.1/manual/en-US/html/ch03.html#configuration-optional"
+             id="hibernate_4_1.cache"
+             name="Cache Properties"
+             persistenceAPI="jpa">
+          <property
+                id="hibernate.cache.provider_class">
+          </property>
+          <property
+                id="hibernate.cache.use_minimal_puts">
+          </property>
+          <property
+                id="hibernate.cache.use_query_cache">
+          </property>
+          <property
+                id="hibernate.cache.use_second_level_cache">
+          </property>
+          <property
+                id="hibernate.cache.query_cache_factory">
+          </property>
+          <property
+                id="hibernate.cache.region_prefix">
+          </property>
+          <property
+                id="hibernate.cache.use_structured_entries">
+          </property>
+          <property
+                id="hibernate.cache.default_cache_concurrency_strategy">
+          </property>
+       </category>
+       <category
+             descriptionURL="http://docs.jboss.org/hibernate/orm/4.1/manual/en-US/html/ch03.html#configuration-optional"
+             id="hibernate_4_1.transaction"
+             name="Transaction Properties"
+             persistenceAPI="jpa">
+          <property
+                id="hibernate.transaction.factory_class">
+          </property>
+          <property
+                id="jta.UserTransaction">
+          </property>
+          <property
+                id="hibernate.transaction.manager_lookup_class">
+          </property>
+          <property
+                id="hibernate.transaction.flush_before_completion">
+          </property>
+          <property
+                id="hibernate.transaction.auto_close_session">
+          </property>
+       </category>
+       <category
+             descriptionURL="http://docs.jboss.org/hibernate/orm/4.1/manual/en-US/html/ch03.html#configuration-optional"
+             id="hibernate_4_1.miscellaneous"
+             name="Miscellaneous Properties"
+             persistenceAPI="jpa">
+          <property
+                id="hibernate.current_session_context_class">
+          </property>
+          <property
+                id="hibernate.query.factory_class">
+          </property>
+          <property
+                id="hibernate.query.substitutions">
+          </property>
+          <property
+                id="hibernate.hbm2ddl.auto">
+          </property>
+          <property
+                id="hibernate.hbm2ddl.import_files">
+          </property>
+          <property
+                id="hibernate.hbm2ddl.import_files_sql_extractor">
+          </property>
+          <property
+                id="hibernate.bytecode.use_reflection_optimizer">
+          </property>
+          <property
+                id="hibernate.bytecode.provider">
           </property>
        </category>
     </category>

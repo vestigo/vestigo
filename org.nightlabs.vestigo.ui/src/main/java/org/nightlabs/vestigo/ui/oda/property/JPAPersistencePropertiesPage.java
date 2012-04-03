@@ -37,7 +37,7 @@ public class JPAPersistencePropertiesPage extends PersistencePropertiesPage {
 			protected String[] askUserForNewProperty() {
 				PersistencePropertyTreeDialog dialog = new PersistencePropertyTreeDialog(getShell(), "jpa", "Add JPA persistence property", "Please select the new property to be added.");
 				if (Dialog.OK == dialog.open())
-					return new String[] { dialog.getSelectedPropertyName() };
+					return new String[] { dialog.getSelectedPropertyKey() };
 				else
 					return null;
 			}

@@ -104,6 +104,13 @@
                </documentation>
             </annotation>
          </attribute>
+         <attribute name="descriptionURL" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
       </complexType>
    </element>
 
@@ -127,6 +134,13 @@
             </annotation>
          </attribute>
          <attribute name="orderHint" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="descriptionURL" type="string">
             <annotation>
                <documentation>
                   

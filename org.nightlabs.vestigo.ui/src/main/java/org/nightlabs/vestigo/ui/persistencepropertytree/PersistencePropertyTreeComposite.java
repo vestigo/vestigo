@@ -1,5 +1,7 @@
 package org.nightlabs.vestigo.ui.persistencepropertytree;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -13,11 +15,18 @@ import org.eclipse.core.runtime.IExtensionPoint;
 import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.ListenerList;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
+import org.eclipse.jface.viewers.DoubleClickEvent;
+import org.eclipse.jface.viewers.IDoubleClickListener;
+import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.ISelectionChangedListener;
+import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.LabelProvider;
+import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.SWT;
@@ -25,11 +34,16 @@ import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 
-public class PersistencePropertyTreeComposite extends Composite
+public class PersistencePropertyTreeComposite extends Composite implements ISelectionProvider
 {
+	public static enum Property {
+		doubleClick
+	}
+
 	private Display display;
 	private String persistenceAPI;
 	private TreeViewer treeViewer;
+	private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
 	public PersistencePropertyTreeComposite(Composite parent, String persistenceAPI) {
 		super(parent, SWT.NONE);
@@ -49,6 +63,21 @@ public class PersistencePropertyTreeComposite extends Composite
 		treeViewer = new TreeViewer(parent, SWT.SINGLE | SWT.H_SCROLL | SWT.V_SCROLL | SWT.BORDER);
 		treeViewer.setLabelProvider(new PersistencePropertyTreeLabelProvider());
 		treeViewer.setContentProvider(new PersistencePropertyTreeContentProvider());
+		treeViewer.addSelectionChangedListener(new ISelectionChangedListener() {
+			@Override
+			public void selectionChanged(SelectionChangedEvent event) {
+				SelectionChangedEvent newEvent = new SelectionChangedEvent(PersistencePropertyTreeComposite.this, event.getSelection());
+				for (Object l : selectionChangedListeners.getListeners())
+					((ISelectionChangedListener)l).selectionChanged(newEvent);
+			}
+		});
+		treeViewer.addDoubleClickListener(new IDoubleClickListener() {
+			@Override
+			public void doubleClick(DoubleClickEvent event) {
+				propertyChangeSupport.firePropertyChange(Property.doubleClick.name(), null, event.getSelection());
+			}
+		});
+
 		treeViewer.setInput(">>> Loading data... <<<");
 		Job job = new Job("Loading persistence properties") {
 			@Override
@@ -250,5 +279,35 @@ public class PersistencePropertyTreeComposite extends Composite
 
 		@Override
 		public void dispose() { }
+	}
+
+	private ListenerList selectionChangedListeners = new ListenerList();
+
+	@Override
+	public void addSelectionChangedListener(ISelectionChangedListener listener) {
+		selectionChangedListeners.add(listener);
+	}
+
+	@Override
+	public void removeSelectionChangedListener(ISelectionChangedListener listener) {
+		selectionChangedListeners.remove(listener);
+	}
+
+	@Override
+	public ISelection getSelection() {
+		return treeViewer.getSelection();
+	}
+
+	@Override
+	public void setSelection(ISelection selection) {
+		treeViewer.setSelection(selection);
+	}
+
+	public void addPropertyChangeListener(Property property, PropertyChangeListener listener) {
+		propertyChangeSupport.addPropertyChangeListener(property.name(), listener);
+	}
+
+	public void removePropertyChangeListener(Property property, PropertyChangeListener listener) {
+		propertyChangeSupport.removePropertyChangeListener(property.name(), listener);
 	}
 }

@@ -1,6 +1,12 @@
 package org.nightlabs.vestigo.ui.persistencepropertytree;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+
 import org.eclipse.jface.dialogs.TitleAreaDialog;
+import org.eclipse.jface.viewers.ISelectionChangedListener;
+import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.GridData;
@@ -49,8 +55,8 @@ public class PersistencePropertyTreeDialog extends TitleAreaDialog
 	@Override
 	protected Point getInitialSize() {
 		Point initialSize = super.getInitialSize();
-		initialSize.x = Math.max(initialSize.x, 200);
-		initialSize.y = Math.max(initialSize.y, 200);
+		initialSize.x = Math.max(initialSize.x, 400);
+		initialSize.y = Math.max(initialSize.y, 400);
 		return initialSize;
 	}
 
@@ -70,16 +76,35 @@ public class PersistencePropertyTreeDialog extends TitleAreaDialog
 		persistencePropertyTreeComposite = new PersistencePropertyTreeComposite(dialogArea, persistenceAPI);
 		persistencePropertyTreeComposite.setLayoutData(new GridData(GridData.FILL_BOTH));
 
-//		listViewer.addSelectionChangedListener(new ISelectionChangedListener() {
-//			@Override
-//			public void selectionChanged(SelectionChangedEvent event) {
-//				IStructuredSelection sel = (IStructuredSelection) event.getSelection();
-//				selectedPersistenceUnitName = (String) sel.getFirstElement();
-//				getButton(OK).setEnabled(selectedPersistenceUnitName != null && !selectedPersistenceUnitName.isEmpty());
-//			}
-//		});
+		persistencePropertyTreeComposite.addSelectionChangedListener(new ISelectionChangedListener() {
+			@Override
+			public void selectionChanged(SelectionChangedEvent event) {
+				IStructuredSelection sel = (IStructuredSelection) event.getSelection();
+				onSelectionChanged(sel);
+			}
+		});
+
+		persistencePropertyTreeComposite.addPropertyChangeListener(PersistencePropertyTreeComposite.Property.doubleClick, new PropertyChangeListener() {
+			@Override
+			public void propertyChange(PropertyChangeEvent event) {
+				IStructuredSelection sel = (IStructuredSelection) event.getNewValue();
+				onSelectionChanged(sel);
+				if (getButton(OK).isEnabled())
+					okPressed();
+			}
+		});
 
 		return dialogArea;
+	}
+
+	private void onSelectionChanged(IStructuredSelection selection)
+	{
+		selectedPropertyKey = null;
+		if (selection.getFirstElement() instanceof PersistenceProperty) {
+			PersistenceProperty property = (PersistenceProperty) selection.getFirstElement();
+			selectedPropertyKey = property.getId();
+		}
+		getButton(OK).setEnabled(selectedPropertyKey != null && !selectedPropertyKey.isEmpty());
 	}
 
 	@Override
@@ -92,8 +117,10 @@ public class PersistencePropertyTreeDialog extends TitleAreaDialog
 		return button;
 	}
 
-	public String getSelectedPropertyName()
+	private String selectedPropertyKey;
+
+	public String getSelectedPropertyKey()
 	{
-		return null; // TODO implement!
+		return selectedPropertyKey;
 	}
 }
