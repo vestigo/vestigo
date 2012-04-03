@@ -83,7 +83,7 @@ import org.slf4j.LoggerFactory;
  * @author Alexander Bieber <!-- alex [AT] nightlabs [DOT] de -->
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
  */
-public class EditPropertiesComposite extends Composite implements ICellModifier
+public abstract class EditPropertiesComposite extends Composite implements ICellModifier
 {
 	private static final Logger logger = LoggerFactory.getLogger(EditPropertiesComposite.class);
 
@@ -92,6 +92,7 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 
 	private Button loadFromFileButton;
 	private Button saveToFileButton;
+	private Button addButton;
 	private Button removeButton;
 
 	private List<LoadPropertiesHandler> loadPropertiesHandlers = new ArrayList<LoadPropertiesHandler>();
@@ -387,7 +388,7 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 		super(parent, style);
 		setLayoutData(new GridData(GridData.FILL_BOTH));
 		GridLayout layout = new GridLayout();
-		layout.numColumns = 3;
+		layout.numColumns = 4;
 		setLayout(layout);
 
 		loadFromFileButton = new Button(this, SWT.PUSH);
@@ -405,6 +406,51 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 			@Override
 			public void widgetSelected(SelectionEvent event) {
 				saveToFile();
+			}
+		});
+
+		addButton = new Button(this, SWT.PUSH);
+		addButton.setToolTipText("Add a property.");
+		addButton.setImage(VestigoUIPlugin.getDefault().getImage(EditPropertiesComposite.class, "addButton", AbstractVestigoUIPlugin.IMAGE_SIZE_16x16));
+		addButton.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent event) {
+				String[] newProperty = askUserForNewProperty();
+				if (newProperty != null) {
+					String key = null;
+					String value = null;
+
+					if (newProperty.length >= 1)
+						key = newProperty[0];
+
+					if (newProperty.length >= 2)
+						value = newProperty[1];
+
+					if (newProperty.length > 2)
+						throw new IllegalStateException("askUserForNewProperty() returned illegal result! newProperty.length=" + newProperty.length + " but it should have been 0, 1 or 2!");
+
+					if (key != null) {
+						getContentProvider().setProperty(key, value == null ? "" : value);
+
+						tableViewer.refresh(true);
+
+						// We try to select the new entry
+						int selectionIndex = -1;
+						for (int i = 0; i < table.getItemCount(); ++i) {
+							TableItem tableItem = table.getItem(i);
+							if (tableItem.getData() instanceof Map.Entry) {
+								Map.Entry<?, ?> me = (Entry<?, ?>) tableItem.getData();
+								if (key.equals(me.getKey())) {
+									selectionIndex = i;
+									break;
+								}
+							}
+						}
+
+						if (selectionIndex >= 0)
+							table.select(selectionIndex);
+					}
+				}
 			}
 		});
 
@@ -439,6 +485,12 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 		addLoadPropertiesHandler(loadPropertiesHandler);
 		addSavePropertiesHandler(savePropertiesHandler);
 	}
+
+	/**
+	 * @return <code>null</code> or a String array with length 2 containing key and value
+	 * or with length 1 containing only the key.
+	 */
+	protected abstract String[] askUserForNewProperty();
 
 	private void createTableViewer()
 	{
@@ -568,7 +620,6 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 					out.close();
 				}
 			} catch (IOException e) {
-				// TODO: ErrorHandling
 				throw new RuntimeException(e);
 			}
 		}
@@ -878,7 +929,7 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 				if (oldKey.equals(newVal))
 					return;
 
-				getContentProvider().renameProperty(oldKey, newVal);
+				getContentProvider().renameProperty(oldKey, newVal.trim());
 				newSelectedName = newVal;
 			}
 			else if (COL_NUL.equals(property)) {
@@ -898,7 +949,7 @@ public class EditPropertiesComposite extends Composite implements ICellModifier
 			}
 		}
 		else {
-			getContentProvider().setProperty((String)value, "");
+			getContentProvider().setProperty(((String)value).trim(), "");
 		}
 
 		// We need a final variable to pass the new selection into the Runnable.

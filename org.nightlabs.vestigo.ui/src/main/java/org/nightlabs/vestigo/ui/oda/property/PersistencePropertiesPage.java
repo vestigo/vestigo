@@ -21,7 +21,6 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.jface.dialogs.Dialog;
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.widgets.Composite;
@@ -99,7 +98,7 @@ public abstract class PersistencePropertiesPage extends AbstractDataSourceEditor
 	{
 		logger.info("createAndInitCustomControl: entered."); //$NON-NLS-1$
 
-		editPropertiesComposite = new EditPropertiesComposite(parent, SWT.NONE);
+		editPropertiesComposite = createEditPropertiesComposite(parent);
 		editPropertiesComposite.setLayoutData(null);
 
 		editPropertiesComposite.addLoadPropertiesHandler(0, loadPropertiesHandler);
@@ -113,6 +112,8 @@ public abstract class PersistencePropertiesPage extends AbstractDataSourceEditor
 			}
 		});
 	}
+
+	protected abstract EditPropertiesComposite createEditPropertiesComposite(Composite parent);
 
 	private LoadPropertiesHandler loadPropertiesHandler = new LoadPropertiesHandler() {
 		@Override
