@@ -1,7 +1,7 @@
 #!/bin/bash
 
-## This script DELETES ALL FILES in the current directory and all subdirectories and replaces
-## them by symlinks.
+## This script DELETES ALL SYMLINKS in the current directory and all subdirectories and replaces
+## them by (correct) symlinks. Real files (that are not symlinks) are NOT deleted!
 ## Note: This script completely ignores hidden files and directories (which protects .svn!!!).
 ## 2012-03-30. Marco :-)
 
@@ -44,20 +44,28 @@ function createRelativeSymlink
 	echo mkdir -p "${COPY_BASEDIR}${SUFFIX_DIR}"
 	/bin/mkdir -p "${COPY_BASEDIR}${SUFFIX_DIR}"
 
-	echo rm -v "${COPY_BASEDIR}${SUFFIX}"
-	/bin/rm -v "${COPY_BASEDIR}${SUFFIX}"
 
-	REPLACEMENT=""
-	REST=${SUFFIX_DIR}
-	echo "REST=$REST"
-	while [ "$REST" != "" ]; do
-		REST="${REST%\/*}"
-		REPLACEMENT="${REPLACEMENT}../"
-	done
-	echo "REPLACEMENT=$REPLACEMENT"
+	if [ -L "${COPY_BASEDIR}${SUFFIX}" ]; then
+		echo rm -v "${COPY_BASEDIR}${SUFFIX}"
+		/bin/rm -v "${COPY_BASEDIR}${SUFFIX}"
+	fi
 
-	echo ln -s "${REPLACEMENT}${SUB_DIR}${SUFFIX}" "${COPY_BASEDIR}${SUFFIX}"
-	/bin/ln -s "${REPLACEMENT}${SUB_DIR}${SUFFIX}" "${COPY_BASEDIR}${SUFFIX}"
+
+	if [ ! -f "${COPY_BASEDIR}${SUFFIX}" ]; then
+
+		REPLACEMENT=""
+		REST=${SUFFIX_DIR}
+		echo "REST=$REST"
+		while [ "$REST" != "" ]; do
+			REST="${REST%\/*}"
+			REPLACEMENT="${REPLACEMENT}../"
+		done
+		echo "REPLACEMENT=$REPLACEMENT"
+
+		echo ln -s "${REPLACEMENT}${SUB_DIR}${SUFFIX}" "${COPY_BASEDIR}${SUFFIX}"
+		/bin/ln -s "${REPLACEMENT}${SUB_DIR}${SUFFIX}" "${COPY_BASEDIR}${SUFFIX}"
+
+	fi
 }
 
 
@@ -83,7 +91,7 @@ ls -R | while read FILE; do
 #		if [ "$DIR_RELATIVE" != "." -a "$FILE" != "" ]; then
 #		echo "DIR=$DIR FILE=$FILE"
 		if [ "$FILE" != "" ]; then
-			if [ ! -d "$DIR/$FILE" -a "$FILE" != "`basename $0`" ] ; then
+			if [ -L "$DIR/$FILE" -a "$FILE" != "`basename $0`" ] ; then
 				echo "Deleting file '$FILE' in directory '$DIR'."
 				/bin/rm "$DIR/$FILE"
 			fi
