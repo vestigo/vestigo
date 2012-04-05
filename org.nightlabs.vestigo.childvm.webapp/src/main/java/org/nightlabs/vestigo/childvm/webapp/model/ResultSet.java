@@ -1,6 +1,7 @@
 package org.nightlabs.vestigo.childvm.webapp.model;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -17,6 +18,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
+import org.nightlabs.util.reflect.ReflectUtil;
 import org.nightlabs.vestigo.childvm.shared.MapEntry;
 import org.nightlabs.vestigo.childvm.shared.ResultSetID;
 import org.nightlabs.vestigo.childvm.shared.dto.ResultCellDTO;
@@ -24,7 +26,6 @@ import org.nightlabs.vestigo.childvm.shared.dto.ResultCellNullDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.ResultCellObjectRefDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.ResultCellSimpleDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.ResultCellTransientObjectRefDTO;
-import org.nightlabs.util.reflect.ReflectUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -36,6 +37,7 @@ public abstract class ResultSet
 	private static final Logger logger = LoggerFactory.getLogger(ResultSet.class);
 
 	private volatile Connection connection;
+	private ClassLoader persistenceEngineClassLoader;
 	private volatile ResultSetID resultSetID;
 	private Collection<?> rows;
 	private Iterator<?> iterator;
@@ -59,6 +61,11 @@ public abstract class ResultSet
 
 		this.connection = connection;
 		this.rows = rows;
+		try {
+			this.persistenceEngineClassLoader = connection.getConnectionProfile().getClassLoaderManager().getPersistenceEngineClassLoader(null);
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	public Connection getConnection() {
@@ -92,22 +99,30 @@ public abstract class ResultSet
 	public synchronized boolean next()
 	{
 		assertOpen();
-		row = null;
 
-		if (rowIndex < 0) // -1 means we already finished iterating it.
-			return false;
+		ClassLoader backupContextClassLoader = Thread.currentThread().getContextClassLoader();
+		try {
+			Thread.currentThread().setContextClassLoader(persistenceEngineClassLoader);
 
-		if (iterator == null)
-			iterator = rows.iterator();
+			row = null;
 
-		if (!iterator.hasNext()) {
-			rowIndex = -1;
-			return false;
+			if (rowIndex < 0) // -1 means we already finished iterating it.
+				return false;
+
+			if (iterator == null)
+				iterator = rows.iterator();
+
+			if (!iterator.hasNext()) {
+				rowIndex = -1;
+				return false;
+			}
+
+			row = iterator.next();
+			++rowIndex;
+			return true;
+		} finally {
+			Thread.currentThread().setContextClassLoader(backupContextClassLoader);
 		}
-
-		row = iterator.next();
-		++rowIndex;
-		return true;
 	}
 
 	public int getRowIndex() {
@@ -218,32 +233,36 @@ public abstract class ResultSet
 	{
 		assertOpen();
 
-		Field field = null;
+		ClassLoader backupContextClassLoader = Thread.currentThread().getContextClassLoader();
+		try {
+			Thread.currentThread().setContextClassLoader(persistenceEngineClassLoader);
 
-		if (object instanceof FieldValue) {
-			FieldValue fv = (FieldValue) object;
-			field = fv.getField();
-			object = fv.getValue();
+			Field field = null;
+
+			if (object instanceof FieldValue) {
+				FieldValue fv = (FieldValue) object;
+				field = fv.getField();
+				object = fv.getValue();
+			}
+
+			if (object == null)
+				return new ResultCellNullDTO(field);
+
+			ResultCellDTO resultCellDTO = nullOrNewResultCellSimpleDTO(owner, field, object);
+			if (resultCellDTO != null)
+				return resultCellDTO;
+
+			resultCellDTO = nullOrNewImplementationSpecificResultCellDTO(owner, field, object);
+			if (resultCellDTO != null)
+				return resultCellDTO;
+
+			TransientObjectContainer transientObjectContainer = createTransientObjectContainerForTransientObject(object);
+			return new ResultCellTransientObjectRefDTO(
+					field, object.getClass(), transientObjectContainer.getObjectID(), getObjectToString(object)
+			);
+		} finally {
+			Thread.currentThread().setContextClassLoader(backupContextClassLoader);
 		}
-
-		if (object == null)
-			return new ResultCellNullDTO(field);
-
-		ResultCellDTO resultCellDTO = nullOrNewResultCellSimpleDTO(owner, field, object);
-		if (resultCellDTO != null)
-			return resultCellDTO;
-
-		resultCellDTO = nullOrNewImplementationSpecificResultCellDTO(owner, field, object);
-		if (resultCellDTO != null)
-			return resultCellDTO;
-
-		// TODO DataNucleus supports custom types - we should somehow support custom types (need some extension possibility), too - later.
-		// hmmm... maybe this is already sufficient, because all we have is java types anyway and we break such unknown objects down into
-		// this transientObjectManagement stuff.
-		TransientObjectContainer transientObjectContainer = createTransientObjectContainerForTransientObject(object);
-		return new ResultCellTransientObjectRefDTO(
-				field, object.getClass(), transientObjectContainer.getObjectID(), getObjectToString(object)
-		);
 	}
 
 	protected String getObjectToString(Object object)
@@ -325,13 +344,6 @@ public abstract class ResultSet
 			return container == null ? null : container.getObject();
 		}
 		else {
-			ClassLoader persistenceEngineClassLoader;
-			try {
-				persistenceEngineClassLoader = connection.getConnectionProfile().getClassLoaderManager().getPersistenceEngineClassLoader(null);
-			} catch (IOException e) {
-				throw new RuntimeException(e);
-			}
-
 			ClassLoader backupContextClassLoader = Thread.currentThread().getContextClassLoader();
 			try {
 				Thread.currentThread().setContextClassLoader(persistenceEngineClassLoader);
@@ -383,34 +395,52 @@ public abstract class ResultSet
 		transientObject2objectID = null;
 		qualifiedObjectID2objectID = null;
 		class2fields = null;
+		persistenceEngineClassLoader = null;
 	}
 
 	public synchronized List<?> getChildren(Object parent)
 	{
-		List<?> resultList = null;
+		ClassLoader backupContextClassLoader = Thread.currentThread().getContextClassLoader();
+		try {
+			Thread.currentThread().setContextClassLoader(persistenceEngineClassLoader);
 
-		if (parent instanceof Collection<?>)
-			resultList = new ArrayList<Object>((Collection<?>)parent);
-		else if (parent instanceof Map<?, ?>)
-			resultList = getChildrenFromMap(((Map<?, ?>)parent));
-		else if (parent != null) {
-			List<Field> fields = class2fields.get(parent.getClass());
-			if (fields == null) {
-				fields = getFields(parent.getClass());
-				for (Field field : fields)
-					field.setAccessible(true);
+			List<?> resultList = null;
 
-				class2fields.put(parent.getClass(), fields);
+			if (parent instanceof Collection<?>)
+				resultList = new ArrayList<Object>((Collection<?>)parent);
+			else if (parent instanceof Map<?, ?>)
+				resultList = getChildrenFromMap(((Map<?, ?>)parent));
+			else if (parent != null && parent.getClass().isArray())
+				resultList = getChildrenFromArray(parent);
+			else if (parent != null) {
+				List<Field> fields = class2fields.get(parent.getClass());
+				if (fields == null) {
+					fields = getFields(parent.getClass());
+					for (Field field : fields)
+						field.setAccessible(true);
+
+					class2fields.put(parent.getClass(), fields);
+				}
+				resultList = getFieldValues(parent, fields);
+				if (resultList == null)
+					throw new IllegalStateException("Implementation error in class " + this.getClass().getName() + ": getFieldValues(...) returned null!");
+
+				if (resultList.size() != fields.size())
+					throw new IllegalStateException("Implementation error in class " + this.getClass().getName() + ": getFieldValues(...).size does not match fields.size!");
 			}
-			resultList = getFieldValues(parent, fields);
-			if (resultList == null)
-				throw new IllegalStateException("Implementation error in class " + this.getClass().getName() + ": getFieldValues(...) returned null!");
 
-			if (resultList.size() != fields.size())
-				throw new IllegalStateException("Implementation error in class " + this.getClass().getName() + ": getFieldValues(...).size does not match fields.size!");
+			return resultList == null ? Collections.emptyList() : resultList;
+		} finally {
+			Thread.currentThread().setContextClassLoader(backupContextClassLoader);
 		}
+	}
 
-		return resultList == null ? Collections.emptyList() : resultList;
+	private List<?> getChildrenFromArray(Object array) {
+		// Arrays.asList(array) does not work as intended => manually creating List.
+		ArrayList<Object> result = new ArrayList<Object>(Array.getLength(array));
+		for (int index = 0; index < Array.getLength(array); ++index)
+			result.add(Array.get(array, index));
+		return result;
 	}
 
 	private List<?> getChildrenFromMap(Map<?, ?> parent)
@@ -422,7 +452,6 @@ public abstract class ResultSet
 
 		return result;
 	}
-
 
 	protected List<Field> getFields(Class<?> clazz)
 	{

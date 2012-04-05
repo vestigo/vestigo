@@ -1,5 +1,7 @@
 package org.nightlabs.vestigo.childvm.webapp.client;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.IdentityHashMap;
@@ -12,6 +14,7 @@ import java.util.UUID;
 
 import javax.ws.rs.core.MediaType;
 
+import org.nightlabs.util.IOUtil;
 import org.nightlabs.vestigo.childvm.shared.ResultSetID;
 import org.nightlabs.vestigo.childvm.shared.api.ChildVM;
 import org.nightlabs.vestigo.childvm.shared.api.ChildVMException;
@@ -483,6 +486,13 @@ implements ChildVM
 
 		if (candidateClass == null)
 			throw new IllegalArgumentException("candidateClass == null");
+
+		try {
+			targetClass = URLEncoder.encode(targetClass, IOUtil.CHARSET_NAME_UTF_8);
+			candidateClass = URLEncoder.encode(candidateClass, IOUtil.CHARSET_NAME_UTF_8);
+		} catch (UnsupportedEncodingException e) {
+			throw new RuntimeException(e);
+		}
 
 		Client client = acquireClient();
 		try {
