@@ -111,6 +111,16 @@ public abstract class PersistenceEngineWrapper
 		return invokeStatic(methodID, methodName, new Class<?>[] { parameterType1, parameterType2, parameterType3 }, parameters);
 	}
 
+	/**
+	 * Invoke a method on the wrapped class (not the wrapped object) in a static way.
+	 * @param methodID identifier that must be unique within the subclass of {@link PersistenceEngineWrapper}.
+	 * For performance reasons, the {@link Method} instances are cached and the cache key is this <code>methodID</code>
+	 * (rather than a long String comprising <code>methodName</code> and <code>parameterTypes</code>).
+	 * @param methodName method name as passed to {@link Class#getMethod(String, Class...)}.
+	 * @param parameterTypes parameter types as passed to {@link Class#getMethod(String, Class...)}.
+	 * @param parameters parameters as passed to {@link Method#invoke(Object, Object...)}.
+	 * @return the result of the method invocation as returned from {@link Method#invoke(Object, Object...)}.
+	 */
 	protected Object invokeStatic(int methodID, String methodName, Class<?>[] parameterTypes, Object ...parameters)
 	{
 		try {
@@ -138,26 +148,73 @@ public abstract class PersistenceEngineWrapper
 
 	private static final Class<?>[] EMPTY_CLASS_ARRAY = new Class<?>[0];
 
+	/**
+	 * Invoke a method on the wrapped object. This is a convenience method delegating to
+	 * {@link #invoke(int, String, Class[], Object...)}.
+	 * @param methodID identifier that must be unique within the subclass of {@link PersistenceEngineWrapper}.
+	 * @param methodName method name.
+	 * @return the result of the method invocation.
+	 */
 	protected Object invoke(int methodID, String methodName)
 	{
 		return invoke(methodID, methodName, EMPTY_CLASS_ARRAY);
 	}
 
+	/**
+	 * Invoke a method on the wrapped object. This is a convenience method delegating to
+	 * {@link #invoke(int, String, Class[], Object...)}.
+	 * @param methodID identifier that must be unique within the subclass of {@link PersistenceEngineWrapper}.
+	 * @param methodName method name.
+	 * @param parameterType single parameter type.
+	 * @param parameter single parameter.
+	 * @return the result of the method invocation.
+	 */
 	protected Object invoke(int methodID, String methodName, Class<?> parameterType, Object parameter)
 	{
 		return invoke(methodID, methodName, new Class<?>[] { parameterType }, parameter);
 	}
 
+	/**
+	 * Invoke a method on the wrapped object. This is a convenience method delegating to
+	 * {@link #invoke(int, String, Class[], Object...)}.
+	 * @param methodID identifier that must be unique within the subclass of {@link PersistenceEngineWrapper}.
+	 * @param methodName method name.
+	 * @param parameterType1 first parameter type.
+	 * @param parameterType2 second parameter type.
+	 * @param parameters two parameters (corresponding to the two parameter types).
+	 * @return the result of the method invocation.
+	 */
 	protected Object invoke(int methodID, String methodName, Class<?> parameterType1, Class<?> parameterType2, Object ...parameters)
 	{
 		return invoke(methodID, methodName, new Class<?>[] { parameterType1, parameterType2 }, parameters);
 	}
 
+	/**
+	 * Invoke a method on the wrapped object. This is a convenience method delegating to
+	 * {@link #invoke(int, String, Class[], Object...)}.
+	 * @param methodID identifier that must be unique within the subclass of {@link PersistenceEngineWrapper}.
+	 * @param methodName method name.
+	 * @param parameterType1 first parameter type.
+	 * @param parameterType2 second parameter type.
+	 * @param parameterType3 third parameter type.
+	 * @param parameters three parameters (corresponding to the three parameter types).
+	 * @return the result of the method invocation.
+	 */
 	protected Object invoke(int methodID, String methodName, Class<?> parameterType1, Class<?> parameterType2, Class<?> parameterType3, Object ...parameters)
 	{
 		return invoke(methodID, methodName, new Class<?>[] { parameterType1, parameterType2, parameterType3 }, parameters);
 	}
 
+	/**
+	 * Invoke a method on the wrapped object.
+	 * @param methodID identifier that must be unique within the subclass of {@link PersistenceEngineWrapper}.
+	 * For performance reasons, the {@link Method} instances are cached and the cache key is this <code>methodID</code>
+	 * (rather than a long String comprising <code>methodName</code> and <code>parameterTypes</code>).
+	 * @param methodName method name as passed to {@link Class#getMethod(String, Class...)}.
+	 * @param parameterTypes parameter types as passed to {@link Class#getMethod(String, Class...)}.
+	 * @param parameters parameters as passed to {@link Method#invoke(Object, Object...)}.
+	 * @return the result of the method invocation as returned from {@link Method#invoke(Object, Object...)}.
+	 */
 	protected Object invoke(int methodID, String methodName, Class<?>[] parameterTypes, Object ...parameters)
 	{
 		try {

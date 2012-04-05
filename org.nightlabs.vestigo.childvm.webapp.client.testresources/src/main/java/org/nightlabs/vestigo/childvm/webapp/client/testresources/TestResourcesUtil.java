@@ -11,9 +11,9 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Properties;
 
+import org.nightlabs.util.IOUtil;
 import org.nightlabs.vestigo.childvm.webapp.client.testresources.sql.DerbySetup;
 import org.nightlabs.vestigo.childvm.webapp.client.testresources.sql.HSQLSetup;
-import org.nightlabs.util.IOUtil;
 
 public class TestResourcesUtil {
 
@@ -23,16 +23,16 @@ public class TestResourcesUtil {
 			InputStream in = TestResourcesUtil.class.getClassLoader().getResource("vestigo-test-connection-props/" + name).openStream();
 			InputStream propsInputStream;
 			try {
-				
+
 				setDefaultProperties();
-				
+
 				ByteArrayOutputStream out = new ByteArrayOutputStream();
-				Map<String, String> vars = new HashMap<String, String>();
-				for (Entry<Object, Object> e : System.getProperties().entrySet()) {
-					vars.put((String)e.getKey(), (String)e.getValue());
-				}
+//				Map<String, String> vars = new HashMap<String, String>();
+//				for (Entry<Object, Object> e : System.getProperties().entrySet()) {
+//					vars.put((String)e.getKey(), (String)e.getValue());
+//				}
 				OutputStreamWriter writer = new OutputStreamWriter(out);
-				IOUtil.replaceTemplateVariables(writer, new InputStreamReader(in), vars);
+				IOUtil.replaceTemplateVariables(writer, new InputStreamReader(in), System.getProperties());
 				writer.flush();
 				out.flush();
 				propsInputStream  = new ByteArrayInputStream(out.toByteArray());
@@ -41,7 +41,7 @@ public class TestResourcesUtil {
 					in.close();
 			}
 			props.load(propsInputStream);
-			
+
 			HashMap<String, String> result = new HashMap<String, String>(props.size());
 			for (Entry<Object, Object> e : props.entrySet()) {
 				result.put((String)e.getKey(), (String)e.getValue());
@@ -51,22 +51,22 @@ public class TestResourcesUtil {
 			throw new RuntimeException(e);
 		}
 	}
-	
-	
+
+
 	private static void setDefaultProperties() {
 		setSysProp("vestigoTest.jdbc.url.hsql", HSQLSetup.getDefaultJdbcUrl());
 		setSysProp("vestigoTest.jdbc.driver.hsql", HSQLSetup.getDefaultJdbcDriver());
-		
+
 		setSysProp("vestigoTest.jdbc.url.derby", DerbySetup.getDefaultJdbcUrl());
 		setSysProp("vestigoTest.jdbc.driver.derby", DerbySetup.getDefaultJdbcDriver());
 	}
-	
-	
+
+
 	private static void setSysProp(String name, String value) {
 		String existingValue = System.getProperty(name);
 		if (existingValue == null || existingValue.isEmpty()) {
 			System.setProperty(name, value);
 		}
-		
+
 	}
 }
