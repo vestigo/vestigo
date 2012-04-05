@@ -4,16 +4,14 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.Properties;
 
-import javax.jdo.JDOHelper;
-import javax.jdo.PersistenceManagerFactory;
-import javax.jdo.annotations.PersistenceCapable;
-
 import org.nightlabs.vestigo.childvm.shared.PropertiesUtil;
 import org.nightlabs.vestigo.childvm.shared.dto.ConnectionProfileDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.JDOConnectionProfileDTO;
 import org.nightlabs.vestigo.childvm.shared.persistencexml.JDOPersistenceUnitHelper;
 import org.nightlabs.vestigo.childvm.shared.persistencexml.PersistenceUnitHelper;
 import org.nightlabs.vestigo.childvm.webapp.asm.ClassAnnotationReader;
+import org.nightlabs.vestigo.childvm.webapp.persistenceengine.jdo.JDOHelper;
+import org.nightlabs.vestigo.childvm.webapp.persistenceengine.jdo.PersistenceManagerFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -78,16 +76,18 @@ public class JDOConnectionProfile extends ConnectionProfile
 		try {
 			Thread.currentThread().setContextClassLoader(persistenceEngineClassLoader);
 
+			JDOHelper jdoHelper = new JDOHelper(getClassLoaderManager());
+
 			if (persistenceUnitName == null)
-				persistenceManagerFactory = JDOHelper.getPersistenceManagerFactory(filteredPersistenceProperties, persistenceEngineClassLoader);
+				persistenceManagerFactory = jdoHelper.getPersistenceManagerFactory(filteredPersistenceProperties);
 			else {
 				if (persistenceUnitName.isEmpty())
 					throw new IllegalStateException("persistenceUnitName.isEmpty() should never happen - it should be either null or a non-empty string!");
 
 				if (filteredPersistenceProperties == null)
-					persistenceManagerFactory = JDOHelper.getPersistenceManagerFactory(persistenceUnitName, persistenceEngineClassLoader);
+					persistenceManagerFactory = jdoHelper.getPersistenceManagerFactory(persistenceUnitName);
 				else
-					persistenceManagerFactory = JDOHelper.getPersistenceManagerFactory(filteredPersistenceProperties, persistenceUnitName, persistenceEngineClassLoader);
+					persistenceManagerFactory = jdoHelper.getPersistenceManagerFactory(filteredPersistenceProperties, persistenceUnitName);
 			}
 
 			if (logger.isDebugEnabled()) {
@@ -126,7 +126,7 @@ public class JDOConnectionProfile extends ConnectionProfile
 
 	@Override
 	protected boolean isQueryableCandidateClass(ClassAnnotationReader classAnnotationReader) {
-		return classAnnotationReader.getClassAnnotations().contains(PersistenceCapable.class.getName());
+		return classAnnotationReader.getClassAnnotations().contains("javax.jdo.annotations.PersistenceCapable");
 	}
 
 	@Override

@@ -5,15 +5,13 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-import javax.jdo.JDOHelper;
-import javax.jdo.JDOObjectNotFoundException;
-import javax.jdo.PersistenceManager;
-import javax.jdo.Query;
-import javax.jdo.identity.SingleFieldIdentity;
-
 import org.nightlabs.vestigo.childvm.shared.dto.ResultCellDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.ResultCellPersistentObjectRefDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.ResultCellSimpleDTO;
+import org.nightlabs.vestigo.childvm.webapp.persistenceengine.jdo.JDOHelper;
+import org.nightlabs.vestigo.childvm.webapp.persistenceengine.jdo.JDOObjectNotFoundException;
+import org.nightlabs.vestigo.childvm.webapp.persistenceengine.jdo.PersistenceManager;
+import org.nightlabs.vestigo.childvm.webapp.persistenceengine.jdo.Query;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,6 +22,7 @@ public class JDOResultSet extends ResultSet
 {
 	private static final Logger logger = LoggerFactory.getLogger(JDOResultSet.class);
 
+	private JDOHelper jdoHelper;
 	private Query query;
 
 	public JDOResultSet(JDOConnection connection, Query query, Collection<?> rows) {
@@ -33,6 +32,7 @@ public class JDOResultSet extends ResultSet
 			throw new IllegalArgumentException("query == null");
 
 		this.query = query;
+		this.jdoHelper = query.getJDOHelper();
 	}
 
 	@Override
@@ -56,11 +56,12 @@ public class JDOResultSet extends ResultSet
 	protected ResultCellDTO nullOrNewImplementationSpecificResultCellDTO(Object owner, Field field, Object object)
 	{
 		// SingleFieldIdentity instances can be loaded in the Eclipse-plugin and displayed directly in the editor.
-		if (object instanceof SingleFieldIdentity)
+//		if (object instanceof SingleFieldIdentity)
+		if (jdoHelper.getSingleFieldIdentityClass().isInstance(object))
 			return new ResultCellSimpleDTO(field, object);
 
 		// Check, if it's a JDO object, and if so, return a reference to it.
-		Object objectID = JDOHelper.getObjectId(object);
+		Object objectID = jdoHelper.getObjectId(object);
 		if (objectID != null) {
 			String objectIDString = getPersistentObjectIDString(object.getClass().getName(), objectID);
 			return new ResultCellPersistentObjectRefDTO(
@@ -128,7 +129,7 @@ public class JDOResultSet extends ResultSet
 		synchronized (getConnection()) {
 			// We check, if the object is a persistent first class object, because we must not do
 			// pm.retrieve(...) on transient/non-FCO objects.
-			if (JDOHelper.getObjectId(object) != null) {
+			if (jdoHelper.getObjectId(object) != null) {
 				PersistenceManager pm = getPersistenceManager();
 				getConnection().configureFetchPlanForOneLevelAndAllFields(pm.getFetchPlan());
 				pm.retrieve(object, true);

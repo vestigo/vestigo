@@ -4,10 +4,9 @@ import java.lang.reflect.Field;
 import java.util.Collection;
 import java.util.List;
 
-import javax.jdo.Query;
-
 import org.nightlabs.vestigo.childvm.webapp.model.FieldValue;
 import org.nightlabs.vestigo.childvm.webapp.model.JDOResultSet;
+import org.nightlabs.vestigo.childvm.webapp.persistenceengine.jdo.Query;
 
 public class JDOCumulus4jResultSet extends JDOResultSet
 {

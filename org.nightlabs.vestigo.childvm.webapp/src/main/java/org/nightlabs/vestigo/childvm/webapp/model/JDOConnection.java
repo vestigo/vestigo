@@ -9,14 +9,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.SortedSet;
 
-import javax.jdo.FetchPlan;
-import javax.jdo.PersistenceManager;
-import javax.jdo.Query;
 import javax.script.ScriptEngine;
 
 import org.nightlabs.vestigo.childvm.shared.dto.ConnectionDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.JDOConnectionDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.QueryParameterDTO;
+import org.nightlabs.vestigo.childvm.webapp.persistenceengine.jdo.FetchPlan;
+import org.nightlabs.vestigo.childvm.webapp.persistenceengine.jdo.PersistenceManager;
+import org.nightlabs.vestigo.childvm.webapp.persistenceengine.jdo.Query;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
