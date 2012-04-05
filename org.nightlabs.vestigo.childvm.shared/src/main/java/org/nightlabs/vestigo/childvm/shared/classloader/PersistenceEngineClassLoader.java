@@ -5,23 +5,36 @@ import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.Enumeration;
 
-public class PersistenceEngineClassLoader extends URLClassLoader {
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public class PersistenceEngineClassLoader extends URLClassLoader
+{
+	private static final Logger logger = LoggerFactory.getLogger(PersistenceEngineClassLoader.class);
 
 	private static class FilterClassLoader extends ClassLoader
 	{
+		private static final Logger logger = LoggerFactory.getLogger(FilterClassLoader.class);
+
 		private boolean isExcludedClass(String name)
 		{
-			if (name.startsWith("com.sun.jersey"))
+			if (name.startsWith("com.sun.jersey")) {
+				logger.debug("isExcludedClass: returning true: {}", name);
 				return true;
+			}
 
+			logger.trace("isExcludedClass: returning false: {}", name);
 			return false;
 		}
 
 		private boolean isExcludedResource(String name)
 		{
-			if (name.startsWith("com/sun/jersey") || name.startsWith("/com/sun/jersey"))
+			if (name.startsWith("com/sun/jersey") || name.startsWith("/com/sun/jersey")) {
+				logger.debug("isExcludedResource: returning true: {}", name);
 				return true;
+			}
 
+			logger.trace("isExcludedResource: returning false: {}", name);
 			return false;
 		}
 
@@ -30,7 +43,8 @@ public class PersistenceEngineClassLoader extends URLClassLoader {
 		}
 
 		@Override
-		public Class<?> loadClass(String name) throws ClassNotFoundException {
+		public Class<?> loadClass(String name) throws ClassNotFoundException
+		{
 			if (isExcludedClass(name))
 				throw new ClassNotFoundException(name);
 			else
@@ -64,5 +78,17 @@ public class PersistenceEngineClassLoader extends URLClassLoader {
 
 	public PersistenceEngineClassLoader(URL[] urls, ClassLoader parent) {
 		super(urls, new FilterClassLoader(parent));
+	}
+
+	@Override
+	protected Class<?> findClass(String name) throws ClassNotFoundException {
+		try {
+			Class<?> clazz = super.findClass(name);
+			logger.trace("findClass: found: {}", name);
+			return clazz;
+		} catch (ClassNotFoundException x) {
+			logger.debug("findClass: not found: {}", name);
+			throw x;
+		}
 	}
 }
