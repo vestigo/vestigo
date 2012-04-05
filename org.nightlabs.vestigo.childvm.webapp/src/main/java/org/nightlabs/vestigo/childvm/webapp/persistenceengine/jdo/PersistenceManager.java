@@ -58,7 +58,7 @@ public class PersistenceManager extends PersistenceEngineWrapper
 		}
 	}
 
-	public void setProperty(String key, String value) {
-		invoke(7, "setProperty", String.class, String.class, key, value);
+	public void setProperty(String propertyName, Object value) {
+		invoke(7, "setProperty", String.class, Object.class, propertyName, value);
 	}
 }

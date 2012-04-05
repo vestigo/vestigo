@@ -6,11 +6,10 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
-
 import org.nightlabs.vestigo.childvm.shared.dto.ResultCellDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.ResultCellPersistentObjectRefDTO;
+import org.nightlabs.vestigo.childvm.webapp.persistenceengine.jpa.EntityManager;
+import org.nightlabs.vestigo.childvm.webapp.persistenceengine.jpa.Query;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -5,17 +5,14 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 
-import javax.persistence.Entity;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.MappedSuperclass;
-import javax.persistence.Persistence;
-
 import org.nightlabs.vestigo.childvm.shared.PropertiesUtil;
 import org.nightlabs.vestigo.childvm.shared.dto.ConnectionProfileDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.JPAConnectionProfileDTO;
 import org.nightlabs.vestigo.childvm.shared.persistencexml.JPAPersistenceUnitHelper;
 import org.nightlabs.vestigo.childvm.shared.persistencexml.PersistenceUnitHelper;
 import org.nightlabs.vestigo.childvm.webapp.asm.ClassAnnotationReader;
+import org.nightlabs.vestigo.childvm.webapp.persistenceengine.jpa.EntityManagerFactory;
+import org.nightlabs.vestigo.childvm.webapp.persistenceengine.jpa.Persistence;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -71,10 +68,11 @@ public class JPAConnectionProfile extends ConnectionProfile
 		try {
 			Thread.currentThread().setContextClassLoader(persistenceEngineClassLoader);
 
+			Persistence persistence = new Persistence(getClassLoaderManager());
 			if (filteredPersistenceProperties == null)
-				entityManagerFactory = Persistence.createEntityManagerFactory(persistenceUnitName);
+				entityManagerFactory = persistence.createEntityManagerFactory(persistenceUnitName);
 			else
-				entityManagerFactory = Persistence.createEntityManagerFactory(persistenceUnitName, filteredPersistenceProperties);
+				entityManagerFactory = persistence.createEntityManagerFactory(persistenceUnitName, filteredPersistenceProperties);
 
 		} finally {
 			Thread.currentThread().setContextClassLoader(backupContextClassLoader);
@@ -102,7 +100,7 @@ public class JPAConnectionProfile extends ConnectionProfile
 	@Override
 	protected boolean isQueryableCandidateClass(ClassAnnotationReader classAnnotationReader) {
 		Set<String> classAnnotations = classAnnotationReader.getClassAnnotations();
-		return classAnnotations.contains(Entity.class.getName()) || classAnnotations.contains(MappedSuperclass.class.getName());
+		return classAnnotations.contains("javax.persistence.Entity") || classAnnotations.contains("javax.persistence.MappedSuperclass");
 	}
 
 	@Override
