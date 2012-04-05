@@ -7,6 +7,8 @@ import javax.ws.rs.ext.Provider;
 import org.nightlabs.vestigo.childvm.shared.Error;
 import org.nightlabs.vestigo.childvm.shared.ErrorStackTraceElement;
 import org.nightlabs.vestigo.childvm.shared.provider.MediaTypeConst;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
@@ -14,9 +16,13 @@ import org.nightlabs.vestigo.childvm.shared.provider.MediaTypeConst;
 @Provider
 public class DefaultExceptionMapper implements ExceptionMapper<Throwable>
 {
+	private static final Logger logger = LoggerFactory.getLogger(DefaultExceptionMapper.class);
+
 	@Override
 	public Response toResponse(Throwable throwable)
 	{
+		logger.error("toResponse: " + throwable, throwable);
+
 		Error error = new Error(throwable);
 		Error e = error;
 
