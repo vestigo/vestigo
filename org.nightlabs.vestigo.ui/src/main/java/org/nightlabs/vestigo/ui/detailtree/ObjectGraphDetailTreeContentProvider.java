@@ -1,8 +1,8 @@
 package org.nightlabs.vestigo.ui.detailtree;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -105,6 +105,8 @@ implements ITreeContentProvider
 		return childNodes;
 	}
 
+	private static final int MAX_CHILDREN = 5000;
+
 	protected ObjectGraphDetailTreeNode[] loadChildNodes(final ObjectGraphDetailTreeNode parentNode, IProgressMonitor monitor)
 	{
 		try {
@@ -115,11 +117,39 @@ implements ITreeContentProvider
 			if (object instanceof ObjectReference) {
 				ObjectReference objectReference = (ObjectReference) object;
 				Collection<?> children = objectReference.getChildren();
-				List<ObjectGraphDetailTreeNode> childNodes = new ArrayList<ObjectGraphDetailTreeNode>(children.size());
-				for (Object child : children)
-					childNodes.add(new ObjectGraphDetailTreeNode(parentNode, child));
 
-				return childNodes.toArray(new ObjectGraphDetailTreeNode[childNodes.size()]);
+				ObjectGraphDetailTreeNode[] childNodes;
+				if (children.size() <= MAX_CHILDREN) {
+					childNodes = new ObjectGraphDetailTreeNode[children.size()];
+					int idx = -1;
+					for (Object child : children)
+						childNodes[++idx] = new ObjectGraphDetailTreeNode(parentNode, child);
+				}
+				else {
+					childNodes = new ObjectGraphDetailTreeNode[1 + (children.size() / MAX_CHILDREN)];
+					int idx = -1;
+
+					Iterator<?> iterator = children.iterator();
+					IntermediateObjectGraphDetailTreeNode intermediateTreeNode = null;
+					int absoluteChildIndex = -1;
+					int relativeChildIndex = -1;
+					while (iterator.hasNext()) {
+						Object child = iterator.next();
+						++absoluteChildIndex; ++relativeChildIndex;
+
+						if (intermediateTreeNode == null || relativeChildIndex >= MAX_CHILDREN) {
+							relativeChildIndex = 0;
+							int fromIndex = absoluteChildIndex;
+							int toIndex = Math.min(absoluteChildIndex + MAX_CHILDREN - 1, children.size() - 1);
+							intermediateTreeNode = new IntermediateObjectGraphDetailTreeNode(parentNode, fromIndex, toIndex);
+							childNodes[++idx] = intermediateTreeNode;
+						}
+
+						intermediateTreeNode.getChildNodes()[relativeChildIndex] = new ObjectGraphDetailTreeNode(parentNode, child);
+					}
+				}
+
+				return childNodes;
 			}
 			return null;
 		} catch (final Exception x) {
