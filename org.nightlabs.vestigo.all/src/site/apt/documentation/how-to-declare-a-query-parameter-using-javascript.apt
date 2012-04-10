@@ -7,4 +7,107 @@
 
 How to declare a query parameter using JavaScript
 
-	
+	This guide demonstrates JavaScript query parameters. If you don't know what query parameters are or how you work with
+	them in Vestigo, you should first read {{{./jdo/how-to-create-a-jdo-query.html}How to create a JDO query}}
+	or {{{./jpa/how-to-create-a-jpa-query.html}How to create a JPA query}} (depending on which persistence API you use).
+
+* Prepare data source and query
+
+	In the following, we'll assume you followed the {{{./jdo/quick-start.html}Quick start}} guide and therefore
+
+	* you have a ready-to-use data source,
+
+	* you have an open query editor,
+
+	* we can make use of the data model provided by our demo data.
+
+	[]
+
+* Add a new query parameter
+
+	Go to the <Query parameters> view and click the <Add> button.
+
+[../images/how-to-declare-a-query-parameter-using-javascript/010.png]
+
+* Give it a name and the type JavaScriptFormula
+
+	Give the parameter the name "person". This name will be used in the query to reference it. In the type field, you have
+	to select <JavaScriptFormula> as shown below.
+
+[../images/how-to-declare-a-query-parameter-using-javascript/020.png]
+
+* Open the JavaScript editor dialog
+
+	Obviously the <Value> cell in the <Query parameters> table is too small to edit a script. Hence, you'll have to click the
+	little button titled "..." to open a dialog.
+
+[../images/how-to-declare-a-query-parameter-using-javascript/030.png]
+
+* Write your script
+
+	Writing a script for a query parameter is pretty easy, but enormously powerful. You have access to the persistence engine
+	(and other variables) which makes it even possible to run another query and process this query's result as shown in this example:
+
+[../images/how-to-declare-a-query-parameter-using-javascript/040.png]
+
+	Here the same script again as text (in case you want to copy & paste it for your own experiments):
+
+--------------------------------
+random = connectionProfileScope.get("random");
+if (random == null) {
+	random = new java.security.SecureRandom();
+	connectionProfileScope.put("random", random);
+}
+
+query = persistenceManager.newQuery("SELECT FROM org.nightlabs.vestigo.demo.jdo.Person");
+resultList = new java.util.ArrayList(query.execute());
+result = resultList.get(random.nextInt(resultList.size()));
+result;
+--------------------------------
+
+	As can be seen in this example, you have access to variables like <<<connectionProfileScope>>> and <<<persistenceManager>>>.
+	Here a complete list of what variables there are:
+
+	* <<connectionProfileScope>>: A map (with key type <<<java.lang.String>>> and value type <<<java.lang.Object>>>) for storing
+	arbitrary objects across query executions. Its scope is the connection-profile, hence its state is only lost, if the entire data source
+	is closed.
+
+	* <<connectionScope>>: A map (with key type <<<java.lang.String>>> and value type <<<java.lang.Object>>>) for storing
+	arbitrary objects during one query execution. Every query execution uses a separate connection (so that every result set
+	has its own connection, which is required for proper transaction management when Vestigo will soon allow data manipulation
+	in the result sets). If you want to share objects accross multiple query parameters, but not across multiple query executions,
+	this is the place.
+
+	* <<entityManager>>: The {{{./jpa/entity-manager.html}EntityManager}} used to execute the query. This variable of course
+	only exists, if using JPA (i.e. if the underlying data source is a JPA data source)!
+
+	* <<em>>: Same as <<<entityManager>>> (convenience for those who like it short).
+
+	* <<persistenceManager>>: The {{{./jdo/persistence-manager.html}PersistenceManager}} used to execute the query. This variable of course
+	only exists, if using JDO (i.e. if the underlying data source is a JDO data source)! 
+
+	* <<pm>>: Same as <<<persistenceManager>>> (convenience for those who like it short).
+
+	[]
+
+* Use the query parameter
+
+	To give you a complete example, here's a possible JDOQL making use of the above JavaScript query parameter:
+
+[../images/how-to-declare-a-query-parameter-using-javascript/050.png]
+
+	And again as text (copy & paste it for your own experiments):
+
+--------------------------------
+SELECT this, :person
+FROM org.nightlabs.vestigo.demo.jdo.Movie
+WHERE
+	this.starring.contains(:person) ||
+	this.writtenBy.contains(:person) ||
+	this.directedBy.contains(:person) ||
+	this.producedBy.contains(:person)
+--------------------------------
+
+	The query basically searches for all movies that are related to a certain person. This person is passed as the implicit
+	query parameter <<<:person>>>. As illustrated above, the JavaScript picks an arbitrary person from the datastore.
+	Hence, every time you execute the query, you'll see another result.

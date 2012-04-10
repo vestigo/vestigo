@@ -1,0 +1,14 @@
+	---
+	JPA EntityManager
+	---
+	Marco หงุ่ยตระกูล-Schulze
+	---
+	2012-02-16
+
+JPA EntityManager
+
+	An <EntityManager> is obtained from an {{{./entity-manager-factory.html}EntityManagerFactory}} to actually perform
+	read and write operations on the datastore. It can be thought of as a concrete connection (which is not thread-safe!)
+	providing transaction isolation (every thread/session/EJB uses its own <EntityManager>).
+
+	Please read more on the {{{http://www.datanucleus.org/products/accessplatform_3_0/jpa/em.html}DataNucleus web site}}.

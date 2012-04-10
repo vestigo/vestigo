@@ -164,9 +164,10 @@ extends Connection
 	@Override
 	protected void prepareScriptEngine(ScriptEngine scriptEngine)
 	{
-		PersistenceManager pm = getPersistenceManager();
+		resetFetchPlanToDefault(getPersistenceManager().getFetchPlan());
 
-		resetFetchPlanToDefault(pm.getFetchPlan());
+		// We must pass the REAL javax.jdo.PersistenceManager - not our wrapper, because our wrapper is likely incomplete.
+		Object pm = getPersistenceManager().getWrappedObject();
 
 		scriptEngine.put("persistenceManager", pm);
 		scriptEngine.put("pm", pm);

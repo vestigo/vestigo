@@ -1,0 +1,14 @@
+	---
+	JDO PersistenceManager
+	---
+	Marco หงุ่ยตระกูล-Schulze
+	---
+	2012-02-16
+
+JDO PersistenceManager
+
+	A <PersistenceManager> is obtained from a {{{./persistence-manager-factory.html}PersistenceManagerFactory}} to actually perform
+	read and write operations on the datastore. It can be thought of as a concrete connection (which is not thread-safe!)
+	providing transaction isolation (every thread/session/EJB uses its own <PersistenceManager>).
+
+	Please read more on the {{{http://www.datanucleus.org/products/accessplatform_3_0/jdo/pm.html}DataNucleus web site}}.

@@ -31,6 +31,7 @@ import org.nightlabs.vestigo.childvm.shared.persistencexml.PersistenceXmlScanner
 import org.nightlabs.vestigo.childvm.shared.persistencexml.jaxb.Persistence;
 import org.nightlabs.vestigo.childvm.shared.persistencexml.jaxb.Persistence.PersistenceUnit;
 import org.nightlabs.vestigo.childvm.webapp.asm.ClassAnnotationReader;
+import org.nightlabs.vestigo.childvm.webapp.script.Scope;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -50,6 +51,8 @@ public abstract class ConnectionProfile
 
 	private ClassLoaderManager classLoaderManager = new ClassLoaderManager();
 	private String syntheticPersistenceUnitName;
+
+	private Scope connectionProfileScope;
 
 	public ConnectionProfile() {
 		logger.debug("[{}].<init>: created new instance of {}", Long.toHexString(System.identityHashCode(this)), this.getClass().getName());
@@ -131,6 +134,8 @@ public abstract class ConnectionProfile
 				"[{}].onFirstConnectionOpen: profileID={} connectionID={}",
 				new Object[] { Long.toHexString(System.identityHashCode(this)), profileID, connection.getConnectionID() }
 		);
+
+		connectionProfileScope = new Scope();
 
 		try {
 			File userTempDir = IOUtil.getUserTempDir("vestigo." + ConnectionProfile.class.getSimpleName() + '.', null);
@@ -277,6 +282,7 @@ public abstract class ConnectionProfile
 				new Object[] { Long.toHexString(System.identityHashCode(this)), profileID, connection.getConnectionID() }
 		);
 
+		connectionProfileScope = null;
 		classLoaderManager.close();
 		syntheticPersistenceUnitName = null;
 
@@ -377,6 +383,10 @@ public abstract class ConnectionProfile
 		} finally {
 			in.close();
 		}
+	}
+
+	public Scope getConnectionProfileScope() {
+		return connectionProfileScope;
 	}
 
 	protected ClassAnnotationReader getClassAnnotationReader() {

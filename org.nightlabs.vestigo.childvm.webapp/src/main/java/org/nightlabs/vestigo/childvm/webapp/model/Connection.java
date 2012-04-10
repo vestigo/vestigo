@@ -17,6 +17,7 @@ import org.nightlabs.vestigo.childvm.shared.Formula;
 import org.nightlabs.vestigo.childvm.shared.ResultSetID;
 import org.nightlabs.vestigo.childvm.shared.dto.ConnectionDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.QueryParameterDTO;
+import org.nightlabs.vestigo.childvm.webapp.script.Scope;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -32,6 +33,8 @@ public abstract class Connection
 	private UUID connectionID;
 	private ConnectionProfileManager connectionProfileManager;
 	private ConnectionProfile connectionProfile;
+	private Scope connectionScope;
+	private ScriptEngineManager scriptEngineManager = new ScriptEngineManager();
 
 	private Map<Integer, ResultSet> resultSetID2resultSetMap = new HashMap<Integer, ResultSet>();
 
@@ -57,6 +60,10 @@ public abstract class Connection
 			throw new IllegalStateException("this.connectionProfile already assigned! Cannot replace!");
 
 		this.connectionProfile = connectionProfile;
+	}
+
+	public Scope getConnectionScope() {
+		return connectionScope;
 	}
 
 	public void setConnectionProfileManager(ConnectionProfileManager connectionProfileManager) {
@@ -109,6 +116,7 @@ public abstract class Connection
 			throw new IllegalStateException("this.connectionProfile == null");
 
 		connectionProfile.onConnectionOpen(this);
+		connectionScope = new Scope();
 		open = true;
 	}
 
@@ -124,6 +132,7 @@ public abstract class Connection
 		if (this.connectionProfile != null)
 			connectionProfile.onConnectionClose(this);
 
+		connectionScope = null;
 		open = false;
 	}
 
@@ -217,14 +226,16 @@ public abstract class Connection
 		int paramIndex = queryParameterDTO.getIndex();
 		String paramName = queryParameterDTO.getName();
 		try {
-			ScriptEngineManager factory = new ScriptEngineManager();
-			ScriptEngine scriptEngine = factory.getEngineByMimeType(formula.getMimeType());
+			ScriptEngine scriptEngine = scriptEngineManager.getEngineByMimeType(formula.getMimeType());
 
 			// Set the FILENAME for better error messages.
 			scriptEngine.put(
 					ScriptEngine.FILENAME,
 					"queryParameter_" + paramIndex + (paramName == null ? "" : "_" + paramName)
 			);
+
+			scriptEngine.put("connectionScope", getConnectionScope());
+			scriptEngine.put("connectionProfileScope", getConnectionProfile().getConnectionProfileScope());
 
 			// Give the subclasses the possibility to set variables for accessing the PersistenceManager/EntityManager and the like.
 			prepareScriptEngine(scriptEngine);

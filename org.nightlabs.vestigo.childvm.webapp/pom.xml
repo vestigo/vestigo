@@ -47,11 +47,18 @@
 		</dependency>
 -->
 
+<!--
+		<dependency>
+			<groupId>org.mozilla</groupId>
+			<artifactId>rhino</artifactId>
+		</dependency>
+-->
+
 		<dependency>
 			<groupId>org.nightlabs.vestigo</groupId>
 			<artifactId>org.nightlabs.vestigo.childvm.shared</artifactId>
 		</dependency>
-		
+
 		<!--
 		We use the transitive dependency from Jersey and don't declare it here, explicitely. Marco :-)
 		<dependency>

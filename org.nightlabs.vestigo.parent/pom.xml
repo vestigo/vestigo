@@ -381,6 +381,14 @@
 				<scope>provided</scope> <!-- javax.jdo is provided in parent => I do the same for javax.persistence. -->
 			</dependency>
 
+<!--
+			<dependency>
+				<groupId>org.mozilla</groupId>
+				<artifactId>rhino</artifactId>
+				<version>1.6R5</version>
+			</dependency>
+-->
+
 			<!--
 			<dependency>
 				<groupId>asm</groupId>

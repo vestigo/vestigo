@@ -154,7 +154,8 @@ extends Connection
 	@Override
 	protected void prepareScriptEngine(ScriptEngine scriptEngine)
 	{
-		EntityManager em = getEntityManager();
+		// We must pass the REAL javax.persistence.EntityManager - not our wrapper, because our wrapper is likely incomplete.
+		Object em = getEntityManager().getWrappedObject();
 
 		scriptEngine.put("entityManager", em);
 		scriptEngine.put("em", em);
