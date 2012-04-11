@@ -1,0 +1,47 @@
+	---
+	Logging
+	---
+	Marco หงุ่ยตระกูล-Schulze
+	---
+	2012-04-11
+
+Logging
+
+	Vestigo uses {{{http://www.slf4j.org/}SLF4J}} as logging API and {{{http://logging.apache.org/log4j/}log4j}} as actual logging
+	implementation. The logging facilities of Eclipse are not used. You can configure the logging behaviour by clicking in the main
+	menu on <Window> and then on <Preferences>. Under the <Vestigo> tree node, there are two preference-pages: <ChildVM> and <Log4j>
+
+* ChildVM
+
+	Vestigo starts a separate Java virtual machine for every data source. This prevents class-loading-related problems (especially
+	the JDBC drivers are well known for causing memory leaks with dynamic class-loaders) and guarantees complete isolation
+	of the data sources' JVMs (from each other as well as from the main (Eclipse) JVM).
+
+	On this preference-page, you can set the root log level (which applies to everything unless overridden for specific categories)
+	as well as arbitrary additional properties. The most common way to use the additional properties is to override the log level
+	for certain categories like in this example:
+
+--------------------------------------------
+log4j.category.DataNucleus=INFO
+log4j.category.DataNucleus.Datastore.Native=DEBUG
+--------------------------------------------
+
+	Note, that the settings on this page only affect data sources when they are opened. In other words, a data source's JVM is
+	newly configured whenever it is opened (or re-opened). Hence, you need to close (in the <Data Source Explorer> view
+	right-click and <Disconnect>) and then re-open (right-click and <Connect>) an already open data source after changing
+	the settings on this page.
+
+* Log4j
+
+	This page controls the logging in the main (Eclipse) JVM. The log output from the ChildVMs is logged into the main log,
+	too, but of course, this requires both the ChildVM's and the main VM's log4j configuration to enable logging appropriately.
+
+* Further reading
+
+	If you want to learn more about configuring log4j, please follow these links:
+
+	* {{{Short introduction to log4j}http://logging.apache.org/log4j/1.2/manual.html}}
+
+	* {{{Log4j tutorial with Tomcat examples}http://www.laliluna.de/articles/posts/log4j-tutorial.html}}
+
+	[]
