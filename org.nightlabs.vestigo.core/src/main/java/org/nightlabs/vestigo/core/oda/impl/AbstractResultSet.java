@@ -24,8 +24,8 @@ import org.nightlabs.vestigo.childvm.shared.dto.ResultCellPersistentObjectRefDTO
 import org.nightlabs.vestigo.childvm.shared.dto.ResultCellSimpleDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.ResultCellTransientObjectRefDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.ResultRowDTO;
-import org.nightlabs.vestigo.core.VestigoCorePlugin;
 import org.nightlabs.vestigo.core.ObjectReference;
+import org.nightlabs.vestigo.core.VestigoCorePlugin;
 import org.nightlabs.vestigo.core.internal.PersistentObjectReferenceImpl;
 import org.nightlabs.vestigo.core.internal.TransientObjectReferenceImpl;
 import org.nightlabs.vestigo.core.oda.Query;
@@ -103,7 +103,7 @@ public abstract class AbstractResultSet implements ResultSet
 			return;
 
 		if (resultRowDTOs.isEmpty())
-			resultSetMetaData = new ResultSetMetaData(new ResultSetMetaData.Column("empty"));
+			resultSetMetaData = new ResultSetMetaData(new ResultSetMetaData.Column(">>> empty <<<"));
 		else {
 			ResultRowDTO firstRow = resultRowDTOs.get(0);
 

@@ -137,7 +137,7 @@ implements IConcurrentModel // not necessary - just convenient to see the javado
 	protected Object[] getRowsLoadedArray() // should be private but is needed for workaround in ResultSetTableComposite. Marco :-)
 	{
 		if (rowsLoadedArray == null) {
-			synchronized (this) {
+			synchronized (mutex) {
 				if (rowsLoadedArray == null)
 					rowsLoadedArray = rowsLoaded.toArray();
 			}
@@ -181,12 +181,12 @@ implements IConcurrentModel // not necessary - just convenient to see the javado
 			@Override
 			protected IStatus run(IProgressMonitor monitor) {
 				try {
+					int columnCount = resultSet.getMetaData().getColumnCount();
 					// load 100 first results
 					List<ResultSetTableRow> rows = new ArrayList<ResultSetTableRow>(Math.min(finalBunchSize, 10000));
 					int counter = 0;
 					boolean lastResultSetNextResult = true;
 					while (++counter <= finalBunchSize && (lastResultSetNextResult = resultSet.next())) {
-						int columnCount = resultSet.getMetaData().getColumnCount(); // TODO move up - only testing with call to next first.
 						ResultSetTableCell[] cells = new ResultSetTableCell[columnCount];
 						for (int columnIndex = 1; columnIndex <= columnCount; ++columnIndex) {
 							Object cellContent = resultSet.getObject(columnIndex);
@@ -239,9 +239,12 @@ implements IConcurrentModel // not necessary - just convenient to see the javado
 
 	public void close()
 	{
-		if (closed)
-			return;
-		closed = true;
+		synchronized (mutex) {
+			if (closed)
+				return;
+
+			closed = true;
+		}
 
 		Display d = display;
 		if (d != null) {

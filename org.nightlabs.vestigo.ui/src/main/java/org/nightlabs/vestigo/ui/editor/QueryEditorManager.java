@@ -811,6 +811,10 @@ public abstract class QueryEditorManager
 				}
 			};
 
+			// The meta-data is needed on the UI thread and it is cached. Thus, we already cause it to be loaded now so that
+			// (1) it doesn't block the UI thread later and (2) an exception is already thrown here (if there is an error).
+			resultSet.getMetaData();
+
 			resultSetTableModel = new ResultSetTableModel(connection, resultSet);
 			connection2ResultSetTableModel.put(connection, resultSetTableModel);
 			this.resultSetTableModel = resultSetTableModel;
