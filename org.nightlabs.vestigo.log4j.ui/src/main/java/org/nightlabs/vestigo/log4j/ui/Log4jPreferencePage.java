@@ -46,9 +46,27 @@ public class Log4jPreferencePage extends FieldEditorPreferencePage implements IW
 	{
 		addHorizontalSeparator(getFieldEditorParent());
 
-		addField(new BooleanFieldEditor(Log4jConfigurator.PREFERENCE_KEY_ENABLED, "Configure log4j:", BooleanFieldEditor.SEPARATE_LABEL, getFieldEditorParent()));
-		addField(new BooleanFieldEditor(Log4jConfigurator.PREFERENCE_KEY_CONSOLE_APPENDER_ENABLED, "Enable console appender:", BooleanFieldEditor.SEPARATE_LABEL, getFieldEditorParent()));
-		addField(new BooleanFieldEditor(Log4jConfigurator.PREFERENCE_KEY_ROLLING_FILE_APPENDER_ENABLED, "Enable rolling file appender:", BooleanFieldEditor.SEPARATE_LABEL, getFieldEditorParent()));
+		{
+			Composite fieldEditorParent = getFieldEditorParent();
+			BooleanFieldEditor editor = new BooleanFieldEditor(Log4jConfigurator.PREFERENCE_KEY_ENABLED, "Configure log4j:", BooleanFieldEditor.SEPARATE_LABEL, fieldEditorParent);
+			String toolTipText = "Whether to configure log4j at all. The settings on this page have only an effect, if this is enabled. If you do not enable this, log4j is left unconfigured by Vestigo. This means, configuration from somewhere else is left unchanged.";
+			editor.getDescriptionControl(fieldEditorParent).setToolTipText(toolTipText);
+			addField(editor);
+		}
+		{
+			Composite fieldEditorParent = getFieldEditorParent();
+			BooleanFieldEditor editor = new BooleanFieldEditor(Log4jConfigurator.PREFERENCE_KEY_CONSOLE_APPENDER_ENABLED, "Enable console appender:", BooleanFieldEditor.SEPARATE_LABEL, fieldEditorParent);
+			String toolTipText = "Whether to enable logging to the console. This is usually only required for debugging purposes.";
+			editor.getDescriptionControl(fieldEditorParent).setToolTipText(toolTipText);
+			addField(editor);
+		}
+		{
+			Composite fieldEditorParent = getFieldEditorParent();
+			BooleanFieldEditor editor = new BooleanFieldEditor(Log4jConfigurator.PREFERENCE_KEY_ROLLING_FILE_APPENDER_ENABLED, "Enable rolling file appender:", BooleanFieldEditor.SEPARATE_LABEL, fieldEditorParent);
+			String toolTipText = String.format("Whether to enable logging to this file: %s", Log4jConfigurator.sharedInstance().getLogFile().getAbsolutePath());
+			editor.getDescriptionControl(fieldEditorParent).setToolTipText(toolTipText);
+			addField(editor);
+		}
 
 		addHorizontalSeparator(getFieldEditorParent());
 

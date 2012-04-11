@@ -51,7 +51,7 @@
          point="org.eclipse.datatools.connectivity.connectionProfile">
       <category
             id="org.nightlabs.vestigo.core.oda.JDODriver"
-            name="JDO Connections"
+            name="JDO data sources"
             parentCategory="org.nightlabs.vestigo.core.oda"/>
       <connectionProfile
             category="org.nightlabs.vestigo.core.oda.JDODriver"
@@ -66,9 +66,9 @@
             profile="org.nightlabs.vestigo.core.oda.JDODriver"/>
       <newWizard
             id="org.nightlabs.vestigo.core.oda.JDODriver"
-            name="New JDO connection"
+            name="New JDO data source"
             class="org.eclipse.datatools.connectivity.oda.design.ui.wizards.NewDataSourceWizard"
-            description="Create a new JDO connection"
+            description="Create a new JDO data source"
             icon="icons/jdo.png"
             profile="org.nightlabs.vestigo.core.oda.JDODriver"/>
    </extension>
@@ -78,7 +78,7 @@
          point="org.eclipse.datatools.connectivity.connectionProfile">
       <category
             id="org.nightlabs.vestigo.core.oda.JPADriver"
-            name="JPA Connections"
+            name="JPA data sources"
             parentCategory="org.nightlabs.vestigo.core.oda"/>
       <connectionProfile
             category="org.nightlabs.vestigo.core.oda.JPADriver"
@@ -93,9 +93,9 @@
             profile="org.nightlabs.vestigo.core.oda.JPADriver"/>
       <newWizard
             id="org.nightlabs.vestigo.core.oda.JPADriver"
-            name="New JPA connection"
+            name="New JPA data source"
             class="org.eclipse.datatools.connectivity.oda.design.ui.wizards.NewDataSourceWizard"
-            description="Create a new JPA connection"
+            description="Create a new JPA data source"
             icon="icons/jpa.png"
             profile="org.nightlabs.vestigo.core.oda.JPADriver"/>
    </extension>

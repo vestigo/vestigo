@@ -44,7 +44,7 @@ public class QueryEditorManagerComposite extends Composite
 		layout.numColumns = 3;
 
 		// first row
-		new Label(this, SWT.NONE).setText("Connection: ");
+		new Label(this, SWT.NONE).setText("Data source: ");
 		createConnectionProfileCombo();
 		createExecuteQueryButton();
 	}

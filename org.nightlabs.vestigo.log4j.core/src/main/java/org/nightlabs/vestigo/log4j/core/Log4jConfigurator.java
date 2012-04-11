@@ -52,6 +52,7 @@ public class Log4jConfigurator
 	private String workspaceRootAbsolutePath = workspaceRoot.getRawLocation().toFile().getAbsolutePath();
 	private File vestigoLog4jCorePluginStateLocation = VestigoLog4jCorePlugin.getDefault().getStateLocation().toFile();
 	private File log4jPropertiesFile = new File(vestigoLog4jCorePluginStateLocation, ResourceHelper.LOG4J_PROPERTIES_FILE_NAME);
+	private File logFile = new File(vestigoLog4jCorePluginStateLocation, "vestigo.log");
 
 	private boolean log4jPropertyWatchdogRunning = false;
 
@@ -80,17 +81,22 @@ public class Log4jConfigurator
 		}
 	}
 
+	public File getLogFile() {
+		return logFile;
+	}
+
 	private void createLog4jPropertiesFile() throws IOException
 	{
 		vestigoLog4jCorePluginStateLocation.mkdirs();
 
 		Map<String, String> variables = new HashMap<String, String>();
+		variables.put("additionalProperties", getLog4jAdditionalProperties());
 		variables.put("commaAndConsoleAppender", isConsoleAppenderEnabled() ? ", AC" : "");
 		variables.put("commaAndRollingFileAppender", isRollingFileAppenderEnabled() ? ", AR" : "");
+		variables.put("logFile", logFile.getAbsolutePath());
+		variables.put("rootLogLevel", getLog4jRootLogLevel());
 		variables.put("vestigoLog4jCorePluginStateLocation", vestigoLog4jCorePluginStateLocation.getAbsolutePath());
 		variables.put("workspace", workspaceRootAbsolutePath);
-		variables.put("rootLogLevel", getLog4jRootLogLevel());
-		variables.put("additionalProperties", getLog4jAdditionalProperties());
 
 		File tmpFile = new File(log4jPropertiesFile.getParentFile(), "log4j.tmp");
 

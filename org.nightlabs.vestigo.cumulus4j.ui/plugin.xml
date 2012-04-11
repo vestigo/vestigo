@@ -6,7 +6,7 @@
          point="org.eclipse.datatools.connectivity.connectionProfile">
       <category
             id="org.nightlabs.vestigo.cumulus4j.core.oda.JDOCumulus4jDriver"
-            name="JDO+Cumulus4j Connections"
+            name="JDO+Cumulus4j data sources"
             parentCategory="org.nightlabs.vestigo.core.oda"/>
       <connectionProfile
             category="org.nightlabs.vestigo.cumulus4j.core.oda.JDOCumulus4jDriver"
@@ -21,9 +21,9 @@
             profile="org.nightlabs.vestigo.cumulus4j.core.oda.JDOCumulus4jDriver"/>
       <newWizard
             id="org.nightlabs.vestigo.cumulus4j.core.oda.JDOCumulus4jDriver"
-            name="New JDO+Cumulus4j connection"
+            name="New JDO+Cumulus4j data source"
             class="org.eclipse.datatools.connectivity.oda.design.ui.wizards.NewDataSourceWizard"
-            description="Create a new JDO+Cumulus4j connection"
+            description="Create a new JDO+Cumulus4j data source"
             icon="icons/jdo.png"
             profile="org.nightlabs.vestigo.cumulus4j.core.oda.JDOCumulus4jDriver"/>
    </extension>
@@ -33,7 +33,7 @@
          point="org.eclipse.datatools.connectivity.connectionProfile">
       <category
             id="org.nightlabs.vestigo.cumulus4j.core.oda.JPACumulus4jDriver"
-            name="JPA+Cumulus4j Connections"
+            name="JPA+Cumulus4j data sources"
             parentCategory="org.nightlabs.vestigo.core.oda"/>
       <connectionProfile
             category="org.nightlabs.vestigo.cumulus4j.core.oda.JPACumulus4jDriver"
@@ -48,9 +48,9 @@
             profile="org.nightlabs.vestigo.cumulus4j.core.oda.JPACumulus4jDriver"/>
       <newWizard
             id="org.nightlabs.vestigo.cumulus4j.core.oda.JPACumulus4jDriver"
-            name="New JPA+Cumulus4j connection"
+            name="New JPA+Cumulus4j data source"
             class="org.eclipse.datatools.connectivity.oda.design.ui.wizards.NewDataSourceWizard"
-            description="Create a new JPA+Cumulus4j connection"
+            description="Create a new JPA+Cumulus4j data source"
             icon="icons/jpa.png"
             profile="org.nightlabs.vestigo.cumulus4j.core.oda.JPACumulus4jDriver"/>
    </extension>

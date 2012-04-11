@@ -15,7 +15,7 @@ Data source
 	query you wish to run: You can execute every JDO query on every JDO data source; and every JPA query
 	on every JPA data source likewise.
 
-	Note, that the names <data source> and <connection> (or <connection profile>) are often used interchangeably.
+	Note, that the names <data source> and <connection profile> are often used interchangeably.
 
 	A data source consists of the following coordinates:
 
