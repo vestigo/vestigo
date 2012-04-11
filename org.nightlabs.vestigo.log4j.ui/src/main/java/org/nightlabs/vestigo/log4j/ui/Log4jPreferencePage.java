@@ -4,6 +4,7 @@ import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.jface.preference.BooleanFieldEditor;
 import org.eclipse.jface.preference.ComboFieldEditor;
 import org.eclipse.jface.preference.FieldEditorPreferencePage;
+import org.eclipse.jface.preference.IntegerFieldEditor;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
@@ -31,6 +32,8 @@ public class Log4jPreferencePage extends FieldEditorPreferencePage implements IW
 		getPreferenceStore().setDefault(Log4jConfigurator.PREFERENCE_KEY_ENABLED, Log4jConfigurator.PREFERENCE_DEFAULT_ENABLED);
 		getPreferenceStore().setDefault(Log4jConfigurator.PREFERENCE_KEY_CONSOLE_APPENDER_ENABLED, Log4jConfigurator.PREFERENCE_DEFAULT_CONSOLE_APPENDER_ENABLED);
 		getPreferenceStore().setDefault(Log4jConfigurator.PREFERENCE_KEY_ROLLING_FILE_APPENDER_ENABLED, Log4jConfigurator.PREFERENCE_DEFAULT_ROLLING_FILE_APPENDER_ENABLED);
+		getPreferenceStore().setDefault(Log4jConfigurator.PREFERENCE_KEY_ROLLING_FILE_APPENDER_MAX_BACKUP_INDEX, Log4jConfigurator.PREFERENCE_DEFAULT_ROLLING_FILE_APPENDER_MAX_BACKUP_INDEX);
+		getPreferenceStore().setDefault(Log4jConfigurator.PREFERENCE_KEY_ROLLING_FILE_APPENDER_MAX_FILE_SIZE_MB, Log4jConfigurator.PREFERENCE_DEFAULT_ROLLING_FILE_APPENDER_MAX_FILE_SIZE_MB);
 		getPreferenceStore().setDefault(Log4jConfigurator.PREFERENCE_KEY_LOG4J_ADDITIONAL_PROPERTIES, Log4jConfigurator.PREFERENCE_DEFAULT_LOG4J_ADDITIONAL_PROPERTIES);
 		getPreferenceStore().setDefault(Log4jConfigurator.PREFERENCE_KEY_LOG4J_ROOT_LOG_LEVEL, Log4jConfigurator.PREFERENCE_DEFAULT_LOG4J_ROOT_LOG_LEVEL);
 	}
@@ -60,13 +63,19 @@ public class Log4jPreferencePage extends FieldEditorPreferencePage implements IW
 			editor.getDescriptionControl(fieldEditorParent).setToolTipText(toolTipText);
 			addField(editor);
 		}
+
+		addHorizontalSeparator(getFieldEditorParent());
+
 		{
 			Composite fieldEditorParent = getFieldEditorParent();
-			BooleanFieldEditor editor = new BooleanFieldEditor(Log4jConfigurator.PREFERENCE_KEY_ROLLING_FILE_APPENDER_ENABLED, "Enable rolling file appender:", BooleanFieldEditor.SEPARATE_LABEL, fieldEditorParent);
+			BooleanFieldEditor editor = new BooleanFieldEditor(Log4jConfigurator.PREFERENCE_KEY_ROLLING_FILE_APPENDER_ENABLED, "Rolling file appender: Enable:", BooleanFieldEditor.SEPARATE_LABEL, fieldEditorParent);
 			String toolTipText = String.format("Whether to enable logging to this file: %s", Log4jConfigurator.sharedInstance().getLogFile().getAbsolutePath());
 			editor.getDescriptionControl(fieldEditorParent).setToolTipText(toolTipText);
 			addField(editor);
 		}
+
+		addField(new IntegerFieldEditor(Log4jConfigurator.PREFERENCE_KEY_ROLLING_FILE_APPENDER_MAX_FILE_SIZE_MB, "Rolling file appender: Max file size (MB):", getFieldEditorParent()));
+		addField(new IntegerFieldEditor(Log4jConfigurator.PREFERENCE_KEY_ROLLING_FILE_APPENDER_MAX_BACKUP_INDEX, "Rolling file appender: Max backup index:", getFieldEditorParent()));
 
 		addHorizontalSeparator(getFieldEditorParent());
 

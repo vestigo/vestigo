@@ -39,6 +39,16 @@ public class LogDumpedStreamThread extends Thread
 	private volatile StringBuffer outputStringBuffer;
 	private volatile int outputStringBufferMaxLength = 1024 * 1024;
 
+	private Logger childProcessLogger;
+
+	public LogDumpedStreamThread(String childProcessLoggerName)
+	{
+		if (childProcessLoggerName == null)
+			childProcessLogger = logger;
+		else
+			childProcessLogger = LoggerFactory.getLogger(childProcessLoggerName);
+	}
+
 	public void write(byte[] data, int length)
 	{
 		if (data == null)
@@ -126,7 +136,7 @@ public class LogDumpedStreamThread extends Thread
 						outputStringBuffer.append(currentBufferString);
 					}
 
-					logger.info(
+					childProcessLogger.info(
 							'\n' + prefixEveryLine(currentBufferString)
 							);
 

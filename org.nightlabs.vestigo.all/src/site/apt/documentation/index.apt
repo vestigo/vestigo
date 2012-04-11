@@ -37,6 +37,10 @@ Documentation
 
 	[]
 
+* Logging
+
+	How to enable and configure logging? Where is the log file? See the {{{./logging.html}Logging documentation}}.
+
 * FAQ - Frequently Asked Questions
 
 	You can find answers to some {{{./faq.html}frequently asked questions here}}.

@@ -13,12 +13,14 @@ Logging
 
 * ChildVM
 
-	Vestigo starts a separate Java virtual machine for every data source. This prevents class-loading-related problems (especially
-	the JDBC drivers are well known for causing memory leaks with dynamic class-loaders) and guarantees complete isolation
-	of the data sources' JVMs (from each other as well as from the main (Eclipse) JVM).
+	Vestigo starts a separate Java virtual machine for every data source. This prevents class-loading-related
+	problems (especially JDBC drivers are well known for causing memory leaks with dynamic class-loaders)
+	and guarantees complete isolation of the data sources' JVMs (from each other as well as from the main
+	(Eclipse) JVM).
 
-	On this preference-page, you can set the root log level (which applies to everything unless overridden for specific categories)
-	as well as arbitrary additional properties. The most common way to use the additional properties is to override the log level
+	On the <ChildVM> preference-page, you can set the root log level (which applies to everything unless
+	overridden for specific categories) as well as arbitrary additional properties. The most common way to
+	use the additional properties is to override the log level
 	for certain categories like in this example:
 
 --------------------------------------------
@@ -26,22 +28,35 @@ log4j.category.DataNucleus=INFO
 log4j.category.DataNucleus.Datastore.Native=DEBUG
 --------------------------------------------
 
-	Note, that the settings on this page only affect data sources when they are opened. In other words, a data source's JVM is
-	newly configured whenever it is opened (or re-opened). Hence, you need to close (in the <Data Source Explorer> view
-	right-click and <Disconnect>) and then re-open (right-click and <Connect>) an already open data source after changing
-	the settings on this page.
+	Note, that changes on this page only affect data sources which are opened <<after>> the settings were
+	applied. In other words, a data source's JVM is newly configured once at the time it is opened (or re-opened).
+	Hence, you need to close (in the <Data Source Explorer> view right-click and <Disconnect>) and then
+	re-open (right-click and <Connect>) every data source that is currently open but should take the new
+	settings into account.
 
 * Log4j
 
-	This page controls the logging in the main (Eclipse) JVM. The log output from the ChildVMs is logged into the main log,
-	too, but of course, this requires both the ChildVM's and the main VM's log4j configuration to enable logging appropriately.
+	This page controls the logging in the main (Eclipse) JVM. As the log output from all ChildVMs is logged
+	into the main log with the log-category <<<org.nightlabs.vestigo.CHILD_VM>>>, these settings apply to both
+	the main (Eclipse) JVM and all the child VMs.
+
+	By default, the first setting <Configure log4j> is disabled. This means, Vestigo will not configure log4j
+	at all, thus preventing interference with other Eclipse plug-ins which might themselves configure log4j.
+	Usually this means, logging is disabled. If you want to enable logging, you must enable the setting <Configure log4j>.
+	If you additionally have the setting <Enable rolling file appender> enabled, the following log-file will
+	be written:
+
+	<<<$\{workspace}/.metadata/.plugins/org.nightlabs.vestigo.log4j.core/vestigo.log>>>
+
+	Since a rolling file appender is used, the log files are automatically rotated when a certain size
+	is reached/exceeded and old files are automatically removed.
 
 * Further reading
 
 	If you want to learn more about configuring log4j, please follow these links:
 
-	* {{{Short introduction to log4j}http://logging.apache.org/log4j/1.2/manual.html}}
+	* {{{http://logging.apache.org/log4j/1.2/manual.html}Short introduction to log4j}}
 
-	* {{{Log4j tutorial with Tomcat examples}http://www.laliluna.de/articles/posts/log4j-tutorial.html}}
+	* {{{http://www.laliluna.de/articles/posts/log4j-tutorial.html}Log4j tutorial with Tomcat examples}}
 
 	[]

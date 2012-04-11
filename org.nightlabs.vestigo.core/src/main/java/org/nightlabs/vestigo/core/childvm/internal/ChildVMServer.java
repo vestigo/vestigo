@@ -48,6 +48,8 @@ public class ChildVMServer
 	 */
 	public static final String CHARSET_NAME_ISO_8859_1 = "ISO-8859-1";
 
+	public static final String CHILD_VM_LOGGER_NAME = "org.nightlabs.vestigo.CHILD_VM";
+
 	public static final String PREFERENCE_KEY_JAVA_COMMAND = "childVM.java.command";
 	public static final String PREFERENCE_DEFAULT_JAVA_COMMAND = "java";
 
@@ -378,10 +380,10 @@ public class ChildVMServer
 			.command(commandWithArguments)
 			.start();
 
-			dumpInputStreamToFileThread = new DumpStreamToFileThread(serverProcess.getInputStream(), stdOutFile);
+			dumpInputStreamToFileThread = new DumpStreamToFileThread(serverProcess.getInputStream(), stdOutFile, CHILD_VM_LOGGER_NAME);
 			dumpInputStreamToFileThread.start();
 
-			dumpErrorStreamToFileThread = new DumpStreamToFileThread(serverProcess.getErrorStream(), stdErrFile);
+			dumpErrorStreamToFileThread = new DumpStreamToFileThread(serverProcess.getErrorStream(), stdErrFile, CHILD_VM_LOGGER_NAME);
 			dumpErrorStreamToFileThread.start();
 
 			try {

@@ -24,6 +24,8 @@ public abstract class MavenRunner
 
 	public static final String PREFERENCE_KEY_MAVEN_REPOSITORIES = "MavenRunner.maven.repositories";
 
+	public static final String MAVEN_LOGGER_NAME = "org.nightlabs.vestigo.MAVEN";
+
 	private File projectDirectory;
 	private File stdOutFile;
 	private File stdErrFile;
@@ -63,11 +65,11 @@ public abstract class MavenRunner
 			.command(commandWithArguments)
 			.start();
 
-			dumpInputStreamToFileThread = new DumpStreamToFileThread(mavenProcess.getInputStream(), stdOutFile);
+			dumpInputStreamToFileThread = new DumpStreamToFileThread(mavenProcess.getInputStream(), stdOutFile, MAVEN_LOGGER_NAME);
 			dumpInputStreamToFileThread.setOutputStringBuffer(mavenOutput);
 			dumpInputStreamToFileThread.start();
 
-			dumpErrorStreamToFileThread = new DumpStreamToFileThread(mavenProcess.getErrorStream(), stdErrFile);
+			dumpErrorStreamToFileThread = new DumpStreamToFileThread(mavenProcess.getErrorStream(), stdErrFile, MAVEN_LOGGER_NAME);
 			dumpErrorStreamToFileThread.setOutputStringBuffer(mavenOutput);
 			dumpErrorStreamToFileThread.start();
 

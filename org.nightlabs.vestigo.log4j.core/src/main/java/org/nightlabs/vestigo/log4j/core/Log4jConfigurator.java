@@ -15,6 +15,7 @@ import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.nightlabs.util.IOUtil;
 import org.nightlabs.vestigo.core.LogLevel;
+import org.nightlabs.vestigo.core.childvm.internal.ChildVMServer;
 import org.nightlabs.vestigo.log4j.core.resource.ResourceHelper;
 import org.osgi.service.prefs.Preferences;
 import org.slf4j.Logger;
@@ -44,8 +45,14 @@ public class Log4jConfigurator
 
 	public static final String PREFERENCE_KEY_LOG4J_ADDITIONAL_PROPERTIES = "log4jConfigurator.additionalProperties";
 	//public static final String PREFERENCE_DEFAULT_LOG4J_ADDITIONAL_PROPERTIES = "#log4j.category.mypackage.MyClass=DEBUG\n#log4j.additivity.mypackage.MyClass=false";
-	public static final String PREFERENCE_DEFAULT_LOG4J_ADDITIONAL_PROPERTIES = "#log4j.category.mypackage.MyClass=DEBUG";
+//	public static final String PREFERENCE_DEFAULT_LOG4J_ADDITIONAL_PROPERTIES = "#log4j.category.mypackage.MyClass=DEBUG";
+	public static final String PREFERENCE_DEFAULT_LOG4J_ADDITIONAL_PROPERTIES = "log4j.category." + ChildVMServer.CHILD_VM_LOGGER_NAME + "=INFO";
 
+	public static final String PREFERENCE_KEY_ROLLING_FILE_APPENDER_MAX_BACKUP_INDEX = "rollingFileAppender.maxBackupIndex";
+	public static final int PREFERENCE_DEFAULT_ROLLING_FILE_APPENDER_MAX_BACKUP_INDEX = 9;
+
+	public static final String PREFERENCE_KEY_ROLLING_FILE_APPENDER_MAX_FILE_SIZE_MB = "rollingFileAppender.maxFileSizeMB";
+	public static final int PREFERENCE_DEFAULT_ROLLING_FILE_APPENDER_MAX_FILE_SIZE_MB = 5;
 
 	private Preferences preferences = VestigoLog4jCorePlugin.getDefault().getPreferences();
 	private IWorkspaceRoot workspaceRoot = ResourcesPlugin.getWorkspace().getRoot();
@@ -94,6 +101,8 @@ public class Log4jConfigurator
 		variables.put("commaAndConsoleAppender", isConsoleAppenderEnabled() ? ", AC" : "");
 		variables.put("commaAndRollingFileAppender", isRollingFileAppenderEnabled() ? ", AR" : "");
 		variables.put("logFile", logFile.getAbsolutePath());
+		variables.put("rollingFileAppender.maxFileSizeMB", String.valueOf(getRollingFileAppender_maxFileSizeMB()));
+		variables.put("rollingFileAppender.maxBackupIndex", String.valueOf(getRollingFileAppender_maxBackupIndex()));
 		variables.put("rootLogLevel", getLog4jRootLogLevel());
 		variables.put("vestigoLog4jCorePluginStateLocation", vestigoLog4jCorePluginStateLocation.getAbsolutePath());
 		variables.put("workspace", workspaceRootAbsolutePath);
@@ -147,4 +156,13 @@ public class Log4jConfigurator
 	{
 		return preferences.getBoolean(PREFERENCE_KEY_ROLLING_FILE_APPENDER_ENABLED, PREFERENCE_DEFAULT_ROLLING_FILE_APPENDER_ENABLED);
 	}
+
+	private int getRollingFileAppender_maxBackupIndex() {
+		return preferences.getInt(PREFERENCE_KEY_ROLLING_FILE_APPENDER_MAX_BACKUP_INDEX, PREFERENCE_DEFAULT_ROLLING_FILE_APPENDER_MAX_BACKUP_INDEX);
+	}
+
+	private int getRollingFileAppender_maxFileSizeMB() {
+		return preferences.getInt(PREFERENCE_KEY_ROLLING_FILE_APPENDER_MAX_FILE_SIZE_MB, PREFERENCE_DEFAULT_ROLLING_FILE_APPENDER_MAX_FILE_SIZE_MB);
+	}
+
 }

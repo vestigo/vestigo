@@ -20,8 +20,7 @@ public class DumpStreamToFileThread extends Thread
 	private OutputStream outputStream;
 	private volatile boolean ignoreErrors = false;
 	private volatile boolean forceInterrupt = false;
-
-	private LogDumpedStreamThread logDumpedStreamThread = new LogDumpedStreamThread();
+	private LogDumpedStreamThread logDumpedStreamThread;
 
 	public void setIgnoreErrors(boolean ignoreErrors) {
 		this.ignoreErrors = ignoreErrors;
@@ -38,7 +37,7 @@ public class DumpStreamToFileThread extends Thread
 		return forceInterrupt || super.isInterrupted();
 	}
 
-	public DumpStreamToFileThread(InputStream inputStream, File outputFile) throws IOException
+	public DumpStreamToFileThread(InputStream inputStream, File outputFile, String childProcessLoggerName) throws IOException
 	{
 		if (inputStream == null)
 			throw new IllegalArgumentException("inputStream == null");
@@ -48,6 +47,7 @@ public class DumpStreamToFileThread extends Thread
 		this.inputStream = inputStream;
 		this.outputFile = outputFile;
 		this.outputStream = new FileOutputStream(this.outputFile);
+		this.logDumpedStreamThread = new LogDumpedStreamThread(childProcessLoggerName);
 	}
 
 	@Override
