@@ -1,5 +1,6 @@
 package org.nightlabs.vestigo.core;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
@@ -10,6 +11,11 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IConfigurationElement;
+import org.eclipse.core.runtime.IExtension;
+import org.eclipse.core.runtime.IExtensionPoint;
+import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.core.runtime.preferences.IPreferencesService;
@@ -115,6 +121,45 @@ implements BundleActivator
 		licenceManager = new LicenceManagerOfflineImpl("org.nightlabs.vestigo", version);
 
 		logger.info("start: Started context.bundle.symbolicName={}", context.getBundle().getSymbolicName());
+
+		for (Startup startup : getStartups()) {
+			logger.debug("start: Triggering startup {}", startup.getClass().getName());
+			startup.startup();
+		}
+	}
+
+	protected static List<Startup> getStartups()
+	{
+		List<Startup> result = new ArrayList<Startup>();
+
+		final IExtensionRegistry registry = Platform.getExtensionRegistry();
+		if (registry == null)
+			throw new IllegalStateException("Platform.getExtensionRegistry() returned null!");
+
+		final String extensionPointId = "org.nightlabs.vestigo.core.startup";
+		final IExtensionPoint extensionPoint = registry.getExtensionPoint(extensionPointId);
+		if (extensionPoint == null)
+			throw new IllegalStateException("Unable to resolve extension-point: " + extensionPointId); //$NON-NLS-1$
+
+		final IExtension[] extensions = extensionPoint.getExtensions();
+		for (final IExtension extension : extensions) {
+			final IConfigurationElement[] elements = extension.getConfigurationElements();
+			for (final IConfigurationElement element : elements) {
+				Object executableExtension;
+				try {
+					executableExtension = element.createExecutableExtension("class");
+				} catch (CoreException e) {
+					throw new RuntimeException("Could not create executable extension for class \"" + element.getAttribute("class") + "\" declared by extension to point \"" + extensionPointId + "\" in plugin \"" + extension.getContributor().getName() + "\": " + e, e);
+				}
+
+				if (!(executableExtension instanceof Startup))
+					throw new IllegalStateException("Class \"" + element.getAttribute("class") + "\" declared by extension to point \"" + extensionPointId + "\" in plugin \"" + extension.getContributor().getName() + "\" does not implement \"" + Startup.class.getName() + "\"!");
+
+				result.add((Startup) executableExtension);
+			}
+		}
+
+		return result;
 	}
 
 	private Preferences preferences;

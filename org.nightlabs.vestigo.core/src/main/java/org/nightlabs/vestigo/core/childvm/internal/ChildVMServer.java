@@ -29,9 +29,9 @@ import org.eclipse.core.runtime.Platform;
 import org.nightlabs.util.IOUtil;
 import org.nightlabs.vestigo.childvm.shared.api.ChildVM;
 import org.nightlabs.vestigo.childvm.webapp.client.ChildVMWebappClient;
+import org.nightlabs.vestigo.core.LogLevel;
 import org.nightlabs.vestigo.core.VestigoCorePlugin;
 import org.nightlabs.vestigo.core.childprocess.DumpStreamToFileThread;
-import org.nightlabs.vestigo.core.childvm.LogLevel;
 import org.nightlabs.vestigo.core.childvm.WebApp;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,6 +42,11 @@ import org.slf4j.LoggerFactory;
 public class ChildVMServer
 {
 	private static final org.slf4j.Logger logger = LoggerFactory.getLogger(ChildVMServer.class);
+
+	/**
+	 * Properties files are encoded with ISO-8859-1.
+	 */
+	public static final String CHARSET_NAME_ISO_8859_1 = "ISO-8859-1";
 
 	public static final String PREFERENCE_KEY_JAVA_COMMAND = "childVM.java.command";
 	public static final String PREFERENCE_DEFAULT_JAVA_COMMAND = "java";
@@ -306,8 +311,8 @@ public class ChildVMServer
 		try {
 			OutputStream out = new FileOutputStream(destinationFile);
 			try {
-				Reader reader = new InputStreamReader(in, IOUtil.CHARSET_UTF_8);
-				Writer writer = new OutputStreamWriter(out, IOUtil.CHARSET_UTF_8);
+				Reader reader = new InputStreamReader(in, CHARSET_NAME_ISO_8859_1);
+				Writer writer = new OutputStreamWriter(out, CHARSET_NAME_ISO_8859_1);
 				IOUtil.replaceTemplateVariables(writer, reader, variables);
 				writer.close();
 				reader.close();

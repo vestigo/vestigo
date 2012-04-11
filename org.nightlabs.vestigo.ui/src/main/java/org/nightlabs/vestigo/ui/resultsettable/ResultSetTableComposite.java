@@ -103,6 +103,9 @@ implements ISelectionProvider, LabelTextOptionsContainer
 
 	protected void refresh()
 	{
+		if (tableViewer.getInput() == null)
+			return; // No need to refresh anything, if the table is empty.
+
 		// tableViewer.refresh();
 		// Unfortunately, 'tableViewer.refresh()' causes the table to turn completely blank (until scrolled or clicked)
 		// and I have no idea how to prevent this (tried quite a lot already) :-( Probably a bug related to SWT.VIRTUAL :-(
@@ -114,7 +117,7 @@ implements ISelectionProvider, LabelTextOptionsContainer
 		for (int y = 0; y < table.getBounds().height; ++y) {
 			TableItem item = table.getItem(new Point(1, y));
 			if (item == null)
-				logger.warn("refresh: item is null!");
+				logger.debug("refresh: item is null!"); // This happens really often, hence using debug.
 			else
 				tableItems.add(item);
 		}

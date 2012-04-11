@@ -34,6 +34,11 @@
 		<module>../org.nightlabs.vestigo.jdt.core</module>
 		<module>../org.nightlabs.vestigo.jdt.ui</module>
 		<!-- END JDT -->
+		
+		<!-- BEGIN log4j -->
+		<module>../org.nightlabs.vestigo.log4j.core</module>
+		<module>../org.nightlabs.vestigo.log4j.ui</module>
+		<!-- END log4j -->
 
 		<!-- BEGIN Maven -->
 		<module>../org.nightlabs.vestigo.maven.core</module>

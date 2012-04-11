@@ -13,8 +13,8 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 import org.eclipse.ui.preferences.ScopedPreferenceStore;
+import org.nightlabs.vestigo.core.LogLevel;
 import org.nightlabs.vestigo.core.VestigoCorePlugin;
-import org.nightlabs.vestigo.core.childvm.LogLevel;
 import org.nightlabs.vestigo.core.childvm.internal.ChildVMServer;
 import org.nightlabs.vestigo.ui.preference.MultiLineStringFieldEditor;
 
@@ -72,14 +72,12 @@ public class ChildVMPreferencePage extends FieldEditorPreferencePage implements 
 
 		addHorizontalSeparator(getFieldEditorParent());
 
-		final String[][] logLevelNamesAndValues = new String[][] {
-				{ "TRACE (log everything)", LogLevel.TRACE.name() },
-				{ "DEBUG (log a lot)", LogLevel.DEBUG.name() },
-				{ "INFO (log normally)", LogLevel.INFO.name() },
-				{ "WARN (log only warnings and errors)", LogLevel.WARN.name() },
-				{ "ERROR (log only errors)", LogLevel.ERROR.name() },
-				{ "FATAL (log only severe errors)", LogLevel.FATAL.name() }
-		};
+		final String[][] logLevelNamesAndValues = new String[LogLevel.values().length][];
+		for (int i = 0; i < logLevelNamesAndValues.length; i++) {
+			LogLevel logLevel = LogLevel.values()[i];
+			logLevelNamesAndValues[i] = new String[] { logLevel.getDisplayName(), logLevel.name() };
+		}
+
 		addField(new ComboFieldEditor(ChildVMServer.PREFERENCE_KEY_LOG4J_ROOT_LOG_LEVEL, "Log4j: Root log level:", logLevelNamesAndValues, getFieldEditorParent()));
 		addField(new MultiLineStringFieldEditor(ChildVMServer.PREFERENCE_KEY_LOG4J_ADDITIONAL_PROPERTIES, "Log4j: Additional properties:", getFieldEditorParent()));
 

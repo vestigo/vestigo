@@ -6,6 +6,7 @@
    <extension-point id="connectionProfile" name="ConnectionProfile" schema="schema/connectionProfile.exsd"/>
    <extension-point id="transientConnectionPropertiesProvider" name="TransientConnectionPropertiesProvider" schema="schema/transientConnectionPropertiesProvider.exsd"/>
    <extension-point id="connectionPropertiesFilter" name="connectionPropertiesFilter" schema="schema/connectionPropertiesFilter.exsd"/>
+   <extension-point id="startup" name="startup" schema="schema/startup.exsd"/>
 
 
     <extension

@@ -23,10 +23,6 @@
 	</dependencies>
 
 	<build>
-		<pluginManagement>
-			<plugins>
-			</plugins>
-		</pluginManagement>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.felix</groupId>

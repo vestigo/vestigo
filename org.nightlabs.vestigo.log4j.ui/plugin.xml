@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+	<extension point="org.eclipse.ui.preferencePages">
+		<page
+		category="org.nightlabs.vestigo.ui.preference.VestigoCategoryPreferencePage"
+		class="org.nightlabs.vestigo.log4j.ui.Log4jPreferencePage"
+		id="org.nightlabs.vestigo.log4j.ui.Log4jPreferencePage"
+		name="Log4j">
+		</page>
+	</extension>
+</plugin>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.nightlabs.vestigo.core.startup">
+      <startup
+            class="org.nightlabs.vestigo.log4j.core.StartupImpl">
+      </startup>
+   </extension>
+
+</plugin>
