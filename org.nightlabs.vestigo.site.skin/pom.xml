@@ -12,6 +12,20 @@
 		<connection>scm:svn:https://dev.nightlabs.org/svn/public/main/trunk/nightlabs-maven-site-skin</connection>
 		<developerConnection>scm:svn:https://dev.nightlabs.org/svn/public/main/trunk/nightlabs-maven-site-skin</developerConnection>
 	</scm>
+	
+	<distributionManagement>
+		<repository>
+			<id>dev.nightlabs.org-private-libs-release-local</id>
+			<name>dev.nightlabs.org-private-libs-release-local</name>
+			<url>https://dev.nightlabs.org/maven-repository-private/libs-release-local</url>
+		</repository>
+		<snapshotRepository>
+			<id>dev.nightlabs.org-private-libs-snapshot-local</id>
+			<name>dev.nightlabs.org-private-libs-snapshot-local</name>
+			<url>https://dev.nightlabs.org/maven-repository-private/libs-snapshot-local</url>
+		</snapshotRepository>
+	</distributionManagement>
+	
 	<organization>
 		<name>NightLabs Consulting GmbH</name>
 		<url>http://www.nightlabs.de</url>
