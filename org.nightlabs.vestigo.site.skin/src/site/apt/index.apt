@@ -1,0 +1,64 @@
+	---
+	NightLabs Maven Site Skin
+	---
+	Marc Klinger
+	---
+
+
+About NightLabs Maven Site Skin
+
+    This project provides a Maven Site Skin to be used in NightLabs
+    Maven projects. It picks up the visual design used on
+    {{http://www.nightlabs.de}}.
+    
+* Introduction
+
+    This skin is to be used like any other Maven Site Skin. For a quick
+    introduction see:
+    
+    * {{{./configure.html}Configure Project}} - How to configure your Maven
+      project to use this skin.
+       
+    * {{{./menus.html}Use Menus}} - How to use menus in a Maven Site and how
+      menus are displayed with this skin.
+       
+    * {{{./links.html}Use Links}} - How to use links in a Maven Site and how
+      links are displayed with this skin.
+      
+    * {{{./content.html}Create Content}} - How to create content for a Maven
+      Site.
+    
+* More Information
+
+    * {{{./favicon.html}Use a Favicon}} - How to add a custom favicon to your
+      site.
+    
+    * {{{./headerlogo.html}Use a header logo}} - How to add custom header 
+      logos to your site.
+    
+    * {{{./css.html}Use custom CSS}} - How to add custom CSS to your site.
+
+* Maven Site Plugin documentation
+
+    For more in-depth information about Maven Sites, visit the 
+    {{{http://maven.apache.org/plugins/maven-site-plugin/}Maven Site Plugin site}}.
+    
+* Troubleshooting
+
+    There are some problems generating sites using Maven 3. To make Maven 3
+    site builds work, you have to define the Maven Site Plugin version 
+    >= 3.0 in your pom.xml:
+    
+---------------------------------------
+<build>
+  <pluginManagement>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-site-plugin</artifactId>
+        <version>3.0</version>
+      </plugin>
+    </plugins>
+  </pluginManagement>
+</build>
+---------------------------------------

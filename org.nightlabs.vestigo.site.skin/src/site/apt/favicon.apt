@@ -1,0 +1,26 @@
+	---
+	Favicon
+	---
+	Marc Klinger
+	---
+
+
+Configure your site to use a custom favicon
+
+    Add a snippet like this to your site.xml:
+    
+--------------------------------
+...
+<body>
+  <head>
+    <link rel="icon" href="favicon.ico"/>
+  </head>
+</body>
+...
+--------------------------------    
+    
+    In this case, the file favicon.ico has to be placed at src/site/resources/favicon.ico.
+   
+    See {{{http://en.wikipedia.org/wiki/Favicon#Browser_implementation}this Wikipedia article}}
+    to learn more about possible options and browser support.
+    

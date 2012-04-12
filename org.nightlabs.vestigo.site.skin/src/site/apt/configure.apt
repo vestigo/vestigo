@@ -1,0 +1,50 @@
+	---
+	Configure Project
+	---
+	Marc Klinger
+	---
+
+
+Configure your Maven project to use this skin
+
+    Create your site.xml file at src/site/site.xml like this:
+    
+--------------------------------
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/DECORATION/1.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/DECORATION/1.0.0 http://maven.apache.org/xsd/decoration-1.0.1.xsd">
+  <skin>
+    <groupId>org.nightlabs.maven</groupId>
+    <artifactId>nightlabs-maven-site-skin</artifactId>
+    <version>0.0.6</version>
+  </skin>
+</project>
+--------------------------------    
+    
+* Use another directory for your site.xml
+
+    By default, Maven uses the src/site directory for the site.xml and 
+    content files. Whenever possible, you should use the Maven 
+    {{{http://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html}default directory structure}}.
+    If there is a good reason not to do so, you can configure the site 
+    directory in your pom.xml:
+    
+---------------------------------
+...
+<build>
+  <pluginManagement>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-site-plugin</artifactId>
+        <version>3.0-beta-3</version>
+        <configuration>
+          <siteDirectory>${basedir}/YOUR/SITEDIR</siteDirectory>
+        </configuration>
+      </plugin>
+    </plugins>
+  </pluginManagement>
+</build>
+...
+---------------------------------

@@ -1,0 +1,26 @@
+	---
+	Custom
+	---
+	Alexander Bieber
+	---
+
+
+Hide the menu-bar for certain paths. 
+
+	Sometimes you want to hide the menu-bar for certain paths, the index-file for example. 
+	To do so add a <custom> tag to the site.xml and configure a <hideMenu> element as follows: 
+    
+--------------------------
+<project>
+  ...
+  <custom>
+    ...
+    <hideMenu>
+      <path>index.html</path>
+    </hideMenu>
+    ...
+  </custom>
+  ...
+</project>
+--------------------------
+

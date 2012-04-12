@@ -1,0 +1,65 @@
+	---
+	Header Logo
+	---
+	Marc Klinger
+	---
+
+
+Configure your site to use a custom header logo
+
+    Add a snippet like this to your site.xml:
+    
+--------------------------------
+<project>
+  <bannerLeft>
+    <src>images/logo.png</src>
+    <height>42</height>
+    <name>My Project Name</name>
+  </bannerLeft>
+</project>
+--------------------------------    
+    
+    Note that the default banner name (which is defined in project/name
+    in your projects pom.xml will disappear when adding the bannerLeft
+    tag. Please enter the project name using the bannerLeft/name tag.
+    You can also use the Maven variable ${project.name} for this purpose.
+    
+    The image in this example has to be placed at src/site/resources/images/logo.png.
+    
+    You can also add a logo to the right side of the page using bannerRight instead
+    of bannerLeft. Please note that the name support for bannerRight is broken.
+    It is only usable for images.
+    
+
+Multiple Banner Logos
+
+    Maven does not allow multiple <bannerLeft> elements in a site.xml file.
+    To support multiple banner images with links, this skin allows the usage
+    of <poweredBy> elements with position="bannerRight" or position="bannerLeft".
+    The number of <poweredBy> elements is not limited.
+    
+    Example:
+    
+--------------------------------
+<project>
+  <poweredBy>
+    <logo 
+        position="bannerRight" 
+        img="images/logo.png" 
+        href="http://www.nightlabs.de" />
+  </poweredBy>
+</project>
+--------------------------------    
+
+
+Replace the default NightLabs Logo
+
+    To replace the default NightLabs Logo at the top right corner of the page
+    by a custom banner or poweredBy logo, use the following {{{./css.html}custom css}}.
+    This will hide the default logo and place the bannerRight block where the logo was.
+    
+--------------------------------
+#bannerRight { margin-right: 4px; }
+#nl_header { background-image: none; margin-right: 0; }
+--------------------------------
+    

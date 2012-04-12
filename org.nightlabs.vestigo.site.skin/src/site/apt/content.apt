@@ -1,0 +1,28 @@
+	---
+	Create Content
+	---
+	Marc Klinger
+	---
+
+
+Add custom content to your site
+
+    There are different supported formats for adding content to a site.
+    The easiest way is to create APT files like src/site/apt/index.apt:
+    
+----------------------------
+This is a heading
+
+  This is a paragraph: Lorem ipsum dolor sit amet, consetetur
+  sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut 
+  labore et dolore magna aliquyam erat, sed diam voluptua. At 
+  vero eos et accusam et justo duo dolores et ea rebum. Stet 
+  clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
+  dolor sit amet.
+----------------------------
+
+  For detailed information about creating content see 
+  {{http://maven.apache.org/plugins/maven-site-plugin/examples/creating-content.html}}
+
+  To learn more about the APT format see 
+  {{http://maven.apache.org/doxia/references/apt-format.html}}

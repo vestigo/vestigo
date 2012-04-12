@@ -1,0 +1,26 @@
+	---
+	Links
+	---
+	Marc Klinger
+	---
+
+
+Use links in your site
+
+    To add custom links, add the following snippet to your site.xml:
+    
+--------------------------
+<project>
+  ...
+  <body>
+    ...
+    <links>
+      <item name="NightLabs" href="http://www.nightlabs.de/" />
+    </menu>
+    ...
+  </body>
+  ...
+</project>
+--------------------------
+
+    The links will appear at the blue menu bar at the top of the page.

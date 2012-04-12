@@ -1,0 +1,37 @@
+	---
+	Menus
+	---
+	Marc Klinger
+	---
+
+
+Use menus in your site
+
+    To add a custom menu, add the following snippet to your site.xml:
+    
+--------------------------
+<project>
+  ...
+  <body>
+    ...
+    <menu name="My Menu">
+      <item name="A Menu Item" href="http://www.nightlabs.de" />
+    </menu>
+    ...
+  </body>
+  ...
+</project>
+--------------------------
+
+    The menus will appear at the right margin of your site.
+
+
+* Where have the default menus gone to?
+
+    By default, there will be a "Project Documentation" menu After adding
+    a custom menu, the default menu will disappear. You can bring this menu
+    back by adding a menu reference to the site.xml body section:
+    
+--------------------------
+<menu ref="reports"/>
+--------------------------

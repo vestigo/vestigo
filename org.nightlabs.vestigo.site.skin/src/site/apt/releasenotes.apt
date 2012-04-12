@@ -1,0 +1,60 @@
+	---
+	Release Notes
+	---
+	Marc Klinger
+	Alexander Bieber
+	---
+
+
+Release Notes - Version 0.0.6
+
+* Done
+
+	* Changed artifact Id: Added missing 'l' to nightabs -> nightlabs 
+
+Release Notes - Version 0.0.5
+
+* Done
+
+    * Added support for custom tag hideMenu
+    
+Release Notes - Version 0.0.4
+
+* Done
+
+    * Added support for position="bannerRight" and position="bannerLeft"
+      poweredBy logos
+      
+    * Added support for target attribute in poweredBy logos
+    
+    * Fixed title support. body/head/title tag is used when present,
+      otherwise page title and name from site.xml root element. If the
+      name attribute is absent, project.name is used.
+      
+    * Fixed bug for relative image paths in poweredBy logos
+
+
+Release Notes - Version 0.0.2
+
+* Done
+
+    * Added empty print.css
+    
+    * Added Favicon documentation
+    
+    * Added header logo support (bannerLeft and bannerRight) and
+      documentation
+      
+    * Added custom CSS documentation
+    
+    * Made Powered-By logos display block
+    
+    * Adjusted header logo link styles
+    
+    * First non-snapshot release
+    
+* Known issues
+
+    * This project has no license yet. We cannot use an Open Source license
+      as the NightLabs logo is not free and only NightLabs projects should
+      use this skin.

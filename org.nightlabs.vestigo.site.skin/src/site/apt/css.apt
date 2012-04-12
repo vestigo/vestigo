@@ -1,0 +1,14 @@
+	---
+	Custom CSS
+	---
+	Marc Klinger
+	---
+
+
+Configure your site to use a custom CSS file
+
+    Add a custom CSS file at src/site/resources/css/site.css.
+    
+    The purpose of this site plugin is to deliver the default 
+    NightLabs look & feel for Maven sites. Please take care when
+    defining custom styles and only use it rarely.
