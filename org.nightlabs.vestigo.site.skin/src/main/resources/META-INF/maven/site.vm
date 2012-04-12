@@ -566,7 +566,7 @@
 	    	<br/>
 	    	#publishDate( "left" $decoration.publishDate $decoration.version )
 	    </div>
-	    <div style="float:right;"><a href="www.nightlabs.de"><img src="$relativePath/images/nl/nl-logo-grey.png"></a></div>
+	    <div style="float:right;"><a href="http://www.nightlabs.de"><img src="$relativePath/images/nl/nl-logo-grey.png"></a></div>
 	</div>
 
 </body>	  
