@@ -664,6 +664,7 @@
 									<move   file="${assembly.eclipse.directory}/eclipse"      tofile="${assembly.eclipse.directory}/vestigo"     failonerror="false" verbose="true" />
 									<move   file="${assembly.eclipse.directory}/eclipse.exe"  tofile="${assembly.eclipse.directory}/vestigo.exe" failonerror="false" verbose="true" />
 									<move   file="${assembly.eclipse.directory}/eclipse.ini"  tofile="${assembly.eclipse.directory}/vestigo.ini" failonerror="false" verbose="true" />
+									<copy	file="${basedir}/../org.nightlabs.vestigo.assembly.parent/src/main/resources/splash.bmp" tofile="${assembly.eclipse.directory}/plugins/org.eclipse.platform_3.7.2.v201202080800/splash.bmp" failonerror="false" verbose="true"/>
 									<delete file="${assembly.eclipse.directory}/eclipsec.exe" failonerror="false" verbose="true" />
 									<chmod  file="${assembly.eclipse.directory}/vestigo" perm="ugo+x" verbose="true" />
 								</target>

@@ -33,6 +33,9 @@
 	</custom>
 
 	<body>
+		<head>
+			<link rel="icon" href="images/favicon.ico" />
+		</head>	
 		<links>
 			<item name="Home" href="./index.html" />
 			<item name="Documentation" href="./documentation/index.html" />
