@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/DECORATION/1.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/DECORATION/1.0.0 http://maven.apache.org/xsd/decoration-1.0.1.xsd"
+	xmlns:nl-skin="http://dev.nightlabs.org/dtd/maven-site-skin_0.5.0">
+	<bannerLeft>
+		<href>index.html</href>
+		<name>${project.name}</name>
+	</bannerLeft>
+	<body>
+		<links>
+			<item name="NightLabs" href="http://www.nightlabs.de/" target="nightlabs" />
+			<item name="Maven" href="http://maven.apache.org/" target="maven" />
+		</links>
+		<menu name="Usage">
+			<item name="Configure Project" href="configure.html" />
+			<item name="Use Menus" href="menus.html" />
+			<item name="Use Links" href="links.html" />
+			<item name="Create Content" href="content.html" />
+			<item name="Use a Favicon" href="favicon.html" />
+			<item name="Use a header logo" href="headerlogo.html" />
+			<item name="Use custom CSS" href="css.html" />
+			<item name="Custom configuration" href="custom.html" />
+		</menu>
+		<menu name="Release">
+			<item name="Release notes" href="releasenotes.html" />
+		</menu>
+		<menu ref="reports" inherit="bottom" />
+	</body>
+	<skin>
+		<groupId>org.nightlabs.maven</groupId>
+		<artifactId>nightlabs-maven-site-skin</artifactId>
+		<version>${project.version}</version>
+	</skin>
+</project>
