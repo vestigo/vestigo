@@ -28,8 +28,8 @@
 		<menu ref="reports" inherit="bottom" />
 	</body>
 	<skin>
-		<groupId>org.nightlabs.maven</groupId>
-		<artifactId>nightlabs-maven-site-skin</artifactId>
+		<groupId>org.nightlabs.vestigo</groupId>
+		<artifactId>org.nightlabs.vestigo.site.skin</artifactId>
 		<version>${project.version}</version>
 	</skin>
 </project>
