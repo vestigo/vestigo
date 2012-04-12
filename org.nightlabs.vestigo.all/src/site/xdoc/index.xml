@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://maven.apache.org/XDOC/2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 http://maven.apache.org/xsd/xdoc-2.0.xsd">
+
+	<properties>
+		<title>Purchase Vestigo</title>
+		<author>Marco หงุ่ยตระกูล-Schulze</author>
+	</properties>
+
+	<body>
+		<script type="text/javascript"
+			src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script type="text/javascript" src="easySlider1.7.js"></script>
+		<script type="text/javascript" src="vestigo-slider.js"></script>
+
+		<div id="content">
+			<div id="slider">
+				<ul>
+					<li>
+						<div style="position: relative; background: url(images/slider_archives.png); height: 425px;">
+							<div class="slider_header">
+								<h1>Support for common<br/>Java application setups</h1> 
+							</div> 
+							<div class="slider_text">
+								<span class="arrows headerfont">Webapps</span>
+								<span class="arrows headerfont">Java EE applications</span>
+								<span class="arrows headerfont">OSGi bundles</span>
+								<span class="arrows headerfont">Google app engine</span>
+								<span class="arrows headerfont">and more...</span>
+							</div>
+							<div class="slider_button">
+								<a class="download_link" href="download/index.html">Download vestigo</a>
+							</div>
+						</div>					
+						<!--  <img src="images/slider_archives.png" alt="" />  -->
+					</li>
+<!-- 					
+					<li>
+						<img src="images/slider_production.png" alt="" />
+					</li>
+					<li>
+						<img src="images/slider_development.png" alt="" />
+					</li>
+					<li>
+						<img src="images/slider_implementations.png" alt="" />
+					</li>
+					<li>
+						<img src="images/slider_connection_profiles.png" alt="" />
+					</li>
+					<li>
+						<img src="images/slider_query_management.png" alt="" />
+					</li>
+					<li>
+						<img src="images/slider_object_tree.png" alt="" />
+					</li>
+					<li>
+						<img src="images/slider_parameters.png" alt="" />
+					</li>
+					<li>
+						<img src="images/slider_cumulus4j.png" alt="" />
+					</li>
+ -->					
+				</ul>
+			</div>
+
+		</div>
+		<div class="vestigo-box">
+			<div class="vestigo-box-header">
+				<h1>The JDO JPA Query Tool And Browser</h1>
+			</div>
+			<div class="vestigo-box-content"> 
+				Vestigo is a query tool for the Java persistence frameworks JDO and JPA. 
+				It includes JDOQL and JPQL editors with syntax highlighting and auto-completion.
+				<p> 
+				A result table shows the direct query results while the object tree browser 
+				allows searching the object graphs. Vestigo is available as Eclipse plug-in and 
+				standalone application for Windows, Linux and Mac.
+				</p> 
+			</div>
+		</div>
+		<table class="homepagecolumns">
+			<tr>
+				<th align="left">
+					<h1>Vestigo key features</h1>
+				</th>
+				<th align="left">
+					<h1>Vestigo pre-release offer</h1>
+				</th>
+			</tr>
+			<tr>
+				<td width="50%" valign="top">
+					<ul>
+						<li>No manual joining of SQL-tables. Query your data and browse the
+							results on object-level.</li>
+						<li>Flexible connection management including support for many
+							application setups,
+							Eclipse JDT integration as well as maven dependency support.
+						</li>
+						<li>Support for various JDO and JPA implementations like
+							EclipseLink, DataNucleus, Hibernate and OpenJPA.</li>
+						<li>JDOQL and JPQL query editors with syntax highlighting and
+							auto-completion.</li>
+						<li>Well-structured browsing of query results in a result table or
+							a tree view of the object graphs.</li>
+						<li>Support for scripted (JavaScript) query parameters.</li>
+						<li>Listing of candidate classes in your persistence-unit or
+							classpath with one-click query generation and execution.</li>
+					</ul>
+				</td>
+				<td width="50%" valign="top">
+					<p>
+						Vestigo is currently distributed as version for early adopters.
+					</p>
+					<p>
+						This version has all the functionality of the final release.
+						The user interface and project documentation, however, are still
+						improved so these
+						will change more often than within the normal update-cycle.
+					</p>
+					<p>
+						The pre-release version is distributed at a special promotion-price.
+					</p>
+					<p>
+						<span class="headercolor" style="font-weight: bold;">The pre-release offer ends on May 31.</span>
+						<br />
+						<br />
+						<a class="download_link" href="download/index.html">Download vestigo</a>
+					</p>
+				</td>
+			</tr>
+		</table>
+
+	</body>
+</document>

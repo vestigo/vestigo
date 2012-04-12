@@ -4,11 +4,6 @@
 	xsi:schemaLocation="http://maven.apache.org/DECORATION/1.1.0 http://maven.apache.org/xsd/decoration-1.1.0.xsd"
 	name="Vestigo (JDO/JPA Query Browser)">
 
-	<bannerLeft>
-		<name>Vestigo (JDO/JPA Query Browser)</name>
-		<href>http://vestigo.nightlabs.com/</href>
-	</bannerLeft>
-
 	<poweredBy>
 		<logo name="BouncyCastle"
 			img="./images/TheLegionOfTheBouncyCastle.png"

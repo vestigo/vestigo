@@ -1,0 +1,120 @@
+#content {
+    left: -40px;
+    top: -15px;
+	height: 425px;
+    width: 940px;
+    position: relative;
+}
+#slider {
+    overflow:scroll; 
+}
+#slider ul, #slider li {
+  margin:0;
+  padding:0;
+  list-style:none;
+  margin-top:0;
+}
+#slider li { 
+  width:940px;
+  height:425px;
+  margin-top:0;
+}
+#prevBtn a {
+	position: relative;
+	display:block;
+	width:27px;
+	height:31px;
+	left:25px;
+	top:-85px;
+	background:url("../images/slider_arrow_left.png") no-repeat 0 0;
+	
+}
+#nextBtn a { 
+	position: relative;
+	display:block;
+	width:27px;
+	height:31px;
+	left:885px;
+	top:-116px;
+	background:url("../images/slider_arrow_right.png") no-repeat 0 0;
+}														
+
+.beta-stamp {
+	background:url("../images/beta.png") no-repeat 0 0;
+}}
+
+table.homepagecolumns {
+	width: 100%;
+	padding: 20px;
+}
+
+table.homepagecolumns ul {
+	margin-left: -20px
+}
+table.homepagecolumns li {	
+	margin-bottom: 16px;
+	margin-top: 15px;
+	margin-right: 20px
+}
+
+.vestigo-box {
+    background-image: url("../images/vestigo-box-bg.png");
+    color: #FFFFFF;
+    height: 250px;
+    left: -40px;
+    padding-top: 35px;
+    position: relative;
+    top: -50px;
+    width: 940px;
+}
+
+.vestigo-box-header {
+	/*
+	font-family: Palatino;
+	padding-top: 15px;
+	*/
+	padding-left: 35px;
+}
+
+.vestigo-box-header h1 {
+    color: #FFFFFF;
+}
+
+.vestigo-box-content {
+	padding-top: 30px;
+    padding-left: 35px;
+    width: 600px;
+}
+
+.arrows {
+	background-image: url('../images/arrows-right-list.png');
+	background-position: left center;
+	background-repeat: no-repeat;
+	padding-left: 15px;
+	display: block;
+}
+
+div.slider_header {
+	position: absolute; 
+	top: 40px; 
+	left: 415px;	
+}
+div.slider_text {
+	position: absolute; 
+	top: 165px; 
+	left: 415px; 
+	line-height: 1.5em; 
+	font-size: 13pt;	
+}
+div.slider_button {
+	position: absolute; 
+	top: 170px; 
+	left: 645px; 
+}
+a.download_link {
+    background-image:url('../images/get-your-copy-now.png');
+    display:block;
+    height:55px;
+    width:248px;
+    text-indent:-9999px;
+}
