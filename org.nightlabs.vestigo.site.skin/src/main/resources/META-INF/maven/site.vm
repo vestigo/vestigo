@@ -539,6 +539,13 @@
 		</div>
 		<div id="nl_menu">
 			#links( $decoration.body.links )
+			<div style="float:right; margin-top: 11px; margin-right: 11px;">
+				#if ($locale == "en")
+					<a href="$relativePath/de/$currentFileName"><img src="$relativePath/images/nl/de.png"/></a>
+				#else
+					<a href="$relativePath/../$currentFileName"><img src="$relativePath/images/nl/en.png"/></a>
+				#end
+			</div>
         </div>
 
 		#checkMenuVisible()
@@ -562,11 +569,18 @@
 	</div>
 	<div id="nl_footer">
 	    <div style="float:left;">
-	    	Copyright &#169;#copyright()All Rights Reserved.
+	    	Copyright &#169;#copyright()All Rights Reserved &nbsp;|&nbsp;
+			#if ($locale == "en")
+				<a href="$relativePath/about/imprint.html">Imprint</a>
+			#else
+				<a href="$relativePath/about/imprint.html">Impressum</a>
+			#end
 	    	<br/>
 	    	#publishDate( "left" $decoration.publishDate $decoration.version )
 	    </div>
-	    <div style="float:right;"><a href="http://www.nightlabs.de"><img src="$relativePath/images/nl/nl-logo-grey.png"></a></div>
+	    <div style="float:right;">
+	    	<a href="http://www.nightlabs.de"><img src="$relativePath/images/nl/nl-logo-grey.png"></a>
+	    </div>
 	</div>
 
 </body>	  
