@@ -19,14 +19,14 @@
 					<li>
 						<div style="position: relative; background: url(images/slider_archives.png); height: 425px;">
 							<div class="slider_header">
-								<h1>Support for common<br/>Java application setups</h1> 
+								<h1>Unterstützt gängige<br/>Java Anwendungsszenarien</h1> 
 							</div> 
 							<div class="slider_text">
-								<span class="arrows headerfont">Webapps</span>
-								<span class="arrows headerfont">Java EE applications</span>
-								<span class="arrows headerfont">OSGi bundles</span>
-								<span class="arrows headerfont">Google app engine</span>
-								<span class="arrows headerfont">and more...</span>
+								<span class="arrows headerfont">Webapplikationen</span>
+								<span class="arrows headerfont">Java EE Applikationen</span>
+								<span class="arrows headerfont">OSGi Bundles</span>
+								<span class="arrows headerfont">Google App Engine</span>
+								<span class="arrows headerfont">und andere...</span>
 							</div>
 							<div class="slider_button">
 								<a class="download_link" href="download/index.html">Download vestigo</a>
@@ -69,12 +69,11 @@
 				<h1>The JDO JPA Query Tool And Browser</h1>
 			</div>
 			<div class="vestigo-box-content"> 
-				Vestigo is a query tool for the Java persistence frameworks JDO and JPA. 
-				It includes JDOQL and JPQL editors with syntax highlighting and auto-completion.
-				<p> 
-				A result table shows the direct query results while the object tree browser 
-				allows searching the object graphs. Vestigo is available as Eclipse plug-in and 
-				standalone application for Windows, Linux and Mac.
+				Vestigo ist eine Anwendung zur Erstellung und zum Ausführen von Abfragen für die Java Persistence Frameworks JDO und JPA. 
+				Es enthält Editoren für die Sprachen JDOQL und JPQL mit Syntaxhervorhebung und Autovervollständigung.
+				<p>
+				Die Abfrageergebnisse können tabellarisch betrachtet werden oder in einem Baum der Objektgraphen. 
+				Vestigo ist als Plug-in für Eclipse erhältlich sowie als separate Applikation für Windows, Linux und Mac.
 				</p> 
 			</div>
 		</div>
@@ -90,38 +89,33 @@
 			<tr>
 				<td width="50%" valign="top">
 					<ul>
-						<li>No manual joining of SQL-tables. Query your data and browse the
-							results on object-level.</li>
-						<li>Flexible connection management including support for many
-							application setups,
-							Eclipse JDT integration as well as maven dependency support.
+						<li>Keine manuelle Joins von SQL-Tabellen mehr! Fragen Sie Ihre Daten auf Objekt-Ebene ab
+						    und navigieren Sie durch den Objektgraphen.</li>
+						<li>Flexibles Connection-Management, das viele Anwendungsszenarien unterstützt (Java EE, Webapplikationen) 
+							und darüber hinaus eine Integration für das Eclipse JDT und Maven bietet.
 						</li>
-						<li>Support for various JDO and JPA implementations like
-							EclipseLink, DataNucleus, Hibernate and OpenJPA.</li>
-						<li>JDOQL and JPQL query editors with syntax highlighting and
-							auto-completion.</li>
-						<li>Well-structured browsing of query results in a result table or
-							a tree view of the object graphs.</li>
-						<li>Support for scripted (JavaScript) query parameters.</li>
-						<li>Listing of candidate classes in your persistence-unit or
-							classpath with one-click query generation and execution.</li>
+						<li>Unterstützt verschiedene JDO- und JPA-Implementationen, wie z.Bsp. EclipseLink, DataNucleus, Hibernate oder OpenJPA.</li>
+						<li>JDOQL und JPQL Abfrage-Editoren mit Syntaxhervorhebung und Autovervollständigung.</li>
+						<li>Aufgeräumte Benutzerschnittstelle für die Navigation durch die Abfrageergebnisse. Navigation in einer Tabelle, oder in einer Baumansicht des Objektgraphen.</li>
+						<li>Abfrageparameter in verschiedenen Typen. Zusätzlich geskriptete (JavaScript) Parameter möglich.</li>
+						<li>Auflistung der möglichen Abfrageobjekte im Classpath oder in der Persistence-Unit und Abfrage der Element mit einem Klick.</li>
 					</ul>
 				</td>
 				<td width="50%" valign="top">
 					<p>
-						Vestigo is currently distributed as version for early adopters.
+						Vestigo wird derzeit als Vorabversion vertrieben.
 					</p>
 					<p>
-						This version has all the functionality of the final release.
-						The user interface and project documentation, however, are still
-						improved so these
-						will change more often than within the normal update-cycle.
+						Die Vorabversion enthält alle Funktionen der bald veröffentlichten Vollversion, 
+						die Benutzerschnittstelle und die Dokumentation des Produktes durchlaufen jedoch
+						noch Verbesserungszyklen, so daß diese noch nicht vollständig sind bzw. mit häufigen
+						Aktualisierungen zu rechnen ist. 
 					</p>
 					<p>
-						The pre-release version is distributed at a special promotion-price.
+						Die Vorabversion wird zum Sonderpreis von nur der Hälfte der Vollversion vertrieben.
 					</p>
 					<p>
-						<span class="headercolor" style="font-weight: bold;">The pre-release offer ends on June 30.</span>
+						<span class="headercolor" style="font-weight: bold;">Die Vorabversion ist nur bis 30. Juni erhältlich.</span>
 						<br />
 						<br />
 						<a class="download_link" href="download/index.html">Download vestigo</a>

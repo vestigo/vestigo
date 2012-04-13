@@ -1,0 +1,1 @@
+../../resources/vestigo-slider.js
