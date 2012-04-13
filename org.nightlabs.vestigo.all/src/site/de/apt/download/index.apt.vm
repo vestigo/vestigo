@@ -25,10 +25,10 @@ Herunterladen
 
 	[]
 
-* {Plugin}
+* {Erweiterung}
 
 	Wenn Sie {{{http://www.eclipse.org}Eclipse}} als Entwicklungsumgebung (IDE) verwenden, können Sie die folgende Update-Site
-	registrieren und Vestigo als Plugin in Ihre existierende IDE installieren:
+	registrieren und Vestigo als Erweiterung in Ihre existierende IDE installieren:
 
 	<<{{http://vestigo.nightlabs.com/updates/releases/}}>>
 

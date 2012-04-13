@@ -21,20 +21,20 @@ Schnellstart (JDO)
 
 [../../images/jdo/quick-start/10.png]
 
-* Download, extract and start Vestigo
+* Herunterladen, entpacken und starten von Vestigo
 
-	Go to the {{{../../download/index.html}download area}} and choose the stand-alone version for your
-	operating system. After you downloaded the tar.gz (or zip) file, please extract it and run
-	the program <<<vestigo>>> or <<<vestigo.exe>>> (depending on your environment).
+	Gehen Sie auf die Seite {{{../../download/index.html}Herunterladen}} und wählen Sie die Ihrem Betriebssystem
+	entsprechende Version der selbständigen Vestigo-Anwendung. Nachdem Sie die tar.gz- (oder Zip-) Datei heruntergeladen
+	haben, entpacken Sie sie und führen Sie das Programm <<<vestigo>>> oder <<<vestigo.exe>>> (je nach Umgebung) aus.
 
-* Close the <Welcome> page and open the <Vestigo> perspective
+* Schließen der <Willkommen>-Seite und öffnen der <Vestigo>-Perspektive
 
-	For opening the <Vestigo> perspective, please click in the main menu on
-	<Window> => <Open Perspective> => <Other...>:
+	Um die <Vestigo>-Perspektive zu öffnen, klicken Sie im Hauptmenü auf <Fenster> => <Öffne Perspektive>
+	=> <Sonstige...>:
 
 [../../images/jdo/quick-start/15.png]
 
-	In the following dialog, you select the <Vestigo> perspective:
+	Im sich öffnenenden Dialog wählen Sie die <Vestigo>-Perspektive:
 
 [../../images/jdo/quick-start/20.png]
 
