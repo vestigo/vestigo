@@ -84,7 +84,7 @@ public class ObjectGraphDetailTreeNode
 			return ((ObjectReference)object).getObjectClassName();
 
 		if (object == null)
-			return String.valueOf(null);
+			return String.valueOf(object);
 
 		return object.getClass().getName();
 	}

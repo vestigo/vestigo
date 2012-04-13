@@ -15,6 +15,9 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.datatools.connectivity.oda.IResultSet;
 import org.eclipse.datatools.connectivity.oda.OdaException;
+import org.eclipse.jface.action.Action;
+import org.eclipse.jface.action.IAction;
+import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.viewers.CellLabelProvider;
 import org.eclipse.jface.viewers.ColumnPixelData;
 import org.eclipse.jface.viewers.ColumnWeightData;
@@ -31,6 +34,11 @@ import org.eclipse.jface.viewers.ViewerCell;
 import org.eclipse.jface.viewers.deferred.DeferredContentProvider;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.TableCursor;
+import org.eclipse.swt.dnd.Clipboard;
+import org.eclipse.swt.dnd.TextTransfer;
+import org.eclipse.swt.dnd.Transfer;
+import org.eclipse.swt.events.KeyAdapter;
+import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.MouseAdapter;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.PaintEvent;
@@ -43,6 +51,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
+import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
@@ -68,6 +77,8 @@ implements ISelectionProvider, LabelTextOptionsContainer
 	private Table table;
 	private TableCursor tableCursor;
 	private Set<LabelTextOption> labelTextOptions = EnumSet.of(LabelTextOption.showObjectToString, LabelTextOption.showPersistentID);
+	private MenuManager contextMenuManager;
+	private Menu contextMenu;
 
 	private List<ResultSetTableRow> selectedRows = Collections.emptyList();
 	private List<ResultSetTableCell> selectedCells = Collections.emptyList();
@@ -80,6 +91,41 @@ implements ISelectionProvider, LabelTextOptionsContainer
 		createTableCursor();
 		registerOpenLicenceNotValidDialogListeners();
 	}
+
+	private IAction copyAction = new Action("Copy") {
+		@Override
+		public void run() {
+			StringBuilder labelTextSB = new StringBuilder();
+
+			for (ResultSetTableRow row : selectedRows) {
+				if (labelTextSB.length() > 0)
+					labelTextSB.append('\n');
+
+				boolean firstCell = true;
+				for (ResultSetTableCell cell : row.getCells()) {
+					if (firstCell)
+						firstCell = false;
+					else
+						labelTextSB.append('\t');
+
+					String labelText = getLabelText(cell);
+					labelTextSB.append(labelText);
+				}
+			}
+
+			for (ResultSetTableCell cell : selectedCells) {
+				if (labelTextSB.length() > 0)
+					labelTextSB.append('\t');
+
+				String labelText = getLabelText(cell);
+				labelTextSB.append(labelText);
+			}
+
+			Clipboard cb = new Clipboard(getDisplay());
+			cb.setContents(new Object[] { labelTextSB.toString() }, new Transfer[]{ TextTransfer.getInstance() });
+			cb.dispose();
+		}
+	};
 
 	@Override
 	public Set<LabelTextOption> getLabelTextOptions() {
@@ -175,6 +221,7 @@ implements ISelectionProvider, LabelTextOptionsContainer
 		tableViewer.getTable().setLinesVisible(true);
 		tableViewer.setUseHashlookup(true);
 		table = tableViewer.getTable();
+
 //		hookRepairPaintListener(); // I don't have these paint bugs here in the office - only at home - strange (and it makes things really slow, here).
 		hookRepairPaintListener(); // I have them in the office, too (but not that often) - trying a better implementation to avoid slowliness.
 	}
@@ -283,6 +330,20 @@ implements ISelectionProvider, LabelTextOptionsContainer
 					fireSelectionChangedEvent();
 				}
 		});
+
+		contextMenuManager = new MenuManager();
+		contextMenuManager.add(copyAction);
+		contextMenu = contextMenuManager.createContextMenu(tableCursor);
+		tableCursor.setMenu(contextMenu);
+
+		tableCursor.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				logger.debug("keyReleased: keyCode={}", e.keyCode);
+				if (e.keyCode == 99) // CTRL+C
+					copyAction.run();
+			}
+		});
 	}
 
 	private void registerOpenLicenceNotValidDialogListeners() {
@@ -364,13 +425,17 @@ implements ISelectionProvider, LabelTextOptionsContainer
 			}
 
 			ResultSetTableCell cell = cells[columnIndex];
-			Object cellContent = cell.getCellContent();
-
-			if (cellContent instanceof ObjectReference)
-				viewerCell.setText(((ObjectReference)cellContent).getLabelText(labelTextOptions));
-			else
-				viewerCell.setText(LabelTextUtil.toStringOfSimpleObject(null, cellContent, labelTextOptions));
+			viewerCell.setText(getLabelText(cell));
 		}
+	}
+
+	private String getLabelText(ResultSetTableCell cell) {
+		Object cellContent = cell.getCellContent();
+
+		if (cellContent instanceof ObjectReference)
+			return ((ObjectReference)cellContent).getLabelText(labelTextOptions);
+		else
+			return LabelTextUtil.toStringOfSimpleObject(null, cellContent, labelTextOptions);
 	}
 
 	public ResultSetTableModel getInput() {
@@ -529,5 +594,9 @@ implements ISelectionProvider, LabelTextOptionsContainer
 		public int compare(T o1, T o2) {
 			return o1.compareTo(o2);
 		}
+	}
+
+	public MenuManager getContextMenuManager() {
+		return contextMenuManager;
 	}
 }

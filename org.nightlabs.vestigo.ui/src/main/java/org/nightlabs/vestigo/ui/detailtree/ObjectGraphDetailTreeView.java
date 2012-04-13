@@ -37,6 +37,7 @@ public class ObjectGraphDetailTreeView extends ViewPart implements LabelTextOpti
 		objectGraphDetailTreeComposite = new ObjectGraphDetailTreeComposite(parent, SWT.NONE);
 		objectGraphDetailTreeComposite.addDisposeListener(disposeListener);
 		getSite().getPage().addSelectionListener(selectionListener);
+		getSite().registerContextMenu(objectGraphDetailTreeComposite.getContextMenuManager(), objectGraphDetailTreeComposite);
 		clearInput();
 
 		// in case, this view is opened AFTER the ResultSetTableView, we look for it

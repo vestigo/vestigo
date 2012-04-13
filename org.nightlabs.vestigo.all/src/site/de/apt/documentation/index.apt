@@ -37,14 +37,15 @@ Dokumentation
 
 	[]
 
-* Logging
+* Protokollierung
 
-	How to enable and configure logging? Where is the log file? See the {{{./logging.html}Logging documentation}}.
+	Wie aktiviert und konfiguriert man die Protokollierung? Wo ist die Protokolldatei?
+	Die Antworten finden Sie in der {{{./logging.html}Protokollierungsdokumentation}}.
 
-* FAQ - Frequently Asked Questions
+* FAQ - Häufige Fragen
 
-	You can find answers to some {{{./faq.html}frequently asked questions here}}.
+	Antworten auf {{{./faq.html}häufige Fragen}} finden Sie {{{./faq.html}hier}}.
 
-* What's new?
+* Was ist neu?
 
-	{{{./whats-new.html}What's new}} in the current Vestigo version?
+	{{{./whats-new.html}Was gibt's neues}} in der aktuellen Vestigo-Version?

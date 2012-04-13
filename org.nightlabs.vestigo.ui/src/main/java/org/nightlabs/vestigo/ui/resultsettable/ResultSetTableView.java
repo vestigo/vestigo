@@ -36,6 +36,7 @@ public class ResultSetTableView extends ViewPart implements LabelTextOptionsCont
 	public void createPartControl(Composite parent) {
 		resultSetTableComposite = new ResultSetTableComposite(parent, SWT.NONE);
 		resultSetTableComposite.addDisposeListener(disposeListener);
+		getSite().registerContextMenu(resultSetTableComposite.getContextMenuManager(), resultSetTableComposite);
 		getSite().getPage().addPartListener(partListener);
 		getSite().setSelectionProvider(resultSetTableComposite);
 

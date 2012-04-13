@@ -15,7 +15,7 @@ Documentation
 
 	What is a {{{./data-source.html}data source}}?
 
-** Data source set up how-tos
+** Data source how-tos
 
 	* {{{./jdo/how-to-set-up-a-jdo-data-source.html}How to set up a JDO data source}}
 

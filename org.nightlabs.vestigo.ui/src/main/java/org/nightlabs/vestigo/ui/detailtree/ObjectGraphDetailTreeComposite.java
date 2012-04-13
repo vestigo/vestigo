@@ -1,5 +1,6 @@
 package org.nightlabs.vestigo.ui.detailtree;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.EnumSet;
 import java.util.HashMap;
@@ -9,13 +10,26 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.eclipse.core.runtime.ListenerList;
+import org.eclipse.jface.action.Action;
+import org.eclipse.jface.action.IAction;
+import org.eclipse.jface.action.IMenuListener;
+import org.eclipse.jface.action.IMenuManager;
+import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.ISelectionChangedListener;
+import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.ITreeViewerListener;
 import org.eclipse.jface.viewers.LabelProvider;
+import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.TreeExpansionEvent;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.dnd.Clipboard;
+import org.eclipse.swt.dnd.TextTransfer;
+import org.eclipse.swt.dnd.Transfer;
+import org.eclipse.swt.dnd.TransferData;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.MouseAdapter;
@@ -23,6 +37,7 @@ import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Menu;
 import org.nightlabs.vestigo.core.LabelTextOption;
 import org.nightlabs.vestigo.core.ObjectReferenceChild;
 import org.nightlabs.vestigo.core.oda.ResultSet;
@@ -36,11 +51,13 @@ import org.slf4j.LoggerFactory;
  */
 public class ObjectGraphDetailTreeComposite
 extends Composite
-implements LabelTextOptionsContainer
+implements LabelTextOptionsContainer, ISelectionProvider
 {
 	private static final Logger logger = LoggerFactory.getLogger(ObjectGraphDetailTreeComposite.class);
 
 	private TreeViewer treeViewer;
+	private MenuManager contextMenuManager;
+	private Menu contextMenu;
 	private ObjectGraphDetailTreeModel model;
 	private EnumSet<LabelTextOption> labelTextOptions = EnumSet.of(LabelTextOption.showPersistentID);
 
@@ -73,7 +90,7 @@ implements LabelTextOptionsContainer
 	}
 
 	private void createTreeViewer() {
-		treeViewer = new TreeViewer(this, SWT.FULL_SELECTION);
+		treeViewer = new TreeViewer(this, SWT.FULL_SELECTION | SWT.MULTI);
 		treeViewer.setUseHashlookup(true);
 		ObjectGraphDetailTreeContentProvider treeContentProvider = new ObjectGraphDetailTreeContentProvider();
 		treeViewer.setContentProvider(treeContentProvider);
@@ -94,9 +111,57 @@ implements LabelTextOptionsContainer
 			}
 		});
 		treeViewer.addTreeListener(treeViewerListener);
+		treeViewer.addSelectionChangedListener(new ISelectionChangedListener() {
+			@Override
+			public void selectionChanged(SelectionChangedEvent event) {
+				SelectionChangedEvent newEvent = new SelectionChangedEvent(ObjectGraphDetailTreeComposite.this, event.getSelection());
+				for (Object l : selectionChangedListeners.getListeners())
+					((ISelectionChangedListener)l).selectionChanged(newEvent);
+			}
+		});
+		
+		contextMenuManager = new MenuManager();
+		contextMenuManager.add(copyAction);
+		contextMenu = contextMenuManager.createContextMenu(treeViewer.getTree());
+		treeViewer.getTree().setMenu(contextMenu);
 		treeContentProvider.addChildrenLoadedListener(childrenLoadedListener);
 		registerOpenLicenceNotValidDialogListeners();
 		registerExpandCollapseKeyAndMouseListeners();
+		registerCopyToClipboardKeyListener();
+	}
+	
+	private IAction copyAction = new Action("Copy") {
+		@Override
+		public void run() {
+			IStructuredSelection sel = (IStructuredSelection) getSelection();
+			StringBuilder labelTextSB = new StringBuilder();
+			for (Object object : sel.toArray()) {
+				if (!(object instanceof ObjectGraphDetailTreeNode))
+					continue;
+
+				ObjectGraphDetailTreeNode node = (ObjectGraphDetailTreeNode) object;
+				String labelText = node.getLabelText(labelTextOptions);
+				if (labelTextSB.length() > 0)
+					labelTextSB.append('\n');
+
+				labelTextSB.append(labelText);
+			}
+
+			Clipboard cb = new Clipboard(getDisplay());
+			cb.setContents(new Object[] { labelTextSB.toString() }, new Transfer[]{ TextTransfer.getInstance() });
+			cb.dispose();
+		}
+	};
+	
+	private void registerCopyToClipboardKeyListener() {
+		treeViewer.getTree().addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				logger.debug("keyReleased: keyCode={}", e.keyCode);
+				if (e.keyCode == 99) // CTRL+C
+					copyAction.run();
+			}
+		});
 	}
 
 	private void registerExpandCollapseKeyAndMouseListeners() {
@@ -384,5 +449,31 @@ implements LabelTextOptionsContainer
 					restoreExpansionState(childNode);
 			}
 		}
+	}
+	
+	public MenuManager getContextMenuManager() {
+		return contextMenuManager;
+	}
+
+	@Override
+	public ISelection getSelection() {
+		return treeViewer.getSelection();
+	}
+	
+	@Override
+	public void setSelection(ISelection selection) {
+		treeViewer.setSelection(selection);
+	}
+	
+	private ListenerList selectionChangedListeners = new ListenerList();
+	
+	@Override
+	public void addSelectionChangedListener(ISelectionChangedListener listener) {
+		selectionChangedListeners.add(listener);
+	}
+
+	@Override
+	public void removeSelectionChangedListener(ISelectionChangedListener listener) {
+		selectionChangedListeners.remove(listener);
 	}
 }
