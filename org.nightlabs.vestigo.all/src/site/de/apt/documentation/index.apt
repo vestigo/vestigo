@@ -1,39 +1,39 @@
 	---
-	Documentation
+	Dokumentation
 	---
 	Marco หงุ่ยตระกูล-Schulze
 	---
 	2012-02-16
 
-Documentation
+Dokumentation
 
-* Get started
+* Beginn
 
-	No idea where to start? No problem! Follow this {{{./jdo/quick-start.html}quick start guide}}.
+	Keine Ahnung, wo anfangen? Kein Problem! Folgen Sie der {{{./jdo/quick-start.html}Schnellstart-Anleitung}}.
 
-* Data source
+* Datenquelle
 
-	What is a {{{./data-source.html}data source}}?
+	Was ist eine {{{./data-source.html}Datenquelle}}?
 
-** Data source set up how-tos
+** Anleitungen zu Datenquellen
 
-	* {{{./jdo/how-to-set-up-a-jdo-data-source.html}How to set up a JDO data source}}
+	* {{{./jdo/how-to-set-up-a-jdo-data-source.html}Wie legt man eine JDO-Datenquelle an}}
 
-	* {{{./jpa/how-to-set-up-a-jpa-data-source.html}How to set up a JPA data source}}
+	* {{{./jpa/how-to-set-up-a-jpa-data-source.html}Wie legt man eine JPA-Datenquelle an}}
 
 	[]
 
-* Query
+* Abfrage
 
-	What is a {{{./query.html}query}}?
+	Was ist eine {{{./query.html}Abfrage}}?
 
-** Query how-tos
+** Anleitungen zu Abfragen
 
-	* {{{./jdo/how-to-create-a-jdo-query.html}How to create a JDO query}}
+	* {{{./jdo/how-to-create-a-jdo-query.html}Wie erzeugt man eine JDO-Abfrage}}
 
-	* {{{./jpa/how-to-create-a-jpa-query.html}How to create a JPA query}}
+	* {{{./jpa/how-to-create-a-jpa-query.html}Wie erzeugt man eine JPA-Abfrage}}
 
-	* {{{./how-to-declare-a-query-parameter-using-javascript.html}How to declare a query parameter using JavaScript}}
+	* {{{./how-to-declare-a-query-parameter-using-javascript.html}Wie deklariert man einen Abfrageparameter, der JavaScript verwendet}}
 
 	[]
 
