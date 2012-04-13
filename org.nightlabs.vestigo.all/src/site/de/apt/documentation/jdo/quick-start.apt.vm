@@ -7,17 +7,17 @@
 
 Schnellstart (JDO)
 
-	In the following we'll show you what Vestigo is and how to use it. We'll use a little demo
-	database with a corresponding JDO data model. Note, that our demo data contains a JPA data model,
-	too, in case you prefer to work with JPA. The proceeding is the same (only the JDO query language
-	is more elegant).
+	Im Folgenden zeigen wir Ihnen, was Vestigo ist und wie man es benutzt. Wir verwenden eine kleine
+	Demo-Datenbank mit einem korrespondierenden JDO-Datenmodell. Wohlgemerkt enthalten unsere
+	Demo-Daten auch ein JPA-Datenmodell, falls Sie lieber mit JPA arbeiten. Das Vorgehen ist das gleiche
+	(nur ist die JDO-Abfragesprache eleganter).
 
-* Download and extract the demo data
+* Herunterladen und entpacken der Demo-Daten
 
-	Download
+	Laden Sie die Datei
 	{{{http://vestigo.nightlabs.com/${project.version}/download/demo/org.nightlabs.vestigo.demo-${project.version}-bin.zip}org.nightlabs.vestigo.demo-${project.version}-bin.zip}}
-	and extract this file somewhere. This guide assumes in the following, that you downloaded the file to
-	<<</tmp/>>> and extracted it there leading to the files and directories shown below.
+	herunter und entpacken Sie sie. Diese Anleitung geht im Folgenden davon aus, daß Sie sie in das Verzeichnis
+	<<</tmp/>>> heruntergeladen und dort entpackt haben. Es sollte also die Verzeichnisse und Dateien wie in diesem Bildschirmfoto geben:
 
 [../../images/jdo/quick-start/10.png]
 
