@@ -481,6 +481,7 @@
       <view
             category="org.nightlabs.vestigo.ui"
             class="org.nightlabs.vestigo.ui.candidateclassview.CandidateClassView"
+            icon="icons/org.nightlabs.vestigo.ui.candidateclassview/CandidateClassView.16x16.png"
             id="org.nightlabs.vestigo.ui.candidateclassview.CandidateClassView"
             name="Candidate classes">
       </view>

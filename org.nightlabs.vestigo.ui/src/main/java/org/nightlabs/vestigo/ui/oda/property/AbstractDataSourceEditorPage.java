@@ -82,6 +82,12 @@ extends DataSourceEditorPage
 	@Override
 	protected void createCustomContents(Composite parent)
   {
+		if (showImportCurrentPage) {
+			if (parent.getLayoutData() instanceof GridData) {
+				GridData gridData = (GridData) parent.getLayoutData();
+				++gridData.horizontalSpan;
+			}
+		}
 //      Properties props = getDataSourceProperties();
 		// The original implementation (in ODA) uses the above line, which causes
 		// our multi-page-setup to have empty follow-up-pages in the new-datasource-wizard.
@@ -98,77 +104,38 @@ extends DataSourceEditorPage
 		super.createControl(parent);
 		PreferencePageSetManager.sharedInstance().register(this);
 
-		if (showImportCurrentPage) { // || showExportAllPages) {
+		if (showImportCurrentPage && btnPing != null) {
 			final Composite btnPingParent = btnPing.getParent();
 
-	//		if (dataSourceEditorPageContainer != null) {
-	//			// The container already has this button, hence we remove the inner (duplicate).
-	//			// There is unfortunately no way to prevent its creation. Marco :-)
-	//			// ...later: Now, we need it for the btnPingParent, anyway ;-)
-	//			btnPing.dispose();
-	//			btnPing = null;
-	//		}
-
-			final Composite buttonParent = new Composite(btnPingParent, SWT.NONE);
-			buttonParent.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-			{
-				GridLayout gridLayout = new GridLayout(1, false);
-
-				if (showImportCurrentPage)
-					gridLayout.numColumns++;
-
-				gridLayout.marginHeight = 0;
-				gridLayout.marginWidth = 0;
-				buttonParent.setLayout(gridLayout);
-			}
-			Label l = new Label(buttonParent, SWT.NONE);
-			l.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-
-			if (showImportCurrentPage) {
-				importCurrentPageButton = new Button(buttonParent, SWT.PUSH);
-				importCurrentPageButton.setText("Import (this page only)");
-				importCurrentPageButton.addSelectionListener(new SelectionAdapter() {
-					@Override
-					public void widgetSelected(SelectionEvent e) {
-						importCurrentPageFromFile();
-					}
-				});
+			if (btnPingParent.getLayout() instanceof GridLayout) {
+				GridLayout layout = (GridLayout) btnPingParent.getLayout();
+				layout.numColumns ++;
 			}
 
-//			if (showExportAllPages) {
-//				exportAllPagesButton = new Button(buttonParent, SWT.PUSH);
-//				exportAllPagesButton.setText("Export (all pages)");
-//				exportAllPagesButton.addSelectionListener(new SelectionAdapter() {
-//					@Override
-//					public void widgetSelected(SelectionEvent e) {
-//						exportAllPagesToFile();
-//					}
-//				});
-//			}
+			final Composite buttonParent = btnPingParent;
+
+			importCurrentPageButton = new Button(buttonParent, SWT.PUSH);
+			importCurrentPageButton.setText("Import (this page only)");
+			importCurrentPageButton.setToolTipText(
+					"Import the settings of the current page from a connection profile residing in a " +
+					"previously exported file. Only the settings on this page are affected! Other pages' " +
+					"settings stay untouched." +
+					"\n\n" +
+					"To export settings into a file understood by this import, please use the 'Export' view " +
+					"action of the 'Data Source Explorer' view.");
+
+			importCurrentPageButton.addSelectionListener(new SelectionAdapter() {
+				@Override
+				public void widgetSelected(SelectionEvent e) {
+					importCurrentPageFromFile();
+				}
+			});
 		}
 	}
 
 	@Override
-	protected void createAndInitCustomControl(Composite p, Properties properties)
+	protected void createAndInitCustomControl(Composite customControlParent, Properties properties)
 	{
-//		final Composite parent = new Composite(p, SWT.NONE);
-//		{
-//			GridLayout gridLayout = new GridLayout();
-//			gridLayout.marginHeight = 0;
-//			gridLayout.marginWidth = 0;
-//			parent.setLayout(gridLayout);
-//		}
-//
-//		final Composite customControlParent = new Composite(parent, SWT.NONE);
-//		customControlParent.setLayoutData(new GridData(GridData.FILL_BOTH));
-//		{
-//			GridLayout gridLayout = new GridLayout();
-//			gridLayout.marginHeight = 0;
-//			gridLayout.marginWidth = 0;
-//			customControlParent.setLayout(gridLayout);
-//		}
-
-		final Composite customControlParent = p;
 		createCustomControl(customControlParent);
 		setCustomProperties(properties);
 	}
