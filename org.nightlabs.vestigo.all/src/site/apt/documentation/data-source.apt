@@ -33,7 +33,7 @@ Data source
 
 ** "classes"-directories
 
-	A "classes"-directory is the root of the Java-package-directory graph containing <<<.class>>> files.
+	A "classes"-directory is the root of the Java-package-directory-tree containing <<<.class>>> files.
 
 ** Libraries (JAR files)
 
