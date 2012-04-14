@@ -452,7 +452,7 @@ public abstract class EditPropertiesComposite extends Composite implements ICell
 						// select the new entries
 						List<Map.Entry<String, String>> newSelection = new ArrayList<Map.Entry<String,String>>();
 						for (String key : keys) {
-							Entry<String, String> propertiesMergedMapEntry = getContentProvider().getPropertiesMergedMapEntry(key);
+							Map.Entry<String, String> propertiesMergedMapEntry = getContentProvider().getPropertiesMergedMapEntry(key);
 							newSelection.add(propertiesMergedMapEntry);
 						}
 
@@ -957,7 +957,8 @@ public abstract class EditPropertiesComposite extends Composite implements ICell
 			}
 		}
 		else {
-			getContentProvider().setProperty(((String)value).trim(), "");
+			newSelectedName = ((String)value).trim();
+			getContentProvider().setProperty(newSelectedName, "");
 		}
 
 		// We need a final variable to pass the new selection into the Runnable.
@@ -973,20 +974,9 @@ public abstract class EditPropertiesComposite extends Composite implements ICell
 				// However, if we changed the property name, the Map.Entry-instance is a new one and thus, we must
 				// re-select manually. Marco :-)
 				if (theNewSelectedName != null) {
-					int selectionIndex = -1;
-					for (int i = 0; i < table.getItemCount(); ++i) {
-						TableItem tableItem = table.getItem(i);
-						if (tableItem.getData() instanceof Map.Entry) {
-							Map.Entry<?, ?> me = (Entry<?, ?>) tableItem.getData();
-							if (theNewSelectedName.equals(me.getKey())) {
-								selectionIndex = i;
-								break;
-							}
-						}
-					}
-
-					if (selectionIndex >= 0)
-						table.select(selectionIndex);
+					Map.Entry<String, String> propertiesMergedMapEntry = getContentProvider().getPropertiesMergedMapEntry(theNewSelectedName);
+					if (propertiesMergedMapEntry != null)
+						tableViewer.setSelection(new StructuredSelection(propertiesMergedMapEntry));
 				}
 			}
 		});
