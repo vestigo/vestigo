@@ -1,5 +1,8 @@
 package org.nightlabs.vestigo.ui.oda.property;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
@@ -32,16 +35,19 @@ public class JPAPersistencePropertiesPage extends PersistencePropertiesPage {
 	@Override
 	protected EditPropertiesComposite createEditPropertiesComposite(Composite parent) {
 		return new EditPropertiesComposite(parent, SWT.NONE) {
-
 			@Override
-			protected String[] askUserForNewProperty() {
+			protected List<String[]> askUserForNewProperties() {
 				PersistencePropertyTreeDialog dialog = new PersistencePropertyTreeDialog(getShell(), "jpa", "Add JPA persistence property", "Please select the new property to be added.");
-				if (Dialog.OK == dialog.open())
-					return new String[] { dialog.getSelectedPropertyKey() };
+				if (Dialog.OK == dialog.open()) {
+					List<String[]> result = new ArrayList<String[]>(dialog.getSelectedPropertyKeys().size());
+					for (String key : dialog.getSelectedPropertyKeys()) {
+						result.add(new String[] { key });
+					}
+					return result;
+				}
 				else
 					return null;
 			}
-
 		};
 	}
 }

@@ -674,6 +674,7 @@
        point="org.nightlabs.vestigo.ui.persistenceProperty">
     <category
           description="Properties specified by the JDO standard."
+          descriptionURL="http://vestigo.nightlabs.com/${versionAndLanguage}/documentation/jdo/persistence-properties.html"
           id="jdo"
           name="JDO standard"
           orderHint="100"
@@ -763,6 +764,7 @@
     </category>
     <category
           description="Properties specified by the JPA standard."
+          descriptionURL="http://vestigo.nightlabs.com/${versionAndLanguage}/documentation/jpa/persistence-properties.html"
           id="jpa"
           name="JPA standard"
           orderHint="100"

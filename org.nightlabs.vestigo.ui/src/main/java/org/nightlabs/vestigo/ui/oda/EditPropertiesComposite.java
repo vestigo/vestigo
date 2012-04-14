@@ -258,6 +258,10 @@ public abstract class EditPropertiesComposite extends Composite implements ICell
 		private TreeMap<String, String> propertiesMerged = new TreeMap<String, String>();
 		private Map<String, Map.Entry<String, String>> key2propertiesMergedMapEntry = new HashMap<String, Map.Entry<String,String>>();;
 
+		public Map.Entry<String, String> getPropertiesMergedMapEntry(String key) {
+			return key2propertiesMergedMapEntry.get(key);
+		}
+
 		@Override
 		public Object[] getElements(Object inputElement) {
 			defaults = null;
@@ -415,40 +419,44 @@ public abstract class EditPropertiesComposite extends Composite implements ICell
 		addButton.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent event) {
-				String[] newProperty = askUserForNewProperty();
-				if (newProperty != null) {
-					String key = null;
-					String value = null;
+				List<String[]> newProperties = askUserForNewProperties();
+				if (newProperties != null) {
+					boolean modified = false;
 
-					if (newProperty.length >= 1)
-						key = newProperty[0];
+					List<String> keys = new ArrayList<String>();
+					for (String[] newProperty : newProperties) {
+						if (newProperty != null) {
+							String key = null;
+							String value = null;
 
-					if (newProperty.length >= 2)
-						value = newProperty[1];
+							if (newProperty.length >= 1)
+								key = newProperty[0];
 
-					if (newProperty.length > 2)
-						throw new IllegalStateException("askUserForNewProperty() returned illegal result! newProperty.length=" + newProperty.length + " but it should have been 0, 1 or 2!");
+							if (newProperty.length >= 2)
+								value = newProperty[1];
 
-					if (key != null) {
-						getContentProvider().setProperty(key, value == null ? "" : value);
+							if (newProperty.length > 2)
+								throw new IllegalStateException("askUserForNewProperties() returned illegal result! newProperty.length=" + newProperty.length + " but it should have been 0, 1 or 2!");
 
-						tableViewer.refresh(true);
-
-						// We try to select the new entry
-						int selectionIndex = -1;
-						for (int i = 0; i < table.getItemCount(); ++i) {
-							TableItem tableItem = table.getItem(i);
-							if (tableItem.getData() instanceof Map.Entry) {
-								Map.Entry<?, ?> me = (Entry<?, ?>) tableItem.getData();
-								if (key.equals(me.getKey())) {
-									selectionIndex = i;
-									break;
-								}
+							if (key != null) {
+								modified = true;
+								getContentProvider().setProperty(key, value == null ? "" : value);
+								keys.add(key);
 							}
 						}
+					}
 
-						if (selectionIndex >= 0)
-							table.select(selectionIndex);
+					if (modified) {
+						tableViewer.refresh(true);
+
+						// select the new entries
+						List<Map.Entry<String, String>> newSelection = new ArrayList<Map.Entry<String,String>>();
+						for (String key : keys) {
+							Entry<String, String> propertiesMergedMapEntry = getContentProvider().getPropertiesMergedMapEntry(key);
+							newSelection.add(propertiesMergedMapEntry);
+						}
+
+						tableViewer.setSelection(new StructuredSelection(newSelection));
 					}
 				}
 			}
@@ -490,7 +498,7 @@ public abstract class EditPropertiesComposite extends Composite implements ICell
 	 * @return <code>null</code> or a String array with length 2 containing key and value
 	 * or with length 1 containing only the key.
 	 */
-	protected abstract String[] askUserForNewProperty();
+	protected abstract List<String[]> askUserForNewProperties();
 
 	private void createTableViewer()
 	{

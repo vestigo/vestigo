@@ -7,6 +7,7 @@ public class PersistenceProperty implements Comparable<PersistenceProperty>
 	private String id;
 	private String description;
 	private int orderHint;
+	private String descriptionURL;
 
 	public PersistencePropertyCategory getCategory() {
 		return category;
@@ -33,6 +34,22 @@ public class PersistenceProperty implements Comparable<PersistenceProperty>
 	}
 	public void setOrderHint(int orderHint) {
 		this.orderHint = orderHint;
+	}
+
+	public String getDescriptionURL() {
+		return descriptionURL;
+	}
+	public void setDescriptionURL(String descriptionURL) {
+		this.descriptionURL = descriptionURL;
+	}
+
+	public String getDescriptionURLInherited() {
+		if (descriptionURL != null)
+			return descriptionURL;
+		else if (category != null)
+			return category.getDescriptionURLInherited();
+		else
+			return null;
 	}
 
 	@Override

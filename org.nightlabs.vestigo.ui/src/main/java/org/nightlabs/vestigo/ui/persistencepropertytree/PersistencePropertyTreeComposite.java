@@ -60,7 +60,7 @@ public class PersistencePropertyTreeComposite extends Composite implements ISele
 
 	private void createTreeViewer(Composite parent)
 	{
-		treeViewer = new TreeViewer(parent, SWT.SINGLE | SWT.H_SCROLL | SWT.V_SCROLL | SWT.BORDER);
+		treeViewer = new TreeViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | SWT.BORDER);
 		treeViewer.setLabelProvider(new PersistencePropertyTreeLabelProvider());
 		treeViewer.setContentProvider(new PersistencePropertyTreeContentProvider());
 		treeViewer.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -140,6 +140,9 @@ public class PersistencePropertyTreeComposite extends Composite implements ISele
 			if (cat.getDescription() == null)
 				cat.setDescription(element.getAttribute("description"));
 
+			if (cat.getDescriptionURL() == null)
+				cat.setDescriptionURL(element.getAttribute("descriptionURL"));
+
 			if (cat.getOrderHint() == orderHintDefault)
 				cat.setOrderHint(orderHint);
 
@@ -155,6 +158,7 @@ public class PersistencePropertyTreeComposite extends Composite implements ISele
 			property.setOrderHint(orderHint);
 			property.setCategory(category);
 			property.setDescription(element.getAttribute("description"));
+			property.setDescriptionURL(element.getAttribute("descriptionURL"));
 			category.getPersistenceProperties().add(property);
 		}
 	}

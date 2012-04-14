@@ -6,16 +6,12 @@ import java.util.List;
 public class PersistencePropertyCategory implements Comparable<PersistencePropertyCategory>
 {
 	private String id;
-
 	private PersistencePropertyCategory parentCategory;
-
 	private String persistenceAPI;
-
 	private String name;
-
 	private String description;
-
 	private int orderHint;
+	private String descriptionURL;
 
 	private List<PersistencePropertyCategory> childCategories = new ArrayList<PersistencePropertyCategory>();
 
@@ -70,6 +66,13 @@ public class PersistencePropertyCategory implements Comparable<PersistenceProper
 		this.orderHint = orderHint;
 	}
 
+	public String getDescriptionURL() {
+		return descriptionURL;
+	}
+	public void setDescriptionURL(String descriptionURL) {
+		this.descriptionURL = descriptionURL;
+	}
+
 	@Override
 	public int compareTo(PersistencePropertyCategory o)
 	{
@@ -87,5 +90,14 @@ public class PersistencePropertyCategory implements Comparable<PersistenceProper
 		String thisName = (this.name == null ? "" : this.name) + this.id;
 		String otherName = (o.name == null ? "" : o.name) + o.id;
 		return thisName.compareTo(otherName);
+	}
+
+	public String getDescriptionURLInherited() {
+		if (descriptionURL != null)
+			return descriptionURL;
+		else if (parentCategory != null)
+			return parentCategory.getDescriptionURLInherited();
+		else
+			return null;
 	}
 }
