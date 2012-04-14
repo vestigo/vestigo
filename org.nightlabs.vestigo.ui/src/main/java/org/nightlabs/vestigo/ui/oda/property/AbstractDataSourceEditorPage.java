@@ -1,16 +1,16 @@
 package org.nightlabs.vestigo.ui.oda.property;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.Collection;
-import java.util.Map;
 import java.util.Properties;
 
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.datatools.connectivity.IConnectionProfile;
+import org.eclipse.datatools.connectivity.internal.ConnectionProfileMgmt;
 import org.eclipse.datatools.connectivity.oda.design.ui.wizards.DataSourceEditorPage;
+import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.preference.PreferencePage;
 import org.eclipse.jface.resource.ImageDescriptor;
@@ -28,7 +28,6 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.forms.events.HyperlinkAdapter;
 import org.eclipse.ui.forms.events.HyperlinkEvent;
 import org.eclipse.ui.forms.widgets.Hyperlink;
-import org.nightlabs.vestigo.childvm.shared.PropertiesUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -43,16 +42,11 @@ extends DataSourceEditorPage
 	private Properties initialProperties;
 
 	private boolean showImportCurrentPage = true;
-	private boolean showExportAllPages = true;
 
 	private Button importCurrentPageButton;
-	private Button exportAllPagesButton;
 
 	protected void setShowImportCurrentPage(boolean showImportCurrentPage) {
 		this.showImportCurrentPage = showImportCurrentPage;
-	}
-	protected void setShowExportAllPages(boolean showExportAllPages) {
-		this.showExportAllPages = showExportAllPages;
 	}
 
 	public Properties getInitialProperties() {
@@ -104,7 +98,7 @@ extends DataSourceEditorPage
 		super.createControl(parent);
 		PreferencePageSetManager.sharedInstance().register(this);
 
-		if (showImportCurrentPage || showExportAllPages) {
+		if (showImportCurrentPage) { // || showExportAllPages) {
 			final Composite btnPingParent = btnPing.getParent();
 
 	//		if (dataSourceEditorPageContainer != null) {
@@ -121,9 +115,6 @@ extends DataSourceEditorPage
 				GridLayout gridLayout = new GridLayout(1, false);
 
 				if (showImportCurrentPage)
-					gridLayout.numColumns++;
-
-				if (showExportAllPages)
 					gridLayout.numColumns++;
 
 				gridLayout.marginHeight = 0;
@@ -144,16 +135,16 @@ extends DataSourceEditorPage
 				});
 			}
 
-			if (showExportAllPages) {
-				exportAllPagesButton = new Button(buttonParent, SWT.PUSH);
-				exportAllPagesButton.setText("Export (all pages)");
-				exportAllPagesButton.addSelectionListener(new SelectionAdapter() {
-					@Override
-					public void widgetSelected(SelectionEvent e) {
-						exportAllPagesToFile();
-					}
-				});
-			}
+//			if (showExportAllPages) {
+//				exportAllPagesButton = new Button(buttonParent, SWT.PUSH);
+//				exportAllPagesButton.setText("Export (all pages)");
+//				exportAllPagesButton.addSelectionListener(new SelectionAdapter() {
+//					@Override
+//					public void widgetSelected(SelectionEvent e) {
+//						exportAllPagesToFile();
+//					}
+//				});
+//			}
 		}
 	}
 
@@ -327,7 +318,7 @@ extends DataSourceEditorPage
 				try {
 					PlatformUI.getWorkbench().getBrowserSupport().getExternalBrowser().openURL(new URL(href));
 				} catch (Exception x) {
-					logger.error("linkActivated: ", x); //$NON-NLS-1$
+					logger.error("linkActivated: " + x, x); //$NON-NLS-1$
 					MessageDialog.openError(
 							getShell(),
 							"Error opening browser",
@@ -344,72 +335,52 @@ extends DataSourceEditorPage
 
 		FileDialog dialog = new FileDialog(getShell(), SWT.OPEN);
 
-		String ext_vestigo = "*.vestigoconnection";
 		String ext_all = "*.*";
-		dialog.setFilterNames(new String[] { String.format("Vestigo connection files (%s)", ext_vestigo), String.format("All filed (%s)", ext_all) });
-		dialog.setFilterExtensions(new String[] { ext_vestigo, ext_all });
+		dialog.setFilterNames(new String[] { String.format("All files (%s)", ext_all) });
+		dialog.setFilterExtensions(new String[] { ext_all });
 
 		String fileName = dialog.open();
 		if (fileName != null && !"".equals(fileName)) {
-			File propsFile = new File(fileName);
-			if (!propsFile.exists())
+			File file = new File(fileName);
+			IConnectionProfile[] connectionProfiles;
+			try {
+				connectionProfiles = ConnectionProfileMgmt.loadCPs(file);
+			} catch (CoreException x) {
+				logger.error("importCurrentPageFromFile: "+ x, x); //$NON-NLS-1$
+				MessageDialog.openError(
+						getShell(),
+						"Error loading connection profiles",
+						String.format("Reading the connection profiles from file '%s' failed: %s", file.getAbsolutePath(), x)
+				);
 				return;
-			FileInputStream in;
-			try {
-				in = new FileInputStream(propsFile);
-			} catch (FileNotFoundException e) {
-				throw new IllegalStateException("File exists, but could not be read! " + propsFile.getAbsolutePath(), e);
 			}
-			Properties props = new Properties();
-			try {
-				try {
-					props.load(in);
-				} finally {
-					in.close();
-				}
-			} catch (IOException e) {
-				// TODO: ErrorHandling
-				throw new RuntimeException(e);
+
+			if (connectionProfiles == null || connectionProfiles.length == 0) {
+				MessageDialog.openWarning(
+						getShell(),
+						"No connection profiles",
+						String.format("The file '%s' does not contain any connection profile or it could not be read!", file.getAbsolutePath())
+				);
+				return;
 			}
-			setCustomProperties(props);
-		}
-	}
 
-	protected void exportAllPagesToFile()
-	{
-		FileDialog dialog = new FileDialog(getShell(), SWT.SAVE);
-
-		String fileName = dialog.open();
-		if (fileName != null && !"".equals(fileName)) {
-
-			final String suffix = ".vestigoconnection";
-			if (!fileName.toLowerCase().endsWith(suffix))
-				fileName += suffix;
-
-			Properties props = new Properties();
-			for (Map.Entry<?, ?> me : collectProperties().entrySet()) {
-				if (PropertiesUtil.WORKAROUND_TIMESTAMP.equals(me.getKey()))
-					continue;
-
-				props.setProperty(String.valueOf(me.getKey()), String.valueOf(me.getValue()));
+			IConnectionProfile connectionProfile = null;
+			if (connectionProfiles.length == 1)
+				connectionProfile = connectionProfiles[0];
+			else {
+				SelectConnectionProfileDialog scpDialog = new SelectConnectionProfileDialog(
+						getShell(),
+						"Select connection profile",
+						String.format("The file '%s' contains multiple connection profiles! Please select the one you want to import settings from.", file.getAbsolutePath()),
+						Arrays.asList(connectionProfiles)
+				);
+				if (scpDialog.open() == Dialog.OK)
+					connectionProfile = scpDialog.getSelectedConnectionProfile();
 			}
-			File propsFile = new File(fileName);
 
-			FileOutputStream out;
-			try {
-				out = new FileOutputStream(propsFile);
-			} catch (FileNotFoundException e) {
-				throw new IllegalStateException("Could not create file! " + propsFile.getAbsolutePath(), e);
-			}
-			try {
-				try {
-					props.store(out, "File written by JDO/JPA Query Browser.");
-				} finally {
-					out.close();
-				}
-			} catch (IOException e) {
-				// TODO: ErrorHandling
-				throw new RuntimeException(e);
+			if (connectionProfile != null) {
+				Properties properties = connectionProfile.getProperties(connectionProfile.getProviderId());
+				setCustomProperties(properties);
 			}
 		}
 	}
