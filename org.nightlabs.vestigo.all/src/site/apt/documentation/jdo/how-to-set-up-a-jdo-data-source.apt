@@ -7,8 +7,8 @@
 
 How to set up a JDO data source
 
-	In the following we'll show you how to create a new JDO <data source>. Note, that the names <data source> and
-	<connection> (or <connection profile>) are often used interchangeably.
+	In the following we'll show you how to create a new JDO <data source>.
+	Note, that the names <data source> and <connection profile> are often used interchangeably.
 
 * Open the <Vestigo> perspective
 
