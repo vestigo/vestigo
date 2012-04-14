@@ -6,14 +6,18 @@ import java.io.IOException;
 import java.io.StringReader;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Locale;
 import java.util.Set;
 
 import org.nightlabs.vestigo.maven.core.DependencyMavenURI;
 import org.nightlabs.vestigo.maven.core.MavenRunner;
 import org.nightlabs.vestigo.maven.core.VestigoMavenCorePlugin;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class DependencyResolveMavenRunner extends MavenRunner
 {
+	private static final Logger logger = LoggerFactory.getLogger(DependencyResolveMavenRunner.class);
 	public static final String PREFERENCE_KEY_MAVEN_GOAL = "DependencyResolveMavenRunner.maven.goal";
 	public static final String PREFERENCE_DEFAULT_MAVEN_GOAL = "org.apache.maven.plugins:maven-dependency-plugin:2.4:resolve";
 
@@ -36,6 +40,7 @@ public class DependencyResolveMavenRunner extends MavenRunner
 			String line;
 			boolean inDependencyOutput = false;
 			while (null != (line = reader.readLine())) {
+				logger.trace("run: inDependencyOutput={} line='{}'", inDependencyOutput, line);
 				line = line.trim();
 
 				if (line.startsWith("[INFO]"))
@@ -44,12 +49,21 @@ public class DependencyResolveMavenRunner extends MavenRunner
 				line = line.trim();
 
 				if (inDependencyOutput && line.startsWith("---")) {
+					logger.trace("run: found end of interesting dependency output. Exiting loop.");
 					// end of interesting output => exit loop
 					break;
 				}
 
 				if (!inDependencyOutput && line.startsWith("---") && line.contains("maven-dependency-plugin:") && line.contains(":resolve")) {
-					// start of interesting output
+					// start of interesting output - when using Maven 2 (instead of Maven 3), this trigger line does not exist and we'll never come here.
+					logger.trace("run: found beginning of interesting dependency output (rule 1).");
+					inDependencyOutput = true;
+					continue;
+				}
+
+				if (!inDependencyOutput && line.toLowerCase(Locale.ENGLISH).contains("The following files have been resolved".toLowerCase(Locale.ENGLISH))) {
+					// start of interesting output - when using Maven 2 (instead of Maven 3), this additional trigger is required
+					logger.trace("run: found beginning of interesting dependency output (rule 2).");
 					inDependencyOutput = true;
 					continue;
 				}
@@ -59,7 +73,10 @@ public class DependencyResolveMavenRunner extends MavenRunner
 					if (segments.length >= 4) {
 						DependencyMavenURI uri = new DependencyMavenURI(segments);
 						dependencyMavenURIs.add(uri);
+						logger.debug("run: added DependencyMavenURI: {}", uri);
 					}
+					else
+						logger.debug("run: ignoring line, because segments.length does not match expectation.");
 				}
 			}
 
