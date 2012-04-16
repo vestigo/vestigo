@@ -38,85 +38,86 @@ Schnellstart (JDO)
 
 [../../images/jdo/quick-start/20.png]
 
-* Start the wizard
+* Starten des Assistenten
 
-	In the <Data Source Explorer> view, you right-click on <JDO Connections> and then
-	on <New...>:
+	In der Sicht <Data Source Explorer> klicken Sie mit der rechten Maustaste auf
+	<JDO-Datenquellen> und dann auf <Neu...>:
 
 [../../images/jdo/quick-start/25.png]
 
-* Give the new data source a name
+* Benennen der neuen Datenquelle
 
-	The new data source needs a name to reference it everywhere in the application.
+	Die neue Datenquelle benötigt einen Namen, über den sie überall in der Anwendung referenziert wird.
 
 [../../images/jdo/quick-start/30.png]
 
-* Classpath
+* Klassenpfad
 
-	All libraries needed for this data source are in the folder <<</tmp/vestigo-demo/>>>.
-	Therefore we add <<<file:$\{java.io.tmpdir}/vestigo-demo/*>>> as shown below. 
+	Alle Bibliotheken, die für diese Datenquelle benötigt werden, liegen im Ordner <<</tmp/vestigo-demo/>>>.
+	Daher fügen wir <<<file:$\{java.io.tmpdir}/vestigo-demo/*>>> wie unten gezeigt hinzu:
 
-	Please read more about the {{{../data-source.html#Classpath}classpath here}}.
+	Mehr Informationen über den {{{../data-source.html#Classpath}Klassenpfad finden Sie hier}}.
 
 [../../images/jdo/quick-start/35.png]
 
-* Persistence unit
+* Persistenzeinheit
 
-	Our demo data contains two persistence units: One for JDO and one for JPA. Select
-	<<<vestigoDemoMovieJDO>>>.
+	Unsere Demodaten enthalten zwei Persistenzeinheiten: Eine für JDO und eine für JPA. Wählen Sie
+	<<<vestigoDemoMovieJDO>>> aus.
 
-	See {{{./persistence-unit.html}JDO persistence unit}} for further details.
+	Auf {{{./persistence-unit.html}JDO-Persistenzeinheit}} finden Sie weitere Details.
 
 [../../images/jdo/quick-start/40.png]
 
-* Persistence properties
+* Persistenzeigenschaften
 
-	Most settings from the persistence unit can be used as they are. Only one single setting needs to
-	be overwritten: <<<javax.jdo.option.ConnectionURL>>>
+	Die meisten Einstellungen aus der Persistenzeinheit können so verwendet werden, wie sie sind. Nur
+	eine einzige Eigenschaft muß überschrieben werden: <<<javax.jdo.option.ConnectionURL>>>
 
-	We extracted the demo data into our <<</tmp/>>> directory. Thus, the correct JDBC-URL is:
-	<<<jdbc:derby:/tmp/vestigo-demo/derby/vestigoDemoMovieJDO/>>>
+	Wir haben die Demodaten in unser <<</tmp/>>>-Verzeichnis entpackt. Daher ist die korrekte
+	JDBC-URL: <<<jdbc:derby:/tmp/vestigo-demo/derby/vestigoDemoMovieJDO/>>>
 
-	Note, that you can use variables like <<<$\{VAR}>>> and therefore the URL
-	<<<jdbc:derby:$\{java.io.tmpdir}/vestigo-demo/derby/vestigoDemoMovieJDO/>>> is equivalent to
+	Wohlgemerkt können Sie Variablen wie <<<$\{VAR}>>> verwenden und daher ist die URL
+	<<<jdbc:derby:$\{java.io.tmpdir}/vestigo-demo/derby/vestigoDemoMovieJDO/>>> äquivalent zu
 	<<<jdbc:derby:/tmp/vestigo-demo/derby/vestigoDemoMovieJDO/>>>.
 
-	Please continue reading about the {{{./persistence-properties.html}persistence properties here}}.
+	Bitte lesen Sie mehr auf {{{./persistence-properties.html}Persistenzeigenschaften}}.
 
 [../../images/jdo/quick-start/45.png]
 
-* Test the connection
+* Testen der Datenquelle
 
-	We can - and should - test the connection, now: Click the <Test Connection> button. If
-	everything is correct and a <<<PersistenceManagerFactory>>> can successfully be started, you'll see
-	this dialog:
+	Wir können - und sollten - die Datenquelle jetzt testen: Klicken Sie auf den Knopf <Teste Verbindung>.
+	Wenn alles korrekt ist und eine <<<PersistenceManagerFactory>>> erfolgreich gestartet werden konnte,
+	erscheint dieser Dialog:
 
 [../../images/jdo/quick-start/50.png]
 
-* Finish the wizard
+* Beenden des Assistenten
 
-	After clicking the wizard's <Finish> button, our new connection is shown in the <Data Source Explorer> view.  
+	Nach einem Klick auf den <Beenden>-Knopf des Assistenten, wird die neue Datenquelle in
+	der Sicht <Data Source Explorer> angezeigt.  
 
 [../../images/jdo/quick-start/55.png]
 
-* Open the data source and execute your first query
+* Verbinden der Datenquelle und Ausführen Ihrer ersten Abfrage
 
-	A double-click on the <<<JDO demo>>> data source opens it and causes the <Candidate classes> view to load
-	and display all candidate classes (aka entities).
+	Ein Doppelklick auf die Datenquelle <<<JDO demo>>> öffnet sie und führt dazu, daß die Sicht <Kandidatenklassen>
+	alle verfügbaren Kandidatenklassen (auch Entitäten genannt) auflistet.
 
 [../../images/jdo/quick-start/60.png]
 
-	When you double-click one of these classes, a new (anonymous) query editor is opened with a simple query
-	for the selected candidate class.
+	Wenn Sie eine der Klassen doppelklicken, öffnet sich ein neuer (anonymer) Abfrage-Editor mit einer simplen
+	Abfrage für die gewählte Kandidatenklasse.
 
 [../../images/jdo/quick-start/65.png]
-	
-	A second double-click on the same class causes the query to be executed and you	can see the results in
-	the <Result set> view.
+
+	Ein zweiter Doppelklick auf die gleiche Klasse sorgt dafür, daß die Abfrage ausgeführt wird und das Ergebnis
+	in der <Ergebnis>-Sicht erscheint.
 
 [../../images/jdo/quick-start/70.png]
 
-	In order to navigate through an object graph, simply select a row in the <Result set> and then navigate
-	through the <Object graph detail tree>.
+	Um durch den Objektgraphen zu navigieren, wählen Sie einfach eine Zeile in der <Ergebnis>-Sicht aus.
+	In der Sicht <Objektgraphdetailbaum> können Sie dann in die Tiefe des Objektgraphen eintauchen.
 
 [../../images/jdo/quick-start/75.png]

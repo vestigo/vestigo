@@ -40,7 +40,7 @@ Quick start (JDO)
 
 * Start the wizard
 
-	In the <Data Source Explorer> view, you right-click on <JDO Connections> and then
+	In the <Data Source Explorer> view, you right-click on <JDO Data sources> and then
 	on <New...>:
 
 [../../images/jdo/quick-start/25.png]
@@ -85,9 +85,9 @@ Quick start (JDO)
 
 [../../images/jdo/quick-start/45.png]
 
-* Test the connection
+* Test the data source
 
-	We can - and should - test the connection, now: Click the <Test Connection> button. If
+	We can - and should - test the data source, now: Click the <Test Connection> button. If
 	everything is correct and a <<<PersistenceManagerFactory>>> can successfully be started, you'll see
 	this dialog:
 
@@ -95,11 +95,11 @@ Quick start (JDO)
 
 * Finish the wizard
 
-	After clicking the wizard's <Finish> button, our new connection is shown in the <Data Source Explorer> view.  
+	After clicking the wizard's <Finish> button, our new data source is shown in the <Data Source Explorer> view.  
 
 [../../images/jdo/quick-start/55.png]
 
-* Open the data source and execute your first query
+* Connect the data source and execute your first query
 
 	A double-click on the <<<JDO demo>>> data source opens it and causes the <Candidate classes> view to load
 	and display all candidate classes (aka entities).
