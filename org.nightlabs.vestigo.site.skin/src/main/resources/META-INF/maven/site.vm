@@ -461,11 +461,6 @@
       #end
     #end
   #end
-  #if( !$havePoweredBy )
-    <a href="http://maven.apache.org/" title="$i18n.getString( "site-renderer", $locale, "template.builtby" ) Maven" class="poweredBy">
-      <img class="poweredBy" alt="$i18n.getString( "site-renderer", $locale, "template.builtby" ) Maven" src="$relativePath/images/logos/maven-feather.png" />
-    </a>
-  #end
   </div>
 #end
 ##
@@ -579,9 +574,10 @@
 	    	#publishDate( "left" $decoration.publishDate $decoration.version )
 	    </div>
 	    <div style="float:right;">
-	    	<a href="http://www.nightlabs.de"><img src="$relativePath/images/nl/nl-logo-grey.png"></a>
+	    	<a href="http://www.nightlabs.de"><img src="$relativePath/images/nl/nl-logo-grey.png"/></a>
 	    </div>
 	</div>
-
+	<div id="nl_spacer_bottom">
+	</div>
 </body>	  
 </html>

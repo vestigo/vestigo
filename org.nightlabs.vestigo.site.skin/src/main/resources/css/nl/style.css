@@ -42,6 +42,9 @@ input[type="text"].focus {
 #nl_spacer_top {
 	height: 15px;
 }
+#nl_spacer_bottom {
+	height: 15px;
+}
 
 #nl_container {
 	width: 940px;
@@ -50,7 +53,7 @@ input[type="text"].focus {
 	margin-left: auto;
 	margin-right: auto;
 	font-size: 11pt;
-	line-height: 13pt;
+	line-height: 16pt;
 	color: #6f6f6f;
 }
 
@@ -231,7 +234,7 @@ input[type="text"].focus {
 	margin-top: 0px;
 	margin-left: 41px;
 	font-size: 11pt;
-	line-height: 13pt;
+	line-height: 16pt;
 	font-weight: bold;
 }
 
@@ -341,8 +344,10 @@ input[type="text"].focus {
 }
 
 #nl_footer {
-    background-image: url("../../images/nl/footer-bg.png");
+    background-image: url("../../images/nl/footer-bg-full.png");
+    /*
     background-repeat: repeat-x;
+    */
     border: 1px solid #9EA5B0;
     clear: both;
     color: #B1B1B1;
