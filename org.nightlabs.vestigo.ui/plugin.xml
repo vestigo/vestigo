@@ -5,6 +5,30 @@
    <extension-point id="editClasspathActionDelegate" name="editClasspathActionDelegate" schema="schema/editClasspathActionDelegate.exsd"/>
    <extension-point id="persistenceProperty" name="persistenceProperty" schema="schema/persistenceProperty.exsd"/>
 
+	<extension
+      point="org.eclipse.core.runtime.products"
+      id="product">
+   		<product
+         	name="Vestigo"
+         	application="org.eclipse.ui.ide.workbench">
+			<property
+          		name="appName" 
+          		value="Vestigo"/>
+                   	
+         	<property
+         		name="windowImages"
+         		value="icons/vestigo-16x16.png,icons/vestigo-32x32.png"/>
+         		
+			<property
+          		name="aboutImage" 
+          		value="icons/vestigo-about.png"/>
+      		<property
+          		name="aboutText" 
+          		value="Vestigo... about text bla bla bla"/>         		
+        </product>
+    </extension>
+         
+
     <extension
           point="org.eclipse.ui.intro.configExtension">
        <configExtension
