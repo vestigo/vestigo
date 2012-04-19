@@ -25,7 +25,7 @@ Download
 
 	[]
 
-* {Plug-in}
+* Eclipse Plug-in
 
 	If you already use {{{http://www.eclipse.org}Eclipse}} as IDE, you can add the following update-site and install
 	Vestigo as plug-in into your existing IDE: 

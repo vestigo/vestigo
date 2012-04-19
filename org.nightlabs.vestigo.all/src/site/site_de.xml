@@ -18,8 +18,8 @@
 		<links>
 			<item name="Hauptseite" href="./index.html" />
 			<item name="Dokumentation" href="./documentation/index.html" />
-			<item name="Bildschirmfotos" href="./screenshots/index.html" />
-			<item name="Herunterladen" href="./download/index.html" />
+			<item name="Screenshots" href="./screenshots/index.html" />
+			<item name="Download" href="./download/index.html" />
 			<item name="Kaufen" href="./purchase/" target="_blank" />
 		</links>
 

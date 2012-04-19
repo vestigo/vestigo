@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://maven.apache.org/XDOC/2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 http://maven.apache.org/xsd/xdoc-2.0.xsd">
+
+	<properties>
+		<title>Vestigo pre-release version</title>
+		<author>Alexander Bieber</author>
+	</properties>
+
+	<body>
+		<h2>Vestigo pre-release version</h2>
+		<div class="section">
+			<p>
+				The currently distributed version of Vestigo targets early adopters as some aspects of the 
+				software and documentation are subject to frequent change over the next couple of weeks.
+				The areas where Vestigo is still improved are listed on this site. 
+			</p>
+			<p>
+				<a class="download_link" href="./index.html">Download vestigo</a>
+			</p>
+			
+			<h3>UI and behaviour of the standalone application</h3>
+				<div class="section">
+					<p>
+						The standalone version of Vestigo is based on the Eclipse-IDE and currently it is not yet 
+						stripped down to include only the functionality of Vestigo. This means that the not only
+						the download of the standalone version is very large, but also that you will get a complete
+						Eclipse-IDE instead of only the JDO/JPA browser.
+					</p>
+					<p>
+						Additionally the standalone version needs to behave a little different than the Eclipse plug-in.
+						For example the standalone-version should be able to manage queries directly in the 
+						file-system while the Eclipse plug-in restricts the query management to the Eclipse workspace.
+					</p>
+				</div>
+			<h3>Documentation on this website</h3>
+				<div class="section">
+					<p>
+						There is still some documentation missing on the website that helps users to use Vestigo. 
+					</p>
+				</div>
+		</div>
+	</body>
+</document>
