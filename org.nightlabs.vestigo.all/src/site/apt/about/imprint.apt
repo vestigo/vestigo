@@ -34,13 +34,6 @@ Imprint
 
 
 * Credits
-
-	JDO/JPA Query Browser contains 3rd party software. We would like to thank the authors of these software projects for their great work:
-
-	* {{{http://eclipse.org/}Eclipse}}
-
-	* {{{http://www.bouncycastle.org/}The Legion of the Bouncy Castle}}
-
-	* {{{http://apache.org/}The Apache Software Foundation}} 
-
-	[]
+	
+	Vestigo contains 3rd party software and material. 
+	In the {{{./credits.html}credits section}} we would like to thank the authors of these software projects and materials for their great work.

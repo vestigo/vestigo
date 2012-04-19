@@ -4,27 +4,6 @@
 	xsi:schemaLocation="http://maven.apache.org/DECORATION/1.1.0 http://maven.apache.org/xsd/decoration-1.1.0.xsd"
 	name="Vestigo (JDO/JPA-Query-Browser)">
 
-	<poweredBy>
-		<logo name="BouncyCastle"
-			img="./images/TheLegionOfTheBouncyCastle.png"
-			href="http://www.bouncycastle.org"
-			target="_blank" />
-
-		<logo name="Eclipse"
-			img="./images/bui_eclipse_pos_logo_fc_sm.png"
-			href="http://www.eclipse.org"
-			target="_blank" />
-
-		<logo name="famfamfam"
-			img="./images/famfamfam.png"
-			href="http://www.famfamfam.com"
-			target="_blank" />
-
-		<logo name="Maven" href="http://maven.apache.org/"
-			img="http://maven.apache.org/images/logos/maven-feather.png"
-			target="_blank" />
-	</poweredBy>
-
 	<custom>
 		<hideMenu>
 			<path>index.html</path>

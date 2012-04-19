@@ -1,0 +1,44 @@
+	---
+	Credits
+	---
+	Alexander Bieber
+	---
+	2012-04-18
+
+Credits
+
+	Vestigo contains 3rd party software and material. In this section we would like to thank the authors of these software projects and materials for their great work:
+
+* Eclipse 
+
+	Vestigo is built on {{{http://eclipse.org/rcp}Eclipse-RCP}} and uses other  Eclipse projects like the 
+	{{{http://www.eclipse.org/datatools/}Eclipse Data Tools Platform}} project and the {{{http://www.eclipse.org/Xtext/}Xtext}} project. 
+	All of which are licensed under the {{{http://www.eclipse.org/org/documents/epl-v10.php}Eclipse public license}}
+	
+[../images/bui_eclipse_pos_logo_fc_sm.png]
+
+* The Legion of the Bouncy Castle
+
+	Vestigo uses the {{{http://www.bouncycastle.org/}bouncycastle libraries}} to implement its licensing features. 
+	Bouncycastle is licensed under an own license - {{{http://www.bouncycastle.org/licence.html}the bouncycastle license}}.
+	 
+[../images/TheLegionOfTheBouncyCastle.png]
+
+* The Apache Software Foundation
+
+	Vestigo several libraries of the {{{http://apache.org/}The Apache Software Foundation}} all licensed under one version of the {{{http://www.apache.org/licenses/}Apache License}}.
+	 
+[../images/apache.png]
+
+* Famfamfam
+
+	Vestigo uses {{{http://www.famfamfam.com/lab/icons/silk/}famfamfam silk icon-set}} for its gui-elements. The icon-set is licesed under {{{http://creativecommons.org/licenses/by/2.5/}Creative Commons Attribution 2.5 License}}.
+	 
+[../images/famfamfam.png]
+
+* Maven
+
+	Vestigo uses {{{http://maven.apache.org/}Maven}} to build and publish the product.Maven is licensed under {{{http://maven.apache.org/license.html}Apache Software License}}.
+	 
+[../images/maven-feather.png]
+
