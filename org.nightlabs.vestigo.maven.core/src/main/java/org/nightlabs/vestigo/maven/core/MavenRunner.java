@@ -2,8 +2,6 @@ package org.nightlabs.vestigo.maven.core;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.LinkedList;
-import java.util.List;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
@@ -11,6 +9,7 @@ import org.eclipse.core.runtime.IExtension;
 import org.eclipse.core.runtime.IExtensionPoint;
 import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.Platform;
+import org.nightlabs.vestigo.core.childprocess.CommandParser;
 import org.nightlabs.vestigo.core.childprocess.DumpStreamToFileThread;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,8 +18,12 @@ public abstract class MavenRunner
 {
 	private static final Logger logger = LoggerFactory.getLogger(MavenRunner.class);
 
+	private static boolean isWindows() {
+		return File.separatorChar == '\\';
+	}
+
 	public static final String PREFERENCE_KEY_MAVEN_COMMAND = "MavenRunner.maven.command";
-	public static final String PREFERENCE_DEFAULT_MAVEN_COMMAND = "mvn";
+	public static final String PREFERENCE_DEFAULT_MAVEN_COMMAND = isWindows() ? "cmd /c mvn '${goal}'" : "mvn '${goal}'";
 
 	public static final String PREFERENCE_KEY_MAVEN_REPOSITORIES = "MavenRunner.maven.repositories";
 
@@ -55,9 +58,9 @@ public abstract class MavenRunner
 		try {
 			logger.info("launch: projectDirectory=\"{}\"", projectDirectory.getAbsolutePath());
 
-			List<String> commandWithArguments = new LinkedList<String>();
-			commandWithArguments.add(getMavenCommand());
-			commandWithArguments.add(getMavenGoal());
+			CommandParser commandParser = new CommandParser();
+			commandParser.getProperties().put("goal", getMavenGoal());
+			String[] commandWithArguments = commandParser.parse(getMavenCommand());
 
 			mavenOutput = new StringBuffer();
 			mavenProcess = new ProcessBuilder()

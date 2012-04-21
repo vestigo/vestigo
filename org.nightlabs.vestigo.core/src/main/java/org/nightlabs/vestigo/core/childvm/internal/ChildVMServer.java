@@ -13,8 +13,6 @@ import java.net.ServerSocket;
 import java.net.URL;
 import java.security.SecureRandom;
 import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -31,6 +29,7 @@ import org.nightlabs.vestigo.childvm.shared.api.ChildVM;
 import org.nightlabs.vestigo.childvm.webapp.client.ChildVMWebappClient;
 import org.nightlabs.vestigo.core.LogLevel;
 import org.nightlabs.vestigo.core.VestigoCorePlugin;
+import org.nightlabs.vestigo.core.childprocess.CommandParser;
 import org.nightlabs.vestigo.core.childprocess.DumpStreamToFileThread;
 import org.nightlabs.vestigo.core.childvm.WebApp;
 import org.slf4j.Logger;
@@ -51,7 +50,7 @@ public class ChildVMServer
 	public static final String CHILD_VM_LOGGER_NAME = "org.nightlabs.vestigo.CHILD_VM";
 
 	public static final String PREFERENCE_KEY_JAVA_COMMAND = "childVM.java.command";
-	public static final String PREFERENCE_DEFAULT_JAVA_COMMAND = "java";
+	public static final String PREFERENCE_DEFAULT_JAVA_COMMAND = "java ${options} ${jar}";
 
 	public static final String PREFERENCE_KEY_JAVA_HEAP_MAX_MB = "childVM.java.heap.maxMB";
 	public static final int PREFERENCE_DEFAULT_JAVA_HEAP_MAX_MB = 0;
@@ -114,6 +113,7 @@ public class ChildVMServer
 	private String webAppName;
 	private File serverDirectory;
 	private Process serverProcess;
+	private StringBuffer serverProcessOutput;
 	private DumpStreamToFileThread dumpInputStreamToFileThread;
 	private DumpStreamToFileThread dumpErrorStreamToFileThread;
 	private int port;
@@ -348,49 +348,60 @@ public class ChildVMServer
 			port = determineAvailableRandomPortAndConfigureServer();
 
 			logger.info("open: Starting server: serverDirectory=\"{}\" port={}", serverDirectory, port);
+			String childVMJavaCommand = getChildVMJavaCommand();
+			logger.info("open: Using command: {}", childVMJavaCommand);
 
-			List<String> commandWithArguments = new LinkedList<String>();
-			commandWithArguments.add(getChildVMJavaCommand());
+			StringBuilder options = new StringBuilder();
 
 			int xms = getChildVMJavaHeapMinMB();
 			if (xms > 0)
-				commandWithArguments.add("-Xms" + xms + "M");
+				options.append(" -Xms" + xms + "M");
 
 			int xmx = getChildVMJavaHeapMaxMB();
 			if (xmx > 0)
-				commandWithArguments.add("-Xmx" + xmx + "M");
+				options.append(" -Xmx" + xmx + "M");
 
 			int maxPerm = getChildVMJavaPermGenMaxMB();
 			if (maxPerm > 0)
-				commandWithArguments.add("-XX:MaxPermSize=" + maxPerm + "M");
+				options.append(" -XX:MaxPermSize=" + maxPerm + "M");
 
 			if (isChildVMJavaPermGenGCEnabled()) {
-				commandWithArguments.add("-XX:+UseConcMarkSweepGC");
-				commandWithArguments.add("-XX:+CMSClassUnloadingEnabled");
+				options.append(" -XX:+UseConcMarkSweepGC");
+				options.append(" -XX:+CMSClassUnloadingEnabled");
 			}
 
 			if (isChildVMDebugModeEnabled())
-				commandWithArguments.add("-Xrunjdwp:transport=dt_socket,address=" + getChildVMDebugModePort() + ",server=y,suspend=" + (isChildVMDebugModeWaitForDebugger() ? 'y' : 'n'));
+				options.append(" -Xrunjdwp:transport=dt_socket,address=" + getChildVMDebugModePort() + ",server=y,suspend=" + (isChildVMDebugModeWaitForDebugger() ? 'y' : 'n'));
 
-			commandWithArguments.add("-jar");
-			commandWithArguments.add("start.jar");
+			CommandParser commandParser = new CommandParser();
+			commandParser.getProperties().put("options", options.toString());
+			commandParser.getProperties().put("jar", "-jar start.jar");
+			String[] commandWithArguments = commandParser.parse(childVMJavaCommand);
 
 			serverProcess = new ProcessBuilder()
 			.directory(serverDirectory)
 			.command(commandWithArguments)
 			.start();
 
+			serverProcessOutput = new StringBuffer();
 			dumpInputStreamToFileThread = new DumpStreamToFileThread(serverProcess.getInputStream(), stdOutFile, CHILD_VM_LOGGER_NAME);
+			dumpInputStreamToFileThread.setOutputStringBuffer(serverProcessOutput);
 			dumpInputStreamToFileThread.start();
 
 			dumpErrorStreamToFileThread = new DumpStreamToFileThread(serverProcess.getErrorStream(), stdErrFile, CHILD_VM_LOGGER_NAME);
+			dumpErrorStreamToFileThread.setOutputStringBuffer(serverProcessOutput);
 			dumpErrorStreamToFileThread.start();
 
 			try {
 				waitForStartingServerToComeOnline();
-			} catch (TimeoutException e) {
-				throw new IOException(e);
+			} catch (Exception e) {
+				throw new IOException(String.format("Starting child VM via command \"%s\" failed: %s", childVMJavaCommand, e), e);
 			}
+
+			// We only track the server-process-output during startup.
+			dumpInputStreamToFileThread.setOutputStringBuffer(null);
+			dumpErrorStreamToFileThread.setOutputStringBuffer(null);
+			serverProcessOutput = null;
 
 			heartBeatTimerTask = createHeartBeatTimerTask();
 			heartBeatTimer.schedule(heartBeatTimerTask, 10L * 1000L, 10L * 1000L);
@@ -402,14 +413,46 @@ public class ChildVMServer
 		}
 	}
 
-	private void waitForStartingServerToComeOnline() throws TimeoutException
+	private synchronized String getServerProcessOutput()
+	{
+		if (dumpInputStreamToFileThread != null)
+			dumpInputStreamToFileThread.flushBuffer();
+
+		if (dumpErrorStreamToFileThread != null)
+			dumpErrorStreamToFileThread.flushBuffer();
+
+		return serverProcessOutput == null ? "" : serverProcessOutput.toString();
+	}
+
+	private void waitForStartingServerToComeOnline() throws TimeoutException, IOException
 	{
 		long timeout = getChildVMServerStartTimeoutMS();
 
 		long start = System.currentTimeMillis();
 		while (!getChildVM().isOnline()) {
-			if (System.currentTimeMillis() - start > timeout)
-				throw new TimeoutException("Server did not come online within timeout!");
+			Process serverProcess = this.serverProcess;
+			if (serverProcess != null) {
+				try {
+					int exitValue = serverProcess.exitValue();
+					throw new IOException(
+							String.format(
+									"The child process ended unexpectedly with exitValue=%s and this output:\n>>>>>>>>>\n%s\n<<<<<<<<<",
+									exitValue, getServerProcessOutput()
+							)
+					);
+				} catch (IllegalThreadStateException x) {
+					doNothing(); // that's expected: the process is still running
+				}
+			}
+
+			if (System.currentTimeMillis() - start > timeout) {
+				throw new TimeoutException(
+						String.format(
+								"Server did not come online within timeout! Output:\n>>>>>>>>>\n%s\n<<<<<<<<<",
+								getServerProcessOutput()
+						)
+				);
+			}
 
 			try {
 				Thread.sleep(500L);
@@ -419,6 +462,8 @@ public class ChildVMServer
 			}
 		}
 	}
+
+	private static final void doNothing() { }
 
 	private int determineAvailableRandomPortAndConfigureServer() throws IOException
 	{
@@ -512,6 +557,7 @@ public class ChildVMServer
 
 			serverProcess = null;
 		}
+		serverProcessOutput = null;
 
 		// In case the threads didn't stop, yet, we interrupt them now.
 		if (dumpInputStreamToFileThread != null)

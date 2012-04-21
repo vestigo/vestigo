@@ -98,4 +98,7 @@ public class DumpStreamToFileThread extends Thread
 	public int getOutputStringBufferMaxLength() {
 		return logDumpedStreamThread.getOutputStringBufferMaxLength();
 	}
+	public void flushBuffer() {
+		logDumpedStreamThread.flushBuffer();
+	}
 }

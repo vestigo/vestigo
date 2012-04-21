@@ -106,6 +106,11 @@ public class LogDumpedStreamThread extends Thread
 		processBuffer(true);
 	}
 
+	public void flushBuffer()
+	{
+		processBuffer(true);
+	}
+
 	protected void processBuffer(boolean force)
 	{
 		synchronized (bufferOutputStream) {
