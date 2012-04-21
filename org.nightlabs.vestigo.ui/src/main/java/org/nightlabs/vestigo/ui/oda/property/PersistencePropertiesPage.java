@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -302,14 +303,18 @@ public abstract class PersistencePropertiesPage extends AbstractDataSourceEditor
 		}
 	};
 
+	private volatile Job searchPersistenceUnitsJob;
+
 	private void searchPersistenceUnitsAsyncInJob(final Properties properties) {
 		Properties loadingDataDummyProperties = new Properties();
 		loadingDataDummyProperties.setProperty(Messages.getString("PersistencePropertiesPage.loadingPersistenceUnitMessage"), ""); //$NON-NLS-1$ //$NON-NLS-2$
 		editPropertiesComposite.setProperties(loadingDataDummyProperties);
+		editPropertiesComposite.setEnabled(false);
 
 		Job job = new Job(Messages.getString("PersistencePropertiesPage.searchPersistenceUnitsJob.name")) { //$NON-NLS-1$
 			@Override
 			protected IStatus run(IProgressMonitor monitor) {
+				boolean clearInput = true;
 				monitor.beginTask(Messages.getString("PersistencePropertiesPage.searchPersistenceUnitsJob.name"), 100); //$NON-NLS-1$
 				try {
 					Properties filteredProperties = (Properties) properties.clone();
@@ -336,10 +341,11 @@ public abstract class PersistencePropertiesPage extends AbstractDataSourceEditor
 
 						monitor.worked(5);
 
+						final Job thisJob = this;
 						display.asyncExec(new Runnable() {
 							@Override
 							public void run() {
-								if (editPropertiesComposite.isDisposed())
+								if (editPropertiesComposite.isDisposed() || thisJob != searchPersistenceUnitsJob)
 									return;
 
 								PersistencePropertiesPage.this.persistenceUnitName2persistenceUnit = persistenceUnitName2persistenceUnit;
@@ -356,13 +362,41 @@ public abstract class PersistencePropertiesPage extends AbstractDataSourceEditor
 					} finally {
 						persistenceXmlScanner.close();
 					}
+
+					clearInput = false;
 					return Status.OK_STATUS;
 				} finally {
 					monitor.done();
+
+					final boolean finalClearInput = clearInput;
+					final Job thisJob = this;
+					display.asyncExec(new Runnable() {
+						@Override
+						public void run() {
+							if (editPropertiesComposite.isDisposed() || thisJob != searchPersistenceUnitsJob)
+								return;
+
+							if (finalClearInput) {
+								// we assign an empty map and NOT null, because we indicate, it's already loaded (though failed, but at least tried).
+								// this prevents re-loading until the classpath is changed.
+								PersistencePropertiesPage.this.persistenceUnitName2persistenceUnit = Collections.emptyMap();
+								loadPersistenceUnitAsDefaults(properties);
+							}
+
+							editPropertiesComposite.setEnabled(true);
+						}
+					});
 				}
 			}
 		};
-		job.setUser(true);
+		// We do *not* mark it as user job, because it's mostly triggered in the background.
+
+		// Try to cancel an older job (if there is ) and remember the current (newest) job.
+		Job oldJob = searchPersistenceUnitsJob;
+		if (oldJob != null)
+			oldJob.cancel();
+
+		searchPersistenceUnitsJob = job;
 		job.schedule();
 	}
 

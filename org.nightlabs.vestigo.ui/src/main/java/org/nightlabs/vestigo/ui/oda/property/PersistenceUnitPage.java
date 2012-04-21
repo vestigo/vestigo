@@ -248,6 +248,7 @@ public abstract class PersistenceUnitPage extends AbstractDataSourceEditorPage
 			@Override
 			protected IStatus run(IProgressMonitor monitor)
 			{
+				boolean clearInput = true;
 				monitor.beginTask("Search persistence units", 100);
 				try {
 					Properties filteredProperties = (Properties) properties.clone();
@@ -308,9 +309,24 @@ public abstract class PersistenceUnitPage extends AbstractDataSourceEditorPage
 						persistenceXmlScanner.close();
 					}
 
+					clearInput = false;
 					return Status.OK_STATUS;
 				} finally {
 					monitor.done();
+
+					if (clearInput) {
+						final Job thisJob = this;
+						display.asyncExec(new Runnable() {
+							@Override
+							public void run() {
+								if (persistenceUnitNameText.isDisposed() || thisJob != searchPersistenceUnitsJob)
+									return;
+
+								persistenceUnitName2PersistenceUnitRefs = Collections.emptyMap();
+								persistenceUnitNamesList.setInput(Collections.singletonList(PUN_LIST_ELEMENT_NO_PERSISTENCE_UNIT_FOUND));
+							}
+						});
+					}
 				}
 			}
 		};
