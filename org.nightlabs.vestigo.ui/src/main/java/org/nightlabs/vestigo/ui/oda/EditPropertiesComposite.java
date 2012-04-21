@@ -982,4 +982,15 @@ public abstract class EditPropertiesComposite extends Composite implements ICell
 		});
 	}
 
+	@Override
+	public void setEnabled(boolean enabled) {
+		super.setEnabled(enabled);
+
+		loadFromFileButton.setEnabled(enabled);
+		saveToFileButton.setEnabled(enabled);
+		addButton.setEnabled(enabled);
+		removeButton.setEnabled(enabled);
+
+		table.setEnabled(enabled);
+	}
 }
