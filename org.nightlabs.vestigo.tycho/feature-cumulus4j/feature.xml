@@ -2,7 +2,7 @@
 <feature
       id="org.nightlabs.vestigo.cumulus4j.ui.feature"
       label="Vestigo Cumulus4j integration"
-      version="0.2.0.qualifier"
+      version="0.2.0"
       provider-name="NightLabs Consulting GmbH">
 
    <description url="http://www.example.com/description">
