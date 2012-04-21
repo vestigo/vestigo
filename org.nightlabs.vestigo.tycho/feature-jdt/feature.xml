@@ -18,7 +18,7 @@
    </license>
 
    <requires>
-      <import feature="org.nightlabs.vestigo.ui.feature" version="0.2.1.qualifier" match="greaterOrEqual"/>
+      <import feature="org.nightlabs.vestigo.ui.feature" version="0.2.1" match="greaterOrEqual"/>
    </requires>
 
    <plugin
