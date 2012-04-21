@@ -75,11 +75,20 @@ public abstract class MavenRunner
 
 			mavenResultCode = mavenProcess.waitFor();
 		} finally {
-			dumpInputStreamToFileThread.interrupt();
-			dumpErrorStreamToFileThread.interrupt();
-			dumpInputStreamToFileThread.join(); // make sure, buffers are written to mavenOutput
-			dumpErrorStreamToFileThread.join(); // make sure, buffers are written to mavenOutput
-			mavenProcess.destroy();
+			if (dumpInputStreamToFileThread != null)
+				dumpInputStreamToFileThread.interrupt();
+
+			if (dumpErrorStreamToFileThread != null)
+				dumpErrorStreamToFileThread.interrupt();
+
+			if (dumpInputStreamToFileThread != null)
+				dumpInputStreamToFileThread.join(); // make sure, buffers are written to mavenOutput
+
+			if (dumpErrorStreamToFileThread != null)
+				dumpErrorStreamToFileThread.join(); // make sure, buffers are written to mavenOutput
+
+			if (mavenProcess != null)
+				mavenProcess.destroy();
 		}
 
 		if (mavenResultCode != 0)
