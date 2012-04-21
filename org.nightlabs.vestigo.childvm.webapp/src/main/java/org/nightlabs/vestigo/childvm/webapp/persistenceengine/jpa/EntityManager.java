@@ -34,7 +34,7 @@ public class EntityManager extends PersistenceEngineWrapper
 	}
 
 	public Object find(Class<?> entityClass, Object primaryKey) {
-		return invoke(4, "find", Class.class, Object.class, entityClass, primaryKey);
+		return invoke(4, "find", Class.class, Object.class, (Object)entityClass, primaryKey);
 	}
 
 	public void setProperty(String propertyName, Object value) {
