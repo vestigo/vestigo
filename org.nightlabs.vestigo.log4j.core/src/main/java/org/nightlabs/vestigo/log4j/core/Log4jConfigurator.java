@@ -9,6 +9,7 @@ import java.io.Reader;
 import java.io.Writer;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import org.apache.log4j.PropertyConfigurator;
 import org.eclipse.core.resources.IWorkspaceRoot;
@@ -25,9 +26,14 @@ public class Log4jConfigurator
 {
 	private static final Logger logger = LoggerFactory.getLogger(Log4jConfigurator.class);
 
-	private static final Log4jConfigurator sharedInstance = new Log4jConfigurator();
+	private static Log4jConfigurator sharedInstance;
 
-	public static Log4jConfigurator sharedInstance() {
+	static Preferences testPreferences;
+
+	public static synchronized Log4jConfigurator sharedInstance() {
+		if (sharedInstance == null)
+			sharedInstance = new Log4jConfigurator();
+
 		return sharedInstance;
 	}
 
@@ -54,7 +60,7 @@ public class Log4jConfigurator
 	public static final String PREFERENCE_KEY_ROLLING_FILE_APPENDER_MAX_FILE_SIZE_MB = "rollingFileAppender.maxFileSizeMB";
 	public static final int PREFERENCE_DEFAULT_ROLLING_FILE_APPENDER_MAX_FILE_SIZE_MB = 5;
 
-	private Preferences preferences = VestigoLog4jCorePlugin.getDefault().getPreferences();
+	private Preferences preferences = testPreferences != null ? testPreferences : VestigoLog4jCorePlugin.getDefault().getPreferences();
 	private IWorkspaceRoot workspaceRoot = ResourcesPlugin.getWorkspace().getRoot();
 	private String workspaceRootAbsolutePath = workspaceRoot.getRawLocation().toFile().getAbsolutePath();
 	private File vestigoLog4jCorePluginStateLocation = VestigoLog4jCorePlugin.getDefault().getStateLocation().toFile();
@@ -92,6 +98,20 @@ public class Log4jConfigurator
 		return logFile;
 	}
 
+	/**
+	 * Escapes the given path. In windows, the '\' used as file-separator is misunderstood
+	 * as escaping character in the properties file and must be doubled (i.e. converted to '\\').
+	 * @param path the path to escape. May be <code>null</code>.
+	 * @return the escaped path or <code>null</code>, if <code>null</code> was passed as argument.
+	 */
+	protected static String getEscapedFilePath(String path)
+	{
+		if (path == null)
+			return path;
+
+		return path.replaceAll(Pattern.quote("\\"), "\\\\\\\\");
+	}
+
 	private void createLog4jPropertiesFile() throws IOException
 	{
 		vestigoLog4jCorePluginStateLocation.mkdirs();
@@ -100,12 +120,12 @@ public class Log4jConfigurator
 		variables.put("additionalProperties", getLog4jAdditionalProperties());
 		variables.put("commaAndConsoleAppender", isConsoleAppenderEnabled() ? ", AC" : "");
 		variables.put("commaAndRollingFileAppender", isRollingFileAppenderEnabled() ? ", AR" : "");
-		variables.put("logFile", logFile.getAbsolutePath());
+		variables.put("logFile", getEscapedFilePath(logFile.getAbsolutePath()));
 		variables.put("rollingFileAppender.maxFileSizeMB", String.valueOf(getRollingFileAppender_maxFileSizeMB()));
 		variables.put("rollingFileAppender.maxBackupIndex", String.valueOf(getRollingFileAppender_maxBackupIndex()));
 		variables.put("rootLogLevel", getLog4jRootLogLevel());
-		variables.put("vestigoLog4jCorePluginStateLocation", vestigoLog4jCorePluginStateLocation.getAbsolutePath());
-		variables.put("workspace", workspaceRootAbsolutePath);
+		variables.put("vestigoLog4jCorePluginStateLocation", getEscapedFilePath(vestigoLog4jCorePluginStateLocation.getAbsolutePath()));
+		variables.put("workspace", getEscapedFilePath(workspaceRootAbsolutePath));
 
 		File tmpFile = new File(log4jPropertiesFile.getParentFile(), "log4j.tmp");
 
