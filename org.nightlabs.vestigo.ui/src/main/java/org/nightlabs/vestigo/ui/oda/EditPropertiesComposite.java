@@ -463,7 +463,6 @@ public abstract class EditPropertiesComposite extends Composite implements ICell
 		});
 
 		removeButton = new Button(this, SWT.PUSH);
-		removeButton.setEnabled(false);
 		removeButton.setToolTipText("Remove the selected entries.");
 		removeButton.setImage(VestigoUIPlugin.getDefault().getImage(EditPropertiesComposite.class, "removeButton", AbstractVestigoUIPlugin.IMAGE_SIZE_16x16));
 		removeButton.addSelectionListener(new SelectionAdapter() {
@@ -492,6 +491,8 @@ public abstract class EditPropertiesComposite extends Composite implements ICell
 
 		addLoadPropertiesHandler(loadPropertiesHandler);
 		addSavePropertiesHandler(savePropertiesHandler);
+
+		updateEnabledStates();
 	}
 
 	/**
@@ -559,29 +560,46 @@ public abstract class EditPropertiesComposite extends Composite implements ICell
 
 		tableViewer.setInput(input);
 		layout(true, true);
+		updateTableEnabledState();
 	}
 
 	private ISelectionChangedListener tableSelectionChangedListener = new ISelectionChangedListener() {
 		@Override
 		public void selectionChanged(SelectionChangedEvent event) {
-			boolean removeButtonEnabled = false;
-			if (event.getSelection() instanceof IStructuredSelection) {
-				IStructuredSelection selection = (IStructuredSelection) event.getSelection();
-				for (Iterator<?> it = selection.iterator(); it.hasNext(); ) {
-					Object item = it.next();
-					if (item instanceof Map.Entry<?, ?>) {
-						@SuppressWarnings("unchecked")
-						Map.Entry<String, String> me = (Entry<String, String>) item;
-						if (getContentProvider().getProperties().containsKey(me.getKey())) {
-							removeButtonEnabled = true;
-							break;
-						}
-					}
-				}
-				removeButton.setEnabled(removeButtonEnabled);
-			}
+			updateEnabledStates();
 		}
 	};
+
+	private void updateEnabledStates() {
+		boolean enabled = isEnabled();
+
+		boolean removeButtonEnabled = false;
+		if (tableViewer.getSelection() instanceof IStructuredSelection) {
+			IStructuredSelection selection = (IStructuredSelection) tableViewer.getSelection();
+			for (Iterator<?> it = selection.iterator(); it.hasNext(); ) {
+				Object item = it.next();
+				if (item instanceof Map.Entry<?, ?>) {
+					@SuppressWarnings("unchecked")
+					Map.Entry<String, String> me = (Entry<String, String>) item;
+					if (getContentProvider().getProperties().containsKey(me.getKey())) {
+						removeButtonEnabled = true;
+						break;
+					}
+				}
+			}
+		}
+
+		loadFromFileButton.setEnabled(enabled);
+		saveToFileButton.setEnabled(enabled);
+		addButton.setEnabled(enabled);
+		removeButton.setEnabled(enabled && removeButtonEnabled);
+
+		updateTableEnabledState();
+	}
+
+	private void updateTableEnabledState() {
+		table.setEnabled(isEnabled());
+	}
 
 	private TableColumn createTableColumn(Table table, String text, String toolTipText) {
 		TableColumn tableColumn = new TableColumn(table, SWT.LEFT);
@@ -985,12 +1003,6 @@ public abstract class EditPropertiesComposite extends Composite implements ICell
 	@Override
 	public void setEnabled(boolean enabled) {
 		super.setEnabled(enabled);
-
-		loadFromFileButton.setEnabled(enabled);
-		saveToFileButton.setEnabled(enabled);
-		addButton.setEnabled(enabled);
-		removeButton.setEnabled(enabled);
-
-		table.setEnabled(enabled);
+		updateEnabledStates();
 	}
 }

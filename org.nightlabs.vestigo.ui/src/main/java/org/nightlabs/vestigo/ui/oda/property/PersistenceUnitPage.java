@@ -332,12 +332,13 @@ public abstract class PersistenceUnitPage extends AbstractDataSourceEditorPage
 		};
 		// We do *not* mark it as user job, because it's mostly triggered in the background.
 
-		// Try to cancel an older job (if there is ) and remember the current (newest) job.
+		// Try to cancel an older job (if there is) and remember the current (newest) job.
 		Job oldJob = searchPersistenceUnitsJob;
+		searchPersistenceUnitsJob = job;
+
 		if (oldJob != null)
 			oldJob.cancel();
 
-		searchPersistenceUnitsJob = job;
 		job.schedule();
 	}
 

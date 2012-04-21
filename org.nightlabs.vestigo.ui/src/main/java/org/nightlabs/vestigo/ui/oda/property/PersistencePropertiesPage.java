@@ -46,6 +46,7 @@ public abstract class PersistencePropertiesPage extends AbstractDataSourceEditor
 	private static final Logger logger = LoggerFactory.getLogger(PersistencePropertiesPage.class);
 
 	private Map<String, PersistenceUnit> persistenceUnitName2persistenceUnit;
+	private volatile Properties parkedPersistenceProperties;
 	private EditPropertiesComposite editPropertiesComposite;
 
 	{
@@ -59,7 +60,8 @@ public abstract class PersistencePropertiesPage extends AbstractDataSourceEditor
 
 		Properties oldProps = removePropertiesManagedByThisPage(properties);
 
-		Properties persistenceProperties = editPropertiesComposite.getProperties();
+		Properties parked = this.parkedPersistenceProperties;
+		Properties persistenceProperties = parked != null ? parked : editPropertiesComposite.getProperties();
 		Properties newProps = new Properties();
 		PropertiesUtil.putAll(persistenceProperties, newProps, PropertiesUtil.PREFIX_PERSISTENCE);
 		properties.putAll(newProps);
@@ -265,6 +267,10 @@ public abstract class PersistencePropertiesPage extends AbstractDataSourceEditor
 
 		Properties persistenceProperties = PropertiesUtil.getProperties(properties, PropertiesUtil.PREFIX_PERSISTENCE);
 
+		// We must always FIRST directly put it, because while we're async loading, we might already be asked for
+		// our properties and should always be able to return them after this method was called.
+		editPropertiesComposite.setProperties(persistenceProperties);
+
 		String persistenceUnitName = properties.getProperty(PropertiesUtil.PERSISTENCE_UNIT_NAME, ""); //$NON-NLS-1$
 		if (!persistenceUnitName.trim().isEmpty()) {
 			if (isImportingFile) {
@@ -280,9 +286,6 @@ public abstract class PersistencePropertiesPage extends AbstractDataSourceEditor
 			}
 
 			searchPersistenceUnitsAsyncInJob(properties);
-		}
-		else {
-			editPropertiesComposite.setProperties(persistenceProperties);
 		}
 	}
 
@@ -308,8 +311,12 @@ public abstract class PersistencePropertiesPage extends AbstractDataSourceEditor
 	private void searchPersistenceUnitsAsyncInJob(final Properties properties) {
 		Properties loadingDataDummyProperties = new Properties();
 		loadingDataDummyProperties.setProperty(Messages.getString("PersistencePropertiesPage.loadingPersistenceUnitMessage"), ""); //$NON-NLS-1$ //$NON-NLS-2$
-		editPropertiesComposite.setProperties(loadingDataDummyProperties);
 		editPropertiesComposite.setEnabled(false);
+
+		if (parkedPersistenceProperties == null)
+			parkedPersistenceProperties = editPropertiesComposite.getProperties();
+
+		editPropertiesComposite.setProperties(loadingDataDummyProperties);
 
 		Job job = new Job(Messages.getString("PersistencePropertiesPage.searchPersistenceUnitsJob.name")) { //$NON-NLS-1$
 			@Override
@@ -376,6 +383,8 @@ public abstract class PersistencePropertiesPage extends AbstractDataSourceEditor
 							if (editPropertiesComposite.isDisposed() || thisJob != searchPersistenceUnitsJob)
 								return;
 
+							PersistencePropertiesPage.this.parkedPersistenceProperties = null;
+
 							if (finalClearInput) {
 								// we assign an empty map and NOT null, because we indicate, it's already loaded (though failed, but at least tried).
 								// this prevents re-loading until the classpath is changed.
@@ -391,12 +400,13 @@ public abstract class PersistencePropertiesPage extends AbstractDataSourceEditor
 		};
 		// We do *not* mark it as user job, because it's mostly triggered in the background.
 
-		// Try to cancel an older job (if there is ) and remember the current (newest) job.
+		// Try to cancel an older job (if there is) and remember the current (newest) job.
 		Job oldJob = searchPersistenceUnitsJob;
+		searchPersistenceUnitsJob = job;
+
 		if (oldJob != null)
 			oldJob.cancel();
 
-		searchPersistenceUnitsJob = job;
 		job.schedule();
 	}
 
