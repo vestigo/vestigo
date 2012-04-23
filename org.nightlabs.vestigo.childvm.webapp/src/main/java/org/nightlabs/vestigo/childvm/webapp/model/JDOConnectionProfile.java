@@ -3,6 +3,7 @@ package org.nightlabs.vestigo.childvm.webapp.model;
 import java.io.IOException;
 import java.util.Map;
 import java.util.Properties;
+import java.util.SortedSet;
 
 import org.nightlabs.vestigo.childvm.shared.PropertiesUtil;
 import org.nightlabs.vestigo.childvm.shared.dto.ConnectionProfileDTO;
@@ -11,6 +12,7 @@ import org.nightlabs.vestigo.childvm.shared.persistencexml.JDOPersistenceUnitHel
 import org.nightlabs.vestigo.childvm.shared.persistencexml.PersistenceUnitHelper;
 import org.nightlabs.vestigo.childvm.webapp.asm.ClassAnnotationReader;
 import org.nightlabs.vestigo.childvm.webapp.persistenceengine.jdo.JDOHelper;
+import org.nightlabs.vestigo.childvm.webapp.persistenceengine.jdo.PersistenceManager;
 import org.nightlabs.vestigo.childvm.webapp.persistenceengine.jdo.PersistenceManagerFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -48,14 +50,14 @@ public class JDOConnectionProfile extends ConnectionProfile
 		if (logger.isDebugEnabled()) {
 			logger.debug(
 				"[{}].onFirstConnectionOpen: profileID={} connectionID={}.",
-				new Object[] { Long.toHexString(System.identityHashCode(this)), getProfileID(), connection.getConnectionID() });
+				new Object[] { Integer.toHexString(System.identityHashCode(this)), getProfileID(), connection.getConnectionID() });
 		}
 
 		ClassLoader persistenceEngineClassLoader;
 		try {
 			persistenceEngineClassLoader = getClassLoaderManager().getPersistenceEngineClassLoader(null);
 			if (logger.isDebugEnabled()) {
-				logger.debug("[{}].onFirstConnectionOpen: created persistenceEngineClassLoader.", Long.toHexString(System.identityHashCode(this)));
+				logger.debug("[{}].onFirstConnectionOpen: created persistenceEngineClassLoader.", Integer.toHexString(System.identityHashCode(this)));
 			}
 		} catch (IOException e) {
 			throw new RuntimeException(e);
@@ -63,7 +65,7 @@ public class JDOConnectionProfile extends ConnectionProfile
 
 		String persistenceUnitName = getPersistenceUnitName();
 		if (logger.isDebugEnabled()) {
-			logger.debug("[{}].onFirstConnectionOpen: creating PersistenceManagerFactory with persistenceUnitName={}.", Long.toHexString(System.identityHashCode(this)), persistenceUnitName);
+			logger.debug("[{}].onFirstConnectionOpen: creating PersistenceManagerFactory with persistenceUnitName={}.", Integer.toHexString(System.identityHashCode(this)), persistenceUnitName);
 		}
 
 		Map<String, String> filteredPersistenceProperties = null;
@@ -91,10 +93,41 @@ public class JDOConnectionProfile extends ConnectionProfile
 			}
 
 			if (logger.isDebugEnabled()) {
-				logger.debug("[{}].onFirstConnectionOpen: created persistenceManagerFactory.", Long.toHexString(System.identityHashCode(this)));
+				logger.debug("[{}].onFirstConnectionOpen: created persistenceManagerFactory.", Integer.toHexString(System.identityHashCode(this)));
 			}
+
+			initialiseMetaDataForQueryableCandidateClasses();
 		} finally {
 			Thread.currentThread().setContextClassLoader(backupContextClassLoader);
+		}
+	}
+
+	protected void initialiseMetaDataForQueryableCandidateClasses() {
+		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+
+		SortedSet<String> queryableCandidateClasses;
+		try {
+			queryableCandidateClasses = getQueryableCandidateClasses();
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+
+		PersistenceManager pm = getPersistenceManagerFactory().getPersistenceManager();
+		try {
+			for (String candidateClassName : queryableCandidateClasses) {
+				logger.debug("[{}].initialiseMetaDataForQueryableCandidateClasses: Beginning to initialise meta data for: {}", Integer.toHexString(System.identityHashCode(this)), candidateClassName);
+				try {
+					Class<?> candidateClass = Class.forName(candidateClassName, true, classLoader);
+					pm.getExtent(candidateClass);
+					logger.info("[{}].initialiseMetaDataForQueryableCandidateClasses: Successfully initialised meta data for: {}", Integer.toHexString(System.identityHashCode(this)), candidateClassName);
+				} catch (Exception x) {
+					logger.warn("[" + Integer.toHexString(System.identityHashCode(this)) + "].initialiseMetaDataForQueryableCandidateClasses: Failed to initialise " + candidateClassName + ": " + x, x);
+				} catch (NoClassDefFoundError x) {
+					logger.warn("[" + Integer.toHexString(System.identityHashCode(this)) + "].initialiseMetaDataForQueryableCandidateClasses: Failed to initialise " + candidateClassName + ": " + x, x);
+				}
+			}
+		} finally {
+			pm.close();
 		}
 	}
 
@@ -103,13 +136,13 @@ public class JDOConnectionProfile extends ConnectionProfile
 		if (persistenceManagerFactory != null) {
 			persistenceManagerFactory.close();
 			if (logger.isDebugEnabled()) {
-				logger.debug("[{}].onLastConnectionClose: closed persistenceManagerFactory.", Long.toHexString(System.identityHashCode(this)));
+				logger.debug("[{}].onLastConnectionClose: closed persistenceManagerFactory.", Integer.toHexString(System.identityHashCode(this)));
 			}
 			persistenceManagerFactory = null;
 		}
 		else {
 			if (logger.isDebugEnabled()) {
-				logger.debug("[{}].onLastConnectionClose: persistenceManagerFactory was null, nothing to close.", Long.toHexString(System.identityHashCode(this)));
+				logger.debug("[{}].onLastConnectionClose: persistenceManagerFactory was null, nothing to close.", Integer.toHexString(System.identityHashCode(this)));
 			}
 		}
 		super.onLastConnectionClose(connection);

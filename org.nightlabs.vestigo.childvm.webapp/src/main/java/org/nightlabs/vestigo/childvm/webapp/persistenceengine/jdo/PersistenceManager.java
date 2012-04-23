@@ -61,4 +61,9 @@ public class PersistenceManager extends PersistenceEngineWrapper
 	public void setProperty(String propertyName, Object value) {
 		invoke(7, "setProperty", String.class, Object.class, propertyName, value);
 	}
+
+	public void getExtent(Class<?> persistenceCapableClass) {
+		Object pcc = persistenceCapableClass;
+		invoke(8, "getExtent", Class.class, pcc);
+	}
 }

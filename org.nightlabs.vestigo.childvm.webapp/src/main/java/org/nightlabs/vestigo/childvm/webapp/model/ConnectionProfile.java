@@ -135,6 +135,7 @@ public abstract class ConnectionProfile
 				new Object[] { Long.toHexString(System.identityHashCode(this)), profileID, connection.getConnectionID() }
 		);
 
+		queryableCandidateClasses = null;
 		connectionProfileScope = new Scope();
 
 		try {
@@ -285,6 +286,7 @@ public abstract class ConnectionProfile
 		connectionProfileScope = null;
 		classLoaderManager.close();
 		syntheticPersistenceUnitName = null;
+		queryableCandidateClasses = null;
 
 		File tempDir = this.tempDir;
 		if (tempDir != null) {
@@ -395,33 +397,39 @@ public abstract class ConnectionProfile
 
 	protected abstract boolean isQueryableCandidateClass(ClassAnnotationReader classAnnotationReader);
 
+	private volatile SortedSet<String> queryableCandidateClasses;
+
 	public SortedSet<String> getQueryableCandidateClasses() throws IOException
 	{
-		long startTimestamp = System.currentTimeMillis();
-		ClassLoader classLoader = classLoaderManager.getPersistenceEngineClassLoader(null);
+		SortedSet<String> classes = this.queryableCandidateClasses;
+		if (classes == null) {
+			long startTimestamp = System.currentTimeMillis();
+			ClassLoader classLoader = classLoaderManager.getPersistenceEngineClassLoader(null);
 
-		SortedSet<String> classes = new TreeSet<String>();
+			classes = new TreeSet<String>();
 
-		List<URL> classpathURLs = classLoaderManager.getPersistenceEngineClasspathURLList(null);
-		for (URL url : classpathURLs) {
-			try {
-				if ("file".equals(url.getProtocol())) {
-					File file = new File(url.toURI());
-					if (file.isDirectory()) {
-						collectQueryableCandidateClassesInDirectory(classes, classLoader, file);
-						continue;
+			List<URL> classpathURLs = classLoaderManager.getPersistenceEngineClasspathURLList(null);
+			for (URL url : classpathURLs) {
+				try {
+					if ("file".equals(url.getProtocol())) {
+						File file = new File(url.toURI());
+						if (file.isDirectory()) {
+							collectQueryableCandidateClassesInDirectory(classes, classLoader, file);
+							continue;
+						}
 					}
+
+					collectQueryableCandidateClassesInZip(classes,classLoader, url);
+				} catch (Exception x) {
+					logger.error("getQueryableCandidateClasses: url=" + url + ": " + x, x);
 				}
-
-				collectQueryableCandidateClassesInZip(classes,classLoader, url);
-			} catch (Exception x) {
-				logger.error("getQueryableCandidateClasses: url=" + url + ": " + x, x);
 			}
+
+			if (logger.isDebugEnabled())
+				logger.debug("getQueryableCandidateClasses: Scanning classpath took {} ms.", System.currentTimeMillis() - startTimestamp);
+
+			this.queryableCandidateClasses = classes;
 		}
-
-		if (logger.isDebugEnabled())
-			logger.debug("getQueryableCandidateClasses: Scanning classpath took {} ms.", System.currentTimeMillis() - startTimestamp);
-
 		return classes;
 	}
 }
