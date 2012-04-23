@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -397,9 +398,9 @@ public abstract class ConnectionProfile
 
 	protected abstract boolean isQueryableCandidateClass(ClassAnnotationReader classAnnotationReader);
 
-	private volatile SortedSet<String> queryableCandidateClasses;
+	private SortedSet<String> queryableCandidateClasses;
 
-	public SortedSet<String> getQueryableCandidateClasses() throws IOException
+	public synchronized SortedSet<String> getQueryableCandidateClasses() throws IOException
 	{
 		SortedSet<String> classes = this.queryableCandidateClasses;
 		if (classes == null) {
@@ -428,6 +429,7 @@ public abstract class ConnectionProfile
 			if (logger.isDebugEnabled())
 				logger.debug("getQueryableCandidateClasses: Scanning classpath took {} ms.", System.currentTimeMillis() - startTimestamp);
 
+			classes = Collections.unmodifiableSortedSet(classes);
 			this.queryableCandidateClasses = classes;
 		}
 		return classes;
