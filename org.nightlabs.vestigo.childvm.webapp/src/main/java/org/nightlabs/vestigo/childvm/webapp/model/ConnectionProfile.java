@@ -55,6 +55,8 @@ public abstract class ConnectionProfile
 
 	private Scope connectionProfileScope;
 
+	private SortedSet<String> queryableCandidateClasses;
+
 	public ConnectionProfile() {
 		logger.debug("[{}].<init>: created new instance of {}", Long.toHexString(System.identityHashCode(this)), this.getClass().getName());
 //		classLoaderManager.setConnectionProfile(this);
@@ -397,8 +399,6 @@ public abstract class ConnectionProfile
 	}
 
 	protected abstract boolean isQueryableCandidateClass(ClassAnnotationReader classAnnotationReader);
-
-	private SortedSet<String> queryableCandidateClasses;
 
 	public synchronized SortedSet<String> getQueryableCandidateClasses() throws IOException
 	{
