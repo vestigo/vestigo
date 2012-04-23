@@ -12,9 +12,10 @@
 
 	<modules>
 		<module>feature-vestigo</module>
-		<module>feature-jdt</module>
-		<module>feature-maven</module>
 		<module>feature-cumulus4j</module>
+		<module>feature-jdt</module>
+		<module>feature-log4j</module>
+		<module>feature-maven</module>
 		<module>p2-repository</module>
 		<module>p2-repository-deploy</module>
 	</modules>
