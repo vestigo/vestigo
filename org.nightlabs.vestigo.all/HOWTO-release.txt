@@ -1,23 +1,19 @@
 1) Check-out *all* projects in trunk: https://dev.nightlabs.org/svn/private/main/vestigo/trunk/
 
 2) Determine the old and the new version number. Look in a "pom.xml" to see the old version number. For
-this example, we assume, our old version is "0.2.1-SNAPSHOT" and our new version is "1.0.0-release".
+this example, we assume, our old version is "0.7.0-SNAPSHOT" and our new version is "0.7.0".
 
-Do *not* omit the suffix (in this example "-release"), because it is required by tycho to match the
-".qualifier" suffix used by Eclipse. Therefore, instead of version "a.b.c", we always use "a.b.c-release"
-(it is possible to remove it, but requires many more changes, hence DON'T!).
-
-2) Replace "<version>0.2.1-SNAPSHOT</version>" by "<version>1.0.0-release</version>" in ALL "pom.xml" files.
+2) Replace "<version>0.7.0-SNAPSHOT</version>" by "<version>0.7.0</version>" in ALL "pom.xml" files.
 
 Make sure, there is only exactly one line modified in every "pom.xml"! You can easily see this using the
 "Preview" feature of Eclipse's replace dialog.
 
-3) Run the main method of all programs in 'org.nightlabs.vestigo.release'.
+3) Run the main method of the 'VersionUpdater' in 'org.nightlabs.vestigo.release'.
 
 5) Refresh all projects in Eclipse and wait for the build to finish. You might need to right-click => Maven
 => "Update Project Configuration..." on some projects, if they still have error markers.
 
-6) Replace "0.2.1.SNAPSHOT" by "1.0.0.release" in all "MANIFEST.MF" files (the Xtext projects are not
+6) Replace "0.7.0.SNAPSHOT" by "0.7.0" in all "MANIFEST.MF" files (the Xtext projects are not
 completely mavenized and thus require manual adjustment).
 
 NOTE the DOT "." before the suffix - instead of the minus "-" used by Maven.
@@ -27,5 +23,5 @@ after the main build.
 
 8) Create a tag in svn.
 
-9) Repeat all (except for the tag) for the next SNAPSHOT version (svn trunk should always be in SNAPSHOT
-mode and only temporarily have a release version).
+9) Repeat all (except for the tag) for the next SNAPSHOT version, i.e to switch from "0.7.0" to "0.7.1-SNAPSHOT".
+SVN trunk should always be in SNAPSHOT mode and only temporarily have a release version.
