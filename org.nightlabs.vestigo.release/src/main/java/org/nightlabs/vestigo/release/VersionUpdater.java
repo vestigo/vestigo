@@ -74,7 +74,7 @@ public class VersionUpdater {
 			Node node = featureList.item(i);
 			if (node instanceof Element) {
 				Element element = (Element) node;
-				element.setAttribute("version", newMavenVersion);
+				element.setAttribute("version", newOsgiVersion);
 			}
 
 			NodeList childNodes = node.getChildNodes();
