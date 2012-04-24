@@ -3,7 +3,7 @@
 
 	<groupId>org.nightlabs.vestigo</groupId>
 	<artifactId>org.nightlabs.vestigo.parent</artifactId>
-	<version>0.2.1-SNAPSHOT</version>
+	<version>1.0.0-m1</version>
 	<packaging>pom</packaging>
 
 	<url>http://vestigo.nightlabs.com</url>
@@ -444,11 +444,6 @@
 			<!-- END third party -->
 	
 			<!-- BEGIN org.nightlabs.**.* -->
-			<dependency>
-				<groupId>org.nightlabs.jdo</groupId>
-				<artifactId>org.nightlabs.jdo.jdoqleditor</artifactId>
-				<version>1.0.1</version>
-			</dependency>
 			<dependency>
 				<groupId>org.nightlabs.licence</groupId>
 				<artifactId>org.nightlabs.licence.parent</artifactId>

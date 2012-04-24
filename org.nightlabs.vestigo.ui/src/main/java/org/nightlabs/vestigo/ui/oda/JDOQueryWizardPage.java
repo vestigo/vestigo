@@ -19,7 +19,6 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
-import org.nightlabs.jdo.jdoqleditor.editor.JDOQLEditorComposite;
 
 /**
  * Simple WizardPage to edit a JDOQLQuery.
@@ -30,7 +29,7 @@ import org.nightlabs.jdo.jdoqleditor.editor.JDOQLEditorComposite;
 public class JDOQueryWizardPage extends DataSetWizardPage {
 
 	private Composite wrapper;
-	private JDOQLEditorComposite jdoqlEditor;
+//	private JDOQLEditorComposite jdoqlEditor;
 
 	/**
 	 * @param pagename
@@ -52,8 +51,8 @@ public class JDOQueryWizardPage extends DataSetWizardPage {
 		wrapper.setLayout(new GridLayout());
 //		Label testLabel = new Label(wrapper, SWT.WRAP);
 //		testLabel.setText("Test WizardPage");
-		jdoqlEditor = new JDOQLEditorComposite(wrapper, SWT.NONE);
-		jdoqlEditor.setLayoutData(new GridData(GridData.FILL_BOTH));
+//		jdoqlEditor = new JDOQLEditorComposite(wrapper, SWT.NONE);
+//		jdoqlEditor.setLayoutData(new GridData(GridData.FILL_BOTH));
 	}
 
 
@@ -62,19 +61,19 @@ public class JDOQueryWizardPage extends DataSetWizardPage {
 		super.refresh(design);
 		String query = design.getQueryText();
 		System.out.println("Have query: "+query);
-		if (query != null && !jdoqlEditor.isDisposed())
-			jdoqlEditor.setDocumentText(query);
+//		if (query != null && !jdoqlEditor.isDisposed())
+//			jdoqlEditor.setDocumentText(query);
 	}
 
 	@Override
 	protected DataSetDesign collectDataSetDesign(DataSetDesign design) {
-		String query = "";
-		if (jdoqlEditor != null && !jdoqlEditor.isDisposed())
-			query = jdoqlEditor.getDocumentText();
-		if (query == null)
-			query = "";
-		if (query != null && !"".equals(query))
-			design.setQueryText(query);
+//		String query = "";
+//		if (jdoqlEditor != null && !jdoqlEditor.isDisposed())
+//			query = jdoqlEditor.getDocumentText();
+//		if (query == null)
+//			query = "";
+//		if (query != null && !"".equals(query))
+//			design.setQueryText(query);
 //		System.out.println("Set query: "+query);
 		return super.collectDataSetDesign(design);
 	}

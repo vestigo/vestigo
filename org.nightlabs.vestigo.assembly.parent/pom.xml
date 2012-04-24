@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>org.nightlabs.vestigo</groupId>
 		<artifactId>org.nightlabs.vestigo.parent</artifactId>
-		<version>0.2.1-SNAPSHOT</version>
+		<version>1.0.0-m1</version>
 		<relativePath>../org.nightlabs.vestigo.parent</relativePath>
 	</parent>
 
@@ -131,10 +131,6 @@
 		<dependency>
 			<groupId>org.nightlabs</groupId>
 			<artifactId>org.nightlabs.util</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.nightlabs.jdo</groupId>
-			<artifactId>org.nightlabs.jdo.jdoqleditor</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.nightlabs.licence</groupId>

@@ -2,7 +2,7 @@
 <feature
       id="org.nightlabs.vestigo.ui.feature"
       label="Vestigo - JDO JPA Query Browser"
-      version="0.2.1.qualifier"
+      version="1.0.0.qualifier"
       provider-name="NightLabs Consulting GmbH"
       plugin="org.nightlabs.vestigo.ui">
 

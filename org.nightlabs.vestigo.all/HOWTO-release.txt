@@ -1,0 +1,31 @@
+1) Check-out *all* projects in trunk: https://dev.nightlabs.org/svn/private/main/vestigo/trunk/
+
+2) Determine the old and the new version number. Look in a "pom.xml" to see the old version number. For
+this example, we assume, our old version is "0.2.1-SNAPSHOT" and our new version is "1.0.0-release".
+
+Do *not* omit the suffix (in this example "-release"), because it is required by tycho to match the
+".qualifier" suffix used by Eclipse. Therefore, instead of version "a.b.c", we always use "a.b.c-release"
+(it is possible to remove it, but requires many more changes, hence DON'T!).
+
+2) Replace "<version>0.2.1-SNAPSHOT</version>" by "<version>1.0.0-release</version>" in ALL "pom.xml" files.
+
+Make sure, there is only exactly one line modified in every "pom.xml"! You can easily see this using the
+"Preview" feature of Eclipse's replace dialog.
+
+3) Replace "0.2.1" by "1.0.0" (NO SUFFIX!!!) in all "*.xml" files inside "org.nightlabs.tycho" (and all
+sub-directories). There is a suffix in some places (usually ".qualifier"), but it does not need to be
+changed.
+
+Btw. you can simply search in the whole workspace - there shouldn't be any xml-files needing replacement.
+
+4) Go into "${workspace}/org.nightlabs.vestigo.all" and run "mvn clean install". If it does not work,
+FIX IT FIRST before you continue!
+
+5) Refresh all projects in Eclipse and wait for the build to finish. You might need to right-click => Maven
+=> "Update Project Configuration..." on some projects, if they still have error markers.
+
+6) Replace "0.2.1.SNAPSHOT" by "1.0.0.release" in all "MANIFEST.MF" files (the Xtext projects are not
+completely mavenized and thus require manual adjustment).
+
+NOTE the DOT "." before the suffix - instead of the minus "-" used by Maven.
+
