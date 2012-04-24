@@ -29,3 +29,10 @@ completely mavenized and thus require manual adjustment).
 
 NOTE the DOT "." before the suffix - instead of the minus "-" used by Maven.
 
+7) Check-in and wait for Jenkins to build all. Manually trigger the deployment of the stand-alone assemblies
+after the main build.
+
+8) Create a tag in svn.
+
+9) Repeat all (except for the tag) for the next SNAPSHOT version (svn trunk should always be in SNAPSHOT
+mode and only temporarily have a release version).
