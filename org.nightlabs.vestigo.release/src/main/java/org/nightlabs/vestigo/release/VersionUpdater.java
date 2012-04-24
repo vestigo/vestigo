@@ -147,7 +147,7 @@ public class VersionUpdater {
 				newUrl = newUrl.substring(0, lastUnderscoreIdx + 1);
 				newUrl = newUrl + newOsgiVersion + suffix;
 				element.setAttribute("url", newUrl);
-				element.setAttribute("version", newMavenVersion);
+				element.setAttribute("version", newOsgiVersion);
 			}
 		}
 	}
