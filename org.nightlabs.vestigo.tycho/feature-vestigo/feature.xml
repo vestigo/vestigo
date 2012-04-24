@@ -1,10 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<feature
-      id="org.nightlabs.vestigo.ui.feature"
-      label="Vestigo - JDO JPA Query Browser"
-      version="1.0.0.m1"
-      provider-name="NightLabs Consulting GmbH"
-      plugin="org.nightlabs.vestigo.ui">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><feature id="org.nightlabs.vestigo.ui.feature" label="Vestigo - JDO JPA Query Browser" plugin="org.nightlabs.vestigo.ui" provider-name="NightLabs Consulting GmbH" version="0.7.0-SNAPSHOT">
 
    <description url="http://www.example.com/description">
       [Enter Feature Description here.]
@@ -18,158 +12,48 @@
       [Enter License Description here.]
    </license>
 
-   <plugin
-         id="org.nightlabs.vestigo.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+   <plugin download-size="0" id="org.nightlabs.vestigo.ui" install-size="0" unpack="false" version="0.0.0"/>
 
-   <plugin
-         id="org.nightlabs.eclipse.compatibility"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+   <plugin download-size="0" id="org.nightlabs.eclipse.compatibility" install-size="0" unpack="false" version="0.0.0"/>
 
-   <plugin
-         id="org.nightlabs.eclipse.extension"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+   <plugin download-size="0" id="org.nightlabs.eclipse.extension" install-size="0" unpack="false" version="0.0.0"/>
 
-   <plugin
-         id="org.nightlabs.vestigo.core"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+   <plugin download-size="0" id="org.nightlabs.vestigo.core" install-size="0" unpack="false" version="0.0.0"/>
 
-   <plugin
-         id="org.nightlabs.progress"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+   <plugin download-size="0" id="org.nightlabs.progress" install-size="0" unpack="false" version="0.0.0"/>
 
-   <plugin
-         id="org.nightlabs.util"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+   <plugin download-size="0" id="org.nightlabs.util" install-size="0" unpack="false" version="0.0.0"/>
 
-   <plugin
-         id="org.nightlabs.vestigo.childvm.shared"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+   <plugin download-size="0" id="org.nightlabs.vestigo.childvm.shared" install-size="0" unpack="false" version="0.0.0"/>
 
-   <plugin
-         id="org.nightlabs.vestigo.childvm.webapp.client"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+   <plugin download-size="0" id="org.nightlabs.vestigo.childvm.webapp.client" install-size="0" unpack="false" version="0.0.0"/>
 
-   <plugin
-         id="com.sun.jersey.jersey-client"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+   <plugin download-size="0" id="com.sun.jersey.jersey-client" install-size="0" unpack="false" version="0.0.0"/>
 
-   <plugin
-         id="com.sun.jersey.jersey-core"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+   <plugin download-size="0" id="com.sun.jersey.jersey-core" install-size="0" unpack="false" version="0.0.0"/>
 
-   <plugin
-         id="javax.jdo"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+   <plugin download-size="0" id="javax.jdo" install-size="0" unpack="false" version="0.0.0"/>
 
-   <plugin
-         id="javax.persistence"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+   <plugin download-size="0" id="javax.persistence" install-size="0" unpack="false" version="0.0.0"/>
 
-   <plugin
-         id="org.nightlabs.licence.client"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+   <plugin download-size="0" id="org.nightlabs.licence.client" install-size="0" unpack="false" version="0.0.0"/>
 
-   <plugin
-         id="bcprov"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+   <plugin download-size="0" id="bcprov" install-size="0" unpack="false" version="0.0.0"/>
 
-   <plugin
-         id="org.nightlabs.vestigo.xtext.jdoql"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+   <plugin download-size="0" id="org.nightlabs.vestigo.xtext.jdoql" install-size="0" unpack="false" version="0.0.0"/>
 
-   <plugin
-         id="org.nightlabs.vestigo.xtext.jdoql.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+   <plugin download-size="0" id="org.nightlabs.vestigo.xtext.jdoql.ui" install-size="0" unpack="false" version="0.0.0"/>
 
-   <plugin
-         id="org.nightlabs.vestigo.xtext.jpql"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+   <plugin download-size="0" id="org.nightlabs.vestigo.xtext.jpql" install-size="0" unpack="false" version="0.0.0"/>
 
-   <plugin
-         id="org.nightlabs.vestigo.xtext.jpql.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+   <plugin download-size="0" id="org.nightlabs.vestigo.xtext.jpql.ui" install-size="0" unpack="false" version="0.0.0"/>
 
-   <plugin
-         id="org.nightlabs.licence.manager"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+   <plugin download-size="0" id="org.nightlabs.licence.manager" install-size="0" unpack="false" version="0.0.0"/>
 
-   <plugin
-         id="org.nightlabs.licence.shared"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+   <plugin download-size="0" id="org.nightlabs.licence.shared" install-size="0" unpack="false" version="0.0.0"/>
 
-   <plugin
-         id="org.nightlabs.licence.signature"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+   <plugin download-size="0" id="org.nightlabs.licence.signature" install-size="0" unpack="false" version="0.0.0"/>
 
-   <plugin
-         id="org.eclipse.datatools.connectivity.ui.dse"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+   <plugin download-size="0" id="org.eclipse.datatools.connectivity.ui.dse" install-size="0" unpack="false" version="0.0.0"/>
 
 </feature>

@@ -1,9 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<feature
-      id="org.nightlabs.vestigo.maven.ui.feature"
-      label="Vestigo Maven integration"
-      version="1.0.0.m1"
-      provider-name="NightLabs Consulting GmbH">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><feature id="org.nightlabs.vestigo.maven.ui.feature" label="Vestigo Maven integration" provider-name="NightLabs Consulting GmbH" version="0.7.0-SNAPSHOT">
 
    <description url="http://www.example.com/description">
       [Enter Feature Description here.]
@@ -18,21 +13,11 @@
    </license>
 
    <requires>
-      <import feature="org.nightlabs.vestigo.ui.feature" version="1.0.0" match="greaterOrEqual"/>
+      <import feature="org.nightlabs.vestigo.ui.feature" match="greaterOrEqual" version="0.7.0"/>
    </requires>
 
-   <plugin
-         id="org.nightlabs.vestigo.maven.core"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+   <plugin download-size="0" id="org.nightlabs.vestigo.maven.core" install-size="0" unpack="false" version="0.0.0"/>
 
-   <plugin
-         id="org.nightlabs.vestigo.maven.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+   <plugin download-size="0" id="org.nightlabs.vestigo.maven.ui" install-size="0" unpack="false" version="0.0.0"/>
 
 </feature>

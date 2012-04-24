@@ -12,14 +12,7 @@ Do *not* omit the suffix (in this example "-release"), because it is required by
 Make sure, there is only exactly one line modified in every "pom.xml"! You can easily see this using the
 "Preview" feature of Eclipse's replace dialog.
 
-3) Replace "0.2.1" by "1.0.0" (NO SUFFIX!!!) in all "*.xml" files inside "org.nightlabs.tycho" (and all
-sub-directories). There is a suffix in some places (usually ".qualifier"), but it does not need to be
-changed.
-
-Btw. you can simply search in the whole workspace - there shouldn't be any xml-files needing replacement.
-
-4) Go into "${workspace}/org.nightlabs.vestigo.all" and run "mvn clean install". If it does not work,
-FIX IT FIRST before you continue!
+3) Run the main method of all programs in 'org.nightlabs.vestigo.release'.
 
 5) Refresh all projects in Eclipse and wait for the build to finish. You might need to right-click => Maven
 => "Update Project Configuration..." on some projects, if they still have error markers.
