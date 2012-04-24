@@ -26,7 +26,7 @@ outstanding shares or beneficial ownership of such entity.
 2. Definitions
 
 (a) "Authorized User" means 
-(i) if Licensee is an individual, solelyLicensee; 
+(i) if Licensee is an individual, solely Licensee; 
 (ii) if Licensee is a legal entity, any employee, independent contractor 
 and other temporary worker authorized by Licensee to use the Software 
 while performing duties within the scope of their employment or assignment.
@@ -77,10 +77,10 @@ Software as follows:
 
 (a) Licensee may:
 
-(i) install and use the version of the Software that has been specified
-in License Order Confirmation on multiple Clients and operating systems,
-provided that a number of concurrent users never exceeds the number of
-Authorized Users specified in License Order Confirmation;
+(i) install and use the Software in the version range that has been 
+specified in License Order Confirmation on multiple Clients and operating 
+systems, provided that a number of individual users never exceeds the 
+number of Authorized Users specified in License Order Confirmation;
 
 (b) Licensee may not:
 
@@ -92,8 +92,8 @@ anyone without the prior written consent of Licensor;
 any attempt to discover the source code of the Software, or create
 derivative works from the Software;
 
-(iii) allow the use of the same License Key to more individual Users
-than specified in Licence Order Confirmtion. The Software may contain a
+(iii) allow the use of the same License Key to more individual users
+than specified in Licence Order Confirmation. The Software may contain a
 feature preventing concurrent use of the same License Key by more
 Authorized Users than specified in License Order Confirmation.
 
@@ -118,7 +118,7 @@ a particular purpose, title, and non-infringement, with respect to any
 third party software.
 
 
-7. Restricted use of non-licensed copies
+6. Restricted use of non-licensed copies
 
 (a) Subject to the terms of this Agreement, Licensee is granted a right
 to use non-licensed copies of the Software for evaluation purposes
@@ -135,7 +135,7 @@ feature of the Software, and any attempt to do so will be in violation
 of this Agreement and will terminate Licensee's rights to use the Software.
 
 
-8. License fees and payments
+7. License fees and payments
 
 Licensee will pay to Licensor or a payment service provider appointed by
 Licensor the license fee and other charges and expenses as set forth in
@@ -145,35 +145,16 @@ days past due at the rate of one and one-half percent (1.5%) per month
 or the highest amount allowed by law, whichever is lower.
 
 
-9. UPGRADES
+8. Upgrades
 
 (a) Licensor will provide generally available new versions of Software
 to Licensee as follows:
 
-(i) pursuant to the optional upgrade terms published on Licensor's web
-site at www.jetbrains.com. Upon obtaining License Key for a new version
-of Software from Licensor, Licensee shall destroy License Key provided
-by Licensor for a previous version of Software, or;
+(i) With the purchase of a License Key for Software, Licensee qualifies 
+for free upgrades of Software within the version range specified in 
+License Order Confirmation.
 
-(ii) if Licensee has obtained an upgrade subscription for Software,
-Licensee will qualify for free upgrades during the initial 1-year
-upgrade subscription term. Licensee may renew an upgrade subscription
-for another 1-year period by paying to Licensor an applicable upgrade
-subscription renewal fee. Each subsequent upgrade subscription term will
-start on the day following the expiration of a previous upgrade
-subscription term regardless of the actual upgrade subscription renewal
-date. Upon obtaining License Key for a new upgrade subscription term
-from Licensor, Licensee shall destroy a License Key provided by Licensor
-for a previous upgrade subscription term.
-
-(b) If not agreed otherwise in writing between Licensor and Licensee,
-upon upgrading to new version of the Software the relationship between
-parties shall be governed and amended (if applicable) by the terms and
-conditions of License agreement related to Software available at
-www.jetbrains.com on the day of upgrade purchase.
-
-
-10. Limited warranty
+9. Limited warranty
 
 The software is provided to Licensee "as is" and without warranties.
 Licensor makes no warrranty as to its use or performance. To the maximum
@@ -185,7 +166,7 @@ and non-infringement, with regard to the software, and the provision of
 or failure to provide support services.
 
 
-11. Disclaimer of damages
+10. Disclaimer of damages
 
 (a) To the maximum extend permitted by applicable law, in no event will
 Licensor or its affiliates, licensors, suppliers or resellers be liable
@@ -207,23 +188,19 @@ agreement will be limited to the amount actually paid by Licensee for
 the software under this agreement.
 
 
-12. Export regulations
+11. Export regulations
 
 Licensee agrees and accepts that the Software may be subject to import
 and export laws of any country, including those of the European Union
 and United States (specifically the Export Administration Regulations
-(EAR)). Licensee acknowledges that it is not a citizen, national, or
-resident of, and is not under control of the governments of Cuba, Iran,
-North Korea, Sudan or Syria and is not otherwise a restricted end-user
+(EAR)). Licensee acknowledges that it is not a restricted end-user
 as defined by applicable export control laws. Further, Licensee
 acknowledges that it will not download or otherwise export or re-export
 the Software or any related technical data directly or indirectly to the
-above-mentioned countries or to citizens, nationals, or residents of
-those countries, or to any other restricted end user or for any
-restricted end-use.
+any other restricted end user or for any restricted end-use.
 
 
-13. Term and termination
+12. Term and termination
 
 (a) Except as otherwise provided in License Order Confirmation, the
 license granted herein shall be perpetual.
@@ -239,7 +216,7 @@ archives.
 reason, Licensor may take actions so that the software no longer operates.
 
 
-14. MARKETING
+13. Marketing
 
 Licensee agrees to be identified as a customer of Licensor and that
 Licensor may refer to Licensee by name, trade name and trademark, if
@@ -250,7 +227,7 @@ name and any of Licensee's trade names and trademarks solely pursuant to
 this marketing section.
 
 
-15. General
+14. General
 
 (a) Licensor reserves the right at any time to cease the support of the
 Software and to alter prices, features, specifications, capabilities,
@@ -290,6 +267,6 @@ successors and assigns.
 
 For exceptions or modifications to this Agreement, please contact
 Licensor at:
-Address: Na Lysinách 443/57, Prague, 14700, Czech Republic
-Fax: +420 2 4172 2540
-E-mail: sales@jetbrains.com
+Address: Weiherhofstr. 16, 79104 Freiburg, Germany
+E-mail: vestigo@nightlabs.com
+
