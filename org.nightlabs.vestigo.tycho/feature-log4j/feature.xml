@@ -2,7 +2,7 @@
 <feature
       id="org.nightlabs.vestigo.log4j.ui.feature"
       label="Vestigo log4j integration"
-      version="1.0.0.qualifier"
+      version="1.0.0.m1"
       provider-name="NightLabs Consulting GmbH">
 
    <description url="http://www.example.com/description">

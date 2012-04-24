@@ -2,7 +2,7 @@
 <feature
       id="org.nightlabs.vestigo.maven.ui.feature"
       label="Vestigo Maven integration"
-      version="1.0.0.qualifier"
+      version="1.0.0.m1"
       provider-name="NightLabs Consulting GmbH">
 
    <description url="http://www.example.com/description">
