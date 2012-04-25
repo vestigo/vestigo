@@ -6,17 +6,18 @@ example, we assume, our old version is "0.7.0-SNAPSHOT" and our new version thus
 3) Open the class 'VersionUpdater' in 'org.nightlabs.vestigo.release' and set its field 'newMavenVersion' to
 "0.7.0". Save the file and run its main method.
 
-4) Run "mvn clean install" in "org.nightlabs.vestigo.all".
+4) Run "mvn clean install" in "org.nightlabs.vestigo.site.skin" and "org.nightlabs.vestigo.all".
 
 5) Refresh all projects in Eclipse and wait for the build to finish. You might need to right-click => Maven
 => "Update Project Configuration..." on some projects, if they still have error markers.
 
-6) Check-in and wait for Jenkins to build all. Manually trigger the deployment of the stand-alone assemblies
-after the main build! Every related project should be run exactly once with the release version number.
+6) Check-in and first build the skin and then "Vestigo" (the main build). Wait for Jenkins to build all. Finally
+trigger the deployment of the stand-alone assemblies after the main build completed. Every related project
+should be run exactly once with the release version number.
 
 7) Create a tag in svn.
 
-8) Repeat all (except for the svn tag creation) for the next SNAPSHOT version, i.e to switch from "0.7.0" to
+8) Repeat all (except for the svn tag creation) for the next SNAPSHOT version, i.e. to switch from "0.7.0" to
 "0.7.1-SNAPSHOT". SVN trunk should always be in SNAPSHOT mode and only temporarily have a release version.
 
 9) Login as user "nightly" on "eagle.nighthost.de" like this:

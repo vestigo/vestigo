@@ -77,7 +77,12 @@ public class PomUpdater {
 				}
 				else if (st.ttype >= 0) {
 
-					if (!isInComment) {
+					if (isInComment && st.ttype == '>') {
+						flushBuf();
+						if (lastTtype[0] == '-' && lastTtype[1] == '-')
+							isInComment = false;
+					}
+					else if (!isInComment) {
 						if (st.ttype == '<') {
 							isInTag = true;
 							tagSB.setLength(0);
@@ -105,11 +110,6 @@ public class PomUpdater {
 						}
 						else if (isInTag && st.ttype == '/' && lastTtype[0] == '<') {
 							isInEndTag = true;
-						}
-						else if (isInComment && st.ttype == '>') {
-							flushBuf();
-							if (lastTtype[0] == '-' && lastTtype[1] == '-')
-								isInComment = false;
 						}
 						else if (isInTag && st.ttype == '>') {
 							flushBuf();
