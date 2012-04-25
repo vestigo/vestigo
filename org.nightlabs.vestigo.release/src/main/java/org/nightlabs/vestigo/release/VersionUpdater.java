@@ -28,8 +28,13 @@ import org.w3c.dom.NodeList;
 
 public class VersionUpdater {
 
+	// Set 'newMavenVersion' to the new desited  version. Then run the main method. It will update
+	// all files accordingly. See HOWTO-release.txt in project 'org.nightlabs.vestigo.parent'.
 	protected String newMavenVersion = "0.7.0";
 
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	// DO NOT CHANGE ANYTHING BELOW THIS POINT, if you don't really want to improve this program.
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	protected String artifactIdPrefix = "org.nightlabs.vestigo.";
 
 	protected String newOsgiVersionWithoutSuffix;

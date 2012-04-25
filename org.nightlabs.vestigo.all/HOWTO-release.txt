@@ -1,12 +1,7 @@
 1) Check-out *all* projects in trunk: https://dev.nightlabs.org/svn/private/main/vestigo/trunk/
 
-2) Determine the old and the new version number. Look in a "pom.xml" to see the old version number. For
-this example, we assume, our old version is "0.7.0-SNAPSHOT" and our new version is "0.7.0".
-
-2) Replace "<version>0.7.0-SNAPSHOT</version>" by "<version>0.7.0</version>" in ALL "pom.xml" files.
-
-Make sure, there is only exactly one line modified in every "pom.xml"! You can easily see this using the
-"Preview" feature of Eclipse's replace dialog.
+2) Determine the new version number. Look in a "pom.xml" to see the old version number. For this
+example, we assume, our old version is "0.7.0-SNAPSHOT" and our new version thus is "0.7.0".
 
 3) Open the class 'VersionUpdater' in 'org.nightlabs.vestigo.release' and set its field 'newMavenVersion' to
 "0.7.0". Save the file and run its main method.
@@ -17,12 +12,12 @@ Make sure, there is only exactly one line modified in every "pom.xml"! You can e
 => "Update Project Configuration..." on some projects, if they still have error markers.
 
 6) Check-in and wait for Jenkins to build all. Manually trigger the deployment of the stand-alone assemblies
-after the main build.
+after the main build! Every related project should be run exactly once with the release version number.
 
 7) Create a tag in svn.
 
-8) Repeat all (except for the tag) for the next SNAPSHOT version, i.e to switch from "0.7.0" to "0.7.1-SNAPSHOT".
-SVN trunk should always be in SNAPSHOT mode and only temporarily have a release version.
+8) Repeat all (except for the svn tag creation) for the next SNAPSHOT version, i.e to switch from "0.7.0" to
+"0.7.1-SNAPSHOT". SVN trunk should always be in SNAPSHOT mode and only temporarily have a release version.
 
 9) Login as user "nightly" on "eagle.nighthost.de" like this:
 

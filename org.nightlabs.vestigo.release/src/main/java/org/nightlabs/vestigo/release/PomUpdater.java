@@ -130,7 +130,7 @@ public class PomUpdater {
 								if (idx >= 0)
 									tagName = tagName.substring(0, idx);
 
-								if (!tagName.isEmpty()) {
+								if (!tagName.isEmpty() && !tagName.startsWith("?")) {
 									if (isInEndTag) {
 										if (tagName.equals(tagStack.peekLast()))
 											tagStack.pollLast();
