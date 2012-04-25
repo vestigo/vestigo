@@ -30,7 +30,7 @@ public class VersionUpdater {
 
 	// Set 'newMavenVersion' to the new desired  version. Then run the main method. It will update
 	// all files accordingly. See HOWTO-release.txt in project 'org.nightlabs.vestigo.parent'.
-	protected String newMavenVersion = "0.7.0";
+	protected String newMavenVersion = "0.7.1-SNAPSHOT";
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// DO NOT CHANGE ANYTHING BELOW THIS POINT, if you don't really want to improve this program.
