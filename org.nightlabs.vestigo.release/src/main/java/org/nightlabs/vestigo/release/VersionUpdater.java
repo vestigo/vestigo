@@ -28,7 +28,7 @@ import org.w3c.dom.NodeList;
 
 public class VersionUpdater {
 
-	protected String newMavenVersion = "0.7.0-SNAPSHOT";
+	protected String newMavenVersion = "0.7.0";
 
 	protected String artifactIdPrefix = "org.nightlabs.vestigo.";
 
@@ -105,10 +105,9 @@ public class VersionUpdater {
 		}
 	}
 
-	protected void updatePomFiles() {
-		// TODO implement WITHOUT loosing comments or layout information!!!
+	protected void updatePomFiles() throws Exception {
 		for (File  f : pomFiles) {
-
+			new PomUpdater(f).setArtifactIdPrefix(artifactIdPrefix).setNewMavenVersion(newMavenVersion).update();
 		}
 	}
 
@@ -215,14 +214,17 @@ public class VersionUpdater {
 		}
 	}
 
-	protected void collectFiles(File dir) {
+	protected void collectFiles(File dir) throws IOException {
 		pomFiles = new ArrayList<File>();
 		featureFiles = new ArrayList<File>();
 		categoryFiles = new ArrayList<File>();
 		manifestFiles = new ArrayList<File>();
-		_collectFiles(dir);
+		_collectFiles(dir.getCanonicalFile());
 	}
 	protected void _collectFiles(File dirOrFile) {
+		if (dirOrFile.getName().startsWith("."))
+			return;
+
 		if ("pom.xml".equals(dirOrFile.getName())) {
 			pomFiles.add(dirOrFile);
 			return;
@@ -250,7 +252,7 @@ public class VersionUpdater {
 		}
 	}
 
-	protected static String getTagValue(String sTag, Element eElement) {
+	public static String getTagValue(String sTag, Element eElement) {
 		NodeList nlList = eElement.getElementsByTagName(sTag).item(0).getChildNodes();
 
 		Node nValue = nlList.item(0);

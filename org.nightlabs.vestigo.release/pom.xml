@@ -3,7 +3,7 @@
 
 	<groupId>org.nightlabs.vestigo</groupId>
 	<artifactId>org.nightlabs.vestigo.release</artifactId>
-	<version>STATIC</version>
+	<version>0.7.0</version>
 
 <!--
 	<parent>
