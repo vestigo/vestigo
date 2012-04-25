@@ -162,6 +162,12 @@
 				<artifactId>org.nightlabs.vestigo.ui</artifactId>
 				<version>${vestigo.version}</version>
 			</dependency>
+
+			<dependency>
+				<groupId>org.nightlabs.vestigo</groupId>
+				<artifactId>org.nightlabs.vestigo.site.skin</artifactId>
+				<version>${vestigo.version}</version>
+			</dependency>
 			<!-- END org.nightlabs.vestigo -->
 			
 			<!-- BEGIN org.nightlabs.vestigo.log4j -->

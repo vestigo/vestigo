@@ -5,6 +5,6 @@
 	<skin>
 		<groupId>org.nightlabs.vestigo</groupId>
 		<artifactId>org.nightlabs.vestigo.site.skin</artifactId>
-		<version>0.7.0-SNAPSHOT</version>
+		<version>${vestigo.version}</version>
 	</skin>
 </project>
