@@ -28,7 +28,7 @@ import org.w3c.dom.NodeList;
 
 public class VersionUpdater {
 
-	// Set 'newMavenVersion' to the new desited  version. Then run the main method. It will update
+	// Set 'newMavenVersion' to the new desired  version. Then run the main method. It will update
 	// all files accordingly. See HOWTO-release.txt in project 'org.nightlabs.vestigo.parent'.
 	protected String newMavenVersion = "0.7.0";
 
