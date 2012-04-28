@@ -6,14 +6,21 @@ example, we assume, our old version is "0.7.0-SNAPSHOT" and our new version thus
 3) Open the class 'VersionUpdater' in 'org.nightlabs.vestigo.release' and set its field 'newMavenVersion' to
 "0.7.0". Save the file and run its main method.
 
-4) Run "mvn clean install" in "org.nightlabs.vestigo.site.skin" and "org.nightlabs.vestigo.all".
+4) Run "mvn clean install" in "org.nightlabs.vestigo.all".
 
 5) Refresh all projects in Eclipse and wait for the build to finish. You might need to right-click => Maven
 => "Update Project Configuration..." on some projects, if they still have error markers.
 
-6) Check-in and first build the skin and then "Vestigo" (the main build). Wait for Jenkins to build all. Finally
-trigger the deployment of the stand-alone assemblies after the main build completed. Every related project
-should be run exactly once with the release version number.
+6) Check-in and build "Vestigo" (the main build). Wait for Jenkins to build all downstream projects, too.
+Finally trigger the deployment of the stand-alone assemblies manually (not triggered by Jenkins automatically,
+because it takes about 1 hour).
+
+Every Vestigo-related project should be run exactly once with the release version number. Trying to build a
+release build a 2nd time fails, because our Maven-repository consideres release builds to be immutable!!! You
+have to delete the artifacts manually, if you really want to re-run a release build.
+
+It's better to simply discard the build number as "consumed for broken build" and release again with a new
+build number.
 
 7) Create a tag in svn.
 
@@ -33,7 +40,8 @@ is essential, because the symlinks that are about to be created/modified must be
 
 11) On eagle, go to "/srv/www/nightly/vestigo.nightlabs.com/htdocs/updates/snapshots" and edit the two
 files "compositeArtifacts.xml" and "compositeContent.xml". Add a "<child ... />" element and increment
-the "size" attribute of "<children ...>".
+the "size" attribute of "<children ...>". Update version numbers or timestamps in these files manually,
+too!
 
 12) On eagle, go to "/srv/www/nightly/vestigo.nightlabs.com/htdocs/updates/releases" and repeat the same
 you did for the snapshots again for the releases. 
