@@ -698,6 +698,7 @@
 					</execution>
 				</executions>
 			</plugin>
+
 <!-- This doesn't work. It still tries to deploy the non-generated site and then complains that it does not exist :-( 
 			<plugin>
 					<artifactId>maven-site-plugin</artifactId>
