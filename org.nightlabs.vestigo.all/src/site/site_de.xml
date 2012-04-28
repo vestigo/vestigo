@@ -47,6 +47,7 @@
 			<item name="Kontakt" href="./about/contact.html" />
 			<item name="Impressum" href="./about/imprint.html" />
 			<item name="Lizenz" href="./about/licence.html" />
+			<item name="Danke" href="./about/credits.html" />
 		</menu>
 
 		<menu name="Versionen">
