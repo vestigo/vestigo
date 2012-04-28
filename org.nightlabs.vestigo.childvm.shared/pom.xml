@@ -33,5 +33,13 @@
 			<groupId>org.nightlabs</groupId>
 			<artifactId>org.nightlabs.progress</artifactId>
 		</dependency>
+
+		<dependency>
+			<!-- This serves to ensure the correct build order. We need org.nightlabs.vestigo.release to
+			be built first for copying our LICENCE.txt. -->
+			<groupId>org.nightlabs.vestigo</groupId>
+			<artifactId>org.nightlabs.vestigo.release</artifactId>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 </project>
