@@ -561,7 +561,7 @@
 										-->
 									</artifactItem>
 								</artifactItems>
-								<includeArtifactIds>org.nightlabs.vestigo.release</includeArtifactIds>
+								<stripVersion>true</stripVersion>
 							</configuration>
 						</execution>
 					</executions>
@@ -580,7 +580,7 @@
 							<configuration>
 								<target>
 									<unzip
-											src="${project.build.directory}/dependency/org.nightlabs.vestigo.release-${vestigo.version}.jar"
+											src="${project.build.directory}/dependency/org.nightlabs.vestigo.release.jar"
 											dest="${project.build.directory}/dependency/org.nightlabs.vestigo.release/"
 									/>
 									<!--
