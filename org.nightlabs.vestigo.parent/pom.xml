@@ -544,9 +544,23 @@
 							<id>copy-licence</id>
 							<phase>generate-resources</phase>
 							<goals>
-								<goal>copy-dependencies</goal>
+								<goal>copy</goal>
 							</goals>
 							<configuration>
+								<artifactItems>
+									<artifactItem>
+										<groupId>org.nightlabs.vestigo</groupId>
+										<artifactId>org.nightlabs.vestigo.release</artifactId>
+										<!--
+										<version>[ version ]</version>
+										<type>[ packaging ]</type>
+										<classifier> [classifier - optional] </classifier>
+										<overWrite>[ true or false ]</overWrite>
+										<outputDirectory>[ output directory ]</outputDirectory>
+										<destFileName>[ filename ]</destFileName>
+										-->
+									</artifactItem>
+								</artifactItems>
 								<includeArtifactIds>org.nightlabs.vestigo.release</includeArtifactIds>
 							</configuration>
 						</execution>
