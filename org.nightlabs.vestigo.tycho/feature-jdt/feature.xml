@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <feature id="org.nightlabs.vestigo.jdt.ui.feature" label="Vestigo JDT integration" provider-name="NightLabs Consulting GmbH" version="0.7.1.qualifier">
 
-   <description url="http://www.example.com/description">
-      JDT integration for Vestigo.
-   </description>
+<!--
+###PROPERTIES_BEGIN###
+description.url = http://vestigo.nightlabs.com/${project.version}
+description.text = JDT integration for Vestigo.\n\nSee ${description.url} for more information.
+###PROPERTIES_END###
+-->
 
 <!-- BEGIN: DO NOT MODIFY manually! The following is managed and your manual changes will be lost! -->
+   <description url="http://vestigo.nightlabs.com/0.7.1-SNAPSHOT">JDT integration for Vestigo.
+
+See http://vestigo.nightlabs.com/0.7.1-SNAPSHOT for more information.</description>
+
    <copyright url="http://vestigo.nightlabs.com/0.7.1-SNAPSHOT/about/imprint.html">© 2011-2012 NightLabs Consulting GmbH. All rights reserved.</copyright>
 
    <license url="http://vestigo.nightlabs.com/0.7.1-SNAPSHOT/about/licence.html">License agreement for Vestigo

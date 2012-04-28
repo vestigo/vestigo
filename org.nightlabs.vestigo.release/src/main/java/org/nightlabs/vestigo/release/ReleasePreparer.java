@@ -9,11 +9,14 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.io.StringReader;
 import java.io.Writer;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import java.util.regex.Pattern;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -34,8 +37,6 @@ import org.w3c.dom.Text;
 
 public class ReleasePreparer {
 
-	private static final Logger logger = LoggerFactory.getLogger(ReleasePreparer.class);
-
 	// Set 'newMavenVersion' to the new desired  version. Then run the main method. It will update
 	// all files accordingly. See HOWTO-release.txt in project 'org.nightlabs.vestigo.parent'.
 	protected String newMavenVersion = "0.7.1-SNAPSHOT";
@@ -48,6 +49,15 @@ public class ReleasePreparer {
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// DO NOT CHANGE ANYTHING BELOW THIS POINT, if you don't really want to improve this program.
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	private static final Logger logger = LoggerFactory.getLogger(ReleasePreparer.class);
+
+	public static final String PROPERTIES_BEGIN_MARKER = "###PROPERTIES_BEGIN###";
+	public static final String PROPERTIES_END_MARKER = "###PROPERTIES_END###";
+
+	protected Pattern[] excludePathPatterns = {
+		Pattern.compile(".*\\/target\\/.*")
+	};
+
 	protected String artifactIdPrefix = "org.nightlabs.vestigo.";
 
 	protected String newOsgiVersionWithoutSuffix;
@@ -159,6 +169,7 @@ public class ReleasePreparer {
 		transformer.setOutputProperty(OutputKeys.INDENT, "yes");
 
 		for (File  f : featureFiles) {
+			logger.info("updateFeatureFiles: file={}", f.getAbsolutePath());
 			Document document = dBuilder.parse(f);
 			updateFeatureFileDocument(document);
 
@@ -168,7 +179,42 @@ public class ReleasePreparer {
 		}
 	}
 
-	protected void updateFeatureFileDocument(Document document) {
+	protected Map<String, String> getFeatureProperties(Document document) throws Exception {
+		Properties properties = new Properties();
+		properties.putAll(this.properties);
+
+		NodeList featureList = document.getElementsByTagName("feature");
+		for (int i = 0; i < featureList.getLength(); ++i) {
+			Node node = featureList.item(i);
+
+			NodeList childNodes = node.getChildNodes();
+			for (int a = 0; a < childNodes.getLength(); ++a) {
+				Node childNode = childNodes.item(a);
+				if (Node.COMMENT_NODE == childNode.getNodeType()) {
+					String comment = childNode.getTextContent();
+					if (comment != null) {
+						int beginMarkerIdx = comment.indexOf(PROPERTIES_BEGIN_MARKER);
+						if (beginMarkerIdx >= 0) {
+							int endMarkerIdx = comment.indexOf(PROPERTIES_END_MARKER);
+							if (endMarkerIdx < 0)
+								throw new IllegalStateException(String.format("File has begin marker '%s', but end marker '%s' is missing!", PROPERTIES_BEGIN_MARKER, PROPERTIES_END_MARKER));
+
+							String propertiesString = comment.substring(
+									beginMarkerIdx + PROPERTIES_BEGIN_MARKER.length(), endMarkerIdx);
+
+							StringReader r = new StringReader(propertiesString);
+							properties.load(r);
+							logger.trace("{}", properties);
+						}
+					}
+				}
+			}
+		}
+
+		return resolveProperties(properties, 3);
+	}
+
+	protected void updateFeatureFileDocument(Document document) throws Exception {
 		NodeList featureList = document.getElementsByTagName("feature");
 		for (int i = 0; i < featureList.getLength(); ++i) {
 			Node node = featureList.item(i);
@@ -180,7 +226,23 @@ public class ReleasePreparer {
 			NodeList childNodes = node.getChildNodes();
 			for (int a = 0; a < childNodes.getLength(); ++a) {
 				Node childNode = childNodes.item(a);
-				if ("copyright".equals(childNode.getNodeName())) {
+				if ("description".equals(childNode.getNodeName())) {
+					Map<String, String> featureProperties = getFeatureProperties(document);
+					String descriptionText = featureProperties.get("description.text");
+					if (descriptionText == null)
+						descriptionText = "!!!Property description.text missing!!!";
+
+					setTagValue(document, childNode, descriptionText, featureProperties);
+
+					if (childNode instanceof Element) {
+						Element element = (Element) childNode;
+						String descriptionURL = featureProperties.get("description.url");
+						if (descriptionURL == null)
+							descriptionURL = "!!!Property description.url missing!!!";
+						element.setAttribute("url", IOUtil.replaceTemplateVariables(descriptionURL, properties));
+					}
+				}
+				else if ("copyright".equals(childNode.getNodeName())) {
 					setTagValue(document, childNode, copyrightNotice, properties);
 
 					if (childNode instanceof Element) {
@@ -189,11 +251,6 @@ public class ReleasePreparer {
 					}
 				}
 				else if ("license".equals(childNode.getNodeName())) {
-//					while (childNode.getFirstChild() != null)
-//						childNode.removeChild(childNode.getFirstChild());
-//
-//					Text textNode = document.createTextNode(licenceText);
-//					childNode.appendChild(textNode);
 					setTagValue(document, childNode, licenceText); // MUST be final (without variables!!!), because LICENCE.txt is packaged as is.
 
 					if (childNode instanceof Element) {
@@ -286,6 +343,13 @@ public class ReleasePreparer {
 		if (dirOrFile.getName().startsWith("."))
 			return;
 
+		for (Pattern excludePathPattern : excludePathPatterns) {
+			if (excludePathPattern.matcher(dirOrFile.getAbsolutePath()).matches()) {
+				logger.debug("_collectFiles: excludePathPattern '{}' matches '{}'. Skipping.", excludePathPattern, dirOrFile);
+				return;
+			}
+		}
+
 		if ("pom.xml".equals(dirOrFile.getName())) {
 			pomFiles.add(dirOrFile);
 			return;
@@ -313,11 +377,11 @@ public class ReleasePreparer {
 		}
 	}
 
-	public static void setTagValue(Document document, Node node, String value) {
+	protected static void setTagValue(Document document, Node node, String value) {
 		setTagValue(document, node, value, null);
 	}
 
-	public static void setTagValue(Document document, Node node, String value, Map<?, ?> valueVariables) {
+	protected static void setTagValue(Document document, Node node, String value, Map<?, ?> valueVariables) {
 		while (node.getFirstChild() != null)
 			node.removeChild(node.getFirstChild());
 
@@ -326,5 +390,26 @@ public class ReleasePreparer {
 
 		Text textNode = document.createTextNode(v);
 		node.appendChild(textNode);
+	}
+
+	protected static Map<String, String> resolveProperties(Map<?, ?> properties, int depth) {
+		if (depth < 1)
+			throw new IllegalArgumentException("depth < 1");
+
+		Map<String, String> result = null;
+		for (int i = 0; i < depth; ++i) {
+			result = resolveProperties(result == null ? properties : result);
+		}
+		return result;
+	}
+
+	protected static Map<String, String> resolveProperties(Map<?, ?> properties) {
+		Map<String, String> result = new HashMap<String, String>(properties.size());
+		for (Map.Entry<?, ?> me : properties.entrySet()) {
+			String key = me.getKey().toString();
+			String value = IOUtil.replaceTemplateVariables(me.getValue().toString(), properties);
+			result.put(key, value);
+		}
+		return result;
 	}
 }
