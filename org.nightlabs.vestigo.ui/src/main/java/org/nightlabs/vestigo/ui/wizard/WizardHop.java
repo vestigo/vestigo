@@ -1,29 +1,20 @@
-/* *****************************************************************************
- * org.nightlabs.base.ui - NightLabs Eclipse utilities                            *
- * Copyright (C) 2004-2005 NightLabs - http://NightLabs.org                    *
- *                                                                             *
- * This library is free software; you can redistribute it and/or               *
- * modify it under the terms of the GNU Lesser General Public                  *
- * License as published by the Free Software Foundation; either                *
- * version 2.1 of the License, or (at your option) any later version.          *
- *                                                                             *
- * This library is distributed in the hope that it will be useful,             *
- * but WITHOUT ANY WARRANTY; without even the implied warranty of              *
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU           *
- * Lesser General Public License for more details.                             *
- *                                                                             *
- * You should have received a copy of the GNU Lesser General Public            *
- * License along with this library; if not, write to the                       *
- *     Free Software Foundation, Inc.,                                         *
- *     51 Franklin St, Fifth Floor,                                            *
- *     Boston, MA  02110-1301  USA                                             *
- *                                                                             *
- * Or get it online :                                                          *
- *     http://www.gnu.org/copyleft/lesser.html                                 *
- *                                                                             *
- *                                                                             *
- ******************************************************************************/
-
+/*
+ * Vestigo - The JDO/JPA Query Tool And Browser - http://vestigo.nightlabs.com
+ * Copyright © 2011-2012 NightLabs Consulting GmbH. All rights reserved.
+ *
+ * This program and all its libraries in the namespace "*.nightlabs.vestigo.*"
+ * are proprietary software. Their source codes are trade secrets and therefore
+ * must be kept confidential.
+ *
+ * The use of this software is subject to licence terms.
+ *
+ * Please see LICENCE.txt or
+ * http://vestigo.nightlabs.com/latest-stable/about/licence.html for
+ * more details.
+ *
+ * For further information, please contact NightLabs Consulting GmbH:
+ * http://nightlabs.com
+ */
 package org.nightlabs.vestigo.ui.wizard;
 
 import java.util.ArrayList;

@@ -751,8 +751,8 @@
 				</configuration>
 			</plugin>
 
-			<plugin>
-				<artifactId>maven-antrun-plugin</artifactId>
+			<plugin> <!-- maven-dependency-plugin BEFORE maven-antrun-plugin -->
+				<artifactId>maven-dependency-plugin</artifactId>
 				<executions>
 					<execution>
 						<id>copy-licence</id>
@@ -765,7 +765,7 @@
 			</plugin>
 
 			<plugin>
-				<artifactId>maven-dependency-plugin</artifactId>
+				<artifactId>maven-antrun-plugin</artifactId>
 				<executions>
 					<execution>
 						<id>copy-licence</id>

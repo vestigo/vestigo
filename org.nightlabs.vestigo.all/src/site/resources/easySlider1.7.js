@@ -1,17 +1,20 @@
 /*
- * 	Easy Slider 1.7 - jQuery plugin
- *	written by Alen Grakalic	
- *	http://cssglobe.com/post/4004/easy-slider-15-the-easiest-jquery-plugin-for-sliding
+ * Vestigo - The JDO/JPA Query Tool And Browser - http://vestigo.nightlabs.com
+ * Copyright © 2011-2012 NightLabs Consulting GmbH. All rights reserved.
  *
- *	Copyright (c) 2009 Alen Grakalic (http://cssglobe.com)
- *	Dual licensed under the MIT (MIT-LICENSE.txt)
- *	and GPL (GPL-LICENSE.txt) licenses.
+ * This program and all its libraries in the namespace "*.nightlabs.vestigo.*"
+ * are proprietary software. Their source codes are trade secrets and therefore
+ * must be kept confidential.
  *
- *	Built for jQuery library
- *	http://jquery.com
+ * The use of this software is subject to licence terms.
  *
+ * Please see LICENCE.txt or
+ * http://vestigo.nightlabs.com/latest-stable/about/licence.html for
+ * more details.
+ *
+ * For further information, please contact NightLabs Consulting GmbH:
+ * http://nightlabs.com
  */
- 
 /*
  *	markup example for $("#slider").easySlider();
  *	
