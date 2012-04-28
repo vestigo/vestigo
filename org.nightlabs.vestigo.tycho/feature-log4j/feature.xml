@@ -13,7 +13,7 @@ description.text = Log4j integration for Vestigo.\n\nSee ${description.url} for 
 
 See http://vestigo.nightlabs.com/0.9.1-SNAPSHOT for more information.</description>
 
-   <copyright url="http://vestigo.nightlabs.com/0.9.1-SNAPSHOT/about/imprint.html">© 2011-2012 NightLabs Consulting GmbH. All rights reserved.</copyright>
+   <copyright url="http://vestigo.nightlabs.com/0.9.1-SNAPSHOT/about/imprint.html">Copyright © 2011-2012 NightLabs Consulting GmbH. All rights reserved.</copyright>
 
    <license url="http://vestigo.nightlabs.com/0.9.1-SNAPSHOT/about/licence.html">License agreement for Vestigo
 
