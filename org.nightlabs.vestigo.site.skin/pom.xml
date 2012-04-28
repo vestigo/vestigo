@@ -1,10 +1,15 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.nightlabs.vestigo</groupId>
 	<artifactId>org.nightlabs.vestigo.site.skin</artifactId>
-	<version>0.7.1-SNAPSHOT</version>
 	<name>Vestigo Maven Site Skin</name>
-	
+
+	<parent>
+		<groupId>org.nightlabs.vestigo</groupId>
+		<artifactId>org.nightlabs.vestigo.parent</artifactId>
+		<version>0.7.1-SNAPSHOT</version>
+		<relativePath>../org.nightlabs.vestigo.parent</relativePath>
+	</parent>
+
 	<inceptionYear>2012</inceptionYear>
 	
 	<scm>

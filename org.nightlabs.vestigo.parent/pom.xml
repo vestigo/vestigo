@@ -14,6 +14,8 @@
 		<version>1.3.0</version>
 	</parent>
 
+	<inceptionYear>2011</inceptionYear>
+
 	<repositories>
 		<!--
 		Here are only those repositories declared that are needed to download
@@ -105,6 +107,25 @@
 			<url>https://dev.nightlabs.org/maven-repository-private/libs-snapshot-local</url>
 		</snapshotRepository>
 	</distributionManagement>
+
+	<organization>
+		<name>NightLabs Consulting GmbH</name>
+		<url>http://www.nightlabs.de</url>
+	</organization>
+	<developers>
+		<developer>
+			<name>Marco Nguitragool-Schulze</name>
+			<email>mschulze[at]nightlabs[dot]de</email>
+			<organization>NightLabs GmbH</organization>
+			<organizationUrl>http://www.nightlabs.de</organizationUrl>
+		</developer>
+		<developer>
+			<name>Alexander Bieber</name>
+			<email>abieber[at]nightlabs[dot]de</email>
+			<organization>NightLabs Consulting GmbH</organization>
+			<organizationUrl>http://www.nightlabs.de</organizationUrl>
+		</developer>
+	</developers>
 
 	<dependencyManagement>
 		<dependencies>
