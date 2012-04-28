@@ -731,6 +731,9 @@
 						<exclude>**/*.apt.vm</exclude>
 						<!-- Don't want to bloat properties files. -->
 						<exclude>**/*.properties</exclude>
+						<!-- exclude generated files (=> xtext) to prevent edit-wars  -->
+						<exclude>**/src-gen/**/*</exclude>
+						<exclude>**/xtend-gen/**/*</exclude>
 					</excludes>
 				</configuration>
 			</plugin>
