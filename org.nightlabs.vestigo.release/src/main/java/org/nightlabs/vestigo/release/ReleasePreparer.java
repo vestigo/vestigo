@@ -3,6 +3,7 @@ package org.nightlabs.vestigo.release;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -39,10 +40,10 @@ public class ReleasePreparer {
 
 	// Set 'newMavenVersion' to the new desired  version. Then run the main method. It will update
 	// all files accordingly. See HOWTO-release.txt in project 'org.nightlabs.vestigo.all'.
-	protected String newMavenVersion = "0.9.0";
+	protected String newMavenVersion = "0.9.1-SNAPSHOT";
 
 	protected String copyrightURL = "http://vestigo.nightlabs.com/${project.version}/about/imprint.html";
-	protected String copyrightNotice = "© 2011-2012 NightLabs Consulting GmbH. All rights reserved.";
+	protected String copyrightNotice = "Copyright © 2011-2012 NightLabs Consulting GmbH. All rights reserved.";
 
 	protected String licenceURL = "http://vestigo.nightlabs.com/${project.version}/about/licence.html";
 
@@ -65,6 +66,8 @@ public class ReleasePreparer {
 	protected String newOsgiVersionWithSnapshot;
 
 	protected String rootDir = "..";
+	protected File rootDirFile;
+	protected String parentDir = "org.nightlabs.vestigo.parent/";
 
 	protected Properties properties;
 
@@ -83,15 +86,16 @@ public class ReleasePreparer {
 
 	public void run() throws Exception {
 		logger.info("run: Entered.");
+		rootDirFile = new File(this.rootDir);
 		determineNewOsgiVersion();
 
 		readLicenceText();
+		copyCopyrightHeaderToParent();
 
 		initProperties();
 
 		logger.info("run: Collecting files.");
-		File rootDir = new File(this.rootDir);
-		collectFiles(rootDir);
+		collectFiles(rootDirFile);
 		logger.info("run: Files collected.");
 
 		logger.info("run: Updating files.");
@@ -109,6 +113,18 @@ public class ReleasePreparer {
 
 	protected void readLicenceText() throws Exception {
 		licenceText = IOUtil.readTextFile(new File("src/main/resources/LICENCE.txt"));
+	}
+
+	protected void copyCopyrightHeaderToParent() throws Exception {
+		File fromFile = new File("src/main/resources/COPYRIGHT.txt");
+
+		File parentDirFile = new File(rootDirFile, parentDir);
+		if (!parentDirFile.isDirectory())
+			throw new FileNotFoundException(String.format("The Maven-parent-project does not exist (you must check it out!): %s", parentDirFile.getAbsolutePath()));
+
+		File toFile = new File(new File(parentDirFile, "src/etc/"), fromFile.getName());
+
+		IOUtil.copyFile(fromFile, toFile);
 	}
 
 	protected void updateManifestFiles() throws Exception {
