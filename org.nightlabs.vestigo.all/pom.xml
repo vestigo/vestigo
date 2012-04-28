@@ -280,6 +280,9 @@ Quick try with tycho - didn't work this way, yet, though :-( Need more research.
 				-->
 				</dependencies>
 				<!-- Configuration is in parent-POM! -->
+				<configuration>
+					<skip>false</skip>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
