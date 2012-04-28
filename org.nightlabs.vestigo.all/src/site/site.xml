@@ -46,6 +46,7 @@
 		<menu name="About">
 			<item name="Contact" href="./about/contact.html" />
 			<item name="Imprint" href="./about/imprint.html" />
+			<item name="Licene" href="./about/licence.html" />
 		</menu>
 
 		<menu name="Releases">

@@ -67,7 +67,7 @@
 		<module>../org.nightlabs.vestigo.tycho</module>
 		 -->
 	</modules>
-	
+
 	<properties>
 		<platform.linux-gtk-x86_64.enabled>false</platform.linux-gtk-x86_64.enabled>
 		<platform.win32.enabled>false</platform.win32.enabled>
@@ -246,15 +246,30 @@ Quick try with tycho - didn't work this way, yet, though :-( Need more research.
 
 	<build>
 		<plugins>
+		<!--
+			This artifact needs the LICENCE.txt during a different phase (for site generation),
+			hence we bind the execution to "pre-site".
+			The site only can be created with this maven command: mvn -N clean site 
+			Marco :-)
+		-->
+			<plugin>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-licence</id>
+						<inherited>false</inherited>
+						<phase>pre-site</phase>
+					</execution>
+				</executions>
+			</plugin>
+
 			<plugin>
 				<artifactId>maven-antrun-plugin</artifactId>
 				<executions>
 					<execution>
 						<id>copy-licence</id>
 						<inherited>false</inherited>
-						<configuration>
-							<skip>true</skip>
-						</configuration>
+						<phase>pre-site</phase>
 					</execution>
 				</executions>
 			</plugin>
