@@ -4,6 +4,12 @@
 	xsi:schemaLocation="http://maven.apache.org/DECORATION/1.1.0 http://maven.apache.org/xsd/decoration-1.1.0.xsd"
 	name="Vestigo (JDO/JPA-Query-Browser)">
 
+	<skin>
+		<groupId>org.nightlabs.vestigo</groupId>
+		<artifactId>org.nightlabs.vestigo.site.skin</artifactId>
+		<version>${vestigo.version}</version>
+	</skin>
+
 	<custom>
 		<hideMenu>
 			<path>index.html</path>
