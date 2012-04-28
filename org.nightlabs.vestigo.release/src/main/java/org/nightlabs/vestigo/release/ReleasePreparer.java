@@ -12,6 +12,8 @@ import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Properties;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -21,16 +23,27 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
+import org.nightlabs.util.IOUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.w3c.dom.Text;
 
-public class VersionUpdater {
+public class ReleasePreparer {
+
+	private static final Logger logger = LoggerFactory.getLogger(ReleasePreparer.class);
 
 	// Set 'newMavenVersion' to the new desired  version. Then run the main method. It will update
 	// all files accordingly. See HOWTO-release.txt in project 'org.nightlabs.vestigo.parent'.
 	protected String newMavenVersion = "0.7.1-SNAPSHOT";
+
+	protected String copyrightURL = "http://vestigo.nightlabs.com/${project.version}/about/imprint.html";
+	protected String copyrightNotice = "© 2011-2012 NightLabs Consulting GmbH. All rights reserved.";
+
+	protected String licenceURL = "http://vestigo.nightlabs.com/${project.version}/about/licence.html";
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// DO NOT CHANGE ANYTHING BELOW THIS POINT, if you don't really want to improve this program.
@@ -43,27 +56,49 @@ public class VersionUpdater {
 
 	protected String rootDir = "..";
 
+	protected Properties properties;
+
 	protected List<File> pomFiles;
 	protected List<File> featureFiles;
 	protected List<File> categoryFiles;
 	protected List<File> manifestFiles;
 
-	protected VersionUpdater() { }
+	protected String licenceText;
+
+	protected ReleasePreparer() { }
 
 	public static void main(String[] args) throws Exception {
-		new VersionUpdater().update();
+		new ReleasePreparer().run();
 	}
 
-	protected void update() throws Exception {
+	public void run() throws Exception {
+		logger.info("run: Entered.");
 		determineNewOsgiVersion();
 
+		readLicenceText();
+
+		initProperties();
+
+		logger.info("run: Collecting files.");
 		File rootDir = new File(this.rootDir);
 		collectFiles(rootDir);
+		logger.info("run: Files collected.");
 
+		logger.info("run: Updating files.");
 		updateCategoryFiles();
 		updateFeatureFiles();
 		updatePomFiles();
 		updateManifestFiles();
+		logger.info("run: Completed.");
+	}
+
+	protected void initProperties() {
+		properties = new Properties();
+		properties.setProperty("project.version", newMavenVersion);
+	}
+
+	protected void readLicenceText() throws Exception {
+		licenceText = IOUtil.readTextFile(new File("src/main/resources/LICENCE.txt"));
 	}
 
 	protected void updateManifestFiles() throws Exception {
@@ -145,7 +180,28 @@ public class VersionUpdater {
 			NodeList childNodes = node.getChildNodes();
 			for (int a = 0; a < childNodes.getLength(); ++a) {
 				Node childNode = childNodes.item(a);
-				if ("requires".equals(childNode.getNodeName())) {
+				if ("copyright".equals(childNode.getNodeName())) {
+					setTagValue(document, childNode, copyrightNotice, properties);
+
+					if (childNode instanceof Element) {
+						Element element = (Element) childNode;
+						element.setAttribute("url", IOUtil.replaceTemplateVariables(copyrightURL, properties));
+					}
+				}
+				else if ("license".equals(childNode.getNodeName())) {
+//					while (childNode.getFirstChild() != null)
+//						childNode.removeChild(childNode.getFirstChild());
+//
+//					Text textNode = document.createTextNode(licenceText);
+//					childNode.appendChild(textNode);
+					setTagValue(document, childNode, licenceText); // MUST be final (without variables!!!), because LICENCE.txt is packaged as is.
+
+					if (childNode instanceof Element) {
+						Element element = (Element) childNode;
+						element.setAttribute("url", IOUtil.replaceTemplateVariables(licenceURL, properties));
+					}
+				}
+				else if ("requires".equals(childNode.getNodeName())) {
 					NodeList childNodes2 = childNode.getChildNodes();
 					for (int b = 0; b < childNodes2.getLength(); ++b) {
 						Node childNode2 = childNodes2.item(b);
@@ -257,11 +313,18 @@ public class VersionUpdater {
 		}
 	}
 
-	public static String getTagValue(String sTag, Element eElement) {
-		NodeList nlList = eElement.getElementsByTagName(sTag).item(0).getChildNodes();
+	public static void setTagValue(Document document, Node node, String value) {
+		setTagValue(document, node, value, null);
+	}
 
-		Node nValue = nlList.item(0);
+	public static void setTagValue(Document document, Node node, String value, Map<?, ?> valueVariables) {
+		while (node.getFirstChild() != null)
+			node.removeChild(node.getFirstChild());
 
-		return nValue.getNodeValue();
+		String v = (valueVariables == null || valueVariables.isEmpty()) ?
+				value : IOUtil.replaceTemplateVariables(value, valueVariables);
+
+		Text textNode = document.createTextNode(v);
+		node.appendChild(textNode);
 	}
 }

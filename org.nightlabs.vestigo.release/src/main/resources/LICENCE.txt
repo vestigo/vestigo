@@ -10,7 +10,7 @@ AND CONDITIONS OF THIS AGREEMENT.
 
 1. Parties
 
-(a) "LICENSEE" means NightLabs Consulting GmbH, having its principal
+(a) "LICENSOR" means NightLabs Consulting GmbH, having its principal
 place of business at Weiherhofstr. 16, 79104 Freiburg, Germany,
 registered with the Commercial Register kept by the Municipal Court of
 Freiburg, HRB 7342.
@@ -132,7 +132,7 @@ SOFTWARE. LICENSOR will have no responsibility with respect to any
 THIRD-PARTY SOFTWARE, and LICENSEE will look solely to the LICENSOR(s)
 of the THIRD-PARTY SOFTWARE for any remedy. LICENSOR claims no right
 in the THIRD-PARTY SOFTWARE, and the same is owned exclusively by the
-LICENSOR(s) of the THIRD-PARTY SOFTWARE.
+licensor(s) of the THIRD-PARTY SOFTWARE.
 
 (c) LICENSOR provides no warranty, expressed or implied, including but
 not limited to the implied warranties of merchantability or fitness
@@ -140,16 +140,16 @@ for a particular purpose, title, and non-infringement, with respect to
 any THIRD-PARTY SOFTWARE.
 
 
-6. Restricted use of SOFTWARE under EVALUATION LICENSE
+6. Restricted use of the SOFTWARE under the EVALUATION LICENSE
 
 (a) Subject to the terms of this Agreement, LICENSEE is granted a
-right to use copies of SOFTWARE under EVALUATION LICENSE for
+right to use copies of SOFTWARE under the EVALUATION LICENSE for
 evaluation purposes without charge.
 
 (b) LICENSEE's use of evaluation-licensed copies shall be limited to
-the internal evaluation of SOFTWARE for the sole purpose of
+the internal evaluation of the SOFTWARE for the sole purpose of
 determining whether the SOFTWARE meets LICENSEE's requirements and
-whether LICENSEE desires to continue the use of SOFTWARE.
+whether LICENSEE desires to continue the use of the SOFTWARE.
 
 (c) The SOFTWARE contains a feature that restricts the usage of copies
 not under FULL LICENSE. LICENSEE may not disable, destroy, or remove
@@ -290,6 +290,7 @@ LICENSEE may assign this Agreement in the case of a merger or sale of
 substantially all of its respective assets to another entity. This
 Agreement will be binding upon and will inure to the benefit of the
 parties, their successors and assigns.
+
 
 For exceptions or modifications to this Agreement, please contact
 LICENSOR at:

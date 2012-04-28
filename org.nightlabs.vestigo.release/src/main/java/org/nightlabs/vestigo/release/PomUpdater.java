@@ -20,7 +20,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Text;
 
-public class PomUpdater {
+class PomUpdater {
 
 	private File pomFile;
 	private String newMavenVersion;

@@ -2,16 +2,312 @@
 <feature id="org.nightlabs.vestigo.log4j.ui.feature" label="Vestigo log4j integration" provider-name="NightLabs Consulting GmbH" version="0.7.1.qualifier">
 
    <description url="http://www.example.com/description">
-      [Enter Feature Description here.]
+      Log4j integration for Vestigo.
    </description>
 
-   <copyright url="http://www.example.com/copyright">
-      [Enter Copyright Description here.]
-   </copyright>
+<!-- BEGIN: DO NOT MODIFY manually! The following is managed and your manual changes will be lost! -->
+   <copyright url="http://vestigo.nightlabs.com/0.7.1-SNAPSHOT/about/imprint.html">© 2011-2012 NightLabs Consulting GmbH. All rights reserved.</copyright>
 
-   <license url="http://www.example.com/license">
-      [Enter License Description here.]
-   </license>
+   <license url="http://vestigo.nightlabs.com/0.7.1-SNAPSHOT/about/licence.html">License agreement for Vestigo
+
+
+IMPORTANT! READ CAREFULLY: THIS IS A LEGAL AGREEMENT. BY DOWNLOADING,
+INSTALLING, COPYING, SAVING ON YOUR COMPUTER, OR OTHERWISE USING THIS
+SOFTWARE, YOU (LICENSEE, AS DEFINED BELOW) ARE BECOMING A PARTY TO
+THIS AGREEMENT AND YOU ARE CONSENTING TO BE BOUND BY ALL THE TERMS
+AND CONDITIONS OF THIS AGREEMENT.
+
+
+1. Parties
+
+(a) "LICENSOR" means NightLabs Consulting GmbH, having its principal
+place of business at Weiherhofstr. 16, 79104 Freiburg, Germany,
+registered with the Commercial Register kept by the Municipal Court of
+Freiburg, HRB 7342.
+
+(b) "LICENSEE" means the individual or legal entity downloading,
+copying, installing, saving on his computer or otherwise using the
+SOFTWARE (as defined below). For legal entities, LICENSEE includes any
+entity which controls, is controlled by, or is under common control
+with LICENSEE. For purposes of this definition, "control" means (i)
+the power, direct or indirect, to cause the direction or management of
+such entity, whether by contract or otherwise, or (ii) ownership of
+fifty percent (50%) or more of the outstanding shares or beneficial
+ownership of such entity.
+
+
+2. Definitions
+
+(a) "AUTHORIZED USER" means 
+(i) if LICENSEE is an individual, solely LICENSEE; 
+(ii) if LICENSEE is a legal entity, any employee, independent
+contractor and other temporary worker authorized by LICENSEE to use
+the SOFTWARE while performing duties within the scope of their
+employment or assignment.
+
+(b) "SOFTWARE" means the software program known as 'Vestigo - JDO/JPA
+Query Browser' in binary form, including its documentation, upgrades
+provided pursuant to Section 9 of this Agreement, and any third-party
+software programs that are owned and licensed pursuant to Section 6 of
+this Agreement by parties other than LICENSOR and that are either
+integrated with or made part of Vestigo (collectively, "THIRD-PARTY
+SOFTWARE").
+
+(c) "FULL LICENSE" is a license purchased by the LICENSEE from the
+LICENSOR. The FULL LICENSE is only valid, if the name of the LICENSEE
+matches the data encoded in the LICENSE KEY (see below) (or shown on
+the LICENSE ORDER CONFIRMATION (see below)) and the number of
+individual users does not exceed the purchased number of AUTHORIZED
+USERs.
+
+(d) "EVALUATION LICENSE" is a license granted for the purpose of
+evaluating the SOFTWARE. The EVALUATION LICENSE is automatically
+granted by the LICENSOR to everyone downloading, copying, installing,
+saving on his computer or otherwise using the SOFTWARE and not
+possessing a valid FULL LICENSE.
+
+(e) "LICENSE ORDER CONFIRMATION" means evidence of a FULL LICENSE
+provided by LICENSOR to LICENSEE in electronic or printed form.
+
+(f) "LICENSE KEY" means a unique key-code that enables AUTHORIZED
+USER to use the SOFTWARE at a time. Only LICENSOR and/or its
+representatives are permitted to produce LICENSE KEYs for the
+SOFTWARE. A LICENSE KEY may expire. In this case, LICENSOR will
+provide a new LICENSE KEY free of charge, if the FULL LICENSE
+represented by the original LICENSE KEY is still valid.
+
+(g) "CLIENT" means a computer device used by AUTHORIZED USER for
+running the SOFTWARE.
+
+
+3. Ownership
+
+(a) The SOFTWARE is the property of LICENSOR or its suppliers. The
+SOFTWARE is licensed, not sold. Title and copyrights to the SOFTWARE,
+in whole and in part and all copies thereof, and all modifications,
+enhancements, derivatives and other alterations of the SOFTWARE
+regardless of who made any modifications, if any, are and will remain,
+the sole and exclusive property of LICENSOR and its suppliers.
+
+(b) The SOFTWARE is protected by German Copyright Law and Inter-
+national Treaty provisions. Further, the structure, organization, and
+code embodied in the SOFTWARE are the valuable and confidential trade
+secrets of LICENSOR and its suppliers and are protected by
+intellectual property laws and treaties. LICENSEE agrees to abide by
+the copyright law and all other applicable laws of Germany including,
+but not limited to, export control laws.
+
+
+4. Grant of license
+
+Subject to the terms, conditions, and limitations set forth in this
+Agreement, including any amendments thereto, LICENSOR hereby grants to
+LICENSEE a limited, non-exclusive, non-transferable license to use the
+SOFTWARE as follows:
+
+(a) LICENSEE may:
+
+(i) install and use the SOFTWARE in the version range that has been
+specified in the LICENSE ORDER CONFIRMATION on multiple CLIENTs and
+operating systems, provided that a number of individual users never
+exceeds the number of AUTHORIZED USERs specified in the LICENSE ORDER
+CONFIRMATION;
+
+(b) LICENSEE may not:
+
+(i) sell, redistribute, encumber, give, lend, rent, lease, sublicense,
+or otherwise transfer the SOFTWARE, or any portions of the SOFTWARE,
+to anyone without the prior written consent of LICENSOR;
+
+(ii) reverse engineer, decompile, disassemble, modify, translate, make
+any attempt to discover the source code of the SOFTWARE, or create
+derivative works from the SOFTWARE;
+
+(iii) allow the use of the same LICENSE KEY to more individual users
+than specified in the LICENSE ORDER CONFIRMATION. The SOFTWARE may
+contain a feature preventing concurrent use of the same LICENSE KEY by
+more AUTHORIZED USERs than specified in the LICENSE ORDER
+CONFIRMATION.
+
+
+5. THIRD-PARTY SOFTWARE license
+
+(a) LICENSEE agrees to comply with the terms and conditions contained
+in THIRD-PARTY SOFTWARE license agreements with respect to the
+applicable THIRD-PARTY SOFTWARE.
+
+(b) LICENSEE agrees and acknowledges that Sections 10 and 11 of this
+Agreement shall also govern LICENSEE's use of the THIRD-PARTY
+SOFTWARE. LICENSOR will have no responsibility with respect to any
+THIRD-PARTY SOFTWARE, and LICENSEE will look solely to the LICENSOR(s)
+of the THIRD-PARTY SOFTWARE for any remedy. LICENSOR claims no right
+in the THIRD-PARTY SOFTWARE, and the same is owned exclusively by the
+licensor(s) of the THIRD-PARTY SOFTWARE.
+
+(c) LICENSOR provides no warranty, expressed or implied, including but
+not limited to the implied warranties of merchantability or fitness
+for a particular purpose, title, and non-infringement, with respect to
+any THIRD-PARTY SOFTWARE.
+
+
+6. Restricted use of the SOFTWARE under the EVALUATION LICENSE
+
+(a) Subject to the terms of this Agreement, LICENSEE is granted a
+right to use copies of SOFTWARE under the EVALUATION LICENSE for
+evaluation purposes without charge.
+
+(b) LICENSEE's use of evaluation-licensed copies shall be limited to
+the internal evaluation of the SOFTWARE for the sole purpose of
+determining whether the SOFTWARE meets LICENSEE's requirements and
+whether LICENSEE desires to continue the use of the SOFTWARE.
+
+(c) The SOFTWARE contains a feature that restricts the usage of copies
+not under FULL LICENSE. LICENSEE may not disable, destroy, or remove
+this feature of the SOFTWARE, and any attempt to do so will be in
+violation of this Agreement and will terminate LICENSEE's rights to
+use the SOFTWARE.
+
+
+7. License fees and payments
+
+LICENSEE will pay to LICENSOR or a payment service provider appointed
+by LICENSOR the license fee and other charges and expenses as set
+forth in an appropriate invoice or other purchase documentation.
+LICENSOR may charge LICENSEE interest for any payment that is more
+than thirty (30) days past due at the rate of one and one-half percent
+(1.5%) per month or the highest amount allowed by law, whichever is
+lower.
+
+
+8. Upgrades
+
+(a) LICENSOR will provide generally available new versions of the
+SOFTWARE to LICENSEE as follows:
+
+(b) With the purchase of a FULL LICENSE for the SOFTWARE, LICENSEE
+qualifies for free upgrades of the SOFTWARE within the version range
+specified in the LICENSE ORDER CONFIRMATION.
+
+
+9. Limited warranty
+
+The SOFTWARE is provided to LICENSEE "as is" and without warranties.
+LICENSOR makes no warranty as to its use or performance. To the
+maximum extent permitted by applicable law, LICENSOR, and its
+affiliates, suppliers and resellers, disclaim all other warranties and
+conditions, either expressed or implied, including, but not limited
+to, implied warranties of merchantability, fitness for a particular
+purpose, title, and non-infringement, with regard to the SOFTWARE, and
+the provision of or failure to provide support services.
+
+
+10. Disclaimer of damages
+
+(a) To the maximum extend permitted by applicable law, in no event
+will LICENSOR or its affiliates, LICENSORs, suppliers or resellers be
+liable to LICENSEE under any theory for any damages suffered by
+LICENSEE or any user of the SOFTWARE, or for any special, incidental,
+indirect, consequential, or similar damages (including, but not
+limited to, damages for loss of profits or confidential or other
+information, for business interrruption, or personal injury, for loss
+of privacy, for failure to meet any duty including of good faith or of
+reasonable care, for negligence, and for any other pecuniary or other
+loss whatsoever) arising out of the use or inability to use the
+SOFTWARE, or the provision of or failure to provide support services,
+even if LICENSOR has been advised of the possibility of such damages,
+and regardless of the legal or equitable theory (contract, tort or
+otherwise) upon which the claim is based.
+
+(b) In any case, LICENSOR's entire liability under any provision of
+this agreement will be limited to the amount actually paid by LICENSEE
+for the SOFTWARE under this agreement.
+
+
+11. Export regulations
+
+LICENSEE agrees and accepts that the SOFTWARE may be subject to import
+and export laws of any country, including those of the European Union
+and the United States (specifically the Export Administration
+Regulations (EAR)). LICENSEE acknowledges that it is not a restricted
+end-user as defined by applicable export control laws. Further,
+LICENSEE acknowledges that it will not download or otherwise export or
+re-export the SOFTWARE or any related technical data directly or
+indirectly to any restricted end-user or for any restricted end-use.
+
+
+12. Term and termination
+
+(a) Except as otherwise provided in LICENSE ORDER CONFIRMATION, the
+license granted herein shall be perpetual.
+
+(b) If LICENSEE fails to comply with the terms and conditions of this
+Agreement, this Agreement and LICENSEE's right and license to use the
+SOFTWARE will terminate immediately. LICENSEE may terminate this
+Agreement at any time by notifying LICENSOR. Upon the termination of
+this Agreement, LICENSEE must delete the SOFTWARE from its computers
+and archives.
+
+(c) LICENSEE agrees that upon termination of this agreement for any
+reason, LICENSOR may take actions so that the SOFTWARE no longer
+operates.
+
+
+13. Marketing
+
+LICENSEE agrees to be identified as a customer of LICENSOR and that
+LICENSOR may refer to LICENSEE by name, trade name and trademark, if
+applicable, and may briefly describe LICENSEE's business in LICENSOR's
+marketing materials, on LICENSOR's web site, in public or legal
+documents. LICENSEE hereby grants LICENSOR a license to use LICENSEE's
+name and any of LICENSEE's trade names and trademarks solely pursuant
+to this marketing section.
+
+
+14. General
+
+(a) LICENSOR reserves the right at any time to cease the support of
+the SOFTWARE and to alter prices, features, specifications,
+capabilities, functions, licensing terms, release dates, general
+availability or other characteristics of the SOFTWARE.
+
+(b) This Agreement, including the THIRD-PARTY SOFTWARE license
+agreements, constitutes the entire agreement between the parties
+concerning LICENSEE's use of the SOFTWARE, and supersedes any and all
+prior or contemporaneous oral or written representations,
+communications, or advertising with respect to the SOFTWARE. No
+purchase order, other ordering document or any hand-written or
+type-written text which purports to modify or supplement the printed
+text of this Agreement or any schedule will add to or vary the terms
+of this Agreement unless signed by both LICENSEE and LICENSOR.
+
+(c) A waiver by either party of any term or condition of this
+Agreement or any breach thereof, in any one instance, will not waive
+such term or condition or any subsequent breach. The provisions of
+this Agreement which require or contemplate performance after the
+expiration or termination of this Agreement will be enforceable
+notwithstanding said expiration or termination.
+
+(d) This Agreement will be governed by the laws of Germany, without
+reference to conflict of laws principles. LICENSEE agrees that any
+litigation relating to this Agreement may only be brought in, and will
+be subject to the jurisdiction of, any Court of Germany.
+
+(e) Titles are inserted for convenience only and will not affect in
+any way the meaning or interpretation of this Agreement. If any
+provision of this Agreement is held invalid, the remainder of this
+Agreement will continue in full force and effect. Either LICENSOR or
+LICENSEE may assign this Agreement in the case of a merger or sale of
+substantially all of its respective assets to another entity. This
+Agreement will be binding upon and will inure to the benefit of the
+parties, their successors and assigns.
+
+
+For exceptions or modifications to this Agreement, please contact
+LICENSOR at:
+Address: Weiherhofstr. 16, 79104 Freiburg, Germany
+E-mail: vestigo[at]nightlabs[dot]com
+</license>
+<!-- END: DO NOT MODIFY manually! The above is managed and your manual changes will be lost! -->
 
    <requires>
       <import feature="org.nightlabs.vestigo.ui.feature" match="greaterOrEqual" version="0.7.1"/>
