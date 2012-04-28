@@ -19,7 +19,7 @@
 		<skipPluginExecution>true</skipPluginExecution>
 		<eclipse.babel.artifactIds>org.eclipse.babel.eclipse-de</eclipse.babel.artifactIds>
 	</properties>
-	
+
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -646,7 +646,6 @@
 				</plugin>
 				<plugin>
 					<artifactId>maven-antrun-plugin</artifactId>
-					<version>1.7</version>
 					<executions>
 						<execution>
 							<id>make-eclipse-executable</id>
@@ -664,6 +663,12 @@
 									<delete file="${assembly.eclipse.directory}/eclipsec.exe" failonerror="false" verbose="true" />
 									<chmod  file="${assembly.eclipse.directory}/vestigo" perm="ugo+x" verbose="true" />
 								</target>
+							</configuration>
+						</execution>
+						<execution>
+							<id>copy-licence</id>
+							<configuration>
+								<skip>true</skip>
 							</configuration>
 						</execution>
 					</executions>
@@ -693,6 +698,21 @@
 
 			</plugins>
 		</pluginManagement>
+
+		<plugins>
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-licence</id>
+						<inherited>false</inherited>
+						<configuration>
+							<skip>true</skip>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
 	</build>
 
 	<profiles>

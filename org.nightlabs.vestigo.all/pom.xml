@@ -13,6 +13,7 @@
 	</parent>
 
 	<modules>
+		<!-- BEGIN core -->
 		<module>../org.nightlabs.vestigo.childvm.shared</module>
 		<module>../org.nightlabs.vestigo.childvm.webapp</module>
 		<module>../org.nightlabs.vestigo.childvm.webapp.client</module>
@@ -22,6 +23,7 @@
 		<module>../org.nightlabs.vestigo.parent</module>
 		<module>../org.nightlabs.vestigo.ui</module>
 		<module>../org.nightlabs.vestigo.assembly.parent</module>
+		<!-- END core -->
 
 		<!-- BEGIN Cumulus4j -->
 		<module>../org.nightlabs.vestigo.cumulus4j.childvm.shared</module>
@@ -54,6 +56,11 @@
 		<module>../org.nightlabs.vestigo.xtext.jpql.tests</module>
 		<module>../org.nightlabs.vestigo.xtext.jpql.ui</module>
 		<!-- END XText -->
+
+		<!-- BEGIN META -->
+		<module>../org.nightlabs.vestigo.release</module>
+		<module>../org.nightlabs.vestigo.site.skin</module>
+		<!-- END META -->
 
 		<!-- All tycho build projects -->
 		<!-- 
@@ -240,7 +247,19 @@ Quick try with tycho - didn't work this way, yet, though :-( Need more research.
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-licence</id>
+						<inherited>false</inherited>
+						<configuration>
+							<skip>true</skip>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
 				<artifactId>maven-site-plugin</artifactId>
 				<dependencies>
 				<!--

@@ -28,15 +28,17 @@
 			<artifactId>datanucleus-core</artifactId>
 			<scope>provided</scope>
 		</dependency>
-		
 
 		<dependency>
 			<groupId>org.eclipse.persistence</groupId>
 			<artifactId>javax.persistence</artifactId>
 			<scope>provided</scope>
 		</dependency>
-		
-		
+
+		<dependency>
+			<groupId>org.nightlabs.vestigo</groupId>
+			<artifactId>org.nightlabs.vestigo.release</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>

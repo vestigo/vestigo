@@ -168,6 +168,12 @@
 				<artifactId>org.nightlabs.vestigo.site.skin</artifactId>
 				<version>${vestigo.version}</version>
 			</dependency>
+
+			<dependency>
+				<groupId>org.nightlabs.vestigo</groupId>
+				<artifactId>org.nightlabs.vestigo.release</artifactId>
+				<version>${vestigo.version}</version>
+			</dependency>
 			<!-- END org.nightlabs.vestigo -->
 			
 			<!-- BEGIN org.nightlabs.vestigo.log4j -->
@@ -490,6 +496,9 @@
 			<resource>
 				<directory>src/main/resources</directory>
 			</resource>
+			<resource>
+				<directory>target/generated-resources</directory>
+			</resource>
 		</resources>
 		
 		<testResources>
@@ -507,10 +516,61 @@
 		<pluginManagement>
 			<plugins>
 				<plugin>
+					<artifactId>maven-dependency-plugin</artifactId>
+					<version>2.4</version>
+					<executions>
+						<execution>
+							<id>copy-licence</id>
+							<phase>generate-resources</phase>
+							<goals>
+								<goal>copy-dependencies</goal>
+							</goals>
+							<configuration>
+								<includeArtifactIds>org.nightlabs.vestigo.release</includeArtifactIds>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+
+				<plugin>
+					<artifactId>maven-antrun-plugin</artifactId>
+					<version>1.7</version>
+					<executions>
+						<execution>
+							<id>copy-licence</id>
+							<phase>generate-resources</phase>
+							<goals>
+								<goal>run</goal>
+							</goals>
+							<configuration>
+								<target>
+									<unzip
+											src="${project.build.directory}/dependency/org.nightlabs.vestigo.release-${vestigo.version}.jar"
+											dest="${project.build.directory}/dependency/org.nightlabs.vestigo.release/"
+									/>
+									<!--
+									<copy
+											file="${project.build.directory}/dependency/org.nightlabs.vestigo.release/LICENCE.txt"
+											todir="${project.build.outputDirectory}"
+									/>
+									-->
+									<mkdir dir="${basedir}/target/generated-resources"/>
+									<copy
+											file="${project.build.directory}/dependency/org.nightlabs.vestigo.release/LICENCE.txt"
+											todir="${basedir}/target/generated-resources"
+											overwrite="true"
+									/>
+								</target>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+
+				<plugin>
 					<artifactId>maven-failsafe-plugin</artifactId>
 					<version>2.10</version>
 				</plugin>
-				
+
 				<plugin>
 					<artifactId>maven-jar-plugin</artifactId>
 					<version>2.4</version>
@@ -593,12 +653,30 @@
 					<manifestLocation>META-INF</manifestLocation>
 				</configuration>
 			</plugin>
+
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>cobertura-maven-plugin</artifactId>
 				<configuration>
 					<skip>true</skip>
 				</configuration>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-dependency-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-licence</id>
+						<inherited>false</inherited>
+						<configuration>
+							<skip>true</skip>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

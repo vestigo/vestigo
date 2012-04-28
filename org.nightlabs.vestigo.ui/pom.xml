@@ -172,6 +172,9 @@ temporarily... because of exampleeditor - we should switch back to the property,
 			<resource>
 				<directory>src/main/resources</directory>
 			</resource>
+			<resource>
+				<directory>target/generated-resources</directory>
+			</resource>
 		</resources>
 	
 		<plugins>
