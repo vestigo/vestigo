@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.nightlabs.vestigo.xtext.jdoql.ui
 Bundle-Vendor: NightLabs Consulting GmbH
-Bundle-Version: 0.7.1.SNAPSHOT
+Bundle-Version: 0.9.0
 Bundle-SymbolicName: org.nightlabs.vestigo.xtext.jdoql.ui;singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.nightlabs.vestigo.xtext.jdoql;visibility:=reexport,
