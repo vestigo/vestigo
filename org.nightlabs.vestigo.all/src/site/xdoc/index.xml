@@ -36,7 +36,25 @@
 			<div id="slider">
 				<ul>
 					<li>
-						<div style="position: relative; background: url(images/slider_archives.png); height: 425px;">
+						<div class="slider">
+							<div style="position: relative; background: url('images/teaser_motiv_developement.png'); height:427px;	width: 535px;">
+							</div>
+							<div class="slider_header">
+								<h1>At development time</h1> 
+							</div> 
+							<div class="slider_text">
+								<span class="arrows headerfont">Create a connection for your Java project and test your queries without starting the application</span>
+							</div>
+							<div class="slider_button">
+								<a class="download_link" href="download/index.html">Download vestigo</a>
+							</div>
+						</div>					
+					
+					</li>
+					<li>
+						<div class="slider">
+							<div style="position: relative; background: url('images/teaser_motiv_java-archives.png'); height:427px;	width: 535px;">
+							</div>
 							<div class="slider_header">
 								<h1>Support for common<br/>Java application setups</h1> 
 							</div> 
@@ -51,7 +69,6 @@
 								<a class="download_link" href="download/index.html">Download vestigo</a>
 							</div>
 						</div>					
-						<!--  <img src="images/slider_archives.png" alt="" />  -->
 					</li>
 <!-- 					
 					<li>

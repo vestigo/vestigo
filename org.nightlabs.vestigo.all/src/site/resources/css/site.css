@@ -39,9 +39,9 @@
 #prevBtn a {
 	position: relative;
 	display:block;
-	width:27px;
-	height:31px;
-	left:25px;
+	width:36px;
+	height:36px;
+	left:0px;
 	top:-85px;
 	background:url("../images/slider_arrow_left.png") no-repeat 0 0;
 	
@@ -49,10 +49,10 @@
 #nextBtn a { 
 	position: relative;
 	display:block;
-	width:27px;
-	height:31px;
-	left:885px;
-	top:-116px;
+	width:36px;
+	height:36px;
+	left:904px;
+	top:-126px;
 	background:url("../images/slider_arrow_right.png") no-repeat 0 0;
 }														
 
@@ -108,28 +108,33 @@ table.homepagecolumns li {
 
 .arrows {
 	background-image: url('../images/arrows-right-list.png');
-	background-position: left center;
+	background-position: left top;
 	background-repeat: no-repeat;
 	padding-left: 15px;
 	display: block;
 }
 
+div.slider {
+	position: relative; 
+	background: url('../images/slider_bg.jpg'); no-repeat 
+	height: 425px;
+}
 div.slider_header {
 	position: absolute; 
-	top: 40px; 
-	left: 415px;	
+	bottom: 280px; 
+	left: 560px;	
 }
 div.slider_text {
 	position: absolute; 
 	top: 165px; 
-	left: 415px; 
+	left: 565px; 
 	line-height: 1.5em; 
 	font-size: 13pt;	
 }
 div.slider_button {
 	position: absolute; 
-	top: 170px; 
-	left: 645px; 
+	top: 325px; 
+	left: 550px; 
 }
 a.download_link {
     background-image:url('../images/get-your-copy-now.png');
