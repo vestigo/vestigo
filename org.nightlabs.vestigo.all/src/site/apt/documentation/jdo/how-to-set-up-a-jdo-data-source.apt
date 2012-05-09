@@ -23,7 +23,7 @@ How to set up a JDO data source
 
 * Start the wizard
 
-	In the <Data Source Explorer> view, you right-click on <JDO Connections> and then
+	In the <Data Source Explorer> view, you right-click on <JDO data sources> and then
 	on <New...>:
 
 [../../images/jdo/how-to-set-up-a-jdo-data-source/10.png]

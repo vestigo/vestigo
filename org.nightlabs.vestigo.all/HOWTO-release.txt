@@ -21,7 +21,7 @@
 2) Determine the new version number. Look in a "pom.xml" to see the old version number. For this
 example, we assume, our old version is "0.7.0-SNAPSHOT" and our new version thus is "0.7.0".
 
-3) Open the class 'VersionUpdater' in 'org.nightlabs.vestigo.release' and set its field 'newMavenVersion' to
+3) Open the class 'ReleasePreparer' in 'org.nightlabs.vestigo.release' and set its field 'newMavenVersion' to
 "0.7.0". Save the file and run its main method.
 
 4) Run "mvn clean install" in "org.nightlabs.vestigo.all".

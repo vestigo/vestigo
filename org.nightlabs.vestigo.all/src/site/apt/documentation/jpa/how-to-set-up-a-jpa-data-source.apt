@@ -9,3 +9,73 @@ How to set up a JPA data source
 
 	In the following we'll show you how to create a new JPA <data source>.
 	Note, that the names <data source> and <connection profile> are often used interchangeably.
+
+* Open the <Vestigo> perspective
+
+	If you did not yet switch to this perspective, click in the main menu on
+	<Window> => <Open Perspective> => <Other...>:
+
+[../../images/jpa/how-to-set-up-a-jpa-data-source/05.png]
+
+	In the following dialog, you select the <Vestigo> perspective:
+
+[../../images/jpa/how-to-set-up-a-jpa-data-source/07.png]
+
+* Start the wizard
+
+	In the <Data Source Explorer> view, you right-click on <JPA data sources> and then
+	on <New...>:
+
+[../../images/jpa/how-to-set-up-a-jpa-data-source/10.png]
+
+* Give the new data source a name
+
+	First, you have to specify the name of the new data source. This name is used to reference this
+	data source everywhere in the application. 
+
+[../../images/jpa/how-to-set-up-a-jpa-data-source/20.png]
+
+* Classpath
+
+	Vestigo will start a {{{../jpa/entity-manager-factory.html}JPA EntityManagerFactory}}.
+	For this to work, you have to tell Vestigo where your data model as well as the JPA implementation
+	(e.g. DataNucleus) can be found.
+
+	Similar to the "{{{http://en.wikipedia.org/wiki/Classpath_%28Java%29}-classpath}}" argument of the <<<java>>> program,
+	you specify a list of {{{http://en.wikipedia.org/wiki/JAR_%28file_format%29}JAR files}} and "classes"-directories.
+
+	Please read more about the {{{../data-source.html#Classpath}classpath here}}.
+
+[../../images/jpa/how-to-set-up-a-jpa-data-source/30.png]
+
+* Persistence unit
+
+	Vestigo scans your classpath for <<<persistence.xml>>> files and shows you a list of all persistence units found.
+	In this example, we use the persistence unit "vestigoDemoMovieJPA".
+
+	See {{{./persistence-unit.html}JPA persistence unit}} for further details.
+
+[../../images/jpa/how-to-set-up-a-jpa-data-source/40.png]
+
+* Persistence properties
+
+	Most settings from the chosen persistence unit are already correct. We only have to override the JDBC URL.
+	If you have to override many settings that already exist in a properties file or another persistence unit, you can
+	load the file (click the first button having the tool-tip "Load the properties from a file...").
+
+[../../images/jpa/how-to-set-up-a-jpa-data-source/50.png]
+
+* Test the connection
+
+	We can - and should - test the connection before finishing the wizard: Click the <Test Connection> button. If
+	everything is correct and an <<<EntityManagerFactory>>> can successfully be started, you'll see
+	this dialog:
+
+[../../images/jpa/how-to-set-up-a-jpa-data-source/60.png]
+
+* Finish
+
+	After clicking the wizard's <Finish> button, our new connection is shown in the <Data Source Explorer> view.  
+
+[../../images/jpa/how-to-set-up-a-jpa-data-source/70.png]
+	
