@@ -65,7 +65,7 @@
 		<menu name="About">
 			<item name="Contact" href="./about/contact.html" />
 			<item name="Imprint" href="./about/imprint.html" />
-			<item name="Licene" href="./about/licence.html" />
+			<item name="Licence" href="./about/licence.html" />
 			<item name="Credits" href="./about/credits.html" />
 		</menu>
 
