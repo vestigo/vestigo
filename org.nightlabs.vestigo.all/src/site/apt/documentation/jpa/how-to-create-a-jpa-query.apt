@@ -79,14 +79,16 @@ How to create a JPA query
 
 [../../images/jpa/how-to-create-a-jpa-query/045.png]
 
-	After <<<SELECT>>>, you'll have to manually enter a space, but then, you can continue pressing [Ctrl]+[Space] again.
+[../../images/jpa/how-to-create-a-jpa-query/046.png]
+
+	After <<<SELECT>>>, you'll have to manually enter space + "m" + space, but then, you can continue pressing [Ctrl]+[Space] again.
 	We keep things simple and choose <<<FROM>>>.
 
 [../../images/jpa/how-to-create-a-jpa-query/047.png]
 
 [../../images/jpa/how-to-create-a-jpa-query/050.png]
 
-	When you hit [Ctrl]+[Space] after <<<SELECT FROM>>> and the connection to the data source is currently not open,
+	When you hit [Ctrl]+[Space] after <<<SELECT m FROM>>> and the connection to the data source is currently not open,
 	Vestigo will ask you, if you want to open it. Press <<<Yes>>> to continue and get a list of available candidate
 	classes.
 
@@ -94,8 +96,10 @@ How to create a JPA query
 
 [../../images/jpa/how-to-create-a-jpa-query/060.png]
 
-	Once you specified the candidate class, your query is complete enough to be executed. Press [Ctrl]+[F5]
-	or click the corresponding button!
+[../../images/jpa/how-to-create-a-jpa-query/061.png]
+
+	Once you specified the candidate class with its alias "m", your query is complete enough to be executed.
+	Press [Ctrl]+[F5] or click the corresponding button!
 
 * Add some simple criteria
 
