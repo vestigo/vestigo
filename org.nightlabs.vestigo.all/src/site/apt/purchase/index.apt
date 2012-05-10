@@ -21,7 +21,8 @@ Purchase Vestigo
 	The version range is for example specified as 1.x which means you can use your license with all versions of Vestigo
 	that start with 1.
 	
-	With every license key you also purchase free e-mail support for the period of 1 year. The e-mail address for support
+	With every license key you also purchase free e-mail support for the period of 1 year (beginning at the purchase
+	date). The e-mail address for support
 	is {{{javascript:location.href='mailto:'+String.fromCharCode(118,101,115,116,105,103,111,64,110,105,103,104,116,108,97,98,115,46,100,101)+'?body=Please%20use%20german%20or%20english%20for%20your%20request'}vestigo [at] nightlabs [dot] com}}.
 	
 * Corporate and high volume licenses	

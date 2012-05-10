@@ -15,18 +15,21 @@ Vestigo kaufen
 	
 * Was Sie kaufen
 
-	With each Vestigo license you authorize as many individual users of Vestigo as you have specified in your order.
-	
-	A license qualifies you for unlimited free upgrades within the version range specified in the license. 
-	The version range is for example specified as 1.x which means you can use your license with all versions of Vestigo
-	that start with 1.
-	
-	With every license key you also purchase free e-mail support for the period of 1 year. The e-mail address for support
-	is {{{javascript:location.href='mailto:'+String.fromCharCode(118,101,115,116,105,103,111,64,110,105,103,104,116,108,97,98,115,46,100,101)+'?body=Please%20use%20german%20or%20english%20for%20your%20request'}vestigo [at] nightlabs [dot] com}}.
-	
-* Corporate and high volume licenses	
+	Mit jeder Vestigo-Lizenz authorisieren Sie so viele individuelle Personen zur Benutzung von Vestigo wie Sie in Ihrem
+	Kaufauftrag angeben.
 
-	For discounts on high volume or corporate licenses please contact us directly at
+	Eine Lizenz qualifiziert Sie für unbegrenzte Upgrades innerhalb des Versionsbereichs, der in der Linzenz angegeben
+	ist. Beispielsweise bedeutet 1.x, daß Ihre Lizenz Ihnen die Verwendung aller Vestigo-Versionen gestattet,
+	die mit 1 beginnen.
+
+	Außerdem erwerben Sie mit jedem Lizenzschlüssel freie E-Mail-Hilfe durch unser Support-Team für die Dauer
+	eines Jahres (ab Kaufdatum). Die E-Mail-Adresse für Hilfe
+	ist {{{javascript:location.href='mailto:'+String.fromCharCode(118,101,115,116,105,103,111,64,110,105,103,104,116,108,97,98,115,46,100,101)+'?body=Please%20use%20german%20or%20english%20for%20your%20request'}vestigo [at] nightlabs [dot] com}}.
+	
+* Firmenlizenzen und größere Mengen
+
+	Für Ermäßigungen beim Kauf von Lizenzen für eine größere Anzahl von Benutzern bzw. Firmenlizenzen
+	kontaktieren Sie uns bitte direkt via
 	{{{javascript:location.href='mailto:'+String.fromCharCode(115,97,108,101,115,64,110,105,103,104,116,108,97,98,115,46,99,111,109)}sales [at] nightlabs [dot] com}}.	
 
 * How to purchase 
