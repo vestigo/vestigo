@@ -37,7 +37,7 @@ employment or assignment.
 
 (b) "SOFTWARE" means the software program known as 'Vestigo - JDO/JPA
 Query Browser' in binary form, including its documentation, upgrades
-provided pursuant to Section 9 of this Agreement, and any third-party
+provided pursuant to Section 8 of this Agreement, and any third-party
 software programs that are owned and licensed pursuant to Section 6 of
 this Agreement by parties other than LICENSOR and that are either
 integrated with or made part of Vestigo (collectively, "THIRD-PARTY
@@ -176,7 +176,8 @@ SOFTWARE to LICENSEE as follows:
 
 (b) With the purchase of a FULL LICENSE for the SOFTWARE, LICENSEE
 qualifies for free upgrades of the SOFTWARE within the version range
-specified in the LICENSE ORDER CONFIRMATION.
+specified in the LICENSE ORDER CONFIRMATION (as well as in the
+LICENCE KEY).
 
 
 9. Limited warranty
