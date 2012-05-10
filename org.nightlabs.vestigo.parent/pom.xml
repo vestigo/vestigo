@@ -734,7 +734,8 @@
 						<!-- exclude generated files (=> xtext) to prevent edit-wars  -->
 						<exclude>**/src-gen/**/*</exclude>
 						<exclude>**/xtend-gen/**/*</exclude>
-						<!-- exclude LICENCE.txt -->
+						<!-- exclude COPYRIGHT.txt and LICENCE.txt -->
+						<exclude>**/COPYRIGHT.txt</exclude>
 						<exclude>**/LICENCE.txt</exclude>
 					</excludes>
 				</configuration>
