@@ -32,29 +32,28 @@ Vestigo kaufen
 	kontaktieren Sie uns bitte direkt via
 	{{{javascript:location.href='mailto:'+String.fromCharCode(115,97,108,101,115,64,110,105,103,104,116,108,97,98,115,46,99,111,109)}sales [at] nightlabs [dot] com}}.	
 
-* How to purchase 
+* Wie kaufen 
 
-	Order processing and distribution of Vestigo licenses is done through the secure {{{http://www.payproglobal.com/}PayPro Global}} service. 
-	{{{https://secure.payproglobal.com/orderpage.aspx?products=87920}Click here to place an order for a license of Vestigo}}.
-	
-	You will be forwared to the order site of PayPro Global where you will have to 
-	input details of the licensee like the name and billing address.
-	 
-	With PayPro's service you have the choice of placing a purchase order or directly paying using several payment methods like 
-	credit card payment, PayPal or wire transfer.    
-	
-* License key delivery
+	Die Auftragsabwicklung und der Vertrieb von Vestigo-Lizenzen erfolgt durch den sicheren Service von {{{http://www.payproglobal.com/}PayPro Global}}.
+	{{{https://secure.payproglobal.com/orderpage.aspx?products=87920}Klicken Sie hier, um einen Auftrag zum Kauf von Vestigo-Lizenzen zu erteilen}}.
 
-	After your order is successfully completed, detailed information about the order (e.g., items ordered, etc.) 
-	will be immediately displayed on the order information page in your web browser and additionally will be emailed to you. 
-	
-	The email will also contain a license key that you can use to unlock your copy of Vestigo. 	
-	
-* Obtaining invoice/receipt
+	Sie werden zu einer Auftragserfassungsseite von PayPro Global weitergeleitet, wo Sie ein paar Informationen über
+	den Lizenznehmer (Lieferanschrift) und den Auftraggeber (Rechnungsanschrift) angeben müssen.
 
-	After ordering and payment an email will be sent to the email address provided in the order form. This email will contain a link
-	to the invoice of your order. 	
+	PayPro bietet Ihnen verschiedene Möglichkeiten zur Zahlungsabwicklung - Kreditkarte, PayPal, Überweisung und andere.    
 
-* Licensing
+* Lieferung des Lizenzschlüssels
 
-	Vestigo is distributed under the terms of the {{{../about/licence.html}Vestigo end user license agreement}}.
+	Sobald Ihr Auftrag erfolgreich verarbeitet wurde, werden Ihnen die Details des Auftrags (z.B. die gekauften Artikel) sowohl
+	im Browser angezeigt als auch per E-Mail zugesandt. Die E-Mail enthält darüber hinaus auch den Lizenzschlüssel, den Sie
+	zur Freischaltung Ihrer Vestigo-Installation verwenden können. 	
+
+* Erhalt einer Rechnung bzw. eines Kaufbelegs
+
+	Nach Auftragserteilung und Zahlung erhalten Sie eine E-Mail an die im Auftragsformular angegebene E-Mail-Adresse. Diese
+	E-Mail enthält einen Link auf die Rechnung zu Ihrem Auftrag.
+
+* Lizenzierung
+
+	Vestigo wird unter den Bedingungen der {{{../about/licence.html}Vestigo-Endbenutzer-Lizenzvereinbarung}}
+	vertrieben.
