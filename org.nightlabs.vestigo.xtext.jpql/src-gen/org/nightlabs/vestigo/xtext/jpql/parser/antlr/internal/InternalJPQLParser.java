@@ -9185,7 +9185,7 @@ public class InternalJPQLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleLikeExpression"
-    // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/internal/InternalJPQLParser.g:3384:1: ruleLikeExpression returns [EObject current=null] : ( ( (lv_left_0_0= ruleVariable ) ) ( (lv_isNot_1_0= KEYWORD_34 ) )? otherlv_2= KEYWORD_43 ( (lv_right_3_0= ruleStringLiteral ) ) ) ;
+    // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/internal/InternalJPQLParser.g:3384:1: ruleLikeExpression returns [EObject current=null] : ( ( (lv_left_0_0= ruleVariable ) ) ( (lv_isNot_1_0= KEYWORD_34 ) )? otherlv_2= KEYWORD_43 ( (lv_right_3_0= ruleVariable ) ) ) ;
     public final EObject ruleLikeExpression() throws RecognitionException {
         EObject current = null;
 
@@ -9199,11 +9199,11 @@ public class InternalJPQLParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/internal/InternalJPQLParser.g:3387:28: ( ( ( (lv_left_0_0= ruleVariable ) ) ( (lv_isNot_1_0= KEYWORD_34 ) )? otherlv_2= KEYWORD_43 ( (lv_right_3_0= ruleStringLiteral ) ) ) )
-            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/internal/InternalJPQLParser.g:3388:1: ( ( (lv_left_0_0= ruleVariable ) ) ( (lv_isNot_1_0= KEYWORD_34 ) )? otherlv_2= KEYWORD_43 ( (lv_right_3_0= ruleStringLiteral ) ) )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/internal/InternalJPQLParser.g:3387:28: ( ( ( (lv_left_0_0= ruleVariable ) ) ( (lv_isNot_1_0= KEYWORD_34 ) )? otherlv_2= KEYWORD_43 ( (lv_right_3_0= ruleVariable ) ) ) )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/internal/InternalJPQLParser.g:3388:1: ( ( (lv_left_0_0= ruleVariable ) ) ( (lv_isNot_1_0= KEYWORD_34 ) )? otherlv_2= KEYWORD_43 ( (lv_right_3_0= ruleVariable ) ) )
             {
-            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/internal/InternalJPQLParser.g:3388:1: ( ( (lv_left_0_0= ruleVariable ) ) ( (lv_isNot_1_0= KEYWORD_34 ) )? otherlv_2= KEYWORD_43 ( (lv_right_3_0= ruleStringLiteral ) ) )
-            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/internal/InternalJPQLParser.g:3388:2: ( (lv_left_0_0= ruleVariable ) ) ( (lv_isNot_1_0= KEYWORD_34 ) )? otherlv_2= KEYWORD_43 ( (lv_right_3_0= ruleStringLiteral ) )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/internal/InternalJPQLParser.g:3388:1: ( ( (lv_left_0_0= ruleVariable ) ) ( (lv_isNot_1_0= KEYWORD_34 ) )? otherlv_2= KEYWORD_43 ( (lv_right_3_0= ruleVariable ) ) )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/internal/InternalJPQLParser.g:3388:2: ( (lv_left_0_0= ruleVariable ) ) ( (lv_isNot_1_0= KEYWORD_34 ) )? otherlv_2= KEYWORD_43 ( (lv_right_3_0= ruleVariable ) )
             {
             // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/internal/InternalJPQLParser.g:3388:2: ( (lv_left_0_0= ruleVariable ) )
             // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/internal/InternalJPQLParser.g:3389:1: (lv_left_0_0= ruleVariable )
@@ -9283,19 +9283,19 @@ public class InternalJPQLParser extends AbstractInternalAntlrParser {
                   	newLeafNode(otherlv_2, grammarAccess.getLikeExpressionAccess().getLIKEKeyword_2());
                   
             }
-            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/internal/InternalJPQLParser.g:3427:1: ( (lv_right_3_0= ruleStringLiteral ) )
-            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/internal/InternalJPQLParser.g:3428:1: (lv_right_3_0= ruleStringLiteral )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/internal/InternalJPQLParser.g:3427:1: ( (lv_right_3_0= ruleVariable ) )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/internal/InternalJPQLParser.g:3428:1: (lv_right_3_0= ruleVariable )
             {
-            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/internal/InternalJPQLParser.g:3428:1: (lv_right_3_0= ruleStringLiteral )
-            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/internal/InternalJPQLParser.g:3429:3: lv_right_3_0= ruleStringLiteral
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/internal/InternalJPQLParser.g:3428:1: (lv_right_3_0= ruleVariable )
+            // ../org.nightlabs.vestigo.xtext.jpql/src-gen/org/nightlabs/vestigo/xtext/jpql/parser/antlr/internal/InternalJPQLParser.g:3429:3: lv_right_3_0= ruleVariable
             {
             if ( state.backtracking==0 ) {
                
-              	        newCompositeNode(grammarAccess.getLikeExpressionAccess().getRightStringLiteralParserRuleCall_3_0()); 
+              	        newCompositeNode(grammarAccess.getLikeExpressionAccess().getRightVariableParserRuleCall_3_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleStringLiteral_in_ruleLikeExpression7403);
-            lv_right_3_0=ruleStringLiteral();
+            pushFollow(FOLLOW_ruleVariable_in_ruleLikeExpression7403);
+            lv_right_3_0=ruleVariable();
 
             state._fsp--;
             if (state.failed) return current;
@@ -9308,7 +9308,7 @@ public class InternalJPQLParser extends AbstractInternalAntlrParser {
                      			current, 
                      			"right",
                       		lv_right_3_0, 
-                      		"StringLiteral");
+                      		"Variable");
               	        afterParserOrEnumRuleCall();
               	    
             }
@@ -14006,11 +14006,11 @@ public class InternalJPQLParser extends AbstractInternalAntlrParser {
                 {
                 int LA69_1 = input.LA(2);
 
-                if ( (LA69_1==KEYWORD_7) ) {
-                    alt69=2;
-                }
-                else if ( (LA69_1==EOF||LA69_1==KEYWORD_75||LA69_1==KEYWORD_70||LA69_1==KEYWORD_53||LA69_1==KEYWORD_55||LA69_1==KEYWORD_60||LA69_1==KEYWORD_63||LA69_1==KEYWORD_39||(LA69_1>=KEYWORD_43 && LA69_1<=KEYWORD_44)||LA69_1==KEYWORD_49||LA69_1==KEYWORD_25||LA69_1==KEYWORD_34||(LA69_1>=KEYWORD_14 && LA69_1<=KEYWORD_16)||(LA69_1>=KEYWORD_19 && LA69_1<=KEYWORD_20)||LA69_1==KEYWORD_22||(LA69_1>=KEYWORD_2 && LA69_1<=KEYWORD_6)||(LA69_1>=KEYWORD_8 && LA69_1<=RULE_STRING)) ) {
+                if ( (LA69_1==EOF||LA69_1==KEYWORD_75||LA69_1==KEYWORD_70||LA69_1==KEYWORD_53||LA69_1==KEYWORD_55||LA69_1==KEYWORD_60||LA69_1==KEYWORD_63||LA69_1==KEYWORD_39||(LA69_1>=KEYWORD_43 && LA69_1<=KEYWORD_44)||LA69_1==KEYWORD_49||LA69_1==KEYWORD_25||LA69_1==KEYWORD_34||(LA69_1>=KEYWORD_14 && LA69_1<=KEYWORD_16)||(LA69_1>=KEYWORD_19 && LA69_1<=KEYWORD_20)||LA69_1==KEYWORD_22||(LA69_1>=KEYWORD_2 && LA69_1<=KEYWORD_6)||(LA69_1>=KEYWORD_8 && LA69_1<=RULE_STRING)) ) {
                     alt69=1;
+                }
+                else if ( (LA69_1==KEYWORD_7) ) {
+                    alt69=2;
                 }
                 else {
                     if (state.backtracking>0) {state.failed=true; return current;}
@@ -15792,17 +15792,17 @@ public class InternalJPQLParser extends AbstractInternalAntlrParser {
     static final String DFA40_eotS =
         "\37\uffff";
     static final String DFA40_eofS =
-        "\6\uffff\1\23\2\uffff\5\23\11\uffff\2\23\1\uffff\1\23\3\uffff\1"+
-        "\23";
+        "\6\uffff\1\20\2\uffff\5\20\11\uffff\2\20\1\uffff\1\20\3\uffff\1"+
+        "\20";
     static final String DFA40_minS =
-        "\1\4\5\uffff\1\12\1\126\1\127\5\12\1\uffff\1\126\1\12\4\uffff\1"+
-        "\30\1\uffff\2\12\1\127\1\12\1\30\2\uffff\1\12";
+        "\1\4\5\uffff\1\12\1\126\1\127\5\12\1\uffff\1\126\1\uffff\1\12\2"+
+        "\uffff\1\30\2\uffff\2\12\1\127\1\12\1\30\2\uffff\1\12";
     static final String DFA40_maxS =
-        "\1\130\5\uffff\1\130\1\126\1\127\5\130\1\uffff\1\126\1\105\4\uffff"+
-        "\1\75\1\uffff\2\130\1\127\1\130\1\53\2\uffff\1\130";
+        "\1\130\5\uffff\1\130\1\126\1\127\5\130\1\uffff\1\126\1\uffff\1\105"+
+        "\2\uffff\1\75\2\uffff\2\130\1\127\1\130\1\53\2\uffff\1\130";
     static final String DFA40_acceptS =
-        "\1\uffff\1\1\1\2\1\3\1\4\1\5\10\uffff\1\14\2\uffff\1\12\1\6\1\15"+
-        "\1\13\1\uffff\1\11\5\uffff\1\10\1\7\1\uffff";
+        "\1\uffff\1\1\1\2\1\3\1\4\1\5\10\uffff\1\14\1\uffff\1\15\1\uffff"+
+        "\1\12\1\13\1\uffff\1\11\1\6\5\uffff\1\10\1\7\1\uffff";
     static final String DFA40_specialS =
         "\37\uffff}>";
     static final String[] DFA40_transitionS = {
@@ -15816,61 +15816,61 @@ public class InternalJPQLParser extends AbstractInternalAntlrParser {
             "",
             "",
             "",
-            "\1\24\7\uffff\1\22\6\uffff\1\23\1\uffff\1\23\4\uffff\1\23\5"+
-            "\uffff\1\23\3\uffff\1\26\1\23\4\uffff\1\23\3\uffff\1\23\10\uffff"+
-            "\1\20\2\uffff\3\23\2\uffff\1\21\1\25\1\uffff\1\23\1\uffff\5"+
-            "\23\1\17\11\23",
+            "\1\23\7\uffff\1\26\6\uffff\1\20\1\uffff\1\20\4\uffff\1\20\5"+
+            "\uffff\1\20\3\uffff\1\25\1\20\4\uffff\1\20\3\uffff\1\20\10\uffff"+
+            "\1\21\2\uffff\3\20\2\uffff\1\22\1\24\1\uffff\1\20\1\uffff\5"+
+            "\20\1\17\11\20",
             "\1\27",
             "\1\30",
-            "\1\24\7\uffff\1\22\6\uffff\1\23\1\uffff\1\23\4\uffff\1\23\5"+
-            "\uffff\1\23\3\uffff\1\26\1\23\4\uffff\1\23\3\uffff\1\23\10\uffff"+
-            "\1\20\2\uffff\3\23\2\uffff\1\21\1\25\1\uffff\1\23\1\uffff\5"+
-            "\23\1\31\11\23",
-            "\1\24\7\uffff\1\22\6\uffff\1\23\1\uffff\1\23\4\uffff\1\23\5"+
-            "\uffff\1\23\3\uffff\1\26\1\23\4\uffff\1\23\3\uffff\1\23\10\uffff"+
-            "\1\20\2\uffff\3\23\2\uffff\1\21\1\25\1\uffff\1\23\1\uffff\5"+
-            "\23\1\uffff\11\23",
-            "\1\24\7\uffff\1\22\6\uffff\1\23\1\uffff\1\23\4\uffff\1\23\5"+
-            "\uffff\1\23\3\uffff\1\26\1\23\4\uffff\1\23\3\uffff\1\23\10\uffff"+
-            "\1\20\2\uffff\3\23\2\uffff\1\21\1\25\1\uffff\1\23\1\uffff\5"+
-            "\23\1\uffff\11\23",
-            "\1\24\7\uffff\1\22\6\uffff\1\23\1\uffff\1\23\4\uffff\1\23\5"+
-            "\uffff\1\23\3\uffff\1\26\1\23\4\uffff\1\23\3\uffff\1\23\10\uffff"+
-            "\1\20\2\uffff\3\23\2\uffff\1\21\1\25\1\uffff\1\23\1\uffff\5"+
-            "\23\1\uffff\11\23",
-            "\1\24\7\uffff\1\22\6\uffff\1\23\1\uffff\1\23\4\uffff\1\23\5"+
-            "\uffff\1\23\3\uffff\1\26\1\23\4\uffff\1\23\3\uffff\1\23\10\uffff"+
-            "\1\20\2\uffff\3\23\2\uffff\1\21\1\25\1\uffff\1\23\1\uffff\5"+
-            "\23\1\uffff\11\23",
+            "\1\23\7\uffff\1\26\6\uffff\1\20\1\uffff\1\20\4\uffff\1\20\5"+
+            "\uffff\1\20\3\uffff\1\25\1\20\4\uffff\1\20\3\uffff\1\20\10\uffff"+
+            "\1\21\2\uffff\3\20\2\uffff\1\22\1\24\1\uffff\1\20\1\uffff\5"+
+            "\20\1\31\11\20",
+            "\1\23\7\uffff\1\26\6\uffff\1\20\1\uffff\1\20\4\uffff\1\20\5"+
+            "\uffff\1\20\3\uffff\1\25\1\20\4\uffff\1\20\3\uffff\1\20\10\uffff"+
+            "\1\21\2\uffff\3\20\2\uffff\1\22\1\24\1\uffff\1\20\1\uffff\5"+
+            "\20\1\uffff\11\20",
+            "\1\23\7\uffff\1\26\6\uffff\1\20\1\uffff\1\20\4\uffff\1\20\5"+
+            "\uffff\1\20\3\uffff\1\25\1\20\4\uffff\1\20\3\uffff\1\20\10\uffff"+
+            "\1\21\2\uffff\3\20\2\uffff\1\22\1\24\1\uffff\1\20\1\uffff\5"+
+            "\20\1\uffff\11\20",
+            "\1\23\7\uffff\1\26\6\uffff\1\20\1\uffff\1\20\4\uffff\1\20\5"+
+            "\uffff\1\20\3\uffff\1\25\1\20\4\uffff\1\20\3\uffff\1\20\10\uffff"+
+            "\1\21\2\uffff\3\20\2\uffff\1\22\1\24\1\uffff\1\20\1\uffff\5"+
+            "\20\1\uffff\11\20",
+            "\1\23\7\uffff\1\26\6\uffff\1\20\1\uffff\1\20\4\uffff\1\20\5"+
+            "\uffff\1\20\3\uffff\1\25\1\20\4\uffff\1\20\3\uffff\1\20\10\uffff"+
+            "\1\21\2\uffff\3\20\2\uffff\1\22\1\24\1\uffff\1\20\1\uffff\5"+
+            "\20\1\uffff\11\20",
             "",
             "\1\32",
-            "\1\24\7\uffff\1\22\27\uffff\1\26\32\uffff\1\21",
             "",
-            "",
+            "\1\23\7\uffff\1\26\27\uffff\1\25\32\uffff\1\22",
             "",
             "",
             "\1\34\22\uffff\1\35\21\uffff\1\33",
             "",
-            "\1\24\7\uffff\1\22\6\uffff\1\23\1\uffff\1\23\4\uffff\1\23\5"+
-            "\uffff\1\23\3\uffff\1\26\1\23\4\uffff\1\23\3\uffff\1\23\10\uffff"+
-            "\1\20\2\uffff\3\23\2\uffff\1\21\1\25\1\uffff\1\23\1\uffff\5"+
-            "\23\1\uffff\11\23",
-            "\1\24\7\uffff\1\22\6\uffff\1\23\1\uffff\1\23\4\uffff\1\23\5"+
-            "\uffff\1\23\3\uffff\1\26\1\23\4\uffff\1\23\3\uffff\1\23\10\uffff"+
-            "\1\20\2\uffff\3\23\2\uffff\1\21\1\25\1\uffff\1\23\1\uffff\5"+
-            "\23\1\uffff\11\23",
+            "",
+            "\1\23\7\uffff\1\26\6\uffff\1\20\1\uffff\1\20\4\uffff\1\20\5"+
+            "\uffff\1\20\3\uffff\1\25\1\20\4\uffff\1\20\3\uffff\1\20\10\uffff"+
+            "\1\21\2\uffff\3\20\2\uffff\1\22\1\24\1\uffff\1\20\1\uffff\5"+
+            "\20\1\uffff\11\20",
+            "\1\23\7\uffff\1\26\6\uffff\1\20\1\uffff\1\20\4\uffff\1\20\5"+
+            "\uffff\1\20\3\uffff\1\25\1\20\4\uffff\1\20\3\uffff\1\20\10\uffff"+
+            "\1\21\2\uffff\3\20\2\uffff\1\22\1\24\1\uffff\1\20\1\uffff\5"+
+            "\20\1\uffff\11\20",
             "\1\36",
-            "\1\24\7\uffff\1\22\6\uffff\1\23\1\uffff\1\23\4\uffff\1\23\5"+
-            "\uffff\1\23\3\uffff\1\26\1\23\4\uffff\1\23\3\uffff\1\23\10\uffff"+
-            "\1\20\2\uffff\3\23\2\uffff\1\21\1\25\1\uffff\1\23\1\uffff\5"+
-            "\23\1\17\11\23",
+            "\1\23\7\uffff\1\26\6\uffff\1\20\1\uffff\1\20\4\uffff\1\20\5"+
+            "\uffff\1\20\3\uffff\1\25\1\20\4\uffff\1\20\3\uffff\1\20\10\uffff"+
+            "\1\21\2\uffff\3\20\2\uffff\1\22\1\24\1\uffff\1\20\1\uffff\5"+
+            "\20\1\17\11\20",
             "\1\34\22\uffff\1\35",
             "",
             "",
-            "\1\24\7\uffff\1\22\6\uffff\1\23\1\uffff\1\23\4\uffff\1\23\5"+
-            "\uffff\1\23\3\uffff\1\26\1\23\4\uffff\1\23\3\uffff\1\23\10\uffff"+
-            "\1\20\2\uffff\3\23\2\uffff\1\21\1\25\1\uffff\1\23\1\uffff\5"+
-            "\23\1\uffff\11\23"
+            "\1\23\7\uffff\1\26\6\uffff\1\20\1\uffff\1\20\4\uffff\1\20\5"+
+            "\uffff\1\20\3\uffff\1\25\1\20\4\uffff\1\20\3\uffff\1\20\10\uffff"+
+            "\1\21\2\uffff\3\20\2\uffff\1\22\1\24\1\uffff\1\20\1\uffff\5"+
+            "\20\1\uffff\11\20"
     };
 
     static final short[] DFA40_eot = DFA.unpackEncodedString(DFA40_eotS);
@@ -15917,7 +15917,7 @@ public class InternalJPQLParser extends AbstractInternalAntlrParser {
         "\1\130\1\117\1\126\1\127\1\117\4\105\1\126\1\105\1\111\2\105\1\127"+
         "\1\117\1\130\1\105\2\uffff";
     static final String DFA46_acceptS =
-        "\22\uffff\1\1\1\2";
+        "\22\uffff\1\2\1\1";
     static final String DFA46_specialS =
         "\24\uffff}>";
     static final String[] DFA46_transitionS = {
@@ -15938,8 +15938,8 @@ public class InternalJPQLParser extends AbstractInternalAntlrParser {
             "\1\12\7\uffff\1\13",
             "\1\21",
             "\1\12\7\uffff\1\13\11\uffff\1\11",
-            "\1\23\3\uffff\1\22\14\uffff\1\23\4\uffff\1\22\4\uffff\1\22"+
-            "\40\uffff\1\22\3\uffff\4\22",
+            "\1\22\3\uffff\1\23\14\uffff\1\22\4\uffff\1\23\4\uffff\1\23"+
+            "\40\uffff\1\23\3\uffff\4\23",
             "\1\12\7\uffff\1\13",
             "",
             ""
@@ -16353,8 +16353,8 @@ public class InternalJPQLParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_EOF_in_entryRuleLikeExpression7293 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleVariable_in_ruleLikeExpression7339 = new BitSet(new long[]{0x2000040000000000L});
     public static final BitSet FOLLOW_KEYWORD_34_in_ruleLikeExpression7358 = new BitSet(new long[]{0x0000040000000000L});
-    public static final BitSet FOLLOW_KEYWORD_43_in_ruleLikeExpression7383 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-    public static final BitSet FOLLOW_ruleStringLiteral_in_ruleLikeExpression7403 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_KEYWORD_43_in_ruleLikeExpression7383 = new BitSet(new long[]{0x0001080002000000L,0x0000000001E20000L});
+    public static final BitSet FOLLOW_ruleVariable_in_ruleLikeExpression7403 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleInExpression_in_entryRuleInExpression7438 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleInExpression7448 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleInSeqExpression_in_ruleInExpression7498 = new BitSet(new long[]{0x0000000000000002L});

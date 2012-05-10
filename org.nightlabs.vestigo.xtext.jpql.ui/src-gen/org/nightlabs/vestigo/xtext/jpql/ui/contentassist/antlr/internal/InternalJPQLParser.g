@@ -14123,8 +14123,8 @@ rule__LikeExpression__RightAssignment_3
     }
 :
 (
-{ before(grammarAccess.getLikeExpressionAccess().getRightStringLiteralParserRuleCall_3_0()); }
-	ruleStringLiteral{ after(grammarAccess.getLikeExpressionAccess().getRightStringLiteralParserRuleCall_3_0()); }
+{ before(grammarAccess.getLikeExpressionAccess().getRightVariableParserRuleCall_3_0()); }
+	ruleVariable{ after(grammarAccess.getLikeExpressionAccess().getRightVariableParserRuleCall_3_0()); }
 )
 
 ;

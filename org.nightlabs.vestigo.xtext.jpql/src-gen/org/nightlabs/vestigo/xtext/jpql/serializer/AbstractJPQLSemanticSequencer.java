@@ -627,7 +627,7 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 	 *         (left=Variable isNot?='NOT'? right=AliasAttributeExpression) | 
 	 *         (left=Variable isNot?='NOT'?) | 
 	 *         (left=Variable isNot?='NOT'?) | 
-	 *         (left=Variable isNot?='NOT'? right=StringLiteral) | 
+	 *         (left=Variable isNot?='NOT'? right=Variable) | 
 	 *         (left=Variable isNot?='NOT'? items+=Variable items+=Variable*) | 
 	 *         (left=Variable isNot?='NOT'? query=Subquery) | 
 	 *         (left=Variable isNot?='NOT'? min=Literal max=Literal)
@@ -894,7 +894,7 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (left=Variable isNot?='NOT'? right=StringLiteral)
+	 *     (left=Variable isNot?='NOT'? right=Variable)
 	 */
 	protected void sequence_LikeExpression(EObject context, Expression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

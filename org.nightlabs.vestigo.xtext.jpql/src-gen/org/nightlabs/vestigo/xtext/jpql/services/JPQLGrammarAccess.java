@@ -1761,13 +1761,13 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cIsNotNOTKeyword_1_0 = (Keyword)cIsNotAssignment_1.eContents().get(0);
 		private final Keyword cLIKEKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cRightAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cRightStringLiteralParserRuleCall_3_0 = (RuleCall)cRightAssignment_3.eContents().get(0);
+		private final RuleCall cRightVariableParserRuleCall_3_0 = (RuleCall)cRightAssignment_3.eContents().get(0);
 		
 		//LikeExpression returns Expression:
-		//	left=Variable isNot?="NOT"? "LIKE" right=StringLiteral;
+		//	left=Variable isNot?="NOT"? "LIKE" right=Variable;
 		public ParserRule getRule() { return rule; }
 
-		//left=Variable isNot?="NOT"? "LIKE" right=StringLiteral
+		//left=Variable isNot?="NOT"? "LIKE" right=Variable
 		public Group getGroup() { return cGroup; }
 
 		//left=Variable
@@ -1785,11 +1785,11 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 		//"LIKE"
 		public Keyword getLIKEKeyword_2() { return cLIKEKeyword_2; }
 
-		//right=StringLiteral
+		//right=Variable
 		public Assignment getRightAssignment_3() { return cRightAssignment_3; }
 
-		//StringLiteral
-		public RuleCall getRightStringLiteralParserRuleCall_3_0() { return cRightStringLiteralParserRuleCall_3_0; }
+		//Variable
+		public RuleCall getRightVariableParserRuleCall_3_0() { return cRightVariableParserRuleCall_3_0; }
 	}
 
 	public class InExpressionElements extends AbstractParserRuleElementFinder {
@@ -3885,7 +3885,7 @@ public class JPQLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//LikeExpression returns Expression:
-	//	left=Variable isNot?="NOT"? "LIKE" right=StringLiteral;
+	//	left=Variable isNot?="NOT"? "LIKE" right=Variable;
 	public LikeExpressionElements getLikeExpressionAccess() {
 		return (pLikeExpression != null) ? pLikeExpression : (pLikeExpression = new LikeExpressionElements());
 	}

@@ -247,7 +247,7 @@ EmptyComparisonExpression returns Expression:
 ;
 
 LikeExpression returns Expression:
-	left=Variable (isNot?='NOT')? 'LIKE' right=StringLiteral
+	left=Variable (isNot?='NOT')? 'LIKE' right=Variable
 ;
 
 InExpression returns Expression:

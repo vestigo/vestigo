@@ -3427,9 +3427,9 @@ ruleLikeExpression returns [EObject current=null]
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getLikeExpressionAccess().getRightStringLiteralParserRuleCall_3_0()); 
+	        newCompositeNode(grammarAccess.getLikeExpressionAccess().getRightVariableParserRuleCall_3_0()); 
 	    }
-		lv_right_3_0=ruleStringLiteral		{
+		lv_right_3_0=ruleVariable		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getLikeExpressionRule());
 	        }
@@ -3437,7 +3437,7 @@ ruleLikeExpression returns [EObject current=null]
        			$current, 
        			"right",
         		lv_right_3_0, 
-        		"StringLiteral");
+        		"Variable");
 	        afterParserOrEnumRuleCall();
 	    }
 

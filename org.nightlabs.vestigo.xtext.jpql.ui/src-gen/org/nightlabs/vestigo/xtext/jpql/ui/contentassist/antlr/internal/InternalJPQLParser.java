@@ -37594,25 +37594,25 @@ public class InternalJPQLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__LikeExpression__RightAssignment_3"
-    // ../org.nightlabs.vestigo.xtext.jpql.ui/src-gen/org/nightlabs/vestigo/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:14120:1: rule__LikeExpression__RightAssignment_3 : ( ruleStringLiteral ) ;
+    // ../org.nightlabs.vestigo.xtext.jpql.ui/src-gen/org/nightlabs/vestigo/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:14120:1: rule__LikeExpression__RightAssignment_3 : ( ruleVariable ) ;
     public final void rule__LikeExpression__RightAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.nightlabs.vestigo.xtext.jpql.ui/src-gen/org/nightlabs/vestigo/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:14124:1: ( ( ruleStringLiteral ) )
-            // ../org.nightlabs.vestigo.xtext.jpql.ui/src-gen/org/nightlabs/vestigo/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:14125:1: ( ruleStringLiteral )
+            // ../org.nightlabs.vestigo.xtext.jpql.ui/src-gen/org/nightlabs/vestigo/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:14124:1: ( ( ruleVariable ) )
+            // ../org.nightlabs.vestigo.xtext.jpql.ui/src-gen/org/nightlabs/vestigo/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:14125:1: ( ruleVariable )
             {
-            // ../org.nightlabs.vestigo.xtext.jpql.ui/src-gen/org/nightlabs/vestigo/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:14125:1: ( ruleStringLiteral )
-            // ../org.nightlabs.vestigo.xtext.jpql.ui/src-gen/org/nightlabs/vestigo/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:14126:1: ruleStringLiteral
+            // ../org.nightlabs.vestigo.xtext.jpql.ui/src-gen/org/nightlabs/vestigo/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:14125:1: ( ruleVariable )
+            // ../org.nightlabs.vestigo.xtext.jpql.ui/src-gen/org/nightlabs/vestigo/xtext/jpql/ui/contentassist/antlr/internal/InternalJPQLParser.g:14126:1: ruleVariable
             {
-             before(grammarAccess.getLikeExpressionAccess().getRightStringLiteralParserRuleCall_3_0()); 
-            pushFollow(FOLLOW_ruleStringLiteral_in_rule__LikeExpression__RightAssignment_328676);
-            ruleStringLiteral();
+             before(grammarAccess.getLikeExpressionAccess().getRightVariableParserRuleCall_3_0()); 
+            pushFollow(FOLLOW_ruleVariable_in_rule__LikeExpression__RightAssignment_328676);
+            ruleVariable();
 
             state._fsp--;
 
-             after(grammarAccess.getLikeExpressionAccess().getRightStringLiteralParserRuleCall_3_0()); 
+             after(grammarAccess.getLikeExpressionAccess().getRightVariableParserRuleCall_3_0()); 
 
             }
 
@@ -41654,7 +41654,7 @@ public class InternalJPQLParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_rule__LikeExpression__Group__1__Impl_in_rule__LikeExpression__Group__117330 = new BitSet(new long[]{0x2000040000000000L});
     public static final BitSet FOLLOW_rule__LikeExpression__Group__2_in_rule__LikeExpression__Group__117333 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__LikeExpression__IsNotAssignment_1_in_rule__LikeExpression__Group__1__Impl17360 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__LikeExpression__Group__2__Impl_in_rule__LikeExpression__Group__217391 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+    public static final BitSet FOLLOW_rule__LikeExpression__Group__2__Impl_in_rule__LikeExpression__Group__217391 = new BitSet(new long[]{0x0001080002000000L,0x0000000001E20000L});
     public static final BitSet FOLLOW_rule__LikeExpression__Group__3_in_rule__LikeExpression__Group__217394 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_KEYWORD_43_in_rule__LikeExpression__Group__2__Impl17422 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__LikeExpression__Group__3__Impl_in_rule__LikeExpression__Group__317453 = new BitSet(new long[]{0x0000000000000002L});
@@ -42110,7 +42110,7 @@ public class InternalJPQLParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_KEYWORD_34_in_rule__EmptyComparisonExpression__IsNotAssignment_228562 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleVariable_in_rule__LikeExpression__LeftAssignment_028601 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_KEYWORD_34_in_rule__LikeExpression__IsNotAssignment_128637 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleStringLiteral_in_rule__LikeExpression__RightAssignment_328676 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleVariable_in_rule__LikeExpression__RightAssignment_328676 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleVariable_in_rule__InSeqExpression__LeftAssignment_028707 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_KEYWORD_34_in_rule__InSeqExpression__IsNotAssignment_128743 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleVariable_in_rule__InSeqExpression__ItemsAssignment_428782 = new BitSet(new long[]{0x0000000000000002L});
