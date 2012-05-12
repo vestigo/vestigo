@@ -34,6 +34,7 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.widgets.Display;
 import org.nightlabs.vestigo.core.ObjectReference;
 import org.nightlabs.vestigo.core.ObjectReferenceChild;
+import org.nightlabs.vestigo.ui.resource.Messages;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
@@ -43,7 +44,7 @@ implements ITreeContentProvider
 {
 	private TreeViewer treeViewer;
 	private Display display;
-	private String loadingMessage = "Loading...";
+	private String loadingMessage = Messages.getString("ObjectGraphDetailTreeContentProvider.loadingMessage"); //$NON-NLS-1$
 
 	private ListenerList childrenLoadedListenerList = new ListenerList();
 
@@ -54,11 +55,11 @@ implements ITreeContentProvider
 	public void inputChanged(Viewer viewer, Object oldInput, Object newInput)
 	{
 		if (viewer == null)
-			throw new IllegalArgumentException("viewer == null");
+			throw new IllegalArgumentException("viewer == null"); //$NON-NLS-1$
 		if (!(viewer instanceof TreeViewer))
-			throw new IllegalArgumentException("viewer is not an instance of TreeViewer!");
+			throw new IllegalArgumentException("viewer is not an instance of TreeViewer!"); //$NON-NLS-1$
 		if (viewer.getControl() == null || viewer.getControl().getDisplay() == null)
-			throw new IllegalArgumentException("WTF?!???! viewer.control == null || viewer.control.display == null");
+			throw new IllegalArgumentException("WTF?!???! viewer.control == null || viewer.control.display == null"); //$NON-NLS-1$
 
 		this.treeViewer = (TreeViewer) viewer;
 		this.display = viewer.getControl().getDisplay();
@@ -79,16 +80,16 @@ implements ITreeContentProvider
 			return ((List<?>)parentElement).toArray();
 
 		if (!(parentElement instanceof ObjectGraphDetailTreeNode))
-			throw new IllegalArgumentException("parentElement is neither a List nor an instance of ObjectGraphDetailTreeNode: " + parentElement);
+			throw new IllegalArgumentException("parentElement is neither a List nor an instance of ObjectGraphDetailTreeNode: " + parentElement); //$NON-NLS-1$
 
 		if (treeViewer == null)
-			throw new IllegalStateException("treeViewer == null :: inputChanged(...) must be called first!");
+			throw new IllegalStateException("treeViewer == null :: inputChanged(...) must be called first!"); //$NON-NLS-1$
 
 		final ObjectGraphDetailTreeNode parentNode = (ObjectGraphDetailTreeNode) parentElement;
 		ObjectGraphDetailTreeNode[] childNodes = parentNode.getChildNodes();
 		if (childNodes == null) {
 			if (parentNodesLoadingChildren.add(parentNode)) {
-				Job job = new Job("Loading children") {
+				Job job = new Job(Messages.getString("ObjectGraphDetailTreeContentProvider.loadChildrenJob.name")) { //$NON-NLS-1$
 					@Override
 					protected IStatus run(IProgressMonitor monitor)
 					{
@@ -175,7 +176,7 @@ implements ITreeContentProvider
 				public void run() {
 					parentNodesLoadingChildren.remove(parentNode);
 					ObjectGraphDetailTreeNode[] children = new ObjectGraphDetailTreeNode[1];
-					children[0] = new ErrorObjectGraphDetailTreeNode(parentNode, "Error: " + x);
+					children[0] = new ErrorObjectGraphDetailTreeNode(parentNode, String.format(Messages.getString("ObjectGraphDetailTreeContentProvider.errorMessage"), x)); //$NON-NLS-1$
 					parentNode.setChildNodes(children);
 
 					treeViewer.refresh(parentNode);
@@ -197,7 +198,7 @@ implements ITreeContentProvider
 	public Object getParent(Object element)
 	{
 		if (!(element instanceof ObjectGraphDetailTreeNode))
-			throw new IllegalArgumentException("element is not an instance of ObjectGraphDetailTreeNode: " + element);
+			throw new IllegalArgumentException("element is not an instance of ObjectGraphDetailTreeNode: " + element); //$NON-NLS-1$
 
 		return ((ObjectGraphDetailTreeNode)element).getParentNode();
 	}
@@ -209,7 +210,7 @@ implements ITreeContentProvider
 			return false;
 
 		if (!(element instanceof ObjectGraphDetailTreeNode))
-			throw new IllegalArgumentException("element is not an instance of ObjectGraphDetailTreeNode: " + element);
+			throw new IllegalArgumentException("element is not an instance of ObjectGraphDetailTreeNode: " + element); //$NON-NLS-1$
 
 		ObjectGraphDetailTreeNode node = (ObjectGraphDetailTreeNode) element;
 		return node.hasChildren();

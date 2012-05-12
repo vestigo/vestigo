@@ -37,13 +37,13 @@ public class VestigoDocumentProvider extends XtextDocumentProvider
 	public VestigoDocumentProvider(QueryEditor queryEditor)
 	{
 		if (queryEditor == null)
-			throw new IllegalArgumentException("queryEditor == null");
+			throw new IllegalArgumentException("queryEditor == null"); //$NON-NLS-1$
 
 		this.queryEditor = queryEditor;
 
 		display = Display.getCurrent();
 		if (display == null)
-			throw new IllegalStateException("This method must be executed on the SWT UI thread!");
+			throw new IllegalStateException("This method must be executed on the SWT UI thread!"); //$NON-NLS-1$
 	}
 
 	@Override

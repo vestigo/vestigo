@@ -33,6 +33,7 @@ import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.texteditor.IDocumentProvider;
 import org.eclipse.xtext.ui.editor.XtextEditor;
+import org.nightlabs.vestigo.ui.resource.Messages;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -98,7 +99,7 @@ implements QueryEditor
 
 		IDocument document = getDocumentProvider().getDocument(getEditorInput());
 		if (document == null)
-			throw new IllegalStateException("There is no document for the current editorInput!");
+			throw new IllegalStateException("There is no document for the current editorInput!"); //$NON-NLS-1$
 
 		document.addDocumentListener(helper.getDocumentListener());
 	}
@@ -127,8 +128,8 @@ implements QueryEditor
 		@Override
 		public void onExecuteQueryError(ExecuteQueryEvent executeQueryEvent) {
 			MessageDialog.openError(
-					getEditorSite().getShell(), "Error executing query",
-					"Executing query failed: " + executeQueryEvent.getError() // Util.getStackTraceAsString(x)
+					getEditorSite().getShell(), Messages.getString("AbstractQueryEditor.executeQueryErrorDialog.title"), //$NON-NLS-1$
+					String.format(Messages.getString("AbstractQueryEditor.executeQueryErrorDialog.message"), executeQueryEvent.getError()) // Util.getStackTraceAsString(x) //$NON-NLS-1$
 			);
 		}
 	};

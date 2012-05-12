@@ -33,6 +33,7 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Shell;
+import org.nightlabs.vestigo.ui.resource.Messages;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
@@ -56,7 +57,7 @@ public class TimeZoneDialog extends Dialog
 	@Override
 	protected void configureShell(Shell newShell) {
 		super.configureShell(newShell);
-		newShell.setText("Select time zone");
+		newShell.setText(Messages.getString("TimeZoneDialog.shell.text")); //$NON-NLS-1$
 		newShell.setSize(400, 600);
 	}
 
@@ -86,7 +87,7 @@ public class TimeZoneDialog extends Dialog
 			@Override
 			public String getText(Object element) {
 				TimeZone timeZone = (TimeZone) element;
-				return timeZone.getDisplayName() + " (" + timeZone.getID() + ')';
+				return timeZone.getDisplayName() + " (" + timeZone.getID() + ')'; //$NON-NLS-1$
 			}
 		});
 		viewer.setInput(timeZones);
@@ -111,7 +112,7 @@ public class TimeZoneDialog extends Dialog
 	}
 	public void setTimeZone(TimeZone timeZone) {
 		if (timeZone == null)
-			throw new IllegalArgumentException("timeZone == null");
+			throw new IllegalArgumentException("timeZone == null"); //$NON-NLS-1$
 
 		if (this.timeZone == timeZone)
 			return;

@@ -35,6 +35,7 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.nightlabs.vestigo.ui.AbstractVestigoUIPlugin;
 import org.nightlabs.vestigo.ui.VestigoUIPlugin;
+import org.nightlabs.vestigo.ui.resource.Messages;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -61,7 +62,7 @@ public class QueryEditorManagerComposite extends Composite
 		layout.numColumns = 3;
 
 		// first row
-		new Label(this, SWT.NONE).setText("Data source: ");
+		new Label(this, SWT.NONE).setText(Messages.getString("QueryEditorManagerComposite.dataSourceLabel.text")); //$NON-NLS-1$
 		createConnectionProfileCombo();
 		createExecuteQueryButton();
 	}
@@ -147,7 +148,7 @@ public class QueryEditorManagerComposite extends Composite
 	{
 		Display currentDisplay = Display.getCurrent();
 		if (currentDisplay != display)
-			throw new IllegalStateException("Thread mismatch! This method must be called on the same SWT UI thread as the instance was created!");
+			throw new IllegalStateException("Thread mismatch! This method must be called on the same SWT UI thread as the instance was created!"); //$NON-NLS-1$
 	}
 
 	private void createConnectionProfileCombo()
@@ -193,8 +194,8 @@ public class QueryEditorManagerComposite extends Composite
 	private void createExecuteQueryButton()
 	{
 		executeQueryButton = new Button(this, SWT.PUSH);
-		executeQueryButton.setImage(VestigoUIPlugin.getDefault().getImage(QueryEditorManagerComposite.class, "executeQueryButton", AbstractVestigoUIPlugin.IMAGE_SIZE_16x16));
-		executeQueryButton.setToolTipText("Execute query");
+		executeQueryButton.setImage(VestigoUIPlugin.getDefault().getImage(QueryEditorManagerComposite.class, "executeQueryButton", AbstractVestigoUIPlugin.IMAGE_SIZE_16x16)); //$NON-NLS-1$
+		executeQueryButton.setToolTipText(Messages.getString("QueryEditorManagerComposite.executeQueryButton.toolTipText")); //$NON-NLS-1$
 		executeQueryButton.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {

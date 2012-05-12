@@ -79,6 +79,7 @@ import org.nightlabs.vestigo.ui.detailtree.ObjectGraphDetailTreeView;
 import org.nightlabs.vestigo.ui.oda.OdaUtil;
 import org.nightlabs.vestigo.ui.queryparam.QueryParameter;
 import org.nightlabs.vestigo.ui.queryparam.QueryParameterManager;
+import org.nightlabs.vestigo.ui.resource.Messages;
 import org.nightlabs.vestigo.ui.resultsettable.ResultSetTableModel;
 import org.nightlabs.vestigo.ui.resultsettable.ResultSetTableView;
 import org.slf4j.Logger;
@@ -96,10 +97,10 @@ public abstract class QueryEditorManager
 		connectionProfile
 	}
 
-	public static final String PROPERTY_LAST_CONNECTION_PROFILE_INSTANCE_ID = "lastConnectionProfile.instanceID";
-	private static final String QUERY_TEXT_PROPERTIES_BEGIN_MARKER = "//------PROPERTIES_BEGIN------";
-	private static final String QUERY_TEXT_PROPERTIES_END_MARKER = "//------PROPERTIES_END------";
-	private static final String QUERY_TEXT_LINE_COMMENT_MARKER = "//";
+	public static final String PROPERTY_LAST_CONNECTION_PROFILE_INSTANCE_ID = "lastConnectionProfile.instanceID"; //$NON-NLS-1$
+	private static final String QUERY_TEXT_PROPERTIES_BEGIN_MARKER = "//------PROPERTIES_BEGIN------"; //$NON-NLS-1$
+	private static final String QUERY_TEXT_PROPERTIES_END_MARKER = "//------PROPERTIES_END------"; //$NON-NLS-1$
+	private static final String QUERY_TEXT_LINE_COMMENT_MARKER = "//"; //$NON-NLS-1$
 
 	private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 	private QueryEditor queryEditor;
@@ -123,12 +124,12 @@ public abstract class QueryEditorManager
 	public QueryEditorManager(QueryEditor queryEditor)
 	{
 		if (queryEditor == null)
-			throw new IllegalArgumentException("queryEditor == null");
+			throw new IllegalArgumentException("queryEditor == null"); //$NON-NLS-1$
 
 		this.queryEditor = queryEditor;
 		this.display = Display.getCurrent();
 		if (this.display == null)
-			throw new IllegalStateException("Thread mismatch! This method must be called on the SWT UI thread!");
+			throw new IllegalStateException("Thread mismatch! This method must be called on the SWT UI thread!"); //$NON-NLS-1$
 
 		hookProfileListenerAndDisposeListener();
 		hookQueryParameterManagerPropertyChangeListener();
@@ -184,7 +185,7 @@ public abstract class QueryEditorManager
 	{
 		Display currentDisplay = Display.getCurrent();
 		if (currentDisplay != display)
-			throw new IllegalStateException("Thread mismatch! This method must be called on the same SWT UI thread as the instance was created!");
+			throw new IllegalStateException("Thread mismatch! This method must be called on the same SWT UI thread as the instance was created!"); //$NON-NLS-1$
 	}
 
 	public QueryEditor getQueryEditor()
@@ -248,9 +249,9 @@ public abstract class QueryEditorManager
 		}
 
 		logger.info(
-				"populateConnectionProfiles: queryID={}" +
-				" selection.instanceID={} selection.name={}" +
-				" lastConnProfInstanceID={} lastGlobalConnProfInstanceID={}",
+				"populateConnectionProfiles: queryID={}" + //$NON-NLS-1$
+				" selection.instanceID={} selection.name={}" + //$NON-NLS-1$
+				" lastConnProfInstanceID={} lastGlobalConnProfInstanceID={}", //$NON-NLS-1$
 				new Object[] {
 						queryEditor.getQueryID(),
 						(selection == null ? null : selection.getInstanceID()),
@@ -270,9 +271,9 @@ public abstract class QueryEditorManager
 
 		if (selection == null) {
 			logger.info(
-					"populateConnectionProfiles: queryID={}:" +
-					" No selection! Falling back to globalSelection:" +
-					" globalSelection.instanceID={} globalSelection.name={}",
+					"populateConnectionProfiles: queryID={}:" + //$NON-NLS-1$
+					" No selection! Falling back to globalSelection:" + //$NON-NLS-1$
+					" globalSelection.instanceID={} globalSelection.name={}", //$NON-NLS-1$
 					new Object[] {
 							queryEditor.getQueryID(), (globalSelection == null ? null : globalSelection.getInstanceID()),
 							(globalSelection == null ? null : globalSelection.getName())
@@ -286,9 +287,9 @@ public abstract class QueryEditorManager
 			if (!connectionProfiles.isEmpty()) {
 				selection = connectionProfiles.get(0);
 				logger.info(
-						"populateConnectionProfiles: queryID={}:" +
-						" No editorType selection either! Falling back to first existing profile:" +
-						" selection.instanceID={} selection.name={}",
+						"populateConnectionProfiles: queryID={}:" + //$NON-NLS-1$
+						" No editorType selection either! Falling back to first existing profile:" + //$NON-NLS-1$
+						" selection.instanceID={} selection.name={}", //$NON-NLS-1$
 						new Object[] {
 								(selection == null ? null : selection.getInstanceID()),
 								(selection == null ? null : selection.getName()),
@@ -298,8 +299,8 @@ public abstract class QueryEditorManager
 			}
 			else {
 				logger.info(
-						"populateConnectionProfiles: queryID={}:" +
-						" No editorType selection either! But cannot fall back to first existing profile, because there are no profiles.",
+						"populateConnectionProfiles: queryID={}:" + //$NON-NLS-1$
+						" No editorType selection either! But cannot fall back to first existing profile, because there are no profiles.", //$NON-NLS-1$
 						queryEditor.getQueryID()
 				);
 			}
@@ -356,9 +357,9 @@ public abstract class QueryEditorManager
 		public CloseConnectionManagedConnectionListener(org.eclipse.datatools.connectivity.IConnection connection, IConnection odaConnection)
 		{
 			if (connection == null)
-				throw new IllegalArgumentException("connection == null");
+				throw new IllegalArgumentException("connection == null"); //$NON-NLS-1$
 			if (odaConnection == null)
-				throw new IllegalArgumentException("odaConnection == null");
+				throw new IllegalArgumentException("odaConnection == null"); //$NON-NLS-1$
 
 			this.connection = connection;
 			this.odaConnection = odaConnection;
@@ -372,7 +373,7 @@ public abstract class QueryEditorManager
 				odaConnection.close(); // make sure all listeners are triggered via the ResultSetTableModel.close() method.
 				connection.close();
 			} catch (Exception e) {
-				logger.error("connection.close() failed: " + e, e);
+				logger.error("connection.close() failed: " + e, e); //$NON-NLS-1$
 			}
 		}
 	};
@@ -405,7 +406,7 @@ public abstract class QueryEditorManager
 
 	private IConnection createConnection(IConnectionProfile connectionProfile, IProgressMonitor monitor)
 	{
-		logger.info("createConnection: connectionProfile.name={} connectionProfile.idHashCode={}", connectionProfile.getName(), Integer.toHexString(System.identityHashCode(connectionProfile)));
+		logger.info("createConnection: connectionProfile.name={} connectionProfile.idHashCode={}", connectionProfile.getName(), Integer.toHexString(System.identityHashCode(connectionProfile))); //$NON-NLS-1$
 		final IManagedConnection managedConnection = OdaUtil.getManagedConnection(connectionProfile);
 		if (!managedConnection.isConnected()) {
 			IStatus status = connectionProfile.connectWithoutJob();
@@ -414,13 +415,13 @@ public abstract class QueryEditorManager
 				if (exception != null)
 					throw new RuntimeException(exception);
 				else
-					throw new RuntimeException("Opening connection failed: " + status);
+					throw new RuntimeException("Opening connection failed: " + status); //$NON-NLS-1$
 			}
 		}
 
 		final org.eclipse.datatools.connectivity.IConnection connection = connectionProfile.createConnection(OdaUtil.connectionFactoryID);
 		if (connection == null)
-			throw new IllegalStateException("odaConnectionProfile.createConnection(...) returned null");
+			throw new IllegalStateException("odaConnectionProfile.createConnection(...) returned null"); //$NON-NLS-1$
 
 		final CloseConnectionManagedConnectionListener[] ccmcl = new CloseConnectionManagedConnectionListener[1];
 
@@ -461,17 +462,17 @@ public abstract class QueryEditorManager
 		if (vestigoConnectionProfile  == null) {
 			Shell parentShell = display.getActiveShell();
 			if (odaConnectionProfile == null) {
-				MessageDialog.openInformation(parentShell , "No connection selected!", "There is no current connection. Please select a connection first.");
+				MessageDialog.openInformation(parentShell , Messages.getString("QueryEditorManager.noDataSourceSelectedDialog.title"), Messages.getString("QueryEditorManager.noDataSourceSelectedDialog.message")); //$NON-NLS-1$ //$NON-NLS-2$
 				return null;
 			}
 
-			if (MessageDialog.openQuestion(parentShell, "Connection not open!", "The connection is not open. Do you want to open the connection now?")) {
+			if (MessageDialog.openQuestion(parentShell, Messages.getString("QueryEditorManager.dataSourceNotOpenDialog.title"), Messages.getString("QueryEditorManager.dataSourceNotOpenDialog.message"))) { //$NON-NLS-1$ //$NON-NLS-2$
 				final StatusCarrier statusCarrier = new StatusCarrier();
 
-				Job openJob = new Job("Opening connection") {
+				Job openJob = new Job(Messages.getString("QueryEditorManager.openDataSourceJob.name")) { //$NON-NLS-1$
 					@Override
 					protected IStatus run(IProgressMonitor monitor) {
-						logger.info("getVestigoConnectionProfileAskingUserIfNecessary.openJob.run: odaConnectionProfile.name={} odaConnectionProfile.idHashCode={}", odaConnectionProfile.getName(), Integer.toHexString(System.identityHashCode(odaConnectionProfile)));
+						logger.info("getVestigoConnectionProfileAskingUserIfNecessary.openJob.run: odaConnectionProfile.name={} odaConnectionProfile.idHashCode={}", odaConnectionProfile.getName(), Integer.toHexString(System.identityHashCode(odaConnectionProfile))); //$NON-NLS-1$
 						try {
 							IManagedConnection managedConnection = OdaUtil.getManagedConnection(odaConnectionProfile);
 							if (!managedConnection.isConnected())
@@ -504,12 +505,12 @@ public abstract class QueryEditorManager
 					if (exception != null)
 						throw new RuntimeException(exception);
 					else
-						throw new RuntimeException("Opening connection failed: " + status);
+						throw new RuntimeException("Opening connection failed: " + status); //$NON-NLS-1$
 				}
 
 				vestigoConnectionProfile = getVestigoConnectionProfile();
 				if (vestigoConnectionProfile == null)
-					throw new IllegalStateException("Even after opening the connection, queryEditorManager.getVestigoConnectionProfile() returned null!");
+					throw new IllegalStateException("Even after opening the connection, queryEditorManager.getVestigoConnectionProfile() returned null!"); //$NON-NLS-1$
 			}
 		}
 		return vestigoConnectionProfile;
@@ -539,7 +540,7 @@ public abstract class QueryEditorManager
 		Properties properties = odaConnectionProfile.getProperties(odaConnectionProfile.getProviderId());
 		String profileID = PropertiesUtil.getProfileID(properties);
 		if (profileID == null)
-			throw new IllegalStateException("PropertiesUtil.getProfileID(connProperties) returned null!");
+			throw new IllegalStateException("PropertiesUtil.getProfileID(connProperties) returned null!"); //$NON-NLS-1$
 
 		ConnectionProfile vestigoConnectionProfile = ConnectionProfileRegistry.sharedInstance().getConnectionProfile(profileID);
 		if (vestigoConnectionProfile != null && !vestigoConnectionProfile.isOpen())
@@ -585,7 +586,7 @@ public abstract class QueryEditorManager
 
 	public void setODAConnectionProfile(IConnectionProfile connectionProfile)
 	{
-		logger.info("setConnectionProfile: queryID={}: entered", queryEditor.getQueryID());
+		logger.info("setConnectionProfile: queryID={}: entered", queryEditor.getQueryID()); //$NON-NLS-1$
 
 		int connectionProfileIndex = connectionProfiles.indexOf(connectionProfile);
 		IConnectionProfile newConnectionProfile = connectionProfileIndex >= 0 ? connectionProfiles.get(connectionProfileIndex) : null;
@@ -595,7 +596,7 @@ public abstract class QueryEditorManager
 		String connectionProfileInstanceID = newConnectionProfile == null ? null : newConnectionProfile.getInstanceID();
 
 		logger.info(
-				"onSelectConnectionProfile: queryID={} connectionProfileInstanceID={} connectionProfileName={}",
+				"onSelectConnectionProfile: queryID={} connectionProfileInstanceID={} connectionProfileName={}", //$NON-NLS-1$
 				new Object[] {
 						queryEditor.getQueryID(), connectionProfileInstanceID,
 						newConnectionProfile == null ? null : newConnectionProfile.getName()
@@ -609,7 +610,7 @@ public abstract class QueryEditorManager
 
 			if (oldValue == null || !oldValue.equals(connectionProfileInstanceID)) {
 				logger.info(
-						"onSelectConnectionProfile: queryID={}: Setting editorType connection profile: connectionProfileInstanceID={}",
+						"onSelectConnectionProfile: queryID={}: Setting editorType connection profile: connectionProfileInstanceID={}", //$NON-NLS-1$
 						queryEditor.getQueryID(), connectionProfileInstanceID
 				);
 				getProperties(PropertiesType.editorType).setProperty(
@@ -694,7 +695,7 @@ public abstract class QueryEditorManager
 
 	protected synchronized void onDispose()
 	{
-		logger.info("onDispose: entered");
+		logger.info("onDispose: entered"); //$NON-NLS-1$
 
 		ProfileManager.getInstance().removeProfileListener(profileListener);
 
@@ -712,7 +713,7 @@ public abstract class QueryEditorManager
 
 		final IConnectionProfile connectionProfile = getODAConnectionProfile();
 		if (connectionProfile == null)
-			throw new IllegalStateException("No ConnectionProfile selected!");
+			throw new IllegalStateException("No ConnectionProfile selected!"); //$NON-NLS-1$
 
 		queryContext.setConnectionProfile(connectionProfile);
 		queryContext.setQueryText(queryEditor.getQueryText());
@@ -724,13 +725,13 @@ public abstract class QueryEditorManager
 
 		final ResultSetTableModel[] resultSetTableModel = new ResultSetTableModel[1];
 
-		Job job = new Job("Executing query...") {
+		Job job = new Job(Messages.getString("QueryEditorManager.executeQueryJob.name")) { //$NON-NLS-1$
 			@Override
 			protected IStatus run(IProgressMonitor monitor) {
 				try {
 					resultSetTableModel[0] = executeQuery(queryContext, monitor);
 				} catch (final Throwable x) {
-					logger.error("executeQuery.job.run: " + x, x);
+					logger.error("executeQuery.job.run: " + x, x); //$NON-NLS-1$
 					display.asyncExec(new Runnable() {
 						@Override
 						public void run() {
@@ -757,7 +758,7 @@ public abstract class QueryEditorManager
 									}
 								}
 							} catch (PartInitException e) {
-								logger.warn("executeQuery.job.display_asyncExec: " + e, e);
+								logger.warn("executeQuery.job.display_asyncExec: " + e, e); //$NON-NLS-1$
 							}
 						}
 					});
@@ -790,13 +791,13 @@ public abstract class QueryEditorManager
 		for (Object l : executeQueryListeners.getListeners())
 			((ExecuteQueryListener)l).preExecuteQuery(executeQueryEvent, new SubProgressMonitor(monitor, 50)); // TODO progressmonitor
 
-		IQuery query = connection.newQuery("");
+		IQuery query = connection.newQuery(""); //$NON-NLS-1$
 
-		stopwatch.start("00.query.prepare");
+		stopwatch.start("00.query.prepare"); //$NON-NLS-1$
 		query.prepare(queryContext.getQueryText());
-		stopwatch.stop("00.query.prepare");
+		stopwatch.stop("00.query.prepare"); //$NON-NLS-1$
 
-		stopwatch.start("01.query.setParameters");
+		stopwatch.start("01.query.setParameters"); //$NON-NLS-1$
 		for (QueryParameter queryParameter : queryContext.getQueryParameters()) {
 			if (queryParameter.getName() == null || queryParameter.getName().trim().isEmpty())
 				query.setObject(queryParameter.getIndex(), queryParameter.getValue());
@@ -805,12 +806,12 @@ public abstract class QueryEditorManager
 			if (queryParameter.getName() != null && !queryParameter.getName().trim().isEmpty())
 				query.setObject(queryParameter.getName(), queryParameter.getValue());
 		}
-		stopwatch.stop("01.query.setParameters");
+		stopwatch.stop("01.query.setParameters"); //$NON-NLS-1$
 
 		IResultSet resultSet = null;
 		ResultSetTableModel resultSetTableModel = null;
 		try {
-			stopwatch.start("10.query.executeQuery");
+			stopwatch.start("10.query.executeQuery"); //$NON-NLS-1$
 			resultSet = query.executeQuery();
 
 			resultSet = new DelegatingResultSet(resultSet) {
@@ -835,7 +836,7 @@ public abstract class QueryEditorManager
 			resultSetTableModel = new ResultSetTableModel(connection, resultSet);
 			connection2ResultSetTableModel.put(connection, resultSetTableModel);
 			this.resultSetTableModel = resultSetTableModel;
-			stopwatch.stop("10.query.executeQuery");
+			stopwatch.stop("10.query.executeQuery"); //$NON-NLS-1$
 		} finally {
 			executeQueryEvent = new ExecuteQueryEvent(queryContext, resultSetTableModel);
 			for (Object l : executeQueryListeners.getListeners())
@@ -860,7 +861,7 @@ public abstract class QueryEditorManager
 //		stopwatch.stop("30.iterateResultSet");
 //		// END performance test: iterate entire result set
 
-		logger.info("executeQuery: {}", stopwatch.createHumanReport(true));
+		logger.info("executeQuery: {}", stopwatch.createHumanReport(true)); //$NON-NLS-1$
 		return resultSetTableModel;
 	}
 
@@ -888,18 +889,18 @@ public abstract class QueryEditorManager
 				break;
 			}
 			case editor_file:
-				throw new IllegalStateException("Cannot lazy-load! Properties for this type should have already been created: " + propertiesType);
+				throw new IllegalStateException("Cannot lazy-load! Properties for this type should have already been created: " + propertiesType); //$NON-NLS-1$
 			case editor_preferenceStore:
 			{
 				String queryID = queryEditor.getQueryID();
 				if (queryID == null)
-					throw new IllegalStateException("queryEditor.getQueryID() returned null!");
+					throw new IllegalStateException("queryEditor.getQueryID() returned null!"); //$NON-NLS-1$
 
 				properties = VestigoUIPlugin.getDefault().getProperties(this.getClass().getName() + '.' + propertiesType + '.' + queryID);
 				break;
 			}
 			default:
-				throw new IllegalArgumentException("Unknown PropertiesType: " + propertiesType);
+				throw new IllegalArgumentException("Unknown PropertiesType: " + propertiesType); //$NON-NLS-1$
 		}
 
 		propertiesType2Properties.put(propertiesType, properties);
@@ -1027,11 +1028,11 @@ public abstract class QueryEditorManager
 
 	private String removeTrailingLineDelimiter(String s)
 	{
-		if (s.endsWith("\r\n"))
+		if (s.endsWith("\r\n")) //$NON-NLS-1$
 			s = s.substring(0, s.length() - 2);
-		else if (s.endsWith("\r"))
+		else if (s.endsWith("\r")) //$NON-NLS-1$
 			s = s.substring(0, s.length() - 1);
-		else if (s.endsWith("\n"))
+		else if (s.endsWith("\n")) //$NON-NLS-1$
 			s = s.substring(0, s.length() - 1);
 
 		return s;
@@ -1039,11 +1040,11 @@ public abstract class QueryEditorManager
 
 	private String removeLeadingLineDelimiter(String s)
 	{
-		if (s.startsWith("\r\n"))
+		if (s.startsWith("\r\n")) //$NON-NLS-1$
 			s = s.substring(2, s.length());
-		else if (s.startsWith("\r"))
+		else if (s.startsWith("\r")) //$NON-NLS-1$
 			s = s.substring(1, s.length());
-		else if (s.startsWith("\n"))
+		else if (s.startsWith("\n")) //$NON-NLS-1$
 			s = s.substring(1, s.length());
 
 		return s;

@@ -22,5 +22,5 @@ package org.nightlabs.vestigo.ui.editor;
  */
 public interface JPAQueryEditor extends QueryEditor
 {
-	public static final String EDITOR_ID = "org.nightlabs.vestigo.xtext.jpql.JPQL";
+	public static final String EDITOR_ID = "org.nightlabs.vestigo.xtext.jpql.JPQL"; //$NON-NLS-1$
 }

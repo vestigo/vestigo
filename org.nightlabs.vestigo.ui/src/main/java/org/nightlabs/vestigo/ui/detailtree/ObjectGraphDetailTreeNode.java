@@ -168,7 +168,7 @@ public class ObjectGraphDetailTreeNode
 			object = ((ObjectReferenceChild)object).getValue();
 
 		if (ResultSet.LICENCE_NOT_VALID == object)
-			return getLabelImage("LICENCE_NOT_VALID");
+			return getLabelImage("LICENCE_NOT_VALID"); //$NON-NLS-1$
 
 		if (object == null)
 			return getLabelImage(String.valueOf((Object)null));
@@ -189,7 +189,7 @@ public class ObjectGraphDetailTreeNode
 				return getLabelImage(c.getSimpleName());
 		}
 
-		throw new IllegalStateException("We should never come here, because classesHavingIcon contains java.lang.Object!");
+		throw new IllegalStateException("We should never come here, because classesHavingIcon contains java.lang.Object!"); //$NON-NLS-1$
 	}
 
 	private static final Class<?>[] classesHavingIcon = {

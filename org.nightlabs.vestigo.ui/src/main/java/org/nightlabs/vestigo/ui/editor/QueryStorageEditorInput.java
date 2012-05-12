@@ -45,10 +45,10 @@ public class QueryStorageEditorInput implements IEditorInput, IStorageEditorInpu
 	protected QueryStorageEditorInput(IConnectionProfile connectionProfile, IStorageEditorInput storageEditorInput)
 	{
 		if (connectionProfile == null)
-			throw new IllegalArgumentException("connectionProfile == null");
+			throw new IllegalArgumentException("connectionProfile == null"); //$NON-NLS-1$
 
 		if (storageEditorInput == null)
-			throw new IllegalArgumentException("storageEditorInput == null");
+			throw new IllegalArgumentException("storageEditorInput == null"); //$NON-NLS-1$
 
 		this.connectionProfile = connectionProfile;
 		this.storageEditorInput = storageEditorInput;

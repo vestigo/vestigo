@@ -38,10 +38,10 @@ public class ExecuteQueryEvent
 	public ExecuteQueryEvent(QueryContext queryContext, Throwable error)
 	{
 		if (queryContext == null)
-			throw new IllegalArgumentException("queryContext == null");
+			throw new IllegalArgumentException("queryContext == null"); //$NON-NLS-1$
 
 		if (error == null)
-			throw new IllegalArgumentException("error == null");
+			throw new IllegalArgumentException("error == null"); //$NON-NLS-1$
 
 		this.queryContext = queryContext;
 		this.error = error;
@@ -50,7 +50,7 @@ public class ExecuteQueryEvent
 	public ExecuteQueryEvent(QueryContext queryContext, ResultSetTableModel resultSetTableModel)
 	{
 		if (queryContext == null)
-			throw new IllegalArgumentException("queryContext == null");
+			throw new IllegalArgumentException("queryContext == null"); //$NON-NLS-1$
 
 		this.queryContext = queryContext;
 		this.resultSetTableModel = resultSetTableModel;

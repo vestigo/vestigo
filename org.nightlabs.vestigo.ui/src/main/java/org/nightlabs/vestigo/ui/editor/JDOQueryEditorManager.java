@@ -42,6 +42,6 @@ public class JDOQueryEditorManager extends QueryEditorManager
 
 	@Override
 	protected String getDefaultQueryTextForCandidateClass(String className) {
-		return String.format("SELECT FROM %s", className);
+		return String.format("SELECT FROM %s", className); //$NON-NLS-1$
 	}
 }

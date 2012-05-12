@@ -91,7 +91,7 @@ implements IStorageEditorInput
 	}
 
 	private static NullFileStore createFileStore() {
-		return new NullFileStore(new Path("")) {
+		return new NullFileStore(new Path("")) { //$NON-NLS-1$
 			@Override
 			public IFileSystem getFileSystem() {
 				return EFS.getLocalFileSystem();
@@ -101,7 +101,7 @@ implements IStorageEditorInput
 
 	@Override
 	public String getName() {
-		return super.getName() + "." + fileExtension;
+		return super.getName() + "." + fileExtension; //$NON-NLS-1$
 	}
 
 	@Override

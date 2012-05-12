@@ -46,10 +46,10 @@ public class QueryFileEditorInput implements IEditorInput, IFileEditorInput, Que
 	protected QueryFileEditorInput(IConnectionProfile connectionProfile, IFileEditorInput fileEditorInput)
 	{
 		if (connectionProfile == null)
-			throw new IllegalArgumentException("connectionProfile == null");
+			throw new IllegalArgumentException("connectionProfile == null"); //$NON-NLS-1$
 
 		if (fileEditorInput == null)
-			throw new IllegalArgumentException("fileEditorInput == null");
+			throw new IllegalArgumentException("fileEditorInput == null"); //$NON-NLS-1$
 
 		this.connectionProfile = connectionProfile;
 		this.fileEditorInput = fileEditorInput;

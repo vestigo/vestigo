@@ -60,6 +60,7 @@ import org.nightlabs.vestigo.core.ObjectReferenceChild;
 import org.nightlabs.vestigo.core.oda.ResultSet;
 import org.nightlabs.vestigo.ui.labeltextoptionaction.LabelTextOptionsContainer;
 import org.nightlabs.vestigo.ui.licence.LicenceNotValidDialog;
+import org.nightlabs.vestigo.ui.resource.Messages;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -147,7 +148,7 @@ implements LabelTextOptionsContainer, ISelectionProvider
 		registerCopyToClipboardKeyListener();
 	}
 	
-	private IAction copyAction = new Action("Copy") {
+	private IAction copyAction = new Action(Messages.getString("ObjectGraphDetailTreeComposite.copyAction.text")) { //$NON-NLS-1$
 		@Override
 		public void run() {
 			IStructuredSelection sel = (IStructuredSelection) getSelection();
@@ -174,7 +175,7 @@ implements LabelTextOptionsContainer, ISelectionProvider
 		treeViewer.getTree().addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyReleased(KeyEvent e) {
-				logger.debug("keyReleased: keyCode={}", e.keyCode);
+				logger.debug("keyReleased: keyCode={}", e.keyCode); //$NON-NLS-1$
 				if (e.keyCode == 99) // CTRL+C
 					copyAction.run();
 			}
@@ -285,7 +286,7 @@ implements LabelTextOptionsContainer, ISelectionProvider
 	private ChildrenLoadedListener childrenLoadedListener = new ChildrenLoadedListener() {
 		@Override
 		public void childrenLoaded(ChildrenLoadedEvent event) {
-			logger.debug("childrenLoadedListener.childrenLoaded: event.parentNode={}", event.getParentNode());
+			logger.debug("childrenLoadedListener.childrenLoaded: event.parentNode={}", event.getParentNode()); //$NON-NLS-1$
 
 			ObjectGraphDetailTreeNode[] childNodes = event.getParentNode().getChildNodes();
 			if (childNodes != null) {
@@ -298,10 +299,10 @@ implements LabelTextOptionsContainer, ISelectionProvider
 	private ExpansionState getCorrespondingChildExpansionState(ExpansionState parentExpansionState, ObjectGraphDetailTreeNode childTreeNode)
 	{
 		if (parentExpansionState == null)
-			throw new IllegalArgumentException("parentExpansionState == null");
+			throw new IllegalArgumentException("parentExpansionState == null"); //$NON-NLS-1$
 
 		if (childTreeNode == null)
-			throw new IllegalArgumentException("childTreeNode == null");
+			throw new IllegalArgumentException("childTreeNode == null"); //$NON-NLS-1$
 
 		String childTreeNode_fieldName = null;
 		int childTreeNode_index = -1;
@@ -319,7 +320,7 @@ implements LabelTextOptionsContainer, ISelectionProvider
 
 		if (logger.isDebugEnabled()) {
 			logger.debug(
-					"getCorrespondingChildExpansionState: parentExpansionState={} childTreeNode={} childExpansionState={}",
+					"getCorrespondingChildExpansionState: parentExpansionState={} childTreeNode={} childExpansionState={}", //$NON-NLS-1$
 					new Object[] { parentExpansionState, childTreeNode, childExpansionState }
 			);
 		}
@@ -353,7 +354,7 @@ implements LabelTextOptionsContainer, ISelectionProvider
 
 			Object element = event.getElement();
 			if (!(element instanceof ObjectGraphDetailTreeNode)) {
-				logger.debug("treeExpandedOrCollapsed: Ignoring element of unknown type: {}", element);
+				logger.debug("treeExpandedOrCollapsed: Ignoring element of unknown type: {}", element); //$NON-NLS-1$
 				return;
 			}
 
@@ -375,7 +376,7 @@ implements LabelTextOptionsContainer, ISelectionProvider
 
 	private void registerExpansionState(ObjectGraphDetailTreeNode node)
 	{
-		logger.debug("registerExpansionState: node={}", node);
+		logger.debug("registerExpansionState: node={}", node); //$NON-NLS-1$
 
 		String className = node.getRootNode().getReferencedObjectClassName();
 		ExpansionState expansionState = objectGraphRootClassName2ExpansionState.get(className);
@@ -409,7 +410,7 @@ implements LabelTextOptionsContainer, ISelectionProvider
 				}
 				else {
 					logger.warn(
-							"registerExpansionState: treeNode.getObject() returned an object of unknown type: class={} instance={}",
+							"registerExpansionState: treeNode.getObject() returned an object of unknown type: class={} instance={}", //$NON-NLS-1$
 							(object == null ? null : object.getClass().getName()),
 							object
 					);
@@ -418,7 +419,7 @@ implements LabelTextOptionsContainer, ISelectionProvider
 			}
 			isExpanded = treeViewer.getExpandedState(treeNode);
 			expansionState.setExpanded(isExpanded);
-			logger.trace("registerExpansionState: expansionState={}", expansionState);
+			logger.trace("registerExpansionState: expansionState={}", expansionState); //$NON-NLS-1$
 		}
 	}
 
@@ -437,7 +438,7 @@ implements LabelTextOptionsContainer, ISelectionProvider
 
 	private void restoreExpansionState(ObjectGraphDetailTreeNode node)
 	{
-		logger.debug("restoreExpansionState: node={}", node);
+		logger.debug("restoreExpansionState: node={}", node); //$NON-NLS-1$
 
 		ExpansionState rootExpansionState = objectGraphRootClassName2ExpansionState.get(
 				node.getRootNode().getReferencedObjectClassName()

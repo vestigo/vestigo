@@ -82,7 +82,7 @@ public class CalendarCellEditor extends DateCellEditor
 		TimeZone timeZone = getTimeZone();
 		boolean daylight = timeZone.inDaylightTime(getDateValue());
 		timeZoneButton.setText(timeZone.getDisplayName(daylight, TimeZone.SHORT));
-		timeZoneButton.setToolTipText(timeZone.getDisplayName() + " (" + timeZone.getID() + ')');
+		timeZoneButton.setToolTipText(timeZone.getDisplayName() + " (" + timeZone.getID() + ')'); //$NON-NLS-1$
 		timeZoneButton.getParent().layout(true, true);
 	}
 

@@ -22,5 +22,5 @@ package org.nightlabs.vestigo.ui.editor;
  */
 public interface JDOQueryEditor extends QueryEditor
 {
-	public static final String EDITOR_ID = "org.nightlabs.vestigo.xtext.jdoql.JDOQL";
+	public static final String EDITOR_ID = "org.nightlabs.vestigo.xtext.jdoql.JDOQL"; //$NON-NLS-1$
 }

@@ -36,7 +36,7 @@ public interface QueryEditorInput extends IEditorInput
 			if (editorInput instanceof IStorageEditorInput)
 				return new QueryStorageEditorInput(connectionProfile, (IStorageEditorInput)editorInput);
 
-			throw new IllegalArgumentException("Unsupported editorInput: " + editorInput);
+			throw new IllegalArgumentException("Unsupported editorInput: " + editorInput); //$NON-NLS-1$
 		}
 	}
 

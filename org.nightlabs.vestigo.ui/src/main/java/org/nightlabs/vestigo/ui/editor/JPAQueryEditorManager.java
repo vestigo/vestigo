@@ -43,6 +43,6 @@ public class JPAQueryEditorManager extends QueryEditorManager
 
 	@Override
 	protected String getDefaultQueryTextForCandidateClass(String className) {
-		return String.format("SELECT this FROM %s this", className);
+		return String.format("SELECT this FROM %s this", className); //$NON-NLS-1$
 	}
 }

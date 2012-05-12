@@ -38,10 +38,10 @@ public class DocumentContextManager {
 	public void register(IDocument document, QueryEditorManager queryEditorManager)
 	{
 		if (document == null)
-			throw new IllegalArgumentException("document == null");
+			throw new IllegalArgumentException("document == null"); //$NON-NLS-1$
 
 		if (queryEditorManager == null)
-			throw new IllegalArgumentException("queryEditorManager == null");
+			throw new IllegalArgumentException("queryEditorManager == null"); //$NON-NLS-1$
 
 		document2QueryEditorManager.put(document, new WeakReference<QueryEditorManager>(queryEditorManager));
 	}
@@ -49,12 +49,12 @@ public class DocumentContextManager {
 	public QueryEditorManager getQueryEditorManager(IDocument document, boolean throwExceptionIfNotFound)
 	{
 		if (document == null)
-			throw new IllegalArgumentException("document == null");
+			throw new IllegalArgumentException("document == null"); //$NON-NLS-1$
 
 		WeakReference<QueryEditorManager> reference = document2QueryEditorManager.get(document);
 		if (reference == null) {
 			if (throwExceptionIfNotFound)
-				throw new IllegalArgumentException("There is no entry for this document: " + document);
+				throw new IllegalArgumentException("There is no entry for this document: " + document); //$NON-NLS-1$
 			else
 				return null;
 		}
@@ -62,7 +62,7 @@ public class DocumentContextManager {
 		QueryEditorManager result = reference.get();
 
 		if (result == null && throwExceptionIfNotFound)
-			throw new IllegalArgumentException("There is no entry for this document: " + document);
+			throw new IllegalArgumentException("There is no entry for this document: " + document); //$NON-NLS-1$
 
 		return result;
 	}

@@ -83,9 +83,9 @@ public interface QueryEditor
 			}
 
 			if (editorInput instanceof NonExistingStorageEditorInput)
-				return "new." + Integer.toHexString(System.identityHashCode(editorInput));
+				return "new." + Integer.toHexString(System.identityHashCode(editorInput)); //$NON-NLS-1$
 
-			throw new IllegalArgumentException("Unknown implementation of IEditorInput: " + editorInput);
+			throw new IllegalArgumentException("Unknown implementation of IEditorInput: " + editorInput); //$NON-NLS-1$
 		}
 
 		public void addDisposeListener(DisposeListener listener)
