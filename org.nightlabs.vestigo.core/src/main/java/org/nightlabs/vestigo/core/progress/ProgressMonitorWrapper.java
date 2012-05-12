@@ -28,14 +28,14 @@ implements ProgressMonitor, IProgressMonitor
 
 	public ProgressMonitorWrapper(IProgressMonitor delegate) {
 		if (delegate == null)
-			throw new IllegalArgumentException("delegate == null");
+			throw new IllegalArgumentException("delegate == null"); //$NON-NLS-1$
 
 		this.delegateRCP = delegate;
 	}
 
 	public ProgressMonitorWrapper(ProgressMonitor delegate) {
 		if (delegate == null)
-			throw new IllegalArgumentException("delegate == null");
+			throw new IllegalArgumentException("delegate == null"); //$NON-NLS-1$
 
 		this.delegateNL = delegate;
 	}

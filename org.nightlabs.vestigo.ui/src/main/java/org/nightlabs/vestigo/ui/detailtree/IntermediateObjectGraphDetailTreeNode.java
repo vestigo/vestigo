@@ -30,7 +30,7 @@ public class IntermediateObjectGraphDetailTreeNode extends ObjectGraphDetailTree
 	private int toIndexIncl;
 
 	public IntermediateObjectGraphDetailTreeNode(ObjectGraphDetailTreeNode parentNode, int fromIndexIncl, int toIndexIncl) {
-		super(parentNode, String.format("[%s ... %s]", fromIndexIncl, toIndexIncl));
+		super(parentNode, String.format("[%s ... %s]", fromIndexIncl, toIndexIncl)); //$NON-NLS-1$
 		this.fromIndexIncl = fromIndexIncl;
 		this.toIndexIncl = toIndexIncl;
 		setChildNodes(new ObjectGraphDetailTreeNode[toIndexIncl - fromIndexIncl + 1]);

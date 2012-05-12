@@ -29,7 +29,7 @@ public class ChildrenLoadedEvent extends EventObject
 		super(source);
 
 		if (parentNode == null)
-			throw new IllegalArgumentException("parentNode == null");
+			throw new IllegalArgumentException("parentNode == null"); //$NON-NLS-1$
 
 		this.parentNode = parentNode;
 	}

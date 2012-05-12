@@ -32,6 +32,6 @@ public class JavaScriptFormula extends Formula
 
 	@Override
 	public String getMimeType() {
-		return "text/javascript";
+		return "text/javascript"; //$NON-NLS-1$
 	}
 }

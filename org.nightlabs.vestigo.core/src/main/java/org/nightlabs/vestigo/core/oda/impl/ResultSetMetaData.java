@@ -33,7 +33,7 @@ public class ResultSetMetaData implements IResultSetMetaData {
 
 	public ResultSetMetaData(Column ... columns) {
 		if (columns == null)
-			throw new IllegalArgumentException("columns == null");
+			throw new IllegalArgumentException("columns == null"); //$NON-NLS-1$
 
 		this.columns = columns;
 		int index = 0; // 1-based index!!!
@@ -66,10 +66,10 @@ public class ResultSetMetaData implements IResultSetMetaData {
 	private Column getColumn(int index)
 	{
 		if (index < 1)
-			throw new IllegalArgumentException("index < 1");
+			throw new IllegalArgumentException("index < 1"); //$NON-NLS-1$
 
 		if (index > columns.length)
-			throw new IllegalArgumentException("index > columns.length :: " + index + " > " + columns.length);
+			throw new IllegalArgumentException("index > columns.length :: " + index + " > " + columns.length); //$NON-NLS-1$ //$NON-NLS-2$
 
 		return columns[index - 1];
 	}
@@ -104,17 +104,17 @@ public class ResultSetMetaData implements IResultSetMetaData {
 
 	@Override
 	public int getPrecision(int index) throws OdaException {
-		throw new UnsupportedOperationException("NYI - optional method");
+		throw new UnsupportedOperationException("NYI - optional method"); //$NON-NLS-1$
 	}
 
 	@Override
 	public int getScale(int index) throws OdaException {
-		throw new UnsupportedOperationException("NYI - optional method");
+		throw new UnsupportedOperationException("NYI - optional method"); //$NON-NLS-1$
 	}
 
 	@Override
 	public int isNullable(int index) throws OdaException {
-		throw new UnsupportedOperationException("NYI - optional method");
+		throw new UnsupportedOperationException("NYI - optional method"); //$NON-NLS-1$
 	}
 
 	/**
@@ -128,7 +128,7 @@ public class ResultSetMetaData implements IResultSetMetaData {
 	{
 		Integer index = columnName2index.get(columnName);
 		if (index == null)
-			throw new IllegalArgumentException("There is no column named \"" + columnName + "\"!");
+			throw new IllegalArgumentException("There is no column named \"" + columnName + "\"!"); //$NON-NLS-1$ //$NON-NLS-2$
 		else
 			return index;
 	}

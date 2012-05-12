@@ -35,11 +35,11 @@ implements Serializable
 	public ResultSetID(String resultSetIDString)
 	{
 		if (resultSetIDString == null)
-			throw new IllegalArgumentException("resultSetIDString == null");
+			throw new IllegalArgumentException("resultSetIDString == null"); //$NON-NLS-1$
 
 		int dotIndex = resultSetIDString.lastIndexOf('.');
 		if (dotIndex < 0)
-			throw new IllegalArgumentException("resultSetIDString does not contain a '.' (dot): " + resultSetIDString);
+			throw new IllegalArgumentException("resultSetIDString does not contain a '.' (dot): " + resultSetIDString); //$NON-NLS-1$
 
 		String s1 = resultSetIDString.substring(0, dotIndex);
 		String s2 = resultSetIDString.substring(dotIndex + 1);
@@ -51,9 +51,9 @@ implements Serializable
 	public ResultSetID(UUID connectionID, int resultSetID)
 	{
 		if (connectionID == null)
-			throw new IllegalArgumentException("connectionID == null");
+			throw new IllegalArgumentException("connectionID == null"); //$NON-NLS-1$
 		if (resultSetID < 0)
-			throw new IllegalArgumentException("resultSetID < 0");
+			throw new IllegalArgumentException("resultSetID < 0"); //$NON-NLS-1$
 
 		this.connectionID = connectionID;
 		this.resultSetID = resultSetID;

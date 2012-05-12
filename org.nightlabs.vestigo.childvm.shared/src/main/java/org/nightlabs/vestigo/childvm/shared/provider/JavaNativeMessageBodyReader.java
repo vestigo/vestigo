@@ -50,11 +50,11 @@ implements MessageBodyReader<Object>
 
 	private String getLogPrefix()
 	{
-		return "(" + Integer.toHexString(System.identityHashCode(this)) + ") ";
+		return "(" + Integer.toHexString(System.identityHashCode(this)) + ") "; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	public JavaNativeMessageBodyReader() {
-		System.out.println(JavaNativeMessageBodyReader.class.getName() + getLogPrefix() + ": instantiated.");
+		System.out.println(JavaNativeMessageBodyReader.class.getName() + getLogPrefix() + ": instantiated."); //$NON-NLS-1$
 	}
 
 	@Override

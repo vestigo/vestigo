@@ -65,7 +65,7 @@ public abstract class AbstractConnectionProfile implements ConnectionProfile
 	}
 	@Override
 	public void setProfileID(String profileID) {
-		logger.info("setProfileID: profileID={}", profileID);
+		logger.info("setProfileID: profileID={}", profileID); //$NON-NLS-1$
 		this.profileID = profileID;
 	}
 
@@ -121,7 +121,7 @@ public abstract class AbstractConnectionProfile implements ConnectionProfile
 
 	protected void preFirstConnectionOpen(Connection connection) throws OdaException
 	{
-		logger.info("preFirstConnectionOpen: profileID={} connection={}", profileID, connection);
+		logger.info("preFirstConnectionOpen: profileID={} connection={}", profileID, connection); //$NON-NLS-1$
 		this.persistentConnectionProperties = connection.getConnectionProperties();
 		this.transientConnectionProperties = obtainTransientConnectionProperties();
 		this.classesKey2IsClassAssignableFromResult = new HashMap<String, Boolean>();
@@ -160,7 +160,7 @@ public abstract class AbstractConnectionProfile implements ConnectionProfile
 		IConfigurationElement element = getConfigurationElementForConnectionProfileClass(this.getClass());
 		if (element == null) {
 			logger.warn(
-					"obtainTransientConnectionProperties: There is no extension to point '{}' matching the connectionProfileClass '{}'!",
+					"obtainTransientConnectionProperties: There is no extension to point '{}' matching the connectionProfileClass '{}'!", //$NON-NLS-1$
 					extensionPointId_transientConnectionPropertiesProvider, this.getClass().getName()
 			);
 			return null;
@@ -168,13 +168,13 @@ public abstract class AbstractConnectionProfile implements ConnectionProfile
 
 		Object executableExtension;
 		try {
-			executableExtension = element.createExecutableExtension("class");
+			executableExtension = element.createExecutableExtension("class"); //$NON-NLS-1$
 		} catch (CoreException e) {
-			throw new RuntimeException("Could not create executable extension for class \"" + element.getAttribute("class") + "\"!!! Extension registered in bundle \"" + element.getContributor().getName() + "\". Cause: " + e, e);
+			throw new RuntimeException("Could not create executable extension for class \"" + element.getAttribute("class") + "\"!!! Extension registered in bundle \"" + element.getContributor().getName() + "\". Cause: " + e, e); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
 		}
 
 		if (!(executableExtension instanceof TransientConnectionPropertiesProvider))
-			throw new ClassCastException("Class \"" + element.getAttribute("class") + "\" does not implement interface \"" + TransientConnectionPropertiesProvider.class.getName() + "\"!!! Extension registered in bundle \"" + element.getContributor().getName() + "\".");
+			throw new ClassCastException("Class \"" + element.getAttribute("class") + "\" does not implement interface \"" + TransientConnectionPropertiesProvider.class.getName() + "\"!!! Extension registered in bundle \"" + element.getContributor().getName() + "\"."); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$
 
 		TransientConnectionPropertiesProvider provider = (TransientConnectionPropertiesProvider) executableExtension;
 		Collection<String> transientConnectionPropertyKeys = getTransientConnectionPropertyKeys();
@@ -217,7 +217,7 @@ public abstract class AbstractConnectionProfile implements ConnectionProfile
 		return element;
 	}
 
-	private static final String extensionPointId_transientConnectionPropertiesProvider = "org.nightlabs.vestigo.core.transientConnectionPropertiesProvider";
+	private static final String extensionPointId_transientConnectionPropertiesProvider = "org.nightlabs.vestigo.core.transientConnectionPropertiesProvider"; //$NON-NLS-1$
 
 	protected static synchronized Map<String, IConfigurationElement> getConnectionProfileClassName2ConfigurationElementMap()
 	{
@@ -227,7 +227,7 @@ public abstract class AbstractConnectionProfile implements ConnectionProfile
 
 			final IExtensionRegistry registry = Platform.getExtensionRegistry();
 			if (registry == null)
-				throw new IllegalStateException("Platform.getExtensionRegistry() returned null!");
+				throw new IllegalStateException("Platform.getExtensionRegistry() returned null!"); //$NON-NLS-1$
 
 			final String extensionPointId = extensionPointId_transientConnectionPropertiesProvider;
 			final IExtensionPoint extensionPoint = registry.getExtensionPoint(extensionPointId);
@@ -238,10 +238,10 @@ public abstract class AbstractConnectionProfile implements ConnectionProfile
 			for (final IExtension extension : extensions) {
 				final IConfigurationElement[] elements = extension.getConfigurationElements();
 				for (final IConfigurationElement element : elements) {
-					String connectionProfileClassName = element.getAttribute("connectionProfileClass"); // class or interface
+					String connectionProfileClassName = element.getAttribute("connectionProfileClass"); // class or interface //$NON-NLS-1$
 					if (connectionProfileClassName == null) {
 						logger.warn(
-								"getConnectionProfileClassName2ConfigurationElementMap: Extension-element to point '{}' misses attribute 'connectionProfileClass'! Affected plugin: {}",
+								"getConnectionProfileClassName2ConfigurationElementMap: Extension-element to point '{}' misses attribute 'connectionProfileClass'! Affected plugin: {}", //$NON-NLS-1$
 								extensionPointId, extension.getContributor().getName()
 						);
 						continue;
@@ -250,7 +250,7 @@ public abstract class AbstractConnectionProfile implements ConnectionProfile
 					IConfigurationElement oldElement = map.put(connectionProfileClassName, element);
 					if (oldElement != null) {
 						logger.warn(
-								"There are multiple plug-ins contributing extensions for extensionPointId='{}' and connectionProfileClass='{}'! Affected plugins: {} and {}",
+								"There are multiple plug-ins contributing extensions for extensionPointId='{}' and connectionProfileClass='{}'! Affected plugins: {} and {}", //$NON-NLS-1$
 								new Object[] { extensionPointId, connectionProfileClassName, oldElement.getContributor().getName(), element.getContributor().getName()}
 						);
 					}
@@ -263,7 +263,7 @@ public abstract class AbstractConnectionProfile implements ConnectionProfile
 	}
 
 	protected void postFirstConnectionOpen(Connection connection) throws OdaException {
-		logger.info("postFirstConnectionOpen: profileID={} connection={}", profileID, connection);
+		logger.info("postFirstConnectionOpen: profileID={} connection={}", profileID, connection); //$NON-NLS-1$
 
 	}
 
@@ -296,7 +296,7 @@ public abstract class AbstractConnectionProfile implements ConnectionProfile
 
 	protected synchronized void postLastConnectionClose(Connection connection) throws OdaException
 	{
-		logger.info("postLastConnectionClose: profileID={} connection={}", profileID, connection);
+		logger.info("postLastConnectionClose: profileID={} connection={}", profileID, connection); //$NON-NLS-1$
 		try {
 			getChildVMServer().close();
 		} catch (IOException e) {
@@ -355,10 +355,10 @@ public abstract class AbstractConnectionProfile implements ConnectionProfile
 	private String getClassesKey(String targetClass, String candidateClass)
 	{
 		if (targetClass == null)
-			throw new IllegalArgumentException("targetClass == null");
+			throw new IllegalArgumentException("targetClass == null"); //$NON-NLS-1$
 
 		if (candidateClass == null)
-			throw new IllegalArgumentException("candidateClass == null");
+			throw new IllegalArgumentException("candidateClass == null"); //$NON-NLS-1$
 
 		return targetClass + ':' + candidateClass;
 	}
@@ -367,7 +367,7 @@ public abstract class AbstractConnectionProfile implements ConnectionProfile
 	public synchronized boolean isClassAssignableFrom(String targetClass, String candidateClass)
 	{
 		if (classesKey2IsClassAssignableFromResult == null)
-			throw new IllegalStateException("Profile is not open! classesKey2IsClassAssignableFromResult == null");
+			throw new IllegalStateException("Profile is not open! classesKey2IsClassAssignableFromResult == null"); //$NON-NLS-1$
 
 		String classesKey = getClassesKey(targetClass, candidateClass);
 		Boolean result = classesKey2IsClassAssignableFromResult.get(classesKey);

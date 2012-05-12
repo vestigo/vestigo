@@ -33,9 +33,9 @@ implements Serializable
 	public QueryID(UUID connectionID, int queryID)
 	{
 		if (connectionID == null)
-			throw new IllegalArgumentException("connectionID == null");
+			throw new IllegalArgumentException("connectionID == null"); //$NON-NLS-1$
 		if (queryID < 0)
-			throw new IllegalArgumentException("queryID < 0");
+			throw new IllegalArgumentException("queryID < 0"); //$NON-NLS-1$
 
 		this.connectionID = connectionID;
 		this.queryID = queryID;

@@ -35,23 +35,23 @@ public class PersistenceEngineClassLoader extends URLClassLoader
 
 		private boolean isExcludedClass(String name)
 		{
-			if (name.startsWith("com.sun.jersey")) {
-				logger.debug("isExcludedClass: returning true: {}", name);
+			if (name.startsWith("com.sun.jersey")) { //$NON-NLS-1$
+				logger.debug("isExcludedClass: returning true: {}", name); //$NON-NLS-1$
 				return true;
 			}
 
-			logger.trace("isExcludedClass: returning false: {}", name);
+			logger.trace("isExcludedClass: returning false: {}", name); //$NON-NLS-1$
 			return false;
 		}
 
 		private boolean isExcludedResource(String name)
 		{
-			if (name.startsWith("com/sun/jersey") || name.startsWith("/com/sun/jersey")) {
-				logger.debug("isExcludedResource: returning true: {}", name);
+			if (name.startsWith("com/sun/jersey") || name.startsWith("/com/sun/jersey")) { //$NON-NLS-1$ //$NON-NLS-2$
+				logger.debug("isExcludedResource: returning true: {}", name); //$NON-NLS-1$
 				return true;
 			}
 
-			logger.trace("isExcludedResource: returning false: {}", name);
+			logger.trace("isExcludedResource: returning false: {}", name); //$NON-NLS-1$
 			return false;
 		}
 
@@ -101,10 +101,10 @@ public class PersistenceEngineClassLoader extends URLClassLoader
 	protected Class<?> findClass(String name) throws ClassNotFoundException {
 		try {
 			Class<?> clazz = super.findClass(name);
-			logger.trace("findClass: found: {}", name);
+			logger.trace("findClass: found: {}", name); //$NON-NLS-1$
 			return clazz;
 		} catch (ClassNotFoundException x) {
-			logger.debug("findClass: not found: {}", name);
+			logger.debug("findClass: not found: {}", name); //$NON-NLS-1$
 			throw x;
 		}
 	}

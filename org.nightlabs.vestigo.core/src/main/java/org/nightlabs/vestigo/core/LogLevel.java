@@ -17,21 +17,23 @@
  */
 package org.nightlabs.vestigo.core;
 
+import org.nightlabs.vestigo.core.resource.Messages;
+
 public enum LogLevel
 {
-	TRACE("TRACE (log everything)"),
-	DEBUG("DEBUG (log a lot)"),
-	INFO("INFO (log normally)"),
-	WARN("WARN (log only warnings and errors)"),
-	ERROR("ERROR (log only errors)"),
-	FATAL("FATAL (log only severe errors)");
+	TRACE(Messages.getString("LogLevel.TRACE")), //$NON-NLS-1$
+	DEBUG(Messages.getString("LogLevel.DEBUG")), //$NON-NLS-1$
+	INFO(Messages.getString("LogLevel.INFO")), //$NON-NLS-1$
+	WARN(Messages.getString("LogLevel.WARN")), //$NON-NLS-1$
+	ERROR(Messages.getString("LogLevel.ERROR")), //$NON-NLS-1$
+	FATAL(Messages.getString("LogLevel.FATAL")); //$NON-NLS-1$
 
 	private String displayName;
 
 	private LogLevel(String displayName)
 	{
 		if (displayName == null)
-			throw new IllegalArgumentException("displayName == null");
+			throw new IllegalArgumentException("displayName == null"); //$NON-NLS-1$
 
 		this.displayName = displayName;
 	}

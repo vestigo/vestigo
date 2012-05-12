@@ -52,7 +52,7 @@ public final class LabelTextUtil {
 				else
 					sb.append(getPrimitiveIfApplicable(fieldDesc, object.getClass()).getSimpleName());
 			}
-			sb.append(") ");
+			sb.append(") "); //$NON-NLS-1$
 		}
 
 		sb.append(String.valueOf(object));

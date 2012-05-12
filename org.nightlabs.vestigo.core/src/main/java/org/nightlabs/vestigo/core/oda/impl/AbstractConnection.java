@@ -91,15 +91,15 @@ public abstract class AbstractConnection implements Connection
 	public synchronized final void open(Properties connProperties) throws OdaException
 	{
 		if (connProperties == null)
-			throw new IllegalArgumentException("connProperties == null");
+			throw new IllegalArgumentException("connProperties == null"); //$NON-NLS-1$
 
 		this.connectionProperties = connProperties;
 
 		String profileID = PropertiesUtil.getProfileID(connProperties);
 		if (profileID == null)
-			throw new IllegalStateException("PropertiesUtil.getProfileID(connProperties) returned null!");
+			throw new IllegalStateException("PropertiesUtil.getProfileID(connProperties) returned null!"); //$NON-NLS-1$
 
-		logger.info("open: profileID={}", profileID);
+		logger.info("open: profileID={}", profileID); //$NON-NLS-1$
 
 		this.connectionProfile = ConnectionProfileRegistry.sharedInstance().getConnectionProfile(this.getClass(), profileID);
 
@@ -116,7 +116,7 @@ public abstract class AbstractConnection implements Connection
 				try {
 					close();
 				} catch (Throwable t) {
-					logger.error("open: Closing connection due to error while opening resulted in another error: " + t, t);
+					logger.error("open: Closing connection due to error while opening resulted in another error: " + t, t); //$NON-NLS-1$
 				}
 			}
 		}
@@ -136,7 +136,7 @@ public abstract class AbstractConnection implements Connection
 		// TODO BEGIN remove this debug stuff
 		Collection<ConnectionDTO> connectionDTOs = getChildVM().getConnectionDTOs(null);
 		for (ConnectionDTO connectionDTO : connectionDTOs) {
-			System.out.println("connectionDTO.connectionID=" + connectionDTO.getConnectionID());
+			System.out.println("connectionDTO.connectionID=" + connectionDTO.getConnectionID()); //$NON-NLS-1$
 		}
 		// TODO END remove this debug stuff
 	}
@@ -153,7 +153,7 @@ public abstract class AbstractConnection implements Connection
 	@Override
 	public synchronized final void close() throws OdaException
 	{
-		logger.info("close: profileID={}", connectionProfile == null ? null : connectionProfile.getProfileID());
+		logger.info("close: profileID={}", connectionProfile == null ? null : connectionProfile.getProfileID()); //$NON-NLS-1$
 
 		ArrayList<Throwable> errors = new ArrayList<Throwable>();
 
@@ -161,7 +161,7 @@ public abstract class AbstractConnection implements Connection
 			try {
 				connectionProfile.preConnectionClose(this);
 			} catch (Exception x) {
-				logger.error("close: " + x, x);
+				logger.error("close: " + x, x); //$NON-NLS-1$
 				errors.add(x);
 			}
 		}
@@ -169,21 +169,21 @@ public abstract class AbstractConnection implements Connection
 		try {
 			preClose();
 		} catch (Exception x) {
-			logger.error("close: " + x, x);
+			logger.error("close: " + x, x); //$NON-NLS-1$
 			errors.add(x);
 		}
 
 		try {
 			doClose();
 		} catch (Exception x) {
-			logger.error("close: " + x, x);
+			logger.error("close: " + x, x); //$NON-NLS-1$
 			errors.add(x);
 		}
 
 		try {
 			postClose();
 		} catch (Exception x) {
-			logger.error("close: " + x, x);
+			logger.error("close: " + x, x); //$NON-NLS-1$
 			errors.add(x);
 		}
 
@@ -191,7 +191,7 @@ public abstract class AbstractConnection implements Connection
 			try {
 				connectionProfile.postConnectionClose(this);
 			} catch (Exception x) {
-				logger.error("close: " + x, x);
+				logger.error("close: " + x, x); //$NON-NLS-1$
 				errors.add(x);
 			}
 		}
@@ -223,7 +223,7 @@ public abstract class AbstractConnection implements Connection
 
 	protected void assertOpen() throws OdaException {
 		if (!isOpen())
-			throw new OdaException(new IllegalStateException("Connection is not open!"));
+			throw new OdaException(new IllegalStateException("Connection is not open!")); //$NON-NLS-1$
 	}
 
 	@Override

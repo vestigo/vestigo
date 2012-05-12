@@ -34,6 +34,7 @@ import org.nightlabs.vestigo.core.LogLevel;
 import org.nightlabs.vestigo.core.VestigoCorePlugin;
 import org.nightlabs.vestigo.core.childvm.internal.ChildVMServer;
 import org.nightlabs.vestigo.ui.preference.MultiLineStringFieldEditor;
+import org.nightlabs.vestigo.ui.resource.Messages;
 
 public class ChildVMPreferencePage extends FieldEditorPreferencePage implements IWorkbenchPreferencePage
 {
@@ -46,7 +47,7 @@ public class ChildVMPreferencePage extends FieldEditorPreferencePage implements 
 	public void init(IWorkbench workbench)
 	{
 		setPreferenceStore(new ScopedPreferenceStore(new InstanceScope(), VestigoCorePlugin.BUNDLE_SYMBOLIC_NAME));
-		setDescription("Settings to control the behaviour of the child VM.");
+		setDescription(Messages.getString("ChildVMPreferencePage.description")); //$NON-NLS-1$
 
 		getPreferenceStore().setDefault(ChildVMServer.PREFERENCE_KEY_JAVA_COMMAND, ChildVMServer.PREFERENCE_DEFAULT_JAVA_COMMAND);
 		getPreferenceStore().setDefault(ChildVMServer.PREFERENCE_KEY_JAVA_HEAP_MAX_MB, ChildVMServer.PREFERENCE_DEFAULT_JAVA_HEAP_MAX_MB);
@@ -68,7 +69,7 @@ public class ChildVMPreferencePage extends FieldEditorPreferencePage implements 
 
 	@Override
 	public void createControl(Composite parent) {
-		setTitle("Vestigo Child VM");
+		setTitle(Messages.getString("ChildVMPreferencePage.title")); //$NON-NLS-1$
 		super.createControl(parent);
 	}
 
@@ -77,15 +78,15 @@ public class ChildVMPreferencePage extends FieldEditorPreferencePage implements 
 	{
 		addHorizontalSeparator(getFieldEditorParent());
 
-		addField(new StringFieldEditor(ChildVMServer.PREFERENCE_KEY_JAVA_COMMAND, "Java: Command:", getFieldEditorParent()));
-		addField(new IntegerFieldEditor(ChildVMServer.PREFERENCE_KEY_JAVA_HEAP_MAX_MB, "Java: Max heap size (MB):", getFieldEditorParent()));
-		addField(new IntegerFieldEditor(ChildVMServer.PREFERENCE_KEY_JAVA_HEAP_MIN_MB, "Java: Min heap size (MB):", getFieldEditorParent()));
-		addField(new IntegerFieldEditor(ChildVMServer.PREFERENCE_KEY_JAVA_PERM_GEN_MAX_MB, "Java: Max PermGen size (MB):", getFieldEditorParent()));
-		addField(new BooleanFieldEditor(ChildVMServer.PREFERENCE_KEY_JAVA_PERM_GEN_GC_ENABLED, "Java: PermGen garbage collection:", BooleanFieldEditor.SEPARATE_LABEL, getFieldEditorParent()));
+		addField(new StringFieldEditor(ChildVMServer.PREFERENCE_KEY_JAVA_COMMAND, Messages.getString("ChildVMPreferencePage.java.command"), getFieldEditorParent())); //$NON-NLS-1$
+		addField(new IntegerFieldEditor(ChildVMServer.PREFERENCE_KEY_JAVA_HEAP_MAX_MB, Messages.getString("ChildVMPreferencePage.java.heap.size.max"), getFieldEditorParent())); //$NON-NLS-1$
+		addField(new IntegerFieldEditor(ChildVMServer.PREFERENCE_KEY_JAVA_HEAP_MIN_MB, Messages.getString("ChildVMPreferencePage.java.heap.size.min"), getFieldEditorParent())); //$NON-NLS-1$
+		addField(new IntegerFieldEditor(ChildVMServer.PREFERENCE_KEY_JAVA_PERM_GEN_MAX_MB, Messages.getString("ChildVMPreferencePage.java.permgen.size.max"), getFieldEditorParent())); //$NON-NLS-1$
+		addField(new BooleanFieldEditor(ChildVMServer.PREFERENCE_KEY_JAVA_PERM_GEN_GC_ENABLED, Messages.getString("ChildVMPreferencePage.java.permgen.gc.enabled"), BooleanFieldEditor.SEPARATE_LABEL, getFieldEditorParent())); //$NON-NLS-1$
 
 		addHorizontalSeparator(getFieldEditorParent());
 
-		addField(new IntegerFieldEditor(ChildVMServer.PREFERENCE_KEY_SERVER_START_TIMEOUT_MS, "Server start timeout (ms):", getFieldEditorParent()));
+		addField(new IntegerFieldEditor(ChildVMServer.PREFERENCE_KEY_SERVER_START_TIMEOUT_MS, Messages.getString("ChildVMPreferencePage.serverStartTimeout"), getFieldEditorParent())); //$NON-NLS-1$
 
 		addHorizontalSeparator(getFieldEditorParent());
 
@@ -95,21 +96,21 @@ public class ChildVMPreferencePage extends FieldEditorPreferencePage implements 
 			logLevelNamesAndValues[i] = new String[] { logLevel.getDisplayName(), logLevel.name() };
 		}
 
-		addField(new ComboFieldEditor(ChildVMServer.PREFERENCE_KEY_LOG4J_ROOT_LOG_LEVEL, "Log4j: Root log level:", logLevelNamesAndValues, getFieldEditorParent()));
-		addField(new MultiLineStringFieldEditor(ChildVMServer.PREFERENCE_KEY_LOG4J_ADDITIONAL_PROPERTIES, "Log4j: Additional properties:", getFieldEditorParent()));
+		addField(new ComboFieldEditor(ChildVMServer.PREFERENCE_KEY_LOG4J_ROOT_LOG_LEVEL, Messages.getString("ChildVMPreferencePage.log4j.rootLogLevel"), logLevelNamesAndValues, getFieldEditorParent())); //$NON-NLS-1$
+		addField(new MultiLineStringFieldEditor(ChildVMServer.PREFERENCE_KEY_LOG4J_ADDITIONAL_PROPERTIES, Messages.getString("ChildVMPreferencePage.log4j.additionalProperties"), getFieldEditorParent())); //$NON-NLS-1$
 
 		addHorizontalSeparator(getFieldEditorParent());
 
-		addField(new BooleanFieldEditor(ChildVMServer.PREFERENCE_KEY_DEBUG_MODE_ENABLED, "Debugging: Enabled:", BooleanFieldEditor.SEPARATE_LABEL, getFieldEditorParent()));
-		addField(new IntegerFieldEditor(ChildVMServer.PREFERENCE_KEY_DEBUG_MODE_PORT, "Debugging: Port:", getFieldEditorParent()));
-		addField(new BooleanFieldEditor(ChildVMServer.PREFERENCE_KEY_DEBUG_MODE_WAIT_FOR_DEBUGGER, "Debugging: Wait for debugger:", BooleanFieldEditor.SEPARATE_LABEL, getFieldEditorParent()));
+		addField(new BooleanFieldEditor(ChildVMServer.PREFERENCE_KEY_DEBUG_MODE_ENABLED, Messages.getString("ChildVMPreferencePage.debugging.enabled"), BooleanFieldEditor.SEPARATE_LABEL, getFieldEditorParent())); //$NON-NLS-1$
+		addField(new IntegerFieldEditor(ChildVMServer.PREFERENCE_KEY_DEBUG_MODE_PORT, Messages.getString("ChildVMPreferencePage.debugging.port"), getFieldEditorParent())); //$NON-NLS-1$
+		addField(new BooleanFieldEditor(ChildVMServer.PREFERENCE_KEY_DEBUG_MODE_WAIT_FOR_DEBUGGER, Messages.getString("ChildVMPreferencePage.debugging.waitForDebugger"), BooleanFieldEditor.SEPARATE_LABEL, getFieldEditorParent())); //$NON-NLS-1$
 
 		addHorizontalSeparator(getFieldEditorParent());
 
-		addField(new IntegerFieldEditor(ChildVMServer.PREFERENCE_KEY_WAC_SOCKET_CONNECT_TIMEOUT_MS, "Client: Socket connect timeout:", getFieldEditorParent()));
-		addField(new IntegerFieldEditor(ChildVMServer.PREFERENCE_KEY_WAC_SOCKET_READ_TIMEOUT_MS, "Client: Socket read timeout:", getFieldEditorParent()));
-		addField(new IntegerFieldEditor(ChildVMServer.PREFERENCE_KEY_WAC_ONLINECHECK_SOCKET_CONNECT_TIMEOUT_MS, "Client: Online-check: Socket connect timeout:", getFieldEditorParent()));
-		addField(new IntegerFieldEditor(ChildVMServer.PREFERENCE_KEY_WAC_ONLINECHECK_SOCKET_READ_TIMEOUT_MS, "Client: Online-check: Socket read timeout:", getFieldEditorParent()));
+		addField(new IntegerFieldEditor(ChildVMServer.PREFERENCE_KEY_WAC_SOCKET_CONNECT_TIMEOUT_MS, Messages.getString("ChildVMPreferencePage.client.socketConnectTimeout"), getFieldEditorParent())); //$NON-NLS-1$
+		addField(new IntegerFieldEditor(ChildVMServer.PREFERENCE_KEY_WAC_SOCKET_READ_TIMEOUT_MS, Messages.getString("ChildVMPreferencePage.client.socketReadTimeout"), getFieldEditorParent())); //$NON-NLS-1$
+		addField(new IntegerFieldEditor(ChildVMServer.PREFERENCE_KEY_WAC_ONLINECHECK_SOCKET_CONNECT_TIMEOUT_MS, Messages.getString("ChildVMPreferencePage.client.onlineCheck.socketConnectTimeout"), getFieldEditorParent())); //$NON-NLS-1$
+		addField(new IntegerFieldEditor(ChildVMServer.PREFERENCE_KEY_WAC_ONLINECHECK_SOCKET_READ_TIMEOUT_MS, Messages.getString("ChildVMPreferencePage.client.onlineCheck.socketReadTimeout"), getFieldEditorParent())); //$NON-NLS-1$
 	}
 
 	private void addHorizontalSeparator(Composite parent)

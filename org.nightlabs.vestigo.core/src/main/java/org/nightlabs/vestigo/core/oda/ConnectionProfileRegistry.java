@@ -48,7 +48,7 @@ public class ConnectionProfileRegistry
 	public synchronized ConnectionProfile getConnectionProfile(String profileID)
 	{
 		if (profileID == null)
-			throw new IllegalArgumentException("profileID == null");
+			throw new IllegalArgumentException("profileID == null"); //$NON-NLS-1$
 
 		return profileID2connectionProfile.get(profileID);
 	}
@@ -56,19 +56,19 @@ public class ConnectionProfileRegistry
 	public synchronized ConnectionProfile getConnectionProfile(Class<? extends Connection> connectionClass, String profileID)
 	{
 		if (connectionClass == null)
-			throw new IllegalArgumentException("connectionClass == null");
+			throw new IllegalArgumentException("connectionClass == null"); //$NON-NLS-1$
 
 		if (profileID == null)
-			throw new IllegalArgumentException("profileID == null");
+			throw new IllegalArgumentException("profileID == null"); //$NON-NLS-1$
 
 		ConnectionProfile result = profileID2connectionProfile.get(profileID);
 		if (result == null) {
 
 			final IExtensionRegistry registry = Platform.getExtensionRegistry();
 			if (registry == null)
-				throw new IllegalStateException("Platform.getExtensionRegistry() returned null!");
+				throw new IllegalStateException("Platform.getExtensionRegistry() returned null!"); //$NON-NLS-1$
 
-			final String extensionPointId = "org.nightlabs.vestigo.core.connectionProfile";
+			final String extensionPointId = "org.nightlabs.vestigo.core.connectionProfile"; //$NON-NLS-1$
 			final IExtensionPoint extensionPoint = registry.getExtensionPoint(extensionPointId);
 			if (extensionPoint == null)
 				throw new IllegalStateException("Unable to resolve extension-point: " + extensionPointId); //$NON-NLS-1$
@@ -79,11 +79,11 @@ public class ConnectionProfileRegistry
 			for (final IExtension extension : extensions) {
 				final IConfigurationElement[] elements = extension.getConfigurationElements();
 				for (final IConfigurationElement element : elements) {
-					String extConnectionType = element.getAttribute("connectionType");
+					String extConnectionType = element.getAttribute("connectionType"); //$NON-NLS-1$
 					if (!matchesConnectionClass(connectionClass, extConnectionType))
 						continue;
 
-					String priorityStr = element.getAttribute("priority");
+					String priorityStr = element.getAttribute("priority"); //$NON-NLS-1$
 					Integer priority;
 					if (priorityStr == null || priorityStr.isEmpty())
 						priority = 500;
@@ -100,7 +100,7 @@ public class ConnectionProfileRegistry
 			}
 
 			if (priority2configurationElement.isEmpty())
-				throw new IllegalStateException("There is no plug-in contributing a connectionProfile for the connectionClass \"" + connectionClass.getName() + "\" (extension-point \"" + extensionPointId + "\")!!!");
+				throw new IllegalStateException("There is no plug-in contributing a connectionProfile for the connectionClass \"" + connectionClass.getName() + "\" (extension-point \"" + extensionPointId + "\")!!!"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 
 			Integer highestPriority = priority2configurationElement.lastKey();
 			List<IConfigurationElement> configurationElements = priority2configurationElement.get(highestPriority);
@@ -109,13 +109,13 @@ public class ConnectionProfileRegistry
 
 			Object executableExtension;
 			try {
-				executableExtension = element.createExecutableExtension("class");
+				executableExtension = element.createExecutableExtension("class"); //$NON-NLS-1$
 			} catch (CoreException e) {
-				throw new IllegalStateException("Could not create executable extension for class \"" + element.getAttribute("class") + "\"!!! Extension registered in bundle \"" + element.getContributor().getName() + "\". Cause: " + e, e);
+				throw new IllegalStateException("Could not create executable extension for class \"" + element.getAttribute("class") + "\"!!! Extension registered in bundle \"" + element.getContributor().getName() + "\". Cause: " + e, e); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
 			}
 
 			if (!(executableExtension instanceof ConnectionProfile))
-				throw new ClassCastException("Class \"" + element.getAttribute("class") + "\" does not implement interface \"" + ConnectionProfile.class.getName() + "\"!!! Extension registered in bundle \"" + element.getContributor().getName() + "\".");
+				throw new ClassCastException("Class \"" + element.getAttribute("class") + "\" does not implement interface \"" + ConnectionProfile.class.getName() + "\"!!! Extension registered in bundle \"" + element.getContributor().getName() + "\"."); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$
 
 			result = (ConnectionProfile) executableExtension;
 			result.setProfileID(profileID);

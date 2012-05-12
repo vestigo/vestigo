@@ -34,7 +34,7 @@ import org.nightlabs.vestigo.childvm.shared.PropertiesUtil;
 
 public class ResolveClasspathWorkspaceVariableConnectionPropertiesFilter extends AbstractConnectionPropertiesFilter
 {
-	public static final String PROPERTY_WORKSPACE = "workspace";
+	public static final String PROPERTY_WORKSPACE = "workspace"; //$NON-NLS-1$
 
 	private IWorkspaceRoot workspaceRoot;
 	private String workspaceRootAbsolutePath;
@@ -60,7 +60,7 @@ public class ResolveClasspathWorkspaceVariableConnectionPropertiesFilter extends
 		Map<String, List<String>> replaceClasspathEntries = new HashMap<String, List<String>>();
 
 		for (String peClasspathEntry : persistenceEngineClasspathStringList) {
-			if (!peClasspathEntry.startsWith("file:"))
+			if (!peClasspathEntry.startsWith("file:")) //$NON-NLS-1$
 				continue;
 
 			if (replaceClasspathEntries.containsKey(peClasspathEntry))
@@ -84,7 +84,7 @@ public class ResolveClasspathWorkspaceVariableConnectionPropertiesFilter extends
 			List<String> newClasspathEntries = me.getValue();
 			int index = persistenceEngineClasspathStringList.indexOf(oldClasspathEntry);
 			if (index < 0)
-				throw new IllegalStateException("persistenceEngineClasspathStringList.indexOf(oldClasspathEntry) < 0 :: oldClasspathEntry = " + oldClasspathEntry);
+				throw new IllegalStateException("persistenceEngineClasspathStringList.indexOf(oldClasspathEntry) < 0 :: oldClasspathEntry = " + oldClasspathEntry); //$NON-NLS-1$
 
 			newClasspathEntries.removeAll(alreadyAddedNewClasspathEntries);
 
@@ -110,8 +110,8 @@ public class ResolveClasspathWorkspaceVariableConnectionPropertiesFilter extends
 	{
 		// We filter only those that are defined by the standard and that are likely to contain a
 		// path with a variable. Marco :-)
-		filterPersistenceProperty(connectionProperties, "javax.jdo.option.ConnectionURL");
-		filterPersistenceProperty(connectionProperties, "javax.persistence.jdbc.url");
+		filterPersistenceProperty(connectionProperties, "javax.jdo.option.ConnectionURL"); //$NON-NLS-1$
+		filterPersistenceProperty(connectionProperties, "javax.persistence.jdbc.url"); //$NON-NLS-1$
 	}
 
 	private void filterPersistenceProperty(Properties connectionProperties, String property)

@@ -26,7 +26,7 @@ public class ResultCellTransientObjectRefDTO extends ResultCellObjectRefDTO
 {
 	private static final long serialVersionUID = 1L;
 
-	public static final String OBJECT_ID_PREFIX = "transient.";
+	public static final String OBJECT_ID_PREFIX = "transient."; //$NON-NLS-1$
 
 	public ResultCellTransientObjectRefDTO(Field field, Class<?> objectClass, Long objectID, String objectToString) {
 		super(
@@ -52,7 +52,7 @@ public class ResultCellTransientObjectRefDTO extends ResultCellObjectRefDTO
 	public static Long getTransientObjectID(String objectIDString)
 	{
 		if (!isTransientObjectID(objectIDString))
-			throw new IllegalArgumentException("objectIDString is not a transient objectID: " + objectIDString);
+			throw new IllegalArgumentException("objectIDString is not a transient objectID: " + objectIDString); //$NON-NLS-1$
 
 		String substring = objectIDString.substring(OBJECT_ID_PREFIX.length());
 		return new Long(substring);

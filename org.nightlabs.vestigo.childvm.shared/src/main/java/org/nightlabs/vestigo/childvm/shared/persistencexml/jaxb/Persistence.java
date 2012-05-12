@@ -153,7 +153,7 @@ public class Persistence
      */
     public String getVersion() {
         if (version == null) {
-            return "2.0";
+            return "2.0"; //$NON-NLS-1$
         } else {
             return version;
         }

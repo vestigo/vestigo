@@ -62,52 +62,52 @@ public class ChildVMServer
 	/**
 	 * Properties files are encoded with ISO-8859-1.
 	 */
-	public static final String CHARSET_NAME_ISO_8859_1 = "ISO-8859-1";
+	public static final String CHARSET_NAME_ISO_8859_1 = "ISO-8859-1"; //$NON-NLS-1$
 
-	public static final String CHILD_VM_LOGGER_NAME = "org.nightlabs.vestigo.CHILD_VM";
+	public static final String CHILD_VM_LOGGER_NAME = "org.nightlabs.vestigo.CHILD_VM"; //$NON-NLS-1$
 
-	public static final String PREFERENCE_KEY_JAVA_COMMAND = "childVM.java.command";
-	public static final String PREFERENCE_DEFAULT_JAVA_COMMAND = "java ${options} ${jar}";
+	public static final String PREFERENCE_KEY_JAVA_COMMAND = "childVM.java.command"; //$NON-NLS-1$
+	public static final String PREFERENCE_DEFAULT_JAVA_COMMAND = "java ${options} ${jar}"; //$NON-NLS-1$
 
-	public static final String PREFERENCE_KEY_JAVA_HEAP_MAX_MB = "childVM.java.heap.maxMB";
+	public static final String PREFERENCE_KEY_JAVA_HEAP_MAX_MB = "childVM.java.heap.maxMB"; //$NON-NLS-1$
 	public static final int PREFERENCE_DEFAULT_JAVA_HEAP_MAX_MB = 0;
 
-	public static final String PREFERENCE_KEY_JAVA_HEAP_MIN_MB = "childVM.java.heap.minMB";
+	public static final String PREFERENCE_KEY_JAVA_HEAP_MIN_MB = "childVM.java.heap.minMB"; //$NON-NLS-1$
 	public static final int PREFERENCE_DEFAULT_JAVA_HEAP_MIN_MB = 0;
 
-	public static final String PREFERENCE_KEY_JAVA_PERM_GEN_MAX_MB = "childVM.java.permGen.maxMB";
+	public static final String PREFERENCE_KEY_JAVA_PERM_GEN_MAX_MB = "childVM.java.permGen.maxMB"; //$NON-NLS-1$
 	public static final int PREFERENCE_DEFAULT_JAVA_PERM_GEN_MAX_MB = 0;
 
-	public static final String PREFERENCE_KEY_JAVA_PERM_GEN_GC_ENABLED = "childVM.java.permGen.gcEnabled";
+	public static final String PREFERENCE_KEY_JAVA_PERM_GEN_GC_ENABLED = "childVM.java.permGen.gcEnabled"; //$NON-NLS-1$
 	public static final boolean PREFERENCE_DEFAULT_JAVA_PERM_GEN_GC_ENABLED = false;
 
-	public static final String PREFERENCE_KEY_LOG4J_ROOT_LOG_LEVEL = "childVM.log4j.rootLogLevel";
+	public static final String PREFERENCE_KEY_LOG4J_ROOT_LOG_LEVEL = "childVM.log4j.rootLogLevel"; //$NON-NLS-1$
 	public static final String PREFERENCE_DEFAULT_LOG4J_ROOT_LOG_LEVEL = LogLevel.FATAL.name();
 
-	public static final String PREFERENCE_KEY_LOG4J_ADDITIONAL_PROPERTIES = "childVM.log4j.additionalProperties";
+	public static final String PREFERENCE_KEY_LOG4J_ADDITIONAL_PROPERTIES = "childVM.log4j.additionalProperties"; //$NON-NLS-1$
 	//public static final String PREFERENCE_DEFAULT_LOG4J_ADDITIONAL_PROPERTIES = "#log4j.category.mypackage.MyClass=DEBUG\n#log4j.additivity.mypackage.MyClass=false";
-	public static final String PREFERENCE_DEFAULT_LOG4J_ADDITIONAL_PROPERTIES = "#log4j.category.mypackage.MyClass=DEBUG";
+	public static final String PREFERENCE_DEFAULT_LOG4J_ADDITIONAL_PROPERTIES = "#log4j.category.mypackage.MyClass=DEBUG"; //$NON-NLS-1$
 
-	public static final String PREFERENCE_KEY_SERVER_START_TIMEOUT_MS = "childVM.server.startTimeoutMS";
+	public static final String PREFERENCE_KEY_SERVER_START_TIMEOUT_MS = "childVM.server.startTimeoutMS"; //$NON-NLS-1$
 	public static final long PREFERENCE_DEFAULT_SERVER_START_TIMEOUT_MS = 30L * 1000L;
 
 	/**
 	 * Launch the child JVM in debug mode, so that connecting from the IDE
 	 * (to port {@value #PREFERENCE_DEFAULT_DEBUG_MODE_PORT}) &amp; remote-debugging is possible.
 	 */
-	public static final String PREFERENCE_KEY_DEBUG_MODE_ENABLED = "childVM.debugMode.enabled";
+	public static final String PREFERENCE_KEY_DEBUG_MODE_ENABLED = "childVM.debugMode.enabled"; //$NON-NLS-1$
 
-	public static final String PREFERENCE_KEY_DEBUG_MODE_PORT = "childVM.debugMode.port";
+	public static final String PREFERENCE_KEY_DEBUG_MODE_PORT = "childVM.debugMode.port"; //$NON-NLS-1$
 	public static final int PREFERENCE_DEFAULT_DEBUG_MODE_PORT = 8000;
 
-	public static final String PREFERENCE_KEY_WAC_SOCKET_CONNECT_TIMEOUT_MS = "childVM.webappClient.socketConnectTimeoutMS";
+	public static final String PREFERENCE_KEY_WAC_SOCKET_CONNECT_TIMEOUT_MS = "childVM.webappClient.socketConnectTimeoutMS"; //$NON-NLS-1$
 	public static final int PREFERENCE_DEFAULT_WAC_SOCKET_CONNECT_TIMEOUT_MS = ChildVMWebappClient.DEFAULT_SOCKET_CONNECT_TIMEOUT_MS;
-	public static final String PREFERENCE_KEY_WAC_SOCKET_READ_TIMEOUT_MS = "childVM.webappClient.socketReadTimeoutMS";
+	public static final String PREFERENCE_KEY_WAC_SOCKET_READ_TIMEOUT_MS = "childVM.webappClient.socketReadTimeoutMS"; //$NON-NLS-1$
 	public static final int PREFERENCE_DEFAULT_WAC_SOCKET_READ_TIMEOUT_MS = ChildVMWebappClient.DEFAULT_SOCKET_READ_TIMEOUT_MS;
 
-	public static final String PREFERENCE_KEY_WAC_ONLINECHECK_SOCKET_CONNECT_TIMEOUT_MS = "childVM.webappClient.onlineCheck.socketConnectTimeoutMS";
+	public static final String PREFERENCE_KEY_WAC_ONLINECHECK_SOCKET_CONNECT_TIMEOUT_MS = "childVM.webappClient.onlineCheck.socketConnectTimeoutMS"; //$NON-NLS-1$
 	public static final int PREFERENCE_DEFAULT_WAC_ONLINECHECK_SOCKET_CONNECT_TIMEOUT_MS = ChildVMWebappClient.DEFAULT_ONLINECHECK_SOCKET_CONNECT_TIMEOUT_MS;
-	public static final String PREFERENCE_KEY_WAC_ONLINECHECK_SOCKET_READ_TIMEOUT_MS = "childVM.webappClient.onlineCheck.socketReadTimeoutMS";
+	public static final String PREFERENCE_KEY_WAC_ONLINECHECK_SOCKET_READ_TIMEOUT_MS = "childVM.webappClient.onlineCheck.socketReadTimeoutMS"; //$NON-NLS-1$
 	public static final int PREFERENCE_DEFAULT_WAC_ONLINECHECK_SOCKET_READ_TIMEOUT_MS = ChildVMWebappClient.DEFAULT_ONLINECHECK_SOCKET_READ_TIMEOUT_MS;
 
 	/**
@@ -119,7 +119,7 @@ public class ChildVMServer
 	 * This flag is <b>ignored</b>, if {@link #DEBUG_MODE_ENABLED}<code> == false</code>.
 	 * </p>
 	 */
-	public static final String PREFERENCE_KEY_DEBUG_MODE_WAIT_FOR_DEBUGGER = "childVM.debugMode.waitForDebugger";
+	public static final String PREFERENCE_KEY_DEBUG_MODE_WAIT_FOR_DEBUGGER = "childVM.debugMode.waitForDebugger"; //$NON-NLS-1$
 
 //	private static final boolean DEBUG_MODE_ENABLED = false;
 
@@ -144,9 +144,9 @@ public class ChildVMServer
 		return new TimerTask() {
 			@Override
 			public void run() {
-				logger.debug("heartBeatTimerTask.run: entered");
+				logger.debug("heartBeatTimerTask.run: entered"); //$NON-NLS-1$
 				if (!isOpen()) {
-					logger.debug("heartBeatTimerTask.run: This ChildVMServer is not open => cancelling heartBeatTimerTask.");
+					logger.debug("heartBeatTimerTask.run: This ChildVMServer is not open => cancelling heartBeatTimerTask."); //$NON-NLS-1$
 					cancel();
 				}
 				getChildVM().isOnline();
@@ -157,7 +157,7 @@ public class ChildVMServer
 	public ChildVMServer(String webAppName)
 	{
 		if (webAppName == null)
-			throw new IllegalArgumentException("webAppName == null");
+			throw new IllegalArgumentException("webAppName == null"); //$NON-NLS-1$
 
 		this.webAppName = webAppName;
 		Runtime.getRuntime().addShutdownHook(new StopServerAndDeleteServerDirectoryRecursivelyShutdownHook());
@@ -165,7 +165,7 @@ public class ChildVMServer
 
 	public ChildVM getChildVM() {
 		if (childVMClient == null) {
-			ChildVMWebappClient client = new ChildVMWebappClient("localhost", webAppName, port);
+			ChildVMWebappClient client = new ChildVMWebappClient("localhost", webAppName, port); //$NON-NLS-1$
 			client.setSocketConnectTimeoutMillis(getChildVMWebappClientSocketConnectTimeoutMillis());
 			client.setSocketReadTimeoutMillis(getChildVMWebappClientSocketReadTimeoutMillis());
 			client.setOnlineCheckSocketConnectTimeoutMillis(getChildVMWebappClientOnlineCheckSocketConnectTimeoutMillis());
@@ -178,8 +178,8 @@ public class ChildVMServer
 	protected synchronized File getServerDirectory() throws IOException
 	{
 		if (this.serverDirectory == null) {
-			File jettyTempDir = IOUtil.createUserTempDir("vestigo.jetty.", null);
-			File serverDirectory = IOUtil.createUniqueIncrementalFolder(jettyTempDir, "instance-");
+			File jettyTempDir = IOUtil.createUserTempDir("vestigo.jetty.", null); //$NON-NLS-1$
+			File serverDirectory = IOUtil.createUniqueIncrementalFolder(jettyTempDir, "instance-"); //$NON-NLS-1$
 			createServerPlatform(serverDirectory);
 			undeployUnnecessaryExamples(serverDirectory);
 			deployRESTApplication(serverDirectory);
@@ -196,26 +196,26 @@ public class ChildVMServer
 		@Override
 		public void run()
 		{
-			logger.debug("run: entered for {}", ChildVMServer.this);
+			logger.debug("run: entered for {}", ChildVMServer.this); //$NON-NLS-1$
 
 			try {
 				ChildVMServer.this.close(true);
 			} catch (Exception e) {
-				logger.warn("run: Failed to stop web server: " + e, e);
+				logger.warn("run: Failed to stop web server: " + e, e); //$NON-NLS-1$
 			}
 
-			logger.debug("run: done for {}", ChildVMServer.this);
+			logger.debug("run: done for {}", ChildVMServer.this); //$NON-NLS-1$
 		}
 	}
 
 	private void createServerPlatform(File webServerDirectory) throws IOException
 	{
-		logger.debug("createServerPlatform: serverDirectory='{}'", webServerDirectory.getAbsolutePath());
+		logger.debug("createServerPlatform: serverDirectory='{}'", webServerDirectory.getAbsolutePath()); //$NON-NLS-1$
 
-		String resourceName = "resource/jetty-distribution.zip";
+		String resourceName = "resource/jetty-distribution.zip"; //$NON-NLS-1$
 		URL zipArchive = ChildVMServer.class.getResource(resourceName);
 		if (zipArchive == null)
-			throw new IOException("Resource could not be found: " + resourceName);
+			throw new IOException("Resource could not be found: " + resourceName); //$NON-NLS-1$
 
 		IOUtil.unzipArchive(zipArchive, webServerDirectory);
 
@@ -224,7 +224,7 @@ public class ChildVMServer
 		{
 			File[] children = webServerDirectory.listFiles();
 			if (children.length != 1)
-				throw new IllegalStateException("There is more than one sub-directory in this directory: " + webServerDirectory.getAbsolutePath());
+				throw new IllegalStateException("There is more than one sub-directory in this directory: " + webServerDirectory.getAbsolutePath()); //$NON-NLS-1$
 
 			intermediateDir = children[0];
 		}
@@ -234,7 +234,7 @@ public class ChildVMServer
 		for (File child : children) {
 			File dest = new File(webServerDirectory, child.getName());
 			if (!child.renameTo(dest))
-				throw new IOException("Could not move \"" + child.getAbsolutePath() + "\" to \"" + dest.getAbsolutePath() + "\"!");
+				throw new IOException("Could not move \"" + child.getAbsolutePath() + "\" to \"" + dest.getAbsolutePath() + "\"!"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 		}
 
 		intermediateDir.delete();
@@ -242,13 +242,13 @@ public class ChildVMServer
 
 	private void deployRESTApplication(File webServerDirectory) throws IOException
 	{
-		logger.debug("deployRESTApplication: serverDirectory='{}'", webServerDirectory.getAbsolutePath());
+		logger.debug("deployRESTApplication: serverDirectory='{}'", webServerDirectory.getAbsolutePath()); //$NON-NLS-1$
 
 		final IExtensionRegistry registry = Platform.getExtensionRegistry();
 		if (registry == null)
-			throw new IllegalStateException("Platform.getExtensionRegistry() returned null!");
+			throw new IllegalStateException("Platform.getExtensionRegistry() returned null!"); //$NON-NLS-1$
 
-		final String extensionPointId = "org.nightlabs.vestigo.core.childVMWebApp";
+		final String extensionPointId = "org.nightlabs.vestigo.core.childVMWebApp"; //$NON-NLS-1$
 		final IExtensionPoint extensionPoint = registry.getExtensionPoint(extensionPointId);
 		if (extensionPoint == null)
 			throw new IllegalStateException("Unable to resolve extension-point: " + extensionPointId); //$NON-NLS-1$
@@ -259,7 +259,7 @@ public class ChildVMServer
 		for (final IExtension extension : extensions) {
 			final IConfigurationElement[] elements = extension.getConfigurationElements();
 			for (final IConfigurationElement element : elements) {
-				String extWebAppName = element.getAttribute("webAppName");
+				String extWebAppName = element.getAttribute("webAppName"); //$NON-NLS-1$
 				if (!this.webAppName.equals(extWebAppName))
 					continue;
 
@@ -267,24 +267,24 @@ public class ChildVMServer
 				if (deployedExtension == null)
 					deployedExtension = extension;
 				else
-					throw new IllegalStateException("There are multiple plug-ins deploying the web-app \"" + extWebAppName + "\"!!! Affected plugins: " + extension.getContributor().getName() + " and " + deployedExtension.getContributor().getName());
+					throw new IllegalStateException("There are multiple plug-ins deploying the web-app \"" + extWebAppName + "\"!!! Affected plugins: " + extension.getContributor().getName() + " and " + deployedExtension.getContributor().getName()); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 
 				Object executableExtension;
 				try {
-					executableExtension = element.createExecutableExtension("class");
+					executableExtension = element.createExecutableExtension("class"); //$NON-NLS-1$
 				} catch (CoreException e) {
-					throw new IOException("Could not create executable extension for class \"" + element.getAttribute("class") + "\"!!! Extension registered in bundle \"" + extension.getContributor().getName() + "\". Cause: " + e, e);
+					throw new IOException("Could not create executable extension for class \"" + element.getAttribute("class") + "\"!!! Extension registered in bundle \"" + extension.getContributor().getName() + "\". Cause: " + e, e); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
 				}
 
 				if (!(executableExtension instanceof WebApp))
-					throw new ClassCastException("Class \"" + element.getAttribute("class") + "\" does not implement interface \"" + WebApp.class.getName() + "\"!!! Extension registered in bundle \"" + extension.getContributor().getName() + "\".");
+					throw new ClassCastException("Class \"" + element.getAttribute("class") + "\" does not implement interface \"" + WebApp.class.getName() + "\"!!! Extension registered in bundle \"" + extension.getContributor().getName() + "\"."); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$
 
 				WebApp webApp = (WebApp) executableExtension;
 
 				webApp.setWebAppName(extWebAppName);
 
-				String fileName = extWebAppName + ".war";
-				File destinationFile = new File(new File(webServerDirectory, "webapps"), fileName);
+				String fileName = extWebAppName + ".war"; //$NON-NLS-1$
+				File destinationFile = new File(new File(webServerDirectory, "webapps"), fileName); //$NON-NLS-1$
 				InputStream in = webApp.createInputStream();
 				OutputStream out = new FileOutputStream(destinationFile);
 				IOUtil.transferStreamData(in, out);
@@ -294,13 +294,13 @@ public class ChildVMServer
 		}
 
 		if (deployedExtension == null)
-			throw new IllegalStateException("There is no plug-in contributing the web-app named \"" + this.webAppName + "\" (extension-point \"" + extensionPointId + "\")!!!");
+			throw new IllegalStateException("There is no plug-in contributing the web-app named \"" + this.webAppName + "\" (extension-point \"" + extensionPointId + "\")!!!"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 	}
 
 	private void undeployUnnecessaryExamples(File webServerDirectory) throws IOException
 	{
 		// Delete the unnecessary 'test.war' which comes with the jetty distro.
-		new File(new File(webServerDirectory, "webapps"), "test.war").delete();
+		new File(new File(webServerDirectory, "webapps"), "test.war").delete(); //$NON-NLS-1$ //$NON-NLS-2$
 
 		// Delete the stuff in the 'contexts' directory that is related to the 'test.war',
 		// because we occasionally get this error:
@@ -308,22 +308,22 @@ public class ChildVMServer
 		//   java.io.FileNotFoundException: /tmp/jetty.mschulze/instance-1/webapps/test.war
 		//   at org.eclipse.jetty.webapp.WebInfConfiguration.unpack(WebInfConfiguration.java:479)
 		//   at org.eclipse.jetty.webapp.WebInfConfiguration.preConfigure(WebInfConfiguration.java:52)
-		File contextsDir = new File(webServerDirectory, "contexts");
-		new File(contextsDir, "test.xml").delete();
-		IOUtil.deleteDirectoryRecursively(new File(contextsDir, "test.d"));
+		File contextsDir = new File(webServerDirectory, "contexts"); //$NON-NLS-1$
+		new File(contextsDir, "test.xml").delete(); //$NON-NLS-1$
+		IOUtil.deleteDirectoryRecursively(new File(contextsDir, "test.d")); //$NON-NLS-1$
 	}
 
 	private void deployLog4jProperties(File webServerDirectory) throws IOException
 	{
-		logger.debug("deployLog4jProperties: serverDirectory='{}'", webServerDirectory.getAbsolutePath());
+		logger.debug("deployLog4jProperties: serverDirectory='{}'", webServerDirectory.getAbsolutePath()); //$NON-NLS-1$
 
 		Map<String, String> variables = new HashMap<String, String>();
-		variables.put("rootLogLevel", getChildVMLog4jRootLogLevel());
-		variables.put("additionalProperties", getChildVMLog4jAdditionalProperties());
+		variables.put("rootLogLevel", getChildVMLog4jRootLogLevel()); //$NON-NLS-1$
+		variables.put("additionalProperties", getChildVMLog4jAdditionalProperties()); //$NON-NLS-1$
 
-		String fileName = "log4j.properties";
-		String resourceName = "resource/jetty/resources/" + fileName;
-		File deploymentDir = new File(webServerDirectory, "resources");
+		String fileName = "log4j.properties"; //$NON-NLS-1$
+		String resourceName = "resource/jetty/resources/" + fileName; //$NON-NLS-1$
+		File deploymentDir = new File(webServerDirectory, "resources"); //$NON-NLS-1$
 		File destinationFile = new File(deploymentDir, fileName);
 //		IOUtil.copyResource(ChildVMServer.class, resourceName, destinationFile);
 		InputStream in = ChildVMServer.class.getResourceAsStream(resourceName);
@@ -356,43 +356,43 @@ public class ChildVMServer
 		boolean successful = false;
 		try {
 			File serverDirectory = getServerDirectory();
-			File logDir = new File(serverDirectory, "logs");
-			File stdOutFile = new File(logDir, "out.log");
-			File stdErrFile = new File(logDir, "err.log");
+			File logDir = new File(serverDirectory, "logs"); //$NON-NLS-1$
+			File stdOutFile = new File(logDir, "out.log"); //$NON-NLS-1$
+			File stdErrFile = new File(logDir, "err.log"); //$NON-NLS-1$
 
 			deployLog4jProperties(serverDirectory);
 
 			port = determineAvailableRandomPortAndConfigureServer();
 
-			logger.info("open: Starting server: serverDirectory=\"{}\" port={}", serverDirectory, port);
+			logger.info("open: Starting server: serverDirectory=\"{}\" port={}", serverDirectory, port); //$NON-NLS-1$
 			String childVMJavaCommand = getChildVMJavaCommand();
-			logger.info("open: Using command: {}", childVMJavaCommand);
+			logger.info("open: Using command: {}", childVMJavaCommand); //$NON-NLS-1$
 
 			StringBuilder options = new StringBuilder();
 
 			int xms = getChildVMJavaHeapMinMB();
 			if (xms > 0)
-				options.append(" -Xms" + xms + "M");
+				options.append(" -Xms" + xms + "M"); //$NON-NLS-1$ //$NON-NLS-2$
 
 			int xmx = getChildVMJavaHeapMaxMB();
 			if (xmx > 0)
-				options.append(" -Xmx" + xmx + "M");
+				options.append(" -Xmx" + xmx + "M"); //$NON-NLS-1$ //$NON-NLS-2$
 
 			int maxPerm = getChildVMJavaPermGenMaxMB();
 			if (maxPerm > 0)
-				options.append(" -XX:MaxPermSize=" + maxPerm + "M");
+				options.append(" -XX:MaxPermSize=" + maxPerm + "M"); //$NON-NLS-1$ //$NON-NLS-2$
 
 			if (isChildVMJavaPermGenGCEnabled()) {
-				options.append(" -XX:+UseConcMarkSweepGC");
-				options.append(" -XX:+CMSClassUnloadingEnabled");
+				options.append(" -XX:+UseConcMarkSweepGC"); //$NON-NLS-1$
+				options.append(" -XX:+CMSClassUnloadingEnabled"); //$NON-NLS-1$
 			}
 
 			if (isChildVMDebugModeEnabled())
-				options.append(" -Xrunjdwp:transport=dt_socket,address=" + getChildVMDebugModePort() + ",server=y,suspend=" + (isChildVMDebugModeWaitForDebugger() ? 'y' : 'n'));
+				options.append(" -Xrunjdwp:transport=dt_socket,address=" + getChildVMDebugModePort() + ",server=y,suspend=" + (isChildVMDebugModeWaitForDebugger() ? 'y' : 'n')); //$NON-NLS-1$ //$NON-NLS-2$
 
 			CommandParser commandParser = new CommandParser();
-			commandParser.getProperties().put("options", options.toString());
-			commandParser.getProperties().put("jar", "-jar start.jar");
+			commandParser.getProperties().put("options", options.toString()); //$NON-NLS-1$
+			commandParser.getProperties().put("jar", "-jar start.jar"); //$NON-NLS-1$ //$NON-NLS-2$
 			String[] commandWithArguments = commandParser.parse(childVMJavaCommand);
 
 			serverProcess = new ProcessBuilder()
@@ -412,7 +412,7 @@ public class ChildVMServer
 			try {
 				waitForStartingServerToComeOnline();
 			} catch (Exception e) {
-				throw new IOException(String.format("Starting child VM via command \"%s\" failed: %s", childVMJavaCommand, e), e);
+				throw new IOException(String.format("Starting child VM via command \"%s\" failed: %s", childVMJavaCommand, e), e); //$NON-NLS-1$
 			}
 
 			// We only track the server-process-output during startup.
@@ -438,7 +438,7 @@ public class ChildVMServer
 		if (dumpErrorStreamToFileThread != null)
 			dumpErrorStreamToFileThread.flushBuffer();
 
-		return serverProcessOutput == null ? "" : serverProcessOutput.toString();
+		return serverProcessOutput == null ? "" : serverProcessOutput.toString(); //$NON-NLS-1$
 	}
 
 	private void waitForStartingServerToComeOnline() throws TimeoutException, IOException
@@ -453,7 +453,7 @@ public class ChildVMServer
 					int exitValue = serverProcess.exitValue();
 					throw new IOException(
 							String.format(
-									"The child process ended unexpectedly with exitValue=%s and this output:\n>>>>>>>>>\n%s\n<<<<<<<<<",
+									"The child process ended unexpectedly with exitValue=%s and this output:\n>>>>>>>>>\n%s\n<<<<<<<<<", //$NON-NLS-1$
 									exitValue, getServerProcessOutput()
 							)
 					);
@@ -465,7 +465,7 @@ public class ChildVMServer
 			if (System.currentTimeMillis() - start > timeout) {
 				throw new TimeoutException(
 						String.format(
-								"Server did not come online within timeout! Output:\n>>>>>>>>>\n%s\n<<<<<<<<<",
+								"Server did not come online within timeout! Output:\n>>>>>>>>>\n%s\n<<<<<<<<<", //$NON-NLS-1$
 								getServerProcessOutput()
 						)
 				);
@@ -475,7 +475,7 @@ public class ChildVMServer
 				Thread.sleep(500L);
 			} catch (InterruptedException x) {
 				if (logger.isDebugEnabled())
-					logger.debug("waitForStartingServerToComeOnline: " + x, x);
+					logger.debug("waitForStartingServerToComeOnline: " + x, x); //$NON-NLS-1$
 			}
 		}
 	}
@@ -496,14 +496,14 @@ public class ChildVMServer
 				try {
 					socket = new ServerSocket(port);
 				} catch (IOException e) {
-					logger.info("determineAvailableRandomPortAndConfigureWebServer: Opening ServerSocket with port=" + port + " failed: " + e, e);
+					logger.info("determineAvailableRandomPortAndConfigureWebServer: Opening ServerSocket with port=" + port + " failed: " + e, e); //$NON-NLS-1$ //$NON-NLS-2$
 				}
 			}
 			if (socket == null)
-				throw new IOException("Could not find any available port!!!");
+				throw new IOException("Could not find any available port!!!"); //$NON-NLS-1$
 
 			if (port < 1)
-				throw new IllegalStateException("port < 1");
+				throw new IllegalStateException("port < 1"); //$NON-NLS-1$
 
 			// If we come here, our chosen port is available and currently owned by our own ServerSocket.
 			configureServer(port);
@@ -514,7 +514,7 @@ public class ChildVMServer
 				try {
 					socket.close();
 				} catch (IOException e) {
-					logger.warn("determineAvailableRandomPortAndConfigureWebServer: Closing ServerSocket on port=" + port + " failed: " + e, e);
+					logger.warn("determineAvailableRandomPortAndConfigureWebServer: Closing ServerSocket on port=" + port + " failed: " + e, e); //$NON-NLS-1$ //$NON-NLS-2$
 				}
 			}
 		}
@@ -523,18 +523,18 @@ public class ChildVMServer
 	private void configureServer(int port) throws IOException
 	{
 		File serverDirectory = getServerDirectory();
-		File jettyEtcDir = new File(serverDirectory, "etc");
-		File jettyXmlFile = new File(jettyEtcDir, "jetty.xml");
+		File jettyEtcDir = new File(serverDirectory, "etc"); //$NON-NLS-1$
+		File jettyXmlFile = new File(jettyEtcDir, "jetty.xml"); //$NON-NLS-1$
 
-		File jettyXmlTemplateFile = new File(jettyEtcDir, "jetty.xml.template");
+		File jettyXmlTemplateFile = new File(jettyEtcDir, "jetty.xml.template"); //$NON-NLS-1$
 		if (!jettyXmlTemplateFile.exists())
 			IOUtil.copyFile(jettyXmlFile, jettyXmlTemplateFile);
 
 		String jettyXmlTemplate = IOUtil.readTextFile(jettyXmlTemplateFile);
-		String jettyXml = jettyXmlTemplate.replaceAll("8080", Integer.toString(port));
+		String jettyXml = jettyXmlTemplate.replaceAll("8080", Integer.toString(port)); //$NON-NLS-1$
 
 		if (jettyXmlTemplate.equals(jettyXml))
-			throw new IllegalStateException("Did not replace port in template! Maybe searched pattern does not exist anymore?!");
+			throw new IllegalStateException("Did not replace port in template! Maybe searched pattern does not exist anymore?!"); //$NON-NLS-1$
 
 		IOUtil.writeTextFile(jettyXmlFile, jettyXml);
 	}
@@ -542,7 +542,7 @@ public class ChildVMServer
 	protected void assertServerStarted()
 	{
 		if (serverProcess == null)
-			throw new IllegalStateException("The child VM REST server was not yet started! Call start() first!");
+			throw new IllegalStateException("The child VM REST server was not yet started! Call start() first!"); //$NON-NLS-1$
 	}
 
 	public synchronized void close() throws IOException
@@ -568,7 +568,7 @@ public class ChildVMServer
 
 		// Do the actual shutdown.
 		if (serverProcess != null) {
-			logger.info("close: Stopping server: serverDirectory=\"{}\" port={}", serverDirectory, port);
+			logger.info("close: Stopping server: serverDirectory=\"{}\" port={}", serverDirectory, port); //$NON-NLS-1$
 
 			serverProcess.destroy(); // TODO maybe shut it down more nicely?!
 
@@ -588,7 +588,7 @@ public class ChildVMServer
 			try {
 				dumpInputStreamToFileThread.join(60000L);
 			} catch (Exception e) {
-				logger.warn("stop: dumpInputStreamToFileThread.join(...) failed: " + e, e);
+				logger.warn("stop: dumpInputStreamToFileThread.join(...) failed: " + e, e); //$NON-NLS-1$
 			}
 			dumpInputStreamToFileThread = null;
 		}
@@ -596,7 +596,7 @@ public class ChildVMServer
 			try {
 				dumpErrorStreamToFileThread.join(60000L);
 			} catch (Exception e) {
-				logger.warn("stop: dumpErrorStreamToFileThread.join(...) failed: " + e, e);
+				logger.warn("stop: dumpErrorStreamToFileThread.join(...) failed: " + e, e); //$NON-NLS-1$
 			}
 			dumpErrorStreamToFileThread = null;
 		}
@@ -606,7 +606,7 @@ public class ChildVMServer
 			try {
 				IOUtil.deleteDirectoryRecursively(serverDirectory);
 			} catch (Exception e) {
-				logger.warn("run: Deleting the web server directory \"" + serverDirectory.getAbsolutePath() + "\" failed: " + e, e);
+				logger.warn("run: Deleting the web server directory \"" + serverDirectory.getAbsolutePath() + "\" failed: " + e, e); //$NON-NLS-1$ //$NON-NLS-2$
 			}
 			serverDirectory = null;
 		}

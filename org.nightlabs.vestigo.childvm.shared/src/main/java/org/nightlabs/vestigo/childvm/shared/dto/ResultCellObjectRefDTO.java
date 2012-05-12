@@ -46,13 +46,13 @@ public abstract class ResultCellObjectRefDTO extends ResultCellDTO
 		super(field);
 
 		if (objectClass == null)
-			throw new IllegalArgumentException("objectClass == null");
+			throw new IllegalArgumentException("objectClass == null"); //$NON-NLS-1$
 
 		if (objectID == null)
-			throw new IllegalArgumentException("objectID == null");
+			throw new IllegalArgumentException("objectID == null"); //$NON-NLS-1$
 
 		if (objectIDClass == null)
-			throw new IllegalArgumentException("objectIDClass == null");
+			throw new IllegalArgumentException("objectIDClass == null"); //$NON-NLS-1$
 
 		this.objectClassName = objectClass.getName();
 		this.objectID = objectID;

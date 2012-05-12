@@ -39,10 +39,10 @@ implements ObjectReferenceChild
 	public ObjectReferenceChildImpl(ObjectReference owner, ResultCellDTO child, Object value)
 	{
 		if (owner == null)
-			throw new IllegalArgumentException("owner == null");
+			throw new IllegalArgumentException("owner == null"); //$NON-NLS-1$
 
 		if (child == null)
-			throw new IllegalArgumentException("child == null");
+			throw new IllegalArgumentException("child == null"); //$NON-NLS-1$
 
 		this.owner = owner;
 
@@ -52,16 +52,16 @@ implements ObjectReferenceChild
 		String fieldName = child.getFieldName();
 
 		if (fieldDeclaringClassName == null && fieldName != null)
-			throw new IllegalArgumentException("child.fieldDeclaringClassName == null && child.fieldName != null");
+			throw new IllegalArgumentException("child.fieldDeclaringClassName == null && child.fieldName != null"); //$NON-NLS-1$
 
 		if (fieldDeclaringClassName != null && fieldName == null)
-			throw new IllegalArgumentException("child.fieldDeclaringClassName != null && child.fieldName == null");
+			throw new IllegalArgumentException("child.fieldDeclaringClassName != null && child.fieldName == null"); //$NON-NLS-1$
 
 		if (fieldTypeName == null && fieldName != null)
-			throw new IllegalArgumentException("child.fieldTypeName == null && child.fieldName != null");
+			throw new IllegalArgumentException("child.fieldTypeName == null && child.fieldName != null"); //$NON-NLS-1$
 
 		if (fieldTypeName != null && fieldName == null)
-			throw new IllegalArgumentException("child.fieldTypeName != null && child.fieldName == null");
+			throw new IllegalArgumentException("child.fieldTypeName != null && child.fieldName == null"); //$NON-NLS-1$
 		// END Either these fields are all null or all non-null.
 
 		if (fieldDeclaringClassName != null)
@@ -94,7 +94,7 @@ implements ObjectReferenceChild
 	public String getLabelText(Set<LabelTextOption> labelTextOptions)
 	{
 		if (labelTextOptions == null)
-			throw new IllegalArgumentException("labelTextOptions == null");
+			throw new IllegalArgumentException("labelTextOptions == null"); //$NON-NLS-1$
 
 		Object value = this.getValue();
 		StringBuilder sb = new StringBuilder();
@@ -106,10 +106,10 @@ implements ObjectReferenceChild
 				else
 					sb.append(LabelTextUtil.getSimpleClassName(this.getFieldDesc().getFieldTypeName()));
 
-				sb.append(" ");
+				sb.append(" "); //$NON-NLS-1$
 			}
 
-			sb.append(this.getFieldDesc().getFieldName()).append(": ");
+			sb.append(this.getFieldDesc().getFieldName()).append(": "); //$NON-NLS-1$
 		}
 
 		if (value instanceof ObjectReference)

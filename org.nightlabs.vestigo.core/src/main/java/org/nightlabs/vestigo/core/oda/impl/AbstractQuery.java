@@ -66,7 +66,7 @@ public abstract class AbstractQuery implements Query
 	public AbstractQuery(AbstractConnection connection)
 	{
 		if (connection == null)
-			throw new IllegalArgumentException("connection == null");
+			throw new IllegalArgumentException("connection == null"); //$NON-NLS-1$
 
 		this.connection = connection;
 		this.queryID = new QueryID(connection.getConnectionID(), connection.nextQueryID());
@@ -111,7 +111,7 @@ public abstract class AbstractQuery implements Query
 	protected synchronized void setParameter(int parameterID, Object value)
 	{
 		if (parameterID < 1)
-			throw new IllegalArgumentException("parameterID < 1");
+			throw new IllegalArgumentException("parameterID < 1"); //$NON-NLS-1$
 
 		String parameterName = parameterID2parameterName.get(parameterID);
 
@@ -126,7 +126,7 @@ public abstract class AbstractQuery implements Query
 	protected synchronized void setParameter(String parameterName, Object value)
 	{
 		if (parameterName == null)
-			throw new IllegalArgumentException("parameterName == null");
+			throw new IllegalArgumentException("parameterName == null"); //$NON-NLS-1$
 
 		Integer parameterID = parameterName2parameterID.get(parameterName);
 		if (parameterID == null)
@@ -149,7 +149,7 @@ public abstract class AbstractQuery implements Query
 
 	@Override
 	public void cancel() throws OdaException, UnsupportedOperationException {
-		throw new UnsupportedOperationException("NYI"); // DataNucleus supports this AFAIK, but we can later add this... Marco :-)
+		throw new UnsupportedOperationException("NYI"); // DataNucleus supports this AFAIK, but we can later add this... Marco :-) //$NON-NLS-1$
 	}
 
 	@Override
@@ -248,7 +248,7 @@ public abstract class AbstractQuery implements Query
 	public int findInParameter(String parameterName) throws OdaException
 	{
 		if (parameterName == null)
-			throw new IllegalArgumentException("parameterName == null");
+			throw new IllegalArgumentException("parameterName == null"); //$NON-NLS-1$
 
 		Integer parameterID = parameterName2parameterID.get(parameterName);
 		if (parameterID == null)
@@ -276,7 +276,7 @@ public abstract class AbstractQuery implements Query
 	@Override
 	public void setSpecification(QuerySpecification querySpec) throws OdaException, UnsupportedOperationException
 	{
-		throw new UnsupportedOperationException("NYI - optional operation"); // TODO maybe implement later?
+		throw new UnsupportedOperationException("NYI - optional operation"); // TODO maybe implement later? //$NON-NLS-1$
 	}
 	@Override
 	public QuerySpecification getSpecification() {
@@ -298,7 +298,7 @@ public abstract class AbstractQuery implements Query
 		{
 			Integer index = me.getKey();
 			if (index == null)
-				throw new IllegalStateException("me.getKey() returned null! this.parameterID2parameterValue should not contain null keys!");
+				throw new IllegalStateException("me.getKey() returned null! this.parameterID2parameterValue should not contain null keys!"); //$NON-NLS-1$
 
 			String name = parameterID2parameterName.get(index); // name might be null, though
 
@@ -316,7 +316,7 @@ public abstract class AbstractQuery implements Query
 	protected void onCloseResultSet(ResultSet resultSet)
 	{
 		if (resultSet == null)
-			throw new IllegalArgumentException("resultSet == null");
+			throw new IllegalArgumentException("resultSet == null"); //$NON-NLS-1$
 
 		ResultSetID resultSetID = resultSet.getResultSetID();
 		if (resultSetID != null)

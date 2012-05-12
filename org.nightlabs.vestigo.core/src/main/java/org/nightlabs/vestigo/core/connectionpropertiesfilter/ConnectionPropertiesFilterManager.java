@@ -30,13 +30,13 @@ import org.eclipse.core.runtime.Platform;
 
 public class ConnectionPropertiesFilterManager
 {
-	private static final String extensionPointId_connectionPropertiesFilter = "org.nightlabs.vestigo.core.connectionPropertiesFilter";
+	private static final String extensionPointId_connectionPropertiesFilter = "org.nightlabs.vestigo.core.connectionPropertiesFilter"; //$NON-NLS-1$
 
 	public void filterConnectionProperties(Properties connectionProperties)
 	{
 		final IExtensionRegistry registry = Platform.getExtensionRegistry();
 		if (registry == null)
-			throw new IllegalStateException("Platform.getExtensionRegistry() returned null!");
+			throw new IllegalStateException("Platform.getExtensionRegistry() returned null!"); //$NON-NLS-1$
 
 		final String extensionPointId = extensionPointId_connectionPropertiesFilter;
 		final IExtensionPoint extensionPoint = registry.getExtensionPoint(extensionPointId);
@@ -50,13 +50,13 @@ public class ConnectionPropertiesFilterManager
 			for (final IConfigurationElement element : elements) {
 				Object executableExtension;
 				try {
-					executableExtension = element.createExecutableExtension("class");
+					executableExtension = element.createExecutableExtension("class"); //$NON-NLS-1$
 				} catch (CoreException e) {
-					throw new RuntimeException("Could not create executable extension for class \"" + element.getAttribute("class") + "\"!!! Extension registered in bundle \"" + element.getContributor().getName() + "\". Cause: " + e, e);
+					throw new RuntimeException("Could not create executable extension for class \"" + element.getAttribute("class") + "\"!!! Extension registered in bundle \"" + element.getContributor().getName() + "\". Cause: " + e, e); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
 				}
 
 				if (!(executableExtension instanceof ConnectionPropertiesFilter))
-					throw new RuntimeException("Executable extension of type \"" + element.getAttribute("class") + "\" does not implement \"" + ConnectionPropertiesFilter.class.getName() + "\"!!! Extension registered in bundle \"" + element.getContributor().getName() + "\".");
+					throw new RuntimeException("Executable extension of type \"" + element.getAttribute("class") + "\" does not implement \"" + ConnectionPropertiesFilter.class.getName() + "\"!!! Extension registered in bundle \"" + element.getContributor().getName() + "\"."); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$
 
 				ConnectionPropertiesFilter filter = (ConnectionPropertiesFilter) executableExtension;
 				sortedFilters.put(filter.getClass().getName(), filter);

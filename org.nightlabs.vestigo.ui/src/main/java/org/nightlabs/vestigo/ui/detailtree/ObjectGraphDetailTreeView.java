@@ -37,6 +37,7 @@ import org.eclipse.ui.part.ViewPart;
 import org.nightlabs.vestigo.core.LabelTextOption;
 import org.nightlabs.vestigo.ui.editor.QueryEditor;
 import org.nightlabs.vestigo.ui.labeltextoptionaction.LabelTextOptionsContainer;
+import org.nightlabs.vestigo.ui.resource.Messages;
 import org.nightlabs.vestigo.ui.resultsettable.ResultSetTableCell;
 import org.nightlabs.vestigo.ui.resultsettable.ResultSetTableRow;
 import org.nightlabs.vestigo.ui.resultsettable.ResultSetTableView;
@@ -70,7 +71,7 @@ public class ObjectGraphDetailTreeView extends ViewPart implements LabelTextOpti
 	private void clearInput()
 	{
 		ObjectGraphDetailTreeModel model = new ObjectGraphDetailTreeModel(
-				Collections.singletonList(new MessageObjectGraphDetailTreeNode(">>> Nothing selected. Please select a cell in the result set. <<<"))
+				Collections.singletonList(new MessageObjectGraphDetailTreeNode(Messages.getString("ObjectGraphDetailTreeView.noInputMessage"))) //$NON-NLS-1$
 		);
 		objectGraphDetailTreeComposite.setInput(model);
 //				objectGraphDetailTreeComposite.setInput(null);

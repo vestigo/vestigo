@@ -27,8 +27,8 @@ import org.nightlabs.vestigo.core.oda.Driver;
  */
 public abstract class AbstractDriver implements Driver {
 
-	public static final String DRIVER_NAME = "JDO-JPA-DataSource";
-	public static final String DRIVER_VERSION = "0.0.1";
+	public static final String DRIVER_NAME = "JDO-JPA-DataSource"; //$NON-NLS-1$
+	public static final String DRIVER_VERSION = "0.0.1"; //$NON-NLS-1$
 
 	private Object appContext;
 	private LogConfiguration logConfiguration;

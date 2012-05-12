@@ -23,9 +23,9 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 public abstract class AbstractVestigoUIPlugin extends AbstractUIPlugin
 {
-	public static final String IMAGE_SIZE_16x16 = "16x16";
-	public static final String IMAGE_SIZE_24x24 = "24x24";
-	public static final String IMAGE_SIZE_75x70 = "75x70";
+	public static final String IMAGE_SIZE_16x16 = "16x16"; //$NON-NLS-1$
+	public static final String IMAGE_SIZE_24x24 = "24x24"; //$NON-NLS-1$
+	public static final String IMAGE_SIZE_75x70 = "75x70"; //$NON-NLS-1$
 
 	public ImageDescriptor getImageDescriptor(Class<?> clazz, String identifier, String size) {
 		String imageKey = clazz.getName() + '-' + identifier;

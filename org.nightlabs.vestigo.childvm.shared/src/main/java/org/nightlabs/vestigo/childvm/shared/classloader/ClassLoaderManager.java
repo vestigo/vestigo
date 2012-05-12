@@ -37,6 +37,7 @@ import org.nightlabs.progress.SubProgressMonitor;
 import org.nightlabs.util.IOUtil;
 import org.nightlabs.util.Util;
 import org.nightlabs.vestigo.childvm.shared.PropertiesUtil;
+import org.nightlabs.vestigo.childvm.shared.resource.Messages;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -47,9 +48,9 @@ public class ClassLoaderManager
 {
 	private static final Logger logger = LoggerFactory.getLogger(ClassLoaderManager.class);
 
-	public static final String PROPERTY_USER_HOME = "user.home";
-	public static final String PROPERTY_MAVEN_LOCAL_REPOSITORY = "maven.localRepository";
-	public static final String PROPERTY_SYSTEM_TEMP_DIR = "java.io.tmpdir";
+	public static final String PROPERTY_USER_HOME = "user.home"; //$NON-NLS-1$
+	public static final String PROPERTY_MAVEN_LOCAL_REPOSITORY = "maven.localRepository"; //$NON-NLS-1$
+	public static final String PROPERTY_SYSTEM_TEMP_DIR = "java.io.tmpdir"; //$NON-NLS-1$
 
 	private List<URL> persistenceEngineClasspathURLList;
 	private List<URL> persistenceEngineOverlayClasspathURLList = new ArrayList<URL>();
@@ -71,7 +72,7 @@ public class ClassLoaderManager
 
 	public static File getMavenLocalRepository()
 	{
-		return new File(new File(IOUtil.getUserHome(), ".m2"), "repository");
+		return new File(new File(IOUtil.getUserHome(), ".m2"), "repository"); //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	public boolean isOpen(){
@@ -80,7 +81,7 @@ public class ClassLoaderManager
 
 	protected void assertOpen() {
 		if (!isOpen())
-			throw new IllegalStateException("ClassLoaderManager is not open!");
+			throw new IllegalStateException("ClassLoaderManager is not open!"); //$NON-NLS-1$
 	}
 
 	public Properties getConnectionProperties() {
@@ -90,13 +91,13 @@ public class ClassLoaderManager
 	public synchronized final void open(Properties connProperties)
 	{
 		if (connProperties == null)
-			throw new IllegalArgumentException("connProperties == null");
+			throw new IllegalArgumentException("connProperties == null"); //$NON-NLS-1$
 
 		this.connectionProperties = connProperties;
 
 		try {
-			File userTempDir = IOUtil.getUserTempDir("vestigo." + ClassLoaderManager.class.getSimpleName() + '.', null);
-			tempDir = IOUtil.createUniqueIncrementalFolder(userTempDir, "instance-");
+			File userTempDir = IOUtil.getUserTempDir("vestigo." + ClassLoaderManager.class.getSimpleName() + '.', null); //$NON-NLS-1$
+			tempDir = IOUtil.createUniqueIncrementalFolder(userTempDir, "instance-"); //$NON-NLS-1$
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
@@ -139,7 +140,7 @@ public class ClassLoaderManager
 		if (monitor == null)
 			monitor = new NullProgressMonitor();
 
-		final String taskName = "Resolve persistence engine classpath";
+		final String taskName = "Resolve persistence engine classpath"; //$NON-NLS-1$
 		monitor.beginTask(taskName, 100);
 		try {
 			if (this.persistenceEngineClasspathURLList == null) {
@@ -159,56 +160,58 @@ public class ClassLoaderManager
 							throw new OperationCanceledException();
 
 						String origPersistenceEngineClasspathElement = persistenceEngineClasspathElement;
-						logger.debug("open: adding persistenceEngineClasspathElement: {}", persistenceEngineClasspathElement);
+						logger.debug("open: adding persistenceEngineClasspathElement: {}", persistenceEngineClasspathElement); //$NON-NLS-1$
 						persistenceEngineClasspathElement = IOUtil.replaceTemplateVariables(
 								persistenceEngineClasspathElement, getPersistenceEngineClasspathVariables()
 						);
-						logger.trace("open: resolved persistenceEngineClasspathElement: {}", persistenceEngineClasspathElement);
+						logger.trace("open: resolved persistenceEngineClasspathElement: {}", persistenceEngineClasspathElement); //$NON-NLS-1$
 
-						if (persistenceEngineClasspathElement.startsWith("http:"))
+						if (persistenceEngineClasspathElement.startsWith("http:")) //$NON-NLS-1$
 							persistenceEngineClasspathURLList.add(new URL(persistenceEngineClasspathElement));
-						else if (persistenceEngineClasspathElement.startsWith("https:"))
+						else if (persistenceEngineClasspathElement.startsWith("https:")) //$NON-NLS-1$
 							persistenceEngineClasspathURLList.add(new URL(persistenceEngineClasspathElement));
 						else {
-							if (persistenceEngineClasspathElement.startsWith("file:"))
-								persistenceEngineClasspathElement = persistenceEngineClasspathElement.substring("file:".length());
+							if (persistenceEngineClasspathElement.startsWith("file:")) //$NON-NLS-1$
+								persistenceEngineClasspathElement = persistenceEngineClasspathElement.substring("file:".length()); //$NON-NLS-1$
 
 							boolean recurseDirs = false;
 							boolean filesOfDir = false;
-							if (persistenceEngineClasspathElement.contains("*")) {
-								if (persistenceEngineClasspathElement.endsWith("/**")) {
+							if (persistenceEngineClasspathElement.contains("*")) { //$NON-NLS-1$
+								if (persistenceEngineClasspathElement.endsWith("/**")) { //$NON-NLS-1$
 									recurseDirs = true;
 									persistenceEngineClasspathElement = persistenceEngineClasspathElement.substring(0, persistenceEngineClasspathElement.length() - 2);
 								}
-								else if(persistenceEngineClasspathElement.endsWith("/**/*")) {
+								else if(persistenceEngineClasspathElement.endsWith("/**/*")) { //$NON-NLS-1$
 									recurseDirs = true;
 									persistenceEngineClasspathElement = persistenceEngineClasspathElement.substring(0, persistenceEngineClasspathElement.length() - 4);
 								}
-								else if (persistenceEngineClasspathElement.endsWith("/*")) {
+								else if (persistenceEngineClasspathElement.endsWith("/*")) { //$NON-NLS-1$
 									filesOfDir = true;
 									persistenceEngineClasspathElement = persistenceEngineClasspathElement.substring(0, persistenceEngineClasspathElement.length() - 1);
 								}
 
-								if (persistenceEngineClasspathElement.contains("*"))
-									throw new UnsupportedOperationException("Unsupported use of wildcard '*'! Only '/*' or '/**/*' at the end are allowed! Affected classpath-element makes use of '*' at another location or more than once: " + origPersistenceEngineClasspathElement);
+								if (persistenceEngineClasspathElement.contains("*")) //$NON-NLS-1$
+									throw new UnsupportedOperationException(
+											String.format(Messages.getString("ClassLoaderManager.unsupportedUseOfWildcardExceptionMessage"), origPersistenceEngineClasspathElement) //$NON-NLS-1$
+									);
 							}
 
 							File f = new File(URLDecoder.decode(persistenceEngineClasspathElement, IOUtil.CHARSET_NAME_UTF_8));
 							if (!f.exists())
-								throw new IOException("persistenceEngineClasspathElement points to a non-existing file: " + f.getAbsolutePath());
+								throw new IOException(String.format(Messages.getString("ClassLoaderManager.nonExistingFileExceptionMessage"), f.getAbsolutePath())); //$NON-NLS-1$
 
 							if (!f.canRead())
-								throw new IOException("persistenceEngineClasspathElement points to an existing but non-readable file: " + f.getAbsolutePath());
+								throw new IOException(String.format(Messages.getString("ClassLoaderManager.nonReadableFileExceptionMessage"), f.getAbsolutePath())); //$NON-NLS-1$
 
 							if (recurseDirs) {
 								if (!f.isDirectory())
-									throw new UnsupportedOperationException("persistenceEngineClasspathElement points to a file instead of a directory, which is not allowed when using the wildcard '*': " + f.getAbsolutePath());
+									throw new UnsupportedOperationException(String.format(Messages.getString("ClassLoaderManager.fileDoesNotSupportWildcardMessage"), f.getAbsolutePath())); //$NON-NLS-1$
 
 								populatePersistenceEngineClasspathURLListRecurseDirs(persistenceEngineClasspathURLList, f, new SubProgressMonitor(subMonitor, 10));
 							}
 							else if (filesOfDir) {
 								if (!f.isDirectory())
-									throw new UnsupportedOperationException("persistenceEngineClasspathElement points to a file instead of a directory, which is not allowed when using the wildcard '*': " + f.getAbsolutePath());
+									throw new UnsupportedOperationException(String.format(Messages.getString("ClassLoaderManager.fileDoesNotSupportWildcardMessage"), f.getAbsolutePath())); //$NON-NLS-1$
 
 								File[] children = f.listFiles();
 
@@ -233,9 +236,9 @@ public class ClassLoaderManager
 				}
 
 				if (logger.isTraceEnabled()) {
-					logger.trace("getPersistenceEngineClasspathURLList: Collected classpath entries:");
+					logger.trace("getPersistenceEngineClasspathURLList: Collected classpath entries:"); //$NON-NLS-1$
 					for (URL url : persistenceEngineClasspathURLList) {
-						logger.trace("getPersistenceEngineClasspathURLList:   * {}", url);
+						logger.trace("getPersistenceEngineClasspathURLList:   * {}", url); //$NON-NLS-1$
 					}
 				}
 
@@ -265,11 +268,11 @@ public class ClassLoaderManager
 		String fn = file.getName();
 		String fnLower = fn.toLowerCase();
 		return (
-				fnLower.endsWith(".ear") ||
-				fnLower.endsWith(".rar") ||
-				fnLower.endsWith(".sar") ||
-				fnLower.endsWith(".war") ||
-				fnLower.endsWith(".zip")
+				fnLower.endsWith(".ear") || //$NON-NLS-1$
+				fnLower.endsWith(".rar") || //$NON-NLS-1$
+				fnLower.endsWith(".sar") || //$NON-NLS-1$
+				fnLower.endsWith(".war") || //$NON-NLS-1$
+				fnLower.endsWith(".zip") //$NON-NLS-1$
 		);
 	}
 
@@ -277,7 +280,7 @@ public class ClassLoaderManager
 	{
 		String fn = file.getName();
 		String fnLower = fn.toLowerCase();
-		return fnLower.endsWith(".jar");
+		return fnLower.endsWith(".jar"); //$NON-NLS-1$
 	}
 
 	private void populatePersistenceEngineClasspathURLList(List<URL> persistenceEngineClasspathURLList, File file, ProgressMonitor monitor)
@@ -289,7 +292,7 @@ public class ClassLoaderManager
 	private void populatePersistenceEngineClasspathURLList(List<URL> persistenceEngineClasspathURLList, File file, boolean includeAll, ProgressMonitor monitor)
 	throws IOException
 	{
-		final String taskName = "Resolve persistence engine classpath";
+		final String taskName = Messages.getString("ClassLoaderManager.resolvePersistenceEngineClasspathTask.name"); //$NON-NLS-1$
 		monitor.beginTask(taskName, 100);
 		try {
 			if (monitor.isCanceled())
@@ -330,15 +333,15 @@ public class ClassLoaderManager
 	private void populatePersistenceEngineClasspathURLListRecurseDirs(List<URL> persistenceEngineClasspathURLList, File file, ProgressMonitor monitor)
 	throws IOException
 	{
-		final String taskName = "Resolve persistence engine classpath";
+		final String taskName = Messages.getString("ClassLoaderManager.resolvePersistenceEngineClasspathTask.name"); //$NON-NLS-1$
 		monitor.beginTask(taskName, 100);
 		try {
 			if (monitor.isCanceled())
 				throw new OperationCanceledException();
 
 			if (file.isDirectory()) {
-				if (file.getName().endsWith(".war")) {
-					File webInfClasses = new File(new File(file, "WEB-INF"), "classes");
+				if (file.getName().endsWith(".war")) { //$NON-NLS-1$
+					File webInfClasses = new File(new File(file, "WEB-INF"), "classes"); //$NON-NLS-1$ //$NON-NLS-2$
 					persistenceEngineClasspathURLList.add(webInfClasses.toURI().toURL());
 				}
 
@@ -376,7 +379,7 @@ public class ClassLoaderManager
 		if (monitor == null)
 			monitor = new NullProgressMonitor();
 
-		monitor.beginTask("Get persistence engine class loader", 100);
+		monitor.beginTask(Messages.getString("ClassLoaderManager.getPersistenceEngineClassLoaderTask.name"), 100); //$NON-NLS-1$
 		try {
 			if (this.persistenceEngineClassLoader == null) {
 				List<URL> persistenceEngineClasspathURLList = getPersistenceEngineClasspathURLList(new SubProgressMonitor(monitor, 98));

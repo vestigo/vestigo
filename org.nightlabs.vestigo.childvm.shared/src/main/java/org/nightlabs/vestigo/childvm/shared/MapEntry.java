@@ -41,6 +41,6 @@ public class MapEntry
 
 	@Override
 	public String toString() {
-		return String.valueOf(key) + " => " + String.valueOf(value);
+		return String.valueOf(key) + " => " + String.valueOf(value); //$NON-NLS-1$
 	}
 }

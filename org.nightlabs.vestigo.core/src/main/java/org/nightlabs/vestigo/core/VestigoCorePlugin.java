@@ -72,10 +72,10 @@ implements BundleActivator
 	@Override
 	public void start(BundleContext context) throws Exception
 	{
-		logger.info("start: Starting context.bundle.symbolicName={}", context.getBundle().getSymbolicName());
+		logger.info("start: Starting context.bundle.symbolicName={}", context.getBundle().getSymbolicName()); //$NON-NLS-1$
 
 		if (!BUNDLE_SYMBOLIC_NAME.equals(context.getBundle().getSymbolicName()))
-			throw new IllegalStateException("BUNDLE_SYMBOLIC_NAME != context.bundle.symbolicName :: " + BUNDLE_SYMBOLIC_NAME + " != " + context.getBundle().getSymbolicName());
+			throw new IllegalStateException("BUNDLE_SYMBOLIC_NAME != context.bundle.symbolicName :: " + BUNDLE_SYMBOLIC_NAME + " != " + context.getBundle().getSymbolicName()); //$NON-NLS-1$ //$NON-NLS-2$
 
 //		super.start(context);
 		plugin = this;
@@ -135,12 +135,12 @@ implements BundleActivator
 
 //		licenceManager = new LicenceManagerOnlineImpl(Long.toString(87920));
 		Version version = context.getBundle().getVersion();
-		licenceManager = new LicenceManagerOfflineImpl("org.nightlabs.vestigo", version);
+		licenceManager = new LicenceManagerOfflineImpl("org.nightlabs.vestigo", version); //$NON-NLS-1$
 
-		logger.info("start: Started context.bundle.symbolicName={}", context.getBundle().getSymbolicName());
+		logger.info("start: Started context.bundle.symbolicName={}", context.getBundle().getSymbolicName()); //$NON-NLS-1$
 
 		for (Startup startup : getStartups()) {
-			logger.debug("start: Triggering startup {}", startup.getClass().getName());
+			logger.debug("start: Triggering startup {}", startup.getClass().getName()); //$NON-NLS-1$
 			startup.startup();
 		}
 	}
@@ -151,9 +151,9 @@ implements BundleActivator
 
 		final IExtensionRegistry registry = Platform.getExtensionRegistry();
 		if (registry == null)
-			throw new IllegalStateException("Platform.getExtensionRegistry() returned null!");
+			throw new IllegalStateException("Platform.getExtensionRegistry() returned null!"); //$NON-NLS-1$
 
-		final String extensionPointId = "org.nightlabs.vestigo.core.startup";
+		final String extensionPointId = "org.nightlabs.vestigo.core.startup"; //$NON-NLS-1$
 		final IExtensionPoint extensionPoint = registry.getExtensionPoint(extensionPointId);
 		if (extensionPoint == null)
 			throw new IllegalStateException("Unable to resolve extension-point: " + extensionPointId); //$NON-NLS-1$
@@ -164,13 +164,13 @@ implements BundleActivator
 			for (final IConfigurationElement element : elements) {
 				Object executableExtension;
 				try {
-					executableExtension = element.createExecutableExtension("class");
+					executableExtension = element.createExecutableExtension("class"); //$NON-NLS-1$
 				} catch (CoreException e) {
-					throw new RuntimeException("Could not create executable extension for class \"" + element.getAttribute("class") + "\" declared by extension to point \"" + extensionPointId + "\" in plugin \"" + extension.getContributor().getName() + "\": " + e, e);
+					throw new RuntimeException("Could not create executable extension for class \"" + element.getAttribute("class") + "\" declared by extension to point \"" + extensionPointId + "\" in plugin \"" + extension.getContributor().getName() + "\": " + e, e); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$
 				}
 
 				if (!(executableExtension instanceof Startup))
-					throw new IllegalStateException("Class \"" + element.getAttribute("class") + "\" declared by extension to point \"" + extensionPointId + "\" in plugin \"" + extension.getContributor().getName() + "\" does not implement \"" + Startup.class.getName() + "\"!");
+					throw new IllegalStateException("Class \"" + element.getAttribute("class") + "\" declared by extension to point \"" + extensionPointId + "\" in plugin \"" + extension.getContributor().getName() + "\" does not implement \"" + Startup.class.getName() + "\"!"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$ //$NON-NLS-6$
 
 				result.add((Startup) executableExtension);
 			}
@@ -195,7 +195,7 @@ implements BundleActivator
 
 	@Override
 	public void stop(BundleContext context) throws Exception {
-		logger.info("stop: context.bundle.symbolicName={}", context.getBundle().getSymbolicName());
+		logger.info("stop: context.bundle.symbolicName={}", context.getBundle().getSymbolicName()); //$NON-NLS-1$
 //		super.stop(context);
 	}
 
@@ -270,8 +270,8 @@ implements BundleActivator
 			else
 				languageURLPart = ""; //$NON-NLS-1$ // Everything we don't support is mapped to the default language.
 
-			variables.put("version", mavenizedVersion);
-			variables.put("versionAndLanguage", mavenizedVersion + languageURLPart);
+			variables.put("version", mavenizedVersion); //$NON-NLS-1$
+			variables.put("versionAndLanguage", mavenizedVersion + languageURLPart); //$NON-NLS-1$
 			variables = Collections.unmodifiableMap(variables);
 			this.versionSpecificURLVariables = variables;
 		}

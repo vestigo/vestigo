@@ -32,7 +32,7 @@ public class ResultCellSimpleDTO extends ResultCellDTO
 		super(fieldDeclaringClassName, fieldTypeName, fieldName);
 
 		if (object == null)
-			throw new IllegalArgumentException("object == null");
+			throw new IllegalArgumentException("object == null"); //$NON-NLS-1$
 
 		this.object = object;
 	}
@@ -42,7 +42,7 @@ public class ResultCellSimpleDTO extends ResultCellDTO
 		super(field);
 
 		if (object == null)
-			throw new IllegalArgumentException("object == null");
+			throw new IllegalArgumentException("object == null"); //$NON-NLS-1$
 
 		this.object = object;
 	}
@@ -54,7 +54,7 @@ public class ResultCellSimpleDTO extends ResultCellDTO
 	}
 	public void setObject(Object object) {
 		if (object == null)
-			throw new IllegalArgumentException("object == null");
+			throw new IllegalArgumentException("object == null"); //$NON-NLS-1$
 
 		this.object = object;
 	}

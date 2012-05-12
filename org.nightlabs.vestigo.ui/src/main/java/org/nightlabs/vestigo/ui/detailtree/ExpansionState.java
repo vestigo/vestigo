@@ -54,7 +54,7 @@ public class ExpansionState
 	public void addChildExpansionState(ExpansionState child)
 	{
 		if (child == null)
-			throw new IllegalArgumentException("child == null");
+			throw new IllegalArgumentException("child == null"); //$NON-NLS-1$
 
 		childExpansionStates.put(child.getKey(), child);
 	}
@@ -71,15 +71,15 @@ public class ExpansionState
 		ExpansionState n = this;
 		while (n != null) {
 			if (n.getFieldName() != null)
-				path.insert(0, "/" + n.getFieldName());
+				path.insert(0, "/" + n.getFieldName()); //$NON-NLS-1$
 
 			if (n.getIndex() >= 0)
-				path.insert(0, "/" + n.getIndex());
+				path.insert(0, "/" + n.getIndex()); //$NON-NLS-1$
 
 			n = n.getParent();
 		}
 
-		return super.toString() + "[path=" + path + ",expanded=" + expanded + ']';
+		return super.toString() + "[path=" + path + ",expanded=" + expanded + ']'; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	public boolean isExpanded() {
@@ -91,7 +91,7 @@ public class ExpansionState
 
 	public static String getKey(String fieldName, int index)
 	{
-		return (fieldName == null ? "" : String.valueOf(fieldName)) + ':' + (index < 0 ? "" : index);
+		return (fieldName == null ? "" : String.valueOf(fieldName)) + ':' + (index < 0 ? "" : index); //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	public String getKey()

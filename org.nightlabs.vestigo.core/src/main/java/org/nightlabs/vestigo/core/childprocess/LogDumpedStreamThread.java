@@ -69,7 +69,7 @@ public class LogDumpedStreamThread extends Thread
 	public void write(byte[] data, int length)
 	{
 		if (data == null)
-			throw new IllegalArgumentException("data == null");
+			throw new IllegalArgumentException("data == null"); //$NON-NLS-1$
 
 		synchronized (bufferOutputStream) {
 			bufferOutputStream.write(data, 0, length);
@@ -117,7 +117,7 @@ public class LogDumpedStreamThread extends Thread
 					processBuffer(false);
 				}
 			} catch (Throwable e) {
-				logger.error("run: " + e, e);
+				logger.error("run: " + e, e); //$NON-NLS-1$
 			}
 		}
 		processBuffer(true);
@@ -174,7 +174,7 @@ public class LogDumpedStreamThread extends Thread
 	{
 		try {
 			StringBuilder result = new StringBuilder();
-			final String prefix = "  >>> ";
+			final String prefix = "  >>> "; //$NON-NLS-1$
 			BufferedReader r = new BufferedReader(new StringReader(s));
 			String line;
 			while (null != (line = r.readLine()))

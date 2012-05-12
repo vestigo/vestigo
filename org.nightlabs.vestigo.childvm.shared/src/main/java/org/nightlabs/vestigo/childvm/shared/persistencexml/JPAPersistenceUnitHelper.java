@@ -29,12 +29,12 @@ public class JPAPersistenceUnitHelper extends PersistenceUnitHelper {
 	@Override
 	protected void populateSpecialPropertiesFromPersistenceUnit(Map<String, String> toProperties, PersistenceUnit fromPersistenceUnit)
 	{
-		setPropertyIfNotNullAndNotEmpty(toProperties, "javax.persistence.jtaDataSource", fromPersistenceUnit.getJtaDataSource());
-		setPropertyIfNotNullAndNotEmpty(toProperties, "javax.persistence.nonJtaDataSource", fromPersistenceUnit.getNonJtaDataSource());
-		setPropertyIfNotNullAndNotEmpty(toProperties, "javax.persistence.provider", fromPersistenceUnit.getProvider());
-		setPropertyIfNotNullAndNotEmpty(toProperties, "javax.persistence.sharedCache.mode", fromPersistenceUnit.getSharedCacheMode());
-		setPropertyIfNotNullAndNotEmpty(toProperties, "javax.persistence.transactionType", fromPersistenceUnit.getTransactionType());
-		setPropertyIfNotNullAndNotEmpty(toProperties, "javax.persistence.validation.mode", fromPersistenceUnit.getValidationMode());
+		setPropertyIfNotNullAndNotEmpty(toProperties, "javax.persistence.jtaDataSource", fromPersistenceUnit.getJtaDataSource()); //$NON-NLS-1$
+		setPropertyIfNotNullAndNotEmpty(toProperties, "javax.persistence.nonJtaDataSource", fromPersistenceUnit.getNonJtaDataSource()); //$NON-NLS-1$
+		setPropertyIfNotNullAndNotEmpty(toProperties, "javax.persistence.provider", fromPersistenceUnit.getProvider()); //$NON-NLS-1$
+		setPropertyIfNotNullAndNotEmpty(toProperties, "javax.persistence.sharedCache.mode", fromPersistenceUnit.getSharedCacheMode()); //$NON-NLS-1$
+		setPropertyIfNotNullAndNotEmpty(toProperties, "javax.persistence.transactionType", fromPersistenceUnit.getTransactionType()); //$NON-NLS-1$
+		setPropertyIfNotNullAndNotEmpty(toProperties, "javax.persistence.validation.mode", fromPersistenceUnit.getValidationMode()); //$NON-NLS-1$
 	}
 
 	@Override
@@ -42,27 +42,27 @@ public class JPAPersistenceUnitHelper extends PersistenceUnitHelper {
 	{
 		boolean[] consumedFlag = new boolean[1];
 
-		String s1 = consumeProperty(fromProperties, "javax.persistence.jtaDataSource", consumedFlag);
+		String s1 = consumeProperty(fromProperties, "javax.persistence.jtaDataSource", consumedFlag); //$NON-NLS-1$
 		if (consumedFlag[0])
 			toPersistenceUnit.setJtaDataSource(s1);
 
-		String s2 = consumeProperty(fromProperties, "javax.persistence.nonJtaDataSource", consumedFlag);
+		String s2 = consumeProperty(fromProperties, "javax.persistence.nonJtaDataSource", consumedFlag); //$NON-NLS-1$
 		if (consumedFlag[0])
 			toPersistenceUnit.setNonJtaDataSource(s2);
 
-		String s3 = consumeProperty(fromProperties, "javax.persistence.provider", consumedFlag);
+		String s3 = consumeProperty(fromProperties, "javax.persistence.provider", consumedFlag); //$NON-NLS-1$
 		if (consumedFlag[0])
 			toPersistenceUnit.setProvider(s3);
 
-		PersistenceUnitCachingType puct = consumeProperty(fromProperties, "javax.persistence.sharedCache.mode", PersistenceUnitCachingType.class, consumedFlag);
+		PersistenceUnitCachingType puct = consumeProperty(fromProperties, "javax.persistence.sharedCache.mode", PersistenceUnitCachingType.class, consumedFlag); //$NON-NLS-1$
 		if (consumedFlag[0])
 			toPersistenceUnit.setSharedCacheMode(puct);
 
-		PersistenceUnitTransactionType putt = consumeProperty(fromProperties, "javax.persistence.transactionType", PersistenceUnitTransactionType.class, consumedFlag);
+		PersistenceUnitTransactionType putt = consumeProperty(fromProperties, "javax.persistence.transactionType", PersistenceUnitTransactionType.class, consumedFlag); //$NON-NLS-1$
 		if (consumedFlag[0])
 			toPersistenceUnit.setTransactionType(putt);
 
-		PersistenceUnitValidationModeType puvmt = consumeProperty(fromProperties, "javax.persistence.validation.mode", PersistenceUnitValidationModeType.class, consumedFlag);
+		PersistenceUnitValidationModeType puvmt = consumeProperty(fromProperties, "javax.persistence.validation.mode", PersistenceUnitValidationModeType.class, consumedFlag); //$NON-NLS-1$
 		if (consumedFlag[0])
 			toPersistenceUnit.setValidationMode(puvmt);
 	}

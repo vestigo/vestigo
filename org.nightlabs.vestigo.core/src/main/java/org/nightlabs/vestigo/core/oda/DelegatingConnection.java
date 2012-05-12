@@ -34,7 +34,7 @@ implements IConnection
 	public DelegatingConnection(IConnection connection)
 	{
 		if (connection == null)
-			throw new IllegalArgumentException("connection == null");
+			throw new IllegalArgumentException("connection == null"); //$NON-NLS-1$
 
 		this.connection = connection;
 	}

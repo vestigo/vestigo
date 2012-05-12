@@ -115,10 +115,10 @@ public abstract class PersistenceUnitHelper
 	protected static String consumeProperty(Map<String, String> properties, String key, boolean[] consumedFlag)
 	{
 		if (consumedFlag == null)
-			throw new IllegalArgumentException("consumedFlag == null");
+			throw new IllegalArgumentException("consumedFlag == null"); //$NON-NLS-1$
 
 		if (consumedFlag.length != 1)
-			throw new IllegalArgumentException("consumedFlag.length != 1");
+			throw new IllegalArgumentException("consumedFlag.length != 1"); //$NON-NLS-1$
 
 		consumedFlag[0] = false;
 

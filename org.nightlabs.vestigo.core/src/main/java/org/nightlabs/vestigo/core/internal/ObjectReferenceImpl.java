@@ -46,10 +46,10 @@ public abstract class ObjectReferenceImpl implements ObjectReference
 	public ObjectReferenceImpl(ResultSet resultSet, ResultCellObjectRefDTO resultCellObjectRefDTO)
 	{
 		if (resultSet == null)
-			throw new IllegalArgumentException("resultSet == null");
+			throw new IllegalArgumentException("resultSet == null"); //$NON-NLS-1$
 
 		if (resultCellObjectRefDTO == null)
-			throw new IllegalArgumentException("resultCellObjectRefDTO == null");
+			throw new IllegalArgumentException("resultCellObjectRefDTO == null"); //$NON-NLS-1$
 
 		this.resultSet = resultSet;
 		this.resultCellObjectRefDTO = resultCellObjectRefDTO;
@@ -95,7 +95,7 @@ public abstract class ObjectReferenceImpl implements ObjectReference
 	public String getLabelText(Set<LabelTextOption> labelTextOptions)
 	{
 		if (labelTextOptions == null)
-			throw new IllegalArgumentException("labelTextOptions == null");
+			throw new IllegalArgumentException("labelTextOptions == null"); //$NON-NLS-1$
 
 		StringBuilder sb = new StringBuilder();
 
@@ -113,7 +113,7 @@ public abstract class ObjectReferenceImpl implements ObjectReference
 		}
 
 		if (labelTextOptions.contains(LabelTextOption.showObjectToString) && this.getObjectToString() != null)
-			sb.append(": ").append(this.getObjectToString());
+			sb.append(": ").append(this.getObjectToString()); //$NON-NLS-1$
 
 		return sb.toString();
 	}

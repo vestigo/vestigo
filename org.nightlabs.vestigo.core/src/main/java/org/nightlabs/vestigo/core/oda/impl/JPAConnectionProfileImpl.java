@@ -30,7 +30,7 @@ implements JPAConnectionProfile
 {
 	@Override
 	protected String getWebAppName() {
-		return "org.nightlabs.vestigo.childvm.webapp";
+		return "org.nightlabs.vestigo.childvm.webapp"; //$NON-NLS-1$
 	}
 
 	@Override

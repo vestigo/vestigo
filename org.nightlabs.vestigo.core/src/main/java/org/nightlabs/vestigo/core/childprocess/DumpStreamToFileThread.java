@@ -57,9 +57,9 @@ public class DumpStreamToFileThread extends Thread
 	public DumpStreamToFileThread(InputStream inputStream, File outputFile, String childProcessLoggerName) throws IOException
 	{
 		if (inputStream == null)
-			throw new IllegalArgumentException("inputStream == null");
+			throw new IllegalArgumentException("inputStream == null"); //$NON-NLS-1$
 		if (outputFile == null)
-			throw new IllegalArgumentException("outputFile == null");
+			throw new IllegalArgumentException("outputFile == null"); //$NON-NLS-1$
 
 		this.inputStream = inputStream;
 		this.outputFile = outputFile;
@@ -86,9 +86,9 @@ public class DumpStreamToFileThread extends Thread
 					}
 				} catch (Throwable e) {
 					if (!ignoreErrors)
-						logger.error("run: " + e, e);
+						logger.error("run: " + e, e); //$NON-NLS-1$
 					else
-						logger.info("run: " + e);
+						logger.info("run: " + e); //$NON-NLS-1$
 
 					return;
 				}
@@ -98,7 +98,7 @@ public class DumpStreamToFileThread extends Thread
 			try {
 				outputStream.close();
 			} catch (IOException e) {
-				logger.warn("run: outputStream.close() failed: " + e, e);
+				logger.warn("run: outputStream.close() failed: " + e, e); //$NON-NLS-1$
 			}
 		}
 	}

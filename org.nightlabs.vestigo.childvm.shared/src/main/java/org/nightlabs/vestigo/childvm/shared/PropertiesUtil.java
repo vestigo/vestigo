@@ -46,13 +46,13 @@ public class PropertiesUtil extends org.nightlabs.util.PropertiesUtil
 	 * These are used by Vestigo to manage the connection (e.g. to know which classpath is required
 	 * for the JDO/JPA implementation) and not passed to the persistence implementation itself.
 	 */
-	public static final String PREFIX_META = "meta.";
+	public static final String PREFIX_META = "meta."; //$NON-NLS-1$
 
 	/**
 	 * Prefix for actual persistence properties. They are passed to the persistence implementation
 	 * (without the prefix).
 	 */
-	public static final String PREFIX_PERSISTENCE = "persistence.";
+	public static final String PREFIX_PERSISTENCE = "persistence."; //$NON-NLS-1$
 
 	/**
 	 * Prefix for the classpath elements that make up the classpath of the JDO/JPA persistence implementation.
@@ -61,11 +61,11 @@ public class PropertiesUtil extends org.nightlabs.util.PropertiesUtil
 	 * The actual properties will use keys with this prefix and a decimal-encoded integer index (0-based), e.g.
 	 * {@value #PREFIX_META_PERSISTENCE_ENGINE_CLASSPATH} + ".0", {@value #PREFIX_META_PERSISTENCE_ENGINE_CLASSPATH} + ".1" and so on.
 	 */
-	public static final String PREFIX_META_PERSISTENCE_ENGINE_CLASSPATH = PREFIX_META + "persistenceEngineClasspath.";
+	public static final String PREFIX_META_PERSISTENCE_ENGINE_CLASSPATH = PREFIX_META + "persistenceEngineClasspath."; //$NON-NLS-1$
 
-	public static final String WORKAROUND_TIMESTAMP = PREFIX_META + "workaround.timestamp";
+	public static final String WORKAROUND_TIMESTAMP = PREFIX_META + "workaround.timestamp"; //$NON-NLS-1$
 
-	public static final String PERSISTENCE_UNIT_NAME = PREFIX_META + "persistenceUnitName";
+	public static final String PERSISTENCE_UNIT_NAME = PREFIX_META + "persistenceUnitName"; //$NON-NLS-1$
 
 	/**
 	 * Boolean flag controlling whether to generate a synthetic <code>persistence.xml</code> file
@@ -74,7 +74,7 @@ public class PropertiesUtil extends org.nightlabs.util.PropertiesUtil
 	 * This bug prevents to override properties declared in the <code>persistence.xml</code> with a <code>null</code>
 	 * value (equivalent to removing them from the file).
 	 */
-	public static final String PERSISTENCE_UNIT_SYNTHETIC_OVERRIDE = PREFIX_META + "persistenceUnitSyntheticOverride";
+	public static final String PERSISTENCE_UNIT_SYNTHETIC_OVERRIDE = PREFIX_META + "persistenceUnitSyntheticOverride"; //$NON-NLS-1$
 
 	public static void putAll(java.util.Properties source, java.util.Properties target, String keyPrefix)
 	{
@@ -95,7 +95,7 @@ public class PropertiesUtil extends org.nightlabs.util.PropertiesUtil
 	public static List<String> getList(java.util.Properties properties, String keyPrefix)
 	{
 		TreeMap<Integer, String> resultMap = new TreeMap<Integer, String>();
-		Collection<Matcher> matches = getPropertyKeyMatches(properties, Pattern.compile("^"+Pattern.quote(keyPrefix)+"(.*)$"));
+		Collection<Matcher> matches = getPropertyKeyMatches(properties, Pattern.compile("^"+Pattern.quote(keyPrefix)+"(.*)$")); //$NON-NLS-1$ //$NON-NLS-2$
 		for (Matcher m : matches)
 			resultMap.put(new Integer(m.group(1)), properties.getProperty(m.group(0)));
 
@@ -114,12 +114,12 @@ public class PropertiesUtil extends org.nightlabs.util.PropertiesUtil
 
 		MessageDigest md;
 		try {
-			md = MessageDigest.getInstance("SHA-1");
+			md = MessageDigest.getInstance("SHA-1"); //$NON-NLS-1$
 		} catch (NoSuchAlgorithmException e) {
 			throw new RuntimeException(e);
 		}
 		for (Map.Entry<String, String> me : m.entrySet()) {
-			logger.debug("getProfileID: {} => {}", me.getKey(), me.getValue());
+			logger.debug("getProfileID: {} => {}", me.getKey(), me.getValue()); //$NON-NLS-1$
 			if (me.getKey() != null)
 				md.update(
 						me.getKey().getBytes(IOUtil.CHARSET_UTF_8)

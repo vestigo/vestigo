@@ -27,13 +27,13 @@ public class JDOPersistenceUnitHelper extends PersistenceUnitHelper {
 	@Override
 	protected void populateSpecialPropertiesFromPersistenceUnit(Map<String, String> toProperties, PersistenceUnit fromPersistenceUnit)
 	{
-		setPropertyIfNotNullAndNotEmpty(toProperties, "javax.jdo.option.ConnectionFactoryName", fromPersistenceUnit.getJtaDataSource());
-		setPropertyIfNotNullAndNotEmpty(toProperties, "javax.jdo.option.ConnectionFactory2Name", fromPersistenceUnit.getNonJtaDataSource());
-		setPropertyIfNotNullAndNotEmpty(toProperties, "javax.jdo.PersistenceManagerFactoryClass", fromPersistenceUnit.getProvider());
+		setPropertyIfNotNullAndNotEmpty(toProperties, "javax.jdo.option.ConnectionFactoryName", fromPersistenceUnit.getJtaDataSource()); //$NON-NLS-1$
+		setPropertyIfNotNullAndNotEmpty(toProperties, "javax.jdo.option.ConnectionFactory2Name", fromPersistenceUnit.getNonJtaDataSource()); //$NON-NLS-1$
+		setPropertyIfNotNullAndNotEmpty(toProperties, "javax.jdo.PersistenceManagerFactoryClass", fromPersistenceUnit.getProvider()); //$NON-NLS-1$
 
 //		setPropertyIfNotNullAndNotEmpty(toProperties, "javax.persistence.sharedCache.mode", fromPersistenceUnit.getSharedCacheMode()); // Not in JDO.
 
-		setPropertyIfNotNullAndNotEmpty(toProperties, "javax.jdo.option.TransactionType", fromPersistenceUnit.getTransactionType());
+		setPropertyIfNotNullAndNotEmpty(toProperties, "javax.jdo.option.TransactionType", fromPersistenceUnit.getTransactionType()); //$NON-NLS-1$
 
 //		setPropertyIfNotNullAndNotEmpty(toProperties, "javax.persistence.validation.mode", fromPersistenceUnit.getValidationMode()); // Not in JDO.
 
@@ -44,19 +44,19 @@ public class JDOPersistenceUnitHelper extends PersistenceUnitHelper {
 	{
 		boolean[] consumedFlag = new boolean[1];
 
-		String s1 = consumeProperty(fromProperties, "javax.jdo.option.ConnectionFactoryName", consumedFlag);
+		String s1 = consumeProperty(fromProperties, "javax.jdo.option.ConnectionFactoryName", consumedFlag); //$NON-NLS-1$
 		if (consumedFlag[0])
 			toPersistenceUnit.setJtaDataSource(s1);
 
-		String s2 = consumeProperty(fromProperties, "javax.jdo.option.ConnectionFactory2Name", consumedFlag);
+		String s2 = consumeProperty(fromProperties, "javax.jdo.option.ConnectionFactory2Name", consumedFlag); //$NON-NLS-1$
 		if (consumedFlag[0])
 			toPersistenceUnit.setNonJtaDataSource(s2);
 
-		String s3 = consumeProperty(fromProperties, "javax.jdo.PersistenceManagerFactoryClass", consumedFlag);
+		String s3 = consumeProperty(fromProperties, "javax.jdo.PersistenceManagerFactoryClass", consumedFlag); //$NON-NLS-1$
 		if (consumedFlag[0])
 			toPersistenceUnit.setProvider(s3);
 
-		PersistenceUnitTransactionType putt = consumeProperty(fromProperties, "javax.jdo.option.TransactionType", PersistenceUnitTransactionType.class, consumedFlag);
+		PersistenceUnitTransactionType putt = consumeProperty(fromProperties, "javax.jdo.option.TransactionType", PersistenceUnitTransactionType.class, consumedFlag); //$NON-NLS-1$
 		if (consumedFlag[0])
 			toPersistenceUnit.setTransactionType(putt);
 	}

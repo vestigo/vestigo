@@ -50,14 +50,14 @@ public class DataSourceDriverRegistry
 	private DataSourceDriverRegistry() { }
 
 	protected String getExtensionPointID() {
-		return "org.eclipse.datatools.connectivity.oda.dataSource";
+		return "org.eclipse.datatools.connectivity.oda.dataSource"; //$NON-NLS-1$
 	}
 
 	private void process()
 	{
 		final IExtensionRegistry registry = Platform.getExtensionRegistry();
 		if (registry == null)
-			throw new IllegalStateException("Platform.getExtensionRegistry() returned null!");
+			throw new IllegalStateException("Platform.getExtensionRegistry() returned null!"); //$NON-NLS-1$
 
 		final IExtensionPoint extensionPoint = registry.getExtensionPoint(getExtensionPointID());
 		if (extensionPoint == null)
@@ -81,11 +81,11 @@ public class DataSourceDriverRegistry
 
 	private void processElement(IExtension extension, IConfigurationElement element) throws Exception
 	{
-		if ("dataSource".equals(element.getName())) {
-			String providerID = element.getAttribute("id");
-			Object instance = element.createExecutableExtension("driverClass");
+		if ("dataSource".equals(element.getName())) { //$NON-NLS-1$
+			String providerID = element.getAttribute("id"); //$NON-NLS-1$
+			Object instance = element.createExecutableExtension("driverClass"); //$NON-NLS-1$
 			if (! (instance instanceof IDriver))
-				throw new IllegalStateException("Class \"" + element.getAttribute("driverClass") + "\" registered as 'driverClass' in plug-in \"" + element.getContributor().getName() + "\" for extension-point \""+ getExtensionPointID() +"\" does not implement interface \"" + IDriver.class.getName() + "\"!");
+				throw new IllegalStateException("Class \"" + element.getAttribute("driverClass") + "\" registered as 'driverClass' in plug-in \"" + element.getContributor().getName() + "\" for extension-point \""+ getExtensionPointID() +"\" does not implement interface \"" + IDriver.class.getName() + "\"!"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$ //$NON-NLS-6$
 
 			IDriver driverInstance = (IDriver) instance;
 			Class<? extends IDriver> driverClass = driverInstance.getClass();

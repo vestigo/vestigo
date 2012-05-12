@@ -43,8 +43,8 @@ import org.slf4j.LoggerFactory;
 
 public class PersistenceXmlScanner {
 
-	public static final String META_INF = "META-INF";
-	public static final String PERSISTENCE_XML = "persistence.xml";
+	public static final String META_INF = "META-INF"; //$NON-NLS-1$
+	public static final String PERSISTENCE_XML = "persistence.xml"; //$NON-NLS-1$
 
 	private static final Logger logger = LoggerFactory.getLogger(PersistenceXmlScanner.class);
 
@@ -71,7 +71,7 @@ public class PersistenceXmlScanner {
 		if (monitor == null)
 			monitor = new NullProgressMonitor();
 
-		String taskName = "Search persistence.xml files";
+		String taskName = "Search persistence.xml files"; //$NON-NLS-1$
 		monitor.beginTask(taskName, 100);
 		try {
 			JAXBContext context = JAXBContext.newInstance(Persistence.class);
@@ -89,7 +89,7 @@ public class PersistenceXmlScanner {
 				try {
 					populatePersistenceXmls(context, persistenceXmls, url, new SubProgressMonitor(subMonitor, 10));
 				} catch (Exception e) {
-					logger.warn("searchPersistenceXmls: url='" + url + "': " + e, e);
+					logger.warn("searchPersistenceXmls: url='" + url + "': " + e, e); //$NON-NLS-1$ //$NON-NLS-2$
 				}
 			}
 			subMonitor.done();
@@ -101,17 +101,17 @@ public class PersistenceXmlScanner {
 
 	private void populatePersistenceXmls(JAXBContext context, List<PersistenceXml> persistenceXmls, URL url, ProgressMonitor monitor) throws IOException, URISyntaxException, JAXBException
 	{
-		monitor.beginTask("Search persistence.xml files", 100);
+		monitor.beginTask("Search persistence.xml files", 100); //$NON-NLS-1$
 		try {
-			if (!"file".equals(url.getProtocol())) {
-				logger.warn("populatePersistenceXmls: Ignoring unsupported URL (unknown protocol): {}", url);
+			if (!"file".equals(url.getProtocol())) { //$NON-NLS-1$
+				logger.warn("populatePersistenceXmls: Ignoring unsupported URL (unknown protocol): {}", url); //$NON-NLS-1$
 				return;
 			}
 
 			File file = new File(url.toURI());
 
 			if (!file.exists()) {
-				logger.warn("populatePersistenceXmls: File or directory does not exist: {}", file.getAbsolutePath());
+				logger.warn("populatePersistenceXmls: File or directory does not exist: {}", file.getAbsolutePath()); //$NON-NLS-1$
 				return;
 			}
 
@@ -120,12 +120,12 @@ public class PersistenceXmlScanner {
 				if (persistenceXmlFile.exists())
 					persistenceXmls.add(loadPersistenceXml(context, url, persistenceXmlFile));
 				else
-					logger.debug("populatePersistenceXmls: {} not found at location: {}", PERSISTENCE_XML, persistenceXmlFile.getAbsolutePath());
+					logger.debug("populatePersistenceXmls: {} not found at location: {}", PERSISTENCE_XML, persistenceXmlFile.getAbsolutePath()); //$NON-NLS-1$
 			}
 
 			String fnLower = file.getName().toLowerCase();
-			if (!(fnLower.endsWith(".ear") || fnLower.endsWith(".war") || fnLower.endsWith(".jar"))) {
-				logger.debug("populatePersistenceXmls: Ignoring non-archive file: {}", file.getAbsolutePath());
+			if (!(fnLower.endsWith(".ear") || fnLower.endsWith(".war") || fnLower.endsWith(".jar"))) { //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				logger.debug("populatePersistenceXmls: Ignoring non-archive file: {}", file.getAbsolutePath()); //$NON-NLS-1$
 				return;
 			}
 
@@ -133,7 +133,7 @@ public class PersistenceXmlScanner {
 			try {
 				ZipEntry zipEntry = zipFile.getEntry(META_INF + '/' + PERSISTENCE_XML);
 				if (zipEntry == null) {
-					logger.debug("populatePersistenceXmls: {} not found in zip file: {}", META_INF + '/' + PERSISTENCE_XML, file.getAbsolutePath());
+					logger.debug("populatePersistenceXmls: {} not found in zip file: {}", META_INF + '/' + PERSISTENCE_XML, file.getAbsolutePath()); //$NON-NLS-1$
 					return;
 				}
 
@@ -153,7 +153,7 @@ public class PersistenceXmlScanner {
 	{
 		Object o = context.createUnmarshaller().unmarshal(persistenceXmlFile);
 		if (!(o instanceof Persistence))
-			throw new IllegalStateException("File '" + persistenceXmlFile.getAbsolutePath() + "' contains an object of type " + o.getClass().getName() + " instead of " + Persistence.class.getName() + "!");
+			throw new IllegalStateException("File '" + persistenceXmlFile.getAbsolutePath() + "' contains an object of type " + o.getClass().getName() + " instead of " + Persistence.class.getName() + "!"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
 
 		return new PersistenceXml(classpathURL, (Persistence)o);
 	}
@@ -162,7 +162,7 @@ public class PersistenceXmlScanner {
 	{
 		Object o = context.createUnmarshaller().unmarshal(persistenceXmlIn);
 		if (!(o instanceof Persistence))
-			throw new IllegalStateException(PERSISTENCE_XML + " of URL '" + classpathURL + "' contains an object of type " + o.getClass().getName() + " instead of " + Persistence.class.getName() + "!");
+			throw new IllegalStateException(PERSISTENCE_XML + " of URL '" + classpathURL + "' contains an object of type " + o.getClass().getName() + " instead of " + Persistence.class.getName() + "!"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
 
 		return new PersistenceXml(classpathURL, (Persistence)o);
 	}

@@ -38,9 +38,9 @@ public class OpenConnectionProfileWizardAction extends Action implements IAction
 	@Override
 	public void run(final String[] params, final ICheatSheetManager cheatSheetManager) {
 		try {
-			final String categoryID = "org.nightlabs.vestigo.core.oda.JPADriver";
+			final String categoryID = "org.nightlabs.vestigo.core.oda.JPADriver"; //$NON-NLS-1$
 			IViewPart dataSourceNavigatorView = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
-					.showView("org.eclipse.datatools.connectivity.DataSourceExplorerNavigator");
+					.showView("org.eclipse.datatools.connectivity.DataSourceExplorerNavigator"); //$NON-NLS-1$
 			Category jpaCategory = new Category(null) {
 				@Override
 				public String getId() {

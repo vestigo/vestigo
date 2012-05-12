@@ -180,7 +180,7 @@ public class DelegatingResultSet implements IResultSet
 	public DelegatingResultSet(IResultSet resultSet)
 	{
 		if (resultSet == null)
-			throw new IllegalArgumentException("resultSet == null");
+			throw new IllegalArgumentException("resultSet == null"); //$NON-NLS-1$
 
 		this.resultSet = resultSet;
 	}

@@ -70,14 +70,14 @@ public class CommandParser {
 		else
 			filteredCommand = command;
 
-		StringTokenizer st = new StringTokenizer(filteredCommand, " \"\'", true);
+		StringTokenizer st = new StringTokenizer(filteredCommand, " \"\'", true); //$NON-NLS-1$
 		List<String> result = new ArrayList<String>();
 		boolean isInDoubleQuotes = false;
 		boolean isInSingleQuotes = false;
 		StringBuilder current = new StringBuilder();
 		while (st.hasMoreTokens()) {
 			String token = st.nextToken();
-			if (" ".equals(token)) {
+			if (" ".equals(token)) { //$NON-NLS-1$
 				if (isInDoubleQuotes || isInSingleQuotes)
 					current.append(token);
 				else {
@@ -88,7 +88,7 @@ public class CommandParser {
 					}
 				}
 			}
-			else if ("\"".equals(token)) {
+			else if ("\"".equals(token)) { //$NON-NLS-1$
 				if (isInSingleQuotes)
 					current.append(token);
 				else {
@@ -99,7 +99,7 @@ public class CommandParser {
 					isInDoubleQuotes = !isInDoubleQuotes;
 				}
 			}
-			else if ("\'".equals(token)) {
+			else if ("\'".equals(token)) { //$NON-NLS-1$
 				if (isInDoubleQuotes)
 					current.append(token);
 				else {
@@ -120,12 +120,12 @@ public class CommandParser {
 			current.setLength(0);
 		}
 
-		logger.debug("parse: input: {}", command);
+		logger.debug("parse: input: {}", command); //$NON-NLS-1$
 		if (logger.isTraceEnabled()) {
-			logger.trace("parse: filtered: {}", filteredCommand);
-			logger.trace("parse: result:");
+			logger.trace("parse: filtered: {}", filteredCommand); //$NON-NLS-1$
+			logger.trace("parse: result:"); //$NON-NLS-1$
 			for (String r : result)
-				logger.trace("parse:   * {}", r);
+				logger.trace("parse:   * {}", r); //$NON-NLS-1$
 		}
 
 		return result.toArray(new String[result.size()]);

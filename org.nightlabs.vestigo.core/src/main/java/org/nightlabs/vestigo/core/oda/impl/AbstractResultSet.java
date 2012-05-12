@@ -47,6 +47,7 @@ import org.nightlabs.vestigo.core.internal.PersistentObjectReferenceImpl;
 import org.nightlabs.vestigo.core.internal.TransientObjectReferenceImpl;
 import org.nightlabs.vestigo.core.oda.Query;
 import org.nightlabs.vestigo.core.oda.ResultSet;
+import org.nightlabs.vestigo.core.resource.Messages;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
@@ -70,7 +71,7 @@ public abstract class AbstractResultSet implements ResultSet
 	public AbstractResultSet(Query query)
 	{
 		if (query == null)
-			throw new IllegalArgumentException("query == null");
+			throw new IllegalArgumentException("query == null"); //$NON-NLS-1$
 
 		this.query = query;
 	}
@@ -93,7 +94,7 @@ public abstract class AbstractResultSet implements ResultSet
 			return;
 
 		if (this.resultSetID != null)
-			throw new IllegalStateException("this.resultSetID already assigned! Cannot modify!");
+			throw new IllegalStateException("this.resultSetID already assigned! Cannot modify!"); //$NON-NLS-1$
 
 		this.resultSetID = resultSetID;
 	}
@@ -120,13 +121,13 @@ public abstract class AbstractResultSet implements ResultSet
 			return;
 
 		if (resultRowDTOs.isEmpty())
-			resultSetMetaData = new ResultSetMetaData(new ResultSetMetaData.Column(">>> empty <<<"));
+			resultSetMetaData = new ResultSetMetaData(new ResultSetMetaData.Column(Messages.getString("AbstractResultSet.emptyMessage"))); //$NON-NLS-1$
 		else {
 			ResultRowDTO firstRow = resultRowDTOs.get(0);
 
 			ResultSetMetaData.Column[] columns = new ResultSetMetaData.Column[firstRow.getCells().size()];
 			for (int i = 0; i < columns.length; i++) {
-				columns[i] = new ResultSetMetaData.Column("col_" + (i + 1));
+				columns[i] = new ResultSetMetaData.Column("col_" + (i + 1)); //$NON-NLS-1$
 			}
 
 			resultSetMetaData = new ResultSetMetaData(columns);
@@ -151,7 +152,7 @@ public abstract class AbstractResultSet implements ResultSet
 
 	private void assertOpen() {
 		if (query == null)
-			throw new IllegalStateException("This ResultSet is already closed!");
+			throw new IllegalStateException("This ResultSet is already closed!"); //$NON-NLS-1$
 	}
 
 	private void constrainMaxRowsIfLicenceIsNotValid()
@@ -270,7 +271,7 @@ public abstract class AbstractResultSet implements ResultSet
 			return 0;
 		if (object instanceof Number)
 			return ((Number)object).intValue();
-		throw new IllegalStateException("The object is neither an instance of java.lang.Number nor null: " + object);
+		throw new IllegalStateException("The object is neither an instance of java.lang.Number nor null: " + object); //$NON-NLS-1$
 	}
 
 	@Override
@@ -287,7 +288,7 @@ public abstract class AbstractResultSet implements ResultSet
 			return 0;
 		if (object instanceof Number)
 			return ((Number)object).doubleValue();
-		throw new IllegalStateException("The object is neither an instance of java.lang.Number nor null: " + object);
+		throw new IllegalStateException("The object is neither an instance of java.lang.Number nor null: " + object); //$NON-NLS-1$
 	}
 
 	@Override
@@ -318,7 +319,7 @@ public abstract class AbstractResultSet implements ResultSet
 			return new BigDecimal(((Float)object).floatValue());
 		if (object instanceof Number)
 			return new BigDecimal(((Number)object).doubleValue());
-		throw new IllegalStateException("The object is neither an instance of java.math.BigDecimal nor can it be converted to it: " + object);
+		throw new IllegalStateException("The object is neither an instance of java.math.BigDecimal nor can it be converted to it: " + object); //$NON-NLS-1$
 	}
 
 	@Override
@@ -341,7 +342,7 @@ public abstract class AbstractResultSet implements ResultSet
 			return new Date(((java.sql.Time)object).getTime());
 		if (object instanceof java.sql.Timestamp)
 			return new Date(((java.sql.Timestamp)object).getTime());
-		throw new IllegalStateException("The object is neither an instance of java.sql.Time nor can it be converted to it: " + object);
+		throw new IllegalStateException("The object is neither an instance of java.sql.Time nor can it be converted to it: " + object); //$NON-NLS-1$
 	}
 
 	@Override
@@ -364,7 +365,7 @@ public abstract class AbstractResultSet implements ResultSet
 			return (java.sql.Time)object;
 		if (object instanceof java.sql.Timestamp)
 			return new Time(((java.sql.Timestamp)object).getTime());
-		throw new IllegalStateException("The object is neither an instance of java.sql.Time nor can it be converted to it: " + object);
+		throw new IllegalStateException("The object is neither an instance of java.sql.Time nor can it be converted to it: " + object); //$NON-NLS-1$
 	}
 
 	@Override
@@ -387,7 +388,7 @@ public abstract class AbstractResultSet implements ResultSet
 			return new Timestamp(((java.sql.Time)object).getTime());
 		if (object instanceof java.sql.Timestamp)
 			return (java.sql.Timestamp) object;
-		throw new IllegalStateException("The object is neither an instance of java.sql.Timestamp nor can it be converted to it: " + object);
+		throw new IllegalStateException("The object is neither an instance of java.sql.Timestamp nor can it be converted to it: " + object); //$NON-NLS-1$
 	}
 
 	@Override
@@ -399,7 +400,7 @@ public abstract class AbstractResultSet implements ResultSet
 
 	@Override
 	public IBlob getBlob(int index) throws OdaException {
-		throw new UnsupportedOperationException("NYI - optional data type");
+		throw new UnsupportedOperationException("NYI - optional data type"); //$NON-NLS-1$
 	}
 
 	@Override
@@ -411,7 +412,7 @@ public abstract class AbstractResultSet implements ResultSet
 
 	@Override
 	public IClob getClob(int index) throws OdaException {
-		throw new UnsupportedOperationException("NYI - optional data type");
+		throw new UnsupportedOperationException("NYI - optional data type"); //$NON-NLS-1$
 	}
 
 	@Override
@@ -441,10 +442,10 @@ public abstract class AbstractResultSet implements ResultSet
 		wasNull = true;
 
 		if (elementsIteratorEnded)
-			throw new IllegalStateException("Cursor is located AFTER the end of the result set!");
+			throw new IllegalStateException("Cursor is located AFTER the end of the result set!"); //$NON-NLS-1$
 
 		if (elementsIterator == null)
-			throw new IllegalStateException("Cursor is located BEFORE the beginning of the result set! Call next() first!");
+			throw new IllegalStateException("Cursor is located BEFORE the beginning of the result set! Call next() first!"); //$NON-NLS-1$
 
 		if (row == null)
 			return null;
@@ -455,7 +456,7 @@ public abstract class AbstractResultSet implements ResultSet
 		ResultCellDTO resultCellDTO = row.getCells().get(index - 1);
 
 		if (resultCellDTO == null)
-			throw new IllegalStateException("row.getCells().get(index - 1) returned null! index=" + index);
+			throw new IllegalStateException("row.getCells().get(index - 1) returned null! index=" + index); //$NON-NLS-1$
 
 		Object result = unmaskResultCellDTO(resultCellDTO);
 
@@ -492,7 +493,7 @@ public abstract class AbstractResultSet implements ResultSet
 			return objectReference;
 		}
 
-		throw new IllegalStateException("Unknown ResultCellDTO subclass: " + resultCellDTO);
+		throw new IllegalStateException("Unknown ResultCellDTO subclass: " + resultCellDTO); //$NON-NLS-1$
 	}
 
 	private ObjectReference createObjectReference(ResultCellObjectRefDTO resultCellObjectRefDTO)
@@ -501,7 +502,7 @@ public abstract class AbstractResultSet implements ResultSet
 			return new PersistentObjectReferenceImpl(this, resultCellObjectRefDTO);
 		if (resultCellObjectRefDTO instanceof ResultCellTransientObjectRefDTO)
 			return new TransientObjectReferenceImpl(this, resultCellObjectRefDTO);
-		throw new IllegalStateException("Unknown ResultCellObjectRefDTO subclass: " + resultCellObjectRefDTO);
+		throw new IllegalStateException("Unknown ResultCellObjectRefDTO subclass: " + resultCellObjectRefDTO); //$NON-NLS-1$
 	}
 
 	private String getQualifiedObjectID(String objectClassName, String objectIDString)

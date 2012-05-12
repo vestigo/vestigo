@@ -53,8 +53,8 @@ implements Serializable, Comparable<QueryParameterDTO>
 		if (result != 0)
 			return result;
 
-		String n1 = this.name == null ? "" : this.name;
-		String n2 = o.name == null ? "" : o.name;
+		String n1 = this.name == null ? "" : this.name; //$NON-NLS-1$
+		String n2 = o.name == null ? "" : o.name; //$NON-NLS-1$
 		result = n1.compareTo(n2);
 
 		return result;
