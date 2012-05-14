@@ -21,15 +21,21 @@
 2) Determine the new version number. Look in a "pom.xml" to see the old version number. For this
 example, we assume, our old version is "0.7.0-SNAPSHOT" and our new version thus is "0.7.0".
 
-3) Open the class 'ReleasePreparer' in 'org.nightlabs.vestigo.release' and set its field 'newMavenVersion' to
+3) Adjust "src/site/apt/releases/index.apt" and "src/site/de/apt/releases/index.apt" in
+"org.nightlabs.vestigo.all".
+
+4) Adjust "src/site/apt/documentation/whats-new.apt" and "src/site/de/apt/documentation/whats-new.apt" in
+"org.nightlabs.vestigo.all".
+
+5) Open the class 'ReleasePreparer' in 'org.nightlabs.vestigo.release' and set its field 'newMavenVersion' to
 "0.7.0". Save the file and run its main method.
 
-4) Run "mvn clean install" in "org.nightlabs.vestigo.all".
+6) Run "mvn clean install" in "org.nightlabs.vestigo.all".
 
-5) Refresh all projects in Eclipse and wait for the build to finish. You might need to right-click => Maven
+7) Refresh all projects in Eclipse and wait for the build to finish. You might need to right-click => Maven
 => "Update Project Configuration..." on some projects, if they still have error markers.
 
-6) Check-in and build "Vestigo" (the main build). Wait for Jenkins to build all downstream projects, too.
+8) Check-in and build "Vestigo" (the main build). Wait for Jenkins to build all downstream projects, too.
 Finally trigger the deployment of the stand-alone assemblies manually (not triggered by Jenkins automatically,
 because it takes about 1 hour).
 
@@ -40,12 +46,12 @@ have to delete the artifacts manually, if you really want to re-run a release bu
 It's better to simply discard the build number as "consumed for broken build" and release again with a new
 build number.
 
-7) Create a tag in svn.
+9) Create a tag in svn.
 
-8) Repeat all (except for the svn tag creation) for the next SNAPSHOT version, i.e. to switch from "0.7.0" to
+10) Repeat all (except for the svn tag creation) for the next SNAPSHOT version, i.e. to switch from "0.7.0" to
 "0.7.1-SNAPSHOT". SVN trunk should always be in SNAPSHOT mode and only temporarily have a release version.
 
-9) Login as user "nightly" on "eagle.nighthost.de" like this:
+11) Login as user "nightly" on "eagle.nighthost.de" like this:
 
 # ssh nightly@eagle.nighthost.de
 
@@ -53,16 +59,16 @@ If you do not have your certificate stored on this machine for certificate-based
 the password of the user nightly, then login via another user AND DO NOT FORGET TO SWITCH THE USER!!! This
 is essential, because the symlinks that are about to be created/modified must be owned by the correct user!
 
-10) On eagle, go to "/srv/www/nightly/vestigo.nightlabs.com/htdocs" and redirect the symlinks "latest-dev" and
+12) On eagle, go to "/srv/www/nightly/vestigo.nightlabs.com/htdocs" and redirect the symlinks "latest-dev" and
 "latest-stable" to the new versions.
 
-11) On eagle, go to "/srv/www/nightly/vestigo.nightlabs.com/htdocs/updates/snapshots" and edit the two
+13) On eagle, go to "/srv/www/nightly/vestigo.nightlabs.com/htdocs/updates/snapshots" and edit the two
 files "compositeArtifacts.xml" and "compositeContent.xml". Add a "<child ... />" element and increment
 the "size" attribute of "<children ...>". Update version numbers or timestamps in these files manually,
 too!
 
-12) On eagle, go to "/srv/www/nightly/vestigo.nightlabs.com/htdocs/updates/releases" and repeat the same
+14) On eagle, go to "/srv/www/nightly/vestigo.nightlabs.com/htdocs/updates/releases" and repeat the same
 you did for the snapshots again for the releases. 
 
-13) Edit "${workspace}/org.nightlabs.vestigo.all/src/site/apt/releases/index.apt" and 
+15) Edit "${workspace}/org.nightlabs.vestigo.all/src/site/apt/releases/index.apt" and 
 "${workspace}/org.nightlabs.vestigo.all/src/site/de/apt/releases/index.apt" to add the new release.
