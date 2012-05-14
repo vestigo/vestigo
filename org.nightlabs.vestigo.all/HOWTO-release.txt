@@ -40,7 +40,7 @@ Finally trigger the deployment of the stand-alone assemblies manually (not trigg
 because it takes about 1 hour).
 
 Every Vestigo-related project should be run exactly once with the release version number. Trying to build a
-release build a 2nd time fails, because our Maven-repository consideres release builds to be immutable!!! You
+release build a 2nd time fails, because our Maven-repository considers release builds to be immutable!!! You
 have to delete the artifacts manually, if you really want to re-run a release build.
 
 It's better to simply discard the build number as "consumed for broken build" and release again with a new

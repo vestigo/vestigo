@@ -11,10 +11,10 @@ Was ist neu?
 
 	Folgendes ist neu in 0.9.1 (verglichen mit 0.9.0):
 
-	* Einiges mehr an String-Externalisierung.
+	* Einiges mehr an String-Externalisierung und deutscher Übersetzung.
 
-	* Einiges mehr an deutscher Übersetzung.
+	* Fehler in JPA-Grammatik bzgl. "LIKE" behoben.
 
-	* Verbesserungen der Web-Seite (mehr JPA-Dokumentation).
+	* Verbesserungen der Web-Seite (insbesondere mehr JPA-Dokumentation).
 
 	[]
