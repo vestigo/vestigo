@@ -21,11 +21,12 @@
 2) Determine the new version number. Look in a "pom.xml" to see the old version number. For this
 example, we assume, our old version is "0.7.0-SNAPSHOT" and our new version thus is "0.7.0".
 
-3) Adjust "src/site/apt/releases/index.apt" and "src/site/de/apt/releases/index.apt" in
-"org.nightlabs.vestigo.all".
+3) Edit "${workspace}/org.nightlabs.vestigo.all/src/site/apt/releases/index.apt" and
+"${workspace}/org.nightlabs.vestigo.all/src/site/de/apt/releases/index.apt" to add the new release.
 
-4) Adjust "src/site/apt/documentation/whats-new.apt" and "src/site/de/apt/documentation/whats-new.apt" in
-"org.nightlabs.vestigo.all".
+4) Edit "${workspace}/org.nightlabs.vestigo.all/src/site/apt/documentation/whats-new.apt" and
+"${workspace}/org.nightlabs.vestigo.all/src/site/de/apt/documentation/whats-new.apt" to let the people
+know what's new. You might want to take a look at the SVN history, if you don't know what was done.
 
 5) Open the class 'ReleasePreparer' in 'org.nightlabs.vestigo.release' and set its field 'newMavenVersion' to
 "0.7.0". Save the file and run its main method.
@@ -69,6 +70,3 @@ too!
 
 14) On eagle, go to "/srv/www/nightly/vestigo.nightlabs.com/htdocs/updates/releases" and repeat the same
 you did for the snapshots again for the releases. 
-
-15) Edit "${workspace}/org.nightlabs.vestigo.all/src/site/apt/releases/index.apt" and 
-"${workspace}/org.nightlabs.vestigo.all/src/site/de/apt/releases/index.apt" to add the new release.

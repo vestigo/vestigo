@@ -26,19 +26,22 @@ Danke
 
 * Apache Software Foundation
 
-	Vestigo nutzt diverse Bibliotheken der {{{http://apache.org/}Apache Software Foundation}}, die alle unter einer Version der {{{http://www.apache.org/licenses/}Apache Software License}} veröffentlicht sind.
+	Vestigo nutzt diverse Bibliotheken der {{{http://apache.org/}Apache Software Foundation}}, die alle unter einer Version
+	der {{{http://www.apache.org/licenses/}Apache Software License}} veröffentlicht sind.
 	 
 [../images/apache.png]
 
 * Famfamfam
 
-	Vestigo nutzt das {{{http://www.famfamfam.com/lab/icons/silk/}famfamfam Silk Icon-Set}} für seine GUI-Elemente. Das Icon-Set ist unter der {{{http://creativecommons.org/licenses/by/2.5/}Creative Commons Attribution 2.5 License}} veröffentlicht.
+	Vestigo nutzt das {{{http://www.famfamfam.com/lab/icons/silk/}famfamfam Silk Icon-Set}} für seine GUI-Elemente. Das Icon-Set
+	ist unter der {{{http://creativecommons.org/licenses/by/2.5/}Creative Commons Attribution 2.5 License}} veröffentlicht.
 	 
 [../images/famfamfam.png]
 
 * Maven
 
-	Vestigo nutzt {{{http://maven.apache.org/}Maven}} um zu das Produkt zu bauen und zu publizieren. Maven ist unter der {{{http://maven.apache.org/license.html}Apache Software License}} veröffentlicht.
+	Vestigo nutzt {{{http://maven.apache.org/}Maven}} um das Produkt zu bauen und zu publizieren. Maven ist unter der
+	{{{http://maven.apache.org/license.html}Apache Software License}} veröffentlicht.
 	 
 [../images/maven-feather.png]
 
