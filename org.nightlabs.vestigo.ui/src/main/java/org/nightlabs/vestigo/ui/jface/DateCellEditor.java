@@ -35,6 +35,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.DateTime;
 import org.eclipse.swt.widgets.Display;
+import org.nightlabs.vestigo.ui.resource.Messages;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
@@ -99,8 +100,8 @@ public class DateCellEditor extends CellEditor
 	protected Button createNullCheckBox(Composite parent) {
 		Button nullCheckBox = new Button(parent, SWT.CHECK);
 		assignGridData(nullCheckBox);
-		nullCheckBox.setText("null");
-		nullCheckBox.setToolTipText("The value is null rather than the date && time displayed.");
+		nullCheckBox.setText(Messages.getString("DateCellEditor.nullCheckBox.text")); //$NON-NLS-1$
+		nullCheckBox.setToolTipText(Messages.getString("DateCellEditor.nullCheckBox.toolTipText")); //$NON-NLS-1$
 		nullCheckBox.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
@@ -287,7 +288,7 @@ public class DateCellEditor extends CellEditor
 	protected void setDateValue(Date value)
 	{
 		if (value == null)
-			throw new IllegalArgumentException("value == null");
+			throw new IllegalArgumentException("value == null"); //$NON-NLS-1$
 
 		Calendar calendar = Calendar.getInstance(getTimeZone());
 		calendar.setTime(value);
@@ -297,7 +298,7 @@ public class DateCellEditor extends CellEditor
 	protected void setCalendarValue(Calendar value)
 	{
 		if (value == null)
-			throw new IllegalArgumentException("value == null");
+			throw new IllegalArgumentException("value == null"); //$NON-NLS-1$
 
 		if (value.getTimeZone() != null)
 			setTimeZone(value.getTimeZone());
@@ -325,7 +326,7 @@ public class DateCellEditor extends CellEditor
 	}
 	protected void setTimeZone(TimeZone timeZone) {
 		if (timeZone == null)
-			throw new IllegalArgumentException("timeZone == null");
+			throw new IllegalArgumentException("timeZone == null"); //$NON-NLS-1$
 
 		if (this.timeZone == timeZone)
 			return;

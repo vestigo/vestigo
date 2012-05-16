@@ -30,13 +30,14 @@ import org.eclipse.swt.widgets.Text;
 import org.nightlabs.vestigo.childvm.shared.JavaScriptFormula;
 import org.nightlabs.vestigo.ui.AbstractVestigoUIPlugin;
 import org.nightlabs.vestigo.ui.VestigoUIPlugin;
+import org.nightlabs.vestigo.ui.resource.Messages;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
  */
 public class JavaScriptFormulaDialog extends TitleAreaDialog
 {
-	private String title = "Edit JavaScript formula";
+	private String title = Messages.getString("JavaScriptFormulaDialog.title"); //$NON-NLS-1$
 
 	private JavaScriptFormula value;
 	private Text text;
@@ -76,7 +77,7 @@ public class JavaScriptFormulaDialog extends TitleAreaDialog
 	public void setValue(JavaScriptFormula value) {
 		this.value = value;
 		if (text != null && !text.isDisposed())
-			text.setText(value == null ? "" : value.getFormulaText());
+			text.setText(value == null ? "" : value.getFormulaText()); //$NON-NLS-1$
 	}
 
 	public JavaScriptFormula getValue() {
@@ -96,9 +97,9 @@ public class JavaScriptFormulaDialog extends TitleAreaDialog
 	protected Control createContents(Composite parent) {
 		Control contents = super.createContents(parent);
 
-		setTitleImage(VestigoUIPlugin.getDefault().getImage(JavaScriptFormulaDialog.class, "title", AbstractVestigoUIPlugin.IMAGE_SIZE_75x70));
+		setTitleImage(VestigoUIPlugin.getDefault().getImage(JavaScriptFormulaDialog.class, "title", AbstractVestigoUIPlugin.IMAGE_SIZE_75x70)); //$NON-NLS-1$
 		setTitle(title);
-		setMessage("Please write JavaScript returning the parameter value. You can access 'persistenceManager'/'pm' (in a JDO query) or 'entityManager'/'em' (in a JPA query) to access the datastore.");
+		setMessage(Messages.getString("JavaScriptFormulaDialog.message")); //$NON-NLS-1$
 
 		return contents;
 	}

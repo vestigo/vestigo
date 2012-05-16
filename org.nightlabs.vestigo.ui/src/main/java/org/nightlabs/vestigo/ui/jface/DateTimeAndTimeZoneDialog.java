@@ -40,6 +40,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.DateTime;
 import org.eclipse.swt.widgets.Shell;
+import org.nightlabs.vestigo.ui.resource.Messages;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
@@ -86,7 +87,7 @@ public class DateTimeAndTimeZoneDialog extends Dialog
 	@Override
 	protected void configureShell(Shell newShell) {
 		super.configureShell(newShell);
-		newShell.setText("Select date, time and time zone");
+		newShell.setText(Messages.getString("DateTimeAndTimeZoneDialog.shell.text")); //$NON-NLS-1$
 	}
 
 	@Override
@@ -147,9 +148,9 @@ public class DateTimeAndTimeZoneDialog extends Dialog
 	public void setDateValue(Date value)
 	{
 		if (value == null)
-			throw new IllegalArgumentException("value == null");
+			throw new IllegalArgumentException("value == null"); //$NON-NLS-1$
 
-		Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
+		Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC")); //$NON-NLS-1$
 		calendar.setTime(value);
 		setCalendarValue(calendar);
 	}
@@ -162,7 +163,7 @@ public class DateTimeAndTimeZoneDialog extends Dialog
 	public void setCalendarValue(Calendar value)
 	{
 		if (value == null)
-			throw new IllegalArgumentException("value == null");
+			throw new IllegalArgumentException("value == null"); //$NON-NLS-1$
 
 		this.setTimeZone(value.getTimeZone());
 		if (date != null) {
@@ -189,7 +190,7 @@ public class DateTimeAndTimeZoneDialog extends Dialog
 			@Override
 			public String getText(Object element) {
 				TimeZone timeZone = (TimeZone) element;
-				return timeZone.getDisplayName() + " (" + timeZone.getID() + ')';
+				return timeZone.getDisplayName() + " (" + timeZone.getID() + ')'; //$NON-NLS-1$
 			}
 		});
 		viewer.setInput(timeZones);
@@ -235,7 +236,7 @@ public class DateTimeAndTimeZoneDialog extends Dialog
 	 */
 	public void setTimeZone(TimeZone timeZone) {
 		if (timeZone == null)
-			throw new IllegalArgumentException("timeZone == null");
+			throw new IllegalArgumentException("timeZone == null"); //$NON-NLS-1$
 
 		if (this.timeZone == timeZone)
 			return;
