@@ -30,6 +30,7 @@ import org.nightlabs.vestigo.childvm.webapp.service.ConnectionDTOService;
 import org.nightlabs.vestigo.childvm.webapp.service.ConnectionProfileDTOService;
 import org.nightlabs.vestigo.childvm.webapp.service.IsClassAssignableFromService;
 import org.nightlabs.vestigo.childvm.webapp.service.IsOnlineService;
+import org.nightlabs.vestigo.childvm.webapp.service.QueryExecutionStatisticSetDTOService;
 import org.nightlabs.vestigo.childvm.webapp.service.QueryableCandidateClassesService;
 import org.nightlabs.vestigo.childvm.webapp.service.ResultCellDTOService;
 import org.nightlabs.vestigo.childvm.webapp.service.ResultRowDTOService;
@@ -54,6 +55,7 @@ extends Application
 		IsClassAssignableFromService.class,
 		IsOnlineService.class,
 		QueryableCandidateClassesService.class,
+		QueryExecutionStatisticSetDTOService.class,
 		ResultCellDTOService.class,
 		ResultRowDTOService.class,
 		ResultSetDTOService.class,

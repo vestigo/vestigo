@@ -34,6 +34,7 @@ import org.eclipse.datatools.connectivity.oda.IResultSetMetaData;
 import org.eclipse.datatools.connectivity.oda.OdaException;
 import org.nightlabs.vestigo.childvm.shared.ResultSetID;
 import org.nightlabs.vestigo.childvm.shared.api.ChildVM;
+import org.nightlabs.vestigo.childvm.shared.dto.QueryExecutionStatisticSetDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.ResultCellDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.ResultCellNullDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.ResultCellObjectRefDTO;
@@ -513,6 +514,10 @@ public abstract class AbstractResultSet implements ResultSet
 	@Override
 	public Object getObject(String columnName) throws OdaException
 	{
+		if (QueryExecutionStatisticSetDTO.class.getName().equals(columnName)) {
+			return getChildVM().getQueryExecutionStatisticSetDTO(getResultSetID());
+		}
+
 		return getObject(
 				findColumn(columnName)
 		);

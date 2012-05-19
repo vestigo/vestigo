@@ -40,6 +40,7 @@ import org.nightlabs.vestigo.childvm.shared.dto.ConnectionDTOList;
 import org.nightlabs.vestigo.childvm.shared.dto.ConnectionProfileDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.ConnectionProfileDTOList;
 import org.nightlabs.vestigo.childvm.shared.dto.QueryDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.QueryExecutionStatisticSetDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.QueryParameterDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.ResultCellDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.ResultCellDTOList;
@@ -471,7 +472,6 @@ implements ChildVM
 		if (resultCellObjectRefDTO == null)
 			throw new IllegalArgumentException("resultCellObjectRefDTO == null");
 
-
 		Client client = acquireClient();
 		try {
 			WebResource.Builder resourceBuilder = getChildVMAppResourceBuilder(
@@ -544,6 +544,28 @@ implements ChildVM
 				throw new IllegalStateException("GET request returned empty DTO (dto.elements == null)!");
 
 			return result.getElements();
+		} catch (UniformInterfaceException x) {
+			handleUniformInterfaceException(x);
+			throw x; // we do not expect null
+		} finally {
+			releaseClient(client);
+		}
+	}
+
+	@Override
+	public QueryExecutionStatisticSetDTO getQueryExecutionStatisticSetDTO(ResultSetID resultSetID) {
+		if (resultSetID == null)
+			throw new IllegalArgumentException("resultSetID == null");
+
+		Client client = acquireClient();
+		try {
+			WebResource.Builder resourceBuilder = getChildVMAppResourceBuilder(
+					client,
+					QueryExecutionStatisticSetDTO.class,
+					new PathSegment(resultSetID)
+			);
+			QueryExecutionStatisticSetDTO dto = resourceBuilder.get(QueryExecutionStatisticSetDTO.class);
+			return dto;
 		} catch (UniformInterfaceException x) {
 			handleUniformInterfaceException(x);
 			throw x; // we do not expect null

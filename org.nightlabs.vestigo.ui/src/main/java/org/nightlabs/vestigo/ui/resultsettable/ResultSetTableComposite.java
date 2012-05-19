@@ -72,6 +72,7 @@ import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
+import org.nightlabs.vestigo.childvm.shared.dto.QueryExecutionStatisticSetDTO;
 import org.nightlabs.vestigo.core.LabelTextOption;
 import org.nightlabs.vestigo.core.LabelTextUtil;
 import org.nightlabs.vestigo.core.ObjectReference;
@@ -472,6 +473,21 @@ implements ISelectionProvider, LabelTextOptionsContainer
 	public final void setInput(ResultSetTableModel input)
 	{
 		manuallyEmptyTable();
+
+		// BEGIN DEBUG // TODO Remove this again!
+		if (input != null) {
+			IResultSet resultSet = input.getResultSet();
+			try {
+				QueryExecutionStatisticSetDTO dto = (QueryExecutionStatisticSetDTO) resultSet.getObject(QueryExecutionStatisticSetDTO.class.getName());
+				System.out.println("QueryExecutionDuration: "+  dto.getQueryExecutionDuration());
+				System.out.println("QueryParameterEvaluationDurationMax: " + dto.getQueryParameterEvaluationDurationMax());
+				System.out.println("QueryParameterEvaluationDurationMin: " + dto.getQueryParameterEvaluationDurationMin());
+				System.out.println("QueryParameterEvaluationDurationTotal: " + dto.getQueryParameterEvaluationDurationTotal());
+			} catch (OdaException e) {
+				e.printStackTrace();
+			}
+		}
+		// END DEBUG
 
 		Table table = tableViewer.getTable();
 		for (TableColumn column : table.getColumns())

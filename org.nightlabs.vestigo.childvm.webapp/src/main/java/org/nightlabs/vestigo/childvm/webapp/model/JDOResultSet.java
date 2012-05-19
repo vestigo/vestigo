@@ -42,8 +42,8 @@ public class JDOResultSet extends ResultSet
 	private JDOHelper jdoHelper;
 	private Query query;
 
-	public JDOResultSet(JDOConnection connection, Query query, Collection<?> rows) {
-		super(connection, rows);
+	public JDOResultSet(JDOConnection connection, Query query, Collection<?> rows, QueryExecutionStatisticSet queryExecutionStatisticSet) {
+		super(connection, rows, queryExecutionStatisticSet);
 
 		if (query == null)
 			throw new IllegalArgumentException("query == null");

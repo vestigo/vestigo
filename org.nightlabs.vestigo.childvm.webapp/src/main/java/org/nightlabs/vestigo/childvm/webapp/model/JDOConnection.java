@@ -135,6 +135,7 @@ extends Connection
 			parameters = EMPTY_QUERY_PARAMETER_SET;
 
 		assertOpen();
+		QueryExecutionStatisticSet queryExecutionStatisticSet = new QueryExecutionStatisticSet();
 		PersistenceManager pm = getPersistenceManager();
 		if (pm == null)
 			throw new IllegalStateException("getPersistenceManager() returned null!");
@@ -145,12 +146,18 @@ extends Connection
 			if (parameter.getName() == null || parameter.getName().trim().isEmpty())
 				paramMap = null;
 
+			long queryParamStart = System.currentTimeMillis();
 			Object parameterValue = getQueryParameterValue(parameter);
+			queryExecutionStatisticSet.registerQueryParameterEvaluationDuration(System.currentTimeMillis() - queryParamStart);
 
 			if (paramMap != null)
 				paramMap.put(parameter.getName(), parameterValue);
 
 			paramList.add(parameterValue);
+		}
+		if (parameters.isEmpty()) {
+			queryExecutionStatisticSet.setQueryParameterEvaluationDurationMax(0);
+			queryExecutionStatisticSet.setQueryParameterEvaluationDurationMin(0);
 		}
 
 		// It is important to set the fetch plan *after* all calls to getQueryParameterValue(...),
@@ -159,23 +166,27 @@ extends Connection
 
 		Query query = pm.newQuery(queryText);
 		Object queryResult;
+		long queryExecutionStart = System.currentTimeMillis();
+
 		if (paramMap != null)
 			queryResult = query.executeWithMap(paramMap);
 		else
 			queryResult = query.executeWithArray(paramList.toArray());
 
+		queryExecutionStatisticSet.setQueryExecutionDuration(System.currentTimeMillis() - queryExecutionStart);
+
 		ResultSet resultSet;
 		if (queryResult instanceof Collection<?>)
-			resultSet = newResultSet(query, (Collection<?>)queryResult);
+			resultSet = newResultSet(query, (Collection<?>)queryResult, queryExecutionStatisticSet);
 		else
-			resultSet = newResultSet(query, Collections.singletonList(queryResult));
+			resultSet = newResultSet(query, Collections.singletonList(queryResult), queryExecutionStatisticSet);
 
 		return resultSet;
 	}
 
-	protected ResultSet newResultSet(Query query, Collection<?> queryResult)
+	protected ResultSet newResultSet(Query query, Collection<?> queryResult, QueryExecutionStatisticSet queryExecutionStatisticSet)
 	{
-		return new JDOResultSet(this, query, queryResult);
+		return new JDOResultSet(this, query, queryResult, queryExecutionStatisticSet);
 	}
 
 	@Override

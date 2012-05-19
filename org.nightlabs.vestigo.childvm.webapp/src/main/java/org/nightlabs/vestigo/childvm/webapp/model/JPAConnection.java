@@ -131,6 +131,7 @@ extends Connection
 			parameters = EMPTY_QUERY_PARAMETER_SET;
 
 		assertOpen();
+		QueryExecutionStatisticSet queryExecutionStatisticSet = new QueryExecutionStatisticSet();
 		EntityManager em = getEntityManager();
 		if (em == null)
 			throw new IllegalStateException("getEntityManager() returned null!");
@@ -147,25 +148,33 @@ extends Connection
 
 		for (QueryParameterDTO parameter : parameters)
 		{
+			long queryParamStart = System.currentTimeMillis();
 			Object parameterValue = getQueryParameterValue(parameter);
+			queryExecutionStatisticSet.registerQueryParameterEvaluationDuration(System.currentTimeMillis() - queryParamStart);
 
 			if (allParamsHaveName)
 				query.setParameter(parameter.getName(), parameterValue);
 			else
 				query.setParameter(parameter.getIndex(), parameterValue);
 		}
+		if (parameters.isEmpty()) {
+			queryExecutionStatisticSet.setQueryParameterEvaluationDurationMax(0);
+			queryExecutionStatisticSet.setQueryParameterEvaluationDurationMin(0);
+		}
 
 //		configureFetchPlanForOneLevelAndAllFields(em.getFetchPlan()); // there is no fetch-plan in JPA :-(
 
+		long queryExecutionStart = System.currentTimeMillis();
 		List<?> queryResult = query.getResultList();
+		queryExecutionStatisticSet.setQueryExecutionDuration(System.currentTimeMillis() - queryExecutionStart);
 
-		ResultSet resultSet = newResultSet(query, queryResult);
+		ResultSet resultSet = newResultSet(query, queryResult, queryExecutionStatisticSet);
 		return resultSet;
 	}
 
-	protected ResultSet newResultSet(Query query, Collection<?> queryResult)
+	protected ResultSet newResultSet(Query query, Collection<?> queryResult, QueryExecutionStatisticSet queryExecutionStatisticSet)
 	{
-		return new JPAResultSet(this, query, queryResult);
+		return new JPAResultSet(this, query, queryResult, queryExecutionStatisticSet);
 	}
 
 	@Override

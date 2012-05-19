@@ -39,8 +39,8 @@ public class JPAResultSet extends ResultSet
 
 	private Query query;
 
-	public JPAResultSet(JPAConnection connection, Query query, Collection<?> rows) {
-		super(connection, rows);
+	public JPAResultSet(JPAConnection connection, Query query, Collection<?> rows, QueryExecutionStatisticSet queryExecutionStatisticSet) {
+		super(connection, rows, queryExecutionStatisticSet);
 
 		if (query == null)
 			throw new IllegalArgumentException("query == null");

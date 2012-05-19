@@ -23,14 +23,15 @@ import java.util.List;
 
 import org.nightlabs.vestigo.childvm.webapp.model.FieldValue;
 import org.nightlabs.vestigo.childvm.webapp.model.JPAResultSet;
+import org.nightlabs.vestigo.childvm.webapp.model.QueryExecutionStatisticSet;
 import org.nightlabs.vestigo.childvm.webapp.persistenceengine.jpa.Query;
 
 public class JPACumulus4jResultSet extends JPAResultSet {
 
 	private Cumulus4jConnectionHelper cumulus4jConnectionHelper;
 
-	public JPACumulus4jResultSet(JPACumulus4jConnection connection, Query query, Collection<?> rows) {
-		super(connection, query, rows);
+	public JPACumulus4jResultSet(JPACumulus4jConnection connection, Query query, Collection<?> rows, QueryExecutionStatisticSet queryExecutionStatisticSet) {
+		super(connection, query, rows, queryExecutionStatisticSet);
 		this.cumulus4jConnectionHelper = connection.getCumulus4jConnectionHelper();
 		if (cumulus4jConnectionHelper == null)
 			throw new IllegalStateException("connection.getCumulus4jConnectionHelper() == null :: connection.open() not yet called?!");

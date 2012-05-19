@@ -57,6 +57,8 @@ public abstract class ResultSet
 	private ClassLoader persistenceEngineClassLoader;
 	private volatile ResultSetID resultSetID;
 	private Collection<?> rows;
+	private QueryExecutionStatisticSet queryExecutionStatisticSet;
+
 	private Iterator<?> iterator;
 	private int rowIndex = 0; // 1-based like ODA; 0 means before first call of next()
 	private Object row;
@@ -68,7 +70,7 @@ public abstract class ResultSet
 
 	private Map<Class<?>, List<Field>> class2fields = new HashMap<Class<?>, List<Field>>();
 
-	public ResultSet(Connection connection, Collection<?> rows)
+	public ResultSet(Connection connection, Collection<?> rows, QueryExecutionStatisticSet queryExecutionStatisticSet)
 	{
 		if (connection == null)
 			throw new IllegalArgumentException("connection == null");
@@ -76,8 +78,12 @@ public abstract class ResultSet
 		if (rows == null)
 			throw new IllegalArgumentException("rows == null");
 
+		if (queryExecutionStatisticSet == null)
+			throw new IllegalArgumentException("queryExecutionStatisticSet == null");
+
 		this.connection = connection;
 		this.rows = rows;
+		this.queryExecutionStatisticSet = queryExecutionStatisticSet;
 		try {
 			this.persistenceEngineClassLoader = connection.getConnectionProfile().getClassLoaderManager().getPersistenceEngineClassLoader(null);
 		} catch (IOException e) {
@@ -584,5 +590,9 @@ public abstract class ResultSet
 		}
 
 		return result;
+	}
+
+	public QueryExecutionStatisticSet getQueryExecutionStatisticSet() {
+		return queryExecutionStatisticSet;
 	}
 }

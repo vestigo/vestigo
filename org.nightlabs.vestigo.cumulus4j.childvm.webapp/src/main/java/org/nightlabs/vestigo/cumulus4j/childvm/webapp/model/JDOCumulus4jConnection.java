@@ -28,6 +28,7 @@ import org.nightlabs.vestigo.childvm.shared.dto.QueryParameterDTO;
 import org.nightlabs.vestigo.childvm.webapp.model.Connection;
 import org.nightlabs.vestigo.childvm.webapp.model.ConnectionFactory;
 import org.nightlabs.vestigo.childvm.webapp.model.JDOConnection;
+import org.nightlabs.vestigo.childvm.webapp.model.QueryExecutionStatisticSet;
 import org.nightlabs.vestigo.childvm.webapp.model.ResultSet;
 import org.nightlabs.vestigo.childvm.webapp.persistenceengine.jdo.Query;
 import org.nightlabs.vestigo.cumulus4j.childvm.shared.JDOCumulus4jConnectionDTO;
@@ -84,8 +85,8 @@ public class JDOCumulus4jConnection extends JDOConnection
 	}
 
 	@Override
-	protected ResultSet newResultSet(Query query, Collection<?> queryResult)
+	protected ResultSet newResultSet(Query query, Collection<?> queryResult, QueryExecutionStatisticSet queryExecutionStatisticSet)
 	{
-		return new JDOCumulus4jResultSet(this, query, queryResult);
+		return new JDOCumulus4jResultSet(this, query, queryResult, queryExecutionStatisticSet);
 	}
 }
