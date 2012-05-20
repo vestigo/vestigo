@@ -21,6 +21,7 @@ import org.eclipse.datatools.connectivity.oda.IResultSet;
 import org.eclipse.datatools.connectivity.oda.IResultSetMetaData;
 import org.eclipse.datatools.connectivity.oda.OdaException;
 import org.nightlabs.vestigo.childvm.shared.ResultSetID;
+import org.nightlabs.vestigo.childvm.shared.dto.QueryExecutionStatisticSetDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.ResultCellDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.ResultCellNullDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.ResultCellSimpleDTO;
@@ -33,6 +34,57 @@ import org.nightlabs.vestigo.core.resource.Messages;
 public interface ResultSet extends IResultSet
 {
 	public static final String LICENCE_NOT_VALID = Messages.getString("ResultSet.licenceNotValid"); //$NON-NLS-1$
+
+	public static class Helper {
+		/**
+		 * Get the {@link ResultSet} inside of the {@link IResultSet}.
+		 * <p>
+		 * This method calls {@link ResultSet#getObject(String)} with the fully qualified
+		 * name of the {@link ResultSet} interface.
+		 * @param resultSet the outer (wrapping) <code>IResultSet</code>. Must not be <code>null</code>.
+		 * @return the inner (wrapped) <code>ResultSet</code>. Never <code>null</code>.
+		 * @throws IllegalArgumentException if the passed <code>resultSet</code> is <code>null</code> or
+		 * if it does not wrap a {@link ResultSet}.
+		 */
+		public static ResultSet getWrappedResultSetOrFail(IResultSet resultSet)
+				throws IllegalArgumentException
+		{
+			if (resultSet == null)
+				throw new IllegalArgumentException("resultSet == null");
+
+			try {
+				ResultSet r = (ResultSet) resultSet.getObject(ResultSet.class.getName());
+				if (r == null)
+					throw new IllegalArgumentException("resultSet.getObject(ResultSet.class.getName()) returned null!");
+
+				return r;
+			} catch (OdaException e) {
+				throw new RuntimeException(e);
+			}
+		}
+
+		/**
+		 * Get the {@link ResultSet} inside of the {@link IResultSet}.
+		 * <p>
+		 * This method calls {@link ResultSet#getObject(String)} with the fully qualified
+		 * name of the {@link ResultSet} interface.
+		 * @param resultSet the outer (wrapping) <code>IResultSet</code>. May be <code>null</code>.
+		 * @return the inner (wrapped) <code>ResultSet</code>. May be <code>null</code>, if
+		 * <code>resultSet</code> is <code>null</code> or if it does not wrap a <code>ResultSet</code>.
+		 */
+		public static ResultSet getWrappedResultSetOrNull(IResultSet resultSet)
+		{
+			if (resultSet == null)
+				return null;
+
+			try {
+				ResultSet r = (ResultSet) resultSet.getObject(ResultSet.class.getName());
+				return r;
+			} catch (OdaException e) {
+				throw new RuntimeException(e);
+			}
+		}
+	}
 
 	Query getQuery();
 
@@ -71,4 +123,17 @@ public interface ResultSet extends IResultSet
 	 * @return the object represented by the given <code>resultCellDTO</code>.
 	 */
 	Object unmaskResultCellDTO(ResultCellDTO resultCellDTO);
+
+	QueryExecutionStatisticSetDTO getQueryExecutionStatisticSetDTO();
+
+	/**
+	 * Get the object value of the current row and the column specified by <code>columnName</code>.
+	 * Passing the fully qualified name of this interface, i.e. <code>org.nightlabs.vestigo.core.oda.ResultSet</code>,
+	 * must cause this method to return <code>this</code> - no matter what the current row is
+	 * (even if there is no current row). This behaviour is required for {@link Helper#getWrappedResultSetOrFail(IResultSet)}.
+	 * <p>
+	 * {@inheritDoc}
+	 */
+	@Override
+	public Object getObject(String columnName) throws OdaException;
 }

@@ -512,10 +512,15 @@ public abstract class AbstractResultSet implements ResultSet
 	}
 
 	@Override
+	public QueryExecutionStatisticSetDTO getQueryExecutionStatisticSetDTO() {
+		return getChildVM().getQueryExecutionStatisticSetDTO(getResultSetID());
+	}
+
+	@Override
 	public Object getObject(String columnName) throws OdaException
 	{
-		if (QueryExecutionStatisticSetDTO.class.getName().equals(columnName)) {
-			return getChildVM().getQueryExecutionStatisticSetDTO(getResultSetID());
+		if (ResultSet.class.getName().equals(columnName)) {
+			return this;
 		}
 
 		return getObject(
