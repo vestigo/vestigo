@@ -19,6 +19,7 @@ package org.nightlabs.vestigo.ui.resultsettable;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.util.List;
 import java.util.Set;
 
 import org.eclipse.core.runtime.ListenerList;
@@ -35,6 +36,7 @@ import org.nightlabs.vestigo.core.LabelTextOption;
 import org.nightlabs.vestigo.ui.editor.ExecuteQueryAdapter;
 import org.nightlabs.vestigo.ui.editor.ExecuteQueryEvent;
 import org.nightlabs.vestigo.ui.editor.ExecuteQueryListener;
+import org.nightlabs.vestigo.ui.editor.QueryContext;
 import org.nightlabs.vestigo.ui.editor.QueryEditor;
 import org.nightlabs.vestigo.ui.labeltextoptionaction.LabelTextOptionsContainer;
 import org.slf4j.Logger;
@@ -106,7 +108,7 @@ public class ResultSetTableView extends ViewPart implements LabelTextOptionsCont
 	private ExecuteQueryListener executeQueryListener = new ExecuteQueryAdapter() {
 		@Override
 		public void postExecuteQuery(ExecuteQueryEvent executeQueryEvent) {
-			setInput(executeQueryEvent.getResultSetTableModel());
+			setInput(executeQueryEvent.getQueryContext());
 		}
 	};
 
@@ -129,15 +131,19 @@ public class ResultSetTableView extends ViewPart implements LabelTextOptionsCont
 
 		this.queryEditor = queryEditor;
 		// TODO this must be refactored when we support multiple resultSets per query browser!
-		ResultSetTableModel resultSetTableModel = queryEditor.getQueryEditorManager().getResultSetTableModel();
-		setInput(resultSetTableModel);
+		List<QueryContext> queryContexts = queryEditor.getQueryEditorManager().getQueryContexts();
+		if (queryContexts.isEmpty())
+			setInput(null);
+		else
+			setInput(queryContexts.get(0));
 		queryEditor.getQueryEditorManager().addExecuteQueryListener(executeQueryListener);
 	}
 
 	private PropertyChangeListener inputChangeListener = new PropertyChangeListener() {
 		@Override
 		public void propertyChange(PropertyChangeEvent evt) {
-			ResultSetTableModel model = (ResultSetTableModel) evt.getNewValue();
+			QueryContext queryContext = (QueryContext) evt.getNewValue();
+			ResultSetTableModel model = queryContext == null ? null : queryContext.getResultSetTableModel();
 			fireResultSetTableListeners(model);
 		}
 	};
@@ -149,13 +155,13 @@ public class ResultSetTableView extends ViewPart implements LabelTextOptionsCont
 			queryEditor = null;
 		}
 
-		setInput(null);
+		setInput(null); // TODO still necessary?
 	}
 
-	protected void setInput(ResultSetTableModel model)
+	protected void setInput(QueryContext queryContext)
 	{
 		if (resultSetTableComposite != null) {
-			resultSetTableComposite.setInput(model);
+			resultSetTableComposite.setInput(queryContext);
 			updateNextAction();
 		}
 	}

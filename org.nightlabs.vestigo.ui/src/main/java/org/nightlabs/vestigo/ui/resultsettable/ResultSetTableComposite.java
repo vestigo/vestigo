@@ -24,7 +24,9 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.EnumSet;
 import java.util.HashSet;
+import java.util.IdentityHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -52,6 +54,7 @@ import org.eclipse.jface.viewers.TableViewerColumn;
 import org.eclipse.jface.viewers.ViewerCell;
 import org.eclipse.jface.viewers.deferred.DeferredContentProvider;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.StackLayout;
 import org.eclipse.swt.custom.TableCursor;
 import org.eclipse.swt.dnd.Clipboard;
 import org.eclipse.swt.dnd.TextTransfer;
@@ -78,6 +81,7 @@ import org.nightlabs.vestigo.core.LabelTextOption;
 import org.nightlabs.vestigo.core.LabelTextUtil;
 import org.nightlabs.vestigo.core.ObjectReference;
 import org.nightlabs.vestigo.core.oda.ResultSet;
+import org.nightlabs.vestigo.ui.editor.QueryContext;
 import org.nightlabs.vestigo.ui.labeltextoptionaction.LabelTextOptionsContainer;
 import org.nightlabs.vestigo.ui.licence.LicenceNotValidDialog;
 import org.slf4j.Logger;
@@ -107,13 +111,24 @@ implements ISelectionProvider, LabelTextOptionsContainer
 	private List<ResultSetTableRow> selectedRows = Collections.emptyList();
 	private List<ResultSetTableCell> selectedCells = Collections.emptyList();
 
+	private Map<ResultSetTableModel, TableViewer> model2TableViewer = new IdentityHashMap<ResultSetTableModel, TableViewer>();
+	private StackLayout stackLayout;
+
 	public ResultSetTableComposite(Composite parent, int style) {
 		super(parent, style);
-		setLayout(new FillLayout(SWT.HORIZONTAL | SWT.VERTICAL));
+//		setLayout(new FillLayout(SWT.HORIZONTAL | SWT.VERTICAL));
 		display = parent.getDisplay();
+		createStackLayout();
 		createTableViewer();
 		createTableCursor();
 		registerOpenLicenceNotValidDialogListeners();
+	}
+
+	private void createStackLayout() {
+//		stackLayout = new StackLayout();
+//		setLayout(stackLayout);
+		// TODO switch to stack layout
+		setLayout(new FillLayout(SWT.HORIZONTAL | SWT.VERTICAL));
 	}
 
 	private IAction copyAction = new Action("Copy") {
@@ -476,7 +491,7 @@ implements ISelectionProvider, LabelTextOptionsContainer
 			item.dispose();
 	}
 
-	public final void setInput(ResultSetTableModel input)
+	public final void setInput(QueryContext queryContext)
 	{
 		ResultSetTableModel oldInput = getInput();
 		manuallyEmptyTable();
@@ -486,8 +501,8 @@ implements ISelectionProvider, LabelTextOptionsContainer
 			column.dispose();
 
 		TableLayout layout = new TableLayout();
-		if (input != null) {
-			IResultSet resultSet = input.getResultSet();
+		if (queryContext != null && queryContext.getResultSetTableModel() != null) {
+			IResultSet resultSet = queryContext.getResultSetTableModel().getResultSet();
 			try {
 				int odaColumnCount = resultSet.getMetaData().getColumnCount();
 
@@ -504,9 +519,9 @@ implements ISelectionProvider, LabelTextOptionsContainer
 		table.setLayout(layout);
 		table.layout(true);
 
-		tableViewer.setInput(input);
+		tableViewer.setInput(queryContext == null ? null : queryContext.getResultSetTableModel());
 
-		propertyChangeSupport.firePropertyChange(PropertyName.input.name(), oldInput, input);
+		propertyChangeSupport.firePropertyChange(PropertyName.input.name(), oldInput, queryContext);
 		clearSelection();
 		fireSelectionChangedEvent();
 	}

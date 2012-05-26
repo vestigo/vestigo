@@ -30,11 +30,6 @@ public class ExecuteQueryEvent
 	private ResultSetTableModel resultSetTableModel;
 	private Throwable error;
 
-	public ExecuteQueryEvent(QueryContext queryContext)
-	{
-		this(queryContext, (ResultSetTableModel)null);
-	}
-
 	public ExecuteQueryEvent(QueryContext queryContext, Throwable error)
 	{
 		if (queryContext == null)
@@ -47,13 +42,13 @@ public class ExecuteQueryEvent
 		this.error = error;
 	}
 
-	public ExecuteQueryEvent(QueryContext queryContext, ResultSetTableModel resultSetTableModel)
+	public ExecuteQueryEvent(QueryContext queryContext)
 	{
 		if (queryContext == null)
 			throw new IllegalArgumentException("queryContext == null"); //$NON-NLS-1$
 
 		this.queryContext = queryContext;
-		this.resultSetTableModel = resultSetTableModel;
+		this.resultSetTableModel = queryContext.getResultSetTableModel();
 		this.resultSet = resultSetTableModel == null ? null : resultSetTableModel.getResultSet();
 	}
 

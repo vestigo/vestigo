@@ -30,8 +30,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Deque;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
@@ -57,6 +59,7 @@ import org.eclipse.datatools.connectivity.oda.IQuery;
 import org.eclipse.datatools.connectivity.oda.IResultSet;
 import org.eclipse.datatools.connectivity.oda.OdaException;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.widgets.Display;
@@ -97,6 +100,9 @@ public abstract class QueryEditorManager
 		connectionProfile
 	}
 
+	public static final String PREFERENCE_KEY_KEEP_QUERY_RESULT_SET_QUANTITY = "QueryEditorManager.keepQueryResultSetQuantity";
+	public static final int PREFERENCE_DEFAULT_KEEP_QUERY_RESULT_SET_QUANTITY = 1; // TODO increase default to 3!
+
 	public static final String PROPERTY_LAST_CONNECTION_PROFILE_INSTANCE_ID = "lastConnectionProfile.instanceID"; //$NON-NLS-1$
 	private static final String QUERY_TEXT_PROPERTIES_BEGIN_MARKER = "//------PROPERTIES_BEGIN------"; //$NON-NLS-1$
 	private static final String QUERY_TEXT_PROPERTIES_END_MARKER = "//------PROPERTIES_END------"; //$NON-NLS-1$
@@ -109,9 +115,14 @@ public abstract class QueryEditorManager
 	private List<IConnectionProfile> connectionProfiles = Collections.unmodifiableList(new ArrayList<IConnectionProfile>());
 	private IConnectionProfile odaConnectionProfile;
 
-	private volatile ResultSetTableModel resultSetTableModel;
+//	private volatile ResultSetTableModel resultSetTableModel;
+//	private Map<QueryContext, ResultSetTableModel> queryContext2ResultSetTableModel
 
-	private Map<IConnection, ResultSetTableModel> connection2ResultSetTableModel = new HashMap<IConnection, ResultSetTableModel>();
+//	private Map<IConnection, ResultSetTableModel> connection2ResultSetTableModel = new HashMap<IConnection, ResultSetTableModel>();
+	private Map<IConnection, QueryContext> connection2QueryContext = new HashMap<IConnection, QueryContext>();
+	private Deque<QueryContext> queryContextDeque = new LinkedList<QueryContext>();
+
+	private volatile List<QueryContext> queryContexts;
 
 	private Map<PropertiesType, PropertiesWithChangeSupport> propertiesType2Properties = new HashMap<PropertiesType, PropertiesWithChangeSupport>();
 
@@ -430,12 +441,15 @@ public abstract class QueryEditorManager
 			@Override
 			public void close() throws OdaException
 			{
-				ResultSetTableModel model;
+				QueryContext queryContext;
 				synchronized(QueryEditorManager.this) {
-					model = connection2ResultSetTableModel.get(this);
+					queryContext = connection2QueryContext.remove(this);
+					boolean removedFromDeque = queryContextDeque.remove(queryContext);
+					queryContexts = null;
+					logger.debug("delegatingConnection.close: queryContext={} removedFromDeque={}", queryContext, removedFromDeque);
 				}
-				if (model != null)
-					model.close();
+				if (queryContext != null)
+					queryContext.close();
 
 				if (ccmcl[0] != null)
 					managedConnection.removeConnectionListener(ccmcl[0]);
@@ -699,10 +713,14 @@ public abstract class QueryEditorManager
 
 		ProfileManager.getInstance().removeProfileListener(profileListener);
 
-		for (ResultSetTableModel resultSetTableModel : connection2ResultSetTableModel.values()) {
-			resultSetTableModel.close();
+		for (QueryContext queryContext : new ArrayList<QueryContext>(connection2QueryContext.values())) {
+			queryContext.close();
 		}
 //		connection2ResultSetTableModel.clear(); // no need to clear - it should be empty by now
+		if (!connection2QueryContext.isEmpty()) {
+			Exception x = new IllegalStateException(String.format("connection2QueryContext is NOT empty!!! connection2QueryContext.size=%s", connection2QueryContext.size()));
+			logger.warn("onDispose: " + x, x);
+		}
 	}
 
 	public void executeQuery()
@@ -715,6 +733,7 @@ public abstract class QueryEditorManager
 		if (connectionProfile == null)
 			throw new IllegalStateException("No ConnectionProfile selected!"); //$NON-NLS-1$
 
+		queryContext.setQueryEditorManager(this);
 		queryContext.setConnectionProfile(connectionProfile);
 		queryContext.setQueryText(queryEditor.getQueryText());
 		queryContext.setQueryParameters(queryParameterManager);
@@ -744,7 +763,8 @@ public abstract class QueryEditorManager
 					display.asyncExec(new Runnable() {
 						@Override
 						public void run() {
-							ExecuteQueryEvent executeQueryEvent = new ExecuteQueryEvent(queryContext, resultSetTableModel[0]);
+							queryContext.setResultSetTableModel(resultSetTableModel[0]);
+							ExecuteQueryEvent executeQueryEvent = new ExecuteQueryEvent(queryContext);
 							for (Object l : executeQueryListeners.getListeners())
 								((ExecuteQueryListener)l).postExecuteQuery(executeQueryEvent);
 
@@ -778,14 +798,24 @@ public abstract class QueryEditorManager
 	{
 		Stopwatch stopwatch = new Stopwatch();
 
-		// close the current connection - we keep only one single connection + query + result set, right now - might change later.
-		for (ResultSetTableModel oldResultSetTableModel : connection2ResultSetTableModel.values()) {
-			oldResultSetTableModel.close();
-		}
-
 		IConnectionProfile connectionProfile = queryContext.getConnectionProfile();
 		final IConnection connection = createConnection(connectionProfile, new SubProgressMonitor(monitor, 30)); // TODO proper management of ProgressMonitor!
 		queryContext.setConnection(connection);
+
+		connection2QueryContext.put(connection, queryContext);
+		queryContextDeque.addFirst(queryContext);
+		queryContexts = null;
+
+		// Close the oldest connections that are exceeding the number of connections to keep.
+		IPreferenceStore preferenceStore = VestigoUIPlugin.getDefault().getPreferenceStore();
+		preferenceStore.setDefault(PREFERENCE_KEY_KEEP_QUERY_RESULT_SET_QUANTITY, PREFERENCE_DEFAULT_KEEP_QUERY_RESULT_SET_QUANTITY);
+		int keepQueryResultSetQuantity = preferenceStore.getInt(PREFERENCE_KEY_KEEP_QUERY_RESULT_SET_QUANTITY);
+		// Ensure at least the one we just added is kept (minimum 1).
+		keepQueryResultSetQuantity = Math.max(1, keepQueryResultSetQuantity);
+		while (queryContextDeque.size() > keepQueryResultSetQuantity) {
+			QueryContext oldQueryContext = queryContextDeque.peekLast();
+			oldQueryContext.close();
+		}
 
 		ExecuteQueryEvent executeQueryEvent = new ExecuteQueryEvent(queryContext);
 		for (Object l : executeQueryListeners.getListeners())
@@ -817,12 +847,15 @@ public abstract class QueryEditorManager
 			resultSet = new DelegatingResultSet(resultSet) {
 				@Override
 				public void close() throws OdaException {
-					ResultSetTableModel model;
+					QueryContext queryContext;
 					synchronized(QueryEditorManager.this) {
-						model = connection2ResultSetTableModel.remove(connection);
+						queryContext = connection2QueryContext.remove(connection);
+						boolean removedFromDeque = queryContextDeque.remove(queryContext);
+						queryContexts = null;
+						logger.debug("delegatingResultSet.close: queryContext={} removedFromDeque={}", queryContext, removedFromDeque);
 					}
-					if (model != null)
-						model.close();
+					if (queryContext != null)
+						queryContext.close();
 
 					super.close();
 					connection.close();
@@ -834,11 +867,13 @@ public abstract class QueryEditorManager
 			resultSet.getMetaData();
 
 			resultSetTableModel = new ResultSetTableModel(connection, resultSet);
-			connection2ResultSetTableModel.put(connection, resultSetTableModel);
-			this.resultSetTableModel = resultSetTableModel;
+			queryContext.setResultSetTableModel(resultSetTableModel);
+//			connection2QueryContext.put(connection, queryContext); // doing before!
+//			connectionDeque.add(connection);
+//			this.resultSetTableModel = resultSetTableModel;
 			stopwatch.stop("10.query.executeQuery"); //$NON-NLS-1$
 		} finally {
-			executeQueryEvent = new ExecuteQueryEvent(queryContext, resultSetTableModel);
+			executeQueryEvent = new ExecuteQueryEvent(queryContext);
 			for (Object l : executeQueryListeners.getListeners())
 				((ExecuteQueryListener)l).postExecuteQuery(executeQueryEvent, new SubProgressMonitor(monitor, 50)); // TODO progressmonitor
 		}
@@ -928,14 +963,28 @@ public abstract class QueryEditorManager
 		queryParameterManager.editorInputChanged();
 	}
 
-	public ResultSetTableModel getResultSetTableModel()
-	{
-		ResultSetTableModel r = resultSetTableModel;
-		if (r != null && r.isClosed())
-			return null;
-
-		return r;
+	public List<QueryContext> getQueryContexts() {
+		List<QueryContext> queryContexts = this.queryContexts;
+		if (queryContexts == null) {
+			synchronized (this) {
+				queryContexts = this.queryContexts;
+				if (queryContexts == null) {
+					queryContexts = Collections.unmodifiableList(new ArrayList<QueryContext>(queryContextDeque));
+					this.queryContexts = queryContexts;
+				}
+			}
+		}
+		return queryContexts;
 	}
+
+//	public ResultSetTableModel getResultSetTableModel()
+//	{
+//		ResultSetTableModel r = resultSetTableModel;
+//		if (r != null && r.isClosed())
+//			return null;
+//
+//		return r;
+//	}
 
 	public String extractAndRemovePropertiesFromQueryText(String queryText)
 	{

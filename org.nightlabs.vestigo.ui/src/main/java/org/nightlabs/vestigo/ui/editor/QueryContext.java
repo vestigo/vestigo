@@ -22,19 +22,35 @@ import java.util.List;
 
 import org.eclipse.datatools.connectivity.IConnectionProfile;
 import org.eclipse.datatools.connectivity.oda.IConnection;
+import org.nightlabs.util.Util;
 import org.nightlabs.vestigo.ui.queryparam.QueryParameter;
 import org.nightlabs.vestigo.ui.queryparam.QueryParameterManager;
-import org.nightlabs.util.Util;
+import org.nightlabs.vestigo.ui.resultsettable.ResultSetTableModel;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
  */
 public class QueryContext
 {
+	private static final Logger logger = LoggerFactory.getLogger(QueryContext.class);
+
+	private QueryEditorManager queryEditorManager;
 	private IConnectionProfile connectionProfile;
 	private String queryText;
 	private List<QueryParameter> queryParameters = new ArrayList<QueryParameter>();
 	private IConnection connection;
+	private ResultSetTableModel resultSetTableModel;
+
+	public QueryContext() { }
+
+	public QueryEditorManager getQueryEditorManager() {
+		return queryEditorManager;
+	}
+	public void setQueryEditorManager(QueryEditorManager queryEditorManager) {
+		this.queryEditorManager = queryEditorManager;
+	}
 
 	public IConnectionProfile getConnectionProfile() {
 		return connectionProfile;
@@ -71,5 +87,34 @@ public class QueryContext
 	}
 	public void setConnection(IConnection connection) {
 		this.connection = connection;
+	}
+
+	public ResultSetTableModel getResultSetTableModel() {
+		return resultSetTableModel;
+	}
+	public void setResultSetTableModel(ResultSetTableModel resultSetTableModel) {
+		this.resultSetTableModel = resultSetTableModel;
+	}
+
+	private boolean closed = false;
+
+	public void close() {
+		synchronized(this) {
+			if (closed)
+				return;
+
+			closed = true;
+		}
+		try {
+			ResultSetTableModel resultSetTableModel = this.resultSetTableModel;
+			if (resultSetTableModel != null)
+				resultSetTableModel.close();
+
+			IConnection connection = this.connection;
+			if (connection != null)
+				connection.close();
+		} catch (Exception e) {
+			logger.warn("close: " + e, e);
+		}
 	}
 }
