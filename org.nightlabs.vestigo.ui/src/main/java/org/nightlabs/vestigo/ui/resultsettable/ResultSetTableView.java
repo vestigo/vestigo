@@ -19,6 +19,7 @@ package org.nightlabs.vestigo.ui.resultsettable;
 
 import java.util.Set;
 
+import org.eclipse.core.runtime.ListenerList;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
@@ -43,11 +44,14 @@ import org.slf4j.LoggerFactory;
 public class ResultSetTableView extends ViewPart implements LabelTextOptionsContainer
 {
 	private static final Logger logger = LoggerFactory.getLogger(ResultSetTableView.class);
+	public static final String ID = ResultSetTableView.class.getName();
 //	private static final String nextActionGroupMarkerID = "next";
 
 	private ResultSetTableComposite resultSetTableComposite;
 	private QueryEditor queryEditor;
 //	private NextAction nextAction;
+
+	private ListenerList resultSetTableListeners = new ListenerList();
 
 	@Override
 	public void createPartControl(Composite parent) {
@@ -143,6 +147,7 @@ public class ResultSetTableView extends ViewPart implements LabelTextOptionsCont
 			resultSetTableComposite.setInput(model);
 			updateNextAction();
 		}
+		fireResultSetTableListeners(model);
 	}
 
 	private IPartListener2 partListener = new IPartListener2()
@@ -228,5 +233,18 @@ public class ResultSetTableView extends ViewPart implements LabelTextOptionsCont
 	@Override
 	public void setLabelTextOptions(Set<LabelTextOption> labelTextOptions) {
 		resultSetTableComposite.setLabelTextOptions(labelTextOptions);
+	}
+
+	public void addResultSetTableListener(ResultSetTableListener listener) {
+		resultSetTableListeners.add(listener);
+	}
+	public void removeResultSetTableListener(ResultSetTableListener listener) {
+		resultSetTableListeners.remove(listener);
+	}
+
+	protected void fireResultSetTableListeners(ResultSetTableModel resultSetTableModel) {
+		ResultSetTableEvent event = new ResultSetTableEvent(resultSetTableModel);
+		for (Object l : resultSetTableListeners.getListeners())
+			((ResultSetTableListener)l).resultSetActivated(event);
 	}
 }

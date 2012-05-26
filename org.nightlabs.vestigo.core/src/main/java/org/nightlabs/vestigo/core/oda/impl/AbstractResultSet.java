@@ -511,9 +511,16 @@ public abstract class AbstractResultSet implements ResultSet
 		return objectClassName + '|' + objectIDString;
 	}
 
+	private QueryExecutionStatisticSetDTO queryExecutionStatisticSetDTO;
+
 	@Override
 	public QueryExecutionStatisticSetDTO getQueryExecutionStatisticSetDTO() {
-		return getChildVM().getQueryExecutionStatisticSetDTO(getResultSetID());
+		QueryExecutionStatisticSetDTO result = queryExecutionStatisticSetDTO;
+		if (result == null) {
+			result = getChildVM().getQueryExecutionStatisticSetDTO(getResultSetID());
+			queryExecutionStatisticSetDTO = result;
+		}
+		return result;
 	}
 
 	@Override
