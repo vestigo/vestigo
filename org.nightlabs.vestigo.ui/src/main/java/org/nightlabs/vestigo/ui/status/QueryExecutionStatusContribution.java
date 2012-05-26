@@ -25,9 +25,13 @@ import org.nightlabs.vestigo.ui.resultsettable.ResultSetTableEvent;
 import org.nightlabs.vestigo.ui.resultsettable.ResultSetTableListener;
 import org.nightlabs.vestigo.ui.resultsettable.ResultSetTableModel;
 import org.nightlabs.vestigo.ui.resultsettable.ResultSetTableView;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class QueryExecutionStatusContribution extends WorkbenchWindowControlContribution
 {
+	private static final Logger logger = LoggerFactory.getLogger(QueryExecutionStatusContribution.class);
+
 	private Display display;
 	private Label statusLabel;
 	private ResultSetTableView resultSetTableView;
@@ -64,12 +68,6 @@ public class QueryExecutionStatusContribution extends WorkbenchWindowControlCont
 		tmpDTO.setQueryParameterEvaluationDurationTotal(999999);
 		updateStatusText(tmpDTO);
 
-		getWorkbenchWindow().addPageListener(pageListener);
-		if (getWorkbenchWindow().getActivePage() != null) {
-			getWorkbenchWindow().getActivePage().addPartListener(partListener);
-			findResultSetTableView(getWorkbenchWindow().getActivePage());
-		}
-
 //		StatusLineLayoutData statusLineLayoutData = new StatusLineLayoutData();
 //		Point computedSize = statusLabel.computeSize(SWT.DEFAULT, SWT.DEFAULT);
 //		statusLineLayoutData.heightHint = computedSize.y;
@@ -79,9 +77,16 @@ public class QueryExecutionStatusContribution extends WorkbenchWindowControlCont
 
 		Point computedSize = statusLabel.computeSize(SWT.DEFAULT, SWT.DEFAULT);
 		do {
+			logger.debug("createControl: computedSize.x={} computedSize.y={}", computedSize.x, computedSize.y);
 			emptyStatus += " ";
-			updateStatusText(null);
+			updateStatusText((QueryExecutionStatisticSetDTO)null);
 		} while (statusLabel.computeSize(SWT.DEFAULT, SWT.DEFAULT).x < computedSize.x);
+
+		getWorkbenchWindow().addPageListener(pageListener);
+		if (getWorkbenchWindow().getActivePage() != null) {
+			getWorkbenchWindow().getActivePage().addPartListener(partListener);
+			findResultSetTableView(getWorkbenchWindow().getActivePage());
+		}
 
 		return control;
 	}
@@ -158,14 +163,11 @@ public class QueryExecutionStatusContribution extends WorkbenchWindowControlCont
 		this.resultSetTableView = resultSetTableView;
 
 		if (resultSetTableView == null)
-			updateStatusText(null);
+			updateStatusText((QueryExecutionStatisticSetDTO)null);
 		else {
 			resultSetTableView.addResultSetTableListener(resultSetTableListener);
 			ResultSetTableModel resultSetTableModel = resultSetTableView.getResultSetTableModel();
-			if (resultSetTableModel != null) {
-				ResultSet resultSet = ResultSet.Helper.getWrappedResultSetOrFail(resultSetTableModel.getResultSet());
-				updateStatusText(resultSet.getQueryExecutionStatisticSetDTO());
-			}
+			updateStatusText(resultSetTableModel);
 		}
 	}
 
@@ -173,20 +175,31 @@ public class QueryExecutionStatusContribution extends WorkbenchWindowControlCont
 		@Override
 		public void resultSetActivated(ResultSetTableEvent event) {
 			ResultSetTableModel resultSetTableModel = event.getResultSetTableModel();
-			if (resultSetTableModel != null) {
-				ResultSet resultSet = ResultSet.Helper.getWrappedResultSetOrFail(resultSetTableModel.getResultSet());
-				updateStatusText(resultSet.getQueryExecutionStatisticSetDTO());
-			}
+			updateStatusText(resultSetTableModel);
 		}
 	};
 
 	private String emptyStatus = "";
 
+	protected void updateStatusText(ResultSetTableModel resultSetTableModel) {
+		if (resultSetTableModel == null)
+			updateStatusText((QueryExecutionStatisticSetDTO)null);
+		else {
+			ResultSet resultSet = ResultSet.Helper.getWrappedResultSetOrFail(resultSetTableModel.getResultSet());
+			updateStatusText(resultSet.getQueryExecutionStatisticSetDTO());
+		}
+	}
+
 	protected void updateStatusText(QueryExecutionStatisticSetDTO queryExecutionStatisticSetDTO) {
-		if (queryExecutionStatisticSetDTO == null)
+		if (queryExecutionStatisticSetDTO == null) {
+			logger.debug("updateStatusText: emptyStatus.length={}", emptyStatus.length());
 			statusLabel.setText(emptyStatus);
-		else
-			statusLabel.setText(String.format("Query execution took %s ms.", queryExecutionStatisticSetDTO.getQueryExecutionDuration()));
+		}
+		else {
+			String text = String.format("Query execution took %s ms.", queryExecutionStatisticSetDTO.getQueryExecutionDuration());
+			logger.debug("updateStatusText: text={}", text);
+			statusLabel.setText(text);
+		}
 
 		statusLabel.getParent().layout(true);
 	}
