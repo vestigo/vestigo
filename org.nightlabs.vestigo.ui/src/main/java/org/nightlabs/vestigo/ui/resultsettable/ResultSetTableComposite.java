@@ -17,6 +17,8 @@
  */
 package org.nightlabs.vestigo.ui.resultsettable;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
@@ -89,6 +91,10 @@ implements ISelectionProvider, LabelTextOptionsContainer
 {
 	private static final Logger logger = LoggerFactory.getLogger(ResultSetTableComposite.class);
 
+	public static enum PropertyName {
+		input
+	}
+
 	private Display display;
 	private TableViewer tableViewer;
 	private Table table;
@@ -96,6 +102,7 @@ implements ISelectionProvider, LabelTextOptionsContainer
 	private Set<LabelTextOption> labelTextOptions = EnumSet.of(LabelTextOption.showObjectToString, LabelTextOption.showPersistentID);
 	private MenuManager contextMenuManager;
 	private Menu contextMenu;
+	private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
 	private List<ResultSetTableRow> selectedRows = Collections.emptyList();
 	private List<ResultSetTableCell> selectedCells = Collections.emptyList();
@@ -471,6 +478,7 @@ implements ISelectionProvider, LabelTextOptionsContainer
 
 	public final void setInput(ResultSetTableModel input)
 	{
+		ResultSetTableModel oldInput = getInput();
 		manuallyEmptyTable();
 
 		Table table = tableViewer.getTable();
@@ -498,6 +506,7 @@ implements ISelectionProvider, LabelTextOptionsContainer
 
 		tableViewer.setInput(input);
 
+		propertyChangeSupport.firePropertyChange(PropertyName.input.name(), oldInput, input);
 		clearSelection();
 		fireSelectionChangedEvent();
 	}
@@ -615,5 +624,21 @@ implements ISelectionProvider, LabelTextOptionsContainer
 
 	public MenuManager getContextMenuManager() {
 		return contextMenuManager;
+	}
+
+	public void addPropertyChangeListener(PropertyChangeListener listener) {
+		propertyChangeSupport.addPropertyChangeListener(listener);
+	}
+
+	public void removePropertyChangeListener(PropertyChangeListener listener) {
+		propertyChangeSupport.removePropertyChangeListener(listener);
+	}
+
+	public void addPropertyChangeListener(PropertyName propertyName, PropertyChangeListener listener) {
+		propertyChangeSupport.addPropertyChangeListener(propertyName.name(), listener);
+	}
+
+	public void removePropertyChangeListener(PropertyName propertyName, PropertyChangeListener listener) {
+		propertyChangeSupport.removePropertyChangeListener(propertyName.name(), listener);
 	}
 }

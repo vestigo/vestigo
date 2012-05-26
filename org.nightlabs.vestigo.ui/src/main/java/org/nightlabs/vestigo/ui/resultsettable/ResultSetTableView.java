@@ -17,6 +17,8 @@
  */
 package org.nightlabs.vestigo.ui.resultsettable;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.Set;
 
 import org.eclipse.core.runtime.ListenerList;
@@ -57,6 +59,7 @@ public class ResultSetTableView extends ViewPart implements LabelTextOptionsCont
 	public void createPartControl(Composite parent) {
 		resultSetTableComposite = new ResultSetTableComposite(parent, SWT.NONE);
 		resultSetTableComposite.addDisposeListener(disposeListener);
+		resultSetTableComposite.addPropertyChangeListener(ResultSetTableComposite.PropertyName.input, inputChangeListener);
 		getSite().registerContextMenu(resultSetTableComposite.getContextMenuManager(), resultSetTableComposite);
 		getSite().getPage().addPartListener(partListener);
 		getSite().setSelectionProvider(resultSetTableComposite);
@@ -131,6 +134,14 @@ public class ResultSetTableView extends ViewPart implements LabelTextOptionsCont
 		queryEditor.getQueryEditorManager().addExecuteQueryListener(executeQueryListener);
 	}
 
+	private PropertyChangeListener inputChangeListener = new PropertyChangeListener() {
+		@Override
+		public void propertyChange(PropertyChangeEvent evt) {
+			ResultSetTableModel model = (ResultSetTableModel) evt.getNewValue();
+			fireResultSetTableListeners(model);
+		}
+	};
+
 	private void unregisterQueryEditor()
 	{
 		if (queryEditor != null) {
@@ -147,7 +158,6 @@ public class ResultSetTableView extends ViewPart implements LabelTextOptionsCont
 			resultSetTableComposite.setInput(model);
 			updateNextAction();
 		}
-		fireResultSetTableListeners(model);
 	}
 
 	private IPartListener2 partListener = new IPartListener2()
