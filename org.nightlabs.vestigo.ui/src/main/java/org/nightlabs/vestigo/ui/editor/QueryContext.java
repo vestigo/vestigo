@@ -20,6 +20,7 @@ package org.nightlabs.vestigo.ui.editor;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.core.runtime.ListenerList;
 import org.eclipse.datatools.connectivity.IConnectionProfile;
 import org.eclipse.datatools.connectivity.oda.IConnection;
 import org.nightlabs.util.Util;
@@ -42,6 +43,7 @@ public class QueryContext
 	private List<QueryParameter> queryParameters = new ArrayList<QueryParameter>();
 	private IConnection connection;
 	private ResultSetTableModel resultSetTableModel;
+	private ListenerList queryContextListeners = new ListenerList();
 
 	public QueryContext() { }
 
@@ -115,6 +117,19 @@ public class QueryContext
 				connection.close();
 		} catch (Exception e) {
 			logger.warn("close: " + e, e);
+		} finally {
+			QueryContextEvent event = new QueryContextEvent(this);
+			for (Object l : queryContextListeners.getListeners()) {
+				((QueryContextListener)l).postClose(event);
+			}
 		}
+	}
+
+	public void addQueryContextListener(QueryContextListener listener) {
+		queryContextListeners.add(listener);
+	}
+
+	public void removeQueryContextListener(QueryContextListener listener) {
+		queryContextListeners.remove(listener);
 	}
 }

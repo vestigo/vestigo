@@ -19,6 +19,7 @@ package org.nightlabs.vestigo.ui.resultsettable;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
@@ -61,7 +62,7 @@ public class ResultSetTableView extends ViewPart implements LabelTextOptionsCont
 	public void createPartControl(Composite parent) {
 		resultSetTableComposite = new ResultSetTableComposite(parent, SWT.NONE);
 		resultSetTableComposite.addDisposeListener(disposeListener);
-		resultSetTableComposite.addPropertyChangeListener(ResultSetTableComposite.PropertyName.input, inputChangeListener);
+		resultSetTableComposite.addPropertyChangeListener(ResultSetTableComposite.PropertyName.activeQueryContext, activeQueryContextChangeListener);
 		getSite().registerContextMenu(resultSetTableComposite.getContextMenuManager(), resultSetTableComposite);
 		getSite().getPage().addPartListener(partListener);
 		getSite().setSelectionProvider(resultSetTableComposite);
@@ -87,37 +88,14 @@ public class ResultSetTableView extends ViewPart implements LabelTextOptionsCont
 		IEditorPart activeEditor = getSite().getPage().getActiveEditor();
 		if (activeEditor instanceof QueryEditor)
 			registerQueryEditor((QueryEditor) activeEditor);
-
-//		IToolBarManager toolBarManager = getViewSite().getActionBars().getToolBarManager();
-//		if (toolBarManager.find(nextActionGroupMarkerID) == null) {
-//			toolBarManager.insertAfter(NextAction.class.getName(), new GroupMarker(nextActionGroupMarkerID));
-//			if (toolBarManager.find(nextActionGroupMarkerID) == null)
-//				throw new IllegalStateException("toolBarManager.find(nextActionGroupMarkerID) == null");
-//		}
-//
-//		toolBarManager.remove(NextAction.class.getName());
-
-//		nextAction = new NextAction();
-//		nextAction.init(this);
-		updateNextAction();
-
-//		toolBarManager.insertAfter(nextActionGroupMarkerID, nextAction);
-//		toolBarManager.add(nextAction);
 	}
 
 	private ExecuteQueryListener executeQueryListener = new ExecuteQueryAdapter() {
 		@Override
 		public void postExecuteQuery(ExecuteQueryEvent executeQueryEvent) {
-			setInput(executeQueryEvent.getQueryContext());
+			addQueryContext(executeQueryEvent.getQueryContext());
 		}
 	};
-
-	private void updateNextAction() {
-//		if (nextAction != null)
-//			nextAction.selectionChanged(nextAction, StructuredSelection.EMPTY);
-//		ResultSetTableModel model = getResultSetTableModel();
-//		getSite().getSelectionProvider().setSelection(model == null ? StructuredSelection.EMPTY : new StructuredSelection(model));
-	}
 
 	private void registerQueryEditor(QueryEditor queryEditor)
 	{
@@ -130,16 +108,12 @@ public class ResultSetTableView extends ViewPart implements LabelTextOptionsCont
 		unregisterQueryEditor(); // just in case, we have another one assigned.
 
 		this.queryEditor = queryEditor;
-		// TODO this must be refactored when we support multiple resultSets per query browser!
-		List<QueryContext> queryContexts = queryEditor.getQueryEditorManager().getQueryContexts();
-		if (queryContexts.isEmpty())
-			setInput(null);
-		else
-			setInput(queryContexts.get(0));
 		queryEditor.getQueryEditorManager().addExecuteQueryListener(executeQueryListener);
+		List<QueryContext> queryContexts = queryEditor.getQueryEditorManager().getQueryContexts();
+		addQueryContexts(queryContexts);
 	}
 
-	private PropertyChangeListener inputChangeListener = new PropertyChangeListener() {
+	private PropertyChangeListener activeQueryContextChangeListener = new PropertyChangeListener() {
 		@Override
 		public void propertyChange(PropertyChangeEvent evt) {
 			QueryContext queryContext = (QueryContext) evt.getNewValue();
@@ -155,15 +129,23 @@ public class ResultSetTableView extends ViewPart implements LabelTextOptionsCont
 			queryEditor = null;
 		}
 
-		setInput(null); // TODO still necessary?
+//		setInput(null); // TODO still necessary?
 	}
 
-	protected void setInput(QueryContext queryContext)
-	{
-		if (resultSetTableComposite != null) {
-			resultSetTableComposite.setInput(queryContext);
-			updateNextAction();
-		}
+	protected void addQueryContexts(Collection<? extends QueryContext> queryContexts) {
+		if (queryContexts == null)
+			throw new IllegalArgumentException("queryContexts == null");
+
+		if (resultSetTableComposite != null)
+			resultSetTableComposite.addQueryContexts(queryContexts);
+	}
+
+	protected void addQueryContext(QueryContext queryContext) {
+		if (queryContext == null)
+			throw new IllegalArgumentException("queryContext == null");
+
+		if (resultSetTableComposite != null)
+			resultSetTableComposite.addQueryContext(queryContext);
 	}
 
 	private IPartListener2 partListener = new IPartListener2()
@@ -233,12 +215,13 @@ public class ResultSetTableView extends ViewPart implements LabelTextOptionsCont
 		}
 	};
 
-	public ResultSetTableModel getResultSetTableModel()
+	public ResultSetTableModel getActiveResultSetTableModel()
 	{
 		if (resultSetTableComposite == null)
 			return null;
 
-		return resultSetTableComposite.getInput();
+		QueryContext activeQueryContext = resultSetTableComposite.getActiveQueryContext();
+		return activeQueryContext == null ? null : activeQueryContext.getResultSetTableModel();
 	}
 
 	@Override

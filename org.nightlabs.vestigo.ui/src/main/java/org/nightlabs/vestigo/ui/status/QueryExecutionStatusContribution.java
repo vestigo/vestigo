@@ -166,7 +166,7 @@ public class QueryExecutionStatusContribution extends WorkbenchWindowControlCont
 			updateStatusText((QueryExecutionStatisticSetDTO)null);
 		else {
 			resultSetTableView.addResultSetTableListener(resultSetTableListener);
-			ResultSetTableModel resultSetTableModel = resultSetTableView.getResultSetTableModel();
+			ResultSetTableModel resultSetTableModel = resultSetTableView.getActiveResultSetTableModel();
 			updateStatusText(resultSetTableModel);
 		}
 	}

@@ -19,12 +19,14 @@ package org.nightlabs.vestigo.ui.resultsettable;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.EnumSet;
+import java.util.HashMap;
 import java.util.HashSet;
-import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -59,6 +61,8 @@ import org.eclipse.swt.custom.TableCursor;
 import org.eclipse.swt.dnd.Clipboard;
 import org.eclipse.swt.dnd.TextTransfer;
 import org.eclipse.swt.dnd.Transfer;
+import org.eclipse.swt.events.DisposeEvent;
+import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.MouseAdapter;
@@ -82,6 +86,10 @@ import org.nightlabs.vestigo.core.LabelTextUtil;
 import org.nightlabs.vestigo.core.ObjectReference;
 import org.nightlabs.vestigo.core.oda.ResultSet;
 import org.nightlabs.vestigo.ui.editor.QueryContext;
+import org.nightlabs.vestigo.ui.editor.QueryContextAdapter;
+import org.nightlabs.vestigo.ui.editor.QueryContextEvent;
+import org.nightlabs.vestigo.ui.editor.QueryContextListener;
+import org.nightlabs.vestigo.ui.editor.QueryEditorManager;
 import org.nightlabs.vestigo.ui.labeltextoptionaction.LabelTextOptionsContainer;
 import org.nightlabs.vestigo.ui.licence.LicenceNotValidDialog;
 import org.slf4j.Logger;
@@ -96,9 +104,12 @@ implements ISelectionProvider, LabelTextOptionsContainer
 	private static final Logger logger = LoggerFactory.getLogger(ResultSetTableComposite.class);
 
 	public static enum PropertyName {
-		input
+		activeQueryEditorManager,
+		activeQueryContext
 	}
 
+	private QueryEditorManager activeQueryEditorManager;
+	private QueryContext activeQueryContext;
 	private Display display;
 	private TableViewer tableViewer;
 	private Table table;
@@ -111,18 +122,28 @@ implements ISelectionProvider, LabelTextOptionsContainer
 	private List<ResultSetTableRow> selectedRows = Collections.emptyList();
 	private List<ResultSetTableCell> selectedCells = Collections.emptyList();
 
-	private Map<ResultSetTableModel, TableViewer> model2TableViewer = new IdentityHashMap<ResultSetTableModel, TableViewer>();
+//	private Map<ResultSetTableModel, TableViewer> model2TableViewer = new IdentityHashMap<ResultSetTableModel, TableViewer>();
 	private StackLayout stackLayout;
+	private Map<QueryContext, TableViewer> queryContext2TableViewer = new HashMap<QueryContext, TableViewer>();
 
 	public ResultSetTableComposite(Composite parent, int style) {
 		super(parent, style);
 //		setLayout(new FillLayout(SWT.HORIZONTAL | SWT.VERTICAL));
 		display = parent.getDisplay();
+		addDisposeListener(disposeListener);
 		createStackLayout();
 		createTableViewer();
 		createTableCursor();
 		registerOpenLicenceNotValidDialogListeners();
 	}
+
+	private DisposeListener disposeListener = new DisposeListener() {
+		@Override
+		public void widgetDisposed(DisposeEvent event) {
+			for (QueryContext queryContext : queryContext2TableViewer.keySet())
+				queryContext.removeQueryContextListener(queryContextListener);
+		}
+	};
 
 	private void createStackLayout() {
 //		stackLayout = new StackLayout();
@@ -233,10 +254,15 @@ implements ISelectionProvider, LabelTextOptionsContainer
 				else {
 //					DeferredContentProvider contentProvider = (DeferredContentProvider) tableViewer.getContentProvider();
 //					contentProvider.updateElement(tableItemIndex); // does not work and that's probably exactly the problem
-					ResultSetTableModel model = getInput();
-					Object[] rowsLoadedArray = model.getRowsLoadedArray();
-					tableViewer.replace(rowsLoadedArray[tableItemIndex], tableItemIndex);
-					logger.debug("refresh: Workaround performed on tableItemIndex={}", tableItemIndex);
+
+					// TODO maybe this must be refactored when we support multiple resultSets per query browser
+					QueryContext queryContext = getActiveQueryContext();
+					if (queryContext != null) {
+						ResultSetTableModel model = queryContext.getResultSetTableModel();
+						Object[] rowsLoadedArray = model.getRowsLoadedArray();
+						tableViewer.replace(rowsLoadedArray[tableItemIndex], tableItemIndex);
+						logger.debug("refresh: Workaround performed on tableItemIndex={}", tableItemIndex);
+					}
 				}
 				// WORKAROUND END: https://bugs.eclipse.org/bugs/show_bug.cgi?id=146799
 			}
@@ -477,10 +503,6 @@ implements ISelectionProvider, LabelTextOptionsContainer
 			return LabelTextUtil.toStringOfSimpleObject(null, cellContent, labelTextOptions);
 	}
 
-	public ResultSetTableModel getInput() {
-		return (ResultSetTableModel) tableViewer.getInput();
-	}
-
 	private void manuallyEmptyTable() {
 		// The virtual tableviewer shows strange artifacts (empty, but selectable lines), if we have a null
 		// or empty input, AFTER we already had another input with quite some lines of real data.
@@ -491,10 +513,75 @@ implements ISelectionProvider, LabelTextOptionsContainer
 			item.dispose();
 	}
 
-	public final void setInput(QueryContext queryContext)
-	{
-		ResultSetTableModel oldInput = getInput();
+	public QueryEditorManager getActiveQueryEditorManager() {
+		return activeQueryEditorManager;
+	}
+
+	public void addQueryContexts(Collection<? extends QueryContext> queryContexts) {
+		if (queryContexts == null)
+			throw new IllegalArgumentException("queryContexts == null");
+
+		for (QueryContext queryContext : queryContexts) {
+			addQueryContext(queryContext);
+		}
+	}
+
+	public void addQueryContext(QueryContext queryContext) {
+		if (queryContext == null)
+			throw new IllegalArgumentException("queryContext == null");
+
+		queryContext2TableViewer.put(queryContext, tableViewer); // TODO put the right tableViewer.
+		queryContext.addQueryContextListener(queryContextListener);
+
+//		IConnection connection = queryContext.getConnection();
+//		if (connection == null)
+//			throw new IllegalArgumentException("queryContext.connection == null");
+
+//		connection. // TODO add close-listener and remove our UI for the QueryContext when it is closed.
+
+		setActiveQueryEditorManager(queryContext.getQueryEditorManager());
+	}
+
+	private QueryContextListener queryContextListener = new QueryContextAdapter() {
+		@Override
+		public void postClose(final QueryContextEvent event) {
+			display.asyncExec(new Runnable() {
+				@Override
+				public void run() {
+					if (ResultSetTableComposite.this.isDisposed())
+						return;
+
+					QueryContext queryContext = event.getSource();
+
+					queryContext2TableViewer.remove(queryContext);
+
+					// TODO extend for multi tabs.
+					if (getActiveQueryEditorManager() == queryContext.getQueryEditorManager())
+						setActiveQueryEditorManager(null);
+
+					if (getActiveQueryContext() == queryContext)
+						setActiveQueryContext(null);
+				}
+			});
+		}
+	};
+
+	private final void setActiveQueryEditorManager(QueryEditorManager queryEditorManager) { // TODO refactor for tabs
+		QueryEditorManager oldQueryEditorManager = getActiveQueryEditorManager();
+
 		manuallyEmptyTable();
+
+		this.activeQueryEditorManager = queryEditorManager;
+		setActiveQueryContext(null); // first clear to keep activeQueryEditorManager & activeQueryContext consistent in events fired.
+
+		// TODO this must be refactored when we support multiple resultSets per query browser!
+		List<QueryContext> queryContexts = queryEditorManager == null ? new ArrayList<QueryContext>() : queryEditorManager.getQueryContexts();
+		QueryContext queryContext;
+		if (queryContexts.isEmpty())
+			queryContext = null;
+		else
+			queryContext = queryContexts.get(0);
+
 
 		Table table = tableViewer.getTable();
 		for (TableColumn column : table.getColumns())
@@ -521,9 +608,20 @@ implements ISelectionProvider, LabelTextOptionsContainer
 
 		tableViewer.setInput(queryContext == null ? null : queryContext.getResultSetTableModel());
 
-		propertyChangeSupport.firePropertyChange(PropertyName.input.name(), oldInput, queryContext);
+		propertyChangeSupport.firePropertyChange(PropertyName.activeQueryEditorManager.name(), oldQueryEditorManager, queryEditorManager);
+		setActiveQueryContext(queryContext);
 		clearSelection();
 		fireSelectionChangedEvent();
+	}
+
+	protected QueryContext getActiveQueryContext() {
+		return activeQueryContext;
+	}
+
+	private void setActiveQueryContext(QueryContext activeQueryContext) { // TODO make protected later
+		QueryContext oldActiveQueryContext = getActiveQueryContext();
+		this.activeQueryContext = activeQueryContext;
+		propertyChangeSupport.firePropertyChange(PropertyName.activeQueryContext.name(), oldActiveQueryContext, activeQueryContext);
 	}
 
 	private TableViewerColumn createRowIndexTableViewerColumn(TableLayout layout)

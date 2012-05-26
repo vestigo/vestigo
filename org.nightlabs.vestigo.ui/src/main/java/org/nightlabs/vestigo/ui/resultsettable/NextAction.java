@@ -63,7 +63,7 @@ implements IViewActionDelegate, IMenuCreator
 	@Override
 	public void run(IAction action)
 	{
-		ResultSetTableModel resultSetTableModel = view.getResultSetTableModel();
+		ResultSetTableModel resultSetTableModel = view.getActiveResultSetTableModel();
 		if (resultSetTableModel != null) {
 			if (resultSetTableModel.isCompletelyLoaded())
 				MessageDialog.openInformation(view.getSite().getShell(), "All rows loaded", "All rows are already loaded! There is nothing more to load.");
