@@ -132,7 +132,7 @@ public class ConnectionContext {
 
 		queryContext.setConnectionContext(this);
 		queryContext.addQueryContextListener(queryContextListener);
-		queryContextDeque.add(queryContext);
+		queryContextDeque.addFirst(queryContext);
 		queryContexts = null;
 
 		// Close the oldest connections that are exceeding the number of connections to keep.

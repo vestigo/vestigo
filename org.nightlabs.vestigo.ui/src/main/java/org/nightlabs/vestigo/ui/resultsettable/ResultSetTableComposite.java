@@ -72,12 +72,13 @@ import org.eclipse.swt.events.PaintListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Point;
-import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Menu;
+import org.eclipse.swt.widgets.TabFolder;
+import org.eclipse.swt.widgets.TabItem;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
@@ -111,20 +112,19 @@ implements ISelectionProvider, LabelTextOptionsContainer
 	private QueryEditorManager activeQueryEditorManager;
 	private QueryContext activeQueryContext;
 	private Display display;
-	private TableViewer tableViewer;
-	private Table table;
-	private TableCursor tableCursor;
+//	private TableViewer tableViewer;
+//	private TableCursor tableCursor;
 	private Set<LabelTextOption> labelTextOptions = EnumSet.of(LabelTextOption.showObjectToString, LabelTextOption.showPersistentID);
 	private MenuManager contextMenuManager;
-	private Menu contextMenu;
+//	private Menu contextMenu;
 	private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
-	private List<ResultSetTableRow> selectedRows = Collections.emptyList();
-	private List<ResultSetTableCell> selectedCells = Collections.emptyList();
+//	private List<ResultSetTableRow> selectedRows = Collections.emptyList();
+//	private List<ResultSetTableCell> selectedCells = Collections.emptyList();
 
-//	private Map<ResultSetTableModel, TableViewer> model2TableViewer = new IdentityHashMap<ResultSetTableModel, TableViewer>();
 	private StackLayout stackLayout;
-	private Map<QueryContext, TableViewer> queryContext2TableViewer = new HashMap<QueryContext, TableViewer>();
+	private Map<String, TabFolder> stackKey2TabFolder = new HashMap<String, TabFolder>();
+	private Map<QueryContext, QueryContextUI> queryContext2QueryContextUI = new HashMap<QueryContext, QueryContextUI>();
 
 	public ResultSetTableComposite(Composite parent, int style) {
 		super(parent, style);
@@ -132,24 +132,47 @@ implements ISelectionProvider, LabelTextOptionsContainer
 		display = parent.getDisplay();
 		addDisposeListener(disposeListener);
 		createStackLayout();
-		createTableViewer();
-		createTableCursor();
-		registerOpenLicenceNotValidDialogListeners();
+//		createTableViewer();
+//		createTableCursor();
+//		registerOpenLicenceNotValidDialogListeners();
 	}
 
 	private DisposeListener disposeListener = new DisposeListener() {
 		@Override
 		public void widgetDisposed(DisposeEvent event) {
-			for (QueryContext queryContext : queryContext2TableViewer.keySet())
+			for (QueryContext queryContext : queryContext2QueryContextUI.keySet())
 				queryContext.removeQueryContextListener(queryContextListener);
 		}
 	};
 
 	private void createStackLayout() {
-//		stackLayout = new StackLayout();
-//		setLayout(stackLayout);
-		// TODO switch to stack layout
-		setLayout(new FillLayout(SWT.HORIZONTAL | SWT.VERTICAL));
+		stackLayout = new StackLayout();
+		setLayout(stackLayout);
+//		// TO DO switch to stack layout
+//		setLayout(new FillLayout(SWT.HORIZONTAL | SWT.VERTICAL));
+	}
+
+	protected String getStackKey(QueryContext queryContext) {
+		int hashCode = System.identityHashCode(queryContext.getQueryEditorManager());
+		return Integer.toString(hashCode, 36);
+	}
+
+	protected List<ResultSetTableRow> getSelectedRows() {
+		QueryContext queryContext = getActiveQueryContext();
+		if (queryContext != null) {
+			QueryContextUI queryContextUI = getQueryContextUIOrFail(queryContext);
+			return queryContextUI.getSelectedRows();
+		}
+		return Collections.emptyList();
+	}
+
+	protected List<ResultSetTableCell> getSelectedCells() {
+		QueryContext queryContext = getActiveQueryContext();
+		if (queryContext != null) {
+			QueryContextUI queryContextUI = getQueryContextUIOrFail(queryContext);
+			return queryContextUI.getSelectedCells();
+		}
+		return Collections.emptyList();
 	}
 
 	private IAction copyAction = new Action("Copy") {
@@ -157,7 +180,7 @@ implements ISelectionProvider, LabelTextOptionsContainer
 		public void run() {
 			StringBuilder labelTextSB = new StringBuilder();
 
-			for (ResultSetTableRow row : selectedRows) {
+			for (ResultSetTableRow row : getSelectedRows()) {
 				if (labelTextSB.length() > 0)
 					labelTextSB.append('\n');
 
@@ -173,7 +196,7 @@ implements ISelectionProvider, LabelTextOptionsContainer
 				}
 			}
 
-			for (ResultSetTableCell cell : selectedCells) {
+			for (ResultSetTableCell cell : getSelectedCells()) {
 				if (labelTextSB.length() > 0)
 					labelTextSB.append('\t');
 
@@ -204,10 +227,14 @@ implements ISelectionProvider, LabelTextOptionsContainer
 		s.addAll(labelTextOptions);
 		this.labelTextOptions = s;
 
-		refresh();
+		QueryContext queryContext = this.activeQueryContext;
+		if (queryContext != null) {
+			QueryContextUI queryContextUI = getQueryContextUIOrFail(queryContext);
+			refresh(queryContextUI.getTableViewer());
+		}
 	}
 
-	protected void refresh()
+	protected void refresh(TableViewer tableViewer)
 	{
 		if (tableViewer.getInput() == null)
 			return; // No need to refresh anything, if the table is empty.
@@ -219,6 +246,8 @@ implements ISelectionProvider, LabelTextOptionsContainer
 		// But finally this workaround came to my mind and proved functional: Collect visible TableItems and call
 		// tableViewer.update(...) on them.
 		// Marco :-)
+
+		Table table = tableViewer.getTable();
 		Set<TableItem> tableItems = new HashSet<TableItem>();
 		for (int y = 0; y < table.getBounds().height; ++y) {
 			TableItem item = table.getItem(new Point(1, y));
@@ -274,9 +303,9 @@ implements ISelectionProvider, LabelTextOptionsContainer
 		// WORKAROUND END: https://bugs.eclipse.org/bugs/show_bug.cgi?id=146799
 	}
 
-	private void createTableViewer() {
-		tableViewer = new TableViewer(
-				this,
+	private TableViewer createTableViewer(Composite parent) {
+		TableViewer tableViewer = new TableViewer(
+				parent,
 				SWT.VIRTUAL // We definitely need a lazy/virtual table, because our result-set might be large.
 				| SWT.FULL_SELECTION // We want the whole line to be displayed as selected.
 				| SWT.SINGLE // Right now, we allow only single-line-selections, but this should change later.
@@ -285,20 +314,20 @@ implements ISelectionProvider, LabelTextOptionsContainer
 		tableViewer.getTable().setHeaderVisible(true);
 		tableViewer.getTable().setLinesVisible(true);
 		tableViewer.setUseHashlookup(true);
-		table = tableViewer.getTable();
 
 //		hookRepairPaintListener(); // I don't have these paint bugs here in the office - only at home - strange (and it makes things really slow, here).
-		hookRepairPaintListener(); // I have them in the office, too (but not that often) - trying a better implementation to avoid slowliness.
+		hookRepairPaintListener(tableViewer); // I have them in the office, too (but not that often) - trying a better implementation to avoid slowliness.
+		return tableViewer;
 	}
 
 	private void openLicenceNotValidDialogIfLicenceNotValidRowSelected()
 	{
 		Set<ResultSetTableCell> cells = new HashSet<ResultSetTableCell>();
-		for (ResultSetTableRow row : selectedRows) {
+		for (ResultSetTableRow row : getSelectedRows()) {
 			cells.addAll(Arrays.asList(row.getCells()));
 		}
 
-		cells.addAll(selectedCells);
+		cells.addAll(getSelectedCells());
 
 		for (ResultSetTableCell cell : cells) {
 			if (cell.getCellContent() == ResultSet.LICENCE_NOT_VALID) {
@@ -317,7 +346,8 @@ implements ISelectionProvider, LabelTextOptionsContainer
 	 * As it is deferring the redraw operation, it causes nearly no performance impact (it collects many ordinary
 	 * paint events and executes only one additional refresh operation for many of them).
 	 */
-	private void hookRepairPaintListener() {
+	private void hookRepairPaintListener(final TableViewer tableViewer) {
+		final Table table = tableViewer.getTable();
 		tableViewer.getTable().addPaintListener(new PaintListener() {
 			@Override
 			public void paintControl(final PaintEvent e) {
@@ -347,7 +377,7 @@ implements ISelectionProvider, LabelTextOptionsContainer
 								repairPaintEventRedrawTriggered = true;
 //								((Table)e.widget).redraw(0, 0, e.width, e.height, true);
 //								tableViewer.refresh(true);
-								refresh();
+								refresh(tableViewer);
 							}
 						});
 						return Status.OK_STATUS;
@@ -361,14 +391,15 @@ implements ISelectionProvider, LabelTextOptionsContainer
 		});
 	}
 
-	private void createTableCursor() {
-		tableCursor = new TableCursor(tableViewer.getTable(), SWT.BORDER);
+	private TableCursor createTableCursor(final TableViewer tableViewer) {
+		final TableCursor tableCursor = new TableCursor(tableViewer.getTable(), SWT.BORDER);
 		tableCursor.addSelectionListener(new SelectionAdapter() {
 				@Override
 				public void widgetSelected(SelectionEvent e) {
 					TableItem row = tableCursor.getRow();
 					int column = tableCursor.getColumn();
 					Object rowData = row == null ? null : row.getData();
+					QueryContextUI queryContextUI = getQueryContextUIOrFail(tableCursor);
 
 					logger.debug(
 							"tableCursor.SelectionListener: row={} column={} rowData={}",
@@ -385,10 +416,10 @@ implements ISelectionProvider, LabelTextOptionsContainer
 						// If we are in the first column (the row-index-column), we select entire rows, otherwise
 						// we select individual cells.
 						if (column == 0)
-							selectedRows = Collections.singletonList(resultSetTableRow);
+							queryContextUI.setSelectedRows(Collections.singletonList(resultSetTableRow));
 						else {
 							ResultSetTableCell resultSetTableCell = resultSetTableRow.getCells()[column - 1];
-							selectedCells = Collections.singletonList(resultSetTableCell);
+							queryContextUI.setSelectedCells(Collections.singletonList(resultSetTableCell));
 						}
 					}
 
@@ -396,9 +427,7 @@ implements ISelectionProvider, LabelTextOptionsContainer
 				}
 		});
 
-		contextMenuManager = new MenuManager();
-		contextMenuManager.add(copyAction);
-		contextMenu = contextMenuManager.createContextMenu(tableCursor);
+		Menu contextMenu = getContextMenuManager().createContextMenu(tableCursor);
 		tableCursor.setMenu(contextMenu);
 
 		tableCursor.addKeyListener(new KeyAdapter() {
@@ -409,9 +438,10 @@ implements ISelectionProvider, LabelTextOptionsContainer
 					copyAction.run();
 			}
 		});
+		return tableCursor;
 	}
 
-	private void registerOpenLicenceNotValidDialogListeners() {
+	private void registerOpenLicenceNotValidDialogListeners(TableViewer tableViewer, TableCursor tableCursor) {
 		// We want the dialog to open, if the 'Enter' or the 'Space' key was pressed (while an appropriate line is selected).
 		tableCursor.addListener(SWT.KeyUp, new Listener() {
 			@Override
@@ -439,8 +469,9 @@ implements ISelectionProvider, LabelTextOptionsContainer
 	}
 
 	private void clearSelection() {
-		selectedRows = Collections.emptyList();
-		selectedCells = Collections.emptyList();
+		// TODO how to do this? do we need this?
+//		selectedRows = Collections.emptyList();
+//		selectedCells = Collections.emptyList();
 	}
 
 	private void fireSelectionChangedEvent()
@@ -503,15 +534,16 @@ implements ISelectionProvider, LabelTextOptionsContainer
 			return LabelTextUtil.toStringOfSimpleObject(null, cellContent, labelTextOptions);
 	}
 
-	private void manuallyEmptyTable() {
-		// The virtual tableviewer shows strange artifacts (empty, but selectable lines), if we have a null
-		// or empty input, AFTER we already had another input with quite some lines of real data.
-		// Maybe this bug occurs even in more situations (e.g. in general when a new input has less rows
-		// than an old input). Thus we simply manually delete all table items. This seems to solve the problem.
-		// Marco :-)
-		for (TableItem item : tableViewer.getTable().getItems())
-			item.dispose();
-	}
+// Creating now a *new* TableViewer for every ResultSet => don't need to empty it anymore.
+//	private void manuallyEmptyTable(TableViewer tableViewer) {
+//		// The virtual tableviewer shows strange artifacts (empty, but selectable lines), if we have a null
+//		// or empty input, AFTER we already had another input with quite some lines of real data.
+//		// Maybe this bug occurs even in more situations (e.g. in general when a new input has less rows
+//		// than an old input). Thus we simply manually delete all table items. This seems to solve the problem.
+//		// Marco :-)
+//		for (TableItem item : tableViewer.getTable().getItems())
+//			item.dispose();
+//	}
 
 	public QueryEditorManager getActiveQueryEditorManager() {
 		return activeQueryEditorManager;
@@ -526,12 +558,154 @@ implements ISelectionProvider, LabelTextOptionsContainer
 		}
 	}
 
+	protected TabFolder getTabFolderOrFail(String stackKey) {
+		TabFolder tabFolder = stackKey2TabFolder.get(stackKey);
+		if (tabFolder == null)
+			throw new IllegalArgumentException("There is no tabFolder for stackKey=" + stackKey);
+
+		return tabFolder;
+	}
+
+	protected TabFolder createTabFolder(String stackKey) {
+		TabFolder tabFolder = stackKey2TabFolder.get(stackKey);
+		if (tabFolder == null) {
+			tabFolder = new TabFolder(this, SWT.NONE);
+			tabFolder.addSelectionListener(new SelectionAdapter() {
+				@Override
+				public void widgetSelected(SelectionEvent e) {
+					TabFolder tabFolder = (TabFolder) e.widget;
+					TabItem[] tabItems = tabFolder.getSelection();
+					if (tabItems != null && tabItems.length > 0) {
+						TabItem tabItem = tabItems[0];
+						QueryContextUI queryContextUI = getQueryContextUIOrFail(tabItem);
+						setActiveQueryEditorManager(queryContextUI.getQueryContext().getQueryEditorManager()); // TODO remove this when it is done by the following line.
+						setActiveQueryContext(queryContextUI.getQueryContext());
+					}
+				}
+			});
+			stackKey2TabFolder.put(stackKey, tabFolder);
+		}
+		return tabFolder;
+	}
+
+	protected TabFolder getTabFolderOrFail(QueryContext queryContext) {
+		String stackKey = getStackKey(queryContext);
+		TabFolder tabFolder = getTabFolderOrFail(stackKey);
+		return tabFolder;
+	}
+
+	protected TabFolder createTabFolder(QueryContext queryContext) {
+		String stackKey = getStackKey(queryContext);
+		TabFolder tabFolder = createTabFolder(stackKey);
+		return tabFolder;
+	}
+
+	protected QueryContextUI getQueryContextUIOrNull(QueryContext queryContext) {
+		QueryContextUI queryContextUI = queryContext2QueryContextUI.get(queryContext);
+		return queryContextUI;
+	}
+
+	protected QueryContextUI getQueryContextUIOrFail(QueryContext queryContext) {
+		QueryContextUI queryContextUI = queryContext2QueryContextUI.get(queryContext);
+		if (queryContextUI == null)
+			throw new IllegalArgumentException("There is no QueryContextUI for queryContext=" + queryContext);
+
+		return queryContextUI;
+	}
+
+//	private Map<IConnectionProfile, AtomicInteger> connectionProfile2NextHumanQueryID = new HashMap<IConnectionProfile, AtomicInteger>();
+
+	protected QueryContextUI createQueryContextUI(QueryContext queryContext) {
+		final QueryContextUI[] queryContextUI = new QueryContextUI[1];
+		queryContextUI[0] = queryContext2QueryContextUI.get(queryContext);
+		if (queryContextUI[0] == null) {
+			queryContext.addQueryContextListener(queryContextListener);
+			TabFolder tabFolder = createTabFolder(queryContext);
+			final TabItem tabItem = new TabItem(tabFolder, SWT.NONE);
+
+			ResultSet rs = ResultSet.Helper.getWrappedResultSetOrFail(queryContext.getResultSetTableModel().getResultSet());
+			tabItem.setText(String.format("%s - %s ", queryContext.getConnectionProfile().getName(), rs.getQuery().getQueryID().getQueryID()));
+			tabItem.setToolTipText(queryContext.getQueryText());
+
+			TableViewer tableViewer = createTableViewer(tabFolder);
+			TableCursor tableCursor = createTableCursor(tableViewer);
+			registerOpenLicenceNotValidDialogListeners(tableViewer, tableCursor);
+
+			tabItem.setControl(tableViewer.getTable());
+			tableViewer.getTable().addDisposeListener(new DisposeListener() {
+				@Override
+				public void widgetDisposed(DisposeEvent event) {
+					if (queryContextUI[0] != null)
+						queryContextUI[0].dispose();
+				}
+			});
+			tabItem.addDisposeListener(new DisposeListener() {
+				@Override
+				public void widgetDisposed(DisposeEvent event) {
+					if (queryContextUI[0] != null)
+						queryContextUI[0].dispose();
+				}
+			});
+			queryContextUI[0] = new QueryContextUI(queryContext, tableViewer, tabItem);
+			tableViewer.setData(QueryContextUI.class.getName(), queryContextUI[0]);
+			tableCursor.setData(QueryContextUI.class.getName(), queryContextUI[0]);
+			tabItem.setData(QueryContextUI.class.getName(), queryContextUI[0]);
+			queryContext2QueryContextUI.put(queryContext, queryContextUI[0]);
+
+			Table table = tableViewer.getTable();
+			for (TableColumn column : table.getColumns())
+				column.dispose();
+
+			TableLayout layout = new TableLayout();
+			if (queryContext != null && queryContext.getResultSetTableModel() != null) {
+				IResultSet resultSet = queryContext.getResultSetTableModel().getResultSet();
+				try {
+					int odaColumnCount = resultSet.getMetaData().getColumnCount();
+
+					createRowIndexTableViewerColumn(tableViewer, layout);
+
+					for (int odaColumnIndex = 1; odaColumnIndex <= odaColumnCount; ++odaColumnIndex)
+						createResultSetTableCellTableViewerColumn(tableViewer, resultSet, layout, odaColumnIndex);
+
+				} catch (OdaException e) {
+					throw new RuntimeException(e);
+				}
+			}
+
+			table.setLayout(layout);
+			table.layout(true);
+
+			tableViewer.setInput(queryContext == null ? null : queryContext.getResultSetTableModel());
+		}
+		return queryContextUI[0];
+	}
+
+	protected QueryContextUI getQueryContextUIOrFail(TableViewer tableViewer) {
+		QueryContextUI queryContextUI = (QueryContextUI) tableViewer.getData(QueryContextUI.class.getName());
+		if (queryContextUI == null)
+			throw new IllegalStateException("tableViewer.getData(QueryContextUI.class.getName()) returned null!");
+		return queryContextUI;
+	}
+
+	protected QueryContextUI getQueryContextUIOrFail(TableCursor tableCursor) {
+		QueryContextUI queryContextUI = (QueryContextUI) tableCursor.getData(QueryContextUI.class.getName());
+		if (queryContextUI == null)
+			throw new IllegalStateException("tableCursor.getData(QueryContextUI.class.getName()) returned null!");
+		return queryContextUI;
+	}
+
+	protected QueryContextUI getQueryContextUIOrFail(TabItem tabItem) {
+		QueryContextUI queryContextUI = (QueryContextUI) tabItem.getData(QueryContextUI.class.getName());
+		if (queryContextUI == null)
+			throw new IllegalStateException("tabItem.getData(QueryContextUI.class.getName()) returned null!");
+		return queryContextUI;
+	}
+
 	public void addQueryContext(QueryContext queryContext) {
 		if (queryContext == null)
 			throw new IllegalArgumentException("queryContext == null");
 
-		queryContext2TableViewer.put(queryContext, tableViewer); // TODO put the right tableViewer.
-		queryContext.addQueryContextListener(queryContextListener);
+		createQueryContextUI(queryContext);
 
 //		IConnection connection = queryContext.getConnection();
 //		if (connection == null)
@@ -553,7 +727,8 @@ implements ISelectionProvider, LabelTextOptionsContainer
 
 					QueryContext queryContext = event.getSource();
 
-					queryContext2TableViewer.remove(queryContext);
+					QueryContextUI queryContextUI = queryContext2QueryContextUI.remove(queryContext);
+					queryContextUI.dispose();
 
 					// TODO extend for multi tabs.
 					if (getActiveQueryEditorManager() == queryContext.getQueryEditorManager())
@@ -569,8 +744,6 @@ implements ISelectionProvider, LabelTextOptionsContainer
 	private final void setActiveQueryEditorManager(QueryEditorManager queryEditorManager) { // TODO refactor for tabs
 		QueryEditorManager oldQueryEditorManager = getActiveQueryEditorManager();
 
-		manuallyEmptyTable();
-
 		this.activeQueryEditorManager = queryEditorManager;
 		setActiveQueryContext(null); // first clear to keep activeQueryEditorManager & activeQueryContext consistent in events fired.
 
@@ -582,49 +755,40 @@ implements ISelectionProvider, LabelTextOptionsContainer
 		else
 			queryContext = queryContexts.get(0);
 
-
-		Table table = tableViewer.getTable();
-		for (TableColumn column : table.getColumns())
-			column.dispose();
-
-		TableLayout layout = new TableLayout();
-		if (queryContext != null && queryContext.getResultSetTableModel() != null) {
-			IResultSet resultSet = queryContext.getResultSetTableModel().getResultSet();
-			try {
-				int odaColumnCount = resultSet.getMetaData().getColumnCount();
-
-				createRowIndexTableViewerColumn(layout);
-
-				for (int odaColumnIndex = 1; odaColumnIndex <= odaColumnCount; ++odaColumnIndex)
-					createResultSetTableCellTableViewerColumn(resultSet, layout, odaColumnIndex);
-
-			} catch (OdaException e) {
-				throw new RuntimeException(e);
-			}
-		}
-
-		table.setLayout(layout);
-		table.layout(true);
-
-		tableViewer.setInput(queryContext == null ? null : queryContext.getResultSetTableModel());
-
 		propertyChangeSupport.firePropertyChange(PropertyName.activeQueryEditorManager.name(), oldQueryEditorManager, queryEditorManager);
 		setActiveQueryContext(queryContext);
-		clearSelection();
-		fireSelectionChangedEvent();
 	}
 
 	protected QueryContext getActiveQueryContext() {
 		return activeQueryContext;
 	}
 
-	private void setActiveQueryContext(QueryContext activeQueryContext) { // TODO make protected later
+	private void setActiveQueryContext(QueryContext queryContext) { // TODO make protected later
 		QueryContext oldActiveQueryContext = getActiveQueryContext();
-		this.activeQueryContext = activeQueryContext;
-		propertyChangeSupport.firePropertyChange(PropertyName.activeQueryContext.name(), oldActiveQueryContext, activeQueryContext);
+		this.activeQueryContext = queryContext;
+
+//		if (oldActiveQueryContext != null) { // Creating now a *new* TableViewer for every ResultSet => don't need to empty it anymore.
+//			QueryContextUI queryContextUI = getQueryContextUIOrNull(oldActiveQueryContext);
+//			if (queryContextUI != null)
+//				manuallyEmptyTable(queryContextUI.getTableViewer());
+//		}
+
+		if (queryContext != null) {
+			TabFolder tabFolder = getTabFolderOrFail(queryContext);
+			stackLayout.topControl = tabFolder;
+
+			QueryContextUI queryContextUI = getQueryContextUIOrFail(queryContext);
+			tabFolder.setSelection(queryContextUI.getTabItem());
+
+			layout(true);
+		}
+
+		clearSelection();
+		fireSelectionChangedEvent();
+		propertyChangeSupport.firePropertyChange(PropertyName.activeQueryContext.name(), oldActiveQueryContext, queryContext);
 	}
 
-	private TableViewerColumn createRowIndexTableViewerColumn(TableLayout layout)
+	private TableViewerColumn createRowIndexTableViewerColumn(TableViewer tableViewer, TableLayout layout)
 	{
 		TableViewerColumn tableViewerColumn = new TableViewerColumn(tableViewer, SWT.RIGHT);
 		tableViewerColumn.setLabelProvider(new RowIndexLabelProvider());
@@ -634,7 +798,7 @@ implements ISelectionProvider, LabelTextOptionsContainer
 		return tableViewerColumn;
 	}
 
-	private TableViewerColumn createResultSetTableCellTableViewerColumn(IResultSet resultSet, TableLayout layout, int odaColumnIndex)
+	private TableViewerColumn createResultSetTableCellTableViewerColumn(TableViewer tableViewer, IResultSet resultSet, TableLayout layout, int odaColumnIndex)
 	throws OdaException
 	{
 		String columnName = resultSet.getMetaData().getColumnName(odaColumnIndex);
@@ -657,10 +821,11 @@ implements ISelectionProvider, LabelTextOptionsContainer
 	@Override
 	public ISelection getSelection()
 	{
+		List<ResultSetTableCell> selectedCells = getSelectedCells();
 		if (!selectedCells.isEmpty())
 			return new StructuredSelection(selectedCells);
 		else
-			return new StructuredSelection(selectedRows);
+			return new StructuredSelection(getSelectedRows());
 	}
 
 	/**
@@ -676,50 +841,51 @@ implements ISelectionProvider, LabelTextOptionsContainer
 	{
 		clearSelection();
 
-		if (selection.isEmpty()) {
-			tableViewer.setSelection(StructuredSelection.EMPTY);
-			// TODO do sth. with the tableCursor (don't know what I can do, because tableCursor.setSelection(row, column)
-			// does not accept invalid values (like row being null).
-			return;
-		}
-
-		if (!(selection instanceof IStructuredSelection)) {
-			logger.warn("setSelection: selection is not an IStructuredSelection! Ignoring it: {}", selection);
-			return;
-		}
-
-		IStructuredSelection structuredSelection = (IStructuredSelection) selection;
-		// We'll probably support MULTI-selection later, but so far, we don't => hence, we pick the first entry.
-		Object element = structuredSelection.getFirstElement();
-		if (element instanceof ResultSetTableRow) {
-			ResultSetTableRow row = (ResultSetTableRow) element;
-			tableViewer.setSelection(new StructuredSelection(row));
-			tableCursor.setSelection(getTableItem(row, true), 0);
-			selectedRows = Collections.singletonList(row);
-		}
-		else if (element instanceof ResultSetTableCell) {
-			ResultSetTableCell cell = (ResultSetTableCell) element;
-			tableViewer.setSelection(new StructuredSelection(cell.getRow()));
-			tableCursor.setSelection(getTableItem(cell.getRow(), true), 0);
-			selectedCells = Collections.singletonList(cell);
-		}
+		logger.warn("setSelection: Currently not supported!", new UnsupportedOperationException("NYI"));
+//		if (selection.isEmpty()) {
+//			tableViewer.setSelection(StructuredSelection.EMPTY);
+//			// TODO do sth. with the tableCursor (don't know what I can do, because tableCursor.setSelection(row, column)
+//			// does not accept invalid values (like row being null).
+//			return;
+//		}
+//
+//		if (!(selection instanceof IStructuredSelection)) {
+//			logger.warn("setSelection: selection is not an IStructuredSelection! Ignoring it: {}", selection);
+//			return;
+//		}
+//
+//		IStructuredSelection structuredSelection = (IStructuredSelection) selection;
+//		// We'll probably support MULTI-selection later, but so far, we don't => hence, we pick the first entry.
+//		Object element = structuredSelection.getFirstElement();
+//		if (element instanceof ResultSetTableRow) {
+//			ResultSetTableRow row = (ResultSetTableRow) element;
+//			tableViewer.setSelection(new StructuredSelection(row));
+//			tableCursor.setSelection(getTableItem(row, true), 0);
+//			selectedRows = Collections.singletonList(row);
+//		}
+//		else if (element instanceof ResultSetTableCell) {
+//			ResultSetTableCell cell = (ResultSetTableCell) element;
+//			tableViewer.setSelection(new StructuredSelection(cell.getRow()));
+//			tableCursor.setSelection(getTableItem(cell.getRow(), true), 0);
+//			selectedCells = Collections.singletonList(cell);
+//		}
 	}
 
-	private TableItem getTableItem(ResultSetTableRow resultSetTableRow, boolean throwExceptionIfNotFound)
-	{
-		if (resultSetTableRow == null)
-			throw new IllegalArgumentException("resultSetTableRow == null");
-
-		for (TableItem tableItem : tableViewer.getTable().getItems()) {
-			if (resultSetTableRow.equals(tableItem.getData()))
-				return tableItem;
-		}
-
-		if (throwExceptionIfNotFound)
-			throw new IllegalArgumentException("There is no TableItem for this ResultSetTableRow: " + resultSetTableRow);
-
-		return null;
-	}
+//	private TableItem getTableItem(ResultSetTableRow resultSetTableRow, boolean throwExceptionIfNotFound)
+//	{
+//		if (resultSetTableRow == null)
+//			throw new IllegalArgumentException("resultSetTableRow == null");
+//
+//		for (TableItem tableItem : tableViewer.getTable().getItems()) {
+//			if (resultSetTableRow.equals(tableItem.getData()))
+//				return tableItem;
+//		}
+//
+//		if (throwExceptionIfNotFound)
+//			throw new IllegalArgumentException("There is no TableItem for this ResultSetTableRow: " + resultSetTableRow);
+//
+//		return null;
+//	}
 
 	private ListenerList selectionListenerList = new ListenerList();
 	@Override
@@ -736,6 +902,10 @@ implements ISelectionProvider, LabelTextOptionsContainer
 	}
 
 	public MenuManager getContextMenuManager() {
+		if (contextMenuManager == null) {
+			contextMenuManager = new MenuManager();
+			contextMenuManager.add(copyAction);
+		}
 		return contextMenuManager;
 	}
 
