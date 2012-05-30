@@ -26,7 +26,6 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
-import org.eclipse.datatools.connectivity.oda.IConnection;
 import org.eclipse.datatools.connectivity.oda.IResultSet;
 import org.eclipse.datatools.connectivity.oda.OdaException;
 import org.eclipse.jface.viewers.deferred.AbstractConcurrentModel;
@@ -35,6 +34,7 @@ import org.eclipse.jface.viewers.deferred.IConcurrentModelListener;
 import org.eclipse.swt.widgets.Display;
 import org.nightlabs.vestigo.core.PropertiesWithChangeSupport;
 import org.nightlabs.vestigo.ui.VestigoUIPlugin;
+import org.nightlabs.vestigo.ui.editor.QueryContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -90,7 +90,8 @@ implements IConcurrentModel // not necessary - just convenient to see the javado
 	}
 
 
-	private IConnection connection;
+//	private IConnection connection;
+	private QueryContext queryContext;
 	private volatile Object[] rowsLoadedArray;
 	private List<ResultSetTableRow> rowsLoaded = new ArrayList<ResultSetTableRow>();
 	private IResultSet resultSet;
@@ -101,15 +102,16 @@ implements IConcurrentModel // not necessary - just convenient to see the javado
 
 	private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
-	public ResultSetTableModel(IConnection connection, IResultSet resultSet)
+//	public ResultSetTableModel(IConnection connection, IResultSet resultSet)
+	public ResultSetTableModel(QueryContext queryContext, IResultSet resultSet)
 	{
-		if (connection == null)
-			throw new IllegalArgumentException("connection == null");
+		if (queryContext == null)
+			throw new IllegalArgumentException("queryContext == null");
 
 		if (resultSet == null)
 			throw new IllegalArgumentException("resultSet == null");
 
-		this.connection = connection;
+		this.queryContext = queryContext;
 		this.resultSet = resultSet;
 	}
 
@@ -143,8 +145,11 @@ implements IConcurrentModel // not necessary - just convenient to see the javado
 		propertyChangeSupport.removePropertyChangeListener(propertyName.name(), listener);
 	}
 
-	public IConnection getConnection() {
-		return connection;
+//	public IConnection getConnection() {
+//		return connection;
+//	}
+	public QueryContext getQueryContext() {
+		return queryContext;
 	}
 
 	public IResultSet getResultSet() {

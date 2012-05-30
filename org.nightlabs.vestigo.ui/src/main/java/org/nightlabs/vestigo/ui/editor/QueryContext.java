@@ -22,7 +22,6 @@ import java.util.List;
 
 import org.eclipse.core.runtime.ListenerList;
 import org.eclipse.datatools.connectivity.IConnectionProfile;
-import org.eclipse.datatools.connectivity.oda.IConnection;
 import org.nightlabs.util.Util;
 import org.nightlabs.vestigo.ui.queryparam.QueryParameter;
 import org.nightlabs.vestigo.ui.queryparam.QueryParameterManager;
@@ -41,11 +40,14 @@ public class QueryContext
 	private IConnectionProfile connectionProfile;
 	private String queryText;
 	private List<QueryParameter> queryParameters = new ArrayList<QueryParameter>();
-	private IConnection connection;
+	private ConnectionContext connectionContext;
+//	private IConnection connection;
 	private ResultSetTableModel resultSetTableModel;
 	private ListenerList queryContextListeners = new ListenerList();
 
-	public QueryContext() { }
+	public QueryContext() {
+		logger.trace("<init>: Created instance.");
+	}
 
 	public QueryEditorManager getQueryEditorManager() {
 		return queryEditorManager;
@@ -84,12 +86,12 @@ public class QueryContext
 			this.queryParameters.add(Util.cloneSerializable(queryParameter));
 	}
 
-	public IConnection getConnection() {
-		return connection;
-	}
-	public void setConnection(IConnection connection) {
-		this.connection = connection;
-	}
+//	public IConnection getConnection() {
+//		return connection;
+//	}
+//	public void setConnection(IConnection connection) {
+//		this.connection = connection;
+//	}
 
 	public ResultSetTableModel getResultSetTableModel() {
 		return resultSetTableModel;
@@ -101,20 +103,22 @@ public class QueryContext
 	private boolean closed = false;
 
 	public void close() {
+		logger.trace("close: Entered.");
 		synchronized(this) {
 			if (closed)
 				return;
-
 			closed = true;
 		}
+		logger.debug("close: Closing.");
+
 		try {
 			ResultSetTableModel resultSetTableModel = this.resultSetTableModel;
 			if (resultSetTableModel != null)
 				resultSetTableModel.close();
 
-			IConnection connection = this.connection;
-			if (connection != null)
-				connection.close();
+//			IConnection connection = this.connection;
+//			if (connection != null)
+//				connection.close();
 		} catch (Exception e) {
 			logger.warn("close: " + e, e);
 		} finally {
@@ -131,5 +135,12 @@ public class QueryContext
 
 	public void removeQueryContextListener(QueryContextListener listener) {
 		queryContextListeners.remove(listener);
+	}
+
+	public ConnectionContext getConnectionContext() {
+		return connectionContext;
+	}
+	public void setConnectionContext(ConnectionContext connectionContext) {
+		this.connectionContext = connectionContext;
 	}
 }

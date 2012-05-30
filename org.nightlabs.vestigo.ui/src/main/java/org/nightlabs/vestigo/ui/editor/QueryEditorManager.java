@@ -30,10 +30,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Deque;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
@@ -59,7 +57,6 @@ import org.eclipse.datatools.connectivity.oda.IQuery;
 import org.eclipse.datatools.connectivity.oda.IResultSet;
 import org.eclipse.datatools.connectivity.oda.OdaException;
 import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.widgets.Display;
@@ -100,9 +97,6 @@ public abstract class QueryEditorManager
 		connectionProfile
 	}
 
-	public static final String PREFERENCE_KEY_KEEP_QUERY_RESULT_SET_QUANTITY = "QueryEditorManager.keepQueryResultSetQuantity";
-	public static final int PREFERENCE_DEFAULT_KEEP_QUERY_RESULT_SET_QUANTITY = 1; // TODO increase default to 3!
-
 	public static final String PROPERTY_LAST_CONNECTION_PROFILE_INSTANCE_ID = "lastConnectionProfile.instanceID"; //$NON-NLS-1$
 	private static final String QUERY_TEXT_PROPERTIES_BEGIN_MARKER = "//------PROPERTIES_BEGIN------"; //$NON-NLS-1$
 	private static final String QUERY_TEXT_PROPERTIES_END_MARKER = "//------PROPERTIES_END------"; //$NON-NLS-1$
@@ -119,9 +113,12 @@ public abstract class QueryEditorManager
 //	private Map<QueryContext, ResultSetTableModel> queryContext2ResultSetTableModel
 
 //	private Map<IConnection, ResultSetTableModel> connection2ResultSetTableModel = new HashMap<IConnection, ResultSetTableModel>();
-	private Map<IConnection, QueryContext> connection2QueryContext = new HashMap<IConnection, QueryContext>();
-	private Deque<QueryContext> queryContextDeque = new LinkedList<QueryContext>();
+//	private Map<IConnection, QueryContext> connection2QueryContext = new HashMap<IConnection, QueryContext>();
+//	private Deque<QueryContext> queryContextDeque = new LinkedList<QueryContext>();
 
+	private Map<IConnectionProfile, ConnectionContext> connectionProfile2ConnectionContext = new HashMap<IConnectionProfile, ConnectionContext>();
+
+	private volatile List<ConnectionContext> connectionContexts;
 	private volatile List<QueryContext> queryContexts;
 
 	private Map<PropertiesType, PropertiesWithChangeSupport> propertiesType2Properties = new HashMap<PropertiesType, PropertiesWithChangeSupport>();
@@ -326,63 +323,24 @@ public abstract class QueryEditorManager
 		setODAConnectionProfile(selection);
 	}
 
-
-//	/**
-//	 * Every editor uses its own connection (due to commit/rollback). These are the connections of this editor.
-//	 * There are multiple, because an editor might be used with multiple connection-profiles (and there's
-//	 * one connection for each combination of editor and connection-profile).
-//	 */
-//	private Map<IConnectionProfile, org.eclipse.datatools.connectivity.IConnection> connectionProfile2connection = new HashMap<IConnectionProfile, org.eclipse.datatools.connectivity.IConnection>();
-//
-//	private Set<IManagedConnection> managedConnectionsWithRegisteredListener = new HashSet<IManagedConnection>();
-//
-//	private IManagedConnectionOfflineListener managedConnectionListener = new ManagedConnectionAdapter()
-//	{
-//		@Override
-//		public void aboutToClose(ConnectEvent event) {
-//			IManagedConnection managedConnection = event.getConnection();
-//			IConnectionProfile odaConnectionProfile = event.getConnectionProfile();
-//
-//			org.eclipse.datatools.connectivity.IConnection connection;
-//			synchronized (QueryEditorManager.this) {
-//				connection = connectionProfile2connection.remove(odaConnectionProfile);
-//				managedConnection.removeConnectionListener(this);
-//				managedConnectionsWithRegisteredListener.remove(managedConnection);
-//			}
-//
-//			if (connection != null) {
-//				try {
-//					connection.close();
-//				} catch (Exception e) {
-//					logger.error("connection.close() failed: " + e, e);
-//				}
-//			}
-//		}
-//	};
-
 	private static class CloseConnectionManagedConnectionListener extends ManagedConnectionAdapter
 	{
-		private org.eclipse.datatools.connectivity.IConnection connection;
-		private IConnection odaConnection;
+		private ConnectionContext connectionContext;
 
-		public CloseConnectionManagedConnectionListener(org.eclipse.datatools.connectivity.IConnection connection, IConnection odaConnection)
+		public CloseConnectionManagedConnectionListener(ConnectionContext connectionContext)
 		{
-			if (connection == null)
-				throw new IllegalArgumentException("connection == null"); //$NON-NLS-1$
-			if (odaConnection == null)
-				throw new IllegalArgumentException("odaConnection == null"); //$NON-NLS-1$
+			if (connectionContext == null)
+				throw new IllegalArgumentException("connectionContext == null"); //$NON-NLS-1$
 
-			this.connection = connection;
-			this.odaConnection = odaConnection;
+			this.connectionContext = connectionContext;
 		}
 
 		@Override
 		public void aboutToClose(ConnectEvent event)
 		{
-			event.getConnection().removeConnectionListener(this);
+			event.getConnection().removeConnectionListener(this); // TODO is this necesary? doesnt connectionContext.close() do this?
 			try {
-				odaConnection.close(); // make sure all listeners are triggered via the ResultSetTableModel.close() method.
-				connection.close();
+				connectionContext.close();
 			} catch (Exception e) {
 				logger.error("connection.close() failed: " + e, e); //$NON-NLS-1$
 			}
@@ -415,53 +373,64 @@ public abstract class QueryEditorManager
 		return exceptions;
 	}
 
-	private IConnection createConnection(IConnectionProfile connectionProfile, IProgressMonitor monitor)
+	private synchronized ConnectionContext getConnectionContext(final IConnectionProfile connectionProfile, IProgressMonitor monitor)
 	{
-		logger.info("createConnection: connectionProfile.name={} connectionProfile.idHashCode={}", connectionProfile.getName(), Integer.toHexString(System.identityHashCode(connectionProfile))); //$NON-NLS-1$
-		final IManagedConnection managedConnection = OdaUtil.getManagedConnection(connectionProfile);
-		if (!managedConnection.isConnected()) {
-			IStatus status = connectionProfile.connectWithoutJob();
-			if (IStatus.OK != status.getCode()) {
-				Throwable exception = findSingleException(status);
-				if (exception != null)
-					throw new RuntimeException(exception);
-				else
-					throw new RuntimeException("Opening connection failed: " + status); //$NON-NLS-1$
-			}
-		}
-
-		final org.eclipse.datatools.connectivity.IConnection connection = connectionProfile.createConnection(OdaUtil.connectionFactoryID);
-		if (connection == null)
-			throw new IllegalStateException("odaConnectionProfile.createConnection(...) returned null"); //$NON-NLS-1$
-
-		final CloseConnectionManagedConnectionListener[] ccmcl = new CloseConnectionManagedConnectionListener[1];
-
-		IConnection rawConnection = (IConnection) connection.getRawConnection();
-		IConnection delegatingConnection = new DelegatingConnection(rawConnection) {
-			@Override
-			public void close() throws OdaException
-			{
-				QueryContext queryContext;
-				synchronized(QueryEditorManager.this) {
-					queryContext = connection2QueryContext.remove(this);
-					boolean removedFromDeque = queryContextDeque.remove(queryContext);
-					queryContexts = null;
-					logger.debug("delegatingConnection.close: queryContext={} removedFromDeque={}", queryContext, removedFromDeque);
+		ConnectionContext connectionContext = connectionProfile2ConnectionContext.get(connectionProfile);
+		if (connectionContext == null) {
+			logger.info("createConnection: connectionProfile.name={} connectionProfile.idHashCode={}", connectionProfile.getName(), Integer.toHexString(System.identityHashCode(connectionProfile))); //$NON-NLS-1$
+			final IManagedConnection managedConnection = OdaUtil.getManagedConnection(connectionProfile);
+			if (!managedConnection.isConnected()) {
+				IStatus status = connectionProfile.connectWithoutJob();
+				if (IStatus.OK != status.getCode()) {
+					Throwable exception = findSingleException(status);
+					if (exception != null)
+						throw new RuntimeException(exception);
+					else
+						throw new RuntimeException("Opening connection failed: " + status); //$NON-NLS-1$
 				}
-				if (queryContext != null)
-					queryContext.close();
-
-				if (ccmcl[0] != null)
-					managedConnection.removeConnectionListener(ccmcl[0]);
-
-				connection.close();
-				super.close();
 			}
-		};
-		CloseConnectionManagedConnectionListener closeConnectionManagedConnectionListener = new CloseConnectionManagedConnectionListener(connection, delegatingConnection);
-		ccmcl[0] = closeConnectionManagedConnectionListener;
-		managedConnection.addConnectionListener(closeConnectionManagedConnectionListener);
-		return delegatingConnection;
+
+			final org.eclipse.datatools.connectivity.IConnection connection = connectionProfile.createConnection(OdaUtil.connectionFactoryID);
+			if (connection == null)
+				throw new IllegalStateException("odaConnectionProfile.createConnection(...) returned null"); //$NON-NLS-1$
+
+			final CloseConnectionManagedConnectionListener[] ccmcl = new CloseConnectionManagedConnectionListener[1];
+
+			IConnection rawConnection = (IConnection) connection.getRawConnection();
+			connectionContext = new ConnectionContext();
+			connectionContext.setQueryEditorManager(this);
+			connectionContext.setConnectionProfile(connectionProfile);
+			final ConnectionContext finalConnectionContext = connectionContext;
+			IConnection delegatingConnection = new DelegatingConnection(rawConnection) {
+				private volatile boolean closed;
+
+				@Override
+				public void close() throws OdaException
+				{
+					if (closed)
+						return;
+					closed = true;
+
+					finalConnectionContext.close();
+					connectionProfile2ConnectionContext.remove(connectionProfile);
+					connectionContexts = null;
+
+					if (ccmcl[0] != null)
+						managedConnection.removeConnectionListener(ccmcl[0]);
+
+					connection.close();
+					super.close();
+				}
+			};
+			connectionContext.setConnection(delegatingConnection);
+			CloseConnectionManagedConnectionListener closeConnectionManagedConnectionListener = new CloseConnectionManagedConnectionListener(connectionContext);
+			ccmcl[0] = closeConnectionManagedConnectionListener;
+			managedConnection.addConnectionListener(closeConnectionManagedConnectionListener);
+
+			connectionProfile2ConnectionContext.put(connectionProfile, connectionContext);
+			connectionContexts = null;
+		}
+		return connectionContext;
 	}
 
 	private static final class StatusCarrier {
@@ -713,12 +682,12 @@ public abstract class QueryEditorManager
 
 		ProfileManager.getInstance().removeProfileListener(profileListener);
 
-		for (QueryContext queryContext : new ArrayList<QueryContext>(connection2QueryContext.values())) {
-			queryContext.close();
+		for (ConnectionContext connectionContext : new ArrayList<ConnectionContext>(connectionProfile2ConnectionContext.values())) {
+			connectionContext.close();
 		}
 //		connection2ResultSetTableModel.clear(); // no need to clear - it should be empty by now
-		if (!connection2QueryContext.isEmpty()) {
-			Exception x = new IllegalStateException(String.format("connection2QueryContext is NOT empty!!! connection2QueryContext.size=%s", connection2QueryContext.size()));
+		if (!connectionProfile2ConnectionContext.isEmpty()) {
+			Exception x = new IllegalStateException(String.format("connectionProfile2ConnectionContext is NOT empty!!! connectionProfile2ConnectionContext.size=%s", connectionProfile2ConnectionContext.size()));
 			logger.warn("onDispose: " + x, x);
 		}
 	}
@@ -799,29 +768,17 @@ public abstract class QueryEditorManager
 		Stopwatch stopwatch = new Stopwatch();
 
 		IConnectionProfile connectionProfile = queryContext.getConnectionProfile();
-		final IConnection connection = createConnection(connectionProfile, new SubProgressMonitor(monitor, 30)); // TODO proper management of ProgressMonitor!
-		queryContext.setConnection(connection);
+		// TODO proper management of ProgressMonitor!
+		ConnectionContext connectionContext = getConnectionContext(connectionProfile, new SubProgressMonitor(monitor, 30));
+		connectionContext.addQueryContext(queryContext);
 
-		connection2QueryContext.put(connection, queryContext);
-		queryContextDeque.addFirst(queryContext);
 		queryContexts = null;
-
-		// Close the oldest connections that are exceeding the number of connections to keep.
-		IPreferenceStore preferenceStore = VestigoUIPlugin.getDefault().getPreferenceStore();
-		preferenceStore.setDefault(PREFERENCE_KEY_KEEP_QUERY_RESULT_SET_QUANTITY, PREFERENCE_DEFAULT_KEEP_QUERY_RESULT_SET_QUANTITY);
-		int keepQueryResultSetQuantity = preferenceStore.getInt(PREFERENCE_KEY_KEEP_QUERY_RESULT_SET_QUANTITY);
-		// Ensure at least the one we just added is kept (minimum 1).
-		keepQueryResultSetQuantity = Math.max(1, keepQueryResultSetQuantity);
-		while (queryContextDeque.size() > keepQueryResultSetQuantity) {
-			QueryContext oldQueryContext = queryContextDeque.peekLast();
-			oldQueryContext.close();
-		}
 
 		ExecuteQueryEvent executeQueryEvent = new ExecuteQueryEvent(queryContext);
 		for (Object l : executeQueryListeners.getListeners())
 			((ExecuteQueryListener)l).preExecuteQuery(executeQueryEvent, new SubProgressMonitor(monitor, 50)); // TODO progressmonitor
 
-		IQuery query = connection.newQuery(""); //$NON-NLS-1$
+		IQuery query = connectionContext.getConnection().newQuery(""); //$NON-NLS-1$
 
 		stopwatch.start("00.query.prepare"); //$NON-NLS-1$
 		query.prepare(queryContext.getQueryText());
@@ -845,20 +802,28 @@ public abstract class QueryEditorManager
 			resultSet = query.executeQuery();
 
 			resultSet = new DelegatingResultSet(resultSet) {
+				private volatile boolean closed;
+
 				@Override
 				public void close() throws OdaException {
-					QueryContext queryContext;
-					synchronized(QueryEditorManager.this) {
-						queryContext = connection2QueryContext.remove(connection);
-						boolean removedFromDeque = queryContextDeque.remove(queryContext);
-						queryContexts = null;
-						logger.debug("delegatingResultSet.close: queryContext={} removedFromDeque={}", queryContext, removedFromDeque);
-					}
-					if (queryContext != null)
-						queryContext.close();
+					if (closed)
+						return;
+					closed = true;
 
+//					QueryContext queryContext;
+//					synchronized(QueryEditorManager.this) {
+//						queryContext = connection2QueryContext.remove(connection);
+//						boolean removedFromDeque = queryContextDeque.remove(queryContext);
+//						queryContexts = null;
+//						logger.debug("delegatingResultSet.close: queryContext={} removedFromDeque={}", queryContext, removedFromDeque);
+//					}
+//					if (queryContext != null)
+//						queryContext.close();
+
+					queryContext.close();
+					queryContexts = null; // TODO put into QueryContextListener?!
 					super.close();
-					connection.close();
+//					connection.close();
 				}
 			};
 
@@ -866,7 +831,7 @@ public abstract class QueryEditorManager
 			// (1) it doesn't block the UI thread later and (2) an exception is already thrown here (if there is an error).
 			resultSet.getMetaData();
 
-			resultSetTableModel = new ResultSetTableModel(connection, resultSet);
+			resultSetTableModel = new ResultSetTableModel(queryContext, resultSet);
 			queryContext.setResultSetTableModel(resultSetTableModel);
 //			connection2QueryContext.put(connection, queryContext); // doing before!
 //			connectionDeque.add(connection);
@@ -963,13 +928,39 @@ public abstract class QueryEditorManager
 		queryParameterManager.editorInputChanged();
 	}
 
+	public List<ConnectionContext> getConnectionContexts() {
+		List<ConnectionContext> connectionContexts = this.connectionContexts;
+		if (connectionContexts == null) {
+			synchronized (this) {
+				connectionContexts = this.connectionContexts;
+				if (connectionContexts == null) {
+					connectionContexts = new ArrayList<ConnectionContext>(connectionProfile2ConnectionContext.values());
+					connectionContexts = Collections.unmodifiableList(connectionContexts);
+					this.connectionContexts = connectionContexts;
+				}
+			}
+		}
+		return connectionContexts;
+	}
+
 	public List<QueryContext> getQueryContexts() {
 		List<QueryContext> queryContexts = this.queryContexts;
 		if (queryContexts == null) {
 			synchronized (this) {
 				queryContexts = this.queryContexts;
 				if (queryContexts == null) {
-					queryContexts = Collections.unmodifiableList(new ArrayList<QueryContext>(queryContextDeque));
+					for (ConnectionContext connectionContext : connectionProfile2ConnectionContext.values()) {
+						if (queryContexts == null && !connectionContext.getQueryContexts().isEmpty())
+							queryContexts = new ArrayList<QueryContext>(connectionContext.getQueryContexts());
+						else
+							queryContexts.addAll(connectionContext.getQueryContexts());
+					}
+
+					if (queryContexts == null)
+						queryContexts = Collections.emptyList();
+					else
+						queryContexts = Collections.unmodifiableList(queryContexts);
+
 					this.queryContexts = queryContexts;
 				}
 			}

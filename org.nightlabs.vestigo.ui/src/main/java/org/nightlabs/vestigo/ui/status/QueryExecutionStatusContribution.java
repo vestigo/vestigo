@@ -96,8 +96,12 @@ public class QueryExecutionStatusContribution extends WorkbenchWindowControlCont
 			return;
 
 		for (IViewReference viewReference : page.getViewReferences()) {
-			if (ResultSetTableView.ID.equals(viewReference.getId()))
-				setResultSetTableView((ResultSetTableView) viewReference.getPart(true));
+			if (ResultSetTableView.ID.equals(viewReference.getId())) {
+				IWorkbenchPart part = viewReference.getPart(false);
+
+				if (part instanceof ResultSetTableView)
+					setResultSetTableView((ResultSetTableView) part);
+			}
 
 			if (resultSetTableView != null)
 				break;
