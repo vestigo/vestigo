@@ -19,6 +19,7 @@ package org.nightlabs.vestigo.ui.editor;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import org.eclipse.core.runtime.ListenerList;
 import org.eclipse.datatools.connectivity.IConnectionProfile;
@@ -45,6 +46,9 @@ public class QueryContext
 	private ResultSetTableModel resultSetTableModel;
 	private ListenerList queryContextListeners = new ListenerList();
 	private Throwable error;
+	private Integer errorID;
+
+	private static AtomicInteger nextErrorID = new AtomicInteger();
 
 	public QueryContext() {
 		logger.trace("[{}]<init>: Created instance.", getQueryContextID());
@@ -150,6 +154,8 @@ public class QueryContext
 	}
 	public void setError(Throwable error) {
 		this.error = error;
+		if (error != null && errorID == null)
+			errorID = nextErrorID.getAndIncrement();
 	}
 
 	public String getQueryContextID() {
@@ -162,5 +168,9 @@ public class QueryContext
 				+ "[connectionProfileName=" + (connectionProfile == null ? null : connectionProfile.getName())
 				+ ", error=" + error
 				+ ", connectionContext=" + connectionContext + ']';
+	}
+
+	public Integer getErrorID() {
+		return errorID;
 	}
 }

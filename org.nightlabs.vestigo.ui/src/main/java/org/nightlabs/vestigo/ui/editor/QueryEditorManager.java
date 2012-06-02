@@ -102,7 +102,7 @@ public abstract class QueryEditorManager
 	}
 
 	public static final String PREFERENCE_KEY_KEEP_QUERY_RESULT_SET_QUANTITY = "QueryEditorManager.keepQueryResultSetQuantity";
-	public static final int PREFERENCE_DEFAULT_KEEP_QUERY_RESULT_SET_QUANTITY = 2; // TODO increase default to 3!
+	public static final int PREFERENCE_DEFAULT_KEEP_QUERY_RESULT_SET_QUANTITY = 3;
 
 	public static final String PROPERTY_LAST_CONNECTION_PROFILE_INSTANCE_ID = "lastConnectionProfile.instanceID"; //$NON-NLS-1$
 	private static final String QUERY_TEXT_PROPERTIES_BEGIN_MARKER = "//------PROPERTIES_BEGIN------"; //$NON-NLS-1$

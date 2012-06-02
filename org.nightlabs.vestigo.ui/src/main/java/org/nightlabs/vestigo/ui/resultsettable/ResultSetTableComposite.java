@@ -30,7 +30,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.concurrent.atomic.AtomicInteger;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
@@ -167,8 +166,11 @@ implements ISelectionProvider, LabelTextOptionsContainer
 	protected List<ResultSetTableRow> getSelectedRows() {
 		QueryContext queryContext = getQueryContext();
 		if (queryContext != null) {
-			QueryContextUI queryContextUI = getQueryContextUIOrFail(queryContext);
-			return queryContextUI.getSelectedRows();
+			QueryContextUI queryContextUI = getQueryContextUIOrNull(queryContext);
+			if (queryContextUI == null)
+				logger.warn("getSelectedRows: There is no QueryContextUI for this queryContext: {}", queryContext);
+			else
+				return queryContextUI.getSelectedRows();
 		}
 		return Collections.emptyList();
 	}
@@ -176,8 +178,11 @@ implements ISelectionProvider, LabelTextOptionsContainer
 	protected List<ResultSetTableCell> getSelectedCells() {
 		QueryContext queryContext = getQueryContext();
 		if (queryContext != null) {
-			QueryContextUI queryContextUI = getQueryContextUIOrFail(queryContext);
-			return queryContextUI.getSelectedCells();
+			QueryContextUI queryContextUI = getQueryContextUIOrNull(queryContext);
+			if (queryContextUI == null)
+				logger.warn("getSelectedCells: There is no QueryContextUI for this queryContext: {}", queryContext);
+			else
+				return queryContextUI.getSelectedCells();
 		}
 		return Collections.emptyList();
 	}
@@ -632,8 +637,6 @@ implements ISelectionProvider, LabelTextOptionsContainer
 
 //	private Map<IConnectionProfile, AtomicInteger> connectionProfile2NextHumanQueryID = new HashMap<IConnectionProfile, AtomicInteger>();
 
-	private AtomicInteger nextErrorID = new AtomicInteger();
-
 	protected QueryContextUI createQueryContextUI(QueryContext queryContext) {
 		final QueryContextUI[] queryContextUI = new QueryContextUI[1];
 		queryContextUI[0] = queryContext2QueryContextUI.get(queryContext);
@@ -660,7 +663,7 @@ implements ISelectionProvider, LabelTextOptionsContainer
 								"%s - %s - Error %s",
 								queryContext.getQueryEditorManager().getQueryEditor().getEditorInput().getName(),
 								queryContext.getConnectionProfile().getName(),
-								nextErrorID.getAndIncrement()
+								queryContext.getErrorID()
 						)
 				);
 				tabItem.setControl(errorText);
@@ -807,7 +810,7 @@ implements ISelectionProvider, LabelTextOptionsContainer
 		if (queryContexts.isEmpty())
 			queryContext = null;
 		else
-			queryContext = queryContexts.get(0);
+			queryContext = queryContexts.get(queryContexts.size() - 1);
 
 		internalSetQueryContext(queryContext);
 	}
