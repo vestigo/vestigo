@@ -44,6 +44,7 @@ import java.util.TreeMap;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.ListenerList;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.core.runtime.jobs.Job;
@@ -720,11 +721,16 @@ public abstract class QueryEditorManager
 	public void executeQuery()
 	{
 		assertUIThread();
+		final IConnectionProfile connectionProfile = getODAConnectionProfile();
+		if (connectionProfile == null)
+			throw new IllegalStateException("No ConnectionProfile selected!"); //$NON-NLS-1$
 
 		final QueryContext queryContext = new QueryContext();
 		synchronized (this) {
 			queryContext.addQueryContextListener(queryContextListener);
 			queryContextDeque.add(queryContext);
+			ConnectionContext connectionContext = getConnectionContext(connectionProfile, new NullProgressMonitor(), false);
+			connectionContext.addQueryContext(queryContext);
 
 			// Close the oldest connections that are exceeding the number of connections to keep.
 			IPreferenceStore preferenceStore = VestigoUIPlugin.getDefault().getPreferenceStore();
@@ -738,10 +744,6 @@ public abstract class QueryEditorManager
 			}
 			queryContexts = null;
 		}
-
-		final IConnectionProfile connectionProfile = getODAConnectionProfile();
-		if (connectionProfile == null)
-			throw new IllegalStateException("No ConnectionProfile selected!"); //$NON-NLS-1$
 
 		queryContext.setQueryEditorManager(this);
 		queryContext.setConnectionProfile(connectionProfile);
@@ -811,12 +813,7 @@ public abstract class QueryEditorManager
 
 		IConnectionProfile connectionProfile = queryContext.getConnectionProfile();
 		// TODO proper management of ProgressMonitor!
-		ConnectionContext connectionContext = getConnectionContext(connectionProfile, new SubProgressMonitor(monitor, 30), false);
-		connectionContext.addQueryContext(queryContext);
-
-		queryContexts = null;
-
-		connectionContext = getConnectionContext(connectionProfile, new SubProgressMonitor(monitor, 30), true);
+		ConnectionContext connectionContext = getConnectionContext(connectionProfile, new SubProgressMonitor(monitor, 30), true);
 
 		ExecuteQueryEvent executeQueryEvent = new ExecuteQueryEvent(queryContext);
 		for (Object l : executeQueryListeners.getListeners())

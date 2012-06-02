@@ -100,10 +100,16 @@ public class QueryEditorManagerComposite extends Composite
 	private ExecuteQueryListener executeQueryListener = new ExecuteQueryAdapter() {
 		@Override
 		public void preExecuteQuery(ExecuteQueryEvent executeQueryEvent) {
+			if (isDisposed())
+				return;
+
 			setEnabled(false);
 		}
 		@Override
 		public void postExecuteQuery(ExecuteQueryEvent executeQueryEvent) {
+			if (isDisposed())
+				return;
+
 			setEnabled(true);
 		}
 	};

@@ -155,6 +155,9 @@ public class ResultSetTableView extends ViewPart implements LabelTextOptionsCont
 //	}
 
 	protected void setQueryEditor(QueryEditor queryEditor) {
+		if (queryEditor != null)
+			addQueryContexts(queryEditor.getQueryEditorManager().getQueryContexts());
+
 		if (resultSetTableComposite != null)
 			resultSetTableComposite.setQueryEditorManager(queryEditor == null ? null : queryEditor.getQueryEditorManager());
 	}
@@ -247,8 +250,10 @@ public class ResultSetTableView extends ViewPart implements LabelTextOptionsCont
 			logger.info("partActivated: partRef={}", partRef);
 
 			IWorkbenchPart part = partRef.getPart(true);
-			if (part instanceof QueryEditor)
-				setQueryEditor((QueryEditor) part);
+			if (part instanceof QueryEditor) {
+				QueryEditor queryEditor = (QueryEditor) part;
+				setQueryEditor(queryEditor);
+			}
 		}
 	};
 

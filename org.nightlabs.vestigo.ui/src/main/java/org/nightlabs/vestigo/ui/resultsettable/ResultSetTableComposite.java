@@ -565,6 +565,11 @@ implements ISelectionProvider, LabelTextOptionsContainer
 		}
 	}
 
+	protected TabFolder getTabFolderOrNull(String stackKey) {
+		TabFolder tabFolder = stackKey2TabFolder.get(stackKey);
+		return tabFolder;
+	}
+
 	protected TabFolder getTabFolderOrFail(String stackKey) {
 		TabFolder tabFolder = stackKey2TabFolder.get(stackKey);
 		if (tabFolder == null)
@@ -597,6 +602,12 @@ implements ISelectionProvider, LabelTextOptionsContainer
 	protected TabFolder getTabFolderOrFail(QueryContext queryContext) {
 		String stackKey = getStackKey(queryContext);
 		TabFolder tabFolder = getTabFolderOrFail(stackKey);
+		return tabFolder;
+	}
+
+	protected TabFolder getTabFolderOrNull(QueryContext queryContext) {
+		String stackKey = getStackKey(queryContext);
+		TabFolder tabFolder = getTabFolderOrNull(stackKey);
 		return tabFolder;
 	}
 
@@ -744,6 +755,9 @@ implements ISelectionProvider, LabelTextOptionsContainer
 		if (queryContext == null)
 			throw new IllegalArgumentException("queryContext == null");
 
+		if (queryContext.getError() == null && queryContext.getResultSetTableModel() == null)
+			return; // ignore for now - it will come again when the query is executed.
+
 		createQueryContextUI(queryContext);
 
 //		IConnection connection = queryContext.getConnection();
@@ -837,13 +851,17 @@ implements ISelectionProvider, LabelTextOptionsContainer
 //		}
 
 		if (queryContext != null) {
-			TabFolder tabFolder = getTabFolderOrFail(queryContext);
-			stackLayout.topControl = tabFolder;
+			TabFolder tabFolder = getTabFolderOrNull(queryContext);
+			if (tabFolder == null)
+				logger.warn("internalSetQueryContext: There is no tabFolder for this queryContext yet: {}", queryContext);
+			else {
+				stackLayout.topControl = tabFolder;
 
-			QueryContextUI queryContextUI = getQueryContextUIOrFail(queryContext);
-			tabFolder.setSelection(queryContextUI.getTabItem());
+				QueryContextUI queryContextUI = getQueryContextUIOrFail(queryContext);
+				tabFolder.setSelection(queryContextUI.getTabItem());
 
-			layout(true);
+				layout(true);
+			}
 		}
 
 //		clearSelection();

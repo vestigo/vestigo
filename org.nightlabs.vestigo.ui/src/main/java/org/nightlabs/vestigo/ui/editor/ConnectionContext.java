@@ -77,7 +77,8 @@ public class ConnectionContext {
 			synchronized (this) {
 				queryContexts = this.queryContexts;
 				if (queryContexts == null) {
-					queryContexts = Collections.unmodifiableList(new ArrayList<QueryContext>(queryContextDeque));
+					queryContexts = new ArrayList<QueryContext>(queryContextDeque);
+					queryContexts = Collections.unmodifiableList(queryContexts);
 					this.queryContexts = queryContexts;
 				}
 			}
