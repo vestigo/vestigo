@@ -10,18 +10,13 @@ import org.eclipse.core.runtime.ListenerList;
 import org.eclipse.datatools.connectivity.IConnectionProfile;
 import org.eclipse.datatools.connectivity.oda.IConnection;
 import org.eclipse.datatools.connectivity.oda.OdaException;
-import org.eclipse.jface.preference.IPreferenceStore;
 import org.nightlabs.vestigo.core.oda.DelegatingConnection;
-import org.nightlabs.vestigo.ui.VestigoUIPlugin;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class ConnectionContext {
 
 	private static final Logger logger = LoggerFactory.getLogger(ConnectionContext.class);
-
-	public static final String PREFERENCE_KEY_KEEP_QUERY_RESULT_SET_QUANTITY = "ConnectionContext.keepQueryResultSetQuantity";
-	public static final int PREFERENCE_DEFAULT_KEEP_QUERY_RESULT_SET_QUANTITY = 3; // TODO increase default to 3!
 
 	private QueryEditorManager queryEditorManager;
 
@@ -132,19 +127,10 @@ public class ConnectionContext {
 
 		queryContext.setConnectionContext(this);
 		queryContext.addQueryContextListener(queryContextListener);
-		queryContextDeque.addFirst(queryContext);
+		queryContextDeque.add(queryContext);
 		queryContexts = null;
 
-		// Close the oldest connections that are exceeding the number of connections to keep.
-		IPreferenceStore preferenceStore = VestigoUIPlugin.getDefault().getPreferenceStore();
-		preferenceStore.setDefault(PREFERENCE_KEY_KEEP_QUERY_RESULT_SET_QUANTITY, PREFERENCE_DEFAULT_KEEP_QUERY_RESULT_SET_QUANTITY);
-		int keepQueryResultSetQuantity = preferenceStore.getInt(PREFERENCE_KEY_KEEP_QUERY_RESULT_SET_QUANTITY);
-		// Ensure at least the one we just added is kept (minimum 1).
-		keepQueryResultSetQuantity = Math.max(1, keepQueryResultSetQuantity);
-		while (queryContextDeque.size() > keepQueryResultSetQuantity) {
-			QueryContext oldQueryContext = queryContextDeque.peekLast();
-			oldQueryContext.close();
-		}
+		logger.trace("[{}]addQueryContext: queryContext={}", getConnectionContextID(), queryContext);
 	}
 
 	private QueryContextListener queryContextListener = new QueryContextAdapter() {
@@ -155,7 +141,19 @@ public class ConnectionContext {
 	};
 
 	private synchronized void postQueryContextClose(QueryContext queryContext) {
+		logger.trace("[{}]postQueryContextClose: queryContext={}", getConnectionContextID(), queryContext);
 		queryContextDeque.remove(queryContext);
 		queryContexts = null;
+	}
+
+	public String getConnectionContextID() {
+		return Integer.toHexString(System.identityHashCode(this));
+	}
+
+	@Override
+	public String toString() {
+		return getClass().getName() + '@' + getConnectionContextID()
+				+ "[connectionProfileName=" + (connectionProfile == null ? null : connectionProfile.getName())
+				+ ", connection=" + connection + ']';
 	}
 }

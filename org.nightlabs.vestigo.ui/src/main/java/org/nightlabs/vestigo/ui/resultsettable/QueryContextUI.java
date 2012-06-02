@@ -4,14 +4,11 @@ import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.jface.viewers.TableViewer;
-import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.TabItem;
 import org.nightlabs.vestigo.ui.editor.QueryContext;
 
 public class QueryContextUI
 {
-	private Composite parent;
-
 	private List<ResultSetTableRow> selectedRows = Collections.emptyList();
 	private List<ResultSetTableCell> selectedCells = Collections.emptyList();
 
@@ -19,16 +16,12 @@ public class QueryContextUI
 		if (queryContext == null)
 			throw new IllegalArgumentException("queryContext == null");
 
-		if (tableViewer == null)
-			throw new IllegalArgumentException("tableViewer == null");
-
 		if (tabItem == null)
 			throw new IllegalArgumentException("tabItem == null");
 
 		this.queryContext = queryContext;
 		this.tableViewer = tableViewer;
 		this.tabItem = tabItem;
-		parent = tableViewer.getTable().getParent();
 	}
 
 	private QueryContext queryContext;
@@ -56,10 +49,10 @@ public class QueryContextUI
 			return;
 		disposed = true;
 
-		if (parent.isDisposed())
-			return;
+		if (tabItem.getControl() != null)
+			tabItem.getControl().dispose();
 
-		tableViewer.getTable().dispose();
+//		tableViewer.getTable().dispose();
 		tabItem.dispose();
 	}
 

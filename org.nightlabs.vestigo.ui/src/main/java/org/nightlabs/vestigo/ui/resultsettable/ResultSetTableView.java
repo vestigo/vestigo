@@ -19,7 +19,9 @@ package org.nightlabs.vestigo.ui.resultsettable;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -28,7 +30,9 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.IPartListener2;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchPartReference;
@@ -39,6 +43,7 @@ import org.nightlabs.vestigo.ui.editor.ExecuteQueryEvent;
 import org.nightlabs.vestigo.ui.editor.ExecuteQueryListener;
 import org.nightlabs.vestigo.ui.editor.QueryContext;
 import org.nightlabs.vestigo.ui.editor.QueryEditor;
+import org.nightlabs.vestigo.ui.editor.QueryEditorManager;
 import org.nightlabs.vestigo.ui.labeltextoptionaction.LabelTextOptionsContainer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -52,17 +57,19 @@ public class ResultSetTableView extends ViewPart implements LabelTextOptionsCont
 	public static final String ID = ResultSetTableView.class.getName();
 //	private static final String nextActionGroupMarkerID = "next";
 
+	private Display display;
 	private ResultSetTableComposite resultSetTableComposite;
-	private QueryEditor queryEditor;
+//	private QueryEditor queryEditor;
 //	private NextAction nextAction;
 
 	private ListenerList resultSetTableListeners = new ListenerList();
 
 	@Override
 	public void createPartControl(Composite parent) {
+		display = parent.getDisplay();
 		resultSetTableComposite = new ResultSetTableComposite(parent, SWT.NONE);
 		resultSetTableComposite.addDisposeListener(disposeListener);
-		resultSetTableComposite.addPropertyChangeListener(ResultSetTableComposite.PropertyName.activeQueryContext, activeQueryContextChangeListener);
+		resultSetTableComposite.addPropertyChangeListener(ResultSetTableComposite.PropertyName.queryContext, activeQueryContextChangeListener);
 		getSite().registerContextMenu(resultSetTableComposite.getContextMenuManager(), resultSetTableComposite);
 		getSite().getPage().addPartListener(partListener);
 		getSite().setSelectionProvider(resultSetTableComposite);
@@ -84,34 +91,51 @@ public class ResultSetTableView extends ViewPart implements LabelTextOptionsCont
 //			}
 //		});
 
-		// in case, this view is opened AFTER the query editor, we register the currently active editor
-		IEditorPart activeEditor = getSite().getPage().getActiveEditor();
-		if (activeEditor instanceof QueryEditor)
-			registerQueryEditor((QueryEditor) activeEditor);
+		// in case, this view is opened AFTER the query editor, we register all editors and set the currently active editor
+		for (QueryEditor queryEditor : getQueryEditors()) {
+			queryEditor.getQueryEditorManager().addExecuteQueryListener(executeQueryListener);
+			List<QueryContext> queryContexts = new ArrayList<QueryContext>(queryEditor.getQueryEditorManager().getQueryContexts());
+			resultSetTableComposite.addQueryContexts(queryContexts);
+		}
+
+		display.asyncExec(new Runnable() {
+			@Override
+			public void run() {
+				// We have to do this in a later event cycle, because there is a TabItem selection event fired
+				// by the UI when it is initially shown. Doing this in a later event cycle ensures our selection
+				// is not overwritten by this strange TabItem selection event. Marco :-)
+				IEditorPart activeEditor = getSite().getPage().getActiveEditor();
+				if (activeEditor instanceof QueryEditor)
+					setQueryEditor((QueryEditor)activeEditor);
+			}
+		});
 	}
 
 	private ExecuteQueryListener executeQueryListener = new ExecuteQueryAdapter() {
 		@Override
 		public void postExecuteQuery(ExecuteQueryEvent executeQueryEvent) {
-			addQueryContext(executeQueryEvent.getQueryContext());
+			QueryContext queryContext = executeQueryEvent.getQueryContext();
+			addQueryContext(queryContext);
+			if (queryContext.getQueryEditorManager() == getQueryEditorManager())
+				setQueryContext(queryContext);
 		}
 	};
 
-	private void registerQueryEditor(QueryEditor queryEditor)
-	{
-		if (queryEditor == null)
-			throw new IllegalArgumentException("queryEditor == null");
-
-		if (this.queryEditor == queryEditor)
-			return;
-
-		unregisterQueryEditor(); // just in case, we have another one assigned.
-
-		this.queryEditor = queryEditor;
-		queryEditor.getQueryEditorManager().addExecuteQueryListener(executeQueryListener);
-		List<QueryContext> queryContexts = queryEditor.getQueryEditorManager().getQueryContexts();
-		addQueryContexts(queryContexts);
-	}
+//	private void registerQueryEditor(QueryEditor queryEditor)
+//	{
+//		if (queryEditor == null)
+//			throw new IllegalArgumentException("queryEditor == null");
+//
+//		if (this.queryEditor == queryEditor)
+//			return;
+//
+//		unregisterQueryEditor(); // just in case, we have another one assigned.
+//
+//		this.queryEditor = queryEditor;
+//		queryEditor.getQueryEditorManager().addExecuteQueryListener(executeQueryListener);
+//		List<QueryContext> queryContexts = queryEditor.getQueryEditorManager().getQueryContexts();
+//		addQueryContexts(queryContexts);
+//	}
 
 	private PropertyChangeListener activeQueryContextChangeListener = new PropertyChangeListener() {
 		@Override
@@ -122,14 +146,17 @@ public class ResultSetTableView extends ViewPart implements LabelTextOptionsCont
 		}
 	};
 
-	private void unregisterQueryEditor()
-	{
-		if (queryEditor != null) {
-			queryEditor.getQueryEditorManager().removeExecuteQueryListener(executeQueryListener);
-			queryEditor = null;
-		}
+//	private void unregisterQueryEditor()
+//	{
+//		if (queryEditor != null) {
+//			queryEditor.getQueryEditorManager().removeExecuteQueryListener(executeQueryListener);
+//			queryEditor = null;
+//		}
+//	}
 
-//		setInput(null); // TODO still necessary?
+	protected void setQueryEditor(QueryEditor queryEditor) {
+		if (resultSetTableComposite != null)
+			resultSetTableComposite.setQueryEditorManager(queryEditor == null ? null : queryEditor.getQueryEditorManager());
 	}
 
 	protected void addQueryContexts(Collection<? extends QueryContext> queryContexts) {
@@ -148,19 +175,36 @@ public class ResultSetTableView extends ViewPart implements LabelTextOptionsCont
 			resultSetTableComposite.addQueryContext(queryContext);
 	}
 
+	protected void setQueryContext(QueryContext queryContext) {
+		if (resultSetTableComposite != null)
+			resultSetTableComposite.setQueryContext(queryContext);
+	}
+
+	protected QueryEditorManager getQueryEditorManager() {
+		if (resultSetTableComposite == null)
+			return null;
+
+		return resultSetTableComposite.getQueryEditorManager();
+	}
+
 	private IPartListener2 partListener = new IPartListener2()
 	{
 		@Override
 		public void partVisible(IWorkbenchPartReference partRef) {
 			logger.info("partVisible: partRef={}", partRef);
-			IWorkbenchPart part = partRef.getPart(true);
-			if (part instanceof QueryEditor)
-				registerQueryEditor((QueryEditor) part);
+//			IWorkbenchPart part = partRef.getPart(true);
+//			if (part instanceof QueryEditor)
+//				registerQueryEditor((QueryEditor) part);
 		}
 
 		@Override
 		public void partOpened(IWorkbenchPartReference partRef) {
 			logger.info("partOpened: partRef={}", partRef);
+			IWorkbenchPart part = partRef.getPart(true);
+			if (part instanceof QueryEditor)
+				((QueryEditor)part).getQueryEditorManager().addExecuteQueryListener(executeQueryListener);
+
+			// If it's just freshly opened, there cannot yet be any executed queries => don't need to enlist them.
 		}
 
 		@Override
@@ -171,9 +215,9 @@ public class ResultSetTableView extends ViewPart implements LabelTextOptionsCont
 		@Override
 		public void partHidden(IWorkbenchPartReference partRef) {
 			logger.info("partHidden: partRef={}", partRef);
-			IWorkbenchPart part = partRef.getPart(true);
-			if (queryEditor == part)
-				unregisterQueryEditor();
+//			IWorkbenchPart part = partRef.getPart(true);
+//			if (queryEditor == part)
+//				unregisterQueryEditor();
 		}
 
 		@Override
@@ -184,6 +228,13 @@ public class ResultSetTableView extends ViewPart implements LabelTextOptionsCont
 		@Override
 		public void partClosed(IWorkbenchPartReference partRef) {
 			logger.info("partClosed: partRef={}", partRef);
+			IWorkbenchPart part = partRef.getPart(true);
+			if (part instanceof QueryEditor)
+				((QueryEditor)part).getQueryEditorManager().removeExecuteQueryListener(executeQueryListener);
+
+//			IEditorPart activeEditor = getSite().getPage().getActiveEditor();
+//			if (activeEditor instanceof QueryEditor)
+//				setQueryEditor((QueryEditor)activeEditor);
 		}
 
 		@Override
@@ -197,7 +248,7 @@ public class ResultSetTableView extends ViewPart implements LabelTextOptionsCont
 
 			IWorkbenchPart part = partRef.getPart(true);
 			if (part instanceof QueryEditor)
-				registerQueryEditor((QueryEditor) part);
+				setQueryEditor((QueryEditor) part);
 		}
 	};
 
@@ -207,10 +258,23 @@ public class ResultSetTableView extends ViewPart implements LabelTextOptionsCont
 			resultSetTableComposite.setFocus();
 	}
 
+	protected Collection<QueryEditor> getQueryEditors() {
+		Set<QueryEditor> queryEditors = new HashSet<QueryEditor>();
+		for (IEditorReference editorReference : getSite().getPage().getEditorReferences()) {
+			IEditorPart editor = editorReference.getEditor(false); // do NOT restore, because it's unnecessary
+			if (editor instanceof QueryEditor)
+				queryEditors.add((QueryEditor)editor);
+		}
+		return queryEditors;
+	}
+
 	private DisposeListener disposeListener = new DisposeListener() {
 		@Override
 		public void widgetDisposed(DisposeEvent e) {
-			unregisterQueryEditor();
+//			unregisterQueryEditor();
+			for (QueryEditor queryEditor : getQueryEditors())
+				queryEditor.getQueryEditorManager().removeExecuteQueryListener(executeQueryListener);
+
 			getSite().getPage().removePartListener(partListener);
 		}
 	};
@@ -220,7 +284,7 @@ public class ResultSetTableView extends ViewPart implements LabelTextOptionsCont
 		if (resultSetTableComposite == null)
 			return null;
 
-		QueryContext activeQueryContext = resultSetTableComposite.getActiveQueryContext();
+		QueryContext activeQueryContext = resultSetTableComposite.getQueryContext();
 		return activeQueryContext == null ? null : activeQueryContext.getResultSetTableModel();
 	}
 

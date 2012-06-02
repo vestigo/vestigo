@@ -30,6 +30,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
@@ -82,6 +83,8 @@ import org.eclipse.swt.widgets.TabItem;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
+import org.eclipse.swt.widgets.Text;
+import org.nightlabs.util.Util;
 import org.nightlabs.vestigo.core.LabelTextOption;
 import org.nightlabs.vestigo.core.LabelTextUtil;
 import org.nightlabs.vestigo.core.ObjectReference;
@@ -105,22 +108,16 @@ implements ISelectionProvider, LabelTextOptionsContainer
 	private static final Logger logger = LoggerFactory.getLogger(ResultSetTableComposite.class);
 
 	public static enum PropertyName {
-		activeQueryEditorManager,
-		activeQueryContext
+		queryEditorManager,
+		queryContext
 	}
 
-	private QueryEditorManager activeQueryEditorManager;
-	private QueryContext activeQueryContext;
+	private QueryEditorManager queryEditorManager;
+	private QueryContext queryContext;
 	private Display display;
-//	private TableViewer tableViewer;
-//	private TableCursor tableCursor;
 	private Set<LabelTextOption> labelTextOptions = EnumSet.of(LabelTextOption.showObjectToString, LabelTextOption.showPersistentID);
 	private MenuManager contextMenuManager;
-//	private Menu contextMenu;
 	private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
-
-//	private List<ResultSetTableRow> selectedRows = Collections.emptyList();
-//	private List<ResultSetTableCell> selectedCells = Collections.emptyList();
 
 	private StackLayout stackLayout;
 	private Map<String, TabFolder> stackKey2TabFolder = new HashMap<String, TabFolder>();
@@ -137,9 +134,19 @@ implements ISelectionProvider, LabelTextOptionsContainer
 //		registerOpenLicenceNotValidDialogListeners();
 	}
 
+	/**
+	 * Flag indicating that the <code>ResultSetTableComposite</code> is currently being disposed.
+	 * Without this flag (and its corresponding checks) there is a {@link NullPointerException} when
+	 * the {@link QueryContextUI} tries to dispose its tab-folder and table-viewer. This is IMHO a bug
+	 * in Eclipse, but we can easily circumvent it by skipping the disposal of our own UI, if the container-UI
+	 * is anyway disposed.
+	 */
+	private boolean disposing;
+
 	private DisposeListener disposeListener = new DisposeListener() {
 		@Override
 		public void widgetDisposed(DisposeEvent event) {
+			disposing = true;
 			for (QueryContext queryContext : queryContext2QueryContextUI.keySet())
 				queryContext.removeQueryContextListener(queryContextListener);
 		}
@@ -158,7 +165,7 @@ implements ISelectionProvider, LabelTextOptionsContainer
 	}
 
 	protected List<ResultSetTableRow> getSelectedRows() {
-		QueryContext queryContext = getActiveQueryContext();
+		QueryContext queryContext = getQueryContext();
 		if (queryContext != null) {
 			QueryContextUI queryContextUI = getQueryContextUIOrFail(queryContext);
 			return queryContextUI.getSelectedRows();
@@ -167,7 +174,7 @@ implements ISelectionProvider, LabelTextOptionsContainer
 	}
 
 	protected List<ResultSetTableCell> getSelectedCells() {
-		QueryContext queryContext = getActiveQueryContext();
+		QueryContext queryContext = getQueryContext();
 		if (queryContext != null) {
 			QueryContextUI queryContextUI = getQueryContextUIOrFail(queryContext);
 			return queryContextUI.getSelectedCells();
@@ -227,7 +234,7 @@ implements ISelectionProvider, LabelTextOptionsContainer
 		s.addAll(labelTextOptions);
 		this.labelTextOptions = s;
 
-		QueryContext queryContext = this.activeQueryContext;
+		QueryContext queryContext = this.queryContext;
 		if (queryContext != null) {
 			QueryContextUI queryContextUI = getQueryContextUIOrFail(queryContext);
 			refresh(queryContextUI.getTableViewer());
@@ -285,7 +292,7 @@ implements ISelectionProvider, LabelTextOptionsContainer
 //					contentProvider.updateElement(tableItemIndex); // does not work and that's probably exactly the problem
 
 					// TODO maybe this must be refactored when we support multiple resultSets per query browser
-					QueryContext queryContext = getActiveQueryContext();
+					QueryContext queryContext = getQueryContext();
 					if (queryContext != null) {
 						ResultSetTableModel model = queryContext.getResultSetTableModel();
 						Object[] rowsLoadedArray = model.getRowsLoadedArray();
@@ -545,8 +552,8 @@ implements ISelectionProvider, LabelTextOptionsContainer
 //			item.dispose();
 //	}
 
-	public QueryEditorManager getActiveQueryEditorManager() {
-		return activeQueryEditorManager;
+	public QueryEditorManager getQueryEditorManager() {
+		return queryEditorManager;
 	}
 
 	public void addQueryContexts(Collection<? extends QueryContext> queryContexts) {
@@ -578,8 +585,7 @@ implements ISelectionProvider, LabelTextOptionsContainer
 					if (tabItems != null && tabItems.length > 0) {
 						TabItem tabItem = tabItems[0];
 						QueryContextUI queryContextUI = getQueryContextUIOrFail(tabItem);
-						setActiveQueryEditorManager(queryContextUI.getQueryContext().getQueryEditorManager()); // TODO remove this when it is done by the following line.
-						setActiveQueryContext(queryContextUI.getQueryContext());
+						setQueryContext(queryContextUI.getQueryContext());
 					}
 				}
 			});
@@ -615,6 +621,8 @@ implements ISelectionProvider, LabelTextOptionsContainer
 
 //	private Map<IConnectionProfile, AtomicInteger> connectionProfile2NextHumanQueryID = new HashMap<IConnectionProfile, AtomicInteger>();
 
+	private AtomicInteger nextErrorID = new AtomicInteger();
+
 	protected QueryContextUI createQueryContextUI(QueryContext queryContext) {
 		final QueryContextUI[] queryContextUI = new QueryContextUI[1];
 		queryContextUI[0] = queryContext2QueryContextUI.get(queryContext);
@@ -622,60 +630,91 @@ implements ISelectionProvider, LabelTextOptionsContainer
 			queryContext.addQueryContextListener(queryContextListener);
 			TabFolder tabFolder = createTabFolder(queryContext);
 			final TabItem tabItem = new TabItem(tabFolder, SWT.NONE);
-
-			ResultSet rs = ResultSet.Helper.getWrappedResultSetOrFail(queryContext.getResultSetTableModel().getResultSet());
-			tabItem.setText(String.format("%s - %s ", queryContext.getConnectionProfile().getName(), rs.getQuery().getQueryID().getQueryID()));
-			tabItem.setToolTipText(queryContext.getQueryText());
-
-			TableViewer tableViewer = createTableViewer(tabFolder);
-			TableCursor tableCursor = createTableCursor(tableViewer);
-			registerOpenLicenceNotValidDialogListeners(tableViewer, tableCursor);
-
-			tabItem.setControl(tableViewer.getTable());
-			tableViewer.getTable().addDisposeListener(new DisposeListener() {
-				@Override
-				public void widgetDisposed(DisposeEvent event) {
-					if (queryContextUI[0] != null)
-						queryContextUI[0].dispose();
-				}
-			});
 			tabItem.addDisposeListener(new DisposeListener() {
 				@Override
 				public void widgetDisposed(DisposeEvent event) {
+					if (disposing)
+						return;
+
 					if (queryContextUI[0] != null)
 						queryContextUI[0].dispose();
 				}
 			});
-			queryContextUI[0] = new QueryContextUI(queryContext, tableViewer, tabItem);
-			tableViewer.setData(QueryContextUI.class.getName(), queryContextUI[0]);
-			tableCursor.setData(QueryContextUI.class.getName(), queryContextUI[0]);
-			tabItem.setData(QueryContextUI.class.getName(), queryContextUI[0]);
-			queryContext2QueryContextUI.put(queryContext, queryContextUI[0]);
 
-			Table table = tableViewer.getTable();
-			for (TableColumn column : table.getColumns())
-				column.dispose();
+			if (queryContext.getError() != null) {
+				Text errorText = new Text(tabFolder, SWT.BORDER | SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | SWT.READ_ONLY);
+				errorText.setText(Util.getStackTraceAsString(queryContext.getError()));
+				tabItem.setText(
+						String.format(
+								"%s - %s - Error %s",
+								queryContext.getQueryEditorManager().getQueryEditor().getEditorInput().getName(),
+								queryContext.getConnectionProfile().getName(),
+								nextErrorID.getAndIncrement()
+						)
+				);
+				tabItem.setControl(errorText);
+				queryContextUI[0] = new QueryContextUI(queryContext, null, tabItem);
+			}
+			else {
+				ResultSet rs = ResultSet.Helper.getWrappedResultSetOrFail(queryContext.getResultSetTableModel().getResultSet());
+				tabItem.setText(
+						String.format(
+								"%s - %s - %s",
+								queryContext.getQueryEditorManager().getQueryEditor().getEditorInput().getName(),
+								queryContext.getConnectionProfile().getName(),
+								rs.getQuery().getQueryID().getQueryID()
+						)
+				);
+				tabItem.setToolTipText(queryContext.getQueryText());
 
-			TableLayout layout = new TableLayout();
-			if (queryContext != null && queryContext.getResultSetTableModel() != null) {
-				IResultSet resultSet = queryContext.getResultSetTableModel().getResultSet();
-				try {
-					int odaColumnCount = resultSet.getMetaData().getColumnCount();
+				TableViewer tableViewer = createTableViewer(tabFolder);
+				TableCursor tableCursor = createTableCursor(tableViewer);
+				registerOpenLicenceNotValidDialogListeners(tableViewer, tableCursor);
 
-					createRowIndexTableViewerColumn(tableViewer, layout);
+				tabItem.setControl(tableViewer.getTable());
+				tableViewer.getTable().addDisposeListener(new DisposeListener() {
+					@Override
+					public void widgetDisposed(DisposeEvent event) {
+						if (disposing)
+							return;
 
-					for (int odaColumnIndex = 1; odaColumnIndex <= odaColumnCount; ++odaColumnIndex)
-						createResultSetTableCellTableViewerColumn(tableViewer, resultSet, layout, odaColumnIndex);
+						if (queryContextUI[0] != null)
+							queryContextUI[0].dispose();
+					}
+				});
 
-				} catch (OdaException e) {
-					throw new RuntimeException(e);
+				queryContextUI[0] = new QueryContextUI(queryContext, tableViewer, tabItem);
+				tableViewer.setData(QueryContextUI.class.getName(), queryContextUI[0]);
+				tableCursor.setData(QueryContextUI.class.getName(), queryContextUI[0]);
+
+				Table table = tableViewer.getTable();
+				for (TableColumn column : table.getColumns())
+					column.dispose();
+
+				TableLayout layout = new TableLayout();
+				if (queryContext != null && queryContext.getResultSetTableModel() != null) {
+					IResultSet resultSet = queryContext.getResultSetTableModel().getResultSet();
+					try {
+						int odaColumnCount = resultSet.getMetaData().getColumnCount();
+
+						createRowIndexTableViewerColumn(tableViewer, layout);
+
+						for (int odaColumnIndex = 1; odaColumnIndex <= odaColumnCount; ++odaColumnIndex)
+							createResultSetTableCellTableViewerColumn(tableViewer, resultSet, layout, odaColumnIndex);
+
+					} catch (OdaException e) {
+						throw new RuntimeException(e);
+					}
 				}
+
+				table.setLayout(layout);
+				table.layout(true);
+
+				tableViewer.setInput(queryContext == null ? null : queryContext.getResultSetTableModel());
 			}
 
-			table.setLayout(layout);
-			table.layout(true);
-
-			tableViewer.setInput(queryContext == null ? null : queryContext.getResultSetTableModel());
+			tabItem.setData(QueryContextUI.class.getName(), queryContextUI[0]);
+			queryContext2QueryContextUI.put(queryContext, queryContextUI[0]);
 		}
 		return queryContextUI[0];
 	}
@@ -713,7 +752,7 @@ implements ISelectionProvider, LabelTextOptionsContainer
 
 //		connection. // TODO add close-listener and remove our UI for the QueryContext when it is closed.
 
-		setActiveQueryEditorManager(queryContext.getQueryEditorManager());
+//		setQueryEditorManager(queryContext.getQueryEditorManager());
 	}
 
 	private QueryContextListener queryContextListener = new QueryContextAdapter() {
@@ -730,24 +769,25 @@ implements ISelectionProvider, LabelTextOptionsContainer
 					QueryContextUI queryContextUI = queryContext2QueryContextUI.remove(queryContext);
 					queryContextUI.dispose();
 
-					// TODO extend for multi tabs.
-					if (getActiveQueryEditorManager() == queryContext.getQueryEditorManager())
-						setActiveQueryEditorManager(null);
+					if (getQueryContext() == queryContext)
+						setQueryContext(null);
 
-					if (getActiveQueryContext() == queryContext)
-						setActiveQueryContext(null);
+					// Select another queryContext of the same QueryEditorManager.
+//					setQueryEditorManager(queryContext.getQueryEditorManager());
 				}
 			});
 		}
 	};
 
-	private final void setActiveQueryEditorManager(QueryEditorManager queryEditorManager) { // TODO refactor for tabs
-		QueryEditorManager oldQueryEditorManager = getActiveQueryEditorManager();
+	public void setQueryEditorManager(QueryEditorManager queryEditorManager) {
+		if (getQueryEditorManager() == queryEditorManager && getQueryContext() != null)
+			return;
 
-		this.activeQueryEditorManager = queryEditorManager;
-		setActiveQueryContext(null); // first clear to keep activeQueryEditorManager & activeQueryContext consistent in events fired.
+		internalSetQueryContext(null); // first clear to keep queryEditorManager & queryContext consistent in events fired.
 
-		// TODO this must be refactored when we support multiple resultSets per query browser!
+		internalSetQueryEditorManager(queryEditorManager);
+
+		//TODO don't use the first, but remember which was the last used per QueryEditorManager and select the last used one
 		List<QueryContext> queryContexts = queryEditorManager == null ? new ArrayList<QueryContext>() : queryEditorManager.getQueryContexts();
 		QueryContext queryContext;
 		if (queryContexts.isEmpty())
@@ -755,17 +795,40 @@ implements ISelectionProvider, LabelTextOptionsContainer
 		else
 			queryContext = queryContexts.get(0);
 
-		propertyChangeSupport.firePropertyChange(PropertyName.activeQueryEditorManager.name(), oldQueryEditorManager, queryEditorManager);
-		setActiveQueryContext(queryContext);
+		internalSetQueryContext(queryContext);
 	}
 
-	protected QueryContext getActiveQueryContext() {
-		return activeQueryContext;
+	private void internalSetQueryEditorManager(QueryEditorManager queryEditorManager) {
+		QueryEditorManager oldQueryEditorManager = getQueryEditorManager();
+		if (oldQueryEditorManager == queryEditorManager)
+			return;
+
+		this.queryEditorManager = queryEditorManager;
+		propertyChangeSupport.firePropertyChange(PropertyName.queryEditorManager.name(), oldQueryEditorManager, queryEditorManager);
 	}
 
-	private void setActiveQueryContext(QueryContext queryContext) { // TODO make protected later
-		QueryContext oldActiveQueryContext = getActiveQueryContext();
-		this.activeQueryContext = queryContext;
+	public QueryContext getQueryContext() {
+		return queryContext;
+	}
+
+	protected void setQueryContext(QueryContext queryContext) {
+		if (getQueryContext() == queryContext)
+			return;
+
+		if (queryContext != null && queryContext.getQueryEditorManager() != getQueryEditorManager()) {
+			internalSetQueryContext(null);
+			internalSetQueryEditorManager(queryContext.getQueryEditorManager());
+		}
+
+		internalSetQueryContext(queryContext);
+	}
+
+	private void internalSetQueryContext(QueryContext queryContext) {
+		QueryContext oldQueryContext = getQueryContext();
+		if (oldQueryContext == queryContext)
+			return;
+
+		this.queryContext = queryContext;
 
 //		if (oldActiveQueryContext != null) { // Creating now a *new* TableViewer for every ResultSet => don't need to empty it anymore.
 //			QueryContextUI queryContextUI = getQueryContextUIOrNull(oldActiveQueryContext);
@@ -783,9 +846,9 @@ implements ISelectionProvider, LabelTextOptionsContainer
 			layout(true);
 		}
 
-		clearSelection();
+//		clearSelection();
+		propertyChangeSupport.firePropertyChange(PropertyName.queryContext.name(), oldQueryContext, queryContext);
 		fireSelectionChangedEvent();
-		propertyChangeSupport.firePropertyChange(PropertyName.activeQueryContext.name(), oldActiveQueryContext, queryContext);
 	}
 
 	private TableViewerColumn createRowIndexTableViewerColumn(TableViewer tableViewer, TableLayout layout)

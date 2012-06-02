@@ -44,9 +44,10 @@ public class QueryContext
 //	private IConnection connection;
 	private ResultSetTableModel resultSetTableModel;
 	private ListenerList queryContextListeners = new ListenerList();
+	private Throwable error;
 
 	public QueryContext() {
-		logger.trace("<init>: Created instance.");
+		logger.trace("[{}]<init>: Created instance.", getQueryContextID());
 	}
 
 	public QueryEditorManager getQueryEditorManager() {
@@ -103,13 +104,13 @@ public class QueryContext
 	private boolean closed = false;
 
 	public void close() {
-		logger.trace("close: Entered.");
+		logger.trace("[{}]close: Entered.", getQueryContextID());
 		synchronized(this) {
 			if (closed)
 				return;
 			closed = true;
 		}
-		logger.debug("close: Closing.");
+		logger.debug("[{}]close: Closing.", getQueryContextID());
 
 		try {
 			ResultSetTableModel resultSetTableModel = this.resultSetTableModel;
@@ -120,7 +121,7 @@ public class QueryContext
 //			if (connection != null)
 //				connection.close();
 		} catch (Exception e) {
-			logger.warn("close: " + e, e);
+			logger.warn("[" + getQueryContextID() + "]close: " + e, e);
 		} finally {
 			QueryContextEvent event = new QueryContextEvent(this);
 			for (Object l : queryContextListeners.getListeners()) {
@@ -142,5 +143,24 @@ public class QueryContext
 	}
 	public void setConnectionContext(ConnectionContext connectionContext) {
 		this.connectionContext = connectionContext;
+	}
+
+	public Throwable getError() {
+		return error;
+	}
+	public void setError(Throwable error) {
+		this.error = error;
+	}
+
+	public String getQueryContextID() {
+		return Integer.toHexString(System.identityHashCode(this));
+	}
+
+	@Override
+	public String toString() {
+		return getClass().getName() + '@' + getQueryContextID()
+				+ "[connectionProfileName=" + (connectionProfile == null ? null : connectionProfile.getName())
+				+ ", error=" + error
+				+ ", connectionContext=" + connectionContext + ']';
 	}
 }
