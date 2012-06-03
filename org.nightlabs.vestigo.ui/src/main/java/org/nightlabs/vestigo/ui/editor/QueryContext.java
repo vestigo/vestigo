@@ -19,7 +19,6 @@ package org.nightlabs.vestigo.ui.editor;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 
 import org.eclipse.core.runtime.ListenerList;
 import org.eclipse.datatools.connectivity.IConnectionProfile;
@@ -37,6 +36,7 @@ public class QueryContext
 {
 	private static final Logger logger = LoggerFactory.getLogger(QueryContext.class);
 
+	private int queryContextID = -1;
 	private QueryEditorManager queryEditorManager;
 	private IConnectionProfile connectionProfile;
 	private String queryText;
@@ -46,12 +46,16 @@ public class QueryContext
 	private ResultSetTableModel resultSetTableModel;
 	private ListenerList queryContextListeners = new ListenerList();
 	private Throwable error;
-	private Integer errorID;
-
-	private static AtomicInteger nextErrorID = new AtomicInteger();
 
 	public QueryContext() {
-		logger.trace("[{}]<init>: Created instance.", getQueryContextID());
+		logger.trace("[{}]<init>: Created instance.", getQueryContextUniqueID());
+	}
+
+	public int getQueryContextID() {
+		return queryContextID;
+	}
+	public void setQueryContextID(int queryContextID) {
+		this.queryContextID = queryContextID;
 	}
 
 	public QueryEditorManager getQueryEditorManager() {
@@ -108,13 +112,13 @@ public class QueryContext
 	private boolean closed = false;
 
 	public void close() {
-		logger.trace("[{}]close: Entered.", getQueryContextID());
+		logger.trace("[{}]close: Entered.", getQueryContextUniqueID());
 		synchronized(this) {
 			if (closed)
 				return;
 			closed = true;
 		}
-		logger.debug("[{}]close: Closing.", getQueryContextID());
+		logger.debug("[{}]close: Closing.", getQueryContextUniqueID());
 
 		try {
 			ResultSetTableModel resultSetTableModel = this.resultSetTableModel;
@@ -125,7 +129,7 @@ public class QueryContext
 //			if (connection != null)
 //				connection.close();
 		} catch (Exception e) {
-			logger.warn("[" + getQueryContextID() + "]close: " + e, e);
+			logger.warn("[" + getQueryContextUniqueID() + "]close: " + e, e);
 		} finally {
 			QueryContextEvent event = new QueryContextEvent(this);
 			for (Object l : queryContextListeners.getListeners()) {
@@ -154,23 +158,17 @@ public class QueryContext
 	}
 	public void setError(Throwable error) {
 		this.error = error;
-		if (error != null && errorID == null)
-			errorID = nextErrorID.getAndIncrement();
 	}
 
-	public String getQueryContextID() {
+	public String getQueryContextUniqueID() {
 		return Integer.toHexString(System.identityHashCode(this));
 	}
 
 	@Override
 	public String toString() {
-		return getClass().getName() + '@' + getQueryContextID()
+		return getClass().getName() + '@' + getQueryContextUniqueID()
 				+ "[connectionProfileName=" + (connectionProfile == null ? null : connectionProfile.getName())
 				+ ", error=" + error
 				+ ", connectionContext=" + connectionContext + ']';
-	}
-
-	public Integer getErrorID() {
-		return errorID;
 	}
 }

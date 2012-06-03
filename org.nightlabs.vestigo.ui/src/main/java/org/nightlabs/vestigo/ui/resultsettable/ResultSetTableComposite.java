@@ -75,6 +75,7 @@ import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.TabFolder;
@@ -88,6 +89,7 @@ import org.nightlabs.vestigo.core.LabelTextOption;
 import org.nightlabs.vestigo.core.LabelTextUtil;
 import org.nightlabs.vestigo.core.ObjectReference;
 import org.nightlabs.vestigo.core.oda.ResultSet;
+import org.nightlabs.vestigo.ui.VestigoUIPlugin;
 import org.nightlabs.vestigo.ui.editor.QueryContext;
 import org.nightlabs.vestigo.ui.editor.QueryContextAdapter;
 import org.nightlabs.vestigo.ui.editor.QueryContextEvent;
@@ -121,6 +123,8 @@ implements ISelectionProvider, LabelTextOptionsContainer
 	private StackLayout stackLayout;
 	private Map<String, TabFolder> stackKey2TabFolder = new HashMap<String, TabFolder>();
 	private Map<QueryContext, QueryContextUI> queryContext2QueryContextUI = new HashMap<QueryContext, QueryContextUI>();
+	private Label noQueryEditorManagerMessageLabel;
+	private Label noQueryContextMessageLabel;
 
 	public ResultSetTableComposite(Composite parent, int style) {
 		super(parent, style);
@@ -131,6 +135,21 @@ implements ISelectionProvider, LabelTextOptionsContainer
 //		createTableViewer();
 //		createTableCursor();
 //		registerOpenLicenceNotValidDialogListeners();
+		createNoQueryEditorManagerMessageLabel();
+		createNoQueryContextMessageLabel();
+		setQueryEditorManager(null);
+	}
+
+	private void createNoQueryContextMessageLabel() {
+		Composite parent = this;
+		noQueryContextMessageLabel = new Label(parent, SWT.WRAP);
+		noQueryContextMessageLabel.setText("The active query editor does not have any result set. Please execute a query to see a result set here.");
+	}
+
+	private void createNoQueryEditorManagerMessageLabel() {
+		Composite parent = this;
+		noQueryEditorManagerMessageLabel = new Label(parent, SWT.WRAP);
+		noQueryEditorManagerMessageLabel.setText("There is no active query editor. Please open a query editor and execute a query to see a result set here.");
 	}
 
 	/**
@@ -638,6 +657,10 @@ implements ISelectionProvider, LabelTextOptionsContainer
 //	private Map<IConnectionProfile, AtomicInteger> connectionProfile2NextHumanQueryID = new HashMap<IConnectionProfile, AtomicInteger>();
 
 	protected QueryContextUI createQueryContextUI(QueryContext queryContext) {
+		assertUIThread();
+		if (queryContext == null)
+			throw new IllegalArgumentException("queryContext == null");
+
 		final QueryContextUI[] queryContextUI = new QueryContextUI[1];
 		queryContextUI[0] = queryContext2QueryContextUI.get(queryContext);
 		if (queryContextUI[0] == null) {
@@ -655,31 +678,25 @@ implements ISelectionProvider, LabelTextOptionsContainer
 				}
 			});
 
+			tabItem.setText(
+					String.format(
+							"%s - %s - %s",
+							queryContext.getQueryEditorManager().getQueryEditor().getEditorInput().getName(),
+							queryContext.getQueryContextID(),
+							queryContext.getConnectionProfile().getName()
+							)
+					);
+			tabItem.setToolTipText(queryContext.getQueryText());
+
 			if (queryContext.getError() != null) {
 				Text errorText = new Text(tabFolder, SWT.BORDER | SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | SWT.READ_ONLY);
 				errorText.setText(Util.getStackTraceAsString(queryContext.getError()));
-				tabItem.setText(
-						String.format(
-								"%s - %s - Error %s",
-								queryContext.getQueryEditorManager().getQueryEditor().getEditorInput().getName(),
-								queryContext.getConnectionProfile().getName(),
-								queryContext.getErrorID()
-						)
-				);
+				tabItem.setImage(VestigoUIPlugin.getDefault().getImage(ResultSetTableComposite.class, "tabItem-error", VestigoUIPlugin.IMAGE_SIZE_16x16));
 				tabItem.setControl(errorText);
 				queryContextUI[0] = new QueryContextUI(queryContext, null, tabItem);
 			}
-			else {
-				ResultSet rs = ResultSet.Helper.getWrappedResultSetOrFail(queryContext.getResultSetTableModel().getResultSet());
-				tabItem.setText(
-						String.format(
-								"%s - %s - %s",
-								queryContext.getQueryEditorManager().getQueryEditor().getEditorInput().getName(),
-								queryContext.getConnectionProfile().getName(),
-								rs.getQuery().getQueryID().getQueryID()
-						)
-				);
-				tabItem.setToolTipText(queryContext.getQueryText());
+			else if (queryContext.getResultSetTableModel() != null) {
+				tabItem.setImage(VestigoUIPlugin.getDefault().getImage(ResultSetTableComposite.class, "tabItem-table", VestigoUIPlugin.IMAGE_SIZE_16x16));
 
 				TableViewer tableViewer = createTableViewer(tabFolder);
 				TableCursor tableCursor = createTableCursor(tableViewer);
@@ -706,19 +723,17 @@ implements ISelectionProvider, LabelTextOptionsContainer
 					column.dispose();
 
 				TableLayout layout = new TableLayout();
-				if (queryContext != null && queryContext.getResultSetTableModel() != null) {
-					IResultSet resultSet = queryContext.getResultSetTableModel().getResultSet();
-					try {
-						int odaColumnCount = resultSet.getMetaData().getColumnCount();
+				IResultSet resultSet = queryContext.getResultSetTableModel().getResultSet();
+				try {
+					int odaColumnCount = resultSet.getMetaData().getColumnCount();
 
-						createRowIndexTableViewerColumn(tableViewer, layout);
+					createRowIndexTableViewerColumn(tableViewer, layout);
 
-						for (int odaColumnIndex = 1; odaColumnIndex <= odaColumnCount; ++odaColumnIndex)
-							createResultSetTableCellTableViewerColumn(tableViewer, resultSet, layout, odaColumnIndex);
+					for (int odaColumnIndex = 1; odaColumnIndex <= odaColumnCount; ++odaColumnIndex)
+						createResultSetTableCellTableViewerColumn(tableViewer, resultSet, layout, odaColumnIndex);
 
-					} catch (OdaException e) {
-						throw new RuntimeException(e);
-					}
+				} catch (OdaException e) {
+					throw new RuntimeException(e);
 				}
 
 				table.setLayout(layout);
@@ -797,12 +812,8 @@ implements ISelectionProvider, LabelTextOptionsContainer
 	};
 
 	public void setQueryEditorManager(QueryEditorManager queryEditorManager) {
-		if (getQueryEditorManager() == queryEditorManager && getQueryContext() != null)
-			return;
-
-		internalSetQueryContext(null); // first clear to keep queryEditorManager & queryContext consistent in events fired.
-
-		internalSetQueryEditorManager(queryEditorManager);
+//		if (getQueryEditorManager() == queryEditorManager && getQueryContext() != null)
+//			return;
 
 		//TODO don't use the first, but remember which was the last used per QueryEditorManager and select the last used one
 		List<QueryContext> queryContexts = queryEditorManager == null ? new ArrayList<QueryContext>() : queryEditorManager.getQueryContexts();
@@ -812,14 +823,15 @@ implements ISelectionProvider, LabelTextOptionsContainer
 		else
 			queryContext = queryContexts.get(queryContexts.size() - 1);
 
+		if (queryContext != getQueryContext())
+			internalSetQueryContext(null); // first clear to keep queryEditorManager & queryContext consistent in events fired.
+
+		internalSetQueryEditorManager(queryEditorManager);
 		internalSetQueryContext(queryContext);
 	}
 
 	private void internalSetQueryEditorManager(QueryEditorManager queryEditorManager) {
 		QueryEditorManager oldQueryEditorManager = getQueryEditorManager();
-		if (oldQueryEditorManager == queryEditorManager)
-			return;
-
 		this.queryEditorManager = queryEditorManager;
 		propertyChangeSupport.firePropertyChange(PropertyName.queryEditorManager.name(), oldQueryEditorManager, queryEditorManager);
 	}
@@ -829,9 +841,6 @@ implements ISelectionProvider, LabelTextOptionsContainer
 	}
 
 	protected void setQueryContext(QueryContext queryContext) {
-		if (getQueryContext() == queryContext)
-			return;
-
 		if (queryContext != null && queryContext.getQueryEditorManager() != getQueryEditorManager()) {
 			internalSetQueryContext(null);
 			internalSetQueryEditorManager(queryContext.getQueryEditorManager());
@@ -842,9 +851,6 @@ implements ISelectionProvider, LabelTextOptionsContainer
 
 	private void internalSetQueryContext(QueryContext queryContext) {
 		QueryContext oldQueryContext = getQueryContext();
-		if (oldQueryContext == queryContext)
-			return;
-
 		this.queryContext = queryContext;
 
 //		if (oldActiveQueryContext != null) { // Creating now a *new* TableViewer for every ResultSet => don't need to empty it anymore.
@@ -853,19 +859,25 @@ implements ISelectionProvider, LabelTextOptionsContainer
 //				manuallyEmptyTable(queryContextUI.getTableViewer());
 //		}
 
-		if (queryContext != null) {
+		if (queryContext == null) {
+			if (queryEditorManager == null)
+				stackLayout.topControl = noQueryEditorManagerMessageLabel;
+			else
+				stackLayout.topControl = noQueryContextMessageLabel;
+		}
+		else {
 			TabFolder tabFolder = getTabFolderOrNull(queryContext);
 			if (tabFolder == null)
 				logger.warn("internalSetQueryContext: There is no tabFolder for this queryContext yet: {}", queryContext);
 			else {
-				stackLayout.topControl = tabFolder;
-
-				QueryContextUI queryContextUI = getQueryContextUIOrFail(queryContext);
-				tabFolder.setSelection(queryContextUI.getTabItem());
-
-				layout(true);
+				QueryContextUI queryContextUI = getQueryContextUIOrNull(queryContext);
+				if (queryContextUI != null) {
+					stackLayout.topControl = tabFolder;
+					tabFolder.setSelection(queryContextUI.getTabItem());
+				}
 			}
 		}
+		layout(true);
 
 //		clearSelection();
 		propertyChangeSupport.firePropertyChange(PropertyName.queryContext.name(), oldQueryContext, queryContext);
@@ -1007,5 +1019,10 @@ implements ISelectionProvider, LabelTextOptionsContainer
 
 	public void removePropertyChangeListener(PropertyName propertyName, PropertyChangeListener listener) {
 		propertyChangeSupport.removePropertyChangeListener(propertyName.name(), listener);
+	}
+
+	private void assertUIThread() {
+		if (Display.getCurrent() != display)
+			throw new IllegalStateException("Thread mismatch! This method must be called on the SWT UI thread!");
 	}
 }

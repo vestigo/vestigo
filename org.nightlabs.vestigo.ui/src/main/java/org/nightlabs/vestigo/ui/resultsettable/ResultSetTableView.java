@@ -204,10 +204,11 @@ public class ResultSetTableView extends ViewPart implements LabelTextOptionsCont
 		public void partOpened(IWorkbenchPartReference partRef) {
 			logger.info("partOpened: partRef={}", partRef);
 			IWorkbenchPart part = partRef.getPart(true);
-			if (part instanceof QueryEditor)
-				((QueryEditor)part).getQueryEditorManager().addExecuteQueryListener(executeQueryListener);
-
-			// If it's just freshly opened, there cannot yet be any executed queries => don't need to enlist them.
+			if (part instanceof QueryEditor) {
+				QueryEditor queryEditor = (QueryEditor)part;
+				queryEditor.getQueryEditorManager().addExecuteQueryListener(executeQueryListener);
+				setQueryEditor(queryEditor);
+			}
 		}
 
 		@Override
@@ -232,8 +233,13 @@ public class ResultSetTableView extends ViewPart implements LabelTextOptionsCont
 		public void partClosed(IWorkbenchPartReference partRef) {
 			logger.info("partClosed: partRef={}", partRef);
 			IWorkbenchPart part = partRef.getPart(true);
-			if (part instanceof QueryEditor)
-				((QueryEditor)part).getQueryEditorManager().removeExecuteQueryListener(executeQueryListener);
+			if (part instanceof QueryEditor) {
+				QueryEditor queryEditor = (QueryEditor)part;
+				queryEditor.getQueryEditorManager().removeExecuteQueryListener(executeQueryListener);
+				if (queryEditor.getQueryEditorManager() == getQueryEditorManager()) {
+					setQueryEditor(null);
+				}
+			}
 
 //			IEditorPart activeEditor = getSite().getPage().getActiveEditor();
 //			if (activeEditor instanceof QueryEditor)
@@ -284,7 +290,7 @@ public class ResultSetTableView extends ViewPart implements LabelTextOptionsCont
 		}
 	};
 
-	public ResultSetTableModel getActiveResultSetTableModel()
+	public ResultSetTableModel getResultSetTableModel()
 	{
 		if (resultSetTableComposite == null)
 			return null;

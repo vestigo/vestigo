@@ -48,7 +48,7 @@ public class NextBunchAction extends Action
 
 	@Override
 	public void run() {
-		ResultSetTableModel resultSetTableModel = nextAction.getView().getActiveResultSetTableModel();
+		ResultSetTableModel resultSetTableModel = nextAction.getView().getResultSetTableModel();
 		if (resultSetTableModel != null)
 			resultSetTableModel.loadNextBunch(bunchSize);
 		else

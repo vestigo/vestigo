@@ -131,7 +131,7 @@ public class ConnectionContext {
 		queryContextDeque.add(queryContext);
 		queryContexts = null;
 
-		logger.trace("[{}]addQueryContext: queryContext={}", getConnectionContextID(), queryContext);
+		logger.trace("[{}]addQueryContext: queryContext={}", getConnectionContextUniqueID(), queryContext);
 	}
 
 	private QueryContextListener queryContextListener = new QueryContextAdapter() {
@@ -142,18 +142,18 @@ public class ConnectionContext {
 	};
 
 	private synchronized void postQueryContextClose(QueryContext queryContext) {
-		logger.trace("[{}]postQueryContextClose: queryContext={}", getConnectionContextID(), queryContext);
+		logger.trace("[{}]postQueryContextClose: queryContext={}", getConnectionContextUniqueID(), queryContext);
 		queryContextDeque.remove(queryContext);
 		queryContexts = null;
 	}
 
-	public String getConnectionContextID() {
+	public String getConnectionContextUniqueID() {
 		return Integer.toHexString(System.identityHashCode(this));
 	}
 
 	@Override
 	public String toString() {
-		return getClass().getName() + '@' + getConnectionContextID()
+		return getClass().getName() + '@' + getConnectionContextUniqueID()
 				+ "[connectionProfileName=" + (connectionProfile == null ? null : connectionProfile.getName())
 				+ ", connection=" + connection + ']';
 	}
