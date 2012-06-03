@@ -1004,24 +1004,27 @@ public abstract class QueryEditorManager
 	public List<QueryContext> getQueryContexts() {
 		List<QueryContext> queryContexts = this.queryContexts;
 		if (queryContexts == null) {
-			synchronized (connectionProfile2ConnectionContextMutex) {
-				queryContexts = this.queryContexts;
-				if (queryContexts == null) {
-					for (ConnectionContext connectionContext : connectionProfile2ConnectionContext.values()) {
-						if (queryContexts == null && !connectionContext.getQueryContexts().isEmpty())
-							queryContexts = new ArrayList<QueryContext>(connectionContext.getQueryContexts());
-						else
-							queryContexts.addAll(connectionContext.getQueryContexts());
-					}
-
-					if (queryContexts == null)
-						queryContexts = Collections.emptyList();
-					else
-						queryContexts = Collections.unmodifiableList(queryContexts);
-
-					this.queryContexts = queryContexts;
-				}
+			synchronized (queryContextDequeMutex) {
+				this.queryContexts = queryContexts = new ArrayList<QueryContext>(queryContextDeque);
 			}
+//			synchronized (connectionProfile2ConnectionContextMutex) {
+//				queryContexts = this.queryContexts;
+//				if (queryContexts == null) {
+//					for (ConnectionContext connectionContext : connectionProfile2ConnectionContext.values()) {
+//						if (queryContexts == null && !connectionContext.getQueryContexts().isEmpty())
+//							queryContexts = new ArrayList<QueryContext>(connectionContext.getQueryContexts());
+//						else
+//							queryContexts.addAll(connectionContext.getQueryContexts());
+//					}
+//
+//					if (queryContexts == null)
+//						queryContexts = Collections.emptyList();
+//					else
+//						queryContexts = Collections.unmodifiableList(queryContexts);
+//
+//					this.queryContexts = queryContexts;
+//				}
+//			}
 		}
 		return queryContexts;
 	}
