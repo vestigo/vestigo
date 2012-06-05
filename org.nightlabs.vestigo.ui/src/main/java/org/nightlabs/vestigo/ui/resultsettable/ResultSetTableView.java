@@ -116,8 +116,8 @@ public class ResultSetTableView extends ViewPart implements LabelTextOptionsCont
 		public void postExecuteQuery(ExecuteQueryEvent executeQueryEvent) {
 			QueryContext queryContext = executeQueryEvent.getQueryContext();
 			addQueryContext(queryContext);
-			if (queryContext.getQueryEditorManager() == getQueryEditorManager())
-				setQueryContext(queryContext);
+//			if (queryContext.getQueryEditorManager() == getQueryEditorManager())
+			setQueryContext(queryContext);
 		}
 	};
 

@@ -558,6 +558,14 @@
 	</extension>
 	<extension point="org.eclipse.ui.preferencePages">
 		<page
+        category="org.nightlabs.vestigo.ui.preference.VestigoCategoryPreferencePage"
+        class="org.nightlabs.vestigo.ui.preference.UIPreferencePage"
+        id="org.nightlabs.vestigo.ui.preference.UIPreferencePage"
+        name="User interface">
+		</page>
+	</extension>
+	<extension point="org.eclipse.ui.preferencePages">
+		<page
 		category="org.nightlabs.vestigo.ui.preference.VestigoCategoryPreferencePage"
 		class="org.nightlabs.vestigo.ui.childvm.ChildVMPreferencePage"
 		id="org.nightlabs.vestigo.ui.childvm.ChildVMPreferencePage"

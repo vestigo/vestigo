@@ -24,9 +24,11 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Deque;
 import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -41,6 +43,7 @@ import org.eclipse.datatools.connectivity.oda.OdaException;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.MenuManager;
+import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.viewers.CellLabelProvider;
 import org.eclipse.jface.viewers.ColumnPixelData;
 import org.eclipse.jface.viewers.ColumnWeightData;
@@ -108,6 +111,9 @@ implements ISelectionProvider, LabelTextOptionsContainer
 {
 	private static final Logger logger = LoggerFactory.getLogger(ResultSetTableComposite.class);
 
+	public static final String PREFERENCE_KEY_ONLY_RESULT_SETS_OF_ACTIVE_EDITOR_VISIBLE = "ResultSetTableComposite.onlyResultSetsOfActiveEditorVisible";
+	public static final boolean PREFERENCE_DEFAULT_ONLY_RESULT_SETS_OF_ACTIVE_EDITOR_VISIBLE = true;
+
 	public static enum PropertyName {
 		queryEditorManager,
 		queryContext
@@ -123,8 +129,11 @@ implements ISelectionProvider, LabelTextOptionsContainer
 	private StackLayout stackLayout;
 	private Map<String, TabFolder> stackKey2TabFolder = new HashMap<String, TabFolder>();
 	private Map<QueryContext, QueryContextUI> queryContext2QueryContextUI = new HashMap<QueryContext, QueryContextUI>();
+	private Deque<QueryContext> queryContextDeque = new LinkedList<QueryContext>();
 	private Label noQueryEditorManagerMessageLabel;
 	private Label noQueryContextMessageLabel;
+
+	private Boolean lastOnlyResultSetsOfActiveEditorVisible;
 
 	public ResultSetTableComposite(Composite parent, int style) {
 		super(parent, style);
@@ -177,9 +186,22 @@ implements ISelectionProvider, LabelTextOptionsContainer
 //		setLayout(new FillLayout(SWT.HORIZONTAL | SWT.VERTICAL));
 	}
 
+	public boolean isOnlyResultSetsOfActiveEditorVisible() {
+		IPreferenceStore preferenceStore = VestigoUIPlugin.getDefault().getPreferenceStore();
+		preferenceStore.setDefault(PREFERENCE_KEY_ONLY_RESULT_SETS_OF_ACTIVE_EDITOR_VISIBLE, PREFERENCE_DEFAULT_ONLY_RESULT_SETS_OF_ACTIVE_EDITOR_VISIBLE);
+		boolean onlyResultSetsOfActiveEditorVisible = preferenceStore.getBoolean(PREFERENCE_KEY_ONLY_RESULT_SETS_OF_ACTIVE_EDITOR_VISIBLE);
+		return onlyResultSetsOfActiveEditorVisible;
+	}
+
 	protected String getStackKey(QueryContext queryContext) {
-		int hashCode = System.identityHashCode(queryContext.getQueryEditorManager());
-		return Integer.toString(hashCode, 36);
+		boolean onlyResultSetsOfActiveEditorVisible = isOnlyResultSetsOfActiveEditorVisible();
+
+		if (onlyResultSetsOfActiveEditorVisible) {
+			int hashCode = System.identityHashCode(queryContext.getQueryEditorManager());
+			return Integer.toString(hashCode, 36);
+		}
+		else
+			return "GLOBAL";
 	}
 
 	protected List<ResultSetTableRow> getSelectedRows() {
@@ -744,6 +766,7 @@ implements ISelectionProvider, LabelTextOptionsContainer
 
 			tabItem.setData(QueryContextUI.class.getName(), queryContextUI[0]);
 			queryContext2QueryContextUI.put(queryContext, queryContextUI[0]);
+			queryContextDeque.add(queryContext);
 		}
 		return queryContextUI[0];
 	}
@@ -798,6 +821,7 @@ implements ISelectionProvider, LabelTextOptionsContainer
 
 					QueryContext queryContext = event.getSource();
 
+					queryContextDeque.remove(queryContext);
 					QueryContextUI queryContextUI = queryContext2QueryContextUI.remove(queryContext);
 					queryContextUI.dispose();
 
@@ -811,9 +835,34 @@ implements ISelectionProvider, LabelTextOptionsContainer
 		}
 	};
 
+	protected void recreateUIIfNecessary() {
+		boolean onlyResultSetsOfActiveEditorVisible = isOnlyResultSetsOfActiveEditorVisible();
+		if (lastOnlyResultSetsOfActiveEditorVisible == null) {
+			lastOnlyResultSetsOfActiveEditorVisible = onlyResultSetsOfActiveEditorVisible;
+			return;
+		}
+
+		if (lastOnlyResultSetsOfActiveEditorVisible.booleanValue() == onlyResultSetsOfActiveEditorVisible)
+			return;
+
+		lastOnlyResultSetsOfActiveEditorVisible = onlyResultSetsOfActiveEditorVisible;
+
+		for (QueryContextUI queryContextUI : queryContext2QueryContextUI.values()) {
+			queryContextUI.dispose();
+		}
+		queryContext2QueryContextUI.clear();
+
+		List<QueryContext> queryContexts = new ArrayList<QueryContext>(queryContextDeque);
+		queryContextDeque.clear();
+
+		addQueryContexts(queryContexts);
+	}
+
 	public void setQueryEditorManager(QueryEditorManager queryEditorManager) {
+		logger.debug("setQueryEditorManager: queryEditorManager={} this.queryEditorManager={}", queryEditorManager, getQueryEditorManager());
 //		if (getQueryEditorManager() == queryEditorManager && getQueryContext() != null)
 //			return;
+		recreateUIIfNecessary();
 
 		//TODO don't use the first, but remember which was the last used per QueryEditorManager and select the last used one
 		List<QueryContext> queryContexts = queryEditorManager == null ? new ArrayList<QueryContext>() : queryEditorManager.getQueryContexts();
@@ -823,14 +872,21 @@ implements ISelectionProvider, LabelTextOptionsContainer
 		else
 			queryContext = queryContexts.get(queryContexts.size() - 1);
 
-		if (queryContext != getQueryContext())
-			internalSetQueryContext(null); // first clear to keep queryEditorManager & queryContext consistent in events fired.
+		if (queryContext == null && !isOnlyResultSetsOfActiveEditorVisible() && getQueryContext() != null) {
+			internalSetQueryEditorManager(queryEditorManager);
+		}
+		else {
+//			if (queryContext != getQueryContext())
+//				internalSetQueryContext(null); // first clear to keep queryEditorManager & queryContext consistent in events fired.
 
-		internalSetQueryEditorManager(queryEditorManager);
-		internalSetQueryContext(queryContext);
+			internalSetQueryEditorManager(queryEditorManager);
+			internalSetQueryContext(queryContext);
+		}
 	}
 
 	private void internalSetQueryEditorManager(QueryEditorManager queryEditorManager) {
+		logger.debug("internalSetQueryEditorManager: queryEditorManager={} this.queryEditorManager={}", queryEditorManager, getQueryEditorManager());
+
 		QueryEditorManager oldQueryEditorManager = getQueryEditorManager();
 		this.queryEditorManager = queryEditorManager;
 		propertyChangeSupport.firePropertyChange(PropertyName.queryEditorManager.name(), oldQueryEditorManager, queryEditorManager);
@@ -841,6 +897,10 @@ implements ISelectionProvider, LabelTextOptionsContainer
 	}
 
 	protected void setQueryContext(QueryContext queryContext) {
+		logger.debug("setQueryContext: queryContext={} this.queryContext={}", queryContext, getQueryContext());
+
+		recreateUIIfNecessary();
+
 		if (queryContext != null && queryContext.getQueryEditorManager() != getQueryEditorManager()) {
 			internalSetQueryContext(null);
 			internalSetQueryEditorManager(queryContext.getQueryEditorManager());
@@ -850,6 +910,8 @@ implements ISelectionProvider, LabelTextOptionsContainer
 	}
 
 	private void internalSetQueryContext(QueryContext queryContext) {
+		logger.debug("internalSetQueryContext: queryContext={} this.queryContext={}", queryContext, getQueryContext());
+
 		QueryContext oldQueryContext = getQueryContext();
 		this.queryContext = queryContext;
 
