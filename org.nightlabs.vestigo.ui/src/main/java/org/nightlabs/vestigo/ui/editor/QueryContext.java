@@ -167,8 +167,12 @@ public class QueryContext
 	@Override
 	public String toString() {
 		return getClass().getName() + '@' + getQueryContextUniqueID()
-				+ "[connectionProfileName=" + (connectionProfile == null ? null : connectionProfile.getName())
+				+ '['
+				+ "queryContextID=" + queryContextID
+				+ ", queryEditorInputName=" + (queryEditorManager == null ? null : queryEditorManager.getQueryEditor().getEditorInput().getName())
+				+ ", connectionProfileName=" + (connectionProfile == null ? null : connectionProfile.getName())
 				+ ", error=" + error
-				+ ", connectionContext=" + connectionContext + ']';
+				+ ", connectionContext=" + connectionContext
+				+ ']';
 	}
 }

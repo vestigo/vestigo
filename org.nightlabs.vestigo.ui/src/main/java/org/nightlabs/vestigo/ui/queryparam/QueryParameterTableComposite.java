@@ -40,6 +40,7 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.TableLayout;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TableViewerColumn;
@@ -147,6 +148,15 @@ public class QueryParameterTableComposite extends Composite implements ISelectio
 		tableViewer.getTable().setHeaderVisible(true);
 		tableViewer.getTable().setLinesVisible(true);
 		tableViewer.setUseHashlookup(true);
+		tableViewer.addSelectionChangedListener(new ISelectionChangedListener() {
+			@Override
+			public void selectionChanged(SelectionChangedEvent event) {
+				SelectionChangedEvent newEvent = new SelectionChangedEvent(QueryParameterTableComposite.this, getSelection());
+				for (Object l : selectionChangedListeners.getListeners()) {
+					((ISelectionChangedListener)l).selectionChanged(newEvent);
+				}
+			}
+		});
 
 		createCellEditors();
 		createParameterValueEditingSupportDelegates();

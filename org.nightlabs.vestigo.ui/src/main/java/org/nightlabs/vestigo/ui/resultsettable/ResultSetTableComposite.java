@@ -28,6 +28,7 @@ import java.util.Deque;
 import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -130,6 +131,7 @@ implements ISelectionProvider, LabelTextOptionsContainer
 	private Map<String, TabFolder> stackKey2TabFolder = new HashMap<String, TabFolder>();
 	private Map<QueryContext, QueryContextUI> queryContext2QueryContextUI = new HashMap<QueryContext, QueryContextUI>();
 	private Deque<QueryContext> queryContextDeque = new LinkedList<QueryContext>();
+	private Deque<QueryContext> queryContextSelectionHistory = new LinkedList<QueryContext>();
 	private Label noQueryEditorManagerMessageLabel;
 	private Label noQueryContextMessageLabel;
 
@@ -821,6 +823,7 @@ implements ISelectionProvider, LabelTextOptionsContainer
 
 					QueryContext queryContext = event.getSource();
 
+					queryContextSelectionHistory.remove(queryContext);
 					queryContextDeque.remove(queryContext);
 					QueryContextUI queryContextUI = queryContext2QueryContextUI.remove(queryContext);
 					queryContextUI.dispose();
@@ -864,13 +867,15 @@ implements ISelectionProvider, LabelTextOptionsContainer
 //			return;
 		recreateUIIfNecessary();
 
-		//TODO don't use the first, but remember which was the last used per QueryEditorManager and select the last used one
-		List<QueryContext> queryContexts = queryEditorManager == null ? new ArrayList<QueryContext>() : queryEditorManager.getQueryContexts();
-		QueryContext queryContext;
-		if (queryContexts.isEmpty())
-			queryContext = null;
-		else
-			queryContext = queryContexts.get(queryContexts.size() - 1);
+		// we remembered which was the last used per QueryEditorManager and select the last used one
+		QueryContext queryContext = null;
+		for (Iterator<QueryContext> it = queryContextSelectionHistory.descendingIterator(); it.hasNext(); ) {
+			QueryContext qc = it.next();
+			if (qc.getQueryEditorManager() == queryEditorManager) {
+				queryContext = qc;
+				break;
+			}
+		}
 
 		if (queryContext == null && !isOnlyResultSetsOfActiveEditorVisible() && getQueryContext() != null) {
 			internalSetQueryEditorManager(queryEditorManager);
@@ -901,8 +906,18 @@ implements ISelectionProvider, LabelTextOptionsContainer
 
 		recreateUIIfNecessary();
 
+		if (queryContext != null && queryContextSelectionHistory.peekLast() != queryContext) {
+			queryContextSelectionHistory.remove(queryContext);
+			queryContextSelectionHistory.add(queryContext);
+		}
+
+		// TODO rather than nulling it here, we should maybe prevent a closed queryEditor to be set in the first place?!
+		// or maybe both?! Currently this is essentially necessary!
+		if (queryContext == null && getQueryEditorManager() != null && getQueryEditorManager().getQueryEditor().isClosed())
+			internalSetQueryEditorManager(null);
+
 		if (queryContext != null && queryContext.getQueryEditorManager() != getQueryEditorManager()) {
-			internalSetQueryContext(null);
+//			internalSetQueryContext(null);
 			internalSetQueryEditorManager(queryContext.getQueryEditorManager());
 		}
 

@@ -71,6 +71,8 @@ implements QueryEditor
 		return helper.getQueryIDFromEditorInput();
 	}
 
+	private boolean closed = false;
+
 	@Override
 	public void createPartControl(Composite parent)
 	{
@@ -78,6 +80,7 @@ implements QueryEditor
 			@Override
 			public void widgetDisposed(DisposeEvent event) {
 				helper.fireDisposeListeners(event);
+				closed = true;
 			}
 		});
 		getQueryEditorManager().addExecuteQueryListener(executeQueryListener);
@@ -207,5 +210,10 @@ implements QueryEditor
 		super.doSaveAs();
 		getQueryEditorManager().editorInputChanged();
 		registerDocumentContext();
+	}
+
+	@Override
+	public boolean isClosed() {
+		return closed;
 	}
 }

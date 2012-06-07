@@ -129,5 +129,7 @@ public interface QueryEditor
 
 	void markDirty();
 
+	boolean isClosed();
+
 //	void markNotDirty();
 }

@@ -13,7 +13,9 @@ What's new?
 
 	* New feature: Query execution time shown in status bar.
 
-	* New feature: ResultSetTableView shows multiple result sets per editor in tabs.
+	* New feature: Result set view shows multiple result sets per editor in tabs.
+
+	* UI improvement: Buttons in Query parameters view have been replaced by view actions. 
 
 	[]
 

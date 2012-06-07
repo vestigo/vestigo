@@ -19,34 +19,36 @@ package org.nightlabs.vestigo.ui.queryparam;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 
-import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.core.runtime.ListenerList;
+import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.ISelectionChangedListener;
+import org.eclipse.jface.viewers.ISelectionProvider;
+import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.SelectionAdapter;
-import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.DisposeEvent;
+import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Label;
-import org.nightlabs.vestigo.ui.AbstractVestigoUIPlugin;
-import org.nightlabs.vestigo.ui.VestigoUIPlugin;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
  */
-public class QueryParameterManagerComposite extends Composite
+public class QueryParameterManagerComposite extends Composite implements ISelectionProvider
 {
-	private AbstractVestigoUIPlugin plugin = VestigoUIPlugin.getDefault();
+	public enum PropertyName {
+		queryParameterManager
+	}
+
+	private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
 	private QueryParameterManager queryParameterManager;
 
 	private QueryParameterTableComposite queryParameterTableComposite;
 
-	private Button addParameterButton;
-	private Button removeParameterButton;
-	private Button moveParameterUpButton;
-	private Button moveParameterDownButton;
+	private ListenerList selectionChangedListeners = new ListenerList();
 
 	public QueryParameterManagerComposite(Composite parent, int style) {
 		super(parent, style);
@@ -60,31 +62,44 @@ public class QueryParameterManagerComposite extends Composite
 		gd.verticalSpan = 5;
 		queryParameterTableComposite.setLayoutData(gd);
 
-		createAddParameterButton();
-		createRemoveParameterButton();
-		createMoveParameterUpButton();
-		createMoveParameterDownButton();
-		new Label(this, SWT.NONE); // serves only to invisibly stretch and thus keep the buttons above together.
+		queryParameterTableComposite.addSelectionChangedListener(new ISelectionChangedListener() {
+			@Override
+			public void selectionChanged(SelectionChangedEvent event) {
+				SelectionChangedEvent newEvent = new SelectionChangedEvent(QueryParameterManagerComposite.this, getSelection());
+				for (Object l : selectionChangedListeners.getListeners()) {
+					((ISelectionChangedListener)l).selectionChanged(newEvent);
+				}
+			}
+		});
+
+		addDisposeListener(new DisposeListener() {
+			@Override
+			public void widgetDisposed(DisposeEvent arg0) {
+				setQueryParameterManager(null);
+			}
+		});
 
 		setQueryParameterManager(null);
 	}
 
 	public void setQueryParameterManager(QueryParameterManager queryParameterManager)
 	{
-		if (this.queryParameterManager != null)
+		QueryParameterManager oldQueryParameterManager = this.queryParameterManager;
+		if (this.queryParameterManager != null) {
 			this.queryParameterManager.removePropertyChangeListener(QueryParameterManager.PropertyName.editorInputChanged, editorInputChangedListener);
+			this.queryParameterManager.removePropertyChangeListener(refreshingPropertyChangeListener);
+		}
 
 		this.queryParameterManager = queryParameterManager;
 
-		addParameterButton.setEnabled(queryParameterManager != null);
-		removeParameterButton.setEnabled(queryParameterManager != null);
-		moveParameterUpButton.setEnabled(queryParameterManager != null);
-		moveParameterDownButton.setEnabled(queryParameterManager != null);
-
 		queryParameterTableComposite.setInput(queryParameterManager == null ? null : queryParameterManager.getQueryParameters());
 
-		if (queryParameterManager != null)
+		if (queryParameterManager != null) {
 			queryParameterManager.addPropertyChangeListener(QueryParameterManager.PropertyName.editorInputChanged, editorInputChangedListener);
+			queryParameterManager.addPropertyChangeListener(refreshingPropertyChangeListener);
+		}
+
+		propertyChangeSupport.firePropertyChange(PropertyName.queryParameterManager.name(), oldQueryParameterManager, queryParameterManager);
 	}
 
 	private PropertyChangeListener editorInputChangedListener = new PropertyChangeListener() {
@@ -94,90 +109,50 @@ public class QueryParameterManagerComposite extends Composite
 		}
 	};
 
+	private PropertyChangeListener refreshingPropertyChangeListener = new PropertyChangeListener() {
+		@Override
+		public void propertyChange(PropertyChangeEvent evt) {
+			queryParameterTableComposite.refresh();
+		}
+	};
+
 	public QueryParameterManager getQueryParameterManager() {
 		return queryParameterManager;
 	}
 
-	private void createAddParameterButton() {
-		addParameterButton = new Button(this, SWT.PUSH);
-		addParameterButton.setImage(plugin.getImage(QueryParameterManagerComposite.class, "addParameterButton", null));
-		addParameterButton.setToolTipText("Add a new parameter.");
-		addParameterButton.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				addParameterButtonPressed();
-			}
-		});
-	}
-	private void addParameterButtonPressed() {
-		queryParameterManager.addQueryParameter();
-		queryParameterTableComposite.refresh();
+	public void addPropertyChangeListener(PropertyChangeListener listener) {
+		propertyChangeSupport.addPropertyChangeListener(listener);
 	}
 
-	private void createRemoveParameterButton() {
-		removeParameterButton = new Button(this, SWT.PUSH);
-		removeParameterButton.setImage(plugin.getImage(QueryParameterManagerComposite.class, "removeParameterButton", null));
-		removeParameterButton.setToolTipText("Remove the selected parameter(s).");
-		removeParameterButton.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				removeParameterButtonPressed();
-			}
-		});
-	}
-	private void removeParameterButtonPressed() {
-		IStructuredSelection selection = queryParameterTableComposite.getSelection();
-		if (selection.isEmpty())
-			return;
-
-		for (Object param : selection.toArray())
-			queryParameterManager.removeQueryParameter((QueryParameter)param);
-
-		queryParameterTableComposite.refresh();
+	public void removePropertyChangeListener(PropertyChangeListener listener) {
+		propertyChangeSupport.removePropertyChangeListener(listener);
 	}
 
-	private void createMoveParameterUpButton() {
-		moveParameterUpButton = new Button(this, SWT.PUSH);
-		moveParameterUpButton.setImage(plugin.getImage(QueryParameterManagerComposite.class, "moveParameterUpButton", null));
-		moveParameterUpButton.setToolTipText("Move the selected parameter(s) up. Indexes will be decreased appropriately.");
-		moveParameterUpButton.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				moveParameterUpButtonPressed();
-			}
-		});
-	}
-	private void moveParameterUpButtonPressed() {
-		IStructuredSelection selection = queryParameterTableComposite.getSelection();
-		if (selection.isEmpty())
-			return;
-
-		for (Object param : selection.toArray())
-			queryParameterManager.moveQueryParameterUp((QueryParameter)param);
-
-		queryParameterTableComposite.refresh();
+	public void addPropertyChangeListener(PropertyName propertyName, PropertyChangeListener listener) {
+		propertyChangeSupport.addPropertyChangeListener(propertyName.name(), listener);
 	}
 
-	private void createMoveParameterDownButton() {
-		moveParameterDownButton = new Button(this, SWT.PUSH);
-		moveParameterDownButton.setImage(plugin.getImage(QueryParameterManagerComposite.class, "moveParameterDownButton", null));
-		moveParameterDownButton.setToolTipText("Move the selected parameter(s) down. Indexes will be increased appropriately.");
-		moveParameterDownButton.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				moveParameterDownButtonPressed();
-			}
-		});
+	public void removePropertyChangeListener(PropertyName propertyName, PropertyChangeListener listener) {
+		propertyChangeSupport.removePropertyChangeListener(propertyName.name(), listener);
 	}
-	private void moveParameterDownButtonPressed() {
-		IStructuredSelection selection = queryParameterTableComposite.getSelection();
-		if (selection.isEmpty())
-			return;
 
-		Object[] paramArray = selection.toArray();
-		for (int i = paramArray.length - 1; i >= 0; --i)
-			queryParameterManager.moveQueryParameterDown((QueryParameter)paramArray[i]);
+	@Override
+	public void addSelectionChangedListener(ISelectionChangedListener listener) {
+		selectionChangedListeners.add(listener);
+	}
 
-		queryParameterTableComposite.refresh();
+	@Override
+	public void removeSelectionChangedListener(ISelectionChangedListener listener) {
+		selectionChangedListeners.remove(listener);
+	}
+
+	@Override
+	public ISelection getSelection() {
+		return queryParameterTableComposite.getSelection();
+	}
+
+	@Override
+	public void setSelection(ISelection selection) {
+		queryParameterTableComposite.setSelection(selection);
 	}
 }

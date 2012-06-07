@@ -69,7 +69,7 @@ public class ResultSetTableView extends ViewPart implements LabelTextOptionsCont
 		display = parent.getDisplay();
 		resultSetTableComposite = new ResultSetTableComposite(parent, SWT.NONE);
 		resultSetTableComposite.addDisposeListener(disposeListener);
-		resultSetTableComposite.addPropertyChangeListener(ResultSetTableComposite.PropertyName.queryContext, activeQueryContextChangeListener);
+		resultSetTableComposite.addPropertyChangeListener(ResultSetTableComposite.PropertyName.queryContext, queryContextChangeListener);
 		getSite().registerContextMenu(resultSetTableComposite.getContextMenuManager(), resultSetTableComposite);
 		getSite().getPage().addPartListener(partListener);
 		getSite().setSelectionProvider(resultSetTableComposite);
@@ -137,7 +137,7 @@ public class ResultSetTableView extends ViewPart implements LabelTextOptionsCont
 //		addQueryContexts(queryContexts);
 //	}
 
-	private PropertyChangeListener activeQueryContextChangeListener = new PropertyChangeListener() {
+	private PropertyChangeListener queryContextChangeListener = new PropertyChangeListener() {
 		@Override
 		public void propertyChange(PropertyChangeEvent evt) {
 			QueryContext queryContext = (QueryContext) evt.getNewValue();

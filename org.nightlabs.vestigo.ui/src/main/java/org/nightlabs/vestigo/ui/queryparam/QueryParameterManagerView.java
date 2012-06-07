@@ -45,6 +45,7 @@ public class QueryParameterManagerView extends ViewPart
 		queryParameterManagerComposite = new QueryParameterManagerComposite(parent, SWT.NONE);
 		queryParameterManagerComposite.addDisposeListener(disposeListener);
 		getSite().getPage().addPartListener(partListener);
+		getSite().setSelectionProvider(queryParameterManagerComposite);
 
 		// in case, this view is opened AFTER the query browser editor, we register the currently active editor
 		IEditorPart activeEditor = getSite().getPage().getActiveEditor();
@@ -140,4 +141,12 @@ public class QueryParameterManagerView extends ViewPart
 			getSite().getPage().removePartListener(partListener);
 		}
 	};
+
+	public QueryParameterManager getQueryParameterManager() {
+		return queryParameterManagerComposite.getQueryParameterManager();
+	}
+
+	public QueryParameterManagerComposite getQueryParameterManagerComposite() {
+		return queryParameterManagerComposite;
+	}
 }

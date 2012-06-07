@@ -127,7 +127,7 @@ public class QueryParameterManager
 			throw new IllegalStateException("Thread mismatch! This method must be called on the *SAME* SWT UI thread as this instance was created!");
 	}
 
-	public QueryEditorManager getQueryBrowserManager() {
+	public QueryEditorManager getQueryEditorManager() {
 		assertUIThread();
 		return queryEditorManager;
 	}
@@ -390,23 +390,29 @@ public class QueryParameterManager
 		propertyChangeSupport.firePropertyChange(PropertyName.queryParametersSwapped.name(), queryParameter1, queryParameter2);
 	}
 
-	public void moveQueryParameterUp(QueryParameter queryParameter)
+	public boolean moveQueryParameterUp(QueryParameter queryParameter)
 	{
 		int idx = queryParameters.indexOf(queryParameter);
 		if (idx < 0)
 			throw new IllegalArgumentException("queryParameter not in our list!");
 
-		if (idx > 0)
+		if (idx > 0) {
 			swapQueryParameters(queryParameter, queryParameters.get(idx - 1));
+			return true;
+		}
+		return false;
 	}
 
-	public void moveQueryParameterDown(QueryParameter queryParameter) {
+	public boolean moveQueryParameterDown(QueryParameter queryParameter) {
 		int idx = queryParameters.indexOf(queryParameter);
 		if (idx < 0)
 			throw new IllegalArgumentException("queryParameter not in our list!");
 
-		if (idx < queryParameters.size() - 1)
+		if (idx < queryParameters.size() - 1) {
 			swapQueryParameters(queryParameter, queryParameters.get(idx + 1));
+			return true;
+		}
+		return false;
 	}
 
 	public void addPropertyChangeListener(PropertyChangeListener listener) {

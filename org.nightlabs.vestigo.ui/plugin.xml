@@ -290,7 +290,54 @@
                menubarPath="additions">
          </action>
       </viewContribution>
+   </extension>
 
+   <extension
+         point="org.eclipse.ui.viewActions">
+      <viewContribution
+            id="org.nightlabs.vestigo.ui.viewContribution_QueryParameterManagerView"
+            targetID="org.nightlabs.vestigo.ui.queryparam.QueryParameterManagerView">
+         <action
+               class="org.nightlabs.vestigo.ui.queryparam.MoveParameterDownAction"
+               icon="icons/org.nightlabs.vestigo.ui.queryparam/MoveParameterDownAction.16x16.png"
+               id="org.nightlabs.vestigo.ui.queryparam.MoveParameterDownAction"
+               label="Move down"
+               style="push"
+               toolbarPath="additions"
+               tooltip="Move the selected query parameter(s) down.">
+         </action>
+         <action
+               class="org.nightlabs.vestigo.ui.queryparam.MoveParameterUpAction"
+               icon="icons/org.nightlabs.vestigo.ui.queryparam/MoveParameterUpAction.16x16.png"
+               id="org.nightlabs.vestigo.ui.queryparam.MoveParameterUpAction"
+               label="Move up"
+               style="push"
+               toolbarPath="additions"
+               tooltip="Move the selected query parameter(s) up.">
+         </action>
+         <action
+               class="org.nightlabs.vestigo.ui.queryparam.RemoveParameterAction"
+               icon="icons/org.nightlabs.vestigo.ui.queryparam/RemoveParameterAction.16x16.png"
+               id="org.nightlabs.vestigo.ui.queryparam.RemoveParameterAction"
+               label="Remove"
+               style="push"
+               toolbarPath="additions"
+               tooltip="Remove the selected query parameter(s).">
+         </action>
+         <action
+               class="org.nightlabs.vestigo.ui.queryparam.AddParameterAction"
+               icon="icons/org.nightlabs.vestigo.ui.queryparam/AddParameterAction.16x16.png"
+               id="org.nightlabs.vestigo.ui.queryparam.AddParameterAction"
+               label="Add"
+               style="push"
+               toolbarPath="additions"
+               tooltip="Add a new query parameter.">
+         </action>
+      </viewContribution>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.viewActions">
       <viewContribution
             id="org.nightlabs.vestigo.ui.viewContribution_ResultSetTableView"
             targetID="org.nightlabs.vestigo.ui.resultsettable.ResultSetTableView">
@@ -359,7 +406,10 @@
                <!-- This action's label is modified programmatically - no need to reference the plugin.properties! -->
          </action>
       </viewContribution>
+   </extension>
 
+   <extension
+         point="org.eclipse.ui.viewActions">
       <viewContribution
             id="org.nightlabs.vestigo.ui.viewContribution_ObjectGraphDetailTreeView"
             targetID="org.nightlabs.vestigo.ui.detailtree.ObjectGraphDetailTreeView">
