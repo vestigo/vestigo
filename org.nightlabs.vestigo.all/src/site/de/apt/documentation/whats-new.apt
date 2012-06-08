@@ -13,6 +13,9 @@ Was ist neu?
 
 	* Fehlerbeseitigung: Unlesbares 'Getting started' Cheat-Sheet korrigiert.
 
+	* Fehlerbeseitigung: Der Fehler "SWTException: Widget is disposed", der in
+	außergewöhnlichen Situationen durch QueryExecutionStatusContribution verursacht wurde, ist beseitigt.
+
 	[]
 
 * 0.9.2

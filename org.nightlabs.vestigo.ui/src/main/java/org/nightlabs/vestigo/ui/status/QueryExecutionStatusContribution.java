@@ -32,6 +32,7 @@ public class QueryExecutionStatusContribution extends WorkbenchWindowControlCont
 {
 	private static final Logger logger = LoggerFactory.getLogger(QueryExecutionStatusContribution.class);
 
+	private Composite control;
 	private Display display;
 	private Label statusLabel;
 	private ResultSetTableView resultSetTableView;
@@ -52,9 +53,9 @@ public class QueryExecutionStatusContribution extends WorkbenchWindowControlCont
 		control.addDisposeListener(new DisposeListener() {
 			@Override
 			public void widgetDisposed(DisposeEvent event) {
+				logger.debug("control.widgetDisposed: Entered.");
 				setResultSetTableView(null);
-				for (IWorkbenchPage page : pages)
-					page.removePartListener(partListener);
+				unregisterPageListenerAndPartListeners();
 			}
 		});
 
@@ -84,12 +85,28 @@ public class QueryExecutionStatusContribution extends WorkbenchWindowControlCont
 		} while (statusLabel.computeSize(SWT.DEFAULT, SWT.DEFAULT).x < computedSize.x);
 
 		getWorkbenchWindow().addPageListener(pageListener);
-		if (getWorkbenchWindow().getActivePage() != null) {
-			getWorkbenchWindow().getActivePage().addPartListener(partListener);
-			findResultSetTableView(getWorkbenchWindow().getActivePage());
+		IWorkbenchPage activePage = getWorkbenchWindow().getActivePage();
+		if (activePage != null) {
+			if (pages.add(activePage))
+				activePage.addPartListener(partListener);
+
+			findResultSetTableView(activePage);
 		}
 
+		this.control = control;
 		return control;
+	}
+
+	protected void unregisterPageListenerAndPartListeners() {
+		getWorkbenchWindow().removePageListener(pageListener);
+		for (IWorkbenchPage page : pages)
+			page.removePartListener(partListener);
+
+		// just to be sure, we iterate all pages.
+//		for (IWorkbenchPage page : getWorkbenchWindow().getPages())
+//			page.removePartListener(partListener);
+
+		pages.clear();
 	}
 
 	protected void findResultSetTableView(IWorkbenchPage page) {
@@ -119,6 +136,17 @@ public class QueryExecutionStatusContribution extends WorkbenchWindowControlCont
 
 		@Override
 		public void partClosed(IWorkbenchPart part) {
+			logger.debug("partListener.partClosed: Entered. part={}", part);
+			if (control == null || control.isDisposed()) {
+				if (control == null)
+					logger.warn("partListener.partClosed: control is null!");
+				else
+					logger.warn("partListener.partClosed: control is already disposed! Why the hell was there no dispose event?!");
+
+				unregisterPageListenerAndPartListeners();
+				return;
+			}
+
 			if (resultSetTableView == part) {
 				setResultSetTableView(null);
 			}
@@ -129,6 +157,17 @@ public class QueryExecutionStatusContribution extends WorkbenchWindowControlCont
 
 		@Override
 		public void partOpened(IWorkbenchPart part) {
+			logger.debug("partListener.partOpened: Entered. part={}", part);
+			if (control == null || control.isDisposed()) {
+				if (control == null)
+					logger.warn("partListener.partOpened: control is null!");
+				else
+					logger.warn("partListener.partOpened: control is already disposed! Why the hell was there no dispose event?!");
+
+				unregisterPageListenerAndPartListeners();
+				return;
+			}
+
 			if (part instanceof ResultSetTableView)
 				setResultSetTableView((ResultSetTableView) part);
 		}
@@ -139,17 +178,20 @@ public class QueryExecutionStatusContribution extends WorkbenchWindowControlCont
 	protected IPageListener pageListener = new IPageListener() {
 		@Override
 		public void pageOpened(IWorkbenchPage page) {
+			logger.debug("pageListener.pageOpened: Entered. page={}", page);
 			findResultSetTableView(page);
-			page.addPartListener(partListener);
-			pages.add(page);
+			if (pages.add(page))
+				page.addPartListener(partListener);
 		}
 		@Override
 		public void pageClosed(IWorkbenchPage page) {
+			logger.debug("pageListener.pageClosed: Entered. page={}", page);
 			page.removePartListener(partListener);
 			pages.remove(page);
 		}
 		@Override
 		public void pageActivated(IWorkbenchPage page) {
+			logger.debug("pageListener.pageActivated: Entered. page={}", page);
 			findResultSetTableView(page);
 		}
 	};

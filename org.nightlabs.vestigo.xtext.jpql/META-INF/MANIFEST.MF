@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.nightlabs.vestigo.xtext.jpql
 Bundle-Vendor: NightLabs Consulting GmbH
-Bundle-Version: 0.9.3.SNAPSHOT
+Bundle-Version: 0.9.3
 Bundle-SymbolicName: org.nightlabs.vestigo.xtext.jpql; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext;bundle-version="2.1.0";visibility:=reexport,
