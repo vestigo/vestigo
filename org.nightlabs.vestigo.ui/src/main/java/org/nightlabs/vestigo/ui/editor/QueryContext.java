@@ -112,7 +112,7 @@ public class QueryContext
 	private boolean closed = false;
 
 	public void close() {
-		logger.trace("[{}]close: Entered.", getQueryContextUniqueID());
+		logger.trace("[{}]close: Entered. closed={}", getQueryContextUniqueID(), closed);
 		synchronized(this) {
 			if (closed)
 				return;
@@ -174,5 +174,20 @@ public class QueryContext
 				+ ", error=" + error
 				+ ", connectionContext=" + connectionContext
 				+ ']';
+	}
+
+	public String getTitle() {
+		String editorInputName = null;
+		if (getQueryEditorManager() != null && getQueryEditorManager().getQueryEditor() != null && getQueryEditorManager().getQueryEditor().getEditorInput() != null)
+			editorInputName = getQueryEditorManager().getQueryEditor().getEditorInput().getName();
+
+		String connectionProfileName = null;
+		if (getConnectionProfile() != null)
+			connectionProfileName = getConnectionProfile().getName();
+
+		return String.format(
+				"%s - %s - %s",
+				editorInputName, getQueryContextID(), connectionProfileName
+		);
 	}
 }

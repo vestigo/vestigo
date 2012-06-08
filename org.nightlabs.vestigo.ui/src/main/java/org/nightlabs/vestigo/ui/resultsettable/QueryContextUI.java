@@ -4,15 +4,19 @@ import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.jface.viewers.TableViewer;
-import org.eclipse.swt.widgets.TabItem;
+import org.eclipse.swt.custom.CTabItem;
 import org.nightlabs.vestigo.ui.editor.QueryContext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class QueryContextUI
 {
+	private static final Logger logger = LoggerFactory.getLogger(QueryContextUI.class);
+
 	private List<ResultSetTableRow> selectedRows = Collections.emptyList();
 	private List<ResultSetTableCell> selectedCells = Collections.emptyList();
 
-	public QueryContextUI(QueryContext queryContext, TableViewer tableViewer, TabItem tabItem) {
+	public QueryContextUI(QueryContext queryContext, TableViewer tableViewer, CTabItem tabItem) {
 		if (queryContext == null)
 			throw new IllegalArgumentException("queryContext == null");
 
@@ -36,24 +40,49 @@ public class QueryContextUI
 		return tableViewer;
 	}
 
-	private TabItem tabItem;
+	private CTabItem tabItem;
 
-	public TabItem getTabItem() {
+	public CTabItem getTabItem() {
 		return tabItem;
 	}
 
 	private boolean disposed;
 
-	public void dispose() {
-		if (disposed)
-			return;
-		disposed = true;
+	public void disposeWithoutClosingQueryContext() {
+		logger.trace("[{}]disposeWithoutClosingQueryContext: Entered. disposed={}", getQueryContextUIUniqueID(), disposed);
+		synchronized(this) {
+			if (disposed)
+				return;
+			disposed = true;
+		}
+		logger.debug("[{}]disposeWithoutClosingQueryContext: Disposing.", getQueryContextUIUniqueID());
+		internalDisposeWithoutClosingQueryContext();
+	}
 
+	private void internalDisposeWithoutClosingQueryContext() {
+		logger.trace("[{}]internalDisposeWithoutClosingQueryContext: Disposing.", getQueryContextUIUniqueID());
+
+		// Must be done, because tabItem.dispose() only sets the control invisible (does not dispose it).
 		if (tabItem.getControl() != null)
 			tabItem.getControl().dispose();
 
-//		tableViewer.getTable().dispose();
 		tabItem.dispose();
+	}
+
+	public void disposeWithClosingQueryContext() {
+		logger.trace("[{}]disposeWithClosingQueryContext: Entered. disposed={}", getQueryContextUIUniqueID(), disposed);
+		synchronized(this) {
+			if (disposed)
+				return;
+			disposed = true;
+		}
+		logger.debug("[{}]disposeWithClosingQueryContext: Disposing.", getQueryContextUIUniqueID());
+		internalDisposeWithoutClosingQueryContext();
+		queryContext.close();
+	}
+
+	public String getQueryContextUIUniqueID() {
+		return Integer.toHexString(System.identityHashCode(this));
 	}
 
 	public List<ResultSetTableCell> getSelectedCells() {

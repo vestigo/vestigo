@@ -730,6 +730,25 @@ public abstract class QueryEditorManager
 		}
 	}
 
+	public static int getKeepQueryResultSetQuantity() {
+		IPreferenceStore preferenceStore = VestigoUIPlugin.getDefault().getPreferenceStore();
+		preferenceStore.setDefault(PREFERENCE_KEY_KEEP_QUERY_RESULT_SET_QUANTITY, PREFERENCE_DEFAULT_KEEP_QUERY_RESULT_SET_QUANTITY);
+		int keepQueryResultSetQuantity = preferenceStore.getInt(PREFERENCE_KEY_KEEP_QUERY_RESULT_SET_QUANTITY);
+		return keepQueryResultSetQuantity;
+	}
+
+	protected void closeOldQueryContextsIfNecessary() {
+		// Close the oldest query-contexts that are exceeding the number of result-sets to keep (1 QueryContext = 1 ResultSet).
+		int keepQueryResultSetQuantity = getKeepQueryResultSetQuantity();
+		// Ensure at least the one we just added is kept (minimum 1).
+		keepQueryResultSetQuantity = Math.max(1, keepQueryResultSetQuantity);
+		while (queryContextDeque.size() > keepQueryResultSetQuantity) {
+			QueryContext oldQueryContext = queryContextDeque.peekFirst();
+			oldQueryContext.close();
+			queryContexts = null;
+		}
+	}
+
 	public void executeQuery()
 	{
 		assertUIThread();
@@ -744,18 +763,9 @@ public abstract class QueryEditorManager
 			queryContextDeque.add(queryContext);
 			ConnectionContext connectionContext = getConnectionContext(connectionProfile);
 			connectionContext.addQueryContext(queryContext);
-
-			// Close the oldest connections that are exceeding the number of connections to keep.
-			IPreferenceStore preferenceStore = VestigoUIPlugin.getDefault().getPreferenceStore();
-			preferenceStore.setDefault(PREFERENCE_KEY_KEEP_QUERY_RESULT_SET_QUANTITY, PREFERENCE_DEFAULT_KEEP_QUERY_RESULT_SET_QUANTITY);
-			int keepQueryResultSetQuantity = preferenceStore.getInt(PREFERENCE_KEY_KEEP_QUERY_RESULT_SET_QUANTITY);
-			// Ensure at least the one we just added is kept (minimum 1).
-			keepQueryResultSetQuantity = Math.max(1, keepQueryResultSetQuantity);
-			while (queryContextDeque.size() > keepQueryResultSetQuantity) {
-				QueryContext oldQueryContext = queryContextDeque.peekFirst();
-				oldQueryContext.close();
-			}
 			queryContexts = null;
+
+			closeOldQueryContextsIfNecessary();
 		}
 
 		queryContext.setQueryEditorManager(this);
