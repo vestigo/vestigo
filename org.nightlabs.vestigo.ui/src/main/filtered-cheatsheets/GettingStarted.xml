@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>                                                                                                             
 <!--
 
     Vestigo - The JDO/JPA Query Tool And Browser - http://vestigo.nightlabs.com
@@ -17,7 +18,6 @@
     http://nightlabs.com
 
 -->
-<?xml version="1.0" encoding="UTF-8"?>                                                                                                             
 <cheatsheet title="Create a Vestigo connection profile and query">                                                                                          
    <intro>                                                                                                                                         
       <description>
