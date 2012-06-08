@@ -139,6 +139,14 @@
 						<br />
 						<a class="download_link" href="download/index.html">Download vestigo</a>
 					</p>
+					<p>
+						Wenn Sie schon Eclipse (z.B. als IDE) verwenden, können Sie Vestigo als Erweiterung installieren:
+						Hierzu ziehen Sie einfach das folgende Bild In Ihr laufendes Eclipse (Drag and Drop):
+						<br />
+						<a href='http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=293274' title='Drag and drop into a running Eclipse Indigo workspace to install Vestigo JDO/JPA Query Browser'>
+						<img src='http://marketplace.eclipse.org/misc/installbutton.png'/>
+						</a>
+					</p>
 				</td>
 			</tr>
 		</table>
