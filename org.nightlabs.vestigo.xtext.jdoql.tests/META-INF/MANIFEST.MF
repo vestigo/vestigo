@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.nightlabs.vestigo.xtext.jdoql.tests
 Bundle-Vendor: NightLabs Consulting GmbH
-Bundle-Version: 0.9.3
+Bundle-Version: 0.9.4.SNAPSHOT
 Bundle-SymbolicName: org.nightlabs.vestigo.xtext.jdoql.tests;singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.nightlabs.vestigo.xtext.jdoql,
