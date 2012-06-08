@@ -47,7 +47,9 @@ public class QueryExecutionStatusContribution extends WorkbenchWindowControlCont
 	protected Control createControl(Composite parent) {
 		display = parent.getDisplay();
 
-		parent.addDisposeListener(new DisposeListener() {
+		Composite control = new Composite(parent, SWT.NONE);
+
+		control.addDisposeListener(new DisposeListener() {
 			@Override
 			public void widgetDisposed(DisposeEvent event) {
 				setResultSetTableView(null);
@@ -56,7 +58,6 @@ public class QueryExecutionStatusContribution extends WorkbenchWindowControlCont
 			}
 		});
 
-		Composite control = new Composite(parent, SWT.NONE);
 		control.setLayout(new FillLayout());
 
 		statusLabel = new Label(control, SWT.NONE);
