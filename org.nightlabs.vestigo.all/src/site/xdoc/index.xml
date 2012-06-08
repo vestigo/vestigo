@@ -127,7 +127,7 @@
 				<td width="50%" valign="top">
 					<ul>
 						<li>No manual joining of SQL-tables. Query your data and browse the
-							results on object-level.</li>
+							results on the object-level.</li>
 						<li>Flexible connection management including support for many
 							application setups,
 							Eclipse JDT integration as well as maven dependency support.

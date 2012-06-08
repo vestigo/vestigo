@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <site>
-   <feature id="org.nightlabs.vestigo.ui.feature" url="features/org.nightlabs.vestigo.ui.feature_0.9.2.jar" version="0.9.2">
+   <feature id="org.nightlabs.vestigo.ui.feature" url="features/org.nightlabs.vestigo.ui.feature_0.9.3.qualifier.jar" version="0.9.3.qualifier">
       <category name="org.nightlabs.vestigo.category"/>
    </feature>
-   <feature id="org.nightlabs.vestigo.cumulus4j.ui.feature" url="features/org.nightlabs.vestigo.cumulus4j.ui.feature_0.9.2.jar" version="0.9.2">
+   <feature id="org.nightlabs.vestigo.cumulus4j.ui.feature" url="features/org.nightlabs.vestigo.cumulus4j.ui.feature_0.9.3.qualifier.jar" version="0.9.3.qualifier">
       <category name="org.nightlabs.vestigo.category"/>
    </feature>
-   <feature id="org.nightlabs.vestigo.jdt.ui.feature" url="features/org.nightlabs.vestigo.jdt.ui.feature_0.9.2.jar" version="0.9.2">
+   <feature id="org.nightlabs.vestigo.jdt.ui.feature" url="features/org.nightlabs.vestigo.jdt.ui.feature_0.9.3.qualifier.jar" version="0.9.3.qualifier">
       <category name="org.nightlabs.vestigo.category"/>
    </feature>
-   <feature id="org.nightlabs.vestigo.log4j.ui.feature" url="features/org.nightlabs.vestigo.log4j.ui.feature_0.9.2.jar" version="0.9.2">
+   <feature id="org.nightlabs.vestigo.log4j.ui.feature" url="features/org.nightlabs.vestigo.log4j.ui.feature_0.9.3.qualifier.jar" version="0.9.3.qualifier">
       <category name="org.nightlabs.vestigo.category"/>
    </feature>
-   <feature id="org.nightlabs.vestigo.maven.ui.feature" url="features/org.nightlabs.vestigo.maven.ui.feature_0.9.2.jar" version="0.9.2">
+   <feature id="org.nightlabs.vestigo.maven.ui.feature" url="features/org.nightlabs.vestigo.maven.ui.feature_0.9.3.qualifier.jar" version="0.9.3.qualifier">
       <category name="org.nightlabs.vestigo.category"/>
    </feature>
    <category-def label="Vestigo" name="org.nightlabs.vestigo.category"/>

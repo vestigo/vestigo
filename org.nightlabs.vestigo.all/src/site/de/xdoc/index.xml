@@ -108,7 +108,7 @@
 			<tr>
 				<td width="50%" valign="top">
 					<ul>
-						<li>Keine manuelle Joins von SQL-Tabellen mehr! Fragen Sie Ihre Daten auf Objekt-Ebene ab
+						<li>Keine manuellen Joins von SQL-Tabellen mehr! Fragen Sie Ihre Daten auf Objekt-Ebene ab
 						    und navigieren Sie durch den Objektgraphen.</li>
 						<li>Flexibles Connection-Management, das viele Anwendungsszenarien unterstützt (Java EE, Webapplikationen) 
 							und darüber hinaus eine Integration für das Eclipse JDT und Maven bietet.
