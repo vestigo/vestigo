@@ -114,9 +114,9 @@
       	 <br/><br/> 
       	 Change the entry with the key <b>javax.persistence.jdbc.url</b> to match the path of the
       	 folder you've extracted the demo project to. For example on Linux the the new value might look like this 
-      	 <b>jdbc:derby:/home/myuser/tmp/vestigo-demo/derby/vestigoDemoMovieJPA;create=true</b>. 
+      	 <b>jdbc:derby:/home/myuser/tmp/vestigo-demo/derby/vestigoDemoMovieJPA</b>. 
       	 On Windows the Entry might look something like the following: 
-      	 <b>jdbc:derby:C:\Users\myuser\Desktop\vestigo-demo\derby\vestigoDemoMovieJPA;create=true</b>
+      	 <b>jdbc:derby:C:\Users\myuser\Desktop\vestigo-demo\derby\vestigoDemoMovieJPA</b>
       	 <br/><br/>
       	 Note that after changing the value the entry will be automatically checked and displayed with a fat font indicating
       	 that you have overwritten the value from the persistence unit.
