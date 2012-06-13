@@ -51,7 +51,7 @@
             skip="true">
       	<command
             required="false"
-            serialization="org.eclipse.ui.browser.openBrowser(url=http://vestigo.nightlabs.com/latest-dev/download/p2/artifacts.jar)"/>
+            serialization="org.eclipse.ui.browser.openBrowser(url=http://vestigo.nightlabs.com/${project.version}/download/demo/org.nightlabs.vestigo.demo-${project.version}-bin.zip)"/>
       </subitem>
       <subitem
             label="Close the browser that was used to download the demo project."
