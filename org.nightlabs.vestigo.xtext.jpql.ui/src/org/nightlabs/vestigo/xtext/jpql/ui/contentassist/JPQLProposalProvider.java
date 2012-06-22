@@ -20,22 +20,53 @@
 */
 package org.nightlabs.vestigo.xtext.jpql.ui.contentassist;
 
+import java.io.File;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.lang.reflect.Method;
+import java.net.URI;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.IdentityHashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.SortedMap;
 import java.util.SortedSet;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EcoreEList;
+import org.eclipse.emf.ecore.xmi.XMLResource;
+import org.eclipse.jface.text.TextViewer;
+import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.RuleCall;
+import org.eclipse.xtext.nodemodel.ILeafNode;
+import org.eclipse.xtext.nodemodel.INode;
+import org.eclipse.xtext.parser.IParseResult;
+import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
-import org.nightlabs.vestigo.core.oda.PersistableClass;
 import org.nightlabs.vestigo.core.oda.ConnectionProfile;
+import org.nightlabs.vestigo.core.oda.PersistableClass;
+import org.nightlabs.vestigo.core.oda.PersistableProperty;
 import org.nightlabs.vestigo.ui.editor.DocumentContextManager;
 import org.nightlabs.vestigo.ui.editor.QueryEditorManager;
 import org.nightlabs.vestigo.ui.queryparam.QueryParameter;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.FromClass;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.FromClause;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.FromEntry;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.SelectStatement;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * see http://www.eclipse.org/Xtext/documentation/latest/xtext.html#contentAssist on how to customize content assistant
  */
 public class JPQLProposalProvider extends AbstractJPQLProposalProvider
 {
+	private static final Logger logger = LoggerFactory.getLogger(JPQLProposalProvider.class);
+
 	@Override
 	public void complete_FromClass(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor)
 	{
@@ -55,6 +86,136 @@ public class JPQLProposalProvider extends AbstractJPQLProposalProvider
 		}
 	}
 
+	@Override
+	public void completeAliasAttributeExpression_Attributes(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor)
+	{
+		super.completeAliasAttributeExpression_Attributes(model, assignment, context, acceptor);
+
+//		dumpObject(context);
+
+		QueryEditorManager queryEditorManager = DocumentContextManager.sharedInstance().getQueryEditorManager(context.getDocument(), true);
+		ConnectionProfile vestigoConnectionProfile = queryEditorManager.getVestigoConnectionProfileAskingUserIfNecessary();
+		if (vestigoConnectionProfile != null) {
+
+			List<String> candidateClassNames = getCandidateClassNamesForFieldCompletion(model, assignment, context, vestigoConnectionProfile);
+			List<PersistableClass> persistableClasses = resolvePersistableClasses(vestigoConnectionProfile, candidateClassNames);
+			for (PersistableClass persistableClass : persistableClasses) {
+				for (PersistableProperty persistableProperty : persistableClass.getPersistableProperties()) {
+					acceptor.accept(createCompletionProposal(persistableProperty.getName(), context));
+				}
+			}
+		}
+		if (true)
+			return;
+
+		System.out.println();
+		System.out.println(">>>");
+		System.out.println(context.getCurrentNode().getText());
+		System.out.println("<<<");
+		INode previousSibling = context.getCurrentNode().getPreviousSibling();
+		System.out.println("+++");
+		System.out.println(previousSibling);
+		if (previousSibling != null) {
+			System.out.println(previousSibling.getText());
+			System.out.println(previousSibling.getSemanticElement());
+			Iterable<ILeafNode> leafNodes = previousSibling.getLeafNodes();
+			for (ILeafNode leafNode : leafNodes) {
+				System.out.println(leafNode);
+				System.out.println(leafNode.getText());
+			}
+
+//				INode previousSibling2 = previousSibling.getPreviousSibling();
+//				System.out.println(previousSibling2);
+//				if (previousSibling2 != null) {
+//					System.out.println(previousSibling2.getText());
+//					System.out.println(previousSibling2.getSemanticElement());
+//
+//					INode previousSibling3 = previousSibling2.getPreviousSibling();
+//					System.out.println(previousSibling3);
+//					if (previousSibling3 != null) {
+//						System.out.println(previousSibling3.getText());
+//						System.out.println(previousSibling3.getPreviousSibling());
+//						System.out.println(previousSibling3.getSemanticElement());
+//					}
+//				}
+			System.out.println("+++");
+
+			System.out.println(context.getCurrentNode().getOffset());
+			System.out.println(context.getCurrentNode().getLeafNodes());
+
+			if (context.getCurrentNode().getSyntaxErrorMessage() != null) {
+				System.out.println(context.getCurrentNode().getSyntaxErrorMessage().getIssueData());
+				System.out.println(context.getCurrentNode().getSyntaxErrorMessage().getMessage());
+			}
+
+			if (previousSibling.getSyntaxErrorMessage() != null) {
+				System.out.println(previousSibling.getSyntaxErrorMessage().getIssueData());
+				System.out.println(previousSibling.getSyntaxErrorMessage().getMessage());
+			}
+
+			INode nextSibling = context.getCurrentNode().getNextSibling();
+
+			if (nextSibling.getSyntaxErrorMessage() != null) {
+				System.out.println(nextSibling.getSyntaxErrorMessage().getIssueData());
+				System.out.println(nextSibling.getSyntaxErrorMessage().getMessage());
+			}
+
+			if (context.getCurrentNode().getParent().getSyntaxErrorMessage() != null) {
+				System.out.println(context.getCurrentNode().getParent().getSyntaxErrorMessage().getIssueData());
+				System.out.println(context.getCurrentNode().getParent().getSyntaxErrorMessage().getMessage());
+			}
+
+			System.out.println("---");
+			System.out.println(nextSibling);
+			if (nextSibling != null) {
+				System.out.println(nextSibling.getText());
+			}
+			System.out.println("---");
+		}
+	}
+
+	protected List<PersistableClass> resolvePersistableClasses(ConnectionProfile vestigoConnectionProfile, Collection<String> classNames) {
+		SortedMap<String, PersistableClass> queryableCandidateClassMap = vestigoConnectionProfile.getQueryableCandidateClassMap();
+		List<PersistableClass> result = new ArrayList<PersistableClass>(classNames.size());
+		for (String className : classNames) {
+			PersistableClass persistableClass = queryableCandidateClassMap.get(className);
+			if (persistableClass == null)
+				logger.warn("resolvePersistableClasses: vestigoConnectionProfile.queryableCandidateClassMap does not contain className={}", className);
+			else
+				result.add(persistableClass);
+		}
+		return result;
+	}
+
+	protected List<String> getCandidateClassNamesForFieldCompletion(EObject model, Assignment assignment, ContentAssistContext context, ConnectionProfile vestigoConnectionProfile) {
+		List<String> result = new LinkedList<String>();
+		XtextResource contextResource = context.getResource();
+		if (contextResource == null)
+			return result;
+
+		IParseResult parseResult = contextResource.getParseResult();
+		if (parseResult == null)
+			return result;
+
+		EObject rootASTElement = parseResult.getRootASTElement();
+		if (rootASTElement instanceof SelectStatement) {
+			SelectStatement selectStatement = (SelectStatement) rootASTElement;
+			FromClause fromClause = selectStatement.getFromClause();
+			if (fromClause == null)
+				return result;
+
+			for (FromEntry fromEntry : fromClause.getFromEntries()) {
+				if (fromEntry instanceof FromClass) {
+					FromClass fromClass = (FromClass) fromEntry;
+					String type = fromClass.getType();
+					result.add(type);
+				}
+			}
+		}
+
+		return result;
+	}
+
 	private void createCompletionProposalsFromCandidateClasses(ContentAssistContext context, ICompletionProposalAcceptor acceptor)
 	{
 		QueryEditorManager queryEditorManager = DocumentContextManager.sharedInstance().getQueryEditorManager(context.getDocument(), true);
@@ -63,6 +224,130 @@ public class JPQLProposalProvider extends AbstractJPQLProposalProvider
 			SortedSet<PersistableClass> classes = vestigoConnectionProfile.getQueryableCandidateClasses();
 			for (PersistableClass persistableClass : classes)
 				acceptor.accept(createCompletionProposal(persistableClass.getName(), context));
+		}
+	}
+
+	protected void dumpObject(Object object) {
+		List<String> matchingPaths = new LinkedList<String>();
+		dumpObject(object, new LinkedList<String>(), new IdentityHashMap<Object, Void>(), matchingPaths );
+		System.out.println(matchingPaths);
+	}
+
+	private static final boolean printStacks = false;
+
+	protected void dumpObject(Object object, List<String> path, IdentityHashMap<Object, Void> processed, List<String> matchingPaths) {
+		if (path.size() > 200)
+			return;
+
+		if (object == null)
+			return;
+
+		if (processed.containsKey(object))
+			return;
+
+		processed.put(object, null);
+
+		String objectString = object.toString();
+
+		if (objectString != null && (objectString.toLowerCase().contains("krexport") || objectString.toLowerCase().contains("receipt"))) {
+			matchingPaths.add(path + " => " + objectString);
+			System.out.println(path + " => " + objectString);
+		}
+
+//		System.out.println(path + " => " + objectString);
+
+		if (object instanceof String
+				|| object instanceof Boolean
+				|| object instanceof Character
+				|| object instanceof Class
+				|| object instanceof File
+				|| object instanceof Number
+				|| object instanceof URI
+				|| object instanceof URL
+				|| object instanceof InputStream
+				|| object instanceof OutputStream
+				|| object instanceof TextViewer
+				|| object instanceof XMLResource)
+			return;
+
+		if (object instanceof Iterable) {
+			Iterable<?> c = (Iterable<?>) object;
+			int index = -1;
+			for (Object element : c) {
+				++index;
+				path.add("[" + index + ']');
+				try {
+					dumpObject(element, path, processed, matchingPaths);
+				} catch (Exception x) {
+					if (printStacks)
+						x.printStackTrace();
+				} finally {
+					path.remove(path.size() - 1);
+				}
+			}
+			return;
+		}
+
+		if (object instanceof Map) {
+			Map<?, ?> m = (Map<?, ?>) object;
+			int index = -1;
+			for (Map.Entry<?, ?> me : m.entrySet()) {
+				++index;
+				path.add("[k" + index + ']');
+				try {
+					dumpObject(me.getKey(), path, processed, matchingPaths);
+				} catch (Exception x) {
+					x.printStackTrace();
+				} finally {
+					path.remove(path.size() - 1);
+				}
+				path.add("[v" + index + ']');
+				try {
+					dumpObject(me.getValue(), path, processed, matchingPaths);
+				} catch (Exception x) {
+					if (printStacks)
+						x.printStackTrace();
+				} finally {
+					path.remove(path.size() - 1);
+				}
+			}
+			return;
+		}
+
+		path.add(object.getClass().getName());
+		try {
+			for (Method method : object.getClass().getMethods()) {
+				if (Void.class.isAssignableFrom(method.getReturnType()))
+					continue;
+
+				if (method.getParameterTypes().length != 0)
+					continue;
+
+				if ("hashCode".equals(method.getName())
+						|| "notify".equals(method.getName())
+						|| "notifyAll".equals(method.getName())
+						|| "wait".equals(method.getName())
+
+						|| "copy".equals(method.getName())
+						|| "run".equals(method.getName()))
+					continue;
+
+				if (object instanceof EcoreEList && "unset".equals(method.getName()))
+					continue;
+
+				path.add(method.getName());
+				try {
+					Object methodResult = method.invoke(object, (Object[])null);
+					dumpObject(methodResult, path, processed, matchingPaths);
+				} catch (Exception x) {
+					if (printStacks)
+						x.printStackTrace();
+				} finally {
+					path.remove(path.size() - 1);
+				}
+			}
+		} finally {
+			path.remove(path.size() - 1);
 		}
 	}
 }
