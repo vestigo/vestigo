@@ -459,7 +459,12 @@ public abstract class ConnectionProfile
 		return classes;
 	}
 
-	protected abstract boolean isPersistableField(Field field);
+	protected boolean isPersistableField(Field field) {
+		// We check for the prefix 'jdo' in both JDO and JPA, because DataNucleus enhances JPA entities
+		// according to the JDO standard (which is allowed in JPA, because JPA does not specify the enhancement
+		// (while JDO does)).
+		return !field.getName().startsWith("jdo");
+	}
 
 	protected Class<? extends Annotation> getAnnotationClass(String name) {
 		try {

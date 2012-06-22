@@ -129,6 +129,9 @@ public class JPAConnectionProfile extends ConnectionProfile
 
 	@Override
 	protected boolean isPersistableField(Field field) {
+		if (!super.isPersistableField(field))
+			return false;
+
 		if ((field.getModifiers() & Modifier.TRANSIENT) != 0)
 			return false;
 

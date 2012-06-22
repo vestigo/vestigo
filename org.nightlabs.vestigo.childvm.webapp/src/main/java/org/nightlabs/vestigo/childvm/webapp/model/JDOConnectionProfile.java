@@ -188,6 +188,9 @@ public class JDOConnectionProfile extends ConnectionProfile
 
 	@Override
 	protected boolean isPersistableField(Field field) {
+		if (!super.isPersistableField(field))
+			return false;
+
 		if (field.isAnnotationPresent(getAnnotationClass("javax.jdo.annotations.NotPersistent")))
 			return false;
 

@@ -20,28 +20,16 @@
 */
 package org.nightlabs.vestigo.xtext.jpql.ui.contentassist;
 
-import java.io.File;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.lang.reflect.Method;
-import java.net.URI;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.IdentityHashMap;
-import java.util.LinkedList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.SortedMap;
 import java.util.SortedSet;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.EcoreEList;
-import org.eclipse.emf.ecore.xmi.XMLResource;
-import org.eclipse.jface.text.TextViewer;
 import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.RuleCall;
-import org.eclipse.xtext.nodemodel.ILeafNode;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.parser.IParseResult;
 import org.eclipse.xtext.resource.XtextResource;
@@ -57,6 +45,7 @@ import org.nightlabs.vestigo.xtext.jpql.jPQL.FromClass;
 import org.nightlabs.vestigo.xtext.jpql.jPQL.FromClause;
 import org.nightlabs.vestigo.xtext.jpql.jPQL.FromEntry;
 import org.nightlabs.vestigo.xtext.jpql.jPQL.SelectStatement;
+import org.nightlabs.vestigo.xtext.jpql.jPQL.VariableDeclaration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -86,109 +75,52 @@ public class JPQLProposalProvider extends AbstractJPQLProposalProvider
 		}
 	}
 
-	@Override
-	public void completeAliasAttributeExpression_Attributes(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor)
-	{
-		super.completeAliasAttributeExpression_Attributes(model, assignment, context, acceptor);
+	/**
+	 * Get the tokens for which we currently want field-content-assist in left-to-right order.
+	 * If the query was "SELECT entity.field00.field01.| FROM my.package.Entity entity" and
+	 * the cursor was at the position represented by "|" when Ctrl+Space was pressed, then
+	 * the result is ["entity", ".", "field00", ".", "field01", "."].
+	 *
+	 * @return tokens for which we currently want field-content-assist in left-to-right order.
+	 */
+	protected List<String> getCurrentAliasAttributeTokens(ContentAssistContext context) {
+		ArrayList<String> result = new ArrayList<String>();
 
-//		dumpObject(context);
+		INode lastCompleteNode = context.getLastCompleteNode();
+		if (lastCompleteNode == null) {
+			logger.warn("getCurrentAliasAttributeTokens: lastCompleteNode == null");
+			return result;
+		}
 
-		QueryEditorManager queryEditorManager = DocumentContextManager.sharedInstance().getQueryEditorManager(context.getDocument(), true);
-		ConnectionProfile vestigoConnectionProfile = queryEditorManager.getVestigoConnectionProfileAskingUserIfNecessary();
-		if (vestigoConnectionProfile != null) {
-
-			List<String> candidateClassNames = getCandidateClassNamesForFieldCompletion(model, assignment, context, vestigoConnectionProfile);
-			List<PersistableClass> persistableClasses = resolvePersistableClasses(vestigoConnectionProfile, candidateClassNames);
-			for (PersistableClass persistableClass : persistableClasses) {
-				for (PersistableProperty persistableProperty : persistableClass.getPersistableProperties()) {
-					acceptor.accept(createCompletionProposal(persistableProperty.getName(), context));
+		INode previousSibling = lastCompleteNode;
+		int previousSiblingIndex = -1;
+		do {
+			++previousSiblingIndex;
+			if (previousSibling != null) {
+				String text = previousSibling.getText();
+				if (text == null)
+					logger.warn("getCurrentAliasAttributeTokens: previousSibling[{}].getText() == null :: result={}", previousSiblingIndex, result);
+				else {
+					if (!text.trim().isEmpty())
+						result.add(text);
 				}
 			}
-		}
-		if (true)
-			return;
+			previousSibling = previousSibling.getPreviousSibling();
+		} while (previousSibling != null);
 
-		System.out.println();
-		System.out.println(">>>");
-		System.out.println(context.getCurrentNode().getText());
-		System.out.println("<<<");
-		INode previousSibling = context.getCurrentNode().getPreviousSibling();
-		System.out.println("+++");
-		System.out.println(previousSibling);
-		if (previousSibling != null) {
-			System.out.println(previousSibling.getText());
-			System.out.println(previousSibling.getSemanticElement());
-			Iterable<ILeafNode> leafNodes = previousSibling.getLeafNodes();
-			for (ILeafNode leafNode : leafNodes) {
-				System.out.println(leafNode);
-				System.out.println(leafNode.getText());
-			}
+		if (result.isEmpty())
+			logger.warn("getCurrentAliasAttributeTokens: result is empty!");
 
-//				INode previousSibling2 = previousSibling.getPreviousSibling();
-//				System.out.println(previousSibling2);
-//				if (previousSibling2 != null) {
-//					System.out.println(previousSibling2.getText());
-//					System.out.println(previousSibling2.getSemanticElement());
-//
-//					INode previousSibling3 = previousSibling2.getPreviousSibling();
-//					System.out.println(previousSibling3);
-//					if (previousSibling3 != null) {
-//						System.out.println(previousSibling3.getText());
-//						System.out.println(previousSibling3.getPreviousSibling());
-//						System.out.println(previousSibling3.getSemanticElement());
-//					}
-//				}
-			System.out.println("+++");
-
-			System.out.println(context.getCurrentNode().getOffset());
-			System.out.println(context.getCurrentNode().getLeafNodes());
-
-			if (context.getCurrentNode().getSyntaxErrorMessage() != null) {
-				System.out.println(context.getCurrentNode().getSyntaxErrorMessage().getIssueData());
-				System.out.println(context.getCurrentNode().getSyntaxErrorMessage().getMessage());
-			}
-
-			if (previousSibling.getSyntaxErrorMessage() != null) {
-				System.out.println(previousSibling.getSyntaxErrorMessage().getIssueData());
-				System.out.println(previousSibling.getSyntaxErrorMessage().getMessage());
-			}
-
-			INode nextSibling = context.getCurrentNode().getNextSibling();
-
-			if (nextSibling.getSyntaxErrorMessage() != null) {
-				System.out.println(nextSibling.getSyntaxErrorMessage().getIssueData());
-				System.out.println(nextSibling.getSyntaxErrorMessage().getMessage());
-			}
-
-			if (context.getCurrentNode().getParent().getSyntaxErrorMessage() != null) {
-				System.out.println(context.getCurrentNode().getParent().getSyntaxErrorMessage().getIssueData());
-				System.out.println(context.getCurrentNode().getParent().getSyntaxErrorMessage().getMessage());
-			}
-
-			System.out.println("---");
-			System.out.println(nextSibling);
-			if (nextSibling != null) {
-				System.out.println(nextSibling.getText());
-			}
-			System.out.println("---");
-		}
-	}
-
-	protected List<PersistableClass> resolvePersistableClasses(ConnectionProfile vestigoConnectionProfile, Collection<String> classNames) {
-		SortedMap<String, PersistableClass> queryableCandidateClassMap = vestigoConnectionProfile.getQueryableCandidateClassMap();
-		List<PersistableClass> result = new ArrayList<PersistableClass>(classNames.size());
-		for (String className : classNames) {
-			PersistableClass persistableClass = queryableCandidateClassMap.get(className);
-			if (persistableClass == null)
-				logger.warn("resolvePersistableClasses: vestigoConnectionProfile.queryableCandidateClassMap does not contain className={}", className);
-			else
-				result.add(persistableClass);
-		}
+		Collections.reverse(result);
 		return result;
 	}
 
-	protected List<String> getCandidateClassNamesForFieldCompletion(EObject model, Assignment assignment, ContentAssistContext context, ConnectionProfile vestigoConnectionProfile) {
-		List<String> result = new LinkedList<String>();
+	protected Map<String, String> getAlias2EntityNameMap(ContentAssistContext context)
+	{
+		if (context == null)
+			throw new IllegalArgumentException("context == null");
+
+		Map<String, String> result = new HashMap<String, String>();
 		XtextResource contextResource = context.getResource();
 		if (contextResource == null)
 			return result;
@@ -208,12 +140,107 @@ public class JPQLProposalProvider extends AbstractJPQLProposalProvider
 				if (fromEntry instanceof FromClass) {
 					FromClass fromClass = (FromClass) fromEntry;
 					String type = fromClass.getType();
-					result.add(type);
+					VariableDeclaration variable = fromClass.getVariable();
+					if (variable == null) {
+						logger.warn("getAlias2EntityNameMap: variable == null! type={}", type);
+						continue;
+					}
+					String variableName = variable.getName();
+					if (type == null) {
+						logger.warn("getAlias2EntityNameMap: type == null! variableName={} variable={}", variableName, variable);
+						continue;
+					}
+					if (variableName == null) {
+						logger.warn("getAlias2EntityNameMap: variableName == null! type={} variable={}", type, variable);
+						continue;
+					}
+					result.put(variableName, type);
 				}
 			}
 		}
 
 		return result;
+	}
+
+	protected List<String> getAvailableAttributes(ContentAssistContext context, List<String> aliasAttributeTokens)
+	{
+		if (context == null)
+			throw new IllegalArgumentException("context == null");
+
+		if (aliasAttributeTokens == null)
+			throw new IllegalArgumentException("aliasAttributeTokens == null");
+
+		ArrayList<String> result = new ArrayList<String>();
+		if (aliasAttributeTokens.isEmpty())
+			return result;
+
+		Map<String, String> alias2EntityNameMap = getAlias2EntityNameMap(context);
+		String firstAliasAttributeToken = aliasAttributeTokens.get(0);
+		String entityName = alias2EntityNameMap.get(firstAliasAttributeToken);
+		if (entityName == null) {
+			logger.warn("getAvailableAttributes: alias2EntityNameMap.get(firstAliasAttributeToken) returned null. firstAliasAttributeToken={}", firstAliasAttributeToken);
+			// TODO for JDO, we must assume "this" here (if we're in no sub-query? have to check sub-query-situation in JDO)!!! For JPA, there is no 'this'.
+			return result;
+		}
+		List<String> attributePathWithoutEntityName = new ArrayList<String>(aliasAttributeTokens.size() - 1);
+		boolean first = true;
+		for (String aliasAttributeToken : aliasAttributeTokens) {
+			if (first) {
+				first = false;
+				continue; // skip first = entityName
+			}
+			aliasAttributeToken = aliasAttributeToken.trim();
+
+			if (".".equals(aliasAttributeToken) || aliasAttributeToken.isEmpty())
+				continue;
+
+			attributePathWithoutEntityName.add(aliasAttributeToken);
+		}
+
+		PersistableClass entityClass = getPersistableClass(context, entityName); // TODO in JPA, entities can have annotated or simple names - in JDO, there might be imports and non-qualified class-names
+		if (entityClass == null) {
+			logger.warn("getAvailableAttributes: entityName='{}' does not reference a PersistableClass.", firstAliasAttributeToken);
+			return result;
+		}
+
+		PersistableClass persistableClass = entityClass;
+		for (String attributePathElement : attributePathWithoutEntityName) {
+			PersistableProperty persistableProperty = persistableClass.getPersistablePropertyMap().get(attributePathElement);
+			if (persistableProperty == null) {
+				logger.warn(
+						"getAvailableAttributes: attributePathElement='{}' does not reference a PersistableProperty. entityName={} attributePathWithoutEntityName={}",
+						new Object[] { attributePathElement, entityName, attributePathWithoutEntityName }
+				);
+				return result;
+			}
+			persistableClass = getPersistableClass(context, persistableProperty.getType());
+			if (persistableClass == null)
+				return result; // TODO try to handle this class differently? maybe later...
+		}
+
+		for (PersistableProperty persistableProperty : persistableClass.getPersistableProperties()) {
+			result.add(persistableProperty.getName());
+		}
+
+		return result;
+	}
+
+	protected PersistableClass getPersistableClass(ContentAssistContext context, String className) {
+		QueryEditorManager queryEditorManager = DocumentContextManager.sharedInstance().getQueryEditorManager(context.getDocument(), true);
+		ConnectionProfile vestigoConnectionProfile = queryEditorManager.getVestigoConnectionProfileAskingUserIfNecessary();
+		return vestigoConnectionProfile.getQueryableCandidateClassMap().get(className);
+	}
+
+	@Override
+	public void completeAliasAttributeExpression_Attributes(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor)
+	{
+		super.completeAliasAttributeExpression_Attributes(model, assignment, context, acceptor);
+
+		List<String> aliasAttributeTokens = getCurrentAliasAttributeTokens(context);
+		List<String> availableAttributes = getAvailableAttributes(context, aliasAttributeTokens);
+		for (String attribute : availableAttributes) {
+			acceptor.accept(createCompletionProposal(attribute, context));
+		}
 	}
 
 	private void createCompletionProposalsFromCandidateClasses(ContentAssistContext context, ICompletionProposalAcceptor acceptor)
@@ -224,130 +251,6 @@ public class JPQLProposalProvider extends AbstractJPQLProposalProvider
 			SortedSet<PersistableClass> classes = vestigoConnectionProfile.getQueryableCandidateClasses();
 			for (PersistableClass persistableClass : classes)
 				acceptor.accept(createCompletionProposal(persistableClass.getName(), context));
-		}
-	}
-
-	protected void dumpObject(Object object) {
-		List<String> matchingPaths = new LinkedList<String>();
-		dumpObject(object, new LinkedList<String>(), new IdentityHashMap<Object, Void>(), matchingPaths );
-		System.out.println(matchingPaths);
-	}
-
-	private static final boolean printStacks = false;
-
-	protected void dumpObject(Object object, List<String> path, IdentityHashMap<Object, Void> processed, List<String> matchingPaths) {
-		if (path.size() > 200)
-			return;
-
-		if (object == null)
-			return;
-
-		if (processed.containsKey(object))
-			return;
-
-		processed.put(object, null);
-
-		String objectString = object.toString();
-
-		if (objectString != null && (objectString.toLowerCase().contains("krexport") || objectString.toLowerCase().contains("receipt"))) {
-			matchingPaths.add(path + " => " + objectString);
-			System.out.println(path + " => " + objectString);
-		}
-
-//		System.out.println(path + " => " + objectString);
-
-		if (object instanceof String
-				|| object instanceof Boolean
-				|| object instanceof Character
-				|| object instanceof Class
-				|| object instanceof File
-				|| object instanceof Number
-				|| object instanceof URI
-				|| object instanceof URL
-				|| object instanceof InputStream
-				|| object instanceof OutputStream
-				|| object instanceof TextViewer
-				|| object instanceof XMLResource)
-			return;
-
-		if (object instanceof Iterable) {
-			Iterable<?> c = (Iterable<?>) object;
-			int index = -1;
-			for (Object element : c) {
-				++index;
-				path.add("[" + index + ']');
-				try {
-					dumpObject(element, path, processed, matchingPaths);
-				} catch (Exception x) {
-					if (printStacks)
-						x.printStackTrace();
-				} finally {
-					path.remove(path.size() - 1);
-				}
-			}
-			return;
-		}
-
-		if (object instanceof Map) {
-			Map<?, ?> m = (Map<?, ?>) object;
-			int index = -1;
-			for (Map.Entry<?, ?> me : m.entrySet()) {
-				++index;
-				path.add("[k" + index + ']');
-				try {
-					dumpObject(me.getKey(), path, processed, matchingPaths);
-				} catch (Exception x) {
-					x.printStackTrace();
-				} finally {
-					path.remove(path.size() - 1);
-				}
-				path.add("[v" + index + ']');
-				try {
-					dumpObject(me.getValue(), path, processed, matchingPaths);
-				} catch (Exception x) {
-					if (printStacks)
-						x.printStackTrace();
-				} finally {
-					path.remove(path.size() - 1);
-				}
-			}
-			return;
-		}
-
-		path.add(object.getClass().getName());
-		try {
-			for (Method method : object.getClass().getMethods()) {
-				if (Void.class.isAssignableFrom(method.getReturnType()))
-					continue;
-
-				if (method.getParameterTypes().length != 0)
-					continue;
-
-				if ("hashCode".equals(method.getName())
-						|| "notify".equals(method.getName())
-						|| "notifyAll".equals(method.getName())
-						|| "wait".equals(method.getName())
-
-						|| "copy".equals(method.getName())
-						|| "run".equals(method.getName()))
-					continue;
-
-				if (object instanceof EcoreEList && "unset".equals(method.getName()))
-					continue;
-
-				path.add(method.getName());
-				try {
-					Object methodResult = method.invoke(object, (Object[])null);
-					dumpObject(methodResult, path, processed, matchingPaths);
-				} catch (Exception x) {
-					if (printStacks)
-						x.printStackTrace();
-				} finally {
-					path.remove(path.size() - 1);
-				}
-			}
-		} finally {
-			path.remove(path.size() - 1);
 		}
 	}
 }

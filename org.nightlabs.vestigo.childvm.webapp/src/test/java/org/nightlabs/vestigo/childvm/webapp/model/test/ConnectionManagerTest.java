@@ -17,7 +17,6 @@
  */
 package org.nightlabs.vestigo.childvm.webapp.model.test;
 
-import java.lang.reflect.Field;
 import java.util.Collection;
 import java.util.UUID;
 
@@ -175,10 +174,6 @@ public class ConnectionManagerTest {
 					@Override
 					protected String getConnectionDriverName() {
 						return null;
-					}
-					@Override
-					protected boolean isPersistableField(Field field) {
-						return true;
 					}
 				};
 			}
