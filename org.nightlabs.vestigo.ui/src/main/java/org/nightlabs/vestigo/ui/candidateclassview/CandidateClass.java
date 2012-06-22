@@ -17,25 +17,31 @@
  */
 package org.nightlabs.vestigo.ui.candidateclassview;
 
+import org.nightlabs.vestigo.core.oda.PersistableClass;
+
 public class CandidateClass
 {
-	private String className;
+	private PersistableClass persistableClass;
 	private String classNameLowerCase;
 
-	public CandidateClass(String className) {
-		if (className == null)
-			throw new IllegalArgumentException("className == null"); //$NON-NLS-1$
+	public CandidateClass(PersistableClass persistableClass) {
+		if (persistableClass == null)
+			throw new IllegalArgumentException("persistableClass == null"); //$NON-NLS-1$
 
-		this.className = className;
+		this.persistableClass = persistableClass;
 	}
 
-	public String getClassName() {
-		return className;
+	public PersistableClass getPersistableClass() {
+		return persistableClass;
 	}
 
-	public String getClassNameLowerCase() {
+	public String getName() {
+		return persistableClass.getName();
+	}
+
+	public String getNameLowerCase() {
 		if (classNameLowerCase == null)
-			classNameLowerCase = className.toLowerCase();
+			classNameLowerCase = getName().toLowerCase();
 
 		return classNameLowerCase;
 	}

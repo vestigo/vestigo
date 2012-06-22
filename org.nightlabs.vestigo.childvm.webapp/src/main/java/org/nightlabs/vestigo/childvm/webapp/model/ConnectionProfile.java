@@ -20,7 +20,12 @@ package org.nightlabs.vestigo.childvm.webapp.model;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -40,9 +45,11 @@ import javax.xml.bind.Marshaller;
 import org.nightlabs.progress.NullProgressMonitor;
 import org.nightlabs.util.IOUtil;
 import org.nightlabs.util.Util;
+import org.nightlabs.util.reflect.ReflectUtil;
 import org.nightlabs.vestigo.childvm.shared.PropertiesUtil;
 import org.nightlabs.vestigo.childvm.shared.classloader.ClassLoaderManager;
 import org.nightlabs.vestigo.childvm.shared.dto.ConnectionProfileDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.PersistablePropertyDTO;
 import org.nightlabs.vestigo.childvm.shared.persistencexml.PersistenceUnitHelper;
 import org.nightlabs.vestigo.childvm.shared.persistencexml.PersistenceXml;
 import org.nightlabs.vestigo.childvm.shared.persistencexml.PersistenceXmlScanner;
@@ -450,5 +457,83 @@ public abstract class ConnectionProfile
 			this.queryableCandidateClasses = classes;
 		}
 		return classes;
+	}
+
+	protected abstract boolean isPersistableField(Field field);
+
+	protected Class<? extends Annotation> getAnnotationClass(String name) {
+		try {
+			ClassLoader peClassLoader = getClassLoaderManager().getPersistenceEngineClassLoader(new NullProgressMonitor());
+			@SuppressWarnings("unchecked")
+			Class<? extends Annotation> annotationClass = (Class<? extends Annotation>) peClassLoader.loadClass(name);
+			return annotationClass;
+		} catch (IOException x) {
+			throw new RuntimeException(x);
+		} catch (ClassNotFoundException x) {
+			throw new RuntimeException(x);
+		}
+	}
+
+	protected Object getAnnotationAttributeValue(Annotation annotation, String annotationAttributeName) {
+		return invokeGetter(annotation, annotationAttributeName);
+	}
+
+	protected String getAnnotationAttributeEnumName(Annotation annotation, String annotationAttributeName) {
+		Object enumInstance = getAnnotationAttributeValue(annotation, annotationAttributeName);
+		if (enumInstance == null)
+			return null;
+
+		if (!(enumInstance instanceof Enum<?>))
+			throw new IllegalStateException("enumInstance is not an instance of Enum! " + enumInstance);
+
+		return (String) invokeGetter(enumInstance, "name");
+	}
+
+	protected Object invokeGetter(Object object, String getter) {
+		try {
+			Method method = object.getClass().getMethod(getter, (Class[]) null);
+			Object value = method.invoke(object, (Object[]) null);
+			return value;
+		} catch (InvocationTargetException x) {
+			if (x.getCause() != null)
+				throw new RuntimeException(x.getCause());
+			else
+				throw new RuntimeException(x);
+		} catch (SecurityException x) {
+			throw new RuntimeException(x);
+		} catch (NoSuchMethodException x) {
+			throw new RuntimeException(x);
+		} catch (IllegalArgumentException x) {
+			throw new RuntimeException(x);
+		} catch (IllegalAccessException x) {
+			throw new RuntimeException(x);
+		}
+	}
+
+	public Collection<PersistablePropertyDTO> getPersistablePropertyDTOs(Class<?> persistableClass) {
+		if (persistableClass == null)
+			throw new IllegalArgumentException("persistableClass == null");
+
+		List<PersistablePropertyDTO> result = new ArrayList<PersistablePropertyDTO>();
+		List<Field> fields = ReflectUtil.collectAllFields(persistableClass, true);
+		for (Field field : fields) {
+			if (isPersistableField(field)) {
+				PersistablePropertyDTO persistablePropertyDTO = createPersistablePropertyDTO(field);
+				if (persistablePropertyDTO == null)
+					throw new IllegalStateException(String.format("createPersistablePropertyDTO(field) returned null! Implementation error in %s!", getClass().getName()));
+
+				result.add(persistablePropertyDTO);
+			}
+		}
+		return result;
+	}
+
+	protected PersistablePropertyDTO createPersistablePropertyDTO(Field field) {
+		PersistablePropertyDTO dto = new PersistablePropertyDTO();
+		dto.setName(field.getName());
+		dto.setType(field.getType().getName());
+		// TODO generic type!
+//		Type genericType = field.getGenericType();
+		return dto;
 	}
 }

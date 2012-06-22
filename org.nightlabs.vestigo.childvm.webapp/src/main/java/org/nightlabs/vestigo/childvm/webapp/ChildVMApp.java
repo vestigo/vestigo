@@ -30,6 +30,7 @@ import org.nightlabs.vestigo.childvm.webapp.service.ConnectionDTOService;
 import org.nightlabs.vestigo.childvm.webapp.service.ConnectionProfileDTOService;
 import org.nightlabs.vestigo.childvm.webapp.service.IsClassAssignableFromService;
 import org.nightlabs.vestigo.childvm.webapp.service.IsOnlineService;
+import org.nightlabs.vestigo.childvm.webapp.service.PersistablePropertyDTOService;
 import org.nightlabs.vestigo.childvm.webapp.service.QueryExecutionStatisticSetDTOService;
 import org.nightlabs.vestigo.childvm.webapp.service.QueryableCandidateClassesService;
 import org.nightlabs.vestigo.childvm.webapp.service.ResultCellDTOService;
@@ -54,6 +55,7 @@ extends Application
 		ConnectionProfileDTOService.class,
 		IsClassAssignableFromService.class,
 		IsOnlineService.class,
+		PersistablePropertyDTOService.class,
 		QueryableCandidateClassesService.class,
 		QueryExecutionStatisticSetDTOService.class,
 		ResultCellDTOService.class,
@@ -63,7 +65,6 @@ extends Application
 
 		// BEGIN providers
 		// providers are not services (they are infrastructure), but they are registered the same way.
-//		JAXBContextResolver.class, // not used anymore - we use only java native serialisation.
 		JavaNativeMessageBodyReader.class,
 		JavaNativeMessageBodyWriter.class,
 		DefaultExceptionMapper.class

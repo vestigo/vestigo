@@ -27,6 +27,7 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Transient;
 
 @Entity
 public class Movie {
@@ -58,6 +59,11 @@ public class Movie {
 
 	@OneToOne
 	private Rating rating;
+
+	@Transient
+	private Object nonPersistableField1;
+
+	private transient Object nonPersistableField2;
 
 	public long getMovieID() {
 		return movieID;

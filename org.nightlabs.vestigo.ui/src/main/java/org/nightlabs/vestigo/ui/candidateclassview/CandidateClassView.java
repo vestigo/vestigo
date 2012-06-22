@@ -99,7 +99,7 @@ public class CandidateClassView extends ViewPart
 				openQueryEditor();
 
 			if (queryEditorManager != null)
-				queryEditorManager.assignDefaultQueryTextForCandidateClass(candidateClass.getClassName());
+				queryEditorManager.assignDefaultQueryTextForCandidateClass(candidateClass.getName());
 		}
 	};
 

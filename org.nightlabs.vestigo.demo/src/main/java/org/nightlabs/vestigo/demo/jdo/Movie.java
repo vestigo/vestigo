@@ -7,8 +7,10 @@ import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.Join;
+import javax.jdo.annotations.NotPersistent;
 import javax.jdo.annotations.NullValue;
 import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.PersistenceModifier;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
@@ -40,6 +42,14 @@ public class Movie {
 	private String tagLine;
 
 	private Rating rating;
+
+	@SuppressWarnings("unused")
+	@NotPersistent
+	private Object nonPersistentTestField1;
+
+	@SuppressWarnings("unused")
+	@Persistent(persistenceModifier = PersistenceModifier.NONE)
+	private Object nonPersistentTestField2;
 
 	public long getMovieID() {
 		return movieID;

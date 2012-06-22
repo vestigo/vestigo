@@ -26,7 +26,10 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
+import java.util.SortedMap;
 import java.util.SortedSet;
+import java.util.TreeMap;
+import java.util.TreeSet;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
@@ -43,6 +46,7 @@ import org.nightlabs.vestigo.core.connectionpropertiesfilter.ConnectionPropertie
 import org.nightlabs.vestigo.core.oda.Connection;
 import org.nightlabs.vestigo.core.oda.ConnectionProfile;
 import org.nightlabs.vestigo.core.oda.ConnectionPropertyMeta;
+import org.nightlabs.vestigo.core.oda.PersistableClass;
 import org.nightlabs.vestigo.core.transientconnectionproperties.TransientConnectionPropertiesProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -57,7 +61,8 @@ public abstract class AbstractConnectionProfile implements ConnectionProfile
 	private ChildVMServer childVMServer;
 	private String profileID;
 	private Map<String, Boolean> classesKey2IsClassAssignableFromResult;
-	private SortedSet<String> queryableCandidateClasses;
+	private SortedSet<PersistableClass> queryableCandidateClasses;
+	private SortedMap<String, PersistableClass> queryableCandidateClassMap;
 
 	@Override
 	public String getProfileID() {
@@ -119,13 +124,14 @@ public abstract class AbstractConnectionProfile implements ConnectionProfile
 		return childVMServer;
 	}
 
-	protected void preFirstConnectionOpen(Connection connection) throws OdaException
+	protected  void preFirstConnectionOpen(Connection connection) throws OdaException
 	{
 		logger.info("preFirstConnectionOpen: profileID={} connection={}", profileID, connection); //$NON-NLS-1$
 		this.persistentConnectionProperties = connection.getConnectionProperties();
 		this.transientConnectionProperties = obtainTransientConnectionProperties();
 		this.classesKey2IsClassAssignableFromResult = new HashMap<String, Boolean>();
 		this.queryableCandidateClasses = null;
+		this.queryableCandidateClassMap = null;
 		try {
 			getChildVMServer().open();
 		} catch (IOException e) {
@@ -294,7 +300,7 @@ public abstract class AbstractConnectionProfile implements ConnectionProfile
 		connectionsOpening.remove(connection); // in case, the opening process was interrupted.
 	}
 
-	protected synchronized void postLastConnectionClose(Connection connection) throws OdaException
+	protected void postLastConnectionClose(Connection connection) throws OdaException
 	{
 		logger.info("postLastConnectionClose: profileID={} connection={}", profileID, connection); //$NON-NLS-1$
 		try {
@@ -304,6 +310,7 @@ public abstract class AbstractConnectionProfile implements ConnectionProfile
 		} finally {
 			classesKey2IsClassAssignableFromResult = null;
 			queryableCandidateClasses = null;
+			queryableCandidateClassMap = null;
 		}
 	}
 
@@ -384,11 +391,31 @@ public abstract class AbstractConnectionProfile implements ConnectionProfile
 	}
 
 	@Override
-	public synchronized SortedSet<String> getQueryableCandidateClasses()
-	{
-		if (queryableCandidateClasses == null)
-			queryableCandidateClasses = getChildVM().getQueryableCandidateClasses(profileID);
+	public synchronized SortedMap<String, PersistableClass> getQueryableCandidateClassMap() {
+		if (queryableCandidateClassMap == null)
+			getQueryableCandidateClasses();
 
+		if (queryableCandidateClassMap == null)
+			throw new IllegalStateException("queryableCandidateClassMap == null");
+
+		return queryableCandidateClassMap;
+	}
+
+	@Override
+	public synchronized SortedSet<PersistableClass> getQueryableCandidateClasses()
+	{
+		if (queryableCandidateClasses == null) {
+			SortedSet<PersistableClass> classes = new TreeSet<PersistableClass>();
+			SortedMap<String, PersistableClass> classMap = new TreeMap<String, PersistableClass>();
+			SortedSet<String> classNames = getChildVM().getQueryableCandidateClasses(profileID);
+			for (String className : classNames) {
+				PersistableClass persistableClass = new PersistableClassImpl(this, className);
+				classes.add(persistableClass);
+				classMap.put(className, persistableClass);
+			}
+			queryableCandidateClasses = Collections.unmodifiableSortedSet(classes);
+			queryableCandidateClassMap = Collections.unmodifiableSortedMap(classMap);
+		}
 		return queryableCandidateClasses;
 	}
 }

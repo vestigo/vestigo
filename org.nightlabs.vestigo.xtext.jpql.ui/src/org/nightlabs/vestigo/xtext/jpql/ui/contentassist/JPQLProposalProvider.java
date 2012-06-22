@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
+import org.nightlabs.vestigo.core.oda.PersistableClass;
 import org.nightlabs.vestigo.core.oda.ConnectionProfile;
 import org.nightlabs.vestigo.ui.editor.DocumentContextManager;
 import org.nightlabs.vestigo.ui.editor.QueryEditorManager;
@@ -59,9 +60,9 @@ public class JPQLProposalProvider extends AbstractJPQLProposalProvider
 		QueryEditorManager queryEditorManager = DocumentContextManager.sharedInstance().getQueryEditorManager(context.getDocument(), true);
 		ConnectionProfile vestigoConnectionProfile = queryEditorManager.getVestigoConnectionProfileAskingUserIfNecessary();
 		if (vestigoConnectionProfile != null) {
-			SortedSet<String> classes = vestigoConnectionProfile.getQueryableCandidateClasses();
-			for (String className : classes)
-				acceptor.accept(createCompletionProposal(className, context));
+			SortedSet<PersistableClass> classes = vestigoConnectionProfile.getQueryableCandidateClasses();
+			for (PersistableClass persistableClass : classes)
+				acceptor.accept(createCompletionProposal(persistableClass.getName(), context));
 		}
 	}
 }

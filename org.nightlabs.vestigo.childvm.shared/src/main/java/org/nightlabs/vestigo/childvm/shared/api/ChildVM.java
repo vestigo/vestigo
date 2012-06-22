@@ -25,6 +25,7 @@ import java.util.UUID;
 import org.nightlabs.vestigo.childvm.shared.ResultSetID;
 import org.nightlabs.vestigo.childvm.shared.dto.ConnectionDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.ConnectionProfileDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.PersistablePropertyDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.QueryExecutionStatisticSetDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.QueryParameterDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.ResultCellDTO;
@@ -68,9 +69,11 @@ public interface ChildVM
 
 	List<ResultCellDTO> getChildren(ResultSetID resultSetID, ResultCellObjectRefDTO resultCellObjectRefDTO) throws ChildVMException;
 
-	boolean isClassAssignableFrom(String profileID, String targetClass, String candidateClass);
+	boolean isClassAssignableFrom(String profileID, String targetClass, String candidateClass) throws ChildVMException;
 
-	SortedSet<String> getQueryableCandidateClasses(String profileID);
+	SortedSet<String> getQueryableCandidateClasses(String profileID) throws ChildVMException;
 
-	QueryExecutionStatisticSetDTO getQueryExecutionStatisticSetDTO(ResultSetID resultSetID);
+	QueryExecutionStatisticSetDTO getQueryExecutionStatisticSetDTO(ResultSetID resultSetID) throws ChildVMException;
+
+	Collection<PersistablePropertyDTO> getPersistablePropertyDTOs(String profileID, String persistableClass) throws ChildVMException;
 }

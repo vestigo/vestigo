@@ -55,6 +55,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.Text;
 import org.nightlabs.vestigo.childvm.shared.PropertiesUtil;
+import org.nightlabs.vestigo.core.oda.PersistableClass;
 import org.nightlabs.vestigo.core.oda.ConnectionProfile;
 import org.nightlabs.vestigo.core.oda.ConnectionProfileRegistry;
 import org.nightlabs.vestigo.ui.oda.OdaUtil;
@@ -164,7 +165,7 @@ public class CandidateClassComposite extends Composite
 				return true;
 
 			CandidateClass candidateClass = (CandidateClass) element;
-			return candidateClass.getClassNameLowerCase().contains(text);
+			return candidateClass.getNameLowerCase().contains(text);
 		}
 	}
 
@@ -183,7 +184,7 @@ public class CandidateClassComposite extends Composite
 			public String getText(Object element) {
 				if (element instanceof CandidateClass) {
 					CandidateClass candidateClass = (CandidateClass) element;
-					return candidateClass.getClassName();
+					return candidateClass.getName();
 				}
 				return super.getText(element);
 			}
@@ -315,10 +316,10 @@ public class CandidateClassComposite extends Composite
 			protected IStatus run(IProgressMonitor monitor)
 			{
 				try {
-					final SortedSet<String> queryableCandidateClasses = vestigoConnectionProfile.getQueryableCandidateClasses();
+					final SortedSet<PersistableClass> queryableCandidateClasses = vestigoConnectionProfile.getQueryableCandidateClasses();
 					final List<CandidateClass> candidateClassesList = new ArrayList<CandidateClass>(queryableCandidateClasses.size());
-					for (String className : queryableCandidateClasses)
-						candidateClassesList.add(new CandidateClass(className));
+					for (PersistableClass persistableClass : queryableCandidateClasses)
+						candidateClassesList.add(new CandidateClass(persistableClass));
 
 					display.asyncExec(new Runnable() {
 						@Override

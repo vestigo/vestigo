@@ -39,6 +39,8 @@ import org.nightlabs.vestigo.childvm.shared.dto.ConnectionDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.ConnectionDTOList;
 import org.nightlabs.vestigo.childvm.shared.dto.ConnectionProfileDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.ConnectionProfileDTOList;
+import org.nightlabs.vestigo.childvm.shared.dto.PersistablePropertyDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.PersistablePropertyDTOList;
 import org.nightlabs.vestigo.childvm.shared.dto.QueryDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.QueryExecutionStatisticSetDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.QueryParameterDTO;
@@ -493,7 +495,7 @@ implements ChildVM
 	}
 
 	@Override
-	public boolean isClassAssignableFrom(String profileID, String targetClass, String candidateClass)
+	public boolean isClassAssignableFrom(String profileID, String targetClass, String candidateClass) throws ChildVMException
 	{
 		if (profileID == null)
 			throw new IllegalArgumentException("profileID == null");
@@ -527,7 +529,7 @@ implements ChildVM
 	}
 
 	@Override
-	public SortedSet<String> getQueryableCandidateClasses(String profileID)
+	public SortedSet<String> getQueryableCandidateClasses(String profileID) throws ChildVMException
 	{
 		if (profileID == null)
 			throw new IllegalArgumentException("profileID == null");
@@ -553,7 +555,7 @@ implements ChildVM
 	}
 
 	@Override
-	public QueryExecutionStatisticSetDTO getQueryExecutionStatisticSetDTO(ResultSetID resultSetID) {
+	public QueryExecutionStatisticSetDTO getQueryExecutionStatisticSetDTO(ResultSetID resultSetID) throws ChildVMException {
 		if (resultSetID == null)
 			throw new IllegalArgumentException("resultSetID == null");
 
@@ -566,6 +568,28 @@ implements ChildVM
 			);
 			QueryExecutionStatisticSetDTO dto = resourceBuilder.get(QueryExecutionStatisticSetDTO.class);
 			return dto;
+		} catch (UniformInterfaceException x) {
+			handleUniformInterfaceException(x);
+			throw x; // we do not expect null
+		} finally {
+			releaseClient(client);
+		}
+	}
+
+	@Override
+	public Collection<PersistablePropertyDTO> getPersistablePropertyDTOs(String profileID, String persistableClass) throws ChildVMException {
+		if (persistableClass == null)
+			throw new IllegalArgumentException("persistableClass == null");
+
+		Client client = acquireClient();
+		try {
+			WebResource.Builder resourceBuilder = getChildVMAppResourceBuilder(
+					client,
+					PersistablePropertyDTO.class,
+					new PathSegment(profileID), new PathSegment(persistableClass)
+			);
+			PersistablePropertyDTOList dtoList = resourceBuilder.get(PersistablePropertyDTOList.class);
+			return dtoList.getElements();
 		} catch (UniformInterfaceException x) {
 			handleUniformInterfaceException(x);
 			throw x; // we do not expect null

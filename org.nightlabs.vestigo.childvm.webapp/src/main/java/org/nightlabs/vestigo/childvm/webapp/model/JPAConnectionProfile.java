@@ -18,6 +18,8 @@
 package org.nightlabs.vestigo.childvm.webapp.model;
 
 import java.io.IOException;
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
@@ -123,5 +125,18 @@ public class JPAConnectionProfile extends ConnectionProfile
 	@Override
 	protected String getConnectionDriverName() {
 		return getConnectionProperties().getProperty(PropertiesUtil.PREFIX_PERSISTENCE + "javax.persistence.jdbc.driver");
+	}
+
+	@Override
+	protected boolean isPersistableField(Field field) {
+		if ((field.getModifiers() & Modifier.TRANSIENT) != 0)
+			return false;
+
+		if (field.isAnnotationPresent(getAnnotationClass("javax.persistence.Transient")))
+			return false;
+
+		// TODO take other meta-data into account - not only annotations!
+		// Note, that XML meta-data overrides annotations!!!
+		return true;
 	}
 }

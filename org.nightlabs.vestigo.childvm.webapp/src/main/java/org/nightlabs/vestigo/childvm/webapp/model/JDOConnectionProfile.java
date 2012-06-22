@@ -18,6 +18,8 @@
 package org.nightlabs.vestigo.childvm.webapp.model;
 
 import java.io.IOException;
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Field;
 import java.util.Map;
 import java.util.Properties;
 import java.util.SortedSet;
@@ -182,5 +184,22 @@ public class JDOConnectionProfile extends ConnectionProfile
 	@Override
 	protected String getConnectionDriverName() {
 		return getConnectionProperties().getProperty(PropertiesUtil.PREFIX_PERSISTENCE + "javax.jdo.option.ConnectionDriverName");
+	}
+
+	@Override
+	protected boolean isPersistableField(Field field) {
+		if (field.isAnnotationPresent(getAnnotationClass("javax.jdo.annotations.NotPersistent")))
+			return false;
+
+		Annotation persistent = field.getAnnotation(getAnnotationClass("javax.jdo.annotations.Persistent"));
+		if (persistent != null) {
+			String persistenceModifierName = getAnnotationAttributeEnumName(persistent, "persistenceModifier");
+			if (persistenceModifierName != null && !"PERSISTENT".equals(persistenceModifierName))
+				return false;
+		}
+
+		// TODO take other meta-data into account - not only annotations!
+		// Note, that XML meta-data overrides annotations!!!
+		return true;
 	}
 }

@@ -18,7 +18,9 @@
 package org.nightlabs.vestigo.core.oda;
 
 import java.util.Collection;
+import java.util.Map;
 import java.util.Properties;
+import java.util.SortedMap;
 import java.util.SortedSet;
 
 import org.eclipse.datatools.connectivity.oda.OdaException;
@@ -72,14 +74,24 @@ public interface ConnectionProfile {
 	boolean isClassAssignableFrom(String targetClass, String candidateClass);
 
 	/**
-	 * Get the fully qualified class names of all classes that can be queried.
+	 * Get the classes that can be queried.
 	 * <p>
 	 * If a persistence-unit has been specified and the option to exclusively use the classes
 	 * declared in this persistence-unit is set, then this will be the entries from the
 	 * persistence-unit. Otherwise, the classpath is searched for all persistent classes
 	 * that can be queried.
 	 *
-	 * @return fully qualified class names; never <code>null</code>.
+	 * @return candidate classes; never <code>null</code>.
+	 * @see #getQueryableCandidateClassMap()
 	 */
-	SortedSet<String> getQueryableCandidateClasses();
+	SortedSet<PersistableClass> getQueryableCandidateClasses();
+
+	/**
+	 * Get the classes that can be queried. The result is the same as {@link #getQueryableCandidateClasses()},
+	 * but in a <code>Map</code> where {@link PersistableClass#getName()} is used as {@link Map.Entry#getKey() key}.
+	 *
+	 * @return the classes that can be queried.
+	 * @see #getQueryableCandidateClasses()
+	 */
+	SortedMap<String, PersistableClass> getQueryableCandidateClassMap();
 }
