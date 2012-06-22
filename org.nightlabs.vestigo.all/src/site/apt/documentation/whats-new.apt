@@ -7,6 +7,14 @@
 
 What's new?
 
+* 0.9.4
+
+	The following is new in 0.9.4 (compared to 0.9.3):
+
+	* New feature: Content assist for entity fields works in JPA (including 1-1-relationships).
+
+	[]
+
 * 0.9.3
 
 	The following is new in 0.9.3 (compared to 0.9.2):

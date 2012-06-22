@@ -7,6 +7,14 @@
 
 Was ist neu?
 
+* 0.9.4
+
+	The following is new in 0.9.4 (compared to 0.9.3):
+
+	* Neues Feature: Inhaltsassistent (Kontext-sensitive Code-Ergänzung "Content assist") funktioniert jetzt auch für Entitätsfelder in JPA (inklusive 1-1-Beziehungen).
+
+	[]
+
 * 0.9.3
 
 	Folgendes ist neu in 0.9.3 (verglichen mit 0.9.2):
