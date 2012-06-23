@@ -20,41 +20,28 @@
 */
 package org.nightlabs.vestigo.xtext.jpql.ui.contentassist;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.SortedSet;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.RuleCall;
-import org.eclipse.xtext.nodemodel.INode;
-import org.eclipse.xtext.parser.IParseResult;
-import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
 import org.nightlabs.vestigo.core.oda.ConnectionProfile;
 import org.nightlabs.vestigo.core.oda.PersistableClass;
-import org.nightlabs.vestigo.core.oda.PersistableProperty;
 import org.nightlabs.vestigo.ui.editor.DocumentContextManager;
 import org.nightlabs.vestigo.ui.editor.QueryEditorManager;
 import org.nightlabs.vestigo.ui.queryparam.QueryParameter;
-import org.nightlabs.vestigo.xtext.jpql.jPQL.FromClass;
-import org.nightlabs.vestigo.xtext.jpql.jPQL.FromClause;
-import org.nightlabs.vestigo.xtext.jpql.jPQL.FromEntry;
-import org.nightlabs.vestigo.xtext.jpql.jPQL.SelectStatement;
-import org.nightlabs.vestigo.xtext.jpql.jPQL.VariableDeclaration;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * see http://www.eclipse.org/Xtext/documentation/latest/xtext.html#contentAssist on how to customize content assistant
  */
 public class JPQLProposalProvider extends AbstractJPQLProposalProvider
 {
-	private static final Logger logger = LoggerFactory.getLogger(JPQLProposalProvider.class);
+//	private static final Logger logger = LoggerFactory.getLogger(JPQLProposalProvider.class);
+
+	private JPQLProposalProviderHelper helper = new JPQLProposalProviderHelper(this);
 
 	@Override
 	public void complete_FromClass(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor)
@@ -75,171 +62,14 @@ public class JPQLProposalProvider extends AbstractJPQLProposalProvider
 		}
 	}
 
-	/**
-	 * Get the tokens for which we currently want field-content-assist in left-to-right order.
-	 * If the query was "SELECT entity.field00.field01.| FROM my.package.Entity entity" and
-	 * the cursor was at the position represented by "|" when Ctrl+Space was pressed, then
-	 * the result is ["entity", ".", "field00", ".", "field01", "."].
-	 *
-	 * @return tokens for which we currently want field-content-assist in left-to-right order.
-	 */
-	protected List<String> getCurrentAliasAttributeTokens(ContentAssistContext context) {
-		ArrayList<String> result = new ArrayList<String>();
-
-		INode lastCompleteNode = context.getLastCompleteNode();
-		if (lastCompleteNode == null) {
-			logger.warn("getCurrentAliasAttributeTokens: lastCompleteNode == null");
-			return result;
-		}
-
-		INode previousSibling = lastCompleteNode;
-		int previousSiblingIndex = -1;
-		do {
-			++previousSiblingIndex;
-			if (previousSibling != null) {
-				String text = previousSibling.getText();
-				if (text == null)
-					logger.warn("getCurrentAliasAttributeTokens: previousSibling[{}].getText() == null :: result={}", previousSiblingIndex, result);
-				else {
-					if (!text.trim().isEmpty())
-						result.add(text);
-				}
-			}
-			previousSibling = previousSibling.getPreviousSibling();
-		} while (previousSibling != null);
-
-		if (result.isEmpty())
-			logger.warn("getCurrentAliasAttributeTokens: result is empty!");
-
-		Collections.reverse(result);
-		return result;
-	}
-
-	protected Map<String, String> getAlias2EntityNameMap(ContentAssistContext context)
-	{
-		if (context == null)
-			throw new IllegalArgumentException("context == null");
-
-		Map<String, String> result = new HashMap<String, String>();
-		XtextResource contextResource = context.getResource();
-		if (contextResource == null)
-			return result;
-
-		IParseResult parseResult = contextResource.getParseResult();
-		if (parseResult == null)
-			return result;
-
-		EObject rootASTElement = parseResult.getRootASTElement();
-		if (rootASTElement instanceof SelectStatement) {
-			SelectStatement selectStatement = (SelectStatement) rootASTElement;
-			FromClause fromClause = selectStatement.getFromClause();
-			if (fromClause == null)
-				return result;
-
-			for (FromEntry fromEntry : fromClause.getFromEntries()) {
-				if (fromEntry instanceof FromClass) {
-					FromClass fromClass = (FromClass) fromEntry;
-					String type = fromClass.getType();
-					VariableDeclaration variable = fromClass.getVariable();
-					if (variable == null) {
-						logger.warn("getAlias2EntityNameMap: variable == null! type={}", type);
-						continue;
-					}
-					String variableName = variable.getName();
-					if (type == null) {
-						logger.warn("getAlias2EntityNameMap: type == null! variableName={} variable={}", variableName, variable);
-						continue;
-					}
-					if (variableName == null) {
-						logger.warn("getAlias2EntityNameMap: variableName == null! type={} variable={}", type, variable);
-						continue;
-					}
-					result.put(variableName, type);
-				}
-			}
-		}
-
-		return result;
-	}
-
-	protected List<String> getAvailableAttributes(ContentAssistContext context, List<String> aliasAttributeTokens)
-	{
-		if (context == null)
-			throw new IllegalArgumentException("context == null");
-
-		if (aliasAttributeTokens == null)
-			throw new IllegalArgumentException("aliasAttributeTokens == null");
-
-		ArrayList<String> result = new ArrayList<String>();
-		if (aliasAttributeTokens.isEmpty())
-			return result;
-
-		Map<String, String> alias2EntityNameMap = getAlias2EntityNameMap(context);
-		String firstAliasAttributeToken = aliasAttributeTokens.get(0);
-		String entityName = alias2EntityNameMap.get(firstAliasAttributeToken);
-		if (entityName == null) {
-			logger.warn("getAvailableAttributes: alias2EntityNameMap.get(firstAliasAttributeToken) returned null. firstAliasAttributeToken={}", firstAliasAttributeToken);
-			// TODO for JDO, we must assume "this" here (if we're in no sub-query? have to check sub-query-situation in JDO)!!! For JPA, there is no 'this'.
-			return result;
-		}
-		List<String> attributePathWithoutEntityName = new ArrayList<String>(aliasAttributeTokens.size() - 1);
-		boolean first = true;
-		for (String aliasAttributeToken : aliasAttributeTokens) {
-			if (first) {
-				first = false;
-				continue; // skip first = entityName
-			}
-			aliasAttributeToken = aliasAttributeToken.trim();
-
-			if (".".equals(aliasAttributeToken) || aliasAttributeToken.isEmpty())
-				continue;
-
-			attributePathWithoutEntityName.add(aliasAttributeToken);
-		}
-
-		PersistableClass entityClass = getPersistableClass(context, entityName); // TODO in JPA, entities can have annotated or simple names - in JDO, there might be imports and non-qualified class-names
-		if (entityClass == null) {
-			logger.warn("getAvailableAttributes: entityName='{}' does not reference a PersistableClass.", firstAliasAttributeToken);
-			return result;
-		}
-
-		PersistableClass persistableClass = entityClass;
-		for (String attributePathElement : attributePathWithoutEntityName) {
-			PersistableProperty persistableProperty = persistableClass.getPersistablePropertyMap().get(attributePathElement);
-			if (persistableProperty == null) {
-				logger.warn(
-						"getAvailableAttributes: attributePathElement='{}' does not reference a PersistableProperty. entityName={} attributePathWithoutEntityName={}",
-						new Object[] { attributePathElement, entityName, attributePathWithoutEntityName }
-				);
-				return result;
-			}
-			persistableClass = getPersistableClass(context, persistableProperty.getType());
-			if (persistableClass == null)
-				return result; // TODO try to handle this class differently? maybe later...
-		}
-
-		for (PersistableProperty persistableProperty : persistableClass.getPersistableProperties()) {
-			result.add(persistableProperty.getName());
-		}
-
-		return result;
-	}
-
-	protected PersistableClass getPersistableClass(ContentAssistContext context, String className) {
-		QueryEditorManager queryEditorManager = DocumentContextManager.sharedInstance().getQueryEditorManager(context.getDocument(), true);
-		ConnectionProfile vestigoConnectionProfile = queryEditorManager.getVestigoConnectionProfileAskingUserIfNecessary();
-		return vestigoConnectionProfile.getQueryableCandidateClassMap().get(className);
-	}
-
 	@Override
 	public void completeAliasAttributeExpression_Attributes(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor)
 	{
 		super.completeAliasAttributeExpression_Attributes(model, assignment, context, acceptor);
 
-		List<String> aliasAttributeTokens = getCurrentAliasAttributeTokens(context);
-		List<String> availableAttributes = getAvailableAttributes(context, aliasAttributeTokens);
-		for (String attribute : availableAttributes) {
-			acceptor.accept(createCompletionProposal(attribute, context));
+		List<String> proposals = helper.getCurrentAliasAttributeProposals(context);
+		for (String proposal : proposals) {
+			acceptor.accept(createCompletionProposal(proposal, context));
 		}
 	}
 

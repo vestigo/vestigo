@@ -85,7 +85,7 @@
 		
 		<!-- BEGIN org.eclipse.xtext -->
 		<!--
-		We need this for our AbstractQueryBrowserEditor (subclass of XtextEditor). Otherwise, we'd need
+		We need this for our AbstractQueryEditor (subclass of XtextEditor). Otherwise, we'd need
 		a new project for this one class. IMHO it's better to introduce this dependency. Marco :-)
 		-->
 		<dependency>

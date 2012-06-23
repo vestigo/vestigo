@@ -20,6 +20,7 @@
 */
 package org.nightlabs.vestigo.xtext.jdoql.ui.contentassist;
 
+import java.util.List;
 import java.util.SortedSet;
 
 import org.eclipse.emf.ecore.EObject;
@@ -27,8 +28,8 @@ import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
-import org.nightlabs.vestigo.core.oda.PersistableClass;
 import org.nightlabs.vestigo.core.oda.ConnectionProfile;
+import org.nightlabs.vestigo.core.oda.PersistableClass;
 import org.nightlabs.vestigo.ui.editor.DocumentContextManager;
 import org.nightlabs.vestigo.ui.editor.QueryEditorManager;
 import org.nightlabs.vestigo.ui.queryparam.QueryParameter;
@@ -37,6 +38,10 @@ import org.nightlabs.vestigo.ui.queryparam.QueryParameter;
  */
 public class JDOQLProposalProvider extends AbstractJDOQLProposalProvider
 {
+//	private static final Logger logger = LoggerFactory.getLogger(JDOQLProposalProvider.class);
+
+	private JDOQLProposalProviderHelper helper = new JDOQLProposalProviderHelper(this);
+
 	@Override
 	public void complete_CandidateClassName(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor)
 	{
@@ -73,6 +78,18 @@ public class JDOQLProposalProvider extends AbstractJDOQLProposalProvider
 		createCompletionProposalsFromCommonJavaClasses(context, acceptor);
 		createCompletionProposalsFromCandidateClasses(context, acceptor);
 	}
+
+	@Override
+	public void complete_MethodExpression(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor)
+	{
+		super.complete_MethodExpression(model, ruleCall, context, acceptor);
+
+		List<String> proposals = helper.getCurrentAliasAttributeProposals(context);
+		for (String proposal : proposals) {
+			acceptor.accept(createCompletionProposal(proposal, context));
+		}
+	}
+
 
 	private static final Class<?>[] COMMON_JAVA_CLASSES = {
 		boolean.class,

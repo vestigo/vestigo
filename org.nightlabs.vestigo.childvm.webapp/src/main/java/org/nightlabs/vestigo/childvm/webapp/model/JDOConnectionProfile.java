@@ -197,7 +197,7 @@ public class JDOConnectionProfile extends ConnectionProfile
 		Annotation persistent = field.getAnnotation(getAnnotationClass("javax.jdo.annotations.Persistent"));
 		if (persistent != null) {
 			String persistenceModifierName = getAnnotationAttributeEnumName(persistent, "persistenceModifier");
-			if (persistenceModifierName != null && !"PERSISTENT".equals(persistenceModifierName))
+			if (persistenceModifierName != null && !"PERSISTENT".equals(persistenceModifierName) && !"UNSPECIFIED".equals(persistenceModifierName))
 				return false;
 		}
 
