@@ -3,7 +3,7 @@
 
 	<groupId>org.nightlabs.vestigo</groupId>
 	<artifactId>org.nightlabs.vestigo.parent</artifactId>
-	<version>0.9.5</version>
+	<version>0.9.4</version>
 	<packaging>pom</packaging>
 
 	<url>http://vestigo.nightlabs.com</url>
