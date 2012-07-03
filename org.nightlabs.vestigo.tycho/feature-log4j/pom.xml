@@ -10,7 +10,7 @@
 	<parent>
 		<groupId>org.nightlabs.vestigo</groupId>
 		<artifactId>org.nightlabs.vestigo.tycho</artifactId>
-		<version>0.9.4</version>
+		<version>0.9.5-SNAPSHOT</version>
 		<relativePath>..</relativePath>
 	</parent>
 
