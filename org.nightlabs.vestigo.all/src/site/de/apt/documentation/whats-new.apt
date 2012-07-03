@@ -11,9 +11,9 @@ Was ist neu?
 
 	Folgendes ist neu in 0.9.4 (verglichen mit 0.9.3):
 
-	* Neues Feature: Inhaltsassistent (Kontext-sensitive Code-Ergänzung "Content assist") funktioniert jetzt auch für Entitätsfelder in JDO (inklusive 1-1-Beziehungen).
+	* Neues Feature: Inhaltsassistent (Kontext-sensitive Code-Ergänzung "Content assist") für Entitätsfelder in JDO (inklusive 1-1-Beziehungen).
 
-	* Neues Feature: Inhaltsassistent (Kontext-sensitive Code-Ergänzung "Content assist") funktioniert jetzt auch für Entitätsfelder in JPA (inklusive 1-1-Beziehungen).
+	* Neues Feature: Inhaltsassistent (Kontext-sensitive Code-Ergänzung "Content assist") für Entitätsfelder in JPA (inklusive 1-1-Beziehungen).
 
 	[]
 

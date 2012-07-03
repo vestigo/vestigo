@@ -11,9 +11,9 @@ What's new?
 
 	The following is new in 0.9.4 (compared to 0.9.3):
 
-	* New feature: Content assist for entity fields works in JDO (including 1-1-relationships).
+	* New feature: Content assist for entity fields in JDO (including 1-1-relationships).
 
-	* New feature: Content assist for entity fields works in JPA (including 1-1-relationships).
+	* New feature: Content assist for entity fields  in JPA (including 1-1-relationships).
 
 	[]
 
