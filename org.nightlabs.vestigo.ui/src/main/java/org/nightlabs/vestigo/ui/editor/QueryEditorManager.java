@@ -1207,4 +1207,14 @@ public abstract class QueryEditorManager
 	}
 
 	protected abstract String getDefaultQueryTextForCandidateClass(String className);
+
+	public void commitTransaction() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("NYI");
+	}
+
+	public void rollbackTransaction() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("NYI");
+	}
 }

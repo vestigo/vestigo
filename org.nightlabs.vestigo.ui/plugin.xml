@@ -671,15 +671,28 @@
        point="org.eclipse.ui.commands">
     <command
           categoryId="org.nightlabs.vestigo.ui"
-          defaultHandler="org.nightlabs.vestigo.ui.editor.ExecuteQueryCommandHandler"
-          description="%org.nightlabs.vestigo.ui.editor.ExecuteQueryCommand.description"
-          id="org.nightlabs.vestigo.ui.editor.ExecuteQueryCommand"
-          name="%org.nightlabs.vestigo.ui.editor.ExecuteQueryCommand.name">
+          defaultHandler="org.nightlabs.vestigo.ui.editor.command.ExecuteQueryCommandHandler"
+          description="%org.nightlabs.vestigo.ui.editor.command.ExecuteQueryCommand.description"
+          id="org.nightlabs.vestigo.ui.editor.command.ExecuteQueryCommand"
+          name="%org.nightlabs.vestigo.ui.editor.command.ExecuteQueryCommand.name">
     </command>
     <category
           id="org.nightlabs.vestigo.ui"
           name="%org.nightlabs.vestigo.ui.commandCategory.name">
     </category>
+    <command
+          categoryId="org.nightlabs.vestigo.ui"
+          defaultHandler="org.nightlabs.vestigo.ui.editor.command.CommitTransactionCommandHandler"
+          description="%org.nightlabs.vestigo.ui.editor.command.CommitTransactionCommand.description"
+          id="org.nightlabs.vestigo.ui.editor.command.CommitTransactionCommand"
+          name="%org.nightlabs.vestigo.ui.editor.command.CommitTransactionCommand.name">
+    </command>
+    <command
+          defaultHandler="org.nightlabs.vestigo.ui.editor.command.RollbackTransactionCommandHandler"
+          description="%org.nightlabs.vestigo.ui.editor.command.RollbackTransactionCommand.description"
+          id="org.nightlabs.vestigo.ui.editor.command.RollbackTransactionCommand"
+          name="%org.nightlabs.vestigo.ui.editor.command.RollbackTransactionCommand.name">
+    </command>
  </extension>
  <extension
        point="org.eclipse.ui.menus">
@@ -688,11 +701,26 @@
           locationURI="toolbar:org.eclipse.ui.main.toolbar">
        <toolbar
              id="org.nightlabs.vestigo.ui.editor">
+          <control
+                class="org.nightlabs.vestigo.ui.editor.ConnectionProfileComboWorkbenchWindowControlContribution">
+          </control>
           <command
-                commandId="org.nightlabs.vestigo.ui.editor.ExecuteQueryCommand"
-                icon="icons/org.nightlabs.vestigo.ui.editor/ExecuteQueryCommand.16x16.png"
+                commandId="org.nightlabs.vestigo.ui.editor.command.ExecuteQueryCommand"
+                icon="icons/org.nightlabs.vestigo.ui.editor.command/ExecuteQueryCommand.16x16.png"
                 style="push"
                 tooltip="Execute query">
+          </command>
+          <command
+                commandId="org.nightlabs.vestigo.ui.editor.command.CommitTransactionCommand"
+                icon="icons/org.nightlabs.vestigo.ui.editor.command/CommitTransactionCommand.16x16.png"
+                style="push"
+                tooltip="Commit transaction">
+          </command>
+          <command
+                commandId="org.nightlabs.vestigo.ui.editor.command.RollbackTransactionCommand"
+                icon="icons/org.nightlabs.vestigo.ui.editor.command/RollbackTransactionCommand.16x16.png"
+                style="push"
+                tooltip="Rollback transaction">
           </command>
        </toolbar>
     </menuContribution>
@@ -700,7 +728,7 @@
  <extension
        point="org.eclipse.ui.bindings">
     <key
-          commandId="org.nightlabs.vestigo.ui.editor.ExecuteQueryCommand"
+          commandId="org.nightlabs.vestigo.ui.editor.command.ExecuteQueryCommand"
           contextId="org.eclipse.ui.contexts.window"
           schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
           sequence="Ctrl+F5">

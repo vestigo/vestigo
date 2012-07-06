@@ -50,7 +50,7 @@ implements QueryEditor
 
 	private Helper helper = new Helper(this);
 	private QueryEditorManager queryEditorManager;
-	private QueryEditorManagerComposite queryEditorManagerComposite;
+//	private QueryEditorManagerComposite queryEditorManagerComposite;
 	private Composite queryEditorComposite;
 	private VestigoDocumentProvider documentProvider;
 
@@ -88,15 +88,15 @@ implements QueryEditor
 		queryEditorComposite = new Composite(parent, SWT.BORDER);
 		queryEditorComposite.setLayout(new GridLayout());
 
-		queryEditorManagerComposite = new QueryEditorManagerComposite(
-				queryEditorComposite, SWT.BORDER
-				);
-		queryEditorManagerComposite.setQueryBrowserManager(getQueryEditorManager());
+//		queryEditorManagerComposite = new QueryEditorManagerComposite(
+//				queryEditorComposite, SWT.BORDER
+//				);
+//		queryEditorManagerComposite.setQueryEditorManager(getQueryEditorManager());
 
 		super.createPartControl(queryEditorComposite);
 
 		for (Control c : queryEditorComposite.getChildren()) {
-			if (c != queryEditorManagerComposite)
+//			if (c != queryEditorManagerComposite)
 				c.setLayoutData(new GridData(GridData.FILL_BOTH));
 		}
 

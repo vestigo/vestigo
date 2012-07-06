@@ -41,7 +41,9 @@ import org.slf4j.LoggerFactory;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
+ * @deprecated Using UI in coolbar instead, now.
  */
+@Deprecated
 public class QueryEditorManagerComposite extends Composite
 {
 	private static final Logger logger = LoggerFactory.getLogger(QueryEditorManagerComposite.class);
@@ -67,7 +69,7 @@ public class QueryEditorManagerComposite extends Composite
 		createExecuteQueryButton();
 	}
 
-	public void setQueryBrowserManager(QueryEditorManager queryEditorManager)
+	public void setQueryEditorManager(QueryEditorManager queryEditorManager)
 	{
 		assertUIThread();
 		if (this.queryEditorManager == queryEditorManager)
