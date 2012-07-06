@@ -453,7 +453,7 @@ public abstract class QueryEditorManager
 		managedConnection.addConnectionListener(closeConnectionManagedConnectionListener);
 	}
 
-	private ConnectionContext getConnectionContext(final IConnectionProfile connectionProfile)
+	protected ConnectionContext getConnectionContext(final IConnectionProfile connectionProfile)
 	{
 		synchronized (connectionProfile2ConnectionContextMutex) {
 			ConnectionContext connectionContext = connectionProfile2ConnectionContext.get(connectionProfile);
@@ -1209,12 +1209,109 @@ public abstract class QueryEditorManager
 	protected abstract String getDefaultQueryTextForCandidateClass(String className);
 
 	public void commitTransaction() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("NYI");
+		assertUIThread();
+		final IConnectionProfile connectionProfile = getODAConnectionProfile();
+		if (connectionProfile == null)
+			throw new IllegalStateException("No ConnectionProfile selected!"); //$NON-NLS-1$
+
+		Job job = new Job("Committing transaction") {
+			@Override
+			protected IStatus run(IProgressMonitor monitor) {
+				try {
+					commitTransaction(connectionProfile, monitor);
+				} catch (final Throwable x) {
+					logger.error("commitTransaction.job.run: " + x, x); //$NON-NLS-1$
+					display.asyncExec(new Runnable() {
+						@Override
+						public void run() {
+							// trigger listeners?! maybe later
+						}
+					});
+				} finally {
+					display.asyncExec(new Runnable() {
+						@Override
+						public void run() {
+							// trigger listeners?! maybe later
+						}
+					});
+				}
+				return Status.OK_STATUS;
+			}
+		};
+		job.setUser(true);
+		job.setPriority(Job.INTERACTIVE);
+		job.setRule(new ProfileRule(connectionProfile));
+		job.schedule();
+	}
+
+	protected void commitTransaction(IConnectionProfile connectionProfile, IProgressMonitor monitor) throws Throwable {
+		if (connectionProfile.getConnectionState() != IConnectionProfile.CONNECTED_STATE) {
+			logger.warn("commitTransaction: connectionProfile.getConnectionState() != IConnectionProfile.CONNECTED_STATE");
+			return;
+		}
+
+		ConnectionContext connectionContext = getConnectionContext(connectionProfile);
+		IConnection connection = connectionContext.getConnection();
+		if (connection == null) {
+			logger.warn("commitTransaction: connectionContext.getConnection() == null");
+			return;
+		}
+
+		connection.commit();
 	}
 
 	public void rollbackTransaction() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("NYI");
+		assertUIThread();
+		final IConnectionProfile connectionProfile = getODAConnectionProfile();
+		if (connectionProfile == null)
+			throw new IllegalStateException("No ConnectionProfile selected!"); //$NON-NLS-1$
+
+		Job job = new Job("Rolling back transaction") {
+			@Override
+			protected IStatus run(IProgressMonitor monitor) {
+				try {
+					rollbackTransaction(connectionProfile, monitor);
+				} catch (final Throwable x) {
+					logger.error("rollbackTransaction.job.run: " + x, x); //$NON-NLS-1$
+					display.asyncExec(new Runnable() {
+						@Override
+						public void run() {
+							// trigger listeners?! maybe later
+						}
+					});
+				} finally {
+					display.asyncExec(new Runnable() {
+						@Override
+						public void run() {
+							// trigger listeners?! maybe later
+						}
+					});
+				}
+				return Status.OK_STATUS;
+			}
+		};
+		job.setUser(true);
+		job.setPriority(Job.INTERACTIVE);
+		job.setRule(new ProfileRule(connectionProfile));
+		job.schedule();
+	}
+
+	protected void rollbackTransaction(IConnectionProfile connectionProfile, IProgressMonitor monitor) throws Throwable {
+		if (connectionProfile.getConnectionState() != IConnectionProfile.CONNECTED_STATE)
+			return;
+
+		if (connectionProfile.getConnectionState() != IConnectionProfile.CONNECTED_STATE) {
+			logger.warn("rollbackTransaction: connectionProfile.getConnectionState() != IConnectionProfile.CONNECTED_STATE");
+			return;
+		}
+
+		ConnectionContext connectionContext = getConnectionContext(connectionProfile);
+		IConnection connection = connectionContext.getConnection();
+		if (connection == null) {
+			logger.warn("rollbackTransaction: connectionContext.getConnection() == null");
+			return;
+		}
+
+		connection.rollback();
 	}
 }

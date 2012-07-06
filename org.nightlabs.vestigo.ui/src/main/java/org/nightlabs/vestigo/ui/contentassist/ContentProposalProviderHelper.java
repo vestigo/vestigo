@@ -175,6 +175,6 @@ public abstract class ContentProposalProviderHelper<P extends IContentProposalPr
 	protected PersistableClass getPersistableClass(ContentAssistContext context, String className) {
 		QueryEditorManager queryEditorManager = DocumentContextManager.sharedInstance().getQueryEditorManager(context.getDocument(), true);
 		ConnectionProfile vestigoConnectionProfile = queryEditorManager.getVestigoConnectionProfileAskingUserIfNecessary();
-		return vestigoConnectionProfile.getQueryableCandidateClassMap().get(className);
+		return vestigoConnectionProfile == null ? null : vestigoConnectionProfile.getQueryableCandidateClassMap().get(className);
 	}
 }

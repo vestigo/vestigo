@@ -26,7 +26,7 @@ public class RollbackTransactionCommandHandler extends AbstractQueryEditorComman
 	@Override
 	protected Object execute(ExecutionEvent event, QueryEditor queryEditor) throws ExecutionException
 	{
-		queryEditor.getQueryEditorManager().commitTransaction();
+		queryEditor.getQueryEditorManager().rollbackTransaction();
 		return null;
 	}
 }

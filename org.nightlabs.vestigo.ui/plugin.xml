@@ -669,6 +669,10 @@
  </extension>
  <extension
        point="org.eclipse.ui.commands">
+    <category
+          id="org.nightlabs.vestigo.ui"
+          name="%org.nightlabs.vestigo.ui.commandCategory.name">
+    </category>
     <command
           categoryId="org.nightlabs.vestigo.ui"
           defaultHandler="org.nightlabs.vestigo.ui.editor.command.ExecuteQueryCommandHandler"
@@ -676,10 +680,6 @@
           id="org.nightlabs.vestigo.ui.editor.command.ExecuteQueryCommand"
           name="%org.nightlabs.vestigo.ui.editor.command.ExecuteQueryCommand.name">
     </command>
-    <category
-          id="org.nightlabs.vestigo.ui"
-          name="%org.nightlabs.vestigo.ui.commandCategory.name">
-    </category>
     <command
           categoryId="org.nightlabs.vestigo.ui"
           defaultHandler="org.nightlabs.vestigo.ui.editor.command.CommitTransactionCommandHandler"
@@ -702,25 +702,61 @@
        <toolbar
              id="org.nightlabs.vestigo.ui.editor">
           <control
-                class="org.nightlabs.vestigo.ui.editor.ConnectionProfileComboWorkbenchWindowControlContribution">
+                class="org.nightlabs.vestigo.ui.editor.contribution.ConnectionProfileComboWorkbenchWindowControlContribution">
+             <visibleWhen
+                   checkEnabled="false">
+                <with
+                      variable="activeWorkbenchWindow.activePerspective">
+                   <equals
+                         value="org.nightlabs.vestigo.ui.VestigoPerspective">
+                   </equals>
+                </with>
+             </visibleWhen>
           </control>
           <command
                 commandId="org.nightlabs.vestigo.ui.editor.command.ExecuteQueryCommand"
                 icon="icons/org.nightlabs.vestigo.ui.editor.command/ExecuteQueryCommand.16x16.png"
                 style="push"
                 tooltip="Execute query">
+             <visibleWhen
+                   checkEnabled="false">
+                <with
+                      variable="activeWorkbenchWindow.activePerspective">
+                   <equals
+                         value="org.nightlabs.vestigo.ui.VestigoPerspective">
+                   </equals>
+                </with>
+             </visibleWhen>
           </command>
           <command
                 commandId="org.nightlabs.vestigo.ui.editor.command.CommitTransactionCommand"
                 icon="icons/org.nightlabs.vestigo.ui.editor.command/CommitTransactionCommand.16x16.png"
                 style="push"
                 tooltip="Commit transaction">
+             <visibleWhen
+                   checkEnabled="false">
+                <with
+                      variable="activeWorkbenchWindow.activePerspective">
+                   <equals
+                         value="org.nightlabs.vestigo.ui.VestigoPerspective">
+                   </equals>
+                </with>
+             </visibleWhen>
           </command>
           <command
                 commandId="org.nightlabs.vestigo.ui.editor.command.RollbackTransactionCommand"
                 icon="icons/org.nightlabs.vestigo.ui.editor.command/RollbackTransactionCommand.16x16.png"
                 style="push"
                 tooltip="Rollback transaction">
+             <visibleWhen
+                   checkEnabled="false">
+                <with
+                      variable="activeWorkbenchWindow.activePerspective">
+                   <equals
+                         value="org.nightlabs.vestigo.ui.VestigoPerspective">
+                   </equals>
+                </with>
+             </visibleWhen>
           </command>
        </toolbar>
     </menuContribution>
@@ -729,9 +765,21 @@
        point="org.eclipse.ui.bindings">
     <key
           commandId="org.nightlabs.vestigo.ui.editor.command.ExecuteQueryCommand"
-          contextId="org.eclipse.ui.contexts.window"
+          contextId="org.eclipse.xtext.ui.XtextEditorScope"
           schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
-          sequence="Ctrl+F5">
+          sequence="CTRL+F5">
+    </key>
+    <key
+          commandId="org.nightlabs.vestigo.ui.editor.command.CommitTransactionCommand"
+          contextId="org.eclipse.xtext.ui.XtextEditorScope"
+          schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+          sequence="CTRL+ALT+ENTER">
+    </key>
+    <key
+          commandId="org.nightlabs.vestigo.ui.editor.command.RollbackTransactionCommand"
+          contextId="org.eclipse.xtext.ui.XtextEditorScope"
+          schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+          sequence="CTRL+ALT+BACKSPACE">
     </key>
  </extension>
  <extension
