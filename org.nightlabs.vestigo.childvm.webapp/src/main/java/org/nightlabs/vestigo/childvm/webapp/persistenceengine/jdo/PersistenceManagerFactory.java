@@ -38,6 +38,9 @@ public class PersistenceManagerFactory extends PersistenceEngineWrapper
 
 	public PersistenceManager getPersistenceManager() {
 		Object wrappedPM = invoke(2, "getPersistenceManager");
+		if (wrappedPM == null)
+			throw new IllegalStateException("getPersistenceManager() returned null! invocationTargetClass=" + getWrappedClassName() + " invocationTargetObject=" + getWrappedObject());
+
 		return new PersistenceManager(this, wrappedPM);
 	}
 }

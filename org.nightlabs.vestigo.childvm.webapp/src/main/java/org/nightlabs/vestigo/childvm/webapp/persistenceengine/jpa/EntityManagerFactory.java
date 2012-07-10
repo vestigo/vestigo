@@ -38,6 +38,9 @@ public class EntityManagerFactory extends PersistenceEngineWrapper
 
 	public EntityManager createEntityManager() {
 		Object wrappedEM = invoke(2, "createEntityManager");
+		if (wrappedEM == null)
+			throw new IllegalStateException("createEntityManager() returned null! invocationTargetClass=" + getWrappedClassName() + " invocationTargetObject=" + getWrappedObject());
+
 		return new EntityManager(this, wrappedEM);
 	}
 
