@@ -92,6 +92,10 @@ public class JDOHelper extends PersistenceEngineWrapper
 				new Class<?>[] { Map.class, ClassLoader.class },
 				properties, getClassLoader()
 		);
+
+		if (wrappedPMF == null)
+			throw new IllegalStateException("getPersistenceManagerFactory(Map, ClassLoader) returned null! invocationTargetClass=" + getWrappedClassName());
+
 		return new PersistenceManagerFactory(this, wrappedPMF);
 	}
 
@@ -110,6 +114,10 @@ public class JDOHelper extends PersistenceEngineWrapper
 				new Class<?>[] { Map.class, String.class, ClassLoader.class, ClassLoader.class },
 				overrides, name, getClassLoader(), getClassLoader()
 		);
+
+		if (wrappedPMF == null)
+			throw new IllegalStateException("getPersistenceManagerFactory(Map, String, ClassLoader, ClassLoader) returned null! invocationTargetClass=" + getWrappedClassName());
+
 		return new PersistenceManagerFactory(this, wrappedPMF);
 	}
 
@@ -128,6 +136,10 @@ public class JDOHelper extends PersistenceEngineWrapper
 				new Class<?>[] { String.class, ClassLoader.class, ClassLoader.class },
 				name, getClassLoader(), getClassLoader()
 		);
+
+		if (wrappedPMF == null)
+			throw new IllegalStateException("getPersistenceManagerFactory(String, ClassLoader, ClassLoader) returned null! invocationTargetClass=" + getWrappedClassName());
+
 		return new PersistenceManagerFactory(this, wrappedPMF);
 	}
 

@@ -23,9 +23,12 @@ public class EntityManagerFactory extends PersistenceEngineWrapper
 {
 	private Persistence persistence;
 
-	public EntityManagerFactory(Persistence persistence, Object wrappedObject) {
-		super(persistence, wrappedObject);
+	public EntityManagerFactory(Persistence persistence, Object wrappedEntityManagerFactory) {
+		super(persistence, wrappedEntityManagerFactory);
 		this.persistence = persistence;
+
+		if (wrappedEntityManagerFactory == null)
+			throw new IllegalArgumentException("wrappedEntityManagerFactory == null");
 	}
 
 	public Persistence getPersistence() {

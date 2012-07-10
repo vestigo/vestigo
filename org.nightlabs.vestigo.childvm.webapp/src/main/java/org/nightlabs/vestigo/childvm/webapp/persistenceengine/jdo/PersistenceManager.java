@@ -28,9 +28,12 @@ public class PersistenceManager extends PersistenceEngineWrapper
 {
 	private PersistenceManagerFactory persistenceManagerFactory;
 
-	public PersistenceManager(PersistenceManagerFactory persistenceManagerFactory, Object wrappedObject) {
-		super(persistenceManagerFactory, wrappedObject);
+	public PersistenceManager(PersistenceManagerFactory persistenceManagerFactory, Object wrappedPersistenceManager) {
+		super(persistenceManagerFactory, wrappedPersistenceManager);
 		this.persistenceManagerFactory = persistenceManagerFactory;
+
+		if (wrappedPersistenceManager == null)
+			throw new IllegalArgumentException("wrappedPersistenceManager == null");
 	}
 
 	public PersistenceManagerFactory getPersistenceManagerFactory() {

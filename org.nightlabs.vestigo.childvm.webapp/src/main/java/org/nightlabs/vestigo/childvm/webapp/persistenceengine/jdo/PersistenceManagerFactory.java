@@ -26,6 +26,9 @@ public class PersistenceManagerFactory extends PersistenceEngineWrapper
 	public PersistenceManagerFactory(JDOHelper jdoHelper, Object wrappedPersistenceManagerFactory) {
 		super(jdoHelper, wrappedPersistenceManagerFactory);
 		this.jdoHelper = jdoHelper;
+
+		if (wrappedPersistenceManagerFactory == null)
+			throw new IllegalArgumentException("wrappedPersistenceManagerFactory == null");
 	}
 
 	public JDOHelper getJDOHelper() {

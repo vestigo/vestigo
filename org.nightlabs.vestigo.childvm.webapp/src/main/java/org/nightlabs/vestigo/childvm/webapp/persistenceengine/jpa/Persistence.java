@@ -40,11 +40,17 @@ public class Persistence extends PersistenceEngineWrapper {
 
 	public EntityManagerFactory createEntityManagerFactory(String persistenceUnitName) {
 		Object wrappedEMF = invokeStatic(1, "createEntityManagerFactory", String.class, persistenceUnitName);
+		if (wrappedEMF == null)
+			throw new IllegalStateException("createEntityManagerFactory(String) returned null! invocationTargetClass=" + getWrappedClassName());
+
 		return new EntityManagerFactory(this, wrappedEMF);
 	}
 
 	public EntityManagerFactory createEntityManagerFactory(String persistenceUnitName, Map<String, String> properties) {
 		Object wrappedEMF = invokeStatic(2, "createEntityManagerFactory", String.class, Map.class, persistenceUnitName, properties);
+		if (wrappedEMF == null)
+			throw new IllegalStateException("createEntityManagerFactory(String, Map) returned null! invocationTargetClass=" + getWrappedClassName());
+
 		return new EntityManagerFactory(this, wrappedEMF);
 	}
 
