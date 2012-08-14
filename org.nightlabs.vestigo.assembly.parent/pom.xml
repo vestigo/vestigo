@@ -33,14 +33,6 @@
 	</dependencyManagement>
 
 	<dependencies>
-		<!-- BEGIN org.nightlabs.eclipse.* -->
-		<dependency>
-			<groupId>org.nightlabs.eclipse</groupId>
-			<artifactId>${org.nightlabs.eclipse.compatibility.artifactId}</artifactId>
-		</dependency>
-		<!-- END org.nightlabs.eclipse.* -->
-
-		<!-- BEGIN org.nightlabs.vestigo.* -->
 		<dependency>
 			<groupId>org.nightlabs.vestigo</groupId>
 			<artifactId>org.nightlabs.vestigo.core</artifactId>

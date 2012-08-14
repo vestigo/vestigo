@@ -37,13 +37,44 @@
 
 		<!-- BEGIN org.eclipse -->
 		<dependency>
+			<groupId>org.eclipse.swt</groupId>
+			<artifactId>org.eclipse.swt</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.swt</groupId>
+			<artifactId>org.eclipse.swt.gtk.linux.x86</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.ui</groupId>
+			<artifactId>org.eclipse.ui</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.eclipse.ui</groupId>
 			<artifactId>org.eclipse.ui.views</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.eclipse.ui</groupId>
 			<artifactId>org.eclipse.ui.cheatsheets</artifactId>
-			<version>[3.4,4.0)</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.eclipse.ui</groupId>
+		    <artifactId>org.eclipse.ui.forms</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>org.eclipse.ui</groupId>
+		    <artifactId>org.eclipse.ui.ide</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.ui</groupId>
+			<artifactId>org.eclipse.ui.workbench</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.ui</groupId>
+			<artifactId>org.eclipse.ui.workbench.texteditor</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.ui</groupId>
+			<artifactId>org.eclipse.ui.editors</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.eclipse.jface</groupId>
@@ -66,21 +97,6 @@
 			<artifactId>org.eclipse.datatools.connectivity.ui</artifactId>
 		</dependency>
 
-		<dependency>
-			<groupId>org.eclipse.ui</groupId>
-			<artifactId>org.eclipse.ui.ide</artifactId>
-			<version>3.6.2</version> <!-- TODO either remove this dependency again (currently only needed for using the example editor) or move to parent -->
-			<exclusions>
-				<exclusion>
-					<groupId>org.eclipse.equinox</groupId>
-					<artifactId>org.eclipse.equinox.p2.engine</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.eclipse.equinox</groupId>
-					<artifactId>org.eclipse.equinox.p2.metadata</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
 		<!-- END org.eclipse -->
 		
 		<!-- BEGIN org.eclipse.xtext -->
@@ -90,7 +106,15 @@
 		-->
 		<dependency>
 			<groupId>org.eclipse.xtext</groupId>
+			<artifactId>org.eclipse.xtext</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.xtext</groupId>
 			<artifactId>org.eclipse.xtext.ui</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.xtext</groupId>
+			<artifactId>org.eclipse.xtext.util</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>com.google.inject</groupId>
@@ -99,12 +123,12 @@
 		<!-- END org.eclipse.xtext -->
 
 		<!-- BEGIN org.nightlabs.eclipse -->
-		<dependency>
+<!-- 		<dependency>
 			<groupId>org.nightlabs.eclipse</groupId>
-<!--
+
 temporarily... because of exampleeditor - we should switch back to the property, i.e. RAP (which is more restricted)
 			<artifactId>${org.nightlabs.eclipse.compatibility.artifactId}</artifactId>
--->
+
 			<artifactId>org.nightlabs.eclipse.compatibility.rcp</artifactId>
 			<scope>compile</scope>
 			<exclusions>
@@ -116,7 +140,7 @@ temporarily... because of exampleeditor - we should switch back to the property,
 				</exclusion>
 			</exclusions>
 		</dependency>
-		<!-- END org.nightlabs.eclipse -->
+ -->		<!-- END org.nightlabs.eclipse -->
 
 		<!-- BEGIN EMF -->
 		<dependency>
@@ -221,8 +245,13 @@ temporarily... because of exampleeditor - we should switch back to the property,
 					<instructions>
 						<Bundle-Activator>org.nightlabs.vestigo.ui.VestigoUIPlugin</Bundle-Activator>
 						<Bundle-ActivationPolicy>lazy</Bundle-ActivationPolicy>
-						<Require-Bundle>org.eclipse.core.runtime</Require-Bundle>
-						<Import-Package>!org.eclipse.core.runtime,*</Import-Package>
+						<Require-Bundle>
+							org.eclipse.core.runtime,
+							org.eclipse.ui.workbench,
+							org.eclipse.ui.ide,
+							com.google.inject
+						</Require-Bundle>
+						<Import-Package>!org.eclipse.core.runtime,!org.eclipse.ui,!com.google.inject,*</Import-Package>
 					</instructions>
 				</configuration>
 			</plugin>

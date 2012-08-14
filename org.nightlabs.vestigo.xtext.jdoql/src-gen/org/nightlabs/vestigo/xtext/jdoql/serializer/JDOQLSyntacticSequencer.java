@@ -13,8 +13,8 @@ import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISyn
 import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 import org.nightlabs.vestigo.xtext.jdoql.services.JDOQLGrammarAccess;
 
-@SuppressWarnings("restriction")
-public class AbstractJDOQLSyntacticSequencer extends AbstractSyntacticSequencer {
+@SuppressWarnings("all")
+public class JDOQLSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected JDOQLGrammarAccess grammarAccess;
 	protected AbstractElementAlias match_Alias_ASKeyword_0_q;

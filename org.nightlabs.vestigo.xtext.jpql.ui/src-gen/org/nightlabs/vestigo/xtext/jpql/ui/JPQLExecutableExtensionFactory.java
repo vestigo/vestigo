@@ -8,6 +8,8 @@ import org.osgi.framework.Bundle;
 
 import com.google.inject.Injector;
 
+import org.nightlabs.vestigo.xtext.jpql.ui.internal.JPQLActivator;
+
 /**
  * This class was generated. Customizations should only happen in a newly
  * introduced subclass. 
@@ -16,12 +18,12 @@ public class JPQLExecutableExtensionFactory extends AbstractGuiceAwareExecutable
 
 	@Override
 	protected Bundle getBundle() {
-		return org.nightlabs.vestigo.xtext.jpql.ui.internal.JPQLActivator.getInstance().getBundle();
+		return JPQLActivator.getInstance().getBundle();
 	}
 	
 	@Override
 	protected Injector getInjector() {
-		return org.nightlabs.vestigo.xtext.jpql.ui.internal.JPQLActivator.getInstance().getInjector("org.nightlabs.vestigo.xtext.jpql.JPQL");
+		return JPQLActivator.getInstance().getInjector(JPQLActivator.ORG_NIGHTLABS_VESTIGO_XTEXT_JPQL_JPQL);
 	}
 	
 }

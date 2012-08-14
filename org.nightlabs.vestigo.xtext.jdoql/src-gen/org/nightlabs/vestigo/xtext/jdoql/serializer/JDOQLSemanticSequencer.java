@@ -7,7 +7,7 @@ import org.eclipse.xtext.serializer.acceptor.ISemanticSequenceAcceptor;
 import org.eclipse.xtext.serializer.acceptor.SequenceFeeder;
 import org.eclipse.xtext.serializer.diagnostic.ISemanticSequencerDiagnosticProvider;
 import org.eclipse.xtext.serializer.diagnostic.ISerializationDiagnostic.Acceptor;
-import org.eclipse.xtext.serializer.sequencer.AbstractSemanticSequencer;
+import org.eclipse.xtext.serializer.sequencer.AbstractDelegatingSemanticSequencer;
 import org.eclipse.xtext.serializer.sequencer.GenericSequencer;
 import org.eclipse.xtext.serializer.sequencer.ISemanticNodeProvider.INodesForEObjectProvider;
 import org.eclipse.xtext.serializer.sequencer.ISemanticSequencer;
@@ -45,31 +45,11 @@ import org.nightlabs.vestigo.xtext.jdoql.jDOQL.VariablesClause;
 import org.nightlabs.vestigo.xtext.jdoql.jDOQL.WhereClause;
 import org.nightlabs.vestigo.xtext.jdoql.services.JDOQLGrammarAccess;
 
-@SuppressWarnings("restriction")
-public class AbstractJDOQLSemanticSequencer extends AbstractSemanticSequencer {
+@SuppressWarnings("all")
+public class JDOQLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 
 	@Inject
-	protected JDOQLGrammarAccess grammarAccess;
-	
-	@Inject
-	protected ISemanticSequencerDiagnosticProvider diagnosticProvider;
-	
-	@Inject
-	protected ITransientValueService transientValues;
-	
-	@Inject
-	@GenericSequencer
-	protected Provider<ISemanticSequencer> genericSequencerProvider;
-	
-	protected ISemanticSequencer genericSequencer;
-	
-	
-	@Override
-	public void init(ISemanticSequencer sequencer, ISemanticSequenceAcceptor sequenceAcceptor, Acceptor errorAcceptor) {
-		super.init(sequencer, sequenceAcceptor, errorAcceptor);
-		this.genericSequencer = genericSequencerProvider.get();
-		this.genericSequencer.init(sequencer, sequenceAcceptor, errorAcceptor);
-	}
+	private JDOQLGrammarAccess grammarAccess;
 	
 	public void createSequence(EObject context, EObject semanticObject) {
 		if(semanticObject.eClass().getEPackage() == JDOQLPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
@@ -95,11 +75,11 @@ public class AbstractJDOQLSemanticSequencer extends AbstractSemanticSequencer {
 					return; 
 				}
 				else if(context == grammarAccess.getOrderBySpecRule()) {
-					sequence_OrderBySpec(context, (AdditionExpression) semanticObject); 
+					sequence_AdditionExpression_OrderBySpec(context, (AdditionExpression) semanticObject); 
 					return; 
 				}
 				else if(context == grammarAccess.getResultSpecRule()) {
-					sequence_ResultSpec(context, (AdditionExpression) semanticObject); 
+					sequence_AdditionExpression_ResultSpec(context, (AdditionExpression) semanticObject); 
 					return; 
 				}
 				else break;
@@ -129,11 +109,11 @@ public class AbstractJDOQLSemanticSequencer extends AbstractSemanticSequencer {
 					return; 
 				}
 				else if(context == grammarAccess.getOrderBySpecRule()) {
-					sequence_OrderBySpec(context, (ComparisonOperatorExpression) semanticObject); 
+					sequence_ComparisonOperatorExpression_OrderBySpec(context, (ComparisonOperatorExpression) semanticObject); 
 					return; 
 				}
 				else if(context == grammarAccess.getResultSpecRule()) {
-					sequence_ResultSpec(context, (ComparisonOperatorExpression) semanticObject); 
+					sequence_ComparisonOperatorExpression_ResultSpec(context, (ComparisonOperatorExpression) semanticObject); 
 					return; 
 				}
 				else break;
@@ -151,11 +131,11 @@ public class AbstractJDOQLSemanticSequencer extends AbstractSemanticSequencer {
 					return; 
 				}
 				else if(context == grammarAccess.getOrderBySpecRule()) {
-					sequence_OrderBySpec(context, (ConditionalAndExpression) semanticObject); 
+					sequence_ConditionalAndExpression_OrderBySpec(context, (ConditionalAndExpression) semanticObject); 
 					return; 
 				}
 				else if(context == grammarAccess.getResultSpecRule()) {
-					sequence_ResultSpec(context, (ConditionalAndExpression) semanticObject); 
+					sequence_ConditionalAndExpression_ResultSpec(context, (ConditionalAndExpression) semanticObject); 
 					return; 
 				}
 				else break;
@@ -171,11 +151,11 @@ public class AbstractJDOQLSemanticSequencer extends AbstractSemanticSequencer {
 					return; 
 				}
 				else if(context == grammarAccess.getOrderBySpecRule()) {
-					sequence_OrderBySpec(context, (ConditionalOrExpression) semanticObject); 
+					sequence_ConditionalOrExpression_OrderBySpec(context, (ConditionalOrExpression) semanticObject); 
 					return; 
 				}
 				else if(context == grammarAccess.getResultSpecRule()) {
-					sequence_ResultSpec(context, (ConditionalOrExpression) semanticObject); 
+					sequence_ConditionalOrExpression_ResultSpec(context, (ConditionalOrExpression) semanticObject); 
 					return; 
 				}
 				else break;
@@ -185,11 +165,11 @@ public class AbstractJDOQLSemanticSequencer extends AbstractSemanticSequencer {
 					return; 
 				}
 				else if(context == grammarAccess.getOrderBySpecRule()) {
-					sequence_OrderBySpec(context, (Expression) semanticObject); 
+					sequence_OrderBySpec_UnaryExpression(context, (Expression) semanticObject); 
 					return; 
 				}
 				else if(context == grammarAccess.getResultSpecRule()) {
-					sequence_ResultSpec(context, (Expression) semanticObject); 
+					sequence_ResultSpec_UnaryExpression(context, (Expression) semanticObject); 
 					return; 
 				}
 				else if(context == grammarAccess.getStaticMethodExpressionRule()) {
@@ -197,7 +177,7 @@ public class AbstractJDOQLSemanticSequencer extends AbstractSemanticSequencer {
 					return; 
 				}
 				else if(context == grammarAccess.getFieldAccessExpressionRule()) {
-					sequence_StaticMethodExpression(context, (Expression) semanticObject); 
+					sequence_StaticMethodExpression_UnaryExpression(context, (Expression) semanticObject); 
 					return; 
 				}
 				else if(context == grammarAccess.getAdditionExpressionRule() ||
@@ -284,11 +264,11 @@ public class AbstractJDOQLSemanticSequencer extends AbstractSemanticSequencer {
 					return; 
 				}
 				else if(context == grammarAccess.getOrderBySpecRule()) {
-					sequence_OrderBySpec(context, (MultiplicationExpression) semanticObject); 
+					sequence_MultiplicationExpression_OrderBySpec(context, (MultiplicationExpression) semanticObject); 
 					return; 
 				}
 				else if(context == grammarAccess.getResultSpecRule()) {
-					sequence_ResultSpec(context, (MultiplicationExpression) semanticObject); 
+					sequence_MultiplicationExpression_ResultSpec(context, (MultiplicationExpression) semanticObject); 
 					return; 
 				}
 				else break;
@@ -340,11 +320,11 @@ public class AbstractJDOQLSemanticSequencer extends AbstractSemanticSequencer {
 				else break;
 			case JDOQLPackage.SIMPLE_AND_EXPRESSION:
 				if(context == grammarAccess.getOrderBySpecRule()) {
-					sequence_OrderBySpec(context, (SimpleAndExpression) semanticObject); 
+					sequence_OrderBySpec_SimpleAndExpression(context, (SimpleAndExpression) semanticObject); 
 					return; 
 				}
 				else if(context == grammarAccess.getResultSpecRule()) {
-					sequence_ResultSpec(context, (SimpleAndExpression) semanticObject); 
+					sequence_ResultSpec_SimpleAndExpression(context, (SimpleAndExpression) semanticObject); 
 					return; 
 				}
 				else if(context == grammarAccess.getConditionalAndExpressionRule() ||
@@ -366,11 +346,11 @@ public class AbstractJDOQLSemanticSequencer extends AbstractSemanticSequencer {
 				else break;
 			case JDOQLPackage.SIMPLE_OR_EXPRESSION:
 				if(context == grammarAccess.getOrderBySpecRule()) {
-					sequence_OrderBySpec(context, (SimpleOrExpression) semanticObject); 
+					sequence_OrderBySpec_SimpleOrExpression(context, (SimpleOrExpression) semanticObject); 
 					return; 
 				}
 				else if(context == grammarAccess.getResultSpecRule()) {
-					sequence_ResultSpec(context, (SimpleOrExpression) semanticObject); 
+					sequence_ResultSpec_SimpleOrExpression(context, (SimpleOrExpression) semanticObject); 
 					return; 
 				}
 				else if(context == grammarAccess.getConditionalAndExpressionRule() ||
@@ -450,6 +430,24 @@ public class AbstractJDOQLSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
+	 *     (left=AdditionExpression_AdditionExpression_1_0 operator=AdditionOperator right=MultiplicationExpression direction=OrderByDirection)
+	 */
+	protected void sequence_AdditionExpression_OrderBySpec(EObject context, AdditionExpression semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (left=AdditionExpression_AdditionExpression_1_0 operator=AdditionOperator right=MultiplicationExpression resultNaming=ResultNaming?)
+	 */
+	protected void sequence_AdditionExpression_ResultSpec(EObject context, AdditionExpression semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     identifier=ID
 	 */
 	protected void sequence_Alias(EObject context, Alias semanticObject) {
@@ -475,6 +473,34 @@ public class AbstractJDOQLSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
+	 *     (
+	 *         left=ComparisonOperatorExpression_ComparisonOperatorExpression_1_0 
+	 *         operator=ComparisonOperator 
+	 *         right=AdditionExpression 
+	 *         direction=OrderByDirection
+	 *     )
+	 */
+	protected void sequence_ComparisonOperatorExpression_OrderBySpec(EObject context, ComparisonOperatorExpression semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (
+	 *         left=ComparisonOperatorExpression_ComparisonOperatorExpression_1_0 
+	 *         operator=ComparisonOperator 
+	 *         right=AdditionExpression 
+	 *         resultNaming=ResultNaming?
+	 *     )
+	 */
+	protected void sequence_ComparisonOperatorExpression_ResultSpec(EObject context, ComparisonOperatorExpression semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     (left=ConditionalAndExpression_ConditionalAndExpression_1_0 right=SimpleOrExpression)
 	 */
 	protected void sequence_ConditionalAndExpression(EObject context, ConditionalAndExpression semanticObject) {
@@ -484,9 +510,45 @@ public class AbstractJDOQLSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
+	 *     (left=ConditionalAndExpression_ConditionalAndExpression_1_0 right=SimpleOrExpression direction=OrderByDirection)
+	 */
+	protected void sequence_ConditionalAndExpression_OrderBySpec(EObject context, ConditionalAndExpression semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (left=ConditionalAndExpression_ConditionalAndExpression_1_0 right=SimpleOrExpression resultNaming=ResultNaming?)
+	 */
+	protected void sequence_ConditionalAndExpression_ResultSpec(EObject context, ConditionalAndExpression semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     (left=ConditionalOrExpression_ConditionalOrExpression_1_0 right=ConditionalAndExpression)
 	 */
 	protected void sequence_ConditionalOrExpression(EObject context, ConditionalOrExpression semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (left=ConditionalOrExpression_ConditionalOrExpression_1_0 right=ConditionalAndExpression direction=OrderByDirection)
+	 */
+	protected void sequence_ConditionalOrExpression_OrderBySpec(EObject context, ConditionalOrExpression semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (left=ConditionalOrExpression_ConditionalOrExpression_1_0 right=ConditionalAndExpression resultNaming=ResultNaming?)
+	 */
+	protected void sequence_ConditionalOrExpression_ResultSpec(EObject context, ConditionalOrExpression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -608,6 +670,24 @@ public class AbstractJDOQLSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
+	 *     (left=MultiplicationExpression_MultiplicationExpression_1_0 operator=MultiplicationOperator right=UnaryExpression direction=OrderByDirection)
+	 */
+	protected void sequence_MultiplicationExpression_OrderBySpec(EObject context, MultiplicationExpression semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (left=MultiplicationExpression_MultiplicationExpression_1_0 operator=MultiplicationOperator right=UnaryExpression resultNaming=ResultNaming?)
+	 */
+	protected void sequence_MultiplicationExpression_ResultSpec(EObject context, MultiplicationExpression semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     (ordering+=OrderBySpec ordering+=OrderBySpec*)
 	 */
 	protected void sequence_OrderByClause(EObject context, OrderByClause semanticObject) {
@@ -617,68 +697,9 @@ public class AbstractJDOQLSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (left=AdditionExpression_AdditionExpression_1_0 operator=AdditionOperator right=MultiplicationExpression direction=OrderByDirection)
-	 */
-	protected void sequence_OrderBySpec(EObject context, AdditionExpression semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (
-	 *         left=ComparisonOperatorExpression_ComparisonOperatorExpression_1_0 
-	 *         operator=ComparisonOperator 
-	 *         right=AdditionExpression 
-	 *         direction=OrderByDirection
-	 *     )
-	 */
-	protected void sequence_OrderBySpec(EObject context, ComparisonOperatorExpression semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (left=ConditionalAndExpression_ConditionalAndExpression_1_0 right=SimpleOrExpression direction=OrderByDirection)
-	 */
-	protected void sequence_OrderBySpec(EObject context, ConditionalAndExpression semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (left=ConditionalOrExpression_ConditionalOrExpression_1_0 right=ConditionalAndExpression direction=OrderByDirection)
-	 */
-	protected void sequence_OrderBySpec(EObject context, ConditionalOrExpression semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (((castType=Type right=FieldAccessExpression) | (unaryOperator=UnaryOperator? right=FieldAccessExpression)) direction=OrderByDirection)
-	 */
-	protected void sequence_OrderBySpec(EObject context, Expression semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (left=MultiplicationExpression_MultiplicationExpression_1_0 operator=MultiplicationOperator right=UnaryExpression direction=OrderByDirection)
-	 */
-	protected void sequence_OrderBySpec(EObject context, MultiplicationExpression semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
 	 *     (left=SimpleAndExpression_SimpleAndExpression_1_0 right=ComparisonOperatorExpression direction=OrderByDirection)
 	 */
-	protected void sequence_OrderBySpec(EObject context, SimpleAndExpression semanticObject) {
+	protected void sequence_OrderBySpec_SimpleAndExpression(EObject context, SimpleAndExpression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -687,7 +708,16 @@ public class AbstractJDOQLSemanticSequencer extends AbstractSemanticSequencer {
 	 * Constraint:
 	 *     (left=SimpleOrExpression_SimpleOrExpression_1_0 right=SimpleAndExpression direction=OrderByDirection)
 	 */
-	protected void sequence_OrderBySpec(EObject context, SimpleOrExpression semanticObject) {
+	protected void sequence_OrderBySpec_SimpleOrExpression(EObject context, SimpleOrExpression semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (((castType=Type right=FieldAccessExpression) | (unaryOperator=UnaryOperator? right=FieldAccessExpression)) direction=OrderByDirection)
+	 */
+	protected void sequence_OrderBySpec_UnaryExpression(EObject context, Expression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -766,68 +796,9 @@ public class AbstractJDOQLSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (left=AdditionExpression_AdditionExpression_1_0 operator=AdditionOperator right=MultiplicationExpression resultNaming=ResultNaming?)
-	 */
-	protected void sequence_ResultSpec(EObject context, AdditionExpression semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (
-	 *         left=ComparisonOperatorExpression_ComparisonOperatorExpression_1_0 
-	 *         operator=ComparisonOperator 
-	 *         right=AdditionExpression 
-	 *         resultNaming=ResultNaming?
-	 *     )
-	 */
-	protected void sequence_ResultSpec(EObject context, ComparisonOperatorExpression semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (left=ConditionalAndExpression_ConditionalAndExpression_1_0 right=SimpleOrExpression resultNaming=ResultNaming?)
-	 */
-	protected void sequence_ResultSpec(EObject context, ConditionalAndExpression semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (left=ConditionalOrExpression_ConditionalOrExpression_1_0 right=ConditionalAndExpression resultNaming=ResultNaming?)
-	 */
-	protected void sequence_ResultSpec(EObject context, ConditionalOrExpression semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (((castType=Type right=FieldAccessExpression) | (unaryOperator=UnaryOperator? right=FieldAccessExpression)) resultNaming=ResultNaming?)
-	 */
-	protected void sequence_ResultSpec(EObject context, Expression semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (left=MultiplicationExpression_MultiplicationExpression_1_0 operator=MultiplicationOperator right=UnaryExpression resultNaming=ResultNaming?)
-	 */
-	protected void sequence_ResultSpec(EObject context, MultiplicationExpression semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
 	 *     (left=SimpleAndExpression_SimpleAndExpression_1_0 right=ComparisonOperatorExpression resultNaming=ResultNaming?)
 	 */
-	protected void sequence_ResultSpec(EObject context, SimpleAndExpression semanticObject) {
+	protected void sequence_ResultSpec_SimpleAndExpression(EObject context, SimpleAndExpression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -836,7 +807,16 @@ public class AbstractJDOQLSemanticSequencer extends AbstractSemanticSequencer {
 	 * Constraint:
 	 *     (left=SimpleOrExpression_SimpleOrExpression_1_0 right=SimpleAndExpression resultNaming=ResultNaming?)
 	 */
-	protected void sequence_ResultSpec(EObject context, SimpleOrExpression semanticObject) {
+	protected void sequence_ResultSpec_SimpleOrExpression(EObject context, SimpleOrExpression semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (((castType=Type right=FieldAccessExpression) | (unaryOperator=UnaryOperator? right=FieldAccessExpression)) resultNaming=ResultNaming?)
+	 */
+	protected void sequence_ResultSpec_UnaryExpression(EObject context, Expression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -922,11 +902,54 @@ public class AbstractJDOQLSemanticSequencer extends AbstractSemanticSequencer {
 	 *         (name='sum' isDistinct?='DISTINCT'? aggregateArgument=ConditionalOrExpression) | 
 	 *         (name='min' aggregateArgument=ConditionalOrExpression) | 
 	 *         (name='max' aggregateArgument=ConditionalOrExpression) | 
+	 *         (name='avg' isDistinct?='DISTINCT'? aggregateArgument=ConditionalOrExpression)
+	 *     )
+	 */
+	protected void sequence_StaticMethodExpression(EObject context, Expression semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (
+	 *         (name='Math.abs' number=ConditionalOrExpression) | 
+	 *         (name='Math.sqrt' number=ConditionalOrExpression) | 
+	 *         (name='Math.cos' number=ConditionalOrExpression) | 
+	 *         (name='Math.sin' number=ConditionalOrExpression) | 
+	 *         (name='Math.tan' number=ConditionalOrExpression) | 
+	 *         (name='Math.acos' number=ConditionalOrExpression) | 
+	 *         (name='Math.asin' number=ConditionalOrExpression) | 
+	 *         (name='Math.atan' number=ConditionalOrExpression) | 
+	 *         (name='Math.ceil' number=ConditionalOrExpression) | 
+	 *         (name='Math.exp' number=ConditionalOrExpression) | 
+	 *         (name='Math.floor' number=ConditionalOrExpression) | 
+	 *         (name='Math.log' number=ConditionalOrExpression) | 
+	 *         (name='java.lang.Math.abs' number=ConditionalOrExpression) | 
+	 *         (name='java.lang.Math.sqrt' number=ConditionalOrExpression) | 
+	 *         (name='java.lang.Math.cos' number=ConditionalOrExpression) | 
+	 *         (name='java.lang.Math.sin' number=ConditionalOrExpression) | 
+	 *         (name='java.lang.Math.tan' number=ConditionalOrExpression) | 
+	 *         (name='java.lang.Math.acos' number=ConditionalOrExpression) | 
+	 *         (name='java.lang.Math.asin' number=ConditionalOrExpression) | 
+	 *         (name='java.lang.Math.atan' number=ConditionalOrExpression) | 
+	 *         (name='java.lang.Math.ceil' number=ConditionalOrExpression) | 
+	 *         (name='java.lang.Math.exp' number=ConditionalOrExpression) | 
+	 *         (name='java.lang.Math.floor' number=ConditionalOrExpression) | 
+	 *         (name='java.lang.Math.log' number=ConditionalOrExpression) | 
+	 *         (name='JDOHelper.getObjectId' persistable=ConditionalOrExpression) | 
+	 *         (name='JDOHelper.getVersion' persistable=ConditionalOrExpression) | 
+	 *         (name='javax.jdo.JDOHelper.getObjectId' persistable=ConditionalOrExpression) | 
+	 *         (name='javax.jdo.JDOHelper.getVersion' persistable=ConditionalOrExpression) | 
+	 *         (name='count' isDistinct?='DISTINCT'? aggregateArgument=ConditionalOrExpression) | 
+	 *         (name='sum' isDistinct?='DISTINCT'? aggregateArgument=ConditionalOrExpression) | 
+	 *         (name='min' aggregateArgument=ConditionalOrExpression) | 
+	 *         (name='max' aggregateArgument=ConditionalOrExpression) | 
 	 *         (name='avg' isDistinct?='DISTINCT'? aggregateArgument=ConditionalOrExpression) | 
 	 *         ((castType=Type right=FieldAccessExpression) | (unaryOperator=UnaryOperator? right=FieldAccessExpression))
 	 *     )
 	 */
-	protected void sequence_StaticMethodExpression(EObject context, Expression semanticObject) {
+	protected void sequence_StaticMethodExpression_UnaryExpression(EObject context, Expression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

@@ -1,7 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
  */
 package org.nightlabs.vestigo.xtext.jdoql.jDOQL.util;
 

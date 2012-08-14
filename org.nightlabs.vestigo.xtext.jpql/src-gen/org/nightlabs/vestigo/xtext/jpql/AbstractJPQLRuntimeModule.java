@@ -41,12 +41,12 @@ public abstract class AbstractJPQLRuntimeModule extends DefaultRuntimeModule {
 
 	// contributed by org.eclipse.xtext.generator.serializer.SerializerFragment
 	public Class<? extends org.eclipse.xtext.serializer.sequencer.ISemanticSequencer> bindISemanticSequencer() {
-		return org.nightlabs.vestigo.xtext.jpql.serializer.AbstractJPQLSemanticSequencer.class;
+		return org.nightlabs.vestigo.xtext.jpql.serializer.JPQLSemanticSequencer.class;
 	}
 
 	// contributed by org.eclipse.xtext.generator.serializer.SerializerFragment
 	public Class<? extends org.eclipse.xtext.serializer.sequencer.ISyntacticSequencer> bindISyntacticSequencer() {
-		return org.nightlabs.vestigo.xtext.jpql.serializer.AbstractJPQLSyntacticSequencer.class;
+		return org.nightlabs.vestigo.xtext.jpql.serializer.JPQLSyntacticSequencer.class;
 	}
 
 	// contributed by org.eclipse.xtext.generator.serializer.SerializerFragment

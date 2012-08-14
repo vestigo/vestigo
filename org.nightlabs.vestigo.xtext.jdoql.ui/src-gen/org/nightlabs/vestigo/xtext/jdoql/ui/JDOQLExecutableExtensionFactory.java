@@ -8,6 +8,8 @@ import org.osgi.framework.Bundle;
 
 import com.google.inject.Injector;
 
+import org.nightlabs.vestigo.xtext.jdoql.ui.internal.JDOQLActivator;
+
 /**
  * This class was generated. Customizations should only happen in a newly
  * introduced subclass. 
@@ -16,12 +18,12 @@ public class JDOQLExecutableExtensionFactory extends AbstractGuiceAwareExecutabl
 
 	@Override
 	protected Bundle getBundle() {
-		return org.nightlabs.vestigo.xtext.jdoql.ui.internal.JDOQLActivator.getInstance().getBundle();
+		return JDOQLActivator.getInstance().getBundle();
 	}
 	
 	@Override
 	protected Injector getInjector() {
-		return org.nightlabs.vestigo.xtext.jdoql.ui.internal.JDOQLActivator.getInstance().getInjector("org.nightlabs.vestigo.xtext.jdoql.JDOQL");
+		return JDOQLActivator.getInstance().getInjector(JDOQLActivator.ORG_NIGHTLABS_VESTIGO_XTEXT_JDOQL_JDOQL);
 	}
 	
 }

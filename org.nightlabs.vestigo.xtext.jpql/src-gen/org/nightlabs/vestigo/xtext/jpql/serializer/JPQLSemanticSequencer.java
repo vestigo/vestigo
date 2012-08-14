@@ -7,7 +7,7 @@ import org.eclipse.xtext.serializer.acceptor.ISemanticSequenceAcceptor;
 import org.eclipse.xtext.serializer.acceptor.SequenceFeeder;
 import org.eclipse.xtext.serializer.diagnostic.ISemanticSequencerDiagnosticProvider;
 import org.eclipse.xtext.serializer.diagnostic.ISerializationDiagnostic.Acceptor;
-import org.eclipse.xtext.serializer.sequencer.AbstractSemanticSequencer;
+import org.eclipse.xtext.serializer.sequencer.AbstractDelegatingSemanticSequencer;
 import org.eclipse.xtext.serializer.sequencer.GenericSequencer;
 import org.eclipse.xtext.serializer.sequencer.ISemanticNodeProvider.INodesForEObjectProvider;
 import org.eclipse.xtext.serializer.sequencer.ISemanticSequencer;
@@ -55,31 +55,11 @@ import org.nightlabs.vestigo.xtext.jpql.jPQL.VariableDeclaration;
 import org.nightlabs.vestigo.xtext.jpql.jPQL.WhereClause;
 import org.nightlabs.vestigo.xtext.jpql.services.JPQLGrammarAccess;
 
-@SuppressWarnings("restriction")
-public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
+@SuppressWarnings("all")
+public class JPQLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 
 	@Inject
-	protected JPQLGrammarAccess grammarAccess;
-	
-	@Inject
-	protected ISemanticSequencerDiagnosticProvider diagnosticProvider;
-	
-	@Inject
-	protected ITransientValueService transientValues;
-	
-	@Inject
-	@GenericSequencer
-	protected Provider<ISemanticSequencer> genericSequencerProvider;
-	
-	protected ISemanticSequencer genericSequencer;
-	
-	
-	@Override
-	public void init(ISemanticSequencer sequencer, ISemanticSequenceAcceptor sequenceAcceptor, Acceptor errorAcceptor) {
-		super.init(sequencer, sequenceAcceptor, errorAcceptor);
-		this.genericSequencer = genericSequencerProvider.get();
-		this.genericSequencer.init(sequencer, sequenceAcceptor, errorAcceptor);
-	}
+	private JPQLGrammarAccess grammarAccess;
 	
 	public void createSequence(EObject context, EObject semanticObject) {
 		if(semanticObject.eClass().getEPackage() == JPQLPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
@@ -107,7 +87,7 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 					return; 
 				}
 				else if(context == grammarAccess.getOrderBySpecRule()) {
-					sequence_OrderBySpec(context, (AliasAttributeExpression) semanticObject); 
+					sequence_AliasAttributeExpression_OrderBySpec(context, (AliasAttributeExpression) semanticObject); 
 					return; 
 				}
 				else break;
@@ -174,7 +154,11 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 				}
 				else break;
 			case JPQLPackage.EXPRESSION:
-				if(context == grammarAccess.getAllExpressionRule()) {
+				if(context == grammarAccess.getConcreteExpressionRule()) {
+					sequence_AllExpression_AnyExpression_BetweenExpression_CollectionExpression_ConcreteExpression_EmptyComparisonExpression_ExistsExpression_InQueryExpression_InSeqExpression_LikeExpression_NullComparisonExpression_SomeExpression(context, (Expression) semanticObject); 
+					return; 
+				}
+				else if(context == grammarAccess.getAllExpressionRule()) {
 					sequence_AllExpression(context, (Expression) semanticObject); 
 					return; 
 				}
@@ -190,10 +174,6 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 					sequence_CollectionExpression(context, (Expression) semanticObject); 
 					return; 
 				}
-				else if(context == grammarAccess.getConcreteExpressionRule()) {
-					sequence_ConcreteExpression(context, (Expression) semanticObject); 
-					return; 
-				}
 				else if(context == grammarAccess.getEmptyComparisonExpressionRule()) {
 					sequence_EmptyComparisonExpression(context, (Expression) semanticObject); 
 					return; 
@@ -203,7 +183,7 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 					return; 
 				}
 				else if(context == grammarAccess.getInExpressionRule()) {
-					sequence_InExpression(context, (Expression) semanticObject); 
+					sequence_InExpression_InQueryExpression_InSeqExpression(context, (Expression) semanticObject); 
 					return; 
 				}
 				else if(context == grammarAccess.getInQueryExpressionRule()) {
@@ -270,7 +250,7 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 				}
 				else if(context == grammarAccess.getFromClassRule() ||
 				   context == grammarAccess.getFromEntryRule()) {
-					sequence_FromClass(context, (FromClass) semanticObject); 
+					sequence_FromClass_FromClassId_FromClassVar(context, (FromClass) semanticObject); 
 					return; 
 				}
 				else break;
@@ -288,17 +268,17 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 				}
 				else break;
 			case JPQLPackage.FUNCTION_EXPRESSION:
-				if(context == grammarAccess.getArithmeticFunctionExpressionRule()) {
+				if(context == grammarAccess.getConcreteExpressionRule() ||
+				   context == grammarAccess.getFunctionExpressionRule()) {
+					sequence_ArithmeticFunctionExpression_CollectionFunctionExpression_FunctionExpression_StringFunctionExpression_TemporalFunctionExpression(context, (FunctionExpression) semanticObject); 
+					return; 
+				}
+				else if(context == grammarAccess.getArithmeticFunctionExpressionRule()) {
 					sequence_ArithmeticFunctionExpression(context, (FunctionExpression) semanticObject); 
 					return; 
 				}
 				else if(context == grammarAccess.getCollectionFunctionExpressionRule()) {
 					sequence_CollectionFunctionExpression(context, (FunctionExpression) semanticObject); 
-					return; 
-				}
-				else if(context == grammarAccess.getConcreteExpressionRule() ||
-				   context == grammarAccess.getFunctionExpressionRule()) {
-					sequence_FunctionExpression(context, (FunctionExpression) semanticObject); 
 					return; 
 				}
 				else if(context == grammarAccess.getStringFunctionExpressionRule()) {
@@ -525,6 +505,36 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
+	 *     (alias=[VariableDeclaration|ID] attributes+=ID* direction=OrderByDirection)
+	 */
+	protected void sequence_AliasAttributeExpression_OrderBySpec(EObject context, AliasAttributeExpression semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (
+	 *         right=Subquery | 
+	 *         right=Subquery | 
+	 *         right=Subquery | 
+	 *         right=Subquery | 
+	 *         (left=Variable isNot?='NOT'? right=AliasAttributeExpression) | 
+	 *         (left=Variable isNot?='NOT'?) | 
+	 *         (left=Variable isNot?='NOT'?) | 
+	 *         (left=Variable isNot?='NOT'? right=Variable) | 
+	 *         (left=Variable isNot?='NOT'? items+=Variable items+=Variable*) | 
+	 *         (left=Variable isNot?='NOT'? query=Subquery) | 
+	 *         (left=Variable isNot?='NOT'? min=Literal max=Literal)
+	 *     )
+	 */
+	protected void sequence_AllExpression_AnyExpression_BetweenExpression_CollectionExpression_ConcreteExpression_EmptyComparisonExpression_ExistsExpression_InQueryExpression_InSeqExpression_LikeExpression_NullComparisonExpression_SomeExpression(EObject context, Expression semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     right=Subquery
 	 */
 	protected void sequence_AllExpression(EObject context, Expression semanticObject) {
@@ -546,6 +556,37 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 	 *     right=Subquery
 	 */
 	protected void sequence_AnyExpression(EObject context, Expression semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (
+	 *         (name='ABS' field=AdditionExpression) | 
+	 *         (name='SQRT' field=AdditionExpression) | 
+	 *         (name='MOD' fields+=AdditionExpression fields+=AdditionExpression) | 
+	 *         (name='INDEX' field=Variable) | 
+	 *         (name='SIZE' field=Variable) | 
+	 *         (name='CONCAT' fields+=ConcreteExpression fields+=ConcreteExpression*) | 
+	 *         (name='SUBSTRING' field=ConcreteExpression startPos=AdditionExpression length=AdditionExpression?) | 
+	 *         (name='TRIM' trimSpec=TrimSpec? trimChar=ConcreteExpression? field=Variable) | 
+	 *         (name='LOWER' field=ConcreteExpression) | 
+	 *         (name='UPPER' field=ConcreteExpression) | 
+	 *         (name='LENGTH' field=ConcreteExpression) | 
+	 *         (name='LOCATE' fields+=ConcreteExpression fields+=ConcreteExpression startPos=AdditionExpression?) | 
+	 *         name='CURRENT_DATE' | 
+	 *         name='CURRENT_TIME' | 
+	 *         name='CURRENT_TIMESTAMP' | 
+	 *         (name='YEAR' field=AdditionExpression) | 
+	 *         (name='MONTH' field=AdditionExpression) | 
+	 *         (name='DAY' field=AdditionExpression) | 
+	 *         (name='HOUR' field=AdditionExpression) | 
+	 *         (name='MINUTE' field=AdditionExpression) | 
+	 *         (name='SECOND' field=AdditionExpression)
+	 *     )
+	 */
+	protected void sequence_ArithmeticFunctionExpression_CollectionFunctionExpression_FunctionExpression_StringFunctionExpression_TemporalFunctionExpression(EObject context, FunctionExpression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -613,27 +654,6 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 	 *     (left=ComparisonOperatorExpression_ComparisonOperatorExpression_1_0 operator=ComparisonOperator right=AdditionExpression)
 	 */
 	protected void sequence_ComparisonOperatorExpression(EObject context, ComparisonOperatorExpression semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (
-	 *         right=Subquery | 
-	 *         right=Subquery | 
-	 *         right=Subquery | 
-	 *         right=Subquery | 
-	 *         (left=Variable isNot?='NOT'? right=AliasAttributeExpression) | 
-	 *         (left=Variable isNot?='NOT'?) | 
-	 *         (left=Variable isNot?='NOT'?) | 
-	 *         (left=Variable isNot?='NOT'? right=Variable) | 
-	 *         (left=Variable isNot?='NOT'? items+=Variable items+=Variable*) | 
-	 *         (left=Variable isNot?='NOT'? query=Subquery) | 
-	 *         (left=Variable isNot?='NOT'? min=Literal max=Literal)
-	 *     )
-	 */
-	protected void sequence_ConcreteExpression(EObject context, Expression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -740,7 +760,7 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 	 * Constraint:
 	 *     (type=QualifiedIdentifier | (type=QualifiedIdentifier variable=VariableDeclaration joins+=FromJoin*))
 	 */
-	protected void sequence_FromClass(EObject context, FromClass semanticObject) {
+	protected void sequence_FromClass_FromClassId_FromClassVar(EObject context, FromClass semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -775,37 +795,6 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (
-	 *         (name='ABS' field=AdditionExpression) | 
-	 *         (name='SQRT' field=AdditionExpression) | 
-	 *         (name='MOD' fields+=AdditionExpression fields+=AdditionExpression) | 
-	 *         (name='INDEX' field=Variable) | 
-	 *         (name='SIZE' field=Variable) | 
-	 *         (name='CONCAT' fields+=ConcreteExpression fields+=ConcreteExpression*) | 
-	 *         (name='SUBSTRING' field=ConcreteExpression startPos=AdditionExpression length=AdditionExpression?) | 
-	 *         (name='TRIM' trimSpec=TrimSpec? trimChar=ConcreteExpression? field=Variable) | 
-	 *         (name='LOWER' field=ConcreteExpression) | 
-	 *         (name='UPPER' field=ConcreteExpression) | 
-	 *         (name='LENGTH' field=ConcreteExpression) | 
-	 *         (name='LOCATE' fields+=ConcreteExpression fields+=ConcreteExpression startPos=AdditionExpression?) | 
-	 *         name='CURRENT_DATE' | 
-	 *         name='CURRENT_TIME' | 
-	 *         name='CURRENT_TIMESTAMP' | 
-	 *         (name='YEAR' field=AdditionExpression) | 
-	 *         (name='MONTH' field=AdditionExpression) | 
-	 *         (name='DAY' field=AdditionExpression) | 
-	 *         (name='HOUR' field=AdditionExpression) | 
-	 *         (name='MINUTE' field=AdditionExpression) | 
-	 *         (name='SECOND' field=AdditionExpression)
-	 *     )
-	 */
-	protected void sequence_FunctionExpression(EObject context, FunctionExpression semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
 	 *     (grouping+=AliasAttributeExpression grouping+=AliasAttributeExpression* havingClause=HavingClause?)
 	 */
 	protected void sequence_GroupByClause(EObject context, GroupByClause semanticObject) {
@@ -833,7 +822,7 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 	 * Constraint:
 	 *     ((left=Variable isNot?='NOT'? items+=Variable items+=Variable*) | (left=Variable isNot?='NOT'? query=Subquery))
 	 */
-	protected void sequence_InExpression(EObject context, Expression semanticObject) {
+	protected void sequence_InExpression_InQueryExpression_InSeqExpression(EObject context, Expression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -960,15 +949,6 @@ public class AbstractJPQLSemanticSequencer extends AbstractSemanticSequencer {
 	 *     (ordering+=OrderBySpec ordering+=OrderBySpec*)
 	 */
 	protected void sequence_OrderByClause(EObject context, OrderByClause semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (alias=[VariableDeclaration|ID] attributes+=ID* direction=OrderByDirection)
-	 */
-	protected void sequence_OrderBySpec(EObject context, AliasAttributeExpression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

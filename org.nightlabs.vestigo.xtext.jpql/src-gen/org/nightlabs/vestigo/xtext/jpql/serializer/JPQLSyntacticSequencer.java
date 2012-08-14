@@ -14,8 +14,8 @@ import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISyn
 import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 import org.nightlabs.vestigo.xtext.jpql.services.JPQLGrammarAccess;
 
-@SuppressWarnings("restriction")
-public class AbstractJPQLSyntacticSequencer extends AbstractSyntacticSequencer {
+@SuppressWarnings("all")
+public class JPQLSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected JPQLGrammarAccess grammarAccess;
 	protected AbstractElementAlias match_CollectionExpression_OFKeyword_3_q;

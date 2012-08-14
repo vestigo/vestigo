@@ -24,6 +24,10 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.SWT;
@@ -58,14 +62,18 @@ public class ObjectGraphDetailTreeView extends ViewPart implements LabelTextOpti
 		getSite().registerContextMenu(objectGraphDetailTreeComposite.getContextMenuManager(), objectGraphDetailTreeComposite);
 		clearInput();
 
-		// in case, this view is opened AFTER the ResultSetTableView, we look for it
-		for (IViewReference viewReference : getSite().getPage().getViewReferences()) {
-			if (ResultSetTableView.class.getName().equals(viewReference.getId())) {
-				IWorkbenchPart resultSetTableView = viewReference.getPart(true);
-				ISelection selection = resultSetTableView.getSite().getSelectionProvider().getSelection();
-				selectionListener.selectionChanged(resultSetTableView, selection);
+		parent.getDisplay().asyncExec(new Runnable() {
+			public void run() {
+				// in case, this view is opened AFTER the ResultSetTableView, we look for it
+				for (IViewReference viewReference : getSite().getPage().getViewReferences()) {
+					if (ResultSetTableView.class.getName().equals(viewReference.getId())) {
+						IWorkbenchPart resultSetTableView = viewReference.getPart(true);
+						ISelection selection = resultSetTableView.getSite().getSelectionProvider().getSelection();
+						selectionListener.selectionChanged(resultSetTableView, selection);
+					}
+				}
 			}
-		}
+		});
 	}
 
 	private void clearInput()

@@ -319,10 +319,6 @@ E-mail: vestigo[at]nightlabs[dot]com
 
    <plugin download-size="0" id="org.nightlabs.vestigo.ui" install-size="0" unpack="false" version="0.0.0"/>
 
-   <plugin download-size="0" id="org.nightlabs.eclipse.compatibility" install-size="0" unpack="false" version="0.0.0"/>
-
-   <plugin download-size="0" id="org.nightlabs.eclipse.extension" install-size="0" unpack="false" version="0.0.0"/>
-
    <plugin download-size="0" id="org.nightlabs.vestigo.core" install-size="0" unpack="false" version="0.0.0"/>
 
    <plugin download-size="0" id="org.nightlabs.progress" install-size="0" unpack="false" version="0.0.0"/>
