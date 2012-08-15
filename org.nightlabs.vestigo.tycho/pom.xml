@@ -18,6 +18,7 @@
 		<module>feature-maven</module>
 		<module>p2-repository</module>
 		<module>p2-repository-deploy</module>
+		<module>product</module>
 	</modules>
 
 	<dependencyManagement>
