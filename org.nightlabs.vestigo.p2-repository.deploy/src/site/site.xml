@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<project xmlns="http://maven.apache.org/DECORATION/1.1.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/DECORATION/1.1.0 http://maven.apache.org/xsd/decoration-1.1.0.xsd"
+	name="Vestigo (JDO/JPA Query Browser)">
+
+	<bannerLeft>
+		<name>Vestigo (JDO/JPA Query Browser)</name>
+		<href>../../</href>
+	</bannerLeft>
+
+	<skin>
+		<groupId>org.nightlabs.maven</groupId>
+		<artifactId>nightabs-maven-site-skin</artifactId>
+		<version>0.0.4</version>
+	</skin>
+
+	<body>
+		<links>
+			<item name="Home" href="../../" />
+		</links>
+	</body>
+</project>

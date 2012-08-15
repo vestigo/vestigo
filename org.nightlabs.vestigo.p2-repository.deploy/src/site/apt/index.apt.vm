@@ -1,0 +1,14 @@
+	-----
+	Vestigo p2 repository
+	-----
+	Alexander Bieber
+	-----
+	2012-03-15
+	-----
+
+Vestigo p2 repository
+
+	This is a p2 repository (aka update site) for Vestigo (version ${project.version}).
+
+	To learn how to install Vestigo, please read the
+	{{{http://vestigo.nightlabs.com/${project.version}/download/index.html#Plug-in}chapter 'Plug-in' on our 'Download' page}}.
