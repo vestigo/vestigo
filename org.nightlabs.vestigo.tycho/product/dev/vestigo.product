@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?pde version="3.5"?>
+
+<product name="Vestigo" uid="org.nightlabs.vestigo.ui.product.dev" id="org.nightlabs.vestigo.ui.product" application="org.eclipse.ui.ide.workbench" version="1.0.0.qualifier" useFeatures="true" includeLaunchers="true">
+
+   <aboutInfo>
+      <image path="icons/vestigo-about.png"/>
+      <text>
+         Vestigo... about text bla bla bla
+      </text>
+   </aboutInfo>
+
+   <configIni use="default">
+   </configIni>
+
+   <launcherArgs>
+      <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts</vmArgsMac>
+   </launcherArgs>
+
+   <windowImages i16="icons/vestigo-16x16.png" i32="icons/vestigo-32x32.png"/>
+
+   <launcher name="vestigo">
+      <solaris/>
+      <win useIco="false">
+         <bmp/>
+      </win>
+   </launcher>
+
+   <vm>
+   </vm>
+
+   <plugins>
+   </plugins>
+
+   <features>
+      <feature id="org.nightlabs.vestigo.cumulus4j.ui.feature" version="0.9.5.qualifier"/>
+      <feature id="org.nightlabs.vestigo.jdt.ui.feature" version="0.9.5.qualifier"/>
+      <feature id="org.nightlabs.vestigo.log4j.ui.feature" version="0.9.5.qualifier"/>
+      <feature id="org.nightlabs.vestigo.maven.ui.feature" version="0.9.5.qualifier"/>
+      <feature id="org.nightlabs.vestigo.ui.feature" version="0.9.5.qualifier"/>
+      <feature id="org.eclipse.rcp"/>
+      <feature id="org.eclipse.platform"/>
+   </features>
+
+   <configurations>
+      <plugin id="org.eclipse.core.runtime" autoStart="true" startLevel="2" />
+      <plugin id="org.eclipse.equinox.ds" autoStart="true" startLevel="3" />
+      <plugin id="org.eclipse.equinox.event" autoStart="true" startLevel="3" />
+   </configurations>
+
+</product>
