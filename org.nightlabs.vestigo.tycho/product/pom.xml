@@ -1,0 +1,65 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>org.nightlabs.vestigo.tycho.product.parent</artifactId>
+	<packaging>pom</packaging>
+
+	<parent>
+		<groupId>org.nightlabs.vestigo</groupId>
+		<artifactId>org.nightlabs.vestigo.tycho</artifactId>
+		<version>0.9.5-SNAPSHOT</version>
+		<relativePath>..</relativePath>
+	</parent>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.nightlabs.vestigo</groupId>
+			<artifactId>org.nightlabs.vestigo.ui.feature</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.nightlabs.vestigo</groupId>
+			<artifactId>org.nightlabs.vestigo.cumulus4j.ui.feature</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.nightlabs.vestigo</groupId>
+			<artifactId>org.nightlabs.vestigo.jdt.ui.feature</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.nightlabs.vestigo</groupId>
+			<artifactId>org.nightlabs.vestigo.log4j.ui.feature</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.nightlabs.vestigo</groupId>
+			<artifactId>org.nightlabs.vestigo.maven.ui.feature</artifactId>
+		</dependency>
+	</dependencies>
+
+
+	<profiles>
+		<profile>
+			<id>release-products</id>
+			<activation>
+				<property>
+					<name>build.release.products</name>
+					<value>true</value>
+				</property>
+			</activation>
+			<modules>
+				<module>release</module>
+			</modules>
+		</profile>
+		<profile>
+			<id>dev-prodcut</id>
+			<activation>
+				<property>
+					<name>build.release.products</name>
+					<value>!true</value>
+				</property>
+			</activation>
+			<modules>
+				<module>dev</module>
+			</modules>
+		</profile>
+	</profiles>
+	
+</project>
