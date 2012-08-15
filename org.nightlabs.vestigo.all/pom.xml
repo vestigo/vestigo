@@ -22,7 +22,6 @@
 		<module>../org.nightlabs.vestigo.core</module>
 		<module>../org.nightlabs.vestigo.parent</module>
 		<module>../org.nightlabs.vestigo.ui</module>
-		<module>../org.nightlabs.vestigo.assembly.parent</module>
 		<!-- END core -->
 
 		<!-- BEGIN Cumulus4j -->
