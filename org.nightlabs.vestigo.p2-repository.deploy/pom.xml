@@ -9,7 +9,7 @@
 		<groupId>org.nightlabs.vestigo</groupId>
 		<artifactId>org.nightlabs.vestigo.parent</artifactId>
 		<version>0.9.5-SNAPSHOT</version>
-		<relativePath>..</relativePath>
+		<relativePath>../org.nightlabs.vestigo.parent</relativePath>
 	</parent>
 
 	<dependencies>
