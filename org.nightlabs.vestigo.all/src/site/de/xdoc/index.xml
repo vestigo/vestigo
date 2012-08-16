@@ -36,6 +36,39 @@
 			<div id="slider">
 				<ul>
 					<li>
+						<div class="slider">
+							<div style="position: relative; background: url('images/teaser_motiv_development.png'); height:427px;	width: 535px;">
+							</div>
+							<div class="slider_header">
+								<h1>Vestigo zur Entwicklungszeit</h1> 
+							</div> 
+							<div class="slider_text">
+								<span class="arrows headerfont">Testen Sie Ihre Queries mit Connections basierend auf Eclipse Java-Projekten ohne die Applikation zu starten</span>
+							</div>
+							<div class="slider_button">
+								<a class="download_link" href="download/index.html">Download vestigo</a>
+							</div>
+						</div>					
+					
+					</li>
+					<li>
+						<div class="slider">
+							<div style="position: relative; background: url('images/teaser_motiv_development.png'); height:427px;	width: 535px;">
+							</div>
+							<div class="slider_header">
+								<h1>Vestigo für Ihr Produktivsystem</h1> 
+							</div> 
+							<div class="slider_text">
+								<span class="arrows headerfont">Analysieren und manipulieren Sie Ihre wichtigsten Daten auf der Objektebene</span>
+							</div>
+							<div class="slider_button">
+								<a class="download_link" href="download/index.html">Download vestigo</a>
+							</div>
+						</div>					
+					
+					</li>
+					
+					<li>
 						<div style="position: relative; background: url(images/slider_archives.png); height: 425px;">
 							<div class="slider_header">
 								<h1>Unterstützt gängige<br/>Java Anwendungsszenarien</h1> 
@@ -51,34 +84,98 @@
 								<a class="download_link" href="download/index.html">Download vestigo</a>
 							</div>
 						</div>					
-						<!--  <img src="images/slider_archives.png" alt="" />  -->
-					</li>
-<!-- 					
-					<li>
-						<img src="images/slider_production.png" alt="" />
 					</li>
 					<li>
-						<img src="images/slider_development.png" alt="" />
+						<div class="slider">
+							<div style="position: relative; background: url('images/teaser_motiv_implementations.png'); height:427px;	width: 535px;">
+							</div>
+							<div class="slider_header">
+								<h1>Unterstützt gängige JPA/JDO Implementierungen</h1> 
+							</div> 
+							<div class="slider_text">
+								<span class="arrows headerfont">Vestigo nicht auf bestimmte Implementierungen beschränkt. Wie in Ihrer Applikation auch, geben Sie die Implementierung an.</span>
+							</div>
+							<div class="slider_button">
+								<a class="download_link" href="download/index.html">Download vestigo</a>
+							</div>
+						</div>					
 					</li>
 					<li>
-						<img src="images/slider_implementations.png" alt="" />
+						<div class="slider">
+							<div style="position: relative; background: url('images/teaser_motiv_tree_browser.png'); height:427px;	width: 535px;">
+							</div>
+							<div class="slider_header">
+								<h1>Object tree browser</h1> 
+							</div> 
+							<div class="slider_text">
+								<span class="arrows headerfont">Durchsuchen Sie den kompletten Objektgraphen ihres Query-Ergebnisses</span>
+							</div>
+							<div class="slider_button">
+								<a class="download_link" href="download/index.html">Download vestigo</a>
+							</div>
+						</div>					
 					</li>
 					<li>
-						<img src="images/slider_connection_profiles.png" alt="" />
+						<div class="slider">
+							<div style="position: relative; background: url('images/teaser_motiv_query_management.png'); height:427px;	width: 535px;">
+							</div>
+							<div class="slider_header">
+								<h1>Connection-Management</h1> 
+							</div> 
+							<div class="slider_text">
+								<span class="arrows headerfont">Erzeugen Sie verschiedene Connections zum Beispiel für verschiedene Umgebungen (Entwicklung, Test und Produktion)</span>
+							</div>
+							<div class="slider_button">
+								<a class="download_link" href="download/index.html">Download vestigo</a>
+							</div>
+						</div>					
 					</li>
 					<li>
-						<img src="images/slider_query_management.png" alt="" />
+						<div class="slider">
+							<div style="position: relative; background: url('images/teaser_motiv_query_management.png'); height:427px;	width: 535px;">
+							</div>
+							<div class="slider_header">
+								<h1>Query-Management</h1> 
+							</div> 
+							<div class="slider_text">
+								<span class="arrows headerfont">Speichern Sie Ihre Abfragen zusammen mit deren Parametern zur einfachen Wiederverwendung</span>
+							</div>
+							<div class="slider_button">
+								<a class="download_link" href="download/index.html">Download vestigo</a>
+							</div>
+						</div>					
 					</li>
 					<li>
-						<img src="images/slider_object_tree.png" alt="" />
+						<div class="slider">
+							<div style="position: relative; background: url('images/teaser_motiv_query_parameters.png'); height:427px;	width: 535px;">
+							</div>
+							<div class="slider_header">
+								<h1>Query-Parameter</h1> 
+							</div> 
+							<div class="slider_text">
+								<span class="arrows headerfont">Mit Hilfe von ge-scripteten Parameter haben Sie volle Flexiblität und die Möglichkeit wirklich nützliche Abfragen zu erstellen</span>
+							</div>
+							<div class="slider_button">
+								<a class="download_link" href="download/index.html">Download vestigo</a>
+							</div>
+						</div>					
 					</li>
+					
 					<li>
-						<img src="images/slider_parameters.png" alt="" />
+						<div class="slider">
+							<div style="position: relative; background: url('images/teaser_motiv_cumulus4j.png'); height:427px;	width: 535px;">
+							</div>
+							<div class="slider_header">
+								<h1>Unterstützt <a href="http://www.cumulus4j.org" target="_blank">Cumulus4j</a></h1> 
+							</div> 
+							<div class="slider_text">
+								<span class="arrows headerfont">Machen Sie Abfragen auf Daten, die mittels Cumulus4j verschlüsselt wurden.</span>
+							</div>
+							<div class="slider_button">
+								<a class="download_link" href="download/index.html">Download vestigo</a>
+							</div>
+						</div>					
 					</li>
-					<li>
-						<img src="images/slider_cumulus4j.png" alt="" />
-					</li>
- -->					
 				</ul>
 			</div>
 

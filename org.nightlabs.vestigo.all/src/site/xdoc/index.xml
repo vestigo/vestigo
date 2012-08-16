@@ -37,7 +37,7 @@
 				<ul>
 					<li>
 						<div class="slider">
-							<div style="position: relative; background: url('images/teaser_motiv_developement.png'); height:427px;	width: 535px;">
+							<div style="position: relative; background: url('images/teaser_motiv_development.png'); height:427px;	width: 535px;">
 							</div>
 							<div class="slider_header">
 								<h1>At development time</h1> 
@@ -51,6 +51,23 @@
 						</div>					
 					
 					</li>
+					<li>
+						<div class="slider">
+							<div style="position: relative; background: url('images/teaser_motiv_development.png'); height:427px;	width: 535px;">
+							</div>
+							<div class="slider_header">
+								<h1>For production environments</h1> 
+							</div> 
+							<div class="slider_text">
+								<span class="arrows headerfont">Connect to your productive environment and analyze your most important data on the object level</span>
+							</div>
+							<div class="slider_button">
+								<a class="download_link" href="download/index.html">Download vestigo</a>
+							</div>
+						</div>					
+					
+					</li>
+					
 					<li>
 						<div class="slider">
 							<div style="position: relative; background: url('images/teaser_motiv_java-archives.png'); height:427px;	width: 535px;">
@@ -70,6 +87,98 @@
 							</div>
 						</div>					
 					</li>
+					<li>
+						<div class="slider">
+							<div style="position: relative; background: url('images/teaser_motiv_implementations.png'); height:427px;	width: 535px;">
+							</div>
+							<div class="slider_header">
+								<h1>Support for all JPA/JDO implementations</h1> 
+							</div> 
+							<div class="slider_text">
+								<span class="arrows headerfont">Vestigo is not limited to certain implementations, you plug the implementation in yourself, just like in your application</span>
+							</div>
+							<div class="slider_button">
+								<a class="download_link" href="download/index.html">Download vestigo</a>
+							</div>
+						</div>					
+					</li>
+					<li>
+						<div class="slider">
+							<div style="position: relative; background: url('images/teaser_motiv_tree_browser.png'); height:427px;	width: 535px;">
+							</div>
+							<div class="slider_header">
+								<h1>Object tree browser</h1> 
+							</div> 
+							<div class="slider_text">
+								<span class="arrows headerfont">View the complete object graph of your query results</span>
+							</div>
+							<div class="slider_button">
+								<a class="download_link" href="download/index.html">Download vestigo</a>
+							</div>
+						</div>					
+					</li>
+					<li>
+						<div class="slider">
+							<div style="position: relative; background: url('images/teaser_motiv_query_management.png'); height:427px;	width: 535px;">
+							</div>
+							<div class="slider_header">
+								<h1>Connection management</h1> 
+							</div> 
+							<div class="slider_text">
+								<span class="arrows headerfont">Easily setup and manage connection profiles to connect to your different environments (development, testing or production)</span>
+							</div>
+							<div class="slider_button">
+								<a class="download_link" href="download/index.html">Download vestigo</a>
+							</div>
+						</div>					
+					</li>
+					<li>
+						<div class="slider">
+							<div style="position: relative; background: url('images/teaser_motiv_query_management.png'); height:427px;	width: 535px;">
+							</div>
+							<div class="slider_header">
+								<h1>Query management</h1> 
+							</div> 
+							<div class="slider_text">
+								<span class="arrows headerfont">Store your queries along with their parameters for your convenient reuse</span>
+							</div>
+							<div class="slider_button">
+								<a class="download_link" href="download/index.html">Download vestigo</a>
+							</div>
+						</div>					
+					</li>
+					<li>
+						<div class="slider">
+							<div style="position: relative; background: url('images/teaser_motiv_query_parameters.png'); height:427px;	width: 535px;">
+							</div>
+							<div class="slider_header">
+								<h1>Query parameters</h1> 
+							</div> 
+							<div class="slider_text">
+								<span class="arrows headerfont">Scripted parameters give you full flexibility in creating really useful queries</span>
+							</div>
+							<div class="slider_button">
+								<a class="download_link" href="download/index.html">Download vestigo</a>
+							</div>
+						</div>					
+					</li>
+					
+					<li>
+						<div class="slider">
+							<div style="position: relative; background: url('images/teaser_motiv_cumulus4j.png'); height:427px;	width: 535px;">
+							</div>
+							<div class="slider_header">
+								<h1>Cumulus4j support</h1> 
+							</div> 
+							<div class="slider_text">
+								<span class="arrows headerfont">Query and browse data encrypted with Cumulus4j</span>
+							</div>
+							<div class="slider_button">
+								<a class="download_link" href="download/index.html">Download vestigo</a>
+							</div>
+						</div>					
+					</li>
+					
 <!-- 					
 					<li>
 						<img src="images/slider_production.png" alt="" />
@@ -157,7 +266,7 @@
 						The pre-release version is distributed at a special promotion-price.
 					</p>
 					<p>
-						<span class="headercolor" style="font-weight: bold;">The pre-release offer ends on June 30.</span>
+						<span class="headercolor" style="font-weight: bold;">The pre-release offer ends on October 15.</span>
 						<br />
 						<br />
 						<a class="download_link" href="download/index.html">Download vestigo</a>
