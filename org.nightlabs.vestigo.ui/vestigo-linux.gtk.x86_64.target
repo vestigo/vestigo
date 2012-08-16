@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?pde version="3.6"?>
-
-<target name="Vestigo" sequenceNumber="17">
+<?pde version="3.8"?><target name="Vestigo Linux GTK x86_64" sequenceNumber="27">
 <locations>
-<location path="${workspace_loc}/org.nightlabs.vestigo.assembly.linux-gtk-x86_64/target/assembly/eclipse" type="Directory"/>
-<location path="${workspace_loc}/org.nightlabs.vestigo.assembly.linux-gtk-x86_64/target/assembly/eclipse/dropins" type="Directory"/>
+<location path="${workspace_loc}/org.nightlabs.vestigo.tycho/product/dev/target/products/org.nightlabs.vestigo.ui.product.dev/linux/gtk/x86_64" type="Directory"/>
 </locations>
 <environment>
 <os>linux</os>
