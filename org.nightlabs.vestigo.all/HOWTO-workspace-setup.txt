@@ -1,0 +1,18 @@
+
+To setup a workspace (with target-platform) do  
+
+mvn clean install 
+
+in the following projects
+
+org.nightlabs.vestigo.all
+org.nightlabs.vestigo.tycho
+
+On linux you can use the following script from your workspace root.
+Note that this will also execute the tests.
+
+mvn clean install -f org.nightlabs.vestigo.all/pom.xml ; if [[ $? != 0 ]] ; then exit $? ; fi ; mvn clean install -f org.nightlabs.vestigo.tycho/pom.xml
+
+This leaves you with a target-platform you can use under
+
+org.nightlabs.vestigo.tycho/product/dev/target/products/org.nightlabs.vestigo.ui.product.dev/{your-os}/{your-ws}/{your-arch}

@@ -84,6 +84,69 @@
 						</goals>
 						<configuration>
 							<artifactItems>
+							<!-- The packages are getting deployed with wrong classifiers and types, so we need to reference the wrong ones here -->
+							<!-- See the following bugs for details:
+									https://issues.sonatype.org/browse/NEXUS-4766
+									http://jira.codehaus.org/browse/MINDEXER-49
+							 -->
+								<artifactItem>
+									<groupId>org.nightlabs.vestigo</groupId>
+									<artifactId>org.nightlabs.vestigo.tycho.product.release</artifactId>
+									<version>${vestigo.version}</version>
+									<classifier>linux</classifier>
+									<type>gtk.x86.tar.gz</type>
+									<overWrite>true</overWrite>
+									<destFileName>vestigo-linux-gtk-${vestigo.version}.tar.gz</destFileName>
+								</artifactItem>
+								<artifactItem>
+									<groupId>org.nightlabs.vestigo</groupId>
+									<artifactId>org.nightlabs.vestigo.tycho.product.release</artifactId>
+									<version>${vestigo.version}</version>
+									<classifier>linux</classifier>
+									<type>gtk.x86_64.tar.gz</type>
+									<overWrite>true</overWrite>
+									<destFileName>vestigo-linux-gtk-x86_64-${vestigo.version}.tar.gz</destFileName>
+								</artifactItem>
+
+								<artifactItem>
+									<groupId>org.nightlabs.vestigo</groupId>
+									<artifactId>org.nightlabs.vestigo.tycho.product.release</artifactId>
+									<version>${vestigo.version}</version>
+									<classifier>macosx</classifier>
+									<type>cocoa.x86.tar.gz</type>
+									<overWrite>true</overWrite>
+									<destFileName>vestigo-macosx-cocoa-${vestigo.version}.tar.gz</destFileName>
+								</artifactItem>
+								<artifactItem>
+									<groupId>org.nightlabs.vestigo</groupId>
+									<artifactId>org.nightlabs.vestigo.tycho.product.release</artifactId>
+									<version>${vestigo.version}</version>
+									<classifier>macosx</classifier>
+									<type>cocoa.x86_64.tar.gz</type>
+									<overWrite>true</overWrite>
+									<destFileName>vestigo-macosx-cocoa-x86_64-${vestigo.version}.tar.gz</destFileName>
+								</artifactItem>
+
+								<artifactItem>
+									<groupId>org.nightlabs.vestigo</groupId>
+									<artifactId>org.nightlabs.vestigo.tycho.product.release</artifactId>
+									<version>${vestigo.version}</version>
+									<classifier>win32</classifier>
+									<type>win32.x86.zip</type>
+									<overWrite>true</overWrite>
+									<destFileName>vestigo-win32-${vestigo.version}.zip</destFileName>
+								</artifactItem>
+								<artifactItem>
+									<groupId>org.nightlabs.vestigo</groupId>
+									<artifactId>org.nightlabs.vestigo.tycho.product.release</artifactId>
+									<version>${vestigo.version}</version>
+									<classifier>win32</classifier>
+									<type>win32.x86_64.zip</type>
+									<overWrite>true</overWrite>
+									<destFileName>vestigo-win32-x86_64-${vestigo.version}.zip</destFileName>
+								</artifactItem>
+
+<!-- 						
 								<artifactItem>
 									<groupId>org.nightlabs.vestigo</groupId>
 									<artifactId>org.nightlabs.vestigo.tycho.product.release</artifactId>
@@ -140,7 +203,7 @@
 									<overWrite>true</overWrite>
 									<destFileName>vestigo-win32-x86_64-${vestigo.version}.zip</destFileName>
 								</artifactItem>
-
+ -->
 							</artifactItems>
 							<outputDirectory>${project.build.directory}/site/</outputDirectory>
 						</configuration>
