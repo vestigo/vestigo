@@ -15,4 +15,4 @@ mvn clean install -f org.nightlabs.vestigo.all/pom.xml ; if [[ $? != 0 ]] ; then
 
 This leaves you with a target-platform you can use under
 
-org.nightlabs.vestigo.tycho/product/dev/target/products/org.nightlabs.vestigo.ui.product.dev/{your-os}/{your-ws}/{your-arch}
+org.nightlabs.vestigo.tycho/product/dev/target/products/org.nightlabs.vestigo.ui.standalone-product/{your-os}/{your-ws}/{your-arch}
