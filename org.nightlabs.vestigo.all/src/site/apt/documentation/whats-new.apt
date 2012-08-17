@@ -12,6 +12,8 @@ What's new?
 	The following is new in 0.9.5 (compared to 0.9.4):
 	
 	* Bugfix: Vestigo now compatible with Eclipse Juno (and Eclipse Indigo).
+	* UI improvement: Toolbar now cleaned from other actions within Vestigo perspective.
+	* UI improvement: Improvements to the standalone version of Vestigo. Startup with Vestigo perspective, Splash, icons and other things.
 
 	[]
 	
