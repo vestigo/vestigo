@@ -1,0 +1,84 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.nightlabs.vestigo</groupId>
+		<artifactId>org.nightlabs.vestigo.parent</artifactId>
+		<version>0.9.5-SNAPSHOT</version>
+		<relativePath>../org.nightlabs.vestigo.parent</relativePath>
+	</parent>
+	<artifactId>org.nightlabs.vestigo.ui.product</artifactId>
+	<packaging>bundle</packaging>
+	
+	<dependencies>
+		<!-- BEGIN org.eclipse -->
+		<dependency>
+			<groupId>org.eclipse.jface</groupId>
+			<artifactId>org.eclipse.jface</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>org.eclipse.ui</groupId>
+		    <artifactId>org.eclipse.ui.ide</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>org.eclipse.ui</groupId>
+		    <artifactId>org.eclipse.ui.workbench</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.swt</groupId>
+			<artifactId>org.eclipse.swt.gtk.linux.x86</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.core</groupId>
+			<artifactId>org.eclipse.core.runtime</artifactId>
+		</dependency>			
+		<!-- END org.eclipse -->
+	</dependencies>
+
+	<build>
+		<resources>
+			<resource>
+				<directory>.</directory>
+				<includes>
+					<include>icons/**/*</include>
+					<include>LICENSE.txt</include>
+					<include>plugin.xml</include>
+					<include>plugin*.properties</include>
+					<include>schema/**/*</include>
+					<include>splash.bmp</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>src/main/java</directory>
+				<excludes>
+					<exclude>**/*.java</exclude>
+				</excludes>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+		</resources>
+	
+		<plugins>
+
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<configuration>
+				<!--
+					<manifestLocation>META-INF</manifestLocation>
+				-->
+					<instructions>
+						<Bundle-ActivationPolicy>lazy</Bundle-ActivationPolicy>
+						<!-- 
+						<Require-Bundle>org.eclipse.ui.ide.application</Require-Bundle>
+						 -->
+						 <!-- using Eclipse-BundleShape:=dir to have the bundle unpacked during install -->
+						<Eclipse-BundleShape>dir</Eclipse-BundleShape>
+					</instructions>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	
+</project>
