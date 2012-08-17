@@ -16,6 +16,7 @@
 		<module>feature-jdt</module>
 		<module>feature-log4j</module>
 		<module>feature-maven</module>
+		<module>feature-product</module>
 		<module>p2-repository</module>
 		<module>product</module>
 	</modules>
@@ -25,6 +26,11 @@
 			<dependency>
 				<groupId>org.nightlabs.vestigo</groupId>
 				<artifactId>org.nightlabs.vestigo.ui.feature</artifactId>
+				<version>${vestigo.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.nightlabs.vestigo</groupId>
+				<artifactId>org.nightlabs.vestigo.ui.product.feature</artifactId>
 				<version>${vestigo.version}</version>
 			</dependency>
 			<dependency>
