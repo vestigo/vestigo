@@ -20,7 +20,6 @@ package org.nightlabs.vestigo.childvm.webapp.model;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
 
 import org.nightlabs.vestigo.childvm.shared.dto.ResultCellDTO;
@@ -130,21 +129,6 @@ public class JPAResultSet extends ResultSet
 			Object object = em.find(entityClass, objectID);
 			return object;
 		}
-	}
-
-	@Override
-	protected List<Field> getFields(Class<?> clazz)
-	{
-		// Filter all jpa-internal fields (which have been enhanced into the class).
-		List<Field> fields = super.getFields(clazz);
-		for (Iterator<Field> it = fields.iterator(); it.hasNext(); ) {
-			Field field = it.next();
-			if (field.getName().startsWith("jdo")) // even in JPA, JDO enhancement might be used (e.g. by DataNucleus!)
-				it.remove();
-			if (field.getName().startsWith("jpa"))
-				it.remove();
-		}
-		return fields;
 	}
 
 	@Override

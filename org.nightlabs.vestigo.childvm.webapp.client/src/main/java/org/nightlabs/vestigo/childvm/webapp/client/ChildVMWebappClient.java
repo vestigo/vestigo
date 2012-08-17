@@ -44,6 +44,7 @@ import org.nightlabs.vestigo.childvm.shared.dto.PersistablePropertyDTOList;
 import org.nightlabs.vestigo.childvm.shared.dto.QueryDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.QueryExecutionStatisticSetDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.QueryParameterDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.ReplaceChildValueCommandDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.ResultCellDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.ResultCellDTOList;
 import org.nightlabs.vestigo.childvm.shared.dto.ResultCellObjectRefDTO;
@@ -593,6 +594,26 @@ implements ChildVM
 		} catch (UniformInterfaceException x) {
 			handleUniformInterfaceException(x);
 			throw x; // we do not expect null
+		} finally {
+			releaseClient(client);
+		}
+	}
+
+	@Override
+	public void replaceChildValue(ResultSetID resultSetID, ReplaceChildValueCommandDTO replaceChildValueCommandDTO) throws ChildVMException
+	{
+		if (resultSetID == null)
+			throw new IllegalArgumentException("resultSetID == null");
+		if (replaceChildValueCommandDTO == null)
+			throw new IllegalArgumentException("replaceChildValueCommandDTO == null");
+
+		Client client = acquireClient();
+		try {
+			getChildVMAppResource(
+					client, ResultCellDTO.class, new PathSegment(resultSetID), new PathSegment("replaceChildValue")
+			).post(replaceChildValueCommandDTO);
+		} catch (UniformInterfaceException x) {
+			handleUniformInterfaceException(x);
 		} finally {
 			releaseClient(client);
 		}

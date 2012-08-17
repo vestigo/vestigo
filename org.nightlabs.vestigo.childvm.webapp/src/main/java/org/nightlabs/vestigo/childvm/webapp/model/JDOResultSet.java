@@ -19,7 +19,6 @@ package org.nightlabs.vestigo.childvm.webapp.model;
 
 import java.lang.reflect.Field;
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
 
 import org.nightlabs.vestigo.childvm.shared.dto.ResultCellDTO;
@@ -123,19 +122,6 @@ public class JDOResultSet extends ResultSet
 			}
 			return object;
 		}
-	}
-
-	@Override
-	protected List<Field> getFields(Class<?> clazz)
-	{
-		// Filter all jdo-internal fields (which have been enhanced into the class).
-		List<Field> fields = super.getFields(clazz);
-		for (Iterator<Field> it = fields.iterator(); it.hasNext(); ) {
-			Field field = it.next();
-			if (field.getName().startsWith("jdo"))
-				it.remove();
-		}
-		return fields;
 	}
 
 	@Override

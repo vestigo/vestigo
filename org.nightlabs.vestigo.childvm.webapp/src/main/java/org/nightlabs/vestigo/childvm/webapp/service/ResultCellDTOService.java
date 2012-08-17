@@ -20,10 +20,13 @@ package org.nightlabs.vestigo.childvm.webapp.service;
 import java.util.List;
 
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 
+import org.nightlabs.vestigo.childvm.shared.Formula;
 import org.nightlabs.vestigo.childvm.shared.ResultSetID;
+import org.nightlabs.vestigo.childvm.shared.dto.ReplaceChildValueCommandDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.ResultCellDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.ResultCellDTOList;
 import org.nightlabs.vestigo.childvm.webapp.model.Connection;
@@ -45,34 +48,59 @@ public class ResultCellDTOService extends AbstractService
 	}
 
 	@GET
-	@Path("{resultSetID}/{parentObjectClassName}/{parentObjectID}/children")
+	@Path("{resultSetID}/{objectClassName}/{objectID}/children")
 	public ResultCellDTOList getChildren(
 			@PathParam("resultSetID") ResultSetID resultSetID,
-			@PathParam("parentObjectClassName") String parentObjectClassName,
-			@PathParam("parentObjectID") String parentObjectID
+			@PathParam("objectClassName") String objectClassName,
+			@PathParam("objectID") String objectID
 	)
 	{
 		if (resultSetID == null)
 			throw new IllegalArgumentException("resultSetID == null");
 
-		if (parentObjectClassName == null)
-			throw new IllegalArgumentException("parentObjectClassName == null");
+		if (objectClassName == null)
+			throw new IllegalArgumentException("objectClassName == null");
 
-		if (parentObjectID == null)
-			throw new IllegalArgumentException("parentObjectID == null");
+		if (objectID == null)
+			throw new IllegalArgumentException("objectID == null");
 
 		ResultCellDTOList resultCellDTOList = new ResultCellDTOList();
 
 		Connection connection = ConnectionManager.sharedInstance().getConnection(resultSetID.getConnectionID(), true);
 		ResultSet resultSet = connection.getResultSet(resultSetID.getResultSetID(), true);
-		if (resultSet != null) {
-			Object parent = resultSet.getObjectForObjectID(parentObjectClassName, parentObjectID, true);
-			List<?> children = resultSet.getChildren(parent);
-			for (Object child : children) {
-				ResultCellDTO resultCellDTO = resultSet.newResultCellDTO(parent, child);
-				resultCellDTOList.getElements().add(resultCellDTO);
-			}
+		Object object = resultSet.getObjectForObjectID(objectClassName, objectID, true);
+		List<?> children = resultSet.getChildren(object);
+		for (Object child : children) {
+			ResultCellDTO resultCellDTO = resultSet.newResultCellDTO(object, child);
+			resultCellDTOList.getElements().add(resultCellDTO);
 		}
 		return resultCellDTOList;
+	}
+
+	@POST
+	@Path("{resultSetID}/replaceChildValue")
+	public ResultCellDTO replaceChildValue(
+			@PathParam("resultSetID") ResultSetID resultSetID,
+			ReplaceChildValueCommandDTO replaceChildValueCommandDTO
+	)
+	{
+		if (resultSetID == null)
+			throw new IllegalArgumentException("resultSetID == null");
+
+		if (replaceChildValueCommandDTO == null)
+			throw new IllegalArgumentException("replaceChildValueCommandDTO == null");
+
+		String objectClassName = replaceChildValueCommandDTO.getObjectClassName();
+		String objectID = replaceChildValueCommandDTO.getObjectID();
+		String fieldDeclaringClassName = replaceChildValueCommandDTO.getFieldDeclaringClassName();
+		String fieldName = replaceChildValueCommandDTO.getFieldName();
+		Formula formula = replaceChildValueCommandDTO.getFormula();
+
+		Connection connection = ConnectionManager.sharedInstance().getConnection(resultSetID.getConnectionID(), true);
+		ResultSet resultSet = connection.getResultSet(resultSetID.getResultSetID(), true);
+		Object object = resultSet.getObjectForObjectID(objectClassName, objectID, true);
+		Object newChildValue = resultSet.replaceChildValue(object, fieldDeclaringClassName, fieldName, formula);
+		ResultCellDTO resultCellDTO = resultSet.newResultCellDTO(object, newChildValue);
+		return resultCellDTO;
 	}
 }

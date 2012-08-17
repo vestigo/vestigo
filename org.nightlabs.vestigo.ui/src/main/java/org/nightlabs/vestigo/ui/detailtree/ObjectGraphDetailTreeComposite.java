@@ -17,7 +17,7 @@
  */
 package org.nightlabs.vestigo.ui.detailtree;
 
-import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.EnumSet;
 import java.util.HashMap;
@@ -28,10 +28,9 @@ import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.core.runtime.ListenerList;
-import org.eclipse.jface.action.Action;
+import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.action.IAction;
-import org.eclipse.jface.action.IMenuListener;
-import org.eclipse.jface.action.IMenuManager;
+import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
@@ -46,7 +45,6 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.dnd.Clipboard;
 import org.eclipse.swt.dnd.TextTransfer;
 import org.eclipse.swt.dnd.Transfer;
-import org.eclipse.swt.dnd.TransferData;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.MouseAdapter;
@@ -58,6 +56,8 @@ import org.eclipse.swt.widgets.Menu;
 import org.nightlabs.vestigo.core.LabelTextOption;
 import org.nightlabs.vestigo.core.ObjectReferenceChild;
 import org.nightlabs.vestigo.core.oda.ResultSet;
+import org.nightlabs.vestigo.ui.jface.AbstractContextMenuAction;
+import org.nightlabs.vestigo.ui.jface.ContextMenuAction;
 import org.nightlabs.vestigo.ui.labeltextoptionaction.LabelTextOptionsContainer;
 import org.nightlabs.vestigo.ui.licence.LicenceNotValidDialog;
 import org.nightlabs.vestigo.ui.resource.Messages;
@@ -135,20 +135,43 @@ implements LabelTextOptionsContainer, ISelectionProvider
 				SelectionChangedEvent newEvent = new SelectionChangedEvent(ObjectGraphDetailTreeComposite.this, event.getSelection());
 				for (Object l : selectionChangedListeners.getListeners())
 					((ISelectionChangedListener)l).selectionChanged(newEvent);
+
+				updateContextMenuActions();
 			}
 		});
-		
+
 		contextMenuManager = new MenuManager();
 		contextMenuManager.add(copyAction);
+//		contextMenuManager.add(changeValueAction); // TODO add all new actions!
 		contextMenu = contextMenuManager.createContextMenu(treeViewer.getTree());
 		treeViewer.getTree().setMenu(contextMenu);
+		updateContextMenuActions();
 		treeContentProvider.addChildrenLoadedListener(childrenLoadedListener);
 		registerOpenLicenceNotValidDialogListeners();
 		registerExpandCollapseKeyAndMouseListeners();
 		registerCopyToClipboardKeyListener();
 	}
-	
-	private IAction copyAction = new Action(Messages.getString("ObjectGraphDetailTreeComposite.copyAction.text")) { //$NON-NLS-1$
+
+	private void updateContextMenuActions() {
+		for (IContributionItem item : contextMenuManager.getItems()) {
+			if (item instanceof ActionContributionItem) {
+				IAction action = ((ActionContributionItem)item).getAction();
+				if (action instanceof ContextMenuAction) {
+					((ContextMenuAction)action).updateEnabled();
+				}
+			}
+		}
+	}
+
+	private ContextMenuAction copyAction = new AbstractContextMenuAction(Messages.getString("ObjectGraphDetailTreeComposite.copyAction.text")) //$NON-NLS-1$
+	{
+		// TODO register handler for command "org.eclipse.ui.edit.copy" instead!
+		@Override
+		public void updateEnabled() {
+			IStructuredSelection sel = (IStructuredSelection) getSelection();
+			setEnabled(!sel.isEmpty());
+		}
+
 		@Override
 		public void run() {
 			IStructuredSelection sel = (IStructuredSelection) getSelection();
@@ -170,7 +193,75 @@ implements LabelTextOptionsContainer, ISelectionProvider
 			cb.dispose();
 		}
 	};
-	
+
+	/**
+	 * Add a {@link Collection} or {@link Map} element. For a <code>Map</code>, both key and value
+	 * have to be provided.
+	 */
+	private ContextMenuAction addElementAction = new AbstractContextMenuAction("Add element...")
+	{
+		@Override
+		public void updateEnabled() {
+			// TODO Auto-generated method stub
+
+		}
+	};
+
+	/**
+	 * Remove a {@link Collection} element or {@link Map} entry.
+	 */
+	private ContextMenuAction removeElementAction = new AbstractContextMenuAction("Remove element...")
+	{
+		@Override
+		public void updateEnabled() {
+			// TODO Auto-generated method stub
+
+		}
+	};
+
+	/**
+	 * Set a field value or replace a {@link Collection} element. A {@link Map} entry cannot be replaced
+	 * by this action - either the key or the value have to be changed instead.
+	 */
+	private ContextMenuAction changeValueAction = new AbstractContextMenuAction("Change value...")
+	{
+		@Override
+		public void updateEnabled() {
+			setEnabled(getFirstSelectedObjectReferenceChild() != null);
+		}
+
+		@Override
+		public void run() {
+			ObjectReferenceChild objectReferenceChild = getFirstSelectedObjectReferenceChild();
+			if (objectReferenceChild == null)
+				return;
+
+			// TODO implement!
+//			objectReferenceChild.replaceValue(formula);
+		}
+
+		protected ObjectReferenceChild getFirstSelectedObjectReferenceChild() {
+			ObjectGraphDetailTreeNode node = getFirstSelectedNode();
+			if (node != null && node.getObject() instanceof ObjectReferenceChild)
+				return (ObjectReferenceChild) node.getObject();
+			else
+				return null;
+		}
+
+		protected ObjectGraphDetailTreeNode getFirstSelectedNode() {
+			IStructuredSelection sel = (IStructuredSelection) getSelection();
+			if (sel.isEmpty())
+				return null;
+
+			Object object = sel.getFirstElement();
+			if (!(object instanceof ObjectGraphDetailTreeNode))
+				return null;
+
+			ObjectGraphDetailTreeNode node = (ObjectGraphDetailTreeNode) object;
+			return node;
+		}
+	};
+
 	private void registerCopyToClipboardKeyListener() {
 		treeViewer.getTree().addKeyListener(new KeyAdapter() {
 			@Override
@@ -468,7 +559,7 @@ implements LabelTextOptionsContainer, ISelectionProvider
 			}
 		}
 	}
-	
+
 	public MenuManager getContextMenuManager() {
 		return contextMenuManager;
 	}
@@ -477,14 +568,14 @@ implements LabelTextOptionsContainer, ISelectionProvider
 	public ISelection getSelection() {
 		return treeViewer.getSelection();
 	}
-	
+
 	@Override
 	public void setSelection(ISelection selection) {
 		treeViewer.setSelection(selection);
 	}
-	
+
 	private ListenerList selectionChangedListeners = new ListenerList();
-	
+
 	@Override
 	public void addSelectionChangedListener(ISelectionChangedListener listener) {
 		selectionChangedListeners.add(listener);

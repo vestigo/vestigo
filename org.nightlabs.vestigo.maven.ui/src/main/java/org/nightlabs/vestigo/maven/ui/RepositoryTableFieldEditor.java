@@ -226,7 +226,8 @@ public class RepositoryTableFieldEditor extends FieldEditor
 	private String writeRepositoriesToString(Repositories repositories)
 	{
 		try {
-			String string = repositories == null || repositories.getRepository().isEmpty() ? null : repositoriesIO.writeToString(repositories);
+			// Since Eclipse 4.2, a null value causes a NullPointerException => Returning an empty String instead of null.
+			String string = repositories == null || repositories.getRepository().isEmpty() ? "" : repositoriesIO.writeToString(repositories);
 			return string;
 		} catch (JAXBException e) {
 			throw new RuntimeException(e);

@@ -35,7 +35,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
-import org.nightlabs.util.reflect.ReflectUtil;
+import org.nightlabs.vestigo.childvm.shared.Formula;
 import org.nightlabs.vestigo.childvm.shared.MapEntry;
 import org.nightlabs.vestigo.childvm.shared.ResultSetID;
 import org.nightlabs.vestigo.childvm.shared.dto.ResultCellDTO;
@@ -67,8 +67,6 @@ public abstract class ResultSet
 	private Map<Long, TransientObjectContainer> objectID2transientObjectContainer = new HashMap<Long, TransientObjectContainer>();
 	private Map<Object, Long> transientObject2objectID = new IdentityHashMap<Object, Long>();
 	private Map<String, Object> qualifiedObjectID2objectID = new HashMap<String, Object>();
-
-	private Map<Class<?>, List<Field>> class2fields = new HashMap<Class<?>, List<Field>>();
 
 	public ResultSet(Connection connection, Collection<?> rows, QueryExecutionStatisticSet queryExecutionStatisticSet)
 	{
@@ -417,11 +415,44 @@ public abstract class ResultSet
 		objectID2transientObjectContainer = null;
 		transientObject2objectID = null;
 		qualifiedObjectID2objectID = null;
-		class2fields = null;
 		persistenceEngineClassLoader = null;
 	}
 
-	public synchronized List<?> getChildren(Object parent)
+	public Object replaceChildValue(Object object, String fieldDeclaringClassName, String fieldName, Formula formula) {
+		ClassLoader backupContextClassLoader = Thread.currentThread().getContextClassLoader();
+		try {
+			Thread.currentThread().setContextClassLoader(persistenceEngineClassLoader);
+
+			Field field = connection.getField(object.getClass(), fieldDeclaringClassName, fieldName, true);
+			Object newValue = evaluateReplaceChildValueFormula(object, field, formula);
+			return setFieldValue(object, field, newValue);
+		} finally {
+			Thread.currentThread().setContextClassLoader(backupContextClassLoader);
+		}
+	}
+
+	protected Object evaluateReplaceChildValueFormula(Object object, Field field, Formula formula)
+	{
+		if (object == null)
+			throw new IllegalArgumentException("object == null");
+
+		try {
+			Map<String, Object> scriptContext = new HashMap<String, Object>();
+			scriptContext.put("object", object);
+			scriptContext.put("fieldDeclaringClassName", field.getDeclaringClass().getName());
+			scriptContext.put("fieldName", field.getName());
+
+			return connection.evaluateFormula(
+					"changeChildValue_" + field.getDeclaringClass().getName() + '.' + field.getName(),
+					scriptContext,
+					formula
+			);
+		} catch (Exception e) {
+			throw new RuntimeException("Formula for changing field \"" + field.getDeclaringClass().getName() + '.' + field.getName() + "\" could not be evaluated: " + e.getMessage(), e);
+		}
+	}
+
+	public List<?> getChildren(Object object)
 	{
 		ClassLoader backupContextClassLoader = Thread.currentThread().getContextClassLoader();
 		try {
@@ -429,22 +460,15 @@ public abstract class ResultSet
 
 			List<?> resultList = null;
 
-			if (parent instanceof Collection<?>)
-				resultList = new ArrayList<Object>((Collection<?>)parent);
-			else if (parent instanceof Map<?, ?>)
-				resultList = getChildrenFromMap(((Map<?, ?>)parent));
-			else if (parent != null && parent.getClass().isArray())
-				resultList = getChildrenFromArray(parent);
-			else if (parent != null) {
-				List<Field> fields = class2fields.get(parent.getClass());
-				if (fields == null) {
-					fields = getFields(parent.getClass());
-					for (Field field : fields)
-						field.setAccessible(true);
-
-					class2fields.put(parent.getClass(), fields);
-				}
-				resultList = getFieldValues(parent, fields);
+			if (object instanceof Collection<?>)
+				resultList = new ArrayList<Object>((Collection<?>)object);
+			else if (object instanceof Map<?, ?>)
+				resultList = getChildrenFromMap(((Map<?, ?>)object));
+			else if (object != null && object.getClass().isArray())
+				resultList = getChildrenFromArray(object);
+			else if (object != null) {
+				List<Field> fields = connection.getFields(object.getClass());
+				resultList = getFieldValues(object, fields);
 				if (resultList == null)
 					throw new IllegalStateException("Implementation error in class " + this.getClass().getName() + ": getFieldValues(...) returned null!");
 
@@ -476,11 +500,6 @@ public abstract class ResultSet
 		return result;
 	}
 
-	protected List<Field> getFields(Class<?> clazz)
-	{
-		return ReflectUtil.collectAllFields(clazz, true);
-	}
-
 	/**
 	 * Get the field values of <code>object</code>.
 	 * @param object the object from which to retrieve the field values. Never <code>null</code>.
@@ -497,6 +516,18 @@ public abstract class ResultSet
 			resultList.add(fieldValue);
 		}
 		return resultList;
+	}
+
+	protected FieldValue setFieldValue(Object object, Field field, Object fieldValue)
+	{
+		try {
+			field.set(object, fieldValue);
+			return new FieldValue(field, fieldValue);
+		} catch (IllegalArgumentException e) {
+			throw new RuntimeException(e);
+		} catch (IllegalAccessException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	protected FieldValue getFieldValue(Object object, Field field)

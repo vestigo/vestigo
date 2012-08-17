@@ -18,9 +18,11 @@
 package org.nightlabs.vestigo.childvm.webapp.model;
 
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.SortedSet;
 import java.util.TreeSet;
@@ -29,7 +31,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;
 
+import org.nightlabs.util.reflect.ReflectUtil;
 import org.nightlabs.vestigo.childvm.shared.Formula;
 import org.nightlabs.vestigo.childvm.shared.ResultSetID;
 import org.nightlabs.vestigo.childvm.shared.dto.ConnectionDTO;
@@ -51,6 +55,8 @@ public abstract class Connection
 	private ConnectionProfileManager connectionProfileManager;
 	private ConnectionProfile connectionProfile;
 	private Scope connectionScope;
+	private Map<Class<?>, List<Field>> class2fields = new HashMap<Class<?>, List<Field>>();
+	private Map<String, Field> fieldKey2field = new HashMap<String, Field>();
 	private ScriptEngineManager scriptEngineManager = new ScriptEngineManager();
 
 	private Map<Integer, ResultSet> resultSetID2resultSetMap = new HashMap<Integer, ResultSet>();
@@ -150,6 +156,7 @@ public abstract class Connection
 			connectionProfile.onConnectionClose(this);
 
 		connectionScope = null;
+		class2fields = null;
 		open = false;
 	}
 
@@ -243,24 +250,90 @@ public abstract class Connection
 		int paramIndex = queryParameterDTO.getIndex();
 		String paramName = queryParameterDTO.getName();
 		try {
-			ScriptEngine scriptEngine = scriptEngineManager.getEngineByMimeType(formula.getMimeType());
-
-			// Set the FILENAME for better error messages.
-			scriptEngine.put(
-					ScriptEngine.FILENAME,
-					"queryParameter_" + paramIndex + (paramName == null ? "" : "_" + paramName)
+			return evaluateFormula(
+					"queryParameter_" + paramIndex + (paramName == null ? "" : "_" + paramName),
+					null,
+					formula
 			);
-
-			scriptEngine.put("connectionScope", getConnectionScope());
-			scriptEngine.put("connectionProfileScope", getConnectionProfile().getConnectionProfileScope());
-
-			// Give the subclasses the possibility to set variables for accessing the PersistenceManager/EntityManager and the like.
-			prepareScriptEngine(scriptEngine);
-
-			// Do the actual script execution.
-			return scriptEngine.eval(formula.getFormulaText());
 		} catch (Exception e) {
 			throw new RuntimeException("Formula for query parameter with index=" + paramIndex + " and name=\"" + paramName + "\" could not be evaluated: " + e.getMessage(), e);
 		}
+	}
+
+	public Object evaluateFormula(String scriptName, Map<String, Object> scriptContext, Formula formula) throws ScriptException
+	{
+		ScriptEngine scriptEngine = scriptEngineManager.getEngineByMimeType(formula.getMimeType());
+
+		// Set the FILENAME for better error messages.
+		scriptEngine.put(
+				ScriptEngine.FILENAME,
+				scriptName
+		);
+
+		if (scriptContext != null) {
+			for (Map.Entry<String, Object> me : scriptContext.entrySet())
+				scriptEngine.put(me.getKey(), me.getValue());
+		}
+
+		scriptEngine.put("connectionScope", getConnectionScope());
+		scriptEngine.put("connectionProfileScope", getConnectionProfile().getConnectionProfileScope());
+
+		// Give the subclasses the possibility to set variables for accessing the PersistenceManager/EntityManager and the like.
+		prepareScriptEngine(scriptEngine);
+
+		// Do the actual script execution.
+		return scriptEngine.eval(formula.getFormulaText());
+	}
+
+	protected synchronized Field getField(Class<?> clazz, String fieldDeclaringClassName, String fieldName, boolean throwExceptionIfNotFound)
+	{
+		if (clazz == null)
+			throw new IllegalArgumentException("clazz == null");
+		if (fieldDeclaringClassName == null)
+			throw new IllegalArgumentException("fieldDeclaringClassName == null");
+		if (fieldName == null)
+			throw new IllegalArgumentException("fieldName == null");
+
+		String fieldKey = getFieldKey(clazz, fieldDeclaringClassName, fieldName);
+		Field field = fieldKey2field.get(fieldKey);
+		if (field == null) {
+			for (Field f : getFields(clazz)) {
+				if (f.getName().equals(fieldName) && f.getDeclaringClass().getName().equals(fieldDeclaringClassName)) {
+					field = f;
+					break;
+				}
+			}
+			if (field == null) {
+				if (throwExceptionIfNotFound)
+					throw new IllegalArgumentException(
+							String.format(
+									"There is no field in class \"%s\" identified by fieldDeclaringClassName=\"%s\" and fieldName=\"%s\"!",
+									clazz.getName(),
+									fieldDeclaringClassName,
+									fieldName
+							)
+					);
+			}
+			else
+				fieldKey2field.put(fieldKey, field);
+		}
+		return field;
+	}
+
+	protected String getFieldKey(Class<?> clazz, String fieldDeclaringClassName, String fieldName) {
+		return clazz.getName() + ':' + fieldDeclaringClassName + ':' + fieldName;
+	}
+
+	protected synchronized List<Field> getFields(Class<?> clazz)
+	{
+		List<Field> fields = class2fields.get(clazz);
+		if (fields == null) {
+			fields = ReflectUtil.collectAllFields(clazz, true);
+			for (Field field : fields)
+				field.setAccessible(true);
+
+			class2fields.put(clazz, fields);
+		}
+		return fields;
 	}
 }

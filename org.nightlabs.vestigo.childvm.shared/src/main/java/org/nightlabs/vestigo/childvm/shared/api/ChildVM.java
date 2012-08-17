@@ -28,6 +28,7 @@ import org.nightlabs.vestigo.childvm.shared.dto.ConnectionProfileDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.PersistablePropertyDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.QueryExecutionStatisticSetDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.QueryParameterDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.ReplaceChildValueCommandDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.ResultCellDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.ResultCellObjectRefDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.ResultRowDTO;
@@ -37,7 +38,6 @@ import org.nightlabs.vestigo.childvm.shared.dto.ResultRowDTO;
  */
 public interface ChildVM
 {
-
 	boolean isOnline();
 
 	void putConnectionProfileDTO(ConnectionProfileDTO connectionProfileDTO) throws ChildVMException;
@@ -76,4 +76,6 @@ public interface ChildVM
 	QueryExecutionStatisticSetDTO getQueryExecutionStatisticSetDTO(ResultSetID resultSetID) throws ChildVMException;
 
 	Collection<PersistablePropertyDTO> getPersistablePropertyDTOs(String profileID, String persistableClass) throws ChildVMException;
+
+	void replaceChildValue(ResultSetID resultSetID, ReplaceChildValueCommandDTO replaceChildValueCommandDTO) throws ChildVMException;
 }

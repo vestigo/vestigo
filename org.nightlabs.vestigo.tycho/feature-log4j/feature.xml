@@ -324,4 +324,7 @@ E-mail: vestigo[at]nightlabs[dot]com
    <plugin download-size="0" id="org.nightlabs.vestigo.log4j.core" install-size="0" unpack="false" version="0.0.0"/>
 
    <plugin download-size="0" id="org.nightlabs.vestigo.log4j.ui" install-size="0" unpack="false" version="0.0.0"/>
+
+<!-- Necessary here AND in ${workspace}/org.nightlabs.vestigo.log4j.core/pom.xml -->
+   <plugin download-size="0" id="slf4j.log4j12" install-size="0" unpack="false" version="0.0.0"/>
 </feature>

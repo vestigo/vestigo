@@ -18,10 +18,12 @@
 package org.nightlabs.vestigo.childvm.webapp.model;
 
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.SortedSet;
@@ -211,5 +213,18 @@ extends Connection
 	{
 		fetchPlan.setMaxFetchDepth(1);
 		fetchPlan.setGroup(FetchPlan.DEFAULT);
+	}
+
+	@Override
+	protected List<Field> getFields(Class<?> clazz)
+	{
+		// Filter all jdo-internal fields (which have been enhanced into the class).
+		List<Field> fields = super.getFields(clazz);
+		for (Iterator<Field> it = fields.iterator(); it.hasNext(); ) {
+			Field field = it.next();
+			if (field.getName().startsWith("jdo"))
+				it.remove();
+		}
+		return fields;
 	}
 }

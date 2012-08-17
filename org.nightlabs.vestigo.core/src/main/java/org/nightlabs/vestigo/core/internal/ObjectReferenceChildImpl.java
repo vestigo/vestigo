@@ -19,6 +19,7 @@ package org.nightlabs.vestigo.core.internal;
 
 import java.util.Set;
 
+import org.nightlabs.vestigo.childvm.shared.Formula;
 import org.nightlabs.vestigo.childvm.shared.dto.ResultCellDTO;
 import org.nightlabs.vestigo.core.FieldDesc;
 import org.nightlabs.vestigo.core.LabelTextOption;
@@ -119,4 +120,18 @@ implements ObjectReferenceChild
 
 		return sb.toString();
 	}
+
+	@Override
+	public void replaceValue(Formula formula) {
+		if (this.getFieldDesc() == null) // TODO implement this! when does this happen? collections?!
+			throw new IllegalStateException("this.getFieldDesc() == null");
+
+		if (this.getFieldDesc().getFieldName() == null) // TODO implement this! when does this happen? collections?!
+			throw new IllegalStateException("this.getFieldDesc().getFieldName() == null");
+
+//		ReplaceChildValueCommandDTO replaceChildValueCommandDTO = new ReplaceChildValueCommandDTO(resultCellObjectRefDTO, fieldDeclaringClassName, fieldName, formula);
+//		getChildVM().changeValue(getOwner().getResultSet().getResultSetID(), replaceChildValueCommandDTO);
+		throw new UnsupportedOperationException("NYI");
+	}
+
 }

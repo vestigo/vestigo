@@ -55,9 +55,9 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.Text;
 import org.nightlabs.vestigo.childvm.shared.PropertiesUtil;
-import org.nightlabs.vestigo.core.oda.PersistableClass;
 import org.nightlabs.vestigo.core.oda.ConnectionProfile;
 import org.nightlabs.vestigo.core.oda.ConnectionProfileRegistry;
+import org.nightlabs.vestigo.core.oda.PersistableClass;
 import org.nightlabs.vestigo.ui.oda.OdaUtil;
 import org.nightlabs.vestigo.ui.resource.Messages;
 
@@ -324,14 +324,16 @@ public class CandidateClassComposite extends Composite
 					display.asyncExec(new Runnable() {
 						@Override
 						public void run() {
-							tableViewer.setInput(candidateClassesList);
+							if (!table.isDisposed())
+								tableViewer.setInput(candidateClassesList);
 						}
 					});
 				} catch (final Exception x) {
 					display.asyncExec(new Runnable() {
 						@Override
 						public void run() {
-							tableViewer.setInput(Collections.singletonList(String.format(MESSAGE_ERROR, x.getLocalizedMessage())));
+							if (!table.isDisposed())
+								tableViewer.setInput(Collections.singletonList(String.format(MESSAGE_ERROR, x.getLocalizedMessage())));
 						}
 					});
 

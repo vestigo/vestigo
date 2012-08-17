@@ -22,6 +22,7 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
 
+import org.nightlabs.vestigo.childvm.shared.Formula;
 import org.nightlabs.vestigo.childvm.shared.api.ChildVM;
 
 /**
@@ -43,6 +44,14 @@ public interface ObjectReferenceChild
 	 */
 	ObjectReference getOwner();
 
+	/**
+	 * Get the value of the field (or the element of a collection-/map-field) referenced by this child instance.
+	 * <p>
+	 * Note, that this value might not only be a simple data type (like {@link Long}, {@link String} etc.) but also
+	 * another {@link ObjectReference}.
+	 * @return the value of the field (or the element of a collection-/map-field) referenced by this child instance.
+	 * May be <code>null</code>.
+	 */
 	Object getValue();
 
 	/**
@@ -83,4 +92,11 @@ public interface ObjectReferenceChild
 	 * for displaying in UI.
 	 */
 	String getLabelText(Set<LabelTextOption> labelTextOptions);
+
+	/**
+	 * Change the value in the database by applying the given <code>formula</code>.
+	 * @param formula the formula to be executed. May be <code>null</code> (which is equivalent to a
+	 * formula evaluating to the result <code>null</code>).
+	 */
+	void replaceValue(Formula formula);
 }

@@ -289,6 +289,17 @@ public class ClassLoaderManager
 		populatePersistenceEngineClasspathURLList(persistenceEngineClasspathURLList, file, true, monitor);
 	}
 
+	private File mapIntoTempDir(File fileOrDir) {
+		byte[] hash;
+		try {
+			hash = Util.hash(IOUtil.simplifyPath(fileOrDir).getBytes(IOUtil.CHARSET_UTF_8), Util.HASH_ALGORITHM_SHA);
+		} catch (NoSuchAlgorithmException e) {
+			throw new RuntimeException(e);
+		}
+		String hashStr = Util.encodeHexStr(hash);
+		return new File(tempDir, hashStr + '.' + fileOrDir.getName());
+	}
+
 	private void populatePersistenceEngineClasspathURLList(List<URL> persistenceEngineClasspathURLList, File file, boolean includeAll, ProgressMonitor monitor)
 	throws IOException
 	{
@@ -298,19 +309,16 @@ public class ClassLoaderManager
 			if (monitor.isCanceled())
 				throw new OperationCanceledException();
 
-			String fn = file.getName();
+			File tempFile = mapIntoTempDir(file);
+			if (file.isDirectory())
+				IOUtil.copyDirectory(file, tempFile);
+			else
+				IOUtil.copyFile(file, tempFile);
+
+			monitor.worked(5);
 			if (isContainerArchive(file)) {
-				byte[] hash;
-				try {
-					hash = Util.hash(IOUtil.simplifyPath(file).getBytes(IOUtil.CHARSET_UTF_8), Util.HASH_ALGORITHM_SHA);
-				} catch (NoSuchAlgorithmException e) {
-					throw new RuntimeException(e);
-				}
-				String hashStr = Util.encodeHexStr(hash);
+				File earDir = new File(tempFile.getParentFile(), tempFile.getName() + ".d");
 
-				monitor.worked(5);
-
-				File earDir = new File(tempDir, hashStr + '.' + fn);
 				earDir.mkdir();
 				IOUtil.unzipArchiveIfModified(file, earDir);
 
@@ -321,10 +329,10 @@ public class ClassLoaderManager
 				Collections.sort(earURLList, urlComparator);
 
 				persistenceEngineClasspathURLList.addAll(earURLList);
-				persistenceEngineClasspathURLList.add(file.toURI().toURL());
+				persistenceEngineClasspathURLList.add(tempFile.toURI().toURL());
 			}
 			else if (includeAll || isNonContainerArchive(file))
-				persistenceEngineClasspathURLList.add(file.toURI().toURL());
+				persistenceEngineClasspathURLList.add(tempFile.toURI().toURL());
 		} finally {
 			monitor.done();
 		}
@@ -385,8 +393,7 @@ public class ClassLoaderManager
 				List<URL> persistenceEngineClasspathURLList = getPersistenceEngineClasspathURLList(new SubProgressMonitor(monitor, 98));
 
 				PersistenceEngineClassLoader persistenceEngineClassLoader = new PersistenceEngineClassLoader(
-						persistenceEngineClasspathURLList.toArray(new URL[persistenceEngineClasspathURLList.size()]),
-						this.getClass().getClassLoader()
+						persistenceEngineClasspathURLList.toArray(new URL[persistenceEngineClasspathURLList.size()])
 				);
 
 				this.persistenceEngineClassLoader = persistenceEngineClassLoader;
