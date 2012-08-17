@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="Vestigo" uid="org.nightlabs.vestigo.ui.product.dev" id="org.nightlabs.vestigo.ui.product" application="org.eclipse.ui.ide.workbench" version="1.0.0.qualifier" useFeatures="true" includeLaunchers="true">
+<product name="Vestigo" uid="org.nightlabs.vestigo.ui.standalone-product" id="org.nightlabs.vestigo.ui.product.product" application="org.nightlabs.vestigo.ui.product.application" version="0.9.5.qualifier" useFeatures="true" includeLaunchers="true">
 
    <aboutInfo>
       <image path="icons/vestigo-about.png"/>
@@ -19,15 +19,45 @@
 
    <windowImages i16="icons/vestigo-16x16.png" i32="icons/vestigo-32x32.png"/>
 
+   <splash
+      location="org.nightlabs.vestigo.ui.product" />
    <launcher name="vestigo">
+      <linux icon="icons/vestigo_icn.xpm"/>
       <solaris/>
       <win useIco="false">
-         <bmp/>
+         <bmp
+            winSmallHigh="icons/vestigo_icn_16x16.bmp"
+            winSmallLow="icons/vestigo_icn_16x16.bmp"
+            winMediumHigh="icons/vestigo_icn_32x32_raeumlich.bmp"
+            winMediumLow="icons/vestigo_icn_32x32_raeumlich.bmp"
+            winLargeHigh="icons/vestigo_icn_48x48_raeumlich.bmp"
+            winLargeLow="icons/vestigo_icn_48x48_raeumlich.bmp"/>
       </win>
    </launcher>
 
    <vm>
    </vm>
+
+   <license>
+        <url>http://vestigo.nightlabs.com/latest-stable/about/licence.html</url>
+        <text>
+   Vestigo - The JDO/JPA Query Tool And Browser - http://vestigo.nightlabs.com
+Copyright © 2011-2012 NightLabs Consulting GmbH. All rights reserved.
+
+This program and all its libraries in the namespace &quot;*.nightlabs.vestigo.*&quot;
+are proprietary software. Their source codes are trade secrets and therefore
+must be kept confidential.
+
+The use of this software is subject to licence terms.
+
+Please see LICENCE.txt or
+http://vestigo.nightlabs.com/latest-stable/about/licence.html for
+more details.
+
+For further information, please contact NightLabs Consulting GmbH:
+http://nightlabs.com
+         </text>
+   </license>
 
    <plugins>
    </plugins>
@@ -38,8 +68,13 @@
       <feature id="org.nightlabs.vestigo.log4j.ui.feature" version="0.9.5.qualifier"/>
       <feature id="org.nightlabs.vestigo.maven.ui.feature" version="0.9.5.qualifier"/>
       <feature id="org.nightlabs.vestigo.ui.feature" version="0.9.5.qualifier"/>
+      <feature id="org.nightlabs.vestigo.ui.product.feature" version="0.9.5.qualifier"/>
       <feature id="org.eclipse.rcp"/>
       <feature id="org.eclipse.platform"/>
+      <feature id="org.eclipse.rcp.source"/>
+      <feature id="org.eclipse.platform.source"/>
+      <feature id="org.eclipse.xtext.runtime.source"/>
+      <feature id="org.eclipse.xtext.ui.source"/>
    </features>
 
    <configurations>
