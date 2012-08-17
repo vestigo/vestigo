@@ -7,6 +7,14 @@
 
 What's new?
 
+* 0.9.5
+	
+	The following is new in 0.9.5 (compared to 0.9.4):
+	
+	* Bugfix: Vestigo now compatible with Eclipse Juno (and Eclipse Indigo).
+
+	[]
+	
 * 0.9.4
 
 	The following is new in 0.9.4 (compared to 0.9.3):
