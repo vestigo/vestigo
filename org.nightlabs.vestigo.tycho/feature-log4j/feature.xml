@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<feature id="org.nightlabs.vestigo.log4j.ui.feature" label="Vestigo log4j integration" provider-name="NightLabs Consulting GmbH" version="0.9.5">
+<feature id="org.nightlabs.vestigo.log4j.ui.feature" label="Vestigo log4j integration" provider-name="NightLabs Consulting GmbH" version="0.9.6.qualifier">
 
 <!--
 ###PROPERTIES_BEGIN###
@@ -9,13 +9,13 @@ description.text = Log4j integration for Vestigo.\n\nSee ${description.url} for 
 -->
 
 <!-- BEGIN: DO NOT MODIFY manually! The following is managed and your manual changes will be lost! -->
-   <description url="http://vestigo.nightlabs.com/0.9.5">Log4j integration for Vestigo.
+   <description url="http://vestigo.nightlabs.com/0.9.6-SNAPSHOT">Log4j integration for Vestigo.
 
-See http://vestigo.nightlabs.com/0.9.5 for more information.</description>
+See http://vestigo.nightlabs.com/0.9.6-SNAPSHOT for more information.</description>
 
-   <copyright url="http://vestigo.nightlabs.com/0.9.5/about/imprint.html">Copyright © 2011-2012 NightLabs Consulting GmbH. All rights reserved.</copyright>
+   <copyright url="http://vestigo.nightlabs.com/0.9.6-SNAPSHOT/about/imprint.html">Copyright © 2011-2012 NightLabs Consulting GmbH. All rights reserved.</copyright>
 
-   <license url="http://vestigo.nightlabs.com/0.9.5/about/licence.html">License agreement for Vestigo
+   <license url="http://vestigo.nightlabs.com/0.9.6-SNAPSHOT/about/licence.html">License agreement for Vestigo
 
 
 IMPORTANT! READ CAREFULLY: THIS IS A LEGAL AGREEMENT. BY DOWNLOADING,
@@ -318,7 +318,7 @@ E-mail: vestigo[at]nightlabs[dot]com
 <!-- END: DO NOT MODIFY manually! The above is managed and your manual changes will be lost! -->
 
    <requires>
-      <import feature="org.nightlabs.vestigo.ui.feature" match="greaterOrEqual" version="0.9.5"/>
+      <import feature="org.nightlabs.vestigo.ui.feature" match="greaterOrEqual" version="0.9.6"/>
    </requires>
 
    <plugin download-size="0" id="org.nightlabs.vestigo.log4j.core" install-size="0" unpack="false" version="0.0.0"/>

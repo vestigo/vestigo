@@ -32,7 +32,7 @@
    </vm>
 
    <license>
-        <url>http://vestigo.nightlabs.com/0.9.5/about/licence.html</url>
+        <url>http://vestigo.nightlabs.com/0.9.6-SNAPSHOT/about/licence.html</url>
         <text>License agreement for Vestigo
 
 
@@ -339,12 +339,12 @@ E-mail: vestigo[at]nightlabs[dot]com
    </plugins>
 
    <features>
-      <feature id="org.nightlabs.vestigo.cumulus4j.ui.feature" version="0.9.5"/>
-      <feature id="org.nightlabs.vestigo.jdt.ui.feature" version="0.9.5"/>
-      <feature id="org.nightlabs.vestigo.log4j.ui.feature" version="0.9.5"/>
-      <feature id="org.nightlabs.vestigo.maven.ui.feature" version="0.9.5"/>
-      <feature id="org.nightlabs.vestigo.ui.feature" version="0.9.5"/>
-      <feature id="org.nightlabs.vestigo.ui.product.feature" version="0.9.5"/>
+      <feature id="org.nightlabs.vestigo.cumulus4j.ui.feature" version="0.9.6.qualifier"/>
+      <feature id="org.nightlabs.vestigo.jdt.ui.feature" version="0.9.6.qualifier"/>
+      <feature id="org.nightlabs.vestigo.log4j.ui.feature" version="0.9.6.qualifier"/>
+      <feature id="org.nightlabs.vestigo.maven.ui.feature" version="0.9.6.qualifier"/>
+      <feature id="org.nightlabs.vestigo.ui.feature" version="0.9.6.qualifier"/>
+      <feature id="org.nightlabs.vestigo.ui.product.feature" version="0.9.6.qualifier"/>
       <feature id="org.eclipse.rcp"/>
       <feature id="org.eclipse.platform"/>
       <feature id="org.eclipse.rcp.source"/>
