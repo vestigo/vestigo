@@ -12,7 +12,11 @@ What's new?
 	The following is new in 0.9.5 (compared to 0.9.4):
 	
 	* Bugfix: Vestigo now compatible with Eclipse Juno (and Eclipse Indigo).
+	
+	* Bugfix: Classloading issue. Classes of the Vestigo ChildVM environment do not hide those of the application any more. This means the data-source setup completely defines the class-path now and therefore existing data-soruces might need to be amended with additional libraries.
+	   
 	* UI improvement: Toolbar now cleaned from other actions within Vestigo perspective.
+	
 	* UI improvement: Improvements to the standalone version of Vestigo. Startup with Vestigo perspective, Splash, icons and other things.
 
 	[]
