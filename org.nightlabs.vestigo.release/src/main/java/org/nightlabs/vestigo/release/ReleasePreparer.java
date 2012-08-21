@@ -58,7 +58,7 @@ public class ReleasePreparer {
 	// Set 'newMavenVersion' to the new desired  version. Then run the main method. It will update
 	// all files accordingly. See HOWTO-release.txt in project 'org.nightlabs.vestigo.all'.
 //	protected String newMavenVersion = "0.9.5";
-	protected String newMavenVersion = "0.9.5-SNAPSHOT";
+	protected String newMavenVersion = "0.9.5";
 
 	protected String copyrightURL = "http://vestigo.nightlabs.com/${project.version}/about/imprint.html";
 	protected String copyrightNotice = "Copyright © 2011-2012 NightLabs Consulting GmbH. All rights reserved.";
@@ -93,6 +93,7 @@ public class ReleasePreparer {
 	protected List<File> featureFiles;
 	protected List<File> categoryFiles;
 	protected List<File> manifestFiles;
+	protected List<File> productFiles;
 
 	protected String licenceText;
 
@@ -121,6 +122,7 @@ public class ReleasePreparer {
 		updateFeatureFiles();
 		updatePomFiles();
 		updateManifestFiles();
+		updateProductFiles();
 		logger.info("run: Completed.");
 	}
 
@@ -147,6 +149,7 @@ public class ReleasePreparer {
 
 	protected void updateManifestFiles() throws Exception {
 		for (File  f : manifestFiles) {
+			logger.info("updateManifestFiles: file={}", f.getAbsolutePath());
 			File tmpFile = new File(f.getParentFile(), f.getName() + ".tmp");
 			InputStream in = null;
 			OutputStream out = null;
@@ -191,6 +194,7 @@ public class ReleasePreparer {
 
 	protected void updatePomFiles() throws Exception {
 		for (File  f : pomFiles) {
+			logger.info("updatePomFiles: file={}", f.getAbsolutePath());
 			new PomUpdater(f).setArtifactIdPrefix(artifactIdPrefix).setNewMavenVersion(newMavenVersion).update();
 		}
 	}
@@ -333,6 +337,7 @@ public class ReleasePreparer {
 		transformer.setOutputProperty(OutputKeys.INDENT, "yes");
 
 		for (File  f : categoryFiles) {
+			logger.trace("updateCategoryFiles: file={}", f.getAbsolutePath());
 			Document document = dBuilder.parse(f);
 			updateCategoryFileDocument(document);
 
@@ -365,14 +370,68 @@ public class ReleasePreparer {
 			}
 		}
 	}
+	
+	protected void updateProductFiles() throws Exception {
+		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+		TransformerFactory tFactory = TransformerFactory.newInstance();
+		Transformer transformer = tFactory.newTransformer();
+		transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+
+		for (File  f : productFiles) {
+			logger.info("updateProductFiles: file={}", f.getAbsolutePath());
+			Document document = dBuilder.parse(f);
+			updateProductFileDocument(document);
+
+			DOMSource source = new DOMSource(document);
+			StreamResult result = new StreamResult(f);
+			transformer.transform(source, result);
+		}
+	}	
+
+	protected void updateProductFileDocument(Document document) {
+		updateProductFileFeatureElements(document);
+		updateProductFileVersionText(document);
+	}
+
+	protected void updateProductFileFeatureElements(Document document) {
+		Element featuresElement = findSingleElement("features", document.getDocumentElement());
+		NodeList featureList = featuresElement.getElementsByTagName("feature");
+		for (int i = 0; i < featureList.getLength(); ++i) {
+			Node node = featureList.item(i);
+			if (node instanceof Element) {
+				Element element = (Element) node;
+				String id = element.getAttribute("id");
+				if (id.startsWith("org.nightlabs.vestigo")) {
+					element.setAttribute("version", newOsgiVersionWithQualifier);
+					logger.trace("  Updated feature version for {}.", id);
+				}
+			}
+		}
+	}
+
+	protected void updateProductFileVersionText(Document document) {
+		Element licenseTextElement = findSingleElement("license/text", document.getDocumentElement());
+		if (licenseTextElement != null) {
+			setTagValue(document, licenseTextElement, licenceText);
+			logger.trace("  Updated license-text");
+		}
+		Element licenseUrlElement = findSingleElement("license/url", document.getDocumentElement());
+		if (licenseTextElement != null) {
+			setTagValue(document, licenseUrlElement, licenceURL, properties);
+			logger.trace("  Updated license-url");
+		}
+	}
 
 	protected void collectFiles(File dir) throws IOException {
 		pomFiles = new ArrayList<File>();
 		featureFiles = new ArrayList<File>();
 		categoryFiles = new ArrayList<File>();
 		manifestFiles = new ArrayList<File>();
+		productFiles = new ArrayList<File>();
 		_collectFiles(dir.getCanonicalFile());
 	}
+	
 	protected void _collectFiles(File dirOrFile) {
 		if (dirOrFile.getName().startsWith("."))
 			return;
@@ -404,6 +463,11 @@ public class ReleasePreparer {
 			return;
 		}
 
+		if (dirOrFile.isFile() && dirOrFile.getName().endsWith(".product")) {
+			productFiles.add(dirOrFile);
+			return;
+		}
+		
 		File[] listFiles = dirOrFile.listFiles();
 		if (listFiles != null) {
 			for (File child : listFiles)
@@ -445,5 +509,21 @@ public class ReleasePreparer {
 			result.put(key, value);
 		}
 		return result;
+	}
+	
+	protected static Element findSingleElement(String path, Element element) {
+		String[] elementNames = path.split("/");
+		for (String elementName : elementNames) {
+			NodeList elementL = element.getElementsByTagName(elementName);
+			if (elementL.getLength() <= 0)
+				return null;
+			if (elementL.getLength() > 1)
+				throw new IllegalStateException("Found more than one child-elements with name " + elementName + " in element " + element.getNodeName());
+			if (!(elementL.item(0) instanceof Element)) 
+				throw new IllegalStateException("Node with name " + elementName + " in element " + element.getNodeName() + " is not of type Element");
+			
+			element = (Element) elementL.item(0);
+		}
+		return element;
 	}
 }

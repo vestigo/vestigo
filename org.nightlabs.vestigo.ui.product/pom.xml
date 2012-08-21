@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>org.nightlabs.vestigo</groupId>
 		<artifactId>org.nightlabs.vestigo.parent</artifactId>
-		<version>0.9.5-SNAPSHOT</version>
+		<version>0.9.5</version>
 		<relativePath>../org.nightlabs.vestigo.parent</relativePath>
 	</parent>
 	<artifactId>org.nightlabs.vestigo.ui.product</artifactId>
