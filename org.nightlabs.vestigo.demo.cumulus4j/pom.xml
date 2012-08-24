@@ -12,14 +12,80 @@
 		<relativePath>../org.nightlabs.vestigo.parent</relativePath>
 	</parent>
 
+	<repositories>
+		<!-- Repository definitions are necessary for Cumulus4j. -->
+		<repository>
+			<id>dev.nightlabs.org-libs-releases-local</id>
+			<url>http://dev.nightlabs.org/maven-repository/libs-releases-local/</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+		</repository>
+		<repository>
+			<id>dev.nightlabs.org-libs-snapshots-local</id>
+			<url>http://dev.nightlabs.org/maven-repository/libs-snapshots-local/</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+		</repository>
+	</repositories>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.cumulus4j</groupId>
+				<artifactId>org.cumulus4j.parent</artifactId>
+				<type>pom</type>
+				<version>1.1.0-SNAPSHOT</version>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
 	<dependencies>
-	<!--
 		<dependency>
-			<groupId>org.nightlabs.vestigo</groupId>
-			<artifactId>org.nightlabs.vestigo.core</artifactId>
+			<groupId>org.cumulus4j</groupId>
+			<artifactId>org.cumulus4j.store.localkeystoremessagebroker</artifactId>
+			<scope>compile</scope>
 		</dependency>
-	-->
- 
+
+		<!--
+			We *must* re-declare the dependency on DataNucleus with the correct version, here, because
+			it is essential that the DN chosen here is compatible with the Cumulus4j used by this demo.
+			Unfortunately, event he import of org.cumulus4j.parent does not solve this problem :-(
+			It seems this is the only way to solve it.
+		-->
+		<dependency>
+			<groupId>org.datanucleus</groupId>
+			<artifactId>datanucleus-api-jdo</artifactId>
+			<version>3.1.0-m3</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.datanucleus</groupId>
+			<artifactId>datanucleus-api-jpa</artifactId>
+			<version>3.1.0-m3</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.datanucleus</groupId>
+			<artifactId>datanucleus-core</artifactId>
+			<version>3.1.0-m5</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.datanucleus</groupId>
+			<artifactId>datanucleus-rdbms</artifactId>
+			<version>3.1.0-m5</version>
+			<scope>compile</scope>
+		</dependency>
+
 		<dependency>
 			<groupId>org.nightlabs.vestigo</groupId>
 			<artifactId>org.nightlabs.vestigo.demo</artifactId>
@@ -37,6 +103,12 @@
 			<artifactId>javax.persistence</artifactId>
 			<scope>compile</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<scope>compile</scope>
+		</dependency>
 	</dependencies>
 
 	<distributionManagement>
@@ -49,11 +121,6 @@
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.datanucleus</groupId>
-				<artifactId>maven-datanucleus-plugin</artifactId>
-			</plugin>
-
-			<plugin>
 				<artifactId>maven-dependency-plugin</artifactId>
 				<executions>
 					<execution>
@@ -64,14 +131,9 @@
 						<configuration>
 							<outputDirectory>${project.build.directory}</outputDirectory>
 							<includeScope>compile</includeScope>
-							<!-- 
 							<excludeArtifactIds>
-								org.nightlabs.vestigo.childvm.shared,
-								org.nightlabs.vestigo.childvm.webapp,
-								org.nightlabs.vestigo.childvm.webapp.client,
-								org.nightlabs.vestigo.core
+								org.cumulus4j.store.localkeystoremessagebroker
 							</excludeArtifactIds>
-							-->
 						</configuration>
 					</execution>
 				</executions>
@@ -198,5 +260,4 @@
 			</plugins>
 		</pluginManagement>
 	</build>
-
 </project>
