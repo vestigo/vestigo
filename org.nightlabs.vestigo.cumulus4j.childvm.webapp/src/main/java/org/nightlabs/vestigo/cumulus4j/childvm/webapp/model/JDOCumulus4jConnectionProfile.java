@@ -17,6 +17,9 @@
  */
 package org.nightlabs.vestigo.cumulus4j.childvm.webapp.model;
 
+import java.io.IOException;
+import java.util.SortedSet;
+
 import org.nightlabs.vestigo.childvm.shared.dto.ConnectionProfileDTO;
 import org.nightlabs.vestigo.childvm.webapp.model.ConnectionProfile;
 import org.nightlabs.vestigo.childvm.webapp.model.ConnectionProfileFactory;
@@ -34,5 +37,12 @@ public class JDOCumulus4jConnectionProfile extends JDOConnectionProfile
 		public ConnectionProfile createConnectionProfile() {
 			return new JDOCumulus4jConnectionProfile();
 		}
+	}
+
+	private Cumulus4jConnectionProfileHelper connectionProfileHelper = new Cumulus4jConnectionProfileHelper(this);
+
+	@Override
+	public synchronized SortedSet<String> getQueryableCandidateClasses() throws IOException {
+		return connectionProfileHelper.filterQueryableCandidateClasses(super.getQueryableCandidateClasses());
 	}
 }

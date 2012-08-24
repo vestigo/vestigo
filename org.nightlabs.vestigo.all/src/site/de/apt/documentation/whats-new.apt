@@ -7,6 +7,21 @@
 
 Was ist neu?
 
+* 0.9.6
+
+	Folgendes ist neu in 0.9.6 (verglichen mit 0.9.5):
+
+	* Fehlerbeseitigung: Die {{{http://www.cumulus4j.org}Cumulus4j}}-Unterstützung ist wieder verfügbar.
+	Sie war durch Umbauten in 0.9.5 zur Beseitigung eines Classloading-Fehlers gebrochen. Allerdings
+	ist durch größere strukturelle Änderungen nun das zusätzliche
+	{{{http://dev.nightlabs.org/maven-repository/webapp/browserepo.html?3&pathId=libs-snapshots-local:org/cumulus4j/org.cumulus4j.store.localkeystoremessagebroker/1.1.0-SNAPSHOT/org.cumulus4j.store.localkeystoremessagebroker-1.1.0-SNAPSHOT.jar}org.cumulus4j.store.localkeystoremessagebroker-1.1.0-SNAPSHOT.jar}}
+	im Classpath der Datenquelle notwendig. Bitte beachten Sie, daß dieses neue JAR auch mit älteren
+	Cumulus4j-Versionen (seit 1.0.0) verwendet werden kann.
+
+	* Fehlerbeseitigung: Die Navigation durch "Maps" geht wieder. Dieser Fehler wurde durch Umbauten zur Beseitigung
+	eines Classloading-Fehlers in 0.9.5 eingeführt.
+
+	[]
 
 * 0.9.5
 	
@@ -14,11 +29,14 @@ Was ist neu?
 	
 	* Fehlerbeseitigung: Vestigo ist nun kompatibel mit Eclipse Juno (und Eclipse Indigo).
 	
-	* Fehlerbeseitigung: Classloading-Fehler. Klassen der Vestigo-ChildVM-Umgebung überschatten nun nicht mehr die Klassen der Applikation der Datenquelle. Aufgrund dieser Änderung müssen bestehende Datenquellen unter Umständen um weitere Bibliotheken ergänzt werden.
+	* Fehlerbeseitigung: Classloading-Fehler. Klassen der Vestigo-ChildVM-Umgebung überschatten nun nicht mehr die
+	Klassen der Applikation der Datenquelle. Aufgrund dieser Änderung müssen bestehende Datenquellen unter Umständen um
+	weitere Bibliotheken ergänzt werden.
 	   
 	* UI-Verbesserung: Toolbar zeigt keine fremden Aktionen mehr in der Vestigo-Perspektive.
 	
-	* UI-Verbesserung: Das selbständige Vestigo Programm wurde verbessert. Es startet nun mit der Vestigo-Perspektive, es gibt einen Splashscree, weitere Icons sind hinzugekommen und einiges mehr.
+	* UI-Verbesserung: Das selbständige Vestigo Programm wurde verbessert. Es startet nun mit der Vestigo-Perspektive, es
+	gibt einen Splashscree, weitere Icons sind hinzugekommen und einiges mehr.
 
 	[]
 	

@@ -44,22 +44,8 @@
 
 	<!--
 	The above was copied from org.nightlabs.vestigo.childvm.webapp/src/main/webapp/WEB-INF/web.xml and must be
-	kept up-to-date (i.e. exactly the same as the contents of the original web.xml). The below is cumulus4j-specific.
+	kept up-to-date (i.e. exactly the same as the contents of the original web.xml).
+	There is nothing Cumulus4j-specific anymore.
 	-->
-
-	<!-- BEGIN from org.cumulus4j.keymanager.back.webapp -->
-	<servlet>
-		<servlet-name>org.cumulus4j.store.crypto.keymanager.rest.KeyManagerBackWebApp</servlet-name>
-		<servlet-class>org.nightlabs.vestigo.cumulus4j.childvm.webapp.jerseyproxy.JerseyProxyServlet</servlet-class>
-		<init-param>
-			<param-name>javax.ws.rs.Application</param-name>
-			<param-value>org.cumulus4j.store.crypto.keymanager.rest.KeyManagerBackWebApp</param-value>
-		</init-param>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>org.cumulus4j.store.crypto.keymanager.rest.KeyManagerBackWebApp</servlet-name>
-		<url-pattern>/org.cumulus4j.keymanager.back.webapp/*</url-pattern>
-	</servlet-mapping>
-	<!-- END from org.cumulus4j.keymanager.back.webapp -->
 
 </web-app>

@@ -393,7 +393,8 @@ public class ClassLoaderManager
 				List<URL> persistenceEngineClasspathURLList = getPersistenceEngineClasspathURLList(new SubProgressMonitor(monitor, 98));
 
 				PersistenceEngineClassLoader persistenceEngineClassLoader = new PersistenceEngineClassLoader(
-						persistenceEngineClasspathURLList.toArray(new URL[persistenceEngineClasspathURLList.size()])
+						persistenceEngineClasspathURLList.toArray(new URL[persistenceEngineClasspathURLList.size()]),
+						this.getClass().getClassLoader()
 				);
 
 				this.persistenceEngineClassLoader = persistenceEngineClassLoader;

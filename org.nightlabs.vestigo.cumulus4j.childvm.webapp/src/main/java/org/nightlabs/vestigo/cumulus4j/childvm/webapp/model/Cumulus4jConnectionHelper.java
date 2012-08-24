@@ -18,12 +18,13 @@
 package org.nightlabs.vestigo.cumulus4j.childvm.webapp.model;
 
 import java.io.File;
+import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Properties;
 
+import org.nightlabs.util.IOUtil;
 import org.nightlabs.vestigo.childvm.webapp.model.Connection;
-import org.nightlabs.vestigo.childvm.webapp.model.ConnectionProfileManager;
 import org.nightlabs.vestigo.cumulus4j.childvm.shared.Cumulus4jConnectionProperties;
 
 public class Cumulus4jConnectionHelper
@@ -31,80 +32,6 @@ public class Cumulus4jConnectionHelper
 	public static final String PROPERTY_KEY_CRYPTO_SESSION_ID = "cumulus4j.cryptoSessionID";
 
 	private Connection connection;
-
-	private Object cryptoSession;
-	private Method method_cryptoSession_acquire;
-	private Method method_cryptoSession_release;
-
-
-	private static Object invokeMethod(Object object, String methodName, Object argument)
-			throws SecurityException, NoSuchMethodException, IllegalArgumentException, IllegalAccessException, InvocationTargetException
-	{
-		if (argument == null)
-			throw new IllegalArgumentException("argument == null");
-
-		return invokeMethod(object, methodName, argument.getClass(), argument);
-	}
-
-	private static Object invokeMethod(Object object, String methodName, Class<?> argumentType, Object argument)
-			throws SecurityException, NoSuchMethodException, IllegalArgumentException, IllegalAccessException, InvocationTargetException
-	{
-		Method method = object.getClass().getMethod(methodName, argumentType);
-		return method.invoke(object, argument);
-	}
-
-	public String cryptoSession_acquire()
-	{
-		// String cryptoSessionID = cryptoSession.acquire();
-		// try {
-		//
-		//	 accessDataStore(cryptoSessionID);
-		//
-		// } finally {
-		// 	 cryptoSession.release();
-		// }
-
-		Object cryptoSession = this.cryptoSession;
-		if (cryptoSession == null)
-			throw new IllegalStateException("cryptoSession == null");
-
-		try {
-			return (String) method_cryptoSession_acquire.invoke(cryptoSession);
-		} catch (IllegalAccessException e) {
-			throw new RuntimeException(e);
-		} catch (InvocationTargetException e) {
-			wrapInRuntimeException(e);
-			throw new IllegalStateException("WTF! wrapInRuntimeException(...) should have thrown an exception!!!");
-		}
-	}
-
-	public void cryptoSession_release()
-	{
-		Object cryptoSession = this.cryptoSession;
-		if (cryptoSession == null)
-			throw new IllegalStateException("cryptoSession == null");
-
-		try {
-			method_cryptoSession_release.invoke(cryptoSession);
-		} catch (IllegalAccessException e) {
-			throw new RuntimeException(e);
-		} catch (InvocationTargetException e) {
-			wrapInRuntimeException(e);
-		}
-	}
-
-	private void wrapInRuntimeException(InvocationTargetException e) {
-		if (e.getMessage() == null) {
-			Throwable cause = e.getCause();
-			while (cause != null) {
-				if (cause.getMessage() != null)
-					throw new RuntimeException(cause.getMessage(), e);
-
-				cause = cause.getCause();
-			}
-		}
-		throw new RuntimeException(e);
-	}
 
 	public Cumulus4jConnectionHelper(Connection connection)
 	{
@@ -116,21 +43,77 @@ public class Cumulus4jConnectionHelper
 
 		this.connection = connection;
 
-		initKeyManagerAPI();
+		initLocalKeyStoreMessageBroker();
 	}
 
-	private void initKeyManagerAPI()
+	public Connection getConnection() {
+		return connection;
+	}
+
+	private static Object invokeMethod(Object object, String methodName, Class<?> argumentType, Object argument)
+			throws SecurityException, NoSuchMethodException, IllegalArgumentException, IllegalAccessException, InvocationTargetException
 	{
-		String keyManagerBackWebAppURL = ConnectionProfileManager.sharedInstance().getBaseURL();
+		Method method = object.getClass().getMethod(methodName, argumentType);
+		return method.invoke(object, argument);
+	}
 
-		if (keyManagerBackWebAppURL == null)
-			throw new IllegalStateException("ConnectionProfileManager.sharedInstance().getBaseURL() returned null!");
+	public String cryptoSession_acquire()
+	{
+		// Unused, because of new LocalKeyStoreMessageBroker, but required and must have proper format:
+		// "${cryptoSessionIDPrefix}*${serial}*${random1}"
+		//
+		// ${cryptoSessionIDPrefix} is: "${keyStoreID}_${random2}"
+		// The ${cryptoSessionIDPrefix} is used for routing key-request-messages to the right key manager
+		// and for determining the key-store-id.
+		return "keyStoreID_random2*serial*random1";
+	}
 
-		if (!keyManagerBackWebAppURL.endsWith("/"))
-			throw new IllegalStateException("URL returned by ConnectionProfileManager.sharedInstance().getBaseURL() does not end with '/'!");
+	public void cryptoSession_release() { }
 
-		keyManagerBackWebAppURL += "org.cumulus4j.keymanager.back.webapp";
+	private Class<?> getKeyStoreClass() throws ClassNotFoundException {
+		return Thread.currentThread().getContextClassLoader().loadClass("org.cumulus4j.keystore.KeyStore");
+	}
 
+	private Class<?> getMessageBrokerClass() throws ClassNotFoundException {
+		return Thread.currentThread().getContextClassLoader().loadClass("org.cumulus4j.store.crypto.keymanager.messagebroker.MessageBroker");
+	}
+
+	private Object getKeyStore(String keyStoreID, String keyStoreDir) throws Exception
+	{
+		if (keyStoreID == null)
+			throw new IllegalArgumentException("keyStoreID == null");
+
+		File keyStoreDirFile = keyStoreDir == null ? new File(IOUtil.getUserHome(), ".cumulus4j") : new File(keyStoreDir);
+		File keyStoreFile = new File(keyStoreDirFile, keyStoreID + ".keystore");
+
+		if (!keyStoreFile.exists()) {
+			throw new IllegalStateException(
+					String.format(
+							"keyStoreID='%s' or keyStoreDir='%s' wrong! keyStoreFile does not exist: %s",
+							keyStoreID, keyStoreDir, keyStoreFile.getAbsolutePath()
+					)
+			);
+		}
+
+		Class<?> keyStoreClass = getKeyStoreClass();
+
+		Constructor<?> constructor;
+		try {
+			constructor = keyStoreClass.getConstructor(String.class, File.class);
+			return constructor.newInstance(keyStoreID, keyStoreFile);
+		} catch (NoSuchMethodException e) {
+			// backwards-compatibility (C4j before 1.0.2 had only 1 argument)
+			try {
+				constructor = keyStoreClass.getConstructor(File.class);
+				return constructor.newInstance(keyStoreFile);
+			} catch (NoSuchMethodException e2) {
+				throw e; // we throw the original one for the new C4j.
+			}
+		}
+	}
+
+	private void initLocalKeyStoreMessageBroker()
+	{
 		Properties connectionProperties = connection.getConnectionProfile().getConnectionProperties();
 
 		String keyStoreUserName = connectionProperties.getProperty(Cumulus4jConnectionProperties.KEY_STORE_USER_NAME);
@@ -143,35 +126,18 @@ public class Cumulus4jConnectionHelper
 			ClassLoader persistenceEngineClassLoader = connection.getConnectionProfile().getClassLoaderManager().getPersistenceEngineClassLoader(null);
 			Thread.currentThread().setContextClassLoader(persistenceEngineClassLoader);
 
-			// KeyManagerAPIConfiguration configuration = new KeyManagerAPIConfiguration();
-			// configuration.setAuthUserName(KEY_STORE_USER);
-			// configuration.setAuthPassword(KEY_STORE_PASSWORD);
-			// configuration.setKeyStoreID("test-" + Long.toString(System.currentTimeMillis(), 36) + '-' + Long.toString(random.nextLong(), 36));
-			// configuration.setKeyManagerBaseURL(keyStoreDir.toURI().toString());
+			Class<?> messageBrokerRegistryClass = persistenceEngineClassLoader.loadClass("org.cumulus4j.store.crypto.keymanager.messagebroker.MessageBrokerRegistry");
+			Object messageBrokerRegistry = messageBrokerRegistryClass.getMethod("sharedInstance").invoke(null);
 
-			Class<?> keyManagerAPIConfigurationClass = persistenceEngineClassLoader.loadClass("org.cumulus4j.keymanager.api.KeyManagerAPIConfiguration");
-			Object keyManagerAPIConfiguration = keyManagerAPIConfigurationClass.newInstance();
-			invokeMethod(keyManagerAPIConfiguration, "setAuthUserName", String.class, keyStoreUserName);
-			invokeMethod(keyManagerAPIConfiguration, "setAuthPassword", char[].class, keyStorePassword);
-			invokeMethod(keyManagerAPIConfiguration, "setKeyStoreID", String.class, keyStoreID);
+			Class<?> localKeyStoreMessageBrokerClass = persistenceEngineClassLoader.loadClass("org.cumulus4j.store.localkeystoremessagebroker.LocalKeyStoreMessageBroker");
+			Object localKeyStoreMessageBroker = localKeyStoreMessageBrokerClass.newInstance();
 
-			if (keyStoreDir != null) {
-				String keyManagerBaseURL = new File(keyStoreDir).toURI().toURL().toString();
-				invokeMethod(keyManagerAPIConfiguration, "setKeyManagerBaseURL", String.class, keyManagerBaseURL);
-			}
+			Object keyStore = getKeyStore(keyStoreID, keyStoreDir); // result never null
+			invokeMethod(localKeyStoreMessageBroker, "setKeyStore", getKeyStoreClass(), keyStore);
+			invokeMethod(localKeyStoreMessageBroker, "setUserName", String.class, keyStoreUserName);
+			invokeMethod(localKeyStoreMessageBroker, "setPassword", char[].class, keyStorePassword);
 
-
-			// KeyManagerAPI keyManagerAPI = new DefaultKeyManagerAPI();
-			// keyManagerAPI.setConfiguration(configuration);
-			Class<?> defaultKeyManagerAPIClass = persistenceEngineClassLoader.loadClass("org.cumulus4j.keymanager.api.DefaultKeyManagerAPI");
-			Object keyManagerAPI = defaultKeyManagerAPIClass.newInstance();
-			invokeMethod(keyManagerAPI, "setConfiguration", keyManagerAPIConfiguration);
-
-			// CryptoSession cryptoSession = keyManagerAPI.getCryptoSession(keyManagerBackWebAppURL);
-			cryptoSession = invokeMethod(keyManagerAPI, "getCryptoSession", String.class, keyManagerBackWebAppURL);
-			method_cryptoSession_acquire = cryptoSession.getClass().getMethod("acquire");
-			method_cryptoSession_release = cryptoSession.getClass().getMethod("release");
-
+			invokeMethod(messageBrokerRegistry, "setActiveMessageBroker", getMessageBrokerClass(), localKeyStoreMessageBroker);
 		} catch (Exception e) {
 			if (e instanceof RuntimeException)
 				throw (RuntimeException)e;

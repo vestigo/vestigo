@@ -42,6 +42,7 @@
 				<groupId>org.cumulus4j</groupId>
 				<artifactId>org.cumulus4j.parent</artifactId>
 				<type>pom</type>
+				<!-- Important: When changing this version number, the DataNucleus version (see below) needs to be adjusted! -->
 				<version>1.1.0-SNAPSHOT</version>
 				<scope>import</scope>
 			</dependency>
@@ -49,17 +50,27 @@
 	</dependencyManagement>
 
 	<dependencies>
+	
+		<!-- BEGIN Cumulus4j -->
 		<dependency>
 			<groupId>org.cumulus4j</groupId>
 			<artifactId>org.cumulus4j.store.localkeystoremessagebroker</artifactId>
 			<scope>compile</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.cumulus4j</groupId>
+			<artifactId>org.cumulus4j.store.crypto.keymanager</artifactId>
+			<scope>compile</scope>
+		</dependency>
+		<!-- END Cumulus4j -->
 
-		<!--
-			We *must* re-declare the dependency on DataNucleus with the correct version, here, because
-			it is essential that the DN chosen here is compatible with the Cumulus4j used by this demo.
-			Unfortunately, event he import of org.cumulus4j.parent does not solve this problem :-(
+		<!-- BEGIN DataNucleus
+			We *must* re-declare the dependency on DataNucleus with the correct version, here, because it is
+			essential that the DN chosen here is compatible with the Cumulus4j used by this demo. Unfortunately,
+			it does not use the version of the transitive dependency (via Cumulus4j - IMHO a Maven bug) and even
+			the import of org.cumulus4j.parent into the dependency-management does not solve this problem :-(
 			It seems this is the only way to solve it.
+			Thus, we have to manually update the version numbers here, whenever we change the C4j version number!
 		-->
 		<dependency>
 			<groupId>org.datanucleus</groupId>
@@ -85,6 +96,7 @@
 			<version>3.1.0-m5</version>
 			<scope>compile</scope>
 		</dependency>
+		<!-- END DataNucleus -->
 
 		<dependency>
 			<groupId>org.nightlabs.vestigo</groupId>
@@ -131,9 +143,11 @@
 						<configuration>
 							<outputDirectory>${project.build.directory}</outputDirectory>
 							<includeScope>compile</includeScope>
+							<!--
 							<excludeArtifactIds>
 								org.cumulus4j.store.localkeystoremessagebroker
 							</excludeArtifactIds>
+							-->
 						</configuration>
 					</execution>
 				</executions>
@@ -222,42 +236,5 @@
 				</executions>
 			</plugin>
 		</plugins>
-
-		<pluginManagement>
-			<plugins>
-				<!--This plugin's configuration is used to store Eclipse m2e settings 
-					only. It has no influence on the Maven build itself. -->
-				<plugin>
-					<groupId>org.eclipse.m2e</groupId>
-					<artifactId>lifecycle-mapping</artifactId>
-					<version>1.0.0</version>
-					<configuration>
-						<lifecycleMappingMetadata>
-							<pluginExecutions>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>
-											org.datanucleus
-										</groupId>
-										<artifactId>
-											maven-datanucleus-plugin
-										</artifactId>
-										<versionRange>
-											[3.0.0-release,)
-										</versionRange>
-										<goals>
-											<goal>enhance</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore />
-									</action>
-								</pluginExecution>
-							</pluginExecutions>
-						</lifecycleMappingMetadata>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
 	</build>
 </project>

@@ -17,6 +17,7 @@
  */
 package org.nightlabs.vestigo.childvm.shared.classloader;
 
+import java.io.IOException;
 import java.net.URL;
 import java.net.URLClassLoader;
 
@@ -27,10 +28,67 @@ public class PersistenceEngineClassLoader extends URLClassLoader
 {
 	private static final Logger logger = LoggerFactory.getLogger(PersistenceEngineClassLoader.class);
 
-	public PersistenceEngineClassLoader(URL[] urls) {
-		super(urls, ClassLoader.getSystemClassLoader());
-		// We use the system-class-loader as parent, because we don't want any Jetty library to interfere with our
-		// configured data-source-classpath.
+	private static class FilterClassLoader extends ClassLoader
+	{
+		private static final Logger logger = LoggerFactory.getLogger(FilterClassLoader.class);
+		private static ClassLoader system = ClassLoader.getSystemClassLoader();
+		private ClassLoader parent;
+
+		private boolean isIncludedClass(String name)
+		{
+			// needed at least for org.nightlabs.vestigo.childvm.shared.MapEntry
+			if (name.startsWith("org.nightlabs.vestigo.childvm.shared")) { //$NON-NLS-1$
+				logger.debug("isIncludedClass: returning true: {}", name); //$NON-NLS-1$
+				return true;
+			}
+
+			logger.trace("isIncludedClass: returning false: {}", name); //$NON-NLS-1$
+			return false;
+		}
+
+		private boolean isIncludedResource(String name)
+		{
+			if (name.startsWith("org/nightlabs/vestigo/childvm/shared")) { //$NON-NLS-1$
+				logger.debug("isIncludedResource: returning true: {}", name); //$NON-NLS-1$
+				return true;
+			}
+
+			logger.trace("isIncludedResource: returning false: {}", name); //$NON-NLS-1$
+			return false;
+		}
+
+		public FilterClassLoader(ClassLoader parent) {
+			super(null);
+			this.parent = parent;
+		}
+
+		@Override
+		protected Class<?> findClass(String name) throws ClassNotFoundException {
+			if (isIncludedClass(name))
+				return parent.loadClass(name);
+			else
+				return system.loadClass(name);
+		}
+
+		@Override
+		protected URL findResource(String name) {
+			if (isIncludedResource(name))
+				return parent.getResource(name);
+			else
+				return system.getResource(name);
+		}
+
+		@Override
+		protected java.util.Enumeration<URL> findResources(String name) throws IOException {
+			if (isIncludedResource(name))
+				return parent.getResources(name);
+			else
+				return system.getResources(name);
+		}
+	}
+
+	public PersistenceEngineClassLoader(URL[] urls, ClassLoader parent) {
+		super(urls, new FilterClassLoader(parent));
 	}
 
 	@Override
