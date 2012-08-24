@@ -1,7 +1,6 @@
 package org.nightlabs.vestigo.demo.jdo.internal;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
@@ -19,19 +18,30 @@ import org.nightlabs.vestigo.demo.jdo.Rating;
 
 public class DemoMovieDataGeneratorJDO {
 
-	private static PersistenceManagerFactory getEntityManagerFactory(final String persistenceUnitName) {
-		final Map<String, String> properties = new HashMap<String, String>();
+	protected String getPersistenceUnitName() {
+		return "vestigoDemoMovieJDO";
+	}
+
+	protected Map<String, Object> getPersistenceProperties() {
+		final Map<String, Object> properties = new HashMap<String, Object>();
 		properties.put("datanucleus.autoCreateTables", "true");
-		return JDOHelper.getPersistenceManagerFactory(properties, persistenceUnitName);
+		return properties;
 	}
 
-	private static PersistenceManager createEntityManager(final String persistenceUnitName) {
-		return getEntityManagerFactory(persistenceUnitName).getPersistenceManager();
+	private PersistenceManagerFactory getEntityManagerFactory() {
+		return JDOHelper.getPersistenceManagerFactory(getPersistenceProperties(), getPersistenceUnitName());
 	}
 
-	public static void main(final String[] args) throws IOException {
+	private PersistenceManager createEntityManager() {
+		return getEntityManagerFactory().getPersistenceManager();
+	}
 
-		PersistenceManager pm = createEntityManager("vestigoDemoMovieJDO");
+	public static void main(final String[] args) throws Throwable {
+		new DemoMovieDataGeneratorJDO().run();
+	}
+
+	protected void run() throws Throwable {
+		PersistenceManager pm = createEntityManager();
 
 		pm.currentTransaction().begin();
 
@@ -40,10 +50,8 @@ public class DemoMovieDataGeneratorJDO {
 		try {
 			Extent<Movie> movieExtent = pm.getExtent(Movie.class);
 			assert (movieExtent != null);
-			boolean doReturn = false;
 			if (movieExtent.iterator().hasNext()) {
 				System.out.println("importDataCsv: already imported before => skipping.");
-				doReturn = true;
 				return;
 			}
 
@@ -66,7 +74,7 @@ public class DemoMovieDataGeneratorJDO {
 			queryRatingByName.setUnique(true);
 
 			BufferedReader r = new BufferedReader(new InputStreamReader(
-					DemoMovieDataGeneratorJDO.class.getResourceAsStream("../../data.csv"), "UTF-8"));
+					DemoMovieDataGeneratorJDO.class.getResourceAsStream("/org/nightlabs/vestigo/demo/data.csv"), "UTF-8"));
 			String line;
 			while ((line = r.readLine()) != null) {
 				String[] fields = line.split("\t");
@@ -210,5 +218,4 @@ public class DemoMovieDataGeneratorJDO {
 
 		return ss;
 	}
-
 }

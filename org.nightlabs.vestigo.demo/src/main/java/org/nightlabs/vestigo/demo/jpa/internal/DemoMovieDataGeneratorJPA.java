@@ -19,19 +19,31 @@ import org.nightlabs.vestigo.demo.jpa.Rating;
 
 public class DemoMovieDataGeneratorJPA {
 
-	private static EntityManagerFactory getEntityManagerFactory(final String persistenceUnitName) {
-		final Map<String, String> properties = new HashMap<String, String>();
+	protected String getPersistenceUnitName() {
+		return "vestigoDemoMovieJPA";
+	}
+
+	protected Map<String, Object> getPersistenceProperties() {
+		final Map<String, Object> properties = new HashMap<String, Object>();
 		properties.put("datanucleus.autoCreateTables", "true");
-		return Persistence.createEntityManagerFactory(persistenceUnitName, properties);
+		return properties;
 	}
 
-	private static EntityManager createEntityManager(final String persistenceUnitName) {
-		return getEntityManagerFactory(persistenceUnitName).createEntityManager();
+	private EntityManagerFactory getEntityManagerFactory() {
+		return Persistence.createEntityManagerFactory(getPersistenceUnitName(), getPersistenceProperties());
 	}
 
-	public static void main(final String[] args) throws Exception {
+	private EntityManager createEntityManager() {
+		return getEntityManagerFactory().createEntityManager();
+	}
 
-		EntityManager em = createEntityManager("vestigoDemoMovieJPA");
+	public static void main(final String[] args) throws Throwable {
+		new DemoMovieDataGeneratorJPA().run();
+	}
+
+	protected void run() throws Throwable {
+
+		EntityManager em = createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		boolean commit = false;
 		try {
@@ -48,7 +60,7 @@ public class DemoMovieDataGeneratorJPA {
 			Query queryRatingByName = em.createQuery("SELECT r FROM " + Rating.class.getName() + " r WHERE r.name = :name");
 
 			BufferedReader r = new BufferedReader(new InputStreamReader(
-					DemoMovieDataGeneratorJPA.class.getResourceAsStream("../../data.csv"), "UTF-8"));
+					DemoMovieDataGeneratorJPA.class.getResourceAsStream("/org/nightlabs/vestigo/demo/data.csv"), "UTF-8"));
 			String line;
 			while ((line = r.readLine()) != null) {
 				String[] fields = line.split("\t");

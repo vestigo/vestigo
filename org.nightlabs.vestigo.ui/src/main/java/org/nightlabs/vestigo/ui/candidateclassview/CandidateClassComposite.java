@@ -43,6 +43,8 @@ import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.DisposeEvent;
+import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.MouseAdapter;
@@ -97,6 +99,13 @@ public class CandidateClassComposite extends Composite
 		gd.horizontalSpan = gridLayout.numColumns;
 		table.setLayoutData(gd);
 		_setConnectionProfile(null);
+
+		addDisposeListener(new DisposeListener() {
+			@Override
+			public void widgetDisposed(DisposeEvent event) {
+				_setConnectionProfile(null);
+			}
+		});
 	}
 
 	protected void assertUIThread()
