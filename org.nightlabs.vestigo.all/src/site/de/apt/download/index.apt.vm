@@ -41,10 +41,17 @@ Herunterladen
 
 	<<{{http://vestigo.nightlabs.com/updates/snapshots/}}>>
 
-* Demo-Daten
+* Demo-Daten (normal)
 
 	Um es Ihnen einfach zu machen, Vestigo auszuprobieren, bieten wir Ihnen hier zwei kleine Derby-Demo-Datenbanken
 	(eine mit einem JDO- und eine mit einem JPA-Datenmodell) zum Herunterladen an:
 	{{{http://vestigo.nightlabs.com/${project.version}/download/demo/org.nightlabs.vestigo.demo-${project.version}-bin.zip}org.nightlabs.vestigo.demo-${project.version}-bin.zip}}
 
 	{{{../documentation/jdo/quick-start.html}Klicken Sie hier}} für die zugehörige {{{../documentation/jdo/quick-start.html}Schnellstartanleitung}}!
+
+* Demo-Daten (mit Cumulus4j)
+
+	Vestigo unterstützt {{{http://www.cumulus4j.org}Cumulus4j}}-verschlüsselte Datenbanken. Wenn Sie dies ausprobieren
+	möchten, laden Sie die folgenden Derby-Demo-Datenbanken (inclusive Schlüsselspeicher and aller benötigen Bibliotheken)
+	herunter:
+	{{{http://vestigo.nightlabs.com/${project.version}/download/demo/org.nightlabs.vestigo.demo.cumulus4j-${project.version}-bin.zip}org.nightlabs.vestigo.demo.cumulus4j-${project.version}-bin.zip}}
