@@ -37,7 +37,7 @@
 				<ul>
 					<li>
 						<div class="slider">
-							<div style="position: relative; background: url('images/teaser_motiv_development.png'); height:427px;	width: 535px;">
+							<div style="position: relative; background: url('images/teaser_motiv_development.png'); height:427px;	width: 940px;">
 							</div>
 							<div class="slider_header">
 								<h1>Vestigo zur Entwicklungszeit</h1> 
@@ -53,7 +53,7 @@
 					</li>
 					<li>
 						<div class="slider">
-							<div style="position: relative; background: url('images/teaser_motiv_development.png'); height:427px;	width: 535px;">
+							<div style="position: relative; background: url('images/teaser_motiv_development.png'); height:427px;	width: 940px;">
 							</div>
 							<div class="slider_header">
 								<h1>Vestigo für Ihr Produktivsystem</h1> 
@@ -69,7 +69,7 @@
 					</li>
 					
 					<li>
-						<div style="position: relative; background: url(images/slider_archives.png); height: 425px;">
+						<div style="position: relative; background: url(images/slider_archives.png); height: 425px; 	width: 940px;">
 							<div class="slider_header">
 								<h1>Unterstützt gängige<br/>Java Anwendungsszenarien</h1> 
 							</div> 
@@ -87,7 +87,7 @@
 					</li>
 					<li>
 						<div class="slider">
-							<div style="position: relative; background: url('images/teaser_motiv_implementations.png'); height:427px;	width: 535px;">
+							<div style="position: relative; background: url('images/teaser_motiv_implementations.png'); height:427px;	width: 940px;">
 							</div>
 							<div class="slider_header">
 								<h1>Unterstützt gängige JPA/JDO Implementierungen</h1> 
@@ -102,7 +102,7 @@
 					</li>
 					<li>
 						<div class="slider">
-							<div style="position: relative; background: url('images/teaser_motiv_tree_browser.png'); height:427px;	width: 535px;">
+							<div style="position: relative; background: url('images/teaser_motiv_tree_browser.png'); height:427px;	width: 940px;">
 							</div>
 							<div class="slider_header">
 								<h1>Object tree browser</h1> 
@@ -117,7 +117,7 @@
 					</li>
 					<li>
 						<div class="slider">
-							<div style="position: relative; background: url('images/teaser_motiv_query_management.png'); height:427px;	width: 535px;">
+							<div style="position: relative; background: url('images/teaser_motiv_query_management.png'); height:427px;	width: 940px;">
 							</div>
 							<div class="slider_header">
 								<h1>Connection-Management</h1> 
@@ -132,7 +132,7 @@
 					</li>
 					<li>
 						<div class="slider">
-							<div style="position: relative; background: url('images/teaser_motiv_query_management.png'); height:427px;	width: 535px;">
+							<div style="position: relative; background: url('images/teaser_motiv_query_management.png'); height:427px;	width: 940px;">
 							</div>
 							<div class="slider_header">
 								<h1>Query-Management</h1> 
@@ -147,7 +147,7 @@
 					</li>
 					<li>
 						<div class="slider">
-							<div style="position: relative; background: url('images/teaser_motiv_query_parameters.png'); height:427px;	width: 535px;">
+							<div style="position: relative; background: url('images/teaser_motiv_query_parameters.png'); height:427px;	width: 940px;">
 							</div>
 							<div class="slider_header">
 								<h1>Query-Parameter</h1> 
@@ -163,7 +163,7 @@
 					
 					<li>
 						<div class="slider">
-							<div style="position: relative; background: url('images/teaser_motiv_cumulus4j.png'); height:427px;	width: 535px;">
+							<div style="position: relative; background: url('images/teaser_motiv_cumulus4j.png'); height:427px;	width: 940px;">
 							</div>
 							<div class="slider_header">
 								<h1>Unterstützt <a href="http://www.cumulus4j.org" target="_blank">Cumulus4j</a></h1> 
