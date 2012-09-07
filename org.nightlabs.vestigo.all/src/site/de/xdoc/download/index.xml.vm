@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Vestigo - The JDO/JPA Query Tool And Browser - http://vestigo.nightlabs.com 
+	Copyright © 2011-2012 NightLabs Consulting GmbH. All rights reserved. This 
+	program and all its libraries in the namespace "*.nightlabs.vestigo.*" are 
+	proprietary software. Their source codes are trade secrets and therefore 
+	must be kept confidential. The use of this software is subject to licence 
+	terms. Please see LICENCE.txt or http://vestigo.nightlabs.com/latest-stable/about/licence.html 
+	for more details. For further information, please contact NightLabs Consulting 
+	GmbH: http://nightlabs.com -->
+<document xmlns="http://maven.apache.org/XDOC/2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 http://maven.apache.org/xsd/xdoc-2.0.xsd">
+
+	<properties>
+		<title>Download</title>
+		<author>Alexander Bieber</author>
+	</properties>
+
+	<body>
+		<h2>
+			Herunterladen
+			<a name="Herunterladen"></a>
+		</h2>
+		<div class="section">
+			<h3>
+				Selbständiges Programm
+				<a name="Selbstndiges_Programm"></a>
+			</h3>
+			<p>Sie können Vestigo als autonomes Programm hier herunterladen:</p>
+			<ul>
+				<li>
+					<a class="externalLink"
+						href="http://vestigo.nightlabs.com/${project.version}/download/stand-alone/vestigo-linux-gtk-${project.version}.tar.gz">GNU/Linux/GTK 32 Bit</a>
+				</li>
+				<li>
+					<a class="externalLink"
+						href="http://vestigo.nightlabs.com/${project.version}/download/stand-alone/vestigo-linux-gtk-x86_64-${project.version}.tar.gz">GNU/Linux/GTK 64 Bit</a>
+				</li>
+				<li>
+					<a class="externalLink"
+						href="http://vestigo.nightlabs.com/${project.version}/download/stand-alone/vestigo-macosx-cocoa-${project.version}.tar.gz">Mac OS X/Cocoa 32 Bit</a>
+				</li>
+				<li>
+					<a class="externalLink"
+						href="http://vestigo.nightlabs.com/${project.version}/download/stand-alone/vestigo-macosx-cocoa-x86_64-${project.version}.tar.gz">Mac OS X/Cocoa 64 Bit</a>
+				</li>
+				<li>
+					<a class="externalLink"
+						href="http://vestigo.nightlabs.com/${project.version}/download/stand-alone/vestigo-win32-${project.version}.zip">Windows 32 Bit</a>
+				</li>
+				<li>
+					<a class="externalLink"
+						href="http://vestigo.nightlabs.com/${project.version}/download/stand-alone/vestigo-win32-x86_64-${project.version}.zip">Windows 64 Bit</a>
+				</li>
+			</ul>
+			<p>
+				<b>Wichtig:</b>
+				Das Herunterladen der Software impliziert Ihr Einverständnis mit
+				unserer
+				<a href="../about/licence.html">Lizenzvereinbarung</a>
+				.
+			</p>
+		</div>
+		<div class="section">
+			<h3>
+				Eclipse Plug-in
+				<a name="Eclipse_Plug-in"></a>
+			</h3>
+			<p>
+				Wenn Sie
+				<a class="externalLink" href="http://www.eclipse.org">Eclipse</a>
+				als Entwicklungsumgebung (IDE) verwenden, können Sie die folgende
+				Update-Site registrieren und Vestigo als Erweiterung in Ihre
+				existierende IDE installieren:
+			</p>
+			<p>
+				<b>
+					<a class="externalLink" href="http://vestigo.nightlabs.com/updates/releases/">http://vestigo.nightlabs.com/updates/releases/
+					</a>
+				</b>
+			</p>
+			<p>
+				Oder ziehen Sie folgendes Icon in die Toolbar Ihres laufendes Eclipse (Juno):
+				<br />
+				<a
+					href="http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=293274"
+					title="Drag and drop into a running Eclipse Indigo workspace to install Vestigo JDO/JPA Query Browser">
+					<img
+						src="http://marketplace.eclipse.org/sites/all/modules/custom/marketplace/images/installbutton.png" />
+				</a>
+			</p>
+			<p>
+				Für eine
+				<a href="./how-to-install-the-plug-in.html">detaillierte Installationsanleitung klicken Sie bitte hier
+				</a>
+				.
+			</p>
+			<p>Falls Sie abenteuerlustig sind, können Sie auch einen
+				Entwicklungsschnappschuß ausprobieren. Aber seien Sie gewarnt, die
+				Schnappschüsse könnten Fehler enthalten und wir bieten für sie keine
+				Unterstützung an. Die Update-Site für Schnappschüsse ist:
+			</p>
+			<p>
+				<b>
+					<a class="externalLink" href="http://vestigo.nightlabs.com/updates/snapshots/">http://vestigo.nightlabs.com/updates/snapshots/
+					</a>
+				</b>
+			</p>
+		</div>
+		<div class="section">
+			<h3>
+				Demo-Daten (normal)
+				<a name="Demo-Daten_normal"></a>
+			</h3>
+			<p>
+				Um es Ihnen einfach zu machen, Vestigo auszuprobieren, bieten wir
+				Ihnen hier zwei kleine Derby-Demo-Datenbanken (eine mit einem JDO-
+				und eine mit einem JPA-Datenmodell) zum Herunterladen an:
+				<a class="externalLink"
+					href="http://vestigo.nightlabs.com/${project.version}/download/demo/org.nightlabs.vestigo.demo-${project.version}-bin.zip">org.nightlabs.vestigo.demo-${project.version}-bin.zip</a>
+			</p>
+			<p>
+				<a href="../documentation/jdo/quick-start.html">Klicken Sie hier</a>
+				für die zugehörige
+				<a href="../documentation/jdo/quick-start.html">Schnellstartanleitung</a>
+				!
+			</p>
+		</div>
+		<div class="section">
+			<h3>
+				Demo-Daten (mit Cumulus4j)
+				<a name="Demo-Daten_mit_Cumulus4j"></a>
+			</h3>
+			<p>
+				Vestigo unterstützt
+				<a class="externalLink" href="http://www.cumulus4j.org">Cumulus4j</a>
+				-verschlüsselte Datenbanken. Wenn Sie dies ausprobieren möchten,
+				laden Sie die folgenden Derby-Demo-Datenbanken (inclusive
+				Schlüsselspeicher and aller benötigen Bibliotheken) herunter:
+				<a class="externalLink"
+					href="http://vestigo.nightlabs.com/${project.version}/download/demo/org.nightlabs.vestigo.demo.cumulus4j-${project.version}-bin.zip">org.nightlabs.vestigo.demo.cumulus4j-${project.version}-bin.zip
+				</a>
+			</p>
+		</div>
+	</body>
+</document>
