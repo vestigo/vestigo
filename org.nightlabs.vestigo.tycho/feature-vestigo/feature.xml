@@ -356,5 +356,8 @@ E-mail: vestigo[at]nightlabs[dot]com
    <plugin download-size="0" id="org.nightlabs.licence.signature" install-size="0" unpack="false" version="0.0.0"/>
 
    <plugin download-size="0" id="org.eclipse.datatools.connectivity.ui.dse" install-size="0" unpack="false" version="0.0.0"/>
+   
+   <!-- Required additionally to dependency in pom xml -->
+   <plugin download-size="0" id="slf4j.api" install-size="0" unpack="false" version="0.0.0"/>
 
 </feature>
