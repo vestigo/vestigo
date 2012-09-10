@@ -19,6 +19,8 @@ What's new?
 
 	* Bugfix: Navigating through maps works again. This was broken
 	by the class-loading-bugfix in 0.9.5.
+	
+	* Bugfix: Update-Site for releases works again. This was broken due to a missing dependency.
 
 	[]
 

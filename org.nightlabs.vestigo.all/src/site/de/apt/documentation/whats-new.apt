@@ -20,6 +20,8 @@ Was ist neu?
 
 	* Fehlerbeseitigung: Die Navigation durch "Maps" geht wieder. Dieser Fehler wurde durch Umbauten zur Beseitigung
 	eines Classloading-Fehlers in 0.9.5 eingeführt.
+	
+	* Fehlerbeseitigung: Update-Site ist wieder funktionsfähig, es fehlte eine Abhängigkeit.
 
 	[]
 
