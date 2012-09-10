@@ -33,6 +33,8 @@ know what's new. You might want to take a look at the SVN history, if you don't 
 
 6) Run "mvn clean install" in "org.nightlabs.vestigo.all".
 
+6a) Run "mvn clean install" in "org.nightlabs.vestigo.tycho".
+
 7) Refresh all projects in Eclipse and wait for the build to finish. You might need to right-click => Maven
 => "Update Project Configuration..." on some projects, if they still have error markers.
 
