@@ -22,6 +22,7 @@ public class DemoMovieDataGeneratorJPACumulus4j extends DemoMovieDataGeneratorJP
 		// to be as fail-safe for the user as possible. With the ";create=true", the user won't know that he uses a wrong path
 		// (if he does): He simply sees an empty database, if the path points to a wrong location. Therefore, we do *not* write
 		// this into the persistence.xml, but provide it only here. Marco :-)
+		properties.remove("javax.persistence.jdbc.url");
 		properties.put("javax.persistence.jdbc.url", "jdbc:derby:target/derby/vestigoDemoMovieJPACumulus4j;create=true");
 		return properties;
 	}

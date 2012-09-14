@@ -22,6 +22,7 @@ public class DemoMovieDataGeneratorJDOCumulus4j extends DemoMovieDataGeneratorJD
 		// to be as fail-safe for the user as possible. With the ";create=true", the user won't know that he uses a wrong path
 		// (if he does): He simply sees an empty database, if the path points to a wrong location. Therefore, we do *not* write
 		// this into the persistence.xml, but provide it only here. Marco :-)
+		properties.remove("javax.jdo.option.ConnectionURL");
 		properties.put("javax.jdo.option.ConnectionURL", "jdbc:derby:target/derby/vestigoDemoMovieJDOCumulus4j;create=true");
 		return properties;
 	}

@@ -35,7 +35,9 @@ public class DemoMovieDataGeneratorJDO {
 	private PersistenceManagerFactory persistenceManagerFactory;
 
 	protected PersistenceManagerFactory createPersistenceManagerFactory() {
-		return JDOHelper.getPersistenceManagerFactory(getPersistenceProperties(), getPersistenceUnitName());
+		String persistenceUnitName = getPersistenceUnitName();
+		System.out.println("persistenceUnitName = " + persistenceUnitName);
+		return JDOHelper.getPersistenceManagerFactory(getPersistenceProperties(), persistenceUnitName);
 	}
 
 	protected PersistenceManagerFactory getPersistenceManagerFactory() {

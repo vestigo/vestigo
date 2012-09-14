@@ -37,7 +37,9 @@ public class DemoMovieDataGeneratorJPA {
 	private EntityManagerFactory entityManagerFactory;
 
 	protected EntityManagerFactory createEntityManagerFactory() {
-		return Persistence.createEntityManagerFactory(getPersistenceUnitName(), getPersistenceProperties());
+		String persistenceUnitName = getPersistenceUnitName();
+		System.out.println("persistenceUnitName = " + persistenceUnitName);
+		return Persistence.createEntityManagerFactory(persistenceUnitName, getPersistenceProperties());
 	}
 
 	protected EntityManagerFactory getEntityManagerFactory() {
