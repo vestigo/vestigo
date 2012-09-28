@@ -57,6 +57,7 @@ import org.nightlabs.vestigo.ui.AbstractVestigoUIPlugin;
 import org.nightlabs.vestigo.ui.VestigoUIPlugin;
 import org.nightlabs.vestigo.ui.jface.BeanShellFormulaCellEditor;
 import org.nightlabs.vestigo.ui.jface.CalendarCellEditor;
+import org.nightlabs.vestigo.ui.jface.DataTypeNameUtil;
 import org.nightlabs.vestigo.ui.jface.DateCellEditor;
 import org.nightlabs.vestigo.ui.jface.JavaScriptFormulaCellEditor;
 import org.slf4j.Logger;
@@ -105,10 +106,7 @@ public class QueryParameterTableComposite extends Composite implements ISelectio
 		String[] classNames = new String[PARAM_TYPES.length];
 		int idx = -1;
 		for (Class<?> clazz : PARAM_TYPES) {
-			if (clazz == JavaScriptFormula.class || clazz == BeanShellFormula.class)
-				classNames[++idx] = clazz.getSimpleName();
-			else
-				classNames[++idx] = clazz.getName();
+			classNames[++idx] = DataTypeNameUtil.getDataTypeName(clazz);
 		}
 		PARAM_TYPE_NAMES = classNames;
 	}
@@ -552,10 +550,10 @@ public class QueryParameterTableComposite extends Composite implements ISelectio
 		@Override
 		public void update(ViewerCell viewerCell) {
 			QueryParameter parameter = (QueryParameter) viewerCell.getElement();
-			if (parameter.getType() == JavaScriptFormula.class || parameter.getType() == BeanShellFormula.class)
-				viewerCell.setText(parameter.getType().getSimpleName());
+			if (parameter.getType() == null)
+				viewerCell.setText("");
 			else
-				viewerCell.setText(parameter.getType() == null ? "" : parameter.getType().getName());
+				viewerCell.setText(DataTypeNameUtil.getDataTypeName(parameter.getType()));
 		}
 	}
 

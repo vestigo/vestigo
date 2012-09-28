@@ -103,6 +103,9 @@ implements ITreeContentProvider
 								else
 									parentNode.setChildNodes(childNodes);
 
+								if (treeViewer.getTree().isDisposed())
+									return;
+
 								parentNodesLoadingChildren.remove(parentNode);
 
 								treeViewer.refresh(parentNode);

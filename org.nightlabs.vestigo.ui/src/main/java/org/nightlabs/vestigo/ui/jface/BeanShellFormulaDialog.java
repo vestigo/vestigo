@@ -35,7 +35,7 @@ import org.nightlabs.vestigo.ui.resource.Messages;
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
  */
-public class BeanShellFormulaDialog extends TitleAreaDialog
+public class BeanShellFormulaDialog extends TitleAreaDialog implements FormulaDialog<BeanShellFormula>
 {
 	private String title = Messages.getString("BeanShellFormulaDialog.title"); //$NON-NLS-1$
 
@@ -74,12 +74,14 @@ public class BeanShellFormulaDialog extends TitleAreaDialog
 		newShell.setImage(VestigoUIPlugin.getDefault().getImage(BeanShellFormulaDialog.class, "shell", AbstractVestigoUIPlugin.IMAGE_SIZE_16x16)); //$NON-NLS-1$
 	}
 
+	@Override
 	public void setValue(BeanShellFormula value) {
 		this.value = value;
 		if (text != null && !text.isDisposed())
 			text.setText(value == null ? "" : value.getFormulaText()); //$NON-NLS-1$
 	}
 
+	@Override
 	public BeanShellFormula getValue() {
 		if (text != null && !text.isDisposed()) {
 			if (value == null || !value.getFormulaText().equals(text.getText())) {

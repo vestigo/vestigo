@@ -35,7 +35,7 @@ import org.nightlabs.vestigo.ui.resource.Messages;
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
  */
-public class JavaScriptFormulaDialog extends TitleAreaDialog
+public class JavaScriptFormulaDialog extends TitleAreaDialog implements FormulaDialog<JavaScriptFormula>
 {
 	private String title = Messages.getString("JavaScriptFormulaDialog.title"); //$NON-NLS-1$
 
@@ -74,12 +74,14 @@ public class JavaScriptFormulaDialog extends TitleAreaDialog
 		newShell.setImage(VestigoUIPlugin.getDefault().getImage(JavaScriptFormulaDialog.class, "shell", AbstractVestigoUIPlugin.IMAGE_SIZE_16x16)); //$NON-NLS-1$
 	}
 
+	@Override
 	public void setValue(JavaScriptFormula value) {
 		this.value = value;
 		if (text != null && !text.isDisposed())
 			text.setText(value == null ? "" : value.getFormulaText()); //$NON-NLS-1$
 	}
 
+	@Override
 	public JavaScriptFormula getValue() {
 		if (text != null && !text.isDisposed()) {
 			if (value == null || !value.getFormulaText().equals(text.getText())) {
