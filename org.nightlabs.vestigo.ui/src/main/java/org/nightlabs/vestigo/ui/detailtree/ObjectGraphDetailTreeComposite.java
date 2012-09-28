@@ -142,7 +142,7 @@ implements LabelTextOptionsContainer, ISelectionProvider
 
 		contextMenuManager = new MenuManager();
 		contextMenuManager.add(copyAction);
-//		contextMenuManager.add(changeValueAction); // TODO add all new actions!
+//		contextMenuManager.add(replaceValueAction); // TODO add all new actions!
 		contextMenu = contextMenuManager.createContextMenu(treeViewer.getTree());
 		treeViewer.getTree().setMenu(contextMenu);
 		updateContextMenuActions();
@@ -223,7 +223,7 @@ implements LabelTextOptionsContainer, ISelectionProvider
 	 * Set a field value or replace a {@link Collection} element. A {@link Map} entry cannot be replaced
 	 * by this action - either the key or the value have to be changed instead.
 	 */
-	private ContextMenuAction changeValueAction = new AbstractContextMenuAction("Change value...")
+	private ContextMenuAction replaceValueAction = new AbstractContextMenuAction("Change/Replace value...")
 	{
 		@Override
 		public void updateEnabled() {

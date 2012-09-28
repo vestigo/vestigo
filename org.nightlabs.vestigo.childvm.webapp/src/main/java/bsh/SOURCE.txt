@@ -1,0 +1,18 @@
+I found the contents of this 'bsh' package here:
+
+http://www.dirisala.net/scripting/
+
+It is released under LGPL.
+
+Additionally to the sources in this 'bsh' package, there is the registration in
+${basedir}/src/main/resources/META-INF/services/javax.script.ScriptEngineFactory
+belonging to this code.
+
+Unfortunately, there seems to be no Maven artefact - hence I included it directly
+here, for now. We might create a separate project, later (if nobody else does - e.g.
+the BeanShell team).
+
+Note: I modified BeanShellBindings! I switched from strictJava = true to strictJava = false.
+
+Marco :-)
+2012-09-28

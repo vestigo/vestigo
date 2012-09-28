@@ -51,9 +51,11 @@ import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Table;
+import org.nightlabs.vestigo.childvm.shared.BeanShellFormula;
 import org.nightlabs.vestigo.childvm.shared.JavaScriptFormula;
 import org.nightlabs.vestigo.ui.AbstractVestigoUIPlugin;
 import org.nightlabs.vestigo.ui.VestigoUIPlugin;
+import org.nightlabs.vestigo.ui.jface.BeanShellFormulaCellEditor;
 import org.nightlabs.vestigo.ui.jface.CalendarCellEditor;
 import org.nightlabs.vestigo.ui.jface.DateCellEditor;
 import org.nightlabs.vestigo.ui.jface.JavaScriptFormulaCellEditor;
@@ -93,6 +95,7 @@ public class QueryParameterTableComposite extends Composite implements ISelectio
 		// END simple types
 
 		// BEGIN formulas
+		BeanShellFormula.class,
 		JavaScriptFormula.class
 		// END formulas
 	};
@@ -102,7 +105,7 @@ public class QueryParameterTableComposite extends Composite implements ISelectio
 		String[] classNames = new String[PARAM_TYPES.length];
 		int idx = -1;
 		for (Class<?> clazz : PARAM_TYPES) {
-			if (clazz == JavaScriptFormula.class)
+			if (clazz == JavaScriptFormula.class || clazz == BeanShellFormula.class)
 				classNames[++idx] = clazz.getSimpleName();
 			else
 				classNames[++idx] = clazz.getName();
@@ -192,6 +195,7 @@ public class QueryParameterTableComposite extends Composite implements ISelectio
 				return null;
 			}
 		});
+		queryParameterType2CellEditor.put(BeanShellFormula.class, new BeanShellFormulaCellEditor(table));
 		queryParameterType2CellEditor.put(JavaScriptFormula.class, new JavaScriptFormulaCellEditor(table));
 	}
 
@@ -201,6 +205,7 @@ public class QueryParameterTableComposite extends Composite implements ISelectio
 		queryParameterType2ParameterValueEditingSupportDelegate.put(Boolean.class, new ParameterValueEditingSupportDelegateForBoolean());
 		queryParameterType2ParameterValueEditingSupportDelegate.put(Calendar.class, new ParameterValueEditingSupportDelegateForCalendar());
 		queryParameterType2ParameterValueEditingSupportDelegate.put(Date.class, new ParameterValueEditingSupportDelegateForDate());
+		queryParameterType2ParameterValueEditingSupportDelegate.put(BeanShellFormula.class, new ParameterValueEditingSupportDelegateForBeanShellFormula());
 		queryParameterType2ParameterValueEditingSupportDelegate.put(JavaScriptFormula.class, new ParameterValueEditingSupportDelegateForJavaScriptFormula());
 	}
 
@@ -547,7 +552,7 @@ public class QueryParameterTableComposite extends Composite implements ISelectio
 		@Override
 		public void update(ViewerCell viewerCell) {
 			QueryParameter parameter = (QueryParameter) viewerCell.getElement();
-			if (parameter.getType() == JavaScriptFormula.class)
+			if (parameter.getType() == JavaScriptFormula.class || parameter.getType() == BeanShellFormula.class)
 				viewerCell.setText(parameter.getType().getSimpleName());
 			else
 				viewerCell.setText(parameter.getType() == null ? "" : parameter.getType().getName());

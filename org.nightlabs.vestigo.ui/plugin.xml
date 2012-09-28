@@ -679,7 +679,12 @@
              id="org.nightlabs.vestigo.ui.editor">
           <control
                 class="org.nightlabs.vestigo.ui.editor.contribution.ConnectionProfileComboWorkbenchWindowControlContribution">
-<!--                
+<!--
+TODO Activate this again.
+Due to a bug of Eclipse 4.2, the combo-box has a width of very few pixels when switching perspectives, if this is active.
+Therefore, we temporarily comment it out. It needs to be activated, again, when the bug is fixed.
+This bug exists in the GNU/Linux-Eclipse-version only. Marco :-)
+
              <visibleWhen
                    checkEnabled="false">
                 <with
