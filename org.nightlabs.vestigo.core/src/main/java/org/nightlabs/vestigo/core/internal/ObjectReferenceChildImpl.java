@@ -20,6 +20,7 @@ package org.nightlabs.vestigo.core.internal;
 import java.util.Set;
 
 import org.nightlabs.vestigo.childvm.shared.Formula;
+import org.nightlabs.vestigo.childvm.shared.ResultSetID;
 import org.nightlabs.vestigo.childvm.shared.api.ChildVM;
 import org.nightlabs.vestigo.childvm.shared.dto.ReplaceChildValueCommandDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.ResultCellDTO;
@@ -28,6 +29,7 @@ import org.nightlabs.vestigo.core.LabelTextOption;
 import org.nightlabs.vestigo.core.LabelTextUtil;
 import org.nightlabs.vestigo.core.ObjectReference;
 import org.nightlabs.vestigo.core.ObjectReferenceChild;
+import org.nightlabs.vestigo.core.oda.ResultSet;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
@@ -39,7 +41,7 @@ implements ObjectReferenceChild
 	private FieldDesc fieldDesc;
 	private Object value;
 
-	public ObjectReferenceChildImpl(ObjectReferenceImpl owner, ResultCellDTO child, Object value)
+	public ObjectReferenceChildImpl(ObjectReferenceImpl owner, ResultCellDTO child)
 	{
 		if (owner == null)
 			throw new IllegalArgumentException("owner == null"); //$NON-NLS-1$
@@ -70,7 +72,8 @@ implements ObjectReferenceChild
 		if (fieldDeclaringClassName != null)
 			this.fieldDesc = new FieldDesc(fieldDeclaringClassName, fieldTypeName, fieldName);
 
-		this.value = value; // may be null
+		Object childRawValue = getResultSet().unmaskResultCellDTO(child);
+		this.setValue(childRawValue); // note: value may be null
 	}
 
 	@Override
@@ -86,6 +89,10 @@ implements ObjectReferenceChild
 	@Override
 	public Object getValue() {
 		return value;
+	}
+
+	protected void setValue(Object value) {
+		this.value = value;
 	}
 
 	@Override
@@ -123,6 +130,10 @@ implements ObjectReferenceChild
 		return sb.toString();
 	}
 
+	protected ResultSet getResultSet() {
+		return getOwner().getResultSet();
+	}
+
 	@Override
 	public void replaceValue(Formula formula) {
 		if (this.getFieldDesc() == null) // TODO implement this! when does this happen? collections?!
@@ -138,7 +149,10 @@ implements ObjectReferenceChild
 				getFieldDesc().getFieldName(),
 				formula
 		);
-		getChildVM().replaceChildValue(getOwner().getResultSet().getResultSetID(), replaceChildValueCommandDTO);
+		ResultSetID resultSetID = getResultSet().getResultSetID();
+		ResultCellDTO newResultCellDTO = getChildVM().replaceChildValue(resultSetID, replaceChildValueCommandDTO);
+		Object childRawValue = getResultSet().unmaskResultCellDTO(newResultCellDTO);
+		this.setValue(childRawValue); // note: value may be null
 	}
 
 	protected ChildVM getChildVM() {

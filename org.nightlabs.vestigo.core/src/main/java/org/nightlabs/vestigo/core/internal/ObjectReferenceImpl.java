@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import org.nightlabs.util.Util;
 import org.nightlabs.vestigo.childvm.shared.api.ChildVM;
 import org.nightlabs.vestigo.childvm.shared.dto.ResultCellDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.ResultCellObjectRefDTO;
@@ -31,7 +32,6 @@ import org.nightlabs.vestigo.core.LabelTextUtil;
 import org.nightlabs.vestigo.core.ObjectReference;
 import org.nightlabs.vestigo.core.ObjectReferenceChild;
 import org.nightlabs.vestigo.core.oda.ResultSet;
-import org.nightlabs.util.Util;
 
 /**
  * @author Marco หงุ่ยตระกูล-Schulze - marco at nightlabs dot de
@@ -146,8 +146,7 @@ public abstract class ObjectReferenceImpl implements ObjectReference
 			List<ResultCellDTO> childDTOs = getChildVM().getChildren(getResultSet().getResultSetID(), resultCellObjectRefDTO);
 			children = new ArrayList<ObjectReferenceChild>(childDTOs.size());
 			for (ResultCellDTO childDTO : childDTOs) {
-				Object childRawObject = resultSet.unmaskResultCellDTO(childDTO);
-				ObjectReferenceChild childObjectReferenceChild = new ObjectReferenceChildImpl(this, childDTO, childRawObject);
+				ObjectReferenceChild childObjectReferenceChild = new ObjectReferenceChildImpl(this, childDTO);
 				children.add(childObjectReferenceChild);
 			}
 			this.children = children;

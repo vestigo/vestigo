@@ -337,6 +337,7 @@ implements LabelTextOptionsContainer, ISelectionProvider, FormulaTypeSelection
 			if (Dialog.OK == formulaDialog.open()) {
 				Formula formula = formulaDialog.getValue();
 				objectReferenceChild.replaceValue(formula);
+				treeViewer.refresh(); // TODO maybe trigger via listeners in the objectReferenceChild?!
 			}
 		}
 
