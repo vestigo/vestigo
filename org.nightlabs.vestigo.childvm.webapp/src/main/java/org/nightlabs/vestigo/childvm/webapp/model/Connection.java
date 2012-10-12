@@ -160,6 +160,30 @@ public abstract class Connection
 		open = false;
 	}
 
+	/**
+	 * Commit the current transaction and begin a new one.
+	 * <p>
+	 * A <code>Connection</code> always has an open transaction. It is immediately begun,
+	 * when the <code>Connection</code> is opened. Therefore, this method must begin a
+	 * new transaction immediately after committing the previous one.
+	 */
+	public void commit() {
+		assertOpen();
+
+	}
+
+	/**
+	 * Roll the current transaction back and begin a new one.
+	 * <p>
+	 * A <code>Connection</code> always has an open transaction. It is immediately begun,
+	 * when the <code>Connection</code> is opened. Therefore, this method must begin a
+	 * new transaction immediately after rolling back the previous one.
+	 */
+	public void rollback() {
+		assertOpen();
+
+	}
+
 	protected String stripQueryText(String queryText)
 	{
 		String result = StringUtil.removeCommentsAndConvertEOLsToUnixEOLs(queryText).trim();

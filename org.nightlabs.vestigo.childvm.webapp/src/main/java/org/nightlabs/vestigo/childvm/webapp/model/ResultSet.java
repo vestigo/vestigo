@@ -20,6 +20,7 @@ package org.nightlabs.vestigo.childvm.webapp.model;
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -518,10 +519,10 @@ public abstract class ResultSet
 		return resultList;
 	}
 
-	protected FieldValue setFieldValue(Object object, Field field, Object fieldValue)
+	protected FieldValue getFieldValue(Object object, Field field)
 	{
 		try {
-			field.set(object, fieldValue);
+			Object fieldValue = field.get(object);
 			return new FieldValue(field, fieldValue);
 		} catch (IllegalArgumentException e) {
 			throw new RuntimeException(e);
@@ -530,13 +531,36 @@ public abstract class ResultSet
 		}
 	}
 
-	protected FieldValue getFieldValue(Object object, Field field)
+	protected void tryToSetFieldByCallingSetter(Object object, Field field, Object fieldValue)
 	{
 		try {
-			Object fieldValue = field.get(object);
-			return new FieldValue(field, fieldValue);
-		} catch (IllegalArgumentException e) {
+			Method method = findSetMethodForField(object.getClass(), field);
+			if (method != null) {
+				method.setAccessible(true);
+				method.invoke(object, fieldValue);
+			}
+		} catch (RuntimeException x) {
+			throw x;
+		} catch (IllegalAccessException e) {
 			throw new RuntimeException(e);
+		} catch (InvocationTargetException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	protected FieldValue setFieldValue(Object object, Field field, Object fieldValue)
+	{
+		try {
+			tryToSetFieldByCallingSetter(object, field, fieldValue);
+		} catch (Exception x) {
+			logger.warn("setFieldValue: " + x, x);
+		}
+
+		try {
+			field.set(object, fieldValue);
+			return new FieldValue(field, fieldValue);
+		} catch (RuntimeException x) {
+			throw x;
 		} catch (IllegalAccessException e) {
 			throw new RuntimeException(e);
 		}
@@ -597,17 +621,51 @@ public abstract class ResultSet
 
 	private Collection<Method> findGetMethodsForField(Class<?> clazz, Field field)
 	{
+		return findMethodsForField(clazz, field, 0, "get", "is");
+	}
+
+	private Method findSetMethodForField(Class<?> clazz, Field field)
+	{
+		// TODO move below shortcuts!
+		String exactSetterName = "set" + (
+				field.getName().length() <= 1 ? field.getName().toUpperCase()
+						: (field.getName().substring(0, 1).toUpperCase() + field.getName().substring(1))
+				);
+
+		Collection<Method> setters = findSetMethodsForField(clazz, field);
+		if (setters.isEmpty())
+			return null;
+		else if (setters.size() == 1)
+			return setters.iterator().next();
+
+		for (Method setter : setters) {
+			if (exactSetterName.equals(setter.getName()))
+					return setter;
+		}
+
+		return setters.iterator().next();
+	}
+
+	private Collection<Method> findSetMethodsForField(Class<?> clazz, Field field)
+	{
+		return findMethodsForField(clazz, field, 1, "set");
+	}
+
+	private Collection<Method> findMethodsForField(Class<?> clazz, Field field, int parameterQty, String ... methodNamePrefixes)
+	{
 		Collection<Method> result = new LinkedList<Method>();
 		String fieldNameLower = field.getName().toLowerCase(); // use the default Locale, because that might match the user's data model best.
 		Set<String> potentialMethodNamesLower = new HashSet<String>(2);
-		potentialMethodNamesLower.add("get" + fieldNameLower);
-		potentialMethodNamesLower.add("is" + fieldNameLower);
+
+		for (String methodNamePrefix : methodNamePrefixes) {
+			potentialMethodNamesLower.add(methodNamePrefix.toLowerCase() + fieldNameLower);
+		}
 
 		Class<?> c = clazz;
 		while (c != null) {
 			Method[] methods = c.getDeclaredMethods();
 			for (Method method : methods) {
-				if (method.getParameterTypes().length > 0)
+				if (method.getParameterTypes().length != parameterQty)
 					continue;
 
 				String methodName = method.getName();

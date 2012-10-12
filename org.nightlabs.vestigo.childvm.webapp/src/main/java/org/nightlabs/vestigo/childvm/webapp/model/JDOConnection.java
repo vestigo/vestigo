@@ -113,6 +113,28 @@ extends Connection
 		super.close();
 	}
 
+	@Override
+	public synchronized void commit() {
+		super.commit();
+		if (persistenceManager != null) {
+			// TODO check, if it is active => extend wrapper!
+//			if (persistenceManager.currentTransaction().)
+			persistenceManager.currentTransaction().commit();
+			persistenceManager.currentTransaction().begin();
+		}
+	}
+
+	@Override
+	public synchronized void rollback() {
+		super.rollback();
+		if (persistenceManager != null) {
+			// TODO check, if it is active => extend wrapper!
+//		if (persistenceManager.currentTransaction().)
+			persistenceManager.currentTransaction().rollback();
+			persistenceManager.currentTransaction().begin();
+		}
+	}
+
 	/**
 	 * <p>
 	 * Get the {@link PersistenceManager} of this connection.

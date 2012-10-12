@@ -111,6 +111,28 @@ extends Connection
 		super.close();
 	}
 
+	@Override
+	public synchronized void commit() {
+		super.commit();
+		if (entityManager != null) {
+			// TODO check, if it is active => extend wrapper!
+//			if (persistenceManager.currentTransaction().)
+			entityManager.getTransaction().commit();
+			entityManager.getTransaction().begin();
+		}
+	}
+
+	@Override
+	public synchronized void rollback() {
+		super.rollback();
+		if (entityManager != null) {
+			// TODO check, if it is active => extend wrapper!
+//		if (persistenceManager.currentTransaction().)
+			entityManager.getTransaction().rollback();
+			entityManager.getTransaction().begin();
+		}
+	}
+
 	/**
 	 * <p>
 	 * Get the {@link EntityManager} of this connection.

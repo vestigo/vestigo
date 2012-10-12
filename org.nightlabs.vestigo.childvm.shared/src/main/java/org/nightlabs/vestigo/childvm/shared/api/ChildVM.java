@@ -77,5 +77,9 @@ public interface ChildVM
 
 	Collection<PersistablePropertyDTO> getPersistablePropertyDTOs(String profileID, String persistableClass) throws ChildVMException;
 
-	void replaceChildValue(ResultSetID resultSetID, ReplaceChildValueCommandDTO replaceChildValueCommandDTO) throws ChildVMException;
+	ResultCellDTO replaceChildValue(ResultSetID resultSetID, ReplaceChildValueCommandDTO replaceChildValueCommandDTO) throws ChildVMException;
+
+	void commitConnection(UUID connectionID) throws ChildVMException;
+
+	void rollbackConnection(UUID connectionID) throws ChildVMException;
 }

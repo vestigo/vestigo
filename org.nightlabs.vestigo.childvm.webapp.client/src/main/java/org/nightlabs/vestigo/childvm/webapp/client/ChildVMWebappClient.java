@@ -360,6 +360,38 @@ implements ChildVM
 	}
 
 	@Override
+	public void commitConnection(UUID connectionID) throws ChildVMException
+	{
+		if (connectionID == null)
+			throw new IllegalArgumentException("connectionID == null");
+
+		Client client = acquireClient();
+		try {
+			getChildVMAppResource(client, ConnectionDTO.class, new PathSegment(connectionID), new PathSegment("commit")).post();
+		} catch (UniformInterfaceException x) {
+			handleUniformInterfaceException(x);
+		} finally {
+			releaseClient(client);
+		}
+	}
+
+	@Override
+	public void rollbackConnection(UUID connectionID) throws ChildVMException
+	{
+		if (connectionID == null)
+			throw new IllegalArgumentException("connectionID == null");
+
+		Client client = acquireClient();
+		try {
+			getChildVMAppResource(client, ConnectionDTO.class, new PathSegment(connectionID), new PathSegment("rollback")).post();
+		} catch (UniformInterfaceException x) {
+			handleUniformInterfaceException(x);
+		} finally {
+			releaseClient(client);
+		}
+	}
+
+	@Override
 	public ResultSetID executeQuery(UUID connectionID, String queryText, SortedSet<QueryParameterDTO> parameters)
 	throws ChildVMException
 	{
@@ -600,7 +632,7 @@ implements ChildVM
 	}
 
 	@Override
-	public void replaceChildValue(ResultSetID resultSetID, ReplaceChildValueCommandDTO replaceChildValueCommandDTO) throws ChildVMException
+	public ResultCellDTO replaceChildValue(ResultSetID resultSetID, ReplaceChildValueCommandDTO replaceChildValueCommandDTO) throws ChildVMException
 	{
 		if (resultSetID == null)
 			throw new IllegalArgumentException("resultSetID == null");
@@ -609,11 +641,13 @@ implements ChildVM
 
 		Client client = acquireClient();
 		try {
-			getChildVMAppResource(
+			ResultCellDTO resultCellDTO = getChildVMAppResource(
 					client, ResultCellDTO.class, new PathSegment(resultSetID), new PathSegment("replaceChildValue")
-			).post(replaceChildValueCommandDTO);
+			).post(ResultCellDTO.class, replaceChildValueCommandDTO);
+			return resultCellDTO;
 		} catch (UniformInterfaceException x) {
 			handleUniformInterfaceException(x);
+			throw x; // we do not expect null
 		} finally {
 			releaseClient(client);
 		}

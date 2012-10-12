@@ -20,6 +20,8 @@ package org.nightlabs.vestigo.core.internal;
 import java.util.Set;
 
 import org.nightlabs.vestigo.childvm.shared.Formula;
+import org.nightlabs.vestigo.childvm.shared.api.ChildVM;
+import org.nightlabs.vestigo.childvm.shared.dto.ReplaceChildValueCommandDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.ResultCellDTO;
 import org.nightlabs.vestigo.core.FieldDesc;
 import org.nightlabs.vestigo.core.LabelTextOption;
@@ -33,11 +35,11 @@ import org.nightlabs.vestigo.core.ObjectReferenceChild;
 public class ObjectReferenceChildImpl
 implements ObjectReferenceChild
 {
-	private ObjectReference owner;
+	private ObjectReferenceImpl owner;
 	private FieldDesc fieldDesc;
 	private Object value;
 
-	public ObjectReferenceChildImpl(ObjectReference owner, ResultCellDTO child, Object value)
+	public ObjectReferenceChildImpl(ObjectReferenceImpl owner, ResultCellDTO child, Object value)
 	{
 		if (owner == null)
 			throw new IllegalArgumentException("owner == null"); //$NON-NLS-1$
@@ -129,9 +131,17 @@ implements ObjectReferenceChild
 		if (this.getFieldDesc().getFieldName() == null) // TODO implement this! when does this happen? collections?!
 			throw new IllegalStateException("this.getFieldDesc().getFieldName() == null");
 
-//		ReplaceChildValueCommandDTO replaceChildValueCommandDTO = new ReplaceChildValueCommandDTO(resultCellObjectRefDTO, fieldDeclaringClassName, fieldName, formula);
-//		getChildVM().changeValue(getOwner().getResultSet().getResultSetID(), replaceChildValueCommandDTO);
-		throw new UnsupportedOperationException("NYI");
+		ReplaceChildValueCommandDTO replaceChildValueCommandDTO = new ReplaceChildValueCommandDTO(
+				owner.getObjectClassName(),
+				owner.getObjectID(),
+				getFieldDesc().getFieldDeclaringClassName(),
+				getFieldDesc().getFieldName(),
+				formula
+		);
+		getChildVM().replaceChildValue(getOwner().getResultSet().getResultSetID(), replaceChildValueCommandDTO);
 	}
 
+	protected ChildVM getChildVM() {
+		return owner.getChildVM();
+	}
 }

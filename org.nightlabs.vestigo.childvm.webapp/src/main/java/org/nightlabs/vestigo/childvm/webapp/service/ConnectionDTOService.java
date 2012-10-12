@@ -22,6 +22,7 @@ import java.util.UUID;
 
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -79,6 +80,31 @@ public class ConnectionDTOService extends AbstractService
 			return null;
 
 		return connection.toConnectionDTO();
+	}
+
+	@POST
+	@Path("{connectionID}/commit")
+	public void commit(@PathParam("connectionID") UUID connectionID)
+	{
+		logger.debug("commit: entered: connectionID={}", connectionID);
+
+		if (connectionID == null)
+			throw new IllegalArgumentException("connectionID == null");
+
+		Connection connection = ConnectionManager.sharedInstance().getConnection(connectionID, true);
+		connection.commit();
+	}
+
+	@POST
+	@Path("{connectionID}/rollback")
+	public void rollback(@PathParam("connectionID") UUID connectionID)
+	{
+		logger.debug("rollback: entered: connectionID={}", connectionID);
+		if (connectionID == null)
+			throw new IllegalArgumentException("connectionID == null");
+
+		Connection connection = ConnectionManager.sharedInstance().getConnection(connectionID, true);
+		connection.rollback();
 	}
 
 	@PUT

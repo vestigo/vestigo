@@ -238,16 +238,12 @@ public abstract class AbstractConnection implements Connection
 
 	@Override
 	public void commit() throws OdaException {
-		logger.warn("commit: Not yet implemented!");
-		// TODO implement!
-		throw new UnsupportedOperationException("NYI");
+		getChildVM().commitConnection(getConnectionID());
 	}
 
 	@Override
 	public void rollback() throws OdaException {
-		logger.warn("rollback: Not yet implemented!");
-		// TODO implement!
-		throw new UnsupportedOperationException("NYI");
+		getChildVM().rollbackConnection(getConnectionID());
 	}
 
 	@Override

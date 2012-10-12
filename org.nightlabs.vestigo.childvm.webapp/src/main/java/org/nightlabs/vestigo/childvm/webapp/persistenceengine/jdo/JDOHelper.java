@@ -146,4 +146,8 @@ public class JDOHelper extends PersistenceEngineWrapper
 	public Object getObjectId(Object object) {
 		return invokeStatic(4, "getObjectId", Object.class, object);
 	}
+
+	public void makeDirty(Object object, String fieldName) {
+		invokeStatic(5, "makeDirty", Object.class, String.class, object, fieldName);
+	}
 }
