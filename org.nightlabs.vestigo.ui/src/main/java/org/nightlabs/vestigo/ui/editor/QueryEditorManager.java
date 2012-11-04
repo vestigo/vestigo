@@ -95,6 +95,7 @@ import org.slf4j.LoggerFactory;
 public abstract class QueryEditorManager
 {
 	private static final Logger logger = LoggerFactory.getLogger(QueryEditorManager.class);
+	public static final boolean CONNECTION_PER_EDITOR = false;
 
 	public static enum PropertyName {
 		connectionProfiles,
@@ -419,9 +420,17 @@ public abstract class QueryEditorManager
 			}
 		}
 
-		final org.eclipse.datatools.connectivity.IConnection connection = connectionProfile.createConnection(OdaUtil.connectionFactoryID);
-		if (connection == null)
-			throw new IllegalStateException("odaConnectionProfile.createConnection(...) returned null"); //$NON-NLS-1$
+		final org.eclipse.datatools.connectivity.IConnection connection;
+		if (CONNECTION_PER_EDITOR) {
+			connection = connectionProfile.createConnection(OdaUtil.connectionFactoryID);
+			if (connection == null)
+				throw new IllegalStateException("odaConnectionProfile.createConnection(...) returned null"); //$NON-NLS-1$
+		}
+		else {
+			connection = managedConnection.getConnection();
+			if (connection == null)
+				throw new IllegalStateException("managedConnection.getConnection() returned null"); //$NON-NLS-1$
+		}
 
 		final CloseConnectionManagedConnectionListener[] ccmcl = new CloseConnectionManagedConnectionListener[1];
 
@@ -443,8 +452,10 @@ public abstract class QueryEditorManager
 				if (ccmcl[0] != null)
 					managedConnection.removeConnectionListener(ccmcl[0]);
 
-				connection.close();
-				super.close();
+				if (CONNECTION_PER_EDITOR) {
+					connection.close();
+					super.close();
+				}
 			}
 		};
 		connectionContext.setConnection(delegatingConnection);

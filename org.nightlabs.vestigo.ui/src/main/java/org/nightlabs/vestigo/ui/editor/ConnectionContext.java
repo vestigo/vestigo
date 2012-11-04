@@ -60,7 +60,9 @@ public class ConnectionContext {
 			public void close() throws OdaException
 			{
 				ConnectionContext.this.close();
+
 				connection.close();
+
 				super.close();
 			}
 		};
