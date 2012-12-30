@@ -38,10 +38,11 @@ public class ObjectReferenceChildImpl
 implements ObjectReferenceChild
 {
 	private ObjectReferenceImpl owner;
+	private int index;
 	private FieldDesc fieldDesc;
 	private Object value;
 
-	public ObjectReferenceChildImpl(ObjectReferenceImpl owner, ResultCellDTO child)
+	public ObjectReferenceChildImpl(ObjectReferenceImpl owner, int index, ResultCellDTO child)
 	{
 		if (owner == null)
 			throw new IllegalArgumentException("owner == null"); //$NON-NLS-1$
@@ -50,6 +51,7 @@ implements ObjectReferenceChild
 			throw new IllegalArgumentException("child == null"); //$NON-NLS-1$
 
 		this.owner = owner;
+		this.index = index;
 
 		// BEGIN Either these fields are all null or all non-null.
 		String fieldDeclaringClassName = child.getFieldDeclaringClassName();
@@ -79,6 +81,16 @@ implements ObjectReferenceChild
 	@Override
 	public ObjectReference getOwner() {
 		return owner;
+	}
+
+	@Override
+	public int getIndex() {
+		return index;
+	}
+
+	@Override
+	public void setIndex(int index) {
+		this.index = index;
 	}
 
 	@Override
@@ -136,17 +148,22 @@ implements ObjectReferenceChild
 
 	@Override
 	public void replaceValue(Formula formula) {
-		if (this.getFieldDesc() == null) // TODO implement this! when does this happen? collections?!
-			throw new IllegalStateException("this.getFieldDesc() == null");
-
-		if (this.getFieldDesc().getFieldName() == null) // TODO implement this! when does this happen? collections?!
-			throw new IllegalStateException("this.getFieldDesc().getFieldName() == null");
+		Object nonRefValue = null;
+		ObjectReference refValue = null;
+		if (value instanceof ObjectReference)
+			refValue = (ObjectReference) value;
+		else
+			nonRefValue = value;
 
 		ReplaceChildValueCommandDTO replaceChildValueCommandDTO = new ReplaceChildValueCommandDTO(
-				owner.getObjectClassName(),
-				owner.getObjectID(),
-				getFieldDesc().getFieldDeclaringClassName(),
-				getFieldDesc().getFieldName(),
+				getOwner().getObjectClassName(),
+				getOwner().getObjectID(),
+				(getFieldDesc() == null ? null : getFieldDesc().getFieldDeclaringClassName()), // null in collections
+				(getFieldDesc() == null ? null : getFieldDesc().getFieldName()), // null in collections
+				getIndex(),
+				(refValue == null ? null : refValue.getObjectClassName()),
+				(refValue == null ? null : refValue.getObjectID()),
+				nonRefValue,
 				formula
 		);
 		ResultSetID resultSetID = getResultSet().getResultSetID();

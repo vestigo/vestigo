@@ -146,7 +146,7 @@ public abstract class ObjectReferenceImpl implements ObjectReference
 			List<ResultCellDTO> childDTOs = getChildVM().getChildren(getResultSet().getResultSetID(), resultCellObjectRefDTO);
 			children = new ArrayList<ObjectReferenceChild>(childDTOs.size());
 			for (ResultCellDTO childDTO : childDTOs) {
-				ObjectReferenceChild childObjectReferenceChild = new ObjectReferenceChildImpl(this, childDTO);
+				ObjectReferenceChild childObjectReferenceChild = new ObjectReferenceChildImpl(this, children.size(), childDTO);
 				children.add(childObjectReferenceChild);
 			}
 			this.children = children;

@@ -90,16 +90,32 @@ public class ResultCellDTOService extends AbstractService
 		if (replaceChildValueCommandDTO == null)
 			throw new IllegalArgumentException("replaceChildValueCommandDTO == null");
 
-		String objectClassName = replaceChildValueCommandDTO.getObjectClassName();
-		String objectID = replaceChildValueCommandDTO.getObjectID();
 		String fieldDeclaringClassName = replaceChildValueCommandDTO.getFieldDeclaringClassName();
 		String fieldName = replaceChildValueCommandDTO.getFieldName();
+		int index = replaceChildValueCommandDTO.getIndex();
 		Formula formula = replaceChildValueCommandDTO.getFormula();
 
 		Connection connection = ConnectionManager.sharedInstance().getConnection(resultSetID.getConnectionID(), true);
 		ResultSet resultSet = connection.getResultSet(resultSetID.getResultSetID(), true);
-		Object object = resultSet.getObjectForObjectID(objectClassName, objectID, true);
-		Object newChildValue = resultSet.replaceChildValue(object, fieldDeclaringClassName, fieldName, formula);
+
+		Object object = resultSet.getObjectForObjectID(
+				replaceChildValueCommandDTO.getObjectClassName(),
+				replaceChildValueCommandDTO.getObjectID(),
+				true
+		);
+
+		Object oldValue = null;
+		if (replaceChildValueCommandDTO.getOldValueObjectClassName() != null) {
+			oldValue = resultSet.getObjectForObjectID(
+					replaceChildValueCommandDTO.getOldValueObjectClassName(),
+					replaceChildValueCommandDTO.getOldValueObjectID(),
+					true
+			);
+		}
+		else
+			oldValue = replaceChildValueCommandDTO.getOldValue();
+
+		Object newChildValue = resultSet.replaceChildValue(object, fieldDeclaringClassName, fieldName, index, oldValue, formula);
 		ResultCellDTO resultCellDTO = resultSet.newResultCellDTO(object, newChildValue);
 		return resultCellDTO;
 	}

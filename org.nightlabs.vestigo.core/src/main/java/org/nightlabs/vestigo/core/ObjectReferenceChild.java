@@ -19,6 +19,7 @@ package org.nightlabs.vestigo.core;
 
 import java.lang.reflect.Field;
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -43,6 +44,23 @@ public interface ObjectReferenceChild
 	 * @return the owner of this child. Never <code>null</code>.
 	 */
 	ObjectReference getOwner();
+
+	/**
+	 * Get the zero-based index of this child in the owner.
+	 * <p>
+	 * This is necessary for removing or replacing an element in a {@link List} or array.
+	 * But it is managed for all instances of <code>ObjectReferenceChild</code>.
+	 * @return the zero-based index of this child in the owner.
+	 * @see #setIndex(int)
+	 */
+	int getIndex();
+
+	/**
+	 * Set the zero-based index of this child in the owner.
+	 * @param index the zero-based index of this child in the owner.
+	 * @see #getIndex()
+	 */
+	void setIndex(int index);
 
 	/**
 	 * Get the value of the field (or the element of a collection-/map-field) referenced by this child instance.
@@ -99,4 +117,5 @@ public interface ObjectReferenceChild
 	 * formula evaluating to the result <code>null</code>).
 	 */
 	void replaceValue(Formula formula);
+
 }

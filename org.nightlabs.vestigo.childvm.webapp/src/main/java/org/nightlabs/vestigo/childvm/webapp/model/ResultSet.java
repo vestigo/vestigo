@@ -360,6 +360,12 @@ public abstract class ResultSet
 	 */
 	public Object getObjectForObjectID(String objectClassName, String objectID, boolean throwExceptionIfNotFound)
 	{
+		if (objectClassName == null)
+			throw new IllegalArgumentException("objectClassName == null");
+
+		if (objectID == null)
+			throw new IllegalArgumentException("objectID == null");
+
 		if (ResultCellTransientObjectRefDTO.isTransientObjectID(objectID)) {
 			Long objectIDLong = ResultCellTransientObjectRefDTO.getTransientObjectID(objectID);
 			TransientObjectContainer container = getTransientObjectContainerForObjectID(objectIDLong, throwExceptionIfNotFound);
@@ -419,37 +425,68 @@ public abstract class ResultSet
 		persistenceEngineClassLoader = null;
 	}
 
-	public Object replaceChildValue(Object object, String fieldDeclaringClassName, String fieldName, Formula formula) {
+	public Object replaceChildValue(Object object, String fieldDeclaringClassName, String fieldName, int index, Object oldValue, Formula formula) {
 		ClassLoader backupContextClassLoader = Thread.currentThread().getContextClassLoader();
 		try {
 			Thread.currentThread().setContextClassLoader(persistenceEngineClassLoader);
 
-			Field field = connection.getField(object.getClass(), fieldDeclaringClassName, fieldName, true);
-			Object newValue = evaluateReplaceChildValueFormula(object, field, formula);
-			return setFieldValue(object, field, newValue);
+			Field field = fieldDeclaringClassName == null ? null : connection.getField(object.getClass(), fieldDeclaringClassName, fieldName, true);
+			Object newValue = evaluateReplaceChildValueFormula(object, field, index, formula);
+
+			if (object.getClass().isArray()) {
+				Array.set(object, index, newValue);
+				// TODO this has no SCO wrapper - how can we tell the JDO/JPA impl that it has changed?! IMHO we must
+				// set the field of the owner again!
+				return newValue;
+			}
+			else if (object instanceof List<?>) {
+				@SuppressWarnings("unchecked")
+				List<Object> list = (List<Object>) object;
+				list.set(index, newValue);
+				return newValue;
+			}
+			else if (object instanceof Collection<?>) {
+				@SuppressWarnings("unchecked")
+				Collection<Object> collection = (Collection<Object>) object;
+				collection.remove(oldValue);
+				collection.add(newValue);
+				return newValue;
+			}
+			else if (object instanceof Map<?, ?>) {
+				throw new UnsupportedOperationException("NYI");
+			}
+			else {
+				return setFieldValue(object, field, newValue);
+			}
 		} finally {
 			Thread.currentThread().setContextClassLoader(backupContextClassLoader);
 		}
 	}
 
-	protected Object evaluateReplaceChildValueFormula(Object object, Field field, Formula formula)
+	protected Object evaluateReplaceChildValueFormula(Object object, Field field, int index, Formula formula)
 	{
 		if (object == null)
 			throw new IllegalArgumentException("object == null");
 
+		String fieldDescr = (field == null ? null : field.getDeclaringClass().getName() + '.' + field.getName());
 		try {
 			Map<String, Object> scriptContext = new HashMap<String, Object>();
 			scriptContext.put("object", object);
-			scriptContext.put("fieldDeclaringClassName", field.getDeclaringClass().getName());
-			scriptContext.put("fieldName", field.getName());
+			if (field != null) {
+				scriptContext.put("fieldDeclaringClassName", field.getDeclaringClass().getName());
+				scriptContext.put("fieldName", field.getName());
+			}
+			scriptContext.put("index", index);
 
 			return connection.evaluateFormula(
-					"changeChildValue_" + field.getDeclaringClass().getName() + '.' + field.getName(),
+					"replaceChildValue_" + fieldDescr + '_' + index,
 					scriptContext,
 					formula
 			);
+		} catch (RuntimeException e) {
+			throw e;
 		} catch (Exception e) {
-			throw new RuntimeException("Formula for changing field \"" + field.getDeclaringClass().getName() + '.' + field.getName() + "\" could not be evaluated: " + e.getMessage(), e);
+			throw new RuntimeException(e);
 		}
 	}
 
@@ -550,6 +587,12 @@ public abstract class ResultSet
 
 	protected FieldValue setFieldValue(Object object, Field field, Object fieldValue)
 	{
+		if (object == null)
+			throw new IllegalArgumentException("object == null");
+
+		if (field == null)
+			throw new IllegalArgumentException("field == null");
+
 		try {
 			tryToSetFieldByCallingSetter(object, field, fieldValue);
 		} catch (Exception x) {
@@ -570,6 +613,14 @@ public abstract class ResultSet
 	{
 		return objectClassName + '|' + objectIDString;
 	}
+
+	/**
+	 * Get the persistent object-id, if the given object is a persistent object. Otherwise
+	 * return <code>null</code>.
+	 * @param object the persistent object. Must not be <code>null</code>.
+	 * @return the object-id or <code>null</code>.
+	 */
+	protected abstract Object getPersistentObjectID(Object object);
 
 	protected synchronized Object getPersistentObjectID(String objectClassName, String objectIDString)
 	{

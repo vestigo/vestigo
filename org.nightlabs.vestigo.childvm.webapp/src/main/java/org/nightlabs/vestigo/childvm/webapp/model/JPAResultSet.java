@@ -65,12 +65,7 @@ public class JPAResultSet extends ResultSet
 	}
 
 	@Override
-	protected ResultCellDTO nullOrNewImplementationSpecificResultCellDTO(Object owner, Field field, Object object)
-	{
-//		// SingleFieldIdentity instances can be loaded in the Eclipse-plugin and displayed directly in the editor.
-//		if (object instanceof SingleFieldIdentity) // this is JDO - but should we still do it for all (in the superclass)?
-//			return new ResultCellSimpleDTO(field, object);
-
+	protected Object getPersistentObjectID(Object object) {
 		// Check, if it's a JPA object, and if so, return a reference to it.
 		Object objectID;
 		try {
@@ -79,9 +74,9 @@ public class JPAResultSet extends ResultSet
 			if (logger.isDebugEnabled()) {
 				logger.debug(
 						"nullOrNewImplementationSpecificResultCellDTO:" +
-						" object.class=" + object.getClass().getName() + " object=" + object + ": " + x,
-						x
-				);
+								" object.class=" + object.getClass().getName() + " object=" + object + ": " + x,
+								x
+						);
 			}
 			return null;
 		} catch (Exception x) {
@@ -92,6 +87,17 @@ public class JPAResultSet extends ResultSet
 					);
 			return null;
 		}
+		return objectID;
+	}
+
+	@Override
+	protected ResultCellDTO nullOrNewImplementationSpecificResultCellDTO(Object owner, Field field, Object object)
+	{
+//		// SingleFieldIdentity instances can be loaded in the Eclipse-plugin and displayed directly in the editor.
+//		if (object instanceof SingleFieldIdentity) // this is JDO - but should we still do it for all (in the superclass)?
+//			return new ResultCellSimpleDTO(field, object);
+
+		Object objectID = getPersistentObjectID(object);
 
 		if (objectID != null) {
 			String objectIDString = getPersistentObjectIDString(object.getClass().getName(), objectID);
