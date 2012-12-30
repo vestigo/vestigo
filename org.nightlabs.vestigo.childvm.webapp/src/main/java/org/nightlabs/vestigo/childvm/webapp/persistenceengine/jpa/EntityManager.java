@@ -61,4 +61,7 @@ public class EntityManager extends PersistenceEngineWrapper
 		invoke(5, "setProperty", String.class, Object.class, propertyName, value);
 	}
 
+	public void flush() {
+		invoke(6, "flush");
+	}
 }

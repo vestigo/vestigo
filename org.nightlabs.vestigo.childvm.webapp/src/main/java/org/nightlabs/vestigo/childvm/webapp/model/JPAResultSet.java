@@ -152,6 +152,13 @@ public class JPAResultSet extends ResultSet
 	}
 
 	@Override
+	protected FieldValue setFieldValue(Object object, Field field, Object fieldValue) {
+		FieldValue result = super.setFieldValue(object, field, fieldValue);
+		getEntityManager().flush();
+		return result;
+	}
+
+	@Override
 	public void close() {
 		Query q = query;
 		if (q != null) {

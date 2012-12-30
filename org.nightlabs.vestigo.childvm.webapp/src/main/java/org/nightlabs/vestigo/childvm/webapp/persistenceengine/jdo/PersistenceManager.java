@@ -86,4 +86,8 @@ public class PersistenceManager extends PersistenceEngineWrapper
 		Object pcc = persistenceCapableClass;
 		invoke(8, "getExtent", Class.class, pcc);
 	}
+
+	public void flush() {
+		invoke(9, "flush");
+	}
 }

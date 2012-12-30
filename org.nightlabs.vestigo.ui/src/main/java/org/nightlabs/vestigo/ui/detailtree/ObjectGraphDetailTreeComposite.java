@@ -28,7 +28,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.ListenerList;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IContributionItem;
@@ -55,6 +59,7 @@ import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Shell;
 import org.nightlabs.vestigo.childvm.shared.BeanShellFormula;
@@ -329,15 +334,30 @@ implements LabelTextOptionsContainer, ISelectionProvider, FormulaTypeSelection
 
 		@Override
 		public void run() {
-			ObjectReferenceChild objectReferenceChild = getFirstSelectedObjectReferenceChild();
+			final ObjectReferenceChild objectReferenceChild = getFirstSelectedObjectReferenceChild();
 			if (objectReferenceChild == null)
 				return;
 
 			FormulaDialog<?> formulaDialog = createFormulaDialog();
 			if (Dialog.OK == formulaDialog.open()) {
-				Formula formula = formulaDialog.getValue();
-				objectReferenceChild.replaceValue(formula);
-				treeViewer.refresh(); // TODO maybe trigger via listeners in the objectReferenceChild?!
+				final Formula formula = formulaDialog.getValue();
+				final Display display = getDisplay();
+				Job job = new Job("Replace value") {
+					@Override
+					protected IStatus run(IProgressMonitor monitor) {
+						objectReferenceChild.replaceValue(formula);
+						display.asyncExec(new Runnable() {
+							@Override
+							public void run() {
+								if (!isDisposed())
+									treeViewer.refresh(); // TODO maybe better trigger via listeners in the objectReferenceChild?!
+							}
+						});
+						return Status.OK_STATUS;
+					}
+				};
+				job.setUser(true);
+				job.schedule();
 			}
 		}
 
