@@ -116,7 +116,32 @@
 			<layout>p2</layout>
 			<url>http://download.eclipse.org/releases/juno/</url>
 		</repository>
-		
+
+		<!--
+		For whatever reason, the real DN-URLs doesn't work - neither inherited from the parent-POM
+		nor re-declared here. Only the Artifactory-proxy does work. Maybe this is due to some
+		indexing-feature not present on the real web-site. Marco :-)
+		-->
+		<repository>
+			<id>dev.nightlabs.org-DataNucleus_M2-cache</id>
+			<url>http://dev.nightlabs.org/maven-repository/DataNucleus_M2-cache</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+		</repository>
+		<repository>
+			<id>dev.nightlabs.org-DataNucleus_M2-nightly-cache</id>
+			<url>http://dev.nightlabs.org/maven-repository/DataNucleus_M2-nightly-cache</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+		</repository>
 	</repositories>
 	
 	<pluginRepositories>
