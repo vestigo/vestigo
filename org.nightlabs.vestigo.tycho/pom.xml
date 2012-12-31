@@ -124,7 +124,7 @@
 		-->
 		<repository>
 			<id>dev.nightlabs.org-DataNucleus_M2-cache</id>
-			<url>http://dev.nightlabs.org/maven-repository/DataNucleus_M2-cache</url>
+			<url>http://dev.nightlabs.org/maven-repository/DataNucleus_M2</url>
 			<snapshots>
 				<enabled>false</enabled>
 			</snapshots>
@@ -134,7 +134,7 @@
 		</repository>
 		<repository>
 			<id>dev.nightlabs.org-DataNucleus_M2-nightly-cache</id>
-			<url>http://dev.nightlabs.org/maven-repository/DataNucleus_M2-nightly-cache</url>
+			<url>http://dev.nightlabs.org/maven-repository/DataNucleus_M2-nightly</url>
 			<snapshots>
 				<enabled>true</enabled>
 			</snapshots>
