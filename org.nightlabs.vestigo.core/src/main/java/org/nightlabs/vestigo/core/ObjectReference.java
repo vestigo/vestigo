@@ -18,10 +18,14 @@
 package org.nightlabs.vestigo.core;
 
 import java.lang.reflect.Field;
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
+import org.nightlabs.vestigo.childvm.shared.Formula;
 import org.nightlabs.vestigo.childvm.shared.api.ChildVM;
+import org.nightlabs.vestigo.childvm.shared.dto.ResultCellDTO;
 import org.nightlabs.vestigo.core.oda.ResultSet;
 
 /**
@@ -133,4 +137,51 @@ public interface ObjectReference {
 	boolean isObjectInstanceOf(Class<?> targetClass);
 
 	boolean isObjectInstanceOf(String targetClass);
+
+	/**
+	 * Add one or multiple children specified by the given <code>formula</code>.
+	 * <p>
+	 * A <code>null</code> formula has the same effect as a formula evaluating to a <code>null</code>
+	 * result.
+	 * <p>
+	 * Adding a value is only possible to arrays, collections and maps. Otherwise an
+	 * {@link UnsupportedOperationException} is thrown.
+	 * <p>
+	 * If the object represented by this <code>ObjectReference</code> is an array or a {@link Collection},
+	 * the formula must result in one of the following results (othwerwise an {@link UnsupportedOperationException}
+	 * is thrown):
+	 * <ul>
+	 * <li>a single result which is compatible with the array/collection type;
+	 * <li>a {@link Collection} with elements being able to be added.
+	 * </ul>
+	 * <p>
+	 * If the object represented by this <code>ObjectReference</code> is a {@link Map}, the formula
+	 * must result in one of the following results (othwerwise an {@link UnsupportedOperationException}
+	 * is thrown):
+	 * <ol>
+	 * <li>an <code>Object</code>-array with exactly two elements. If supported by the underlying data
+	 * model, one or both of the elements may be <code>null</code>. The first element is interpreted
+	 * as key, the 2nd element as value;
+	 * <li>a <code>Collection</code> containing <code>Object</code>-arrays with each exactly two
+	 * elements (as specified in 1.); <li>a {@link Map} (which is passed to {@link Map#putAll(Map)}).
+	 * </ol>
+	 * @param formula the formula returning the child (or children) to be added. May be <code>null</code> which
+	 * means to add <code>null</code>. Note that adding <code>null</code> might not be supported by the
+	 * underlying data model / persistence engine.
+	 * @return the newly added children or <code>null</code>, if the children were not yet loaded, before
+	 * (in this case, no {@link ObjectReferenceChild}-instances are created as this will be done
+	 * when {@link #getChildren()} is called for the first time).
+	 */
+	List<ObjectReferenceChild> addChildren(Formula formula);
+
+	/**
+	 * Notify this <code>ObjectReference</code> that the given child has been removed.
+	 * <p>
+	 * Do not call this method directly! It is called by {@link ObjectReferenceChild#removeFromOwner()}
+	 * (which is the method you must call instead).
+	 * @param child the child which was removed. Must not be <code>null</code>.
+	 * @param newOwnerResultCellDTO information about a replaced, new owner. <code>null</code>, if owner
+	 * was not replaced. Owner is only replaced, if it is an array (arrays must be replaced to shorten them).
+	 */
+	void onRemovedChild(ObjectReferenceChild child, ResultCellDTO newOwnerResultCellDTO);
 }

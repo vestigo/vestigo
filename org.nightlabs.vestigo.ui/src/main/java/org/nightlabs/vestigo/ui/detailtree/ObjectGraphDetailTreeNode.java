@@ -18,18 +18,19 @@
 package org.nightlabs.vestigo.ui.detailtree;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.EnumSet;
 import java.util.List;
 import java.util.Map;
 
 import org.eclipse.swt.graphics.Image;
-import org.nightlabs.vestigo.core.VestigoCorePlugin;
 import org.nightlabs.vestigo.core.LabelTextOption;
 import org.nightlabs.vestigo.core.LabelTextUtil;
 import org.nightlabs.vestigo.core.ObjectReference;
 import org.nightlabs.vestigo.core.ObjectReferenceChild;
 import org.nightlabs.vestigo.core.PersistentObjectReference;
+import org.nightlabs.vestigo.core.VestigoCorePlugin;
 import org.nightlabs.vestigo.core.oda.ResultSet;
 import org.nightlabs.vestigo.ui.AbstractVestigoUIPlugin;
 import org.nightlabs.vestigo.ui.VestigoUIPlugin;
@@ -79,6 +80,24 @@ public class ObjectGraphDetailTreeNode
 
 	public void setChildNodes(ObjectGraphDetailTreeNode[] childNodes) {
 		this.childNodes = childNodes;
+	}
+
+	public void removeChildNode(ObjectGraphDetailTreeNode childNode) {
+		ObjectGraphDetailTreeNode[] childNodes = this.childNodes;
+		if (childNodes != null) {
+			List<ObjectGraphDetailTreeNode> list = new ArrayList<ObjectGraphDetailTreeNode>(Arrays.asList(childNodes));
+			list.remove(childNode);
+			this.childNodes = list.toArray(new ObjectGraphDetailTreeNode[list.size()]);
+		}
+	}
+
+	public void addChildNodes(List<ObjectGraphDetailTreeNode> childNodes) {
+		ObjectGraphDetailTreeNode[] childNodeArray = this.childNodes;
+		if (childNodeArray != null) {
+			List<ObjectGraphDetailTreeNode> list = new ArrayList<ObjectGraphDetailTreeNode>(Arrays.asList(childNodeArray));
+			list.addAll(childNodes);
+			this.childNodes = list.toArray(new ObjectGraphDetailTreeNode[list.size()]);
+		}
 	}
 
 	public String getLabelText(EnumSet<LabelTextOption> labelTextOptions) {

@@ -170,7 +170,7 @@ public abstract class ResultSet
 		return container;
 	}
 
-	public synchronized TransientObjectContainer createTransientObjectContainerForTransientObject(Object transientObject)
+	public synchronized TransientObjectContainer createTransientObjectContainerForTransientObject(Object owner, Field field, Object transientObject)
 	{
 		assertOpen();
 		TransientObjectContainer container = getTransientObjectContainerForTransientObject(transientObject, false);
@@ -179,6 +179,10 @@ public abstract class ResultSet
 			objectID2transientObjectContainer.put(container.getObjectID(), container);
 			transientObject2objectID.put(transientObject, container.getObjectID());
 		}
+
+		if (owner != null)
+			container.getOwnerWithFieldSet().add(new OwnerWithField(owner, field));
+
 		return container;
 	}
 
@@ -278,7 +282,7 @@ public abstract class ResultSet
 			if (resultCellDTO != null)
 				return resultCellDTO;
 
-			TransientObjectContainer transientObjectContainer = createTransientObjectContainerForTransientObject(object);
+			TransientObjectContainer transientObjectContainer = createTransientObjectContainerForTransientObject(owner, field, object);
 			return new ResultCellTransientObjectRefDTO(
 					field, object.getClass(), transientObjectContainer.getObjectID(), getObjectToString(object)
 			);
@@ -435,14 +439,17 @@ public abstract class ResultSet
 
 			if (object.getClass().isArray()) {
 				Array.set(object, index, newValue);
-				// TODO this has no SCO wrapper - how can we tell the JDO/JPA impl that it has changed?! IMHO we must
-				// set the field of the owner again!
+
+				// An array has no SCO wrapper - but we should tell the JDO/JPA impl that it has changed.
+				// Thus we set the field of the owner again!
+				setFieldValueInAllOwners(object, object); // does flush()
 				return newValue;
 			}
 			else if (object instanceof List<?>) {
 				@SuppressWarnings("unchecked")
 				List<Object> list = (List<Object>) object;
 				list.set(index, newValue);
+				flush();
 				return newValue;
 			}
 			else if (object instanceof Collection<?>) {
@@ -450,13 +457,15 @@ public abstract class ResultSet
 				Collection<Object> collection = (Collection<Object>) object;
 				collection.remove(oldValue);
 				collection.add(newValue);
+				flush();
 				return newValue;
 			}
 			else if (object instanceof Map<?, ?>) {
+				flush();
 				throw new UnsupportedOperationException("NYI");
 			}
 			else {
-				return setFieldValue(object, field, newValue);
+				return setFieldValue(object, field, newValue); // does flush()
 			}
 		} finally {
 			Thread.currentThread().setContextClassLoader(backupContextClassLoader);
@@ -488,6 +497,232 @@ public abstract class ResultSet
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
+	}
+
+	public AddChildrenResult addChildren(Object object, Formula formula) {
+		AddChildrenResult result = new AddChildrenResult();
+		result.oldOwner = object;
+		result.newOwner = object;
+
+		ClassLoader backupContextClassLoader = Thread.currentThread().getContextClassLoader();
+		try {
+			Thread.currentThread().setContextClassLoader(persistenceEngineClassLoader);
+
+			Object childOrChildren = evaluateAddChildrenFormula(object, formula);
+			List<?> newChildList;
+			Map<?, ?> newChildMap = null;
+			if (childOrChildren instanceof List)
+				newChildList = (List<?>) childOrChildren;
+			else if (childOrChildren instanceof Collection)
+				newChildList = new ArrayList<Object>((Collection<?>) childOrChildren);
+			else if (childOrChildren instanceof Map) {
+				newChildMap = (Map<?, ?>) childOrChildren;
+				newChildList = getChildrenFromMap(newChildMap);
+			}
+			else
+				newChildList = Collections.singletonList(childOrChildren);
+
+			result.newChildren = newChildList;
+
+			int index = Integer.MAX_VALUE; // TODO add as parameter.
+
+			if (object.getClass().isArray()) {
+				Object oldArray = object;
+				Object newArray = addArrayElements(oldArray, index, newChildList);
+				result.newOwner = newArray;
+				setFieldValueInAllOwners(oldArray, newArray); // does flush()
+			}
+			else if (object instanceof List<?>) {
+				@SuppressWarnings("unchecked")
+				List<Object> list = (List<Object>) object;
+
+				if (index < 0)
+					index = 0;
+
+				if (index > list.size())
+					index = list.size();
+
+				list.addAll(index, newChildList);
+				flush();
+			}
+			else if (object instanceof Collection<?>) {
+				@SuppressWarnings("unchecked")
+				Collection<Object> collection = (Collection<Object>) object;
+				collection.addAll(newChildList);
+				flush();
+			}
+			else if (object instanceof Map<?, ?>) {
+				@SuppressWarnings("unchecked")
+				Map<Object, Object> map = (Map<Object, Object>) object;
+
+				if (newChildMap == null) {
+					HashMap<Object, Object> cm = new HashMap<Object, Object>();
+					for (Object child : newChildList) {
+						if (child == null)
+							cm.put(null, null);
+						else if (child instanceof Object[]) {
+							Object[] oa = (Object[]) child;
+							if (oa.length != 2)
+								throw new IllegalStateException(String.format("Child (returned by formula) is an object-array with %s elements, but it must have exactly 2 elements! The first element is used as key and the 2nd as value.", oa.length));
+
+							cm.put(oa[0], oa[1]);
+						}
+						else
+							throw new IllegalStateException("Child (returned by formula) is neither a map nor an object-array nor a list of object-arrays. The formula must either return a map or (list of) an object-array with 2 elements. The first element is used as key and the 2nd as value.");
+					}
+					newChildMap = cm;
+					result.newChildren = getChildrenFromMap(newChildMap);
+				}
+				map.putAll(newChildMap);
+				flush();
+			}
+			else {
+				throw new UnsupportedOperationException("Owner is neither an array nor a collection nor a map! Cannot add children!");
+			}
+		} finally {
+			Thread.currentThread().setContextClassLoader(backupContextClassLoader);
+		}
+		return result;
+	}
+
+	protected Object evaluateAddChildrenFormula(Object object, Formula formula)
+	{
+		if (object == null)
+			throw new IllegalArgumentException("object == null");
+
+		try {
+			Map<String, Object> scriptContext = new HashMap<String, Object>();
+			scriptContext.put("object", object);
+
+			return connection.evaluateFormula(
+					"addChildren",
+					scriptContext,
+					formula
+			);
+		} catch (RuntimeException e) {
+			throw e;
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	/**
+	 * Create a new array composed of the the given <code>array</code> and the given <code>arrayElements</code>.
+	 *
+	 * @param array the array to which elements should be added. Must not be <code>null</code>.
+	 * @param index the zero-based index at which the element(s) should be added or -1 to add at the beginning
+	 * or {@link Integer#MAX_VALUE} to add at the end.
+	 * @param arrayElements elements to be added.
+	 * Might be <code>null</code> - in this case a <code>null</code> element will be added which might cause
+	 * an exception in the underlying persistence-engine, if <code>null</code> elements are not supported/allowed
+	 * in the target field.
+	 * @return the new array.
+	 */
+	protected Object addArrayElements(final Object array, int index, final List<?> arrayElements) {
+		if (array == null)
+			throw new IllegalArgumentException("array == null");
+
+		final int oldArrayLength = Array.getLength(array);
+		if (index < 0)
+			index = 0; // add first
+
+		if (index > oldArrayLength)
+			index = oldArrayLength; // add last
+
+		final int newArrayLength = oldArrayLength + arrayElements.size();
+		final Object newArray = Array.newInstance(array.getClass().getComponentType(), newArrayLength);
+
+		System.arraycopy(array, 0, newArray, 0, index);
+		for (Object arrayElement : arrayElements) {
+			Array.set(newArray, index, arrayElement);
+			++index;
+		}
+		System.arraycopy(array, index + 1, newArray, index, newArrayLength - index);
+		return newArray;
+	}
+
+	protected Object removeArrayElement(final Object array, final int index) {
+		final int newArrayLength = Array.getLength(array) - 1;
+		final Object newArray = Array.newInstance(array.getClass().getComponentType(), newArrayLength);
+
+		System.arraycopy(array, 0, newArray, 0, index);
+		System.arraycopy(array, index + 1, newArray, index, newArrayLength - index);
+		return newArray;
+	}
+
+	protected void setFieldValueInAllOwners(final Object oldValue, final Object newValue) {
+		TransientObjectContainer transientObjectContainer = getTransientObjectContainerForTransientObject(oldValue, true);
+		if (transientObjectContainer.getOwnerWithFieldSet().isEmpty())
+			throw new IllegalStateException("transientObjectContainer.ownerWithFieldSet is empty! " + transientObjectContainer);
+
+		for (OwnerWithField ownerWithField : transientObjectContainer.getOwnerWithFieldSet()) {
+			setFieldValue(ownerWithField.getOwner(), ownerWithField.getField(), newValue);
+
+			if (oldValue != newValue)
+				createTransientObjectContainerForTransientObject(ownerWithField.getOwner(), ownerWithField.getField(), newValue);
+		}
+
+		if (oldValue != newValue) {
+			// Remove the now obsolete oldValue from our transient objects.
+			Long objectID = transientObject2objectID.remove(oldValue);
+			objectID2transientObjectContainer.remove(objectID);
+		}
+	}
+
+	/**
+	 * Remove a child from an owner object.
+	 * <p>
+	 * If the owner is a collection, an array or a {@link MapEntry}, the element is normally removed.
+	 * If the owner is a normal object and the child is a field value, the field is simply set to
+	 * <code>null</code> (if supported).
+	 * @param object
+	 * @param fieldDeclaringClassName
+	 * @param fieldName
+	 * @param index
+	 * @param oldValue
+	 */
+	public RemoveChildFromOwnerResult removeChildFromOwner(Object object, String fieldDeclaringClassName, String fieldName, int index, Object oldValue)
+	{
+		RemoveChildFromOwnerResult result = new RemoveChildFromOwnerResult();
+		result.oldOwner = object;
+		result.newOwner = object;
+
+		ClassLoader backupContextClassLoader = Thread.currentThread().getContextClassLoader();
+		try {
+			Thread.currentThread().setContextClassLoader(persistenceEngineClassLoader);
+
+			Field field = fieldDeclaringClassName == null ? null : connection.getField(object.getClass(), fieldDeclaringClassName, fieldName, true);
+
+			if (object.getClass().isArray()) {
+				Object oldArray = object;
+				Object newArray = removeArrayElement(oldArray, index);
+				result.newOwner = newArray;
+				setFieldValueInAllOwners(oldArray, newArray); // does flush()
+			}
+			else if (object instanceof List<?>) {
+				@SuppressWarnings("unchecked")
+				List<Object> list = (List<Object>) object;
+				list.remove(index);
+				flush();
+			}
+			else if (object instanceof Collection<?>) {
+				@SuppressWarnings("unchecked")
+				Collection<Object> collection = (Collection<Object>) object;
+				collection.remove(oldValue);
+				flush();
+			}
+			else if (object instanceof Map<?, ?>) {
+				flush();
+				throw new UnsupportedOperationException("NYI");
+			}
+			else {
+				setFieldValue(object, field, null); // does flush()
+			}
+		} finally {
+			Thread.currentThread().setContextClassLoader(backupContextClassLoader);
+		}
+
+		return result;
 	}
 
 	public List<?> getChildren(Object object)
@@ -735,4 +970,6 @@ public abstract class ResultSet
 	public QueryExecutionStatisticSet getQueryExecutionStatisticSet() {
 		return queryExecutionStatisticSet;
 	}
+
+	protected abstract void flush();
 }

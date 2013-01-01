@@ -18,6 +18,7 @@
 package org.nightlabs.vestigo.ui.detailtree;
 
 import java.lang.reflect.Constructor;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.EnumSet;
@@ -29,16 +30,12 @@ import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.ListenerList;
-import org.eclipse.core.runtime.Status;
-import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.MenuManager;
-import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.ISelectionProvider;
@@ -59,13 +56,13 @@ import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Shell;
 import org.nightlabs.vestigo.childvm.shared.BeanShellFormula;
 import org.nightlabs.vestigo.childvm.shared.Formula;
 import org.nightlabs.vestigo.childvm.shared.JavaScriptFormula;
 import org.nightlabs.vestigo.core.LabelTextOption;
+import org.nightlabs.vestigo.core.ObjectReference;
 import org.nightlabs.vestigo.core.ObjectReferenceChild;
 import org.nightlabs.vestigo.core.oda.ResultSet;
 import org.nightlabs.vestigo.ui.jface.AbstractContextMenuAction;
@@ -219,9 +216,9 @@ implements LabelTextOptionsContainer, ISelectionProvider, FormulaTypeSelection
 		contextMenuManager.add(addElementSubMenu);
 
 		contextMenuManager.add(removeElementAction);
-		MenuManager removeElementSubMenu = new MenuManager("Remove element");
-		populateFormulaTypeDependentSubMenu(removeElementSubMenu, removeElementAction);
-		contextMenuManager.add(removeElementSubMenu);
+//		MenuManager removeElementSubMenu = new MenuManager("Remove element");
+//		populateFormulaTypeDependentSubMenu(removeElementSubMenu, removeElementAction);
+//		contextMenuManager.add(removeElementSubMenu);
 
 		contextMenuManager.add(replaceValueAction); // TODO clean up this ugly dummy code
 		MenuManager replaceValueSubMenu = new MenuManager("Replace/change value");
@@ -296,27 +293,88 @@ implements LabelTextOptionsContainer, ISelectionProvider, FormulaTypeSelection
 	 * Add a {@link Collection} or {@link Map} element. For a <code>Map</code>, both key and value
 	 * have to be provided.
 	 */
-	private ContextMenuAction addElementAction = new AbstractContextMenuAction()
+	private ContextMenuAction addElementAction = new FormulaContextMenuAction<ObjectReference>(this)
 	{
 		@Override
 		public void updateEnabled() {
 			setText(String.format("Add element (%s)...", DataTypeNameUtil.getDataTypeName(getFormulaType())));
+			setEnabled(!getSelectedObjects().isEmpty());
+		}
 
-			// TODO Auto-generated method stub
+		@Override
+		protected List<ObjectReference> getSelectedObjects() {
+			return getObjectsOfType(getSelectedNodes(), ObjectReference.class);
+		}
 
+		@Override
+		protected String getJobName() {
+			return "Add element";
+		}
+
+		@Override
+		protected void doInJob(IProgressMonitor monitor, List<ObjectGraphDetailTreeNode> selectedNodes, List<ObjectReference> selectedObjects, Formula formula) {
+			// TODO extend this so that adding is supported when the target-element is an element of a list
+			// and not the list itself AFTER the selected element (same for other collections, maps, arrays etc.).
+			for (ObjectGraphDetailTreeNode node : selectedNodes) {
+				ObjectReference objectReference = null;
+				if (node.getObject() instanceof ObjectReferenceChild) {
+					ObjectReferenceChild orc = (ObjectReferenceChild) node.getObject();
+					if (orc.getValue() instanceof ObjectReference)
+						objectReference = (ObjectReference) orc.getValue();
+				}
+				else if (node.getObject() instanceof ObjectReference)
+					objectReference = (ObjectReference) node.getObject();
+
+				List<ObjectReferenceChild> children = objectReference.addChildren(formula);
+				if (children != null) {
+					List<ObjectGraphDetailTreeNode> childNodes = new ArrayList<ObjectGraphDetailTreeNode>(children.size());
+					for (ObjectReferenceChild child : children) {
+						childNodes.add(new ObjectGraphDetailTreeNode(node, child));
+					}
+					node.addChildNodes(childNodes);
+				}
+			}
 		}
 	};
 
 	/**
 	 * Remove a {@link Collection} element or {@link Map} entry.
 	 */
-	private ContextMenuAction removeElementAction = new AbstractContextMenuAction()
+	private ContextMenuAction removeElementAction = new ObjectGraphDetailTreeContextMenuAction<ObjectReferenceChild, Boolean>(this)
 	{
 		@Override
 		public void updateEnabled() {
-			setText(String.format("Remove element (%s)...", DataTypeNameUtil.getDataTypeName(getFormulaType())));
+			setText("Remove element");
+			setEnabled(!getSelectedObjects().isEmpty());
+		}
 
-			// TODO Auto-generated method stub
+		@Override
+		protected List<ObjectReferenceChild> getSelectedObjects() {
+			return getObjectsOfType(getSelectedNodes(), ObjectReferenceChild.class);
+		}
+
+		@Override
+		protected String getJobName() {
+			return "Remove element";
+		}
+
+		@Override
+		protected Boolean doUserInteractionBeforeJob(List<ObjectGraphDetailTreeNode> selectedNodes, List<ObjectReferenceChild> selectedObjects) {
+			// No user interaction needed. If we wanted to show a confirmation dialog, we could return null,
+			// if the user cancelled. But since we have the possibility of a rollback anyway, we don't need.
+			return Boolean.TRUE;
+		}
+
+		@Override
+		protected void doInJob(IProgressMonitor monitor, List<ObjectGraphDetailTreeNode> selectedNodes, List<ObjectReferenceChild> selectedObjects, Boolean userInteractionResult) {
+			for (ObjectGraphDetailTreeNode node : selectedNodes) {
+				if (node.getObject() instanceof ObjectReferenceChild) {
+					ObjectReferenceChild objectReferenceChild = (ObjectReferenceChild) node.getObject();
+					if (objectReferenceChild.removeFromOwner()) {
+						node.getParentNode().removeChildNode(node);
+					}
+				}
+			}
 		}
 	};
 
@@ -324,64 +382,37 @@ implements LabelTextOptionsContainer, ISelectionProvider, FormulaTypeSelection
 	 * Set a field value or replace a {@link Collection} element. A {@link Map} entry cannot be replaced
 	 * by this action - either the key or the value have to be changed instead.
 	 */
-	private ContextMenuAction replaceValueAction = new AbstractContextMenuAction()
+	private ContextMenuAction replaceValueAction = new FormulaContextMenuAction<ObjectReferenceChild>(this)
 	{
 		@Override
 		public void updateEnabled() {
 			setText(String.format("Change/Replace value (%s)...", DataTypeNameUtil.getDataTypeName(getFormulaType())));
-			setEnabled(getFirstSelectedObjectReferenceChild() != null);
+			setEnabled(!getSelectedObjects().isEmpty());
 		}
 
 		@Override
-		public void run() {
-			final ObjectReferenceChild objectReferenceChild = getFirstSelectedObjectReferenceChild();
-			if (objectReferenceChild == null)
-				return;
+		protected List<ObjectReferenceChild> getSelectedObjects() {
+			return getObjectsOfType(getSelectedNodes(), ObjectReferenceChild.class);
+		}
 
-			FormulaDialog<?> formulaDialog = createFormulaDialog();
-			if (Dialog.OK == formulaDialog.open()) {
-				final Formula formula = formulaDialog.getValue();
-				final Display display = getDisplay();
-				Job job = new Job("Replace value") {
-					@Override
-					protected IStatus run(IProgressMonitor monitor) {
-						objectReferenceChild.replaceValue(formula);
-						display.asyncExec(new Runnable() {
-							@Override
-							public void run() {
-								if (!isDisposed())
-									treeViewer.refresh(); // TODO maybe better trigger via listeners in the objectReferenceChild?!
-							}
-						});
-						return Status.OK_STATUS;
-					}
-				};
-				job.setUser(true);
-				job.schedule();
+
+		@Override
+		protected String getJobName() {
+			return "Replace value";
+		}
+
+		@Override
+		protected void doInJob(IProgressMonitor monitor, List<ObjectGraphDetailTreeNode> selectedNodes, List<ObjectReferenceChild> selectedObjects, Formula formula) {
+			for (ObjectReferenceChild objectReferenceChild : selectedObjects) {
+				objectReferenceChild.replaceValue(formula);
 			}
 		}
-
-		protected ObjectReferenceChild getFirstSelectedObjectReferenceChild() {
-			ObjectGraphDetailTreeNode node = getFirstSelectedNode();
-			if (node != null && node.getObject() instanceof ObjectReferenceChild)
-				return (ObjectReferenceChild) node.getObject();
-			else
-				return null;
-		}
-
-		protected ObjectGraphDetailTreeNode getFirstSelectedNode() {
-			IStructuredSelection sel = (IStructuredSelection) getSelection();
-			if (sel.isEmpty())
-				return null;
-
-			Object object = sel.getFirstElement();
-			if (!(object instanceof ObjectGraphDetailTreeNode))
-				return null;
-
-			ObjectGraphDetailTreeNode node = (ObjectGraphDetailTreeNode) object;
-			return node;
-		}
 	};
+
+	public void refresh() {
+		if (!isDisposed())
+			treeViewer.refresh();
+	}
 
 	private void registerCopyToClipboardKeyListener() {
 		treeViewer.getTree().addKeyListener(new KeyAdapter() {

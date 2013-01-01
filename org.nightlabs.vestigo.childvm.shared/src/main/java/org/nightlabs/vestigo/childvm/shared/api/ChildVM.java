@@ -23,11 +23,15 @@ import java.util.SortedSet;
 import java.util.UUID;
 
 import org.nightlabs.vestigo.childvm.shared.ResultSetID;
+import org.nightlabs.vestigo.childvm.shared.dto.AddChildrenCommandDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.AddChildrenResultDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.ConnectionDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.ConnectionProfileDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.PersistablePropertyDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.QueryExecutionStatisticSetDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.QueryParameterDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.RemoveChildFromOwnerCommandDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.RemoveChildFromOwnerResultDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.ReplaceChildValueCommandDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.ResultCellDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.ResultCellObjectRefDTO;
@@ -82,4 +86,8 @@ public interface ChildVM
 	void commitConnection(UUID connectionID) throws ChildVMException;
 
 	void rollbackConnection(UUID connectionID) throws ChildVMException;
+
+	RemoveChildFromOwnerResultDTO removeChildFromOwner(ResultSetID resultSetID, RemoveChildFromOwnerCommandDTO removeChildFromOwnerCommandDTO) throws ChildVMException;
+
+	AddChildrenResultDTO addChildren(ResultSetID resultSetID, AddChildrenCommandDTO addChildrenCommandDTO);
 }

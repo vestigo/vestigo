@@ -17,6 +17,9 @@
  */
 package org.nightlabs.vestigo.childvm.webapp.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import org.nightlabs.util.Util;
 
 /**
@@ -40,6 +43,20 @@ public class TransientObjectContainer
 
 	public Long getObjectID() {
 		return objectID;
+	}
+
+	private Set<OwnerWithField> ownerWithFieldSet = new HashSet<OwnerWithField>(1);
+
+	/**
+	 * Get the owner+field-combination to which this transient object belongs.
+	 * <p>
+	 * Both, owner or field might be <code>null</code>,
+	 * as a transient object might be top-level (depending on whether that's supported by the
+	 * underlying persistence engine's query engine).
+	 * @return the owner+field-combinations to which this transient object belongs.
+	 */
+	public Set<OwnerWithField> getOwnerWithFieldSet() {
+		return ownerWithFieldSet;
 	}
 
 	private Object object;

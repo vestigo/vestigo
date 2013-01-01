@@ -22,6 +22,8 @@ import java.util.Set;
 import org.nightlabs.vestigo.childvm.shared.Formula;
 import org.nightlabs.vestigo.childvm.shared.ResultSetID;
 import org.nightlabs.vestigo.childvm.shared.api.ChildVM;
+import org.nightlabs.vestigo.childvm.shared.dto.RemoveChildFromOwnerCommandDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.RemoveChildFromOwnerResultDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.ReplaceChildValueCommandDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.ResultCellDTO;
 import org.nightlabs.vestigo.core.FieldDesc;
@@ -170,6 +172,36 @@ implements ObjectReferenceChild
 		ResultCellDTO newResultCellDTO = getChildVM().replaceChildValue(resultSetID, replaceChildValueCommandDTO);
 		Object childRawValue = getResultSet().unmaskResultCellDTO(newResultCellDTO);
 		this.setValue(childRawValue); // note: value may be null
+	}
+
+	@Override
+	public boolean removeFromOwner() {
+		Object nonRefValue = null;
+		ObjectReference refValue = null;
+		if (value instanceof ObjectReference)
+			refValue = (ObjectReference) value;
+		else
+			nonRefValue = value;
+
+		RemoveChildFromOwnerCommandDTO removeChildFromOwnerCommandDTO = new RemoveChildFromOwnerCommandDTO(
+				getOwner().getObjectClassName(),
+				getOwner().getObjectID(),
+				(getFieldDesc() == null ? null : getFieldDesc().getFieldDeclaringClassName()), // null in collections
+				(getFieldDesc() == null ? null : getFieldDesc().getFieldName()), // null in collections
+				getIndex(),
+				(refValue == null ? null : refValue.getObjectClassName()),
+				(refValue == null ? null : refValue.getObjectID()),
+				nonRefValue
+		);
+		ResultSetID resultSetID = getResultSet().getResultSetID();
+		RemoveChildFromOwnerResultDTO resultDTO = getChildVM().removeChildFromOwner(resultSetID, removeChildFromOwnerCommandDTO);
+		if (getFieldDesc() != null) {
+			this.setValue(null);
+			return false;
+		}
+
+		getOwner().onRemovedChild(this, resultDTO.getNewOwnerResultCellDTO());
+		return true;
 	}
 
 	protected ChildVM getChildVM() {

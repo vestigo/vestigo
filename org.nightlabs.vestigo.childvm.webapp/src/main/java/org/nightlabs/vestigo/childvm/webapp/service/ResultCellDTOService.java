@@ -26,12 +26,20 @@ import javax.ws.rs.PathParam;
 
 import org.nightlabs.vestigo.childvm.shared.Formula;
 import org.nightlabs.vestigo.childvm.shared.ResultSetID;
+import org.nightlabs.vestigo.childvm.shared.dto.AddChildrenCommandDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.AddChildrenResultDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.RemoveChildFromOwnerCommandDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.RemoveChildFromOwnerResultDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.ReplaceChildValueCommandDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.ResultCellDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.ResultCellDTOList;
+import org.nightlabs.vestigo.childvm.webapp.model.AddChildrenResult;
 import org.nightlabs.vestigo.childvm.webapp.model.Connection;
 import org.nightlabs.vestigo.childvm.webapp.model.ConnectionManager;
+import org.nightlabs.vestigo.childvm.webapp.model.OwnerWithField;
+import org.nightlabs.vestigo.childvm.webapp.model.RemoveChildFromOwnerResult;
 import org.nightlabs.vestigo.childvm.webapp.model.ResultSet;
+import org.nightlabs.vestigo.childvm.webapp.model.TransientObjectContainer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -119,4 +127,104 @@ public class ResultCellDTOService extends AbstractService
 		ResultCellDTO resultCellDTO = resultSet.newResultCellDTO(object, newChildValue);
 		return resultCellDTO;
 	}
+
+	@POST
+	@Path("{resultSetID}/removeChildFromOwner")
+	public RemoveChildFromOwnerResultDTO removeChildFromOwner(
+			@PathParam("resultSetID") ResultSetID resultSetID,
+			RemoveChildFromOwnerCommandDTO removeChildFromOwnerCommandDTO
+	)
+	{
+		if (resultSetID == null)
+			throw new IllegalArgumentException("resultSetID == null");
+
+		if (removeChildFromOwnerCommandDTO == null)
+			throw new IllegalArgumentException("removeChildFromOwnerCommandDTO == null");
+
+		String fieldDeclaringClassName = removeChildFromOwnerCommandDTO.getFieldDeclaringClassName();
+		String fieldName = removeChildFromOwnerCommandDTO.getFieldName();
+		int index = removeChildFromOwnerCommandDTO.getIndex();
+
+		Connection connection = ConnectionManager.sharedInstance().getConnection(resultSetID.getConnectionID(), true);
+		ResultSet resultSet = connection.getResultSet(resultSetID.getResultSetID(), true);
+
+		Object object = resultSet.getObjectForObjectID(
+				removeChildFromOwnerCommandDTO.getObjectClassName(),
+				removeChildFromOwnerCommandDTO.getObjectID(),
+				true
+		);
+
+		Object oldValue = null;
+		if (removeChildFromOwnerCommandDTO.getOldValueObjectClassName() != null) {
+			oldValue = resultSet.getObjectForObjectID(
+					removeChildFromOwnerCommandDTO.getOldValueObjectClassName(),
+					removeChildFromOwnerCommandDTO.getOldValueObjectID(),
+					true
+			);
+		}
+		else
+			oldValue = removeChildFromOwnerCommandDTO.getOldValue();
+
+		RemoveChildFromOwnerResultDTO resultDTO = new RemoveChildFromOwnerResultDTO();
+		RemoveChildFromOwnerResult removeChildFromOwnerResult = resultSet.removeChildFromOwner(object, fieldDeclaringClassName, fieldName, index, oldValue);
+		if (removeChildFromOwnerResult.newOwner != removeChildFromOwnerResult.oldOwner)
+			resultDTO.setNewOwnerResultCellDTO(createNewOwnerResultCellDTO(resultSet, removeChildFromOwnerResult.newOwner));
+
+		return resultDTO;
+	}
+
+	protected ResultCellDTO createNewOwnerResultCellDTO(ResultSet resultSet, Object newOwner) {
+		TransientObjectContainer transientObjectContainer = resultSet.getTransientObjectContainerForTransientObject(newOwner, true);
+		ResultCellDTO resultCellDTO = null;
+		for (OwnerWithField ownerWithField : transientObjectContainer.getOwnerWithFieldSet()) {
+			Object ownerOwner = ownerWithField.getOwner();
+			if (resultCellDTO != null)
+				throw new IllegalStateException("More than one owner of the owner of the removed child!");
+
+			resultCellDTO = resultSet.newResultCellDTO(ownerOwner, newOwner);
+		}
+
+		if (resultCellDTO == null)
+			throw new IllegalStateException("No owner of the owner of the removed child!");
+
+		return resultCellDTO;
+	}
+
+	@POST
+	@Path("{resultSetID}/addChildren")
+	public AddChildrenResultDTO addChildren(
+			@PathParam("resultSetID") ResultSetID resultSetID,
+			AddChildrenCommandDTO addChildrenCommandDTO
+	)
+	{
+		if (resultSetID == null)
+			throw new IllegalArgumentException("resultSetID == null");
+
+		if (addChildrenCommandDTO == null)
+			throw new IllegalArgumentException("addChildrenCommandDTO == null");
+
+		Formula formula = addChildrenCommandDTO.getFormula();
+
+		Connection connection = ConnectionManager.sharedInstance().getConnection(resultSetID.getConnectionID(), true);
+		ResultSet resultSet = connection.getResultSet(resultSetID.getResultSetID(), true);
+
+		Object object = resultSet.getObjectForObjectID(
+				addChildrenCommandDTO.getObjectClassName(),
+				addChildrenCommandDTO.getObjectID(),
+				true
+		);
+
+		AddChildrenResultDTO resultDTO = new AddChildrenResultDTO();
+		AddChildrenResult addChildrenResult = resultSet.addChildren(object, formula);
+
+		if (addChildrenResult.newOwner != addChildrenResult.oldOwner)
+			resultDTO.setNewOwnerResultCellDTO(createNewOwnerResultCellDTO(resultSet, addChildrenResult.newOwner));
+
+		for (Object child : addChildrenResult.newChildren) {
+			ResultCellDTO resultCellDTO = resultSet.newResultCellDTO(addChildrenResult.newOwner, child);
+			resultDTO.getNewChildrenResultCellDTOs().add(resultCellDTO);
+		}
+		return resultDTO;
+	}
+
 }

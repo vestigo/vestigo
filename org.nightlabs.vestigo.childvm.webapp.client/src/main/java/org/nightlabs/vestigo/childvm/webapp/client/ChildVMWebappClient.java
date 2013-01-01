@@ -35,6 +35,8 @@ import org.nightlabs.util.IOUtil;
 import org.nightlabs.vestigo.childvm.shared.ResultSetID;
 import org.nightlabs.vestigo.childvm.shared.api.ChildVM;
 import org.nightlabs.vestigo.childvm.shared.api.ChildVMException;
+import org.nightlabs.vestigo.childvm.shared.dto.AddChildrenCommandDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.AddChildrenResultDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.ConnectionDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.ConnectionDTOList;
 import org.nightlabs.vestigo.childvm.shared.dto.ConnectionProfileDTO;
@@ -44,6 +46,8 @@ import org.nightlabs.vestigo.childvm.shared.dto.PersistablePropertyDTOList;
 import org.nightlabs.vestigo.childvm.shared.dto.QueryDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.QueryExecutionStatisticSetDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.QueryParameterDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.RemoveChildFromOwnerCommandDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.RemoveChildFromOwnerResultDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.ReplaceChildValueCommandDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.ResultCellDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.ResultCellDTOList;
@@ -645,6 +649,50 @@ implements ChildVM
 					client, ResultCellDTO.class, new PathSegment(resultSetID), new PathSegment("replaceChildValue")
 			).post(ResultCellDTO.class, replaceChildValueCommandDTO);
 			return resultCellDTO;
+		} catch (UniformInterfaceException x) {
+			handleUniformInterfaceException(x);
+			throw x; // we do not expect null
+		} finally {
+			releaseClient(client);
+		}
+	}
+
+	@Override
+	public RemoveChildFromOwnerResultDTO removeChildFromOwner(ResultSetID resultSetID, RemoveChildFromOwnerCommandDTO removeChildFromOwnerCommandDTO) throws ChildVMException
+	{
+		if (resultSetID == null)
+			throw new IllegalArgumentException("resultSetID == null");
+		if (removeChildFromOwnerCommandDTO == null)
+			throw new IllegalArgumentException("removeChildFromOwnerCommandDTO == null");
+
+		Client client = acquireClient();
+		try {
+			RemoveChildFromOwnerResultDTO resultDTO = getChildVMAppResource(
+					client, ResultCellDTO.class, new PathSegment(resultSetID), new PathSegment("removeChildFromOwner")
+			).post(RemoveChildFromOwnerResultDTO.class, removeChildFromOwnerCommandDTO);
+			return resultDTO;
+		} catch (UniformInterfaceException x) {
+			handleUniformInterfaceException(x);
+			throw x; // we do not expect null
+		} finally {
+			releaseClient(client);
+		}
+	}
+
+	@Override
+	public AddChildrenResultDTO addChildren(ResultSetID resultSetID, AddChildrenCommandDTO addChildrenCommandDTO)
+	{
+		if (resultSetID == null)
+			throw new IllegalArgumentException("resultSetID == null");
+		if (addChildrenCommandDTO == null)
+			throw new IllegalArgumentException("addChildrenCommandDTO == null");
+
+		Client client = acquireClient();
+		try {
+			AddChildrenResultDTO resultDTO = getChildVMAppResource(
+					client, ResultCellDTO.class, new PathSegment(resultSetID), new PathSegment("addChildren")
+			).post(AddChildrenResultDTO.class, addChildrenCommandDTO);
+			return resultDTO;
 		} catch (UniformInterfaceException x) {
 			handleUniformInterfaceException(x);
 			throw x; // we do not expect null

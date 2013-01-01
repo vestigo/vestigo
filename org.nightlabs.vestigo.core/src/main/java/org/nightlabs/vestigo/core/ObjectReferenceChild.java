@@ -118,4 +118,22 @@ public interface ObjectReferenceChild
 	 */
 	void replaceValue(Formula formula);
 
+	/**
+	 * Remove the value represented by this <code>ObjectReferenceChild</code> from its
+	 * {@link #getOwner() owner}.
+	 * <p>
+	 * Note, that even if the direct <code>owner</code> is an intermediate object like e.g. a
+	 * {@link java.util.Map.Entry map-entry}, the value is removed from the logical owner
+	 * according to its contract. So for example removing a map-key or a map-value causes
+	 * the whole map-entry to be removed.
+	 * <p>
+	 * Removing a normal field value causes the field to be set to <code>null</code>, if it's
+	 * an {@link Object} or an {@link UnsupportedOperationException} to be thrown, if it's a simple
+	 * data type.
+	 * @return whether this <code>ObjectReferenceChild</code> was really removed from its owner.
+	 * Since a normal field is nulled instead of really removing the child, this indicates, if the
+	 * object really disappeared.
+	 */
+	boolean removeFromOwner();
+
 }

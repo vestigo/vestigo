@@ -22,7 +22,11 @@ import java.util.List;
 import java.util.Set;
 
 import org.nightlabs.util.Util;
+import org.nightlabs.vestigo.childvm.shared.Formula;
+import org.nightlabs.vestigo.childvm.shared.ResultSetID;
 import org.nightlabs.vestigo.childvm.shared.api.ChildVM;
+import org.nightlabs.vestigo.childvm.shared.dto.AddChildrenCommandDTO;
+import org.nightlabs.vestigo.childvm.shared.dto.AddChildrenResultDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.ResultCellDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.ResultCellObjectRefDTO;
 import org.nightlabs.vestigo.childvm.shared.dto.ResultCellPersistentObjectRefDTO;
@@ -155,6 +159,29 @@ public abstract class ObjectReferenceImpl implements ObjectReference
 	}
 
 	@Override
+	public synchronized void onRemovedChild(ObjectReferenceChild child, ResultCellDTO newOwnerResultCellDTO) {
+		if (child == null)
+			throw new IllegalArgumentException("child == null");
+
+		List<ObjectReferenceChild> children = this.children;
+		if (children == null)
+			throw new IllegalStateException("Children not yet loaded! How the hell can the child be removed, then?!???");
+
+		final int index = child.getIndex();
+		ObjectReferenceChild childAtIndex = children.get(index);
+		if (childAtIndex != child)
+			throw new IllegalStateException("children.get(index) returned another instance - not the child argument! index=" + index + " this=" + this + " child=" + child);
+
+		children.remove(index);
+		for (int i = index; i < children.size(); ++i)
+			children.get(i).setIndex(i);
+
+		if (newOwnerResultCellDTO != null) {
+			this.resultCellObjectRefDTO = (ResultCellObjectRefDTO) newOwnerResultCellDTO;
+		}
+	}
+
+	@Override
 	public boolean isObjectInstanceOf(Class<?> targetClass)
 	{
 		return isObjectInstanceOf(targetClass.getName());
@@ -164,5 +191,33 @@ public abstract class ObjectReferenceImpl implements ObjectReference
 	public boolean isObjectInstanceOf(String targetClass)
 	{
 		return resultSet.getQuery().getConnection().getConnectionProfile().isClassAssignableFrom(targetClass, getObjectClassName());
+	}
+
+	@Override
+	public synchronized List<ObjectReferenceChild> addChildren(Formula formula)
+	{
+		AddChildrenCommandDTO addChildrenCommandDTO = new AddChildrenCommandDTO(
+				getObjectClassName(),
+				getObjectID(),
+				formula
+		);
+
+		ResultSetID resultSetID = getResultSet().getResultSetID();
+		AddChildrenResultDTO resultDTO = getChildVM().addChildren(resultSetID, addChildrenCommandDTO);
+		List<ObjectReferenceChild> resultList = null;
+		List<ObjectReferenceChild> children = this.children;
+		if (children != null) {
+			resultList = new ArrayList<ObjectReferenceChild>(resultDTO.getNewChildrenResultCellDTOs().size());
+			for (ResultCellDTO childDTO : resultDTO.getNewChildrenResultCellDTOs()) {
+				ObjectReferenceChild childObjectReferenceChild = new ObjectReferenceChildImpl(this, children.size(), childDTO);
+				children.add(childObjectReferenceChild);
+				resultList.add(childObjectReferenceChild);
+			}
+		}
+
+		if (resultDTO.getNewOwnerResultCellDTO() != null) {
+			this.resultCellObjectRefDTO = (ResultCellObjectRefDTO) resultDTO.getNewOwnerResultCellDTO();
+		}
+		return resultList;
 	}
 }

@@ -169,8 +169,13 @@ public class JDOResultSet extends ResultSet
 	protected FieldValue setFieldValue(Object object, Field field, Object fieldValue) {
 		FieldValue result = super.setFieldValue(object, field, fieldValue);
 		getPersistenceManager().getJDOHelper().makeDirty(object, field.getName());
-		getPersistenceManager().flush();
+		flush();
 		return result;
+	}
+
+	@Override
+	protected void flush() {
+		getPersistenceManager().flush();
 	}
 
 	@Override
