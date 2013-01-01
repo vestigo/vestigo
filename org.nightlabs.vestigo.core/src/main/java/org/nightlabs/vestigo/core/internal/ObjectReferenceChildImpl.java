@@ -195,6 +195,12 @@ implements ObjectReferenceChild
 		);
 		ResultSetID resultSetID = getResultSet().getResultSetID();
 		RemoveChildFromOwnerResultDTO resultDTO = getChildVM().removeChildFromOwner(resultSetID, removeChildFromOwnerCommandDTO);
+
+		// TODO we'd need to remove the parent from the parent's parent, but we have no reference here :-(
+//		if (getOwner().isObjectInstanceOf(MapEntry.class)) {
+//			getOwner().getOwner().onRemovedChild(...)...
+//		}
+
 		if (getFieldDesc() != null) {
 			this.setValue(null);
 			return false;

@@ -36,6 +36,7 @@ import org.nightlabs.vestigo.childvm.shared.dto.ResultCellDTOList;
 import org.nightlabs.vestigo.childvm.webapp.model.AddChildrenResult;
 import org.nightlabs.vestigo.childvm.webapp.model.Connection;
 import org.nightlabs.vestigo.childvm.webapp.model.ConnectionManager;
+import org.nightlabs.vestigo.childvm.webapp.model.FieldValue;
 import org.nightlabs.vestigo.childvm.webapp.model.OwnerWithField;
 import org.nightlabs.vestigo.childvm.webapp.model.RemoveChildFromOwnerResult;
 import org.nightlabs.vestigo.childvm.webapp.model.ResultSet;
@@ -180,6 +181,9 @@ public class ResultCellDTOService extends AbstractService
 			Object ownerOwner = ownerWithField.getOwner();
 			if (resultCellDTO != null)
 				throw new IllegalStateException("More than one owner of the owner of the removed child!");
+
+			if (ownerWithField.getField() != null)
+				newOwner = new FieldValue(ownerWithField.getField(), newOwner);
 
 			resultCellDTO = resultSet.newResultCellDTO(ownerOwner, newOwner);
 		}

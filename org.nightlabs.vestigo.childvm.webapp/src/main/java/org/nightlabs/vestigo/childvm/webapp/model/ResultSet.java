@@ -711,9 +711,25 @@ public abstract class ResultSet
 				collection.remove(oldValue);
 				flush();
 			}
+			else if (object instanceof MapEntry) {
+//				MapEntry mapEntry = (MapEntry) object;
+//				TransientObjectContainer transientObjectContainer = getTransientObjectContainerForTransientObject(mapEntry, true);
+//				for (OwnerWithField ownerWithField : transientObjectContainer.getOwnerWithFieldSet()) {
+//					@SuppressWarnings("unchecked")
+//					Map<Object, Object> map = (Map<Object, Object>) ownerWithField.getOwner();
+//					map.remove(mapEntry.getKey());
+//				}
+//				flush();
+				// TODO we'd need to remove the parent from the parent's parent, but in the UI, we
+				// currently do not have a reference. Hence we disallow it for now :-(
+				throw new UnsupportedOperationException("Cannot remove a key or a value! Please remove the entire MapEntry!");
+			}
 			else if (object instanceof Map<?, ?>) {
+				MapEntry mapEntry = (MapEntry) oldValue;
+				@SuppressWarnings("unchecked")
+				Map<Object, Object> map = (Map<Object, Object>) object;
+				map.remove(mapEntry.getKey());
 				flush();
-				throw new UnsupportedOperationException("NYI");
 			}
 			else {
 				setFieldValue(object, field, null); // does flush()
