@@ -114,6 +114,11 @@ public class Movie {
 	}
 
 	@Override
+	public String toString() {
+		return getClass().getSimpleName() + '[' + movieID + ',' + name + ']';
+	}
+
+	@Override
 	public int hashCode() {
 		return (int) (movieID ^ (movieID >>> 32));
 	}

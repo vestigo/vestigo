@@ -29,6 +29,11 @@ public class Person {
 	}
 
 	@Override
+	public String toString() {
+		return getClass().getSimpleName() + '[' + personID + ',' + name + ']';
+	}
+
+	@Override
 	public int hashCode() {
 		return (int) (personID ^ (personID >>> 32));
 	}

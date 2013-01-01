@@ -29,6 +29,11 @@ public class Language {
 	}
 
 	@Override
+	public String toString() {
+		return getClass().getSimpleName() + '[' + languageID + ',' + name + ']';
+	}
+
+	@Override
 	public int hashCode() {
 		return (int) (languageID ^ (languageID >>> 32));
 	}

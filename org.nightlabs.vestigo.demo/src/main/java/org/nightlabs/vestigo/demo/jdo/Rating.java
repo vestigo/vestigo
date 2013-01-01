@@ -29,6 +29,11 @@ public class Rating {
 	}
 
 	@Override
+	public String toString() {
+		return getClass().getSimpleName() + '[' + ratingID + ',' + name + ']';
+	}
+
+	@Override
 	public int hashCode() {
 		return (int) (ratingID ^ (ratingID >>> 32));
 	}
