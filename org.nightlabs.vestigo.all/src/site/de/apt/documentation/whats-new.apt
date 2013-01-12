@@ -7,6 +7,41 @@
 
 Was ist neu?
 
+* 1.0.0
+
+	Folgendes ist neu in 1.0.0 (verglichen mit 0.9.6):
+
+	* Neues Feature: Es gibt jetzt neue, mächtige Editierungsfunktionen:
+
+		** Sie können Feldwerte setzen (sowohl einfache Datentypen als auch Relationen zu anderen Entitäten),
+
+		** Array-/Collection-/Map-Elemente hinzufügen
+
+		** oder entfernen
+
+		** sowie Entitäten aus der Datenbank löschen.
+
+		** Neue Entitäten können auch erzeugt und persistiert werden.
+
+		[]
+
+	Diese neuen Funktionen machen aus dem Abfrage-Browser Vestigo nun ein wirklich mächtiges Datenbankverwaltungswerkzeug.
+	Nun können Sie nicht mehr nur in Ihre Datenbanken hineinschauen, sondern sie auch verändern!
+	Weil Vestigo somit nun in gewisser Weise vollständig ist, erhöhten wir die Version von 0.9.6 auf
+	1.0.0 (selbstverständlich bleibt immer noch Raum für Verbesserungen, aber der aktuelle Funktionsumfang
+	rechtfertigt die Version 1.0.0). 
+
+	* Neues Feature: Zusammen mit der Möglichkeit, in die Datenbank zu schreiben, wurde auch
+	eine Transaktionsverwaltung eingeführt. Für jedes Verbindungsprofil, welches geöffnet (also verbunden) ist,
+	gibt es eine Verbindung, die von allen Editoren gemeinsam genutzt wird. Auf diese Weise zeigt das Schreiben
+	in die DB durch einen Editor und die Abfrage von Daten durch einen anderen Editor konsistente Ergebnisse
+	und - am wichtigsten - wird das gegenseitige Blockieren der Editoren verhindert, egal welche
+	Transaktionsisolation verwendet wird. Es gibt jetzt Aktionen (Kommandos, die über die Werkzeugleiste oder
+	über konfigurierbare Tastaturkürzel aufgerufen werden können) für die Bestätigung ("commit") oder das
+	Zurückrollen ("rollback") der aktuellen Transaktion (jede Verbindung verfügt immer über eine aktive Transaktion).
+
+	[]
+
 * 0.9.6
 
 	Folgendes ist neu in 0.9.6 (verglichen mit 0.9.5):

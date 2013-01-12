@@ -7,6 +7,40 @@
 
 What's new?
 
+* 1.0.0
+
+	The following is new in 1.0.0 (compared to 0.9.6):
+
+	* New feature: There are a new, powerful edit functions:
+
+		** You can set field values (both simple types and relations to other entities),
+
+		** add or
+
+		** remove array/collection/map elements and
+
+		** delete entities from the datastore.
+
+		** Creating and persisting new entities is now possible, too.
+
+		[]
+
+	These new functions turn Vestigo from a read-only query browser into a really powerful datastore
+	management tool. Now you're not only able to look into your datastores, but also to modify them!
+	Because Vestigo thus somehow becomes complete, we incremented the version from 0.9.6 to
+	1.0.0 (of course, there's still room for improvement, but the current feature set definitely justifies
+	the 1.0.0 version).
+
+	* New feature: Together with the new ability to write into the datastore, transaction management
+	was introduced, too. For every connection profile being open (i.e. connected), there's one connection
+	shared between all editors. This way writing into the datastore via one editor and querying data from
+	another shows consistent results and - most importantly - doesn't lock each other, no matter what
+	transaction isolation is used. There are now actions (commands which can be triggered via the toolbar
+	or via configurable keyboard short cuts) for committing or rolling back the current transaction
+	(every connection always has an active transaction).
+
+	[]
+
 * 0.9.6
 
 	The following is new in 0.9.6 (compared to 0.9.5):
