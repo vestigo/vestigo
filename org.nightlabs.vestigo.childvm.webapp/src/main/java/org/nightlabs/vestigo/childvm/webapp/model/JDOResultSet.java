@@ -131,6 +131,30 @@ public class JDOResultSet extends ResultSet
 	}
 
 	@Override
+	protected void deletePersistentObjectForObjectID(String objectClassName, Object objectID)
+	{
+		synchronized (getConnection()) {
+			// We synchronize on the connection, because we don't want the PersistenceManager to be used at the same time
+			// (maybe with a modified fetch-plan).
+			PersistenceManager pm = getPersistenceManager();
+
+			getConnection().resetFetchPlanToDefault(pm.getFetchPlan());
+
+			Object object;
+			try {
+				object = pm.getObjectById(objectID);
+			} catch (JDOObjectNotFoundException x) {
+				object = null;
+			}
+
+			if (object != null)
+				pm.deletePersistent(object);
+
+			flush();
+		}
+	}
+
+	@Override
 	protected List<FieldValue> getFieldValues(Object object, List<Field> fields)
 	{
 		// We synchronize on the connection, because we don't want the PersistenceManager to be used at the same time

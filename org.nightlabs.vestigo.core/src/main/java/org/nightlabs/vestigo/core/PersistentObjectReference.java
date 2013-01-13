@@ -20,5 +20,12 @@ package org.nightlabs.vestigo.core;
 public interface PersistentObjectReference
 extends ObjectReference
 {
-
+	/**
+	 * Delete the referenced object from the datastore.
+	 * <p>
+	 * Note, that this method does not remove the object from any relation. Thus, this operation
+	 * might fail, if the underlying datastore does not do this implicetely and instead throws
+	 * an exception indicating a constraint violation (e.g. a foreign key violation).
+	 */
+	void deleteFromDatastore();
 }

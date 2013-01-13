@@ -17,6 +17,7 @@
  */
 package org.nightlabs.vestigo.core.internal;
 
+import org.nightlabs.vestigo.childvm.shared.ResultSetID;
 import org.nightlabs.vestigo.childvm.shared.dto.ResultCellObjectRefDTO;
 import org.nightlabs.vestigo.core.PersistentObjectReference;
 import org.nightlabs.vestigo.core.oda.ResultSet;
@@ -28,4 +29,9 @@ public class PersistentObjectReferenceImpl extends ObjectReferenceImpl implement
 		super(resultSet, resultCellObjectRefDTO);
 	}
 
+	@Override
+	public void deleteFromDatastore() {
+		ResultSetID resultSetID = getResultSet().getResultSetID();
+		getChildVM().deleteFromDatastore(resultSetID, getResultCellObjectRefDTO());
+	}
 }

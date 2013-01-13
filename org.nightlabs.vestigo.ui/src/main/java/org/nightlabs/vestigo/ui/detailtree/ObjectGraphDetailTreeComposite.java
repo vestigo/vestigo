@@ -64,6 +64,7 @@ import org.nightlabs.vestigo.childvm.shared.JavaScriptFormula;
 import org.nightlabs.vestigo.core.LabelTextOption;
 import org.nightlabs.vestigo.core.ObjectReference;
 import org.nightlabs.vestigo.core.ObjectReferenceChild;
+import org.nightlabs.vestigo.core.PersistentObjectReference;
 import org.nightlabs.vestigo.core.oda.ResultSet;
 import org.nightlabs.vestigo.ui.jface.AbstractContextMenuAction;
 import org.nightlabs.vestigo.ui.jface.BeanShellFormulaDialog;
@@ -220,7 +221,9 @@ implements LabelTextOptionsContainer, ISelectionProvider, FormulaTypeSelection
 //		populateFormulaTypeDependentSubMenu(removeElementSubMenu, removeElementAction);
 //		contextMenuManager.add(removeElementSubMenu);
 
-		contextMenuManager.add(replaceValueAction); // TODO clean up this ugly dummy code
+		contextMenuManager.add(deleteAction);
+
+		contextMenuManager.add(replaceValueAction);
 		MenuManager replaceValueSubMenu = new MenuManager("Replace/change value");
 		populateFormulaTypeDependentSubMenu(replaceValueSubMenu, replaceValueAction);
 		contextMenuManager.add(replaceValueSubMenu);
@@ -338,6 +341,61 @@ implements LabelTextOptionsContainer, ISelectionProvider, FormulaTypeSelection
 	};
 
 	/**
+	 * Delete a persistent object from the datastore. If it is a {@link Collection} element or {@link Map} entry,
+	 * it is removed from this relation. However, only the currently displayed and edited relation is taken into
+	 * account! If the same object is present in multiple relations, it is not removed from them, which might cause
+	 * a constraint violation (e.g. foreign key violation). This depends on the data model, the persistence engine and
+	 * the database system, though.
+	 */
+	private ContextMenuAction deleteAction = new ObjectGraphDetailTreeContextMenuAction<PersistentObjectReference, Boolean>(this)
+	{
+		@Override
+		public void updateEnabled() {
+			setText("Delete from datastore");
+			setEnabled(!getSelectedObjects().isEmpty());
+		}
+
+		@Override
+		protected List<PersistentObjectReference> getSelectedObjects() {
+			return getObjectsOfType(getSelectedNodes(), PersistentObjectReference.class);
+		}
+
+		@Override
+		protected String getJobName() {
+			return "Delete from datastore";
+		}
+
+		@Override
+		protected Boolean doUserInteractionBeforeJob(List<ObjectGraphDetailTreeNode> selectedNodes, List<PersistentObjectReference> selectedObjects) {
+			// No user interaction needed. If we wanted to show a confirmation dialog, we could return null,
+			// if the user cancelled. But since we have the possibility of a rollback anyway, we don't need.
+			return Boolean.TRUE;
+		}
+
+		@Override
+		protected void doInJob(IProgressMonitor monitor, List<ObjectGraphDetailTreeNode> selectedNodes, List<PersistentObjectReference> selectedObjects, Boolean userInteractionResult) {
+			for (ObjectGraphDetailTreeNode node : selectedNodes) {
+				PersistentObjectReference objectReference = null;
+				if (node.getObject() instanceof ObjectReferenceChild) {
+					ObjectReferenceChild objectReferenceChild = (ObjectReferenceChild) node.getObject();
+					if (objectReferenceChild.getValue() instanceof PersistentObjectReference)
+						objectReference = (PersistentObjectReference) objectReferenceChild.getValue();
+
+					if (objectReferenceChild.removeFromOwner())
+						node.getParentNode().removeChildNode(node);
+				}
+				else if (node.getObject() instanceof PersistentObjectReference) {
+					objectReference = (PersistentObjectReference) node.getObject();
+				}
+
+				if (objectReference != null) {
+					objectReference.deleteFromDatastore();
+				}
+			}
+		}
+	};
+
+	/**
 	 * Remove a {@link Collection} element or {@link Map} entry.
 	 */
 	private ContextMenuAction removeElementAction = new ObjectGraphDetailTreeContextMenuAction<ObjectReferenceChild, Boolean>(this)
@@ -370,9 +428,8 @@ implements LabelTextOptionsContainer, ISelectionProvider, FormulaTypeSelection
 			for (ObjectGraphDetailTreeNode node : selectedNodes) {
 				if (node.getObject() instanceof ObjectReferenceChild) {
 					ObjectReferenceChild objectReferenceChild = (ObjectReferenceChild) node.getObject();
-					if (objectReferenceChild.removeFromOwner()) {
+					if (objectReferenceChild.removeFromOwner())
 						node.getParentNode().removeChildNode(node);
-					}
 				}
 			}
 		}

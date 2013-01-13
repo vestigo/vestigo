@@ -90,4 +90,8 @@ public class PersistenceManager extends PersistenceEngineWrapper
 	public void flush() {
 		invoke(9, "flush");
 	}
+
+	public void deletePersistent(Object object) {
+		invoke(10, "deletePersistent", Object.class, object);
+	}
 }

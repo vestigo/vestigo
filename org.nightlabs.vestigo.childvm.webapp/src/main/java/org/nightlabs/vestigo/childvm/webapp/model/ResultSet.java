@@ -391,6 +391,36 @@ public abstract class ResultSet
 		}
 	}
 
+	public void deleteObjectForObjectID(String objectClassName, String objectID)
+	{
+		if (objectClassName == null)
+			throw new IllegalArgumentException("objectClassName == null");
+
+		if (objectID == null)
+			throw new IllegalArgumentException("objectID == null");
+
+		if (ResultCellTransientObjectRefDTO.isTransientObjectID(objectID)) {
+			Long objectIDLong = ResultCellTransientObjectRefDTO.getTransientObjectID(objectID);
+			TransientObjectContainer objectContainer = objectID2transientObjectContainer.remove(objectIDLong);
+			if (objectContainer != null)
+				transientObject2objectID.remove(objectContainer.getObject());
+		}
+		else {
+			ClassLoader backupContextClassLoader = Thread.currentThread().getContextClassLoader();
+			try {
+				Thread.currentThread().setContextClassLoader(persistenceEngineClassLoader);
+
+				Object persistentObjectID = getPersistentObjectID(objectClassName, objectID);
+				if (persistentObjectID == null)
+					throw new IllegalStateException("ObjectIDString was not registered previously: " + objectID);
+
+				deletePersistentObjectForObjectID(objectClassName, persistentObjectID);
+			} finally {
+				Thread.currentThread().setContextClassLoader(backupContextClassLoader);
+			}
+		}
+	}
+
 	/**
 	 * Get the persistent object referenced by the given <code>objectClassName</code> and <code>objectID</code>.
 	 * If no such object exists, return <code>null</code>.
@@ -399,6 +429,8 @@ public abstract class ResultSet
 	 * @return <code>null</code> or the object referenced by the given parameters.
 	 */
 	protected abstract Object getPersistentObjectForObjectID(String objectClassName, Object objectID);
+
+	protected abstract void deletePersistentObjectForObjectID(String objectClassName, Object objectID);
 
 	public boolean isOpen()
 	{

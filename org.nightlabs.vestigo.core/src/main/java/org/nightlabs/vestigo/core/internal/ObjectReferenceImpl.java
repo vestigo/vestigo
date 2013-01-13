@@ -42,7 +42,7 @@ import org.nightlabs.vestigo.core.oda.ResultSet;
  */
 public abstract class ObjectReferenceImpl implements ObjectReference
 {
-	private ResultSet resultSet;
+	private final ResultSet resultSet;
 	private ResultCellObjectRefDTO resultCellObjectRefDTO;
 
 	private List<ObjectReferenceChild> children;
@@ -62,6 +62,10 @@ public abstract class ObjectReferenceImpl implements ObjectReference
 	@Override
 	public ResultSet getResultSet() {
 		return resultSet;
+	}
+
+	protected ResultCellObjectRefDTO getResultCellObjectRefDTO() {
+		return resultCellObjectRefDTO;
 	}
 
 	protected ChildVM getChildVM()

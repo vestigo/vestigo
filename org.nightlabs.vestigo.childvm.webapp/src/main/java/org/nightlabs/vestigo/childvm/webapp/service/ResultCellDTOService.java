@@ -19,6 +19,7 @@ package org.nightlabs.vestigo.childvm.webapp.service;
 
 import java.util.List;
 
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -231,4 +232,25 @@ public class ResultCellDTOService extends AbstractService
 		return resultDTO;
 	}
 
+	@DELETE
+	@Path("{resultSetID}/{objectClassName}/{objectID}")
+	public void deleteFromDatastore(
+			@PathParam("resultSetID") ResultSetID resultSetID,
+			@PathParam("objectClassName") String objectClassName,
+			@PathParam("objectID") String objectID
+	)
+	{
+		if (resultSetID == null)
+			throw new IllegalArgumentException("resultSetID == null");
+
+		if (objectClassName == null)
+			throw new IllegalArgumentException("objectClassName == null");
+
+		if (objectID == null)
+			throw new IllegalArgumentException("objectID == null");
+
+		Connection connection = ConnectionManager.sharedInstance().getConnection(resultSetID.getConnectionID(), true);
+		ResultSet resultSet = connection.getResultSet(resultSetID.getResultSetID(), true);
+		resultSet.deleteObjectForObjectID(objectClassName, objectID);
+	}
 }

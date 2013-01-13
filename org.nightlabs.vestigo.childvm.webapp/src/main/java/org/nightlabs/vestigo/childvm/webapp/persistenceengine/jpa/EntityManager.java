@@ -64,4 +64,8 @@ public class EntityManager extends PersistenceEngineWrapper
 	public void flush() {
 		invoke(6, "flush");
 	}
+
+	public void remove(Object entity) {
+		invoke(7, "remove", Object.class, entity);
+	}
 }

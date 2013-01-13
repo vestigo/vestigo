@@ -89,5 +89,7 @@ public interface ChildVM
 
 	RemoveChildFromOwnerResultDTO removeChildFromOwner(ResultSetID resultSetID, RemoveChildFromOwnerCommandDTO removeChildFromOwnerCommandDTO) throws ChildVMException;
 
-	AddChildrenResultDTO addChildren(ResultSetID resultSetID, AddChildrenCommandDTO addChildrenCommandDTO);
+	AddChildrenResultDTO addChildren(ResultSetID resultSetID, AddChildrenCommandDTO addChildrenCommandDTO) throws ChildVMException;
+
+	void deleteFromDatastore(ResultSetID resultSetID, ResultCellObjectRefDTO resultCellObjectRefDTO) throws ChildVMException;
 }

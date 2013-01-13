@@ -680,7 +680,7 @@ implements ChildVM
 	}
 
 	@Override
-	public AddChildrenResultDTO addChildren(ResultSetID resultSetID, AddChildrenCommandDTO addChildrenCommandDTO)
+	public AddChildrenResultDTO addChildren(ResultSetID resultSetID, AddChildrenCommandDTO addChildrenCommandDTO) throws ChildVMException
 	{
 		if (resultSetID == null)
 			throw new IllegalArgumentException("resultSetID == null");
@@ -696,6 +696,29 @@ implements ChildVM
 		} catch (UniformInterfaceException x) {
 			handleUniformInterfaceException(x);
 			throw x; // we do not expect null
+		} finally {
+			releaseClient(client);
+		}
+	}
+
+	@Override
+	public void deleteFromDatastore(ResultSetID resultSetID, ResultCellObjectRefDTO resultCellObjectRefDTO) throws ChildVMException
+	{
+		if (resultSetID == null)
+			throw new IllegalArgumentException("resultSetID == null");
+		if (resultCellObjectRefDTO == null)
+			throw new IllegalArgumentException("resultCellObjectRefDTO == null");
+
+		Client client = acquireClient();
+		try {
+			getChildVMAppResource(
+					client, ResultCellDTO.class,
+					new PathSegment(resultSetID),
+					new PathSegment(resultCellObjectRefDTO.getObjectClassName()),
+					new PathSegment(resultCellObjectRefDTO.getObjectID())
+			).delete();
+		} catch (UniformInterfaceException x) {
+			handleUniformInterfaceException(x);
 		} finally {
 			releaseClient(client);
 		}

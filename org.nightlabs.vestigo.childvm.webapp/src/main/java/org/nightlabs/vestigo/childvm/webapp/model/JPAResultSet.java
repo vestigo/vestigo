@@ -110,21 +110,25 @@ public class JPAResultSet extends ResultSet
 		return null;
 	}
 
-	@Override
-	protected Object getPersistentObjectForObjectID(String objectClassName, Object objectID)
-	{
+	protected Class<?> getEntityClass(String objectClassName) {
 		Class<?> entityClass = null;
 		try {
 			entityClass = Class.forName(
 					objectClassName, false,
 					getConnection().getConnectionProfile().getClassLoaderManager().getPersistenceEngineClassLoader(null)
-			);
+					);
 		} catch (ClassNotFoundException e) {
 			throw new RuntimeException(e);
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
+		return entityClass;
+	}
 
+	@Override
+	protected Object getPersistentObjectForObjectID(String objectClassName, Object objectID)
+	{
+		Class<?> entityClass = getEntityClass(objectClassName);
 		synchronized (getConnection()) {
 			// We synchronize on the connection, because we don't want the EntityManager to be used at the same time
 			// (maybe with a modified fetch-plan).
@@ -134,6 +138,25 @@ public class JPAResultSet extends ResultSet
 
 			Object object = em.find(entityClass, objectID);
 			return object;
+		}
+	}
+
+	@Override
+	protected void deletePersistentObjectForObjectID(String objectClassName, Object objectID)
+	{
+		Class<?> entityClass = getEntityClass(objectClassName);
+		synchronized (getConnection()) {
+			// We synchronize on the connection, because we don't want the EntityManager to be used at the same time
+			// (maybe with a modified fetch-plan).
+			EntityManager em = getEntityManager();
+
+//			getConnection().resetFetchPlanToDefault(em.getFetchPlan()); // no fetch-plan in JPA :-(
+
+			Object object = em.find(entityClass, objectID);
+			if (object != null)
+				em.remove(object);
+
+			flush();
 		}
 	}
 
