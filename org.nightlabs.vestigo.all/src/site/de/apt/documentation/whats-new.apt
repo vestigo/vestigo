@@ -11,7 +11,7 @@ Was ist neu?
 
 	Folgendes ist neu in 1.0.0 (verglichen mit 0.9.6):
 
-	* Neues Feature: Es gibt jetzt neue, mächtige Editierungsfunktionen:
+	* Neues Feature: Es gibt jetzt neue, mächtige Bearbeitungsfunktionen:
 
 		** Sie können Feldwerte setzen (sowohl einfache Datentypen als auch Relationen zu anderen Entitäten),
 
@@ -39,6 +39,9 @@ Was ist neu?
 	Transaktionsisolation verwendet wird. Es gibt jetzt Aktionen (Kommandos, die über die Werkzeugleiste oder
 	über konfigurierbare Tastaturkürzel aufgerufen werden können) für die Bestätigung ("commit") oder das
 	Zurückrollen ("rollback") der aktuellen Transaktion (jede Verbindung verfügt immer über eine aktive Transaktion).
+
+	* Neues Feature: {{{http://en.wikipedia.org/wiki/BeanShell}BeanShell}}-Unterstützung für Formel-basierte
+	Abfrage-Parameter and die neuen Bearbeitungsfunktionen.
 
 	[]
 

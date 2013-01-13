@@ -57,18 +57,12 @@ public class ReleasePreparer {
 
 	// Set 'newMavenVersion' to the new desired  version. Then run the main method. It will update
 	// all files accordingly. See HOWTO-release.txt in project 'org.nightlabs.vestigo.all'.
-//	protected String newMavenVersion = "0.9.7";
-	protected String newMavenVersion = "0.9.7-SNAPSHOT";
+	protected String newMavenVersion = "1.0.0";
+//	protected String newMavenVersion = "1.0.1-SNAPSHOT";
 
 	protected String copyrightURL = "http://vestigo.nightlabs.com/${project.version}/about/imprint.html";
 	protected String copyrightNotice = "Copyright © 2011-2012 NightLabs Consulting GmbH. All rights reserved.";
 
-	/**
-	 * 
-	 */
-	/**
-	 * 
-	 */
 	protected String licenceURL = "http://vestigo.nightlabs.com/${project.version}/about/licence.html";
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -376,7 +370,7 @@ public class ReleasePreparer {
 			}
 		}
 	}
-	
+
 	protected void updateProductFiles() throws Exception {
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -393,7 +387,7 @@ public class ReleasePreparer {
 			StreamResult result = new StreamResult(f);
 			transformer.transform(source, result);
 		}
-	}	
+	}
 
 	protected void updateProductFileDocument(Document document) {
 		updateProductFileFeatureElements(document);
@@ -437,7 +431,7 @@ public class ReleasePreparer {
 		productFiles = new ArrayList<File>();
 		_collectFiles(dir.getCanonicalFile());
 	}
-	
+
 	protected void _collectFiles(File dirOrFile) {
 		if (dirOrFile.getName().startsWith("."))
 			return;
@@ -473,7 +467,7 @@ public class ReleasePreparer {
 			productFiles.add(dirOrFile);
 			return;
 		}
-		
+
 		File[] listFiles = dirOrFile.listFiles();
 		if (listFiles != null) {
 			for (File child : listFiles)
@@ -516,7 +510,7 @@ public class ReleasePreparer {
 		}
 		return result;
 	}
-	
+
 	protected static Element findSingleElement(String path, Element element) {
 		String[] elementNames = path.split("/");
 		for (String elementName : elementNames) {
@@ -525,9 +519,9 @@ public class ReleasePreparer {
 				return null;
 			if (elementL.getLength() > 1)
 				throw new IllegalStateException("Found more than one child-elements with name " + elementName + " in element " + element.getNodeName());
-			if (!(elementL.item(0) instanceof Element)) 
+			if (!(elementL.item(0) instanceof Element))
 				throw new IllegalStateException("Node with name " + elementName + " in element " + element.getNodeName() + " is not of type Element");
-			
+
 			element = (Element) elementL.item(0);
 		}
 		return element;

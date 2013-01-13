@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<feature id="org.nightlabs.vestigo.ui.product.feature" label="Vestigo - Standalone JDO JPA Query Browser" plugin="org.nightlabs.vestigo.ui.product" provider-name="NightLabs Consulting GmbH" version="0.9.7.qualifier">
+<feature id="org.nightlabs.vestigo.ui.product.feature" label="Vestigo - Standalone JDO JPA Query Browser" plugin="org.nightlabs.vestigo.ui.product" provider-name="NightLabs Consulting GmbH" version="1.0.0">
 
 <!--
 ###PROPERTIES_BEGIN###
@@ -9,13 +9,13 @@ description.text = Vestigo - The JDO/JPA Query Tool And Browser - Version ${proj
 -->
 
 <!-- BEGIN: DO NOT MODIFY manually! The following is managed and your manual changes will be lost! -->
-   <description url="http://vestigo.nightlabs.com/0.9.7-SNAPSHOT">Vestigo - The JDO/JPA Query Tool And Browser - Version 0.9.7-SNAPSHOT.
+   <description url="http://vestigo.nightlabs.com/1.0.0">Vestigo - The JDO/JPA Query Tool And Browser - Version 1.0.0.
 
-See http://vestigo.nightlabs.com/0.9.7-SNAPSHOT for more information.</description>
+See http://vestigo.nightlabs.com/1.0.0 for more information.</description>
 
-   <copyright url="http://vestigo.nightlabs.com/0.9.7-SNAPSHOT/about/imprint.html">Copyright © 2011-2012 NightLabs Consulting GmbH. All rights reserved.</copyright>
+   <copyright url="http://vestigo.nightlabs.com/1.0.0/about/imprint.html">Copyright © 2011-2012 NightLabs Consulting GmbH. All rights reserved.</copyright>
 
-   <license url="http://vestigo.nightlabs.com/0.9.7-SNAPSHOT/about/licence.html">License agreement for Vestigo
+   <license url="http://vestigo.nightlabs.com/1.0.0/about/licence.html">License agreement for Vestigo
 
 
 IMPORTANT! READ CAREFULLY: THIS IS A LEGAL AGREEMENT. BY DOWNLOADING,

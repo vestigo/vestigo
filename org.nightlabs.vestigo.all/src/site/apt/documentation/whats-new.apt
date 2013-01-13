@@ -21,7 +21,7 @@ What's new?
 
 		** delete entities from the datastore.
 
-		** Creating and persisting new entities is now possible, too.
+		** While assigning a relation, a new entity can be created and persisted, too.
 
 		[]
 
@@ -38,6 +38,9 @@ What's new?
 	transaction isolation is used. There are now actions (commands which can be triggered via the toolbar
 	or via configurable keyboard short cuts) for committing or rolling back the current transaction
 	(every connection always has an active transaction).
+
+	* New feature: {{{http://en.wikipedia.org/wiki/BeanShell}BeanShell}}-support for formula-based
+	query-parameters and the new edit functions.
 
 	[]
 
