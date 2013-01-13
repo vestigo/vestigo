@@ -57,8 +57,8 @@ public class ReleasePreparer {
 
 	// Set 'newMavenVersion' to the new desired  version. Then run the main method. It will update
 	// all files accordingly. See HOWTO-release.txt in project 'org.nightlabs.vestigo.all'.
-	protected String newMavenVersion = "1.0.0";
-//	protected String newMavenVersion = "1.0.1-SNAPSHOT";
+//	protected String newMavenVersion = "1.0.0";
+	protected String newMavenVersion = "1.0.1-SNAPSHOT";
 
 	protected String copyrightURL = "http://vestigo.nightlabs.com/${project.version}/about/imprint.html";
 	protected String copyrightNotice = "Copyright © 2011-2012 NightLabs Consulting GmbH. All rights reserved.";
