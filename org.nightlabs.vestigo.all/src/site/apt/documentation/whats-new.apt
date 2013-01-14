@@ -7,7 +7,16 @@
 
 What's new?
 
-* 1.0.0
+* {1.0.1}
+
+	The following is new in 1.0.1 (compared to 1.0.0):
+
+	* Bugfix: Fixed Cumulus4j demo data (encrypted database): Switched dependency on {{{http://cumulus4j.org}Cumulus4j}}
+	from version 1.1.0 to 1.1.1, because there is a blocking bug in 1.1.0.
+
+	[]
+
+* {1.0.0}
 
 	The following is new in 1.0.0 (compared to 0.9.6):
 
@@ -44,7 +53,7 @@ What's new?
 
 	[]
 
-* 0.9.6
+* {0.9.6}
 
 	The following is new in 0.9.6 (compared to 0.9.5):
 
@@ -61,7 +70,7 @@ What's new?
 
 	[]
 
-* 0.9.5
+* {0.9.5}
 	
 	The following is new in 0.9.5 (compared to 0.9.4):
 	
@@ -79,7 +88,7 @@ What's new?
 
 	[]
 	
-* 0.9.4
+* {0.9.4}
 
 	The following is new in 0.9.4 (compared to 0.9.3):
 
@@ -89,7 +98,7 @@ What's new?
 
 	[]
 
-* 0.9.3
+* {0.9.3}
 
 	The following is new in 0.9.3 (compared to 0.9.2):
 
@@ -99,7 +108,7 @@ What's new?
 
 	[]
 
-* 0.9.2
+* {0.9.2}
 
 	The following is new in 0.9.2 (compared to 0.9.1):
 
@@ -111,7 +120,7 @@ What's new?
 
 	[]
 
-* 0.9.1
+* {0.9.1}
 
 	The following is new in 0.9.1 (compared to 0.9.0):
 

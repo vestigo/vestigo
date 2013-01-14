@@ -38,7 +38,7 @@
 
 	<body>
 		<head>
-			<link rel="icon" href="images/favicon.ico" />
+			<link rel="icon" href="/${vestigo.version}/images/favicon.ico" />
 		</head>	
 		<links>
 			<item name="Home" href="./index.html" />
