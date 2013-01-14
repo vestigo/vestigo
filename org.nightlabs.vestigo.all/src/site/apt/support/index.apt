@@ -7,8 +7,13 @@
 
 General inquiry
 
-	For general questions about Vestigo please write an e-mail to: {{{javascript:location.href='mailto:'+String.fromCharCode(105,110,102,111,64,110,105,103,104,116,108,97,98,115,46,100,101)+'?subject=Vestigo%20inquiry&body=Please%20use%20german%20or%20english%20for%20your%20request'}info [at] nightlabs [dot] com}} 
+	For general questions about Vestigo please write an e-mail to: info [at] nightlabs [dot] com
+~~ The javascript-stuff is escaped by the APT engine and thus unusable => commented out.
+~~	{{{javascript:location.href='mailto:'+String.fromCharCode(105,110,102,111,64,110,105,103,104,116,108,97,98,115,46,100,101)+'?subject=Vestigo%20inquiry&body=Please%20use%20german%20or%20english%20for%20your%20request'}info [at] nightlabs [dot] com}} 
 
 Vestigo e-mail support
 
-	For licensed users we provide e-mail support for all kinds of installation and use-case questions around Vestigo. Please send your support question to {{{javascript:location.href='mailto:'+String.fromCharCode(118,101,115,116,105,103,111,64,110,105,103,104,116,108,97,98,115,46,100,101)+'?subject=Vestigo%20support%20question&body=Please%20use%20german%20or%20english%20for%20your%20request'}vestigo [at] nightlabs [dot] com}}. 
+	For licensed users we provide e-mail support for all kinds of installation and use-case questions around Vestigo.
+	Please send your support question to: vestigo [at] nightlabs [dot] com
+~~ The javascript-stuff is escaped by the APT engine and thus unusable => commented out.
+~~	{{{javascript:location.href='mailto:'+String.fromCharCode(118,101,115,116,105,103,111,64,110,105,103,104,116,108,97,98,115,46,100,101)+'?subject=Vestigo%20support%20question&body=Please%20use%20german%20or%20english%20for%20your%20request'}vestigo [at] nightlabs [dot] com}}. 

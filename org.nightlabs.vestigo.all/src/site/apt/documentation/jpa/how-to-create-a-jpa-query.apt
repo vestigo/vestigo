@@ -15,7 +15,7 @@ How to create a JPA query
 	First, you need to create a {{{../data-source.html}data source}}. In order to do that, you can follow
 	one of these guides:
 
-	* {{{../jpa/quick-start.html}Quick start}} (note that you'll have to create a <<JPA>> data source - not JDO - but
+	* {{{../jdo/quick-start.html}Quick start}} (note that you'll have to create a <<JPA>> data source - not JDO - but
 	the process is nearly the same)
 
 	* {{{./how-to-set-up-a-jpa-data-source.html}How to set up a JPA data source}}

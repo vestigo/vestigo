@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?pde version="3.5"?><product application="org.nightlabs.vestigo.ui.product.application" id="org.nightlabs.vestigo.ui.product.product" includeLaunchers="true" name="Vestigo" uid="org.nightlabs.vestigo.ui.standalone-product" useFeatures="true" version="0.9.5.qualifier">
+<?pde version="3.5"?>
+
+<product application="org.nightlabs.vestigo.ui.product.application" id="org.nightlabs.vestigo.ui.product.product" includeLaunchers="true" name="Vestigo" uid="org.nightlabs.vestigo.ui.standalone-product" useFeatures="true" version="0.9.5.qualifier">
 
    <aboutInfo>
       <image path="icons/vestigo-about.png"/>
@@ -30,7 +32,7 @@
    </vm>
 
    <license>
-        <url>http://vestigo.nightlabs.com/1.0.1-SNAPSHOT/about/licence.html</url>
+        <url>http://vestigo.nightlabs.com/1.0.1/about/licence.html</url>
         <text>License agreement for Vestigo
 
 
@@ -337,12 +339,12 @@ E-mail: vestigo[at]nightlabs[dot]com
    </plugins>
 
    <features>
-      <feature id="org.nightlabs.vestigo.cumulus4j.ui.feature" version="1.0.1.qualifier"/>
-      <feature id="org.nightlabs.vestigo.jdt.ui.feature" version="1.0.1.qualifier"/>
-      <feature id="org.nightlabs.vestigo.log4j.ui.feature" version="1.0.1.qualifier"/>
-      <feature id="org.nightlabs.vestigo.maven.ui.feature" version="1.0.1.qualifier"/>
-      <feature id="org.nightlabs.vestigo.ui.feature" version="1.0.1.qualifier"/>
-      <feature id="org.nightlabs.vestigo.ui.product.feature" version="1.0.1.qualifier"/>
+      <feature id="org.nightlabs.vestigo.cumulus4j.ui.feature" version="1.0.1"/>
+      <feature id="org.nightlabs.vestigo.jdt.ui.feature" version="1.0.1"/>
+      <feature id="org.nightlabs.vestigo.log4j.ui.feature" version="1.0.1"/>
+      <feature id="org.nightlabs.vestigo.maven.ui.feature" version="1.0.1"/>
+      <feature id="org.nightlabs.vestigo.ui.feature" version="1.0.1"/>
+      <feature id="org.nightlabs.vestigo.ui.product.feature" version="1.0.1"/>
       <feature id="org.eclipse.rcp"/>
       <feature id="org.eclipse.platform"/>
       <feature id="org.eclipse.rcp.source"/>
